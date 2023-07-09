@@ -2,28 +2,31 @@ package car.domain;
 
 import java.util.Objects;
 
-public class Car {
+public final class Car {
 
     private static final int CAR_MOVE_LOWER_LIMIT = 4;
     private static final int CAR_MOVE = 1;
 
     private final CarName name;
-    private int position = 0;
+    private final int position;
 
-    public Car(final String carName) {
-        this.name = new CarName(carName);
-    }
-
-    public Car(final String carName, int position) {
+    public Car(final String carName, final int position) {
         this.name = new CarName(carName);
         this.position = position;
     }
 
-    public Car(final CarName carName, int position) {
+    public Car(final CarName carName) {
+        this(carName, 0);
+    }
+
+    public Car(final String carName) {
+        this(carName, 0);
+    }
+
+    public Car(final CarName carName, final int position) {
         this.name = carName;
         this.position = position;
     }
-
 
     public String getName() {
         return this.name.getName();
@@ -33,14 +36,19 @@ public class Car {
         return this.position;
     }
 
-    public void move(int carSpeed) {
+    public Car move(final int carSpeed) {
         if (carSpeed >= CAR_MOVE_LOWER_LIMIT) {
-            this.position += CAR_MOVE;
+            return new Car(this.name, this.position + CAR_MOVE);
         }
+        return this;
     }
 
-    public boolean isSamePosition(int position) {
+    public boolean isSamePosition(final int position) {
         return this.position == position;
+    }
+
+    public boolean isSamePosition (final Car otherCar) {
+        return this.position == otherCar.getPosition();
     }
 
     @Override
@@ -58,5 +66,13 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+            "name=" + name +
+            ", position=" + position +
+            '}';
     }
 }

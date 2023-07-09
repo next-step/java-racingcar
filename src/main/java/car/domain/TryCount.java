@@ -22,7 +22,7 @@ public final class TryCount {
     }
 
     public TryCount decreaseCount() {
-        return new TryCount(this.tryCount-1);
+        return new TryCount(this.tryCount - 1);
     }
 
     @Override
