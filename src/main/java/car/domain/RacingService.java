@@ -9,24 +9,11 @@ import java.util.List;
 
 public final class RacingService {
 
-    private static class RacingServiceHolder {
+    private final Cars cars;
+    private final Count count;
 
-        private static final RacingService racingService = new RacingService();
-    }
-
-    private Cars cars;
-    private Count count;
-
-
-    private RacingService() {
+    public RacingService(final String inputCarNames, final int inputCount) {
         OutputView.printResultText();
-    }
-
-    public static RacingService getInstance() {
-        return RacingServiceHolder.racingService;
-    }
-
-    public void setCarsAndCount(String inputCarNames, int inputCount) {
         cars = new Cars(inputCarNames);
         count = new Count(inputCount);
     }

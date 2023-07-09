@@ -15,9 +15,7 @@ public class RacingServiceTest {
         int count = 1;
         boolean isExpectedRacing = true;
 
-        RacingService racingService = RacingService.getInstance();
-        racingService.setCarsAndCount(carName, count);
-
+        RacingService racingService = new RacingService(carName, count);
         assertThat(racingService).extracting(RacingService::isRacing).isEqualTo(isExpectedRacing);
     }
 
@@ -28,8 +26,7 @@ public class RacingServiceTest {
         int count = 0;
         boolean isExpectedRacing = false;
 
-        RacingService racingService = RacingService.getInstance();
-        racingService.setCarsAndCount(carName, count);
+        RacingService racingService = new RacingService(carName, count);
 
         assertThat(racingService).extracting(RacingService::isRacing).isEqualTo(isExpectedRacing);
     }
@@ -41,8 +38,7 @@ public class RacingServiceTest {
         int totalRaceCount = 1;
         int expectedRaceCount = 0;
 
-        RacingService racingService = RacingService.getInstance();
-        racingService.setCarsAndCount(carName, totalRaceCount);
+        RacingService racingService = new RacingService(carName, totalRaceCount);
         racingService.runRaceOnce();
 
         assertThat(racingService).extracting("count")

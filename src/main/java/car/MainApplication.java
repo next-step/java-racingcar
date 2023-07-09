@@ -12,8 +12,7 @@ public final class MainApplication {
         int inputCount = InputView.enterCount();
 
         // 2. 자동차 경주 실행
-        RacingService racingService = RacingService.getInstance();
-        racingService.setCarsAndCount(inputCarNames, inputCount);
+        RacingService racingService = new RacingService(inputCarNames, inputCount);
         while (racingService.isRacing()) {
             racingService.runRaceOnce();
             OutputView.printEachRaceResult(racingService.getEachRaceResult());
