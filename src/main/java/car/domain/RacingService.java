@@ -5,7 +5,6 @@ import car.domain.model.Cars;
 import car.domain.model.Count;
 import car.view.OutputView;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class RacingService {
 
@@ -45,14 +44,7 @@ public final class RacingService {
     }
 
     public List<Car> selectWinner() {
-        int maxPosition = this.cars.getCars()
-            .stream()
-            .mapToInt(Car::getPosition)
-            .max().getAsInt();
-        return this.cars.getCars()
-            .stream()
-            .filter(car -> (car.getPosition() == maxPosition))
-            .collect(Collectors.toList());
+        return cars.getWinnerCars();
     }
 
 }

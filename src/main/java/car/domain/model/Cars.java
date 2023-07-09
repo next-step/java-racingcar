@@ -21,6 +21,16 @@ public final class Cars {
         cars.forEach(car -> car.move(RandomNumberGenerator.getRandomNumber()));
     }
 
+    public List<Car> getWinnerCars () {
+        int maxPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max().getAsInt();
+
+        return cars.stream()
+            .filter(car -> car.isWinner(maxPosition))
+            .collect(Collectors.toUnmodifiableList());
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }

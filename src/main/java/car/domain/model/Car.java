@@ -17,6 +17,10 @@ public final class Car {
         position++;
     }
 
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
+    }
+
     public String getCarName() {
         return carName.getName();
     }

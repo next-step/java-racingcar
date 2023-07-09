@@ -18,7 +18,7 @@ public class CarTest {
 
         CarName carName = new CarName(expectedCarName);
 
-        assertThat(carName).extracting("myCarName").isEqualTo(expectedCarName);
+        assertThat(carName).extracting("name").isEqualTo(expectedCarName);
     }
 
     @Test
