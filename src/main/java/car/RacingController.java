@@ -11,16 +11,26 @@ import car.util.RandomNumberGenerator;
 import java.util.List;
 
 public final class RacingController {
-
     private Cars cars;
     private TryCount leftRound;
 
     public RacingController() {
+        cars = new Cars(new CarNames(InputView.enterCarName()));
+        leftRound = new TryCount(InputView.enterCount());
+    }
+    public RacingController(Cars cars, int tryCount) {
+        this.cars = cars;
+        this.leftRound =new TryCount(tryCount);
+    }
+
+    public RacingController(String carNames, int tryCount ) {
+        this.cars = new Cars(new CarNames(carNames));
+        this.leftRound = new TryCount(tryCount);
     }
 
     public void runRaceOnce(NumberGenerator numberGenerator) {
-        cars.race(numberGenerator);
-        leftRound.decreaseCount();
+        cars = cars.race(numberGenerator);
+        this.leftRound = leftRound.decreaseCount();
     }
 
     public List<Car> selectWinner() {
@@ -32,12 +42,7 @@ public final class RacingController {
     }
 
     public void run() {
-        String name = InputView.enterCarName();
-        leftRound = new TryCount(InputView.enterCount());
-
-        cars = new Cars(new CarNames(name));
         NumberGenerator numberGenerator = new RandomNumberGenerator();
-
         OutputView.printResult();
 
         while (isLeftRound()) {

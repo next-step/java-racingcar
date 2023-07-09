@@ -11,19 +11,20 @@ public final class Cars {
 
     private final List<Car> cars;
 
-    public Cars(final List<CarName> carNames) {
-        cars = carNames.stream().map(Car::new).collect(Collectors.toList());
-    }
     public Cars(final CarNames carNames) {
         cars = carNames.getCarNames().stream()
             .map(car -> new Car(car.getName()))
             .collect(Collectors.toList());
     }
 
-    public void race(final NumberGenerator numberGenerator) {
-        for (Car car : cars) {
-            car.move(numberGenerator.createNumber());
-        }
+    public Cars(final List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public Cars race(final NumberGenerator numberGenerator) {
+        List<Car> collect = this.cars.stream().map(car -> car.move(numberGenerator.createNumber()))
+            .collect(Collectors.toList());
+        return new Cars(collect);
     }
 
     public List<Car> getCars() {
@@ -31,15 +32,13 @@ public final class Cars {
     }
 
     private Comparator<Car> carComparator() {
-        Comparator<Car> comparatorCar = Comparator.comparing(Car::getPosition);
-        return comparatorCar;
+        return Comparator.comparing(Car::getPosition);
     }
 
     private Car selectMaxPositionCar() {
-        Car car = cars.stream()
+        return cars.stream()
             .max(carComparator())
             .orElseThrow(() -> new NoSuchElementException("최대 위치인 자동차가 존재하지 않습니다"));
-        return car;
     }
 
     public List<Car> selectWinners() {
