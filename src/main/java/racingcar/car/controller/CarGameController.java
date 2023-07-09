@@ -11,7 +11,11 @@ public class CarGameController {
     private final MoveStrategy moveStrategy;
 
     public CarGameController() {
-        this.moveStrategy = new RandomMoveStrategy();
+        this(new RandomMoveStrategy());
+    }
+
+    public CarGameController(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public void start() {
