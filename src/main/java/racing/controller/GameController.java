@@ -2,7 +2,6 @@ package racing.controller;
 
 import racing.factory.CarFactory;
 import racing.io.Viewer;
-//import racing.manager.RacingManager;
 import racing.model.Cars;
 import racing.model.GameInfo;
 
