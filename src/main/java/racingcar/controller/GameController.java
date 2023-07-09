@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.movable.RandomMovable;
 import racingcar.view.RacingView;
 import racingcar.domain.RacingManager;
 
@@ -10,7 +11,7 @@ public class GameController {
     public static void playGame() {
         RacingManager racingManager = getRacingManagerByInput();
         RacingView racingViewManager = new RacingView(racingManager);
-        racingManager.playRacing();
+        racingManager.playRacing(new RandomMovable());
         racingViewManager.printResult();
     }
 

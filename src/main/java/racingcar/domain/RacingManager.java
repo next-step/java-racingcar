@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.movable.Movable;
+
 import java.util.List;
 
 public class RacingManager {
@@ -17,9 +19,9 @@ public class RacingManager {
         return new RacingManager(Cars.from(carNames), round);
     }
 
-    public void playRacing() {
+    public void playRacing(Movable movable) {
         for (int i = 0; i < round; i++) {
-            cars.takeTurn();
+            cars.takeTurn(movable);
             racingRecord.add(cars.getRacingRoundRecord());
         }
     }

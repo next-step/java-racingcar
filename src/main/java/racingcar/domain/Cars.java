@@ -10,10 +10,8 @@ import static java.util.stream.Collectors.toList;
 public class Cars {
 
     private final List<Car> cars;
-    private final Movable movable;
 
     public Cars(List<Car> cars) {
-        this.movable = new RandomMovable();
         this.cars = cars;
     }
 
@@ -23,7 +21,7 @@ public class Cars {
                 .collect(toList()));
     }
 
-    public void takeTurn() {
+    public void takeTurn(Movable movable) {
         for (Car car : cars) {
             car.progress(movable);
         }
