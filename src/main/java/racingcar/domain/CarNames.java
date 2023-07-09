@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class CarNames {
 
-    public static final String INVALID_INPUT_MESSAGE = "잘못된 입력이 들어왔습니다.";
+    public static final String EMPTY_CAR_NAME_MESSAGE = ",(쉼표)만 입력이 들어왔습니다. 자동차 이름도 함께 입력해주세요.";
     private final List<CarName> carNames;
 
     public CarNames(List<CarName> carNames) {
@@ -17,7 +17,7 @@ public class CarNames {
 
     private void validate(List<CarName> carNames) {
         if (carNames == null || carNames.isEmpty()) {
-            throw new CarNameInputException(INVALID_INPUT_MESSAGE);
+            throw new CarNameInputException(EMPTY_CAR_NAME_MESSAGE);
         }
     }
 
