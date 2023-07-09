@@ -3,34 +3,42 @@ package racingcar.domain;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
-import static racingcar.domain.RandomGenerator.generateNumber;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 public class Cars {
 
     private static final String NOT_EMPTY_CAR_MESSAGE = "Car 객체를 찾을 수 없습니다.";
+    private static final String DUPLICATE_CAR_NAME_MESSAGE = "자동차 이름에 중복이 있습니다.";
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public static Cars from(List<String> carNames) {
-        return new Cars(carNames.stream()
-                .distinct()
+    public Cars(final List<Car> cars) {
+        validateCarNames(cars);
+        this.cars = cars.stream()
                 .map(Car::new)
-                .collect(toList()));
+                .collect(toUnmodifiableList());
     }
 
-    public void takeTurn() {
+    public Cars copy() {
+        return new Cars(this.cars);
+    }
+
+    private void validateCarNames(final List<Car> cars) {
+        long distinctSize = cars.stream()
+                .distinct()
+                .count();
+        if (distinctSize != cars.size()) throw new IllegalStateException(DUPLICATE_CAR_NAME_MESSAGE);
+    }
+
+    public void takeTurn(Generator generator) {
         for (Car car : cars) {
-            car.progress(generateNumber());
+            car.progress(generator.generate());
         }
     }
 
     public List<String> findWinnerNames() {
         int maxDistance = findMaxCarDistance();
         return cars.stream()
-                .filter(car -> car.isMaxDistance(maxDistance))
+                .filter(car -> car.isSameDistance(maxDistance))
                 .map(Car::getName)
                 .collect(toList());
     }
@@ -43,6 +51,6 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return this.cars;
     }
 }

@@ -7,12 +7,12 @@ public class RacingResult {
     private final List<Cars> racingHistory = new ArrayList<>();
     private List<String> winnerNames = new ArrayList<>();
 
-    public void addResult(Cars cars) {
+    public void addResult(final Cars cars) {
         racingHistory.add(cars);
     }
 
-    public void computeWinner(Cars cars) {
-        winnerNames = cars.findWinnerNames();
+    public void addWinnerNames(final List<String> winnerNames) {
+        this.winnerNames = winnerNames;
     }
 
     public List<Cars> getRacingHistory() {

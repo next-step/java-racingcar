@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 public class InputManager implements Closeable {
     private final static String ROUND_INPUT_STRING = "시도할 회수는 몇회인가요?";
@@ -20,9 +19,9 @@ public class InputManager implements Closeable {
         return Integer.parseInt(bufferedReader.readLine());
     }
 
-    public List<String> readCarNames() throws IOException {
+    public String readCarNames() throws IOException {
         System.out.println(CAR_NAMES_INPUT_STRING);
-        return List.of(bufferedReader.readLine().split(","));
+        return bufferedReader.readLine();
     }
 
     @Override

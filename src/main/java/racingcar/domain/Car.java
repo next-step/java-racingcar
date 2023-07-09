@@ -11,18 +11,28 @@ public class Car {
     private final String name;
     private int distance;
 
-    public Car(String name) {
+    public Car(final String name) {
         validateName(name);
         this.name = name;
     }
 
-    private void validateName(String name) {
+    public Car(final String name, final int distance) {
+        this(name);
+        this.distance = distance;
+    }
+
+    public Car(final Car car) {
+        this.name = car.name;
+        this.distance = car.distance;
+    }
+
+    private void validateName(final String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(MAX_NAME_OVER_MESSAGE);
         }
     }
 
-    public boolean isMaxDistance(int maxDistance) {
+    public boolean isSameDistance(final int maxDistance) {
         return distance == maxDistance;
     }
 
@@ -38,6 +48,12 @@ public class Car {
         distance++;
     }
 
+    public void progress(final int number) {
+        if (number >= MOVE_STANDARD) {
+            forward();
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,11 +65,5 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, distance);
-    }
-
-    public void progress(int number) {
-        if (number >= MOVE_STANDARD) {
-            forward();
-        }
     }
 }

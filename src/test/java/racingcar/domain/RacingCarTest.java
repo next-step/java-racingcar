@@ -43,14 +43,6 @@ public class RacingCarTest {
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
-    @Test
-    @DisplayName("0에서 9 사이의 랜덤한 숫자를 반환한다")
-    void 영에서_9_사이의_랜덤한_숫자를_반환한다() {
-
-        int number = RandomGenerator.generateNumber();
-        assertThat(number).isBetween(0, 9);
-    }
-
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("랜덤 값이 4 이상일 경우 전진한다")
@@ -83,7 +75,7 @@ public class RacingCarTest {
         int maxDistance = 5;
         for (int i = 0; i < maxDistance; i++) itp.progress(moveSignal);
 
-        assertThat(itp.isMaxDistance(maxDistance)).isEqualTo(true);
-        assertThat(pobi.isMaxDistance(maxDistance)).isEqualTo(false);
+        assertThat(itp.isSameDistance(maxDistance)).isEqualTo(true);
+        assertThat(pobi.isSameDistance(maxDistance)).isEqualTo(false);
     }
 }
