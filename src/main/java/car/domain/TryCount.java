@@ -1,8 +1,10 @@
 package car.domain;
 
+import java.util.Objects;
+
 public final class TryCount {
 
-    private int tryCount;
+    private final int tryCount;
 
     public TryCount(final int count) {
         validateNumber(count);
@@ -19,7 +21,31 @@ public final class TryCount {
         return this.tryCount > 0;
     }
 
-    public void decreaseCount() {
-        this.tryCount = this.tryCount - 1;
+    public TryCount decreaseCount() {
+        return new TryCount(this.tryCount-1);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TryCount tryCount1 = (TryCount) o;
+        return tryCount == tryCount1.tryCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tryCount);
+    }
+
+    @Override
+    public String toString() {
+        return "TryCount{" +
+            "tryCount=" + tryCount +
+            '}';
     }
 }
