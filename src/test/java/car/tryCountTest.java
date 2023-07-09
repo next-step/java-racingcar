@@ -3,6 +3,7 @@ package car;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import car.domain.TryCount;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +27,7 @@ public class tryCountTest {
 
     @Test
     @DisplayName("시도 횟수 숫자가 같으면 TryCount 의 횟수도 같다.")
-    void 시도_횟수_같으면_같은_객체 () {
+    void 시도_횟수_같으면_같은_객체() {
         // given
         int count = 5;
         TryCount c1 = new TryCount(count);
@@ -39,7 +40,7 @@ public class tryCountTest {
     @Test
     @DisplayName("isPositive 메소드 정상 동작 확인")
     void isPositive_정상_동작_확인() {
-        assertEquals(new TryCount(1).isPositive(), true);
+        assertTrue(new TryCount(1).isPositive());
     }
 
 
@@ -47,9 +48,9 @@ public class tryCountTest {
     @DisplayName("decrease 메소드 정상 동작 확인")
     void decreseNumber_메소드_정상_동작_확인() {
         int countNum = 2;
-        int decreseNum = countNum-1;
+        int decreaseNum = countNum - 1;
         TryCount count = new TryCount(countNum);
-        TryCount anotherCount = new TryCount(decreseNum);
+        TryCount anotherCount = new TryCount(decreaseNum);
 
         count = count.decreaseCount();
 

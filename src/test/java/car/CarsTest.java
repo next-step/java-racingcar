@@ -15,7 +15,7 @@ public class CarsTest {
     @Test
     @DisplayName("우승자를 구한다.")
     void 우승자_구하기() {
-        Cars cars = new Cars(new CarNames("hello,jonga"));
+        Cars cars = new Cars(new CarNames("hello, jonga"));
         int carMaxPosition = cars.getCars().stream()
             .mapToInt(Car::getPosition)
             .max()

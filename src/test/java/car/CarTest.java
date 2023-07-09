@@ -51,7 +51,7 @@ public class CarTest {
         final int CAR_STOP = 0;
         Car car = new Car("hello", 0);
 
-        car.move(carSpeed);
+        car = car.move(carSpeed);
 
         assertTrue(car.isSamePosition(CAR_STOP));
     }

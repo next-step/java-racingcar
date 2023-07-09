@@ -15,10 +15,6 @@ public final class Car {
         this.position = position;
     }
 
-    public Car(final CarName carName) {
-        this(carName, 0);
-    }
-
     public Car(final String carName) {
         this(carName, 0);
     }

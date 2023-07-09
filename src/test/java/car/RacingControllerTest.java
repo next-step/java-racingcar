@@ -61,7 +61,7 @@ public class RacingControllerTest {
 
     @Test
     @DisplayName("winner 복수 찾기")
-    void 우승자_여러명_찾는_메서드 () {
+    void 우승자_여러명_찾는_메서드() {
         // given
         List<Car> cars = List.of(new Car("he1", 1),
             new Car("he2", 3),
