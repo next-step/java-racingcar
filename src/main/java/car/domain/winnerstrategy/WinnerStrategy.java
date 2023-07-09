@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface WinnerStrategy {
 
-    List<Car> getWinners(List<Car> cars);
+    List<Car> selectWinners(List<Car> cars);
 }

@@ -1,39 +1,34 @@
 package car.domain;
 
 import car.domain.winnerstrategy.WinnerStrategy;
-import car.ui.CarFormatter;
-import java.util.Arrays;
+import utils.random.RandomGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
-import utils.random.RandomGenerator;
 
 public class Cars {
 
-    private List<Car> list;
+    private final List<Car> list;
 
-    public Cars(String names) {
-        list = Arrays.stream(split(names))
-            .map(Car::new)
-            .collect(Collectors.toList());
+    public Cars(final List<String> names) {
+        list = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toUnmodifiableList());
     }
 
-    private String[] split(String names) {
-        return names.split(",");
-    }
-
-
-    public void move() {
+    public void move(RandomGenerator randomGenerator) {
         for (Car car : list) {
-            car.move(RandomGenerator.extractRandomSingleDigit());
+            car.move(randomGenerator.extractRandomSingleDigit());
         }
     }
 
-    public void print(CarFormatter formatter) {
-        list.forEach(car -> System.out.println(formatter.format(car)));
-        System.out.println();
+    public List<String> format(final CarFormatter formatter) {
+        return list.stream()
+                .map(formatter::format)
+                .collect(Collectors.toList());
     }
 
-    public List<Car> getWinners(WinnerStrategy winnerStrategy) {
-        return winnerStrategy.getWinners(list);
+    public List<Car> selectWinners(final WinnerStrategy winnerStrategy) {
+        return winnerStrategy.selectWinners(list);
     }
 }

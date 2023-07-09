@@ -4,29 +4,34 @@ public class Car {
 
     private static final int MOVE_THRESHOLD = 4;
     private static final int MOVE_STEP = 1;
-    private int position;
-    private Name name;
 
-    public Car(String name) {
+    private int position;
+    private final Name name;
+
+    public Car(final String name) {
         this(0, name);
     }
 
-    public Car(int position, String name) {
+    public Car(final int position, final String name) {
         this.position = position;
         this.name = new Name(name);
     }
 
-    public void move(int value) {
+    public void move(final int value) {
         if (value >= MOVE_THRESHOLD) {
             position += MOVE_STEP;
         }
     }
 
-    public String getNameValue() {
-        return name.getValue();
+    public Name getName() {
+        return name;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean positionIsEqualTo(final int otherPosition) {
+        return this.position == otherPosition;
     }
 }

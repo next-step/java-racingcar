@@ -7,14 +7,18 @@ import java.util.stream.Collectors;
 public class MaxPositionDuplicateWinnerStrategy implements WinnerStrategy {
 
     @Override
-    public List<Car> getWinners(List<Car> cars) {
-        int maxPosition = cars.stream()
+    public List<Car> selectWinners(final List<Car> cars) {
+        int maxPosition = calculateMaxPosition(cars);
+
+        return cars.stream()
+            .filter(car -> car.positionIsEqualTo(maxPosition))
+            .collect(Collectors.toList());
+    }
+
+    private static int calculateMaxPosition(final List<Car> cars) {
+        return cars.stream()
             .mapToInt(Car::getPosition)
             .max()
             .orElseThrow(() -> new IllegalArgumentException("자동차 리스트는 비어있을 수 없습니다."));
-
-        return cars.stream()
-            .filter(car -> car.getPosition() == maxPosition)
-            .collect(Collectors.toList());
     }
 }

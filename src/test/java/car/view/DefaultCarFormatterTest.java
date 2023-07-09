@@ -1,4 +1,4 @@
-package car.ui;
+package car.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,13 +8,12 @@ import org.junit.jupiter.api.Test;
 
 class DefaultCarFormatterTest {
 
+    final DefaultCarFormatter formatter = new DefaultCarFormatter();
 
     @Test
     @DisplayName("Car 객체를 받아서 자동차 이름과 주행 거리를 표시한다.")
-    void test1() {
+    void format() {
         Car car = new Car(5, "pobi");
-        CarFormatter formatter = new DefaultCarFormatter();
-
         assertThat(formatter.format(car)).isEqualTo("pobi : -----");
     }
 }
