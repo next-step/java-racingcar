@@ -12,7 +12,7 @@ public final class Calculator {
         // 2. Positive - 숫자를 Positive 객체 리스트로 리턴
         List<Positive> positiveNumbers = Integers.stream()
             .map(Positive::new)
-            .collect(Collectors.toList());
+            .collect(Collectors.toUnmodifiableList());
 
         // 3. Calculator - 숫자들의 합을 반환
         return positiveNumbers.stream()

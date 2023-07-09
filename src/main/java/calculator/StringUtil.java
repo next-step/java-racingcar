@@ -13,7 +13,7 @@ public final class StringUtil {
     public static List<Integer> convertTextToIntegers(String text) {
         return Arrays.stream(split(text))
             .map(StringUtil::toInteger)
-            .collect(Collectors.toList());
+            .collect(Collectors.toUnmodifiableList());
     }
 
     private static String[] split(String text) {

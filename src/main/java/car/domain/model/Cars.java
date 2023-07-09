@@ -2,7 +2,6 @@ package car.domain.model;
 
 import car.utils.RandomNumberGenerator;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +13,7 @@ public final class Cars {
     public Cars(final String inputCarNames) {
         cars = Arrays.stream(inputCarNames.split(REGEX_CAR_NAME))
             .map(Car::new)
-            .collect(Collectors.toList());
+            .collect(Collectors.toUnmodifiableList());
     }
 
     public void raceOnce() {
@@ -34,7 +33,7 @@ public final class Cars {
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return cars;
     }
 
 }

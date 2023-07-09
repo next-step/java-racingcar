@@ -4,6 +4,7 @@ import car.domain.model.Car;
 import car.domain.model.Cars;
 import car.domain.model.Count;
 import car.view.OutputView;
+import java.util.Collections;
 import java.util.List;
 
 public final class RacingService {
@@ -44,7 +45,7 @@ public final class RacingService {
     }
 
     public List<Car> selectWinner() {
-        return cars.getWinnerCars();
+        return Collections.unmodifiableList(cars.getWinnerCars());
     }
 
 }
