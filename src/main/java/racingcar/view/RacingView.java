@@ -2,26 +2,23 @@ package racingcar.view;
 
 import racingcar.domain.CarRecord;
 import racingcar.domain.RacingManager;
+import racingcar.domain.RacingRecord;
 import racingcar.domain.RacingRoundRecord;
+
+import java.util.List;
 
 public class RacingView {
 
     private static final int DEFAULT_DISTANCE_COUNT = 1;
 
-    private final RacingManager racingManager;
-
-    public RacingView(RacingManager racingManager) {
-        this.racingManager = racingManager;
-    }
-
-    public void printResult() {
+    public void printResult(RacingManager racingManager) {
         System.out.println("실행 결과");
-        printRecords();
-        printWinners();
+        printRecords(racingManager.getRacingRecord());
+        printWinners(racingManager.getWinnerCarNames());
     }
 
-    private void printRecords() {
-        for (RacingRoundRecord racingRoundRecord : racingManager.getRacingRecord().getRacingRoundRecords()) {
+    private void printRecords(RacingRecord racingRecord) {
+        for (RacingRoundRecord racingRoundRecord : racingRecord.getRacingRoundRecords()) {
             printCarRecord(racingRoundRecord);
             System.out.println();
         }
@@ -33,7 +30,7 @@ public class RacingView {
         }
     }
 
-    private void printWinners() {
-        System.out.println(String.join(",", racingManager.getWinnerCarNames()) + "가 최종 우승했습니다.");
+    private void printWinners(List<String> winnerCarNames) {
+        System.out.println(String.join(",", winnerCarNames) + "가 최종 우승했습니다.");
     }
 }

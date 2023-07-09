@@ -10,9 +10,9 @@ public class GameController {
 
     public static void playGame() {
         RacingManager racingManager = getRacingManagerByInput();
-        RacingView racingViewManager = new RacingView(racingManager);
+        RacingView racingViewManager = new RacingView();
         racingManager.playRacing(new RandomMovable());
-        racingViewManager.printResult();
+        racingViewManager.printResult(racingManager);
     }
 
     private static RacingManager getRacingManagerByInput() {
