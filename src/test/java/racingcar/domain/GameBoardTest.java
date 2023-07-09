@@ -16,7 +16,7 @@ public class GameBoardTest {
                 new Car(new CarName("honux"), new Position(5)),
                 new Car(new CarName("zzuni"), new Position(5))
         );
-        GameBoard gameBoard = new GameBoard(cars);
+        GameBoard gameBoard = new GameBoard(cars, new TryCount(1), () -> true);
 
         List<String> winners = gameBoard.getWinnerNames().getNames();
         Assertions.assertThat(winners).contains("honux", "zzuni");
