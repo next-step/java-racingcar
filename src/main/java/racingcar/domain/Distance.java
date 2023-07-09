@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Distance {
 
+    public static final int ZERO_DISTANCE = 0;
+    
     private int distance;
 
     public Distance(int distance) {
@@ -11,7 +13,7 @@ public class Distance {
     }
 
     public Distance() {
-        this(0);
+        this(ZERO_DISTANCE);
     }
 
     public void increase() {
