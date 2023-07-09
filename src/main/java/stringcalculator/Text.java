@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class Text {
 
-    private final String BASIC_DELIMITER = ":|,";
-    private final String CUSTOM_REGEX = "^//(.)\n(.*)";
+    private static final String BASIC_DELIMITER = ":|,";
+    private static final String CUSTOM_REGEX = "^//(.)\n(.*)";
     private final String text;
 
     public Text(String text) {

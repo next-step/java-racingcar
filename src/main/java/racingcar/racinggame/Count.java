@@ -3,7 +3,8 @@ package racingcar.racinggame;
 import java.util.Objects;
 
 public class Count {
-    private final String NUMBER_PATTERN = "^[0-9]+$";
+    private static final String NUMBER_PATTERN = "^[0-9]+$";
+    private static final int MIN_COUNT = 0;
     private int count;
 
     public Count(final String value) {
@@ -22,7 +23,7 @@ public class Count {
     }
 
     public boolean isRunning() {
-        return count > 0;
+        return count > MIN_COUNT;
     }
 
     public void run() {

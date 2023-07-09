@@ -3,6 +3,9 @@ package racingcar.domain.Car;
 import java.util.Objects;
 
 public class Score {
+
+    private static final int SCORE_INCREMENT = 1;
+    private static final int MIN_SCORE = 0;
     private final int score;
 
     public Score(final int score) {
@@ -11,7 +14,7 @@ public class Score {
     }
 
     private void validate(final int score) {
-        if (score < 0) {
+        if (score < MIN_SCORE) {
             throw new RuntimeException("score는 음수가 될 수 없습니다");
         }
     }
@@ -21,7 +24,7 @@ public class Score {
     }
 
     public Score increase() {
-        return new Score(score + 1);
+        return new Score(score + SCORE_INCREMENT);
     }
 
     public boolean isSameScore(final int maxScore) {

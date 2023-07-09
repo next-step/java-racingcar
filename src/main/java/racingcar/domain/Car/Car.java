@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
     private static final int INITIAL_SCORE = 0;
-    private final int MIN_MOVE_NUMBER = 4;
+    private static final int MIN_MOVE_NUMBER = 4;
     private final Name name;
     private final Score score;
 

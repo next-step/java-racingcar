@@ -3,8 +3,8 @@ package racingcar.domain.Car;
 import java.util.Objects;
 
 public class Name {
-    private final int MAX_NAME_LENGTH = 5;
-    private final int MIN_NAME_LENGTH = 1;
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_NAME_LENGTH = 1;
     private final String name;
 
     public Name(final String value) {
