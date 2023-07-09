@@ -1,11 +1,10 @@
-package racingcar.io;
+package racingcar.view;
 
-import racingcar.car.CarResponse;
-import racingcar.car.Cars;
+import racingcar.domain.CarNames;
+import racingcar.domain.CarResponse;
+import racingcar.domain.Cars;
 
-import java.util.List;
-
-public class Output {
+public class OutputView {
 
     public static void printInitialStatus(Cars cars) {
         System.out.println("실행 결과");
@@ -15,7 +14,7 @@ public class Output {
     public static void printExecutionResult(Cars cars) {
         cars.getCars()
                 .stream()
-                .map(Output::formatResult)
+                .map(OutputView::formatResult)
                 .forEach(System.out::println);
         System.out.println();
     }
@@ -24,7 +23,7 @@ public class Output {
         return c.getName() + " : " + "-".repeat(c.getPosition());
     }
 
-    public static void printWinner(List<String> winnerNames) {
-        System.out.println(String.join(", ", winnerNames) + "가 최종우승했습니다.");
+    public static void printWinner(CarNames carNames) {
+        System.out.println(String.join(", ", carNames.getNames()) + "가 최종우승했습니다.");
     }
 }

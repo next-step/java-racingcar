@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.exception.CarNameInputException;
