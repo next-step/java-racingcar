@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class CarResponse {
 
     private final String name;
@@ -20,5 +22,18 @@ public class CarResponse {
 
     public int getPosition() {
         return this.position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarResponse that = (CarResponse) o;
+        return position == that.position && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
