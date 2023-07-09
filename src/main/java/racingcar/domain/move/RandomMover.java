@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class RandomMover implements Moveable {
 
-    private static RandomMover randomMover = null;
     public static final int DEFAULT_LEFT = 0;
     public static final int DEFAULT_RIGHT = 9;
     public static final int DEFAULT_MOVE_RULE = 3;
+    private static RandomMover randomMover = null;
     private final int left;
     private final int right;
     private final int moveRule;

@@ -127,4 +127,42 @@ class CarTest {
         }
     }
 
+    @Nested
+    @DisplayName("isWinner 메서드는")
+    class DescribeIsWinnerMethod {
+
+        private final Moveable mover = () -> true;
+        private final String normalInput = "123";
+
+        @Nested
+        @DisplayName("현재 자동차의 position과 파라미터로 넘어온 winnerPosition의 값이 같다면,")
+        class ContextIsWinner {
+
+            private final Car car = new Car(normalInput, mover);
+            private final int winnerPosition = 1;
+
+            @Test
+            @DisplayName("true 값을 반환한다.")
+            void ItReturnTrue() {
+                assertThat(car.isWinner(winnerPosition)).isTrue();
+            }
+
+        }
+
+        @Nested
+        @DisplayName("현재 자동차의 position보다 파라미터로 넘어온 winnerPosition의 값이 크다면,")
+        class ContextIsNotWinner {
+
+            private final Car car = new Car(normalInput, mover);
+            private final int winnerPosition = 3;
+
+            @Test
+            @DisplayName("false를 반환한다.")
+            void ItReturnFalse() {
+                assertThat(car.isWinner(winnerPosition)).isFalse();
+            }
+
+        }
+    }
+
 }

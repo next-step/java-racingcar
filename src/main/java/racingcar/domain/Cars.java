@@ -1,15 +1,16 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class RacingGame {
+public class Cars {
 
     private final List<Car> cars;
 
-    public RacingGame(List<Car> cars) {
+    public Cars(List<Car> cars) {
         assertDuplicateCarName(cars);
         this.cars = cars;
     }
@@ -29,12 +30,12 @@ public class RacingGame {
     }
 
     public List<Car> getRoundResult() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public List<Car> playOneRound() {
         moveCars();
-        return this.cars;
+        return Collections.unmodifiableList(cars);
     }
 
     private void moveCars() {

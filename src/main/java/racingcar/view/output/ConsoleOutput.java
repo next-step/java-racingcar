@@ -1,10 +1,11 @@
-package racingcar.view;
+package racingcar.view.output;
 
-import java.util.List;
 import racingcar.controller.response.RacingGamePlayControllerResponse;
 import racingcar.controller.response.RacingGamePlayControllerResponse.RacingGamePlayControllerRoundResponse;
 
-public class ConsoleView {
+import java.util.List;
+
+public class ConsoleOutput {
 
     private final StringBuffer stringBuffer = new StringBuffer();
     private static final String DISTANCE_EXPRESSION = "-";

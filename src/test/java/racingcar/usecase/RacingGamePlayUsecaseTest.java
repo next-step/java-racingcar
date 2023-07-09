@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.RacingGame;
+import racingcar.domain.Cars;
 import racingcar.domain.move.Moveable;
 import racingcar.usecase.request.RacingGamePlayRequest;
 import racingcar.usecase.request.RacingGamePlayRequest.CarRequest;
@@ -47,14 +47,14 @@ class RacingGamePlayUsecaseTest {
             }
 
             private RacingGamePlayResponse getExpectedResult() {
-                List<Car> cars = getCars();
-                RacingGame racingGame = new RacingGame(cars);
+                List<Car> initCar = getCars();
+                Cars cars = new Cars(initCar);
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
 
-                racingGamePlayResponse.addRacingGameRoundResponse(0, cars);
-                racingGame.playOneRound();
-                racingGamePlayResponse.addRacingGameRoundResponse(1, racingGame.getRoundResult());
-                racingGamePlayResponse.setWinner(racingGame.getWinners());
+                racingGamePlayResponse.addRacingGameRoundResponse(0, initCar);
+                cars.playOneRound();
+                racingGamePlayResponse.addRacingGameRoundResponse(1, cars.getRoundResult());
+                racingGamePlayResponse.setWinner(cars.getWinners());
                 return racingGamePlayResponse;
             }
 
@@ -76,15 +76,15 @@ class RacingGamePlayUsecaseTest {
             }
 
             private RacingGamePlayResponse getExpectedResult() {
-                List<Car> cars = getCars();
-                RacingGame racingGame = new RacingGame(cars);
+                List<Car> initCar = getCars();
+                Cars cars = new Cars(initCar);
                 RacingGamePlayResponse racingGamePlayResponse = new RacingGamePlayResponse();
-                racingGamePlayResponse.addRacingGameRoundResponse(0, cars);
+                racingGamePlayResponse.addRacingGameRoundResponse(0, initCar);
                 for (int round = 1; round < 4; round++) {
-                    racingGame.playOneRound();
-                    racingGamePlayResponse.addRacingGameRoundResponse(round, racingGame.getRoundResult());
+                    cars.playOneRound();
+                    racingGamePlayResponse.addRacingGameRoundResponse(round, cars.getRoundResult());
                 }
-                racingGamePlayResponse.setWinner(racingGame.getWinners());
+                racingGamePlayResponse.setWinner(cars.getWinners());
                 return racingGamePlayResponse;
             }
 

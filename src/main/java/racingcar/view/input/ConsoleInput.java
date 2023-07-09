@@ -1,9 +1,10 @@
-package racingcar.input;
+package racingcar.view.input;
+
+import racingcar.controller.request.RacingGamePlayControllerRequest;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import racingcar.controller.request.RacingGamePlayControllerRequest;
 
 public class ConsoleInput {
 
