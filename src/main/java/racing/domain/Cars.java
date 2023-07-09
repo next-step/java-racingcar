@@ -1,4 +1,4 @@
-package racing.model;
+package racing.domain;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;

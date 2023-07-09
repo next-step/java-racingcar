@@ -1,9 +1,9 @@
 package racing.controller;
 
-import racing.factory.CarFactory;
-import racing.io.Viewer;
-import racing.model.Cars;
-import racing.model.GameInfo;
+import racing.domain.CarFactory;
+import racing.viewer.Viewer;
+import racing.domain.Cars;
+import racing.domain.GameInfo;
 
 public class GameController {
 

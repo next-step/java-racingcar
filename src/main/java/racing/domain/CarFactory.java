@@ -1,10 +1,9 @@
-package racing.factory;
+package racing.domain;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.model.Car;
 
 public class CarFactory {
 

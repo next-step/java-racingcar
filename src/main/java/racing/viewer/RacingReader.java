@@ -1,11 +1,11 @@
-package racing.io;
+package racing.viewer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
-import racing.model.GameInfo;
-import racing.model.RaceCount;
+import racing.domain.GameInfo;
+import racing.domain.RaceCount;
 
 public class RacingReader {
 

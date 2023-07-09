@@ -1,9 +1,9 @@
-package racing.io;
+package racing.viewer;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.model.GameInfo;
+import racing.domain.GameInfo;
 
 import java.io.ByteArrayInputStream;
 

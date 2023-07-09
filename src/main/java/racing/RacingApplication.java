@@ -1,10 +1,10 @@
 package racing;
 
 import racing.controller.GameController;
-import racing.factory.CarFactory;
-import racing.io.RacingReader;
-import racing.io.Viewer;
-import racing.model.GameInfo;
+import racing.domain.CarFactory;
+import racing.viewer.RacingReader;
+import racing.viewer.Viewer;
+import racing.domain.GameInfo;
 
 public class RacingApplication {
 

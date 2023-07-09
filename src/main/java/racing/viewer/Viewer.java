@@ -1,7 +1,7 @@
-package racing.io;
+package racing.viewer;
 
 import java.util.List;
-import racing.model.Cars;
+import racing.domain.Cars;
 
 public class Viewer {
 
