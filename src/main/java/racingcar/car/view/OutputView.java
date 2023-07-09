@@ -9,7 +9,6 @@ public final class OutputView {
     public static final String CAR_STATUS_UNIT = "-";
     public static final String CAR_NAME_STATUS_DELIMITER = " : ";
     public static final String CAR_WINNER_JOIN_DELIMITER = ", ";
-    public static final String LINE_BREAKER = System.lineSeparator();
 
     private OutputView() {
     }
@@ -21,7 +20,7 @@ public final class OutputView {
 
     public static void printStatus(List<Car> carState) {
         carState.forEach(state -> System.out.println(formatCar(state)));
-        System.out.print(LINE_BREAKER);
+        System.out.println();
     }
 
     private static String formatCarWinners(final List<Car> winners) {
