@@ -6,7 +6,7 @@ public class RandomNumberGenerator implements NumberGenerator {
 
     private static final int NUMBER_LIMIT = 10;
 
-    public int createCarSpeed() {
+    public int createNumber() {
         return new Random().nextInt(NUMBER_LIMIT);
     }
 }

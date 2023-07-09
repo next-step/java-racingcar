@@ -1,6 +1,5 @@
 package car.util;
 
 public interface NumberGenerator {
-
-    int createCarSpeed();
+    int createNumber();
 }
