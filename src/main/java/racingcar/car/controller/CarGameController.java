@@ -6,11 +6,11 @@ import racingcar.car.domain.RandomMoveStrategy;
 import racingcar.car.view.InputView;
 import racingcar.car.view.OutputView;
 
-public class CarGameManager {
+public class CarGameController {
 
     private final MoveStrategy moveStrategy;
 
-    public CarGameManager() {
+    public CarGameController() {
         this.moveStrategy = new RandomMoveStrategy();
     }
 
