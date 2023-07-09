@@ -1,15 +1,15 @@
 package racingcar.domain.racinggame;
 
 import racingcar.domain.Car.Cars;
-import racingcar.dto.Result;
-import racingcar.dto.Winner;
+import racingcar.dto.Results;
+import racingcar.dto.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    private final List<List<Result>> eachResults = new ArrayList<>();
+    private final List<Results> totalResult = new ArrayList<>();
     private final Cars cars;
     private final Count count;
 
@@ -21,20 +21,20 @@ public class RacingGame {
     public void play() {
         while (count.isRunning()) {
             cars.move();
-            eachResults.add(getResult());
+            totalResult.add(getResults());
             count.decrease();
         }
     }
 
-    public List<List<Result>> getEachResults() {
-        return eachResults;
+    public List<Results> getTotalResult() {
+        return List.copyOf(totalResult);
     }
 
-    public List<Result> getResult() {
+    public Results getResults() {
         return cars.findAll();
     }
 
-    public List<Winner> getWinners() {
+    public Winners getWinners() {
         return cars.findWinners();
     }
 }

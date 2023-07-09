@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.dto.Result;
-import racingcar.dto.Winner;
+import racingcar.dto.Results;
+import racingcar.dto.Winners;
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ public interface RacingCarView {
 
     void printCountPrompt();
 
-    void printResults(List<List<Result>> results);
+    void printResults(List<Results> totalResult);
 
-    void printResult(List<Result> result);
+    void printResult(Results results);
 
-    void printWinners(List<Winner> winners);
+    void printWinners(Winners winners);
 
     String read();
 }

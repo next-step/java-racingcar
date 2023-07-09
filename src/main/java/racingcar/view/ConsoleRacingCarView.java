@@ -1,7 +1,8 @@
 package racingcar.view;
 
-import racingcar.dto.Result;
+import racingcar.dto.Results;
 import racingcar.dto.Winner;
+import racingcar.dto.Winners;
 
 import java.util.List;
 import java.util.Scanner;
@@ -29,24 +30,24 @@ public class ConsoleRacingCarView implements RacingCarView {
     }
 
     @Override
-    public void printResults(List<List<Result>> results) {
+    public void printResults(List<Results> totalResult) {
         System.out.println(PLAY_RESULT);
-        for (List<Result> result : results) {
-            printResult(result);
+        for (Results results : totalResult) {
+            printResult(results);
         }
     }
 
     @Override
-    public void printResult(List<Result> result) {
-        String output = result.stream()
+    public void printResult(Results results) {
+        String output = results.get().stream()
                 .map(car -> car.getName() + RESULT_DELIMITER + SCORE_SYMBOL.repeat(car.getScore()))
                 .collect(Collectors.joining(System.lineSeparator()));
         System.out.println(output + "\n");
     }
 
     @Override
-    public void printWinners(List<Winner> winners) {
-        String output = winners.stream()
+    public void printWinners(Winners winners) {
+        String output = winners.get().stream()
                 .map(Winner::getName)
                 .collect(Collectors.joining(JOIN_DELIMITER));
 

@@ -21,8 +21,8 @@ public class RacingGameController {
     }
 
     private void printResult(final RacingGame racingGame) {
-        view.printResults(racingGame.getEachResults());
-        view.printResult(racingGame.getResult());
+        view.printResults(racingGame.getTotalResult());
+        view.printResult(racingGame.getResults());
         view.printWinners(racingGame.getWinners());
     }
 

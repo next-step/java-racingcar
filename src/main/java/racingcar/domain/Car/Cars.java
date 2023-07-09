@@ -1,7 +1,9 @@
 package racingcar.domain.Car;
 
 import racingcar.dto.Result;
+import racingcar.dto.Results;
 import racingcar.dto.Winner;
+import racingcar.dto.Winners;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,12 +34,13 @@ public class Cars {
         return (int) (Math.random() * 10000) % 10;
     }
 
-    public List<Winner> findWinners() {
+    public Winners findWinners() {
         int maxScore = getMaxScore();
-        return cars.stream()
+        List<Winner> winners = cars.stream()
                 .filter(car -> car.isSameScore(maxScore))
                 .map(car -> new Winner(car.getName()))
                 .collect(Collectors.toList());
+        return new Winners(winners);
     }
 
     private int getMaxScore() {
@@ -47,9 +50,10 @@ public class Cars {
                 .orElse(0);
     }
 
-    public List<Result> findAll() {
-        return cars.stream()
+    public Results findAll() {
+        List<Result> results = cars.stream()
                 .map(car -> new Result(car.getName(), car.getScore()))
                 .collect(Collectors.toList());
+        return new Results(results);
     }
 }
