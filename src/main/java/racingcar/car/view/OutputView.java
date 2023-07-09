@@ -9,7 +9,7 @@ public final class OutputView {
     public static final String CAR_STATUS_UNIT = "-";
     public static final String CAR_NAME_STATUS_DELIMITER = " : ";
     public static final String CAR_WINNER_JOIN_DELIMITER = ", ";
-    public static final char LINE_BREAKER = '\n';
+    public static final String LINE_BREAKER = System.lineSeparator();
 
     private OutputView() {
     }
