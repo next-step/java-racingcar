@@ -35,7 +35,7 @@ public class Cars {
                 .collect(toList());
     }
 
-    public RacingRoundRecord getRecord() {
+    public RacingRoundRecord getRacingRoundRecord() {
         return RacingRoundRecord.from(cars);
     }
 

@@ -10,7 +10,7 @@ public class RacingManager {
     public RacingManager(Cars cars, int round) {
         this.cars = cars;
         this.round = round;
-        this.racingRecord = new RacingRecord(cars.getRecord());
+        this.racingRecord = new RacingRecord(cars.getRacingRoundRecord());
     }
 
     public static RacingManager of(List<String> carNames, int round) {
@@ -20,7 +20,7 @@ public class RacingManager {
     public void playRacing() {
         for (int i = 0; i < round; i++) {
             cars.takeTurn();
-            racingRecord.add(cars.getRecord());
+            racingRecord.add(cars.getRacingRoundRecord());
         }
     }
 
