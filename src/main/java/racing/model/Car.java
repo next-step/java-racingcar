@@ -14,7 +14,7 @@ public class Car {
     }
 
     public boolean isPositionValue(int positionValue) {
-        return this.position.isValue(positionValue);
+        return this.position.isSamePosition(positionValue);
     }
 
     public int getPosition() {

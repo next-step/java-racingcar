@@ -32,9 +32,15 @@ class PositionTest {
         assertThat(position).isEqualTo(new Position(2));
     }
 
-    @DisplayName("isValue 테스트")
+    @DisplayName("isSamePosition 테스트")
     @Test
-    void isValueTest() {
-        assertThat(new Position(1).isValue(1)).isTrue();
+    void isSamePositionTrueTest() {
+        assertThat(new Position(1).isSamePosition(1)).isTrue();
+    }
+
+    @DisplayName("isSamePosition 테스트")
+    @Test
+    void isSamePositionFalseTest() {
+        assertThat(new Position(1).isSamePosition(2)).isFalse();
     }
 }

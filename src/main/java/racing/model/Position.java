@@ -28,7 +28,7 @@ public final class Position {
         return new Position(this.value + 1);
     }
 
-    public boolean isValue(int value) {
+    public boolean isSamePosition(int value) {
         return this.value == value;
     }
 
