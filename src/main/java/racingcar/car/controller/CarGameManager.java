@@ -1,40 +1,34 @@
 package racingcar.car.controller;
 
-import java.util.List;
-import racingcar.car.domain.Car;
 import racingcar.car.domain.Cars;
 import racingcar.car.domain.MoveStrategy;
 import racingcar.car.domain.RandomMoveStrategy;
+import racingcar.car.view.InputView;
+import racingcar.car.view.OutputView;
 
 public class CarGameManager {
 
-    private int playCount;
-    private final Cars cars;
     private final MoveStrategy moveStrategy;
 
-    public CarGameManager(String[] carNames, int playCount) {
-        this.cars = new Cars(carNames);
-        this.playCount = playCount;
+    public CarGameManager() {
         this.moveStrategy = new RandomMoveStrategy();
     }
 
-    public void race() {
-        if (!isRunning()) {
-            throw new IllegalStateException("이미 종료된 게임입니다.");
+    public void start() {
+        final Cars cars = new Cars(InputView.getCarNames());
+        final int playCount = InputView.getPlayCount();
+        race(cars, playCount);
+        printResult(cars);
+    }
+
+    private void race(Cars cars, int playCount) {
+        for (int i = 0; i < playCount; i++) {
+            cars.move(moveStrategy);
+            OutputView.printStatus(cars.getCars());
         }
-        playCount--;
-        cars.move(moveStrategy);
     }
 
-    public boolean isRunning() {
-        return playCount > 0;
-    }
-
-    public List<Car> getMiddleState() {
-        return cars.getCars();
-    }
-
-    public List<Car> getResult() {
-        return cars.getWinners();
+    private void printResult(Cars cars) {
+        OutputView.printResult(cars.getWinners());
     }
 }
