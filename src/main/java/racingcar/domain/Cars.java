@@ -3,23 +3,18 @@ package racingcar.domain;
 import racingcar.util.MathUtil;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final int RANDOM_BOUND = 10;
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void move() {
-        cars.forEach(c -> {
-            Random random = new Random();
-            c.move(random.nextInt(RANDOM_BOUND));
-        });
+    public void move(MovingStrategy movingStrategy) {
+        cars.forEach(c -> c.move(movingStrategy));
     }
 
     public CarNames getWinnerNames() {

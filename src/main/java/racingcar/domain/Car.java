@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final int MOVE_THRESHOLD = 4;
+    static final int MOVE_THRESHOLD = 4;
     private final CarName name;
     private Position position;
 
@@ -17,14 +17,10 @@ public class Car {
         this.position = position;
     }
 
-    public void move(int power) {
-        if (canMove(power)) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) {
             updatePosition(this.position.increaseValue());
         }
-    }
-
-    private boolean canMove(int value) {
-        return value >= MOVE_THRESHOLD;
     }
 
     private void updatePosition(Position position) {
