@@ -24,8 +24,8 @@ public class Car {
         return new Car(name, score.increase());
     }
 
-    public boolean isSameScore(final int maxScore) {
-        return score.isSameScore(maxScore);
+    public boolean isSameScore(final int score) {
+        return this.score.isSameScore(score);
     }
 
     public String getName() {

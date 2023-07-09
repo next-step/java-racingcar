@@ -1,4 +1,4 @@
-package racingcar.racinggame;
+package racingcar.domain.racinggame;
 
 import racingcar.domain.Car.Cars;
 import racingcar.dto.Result;
@@ -22,7 +22,7 @@ public class RacingGame {
         while (count.isRunning()) {
             cars.move();
             eachResults.add(getResult());
-            count.run();
+            count.decrease();
         }
     }
 

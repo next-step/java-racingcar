@@ -1,4 +1,4 @@
-package racingcar.racinggame;
+package racingcar.domain.racinggame;
 
 import java.util.Objects;
 
@@ -26,7 +26,7 @@ public class Count {
         return count > MIN_COUNT;
     }
 
-    public void run() {
+    public void decrease() {
         count--;
     }
 

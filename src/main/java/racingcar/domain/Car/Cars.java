@@ -13,7 +13,7 @@ public class Cars {
 
     public Cars(final String value) {
         CarNames carNames = new CarNames(value);
-        this.cars = generateCars(carNames.parse());
+        this.cars = generateCars(carNames.getParsed());
     }
 
     private List<Car> generateCars(final String[] carNames) {

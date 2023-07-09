@@ -8,7 +8,7 @@ import racingcar.domain.Car.Car;
 import racingcar.domain.Car.Cars;
 import racingcar.domain.Car.Name;
 import racingcar.domain.Car.Score;
-import racingcar.racinggame.RacingGame;
+import racingcar.domain.racinggame.RacingGame;
 
 import static org.assertj.core.api.Assertions.*;
 

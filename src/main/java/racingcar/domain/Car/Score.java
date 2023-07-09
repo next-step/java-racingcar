@@ -27,8 +27,8 @@ public class Score {
         return new Score(score + SCORE_INCREMENT);
     }
 
-    public boolean isSameScore(final int maxScore) {
-        return score == maxScore;
+    public boolean isSameScore(final int score) {
+        return this.score == score;
     }
 
     @Override
