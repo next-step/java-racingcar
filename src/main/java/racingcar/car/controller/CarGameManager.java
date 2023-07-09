@@ -1,6 +1,10 @@
-package racingcar.car.domain;
+package racingcar.car.controller;
 
 import java.util.List;
+import racingcar.car.domain.Car;
+import racingcar.car.domain.Cars;
+import racingcar.car.domain.MoveStrategy;
+import racingcar.car.domain.RandomMoveStrategy;
 
 public class CarGameManager {
 
