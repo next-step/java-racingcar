@@ -21,7 +21,7 @@ public class Cars {
                 .filter(c -> c.isWinner(winnerPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList()));
-    }정
+    }
 
     private Position getMaxPosition() {
         return cars.stream()
