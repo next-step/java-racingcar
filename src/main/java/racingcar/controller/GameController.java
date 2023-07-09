@@ -1,15 +1,15 @@
 package racingcar.controller;
 
-import racingcar.view.RacingViewManager;
+import racingcar.view.RacingView;
 import racingcar.domain.RacingManager;
 
 import java.io.IOException;
 
-public class GameManager {
+public class GameController {
 
     public static void playGame() {
         RacingManager racingManager = getRacingManagerByInput();
-        RacingViewManager racingViewManager = new RacingViewManager(racingManager);
+        RacingView racingViewManager = new RacingView(racingManager);
         racingManager.playRacing();
         racingViewManager.printResult();
     }

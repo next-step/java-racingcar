@@ -4,13 +4,13 @@ import racingcar.domain.CarRecord;
 import racingcar.domain.RacingManager;
 import racingcar.domain.RacingRoundRecord;
 
-public class RacingViewManager {
+public class RacingView {
 
     private static final int DEFAULT_DISTANCE_COUNT = 1;
 
     private final RacingManager racingManager;
 
-    public RacingViewManager(RacingManager racingManager) {
+    public RacingView(RacingManager racingManager) {
         this.racingManager = racingManager;
     }
 
