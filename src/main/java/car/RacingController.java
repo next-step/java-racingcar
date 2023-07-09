@@ -10,30 +10,37 @@ import car.util.NumberGenerator;
 import car.util.RandomNumberGenerator;
 import java.util.List;
 
-public final class RacingService {
+public final class RacingController {
 
     private Cars cars;
+    private TryCount leftRound;
 
-    public RacingService() {
+    public RacingController() {
     }
 
     public void runRaceOnce(NumberGenerator numberGenerator) {
         cars.race(numberGenerator);
+        leftRound.decreaseCount();
     }
 
     public List<Car> selectWinner() {
         return cars.selectWinners();
     }
 
+    private boolean isLeftRound() {
+        return this.leftRound.isPositive();
+    }
+
     public void run() {
         String name = InputView.enterCarName();
-        TryCount tryCount = new TryCount(InputView.enterCount());
+        leftRound = new TryCount(InputView.enterCount());
 
         cars = new Cars(new CarNames(name));
         NumberGenerator numberGenerator = new RandomNumberGenerator();
 
         OutputView.printResult();
-        for (int i = 0; i < tryCount.getTryCount(); i++) {
+
+        while (isLeftRound()) {
             runRaceOnce(numberGenerator);
             OutputView.printEachRaceResult(cars);
         }

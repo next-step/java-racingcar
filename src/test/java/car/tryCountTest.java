@@ -1,6 +1,6 @@
 package car;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import car.domain.TryCount;
@@ -12,15 +12,14 @@ public class tryCountTest {
     @Test
     @DisplayName("시도 횟수 음수면 예외 처리")
     void 사용자_입력_시도_횟수_예외() {
-        String count = "-1";
+        int count = -1;
         assertThrows(IllegalArgumentException.class, () -> new TryCount(count));
     }
 
     @Test
     @DisplayName("시도 횟수 정상 동작")
     void 사용자_입력_시도_횟수() {
-        String count = "5";
-        TryCount cnt = new TryCount(count);
-        assertEquals(5, cnt.getTryCount());
+        int count = 5;
+        assertThatCode(() -> new TryCount(count)).doesNotThrowAnyException();
     }
 }
