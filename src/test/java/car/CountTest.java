@@ -12,13 +12,13 @@ public class CountTest {
 
     @DisplayName("Count 객체 생성 테스트")
     @Test
-    void create () {
+    void create() {
         Assertions.assertDoesNotThrow(() -> new Count(3));
     }
 
     @DisplayName("다른 객체인지 확인")
     @Test
-    void isNotSameObject () {
+    void isNotSameObject() {
         Count expectedCount = new Count(3);
         Count actualCount = new Count(5);
 
@@ -27,7 +27,7 @@ public class CountTest {
 
     @DisplayName("같은 객체인지 확인")
     @Test
-    void isSameObject () {
+    void isSameObject() {
         Count expectedCount = new Count(5);
         Count actualCount = new Count(5);
 
@@ -35,7 +35,7 @@ public class CountTest {
     }
 
     @Test
-    void 시도_횟수_감소 () {
+    void 시도_횟수_감소() {
         int userInputCount = 3;
         int expectedDecreaseCount = 2;
 
@@ -47,7 +47,7 @@ public class CountTest {
 
     @DisplayName("횟수 읍수 값 입력시 exception 발생")
     @Test
-    void 음수_횟수 () {
+    void 음수_횟수() {
         int negativeCount = -1;
 
         assertThrows(IllegalArgumentException.class, () -> new Count(negativeCount));

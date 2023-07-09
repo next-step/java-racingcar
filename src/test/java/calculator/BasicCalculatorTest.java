@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BasicCalculatorTest {
+
     @Test
     @DisplayName("쉼표 구분자를 기준으로 숫자의 합을 반환")
     void commaSum() {

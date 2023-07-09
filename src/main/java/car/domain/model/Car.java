@@ -12,7 +12,9 @@ public final class Car {
     }
 
     public void move(int randomNumber) {
-        if (randomNumber < MOVING_LIMIT) return;
+        if (randomNumber < MOVING_LIMIT) {
+            return;
+        }
 
         position++;
     }
