@@ -9,7 +9,7 @@ public final class CarName {
     private final String name;
 
     public CarName(final String name) {
-        validateCarName(name);
+        validateCarName(name.trim());
         this.name = name.trim();
     }
 
