@@ -23,6 +23,4 @@ public class CarNameTest {
         assertThrows(IllegalCarNameException.class, () -> new CarName(""));
         assertThrows(IllegalCarNameException.class, () -> new CarName("test12"));
     }
-
-
 }
