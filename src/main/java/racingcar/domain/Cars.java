@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.util.MathUtil;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,14 +21,13 @@ public class Cars {
                 .filter(c -> c.isWinner(winnerPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList()));
-    }
+    }정
 
     private Position getMaxPosition() {
-        Position maxPosition = new Position();
-        for (Car car : cars) {
-            maxPosition = MathUtil.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Position::compareTo)
+                .orElse(new Position());
     }
 
     public List<CarResponse> getCars() {

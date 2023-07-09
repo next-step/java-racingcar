@@ -4,7 +4,7 @@ import racingcar.exception.NotPositivePositionException;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private static final int DEFAULT_VALUE = 1;
     public static final String NOT_POSITIVE_MESSAGE = "위치의 값이 0이하 입니다.";
@@ -45,5 +45,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return this.value - o.value;
     }
 }
