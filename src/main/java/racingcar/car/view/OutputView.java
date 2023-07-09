@@ -6,9 +6,9 @@ import racingcar.car.domain.Car;
 
 public final class OutputView {
 
-    public static final String CAR_STATUS_UNIT = "-";
-    public static final String CAR_NAME_STATUS_DELIMITER = " : ";
-    public static final String CAR_WINNER_JOIN_DELIMITER = ", ";
+    private static final String CAR_STATUS_UNIT = "-";
+    private static final String CAR_NAME_STATUS_DELIMITER = " : ";
+    private static final String CAR_WINNER_JOIN_DELIMITER = ", ";
 
     private OutputView() {
     }

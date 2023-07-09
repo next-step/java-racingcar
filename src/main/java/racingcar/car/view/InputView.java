@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public final class InputView {
 
-    public static final String INPUT_SPLIT_REGEX = ",";
+    private static final String INPUT_SPLIT_REGEX = ",";
 
     private static final Scanner scanner = new Scanner(System.in);
 
