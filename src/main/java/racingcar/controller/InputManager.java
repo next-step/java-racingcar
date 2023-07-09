@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 import java.io.BufferedReader;
 import java.io.Closeable;

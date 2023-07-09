@@ -1,14 +1,18 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.domain.movable.RandomMovable;
+import racingcar.view.RacingView;
+import racingcar.domain.RacingManager;
 
 import java.io.IOException;
 
-public class GameManager {
+public class GameController {
 
     public static void playGame() {
         RacingManager racingManager = getRacingManagerByInput();
-        RacingViewManager racingViewManager = new RacingViewManager(racingManager);
-        racingManager.playRacing();
-        racingViewManager.printResult();
+        RacingView racingViewManager = new RacingView();
+        racingManager.playRacing(new RandomMovable());
+        racingViewManager.printResult(racingManager);
     }
 
     private static RacingManager getRacingManagerByInput() {

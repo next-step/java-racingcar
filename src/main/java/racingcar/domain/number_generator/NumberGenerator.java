@@ -1,4 +1,4 @@
-package racingcar.number_generator;
+package racingcar.domain.number_generator;
 
 public interface NumberGenerator {
     int generate();
