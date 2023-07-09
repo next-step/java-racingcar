@@ -3,9 +3,9 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringUtil {
+public final class StringUtil {
 
-    private static String BASIC_REGEX = ",|:";
+    private static final String BASIC_REGEX = ",|:";
 
     public static String[] split(String text) {
         if (text.isBlank()) {
@@ -21,6 +21,12 @@ public class StringUtil {
     }
 
     public static int toInt(String value) {
-        return Integer.parseInt(value);
+        int parsedValue;
+        try {
+            parsedValue = Integer.parseInt(value);
+        } catch (NumberFormatException ignore) {
+            throw new NumberFormatException("잘못된 숫자 형식입니다");
+        }
+        return parsedValue;
     }
 }
