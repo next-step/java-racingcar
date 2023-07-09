@@ -1,10 +1,8 @@
-package racingcar.movable;
+package racingcar.domain.movable;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.movable.Movable;
-import racingcar.movable.RandomMovable;
 
 public class RandomMovableTest {
 

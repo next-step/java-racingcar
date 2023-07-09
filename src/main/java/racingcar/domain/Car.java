@@ -1,8 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-import racingcar.movable.Movable;
-import racingcar.number_generator.NumberGenerator;
-import racingcar.number_generator.RandomNumberGenerator;
+import racingcar.domain.movable.Movable;
 
 public class Car {
 

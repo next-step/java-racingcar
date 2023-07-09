@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.CarRecord;
+import racingcar.domain.RacingManager;
+import racingcar.domain.RacingRoundRecord;
 
 public class RacingViewManager {
 

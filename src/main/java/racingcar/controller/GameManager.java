@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.view.RacingViewManager;
+import racingcar.domain.RacingManager;
 
 import java.io.IOException;
 

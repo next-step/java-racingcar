@@ -1,7 +1,7 @@
-package racingcar.movable;
+package racingcar.domain.movable;
 
-import racingcar.number_generator.NumberGenerator;
-import racingcar.number_generator.RandomNumberGenerator;
+import racingcar.domain.number_generator.NumberGenerator;
+import racingcar.domain.number_generator.RandomNumberGenerator;
 
 public class RandomMovable implements Movable{
 

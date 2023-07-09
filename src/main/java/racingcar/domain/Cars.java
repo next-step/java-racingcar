@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
-import racingcar.movable.Movable;
-import racingcar.movable.RandomMovable;
+import racingcar.domain.movable.Movable;
+import racingcar.domain.movable.RandomMovable;
 
 import java.util.List;
 
