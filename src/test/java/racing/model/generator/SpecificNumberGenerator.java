@@ -1,4 +1,4 @@
-package racing.generator;
+package racing.model.generator;
 
 
 /**

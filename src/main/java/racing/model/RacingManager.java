@@ -1,6 +1,6 @@
 package racing.model;
 
-import racing.generator.NumberGenerator;
+import racing.model.generator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

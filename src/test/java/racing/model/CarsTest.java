@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.generator.NumberGenerator;
-import racing.generator.SpecificNumberGenerator;
+import racing.model.generator.NumberGenerator;
+import racing.model.generator.SpecificNumberGenerator;
 
 import java.util.Arrays;
 import java.util.List;

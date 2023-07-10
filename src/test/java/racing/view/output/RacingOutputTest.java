@@ -1,4 +1,4 @@
-package racing.output;
+package racing.view.output;
 
 
 import org.junit.jupiter.api.AfterEach;

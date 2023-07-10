@@ -2,8 +2,8 @@ package racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.generator.NumberGenerator;
-import racing.generator.SpecificNumberGenerator;
+import racing.model.generator.NumberGenerator;
+import racing.model.generator.SpecificNumberGenerator;
 
 import java.util.Arrays;
 

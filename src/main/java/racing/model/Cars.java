@@ -3,7 +3,7 @@ package racing.model;
 import racing.exception.IllegalCarNameException;
 import racing.exception.IllegalPositionException;
 import racing.exception.IllegalRandomNumberException;
-import racing.generator.NumberGenerator;
+import racing.model.generator.NumberGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
