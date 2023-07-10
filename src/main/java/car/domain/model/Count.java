@@ -4,15 +4,15 @@ public final class Count {
 
     private int tryCount;
 
-    public Count(final int userInputCount) {
-        this.tryCount = validatePositive(userInputCount);
+    public Count(final int count) {
+        this.tryCount = validatePositive(count);
     }
 
-    private int validatePositive(final int userInputCount) {
-        if (userInputCount < 0) {
+    private int validatePositive(final int count) {
+        if (count < 0) {
             throw new IllegalArgumentException("양수로 입력해 주세요");
         }
-        return userInputCount;
+        return count;
     }
 
     public void decreaseTryCount() {
