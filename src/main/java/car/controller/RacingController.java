@@ -1,13 +1,13 @@
-package car;
+package car.controller;
 
-import car.domain.Car;
-import car.domain.CarNames;
-import car.domain.Cars;
-import car.domain.TryCount;
-import car.input.InputView;
-import car.output.OutputView;
-import car.util.NumberGenerator;
-import car.util.RandomNumberGenerator;
+import car.model.Car;
+import car.model.CarNames;
+import car.model.Cars;
+import car.model.TryCount;
+import car.view.input.InputView;
+import car.view.output.OutputView;
+import car.model.util.NumberGenerator;
+import car.model.util.RandomNumberGenerator;
 import java.util.List;
 
 public final class RacingController {

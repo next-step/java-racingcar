@@ -1,6 +1,6 @@
-package car.domain;
+package car.model;
 
-import car.util.NumberGenerator;
+import car.model.util.NumberGenerator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;

@@ -2,7 +2,7 @@ package car;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import car.util.RandomNumberGenerator;
+import car.model.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

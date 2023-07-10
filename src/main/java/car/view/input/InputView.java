@@ -1,4 +1,4 @@
-package car.input;
+package car.view.input;
 
 import java.util.Scanner;
 

@@ -4,9 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import car.domain.Car;
-import car.domain.Cars;
-import car.util.RandomNumberGenerator;
+import car.controller.RacingController;
+import car.model.Car;
+import car.model.Cars;
+import car.model.util.RandomNumberGenerator;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

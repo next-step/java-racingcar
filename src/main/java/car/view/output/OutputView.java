@@ -1,8 +1,8 @@
-package car.output;
+package car.view.output;
 
 import java.util.List;
-import car.domain.Car;
-import car.domain.Cars;
+import car.model.Car;
+import car.model.Cars;
 import java.util.stream.Collectors;
 
 public final class OutputView {
