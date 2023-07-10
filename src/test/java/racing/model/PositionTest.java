@@ -18,13 +18,13 @@ class PositionTest {
         assertDoesNotThrow(() -> new Position(1));
     }
 
-    @DisplayName("Position 생성 실패")
+    @DisplayName("음수 값 넣을시 Position 생성 실패")
     @Test
-    void createPositionFailTest() {
+    void createPositionFailWhenNegativeValueTest() {
         assertThrows(IllegalPositionException.class, () -> new Position(-1));
     }
 
-    @DisplayName("goForward 테스트")
+    @DisplayName("goForward value가 1 증가된 Position 반환하는지 테스트")
     @Test
     void goForwardTest() {
         Position position = new Position(1);
@@ -32,13 +32,13 @@ class PositionTest {
         assertThat(position).isEqualTo(new Position(2));
     }
 
-    @DisplayName("isSamePosition 테스트")
+    @DisplayName("isSamePosition value가 같을 시 true 반환 테스트")
     @Test
     void isSamePositionTrueTest() {
         assertThat(new Position(1).isSamePosition(1)).isTrue();
     }
 
-    @DisplayName("isSamePosition 테스트")
+    @DisplayName("isSamePosition value가 다를 시 false 반환 테스트")
     @Test
     void isSamePositionFalseTest() {
         assertThat(new Position(1).isSamePosition(2)).isFalse();
