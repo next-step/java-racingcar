@@ -28,9 +28,4 @@ public class Car {
         this.position += steps;
     }
 
-    @Override
-    public String toString() {
-        return this.name + " : " + "-".repeat(this.position);
-    }
-
 }

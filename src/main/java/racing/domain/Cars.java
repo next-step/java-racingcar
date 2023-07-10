@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -14,6 +15,10 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     public void moveCars() {
@@ -31,13 +36,6 @@ public class Cars {
                         .filter(cur -> cur.isWinner(maxPosition))
                         .map(Car::getName)
                         .collect(Collectors.toList());
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        cars.forEach(car -> builder.append(car).append('\n'));
-        return builder.toString();
     }
 
     private int getMaxPosition() {

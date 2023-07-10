@@ -1,6 +1,7 @@
 package racing.viewer;
 
 import java.util.List;
+import racing.domain.Car;
 import racing.domain.Cars;
 
 public class Viewer {
@@ -15,7 +16,14 @@ public class Viewer {
     }
 
     public void printCars(Cars cars) {
-        System.out.println(cars);
+        for (Car car : cars.getCars()) {
+            printCar(car);
+        }
+        System.out.println();
+    }
+
+    public void printCar(Car car) {
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
     }
 
     public void printWinners(List<String> winnerNames) {
