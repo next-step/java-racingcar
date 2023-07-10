@@ -39,7 +39,7 @@ public final class Race {
 
     public void play() {
         startRound();
-        cars.move(movableStrategy);
+        cars.moveAll(movableStrategy);
     }
 
     public List<String> findWinners() {

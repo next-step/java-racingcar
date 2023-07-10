@@ -35,12 +35,14 @@ public final class Cars {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    public void move(final MovableStrategy movableStrategy) {
-        cars.forEach(car -> {
-            if (movableStrategy.isMove()) {
-                car.moveForward();
-            }
-        });
+    public void moveAll(final MovableStrategy movableStrategy) {
+        cars.forEach(car -> move(movableStrategy, car));
+    }
+
+    private static void move(final MovableStrategy movableStrategy, final Car car) {
+        if (movableStrategy.isMove()) {
+            car.moveForward();
+        }
     }
 
     private Position calculateMaxPosition() {
