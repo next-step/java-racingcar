@@ -22,6 +22,7 @@ public class SplitUtils {
             String[] tokens = matcher.group(2).split(customDelimiter);
             return toNumbers(tokens);
         }
+
         return toNumbers(text.split(DEFAULT_DELIMITERS));
     }
 
@@ -35,8 +36,8 @@ public class SplitUtils {
      * @param input
      * @return 0 이상의 정수
      */
-    private static int toPositiveNumber(String input) {
-        if (input.isBlank()) {
+    public static int toPositiveNumber(String input) {
+        if (input == null || input.isBlank()) {
             return 0;
         }
 

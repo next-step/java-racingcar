@@ -11,37 +11,36 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String names) {
+    public Cars(final String names) {
         this(names.split(DELIMITER));
     }
 
-    public Cars(String[] names) {
+    public Cars(final String[] names) {
         this(Arrays.stream(names)
                 .map(Car::new)
                 .collect(Collectors.toList()));
     }
 
-    public Cars(List<Car> cars) {
-        if (cars.size() < MIN_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 최소 2대 이상의 자동차가 있어야 합니다.");
-        }
-
+    public Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
-    public void move(MoveStrategy strategy) {
+    public void move(final MoveStrategy strategy) {
         cars.forEach(car -> car.move(strategy));
     }
 
     public List<Car> winners() {
-        Position maxPosition = cars.stream()
-                .map(Car::getPosition)
-                .max(Position::compareTo)
-                .get();
+        final Car fastestCar = cars.stream()
+                .max(Car::getPositionDifferenceWith)
+                .orElseThrow(() -> new IllegalStateException("[ERROR] 우승자를 찾을 수 없습니다."));
 
         return cars.stream()
-                .filter(car -> car.isEqualPosition(maxPosition))
+                .filter(car -> car.isSamePositionWith(fastestCar))
                 .collect(Collectors.toList());
+    }
+
+    public boolean canStartRace() {
+        return cars.size() > MIN_SIZE;
     }
 
     public List<Car> getCars() {

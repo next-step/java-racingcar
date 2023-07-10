@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car> {
+public class Car {
     private final Name name;
 
     private Position position;
@@ -11,46 +11,37 @@ public class Car implements Comparable<Car> {
         this(name, 0);
     }
 
-    public Car(String name, int position) {
+    public Car(final String name, final int position) {
         this.name = new Name(name);
         this.position = new Position(position);
     }
 
-    public void move(MoveStrategy strategy) {
-        int amount = strategy.amount();
-        this.position = position.move(amount);
+    public void move(final MoveStrategy strategy) {
+        final int distance = strategy.getMoveDistance();
+        this.position = position.move(distance);
     }
 
-    public boolean isEqualPosition(Position position) {
-        return this.position.equals(position);
+    public boolean isSamePositionWith(final Car car) {
+        return this.getPositionDifferenceWith(car) == 0;
     }
 
-    public String getNameValue() {
-        return name.getValue();
+    public int getPositionDifferenceWith(final Car car) {
+        return this.position.getDifferenceWith(car.position);
+    }
+
+    public Name getName() {
+        return name;
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public int getPositionValue() {
-        return position.getValue();
-    }
-
     @Override
-    public int compareTo(Car o) {
-        return this.position.compareTo(o.position);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Car car = (Car) o;
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Car car = (Car) other;
         return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 

@@ -12,9 +12,9 @@ public class PositionTest {
     @ValueSource(ints = {0, 3, 999})
     @ParameterizedTest
     @DisplayName("위치가 0 이상이면 정상적으로 생성한다.")
-    void test_01(int value) {
+    void test_01(final int value) {
         /* given */
-        Position position = new Position(value);
+        final Position position = new Position(value);
 
         /* when & then */
         assertThat(position.getValue()).isEqualTo(value);
@@ -24,7 +24,7 @@ public class PositionTest {
     @DisplayName("위치가 음수면 IllegalArgumentException을 던진다.")
     void test_02() {
         /* given */
-        int position = -1;
+        final int position = -1;
 
         /* when & then */
         assertThatThrownBy(() -> new Position(position))
@@ -35,10 +35,10 @@ public class PositionTest {
     @DisplayName("특정 위치에서 움직이면 위치가 변한다.")
     void test_03() {
         /* given */
-        Position position = new Position();
+        final Position position = new Position(0);
 
         /* when */
-        Position next = position.move(3);
+        final Position next = position.move(3);
 
         /* then */
         assertThat(next).isEqualTo(new Position(3));
@@ -48,7 +48,7 @@ public class PositionTest {
     @DisplayName("후진을 하면 IllegalArgumentException을 던진다.")
     void test_04() {
         /* given */
-        Position position = new Position(10);
+        final Position position = new Position(10);
 
         /* when & then */
         assertThatThrownBy(() -> position.move(-1))

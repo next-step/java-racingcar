@@ -18,19 +18,23 @@ public class RacingCarApplication {
     }
 
     private static void run() {
-        String names = ConsoleInput.readNames();
-        int count = ConsoleInput.readCount();
+        final String names = ConsoleInput.readNames();
+        final int count = ConsoleInput.readCount();
 
-        MoveStrategy strategy = new RandomMoveStrategy();
-        Cars cars = new Cars(names);
+        final MoveStrategy strategy = new RandomMoveStrategy();
+        final Cars cars = new Cars(names);
+
+        if (!cars.canStartRace()) {
+            throw new IllegalArgumentException("[ERROR] 최소 2대 이상의 자동차가 있어야 합니다.");
+        }
         race(cars, count, strategy);
 
         ConsoleOutput.printWinners(cars.winners());
     }
 
-    private static void race(Cars cars, int count, MoveStrategy strategy) {
+    private static void race(final Cars cars, final int totalCount, final MoveStrategy strategy) {
         ConsoleOutput.printResultHeader();
-        for (int i = 0; i < count; i++) {
+        for (int count = 0; count < totalCount; count++) {
             cars.move(strategy);
             ConsoleOutput.printCurrentStatus(cars.getCars());
         }

@@ -7,7 +7,7 @@ public class Name {
 
     private final String value;
 
-    public Name(String value) {
+    public Name(final String value) {
         if (value == null || value.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 공백일 수 없습니다.");
         }
@@ -23,14 +23,14 @@ public class Name {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object other) {
+        if (this == other) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (other == null || getClass() != other.getClass()) {
             return false;
         }
-        Name name = (Name) o;
+        Name name = (Name) other;
         return Objects.equals(value, name.value);
     }
 

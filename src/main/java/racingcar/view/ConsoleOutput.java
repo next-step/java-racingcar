@@ -12,17 +12,17 @@ public class ConsoleOutput {
         System.out.println("실행 결과");
     }
 
-    public static void printCurrentStatus(List<Car> cars) {
-        for (Car car : cars) {
-            String position = POSITON_SYMBOL.repeat(car.getPositionValue());
-            System.out.println(car.getNameValue() + " : " + position);
+    public static void printCurrentStatus(final List<Car> cars) {
+        for (final Car car : cars) {
+            String position = POSITON_SYMBOL.repeat(car.getPosition().getValue());
+            System.out.println(car.getName().getValue() + " : " + position);
         }
         System.out.println();
     }
 
-    public static void printWinners(List<Car> winners) {
-        String winnerNames = winners.stream()
-                .map(Car::getNameValue)
+    public static void printWinners(final List<Car> winners) {
+        final String winnerNames = winners.stream()
+                .map(car -> car.getName().getValue())
                 .collect(Collectors.joining(", "));
 
         System.out.print(winnerNames + "가 최종 우승했습니다.");

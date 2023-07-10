@@ -2,17 +2,13 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Position implements Comparable<Position> {
+public class Position {
     private static final int MIN_VALUE = 0;
-    private static final int MIN_AMOUNT = 0;
+    private static final int MIN_DISTANCE = 0;
 
     private final int value;
 
-    public Position() {
-        this(0);
-    }
-
-    public Position(int value) {
+    public Position(final int value) {
         if (value < MIN_VALUE) {
             throw new IllegalArgumentException("[ERROR] 위치는 " + MIN_VALUE + "이상이어야 합니다.");
         }
@@ -20,12 +16,16 @@ public class Position implements Comparable<Position> {
         this.value = value;
     }
 
-    public Position move(int amount) {
-        if (amount < MIN_AMOUNT) {
+    Position move(final int distance) {
+        if (distance < MIN_DISTANCE) {
             throw new IllegalArgumentException("[ERROR] 후진은 불가능합니다.");
         }
 
-        return new Position(value + amount);
+        return new Position(value + distance);
+    }
+
+    public int getDifferenceWith(final Position position) {
+        return this.value - position.value;
     }
 
     public int getValue() {
@@ -33,19 +33,14 @@ public class Position implements Comparable<Position> {
     }
 
     @Override
-    public int compareTo(Position o) {
-        return this.value - o.value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object other) {
+        if (this == other) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (other == null || getClass() != other.getClass()) {
             return false;
         }
-        Position position = (Position) o;
+        Position position = (Position) other;
         return value == position.value;
     }
 
