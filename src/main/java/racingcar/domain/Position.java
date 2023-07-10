@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public final class Position {
+public final class Position implements Comparable<Position> {
 
     private static final String NOT_POSITIVE_MESSAGE = "위치는 음수가 될 수 없습니다.";
     private static final int LOWER_BOUND = 0;
@@ -54,5 +54,10 @@ public final class Position {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(final Position o) {
+        return value - o.value;
     }
 }

@@ -2,19 +2,15 @@ package racingcar.domain;
 
 import racingcar.MovableStrategy;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public final class Cars {
 
     private final List<Car> cars;
-    private Position maxPosition;
 
     private Cars(final List<Car> cars) {
         this.cars = cars;
-        this.maxPosition = Position.from();
     }
 
     public static Cars of(final String[] carNames) {
@@ -26,16 +22,22 @@ public final class Cars {
     }
 
     public List<Car> findMaxPositionCars() {
+        final Position maxPosition = calculateMaxPosition();
         return cars.stream()
                 .filter(car -> maxPosition.equals(car.getPosition()))
                 .collect(Collectors.toUnmodifiableList());
+    }
+
+    private Position calculateMaxPosition() {
+        return cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .orElseThrow(() -> new IllegalArgumentException("자동차가 존재하지 않습니다.")).getPosition();
     }
 
     public void move(final MovableStrategy movableStrategy) {
         cars.forEach(car -> {
             if (movableStrategy.isMove()) {
                 car.moveForward();
-                maxPosition = maxPosition.matchPosition(car.getPosition());
             }
         });
     }
