@@ -16,7 +16,7 @@ public class CountTest {
         assertDoesNotThrow(() -> new Count(0));
     }
 
-    @DisplayName("시도 횟수 생성 실패 테스트")
+    @DisplayName("음수를 받을 시 시도 횟수 생성 실패 테스트")
     @Test
     void newCountFailTest() {
         assertThrows(IllegalCountException.class, () -> new Count(-1));

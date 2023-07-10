@@ -16,11 +16,21 @@ public class CarNameTest {
         assertDoesNotThrow(() -> new CarName("test1"));
     }
 
-    @DisplayName("자동차 이름 생성 실패 테스트")
+    @DisplayName("null 전달 시 자동차 이름 생성 실패 테스트")
     @Test
-    void newCarNameFailTest() {
+    void newCarNameNullFailTest() {
         assertThrows(IllegalCarNameException.class, () -> new CarName(null));
+    }
+
+    @DisplayName("빈 문자열 전달 시 자동차 이름 생성 실패 테스트")
+    @Test
+    void newCarNameBlankFailTest() {
         assertThrows(IllegalCarNameException.class, () -> new CarName(""));
+    }
+
+    @DisplayName("5글자 초과 문자열 전달 시 자동차 이름 생성 실패 테스트")
+    @Test
+    void newCarNameLongStringFailTest() {
         assertThrows(IllegalCarNameException.class, () -> new CarName("test12"));
     }
 }

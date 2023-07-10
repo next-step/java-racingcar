@@ -16,10 +16,15 @@ public class CarTest {
         assertDoesNotThrow(() -> new Car("pobi"));
     }
 
-    @DisplayName("자동차 생성 실패 테스트")
+    @DisplayName("빈 문자열 받을 시 자동차 생성 실패 테스트")
     @Test
     void newCarFailTest() {
         assertThrows(IllegalCarNameException.class, () -> new Car(""));
+    }
+
+    @DisplayName("5글자 초과 문자열 받을 시 자동차 생성 실패 테스트")
+    @Test
+    void newCarLongStringFailTest() {
         assertThrows(IllegalCarNameException.class, () -> new Car("123456"));
     }
 

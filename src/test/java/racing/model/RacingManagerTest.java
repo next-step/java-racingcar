@@ -1,5 +1,6 @@
 package racing.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.generator.NumberGenerator;
 import racing.generator.SpecificNumberGenerator;
@@ -10,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingManagerTest {
 
+    @DisplayName("simulate 작동 시 정상적으로 반환 되는지 테스트")
     @Test
     void simulateTest() {
         //given
