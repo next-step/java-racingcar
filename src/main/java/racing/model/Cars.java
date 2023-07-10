@@ -33,7 +33,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<CarVO> nextStep(NumberGenerator numberGenerator) {
+    public List<CarVO> nextRound(NumberGenerator numberGenerator) {
         for (Car car : this.cars) {
             goForwardIfMovable(car, numberGenerator);
         }

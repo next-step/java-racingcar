@@ -3,6 +3,7 @@ package racing.view;
 import org.junit.jupiter.api.Test;
 import racing.model.CarVO;
 import racing.model.SimulationResultDto;
+import racing.model.RoundResultDto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +42,7 @@ class RacingViewTest {
 
 
         //when, then
-        assertThat(racingView.getCarStatusView(cars)).isEqualTo("pobi : -\n" +
+        assertThat(racingView.getCarStatusView(new RoundResultDto(cars))).isEqualTo("pobi : -\n" +
                 "crong : -\n" +
                 "honux : -");
     }

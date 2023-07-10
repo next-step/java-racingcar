@@ -2,8 +2,8 @@ package racing.view;
 
 import racing.model.CarVO;
 import racing.model.SimulationResultDto;
+import racing.model.RoundResultDto;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingView {
@@ -30,15 +30,15 @@ public class RacingView {
         return ASKING_COUNT;
     }
 
-    public String getCarStatusView(List<CarVO> cars) {
-        return cars.stream()
+    public String getCarStatusView(RoundResultDto roundResultDto) {
+        return roundResultDto.getRoundResultDto().stream()
                 .map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
                 .collect(Collectors.joining("\n"));
     }
 
     public String getResultView(SimulationResultDto simulationResultDto) {
         String result = RESULT_TITLE + "\n";
-        result += simulationResultDto.getProgress().stream()
+        result += simulationResultDto.getRoundResults().stream()
                 .map(this::getCarStatusView)
                 .collect(Collectors.joining("\n\n")) + "\n\n";
         result += simulationResultDto.getWinners().stream()

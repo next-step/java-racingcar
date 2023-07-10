@@ -17,13 +17,13 @@ public class CarsTest {
     @DisplayName("라운드 정상 진행 테스트")
     @ParameterizedTest
     @CsvSource({"0,1", "3,1", "4,2", "9,2"})
-    void nextStepTest(int generatedNumber, int expected) {
+    void nextRoundTest(int generatedNumber, int expected) {
         //given
         NumberGenerator numberGenerator = new SpecificNumberGenerator(generatedNumber);
         Cars cars = new Cars(Arrays.asList("test1", "test2"));
 
         //when
-        List<CarVO> result = cars.nextStep(numberGenerator);
+        List<CarVO> result = cars.nextRound(numberGenerator);
 
         //then
         assertThat(result.get(0).getPosition()).isEqualTo(expected);
