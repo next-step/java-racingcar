@@ -8,7 +8,6 @@ public final class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static String enterCarName() {
-        OutputView.printCarNameText();
         String inputCarName = scanner.nextLine();
         if (inputCarName.isBlank()) {
             throw new IllegalArgumentException("값을 입력해 주세요");
@@ -17,7 +16,6 @@ public final class InputView {
     }
 
     public static int enterCount() {
-        OutputView.printCountText();
         int inputCount;
         try {
             inputCount = scanner.nextInt();
