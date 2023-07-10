@@ -13,7 +13,7 @@ class PositionTest {
 
         // when
         final Position position1 = Position.from(input);
-        final Position position2 = Position.from();
+        final Position position2 = Position.from(0);
 
         // then
         assertThat(position1.getValue()).isEqualTo(input);

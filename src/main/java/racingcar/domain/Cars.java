@@ -52,7 +52,10 @@ public final class Cars {
     }
 
     private static long calculateDistinctCarsSize(final List<Car> cars) {
-        return cars.stream().map(Car::getName).distinct().count();
+        return cars.stream()
+                .map(Car::getName)
+                .distinct()
+                .count();
     }
 
     private static List<Car> createCarList(final String[] carNames) {

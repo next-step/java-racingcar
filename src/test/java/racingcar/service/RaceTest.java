@@ -59,12 +59,12 @@ class RaceTest {
         // when & then
         race.play();
         for (Car car : race.getCars().getCars()) {
-            assertThat(car.getPosition()).isEqualTo(Position.from());
+            assertThat(car.getPosition()).isEqualTo(Position.from(0));
         }
 
         race.play();
         for (Car car : race.getCars().getCars()) {
-            assertThat(car.getPosition()).isEqualTo(Position.from());
+            assertThat(car.getPosition()).isEqualTo(Position.from(0));
         }
     }
 
