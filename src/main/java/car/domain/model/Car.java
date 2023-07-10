@@ -1,34 +1,33 @@
 package car.domain.model;
 
-public final class Car {
+public final class Car implements Comparable<Car> {
 
-    private static final int MOVING_LIMIT = 4;
-    private int position = 0;
     private final CarName carName;
+    private Position position = new Position(0);
 
 
     public Car(final String carName) {
         this.carName = new CarName(carName);
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber < MOVING_LIMIT) {
-            return;
-        }
-
-        position++;
+    public void move(final int randomNumber) {
+        position = position.moveTo(randomNumber);
     }
 
-    public boolean isWinner(int maxPosition) {
-        return position == maxPosition;
+    public boolean isWinner(final Car car) {
+        return position.isSamePosition(car.position.getPosition());
+    }
+
+    public String getPosition() {
+        return position.getTotalDistance();
     }
 
     public String getCarName() {
         return carName.getName();
     }
 
-    public int getPosition() {
-        return position;
+    @Override
+    public int compareTo(Car otherCar) {
+        return otherCar.position.getPosition() - position.getPosition();
     }
-
 }

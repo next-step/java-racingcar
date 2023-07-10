@@ -22,14 +22,12 @@ public final class Cars {
 
     public List<Car> getWinnerCars() {
         return cars.stream()
-            .filter(car -> car.isWinner(getWinnerPosition()))
+            .filter(car -> car.isWinner(getWinnerCarPosition()))
             .collect(Collectors.toUnmodifiableList());
     }
 
-    private int getWinnerPosition() {
-        return cars.stream()
-            .mapToInt(Car::getPosition)
-            .max().getAsInt();
+    private Car getWinnerCarPosition() {
+        return cars.stream().sorted().findFirst().get();
     }
 
     public List<Car> getCars() {

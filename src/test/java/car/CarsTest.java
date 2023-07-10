@@ -39,8 +39,8 @@ public class CarsTest {
         looserCar.move(1);
         looserCar.move(5);
 
-        assertThat(winnerCar.isWinner(maxPosition)).isTrue();
-        assertThat(looserCar.isWinner(maxPosition)).isFalse();
+        assertThat(winnerCar.isWinner(winnerCar)).isTrue();
+        assertThat(winnerCar.isWinner(looserCar)).isFalse();
     }
 
 }

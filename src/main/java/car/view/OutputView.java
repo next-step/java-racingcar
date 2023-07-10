@@ -18,21 +18,23 @@ public final class OutputView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    public static void printResultText() {System.out.println("실행 결과");}
+    public static void printResultText() {
+        System.out.println("실행 결과");
+    }
 
     public static void printEachRaceResult(final Cars cars) {
         sb = new StringBuilder();
         cars.getCars()
             .forEach(car -> sb.append(car.getCarName()).append(" : ")
-                .append("-".repeat(car.getPosition())).append("\n"));
+                .append(car.getPosition()));
         System.out.println(sb.toString());
     }
 
     public static void printWinner(final List<Car> winner) {
         sb = new StringBuilder();
         sb.append(winner.stream()
-                .map(Car::getCarName)
-                .collect(Collectors.joining(" ")));
+            .map(Car::getCarName)
+            .collect(Collectors.joining(" ")));
         sb.append("가 최종 우승했습니다.");
         System.out.println(sb.toString());
     }
