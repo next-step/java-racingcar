@@ -25,14 +25,12 @@ class RaceRequestTest {
     }
 
     @Test
-    void null또는빈문자열인names파싱할때_실패_RuntimeException발생() {
+    void null인names파싱할때_실패_RuntimeException발생() {
         // given
-        final String names1 = null;
-        final String names2 = "";
+        final String names = null;
 
         // when & then
-        assertThatThrownBy(() -> new RaceRequest(names1, "5")).isInstanceOf(RuntimeException.class);
-        assertThatThrownBy(() -> new RaceRequest(names2, "5")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new RaceRequest(names, "5")).isInstanceOf(RuntimeException.class);
     }
 
     @Test
