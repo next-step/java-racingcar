@@ -16,6 +16,15 @@ class CarsTest {
         // when & then
         assertThatNoException().isThrownBy(() -> Cars.of(carNames));
     }
+    
+    @Test
+    void 중복된이름을가진자동차들로생성시_실패_RuntimeException발생() {
+        // given
+        final String[] carNames = new String[]{"pobi", "pobi", "honux"};
+
+        // when & then
+        assertThatThrownBy(() -> Cars.of(carNames)).isInstanceOf(RuntimeException.class);
+    }
 
     @Test
     void 가장높은position을가지는자동차를선택할때_성공() {
