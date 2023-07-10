@@ -2,8 +2,10 @@ package racingcar.dto;
 
 
 public final class RaceRequest {
+
     private static final String NAME_DELIMITER = ",";
     private static final String NOT_INTEGER_MESSAGE = "게임 횟수를 입력해 주세요.";
+
     private final String[] names;
     private final int totalRound;
 

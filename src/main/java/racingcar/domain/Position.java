@@ -18,7 +18,7 @@ public final class Position {
         return new Position(position);
     }
 
-    public static Position of() {
+    public static Position from() {
         return new Position(LOWER_BOUND);
     }
 

@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.MovableStrategy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +14,7 @@ public final class Cars {
 
     private Cars(final List<Car> cars) {
         this.cars = cars;
-        this.maxPosition = Position.of();
+        this.maxPosition = Position.from();
     }
 
     public static Cars of(final String[] carNames) {

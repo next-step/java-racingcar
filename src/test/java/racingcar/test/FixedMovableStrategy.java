@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.test;
+
+import racingcar.MovableStrategy;
 
 public final class FixedMovableStrategy implements MovableStrategy {
 

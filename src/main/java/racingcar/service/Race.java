@@ -4,7 +4,6 @@ import racingcar.MovableStrategy;
 import racingcar.domain.Cars;
 import racingcar.domain.Round;
 import racingcar.dto.RaceRequest;
-import racingcar.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,8 +33,8 @@ public final class Race {
         return this.cars;
     }
 
-    public int getLeftRound() {
-        return this.leftRound.getValue();
+    public Round getLeftRound() {
+        return this.leftRound;
     }
 
     public void play() {
