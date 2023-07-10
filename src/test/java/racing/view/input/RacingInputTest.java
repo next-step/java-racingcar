@@ -1,4 +1,4 @@
-package racing.input;
+package racing.view.input;
 
 import org.junit.jupiter.api.Test;
 

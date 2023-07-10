@@ -1,4 +1,4 @@
-package racing.generator;
+package racing.model.generator;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ public class RandomNumberGeneratorTest {
     @Test
     void generateTest() {
         //given
-        RandomNumberGenerator randomGenerator = new RandomNumberGenerator();
+        RandomNumberGenerator randomGenerator = RandomNumberGenerator.getInstance();
 
         //when
         int randomValue = randomGenerator.generate();

@@ -11,15 +11,15 @@
 
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-## 2차 피드백 및 반영사항
+## Step2 Refactoring
 
-1. 사용하지 않는 import 제거
-2. size()를 사용하는 경우 isEqualTo 대신 hasSize 사용하여 테스트
-3. RacingApplication에서 불필요한 생성자 제거
-4. ExceptionHandler를 try-catch구문으로
-5. Random용어 수정
-6. 일급컬렉션 적용
-7. 예외 발생 테스트 추가
+1. 변하지 않는 값에 final추가
+2. getter사용 안하기 위해 Car 객체를 받는 CarVO 생성자 추가
+3. position의 원시값 포장
+4. 패키지 수정
+5. 컨벤션 안지키는 것들 수정
+6. LazyHolder 방식 싱글턴 패턴 적용
+7. 테스트 코드 분리 및 추가
 
 ## 문자열 계산기 - 구현할 기능 목록
 
@@ -64,6 +64,16 @@
 - `refactor`
 - `fix`
 - `chore`
+
+## 2차 피드백 및 반영사항
+
+1. 사용하지 않는 import 제거
+2. size()를 사용하는 경우 isEqualTo 대신 hasSize 사용하여 테스트
+3. RacingApplication에서 불필요한 생성자 제거
+4. ExceptionHandler를 try-catch구문으로
+5. Random용어 수정
+6. 일급컬렉션 적용
+7. 예외 발생 테스트 추가
 
 ## 1차 피드백 및 반영사항
 

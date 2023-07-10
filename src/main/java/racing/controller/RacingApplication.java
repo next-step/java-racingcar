@@ -1,27 +1,30 @@
-package racing;
+package racing.controller;
 
-import racing.generator.NumberGenerator;
-import racing.input.RacingInput;
+import racing.model.generator.NumberGenerator;
+import racing.view.input.RacingInput;
 import racing.model.RacingManager;
-import racing.output.RacingOutput;
+import racing.view.output.RacingOutput;
 import racing.view.RacingView;
 
 import java.util.List;
 
 public class RacingApplication {
 
-    private RacingInput racingInput;
-    private RacingOutput racingOutput;
-    private RacingManager racingManager;
-    private NumberGenerator numberGenerator;
-    private RacingView racingView;
+    private final RacingInput racingInput;
 
+    private final RacingOutput racingOutput;
+
+    private final NumberGenerator numberGenerator;
+
+    private final RacingView racingView;
+
+    private RacingManager racingManager;
 
     public RacingApplication(RacingInput racingInput, NumberGenerator numberGenerator) {
         this.racingInput = racingInput;
         this.numberGenerator = numberGenerator;
-        this.racingOutput = new RacingOutput();
-        this.racingView = new RacingView();
+        this.racingOutput = RacingOutput.getInstance();
+        this.racingView = RacingView.getInstance();
     }
 
     public void run() {

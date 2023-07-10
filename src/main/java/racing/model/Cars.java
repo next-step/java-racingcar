@@ -1,7 +1,9 @@
 package racing.model;
 
+import racing.exception.IllegalCarNameException;
+import racing.exception.IllegalPositionException;
 import racing.exception.IllegalRandomNumberException;
-import racing.generator.NumberGenerator;
+import racing.model.generator.NumberGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,19 +15,26 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> carNames) {
+        validateCarNames(carNames);
         this.cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
+    private void validateCarNames(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalCarNameException();
+        }
+    }
+
     public List<CarVO> getCars() {
-        return cars.stream()
-                .map(car -> new CarVO(car.getName(), car.getPosition()))
+        return this.cars.stream()
+                .map(CarVO::new)
                 .collect(Collectors.toList());
     }
 
-    public List<CarVO> nextStep(NumberGenerator numberGenerator) {
-        for (Car car : cars) {
+    public List<CarVO> nextRound(NumberGenerator numberGenerator) {
+        for (Car car : this.cars) {
             goForwardIfMovable(car, numberGenerator);
         }
         return this.getCars();
@@ -49,14 +58,14 @@ public class Cars {
     }
 
     public List<CarVO> getWinners() {
-        int maxValue = cars.stream()
+        int maxPosition = this.cars.stream()
                 .mapToInt(Car::getPosition)
-                .max().orElse(-1);
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxValue)
-                .map(car -> new CarVO(car.getName(), car.getPosition()))
+                .max()
+                .orElseThrow(IllegalPositionException::new);
+        return this.cars.stream()
+                .filter(car -> car.isPositionValue(maxPosition))
+                .map(CarVO::new)
                 .collect(Collectors.toList());
-
     }
 
 }

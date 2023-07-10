@@ -1,4 +1,4 @@
-package racing.output;
+package racing.view.output;
 
 
 import org.junit.jupiter.api.AfterEach;
@@ -27,7 +27,7 @@ public class RacingOutputTest {
 
     @Test
     void printTest() {
-        RacingOutput racingOutput = new RacingOutput();
+        RacingOutput racingOutput = RacingOutput.getInstance();
         racingOutput.print("test text");
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("test text");
     }

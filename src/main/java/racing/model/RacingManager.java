@@ -1,6 +1,6 @@
 package racing.model;
 
-import racing.generator.NumberGenerator;
+import racing.model.generator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +17,14 @@ public class RacingManager {
         this.count = new Count(countValue);
     }
 
-    public SimulationResult simulate() {
-        List<List<CarVO>> progress = new ArrayList<>();
+    public SimulationResultDto simulate() {
+        List<List<CarVO>> roundResults = new ArrayList<>();
 
-        progress.add(this.cars.getCars());
+        roundResults.add(this.cars.getCars());
         for (int i = 0; i < this.count.getValue(); i++) {
-            progress.add(this.cars.nextStep(this.numberGenerator));
+            roundResults.add(this.cars.nextRound(this.numberGenerator));
         }
         List<CarVO> winners = this.cars.getWinners();
-        return new SimulationResult(progress, winners);
+        return new SimulationResultDto(roundResults, winners);
     }
 }

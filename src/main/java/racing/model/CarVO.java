@@ -3,12 +3,17 @@ package racing.model;
 import java.util.Objects;
 
 public class CarVO {
-    private String name;
-    private int position;
+    private final String name;
+    private final int position;
 
-    public CarVO(String name, int position) {
+    public CarVO(final String name, final int position) {
         this.name = name;
         this.position = position;
+    }
+
+    public CarVO(final Car car) {
+        this.name = car.getName();
+        this.position = car.getPosition();
     }
 
     public String getName() {
