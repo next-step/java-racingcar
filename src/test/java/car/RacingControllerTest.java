@@ -1,77 +1,57 @@
 package car;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import car.controller.RacingController;
-import car.model.Car;
-import car.model.Cars;
-import car.model.util.RandomNumberGenerator;
-import java.util.List;
+import car.model.RacingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RacingControllerTest {
 
     @Test
-    @DisplayName("시도 횟수가 양수여야지 게임 실행 가능")
-    void isLeftRound_확인_양수() {
-        assertThatCode(() -> new RacingController("jj, jjj", 1)).doesNotThrowAnyException();
+    @DisplayName("횟수 오류 나면 racingController 객체 생성 불가")
+    void 횟수_오류_확인() {
+        assertThatThrownBy(() -> new RacingController(new RacingGame("jj,jjj", -1)))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("시도 횟수가 음수이면, 게임 실행 불가")
-    void isLeftRound_확인_음수() {
-        assertThrows(IllegalArgumentException.class, () -> new RacingController("jj,jjj", -1));
+    @DisplayName("횟수 정상 컨트롤러 정상 동작")
+    void 횟수_오류_정상_동작() {
+        assertThatCode(() -> new RacingController(
+            new RacingGame("jj,jjj", 1))
+            .start())
+            .doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("시도 횟수에 따라 레이스가 정상 동작한다.")
     void 시도_횟수_바탕으로_레이스_정상_동작() {
-        assertThatCode(() -> new RacingController("jj, jjj", 3).run()).doesNotThrowAnyException();
+        assertThatCode(() -> new RacingGame("jj, jjj", 3).runRaceOnce())
+            .doesNotThrowAnyException();
     }
 
     @Test
-    @DisplayName("시도 횟수보다 레이스 횟수가 많으면 오류")
-    void 시도_횟수_레이스_오류() {
-        // given
-        RacingController racingController = new RacingController("jj, jjj", 1);
-        // when
-        racingController.run();
-        // then
-        assertThrows(IllegalArgumentException.class,
-            () -> racingController.runRaceOnce(new RandomNumberGenerator()));
-    }
+    @DisplayName("시도 횟수 입력보다 레이스를 더 많이 돌면, 오류 반환한다.")
+    void 시도_횟수_바탕으로_레이스_오류_빌생() {
+        RacingGame racingGame = new RacingGame("jj,jjj", 3);
+        RacingController racingController = new RacingController(racingGame);
 
-
-    @Test
-    @DisplayName("winner 찾기")
-    void 우승자_찾는_메서드() {
-        // given
-        List<Car> cars = List.of(new Car("he1", 1),
-            new Car("he2", 2),
-            new Car("he3", 3));
-        RacingController racingController = new RacingController(new Cars(cars), 0);
-        // when
-        List<Car> winner = racingController.selectWinner();
-        // then
-        assertThat(winner).extracting("name").contains("he3");
+        racingController.start();
+        assertThatThrownBy(() -> racingGame.runRaceOnce())
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
 
     @Test
-    @DisplayName("winner 복수 찾기")
-    void 우승자_여러명_찾는_메서드() {
-        // given
-        List<Car> cars = List.of(new Car("he1", 1),
-            new Car("he2", 3),
-            new Car("he3", 3));
-        RacingController racingController = new RacingController(new Cars(cars), 0);
-        // when
-        List<Car> winner = racingController.selectWinner();
-        // then
-        assertThat(winner).extracting("name").contains("he2", "he3");
+    @DisplayName("이름 오류 확인")
+    void 이름_오류_확인() {
+        assertThatCode(
+            () -> new RacingController(new RacingGame("jjjjjj,jjj", 1))
+                .start())
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
