@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.Car.Cars;
+import racingcar.domain.car.Cars;
 import racingcar.domain.racinggame.RacingGame;
 import racingcar.view.RacingCarView;
 

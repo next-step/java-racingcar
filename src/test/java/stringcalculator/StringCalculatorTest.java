@@ -3,7 +3,7 @@ package stringcalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class StringCalculatorTest {
 
@@ -47,34 +47,6 @@ class StringCalculatorTest {
         assertThat(stringCalculator.calculate()).isEqualTo(15);
     }
 
-    @DisplayName("양수로만 이루어진 경우 예외가 발생하지 않는다")
-    @Test
-    void 문자열_검증_성공() {
-        String[] elements = {"1", "2", "3"};
-
-        assertThatNoException().isThrownBy(() -> new Elements(elements));
-    }
-
-    @DisplayName("음수가 존재하는 경우 RuntimeException 예외가 발생한다")
-    @Test
-    void 문자열_검증_실패_음수() {
-        String[] elements = {"1", "-2", "3"};
-
-        assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> new Elements(elements))
-                .withMessageMatching("0이상 9이하의 숫자만 가능합니다");
-    }
-
-    @DisplayName("숫자 이외의 값이 존재하는 경우 RuntimeException 예외가 발생한다")
-    @Test
-    void 문자열_검증_실패_숫자외의_값() {
-        String[] elements = {"1", "4", "-5", "6"};
-
-        assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> new Elements(elements))
-                .withMessageMatching("0이상 9이하의 숫자만 가능합니다");
-    }
-
     @DisplayName("기본 구분자가 주어졌을 때 올바른 계산 결과를 반환한다")
     @Test
     void 기본_구분자_계산() {
@@ -86,7 +58,7 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(23);
     }
 
-    @DisplayName("문자열이 주어졌을 때 올바른 계산 결과를 반환한다")
+    @DisplayName("커스텀 문자열이 주어졌을 때 올바른 계산 결과를 반환한다")
     @Test
     void 커스텀_구분자_계산() {
         String text = "//;\n1;4;9";

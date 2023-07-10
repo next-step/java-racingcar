@@ -1,6 +1,6 @@
 package racingcar.domain.racinggame;
 
-import racingcar.domain.Car.Cars;
+import racingcar.domain.car.Cars;
 import racingcar.dto.Results;
 import racingcar.dto.Winners;
 
