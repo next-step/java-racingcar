@@ -1,9 +1,8 @@
-package car.output;
+package car.view.output;
 
-import car.domain.CarResult;
+import car.model.Car;
+import car.model.CarResult;
 import java.util.List;
-import car.domain.Car;
-import car.domain.Cars;
 import java.util.stream.Collectors;
 
 public final class OutputView {
@@ -14,21 +13,18 @@ public final class OutputView {
     private static final String POSITION_MARK = "-";
 
 
-    public static void printResult() {
+    public static void printExecuteResult() {
         System.out.println(EXECUTE_RESULT_MESSAGE);
     }
 
     private static String makeCarResult(CarResult carResult) {
-        return new StringBuilder()
-            .append(carResult.getName())
-            .append(CAR_RESULT_DELIMITER)
-            .append(POSITION_MARK.repeat(carResult.getPosition()))
-            .toString();
+        return carResult.getName() + (CAR_RESULT_DELIMITER) +
+            (POSITION_MARK.repeat(carResult.getPosition()));
     }
 
-    public static void printEachRaceResult(final Cars cars) {
-        for (Car car : cars.getCars()) {
-            System.out.println(makeCarResult(new CarResult(car)));
+    public static void printEachRaceResult(final List<CarResult> carResults) {
+        for (CarResult car : carResults) {
+            System.out.println(makeCarResult(car));
         }
         System.out.println();
     }

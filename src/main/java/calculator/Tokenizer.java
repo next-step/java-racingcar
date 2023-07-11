@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Tokenizer {
 
     private final static String CUSTOM_SEPARATOR = "//(.)\n(.*)";
-    private final static String BASIC_SEPARATOR = ":|,";
+    private final static String BASIC_SEPARATOR = "[:,]";
     private final static String ZERO = "0";
 
     private boolean isBlank(final String num) {

@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import car.domain.Car;
-import car.domain.CarName;
+import car.model.Car;
+import car.model.CarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

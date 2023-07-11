@@ -1,14 +1,15 @@
-package car.domain;
+package car.model;
 
 import java.util.Objects;
 
 public final class CarName {
 
-    private final String name;
     private final static int CAR_NAME_LENGTH_LOWER_BOUND = 5;
 
+    private final String name;
+
     public CarName(final String name) {
-        validateCarName(name);
+        validateCarName(name.trim());
         this.name = name.trim();
     }
 
@@ -37,5 +38,12 @@ public final class CarName {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return "CarName{" +
+            "name='" + name + '\'' +
+            '}';
     }
 }
