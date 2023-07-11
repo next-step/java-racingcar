@@ -2,7 +2,7 @@ package car.utils;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public final class RandomNumberGenerator {
 
     private static final int NUMBER_LIMIT = 10;
 

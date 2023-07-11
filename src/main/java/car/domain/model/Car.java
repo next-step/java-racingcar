@@ -1,33 +1,33 @@
 package car.domain.model;
 
-import car.utils.RandomNumberGenerator;
+public final class Car implements Comparable<Car> {
 
-public class Car {
-
-    private static final int MOVING_LIMIT = 4;
-    private int position = 0;
-    private final String name;
+    private final CarName carName;
+    private Position position = new Position(0);
 
 
     public Car(final String carName) {
-        this.name = carName;
+        this.carName = new CarName(carName);
     }
 
-    // TODO : [Review 14] Random test 어떻게 해야할지 깊게 고민해 보기
-    public int move() {
-        int randomNum = RandomNumberGenerator.getRandomNumber();
-        if (randomNum >= MOVING_LIMIT) {
-            position++;
-        }
-        return randomNum;
+    public void move(final int randomNumber) {
+        position = position.moveTo(randomNumber);
     }
 
-    public String getName() {
-        return name;
+    public boolean isWinner(final Car car) {
+        return position.isSamePosition(car.position.getPosition());
     }
 
-    public int getPosition() {
-        return position;
+    public String getPosition() {
+        return position.getTotalDistance();
     }
 
+    public String getCarName() {
+        return carName.getName();
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        return otherCar.position.getPosition() - position.getPosition();
+    }
 }

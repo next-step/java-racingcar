@@ -1,27 +1,37 @@
 package car.domain.model;
 
-import java.util.Collections;
+import car.utils.RandomNumberGenerator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Cars {
+public final class Cars {
 
+    private static final String REGEX_CAR_NAME = ",";
     private final List<Car> cars;
 
     public Cars(final String inputCarNames) {
-        CarNames carNames = new CarNames(inputCarNames);
-        cars = carNames.getCarNames().stream()
-            .map(CarName::getMyCarName)
+        cars = Arrays.stream(inputCarNames.split(REGEX_CAR_NAME))
             .map(Car::new)
-            .collect(Collectors.toList());
+            .collect(Collectors.toUnmodifiableList());
     }
 
     public void raceOnce() {
-        cars.forEach(car -> car.move());
+        cars.forEach(car -> car.move(RandomNumberGenerator.getRandomNumber()));
+    }
+
+    public List<Car> getWinnerCars() {
+        return cars.stream()
+            .filter(car -> car.isWinner(getWinnerCarPosition()))
+            .collect(Collectors.toUnmodifiableList());
+    }
+
+    private Car getWinnerCarPosition() {
+        return cars.stream().sorted().findFirst().get();
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return cars;
     }
 
 }

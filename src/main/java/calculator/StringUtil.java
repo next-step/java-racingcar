@@ -1,13 +1,22 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
-public class StringUtil {
+public final class StringUtil {
 
-    private static String BASIC_REGEX = ",|:";
+    private static final String BASIC_REGEX = ",|:";
 
-    public static String[] split(String text) {
+    public static List<Integer> convertTextToIntegers(String text) {
+        return Arrays.stream(split(text))
+            .map(StringUtil::toInteger)
+            .collect(Collectors.toUnmodifiableList());
+    }
+
+    private static String[] split(String text) {
         if (text.isBlank()) {
             return new String[]{"0"};
         }
@@ -20,7 +29,13 @@ public class StringUtil {
         return text.split(BASIC_REGEX);
     }
 
-    public static int toInt(String value) {
-        return Integer.parseInt(value);
+    private static int toInteger(String value) {
+        int parsedValue;
+        try {
+            parsedValue = Integer.parseInt(value);
+        } catch (NumberFormatException ignore) {
+            throw new NumberFormatException("잘못된 숫자 형식입니다");
+        }
+        return parsedValue;
     }
 }

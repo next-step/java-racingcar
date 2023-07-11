@@ -1,21 +1,21 @@
 package calculator;
 
-public class Positive {
+public final class Positive {
 
-    private int num;
+    private final int num;
 
-    public Positive(int num) {
-        validatePositiveNumber(num);
-        this.num = num;
+    public Positive(int inputNumber) {
+        validatePositiveNumber(inputNumber);
+        num = inputNumber;
     }
 
-    private void validatePositiveNumber(int num) {
-        if (num < 0) {
-            throw new RuntimeException();
+    private void validatePositiveNumber(int inputNumber) {
+        if (inputNumber < 0) {
+            throw new IllegalArgumentException("양수 값을 입력해 주세요");
         }
     }
 
-    public int getNum() {
-        return this.num;
+    protected int getNum() {
+        return num;
     }
 }

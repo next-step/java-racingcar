@@ -1,26 +1,18 @@
 package car.domain.model;
 
-import car.exceptions.NumberNegativeException;
-import java.util.Objects;
-
 public final class Count {
 
     private int tryCount;
 
-    public Count(final int userInputCount) {
-        this.tryCount = validatePositive(userInputCount);
+    public Count(final int count) {
+        this.tryCount = validatePositive(count);
     }
 
-    /**
-     * @param userInputCount
-     * @return int
-     * @throws NumberNegativeException 음수인 경우
-     */
-    private int validatePositive(final int userInputCount) {
-        if (userInputCount < 0) {
-            throw new NumberNegativeException("양수로 입력해 주세요");
+    private int validatePositive(final int count) {
+        if (count < 0) {
+            throw new IllegalArgumentException("양수로 입력해 주세요");
         }
-        return userInputCount;
+        return count;
     }
 
     public void decreaseTryCount() {
@@ -29,23 +21,6 @@ public final class Count {
 
     public boolean isRacingRemain() {
         return (tryCount > 0);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Count count = (Count) o;
-        return tryCount == count.tryCount;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(tryCount);
     }
 
 }
