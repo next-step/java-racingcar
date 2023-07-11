@@ -84,3 +84,30 @@
   - 시행 횟수
 - 일급 컬렉션 분리
   - 자동차
+
+---
+
+## 4차 리팩토링 목록
+
+- final 추가
+- 변수 이름 통일
+  - round, count
+- RuntimeException 예외 종류 세분화
+- view 인스턴스화 및 controller 객체의 static 제거
+- NumberGenerator 수정
+  - 이름을 MovableStrategy로 변경
+  - 역할 변경 (숫자 생성 -> 움직임 가능 판단)
+  - Race가 관리하도록 변경
+- 불필요한 객체 정리
+  - RaceUtil 제거
+- CarVO -> CarResponse로 역할에 맞게 수정
+- Race의 일부 역할을 Cars로 이동
+- Name, Position, Round를 VO로 수정
+- Cars의 불변성 보장하도록 수정
+- 테스트에만 사용되는 production code 정리 (Race.of())
+- 출력 형식 알맞게 수정
+- 테스트 패키지 정리
+- 놓친 테스트 추가
+  - 우승 자동차 선택
+- 놓친 기능 추가
+  - 자동차 중복 판별

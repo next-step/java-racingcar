@@ -1,31 +1,51 @@
 package racingcar.domain;
 
-public class Position {
+import java.util.Objects;
+
+public final class Position implements Comparable<Position> {
 
     private static final String NOT_POSITIVE_MESSAGE = "위치는 음수가 될 수 없습니다.";
 
-    private int position;
+    private int value;
 
-    private Position(int position) {
-        this.position = position;
+    private Position(final int value) {
+        this.value = value;
     }
 
-    public static Position from(int position) {
+    public static Position from(final int position) {
         validate(position);
         return new Position(position);
     }
 
-    public int getPosition() {
-        return position;
+    public int getValue() {
+        return value;
     }
 
     public void increase() {
-        this.position++;
+        this.value++;
     }
 
-    private static void validate(int position) {
+    private static void validate(final int position) {
         if (position < 0) {
-            throw new RuntimeException(NOT_POSITIVE_MESSAGE);
+            throw new IllegalArgumentException(NOT_POSITIVE_MESSAGE);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return value == position1.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(final Position o) {
+        return value - o.value;
     }
 }

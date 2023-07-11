@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.NumberGenerator;
+import racingcar.RandomMovableStrategy;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 import racingcar.service.Race;
@@ -9,35 +9,36 @@ import racingcar.view.OutputView;
 
 import java.io.IOException;
 
-public class RaceController {
+public final class RaceController {
 
-    private final NumberGenerator numberGenerator;
+    private final InputView inputView;
+    private final OutputView outputView;
     private Race race;
 
-    public RaceController(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public RaceController() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
     }
 
     public void start() throws IOException {
-        String names = InputView.inputNames();
-        String totalRound = InputView.inputTotalRound();
-        race = Race.from(new RaceRequest(names, totalRound));
+        final String names = inputView.inputNames();
+        final String totalRound = inputView.inputTotalRound();
+        race = Race.create(new RaceRequest(names, totalRound), new RandomMovableStrategy());
     }
 
     public void run() {
-        OutputView.printStartMessage();
+        outputView.printStartMessage();
         doRace();
     }
 
     public void finish() {
-        OutputView.printWinners(race.findWinners());
+        outputView.printWinners(race.findWinners());
     }
 
     private void doRace() {
-        int leftRound = race.getLeftRound();
-        for (int round = 0; round < leftRound; round++) {
-            race.play(numberGenerator);
-            OutputView.printRound(new RaceResponse(race.getCars()));
+        while (race.getLeftRound().getValue() > 0) {
+            race.play();
+            outputView.printRound(new RaceResponse(race.getCars()));
         }
     }
 }

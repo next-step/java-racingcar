@@ -4,11 +4,10 @@ import racingcar.controller.RaceController;
 
 import java.io.IOException;
 
-public class RaceApplication {
+public final class RaceApplication {
 
-    private static final RaceController raceController = new RaceController(new RandomNumberGenerator());
-
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
+        RaceController raceController = new RaceController();
         raceController.start();
         raceController.run();
         raceController.finish();
