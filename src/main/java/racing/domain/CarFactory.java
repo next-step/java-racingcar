@@ -1,14 +1,13 @@
-package racing.factory;
+package racing.domain;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.model.Car;
 
 public class CarFactory {
 
-    private static final String DEFAULT_DELIMITER = ",";
+    private static final String DELIMITER = ",";
     private static final int CAR_NAME_MAX = 5;
 
     private static class CarFactoryHandler {
@@ -25,7 +24,7 @@ public class CarFactory {
     }
 
     public List<Car> manufactureCars(String text) {
-        String[] carNames = text.split(DEFAULT_DELIMITER);
+        String[] carNames = text.split(DELIMITER);
 
         validate(carNames);
 
@@ -33,7 +32,9 @@ public class CarFactory {
     }
 
     private List<Car> manufactureCars(String[] names) {
-        return Arrays.stream(names).map(Car::new).collect(Collectors.toList());
+        return Arrays.stream(names)
+                     .map(Car::new)
+                     .collect(Collectors.toList());
     }
 
     private void validate(String[] carNames) {

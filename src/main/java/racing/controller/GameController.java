@@ -1,17 +1,16 @@
 package racing.controller;
 
-import racing.factory.CarFactory;
-import racing.io.Viewer;
-//import racing.manager.RacingManager;
-import racing.model.Cars;
-import racing.model.GameInfo;
+import racing.domain.CarFactory;
+import racing.viewer.Viewer;
+import racing.domain.Cars;
+import racing.domain.GameInfo;
 
 public class GameController {
 
     private final CarFactory carFactory;
     private final Viewer viewer;
 
-    public GameController(CarFactory carFactory, Viewer viewer) {
+    public GameController(final CarFactory carFactory, final Viewer viewer) {
         this.carFactory = carFactory;
         this.viewer = viewer;
     }
