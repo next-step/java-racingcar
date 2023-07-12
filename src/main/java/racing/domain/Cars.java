@@ -7,7 +7,8 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final int BOUND = 10;
+    private static final int MIN_BOUND = 0;
+    private static final int MAX_BOUND = 10;
     private static final int CRITERION = 4;
     private static final int STEPS = 1;
 
@@ -22,8 +23,16 @@ public class Cars {
     }
 
     public void moveCars() {
+        move(MIN_BOUND, MAX_BOUND);
+    }
+
+    public void moveCars(final int minBound, final int maxBound) {
+        move(minBound, maxBound);
+    }
+
+    private void move(final int minBound, final int maxBound) {
         for (Car car : this.cars) {
-            int randomValue = ThreadLocalRandom.current().nextInt(BOUND);
+            int randomValue = ThreadLocalRandom.current().nextInt(minBound, maxBound);
             if (CRITERION <= randomValue) {
                 car.move(STEPS);
             }
