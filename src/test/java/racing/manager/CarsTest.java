@@ -21,6 +21,22 @@ class CarsTest {
         assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "crong");
     }
 
+    @Test
+    @DisplayName("자동차들이 이동 조건에 맞게 움직이는지 테스트")
+    void moveCarsTest() {
+        /* given */
+        Cars cars = new Cars(List.of(new Car("pobi"), new Car("crong"), new Car("honux")));
+
+        /* when */
+        cars.moveCars(4, 10);  // 4 ~ 9 : 움직이는 경우
+        cars.moveCars(4, 10);
+        cars.moveCars(0, 4);  // 0 ~ 3 : 움직이지 않는 경우
+        cars.moveCars(0, 4);
+
+        /* then */
+        assertThat(cars.getCars()).extracting("position").containsExactly(3, 3, 3);
+    }
+
     private static Cars createTestCars() {
         List<Car> cars = List.of(
                 new Car("pobi"),
