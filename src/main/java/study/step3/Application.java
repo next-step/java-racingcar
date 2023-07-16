@@ -1,5 +1,7 @@
 package study.step3;
 
+import study.step3.domain.Cars;
+
 import java.util.Scanner;
 
 public class Application {
@@ -13,6 +15,8 @@ public class Application {
         final int repeatCount = scanner.nextInt();
 
         // 2. 입력한 대수만큼 자동차를 생성한다.
+        final Cars cars = new Cars(numberOfCars);
+
         // 3. 0 ~ 9 사이의 random 값을 생성한다.
         // 4. 랜덤 숫자가 4 이상이면 한 칸 전진하며, 입력한 횟수만큼 반복한다.
         // 5. 자동차의 상태를 화면에 출력한다.
