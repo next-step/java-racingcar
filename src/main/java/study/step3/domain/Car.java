@@ -4,8 +4,7 @@ import study.step3.domain.strategy.MoveStrategy;
 import study.step3.domain.strategy.RandomMoveStrategy;
 
 public class Car {
-    private final int START_VALUE = 0;
-    private int position = START_VALUE;
+    private int position;
 
     private final MoveStrategy moveStrategy;
 
