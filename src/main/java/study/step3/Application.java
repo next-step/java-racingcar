@@ -2,6 +2,7 @@ package study.step3;
 
 import study.step3.domain.Car;
 import study.step3.domain.Cars;
+import study.step3.view.ResultView;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -18,15 +19,17 @@ public class Application {
 
         // 2. 입력한 대수만큼 자동차를 생성한다.
         Car[] carArray = new Car[numberOfCars];
-        Arrays.fill(carArray, new Car());
+        for (int i = 0; i < numberOfCars; i++) {
+            carArray[i] = new Car();
+        }
         final Cars cars = new Cars(carArray);
 
         // 3. 0 ~ 9 사이의 random 값을 생성한다.
         // 4. 랜덤 숫자가 4 이상이면 한 칸 전진하며, 입력한 횟수만큼 반복한다.
+        // 5. 자동차의 상태를 화면에 출력한다.
         for (int i = 0; i < repeatCount; i++) {
             cars.race();
+            ResultView.printOutPositions(cars);
         }
-
-        // 5. 자동차의 상태를 화면에 출력한다.
     }
 }
