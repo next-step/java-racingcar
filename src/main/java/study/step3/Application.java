@@ -1,6 +1,8 @@
 package study.step3;
 
 import study.step3.domain.Cars;
+import study.step3.domain.strategy.MoveStrategy;
+import study.step3.domain.strategy.RandomMoveStrategy;
 
 import java.util.Scanner;
 
@@ -18,6 +20,9 @@ public class Application {
         final Cars cars = new Cars(numberOfCars);
 
         // 3. 0 ~ 9 사이의 random 값을 생성한다.
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        final boolean canMove = moveStrategy.canMove();
+
         // 4. 랜덤 숫자가 4 이상이면 한 칸 전진하며, 입력한 횟수만큼 반복한다.
         // 5. 자동차의 상태를 화면에 출력한다.
     }
