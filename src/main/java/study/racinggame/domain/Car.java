@@ -1,7 +1,7 @@
-package study.step3.domain;
+package study.racinggame.domain;
 
-import study.step3.domain.strategy.MoveStrategy;
-import study.step3.domain.strategy.RandomMoveStrategy;
+import study.racinggame.domain.strategy.MoveStrategy;
+import study.racinggame.domain.strategy.RandomMoveStrategy;
 
 public class Car {
     private int position;

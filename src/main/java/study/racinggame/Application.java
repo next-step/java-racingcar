@@ -1,17 +1,17 @@
-package study.step3;
+package study.racinggame;
 
-import study.step3.domain.Cars;
-import study.step3.view.InputView;
-import study.step3.view.ResultView;
+import study.racinggame.domain.Cars;
+import study.racinggame.view.InputView;
+import study.racinggame.view.ResultView;
 
 public class Application {
     public static void main(String[] args) {
         final int numberOfCars = InputView.numberOfCars();
         final int repeatCount = InputView.repeatCount();
 
-        final Cars cars = new Cars(numberOfCars);
+        final Cars cars = new Cars(numberOfCars, repeatCount);
 
-        for (int i = 0; i < repeatCount; i++) {
+        while (!cars.isEndGame()) {
             cars.race();
             ResultView.printOutPositions(cars);
         }

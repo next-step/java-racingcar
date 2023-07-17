@@ -1,7 +1,7 @@
-package study.step3.view;
+package study.racinggame.view;
 
-import study.step3.domain.Car;
-import study.step3.domain.Cars;
+import study.racinggame.domain.Car;
+import study.racinggame.domain.Cars;
 
 public class ResultView {
     public static void printOutPositions(Cars cars) {

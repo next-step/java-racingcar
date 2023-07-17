@@ -1,4 +1,4 @@
-package study.step3.domain.strategy;
+package study.racinggame.domain.strategy;
 
 import java.util.Random;
 
