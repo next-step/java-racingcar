@@ -18,6 +18,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name.getName();
+    }
+
     public void move() {
         if (moveStrategy.canMove()) {
             this.position++;
