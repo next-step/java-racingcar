@@ -5,10 +5,12 @@ import study.racinggame.domain.strategy.RandomMoveStrategy;
 
 public class Car {
     private int position;
+    private Name name;
 
     private final MoveStrategy moveStrategy;
 
-    public Car() {
+    public Car(String name) {
+        this.name = new Name(name);
         this.moveStrategy = new RandomMoveStrategy();
     }
 

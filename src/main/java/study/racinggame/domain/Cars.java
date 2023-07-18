@@ -8,10 +8,10 @@ public class Cars {
     private final int gameCount;
     private int currentCount;
 
-    public Cars(int numberOfCars, int gameCount) {
+    public Cars(List<String> carNames, int gameCount) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
         this.cars = cars;
         this.gameCount = gameCount;
