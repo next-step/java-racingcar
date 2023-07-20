@@ -1,14 +1,22 @@
 package study.racinggame.domain;
 
+import study.racinggame.domain.strategy.MoveStrategy;
+
 public class Car {
-    private int position;
-    private Name name;
+    private final Position position;
+    private final Name name;
 
     public Car(String name) {
         this.name = new Name(name);
+        this.position = new Position();
     }
 
-    public int getPosition() {
+    public Car(int position, String name) {
+        this.position = new Position(position);
+        this.name = new Name(name);
+    }
+
+    public Position getPosition() {
         return position;
     }
 
@@ -16,15 +24,9 @@ public class Car {
         return name.getName();
     }
 
-    public void move() {
-        this.position++;
-    }
-
-    public boolean isHigherPosition(int another) {
-        return position > another;
-    }
-
-    public boolean isMaxPosition(int maxPosition) {
-        return position == maxPosition;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
+            position.increase();
+        }
     }
 }

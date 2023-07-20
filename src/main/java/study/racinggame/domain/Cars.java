@@ -14,6 +14,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public Cars(Car[] cars) {
+        this.cars = List.of(cars);
+    }
+
     public List<Car> getCars() {
         return cars;
     }
