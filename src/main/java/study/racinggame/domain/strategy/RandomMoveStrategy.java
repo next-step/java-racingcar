@@ -1,12 +1,11 @@
-package study.step3.domain.strategy;
+package study.racinggame.domain.strategy;
 
 import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
+    final static Random RANDOM = new Random();
     final static int MINIMUM_MOVEMENT_NUMBER = 4;
     final static int RANDOM_BOUND = 10;
-
-    final static Random RANDOM = new Random();
 
     @Override
     public boolean canMove() {
