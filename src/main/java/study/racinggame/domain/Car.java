@@ -6,18 +6,25 @@ public class Car {
     private final Position position;
     private final Name name;
 
+    public Car(Position position, Name name) {
+        this.position = position;
+        this.name = name;
+    }
+
     public Car(String name) {
-        this.name = new Name(name);
-        this.position = new Position();
+        this(new Position(), new Name(name));
     }
 
-    public Car(int position, String name) {
-        this.position = new Position(position);
-        this.name = new Name(name);
+    public int getPosition() {
+        return position.getPosition();
     }
 
-    public Position getPosition() {
-        return position;
+    public boolean isHigherPosition(int another) {
+        return position.isHigherPosition(another);
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return position.isMaxPosition(maxPosition);
     }
 
     public String getName() {

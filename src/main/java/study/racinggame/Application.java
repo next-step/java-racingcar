@@ -13,7 +13,11 @@ public class Application {
     public static void main(String[] args) {
         final List<String> carNames = NameUtil.convertToList(InputView.carNames());
         final int repeatCount = InputView.repeatCount();
-        final Cars cars = new Cars(carNames);
+        final List<Car> carList = carNames
+                .stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        final Cars cars = new Cars(carList);
         final RaceGame raceGame = new RaceGame(cars, repeatCount, new RandomMoveStrategy());
 
         while (!raceGame.isEndGame()) {
