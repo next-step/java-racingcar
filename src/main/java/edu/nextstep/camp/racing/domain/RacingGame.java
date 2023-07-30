@@ -1,23 +1,17 @@
 package edu.nextstep.camp.racing.domain;
 
-import edu.nextstep.camp.racing.view.RacingOutputView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 
-    private final RacingInfo racingInfo;
-    private final Cars cars;
-    public RacingGame(RacingInfo racingInfo) {
-        this.racingInfo = racingInfo;
-        cars = new Cars(racingInfo.getCarNames());
-    }
-
-    public void startGame() {
-        int movingCount = racingInfo.getMovingCount();
+    public List<RacingResult> startGame(Cars cars, int movingCount) {
+        List<RacingResult> racingResults = new ArrayList<>();
 
         for (int i = 0; i < movingCount; i++) {
-            cars.moveCars();
+            racingResults.add(cars.moveCars());
         }
 
-        RacingOutputView.printWinners(cars.winners());
+        return racingResults;
     }
 }
