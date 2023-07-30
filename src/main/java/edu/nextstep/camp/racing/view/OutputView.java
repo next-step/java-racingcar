@@ -1,10 +1,10 @@
 package edu.nextstep.camp.racing.view;
 
 public class OutputView {
-    protected OutputView() {
+    private OutputView() {
     }
 
-    public static void print(String msg){
+    public static void print(String msg) {
         System.out.println(msg);
     }
 }

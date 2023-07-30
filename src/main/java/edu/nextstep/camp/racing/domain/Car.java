@@ -6,10 +6,11 @@ public class Car {
 
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int MOVING_MIN_VALUE = 4;
-    private static final int MOVING_MAX_VALUE = 9 ;
+    private static final int MOVING_MAX_VALUE = 9;
     private final String name;
 
     private int position = 0;
+
     public Car(String name) {
         name = Objects.requireNonNull(name).trim();
 
@@ -25,7 +26,7 @@ public class Car {
     }
 
     public void move(int randomInt) {
-        if (MOVING_MAX_VALUE >= randomInt && randomInt >= MOVING_MIN_VALUE){
+        if (MOVING_MAX_VALUE >= randomInt && randomInt >= MOVING_MIN_VALUE) {
             position++;
         }
     }
@@ -34,11 +35,11 @@ public class Car {
         return position;
     }
 
-    public int maxPosition(int comparePosition){
+    public int maxPosition(int comparePosition) {
         return position - comparePosition;
     }
 
-    public boolean isWinner(Car car){
+    public boolean isWinner(Car car) {
         return this.position == car.position;
     }
 
@@ -48,7 +49,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return name +" : "+ "-".repeat(position);
+        return name;
     }
 
     @Override

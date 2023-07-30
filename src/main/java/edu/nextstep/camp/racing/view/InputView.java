@@ -8,7 +8,7 @@ public class InputView {
     private static Scanner scanner;
 
     public static String input() {
-        if (Objects.isNull(scanner)){
+        if (Objects.isNull(scanner)) {
             scanner = new Scanner(System.in);
         }
 
@@ -16,7 +16,7 @@ public class InputView {
     }
 
     public static void close() {
-        if (!Objects.isNull(scanner)){
+        if (!Objects.isNull(scanner)) {
             scanner.close();
             scanner = null;
         }
