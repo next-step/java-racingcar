@@ -1,8 +1,5 @@
 package edu.nextstep.camp.racing.domain;
 
-import edu.nextstep.camp.racing.view.OutputView;
-import edu.nextstep.camp.racing.view.RacingOutputView;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,7 +18,7 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
-    public Cars(List<Car> cars){
+    public Cars(List<Car> cars) {
         nameCountCheck(cars);
         duplicateNameCheck(cars);
         this.cars = cars;
@@ -43,10 +40,10 @@ public class Cars {
         }
     }
 
-    public void moveCars() {
-        cars.forEach(car -> {
-            car.move(randomInt());
-        });
+    public RacingResult moveCars() {
+        cars.forEach(car -> car.move(randomInt()));
+
+        return new RacingResult(cars);
     }
 
     public List<String> winners() {
@@ -58,12 +55,5 @@ public class Cars {
 
     protected int randomInt() {
         return random.nextInt(10);
-    }
-
-    @Override
-    public String toString() {
-        return cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.joining("\n"));
     }
 }
