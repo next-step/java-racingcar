@@ -1,12 +1,19 @@
 package edu.nextstep.camp.racing;
 
-import edu.nextstep.camp.racing.domain.RacingInfoFactory;
-import edu.nextstep.camp.racing.domain.RacingStarter;
+import edu.nextstep.camp.racing.controller.RacingController;
+import edu.nextstep.camp.racing.domain.Cars;
+import edu.nextstep.camp.racing.view.ConsoleRacingInputView;
+import edu.nextstep.camp.racing.view.ConsoleRacingOutputView;
 
 public class Main {
     public static void main(String[] args) {
-        RacingStarter racingStarter = new RacingStarter(new RacingInfoFactory());
+        try {
+            RacingController racingController = new RacingController(new ConsoleRacingInputView(), new ConsoleRacingOutputView());
 
-        racingStarter.start();
+            Cars cars = racingController.inputCars();
+            racingController.start(cars);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
