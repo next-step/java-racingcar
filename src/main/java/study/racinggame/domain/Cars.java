@@ -1,21 +1,12 @@
 package study.racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
+    public Cars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    public Cars(Car[] cars) {
-        this.cars = List.of(cars);
     }
 
     public List<Car> getCars() {

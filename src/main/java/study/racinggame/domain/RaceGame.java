@@ -21,8 +21,7 @@ public class RaceGame {
     public void race() {
         for (Car car : cars.getCars()) {
             car.move(moveStrategy);
-            Position position = car.getPosition();
-            maxPosition = position.isHigherPosition(maxPosition) ? position.getPosition() : maxPosition;
+            maxPosition = car.isHigherPosition(maxPosition) ? car.getPosition() : maxPosition;
         }
         currentRound++;
     }
@@ -34,7 +33,7 @@ public class RaceGame {
     public List<Car> winners() {
         List<Car> winners = new ArrayList<>();
         cars.getCars().forEach((car) -> {
-            if (car.getPosition().isMaxPosition(maxPosition)) {
+            if (car.isMaxPosition(maxPosition)) {
                 winners.add(car);
             }
         });
