@@ -18,8 +18,9 @@ public class StringTest {
 
         String str = "(1,2)".replaceAll("[^a-zA-Z]","");
         assertThat(str).doesNotContain("(");
-        assertThat(str).doesNotContain(")");
         
+        assertThat(str).doesNotContain(")");
+
 
     }
 }
