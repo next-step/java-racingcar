@@ -34,7 +34,7 @@ class SetCollectionTest {
         // when
 
         // then
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -46,7 +46,7 @@ class SetCollectionTest {
         // when
 
         // then
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
