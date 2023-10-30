@@ -29,4 +29,12 @@ public class StringTest {
         assertThat(result).containsExactly("1");
     }
 
+    @Test
+    @DisplayName("(1, 2) 값이 주어졌을 때 substring() 메소드를 활용하여 ()를 제거하고 1, 2를 반환한다.")
+    void substring() {
+        String value = "(1,2)";
+        String result = value.substring(1, value.length() - 1);
+        assertThat(result).isEqualTo("1,2");
+    }
+
 }
