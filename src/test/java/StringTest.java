@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class StringTest {
 
@@ -42,6 +43,38 @@ public class StringTest {
 
         //then
         assertThat(substring).isEqualTo(expected);
+    }
+
+    @ParameterizedTest(name = "문자열 : {0}, 인덱스 : {1}, 문자 : {2}")
+    @MethodSource("provideStringAndIndexAndChar")
+    @DisplayName("성공 - 문자열에서 특정 위치의 문자를 가져올 수 있다.")
+    void success_chatAt_test(String given, int index, char expected){
+        //when
+        char character = given.charAt(index);
+
+        //then
+        assertThat(character).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideStringAndIndexAndChar() {
+        return Stream.of(
+                Arguments.of("abc", 0, 'a'),
+                Arguments.of("abc", 1, 'b'),
+                Arguments.of("abc", 2, 'c')
+        );
+    }
+
+    @Test
+    @DisplayName("실패 - 문자열에서 특정 위치의 문자를 가져올 때 위치 값에 벗어 나서 예외가 발생한다.")
+    void fail_chatAt_out_of_index_test(){
+        //given
+        String given = "abc";
+        int outOfIndex = 3;
+
+        //when & then
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                .isThrownBy(() -> given.charAt(outOfIndex)).withMessageMatching("String index out of range: 3");
+
     }
 
 }
