@@ -48,4 +48,11 @@ public class StringTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @DisplayName("주어진 문자의 최대 배열을 벗어나면 IndexOutOfBoundsException 발생")
+    @Test
+    void charAtThrowIndexOutOfBoundsException(){
+        String target = "abc";
+        assertThatThrownBy(() -> target.charAt(4)).isInstanceOf(IndexOutOfBoundsException.class);
+    }
+
 }
