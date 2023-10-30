@@ -39,4 +39,13 @@ public class StringTest {
         assertThat(substring).isEqualTo("1,2");
     }
 
+    @DisplayName("문자열에 원하는 위치 지정시 문자를 반환")
+    @ParameterizedTest(name = "{0}번째 문자는 {1}")
+    @CsvSource(value = {"0,a", "1,b", "2,c"})
+    void charAtSuccess(int index, char expected){
+        String target = "abc";
+        char actual = target.charAt(index);
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }
