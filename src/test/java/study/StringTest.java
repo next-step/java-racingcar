@@ -16,10 +16,8 @@ public class StringTest {
     @Test
     void substring() {
 
-        String str = "(1,2)".replaceAll("[^a-zA-Z]","");
-        assertThat(str).doesNotContain("(");
-        
-        assertThat(str).doesNotContain(")");
+        String str = "(1,2)".substring(1,4);
+        assertThat(str).isEqualTo("1,2");
 
 
     }
