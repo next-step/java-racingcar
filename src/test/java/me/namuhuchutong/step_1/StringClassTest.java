@@ -43,4 +43,38 @@ public class StringClassTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+    @DisplayName("\"abc\"가 주어졌을 때 문자열의 위치 값을 벗어날 경우 예외가 발생")
+    @Test
+    void throw_exception_when_get_out_of_string_range() {
+        //given
+        String given = "abc";
+        int outOfIndex = given.length();
+
+        //when, then
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(
+                () -> given.charAt(outOfIndex));
+    }
+
+    @DisplayName("\"abc\"가 주어졌을 때 chatAt 메소드를 활용해 해당 문자의 위치를 확인")
+    @ParameterizedTest(name = "index: {0}, result: ''{1}''")
+    @MethodSource("characterAndIndex")
+    void check_character_index_in_abc(int index, char expected) {
+        //given
+        String given = "abc";
+
+        //when
+        char result = given.charAt(index);
+
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> characterAndIndex() {
+        return Stream.of(
+                Arguments.arguments(0, 'a'),
+                Arguments.arguments(1, 'b'),
+                Arguments.arguments(2, 'c')
+        );
+    }
 }
