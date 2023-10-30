@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -25,6 +26,22 @@ public class StringTest {
                 Arguments.of("1,2", new String[]{"1", "2"}),
                 Arguments.of("1", new String[]{"1"})
         );
+    }
+
+    @Test
+    @DisplayName("성공 - \"(1,2)\"에서 ()을 제거하고 \"1,2\"를 반환한다.")
+    void success_substring_test(){
+        //given
+        String given = "(1,2)";
+        String expected = "1,2";
+        String deleteTarget1 = "(";
+        String deleteTarget2 = ")";
+
+        //when
+        String substring = given.substring(given.indexOf(deleteTarget1) + 1, given.lastIndexOf(deleteTarget2));
+
+        //then
+        assertThat(substring).isEqualTo(expected);
     }
 
 }
