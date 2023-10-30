@@ -31,4 +31,12 @@ public class StringTest {
         );
     }
 
+    @Test
+    @DisplayName("맨앞과 맨뒤 괄호를 제거")
+    void removeBracket(){
+        String target = "(1,2)";
+        String substring = target.substring(1, target.length()-1);
+        assertThat(substring).isEqualTo("1,2");
+    }
+
 }
