@@ -24,4 +24,17 @@ class StringTest {
                 () -> assertThat(split).containsExactly("1", "2")
         );
     }
+
+    @Test
+    @DisplayName("substring() 메서드를 테스트한다.")
+    void substring() {
+        // given
+        String data = "(1,2)";
+
+        // when
+        String substring = data.substring(1, data.length() - 1);
+
+        // then
+        assertThat(substring).isEqualTo("1,2");
+    }
 }
