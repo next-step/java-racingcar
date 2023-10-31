@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class StringTest {
+class StringTest {
     @Test
     void split() {
         String[] result = "1,2".split(",");
