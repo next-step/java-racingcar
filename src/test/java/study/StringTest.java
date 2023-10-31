@@ -25,4 +25,12 @@ public class StringTest {
         char result = "abc".charAt(0);
         assertThat(result).isEqualTo('a');
     }
+
+    @Test
+    @DisplayName("charAt(실패) - String의 index범위밖으로 CharAt을 사용하면 StringIndexOutOfBoundsException이 발생한다")
+    void charAtFail() {
+        assertThatThrownBy(() -> "abc".charAt(10))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 10");
+    }
 }
