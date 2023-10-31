@@ -32,7 +32,6 @@ public class StringTest {
         @DisplayName("성공")
         @Test
         void success() {
-
             char result = data.charAt(0);
             assertThat(result).isEqualTo('a');
         }
