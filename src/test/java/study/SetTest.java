@@ -29,21 +29,19 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="Set에 있는 값인 {0}를 contains하면 True를 반환")
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("contains(true) - Set에 있는 값을 contains하면 True를 반환")
     void containsTrue(Integer input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="Set에 없는 값인 {0}를 contains하면 False를 반환")
     @ValueSource(ints = {4, 10, 12})
-    @DisplayName("contains(false) - Set에 없는 값을 contains하면 False를 반환")
     void containsFalse(Integer input) {
         assertThat(numbers.contains(input)).isFalse();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="값{0}의 Set 존재여부를 contains로 확인하며 {1}를 반환")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void contains(Integer input, Boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
