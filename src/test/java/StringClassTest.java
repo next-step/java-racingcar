@@ -62,16 +62,10 @@ public class StringClassTest {
     @Test
     @DisplayName("위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는 부분에 대한 학습 테스트를 구현한다.")
     void charAt_exception(){
-        //given
         String data = "abc";
 
-        //when
-        int index = 3;
-
-        //then
-        assertThatThrownBy(() -> {
-            data.charAt(index);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
+        assertThatThrownBy(() -> data.charAt(3))
+                .isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
     }
 }
