@@ -8,16 +8,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
     @Test
+    @DisplayName("String Split 테스트 - 콤마가 있을 경우")
     void split() {
         String[] result = "1,2".split(",");
         assertThat(result).contains("1");
     }
     @Test
+    @DisplayName("String Split 테스트 - 콤마가 없을 경우")
     void split2() {
         String[] result = "1".split(",");
         assertThat(result).containsExactly("1");
     }
     @Test
+    @DisplayName("String Substring 테스트")
     void split3() {
         String str = "(1,2)";
         String result = str.substring(1, str.length()-1);
