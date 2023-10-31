@@ -34,4 +34,11 @@ public class SetTest {
     void containsTrue(Integer input) {
         assertThat(numbers.contains(input)).isTrue();
     }
+
+    @ParameterizedTest
+    @ValueSource(ints={4,10,12})
+    @DisplayName("contains(false) - Set에 없는 값을 contains하면 False를 반환")
+    void containsFalse(Integer input) {
+        assertThat(numbers.contains(input)).isFalse();
+    }
 }
