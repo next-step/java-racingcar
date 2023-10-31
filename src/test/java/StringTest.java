@@ -18,4 +18,11 @@ public class StringTest {
         String[] splitString = str.split(",");
         assertThat(splitString).containsExactly("1");
     }
+
+    @Test
+    void substringTest() {
+        String str = "(1,2)";
+        String substring = str.substring(1, str.length() - 1);
+        assertThat(substring).isEqualTo("1,2");
+    }
 }
