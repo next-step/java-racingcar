@@ -37,4 +37,13 @@ public class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
+    @Test
+    @DisplayName("문자열 길이를 넘어가면 StringIndexOutOfBoundsException이 발생한다")
+    void charAt() {
+        String value = "abc";
+        assertThatThrownBy(() -> {
+            value.charAt(3);
+        }).isInstanceOf(IndexOutOfBoundsException.class);
+    }
+
 }
