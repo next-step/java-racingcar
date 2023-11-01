@@ -16,4 +16,13 @@ class StringTest {
         assertThat(dummy1Array).containsExactly("1","2");
         assertThat(dummy2Array).contains("1");
     }
+
+    @Test
+    void substringTest() {
+        String dummy = "(1,2)";
+
+        String substringDummy = dummy.substring(1, 4);
+
+        assertThat(substringDummy).isEqualTo("1,2");
+    }
 }
