@@ -9,7 +9,9 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
 
-        if (isNullOrBlank(text)) return 0;
+        if (isNullOrBlank(text)) {
+            return 0;
+        }
 
         if (text.contains("-")) throw new RuntimeException("input has negative");
 
