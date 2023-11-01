@@ -1,22 +1,21 @@
 package calculator;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static int splitAndSum(String text) {
-        List<Integer> operands = operands(text);
+        Operands operands = operands(text);
         return sum(operands);
     }
 
-    private static List<Integer> operands(String text) {
-        List<Integer> operand = new ArrayList();
+    private static Operands operands(String text) {
+        Operands operands = new Operands(new ArrayList<>());
 
         boolean isTextNullOrEmpty = text == null || text.isEmpty();
         if (isTextNullOrEmpty) {
-            return operand;
+            return operands;
         }
 
         String delimiter = ",|:";
@@ -30,16 +29,16 @@ public class StringAddCalculator {
 
         String[] tokens = text.split(delimiter);
         for (String token : tokens) {
-            operand.add(parsedInt(token));
+            operands.add(parsedInt(token));
         }
 
-        return operand;
+        return operands;
     }
 
-    private static int sum(List<Integer> operands) {
+    private static int sum(Operands operands) {
         int result = 0;
-        for (int operand : operands) {
-            result += operand;
+        for(int i = 0; i < operands.length(); i++) {
+            result += operands.operand(i);
         }
         return result;
     }
