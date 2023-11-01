@@ -14,7 +14,7 @@ public class StringAddCalculator {
             return ZERO;
         }
 
-        if (text.contains("-")) throw new RuntimeException("input has negative");
+        if (text.contains("-")) throw new IllegalArgumentException("input has negative");
 
         String[] tokens = split(text);
 
