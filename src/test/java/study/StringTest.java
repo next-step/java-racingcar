@@ -17,4 +17,10 @@ public class StringTest {
         String[] result = "1".split(",");
         assertThat(result).contains("1");
     }
+
+    @Test
+    void subStringTest(){
+        String result = "(1,2)".substring(1,4);
+        assertThat(result).contains("1,2");
+    }
 }
