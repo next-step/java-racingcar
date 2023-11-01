@@ -15,26 +15,20 @@ public class StringAddCalculator {
 
     private Operand operand(String text) {
         Operand operand = new Operand(new ArrayList<>());
-
         boolean isTextNullOrEmpty = text == null || text.isEmpty();
         if (isTextNullOrEmpty) {
             return operand;
         }
-
         Delimiter delimiter = new Delimiter(defaultDelimiterText);
-
         Matcher m = Pattern.compile(defaultRegex).matcher(text);
         if (m.find()) {
             delimiter = new Delimiter(m.group(1));
             text = m.group(2);
         }
-
-
         String[] tokens = text.split(delimiter.delimiter());
         for (String token : tokens) {
             operand.add(parsedInt(token));
         }
-
         return operand;
     }
 
