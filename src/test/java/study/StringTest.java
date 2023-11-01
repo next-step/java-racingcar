@@ -16,6 +16,15 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("길이가 1인 문자열을 split했을 때 1만 포함하는 배열이 반환되는지 확인")
+    void split2() {
+        String[] results = "1".split(",");
+        assertThat(results).hasSize(1);
+        assertThat(results).contains("1");
+        assertThat(results).containsExactly("1");
+    }
+
+    @Test
     @DisplayName("주어진 문자열 내에 문자를 charAt으로 찾았을 때 위치 값을 벗어나면 StringIndexOutOfBoundsException 예외가 발생하는지 확인하는 테스트")
     void substring() {
         String data = "abc";
