@@ -1,31 +1,32 @@
 package study;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
-        int result = 0;
-
         if (text == null || text.isEmpty()) {
-            return result;
+            return 0;
         }
 
-        if (text.length() == 1) {
-            return Integer.parseInt(text);
-        }
+        String[] tokens = parseText(text);
 
-        String[] tokens;
+        return sum(tokens);
+    }
+
+    private static String[] parseText(String text) {
+        String seperator = ",|:";
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            tokens = m.group(2).split(customDelimiter);
-        } else {
-            tokens = text.split(",|:");
+            seperator = m.group(1);
+            text = m.group(2);
         }
+        return text.split(seperator);
+    }
 
+    private static int sum(String[] tokens) {
+        int result = 0;
         for (String token : tokens) {
             int value = Integer.parseInt(token);
             if (value < 0) {
@@ -33,7 +34,6 @@ public class StringAddCalculator {
             }
             result += value;
         }
-
         return result;
     }
 
