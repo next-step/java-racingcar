@@ -61,7 +61,7 @@ public class StringTest {
         assertThatThrownBy(() -> {
             str.charAt(-1);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
-        
+
         assertThatThrownBy(() -> {
             str.charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
