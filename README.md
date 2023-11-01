@@ -23,13 +23,15 @@
 ### 기능순서도
 1. `UserNumbers`에 문자열 인풋
 2. `UserNumber`가 문자를 확인
-    - empty, null은 0(UserNumber)
-    - 한자리면 해당 숫자 (UserNumber)
-3. `StringDelimiter`가 문자에 구분자가 있는지 확인
-    - 구분자가 없으면 기본 구분자로 파싱
-    - 구분자가 있으면 구분자를 이용해 파싱
-4. 문자 유효성 검사는 고민중입니다. 🤔 
-5. UserNumbers가 덧셈
+   - empty, null은 0(UserNumber)
+   - 한자리면 해당 숫자 (UserNumber)
+3. `Delimiter`가 문자열에서 구분자를 거릅니다.
+4. `StringDelimiter`가 문자열에서 구분자를 제외하고 파싱합니다.
+   - 구분자가 없으면 기본 구분자로 파싱
+   - 구분자가 있으면 구분자를 이용해 파싱
+5. 문자 유효성 검사는 어디서 해야할까 고민중입니다. 🤔
+6. UserNumbers가 덧셈
+   - UserNumber를 List로 들고 있고 이걸 순회하면서 덧셈
 7. 결과 아웃풋 (StringAddCalculator)
 
 ### 개발을 하면서
@@ -37,6 +39,8 @@
 클래스는 객체의 능동적인 관리자라는 문구에 사로잡혀 있습니다.
 사용자의 문자열들이 스스로 계산을 한다는게 아직 어렵네요.. 🥲
 
+
+### 이상적인 형태
 ```java
 public class StringAddCalculator {
     public static int splitAndSum(String origin) {
@@ -44,5 +48,6 @@ public class StringAddCalculator {
     }
 }
 ```
-
+해당 문서에서 영감을 얻었습니다.
+[TDD - 이름짓기](https://edu.nextstep.camp/s/twbNYuxs/ls/yGGywvSB)
 
