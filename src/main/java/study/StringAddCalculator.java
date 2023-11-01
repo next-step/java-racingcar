@@ -17,6 +17,9 @@ public class StringAddCalculator {
             return sum;
         }
 
+        // 6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)
+        if (text.contains("-")) throw new RuntimeException("음수를 전달할 경우 RuntimeException 예외가 발생!!");
+
         // 2. 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.(예 : “1”)
         integerOrNot = text.matches("-?\\d+");
         if(text.length()==1 && integerOrNot){
@@ -40,7 +43,7 @@ public class StringAddCalculator {
             }
         }
 
-/*
+
         // 5. “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)
         // java.util.regex 패키지의 Matcher, Pattern import
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
@@ -48,27 +51,16 @@ public class StringAddCalculator {
             String customDelimiter = m.group(1);
             String[] tokens= m.group(2).split(customDelimiter);
             // 덧셈 구현
-
             for (int i = 0; i < tokens.length; i++) {
-
                 integerOrNot = tokens[i].matches("-?\\d+");
                 if(integerOrNot){
                     sum += Integer.parseInt(tokens[i]);
                 }
-
                 if(i+1==tokens.length){
                     return sum;
                 }
             }
         }
-
-
-        // 6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)
-
-
-*/
-
-
 
         return 0;
     }
