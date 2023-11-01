@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,7 +25,6 @@ public class DelimiterTest {
     @DisplayName(" 구분자가 있는 문자열의 구분자를 반환")
     @ParameterizedTest(name = "{0}번째 문자는 {1}")
     @MethodSource
-    //@CsvSource(value = {"//;\n1;2;3,;", "//&\n1&2&3&,&", "//+\n1+2+3,+"})
     void delimiterMustReturnCustomDelimiter(String target, String expected){
         Delimiter delimiter = new Delimiter(target);
         assertThat(delimiter.delimiter()).isEqualTo(expected);
@@ -32,9 +32,9 @@ public class DelimiterTest {
 
     private static Stream<Arguments> delimiterMustReturnCustomDelimiter() {
         return Stream.of(
-                Arguments.of("//;\n1;2;3", ";"),
-                Arguments.of("//&\n1&2&3", "&"),
-                Arguments.of("//+\n1+2+3", "+")
+                Arguments.of("//;\n1;2;3", Pattern.quote(";")),
+                Arguments.of("//&\n1&2&3", Pattern.quote("&")),
+                Arguments.of("//+\n1+2+3", Pattern.quote("+"))
         );
     }
 

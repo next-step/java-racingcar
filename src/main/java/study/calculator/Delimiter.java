@@ -15,7 +15,7 @@ public class Delimiter {
     private String parsingDelimiter(String target) {
         Matcher matcher = DELLIMITER_PATTERN.matcher(target);
         if (matcher.find()) {
-            return matcher.group(1);
+            return Pattern.quote(matcher.group(1));
         }
         return DEFAULT_DELIMITER;
     }
