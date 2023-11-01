@@ -5,45 +5,48 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static int splitAndSum(String text) {
-        Operands operands = operands(text);
-        return sum(operands);
+    private final String defaultDelimiterText = ",|:";
+    private final String defaultRegex = "//(.)\n(.*)";
+
+    public int splitAndSum(String text) {
+        Operand operand = operand(text);
+        return sum(operand);
     }
 
-    private static Operands operands(String text) {
-        Operands operands = new Operands(new ArrayList<>());
+    private Operand operand(String text) {
+        Operand operand = new Operand(new ArrayList<>());
 
         boolean isTextNullOrEmpty = text == null || text.isEmpty();
         if (isTextNullOrEmpty) {
-            return operands;
+            return operand;
         }
 
-        String delimiter = ",|:";
+        Delimiter delimiter = new Delimiter(defaultDelimiterText);
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = Pattern.compile(defaultRegex).matcher(text);
         if (m.find()) {
-            delimiter = m.group(1);
+            delimiter = new Delimiter(m.group(1));
             text = m.group(2);
         }
 
 
-        String[] tokens = text.split(delimiter);
+        String[] tokens = text.split(delimiter.delimiter());
         for (String token : tokens) {
-            operands.add(parsedInt(token));
+            operand.add(parsedInt(token));
         }
 
-        return operands;
+        return operand;
     }
 
-    private static int sum(Operands operands) {
+    private int sum(Operand operand) {
         int result = 0;
-        for(int i = 0; i < operands.length(); i++) {
-            result += operands.operand(i);
+        for (int i = 0; i < operand.length(); i++) {
+            result += operand.operand(i);
         }
         return result;
     }
 
-    private static int parsedInt(String text) {
+    private int parsedInt(String text) {
         int result = Integer.parseInt(text);
         if (result < 0) throw new RuntimeException("음수는 사용할 수 없습니다.");
         return result;

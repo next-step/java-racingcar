@@ -2,10 +2,10 @@ package calculator;
 
 import java.util.List;
 
-public class Operands {
+public class Operand {
     List<Integer> operands;
 
-    public Operands(List<Integer> operands) {
+    public Operand(List<Integer> operands) {
         this.operands = operands;
     }
 
