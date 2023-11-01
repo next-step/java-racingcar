@@ -17,7 +17,7 @@ public class StringDelimiterTest {
     void checkDefaultDelimiter(){
         String target = "1,2,3";
         StringDelimiter stringDelimiter = new StringDelimiter(target);
-        List<String> stringList = stringDelimiter.filteredString(DEFAULT_DELIMITER);
+        List<String> stringList = stringDelimiter.filteredString(new Delimiter(target));
         assertThat(stringList).doesNotContain(",");
     }
 
@@ -26,7 +26,7 @@ public class StringDelimiterTest {
     void checkCustomDelimiter(){
         String target = "//:\n1:2:3";
         StringDelimiter stringDelimiter = new StringDelimiter(target);
-        List<String> stringList = stringDelimiter.filteredString(":");
+        List<String> stringList = stringDelimiter.filteredString(new Delimiter(target));
         assertThat(stringList).doesNotContain(":");
     }
 }
