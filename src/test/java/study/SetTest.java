@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class SetTest {
+class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
