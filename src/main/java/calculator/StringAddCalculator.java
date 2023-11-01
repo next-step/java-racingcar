@@ -13,20 +13,28 @@ public class StringAddCalculator {
 
         if (text.contains("-")) throw new RuntimeException("input has negative");
 
+        String[] tokens = split(text);
+
+        return sum(tokens);
+    }
+
+    private static int sum(String[] tokens) {
+        return Arrays.stream(tokens).mapToInt(Integer::parseInt).sum();
+    }
+
+    private static String[] split(String text) {
         String[] tokens;
         Matcher m = CUSTOM_DELIMITERS_PATTERN.matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             tokens = m.group(2).split(customDelimiter);
-        } else
-            tokens = text.split("[,:]");
-
-        return Arrays.stream(tokens)
-                .mapToInt(Integer::parseInt)
-                .sum();
+        } else tokens = text.split("[,:]");
+        return tokens;
     }
 
     private static boolean isNullOrBlank(String text) {
         return text == null || text.isBlank();
     }
+
+
 }
