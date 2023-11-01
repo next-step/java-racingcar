@@ -30,7 +30,7 @@ public class StringAddCalculator {
 
         String[] tokens = text.split(delimiter);
         for (String token : tokens) {
-            operand.add(integer(token));
+            operand.add(parsedInt(token));
         }
 
         return operand;
@@ -44,7 +44,7 @@ public class StringAddCalculator {
         return result;
     }
 
-    private static int integer(String text) {
+    private static int parsedInt(String text) {
         int result = Integer.parseInt(text);
         if (result < 0) throw new RuntimeException("음수는 사용할 수 없습니다.");
         return result;
