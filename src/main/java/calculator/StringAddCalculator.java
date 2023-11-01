@@ -10,10 +10,11 @@ public class StringAddCalculator {
         }
 
         if (input.isSingleDigit()) {
-            return Integer.parseInt(text);
+            return Util.strToInt(text);
         }
 
-        return 0;
+        Calculator calculator = new Calculator();
+        return calculator.sum(text);
     }
 
 }
