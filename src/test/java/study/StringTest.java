@@ -23,4 +23,16 @@ public class StringTest {
 
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    @DisplayName("String의 length를 넘어서는 index를 참조하면 StringIndexOutOfBoundsException 발생한다")
+    void 요구사항3(){
+        String myString = "abc";
+        int outOfIndex = 5;
+
+        assertThatThrownBy(()->{
+            myString.charAt(outOfIndex);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: "+outOfIndex);
+    }
 }
