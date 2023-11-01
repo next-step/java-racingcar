@@ -16,7 +16,11 @@ public class UserNumber {
         if(isBlank(userString)){
             return 0;
         }
-        return Integer.parseInt(userString);
+        int parseInt = Integer.parseInt(userString);
+        if(parseInt<0) {
+            throw new RuntimeException();
+        }
+        return parseInt;
     }
 
     private static boolean isBlank(String userString) {
