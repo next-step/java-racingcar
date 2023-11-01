@@ -19,18 +19,16 @@ public class StringAddCalculator {
             return operand;
         }
 
+        String delimiter = ",|:";
+
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
-            for (String token : tokens) {
-                operand.add(integer(token));
-            }
-            return operand;
+            delimiter = m.group(1);
+            text = m.group(2);
         }
 
 
-        String[] tokens = text.split(",|:");
+        String[] tokens = text.split(delimiter);
         for (String token : tokens) {
             operand.add(integer(token));
         }
