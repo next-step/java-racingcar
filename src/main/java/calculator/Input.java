@@ -2,18 +2,18 @@ package calculator;
 
 public class Input {
 
-    private String input;
+    private final String text;
 
-    public Input(String input) {
-        this.input = input;
+    public Input(String text) {
+        this.text = text;
     }
 
     public boolean isEmptyOrNull() {
-        return this.input == null || this.input.isBlank();
+        return this.text == null || this.text.isBlank();
     }
 
     public boolean isSingleDigit() {
-        return this.input.length() == 1 && Character.isDigit(this.input.charAt(0));
+        return this.text.length() == 1 && Character.isDigit(this.text.charAt(0));
     }
 
 }
