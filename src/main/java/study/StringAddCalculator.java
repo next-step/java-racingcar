@@ -5,8 +5,13 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final String DEFAULT_DELIMITERS = ",|:";
+    private static final Pattern CUSTOM_PATTERN_COMPILE = Pattern.compile("//(.)\n(.*)");
+
+    private StringAddCalculator() {}
+
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty()) {
+        if (isEmptyOrNull(text)) {
             return 0;
         }
 
@@ -16,25 +21,25 @@ public class StringAddCalculator {
     }
 
     private static String[] parseText(String text) {
-        String seperator = ",|:";
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        String delimiters = DEFAULT_DELIMITERS;
+        Matcher m = CUSTOM_PATTERN_COMPILE.matcher(text);
         if (m.find()) {
-            seperator = m.group(1);
+            delimiters = m.group(1);
             text = m.group(2);
         }
-        return text.split(seperator);
+        return text.split(delimiters);
     }
 
     private static int sum(String[] tokens) {
         int result = 0;
         for (String token : tokens) {
-            int value = Integer.parseInt(token);
-            if (value < 0) {
-                throw new RuntimeException();
-            }
-            result += value;
+            result += StringConverter.convertToInteger(token);
         }
         return result;
+    }
+
+    private static boolean isEmptyOrNull(String text) {
+        return text == null || text.isEmpty();
     }
 
 }
