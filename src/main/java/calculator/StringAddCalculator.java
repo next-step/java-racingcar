@@ -1,0 +1,43 @@
+package calculator;
+
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringAddCalculator {
+    private static final int ZERO = 0;
+    private static final Pattern CUSTOM_DELIMITERS_PATTERN = Pattern.compile("//(.)\n(.*)");
+
+    public static int splitAndSum(String text) {
+
+        if (isNullOrBlank(text)) {
+            return ZERO;
+        }
+
+        if (text.contains("-")) throw new IllegalArgumentException("input has negative");
+
+        String[] tokens = split(text);
+
+        return sum(tokens);
+    }
+
+    private static int sum(String[] tokens) {
+        return Arrays.stream(tokens).mapToInt(Integer::parseInt).sum();
+    }
+
+    private static String[] split(String text) {
+        String[] tokens;
+        Matcher m = CUSTOM_DELIMITERS_PATTERN.matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            tokens = m.group(2).split(customDelimiter);
+        } else tokens = text.split("[,:]");
+        return tokens;
+    }
+
+    private static boolean isNullOrBlank(String text) {
+        return text == null || text.isBlank();
+    }
+
+
+}
