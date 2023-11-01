@@ -1,7 +1,9 @@
 package study;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class StringTest {
@@ -24,5 +26,16 @@ class StringTest {
         String substringDummy = dummy.substring(1, 4);
 
         assertThat(substringDummy).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName(value = "chatAtTest:[exception test]")
+    void chatAtTest(){
+        String dummy = "abc";
+
+        assertThatThrownBy(()->{
+            dummy.charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining(("String index out of range: 3"));
     }
 }
