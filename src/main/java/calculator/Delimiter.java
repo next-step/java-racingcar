@@ -7,7 +7,7 @@ public class Delimiter {
         this.delimiter = delimiter;
     }
 
-    public String delimiter(){
+    public String delimiter() {
         return this.delimiter;
     }
 }
