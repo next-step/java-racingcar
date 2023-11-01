@@ -16,10 +16,7 @@ public class StringClassStudyTest {
         String[] split = test.split(",");
 
         // then
-        assertAll(
-                () -> assertThat(split).contains("1")
-                , () -> assertEquals(split.length,2)
-        );
+        assertThat(split).containsExactly("1","2");
     }
 
     @Test
