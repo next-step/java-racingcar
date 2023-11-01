@@ -17,7 +17,8 @@ public class StringAddCalculator {
 		String[] numbers;
 		if (matcher.find()) {
 			String customDelimiter = matcher.group(1);
-			numbers = split(input, customDelimiter);
+			String text = matcher.group(2);
+			numbers = split(text, customDelimiter);
 			return sum(numbers);
 		}
 
@@ -29,8 +30,8 @@ public class StringAddCalculator {
 		return input.split(delimiter);
 	}
 
-	private static Matcher patternMatcher(String input) {
-		return Pattern.compile("//(.)\n(.*)").matcher(input);
+	private static Matcher patternMatcher(String text) {
+		return Pattern.compile("//(.)\n(.*)").matcher(text);
 	}
 
 	private static int sum(String[] numbers) {
