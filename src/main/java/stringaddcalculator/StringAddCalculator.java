@@ -12,9 +12,9 @@ public class StringAddCalculator {
     private StringAddCalculator() {
     }
 
-    public static final int NULL_EMPTY_STRING_RESULT = 0;
-    public static final String BASE_SPLIT_REGEX = "[,:]";
-    public static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final int NULL_EMPTY_STRING_RESULT = 0;
+    private static final String BASE_SPLIT_REGEX = "[,:]";
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(final String inputString) {
         if (StringValidator.isNullOrEmptyString(inputString)) {
