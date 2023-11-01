@@ -33,17 +33,18 @@ public class SetCollectionTest {
 	    // when
 	    // then
 		assertThat(numbersSize).isEqualTo(3);
+		assertThat(numbers).hasSize(3);
 	}
 
 	@DisplayName("contains()메소드를 통해 값이 존재하는지 확인한다")
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
-	void checkContains(int targetNumbers) {
+	void checkContains(int targetNumber) {
 	    // given
 	    // when
 	    // then
-		assertThat(numbers.contains(targetNumbers))
-				.isTrue();
+		// 불필요한 주석
+		assertThat(numbers.contains(targetNumber));
 	}
 
 	@DisplayName("contains 메소드의 결과가 다른 경우")
@@ -53,6 +54,7 @@ public class SetCollectionTest {
 	    // given
 	    // when
 	    // then
+		// 불필요한 주석
 		assertThat(numbers.contains(targetNumbers))
 				.isEqualTo(expectedResult);
 	}
