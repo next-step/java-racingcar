@@ -5,12 +5,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final int ZERO = 0;
     private static final Pattern CUSTOM_DELIMITERS_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String text) {
 
         if (isNullOrBlank(text)) {
-            return 0;
+            return ZERO;
         }
 
         if (text.contains("-")) throw new RuntimeException("input has negative");
