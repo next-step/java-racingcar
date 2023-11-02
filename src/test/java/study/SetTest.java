@@ -32,9 +32,9 @@ public class SetTest {
     void size () {
 
         assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
-    @Test
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     @DisplayName("요구사항2: Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인 테스트")
@@ -43,15 +43,10 @@ public class SetTest {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @Test
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("요구사항3: 입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현")
     void containsTestWithParams(int input, boolean expected) {
-
-        System.out.print(numbers.contains(input) + " : " + expected+ " = ");
-        System.out.println(numbers.contains(input) == numbers.contains(expected));
-        //???
 
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
