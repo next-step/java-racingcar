@@ -1,9 +1,9 @@
 package stringaddcalculator;
 
-import stringaddcalculator.support.IntegerParser;
+import stringaddcalculator.domain.PositiveInteger;
+import stringaddcalculator.domain.PositiveIntegers;
+import stringaddcalculator.support.Splitter;
 import stringaddcalculator.validator.StringValidator;
-
-import java.util.Arrays;
 
 public class StringAddCalculator {
 
@@ -18,18 +18,13 @@ public class StringAddCalculator {
         }
 
         if (StringValidator.isOneCharacterString(inputString)) {
-            return IntegerParser.parsePositiveInteger(inputString);
+            PositiveInteger positiveInteger = PositiveInteger.of(inputString);
+            return positiveInteger.getNumber();
         }
 
-        String[] splitStrings = Splitter.splitInputString(inputString);
-        return sumStringArray(splitStrings);
-    }
+        String[] strings = Splitter.splitInputString(inputString);
+        PositiveIntegers positiveIntegers = PositiveIntegers.ofStringArray(strings);
 
-
-
-    private static int sumStringArray(String[] splitStrings) {
-        return Arrays.stream(splitStrings)
-                .mapToInt(IntegerParser::parsePositiveInteger)
-                .sum();
+        return positiveIntegers.sumAll();
     }
 }
