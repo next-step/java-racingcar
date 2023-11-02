@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
     public static int splitAndSum(String text) {
         int sum = 0;
         if (isNullOrBlank(text)) {
@@ -22,7 +23,7 @@ public class StringAddCalculator {
     }
 
     private static String[] splitText(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = PATTERN.matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens= m.group(2).split(customDelimiter);
