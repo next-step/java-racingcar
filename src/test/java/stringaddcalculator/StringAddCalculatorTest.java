@@ -51,7 +51,7 @@ class StringAddCalculatorTest {
         }
 
         @Test
-        @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다.")
+        @DisplayName("숫자 사이에 구분자를 컴마(,)와 콜론(:)을 사용하여도 두 숫자의 합을 반환한다.")
         void splitAndSum_숫자두개이상_구분자두개() {
             String inputString = "1:2,3:4";
 
