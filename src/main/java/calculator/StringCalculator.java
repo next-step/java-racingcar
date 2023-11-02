@@ -15,7 +15,11 @@ public class StringCalculator {
         String[] elements = input.split(delimiter);
         int sum = 0;
         for (int i = 0; i < elements.length; i++) {
-            sum += Integer.parseInt(elements[i]);
+            int now = Integer.parseInt(elements[i]);
+            if (now < 0) {
+                throw new RuntimeException();
+            }
+            sum += now;
         }
         return sum;
     }

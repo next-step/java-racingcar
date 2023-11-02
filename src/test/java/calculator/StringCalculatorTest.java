@@ -1,5 +1,6 @@
 package calculator;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,5 +27,17 @@ public class StringCalculatorTest {
     void calculate_커스텀_구분자() {
         assertThat(StringCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
         assertThat(StringCalculator.calculate("//;::\n1;::2;::3")).isEqualTo(6);
+    }
+
+    @Test
+    void calculate_기본_구분자_숫자이외의_값() {
+        Assertions.assertThatThrownBy(
+                () -> StringCalculator.calculate("1,2,a")).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void calculate_기본_구분자_음수값() {
+        Assertions.assertThatThrownBy(
+                () -> StringCalculator.calculate("1,2,-1")).isInstanceOf(RuntimeException.class);
     }
 }
