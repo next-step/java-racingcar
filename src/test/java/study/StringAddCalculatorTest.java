@@ -62,11 +62,25 @@ public class StringAddCalculatorTest {
     }
 
 
-
     @Test
-    public void splitAndSum_negative() throws Exception {
-        StringAddCalculator stringAddCalculator = new StringAddCalculator();
-        assertThatThrownBy(() -> stringAddCalculator.splitAndSum("-1,2,3"))
+    @DisplayName("양수 변환, 문자를 정수로 변환한다. 음수인 경우 Exception 발생")
+    public void positivie_negative() throws Exception {
+        assertThatThrownBy(() -> new PositiveNumber("-1"))
                 .isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    @DisplayName("양수 변환, 문자를 정수로 변환한다. 숫자가 아닌 경우 Exception 발생")
+    public void positiveNumber_nonNumber() throws Exception {
+        assertThatThrownBy(() -> new PositiveNumber("abc"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("양수 변환, 문자를 정수로 변환한다.")
+    public void positiveNumber_number() {
+        PositiveNumber positiveNumber = new PositiveNumber("1");
+        assertThat(positiveNumber.value()).isEqualTo(1);
+    }
+
 }

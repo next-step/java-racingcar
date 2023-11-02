@@ -33,32 +33,12 @@ public class StringAddCalculator {
         int result = 0;
 
         for (String number : numbers) {
-            checkInteger(number);
-            result += Integer.parseInt(number);
+            PositiveNumber positiveNumber = new PositiveNumber(number);
+            result += positiveNumber.value();
         }
 
         return result;
     }
-
-    private void checkInteger(String number) {
-        checkNumber(number);
-        negative(number);
-    }
-
-    private void checkNumber(String number) {
-        try {
-            Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수만 입력 가능합니다..", e);
-        }
-    }
-
-    private void negative(String number) {
-        if(Integer.parseInt(number) < 0) {
-            throw new IllegalArgumentException("음수는 사용할 수 없습니다.");
-        }
-    }
-
 
     private String delimiterRegex(List<String> delimiters) {
         StringBuilder stringBuilder = new StringBuilder();
