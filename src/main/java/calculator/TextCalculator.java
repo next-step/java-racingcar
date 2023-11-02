@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
 
-public class StringCalculator {
+public class TextCalculator {
 
     public static final String DEFAULT_DELIMITER = ",|\\:";
 
