@@ -1,9 +1,13 @@
 package calculator;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StringAddCalculatorTest {
     @Test
@@ -13,6 +17,12 @@ public class StringAddCalculatorTest {
 
         result = StringAddCalculator.splitAndSum("");
         assertThat(result).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자_NullAndEmptySource_적용(String text) {
+        assertTrue(text == null || text.trim().isEmpty());
     }
 
     @Test

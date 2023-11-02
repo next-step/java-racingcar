@@ -5,48 +5,64 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    static final String SEPARATOR = ",|:";
+    public static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String SEPARATOR = ",|:";
+    public static final int MAGIC_NUMBER = 0;
 
     public static int splitAndSum(String text) {
 
-        if (text == null || text.isEmpty()) {
-            return 0;
+        if (isNullOrEmpty(text)) {
+            return MAGIC_NUMBER;
         }
 
-        Matcher m = getMatcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] values = m.group(2).split(customDelimiter);
-
-            return sum(values);
+        Matcher customPattern = getMatcher(text);
+        if (checkCustomPattern(customPattern)) {
+            return sum(disuniteValue(customPattern));
         }
 
         return separatorSum(text);
     }
 
-    private static Matcher getMatcher(String text) {
-        return Pattern.compile("//(.)\n(.*)").matcher(text);
-    }
-
     private static int sum(String[] values) {
         int num = 0;
         for (String value : values) {
-            validate(value);
-
-            num += Integer.parseInt(value);
+            num += validate(value);
         }
         return num;
-    }
-
-    private static void validate(String value) {
-        if (Integer.parseInt(value) < 0) {
-            throw new RuntimeException();
-        }
     }
 
     private static int separatorSum(String text) {
         String[] numbers = text.split(SEPARATOR);
         return sum(numbers);
+    }
+
+    private static boolean checkCustomPattern(Matcher customPattern) {
+        return customPattern.find();
+    }
+
+    private static String[] disuniteValue(Matcher customPattern) {
+        String customDelimiter = customPattern.group(1);
+        return customPattern.group(2).split(customDelimiter);
+    }
+
+    private static int validate(String value) {
+        int number = stringToInt(value);
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+        return number;
+    }
+
+    private static int stringToInt(String value) {
+        return Integer.parseInt(value);
+    }
+
+    private static boolean isNullOrEmpty(String text) {
+        return text == null || text.isEmpty();
+    }
+
+    private static Matcher getMatcher(String text) {
+        return CUSTOM_PATTERN.matcher(text);
     }
 
 }
