@@ -14,24 +14,22 @@ public class StringAddCalculator {
 
     private String customDelimiter;
     private String numberText;
-    private String[] numbers;
 
 
     public int splitAndSum(String text) {
         clear();
-        String target = checkEmpty(text);
-        parse(target);
-        split();
-        return sum();
+        String[] numbers = split(text);
+        return sum(numbers);
     }
 
-    private void split() {
+    public String[] split(String text) {
+        parse(text);
         List<String> delimiters = delimiters(customDelimiter);
         String delimiterRegex = delimiterRegex(delimiters);
-        numbers = numberText.split(delimiterRegex);
+        return numberText.split(delimiterRegex);
     }
 
-    private int sum() {
+    private int sum(String[] numbers) {
         int result = 0;
 
         for (String number : numbers) {
@@ -83,8 +81,9 @@ public class StringAddCalculator {
     }
 
     private void parse(String text) {
+        String target = checkEmpty(text);
 
-        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(target);
 
         if (matcher.matches()) {
             customDelimiter = matcher.group(1);
@@ -93,7 +92,7 @@ public class StringAddCalculator {
         }
 
         customDelimiter = null;
-        numberText = text;
+        numberText = target;
     }
 
     private String checkEmpty(String text) {
@@ -107,6 +106,5 @@ public class StringAddCalculator {
     public void clear() {
         customDelimiter = null;
         numberText = null;
-        numbers = null;
     }
 }
