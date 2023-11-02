@@ -1,9 +1,7 @@
 package stringaddcalculator;
 
-import stringaddcalculator.domain.PositiveInteger;
 import stringaddcalculator.domain.PositiveIntegers;
 import stringaddcalculator.support.Splitter;
-import stringaddcalculator.validator.StringValidator;
 
 public class StringAddCalculator {
 
@@ -13,7 +11,7 @@ public class StringAddCalculator {
     private static final int NULL_EMPTY_STRING_RESULT = 0;
 
     public static int splitAndSum(final String inputString) {
-        if (StringValidator.isNullOrEmptyString(inputString)) {
+        if (isNullOrEmptyString(inputString)) {
             return NULL_EMPTY_STRING_RESULT;
         }
 
@@ -21,5 +19,9 @@ public class StringAddCalculator {
         PositiveIntegers positiveIntegers = PositiveIntegers.ofStringArray(strings);
 
         return positiveIntegers.sumAll();
+    }
+
+    private static boolean isNullOrEmptyString(final String inputString) {
+        return inputString == null || inputString.isEmpty();
     }
 }
