@@ -4,20 +4,15 @@ import java.util.Objects;
 
 public class Calculator {
 
-    public static final String LINE_BREAKING = "\n";
+    private static final String NEW_LINE = "\n";
 
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
             return 0;
         }
 
-        if (text.contains(LINE_BREAKING)) {
-            Delimiter delimiter = new CustomDelimiter();
-            return getAdditionResult(delimiter.getTokens(text));
-        }
-
-        Delimiter delimiter = new DefaultDelimiter();
-        return getAdditionResult(delimiter.getTokens(text));
+        Delimiter delimiter = text.contains(NEW_LINE) ? new CustomDelimiter() : new DefaultDelimiter();
+        return sum(delimiter.split(text));
     }
 
     private static void checkNegativeNumber(int tokenNumber) {
@@ -34,14 +29,14 @@ public class Calculator {
         }
     }
 
-    private static int getAdditionResult(String[] tokens) {
-        int additionResult = 0;
+    private static int sum(String[] tokens) {
+        int result = 0;
         for (String token : tokens) {
             int tokenNumber = toNumbers(token);
             checkNegativeNumber(tokenNumber);
-            additionResult += tokenNumber;
+            result += tokenNumber;
         }
-        return additionResult;
+        return result;
     }
 
     private static boolean isNullOrEmpty(String text) {
