@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class SpringTest {
     @Test
@@ -23,5 +25,26 @@ public class SpringTest {
         int endIndex = input.indexOf(')');
         String result = input.substring(startIndex, endIndex);
         assertThat(result).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("when input is 'abc', test 'charAt' Exception1")
+    void testRequirement3_1() {
+        String input = "abc";
+        assertThatThrownBy(() -> {
+            input.charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+          .hasMessageContaining("String index out of range: 3");
+    }
+
+    @Test
+    @DisplayName("when input is 'abc', test 'charAt' Exception2")
+    void testRequirement3_2() {
+        String input = "abc";
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> {
+                    input.charAt(3);
+                })
+                .withMessage("String index out of range: 3");
     }
 }
