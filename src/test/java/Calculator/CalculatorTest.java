@@ -28,4 +28,10 @@ class CalculatorTest {
         assertThat(cal("1:2")).isEqualTo(3);
         assertThat(cal("1:2:3")).isEqualTo(6);
     }
+
+    @Test
+    void multiValue_custom() {
+        assertThat(cal("//;\n1;2;3")).isEqualTo(6);
+        assertThat(cal("//@\n1@2@3")).isEqualTo(6);
+    }
 }
