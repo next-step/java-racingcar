@@ -13,21 +13,18 @@ public class StringAddCalculator {
     private static final Integer STRING_LENGTH_ONE = 1;
 
     public static int splitAndSum(String sumStr) {
-
-        if (dataCheck(sumStr)) {
+        if (checkForNullOrBlank(sumStr)) {
             return DEFUALT_VALUE;
         }
 
         if (sumStr.length() == STRING_LENGTH_ONE) {
-            validatePositiveInteger(sumStr);
-            return Integer.parseInt(sumStr);
+            return validatePositiveInteger(sumStr);
         }
 
-        String[] numbers = extractNumbersFromSeparator(sumStr);
-        return addition(numbers);
+        return addition(extractNumbersFromSeparator(sumStr));
     }
 
-    private static boolean dataCheck(String sumStr) {
+    private static boolean checkForNullOrBlank(String sumStr) {
         return sumStr == null || sumStr.isEmpty();
     }
 
@@ -44,13 +41,10 @@ public class StringAddCalculator {
     }
 
     private static int addition(String[] numbers) {
-        return Arrays.stream(numbers).map(s -> {
-            validatePositiveInteger(s);
-            return s;
-        }).mapToInt(Integer::parseInt).sum();
+        return Arrays.stream(numbers).mapToInt(s -> validatePositiveInteger(s)).sum();
     }
 
-    private static void validatePositiveInteger(String str) {
+    private static int validatePositiveInteger(String str) {
         try {
             if (Integer.parseInt(str) < 0) {
                 throw new RuntimeException();
@@ -58,5 +52,6 @@ public class StringAddCalculator {
         } catch (Exception e) {
             throw new InputMismatchException();
         }
+        return Integer.parseInt(str);
     }
 }
