@@ -2,8 +2,8 @@
 
 ## STEP3 요구사항
 * 입/출력
-- [ ] 자동차 대수 입력
-- [ ] 이동 시도 횟수 입력
+- [X] 자동차 대수 입력
+- [X] 이동 시도 횟수 입력
 - [ ] 입력은 숫자만 가능하다.
 - [ ] 각 시도별 이동결과를 출력한다.
 * 자동차
@@ -17,3 +17,12 @@
 - [ ] 자동차 대수와 이동 횟수는 0보다 커야한다.
 - [ ] 자동차 대수는 2대 이상이어야 한다.
 - [ ] 이동 결과를 출력한다.
+
+### commit message 종류를 다음과 같이 구분
+feat (feature)
+fix (bug fix)
+docs (documentation)
+style (formatting, missing semi colons, …)
+refactor
+test (when adding missing tests)
+chore (maintain)
