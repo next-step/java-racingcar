@@ -56,7 +56,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("charAt(실패) - String의 index범위밖으로 CharAt을 사용하면 StringIndexOutOfBoundsException이 발생한다")
+    @DisplayName("charAt(실패) - String의 index범위밖으로 CharAt을 사용하면 StringIndexOutOfBoundsException를 throw한다.")
     void charAtFail() {
         assertThatThrownBy(() -> "abc".charAt(10))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
