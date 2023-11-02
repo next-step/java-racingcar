@@ -68,7 +68,4 @@ class PositiveIntegerTest {
                     .hasMessage("양수만 입력 가능합니다.");
         }
     }
-
-
-
 }
