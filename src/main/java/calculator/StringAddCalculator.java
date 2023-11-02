@@ -7,40 +7,50 @@ import java.util.stream.Stream;
 
 public class StringAddCalculator {
 
-    static final Pattern CUNSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
-    static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern CUNSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITERS = ",|:";
 
-    public static int splitAndSum(String value) {
-        if(isNullOrEmpty(value )) return  0;
+    private StringAddCalculator(){
+        throw new IllegalStateException("Utility Class");
+    }
 
-        if(value.contains("-")) throw new  RuntimeException();
 
-        String[] array;
-        Matcher matcher = CUNSTOM_PATTERN.matcher(value);
-        if(matcher.find()) {
-            array = separateTextWithCustomPattern(matcher);
-        }else{
-            array = value.split(DEFAULT_DELIMITER);
-        }
+    public static int splitAndSum(String text) {
+        if(isNullOrEmpty(text )) return  0;
+
+        if(text.contains("-")) throw new  RuntimeException();
+
+        String[] array = splitText(text);
+
         return  sum(array);
     }
-
-    static boolean isNullOrEmpty(String value){
-        return  value == null || value.isEmpty();
+    private static boolean isNullOrEmpty(String text){
+        return  text == null || text.isEmpty();
     }
 
-    static String[] separateTextWithCustomPattern(Matcher matcher){
+    private static String[] splitText(String text){
+        Matcher m = CUNSTOM_PATTERN.matcher(text);
 
-        String customDelimiter = matcher.group(1);
-        String value = matcher.group(2);
+        String delimiter = findDelimiter(m);
 
-        return value.split(customDelimiter);
-
+        if(!delimiter.equals(DEFAULT_DELIMITERS)){
+            text = m.group(2);
+        }
+        return  text.split(delimiter);
     }
 
-    
-    static int sum(String[] valueArray){
-        return Stream.of(valueArray).mapToInt(Integer::parseInt).sum();
+
+    private static String findDelimiter(Matcher m) {
+
+        if (m.find()) {
+            return DEFAULT_DELIMITERS + '|' + m.group(1);
+        }
+        return DEFAULT_DELIMITERS;
+    }
+
+
+    private static int sum(String[] textArray){
+        return Stream.of(textArray).mapToInt(Integer::parseInt).sum();
     }
 
 }
