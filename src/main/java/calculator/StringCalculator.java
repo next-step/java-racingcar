@@ -13,18 +13,8 @@ public class StringCalculator {
         if (input == null || input.isEmpty()) {
             return 0;
         }
-
         String[] elements = removeCustomDelimiter(input).split(getDelimiter(input));
-
-        int sum = 0;
-        for (int i = 0; i < elements.length; i++) {
-            int num = parseInt(elements[i]);
-            if (num < 0) {
-                throw new RuntimeException();
-            }
-            sum += num;
-        }
-        return sum;
+        return sum(transfer(elements));
     }
 
     private static String getDelimiter(String text) {
@@ -41,5 +31,29 @@ public class StringCalculator {
             return m.group(2);
         }
         return text;
+    }
+
+    private static Integer[] transfer(String[] elements) {
+        Integer[] nums = new Integer[elements.length];
+        for (int i = 0; i < elements.length; i++) {
+            nums[i] = parseInt(elements[i]);
+        }
+        return nums;
+    }
+
+    private static int sum(Integer[] nums) {
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            checkPositive(num);
+            sum += num;
+        }
+        return sum;
+    }
+
+    private static void checkPositive(int num) {
+        if (num < 0) {
+            throw new RuntimeException();
+        }
     }
 }
