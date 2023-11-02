@@ -47,4 +47,18 @@ class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("1,2:3");
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자로 분리한 각 숫자의 합을 반환")
+    void customSplitTest() {
+        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("커스텀, 기본 구분자로 분리한 각 숫자의 합을 반환")
+    void defaultAndcustomSplitTest() {
+        int result = StringAddCalculator.splitAndSum("//;\n1;2,3:4");
+        assertThat(result).isEqualTo(10);
+    }
 }
