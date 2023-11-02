@@ -27,4 +27,10 @@ public class StringAddCalculatorTest {
 		int result = stringAddCalculator.splitAndSum("1");
 		assertThat(result).isEqualTo(1);
 	}
+
+	@Test
+	public void splitAndSum_쉼표구분자() throws Exception {
+		int result = stringAddCalculator.splitAndSum("1,2");
+		assertThat(result).isEqualTo(3);
+	}
 }
