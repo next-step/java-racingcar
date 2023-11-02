@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 	private final int ZERO = 0;
 
-	public String[] split(String input) {
+	public String[] StringNumbers(String input) {
 		if(input == null || input.isEmpty()) {
 			return new String[]{};
 		}
@@ -21,7 +21,7 @@ public class StringAddCalculator {
 	}
 
 	public int sum(String[] numbers) {
-		if(numbers.length == 0) {
+		if(numbers.length == ZERO) {
 			return ZERO;
 		}
 
@@ -29,17 +29,14 @@ public class StringAddCalculator {
 			throw new RuntimeException("주어진 숫자에 음수가 있습니다");
 		}
 
-		int sum = 0;
-		for(String number : numbers) {
-			sum += Integer.parseInt(number);
-		}
-
-		return sum;
+		Number x = new Sum(numbers);
+		return x.intValue();
 	}
 
 	private boolean hasNegativeNumbers(String[] numbers) {
 		for(String number : numbers) {
-			if(Integer.parseInt(number) < 0) return true;
+			Boolean b = new LessThan(number, 0);
+			if(b.satisfied()) return true;
 		}
 
 		return false;
