@@ -21,11 +21,11 @@ public class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
-    // 요구사항 3
     @Test
     @DisplayName("요구사항3 : 특정위치 문자 가져오기")
     void charAt() {
         String given = "abc";
+        assertThat(given.charAt(0)).isEqualTo('a');
         assertThat('a').isEqualTo(given.charAt(0));
         assertThatThrownBy(() ->{
             given.charAt(3);
