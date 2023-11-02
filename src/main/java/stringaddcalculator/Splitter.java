@@ -11,7 +11,7 @@ public class Splitter {
     private static final String BASE_SPLIT_REGEX = "[,:]";
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    public static String[] splitInputString(String inputString) {
+    public static String[] splitInputString(final String inputString) {
         Matcher matcher = CUSTOM_PATTERN.matcher(inputString);
 
         if (matcher.find()) {
