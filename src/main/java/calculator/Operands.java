@@ -6,9 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Operands {
-    private final String DEFAULT_DELIMITER_TEXT = ",|:";
-    private final String REGEX_FOR_FIND_CUSTOM_DELIMITER = "//(.)\n(.*)";
-    private final Pattern PATTERN_FOR_FIND_CUSTOM_DELIMITER = Pattern.compile(REGEX_FOR_FIND_CUSTOM_DELIMITER);
+    private final static String DEFAULT_DELIMITER_TEXT = ",|:";
+    private final static String REGEX_FOR_FIND_CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private final static Pattern PATTERN_FOR_FIND_CUSTOM_DELIMITER = Pattern.compile(REGEX_FOR_FIND_CUSTOM_DELIMITER);
 
     private List<Integer> operands;
 
