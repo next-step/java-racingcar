@@ -16,4 +16,10 @@ class CalculatorTest {
     void singleValue() {
         assertThat(cal("1")).isEqualTo(1);
     }
+
+    @Test
+    void multiValue_comma() {
+        assertThat(cal("1,2")).isEqualTo(3);
+        assertThat(cal("1,2,3")).isEqualTo(6);
+    }
 }
