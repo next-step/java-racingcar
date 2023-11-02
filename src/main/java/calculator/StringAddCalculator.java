@@ -72,8 +72,8 @@ public class StringAddCalculator {
     }
 
     private static Matcher getMatcher(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        return m;
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+        return matcher;
     }
 
 }
