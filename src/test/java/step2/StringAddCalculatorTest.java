@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 	private StringAddCalculator stringAddCalculator;
@@ -44,5 +45,11 @@ public class StringAddCalculatorTest {
 	public void splitAndSum_custom_구분자() throws Exception {
 		int result = stringAddCalculator.splitAndSum("//;\n1;2;3");
 		assertThat(result).isEqualTo(6);
+	}
+
+	@Test
+	public void splitAndSum_negative() throws Exception {
+		assertThatThrownBy(() -> stringAddCalculator.splitAndSum("-1,2,3"))
+				.isInstanceOf(RuntimeException.class);
 	}
 }
