@@ -1,65 +1,47 @@
 package step2;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private static final Pattern STRING_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String BASIC_DELIMITER = ",|:";
+    private static final String SPECIAL_DELIMITER = "//(.)\n(.*)";
 
-    public static int splitAndSum(String data) {
-        if (data == null || data.isBlank()) {
+    private static final String NEGATIVE_NUMBER_ERROR = "문자열에 음수가 포함되어 있습니다.";
+
+    private static final Pattern SPECIAL_PATTERN = Pattern.compile(SPECIAL_DELIMITER);
+
+    public static int splitAndSum(String numberStr) {
+        if (numberStr == null || numberStr.isBlank()) {
             return 0;
         }
 
-        String pattern = findPattern(data);
-        if (!pattern.isBlank()) {
-            String[] strings = getNumbers(data, pattern);
-            int result = 0;
-            for (String str : strings) {
-                int num = Integer.parseInt(str);
-                checkPositive(num);
+        List<String> numbers = split(numberStr);
+        checkPositive(numbers);
 
-                result += num;
+        return numbers.stream()
+                      .mapToInt(Integer::parseInt)
+                      .sum();
+    }
+
+    private static List<String> split(String numberStr) {
+        Matcher m = SPECIAL_PATTERN.matcher(numberStr);
+        if (m.find()) {
+            String delimiter = m.group(1);
+            return List.of(m.group(2).split(delimiter));
+        }
+
+        return List.of(numberStr.split(BASIC_DELIMITER));
+    }
+
+    private static void checkPositive(List<String> numbers) {
+        for (String number : numbers) {
+            int parsedInt = Integer.parseInt(number);
+            if (parsedInt < 0) {
+                throw new IllegalArgumentException(NEGATIVE_NUMBER_ERROR + " - " + number);
             }
-
-            return result;
-        }
-
-        int aNumber = Integer.parseInt(data);
-        checkPositive(aNumber);
-
-        return aNumber;
-    }
-
-    private static String findPattern(String data) {
-        String delimiter = "";
-        Matcher m = STRING_PATTERN.matcher(data);
-        if (m.find()) {
-            return m.group(1);
-        }
-
-        try {
-            delimiter = data.split(",|:").length > 0 ? ",|:" : "";
-        } catch (Exception e) {
-            // nothing to do
-        }
-
-        return delimiter;
-    }
-
-    private static String[] getNumbers(String data, String pattern) {
-        Matcher m = STRING_PATTERN.matcher(data);
-        if (m.find()) {
-            return m.group(2).split(pattern);
-        }
-
-        return data.split(",|:");
-    }
-
-    private static void checkPositive(int aNumber) {
-        if (aNumber < 0) {
-            throw new RuntimeException();
         }
     }
 }
