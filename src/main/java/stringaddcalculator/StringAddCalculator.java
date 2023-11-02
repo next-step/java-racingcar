@@ -17,11 +17,6 @@ public class StringAddCalculator {
             return NULL_EMPTY_STRING_RESULT;
         }
 
-        if (StringValidator.isOneCharacterString(inputString)) {
-            PositiveInteger positiveInteger = PositiveInteger.of(inputString);
-            return positiveInteger.getNumber();
-        }
-
         String[] strings = Splitter.splitInputString(inputString);
         PositiveIntegers positiveIntegers = PositiveIntegers.ofStringArray(strings);
 
