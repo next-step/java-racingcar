@@ -4,14 +4,7 @@ import static java.lang.Integer.parseInt;
 
 public class TextCalculator {
     public static int calculate(String input) {
-        if (isEmpty(input)) {
-            return 0;
-        }
         return sum(transfer(Text.input(input).getElements()));
-    }
-
-    private static boolean isEmpty(String text) {
-        return text == null || text.isEmpty();
     }
 
     private static Integer[] transfer(String[] elements) {

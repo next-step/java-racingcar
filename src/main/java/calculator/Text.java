@@ -15,12 +15,23 @@ public class Text {
         this.delimiter = delimiter;
     }
 
+    private static Text emptyText(){
+        return new Text("0", "");
+    }
+
     public static Text input(String input) {
+        if (isEmpty(input)) {
+            return emptyText();
+        }
         return new Text(removeDelimiter(input), transferDelimiter(input));
     }
 
     public String[] getElements() {
         return text.split(delimiter);
+    }
+
+    private static boolean isEmpty(String text) {
+        return text == null || text.isEmpty();
     }
 
     private static String transferDelimiter(String text) {
