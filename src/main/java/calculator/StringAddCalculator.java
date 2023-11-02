@@ -4,46 +4,49 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static final String DELIMITER = "[,:]";
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    public static final int CUSTOM_DELIMITER = 1;
+    public static final int TEXT = 2;
 
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
             return 0;
         }
 
-        String[] split = splitText(text);
-        return sumSplitText(split);
+        return sum(split(text));
     }
 
     private static boolean isNullOrEmpty(String text) {
         return text == null || text.isEmpty();
     }
 
-    private static String[] splitText(String text) {
+    private static String[] split(String text) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+            return m.group(TEXT).split(m.group(CUSTOM_DELIMITER));
         }
-        return text.split(DELIMITER);
+
+        return text.split(DEFAULT_DELIMITER);
     }
 
-    private static int sumSplitText(String[] split) {
+    private static int sum(String[] split) {
         int sum = 0;
+
         for (String s : split) {
-            int parseInt = getParseInt(s);
-            sum += parseInt;
+            sum += parseInt(s);
         }
 
         return sum;
     }
 
-    private static int getParseInt(String s) {
+    private static int parseInt(String s) {
         int parseInt = Integer.parseInt(s);
 
-        if(parseInt < 0) {
+        if (parseInt < 0) {
             throw new RuntimeException("음수 값이 입력됨" + parseInt);
         }
+
         return parseInt;
     }
 }
