@@ -6,26 +6,35 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 	private final int ZERO = 0;
 
-	public int splitAndSum(String input) {
+	public String[] split(String input) {
 		if(input == null || input.isEmpty()) {
-			return ZERO;
+			return new String[]{};
 		}
 
 		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
 		if (m.find()) {
 			String customDelimiter = m.group(1);
-			String[] tokens = m.group(2).split(customDelimiter);
-			if(hasNegativeNumbers(tokens)) {
-				throw new RuntimeException("주어진 숫자에 음수가 있습니다");
-			}
-			return sum(tokens);
+			return m.group(2).split(customDelimiter);
 		}
 
-		String[] numbers = input.split(",|:");
+		return input.split(",|:");
+	}
+
+	public int sum(String[] numbers) {
+		if(numbers.length == 0) {
+			return ZERO;
+		}
+
 		if(hasNegativeNumbers(numbers)) {
 			throw new RuntimeException("주어진 숫자에 음수가 있습니다");
 		}
-		return sum(numbers);
+
+		int sum = 0;
+		for(String number : numbers) {
+			sum += Integer.parseInt(number);
+		}
+
+		return sum;
 	}
 
 	private boolean hasNegativeNumbers(String[] numbers) {
@@ -34,14 +43,5 @@ public class StringAddCalculator {
 		}
 
 		return false;
-	}
-
-	private int sum(String[] numbers) {
-		int sum = 0;
-		for(String number : numbers) {
-			sum += Integer.parseInt(number);
-		}
-
-		return sum;
 	}
 }
