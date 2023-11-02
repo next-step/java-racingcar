@@ -7,8 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
-
-
+    
     @Test
     @DisplayName("문자열 분리, 빈문자인 경우 0 ")
     public void split_null_또는_빈문자() {
@@ -83,4 +82,12 @@ public class StringAddCalculatorTest {
         assertThat(positiveNumber.value()).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("합계, 문자열 배열의 합계를 구한다")
+    public void sum(){
+        StringAddCalculator stringAddCalculator = new StringAddCalculator();
+        String[] numbers = {"1", "2"};
+        int result = stringAddCalculator.sum(numbers);
+        assertThat(result).isEqualTo(3);
+    }
 }

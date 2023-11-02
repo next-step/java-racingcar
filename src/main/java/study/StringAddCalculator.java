@@ -29,7 +29,7 @@ public class StringAddCalculator {
         return numberText.split(delimiterRegex);
     }
 
-    private int sum(String[] numbers) {
+    public int sum(String[] numbers) {
         int result = 0;
 
         for (String number : numbers) {
