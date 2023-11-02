@@ -1,3 +1,5 @@
+package step2;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,6 +33,12 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
         int result = StringAddCalculator.splitAndSum("1,2:3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    public void splitAndSum_커스텀구분자() throws Exception {
+        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
 
