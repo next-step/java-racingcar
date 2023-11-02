@@ -90,4 +90,12 @@ public class StringAddCalculatorTest {
         int result = stringAddCalculator.sum(numbers);
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("문자열 합계, 문자열 전달시 구분자를 기준으로 분리하여 합계를 구한다")
+    public void splitAndSum(){
+        StringAddCalculator stringAddCalculator = new StringAddCalculator();
+        int result = stringAddCalculator.splitAndSum("//;\n1;2;3,4:5");
+        assertThat(result).isEqualTo(15);
+    }
 }
