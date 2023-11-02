@@ -10,11 +10,15 @@ public class StringCalculator {
     public static final String DEFAULT_DELIMITER = ",|\\:";
 
     public static int calculate(String input) {
-        if (input == null || input.isEmpty()) {
+        if (isEmpty(input)) {
             return 0;
         }
         String[] elements = removeCustomDelimiter(input).split(getDelimiter(input));
         return sum(transfer(elements));
+    }
+
+    private static boolean isEmpty(String text) {
+        return text == null || text.isEmpty();
     }
 
     private static String getDelimiter(String text) {
