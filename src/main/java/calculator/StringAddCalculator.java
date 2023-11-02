@@ -14,7 +14,13 @@ public class StringAddCalculator {
             return DEFAULT_RETURN;
         }
 
-        return sum(toInts(split(text)));
+        int[] numbers = toInts(split(text));
+        validPositiveNumbers(numbers);
+        return sum(numbers);
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 
     private static String[] split(String text) {
@@ -27,8 +33,29 @@ public class StringAddCalculator {
         return text.split(DELIMITER);
     }
 
-    private static boolean isBlank(String text) {
-        return text == null || text.isBlank();
+    private static int[] toInts(String[] values) {
+        int[] numbers = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = Integer.parseInt(values[i]);
+        }
+
+        return numbers;
+    }
+
+    private static void validPositiveNumbers(int[] numbers) {
+        for (int number : numbers) {
+            validPositiveNumber(number);
+        }
+    }
+
+    private static void validPositiveNumber(int number) {
+        if(isNotPositive(number)) {
+            throw new RuntimeException();
+        }
+    }
+
+    private static boolean isNotPositive(int number) {
+        return number < 0;
     }
 
     private static int sum(int[] numbers) {
@@ -40,12 +67,4 @@ public class StringAddCalculator {
         return sum;
     }
 
-    private static int[] toInts(String[] values) {
-        int[] numbers = new int[values.length];
-        for (int i = 0; i < values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
-        }
-
-        return numbers;
-    }
 }

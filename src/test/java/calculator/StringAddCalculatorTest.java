@@ -2,6 +2,7 @@ package calculator;
 
 import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -57,6 +58,13 @@ class StringAddCalculatorTest {
         int expected = 6;
 
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 음수를_전달할_경우_RuntimeException_예외() {
+        String actual = "-1,2,3";
+
+        assertThrows(RuntimeException.class, () -> splitAndSum(actual));
     }
 
 }
