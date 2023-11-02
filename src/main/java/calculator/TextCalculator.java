@@ -10,7 +10,9 @@ public class TextCalculator {
     private static Integer[] transfer(String[] elements) {
         Integer[] nums = new Integer[elements.length];
         for (int i = 0; i < elements.length; i++) {
-            nums[i] = parseInt(elements[i]);
+            int num = parseInt(elements[i]);
+            checkPositive(num);
+            nums[i] = num;
         }
         return nums;
     }
@@ -19,7 +21,6 @@ public class TextCalculator {
         int sum = 0;
         for (int i = 0; i < nums.length; i++) {
             int num = nums[i];
-            checkPositive(num);
             sum += num;
         }
         return sum;
