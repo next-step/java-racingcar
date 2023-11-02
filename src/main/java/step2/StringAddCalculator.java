@@ -1,5 +1,8 @@
 package step2;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 	private final int ZERO = 0;
 
@@ -8,8 +11,14 @@ public class StringAddCalculator {
 			return ZERO;
 		}
 
-		String[] numbers = input.split(",|:");
+		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+		if (m.find()) {
+			String customDelimiter = m.group(1);
+			String[] tokens = m.group(2).split(customDelimiter);
+			return sum(tokens);
+		}
 
+		String[] numbers = input.split(",|:");
 		return sum(numbers);
 	}
 
