@@ -5,7 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITERS = ",|:";
+    private static final int CUSTOM_DELIMITER_GROUP = 1;
+    private static final int TOKENS_GROUP = 2;
     public static int splitAndSum(String text) {
         int sum = 0;
         if (isNullOrBlank(text)) {
@@ -23,13 +26,13 @@ public class StringAddCalculator {
     }
 
     private static String[] splitText(String text) {
-        Matcher m = PATTERN.matcher(text);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(CUSTOM_DELIMITER_GROUP);
+            String[] tokens= m.group(TOKENS_GROUP).split(customDelimiter);
             return tokens;
         } else {
-            return text.split(",|:");
+            return text.split(DEFAULT_DELIMITERS);
         }
     }
 }
