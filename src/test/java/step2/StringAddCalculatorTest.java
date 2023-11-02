@@ -16,46 +16,46 @@ public class StringAddCalculatorTest {
 
 	@Test
 	public void splitAndSum_null_또는_빈문자() {
-		String[] inputs = stringAddCalculator.StringNumbers(null);
+		String[] inputs = stringAddCalculator.stringNumbers(null);
 		int result = stringAddCalculator.sum(inputs);
 		assertThat(result).isEqualTo(0);
 
-		inputs = stringAddCalculator.StringNumbers("");
+		inputs = stringAddCalculator.stringNumbers("");
 		result = stringAddCalculator.sum(inputs);
 		assertThat(result).isEqualTo(0);
 	}
 
 	@Test
 	public void splitAndSum_숫자하나() throws Exception {
-		String[] inputs = stringAddCalculator.StringNumbers("1");
+		String[] inputs = stringAddCalculator.stringNumbers("1");
 		int result = stringAddCalculator.sum(inputs);
 		assertThat(result).isEqualTo(1);
 	}
 
 	@Test
 	public void splitAndSum_쉼표구분자() throws Exception {
-		String[] inputs = stringAddCalculator.StringNumbers("1,2");
+		String[] inputs = stringAddCalculator.stringNumbers("1,2");
 		int result = stringAddCalculator.sum(inputs);
 		assertThat(result).isEqualTo(3);
 	}
 
 	@Test
 	public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
-		String[] inputs =  stringAddCalculator.StringNumbers("1,2:3");
+		String[] inputs =  stringAddCalculator.stringNumbers("1,2:3");
 		int result = stringAddCalculator.sum(inputs);
 		assertThat(result).isEqualTo(6);
 	}
 
 	@Test
 	public void splitAndSum_custom_구분자() throws Exception {
-		String[] inputs =  stringAddCalculator.StringNumbers("//;\n1;2;3");
+		String[] inputs =  stringAddCalculator.stringNumbers("//;\n1;2;3");
 		int result = stringAddCalculator.sum(inputs);
 		assertThat(result).isEqualTo(6);
 	}
 
 	@Test
 	public void splitAndSum_negative() throws Exception {
-		String[] inputs = stringAddCalculator.StringNumbers("-1,2,3");
+		String[] inputs = stringAddCalculator.stringNumbers("-1,2,3");
 		assertThatThrownBy(() -> stringAddCalculator.sum(inputs))
 				.isInstanceOf(RuntimeException.class);
 	}

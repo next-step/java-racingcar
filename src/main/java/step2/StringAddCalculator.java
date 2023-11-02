@@ -5,19 +5,21 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 	private final int ZERO = 0;
+	private final String CUSTOM_MATCHER = "//(.)\n(.*)";
+	private final String COMMA_OR_COLON = ",|:";
 
-	public String[] StringNumbers(String input) {
+	public String[] stringNumbers(String input) {
 		if(input == null || input.isEmpty()) {
 			return new String[]{};
 		}
 
-		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+		Matcher m = Pattern.compile(CUSTOM_MATCHER).matcher(input);
 		if (m.find()) {
 			String customDelimiter = m.group(1);
 			return m.group(2).split(customDelimiter);
 		}
 
-		return input.split(",|:");
+		return input.split(COMMA_OR_COLON);
 	}
 
 	public int sum(String[] numbers) {
@@ -35,7 +37,7 @@ public class StringAddCalculator {
 
 	private boolean hasNegativeNumbers(String[] numbers) {
 		for(String number : numbers) {
-			Boolean b = new LessThan(number, 0);
+			Boolean b = new LessThan(number, ZERO);
 			if(b.satisfied()) return true;
 		}
 
