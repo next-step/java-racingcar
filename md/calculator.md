@@ -32,7 +32,7 @@ String[] numbers = text.split(",");
 ```java
 String[] tokens= text.split(",|:");
 ```
-- [ ] “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)
+- [X] “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)
 ```java
 // java.util.regex 패키지의 Matcher, Pattern import
 Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
@@ -42,5 +42,5 @@ if (m.find()) {
     // 덧셈 구현
 }
 ```
-- [ ] 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)
+- [X] 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)
 * 구글에서 “junit4 expected exception”으로 검색해 해결책을 찾는다.
