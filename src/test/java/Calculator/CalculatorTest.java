@@ -7,7 +7,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CalculatorTest {
     @Test
-    void empty_value() {
+    void emptyValue() {
         assertThat(cal("")).isEqualTo(0);
         assertThat(cal(null)).isEqualTo(0);
     }
