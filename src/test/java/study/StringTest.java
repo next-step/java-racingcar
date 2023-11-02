@@ -1,5 +1,6 @@
 package study;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,14 @@ public class StringTest {
     void split_구분자_여러개() {
         String[] result = "1,2:3".split(",|\\:");
         assertThat(result).containsExactly("1", "2", "3");
+    }
+
+    @Test
+    void split_regex() {
+        String input = "//;::\n1;::2";
+        String[] result = input.split("\\//|\\\n");
+        assertThat(result[1]).isEqualTo(";::");
+        Assertions.assertTrue(input.matches("\\/\\/\\D+\\\n.*"));
     }
 
     @Test
