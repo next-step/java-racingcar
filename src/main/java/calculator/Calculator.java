@@ -21,10 +21,28 @@ public class Calculator {
 
         List<Integer> numbers = new ArrayList<>();
         for (String stringNumber : stringNumbers) {
-            numbers.add(Integer.parseInt(stringNumber));
+            numbers.add(checkAndTransformToInt(stringNumber));
         }
-
         return numbers;
+    }
+
+    private Integer checkAndTransformToInt(String stringNumber) {
+        return checkCondition(stringToInt(stringNumber));
+    }
+
+    private Integer stringToInt(String stringNumber) {
+        try {
+            return Integer.parseInt(stringNumber);
+        } catch (Exception e) {
+            throw new RuntimeException("숫자 이외의 값이 존재합니다.");
+        }
+    }
+
+    private Integer checkCondition(Integer number) {
+        if (number < 0) {
+            throw new RuntimeException("음수 값이 존재합니다.");
+        }
+        return number;
     }
 
     private int getSum(List<Integer> numbers) {
