@@ -5,44 +5,45 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private final String defaultDelimiterText = ",|:";
-    private final String defaultRegex = "//(.)\n(.*)";
+    private final String DEFAULT_DELIMITER_TEXT = ",|:";
+    private final String REGEX_FOR_FIND_CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private final Pattern PATTERN_FOR_FIND_CUSTOM_DELIMITER = Pattern.compile(REGEX_FOR_FIND_CUSTOM_DELIMITER);
 
     public int splitAndSum(String text) {
-        Operand operand = operand(text);
-        return sum(operand);
+        Operands operands = getOperandsFromText(text);
+        return operands.sum();
     }
 
-    private Operand operand(String text) {
-        Operand operand = new Operand(new ArrayList<>());
-        boolean isTextNullOrEmpty = text == null || text.isEmpty();
-        if (isTextNullOrEmpty) {
-            return operand;
+    private Operands getOperandsFromText(String text) {
+        Operands operands = new Operands(new ArrayList<>());
+        if (isTextNullOrEmpty(text)) {
+            return operands;
         }
-        Delimiter delimiter = new Delimiter(defaultDelimiterText);
-        Matcher m = Pattern.compile(defaultRegex).matcher(text);
+        Delimiter delimiter = new Delimiter(DEFAULT_DELIMITER_TEXT);
+        Matcher m = PATTERN_FOR_FIND_CUSTOM_DELIMITER.matcher(text);
         if (m.find()) {
             delimiter = new Delimiter(m.group(1));
             text = m.group(2);
         }
         String[] tokens = text.split(delimiter.delimiter());
         for (String token : tokens) {
-            operand.add(parsedInt(token));
+            operands.add(parsedInt(token));
         }
-        return operand;
+        return operands;
     }
 
-    private int sum(Operand operand) {
-        int result = 0;
-        for (int i = 0; i < operand.length(); i++) {
-            result += operand.operand(i);
+    private boolean isTextNullOrEmpty(String text) {
+        if (text == null || text.isEmpty()) {
+            return true;
         }
-        return result;
+        return false;
     }
 
     private int parsedInt(String text) {
         int result = Integer.parseInt(text);
-        if (result < 0) throw new RuntimeException("음수는 사용할 수 없습니다.");
+        if (result < 0) {
+            throw new ValidationException("음수는 사용할 수 없습니다.");
+        }
         return result;
     }
 }
