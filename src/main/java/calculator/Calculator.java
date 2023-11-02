@@ -1,11 +1,13 @@
 package calculator;
 
 public class Calculator {
-    public static int sum(Operands operands) {
+    private CalculationResult result;
+
+    public int sum(Operands operands) {
         int result = 0;
         for (int operand : operands.operands()) {
             result += operand;
         }
-        return result;
+        return new CalculationResult(result).result();
     }
 }
