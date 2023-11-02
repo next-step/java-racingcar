@@ -1,26 +1,19 @@
 package Calculator;
 
 public class Calculator {
-
-    public static final String COMMA = ",";
-    public static final String COLON = ":";
-
     public static int cal(String input) {
         if (isBlank(input)) {
             return 0;
         }
-        if (isContains(input, COMMA)){
-            return sum(input, COMMA);
-        }
-        if (isContains(input, COLON)){
-            return sum(input, COLON);
+        if (containsDelimiter(input)){
+            return sum(input, "[,:]");
         }
 
         return parse(input);
     }
 
-    private static boolean isContains(String input, String delimiter) {
-        return input.contains(delimiter);
+    private static boolean containsDelimiter(String input) {
+        return input.contains(",") || input.contains(":");
     }
 
     private static int sum(String input, String delimiter) {
