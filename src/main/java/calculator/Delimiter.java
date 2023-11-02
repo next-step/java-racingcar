@@ -1,7 +1,7 @@
 package calculator;
 
 public class Delimiter {
-    String delimiter;
+    private String delimiter;
 
     public Delimiter(String delimiter) {
         this.delimiter = delimiter;
