@@ -46,16 +46,8 @@ public class Text {
     private void changeCustom() {
         Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
         if (m.find()) {
-            this.changeDelimiter(m);
-            this.removeDelimiterFromText(m);
+            this.delimiter = m.group(1);
+            this.text = m.group(2);
         }
-    }
-
-    private void changeDelimiter(Matcher m) {
-        this.delimiter = m.group(1);
-    }
-
-    private void removeDelimiterFromText(Matcher m) {
-        this.text = m.group(2);
     }
 }
