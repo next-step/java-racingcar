@@ -10,4 +10,8 @@ public class Delimiter {
     public String delimiter() {
         return this.delimiter;
     }
+
+    public String[] split(String inputText) {
+        return inputText.split(this.delimiter);
+    }
 }
