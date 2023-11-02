@@ -2,7 +2,7 @@ package calculator;
 
 public class StringAddCalculator {
 
-    public static final String DELIMITER = ",";
+    public static final String REGEX = ",|:";
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
@@ -13,7 +13,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        return text.split(DELIMITER);
+        return text.split(REGEX);
     }
 
     private static boolean isBlank(String text) {
