@@ -18,7 +18,7 @@ class StringAddCalculatorTest {
         @NullAndEmptySource
         @DisplayName("null 또는 빈문자열 입력시 0을 반환한다.")
         void splitAndSum_null_또는_빈문자열(String inpuString) {
-            assertThat(StringAddCalculator.splitAndSum(inpuString)).isEqualTo(0);
+            assertThat(StringAddCalculator.splitAndSum(inpuString)).isZero();
         }
 
         @Test
