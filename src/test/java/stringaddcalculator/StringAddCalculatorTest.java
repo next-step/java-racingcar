@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -14,10 +15,10 @@ class StringAddCalculatorTest {
     @DisplayName("문자열 splitSum 계산기 성공 케이스")
     class SuccessConditionTest {
         @ParameterizedTest
-        @CsvSource(value = {" :0", ":0"}, delimiter = ':')
+        @NullAndEmptySource
         @DisplayName("null 또는 빈문자열 입력시 0을 반환한다.")
-        void splitAndSum_null_또는_빈문자열(String inpuString, int expected) {
-            assertThat(StringAddCalculator.splitAndSum(inpuString)).isEqualTo(expected);
+        void splitAndSum_null_또는_빈문자열(String inpuString) {
+            assertThat(StringAddCalculator.splitAndSum(inpuString)).isEqualTo(0);
         }
 
         @Test
