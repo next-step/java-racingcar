@@ -30,9 +30,17 @@ public class Calculator {
     private static int sum(String[] values) {
         int sum = 0;
         for (String value : values) {
-            sum += parse(value);
+            int parsed = parse(value);
+            validateNegative(parsed);
+            sum += parsed;
         }
         return sum;
+    }
+
+    private static void validateNegative(int value) {
+        if(value < 0) {
+            throw new NumberFormatException("For input string: " + value);
+        }
     }
 
     private static String[] split(String input, String delimiter) {
