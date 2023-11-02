@@ -8,6 +8,6 @@ public class StringAddCalculator {
 			return ZERO;
 		}
 
-		return 1;
+		return Integer.parseInt(input);
 	}
 }
