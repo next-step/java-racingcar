@@ -37,6 +37,18 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
+    @DisplayName("구분자로 문자열을 분리한 뒤 배열의 요소가 양의 정수가 아니면 RuntimeException을 던진다.")
+    @Test
+    void calculateWhenArrayIsNotNumber() {
+        // given
+        StringCalculator stringCalculator = new StringCalculator();
+        String string = "1:2:d";
+
+        // when & then
+        assertThatThrownBy(() -> stringCalculator.calculateWith(string))
+            .isInstanceOf(RuntimeException.class);
+    }
+
     @DisplayName("String indexOf() 학습 테스트")
     @Test
     void stringIndexOfTest() {
