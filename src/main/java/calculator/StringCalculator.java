@@ -3,28 +3,43 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.Integer.parseInt;
+
 public class StringCalculator {
+
+    public static final String DEFAULT_DELIMITER = ",|\\:";
+
     public static int calculate(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
         }
 
-        String delimiter = ",|\\:";
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
-        if(m.find()) {
-            delimiter = m.group(1);
-            input = m.group(2);
-        }
+        String[] elements = removeCustomDelimiter(input).split(getDelimiter(input));
 
-        String[] elements = input.split(delimiter);
         int sum = 0;
         for (int i = 0; i < elements.length; i++) {
-            int now = Integer.parseInt(elements[i]);
-            if (now < 0) {
+            int num = parseInt(elements[i]);
+            if (num < 0) {
                 throw new RuntimeException();
             }
-            sum += now;
+            sum += num;
         }
         return sum;
+    }
+
+    private static String getDelimiter(String text) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            return m.group(1);
+        }
+        return DEFAULT_DELIMITER;
+    }
+
+    private static String removeCustomDelimiter(String text) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            return m.group(2);
+        }
+        return text;
     }
 }
