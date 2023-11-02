@@ -5,16 +5,32 @@ import java.util.List;
 
 public class Calculator {
 
-    private String delimiter = "[,:]";
+    private final String DEFAULT_DELIMITER = "[,:]";
+    private final int LAST_PREFIX_INDEX = 4;
+    private final int CUSTOM_DELIMITER_INDEX = 2;
 
     public int sumAll(String input) {
-
         if (input.isBlank()) {
             return 0;
         }
 
+        String delimiter = DEFAULT_DELIMITER;
+        if (input.startsWith("//")) {
+            delimiter = updateCustomDelimiter(input);
+            input = removeCustomDelimiterPrefix(input);
+        }
+
         return getSum(makeStringToIntArray(delimiter, input));
     }
+
+    private String updateCustomDelimiter(String input) {
+        return String.valueOf(DEFAULT_DELIMITER.charAt(0)) + String.valueOf(input.charAt(CUSTOM_DELIMITER_INDEX)) + DEFAULT_DELIMITER.substring(1);
+    }
+
+    private String removeCustomDelimiterPrefix(String input) {
+        return input.substring(LAST_PREFIX_INDEX + 1);
+    }
+
 
     private List<Integer> makeStringToIntArray(String delimiter, String input) {
         String[] stringNumbers = input.split(delimiter);

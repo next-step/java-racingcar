@@ -61,4 +61,15 @@ class CalculatorTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("음수 값이 존재합니다.");
     }
+
+    @Test
+    @DisplayName("구분자를 // 와 \\n 사이에 커스텀하게 설정할 수 있다.")
+    void customDelimiter() {
+        // given
+        String input = "//;\\n1,2:3;4";
+        // when
+        int result = calculator.sumAll(input);
+        // then
+        assertThat(result).isEqualTo(10);
+    }
 }
