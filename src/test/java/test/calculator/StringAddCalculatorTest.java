@@ -3,20 +3,19 @@ package test.calculator;
 import calculator.StringAddCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
-    @Test
+    @ParameterizedTest
     @DisplayName("null 값 정상 동작 확인")
-    public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자(String str) {
+        assertThat(StringAddCalculator.splitAndSum(str)).isEqualTo(0);
     }
 
     @Test

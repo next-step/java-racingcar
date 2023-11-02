@@ -10,12 +10,14 @@ public class StringAddCalculator {
 
     static String SPLIT_TEXT = ",|:";
 
+    static int isNullOrBlankToZero = 0;
+
     public static int splitAndSum(String text){
 
-        int number = 0;
+        int number;
 
         if (text == null || text.isBlank()) {
-            return 0;
+            return isNullOrBlankToZero;
         }
 
         if(text.length() == 1){
@@ -36,14 +38,21 @@ public class StringAddCalculator {
 
         int number = 0;
 
-        String[] tokens= text.split(SPLIT_TEXT);
+        String[] tokens = getStrings(text);
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = getMatcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             tokens = m.group(2).split(customDelimiter);
         }
 
+        number = getNumber(tokens);
+
+        return number;
+    }
+
+    private static int getNumber(String[] tokens) {
+        int number;
         int[] list = Arrays.stream(tokens)
                 .mapToInt(Integer::parseInt)
                 .filter(num -> {
@@ -54,7 +63,17 @@ public class StringAddCalculator {
                 })
                 .toArray();
         number = Arrays.stream(list).sum();
-
         return number;
     }
+
+    private static String[] getStrings(String text) {
+        String[] tokens= text.split(SPLIT_TEXT);
+        return tokens;
+    }
+
+    private static Matcher getMatcher(String text) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        return m;
+    }
+
 }
