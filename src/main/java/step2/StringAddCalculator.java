@@ -9,13 +9,18 @@ public class StringAddCalculator {
 
     private static final String DEFAULT_SEPARATOR = ",|:";
     private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile("//(.)\n(.*)");
-
     private static final Integer DEFUALT_VALUE = 0;
+    private static final Integer STRING_LENGTH_ONE = 1;
 
     public static int splitAndSum(String sumStr) {
 
         if (dataCheck(sumStr)) {
             return DEFUALT_VALUE;
+        }
+
+        if (sumStr.length() == STRING_LENGTH_ONE) {
+            validatePositiveInteger(sumStr);
+            return Integer.parseInt(sumStr);
         }
 
         String[] numbers = extractNumbersFromSeparator(sumStr);

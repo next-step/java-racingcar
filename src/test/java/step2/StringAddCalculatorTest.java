@@ -42,6 +42,12 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
+    @Test
+    public void splitAndSum_문자하나() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("s"))
+                .isInstanceOf(InputMismatchException.class);
+    }
+
     @DisplayName("문자열 계산기에 음수를 전달한 경우 에러 체크")
     @Test
     public void splitAndSum_negative() throws Exception {
