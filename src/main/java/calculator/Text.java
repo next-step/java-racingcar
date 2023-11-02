@@ -4,29 +4,33 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Text {
+    public static final String EMPTY_TEXT = "0";
     public static final String DEFAULT_DELIMITER = ",|\\:";
     public static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
 
     private String text;
-    private String delimiter;
+    private String delimiter = DEFAULT_DELIMITER;
 
-    private Text(String text, String delimiter) {
+    public Text(String text) {
         this.text = text;
-        this.delimiter = delimiter;
     }
 
-    private static Text emptyText(){
-        return new Text("0", "");
+    private static Text emptyText() {
+        return new Text(EMPTY_TEXT);
     }
 
     public static Text input(String input) {
         if (isEmpty(input)) {
             return emptyText();
         }
-        return new Text(removeDelimiter(input), transferDelimiter(input));
+        Text text = new Text(input);
+        if (text.isCustom()) {
+            text.changeCustom();
+        }
+        return text;
     }
 
-    public String[] getElements() {
+    public String[] elements() {
         return text.split(delimiter);
     }
 
@@ -34,19 +38,24 @@ public class Text {
         return text == null || text.isEmpty();
     }
 
-    private static String transferDelimiter(String text) {
+    private boolean isCustom() {
         Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
-        if (m.find()) {
-            return m.group(1);
-        }
-        return DEFAULT_DELIMITER;
+        return m.find();
     }
 
-    private static String removeDelimiter(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+    private void changeCustom() {
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
         if (m.find()) {
-            return m.group(2);
+            this.changeDelimiter(m);
+            this.removeDelimiterFromText(m);
         }
-        return text;
+    }
+
+    private void changeDelimiter(Matcher m) {
+        this.delimiter = m.group(1);
+    }
+
+    private void removeDelimiterFromText(Matcher m) {
+        this.text = m.group(2);
     }
 }

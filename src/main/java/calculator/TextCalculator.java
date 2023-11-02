@@ -4,7 +4,7 @@ import static java.lang.Integer.parseInt;
 
 public class TextCalculator {
     public static int calculate(String input) {
-        return sum(transfer(Text.input(input).getElements()));
+        return sum(transfer(Text.input(input).elements()));
     }
 
     private static Integer[] transfer(String[] elements) {
