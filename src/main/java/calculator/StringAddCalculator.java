@@ -2,19 +2,22 @@ package calculator;
 
 public class StringAddCalculator {
 
+    public static final int DEFAULT_RETURN_VALUE = 0;
+
     public static int splitAndSum(String text) {
         Input input = new Input(text);
 
         if (input.isEmptyOrNull()) {
-            return 0;
+            return DEFAULT_RETURN_VALUE;
         }
 
-        if (input.isSingleDigit()) {
-            return Util.strToInt(text);
-        }
+        return sum(input);
+    }
 
-        Calculator calculator = new Calculator();
-        return calculator.sum(text);
+    private static int sum(Input input) {
+        return input.toNumbers().stream()
+                .mapToInt(i -> i)
+                .sum();
     }
 
 }
