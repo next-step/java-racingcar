@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -23,9 +26,20 @@ public class StringTest {
     @Test
     void split_regex() {
         String input = "//;::\n1;::2";
-        String[] result = input.split("\\//|\\\n");
+        String[] result = input.split("//|\n");
         assertThat(result[1]).isEqualTo(";::");
-        Assertions.assertTrue(input.matches("\\/\\/\\D+\\\n.*"));
+        Assertions.assertTrue(input.matches("//\\D+\n.*"));
+    }
+
+    @Test
+    void regex_match와group() {
+        String text = "//&\n1&2";
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if(m.find()) {
+            assertThat(m.group(0)).isEqualTo(text);
+            assertThat(m.group(1)).isEqualTo("&");
+            assertThat(m.group(2)).isEqualTo("1&2");
+        }
     }
 
     @Test

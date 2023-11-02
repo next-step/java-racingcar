@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
     public static int calculate(String input) {
         if (input == null || input.isEmpty()) {
@@ -7,9 +10,10 @@ public class StringCalculator {
         }
 
         String delimiter = ",|\\:";
-        if (input.matches("\\/\\/\\D+\\\n.*")) {
-            delimiter = input.split("\\//|\\\n")[1];
-            input = input.replaceFirst("\\/\\/\\D+\\\n", "");
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        if(m.find()) {
+            delimiter = m.group(1);
+            input = m.group(2);
         }
 
         String[] elements = input.split(delimiter);

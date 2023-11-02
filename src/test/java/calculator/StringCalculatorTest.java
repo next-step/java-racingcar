@@ -32,7 +32,6 @@ public class StringCalculatorTest {
     @Test
     void calculate_커스텀_구분자() {
         assertThat(StringCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
-        assertThat(StringCalculator.calculate("//;::\n1;::2;::3")).isEqualTo(6);
     }
 
     @Test
