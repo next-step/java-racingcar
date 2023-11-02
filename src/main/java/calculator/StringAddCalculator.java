@@ -1,19 +1,30 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 
-    public static final String REGEX = ",|:";
+    public static final String DELIMITER = ",|:";
+    public static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    public static final int DEFAULT_RETURN = 0;
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
-            return 0;
+            return DEFAULT_RETURN;
         }
-        
+
         return sum(toInts(split(text)));
     }
 
     private static String[] split(String text) {
-        return text.split(REGEX);
+        Matcher matcher = CUSTOM_PATTERN.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(customDelimiter);
+        }
+
+        return text.split(DELIMITER);
     }
 
     private static boolean isBlank(String text) {
@@ -25,6 +36,7 @@ public class StringAddCalculator {
         for (int number : numbers) {
             sum += number;
         }
+
         return sum;
     }
 
@@ -33,6 +45,7 @@ public class StringAddCalculator {
         for (int i = 0; i < values.length; i++) {
             numbers[i] = Integer.parseInt(values[i]);
         }
+
         return numbers;
     }
 }

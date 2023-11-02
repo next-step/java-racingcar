@@ -4,6 +4,7 @@ import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class StringAddCalculatorTest {
@@ -44,6 +45,15 @@ class StringAddCalculatorTest {
     @Test
     void 구분자를_컴마_외에_콜론을_사용하여_합을_반환한다() {
         int actual = splitAndSum("1:2:3");
+        int expected = 6;
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("\\\\와 \\n 문자 사이에 커스텀 구분자를 지정 할 수 있다")
+    void testCustomDelimiter() {
+        int actual = splitAndSum("//;\n1;2;3");
         int expected = 6;
 
         assertThat(actual).isEqualTo(expected);
