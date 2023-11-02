@@ -11,4 +11,9 @@ class CalculatorTest {
         assertThat(cal("")).isEqualTo(0);
         assertThat(cal(null)).isEqualTo(0);
     }
+
+    @Test
+    void singleValue() {
+        assertThat(cal("1")).isEqualTo(1);
+    }
 }
