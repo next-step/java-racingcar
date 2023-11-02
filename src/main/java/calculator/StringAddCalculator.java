@@ -12,6 +12,8 @@ public class StringAddCalculator {
 
     static int isNullOrBlankToZero = 0;
 
+    static Pattern pattern = Pattern.compile("//(.)\n(.*)");
+
     public static int splitAndSum(String text){
 
         int number;
@@ -72,7 +74,7 @@ public class StringAddCalculator {
     }
 
     private static Matcher getMatcher(String text) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher matcher = pattern.matcher(text);
         return matcher;
     }
 
