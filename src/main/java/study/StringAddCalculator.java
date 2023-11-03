@@ -7,39 +7,49 @@ public class StringAddCalculator {
 
 	private static final String DEFAULT_DELIMITER = ",|:";
 	private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
-	private static String input;
 
 	public static int splitAndSum(String text) {
-		input = text;
-		if (isEmpty(input))
+		if (isEmpty(text))
 			return 0;
 
-		if (input.contains("-"))
+		if (text.contains("-"))
 			throw new RuntimeException();
 
-		String delimiter = findDelimiter(input);
-		String[] numbers = split(input, delimiter);
-		return sum(numbers);
+		return sum(stringToInt(split(findText(text), findDelimiter(text))));
+	}
+
+	private static String findText(String text) {
+		Matcher matcher = PATTERN.matcher(text);
+		if (matcher.find()) {
+			return matcher.group(2);
+		}
+		return text;
 	}
 
 	private static String findDelimiter(String text) {
 		Matcher matcher = PATTERN.matcher(text);
 		if (matcher.find()) {
-			input = matcher.group(2);
 			return DEFAULT_DELIMITER + '|' + matcher.group(1);
 		}
 		return DEFAULT_DELIMITER;
 	}
 
+	private static int[] stringToInt(String[] texts) {
+		int[] result = new int[texts.length];
+		for (int i = 0; i < texts.length; i++) {
+			result[i] = Integer.parseInt(texts[i]);
+		}
+		return result;
+	}
 
 	private static String[] split(String text, String delimiter) {
 		return text.split(delimiter);
 	}
 
-	private static int sum(String[] numbers) {
+	private static int sum(int[] numbers) {
 		int result = 0;
-		for (String number : numbers) {
-			result += Integer.parseInt(number);
+		for (int number : numbers) {
+			result += number;
 		}
 		return result;
 	}
