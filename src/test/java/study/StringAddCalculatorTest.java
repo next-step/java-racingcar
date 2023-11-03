@@ -32,7 +32,13 @@ public class StringAddCalculatorTest {
 
     @Test
     @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다. (예 : “1,2:3” => 6)")
-    void delimeterCommaAndColon(){
+    void delimiterCommaAndColon(){
         assertThat(add("1,2:3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("“//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)")
+    void customDelimiter(){
+        assertThat(add("//;\n1;2;3")).isEqualTo(6);
     }
 }
