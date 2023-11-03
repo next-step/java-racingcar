@@ -5,14 +5,14 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final String SEPARATOR = ",|:";
-    public static final int MAGIC_NUMBER = 0;
+    private static final int DEFAULT_VALUE = 0;
 
     public static int splitAndSum(String text) {
 
         if (isNullOrEmpty(text)) {
-            return MAGIC_NUMBER;
+            return DEFAULT_VALUE;
         }
 
         Matcher customPattern = getMatcher(text);
