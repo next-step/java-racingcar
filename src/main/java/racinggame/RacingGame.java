@@ -1,10 +1,11 @@
 package racinggame;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RacingGame(List<Car> cars) {
         this.cars = cars;
@@ -15,7 +16,7 @@ public class RacingGame {
     }
 
     public void play() {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move();
         }
     }
@@ -24,4 +25,11 @@ public class RacingGame {
         return this.cars;
     }
 
+    public List<MovingDistance> report() {
+        List<MovingDistance> movingDistances = new ArrayList<>();
+        for (Car car : cars) {
+            movingDistances.add(car.movingDistance());
+        }
+        return movingDistances;
+    }
 }

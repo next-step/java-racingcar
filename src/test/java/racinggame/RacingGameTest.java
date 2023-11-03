@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class RacingGameTest {
+class RacingGameTest {
 
     @Test
     void 자동차들을_입력_받아_게임을_생성_할_수_있다() {
@@ -26,7 +26,20 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(cars);
         racingGame.play();
         Car actual = racingGame.cars().get(0);
-        Car expected = new Car(new MovingDistance(distance), new MovingValidator(new TestMovingStrategy()));
+        Car expected = new Car(new MovingDistance(distance),
+            new MovingValidator(new TestMovingStrategy()));
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 자동차들이_이동한_거리를_표출_할_수_있다() {
+        List<Car> cars = List.of(
+            new Car(new MovingDistance(), new MovingValidator(new TestMovingStrategy())),
+            new Car(new MovingDistance(2), new MovingValidator(new TestMovingStrategy())));
+        RacingGame racingGame = new RacingGame(cars);
+        List<MovingDistance> actual = racingGame.report();
+        List<MovingDistance> expected = List.of(new MovingDistance(), new MovingDistance(2));
 
         assertThat(actual).isEqualTo(expected);
     }
