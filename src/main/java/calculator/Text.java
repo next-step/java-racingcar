@@ -7,6 +7,7 @@ public class Text {
     public static final String EMPTY_TEXT = "0";
     public static final String DEFAULT_DELIMITER = ",|\\:";
     public static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+    public static final Pattern CUSTOM_PATTERN = Pattern.compile(CUSTOM_DELIMITER_PATTERN);
 
     private String text;
     private String delimiter = DEFAULT_DELIMITER;
@@ -39,12 +40,12 @@ public class Text {
     }
 
     private boolean isCustom() {
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        Matcher m = CUSTOM_PATTERN.matcher(text);
         return m.find();
     }
 
     private void changeCustom() {
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        Matcher m = CUSTOM_PATTERN.matcher(text);
         if (m.find()) {
             this.delimiter = m.group(1);
             this.text = m.group(2);
