@@ -71,4 +71,19 @@ class StringAddCalculatorTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("Input must be a positive integer");
     }
+
+    @Test
+    @DisplayName("splitAndSum 메서드의 입력으로 하나의 숫자가 입력된 경우, 해당 숫자를 반환한다")
+    void splitAndSum_number() {
+        //given
+        //when
+        int result1 = StringAddCalculator.splitAndSum("1");
+        int result2 = StringAddCalculator.splitAndSum("3");
+        int result3 = StringAddCalculator.splitAndSum("10");
+
+        //then
+        assertThat(result1).isEqualTo(1);
+        assertThat(result2).isEqualTo(3);
+        assertThat(result3).isEqualTo(10);
+    }
 }
