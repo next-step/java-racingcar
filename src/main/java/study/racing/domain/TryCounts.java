@@ -1,5 +1,7 @@
 package study.racing.domain;
 
+import java.util.Objects;
+
 public class TryCounts {
 
     private static final int MIN_NUMBER = 1;
@@ -23,5 +25,18 @@ public class TryCounts {
             throw new NumberFormatException("시도할 회수는 숫자여야 합니다.");
         }
         return number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TryCounts tryCounts = (TryCounts) o;
+        return value == tryCounts.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
