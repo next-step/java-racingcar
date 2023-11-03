@@ -2,7 +2,7 @@ package camp.nextstep.edu.calculator;
 
 public class StringCalculator {
 
-    public static final String DELIMITER = ",";
+    public static final String DELIMITER = ",|:";
 
     public static int calculate(String expression) {
         if (isEmpty(expression)) {

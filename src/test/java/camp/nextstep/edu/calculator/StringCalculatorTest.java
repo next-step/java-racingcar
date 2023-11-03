@@ -29,4 +29,11 @@ public class StringCalculatorTest {
         assertThat(calculate("1,2")).isEqualTo(3);
         assertThat(calculate("1,2,3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("컴마 또는 콜론으로 구분된 여러 숫자들을 더해서 반환한다")
+    void multipleNumbersWithCommaOrSemicolon() {
+        assertThat(calculate("1:2")).isEqualTo(3);
+        assertThat(calculate("1,2:3")).isEqualTo(6);
+    }
 }
