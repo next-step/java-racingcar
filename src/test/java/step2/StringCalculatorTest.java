@@ -23,12 +23,24 @@ class StringCalculatorTest {
         assertThat(realResult).isEqualTo(expectedResult);
     }
 
-    @DisplayName("구분자로 문자열을 분리한 뒤 배열의 요소가 양의 정수가 아니면 RuntimeException을 던진다.")
+    @DisplayName("구분자로 문자열을 분리한 뒤 배열의 요소에 문자가 존재하면 RuntimeException을 던진다.")
     @Test
-    void calculateWhenArrayIsNotNumber() {
+    void calculateWhenValIsChar() {
         // given
         StringCalculator stringCalculator = new StringCalculator();
         String string = "1:2:d";
+
+        // when & then
+        assertThatThrownBy(() -> stringCalculator.calculate(string))
+            .isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("구분자로 문자열을 분리한 뒤 배열의 요소에 음수가 존재하면 RuntimeException을 던진다.")
+    @Test
+    void calculateWhenValIsNegative() {
+        // given
+        StringCalculator stringCalculator = new StringCalculator();
+        String string = "1:2:-1";
 
         // when & then
         assertThatThrownBy(() -> stringCalculator.calculate(string))
@@ -48,5 +60,18 @@ class StringCalculatorTest {
         // then
         assertThat(first).isEqualTo(1);
         assertThat(second).isEqualTo(4);
+    }
+
+    @DisplayName("")
+    @Test
+    void test() {
+        // given
+        StringCalculator stringCalculator = new StringCalculator();
+        String string = "1:2:-1";
+
+        // when & then
+        int result = stringCalculator.calculate(string);
+
+        System.out.println(result);
     }
 }

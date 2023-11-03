@@ -20,7 +20,10 @@ public class StringCalculator {
             string = convertToDefaultDelimiter(string);
         }
 
-        return validateWith(string.split(DEFAULT_DELIMITERS[1]));
+        String[] splitedString = string.split(DEFAULT_DELIMITERS[1]);
+        int[] numbers = validate(splitedString);
+
+        return sum(numbers);
     }
 
     private boolean hasNotValue(String string) {
@@ -47,13 +50,37 @@ public class StringCalculator {
         return string.substring(idx);
     }
 
-    private int validateWith(String[] splitedString) {
+    private int[] validate(String[] splitedString) {
+        int[] numbers = validateChar(splitedString);
+
+        if (isNegative(numbers)) {
+            throw new RuntimeException("음수는 입력할 수 없습니다.");
+        }
+
+        return numbers;
+    }
+
+    private boolean isNegative(int[] numbers) {
+        return Arrays.stream(numbers)
+            .anyMatch(number -> number < 0);
+    }
+
+    private int[] validateChar(String[] splitedString) {
+        int[] numbers;
+
         try {
-            return Arrays.stream(splitedString)
+            numbers = Arrays.stream(splitedString)
                 .mapToInt(Integer::parseInt)
-                .sum();
+                .toArray();
         } catch (NumberFormatException e) {
             throw new RuntimeException(e.getMessage());
         }
+
+        return numbers;
+    }
+
+    private int sum(int[] numbers) {
+        return Arrays.stream(numbers)
+            .sum();
     }
 }
