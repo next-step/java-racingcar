@@ -36,4 +36,11 @@ public class StringCalculatorTest {
         assertThat(calculate("1:2")).isEqualTo(3);
         assertThat(calculate("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자로 구분된 여러 숫자들을 더해서 반환한다")
+    void multipleNumbersWithCustomDelimiter() {
+        assertThat(calculate("\\;\n1;2")).isEqualTo(3);
+        assertThat(calculate("\\!\n1!2!3")).isEqualTo(6);
+    }
 }
