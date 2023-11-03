@@ -22,7 +22,7 @@ public class ValidityCheckTest {
 
     @Nested
     @DisplayName("입력값이 숫자가 아닌값 테스트")
-    class ValidityCheckFaild{
+    class ValidityCheckFaild {
         @ParameterizedTest
         @NullAndEmptySource
         @DisplayName("null, 빈문자열 체크")
