@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingTest {
     @Name("경주 준비 자동차 생성 테스트")
     @ValueSource(ints = {1,2,3,4,5})
-    @ParameterizedTest()
+    @ParameterizedTest(name = "경주 준비 자동차 생성 테스트: input = {0}, 참여한 자동차 수 = {0}")
     void ready(int numberOfCar) {
         // given
         Racing racing = new Racing();
