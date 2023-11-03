@@ -17,7 +17,7 @@ public class ValidityCheckTest {
         int number = 2;
         //when
         //then
-        assertThat(ValidityCheck.positiveNumberCheck(number)).isFrue();
+        assertThat(ValidityCheck.positiveNumberCheck(number)).isTrue();
     }
 
     @Nested
