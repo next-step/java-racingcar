@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static study.StringAddCalculator.*;
 
 public class StringAddCalculatorTest {
@@ -40,5 +41,12 @@ public class StringAddCalculatorTest {
     @DisplayName("“//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)")
     void customDelimiter(){
         assertThat(add("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)")
+    void inputContainsMinusValue(){
+        assertThatThrownBy(() -> add("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 }
