@@ -11,7 +11,7 @@
 - [x] 배열에서 컬렉션 API로 변경
 - [x] Stream API 구현
 - [x] 유효성 검증 일급객체 사용
-- [ ] 테스트 메서드 네이밍 및 DisplayName 수정
+- [x] 테스트 메서드 네이밍 및 DisplayName 수정
 
 ### Step3
 - [ ] 자동차를 N대 만큼 생성한다.
