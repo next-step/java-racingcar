@@ -10,21 +10,7 @@ public class StringCalculator {
         }
 
         int[] numbers = extractNumbers(expression);
-        validateNotNegative(numbers);
-
         return sum(numbers);
-    }
-
-    private static void validateNotNegative(int[] numbers) {
-        for (int number : numbers) {
-            validateNotNegative(number);
-        }
-    }
-
-    private static void validateNotNegative(int number) {
-        if (number < 0) {
-            throw new RuntimeException();
-        }
     }
 
     private static boolean isEmpty(String str) {
@@ -40,7 +26,22 @@ public class StringCalculator {
     }
 
     private static int[] extractNumbers(String expression) {
-        return toInts(extractValues(expression));
+        int[] numbers = toInts(extractValues(expression));
+        validateNotNegative(numbers);
+
+        return numbers;
+    }
+
+    private static void validateNotNegative(int[] numbers) {
+        for (int number : numbers) {
+            validateNotNegative(number);
+        }
+    }
+
+    private static void validateNotNegative(int number) {
+        if (number < 0) {
+            throw new RuntimeException();
+        }
     }
 
     private static int[] toInts(String[] values) {
