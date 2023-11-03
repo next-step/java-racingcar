@@ -10,11 +10,11 @@ public class OutputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public String printCar(int position) {
-        String result = "";
+    public void printCar(int position) {
+        StringBuffer result = new StringBuffer();
         for (int i = 0; i < position; i++) {
-            result += "-";
+            result.append("-");
         }
-        return result;
+        System.out.println(result);
     }
 }

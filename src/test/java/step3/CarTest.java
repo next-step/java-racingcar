@@ -7,12 +7,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarTest {
     private Car car;
-    private OutputView outputView;
     private final int DEFULT_POSITION = 0;
 
     public void setUp(int position) {
         this.car = new Car(position);
-        this.outputView = new OutputView();
     }
 
     @DisplayName("자동차가 움직이는지 테스트")
@@ -39,7 +37,7 @@ public class CarTest {
         assertThat(car.nowPosition()).isEqualTo(0);
     }
 
-    @DisplayName("자동차의 현재위치 출력")
+    @DisplayName("자동차의 현재위치 String받기")
     @Test
     public void position() {
         //given
@@ -51,6 +49,6 @@ public class CarTest {
         int stopMoveNumber = 3;
         car.move(stopMoveNumber);
         //then
-        assertThat(outputView.printCar(car.nowPosition())).isEqualTo("--");
+        assertThat(car.drawPosition()).isEqualTo("--");
     }
 }
