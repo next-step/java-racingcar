@@ -24,7 +24,7 @@ public class ValidityCheckTest {
     @DisplayName("입력값이 숫자가 아닌값 테스트")
     class ValidityCheckFaild {
         @Test
-        @DisplayName("null, 빈문자열 체크")
+        @DisplayName("null 체크")
         public void 입력_null_또는_빈문자() {
             //given
             //when
