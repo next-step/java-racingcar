@@ -49,8 +49,17 @@ public class StringAddCalculatorTest {
 
     @Test
     @DisplayName("음수를 전달할 경우 RunTimeException 예외가 발생한다.")
-    public void splitAndSum_negative() {
+    void splitAndSum_negative() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("숫자 이외의 값 또는 음수가 입력됨");
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값을 전달할 경우 RunTimeException 예외가 발생한다.")
+    void splitAndSum_숫자외의값() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("*,2,3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("숫자 이외의 값 또는 음수가 입력됨");
     }
 }
