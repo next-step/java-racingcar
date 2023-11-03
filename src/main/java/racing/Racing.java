@@ -4,12 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    private List<Car> cars = new ArrayList<>();
+    ParticipatingCars participatingCars;
+    public Racing() {
+        this.participatingCars = new ParticipatingCars();
+    }
 
     public List<Car> ready(int numberOfCar) {
         for(int i = 0; i < numberOfCar; ++i) {
-            cars.add(new Car());
+            participatingCars.join(new Car());
         }
-        return this.cars;
+        return this.participatingCars();
+    }
+
+    public List<Car> participatingCars() {
+        return participatingCars.cars();
+    }
+
+    private static class ParticipatingCars {
+        private List<Car> cars = new ArrayList<>();
+
+        private void join(Car car) {
+            this.cars.add(car);
+        }
+
+        private List<Car> cars(){
+            return this.cars;
+        }
     }
  }
