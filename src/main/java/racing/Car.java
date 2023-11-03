@@ -1,24 +1,26 @@
 package racing;
 
 public class Car {
+    private int THRESHOLD = 4;
     private Position position;
 
     public Car() {
         this.position = new Position(0);
     }
+
     public int position() {
-        return position.position();
+        return this.position.position();
     }
 
     public void move(int input) {
-        if (4 <= input) {
-            int prevPosition = this.position();
-            this.position = new Position(prevPosition + 1);
+        if (THRESHOLD <= input) {
+            int currentPosition = this.position();
+            this.position = new Position(currentPosition + 1);
         }
     }
 
-    private class Position {
-        private int position;
+    private static class Position {
+        private final int position;
 
         public Position(int position) {
             this.position = position;
