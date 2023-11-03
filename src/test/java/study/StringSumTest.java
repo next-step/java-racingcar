@@ -6,10 +6,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class StringSumTest {
 
@@ -69,5 +71,16 @@ class StringSumTest {
                 Arguments.of("//;\n1;2;3", 6),
                 Arguments.of("//!\n1!2!3", 6)
         );
+    }
+
+    @ParameterizedTest
+    @DisplayName("음수가 입력되면 IllegalArgumentException이 발생한다.")
+    @ValueSource(strings = {"-1,2,3", "-1:2:3", "-1,2:3,4"})
+    void negativeIllegalArgumentExceptionTest(String data) {
+
+        // when & then
+        assertThatThrownBy(() -> stringSum.sumStringByDelimiter(data))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("음수는 입력할 수 없습니다.");
     }
 }
