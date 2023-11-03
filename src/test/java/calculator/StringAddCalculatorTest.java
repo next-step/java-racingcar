@@ -86,4 +86,17 @@ class StringAddCalculatorTest {
         assertThat(result2).isEqualTo(3);
         assertThat(result3).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName("splitAndSum 메서드의 입력으로 \"//\"와 \"\\n\" 문자 사이에 커스텀 구분자를 지정한 경우, 해당 커스텀 구분자를 기준으로 구분하고 숫자들의 합을 반환한다")
+    void splitAndSum_CustomDelimiter() {
+        //given
+        //when
+        int result1 = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        int result2 = StringAddCalculator.splitAndSum("//^\n4^10^8");
+
+        //then
+        assertThat(result1).isEqualTo(6);
+        assertThat(result2).isEqualTo(22);
+    }
 }
