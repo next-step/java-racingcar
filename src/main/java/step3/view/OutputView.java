@@ -1,13 +1,16 @@
 package step3.view;
 
+import step3.domain.Car;
+
+import java.util.List;
+
 public class OutputView {
 
-    public void outputCarPrint() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-    }
-
-    public void outputMovePrint() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
+    public void printCars(List<Car> cars) {
+        for (Car car : cars){
+            printCar(car.position());
+        }
+        System.out.println();
     }
 
     public void printCar(int position) {

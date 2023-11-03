@@ -8,7 +8,6 @@ import java.util.List;
 public class CarFactory {
     private List<Car> cars;
     private RandomNumber randomNumber;
-    private int tryCount;
 
     public CarFactory() {
         this.cars = new ArrayList<>();
@@ -23,14 +22,6 @@ public class CarFactory {
         for (int addCar = 0; addCar < count; addCar++) {
             cars.add(new Car());
         }
-    }
-
-    public void attempts(int tryCount) {
-        this.tryCount = tryCount;
-    }
-
-    public int tryCount() {
-        return tryCount;
     }
 
     public void moveCars() {

@@ -40,16 +40,4 @@ public class CarFactoryTest {
         List<Car> cars = carFactory.carsInfo();
         assertThat(cars.size()).isEqualTo(create);
     }
-
-    @DisplayName("입력3만큼 횟수만들기")
-    @Test
-    public void 입력만큼_횟수생성() {
-        //given
-        setUp();
-        int create = 3;
-        //when
-        carFactory.attempts(create);
-        //then
-        assertThat(carFactory.tryCount()).isEqualTo(create);
-    }
 }

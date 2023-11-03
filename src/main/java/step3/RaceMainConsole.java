@@ -9,11 +9,8 @@ import step3.view.OutputView;
 public class RaceMainConsole {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
 
-        outputView.outputCarPrint();
         int carNumber = inputView.inputCarCount();
-        outputView.outputMovePrint();
         int moveNumber = inputView.inputMoveCount();
 
         RaceController raceController = new RaceController();

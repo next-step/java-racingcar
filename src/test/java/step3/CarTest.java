@@ -23,7 +23,7 @@ public class CarTest {
         //when
         car.move(moveNumber);
         //then
-        assertThat(car.nowPosition()).isEqualTo(1);
+        assertThat(car.position()).isEqualTo(1);
     }
 
     @DisplayName("자동차가 멈추는지 테스트")
@@ -35,6 +35,6 @@ public class CarTest {
         //when
         car.move(moveNumber);
         //then
-        assertThat(car.nowPosition()).isEqualTo(0);
+        assertThat(car.position()).isEqualTo(0);
     }
 }

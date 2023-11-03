@@ -11,7 +11,7 @@ public class Car {
         this.position = initPosition;
     }
 
-    public int nowPosition() {
+    public int position() {
         return position;
     }
 
