@@ -2,7 +2,7 @@ package camp.nextstep.edu.calculator;
 
 public class StringCalculator {
 
-    public static int operate(String expression) {
+    public static int calculate(String expression) {
         if (expression == null || expression.isBlank()) {
             return 0;
         }
