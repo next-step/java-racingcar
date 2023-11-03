@@ -11,6 +11,9 @@ public class StringSum {
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final String CUSTOM_DELIMITER_START = "//";
     private static final int DEFAULT_NUMBER = 0;
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n");
+    private static final int NEXT_LINE_INDEX = 1;
+
 
     public int sumStringByDelimiter(String data) {
 
@@ -28,15 +31,14 @@ public class StringSum {
 
         if (data.startsWith(CUSTOM_DELIMITER_START)) {
             delimiter = extractCustomDelimiter(data);
-            data = data.substring(data.indexOf('\n') + 1);
+            data = data.substring(data.indexOf('\n') + NEXT_LINE_INDEX);
         }
-
         return data.split(delimiter);
     }
 
     private String extractCustomDelimiter(String data) {
 
-        Matcher m = Pattern.compile("//(.)\n").matcher(data);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(data);
         if (m.find()) {
             return Pattern.quote(m.group(1));
         }
