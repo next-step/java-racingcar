@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Car {
 
     public static final int DEFAULT_DISTANCE = 1;
-    private final int distance;
+    private int distance;
 
     public Car(int distance) {
         this.distance = distance;
@@ -13,6 +13,10 @@ public class Car {
 
     public Car() {
         this.distance = DEFAULT_DISTANCE;
+    }
+
+    public void move() {
+        this.distance = distance + 1;
     }
 
     @Override
@@ -31,4 +35,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(distance);
     }
+
 }
