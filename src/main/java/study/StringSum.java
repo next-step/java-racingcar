@@ -46,7 +46,7 @@ public class StringSum {
     private int sumNumbers(String[] numbers) {
 
         return Arrays.stream(numbers)
-                .mapToInt(Integer::parseInt)
+                .mapToInt(StringSumValidator::validateNumber)
                 .filter(StringSumValidator::validatePositive)
                 .sum();
     }
