@@ -9,6 +9,7 @@ public class StringAddCalculator {
     private static final int CUSTOM_DELIMITER_INDEX = 1;
     private static final int TEXT_INDEX = 2;
     public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    public static final String NON_NEGATIVE_INTEGER_PATTERN = "^[0-9]+$";
 
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
@@ -53,7 +54,6 @@ public class StringAddCalculator {
     }
 
     private static boolean isNotNumberOrNegative(String s) {
-        return !s.matches("^[0-9]+$");
+        return !s.matches(NON_NEGATIVE_INTEGER_PATTERN);
     }
-
 }
