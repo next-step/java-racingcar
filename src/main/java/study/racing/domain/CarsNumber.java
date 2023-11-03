@@ -1,5 +1,7 @@
 package study.racing.domain;
 
+import java.util.Objects;
+
 public class CarsNumber {
 
     private static final int MIN_NUMBER = 2;
@@ -23,5 +25,18 @@ public class CarsNumber {
             throw new IllegalArgumentException("자동차 대수는 숫자여야 합니다.");
         }
         return number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarsNumber that = (CarsNumber) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
