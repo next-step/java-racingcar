@@ -12,6 +12,17 @@ public class StringCalculator {
             return 0;
         }
 
+        string = convertToSameDelimiter(string);
+        int[] numbers = validate(string.split(DEFAULT_DELIMITERS[1]));
+
+        return sum(numbers);
+    }
+
+    private boolean hasNotValue(String string) {
+        return string == null || string.isBlank() || string.isEmpty();
+    }
+
+    private String convertToSameDelimiter(String string) {
         if (isDefaultDelimiter(string)) {
             string = string.replace(DEFAULT_DELIMITERS[0], DEFAULT_DELIMITERS[1]);
         }
@@ -20,14 +31,7 @@ public class StringCalculator {
             string = convertToDefaultDelimiter(string);
         }
 
-        String[] splitedString = string.split(DEFAULT_DELIMITERS[1]);
-        int[] numbers = validate(splitedString);
-
-        return sum(numbers);
-    }
-
-    private boolean hasNotValue(String string) {
-        return string == null || string.isBlank() || string.isEmpty();
+        return string;
     }
 
     private boolean isDefaultDelimiter(String string) {

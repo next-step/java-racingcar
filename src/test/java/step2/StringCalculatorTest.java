@@ -25,7 +25,7 @@ class StringCalculatorTest {
 
     @DisplayName("구분자로 문자열을 분리한 뒤 배열의 요소에 문자가 존재하면 RuntimeException을 던진다.")
     @Test
-    void calculateWhenValIsChar() {
+    void calculateWhenValueIsChar() {
         // given
         StringCalculator stringCalculator = new StringCalculator();
         String string = "1:2:d";
@@ -37,7 +37,7 @@ class StringCalculatorTest {
 
     @DisplayName("구분자로 문자열을 분리한 뒤 배열의 요소에 음수가 존재하면 RuntimeException을 던진다.")
     @Test
-    void calculateWhenValIsNegative() {
+    void calculateWhenValueIsNegative() {
         // given
         StringCalculator stringCalculator = new StringCalculator();
         String string = "1:2:-1";
@@ -45,33 +45,5 @@ class StringCalculatorTest {
         // when & then
         assertThatThrownBy(() -> stringCalculator.calculate(string))
             .isInstanceOf(RuntimeException.class);
-    }
-
-    @DisplayName("String indexOf() 학습 테스트")
-    @Test
-    void stringIndexOfTest() {
-        // given
-        String sample = "abcdef";
-
-        // when
-        int first = sample.indexOf("bc");
-        int second = sample.indexOf("ef");
-
-        // then
-        assertThat(first).isEqualTo(1);
-        assertThat(second).isEqualTo(4);
-    }
-
-    @DisplayName("")
-    @Test
-    void test() {
-        // given
-        StringCalculator stringCalculator = new StringCalculator();
-        String string = "1:2:-1";
-
-        // when & then
-        int result = stringCalculator.calculate(string);
-
-        System.out.println(result);
     }
 }
