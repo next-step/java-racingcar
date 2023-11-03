@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final List<Car> cars;
+    private List<Car> cars;
 
     public RacingGame(List<Car> cars) {
         this.cars = cars;
@@ -13,4 +13,15 @@ public class RacingGame {
     public int carsCount() {
         return this.cars.size();
     }
+
+    public void play() {
+        for(Car car : cars) {
+            car.move();
+        }
+    }
+
+    public List<Car> cars() {
+        return this.cars;
+    }
+
 }
