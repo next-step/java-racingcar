@@ -6,12 +6,14 @@ import java.util.Random;
 
 public class Cars {
 
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Car> carList;
 
-    public Cars(int count) {
-        for(int i = 0; i < count; i++){
-            carList.add(new Car(new RandomGenerator(new Random())));
-        }
+    public Cars(List<Car> carList) {
+        this.carList = new ArrayList<>(carList);
+    }
+
+    public static Cars from(List<Car> carList) {
+        return new Cars(carList);
     }
 
     public int numberOfCar() {
