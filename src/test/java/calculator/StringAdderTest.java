@@ -20,4 +20,11 @@ public class StringAdderTest {
         assertThat(StringAdder.sum(null))
                 .isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("구분자 없는 입력 테스트")
+    public void inputNoDelimiter() {
+        assertThat(StringAdder.sum("13"))
+                .isEqualTo(13);
+    }
 }

@@ -24,6 +24,19 @@ public class StringAdder {
             return 0;
         }
 
+        if (doesContainDelimiter(integerList)) {
+            return Integer.parseInt(integerList);
+        }
+
         return 0;
+    }
+
+    /**
+     * 주어진 문자열에 구분자가 있는지 확인합니다.
+     * @param integerList 구분자로 구분되는 정수를 포함하는 문자열
+     * @return 구분자가 있다면 true를 반환
+     */
+    private static boolean doesContainDelimiter(String integerList) {
+        return !integerList.contains(",") && !integerList.contains(":");
     }
 }
