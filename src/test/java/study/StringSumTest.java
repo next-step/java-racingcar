@@ -18,7 +18,7 @@ class StringSumTest {
 
     @ParameterizedTest
     @DisplayName("쉼표로 들어오는 숫자의 합을 반환할 수 있다.")
-    @CsvSource(value = {"1,2=3", "1,:2,3=6", "1,2,3,4=10"}, delimiter = '=')
+    @CsvSource(value = {"1,2=3", "1,2,3=6", "1,2,3,4=10"}, delimiter = '=')
     void sumStringByDelimiterTest(String data, int expected) {
         // when
         int result = stringSum.sumStringByDelimiter(data);
