@@ -10,7 +10,7 @@ public class StringCalculator {
     }
 
     private static String[] split(String text) {
-        return text.split(",");
+        return text.split(",|:");
     }
 
     private static int sum(String[] numbers) {

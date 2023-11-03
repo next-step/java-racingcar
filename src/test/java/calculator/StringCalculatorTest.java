@@ -22,4 +22,9 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.cal("1,2")).isEqualTo(3);
         assertThat(StringCalculator.cal("2,3")).isEqualTo(5);
     }
+
+    @Test
+    void 구분자_컴마_콜론() {
+        assertThat(StringCalculator.cal("1,2:3")).isEqualTo(6);
+    }
 }
