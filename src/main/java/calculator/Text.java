@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,8 +32,8 @@ public class Text {
         return text;
     }
 
-    public String[] elements() {
-        return text.split(delimiter);
+    public List<String> elements() {
+        return List.of(text.split(delimiter));
     }
 
     private static boolean isEmpty(String text) {

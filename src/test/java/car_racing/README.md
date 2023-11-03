@@ -8,8 +8,8 @@
 ## TODO
 ### Step2 리뷰반영
 - [x] Pattern 객체를 상수처리
-- [ ] 배열에서 컬렉션 API로 변경
-- [ ] Stream API 구현
+- [x] 배열에서 컬렉션 API로 변경
+- [x] Stream API 구현
 - [ ] 유효성 검증 일급객체 사용
 - [ ] 테스트 메서드 네이밍 및 DisplayName 수정
 
