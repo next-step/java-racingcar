@@ -3,7 +3,11 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -47,5 +51,23 @@ class StringSumTest {
 
         // then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("커스텀 구분자를 사용해서 합을 구할 수 있다.")
+    @MethodSource("provideStringsForCustomDelimiter")
+    void customDelimiterSumTest(String data, int expected) {
+        // when
+        int result = stringSum.sumStringByDelimiter(data);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> provideStringsForCustomDelimiter() {
+        return Stream.of(
+                Arguments.of("//;\n1;2;3", 6),
+                Arguments.of("//!\n1!2!3", 6)
+        );
     }
 }
