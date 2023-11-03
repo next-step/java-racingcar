@@ -50,8 +50,12 @@ public class StringCalculatorTest {
     void negativeNumberOrNotNumber() {
         assertThatThrownBy(() -> calculate("-1"))
             .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> calculate("0,-1"))
+            .isInstanceOf(RuntimeException.class);
 
         assertThatThrownBy(() -> calculate("HELLO"))
+            .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> calculate("0,HELLO"))
             .isInstanceOf(RuntimeException.class);
     }
 }
