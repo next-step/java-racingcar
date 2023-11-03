@@ -36,19 +36,4 @@ public class CarTest {
         //then
         assertThat(car.nowPosition()).isEqualTo(0);
     }
-
-    @DisplayName("자동차의 현재위치 String받기")
-    @Test
-    public void position() {
-        //given
-        setUp(DEFULT_POSITION);
-        int moveNumber = 4;
-        //when
-        car.move(moveNumber);
-        car.move(moveNumber);
-        int stopMoveNumber = 3;
-        car.move(stopMoveNumber);
-        //then
-        assertThat(car.drawPosition()).isEqualTo("--");
-    }
 }

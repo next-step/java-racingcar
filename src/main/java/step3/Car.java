@@ -2,6 +2,10 @@ package step3;
 
 public class Car {
     private int position;
+    private int MOVE_NUMBER_CONDITION = 4;
+
+    public Car() {
+    }
 
     public Car(int initPosition) {
         this.position = initPosition;
@@ -18,14 +22,6 @@ public class Car {
     }
 
     private boolean isMoveAbleCheck(int moveNumber) {
-        return moveNumber >= 4;
-    }
-
-    public String drawPosition() {
-        StringBuffer result = new StringBuffer();
-        for (int i = 0; i < position; i++) {
-            result.append("-");
-        }
-        return result.toString();
+        return moveNumber >= MOVE_NUMBER_CONDITION;
     }
 }

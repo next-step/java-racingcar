@@ -2,7 +2,9 @@ package step3;
 
 public class ValidityCheck {
 
-    public static boolean positiveNumberCheck(int number) {
+    private static final int INPUT_CONDITION_NUMBER = 0;
+
+    public static boolean positiveNumberCheck(Integer number) {
         try {
             if (number >= 0) {
                 return true;

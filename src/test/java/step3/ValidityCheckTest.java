@@ -23,14 +23,13 @@ public class ValidityCheckTest {
     @Nested
     @DisplayName("입력값이 숫자가 아닌값 테스트")
     class ValidityCheckFaild {
-        @ParameterizedTest
-        @NullAndEmptySource
+        @Test
         @DisplayName("null, 빈문자열 체크")
-        public void 입력_null_또는_빈문자(int number) {
+        public void 입력_null_또는_빈문자() {
             //given
             //when
             //then
-            assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck(number)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck(null)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
