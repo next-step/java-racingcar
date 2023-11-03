@@ -30,7 +30,7 @@ public class ValidityCheckTest {
             //given
             //when
             //then
-            assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck(null)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck(number)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
@@ -44,9 +44,10 @@ public class ValidityCheckTest {
         @Test
         public void 입력_문자() {
             //given
+            String invalidNumber = "a";
             //when
             //then
-            assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck("a")).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck(Integer.parseInt(invalidNumber))).isInstanceOf(NumberFormatException.class);
         }
     }
 }
