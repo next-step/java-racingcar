@@ -2,6 +2,7 @@ package study;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -93,5 +94,29 @@ class StringSumTest {
 
         // then
         assertThat(result).isEqualTo(Integer.parseInt(data));
+    }
+
+    @ParameterizedTest
+    @DisplayName("빈 값을 입력한 경우 0을 반환한다.")
+    @ValueSource(strings = {"", " ", "    "})
+    void blankReturnZeroTest(String data) {
+        // when
+        int result = stringSum.sumStringByDelimiter(data);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("null을 입력한 경우 0을 반환한다.")
+    void nullReturnZeroTest() {
+        // given
+        String data = null;
+
+        // when
+        int result = stringSum.sumStringByDelimiter(data);
+
+        // then
+        assertThat(result).isEqualTo(0);
     }
 }
