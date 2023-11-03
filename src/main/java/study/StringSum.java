@@ -1,25 +1,48 @@
 package study;
 
+import study.validator.StringSumValidator;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringSum {
 
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_START = "//";
 
     public int sumStringByDelimiter(String data) {
-        String delimiter = ",|:";
 
-        if (data.startsWith("//")) {
-            Matcher m = Pattern.compile("//(.)\n(.*)").matcher(data);
-            if (m.find()) {
-                delimiter = m.group(1);
-                data = m.group(2);
-            }
+        String[] numbers = splitData(data);
+        return sumNumbers(numbers);
+    }
+
+    private String[] splitData(String data) {
+
+        String delimiter = DEFAULT_DELIMITER;
+
+        if (data.startsWith(CUSTOM_DELIMITER_START)) {
+            delimiter = extractCustomDelimiter(data);
+            data = data.substring(data.indexOf('\n') + 1);
         }
 
-        return Arrays.stream(data.split(delimiter))
+        return data.split(delimiter);
+    }
+
+    private String extractCustomDelimiter(String data) {
+
+        Matcher m = Pattern.compile("//(.)\n").matcher(data);
+        if (m.find()) {
+            return Pattern.quote(m.group(1));
+        }
+        return DEFAULT_DELIMITER;
+    }
+
+    private int sumNumbers(String[] numbers) {
+
+        return Arrays.stream(numbers)
                 .mapToInt(Integer::parseInt)
+                .filter(StringSumValidator::validatePositive)
                 .sum();
     }
 }
