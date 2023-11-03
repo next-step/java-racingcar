@@ -20,7 +20,7 @@ class RacingGameTest {
     }
 
     @ParameterizedTest(name = "게임을 진행하면 자동차가 전진 혹은 정지한다 (number = {0})")
-    @CsvSource({"0, 1", "4, 2"})
+    @CsvSource({"0, 0", "4, 1"})
     void play(int number, int distance) {
         List<Car> cars = List.of(new Car(new MovingValidator(new TestMovingStrategy(number))));
         RacingGame racingGame = new RacingGame(cars);

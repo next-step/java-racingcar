@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class CarTest {
 
     @Test
-    void 자동차를_생성하면_처음_거리는_1이다() {
+    void 자동차를_생성하면_처음_거리는_0이다() {
         MovingStrategy movingStrategy = new TestMovingStrategy(3);
         MovingValidator movingValidator = new MovingValidator(movingStrategy);
         Car actual = new Car(movingValidator);
@@ -26,7 +26,7 @@ class CarTest {
                 MovingValidator movingValidator = new MovingValidator(movingStrategy);
                 Car actual = new Car(movingValidator);
                 actual.move();
-                Car expected = new Car(new MovingDistance(2), movingValidator);
+                Car expected = new Car(new MovingDistance(1), movingValidator);
 
                 assertThat(actual).isEqualTo(expected);
             },
@@ -35,7 +35,7 @@ class CarTest {
                 MovingValidator movingValidator = new MovingValidator(movingStrategy);
                 Car actual = new Car(movingValidator);
                 actual.move();
-                Car expected = new Car(new MovingDistance(2), movingValidator);
+                Car expected = new Car(new MovingDistance(1), movingValidator);
 
                 assertThat(actual).isEqualTo(expected);
             }
@@ -52,7 +52,7 @@ class CarTest {
                 MovingValidator movingValidator = new MovingValidator(movingStrategy);
                 Car actual = new Car(movingValidator);
                 actual.move();
-                Car expected = new Car(new MovingDistance(1), movingValidator);
+                Car expected = new Car(new MovingDistance(0), movingValidator);
 
                 assertThat(actual).isEqualTo(expected);
             },
@@ -61,7 +61,7 @@ class CarTest {
                 MovingValidator movingValidator = new MovingValidator(movingStrategy);
                 Car actual = new Car(movingValidator);
                 actual.move();
-                Car expected = new Car(new MovingDistance(1), movingValidator);
+                Car expected = new Car(new MovingDistance(0), movingValidator);
 
                 assertThat(actual).isEqualTo(expected);
             }
@@ -76,7 +76,7 @@ class CarTest {
         Car car = new Car(movingValidator);
         car.move();
         MovingDistance actual = car.movingDistance();
-        MovingDistance expected = new MovingDistance(2);
+        MovingDistance expected = new MovingDistance(1);
 
         assertThat(actual).isEqualTo(expected);
     }

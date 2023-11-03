@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class MovingDistance {
 
-    public static final int DEFAULT_DISTANCE = 1;
+    public static final int DEFAULT_DISTANCE = 0;
     public static final int DEFAULT_ADD_DISTANCE = 1;
     private int distance;
 
