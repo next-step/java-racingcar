@@ -3,9 +3,7 @@ package study.step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -37,11 +35,11 @@ public class StringAddCalculatorTest {
 
     @ParameterizedTest(name = "4) 컴마/콜론으로 구분된 여러 수의 합: {arguments}")
     @ValueSource(strings = {
-            "3:4",
-            "1,2:4",
-            "1:2,4",
-            "1:2:4",
-            "1,2,4"
+        "3:4",
+        "1,2:4",
+        "1:2,4",
+        "1:2:4",
+        "1,2,4"
     })
     void numbers_with_comma_and_colon(String input) {
         int result = calculate(input);
@@ -50,33 +48,42 @@ public class StringAddCalculatorTest {
 
     @ParameterizedTest(name = "5) 커스텀 구분자: {arguments}")
     @ValueSource(strings = {
-            "// \n1 6",
-            "//0\n304",
-            "//@\n1@2@4",
-            "//ㅁ\n1ㅁ2ㅁ4",
-            "//NEXT\n1NEXT2NEXT4"
+        "// \n1 6",
+        "//0\n304",
+        "//@\n1@2@4",
+        "//ㅁ\n1ㅁ2ㅁ4",
+        "//NEXT\n1NEXT2NEXT4"
     })
     void custom_delimiter(String input) {
         int result = calculate(input);
         assertThat(result).isEqualTo(7);
     }
 
-    @ParameterizedTest(name = "6) 숫자 이외의 값 또는 음수 입력: {arguments}")
+    @ParameterizedTest(name = "6) 숫자 이외의 값 입력: {arguments}")
     @ValueSource(strings = {
-            "넥스트",
-            "a",
-            "-1",
-            "3:-4",
-            "3,b:4",
-            "//@\n1@-2@4",
-            "//ㅁ\n-1ㅁ2ㅁ4",
-            "//NEXT\n1NEXT-6",
-            "//NEXT\n1NEXT-6NEXT1"
+        "넥스트",
+        "a",
+        "3,b:4"
     })
-    void non_numeric_and_negative_number(String input) {
+    void non_numeric(String input) {
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             int result = calculate(input);
-        });
+        }).withMessage("숫자가 아닙니다.");
+    }
+
+    @ParameterizedTest(name = "7) 음수 입력: {arguments}")
+    @ValueSource(strings = {
+        "-1",
+        "3:-4",
+        "//@\n1@-2@4",
+        "//ㅁ\n-1ㅁ2ㅁ4",
+        "//NEXT\n1NEXT-6",
+        "//NEXT\n1NEXT-6NEXT1"
+    })
+    void negative_number(String input) {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            int result = calculate(input);
+        }).withMessageContaining("음수입니다.");
     }
 
 }
