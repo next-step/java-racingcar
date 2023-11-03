@@ -45,10 +45,6 @@ public class StringAdder {
             totalDelimiterList.add(customDelimiter);
         }
 
-        if (!doesContainDelimiter(trimedInputString, totalDelimiterList)) {
-            return Integer.parseInt(trimedInputString);
-        }
-
         List<String> stringValueList = splitIntegerListByDelimiters(trimedInputString, totalDelimiterList);
 
         return getSum(convertStringListToIntList(stringValueList));
@@ -76,7 +72,17 @@ public class StringAdder {
     private static List<Integer> convertStringListToIntList(List<String> stringValueList) {
         List<Integer> intValueList = new ArrayList<>();
         for(String stringValue : stringValueList) {
+            try {
+                Integer.parseInt(stringValue);
+            }
+            catch (NumberFormatException e) {
+                throw new IllegalArgumentException("허용되지 않는 값: " + stringValue);
+            }
+
             int intValue = Integer.parseInt(stringValue);
+            if (intValue < 0) {
+                throw new IllegalArgumentException("허용되지 않는 값: " + intValue);
+            }
             intValueList.add(intValue);
         }
         return intValueList;

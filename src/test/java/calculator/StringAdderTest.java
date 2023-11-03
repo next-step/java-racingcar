@@ -5,8 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringAdderTest {
     @Test
@@ -56,5 +57,19 @@ public class StringAdderTest {
         assertThat(StringAdder.sum(input))
                 .as("%s 입력 시 %d가 계산 결과로 나와야 함", input, expected)
                 .isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "-13",
+            "4,-5",
+            "7:a,8",
+            "//k\n4k2kak5"
+    })
+    @DisplayName("0을 포함한 양의 정수가 아닌 값이 있을 경우 예외 던짐")
+    public void notPositiveIntegerOrZero(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringAdder.sum(input);
+        });
     }
 }
