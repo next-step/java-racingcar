@@ -22,4 +22,11 @@ public class StringCalculatorTest {
         assertThat(calculate("1")).isEqualTo(1);
         assertThat(calculate("999")).isEqualTo(999);
     }
+
+    @Test
+    @DisplayName("컴마로 구분된 여러 숫자들을 더해서 반환한다")
+    void multipleNumbersWithComma() {
+        assertThat(calculate("1,2")).isEqualTo(3);
+        assertThat(calculate("1,2,3")).isEqualTo(6);
+    }
 }
