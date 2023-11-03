@@ -24,5 +24,10 @@ public class StringAddCalculatorTest {
         assertThat(add(null)).isEqualTo(0);
     }
 
-
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.(예 : “1”)")
+    @ParameterizedTest
+    @CsvSource(value = {"1:1","3:3","14:14","5:5"},delimiter = ':')
+    void onlyOneInput (String input, int expected){
+        assertThat(add(input)).isEqualTo(expected);
+    }
 }
