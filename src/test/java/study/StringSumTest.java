@@ -83,4 +83,15 @@ class StringSumTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("음수는 입력할 수 없습니다.");
     }
+
+    @ParameterizedTest
+    @DisplayName("하나의 숫자가 입력되면 그 숫자를 반환한다.")
+    @ValueSource(strings = {"1", "2", "3"})
+    void oneNumberTest(String data) {
+        // when
+        int result = stringSum.sumStringByDelimiter(data);
+
+        // then
+        assertThat(result).isEqualTo(Integer.parseInt(data));
+    }
 }
