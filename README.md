@@ -5,6 +5,7 @@
 - [X] 자동차 대수 입력
 - [X] 이동 시도 횟수 입력
 - [ ] 입력은 숫자만 가능하다.
+- [ ] random값은 0~9사이의 값이다.
 - [ ] 각 시도별 이동결과를 출력한다.
 * 자동차
 - [ ] 이동이 가능하면 전진하고, 불가능하면 멈춘다.
@@ -19,10 +20,10 @@
 - [ ] 이동 결과를 출력한다.
 
 ### commit message 종류를 다음과 같이 구분
-feat (feature)
-fix (bug fix)
-docs (documentation)
-style (formatting, missing semi colons, …)
-refactor
-test (when adding missing tests)
-chore (maintain)
+- feat (feature)
+- fix (bug fix)
+- docs (documentation)
+- style (formatting, missing semi colons, …)
+- refactor
+- test (when adding missing tests)
+- chore (maintain)
