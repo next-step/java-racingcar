@@ -58,7 +58,7 @@ class StringSumTest {
 
     @ParameterizedTest
     @DisplayName("커스텀 구분자를 사용해서 합을 구할 수 있다.")
-    @MethodSource("provideStringsForCustomDelimiter")
+    @MethodSource("provideNumbersForCustomDelimiter")
     void customDelimiterSumTest(String data, int expected) {
         // when
         int result = stringSum.sumStringByDelimiter(data);
@@ -67,7 +67,7 @@ class StringSumTest {
         assertThat(result).isEqualTo(expected);
     }
 
-    static Stream<Arguments> provideStringsForCustomDelimiter() {
+    static Stream<Arguments> provideNumbersForCustomDelimiter() {
         return Stream.of(
                 Arguments.of("//;\n1;2;3", 6),
                 Arguments.of("//!\n1!2!3", 6)
@@ -118,5 +118,24 @@ class StringSumTest {
 
         // then
         assertThat(result).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @DisplayName("data에 숫자가 아닌 값이 입력된 경우 IllegalArgumentException이 발생한다.")
+    @MethodSource("provideStringsForCustomDelimiter")
+    void validateOnlyNumberTest(String data) {
+
+        // when & then
+        assertThatThrownBy(() -> stringSum.sumStringByDelimiter(data))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자가 아닌 값이 입력되었습니다.");
+    }
+
+    static Stream<Arguments> provideStringsForCustomDelimiter() {
+
+        return Stream.of(
+                Arguments.of("//;\n1;t;3", 6),
+                Arguments.of("//!\n1!@!3", 6)
+        );
     }
 }
