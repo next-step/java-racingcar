@@ -1,8 +1,9 @@
-package racinggame;
+package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import racinggame.domain.MovingDistance;
 
 class MovingDistanceTest {
 

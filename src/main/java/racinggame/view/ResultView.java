@@ -1,8 +1,9 @@
-package racinggame;
+package racinggame.view;
 
 import static java.lang.System.*;
 
 import java.util.List;
+import racinggame.domain.MovingDistance;
 
 public class ResultView {
 

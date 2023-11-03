@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.domain;
+
+import racinggame.domain.strategy.MovingStrategy;
 
 class TestMovingStrategy implements MovingStrategy {
 

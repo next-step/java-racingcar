@@ -1,9 +1,15 @@
-package racinggame;
+package racinggame.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import racinggame.domain.Car;
+import racinggame.view.InputView;
+import racinggame.domain.MovingValidator;
+import racinggame.domain.RacingGame;
+import racinggame.domain.strategy.RandomNumberMovingStrategy;
+import racinggame.view.ResultView;
 
 public class RacingGameController {
 

@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.view;
 
 import static java.lang.System.out;
 
