@@ -1,10 +1,11 @@
-package study.step2;
+package study.step2.stream;
 
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringAddCalculator {
+public class StringAddCalculatorWithStream {
 
     private static final String DEFAULT_DELIMITER;
     private static final String CUSTOM_DELIMITER;
@@ -16,15 +17,11 @@ public class StringAddCalculator {
         CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
     }
 
-    public static int calculate(String input) {
+    public static int cal(String input) {
         if (isEmptyOrNull(input)) {
             return 0;
         }
-        try {
-            return sum(toInt(split(input)));
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자가 아닙니다.");
-        }
+        return sum(toInt(split(input)));
     }
 
     private static boolean isEmptyOrNull(String input) {
@@ -42,19 +39,15 @@ public class StringAddCalculator {
     }
 
     private static int[] toInt(String[] strings) {
-        int[] numbers = new int[strings.length];
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = Integer.parseInt(strings[i]);
+        try {
+            return Arrays.stream(strings).mapToInt(Integer::parseInt).toArray();
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자가 아닙니다.");
         }
-        return numbers;
     }
 
     private static int sum(int[] numbers) {
-        int sum = 0;
-        for (int n: numbers) {
-            sum += validate(n);
-        }
-        return sum;
+        return Arrays.stream(numbers).map(StringAddCalculatorWithStream::validate).sum();
     }
 
     private static int validate(int number) {
