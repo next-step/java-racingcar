@@ -4,37 +4,52 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringCalculatorTest {
-//    쉼표(,) 또는 콜론(:)을 구분자로 가지는 문자열을 전달하는 경우
-//    구분자를 기준으로 분리한 각 숫자의 합을 반환
-//    (예: “” => 0, "1,2" => 3, "1,2,3" => 6, “1,2:3” => 6)
-//    앞의 기본 구분자(쉼표, 콜론)외에 커스텀 구분자를 지정할 수 있다.
-//    커스텀 구분자는 문자열 앞부분의 “//”와 “\n” 사이에 위치하는 문자를 커스텀 구분자로 사용한다.
-//    예를 들어 “//;\n1;2;3”과 같이 값을 입력할 경우 커스텀 구분자는 세미콜론(;)이며,
-//    결과 값은 6이 반환되어야 한다.
-//    문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우
-//    RuntimeException 예외를 throw한다.
-
-
-    // 더하는 함수
-    // 구분자를 쪼개는 함수
-
-    // 특정 구분자가 있는지 체크하는 함수
-    // 구분자를 쪼개는 함수 (특정 구분자 쪼개는 함수, 디폴트 쪼개는 함수)
-    // 더하는 함수
-
-    public void checkCustomDelimiter(String exp) {
-        char firstChar = exp.charAt(0);
-    }
-
-
 
     @Test
-    @DisplayName("")
-    void checkSplitTest() {
-        char result = "//;\n1;2;3".charAt(0);
+    void 문자열_비어있는지_확인() {
+        int result = StringCalculator.cal(null);
+        assertThat(result).isEqualTo(0);
+    }
 
-        assertThat(result).isEqualTo('/');
+    @Test
+    void 문자열_길이가_1일때_덧셈_테스트() {
+        int result = StringCalculator.cal("2");
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    void 문자열_길이가_2이상_일반구분자_덧셈() {
+        int result = StringCalculator.cal("1,2,3");
+        int result2 = StringCalculator.cal("1,2:3");
+        assertThat(result).isEqualTo(6);
+        assertThat(result2).isEqualTo(6);
+    }
+
+    @Test
+    void 문자열_길이_2이상_특수구분자_덧셈() {
+        int result = StringCalculator.cal("//-\n1-2-3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void 숫자_이외의_값이면_에러발생() {
+        // 일반 구분자일 때
+        assertThrows(RuntimeException.class, () -> StringCalculator.cal("1;-;3"));
+
+        //특수 구분자 일 떄
+        assertThrows(RuntimeException.class, () -> StringCalculator.cal("//;\n1;-;3"));
+    }
+
+    @Test
+    void 음수값이면_에러발생() {
+        // 일반 구분자일 때
+        assertThrows(RuntimeException.class, () -> StringCalculator.cal("1;-2;3"));
+
+        // 특수 구분자 일 떄
+        assertThrows(RuntimeException.class, () -> StringCalculator.cal("//;\n1;-2;3"));
     }
 }
