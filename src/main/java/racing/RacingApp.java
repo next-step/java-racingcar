@@ -1,11 +1,10 @@
-import racing.Car;
-import racing.Racing;
+package racing;
+
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingApp {
     public static void main(String[] args) {
