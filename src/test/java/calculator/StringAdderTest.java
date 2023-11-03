@@ -42,4 +42,19 @@ public class StringAdderTest {
                 .as("%s 입력 시 %d가 계산 결과로 나와야 함", input, expected)
                 .isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "'//k\n4k13', 17",
+            "'//,\n1,2', 3",
+            "'//a\n1,2:3a4', 10",
+            "'//a\n3', 3",
+            "'//?\n1?2', 3",
+    })
+    @DisplayName("커스텀 구분자 테스트")
+    public void inputCustomDelimiter(String input, int expected) {
+        assertThat(StringAdder.sum(input))
+                .as("%s 입력 시 %d가 계산 결과로 나와야 함", input, expected)
+                .isEqualTo(expected);
+    }
 }

@@ -51,4 +51,11 @@ public class StringTest {
         .as("{} index를 이용한 charAt 호출 시도")
         .isInstanceOf(IndexOutOfBoundsException.class);
     }
+
+    @Test
+    @DisplayName("개행 문자가 문자열 길이에 포함되는지 테스트")
+    public void checkNewLineCharacterLength() {
+        assertThat("12\n34".length())
+                .isEqualTo(5);
+    }
 }
