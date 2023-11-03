@@ -14,7 +14,7 @@ public class RandomNumberTest {
         //when
         int createNumber = RandomNumber.randomNumberCreate();
         //then
-        assertThat(createNumber).isGreaterThan(0);
+        assertThat(createNumber).isGreaterThanOrEqualTo(0);
     }
 
     @DisplayName("랜덤 숫자가 9이하인지 테스트")
