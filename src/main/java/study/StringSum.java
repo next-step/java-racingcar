@@ -10,8 +10,13 @@ public class StringSum {
 
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final String CUSTOM_DELIMITER_START = "//";
+    private static final int DEFAULT_NUMBER = 0;
 
     public int sumStringByDelimiter(String data) {
+
+        if (!StringSumValidator.validateBlank(data)) {
+            return DEFAULT_NUMBER;
+        }
 
         String[] numbers = splitData(data);
         return sumNumbers(numbers);

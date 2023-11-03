@@ -9,4 +9,12 @@ public class StringSumValidator {
         }
         return true;
     }
+
+    public static boolean validateBlank(String data) {
+
+        if (data == null || data.trim().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }
