@@ -14,4 +14,11 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.operate("")).isEqualTo(0);
         assertThat(StringCalculator.operate(" ")).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("숫자 하나만 들어오면 그 숫자를 int 형태로 그대로 반환한다")
+    void soleNumber() {
+        assertThat(StringCalculator.operate("1")).isEqualTo(1);
+        assertThat(StringCalculator.operate("999")).isEqualTo(999);
+    }
 }
