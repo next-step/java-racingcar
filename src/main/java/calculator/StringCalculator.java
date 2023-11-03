@@ -25,9 +25,16 @@ public class StringCalculator {
     private static int sum(String[] numbers) {
         int sum = 0;
         for (String number : numbers) {
-            sum += Integer.parseInt(number);
+            sum += isPositive(number);
         }
         return sum;
+    }
+
+    private static int isPositive(String number) {
+        if (Integer.parseInt(number) < 0) {
+            throw new RuntimeException();
+        }
+        return Integer.parseInt(number);
     }
 
     private static boolean isBlank(String text) {

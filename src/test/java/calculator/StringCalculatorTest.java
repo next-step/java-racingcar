@@ -32,4 +32,10 @@ public class StringCalculatorTest {
     void 커스텀구분자() {
         assertThat(StringCalculator.cal("//;\n1;2;3")).isEqualTo(6);
     }
+
+    @Test
+    void 음수_예외() {
+        assertThatThrownBy(() -> StringCalculator.cal("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
