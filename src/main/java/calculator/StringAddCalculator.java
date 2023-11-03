@@ -43,12 +43,16 @@ public class StringAddCalculator {
     }
 
     private static int parseInt(String s) {
-        int parseInt = Integer.parseInt(s);
 
-        if (parseInt < 0) {
-            throw new RuntimeException("음수 값이 입력됨" + parseInt);
+        if(isNotNumberOrNegative(s)) {
+            throw new RuntimeException("숫자 이외의 값 또는 음수가 입력됨 : " + s);
         }
 
-        return parseInt;
+        return Integer.parseInt(s);
     }
+
+    private static boolean isNotNumberOrNegative(String s) {
+        return !s.matches("^[0-9]+$");
+    }
+
 }
