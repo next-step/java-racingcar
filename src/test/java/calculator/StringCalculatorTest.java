@@ -16,4 +16,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.cal("1")).isEqualTo(1);
         assertThat(StringCalculator.cal("2")).isEqualTo(2);
     }
+
+    @Test
+    void 숫자두개_컴마구분자_문자열() {
+        assertThat(StringCalculator.cal("1,2")).isEqualTo(3);
+        assertThat(StringCalculator.cal("2,3")).isEqualTo(5);
+    }
 }

@@ -6,7 +6,19 @@ public class StringCalculator {
             return 0;
         }
 
-        return Integer.parseInt(text);
+        return sum(split(text));
+    }
+
+    private static String[] split(String text) {
+        return text.split(",");
+    }
+
+    private static int sum(String[] numbers) {
+        int sum = 0;
+        for (String number : numbers) {
+            sum += Integer.parseInt(number);
+        }
+        return sum;
     }
 
     private static boolean isBlank(String text) {
