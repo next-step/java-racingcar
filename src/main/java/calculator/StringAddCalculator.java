@@ -17,7 +17,13 @@ public class StringAddCalculator {
         int sum = 0;
 
         for (final String number : numbers) {
-            sum += Integer.parseInt(number);
+            final int eachValue = Integer.parseInt(number);
+
+            if (eachValue < 0) {
+                throw new RuntimeException("Input must be a positive integer");
+            }
+
+            sum += eachValue;
         }
 
         return sum;

@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class StringAddCalculatorTest {
@@ -58,5 +59,16 @@ class StringAddCalculatorTest {
         assertThat(result2).isEqualTo(3);
         assertThat(result3).isEqualTo(6);
         assertThat(result4).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("splitAndSum 메서드의 입력으로 음수가 입력된 경우, RuntimeException 예외가 발생한다")
+    void splitAndSum_negative() {
+        //given
+        //when
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                //then
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Input must be a positive integer");
     }
 }
