@@ -9,30 +9,64 @@ class CarTest {
 
     @Test
     void 자동차를_생성하면_처음_거리는_1이다() {
-        Car actual = new Car();
-        Car expected = new Car(new MovingDistance());
+        MovingStrategy movingStrategy = new TestMovingStrategy(3);
+        MovingValidator movingValidator = new MovingValidator(movingStrategy);
+        Car actual = new Car(movingValidator);
+        Car expected = new Car(new MovingDistance(), movingValidator);
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    void 자동차는_이동_할_수_있다() {
-        Car car = new Car();
+    void 자동차는_4에서_9_사이에서는_움직인다다() {
 
         assertAll(
             () -> {
-                Car expected = new Car(new MovingDistance(2));
-                car.move();
+                MovingStrategy movingStrategy = new TestMovingStrategy(4);
+                MovingValidator movingValidator = new MovingValidator(movingStrategy);
+                Car actual = new Car(movingValidator);
+                actual.move();
+                Car expected = new Car(new MovingDistance(2), movingValidator);
 
-                assertThat(car).isEqualTo(expected);
+                assertThat(actual).isEqualTo(expected);
             },
             () -> {
-                Car expected = new Car(new MovingDistance(3));
-                car.move();
+                MovingStrategy movingStrategy = new TestMovingStrategy(9);
+                MovingValidator movingValidator = new MovingValidator(movingStrategy);
+                Car actual = new Car(movingValidator);
+                actual.move();
+                Car expected = new Car(new MovingDistance(2), movingValidator);
 
-                assertThat(car).isEqualTo(expected);
+                assertThat(actual).isEqualTo(expected);
             }
         );
+
+    }
+
+    @Test
+    void 자동차는_0에서_3_사이에서는_움직일_수_없다() {
+
+        assertAll(
+            () -> {
+                MovingStrategy movingStrategy = new TestMovingStrategy(0);
+                MovingValidator movingValidator = new MovingValidator(movingStrategy);
+                Car actual = new Car(movingValidator);
+                actual.move();
+                Car expected = new Car(new MovingDistance(1), movingValidator);
+
+                assertThat(actual).isEqualTo(expected);
+            },
+            () -> {
+                MovingStrategy movingStrategy = new TestMovingStrategy(3);
+                MovingValidator movingValidator = new MovingValidator(movingStrategy);
+                Car actual = new Car(movingValidator);
+                actual.move();
+                Car expected = new Car(new MovingDistance(1), movingValidator);
+
+                assertThat(actual).isEqualTo(expected);
+            }
+        );
+
     }
 
 }

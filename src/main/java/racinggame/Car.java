@@ -3,19 +3,26 @@ package racinggame;
 import java.util.Objects;
 
 public class Car {
-    private final MovingDistance movingDistance;
 
-    public Car(MovingDistance movingDistance) {
+    private final MovingDistance movingDistance;
+    private final MovingValidator movingValidator;
+
+    public Car(MovingDistance movingDistance, MovingValidator movingValidator) {
         this.movingDistance = movingDistance;
+        this.movingValidator = movingValidator;
     }
 
-    public Car() {
+    public Car(MovingValidator movingValidator) {
+        this.movingValidator = movingValidator;
         this.movingDistance = new MovingDistance();
     }
 
     public void move() {
-        this.movingDistance.add();
+        if(movingValidator.movable()) {
+            this.movingDistance.add();
+        }
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -26,7 +33,7 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return movingDistance == car.movingDistance;
+        return Objects.equals(movingDistance, car.movingDistance);
     }
 
     @Override
