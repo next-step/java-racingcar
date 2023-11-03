@@ -21,13 +21,13 @@ public class CarTest {
 
     @DisplayName("자동차가 전진합니다.")
     @Test
-    void a(){
+    void carMustMoveForward(){
         assertThat(carAlwaysReturnAboveFour.decideMovement()).isTrue();
     }
 
     @DisplayName("자동차가 정지합니다.")
     @Test
-    void b(){
+    void carMustMoveBackward(){
         assertThat(carAlwaysReturnBelowFour.decideMovement()).isFalse();
     }
 
