@@ -48,9 +48,7 @@ public class StringAdder {
             totalDelimiterList.add(customDelimiter);
         }
 
-        List<String> stringValueList = splitIntegerListByDelimiters(trimedInputString, totalDelimiterList);
-
-        return getSum(convertStringListToIntList(stringValueList));
+        return getSum(convertStringListToIntList(splitIntegerListByDelimiters(trimedInputString, totalDelimiterList)));
     }
 
     /**
