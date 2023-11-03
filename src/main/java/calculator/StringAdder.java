@@ -17,6 +17,9 @@ public class StringAdder {
     /** 기본적으로 사용되는 구분자 목록 */
     private static final List<String> DEFAULT_DELIMITER_LIST = List.of(",", ":");
 
+    /** 커스텀 구분자를 선언하는 정규식 패턴 캐싱용 변수 */
+    private static final Pattern CUSTOM_DELIMITER_DECLARATION_PATTERN = Pattern.compile("//(.)\n(.*)");
+
     /**
      * 문자열로 정수 목록이 주어지면 정수들의 합을 계산합니다.
      * 문자열 내에서 각 정수들은 지정된 구분자로 구분되거나
@@ -117,7 +120,7 @@ public class StringAdder {
      * @return 찾은 커스텀 구분자. 없다면 빈 문자열 반환. (null은 반환되지 않습니다.)
      */
     private static String extractCustomDelimiter(String integerList) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(integerList);
+        Matcher m = CUSTOM_DELIMITER_DECLARATION_PATTERN.matcher(integerList);
         if (m.find()) {
             return m.group(1);
         }
@@ -131,7 +134,7 @@ public class StringAdder {
      * @return 커스텀 구분자 선언문이 제거된 입력 문자열
      */
     private static String trimCustomDelimiterDeclaration(String integerList) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(integerList);
+        Matcher m = CUSTOM_DELIMITER_DECLARATION_PATTERN.matcher(integerList);
         if (m.find()) {
             return m.group(2);
         }
@@ -163,7 +166,7 @@ public class StringAdder {
      */
     private static String escapingCharacterForRegex(char code) {
         if (REGEX_SPECIAL_CHARACTER_LIST.contains(code)) {
-            return "//" + String.valueOf(code);
+            return "\\" + String.valueOf(code);
         }
 
         return String.valueOf(code);
