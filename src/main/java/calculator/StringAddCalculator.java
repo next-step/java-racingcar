@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER = "[,:]";
-    public static final int CUSTOM_DELIMITER = 1;
-    public static final int TEXT = 2;
+    private static final int CUSTOM_DELIMITER = 1;
+    private static final int TEXT = 2;
 
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
