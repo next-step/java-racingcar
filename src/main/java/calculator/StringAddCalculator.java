@@ -15,14 +15,15 @@ public class StringAddCalculator {
             return 0;
         }
 
-        return sum(split(text));
+        return sum(parse(text));
     }
 
     private static boolean isNullOrEmpty(String text) {
         return text == null || text.isEmpty();
     }
 
-    private static String[] split(String text) {
+    private static String[] parse(String text) {
+
         Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
 
         if (m.find()) {
