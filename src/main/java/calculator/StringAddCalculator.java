@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static final String DEAULT_DELIMITER = ",:";
+    private static final String DEFAULT_DELIMITER = ",:";
+    private static final String CUSTOM_DELIMITER_REGEX = "//(.*?)\\n(.*?)";
 
     private StringAddCalculator() {
     }
@@ -16,7 +17,7 @@ public class StringAddCalculator {
     private static String[] getSplittedString(String input) {
         String customDelimiter = checkCustomDelimiter(input);
         return isEmpty(customDelimiter) ?
-                getSplit(input, DEAULT_DELIMITER) :
+                getSplit(input, DEFAULT_DELIMITER) :
                 getSplit(getInputAfterDelimiter(input), customDelimiter);
     }
 
@@ -31,7 +32,7 @@ public class StringAddCalculator {
     }
 
     private static Matcher getMatcher(String input) {
-        Pattern pattern = Pattern.compile("//(.*?)\\n(.*?)");
+        Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEX);
         return pattern.matcher(input);
     }
 
