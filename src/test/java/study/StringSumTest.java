@@ -78,7 +78,6 @@ class StringSumTest {
     @DisplayName("음수가 입력되면 IllegalArgumentException이 발생한다.")
     @ValueSource(strings = {"-1,2,3", "-1:2:3", "-1,2:3,4"})
     void negativeIllegalArgumentExceptionTest(String data) {
-
         // when & then
         assertThatThrownBy(() -> stringSum.sumStringByDelimiter(data))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -124,7 +123,6 @@ class StringSumTest {
     @DisplayName("data에 숫자가 아닌 값이 입력된 경우 IllegalArgumentException이 발생한다.")
     @MethodSource("provideStringsForCustomDelimiter")
     void validateOnlyNumberTest(String data) {
-
         // when & then
         assertThatThrownBy(() -> stringSum.sumStringByDelimiter(data))
                 .isInstanceOf(IllegalArgumentException.class)
