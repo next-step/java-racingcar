@@ -27,4 +27,9 @@ public class StringCalculatorTest {
     void 구분자_컴마_콜론() {
         assertThat(StringCalculator.cal("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    void 커스텀구분자() {
+        assertThat(StringCalculator.cal("//;\n1;2;3")).isEqualTo(6);
+    }
 }
