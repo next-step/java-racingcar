@@ -12,4 +12,5 @@ public class TestMovingStrategy implements MovingStrategy {
     public int nextInt() {
         return this.number;
     }
+
 }

@@ -15,4 +15,5 @@ public class RandomNumberMovingStrategy implements MovingStrategy {
     public int nextInt() {
         return random.nextInt(DEFAULT_BOUND);
     }
+
 }

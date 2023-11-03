@@ -18,11 +18,14 @@ public class Car {
     }
 
     public void move() {
-        if(movingValidator.movable()) {
+        if (movingValidator.movable()) {
             this.movingDistance.add();
         }
     }
 
+    public MovingDistance movingDistance() {
+        return this.movingDistance;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -41,7 +44,4 @@ public class Car {
         return Objects.hash(movingDistance);
     }
 
-    public MovingDistance movingDistance() {
-        return this.movingDistance;
-    }
 }

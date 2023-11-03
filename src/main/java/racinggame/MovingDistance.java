@@ -20,6 +20,10 @@ public class MovingDistance {
         this.distance = this.distance + DEFAULT_ADD_DISTANCE;
     }
 
+    public int distance() {
+        return this.distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -37,7 +41,4 @@ public class MovingDistance {
         return Objects.hash(distance);
     }
 
-    public int distance() {
-        return this.distance;
-    }
 }
