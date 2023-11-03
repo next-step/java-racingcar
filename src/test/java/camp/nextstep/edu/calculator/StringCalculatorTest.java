@@ -2,6 +2,7 @@ package camp.nextstep.edu.calculator;
 
 import static camp.nextstep.edu.calculator.StringCalculator.calculate;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,5 +43,15 @@ public class StringCalculatorTest {
     void multipleNumbersWithCustomDelimiter() {
         assertThat(calculate("\\;\n1;2")).isEqualTo(3);
         assertThat(calculate("\\!\n1!2!3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수 또는 숫자 이외의 값이 들어오면 RuntimeException을 던진다")
+    void negativeNumberOrNotNumber() {
+        assertThatThrownBy(() -> calculate("-1"))
+            .isInstanceOf(RuntimeException.class);
+
+        assertThatThrownBy(() -> calculate("HELLO"))
+            .isInstanceOf(RuntimeException.class);
     }
 }

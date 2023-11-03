@@ -10,7 +10,21 @@ public class StringCalculator {
         }
 
         int[] numbers = extractNumbers(expression);
+        validateNotNegative(numbers);
+
         return sum(numbers);
+    }
+
+    private static void validateNotNegative(int[] numbers) {
+        for (int number : numbers) {
+            validateNotNegative(number);
+        }
+    }
+
+    private static void validateNotNegative(int number) {
+        if (number < 0) {
+            throw new RuntimeException();
+        }
     }
 
     private static boolean isEmpty(String str) {
@@ -32,9 +46,17 @@ public class StringCalculator {
     private static int[] toInts(String[] values) {
         int[] ints = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            ints[i] = Integer.parseInt(values[i]);
+            ints[i] = parseInt(values[i]);
         }
         return ints;
+    }
+
+    private static int parseInt(String values) {
+        try {
+            return Integer.parseInt(values);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException();
+        }
     }
 
     private static String[] extractValues(String expression) {
