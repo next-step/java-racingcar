@@ -32,3 +32,16 @@
   * UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
 * 자바 코드 컨벤션을 지키면서 프로그래밍한다
 * else 예약어를 쓰지 않는다.
+
+
+### Commit Message 종류 구분
+
+<pre>
+<code>feat (feature)
+fix (bug fix)
+docs (documentation)
+style (formatting, missing semi colons, …)
+refactor
+test (when adding missing tests)
+chore (maintain) </code>
+</pre>
