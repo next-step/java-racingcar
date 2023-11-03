@@ -13,10 +13,14 @@ public class Car {
     }
 
     public void move(int input) {
-        if (THRESHOLD <= input) {
+        if (isOverThreshHold(input)) {
             int currentPosition = this.position();
             this.position = new Position(currentPosition + 1);
         }
+    }
+
+    private boolean isOverThreshHold(int input) {
+        return THRESHOLD <= input;
     }
 
     private static class Position {
