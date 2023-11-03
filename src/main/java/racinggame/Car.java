@@ -41,4 +41,7 @@ public class Car {
         return Objects.hash(movingDistance);
     }
 
+    public MovingDistance movingDistance() {
+        return this.movingDistance;
+    }
 }

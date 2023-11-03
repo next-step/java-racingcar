@@ -69,4 +69,16 @@ class CarTest {
 
     }
 
+    @Test
+    void 자동차가_이동한_거리를_표출_할_수_있다() {
+        MovingStrategy movingStrategy = new TestMovingStrategy(4);
+        MovingValidator movingValidator = new MovingValidator(movingStrategy);
+        Car car = new Car(movingValidator);
+        car.move();
+        MovingDistance actual = car.movingDistance();
+        MovingDistance expected = new MovingDistance(2);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }

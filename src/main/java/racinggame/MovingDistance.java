@@ -37,4 +37,7 @@ public class MovingDistance {
         return Objects.hash(distance);
     }
 
+    public int distance() {
+        return this.distance;
+    }
 }
