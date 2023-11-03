@@ -1,9 +1,15 @@
 package calculator;
 
+import java.util.List;
+
 /**
  * 문자열 안에 주어진 숫자를 더하는 연산 기능을 제공하는 유틸 클래스
  */
 public class StringAdder {
+
+    /** 숫자간 구분하는 패턴입니다. */
+    private static final String DELIMITER_REGEX = ",|:";
+
     /**
      * 문자열로 정수 목록이 주어지면 정수들의 합을 계산합니다.
      * 문자열 내에서 각 정수들은 지정된 구분자로 구분되거나
@@ -28,7 +34,14 @@ public class StringAdder {
             return Integer.parseInt(integerList);
         }
 
-        return 0;
+        String[] stringValueList = integerList.split(DELIMITER_REGEX);
+
+        int sum = 0;
+        for (String stringValue : stringValueList) {
+            sum += Integer.parseInt(stringValue);
+        }
+
+        return sum;
     }
 
     /**

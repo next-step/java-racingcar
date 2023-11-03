@@ -3,6 +3,8 @@ package calculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,5 +28,18 @@ public class StringAdderTest {
     public void inputNoDelimiter() {
         assertThat(StringAdder.sum("13"))
                 .isEqualTo(13);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "'1,2', 3",
+            "'4:13', 17",
+            "'1,2:3', 6"
+    })
+    @DisplayName("기본 구분자 테스트")
+    public void inputDefaultDelimiter(String input, int expected) {
+        assertThat(StringAdder.sum(input))
+                .as("%s 입력 시 %d가 계산 결과로 나와야 함", input, expected)
+                .isEqualTo(expected);
     }
 }
