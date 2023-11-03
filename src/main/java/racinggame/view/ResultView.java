@@ -14,6 +14,10 @@ public class ResultView {
         out.println();
     }
 
+    public static void resultSign() {
+        out.println(RESULT_SIGN);
+    }
+
     public static void report(List<MovingDistance> report) {
         for (MovingDistance movingDistance : report) {
             out.println(createResult(movingDistance));
@@ -25,7 +29,4 @@ public class ResultView {
         return DASH.repeat(Math.max(0, movingDistance.distance()));
     }
 
-    public static void resultSign() {
-        out.println(RESULT_SIGN);
-    }
 }

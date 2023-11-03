@@ -15,16 +15,23 @@ public class RacingGameController {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         String value = InputView.carCount(scanner);
         int number = InputView.playCount(scanner);
-        List<Car> cars = createCars(value);
-        RacingGame racingGame = new RacingGame(cars);
+
+        RacingGame racingGame = createRacingGame(value);
+
         ResultView.br();
         ResultView.resultSign();
         for (int i = 0; i < number; i++) {
             racingGame.play();
             ResultView.report(racingGame.report());
         }
+    }
+
+    private static RacingGame createRacingGame(String value) {
+        List<Car> cars = createCars(value);
+        return new RacingGame(cars);
     }
 
     private static List<Car> createCars(String value) {
