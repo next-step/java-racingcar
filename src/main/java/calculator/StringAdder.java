@@ -16,6 +16,10 @@ public class StringAdder {
      * @return 해당 정수들의 합
      */
     public static int sum(String integerList) {
+        if (integerList == null) {
+            return 0;
+        }
+
         if (integerList.isEmpty()) {
             return 0;
         }

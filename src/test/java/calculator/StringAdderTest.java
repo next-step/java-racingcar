@@ -13,4 +13,11 @@ public class StringAdderTest {
         assertThat(StringAdder.sum(""))
                 .isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("null 처리 테스트")
+    public void inputNull() {
+        assertThat(StringAdder.sum(null))
+                .isEqualTo(0);
+    }
 }
