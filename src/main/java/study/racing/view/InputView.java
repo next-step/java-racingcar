@@ -11,7 +11,6 @@ public class InputView {
 
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
-        scanner.close();
 
         return new CarsNumber(value);
     }
