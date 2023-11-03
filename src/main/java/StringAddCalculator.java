@@ -8,7 +8,7 @@ public class StringAddCalculator {
 	private final static Pattern ADD_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 	public static int splitAndSum(String str) {
-		if (hasNoValue(str)) {
+		if (isEmpty(str)) {
 			return 0;
 		}
 
@@ -19,7 +19,7 @@ public class StringAddCalculator {
 			.sum();
 	}
 
-	private static boolean hasNoValue(String str) {
+	private static boolean isEmpty(String str) {
 		return str == null || str.isEmpty();
 	}
 
@@ -33,29 +33,15 @@ public class StringAddCalculator {
 	}
 
 	private static int parseInt(String number) {
-		try {
-			return Integer.parseUnsignedInt(number);
-		} catch (Exception e) {
-			throw new RuntimeException();
+		int parseInt = Integer.parseInt(number);
+		if (isNegative(parseInt)) {
+			throw new IllegalArgumentException(ErrorCode.ILLEGAL_ARGUMENT_EXCEPTION.getMessage());
 		}
+		return parseInt;
 	}
 
-	// temp class name
-	private static class Splitter {
-		private final String target;
-		private final String delimiter;
 
-		public Splitter(String target, String delimiter) {
-			this.target = target;
-			this.delimiter = delimiter;
-		}
-
-		public static Splitter of(String target, String delimiter) {
-			return new Splitter(target, delimiter);
-		}
-
-		private String[] getNumbers() {
-			return target.split(delimiter);
-		}
+	private static boolean isNegative(Integer number) {
+		return number < 0;
 	}
 }
