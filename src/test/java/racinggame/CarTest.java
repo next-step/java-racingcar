@@ -10,7 +10,7 @@ class CarTest {
     @Test
     void 자동차를_생성하면_처음_거리는_1이다() {
         Car actual = new Car();
-        Car expected = new Car(1);
+        Car expected = new Car(new MovingDistance());
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -21,13 +21,13 @@ class CarTest {
 
         assertAll(
             () -> {
-                Car expected = new Car(2);
+                Car expected = new Car(new MovingDistance(2));
                 car.move();
 
                 assertThat(car).isEqualTo(expected);
             },
             () -> {
-                Car expected = new Car(3);
+                Car expected = new Car(new MovingDistance(3));
                 car.move();
 
                 assertThat(car).isEqualTo(expected);

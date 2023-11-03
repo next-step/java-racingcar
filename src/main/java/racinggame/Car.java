@@ -3,20 +3,18 @@ package racinggame;
 import java.util.Objects;
 
 public class Car {
+    private final MovingDistance movingDistance;
 
-    public static final int DEFAULT_DISTANCE = 1;
-    private int distance;
-
-    public Car(int distance) {
-        this.distance = distance;
+    public Car(MovingDistance movingDistance) {
+        this.movingDistance = movingDistance;
     }
 
     public Car() {
-        this.distance = DEFAULT_DISTANCE;
+        this.movingDistance = new MovingDistance();
     }
 
     public void move() {
-        this.distance = distance + 1;
+        this.movingDistance.add();
     }
 
     @Override
@@ -28,12 +26,12 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return distance == car.distance;
+        return movingDistance == car.movingDistance;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distance);
+        return Objects.hash(movingDistance);
     }
 
 }
