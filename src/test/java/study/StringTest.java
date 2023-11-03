@@ -1,7 +1,11 @@
 package study;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -11,6 +15,31 @@ public class StringTest {
     void split() {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
+    }
+
+    @Test
+    void split_구분자_여러개() {
+        String[] result = "1,2:3".split(",|\\:");
+        assertThat(result).containsExactly("1", "2", "3");
+    }
+
+    @Test
+    void split_regex() {
+        String input = "//;::\n1;::2";
+        String[] result = input.split("//|\n");
+        assertThat(result[1]).isEqualTo(";::");
+        Assertions.assertTrue(input.matches("//\\D+\n.*"));
+    }
+
+    @Test
+    void regex_match와group() {
+        String text = "//&\n1&2";
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if(m.find()) {
+            assertThat(m.group(0)).isEqualTo(text);
+            assertThat(m.group(1)).isEqualTo("&");
+            assertThat(m.group(2)).isEqualTo("1&2");
+        }
     }
 
     @Test
@@ -27,7 +56,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("charAt(실패) - String의 index범위밖으로 CharAt을 사용하면 StringIndexOutOfBoundsException이 발생한다")
+    @DisplayName("charAt(실패) - String의 index범위밖으로 CharAt을 사용하면 StringIndexOutOfBoundsException를 throw한다.")
     void charAtFail() {
         assertThatThrownBy(() -> "abc".charAt(10))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
