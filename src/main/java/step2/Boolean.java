@@ -1,5 +1,5 @@
 package step2;
 
 public abstract class Boolean {
-	public abstract boolean satisfied();
+	public abstract boolean booleanValue();
 }
