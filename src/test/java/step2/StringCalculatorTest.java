@@ -1,40 +1,26 @@
 package step2;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
 
-    @DisplayName("문자열을 전달 받아 기본 구분자로 문자열을 분리한 뒤 합을 구한다.")
-    @Test
-    void calculateWith() {
+    @DisplayName("기본, 커스텀 구분자를 가진 문자열, 비어있거나 null인 문자열, 하나의 숫자만 가진 문자열의 합을 구한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3:6", "'//;\n1;2;3':6", " :0", "1:1"}, delimiter = ':')
+    void calculate(String string, int expectedResult) {
         // given
         StringCalculator stringCalculator = new StringCalculator();
-        String string = "1,2,3";
 
         // when
-        int result = stringCalculator.calculateWith(string);
+        int realResult = stringCalculator.calculate(string);
 
         // then
-        assertThat(result).isEqualTo(6);
-    }
-
-    @DisplayName("문자열을 전달 받아 커스텀 구분자를 찾고 그 구분자로 문자열을 분리한 뒤 합을 구한다.")
-    @Test
-    void calculateWithCustomDelimeter() {
-        // given
-        StringCalculator stringCalculator = new StringCalculator();
-        String string = "//;\n1;2;3";
-
-        // when
-        int result = stringCalculator.calculateWith(string);
-
-        // then
-        assertThat(result).isEqualTo(6);
+        assertThat(realResult).isEqualTo(expectedResult);
     }
 
     @DisplayName("구분자로 문자열을 분리한 뒤 배열의 요소가 양의 정수가 아니면 RuntimeException을 던진다.")
@@ -45,7 +31,7 @@ class StringCalculatorTest {
         String string = "1:2:d";
 
         // when & then
-        assertThatThrownBy(() -> stringCalculator.calculateWith(string))
+        assertThatThrownBy(() -> stringCalculator.calculate(string))
             .isInstanceOf(RuntimeException.class);
     }
 
