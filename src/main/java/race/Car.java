@@ -1,23 +1,32 @@
 package race;
 
-import race.ui.ResultView;
-
-import java.util.Random;
-
 public class Car {
     private final static String STEP_STRING = "-";
-    private final StringBuffer step = new StringBuffer();
+    private final MoveStrategy moveStrategy;
+    private int position = 0;
 
-    public void go() {
-        goOrStop();
-
-        ResultView.print(step.toString());
+    public Car(final MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
-    private void goOrStop() {
-        final int randomInt = new Random().nextInt(10);
-        if (randomInt > 4) {
-            this.step.append(STEP_STRING);
+    public void move() {
+        final int number = moveStrategy.getNumber();
+        if (number > 4) {
+            go();
         }
+    }
+
+    private void go() {
+        position++;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append(STEP_STRING);
+        }
+
+        return stringBuilder.toString();
     }
 }

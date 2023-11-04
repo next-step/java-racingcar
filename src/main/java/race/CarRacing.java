@@ -10,7 +10,7 @@ public class CarRacing {
 
     public CarRacing(final int carsCount) {
         for (int i = 0; i < carsCount; i ++) {
-            cars.add(new Car());
+            cars.add(new Car(new RandomMoveStrategy()));
         }
     }
 
@@ -22,7 +22,9 @@ public class CarRacing {
 
     private void carsStart() {
         for (Car car : cars) {
-            car.go();
+            car.move();
+
+            ResultView.print(car.toString());
         }
 
         ResultView.emptyLine();
