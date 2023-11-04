@@ -1,9 +1,14 @@
 package calculator;
 
-public class Calculator {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-    public static final String DELIMITER_COMMA = ",";
-    public static final String DELIMITER_COLON = ":";
+public class Calculator {
+    public static final String DELIMITER_JOIN = "|";
+    public static List<String> delimiters = new ArrayList<>(Arrays.asList(",", ":"));
     public static final int NULL_VALUE = 0;
 
     public static int cal(String text) {
@@ -11,12 +16,29 @@ public class Calculator {
             return NULL_VALUE;
         } //else문 사용 지양을 위해 Early Return 지향하자
 
-        return sum(toInts(split(text)));
+        return sum(toInts(split(extractText(text))));
+    }
+
+    private static String extractText(String text) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            addDelimiters(m);
+            return m.group(2);
+        }
+        return text;
+    }
+
+    private static void addDelimiters(Matcher m) {
+        String customDelimiter = m.group(1);
+        delimiters.add(customDelimiter);
     }
 
     private static String[] split(String text) {
-        String delimiter = DELIMITER_COMMA + "|" + DELIMITER_COLON;
-        return text.split(delimiter);
+        return text.split(makeDelimiters(delimiters));
+    }
+
+    private static String makeDelimiters(List<String> delimiters) {
+        return String.join(DELIMITER_JOIN, delimiters);
     }
 
     private static boolean isBlank(String text) {

@@ -28,4 +28,9 @@ public class CalculatorTest {
     void 컴마_콜론_구분자() {
         assertThat(cal("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    void 사용자_커스텀_구분자_지정() {
+        assertThat(cal("//;\n1;2;3")).isEqualTo(6);
+    }
 }
