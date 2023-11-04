@@ -17,7 +17,7 @@ public class Calculator {
 
     private static void checkNegativeNumber(int tokenNumber) {
         if (tokenNumber < 0) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException();
         }
     }
 
