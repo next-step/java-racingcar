@@ -1,5 +1,7 @@
 package car_racing;
 
+import car_racing.move_strategy.MoveStrategy;
+
 public class Car {
 
     private static final Integer START_POSITION = 1;

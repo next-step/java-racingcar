@@ -1,5 +1,7 @@
 package car_racing;
 
+import car_racing.move_strategy.RandomMoveStopStrategy;
+
 import static car_racing.Cars.makeCars;
 
 public class Track {
