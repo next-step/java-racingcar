@@ -5,8 +5,13 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    public static final String DELIMETER = "[/,,:]";
-    public static final String CUSTOM_DELIMETER = "//(.)\n(.*)";
+    private static final String DELIMETER = "[/,,:]";
+    private static final String CUSTOM_DELIMETER = "//(.)\n(.*)";
+    private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMETER);
+
+    Calculator() {
+
+    }
 
     public static int cal(String text) {
         if (isBlank(text)) {
@@ -17,7 +22,7 @@ public class Calculator {
     }
 
     private static String[] split(String text) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMETER).matcher(text);
+        Matcher m = PATTERN.matcher(text);
         if (m.find()) {
             return m.group(2).split(m.group(1));
         }

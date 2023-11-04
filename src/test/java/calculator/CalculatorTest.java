@@ -1,6 +1,8 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static calculator.Calculator.cal;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,13 +10,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
-    @Test
-    public void splitAndSum_null_또는_빈문자() {
-        int result = cal(null);
-        assertThat(result).isEqualTo(0);
-
-        result = Calculator.cal("");
-        assertThat(result).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자(String input) {
+        assertThat(cal(input)).isEqualTo(0);
     }
 
     @Test
