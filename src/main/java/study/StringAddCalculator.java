@@ -6,72 +6,54 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    static final String DEFAULT_DELIMITER_REGEX = ",|:";
-    static final String CUSTOM_DELIMITER_REGEX = "(\\/\\/)(.*)(\\n)(.*)";
-    static final int CUSTOM_DELIMITER_GROUP_NUMBER = 2;
-    static final int BODY_GROUP_NUMBER = 4;
+     final String DEFAULT_DELIMITER_REGEX = ",|:";
+     final String CUSTOM_DELIMITER_REGEX = "\\/\\/(.*)\\n(.*)";
+     final int CUSTOM_DELIMITER_GROUP_NUMBER = 1;
+     final int BODY_GROUP_NUMBER = 2;
 
-    public static int add(String s) {
-        if(isBlank(s)) return 0;
+    public int add(String input) {
+        if(isEmpty(input)){
+            return 0;
+        }
 
-        int[] intArray = IntArrayFromStrNumbersArray(getStrNumbers(s));
+        int[] intArray = intArrayFromStrNumbersArray(getStrNumbers(input));
 
         throwExceptionIfMinusValueIncluded(intArray);
 
         return sum(intArray);
     }
 
-    private static String[] getStrNumbers(String s) {
-        Matcher customDelimiterRegexMatcher = customDelimiterRegexMatcher(s);
-        if(isCustomDelimiterInput(customDelimiterRegexMatcher)) {
-            String customDelimiter = getCustomDelimiter(customDelimiterRegexMatcher);
-            return strNumbersSplitedByCustomDelimiter(customDelimiterRegexMatcher, customDelimiter);
-        }else{
-            return strNumbersOfDefaultDelimiter(s);
-        }
-    }
+    private String[] getStrNumbers(String s) {
+        Matcher customDelimiterRegexMatcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(s);
 
-    private static String[] strNumbersOfDefaultDelimiter(String s) {
+        if(customDelimiterRegexMatcher.find()) {
+            String customDelimiter = customDelimiterRegexMatcher.group(CUSTOM_DELIMITER_GROUP_NUMBER);
+            return customDelimiterRegexMatcher.group(BODY_GROUP_NUMBER).split(customDelimiter);
+        }
+
         return s.split(DEFAULT_DELIMITER_REGEX);
     }
 
-    private static String[] strNumbersSplitedByCustomDelimiter(Matcher customDelimiterRegexMatcher, String customDelimiter) {
-        return customDelimiterRegexMatcher.group(BODY_GROUP_NUMBER).split(customDelimiter);
-    }
 
-    private static String getCustomDelimiter(Matcher customDelimiterRegexMatcher) {
-        return customDelimiterRegexMatcher.group(CUSTOM_DELIMITER_GROUP_NUMBER);
-    }
-
-    private static boolean isCustomDelimiterInput(Matcher customDelimiterRegexMatcher) {
-        return customDelimiterRegexMatcher.find();
-    }
-
-    private static Matcher customDelimiterRegexMatcher(String s) {
-        return Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(s);
-    }
-
-    private static int[] IntArrayFromStrNumbersArray(String[] numbers) {
+    private  int[] intArrayFromStrNumbersArray(String[] numbers) {
         return Arrays.stream(numbers).mapToInt(Integer::parseInt).toArray();
     }
 
-    private static void throwExceptionIfMinusValueIncluded(int[] numbers) {
+    private  void throwExceptionIfMinusValueIncluded(int[] numbers) {
         Arrays.stream(numbers).forEach(StringAddCalculator::throwExceptionIfMinusValue);
     }
 
     private static void throwExceptionIfMinusValue(int value) {
-        if(value < 0) throwRuntimeException("Minus Value Error!");
+        if(value < 0) {
+            throw new RuntimeException("Minus Value Error !!!");
+        }
     }
 
-    private static void throwRuntimeException(String message) {
-        throw new RuntimeException(message);
-    }
-
-    private static boolean isBlank(String s) {
+    private  boolean isEmpty(String s) {
         return s == null || s.equals("");
     }
 
-    private static int sum(int[] numbers) {
+    private  int sum(int[] numbers) {
         return Arrays.stream(numbers).sum();
     }
 }
