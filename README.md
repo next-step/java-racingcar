@@ -7,3 +7,21 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+---
+
+## 3단계 - 자동차 경주
+* commit 1 : UI 로직인 입력값을 전달받는 InputView 클래스 구현
+  * abc 같은 문자값을 받을 때 RuntimeException 을 발생시킵니다.
+  * 3.5 와 같은 소수 형태의 문자값을 받을 때 RuntimeException 을 발생시킵니다.
+  * -5 와 같은 음수 형태의 문자값을 받을 때 RuntimeException 을 발생시킵니다.
+
+
+* commit 2 : 핵심 로직을 담당하는 CarRacingPlay 클래스 구현
+  * 0 ~ 9 사이의 랜덤 정수 값을 얻어야 합니다.
+  * 랜덤 값이 4 이상인지 확인합니다.
+  * 조건을 만족한다면 차가 한 칸 이동합니다.
+
+
+* commit 3 : UI 로직인 출력값을 출력하는 ResultView 클래스 구현
