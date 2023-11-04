@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 
 public class Cars {
 
+    public static final String NEWLINE = "\n";
+
     private final List<Car> carList;
 
     public static Cars createCars(int numberOfCars) {
@@ -47,7 +49,7 @@ public class Cars {
     private void buildCarPositions(StringBuilder carPositions) {
         this.carList.forEach(car -> {
             String carPosition = car.getPositionToString();
-            carPositions.append(carPosition).append("\n");
+            carPositions.append(carPosition).append(NEWLINE);
         });
     }
 }
