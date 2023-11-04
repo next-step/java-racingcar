@@ -37,4 +37,17 @@ class CarTest {
         // then
         assertThat(realPosition).isEqualTo(expectedPosition);
     }
+
+    @DisplayName("자동차의 엑셀을 밟는 힘이 0~9의 범위를 넘어서면 예외를 발생시킨다.")
+    @Test
+    void moveForwardWhenOverAndUnderPower() {
+        // given
+        Car car = new Car();
+        int power = 10;
+
+        // when & then
+        assertThatThrownBy(() -> car.moveForward(power))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("엑셀의 작동 범위를 벗어납니다.");
+    }
 }
