@@ -5,6 +5,10 @@ import java.util.List;
 
 public class RacingGame {
 
+    public static void racingGameRun() {
+        List<Car> carList = createCarList(InputView.inputNumberOfCars());
+    }
+
     public static List<Car> createCarList(int numberOfCars) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
@@ -12,5 +16,4 @@ public class RacingGame {
         }
         return carList;
     }
-
 }
