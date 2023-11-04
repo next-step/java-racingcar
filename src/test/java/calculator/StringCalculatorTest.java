@@ -40,4 +40,10 @@ class StringCalculatorTest {
 	void splitcolonAndSum() {
 		assertThat(cal("1:3,5")).isEqualTo(9);
 	}
+
+	@DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정")
+	@Test
+	void splitWithCustomDelimiter() {
+		assertThat(cal("//;\n1;2;3")).isEqualTo(6);
+	}
 }
