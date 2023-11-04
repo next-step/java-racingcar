@@ -11,19 +11,15 @@ public class Car {
         this.randomGenerator = randomGenerator;
     }
 
-    public void run() {
-        if (pickRandomValue()>=4){
-            moveStatus = MoveStatus.MOVE;
-            return;
+    public MoveStatus canMove() {
+        if (pickRandomValue() >= MOVE_CONDITION){
+            return MoveStatus.MOVE;
         }
-        moveStatus = MoveStatus.STOP;
+        return MoveStatus.STOP;
     }
 
     private int pickRandomValue() {
         return randomGenerator.number();
     }
 
-    public MoveStatus moveStatus(){
-        return moveStatus;
-    }
 }
