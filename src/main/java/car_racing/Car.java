@@ -23,4 +23,8 @@ public class Car {
     public Integer getCurrentPosition() {
         return this.currentPosition;
     }
+
+    public void printStatus() {
+        System.out.println(String.valueOf('-').repeat(currentPosition));
+    }
 }

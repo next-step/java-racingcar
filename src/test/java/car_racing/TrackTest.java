@@ -13,4 +13,10 @@ public class TrackTest {
         Track track = new Track(10, 5);
         assertThat(track).isInstanceOf(Track.class);
     }
+
+    @Test
+    void run() {
+        Track track = new Track(10, 5);
+        track.run();
+    }
 }
