@@ -1,8 +1,11 @@
 package calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static calculator.Calculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,30 +20,18 @@ class CalculatorTest {
         assertThat(splitAndSum("")).isEqualTo(0);
     }
 
-    @Test
-    public void splitAndSum_숫자_하나() throws Exception {
-        assertThat(splitAndSum("1")).isEqualTo(1);
+    @DisplayName("splitAndSum 수행 시 덧셈 결과를 반환한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"'1',1", "'1,2',3", "'1,2:3',6", "'//;\n1;2;3',6"})
+    void splitAndSum_ShouldReturnAdditionResult(String input, int expected) {
+        assertThat(splitAndSum(input)).isEqualTo(expected);
     }
 
-    @Test
-    public void splitAndSum_쉼표_구분자() throws Exception {
-        assertThat(splitAndSum("1,2")).isEqualTo(3);
-    }
-
-    @Test
-    public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
-        assertThat(splitAndSum("1,2:3")).isEqualTo(6);
-    }
-
-    @Test
-    public void splitAndSum_custom_구분자() throws Exception {
-        assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
-    }
-
-    @Test
-    public void splitAndSum_negative() throws Exception {
-        assertThatThrownBy(() -> splitAndSum("-1,2,3"))
+    @DisplayName("splitAndSum 수행 시 exception 을 던진다.")
+    @ParameterizedTest
+    @CsvSource(value = {"'-1,2,3'", "'1,test,3'"})
+    void splitAndSum_ShouldThrowsException(String input) throws Exception {
+        assertThatThrownBy(() -> splitAndSum(input))
                 .isInstanceOf(RuntimeException.class);
     }
-
 }
