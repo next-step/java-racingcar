@@ -5,33 +5,19 @@ import race.ui.ResultView;
 import java.util.Random;
 
 public class Car {
-    private int step = 0;
+    private final static String STEP_STRING = "-";
+    private final StringBuffer step = new StringBuffer();
 
-    public void go(final int raceAttemptCount) {
-        this.step = 0;
+    public void go() {
+        goOrStop();
 
-        for (int i = 0; i < raceAttemptCount; i ++) {
-            goOrStop();
-        }
+        ResultView.print(step.toString());
     }
 
     private void goOrStop() {
         final int randomInt = new Random().nextInt(10);
         if (randomInt > 4) {
-            this.step++;
+            this.step.append(STEP_STRING);
         }
-    }
-
-    public boolean isStepArrive(final int i) {
-        return step >= i;
-    }
-
-    public void print(final int currentStep) {
-        if (isStepArrive(currentStep)) {
-            ResultView.print(currentStep);
-            return;
-        }
-
-        ResultView.print(step);
     }
 }

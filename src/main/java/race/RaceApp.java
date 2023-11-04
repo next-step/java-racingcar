@@ -7,9 +7,8 @@ public class RaceApp {
         final int carsCount = InputView.inputCarsCount();
         final int raceAttemptCount = InputView.inputRaceAttemptCount();
 
-        final CarRacing carRacing = new CarRacing(carsCount, raceAttemptCount);
-        carRacing.start();
+        final CarRacing carRacing = new CarRacing(carsCount);
+        carRacing.start(raceAttemptCount);
 
-        carRacing.print();
     }
 }
