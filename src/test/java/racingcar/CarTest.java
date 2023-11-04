@@ -13,6 +13,7 @@ class CarTest {
     @Test
     void game_자동차는_게임_진행_후_랜덤값이_GameNumber의_최소_이동값_이상이라면_전진한다() {
         // given
+        int defaultGrade = 1;
         RandomPicker customRandomPicker = () -> GameNumber.newNumber(GameNumber.MOVABLE_MIN_NUMBER);
         Car car = new Car(customRandomPicker);
 
@@ -20,12 +21,13 @@ class CarTest {
         car.game();
 
         // then
-        assertThat(car.grade()).isEqualTo(2);
+        assertThat(car.grade()).isEqualTo(defaultGrade + 1);
     }
 
     @Test
     void game_자동차는_게임_진행_후_랜덤값이_GameNumber의_최소_이동값_미만이라면_전진하지_않는다() {
         // given
+        int defaultGrade = 1;
         int 움직일_수_없는_랜덤값 = GameNumber.MOVABLE_MIN_NUMBER - 1;
         RandomPicker customRandomPicker = () -> GameNumber.newNumber(움직일_수_없는_랜덤값);
         Car car = new Car(customRandomPicker);
@@ -34,6 +36,6 @@ class CarTest {
         car.game();
 
         // then
-        assertThat(car.grade()).isEqualTo(1);
+        assertThat(car.grade()).isEqualTo(defaultGrade);
     }
 }
