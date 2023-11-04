@@ -11,4 +11,12 @@ public class RacingController {
         inputView.inputTryCount();
     }
 
+    public List<Car> initCar(int racingCarCount) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < racingCarCount; i++) {
+            Car car = new Car();
+            cars.add(car);
+        }
+        return cars;
+    }
 }
