@@ -16,13 +16,13 @@ public class ResultView {
 
     public void print() {
         for (CarStatus carStatus: carStatuses) {
-            printWithUnderBar(carStatus);
+            printWithDash(carStatus);
         }
 
         System.out.println();
     }
 
-    private void printWithUnderBar(CarStatus carStatus) {
+    private void printWithDash(CarStatus carStatus) {
         int grade = carStatus.grade();
         for (int idx = 0; idx < grade; idx++) {
             System.out.print("-");
