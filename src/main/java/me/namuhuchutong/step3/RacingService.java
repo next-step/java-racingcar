@@ -4,6 +4,12 @@ import java.util.stream.IntStream;
 
 public class RacingService {
 
+    private final RacingRule racingRule;
+
+    public RacingService(RacingRule racingRule) {
+        this.racingRule = racingRule;
+    }
+
     public RacingResult runRacing(UserInputInformation userInputInformation) {
         validateTimes(userInputInformation.getTimes());
         Cars initalizedCars = Cars.createCars(userInputInformation.getNumberOfCars());
@@ -17,7 +23,6 @@ public class RacingService {
     }
 
     private RacingResult repeatRacing(Cars initalizedCars, int times) {
-        RacingRule racingRule = new RacingRule();
         RacingResult racingResult = new RacingResult();
         IntStream.range(0, times)
                  .mapToObj(i -> initalizedCars.raceAllCars(racingRule))

@@ -3,12 +3,23 @@ package me.namuhuchutong.step3;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingServiceTest {
+
+    private RacingService racingService;
+
+    private RacingRule racingRule;
+
+    @BeforeEach
+    void setUp() {
+        this.racingRule = new RacingRule();
+        this.racingService = new RacingService(this.racingRule);
+    }
 
     @DisplayName("자동차 경주 횟수는 음수이거나 0일 경우 예외가 발생한다.")
     @ParameterizedTest
@@ -18,7 +29,6 @@ class RacingServiceTest {
         UserInputInformation userInputInformation = new UserInputInformation();
         userInputInformation.setNumberOfCars(1);
         userInputInformation.setTimes(times);
-        RacingService racingService = new RacingService();
 
         //when, then
         assertThrows(IllegalArgumentException.class, () -> racingService.runRacing(userInputInformation));
@@ -32,7 +42,6 @@ class RacingServiceTest {
         UserInputInformation userInputInformation = new UserInputInformation();
         userInputInformation.setNumberOfCars(numberOfCars);
         userInputInformation.setTimes(times);
-        RacingService racingService = new RacingService();
 
         //when
         RacingResult racingResult = racingService.runRacing(userInputInformation);
