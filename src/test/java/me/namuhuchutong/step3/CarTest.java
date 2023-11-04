@@ -40,7 +40,7 @@ class CarTest {
 
     @DisplayName("자동차의 표시 문자열 길이와 자동차의 위치 값은 동일하다")
     @ParameterizedTest(name = "from: {0}, to: {1}, expected: {2}")
-    @CsvSource(value = {"4,6,2", "1,9,6", "9,9,0"})
+    @CsvSource(value = {"4,6,2", "1,9,5", "9,9,0"})
     void string_indicator_length_and_car_position_is_same_value(int from, int to, int expected) {
         //given
         Car car = new Car();
@@ -55,6 +55,6 @@ class CarTest {
     }
 
     private boolean imitateRandomCondition(int value) {
-        return value >= 3;
+        return value > 3;
     }
 }
