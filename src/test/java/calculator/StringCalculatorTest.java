@@ -34,4 +34,10 @@ class StringCalculatorTest {
 	void splitCommaAndSum() {
 		assertThat(cal("1,3")).isEqualTo(4);
 	}
+
+	@DisplayName("구분자를 컴마 이외에 콜론을 사용할 수 있음")
+	@Test
+	void splitcolonAndSum() {
+		assertThat(cal("1:3,5")).isEqualTo(9);
+	}
 }

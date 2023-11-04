@@ -10,10 +10,11 @@ public class StringCalculator {
 		if (input.contains("-")) {
 			throw new RuntimeException();
 		}
-		if (input.contains(",")) {
-			String[] numbers = input.split(",");
+		if (input.contains(",") || input.contains(":")) {
+			String[] numbers = input.split(",|:");
 			return sumInput(numbers);
 		}
+
 		return Integer.parseInt(input);
 	}
 
