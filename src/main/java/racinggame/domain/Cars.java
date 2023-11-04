@@ -81,6 +81,14 @@ public class Cars {
         return comparisonDistance;
     }
 
+    public List<CarName> names() {
+        List<CarName> carNames = new ArrayList<>();
+        for(Car car : carList) {
+            carNames.add(car.name());
+        }
+        return carNames;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

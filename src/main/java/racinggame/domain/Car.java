@@ -30,6 +30,18 @@ public class Car {
         return this.movingDistance;
     }
 
+    public boolean sameMoved(MovingDistance movingDistance) {
+        return this.movingDistance.equals(movingDistance);
+    }
+
+    public CarName name() {
+        return this.name;
+    }
+
+    public String toStringName() {
+        return name.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -47,11 +59,4 @@ public class Car {
         return Objects.hash(movingDistance);
     }
 
-    public String name() {
-        return name.toString();
-    }
-
-    public boolean sameMoved(MovingDistance movingDistance) {
-        return this.movingDistance.equals(movingDistance);
-    }
 }
