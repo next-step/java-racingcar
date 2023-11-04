@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class calTest {
 
     @Test
-    @DisplayName("숫자 두개를 콜론(:) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
+    @DisplayName("컴마(,) 이외에 콜론(:) 구분자로 입력할 경우 숫자의 합을 반환한다.")
     void 콜론_구분자(){
-        assertThat(cal("1:2")).isEqualTo(3);
+        assertThat(cal("1,2:3")).isEqualTo(6);
     }
 
     @Test
