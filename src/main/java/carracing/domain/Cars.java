@@ -1,5 +1,7 @@
 package carracing.domain;
 
+import carracing.ui.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +17,10 @@ public class Cars {
     }
 
     public void move(int tryCount) {
+        ResultView.printTitle();
         for (int i = 0; i < tryCount; i++) {
             carList.forEach(Car::move);
+            ResultView.printResult(carList);
         }
-    }
-
-    public void getCarsPotion() {
-        carList.forEach(car -> System.out.println(car.getPosition()));
     }
 }
