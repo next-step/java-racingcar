@@ -7,7 +7,10 @@ import racinggame.domain.MovingDistance;
 
 public class ResultView {
 
-    public static final String RESULT_SIGN = "실행 결과";
+    private ResultView() {
+    }
+
+    private static final String RESULT_SIGN = "실행 결과";
     private static final String DASH = "-";
 
     public static void br() {
