@@ -16,7 +16,7 @@ public class StringAddCalculator {
 
     private static int sum(Input input) {
         return input.toNumbers().stream()
-                .mapToInt(i -> i)
+                .mapToInt(number -> number)
                 .sum();
     }
 
