@@ -82,9 +82,9 @@ class StringTest {
 
         // when
         Matcher matcher = pattern.matcher(testString);
-        if (matcher.find()) {
-            delimiter = matcher.group(1);
-        }
+        matcher.find();
+        delimiter = matcher.group(1);
+
 
         assertThat(delimiter)
                 .isEqualTo(";");
