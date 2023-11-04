@@ -1,5 +1,7 @@
 package car_racing;
 
+import java.util.Random;
+
 public class Car {
 
     private Integer currentPosition;
@@ -10,8 +12,9 @@ public class Car {
         this.remainingMoves = remainingMoves;
     }
 
-    public void move(int i) {
-        currentPosition += i;
+    public void move() {
+        currentPosition += new Random().nextInt(10);
+        remainingMoves--;
     }
 
     public Integer getCurrentPosition() {

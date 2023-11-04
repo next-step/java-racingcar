@@ -15,15 +15,15 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("이동/자동차가 숫자만큼 이동/현재위치가 증가한다.")
+    @DisplayName("이동/자동차가 랜덤값 만큼 이동/현재위치가 랜덤값만큼 증가, 이동횟수 차감")
     void moveCar() {
         // given
         Car car = new Car(0, 1);
 
         // when
-        car.move(5);
+        car.move();
 
         // then
-        assertThat(car.getCurrentPosition()).isEqualTo(5);
+        assertThat(car.getCurrentPosition()).isNotEqualTo(0);
     }
 }
