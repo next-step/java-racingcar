@@ -5,16 +5,24 @@ public class Calculator {
     public static final String DELIMITER = ",|:";
 
     public static int cal(String text) {
+        String customDelimiter = "";
 
         if (isBlank(text)) {
             return 0;
         }
+        if (text.startsWith("//")){
+            String[] result = split(text, "//|\n");
+            customDelimiter = result[1];
+            text = result[2];
 
-        return sum(toInts(split(text)));
+            return sum(toInts(split(text, customDelimiter)));
+        }
+
+        return sum(toInts(split(text, DELIMITER)));
     }
 
-    private static String[] split(String text) {
-        return text.split(DELIMITER);
+    private static String[] split(String text, String delimiter) {
+        return text.split(delimiter);
     }
 
     private static boolean isBlank(String text) {

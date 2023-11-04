@@ -9,6 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class calTest {
 
     @Test
+    @DisplayName("\"//\"와 \"\\n\" 문자 사이에 지정한 커스텀 구분자로 숫자의 합을 반환한다.")
+    void 커스텀_구분자(){
+        assertThat(cal("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
     @DisplayName("컴마(,) 이외에 콜론(:) 구분자로 입력할 경우 숫자의 합을 반환한다.")
     void 콜론_구분자(){
         assertThat(cal("1,2:3")).isEqualTo(6);
