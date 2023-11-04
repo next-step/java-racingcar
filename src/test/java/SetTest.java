@@ -1,5 +1,4 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,21 +25,15 @@ class SetTest {
         @Test
         public void Set_크기_확인() {
 
-                // given
-                // when
-                // then
-                assertEquals(3, numbers.size());
+                assertThat(numbers).hasSize(3);
         }
 
         @ParameterizedTest
         @DisplayName("Set_내_존재하는_숫자")
         @ValueSource(strings = {"1", "2", "3"})
-        void Set_내_특정_숫자_존재_여부_확인(String numStr) {
+        void Set_내_특정_숫자_존재_여부_확인(int numStr) {
 
-                // given
-                // when
-                // then
-                assertTrue(numbers.contains(Integer.valueOf(numStr)));
+                assertThat(numbers).contains(numStr);
         }
 
         @ParameterizedTest
@@ -48,10 +41,7 @@ class SetTest {
         @CsvSource(value = {"1:TRUE", "2:TRUE", "3:TRUE", "4:FALSE", "5:FALSE"}, delimiter = ':')
         void Set_내_특정_숫자_존재_여부_확인_Parametrized(int input, boolean expected) {
 
-                // given
-                // when
-                // then
-                assertEquals(expected, numbers.contains(input));
+                assertThat(numbers.contains(input)).isEqualTo(expected);
         }
 }
 
