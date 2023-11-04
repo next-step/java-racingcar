@@ -20,7 +20,7 @@ public class RacingGameController {
         ResultView.resultSign();
         for (int i = 0; i < number; i++) {
             racingGame.play();
-            ResultView.report(racingGame.report());
+            ResultView.report(racingGame.cars());
         }
     }
 

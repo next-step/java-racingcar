@@ -6,7 +6,7 @@ import racinggame.domain.exception.InputOverFiveLengthException;
 public class CarName {
 
     public static final int MAX_LENGTH = 5;
-    private String name;
+    private final String name;
 
     public CarName(String name) {
         if (isBlank(name)) {
@@ -15,6 +15,8 @@ public class CarName {
         if (isOverFiveLength(name)) {
             throw new InputOverFiveLengthException();
         }
+
+        this.name = name;
     }
 
     private static boolean isBlank(String text) {
@@ -23,5 +25,10 @@ public class CarName {
 
     private boolean isOverFiveLength(String name) {
         return name.length() > MAX_LENGTH;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

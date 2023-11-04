@@ -13,8 +13,9 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        List<Car> carList = List.of(new Car(new CarName("pobi"), new MovingValidator(new TestMovingStrategy(
-            MOVABLE_NUMBER))));
+        List<Car> carList = List.of(
+            new Car(new CarName("pobi"), new MovingValidator(new TestMovingStrategy(
+                MOVABLE_NUMBER))));
         cars = new Cars(carList);
     }
 
@@ -29,8 +30,9 @@ class CarsTest {
     @Test
     void 자동차들이_움직인다() {
         List<Car> carList = List.of(
-            new Car(new CarName("pobi"), new MovingDistance(1), new MovingValidator(new TestMovingStrategy(
-                MOVABLE_NUMBER))));
+            new Car(new CarName("pobi"), new MovingDistance(1),
+                new MovingValidator(new TestMovingStrategy(
+                    MOVABLE_NUMBER))));
         cars.move();
 
         Cars actual = this.cars;
@@ -50,7 +52,18 @@ class CarsTest {
     @Test
     void 자동차의_요소를_추출_할_수_있다() {
         Car actual = cars.get(0);
-        Car expected = new Car(new CarName("pobi"), new MovingValidator(new TestMovingStrategy(MOVABLE_NUMBER)));
+        Car expected = new Car(new CarName("pobi"),
+            new MovingValidator(new TestMovingStrategy(MOVABLE_NUMBER)));
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 자동차의_모든_요소를_추출_할_수_있다() {
+        List<Car> actual = List.of(
+            new Car(new CarName("pobi"), new MovingValidator(new TestMovingStrategy(
+                MOVABLE_NUMBER))));
+        List<Car> expected = cars.getAll();
 
         assertThat(actual).isEqualTo(expected);
     }

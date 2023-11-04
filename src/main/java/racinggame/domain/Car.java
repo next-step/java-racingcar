@@ -47,4 +47,7 @@ public class Car {
         return Objects.hash(movingDistance);
     }
 
+    public String name() {
+        return name.toString();
+    }
 }

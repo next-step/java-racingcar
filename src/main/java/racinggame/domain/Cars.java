@@ -47,6 +47,10 @@ public class Cars {
         return carList.get(index);
     }
 
+    public List<Car> getAll() {
+        return this.carList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

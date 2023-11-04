@@ -23,7 +23,6 @@ public class RacingGame {
     }
 
     public List<MovingDistance> report() {
-
         return cars.movingDistances();
     }
 }
