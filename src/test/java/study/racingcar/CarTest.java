@@ -24,12 +24,14 @@ public class CarTest {
     @Test
     void carMustMoveForward(){
         assertThatNoException().isThrownBy(() -> carAlwaysReturnAboveFour.run());
+        assertThat(carAlwaysReturnAboveFour.moveStatus()).isEqualTo(MoveStatus.MOVE);
     }
 
     @DisplayName("자동차가 정지합니다.")
     @Test
     void carMustMoveBackward(){
         assertThatNoException().isThrownBy(() -> carAlwaysReturnBelowFour.run());
+        assertThat(carAlwaysReturnAboveFour.moveStatus()).isEqualTo(MoveStatus.STOP);
     }
 
 }
