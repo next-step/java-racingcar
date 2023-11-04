@@ -6,14 +6,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculatorTest {
 
 	@DisplayName("빈 문자열 또는 null 값인 경우 0을 반환한다")
-	@Test
-	void NullOrBlank() {
-		assertThat(splitAndSum(null)).isEqualTo(0);
-		assertThat(splitAndSum("")).isEqualTo(0);
+	@ParameterizedTest(name = "입력값: {0}")
+	@NullAndEmptySource
+	void nullOrBlank(String input) {
+		assertThat(splitAndSum(input)).isEqualTo(0);
 	}
 
 	@DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
@@ -26,7 +29,8 @@ class StringCalculatorTest {
 	@Test
 	void negativeNumException() {
 		assertThatThrownBy(() -> splitAndSum("-3"))
-				.isInstanceOf(RuntimeException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("음수는 입력할 수 없습니다.");
 	}
 
 	@DisplayName("숫자 두개를 컴마 구분자로 입력할 경우 두 숫자의 합을 반환한다")

@@ -7,19 +7,17 @@ public class StringCalculator {
 
 	private static final String DELIMITERS = ",|:";
 	private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
-	// 외부에 공개될 필요가 없을 때
-	// public -> private
+	private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
 	public static int splitAndSum(String input) {
 		if (isNullOrBlank(input)) {
 			return 0;
 		}
-
 		return sumNumbers(removeDelimiter(input));
 	}
 
 	private static String[] removeDelimiter(String input) {
-		Matcher m = Pattern.compile(CUSTOM_DELIMITER).matcher(input);
+		Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(input);
 		if (m.find()) {
 			String customDelimiter = m.group(1);
 			return m.group(2).split(customDelimiter);
@@ -35,11 +33,15 @@ public class StringCalculator {
 		int sum = 0;
 		for (String number : numbers) {
 			int num = Integer.parseInt(number);
-			if(num < 0) {
-				throw new RuntimeException();
-			}
+			isNumNegative(num);
 			sum += num;
 		}
 		return sum;
+	}
+
+	private static void isNumNegative(int num) {
+		if (num < 0) {
+			throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+		}
 	}
 }
