@@ -11,23 +11,21 @@ public class Calculator {
 		if (isBlank(text))
 			return 0;
 
-		String[] customArray = findCustomDelimiter(text);
-		if (customArray.length > 1) {
-			String customDelimiter = customArray[0];
-			String calcText = customArray[1];
-			return sum(toInts(split(calcText, customDelimiter)));
+		Matcher matcher = getCustomDelimiterMatcher(text);
+		if (matcher.find()) {
+			return sum(matcher);
 		}
 		return sum(toInts(split(text)));
 	}
 
-	private static String[] findCustomDelimiter(String text) {
-		Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
-		if (matcher.find()) {
-			String customDelimiter = matcher.group(1);
-			String calcText = matcher.group(2);
-			return new String[]{customDelimiter, calcText};
-		}
-		return new String[1];
+	private static int sum(Matcher matcher) {
+		String customDelimiter = matcher.group(1);
+		String calcText = matcher.group(2);
+		return sum(toInts(split(calcText, customDelimiter)));
+	}
+
+	private static Matcher getCustomDelimiterMatcher(String text) {
+		return Pattern.compile("//(.)\n(.*)").matcher(text);
 	}
 
 	private static String[] split(String text) {
@@ -52,8 +50,8 @@ public class Calculator {
 
 	private static int[] toInts(String[] arrays) {
 		int[] numbers = new int[arrays.length];
-		for (int i = 0; i <arrays.length; i++) {
-			numbers[i] = getParseInt(arrays[i]);
+		for (int index = 0; index <arrays.length; index++) {
+			numbers[index] = getParseInt(arrays[index]);
 		}
 		return numbers;
 	}
