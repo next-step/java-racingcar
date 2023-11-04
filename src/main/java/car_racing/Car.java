@@ -9,4 +9,12 @@ public class Car {
         this.currentPosition = currentPosition;
         this.remainingMoves = remainingMoves;
     }
+
+    public void move(int i) {
+        currentPosition += i;
+    }
+
+    public Integer getCurrentPosition() {
+        return this.currentPosition;
+    }
 }

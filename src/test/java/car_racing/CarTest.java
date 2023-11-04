@@ -13,4 +13,17 @@ public class CarTest {
         Car car = new Car(0, 10);
         assertThat(car).isInstanceOf(Car.class);
     }
+
+    @Test
+    @DisplayName("이동/자동차가 숫자만큼 이동/현재위치가 증가한다.")
+    void moveCar() {
+        // given
+        Car car = new Car(0, 1);
+
+        // when
+        car.move(5);
+
+        // then
+        assertThat(car.getCurrentPosition()).isEqualTo(5);
+    }
 }
