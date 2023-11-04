@@ -2,9 +2,12 @@ package racingcar.domain;
 
 public class GameNumber {
 
-    private final int value;
+    private static final int VALID_MIN_NUMBER = 0;
+    private static final int VALID_MAX_NUMBER = 9;
 
     public static final int MOVABLE_MIN_NUMBER = 4;
+
+    private final int value;
 
     private GameNumber(int value) {
         this.value = value;
@@ -17,7 +20,7 @@ public class GameNumber {
     }
 
     private static void checkNumber(int number) {
-        if (number < 0 || number > 9) {
+        if (number < VALID_MIN_NUMBER || number > VALID_MAX_NUMBER) {
             throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
         }
     }

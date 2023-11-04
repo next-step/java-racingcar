@@ -25,6 +25,6 @@ public class Car {
     }
 
     private void moveForward() {
-        this.grade = grade + MOVE_GRADE;
+        this.grade += MOVE_GRADE;
     }
 }
