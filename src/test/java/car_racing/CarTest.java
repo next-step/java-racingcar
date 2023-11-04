@@ -27,6 +27,6 @@ public class CarTest {
 
         // then
         Integer currentPosition = car.getPosition();
-        assertTrue(currentPosition.equals(0) || (currentPosition >= 4 && currentPosition <= 9));
+        assertTrue(currentPosition.equals(1) || (currentPosition >= 5 && currentPosition <= 10));
     }
 }
