@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    ParticipatingCars participatingCars;
+    private ParticipatingCars participatingCars;
 
     public Racing() {
         this.participatingCars = new ParticipatingCars();
