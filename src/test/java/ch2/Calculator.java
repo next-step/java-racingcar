@@ -10,22 +10,32 @@ public class Calculator {
 	public static int calc(String text) {
 		if (isBlank(text))
 			return 0;
+
+		String[] customArray = findCustomDelimiter(text);
+		if (customArray.length > 1) {
+			String customDelimiter = customArray[0];
+			String calcText = customArray[1];
+			return sum(toInts(split(calcText, customDelimiter)));
+		}
+		return sum(toInts(split(text)));
+	}
+
+	private static String[] findCustomDelimiter(String text) {
 		Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
 		if (matcher.find()) {
 			String customDelimiter = matcher.group(1);
 			String calcText = matcher.group(2);
-			return sum(toInts(split(calcText, customDelimiter)));
+			return new String[]{customDelimiter, calcText};
 		}
-
-		return sum(toInts(split(text)));
+		return new String[1];
 	}
 
 	private static String[] split(String text) {
 		return text.split(DELIMITER);
 	}
 
-	private static String[] split(String text, String delmiter) {
-		return text.split(delmiter);
+	private static String[] split(String text, String delimiter) {
+		return text.split(delimiter);
 	}
 
 	private static boolean isBlank(String text) {
