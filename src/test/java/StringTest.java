@@ -17,7 +17,7 @@ public class StringTest {
         String[] splitOneNumber = numberOne.split(",");
 
         // then
-        Assertions.assertThat(splitOneAndTwoNumber).contains("1");
+        Assertions.assertThat(splitOneAndTwoNumber).containsExactly("1", "2");
         Assertions.assertThat(splitOneNumber).containsExactly("1");
     }
 
@@ -45,5 +45,17 @@ public class StringTest {
 
         // then
         Assertions.assertThat(extractData).isEqualTo('a');
+    }
+
+    @DisplayName("존재하지 않는 문자열의 인덱스에 접근하면 예외가 발생한다.")
+    @Test
+    void indexBoundException() {
+        // given
+        String testData = "abc";
+
+        // when & then
+        Assertions.assertThatThrownBy(() -> {
+            testData.charAt(-1);
+        }).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }

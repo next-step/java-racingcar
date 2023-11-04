@@ -1,45 +1,44 @@
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @DisplayName("Set 자료형 관련 테스트")
 public class SetTest {
+    private Set<Integer> numbers = new HashSet<>();
 
-    @DisplayName("괄호를 제거하고 콤마를 기준으로 숫자를 분리한다.")
-    @Test
-    void splitNumberAfterDeleteParenthesis() {
-        // given
-        String number = "(1,2)";
-
-        // when
-        String result = number.substring(1, number.length()-1);
-
-        // then
-        Assertions.assertThat(result).isEqualTo("1,2");
+    @BeforeEach
+    void setUp() {
+        numbers.add(1);
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
     }
 
-    @DisplayName("문자열에서 특정 위치의 문자를 가져온다.")
+    @DisplayName("Set의 크기를 확인한다.")
     @Test
-    void extractChar() {
-        // given
-        String testData = "abc";
-
-        // when
-        char extractData = testData.charAt(0);
-
-        // then
-        Assertions.assertThat(extractData).isEqualTo('a');
+    void checkSetSize() {
+        int result = numbers.size();
+        Assertions.assertThat(result).isEqualTo(3);
     }
 
-    @DisplayName("존재하지 않는 문자열의 인덱스에 접근하면 예외가 발생한다.")
-    @Test
-    void indexBoundException() {
-        // given
-        String testData = "abc";
+    @DisplayName("Set의 요소를 확인한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    void checkSetValue(int input) {
+        Assertions.assertThat(numbers.contains(input)).isTrue();
+    }
 
-        // when & then
-        Assertions.assertThatThrownBy(() -> {
-            testData.charAt(-1);
-        }).isInstanceOf(IndexOutOfBoundsException.class);
+    @DisplayName("입력된 값이 Set 변수에 존재하는지 존재하지 않는지 확인한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
+    void checkSetValue(int input, boolean expected) {
+        Assertions.assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
