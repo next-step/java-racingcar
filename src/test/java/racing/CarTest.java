@@ -3,6 +3,7 @@ package racing;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.car.Car;
+import racing.car.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,6 +19,6 @@ public class CarTest {
         car.move(number);
 
         // then
-        assertThat(car.position().position() == prevPosition + 1).isEqualTo(expected);
+        assertThat(car.position().equals(new Position(prevPosition + 1))).isEqualTo(expected);
     }
 }
