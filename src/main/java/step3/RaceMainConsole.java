@@ -7,6 +7,7 @@ import step3.view.InputView;
 import step3.view.OutputView;
 
 public class RaceMainConsole {
+
     public static void main(String[] args) {
         InputView inputView = new InputView();
 

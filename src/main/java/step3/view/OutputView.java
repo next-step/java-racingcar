@@ -14,7 +14,7 @@ public class OutputView {
     }
 
     public void printCar(int position) {
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < position; i++) {
             result.append("-");
         }

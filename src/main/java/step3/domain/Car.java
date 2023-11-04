@@ -1,8 +1,9 @@
 package step3.domain;
 
 public class Car {
+
     private int position;
-    private int MOVE_NUMBER_CONDITION = 4;
+    private static final int MOVE_NUMBER_CONDITION = 4;
 
     public Car() {
     }
