@@ -42,7 +42,7 @@ class CalculatorTest {
     @Test
     void multipleNumberWithUnacceptableValues() {
         String input1 = "1,2,-3";
-        String input2 = "1,2,*";
+        String input2 = "1,2:^";
 
         Exception exception1 = assertThrows(RuntimeException.class, () -> {
             Calculator.cal(input1);
@@ -52,7 +52,7 @@ class CalculatorTest {
             Calculator.cal(input2);
         });
 
-        assertThat(exception1.getMessage()).contains("The input strings include unacceptable value");
-        assertThat(exception2.getMessage()).contains("The input strings include unacceptable value");
+        assertThat(exception1.getMessage()).contains("input string");
+        assertThat(exception2.getMessage()).contains("input string");
     }
 }

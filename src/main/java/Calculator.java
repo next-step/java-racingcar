@@ -29,8 +29,8 @@ public class Calculator {
     }
 
     private static void isStringValid(String string) {
-        if (Integer.parseInt(string) < 0 || isNumeric(string)) {
-            throw new IllegalArgumentException("The input string includes unacceptable value");
+        if (Integer.parseInt(string) < 0 || !isNumeric(string)) {
+            throw new IllegalArgumentException("The input string is not valid");
         }
     }
 
