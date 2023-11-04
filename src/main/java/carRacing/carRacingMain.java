@@ -5,15 +5,13 @@ import static carRacing.InputView.*;
 public class carRacingMain {
     public static void main(String[] args) {
 
-       int carCount = readCarCount();
-       int raceCount = readRaceCount();
+        int carCount = readCarCount();
+        int raceCount = readRaceCount();
 
-       CarRacingGame carRacingGame = new CarRacingGame(carCount, raceCount);
+        CarRacingGame carRacingGame = new CarRacingGame(carCount, raceCount);
 
-       ResultView.resultTitle();
-       carRacingGame.startGame();
-
-
+        ResultView.resultTitle();
+        carRacingGame.startGame();
 
 
     }
