@@ -5,8 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import static calculator.Calculator.cal;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class calTest {
+
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생한다.")
+    void 음수_RuntimeException_예외_발생(){
+        assertThatThrownBy(() -> {
+            assertThat(cal("-1:2:3"));
+        }).isInstanceOf(RuntimeException.class);
+    }
 
     @Test
     @DisplayName("\"//\"와 \"\\n\" 문자 사이에 지정한 커스텀 구분자로 숫자의 합을 반환한다.")
