@@ -1,0 +1,66 @@
+package racinggame.domain;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
+import racinggame.domain.strategy.RandomNumberMovingStrategy;
+
+public class Cars {
+
+    private final List<Car> carList;
+
+    public static Cars from(String value) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < Integer.parseInt(value); i++) {
+            Car car = new Car(new MovingValidator(new RandomNumberMovingStrategy(new Random())));
+            cars.add(car);
+        }
+        return new Cars(cars);
+    }
+
+    public Cars(List<Car> carList) {
+        this.carList = carList;
+    }
+
+    public int size() {
+        return this.carList.size();
+    }
+
+    public void move() {
+        for (Car car : this.carList) {
+            car.move();
+        }
+    }
+
+    public List<MovingDistance> movingDistances() {
+        List<MovingDistance> movingDistances = new ArrayList<>();
+        for (Car car : this.carList) {
+            movingDistances.add(car.movingDistance());
+        }
+
+        return movingDistances;
+    }
+
+    public Car get(int index) {
+        return carList.get(index);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cars cars = (Cars) o;
+        return Objects.equals(carList, cars.carList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carList);
+    }
+
+}

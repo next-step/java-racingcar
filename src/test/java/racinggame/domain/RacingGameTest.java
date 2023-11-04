@@ -12,7 +12,8 @@ class RacingGameTest {
     @Test
     void 자동차들을_입력_받아_게임을_생성_할_수_있다() {
         List<Car> cars = List.of(new Car(new MovingValidator(new TestMovingStrategy())));
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(new Cars(cars));
+
         int actual = racingGame.carsCount();
         int expected = 1;
 
@@ -23,8 +24,9 @@ class RacingGameTest {
     @CsvSource({"0, 0", "4, 1"})
     void play(int number, int distance) {
         List<Car> cars = List.of(new Car(new MovingValidator(new TestMovingStrategy(number))));
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(new Cars(cars));
         racingGame.play();
+
         Car actual = racingGame.cars().get(0);
         Car expected = new Car(new MovingDistance(distance),
             new MovingValidator(new TestMovingStrategy()));
@@ -37,7 +39,8 @@ class RacingGameTest {
         List<Car> cars = List.of(
             new Car(new MovingDistance(), new MovingValidator(new TestMovingStrategy())),
             new Car(new MovingDistance(2), new MovingValidator(new TestMovingStrategy())));
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(new Cars(cars));
+
         List<MovingDistance> actual = racingGame.report();
         List<MovingDistance> expected = List.of(new MovingDistance(), new MovingDistance(2));
 
