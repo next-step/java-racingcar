@@ -40,12 +40,19 @@ class CalculatorTest {
     }
 
     @Test
-    void multipleNumberWithNegativeNumber() {
-        String input = "1,2,-3";
+    void multipleNumberWithUnacceptableValues() {
+        String input1 = "1,2,-3";
+        String input2 = "1,2,*";
 
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            Calculator.cal(input);
+        Exception exception1 = assertThrows(RuntimeException.class, () -> {
+            Calculator.cal(input1);
         });
-        assertThat(exception.getMessage()).contains("The input strings include negative number");
+
+        Exception exception2 = assertThrows(RuntimeException.class, () -> {
+            Calculator.cal(input2);
+        });
+
+        assertThat(exception1.getMessage()).contains("The input strings include unacceptable value");
+        assertThat(exception2.getMessage()).contains("The input strings include unacceptable value");
     }
 }

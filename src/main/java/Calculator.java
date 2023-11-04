@@ -21,12 +21,25 @@ public class Calculator {
     private static int toInt(String[] strings) {
         int sum = 0;
         for (String string : strings) {
-            if (Integer.parseInt(string) < 0) {
-                throw new IllegalArgumentException("The input strings include negative number");
-            }
+            isStringValid(string);
             sum += Integer.parseInt(string);
         }
 
         return sum;
+    }
+
+    private static void isStringValid(String string) {
+        if (Integer.parseInt(string) < 0 || isNumeric(string)) {
+            throw new IllegalArgumentException("The input string includes unacceptable value");
+        }
+    }
+
+    public static boolean isNumeric(String string) {
+        try {
+            Integer.parseInt(string);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 }
