@@ -1,9 +1,20 @@
 package racinggame;
 
+import java.util.Scanner;
+
 public class RacingGame {
 
-    public void racing(int carSize, int racingCount) {
-        Cars cars = new Cars(carSize);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView(scanner);
+        int carSize = inputView.carSize();
+        int racingCount = inputView.racingCount();
+
+        FactoryCar factoryCar = new FactoryCar();
+        Cars cars = new Cars(factoryCar.generateCar(carSize, new RandomNumber()));
+        for (int i = 0; i < racingCount; i++) {
+            cars.racingCars();
+        }
     }
 
 }
