@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class CustomDelimiter implements Delimiter {
 
-    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     @Override
     public String[] split(String text) {
@@ -19,7 +19,7 @@ public class CustomDelimiter implements Delimiter {
     }
 
     public String getDelimiter(String text) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
         return matcher.find() ? matcher.group(1) : null;
     }
 }
