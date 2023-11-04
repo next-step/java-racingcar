@@ -65,7 +65,7 @@ public class Calculator {
     private static int parsePositiveInt(String value) {
         int number = Integer.parseInt(value);
         if (number < 0) {
-            throw new RuntimeException("음수 값은 허용되지 않습니다.");
+            throw new IllegalArgumentException("음수 값은 허용되지 않습니다.");
         }
         return number;
     }
