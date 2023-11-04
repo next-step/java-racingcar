@@ -10,13 +10,18 @@ public class StringCalculator {
 		if (input.contains("-")) {
 			throw new RuntimeException();
 		}
-		if(input.contains(",")) {
+		if (input.contains(",")) {
 			String[] numbers = input.split(",");
-			for (String number : numbers) {
-				result += Integer.parseInt(number);
-			}
-			return result;
+			return sumInput(numbers);
 		}
 		return Integer.parseInt(input);
+	}
+
+	private static int sumInput(String[] numbers) {
+		int sum = 0;
+		for (String number : numbers) {
+			sum += Integer.parseInt(number);
+		}
+		return sum;
 	}
 }
