@@ -9,6 +9,10 @@ public class Game {
     private List<Car> cars;
     private int totalRound;
 
+    public Game() {
+        this(InputView.numberOfCars(), InputView.numberOfTry());
+    }
+
     public Game(int numberOfCars, int numberOfTry) {
         this.cars = cars(numberOfCars);
         this.totalRound = numberOfTry;
@@ -21,13 +25,21 @@ public class Game {
     }
 
     public void play() {
-        IntStream.range(0, this.totalRound)
-            .forEach(round -> playRound());
+        ResultView.printResultInfoMessage();
+        playAllRound();
+    }
+
+    private void playAllRound() {
+        IntStream.range(0, this.totalRound).forEach(round -> playRound());
     }
 
     private void playRound() {
-        this.cars.stream()
-            .forEach(Car::move);
+        moveAllCar();
+        ResultView.printRoundResult(this.cars);
+    }
+
+    private void moveAllCar() {
+        this.cars.stream().forEach(Car::move);
     }
 
     public List<Car> cars() {
