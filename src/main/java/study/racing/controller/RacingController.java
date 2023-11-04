@@ -3,7 +3,6 @@ package study.racing.controller;
 import study.racing.domain.Cars;
 import study.racing.domain.CarsNumber;
 import study.racing.domain.RandomGenerator;
-import study.racing.domain.TryCounts;
 import study.racing.view.InputView;
 import study.racing.view.OutputView;
 
@@ -22,20 +21,13 @@ public class RacingController {
 
     public void startGame() {
 
-        StringBuilder positionBuilder = new StringBuilder();
         outputView.printCarsNumberMessage();
         CarsNumber carsNumber = inputView.inputCarsNumber();
-
         Cars cars = new Cars(carsNumber);
 
         outputView.printRacingCountMessage();
-        TryCounts tryCounts = inputView.inputTryCounts();
+        String results = cars.move(randomGenerator, inputView.inputTryCounts());
 
-        for (int i = 0; i < tryCounts.getValue(); i++) {
-            positionBuilder.append(cars.move(randomGenerator));
-            positionBuilder.append(NEXT_LINE);
-        }
-
-        outputView.printRacingResultMessage(positionBuilder.toString());
+        outputView.printRacingResultMessage(results);
     }
 }

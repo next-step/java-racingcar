@@ -8,6 +8,7 @@ public class Cars {
 
     private static final int DEFAULT_POSITION = 1;
     private static final int RANDOM_RANGE = 10;
+    private static final String NEXT_LINE = "\n";
     private final List<Car> value;
 
     public Cars(CarsNumber carsNumber) {
@@ -21,13 +22,17 @@ public class Cars {
         this.value = cars;
     }
 
-    public String move(RandomGenerator randomGenerator) {
-
+    public String move(RandomGenerator randomGenerator, TryCounts tryCounts) {
         StringBuilder positionBuilder = new StringBuilder();
-        for (Car car : value) {
-            String dash = car.move(randomGenerator.random(RANDOM_RANGE));
-            positionBuilder.append(dash);
+
+        for (int i = 0; i < tryCounts.getValue(); i++) {
+            for (Car car : value) {
+                String dash = car.move(randomGenerator.random(RANDOM_RANGE));
+                positionBuilder.append(dash).append(NEXT_LINE);
+            }
+            positionBuilder.append(NEXT_LINE);
         }
+
         return positionBuilder.toString();
     }
 

@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Position {
 
     private static final String DASH = "-";
-    private static final String NEXT_LINE = "\n";
     private final int value;
 
     public Position(int value) {
@@ -18,7 +17,7 @@ public class Position {
 
     public String getDash() {
 
-        return DASH.repeat(value) + NEXT_LINE;
+        return DASH.repeat(value);
     }
 
     @Override
