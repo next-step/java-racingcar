@@ -13,4 +13,14 @@ public class Cars {
     public int getCarListSize() {
         return carList.size();
     }
+
+    public void move(int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            carList.forEach(Car::move);
+        }
+    }
+
+    public void getCarsPotion() {
+        carList.forEach(car -> System.out.println(car.getPosition()));
+    }
 }

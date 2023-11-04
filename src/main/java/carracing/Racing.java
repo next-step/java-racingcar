@@ -14,15 +14,20 @@ public class Racing {
         int carCount = InputView.inputCarCount();
         int tryCount = InputView.inputTryCount();
 
-        createCar(carCount);
+        Cars cars = createCar(carCount);
+        go(cars, tryCount);
     }
-    public int createCar(int carCount) {
+
+    private void go(Cars cars, int tryCount) {
+        cars.move(tryCount);
+    }
+
+    public Cars createCar(int carCount) {
         Cars cars = new Cars();
         for (int i = 0; i < carCount; i++) {
             cars.addCar(new Car());
         }
 
-        return cars.getCarListSize();
+        return cars;
     }
-
 }
