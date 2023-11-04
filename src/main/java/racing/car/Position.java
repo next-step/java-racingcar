@@ -10,4 +10,9 @@ public class Position {
     public int position() {
         return this.position;
     }
+
+    public Position move(int offset) {
+        int currentPosition = this.position;
+        return new Position(currentPosition + offset);
+    }
 }

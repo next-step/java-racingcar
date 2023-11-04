@@ -14,8 +14,8 @@ public class Car {
 
     public void move(int input) {
         if (isOverThreshHold(input)) {
-            int currentPosition = this.position().position();
-            this.position = new Position(currentPosition + 1);
+            Position currentPosition = this.position();
+            this.position = currentPosition.move(1);
         }
     }
 
