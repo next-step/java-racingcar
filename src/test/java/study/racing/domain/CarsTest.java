@@ -21,7 +21,7 @@ class CarsTest {
         assertThat(cars).isEqualTo(new Cars(new CarsNumber("2")));
     }
 
-    static class DoNotMoveGenerator implements RandomGenerator {
+    static class DoNotMoveGenerator implements NumberGenerator {
 
         @Override
         public int random(int range) {
@@ -29,7 +29,7 @@ class CarsTest {
         }
     }
 
-    static class MoveGenerator implements RandomGenerator {
+    static class MoveGenerator implements NumberGenerator {
 
         @Override
         public int random(int range) {

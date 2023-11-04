@@ -1,6 +1,17 @@
 package study.racing.domain;
 
-public interface RandomGenerator {
+import java.util.Random;
 
-    int random(int bound);
+public class RandomGenerator implements NumberGenerator {
+
+    private final Random random;
+
+    public RandomGenerator(Random random) {
+        this.random = random;
+    }
+
+    @Override
+    public int random(int bound) {
+        return random.nextInt(bound);
+    }
 }

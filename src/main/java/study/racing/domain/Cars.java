@@ -22,7 +22,7 @@ public class Cars {
         this.value = cars;
     }
 
-    public String move(RandomGenerator randomGenerator, TryCounts tryCounts) {
+    public String move(NumberGenerator randomGenerator, TryCounts tryCounts) {
 
         StringBuilder positionBuilder = new StringBuilder();
 
@@ -34,7 +34,7 @@ public class Cars {
         return positionBuilder.toString();
     }
 
-    private String moveEachCar(RandomGenerator randomGenerator) {
+    private String moveEachCar(NumberGenerator randomGenerator) {
 
         StringBuilder positionBuilder = new StringBuilder();
 

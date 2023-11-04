@@ -1,7 +1,7 @@
 package study.racing;
 
 import study.racing.controller.RacingController;
-import study.racing.domain.RandomGeneratorImpl;
+import study.racing.domain.RandomGenerator;
 import study.racing.view.InputView;
 import study.racing.view.OutputView;
 
@@ -13,7 +13,7 @@ public class RacingApplication {
         RacingController controller = new RacingController(
                 new OutputView(),
                 new InputView(),
-                new RandomGeneratorImpl(new Random())
+                new RandomGenerator(new Random())
         );
 
         controller.startGame();

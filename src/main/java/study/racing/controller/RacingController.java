@@ -2,7 +2,7 @@ package study.racing.controller;
 
 import study.racing.domain.Cars;
 import study.racing.domain.CarsNumber;
-import study.racing.domain.RandomGenerator;
+import study.racing.domain.NumberGenerator;
 import study.racing.view.InputView;
 import study.racing.view.OutputView;
 
@@ -10,9 +10,9 @@ public class RacingController {
 
     private final OutputView outputView;
     private final InputView inputView;
-    private final RandomGenerator randomGenerator;
+    private final NumberGenerator randomGenerator;
 
-    public RacingController(OutputView outputView, InputView inputView, RandomGenerator randomGenerator) {
+    public RacingController(OutputView outputView, InputView inputView, NumberGenerator randomGenerator) {
         this.outputView = outputView;
         this.inputView = inputView;
         this.randomGenerator = randomGenerator;
