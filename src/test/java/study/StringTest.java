@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,17 +41,21 @@ public class StringTest {
                 .isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 3})
     @DisplayName("String.charAt 범위 벗어난 참조 테스트")
-    public void charAtOutOfRangeTest() {
+    public void charAtOutOfRangeTest(int outOfIndexIndex) {
         assertThatThrownBy(() -> {
-            "abc".charAt(-1);
+            "abc".charAt(outOfIndexIndex);
         })
+        .as("{} index를 이용한 charAt 호출 시도")
         .isInstanceOf(IndexOutOfBoundsException.class);
+    }
 
-        assertThatThrownBy(() -> {
-            "abc".charAt(3);
-        })
-        .isInstanceOf(IndexOutOfBoundsException.class);
+    @Test
+    @DisplayName("개행 문자가 문자열 길이에 포함되는지 테스트")
+    public void checkNewLineCharacterLength() {
+        assertThat("12\n34".length())
+                .isEqualTo(5);
     }
 }
