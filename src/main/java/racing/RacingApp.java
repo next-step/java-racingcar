@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingApp {
+    private static final Random random = new Random();
+
     public static void main(String[] args) {
         int numberOfCar = InputView.getNumberOfCars();
         int numberOfAttempt = InputView.getNumberOfAttempts();
@@ -21,7 +23,6 @@ public class RacingApp {
 
     private static void go(List<Car> cars) {
         for (Car car : cars) {
-            Random random = new Random();
             int input = random.nextInt(10);
             car.move(input);
             ResultView.showCurrentPosition(car);
