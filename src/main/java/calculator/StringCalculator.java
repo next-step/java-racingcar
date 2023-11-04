@@ -5,29 +5,52 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-	public static int cal(String input) {
-		int result = 0;
+	public static final String NEGATIVEDELIMITER = "-";
+	public static final String DELIMITERS = ",|:";
+	public static final String CUSTOMDELIMITER = "//(.)\n(.*)";
 
-		if (input == null || input.isEmpty()) {
+	public static int cal(String input) {
+		if (isNullOrBlank(input)) {
 			return 0;
 		}
 
-		if (input.contains("-")) {
+		if (isContainNegative(input)) {
 			throw new RuntimeException();
 		}
 
-		if (input.contains(",") || input.contains(":")) {
-			String[] numbers = input.split(",|:");
-			return sumInput(numbers);
-		}
+//		if (iscontainDelimiters(input)) {
+//			return sumInput(removeDelimiter(input, DELIMITERS));
+//		}
+//
+//		Matcher m = Pattern.compile(CUSTOMDELIMITER).matcher(input);
+//		if (m.find()) {
+//			String customDelimiter = m.group(1);
+//			return sumInput(removeDelimiter(m.group(2), customDelimiter));
+//		}
 
-		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+		return sumInput(removeDelimiter(input));
+	}
+
+	private static String[] removeDelimiter(String input) {
+		Matcher m = Pattern.compile(CUSTOMDELIMITER).matcher(input);
 		if (m.find()) {
 			String customDelimiter = m.group(1);
-			String[] tokens= m.group(2).split(customDelimiter);
-			return sumInput(tokens);
+			String tokens[] = m.group(2).split(customDelimiter);
+			return tokens;
 		}
-		return Integer.parseInt(input);
+		return input.split(DELIMITERS);
+	}
+
+	private static boolean iscontainDelimiters(String input) {
+		return input.contains(",") || input.contains(":");
+	}
+
+	private static boolean isContainNegative(String input) {
+		return input.contains(NEGATIVEDELIMITER);
+	}
+
+	private static boolean isNullOrBlank(String input) {
+		return input == null || input.isEmpty();
 	}
 
 	private static int sumInput(String[] numbers) {
