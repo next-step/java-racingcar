@@ -25,4 +25,15 @@ public class Cars {
     private  Cars(List<Car> carList) {
         this.carList = carList;
     }
+
+    public Cars raceAllCars(RacingRule racingRule) {
+        this.carList.forEach(car -> car.move(racingRule.isSatisfiedRule()));
+        return new Cars(copyOf(carList));
+    }
+
+    private List<Car> copyOf(List<Car> carList) {
+        return carList.stream()
+                      .map(Car::newInstance)
+                      .collect(Collectors.toList());
+    }
 }
