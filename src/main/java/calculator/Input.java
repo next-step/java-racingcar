@@ -11,6 +11,8 @@ public class Input {
     private static final String DELIMITER = "[,:]";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final int NEGATIVE_NUMBER_STANDARD = 0;
+    private static final int CUSTOM_DELIMITER_INDEX = 1;
+    private static final int CUSTOM_DELIMITER_TEXT = 2;
 
     private final String text;
 
@@ -25,8 +27,8 @@ public class Input {
     public List<Integer> toNumbers() {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            return toNumbers(matcher.group(2).split(customDelimiter));
+            String customDelimiter = matcher.group(CUSTOM_DELIMITER_INDEX);
+            return toNumbers(matcher.group(CUSTOM_DELIMITER_TEXT).split(customDelimiter));
         }
         return toNumbers(text.split(DELIMITER));
     }
