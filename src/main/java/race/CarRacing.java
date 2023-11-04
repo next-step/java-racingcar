@@ -17,8 +17,6 @@ public class CarRacing {
     public void start(final int raceAttemptCount) {
         for (int i = 0; i < raceAttemptCount; i++) {
             carsStart();
-
-            nextStep();
         }
     }
 
@@ -26,9 +24,7 @@ public class CarRacing {
         for (Car car : cars) {
             car.go();
         }
-    }
 
-    private void nextStep() {
         ResultView.println();
     }
 }
