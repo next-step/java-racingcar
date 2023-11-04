@@ -7,7 +7,6 @@ public class Calculator {
         if (input.contains(",") || input.contains(":")) {
             return toInt(splitByCommaOrColon(input));
         }
-
         return toInt(splitByCommaOrColon(input));
     }
 
@@ -22,6 +21,9 @@ public class Calculator {
     private static int toInt(String[] strings) {
         int sum = 0;
         for (String string : strings) {
+            if (Integer.parseInt(string) < 0) {
+                throw new IllegalArgumentException("The input strings include negative number");
+            }
             sum += Integer.parseInt(string);
         }
 

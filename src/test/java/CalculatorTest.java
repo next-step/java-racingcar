@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 
@@ -36,5 +37,15 @@ class CalculatorTest {
     void multipleNumberWithCommaAndColon() {
         String input = "1,2:3";
         assertThat(Calculator.cal(input)).isEqualTo(6);
+    }
+
+    @Test
+    void multipleNumberWithNegativeNumber() {
+        String input = "1,2,-3";
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            Calculator.cal(input);
+        });
+        assertThat(exception.getMessage()).contains("The input strings include negative number");
     }
 }
