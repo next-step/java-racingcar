@@ -19,11 +19,18 @@ public class Car {
     }
 
     public int move(int moveCount) {
-        if (moveCount >= 4) {
-            return 1;
+        for (int i = 0; i < moveCount; i++) {
+            if (validate()) {
+                position += 1;
+            }
         }
-        return 0;
+        return position;
     }
+
+    public int position() {
+        return this.position;
+    }
+
     private static boolean validate() {
         return random.nextInt(MAX_RANDOM_BOUND) >= STANDARD_MOVE_VALUE;
     }

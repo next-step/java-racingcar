@@ -24,4 +24,11 @@ public class CarRacingTest {
         assertThat(result).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("자동차 대수(3)와 시도할 횟수(5)를 입력하면 자동차 게임이 실행된다.")
+    void car_game_process() {
+        RacingGame game = new RacingGame(3, 5);
+        game.gameStart();
+    }
+
 }

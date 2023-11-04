@@ -7,6 +7,8 @@ public class carRacing {
         inputScanner.inputCarCount();
         inputScanner.inputTrialCount();
 
+        RacingGame game = new RacingGame(inputScanner.carCount(),inputScanner.trialCount());
+        game.gameStart();
     }
 
 }
