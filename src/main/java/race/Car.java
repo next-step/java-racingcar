@@ -11,7 +11,7 @@ public class Car {
 
     public void move() {
         final int number = moveStrategy.getNumber();
-        if (number > 4) {
+        if (number >= 4) {
             go();
         }
     }
