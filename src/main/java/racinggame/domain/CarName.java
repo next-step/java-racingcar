@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import racinggame.domain.exception.InputIsBlankException;
 import racinggame.domain.exception.InputOverFiveLengthException;
 
 public class CarName {
@@ -9,7 +10,7 @@ public class CarName {
 
     public CarName(String name) {
         if (isBlank(name)) {
-            throw new RuntimeException();
+            throw new InputIsBlankException();
         }
         if (isOverFiveLength(name)) {
             throw new InputOverFiveLengthException();
