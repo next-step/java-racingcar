@@ -12,9 +12,7 @@ public class RacingGame {
 
         FactoryCar factoryCar = new FactoryCar();
         Cars cars = new Cars(factoryCar.generateCar(carSize, new RandomNumber()));
-        for (int i = 0; i < racingCount; i++) {
-            cars.racingCars();
-        }
+        cars.startRacing(racingCount);
     }
 
 }

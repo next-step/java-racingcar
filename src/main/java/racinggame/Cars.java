@@ -1,25 +1,26 @@
 package racinggame;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Cars {
 
-    private static final int DEFAULT_CAR_POSITION = 0;
-
     private final List<Car> cars;
 
-    public Cars(int carSize) {
-        this.cars = generateCar(carSize);
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private List<Car> generateCar(int carSize) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carSize; i++) {
-            cars.add(new Car(DEFAULT_CAR_POSITION));
+    public void startRacing(int racingCount) {
+        for (int i = 0; i < racingCount; i++) {
+            racingCar();
         }
-        return cars;
+    }
+
+    private void racingCar() {
+        for (Car car : cars) {
+            car.moving();
+        }
     }
 
     public List<Car> getCar() {
