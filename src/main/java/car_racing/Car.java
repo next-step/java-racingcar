@@ -13,7 +13,10 @@ public class Car {
     }
 
     public void move() {
-        currentPosition += new Random().nextInt(10);
+        int i = new Random().nextInt(10);
+        if (i >= 4) {
+            currentPosition += i;
+        }
         remainingMoves--;
     }
 
