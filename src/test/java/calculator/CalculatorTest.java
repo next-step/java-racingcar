@@ -1,9 +1,11 @@
-package Calculator;
+package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static Calculator.Calculator.cal;
+import static calculator.Calculator.cal;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
@@ -37,12 +39,11 @@ class CalculatorTest {
         assertThat(cal("//@\n1@2@3")).isEqualTo(6);
     }
 
-    @Test
     @DisplayName("NumberFormat Exception Test")
-    void parsing() {
+    @ParameterizedTest
+    @ValueSource(strings = { "!2,3", "-1,2,3" })
+    void parsing(String input) {
         assertThatExceptionOfType(NumberFormatException.class)
-                .isThrownBy(() -> cal("!,2,3")).withMessageMatching("For input string: .*");
-        assertThatExceptionOfType(NumberFormatException.class)
-                .isThrownBy(() -> cal("-1,2,3")).withMessageMatching("For input string: .*");
+                .isThrownBy(() -> cal(input)).withMessageMatching("For input string: .*");
     }
 }
