@@ -16,12 +16,10 @@ public class Track {
     }
 
     public void run() {
-        for (int i = 0; i < movingCount; i++) {
-            cars.forEach((car) -> {
-                car.move();
-                car.printStatus();
-            });
-            System.out.println("\n");
-        }
+        cars.forEach(Car::move);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
