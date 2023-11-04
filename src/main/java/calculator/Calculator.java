@@ -25,7 +25,7 @@ public class Calculator {
 
     private static void checkNegativeNumber(int tokenNumber) {
         if (tokenNumber < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("음수가 포함되어 있습니다.");
         }
     }
 
@@ -33,7 +33,7 @@ public class Calculator {
         try {
             return Integer.parseInt(token);
         } catch (NumberFormatException e) {
-            throw new RuntimeException();
+            throw new IllegalStateException("숫자가 아닙니다.");
         }
     }
 

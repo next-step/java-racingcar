@@ -12,7 +12,7 @@ public class CustomDelimiter implements Delimiter {
     public String[] split(String text) {
         String delimiter = getDelimiter(text);
         if (Objects.isNull(delimiter)) {
-            throw new RuntimeException();
+            throw new IllegalStateException("Custom Delimiter 가 아닙니다.");
         }
         text = text.split("\n")[1];
         return text.split(delimiter);
