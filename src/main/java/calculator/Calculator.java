@@ -56,9 +56,17 @@ public class Calculator {
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers[i] = parsePositiveInt(values[i]);
         }
         return numbers;
+    }
+
+    private static int parsePositiveInt(String value) {
+        int number = Integer.parseInt(value);
+        if (number < 0) {
+            throw new RuntimeException("음수 값은 허용되지 않습니다.");
+        }
+        return number;
     }
 
 }

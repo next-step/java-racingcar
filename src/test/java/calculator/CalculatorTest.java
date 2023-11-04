@@ -2,6 +2,7 @@ package calculator;
 
 import static calculator.Calculator.cal;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,5 +33,11 @@ public class CalculatorTest {
     @Test
     void 사용자_커스텀_구분자_지정() {
         assertThat(cal("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
+    void 음수_발견_시_에러_반환() {
+        assertThatThrownBy(() -> cal("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 }
