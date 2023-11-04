@@ -20,6 +20,7 @@ public class StringTest {
     void splitTest2(){
         String[] result = "1".split(",");
         assertThat(result).contains("1");
+        assertThat(result).hasSize(1);
     }
 
     @Test
