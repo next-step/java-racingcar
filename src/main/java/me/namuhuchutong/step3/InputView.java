@@ -8,12 +8,8 @@ public class InputView {
     private final Scanner scanner = new Scanner(System.in);
 
     public int showPrompt(String text) {
-        try {
-            printThroughStandardOut(text);
-            return inputFromStandardIn();
-        } catch (InputMismatchException e ) {
-            throw new IllegalArgumentException("숫자 이외에는 입력할 수 없습니다.");
-        }
+        printThroughStandardOut(text);
+        return inputFromStandardIn();
     }
 
     private void printThroughStandardOut(String text) {
@@ -21,6 +17,10 @@ public class InputView {
     }
 
     private int inputFromStandardIn() {
-        return scanner.nextInt();
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException exception) {
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+        }
     }
 }
