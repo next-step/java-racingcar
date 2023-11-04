@@ -27,12 +27,7 @@ public class SetCollectionTest {
 	@DisplayName("size()메소드를 통해 크기를 확인한다")
 	@Test
 	void checkSize() {
-	    // given
 		int numbersSize = numbers.size();
-
-	    // when
-	    // then
-		assertThat(numbersSize).isEqualTo(3);
 		assertThat(numbers).hasSize(3);
 	}
 
@@ -40,22 +35,13 @@ public class SetCollectionTest {
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
 	void checkContains(int targetNumber) {
-	    // given
-	    // when
-	    // then
-		// 불필요한 주석
-		assertThat(numbers.contains(targetNumber));
+		assertThat(numbers.contains(targetNumber)).isTrue();
 	}
 
 	@DisplayName("contains 메소드의 결과가 다른 경우")
 	@ParameterizedTest
 	@CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
 	void checkContains2(int targetNumbers, boolean expectedResult) {
-	    // given
-	    // when
-	    // then
-		// 불필요한 주석
-		assertThat(numbers.contains(targetNumbers))
-				.isEqualTo(expectedResult);
+		assertThat(numbers.contains(targetNumbers)).isEqualTo(expectedResult);
 	}
 }
