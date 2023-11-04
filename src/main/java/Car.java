@@ -38,4 +38,9 @@ public class Car {
 	public int movingDistance() {
 		return this.movingDistance;
 	}
+
+	public void printMovingResult() {
+		String result = "-".repeat(Math.max(0, this.movingDistance));
+		System.out.println(result);
+	}
 }
