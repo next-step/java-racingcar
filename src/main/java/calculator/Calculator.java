@@ -7,9 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-    public static final String DELIMITER_JOIN = "|";
-    public static List<String> delimiters = new ArrayList<>(Arrays.asList(",", ":"));
-    public static final int NULL_VALUE = 0;
+    private static final String DELIMITER_JOIN = "|";
+    private static List<String> delimiters = new ArrayList<>(Arrays.asList(",", ":"));
+    private static final int NULL_VALUE = 0;
 
     public static int cal(String text) {
         if (isBlank(text)) {
