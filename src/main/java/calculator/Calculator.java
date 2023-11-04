@@ -2,7 +2,8 @@ package calculator;
 
 public class Calculator {
 
-    public static final String DELIMITER = ",";
+    public static final String DELIMITER_COMMA = ",";
+    public static final String DELIMITER_COLON = ":";
     public static final int NULL_VALUE = 0;
 
     public static int cal(String text) {
@@ -14,7 +15,8 @@ public class Calculator {
     }
 
     private static String[] split(String text) {
-        return text.split(DELIMITER);
+        String delimiter = DELIMITER_COMMA + "|" + DELIMITER_COLON;
+        return text.split(delimiter);
     }
 
     private static boolean isBlank(String text) {
