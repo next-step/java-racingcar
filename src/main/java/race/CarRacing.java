@@ -25,6 +25,6 @@ public class CarRacing {
             car.go();
         }
 
-        ResultView.println();
+        ResultView.emptyLine();
     }
 }

@@ -2,7 +2,7 @@ package race.ui;
 
 public class ResultView {
 
-    public static void println() {
+    public static void emptyLine() {
         System.out.println();
     }
 
