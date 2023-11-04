@@ -14,7 +14,7 @@ public class EmptySplit extends TextSplit {
 
     @Override
     protected boolean resolve() {
-        return text.input().isEmpty();
+        return text.input() == null || text.input().isEmpty();
     }
 
     @Override

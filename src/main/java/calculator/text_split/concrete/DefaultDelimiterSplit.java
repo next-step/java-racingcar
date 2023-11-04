@@ -4,7 +4,7 @@ import calculator.text_split.InputText;
 import calculator.text_split.handler.TextSplit;
 
 public class DefaultDelimiterSplit extends TextSplit {
-    public static final String DEFAULT_DELIMITER = ",|\\:";
+    private static final String DEFAULT_DELIMITER = ",|\\:";
 
     public DefaultDelimiterSplit(InputText text) {
         super(text);

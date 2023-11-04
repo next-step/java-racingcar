@@ -3,8 +3,8 @@ package calculator.text_split.concrete;
 import calculator.text_split.InputText;
 import calculator.text_split.handler.TextSplit;
 
-public class BasicSplit extends TextSplit {
-    public BasicSplit(InputText text) {
+public class NoSplit extends TextSplit {
+    public NoSplit(InputText text) {
         super(text);
     }
 

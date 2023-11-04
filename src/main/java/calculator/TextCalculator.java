@@ -9,20 +9,18 @@ import java.util.List;
 public class TextCalculator {
     public static int calculate(String input) {
         InputText inputText = new InputText(input);
-        TextSplit basicSplit = new BasicSplit(inputText);
-        TextSplit nullSplit = new NullSplit(inputText);
+
+        TextSplit basicSplit = new NoSplit(inputText);
         TextSplit emptySplit = new EmptySplit(inputText);
         TextSplit customDelimiterSplit = new CustomDelimiterSplit(inputText);
         TextSplit defaultDelimiterSplit = new DefaultDelimiterSplit(inputText);
         basicSplit
-                .setNext(nullSplit)
                 .setNext(emptySplit)
                 .setNext(customDelimiterSplit)
-                .setNext(defaultDelimiterSplit);
-        basicSplit.split();
-        List<String> texts = inputText.getTokens();
+                .setNext(defaultDelimiterSplit)
+                .split();
 
-        CalcNumbers calcNumbers = new CalcNumbers(texts);
+        CalcNumbers calcNumbers = new CalcNumbers(inputText.getTokens());
         return new Operator(calcNumbers).sum();
     }
 }
