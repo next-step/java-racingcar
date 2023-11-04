@@ -14,14 +14,14 @@ public class Car {
 
     public void move() {
         int randomValue = RANDOM.nextInt(10);
-        if(randomValue >= MIN_MOVE_VALUE) {
+        if (randomValue >= MIN_MOVE_VALUE) {
             position += 1;
         }
     }
 
     //테스트를 위한 오버로딩ㅠㅠ
     public void move(int randomValue) {
-        if(randomValue >= MIN_MOVE_VALUE) {
+        if (randomValue >= MIN_MOVE_VALUE) {
             position += 1;
         }
     }

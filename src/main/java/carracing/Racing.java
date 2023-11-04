@@ -23,6 +23,7 @@ public class Racing {
         createCar(carCount);
         go(tryCount);
     }
+
     private void go(int tryCount) {
         cars.move(tryCount);
     }
