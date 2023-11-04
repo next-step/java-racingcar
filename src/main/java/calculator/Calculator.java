@@ -10,17 +10,18 @@ public class Calculator {
     private static final String DELIMITER_JOIN = "|";
     private static List<String> delimiters = new ArrayList<>(Arrays.asList(",", ":"));
     private static final int NULL_VALUE = 0;
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int cal(String text) {
         if (isBlank(text)) {
             return NULL_VALUE;
-        } //else문 사용 지양을 위해 Early Return 지향하자
+        }
 
         return sum(toInts(split(extractText(text))));
     }
 
     private static String extractText(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (m.find()) {
             addDelimiters(m);
             return m.group(2);
