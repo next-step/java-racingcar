@@ -5,13 +5,11 @@ import java.util.List;
 
 public class Track {
     private List<Car> cars;
-    private Integer movingCount;
 
-    public Track(Integer carCount, Integer movingCount) {
-        this.movingCount = movingCount;
+    public Track(Integer carCount) {
         cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(1, movingCount));
+            cars.add(new Car());
         }
     }
 

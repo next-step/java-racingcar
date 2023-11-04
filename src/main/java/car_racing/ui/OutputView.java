@@ -1,6 +1,5 @@
 package car_racing.ui;
 
-import car_racing.Car;
 import car_racing.Track;
 
 public class OutputView {
@@ -15,6 +14,9 @@ public class OutputView {
     }
 
     public void output() {
-        track.getCars().forEach(Car::printStatus);
+        track.getCars().forEach(car -> {
+            System.out.println(String.valueOf('-').repeat(car.getPosition()));
+        });
+        System.out.println("\n");
     }
 }

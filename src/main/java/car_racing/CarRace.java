@@ -5,9 +5,12 @@ import car_racing.ui.OutputView;
 
 public class CarRace {
     public static void main(String[] args) {
-        Track track = InputView.input().toTrack();
+        InputView inputView = InputView.input();
+        Track track = inputView.toTrack();
         OutputView outputView = OutputView.from(track);
-        track.run();
-        outputView.output();
+        for (int i = 0; i < inputView.getMovingCount(); i++) {
+            track.run();
+            outputView.output();
+        }
     }
 }

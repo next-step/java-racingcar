@@ -8,15 +8,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TrackTest {
 
     @Test
-    @DisplayName("생성/자동차N대 이동횟수M회로 생성/생성된다.")
+    @DisplayName("생성/자동차N대 생성/생성된다.")
     void createTrack() {
-        Track track = new Track(10, 5);
+        Track track = new Track(10);
         assertThat(track).isInstanceOf(Track.class);
     }
 
     @Test
     void run() {
-        Track track = new Track(10, 5);
+        Track track = new Track(10);
         track.run();
     }
 }

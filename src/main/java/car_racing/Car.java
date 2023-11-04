@@ -4,27 +4,22 @@ import java.util.Random;
 
 public class Car {
 
-    private Integer currentPosition;
-    private Integer remainingMoves;
+    private static final Integer START_POSITION = 0;
 
-    public Car(Integer currentPosition, Integer remainingMoves) {
-        this.currentPosition = currentPosition;
-        this.remainingMoves = remainingMoves;
+    private Integer position;
+
+    public Car() {
+        this.position = START_POSITION;
     }
 
     public void move() {
         int i = new Random().nextInt(10);
         if (i >= 4) {
-            currentPosition += i;
+            position += i;
         }
-        remainingMoves--;
     }
 
-    public Integer getCurrentPosition() {
-        return this.currentPosition;
-    }
-
-    public void printStatus() {
-        System.out.println(String.valueOf('-').repeat(currentPosition));
+    public Integer getPosition() {
+        return this.position;
     }
 }
