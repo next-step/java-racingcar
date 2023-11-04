@@ -5,57 +5,61 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private static Matcher patternMatcher(String input) {
-        return Pattern.compile("//(.)\n(.*)").matcher(input);
+    private static final int DEFAULT = 0;
+    private static final String DELIMITER = ",|:";
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
+
+    private static boolean isEmpty(String input) {
+        if ( input == null || "".equals(input) ){
+            return true;
+        }
+        return false;
     }
 
     private static String findDelimiter (String input) {
-        String delimiter = ",|:";
-
-        Matcher m = patternMatcher(input);
+        Matcher m = PATTERN.matcher(input);
 
         if ( m.find() ) {
             return m.group(1);
         }
-        return delimiter;
+        return DELIMITER;
     }
 
     private static int getSize(String input) {
-        String delimiter = ",|:";
-
-        if( input == null || "".equals(input) ){
-            return 0;
-        }
-
         return input.split(findDelimiter(input)).length;
+    }
+
+    private static boolean isminusNumber(int number){
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+        return false;
     }
 
     public static int splitAndSum (String input) {
         int sum = 0;
 
-        if ( getSize(input) == 0 ) {
-            return 0;
+        if ( isEmpty(input) ) {
+            return DEFAULT;
         }
 
         if ( getSize(input) == 1 ) {
             return Integer.parseInt(input);
         }
 
-        if( input.contains("-") ) {
-            throw new RuntimeException();
+        String numbers = input;
+        Matcher m = PATTERN.matcher(input);
+
+        if (m.find()){
+           numbers = m.group(2);
         }
 
-        String[] tokens = input.split(findDelimiter(input));
-        Matcher m = patternMatcher(input);
-
-        if(m.find()){
-            tokens = m.group(2).split(findDelimiter(input));
-        }
+        String[] tokens = numbers.split(findDelimiter(input));
 
         for (int i=0; i < tokens.length; i++ ) {
+            isminusNumber(Integer.parseInt(tokens[i]));
             sum += Integer.parseInt(tokens[i]);
         }
-
         return sum;
     }
 }
