@@ -27,7 +27,6 @@ public class SetCollectionTest {
 	@DisplayName("size()메소드를 통해 크기를 확인한다")
 	@Test
 	void checkSize() {
-		int numbersSize = numbers.size();
 		assertThat(numbers).hasSize(3);
 	}
 
