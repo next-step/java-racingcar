@@ -16,7 +16,7 @@ class StringTest {
     @Test
     void splitOnlyOne() {
         String[] result = "1".split(",");
-        assertThat(result).isEqualTo("1");
+        assertThat(result).containsExactly("1");
     }
 
     @DisplayName("처음, 끝 substring 후 split")
