@@ -17,7 +17,6 @@ public class Track {
 
     public void run() {
         for (int i = 0; i < movingCount; i++) {
-            System.out.println("movingCount = " + i);
             cars.forEach((car) -> {
                 car.move();
                 car.printStatus();
