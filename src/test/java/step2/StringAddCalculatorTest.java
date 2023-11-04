@@ -55,4 +55,11 @@ public class StringAddCalculatorTest {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    @DisplayName("숫자 이외의 값이 들어올 경우 예외가 발생한다.")
+    public void splitAndSumWithSpecialCharacter() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1,*:3"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
