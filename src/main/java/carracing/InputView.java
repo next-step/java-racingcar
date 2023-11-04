@@ -10,7 +10,7 @@ public class InputView {
 
 		System.out.println("자동차 대수는 몇 대 인가요?");
 		int carsNumber = scanner.nextInt();
-		for(int i=0; i<carsNumber; i++) {
+		for (int i=0; i < carsNumber; i++) {
 			Car car = new Car();
 			cars.add(car);
 		}

@@ -20,18 +20,18 @@ public class Car {
 
 	public void tryMoving(RandomRange randomRange) {
 		int randomValue = randomRange.intValue();
-		if(randomValue < MIN_VALUE || randomValue > MAX_VALUE) {
+		if (randomValue < MIN_VALUE || randomValue > MAX_VALUE) {
 			throw new IllegalArgumentException(
 					String.format("%d 이상, %d 이하만 가능합니다", MIN_VALUE, MAX_VALUE)
 			);
 		}
 
 		Boolean b = new MoreThan(
-							randomValue,
-							MOVING_STANDARD
-					);
+				randomValue,
+				MOVING_STANDARD
+		);
 
-		if(b.booleanValue()) {
+		if (b.booleanValue()) {
 			move();
 		}
 	}
