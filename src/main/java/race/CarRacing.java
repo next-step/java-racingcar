@@ -20,8 +20,6 @@ public class CarRacing {
     public void start() {
         for (Car car : cars) {
             car.go(raceAttemptCount);
-            System.out.println("asdasd");
-            System.out.println(car.getStep());
         }
     }
 
