@@ -10,14 +10,15 @@ public class Main {
 		int tryingTimes = InputView.tryingNumber(scanner);
 
 		ResultView.resultPhrase();
-		for(int i=0; i<tryingTimes; i++) {
+		for (int i = 0; i < tryingTimes; i++) {
 			racing(cars);
 		}
 	}
 
 	public static void racing(List<Car> cars) {
-		for(Car car : cars) {
-			car.tryMoving(new RandomRange(0, 9));
+		final RandomRange randomRange = new RandomRange(0, 9);
+		for (Car car : cars) {
+			car.move(randomRange);
 			ResultView.printMovingResult(car.movingDistance());
 		}
 		ResultView.empty();

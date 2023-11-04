@@ -8,20 +8,20 @@ public class MoreThanTest {
 	void compareEqualNumber() {
 		MoreThan m = new MoreThan(1, 1);
 
-		assertThat(m.booleanValue()).isTrue();
+		assertThat(m.value()).isTrue();
 	}
 
 	@Test
 	void compareGreaterThanNumber() {
 		MoreThan m = new MoreThan(2, 1);
 
-		assertThat(m.booleanValue()).isTrue();
+		assertThat(m.value()).isTrue();
 	}
 
 	@Test
 	void compareLessThanNumber() {
 		MoreThan m = new MoreThan(1, 2);
 
-		assertThat(m.booleanValue()).isFalse();
+		assertThat(m.value()).isFalse();
 	}
 }

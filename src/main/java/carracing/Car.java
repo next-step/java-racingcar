@@ -18,34 +18,33 @@ public class Car {
 		this.movingDistance = movingDistance;
 	}
 
-	public void tryMoving(RandomRange randomRange) {
-		int randomValue = randomRange.intValue();
-		if (randomValue < MIN_VALUE || randomValue > MAX_VALUE) {
+	public void move(RandomRange randomRange) {
+		final int randomValue = randomRange.intValue();
+		checkRandomValueIsValid(randomValue);
+		Boolean boolMoreThan = new MoreThan(randomValue, MOVING_STANDARD);
+
+		if (boolMoreThan.value()) {
+			moveDistance();
+		}
+	}
+
+	public void checkRandomValueIsValid(int randomValue) {
+		if (isInValidRange(randomValue)) {
 			throw new IllegalArgumentException(
 					String.format("%d 이상, %d 이하만 가능합니다", MIN_VALUE, MAX_VALUE)
 			);
 		}
-
-		Boolean b = new MoreThan(
-				randomValue,
-				MOVING_STANDARD
-		);
-
-		if (b.booleanValue()) {
-			move();
-		}
 	}
 
-	public void move() {
+	private boolean isInValidRange(int randomValue) {
+		return randomValue < MIN_VALUE || randomValue > MAX_VALUE;
+	}
+
+	private void moveDistance() {
 		this.movingDistance += MOVING_DISTANCE;
 	}
 
 	public int movingDistance() {
 		return this.movingDistance;
-	}
-
-	public void printMovingResult() {
-		String result = "-".repeat(Math.max(0, this.movingDistance));
-		System.out.println(result);
 	}
 }

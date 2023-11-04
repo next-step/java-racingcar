@@ -10,7 +10,7 @@ public class MoreThan extends Boolean {
 	}
 
 	@Override
-	public boolean booleanValue() {
+	public boolean value() {
 		return left >= right;
 	}
 }

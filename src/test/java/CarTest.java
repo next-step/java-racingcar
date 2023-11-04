@@ -19,14 +19,14 @@ public class CarTest {
 
 	@Test
 	void carTryMovingSuccess() {
-		car.tryMoving(new RandomRange(4, 9));
+		car.move(new RandomRange(4, 9));
 
 		assertThat(car.movingDistance()).isEqualTo(MOVING);
 	}
 
 	@Test
 	void carTryMovingFail() {
-		car.tryMoving(new RandomRange(0, 3));
+		car.move(new RandomRange(0, 3));
 
 		assertThat(car.movingDistance()).isEqualTo(ZERO);
 	}
@@ -34,7 +34,7 @@ public class CarTest {
 	@Test
 	void carTryMovingOutOfRandomRange() {
 		assertThatThrownBy(
-				() -> car.tryMoving(new RandomRange(11, 20))
+				() -> car.move(new RandomRange(11, 20))
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 }
