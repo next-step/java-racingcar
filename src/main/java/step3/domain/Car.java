@@ -25,4 +25,13 @@ public class Car {
     private boolean isMoveAbleCheck(int moveNumber) {
         return moveNumber >= MOVE_NUMBER_CONDITION;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            result.append("-");
+        }
+        return result.toString();
+    }
 }

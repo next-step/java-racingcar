@@ -14,7 +14,7 @@ public class CarTest {
         this.car = new Car(position);
     }
 
-    @DisplayName("자동차가 움직이는지 테스트")
+    @DisplayName("자동차가 4이상일때 움직이는지 테스트")
     @Test
     public void move() {
         //given
@@ -26,7 +26,7 @@ public class CarTest {
         assertThat(car.position()).isEqualTo(1);
     }
 
-    @DisplayName("자동차가 멈추는지 테스트")
+    @DisplayName("자동차가 3이하일때 멈추는지 테스트")
     @Test
     public void stop() {
         //given

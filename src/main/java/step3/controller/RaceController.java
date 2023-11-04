@@ -6,6 +6,7 @@ import step3.validite.RandomNumber;
 import step3.view.OutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceController {
 
@@ -19,7 +20,7 @@ public class RaceController {
 
         for (int i = 0; i < moveNumber; i++) {
             moveCars(cars);
-            outputView.printCars(cars);
+            outputView.print(cars.stream().map(Car::toString).collect(Collectors.toList()));
         }
     }
 
