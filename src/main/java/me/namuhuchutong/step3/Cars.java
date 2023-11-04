@@ -36,4 +36,18 @@ public class Cars {
                       .map(Car::newInstance)
                       .collect(Collectors.toList());
     }
+
+    @Override
+    public String toString() {
+        StringBuilder carPositions = new StringBuilder();
+        buildCarPositions(carPositions);
+        return carPositions.toString();
+    }
+
+    private void buildCarPositions(StringBuilder carPositions) {
+        this.carList.forEach(car -> {
+            String carPosition = car.getPositionToString();
+            carPositions.append(carPosition).append("\n");
+        });
+    }
 }
