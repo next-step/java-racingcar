@@ -2,8 +2,10 @@ package me.namuhuchutong.step3;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
@@ -34,6 +36,22 @@ class CarTest {
 
         //then
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("자동차의 표시 문자열 길이와 자동차의 위치 값은 동일하다")
+    @ParameterizedTest(name = "from: {0}, to: {1}, expected: {2}")
+    @CsvSource(value = {"4,6,2", "1,9,6", "9,9,0"})
+    void string_indicator_length_and_car_position_is_same_value(int from, int to, int expected) {
+        //given
+        Car car = new Car();
+
+        //when
+        IntStream.range(from, to)
+                 .mapToObj(this::imitateRandomCondition)
+                 .forEach(car::move);
+
+        //then
+        assertThat(car.getPositionToString().length()).isEqualTo(expected);
     }
 
     private boolean imitateRandomCondition(int value) {

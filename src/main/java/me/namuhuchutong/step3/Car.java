@@ -17,4 +17,8 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public String getPositionToString() {
+        return "-".repeat(this.position);
+    }
 }
