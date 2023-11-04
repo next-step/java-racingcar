@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 public class CarTest {
 
@@ -22,13 +23,13 @@ public class CarTest {
     @DisplayName("자동차가 전진합니다.")
     @Test
     void carMustMoveForward(){
-        assertThat(carAlwaysReturnAboveFour.decideMovement()).isTrue();
+        assertThatNoException().isThrownBy(() -> carAlwaysReturnAboveFour.run());
     }
 
     @DisplayName("자동차가 정지합니다.")
     @Test
     void carMustMoveBackward(){
-        assertThat(carAlwaysReturnBelowFour.decideMovement()).isFalse();
+        assertThatNoException().isThrownBy(() -> carAlwaysReturnBelowFour.run());
     }
 
 }

@@ -18,7 +18,8 @@ public class RoundsTest {
     @ValueSource(ints = {2,3,0,99})
     @ParameterizedTest
     void createRoundList(int count){
-        List<Round> roundList = Collections.nCopies(count, new Round());
+        Round round = new Round(new Cars(Collections.emptyList()));
+        List<Round> roundList = Collections.nCopies(count, round);
         Rounds rounds = Rounds.from(roundList);
         assertThat(rounds.numberOfRound()).isEqualTo(count);
     }
