@@ -53,12 +53,16 @@ public class Calculator {
 	private static int[] toInts(String[] arrays) {
 		int[] numbers = new int[arrays.length];
 		for (int i = 0; i <arrays.length; i++) {
-			int parseInt = Integer.parseInt(arrays[i]);
-			if (parseInt < 0){
-				throw new RuntimeException();
-			}
-			numbers[i] = parseInt;
+			numbers[i] = getParseInt(arrays[i]);
 		}
 		return numbers;
+	}
+
+	private static int getParseInt(String text) {
+		int parseInt = Integer.parseInt(text);
+		if (parseInt < 0) {
+			throw new RuntimeException();
+		}
+		return parseInt;
 	}
 }
