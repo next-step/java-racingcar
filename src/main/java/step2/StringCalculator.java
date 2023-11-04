@@ -5,37 +5,38 @@ import java.util.Arrays;
 public class StringCalculator {
 
     private static final String[] DEFAULT_DELIMITERS = {",", ":"};
-    private static final String[] CUSTOM_DELIMITERS = {"//", "\n"};
+    private static final String[] CUSTOM_DELIMITERS = {"//", "\\n"};
 
     public int calculate(String string) {
-        if (hasNotValue(string)) {
+        if (isNone(string)) {
             return 0;
         }
 
-        string = convertToSameDelimiter(string);
-        int[] numbers = validate(string.split(DEFAULT_DELIMITERS[1]));
+        String stringConverted = convertToSameDelimiter(string);
+        int[] numbers = validate(stringConverted.split(DEFAULT_DELIMITERS[1]));
 
         return sum(numbers);
     }
 
-    private boolean hasNotValue(String string) {
+    private boolean isNone(String string) {
         return string == null || string.isBlank() || string.isEmpty();
     }
 
     private String convertToSameDelimiter(String string) {
-        if (isDefaultDelimiter(string)) {
-            string = string.replace(DEFAULT_DELIMITERS[0], DEFAULT_DELIMITERS[1]);
+        if (hasNotDelimiter(string)) {
+            return string;
         }
 
         if (isCustomDelimiter(string)) {
-            string = convertToDefaultDelimiter(string);
+            return convertToDefaultDelimiter(string);
         }
 
-        return string;
+        return string.replace(DEFAULT_DELIMITERS[0], DEFAULT_DELIMITERS[1]);
     }
 
-    private boolean isDefaultDelimiter(String string) {
-        return string.contains(DEFAULT_DELIMITERS[0]) || string.contains(DEFAULT_DELIMITERS[1]);
+    private boolean hasNotDelimiter(String string) {
+        return !(string.contains(DEFAULT_DELIMITERS[0]) || string.contains(DEFAULT_DELIMITERS[1]) ||
+            string.contains(CUSTOM_DELIMITERS[0]) || string.contains(CUSTOM_DELIMITERS[1]));
     }
 
     private boolean isCustomDelimiter(String string) {
@@ -50,8 +51,8 @@ public class StringCalculator {
     }
 
     private String findDelimeter(String string) {
-        int idx = string.indexOf(CUSTOM_DELIMITERS[0]) + 2;
-        return string.substring(idx);
+        int delimiterIdx = string.indexOf(CUSTOM_DELIMITERS[0]) + 2;
+        return string.substring(delimiterIdx);
     }
 
     private int[] validate(String[] splitedString) {
@@ -62,11 +63,6 @@ public class StringCalculator {
         }
 
         return numbers;
-    }
-
-    private boolean isNegative(int[] numbers) {
-        return Arrays.stream(numbers)
-            .anyMatch(number -> number < 0);
     }
 
     private int[] validateChar(String[] splitedString) {
@@ -81,6 +77,11 @@ public class StringCalculator {
         }
 
         return numbers;
+    }
+
+    private boolean isNegative(int[] numbers) {
+        return Arrays.stream(numbers)
+            .anyMatch(number -> number < 0);
     }
 
     private int sum(int[] numbers) {
