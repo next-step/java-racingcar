@@ -13,19 +13,20 @@ public class Calculator {
 
 		Matcher matcher = getCustomDelimiterMatcher(text);
 		if (matcher.find()) {
-			return sum(matcher);
+			return sum(toInts(split(matcher)));
 		}
 		return sum(toInts(split(text)));
 	}
 
-	private static int sum(Matcher matcher) {
-		String customDelimiter = matcher.group(1);
-		String calcText = matcher.group(2);
-		return sum(toInts(split(calcText, customDelimiter)));
-	}
 
 	private static Matcher getCustomDelimiterMatcher(String text) {
 		return Pattern.compile("//(.)\n(.*)").matcher(text);
+	}
+
+	private static String[] split(Matcher matcher) {
+		String customDelimiter = matcher.group(1);
+		String calcText = matcher.group(2);
+		return split(calcText, customDelimiter);
 	}
 
 	private static String[] split(String text) {
