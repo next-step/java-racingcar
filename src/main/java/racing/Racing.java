@@ -22,16 +22,4 @@ public class Racing {
     public List<Car> participatingCars() {
         return participatingCars.cars();
     }
-
-    private static class ParticipatingCars {
-        private List<Car> participatingCars = new ArrayList<>();
-
-        private void join(Car car) {
-            this.participatingCars.add(car);
-        }
-
-        private List<Car> cars() {
-            return this.participatingCars;
-        }
-    }
 }
