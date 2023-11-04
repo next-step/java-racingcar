@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculatorTest {
 
@@ -30,7 +29,7 @@ class StringCalculatorTest {
 	void negativeNumException() {
 		assertThatThrownBy(() -> splitAndSum("-3"))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessage("음수는 입력할 수 없습니다.");
+				.hasMessage("-3 음수는 입력할 수 없습니다.");
 	}
 
 	@DisplayName("숫자 두개를 컴마 구분자로 입력할 경우 두 숫자의 합을 반환한다")

@@ -13,7 +13,11 @@ public class StringCalculator {
 		if (isNullOrBlank(input)) {
 			return 0;
 		}
-		return sumNumbers(removeDelimiter(input));
+		return sum(removeDelimiter(input));
+	}
+
+	private static boolean isNullOrBlank(String input) {
+		return input == null || input.isEmpty();
 	}
 
 	private static String[] removeDelimiter(String input) {
@@ -25,23 +29,19 @@ public class StringCalculator {
 		return input.split(DELIMITERS);
 	}
 
-	private static boolean isNullOrBlank(String input) {
-		return input == null || input.isEmpty();
-	}
-
-	private static int sumNumbers(String[] numbers) {
+	private static int sum(String[] numbers) {
 		int sum = 0;
 		for (String number : numbers) {
 			int num = Integer.parseInt(number);
-			isNumNegative(num);
+			validatePositive(num);
 			sum += num;
 		}
 		return sum;
 	}
 
-	private static void isNumNegative(int num) {
+	private static void validatePositive(int num) {
 		if (num < 0) {
-			throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+			throw new IllegalArgumentException(num + " 음수는 입력할 수 없습니다.");
 		}
 	}
 }
