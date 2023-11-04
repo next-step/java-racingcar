@@ -55,4 +55,11 @@ class CalculatorTest {
         assertThat(exception1.getMessage()).contains("input string");
         assertThat(exception2.getMessage()).contains("input string");
     }
+
+    @Test
+    void customDelimiter() {
+        String input = "//;\n1;2;3";
+
+        assertThat(Calculator.cal(input)).isEqualTo(6);
+    }
 }

@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Calculator {
     public static int cal(String input) {
         if (isEmptyOrNull(input)) {
@@ -7,6 +10,11 @@ public class Calculator {
         if (input.contains(",") || input.contains(":")) {
             return toInt(splitByCommaOrColon(input));
         }
+
+        if (input.contains("//") && input.contains("\n")) {
+            return toInt(calForCustomDelimiter(input));
+        }
+
         return toInt(splitByCommaOrColon(input));
     }
 
@@ -41,5 +49,15 @@ public class Calculator {
         } catch(NumberFormatException e){
             return false;
         }
+    }
+
+    private static String[] calForCustomDelimiter(String input) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            String[] tokens= m.group(2).split(customDelimiter);
+            return tokens;
+        }
+        return new String[0];
     }
 }
