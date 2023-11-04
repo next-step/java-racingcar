@@ -1,9 +1,29 @@
 # 자동차 경주 게임
-## 진행 방법
-* 자동차 경주 게임 요구사항을 파악한다.
-* 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-* 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-* 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
-## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+## STEP3 요구사항
+* 입/출력
+- [X] 자동차 대수 입력
+- [X] 이동 시도 횟수 입력
+- [X] 입력은 숫자만 가능하다.
+- [X] 입력이 null 이거나 음수, 문자인지 확인한다.
+- [X] random값은 0~9사이의 값이다.
+- [X] 각 시도별 이동결과를 출력한다.
+* 자동차
+- [X] 이동이 가능하면 전진하고, 불가능하면 멈춘다.
+- [X] 현재 차량 위치를 반환한다.
+* 자동차 이동 판단
+- [X] 값이 4이상이면 차량은 이동한다.
+- [X] 값이 4이하이면 차량은 멈춘다.
+* 자동차 경주 게임 진행
+- [X] 입력으로 자동차 대수와 이동 횟수를 받는다.
+- [X] 자동차 대수와 이동 횟수는 0보다 커야한다.
+- [X] 이동 결과를 출력한다.
+
+### commit message 종류를 다음과 같이 구분
+- feat (feature)
+- fix (bug fix)
+- docs (documentation)
+- style (formatting, missing semi colons, …)
+- refactor
+- test (when adding missing tests)
+- chore (maintain)
