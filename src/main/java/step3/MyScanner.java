@@ -13,9 +13,6 @@ public class MyScanner implements ScannerInterface {
     @Override
     public String getNext() {
 
-        String result = scanner.next();
-        scanner.close();
-
-        return result;
+        return scanner.next();
     }
 }
