@@ -5,10 +5,9 @@ public class StringCalculator {
 	public static int cal(String input) {
 		int result = 0;
 		if (input == null || input.isEmpty()) {
-			result = 0;
-		} else {
-			result = Integer.parseInt(input);
+
+			return 0;
 		}
-		return result;
+		return Integer.parseInt(input);
 	}
 }
