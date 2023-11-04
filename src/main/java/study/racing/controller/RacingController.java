@@ -8,7 +8,6 @@ import study.racing.view.OutputView;
 
 public class RacingController {
 
-    private static final String NEXT_LINE = "\n";
     private final OutputView outputView;
     private final InputView inputView;
     private final RandomGenerator randomGenerator;

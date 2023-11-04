@@ -23,14 +23,24 @@ public class Cars {
     }
 
     public String move(RandomGenerator randomGenerator, TryCounts tryCounts) {
+
         StringBuilder positionBuilder = new StringBuilder();
 
         for (int i = 0; i < tryCounts.getValue(); i++) {
-            for (Car car : value) {
-                String dash = car.move(randomGenerator.random(RANDOM_RANGE));
-                positionBuilder.append(dash).append(NEXT_LINE);
-            }
+            positionBuilder.append(moveEachCar(randomGenerator));
             positionBuilder.append(NEXT_LINE);
+        }
+
+        return positionBuilder.toString();
+    }
+
+    private String moveEachCar(RandomGenerator randomGenerator) {
+
+        StringBuilder positionBuilder = new StringBuilder();
+
+        for (Car car : value) {
+            String dash = car.move(randomGenerator.random(RANDOM_RANGE));
+            positionBuilder.append(dash).append(NEXT_LINE);
         }
 
         return positionBuilder.toString();

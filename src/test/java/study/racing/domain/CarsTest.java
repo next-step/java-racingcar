@@ -15,7 +15,7 @@ class CarsTest {
         DoNotMoveGenerator doNotMoveGenerator = new DoNotMoveGenerator();
 
         // when
-        cars.move(doNotMoveGenerator);
+        cars.move(doNotMoveGenerator, new TryCounts("1"));
 
         // then
         assertThat(cars).isEqualTo(new Cars(new CarsNumber("2")));
