@@ -36,7 +36,7 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("쉼표 또는 콜론 구분자를 기준으로 숫자희 합을 반환한다.")
+    @DisplayName("쉼표 또는 콜론 구분자를 기준으로 숫자의 합을 반환한다.")
     public void splitAndSumWithCommaAndSemiColon() throws Exception {
         int result = StringAddCalculator.splitAndSum("1,2:3");
         assertThat(result).isEqualTo(6);
