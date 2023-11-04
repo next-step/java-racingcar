@@ -13,10 +13,12 @@ public class OutputView {
         return new OutputView(track);
     }
 
-    public void output() {
-        track.getCars().forEach(car -> {
-            System.out.println(String.valueOf('-').repeat(car.getPosition()));
-        });
+    public void outputs() {
+        track.getCars().getCars().forEach(car -> output(car.getPosition()));
         System.out.println("\n");
+    }
+
+    private void output(int position) {
+        System.out.println(String.valueOf('-').repeat(position));
     }
 }

@@ -1,23 +1,19 @@
 package car_racing;
 
-import java.util.ArrayList;
-import java.util.List;
+import static car_racing.Cars.makeCars;
 
 public class Track {
-    private List<Car> cars;
+    private Cars cars;
 
     public Track(Integer carCount) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+        cars = makeCars(carCount, new RandomMoveStopStrategy());
     }
 
     public void run() {
-        cars.forEach(Car::move);
+        cars.move();
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 }

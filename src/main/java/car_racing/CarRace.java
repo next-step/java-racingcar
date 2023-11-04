@@ -10,7 +10,7 @@ public class CarRace {
         OutputView outputView = OutputView.from(track);
         for (int i = 0; i < inputView.getMovingCount(); i++) {
             track.run();
-            outputView.output();
+            outputView.outputs();
         }
     }
 }
