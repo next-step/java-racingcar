@@ -20,6 +20,10 @@ public class Calculator {
         return sum(toInts(split(extractText(text))));
     }
 
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
+    }
+
     private static String extractText(String text) {
         Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (m.find()) {
@@ -42,18 +46,6 @@ public class Calculator {
         return String.join(DELIMITER_JOIN, delimiters);
     }
 
-    private static boolean isBlank(String text) {
-        return text == null || text.isBlank();
-    } //추상화 레벨을 sum과 같이 맞추기
-
-    private static int sum(int[] numbers) {
-        int sum = 0;
-        for (int number : numbers) {
-            sum += number;
-        }
-        return sum;
-    }
-
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
@@ -68,6 +60,14 @@ public class Calculator {
             throw new IllegalArgumentException("음수 값은 허용되지 않습니다.");
         }
         return number;
+    }
+
+    private static int sum(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        return sum;
     }
 
 }
