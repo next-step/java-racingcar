@@ -31,7 +31,8 @@ public class RoundTest {
     @Test
     void a(){
         Round round = new Round(movingCars);
-        assertThatNoException().isThrownBy(round::race);
+        ScoreBoard scoreBoard = new ScoreBoard();
+        assertThatNoException().isThrownBy(() -> round.race(scoreBoard));
     }
 
 }
