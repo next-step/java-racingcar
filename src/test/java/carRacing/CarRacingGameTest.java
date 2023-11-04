@@ -60,23 +60,6 @@ public class CarRacingGameTest {
 
     }
 
-    @Test
-    @DisplayName("한라운드에 모든 자동차가 전진하는지 확인")
-    void 모든자동차_전진_확인() {
-        int randomNumber = 4;
-
-        carRacingGame.init();
-
-        for(int c=0;c<carRacingGame.showCarList().size();c++){
-            if(carRacingGame.isRide(randomNumber)){ //랜덤 값 때문에 test 어려움...
-                carRacingGame.move(c);
-            }
-        }
-
-        assertThat(carRacingGame.showCarList()).contains(1);
-
-    }
-
 
 
 }

@@ -9,7 +9,7 @@ public class CarRacingGame {
     public static final int MAX = 10;
     private final int carCount;
     private final int raceCount;
-    List<Integer> carList = new ArrayList<>();
+    List<Car> carList = new ArrayList<>();
 
     public CarRacingGame(int carCount, int raceCount) {
         this.carCount = carCount;
@@ -26,33 +26,32 @@ public class CarRacingGame {
     }
 
 
-    public List<Integer> round() {
+    public List<Car> round() {
 
-        for (int c = 0; c < carList.size(); c++) {
-            if (isRide(random())) {
-                move(c);
-            }
+        for (Car car : carList) {
+           move(car);
         }
 
         return carList;
     }
 
     public void init() {
-        int distance = 0;
         for (int i = 0; i < carCount; i++) {
-            carList.add(distance);
+            carList.add(new Car());
         }
     }
 
-    public void move(int c) {
-        carList.set(c, carList.get(c) + 1);
+    public void move(Car car) {
+        if (isRide(random())) {
+          car.move();
+        }
     }
 
 
-    public List<Integer> showCarList() {
+    public List<Car> showCarList() {
         return carList;
     }
-    
+
 
     public boolean isRide(int number) {
         if (number < 4) {

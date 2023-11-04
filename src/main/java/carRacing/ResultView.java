@@ -9,10 +9,10 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printRoundResult(List<Integer> carList) {
+    public static void printRoundResult(List<Car> carList) {
 
-        for (int car : carList) {
-            String distance = "-".repeat(car);
+        for (Car car : carList) {
+            String distance = "-".repeat(car.getDistance());
             System.out.println(distance);
         }
         System.out.println();
