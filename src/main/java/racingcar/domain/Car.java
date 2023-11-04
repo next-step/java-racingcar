@@ -4,8 +4,6 @@ public class Car {
 
     private static final int MOVE_GRADE = 1;
 
-    private static final int MOVABLE_MIN_NUMBER = 4;
-
     private final RandomPicker randomPicker;
 
     private int grade = 1;
@@ -19,13 +17,11 @@ public class Car {
     }
 
     public void game() {
-        if (isMovable(randomPicker.pickNumber())) {
+        GameNumber gameNumber = randomPicker.pickNumber();
+
+        if (gameNumber.isMovableNumber()) {
             moveForward();
         }
-    }
-
-    private boolean isMovable(int number) {
-        return number >= MOVABLE_MIN_NUMBER;
     }
 
     private void moveForward() {
