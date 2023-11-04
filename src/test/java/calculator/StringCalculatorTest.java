@@ -12,38 +12,38 @@ class StringCalculatorTest {
 	@DisplayName("빈 문자열 또는 null 값인 경우 0을 반환한다")
 	@Test
 	void NullOrBlank() {
-		assertThat(cal(null)).isEqualTo(0);
-		assertThat(cal("")).isEqualTo(0);
+		assertThat(splitAndSum(null)).isEqualTo(0);
+		assertThat(splitAndSum("")).isEqualTo(0);
 	}
 
 	@DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
 	@Test
 	void oneStringToNum() {
-		assertThat(cal("3")).isEqualTo(3);
+		assertThat(splitAndSum("3")).isEqualTo(3);
 	}
 
 	@DisplayName("음수를 전달할 경우 RuntimeException 예외를 던진다")
 	@Test
 	void negativeNumException() {
-		assertThatThrownBy(() -> cal("-3"))
+		assertThatThrownBy(() -> splitAndSum("-3"))
 				.isInstanceOf(RuntimeException.class);
 	}
 
 	@DisplayName("숫자 두개를 컴마 구분자로 입력할 경우 두 숫자의 합을 반환한다")
 	@Test
 	void splitCommaAndSum() {
-		assertThat(cal("1,3")).isEqualTo(4);
+		assertThat(splitAndSum("1,3")).isEqualTo(4);
 	}
 
 	@DisplayName("구분자를 컴마 이외에 콜론을 사용할 수 있음")
 	@Test
 	void splitcolonAndSum() {
-		assertThat(cal("1:3,5")).isEqualTo(9);
+		assertThat(splitAndSum("1:3,5")).isEqualTo(9);
 	}
 
 	@DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정")
 	@Test
 	void splitWithCustomDelimiter() {
-		assertThat(cal("//;\n1;2;3")).isEqualTo(6);
+		assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
 	}
 }
