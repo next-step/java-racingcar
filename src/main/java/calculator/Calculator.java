@@ -2,15 +2,13 @@ package calculator;
 
 public class Calculator {
 
-    public static final String DELIMITER = ",";
+    public static final String DELIMITER = ",|:";
 
     public static int cal(String text) {
 
         if (isBlank(text)) {
             return 0;
         }
-
-        //String[] values = text.split(DELIMITER);
 
         return sum(toInts(split(text)));
     }
