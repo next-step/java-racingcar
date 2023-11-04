@@ -2,6 +2,7 @@ package calculator;
 
 import static calculator.StringCalculator.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,5 +20,12 @@ class StringCalculatorTest {
 	@Test
 	void oneStringToNum() {
 		assertThat(cal("3")).isEqualTo(3);
+	}
+
+	@DisplayName("음수를 전달할 경우 RuntimeException 예외를 던진다")
+	@Test
+	void negativeNumException() {
+		assertThatThrownBy(() -> cal("-3"))
+				.isInstanceOf(RuntimeException.class);
 	}
 }
