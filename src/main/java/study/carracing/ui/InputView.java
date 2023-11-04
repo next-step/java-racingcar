@@ -1,4 +1,4 @@
-package carracing.ui;
+package study.carracing.ui;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;

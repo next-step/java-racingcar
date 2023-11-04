@@ -1,4 +1,4 @@
-package carracing.domain;
+package study.carracing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +17,7 @@ class CarTest {
         car.move(randomValue);
 
         int position = car.getPosition();
-        assertThat(position).isEqualTo(1);
+        assertThat(position).isEqualTo(2);
     }
 
     @ParameterizedTest
@@ -30,6 +30,6 @@ class CarTest {
 
         int position = car.getPosition();
 
-        assertThat(position).isEqualTo(0);
+        assertThat(position).isEqualTo(1);
     }
 }

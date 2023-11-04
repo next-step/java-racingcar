@@ -1,8 +1,8 @@
-package carracing;
+package study.carracing;
 
-import carracing.domain.Car;
-import carracing.domain.Cars;
-import carracing.ui.InputView;
+import study.carracing.domain.Car;
+import study.carracing.domain.Cars;
+import study.carracing.ui.InputView;
 
 public class Racing {
     private final Cars cars;

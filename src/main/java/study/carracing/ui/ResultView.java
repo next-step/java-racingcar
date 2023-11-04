@@ -1,6 +1,6 @@
-package carracing.ui;
+package study.carracing.ui;
 
-import carracing.domain.Car;
+import study.carracing.domain.Car;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package carracing.domain;
+package study.carracing.domain;
 
-import carracing.ui.ResultView;
+import study.carracing.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
