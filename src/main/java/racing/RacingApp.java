@@ -1,5 +1,6 @@
 package racing;
 
+import racing.car.Car;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
