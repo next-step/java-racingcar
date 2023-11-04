@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -39,11 +40,11 @@ class CarTest {
     }
 
     @DisplayName("자동차의 엑셀을 밟는 힘이 0~9의 범위를 넘어서면 예외를 발생시킨다.")
-    @Test
-    void moveForwardWhenOverAndUnderPower() {
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 10})
+    void moveForwardWhenOverAndUnderPower(int power) {
         // given
         Car car = new Car();
-        int power = 10;
 
         // when & then
         assertThatThrownBy(() -> car.moveForward(power))
