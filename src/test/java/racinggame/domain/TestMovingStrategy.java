@@ -16,7 +16,7 @@ class TestMovingStrategy implements MovingStrategy {
     }
 
     @Override
-    public int nextInt() {
+    public int moveValue() {
         return this.number;
     }
 
