@@ -3,18 +3,15 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
-import racinggame.domain.strategy.RandomNumberMovingStrategy;
 
 public class Cars {
 
     private final List<Car> carList;
 
-    public static Cars from(String[] names) {
+    public static Cars from(String[] names, MovingValidator movingValidator) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            Car car = new Car(new CarName(name),
-                new MovingValidator(new RandomNumberMovingStrategy(new Random())));
+            Car car = new Car(new CarName(name), movingValidator);
             cars.add(car);
         }
         return new Cars(cars);
