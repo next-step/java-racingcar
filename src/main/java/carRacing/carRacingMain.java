@@ -8,6 +8,13 @@ public class carRacingMain {
        int carCount = readCarCount();
        int raceCount = readRaceCount();
 
+       CarRacingGame carRacingGame = new CarRacingGame(carCount, raceCount);
+
+       ResultView.resultTitle();
+       carRacingGame.startGame();
+
+
+
 
     }
 }
