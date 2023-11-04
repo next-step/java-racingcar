@@ -15,8 +15,6 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String text){
 
-        String[] tokens ;
-
         // splitAndSum_null_또는_빈문자
         if(text == null || text.isEmpty()){
             return ZERO;
