@@ -9,6 +9,8 @@ public class Main {
         InputView inputView = new InputView(scanner);
         int carSize = inputView.carSize();
         int racingCount = inputView.racingCount();
+
+        new RacingGame().racing(carSize, racingCount);
     }
 
 }
