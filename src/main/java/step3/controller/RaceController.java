@@ -2,7 +2,8 @@ package step3.controller;
 
 import step3.domain.Car;
 import step3.domain.CarFactory;
-import step3.validite.RandomNumber;
+import step3.strategy.MoveStrategy;
+import step3.strategy.RandomMoveStrategy;
 import step3.view.OutputView;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class RaceController {
 
-    private static final RandomNumber RANDOM_NUMBER = new RandomNumber();
+    private static final MoveStrategy MOVE_STRATEGY = new RandomMoveStrategy();
 
     public void startRace(int carNumber, int moveNumber) {
         CarFactory carFactory = new CarFactory();
@@ -26,7 +27,7 @@ public class RaceController {
 
     public void moveCars(List<Car> cars) {
         for (Car car : cars) {
-            car.move(RANDOM_NUMBER.randomNumberCreate());
+            car.move(MOVE_STRATEGY.move());
         }
     }
 }

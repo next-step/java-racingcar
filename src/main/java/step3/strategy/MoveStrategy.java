@@ -1,5 +1,5 @@
-package step3;
+package step3.strategy;
 
 public interface MoveStrategy {
-    void move();
+    int move();
 }
