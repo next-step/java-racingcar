@@ -12,23 +12,24 @@ public class CarRacing {
     public static void main(String[] args) {
 
         InputView inputView = new InputView(myScanner);
+        ResultView resultView = new ResultView();
 
         int carCount = inputView.setParticipantCarNumber();
         int racingChance = inputView.setRacingChance();
+        Map<Integer, Integer> racingBoard = setRacingBoard(carCount);
 
+
+        System.out.println("실행 결과");
 
         CarRacingPlay carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator());
-
-        Map<Integer, Integer> racingBoard = setRacingBoard(carCount);
 
         for (int i = 1; i <= racingChance; i++) {
             for (int carNumber = 1; carNumber <= carCount; carNumber++) {
                 carRacingPlay.race(carNumber, racingBoard);
             }
+            resultView.printRacingStatus(racingBoard);
+            System.out.println();
         }
-
-        System.out.println("racingBoard = " + racingBoard);
-
     }
 
     private static Map<Integer, Integer> setRacingBoard(int carCount) {
