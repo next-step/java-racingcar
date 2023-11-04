@@ -8,11 +8,9 @@ import java.util.List;
 public class CarFactory {
 
     private List<Car> cars;
-    private RandomNumber randomNumber;
 
     public CarFactory() {
         this.cars = new ArrayList<>();
-        randomNumber = new RandomNumber();
     }
 
     public List<Car> carsInfo() {
@@ -24,11 +22,4 @@ public class CarFactory {
             cars.add(new Car());
         }
     }
-
-    public void moveCars() {
-        for (Car car : cars) {
-            car.move(randomNumber.randomNumberCreate());
-        }
-    }
-
 }

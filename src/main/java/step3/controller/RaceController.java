@@ -2,12 +2,14 @@ package step3.controller;
 
 import step3.domain.Car;
 import step3.domain.CarFactory;
-import step3.validite.ValidityCheck;
+import step3.validite.RandomNumber;
 import step3.view.OutputView;
 
 import java.util.List;
 
 public class RaceController {
+
+    private static final RandomNumber RANDOM_NUMBER = new RandomNumber();
 
     public void startRace(int carNumber, int moveNumber) {
         CarFactory carFactory = new CarFactory();
@@ -16,8 +18,14 @@ public class RaceController {
         List<Car> cars = carFactory.carsInfo();
 
         for (int i = 0; i < moveNumber; i++) {
-            carFactory.moveCars();
+            moveCars(cars);
             outputView.printCars(cars);
+        }
+    }
+
+    public void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.move(RANDOM_NUMBER.randomNumberCreate());
         }
     }
 }
