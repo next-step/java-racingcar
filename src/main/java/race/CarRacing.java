@@ -28,7 +28,7 @@ public class CarRacing {
         }
     }
 
-    private static void nextStep() {
+    private void nextStep() {
         ResultView.println();
     }
 }
