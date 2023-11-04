@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.domain.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -12,9 +13,10 @@ class RacingTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("입력한 자동차 대수만큼 자동차 객체가 생성된다.")
     void createCar(int expected) {
-        Racing racing = new Racing();
+        Racing racing = new Racing(new Cars());
 
-        int actual = racing.createCar(expected);
+        racing.createCar(expected);
+        int actual = racing.getCars().getCarListSize();
 
         assertThat(actual).isEqualTo(expected);
     }
