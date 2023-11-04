@@ -22,7 +22,7 @@ class StringAddCalculator {
                         return 0;
                 }
                 textNumbers = split(text);
-                numbers = getPositiveNumbersFromStrNumbers(textNumbers);
+                numbers = getZeroOrMoreNumbersFromStrNumbers(textNumbers);
                 return sum(numbers);
         }
 
@@ -57,15 +57,20 @@ class StringAddCalculator {
                 return text.split(DEFAULT_DELIMITER_REGAX);
         }
 
-        private static int[] getPositiveNumbersFromStrNumbers(String[] texts) {
+        private static int[] getZeroOrMoreNumbersFromStrNumbers(String[] texts) {
 
                 return Stream.of(texts).mapToInt(text -> {
                         int number = Integer.parseInt(text);
-                        if (number < 0) {
-                                throw new IllegalArgumentException("0보다 크거나 같은 숫자만 입력 가능합니다.");
-                        }
+                        validateNegativeNumber(number);
                         return number;
                 }).toArray();
+        }
+
+        private static void validateNegativeNumber(int number) {
+
+                if (number < 0) {
+                        throw new IllegalArgumentException("0보다 크거나 같은 숫자만 입력 가능합니다.");
+                }
         }
 
         private static int sum(int[] numbers) {
