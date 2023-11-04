@@ -6,6 +6,9 @@ public class Runner {
         InputView inputView = new InputView();
         inputView.inputNumberOfCars();
         inputView.inputNumberOfTry();
+
+        Game game = new Game(inputView.numberOfCars(), inputView.numberOfTry());
+        game.play();
     }
 
 }
