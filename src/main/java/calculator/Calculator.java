@@ -11,8 +11,16 @@ public class Calculator {
             return 0;
         }
 
-        Delimiter delimiter = text.contains(NEW_LINE) ? new CustomDelimiter() : new DefaultDelimiter();
+        Delimiter delimiter = new DefaultDelimiter();
+        if (hasCustomDelimiter(text)) {
+            delimiter = new CustomDelimiter();
+        }
+
         return sum(delimiter.split(text));
+    }
+
+    private static boolean hasCustomDelimiter(String text) {
+        return text.contains(NEW_LINE);
     }
 
     private static void checkNegativeNumber(int tokenNumber) {
