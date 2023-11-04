@@ -12,8 +12,10 @@ public class Cars {
     }
 
     public void startRacing(int racingCount) {
+        OutputView outputView = new OutputView();
         for (int i = 0; i < racingCount; i++) {
             racingCar();
+            outputView.printRacing(cars);
         }
     }
 
