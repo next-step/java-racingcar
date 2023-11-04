@@ -1,6 +1,8 @@
 package study;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,44 +22,36 @@ public class StringAddCalculator {
             return ZERO;
         }
 
-        // 음수 체크
-        negativeCheck(text);
-
         Matcher m = Pattern.compile(REGEX_PATTERN_COMPILE).matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
-            tokens= m.group(2).split(customDelimiter);
-            return loop(tokens);
+            return getSum(m.group(2).split(customDelimiter));
         }
 
-        tokens = text.split(REGEX_SPLIT);
-        return loop(tokens);
+        return getSum(text.split(REGEX_SPLIT));
     }
 
-    private static void negativeCheck(String text) {
-        if(text.contains("-1")){
-            throw new IllegalArgumentException("문자열 중 음수가 존재 합니다");
+    private static int getSum(String[] tokens) {
+
+        return Arrays.stream(tokens)
+                .mapToInt(number -> positiveNum(number))
+                .sum();
+    }
+
+    private static int positiveNum(String str) {
+        try {
+            return negativeCheck(Integer.parseInt(str));
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("숫자가 아닙니다.");
         }
+
     }
 
-    private static int loop(String[] tokens) {
-        int sum  = 0;
-        for(String str : tokens){
-            sum = getSum(sum, str);
+    private static int negativeCheck(int num) {
+        if(num < 0){
+            throw new IllegalArgumentException("음수 입니다");
         }
-        return sum;
-    }
-
-    private static int getSum(int sum, String str) {
-        if(isNumber(str)){
-            sum += Integer.parseInt(str);
-        }
-        return sum;
-    }
-
-    // 숫자 여부 판단
-    public static boolean isNumber(String str){
-        return str.matches("-?\\d+");
+        return num;
     }
 
 }
