@@ -22,14 +22,14 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("요구사항3 : 특정위치 문자 가져오기")
+    @DisplayName("요구사항3-1 : 특정위치 문자 가져오기")
     void charAt() {
         String given = "abc";
         assertThat('a').isEqualTo(given.charAt(0));
     }
 
     @Test
-    @DisplayName("요구사항3 : 특정위치 문자 가져오기 예외처리")
+    @DisplayName("요구사항3-2 : 특정위치 문자 가져오기 예외처리")
     void charAtException() {
         String given = "abc";
         assertThatThrownBy(() ->{
