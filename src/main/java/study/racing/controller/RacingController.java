@@ -2,6 +2,7 @@ package study.racing.controller;
 
 import study.racing.domain.Cars;
 import study.racing.domain.CarsNumber;
+import study.racing.domain.RandomGenerator;
 import study.racing.domain.TryCounts;
 import study.racing.view.InputView;
 import study.racing.view.OutputView;
@@ -11,10 +12,12 @@ public class RacingController {
     private static final String NEXT_LINE = "\n";
     private final OutputView outputView;
     private final InputView inputView;
+    private final RandomGenerator randomGenerator;
 
-    public RacingController(OutputView outputView, InputView inputView) {
+    public RacingController(OutputView outputView, InputView inputView, RandomGenerator randomGenerator) {
         this.outputView = outputView;
         this.inputView = inputView;
+        this.randomGenerator = randomGenerator;
     }
 
     public void startGame() {
@@ -29,7 +32,7 @@ public class RacingController {
         TryCounts tryCounts = inputView.inputTryCounts();
 
         for (int i = 0; i < tryCounts.getValue(); i++) {
-            positionBuilder.append(cars.move());
+            positionBuilder.append(cars.move(randomGenerator));
             positionBuilder.append(NEXT_LINE);
         }
 

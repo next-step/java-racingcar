@@ -19,4 +19,17 @@ class CarTest {
         // then
         assertThat(car).isEqualTo(new Car(new Position(1)));
     }
+
+    @Test
+    @DisplayName("3 이하의 값을 받으면 전진하지 않는다.")
+    void doNotMoveTest() {
+        // given
+        Car car = new Car(new Position(0));
+
+        // when
+        car.move(3);
+
+        // then
+        assertThat(car).isEqualTo(new Car(new Position(0)));
+    }
 }

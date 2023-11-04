@@ -2,7 +2,7 @@ package study.racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Objects;
 
 public class Cars {
 
@@ -21,14 +21,26 @@ public class Cars {
         this.value = cars;
     }
 
-    public String move() {
+    public String move(RandomGenerator randomGenerator) {
 
         StringBuilder positionBuilder = new StringBuilder();
-        Random random = new Random();
         for (Car car : value) {
-            String dash = car.move(random.nextInt(RANDOM_RANGE));
+            String dash = car.move(randomGenerator.random(RANDOM_RANGE));
             positionBuilder.append(dash);
         }
         return positionBuilder.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars = (Cars) o;
+        return Objects.equals(value, cars.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
