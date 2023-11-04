@@ -7,10 +7,6 @@ import java.util.Random;
 public class Car {
     private int step = 0;
 
-    public int getStep() {
-        return step;
-    }
-
     public void go(final int raceAttemptCount) {
         this.step = 0;
 
