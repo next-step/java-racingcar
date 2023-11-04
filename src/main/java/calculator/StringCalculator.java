@@ -10,6 +10,13 @@ public class StringCalculator {
 		if (input.contains("-")) {
 			throw new RuntimeException();
 		}
+		if(input.contains(",")) {
+			String[] numbers = input.split(",");
+			for (String number : numbers) {
+				result += Integer.parseInt(number);
+			}
+			return result;
+		}
 		return Integer.parseInt(input);
 	}
 }

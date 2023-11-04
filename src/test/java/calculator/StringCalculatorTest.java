@@ -28,4 +28,10 @@ class StringCalculatorTest {
 		assertThatThrownBy(() -> cal("-3"))
 				.isInstanceOf(RuntimeException.class);
 	}
+
+	@DisplayName("숫자 두개를 컴마 구분자로 입력할 경우 두 숫자의 합을 반환한다")
+	@Test
+	void splitCommaAndSum() {
+		assertThat(cal("1,3")).isEqualTo(4);
+	}
 }
