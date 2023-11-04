@@ -1,3 +1,5 @@
+package carracing;
+
 public class RandomRange {
 	private final int min;
 	private final int max;

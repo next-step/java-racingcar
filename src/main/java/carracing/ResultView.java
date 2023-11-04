@@ -1,3 +1,5 @@
+package carracing;
+
 public class ResultView {
 	public static void resultPhrase() {
 		System.out.println("실행 결과");

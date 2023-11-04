@@ -1,3 +1,8 @@
+package carracing;
+
+import carracing.controlstatement.Boolean;
+import carracing.controlstatement.MoreThan;
+
 public class Car {
 	private static final int MOVING_STANDARD = 4;
 	private static final int MOVING_DISTANCE = 1;

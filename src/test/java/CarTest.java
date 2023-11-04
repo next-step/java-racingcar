@@ -1,3 +1,5 @@
+import carracing.Car;
+import carracing.RandomRange;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
