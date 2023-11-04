@@ -1,6 +1,7 @@
 package step2;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,9 +10,7 @@ public class SeparatorManager {
     private static ArrayList<String> separators = new ArrayList<>();
 
     public SeparatorManager() {
-        for (String separator : defaultSeparators) {
-            separators.add(separator);
-        }
+        Collections.addAll(separators, defaultSeparators);
     }
 
     /**

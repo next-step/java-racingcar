@@ -23,6 +23,7 @@ public class StringAddCalculator {
     private static int sum(int[] numbers) {
         int sum = 0;
         for (int number : numbers) {
+            if (number < 0) throw new RuntimeException();
             sum += number;
         }
         return sum;

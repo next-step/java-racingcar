@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
     @Test
@@ -60,5 +61,53 @@ class StringAddCalculatorTest {
     void defaultAndcustomSplitTest() {
         int result = StringAddCalculator.splitAndSum("//;\n1;2,3:4");
         assertThat(result).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값이 입력된 경우")
+    void badInputTest1() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("a");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값이 입력된 경우")
+    void badInputTest2() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("1:a");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값이 입력된 경우")
+    void badInputTest3() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("//;\n1;2,3;a");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("음수 값이 입력된 경우")
+    void negativeInputTest1() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("-1");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("음수 값이 입력된 경우")
+    void negativeInputTest2() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("1:-1");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("음수 값이 입력된 경우")
+    void negativeInputTest3() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("//;\n1;2,3;-1");
+        }).isInstanceOf(RuntimeException.class);
     }
 }
