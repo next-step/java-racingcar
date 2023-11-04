@@ -4,15 +4,18 @@ import java.util.Objects;
 
 public class Car {
 
+    private final CarName name;
     private final MovingDistance movingDistance;
     private final MovingValidator movingValidator;
 
-    public Car(MovingDistance movingDistance, MovingValidator movingValidator) {
+    public Car(CarName name, MovingDistance movingDistance, MovingValidator movingValidator) {
+        this.name = name;
         this.movingDistance = movingDistance;
         this.movingValidator = movingValidator;
     }
 
-    public Car(MovingValidator movingValidator) {
+    public Car(CarName name, MovingValidator movingValidator) {
+        this.name = name;
         this.movingValidator = movingValidator;
         this.movingDistance = new MovingDistance();
     }

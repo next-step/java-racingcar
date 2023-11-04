@@ -10,10 +10,11 @@ public class Cars {
 
     private final List<Car> carList;
 
-    public static Cars from(String value) {
+    public static Cars from(String[] names) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < Integer.parseInt(value); i++) {
-            Car car = new Car(new MovingValidator(new RandomNumberMovingStrategy(new Random())));
+        for (String name : names) {
+            Car car = new Car(new CarName(name),
+                new MovingValidator(new RandomNumberMovingStrategy(new Random())));
             cars.add(car);
         }
         return new Cars(cars);

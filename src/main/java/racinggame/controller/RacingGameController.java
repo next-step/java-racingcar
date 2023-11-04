@@ -11,10 +11,10 @@ public class RacingGameController {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String value = InputView.carCount(scanner);
+        String[] carNames = InputView.carNames(scanner);
         int number = InputView.playCount(scanner);
 
-        RacingGame racingGame = new RacingGame(Cars.from(value));
+        RacingGame racingGame = new RacingGame(Cars.from(carNames));
 
         ResultView.br();
         ResultView.resultSign();

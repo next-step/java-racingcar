@@ -14,8 +14,8 @@ class CarTest {
         MovingStrategy movingStrategy = new TestMovingStrategy(3);
         MovingValidator movingValidator = new MovingValidator(movingStrategy);
 
-        Car actual = new Car(movingValidator);
-        Car expected = new Car(new MovingDistance(), movingValidator);
+        Car actual = new Car(new CarName("pobi"), movingValidator);
+        Car expected = new Car(new CarName("pobi"), new MovingDistance(), movingValidator);
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -25,11 +25,11 @@ class CarTest {
     void 자동차는_4에서_9_사이에서는_움직인다(int movingValue, int movingDistance) {
         MovingStrategy movingStrategy = new TestMovingStrategy(movingValue);
         MovingValidator movingValidator = new MovingValidator(movingStrategy);
-        Car actual = new Car(movingValidator);
+        Car actual = new Car(new CarName("pobi"), movingValidator);
 
         actual.move();
 
-        Car expected = new Car(new MovingDistance(movingDistance), movingValidator);
+        Car expected = new Car(new CarName("pobi"), new MovingDistance(movingDistance), movingValidator);
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -39,11 +39,11 @@ class CarTest {
     void 자동차는_0에서_3_사이에서는_움직일_수_없다(int movingValue, int movingDistance) {
         MovingStrategy movingStrategy = new TestMovingStrategy(movingValue);
         MovingValidator movingValidator = new MovingValidator(movingStrategy);
-        Car actual = new Car(movingValidator);
+        Car actual = new Car(new CarName("pobi"), movingValidator);
 
         actual.move();
 
-        Car expected = new Car(new MovingDistance(movingDistance), movingValidator);
+        Car expected = new Car(new CarName("pobi"), new MovingDistance(movingDistance), movingValidator);
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -52,7 +52,7 @@ class CarTest {
     void 자동차가_이동한_거리를_표출_할_수_있다() {
         MovingStrategy movingStrategy = new TestMovingStrategy(4);
         MovingValidator movingValidator = new MovingValidator(movingStrategy);
-        Car car = new Car(movingValidator);
+        Car car = new Car(new CarName("pobi"), movingValidator);
         car.move();
 
         MovingDistance actual = car.movingDistance();
