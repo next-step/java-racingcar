@@ -58,8 +58,10 @@ public class Cars {
 
     private Cars mostMoved(MovingDistance maxDistance) {
         List<Car> mostMovedCars = new ArrayList<>();
-        for(Car car : carList) {
-            if(car.sameMoved(maxDistance)) mostMovedCars.add(car);
+        for (Car car : carList) {
+            if (car.sameMoved(maxDistance)) {
+                mostMovedCars.add(car);
+            }
         }
         return new Cars(mostMovedCars);
     }
@@ -75,7 +77,7 @@ public class Cars {
     }
 
     private MovingDistance max(MovingDistance existingDistance, MovingDistance comparisonDistance) {
-        if(existingDistance.isBigger(comparisonDistance)) {
+        if (existingDistance.isBigger(comparisonDistance)) {
             return existingDistance;
         }
         return comparisonDistance;
@@ -83,7 +85,7 @@ public class Cars {
 
     public List<CarName> names() {
         List<CarName> carNames = new ArrayList<>();
-        for(Car car : carList) {
+        for (Car car : carList) {
             carNames.add(car.name());
         }
         return carNames;

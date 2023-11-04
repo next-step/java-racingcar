@@ -42,7 +42,7 @@ public class ResultView {
     public static void winners(Cars winners) {
         List<CarName> names = winners.names();
         out.println(toStringWinner(names) + WINNER_POSTFIX);
-}
+    }
 
     private static String toStringWinner(List<CarName> names) {
         StringBuilder message = new StringBuilder();
@@ -52,7 +52,7 @@ public class ResultView {
             message.append(name);
             applyComma(names, message, i);
         }
-        
+
         return message.toString();
     }
 
