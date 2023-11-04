@@ -1,7 +1,5 @@
 package step3.view;
 
-import step3.validite.ValidityCheck;
-
 import java.util.Scanner;
 
 public class InputView {
