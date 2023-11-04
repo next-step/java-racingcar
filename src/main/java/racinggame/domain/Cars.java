@@ -51,6 +51,36 @@ public class Cars {
         return this.carList;
     }
 
+    public Cars mostMoved() {
+        MovingDistance maxDistance = getMaxDistance();
+        return mostMoved(maxDistance);
+    }
+
+    private Cars mostMoved(MovingDistance maxDistance) {
+        List<Car> mostMovedCars = new ArrayList<>();
+        for(Car car : carList) {
+            if(car.sameMoved(maxDistance)) mostMovedCars.add(car);
+        }
+        return new Cars(mostMovedCars);
+    }
+
+    private MovingDistance getMaxDistance() {
+        MovingDistance maxDistance = new MovingDistance();
+
+        for (Car car : this.carList) {
+            maxDistance = max(maxDistance, car.movingDistance());
+        }
+
+        return maxDistance;
+    }
+
+    private MovingDistance max(MovingDistance existingDistance, MovingDistance comparisonDistance) {
+        if(existingDistance.isBigger(comparisonDistance)) {
+            return existingDistance;
+        }
+        return comparisonDistance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

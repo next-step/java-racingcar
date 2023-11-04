@@ -50,4 +50,8 @@ public class Car {
     public String name() {
         return name.toString();
     }
+
+    public boolean sameMoved(MovingDistance movingDistance) {
+        return this.movingDistance.equals(movingDistance);
+    }
 }

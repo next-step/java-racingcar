@@ -25,4 +25,8 @@ public class RacingGame {
     public List<MovingDistance> report() {
         return cars.movingDistances();
     }
+
+    public Cars winners() {
+        return cars.mostMoved();
+    }
 }

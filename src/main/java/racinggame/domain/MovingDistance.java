@@ -24,6 +24,10 @@ public class MovingDistance {
         return this.distance;
     }
 
+    public boolean isBigger(MovingDistance comparisonDistance) {
+        return this.distance > comparisonDistance.distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
