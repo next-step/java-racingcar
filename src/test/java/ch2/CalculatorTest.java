@@ -46,4 +46,15 @@ public class CalculatorTest {
 		assertThat(result2).isEqualTo(6);
 	}
 
+
+	@Test
+	void 음수를_전달하면_runtime_exception이_발생한다() throws RuntimeException {
+		assertThatThrownBy(() ->{
+			Calculator.calc("-1,3,4");
+		}).isInstanceOf(RuntimeException.class);
+		assertThatThrownBy(() ->{
+			Calculator.calc("1,3,-4");
+		}).isInstanceOf(RuntimeException.class);
+	}
+
 }
