@@ -12,6 +12,10 @@ public class Car {
                 this.path = ".";
         }
 
+        public void moveForward() {
+                path = path.concat(PATH_SIGN);
+        }
+
         public String getPath() {
                 return path;
         }
