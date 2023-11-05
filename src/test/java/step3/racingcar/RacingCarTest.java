@@ -47,4 +47,23 @@ class RacingCarTest {
         //then
         assertThat(racingCar.currentDistance()).isEqualTo(initDistance);
     }
+
+    @Test
+    @DisplayName("move 메서드의 입력값으로 4이상 9이하의 값이 들어오면, 자동차의 전진한 거리가 1 증가한다.")
+    void moveRacingCar_whenInputInRangeFourToNine() {
+        //given
+        RacingCar racingCar = RacingCar.build();
+        int initDistance = racingCar.currentDistance();
+
+        //when
+        racingCar.move(4);
+        racingCar.move(5);
+        racingCar.move(6);
+        racingCar.move(7);
+        racingCar.move(8);
+        racingCar.move(9);
+
+        //then
+        assertThat(racingCar.currentDistance()).isEqualTo(initDistance + 6);
+    }
 }

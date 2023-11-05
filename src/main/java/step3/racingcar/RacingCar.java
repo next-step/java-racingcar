@@ -18,6 +18,8 @@ public class RacingCar {
         if (isStopCondition(conditionValue)) {
             return;
         }
+
+        distanceTraveled++;
     }
 
     private boolean isStopCondition(final int conditionValue) {
