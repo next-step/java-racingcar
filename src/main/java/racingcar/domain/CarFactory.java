@@ -17,9 +17,9 @@ public class CarFactory {
         return cars;
     }
 
-    public void participants(String CarNames) {
-        List<String> carNames = ValidityCheck.carNameCheck(CarNames);
-        for (String name : carNames) {
+    public void participants(String carNames) {
+        List<String> carNameList = ValidityCheck.carNameCheck(carNames);
+        for (String name : carNameList) {
             cars.add(new Car(name));
         }
     }
