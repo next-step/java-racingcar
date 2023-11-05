@@ -8,7 +8,8 @@ public class CarRacingView {
     
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
+        CarRacing carRacing = new CarRacing();
+
         while (true) {
             System.out.println("자동차 대수는 몇 대 인가요?");
             int numOfCar = Integer.parseInt(br.readLine());
