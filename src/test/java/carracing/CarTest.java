@@ -29,4 +29,17 @@ public class CarTest {
         Integer currentPosition = car.getPosition();
         assertTrue(currentPosition.equals(1) || (currentPosition >= 5 && currentPosition <= 10));
     }
+
+    @Test
+    @DisplayName("객체깊은복사/자동차를 Clone하면/주소값이 다르다.")
+    void cloneCar() {
+        // given
+        Car car = new Car(new RandomMoveStopStrategy());
+
+        // when
+        Car cloneCar = car.clone();
+
+        // then
+        assertThat(car).isNotEqualTo(cloneCar);
+    }
 }
