@@ -2,13 +2,17 @@ package carRacing;
 
 public class Car {
 
-    private int distance = 0;
+    private int distance;
+
+    public Car() {
+        this.distance = 0;
+    }
 
     public void move(){
         distance++;
     }
 
-    public int getDistance(){
+    public int getDistanceForPrint(){
         return distance;
     }
 

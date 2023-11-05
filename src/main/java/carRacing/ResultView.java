@@ -12,7 +12,7 @@ public class ResultView {
     public static void printRoundResult(List<Car> carList) {
 
         for (Car car : carList) {
-            String distance = "-".repeat(car.getDistance());
+            String distance = "-".repeat(car.getDistanceForPrint());
             System.out.println(distance);
         }
         System.out.println();
