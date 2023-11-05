@@ -6,8 +6,8 @@ public class Car {
 
     private static final int MOVE_CAR_CONDITION = 4;
 
-    private int position;
     private Name carName;
+    private int position;
     private MoveStrategy moveStrategy;
 
     public Car(Name carName, MoveStrategy moveStrategy) {

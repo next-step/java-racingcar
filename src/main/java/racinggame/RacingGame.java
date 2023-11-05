@@ -19,6 +19,7 @@ public class RacingGame {
         Cars cars = new Cars(new FactoryCar().generateCar(new Split().toCarNames(carName), new RandomMove()));
         Referee referee = new Referee();
         referee.startRacing(racingCount, cars);
+        referee.judgeWinners(cars);
     }
 
 }
