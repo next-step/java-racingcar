@@ -15,4 +15,9 @@ class StringAddCalculatorTest {
     void singleWordPassInt() {
         assertThat(StringAddCalculator.sum("1")).isEqualTo(1);
     }
+
+    @Test
+    void splitByCommaBeforeSum() {
+        assertThat(StringAddCalculator.sum("1,2")).isEqualTo(3);
+    }
 }
