@@ -35,7 +35,7 @@ public class Cars {
 
     private List<Car> copyOf(List<Car> carList) {
         return carList.stream()
-                      .map(Car::newInstance)
+                      .map(Car::from)
                       .collect(Collectors.toList());
     }
 

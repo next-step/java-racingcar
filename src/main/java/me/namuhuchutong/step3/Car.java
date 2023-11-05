@@ -7,7 +7,7 @@ public class Car {
     private int position;
 
 
-    public static Car newInstance(Car car) {
+    public static Car from(Car car) {
         return new Car(car.getPosition());
     }
 
