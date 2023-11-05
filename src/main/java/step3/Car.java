@@ -16,12 +16,16 @@ public class Car {
     }
 
     public void moveForward(int power) {
-        if(power < RANGE_OF_ACCELERATOR[0] || power > RANGE_OF_ACCELERATOR[1]) {
+        if(isOutOfRange(power)) {
             throw new IllegalArgumentException("엑셀의 작동 범위를 벗어납니다.");
         }
 
         if (power >= MOVABLE_POWER) {
             this.position++;
         }
+    }
+
+    private boolean isOutOfRange(int power) {
+        return power < RANGE_OF_ACCELERATOR[0] || power > RANGE_OF_ACCELERATOR[1];
     }
 }
