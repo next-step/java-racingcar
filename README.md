@@ -1,9 +1,23 @@
 # 자동차 경주 게임
-## 진행 방법
-* 자동차 경주 게임 요구사항을 파악한다.
-* 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-* 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-* 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
+## 기능 요구사항
+* 자동차 경주를 진행 할 자동차 대수를 입력 받는다.
+* 자동자 경주를 진행 할 횟수(턴)를 입력 받는다.
+* 각 턴마다 자동차는 멈춤 혹은 전진을 진행한다.
+* 각 턴마다 각 자동차는 0~9의 랜덤 값을 얻으며 4 이상인 랜덤 값을 가진 자동차만 전진한다.
+* 각 턴마다 자동차의 상태를 화면에 출력한다.
 
-## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+## 프로그래밍 요구사항
+* 코드 포맷은 인텔리제이의 코드 포맷을 사용한다.(Ctrl+Alt+L)
+* else 문과 switch/case 문을 사용하지 않는다.
+* 핵심 비즈니스 로직과 UI 로직을 클래스 별로 분리한다.
+* UI 로직을 제외한 모든 로직에 단위 테스트 코드를 사용하며 TDD를 이용한다.
+
+## 커밋 요구사항
+* 아래 커밋 포맷을 이용한다.
+** feat (feature)
+** fix (bug fix)
+** docs (documentation)
+** style (formatting, missing semi colons, …)
+** refactor
+** test (when adding missing tests)
+** chore (maintain)
