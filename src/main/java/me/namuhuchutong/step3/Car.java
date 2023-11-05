@@ -2,10 +2,7 @@ package me.namuhuchutong.step3;
 
 public class Car {
 
-    public static final String MARKER = "-";
-
     private int position;
-
 
     public static Car from(Car car) {
         return new Car(car.getPosition());
@@ -34,9 +31,5 @@ public class Car {
 
     public int getPosition() {
         return position;
-    }
-
-    public String getPositionToString() {
-        return MARKER.repeat(this.position);
     }
 }

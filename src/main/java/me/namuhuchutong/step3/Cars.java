@@ -7,8 +7,6 @@ import java.util.stream.Stream;
 
 public class Cars {
 
-    public static final String NEWLINE = "\n";
-
     private final List<Car> values;
 
     public static Cars createCars(int numberOfCars) {
@@ -39,17 +37,7 @@ public class Cars {
                       .collect(toUnmodifiableList());
     }
 
-    @Override
-    public String toString() {
-        StringBuilder carPositions = new StringBuilder();
-        buildCarPositions(carPositions);
-        return carPositions.toString();
-    }
-
-    private void buildCarPositions(StringBuilder carPositions) {
-        this.values.forEach(car -> {
-            String carPosition = car.getPositionToString();
-            carPositions.append(carPosition).append(NEWLINE);
-        });
+    public List<Car> getCars() {
+        return this.values;
     }
 }
