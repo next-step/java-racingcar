@@ -11,7 +11,7 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] stringTypeNumbers = getStrings(input);
+        String[] stringTypeNumbers = SplitAndGetStrings(input);
         int sum = parseIntAndGetSum(stringTypeNumbers);
         return sum;
     }
@@ -37,7 +37,7 @@ public class StringAddCalculator {
         }
     }
 
-    private static String[] getStrings(String input) {
+    private static String[] SplitAndGetStrings(String input) {
 
         String[] stringTypeNumbers;
 
