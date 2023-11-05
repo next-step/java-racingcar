@@ -3,16 +3,18 @@ package me.namuhuchutong.step3;
 public class Car {
 
     private int position;
-    private final RacingRule racingRule;
 
     public static Car from(Car car) {
-        return new Car(car.getRacingRule(), car.getPosition());
+        return new Car(car.getPosition());
     }
 
-    public Car(RacingRule racingRule, int position) {
+    public Car() {
+        this(0);
+    }
+
+    public Car(int position) {
         validateCarPosition(position);
         this.position = position;
-        this.racingRule = racingRule;
     }
 
     private void validateCarPosition(int position) {
@@ -21,7 +23,7 @@ public class Car {
         }
     }
 
-    public void move() {
+    public void move(RacingRule racingRule) {
         if (racingRule.isSatisfiedRule()) {
             this.position += 1;
         }
@@ -31,7 +33,4 @@ public class Car {
         return position;
     }
 
-    public RacingRule getRacingRule() {
-        return racingRule;
-    }
 }

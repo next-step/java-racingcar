@@ -13,6 +13,6 @@ class CarsTest {
     @ValueSource(ints = {0, -1})
     void test(int numberOfCars) {
         //when, then
-        assertThrows(IllegalArgumentException.class, () -> Cars.createCars(new DefaultRacingRule(), numberOfCars));
+        assertThrows(IllegalArgumentException.class, () -> Cars.createCars(numberOfCars));
     }
 }

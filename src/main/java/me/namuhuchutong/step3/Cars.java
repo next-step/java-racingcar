@@ -9,8 +9,8 @@ public class Cars {
 
     private final List<Car> values;
 
-    public static Cars createCars(RacingRule racingRule, int numberOfCars) {
-        return Stream.generate(() -> new Car(racingRule, 0))
+    public static Cars createCars(int numberOfCars) {
+        return Stream.generate(Car::new)
                      .limit(numberOfCars)
                      .collect(collectingAndThen(toUnmodifiableList(), Cars::new));
     }
@@ -26,8 +26,8 @@ public class Cars {
         }
     }
 
-    public Cars raceAllCars() {
-        this.values.forEach(Car::move);
+    public Cars raceAllCars(RacingRule racingRule) {
+        this.values.forEach(car -> car.move(racingRule));
         return new Cars(copyOf(values));
     }
 
@@ -38,6 +38,6 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return this.values;
+        return List.copyOf(values);
     }
 }

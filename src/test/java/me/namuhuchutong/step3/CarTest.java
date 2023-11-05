@@ -11,7 +11,21 @@ class CarTest {
     @Test
     void can_not_initialize_car_with_negative_number() {
         // when, then
-        assertThatThrownBy(() -> new Car(new DefaultRacingRule(), - 1))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car(- 1)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("자동차는 조건을 만족할 때, 1칸 움직인다.")
+    @Test
+    void car_moves_only_1_when_meet_the_condition() {
+        //given
+        Car car = new Car();
+        RacingRule racingRule = new DefaultRacingRule();
+
+        //when
+        car.move(racingRule);
+        int result = car.getPosition();
+
+        //then
+        assertThat(result).isEqualTo(1);
     }
 }
