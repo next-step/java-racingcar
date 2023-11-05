@@ -12,7 +12,7 @@ public class CarListTest {
     @Test
     void carNameTooLong() {
         //given
-        CarList carList = new CarList();
+        CarList carList = new CarList(null);
 
         //when
         //then
