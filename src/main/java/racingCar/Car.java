@@ -14,7 +14,7 @@ public class Car {
     }
 
     public void moveAttempt(int value) {
-        if(movable(value)) {
+        if (movable(value)) {
             moveForward();
         }
     }
@@ -22,6 +22,7 @@ public class Car {
     public int getCurrentPosition() {
         return currentPosition;
     }
+
     private boolean movable(int value) {
         if (value < MOVE_CONDITION) {
             return false;

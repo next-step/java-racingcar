@@ -11,7 +11,7 @@ public class Racing {
     public static final int MINIMUM_ROUND_COUNT = 1;
 
 
-    public Racing (int inputCarCount, int inputRoundCount) {
+    public Racing(int inputCarCount, int inputRoundCount) {
         carCount = inputCarCount;
         roundCount = inputRoundCount;
 
@@ -44,7 +44,7 @@ public class Racing {
         Racing racing = new Racing(InputView.carCount(), InputView.roundCount());
 
         //개최조건 미 충족시 종료
-        if(!holdPossible()) {
+        if (!holdPossible()) {
             ResultView.noRace();
             return;
         }
