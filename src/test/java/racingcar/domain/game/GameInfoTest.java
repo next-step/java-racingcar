@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -16,15 +16,15 @@ class GameInfoTest {
     class SuccessCondition{
 
         @Test
-        @DisplayName("사용자가 입력한 자동차의 갯수와, 게임횟수 만큼 게임의 기본정보가 생성된다.")
+        @DisplayName("사용자가 입력한 게임횟수만큼 게임이 진행되면 게임은 종료된다.")
         void createGameInfo() {
             int carCount = 1;
-            int gameCount = 1;
+            int totalGameCount = 1;
 
-            GameInfo gameInfo = new GameInfo(carCount, gameCount);
+            GameInfo gameInfo = new GameInfo(carCount, totalGameCount);
+            gameInfo.increaseGameRound();
 
-            assertThat(gameInfo.getCarCount()).isEqualTo(carCount);
-            assertThat(gameInfo.getGameCount()).isEqualTo(gameCount);
+            assertThat(gameInfo.isEndGame()).isTrue();
         }
     }
 
