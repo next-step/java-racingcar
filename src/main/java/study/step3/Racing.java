@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static study.step3.InputView.loadRule;
+import static study.step3.ResultView.showResult;
+import static study.step3.ResultView.showResultTitle;
 
 public class Racing {
 
@@ -33,9 +35,11 @@ public class Racing {
     }
 
     private static void run(Racing racing) {
+        showResultTitle();
         for (int i = 0; i < racing.getMovingTimes(); i++) {
             List<Car> cars = racing.getCars();
             move(cars);
+            showResult(cars);
         }
     }
 
