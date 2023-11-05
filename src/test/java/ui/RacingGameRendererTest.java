@@ -20,7 +20,7 @@ public class RacingGameRendererTest {
 
         RacingGame racingGame = new RacingGame(List.of(mySpringCar, mySummerCar, myAutumnCar, myWinterCar));
 
-        assertThat(GameRenderer.getGameRendering(racingGame))
+        assertThat(RacingGameRenderer.getGameRendering(racingGame))
                 .isEqualTo("-\n--\n---\n----");
     }
 
@@ -29,7 +29,7 @@ public class RacingGameRendererTest {
     public void positionOfNoCar() {
         RacingGame racingGame = new RacingGame();
 
-        assertThat(GameRenderer.getGameRendering(racingGame))
+        assertThat(RacingGameRenderer.getGameRendering(racingGame))
                 .isEqualTo("");
     }
 }

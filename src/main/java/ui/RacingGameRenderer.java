@@ -5,7 +5,7 @@ import game.RacingGame;
 
 import java.util.List;
 
-public class GameRenderer {
+public class RacingGameRenderer {
     public static String getCarsTrajectories(List<Car> carList) {
         if (carList.size() == 0) {
             return "";
