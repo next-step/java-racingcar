@@ -10,4 +10,9 @@ class StringAddCalculatorTest {
         assertThat(StringAddCalculator.sum("")).isZero();
         assertThat(StringAddCalculator.sum(null)).isZero();
     }
+
+    @Test
+    void singleWordPassInt() {
+        assertThat(StringAddCalculator.sum("1")).isEqualTo(1);
+    }
 }

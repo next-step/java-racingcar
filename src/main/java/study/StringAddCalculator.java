@@ -7,10 +7,9 @@ class StringAddCalculator {
     }
     public static int sum(String inputNumbers){
         if(isInputValidate(inputNumbers)){
-            // do sum
+            return Integer.parseInt(inputNumbers);
         }
         return 0;
-
     }
 
     private static boolean isInputValidate(String inputNumbers) {
