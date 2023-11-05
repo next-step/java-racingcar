@@ -2,8 +2,7 @@ package ch3;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CarRacingTest {
@@ -27,5 +26,14 @@ public class CarRacingTest {
         assertEquals(carRacing.getCars().get(0).getClass(), Car.class);
     }
 
+    @Test
+    void 자동차를_받은_갯수만큼_자동차시행숫자가_생긴다() {
+        carRacing.makingCar(4);
+        assertAll(() -> {
+            assertEquals(carRacing.getExecuteNumbers().size(), 4);
+            assertTrue(carRacing.getExecuteNumbers().get(0) >= 0);
+        });
+
+    }
 
 }
