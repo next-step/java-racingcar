@@ -4,7 +4,7 @@ import carracing.move_strategy.MoveStrategy;
 
 public class Car {
 
-    private static final Integer START_POSITION = 1;
+    private static final int START_POSITION = 1;
 
     private Integer position;
     private MoveStrategy moveStrategy;

@@ -3,17 +3,18 @@ package carracing;
 import carracing.move_strategy.MoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
 
     private Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars.addAll(cars);
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public static Cars makeCars(Integer carCount, MoveStrategy moveStrategy) {
