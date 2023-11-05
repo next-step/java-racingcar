@@ -14,4 +14,10 @@ public class ResultView {
         }
         System.out.println(displayPosition);
     }
+    public static void raceStart() {
+        System.out.println("....경주 시작!....");
+    }
+    public static void roundFinish() {
+        System.out.println("....라운드 종료!....");
+    }
 }
