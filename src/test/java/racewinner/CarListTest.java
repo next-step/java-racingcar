@@ -19,4 +19,5 @@ public class CarListTest {
         assertThatThrownBy(() -> carList.add("simpsonsimpson"))
                 .isInstanceOf(CarNameTooLongException.class);
     }
+
 }
