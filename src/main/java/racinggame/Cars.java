@@ -20,12 +20,10 @@ public class Cars {
     }
 
     private void racingCar() {
-        for (Car car : cars) {
-            car.moving();
-        }
+        cars.forEach(Car::moving);
     }
 
-    public List<Car> getCar() {
+    public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 

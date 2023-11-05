@@ -7,8 +7,7 @@ public class Car {
     private int position;
     private GenerateNumber generateNumber;
 
-    public Car(int position, GenerateNumber generateNumber) {
-        this.position = position;
+    public Car(GenerateNumber generateNumber) {
         this.generateNumber = generateNumber;
     }
 

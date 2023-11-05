@@ -15,9 +15,9 @@ class CarsTest {
         // given
         Cars cars = new Cars(
                 List.of(
-                        new Car(0, new TestNumber(0)),
-                        new Car(0, new TestNumber(5)),
-                        new Car(0, new TestNumber(9))
+                        new Car(new TestNumber(0)),
+                        new Car(new TestNumber(5)),
+                        new Car(new TestNumber(9))
                 )
         );
 
@@ -25,7 +25,7 @@ class CarsTest {
         cars.startRacing(5);
 
         // then
-        assertThat(cars.getCar()).hasSize(3)
+        assertThat(cars.getCars()).hasSize(3)
                 .extracting("position")
                 .containsOnly(0, 5, 5);
 
