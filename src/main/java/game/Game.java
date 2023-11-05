@@ -40,4 +40,14 @@ public class Game {
 
         return trajectories.toString();
     }
+
+    /**
+     * 경기 한 사이클을 진행합니다.
+     * 각 자동차들은 자신의 확률에 따라 앞으로 한 칸 갈 수도 있고 안 갈 수도 있습니다.
+     */
+    public void doACycle() {
+        for (Car car : this.carList) {
+            car.go();
+        }
+    }
 }
