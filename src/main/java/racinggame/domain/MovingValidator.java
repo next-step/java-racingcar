@@ -12,7 +12,7 @@ public class MovingValidator {
     }
 
     public boolean movable() {
-        return movingStrategy.nextInt() > MIN_MOVABLE_NUMBER;
+        return movingStrategy.moveValue() > MIN_MOVABLE_NUMBER;
     }
 
 }

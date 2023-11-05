@@ -12,7 +12,7 @@ public class RandomNumberMovingStrategy implements MovingStrategy {
     }
 
     @Override
-    public int nextInt() {
+    public int moveValue() {
         return random.nextInt(DEFAULT_BOUND);
     }
 

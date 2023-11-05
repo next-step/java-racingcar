@@ -2,17 +2,17 @@ package racinggame.domain;
 
 import java.util.Objects;
 
-public class MovingDistance {
+public class Distance {
 
     public static final int DEFAULT_DISTANCE = 0;
     public static final int DEFAULT_ADD_DISTANCE = 1;
     private int distance;
 
-    public MovingDistance(int distance) {
+    public Distance(int distance) {
         this.distance = distance;
     }
 
-    public MovingDistance() {
+    public Distance() {
         this.distance = DEFAULT_DISTANCE;
     }
 
@@ -24,6 +24,10 @@ public class MovingDistance {
         return this.distance;
     }
 
+    public boolean isLongger(Distance comparisonDistance) {
+        return this.distance > comparisonDistance.distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -32,7 +36,7 @@ public class MovingDistance {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MovingDistance that = (MovingDistance) o;
+        Distance that = (Distance) o;
         return distance == that.distance;
     }
 
