@@ -1,7 +1,7 @@
 package carracing;
 
 public class ResultView {
-	public static void resultPhrase() {
+	public static void printResultPhrase() {
 		System.out.println("실행 결과");
 	}
 

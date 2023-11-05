@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.car.RandomRange;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -13,5 +14,23 @@ public class RandomRangeTest {
 		int actual = r.intValue();
 
 		assertThat(actual).isBetween(0, 9);
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {4, 9})
+	void isPossible_LessThan5_MoreThan9_False(int number) {
+		RandomRange r = new RandomRange(number, number);
+		boolean movingIsPossible = r.isPossible();
+
+		assertThat(movingIsPossible).isFalse();
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {5, 8})
+	void isPossible_MoreThan4_LessThan9_True(int number) {
+		RandomRange r = new RandomRange(number, number);
+		boolean movingIsPossible = r.isPossible();
+
+		assertThat(movingIsPossible).isTrue();
 	}
 }

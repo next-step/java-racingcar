@@ -1,5 +1,7 @@
 package carracing;
 
+import carracing.car.Car;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,7 +19,7 @@ public class InputView {
 		return cars;
 	}
 
-	public static int tryingNumber(Scanner scanner) {
+	public static int inputTryingNumber(Scanner scanner) {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		int tryingNumber = scanner.nextInt();
 
