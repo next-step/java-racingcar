@@ -19,8 +19,9 @@ public class CarTest {
         given(mockRandom.nextInt(10)).willReturn(randomValue);
 
         Car car = new Car(mockRandom);
+        int previousPosition = car.getPosition();
         car.move();
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(previousPosition + 1);
     }
 
     @ParameterizedTest(name = "자동차 정지 조건 테스트: {arguments}")
@@ -30,7 +31,8 @@ public class CarTest {
         given(mockRandom.nextInt(10)).willReturn(randomValue);
 
         Car car = new Car(mockRandom);
+        int previousPosition = car.getPosition();
         car.move();
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(previousPosition);
     }
 }
