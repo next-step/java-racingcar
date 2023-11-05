@@ -1,16 +1,18 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static calculator.Calculator.splitAndSum;
 import static org.assertj.core.api.Assertions.*;
 
 class CalculatorTest {
-    @Test
-    void null_or_blank_체크() throws Exception {
+    @ParameterizedTest
+    @NullAndEmptySource
+    void null_or_blank_체크(String input) throws Exception {
         // 가독성을 챙기기 위해 result 변수를 선언하는 것 vs 들여쓰기로 라인 수를 줄이는것
-        assertThat(splitAndSum(null)).isEqualTo(0);
-        assertThat(splitAndSum("")).isEqualTo(0);
+        assertThat(splitAndSum(input)).isEqualTo(0);
     }
     @Test
     void 숫자_하나() throws Exception {

@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
+    public static final String DELIMITER_TEXT_SPLIT_REGEX = "//(.)\n(.*)";
+    public static final int DELIMITER_GROUP = 1;
+    public static final String OR = "|";
     public static String REGEX = ",|:";
 
     public static int splitAndSum(String text) {
@@ -16,17 +19,17 @@ public class Calculator {
     }
 
     private static String getTextWithOutCustomGroup(String text) {
-        Pattern r = Pattern.compile("//(.)\n(.*)");
-        Matcher m = r.matcher(text);
-        if (m.find()) {
-            addRegex(m);
-            return m.group(2);
+        Pattern pattern = Pattern.compile(DELIMITER_TEXT_SPLIT_REGEX);
+        Matcher matcher = pattern.matcher(text);
+        if (matcher.find()) {
+            addRegex(matcher);
+            return matcher.group(2);
         }
         return text;
     }
 
     private static void addRegex(Matcher m) {
-        REGEX += "|" + m.group(1);
+        REGEX += OR + m.group(DELIMITER_GROUP);
     }
 
     private static String[] split(String text) {
@@ -48,13 +51,13 @@ public class Calculator {
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            checkDegitOrMinus(values[i]);
+            checkDigitOrMinus(values[i]);
             numbers[i] = Integer.parseInt(values[i]);
         }
         return numbers;
     }
 
-    private static void checkDegitOrMinus(String value) {
+    private static void checkDigitOrMinus(String value) {
         if (!value.matches("-?\\d+")) {
             throw new RuntimeException("숫자 타입이 아닙니다.");
         }
