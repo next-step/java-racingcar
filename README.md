@@ -3,7 +3,7 @@
 ## 기능 요구사항 분리
 
 ## Todo
-- [ ] 각 자동차에 이름은 5글자를 초과할 수 없다. ("simpson" => CarNameTooLongException)
+- [x] 각 자동차에 이름은 5글자를 초과할 수 없다. ("simpson" => CarNameTooLongException)
 - [ ] 쉼표(,)를 기준으로 자동차를 구분한다. (pobi,crong,honux)
 - [ ] 쉼표(,)이 외의 다른 구분자를 사용할 경우 예외 발생 (pobi:crong => InvalidDelimiterException)
 - [ ] 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다 ("pobi : -")
