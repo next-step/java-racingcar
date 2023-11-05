@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
     @DisplayName("경주 개최조건을 충족하지 않으면 경주는 개최하지않는다.")
@@ -31,7 +32,17 @@ class RacingTest {
         Racing racing = new Racing(inputCarCount, inputRoundCount);
         int racingCarCount = racing.getCarCount();
         int racingRoundCount = racing.getRoundCount();
+
+        //경주정보 세팅
         assertThat(racingCarCount).isEqualTo(inputCarCount);
         assertThat(racingRoundCount).isEqualTo(inputRoundCount);
+
+        //자동사 대수가 제대로 생성됐는지 확인
+        assertThat(racing.getCars().length).isEqualTo(racingCarCount);
+
+        //자동차들이 제대로 세팅됐는지 확인
+        for (int i = 0; i < racingCarCount; i++) {
+            assertThat(racing.getCars()[i]).isNotNull();
+        }
     }
 }
