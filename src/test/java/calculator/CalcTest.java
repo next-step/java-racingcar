@@ -34,4 +34,9 @@ public class CalcTest {
             .isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    void 커스텀_구분자_처리() {
+        assertThat(calc("//;\n1;2;3")).isEqualTo(6);
+    }
+
 }
