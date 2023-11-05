@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-	private static final int START_LOCATION = 1;
-	private static final int STANDARD_SHUFFLE_NUM = 4;
+	private static final int START_LOCATION = 0;
 	private final List<Car> cars = new ArrayList<>();
 	private final List<Round> rounds = new ArrayList<>();
 
