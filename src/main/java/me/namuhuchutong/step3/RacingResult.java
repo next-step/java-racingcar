@@ -4,17 +4,17 @@ import java.util.List;
 
 public class RacingResult {
 
-    private final List<Cars> carsList;
+    private final List<Cars> values;
 
-    public RacingResult(List<Cars> carsList) {
-        this.carsList = carsList;
+    public RacingResult(List<Cars> values) {
+        this.values = values;
     }
 
-    public List<Cars> getCarsList() {
-        return List.copyOf(carsList);
+    public List<Cars> getValues() {
+        return List.copyOf(values);
     }
 
     public int getTotalRace() {
-        return this.carsList.size();
+        return this.values.size();
     }
 }
