@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import racinggame.domain.exception.InputIsBlankException;
-import racinggame.domain.exception.InputOverFiveLengthException;
+import racinggame.domain.exception.InputOverLengthException;
 
 class CarNameTest {
 
@@ -18,7 +18,7 @@ class CarNameTest {
 
     @Test
     void 자동차_이름은_5자를_초과_할_수_없다() {
-        assertThrows(InputOverFiveLengthException.class, () -> new CarName("sixsix"));
+        assertThrows(InputOverLengthException.class, () -> new CarName("sixsix"));
     }
 
 }
