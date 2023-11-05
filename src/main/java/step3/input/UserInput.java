@@ -1,8 +1,8 @@
 package step3.input;
 
 public class UserInput {
-    public final int carNumber;
-    public final int tryNumber;
+    private final int carNumber;
+    private final int tryNumber;
 
     public UserInput(final int carNumber, final int tryNumber) {
         this.carNumber = carNumber;
