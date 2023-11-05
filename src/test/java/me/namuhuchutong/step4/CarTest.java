@@ -35,4 +35,21 @@ class CarTest {
         //then
         assertEquals(car.getPosition(), 0);
     }
+
+    @DisplayName("자동차는 움직일 때 1칸 움직인다.")
+    @ParameterizedTest(name = "given times : {0}")
+    @ValueSource(ints = {1,2,3,4,5,6,7,9})
+    void car_moves_only_one(int givenIterateNumber) {
+        //given
+        Car car = new Car();
+        int alwaysMoveCondition = 4;
+
+        //when
+        for (int i = 0; i < givenIterateNumber; i++) {
+            car.move(alwaysMoveCondition);
+        }
+
+        //then
+        assertEquals(car.getPosition(), givenIterateNumber);
+    }
 }
