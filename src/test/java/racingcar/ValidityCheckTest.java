@@ -15,8 +15,9 @@ public class ValidityCheckTest {
         //given
         String carName = "pobi,crong,honux";
         //when
+        int carList = ValidityCheck.carNameCheck(carName).size();
         //then
-        assertThat(ValidityCheck.carNameLengthCheck(carName)).isEqualTo(carName);
+        assertThat(carList).isEqualTo(3);
     }
 
     @Test
@@ -59,7 +60,7 @@ public class ValidityCheckTest {
             String carName = "pobi,cronghonux";
             //when
             //then
-            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidityCheck.carNameCheck(carName)).isInstanceOf(IllegalArgumentException.class);
 
         }
 
@@ -69,7 +70,7 @@ public class ValidityCheckTest {
             String carName = "pobi,,crong,honux";
             //when
             //then
-            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidityCheck.carNameCheck(carName)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
@@ -78,16 +79,7 @@ public class ValidityCheckTest {
             String carName = ",pobi,crong,honux";
             //when
             //then
-            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
-        }
-
-        @Test
-        public void 자동차이름_입력_쉼표_끝() {
-            //given
-            String carName = "pobi,crong,honux,";
-            //when
-            //then
-            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidityCheck.carNameCheck(carName)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
