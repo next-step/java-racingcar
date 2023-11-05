@@ -1,8 +1,8 @@
-package racinggame;
+package racinggame.factory;
 
 import racinggame.domain.Car;
-import racinggame.domain.GenerateNumber;
 import racinggame.domain.Name;
+import racinggame.strategy.GenerateNumber;
 
 import java.util.List;
 import java.util.stream.Collectors;

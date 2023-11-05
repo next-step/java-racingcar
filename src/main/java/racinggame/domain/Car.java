@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.strategy.GenerateNumber;
+
 public class Car {
 
     private static final int MOVE_CAR_CONDITION = 4;

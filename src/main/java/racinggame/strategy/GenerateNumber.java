@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.strategy;
 
 public interface GenerateNumber {
     int number();

@@ -2,7 +2,9 @@ package racinggame;
 
 import racinggame.domain.Cars;
 import racinggame.domain.RacingResult;
-import racinggame.domain.RandomNumber;
+import racinggame.domain.Split;
+import racinggame.factory.FactoryCar;
+import racinggame.strategy.RandomNumber;
 import racinggame.ui.InputView;
 import racinggame.ui.OutputView;
 

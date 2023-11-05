@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.strategy;
 
 public class TestNumber implements GenerateNumber {
 
