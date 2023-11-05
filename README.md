@@ -7,3 +7,14 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+# 2단계 - 문자열 덧셈 계산기 기능 요구사항 분리
+
+## [O] "" => 0. null => 0    OK
+## [O] "1" => 1
+## [O] "1,2" => 3
+## [O] "1,2,3" => 6
+## [O] "1,2:3" => 6
+## [O] "//;\n1;2;3" => 6
+## [O] "-1, 1, 2" => RuntimeException 예외 throw
