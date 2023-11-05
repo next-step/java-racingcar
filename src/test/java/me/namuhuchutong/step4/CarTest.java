@@ -21,4 +21,18 @@ class CarTest {
         //then
         assertEquals(car.getPosition(), 1);
     }
+
+    @DisplayName("자동차가 랜덤한 값 0 ~ 9에서 4 미만일 경우 움직이지 않는다.")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1,2,3})
+    void car_does_not_move_when_value_is_less_than_4(int givenRandomValue) {
+        //given
+        Car car = new Car();
+
+        //when
+        car.move(givenRandomValue);
+
+        //then
+        assertEquals(car.getPosition(), 0);
+    }
 }
