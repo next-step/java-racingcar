@@ -3,6 +3,8 @@ package carracing.move_strategy;
 import static carracing.move_strategy.RandomPoint.getPoint;
 
 public class RandomMoveStopStrategy implements MoveStrategy {
+    private static final int MINIMUM_MOVABLE_DISTANCE = 4;
+
     @Override
     public int getMovePoint() {
         int point = getPoint();
@@ -13,6 +15,6 @@ public class RandomMoveStopStrategy implements MoveStrategy {
     }
 
     private boolean movable(int i) {
-        return i >= 4;
+        return i >= MINIMUM_MOVABLE_DISTANCE;
     }
 }

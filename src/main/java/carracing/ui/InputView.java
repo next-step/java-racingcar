@@ -9,10 +9,10 @@ import static java.lang.Integer.parseInt;
 public class InputView {
     public static final Scanner SCANNER = new Scanner(System.in);
 
-    private Integer carCount;
-    private Integer movingCount;
+    private final int carCount;
+    private final int movingCount;
 
-    private InputView(Integer carCount, Integer movingCount) {
+    private InputView(int carCount, int movingCount) {
         this.carCount = carCount;
         this.movingCount = movingCount;
     }
@@ -21,18 +21,18 @@ public class InputView {
         return new InputView(inputCarCount(), inputMovingCount());
     }
 
-    private static Integer inputCarCount() {
+    private static int inputCarCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         return parseInt(SCANNER.nextLine());
     }
 
-    private static Integer inputMovingCount() {
+    private static int inputMovingCount() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         return parseInt(SCANNER.nextLine());
     }
 
     public Track toTrack() {
-        return new Track(carCount);
+        return new Track(carCount, movingCount);
     }
 
     public Integer getMovingCount() {

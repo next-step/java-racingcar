@@ -1,21 +1,24 @@
 package carracing.ui;
 
-import carracing.Track;
+import carracing.TrackHistory;
 
 public class OutputView {
-    private final Track track;
+    private final TrackHistory trackHistory;
 
-    private OutputView(Track track) {
-        this.track = track;
+    private OutputView(TrackHistory trackHistory) {
+        this.trackHistory = trackHistory;
     }
 
-    public static OutputView from(Track track) {
-        return new OutputView(track);
+    public static OutputView from(TrackHistory trackHistory) {
+        return new OutputView(trackHistory);
     }
 
     public void outputs() {
-        track.getCars().getCars().forEach(car -> output(car.getPosition()));
-        System.out.println("\n");
+        trackHistory.getCarsHistory()
+                .forEach(cars -> {
+                    cars.getCars().forEach(car -> output(car.getPosition()));
+                    System.out.println("\n");
+                });
     }
 
     private void output(int position) {

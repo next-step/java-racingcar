@@ -5,6 +5,7 @@ import carracing.move_strategy.MoveStrategy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
@@ -27,5 +28,9 @@ public class Cars {
 
     public void move() {
         cars.forEach(Car::move);
+    }
+
+    public Cars copyOf() {
+        return new Cars(cars.stream().map(Car::clone).collect(Collectors.toList()));
     }
 }
