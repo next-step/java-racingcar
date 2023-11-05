@@ -18,7 +18,7 @@ class RacingCarTest {
     }
 
     @Test
-    @DisplayName("RacingCar.currentDistance 메서드를 사용하면, 자동차의 전진한 거리를 확인한다.")
+    @DisplayName("currentDistance 메서드를 사용하면, 자동차의 전진한 거리를 확인한다.")
     void getCurrentDistanceOfRacingCar() {
         //given
         RacingCar racingCar = RacingCar.build();
