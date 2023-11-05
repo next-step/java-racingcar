@@ -12,7 +12,7 @@ class RacingCarTest {
         //given
         //when
         RacingCar racingCar = RacingCar.build();
-        
+
         //then
         assertThat(racingCar).isNotNull();
     }
@@ -28,5 +28,23 @@ class RacingCarTest {
 
         //then
         assertThat(currentDistance).isEqualTo(0);
+    }
+
+
+    @Test
+    @DisplayName("move 메서드의 입력값으로 0이상 3이하의 값이 들어오면, 자동차는 전진하지 않는다.")
+    void moveRacingCar_whenInputInRangeZeroToThree() {
+        //given
+        RacingCar racingCar = RacingCar.build();
+        int initDistance = racingCar.currentDistance();
+
+        //when
+        racingCar.move(0);
+        racingCar.move(1);
+        racingCar.move(2);
+        racingCar.move(3);
+
+        //then
+        assertThat(racingCar.currentDistance()).isEqualTo(initDistance);
     }
 }
