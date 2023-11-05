@@ -34,4 +34,8 @@ public class GameData {
 
         return data;
     }
+
+    public int carData() {
+        return cars;
+    }
 }
