@@ -1,113 +1,65 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
-    @Test
-    @DisplayName("빈 문자열일 경우 0 반환")
-    void emptyStringTest() {
-        int result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+    @ParameterizedTest
+    @MethodSource({"nullOrEmptyString", "invalidInputs"})
+    void nullAndEmptyStringAndInvalidInputTest(String input, int expected) {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("null인 경우 0 반환")
-    void nullTest() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
+    private static Stream<Arguments> nullOrEmptyString() {
+        return Stream.of(
+                Arguments.of(null, 0),
+                Arguments.of("", 0)
+        );
     }
 
-    @Test
-    @DisplayName("구분자가 없는 경우 숫자를 그대로 반환")
-    void noSeparatorTest() {
-        int result = StringAddCalculator.splitAndSum("1");
-        assertThat(result).isEqualTo(1);
+    private static Stream<Arguments> invalidInputs() {
+        return Stream.of(
+                Arguments.of("1", 1),
+                Arguments.of(":1:2", 3),
+                Arguments.of("1,2,3", 6),
+                Arguments.of("1,2:3", 6),
+                Arguments.of("//;\n1;2;3", 6),
+                Arguments.of("//;\n1;2,3:4", 10)
+        );
     }
 
-    @Test
-    @DisplayName("구분자로 시작되는 경우")
-    void startWithSeparatorTest() {
-        int result = StringAddCalculator.splitAndSum(":1:2");
-        assertThat(result).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("한 개의 기본구분자로 분리한 각 숫자의 합을 반환")
-    void defaultSplitTest_oneSeparator() {
-        int result = StringAddCalculator.splitAndSum("1,2,3");
-        assertThat(result).isEqualTo(6);
-    }
-
-    @Test
-    @DisplayName("여러 개의 기본구분자로 분리한 각 숫자의 합을 반환")
-    void defaultSplitTest_multipleSeparator() {
-        int result = StringAddCalculator.splitAndSum("1,2:3");
-        assertThat(result).isEqualTo(6);
-    }
-
-    @Test
-    @DisplayName("커스텀 구분자로 분리한 각 숫자의 합을 반환")
-    void customSplitTest() {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
-        assertThat(result).isEqualTo(6);
-    }
-
-    @Test
-    @DisplayName("커스텀, 기본 구분자로 분리한 각 숫자의 합을 반환")
-    void defaultAndcustomSplitTest() {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2,3:4");
-        assertThat(result).isEqualTo(10);
-    }
-
-    @Test
-    @DisplayName("숫자 이외의 값이 입력된 경우")
-    void badInputTest1() {
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "1:a", "//;\n1;2,3;a", "-1", "1:-1", "//;\n1;2,3;-1"})
+    @DisplayName("숫자 이외의 값 혹은 음수 값이 입력된 경우")
+    void badInputTest(String input) {
         assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum("a");
+            StringAddCalculator.splitAndSum(input);
         }).isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    @DisplayName("숫자 이외의 값이 입력된 경우")
-    void badInputTest2() {
+    @ParameterizedTest
+    @MethodSource({"twoConsecutiveInputs"})
+    void 커스텀구분자_누적되지_않는지_확인(String firstInput, String secondInput) {
+        StringAddCalculator.splitAndSum(firstInput);
+
         assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum("1:a");
+            StringAddCalculator.splitAndSum(secondInput);
         }).isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    @DisplayName("숫자 이외의 값이 입력된 경우")
-    void badInputTest3() {
-        assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum("//;\n1;2,3;a");
-        }).isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    @DisplayName("음수 값이 입력된 경우")
-    void negativeInputTest1() {
-        assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum("-1");
-        }).isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    @DisplayName("음수 값이 입력된 경우")
-    void negativeInputTest2() {
-        assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum("1:-1");
-        }).isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    @DisplayName("음수 값이 입력된 경우")
-    void negativeInputTest3() {
-        assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum("//;\n1;2,3;-1");
-        }).isInstanceOf(RuntimeException.class);
+    private static Stream<Arguments> twoConsecutiveInputs() {
+        return Stream.of(
+                Arguments.of("//;\n1;2;3", "//!\n1;2!3"),
+                Arguments.of("//;\n1;2;3", "1;2;3")
+        );
     }
 }
