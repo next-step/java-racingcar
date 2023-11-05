@@ -20,5 +20,12 @@ public class CarRacingTest {
         });
     }
 
+    @Test
+    void 받은_갯수만큼_자동차가_생긴다() {
+        carRacing.makingCar(2);
+        assertEquals(carRacing.getCars().size(), 2);
+        assertEquals(carRacing.getCars().get(0).getClass(), Car.class);
+    }
+
 
 }
