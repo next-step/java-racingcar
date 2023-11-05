@@ -37,7 +37,7 @@ public class CarRacingTest {
             assertThat(carRacing.getCars()
                 .findCarBy(i)
                 .getCurrentPosition())
-                .isBetween(1, 2);
+                .isBetween(0, 1);
         }
     }
 }

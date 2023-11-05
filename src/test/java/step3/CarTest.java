@@ -1,6 +1,5 @@
 package step3;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
 
-    @DisplayName("자동차를 생성할 때 이동 위치의 기본 값을 1로 설정한다.")
+    @DisplayName("자동차를 생성할 때 이동 위치의 기본 값을 0으로 설정한다.")
     @Test
     void createCar() {
         // given
@@ -21,12 +20,12 @@ class CarTest {
         int currentPosition = car.getCurrentPosition();
 
         // then
-        assertThat(currentPosition).isEqualTo(1);
+        assertThat(currentPosition).isEqualTo(0);
     }
 
     @DisplayName("자동차의 엑셀을 밟는 힘이 4이상이면 앞으로 이동한다.")
     @ParameterizedTest
-    @CsvSource({"1,1", "3,1", "4,2", "9,2"})
+    @CsvSource({"1,0", "3,0", "4,1", "9,1"})
     void moveForward(int power, int expectedPosition) {
         // given
         Car car = new Car();

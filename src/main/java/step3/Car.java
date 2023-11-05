@@ -8,7 +8,6 @@ public class Car {
     private int position;
 
     public Car() {
-        this.position = 1;
     }
 
     public int getCurrentPosition() {
