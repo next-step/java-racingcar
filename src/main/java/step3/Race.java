@@ -1,6 +1,6 @@
 package step3;
 
-import step3.validation.ValidateRaceTimeInput;
+import step3.validation.ValidateRacingCarInput;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -16,11 +16,11 @@ public class Race {
         System.out.println(HOW_MANY_TIMES);
         int times = scanner.nextInt();
 
-        return ValidateRaceTimeInput.range(times);
+        return ValidateRacingCarInput.positiveNumber(times);
     }
 
     public static void playing(int cars, int times) {
-        String[] board = new String[cars];
+        String[] board = RaceBoard.generate(cars);
 
         for (int time = 1; time <= times; time++) {
             for (int car = 1; car <= cars; car++) {
