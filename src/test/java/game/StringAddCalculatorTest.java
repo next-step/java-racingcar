@@ -1,4 +1,4 @@
-package step2;
+package game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,9 +14,6 @@ class StringAddCalculatorTest {
     @NullAndEmptySource
     public void splitAndSum_null_또는_빈문자(String input) {
         int result = StringAddCalculator.splitAndSum(input);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
         assertThat(result).isEqualTo(0);
     }
 
