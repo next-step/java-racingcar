@@ -1,9 +1,8 @@
 package racinggame.domain;
 
-import racinggame.ui.OutputView;
-
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -13,16 +12,23 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void startRacing(int racingCount) {
-        OutputView outputView = new OutputView();
-        for (int i = 0; i < racingCount; i++) {
+    public RacingResult startRacing(int racingCount) {
+        RacingResult racingResult = new RacingResult();
+        for (int step = 0; step < racingCount; step++) {
             racingCar();
-            outputView.printRacing(cars);
+            racingResult.saveStepOfRacing(step, racingResult());
         }
+        return racingResult;
     }
 
     private void racingCar() {
         cars.forEach(Car::moving);
+    }
+
+    private List<Car> racingResult() {
+        return cars.stream()
+                .map(car -> new Car(car.getCarName(), car.getPosition()))
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {

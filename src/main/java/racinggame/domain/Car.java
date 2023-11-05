@@ -8,6 +8,11 @@ public class Car {
     private Name carName;
     private GenerateNumber generateNumber;
 
+    public Car(Name carName, int position) {
+        this.position = position;
+        this.carName = carName;
+    }
+
     public Car(Name carName, GenerateNumber generateNumber) {
         this.carName = carName;
         this.generateNumber = generateNumber;
@@ -21,6 +26,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public Name getCarName() {
+        return carName;
     }
 
 }
