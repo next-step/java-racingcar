@@ -14,12 +14,12 @@ public class OutputView {
     private void printThroughStandardOut(RacingResult racingResult) {
         List<Cars> values = racingResult.getValues();
         values.stream()
-              .flatMap(OutputView::flatCarsAndPrintNewLine)
+              .flatMap(this::flatCarsAndPrintNewLine)
               .map(car -> MARKER.repeat(car.getPosition()))
               .forEach(System.out::println);
     }
 
-    private static Stream<? extends Car> flatCarsAndPrintNewLine(Cars cars) {
+    private Stream<? extends Car> flatCarsAndPrintNewLine(Cars cars) {
         System.out.println();
         return cars.getCars().stream();
     }
