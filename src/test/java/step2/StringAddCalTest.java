@@ -2,28 +2,28 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class StringAddCalTest {
 
-    private  StringAddCal stringAddCal;
+    private StringAddCal stringAddCal;
 
     @BeforeEach
     void setUp() {
         stringAddCal = new StringAddCal();
     }
 
-    @Test
-    public void stringAdd_null_또는_빈문자() {
-        int result = stringAddCal.stringAdd(null);
-        assertThat(result).isEqualTo(0);
 
-        result = stringAddCal.stringAdd("");
-        assertThat(result).isEqualTo(0);
-
-        result = stringAddCal.stringAdd(" ");
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void stringAdd_null_또는_빈문자(String input) {
+        int result = stringAddCal.stringAdd(input);
         assertThat(result).isEqualTo(0);
     }
 
@@ -39,15 +39,10 @@ class StringAddCalTest {
         assertThat(result).isEqualTo(3);
     }
 
-    @Test
-    public void stringAdd_쉼표_또는_콜론_구분자() {
-        int result = stringAddCal.stringAdd("1,2,3");
-        assertThat(result).isEqualTo(6);
-
-        int result1 = stringAddCal.stringAdd("1:2:3");
-        assertThat(result).isEqualTo(6);
-
-        int result2 = stringAddCal.stringAdd("1,2:3");
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3", "1:2:3", "1,2:3"})
+    public void stringAdd_쉼표_또는_콜론_구분자(String input) {
+        int result = stringAddCal.stringAdd(input);
         assertThat(result).isEqualTo(6);
     }
 
@@ -57,32 +52,25 @@ class StringAddCalTest {
         assertThat(result).isEqualTo(6);
     }
 
-    @Test
-    public void stringAdd_negative() {
-        try {
-            stringAddCal.stringAdd("-1,2,3");
-        } catch (RuntimeException e) {
-            assertThat(e.getMessage()).isEqualTo("음수는 입력할 수 없습니다.");
-        }
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,2,3", "1:-2:3", "1,2:-3"})
+    public void stringAdd_negative(String input) {
+        assertThatThrownBy(() -> {
+            stringAddCal.stringAdd(input);
+        }).isInstanceOf(RuntimeException.class);
     }
 
 
-    @Test
-    public void getDefaultStringTest() {
-        assertThat(stringAddCal.getSlashString("//;\n1;2;3")).isEqualTo(new String[]{"1", "2", "3"});
-        assertThat(stringAddCal.getDefaultString("1,2,3")).isEqualTo(new String[]{"1", "2", "3"});
-        assertThat(stringAddCal.getDefaultString("1:2:3")).isEqualTo(new String[]{"1", "2", "3"});
-        assertThat(stringAddCal.getDefaultString("1,2:3")).isEqualTo(new String[]{"1", "2", "3"});
-
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3", "1:2:3", "1,2:3"})
+    public void getDefaultStringTest(String input) {
+        assertThat(stringAddCal.getDefaultString(input)).isEqualTo(new String[]{"1", "2", "3"});
     }
 
-    /*    @Test
-    public void getDelimiterTest() {
-        StringAddCal stringAddCal = new StringAddCal();
-        assertThat(stringAddCal.getDelimiter("//;\n1;2;3")).isEqualTo(";");
-        assertThat(stringAddCal.getDelimiter("1,2,3")).isEqualTo(",");
-        assertThat(stringAddCal.getDelimiter("1:2:3")).isEqualTo(":");
-        assertThat(stringAddCal.getDelimiter("1,2:3")).isNull();
-    }*/
+    @ParameterizedTest
+    @ValueSource(strings = {"//;\n1;2;3", "//#\n1#2#3"})
+    public void getCustomStringTest(String input) {
+        assertThat(stringAddCal.getSlashString(input)).isEqualTo(new String[]{"1", "2", "3"});
+    }
 
 }

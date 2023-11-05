@@ -1,37 +1,39 @@
 package step2;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCal {
 
+    private static final String ONE_REGEX = "-?\\d";
+    private static final Pattern ONE_PATTERN = Pattern.compile(ONE_REGEX);
+    private static final String CUSTOM_REGEX = "//(.)\\n-?\\d(?:\\1-?\\d)+";
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile(CUSTOM_REGEX);
+    private static final String  DEFAULT_REGEX = "(?:-?\\d([,:]))+-?\\d";
+    private static final Pattern DEFAULT_PATTERN = Pattern.compile(DEFAULT_REGEX);
+
+
     public int stringAdd(String given) {
 
         //빈문자열인 경우 null 리턴
-        if(given == null || given.isEmpty() || given.trim().isEmpty()) {
+        if (given == null || given.isBlank()) {
             return 0;
         }
 
-        //string 길이가 1인 경우 처리
-        if(given.length() == 1) {
-            return Integer.parseInt(given);
-        }
-
         //문자열 추출
-        String[] strNumbers = getSubString(given);
+        String[] numbers = getSubString(given);
 
         //숫자의 합을 구함
-        return getSum(strNumbers);
+        return getSum(numbers);
     }
 
-    int getSum(String[] strNumbers) {
+    int getSum(String[] numbers) {
         int sum = 0;
-        for(String strNumber : strNumbers) {
-            int number = Integer.parseInt(strNumber);
-            if(number < 0) {
+        for (String number : numbers) {
+            int result = Integer.parseInt(number);
+            if (result < 0) {
                 throw new RuntimeException("음수는 입력할 수 없습니다.");
             }
-            sum += number;
+            sum += result;
         }
         return sum;
     }
@@ -39,40 +41,39 @@ public class StringAddCal {
 
     String[] getSubString(String given) {
 
-        String[] given1 = getDefaultString(given);
-        if (given1 != null) return given1;
+        String[] result;
+        result = getOneNumber(given);
+        if(result.length !=0) return result;
 
-        String[] given2 = getSlashString(given);
-        if (given2 != null) return given2;
+        result = getDefaultString(given);
+        if(result.length !=0) return result;
 
-        return null;
+        result = getSlashString(given);
+
+        return result;
     }
 
     String[] getSlashString(String given) {
-        String slashRegex = "//(.)\\n-?\\d(?:\\1-?\\d)+";
-        if(given.matches(slashRegex)) {
+        if (CUSTOM_PATTERN.matcher(given).matches()) {
             String delimiter = given.substring(2, 3);
             given = given.substring(4);
             return given.split(delimiter);
         }
-
-/*        String slashRegex1 = "//(.)\\n-?\\d(?:\\1-?\\d)+";
-        Matcher matcher = Pattern.compile(slashRegex).matcher(given);
-        if(matcher.find()) {
-            String delimiter = matcher.group(1);
-            given = given.substring(4);
-            return given.split(delimiter);
-        }*/
-
-        return null;
+        return new String[0];
     }
 
     String[] getDefaultString(String given) {
-        String defaultRegex = "(?:-?\\d([,:]))+-?\\d";
-        if(given.matches(defaultRegex)) {
+        if (DEFAULT_PATTERN.matcher(given).matches()) {
             return given.split("[,:]");
         }
-        return null;
+        return new String[0];
+    }
+
+    String[] getOneNumber(String given) {
+        if (ONE_PATTERN.matcher(given).matches()) {
+            return given.split("[,:]");
+        }
+        return new String[0];
     }
 
 }
