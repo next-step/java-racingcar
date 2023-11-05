@@ -25,6 +25,7 @@ public class SetTest {
     @Test
     void checkSetSize() { Assertions.assertThat(numbers).hasSize(3); }
 
+
     @DisplayName("Set의 요소를 확인한다.")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
