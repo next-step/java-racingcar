@@ -10,6 +10,7 @@ public class Car {
     public Car() {
     }
 
+    // for mocking
     public Car(Random random) {
         this.random = random;
     }
