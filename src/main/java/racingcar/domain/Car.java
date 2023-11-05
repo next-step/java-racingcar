@@ -3,6 +3,7 @@ package racingcar.domain;
 public class Car {
 
     private int position;
+    private String name;
     private static final int MOVE_NUMBER_CONDITION = 4;
 
     public Car() {
@@ -12,8 +13,21 @@ public class Car {
         this.position = initPosition;
     }
 
+    public Car(String name) {
+        this.name = name;
+    }
+
+    public Car(int initPosition, String name) {
+        this.position = initPosition;
+        this.name = name;
+    }
+
     public int position() {
         return position;
+    }
+
+    public String name() {
+        return name;
     }
 
     public void move(int moveNumber) {
