@@ -4,6 +4,7 @@ import step3.input.InputView;
 import step3.input.UserInput;
 import step3.racingcar.RacingCar;
 import step3.random.RandomValueGenerator;
+import step3.result.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,10 @@ public class Main {
         }
 
         //resultView
+        System.out.println("실행 결과");
         for (int i = 0; i < userInput.getTryNumber(); i++) {
             tryMove(cars);
+            ResultView.printTryResult(cars);
         }
     }
 
