@@ -1,8 +1,8 @@
-package step3;
+package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.validite.RandomNumber;
+import racingcar.validite.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

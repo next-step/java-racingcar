@@ -1,8 +1,8 @@
-package step3;
+package racingcar;
 
-import step3.controller.RaceController;
-import step3.validite.ValidityCheck;
-import step3.view.InputView;
+import racingcar.controller.RaceController;
+import racingcar.validite.ValidityCheck;
+import racingcar.view.InputView;
 
 public class RaceMainConsole {
 

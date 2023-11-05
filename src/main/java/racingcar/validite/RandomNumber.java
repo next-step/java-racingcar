@@ -1,4 +1,4 @@
-package step3.validite;
+package racingcar.validite;
 
 import java.util.Random;
 

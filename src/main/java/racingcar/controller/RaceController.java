@@ -1,10 +1,10 @@
-package step3.controller;
+package racingcar.controller;
 
-import step3.domain.Car;
-import step3.domain.CarFactory;
-import step3.strategy.MoveStrategy;
-import step3.strategy.RandomMoveStrategy;
-import step3.view.OutputView;
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
+import racingcar.view.OutputView;
 
 import java.util.List;
 import java.util.stream.Collectors;

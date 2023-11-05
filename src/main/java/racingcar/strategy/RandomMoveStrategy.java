@@ -1,6 +1,6 @@
-package step3.strategy;
+package racingcar.strategy;
 
-import step3.validite.RandomNumber;
+import racingcar.validite.RandomNumber;
 
 public class RandomMoveStrategy implements MoveStrategy {
 

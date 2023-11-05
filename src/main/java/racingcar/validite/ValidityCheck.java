@@ -1,4 +1,4 @@
-package step3.validite;
+package racingcar.validite;
 
 public class ValidityCheck {
 

@@ -1,4 +1,4 @@
-package step3.strategy;
+package racingcar.strategy;
 
 public interface MoveStrategy {
     int move();

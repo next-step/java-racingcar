@@ -1,9 +1,9 @@
-package step3;
+package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
-import step3.domain.CarFactory;
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
 
 import java.util.List;
 
