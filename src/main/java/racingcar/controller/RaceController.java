@@ -13,7 +13,7 @@ public class RaceController {
 
     private static final MoveStrategy MOVE_STRATEGY = new RandomMoveStrategy();
 
-    public void startRace(int carNumber, int moveNumber) {
+    public void startRace(String carNumber, int moveNumber) {
         CarFactory carFactory = new CarFactory();
         OutputView outputView = new OutputView();
         carFactory.participants(carNumber);

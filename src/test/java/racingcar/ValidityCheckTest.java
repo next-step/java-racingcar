@@ -57,7 +57,7 @@ public class ValidityCheckTest {
         @Test
         public void 자동차이름_입력_이름_초과() {
             //given
-            String carName = "pobi,cronghonux";
+            String carName = "pobi,crongh";
             //when
             //then
             assertThatThrownBy(() -> ValidityCheck.carNameCheck(carName)).isInstanceOf(IllegalArgumentException.class);
