@@ -21,5 +21,12 @@ public class CarTest {
         assertThat(actual).isEqualTo(1);
     }
 
+    @Test
+    void 차는_4미만이면_멈춘다() {
+        Car car = new Car();
+        car.move(2);
+        int actual = car.getPosition();
+        assertThat(actual).isEqualTo(0);
+    }
 
 }
