@@ -21,22 +21,17 @@ public class StringAdder {
     private static final Pattern CUSTOM_DELIMITER_DECLARATION_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     /**
-     * 문자열로 정수 목록이 주어지면 정수들의 합을 계산합니다.
-     * 문자열 내에서 각 정수들은 지정된 구분자로 구분되거나
-     * 사용자가 직접 구분자를 정의할 수 있습니다.
+     * 구분자로 구분되는 숫자 목록 문자열이 주어지면 숫자들의 합을 계산합니다.
      * 기본 구분자는 , 또는 :입니다.
+     * 사용자가 직접 구분자를 정의할 수 있습니다.
      * 사용자가 직접 구분자를 정의하려면 //과 \n 사이에 구분자를 넣으십시오.
      *
-     * @param input 구분자로 구분되는 정수들을 포함하는 문자열
+     * @param input 구분자로 구분되는 숫자들을 포함하는 문자열
      *
-     * @return 해당 정수들의 합
+     * @return 해당 숫자들의 합
      */
     public static int sum(String input) {
-        if (input == null) {
-            return 0;
-        }
-
-        if (input.isEmpty()) {
+        if (input == null || input.isEmpty()) {
             return 0;
         }
 
@@ -48,13 +43,15 @@ public class StringAdder {
             totalDelimiterList.add(customDelimiter);
         }
 
-        return getSum(convertStringListToIntList(splitIntegerListByDelimiters(trimedInputString, totalDelimiterList)));
+        return getSum(convertStringListToIntList(splitStringByDelimiters(trimedInputString, totalDelimiterList)));
     }
 
     /**
      * 주어진 정수 리스트의 합을 계산합니다.
+     *
      * @param intValueList 합을 구할 정수 배열
-     * @return
+     *
+     * @return 정수 배열의 합
      */
     private static int getSum(List<Integer> intValueList) {
         int sum = 0;
@@ -68,6 +65,7 @@ public class StringAdder {
      * 내용물은 숫자이지만 타입은 문자열로 되어 있는 리스트를 실제로 정수 리스트로 변환합니다.
      *
      * @param stringValueList 내용물은 숫자이지만 타입은 문자인 리스트
+     *
      * @return 정수 리스트
      */
     private static List<Integer> convertStringListToIntList(List<String> stringValueList) {
@@ -82,11 +80,13 @@ public class StringAdder {
      * 문자열로 되어 있는 값을 정수형으로 바꿉니다.
      * 이 과정에서 허용되지 않는 값일 경우 예외를 던집니다.
      * 허용되는 값은 0 또는 양의 정수만입니다.
+     *
      * @param stringValue 정수형으로 바꾸려는 값
+     *
      * @return 정수형으로 바뀐 값
      */
     private static int convertStringValueToIntValue(String stringValue) {
-        Integer intValue = null;
+        int intValue = 0;
         try {
             intValue = Integer.parseInt(stringValue);
         }
@@ -100,25 +100,38 @@ public class StringAdder {
         return intValue;
     }
 
-    private static List<String> splitIntegerListByDelimiters(String integerList, List<String> delimiterList) {
+    /**
+     * 구분자로 구분되는 문자열을 주어진 구분자 목록을 이용하여 분리합니다.
+     * String.split과 비슷하지만 여러 개의 구분자를 사용할 수 있습니다.
+     *
+     * @param splitableString 분리할 문자열
+     * @param delimiterList 분리 기준 구분자 목록. 복수의 구분자가 가능합니다.
+     *
+     * @return 분리된 문자열들의 배열
+     */
+    private static List<String> splitStringByDelimiters(String splitableString, List<String> delimiterList) {
+        if (delimiterList.size() == 0) {
+            return List.of(splitableString);
+        }
         String splitRegex = "";
         for (String delimiter : delimiterList) {
             splitRegex += "|" + escapingStringForRegex(delimiter);
         }
         splitRegex = splitRegex.substring(1);
 
-        return Arrays.asList(integerList.split(splitRegex));
+        return Arrays.asList(splitableString.split(splitRegex));
     }
 
     /**
      * 주어진 문자열에서 커스텀 구분자를 찾아 반환합니다.
      * 없다면 빈 문자열을 반환합니다.
      *
-     * @param integerList 입력 문자열
+     * @param input 입력 문자열
+     *
      * @return 찾은 커스텀 구분자. 없다면 빈 문자열 반환. (null은 반환되지 않습니다.)
      */
-    private static String extractCustomDelimiter(String integerList) {
-        Matcher m = CUSTOM_DELIMITER_DECLARATION_PATTERN.matcher(integerList);
+    private static String extractCustomDelimiter(String input) {
+        Matcher m = CUSTOM_DELIMITER_DECLARATION_PATTERN.matcher(input);
         if (m.find()) {
             return m.group(1);
         }
@@ -128,7 +141,9 @@ public class StringAdder {
     /**
      * 입력 문자열에 커스텀 구분자 선언문이 있을 경우 그 부분을 잘라냅니다.
      * 없으면 입력을 그대로 반환합니다.
+     *
      * @param integerList 입력 문자열
+     *
      * @return 커스텀 구분자 선언문이 제거된 입력 문자열
      */
     private static String trimCustomDelimiterDeclaration(String integerList) {
@@ -144,6 +159,7 @@ public class StringAdder {
      * 이스케이핑 처리합니다.
      *
      * @param code 정규식에 넣으려고 하는 문자열
+     *
      * @return 이스케이핑 처리가 된 문자열
      */
     private static String escapingStringForRegex(String code) {
@@ -159,7 +175,9 @@ public class StringAdder {
     /**
      * 주어진 한 글자가 이스케이핑이 필요한 글자면 이스케이핑하여 반환합니다.
      * 아니라면 그 글자를 문자열로 변환하여 반환합니다.
+     *
      * @param code 이스케이핑 시도할 글자
+     *
      * @return 이스케이핑이 필요할 경우 이스케이핑이 된 문자열
      */
     private static String escapingCharacterForRegex(char code) {
