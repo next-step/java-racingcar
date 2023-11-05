@@ -22,7 +22,7 @@ public class Car {
         return randomCreate.randomNumber() >= STANDARD_MOVE_VALUE;
     }
 
-    public int position() {
+    public int getPosition() {
         return position;
     }
 
