@@ -23,11 +23,37 @@ public class RaceController {
             moveCars(cars);
             outputView.print(cars.stream().map(Car::toString).collect(Collectors.toList()));
         }
+        outputView.print(getWinner(cars));
     }
 
     public void moveCars(List<Car> cars) {
         for (Car car : cars) {
             car.move(MOVE_STRATEGY.move());
         }
+    }
+
+    public String getWinner(List<Car> cars) {
+        int winnerPosition = getMaxPosition(cars);
+        StringBuilder result = new StringBuilder();
+        int winnersCount = 0;
+        for (Car car : cars) {
+            if (car.position() == winnerPosition) {
+                if(winnersCount > 0) {
+                    result.append(", ");
+                }
+                result.append(car.name());
+                winnersCount++;
+            }
+        }
+        result.append("가 최종 우승했습니다.");
+        return result.toString();
+    }
+
+    public int getMaxPosition(List<Car> cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.position());
+        }
+        return maxPosition;
     }
 }

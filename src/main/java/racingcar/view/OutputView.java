@@ -6,8 +6,12 @@ public class OutputView {
 
     public void print(List<String> items) {
         for (String item : items) {
-            System.out.println(item);
+            print(item);
         }
         System.out.println();
+    }
+
+    public void print(String item) {
+        System.out.println(item);
     }
 }
