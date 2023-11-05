@@ -49,7 +49,16 @@ public class SimpleRacingCarGame {
         }
 
         private void moveForwardIfCan(Car car) {
-                car.moveForward();
+                if (isAbleToMove()) {
+                        car.moveForward();
+                }
+        }
+
+        private boolean isAbleToMove() {
+                if (random.nextInt(10) >= 4) {
+                        return true;
+                }
+                return false;
         }
 
         private void recordPathForCarInThisRound(Car car) {
