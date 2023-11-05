@@ -1,13 +1,13 @@
 package race;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomMoveStrategyTest {
     @DisplayName("getNumber()는 항상 0에서 10사이의 값을 반환 한다.")
-    @Test
+    @RepeatedTest(5)
     void getNumberTest() {
         // given
         final RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
