@@ -14,4 +14,14 @@ public class CarTest {
         Car car = new Car();
         assertThat(0).isEqualTo(car.getCurrentPosition());
     }
+
+    @DisplayName("자동차가 전진할수있다.")
+    @Test
+    void Car_전진() {
+        Car car = new Car();
+        int initialPosition = car.getCurrentPosition();
+        car.moveForward();
+        int afterPosition = car.getCurrentPosition();
+        assertThat(afterPosition).isEqualTo(initialPosition + car.MOVE_DISTANCE);
+    }
 }
