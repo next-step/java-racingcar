@@ -4,17 +4,18 @@ import racingcar.strategy.MoveStrategy;
 
 public class Car {
 
-    private final Position position;
+    private static final int DEFAULT_POSITION = 0;
+    private int position;
 
     public Car() {
-        this.position = new Position();
+        this.position = DEFAULT_POSITION;
     }
 
     public int getPosition() {
-        return this.position.getNumber();
+        return this.position;
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        this.position.move(moveStrategy.moveCondition());
+    public void move(final MoveStrategy moveStrategy) {
+        this.position += moveStrategy.moveCondition();
     }
 }
