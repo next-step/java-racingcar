@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class InputView {
 	public static List<Car> inputCars(Scanner scanner) {
-		List<Car> cars = new ArrayList<>();
+		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+		String[] inputCarNames = scanner.nextLine().split(",");
 
-		System.out.println("자동차 대수는 몇 대 인가요?");
-		int carsNumber = scanner.nextInt();
-		for (int i = 0; i < carsNumber; i++) {
-			cars.add(new Car("carName"));
+		List<Car> cars = new ArrayList<>();
+		for (String inputCarName : inputCarNames) {
+			cars.add(new Car(inputCarName));
 		}
 
 		return cars;
