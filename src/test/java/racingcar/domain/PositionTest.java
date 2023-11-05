@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +18,7 @@ class PositionTest {
     }
 
     @Test
-    @DisplayName("포지션은 처음 생성되면 무조건 0의 위치를 가진다.")
+    @DisplayName("포지션은 처음 생성되면 0의 위치를 가진다.")
     void createPosition() {
         assertThat(position.getNumber()).isZero();
     }
