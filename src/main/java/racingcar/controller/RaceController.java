@@ -6,7 +6,9 @@ import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class RaceController {
@@ -34,19 +36,14 @@ public class RaceController {
 
     public String getWinner(List<Car> cars) {
         int winnerPosition = getMaxPosition(cars);
-        StringBuilder result = new StringBuilder();
-        int winnersCount = 0;
-        for (Car car : cars) {
-            if (car.position() == winnerPosition) {
-                if(winnersCount > 0) {
-                    result.append(", ");
-                }
-                result.append(car.name());
-                winnersCount++;
-            }
-        }
-        result.append("가 최종 우승했습니다.");
-        return result.toString();
+        List<String> winners = new ArrayList<>();
+
+        cars.stream().filter(car -> car.position() == winnerPosition).forEach(car -> winners.add(car.name()));
+
+        StringJoiner result = new StringJoiner(", ");
+        winners.forEach(result::add);
+
+        return result + "가 최종 우승했습니다.";
     }
 
     public int getMaxPosition(List<Car> cars) {
