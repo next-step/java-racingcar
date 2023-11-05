@@ -3,12 +3,15 @@ package racingcar.model;
 public class Car {
     int position;
 
+    private static final int RANGE = 10;
+    private static final int SUCCESS = 4;
+
     public Car() {
         this.position = 1;
     }
 
     public void moveCar() {
-        if (tryToMove()) position++;
+        if (tryToMove(generateRandomNumber())) position++;
     }
 
     public void printPosition() {
@@ -16,9 +19,12 @@ public class Car {
         System.out.println(currentPosition);
     }
 
-    private boolean tryToMove() {
-        int success = 4;
-        int range = 10;
-        return Math.floor(Math.random() * range) >= success;
+    private boolean tryToMove(int random) {
+        return random >= SUCCESS;
     }
+
+    private int generateRandomNumber() {
+        return (int) (Math.floor(Math.random() * (Car.RANGE + 1)));
+    }
+
 }
