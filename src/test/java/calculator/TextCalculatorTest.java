@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.exception.NegativeNumberException;
+import calculator.exception.NotNumberException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,16 +43,16 @@ public class TextCalculatorTest {
     }
 
     @Test
-    @DisplayName("덧셈기능/분리후 숫자이외의 값이있다면/RuntimeException")
+    @DisplayName("덧셈기능/분리후 숫자이외의 값이있다면/NotNumberException")
     void calculate_기본_구분자_숫자이외의_값() {
         Assertions.assertThatThrownBy(
-                () -> TextCalculator.calculate("1,2,a")).isInstanceOf(RuntimeException.class);
+                () -> TextCalculator.calculate("1,2,a")).isInstanceOf(NotNumberException.class);
     }
 
     @Test
-    @DisplayName("덧셈기능/분리후 숫자가 음수라면/RuntimeException")
+    @DisplayName("덧셈기능/분리후 숫자가 음수라면/NegativeNumberException")
     void calculate_기본_구분자_음수값() {
         Assertions.assertThatThrownBy(
-                () -> TextCalculator.calculate("1,2,-1")).isInstanceOf(RuntimeException.class);
+                () -> TextCalculator.calculate("1,2,-1")).isInstanceOf(NegativeNumberException.class);
     }
 }

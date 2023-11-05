@@ -17,8 +17,8 @@ public class TextCalculator {
         basicSplit
                 .setNext(emptySplit)
                 .setNext(customDelimiterSplit)
-                .setNext(defaultDelimiterSplit)
-                .split();
+                .setNext(defaultDelimiterSplit);
+        basicSplit.split();
 
         CalcNumbers calcNumbers = new CalcNumbers(inputText.getTokens());
         return new Operator(calcNumbers).sum();
