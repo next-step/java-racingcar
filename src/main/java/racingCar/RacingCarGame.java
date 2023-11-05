@@ -3,6 +3,7 @@ package racingCar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
@@ -18,25 +19,58 @@ public class RacingCarGame {
         CAR_COUNT = new InputView(CAR_COUNT_QUESTION).intInput();
         GAME_COUNT = new InputView(GAME_COUNT_QUESTION).intInput();
 
+        inputCheck(CAR_COUNT, GAME_COUNT);
+
+        List<Car> carList = carList();
+
+        playing(carList);
+
+        printResult(carList);
+
+    }
+
+    private void inputCheck(int carCount, int gameCount) {
+        if(carCount <= 0){
+            throw new IllegalArgumentException("자동차 대수는 0보다 큰 수를 입력해야합니다.");
+        }
+        if(gameCount <= 0){
+            throw new IllegalArgumentException("시도할 횟수는 0보다 큰 수를 입력해야합니다.");
+        }
+    }
+
+    private static void printResult(List<Car> carList) {
+        List<String> distanceResultList = distanceResultList(carList);
+        new ResultView(distanceResultList).printResult();
+    }
+
+    private static List<String> distanceResultList(List<Car> carList) {
+        return carList.stream().map(Car::distance).collect(Collectors.toList());
+    }
+
+    private void playing(List<Car> carList) {
+        for(int i=0; i<GAME_COUNT; i++){
+            playEachCar(carList);
+        }
+    }
+
+    private void playEachCar(List<Car> carList) {
+        for(Car car: carList){
+            forwardIfSatisfied(car);
+        }
+    }
+
+    private void forwardIfSatisfied(Car car) {
+        if(isSatisfiedForward()){
+            car.forward();
+        }
+    }
+
+    private List<Car> carList() {
         List<Car> carList = new ArrayList<>();
         for(int i=0; i<CAR_COUNT; i++){
             carList.add(new Car());
         }
-
-        for(int i=0; i<GAME_COUNT; i++){
-            for(Car car: carList){
-                if(isSatisfiedForward()){
-                    car.forward();
-                }
-            }
-        }
-
-        List<String> distanceList = new ArrayList<>();
-        for(Car car: carList){
-            distanceList.add(car.distance());
-        }
-        new ResultView(distanceList).printResult();
-
+        return carList;
     }
 
     private boolean isSatisfiedForward(){
