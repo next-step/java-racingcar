@@ -1,7 +1,5 @@
 package game;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -10,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameTest {
+public class RacingGameTest {
 
 
     @Test
@@ -19,8 +17,8 @@ public class GameTest {
         Car mySpringCar = Mockito.mock(Car.class);
         Car mySummerCar = Mockito.mock(Car.class);
 
-        Game game = new Game(List.of(mySpringCar, mySummerCar));
-        game.doACycle();
+        RacingGame racingGame = new RacingGame(List.of(mySpringCar, mySummerCar));
+        racingGame.doACycle();
 
         Mockito.verify(mySpringCar).go();
         Mockito.verify(mySummerCar).go();

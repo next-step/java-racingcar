@@ -1,7 +1,7 @@
 package ui;
 
 import game.Car;
-import game.Game;
+import game.RacingGame;
 
 import java.util.List;
 
@@ -28,18 +28,18 @@ public class GameRenderer {
     /**
      * 게임을 렌더링 한 결과를 얻습니다.
      *
-     * @param game 렌더링 할 레이싱 게임 상태 객체
+     * @param racingGame 렌더링 할 레이싱 게임 상태 객체
      */
-    public static String getGameRendering(Game game) {
-        return getCarsTrajectories(game.getCarList());
+    public static String getGameRendering(RacingGame racingGame) {
+        return getCarsTrajectories(racingGame.getCarList());
     }
 
     /**
      * 게임을 화면에 출력합니다.
      *
-     * @param game 출력할 레이싱 게임 상태 객체
+     * @param racingGame 출력할 레이싱 게임 상태 객체
      */
-    public static void renderGame(Game game) {
-        System.out.println(getGameRendering(game));
+    public static void renderGame(RacingGame racingGame) {
+        System.out.println(getGameRendering(racingGame));
     }
 }

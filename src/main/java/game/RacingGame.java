@@ -3,14 +3,14 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class RacingGame {
     /** 게임이 관리하는 자동차 목록 */
     private List<Car> carList = new ArrayList<>();
 
     /**
      * 자동차가 없는 빈 게임을 생성합니다.
      */
-    public Game() {
+    public RacingGame() {
         this.carList = new ArrayList<>();
     }
 
@@ -19,7 +19,7 @@ public class Game {
      *
      * @param carList 시작 자동차 목록
      */
-    public Game(List<Car> carList) {
+    public RacingGame(List<Car> carList) {
         this.carList.addAll(carList);
     }
 
