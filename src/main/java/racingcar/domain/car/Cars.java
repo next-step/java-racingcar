@@ -1,7 +1,8 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
-import racingcar.strategy.MoveStrategy;
+import racingcar.domain.game.strategy.MoveStrategy;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -12,11 +13,11 @@ public class Cars {
         this.carList = carList;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public void move(final MoveStrategy moveStrategy) {
         this.carList.forEach(car -> car.move(moveStrategy));
     }
 
     public List<Car> getCars() {
-        return this.carList;
+        return Collections.unmodifiableList(this.carList);
     }
 }
