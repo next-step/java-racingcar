@@ -32,17 +32,17 @@ public class ValidityCheck {
     }
 
     private static String carNameLengthCheck(String name) {
-        if(nameLengthBoolean(name)){
+        if (nameLengthBoolean(name)) {
             return name;
         }
         throw new IllegalArgumentException("자동차 이름은 5자를 초과 할 수 없습니다.");
     }
 
     private static boolean nameLengthBoolean(String name) {
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름이 없는 경우가 있습니다.");
         }
-        if(name.length() > CAR_NAME_LENGTH) {
+        if (name.length() > CAR_NAME_LENGTH) {
             return false;
         }
         return true;
