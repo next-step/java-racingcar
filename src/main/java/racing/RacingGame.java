@@ -40,15 +40,18 @@ public class RacingGame {
 		return carMap;
 	}
 
-	public static Map<String, String> start(int cars, int attempts) {
+	public static void main(String[] args) {
+		int cars = InputView.cars();
+		int attempts = InputView.attempts();
+
 		Map<String, String> carMap = init(cars);
 
+		System.out.println("\n실행 결과");
 		while (attempts-- > 0) {
 			List<Integer> randomList = makeRandomList(cars);
 			moveAll(carMap, cars, randomList);
+			ResultView.printResult(carMap, cars);
 		}
-
-		return carMap;
 	}
 
 }

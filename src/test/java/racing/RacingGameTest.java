@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -72,16 +71,4 @@ public class RacingGameTest {
 		}
 	}
 
-//	@Test
-//	@DisplayName("3대의 자동차를 5번 동안 전진한다. 이 때 5번 모두 random값이 4이상이 나와서 전진한다.")
-//	void start() {
-//		int cars = 3;
-//		int attempts = 5;
-//
-//		Map<String, String> result = RacingGame.start(cars, attempts);
-//
-//		for (int i = 0; i < cars; i++) {
-//			assertThat(result.get(Integer.toString(i))).isEqualTo("------");
-//		}
-//	}
 }
