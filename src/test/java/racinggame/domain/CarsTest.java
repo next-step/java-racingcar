@@ -63,7 +63,7 @@ class CarsTest {
         List<Car> actual = List.of(
             new Car(new CarName("pobi"), new MovingValidator(new TestMovingStrategy(
                 MOVABLE_NUMBER))));
-        List<Car> expected = cars.getAll();
+        List<Car> expected = cars.findAll();
 
         assertThat(actual).isEqualTo(expected);
     }

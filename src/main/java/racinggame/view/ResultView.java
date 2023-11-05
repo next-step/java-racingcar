@@ -28,7 +28,7 @@ public class ResultView {
     }
 
     public static void report(Cars cars) {
-        for (Car car : cars.getAll()) {
+        for (Car car : cars.findAll()) {
             printResult(car);
         }
         br();
