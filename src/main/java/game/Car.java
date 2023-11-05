@@ -28,20 +28,7 @@ public class Car {
     }
 
 
-    /**
-     * 자동차의 현재 위치를 궤적 문자열로 만들어 생성합니다.
-     *
-     * @return "---"와 같은 자동차 궤적 문자열.
-     */
-    public String getMoveTrajectory() {
-        StringBuilder trajectory = new StringBuilder();
 
-        for (int i = 1; i <= this.position; i++) {
-            trajectory.append('-');
-        }
-
-        return trajectory.toString();
-    }
 
     /**
      * 자동차를 앞으로 또는 뒤로 움직입니다.

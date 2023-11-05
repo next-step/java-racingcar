@@ -23,24 +23,6 @@ public class Game {
         this.carList.addAll(carList);
     }
 
-    public String getCarsTrajectories() {
-        if (this.carList.size() == 0) {
-            return "";
-        }
-
-        StringBuilder trajectories = new StringBuilder();
-
-        for (Car car : this.carList) {
-            trajectories.append(car.getMoveTrajectory())
-                        .append("\n");
-        }
-
-        // 마지막에 추가된 \n 제거
-        trajectories.deleteCharAt(trajectories.length() - 1);
-
-        return trajectories.toString();
-    }
-
     /**
      * 경기 한 사이클을 진행합니다.
      * 각 자동차들은 자신의 확률에 따라 앞으로 한 칸 갈 수도 있고 안 갈 수도 있습니다.
@@ -49,5 +31,11 @@ public class Game {
         for (Car car : this.carList) {
             car.go();
         }
+    }
+
+    // 이 이하로 단순 getter
+
+    public List<Car> getCarList() {
+        return this.carList;
     }
 }
