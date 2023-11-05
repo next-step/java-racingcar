@@ -31,11 +31,14 @@ public class CarRacingTest {
         carRacing.createCarsOf(numOfCars);
 
         // when
-        carRacing.tryMove(numOfTry);
+        carRacing.startRace(numOfTry);
 
         // then
         for (int i=0; i<numOfCars; i++) {
-            assertThat(carRacing.getCars().findCarBy(i).getCurrentPosition()).isBetween(1, 6);
+            assertThat(carRacing.getCars()
+                .findCarBy(i)
+                .getCurrentPosition())
+                .isBetween(1, 6);
         }
     }
 }

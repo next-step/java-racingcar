@@ -3,7 +3,7 @@ package step3;
 public class CarRacing {
 
     private Cars cars;
-    private CarRacer[] carRacer;
+    private CarRacer carRacer;
 
     public Cars getCars() {
         return this.cars;
@@ -11,17 +11,19 @@ public class CarRacing {
 
     public void createCarsOf(int numOfCars) {
         cars = new Cars(numOfCars);
-        carRacer = new CarRacer[numOfCars];
+        carRacer = new CarRacer();
+    }
 
-        for (int i=0; i<numOfCars; i++) {
-            carRacer[i] = new CarRacer();
+    public void startRace(int numOfTry) {
+        for (int i=0; i<numOfTry; i++) {
+            moveCars();
         }
     }
 
-    public void tryMove(int numOfTry) {
-        for (int i=0; i<numOfTry; i++) {
-            int power = carRacer[i].stepOnAccelerator();
-            cars.findCarBy(i).moveForward(power);
+    private void moveCars() {
+        for (int i=0; i<cars.getNumOfCars(); i++) {
+            cars.findCarBy(i)
+                .moveForward(carRacer.stepOnAccelerator());
         }
     }
 }
