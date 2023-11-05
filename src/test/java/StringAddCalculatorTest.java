@@ -1,17 +1,17 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 @DisplayName("문자열 덧셈 계산기 테스트")
 public class StringAddCalculatorTest {
 
     @DisplayName("널 또는 빈 문자열을 입력하면 0을 반환한다.")
-    @Test
-    void splitAndSum_null_or_emptyString() {
-        int result = StringAddCalculator.splitAndSum(null);
-        Assertions.assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
+    @ParameterizedTest
+    @NullAndEmptySource
+    void splitAndSum_null_or_emptyString(String input) {
+        int result = StringAddCalculator.splitAndSum(input);
         Assertions.assertThat(result).isEqualTo(0);
     }
 
@@ -47,6 +47,7 @@ public class StringAddCalculatorTest {
     @Test
     void splitAndSum_negative() {
         Assertions.assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Input number is must positive");
     }
 }
