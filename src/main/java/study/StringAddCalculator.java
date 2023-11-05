@@ -12,11 +12,11 @@ public class StringAddCalculator {
         }
 
         String[] stringTypeNumbers = getStrings(input);
-        int sum = getSum(stringTypeNumbers);
+        int sum = parseIntAndGetSum(stringTypeNumbers);
         return sum;
     }
 
-    private static int getSum(String[] stringTypeNumbers) {
+    private static int parseIntAndGetSum(String[] stringTypeNumbers) {
         int sum = 0;
         for (String stringTypeNumber : stringTypeNumbers) {
             sum += getParseInt(stringTypeNumber);
