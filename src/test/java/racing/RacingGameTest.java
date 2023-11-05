@@ -1,10 +1,11 @@
 package racing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
@@ -16,14 +17,10 @@ public class RacingGameTest {
 				.isLessThanOrEqualTo(9);
 	}
 
-	@Test
-	@DisplayName("자동차는 random값이 4이상일 때 전진한다")
-	void move() {
-		String car = "-";
-
-		String after = RacingGame.move(car, 4);
-
-		assertThat(after).isEqualTo(car + "-");
+	@ParameterizedTest
+	@DisplayName("자동차는 random값이 4미만일 때 가만히 있고 4이상일 때 전진한다")
+	@CsvSource({"0,-", "1,-", "2,-", "3,-", "4,--", "5,--", "6,--", "7,--", "8,--", "9,--"})
+	void dont_move(Integer random, String expected) {
+		assertThat(RacingGame.move("-", random)).isEqualTo(expected);
 	}
-
 }
