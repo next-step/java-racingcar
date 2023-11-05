@@ -30,7 +30,7 @@ class CarsTest {
     @Test
     void 자동차들이_움직인다() {
         List<Car> carList = List.of(
-            new Car(new CarName("pobi"), new MovingDistance(1),
+            new Car(new CarName("pobi"), new Distance(1),
                 new MovingValidator(new TestMovingStrategy(
                     MOVABLE_NUMBER))));
         cars.move();
@@ -43,8 +43,8 @@ class CarsTest {
 
     @Test
     void 자동차의_이동거리를_알_수_있다() {
-        List<MovingDistance> actual = cars.movingDistances();
-        List<MovingDistance> expected = List.of(new MovingDistance());
+        List<Distance> actual = cars.movingDistances();
+        List<Distance> expected = List.of(new Distance());
 
         assertThat(actual).isEqualTo(expected);
     }

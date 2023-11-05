@@ -30,7 +30,7 @@ class RacingGameTest {
         racingGame.play();
 
         Car actual = racingGame.cars().get(0);
-        Car expected = new Car(new CarName("pobi"), new MovingDistance(distance),
+        Car expected = new Car(new CarName("pobi"), new Distance(distance),
             new MovingValidator(new TestMovingStrategy()));
 
         assertThat(actual).isEqualTo(expected);
@@ -39,14 +39,14 @@ class RacingGameTest {
     @Test
     void 자동차들이_이동한_거리를_표출_할_수_있다() {
         List<Car> cars = List.of(
-            new Car(new CarName("pobi"), new MovingDistance(),
+            new Car(new CarName("pobi"), new Distance(),
                 new MovingValidator(new TestMovingStrategy())),
-            new Car(new CarName("crong"), new MovingDistance(2),
+            new Car(new CarName("crong"), new Distance(2),
                 new MovingValidator(new TestMovingStrategy())));
         RacingGame racingGame = new RacingGame(new Cars(cars));
 
-        List<MovingDistance> actual = racingGame.report();
-        List<MovingDistance> expected = List.of(new MovingDistance(), new MovingDistance(2));
+        List<Distance> actual = racingGame.report();
+        List<Distance> expected = List.of(new Distance(), new Distance(2));
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -54,13 +54,13 @@ class RacingGameTest {
     @Test
     void 우승한_자동차를_추출_할_수_있다() {
         List<Car> cars = List.of(
-            new Car(new CarName("pobi"), new MovingDistance(),
+            new Car(new CarName("pobi"), new Distance(),
                 new MovingValidator(new TestMovingStrategy())),
-            new Car(new CarName("crong"), new MovingDistance(2),
+            new Car(new CarName("crong"), new Distance(2),
                 new MovingValidator(new TestMovingStrategy())));
         RacingGame racingGame = new RacingGame(new Cars(cars));
 
-        Cars actual = new Cars(List.of(new Car(new CarName("crong"), new MovingDistance(2),
+        Cars actual = new Cars(List.of(new Car(new CarName("crong"), new Distance(2),
             new MovingValidator(new TestMovingStrategy()))));
         Cars expected = racingGame.winners();
 

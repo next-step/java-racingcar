@@ -31,13 +31,13 @@ public class Cars {
         }
     }
 
-    public List<MovingDistance> movingDistances() {
-        List<MovingDistance> movingDistances = new ArrayList<>();
+    public List<Distance> movingDistances() {
+        List<Distance> distances = new ArrayList<>();
         for (Car car : this.carList) {
-            movingDistances.add(car.movingDistance());
+            distances.add(car.movingDistance());
         }
 
-        return movingDistances;
+        return distances;
     }
 
     public Car get(int index) {
@@ -49,11 +49,11 @@ public class Cars {
     }
 
     public Cars mostMoved() {
-        MovingDistance maxDistance = getMaxDistance();
+        Distance maxDistance = getMaxDistance();
         return mostMoved(maxDistance);
     }
 
-    private Cars mostMoved(MovingDistance maxDistance) {
+    private Cars mostMoved(Distance maxDistance) {
         List<Car> mostMovedCars = new ArrayList<>();
         for (Car car : carList) {
             if (car.sameMoved(maxDistance)) {
@@ -63,8 +63,8 @@ public class Cars {
         return new Cars(mostMovedCars);
     }
 
-    private MovingDistance getMaxDistance() {
-        MovingDistance maxDistance = new MovingDistance();
+    private Distance getMaxDistance() {
+        Distance maxDistance = new Distance();
 
         for (Car car : this.carList) {
             maxDistance = max(maxDistance, car.movingDistance());
@@ -73,8 +73,8 @@ public class Cars {
         return maxDistance;
     }
 
-    private MovingDistance max(MovingDistance existingDistance, MovingDistance comparisonDistance) {
-        if (existingDistance.isBigger(comparisonDistance)) {
+    private Distance max(Distance existingDistance, Distance comparisonDistance) {
+        if (existingDistance.isLongger(comparisonDistance)) {
             return existingDistance;
         }
         return comparisonDistance;

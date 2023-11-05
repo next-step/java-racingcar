@@ -15,7 +15,7 @@ class CarTest {
         MovingValidator movingValidator = new MovingValidator(movingStrategy);
 
         Car actual = new Car(new CarName("pobi"), movingValidator);
-        Car expected = new Car(new CarName("pobi"), new MovingDistance(), movingValidator);
+        Car expected = new Car(new CarName("pobi"), new Distance(), movingValidator);
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -29,7 +29,7 @@ class CarTest {
 
         actual.move();
 
-        Car expected = new Car(new CarName("pobi"), new MovingDistance(movingDistance),
+        Car expected = new Car(new CarName("pobi"), new Distance(movingDistance),
             movingValidator);
 
         assertThat(actual).isEqualTo(expected);
@@ -44,7 +44,7 @@ class CarTest {
 
         actual.move();
 
-        Car expected = new Car(new CarName("pobi"), new MovingDistance(movingDistance),
+        Car expected = new Car(new CarName("pobi"), new Distance(movingDistance),
             movingValidator);
 
         assertThat(actual).isEqualTo(expected);
@@ -57,8 +57,8 @@ class CarTest {
         Car car = new Car(new CarName("pobi"), movingValidator);
         car.move();
 
-        MovingDistance actual = car.movingDistance();
-        MovingDistance expected = new MovingDistance(1);
+        Distance actual = car.movingDistance();
+        Distance expected = new Distance(1);
 
         assertThat(actual).isEqualTo(expected);
     }
