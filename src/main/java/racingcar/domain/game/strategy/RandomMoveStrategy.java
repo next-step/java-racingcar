@@ -1,6 +1,5 @@
-package racingcar.strategy;
+package racingcar.domain.game.strategy;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomMoveStrategy implements MoveStrategy {
@@ -12,7 +11,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     private final ThreadLocalRandom random = ThreadLocalRandom.current();
 
     @Override
-    public int moveCondition() {
+    public int movePosition() {
         int randomNumber = random.nextInt(BASE_RANDOM_BOUND);
 
         if (randomNumber >= MOVE_CONDITION) {
