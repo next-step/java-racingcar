@@ -23,4 +23,9 @@ public class CalcTest {
         assertThat(calc("1")).isEqualTo(1);
     }
 
+    @Test
+    void 구분자_컴마_콜론_합_반환() {
+        assertThat(calc("1,2:3")).isEqualTo(6);
+    }
+
 }

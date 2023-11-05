@@ -5,7 +5,7 @@ public class Calculator {
         if (isBlank(str)) {
             return 0;
         }
-        String[] array = str.split(",");
+        String[] array = str.split("[,:]");
         return sum(array);
     }
 
