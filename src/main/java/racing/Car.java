@@ -17,4 +17,10 @@ public class Car {
     public int carDistance() {
         return distance;
     }
+
+    public void move(int random) {
+        if (random > 3) {
+            distance += 1;
+        }
+    }
 }

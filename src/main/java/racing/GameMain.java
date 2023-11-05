@@ -3,6 +3,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GameMain {
 
@@ -26,5 +27,9 @@ public class GameMain {
             cars.add(car);
         }
         return cars;
+    }
+
+    public static int random() {
+        return new Random().nextInt(9);
     }
 }
