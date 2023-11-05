@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.validite.ValidityCheck;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -13,7 +15,7 @@ public class ValidityCheckTest {
     @Test
     public void 자동차이름_입력() {
         //given
-        String carName = "pobi,crong,honux";
+        List<String> carName = List.of("pobi","crong","honux");
         //when
         int carList = ValidityCheck.carNameCheck(carName).size();
         //then
@@ -57,7 +59,7 @@ public class ValidityCheckTest {
         @Test
         public void 자동차이름_입력_이름_초과() {
             //given
-            String carName = "pobi,crongh";
+            List<String> carName = List.of("pobi","crongh");
             //when
             //then
             assertThatThrownBy(() -> ValidityCheck.carNameCheck(carName)).isInstanceOf(IllegalArgumentException.class);
@@ -67,7 +69,7 @@ public class ValidityCheckTest {
         @Test
         public void 자동차이름_입력_쉼표_연속() {
             //given
-            String carName = "pobi,,crong,honux";
+            List<String> carName = List.of("pobi","","crong","honux");
             //when
             //then
             assertThatThrownBy(() -> ValidityCheck.carNameCheck(carName)).isInstanceOf(IllegalArgumentException.class);
@@ -76,7 +78,7 @@ public class ValidityCheckTest {
         @Test
         public void 자동차이름_입력_쉼표_시작() {
             //given
-            String carName = ",pobi,crong,honux";
+            List<String> carName = List.of("","pobi","crong","honux");
             //when
             //then
             assertThatThrownBy(() -> ValidityCheck.carNameCheck(carName)).isInstanceOf(IllegalArgumentException.class);

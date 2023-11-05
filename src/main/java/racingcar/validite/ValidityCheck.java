@@ -6,7 +6,6 @@ public class ValidityCheck {
 
     private static final int INPUT_CONDITION_NUMBER = 0;
     private static final int CAR_NAME_LENGTH = 5;
-    private static final String CAR_NAME_SPLIT = ",";
 
     public static int positiveNumberCheck(Integer number) {
         try {
@@ -23,8 +22,7 @@ public class ValidityCheck {
         throw new IllegalArgumentException("0보다 큰 숫자를 입력해주세요.");
     }
 
-    public static List<String> carNameCheck(String carNames) {
-        List<String> carNameList = List.of(carNames.split(CAR_NAME_SPLIT));
+    public static List<String> carNameCheck(List<String> carNameList) {
         for (String name : carNameList) {
             carNameLengthCheck(name);
         }

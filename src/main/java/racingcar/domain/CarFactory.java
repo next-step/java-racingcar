@@ -13,11 +13,11 @@ public class CarFactory {
         this.cars = new ArrayList<>();
     }
 
-    public List<Car> carsInfo() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void participants(String carNames) {
+    public void participants(List<String> carNames) {
         List<String> carNameList = ValidityCheck.carNameCheck(carNames);
         for (String name : carNameList) {
             cars.add(new Car(name));

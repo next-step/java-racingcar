@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarFactoryTest {
     private CarFactory carFactory;
-    private final String DEFAULT_CAR_NAME = "pobi,crong,honux";
+    private final List<String> DEFAULT_CAR_NAME = List.of("pobi","crong","honux");
 
     public void setUp() {
         this.carFactory = new CarFactory();
@@ -26,7 +26,7 @@ public class CarFactoryTest {
         setUp();
         //when
         carFactory.participants(DEFAULT_CAR_NAME);
-        List<Car> cars = carFactory.carsInfo();
+        List<Car> cars = carFactory.getCars();
         //then
         assertThat(cars.size()).isEqualTo(3);
     }
@@ -39,7 +39,7 @@ public class CarFactoryTest {
         public void 차량_이름이_5글자_이상일때() {
             //given
             setUp();
-            String carName = "pobids";
+            List<String> carName = List.of("pobids");
             //when
             //then
             assertThatThrownBy(() -> carFactory.participants(carName))
@@ -52,7 +52,7 @@ public class CarFactoryTest {
         public void 차량_이름이_0글자_일때() {
             //given
             setUp();
-            String carName = "pobi,,honux";
+            List<String> carName = List.of("pobi","","honux");
             //when
             //then
             assertThatThrownBy(() -> carFactory.participants(carName))

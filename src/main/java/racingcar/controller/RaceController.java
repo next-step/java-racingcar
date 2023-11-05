@@ -14,18 +14,24 @@ import java.util.stream.Collectors;
 public class RaceController {
 
     private static final MoveStrategy MOVE_STRATEGY = new RandomMoveStrategy();
+    private static final String CAR_NAME_SPLIT = ",";
 
-    public void startRace(String carNumber, int moveNumber) {
+    public void startRace(String carNames, int moveNumber) {
         CarFactory carFactory = new CarFactory();
         OutputView outputView = new OutputView();
-        carFactory.participants(carNumber);
-        List<Car> cars = carFactory.carsInfo();
+        List<String> carNameList = getCarNames(carNames);
+        carFactory.participants(carNameList);
+        List<Car> cars = carFactory.getCars();
 
         for (int i = 0; i < moveNumber; i++) {
             moveCars(cars);
             outputView.print(cars.stream().map(Car::toString).collect(Collectors.toList()));
         }
         outputView.print(getWinner(cars));
+    }
+
+    public List<String> getCarNames(String carNames) {
+        return List.of(carNames.split(CAR_NAME_SPLIT));
     }
 
     public void moveCars(List<Car> cars) {
