@@ -11,7 +11,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ValidityCheckTest {
 
     @Test
-    public void 입력_숫자() {
+    public void 자동차이름_입력() {
+        //given
+        String carName = "pobi,crong,honux";
+        //when
+        //then
+        assertThat(ValidityCheck.carNameLengthCheck(carName)).isEqualTo(carName);
+    }
+
+    @Test
+    public void 시도횟수_입력_숫자() {
         //given
         int number = 2;
         //when
@@ -22,17 +31,9 @@ public class ValidityCheckTest {
     @Nested
     @DisplayName("입력값이 숫자가 아닌값 테스트")
     class ValidityCheckFaild {
-        @Test
-        @DisplayName("null 체크")
-        public void 입력_null_또는_빈문자() {
-            //given
-            //when
-            //then
-            assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck(null)).isInstanceOf(IllegalArgumentException.class);
-        }
 
         @Test
-        public void 입력_음수() {
+        public void 시도횟수_입력_음수() {
             //given
             //when
             //then
@@ -40,12 +41,53 @@ public class ValidityCheckTest {
         }
 
         @Test
-        public void 입력_문자() {
+        public void 시도횟수_입력_문자() {
             //given
             String invalidNumber = "a";
             //when
             //then
             assertThatThrownBy(() -> ValidityCheck.positiveNumberCheck(Integer.parseInt(invalidNumber))).isInstanceOf(NumberFormatException.class);
+        }
+    }
+
+    @Nested
+    @DisplayName("자동차이름 입력값 테스트")
+    class CarNameFaildTest {
+        @Test
+        public void 자동차이름_입력_이름_초과() {
+            //given
+            String carName = "pobi,cronghonux";
+            //when
+            //then
+            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
+
+        }
+
+        @Test
+        public void 자동차이름_입력_쉼표_연속() {
+            //given
+            String carName = "pobi,,crong,honux";
+            //when
+            //then
+            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        public void 자동차이름_입력_쉼표_시작() {
+            //given
+            String carName = ",pobi,crong,honux";
+            //when
+            //then
+            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        public void 자동차이름_입력_쉼표_끝() {
+            //given
+            String carName = "pobi,crong,honux,";
+            //when
+            //then
+            assertThatThrownBy(() -> ValidityCheck.carNameLengthCheck(carName)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
