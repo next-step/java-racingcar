@@ -14,7 +14,7 @@ public class Cars {
     public static Cars createCars(int numberOfCars) {
         return Stream.generate(Car::new)
                      .limit(numberOfCars)
-                     .collect(collectingAndThen(toList(), Cars::new));
+                     .collect(collectingAndThen(toUnmodifiableList(), Cars::new));
     }
 
     private  Cars(List<Car> values) {
@@ -36,7 +36,7 @@ public class Cars {
     private List<Car> copyOf(List<Car> values) {
         return values.stream()
                       .map(Car::from)
-                      .collect(toList());
+                      .collect(toUnmodifiableList());
     }
 
     @Override
