@@ -4,11 +4,19 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
+
+    @DisplayName("자동차 위치를 음수로 초기화할 수 없다.")
+    @Test
+    void can_not_initialize_car_with_negative_number() {
+        //when, then
+        assertThatThrownBy(() -> new Car(-1)).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @DisplayName("값이 4이상이라면 자동차는 1칸 움직인다.")
     @ParameterizedTest

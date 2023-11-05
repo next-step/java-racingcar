@@ -11,12 +11,19 @@ public class Car {
         return new Car(car.getPosition());
     }
 
-    private Car(int position) {
+    public Car() {
+        this(0);
+    }
+
+    public Car(int position) {
+        validateCarPosition(position);
         this.position = position;
     }
 
-    public Car() {
-        this.position = 0;
+    private void validateCarPosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("자동차 위치는 음수일 수 없습니다. - " + position);
+        }
     }
 
     public void move(boolean moveCondition) {
