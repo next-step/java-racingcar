@@ -15,9 +15,9 @@ class CarsTest {
         // given
         Cars cars = new Cars(
                 List.of(
-                        new Car(new TestNumber(0)),
-                        new Car(new TestNumber(5)),
-                        new Car(new TestNumber(9))
+                        new Car(new Name("a"), new TestNumber(0)),
+                        new Car(new Name("b"), new TestNumber(5)),
+                        new Car(new Name("c"), new TestNumber(9))
                 )
         );
 
