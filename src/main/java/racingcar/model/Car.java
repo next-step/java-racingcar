@@ -10,20 +10,19 @@ public class Car {
         this.position = 1;
     }
 
-    public void moveCar() {
-        if (tryToMove(generateRandomNumber())) position++;
+    public void moveCar(boolean move) {
+        if (move) position++;
     }
 
-    public void printPosition() {
-        String currentPosition = "-".repeat(position);
-        System.out.println(currentPosition);
+    public String getDistance() {
+        return "-".repeat(position);
     }
 
-    private boolean tryToMove(int random) {
+    public boolean tryToMove(int random) {
         return random >= SUCCESS;
     }
 
-    private int generateRandomNumber() {
+    public int generateRandomNumber() {
         return (int) (Math.floor(Math.random() * (Car.RANGE + 1)));
     }
 

@@ -13,13 +13,17 @@ public class RacingGame {
 
     public void moveOnce() {
         for (Car car : cars) {
-            car.moveCar();
+            car.moveCar(car.tryToMove(car.generateRandomNumber()));
         }
     }
 
-    public void printOnce() {
-        for (Car car : cars) {
-            car.printPosition();
+    public String[] getCarsDistance() {
+        String[] distances = new String[cars.length];
+
+        for (int i = 0; i < cars.length; i++) {
+            distances[i] = cars[i].getDistance();
         }
+
+        return distances;
     }
 }
