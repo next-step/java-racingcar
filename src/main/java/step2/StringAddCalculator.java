@@ -2,7 +2,6 @@ package step2;
 
 class StringAddCalculator {
 
-
         private static final int DEFAULT_NUMBER_ZERO = 0;
 
         private StringAddCalculator() {
