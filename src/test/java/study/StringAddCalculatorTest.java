@@ -25,4 +25,9 @@ class StringAddCalculatorTest {
     void splitByCommaOrColonBeforeSum() {
         assertThat(StringAddCalculator.sum("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    void splitByCustomDelimiterBeforeSum() {
+        assertThat(StringAddCalculator.sum("//;\n1;2;3")).isEqualTo(6);
+    }
 }
