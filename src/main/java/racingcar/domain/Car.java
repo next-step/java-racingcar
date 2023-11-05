@@ -17,11 +17,11 @@ public class Car {
     }
 
     public void move(int input) {
-        if(isMoovable(input)) {
+        if(isMovable(input)) {
             position++;
         }
     }
-    public boolean isMoovable(int input) {
+    public boolean isMovable(int input) {
         return input >= MOOVABLE_RANDOM_NUMBER;
     }
 }
