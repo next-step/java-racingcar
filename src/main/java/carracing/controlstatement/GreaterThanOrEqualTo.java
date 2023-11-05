@@ -1,16 +1,16 @@
 package carracing.controlstatement;
 
-public class MoreThan extends Boolean {
+public class GreaterThanOrEqualTo extends Boolean {
 	private final int left;
 	private final int right;
 
-	public MoreThan(int left, int right) {
+	public GreaterThanOrEqualTo(int left, int right) {
 		this.left = left;
 		this.right = right;
 	}
 
 	@Override
-	public boolean value() {
+	public boolean booleanValue() {
 		return left >= right;
 	}
 }

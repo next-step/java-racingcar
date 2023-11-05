@@ -1,5 +1,5 @@
 package carracing.controlstatement;
 
 public abstract class Boolean {
-	public abstract boolean value();
+	public abstract boolean booleanValue();
 }

@@ -1,7 +1,10 @@
 package carracing;
 
 import carracing.controlstatement.Boolean;
-import carracing.controlstatement.MoreThan;
+import carracing.controlstatement.GreaterThan;
+import carracing.controlstatement.GreaterThanOrEqualTo;
+import carracing.controlstatement.LessThan;
+import carracing.controlstatement.OR;
 
 public class Car {
 	private static final int MOVING_STANDARD = 4;
@@ -21,9 +24,9 @@ public class Car {
 	public void move(RandomRange randomRange) {
 		final int randomValue = randomRange.intValue();
 		checkRandomValueIsValid(randomValue);
-		Boolean boolMoreThan = new MoreThan(randomValue, MOVING_STANDARD);
+		Boolean greaterThanOrEqualTo = new GreaterThanOrEqualTo(randomValue, MOVING_STANDARD);
 
-		if (boolMoreThan.value()) {
+		if (greaterThanOrEqualTo.booleanValue()) {
 			moveDistance();
 		}
 	}
@@ -37,7 +40,13 @@ public class Car {
 	}
 
 	private boolean isInValidRange(int randomValue) {
-		return randomValue < MIN_VALUE || randomValue > MAX_VALUE;
+		Boolean lessThanOrGreaterThan =
+				new OR(
+						new LessThan(randomValue, MIN_VALUE),
+						new GreaterThan(randomValue, MAX_VALUE)
+				);
+
+		return lessThanOrGreaterThan.booleanValue();
 	}
 
 	private void moveDistance() {
