@@ -29,8 +29,10 @@ public class CustomDelimiter implements Delimiter{
     private List<String> splitMatch(String text) {
         matcher = matcher(text);
         matcher.matches();
+
         delimiter = matcher.group(1);
         content = matcher.group(2);
+
         return Splitter.split(content, delimiter);
     }
 
