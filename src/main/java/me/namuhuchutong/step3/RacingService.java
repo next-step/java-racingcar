@@ -13,12 +13,12 @@ public class RacingService {
     }
 
     public RacingResult runRacing(UserInputInformation userInputInformation) {
-        Cars initalizedCars = Cars.createCars(userInputInformation.getNumberOfCars());
+        Cars initalizedCars = Cars.createCars(racingRule, userInputInformation.getNumberOfCars());
         return repeatRacing(initalizedCars, userInputInformation.getTimes());
     }
 
     private RacingResult repeatRacing(Cars initalizedCars, int times) {
-        List<Cars> collect = Stream.generate(() -> initalizedCars.raceAllCars(racingRule))
+        List<Cars> collect = Stream.generate(initalizedCars::raceAllCars)
                                    .limit(times)
                                    .collect(Collectors.toList());
         return new RacingResult(collect);

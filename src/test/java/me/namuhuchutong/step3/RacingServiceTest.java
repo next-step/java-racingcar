@@ -13,12 +13,9 @@ class RacingServiceTest {
 
     private RacingService racingService;
 
-    private RacingRule racingRule;
-
     @BeforeEach
     void setUp() {
-        this.racingRule = new RacingRule();
-        this.racingService = new RacingService(this.racingRule);
+        this.racingService = new RacingService(new DefaultRacingRule());
     }
 
     @DisplayName("자동차 경주 횟수는 음수이거나 0일 경우 예외가 발생한다.")
