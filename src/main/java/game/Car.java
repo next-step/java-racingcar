@@ -19,16 +19,12 @@ public class Car {
         this.position = initPosition;
     }
 
-
     /**
      * 초기 위치가 1인 자동차를 생성합니다.
      */
     public Car() {
         this(1);
     }
-
-
-
 
     /**
      * 자동차를 앞으로 또는 뒤로 움직입니다.
@@ -65,6 +61,14 @@ public class Car {
         return randomValue >= 4;
     }
 
+    // 이 이하로 validation 함수 모음
+
+    private static void validatePosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("위치는 0 이상이어야 하지만 " + position + "이 되었습니다.");
+        }
+    }
+
     // 이 이하로 단순 getter 모음
 
     /**
@@ -75,11 +79,4 @@ public class Car {
         return this.position;
     }
 
-    // 이 이하로 validation 함수 모음
-
-    private static void validatePosition(int position) {
-        if (position < 0) {
-            throw new IllegalArgumentException("위치는 0 이상이어야 하지만 " + position + "이 되었습니다.");
-        }
-    }
 }

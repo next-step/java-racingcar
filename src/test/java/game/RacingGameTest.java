@@ -9,8 +9,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-
-
     @Test
     @DisplayName("한 사이클 진행")
     public void oneCycle() {

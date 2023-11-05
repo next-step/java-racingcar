@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-
     @Test
     @DisplayName("자동차 움직이기 테스트")
     public void moveCar() {
