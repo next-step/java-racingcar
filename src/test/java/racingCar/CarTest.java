@@ -3,6 +3,8 @@ package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -21,6 +23,28 @@ public class CarTest {
         Car car = new Car();
         int initialPosition = car.getCurrentPosition();
         car.moveForward();
+        int afterPosition = car.getCurrentPosition();
+        assertThat(afterPosition).isEqualTo(initialPosition + car.MOVE_DISTANCE);
+    }
+
+    @DisplayName("숫자가 이동 조건 보다 작다면 자동차는 전진하지 않는다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void Car_이동조건_미충족(int value) {
+        Car car = new Car();
+        int initialPosition = car.getCurrentPosition();
+        car.moveAttempt(value);
+        int afterPosition = car.getCurrentPosition();
+        assertThat(afterPosition).isEqualTo(initialPosition);
+    }
+
+    @DisplayName("숫자가 이동 조건 이상이라면 자동차는 전진한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 7, 9})
+    void Car_이동조건_충족(int value) {
+        Car car = new Car();
+        int initialPosition = car.getCurrentPosition();
+        car.moveAttempt(value);
         int afterPosition = car.getCurrentPosition();
         assertThat(afterPosition).isEqualTo(initialPosition + car.MOVE_DISTANCE);
     }
