@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-import racinggame.strategy.GenerateNumber;
+import racinggame.strategy.MoveStrategy;
 
 public class Car {
 
@@ -8,20 +8,20 @@ public class Car {
 
     private int position;
     private Name carName;
-    private GenerateNumber generateNumber;
+    private MoveStrategy moveStrategy;
 
     public Car(Name carName, int position) {
         this.position = position;
         this.carName = carName;
     }
 
-    public Car(Name carName, GenerateNumber generateNumber) {
+    public Car(Name carName, MoveStrategy moveStrategy) {
         this.carName = carName;
-        this.generateNumber = generateNumber;
+        this.moveStrategy = moveStrategy;
     }
 
     public void moving() {
-        if (generateNumber.number() >= MOVE_CAR_CONDITION) {
+        if (moveStrategy.number() >= MOVE_CAR_CONDITION) {
             this.position++;
         }
     }

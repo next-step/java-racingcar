@@ -2,7 +2,7 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.strategy.TestNumber;
+import racinggame.strategy.TestMove;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ class CarsTest {
         // given
         Cars cars = new Cars(
                 List.of(
-                        new Car(new Name("a"), new TestNumber(0)),
-                        new Car(new Name("b"), new TestNumber(5)),
-                        new Car(new Name("c"), new TestNumber(9))
+                        new Car(new Name("a"), new TestMove(0)),
+                        new Car(new Name("b"), new TestMove(5)),
+                        new Car(new Name("c"), new TestMove(9))
                 )
         );
 

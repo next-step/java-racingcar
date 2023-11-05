@@ -1,5 +1,5 @@
 package racinggame.strategy;
 
-public interface GenerateNumber {
+public interface MoveStrategy {
     int number();
 }

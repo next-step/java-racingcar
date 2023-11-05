@@ -3,7 +3,7 @@ package racinggame.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.strategy.TestNumber;
+import racinggame.strategy.TestMove;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +14,7 @@ public class CarTest {
     @DisplayName("성공 - 0 ~ 3 값이면 자동차는 움직이지 않는다.")
     void success_not_moving_cars(int random) {
         // given
-        Car car = new Car(new Name("a"), new TestNumber(random));
+        Car car = new Car(new Name("a"), new TestMove(random));
 
         // when
         car.moving();
@@ -30,7 +30,7 @@ public class CarTest {
     @DisplayName("성공 - 4 ~ 9 값이면 자동차는 1번 움직인다.")
     void success_moving_cars(int random) {
         // given
-        Car car = new Car(new Name("a"), new TestNumber(random));
+        Car car = new Car(new Name("a"), new TestMove(random));
 
         // when
         car.moving();
