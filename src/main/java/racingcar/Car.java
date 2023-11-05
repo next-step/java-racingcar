@@ -2,9 +2,9 @@ package racingcar;
 
 
 public class Car {
-	private Integer location;
+	private int location;
 
-	public Car(Integer location) {
+	public Car(int location) {
 		this.location = location;
 	}
 
@@ -12,7 +12,7 @@ public class Car {
 		this.location++;
 	}
 
-	public Integer getLocation() {
+	public int getLocation() {
 		return location;
 	}
 }
