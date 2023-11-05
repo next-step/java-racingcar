@@ -1,10 +1,10 @@
-package racinggame;
+package racinggame.strategy;
 
-public class TestNumber implements GenerateNumber {
+public class TestMove implements MoveStrategy {
 
     private final int number;
 
-    public TestNumber(int number) {
+    public TestMove(int number) {
         this.number = number;
     }
 
