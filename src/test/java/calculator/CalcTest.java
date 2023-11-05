@@ -28,4 +28,10 @@ public class CalcTest {
         assertThat(calc("1,2:3")).isEqualTo(6);
     }
 
+    @Test
+    void 음수를_받으면_RunTimeException이_발생한다() {
+        assertThatThrownBy(() -> calc("-1;2;3"))
+            .isInstanceOf(RuntimeException.class);
+    }
+
 }
