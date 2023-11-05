@@ -22,7 +22,6 @@ public class InputView {
 	public static int inputTryingNumber(Scanner scanner) {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		int tryingNumber = scanner.nextInt();
-
 		return tryingNumber;
 	}
 }

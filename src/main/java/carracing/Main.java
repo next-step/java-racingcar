@@ -23,7 +23,7 @@ public class Main {
 		MovingStrategy movingStrategy = new RandomRange(0, 9);
 		for (Car car : cars) {
 			car.move(movingStrategy);
-			ResultView.printMovingResult(car.movingDistance());
+			ResultView.printMovingResult(car);
 		}
 		ResultView.empty();
 	}

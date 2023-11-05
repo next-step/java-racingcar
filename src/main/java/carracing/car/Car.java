@@ -42,4 +42,8 @@ public class Car {
 	public int movingDistance() {
 		return this.movingDistance;
 	}
+
+	public String name() {
+		return this.name;
+	}
 }
