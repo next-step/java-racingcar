@@ -10,11 +10,6 @@ public class Car {
     private Name carName;
     private MoveStrategy moveStrategy;
 
-    public Car(Name carName, int position) {
-        this.position = position;
-        this.carName = carName;
-    }
-
     public Car(Name carName, MoveStrategy moveStrategy) {
         this.carName = carName;
         this.moveStrategy = moveStrategy;

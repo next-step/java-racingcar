@@ -8,12 +8,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarsTest {
+class RefereeTest {
 
     @Test
-    @DisplayName("성공 - 레이싱 1회 후 자동차들의 위치값을 구한다.")
+    @DisplayName("성공 - 레이싱 경주를 끝마친 후 자동차들의 위치값을 구한다.")
     void success_racing_car() {
         // given
+        Referee referee = new Referee();
         Cars cars = new Cars(
                 List.of(
                         new Car(new Name("a"), new TestMove(0)),
@@ -23,12 +24,12 @@ class CarsTest {
         );
 
         // when
-        cars.racing();
+        referee.startRacing(5, cars);
 
         // then
         assertThat(cars.getCars()).hasSize(3)
                 .extracting("position")
-                .containsOnly(0, 1, 1);
+                .containsOnly(0, 5, 5);
     }
 
 }

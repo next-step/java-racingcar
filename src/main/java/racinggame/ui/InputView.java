@@ -23,7 +23,9 @@ public class InputView {
 
     public int racingCount() {
         System.out.println(PRINTLN_RACING_COUNT);
-        return inputNumber();
+        int racingCount = inputNumber();
+        System.out.println();
+        return racingCount;
     }
 
     private int inputNumber() {
