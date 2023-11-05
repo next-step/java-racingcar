@@ -1,6 +1,6 @@
-package car_racing;
+package carracing;
 
-import car_racing.move_strategy.MoveStrategy;
+import carracing.move_strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package car_racing.ui;
+package carracing.ui;
 
-import car_racing.Track;
+import carracing.Track;
 
 import java.util.Scanner;
 

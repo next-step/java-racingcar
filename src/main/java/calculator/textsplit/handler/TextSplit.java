@@ -1,6 +1,6 @@
-package calculator.text_split.handler;
+package calculator.textsplit.handler;
 
-import calculator.text_split.InputText;
+import calculator.textsplit.InputText;
 
 public abstract class TextSplit {
     private TextSplit next;

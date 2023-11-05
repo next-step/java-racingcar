@@ -1,7 +1,7 @@
-package calculator.text_split.concrete;
+package calculator.textsplit.concrete;
 
-import calculator.text_split.InputText;
-import calculator.text_split.handler.TextSplit;
+import calculator.textsplit.InputText;
+import calculator.textsplit.handler.TextSplit;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

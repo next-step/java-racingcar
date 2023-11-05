@@ -1,7 +1,7 @@
-package car_racing;
+package carracing;
 
-import car_racing.ui.InputView;
-import car_racing.ui.OutputView;
+import carracing.ui.InputView;
+import carracing.ui.OutputView;
 
 public class CarRace {
     public static void main(String[] args) {

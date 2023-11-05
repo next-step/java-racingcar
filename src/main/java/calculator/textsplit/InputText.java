@@ -1,4 +1,4 @@
-package calculator.text_split;
+package calculator.textsplit;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package car_racing;
+package carracing;
 
-import car_racing.move_strategy.RandomMoveStopStrategy;
+import carracing.move_strategy.RandomMoveStopStrategy;
 
-import static car_racing.Cars.makeCars;
+import static carracing.Cars.makeCars;
 
 public class Track {
     private Cars cars;

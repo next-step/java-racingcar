@@ -1,6 +1,6 @@
-package car_racing;
+package carracing;
 
-import car_racing.move_strategy.RandomMoveStopStrategy;
+import carracing.move_strategy.RandomMoveStopStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

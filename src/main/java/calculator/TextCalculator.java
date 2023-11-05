@@ -1,11 +1,11 @@
 package calculator;
 
-import calculator.text_split.InputText;
-import calculator.text_split.concrete.CustomDelimiterSplit;
-import calculator.text_split.concrete.DefaultDelimiterSplit;
-import calculator.text_split.concrete.EmptySplit;
-import calculator.text_split.concrete.NoSplit;
-import calculator.text_split.handler.TextSplit;
+import calculator.textsplit.InputText;
+import calculator.textsplit.concrete.CustomDelimiterSplit;
+import calculator.textsplit.concrete.DefaultDelimiterSplit;
+import calculator.textsplit.concrete.EmptySplit;
+import calculator.textsplit.concrete.NoSplit;
+import calculator.textsplit.handler.TextSplit;
 
 public class TextCalculator {
     public static int calculate(String input) {

@@ -1,6 +1,6 @@
-package car_racing.move_strategy;
+package carracing.move_strategy;
 
-import static car_racing.move_strategy.RandomPoint.getPoint;
+import static carracing.move_strategy.RandomPoint.getPoint;
 
 public class RandomMoveStopStrategy implements MoveStrategy {
     @Override
