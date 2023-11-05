@@ -1,8 +1,9 @@
 package me.namuhuchutong.step3;
 
+import static java.util.stream.Collectors.*;
+
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Cars {
 
@@ -11,10 +12,9 @@ public class Cars {
     private final List<Car> values;
 
     public static Cars createCars(int numberOfCars) {
-        List<Car> collect = IntStream.range(0, numberOfCars)
-                                     .mapToObj(i -> new Car())
-                                     .collect(Collectors.toUnmodifiableList());
-        return new Cars(collect);
+        return Stream.generate(Car::new)
+                     .limit(numberOfCars)
+                     .collect(collectingAndThen(toList(), Cars::new));
     }
 
     private  Cars(List<Car> values) {
@@ -36,7 +36,7 @@ public class Cars {
     private List<Car> copyOf(List<Car> values) {
         return values.stream()
                       .map(Car::from)
-                      .collect(Collectors.toList());
+                      .collect(toList());
     }
 
     @Override

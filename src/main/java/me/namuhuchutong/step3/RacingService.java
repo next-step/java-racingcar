@@ -1,6 +1,8 @@
 package me.namuhuchutong.step3;
 
-import java.util.stream.IntStream;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingService {
 
@@ -23,10 +25,9 @@ public class RacingService {
     }
 
     private RacingResult repeatRacing(Cars initalizedCars, int times) {
-        RacingResult racingResult = new RacingResult();
-        IntStream.range(0, times)
-                 .mapToObj(i -> initalizedCars.raceAllCars(racingRule))
-                 .forEach(racingResult::addFinishedRacing);
-        return racingResult;
+        List<Cars> collect = Stream.generate(() -> initalizedCars.raceAllCars(racingRule))
+                                   .limit(times)
+                                   .collect(Collectors.toList());
+        return new RacingResult(collect);
     }
 }

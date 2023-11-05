@@ -1,18 +1,13 @@
 package me.namuhuchutong.step3;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingResult {
 
     private final List<Cars> carsList;
 
-    public RacingResult() {
-        this.carsList = new ArrayList<>();
-    }
-
-    public void addFinishedRacing(Cars cars) {
-        this.carsList.add(cars);
+    public RacingResult(List<Cars> carsList) {
+        this.carsList = carsList;
     }
 
     public List<Cars> getCarsList() {
