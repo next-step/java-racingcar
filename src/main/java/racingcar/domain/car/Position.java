@@ -9,7 +9,6 @@ public class Position {
         this.location = DEFAULT_POSITION;
     }
 
-
     public int getPosition() {
         return this.location;
     }
