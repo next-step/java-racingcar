@@ -12,7 +12,7 @@ public class Calculator {
         if (isBlank(input)) {
             return 0;
         }
-        if (containsDelimiter(input)){
+        if (containsDelimiter(input)) {
             return sum(parseArray(split(input, "[,:]")));
         }
         Matcher m = compilePattern(input);
@@ -41,7 +41,7 @@ public class Calculator {
     }
 
     private static void validateNegative(int value) {
-        if(value < 0) {
+        if (value < 0) {
             throw new NumberFormatException("For input string: " + value);
         }
     }
@@ -55,8 +55,8 @@ public class Calculator {
     }
 
     private static int[] parseArray(String[] values) {
-        int [] parsed = new int[values.length];
-        for(int i = 0; i< values.length ; i++){
+        int[] parsed = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
             parsed[i] = parse(values[i]);
         }
         return parsed;
