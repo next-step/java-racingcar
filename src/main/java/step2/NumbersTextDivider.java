@@ -1,28 +1,20 @@
+package step2;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-class StringAddCalculator {
+public class NumbersTextDivider {
 
         private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
         private static final String DEFAULT_DELIMITER_REGAX = ",|:";
-        private static final int DEFAULT_NUMBER_ZERO = 0;
 
-        private StringAddCalculator() {
+        private NumbersTextDivider() {
         }
 
-        public static int splitAndSum(String text) {
-                if (isEmptyOrNull(text)) {
-                        return DEFAULT_NUMBER_ZERO;
-                }
-                String[] textNumbers = split(text);
-                int[] numbers = getZeroOrMoreNumbersFromStrNumbers(textNumbers);
-                return sum(numbers);
-        }
-
-        private static boolean isEmptyOrNull(String text) {
-                return text == null || text.isEmpty();
+        public static int[] getSplitNumbers(String text) {
+                String[] numberTexts = split(text);
+                return getZeroOrMoreNumbersFromNumbersTexts(numberTexts);
         }
 
         private static String[] split(String text) {
@@ -47,7 +39,7 @@ class StringAddCalculator {
                 return text.split(DEFAULT_DELIMITER_REGAX);
         }
 
-        private static int[] getZeroOrMoreNumbersFromStrNumbers(String[] texts) {
+        private static int[] getZeroOrMoreNumbersFromNumbersTexts(String[] texts) {
                 return Stream.of(texts).mapToInt(text -> {
                         int number = Integer.parseInt(text);
                         validateNegativeNumber(number);
@@ -60,9 +52,4 @@ class StringAddCalculator {
                         throw new IllegalArgumentException("0보다 크거나 같은 숫자만 입력 가능합니다.");
                 }
         }
-
-        private static int sum(int[] numbers) {
-                return IntStream.of(numbers).sum();
-        }
-
 }
