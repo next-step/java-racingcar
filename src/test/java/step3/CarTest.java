@@ -1,6 +1,7 @@
 package step3;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -11,10 +12,18 @@ public class CarTest {
 
     private Car car = new Car();
 
-    @Test
-    public void 자동차_전진() {
-        car.move();
-        assertThat(car.position()).isIn(NOT_MOVED, MOVED);
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    public void 자동차_전진_실패(int random) {
+        car.move(random);
+        assertThat(car.position()).isEqualTo(NOT_MOVED);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    public void 자동차_전진_성공(int random) {
+        car.move(random);
+        assertThat(car.position()).isEqualTo(MOVED);
     }
 
 }

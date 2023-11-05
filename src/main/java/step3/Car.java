@@ -6,8 +6,8 @@ public class Car {
 
     private int position;
 
-    public void move() {
-        if (canMove(RandomUtil.random())) {
+    public void move(int random) {
+        if (canMove(random)) {
             position++;
         }
     }
