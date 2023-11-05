@@ -2,18 +2,18 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
-    @Test
+    @ParameterizedTest
     @DisplayName("입력값 null 또는 빈문자 체크")
-    public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자(String input) {
+        int result = StringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(0);
     }
 
