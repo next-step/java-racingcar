@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
@@ -27,7 +30,9 @@ public class RacingCarTest {
     @Test
     @DisplayName("랜덤값은 0 ~ 9 사이어야 한다.")
     void randomNumberBetween0to9() {
-        assertThat(RandomUtils.generateRandomNumber()).isBetween(0, 9);
+        for(int i = 0; i < 100; i++) {
+            assertThat(RandomUtils.generateRandomNumber()).isBetween(0, 9);
+        }
     }
 
     @ParameterizedTest
