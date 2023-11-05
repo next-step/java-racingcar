@@ -16,4 +16,17 @@ class RacingCarTest {
         //then
         assertThat(racingCar).isNotNull();
     }
+
+    @Test
+    @DisplayName("RacingCar.currentDistance 메서드를 사용하면, 자동차의 전진한 거리를 확인한다.")
+    void getCurrentDistanceOfRacingCar() {
+        //given
+        RacingCar racingCar = RacingCar.build();
+
+        //when
+        int currentDistance = racingCar.currentDistance();
+
+        //then
+        assertThat(currentDistance).isEqualTo(0);
+    }
 }
