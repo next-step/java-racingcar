@@ -1,6 +1,7 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
@@ -23,5 +24,12 @@ public class StringAddCalculatorTest {
     @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
     void singleNumberTest(String text, int expected) {
         assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우, 두 숫자의 합을 반환한다.")
+    void commaDelimiter() {
+        String text = "1,2";
+        assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(3);
     }
 }
