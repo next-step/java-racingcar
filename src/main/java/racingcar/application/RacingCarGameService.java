@@ -2,6 +2,7 @@ package racingcar.application;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.ui.dto.RacingGameResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,24 @@ public class RacingCarGameService {
     }
 
     public void initializeCars(int carNumber) {
-        while (carNumber > 0) {
+        for (int i = 0; i < carNumber; i++) {
             cars.addCar(new Car());
-            carNumber = carNumber - 1;
         }
     }
 
-    public List getAllCarMoveCount() {
+    public RacingGameResponse getAllCarMoveCount() {
+        moveAllCar();
         List<Integer> moveCounts = new ArrayList<>();
         for (Car car : cars.getAllCar()) {
-            moveCounts.add(car.stopOrMove(getRandomValue()));
+            moveCounts.add(car.getMoveCount());
         }
-        return moveCounts;
+        return new RacingGameResponse(moveCounts);
+    }
+
+    private void moveAllCar() {
+        for (Car car : cars.getAllCar()) {
+            car.stopOrMove(getRandomValue());
+        }
     }
 
     private int getRandomValue() {

@@ -1,29 +1,22 @@
 package racingcar.ui;
 
-import racingcar.application.RacingCarGameService;
-
-import java.util.List;
+import racingcar.ui.dto.RacingGameResponse;
 
 public class ResultView {
 
-    private final RacingCarGameService service;
+    private final RacingGameController controller;
 
-    public ResultView(RacingCarGameService service) {
-        this.service = service;
+    public ResultView(RacingGameController controller) {
+        this.controller = controller;
     }
 
-    public void showRacingCarGame(int endTurn) {
-        int currentTurn = 1;
-        while (currentTurn <= endTurn) {
-            System.out.println("Turn " + currentTurn);
-            displayAllCarStatus();
-            currentTurn += 1;
-        }
+    public void showRacingCarGame(int currentTurn, RacingGameResponse response) {
+        System.out.println("Turn " + currentTurn);
+        displayAllCarStatus(response);
     }
 
-    private void displayAllCarStatus() {
-        List<Integer> moveCounts = service.getAllCarMoveCount();
-        for (int moveCount : moveCounts) {
+    private void displayAllCarStatus(RacingGameResponse response) {
+        for (int moveCount : response.getMoveCounts()) {
             displayCarStatus(moveCount);
         }
     }

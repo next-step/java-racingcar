@@ -22,7 +22,8 @@ public class CarTest {
     @CsvSource(value = {"1,0","4,1"}, delimiter = ',')
     void stopOrMove(int randomValue, int expected) {
         Car car = new Car();
-        Assertions.assertThat(car.stopOrMove(randomValue)).isEqualTo(expected);
+        car.stopOrMove(randomValue);
+        Assertions.assertThat(car.getMoveCount()).isEqualTo(expected);
     }
 
     @DisplayName("생성된 자동차를 자동차 리스트에 추가한다.")

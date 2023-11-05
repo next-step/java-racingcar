@@ -16,7 +16,7 @@ public class StringAddCalculator {
     }
 
     private static boolean hasNullOrEmpty(String text) {
-        return text == null || text.equals("");
+        return text == null || text.isEmpty();
     }
 
     private static String[] splitTextToNumbers(String text) {
