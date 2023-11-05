@@ -35,6 +35,24 @@ public class CarList {
         }
     }
 
+    public List<String> findWinner() {
+        int maxStep = 0;
+        for (Car car : carList) {
+            if (maxStep < car.currentStep()) {
+                maxStep = car.currentStep();
+            }
+        }
+
+        final List<String> winnerList = new ArrayList<>();
+        for (Car car : carList) {
+            if (maxStep == car.currentStep()) {
+                winnerList.add(car.name());
+            }
+        }
+
+        return winnerList;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
