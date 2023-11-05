@@ -2,7 +2,7 @@ package racing;
 
 public class Car {
 
-    private int number;
+    private final int number;
     private int distance;
 
     public Car(int number) {

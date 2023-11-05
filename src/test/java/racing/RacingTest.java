@@ -1,10 +1,9 @@
 package racing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -27,8 +26,7 @@ public class RacingTest {
     @Test
     void Random_정수_생성() {
         int random = GameMain.random();
-//        int random = new Random().nextInt(9);
-        System.out.println("random = " + random);
+//        System.out.println("random = " + random);
         assertThat(random).isLessThanOrEqualTo(9);
     }
 
@@ -45,4 +43,13 @@ public class RacingTest {
         assertThat(distance2).isEqualTo(0);
     }
 
+    @Test
+    void 게임_진행() {
+        List<Car> cars = new  ArrayList<>();
+        cars.add(new Car(1));
+        GameMain.goRacing(cars,5);
+        int distance = cars.get(0).carDistance();
+//        System.out.println("distance = " + distance);
+        assertThat(distance).isLessThanOrEqualTo(5);
+    }
 }
