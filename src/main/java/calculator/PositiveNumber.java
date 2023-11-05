@@ -1,4 +1,4 @@
-package study;
+package calculator;
 
 public class PositiveNumber {
     private int value;

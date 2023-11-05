@@ -1,7 +1,5 @@
 package calculator.operator;
 
-import study.PositiveNumber;
-
 import java.util.List;
 
 public class AddOperator implements Operator{

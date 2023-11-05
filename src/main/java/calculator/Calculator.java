@@ -3,7 +3,6 @@ package calculator;
 import calculator.delimiter.Delimiter;
 import calculator.delimiter.DelimiterFactory;
 import calculator.operator.Operator;
-import study.PositiveNumber;
 
 import java.util.List;
 import java.util.stream.Collectors;
