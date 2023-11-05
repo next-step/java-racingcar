@@ -11,7 +11,7 @@ public class Car {
         position = DEFAULT_CAR_POSITION;
     }
 
-    public Car(Car car) {
+    public Car(final Car car) {
         this.position = car.position;
     }
 
@@ -19,7 +19,7 @@ public class Car {
         return position;
     }
 
-    public void tryMove(int randomNumber) {
+    public void tryMove(final int randomNumber) {
         if (randomNumber >= ACCEPT_MOVE_NUMBER) {
             position++;
         }
