@@ -59,5 +59,4 @@ class RacingGameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("최소 1번 이상의 게임을 진행해야 합니다.");
     }
-
 }

@@ -31,5 +31,4 @@ class PositionTest {
 
         assertThat(this.position.getPosition()).isEqualTo(movePosition);
     }
-
 }
