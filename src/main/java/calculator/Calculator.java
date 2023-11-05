@@ -22,7 +22,7 @@ public class Calculator {
         return text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
     }
 
-    public static boolean isCustomPattern(String text) {
+    private static boolean isCustomPattern(String text) {
         return text.contains("//") && text.contains("\n");
     }
 
