@@ -11,6 +11,8 @@ public class RacingGame {
     private final int trialCount;
 
     public RacingGame(int carCount, int trialCount) {
+        validate(carCount, trialCount);
+
         this.carList = cars(carCount);
         this.trialCount = trialCount;
     }
@@ -18,7 +20,7 @@ public class RacingGame {
     public void gameStart() {
         for (int i = 0; i < trialCount; i++) {
             for (Car car : carList) {
-                ResultView.print(car.position());
+                ResultView.print(car.getPosition());
                 car.move();
             }
             System.out.println();
@@ -33,6 +35,12 @@ public class RacingGame {
         }
 
         return carList;
+    }
+
+    private static void validate(int carCount, int trialCount) {
+        if (carCount < 0 || trialCount < 0) {
+            throw new RuntimeException();
+        }
     }
 
 }
