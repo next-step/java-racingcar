@@ -29,7 +29,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(new Cars(cars));
         racingGame.play();
 
-        Car actual = racingGame.cars().get(0);
+        Car actual = racingGame.cars().find(0);
         Car expected = new Car(new CarName("pobi"), new Distance(distance),
             new MovingValidator(new TestMovingStrategy()));
 

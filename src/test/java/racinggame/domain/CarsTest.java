@@ -51,7 +51,7 @@ class CarsTest {
 
     @Test
     void 자동차의_요소를_추출_할_수_있다() {
-        Car actual = cars.get(0);
+        Car actual = cars.find(0);
         Car expected = new Car(new CarName("pobi"),
             new MovingValidator(new TestMovingStrategy(MOVABLE_NUMBER)));
 

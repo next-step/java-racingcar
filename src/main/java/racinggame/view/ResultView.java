@@ -10,11 +10,11 @@ import racinggame.domain.Cars;
 public class ResultView {
 
     private static final String DASH = "-";
-    public static final String COLON = " : ";
-    public static final String COMMA_AND_BLANK = ", ";
-    public static final int LAST_CHECK_NUMBER = 1;
+    private static final String COLON = " : ";
+    private static final String COMMA_AND_BLANK = ", ";
+    private static final int LAST_CHECK_NUMBER = 1;
     private static final String RESULT_SIGN = "실행 결과";
-    public static final String WINNER_POSTFIX = "가 최종 우승했습니다.";
+    private static final String WINNER_POSTFIX = "가 최종 우승했습니다.";
 
     private ResultView() {
     }
@@ -29,14 +29,22 @@ public class ResultView {
 
     public static void report(Cars cars) {
         for (Car car : cars.getAll()) {
-            out.println(createResult(car));
+            printResult(car);
         }
         br();
     }
 
-    private static String createResult(Car car) {
-        return car.toStringName() + COLON + DASH.repeat(
-            Math.max(0, car.movingDistance().distance()));
+    private static void printResult(Car car) {
+        printCarName(car);
+        printDistance(car);
+    }
+
+    private static void printDistance(Car car) {
+        out.println(DASH.repeat(Math.max(0, car.movingDistance().distance())));
+    }
+
+    private static void printCarName(Car car) {
+        out.print(car.toStringName() + COLON);
     }
 
     public static void winners(Cars winners) {

@@ -40,7 +40,7 @@ public class Cars {
         return distances;
     }
 
-    public Car get(int index) {
+    public Car find(int index) {
         return carList.get(index);
     }
 
