@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 	private static final int START_LOCATION = 0;
@@ -27,15 +26,9 @@ public class RacingGame {
 
 	private void play() {
 		for (Car car : cars) {
-			if (isOverNum()) {
-				car.moveForward();
-			}
+			car.moveByRule();
 		}
 		rounds.add(new Round(clone(cars)));
-	}
-
-	private boolean isOverNum() {
-		return shuffleNumBox() >= STANDARD_SHUFFLE_NUM;
 	}
 
 	private List<Car> clone(List<Car> cars) {
@@ -44,10 +37,6 @@ public class RacingGame {
 			clone.add(new Car(car.getLocation()));
 		}
 		return clone;
-	}
-
-	private int shuffleNumBox() {
-		return new Random().nextInt(10);
 	}
 
 	public List<Car> getCars() {
