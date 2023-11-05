@@ -1,34 +1,27 @@
 package calculator;
 
-import static java.lang.Integer.parseInt;
+import calculator.textsplit.InputText;
+import calculator.textsplit.concrete.CustomDelimiterSplit;
+import calculator.textsplit.concrete.DefaultDelimiterSplit;
+import calculator.textsplit.concrete.EmptySplit;
+import calculator.textsplit.concrete.NoSplit;
+import calculator.textsplit.handler.TextSplit;
 
 public class TextCalculator {
     public static int calculate(String input) {
-        return sum(transfer(Text.input(input).elements()));
-    }
+        InputText inputText = new InputText(input);
 
-    private static Integer[] transfer(String[] elements) {
-        Integer[] nums = new Integer[elements.length];
-        for (int i = 0; i < elements.length; i++) {
-            int num = parseInt(elements[i]);
-            checkPositive(num);
-            nums[i] = num;
-        }
-        return nums;
-    }
+        TextSplit basicSplit = new NoSplit(inputText);
+        TextSplit emptySplit = new EmptySplit(inputText);
+        TextSplit customDelimiterSplit = new CustomDelimiterSplit(inputText);
+        TextSplit defaultDelimiterSplit = new DefaultDelimiterSplit(inputText);
+        basicSplit
+                .setNext(emptySplit)
+                .setNext(customDelimiterSplit)
+                .setNext(defaultDelimiterSplit);
+        basicSplit.split();
 
-    private static int sum(Integer[] nums) {
-        int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            int num = nums[i];
-            sum += num;
-        }
-        return sum;
-    }
-
-    private static void checkPositive(int num) {
-        if (num < 0) {
-            throw new RuntimeException();
-        }
+        CalcNumbers calcNumbers = new CalcNumbers(inputText.getTokens());
+        return new Operator(calcNumbers).sum();
     }
 }
