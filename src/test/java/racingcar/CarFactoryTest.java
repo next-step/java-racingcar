@@ -39,7 +39,7 @@ public class CarFactoryTest {
         public void 차량_이름이_5글자_이상일때() {
             //given
             setUp();
-            String carName = "pobid";
+            String carName = "pobids";
             //when
             //then
             assertThatThrownBy(() -> carFactory.participants(carName))
