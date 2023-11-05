@@ -10,6 +10,10 @@ public class Car {
         position = DEFAULT_CAR_POSITION;
     }
 
+    public void moveCar() {
+        this.position = position++;
+    }
+
     public int getPosition() {
         return position;
     }

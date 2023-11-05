@@ -18,7 +18,7 @@ public class InputView {
         return validateInputNumber(scan.nextInt());
     }
 
-    private int validateInputNumber(int inputNumber) {
+    private int validateInputNumber(final int inputNumber) {
         if (inputNumber <= 0) {
             throw new IllegalArgumentException("입력하신 값이 올바르지 않습니다. 다시 확인해주세요");
         }
