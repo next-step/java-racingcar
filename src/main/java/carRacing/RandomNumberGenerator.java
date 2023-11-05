@@ -2,16 +2,13 @@ package carRacing;
 
 import java.util.Random;
 
-public class RandomNumber {
-
+public class RandomNumberGenerator implements NumberGenerator {
     private static final Random RANDOM = new Random();
     private static final int MAX = 10;
 
-    private RandomNumber(){
 
-    }
-
-    public static int generate() {
+    @Override
+    public int generate() {
         return RANDOM.nextInt(MAX);
     }
 }

@@ -1,56 +1,44 @@
 package carRacing;
 
+import org.assertj.core.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingProcessTest {
+
     private int carCount;
     private RacingProcess racingProcess;
 
     @BeforeEach
-    public void create() {
-
-        carCount = 3;
+    void create() {
+        carCount = 5;
         racingProcess = new RacingProcess(carCount);
     }
 
     @Test
-    @DisplayName("자동자 경주 객체 생성 확인")
-    void 자동차경주게임_객체_생성() {
+    @DisplayName("경주방식 객체 생성이 되었는지 확인")
+    void 경주방식_객체_확인() {
         assertThat(racingProcess).isNotNull();
     }
 
-    @Test
-    @DisplayName("레이싱이 시작되면 사용자가 입력한 만큼 자동차 생성")
-    void 자동자_count_확인() {
-        racingProcess.ready();
-        assertThat(racingProcess.showCarList().size()).isEqualTo(carCount);
 
+    @Test
+    @DisplayName("경주시작 시 자동차 객체를 입력한 자동차 대수만큼 생성시키는지 확인")
+    void 자동차준비_확인() {
+
+        assertThat(racingProcess.getCarsDistance()).hasSize(carCount);
     }
 
     @Test
-    @DisplayName("자동차는 값이 4 이상이면 전진")
-    void 자동차_전진_확인() {
-        int randomNumber = 4;
-
-        boolean result = racingProcess.isRide(randomNumber);
-
-        assertThat(result).isTrue();
-
-    }
-
-    @Test
-    @DisplayName("자동차는 값이 3 이하이면 멈춤")
-    void 자동차_멈춤_확인() {
-        int randomNumber = 2;
-
-        boolean result = racingProcess.isRide(randomNumber);
-
-        assertThat(result).isFalse();
-
+    @DisplayName("자동차 경주를 실행시켜 모든 자동차를 전진하게 할 때 결과 확인")
+    void 자동차경주_라운드_진행_결과() {
+        NumberGenerator movableRandomGenerator = new MovableRandomGenerator();
+        racingProcess.roundPlay(movableRandomGenerator);
+        assertThat(racingProcess.getCarsDistance()).containsOnly(1, 1, 1, 1, 1);
     }
 
 
