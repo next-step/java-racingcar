@@ -14,13 +14,7 @@ public class CarRacing {
         carRacer = new CarRacer();
     }
 
-    public void startRace(int numOfTry) {
-        for (int i=0; i<numOfTry; i++) {
-            moveCars();
-        }
-    }
-
-    private void moveCars() {
+    public void moveCar() {
         for (int i=0; i<cars.getNumOfCars(); i++) {
             cars.findCarBy(i)
                 .moveForward(carRacer.stepOnAccelerator());
