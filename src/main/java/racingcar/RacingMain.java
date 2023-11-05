@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +14,9 @@ public class RacingMain {
         InputView inputView = new InputView();
         int carCount = inputView.carCountView(scanner);
         int tryCount = inputView.tryCountView(scanner);
+
+        ResultView resultView = new ResultView();
+        resultView.view();
 
         RacingGame racingGame = new RacingGame();
         racingGame.generateCars(carCount);
