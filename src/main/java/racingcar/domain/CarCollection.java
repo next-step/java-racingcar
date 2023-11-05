@@ -18,8 +18,8 @@ public class CarCollection {
     }
 
     public void participants(List<String> carNames) {
-        List<String> carNameList = ValidityCheck.carNameCheck(carNames);
-        for (String name : carNameList) {
+        ValidityCheck.carNameCheck(carNames);
+        for (String name : carNames) {
             cars.add(new Car(name));
         }
     }

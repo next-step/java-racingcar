@@ -7,19 +7,19 @@ public class ValidityCheck {
     private static final int INPUT_CONDITION_NUMBER = 0;
     private static final int CAR_NAME_LENGTH = 5;
 
-    public static int positiveNumberCheck(Integer number) {
+    public static int positiveNumberCheck(int number) {
         try {
-            return checkNumberSize(number);
+            checkNumberSize(number);
         } catch (Exception e) {
             throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
+        return number;
     }
 
-    private static int checkNumberSize(Integer number) {
-        if (number >= INPUT_CONDITION_NUMBER) {
-            return number;
+    private static void checkNumberSize(Integer number) {
+        if (number < INPUT_CONDITION_NUMBER) {
+            throw new IllegalArgumentException("0보다 큰 숫자를 입력해주세요.");
         }
-        throw new IllegalArgumentException("0보다 큰 숫자를 입력해주세요.");
     }
 
     public static List<String> carNameCheck(List<String> carNameList) {
