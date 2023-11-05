@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.ui;
+
+import racinggame.exception.MisMatchNumberException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

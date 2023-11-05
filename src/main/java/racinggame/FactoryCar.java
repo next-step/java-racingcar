@@ -1,5 +1,9 @@
 package racinggame;
 
+import racinggame.domain.Car;
+import racinggame.domain.GenerateNumber;
+import racinggame.domain.Name;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.domain;
+
+import racinggame.ui.OutputView;
 
 import java.util.Collections;
 import java.util.List;

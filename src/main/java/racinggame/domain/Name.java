@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.domain;
+
+import racinggame.exception.ExceedNameSizeException;
 
 public class Name {
 

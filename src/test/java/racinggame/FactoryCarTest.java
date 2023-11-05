@@ -2,6 +2,9 @@ package racinggame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.Car;
+import racinggame.domain.GenerateNumber;
+import racinggame.domain.TestNumber;
 
 import java.util.List;
 
