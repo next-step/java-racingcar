@@ -13,4 +13,9 @@ public class CalcTest {
         assertThat(calc(null)).isEqualTo(0);
         assertThat(calc("")).isEqualTo(0);
     }
+
+    @Test
+    void 숫자두개_컴마_합_반환() {
+        assertThat(calc("1,2")).isEqualTo(3);
+    }
 }
