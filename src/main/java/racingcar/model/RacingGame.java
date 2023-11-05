@@ -1,27 +1,30 @@
 package racingcar.model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 
-    private final Car[] cars;
+    private final List<Car> cars;
 
     public RacingGame(int numberOfCars) {
-        this.cars = new Car[numberOfCars];
-        Arrays.setAll(cars, i -> new Car());
+        this.cars = new ArrayList<>(numberOfCars);
+        for (int i = 0; i < numberOfCars; i++) {
+            this.cars.add(new Car());
+        }
     }
 
     public void moveOnce() {
         for (Car car : cars) {
-            car.moveCar(car.tryToMove(car.generateRandomNumber()));
+            car.moveOnce();
         }
     }
 
-    public String[] getCarsDistance() {
-        String[] distances = new String[cars.length];
+    public int[] getCarsPosition() {
+        int[] distances = new int[cars.size()];
 
-        for (int i = 0; i < cars.length; i++) {
-            distances[i] = cars[i].getDistance();
+        for (int i = 0; i < cars.size(); i++) {
+            distances[i] = cars.get(i).getPosition();
         }
 
         return distances;

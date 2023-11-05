@@ -10,6 +10,11 @@ public class RacingGameRunner {
         int count = InputView.promptCount();
 
         RacingGame game = new RacingGame(numberOfCars);
-        ResultView.renderCars(game, count);
+        System.out.println("\n실행 결과");
+        ResultView.renderCars(game);
+        for (int i = 0; i < count; i++) {
+            game.moveOnce();
+            ResultView.renderCars(game);
+        }
     }
 }
