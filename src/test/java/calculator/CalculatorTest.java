@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static calculator.Calculator.splitAndSum;
@@ -28,11 +29,11 @@ public class CalculatorTest {
         assertThat(splitAndSum(input)).isEqualTo(6);
     }
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("빈문자열 또는 null인 경우")
-    void null_빈문자열_값() {
-        assertThat(splitAndSum(null)).isEqualTo(0);
-        assertThat(splitAndSum("")).isEqualTo(0);
+    void null_빈문자열_값(String text) {
+        assertThat(splitAndSum(text)).isEqualTo(0);
     }
 
     @Test
@@ -44,7 +45,11 @@ public class CalculatorTest {
     @Test
     @DisplayName("- 및 숫자 이외의 값 입력 오류 발생")
     public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+
         assertThatThrownBy(() -> splitAndSum("1,ㅁ,3"))
                 .isInstanceOf(RuntimeException.class);
+
     }
 }
