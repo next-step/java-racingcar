@@ -7,7 +7,22 @@
 * 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
 * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
 ---
-## TO-DO LIST
-* 입력받은 자동차 대수만큼 자동차 객체를 생성한다.
-* 0에서 9 사이의 random값을 구하고 4 이상인지 확인한다.
-* random값이 4 이상이면 자동차를 전진한다.
+## 기능 요구사항 분리
+* [x] 자동차를 생성하면 초기 위치는 0 이다
+* [x] 자동차가 전진할수있다.
+* [x] 숫자가 4보다 작다면 자동차는 전진하지 않는다.
+* [x] 숫자가 4이상 이라면 자동차는 한 칸 전진한다.
+* [x] 입력받은 자동차 대수, 횟수만큼 경주를 세팅한다
+
+---
+## 프로그래밍 요구사항
+* 모든 로직에 단위 테스트를 구현한다. 단, UI(System.out, System.in) 로직은 제외
+* 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분한다.
+* UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
+* 자바 코드 컨벤션을 지키면서 프로그래밍한다. 
+이 과정의 Code Style은 intellij idea Code Style.Java을 따른다. 
+intellij idea Code Style.Java을 따르려면 code formatting 단축키
+(Windows : Ctrl + Alt + L. Mac : ⌥ (Option) + ⌘ (Command) + L.)를 사용한다.
+* else 예약어를 쓰지 않는다.
+  힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
+  else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
