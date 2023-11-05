@@ -2,7 +2,7 @@ package racingcar.strategy;
 
 import java.util.Random;
 
-public class RandomMovingStrategy implements MovingStrategy{
+public class RandomMoveStrategy implements MoveStrategy {
 
     private static final int BASE_RANDOM_BOUND = 10;
     private static final int MOVE_CONDITION = 4;
@@ -11,7 +11,7 @@ public class RandomMovingStrategy implements MovingStrategy{
     private final Random random = new Random();
 
     @Override
-    public int movingCondition() {
+    public int moveCondition() {
         int randomNumber = random.nextInt(BASE_RANDOM_BOUND);
 
         if (randomNumber >= MOVE_CONDITION) {
