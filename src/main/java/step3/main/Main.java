@@ -27,7 +27,7 @@ public class Main {
 
     private static void tryMove(final List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            car.move(RandomValueGenerator.generateRandomValueFromZeroToNine());
+            car.moveIfInRange(RandomValueGenerator.generateRandomValueFromZeroToNine());
         }
     }
 }

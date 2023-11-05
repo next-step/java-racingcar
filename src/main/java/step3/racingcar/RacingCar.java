@@ -14,15 +14,15 @@ public class RacingCar {
         return distanceTraveled;
     }
 
-    public void move(final int conditionValue) {
-        if (isStopCondition(conditionValue)) {
+    public void moveIfInRange(final int value) {
+        if (isStopRange(value)) {
             return;
         }
 
         distanceTraveled++;
     }
 
-    private boolean isStopCondition(final int conditionValue) {
-        return 0 <= conditionValue && conditionValue < 4;
+    private boolean isStopRange(final int value) {
+        return 0 <= value && value < 4;
     }
 }

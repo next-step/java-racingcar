@@ -39,10 +39,10 @@ class RacingCarTest {
         int initDistance = racingCar.currentDistance();
 
         //when
-        racingCar.move(0);
-        racingCar.move(1);
-        racingCar.move(2);
-        racingCar.move(3);
+        racingCar.moveIfInRange(0);
+        racingCar.moveIfInRange(1);
+        racingCar.moveIfInRange(2);
+        racingCar.moveIfInRange(3);
 
         //then
         assertThat(racingCar.currentDistance()).isEqualTo(initDistance);
@@ -56,12 +56,12 @@ class RacingCarTest {
         int initDistance = racingCar.currentDistance();
 
         //when
-        racingCar.move(4);
-        racingCar.move(5);
-        racingCar.move(6);
-        racingCar.move(7);
-        racingCar.move(8);
-        racingCar.move(9);
+        racingCar.moveIfInRange(4);
+        racingCar.moveIfInRange(5);
+        racingCar.moveIfInRange(6);
+        racingCar.moveIfInRange(7);
+        racingCar.moveIfInRange(8);
+        racingCar.moveIfInRange(9);
 
         //then
         assertThat(racingCar.currentDistance()).isEqualTo(initDistance + 6);
