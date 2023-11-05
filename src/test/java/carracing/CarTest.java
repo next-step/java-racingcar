@@ -20,16 +20,16 @@ public class CarTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
-	void carTryMovingSuccess(int number) {
+	@ValueSource(ints = {4, 9})
+	void moveCarSuccessBoundary(int number) {
 		car.move(new RandomRange(number, number));
 
 		assertThat(car.movingDistance()).isEqualTo(MOVING);
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {1, 2, 3})
-	void carTryMovingFail(int number) {
+	@ValueSource(ints = {1, 3})
+	void moveCarFalseBoundary(int number) {
 		car.move(new RandomRange(number, number));
 
 		assertThat(car.movingDistance()).isEqualTo(ZERO);
