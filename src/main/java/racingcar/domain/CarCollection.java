@@ -5,11 +5,11 @@ import racingcar.validite.ValidityCheck;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarFactory {
+public class CarCollection {
 
     private List<Car> cars;
 
-    public CarFactory() {
+    public CarCollection() {
         this.cars = new ArrayList<>();
     }
 

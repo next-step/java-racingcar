@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.CarFactory;
+import racingcar.domain.CarCollection;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarFactoryTest {
-    private CarFactory carFactory;
+    private CarCollection carFactory;
     private final List<String> DEFAULT_CAR_NAME = List.of("pobi","crong","honux");
 
     public void setUp() {
-        this.carFactory = new CarFactory();
+        this.carFactory = new CarCollection();
     }
 
     @DisplayName("차량이름으로 차량생성")

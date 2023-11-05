@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
-import racingcar.domain.CarFactory;
+import racingcar.domain.CarCollection;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.OutputView;
@@ -17,7 +17,7 @@ public class RaceController {
     private static final String CAR_NAME_SPLIT = ",";
 
     public void startRace(String carNames, int moveNumber) {
-        CarFactory carFactory = new CarFactory();
+        CarCollection carFactory = new CarCollection();
         OutputView outputView = new OutputView();
         List<String> carNameList = getCarNames(carNames);
         carFactory.participants(carNameList);
