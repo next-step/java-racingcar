@@ -2,23 +2,39 @@ package calculator;
 
 public class Calculator {
 
-    public static final String DELIMITER = ",|:";
+    public static final String BASIC_DELIMITER = ",|:";
+    public static final String CUSTOM_START_TEXT = "//";
+    public static final String CUSTOM_SPLIT_TEXT = "//|\n";
 
     public static int cal(String text) {
-        String customDelimiter = "";
 
         if (isBlank(text)) {
             return 0;
         }
-        if (text.startsWith("//")){
-            String[] result = split(text, "//|\n");
-            customDelimiter = result[1];
-            text = result[2];
 
-            return sum(toInts(split(text, customDelimiter)));
+        String delimiter = extractDelimiter(text);
+        text = extractText(text);
+
+        return sum(toInts(split(text, delimiter)));
+    }
+
+    private static String extractDelimiter(String text){
+
+        if (text.startsWith(CUSTOM_START_TEXT)) {
+            String[] result = split(text, CUSTOM_SPLIT_TEXT);
+            return result[1];
         }
 
-        return sum(toInts(split(text, DELIMITER)));
+        return BASIC_DELIMITER;
+    }
+
+    private static String extractText(String text){
+        if (text.startsWith(CUSTOM_START_TEXT)){
+            String[] result = split(text, CUSTOM_SPLIT_TEXT);
+            return result[2];
+        }
+
+        return text;
     }
 
     private static String[] split(String text, String delimiter) {
