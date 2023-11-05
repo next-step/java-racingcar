@@ -2,23 +2,27 @@ package me.namuhuchutong.step3;
 
 public class UserInputInformation {
 
-    private int numberOfCars;
+    private final int numberOfCars;
 
-    private int times;
+    private final int times;
+
+    public UserInputInformation(int numberOfCars, int times) {
+        validateTimes(times);
+        this.numberOfCars = numberOfCars;
+        this.times = times;
+    }
+
+    private void validateTimes(int times) {
+        if (times <= 0) {
+            throw new IllegalArgumentException("자동차 경주 횟수는 음수이거나 0일 수 없습니다 - " + times);
+        }
+    }
 
     public int getNumberOfCars() {
         return numberOfCars;
     }
 
-    public void setNumberOfCars(int numberOfCars) {
-        this.numberOfCars = numberOfCars;
-    }
-
     public int getTimes() {
         return times;
-    }
-
-    public void setTimes(int times) {
-        this.times = times;
     }
 }

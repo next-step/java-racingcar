@@ -16,9 +16,9 @@ public class RacingCar {
     }
 
     public void start() {
-        UserInputInformation userInputInformation = new UserInputInformation();
-        userInputInformation.setNumberOfCars(inputView.showPrompt(HOW_MANY_CARS));
-        userInputInformation.setTimes(inputView.showPrompt(HOW_MANY_TIMES));
+        UserInputInformation userInputInformation = new UserInputInformation(
+                inputView.showPrompt(HOW_MANY_CARS),
+                inputView.showPrompt(HOW_MANY_TIMES));
         RacingResult racingResult = racingService.runRacing(userInputInformation);
         outputView.printResult(racingResult);
     }

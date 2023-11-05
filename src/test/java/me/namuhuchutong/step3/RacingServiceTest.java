@@ -25,13 +25,9 @@ class RacingServiceTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void racing_times_should_not_be_negative_or_zero(int times) {
-        //given
-        UserInputInformation userInputInformation = new UserInputInformation();
-        userInputInformation.setNumberOfCars(1);
-        userInputInformation.setTimes(times);
-
         //when, then
-        assertThrows(IllegalArgumentException.class, () -> racingService.runRacing(userInputInformation));
+        assertThrows(IllegalArgumentException.class, () -> racingService.runRacing(
+                new UserInputInformation(1, times)));
     }
 
     @DisplayName("자동차 결과는 경주 횟수와 동일하다.")
@@ -39,9 +35,7 @@ class RacingServiceTest {
     @CsvSource(value = {"3,5,5", "4,3,3", "1,2,2", "3,2,2"})
     void racing_result_count_is_same_as_racing_times(int numberOfCars, int times, int expected) {
         //given
-        UserInputInformation userInputInformation = new UserInputInformation();
-        userInputInformation.setNumberOfCars(numberOfCars);
-        userInputInformation.setTimes(times);
+        UserInputInformation userInputInformation = new UserInputInformation(numberOfCars, times);
 
         //when
         RacingResult racingResult = racingService.runRacing(userInputInformation);
