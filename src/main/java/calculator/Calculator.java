@@ -29,28 +29,20 @@ public class Calculator {
         return text == null || text.isBlank();
     }
 
-    private static int sum(int[] numbers) {
+    private static int sum(PositiveNumber numbers) {
         int sum = 0;
 
-        for(int number : numbers){
+        for(int number : numbers.positiveNums){
             sum += number;
         }
         return sum;
     }
 
-    private static int[] toInts(String[] values){
-        int[] numbers = new int[values.length];
-        for(int i=0; i<values.length; i++){
-            numbers[i] = Integer.parseInt(values[i]);
-            checkNegative(numbers[i]);
-        }
+    private static PositiveNumber toInts(String[] values){
 
-        return numbers;
+        PositiveNumber positiveNumbers = new PositiveNumber(values);
+
+        return positiveNumbers;
     }
 
-    private static void checkNegative(int number) {
-        if(number < 0){
-            throw new RuntimeException();
-        }
-    }
 }
