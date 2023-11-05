@@ -12,5 +12,4 @@ public class RacingGameTest {
     public void 자동차_생성_테스트(Integer userInput, Integer numberOfCars) {
         assertThat(createCarList(userInput)).hasSize(numberOfCars);
     }
-
 }
