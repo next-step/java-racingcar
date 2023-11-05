@@ -16,7 +16,7 @@ public class StringAddCalculator {
             return DEFAULT;
         }
 
-        if ( inOneNumber(input) ) {
+        if ( isOneNumber(input) ) {
             return Integer.parseInt(input);
         }
 
@@ -44,7 +44,7 @@ public class StringAddCalculator {
         return false;
     }
 
-    private static boolean inOneNumber(String input) {
+    private static boolean isOneNumber(String input) {
         if(getSize(input) == 1) {
             return true;
         }
