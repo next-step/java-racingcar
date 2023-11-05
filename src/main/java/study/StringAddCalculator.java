@@ -1,23 +1,35 @@
 package study;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 class StringAddCalculator {
+
+    private static final String SPLIT_REGEX_FOR_SUM = "[,:]";
 
     private StringAddCalculator() {
         throw new IllegalStateException("Utility class");
     }
     public static int sum(String inputNumbers){
-        if(isInputValidate(inputNumbers)){
-            int sum=0;
-            String[] inputArray = inputNumbers.split(",");
-            for (String inputElement : inputArray) {
-                sum+=Integer.parseInt(inputElement);
-            }
-            return sum;
+        if(isBlankOrNull(inputNumbers)){
+            return 0;
         }
-        return 0;
+        return sumInputNumbers(getInputArray(inputNumbers));
     }
 
-    private static boolean isInputValidate(String inputNumbers) {
-        return inputNumbers != null && !inputNumbers.isEmpty();
+    private static int sumInputNumbers(String[] inputNumbers) {
+        return covertStringArrayToIntStream(inputNumbers).sum();
+    }
+
+    private static IntStream covertStringArrayToIntStream(String[] inputNumbers) {
+        return Arrays.stream(inputNumbers).mapToInt(Integer::parseInt);
+    }
+
+    private static String[] getInputArray(String inputNumbers) {
+        return inputNumbers.split(SPLIT_REGEX_FOR_SUM);
+    }
+
+    private static boolean isBlankOrNull(String inputNumbers) {
+        return inputNumbers == null || inputNumbers.isEmpty();
     }
 }
