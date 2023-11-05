@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 /**
  * 초간단 자동차 경주 게임의 자동차 개체 하나를 나타냅니다.
  */
@@ -50,6 +52,30 @@ public class Car {
         this.position += distance;
 
         validatePosition(this.position);
+    }
+
+    /**
+     * 확률적으로 자동차를 앞으로 한 칸 움직입니다.
+     * 움직일 확률은 5/9 = 60%입니다.
+     */
+    public void go() {
+        if (trial()) {
+            this.move(1);
+        }
+    }
+
+    /**
+     * 확률 시행 한 번.
+     * true가 뜰 확률이 60%입니다.
+     *
+     * @return 시행 결과
+     */
+    private boolean trial() {
+        Random random = new Random();
+
+        int randomValue = random.nextInt(10);
+
+        return randomValue >= 4;
     }
 
     // 이 이하로 단순 getter 모음
