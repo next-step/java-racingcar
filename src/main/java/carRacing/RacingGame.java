@@ -1,8 +1,9 @@
 package carRacing;
 
+import carRacing.ui.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class RacingGame {
 
@@ -15,9 +16,12 @@ public class RacingGame {
     }
 
     public void gameStart() {
-        for (Car car : carList) {
-            car.move(trialCount);
-            System.out.println(car.position());
+        for (int i = 0; i < trialCount; i++) {
+            for (Car car : carList) {
+                ResultView.print(car.position());
+                car.move();
+            }
+            System.out.println();
         }
     }
 

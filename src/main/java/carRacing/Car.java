@@ -6,29 +6,23 @@ public class Car {
 
     private static final int MAX_RANDOM_BOUND = 10;
     private static final int STANDARD_MOVE_VALUE = 4;
+    private static final int START_POSITION = 1;
     private static final Random random = new Random();
 
     private int position;
 
-    public int move() {
-        if (validate()) {
-            position++;
-            return position;
-        }
-        return position;
+    public Car() {
+        this.position = START_POSITION;
     }
 
-    public int move(int moveCount) {
-        for (int i = 0; i < moveCount; i++) {
-            if (validate()) {
-                position += 1;
-            }
+    public void move() {
+        if (validate()) {
+            position += 1;
         }
-        return position;
     }
 
     public int position() {
-        return this.position;
+        return position;
     }
 
     private static boolean validate() {
