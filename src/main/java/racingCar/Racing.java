@@ -20,4 +20,11 @@ public class Racing {
         return true;
     }
 
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public int getRoundCount() {
+        return roundCount;
+    }
 }
