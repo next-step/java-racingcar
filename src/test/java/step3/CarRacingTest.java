@@ -1,10 +1,7 @@
 package step3;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -21,7 +18,7 @@ public class CarRacingTest {
         carRacing.createCarsOf(numOfCars);
 
         // then
-        assertThat(carRacing.getRacingCars().length).isEqualTo(5);
+        assertThat(carRacing.getCars().getNumOfCars()).isEqualTo(5);
     }
 
     @DisplayName("사용자에게 입력받은 횟수만큼 이동을 시도한다.")
@@ -37,7 +34,8 @@ public class CarRacingTest {
         carRacing.tryMove(numOfTry);
 
         // then
-        Arrays.stream(carRacing.getRacingCars())
-            .forEach(car -> assertThat(car.getCurrentPosition()).isBetween(1, 6));
+        for (int i=0; i<numOfCars; i++) {
+            assertThat(carRacing.getCars().findCarBy(i).getCurrentPosition()).isBetween(1, 6);
+        }
     }
 }

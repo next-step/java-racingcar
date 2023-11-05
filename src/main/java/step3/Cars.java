@@ -19,7 +19,7 @@ public class Cars {
         return cars.size();
     }
 
-    public Car getCarBy(int idx) {
+    public Car findCarBy(int idx) {
         if (isOutOfIndex(idx)) {
             throw new IndexOutOfBoundsException("해당 번호의 차량은 존재하지 않습니다.");
         }

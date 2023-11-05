@@ -1,13 +1,11 @@
 package step3;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
 
@@ -34,7 +32,7 @@ class CarsTest {
         Cars cars = new Cars(numOfCars);
 
         // when
-        Car car = cars.getCarBy(idx);
+        Car car = cars.findCarBy(idx);
 
         // then
         assertThat(car).isNotNull();
@@ -49,7 +47,7 @@ class CarsTest {
         Cars cars = new Cars(numOfCars);
 
         // when & then
-        assertThatThrownBy(() -> cars.getCarBy(idx)).isInstanceOf(IndexOutOfBoundsException.class)
+        assertThatThrownBy(() -> cars.findCarBy(idx)).isInstanceOf(IndexOutOfBoundsException.class)
             .hasMessage("해당 번호의 차량은 존재하지 않습니다.");
     }
 }
