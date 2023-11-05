@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarRacingTest {
 
-    @DisplayName("사용자에게 생성할 자동차 수를 입력받아 해당 길이의 배열을 생성한다.")
+    @DisplayName("사용자에게 입력받은 수만큼 자동차를 생성한다.")
     @Test
     void createCars() {
         // given
@@ -24,7 +24,7 @@ public class CarRacingTest {
         assertThat(carRacing.getRacingCars().length).isEqualTo(5);
     }
 
-    @DisplayName("사용자에게 시도할 횟수를 입력받아 해당 횟수만큼 엑셀을 밟는다.")
+    @DisplayName("사용자에게 입력받은 횟수만큼 이동을 시도한다.")
     @Test
     void startRace() {
         // given

@@ -8,6 +8,7 @@ public class CarRacing {
     public Car[] getRacingCars() {
         return this.cars;
     }
+
     public void createCarsOf(int numOfCars) {
         cars = new Car[numOfCars];
         carRacer = new CarRacer[numOfCars];
