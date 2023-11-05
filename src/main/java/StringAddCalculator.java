@@ -5,7 +5,7 @@ public class StringAddCalculator {
 
     private StringAddCalculator() {}
 
-    public static int splitAndSum(String text) throws Exception {
+    public static int splitAndSum(String text) {
         if (checkNullOrEmpty(text)) return 0;
         String[] numbers = splitTextToNumbers(text);
         return sum(numbers);
@@ -24,7 +24,7 @@ public class StringAddCalculator {
         return text.split(",|:");
     }
 
-    private static int sum(String[] numbers) throws Exception {
+    private static int sum(String[] numbers) {
         int result = 0;
         for (String number : numbers) {
             result = result + checkNegative(Integer.parseInt(number));
@@ -32,7 +32,7 @@ public class StringAddCalculator {
         return result;
     }
 
-    private static int checkNegative(int number) throws Exception {
+    private static int checkNegative(int number) {
         if (number < 0) throw new RuntimeException("Input number is negative");
         return number;
     }
