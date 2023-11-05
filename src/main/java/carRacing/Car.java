@@ -1,32 +1,29 @@
 package carRacing;
 
-import java.util.Random;
-
 public class Car {
 
-    private static final int MAX_RANDOM_BOUND = 10;
     private static final int STANDARD_MOVE_VALUE = 4;
     private static final int START_POSITION = 1;
-    private static final Random random = new Random();
-
+    private final RandomCreate randomCreate;
     private int position;
 
     public Car() {
         this.position = START_POSITION;
+        this.randomCreate = new RandomCreate();
     }
 
     public void move() {
-        if (validate()) {
+        if (checkStandardMove()) {
             position += 1;
         }
     }
 
-    public int position() {
-        return position;
+    private boolean checkStandardMove() {
+        return randomCreate.randomNumber() >= STANDARD_MOVE_VALUE;
     }
 
-    private static boolean validate() {
-        return random.nextInt(MAX_RANDOM_BOUND) >= STANDARD_MOVE_VALUE;
+    public int position() {
+        return position;
     }
 
 }
