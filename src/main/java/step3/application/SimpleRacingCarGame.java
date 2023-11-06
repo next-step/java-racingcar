@@ -10,6 +10,8 @@ import step3.domain.Car;
 public class SimpleRacingCarGame {
 
         private static final String RESET = "";
+        private static final String NEW_LINE = "\n";
+        private static final int RANDOM_BOUND = 10;
         private static final Random random = new Random();
         private final int carCnt;
         private final int round;
@@ -55,11 +57,11 @@ public class SimpleRacingCarGame {
         }
 
         private boolean isAbleToMove() {
-                return random.nextInt(10) >= 4;
+                return random.nextInt(RANDOM_BOUND) >= 4;
         }
 
         private void recordPathForCarInThisRound(Car car) {
-                thisRoundRecord = thisRoundRecord.concat(car.getPath() + '\n');
+                thisRoundRecord = thisRoundRecord.concat(car.getPath() + NEW_LINE);
         }
 
         private void recordPathsForAllCarsInThisRound() {
