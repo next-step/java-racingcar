@@ -21,7 +21,7 @@ public class RacingCarGame {
     public RacingCarGame(int carCount, int attemptCount) {
         this.carCount = carCount;
         this.attemptCount = attemptCount;
-        this.raceCount = attemptCount - 1;
+        this.raceCount = attemptCount;
 
         this.carList = new ArrayList<>();
         this.resultView = new ResultView(this);

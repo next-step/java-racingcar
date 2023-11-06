@@ -12,13 +12,12 @@ public class InputView {
     }
 
     public int readAttemptCount() {
-        System.out.println(CAR_COUNT_MESSAGE);
+        System.out.println(ATTEMPT_COUNT_MESSAGE);
         return readCount();
     }
 
     private int readCount() {
         Scanner scanner = new Scanner(System.in);
-        String value = scanner.nextLine();
         return scanner.nextInt();
     }
 }

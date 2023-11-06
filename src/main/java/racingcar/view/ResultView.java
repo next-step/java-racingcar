@@ -16,9 +16,10 @@ public class ResultView {
     }
 
     public void printRace() {
-        for (Car car : racingCarGame.carList()) {
+        for (Car car : racingCarGame.carList()) {;
             System.out.println(createPath(car.moveCount()));
         }
+        System.out.println();
     }
 
     private String createPath(int count) {
