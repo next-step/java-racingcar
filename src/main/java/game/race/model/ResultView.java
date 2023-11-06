@@ -1,30 +1,28 @@
 package game.race.model;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import game.race.Race;
+import java.util.Map;
 
 public class ResultView {
 
-    private static final String END_MARK = "";
+    public static final String END_MARK = "";
 
-    private final List<String> tireMarks = new ArrayList<>();
+    private final Map<Integer, List<String>> results = new HashMap<>();
 
-    public List<String> getTireMarks() {
-        return tireMarks;
+    public void setNewTireMarks(int idx, List<String> tireMarks) {
+        results.put(idx, tireMarks);
     }
 
-    public void setResult(Race race) {
-        int vehicleCnt = race.getVehicleCnt();
-        for (String tireMark : race.getTireMarks()) {
-            tireMarks.add(tireMark);
+    public List<String> getTireMarks(int trial) {
+        return results.get(trial);
+    }
 
-            vehicleCnt--;
-            if (vehicleCnt == 0) {
-                tireMarks.add(END_MARK);
-                vehicleCnt = race.getVehicleCnt();
-            }
-        }
+    public Map<Integer, List<String>> getResults() {
+        return results;
+    }
+
+    public String markEnd() {
+        return END_MARK;
     }
 }
