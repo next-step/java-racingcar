@@ -1,4 +1,4 @@
-package step3;
+package step3.controller;
 
 import java.util.Scanner;
 
@@ -12,7 +12,11 @@ public class MyScanner implements ScannerInterface {
 
     @Override
     public String getNext() {
-
         return scanner.next();
+    }
+
+    @Override
+    public int getNextInt() {
+        return scanner.nextInt();
     }
 }

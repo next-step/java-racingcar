@@ -1,7 +1,14 @@
 package step3;
 
-import java.util.HashMap;
-import java.util.Map;
+import step3.controller.MyScanner;
+import step3.controller.ScannerInterface;
+import step3.model.Car;
+import step3.model.CarRacingPlay;
+import step3.model.MyRandomValueGenerator;
+import step3.controller.CarRacingInputController;
+import step3.view.ResultView;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class CarRacing {
@@ -11,32 +18,16 @@ public class CarRacing {
 
     public static void main(String[] args) {
 
-        InputView inputView = new InputView(myScanner);
-        ResultView resultView = new ResultView();
+        CarRacingInputController carRacingInputController = new CarRacingInputController(myScanner);
+        int attendCarNumber = carRacingInputController.inputParticipantCarNumber();
+        int totalRacingRound = carRacingInputController.inputRacingChance();
 
-        int carCount = inputView.setParticipantCarNumber();
-        int racingChance = inputView.setRacingChance();
-        Map<Integer, Integer> racingBoard = setRacingBoard(carCount);
+        CarRacingPlay carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator(), attendCarNumber, totalRacingRound);
 
-
-        System.out.println("실행 결과");
-
-        CarRacingPlay carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator());
-
-        for (int i = 1; i <= racingChance; i++) {
-            for (int carNumber = 1; carNumber <= carCount; carNumber++) {
-                carRacingPlay.race(carNumber, racingBoard);
-            }
-            resultView.printRacingStatus(racingBoard);
-            System.out.println();
+        ResultView.printRacingResultStartText();
+        for (int i = 0; i < totalRacingRound; i++) {
+            List<Car> cars = carRacingPlay.raceOneCycle();
+            ResultView.printRacingStatus(cars);
         }
-    }
-
-    private static Map<Integer, Integer> setRacingBoard(int carCount) {
-        Map<Integer, Integer> racingBoard = new HashMap<>();
-        for (int carNumber = 1; carNumber <= carCount; carNumber++) {
-            racingBoard.put(carNumber, 0);
-        }
-        return racingBoard;
     }
 }
