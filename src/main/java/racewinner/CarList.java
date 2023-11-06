@@ -55,7 +55,7 @@ public class CarList {
     }
 
     private boolean isMaxStep(int maxStep, Car car) {
-        return car.currentStep() < maxStep;
+        return car.currentStep() > maxStep;
     }
 
     private List<String> getWinnerList(int maxStep) {
