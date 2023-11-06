@@ -3,9 +3,12 @@ package step3;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static step3.util.StringUtil.combined;
+
 public class ResultView {
 
     private static final String RESULT_MESSAGE = "\n실행 결과";
+    private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
     private static final String COLON = " : ";
     private static final String TRACKING_SYMBOL = "-";
 
@@ -34,6 +37,14 @@ public class ResultView {
 
     private static void printPosition(int position) {
         IntStream.range(0, position).forEach(i -> System.out.print(TRACKING_SYMBOL));
+    }
+
+    public static void printWinner(List<String> winners) {
+        System.out.println(winnerText(winners));
+    }
+
+    public static String winnerText(List<String> winners) {
+        return String.format(WINNER_MESSAGE, combined(winners));
     }
 
 }
