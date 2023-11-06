@@ -1,14 +1,14 @@
 package step3;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CarGenerator {
 
-    public static List<Car> generate(int numberOfCars) {
-        return IntStream.range(0, numberOfCars)
-            .mapToObj(i -> new Car())
+    public static List<Car> generate(String[] nameOfCars) {
+        return Arrays.stream(nameOfCars)
+            .map(Car::new)
             .collect(Collectors.toList());
     }
 
