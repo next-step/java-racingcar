@@ -9,11 +9,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingMain {
-    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int carCount = inputView.carCountView(scanner);
-        int tryCount = inputView.tryCountView(scanner);
+        int carCount = inputView.carCountView();
+        int tryCount = inputView.tryCountView();
 
         ResultView resultView = new ResultView();
         resultView.view();
