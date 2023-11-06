@@ -3,6 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarGameTest {
@@ -32,5 +34,16 @@ class RacingCarGameTest {
         car.move();
 
         assertThat(car.moveCount()).isEqualTo(1);
+    }
+
+
+    @Test
+    @DisplayName("자동차 이동 조건 - 값이 4 이상인 경우에만 가능하다 ")
+    public void movable_check() {
+        RacingCarGame racingCarGame = new RacingCarGame(5, 5);
+
+        assertThat(racingCarGame.movable(4)).isTrue();
+        assertThat(racingCarGame.movable(5)).isTrue();
+        assertThat(racingCarGame.movable(3)).isFalse();
     }
 }

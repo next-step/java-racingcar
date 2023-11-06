@@ -2,8 +2,13 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingCarGame {
+
+    public static final int MAX_RANDOM_COUNT = 10;
+    public static final int MOVABLE_MIN = 4;
+
     private int carCount;
     private int attemptCount;
 
@@ -26,6 +31,29 @@ public class RacingCarGame {
             carList.add(car);
         }
     }
+
+    public void race() {
+        for (Car car : carList) {
+            moveCar(car);
+        }
+    }
+
+    public void moveCar(Car car) {
+        int value = random(MAX_RANDOM_COUNT);
+        if(movable(value)){
+            car.move();
+        }
+    }
+
+    public boolean movable(int value) {
+        return value >= MOVABLE_MIN;
+    }
+
+    private int random(int maxCount) {
+        Random random = new Random();
+        return random.nextInt(maxCount);
+    }
+
 
     public int carCount() {
         return carCount;
