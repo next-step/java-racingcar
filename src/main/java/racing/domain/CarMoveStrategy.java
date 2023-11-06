@@ -14,7 +14,7 @@ public class CarMoveStrategy {
 
 
     /*
-     * When created with no bound parameter, default is 4.
+     * When created with no bound parameter, default is 10.
      */
     public CarMoveStrategy(Random random, int bound) {
         this.random = random;
