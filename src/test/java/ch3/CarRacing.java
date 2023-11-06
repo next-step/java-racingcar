@@ -38,6 +38,13 @@ public class CarRacing {
         return this.executeNumbers;
     }
 
+    public void executeRace() {
+        for (Car car : cars) {
+            car.move(executeNumbers.poll());
+        }
+        makingExecuteNumbers();
+    }
+
     private void makingExecuteNumbers() {
         Random random = new Random();
         int carSize = cars.size();

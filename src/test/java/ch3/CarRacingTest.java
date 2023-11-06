@@ -42,4 +42,15 @@ public class CarRacingTest {
         });
     }
 
+
+    @Test
+    void 시행하면_랜덤숫자가_변한다() {
+        carRacing.makingCar(3);
+        List<Integer> actual = new ArrayList<>(carRacing.getExecuteNumbers());
+        carRacing.executeRace();
+        List<Integer> result = new ArrayList<>(carRacing.getExecuteNumbers());
+        assertThat(result).isNotEqualTo(actual);
+    }
+
+
 }
