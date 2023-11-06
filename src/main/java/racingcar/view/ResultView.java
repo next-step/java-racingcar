@@ -7,7 +7,7 @@ import java.util.List;
 public class ResultView {
     public void viewGame(List<Car> cars) {
         for (Car car : cars){
-            String printValue = new String(new char[car.getPosition()]).replace("\0", "-");
+            String printValue = "-".repeat(car.getPosition());
             System.out.println(printValue);
 
         }
