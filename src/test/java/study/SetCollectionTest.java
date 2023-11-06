@@ -41,7 +41,7 @@ public class SetCollectionTest {
     @ParameterizedTest
     @CsvSource(value = {"1:true", "4:false", "3:true", "2:true", "5:false"}, delimiter = ':')
     @DisplayName("CsvSource를 활용해 하나의 테스트에서 true, false를 모두 확인한다.")
-    void trueFalseUsingCsvSourceTest(int input, boolean expected){
+    void trueFalseUsingCsvSourceTest(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }

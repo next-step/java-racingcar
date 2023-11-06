@@ -15,7 +15,7 @@ public class StringTest {
     }
 
     @Test
-    void split2(){
+    void subStringTest() {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).contains("1,2");
     }
@@ -23,9 +23,6 @@ public class StringTest {
     @Test
     @DisplayName("Index 위치를 벗어나는 경우, 오류가 발생한다.")
     void exceptionTest() {
-//        assertThrows(IndexOutOfBoundsException.class,
-//                () -> "abc".charAt(4));
-
         assertThatThrownBy(() -> "abc".charAt(4)).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
