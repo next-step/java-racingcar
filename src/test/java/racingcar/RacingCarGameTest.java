@@ -15,4 +15,13 @@ class RacingCarGameTest {
         assertThat(racingCarGame.carCount()).isEqualTo(5);
         assertThat(racingCarGame.attemptCount()).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName("자동차 새성 - 입력한 수만큼 자동차를 생성한다.")
+    void create_car_and_count() {
+        RacingCarGame racingCarGame = new RacingCarGame(5, 10);
+        racingCarGame.createCar();
+
+        assertThat(racingCarGame.carList().size()).isEqualTo(5);
+    }
 }

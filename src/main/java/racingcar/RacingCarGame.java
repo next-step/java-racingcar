@@ -1,8 +1,13 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingCarGame {
     private int carCount;
     private int attemptCount;
+
+    private List<Car> carList = new ArrayList<>();
 
     public RacingCarGame(int carCount, int attemptCount) {
         this.carCount = carCount;
@@ -15,6 +20,13 @@ public class RacingCarGame {
         // 결과 화면 출력
     }
 
+    public void createCar() {
+        for (int i = 0; i < carCount; i++) {
+            Car car = new Car();
+            carList.add(car);
+        }
+    }
+
     public int carCount() {
         return carCount;
     }
@@ -23,6 +35,7 @@ public class RacingCarGame {
         return attemptCount;
     }
 
-    private void createCar() {
+    public List<Car> carList() {
+        return carList;
     }
 }
