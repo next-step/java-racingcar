@@ -3,6 +3,7 @@ package carracing.car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,12 +53,11 @@ public class CarTest {
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 
-	@Test
-	void newObject_nameLengthLessThanMin_throwException() {
-		String carNameWithLessThanMin = "a".repeat(Math.max(0, CAR_NAME_MIN_LENGTH)).substring(0, 0);
-
+	@ParameterizedTest
+	@NullAndEmptySource
+	void newObject_nameIsNullAndEmpty_throwException(String nullAndEmptyInput) {
 		assertThatThrownBy(
-				() -> new Car(carNameWithLessThanMin)
+				() -> new Car(nullAndEmptyInput)
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 }

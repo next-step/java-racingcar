@@ -12,21 +12,21 @@ public class Car {
 	}
 
 	public Car(int movingDistance, String name) {
-		checkNameLength(name);
+		checkNameLengthIsValid(name);
 		this.movingDistance = movingDistance;
 		this.name = name;
 	}
 
-	private void checkNameLength(String name) {
-		if (!isNameLengthValid(name)) {
+	private void checkNameLengthIsValid(String name) {
+		if (isNameLengthInvalid(name)) {
 			throw new IllegalArgumentException(
 					String.format("이름은 %d자를 초과할 수 없습니다", NAME_LENGTH_MAX)
 			);
 		}
 	}
 
-	private boolean isNameLengthValid(String name) {
-		return name.length() >= NAME_LENGTH_MIN && name.length() <= NAME_LENGTH_MAX;
+	private boolean isNameLengthInvalid(String name) {
+		return name == null || name.length() <= NAME_LENGTH_MIN || name.length() >= NAME_LENGTH_MAX;
 	}
 
 	public void move(MovingStrategy movingStrategy) {
