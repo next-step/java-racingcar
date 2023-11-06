@@ -12,10 +12,10 @@ class CarTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void goTest(int number) {
         // given
-        final Car car = new Car("popo", () -> number);
+        final Car car = new Car("popo");
 
         // when
-        car.move();
+        car.move(number);
 
         // then
         assertThat(car.currentStep()).isEqualTo(1);
@@ -26,10 +26,10 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void stopTest(int number) {
         // given
-        final Car car = new Car("popo", () -> number);
+        final Car car = new Car("popo");
 
         // when
-        car.move();
+        car.move(number);
 
         // then
         assertThat(car.currentStep()).isEqualTo(0);

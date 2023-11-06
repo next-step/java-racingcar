@@ -1,23 +1,16 @@
 package racewinner;
 
-import racewinner.strategy.MoveStrategy;
-
-import java.util.Random;
-
 public class Car {
     private final String name;
-    private final MoveStrategy moveStrategy;
     private int position = 0;
     private final static String STEP_STRING = "-";
 
 
-    public Car(final String name, final MoveStrategy moveStrategy) {
+    public Car(final String name) {
         this.name = name;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
-        final int number = moveStrategy.getNumber();
+    public void move(final int number) {
         if (number >= 4) {
             position++;
         }

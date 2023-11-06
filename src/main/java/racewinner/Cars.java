@@ -19,7 +19,7 @@ public class Cars {
     public void add(final String name) {
         carNameCheck(name);
 
-        carList.add(new Car(name, moveStrategy));
+        carList.add(new Car(name));
     }
 
     private void carNameCheck(final String name) {
@@ -30,7 +30,7 @@ public class Cars {
 
     public void move() {
         for (Car car: carList) {
-            car.move();
+            car.move(moveStrategy.getNumber());
         }
     }
 

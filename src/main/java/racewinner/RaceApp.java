@@ -11,6 +11,5 @@ public class RaceApp {
 
         final CarRacing carRacing = new CarRacing(carNameList, new RandomMoveStrategy());
         carRacing.start(raceAttemptCount);
-
     }
 }
