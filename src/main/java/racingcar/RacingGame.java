@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -31,7 +32,7 @@ public class RacingGame {
 
 	private void play() {
 		for (Car car : cars) {
-			car.moveByRule();
+			car.move(random());
 		}
 		rounds.add(new Round(clone(cars)));
 	}
@@ -50,5 +51,9 @@ public class RacingGame {
 
 	public List<Round> getRounds() {
 		return Collections.unmodifiableList(rounds);
+	}
+
+	private int random() {
+		return new Random().nextInt(10);
 	}
 }

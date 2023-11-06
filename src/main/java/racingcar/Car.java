@@ -1,10 +1,8 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 	private int location;
-	private final static int STANDARD_SHUFFLE_NUM = 4;
+	private final static int MOVABLE_LOWER_BOUND = 4;
 
 	public Car(int location) {
 		this.location = location;
@@ -14,17 +12,17 @@ public class Car {
 		return location;
 	}
 
-	public void moveByRule() {
-		if (isOverNum()) {
+	public void move(int random) {
+		if (isOverLowerBound(random)) {
 			moveForward();
 		}
 	}
 
-	public void moveForward() {
+	private void moveForward() {
 		this.location++;
 	}
 
-	private boolean isOverNum() {
-		return new Random().nextInt(10) >= STANDARD_SHUFFLE_NUM;
+	private boolean isOverLowerBound(int num) {
+		return num >= MOVABLE_LOWER_BOUND;
 	}
 }
