@@ -12,10 +12,10 @@ public class CarRacingTest {
     void game() {
         // given
         Car car = new Car();
-        RandomCreate randomCreate = new RandomCreate(4);
+        RandomCreate random = new RandomCreate();
 
         // when
-        car.move(randomCreate.randomNumber());
+        car.move(random.randomNumber());
 
         // then
         assertThat(car.getPosition()).isEqualTo(2);

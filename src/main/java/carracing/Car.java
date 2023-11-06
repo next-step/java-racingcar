@@ -10,21 +10,13 @@ public class Car {
         this.position = START_POSITION;
     }
 
-    public void move() {
-        if (checkStandardMove()) {
+    public void move(int randomNumber) {
+        if (checkStandardMove(randomNumber)) {
             position += 1;
         }
     }
 
-    public void move(int value) {
-        if (value >= 4) {
-            position += 1;
-        }
-    }
-
-    private boolean checkStandardMove() {
-        RandomCreate randomCreate = new RandomCreate();
-        int randomNumber = randomCreate.randomNumber();
+    private boolean checkStandardMove(int randomNumber) {
 
         return randomNumber >= STANDARD_MOVE_VALUE;
     }

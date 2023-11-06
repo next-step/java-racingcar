@@ -9,6 +9,7 @@ public class RacingGame {
 
     private final List<Car> carList;
     private final int trialCount;
+    RandomCreate random = new RandomCreate();
 
     public RacingGame(int carCount, int trialCount) {
         validate(carCount, trialCount);
@@ -21,7 +22,7 @@ public class RacingGame {
         for (int i = 0; i < trialCount; i++) {
             for (Car car : carList) {
                 ResultView.print(car.getPosition());
-                car.move();
+                car.move(random.randomNumber());
             }
             System.out.println();
         }
