@@ -9,7 +9,7 @@ public class Car {
 
         public Car(String id) {
                 this.id = id;
-                this.path = ".";
+                this.path = START_POINT;
         }
 
         public void moveForward() {

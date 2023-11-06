@@ -1,18 +1,16 @@
 package step3.presentation;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class OutputView {
 
-        private final ArrayList<String> pathByRoundOfCars;
+        private final List<String> pathByRoundOfCars;
 
-        public OutputView(ArrayList pathByRoundOfCars) {
+        public OutputView(List<String> pathByRoundOfCars) {
                 this.pathByRoundOfCars = pathByRoundOfCars;
         }
 
         public void printResult() {
-                pathByRoundOfCars.forEach(pathByRound -> {
-                        System.out.println(pathByRound);
-                });
+                pathByRoundOfCars.forEach(System.out::println);
         }
 }
