@@ -2,12 +2,13 @@ package car;
 
 public class Car {
     private CarPosition carPosition;
+    private static final int FORWARD_BOUNDARY_NUMBER = 4;
 
     public Car(int distance) {
         this.carPosition = new CarPosition(distance);
     }
 
-    public Integer getDistance() {
+    public int getDistance() {
         return carPosition.getDistance();
     }
 
@@ -18,7 +19,7 @@ public class Car {
     }
 
     private boolean isMovableForwardNumber(int randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= FORWARD_BOUNDARY_NUMBER;
     }
 
 
