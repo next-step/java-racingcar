@@ -2,8 +2,6 @@ package study.carracing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import study.carracing.domain.Car;
-import study.carracing.domain.RacingCars;
 
 public class Racing {
 
