@@ -1,7 +1,10 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGame {
 	private static final int START_LOCATION = 0;
@@ -13,9 +16,11 @@ public class RacingGame {
 	}
 
 	private void init(Integer totalCarSum) {
-		for (int i = 0; i < totalCarSum; i++) {
-			cars.add(new Car(START_LOCATION));
-		}
+		cars.addAll(
+			Stream.generate(() -> new Car(START_LOCATION))
+			.limit(totalCarSum)
+			.collect(Collectors.toList())
+		);
 	}
 
 	public void playRounds(int totalRound) {
