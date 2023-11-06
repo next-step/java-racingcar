@@ -9,8 +9,8 @@ public class Car {
     public void forward() {
         this.distance.append("-");
     }
-
-    public String distance(){
+    @Override
+    public String toString(){
         return this.distance.toString();
     }
 }

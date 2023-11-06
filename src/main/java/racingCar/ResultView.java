@@ -4,19 +4,15 @@ import java.util.List;
 
 public class ResultView {
 
-    private String resultMessage = "실행 결과";
+    private String resultMessage;
     private final List<String> result;
 
     ResultView(List<String> result){
         this.result = result;
     }
 
-    ResultView(List<String> result, String resultMessage){
-        this.result = result;
-        this.resultMessage = resultMessage;
-    }
-    public void printResult(){
-        System.out.println(this.resultMessage);
+    public void printResult(String resultMessage){
+        System.out.println(resultMessage);
         result.forEach(System.out::println);
     }
 
