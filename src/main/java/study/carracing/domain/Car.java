@@ -6,6 +6,7 @@ public class Car {
 
     private static final int MIN_MOVE_VALUE = 4;
     private static final int INITIAL_POSITION = 1;
+    private static final String PROGRESS_DASH = "-";
 
     private int position;
     private RandomGenerator randomGenerator;
@@ -27,5 +28,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public String toString() {
+        return PROGRESS_DASH.repeat(position);
     }
 }

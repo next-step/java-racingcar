@@ -2,6 +2,7 @@ package study.carracing;
 
 import study.carracing.domain.Racing;
 import study.carracing.ui.InputView;
+import study.carracing.ui.ResultView;
 import study.carracing.util.Validator;
 
 public class CarRacingController {
@@ -15,5 +16,7 @@ public class CarRacingController {
 
         Racing racing = new Racing(carCount);
         racing.start(tryCount);
+
+        ResultView.outputResult(racing.getCars());
     }
 }

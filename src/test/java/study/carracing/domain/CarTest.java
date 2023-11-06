@@ -3,6 +3,7 @@ package study.carracing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -30,5 +31,12 @@ class CarTest {
 
         int position = car.getPosition();
         assertThat(position).isEqualTo(1);
+    }
+
+    @Test
+    void carToString() {
+        Car car = new Car(new RandomGeneratorImpl());
+
+        car.go(4);
     }
 }
