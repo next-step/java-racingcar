@@ -36,7 +36,7 @@ public class InputView {
     }
 
     public Track toTrack() {
-        return new Track(carCount);
+        return new Track(carNames);
     }
 
     public Integer getMovingCount() {

@@ -5,6 +5,8 @@ import carracing.move_strategy.RandomMoveStopStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
@@ -13,7 +15,7 @@ public class CarsTest {
     void unmodifiableList() {
         // given
         MoveStrategy moveStrategy = new RandomMoveStopStrategy();
-        Cars cars = Cars.makeCars(2, moveStrategy);
+        Cars cars = Cars.makeCars(List.of("CAR1", "CAR2"), moveStrategy);
 
         // when, then
         assertThatThrownBy(cars.getCars()::clear).isInstanceOf(UnsupportedOperationException.class);
