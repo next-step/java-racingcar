@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Calculator {
 	public static final String FIXED_DELIMITER = ",|:";
 
@@ -7,18 +10,17 @@ public class Calculator {
 		if (isBlank(fullText)) {
 			return 0;
 		}
-		if (fullText.contains("//")){
-			return sumArray(toIntArray(split(getCustomFullText(fullText), getCustomDelimiter(fullText))));
+
+		Matcher matcher = getMatcher(fullText);
+		if (matcher.find()){
+			return sumArray(toIntArray(split(matcher.group(2), matcher.group(1))));
 		}
+
 		return sumArray(toIntArray(split(fullText, FIXED_DELIMITER)));
 	}
 
-	private static String getCustomFullText(String fullText) {
-		return fullText.split("\n")[1];
-	}
-
-	private static String getCustomDelimiter(String fullText) {
-		return fullText.split("\n")[0].substring(2, 3);
+	private static Matcher getMatcher(String fullText) {
+		return Pattern.compile("//(.)\n(.*)").matcher(fullText);
 	}
 
 	private static boolean isBlank(String fullText) {
