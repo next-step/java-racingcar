@@ -1,4 +1,4 @@
-package parser;
+package step2.parser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

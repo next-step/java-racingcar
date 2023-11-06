@@ -1,6 +1,6 @@
-package calculator;
+package step2.calculator;
 
-import parser.Parser;
+import step2.parser.Parser;
 
 public class StringAddCalculator {
     public static int splitAndSum(final String input) {
