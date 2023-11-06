@@ -7,3 +7,17 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+---
+
+## calculator.CalculatorTest
+### 요구사항 분석
+
+### To do
+
+### Done
+* [x] 빈 문자열 혹은 null 값을 입력할 경우 0을 반환한다. ("" => 0, null => 0)
+* [x] 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다. ("1" => 1)
+* [x] 쉼표 혹은 콜론을 구분자로 가지는 문자열을 전달하는 경우, 구분자를 기준으로 분리한 각 값의 합을 반환한다. ( "1,2:3" => 6)
+* [x] 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우, RuntimeException 예외 throw한다. ("-1:2:3" => RuntimeException)
+* [x] 커스텀 구분자를 지정할 수 있다. ("//;\n1;2;3" => 6)
