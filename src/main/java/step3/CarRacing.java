@@ -22,7 +22,7 @@ public class CarRacing {
         int attendCarNumber = carRacingInputController.inputParticipantCarNumber();
         int totalRacingRound = carRacingInputController.inputRacingChance();
 
-        CarRacingPlay carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator(), attendCarNumber, totalRacingRound);
+        CarRacingPlay carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator(), attendCarNumber);
 
         ResultView.printRacingResultStartText();
         for (int i = 0; i < totalRacingRound; i++) {

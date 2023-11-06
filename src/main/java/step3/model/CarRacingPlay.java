@@ -5,15 +5,12 @@ import java.util.List;
 
 public class CarRacingPlay {
 
-    private final int racingRound;
-
     private final List<Car> cars = new ArrayList<>();
 
     private final RandomValueGenerator randomValueGenerator;
 
-    public CarRacingPlay(RandomValueGenerator randomValueGenerator, int attendCarNumber, int racingRound) {
+    public CarRacingPlay(RandomValueGenerator randomValueGenerator, int attendCarNumber) {
         this.randomValueGenerator = randomValueGenerator;
-        this.racingRound = racingRound;
         initializeRacingCars(attendCarNumber);
     }
 
