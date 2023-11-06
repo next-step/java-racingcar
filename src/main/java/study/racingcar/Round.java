@@ -1,5 +1,8 @@
 package study.racingcar;
 
+
+import java.util.stream.Collectors;
+
 public class Round {
 
     private final Cars participateCars;
@@ -9,18 +12,10 @@ public class Round {
     }
 
     public void race(ScoreBoard scoreBoard) {
-        participateCars.carlist().forEach(car -> {
-            car.canMove();
-            Score score = new Score(car);
-            saveScore(scoreBoard, score);
-        });
-    }
-
-    private void saveScore(ScoreBoard scoreBoard, Score score) {
-        scoreBoard.score(score);
-    }
-
-    public Cars participateCars(){
-        return participateCars;
+        ScoreEachRound scoreEachRound = new ScoreEachRound(participateCars.carlist().stream()
+                        .map(Score::new)
+                        .collect(Collectors.toList())
+        );
+        scoreBoard.score(scoreEachRound);
     }
 }

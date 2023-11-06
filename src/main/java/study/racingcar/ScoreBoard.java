@@ -1,22 +1,35 @@
 package study.racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ScoreBoard {
 
-    private final List<Score> scoreList;
+    private final List<ScoreEachRound> grids;
 
     public ScoreBoard() {
-        this.scoreList = new ArrayList<>();
+        this.grids = new ArrayList<>();
     }
 
-    public void score(Score score) {
-        scoreList.add(score);
+    public void score(ScoreEachRound scoreEachRound) {
+        this.grids.add(scoreEachRound);
     }
 
-    public List<Score> scoreList(){
-        return scoreList;
+    public List<Map<Car, String>> scores() {
+        LinkedList<Map<Car, String>> result = new LinkedList<>();
+        grids.forEach(scoreEachRound -> {
+            if (result.isEmpty()) {
+                result.add(
+                        scoreEachRound.roundScores().stream()
+                                .collect(Collectors.toMap(Score::whozScore, score -> String.valueOf(score.score()))));
+                return;
+            }
+            Map<Car, String> last = result.getLast();
+            result.add(scoreEachRound.roundScores().stream()
+                    .map(score -> Map.entry(score.whozScore(), last.get(score.whozScore()) + score.score()))
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        });
+        return result;
     }
 
 }

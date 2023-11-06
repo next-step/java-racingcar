@@ -5,22 +5,22 @@ public class Score {
     private final Car car;
     private final MoveStatus moveStatus;
 
-    public final static Character MOVE_SCORE = '-';
-    public final static Character STOP_SCORE = Character.MIN_VALUE;
+    public final static String MOVE_SCORE = "-";
+    public final static String STOP_SCORE = "";
 
     public Score(Car car) {
         this.car = car;
         this.moveStatus = car.canMove();
     }
 
-    public Character score(){
+    public String score(){
         if (moveStatus.equals(MoveStatus.MOVE)){
             return MOVE_SCORE;
         }
         return STOP_SCORE;
     }
 
-    public Car whozScore(){
+    public Car whozScore() {
         return car;
     }
 }

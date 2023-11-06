@@ -1,6 +1,7 @@
 package study.racingcar;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 
@@ -16,12 +17,20 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printCharListOut(List<Character> characterList){
-        characterList.forEach(System.out::print);
-        printEnter();
+    public void printInteger(int number){
+        System.out.println(number);
     }
 
     public void printEnter(){
         System.out.println();
+    }
+
+    public <T> void printListMapValues(List<Map<T, String>> listMap) {
+        listMap.forEach(map ->{
+            map.forEach((t, s) -> {
+                System.out.println(s);
+            });
+            System.out.println("\n");
+        });
     }
 }

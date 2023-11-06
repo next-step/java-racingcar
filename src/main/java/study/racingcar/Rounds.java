@@ -18,4 +18,8 @@ public class Rounds {
     public int numberOfRound() {
         return roundList.size();
     }
+
+    public List<Round> roundList(){
+        return roundList;
+    }
 }

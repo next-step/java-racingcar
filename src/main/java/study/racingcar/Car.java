@@ -3,7 +3,6 @@ package study.racingcar;
 public class Car {
 
     private final RandomGenerator randomGenerator;
-    private MoveStatus moveStatus;
 
     private static final int MOVE_CONDITION = 4;
 
