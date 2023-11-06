@@ -3,7 +3,7 @@ package racewinner;
 import racewinner.expteion.InvalidDelimiterException;
 import racewinner.expteion.InputEmptyException;
 import racewinner.expteion.NegativeNumberException;
-import racewinner.strategy.RandomMoveStrategy;
+import racewinner.strategy.MoveStrategy;
 import racewinner.ui.ResultView;
 
 import java.util.List;
@@ -13,8 +13,10 @@ public class CarRacing {
     private final static String INVALID_DELIMITER_MSG = "','구분자 외의 다른 구분자를 사용 할 수 없습니다.";
     private final static String SPLIT_DELIMITER = ",";
     private final static String NEGATIVE_MSG = "시도할 횟수는 음수를 입력 할 수 없습니다.";
-    private final Cars carList = new Cars(new RandomMoveStrategy());
-    public CarRacing(String inputCarListName) {
+    private final Cars carList;
+    public CarRacing(String inputCarListName, MoveStrategy moveStrategy) {
+        carList = new Cars(moveStrategy);
+
         validationInput(inputCarListName);
 
         String[] carNameList = splitInputText(inputCarListName);
