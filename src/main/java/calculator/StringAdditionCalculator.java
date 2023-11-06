@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAdditionCalculator {
+
     private static final int ELEMENT_IDX = 1;
     private static final int NUMBERS_IDX = 2;
     private static final Pattern CUSTOM_ELEMENT = Pattern.compile("//(.)\n(.*)");
