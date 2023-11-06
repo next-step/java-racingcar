@@ -3,6 +3,7 @@ package carracing.car;
 import carracing.controlstatement.Boolean;
 import carracing.controlstatement.GreaterThan;
 import carracing.controlstatement.GreaterThanOrEqualTo;
+import carracing.controlstatement.IF;
 import carracing.controlstatement.LessThan;
 import carracing.controlstatement.OR;
 
@@ -30,7 +31,10 @@ public class RandomRange implements MovingStrategy {
 	public boolean isPossible() {
 		final int randomValue = this.intValue();
 		checkRandomValueIsValid(randomValue);
-		Boolean greaterThanOrEqualTo = new GreaterThanOrEqualTo(randomValue, MOVING_STANDARD);
+		Boolean greaterThanOrEqualTo =
+				new IF(
+						new GreaterThanOrEqualTo(randomValue, MOVING_STANDARD)
+				);
 
 		return greaterThanOrEqualTo.booleanValue();
 	}
@@ -45,9 +49,11 @@ public class RandomRange implements MovingStrategy {
 
 	private boolean isInValidRange(int randomValue) {
 		Boolean lessThanOrGreaterThan =
-				new OR(
-						new LessThan(randomValue, MIN_VALUE),
-						new GreaterThan(randomValue, MAX_VALUE)
+				new IF(
+						new OR(
+								new LessThan(randomValue, MIN_VALUE),
+								new GreaterThan(randomValue, MAX_VALUE)
+						)
 				);
 
 		return lessThanOrGreaterThan.booleanValue();

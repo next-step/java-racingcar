@@ -8,8 +8,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsTrueAndRightIsTrue() {
 		Boolean or = new OR(
-				new LessThan(1, 2),
-				new GreaterThan(2, 1)
+				new Boolean.SmartTrue(),
+				new Boolean.SmartTrue()
 		);
 
 		assertThat(or.booleanValue()).isTrue();
@@ -18,8 +18,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsTrueAndRightIsFalse() {
 		Boolean or = new OR(
-				new LessThan(1, 2),
-				new GreaterThan(1, 2)
+				new Boolean.SmartTrue(),
+				new Boolean.SmartFalse()
 		);
 
 		assertThat(or.booleanValue()).isTrue();
@@ -28,8 +28,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsFalseAndRightIsTrue() {
 		Boolean or = new OR(
-				new LessThan(2, 1),
-				new GreaterThan(2, 1)
+				new Boolean.SmartFalse(),
+				new Boolean.SmartTrue()
 		);
 
 		assertThat(or.booleanValue()).isTrue();
@@ -38,8 +38,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsFalseAndRightIsFalse() {
 		Boolean or = new OR(
-				new LessThan(2, 1),
-				new GreaterThan(1, 2)
+				new Boolean.SmartFalse(),
+				new Boolean.SmartFalse()
 		);
 
 		assertThat(or.booleanValue()).isFalse();

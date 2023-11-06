@@ -1,16 +1,16 @@
 package carracing.controlstatement;
 
 public class OR extends Boolean {
-	private final LessThan lessThan;
-	private final GreaterThan greaterThan;
+	private final Boolean aBoolean;
+	private final Boolean bBoolean;
 
-	public OR(LessThan lessThan, GreaterThan greaterThan) {
-		this.lessThan = lessThan;
-		this.greaterThan = greaterThan;
+	public OR(Boolean aBoolean, Boolean bBoolean) {
+		this.aBoolean = aBoolean;
+		this.bBoolean = bBoolean;
 	}
 
 	@Override
 	public boolean booleanValue() {
-		return this.lessThan.booleanValue() || this.greaterThan.booleanValue();
+		return this.aBoolean.booleanValue() || this.bBoolean.booleanValue();
 	}
 }
