@@ -3,12 +3,10 @@ package carracing;
 import carracing.car.Car;
 import carracing.car.MovingStrategy;
 import carracing.car.RandomRange;
+import carracing.car.Winners;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Main {
 	public static void main(String[] args) {
@@ -21,8 +19,8 @@ public class Main {
 			racing(cars);
 		}
 
-		List<Car> winners = winners(cars);
-		ResultView.printWinners(winners);
+		Winners winners = new Winners(cars);
+		ResultView.printWinners(winners.winners());
 	}
 
 	public static void racing(List<Car> cars) {
@@ -32,18 +30,5 @@ public class Main {
 			ResultView.printMovingResult(car);
 		}
 		ResultView.empty();
-	}
-
-	private static List<Car> winners(List<Car> cars) {
-		int maxMovingDistance = cars.stream()
-				.map(Car::movingDistance)
-				.max(Comparator.comparingInt(movingDistance -> movingDistance))
-				.orElseThrow(NoSuchElementException::new);
-
-		List<Car> winners = cars.stream()
-				.filter(car -> car.movingDistance() == maxMovingDistance)
-				.collect(Collectors.toList());
-
-		return winners;
 	}
 }
