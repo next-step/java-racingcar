@@ -24,8 +24,8 @@ public class RacingGameController {
         for (int i = 0; i < number; i++) {
             racingGame.play();
             ResultView.report(racingGame.cars());
-            ResultView.winners(racingGame.winners());
         }
+        ResultView.winners(racingGame.winners());
     }
 
 }
