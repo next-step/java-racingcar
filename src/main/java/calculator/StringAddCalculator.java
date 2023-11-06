@@ -11,14 +11,14 @@ public class StringAddCalculator {
     private static final String DEFAULT_PATTERN = ",|:";
 
     public static int splitAndSum(String input) {
-        if (isEmpty(input)) {
+        if (isBlank(input)) {
             return 0;
         }
         String[] inputs = splitByDelimiter(input);
         return splitAndSum(inputs);
     }
 
-    private static boolean isEmpty(String input) {
+    private static boolean isBlank(String input) {
         return input == null || input.isBlank();
     }
 
