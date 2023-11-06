@@ -24,7 +24,14 @@ public class Distance {
         return this.distance;
     }
 
-    public boolean isLongger(Distance comparisonDistance) {
+    public Distance getLonger(Distance comparisonDistance) {
+        if(isLonger(comparisonDistance)) {
+            return this;
+        }
+        return comparisonDistance;
+    }
+
+    public boolean isLonger(Distance comparisonDistance) {
         return this.distance > comparisonDistance.distance;
     }
 

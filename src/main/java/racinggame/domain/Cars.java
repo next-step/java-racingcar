@@ -67,17 +67,10 @@ public class Cars {
         Distance maxDistance = new Distance();
 
         for (Car car : this.carList) {
-            maxDistance = max(maxDistance, car.movingDistance());
+            maxDistance = maxDistance.getLonger(car.movingDistance());
         }
 
         return maxDistance;
-    }
-
-    private Distance max(Distance existingDistance, Distance comparisonDistance) {
-        if (existingDistance.isLongger(comparisonDistance)) {
-            return existingDistance;
-        }
-        return comparisonDistance;
     }
 
     public List<CarName> names() {
