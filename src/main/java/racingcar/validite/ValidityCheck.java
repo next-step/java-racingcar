@@ -2,6 +2,8 @@ package racingcar.validite;
 
 import java.util.List;
 
+import static racingcar.message.ExceptionMessageEnum.*;
+
 public class ValidityCheck {
 
     private static final int INPUT_CONDITION_NUMBER = 0;
@@ -11,14 +13,14 @@ public class ValidityCheck {
         try {
             checkNumberSize(number);
         } catch (Exception e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_STRING_INPUT.getMessage());
         }
         return number;
     }
 
     private static void checkNumberSize(Integer number) {
         if (number < INPUT_CONDITION_NUMBER) {
-            throw new IllegalArgumentException("0보다 큰 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_INPUT_UNDER_ZERO.getMessage());
         }
     }
 
@@ -33,12 +35,12 @@ public class ValidityCheck {
         if (nameLengthBoolean(name)) {
             return name;
         }
-        throw new IllegalArgumentException("자동차 이름은 5자를 초과 할 수 없습니다.");
+        throw new IllegalArgumentException(ERROR_INPUT_CAR_NAME.getMessage());
     }
 
     private static boolean nameLengthBoolean(String name) {
         if (name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름이 없는 경우가 있습니다.");
+            throw new IllegalArgumentException(ERROR_INPUT_CAR_NAME_EMPTY.getMessage());
         }
         if (name.length() > CAR_NAME_LENGTH) {
             return false;

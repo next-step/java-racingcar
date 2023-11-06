@@ -1,10 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.CarCollection;
 
 import java.util.List;
 
@@ -12,11 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarFactoryTest {
-    private CarCollection carFactory;
-    private final List<String> DEFAULT_CAR_NAME = List.of("pobi","crong","honux");
+
+    private final List<String> DEFAULT_CAR_NAME = List.of("pobi", "crong", "honux");
+    private CarFactory carFactory;
 
     public void setUp() {
-        this.carFactory = new CarCollection();
+        this.carFactory = new CarFactory();
     }
 
     @DisplayName("차량이름으로 차량생성")
@@ -25,10 +24,9 @@ public class CarFactoryTest {
         //given
         setUp();
         //when
-        carFactory.participants(DEFAULT_CAR_NAME);
-        List<Car> cars = carFactory.getCars();
+        List<Car> cars = carFactory.participants(DEFAULT_CAR_NAME);
         //then
-        assertThat(cars.size()).isEqualTo(3);
+        assertThat(cars.size()).isEqualTo(DEFAULT_CAR_NAME.size());
     }
 
     @DisplayName("차량 생성 실패")
@@ -52,7 +50,7 @@ public class CarFactoryTest {
         public void 차량_이름이_0글자_일때() {
             //given
             setUp();
-            List<String> carName = List.of("pobi","","honux");
+            List<String> carName = List.of("pobi", "", "honux");
             //when
             //then
             assertThatThrownBy(() -> carFactory.participants(carName))
