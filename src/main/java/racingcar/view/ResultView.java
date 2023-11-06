@@ -1,7 +1,27 @@
 package racingcar.view;
 
+import racingcar.Car;
+import racingcar.RacingCarGame;
+
+import java.util.List;
+
 public class ResultView {
-    private void printResult() {
-        System.out.println("실행 결과");
+
+    public static final String CAR_PATH = "-";
+
+    private RacingCarGame racingCarGame;
+
+    public ResultView(RacingCarGame racingCarGame) {
+        this.racingCarGame = racingCarGame;
+    }
+
+    public void printRace() {
+        for (Car car : racingCarGame.carList()) {
+            System.out.println(createPath(car.moveCount()));
+        }
+    }
+
+    private String createPath(int count) {
+        return CAR_PATH.repeat(count);
     }
 }
