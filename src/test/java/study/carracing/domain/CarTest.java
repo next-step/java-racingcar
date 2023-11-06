@@ -1,11 +1,11 @@
 package study.carracing.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
@@ -33,10 +33,18 @@ class CarTest {
         assertThat(position).isEqualTo(1);
     }
 
-    @Test
-    void carToString() {
+    @ParameterizedTest
+    @CsvSource(value = {"1:'--'", "2:'---'", "3:'----'", "4:'-----'", "5:'------'"}, delimiter = ':')
+    @DisplayName("차가 전진 회수만큼 대쉬(-)가 출력된다.")
+    void carToString(int forward, String expected) {
         Car car = new Car(new RandomGeneratorImpl());
 
-        car.go(4);
+        for (int i = 0; i < forward; i++) {
+            car.go(4);
+        }
+
+
+        String actual = car.toString();
+        assertThat(actual).isEqualTo(expected);
     }
 }
