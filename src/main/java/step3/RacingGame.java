@@ -1,5 +1,7 @@
 package step3;
 
+import step3.util.RandomUtil;
+
 import java.util.List;
 
 public class RacingGame extends Game {

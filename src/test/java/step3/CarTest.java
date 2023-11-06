@@ -9,8 +9,9 @@ public class CarTest {
 
     private static final int NOT_MOVED = 0;
     private static final int MOVED = 1;
+    private static final String NAME = "pobi";
 
-    private Car car = new Car();
+    private Car car = new Car(NAME);
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})

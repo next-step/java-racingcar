@@ -21,6 +21,10 @@ public class Car {
         return random >= MOVE_BOUND;
     }
 
+    public String name() {
+        return this.name;
+    }
+
     public int position() {
         return this.position;
     }
