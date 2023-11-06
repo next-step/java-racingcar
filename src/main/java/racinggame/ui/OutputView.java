@@ -1,7 +1,6 @@
 package racinggame.ui;
 
 import racinggame.domain.Car;
-import racinggame.domain.Name;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,9 +26,9 @@ public class OutputView {
         sb.setLength(0);
     }
 
-    public void printWinners(List<Name> printNames) {
-        String result = printNames.stream()
-                .map(Name::toString)
+    public void printWinners(List<Car> cars) {
+        String result = cars.stream()
+                .map(car -> car.getCarName().toString())
                 .collect(Collectors.joining(OUTPUT_CAR_COMMA));
 
         if (!result.isEmpty()) {
