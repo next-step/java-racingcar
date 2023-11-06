@@ -3,6 +3,8 @@ package step3.racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,37 +41,31 @@ class RacingCarTest {
     }
 
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("move 메서드의 입력값으로 0이상 3이하의 값이 들어오면, 자동차는 전진하지 않는다.")
-    void moveRacingCar_whenInputInRangeZeroToThree() {
+    void moveRacingCar_whenInputInRangeZeroToThree(int moveValue) {
         //given
         int initDistance = racingCar.currentDistance();
 
         //when
-        racingCar.moveIfInRange(0);
-        racingCar.moveIfInRange(1);
-        racingCar.moveIfInRange(2);
-        racingCar.moveIfInRange(3);
+        racingCar.moveIfInRange(moveValue);
 
         //then
         assertThat(racingCar.currentDistance()).isEqualTo(initDistance);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("move 메서드의 입력값으로 4이상 9이하의 값이 들어오면, 자동차의 전진한 거리가 1 증가한다.")
-    void moveRacingCar_whenInputInRangeFourToNine() {
+    void moveRacingCar_whenInputInRangeFourToNine(int moveValue) {
         //given
         int initDistance = racingCar.currentDistance();
 
         //when
-        racingCar.moveIfInRange(4);
-        racingCar.moveIfInRange(5);
-        racingCar.moveIfInRange(6);
-        racingCar.moveIfInRange(7);
-        racingCar.moveIfInRange(8);
-        racingCar.moveIfInRange(9);
+        racingCar.moveIfInRange(moveValue);
 
         //then
-        assertThat(racingCar.currentDistance()).isEqualTo(initDistance + 6);
+        assertThat(racingCar.currentDistance()).isEqualTo(initDistance + 1);
     }
 }
