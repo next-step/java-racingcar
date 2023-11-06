@@ -1,56 +1,30 @@
 package racingcar;
 
 
-import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarTest {
-
-    private ByteArrayOutputStream outputStream;
-
-
-    @Test
-    void 상태출력() {
-        outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-
-        RacingCar racingCar = new RacingCar();
-        racingCar.action(4); // 전진
-
-        String result = outputStream.toString();
-
-        assertThat(result).isEqualTo("-\n"); // 1칸 출력
-
-
+    @RepeatedTest(1000)
+    void dice_테스트() {
+        // given
+        // when
+        int actual = Dice.roll();
+        // then
+        assertThat(actual).isGreaterThanOrEqualTo(0).isLessThan(10);
     }
 
-    @Test
-    void 전진_조건_테스트_4이상() {
-        RacingCar racingCar = new RacingCar(); // carPosition = 0
-
-        racingCar.action(6);
-        assertThat(racingCar.getCarPosition()).isEqualTo(1); // 전진
-    }
-
-    @Test
-    void 전진_조건_테스트_4() {
-        RacingCar racingCar = new RacingCar(); // carPosition = 0
-
-        racingCar.action(4);
-        assertThat(racingCar.getCarPosition()).isEqualTo(1); // 전진
-
-    }
-
-    @Test
-    void 전진_조건_테스트_4미만() {
-        RacingCar racingCar = new RacingCar(); // carPosition = 0
-
-        racingCar.action(3);
-        assertThat(racingCar.getCarPosition()).isEqualTo(0); // 정지
-
+    @ParameterizedTest
+    @CsvSource(value = {"1, 0", "2, 0", "3, 0", "4, 1", "5, 1", "6, 1", "7, 1", "8, 1", "9, 1"}, delimiter = ',')
+    void move_테스트(int number, int expected) {
+        // given
+        RacingCar car = new RacingCar();
+        // when
+        car.action(number);
+        // then
+        assertThat(car.getCarPosition()).isEqualTo(expected);
     }
 }

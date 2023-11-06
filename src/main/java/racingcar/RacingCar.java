@@ -1,35 +1,26 @@
 package racingcar;
 
 public class RacingCar {
+
+    private static final int STARTING_POSITION = 0;
+    private static final int MINIMUM_VALUE_TO_MOVE = 4;
+
     private int carPosition;
 
     public RacingCar() {
-        this.carPosition = 0;
+        this.carPosition = STARTING_POSITION;
     }
 
     public void action(int value) {
-        if (value >= 4) {
+        if (value >= MINIMUM_VALUE_TO_MOVE) {
             this.move();
-            return;
         }
-        this.holdPosition();
     }
 
-    public void move() {
+    private void move() {
         this.carPosition++;
-        this.printCarPosition();
     }
 
-    public void holdPosition() {
-        this.printCarPosition();
-    }
-
-    public void printCarPosition() {
-        for (int i = 0; i < this.getCarPosition(); i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
 
     public int getCarPosition() {
         return this.carPosition;
