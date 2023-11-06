@@ -6,16 +6,18 @@ import java.util.Random;
 
 public class GameMain {
 
+    public static final int BOUND = 9;
+
     public static void main(String[] args) {
 
         //게임 데이터 입력
-        Data data = Data.userInput();
+        RaceInfo raceInfo = RaceInfo.inputInfo();
 
         //자동차 생성
-        List<Car> cars = generateCar(data.carData());
+        List<Car> cars = generateCar(raceInfo.carData());
 
         //게임 진행 & 상태 출력
-        goRacing(cars, data.trialData());
+        goRacing(cars, raceInfo.trialData());
     }
 
     public static List<Car> generateCar(int number) {
@@ -29,7 +31,7 @@ public class GameMain {
     }
 
     public static int random() {
-        return new Random().nextInt(9);
+        return new Random().nextInt(BOUND);
     }
 
     public static void goRacing(List<Car> cars, int trials) {
@@ -42,7 +44,7 @@ public class GameMain {
     private static void drive(List<Car> cars) {
         for (Car car : cars) {
             car.move(random());
-            System.out.println("No." + car.carNumber() + ": " + status(car));
+            System.out.println(status(car));
         }
     }
 

@@ -2,6 +2,7 @@ package racing;
 
 public class Car {
 
+    public static final int FORWARD_CONDITION = 4;
     private final int number;
     private int distance;
 
@@ -19,7 +20,7 @@ public class Car {
     }
 
     public void move(int random) {
-        if (random > 3) {
+        if (random >= FORWARD_CONDITION) {
             distance += 1;
         }
     }

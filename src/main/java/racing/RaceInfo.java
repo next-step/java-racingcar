@@ -2,17 +2,17 @@ package racing;
 
 import java.util.Scanner;
 
-public class Data {
+public class RaceInfo {
 
     private final int cars;
     private final int trials;
 
-    public Data(int cars, int trials) {
+    public RaceInfo(int cars, int trials) {
         this.cars = cars;
         this.trials = trials;
     }
 
-    public static Data userInput() {
+    public static RaceInfo inputInfo() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -21,7 +21,7 @@ public class Data {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         int trials = scanner.nextInt();
 
-        return new Data(cars, trials);
+        return new RaceInfo(cars, trials);
     }
 
     public int carData() {
