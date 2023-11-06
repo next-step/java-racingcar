@@ -1,19 +1,19 @@
 package car;
 
 public class Car {
-    private Integer distance;
+    private CarPosition carPosition;
 
-    public Car() {
-        this.distance = 0;
+    public Car(int distance) {
+        this.carPosition = new CarPosition(distance);
     }
 
     public Integer getDistance() {
-        return distance;
+        return carPosition.getDistance();
     }
 
     public void game(int randomNumber) {
         if(isMovableForwardNumber(randomNumber)) {
-            this.distance += 1;
+            carPosition.incrementDistance();
         }
     }
 

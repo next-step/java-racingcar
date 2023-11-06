@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+
+    private static final Integer START_DISTANCE = 0;
+
     public static void main(String[] args) {
         racingGameRun();
     }
@@ -15,7 +18,7 @@ public class RacingGame {
     public static List<Car> createCarList(int numberOfCars) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            carList.add(new Car());
+            carList.add(new Car(START_DISTANCE));
         }
         return carList;
     }
