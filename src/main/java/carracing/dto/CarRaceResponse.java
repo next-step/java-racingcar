@@ -18,4 +18,8 @@ public class CarRaceResponse {
     public List<CarsResponse> getCarResponses() {
         return carsResponses;
     }
+
+    public List<String> getWinnerNames() {
+        return winnerNames;
+    }
 }
