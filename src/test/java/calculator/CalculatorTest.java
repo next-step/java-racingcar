@@ -78,4 +78,18 @@ public class CalculatorTest {
         assertThatThrownBy(() -> calculator.calculate(given))
                 .isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    @DisplayName("숫자 하나를 입력한 경우 해당 숫자를 반환한다.")
+    void simple_number() {
+        // given
+        Calculator calculator = new Calculator();
+        String given = "4";
+
+        // when
+        long sum = calculator.calculate(given);
+
+        // then
+        assertThat(sum).isEqualTo(4);
+    }
 }

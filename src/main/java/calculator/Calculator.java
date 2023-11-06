@@ -25,7 +25,7 @@ public class Calculator {
             return calculateSumWithDefaultRegex(text);
         }
 
-        return ZERO;
+        return calculateSimpleNumber(text);
     }
 
     private boolean isNothing(String text) {
@@ -83,5 +83,9 @@ public class Calculator {
 
     private long calculateSumWithDefaultRegex(String text) {
         return calculateSum(text, DEFAULT_REGEX);
+    }
+
+    private long calculateSimpleNumber(String text) {
+        return Long.parseLong(text);
     }
 }
