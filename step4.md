@@ -1,7 +1,7 @@
 ## step3 피드백
 - [ ] 출력 로직 View로 모으기
 - [ ] View 클래스 멤버변수 제거
-- [ ] SecureRandom 적용해보기
+- [X] SecureRandom 적용해보기
 
 ## 기능 요구사항
 - 각 자동차에 이름을 부여할 수 있다. 

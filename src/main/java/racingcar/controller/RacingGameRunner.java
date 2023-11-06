@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.DefaultRandomPicker;
+import racingcar.domain.SecureRandomPicker;
 import racingcar.view.CarStatus;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -26,7 +27,7 @@ public class RacingGameRunner {
         List<Car> cars = new ArrayList<>(carCount);
 
         for (int idx = 0; idx < carCount; idx++) {
-            cars.add(Car.create("car", new DefaultRandomPicker()));
+            cars.add(Car.create("car", new SecureRandomPicker()));
         }
 
         return cars;
