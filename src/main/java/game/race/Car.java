@@ -6,29 +6,21 @@ import java.util.Random;
 
 public class Car {
 
-    private static final String MARK = "-";
     private static final int THRESHOLD = 4;
 
-    private final List<String> tireMarks = new ArrayList<>();
+    private int cars;
 
-    public List<String> getTireMarks() {
-        return tireMarks;
-    }
-
-    public void goForward(int tryCnt) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(MARK);
-        for (int idx = 0; idx < tryCnt; idx++) {
-            int number = new Random().nextInt(10) + 1;
-            append(builder, number);
+    public List<Boolean> goForward() {
+        List<Boolean> movements = new ArrayList<>();
+        for (int car = 0; car < cars; car++) {
+            int number = new Random().nextInt(10);
+            movements.add(THRESHOLD < number);
         }
 
-        tireMarks.add(builder.toString());
+        return movements;
     }
 
-    private void append(StringBuilder builder, int number) {
-        if (THRESHOLD < number) {
-            builder.append(MARK);
-        }
+    public void setCars(int cars) {
+        this.cars = cars;
     }
 }
