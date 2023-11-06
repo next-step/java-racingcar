@@ -3,7 +3,8 @@ package carracing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarRacingTest {
 
@@ -12,10 +13,10 @@ public class CarRacingTest {
     void game() {
         // given
         Car car = new Car();
-        RandomNumberGenerator random = new RandomNumberGenerator();
+        int randomNumber = 4;
 
         // when
-        car.move(random.getRandomNumber());
+        car.move(randomNumber);
 
         // then
         assertThat(car.getPosition()).isEqualTo(2);
@@ -24,7 +25,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("사용자가 자동차 게임 실행 후 음수를 입력하면 RuntimeException이 발생한다.")
     public void negative_validate() throws Exception {
-        assertThatThrownBy(() -> new RacingGame(-1,-4))
+        assertThatThrownBy(() -> new RacingGame(-1, -4))
                 .isInstanceOf(RuntimeException.class);
     }
 
@@ -33,8 +34,10 @@ public class CarRacingTest {
     public void createRandomNumber() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
-        int randomNumber = randomNumberGenerator.getRandomNumber();
+        for (int i = 0; i < 50; i++) {
+            int randomNumber = randomNumberGenerator.getRandomNumber();
+            assertThat(randomNumber).isBetween(0, 9);
+        }
 
-        assertThat(randomNumber).isLessThan(10);
     }
 }
