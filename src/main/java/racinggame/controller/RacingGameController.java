@@ -4,6 +4,7 @@ import java.util.Scanner;
 import racinggame.domain.Cars;
 import racinggame.domain.RacingGame;
 import racinggame.domain.strategy.RandomMovingStrategy;
+import racinggame.domain.strategy.TenBoundRandomHolder;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
@@ -20,7 +21,7 @@ public class RacingGameController {
         ResultView.br();
         ResultView.resultSign();
         for (int i = 0; i < number; i++) {
-            racingGame.play(new RandomMovingStrategy());
+            racingGame.play(new RandomMovingStrategy(new TenBoundRandomHolder()));
             ResultView.report(racingGame.cars());
         }
         ResultView.winners(racingGame.winners());
