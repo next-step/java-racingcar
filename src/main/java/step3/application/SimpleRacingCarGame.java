@@ -9,8 +9,8 @@ import step3.domain.Car;
 
 public class SimpleRacingCarGame {
 
-        private final static String RESET = "";
-        private final static Random random = new Random();
+        private static final String RESET = "";
+        private static final Random random = new Random();
         private final int carCnt;
         private final int round;
         private List<Car> cars = new ArrayList<>();
@@ -22,14 +22,14 @@ public class SimpleRacingCarGame {
                 this.round = round;
         }
 
-        public ArrayList<String> start() {
+        public List<String> start() {
                 joinCars();
                 race();
                 return recordByRounds;
         }
 
-        private void joinCars() {
-                cars = IntStream.range(0, carCnt).mapToObj(id -> new Car(String.valueOf(id)))
+        public List<Car> joinCars() {
+                return IntStream.range(0, carCnt).mapToObj(id -> new Car(String.valueOf(id)))
                     .collect(Collectors.toList());
         }
 
@@ -55,10 +55,7 @@ public class SimpleRacingCarGame {
         }
 
         private boolean isAbleToMove() {
-                if (random.nextInt(10) >= 4) {
-                        return true;
-                }
-                return false;
+                return random.nextInt(10) >= 4;
         }
 
         private void recordPathForCarInThisRound(Car car) {
