@@ -17,11 +17,20 @@ class RacingCarGameTest {
     }
 
     @Test
-    @DisplayName("자동차 새성 - 입력한 수만큼 자동차를 생성한다.")
+    @DisplayName("자동차 생성 - 입력한 수만큼 자동차를 생성한다.")
     void create_car_and_count() {
         RacingCarGame racingCarGame = new RacingCarGame(5, 10);
         racingCarGame.createCar();
 
         assertThat(racingCarGame.carList().size()).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("자동차 이동 - 자동차가 이동한다. 이동 카운트가 증가한다")
+    void move_car() {
+        Car car = new Car();
+        car.move();
+
+        assertThat(car.moveCount()).isEqualTo(1);
     }
 }
