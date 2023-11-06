@@ -27,18 +27,11 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
+    private int getMaxPosition() {
+        return this.cars.stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
+    }
+
     public List<Car> getFastestCars() {
-        int maxPosition = -1;
-        List<Car> fastestCars = new ArrayList<>();
-        for (Car car : this.cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-                fastestCars.clear();
-                fastestCars.add(car);
-            } else if (car.getPosition() == maxPosition) {
-                fastestCars.add(car);
-            }
-        }
-        return fastestCars;
+        return this.cars.stream().filter(car -> car.getPosition().equals(getMaxPosition())).collect(Collectors.toList());
     }
 }

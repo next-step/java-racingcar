@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 import java.util.List;
 
+import static java.util.Comparator.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackTest {
@@ -25,7 +26,7 @@ public class TrackTest {
         // given
         Track track = new Track(carNames);
         track.run();
-        int maxPosition = track.carHistory().getCars().stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
+        int maxPosition = track.carHistory().getCars().stream().max(comparing(Car::getPosition)).get().getPosition();
 
         // when
         List<Car> winners = track.winners();
