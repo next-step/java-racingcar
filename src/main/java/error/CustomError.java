@@ -1,8 +1,7 @@
 package error;
 
 public enum CustomError {
-    NEGATIVE_NUMBER_ERROR("Input number should be positive number"),
-    NUMBER_FORMAT_ERROR("Input value is not number format");
+    NEGATIVE_NUMBER_ERROR("Input number should be positive number");
 
     private final String errorContent;
 

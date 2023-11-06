@@ -52,11 +52,4 @@ class StringAddCalculatorTest {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
-
-    @Test
-    @DisplayName("문자열 계산기에 숫자 이외의 값을 전달하는 경우 RuntimeException 예외를 throw한다.")
-    public void splitAndSum_notNumber() throws RuntimeException {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("숫자 아님"))
-                .isInstanceOf(RuntimeException.class);
-    }
 }

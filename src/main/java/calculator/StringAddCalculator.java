@@ -30,15 +30,11 @@ public class StringAddCalculator {
     }
 
     private static int toInt(String input) {
-        try {
-            int number = Integer.parseInt(input);
-            if (number < 0) {
-                throw new RuntimeException(CustomError.NEGATIVE_NUMBER_ERROR.getErrorContent());
-            }
-            return number;
-        } catch (NumberFormatException numberFormatException) {
-            throw new RuntimeException(CustomError.NUMBER_FORMAT_ERROR.getErrorContent());
+        int number = Integer.parseInt(input);
+        if (number < 0) {
+            throw new RuntimeException(CustomError.NEGATIVE_NUMBER_ERROR.getErrorContent());
         }
+        return number;
     }
 
     private static String[] splitByDelimiter(String input) {
