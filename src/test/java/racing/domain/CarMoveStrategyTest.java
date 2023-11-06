@@ -17,7 +17,7 @@ class CarMoveStrategyTest {
         CarMoveStrategy carMoveStrategy = new CarMoveStrategy(random);
 
         // when
-        int result = carMoveStrategy.getResult(10);
+        int result = carMoveStrategy.getResult();
 
         // then
         assertThat(result).isBetween(0, 9);

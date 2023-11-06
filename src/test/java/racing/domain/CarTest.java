@@ -55,10 +55,10 @@ class CarTest {
     void car_stop_when_random_bound_to_3() {
         // given
         Car car = new Car();
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random());
+        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random(), 3);
 
         // when
-        int result = carMoveStrategy.getResult(3);
+        int result = carMoveStrategy.getResult();
         car.move(result);
 
         // then
