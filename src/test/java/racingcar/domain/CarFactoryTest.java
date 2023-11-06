@@ -3,8 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.CarFactory;
 
 import java.util.List;
 

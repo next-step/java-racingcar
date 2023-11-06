@@ -15,5 +15,4 @@ public enum ExceptionMessageEnum {
     public String getMessage() {
         return message;
     }
-
 }

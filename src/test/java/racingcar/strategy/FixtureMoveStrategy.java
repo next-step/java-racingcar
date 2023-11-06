@@ -1,7 +1,5 @@
 package racingcar.strategy;
 
-import racingcar.strategy.MoveStrategy;
-
 public class FixtureMoveStrategy implements MoveStrategy {
 
     private final int moveNumber;
