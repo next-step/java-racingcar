@@ -26,7 +26,7 @@ public class RacingGameRunner {
         List<Car> cars = new ArrayList<>(carCount);
 
         for (int idx = 0; idx < carCount; idx++) {
-            cars.add(new Car(new DefaultRandomPicker()));
+            cars.add(Car.create("car", new DefaultRandomPicker()));
         }
 
         return cars;
