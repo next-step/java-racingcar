@@ -3,7 +3,6 @@ package racinggame.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -51,13 +50,11 @@ class CarsTest {
     }
 
     @Test
-    void 자동차의_요소를_추출_할_수_있다() {
-        Optional<Car> maybeCar = cars.find(0);
-        Car actual = maybeCar.get();
-        Car expected = new Car(new CarName("pobi"),
-            new MovingValidator(new TestMovingStrategy(MOVABLE_NUMBER)));
+    void 자동차들을_생성_할_수_있다() {
+        boolean actual = cars.contain(Cars.from(new String[]{"pobi"}, new MovingValidator(new TestMovingStrategy(
+            MOVABLE_NUMBER))));
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isTrue();
     }
 
     @Test

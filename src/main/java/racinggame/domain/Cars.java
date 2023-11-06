@@ -3,7 +3,6 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 public class Cars {
 
@@ -41,14 +40,8 @@ public class Cars {
         return distances;
     }
 
-    public Optional<Car> find(int index) {
-        try {
-            return Optional.of(carList.get(index));
-        } catch (IndexOutOfBoundsException e) {
-            return Optional.empty();
-        } catch (Exception e) {
-            throw e;
-        }
+    public boolean contain(Cars cars) {
+        return equals(cars);
     }
 
     public List<Car> findAll() {

@@ -3,7 +3,6 @@ package racinggame.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -30,10 +29,9 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(new Cars(cars));
         racingGame.play();
 
-        Optional<Car> maybeCar = racingGame.cars().find(0);
-        Car actual = maybeCar.get();
-        Car expected = new Car(new CarName("pobi"), new Distance(distance),
-            new MovingValidator(new TestMovingStrategy()));
+        Cars actual = racingGame.cars();
+        Cars expected = new Cars(List.of(new Car(new CarName("pobi"), new Distance(distance),
+            new MovingValidator(new TestMovingStrategy()))));
 
         assertThat(actual).isEqualTo(expected);
     }
