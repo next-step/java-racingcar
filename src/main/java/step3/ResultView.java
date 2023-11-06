@@ -43,7 +43,7 @@ public class ResultView {
         System.out.println(winnerText(winners));
     }
 
-    public static String winnerText(List<String> winners) {
+    private static String winnerText(List<String> winners) {
         return String.format(WINNER_MESSAGE, combined(winners));
     }
 
