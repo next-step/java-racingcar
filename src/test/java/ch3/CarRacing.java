@@ -54,10 +54,10 @@ public class CarRacing {
     }
 
     public void startGame() {
-        int carCount = inputView.getInputValue("자동차 대수는 몇 대인가요?");
+        int carCount = inputView.getInputValue("자동차 대수는 몇 대 인가요?");
         makingCar(carCount);
         int executeCount = inputView.getInputValue("시도할 회수는 몇 회 인가요?");
-        System.out.println("\n실행 결과");
+        resultView.showResultComment("실행 결과");
         while (executeCount-- > 0) {
             executeRace();
             resultView.showResultCarRacing(cars);
