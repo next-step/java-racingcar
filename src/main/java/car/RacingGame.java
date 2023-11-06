@@ -10,6 +10,7 @@ public class RacingGame {
     public static void main(String[] args) {
         racingGameRun();
     }
+
     public static void racingGameRun() {
         List<Car> carList = createCarList(InputView.inputNumberOfCars());
         gameInProgress(InputView.inputNumberOfGames(), carList);
@@ -36,5 +37,4 @@ public class RacingGame {
             car.game(RandomNumberGenerator.makeRandomNumber());
         }
     }
-
 }

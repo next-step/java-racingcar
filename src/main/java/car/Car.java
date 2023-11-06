@@ -21,6 +21,4 @@ public class Car {
     private boolean isMovableForwardNumber(int randomNumber) {
         return randomNumber >= FORWARD_BOUNDARY_NUMBER;
     }
-
-
 }
