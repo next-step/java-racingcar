@@ -28,7 +28,7 @@ public class CarFactoryTest {
         //when
         List<Car> cars = carFactory.participants(DEFAULT_CAR_NAME);
         //then
-        assertThat(cars).isEqualTo(DEFAULT_CAR_NAME.size());
+        assertThat(cars.size()).isEqualTo(DEFAULT_CAR_NAME.size());
     }
 
     @DisplayName("차량 생성 실패")
