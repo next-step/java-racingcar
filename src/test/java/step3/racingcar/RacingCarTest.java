@@ -25,6 +25,19 @@ class RacingCarTest {
         assertThat(currentDistance).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("currentDistance 메서드를 사용하면, 자동차의 전진한 거리를 확인한다.")
+    void getCurrentDistanceOfRacingCar() {
+        //given
+        racingCar.moveIfInRange(4);
+
+        //when
+        int currentDistance = racingCar.currentDistance();
+
+        //then
+        assertThat(currentDistance).isEqualTo(1);
+    }
+
 
     @Test
     @DisplayName("move 메서드의 입력값으로 0이상 3이하의 값이 들어오면, 자동차는 전진하지 않는다.")
