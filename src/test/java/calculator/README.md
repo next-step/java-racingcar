@@ -10,3 +10,11 @@
 - [x] 쉼표(,) 콜론(:)을 기본 구분자로 분리한 숫자의 합을 반환
 - [x] 커스텀 구분자 지정 `//커스텀구분자\n`로 사용할 수 있다.
 - [x] 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException을 throw 한다.
+---
+## Step2 리뷰반영 TODO
+- NotNumberException -> NumberFormatException (자바표준 Exception으로 변경)
+- RandomPoint 랜덤넘버 상수화
+- TrackHistory를 dto로 생각하고 분리하기
+  - CarRace에서 게임 횟수로 동작하게 하고 List<CarRaceResponse>로 쌓이게 구현 
+  - Clonable 제거
+
