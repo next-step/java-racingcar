@@ -1,6 +1,6 @@
 package carracing.move_strategy;
 
-import static carracing.move_strategy.RandomPoint.getPoint;
+import static carracing.utils.RandomUtils.getPoint;
 
 public class RandomMoveStopStrategy implements MoveStrategy {
     private static final int MINIMUM_MOVABLE_DISTANCE = 4;
