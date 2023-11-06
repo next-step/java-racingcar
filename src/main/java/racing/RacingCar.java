@@ -1,15 +1,14 @@
 package racing;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingCar {
     private final static String ICON = "-";
 
     private final Random random = new Random();
-    private final StringBuilder progress;
+    private String progress;
 
-    public RacingCar(StringBuilder progress) {
+    public RacingCar(String progress) {
         this.progress = progress;
     }
 
@@ -17,14 +16,15 @@ public class RacingCar {
         if (getRandomInt() < 4) {
             return;
         }
-        this.progress.append(ICON);
+        this.progress = this.progress.concat(ICON);
     }
 
     public int getRandomInt(){
         return random.nextInt(10);
     }
 
-    public StringBuilder getProgress() {
-        return progress;
+    @Override
+    public String toString(){
+        return this.progress;
     }
 }

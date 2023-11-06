@@ -9,7 +9,7 @@ public class RacingCarTest {
     RacingCar car;
     @BeforeEach
     void init(){
-        car = new RacingCar(new StringBuilder(""));
+        car = new RacingCar("");
     }
     @Test
     void random값은_0_9_사이이다() throws Exception {
