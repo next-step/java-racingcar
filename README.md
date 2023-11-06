@@ -28,3 +28,6 @@
 
 * `RacingGameController`
     * [x] : 자동차 경주 게임의 전반적인 협력을 관리한다.
+
+* `Configuration`
+    * [x] : 객체들의 의존성을 관리한다.
