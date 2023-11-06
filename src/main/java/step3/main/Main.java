@@ -34,7 +34,7 @@ public class Main {
         List<RacingCar> cars = new ArrayList<>();
 
         for (int i = 0; i < carNumber; i++) {
-            cars.add(RacingCar.build());
+            cars.add(new RacingCar());
         }
 
         return cars;
