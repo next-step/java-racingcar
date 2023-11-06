@@ -6,17 +6,18 @@ import java.util.List;
 public class RacingGame {
 
     private static final Integer START_DISTANCE = 0;
+    private RandomNumberGenerator randomNumberGenerator;
 
-    public static void main(String[] args) {
-        startRacingGame();
+    public RacingGame(RandomNumberGenerator randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    public static void startRacingGame() {
+    public void startRacingGame() {
         List<Car> cars = createCars(InputView.inputNumberOfCars());
         playGame(InputView.inputNumberOfGames(), cars);
     }
 
-    public static List<Car> createCars(int numberOfCars) {
+    public List<Car> createCars(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new Car(START_DISTANCE));
@@ -24,7 +25,7 @@ public class RacingGame {
         return cars;
     }
 
-    public static void playGame(Integer numberOfGames, List<Car> cars) {
+    public void playGame(Integer numberOfGames, List<Car> cars) {
         for (int i = 0; i < numberOfGames; i++) {
             playGameByCars(cars);
             ResultView.outputGameResult(cars);
@@ -32,9 +33,9 @@ public class RacingGame {
         }
     }
 
-    private static void playGameByCars(List<Car> cars) {
+    private void playGameByCars(List<Car> cars) {
         for (Car car : cars) {
-            car.game(RandomNumberGenerator.makeRandomNumber());
+            car.game(randomNumberGenerator.makeRandomNumber());
         }
     }
 }
