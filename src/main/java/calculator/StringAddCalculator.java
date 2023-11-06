@@ -10,19 +10,22 @@ public class StringAddCalculator {
     private static final String DELIMITER = "|";
     private static final String SLASH = "//";
     private static final String REGEX = "//(.)\n(.*)";
-    private static final List<String> SEPARATORS = new ArrayList<>(Arrays.asList(",", ":"));
+    private static final Pattern PATTERN = Pattern.compile(REGEX);
 
     public static int splitAndSum(String originText) {
         if (isBlank(originText)) {
             return 0;
         }
-        String text = addSeparatorAndGetSubString(originText);
-        return getSum(text);
+
+        return getSum(originText);
     }
 
-    private static int getSum(String text) {
+    private static int getSum(String originText) {
+        List<String> separators = new ArrayList<>(Arrays.asList(",", ":"));
+        String text = addSeparatorAndGetSubString(originText, separators);
+
         int result = 0;
-        for (String val : getSplitString(text)) {
+        for (String val : getSplitString(text, separators)) {
             int num = Integer.parseInt(val);
             validNegativeNumber(num);
             result += num;
@@ -30,14 +33,12 @@ public class StringAddCalculator {
         return result;
     }
 
-    private static String addSeparatorAndGetSubString(String text) {
-        Matcher matched = Pattern.compile(REGEX).matcher(text);
-        while (matched.find()) {
-            SEPARATORS.add(matched.group(1));
+    private static String addSeparatorAndGetSubString(String text, List<String> separators) {
+        Matcher matched = PATTERN.matcher(text);
+        if (matched.find()) {
+            separators.add(matched.group(1));
             text = getSubString(matched, text);
-            matched = Pattern.compile(REGEX).matcher(text);
         }
-
         return text;
     }
 
@@ -45,8 +46,8 @@ public class StringAddCalculator {
         return text == null || text.isEmpty();
     }
 
-    private static String[] getSplitString(String text) {
-        return text.split(String.join(DELIMITER, SEPARATORS));
+    private static String[] getSplitString(String text, List<String> separators) {
+        return text.split(String.join(DELIMITER, separators));
     }
 
     private static String getSubString(Matcher matched, String text){
