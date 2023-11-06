@@ -1,7 +1,6 @@
 package calculator;
 
 import calculator.exception.NegativeNumberException;
-import calculator.exception.NotNumberException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,7 +45,7 @@ public class TextCalculatorTest {
     @DisplayName("덧셈기능/분리후 숫자이외의 값이있다면/NotNumberException")
     void calculate_기본_구분자_숫자이외의_값() {
         Assertions.assertThatThrownBy(
-                () -> TextCalculator.calculate("1,2,a")).isInstanceOf(NotNumberException.class);
+                () -> TextCalculator.calculate("1,2,a")).isInstanceOf(NumberFormatException.class);
     }
 
     @Test
