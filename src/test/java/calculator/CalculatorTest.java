@@ -34,4 +34,18 @@ public class CalculatorTest {
         // then
         assertThat(sum).isEqualTo(4);
     }
+
+    @Test
+    @DisplayName("문자열 앞부분에 // 와 \n 사이의 문자를 커스텀 구분자로 사용한다.")
+    void custom_regex_sum() {
+        // given
+        Calculator calculator = new Calculator();
+        String given = "//&\n1&3";
+
+        // when
+        long sum = calculator.calculate(given);
+
+        // then
+        assertThat(sum).isEqualTo(4);
+    }
 }
