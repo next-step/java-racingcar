@@ -17,9 +17,9 @@ class RefereeTest {
         Referee referee = new Referee();
         Cars cars = new Cars(
                 List.of(
-                        new Car(new Name("a"), new TestMove(0)),
-                        new Car(new Name("b"), new TestMove(5)),
-                        new Car(new Name("c"), new TestMove(9))
+                        new Car("a", new TestMove(0)),
+                        new Car("b", new TestMove(5)),
+                        new Car("c", new TestMove(9))
                 )
         );
 
