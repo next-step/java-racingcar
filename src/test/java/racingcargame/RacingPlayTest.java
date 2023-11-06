@@ -29,9 +29,9 @@ class RacingPlayTest {
     @Test
     void moveForwardTest() {
         RacingPlay racingPlay = new RacingPlay();
-        Car car = new Car("");
+        Car car = new Car(0);
 
         racingPlay.moveForward(4, car);
-        assertThat(car.getLocation()).isEqualTo("-");
+        assertThat(car.getLocation()).isEqualTo(1);
     }
 }

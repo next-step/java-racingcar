@@ -2,17 +2,17 @@ package racingcargame;
 
 public class Car {
 
-    private String location;
+    private int location;
 
-    public Car(String location) {
+    public Car(int location) {
         this.location = location;
     }
 
-    public String getLocation() {
+    public int getLocation() {
         return location;
     }
 
     public void move() {
-        this.location += "-";
+        this.location += 1;
     }
 }
