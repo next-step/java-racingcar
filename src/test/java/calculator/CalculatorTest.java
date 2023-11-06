@@ -52,42 +52,9 @@ public class CalculatorTest {
 		assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> cal("야호:1:1"));
 	}
 
-	//	private String getSeparator(String fullText) {
-//		if (fullText.startsWith("//")) {
-//			String delimiter = "";
-//			delimiter = fullText.split("\n")[0].substring(2,3);
-//			return delimiter.equals(".") ? "\\." : delimiter;
-//		}
-//		if (fullText.contains(",")) {
-//			return ",";
-//		}
-//		if (fullText.contains(":")) {
-//			return ":";
-//		}
-//		return "";
-//	}
-//
-//	private int getSum(String fullText, String separator) {
-//		if (fullText.isEmpty()) return 0;
-//		fullText = getPureText(fullText);
-//		System.out.printf("fullText -> %s  separator -> %s\n", fullText, separator);
-//		System.out.println(fullText.contains(separator));
-//		System.out.println(separator.equals("."));
-//		String[] textArray = fullText.split(separator);
-//		System.out.println(Arrays.toString(textArray));
-//		int sum = 0;
-//		for (String number : textArray) {
-//			System.out.println("number ->" + number);
-//			if (!isNumber(number)) throw new RuntimeException("TEXT IS NOT A NUMBER");
-//			sum += Integer.parseInt(number);
-//		}
-//		return sum;
-//	}
-//
-//	private String getPureText(String fullText) {
-//		if (fullText.startsWith("//")) {
-//			return fullText.split("\n")[1];
-//		}
-//		return fullText;
-//	}
+	@Test
+	@DisplayName("커스텀 구분자를 가진 문자")
+	void 커스텀_구분자() {
+		assertThat(cal("//;\n1;2;3")).isEqualTo(6);
+	}
 }
