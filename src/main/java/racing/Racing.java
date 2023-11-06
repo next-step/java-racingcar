@@ -12,9 +12,9 @@ public class Racing {
         this.participatingCars = new ParticipatingCars();
     }
 
-    public List<Car> ready(int numberOfCar) {
-        for (int i = 0; i < numberOfCar; ++i) {
-            participatingCars.join(new Car("test"));
+    public List<Car> ready(String[] inputNames) {
+        for (int i = 0; i < inputNames.length; ++i) {
+            participatingCars.join(new Car(inputNames[i]));
         }
         return this.participatingCars();
     }

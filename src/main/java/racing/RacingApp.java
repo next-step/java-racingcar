@@ -11,10 +11,11 @@ public class RacingApp {
     private static final Random random = new Random();
 
     public static void main(String[] args) {
-        int numberOfCar = InputView.getNumberOfCars();
+        String inputNames = InputView.getInputNames();
         int numberOfAttempt = InputView.getNumberOfAttempts();
         Racing racing = new Racing();
-        List<Car> cars = racing.ready(numberOfCar);
+        String[] inputCarNames = inputNames.split(",");
+        List<Car> cars = racing.ready(inputCarNames);
         for (int i = 0; i < numberOfAttempt; ++i) {
             go(cars);
             ResultView.nextAttempt();

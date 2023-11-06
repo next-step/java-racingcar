@@ -13,6 +13,10 @@ public class Car {
         this.position = new Position(0);
     }
 
+    public String name() {
+        return this.name;
+    }
+
     public Position position() {
         return this.position;
     }
@@ -30,8 +34,8 @@ public class Car {
 
     private void validateNameLength(String name) {
         boolean overNameLengthLimit = NAME_LENGTH_LIMIT < name.length();
-        if(overNameLengthLimit) {
-           throw new ValidationException("name can't over 5 letters");
+        if (overNameLengthLimit) {
+            throw new ValidationException("name can't over 5 letters");
         }
     }
 }

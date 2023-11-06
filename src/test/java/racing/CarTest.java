@@ -28,7 +28,7 @@ public class CarTest {
 
     @DisplayName("자동차명 길이 제한 테스트")
     @Test()
-    void car_name_length(){
+    void car_name_length() {
         // given
         String name = "5섯_글자_초과";
 
