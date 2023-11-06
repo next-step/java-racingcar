@@ -16,7 +16,7 @@ class RacingTest {
     void createCar(int expected) {
         Racing racing = new Racing(expected);
 
-        RacingCars racingCars = racing.getCars();
+        RacingCars racingCars = racing.getRacingCars();
         int actual = racingCars.getCars().size();
 
         assertThat(actual).isEqualTo(expected);

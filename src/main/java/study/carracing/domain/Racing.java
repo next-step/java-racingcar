@@ -24,7 +24,7 @@ public class Racing {
         racingCars.move(tryCount);
     }
 
-    public RacingCars getCars() {
+    public RacingCars getRacingCars() {
         return racingCars;
     }
 }
