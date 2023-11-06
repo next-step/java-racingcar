@@ -1,40 +1,32 @@
 package study.carracing;
 
+import java.util.ArrayList;
+import java.util.List;
 import study.carracing.domain.Car;
-import study.carracing.domain.Cars;
-import study.carracing.ui.InputView;
+import study.carracing.domain.RacingCars;
 
 public class Racing {
-    private final Cars cars;
 
-    public Racing(Cars cars) {
-        this.cars = cars;
+    private final RacingCars racingCars;
+
+    public Racing(int carCount) {
+        this.racingCars = addRacingCars(carCount);
     }
 
-    public static void main(String[] args) {
-        Racing racing = new Racing(new Cars());
-        racing.start();
-    }
-
-    public void start() {
-        int carCount = InputView.inputCarCount();
-        int tryCount = InputView.inputTryCount();
-
-        createCar(carCount);
-        go(tryCount);
-    }
-
-    private void go(int tryCount) {
-        cars.move(tryCount);
-    }
-
-    public void createCar(int carCount) {
+    private RacingCars addRacingCars(int carCount) {
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.addCar(new Car());
+            cars.add(new Car());
         }
+
+        return new RacingCars(cars);
     }
 
-    public Cars getCars() {
-        return cars;
+    public void start(int tryCount) {
+        racingCars.move(tryCount);
+    }
+
+    public RacingCars getCars() {
+        return racingCars;
     }
 }
