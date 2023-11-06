@@ -22,4 +22,9 @@ public class RacingCar {
     private boolean isStopRange(final int value) {
         return 0 <= value && value < 4;
     }
+
+    @Override
+    public String toString() {
+        return "-".repeat(distanceTraveled);
+    }
 }
