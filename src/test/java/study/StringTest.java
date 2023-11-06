@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 public class StringTest {
 
     @Test
@@ -43,15 +44,18 @@ public class StringTest {
         String str = "abc";
         int index = 5;
 
-        assertThatThrownBy(() -> {
-            char result = str.charAt(index);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("조회하는 스트링 size: "+str.length());
+        assertAll(
+                () -> assertThatThrownBy(() -> {
+                        char result = str.charAt(index);
+                    }).isInstanceOf(IndexOutOfBoundsException.class)
+                    .hasMessageContaining("String index out of range: "+index)
+                ,
+                () -> assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                        .isThrownBy(() -> {
+                            char result = str.charAt(index);
+                        }).withMessageMatching("String index out of range: "+index)
+        );
 
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> {
-                    char result = str.charAt(index);
-                }).withMessageMatching("Index: "+index + " Size: "+str.length());
     }
 
 
