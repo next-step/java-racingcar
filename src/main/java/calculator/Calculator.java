@@ -26,7 +26,9 @@ public class Calculator {
         Matcher matcher = Pattern.compile(CUSTOM_REGEX).matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
-            return matcher.group(2).split(customDelimiter);
+            String target = matcher.group(2);
+
+            return target.split(customDelimiter);
         }
 
         String[] result = text.split(REGEX);
@@ -52,11 +54,7 @@ public class Calculator {
     }
 
     private static boolean checkNegative(int number) {
-        if (number < 0) {
-            return true;
-        }
-
-        return false;
+       return number < 0;
     }
 
     private static int sum(int[] numbers) {

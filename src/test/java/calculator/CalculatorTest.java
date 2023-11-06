@@ -1,9 +1,12 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CalculatorTest {
 
@@ -16,25 +19,39 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @ParameterizedTest
+    @NullAndEmptySource
+    void nullAndEmptySource_사용(String input) {
+        int actual = Calculator.splitAndSum(input);
+        assertThat(actual).isEqualTo(0);
+    }
+
     @Test
     void 숫자하나() {
-        assertThat(Calculator.splitAndSum("1")).isEqualTo(1);
+        int actual = Calculator.splitAndSum("1");
+        assertThat(actual).isEqualTo(1);
     }
 
     @Test
     void 숫자_쉼표구분자() {
-        assertThat(Calculator.splitAndSum("1,2")).isEqualTo(3);
-        assertThat(Calculator.splitAndSum("1,2,3")).isEqualTo(6);
+        int actualOne = Calculator.splitAndSum("1,2");
+        int actualTow = Calculator.splitAndSum("1,2,3");
+        assertAll(
+                () -> assertThat(actualOne).isEqualTo(3),
+                () -> assertThat(actualTow).isEqualTo(6)
+        );
     }
 
     @Test
     void 숫자_쉼표_콜론구분자() {
-        assertThat(Calculator.splitAndSum("1,2:3")).isEqualTo(6);
+        int actual = Calculator.splitAndSum("1,2:3");
+        assertThat(actual).isEqualTo(6);
     }
 
     @Test
     void 숫자_custom_구분자() {
-        assertThat(Calculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+        int actual = Calculator.splitAndSum("//;\n1;2;3");
+        assertThat(actual).isEqualTo(6);
     }
 
     @Test
