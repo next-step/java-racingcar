@@ -22,8 +22,6 @@ public class RacingGame {
 
     public List<Car> race() {
         moveCars();
-        ResultView resultView = new ResultView();
-        resultView.viewGame(cars);
         return cars;
     }
     private void moveCars() {

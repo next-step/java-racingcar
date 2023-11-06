@@ -21,7 +21,8 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame();
         racingGame.generateCars(carCount);
         for (int i = 0; i < tryCount; i++) {
-            racingGame.race();
+            List<Car> cars = racingGame.race();
+            resultView.viewGame(cars);
         }
     }
 }
