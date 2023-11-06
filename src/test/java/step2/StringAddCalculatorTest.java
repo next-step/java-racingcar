@@ -32,4 +32,11 @@ public class StringAddCalculatorTest {
         String text = "1,2";
         assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("숫자 두개를 콜론(:) 구분자로 입력할 경우, 두 숫자의 합을 반환한다.")
+    void colonDelimiter() {
+        String text = "1:2";
+        assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(3);
+    }
 }
