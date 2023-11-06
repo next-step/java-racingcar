@@ -19,6 +19,6 @@ public class CarRaceApplication {
             carsResponses.add(CarsResponse.from(track.carHistory()));
         }
 
-        OutputView.output(new CarRaceResponse(carsResponses));
+        OutputView.output(new CarRaceResponse(carsResponses, track.winners()));
     }
 }
