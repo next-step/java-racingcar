@@ -31,12 +31,14 @@ public class Car {
         return grade;
     }
 
-    public void game() {
+    public CarStatus game() {
         GameNumber gameNumber = randomPicker.pickNumber();
 
         if (gameNumber.isMovableNumber()) {
             moveForward();
         }
+
+        return new CarStatus(name, grade);
     }
 
     private void moveForward() {
