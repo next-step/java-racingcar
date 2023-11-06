@@ -32,3 +32,11 @@
 2. 자바 코드 컨벤션 지키기(⌨️ 단축키 : opt + cmd + L) [🔗 참고링크](https://www.jetbrains.com/help/idea/code-style-java.html)
 3. else 예약어 사용하지 않기 (switch 포함)
 4. git commit convention 지키기 [🔗 참고링크](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
+
+
+## step4 요구사항 기능 분해
+* [ ] 각 자동차에 5자 이내로 이름을 설정할 수 있다.
+* [ ] 진행 결과 출력할 때 자동차 이름을 같이 출력한다.
+* [ ] 자동차 이름은 쉼표로 구분한다.
+* [ ] 자동차 경주 완료 후 우승자를 알려준다.
+* [ ] 우승자는 한명 이상일 수 있다.

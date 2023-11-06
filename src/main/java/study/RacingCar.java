@@ -1,24 +1,23 @@
 package study;
 
+import study.utils.ArrayListUtils;
+import study.utils.RandomUtils;
 import study.view.InputView;
 import study.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCar {
 
     private int numberOfCar;
     private int numberOfMoves;
-    InputView inputView = new InputView();
-    ResultView resultView = new ResultView();
-    Random random = new Random();
+    private final InputView inputView = new InputView();
+    private final ResultView resultView = new ResultView();
 
     public void startRacer() {
         setNumberOfCars();
         setNumberOfMoves();
-        resultView.beforeRacingPrintMessage();
         playRacerAndPrintOneRacingResult();
     }
 
@@ -31,31 +30,28 @@ public class RacingCar {
     }
 
     private void playRacerAndPrintOneRacingResult() {
-        ArrayList<String>[] raceList = getRaceArrayList();
-        int randomNumber = 0;
+        resultView.beforeRacingPrintMessage();
+
+        ArrayList<String>[] raceList = ArrayListUtils.get2ArrayList(numberOfCar);
 
         for (int i = 0; i < numberOfMoves; i++) {
-            for (List<String> car : raceList) {
-                randomNumber = getRandomBetween0To9Number();
-                if (randomNumber >= 4) {
-                    car.add("-");
-                }
-            }
+            goOrStopCar(raceList);
             resultView.printOneRacingResult(raceList);
         }
     }
 
-    private ArrayList<String>[] getRaceArrayList() {
-        ArrayList<String>[] raceList = new ArrayList[numberOfCar];
-
-        for (int i = 0; i < numberOfCar; i++) {
-            raceList[i] = new ArrayList<String>();
+    private void goOrStopCar(ArrayList<String>[] raceList) {
+        for (List<String> car : raceList) {
+            if (canMovingCar()) {
+                car.add("-");
+            }
         }
-        return raceList;
     }
 
-    private int getRandomBetween0To9Number() {
-        return random.nextInt(10);
+    private boolean canMovingCar() {
+        if (RandomUtils.getRandomBetween0To9Number() >= 4) {
+            return true;
+        }
+        return false;
     }
-
 }
