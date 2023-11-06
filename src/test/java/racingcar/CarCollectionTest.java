@@ -31,6 +31,36 @@ public class CarCollectionTest {
         assertThat(cars.size()).isEqualTo(3);
     }
 
+    @DisplayName("차량 생성 후 이동값 4 부여, 1칸이동")
+    @Test
+    public void 차량_생성_후_이동값_4_부여_1칸이동() {
+        //given
+        setUp();
+        carFactory.participants(DEFAULT_CAR_NAME);
+        //when
+        carFactory.moveCars(new FixtureMoveStrategy(4));
+        List<Car> cars = carFactory.getCars();
+        //then
+        assertThat(cars.get(0).position()).isEqualTo(1);
+        assertThat(cars.get(1).position()).isEqualTo(1);
+        assertThat(cars.get(2).position()).isEqualTo(1);
+    }
+
+    @DisplayName("차량 생성 후 이동값 3 부여, 0칸이동")
+    @Test
+    public void 차량_생성_후_이동값_3_부여_0칸이동() {
+        //given
+        setUp();
+        carFactory.participants(DEFAULT_CAR_NAME);
+        //when
+        carFactory.moveCars(new FixtureMoveStrategy(3));
+        List<Car> cars = carFactory.getCars();
+        //then
+        assertThat(cars.get(0).position()).isEqualTo(0);
+        assertThat(cars.get(1).position()).isEqualTo(0);
+        assertThat(cars.get(2).position()).isEqualTo(0);
+    }
+
     @DisplayName("차량 생성 실패")
     @Nested
     class CreateCarsFaild {
