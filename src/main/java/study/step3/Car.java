@@ -1,32 +1,24 @@
 package study.step3;
 
-import java.util.Random;
-
 public class Car {
 
     private int position = 1;
-    private Random random = new Random();
 
     public Car() {
-    }
-
-    // for mocking
-    public Car(Random random) {
-        this.random = random;
     }
 
     public int getPosition() {
         return this.position;
     }
 
-    public void move() {
-        if (isForwardCondition()) {
+    public void move(int randomNumber) {
+        if (isForwardCondition(randomNumber)) {
             forward();
         }
     }
 
-    private boolean isForwardCondition() {
-        return random.nextInt(10) >= 4;
+    private boolean isForwardCondition(int randomNumber) {
+        return randomNumber >= 4;
     }
 
     private void forward() {
