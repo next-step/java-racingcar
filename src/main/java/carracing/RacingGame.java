@@ -12,10 +12,9 @@ public class RacingGame {
     RandomCreate random = new RandomCreate();
 
     public RacingGame(int carCount, int trialCount) {
-        validate(carCount, trialCount);
 
-        this.carList = cars(carCount);
-        this.trialCount = trialCount;
+        this.carList = cars(negativeNumberCheck(carCount));
+        this.trialCount = negativeNumberCheck(trialCount);
     }
 
     public void gameStart() {
@@ -38,10 +37,11 @@ public class RacingGame {
         return carList;
     }
 
-    private static void validate(int carCount, int trialCount) {
-        if (carCount < 0 || trialCount < 0) {
+    private static int negativeNumberCheck(int number) {
+        if (number < 0) {
             throw new RuntimeException();
         }
+        return number;
     }
 
 }
