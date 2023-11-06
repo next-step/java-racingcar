@@ -40,10 +40,10 @@ public class RacingGame {
 	}
 
 	public List<Car> getCars() {
-		return cars;
+		return Collections.unmodifiableList(cars);
 	}
 
 	public List<Round> getRounds() {
-		return rounds;
+		return Collections.unmodifiableList(rounds);
 	}
 }
