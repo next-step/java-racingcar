@@ -4,14 +4,15 @@ import racinggame.strategy.MoveStrategy;
 
 public class Car {
 
+    public static final String OUTPUT_CAR_COLON = " : ";
     private static final int MOVE_CAR_CONDITION = 4;
 
     private Name carName;
     private int position;
     private MoveStrategy moveStrategy;
 
-    public Car(Name carName, MoveStrategy moveStrategy) {
-        this.carName = carName;
+    public Car(String carName, MoveStrategy moveStrategy) {
+        this.carName = new Name(carName);
         this.moveStrategy = moveStrategy;
     }
 
@@ -27,6 +28,11 @@ public class Car {
 
     public Name getCarName() {
         return carName;
+    }
+
+    @Override
+    public String toString() {
+        return carName + OUTPUT_CAR_COLON;
     }
 
 }

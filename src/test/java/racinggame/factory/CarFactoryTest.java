@@ -10,18 +10,18 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class FactoryCarTest {
+class CarFactoryTest {
 
     @Test
     @DisplayName("성공 - 자동차 대수 만큼 position 값이 0인 자동차를 생성한다.")
     void success_generate_cars() {
         // given
         MoveStrategy moveStrategy = new TestMove(0);
-        FactoryCar factoryCar = new FactoryCar();
+        CarFactory carFactory = new CarFactory();
         List<String> carNames = List.of("a", "b", "c");
 
         // when
-        List<Car> cars = factoryCar.generateCar(carNames, moveStrategy);
+        List<Car> cars = carFactory.generateCar(carNames, moveStrategy);
 
         //then
         assertThat(cars).hasSize(carNames.size())

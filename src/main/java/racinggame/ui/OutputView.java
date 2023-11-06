@@ -1,14 +1,12 @@
 package racinggame.ui;
 
 import racinggame.domain.Car;
-import racinggame.domain.Name;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
 
-    public static final String OUTPUT_CAR_COLON = " : ";
     public static final String OUTPUT_CAR_POSITION = "-";
     public static final String OUTPUT_CAR_COMMA = ", ";
 
@@ -20,7 +18,7 @@ public class OutputView {
     }
 
     private void printCarPosition(Car car, StringBuilder sb) {
-        sb.append(car.getCarName() + OUTPUT_CAR_COLON);
+        sb.append(car);
         for (int i = 0; i < car.getPosition(); i++) {
             sb.append(OUTPUT_CAR_POSITION);
         }
@@ -28,9 +26,9 @@ public class OutputView {
         sb.setLength(0);
     }
 
-    public void printWinners(List<Name> winnersName) {
-        String result = winnersName.stream()
-                .map(Name::toString)
+    public void printWinners(List<Car> cars) {
+        String result = cars.stream()
+                .map(car -> car.getCarName().toString())
                 .collect(Collectors.joining(OUTPUT_CAR_COMMA));
 
         if (!result.isEmpty()) {
