@@ -7,13 +7,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class RacingGameTest {
-    private Car car;
     private RacingGame racingGame;
-    private static final int START_DISTANCE = 0;
 
     @BeforeEach
     void setUp() {
-        car = new Car(START_DISTANCE);
         racingGame = new RacingGame(new RandomNumberGenerator());
     }
 
