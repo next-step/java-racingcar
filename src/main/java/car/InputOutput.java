@@ -17,11 +17,11 @@ public class InputOutput {
     }
 
     public static void main(String[] args) {
-        List<Car> cars= CarService.generate(carIO());
+        List<Car> cars = CarService.generate(carIO());
         int moveCount = moveIO();
 
-        for(int i = 0 ; i < moveCount; i++) {
-            for(Car car: cars) {
+        for (int i = 0; i < moveCount; i++) {
+            for (Car car : cars) {
                 car.move(CarService.randomValue());
                 System.out.println(car.moveMark());
             }

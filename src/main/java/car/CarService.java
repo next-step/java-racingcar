@@ -8,7 +8,7 @@ public class CarService {
     public static List<Car> generate(int count) {
         List<Car> cars = new ArrayList<Car>();
 
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             cars.add(new Car());
         }
 
