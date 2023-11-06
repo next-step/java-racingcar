@@ -4,7 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAdditionCalculator {
-    private static final Pattern customElement = Pattern.compile("//(.)\n(.*)");
+
+    private static final int ELEMENT_IDX = 1;
+    private static final int NUMBERS_IDX = 2;
+    private static final Pattern CUSTOM_ELEMENT = Pattern.compile("//(.)\n(.*)");
 
     public static int cal(String input) {
 
@@ -18,7 +21,7 @@ public class StringAdditionCalculator {
 
         Matcher m = compilePattern(input);
         if (m.find()) {
-            return sum(splitString(m.group(2), m.group(1)));
+            return sum(splitString(m.group(NUMBERS_IDX), m.group(ELEMENT_IDX)));
         }
 
         return Integer.parseInt(input);
@@ -45,7 +48,7 @@ public class StringAdditionCalculator {
         return result;
     }
     private static Matcher compilePattern(String input) {
-        return customElement.matcher(input);
+        return CUSTOM_ELEMENT.matcher(input);
     }
 
     private static void validateNagative(String input) {

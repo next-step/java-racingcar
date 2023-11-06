@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static calculator.StringAdditionCalculator.cal;
+
 //
 //        요구사항 1
 //        "1,2"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.
@@ -48,11 +50,8 @@ public class StringTest {
 
         Assertions.assertThat(firstText).isEqualTo('a');
 
-        try {
-            char errorText = text.charAt(3);
-        } catch (StringIndexOutOfBoundsException e) {
-            throw e;
-        }
+        Assertions.assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                .isThrownBy(() -> text.charAt(3)).withMessage("String index out of range: 3");
     }
 
 
