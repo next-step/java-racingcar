@@ -10,7 +10,7 @@ public class RacingGame {
         this.randomService = randomService;
     }
 
-    public List<RacingCar> startGame(List<RacingCar> racingCars) {
+    public List<RacingCar> startSingleGame(List<RacingCar> racingCars) {
         raceOnce(racingCars);
         return racingCars;
     }

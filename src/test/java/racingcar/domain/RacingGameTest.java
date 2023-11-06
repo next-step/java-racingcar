@@ -17,7 +17,7 @@ public class RacingGameTest {
         List<RacingCar> racingCars = createRacingCars();
 
         // when
-        List<RacingCar> result = racingGame.startGame(racingCars);
+        List<RacingCar> result = racingGame.startSingleGame(racingCars);
 
         // then
         assertThat(result).isEqualTo(createExpectedRacingCars());
