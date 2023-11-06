@@ -74,10 +74,10 @@ class RacingCarGameTest {
 
     @Test
     @DisplayName("자동차 경주 - 자동차의 이동 카운트가 증가한다")
-    void race_car_move_count_increase() {
-        RacingCarGame racingCarGame = new RacingCarGame(1, 1);
+    void race_start_car_move_count_increase() {
+        RacingCarGame racingCarGame = new RacingCarGame(3, 5);
         racingCarGame.createCar();
-        racingCarGame.race();
+        racingCarGame.start();
 
         assertThat(racingCarGame.carList())
                 .filteredOn(car -> car.moveCount() > 0)

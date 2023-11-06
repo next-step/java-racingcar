@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,12 +13,18 @@ public class RacingCarGame {
 
     private int carCount;
     private int attemptCount;
+    private int raceCount;
 
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> carList;
+    private ResultView resultView;
 
     public RacingCarGame(int carCount, int attemptCount) {
         this.carCount = carCount;
         this.attemptCount = attemptCount;
+        this.raceCount = attemptCount - 1;
+
+        this.carList = new ArrayList<>();
+        this.resultView = new ResultView(this);
     }
 
     public void start() {
@@ -34,8 +42,19 @@ public class RacingCarGame {
     }
 
     public void race() {
-        for (int i = 0; i < attemptCount; i++) {
+        firstRace(); // 첫번째 레이스는 출력만
+        remainingRace(); // 나머지 레이스 부터 이동 및 출력
+    }
+
+    private void firstRace() {
+        resultView.printRace();
+        --raceCount;
+    }
+
+    private void remainingRace() {
+        for (int i = 0; i < raceCount; i++) {
             moveCarList();
+            resultView.printRace();
         }
     }
 
