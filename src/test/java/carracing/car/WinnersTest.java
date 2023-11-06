@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnersTest {
 	@Test
-	void Winners_ThreeCars_OneWinners() {
+	void winners_threeCars_oneWinners() {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(9, "abc");
 		Car car3 = new Car(8, "abc");
@@ -19,7 +19,7 @@ public class WinnersTest {
 	}
 
 	@Test
-	void Winners_ThreeCars_TwoWinners() {
+	void winners_threeCars_twoWinners() {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(10, "abc");
 		Car car3 = new Car(8, "abc");

@@ -18,7 +18,7 @@ public class RandomRangeTest {
 	}
 
 	@Test
-	void isPossible_LessThan4_False() {
+	void isPossible_lessThan4_false() {
 		RandomRange r = new RandomRange(3, 3);
 		boolean movingIsPossible = r.isPossible();
 
@@ -27,7 +27,7 @@ public class RandomRangeTest {
 
 	@ParameterizedTest
 	@ValueSource(ints = {4, 9})
-	void isPossible_MoreThanEqualTo4_LessThanEqualTo9_True(int number) {
+	void isPossible_moreThanEqualTo4_lessThanEqualTo9_true(int number) {
 		RandomRange r = new RandomRange(number, number);
 		boolean movingIsPossible = r.isPossible();
 
@@ -35,7 +35,7 @@ public class RandomRangeTest {
 	}
 
 	@Test
-	void isPossible_MoreThan9_ThrowException() {
+	void isPossible_moreThan9_throwException() {
 		RandomRange r = new RandomRange(10, 10);
 		assertThatThrownBy(r::isPossible)
 				.isInstanceOf(IllegalArgumentException.class);
