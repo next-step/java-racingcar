@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.RandomMoveStrategy;
 import racingcar.validite.ValidityCheck;
 
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ import java.util.stream.Collectors;
 
 public class CarCollection {
 
-    private static final MoveStrategy MOVE_STRATEGY = new RandomMoveStrategy();
     private List<Car> cars;
 
     public CarCollection() {
@@ -29,9 +27,9 @@ public class CarCollection {
         }
     }
 
-    public void moveCars() {
+    public void moveCars(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(MOVE_STRATEGY.move());
+            car.move(moveStrategy.move());
         }
     }
 

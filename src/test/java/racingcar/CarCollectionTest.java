@@ -11,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CarFactoryTest {
+public class CarCollectionTest {
     private CarCollection carFactory;
     private final List<String> DEFAULT_CAR_NAME = List.of("pobi","crong","honux");
 
