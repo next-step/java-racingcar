@@ -24,9 +24,11 @@ public class Car {
         return position;
     }
 
+    public String name() { return name; }
 
     @Override
     public String toString() {
         return String.format("%s : %s", name, STEP_STRING.repeat(position));
     }
+
 }

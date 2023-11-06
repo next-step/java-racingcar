@@ -35,29 +35,42 @@ public class CarList {
     }
 
     public List<String> findWinner() {
-        int maxStep = getMaxStep();
-
-        return getWinnerList(maxStep);
+        return getWinnerList(getMaxStep());
     }
 
     private int getMaxStep() {
         int maxStep = 0;
         for (Car car : carList) {
-            if (maxStep < car.currentStep()) {
-                maxStep = car.currentStep();
-            }
+            maxStep = getMaxStep(maxStep, car);
         }
         return maxStep;
+    }
+
+    private int getMaxStep(int maxStep, Car car) {
+        if (isMaxStep(maxStep, car)) {
+            return car.currentStep();
+        }
+
+        return maxStep;
+    }
+
+    private boolean isMaxStep(int maxStep, Car car) {
+        return car.currentStep() < maxStep;
     }
 
     private List<String> getWinnerList(int maxStep) {
         final List<String> winnerList = new ArrayList<>();
         for (Car car : carList) {
-            if (maxStep == car.currentStep()) {
-                winnerList.add(car.name());
-            }
+            addWinner(maxStep, winnerList, car);
         }
+
         return winnerList;
+    }
+
+    private void addWinner(int maxStep, List<String> winnerList, Car car) {
+        if (maxStep == car.currentStep()) {
+            winnerList.add(car.name());
+        }
     }
 
     @Override
