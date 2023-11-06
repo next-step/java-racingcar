@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
-    private static Car car;
+    private Car car;
 
     @BeforeEach
     void setUp() {
