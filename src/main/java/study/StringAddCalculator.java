@@ -4,19 +4,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    public static int splitAndSum(String input) {
+    public int splitAndSum(String input) {
+        boolean isAZeroResult = input == "" || input == null;
 
-        if(input == "" || input == null) {
+        if (isAZeroResult) {
             return 0;
         }
 
         String[] stringTypeNumbers = SplitAndGetStrings(input);
-        int sum = parseIntAndGetSum(stringTypeNumbers);
-        return sum;
+        return parseIntAndGetSum(stringTypeNumbers);
     }
 
-    private static int parseIntAndGetSum(String[] stringTypeNumbers) {
+    private int parseIntAndGetSum(String[] stringTypeNumbers) {
         int sum = 0;
         for (String stringTypeNumber : stringTypeNumbers) {
             sum += getParseInt(stringTypeNumber);
@@ -24,25 +25,27 @@ public class StringAddCalculator {
         return sum;
     }
 
-    private static int getParseInt(String stringTypeNumber) throws RuntimeException {
-
+    private int getParseInt(String stringTypeNumber) throws RuntimeException {
         try {
-            int number = Integer.parseInt(stringTypeNumber);
-            if (number < 0) {
-                throw new RuntimeException();
-            }
-            return number;
+            return validateNegativeNumber(Integer.parseInt(stringTypeNumber));
         } catch (RuntimeException e) {
+            e.printStackTrace();
+
             throw new RuntimeException(e);
         }
     }
 
-    private static String[] SplitAndGetStrings(String input) {
+    private int validateNegativeNumber(int number) {
+        if (number < 0) {
+            throw new NumberFormatException("For input string : " + number);
+        }
+        return number;
+    }
+
+    private String[] SplitAndGetStrings(String input) {
 
         String[] stringTypeNumbers;
-
-        Pattern pattern = Pattern.compile("//(.)\n(.*)");
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = CUSTOM_PATTERN.matcher(input);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             stringTypeNumbers = matcher.group(2).split("\\" + customDelimiter);
