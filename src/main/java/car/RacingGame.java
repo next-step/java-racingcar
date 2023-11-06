@@ -12,28 +12,28 @@ public class RacingGame {
     }
 
     public static void racingGameRun() {
-        List<Car> carList = createCarList(InputView.inputNumberOfCars());
-        gameInProgress(InputView.inputNumberOfGames(), carList);
+        List<Car> cars = createCars(InputView.inputNumberOfCars());
+        gameInProgress(InputView.inputNumberOfGames(), cars);
     }
 
-    public static List<Car> createCarList(int numberOfCars) {
-        List<Car> carList = new ArrayList<>();
+    public static List<Car> createCars(int numberOfCars) {
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            carList.add(new Car(START_DISTANCE));
+            cars.add(new Car(START_DISTANCE));
         }
-        return carList;
+        return cars;
     }
 
-    public static void gameInProgress(Integer numberOfGames, List<Car> carList) {
+    public static void gameInProgress(Integer numberOfGames, List<Car> cars) {
         for (int i = 0; i < numberOfGames; i++) {
-            gameByCar(carList);
-            ResultView.outputGameResult(carList);
+            gameByCar(cars);
+            ResultView.outputGameResult(cars);
             System.out.println();
         }
     }
 
-    private static void gameByCar(List<Car> carList) {
-        for (Car car : carList) {
+    private static void gameByCar(List<Car> cars) {
+        for (Car car : cars) {
             car.game(RandomNumberGenerator.makeRandomNumber());
         }
     }
