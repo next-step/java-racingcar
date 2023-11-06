@@ -4,8 +4,14 @@ import java.util.Arrays;
 
 public class RaceBoard {
 
-    public static String[] generate(int cars) {
-        String[] board = new String[cars];
+    private final int cars;
+
+    public RaceBoard(int cars) {
+        this.cars = cars;
+    }
+
+    public String[] generate() {
+        String[] board = new String[this.cars];
 
         Arrays.fill(board, "-");
         return board;

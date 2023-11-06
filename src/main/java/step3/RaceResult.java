@@ -4,7 +4,13 @@ import java.util.Arrays;
 
 public class RaceResult {
 
-    public static void show(String[] board) {
-        System.out.println(Arrays.toString(board));
+    private final String[] board;
+
+    public RaceResult(String[] board) {
+        this.board = board;
+    }
+
+    public void show() {
+        System.out.println(Arrays.toString(this.board));
     }
 }
