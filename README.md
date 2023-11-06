@@ -31,3 +31,6 @@
 
 * `Configuration`
     * [x] : 객체들의 의존성을 관리한다.
+
+* `Application`
+    * [x] : 애플리케이션을 실행한다.
