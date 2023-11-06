@@ -1,26 +1,25 @@
 package study.carracing.domain;
 
-import java.util.Random;
+import study.carracing.util.RandomGenerator;
 
 public class Car {
+
     private static final int MIN_MOVE_VALUE = 4;
     private static final int INITIAL_POSITION = 1;
-    private static final Random RANDOM = new Random();
-    private int position;
 
-    public Car() {
+    private int position;
+    private RandomGenerator randomGenerator;
+
+    public Car(RandomGenerator randomGenerator) {
         this.position = INITIAL_POSITION;
+        this.randomGenerator = randomGenerator;
     }
 
     public void move() {
-        int randomValue = RANDOM.nextInt(10);
-        if (randomValue >= MIN_MOVE_VALUE) {
-            position += 1;
-        }
+        go(randomGenerator.nextInt(10));
     }
 
-    //테스트를 위한 오버로딩ㅠㅠ
-    public void move(int randomValue) {
+    public void go(int randomValue) {
         if (randomValue >= MIN_MOVE_VALUE) {
             position += 1;
         }

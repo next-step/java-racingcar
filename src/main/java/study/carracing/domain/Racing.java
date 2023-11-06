@@ -14,7 +14,7 @@ public class Racing {
     private RacingCars addRacingCars(int carCount) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            cars.add(new Car(new RandomGeneratorImpl()));
         }
 
         return new RacingCars(cars);
