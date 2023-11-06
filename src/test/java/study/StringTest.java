@@ -31,11 +31,16 @@ public class StringTest {
 
     // 요구사항 3
     @Test
+    @DisplayName("String charAt() 특정위치 문자 가져오는 지 확인")
+    void charAtGetTest(){
+        String trgStr = "abc";
+        assertThat(trgStr.charAt(2)).isEqualTo('c');
+    }
+
+    @Test
     @DisplayName("String charAt() String 인덱스 범위값 확인 학습")
     void charAtTest(){
-
         String trgStr = "abc";
-
         assertThatThrownBy(() -> trgStr.charAt(trgStr.length()))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining(String.valueOf(trgStr.length()));
