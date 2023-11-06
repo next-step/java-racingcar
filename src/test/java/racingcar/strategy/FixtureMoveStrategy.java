@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.strategy;
 
 import racingcar.strategy.MoveStrategy;
 

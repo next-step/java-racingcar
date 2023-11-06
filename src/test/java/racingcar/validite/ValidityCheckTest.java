@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.validite;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

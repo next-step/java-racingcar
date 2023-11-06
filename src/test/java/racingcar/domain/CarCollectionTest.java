@@ -1,10 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.CarCollection;
-import racingcar.domain.CarFactory;
+import racingcar.strategy.FixtureMoveStrategy;
 
 import java.util.List;
 
