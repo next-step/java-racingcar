@@ -4,7 +4,12 @@ public class Car {
 
     private static final int MOVE_BOUND = 4;
 
+    private String name;
     private int position;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public void move(int random) {
         if (canMove(random)) {
