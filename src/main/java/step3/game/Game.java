@@ -1,4 +1,4 @@
-package step3.main;
+package step3.game;
 
 import step3.input.InputView;
 import step3.input.UserInput;
@@ -9,22 +9,17 @@ import step3.result.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
-    public static void main(String[] args) {
+public class Game {
+    public static void start() {
         //inputView
         final UserInput userInput = InputView.input();
 
         List<RacingCar> cars = makeCars(userInput.getCarNumber());
 
-        //게임 실행
-        startRacing(cars, userInput.getTryNumber());
-    }
-
-    private static void startRacing(final List<RacingCar> cars, final int tryNumber) {
         //resultView
-        System.out.println("실행 결과");
+        ResultView.printResultText();
 
-        for (int i = 0; i < tryNumber; i++) {
+        for (int i = 0; i < userInput.getTryNumber(); i++) {
             tryMove(cars);
             ResultView.printTryResult(cars);
         }

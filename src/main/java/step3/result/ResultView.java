@@ -9,7 +9,11 @@ public class ResultView {
         for (RacingCar car : cars) {
             System.out.println(car.toString());
         }
-        
+
         System.out.println();
+    }
+
+    public static void printResultText() {
+        System.out.println("실행 결과");
     }
 }
