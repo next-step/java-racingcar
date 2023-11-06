@@ -1,11 +1,13 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CalculatorTest {
 
@@ -63,5 +65,17 @@ public class CalculatorTest {
 
         // then
         assertThat(sum).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @DisplayName("숫자 이외의 값이나 음수가 주어지면 예외를 반환한다.")
+    @ValueSource(strings = {"-3:2", "숫자아님,숫자아니다", "//&\n-3&3", "//&\n숫자아니다&3"})
+    void throw_exception(String given) {
+        // given
+        Calculator calculator = new Calculator();
+
+        // when // then
+        assertThatThrownBy(() -> calculator.calculate(given))
+                .isInstanceOf(RuntimeException.class);
     }
 }

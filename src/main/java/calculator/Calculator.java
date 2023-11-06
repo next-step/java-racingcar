@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,20 +40,41 @@ public class Calculator {
         return Pattern.compile(CUSTOM_REGEX).matcher(text);
     }
 
-    private boolean matchable(Matcher m) {
-        return m.find();
+    private boolean matchable(Matcher matcher) {
+        return matcher.find();
     }
 
-    private long calculateSumWithCustomRegex(Matcher m) {
-        return calculateSum(m.group(2), createDelimiter(m));
+    private long calculateSumWithCustomRegex(Matcher matcher) {
+        return calculateSum(matcher.group(2), createDelimiter(matcher));
     }
 
-    private String createDelimiter(Matcher m) {
-        return m.group(1);
+    private String createDelimiter(Matcher matcher) {
+        return matcher.group(1);
     }
 
-    private long calculateSum(String m, String customDelimiter) {
-        return Arrays.stream(m.split(customDelimiter)).mapToLong(Long::parseLong).sum();
+    private long calculateSum(String target, String customDelimiter) {
+        long sum = 0L;
+        for (String number : target.split(customDelimiter)) {
+            sum += parse(number);
+        }
+        return sum;
+    }
+
+    private long parse(String number) {
+        long targetNumber;
+        try {
+            targetNumber = Long.parseLong(number);
+            if (isMinus(targetNumber)) {
+                throw new RuntimeException("음수는 입력할 수 없습니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
+        return targetNumber;
+    }
+
+    private boolean isMinus(long targetNumber) {
+        return targetNumber < 0;
     }
 
     private boolean containsDefaultRegex(String text) {
