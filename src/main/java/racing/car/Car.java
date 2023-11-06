@@ -1,10 +1,15 @@
 package racing.car;
 
+
 public class Car {
+    private static int NAME_LENGTH_LIMIT = 5;
+    private String name;
     private int THRESHOLD = 4;
     private Position position;
 
-    public Car() {
+    public Car(String name) {
+        validateNameLength(name);
+        this.name = name;
         this.position = new Position(0);
     }
 
@@ -21,5 +26,12 @@ public class Car {
 
     private boolean isOverThreshHold(int input) {
         return THRESHOLD <= input;
+    }
+
+    private void validateNameLength(String name) {
+        boolean overNameLengthLimit = NAME_LENGTH_LIMIT < name.length();
+        if(overNameLengthLimit) {
+           throw new ValidationException("name can't over 5 letters");
+        }
     }
 }

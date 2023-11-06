@@ -14,7 +14,7 @@ public class Racing {
 
     public List<Car> ready(int numberOfCar) {
         for (int i = 0; i < numberOfCar; ++i) {
-            participatingCars.join(new Car());
+            participatingCars.join(new Car("test"));
         }
         return this.participatingCars();
     }
