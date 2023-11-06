@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CarListTest {
+public class CarsTest {
 
     @DisplayName("Car의 name이 5글자 이상이면 CarNameTooLongException 발생한다.")
     @Test
