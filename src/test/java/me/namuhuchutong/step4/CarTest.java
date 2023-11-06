@@ -13,7 +13,7 @@ class CarTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void car_moves_when_value_is_more_than_4(int givenRandomValue) {
         //given
-        Car car = new Car();
+        Car car = new Car("Tester");
 
         //when
         car.move(givenRandomValue);
@@ -27,7 +27,7 @@ class CarTest {
     @ValueSource(ints = {0, 1,2,3})
     void car_does_not_move_when_value_is_less_than_4(int givenRandomValue) {
         //given
-        Car car = new Car();
+        Car car = new Car("Tester");
 
         //when
         car.move(givenRandomValue);
@@ -41,7 +41,7 @@ class CarTest {
     @ValueSource(ints = {1,2,3,4,5,6,7,9})
     void car_moves_only_one(int givenIterateNumber) {
         //given
-        Car car = new Car();
+        Car car = new Car("Tester");
         int alwaysMoveCondition = 4;
 
         //when

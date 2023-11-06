@@ -3,16 +3,16 @@ package me.namuhuchutong.step4;
 import static java.util.stream.Collectors.*;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Cars {
 
     private final List<Car> values;
 
-    public static Cars createCars(int numberOfCars) {
-        List<Car> collect = Stream.generate(Car::new)
-                                  .limit(numberOfCars)
-                                  .collect(toUnmodifiableList());
+    public static Cars createCars(CarNames carNames) {
+        List<Car> collect = carNames.getNames()
+                                    .stream()
+                                    .map(Car::new)
+                                    .collect(toUnmodifiableList());
         return new Cars(collect);
     }
 
