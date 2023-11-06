@@ -2,20 +2,24 @@ package racingCar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
+    private NumberBox numberBox = new GameNumberBox();
+
     private static final int PIVOT_NUMBER_TO_FORWARD = 4;
-    private static final int CLOSED_END_NUMBER_TO_GET_RANDOM_NUMBER_FROM_ZERO = 10;
+    private static final int NUMBER_TO_GET_RANDOM_NUMBER = 10;
 
-    private static int carCount;
-    private static int gameCount;
+    private final int carCount;
+    private final int gameCount;
 
-    public  List<String> play(int inputCarCount, int inputGameCount){
+    public RacingCarGame(int inputCarCount, int inputGameCount){
         carCount = inputCarCount;
         gameCount = inputGameCount;
+    }
+
+    public  List<String> play(){
 
         inputCheck(carCount, gameCount);
 
@@ -51,7 +55,7 @@ public class RacingCarGame {
     }
 
     private boolean isSatisfiedForward(){
-        return new Random().nextInt(CLOSED_END_NUMBER_TO_GET_RANDOM_NUMBER_FROM_ZERO) >= PIVOT_NUMBER_TO_FORWARD;
+        return  numberBox.getRandomInt(NUMBER_TO_GET_RANDOM_NUMBER) >= PIVOT_NUMBER_TO_FORWARD;
     }
 
     private List<Car> carList() {

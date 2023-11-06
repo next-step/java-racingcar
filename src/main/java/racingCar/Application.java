@@ -14,7 +14,7 @@ public class Application {
 
         int carCount = new InputView().intInput(CAR_COUNT_QUESTION);
         int gameCount = new InputView().intInput(GAME_COUNT_QUESTION);
-        List<String> result = new RacingCarGame().play(carCount, gameCount);
+        List<String> result = new RacingCarGame(carCount, gameCount).play();
         new ResultView(result).printResult(RESULT_MESSAGE);
 
     }
