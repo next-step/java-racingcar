@@ -11,6 +11,10 @@ public class CarName {
         validateMaximumLength();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public static CarName from(String name) {
         return new CarName(name);
     }

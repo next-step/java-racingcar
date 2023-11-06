@@ -16,6 +16,10 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
+    public String getName() {
+        return this.name.getName();
+    }
+
     public Integer getPosition() {
         return this.position;
     }
