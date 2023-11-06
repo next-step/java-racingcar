@@ -7,14 +7,18 @@ public class Cars {
 
     private final List<Car> value;
 
-    public Cars(int carCount) {
-        List<Car> value = new ArrayList<>(carCount);
+    private Cars(List<Car> value) {
+        this.value = value;
+    }
 
-        for (int idx = 0; idx < carCount; idx++) {
-            value.add(Car.create("car", new SecureRandomPicker()));
+    public static Cars init(List<String> carNames) {
+        List<Car> value = new ArrayList<>(carNames.size());
+
+        for (String carName: carNames) {
+            value.add(Car.create(carName, new SecureRandomPicker()));
         }
 
-        this.value = value;
+        return new Cars(value);
     }
 
     public List<String> game() {

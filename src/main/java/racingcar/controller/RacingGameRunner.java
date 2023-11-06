@@ -9,10 +9,10 @@ import java.util.List;
 public class RacingGameRunner {
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        List<String> carNames = InputView.inputCarNames();
         int moveCount = InputView.inputMoveCount();
 
-        Cars cars = new Cars(carCount);
+        Cars cars = Cars.init(carNames);
 
         play(cars, moveCount);
     }
