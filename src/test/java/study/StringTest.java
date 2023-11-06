@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringTest {
     @Test
-    void split() {
+    void splitTest() {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
     }
