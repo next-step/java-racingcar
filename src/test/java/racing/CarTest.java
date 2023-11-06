@@ -16,7 +16,7 @@ public class CarTest {
     @ParameterizedTest(name = "자동차 전진 테스트: input = {0}, 전진 성공 = {1}")
     void move_car(int number, boolean expected) {
         // given
-        Car car = new Car("test");
+        Car car = new Car("test", 0);
 
         // whern
         int prevPosition = car.position().position();
@@ -33,7 +33,7 @@ public class CarTest {
         String name = "5섯_글자_초과";
 
         // when, then
-        assertThatThrownBy(() -> new Car(name))
+        assertThatThrownBy(() -> new Car(name, 0))
                 .isInstanceOf(ValidationException.class)
                 .hasMessageContaining("name can't over 5 letters");
     }

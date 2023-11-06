@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParticipatingCars {
-    private List<Car> participatingCars = new ArrayList<>();
+    private final List<Car> participatingCars = new ArrayList<>();
 
     public void join(Car car) {
         this.participatingCars.add(car);

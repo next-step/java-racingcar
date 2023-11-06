@@ -7,10 +7,10 @@ public class Car {
     private int THRESHOLD = 4;
     private Position position;
 
-    public Car(String name) {
+    public Car(String name, int position) {
         validateNameLength(name);
         this.name = name;
-        this.position = new Position(0);
+        this.position = new Position(position);
     }
 
     public String name() {

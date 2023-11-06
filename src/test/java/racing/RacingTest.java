@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.Car;
+import racing.ui.ResultView;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -18,17 +19,32 @@ public class RacingTest {
     @Test
     void ready() {
         // given
-        Racing racing = new Racing();
         String inputNames = "test1,test2,test3";
-        String[] carNames = inputNames.split(",");
 
         // when
-        List<Car> participatingCars = racing.ready(carNames);
+        List<Car> participatingCars = Racing.enroll(inputNames);
 
         // then
-        assertThat(participatingCars.size()).isEqualTo(carNames.length);
-        for (int i = 0; i < carNames.length; ++i) {
-            assertThat(participatingCars.get(i).name()).isEqualTo(carNames[i]);
+        assertThat(participatingCars.size()).isEqualTo(3);
+        for (int i = 0; i < participatingCars.size(); ++i) {
+            assertThat(participatingCars.get(i).name()).isEqualTo("test" + (i + 1));
         }
+    }
+
+    @DisplayName("우승자 확인 테스트")
+    @Test
+    void winner() {
+        // given
+        Car car1 = new Car("test1", 0);
+        Car car2 = new Car("test2", 1);
+        Car car3 = new Car("test3", 2);
+        List<Car> cars = new ArrayList<>();
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        Racing racing = new Racing(cars, 0);
+
+        // when, then
+        assertThat(racing.winners().get(0)).isEqualTo(car3);
     }
 }

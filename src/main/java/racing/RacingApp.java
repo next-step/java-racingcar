@@ -12,21 +12,10 @@ public class RacingApp {
 
     public static void main(String[] args) {
         String inputNames = InputView.getInputNames();
-        int numberOfAttempt = InputView.getNumberOfAttempts();
-        Racing racing = new Racing();
-        String[] inputCarNames = inputNames.split(",");
-        List<Car> cars = racing.ready(inputCarNames);
-        for (int i = 0; i < numberOfAttempt; ++i) {
-            go(cars);
-            ResultView.nextAttempt();
-        }
-    }
-
-    private static void go(List<Car> cars) {
-        for (Car car : cars) {
-            int input = random.nextInt(10);
-            car.move(input);
-            ResultView.showCurrentPosition(car);
-        }
+        int attemptCount = InputView.getNumberOfAttempts();
+        List<Car> cars = Racing.enroll(inputNames);
+        Racing racing = new Racing(cars, attemptCount);
+        racing.start();
+        ResultView.showWinners(racing.winners());
     }
 }
