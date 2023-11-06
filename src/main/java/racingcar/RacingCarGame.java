@@ -20,9 +20,10 @@ public class RacingCarGame {
     }
 
     public void start() {
-        // 자동차 생성
+        // 자동차 생성능
+        createCar();
         // 자동차 이동
-        // 결과 화면 출력
+        race();
     }
 
     public void createCar() {
@@ -33,6 +34,12 @@ public class RacingCarGame {
     }
 
     public void race() {
+        for (int i = 0; i < attemptCount; i++) {
+            moveCarList();
+        }
+    }
+
+    private void moveCarList() {
         for (Car car : carList) {
             moveCar(car);
         }
@@ -49,7 +56,7 @@ public class RacingCarGame {
         return value >= MOVABLE_MIN;
     }
 
-    private int random(int maxCount) {
+    public int random(int maxCount) {
         Random random = new Random();
         return random.nextInt(maxCount);
     }
