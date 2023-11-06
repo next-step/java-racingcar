@@ -4,6 +4,7 @@ import carracing.move_strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,5 +25,20 @@ public class Cars {
 
     public void move() {
         cars.forEach(Car::move);
+    }
+
+    public List<Car> getFastestCars() {
+        int maxPosition = -1;
+        List<Car> fastestCars = new ArrayList<>();
+        for (Car car : this.cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+                fastestCars.clear();
+                fastestCars.add(car);
+            } else if (car.getPosition() == maxPosition) {
+                fastestCars.add(car);
+            }
+        }
+        return fastestCars;
     }
 }

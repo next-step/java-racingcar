@@ -19,6 +19,10 @@ public class Track {
         cars.move();
     }
 
+    public List<Car> winners() {
+        return cars.getFastestCars();
+    }
+
     public Cars carHistory() {
         return this.cars;
     }
