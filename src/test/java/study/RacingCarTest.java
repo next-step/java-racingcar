@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CarRacerTest {
+public class RacingCarTest {
 
     @ParameterizedTest
     @ValueSource(strings = "1")

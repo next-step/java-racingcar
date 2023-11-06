@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CarRacer {
+public class RacingCar {
 
     private int numberOfCar;
     private int numberOfMoves;
