@@ -1,6 +1,5 @@
 package study;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -20,32 +19,32 @@ public class RacingCarGame {
         int drive = ZERO;
         int stop = ZERO;
 
-        Map<String,RacingCar> carMapList = new HashMap<String,RacingCar>();
+        Map<String,RacingCar> carsMap = new HashMap<String,RacingCar>();
 
-        carNum = checkValue(carText);
-        loopNum = checkValue(loopText);
+        carNum = _checkValue(carText);
+        loopNum = _checkValue(loopText);
 
         for (int i=0; i<carNum ;i++){
 
             RacingCar car = new RacingCar();
-            Map<Integer, Double> randomList = creatRandom(loopNum);
+            Map<Integer, Double> randomList = _creatRandom(loopNum);
             drive = countDrive(randomList);
             stop = loopNum - drive;
             car.setDrive(drive);
             car.setStop(stop);
             car.setLoopCount(loopNum);
-            car.setRandomList(randomList);
-            carMapList.put("CarNo"+i, car);
+            car.setRandomsByStep(randomList);
+            carsMap.put("CarNo"+i, car);
 
         }
 
-        return carMapList;
+        return carsMap;
     }
 
     /**
      *  RacingCar 생성
      */
-    public static Map<Integer, Double> creatRandom(int loopNum){
+    private static Map<Integer, Double> _creatRandom(int loopNum){
         Map<Integer, Double> randomList = new HashMap<Integer, Double>();
 
         for (int i=0; i<loopNum ;i++){
@@ -61,7 +60,7 @@ public class RacingCarGame {
      * @param text
      * @return 숫자
      */
-    public static int checkValue(String text){
+    private static int _checkValue(String text){
 
         /*
         공백, null 일때 Exception 발생

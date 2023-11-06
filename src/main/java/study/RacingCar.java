@@ -8,6 +8,8 @@ public class RacingCar {
 
     public static final int ZERO = 0;
     public static final String BLANK = "";
+    public static final String DASH = "-";
+    public static final int CONDITION_VAL = 4;
 
     @Getter @Setter
     private int drive = ZERO;
@@ -19,7 +21,7 @@ public class RacingCar {
     private int loopCount = ZERO;
 
     @Getter @Setter
-    private Map<Integer, Double> randomList;
+    private Map<Integer, Double> randomsByStep;
 
     public void move(int stepNo){
 
@@ -27,8 +29,8 @@ public class RacingCar {
 
         for(int i=0; i<=stepNo; i++){
 
-            if(randomList.get(i).doubleValue()>=4){
-                moveStr+="-";
+            if(randomsByStep.get(i)>= CONDITION_VAL){
+                moveStr+= DASH;
             }
         }
 
