@@ -1,4 +1,4 @@
-package study.carracing;
+package study.carracing.domain;
 
 import java.util.ArrayList;
 import java.util.List;

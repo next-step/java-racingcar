@@ -1,6 +1,6 @@
-package study.carracing.domain;
+package study.carracing;
 
-import study.carracing.Racing;
+import study.carracing.domain.Racing;
 import study.carracing.ui.InputView;
 
 public class CarRacingController {
