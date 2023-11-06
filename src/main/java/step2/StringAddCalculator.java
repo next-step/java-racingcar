@@ -1,5 +1,7 @@
 package step2;
 
+import step2.dto.StringAddCalculatorDto;
+
 public class StringAddCalculator {
 
     static SeparatorFinder sf = new SeparatorFinder();
@@ -7,13 +9,13 @@ public class StringAddCalculator {
     public static int splitAndSum(String str) {
         if (isBlank(str)) return 0;
 
-        str = sf.findCustomSeparator(str);
+        StringAddCalculatorDto calcDto = sf.getStringAddCalculatorDto(str);
 
-        return sum(toInts(split(str)));
+        return sum(toInts(split(calcDto.getText(), calcDto.getSeparatorRegex())));
     }
 
-    private static String[] split(String str) {
-        return str.split(sf.getRegex());
+    private static String[] split(String text, String separatorRegex) {
+        return text.split(separatorRegex);
     }
 
     private static boolean isBlank(String str) {
