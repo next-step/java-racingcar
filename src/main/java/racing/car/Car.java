@@ -2,6 +2,7 @@ package racing.car;
 
 
 public class Car {
+
     private static int NAME_LENGTH_LIMIT = 5;
     private String name;
     private int THRESHOLD = 4;
