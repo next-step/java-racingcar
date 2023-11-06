@@ -23,7 +23,7 @@ public class CarRacingTest {
     void 받은_갯수만큼_자동차가_생긴다() {
         carRacing.makingCar(2);
         assertEquals(carRacing.getCars().size(), 2);
-        assertEquals(carRacing.getCars().get(0).getClass(), Car.class);
+        assertInstanceOf(carRacing.getCars().get(0).getClass(), Car.class);
     }
 
     @Test
@@ -32,8 +32,9 @@ public class CarRacingTest {
         assertAll(() -> {
             assertEquals(carRacing.getExecuteNumbers().size(), 4);
             assertTrue(carRacing.getExecuteNumbers().get(0) >= 0);
+            // TODO - 질문 > 이거 오류가 나는데, 왜 나는지 궁금합니다. java.lang.Class로 잡혀서요 상위 상속을 먼저 잡는거 때문일까요?
+//            assertInstanceOf(carRacing.getExecuteNumbers().get(0).getClass(), Integer.class);
         });
-
     }
 
 }
