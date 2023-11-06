@@ -1,6 +1,5 @@
-package carracing;
+package carracing.car;
 
-import carracing.car.RandomRange;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
