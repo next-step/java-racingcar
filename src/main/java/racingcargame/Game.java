@@ -16,7 +16,7 @@ public class Game {
 
         System.out.println("실행 결과");
         for (int i = 0; i < playCount; i++) {
-            carList = racingPlay.playRacingCar(carList);
+            racingPlay.playRacingCar(carList);
             outputView.output(carList);
         }
     }

@@ -18,13 +18,11 @@ public class RacingPlay {
         return carList;
     }
 
-    public List<Car> playRacingCar(List<Car> carList) {
+    public void playRacingCar(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
             int randomNumber = random.nextInt(10);
             moveForward(randomNumber, carList.get(i));
         }
-
-        return carList;
     }
 
     public void moveForward(int randomNumber, Car car) {
