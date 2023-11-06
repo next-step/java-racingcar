@@ -4,30 +4,21 @@ import java.util.List;
 
 public class ResultView {
 
-    private final List<CarStatus> carStatuses;
-
-    private ResultView(List<CarStatus> carStatuses) {
-        this.carStatuses = carStatuses;
+    public static void printResultStart() {
+        System.out.println("\n실행 결과");
     }
 
-    public static ResultView result(List<CarStatus> carStatuses) {
-        return new ResultView(carStatuses);
-    }
-
-    public void print() {
-        for (CarStatus carStatus: carStatuses) {
-            printWithDash(carStatus);
+    public static void printOneGameResult(List<String> results) {
+        for (String result: results) {
+            System.out.println(result);
         }
 
         System.out.println();
     }
 
-    private void printWithDash(CarStatus carStatus) {
-        int grade = carStatus.grade();
-        for (int idx = 0; idx < grade; idx++) {
-            System.out.print("-");
-        }
+    public static void printWinners(List<String> winnerNames) {
+        String result = String.join(",", winnerNames) + "가 최종 우승했습니다.";
 
-        System.out.println();
+        System.out.println(result);
     }
 }
