@@ -16,21 +16,13 @@ public class RacingGame {
         return cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public List<Car> race() {
         moveCars();
         return cars;
     }
     private void moveCars() {
         for (Car car : cars) {
-            car.move(getRandomNumber());
+            car.move(new RandomNumberMoveStrategy());
         }
-    }
-
-    private int getRandomNumber() {
-        return new Random().nextInt(10);
     }
 }

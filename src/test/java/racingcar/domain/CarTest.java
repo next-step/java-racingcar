@@ -15,19 +15,24 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차는 랜덤값이 4이상이면 이동할 수 있다.")
+    @DisplayName("자동차 이동 가능 여부가 true 값이면 이동할 수 있다.")
     void move_O() {
         // when
-        car.move(4);
+        car.move(new MoveStrategy() {
+            @Override
+            public boolean moveAble() {
+                return true;
+            }
+        });
         // then
         Assertions.assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("자동차는 랜덤값이 4미만이면 이동할 수 없다.")
+    @DisplayName("자동차 이동 가능 여부가 false 값이면 이동할 수 없다.")
     void move_X() {
         // when
-        car.move(3);
+        car.move(() -> false);
         // then
         Assertions.assertThat(car.getPosition()).isEqualTo(0);
     }
