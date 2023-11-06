@@ -8,6 +8,7 @@ public class RacingApp {
         Car[] cars = CarFactory.createCars(numberOfCars);
 
         Racing racing = new Racing(cars, round);
+        racing.start();
     }
 
 }
