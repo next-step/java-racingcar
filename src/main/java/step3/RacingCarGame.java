@@ -1,9 +1,6 @@
 package step3;
 
-import java.sql.Array;
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
 
 public class RacingCarGame {
 
