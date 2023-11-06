@@ -9,7 +9,7 @@ public class CarRacing {
     private final InputView inputView;
     private final ResultView resultView;
     private List<Car> cars;
-    private List<Integer> executeNumbers;
+    private Queue<Integer> executeNumbers = new LinkedList<>();
 
     public CarRacing(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
@@ -38,7 +38,7 @@ public class CarRacing {
         return this.cars;
     }
 
-    public List<Integer> getExecuteNumbers() {
+    public Queue<Integer> getExecuteNumbers() {
         return this.executeNumbers;
     }
 }
