@@ -57,5 +57,5 @@ chore (maintain) </code>
 
 
 ## 참고
-* 일급 컬렉션 (https://jojoldu.tistory.com/412)
-* 전략 패턴 (https://velog.io/@mohai2618/%EC%A0%84%EB%9E%B5-%ED%8C%A8%ED%84%B4Strategy-Pattern%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
+##### 🙄 일급 컬렉션(https://jojoldu.tistory.com/412)
+##### 🙄 전략 패턴(https://velog.io/@mohai2618/%EC%A0%84%EB%9E%B5-%ED%8C%A8%ED%84%B4Strategy-Pattern%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
