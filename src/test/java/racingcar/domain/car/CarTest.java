@@ -23,12 +23,11 @@ class CarTest {
         assertThat(car.getPosition()).isZero();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    @DisplayName("게임에서 정의한 움직일 수 있는 조건에 따라 반환되는 숫자만큼 자동차를 이동시킨다.")
-    void randomMove(int position) {
-        car.move(() -> position);
+    @Test
+    @DisplayName("움직일 수 있는 조건이 된다면 자동차는 1칸 이동하게 된다.")
+    void randomMove() {
+        car.move(() -> 1);
 
-        assertThat(car.getPosition()).isEqualTo(position);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
