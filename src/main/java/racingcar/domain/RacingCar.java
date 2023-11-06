@@ -5,10 +5,13 @@ import java.util.Objects;
 public class RacingCar {
 
     private static final String DASH = "-";
+    private static final int START_POSITION = 0;
+    private static final int LEAST_MOVE_CONDITION = 4;
+    private static final int ZERO = 0;
     private int position;
 
     public RacingCar() {
-        this(0);
+        this(START_POSITION);
     }
 
     public RacingCar(int position) {
@@ -22,11 +25,11 @@ public class RacingCar {
     }
 
     private boolean movable(int randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= LEAST_MOVE_CONDITION;
     }
 
     public String movingDistance() {
-        return DASH.repeat(Math.max(0, position));
+        return DASH.repeat(Math.max(ZERO, position));
     }
 
     @Override
