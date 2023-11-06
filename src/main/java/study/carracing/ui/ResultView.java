@@ -1,14 +1,13 @@
 package study.carracing.ui;
 
-import study.carracing.domain.Car;
-import study.carracing.domain.RacingCars;
+import java.util.List;
 
 public class ResultView {
 
-    public static void outputResult(RacingCars cars) {
+    public static <Type> void outputResult(List<Type> items) {
         System.out.println("실행 결과");
-        for (Car car : cars.getCars()) {
-            System.out.println(car);
+        for (Type item : items) {
+            System.out.println(item);
         }
     }
 }

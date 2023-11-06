@@ -10,13 +10,12 @@ public class CarRacingController {
     public static void main(String[] args) {
         int carCount = InputView.inputCarCount();
         Validator.validateInput(carCount);
-
         int tryCount = InputView.inputTryCount();
         Validator.validateInput(tryCount);
 
         Racing racing = new Racing(carCount);
         racing.start(tryCount);
 
-        ResultView.outputResult(racing.getCars());
+        ResultView.outputResult(racing.getRacingCars().getCars());
     }
 }
