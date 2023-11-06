@@ -9,7 +9,7 @@ public class RacingGame {
 
     private final List<Car> carList;
     private final int trialCount;
-    RandomCreate random = new RandomCreate();
+    RandomNumberGenerator random = new RandomNumberGenerator();
 
     public RacingGame(int carCount, int trialCount) {
 
@@ -21,7 +21,7 @@ public class RacingGame {
         for (int i = 0; i < trialCount; i++) {
             for (Car car : carList) {
                 ResultView.print(car.getPosition());
-                car.move(random.randomNumber());
+                car.move(random.getRandomNumber());
             }
             System.out.println();
         }

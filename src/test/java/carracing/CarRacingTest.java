@@ -12,10 +12,10 @@ public class CarRacingTest {
     void game() {
         // given
         Car car = new Car();
-        RandomCreate random = new RandomCreate();
+        RandomNumberGenerator random = new RandomNumberGenerator();
 
         // when
-        car.move(random.randomNumber());
+        car.move(random.getRandomNumber());
 
         // then
         assertThat(car.getPosition()).isEqualTo(2);
@@ -31,9 +31,9 @@ public class CarRacingTest {
     @Test
     @DisplayName("0부터 9 사이의 random 숫자 생성")
     public void createRandomNumber() {
-        RandomCreate randomCreate = new RandomCreate();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
-        int randomNumber = randomCreate.randomNumber();
+        int randomNumber = randomNumberGenerator.getRandomNumber();
 
         assertThat(randomNumber).isLessThan(10);
     }
