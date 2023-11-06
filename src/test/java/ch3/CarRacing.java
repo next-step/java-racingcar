@@ -1,8 +1,6 @@
 package ch3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CarRacing {
 
@@ -26,12 +24,10 @@ public class CarRacing {
 
     public void makingCar(int number) {
         this.cars = new ArrayList<>();
-        this.executeNumbers = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             cars.add(new Car());
-            Random random = new Random();
-            this.executeNumbers.add(random.nextInt(10));
         }
+        makingExecuteNumbers();
     }
 
     public List<Car> getCars() {
@@ -41,4 +37,13 @@ public class CarRacing {
     public Queue<Integer> getExecuteNumbers() {
         return this.executeNumbers;
     }
+
+    private void makingExecuteNumbers() {
+        Random random = new Random();
+        int carSize = cars.size();
+        while (carSize-- > 0) {
+            this.executeNumbers.add(random.nextInt(10));
+        }
+    }
+
 }
