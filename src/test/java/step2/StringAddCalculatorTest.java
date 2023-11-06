@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
@@ -49,5 +50,11 @@ public class StringAddCalculatorTest {
         assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(6);
     }
 
-
+    @Test
+    @DisplayName("음수를 전달할 경우, RuntimeException 예외가 발생한다.")
+    void negativeNumberException() {
+        String text = "-1,2,3";
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(text))
+                .isInstanceOf(RuntimeException.class);
+    }
 }

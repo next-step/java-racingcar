@@ -22,13 +22,14 @@ public class StringAddCalculator {
         }
 
         int num = Integer.parseInt(text);
-
+        validateNegativeNumber(num);
         return num;
     }
 
     private static int sum(int[] nums) {
         int result = 0;
         for (int num : nums) {
+            validateNegativeNumber(num);
             result += num;
         }
         return result;
@@ -46,4 +47,11 @@ public class StringAddCalculator {
     private static boolean isBlankOrNull(String text) {
         return text == null || text.isBlank();
     }
+
+    private static void validateNegativeNumber(int num) {
+        if (num < 0) {
+            throw new RuntimeException("음수는 더할 수 없습니다.");
+        }
+    }
+
 }
