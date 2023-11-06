@@ -1,7 +1,5 @@
 package study.carracing.domain;
 
-import study.carracing.ui.ResultView;
-
 import java.util.List;
 
 public class RacingCars {
