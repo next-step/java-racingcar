@@ -19,4 +19,10 @@ public class CarService {
         Random random = new Random();
         return random.nextInt(10);
     }
+
+    public static void repeatMove(List<Car> cars) {
+        for (Car car : cars) {
+            car.moveAndRecord(randomValue());
+        }
+    }
 }
