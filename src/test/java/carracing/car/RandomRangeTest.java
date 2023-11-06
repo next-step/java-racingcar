@@ -1,9 +1,11 @@
 package carracing.car;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RandomRangeTest {
 	@ParameterizedTest
@@ -15,21 +17,27 @@ public class RandomRangeTest {
 		assertThat(actual).isBetween(0, 9);
 	}
 
-	@ParameterizedTest
-	@ValueSource(ints = {4, 9})
-	void isPossible_LessThan5_MoreThan9_False(int number) {
-		RandomRange r = new RandomRange(number, number);
+	@Test
+	void isPossible_LessThan4_False() {
+		RandomRange r = new RandomRange(3, 3);
 		boolean movingIsPossible = r.isPossible();
 
 		assertThat(movingIsPossible).isFalse();
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {5, 8})
-	void isPossible_MoreThan4_LessThan9_True(int number) {
+	@ValueSource(ints = {4, 9})
+	void isPossible_MoreThanEqualTo4_LessThanEqualTo9_True(int number) {
 		RandomRange r = new RandomRange(number, number);
 		boolean movingIsPossible = r.isPossible();
 
 		assertThat(movingIsPossible).isTrue();
+	}
+
+	@Test
+	void isPossible_MoreThan9_ThrowException() {
+		RandomRange r = new RandomRange(10, 10);
+		assertThatThrownBy(r::isPossible)
+				.isInstanceOf(IllegalArgumentException.class);
 	}
 }

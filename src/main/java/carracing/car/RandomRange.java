@@ -9,7 +9,7 @@ import carracing.controlstatement.OR;
 
 public class RandomRange implements MovingStrategy {
 	private static final int MIN_VALUE = 0;
-	private static final int MAX_VALUE = 10;
+	private static final int MAX_VALUE = 9;
 	private static final int MOVING_STANDARD = 4;
 	private final int min;
 	private final int max;
