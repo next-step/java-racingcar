@@ -1,13 +1,13 @@
 package racingcar.domain;
 
+import static racingcar.constant.Constant.DASH;
+import static racingcar.constant.Constant.LEAST_MOVE_CONDITION;
+import static racingcar.constant.Constant.START_POSITION;
+import static racingcar.constant.Constant.ZERO;
+
 import java.util.Objects;
 
 public class RacingCar {
-
-    private static final String DASH = "-";
-    private static final int START_POSITION = 0;
-    private static final int LEAST_MOVE_CONDITION = 4;
-    private static final int ZERO = 0;
     private int position;
 
     public RacingCar() {

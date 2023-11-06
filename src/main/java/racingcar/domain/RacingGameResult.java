@@ -1,10 +1,11 @@
 package racingcar.domain;
 
+import static racingcar.constant.Constant.ENTER;
+
 import java.util.List;
 import java.util.StringJoiner;
 
 public class RacingGameResult {
-    private static final String ENTER = "\n";
 
     public String create(List<RacingCar> racingCars) {
         StringJoiner stringJoiner = new StringJoiner(ENTER);

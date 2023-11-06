@@ -1,9 +1,10 @@
 package racingcar.domain;
 
+import static racingcar.constant.Constant.BOUND;
+
 import java.util.List;
 
 public class RacingGame {
-    private static final int BOUND = 10;
     private final RandomService randomService;
 
     public RacingGame(RandomService randomService) {

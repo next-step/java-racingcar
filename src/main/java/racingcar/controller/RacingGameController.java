@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import static racingcar.constant.Constant.ZERO;
+
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.RacingCar;
@@ -34,7 +36,7 @@ public class RacingGameController {
 
     private void startAllGames(int numberOfAttempts, List<RacingCar> racingCars) {
         outputView.printGameResultMent();
-        while (numberOfAttempts-- > 0) {
+        while (numberOfAttempts-- > ZERO) {
             racingGame.startSingleGame(racingCars);
             outputView.printSingleGameResult(racingGameResult.create(racingCars));
         }
