@@ -15,4 +15,30 @@ public class RacingTest {
         assertThat(cars).doesNotContainNull();
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {4, 9})
+    @DisplayName("자동차의 랜덤 숫자가 4이상일 때 한칸 움직인다.")
+    void move_test(int randomNumber) {
+        Car car = new Car();
+
+        int prevForwardCount = car.forwardCount;
+        car.move(randomNumber);
+        int nextForwardCount = car.forwardCount;
+
+        assertThat(prevForwardCount).isEqualTo(nextForwardCount - 1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3})
+    @DisplayName("자동차의 랜덤 숫자가 3이하일 때 멈춘다.")
+    void stop_test(int randomNumber) {
+        Car car = new Car();
+
+        int prevForwardCount = car.forwardCount;
+        car.move(randomNumber);
+        int nextForwardCount = car.forwardCount;
+
+        assertThat(prevForwardCount).isEqualTo(nextForwardCount);
+    }
+
 }
