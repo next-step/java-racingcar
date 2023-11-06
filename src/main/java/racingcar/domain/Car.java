@@ -21,6 +21,10 @@ public class Car {
         return new Car(name, randomPicker);
     }
 
+    public String name() {
+        return name;
+    }
+
     private static void checkNameIsValid(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
@@ -43,5 +47,9 @@ public class Car {
 
     private void moveForward() {
         this.grade += MOVE_GRADE;
+    }
+
+    public boolean isWinner(int winnerGrade) {
+        return grade == winnerGrade;
     }
 }

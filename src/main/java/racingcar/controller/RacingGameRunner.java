@@ -15,6 +15,8 @@ public class RacingGameRunner {
         Cars cars = Cars.init(carNames);
 
         play(cars, moveCount);
+
+        ResultView.printWinners(cars.winnerNames());
     }
 
     private static void play(Cars cars, int moveCount) {
@@ -22,7 +24,7 @@ public class RacingGameRunner {
 
         for (int idx = 0; idx < moveCount; idx++) {
             List<String> results = cars.game();
-            ResultView.print(results);
+            ResultView.printOneGameResult(results);
         }
     }
 }
