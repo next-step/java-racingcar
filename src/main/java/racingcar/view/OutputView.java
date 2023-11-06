@@ -9,6 +9,6 @@ public class OutputView {
     }
 
     public void printSingleGameResult(String gameResult) {
-        System.out.println(gameResult);
+        System.out.print(gameResult);
     }
 }

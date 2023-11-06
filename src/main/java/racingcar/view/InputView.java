@@ -25,7 +25,9 @@ public class InputView {
     public int numberOfAttempts() {
         System.out.println(INPUT_NUMBER_OF_ATTEMPTS);
         try {
-            return getInputNumber();
+            int inputNumber = getInputNumber();
+            System.out.println();
+            return inputNumber;
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
