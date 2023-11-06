@@ -2,6 +2,8 @@ package racewinner;
 
 import racewinner.strategy.MoveStrategy;
 
+import java.util.Random;
+
 public class Car {
     private final String name;
     private final MoveStrategy moveStrategy;
@@ -15,7 +17,8 @@ public class Car {
     }
 
     public void move() {
-        if (moveStrategy.isMoved()) {
+        final int number = moveStrategy.getNumber();
+        if (number >= 4) {
             position++;
         }
     }
