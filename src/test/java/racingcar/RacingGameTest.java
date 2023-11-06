@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
@@ -21,18 +22,27 @@ public class RacingGameTest {
         assertEquals(car.getPosition(), 1);
     }
 
+    @DisplayName("전진")
     @Test
-    void car_주어진_횟수_동안_랜덤값을_구하여_자동차가_전진_혹은_멈출_수_있다() {
+    void car_주어진_횟수_동안_랜덤값을_구하여_자동차가_전진할_수_있다() {
+        Car car = new Car();
+        int position = 2;
+
+        int randomNumber = 4;
+        boolean result = car.tryToMove(randomNumber);
+        car.moveCar(result);
+        assertEquals(car.getPosition(), position);
+    }
+
+    @DisplayName("정지")
+    @Test
+    void car_주어진_횟수_동안_랜덤값을_구하여_자동차가_멈출_수_있다() {
         Car car = new Car();
         int position = 1;
 
-        int randomNumber = car.generateRandomNumber();
+        int randomNumber = 1;
         boolean result = car.tryToMove(randomNumber);
-        if (result) {
-            car.moveCar(result);
-            position++;
-        }
-
+        car.moveCar(result);
         assertEquals(car.getPosition(), position);
     }
 }

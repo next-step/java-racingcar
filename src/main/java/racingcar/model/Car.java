@@ -1,7 +1,7 @@
 package racingcar.model;
 
 public class Car {
-    private static final int RANDOM_VALUE_RANGE = 10;
+    private static final int RANDOM_VALUE_RANGE = 9;
     private static final int SUCCESS_MINIMUM_VALUE = 4;
     private int position;
 
