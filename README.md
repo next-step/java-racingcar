@@ -6,9 +6,6 @@
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
 ## 온라인 코드 리뷰 과정
-<<<<<<< Updated upstream
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
-=======
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 
@@ -35,4 +32,3 @@
 2. 자바 코드 컨벤션 지키기(⌨️ 단축키 : opt + cmd + L) [🔗 참고링크](https://www.jetbrains.com/help/idea/code-style-java.html)
 3. else 예약어 사용하지 않기 (switch 포함)
 4. git commit convention 지키기 [🔗 참고링크](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
->>>>>>> Stashed changes
