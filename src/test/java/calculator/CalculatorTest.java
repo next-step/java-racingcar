@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class CalculatorTest {
 
@@ -47,5 +49,19 @@ public class CalculatorTest {
 
         // then
         assertThat(sum).isEqualTo(4);
+    }
+
+    @ParameterizedTest
+    @DisplayName("빈 문자열이나 null이 주어지면 0을 반환한다.")
+    @NullAndEmptySource
+    void return_zero(String given) {
+        // given
+        Calculator calculator = new Calculator();
+
+        // when
+        long sum = calculator.calculate(given);
+
+        // then
+        assertThat(sum).isEqualTo(0);
     }
 }

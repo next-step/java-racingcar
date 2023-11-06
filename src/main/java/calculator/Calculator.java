@@ -10,8 +10,13 @@ public class Calculator {
     private static final String COLUMN = ":";
     public static final String DEFAULT_REGEX = COMMA + "|" + COLUMN;
     private static final String CUSTOM_REGEX = "//(.)\n(.*)";
+    private static final int ZERO = 0;
 
     public long calculate(String text) {
+        if (isNothing(text)) {
+            return calculateSumWithNothing();
+        }
+
         Matcher m = getMatcher(text);
         if (matchable(m)) {
             return calculateSumWithCustomRegex(m);
@@ -21,7 +26,15 @@ public class Calculator {
             return calculateSumWithDefaultRegex(text);
         }
 
-        return 0;
+        return ZERO;
+    }
+
+    private boolean isNothing(String text) {
+        return text == null || text.isBlank() || text.isEmpty();
+    }
+
+    private long calculateSumWithNothing() {
+        return ZERO;
     }
 
     private Matcher getMatcher(String text) {
