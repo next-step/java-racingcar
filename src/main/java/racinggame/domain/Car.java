@@ -6,24 +6,19 @@ public class Car {
 
     private final CarName name;
     private final Distance distance;
-    private final MovingValidator movingValidator;
 
-    public Car(CarName name, Distance distance, MovingValidator movingValidator) {
+    public Car(CarName name, Distance distance) {
         this.name = name;
         this.distance = distance;
-        this.movingValidator = movingValidator;
     }
 
-    public Car(CarName name, MovingValidator movingValidator) {
+    public Car(CarName name) {
         this.name = name;
-        this.movingValidator = movingValidator;
         this.distance = new Distance();
     }
 
     public void move() {
-        if (movingValidator.movable()) {
-            this.distance.add();
-        }
+        this.distance.add();
     }
 
     public Distance movingDistance() {

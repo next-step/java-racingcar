@@ -4,20 +4,20 @@ import racinggame.domain.strategy.MovingStrategy;
 
 class TestMovingStrategy implements MovingStrategy {
 
-    public static final int DEFAULT_NUMBER = 0;
-    private final int number;
+    public static final boolean DEFAULT_MOVABLE = false;
+    private final boolean movable;
 
-    public TestMovingStrategy(int number) {
-        this.number = number;
+    public TestMovingStrategy(boolean movable) {
+        this.movable = movable;
     }
 
     public TestMovingStrategy() {
-        this.number = DEFAULT_NUMBER;
+        this.movable = DEFAULT_MOVABLE;
     }
 
     @Override
-    public int moveValue() {
-        return this.number;
+    public boolean movable() {
+        return this.movable;
     }
 
 }

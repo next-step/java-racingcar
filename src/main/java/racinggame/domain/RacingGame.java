@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import java.util.List;
+import racinggame.domain.strategy.MovingStrategy;
 
 public class RacingGame {
 
@@ -14,8 +15,8 @@ public class RacingGame {
         return this.cars.size();
     }
 
-    public void play() {
-        cars.move();
+    public void play(MovingStrategy movingStrategy) {
+        cars.move(movingStrategy);
     }
 
     public Cars cars() {

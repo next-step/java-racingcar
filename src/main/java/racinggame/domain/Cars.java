@@ -3,15 +3,16 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import racinggame.domain.strategy.MovingStrategy;
 
 public class Cars {
 
     private final List<Car> carList;
 
-    public static Cars from(String[] names, MovingValidator movingValidator) {
+    public static Cars from(String[] names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            Car car = new Car(new CarName(name), movingValidator);
+            Car car = new Car(new CarName(name));
             cars.add(car);
         }
         return new Cars(cars);
@@ -25,8 +26,14 @@ public class Cars {
         return this.carList.size();
     }
 
-    public void move() {
+    public void move(MovingStrategy movingStrategy) {
         for (Car car : this.carList) {
+            apply(movingStrategy, car);
+        }
+    }
+
+    private static void apply(MovingStrategy movingStrategy, Car car) {
+        if(movingStrategy.movable()) {
             car.move();
         }
     }
