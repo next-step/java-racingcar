@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarFactoryTest {
 
-    private final List<String> DEFAULT_CAR_NAME = List.of("pobi","crong","honux");
+    private final List<String> DEFAULT_CAR_NAME = List.of("pobi", "crong", "honux");
     private CarFactory carFactory;
 
     public void setUp() {
@@ -51,7 +52,7 @@ public class CarFactoryTest {
         public void 차량_이름이_0글자_일때() {
             //given
             setUp();
-            List<String> carName = List.of("pobi","","honux");
+            List<String> carName = List.of("pobi", "", "honux");
             //when
             //then
             assertThatThrownBy(() -> carFactory.participants(carName))
