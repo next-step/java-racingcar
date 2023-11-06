@@ -2,13 +2,15 @@ package me.namuhuchutong.step4;
 
 public class UserInputInformation {
 
+    private final CarNames carNames;
     private final int times;
     private final int numberOfCars;
 
-    public UserInputInformation(int times, int numberOfCars) {
+    public UserInputInformation(CarNames carNames, int times) {
         validateRacingTimes(times);
+        this.carNames = carNames;
         this.times = times;
-        this.numberOfCars = numberOfCars;
+        this.numberOfCars = carNames.getNumberOfNames();
     }
 
     public static void validateRacingTimes(int times) {
@@ -23,5 +25,9 @@ public class UserInputInformation {
 
     public int getNumberOfCars() {
         return numberOfCars;
+    }
+
+    public CarNames getCarNames() {
+        return carNames;
     }
 }
