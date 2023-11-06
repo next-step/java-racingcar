@@ -39,4 +39,15 @@ public class StringAddCalculatorTest {
         String text = "1:2";
         assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자를 지정한 뒤, 숫자들의 합을 반환한다.")
+    void customDelimiter() {
+        String text = "//;\n1;2;3";
+        System.out.println(text);
+
+        assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(6);
+    }
+
+
 }
