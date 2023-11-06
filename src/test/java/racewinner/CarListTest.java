@@ -27,7 +27,7 @@ public class CarListTest {
     @Test
     void winnerTest() {
         //given
-        CarList carList = new CarList(() -> true);
+        CarList carList = new CarList(() -> 8);
 
         //when
         carList.add("bobo");

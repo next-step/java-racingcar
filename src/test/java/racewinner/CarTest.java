@@ -18,7 +18,7 @@ class CarTest {
         car.move();
 
         // then
-        assertThat(car.toString()).isEqualTo("-");
+        assertThat(car.currentStep()).isEqualTo(1);
     }
 
     @DisplayName("자동차가 이동 할 때, 0~3 값이 나오면 전진하지 않는다.")
@@ -32,6 +32,6 @@ class CarTest {
         car.move();
 
         // then
-        assertThat(car.toString()).isEqualTo("");
+        assertThat(car.currentStep()).isEqualTo(0);
     }
 }
