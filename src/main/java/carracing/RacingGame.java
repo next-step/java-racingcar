@@ -1,6 +1,6 @@
-package carRacing;
+package carracing;
 
-import carRacing.ui.ResultView;
+import carracing.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

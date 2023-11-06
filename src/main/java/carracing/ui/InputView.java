@@ -1,4 +1,4 @@
-package carRacing.ui;
+package carracing.ui;
 
 import java.util.Scanner;
 

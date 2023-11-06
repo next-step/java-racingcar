@@ -1,4 +1,4 @@
-package carRacing;
+package carracing;
 
 public class Car {
 
