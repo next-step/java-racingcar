@@ -1,18 +1,12 @@
 package racingcargame;
 
-import java.util.Objects;
+import java.util.List;
 
 public class OutputView {
 
-    public static String[] racingOutput;
-
-    public void output() {
-        for (int i = 0; i < racingOutput.length; i++) {
-            if (Objects.isNull(racingOutput[i])) {
-                System.out.println();
-                continue;
-            }
-            System.out.println(racingOutput[i]);
+    public void output(List<Car> racingOutput) {
+        for (int i = 0; i < racingOutput.size(); i++) {
+            System.out.println(racingOutput.get(i).getLocation());
         }
         System.out.println();
     }
