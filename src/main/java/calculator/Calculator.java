@@ -12,18 +12,18 @@ public class Calculator {
         if (text.contains("-")) throw new IllegalArgumentException();
 
         if (isCustomPattern(text)) {
-            return sum(toInts(split(text.substring(text.indexOf("\n") + 1), retrieveCustomPattern(text))));
+            return sum(toInts(split(text.substring(text.indexOf("\\n") + 2), retrieveCustomPattern(text))));
         }
 
         return sum(toInts(split(text)));
     }
 
     private static String retrieveCustomPattern(String text) {
-        return text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
+        return text.substring(text.indexOf("//") + 2, text.indexOf("\\n"));
     }
 
-    public static boolean isCustomPattern(String text) {
-        return text.contains("//") && text.contains("\n");
+    private static boolean isCustomPattern(String text) {
+        return text.contains("//") && text.contains("\\n");
     }
 
     private static String[] split(String text, String customGubun) {
