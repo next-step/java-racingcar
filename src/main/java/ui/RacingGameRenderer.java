@@ -1,7 +1,7 @@
 package ui;
 
-import game.Car;
-import game.RacingGame;
+import racing.Car;
+import racing.RacingGame;
 
 import java.util.List;
 
@@ -41,5 +41,6 @@ public class RacingGameRenderer {
      */
     public static void renderGame(RacingGame racingGame) {
         System.out.println(getGameRendering(racingGame));
+        System.out.println("");
     }
 }

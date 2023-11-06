@@ -1,8 +1,12 @@
 package ui;
 
-import game.Car;
+import racing.Car;
 
 public class CarRenderer {
+
+    /** 궤적을 표시할 때 사용할 문자 */
+    public static final char TRAJECTORY_CHARACTER = '-';
+
     /**
      * 자동차의 현재 위치를 궤적 문자열로 만들어 생성합니다.
      *
@@ -13,7 +17,7 @@ public class CarRenderer {
         StringBuilder trajectory = new StringBuilder();
 
         for (int i = 1; i <= car.getPosition(); i++) {
-            trajectory.append('-');
+            trajectory.append(TRAJECTORY_CHARACTER);
         }
 
         return trajectory.toString();
