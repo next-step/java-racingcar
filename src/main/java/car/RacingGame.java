@@ -8,12 +8,12 @@ public class RacingGame {
     private static final Integer START_DISTANCE = 0;
 
     public static void main(String[] args) {
-        racingGameRun();
+        startRacingGame();
     }
 
-    public static void racingGameRun() {
+    public static void startRacingGame() {
         List<Car> cars = createCars(InputView.inputNumberOfCars());
-        gameInProgress(InputView.inputNumberOfGames(), cars);
+        playGame(InputView.inputNumberOfGames(), cars);
     }
 
     public static List<Car> createCars(int numberOfCars) {
@@ -24,15 +24,15 @@ public class RacingGame {
         return cars;
     }
 
-    public static void gameInProgress(Integer numberOfGames, List<Car> cars) {
+    public static void playGame(Integer numberOfGames, List<Car> cars) {
         for (int i = 0; i < numberOfGames; i++) {
-            gameByCar(cars);
+            playGameByCars(cars);
             ResultView.outputGameResult(cars);
             System.out.println();
         }
     }
 
-    private static void gameByCar(List<Car> cars) {
+    private static void playGameByCars(List<Car> cars) {
         for (Car car : cars) {
             car.game(RandomNumberGenerator.makeRandomNumber());
         }
