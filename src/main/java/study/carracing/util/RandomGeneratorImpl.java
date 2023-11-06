@@ -1,7 +1,6 @@
-package study.carracing.domain;
+package study.carracing.util;
 
 import java.util.Random;
-import study.carracing.util.RandomGenerator;
 
 public class RandomGeneratorImpl implements RandomGenerator {
 

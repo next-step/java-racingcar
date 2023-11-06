@@ -1,5 +1,7 @@
 package study.carracing.domain;
 
+import study.carracing.util.RandomGeneratorImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 
