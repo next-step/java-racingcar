@@ -6,13 +6,13 @@ import racewinner.strategy.MoveStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarList {
+public class Cars {
     private final static String TOO_LONG_CAR_NAME_MSG = "자동차의 이름은 5글자를 초과 할 수 없습니다.";
 
     private final List<Car> carList = new ArrayList<>();
     private final MoveStrategy moveStrategy;
 
-    public CarList(final MoveStrategy moveStrategy) {
+    public Cars(final MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
     }
 

@@ -13,7 +13,7 @@ public class CarRacing {
     private final static String INVALID_DELIMITER_MSG = "','구분자 외의 다른 구분자를 사용 할 수 없습니다.";
     private final static String SPLIT_DELIMITER = ",";
     private final static String NEGATIVE_MSG = "시도할 횟수는 음수를 입력 할 수 없습니다.";
-    private final CarList carList = new CarList(new RandomMoveStrategy());
+    private final Cars carList = new Cars(new RandomMoveStrategy());
     public CarRacing(String inputCarListName) {
         validationInput(inputCarListName);
 

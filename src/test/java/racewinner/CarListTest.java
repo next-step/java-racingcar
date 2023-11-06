@@ -15,7 +15,7 @@ public class CarListTest {
     @Test
     void carNameTooLong() {
         //given
-        CarList carList = new CarList(null);
+        Cars carList = new Cars(null);
 
         //when
         //then
@@ -27,7 +27,7 @@ public class CarListTest {
     @Test
     void winnerTest() {
         //given
-        CarList carList = new CarList(() -> 8);
+        Cars carList = new Cars(() -> 8);
 
         //when
         carList.add("bobo");
