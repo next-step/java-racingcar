@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class RacingCar {
 
+    private static final String DASH = "-";
     private int position;
 
     public RacingCar() {
@@ -22,6 +23,10 @@ public class RacingCar {
 
     private boolean movable(int randomNumber) {
         return randomNumber >= 4;
+    }
+
+    public String movingDistance() {
+        return DASH.repeat(Math.max(0, position));
     }
 
     @Override
