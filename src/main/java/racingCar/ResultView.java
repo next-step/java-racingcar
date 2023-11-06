@@ -1,7 +1,5 @@
 package racingCar;
 
-import java.util.Scanner;
-
 public class ResultView {
     public static void noRace() {
         resultPrintln("경주 시작 조건이 충족되지 않아 경주가 개최되지 않았습니다.");
@@ -15,7 +13,7 @@ public class ResultView {
         resultPrintln(displayPosition.toString());
     }
 
-    public static void raceStart() {
+    public static void racingStart() {
         resultPrintln("....경주 시작!....");
     }
 
