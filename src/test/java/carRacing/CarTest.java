@@ -9,10 +9,12 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("자동차 객체 테스트")
 public class CarTest {
     private Car car;
+    private MovingStrategy movingStrategy;
 
     @BeforeEach
     void create() {
-        car = new Car();
+        movingStrategy = new GreaterThanThreeMovingStrategy();
+        car = new Car(movingStrategy);
     }
 
     @Test

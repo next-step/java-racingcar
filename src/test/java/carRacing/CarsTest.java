@@ -11,14 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
     Cars cars;
+    MovingStrategy movingStrategy;
 
     @BeforeEach
     void create() {
+        movingStrategy = new GreaterThanThreeMovingStrategy();
         int carCount = 3;
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            carList.add(new Car(movingStrategy));
         }
         cars = new Cars(carList);
     }

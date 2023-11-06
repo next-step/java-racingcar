@@ -9,17 +9,17 @@ public class RacingProcess {
     private final int carCount;
     private final Cars cars;
 
-    public RacingProcess(int carCount) {
+    public RacingProcess(int carCount, MovingStrategy movingStrategy) {
 
         this.carCount = carCount;
-        this.cars = new Cars(generateCarList());
+        this.cars = new Cars(generateCarList(movingStrategy));
     }
 
 
-    private List<Car> generateCarList() {
+    private List<Car> generateCarList( MovingStrategy movingStrategy) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            carList.add(new Car(movingStrategy));
         }
         return carList;
     }

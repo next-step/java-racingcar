@@ -12,11 +12,13 @@ public class RacingProcessTest {
 
     private int carCount;
     private RacingProcess racingProcess;
+    MovingStrategy movingStrategy;
 
     @BeforeEach
     void create() {
+        movingStrategy = new GreaterThanThreeMovingStrategy();
         carCount = 5;
-        racingProcess = new RacingProcess(carCount);
+        racingProcess = new RacingProcess(carCount, movingStrategy);
     }
 
     @Test
