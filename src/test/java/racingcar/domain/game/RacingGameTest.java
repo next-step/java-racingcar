@@ -15,7 +15,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(2, 5);
 
         for (int i = 0; i < 5; i++) {
-             racingGame.startRacing();
+             racingGame.startRacing(() -> false);
         }
 
         assertThat(racingGame.isEndGame()).isTrue();
@@ -27,7 +27,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(2, 5);
 
         for (int i = 0; i < 4; i++) {
-            racingGame.startRacing();
+            racingGame.startRacing(() -> true);
         }
 
         assertThat(racingGame.isEndGame()).isFalse();
