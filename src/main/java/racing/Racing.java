@@ -1,6 +1,7 @@
 package racing;
 
 import racing.car.Car;
+import racing.car.Position;
 import racing.ui.ResultView;
 
 import java.util.ArrayList;
@@ -8,12 +9,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Racing {
-    private static final Random random = new Random();
-    private ParticipatingCars participatingCars;
-    private int attemptCount;
 
-    public Racing(ParticipatingCars participatingCars, int attemptCount) {
-        this.participatingCars = participatingCars;
+    private static final Random random = new Random();
+    private static final int RANDOM_GENNERATE_NUMBER = 10;
+    private static final int INIT_POSITION = 0;
+
+    private final ParticipatingCars participatingCars;
+    private final int attemptCount;
+
+    public Racing(String inputNames, int attemptCount) {
+        this.participatingCars = new ParticipatingCars(inputNames);
         this.attemptCount = attemptCount;
     }
 
@@ -33,15 +38,19 @@ public class Racing {
      */
     public List<Car> winners() {
         List<Car> winners = new ArrayList<>();
-        int position = 0;
+        Position position = new Position(INIT_POSITION);
         for (Car car : this.participatingCars()) {
-            if (position == car.position().position()) {
-                winners.add(car);
-            }
-            if (position < car.position().position()) {
-                winners.clear();
-                winners.add(car);
-                position = car.position().position();
+            switch (position.compareTo(car.position())) {
+                case 0:// 같을 때
+                    winners.add(car);
+                    break;
+                case 1:// 새로운 자동차가 더 앞에 있을 때
+                    winners.clear();
+                    winners.add(car);
+                    position = new Position(car.position().position());
+                    break;
+                default:
+                    break;
             }
         }
         return winners;
@@ -58,10 +67,26 @@ public class Racing {
 
     private void attemptGo() {
         for (Car car : this.participatingCars()) {
-            int input = random.nextInt(10);
+            int input = random.nextInt(RANDOM_GENNERATE_NUMBER);
             car.move(input);
             ResultView.showCurrentPosition(car);
         }
         System.out.println();
+    }
+
+    public static class ParticipatingCars {
+
+        private final List<Car> participatingCars = new ArrayList<>();
+
+        public ParticipatingCars(String inputNames) {
+            String[] names = inputNames.split(",");
+            for (String name : names) {
+                this.participatingCars.add(new Car(name, INIT_POSITION));
+            }
+        }
+
+        public List<Car> cars() {
+            return this.participatingCars;
+        }
     }
 }

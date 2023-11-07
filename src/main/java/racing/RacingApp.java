@@ -14,8 +14,7 @@ public class RacingApp {
         String inputNames = InputView.getInputNames();
         int attemptCount = InputView.getNumberOfAttempts();
 
-        ParticipatingCars participatingCars = new ParticipatingCars(inputNames);
-        Racing racing = new Racing(participatingCars, attemptCount);
+        Racing racing = new Racing(inputNames, attemptCount);
         racing.start();
         ResultView.showWinners(racing.winners());
     }

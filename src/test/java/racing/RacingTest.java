@@ -15,6 +15,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingTest {
+
     @DisplayName("입력받은 자동차 이릅 배열로 자동차 이름을 생성한다.")
     @Test
     void ready() {
@@ -22,12 +23,13 @@ public class RacingTest {
         String inputNames = "test1,test2,test3";
 
         // when
-        ParticipatingCars participatingCars = new ParticipatingCars(inputNames);
+        Racing racing = new Racing(inputNames, 0);
 
         // then
-        assertThat(participatingCars.numberOfCars()).isEqualTo(3);
-        for (int i = 0; i < participatingCars.numberOfCars(); ++i) {
-            assertThat(participatingCars.cars().get(i).name()).isEqualTo("test" + (i + 1));
+        int participatingCarCount = racing.participatingCars().size();
+        assertThat(participatingCarCount).isEqualTo(3);
+        for (int i = 0; i < participatingCarCount; ++i) {
+            assertThat(racing.participatingCars().get(i).name()).isEqualTo("test" + (i + 1));
         }
     }
 
@@ -42,7 +44,7 @@ public class RacingTest {
         cars.add(car1);
         cars.add(car2);
         cars.add(car3);
-        Racing racing = new Racing(cars, 0);
+        Racing racing = new Racing("test1,test2,test3", 0);
 
         // when, then
         assertThat(racing.winners().get(0)).isEqualTo(car3);
