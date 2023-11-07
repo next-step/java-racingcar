@@ -4,32 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static racingcar.Dice.roll;
-import static racingcar.InputView.readCarCount;
-import static racingcar.InputView.readTryCount;
-import static racingcar.ResultView.printCarsPosition;
-import static racingcar.ResultView.printResult;
+import static racingcar.ResultView.*;
+import static racingcar.WinnerFinder.findWinner;
 
 public class RacingSimulator {
 
-
-    public static void main(String[] args) {
-
-
-        int carCount = readCarCount();
-        int tryCount = readTryCount();
-
-        simulate(carCount, tryCount);
-
+    private RacingSimulator() {
     }
 
-    private static void simulate(int carCount, int tryCount) {
-        List<RacingCar> racingCars = initRacingCars(carCount);
+    public static void simulate(List<String> carNames, int tryCount) {
+        List<RacingCar> racingCars = initRacingCars(carNames);
         printResult();
 
         for (int i = 0; i < tryCount; i++) {
             eachCarAction(racingCars);
             printCarsPosition(racingCars);
         }
+
+        printWinner(findWinner(racingCars));
     }
 
     private static void eachCarAction(List<RacingCar> racingCars) {
@@ -37,10 +29,10 @@ public class RacingSimulator {
     }
 
 
-    private static List<RacingCar> initRacingCars(int carCount) {
+    private static List<RacingCar> initRacingCars(List<String> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar());
+        for (int i = 0; i < carNames.size(); i++) {
+            racingCars.add(new RacingCar(carNames.get(i)));
         }
         return racingCars;
     }
