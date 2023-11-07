@@ -12,5 +12,6 @@
 - [x] Cars는 일급 컬렉션으로 복수의 Car객체를 컬렉션에 저장하고 불변상태를 유지한다. 
 - [x] CarRacer는 자동차의 엑셀을 밟는 행동(랜덤 숫자를 생성하는 메서드)를 가진다.
 - [x] CarRacing(Controller)은 복수의 자동차, 카레이서를 관리한다.
-- [x] CarRacingView는 자동차 경주에 필요한 값을 입력 받고 자동차 경주의 실행결과를 출력한다.
-- [x] Drawing은 CarRacingView를 도와 자동차의 위치 변화를 출력한다.
+- [x] RacingOutput은 사용자에게 질문, 자동차의 위치를 출력한다.
+- [x] RacingInput은 사용자에게 질문에 대한 답을 입력한다.
+- [x] CarRacingView는 CarRacing, RacingOutput, RacingInput과 의존 관계를 가지며 자동차 경주 게임을 진행한다.
