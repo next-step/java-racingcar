@@ -1,28 +1,29 @@
 package racingcargame;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingPlay {
 
-    private static Random random = new Random();
+    private RandomNumber randomNumber;
+
+    public RacingPlay() {
+        this.randomNumber = new RandomNumberImpl();
+    }
 
     public List<Car> readyForRacing(int carNumber) {
-        List<Car> carList = new ArrayList<>();
-
-        for (int i = 0; i < carNumber; i++) {
-            carList.add(new Car(""));
-        }
-
-        return carList;
+        return Stream.generate(() -> new Car(0)).limit(carNumber).collect(Collectors.toList());
     }
 
     public void playRacingCar(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
-            int randomNumber = random.nextInt(10);
-            moveForward(randomNumber, carList.get(i));
+            moveForward(getRandomNumber(), carList.get(i));
         }
+    }
+
+    private int getRandomNumber() {
+        return randomNumber.getRandomNumber(10);
     }
 
     public void moveForward(int randomNumber, Car car) {
