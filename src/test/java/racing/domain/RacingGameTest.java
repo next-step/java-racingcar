@@ -79,6 +79,24 @@ class RacingGameTest {
                 .containsExactly(0, 0, 0);
     }
 
+    @DisplayName("자동차 이름을 포함하여 레이싱 게임을 생성한다. 생성한 게임 내 차들은 각각의 이름을 갖는다.")
+    @Test
+    void create_racing_game_with_user_name() {
+        // given
+        final String userNameAnswer = "김동규,박동규,최동규";
+        final int carCount = 3;
+        final int gameCount = 1;
+
+        // when
+        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount);
+
+        // then
+        assertThat(racingGame).isNotNull();
+        assertThat(racingGame.getRacingCars())
+                .extracting("userName")
+                .containsExactly("김동규", "박동규", "최동규");
+    }
+
     static class TestMoveStrategy extends CarMoveStrategy {
         public TestMoveStrategy(Random random) {
             super(random);

@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
     @DisplayName("자동차는 전진할 수 있다.")
@@ -64,6 +65,29 @@ class CarTest {
         // then
         assertThat(car.getPosition()).isZero();
         assertThat(result).isLessThan(4);
+    }
+
+    @DisplayName("자동차는 이름을 가진다.")
+    @Test
+    void create_car_with_user_name() {
+        // given
+        final String userName = "김동규";
+
+        // when
+        Car car = new Car(userName);
+
+        // then
+        assertThat(car.getUserName()).isEqualTo(userName);
+    }
+
+    @DisplayName("자동차의 이름은 5자를 초과할 수 없다. 초과시, IllegalArgumentException 을 발생시킨다.")
+    @Test
+    void create_car_with_long_user_name() {
+        // given
+        final String userName = "여섯글자이름";
+
+        // then
+        assertThatThrownBy(() -> new Car(userName)).isInstanceOf(IllegalArgumentException.class);
     }
 
 }
