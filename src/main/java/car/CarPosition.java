@@ -1,6 +1,6 @@
 package car;
 
-public class CarPosition {
+public class CarPosition implements Comparable<CarPosition> {
 
     private int distance;
 
@@ -21,5 +21,14 @@ public class CarPosition {
 
     public void incrementDistance() {
         distance++;
+    }
+
+    @Override
+    public int compareTo(CarPosition otherCarPosition) {
+        return this.distance - otherCarPosition.distance;
+    }
+
+    public boolean isSameDistance(CarPosition winnerCarPosition) {
+        return this.distance == winnerCarPosition.distance;
     }
 }
