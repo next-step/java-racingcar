@@ -2,9 +2,28 @@ package racing;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
+
+    @Test
+    void 자동차_생성() {
+
+        Car car = new Car();
+        List<Car> cars = car.generateCar(3);
+
+        for (int i = 0; i < 3; i++) {
+            int number = cars.get(i).carNumber();
+            assertThat(number).isEqualTo(i);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int distance = cars.get(i).carDistance();
+            assertThat(distance).isEqualTo(0);
+        }
+    }
 
     @Test
     void 자동차_전진() {
