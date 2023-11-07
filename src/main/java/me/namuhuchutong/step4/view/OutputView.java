@@ -11,6 +11,7 @@ public class OutputView {
 
     private static final String DELIMITER = ": ";
     private static final String MARKER = "-";
+    private static final String WINNER_BANNER = "\n***Winners***";
 
     public void printResult(RacingResult racingResult) {
         racingResult.getValues().stream()
@@ -34,7 +35,7 @@ public class OutputView {
     }
 
     private void printWinner(List<String> winners) {
-        System.out.println("\n***Winners***");
+        System.out.println(WINNER_BANNER);
         winners.forEach(System.out::println);
     }
 }
