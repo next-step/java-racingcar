@@ -2,10 +2,11 @@ package step3.domain;
 
 public class Car {
 
+    private Position position;
+
     private static final int DEFAULT_CAR_POSITION = 0;
     private static final int ACCEPT_MOVE_NUMBER = 4;
 
-    private Position position;
 
     public Car() {
         position = new Position(DEFAULT_CAR_POSITION);

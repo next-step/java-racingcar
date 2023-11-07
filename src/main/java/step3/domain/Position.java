@@ -2,9 +2,9 @@ package step3.domain;
 
 public class Position {
 
-    private final int DEFAULT_MOVE_POINT = 1;
-
     private final int position;
+
+    private final int DEFAULT_MOVE_POINT = 1;
 
     public Position(int position) {
         this.position = position;
