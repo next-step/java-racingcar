@@ -1,4 +1,4 @@
-package step3;
+package step3.view;
 
 import step3.validation.ValidateRacingCarInput;
 
@@ -7,11 +7,11 @@ import java.util.Scanner;
 import static step3.constants.QuestionConstants.HOW_MANY_CARS;
 import static step3.constants.QuestionConstants.HOW_MANY_TIMES;
 
-public class RaceInputForm {
+public class RaceInputView {
 
     private final Scanner scanner;
 
-    public RaceInputForm(Scanner scanner) {
+    public RaceInputView(Scanner scanner) {
         this.scanner = scanner;
     }
 
