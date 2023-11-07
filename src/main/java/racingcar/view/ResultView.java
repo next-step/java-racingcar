@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
 public class ResultView {
@@ -9,8 +10,10 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void printResult(final Cars cars) {
-        cars.getCars().forEach(car -> System.out.println(DEFAULT_PRINT_PATTERN.repeat(car.getPosition())));
+    public static void printRacing(final Cars cars) {
+        for (Car car : cars.getCars()) {
+            System.out.println(car.getCarName() + " : " + DEFAULT_PRINT_PATTERN.repeat(car.getPosition()));
+        }
         System.out.println("===========================================");
     }
 }

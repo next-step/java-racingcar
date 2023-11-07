@@ -13,7 +13,7 @@ public class RacingGameController {
         RacingGame racingGame = new RacingGame(inputCarName, totalGameCont);
         while (!racingGame.isEndGame()) {
             racingGame.startRacing(new RandomMoveStrategy());
-            ResultView.printResult(racingGame.getCars());
+            ResultView.printRacing(racingGame.getCars());
         }
     }
 }
