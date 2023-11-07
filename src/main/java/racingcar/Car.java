@@ -4,7 +4,6 @@ import racingcar.movablestrategy.MovableStrategy;
 import racingcar.movablestrategy.RandomStrategy;
 
 public class Car {
-    public static final int INITIAL_POSITION = 0;
     public static final int MOVE_DISTANCE = 1;
     public static final int MOVE_CONDITION = 4;
     private int currentPosition = 0;
@@ -23,11 +22,6 @@ public class Car {
             currentPosition += MOVE_DISTANCE;
         }
     }
-
-    public boolean samePosition(int position) {
-        return currentPosition == position;
-    }
-
     public int currentPosition() {
         return currentPosition;
     };
