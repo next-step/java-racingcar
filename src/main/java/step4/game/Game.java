@@ -46,27 +46,23 @@ public class Game {
     public static List<RacingCar> extractWinners(final List<RacingCar> cars) {
         cars.sort(null);
 
-        final RacingCar winner = cars.get(0);
+        final RacingCar winnerCar = cars.get(0);
 
-        return filterCarsWithWinnerDistance(cars, winner.currentDistance());
-    }
-
-    private static List<RacingCar> filterCarsWithWinnerDistance(final List<RacingCar> cars, final int winnerDistance) {
         List<RacingCar> winnerCars = new ArrayList<>();
 
         for (final RacingCar car : cars) {
-            if (isNotSameWinnerDistance(winnerDistance, car)) {
-                break;
-            }
-
-            winnerCars.add(car);
+            addCarIfWinnerDistanceEqualWithCarDistance(winnerCar, car, winnerCars);
         }
 
         return winnerCars;
     }
 
-    private static boolean isNotSameWinnerDistance(final int winnerDistance, final RacingCar car) {
-        return car.currentDistance() != winnerDistance;
+    private static void addCarIfWinnerDistanceEqualWithCarDistance(final RacingCar winnerCar, final RacingCar car, final List<RacingCar> winnerCars) {
+        if (winnerCar.currentDistance() != car.currentDistance()) {
+            return;
+        }
+
+        winnerCars.add(car);
     }
 
     public static String[] toNames(final List<RacingCar> winners) {
