@@ -14,9 +14,8 @@ class RuleTest {
     @DisplayName("최소값을 입력한다. 검증은 입력한 값이 최소값 이상인 경우에만 성공한다")
     @ParameterizedTest
     @CsvSource(value = {"1:false", "2:false", "3:false", "4:true", "5:true"}, delimiter = ':')
-    public void minmum_rule(int input, boolean expected){
+    public void minimum_rule(int input, boolean expected){
         MinimumRule rule = new MinimumRule(4);
-        rule.changeValue(input);
-        assertThat(rule.verify()).isEqualTo(expected);
+        assertThat(rule.verify(input)).isEqualTo(expected);
     }
 }

@@ -1,5 +1,5 @@
 package racingcar.rule;
 
 public interface Rule {
-    boolean verify();
+    boolean verify(int value);
 }
