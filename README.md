@@ -13,7 +13,7 @@
 ## 진행도
 - [x] 1단계 - 학습 테스트 실습
 - [x] 2단계 - 문자열 덧셈 계산기
-- [ ] 3단계 - 자동차 경주
+- [X] 3단계 - 자동차 경주
 - [ ] 4단계 - 자동차 경주(우승자)
 - [ ] 5단계 - 자동차 경주(리팩토링)
 
@@ -23,4 +23,6 @@
 * [git 커밋 컨벤션](https://kdjun97.github.io/git-github/commit-convention/#-subject-rule)
 * [assertj 활용](https://www.baeldung.com/introduction-to-assertj)
 * [객체지향 생활 체조 원칙](https://blogshine.tistory.com/241)
-
+* [전략 패턴](https://victorydntmd.tistory.com/292)
+* [일급 컬렉션을 써야하는 이유](https://jojoldu.tistory.com/412)
+* [static method만을 가지는 utility class는 private 생성자를 가지도록 구현한다.](https://www.slipp.net/questions/360)
