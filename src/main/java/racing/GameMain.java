@@ -13,6 +13,6 @@ public class GameMain {
         List<Car> cars = new Car().generateNamedCar(raceInfo);
 
         //게임 진행 & 상태 출력
-        Racing.goRacing(cars, raceInfo.trialData());
+        Racing.goRacing(cars, raceInfo);
     }
 }

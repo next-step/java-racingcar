@@ -15,7 +15,10 @@ public class Racing {
         return random.nextInt(BOUND);
     }
 
-    public static void goRacing(List<Car> cars, int trials) {
+    public static void goRacing(List<Car> cars, RaceInfo raceInfo) {
+        int trials = raceInfo.trialData();
+        System.out.println("\n실행 결과");
+
         for (int i = 0; i < trials; i++) {
             drive(cars);
             System.out.println();
@@ -23,10 +26,10 @@ public class Racing {
     }
 
     private static void drive(List<Car> cars) {
-        for (Car car : cars) {
+        cars.forEach(car -> {
             car.move(random());
-            System.out.println(ResultView.status(car));
-        }
+            ResultView.status(car);
+        });
     }
 
 }
