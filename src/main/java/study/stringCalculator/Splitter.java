@@ -10,54 +10,15 @@ public class Splitter {
     private final int CUSTOM_EXPRESSION_START_POSITION = 4;
     private final int CUSTOM_SPLITTER_POSITION = 2;
     private ExceptionHandler exceptionHandler;
+    private Pattern customSplitterPattern;
 
     public Splitter() {
         exceptionHandler = new ExceptionHandler();
+        customSplitterPattern = Pattern.compile(CUSTOM_SPLITTER_PATTERN);
     }
 
-    private boolean isCustomSplitter(String text) {
-        Matcher m = Pattern.compile(CUSTOM_SPLITTER_PATTERN).matcher(text);
-        if (m.find()) {
-            return true;
-        }
-        return false;
-    }
-
-    private String getExpression(String expression) {
-        return expression.substring(CUSTOM_EXPRESSION_START_POSITION);
-    }
-
-    private int parseToInt(String value) {
-        try {
-            return Integer.parseInt(value);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자 이외의 값을 int로 변경할 수 없습니다.");
-        }
-    }
-
-    private String[] getStringNumbers(String input_string) {
-        String[] stringNumbers;
-        if (isCustomSplitter(input_string)) {
-            stringNumbers = splitByCustomSplitter(input_string);
-        } else {
-            stringNumbers = splitByGeneralSplitter(input_string);
-        }
-        return stringNumbers;
-    }
-
-    // 커스텀 스플릿
-    private String[] splitByCustomSplitter(String input_string) {
-        char customSplitter = input_string.charAt(CUSTOM_SPLITTER_POSITION);
-        return getExpression(input_string).split(String.valueOf(customSplitter));
-    }
-
-    // 제네럴 스플릿
-    private String[] splitByGeneralSplitter(String input_string) {
-        return input_string.split(DEFAULT_SPLITTER);
-    }
-
-    public int[] getNumbers(String input_string) {
-        String[] stringNumbers = getStringNumbers(input_string);
+    public int[] getNumbers(String inputString) {
+        String[] stringNumbers = getStringNumbers(inputString);
 
         int[] intNumbers = new int[stringNumbers.length];
         for (int i = 0; i < stringNumbers.length; i++) {
@@ -67,5 +28,40 @@ public class Splitter {
         }
 
         return intNumbers;
+    }
+
+    private String[] getStringNumbers(String inputString) {
+        if (isCustomSplitter(inputString)) {
+            return splitByCustomSplitter(inputString);
+        }
+        return splitByGeneralSplitter(inputString);
+    }
+
+    private boolean isCustomSplitter(String text) {
+        if (customSplitterPattern.matcher(text).find()) {
+            return true;
+        }
+        return false;
+    }
+
+    private String[] splitByCustomSplitter(String inputString) {
+        char customSplitter = inputString.charAt(CUSTOM_SPLITTER_POSITION);
+        return getExpression(inputString).split(String.valueOf(customSplitter));
+    }
+
+    private String getExpression(String expression) {
+        return expression.substring(CUSTOM_EXPRESSION_START_POSITION);
+    }
+
+    private String[] splitByGeneralSplitter(String inputString) {
+        return inputString.split(DEFAULT_SPLITTER);
+    }
+
+    private int parseToInt(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자 이외의 값을 int로 변경할 수 없습니다.");
+        }
     }
 }
