@@ -5,8 +5,16 @@ public class RacingCar {
     private int distanceTraveled;
 
     public RacingCar(final String carName) {
+        if (isCarNameLengthOver(carName)) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+
         this.carName = carName;
         this.distanceTraveled = 0;
+    }
+
+    private boolean isCarNameLengthOver(final String carName) {
+        return carName.length() > 5;
     }
 
     public String carName() {

@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
     private RacingCar racingCar;
@@ -14,6 +15,31 @@ class RacingCarTest {
     @BeforeEach
     void setUp() {
         racingCar = new RacingCar("test");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "1", "12", "123", "1234", "12345"})
+    @DisplayName("RacingCar의 이름은 5자까지 허용한다.")
+    void racingCarNameLengthShouldNotExceed5Characters(final String paramCarName) {
+        //given
+        final RacingCar car = new RacingCar(paramCarName);
+        final String carName = car.carName();
+
+        //when
+        final int carNameLength = carName.length();
+
+        //then
+        assertThat(carNameLength).isLessThanOrEqualTo(5);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"123456", "1234567", "12345678", "123456789"})
+    @DisplayName("RacingCar의 이름이 6자 이상인 경우, 객체 생성시에 예외가 발생한다.")
+    void racingCarNameLengthExceeds6CharactersShouldThrowException(final String paramCarName) {
+        //given, when, then
+        assertThatThrownBy(() -> new RacingCar(paramCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
     @Test
