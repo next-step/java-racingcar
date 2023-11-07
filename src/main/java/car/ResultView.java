@@ -3,7 +3,7 @@ package car;
 import java.util.List;
 
 public class ResultView {
-    private static String CAR_DISTANCE_BAR = "-";
+    private static final String CAR_DISTANCE_BAR = "-";
 
     public static void outputGameResult(List<Car> cars) {
         for (Car car : cars) {

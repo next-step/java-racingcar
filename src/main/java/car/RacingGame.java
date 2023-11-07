@@ -6,7 +6,7 @@ import java.util.List;
 public class RacingGame {
 
     private static final Integer START_DISTANCE = 0;
-    private RandomNumberGenerator randomNumberGenerator;
+    private final RandomNumberGenerator randomNumberGenerator;
 
     public RacingGame(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;

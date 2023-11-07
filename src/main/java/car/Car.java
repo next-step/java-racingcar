@@ -1,7 +1,7 @@
 package car;
 
 public class Car {
-    private CarPosition carPosition;
+    private final CarPosition carPosition;
     private static final int FORWARD_BOUNDARY_NUMBER = 4;
 
     public Car(int distance) {
