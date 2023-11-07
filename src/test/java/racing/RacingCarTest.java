@@ -2,14 +2,16 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class RacingCarTest {
+class RacingCarTest {
     RacingCar car;
     @BeforeEach
     void init(){
-        car = new RacingCar("");
+        car = new RacingCar(0);
     }
     @Test
     void random값은_0_9_사이이다() throws Exception {
@@ -17,15 +19,23 @@ public class RacingCarTest {
     }
     @Test
     void random값이_4이상_전진() throws Exception {
-        //given
-        //when
-        //then
+        // given
+        int randomInt = 9;
+        int beforeProgress = car.getProgress();
+        // when
+        car.race(randomInt);
+        // then
+        assertThat(beforeProgress + 1).isEqualTo(car.getProgress());
     }
     @Test
     void random값이_4미만_멈춤() throws Exception {
-        //given
-        //when
-        //then
+        // given
+        int randomInt = 3;
+        int beforeProgress = car.getProgress();
+        // when
+        car.race(randomInt);
+        // then
+        assertThat(beforeProgress).isEqualTo(car.getProgress());
     }
 
 }

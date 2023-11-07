@@ -3,28 +3,28 @@ package racing;
 import java.util.Random;
 
 public class RacingCar {
-    private final static String ICON = "-";
+    public static final int CAN_I_MOVE = 4;
 
     private final Random random = new Random();
-    private String progress;
+    private int progress;
 
-    public RacingCar(String progress) {
+    public RacingCar(int progress) {
         this.progress = progress;
     }
 
-    public void race(){
-        if (getRandomInt() < 4) {
+    public void race(int randomValue){
+        if (randomValue < CAN_I_MOVE) {
             return;
         }
-        this.progress = this.progress.concat(ICON);
+        this.progress++;
+    }
+
+    public int getProgress() {
+        return progress;
     }
 
     public int getRandomInt(){
         return random.nextInt(10);
     }
 
-    @Override
-    public String toString(){
-        return this.progress;
-    }
 }
