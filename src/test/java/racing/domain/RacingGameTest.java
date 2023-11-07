@@ -88,7 +88,7 @@ class RacingGameTest {
         final int gameCount = 1;
 
         // when
-        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount);
+        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount, testMoveStrategy);
 
         // then
         assertThat(racingGame).isNotNull();

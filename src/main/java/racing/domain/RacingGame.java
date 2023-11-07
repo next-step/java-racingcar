@@ -23,27 +23,39 @@ public class RacingGame {
         initRacingCar(carCount);
     }
 
-    public RacingGame(String userNameAnswer, int carCount, int gameCount) {
+    public RacingGame(String userNameAnswer, int carCount, int gameCount, CarMoveStrategy carMoveStrategy) {
         this.gameCount = gameCount;
-        this.carMoveStrategy = new CarMoveStrategy(new Random());
+        this.carMoveStrategy = carMoveStrategy;
         this.currentRound = 0;
 
-        final String NAME_SPLIT_DELIMITER = ",";
-        String[] userNames = StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
+        String[] userNames = parseUserName(userNameAnswer);
         initRacingCar(userNames, carCount);
+    }
+
+    private static String[] parseUserName(String userNameAnswer) {
+        final String NAME_SPLIT_DELIMITER = ",";
+        return StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
     }
 
     public boolean isProgress() {
         return this.getCurrentRound() < this.getGameCount();
     }
 
-
     public int getGameCount() {
         return gameCount;
     }
 
+    public List<Car> getRacingCars() {
+        return cars;
+    }
+
     public int getCurrentRound() {
         return currentRound;
+    }
+
+    public void doRacing() {
+        cars.forEach(this::doGame);
+        this.currentRound++;
     }
 
     private void initRacingCar(int carCount) {
@@ -56,15 +68,6 @@ public class RacingGame {
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car(userNames[i]));
         }
-    }
-
-    public List<Car> getRacingCars() {
-        return cars;
-    }
-
-    public void doRacing() {
-        cars.forEach(this::doGame);
-        this.currentRound++;
     }
 
     private void doGame(Car car) {
