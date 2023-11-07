@@ -14,5 +14,8 @@ public class GameMain {
 
         //게임 진행 & 상태 출력
         Racing.goRacing(cars, raceInfo);
+
+        //우승자 출력
+        ResultView.raceResult(cars);
     }
 }
