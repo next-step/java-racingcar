@@ -1,22 +1,34 @@
 package step3.domain;
 
+import java.util.Random;
+
 public class Car {
 
-        private static final String START_POINT = ".";
-        private static final String PATH_SIGN = "-";
-        private final String id;
-        private String path;
+        private static final int RANDOM_BOUND = 10;
+        private static final int START_INIT_VALUE = 1;
+        private static final Random random = new Random();
+        private int currentPosition;
 
-        public Car(String id) {
-                this.id = id;
-                this.path = START_POINT;
+        public Car() {
+                currentPosition = START_INIT_VALUE;
         }
 
         public void moveForward() {
-                path = path.concat(PATH_SIGN);
+                ++currentPosition;
         }
 
-        public String getPath() {
-                return path;
+        public void moveForwardIfCan() {
+                if (isAbleToMove()) {
+                        this.moveForward();
+                }
         }
+
+        private boolean isAbleToMove() {
+                return random.nextInt(RANDOM_BOUND) >= 4;
+        }
+
+        public int getCurrentPosition() {
+                return currentPosition;
+        }
+
 }
