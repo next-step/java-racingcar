@@ -1,4 +1,4 @@
-package ui;
+package racing.ui;
 
 import racing.Car;
 

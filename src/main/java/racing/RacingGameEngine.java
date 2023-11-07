@@ -1,51 +1,34 @@
 package racing;
 
-import ui.RacingGameRenderer;
+import racing.ui.RacingGameInput;
+import racing.ui.RacingGameRenderer;
 
 /**
  * 레이싱 게임을 구동하는 게임 엔진
  */
 public class RacingGameEngine {
-    private RacingGame game;
-
-    private RacingGameEngine() {
-    }
+    private RacingGameState gameState;
 
     /**
-     * 기본 레이싱 게임 로직이 장착된 레이싱 게임 엔진을 생성합니다.
-     *
-     * @return 레이싱 게임 엔진
+     * 게임의 초기화 phase.
+     * play전에 게임 상태를 미리 세팅할 것이 있다면
+     * 여기서 진행됩니다.
      */
-    public static RacingGameEngine create() {
-        return RacingGameEngine.createWithCustomRacingGame(RacingGame.createRacingGame());
-    }
-
-    /**
-     * 레이싱 게임을 구동하는 레이싱 게임 엔진을 커스텀 레이싱 게임 로직을 넣어 생성합니다.
-     *
-     * @param game 레이싱 게임 로직
-     *
-     * @return 레이싱 게임 엔진
-     */
-    public static RacingGameEngine createWithCustomRacingGame(RacingGame game) {
-        RacingGameEngine gameEngine = new RacingGameEngine();
-
-        gameEngine.game = game;
-
-        return gameEngine;
-    }
-
-    public void play() {
-        boolean stopFlag = false;
-
+    public void init() {
         int theNumberOfCar = RacingGameInput.askTheNumberOfCar();
         int theNumberOfCycle = RacingGameInput.askTheNumberOfCycle();
 
-        game.init(theNumberOfCar, theNumberOfCycle);
+        gameState = RacingGameLogic.init(theNumberOfCar, theNumberOfCycle);
+    }
 
-        while (!stopFlag) {
-            stopFlag = game.update();
-            RacingGameRenderer.renderGame(game);
+    /**
+     * 게임을 실행합니다. 게임은 로직에 의해 종료될 때까지 자동 반복됩니다.
+     * 업데이트 -> 렌더링이 하나의 틱이며 틱이 계속 반복됩니다.
+     */
+    public void play() {
+        while (!RacingGameLogic.isGameOver(gameState)) {
+            gameState = RacingGameLogic.update(gameState);
+            RacingGameRenderer.renderGame(gameState);
         }
     }
 }
