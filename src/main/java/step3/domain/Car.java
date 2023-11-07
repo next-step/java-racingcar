@@ -1,29 +1,25 @@
 package step3.domain;
 
-import step3.exception.CarNameExceedException;
-
 public class Car {
 
-    private static final int NAME_LENGTH_BOUND = 5;
+    private static final int DEFAULT_POSITION = 0;
     private static final int MOVE_BOUND = 4;
 
-    private String name;
-    private int position;
+    private Name name;
+    private Position position;
 
     public Car(String name) {
-        validateName(name);
-        this.name = name;
+        this(name, DEFAULT_POSITION);
     }
 
-    private void validateName(String name) {
-        if (name.length() > NAME_LENGTH_BOUND) {
-            throw new CarNameExceedException();
-        }
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
     public void move(int random) {
         if (canMove(random)) {
-            position++;
+            this.position.forward();
         }
     }
 
@@ -31,12 +27,16 @@ public class Car {
         return random >= MOVE_BOUND;
     }
 
-    public String name() {
+    public Name name() {
         return this.name;
     }
 
-    public int position() {
+    public Position position() {
         return this.position;
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position.isSamePosition(maxPosition);
     }
 
 }

@@ -3,6 +3,7 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.domain.Car;
+import step3.domain.Position;
 import step3.domain.RacingGame;
 
 import java.util.List;
@@ -22,13 +23,14 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(cars, NUMBER_OF_TRY);
 
         // when
-        for (int round = 1; !game.isEnd(round); round++) {
+        for (int round = 0; !game.isEnd(round); round++) {
             game.playRound();
         }
 
         // then
         assertThat(cars).allSatisfy(car -> {
-            assertThat(car.position()).isBetween(0, NUMBER_OF_TRY);
+            Position position = car.position();
+            assertThat(position.position()).isBetween(0, NUMBER_OF_TRY);
         });
     }
 

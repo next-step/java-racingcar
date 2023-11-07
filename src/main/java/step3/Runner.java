@@ -15,11 +15,11 @@ public class Runner {
         RacingGame game = new RacingGame(CarGenerator.generate(nameOfCars), numberOfTry);
 
         ResultView.printResultInfoMessage();
-        for (int round = 1; !game.isEnd(round); round++) {
+        for (int round = 0; !game.isEnd(round); round++) {
             game.playRound();
             ResultView.printRoundResult(game.cars());
         }
-        ResultView.printWinner(game.winnerNames());
+        ResultView.printWinner(game.winners());
     }
 
 }
