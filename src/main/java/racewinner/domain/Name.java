@@ -3,18 +3,20 @@ package racewinner.domain;
 import java.util.Objects;
 
 public class Name {
-
     private final String name;
     public Name(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
         }
-
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
 
         this.name = name;
+    }
+
+    public String get() {
+        return name;
     }
 
     @Override
