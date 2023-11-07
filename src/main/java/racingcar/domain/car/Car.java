@@ -5,14 +5,20 @@ import racingcar.domain.game.strategy.MoveStrategy;
 public class Car {
     private static final int DEFAULT_MOVE_POSITION = 1;
     private static final int DEFAULT_CAR_NAME_LENGTH = 5;
+    private static final int DEFAULT_CAR_POSITION = 0;
     private final String name;
-    private final Position position;
+    private int position;
 
     public Car(String name) {
         validate(name);
 
         this.name = name;
-        this.position = new Position();
+        this.position = DEFAULT_CAR_POSITION;
+    }
+
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String getCarName() {
@@ -20,12 +26,12 @@ public class Car {
     }
 
     public int getPosition() {
-        return this.position.getPosition();
+        return this.position;
     }
 
     public void move(final MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
-            this.position.move(DEFAULT_MOVE_POSITION);
+            this.position += DEFAULT_MOVE_POSITION;
         }
     }
 
