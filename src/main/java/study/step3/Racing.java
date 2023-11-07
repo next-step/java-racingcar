@@ -48,7 +48,7 @@ public class Racing {
 
     private void move(List<Car> cars) {
         for (Car car: cars) {
-            car.move(random.nextInt());
+            car.move(random.nextInt(10));
         }
     }
 
