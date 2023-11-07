@@ -27,8 +27,8 @@ public class Cars {
         }
     }
 
-    public Cars raceAllCars() {
-        this.values.forEach(car -> car.move(4));
+    public Cars raceAllCars(RacingRule racingRule) {
+        this.values.forEach(car -> car.move(racingRule));
         return new Cars(copyOf(this.values));
     }
 
@@ -36,5 +36,9 @@ public class Cars {
         return values.stream()
                      .map(Car::from)
                      .collect(toUnmodifiableList());
+    }
+
+    public List<Car> getValues() {
+        return List.copyOf(this.values);
     }
 }
