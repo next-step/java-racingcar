@@ -37,20 +37,4 @@ public class StringTest {
         }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("5");
     }
 
-    @Test
-    void substring() {
-        String result = "(1,2)".substring(1,4);
-
-        assertThat(result).isEqualTo("1,2");
-    }
-
-    @DisplayName("charAt 테스트")
-    @Test
-    void charAt() {
-        String result = "abc";
-        assertThatThrownBy(() -> {
-           result.charAt(5);
-           new IndexOutOfBoundsException("5");
-        }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("5");
-    }
 }
