@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.carracing.domain.Racing;
+import study.carracing.ui.ResultView;
 import study.carracing.ui.TestInputView;
 
 class RacingControllerTest {
@@ -15,12 +17,10 @@ class RacingControllerTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("입력한 자동차 대수만큼 자동차 객체가 생성된다.")
     void createCar(int expected) {
-        RacingController racingController = new RacingController();
+        RacingController racingController = new RacingController(new TestInputView(expected, TRY_COUNT), new ResultView());
+        Racing racing = racingController.start();
 
-        TestInputView inputView = new TestInputView(expected, TRY_COUNT);
-        racingController.start(inputView.inputCarCount(), inputView.inputTryCount());
-
-        int actual = racingController.getRacingCars().getCars().size();
+        int actual = racing.getRacingCars().size();
         assertThat(actual).isEqualTo(expected);
     }
 }
