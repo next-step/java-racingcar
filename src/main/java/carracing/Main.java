@@ -1,9 +1,10 @@
 package carracing;
 
 import carracing.car.Car;
+import carracing.car.Cars;
+import carracing.car.MaxMoving;
 import carracing.car.MovingStrategy;
 import carracing.car.RandomRange;
-import carracing.car.Winners;
 
 import java.util.List;
 import java.util.Scanner;
@@ -19,8 +20,8 @@ public class Main {
 			racing(cars);
 		}
 
-		Winners winners = new Winners(cars);
-		ResultView.printWinners(winners.winners());
+		Cars racingCars = new Cars(cars);
+		ResultView.printWinners(racingCars.winners(new MaxMoving()));
 	}
 
 	public static void racing(List<Car> cars) {

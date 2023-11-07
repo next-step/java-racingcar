@@ -6,16 +6,18 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WinnersTest {
+public class CarsTest {
 	@Test
 	void winners_threeCars_oneWinners() {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(9, "abc");
 		Car car3 = new Car(8, "abc");
+		WinnerStrategy maxMoving = new MaxMoving();
 
-		Winners winners = new Winners(List.of(car1, car2, car3));
+		Cars cars = new Cars(List.of(car1, car2, car3));
+		List<Car> racingCars = cars.winners(maxMoving);
 
-		assertThat(winners.winners()).isEqualTo(List.of(car1));
+		assertThat(racingCars).isEqualTo(List.of(car1));
 	}
 
 	@Test
@@ -23,9 +25,11 @@ public class WinnersTest {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(10, "abc");
 		Car car3 = new Car(8, "abc");
+		WinnerStrategy maxMoving = new MaxMoving();
 
-		Winners winners = new Winners(List.of(car1, car2, car3));
+		Cars cars = new Cars(List.of(car1, car2, car3));
+		List<Car> racingCars = cars.winners(maxMoving);
 
-		assertThat(winners.winners()).isEqualTo(List.of(car1, car2));
+		assertThat(racingCars).isEqualTo(List.of(car1, car2));
 	}
 }
