@@ -2,15 +2,21 @@ package racingcar.ui;
 
 import racingcar.ui.dto.RacingGameResponse;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class ResultView {
 
-    public void showRacingCarGame(int currentTurn, RacingGameResponse response) {
-        System.out.println("Turn " + currentTurn);
-        displayAllCarStatus(response);
+    public void showRacingCarGame(RacingGameResponse response) {
+        HashMap<Integer, List<Integer>> moveCountsByTurn = response.getMoveCountsByTurn();
+        for (int currentTurn = 1; currentTurn <= moveCountsByTurn.size(); currentTurn++) {
+            System.out.println("Turn " + currentTurn);
+            displayAllCarStatus(moveCountsByTurn.get(currentTurn));
+        }
     }
 
-    private void displayAllCarStatus(RacingGameResponse response) {
-        for (int moveCount : response.getMoveCounts()) {
+    private void displayAllCarStatus(List<Integer> moveCounts) {
+        for (int moveCount : moveCounts) {
             displayCarStatus(moveCount);
         }
     }

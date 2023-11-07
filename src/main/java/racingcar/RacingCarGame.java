@@ -16,12 +16,10 @@ public class RacingCarGame {
 
     private static void gameStart(int carNumber, int endTurn) {
         System.out.println("게임 시작");
+        RacingCarGameService service = new RacingCarGameService();
+        RacingGameResponse response = service.start(new RacingGameRequest(carNumber, endTurn));
         ResultView resultView = new ResultView();
-        RacingCarGameService service = new RacingCarGameService(new RacingGameRequest(carNumber));
-        for (int currentTurn = 1; currentTurn <= endTurn; currentTurn++) {
-            RacingGameResponse response = service.start();
-            resultView.showRacingCarGame(currentTurn, response);
-        }
+        resultView.showRacingCarGame(response);
         System.out.println("게임 종료");
     }
 }

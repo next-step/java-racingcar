@@ -8,15 +8,19 @@ import racingcar.ui.dto.RacingGameResponse;
 import java.util.List;
 
 public class RacingCarGameService {
-    private final Cars cars;
+    private Cars cars;
 
-    public RacingCarGameService(RacingGameRequest request) {
+    public RacingGameResponse start(RacingGameRequest request) {
         cars = new Cars(request.getCarNumber());
+        RacingGameResponse response = new RacingGameResponse();
+        for (int currentTurn = 1; currentTurn <= request.getEndTurn(); currentTurn++) {
+            response.setMoveCountByTurn(currentTurn, getMoveCountsAfterAllMove());
+        }
+        return response;
     }
 
-    public RacingGameResponse start() {
+    private List<Integer> getMoveCountsAfterAllMove() {
         cars.moveAllCar();
-        List<Integer> allMoveCount = cars.getAllMoveCount();
-        return new RacingGameResponse(allMoveCount);
+        return cars.getAllMoveCount();
     }
 }
