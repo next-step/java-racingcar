@@ -1,8 +1,10 @@
 package step4_racintCarWithWinner;
 
+import java.util.Random;
+
 public class RacingGameUtils {
 
-    public static String[] stringsSplitBy(String input, String delimiter) {
-        return input.split(delimiter);
+    public static int getRandomInt(int end) {
+        return new Random().nextInt(end);
     }
 }

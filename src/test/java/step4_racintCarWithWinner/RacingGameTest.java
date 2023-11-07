@@ -3,6 +3,8 @@ package step4_racintCarWithWinner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -14,5 +16,4 @@ public class RacingGameTest {
         int gameCount = 20;
         assertThat(new RacingGame(carNames, gameCount)).isInstanceOf(RacingGame.class);
     }
-
 }
