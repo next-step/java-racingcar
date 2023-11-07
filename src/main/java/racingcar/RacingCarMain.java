@@ -1,14 +1,18 @@
 package racingcar;
 
+import racingcar.rule.MinimumRule;
+import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        int carCount = inputView.readCarCount();
-        int attemptCount = inputView.readAttemptCount();
+        RacingCarGame racingCarGame = new RacingCarGame(new InputView(),
+                new ResultView(),
+                new MinimumRule(4),
+                new RandomNumberGenerator(9));
 
-        RacingCarGame racingCarGame = new RacingCarGame(carCount, attemptCount);
         racingCarGame.start();
+        racingCarGame.raceResult();
     }
 }

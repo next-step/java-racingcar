@@ -1,23 +1,29 @@
 package racingcar.view;
 
-import racingcar.Car;
-import racingcar.RacingCarGame;
+import racingcar.Race;
+import racingcar.RaceRecord;
+
+import java.util.List;
 
 public class ResultView {
 
-    public static final String CAR_PATH = "-";
+    private static final String CAR_PATH = "-";
 
-    private RacingCarGame racingCarGame;
-
-    public ResultView(RacingCarGame racingCarGame) {
-        this.racingCarGame = racingCarGame;
+    public void print(List<Race> races) {
+        printRaces(races);
     }
 
-    public void printRace() {
-        for (Car car : racingCarGame.carList()) {;
-            System.out.println(createPath(car.distance()));
+    private void printRaces(List<Race> races) {
+        for (Race race : races) {
+            printRaceRecords(race);
+            System.out.println();
         }
-        System.out.println();
+    }
+
+    private void printRaceRecords(Race race) {
+        for (RaceRecord raceRecord : race.raceRecords()) {
+            System.out.println(createPath(raceRecord.distance()));
+        }
     }
 
     private String createPath(int count) {

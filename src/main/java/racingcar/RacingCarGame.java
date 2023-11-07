@@ -1,95 +1,95 @@
 package racingcar;
 
+import racingcar.rule.Rule;
+import racingcar.util.NumberGenerator;
+import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCarGame {
 
-    public static final int MAX_RANDOM_COUNT = 10;
-    public static final int MOVABLE_MIN = 4;
+    private final int carCount;
+    private final int raceCount;
 
-    private int carCount;
-    private int attemptCount;
-    private int raceCount;
+    private final ResultView resultView;
 
-    private List<Car> carList;
-    private ResultView resultView;
+    private Rule rule;
+    private NumberGenerator numberGenerator;
 
-    public RacingCarGame(int carCount, int attemptCount) {
+    private List<Car> cars;
+    private List<Race> races;
+
+    public RacingCarGame(InputView inputView, ResultView resultView, Rule rule, NumberGenerator numberGenerator) {
+        this.carCount = inputView.readCarCount();
+        this.raceCount = inputView.readRaceCount();
+
+        this.resultView = resultView;
+
+        this.rule = rule;
+        this.numberGenerator = numberGenerator;
+
+        this.cars = new ArrayList<>();
+        this.races = new ArrayList<>();
+    }
+
+    public RacingCarGame(int carCount, int raceCount, ResultView resultView, Rule rule, NumberGenerator numberGenerator) {
         this.carCount = carCount;
-        this.attemptCount = attemptCount;
-        this.raceCount = attemptCount;
+        this.raceCount = raceCount;
 
-        this.carList = new ArrayList<>();
-        this.resultView = new ResultView(this);
+        this.resultView = resultView;
+
+        this.rule = rule;
+        this.numberGenerator = numberGenerator;
+
+        this.cars = new ArrayList<>();
+        this.races = new ArrayList<>();
     }
 
     public void start() {
-        // 자동차 생성능
         createCar();
-        // 자동차 이동
-        race();
+        createRace();
+        startRace();
     }
 
-    public void createCar() {
+    public void raceResult() {
+        resultView.print(races);
+    }
+
+    private void createCar() {
         for (int i = 0; i < carCount; i++) {
             Car car = new Car();
-            carList.add(car);
+            cars.add(car);
         }
     }
 
-    public void race() {
-        firstRace(); // 첫번째 레이스는 출력만
-        remainingRace(); // 나머지 레이스 부터 이동 및 출력
-    }
-
-    private void firstRace() {
-        resultView.printRace();
-        --raceCount;
-    }
-
-    private void remainingRace() {
+    private void createRace() {
         for (int i = 0; i < raceCount; i++) {
-            moveCarList();
-            resultView.printRace();
+            Race race = new Race(cars, rule, numberGenerator);
+            races.add(race);
         }
     }
 
-    private void moveCarList() {
-        for (Car car : carList) {
-            moveCar(car);
+    private void startRace() {
+        for (Race race : races) {
+            race.start();
         }
     }
-
-    public void moveCar(Car car) {
-        int value = random(MAX_RANDOM_COUNT);
-        if(movable(value)){
-            car.move();
-        }
-    }
-
-    public boolean movable(int value) {
-        return value >= MOVABLE_MIN;
-    }
-
-    public int random(int maxCount) {
-        Random random = new Random();
-        return random.nextInt(maxCount);
-    }
-
 
     public int carCount() {
         return carCount;
     }
 
-    public int attemptCount() {
-        return attemptCount;
+    public int raceCount() {
+        return raceCount;
     }
 
-    public List<Car> carList() {
-        return carList;
+    public List<Car> cars() {
+        return cars;
+    }
+
+    public List<Race> races() {
+        return races;
     }
 }
