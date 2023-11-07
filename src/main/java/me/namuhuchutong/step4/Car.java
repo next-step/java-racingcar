@@ -2,6 +2,8 @@ package me.namuhuchutong.step4;
 
 public class Car {
 
+    private static final int FORWARD_VALUE = 1;
+
     private int position;
     private final String name;
 
@@ -18,9 +20,9 @@ public class Car {
         this.name = name;
     }
 
-    void move(int value) {
-        if (3 < value) {
-            this.position += 1;
+    void move(RacingRule racingRule) {
+        if (racingRule.isSatisfiedRule()) {
+            this.position += FORWARD_VALUE;
         }
     }
 
