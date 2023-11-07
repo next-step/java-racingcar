@@ -1,8 +1,8 @@
 package racingcar;
 
 public class RaceRecord {
-    private Car car;
-    private int distance;
+    private final Car car;
+    private final int distance;
 
     public RaceRecord(Car car) {
         this.car = car;

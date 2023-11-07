@@ -2,7 +2,7 @@ package racingcar.util;
 
 public class BasicNumberGenerator implements NumberGenerator{
 
-    private int value;
+    private final int value;
 
     public BasicNumberGenerator(int value) {
         this.value = value;

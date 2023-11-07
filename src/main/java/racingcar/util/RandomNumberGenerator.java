@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator{
 
-    private Random random;
-    private int max;
+    private final Random random;
+    private final int max;
 
     public RandomNumberGenerator(int max) {
         this.random = new Random();

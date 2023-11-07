@@ -4,7 +4,7 @@ public class Car {
 
     private static int sequence = 0;
 
-    private int id;
+    private final int id;
     private int distance;
 
     public Car() {
