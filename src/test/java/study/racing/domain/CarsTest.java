@@ -14,21 +14,25 @@ class CarsTest {
     @DisplayName("이름의 리스트를 입력받으면 자동차들을 생성할 수 있다.")
     void generateCarsTest() {
         // given
-        Names names = new Names(
-                List.of(
-                        new Name("car1"),
-                        new Name("car2"),
-                        new Name("car3")
-                )
-        );
+        Names names = new Names(List.of("car1", "car2", "car3"));
+        List<Name> value1 = names.getValue();
+
+        Name name = value1.get(0);
+        Name name1 = new Name("car1");
+
         // when
         Cars cars = new Cars(names);
 
         // then
         assertAll(
-                () -> assertThat(cars.getValue().get(0)).isEqualTo(new Car(new Name("car1"), new Position(0))),
-                () -> assertThat(cars.getValue().get(1)).isEqualTo(new Car(new Name("car2"), new Position(0))),
-                () -> assertThat(cars.getValue().get(2)).isEqualTo(new Car(new Name("car3"), new Position(0)))
+                () -> assertThat(cars.getValue().get(0))
+                        .isEqualTo(new Car(new Name("car1"), new Position(1))),
+
+                () -> assertThat(cars.getValue().get(1))
+                        .isEqualTo(new Car(new Name("car2"), new Position(1))),
+
+                () -> assertThat(cars.getValue().get(2))
+                        .isEqualTo(new Car(new Name("car3"), new Position(1)))
         );
     }
 

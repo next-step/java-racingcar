@@ -11,12 +11,12 @@ public class Cars {
     private static final String NEXT_LINE = "\n";
     private final List<Car> value;
 
-    public Cars(CarsNumber carsNumber) {
+    public Cars(Names names) {
 
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < carsNumber.getValue(); i++) {
-            cars.add(new Car(new Position(DEFAULT_POSITION)));
+        for (int i = 0; i < names.getValue().size(); i++) {
+            cars.add(new Car(names.getValue().get(i),new Position(DEFAULT_POSITION)));
         }
 
         this.value = cars;
@@ -44,6 +44,10 @@ public class Cars {
         }
 
         return positionBuilder.toString();
+    }
+
+    public List<Car> getValue() {
+        return value;
     }
 
     @Override

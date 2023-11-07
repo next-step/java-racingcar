@@ -6,9 +6,11 @@ public class Car {
 
     private static final int NEXT_POSITION = 1;
     private static final int STANDARD_NUMBER = 4;
+    private final Name name;
     private Position position;
 
-    public Car(Position position) {
+    public Car(Name name, Position position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -25,11 +27,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position);
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(name, position);
     }
 }
