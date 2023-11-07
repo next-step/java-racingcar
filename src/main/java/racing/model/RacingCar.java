@@ -7,12 +7,14 @@ public class RacingCar {
 
     private final Random random = new Random();
     private int progress;
+    private String name;
 
-    public RacingCar(int progress) {
+    public RacingCar(int progress, String name) {
         this.progress = progress;
+        this.name = name;
     }
 
-    public void race(int randomValue){
+    public void race(int randomValue) {
         if (randomValue < CAN_I_MOVE) {
             return;
         }
@@ -20,10 +22,14 @@ public class RacingCar {
     }
 
     public int getProgress() {
-        return progress;
+        return this.progress;
     }
 
-    public int getRandomInt(){
+    public String getName() {
+        return this.name;
+    }
+
+    public int getRandomInt() {
         return random.nextInt(10);
     }
 
