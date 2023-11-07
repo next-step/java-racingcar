@@ -8,16 +8,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class RacingGameTest {
     private RacingGame racingGame;
+    private final InputParser inputParser = new InputParser();
 
     @BeforeEach
     void setUp() {
         racingGame = new RacingGame(new RandomNumberGenerator());
     }
 
-    @BeforeEach
     @ParameterizedTest
-    @CsvSource(value = {"1:1", "2:2", "3:3"},delimiter = ':')
-    public void 자동차_생성_테스트(Integer userInput, Integer numberOfCars) {
-        assertThat(racingGame.createCars(userInput)).hasSize(numberOfCars);
+    @CsvSource(value = {"pobi:1", "pobi,crong:2", "pobi,crong,honux:3"},delimiter = ':')
+    public void 자동차_생성_테스트(String userInput, Integer numberOfCars) {
+        assertThat(racingGame.createCars(inputParser.parseUserInputByDelimiter(userInput))).hasSize(numberOfCars);
     }
 }
