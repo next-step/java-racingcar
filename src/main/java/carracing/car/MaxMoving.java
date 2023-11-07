@@ -1,5 +1,8 @@
 package carracing.car;
 
+import carracing.controlstatement.Equal;
+import carracing.controlstatement.IF;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +25,8 @@ public class MaxMoving implements WinnerStrategy {
 
 	private List<Car> winnersWithMaxMovingDistance(List<Car> cars, int maxMovingDistance) {
 		return cars.stream()
-				.filter(car -> car.movingDistance() == maxMovingDistance)
+				.filter(car -> new IF(new Equal(car.movingDistance(), maxMovingDistance)).booleanValue()
+				)
 				.collect(Collectors.toList());
 	}
 }

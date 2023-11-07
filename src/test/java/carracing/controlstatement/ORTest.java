@@ -1,5 +1,7 @@
 package carracing.controlstatement;
 
+import carracing.controlstatement.Boolean.SmartFalse;
+import carracing.controlstatement.Boolean.SmartTrue;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,8 +10,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsTrueAndRightIsTrue() {
 		Boolean or = new OR(
-				new Boolean.SmartTrue(),
-				new Boolean.SmartTrue()
+				new SmartTrue(),
+				new SmartTrue()
 		);
 
 		assertThat(or.booleanValue()).isTrue();
@@ -18,8 +20,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsTrueAndRightIsFalse() {
 		Boolean or = new OR(
-				new Boolean.SmartTrue(),
-				new Boolean.SmartFalse()
+				new SmartTrue(),
+				new SmartFalse()
 		);
 
 		assertThat(or.booleanValue()).isTrue();
@@ -28,8 +30,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsFalseAndRightIsTrue() {
 		Boolean or = new OR(
-				new Boolean.SmartFalse(),
-				new Boolean.SmartTrue()
+				new SmartFalse(),
+				new SmartTrue()
 		);
 
 		assertThat(or.booleanValue()).isTrue();
@@ -38,8 +40,8 @@ public class ORTest {
 	@Test
 	void compareLeftIsFalseAndRightIsFalse() {
 		Boolean or = new OR(
-				new Boolean.SmartFalse(),
-				new Boolean.SmartFalse()
+				new SmartFalse(),
+				new SmartFalse()
 		);
 
 		assertThat(or.booleanValue()).isFalse();
