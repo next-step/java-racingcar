@@ -14,7 +14,7 @@ public class Game {
         //inputView
         final UserInput userInput = InputView.input();
 
-        List<RacingCar> cars = makeCars(userInput.getCarNumber());
+        List<RacingCar> cars = makeCars(userInput.getCarNames());
 
         //resultView
         ResultView.printResultText();
@@ -25,11 +25,11 @@ public class Game {
         }
     }
 
-    private static List<RacingCar> makeCars(final int carNumber) {
+    private static List<RacingCar> makeCars(final String[] carNames) {
         List<RacingCar> cars = new ArrayList<>();
 
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new RacingCar());
+        for (final String carName : carNames) {
+            cars.add(new RacingCar(carName));
         }
 
         return cars;

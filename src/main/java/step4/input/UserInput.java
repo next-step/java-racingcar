@@ -1,16 +1,18 @@
 package step4.input;
 
+import java.util.Arrays;
+
 public class UserInput {
-    private final int carNumber;
+    private final String[] carNames;
     private final int tryNumber;
 
-    public UserInput(final int carNumber, final int tryNumber) {
-        this.carNumber = carNumber;
+    public UserInput(final String[] carNames, final int tryNumber) {
+        this.carNames = carNames;
         this.tryNumber = tryNumber;
     }
 
-    public int getCarNumber() {
-        return carNumber;
+    public String[] getCarNames() {
+        return carNames;
     }
 
     public int getTryNumber() {
@@ -20,7 +22,7 @@ public class UserInput {
     @Override
     public String toString() {
         return "UserInput{" +
-                "carNumber=" + carNumber +
+                "carNames=" + Arrays.toString(carNames) +
                 ", tryNumber=" + tryNumber +
                 '}';
     }
