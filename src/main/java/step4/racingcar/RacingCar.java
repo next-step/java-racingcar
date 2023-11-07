@@ -1,6 +1,6 @@
 package step4.racingcar;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     private final String carName;
     private int distanceTraveled;
 
@@ -40,7 +40,12 @@ public class RacingCar {
     @Override
     public String toString() {
         final String result = "-".repeat(distanceTraveled);
-        
+
         return carName + " : " + result;
+    }
+
+    @Override
+    public int compareTo(final RacingCar o) {
+        return -1 * Integer.compare(this.distanceTraveled, o.distanceTraveled);
     }
 }
