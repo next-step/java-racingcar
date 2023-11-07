@@ -70,4 +70,38 @@ public class RacingGameLogic {
     public static boolean isGameOver(RacingGameState state) {
         return state.getCurrentCycle() >= state.getTheNumberOfCycles();
     }
+
+    /**
+     * 현 게임 상태에서 이기고 있는 자동차의 목록을 반환합니다.
+     *
+     * @param state 현 게임 상태
+     * @return 이기고 있는 자동차들
+     */
+    public static List<Car> getWinnerList(RacingGameState state) {
+        int maxPosition = 0;
+
+        for (Car car : state.getCarList()) {
+            maxPosition = getBiggerPosition(car, maxPosition);
+        }
+
+        List<Car> winnerList = new ArrayList<>();
+        for (Car car : state.getCarList()) {
+            addCarIfItWins(car, maxPosition, winnerList);
+        }
+
+        return winnerList;
+    }
+
+    private static void addCarIfItWins(Car car, int maxPosition, List<Car> winnerList) {
+        if (car.getPosition() == maxPosition) {
+            winnerList.add(car);
+        }
+    }
+
+    private static int getBiggerPosition(Car car, int maxPosition) {
+        if (car.getPosition() > maxPosition) {
+            maxPosition = car.getPosition();
+        }
+        return maxPosition;
+    }
 }

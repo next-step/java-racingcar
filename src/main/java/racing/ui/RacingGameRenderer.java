@@ -44,4 +44,11 @@ public class RacingGameRenderer {
         System.out.println(getGameRendering(state));
         System.out.println("");
     }
+
+    public static void renderWinners(List<Car> winnerList) {
+        System.out.println("우승자 목록: ");
+        for (Car car : winnerList) {
+            System.out.println("- " + car.getName());
+        }
+    }
 }

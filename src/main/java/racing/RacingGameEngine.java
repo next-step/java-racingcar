@@ -30,5 +30,7 @@ public class RacingGameEngine {
             gameState = RacingGameLogic.update(gameState);
             RacingGameRenderer.renderGame(gameState);
         }
+
+        RacingGameRenderer.renderWinners(RacingGameLogic.getWinnerList(gameState));
     }
 }

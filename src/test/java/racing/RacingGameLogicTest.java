@@ -39,4 +39,22 @@ public class RacingGameLogicTest {
         state = RacingGameLogic.update(state);
         assertThat(RacingGameLogic.isGameOver(state)).isTrue();
     }
+
+    @Test
+    @DisplayName("[RacingGameLogic.getWinnerNames] 현 게임 상태 주면 -> 이기고 있는 사람 목록 반환")
+    public void getWinnerNames() {
+        Car carA = Car.create("carA", 4);
+        Car carB = Car.create("carB", 2);
+        Car carC = Car.create("carC", 4);
+
+        RacingGameState state = RacingGameState.createNewGame(
+                List.of(carA, carB, carC),
+                5
+        );
+
+        assertThat(RacingGameLogic.getWinnerList(state))
+                .hasSameElementsAs(
+                        List.of(carA, carC)
+                );
+    }
 }
