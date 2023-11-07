@@ -12,8 +12,8 @@ class CalculatorTest {
     @Test
     @DisplayName("어떤 값도 들어오지 안은 경우에 대한 test")
     void test1() {
-        assertThat(sumText("")).isEqualTo(0);
-        assertThat(sumText(null)).isEqualTo(0);
+        assertThat(sumText("")).isZero();
+        assertThat(sumText(null)).isZero();
     }
 
     @Test
