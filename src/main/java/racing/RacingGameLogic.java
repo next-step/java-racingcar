@@ -40,6 +40,21 @@ public class RacingGameLogic {
     }
 
     /**
+     * 레이싱 게임을 새로 시작합니다.
+     *
+     * @param namesOfCar 참여하는 자동차들의 이름 목록. 구분자로 구분하고 이름만큼 자동차가 생성됩니다.
+     * @param theNumberOfCycles 진행할 사이클 수
+     *
+     * @return 새로 생성된 게임 상태
+     */
+    public static RacingGameState init(String namesOfCar, int theNumberOfCycles) {
+        return RacingGameLogic.init(
+                CarGenerator.createByMultiNameString(namesOfCar),
+                theNumberOfCycles
+        );
+    }
+
+    /**
      * 경기 한 사이클을 진행합니다.
      * 각 자동차들은 자신의 전략에 따라 움직일 것입니다.
      *

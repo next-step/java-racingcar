@@ -15,10 +15,10 @@ public class RacingGameEngine {
      * 여기서 진행됩니다.
      */
     public void init() {
-        int theNumberOfCar = RacingGameInput.askTheNumberOfCar();
+        String carNamesString = RacingGameInput.askNamesOfCars();
         int theNumberOfCycle = RacingGameInput.askTheNumberOfCycle();
 
-        gameState = RacingGameLogic.init(theNumberOfCar, theNumberOfCycle);
+        gameState = RacingGameLogic.init(carNamesString, theNumberOfCycle);
     }
 
     /**
