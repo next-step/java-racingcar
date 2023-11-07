@@ -18,7 +18,7 @@ public class RacingOutput {
         System.out.println("실행 결과");
 
         for (int i=0; i<numOfTry; i++) {
-            carRacing.moveCar();
+            carRacing.moveCars();
 
             int[] positions = findPositions(carRacing);
             printCarPosition(positions);

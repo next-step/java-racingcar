@@ -30,7 +30,7 @@ public class CarRacingTest {
         carRacing.createCarsOf(numOfCars);
 
         // when
-        carRacing.moveCar();
+        carRacing.moveCars();
 
         // then
         for (int i=0; i<numOfCars; i++) {
