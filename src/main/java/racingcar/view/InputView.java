@@ -10,17 +10,17 @@ public class InputView {
     private InputView() {
     }
 
-    public static int getCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return getScannerInput();
+    public static String getCarCount() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        try {
+            return scanner.nextLine();
+        } catch (InputMismatchException exception) {
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+        }
     }
 
     public static int getTotalGameCont() {
         System.out.println("시도할 회수는 몇회인가요?");
-        return getScannerInput();
-    }
-
-    private static int getScannerInput() {
         try {
             return scanner.nextInt();
         } catch (InputMismatchException exception) {

@@ -16,12 +16,12 @@ class CarsTest {
 
     @BeforeEach
     void init() {
-        List<Car> carList = Arrays.asList(new Car(), new Car(), new Car());
+        List<Car> carList = Arrays.asList(new Car("엄태권"), new Car("OWEN"), new Car("TEST"));
         this.cars = new Cars(carList);
     }
 
     @Test
-    @DisplayName("생성한 Car의 갯수만큼 Cars에 생성된 carList에 추가된다.")
+    @DisplayName("입력한 자동차들의 이름을 ,로 구분하여 생성시 해당 수만큼 자동차가 생성된다.")
     void createCars() {
         assertThat(this.cars.getCars()).hasSize(3);
     }

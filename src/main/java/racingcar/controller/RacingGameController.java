@@ -7,10 +7,10 @@ import racingcar.view.ResultView;
 
 public class RacingGameController {
     public static void main(String[] args) {
-        int carCount = InputView.getCarCount();
+        String inputCarName = InputView.getCarCount();
         int totalGameCont = InputView.getTotalGameCont();
 
-        RacingGame racingGame = new RacingGame(carCount, totalGameCont);
+        RacingGame racingGame = new RacingGame(inputCarName, totalGameCont);
         while (!racingGame.isEndGame()) {
             racingGame.startRacing(new RandomMoveStrategy());
             ResultView.printResult(racingGame.getCars());
