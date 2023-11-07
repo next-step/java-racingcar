@@ -2,16 +2,22 @@ package carracing;
 
 import carracing.move_strategy.MoveStrategy;
 
-public class Car implements Cloneable {
+public class Car {
 
     private static final int START_POSITION = 1;
 
+    private CarName name;
     private Integer position;
     private MoveStrategy moveStrategy;
 
-    public Car(MoveStrategy moveStrategy) {
+    public Car(String name, MoveStrategy moveStrategy) {
+        this.name = CarName.from(name);
         this.position = START_POSITION;
         this.moveStrategy = moveStrategy;
+    }
+
+    public String getName() {
+        return this.name.getName();
     }
 
     public Integer getPosition() {
@@ -20,15 +26,5 @@ public class Car implements Cloneable {
 
     public void move() {
         position += moveStrategy.getMovePoint();
-    }
-
-    @Override
-    public Car clone() {
-        Object obj = null;
-        try {
-            obj = super.clone();
-        } catch (CloneNotSupportedException e) {
-        }
-        return (Car) obj;
     }
 }

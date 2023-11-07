@@ -4,6 +4,7 @@ import carracing.move_strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,19 +19,19 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public static Cars makeCars(Integer carCount, MoveStrategy moveStrategy) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(moveStrategy));
-        }
-        return new Cars(cars);
+    public static Cars makeCars(List<String> carNames, MoveStrategy moveStrategy) {
+        return new Cars(carNames.stream().map(carName -> new Car(carName, moveStrategy)).collect(Collectors.toList()));
     }
 
     public void move() {
         cars.forEach(Car::move);
     }
 
-    public Cars copyOf() {
-        return new Cars(cars.stream().map(Car::clone).collect(Collectors.toList()));
+    private int getMaxPosition() {
+        return this.cars.stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
+    }
+
+    public List<Car> getFastestCars() {
+        return this.cars.stream().filter(car -> car.getPosition().equals(getMaxPosition())).collect(Collectors.toList());
     }
 }

@@ -1,11 +1,12 @@
-package carracing.move_strategy;
+package carracing.utils;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomPoint {
+public class RandomUtils {
     public static final ThreadLocalRandom random = ThreadLocalRandom.current();
+    public static final int THRESHOLD = 10;
 
     public static int getPoint() {
-        return random.nextInt(10);
+        return random.nextInt(THRESHOLD);
     }
 }

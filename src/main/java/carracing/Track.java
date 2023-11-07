@@ -3,28 +3,27 @@ package carracing;
 import carracing.move_strategy.MoveStrategy;
 import carracing.move_strategy.RandomMoveStopStrategy;
 
+import java.util.List;
+
 import static carracing.Cars.makeCars;
 
 public class Track {
-
     private static final MoveStrategy moveStrategy = new RandomMoveStopStrategy();
     private final Cars cars;
-    private final int movingCount;
-    private final TrackHistory trackHistory = new TrackHistory();
 
-    public Track(int carCount, int movingCount) {
-        cars = makeCars(carCount, moveStrategy);
-        this.movingCount = movingCount;
+    public Track(List<String> carNames) {
+        cars = makeCars(carNames, moveStrategy);
     }
 
     public void run() {
-        for (int i = 0; i < movingCount; i++) {
-            cars.move();
-            trackHistory.add(cars);
-        }
+        cars.move();
     }
 
-    public TrackHistory getTrackHistory() {
-        return this.trackHistory;
+    public List<Car> winners() {
+        return cars.getFastestCars();
+    }
+
+    public Cars carHistory() {
+        return this.cars;
     }
 }
