@@ -2,6 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,17 +23,17 @@ public class RacingCarTest {
         assertThat(randomInt).isGreaterThan(-1);
     }
 
-    @Test
-    @DisplayName("random 값이 4이상 9이하일 경우, 자동차는 이동한다.")
-    void move() {
+    @ParameterizedTest
+    @DisplayName("자동차는 random 값이 4이상 9이하일 경우 이동하고, 0이상 3이하일 경우 정지한다.")
+    @CsvSource(value = {"1:0", "2:0", "6:1", "7:1"}, delimiter = ':')
+    void move(int randomInt, int distance) {
         // given
         RacingCar car = new RacingCar();
-        int randomInt = 8;
 
         // when
         car.move(randomInt);
 
         // then
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.getDistance()).isEqualTo(distance);
     }
 }
