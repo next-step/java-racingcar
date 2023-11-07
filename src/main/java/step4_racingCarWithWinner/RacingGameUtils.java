@@ -1,4 +1,4 @@
-package step4_racintCarWithWinner;
+package step4_racingCarWithWinner;
 
 import java.util.Random;
 

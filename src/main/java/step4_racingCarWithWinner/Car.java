@@ -1,4 +1,4 @@
-package step4_racintCarWithWinner;
+package step4_racingCarWithWinner;
 
 public class Car {
 
@@ -25,6 +25,10 @@ public class Car {
     @Override
     public String toString(){
         return this.name + " : " + this.distance;
+    }
+
+    public void printStatus(){
+        System.out.println(this);
     }
 
     public void forward() {

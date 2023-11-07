@@ -1,7 +1,6 @@
-package step4_racintCarWithWinner;
+package step4_racingCarWithWinner;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +8,7 @@ import java.util.stream.Collectors;
 public class RacingGame{
 
     private static final int NUMBER_TO_GO_FORWARD = 4;
-    private static final int NUMBER_TO_GET_RANDOM_NUMBER = 9;
+    private static final int NUMBER_TO_GET_RANDOM_NUMBER = 10;
     private final String[] carNames;
     private final int gameCount;
 
@@ -30,18 +29,28 @@ public class RacingGame{
         }
     }
 
-    public void play() {
+    public List<Car> play() {
 
         List<Car> carList = getCarList();
 
-        for(int i=0; i<gameCount; i++){
-            playing(carList);
-            new ResultView<Car>().print(carList);
-        }
+        entireGame(carList);
+
+        return carList;
     }
 
-    private void playing(List<Car> carList) {
-        carList.forEach(this::eachCarPlaying);
+    private void entireGame(List<Car> carList) {
+        for(int i=0; i<gameCount; i++){
+            eachGame(carList);
+        }
+
+    }
+
+    private void eachGame(List<Car> carList) {
+        carList.forEach(car->{
+            eachCarPlaying(car);
+            car.printStatus();
+        });
+        System.out.println();
     }
 
     private void eachCarPlaying(Car car) {

@@ -1,4 +1,6 @@
-package step4_racintCarWithWinner;
+package step4_racingCarWithWinner;
+
+import java.util.List;
 
 public class Application {
 
@@ -11,6 +13,8 @@ public class Application {
         String[] carNames = InputView.stringsSplitBy(CAR_NAME_QUESTION, CAR_NAME_QUESTION_DELIMITER);
         int gameCount = InputView.intInput(GAME_NAME_QUESTION);
 
-        new RacingGame(carNames, gameCount).play();
+        List<Car> result = new RacingGame(carNames, gameCount).play();
+
+        new RacingGamePrint().printResult(result);
     }
 }
