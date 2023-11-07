@@ -20,4 +20,9 @@ public class Car {
         return this.name;
     }
 
+    @Override
+    public String toString(){
+        return this.name + " : " + this.distance;
+    }
+
 }

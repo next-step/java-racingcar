@@ -23,4 +23,12 @@ public class CarTest {
         assertThatThrownBy(() -> new Car("보리차보리차"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+
+    @Test
+    @DisplayName("전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.")
+    void printCarInfo(){
+        assertThat(new Car("루돌프").toString()).contains("루돌프");
+    }
+
 }
