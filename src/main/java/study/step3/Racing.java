@@ -1,6 +1,7 @@
 package study.step3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static study.step3.ResultView.showResult;
 import static study.step3.ResultView.showResultTitle;
@@ -10,10 +11,10 @@ public class Racing {
     private List<Car> cars;
     private int movingTimes;
 
-    private Random random;
+    private NumberGenerator numberGenerator;
 
-    public Racing(Random random) {
-        this.random = random;
+    public Racing(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
     }
 
     public Racing(List<Car> cars, int movingTimes) {
@@ -48,7 +49,7 @@ public class Racing {
 
     private void move(List<Car> cars) {
         for (Car car: cars) {
-            car.move(random.nextInt(10));
+            car.move(numberGenerator.generate());
         }
     }
 

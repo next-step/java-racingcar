@@ -1,7 +1,5 @@
 package study.step3;
 
-import java.util.Random;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,7 +34,7 @@ public class RacingTest {
         System.out.println("시도할 회수는 몇 회 인가요?");
         System.out.println(moves);
 
-        Racing racing = new Racing(new Random());
+        Racing racing = new Racing(new RandomNumberGenerator());
         racing.start(new Rule(cars, moves));
     }
 
@@ -49,7 +47,7 @@ public class RacingTest {
         System.out.println("시도할 회수는 몇 회 인가요?");
         System.out.println(moves);
 
-        Racing racing = new Racing(new AlwaysReturn4());
+        Racing racing = new Racing(new Always4Generator());
         racing.start(new Rule(cars, moves));
     }
 
@@ -62,23 +60,8 @@ public class RacingTest {
         System.out.println("시도할 회수는 몇 회 인가요?");
         System.out.println(moves);
 
-        Racing racing = new Racing(new AlwaysReturn1());
+        Racing racing = new Racing(new Always1Generator());
         racing.start(new Rule(cars, moves));
     }
 
-    static class AlwaysReturn4 extends Random {
-
-        @Override
-        public int nextInt(int bound) {
-            return 4;
-        }
-    }
-
-    static class AlwaysReturn1 extends Random {
-
-        @Override
-        public int nextInt(int bound) {
-            return 1;
-        }
-    }
 }
