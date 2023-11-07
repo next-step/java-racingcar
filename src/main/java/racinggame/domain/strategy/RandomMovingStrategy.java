@@ -1,18 +1,16 @@
 package racinggame.domain.strategy;
 
+import java.util.Random;
+
 public class RandomMovingStrategy implements MovingStrategy{
 
     public static final int MIN_MOVABLE_NUMBER = 3;
-
-    private final RandomHolder randomHolder;
-
-    public RandomMovingStrategy(RandomHolder randomHolder) {
-        this.randomHolder = randomHolder;
-    }
+    public static final int DEFAULT_BOUND = 10;
+    private Random random = new Random();
 
     @Override
     public boolean movable() {
-        return randomHolder.nextInt() > MIN_MOVABLE_NUMBER;
+        return random.nextInt(DEFAULT_BOUND) > MIN_MOVABLE_NUMBER;
     }
 
 }
