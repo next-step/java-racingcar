@@ -14,7 +14,7 @@ public class CarRacing {
 		return cars;
 	}
 
-	public void moveCars(int moveCount) {
+	public void moveCars(List<Car> cars) {
 		for (Car car : cars) {
 			car.moveCar();
 		}
