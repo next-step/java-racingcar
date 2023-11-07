@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InputView {
 
 	private static final int MINIMUM_NATURAL_NUM = 1;
+
 	private Scanner sc = new Scanner(System.in);
 
 	public int inputCarCount() {
@@ -18,7 +19,7 @@ public class InputView {
 	public int getValidCount(String text) {
 		System.out.println(text);
 		int count = sc.nextInt();
-		if(count < MINIMUM_NATURAL_NUM) {
+		if (count < MINIMUM_NATURAL_NUM) {
 			throw new IllegalArgumentException("1 이상의 자연수를 입력해주세요.");
 		}
 		return count;

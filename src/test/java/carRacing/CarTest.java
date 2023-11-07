@@ -14,7 +14,7 @@ class CarTest {
 //		car.isRanNumAboveFour = true;
 		car.moveCar();
 
-		assertThat(car.index).isEqualTo(1);
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@DisplayName("random값이 4미만일 경우 차는 그대로 서있는다")
@@ -24,6 +24,6 @@ class CarTest {
 //		car.isRanNumAboveFour = false;
 		car.moveCar();
 
-		assertThat(car.index).isEqualTo(0);
+		assertThat(car.getPosition()).isEqualTo(0);
 	}
 }

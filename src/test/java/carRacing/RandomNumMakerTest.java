@@ -1,7 +1,6 @@
 package carRacing;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ class RandomNumMakerTest {
 	@Test
 	void makeRandomNum() {
 		RandomNumMaker ran = new RandomNumMaker();
-		int randomNum = ran.makeRanNum();
+		int randomNum = ran.makeRandomNumber();
 
 		assertThat(randomNum).isBetween(0,9);
 	}

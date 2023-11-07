@@ -2,12 +2,16 @@ package carRacing;
 
 public class Car {
 
-	public int index = 0;
+	private int position;
 	private RandomNumMaker ran = new RandomNumMaker();
 
 	public void moveCar() {
 		if (ran.isAboveBoundary()){
-			index++;
+			position++;
 		}
+	}
+
+	public int getPosition() {
+		return position;
 	}
 }
