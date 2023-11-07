@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static racingcar.Dice.roll;
 import static racingcar.InputView.readCarCount;
 import static racingcar.InputView.readTryCount;
@@ -20,26 +23,24 @@ public class RacingSimulator {
     }
 
     private static void simulate(int carCount, int tryCount) {
-        RacingCar[] racingCars = initRacingCars(carCount);
+        List<RacingCar> racingCars = initRacingCars(carCount);
         printResult();
 
         for (int i = 0; i < tryCount; i++) {
-            eachCarAction(carCount, racingCars);
+            eachCarAction(racingCars);
             printCarsPosition(racingCars);
         }
     }
 
-    private static void eachCarAction(int carCount, RacingCar[] racingCars) {
-        for (int i = 0; i < carCount; i++){
-            racingCars[i].action(roll());
-        }
+    private static void eachCarAction(List<RacingCar> racingCars) {
+        racingCars.forEach(racingCar -> racingCar.action(roll()));
     }
 
 
-    private static RacingCar[] initRacingCars(int carCount) {
-        RacingCar[] racingCars = new RacingCar[carCount];
+    private static List<RacingCar> initRacingCars(int carCount) {
+        List<RacingCar> racingCars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            racingCars[i] = new RacingCar();
+            racingCars.add(new RacingCar());
         }
         return racingCars;
     }

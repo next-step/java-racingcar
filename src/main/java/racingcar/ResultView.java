@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
     private static final String RESULT_MESSAGE = "실행 결과";
@@ -8,10 +10,8 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printCarsPosition(RacingCar[] cars) {
-        for (int i = 0; i < cars.length; i++) {
-            printCarPosition(cars[i]);
-        }
+    public static void printCarsPosition(List<RacingCar> cars) {
+        cars.forEach(ResultView::printCarPosition);
         System.out.println();
     }
 
