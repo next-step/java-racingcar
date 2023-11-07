@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingTest {
 
@@ -28,7 +27,4 @@ class RacingTest {
         newGame.startGame();
         assertThat(Arrays.stream(newGame.record).sum()).isGreaterThan(0);
     }
-
-
-
 }
