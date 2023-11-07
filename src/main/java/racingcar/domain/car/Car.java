@@ -3,6 +3,7 @@ package racingcar.domain.car;
 import racingcar.domain.game.strategy.MoveStrategy;
 
 public class Car {
+    private static final int DEFAULT_MOVE_POSITION = 1;
     private final Position position;
 
     public Car() {
@@ -14,6 +15,8 @@ public class Car {
     }
 
     public void move(final MoveStrategy moveStrategy) {
-        this.position.move(moveStrategy.movePosition());
+        if (moveStrategy.movable()) {
+            this.position.move(DEFAULT_MOVE_POSITION);
+        }
     }
 }

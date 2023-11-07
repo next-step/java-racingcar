@@ -26,7 +26,7 @@ class CarTest {
     @Test
     @DisplayName("움직일 수 있는 조건이 된다면 자동차는 1칸 이동하게 된다.")
     void randomMove() {
-        car.move(() -> 1);
+        car.move(() -> true);
 
         assertThat(car.getPosition()).isEqualTo(1);
     }
