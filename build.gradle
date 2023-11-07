@@ -9,8 +9,12 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.28'
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    compile "org.slf4j:slf4j-simple:1.6.1"
+
 }
 
 java {
