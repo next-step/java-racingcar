@@ -5,6 +5,7 @@ import common.StringSpliter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private final int gameCount;
@@ -32,11 +33,6 @@ public class RacingGame {
         initRacingCar(userNames, carCount);
     }
 
-    private static String[] parseUserName(String userNameAnswer) {
-        final String NAME_SPLIT_DELIMITER = ",";
-        return StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
-    }
-
     public boolean isProgress() {
         return this.getCurrentRound() < this.getGameCount();
     }
@@ -58,6 +54,31 @@ public class RacingGame {
         this.currentRound++;
     }
 
+    public String getWinnersName() {
+        List<String> userNameList = getWinners()
+                .stream()
+                .map(Car::getUserName)
+                .collect(Collectors.toList());
+        return String.join(",", userNameList);
+    }
+
+    private List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
+        List<Car> winCars = new ArrayList<>();
+
+        List<Car> racingCars = getRacingCars();
+        racingCars.stream()
+                .filter(o -> o.getPosition() == maxPosition)
+                .forEach(winCars::add);
+        return winCars;
+    }
+
+
+    private String[] parseUserName(String userNameAnswer) {
+        final String NAME_SPLIT_DELIMITER = ",";
+        return StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
+    }
+
     private void initRacingCar(int carCount) {
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
@@ -73,5 +94,16 @@ public class RacingGame {
     private void doGame(Car car) {
         int result = carMoveStrategy.getResult();
         car.move(result);
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        List<Car> racingCars = getRacingCars();
+        for (Car racingCar : racingCars) {
+            if (racingCar.getPosition() >= maxPosition) {
+                maxPosition = racingCar.getPosition();
+            }
+        }
+        return maxPosition;
     }
 }

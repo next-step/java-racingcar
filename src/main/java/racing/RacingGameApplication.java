@@ -23,5 +23,7 @@ public class RacingGameApplication {
             ResultView.printProgressView(racingGame);
         }
 
+        ResultView.printWinnerNoticeView(racingGame);
+
     }
 }

@@ -97,6 +97,27 @@ class RacingGameTest {
                 .containsExactly("김동규", "박동규", "최동규");
     }
 
+    @DisplayName("자동차 경주의 우승자들의 이름을 리턴한다.")
+    @Test
+    void get_racing_game_winners() {
+        // given
+        final String userNameAnswer = "김동규,박동규,최동규";
+        final int carCount = 3;
+        final int gameCount = 5;
+
+        // when
+        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount, testMoveStrategy);
+
+        racingGame.doRacing();
+
+        // then
+        assertThat(racingGame).isNotNull();
+        assertThat(racingGame.getWinnersName()).isEqualTo(userNameAnswer);
+        assertThat(racingGame.getRacingCars())
+                .extracting("position")
+                .containsExactly(1, 1, 1);
+    }
+
     static class TestMoveStrategy extends CarMoveStrategy {
         public TestMoveStrategy(Random random) {
             super(random);
