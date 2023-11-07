@@ -1,22 +1,20 @@
 package racing.ui;
 
-import racing.domain.Car;
-
 import java.util.List;
 
 public class ResultView {
 
     static String DISPLAY_TEST = "-";
 
-    public void viewResultView(List<Car> carList) {
-        for(Car car : carList){
-            System.out.println(intFormatString(car.getMoveCount(car)));
+    public static void viewResultView(List<Integer> resultList) {
+
+        for(int number : resultList){
+            System.out.println(intFormatString(number));
         }
         System.out.println();
     }
 
-    private String intFormatString(int count){
+    private static String intFormatString(int count){
         return DISPLAY_TEST.repeat(count);
     }
-
 }

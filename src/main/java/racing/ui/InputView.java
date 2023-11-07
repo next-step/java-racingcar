@@ -1,7 +1,5 @@
 package racing.ui;
 
-import racing.domain.Car;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -12,20 +10,12 @@ public class InputView {
 
     static String CAR_COUNT = "자동차 대수는 몇 대 인가요?";
 
-    public Car showView() {
-        int carCount = carCount();
-        int tryCount = tryCount();
-
-        return new Car(carCount, tryCount);
-    }
-
-
-    private static int tryCount() {
+    public static int getTryCount() {
         System.out.println(TRY_COUNT);
         return SCANNER.nextInt();
     }
 
-    private static int carCount() {
+    public static int getCarCount() {
         System.out.println(CAR_COUNT);
         return SCANNER.nextInt();
     }

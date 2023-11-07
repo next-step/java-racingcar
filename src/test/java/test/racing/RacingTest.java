@@ -17,7 +17,9 @@ public class RacingTest {
     public void 숫자4이상(int number){
         Car car = new Car();
 
-        assertThat(1).isEqualTo(car.moveCar(car,number));
+        car.moveCar(number);
+
+        assertThat(1).isEqualTo(car.getMoveCount());
     }
 
     @DisplayName("숫자 4미만일때")
@@ -25,8 +27,8 @@ public class RacingTest {
     @ValueSource(ints = {1, 2, 3})
     public void 숫자4미만(int number){
         Car car = new Car();
-
-        assertThat(0).isEqualTo(car.moveCar(car,number));
+        car.moveCar(number);
+        assertThat(0).isEqualTo(car.getMoveCount());
     }
 
     @DisplayName("랜덤값")
@@ -37,5 +39,6 @@ public class RacingTest {
 
         assertThat(number).isGreaterThan(racing.randomNumber());
     }
+
 
 }
