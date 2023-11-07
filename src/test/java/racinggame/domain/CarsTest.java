@@ -7,8 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-
-    public static final int MOVABLE_NUMBER = 4;
     private Cars cars;
 
     @BeforeEach
@@ -30,7 +28,7 @@ class CarsTest {
     void 자동차들이_움직인다() {
         List<Car> carList = List.of(
             new Car(new CarName("pobi"), new Distance(1)));
-        cars.move(new TestMovingStrategy(true));
+        cars.move(0);
 
         Cars actual = this.cars;
         Cars expected = new Cars(carList);

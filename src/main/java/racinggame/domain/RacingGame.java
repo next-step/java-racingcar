@@ -16,7 +16,15 @@ public class RacingGame {
     }
 
     public void play(MovingStrategy movingStrategy) {
-        cars.move(movingStrategy);
+        for (int i = 0; i < cars.size(); i++) {
+            move(movingStrategy, i);
+        }
+    }
+
+    private void move(MovingStrategy movingStrategy, int index) {
+        if(movingStrategy.movable()) {
+            cars.move(index);
+        }
     }
 
     public Cars cars() {

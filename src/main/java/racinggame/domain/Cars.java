@@ -3,7 +3,6 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import racinggame.domain.strategy.MovingStrategy;
 
 public class Cars {
 
@@ -26,16 +25,9 @@ public class Cars {
         return this.carList.size();
     }
 
-    public void move(MovingStrategy movingStrategy) {
-        for (Car car : this.carList) {
-            apply(movingStrategy, car);
-        }
-    }
-
-    private static void apply(MovingStrategy movingStrategy, Car car) {
-        if(movingStrategy.movable()) {
-            car.move();
-        }
+    public void move(int index) {
+        Car car = this.carList.get(index);
+        car.move();
     }
 
     public List<Distance> movingDistances() {
