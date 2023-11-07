@@ -1,4 +1,7 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.domain;
+
+import camp.nextstep.edu.racingcar.domain.result.DriveResult;
+import camp.nextstep.edu.racingcar.domain.strategy.DriveStrategy;
 
 public class Car {
 

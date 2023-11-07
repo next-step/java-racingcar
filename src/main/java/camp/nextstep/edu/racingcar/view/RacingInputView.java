@@ -1,4 +1,4 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.view;
 
 public interface RacingInputView {
 

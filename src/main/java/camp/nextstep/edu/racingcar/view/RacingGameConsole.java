@@ -1,4 +1,9 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.view;
+
+import camp.nextstep.edu.racingcar.domain.strategy.DriveStrategy;
+import camp.nextstep.edu.racingcar.domain.result.RacingGameResult;
+import camp.nextstep.edu.racingcar.domain.strategy.SixtyPercentDriveStrategy;
+import camp.nextstep.edu.racingcar.domain.RacingGame;
 
 public class RacingGameConsole {
 

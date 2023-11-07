@@ -1,4 +1,4 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.domain.result;
 
 import java.util.ArrayList;
 import java.util.List;

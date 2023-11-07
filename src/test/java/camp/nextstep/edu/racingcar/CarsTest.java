@@ -2,6 +2,9 @@ package camp.nextstep.edu.racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import camp.nextstep.edu.racingcar.domain.Cars;
+import camp.nextstep.edu.racingcar.domain.result.RoundResult;
+import camp.nextstep.edu.racingcar.domain.strategy.DriveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

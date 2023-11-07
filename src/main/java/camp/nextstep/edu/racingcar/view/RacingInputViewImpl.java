@@ -1,6 +1,5 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.view;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 

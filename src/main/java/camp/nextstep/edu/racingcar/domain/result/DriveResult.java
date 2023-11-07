@@ -1,4 +1,4 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.domain.result;
 
 public class DriveResult {
 

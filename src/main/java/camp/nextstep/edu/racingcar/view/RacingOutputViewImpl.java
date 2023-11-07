@@ -1,4 +1,6 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.view;
+
+import camp.nextstep.edu.racingcar.domain.result.RacingGameResult;
 
 public class RacingOutputViewImpl implements RacingOutputView {
 
