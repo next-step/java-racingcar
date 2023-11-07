@@ -1,35 +1,37 @@
 package racingcar.domain;
 
+import java.util.Random;
+
 public class Car {
 
+        private static final int RANDOM_BOUND = 10;
+        private static final int START_INIT_VALUE = 1;
         private static final int LOWER_LIMIT = 4;
-        private final Name name;
-        private final Position currentPosition;
+        private static final Random random = new Random();
+        private int currentPosition;
 
-        public Car(String name) {
-                this.name = new Name(name);
-                this.currentPosition = new Position();
+        public Car() {
+                currentPosition = START_INIT_VALUE;
         }
 
-        public void movedForwardIfCan(int randomNo) {
-                if (isAbleToMove(randomNo)) {
+        public void moveForward() {
+                ++currentPosition;
+        }
+
+        public boolean movedForwardIfCan() {
+                boolean ableToMove = isAbleToMove();
+                if (ableToMove) {
                         this.moveForward();
                 }
+                return ableToMove;
         }
 
-        private void moveForward() {
-                currentPosition.addOnePosition();
+        private boolean isAbleToMove() {
+                return random.nextInt(RANDOM_BOUND) >= LOWER_LIMIT;
         }
 
-        private boolean isAbleToMove(int randomNo) {
-                return randomNo >= LOWER_LIMIT;
-        }
-
-        public Position currentPosition() {
+        public int getCurrentPosition() {
                 return currentPosition;
         }
 
-        public Name name(){
-                return name;
-        }
 }

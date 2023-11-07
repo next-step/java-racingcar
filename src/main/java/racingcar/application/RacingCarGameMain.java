@@ -2,28 +2,27 @@ package racingcar.application;
 
 import static racingcar.presentation.InputView.scanAndGetValues;
 
-import racingcar.common.utils.TextManipulator;
-import racingcar.domain.RacingCarGame;
-import racingcar.domain.Winners;
-import racingcar.presentation.ResultView;
+import java.util.List;
+import java.util.stream.IntStream;
+import racingcar.domain.Car;
+import racingcar.domain.SimpleRacingCarGame;
+import racingcar.presentation.OutputView;
 import racingcar.presentation.dto.RacingGameInput;
 
 public class RacingCarGameMain {
 
         public static void main(String args[]) {
                 RacingGameInput inputValue = scanAndGetValues();
-                String carNamesInOneText = inputValue.getCarNamesInOneText();
+                int carCount = inputValue.getCarCount();
                 int round = inputValue.getRound();
-                String[] carNames = TextManipulator.splitTextByComma(carNamesInOneText);
 
-                RacingCarGame game = new RacingCarGame(round, carNames);
-                while (game.isOngoing()) {
-                        game.moveOneRound();
-                        ResultView.printPositionForAllCarsInCurrentRound(game.cars());
-                }
+                SimpleRacingCarGame game = new SimpleRacingCarGame(carCount);
+                List<Car> cars = game.joinCars();
 
-                ResultView.printResultViewTitle();
-                ResultView.printPositionForAllCarsInCurrentRound(game.cars());
-                ResultView.printWinner(Winners.findWinners(game.cars()));
+                IntStream.range(0, round).forEach(thisRound -> {
+                        game.moveOneRound(cars);
+                        OutputView.printPositionForAllCarsInCurrentRound(cars);
+                });
         }
+
 }
