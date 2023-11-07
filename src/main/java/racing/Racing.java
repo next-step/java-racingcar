@@ -61,7 +61,7 @@ public class Racing {
         for (Car car : this.participatingCars()) {
             int input = random.nextInt(RANDOM_GENNERATE_NUMBER);
             car.move(input);
-            cars.add(new Car(car.name(), car.position().position()));
+            cars.add(new Car(car.name().toString(), car.position().position()));
         }
         return cars;
     }

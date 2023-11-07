@@ -29,7 +29,8 @@ public class ResultView {
     }
 
     public static void showWinners(List<Car> cars) {
-        List<String> names = cars.stream().map(c -> c.name()).collect(Collectors.toList());
+        List<String> names = cars.stream().map(c -> c.name().toString())
+            .collect(Collectors.toList());
         System.out.println(names.toString() + "가 최종 우승했습니다.");
     }
 }

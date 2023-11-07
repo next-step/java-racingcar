@@ -3,18 +3,16 @@ package racing.car;
 
 public class Car {
 
-    private static int NAME_LENGTH_LIMIT = 5;
-    private String name;
+    private Name name;
     private int THRESHOLD = 4;
     private Position position;
 
     public Car(String name, int position) {
-        validateNameLength(name);
-        this.name = name;
+        this.name = new Name(name);
         this.position = new Position(position);
     }
 
-    public String name() {
+    public Name name() {
         return this.name;
     }
 
@@ -33,10 +31,26 @@ public class Car {
         return THRESHOLD <= input;
     }
 
-    private void validateNameLength(String name) {
-        boolean overNameLengthLimit = NAME_LENGTH_LIMIT < name.length();
-        if (overNameLengthLimit) {
-            throw new ValidationException("name can't over 5 letters");
+
+    public static class Name {
+
+        private static final int NAME_LENGTH_LIMIT = 5;
+        private final String name;
+
+        public Name(String name) {
+            this.validateNameLength(name);
+            this.name = name;
+        }
+
+        public String toString() {
+            return this.name;
+        }
+
+        private void validateNameLength(String name) {
+            boolean overNameLengthLimit = NAME_LENGTH_LIMIT < name.length();
+            if (overNameLengthLimit) {
+                throw new ValidationException("name can't over 5 letters");
+            }
         }
     }
 }
