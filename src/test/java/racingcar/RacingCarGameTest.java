@@ -65,7 +65,7 @@ class RacingCarGameTest {
         racingCarGame.start();
 
         assertThat(racingCarGame.carList())
-                .filteredOn(car -> car.moveCount() > 0)
+                .filteredOn(car -> car.distance() > 0)
                 .hasSizeGreaterThan(0);
     }
 }

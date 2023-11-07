@@ -7,11 +7,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
     @Test
-    @DisplayName("자동차 이동 - 자동차가 이동한다. 이동 카운트가 증가한다")
+    @DisplayName("자동차가 이동하면 이동거리가 1 증가 한다")
     void move_car() {
         Car car = new Car();
         car.move();
-
-        assertThat(car.moveCount()).isEqualTo(2);
+        assertThat(car.distance()).isEqualTo(1);
     }
 }

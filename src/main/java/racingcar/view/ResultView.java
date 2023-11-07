@@ -3,8 +3,6 @@ package racingcar.view;
 import racingcar.Car;
 import racingcar.RacingCarGame;
 
-import java.util.List;
-
 public class ResultView {
 
     public static final String CAR_PATH = "-";
@@ -17,7 +15,7 @@ public class ResultView {
 
     public void printRace() {
         for (Car car : racingCarGame.carList()) {;
-            System.out.println(createPath(car.moveCount()));
+            System.out.println(createPath(car.distance()));
         }
         System.out.println();
     }

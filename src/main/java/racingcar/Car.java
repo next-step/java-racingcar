@@ -1,17 +1,30 @@
 package racingcar;
 
 public class Car {
-    public static final int INITIAL_MOVE_COUNT = 1;
-    private int moveCount;
+
+    private static int sequence = 0;
+
+    private int id;
+    private int distance;
+
     public Car() {
-        this.moveCount = INITIAL_MOVE_COUNT;
+        id = newSequence();
+        distance = 0;
     }
 
-    public int moveCount() {
-        return moveCount;
+    private int newSequence() {
+        return ++sequence;
+    }
+
+    public int id() {
+        return id;
+    }
+
+    public int distance() {
+        return distance;
     }
 
     public void move() {
-        ++moveCount;
+        ++distance;
     }
 }
