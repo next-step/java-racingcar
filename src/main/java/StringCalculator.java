@@ -2,7 +2,7 @@ public class StringCalculator {
 
     private static final String DEFAULT_DELIMETER = ",:";
     private static final String CUSTOME_DELIMETER_END_POINT = "\n";
-    public static int cal(String targetOfSplit) {
+    public static int calculate(String targetOfSplit) {
         if (StringCalculator.isNullOrEmpty(targetOfSplit)) {
             return 0;
         }
@@ -30,16 +30,9 @@ public class StringCalculator {
     private static int sum(String[] split) {
         int sum = 0;
         for (String a : split) {
-            int i = Integer.parseInt(a);
-            checkNegativeNumber(i);
-            sum += i;
+            PositiveNumber positiveNumber = PositiveNumber.createFromString(a);
+            sum += positiveNumber.getFilteredNumber();
         }
         return sum;
-    }
-
-    private static void checkNegativeNumber(int i) {
-        if (i < 0) {
-            throw new RuntimeException();
-        }
     }
 }

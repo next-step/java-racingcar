@@ -1,6 +1,8 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,18 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StringCalculatorTest {
 
-// 요구 사항 정의
-
-
-
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("null 또는 빈문자열 입력시 0 반환")
-    void null_and_empty(){
-        // 구분자 구하기
-        assertAll(
-                () -> assertThat(StringCalculator.cal(null)).isEqualTo(0)
-                , () -> assertThat(StringCalculator.cal("")).isEqualTo(0)
-        );
+    void null_and_empty(String target){
+        // when
+        int result = StringCalculator.calculate(target);
+        // then
+        assertThat(result).isEqualTo(0);
     }
 
     @Test
@@ -27,30 +25,36 @@ public class StringCalculatorTest {
     void comma_delimeter() throws Exception {
         // given
         String target = "1,2";
+
         // when
-        int result = StringCalculator.cal(target);
+        int result = StringCalculator.calculate(target);
+
         // then
-        Assertions.assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(3);
     }
     @Test
     @DisplayName("구분자 여러개가 입력된 경우")
     void comma_and_dot_delimeter() {
         // given
         String target = "1,2:3";
+
         // when
-        int result = StringCalculator.cal(target);
+        int result = StringCalculator.calculate(target);
+
         // then
-        Assertions.assertThat(result).isEqualTo(6);
+        assertThat(result).isEqualTo(6);
     }
     @Test
     @DisplayName("구분자 여러개가 입력된 경우")
     void with_custom_delimeter() {
         // given
         String target = "//:\n1:2:3";
+
         // when
-        int result = StringCalculator.cal(target);
+        int result = StringCalculator.calculate(target);
+
         // then
-        Assertions.assertThat(result).isEqualTo(6);
+        assertThat(result).isEqualTo(6);
     }
 
     @Test
@@ -58,18 +62,23 @@ public class StringCalculatorTest {
     void minus_number_delimeter() {
         // given
         String target = "-1,2,3";
-        // then
-        org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class,
-                () -> StringCalculator.cal(target));
+
+        // when then
+        assertThrows(RuntimeException.class,
+                () -> StringCalculator.calculate(target)
+        );
     }
     @Test
     @DisplayName("숫자 하나를 입력했을 경우")
     void just_one_number() {
         // given
         String target = "1";
+
+        //when
+        int result = StringCalculator.calculate(target);
+
         // then
-        int result = StringCalculator.cal(target);
-        Assertions.assertThat(result).isEqualTo(1);
+        assertThat(result).isEqualTo(1);
 
     }
 }
