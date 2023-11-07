@@ -17,7 +17,7 @@ public class CarGenerator {
     public static List<Car> createMultipleDefaultCars(int theNumberOfCars) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < theNumberOfCars; i++) {
-            carList.add(new Car());
+            carList.add(Car.create());
         }
         return carList;
     }
