@@ -17,10 +17,12 @@ public class Car {
                 ++currentPosition;
         }
 
-        public void moveForwardIfCan() {
-                if (isAbleToMove()) {
+        public boolean movedForwardIfCan() {
+                boolean ableToMove = isAbleToMove();
+                if (ableToMove) {
                         this.moveForward();
                 }
+                return ableToMove;
         }
 
         private boolean isAbleToMove() {

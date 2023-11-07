@@ -1,6 +1,5 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,7 +17,7 @@ public class SimpleRacingCarGame {
         }
 
         public void moveOneRound(List<Car> cars) {
-                cars.forEach(Car::moveForwardIfCan);
+                cars.forEach(Car::movedForwardIfCan);
         }
 
 }
