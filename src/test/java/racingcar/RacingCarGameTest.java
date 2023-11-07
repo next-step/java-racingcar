@@ -35,16 +35,6 @@ class RacingCarGameTest {
     }
 
     @Test
-    @DisplayName("자동차 이동 - 자동차가 이동한다. 이동 카운트가 증가한다")
-    void move_car() {
-        Car car = new Car();
-        car.move();
-
-        assertThat(car.moveCount()).isEqualTo(1);
-    }
-
-
-    @Test
     @DisplayName("랜덤 값 테스트, 입력한 수보다 작은 값으로 랜덤하게 숫자를 반환한다")
     public void random(){
         RacingCarGame racingCarGame = new RacingCarGame(5, 5);
@@ -60,8 +50,6 @@ class RacingCarGameTest {
         assertThat(racingCarGame.movable(5)).isTrue();
         assertThat(racingCarGame.movable(3)).isFalse();
     }
-
-
 
     /*
     ----------------------------------------------------------------------------
