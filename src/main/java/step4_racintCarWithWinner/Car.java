@@ -19,10 +19,15 @@ public class Car {
     public String carName(){
         return this.name;
     }
-
+    public String carDistance() {
+        return this.distance.toString();
+    }
     @Override
     public String toString(){
         return this.name + " : " + this.distance;
     }
 
+    public void forward() {
+        this.distance.append("-");
+    }
 }
