@@ -2,7 +2,6 @@ package racing;
 
 import racing.car.Car;
 import racing.car.Position;
-import racing.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Random;
 public class Racing {
 
     private static final Random random = new Random();
-    private static final int RANDOM_GENNERATE_NUMBER = 10;
+    private static final int RANDOM_SEED_NUMBER = 10;
     private static final int INIT_POSITION = 0;
 
     private final ParticipatingCars participatingCars;
@@ -37,29 +36,13 @@ public class Racing {
      * @return
      */
     public List<Car> winners() {
-        List<Car> winners = new ArrayList<>();
-        Position position = new Position(INIT_POSITION);
-        for (Car car : this.participatingCars()) {
-            switch (position.compareTo(car.position())) {
-                case 0:// 같을 때
-                    winners.add(car);
-                    break;
-                case 1:// 새로운 자동차가 더 앞에 있을 때
-                    winners.clear();
-                    winners.add(car);
-                    position = new Position(car.position().position());
-                    break;
-                default:
-                    break;
-            }
-        }
-        return winners;
+        return this.participatingCars.winners();
     }
 
     private List<Car> attemptGo() {
         List<Car> cars = new ArrayList<>();
         for (Car car : this.participatingCars()) {
-            int input = random.nextInt(RANDOM_GENNERATE_NUMBER);
+            int input = random.nextInt(RANDOM_SEED_NUMBER);
             car.move(input);
             cars.add(new Car(car.name().toString(), car.position().position()));
         }
@@ -87,6 +70,26 @@ public class Racing {
 
         public List<Car> cars() {
             return this.participatingCars;
+        }
+
+        public List<Car> winners() {
+            List<Car> winners = new ArrayList<>();
+            Position position = new Position(INIT_POSITION);
+            for (Car car : this.participatingCars) {
+                switch (position.compareTo(car.position())) {
+                    case 0:// 같을 때
+                        winners.add(car);
+                        break;
+                    case 1:// 새로운 자동차가 더 앞에 있을 때
+                        winners.clear();
+                        winners.add(car);
+                        position = new Position(car.position().position());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return winners;
         }
     }
 }
