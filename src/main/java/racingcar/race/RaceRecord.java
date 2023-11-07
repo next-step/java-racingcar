@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.race;
 
 public class RaceRecord {
     private final Car car;

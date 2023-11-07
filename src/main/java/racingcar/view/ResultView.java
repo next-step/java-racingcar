@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.Race;
-import racingcar.RaceRecord;
+import racingcar.race.Race;
+import racingcar.race.RaceRecord;
 
 import java.util.List;
 

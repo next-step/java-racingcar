@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.race.Car;
+import racingcar.race.Race;
 import racingcar.rule.Rule;
 import racingcar.util.NumberGenerator;
 import racingcar.view.InputView;

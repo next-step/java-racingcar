@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.race;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.race.Car;
+import racingcar.race.Race;
 import racingcar.rule.MinimumRule;
 import racingcar.util.BasicNumberGenerator;
 

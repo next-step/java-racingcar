@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.race;
 
 import racingcar.rule.Rule;
 import racingcar.util.NumberGenerator;
