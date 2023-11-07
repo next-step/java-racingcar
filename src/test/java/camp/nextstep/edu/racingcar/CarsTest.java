@@ -35,7 +35,7 @@ public class CarsTest {
         RoundResult roundResult2 = cars.drive();
 
         // then
-        assertThat(roundResult1.toString()).isEqualTo("\n\n");
-        assertThat(roundResult2.toString()).isEqualTo("\n\n");
+        assertThat(roundResult1.toString()).isEqualTo('\n');
+        assertThat(roundResult2.toString()).isEqualTo('\n');
     }
 }
