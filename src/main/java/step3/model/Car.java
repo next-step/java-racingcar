@@ -6,19 +6,16 @@ public class Car {
 
     private static final String MOVE = "-";
 
-    private Moving moving;
+    private String movingDistance = "";
 
-    public Car(Moving moving) {
-        this.moving = moving;
+    public void move(int number) {
+       if (number >= 4) {
+           movingDistance += MOVE;
+       }
     }
 
-    public String moving(int randomMovingNumber) {
-        moving.move(randomMovingNumber);
-        return moving.getMove();
+    public String getMovingDistance() {
+        return movingDistance;
     }
 
-    public int getRandomMovingNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
 }
