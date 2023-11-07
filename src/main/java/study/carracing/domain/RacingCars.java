@@ -14,9 +14,7 @@ public class RacingCars {
         return cars;
     }
 
-    public void move(int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            cars.forEach(Car::move);
-        }
+    public void move() {
+        cars.forEach(Car::move);
     }
 }
