@@ -2,6 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.RacingGame;
 
 import java.util.List;
 
@@ -20,7 +22,9 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(cars, NUMBER_OF_TRY);
 
         // when
-        game.play();
+        for (int round = 1; !game.isEnd(round); round++) {
+            game.playRound();
+        }
 
         // then
         assertThat(cars).allSatisfy(car -> {

@@ -1,10 +1,9 @@
-package step3;
+package step3.domain;
 
 import step3.util.RandomUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -21,26 +20,16 @@ public class RacingGame {
         this.totalRound = numberOfTry;
     }
 
-    public void play() {
-        ResultView.printResultInfoMessage();
-        playAllRound();
-        ResultView.printWinner(winnerNames());
+    public boolean isEnd(int round) {
+        return this.totalRound == round;
     }
 
-    private void playAllRound() {
-        IntStream.range(0, this.totalRound).forEach(round -> playRound());
+    public void playRound() {
+        this.cars.stream()
+            .forEach(car -> car.move(randomUtil.random()));
     }
 
-    private void playRound() {
-        moveAllCar();
-        ResultView.printRoundResult(this.cars);
-    }
-
-    private void moveAllCar() {
-        this.cars.stream().forEach(car -> car.move(randomUtil.random()));
-    }
-
-    private List<String> winnerNames() {
+    public List<String> winnerNames() {
         return this.cars.stream()
             .filter(car -> isMaxPosition(car))
             .map(Car::name)
@@ -56,6 +45,10 @@ public class RacingGame {
             .mapToInt(Car::position)
             .max()
             .orElse(DEFAULT_POSITION);
+    }
+
+    public List<Car> cars() {
+        return this.cars;
     }
 
 }
