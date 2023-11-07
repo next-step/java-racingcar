@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.game.RacingGame;
+import racingcar.domain.game.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -11,7 +12,7 @@ public class RacingGameController {
 
         RacingGame racingGame = new RacingGame(carCount, totalGameCont);
         while (!racingGame.isEndGame()) {
-            racingGame.startRacing();
+            racingGame.startRacing(new RandomMoveStrategy());
             ResultView.printResult(racingGame.getCars());
         }
     }

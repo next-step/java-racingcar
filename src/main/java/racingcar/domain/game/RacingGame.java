@@ -11,17 +11,15 @@ import java.util.stream.Stream;
 
 public class RacingGame {
     private final RoundInfo roundInfo;
-    private final MoveStrategy moveStrategy;
     private final Cars cars;
 
     public RacingGame(int carCount, int totalGameCount) {
         this.roundInfo = new RoundInfo(totalGameCount);
-        this.moveStrategy = new RandomMoveStrategy();
         this.cars = createCars(carCount);
     }
 
-    public void startRacing() {
-        this.cars.move(this.moveStrategy);
+    public void startRacing(MoveStrategy moveStrategy) {
+        this.cars.move(moveStrategy);
         this.roundInfo.increaseRound();
     }
 
