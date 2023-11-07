@@ -14,6 +14,10 @@ public class Car {
         return carPosition.getDistance();
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
     public void game(int randomNumber) {
         if(isMovableForwardNumber(randomNumber)) {
             carPosition.incrementDistance();
