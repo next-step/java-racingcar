@@ -22,12 +22,12 @@ public class RacingTest {
         String inputNames = "test1,test2,test3";
 
         // when
-        List<Car> participatingCars = Racing.enroll(inputNames);
+        ParticipatingCars participatingCars = new ParticipatingCars(inputNames);
 
         // then
-        assertThat(participatingCars.size()).isEqualTo(3);
-        for (int i = 0; i < participatingCars.size(); ++i) {
-            assertThat(participatingCars.get(i).name()).isEqualTo("test" + (i + 1));
+        assertThat(participatingCars.numberOfCars()).isEqualTo(3);
+        for (int i = 0; i < participatingCars.numberOfCars(); ++i) {
+            assertThat(participatingCars.cars().get(i).name()).isEqualTo("test" + (i + 1));
         }
     }
 

@@ -12,20 +12,8 @@ public class Racing {
     private ParticipatingCars participatingCars;
     private int attemptCount;
 
-    public static List<Car> enroll(String names) {
-        String[] enrolledList = names.split(",");
-        List<Car> cars = new ArrayList<>();
-        for (String name : enrolledList) {
-            cars.add(new Car(name, 0));
-        }
-        return cars;
-    }
-
-    public Racing(List<Car> cars, int attemptCount) {
-        this.participatingCars = new ParticipatingCars();
-        for (Car car : cars) {
-            this.participatingCars.join(car);
-        }
+    public Racing(ParticipatingCars participatingCars, int attemptCount) {
+        this.participatingCars = participatingCars;
         this.attemptCount = attemptCount;
     }
 
