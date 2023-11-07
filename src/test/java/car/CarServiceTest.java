@@ -1,7 +1,6 @@
 package car;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -16,6 +15,5 @@ public class CarServiceTest {
     void 자동창_생성_크기(int number) {
         assertThat(generate(number)).hasSize(number);
     }
-
 
 }

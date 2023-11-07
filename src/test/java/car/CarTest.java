@@ -32,6 +32,4 @@ public class CarTest {
         assertThat(car.currentPosition()).isEqualTo(initPosition);
     }
 
-
-
 }
