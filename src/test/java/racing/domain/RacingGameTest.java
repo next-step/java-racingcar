@@ -27,6 +27,23 @@ class RacingGameTest {
         assertThat(racingGame.getGameCount()).isEqualTo(3);
     }
 
+    @DisplayName("생성된 레이싱 게임의 초기 자동차 이동거리는 0 이다.")
+    @Test
+    void first_car_position_is_zero_success() {
+        // given
+        int carCount = 5;
+        int gameCount = 1;
+
+        // when
+        RacingGame racingGame = new RacingGame(carCount, gameCount);
+
+        // then
+        assertThat(racingGame.getCarCount()).isEqualTo(5);
+        assertThat(racingGame.getGameCount()).isEqualTo(1);
+        assertThat(racingGame.getRacingCars()).extracting("position")
+                .containsOnly(0);
+    }
+
     @DisplayName("입력받은 자동차 대수만큼 자동차를 생성한다.")
     @ParameterizedTest
     @ValueSource(ints = {3, 4, 5})
@@ -35,7 +52,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(input, 5);
 
         // when
-        List<Car> racingCarList = racingGame.getRacingCar();
+        List<Car> racingCarList = racingGame.getRacingCars();
 
         // then
         assertThat(racingCarList).hasSize(input);
@@ -48,7 +65,7 @@ class RacingGameTest {
         CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random(), 3);
         RacingGame racingGame = new RacingGame(1, 5, carMoveStrategy);
 
-        List<Car> racingCar = racingGame.getRacingCar();
+        List<Car> racingCar = racingGame.getRacingCars();
         Car car = racingCar.get(0);
 
         // when
@@ -69,7 +86,7 @@ class RacingGameTest {
         racingGame.doRacing();
 
         // then
-        assertThat(racingGame.getRacingCar()).hasSize(3)
+        assertThat(racingGame.getRacingCars()).hasSize(3)
                 .extracting(Car::getPosition)
                 .containsExactly(0, 0, 0);
     }

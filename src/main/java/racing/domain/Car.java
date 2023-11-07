@@ -13,12 +13,12 @@ public class Car {
     }
 
     public void move(int input) {
-        if (validateInput(input)) {
+        if (isMovable(input)) {
             this.position++;
         }
     }
 
-    private boolean validateInput(int input) {
+    private boolean isMovable(int input) {
         return input >= MOVE_THRESHOLD;
     }
 }

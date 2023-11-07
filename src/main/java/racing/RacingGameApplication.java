@@ -2,6 +2,7 @@ package racing;
 
 import racing.domain.RacingGame;
 import racing.view.InputView;
+import racing.view.ResultView;
 
 public class RacingGameApplication {
 
@@ -10,6 +11,11 @@ public class RacingGameApplication {
         int gameCount = InputView.generateGameCountQuestion();
 
         RacingGame racingGame = new RacingGame(carCount, gameCount);
-        racingGame.doRacing();
+
+        while (racingGame.isProgress()) {
+            racingGame.doRacing();
+            ResultView.getProgress(racingGame);
+        }
+
     }
 }
