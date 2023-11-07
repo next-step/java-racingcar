@@ -28,7 +28,7 @@ public class Car {
         return currentPosition == position;
     }
 
-    public void positionPrint() {
-        ResultView.positionPrint(currentPosition);
-    }
+    public int currentPosition() {
+        return currentPosition;
+    };
 }
