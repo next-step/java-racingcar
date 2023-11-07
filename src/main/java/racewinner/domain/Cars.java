@@ -1,4 +1,4 @@
-package racewinner;
+package racewinner.domain;
 
 import racewinner.expteion.CarNameTooLongException;
 import racewinner.strategy.MoveStrategy;

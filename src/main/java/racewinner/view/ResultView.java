@@ -1,6 +1,4 @@
-package racewinner.ui;
-
-import racewinner.Car;
+package racewinner.view;
 
 import java.util.List;
 

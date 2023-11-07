@@ -1,10 +1,10 @@
-package racewinner;
+package racewinner.domain;
 
 import racewinner.expteion.InvalidDelimiterException;
 import racewinner.expteion.InputEmptyException;
 import racewinner.expteion.NegativeNumberException;
 import racewinner.strategy.MoveStrategy;
-import racewinner.ui.ResultView;
+import racewinner.view.ResultView;
 
 import java.util.List;
 

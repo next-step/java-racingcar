@@ -1,7 +1,8 @@
-package racewinner;
+package racewinner.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racewinner.domain.Cars;
 import racewinner.expteion.CarNameTooLongException;
 
 import java.util.List;

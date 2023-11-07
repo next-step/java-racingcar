@@ -1,10 +1,10 @@
-package racewinner;
+package racewinner.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racewinner.domain.CarRacing;
 import racewinner.expteion.InputEmptyException;
 import racewinner.expteion.InvalidDelimiterException;
-import racewinner.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

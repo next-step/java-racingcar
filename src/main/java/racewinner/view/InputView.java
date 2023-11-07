@@ -1,4 +1,4 @@
-package racewinner.ui;
+package racewinner.view;
 
 import java.util.Scanner;
 

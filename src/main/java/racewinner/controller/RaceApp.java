@@ -1,8 +1,9 @@
-package racewinner;
+package racewinner.controller;
 
 
+import racewinner.domain.CarRacing;
 import racewinner.strategy.RandomMoveStrategy;
-import racewinner.ui.InputView;
+import racewinner.view.InputView;
 
 public class RaceApp {
     public static void main(String[] args) {
