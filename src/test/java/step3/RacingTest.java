@@ -2,8 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,18 +13,30 @@ class RacingTest {
 
     @Test
     void assertRecordAndRound() {
-        Racing newGame = new Racing(new int[5], 2, random);
+        Racing newGame = new Racing();
+        newGame.gameSetup(5,2, random);
 
-        assertThat(newGame.record.length).isEqualTo(5);
+        assertThat(newGame.cars.size()).isEqualTo(5);
         assertThat(newGame.round).isEqualTo(2);
     }
 
     @Test
     void assertStartGame() {
-        Racing newGame = new Racing(new int[5], 2, random);
-        assertThat(Arrays.stream(newGame.record).sum()).isEqualTo(0);
+        Racing newGame = new Racing();
+        newGame.gameSetup(5,2, random);
+        AtomicInteger sumBeforeStartGame = new AtomicInteger();
+        AtomicInteger sumAfterStartGame = new AtomicInteger();
+
+        newGame.cars.forEach(car -> {
+            sumBeforeStartGame.set(+car.index);
+        });
+
+        assertThat(sumBeforeStartGame.get()).isEqualTo(0);
 
         newGame.startGame();
-        assertThat(Arrays.stream(newGame.record).sum()).isGreaterThan(0);
+        newGame.cars.forEach(car -> {
+            sumAfterStartGame.addAndGet(1);
+        });
+        assertThat(sumAfterStartGame.get()).isGreaterThan(0);
     }
 }

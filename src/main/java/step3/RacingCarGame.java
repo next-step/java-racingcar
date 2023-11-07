@@ -12,7 +12,9 @@ public class RacingCarGame {
         int numAttempt = input.get(1);
         Random random = new Random();
 
-        Racing racingGame = new Racing(new int[numCar], numAttempt, random);
+        Racing racingGame = new Racing();
+        racingGame.gameSetup(numCar, numAttempt, random);
+
         racingGame.startGame();
     }
 }

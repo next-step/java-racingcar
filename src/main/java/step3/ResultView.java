@@ -1,9 +1,11 @@
 package step3;
 
+import java.util.List;
+
 public class ResultView {
-    public static void display(int[] record) {
-        for (int i = 0; i < record.length; i++) {
-            System.out.println("-".repeat(record[i]));
+    public static void display(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println("-".repeat(cars.get(i).index));
         }
     }
 }
