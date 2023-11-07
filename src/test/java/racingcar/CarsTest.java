@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.movablestrategy.MoveStrategy;
+import racingcar.movablestrategy.PauseStrategy;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -28,5 +30,32 @@ class CarsTest {
         for (String name : racerNames) {
             assertThat(cars.isParticipate(name)).isTrue();
         }
+    }
+
+    @DisplayName("가장 빠른사람이 한 명 일떄 이름을 리턴한다.")
+    @Test
+    void Cars_가장_빠른_레이서() {
+        Car movableCar = new Car("a", new MoveStrategy());
+        movableCar.move();
+        Car pauseCar = new Car("b", new PauseStrategy());
+        Cars cars = new Cars();
+        cars.add(movableCar);
+        cars.add(pauseCar);
+
+        assertThat(cars.mostFastest()).isEqualTo("a");
+    }
+
+    @DisplayName("가장 빠른사람이 한 명 이상일떄 이름을 쉼표(,)로 구분해서 리턴한다.")
+    @Test
+    void Cars_가장_빠른_레이서들() {
+        Car movableCar = new Car("a", new MoveStrategy());
+        movableCar.move();
+        Car pauseCar = new Car("b", new MoveStrategy());
+        pauseCar.move();
+        Cars cars = new Cars();
+        cars.add(movableCar);
+        cars.add(pauseCar);
+
+        assertThat(cars.mostFastest()).isEqualTo("a,b");
     }
 }
