@@ -1,6 +1,7 @@
 package study.carracing.domain;
 
 import java.util.List;
+import study.carracing.util.RandomNumberGenerator;
 
 public class RacingCars {
 
@@ -15,6 +16,8 @@ public class RacingCars {
     }
 
     public void move() {
-        cars.forEach(Car::move);
+        for (Car car : cars) {
+            car.move(new RandomNumberGenerator().generatorNumber());
+        }
     }
 }

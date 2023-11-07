@@ -5,12 +5,9 @@ import java.util.List;
 import study.carracing.domain.Car;
 import study.carracing.domain.RacingCars;
 import study.carracing.ui.ResultView;
-import study.carracing.util.NumberMoveStrategy;
-import study.carracing.util.RandomNumberGenerator;
 
 public class RacingController {
 
-    public static final int MOVE_CONDITION_NUMBER = 4;
     private RacingCars racingCars;
 
     public void start(int carCount, int tryCount) {
@@ -29,7 +26,7 @@ public class RacingController {
     private RacingCars addRacingCars(int carCount) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(new NumberMoveStrategy(new RandomNumberGenerator(), MOVE_CONDITION_NUMBER)));
+            cars.add(new Car());
         }
 
         return new RacingCars(cars);

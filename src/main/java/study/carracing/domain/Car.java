@@ -1,26 +1,14 @@
 package study.carracing.domain;
 
-import study.carracing.util.MoveStrategy;
-
 public class Car {
 
-    private static final int INITIAL_POSITION = 1;
     private static final String PROGRESS_DASH = "-";
+    private static final int MOVE_CONDITION_NUMBER = 4;
 
-    private int position;
-    private MoveStrategy moveStrategy;
+    private int position = 1;
 
-    public Car(MoveStrategy moveStrategy) {
-        this.position = INITIAL_POSITION;
-        this.moveStrategy = moveStrategy;
-    }
-
-    public void setMoveStrategy(MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-    }
-
-    public void move() {
-        if (moveStrategy.canMove()) {
+    public void move(int value) {
+        if (value >= MOVE_CONDITION_NUMBER) {
             position += 1;
         }
     }
