@@ -26,9 +26,9 @@ public class Cars {
 
     public void race(int roundCount) {
         for (int i = 0; i < roundCount; i++) {
-            for (int j = 0; j < cars.size(); j++) {
-                cars.get(j).move();
-                cars.get(j).positionPrint();
+            for(Car car : cars) {
+                car.move();
+                car.positionPrint();
             }
             ResultView.roundFinish();
         }
