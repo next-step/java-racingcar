@@ -76,20 +76,25 @@ public class Racing {
             List<Car> winners = new ArrayList<>();
             Position position = new Position(INIT_POSITION);
             for (Car car : this.participatingCars) {
-                switch (position.compareTo(car.position())) {
-                    case 0:// 같을 때
-                        winners.add(car);
-                        break;
-                    case 1:// 새로운 자동차가 더 앞에 있을 때
-                        winners.clear();
-                        winners.add(car);
-                        position = new Position(car.position().position());
-                        break;
-                    default:
-                        break;
-                }
+                position = checkWinner(winners, position, car);
             }
             return winners;
+        }
+
+        private static Position checkWinner(List<Car> winners, Position position, Car car) {
+            switch (position.compareTo(car.position())) {
+                case 0:// 같을 때
+                    winners.add(car);
+                    break;
+                case 1:// 새로운 자동차가 더 앞에 있을 때
+                    winners.clear();
+                    winners.add(car);
+                    position = new Position(car.position().position());
+                    break;
+                default:
+                    break;
+            }
+            return position;
         }
     }
 }
