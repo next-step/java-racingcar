@@ -17,7 +17,7 @@ public class RacingCarTests {
     @ValueSource(ints = {3})
     @DisplayName("랜덤으로 뽑혔던 숫자가 4보다 작을 경우 false를 반환한다.")
     void canRaceStart(int times) {
-        assertThat(Cars.isMovable(times)).isFalse();
+        assertThat(Car.isMovable(times)).isFalse();
     }
 
     @ParameterizedTest
@@ -47,9 +47,9 @@ public class RacingCarTests {
     @DisplayName("4 이상의 랜덤숫자가 나왔다면 자동차를 1칸 전진시킨다.")
     void carMoves(int cars, int randomValue) {
         String[] board = new RaceBoard(cars).generate();
-        assertThat(Cars.isMovable(randomValue)).isTrue();
+        assertThat(Car.isMovable(randomValue)).isTrue();
 
-        String carMoved = new Cars(board[cars- 1]).go();
+        String carMoved = new Car(board[cars- 1]).go();
         assertThat(carMoved).isEqualTo("--");
     }
 
@@ -58,7 +58,7 @@ public class RacingCarTests {
     @DisplayName("4보다 작은 랜덤숫자가 나왔다면 자동차를 전진시키지 않는다.")
     void carDoNotMove(int cars, int randomValue) {
         String[] board = new RaceBoard(cars).generate();
-        assertThat(Cars.isMovable(randomValue)).isFalse();
+        assertThat(Car.isMovable(randomValue)).isFalse();
 
         assertThat(Arrays.toString(board)).isEqualTo("[-, -]");
     }

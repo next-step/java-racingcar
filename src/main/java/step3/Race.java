@@ -12,8 +12,8 @@ public class Race {
 
         for (int time = 1; time <= times; time++) {
             for (int car = 1; car <= cars; car++) {
-                if (Cars.isMovable(getRandomValue())) {
-                    board[car - 1] = new Cars(board[car - 1]).go();
+                if (Car.isMovable(getRandomValue())) {
+                    board[car - 1] = new Car(board[car - 1]).go();
                 }
             }
 

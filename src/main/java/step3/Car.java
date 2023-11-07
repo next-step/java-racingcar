@@ -1,11 +1,11 @@
 package step3;
 
-public class Cars {
+public class Car {
 
     private static final int MINIMUM_RANDOM_VALUE = 4;
     private final String currentStatus;
 
-    public Cars(String currentStatus) {
+    public Car(String currentStatus) {
         this.currentStatus = currentStatus;
     }
 
