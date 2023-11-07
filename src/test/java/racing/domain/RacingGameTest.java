@@ -12,19 +12,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-    @DisplayName("횟수와 자동차 대수를 입력받아 레이싱 게임을 생성한다.")
+    // 무조건 전진하는 이동전략
+    private final TestMoveStrategy testMoveStrategy = new TestMoveStrategy(new Random());
+
+
+    @DisplayName("횟수와 자동차 대수를 입력받아 레이싱 게임을 생성한다. 자동차는 게임을 수행하면 전진한다.")
     @Test
     void create_racing_success() {
         // given
         int carCount = 5;
-        int gameCount = 3;
+        int gameCount = 1;
 
         // when
-        RacingGame racingGame = new RacingGame(carCount, gameCount);
+        RacingGame racingGame = new RacingGame(carCount, gameCount, testMoveStrategy);
 
         // then
-        assertThat(racingGame.getCarCount()).isEqualTo(5);
-        assertThat(racingGame.getGameCount()).isEqualTo(3);
+        racingGame.doRacing();
+
+        assertThat(racingGame.getGameCount()).isEqualTo(1);
+        assertThat(racingGame.getRacingCars()).extracting("position").containsOnly(1);
     }
 
     @DisplayName("생성된 레이싱 게임의 초기 자동차 이동거리는 0 이다.")
@@ -38,7 +44,6 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(carCount, gameCount);
 
         // then
-        assertThat(racingGame.getCarCount()).isEqualTo(5);
         assertThat(racingGame.getGameCount()).isEqualTo(1);
         assertThat(racingGame.getRacingCars()).extracting("position")
                 .containsOnly(0);
@@ -58,23 +63,6 @@ class RacingGameTest {
         assertThat(racingCarList).hasSize(input);
     }
 
-    @DisplayName("자동차에 선택한 전략으로 게임을 수행한다.")
-    @Test
-    void do_game_sucess() {
-        // given
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random(), 3);
-        RacingGame racingGame = new RacingGame(1, 5, carMoveStrategy);
-
-        List<Car> racingCar = racingGame.getRacingCars();
-        Car car = racingCar.get(0);
-
-        // when
-        racingGame.doGame(car);
-
-        // then
-        assertThat(car.getPosition()).isZero();
-    }
-
     @DisplayName("설정한 게임횟수만큼 게임을 수행한다.")
     @Test
     void do_race_success() {
@@ -89,5 +77,16 @@ class RacingGameTest {
         assertThat(racingGame.getRacingCars()).hasSize(3)
                 .extracting(Car::getPosition)
                 .containsExactly(0, 0, 0);
+    }
+
+    static class TestMoveStrategy extends CarMoveStrategy {
+        public TestMoveStrategy(Random random) {
+            super(random);
+        }
+
+        @Override
+        public int getResult() {
+            return 5;
+        }
     }
 }

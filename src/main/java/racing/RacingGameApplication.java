@@ -14,7 +14,7 @@ public class RacingGameApplication {
 
         while (racingGame.isProgress()) {
             racingGame.doRacing();
-            ResultView.getProgress(racingGame);
+            ResultView.printProgressView(racingGame);
         }
 
     }

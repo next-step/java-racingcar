@@ -11,7 +11,7 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void getProgress(RacingGame racingGame) {
+    public static void printProgressView(RacingGame racingGame) {
         List<Car> racingCarList = racingGame.getRacingCars();
         racingCarList.forEach(o -> printProgress(o.getPosition()));
     }
