@@ -20,13 +20,13 @@ public class Car {
 	private void checkNameLengthIsValid(String name) {
 		if (isNameLengthInvalid(name)) {
 			throw new IllegalArgumentException(
-					String.format("이름은 %d자를 초과할 수 없습니다", NAME_LENGTH_MAX)
+					String.format("이름은 %d ~ %d 자리이어야 합니다", NAME_LENGTH_MIN, NAME_LENGTH_MAX)
 			);
 		}
 	}
 
 	private boolean isNameLengthInvalid(String name) {
-		return name == null || name.length() <= NAME_LENGTH_MIN || name.length() >= NAME_LENGTH_MAX;
+		return name == null || name.length() < NAME_LENGTH_MIN || name.length() > NAME_LENGTH_MAX;
 	}
 
 	public void move(MovingStrategy movingStrategy) {

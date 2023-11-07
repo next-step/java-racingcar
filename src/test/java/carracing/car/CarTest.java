@@ -45,12 +45,37 @@ public class CarTest {
 	}
 
 	@Test
+	void newObject_nameLengthLessThanMin_throwException() {
+		final String carNameWithLessThanMin = "a".repeat(Math.max(0, CAR_NAME_MIN_LENGTH)).substring(0, 0);
+
+		assertThatThrownBy(
+				() -> new Car(carNameWithLessThanMin)
+		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
 	void newObject_nameLengthMoreThanMax_throwException() {
-		String carNameWithMoreThanMax = "a".repeat(Math.max(0, CAR_NAME_MAX_LENGTH)) + "a";
+		final String carNameWithMoreThanMax = "a".repeat(Math.max(0, CAR_NAME_MAX_LENGTH)) + "a";
 
 		assertThatThrownBy(
 				() -> new Car(carNameWithMoreThanMax)
 		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	void newObject_nameLengthMin_throwException() {
+		final String carNameWithMinLength = "a".repeat(Math.max(0, CAR_NAME_MIN_LENGTH));
+		Car car = new Car(carNameWithMinLength);
+
+		assertThat(car.name()).isEqualTo(carNameWithMinLength);
+	}
+
+	@Test
+	void newObject_nameLengthMax_throwException() {
+		final String carNameWithMaxLength = "a".repeat(Math.max(0, CAR_NAME_MAX_LENGTH));
+		Car car = new Car(carNameWithMaxLength);
+
+		assertThat(car.name()).isEqualTo(carNameWithMaxLength);
 	}
 
 	@ParameterizedTest
