@@ -39,6 +39,8 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        return "-".repeat(distanceTraveled);
+        final String result = "-".repeat(distanceTraveled);
+        
+        return carName + " : " + result;
     }
 }
