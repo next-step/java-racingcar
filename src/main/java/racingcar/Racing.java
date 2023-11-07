@@ -1,6 +1,6 @@
-package racingCar;
+package racingcar;
 
-import racingCar.movableStrategy.RandomStrategy;
+import racingcar.movablestrategy.RandomStrategy;
 
 public class Racing {
     public static final int MINIMUM_CAR_COUNT = 2;

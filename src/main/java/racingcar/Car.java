@@ -1,7 +1,7 @@
-package racingCar;
+package racingcar;
 
-import racingCar.movableStrategy.MovableStrategy;
-import racingCar.movableStrategy.RandomStrategy;
+import racingcar.movablestrategy.MovableStrategy;
+import racingcar.movablestrategy.RandomStrategy;
 
 public class Car {
     public static final int INITIAL_POSITION = 0;

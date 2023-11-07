@@ -1,4 +1,4 @@
-package racingCar.movableStrategy;
+package racingcar.movablestrategy;
 
 public class ParameterStrategy implements MovableStrategy{
     private int moveCondition;

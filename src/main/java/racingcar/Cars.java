@@ -1,6 +1,6 @@
-package racingCar;
+package racingcar;
 
-import racingCar.movableStrategy.MovableStrategy;
+import racingcar.movablestrategy.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
