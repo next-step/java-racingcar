@@ -44,7 +44,6 @@ class RacingGameTest {
             assertThat(this.racingGame.isEndGame()).isFalse();
         }
 
-
         @Test
         @DisplayName(",로 구분된 '엄태권,OWEN,서버마법사'로 게임을 생성시 자동차는 3대가 된다.")
         void createCar_3대() {

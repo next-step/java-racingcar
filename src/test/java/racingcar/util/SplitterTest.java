@@ -28,5 +28,4 @@ class SplitterTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("최소 한 글자 이상을 입력해야 합니다.");
     }
-
 }
