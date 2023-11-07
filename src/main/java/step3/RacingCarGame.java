@@ -13,7 +13,7 @@ public class RacingCarGame {
         Random random = new Random();
 
         Racing racingGame = new Racing();
-        racingGame.gameSetup(numCar, numAttempt, random);
+        racingGame.setupGame(numCar, numAttempt, random);
 
         racingGame.startGame();
     }

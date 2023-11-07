@@ -9,7 +9,7 @@ public class Racing {
     int round;
     Random random;
 
-    public void gameSetup(int numCar, int round, Random random) {
+    public void setupGame(int numCar, int round, Random random) {
         this.round = round;
         this.random = random;
         for (int i = 0; i < numCar ; i++) {

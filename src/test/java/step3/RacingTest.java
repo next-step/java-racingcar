@@ -12,9 +12,9 @@ class RacingTest {
     private Random random = new Random();
 
     @Test
-    void assertRecordAndRound() {
+    void assertGameSetup() {
         Racing newGame = new Racing();
-        newGame.gameSetup(5,2, random);
+        newGame.setupGame(5,2, random);
 
         assertThat(newGame.cars.size()).isEqualTo(5);
         assertThat(newGame.round).isEqualTo(2);
@@ -23,7 +23,7 @@ class RacingTest {
     @Test
     void assertStartGame() {
         Racing newGame = new Racing();
-        newGame.gameSetup(5,2, random);
+        newGame.setupGame(5,2, random);
         AtomicInteger sumBeforeStartGame = new AtomicInteger();
         AtomicInteger sumAfterStartGame = new AtomicInteger();
 
