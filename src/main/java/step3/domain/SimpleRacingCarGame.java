@@ -13,7 +13,7 @@ public class SimpleRacingCarGame {
 
         public List<Car> joinCars() {
                 return IntStream.range(0, carCnt).mapToObj(id -> new Car())
-                    .collect(Collectors.toList());
+                        .collect(Collectors.toList());
         }
 
         public void moveOneRound(List<Car> cars) {
