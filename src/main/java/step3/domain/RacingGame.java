@@ -1,27 +1,43 @@
 package step3.domain;
 
-import java.util.ArrayList;
+import step3.utils.NumberGenerator;
+import step3.utils.RandomNumberGenerator;
+
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGame {
 
-    private final List<Round> rounds;
-    private final Cars cars;
+    private int racingCarNumber;
+    private int tryCountNumber;
+    private List<Round> rounds;
+    private Cars cars;
 
     public RacingGame(final int racingCarNumber, final int tryCountNumber) {
+        this.racingCarNumber = racingCarNumber;
+        this.tryCountNumber = tryCountNumber;
         this.cars = new Cars(CarFactory.createCars(racingCarNumber));
-        this.rounds = new ArrayList<>();
-
-        for (int i = 0; i < tryCountNumber; i++) {
-            rounds.add(new Round(cars));
-        }
+        this.rounds = createRounds(tryCountNumber);
     }
 
     public void play() {
-        for (Round round : rounds) {
+        rounds.stream().forEach(round -> {
             round.playRound(cars);
-            round.printRoundResults();
-        }
+            cars = round.getRoundCarStatus().copyCars();
+        });
+    }
+
+    public List<Round> getRounds() {
+        return Collections.unmodifiableList(rounds);
+    }
+
+    private List<Round> createRounds(final int tryCountNumber) {
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        return Stream.generate(() -> new Round(cars, numberGenerator))
+                .limit(tryCountNumber)
+                .collect(Collectors.toList());
     }
 
 }

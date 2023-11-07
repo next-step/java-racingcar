@@ -1,6 +1,9 @@
 package step3.view;
 
 import step3.domain.Car;
+import step3.domain.Round;
+
+import java.util.List;
 
 public class ResultView {
 
@@ -11,11 +14,24 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public void printCurrentCarPosition(final Car car) {
-        System.out.println(addCarPosition(car.getPosition()));
+    public void printRacingResults(final List<Round> rounds) {
+        for (Round round : rounds) {
+            printRoundResults(round);
+            System.out.println();
+        }
     }
 
-    public String addCarPosition(final int carPosition) {
+    private void printRoundResults(Round round) {
+        round.getRoundCarStatus().getCars().forEach(car -> {
+            printCurrentCarPosition(car);
+        });
+    }
+
+    private void printCurrentCarPosition(final Car car) {
+        System.out.println(buildCarPosition(car.getCarPosition()));
+    }
+
+    private String buildCarPosition(final int carPosition) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < carPosition; i++) {
             result.append(CAR_POSITION_MODEL);

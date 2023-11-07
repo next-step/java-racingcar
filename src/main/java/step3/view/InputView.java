@@ -10,19 +10,22 @@ public class InputView {
 
     public int inputRacingCarCount() {
         System.out.println(JOIN_RACING_CAR_INPUT_MESSAGE);
-        return validateInputNumber(scan.nextInt());
+        int inputRacingCarNumber = scan.nextInt();
+        validateInputNumber(inputRacingCarNumber);
+        return inputRacingCarNumber;
     }
 
     public int inputTryCount() {
         System.out.println(RACING_TRY_COUNT_INPUT_MESSAGE);
-        return validateInputNumber(scan.nextInt());
+        int inputTryCount = scan.nextInt();
+        validateInputNumber(inputTryCount);
+        return inputTryCount;
     }
 
-    private int validateInputNumber(final int inputNumber) {
+    private void validateInputNumber(final int inputNumber) {
         if (inputNumber <= 0) {
             throw new IllegalArgumentException("입력하신 값이 올바르지 않습니다. 다시 확인해주세요");
         }
-        return inputNumber;
     }
 
 }

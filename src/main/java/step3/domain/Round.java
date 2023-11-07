@@ -1,25 +1,25 @@
 package step3.domain;
 
 
-import step3.domain.Cars;
-import step3.view.ResultView;
+import step3.utils.NumberGenerator;
 
 public class Round {
 
     private Cars cars;
+    private NumberGenerator numberGenerator;
 
-    public Round(Cars cars) {
+    public Round(final Cars cars, final NumberGenerator numberGenerator) {
         this.cars = cars;
+        this.numberGenerator = numberGenerator;
     }
 
-    public void playRound(Cars cars) {
-        cars.moveForwardCars();
+    public void playRound(final Cars cars) {
+        this.cars = cars;
+        cars.moveForwardCars(numberGenerator);
     }
 
-    public void printRoundResults() {
-        ResultView resultView = new ResultView();
-        cars.getCars().stream()
-                .forEach(car -> resultView.printCurrentCarPosition(car));
-        System.out.println();
+    public Cars getRoundCarStatus() {
+        return cars;
     }
+
 }

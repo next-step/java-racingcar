@@ -1,6 +1,8 @@
 package step3.controller;
 
 import step3.domain.RacingGame;
+import step3.utils.NumberGenerator;
+import step3.utils.RandomNumberGenerator;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -16,6 +18,8 @@ public class RacingController {
 
         resultView.printResultMessage();
         racingGame.play();
+        resultView.printRacingResults(racingGame.getRounds());
+
     }
 
 }

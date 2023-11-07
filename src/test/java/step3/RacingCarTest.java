@@ -26,7 +26,7 @@ public class RacingCarTest {
     @DisplayName("생성된 자동차의 기본 포지션은 1 이어야 한다.")
     void initCarPositionIs1() {
         Car car = new Car();
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getCarPosition()).isEqualTo(1);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class RacingCarTest {
     void racingCarMoveForward(int value, int expected) {
         Car car = new Car();
         car.tryMove(value);
-        assertThat(car.getPosition()).isEqualTo(expected);
+        assertThat(car.getCarPosition()).isEqualTo(expected);
     }
 
 }
