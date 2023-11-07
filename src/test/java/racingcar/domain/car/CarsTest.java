@@ -28,12 +28,23 @@ class CarsTest {
 
 
     @Test
-    @DisplayName("자동차들을 모두 1칸씩 이동할 경우 모두 position은 1이된다.")
-    void moveCars() {
-        this.cars.move(() -> 1);
+    @DisplayName("랜덤한 숫자중 4이상의 숫자가 나오면 자동차가 1칸 움직인다.")
+    void moveCars_movable() {
+        this.cars.move(() -> true);
 
         List<Car> carList = this.cars.getCars();
         boolean allMatchResult = carList.stream().allMatch(car -> car.getPosition() == 1);
+
+        assertThat(allMatchResult).isTrue();
+    }
+
+    @Test
+    @DisplayName("랜덤한 숫자중 3이하의 숫자가 나오면 자동차가 움직이지 않는다.")
+    void moveCars_immovable() {
+        this.cars.move(() -> false);
+
+        List<Car> carList = this.cars.getCars();
+        boolean allMatchResult = carList.stream().allMatch(car -> car.getPosition() == 0);
 
         assertThat(allMatchResult).isTrue();
     }
