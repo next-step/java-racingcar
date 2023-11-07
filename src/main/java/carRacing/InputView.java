@@ -17,9 +17,10 @@ public class InputView {
 
 	public int getValidCount(String text) {
 		System.out.println(text);
-		if (sc.nextInt() < MINIMUM_NATURAL_NUM){
+		int count = sc.nextInt();
+		if(count < MINIMUM_NATURAL_NUM) {
 			throw new IllegalArgumentException("1 이상의 자연수를 입력해주세요.");
 		}
-		return sc.nextInt();
+		return count;
 	}
 }
