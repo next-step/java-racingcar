@@ -9,7 +9,8 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= 4) {
+        final int MOVE_CONDITION_NUMBER = 4;
+        if (number >= MOVE_CONDITION_NUMBER) {
             this.position++;
         }
     }
