@@ -5,6 +5,10 @@ public class Car {
     private int position;
     private final String name;
 
+    public static Car from(Car car) {
+        return new Car(car.getPosition(), car.getName());
+    }
+
     public Car(String name) {
         this(0, name);
     }

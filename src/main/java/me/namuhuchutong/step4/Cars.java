@@ -26,4 +26,15 @@ public class Cars {
             throw new IllegalArgumentException("자동차 수는 음수이거나 0일 수 없습니다. - " + numberOfCars);
         }
     }
+
+    public Cars raceAllCars() {
+        this.values.forEach(car -> car.move(4));
+        return new Cars(copyOf(this.values));
+    }
+
+    private List<Car> copyOf(List<Car> values) {
+        return values.stream()
+                     .map(Car::from)
+                     .collect(toUnmodifiableList());
+    }
 }
