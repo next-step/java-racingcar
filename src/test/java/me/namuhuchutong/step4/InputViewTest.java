@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import me.namuhuchutong.step4.dto.UserRequest;
+import me.namuhuchutong.step4.view.InputView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

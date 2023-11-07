@@ -1,7 +1,8 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import me.namuhuchutong.step4.dto.UserRequest;
 
 public class InputView {
 

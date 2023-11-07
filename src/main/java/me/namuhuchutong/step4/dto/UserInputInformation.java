@@ -1,4 +1,6 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.dto;
+
+import me.namuhuchutong.step4.domain.CarNames;
 
 public class UserInputInformation {
 

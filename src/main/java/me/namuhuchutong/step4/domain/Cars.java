@@ -1,8 +1,9 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.domain;
 
 import static java.util.stream.Collectors.*;
 
 import java.util.List;
+import me.namuhuchutong.step4.domain.rule.RacingRule;
 
 public class Cars {
 

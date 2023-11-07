@@ -1,4 +1,10 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.controller;
+
+import me.namuhuchutong.step4.domain.RacingCarService;
+import me.namuhuchutong.step4.dto.RacingResult;
+import me.namuhuchutong.step4.dto.UserInputInformation;
+import me.namuhuchutong.step4.view.InputView;
+import me.namuhuchutong.step4.view.OutputView;
 
 public class RacingCar {
 

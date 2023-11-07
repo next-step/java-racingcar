@@ -1,8 +1,11 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.view;
 
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
+import me.namuhuchutong.step4.domain.Car;
+import me.namuhuchutong.step4.domain.Cars;
+import me.namuhuchutong.step4.dto.RacingResult;
 
 public class OutputView {
 

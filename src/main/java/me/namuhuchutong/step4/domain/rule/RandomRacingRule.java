@@ -1,4 +1,4 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.domain.rule;
 
 import java.util.Random;
 

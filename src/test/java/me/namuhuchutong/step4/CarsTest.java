@@ -3,6 +3,8 @@ package me.namuhuchutong.step4;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.Collections;
+import me.namuhuchutong.step4.domain.CarNames;
+import me.namuhuchutong.step4.domain.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

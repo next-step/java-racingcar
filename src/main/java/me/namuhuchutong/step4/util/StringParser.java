@@ -1,4 +1,4 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.util;
 
 import java.util.List;
 import java.util.stream.Collectors;

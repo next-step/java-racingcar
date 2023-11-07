@@ -1,4 +1,6 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.domain;
+
+import me.namuhuchutong.step4.domain.rule.RacingRule;
 
 public class Car {
 
@@ -20,7 +22,7 @@ public class Car {
         this.name = name;
     }
 
-    void move(RacingRule racingRule) {
+    public void move(RacingRule racingRule) {
         if (racingRule.isSatisfiedRule()) {
             this.position += FORWARD_VALUE;
         }

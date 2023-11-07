@@ -1,6 +1,7 @@
-package me.namuhuchutong.step4;
+package me.namuhuchutong.step4.dto;
 
 import java.util.List;
+import me.namuhuchutong.step4.domain.Cars;
 
 public class RacingResult {
 

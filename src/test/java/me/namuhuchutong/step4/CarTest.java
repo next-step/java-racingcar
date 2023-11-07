@@ -2,6 +2,8 @@ package me.namuhuchutong.step4;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import me.namuhuchutong.step4.domain.Car;
+import me.namuhuchutong.step4.domain.rule.RacingRule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,7 +24,6 @@ class CarTest {
     void car_moves_only_one(int givenIterateNumber) {
         //given
         Car car = new Car("Tester");
-        int alwaysMoveCondition = 4;
 
         // when
         for (int i = 0; i < givenIterateNumber; i++) car.move(alwaysMoveRule);
