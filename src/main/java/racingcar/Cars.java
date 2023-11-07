@@ -13,6 +13,12 @@ public class Cars {
             cars.add(new Car());
         }
     }
+    public Cars(String racerNames) {
+        String[] names = RacerNameValidator.splitByComma(racerNames);
+        for(String name : names) {
+            cars.add(new Car(name));
+        }
+    }
 
     public Cars(int carCount, MovableStrategy movableStrategy) {
         for (int i = 0; i < carCount; i++) {
@@ -32,5 +38,18 @@ public class Cars {
             }
             ResultView.roundFinish();
         }
+    }
+
+    public int size() {
+        return cars.size();
+    }
+
+    public boolean isParticipate(String racerName) {
+        for(Car car : cars) {
+            if (car.racerName().equals(racerName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
