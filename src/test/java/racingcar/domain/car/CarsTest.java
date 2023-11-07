@@ -16,12 +16,12 @@ class CarsTest {
 
     @BeforeEach
     void init() {
-        List<Car> carList = Arrays.asList(new Car("엄태권"), new Car("OWEN"), new Car("TEST"));
-        this.cars = new Cars(carList);
+        List<Car> testCars = Arrays.asList(new Car("엄태권", 0), new Car("OWEN", 0), new Car("TEST", 0));
+        this.cars = new Cars(testCars);
     }
 
     @Test
-    @DisplayName("입력한 자동차들의 이름을 ,로 구분하여 생성시 해당 수만큼 자동차가 생성된다.")
+    @DisplayName("생성한 Car의 갯수만큼 Cars에 생성된 carList에 추가된다.")
     void createCars() {
         assertThat(this.cars.getCars()).hasSize(3);
     }
@@ -56,5 +56,14 @@ class CarsTest {
 
         assertThatThrownBy(carList::clear)
                 .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    @DisplayName("경기중 가장 많은 위치를 움직인 자동차의 이름들을 반환한다.")
+    void findWinner() {
+        List<Car> testCars = Arrays.asList(new Car("엄태권", 1), new Car("OWEN", 3), new Car("TEST", 3));
+        Cars cars = new Cars(testCars);
+
+        assertThat(cars.getWinners()).contains("TEST", "OWEN");
     }
 }

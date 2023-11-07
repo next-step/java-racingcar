@@ -27,6 +27,10 @@ public class RacingGame {
         return this.roundInfo.isEndGame();
     }
 
+    public List<String> getWinners() {
+        return this.cars.getWinners();
+    }
+
     public Cars getCars() {
         return this.cars;
     }

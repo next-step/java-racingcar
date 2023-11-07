@@ -15,5 +15,6 @@ public class RacingGameController {
             racingGame.startRacing(new RandomMoveStrategy());
             ResultView.printRacing(racingGame.getCars());
         }
+        ResultView.printWinners(racingGame.getWinners());
     }
 }
