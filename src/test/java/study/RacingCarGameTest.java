@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -18,9 +20,9 @@ public class RacingCarGameTest {
     @DisplayName("4대의 차량이 3번 래이싱 테스트")
     void creatCar_차량생성() {
 
-        Map<String,RacingCar> carsMap = RacingCarGame.creatCar("4","3");
-        assertThat(carsMap.size()).isEqualTo(4);
-        assertThat(carsMap.get("CarNo0").getLoopCount()).isEqualTo(3);
+        ArrayList<RacingCar> carList = RacingCarGame.creatCar("4","car1,car2,car3,car4","3");
+        assertThat(carList.size()).isEqualTo(4);
+        assertThat(carList.get(0).getLoopCount()).isEqualTo(3);
     }
 
     @Test
@@ -37,6 +39,5 @@ public class RacingCarGameTest {
         assertThat(result).isEqualTo(2);
 
     }
-
 
 }

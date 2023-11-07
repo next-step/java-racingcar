@@ -1,54 +1,59 @@
 package study;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
     public static final int ZERO = 0;
+    public static final boolean VALID = true;
+    public static final boolean INVALID = false;
+    public static final int THRESHOLD = 5;
 
 
     /**
      *  RacingCar 생성
      */
-    public static Map<String,RacingCar> creatCar(String carText, String loopText){
+    public static ArrayList<RacingCar> creatCar(String carText,String carNames, String stepText){
         int carNum = ZERO;
         int loopNum = ZERO;
         int drive = ZERO;
-        int stop = ZERO;
+        //차량명 유효 체크
+        boolean isValid = VALID;
 
-        Map<String,RacingCar> carsMap = new HashMap<String,RacingCar>();
+        ArrayList<RacingCar> carList = new ArrayList<RacingCar>();;
+
+        String[] carNameList = carNames.split(",");
 
         carNum = _checkValue(carText);
-        loopNum = _checkValue(loopText);
+        loopNum = _checkValue(stepText);
 
-        for (int i=0; i<carNum ;i++){
-
-            RacingCar car = new RacingCar();
-            Map<Integer, Double> randomList = _creatRandom(loopNum);
-            drive = countDrive(randomList);
-            stop = loopNum - drive;
-            car.setDrive(drive);
-            car.setStop(stop);
-            car.setLoopCount(loopNum);
-            car.setRandomsByStep(randomList);
-            carsMap.put("CarNo"+i, car);
-
+        if(carNum != carNameList.length){
+            throw new IllegalArgumentException("입력한 차량 대수와 차량명 개수가 다릅니다.");
         }
 
-        return carsMap;
+        for (int i=0; i<carNum ;i++){
+            _checkValid(carNameList[i]);
+            carList.add(new RacingCar(carNameList[i],drive,loopNum,_creatRandom(loopNum)));
+        }
+
+        return carList;
+    }
+
+    private static void _checkValid(String carName) {
+        if(carName.length()> THRESHOLD){
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과 하였습니다.");
+        }
     }
 
     /**
      *  RacingCar 생성
      */
-    private static Map<Integer, Double> _creatRandom(int loopNum){
-        Map<Integer, Double> randomList = new HashMap<Integer, Double>();
+    private static ArrayList<Double> _creatRandom(int loopNum){
+        ArrayList<Double> randomList = new ArrayList<Double>();
 
         for (int i=0; i<loopNum ;i++){
-            randomList.put(i, randomValue());
+            randomList.add(randomValue());
         }
 
         return randomList;
