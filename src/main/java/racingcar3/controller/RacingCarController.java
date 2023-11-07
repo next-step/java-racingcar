@@ -1,8 +1,8 @@
-package racingcar.controller;
+package racingcar3.controller;
 
-import racingcar.model.RacingGame;
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import racingcar3.model.RacingGame;
+import racingcar3.view.InputView;
+import racingcar3.view.ResultView;
 
 public class RacingCarController {
     public static void main(String[] args) {
