@@ -9,10 +9,9 @@ public class RacingGame {
 
     private final List<Car> carList;
     private final int trialCount;
-    RandomNumberGenerator random = new RandomNumberGenerator();
+    private final RandomNumberGenerator random = new RandomNumberGenerator();
 
     public RacingGame(int carCount, int trialCount) {
-
         this.carList = cars(negativeNumberCheck(carCount));
         this.trialCount = negativeNumberCheck(trialCount);
     }
@@ -33,7 +32,6 @@ public class RacingGame {
             Car car = new Car();
             carList.add(car);
         }
-
         return carList;
     }
 

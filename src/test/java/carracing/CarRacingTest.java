@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarRacingTest {
 
     @Test
-    @DisplayName("사용자가 전진하는 조건의 수(4)를 입력하면 자동차는 전진한다.")
+    @DisplayName("자동차는 4 이상의 랜덤 값일 경우 한 칸 전진한다.")
     void game() {
         // given
         Car car = new Car();
@@ -20,6 +20,20 @@ public class CarRacingTest {
 
         // then
         assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("자동차는 4 미만의 랜덤 값일 경우 이동하지 않는다.")
+    void game_stop() {
+        // given
+        Car car = new Car();
+        int randomNumber = 3;
+
+        // when
+        car.move(randomNumber);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
