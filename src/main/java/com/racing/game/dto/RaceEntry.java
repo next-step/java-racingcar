@@ -1,4 +1,4 @@
-package study;
+package com.racing.game.dto;
 
 public class RaceEntry {
     private final int carCount;

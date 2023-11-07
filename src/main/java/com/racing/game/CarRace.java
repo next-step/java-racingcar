@@ -1,12 +1,13 @@
-package study;
+package com.racing.game;
 
+import com.racing.game.dto.RaceEntry;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CarRace {
 
     private static final String EXCEPTION_MSG_UTILITY_CLASS = "Utility class";
 
-    private CarRace(){
+    private CarRace() {
         throw new IllegalStateException(EXCEPTION_MSG_UTILITY_CLASS);
     }
 
