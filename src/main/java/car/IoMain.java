@@ -31,7 +31,7 @@ public class IoMain {
 
     private static void showMark(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getMark());
+            System.out.println("-".repeat(car.currentPosition()));
         }
         System.out.println();
     }
