@@ -56,22 +56,22 @@ public class Racing {
         return winners;
     }
 
-    /**
-     * 대회를 시작한다.
-     */
-    public void start() {
-        for (int i = 0; i < attemptCount; ++i) {
-            attemptGo();
-        }
-    }
-
-    private void attemptGo() {
+    private List<Car> attemptGo() {
+        List<Car> cars = new ArrayList<>();
         for (Car car : this.participatingCars()) {
             int input = random.nextInt(RANDOM_GENNERATE_NUMBER);
             car.move(input);
-            ResultView.showCurrentPosition(car);
+            cars.add(new Car(car.name(), car.position().position()));
         }
-        System.out.println();
+        return cars;
+    }
+
+    public List<List<Car>> result() {
+        List<List<Car>> result = new ArrayList<>();
+        for (int i = 0; i < attemptCount; ++i) {
+            result.add(attemptGo());
+        }
+        return result;
     }
 
     public static class ParticipatingCars {

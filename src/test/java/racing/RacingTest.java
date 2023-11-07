@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.Racing.ParticipatingCars;
 import racing.car.Car;
 import racing.ui.ResultView;
 
@@ -47,6 +48,8 @@ public class RacingTest {
         Racing racing = new Racing("test1,test2,test3", 0);
 
         // when, then
+        System.out.println(racing.winners().get(0).name());
+        System.out.println(car3.name());
         assertThat(racing.winners().get(0)).isEqualTo(car3);
     }
 }

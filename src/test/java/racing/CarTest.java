@@ -12,7 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
-    @CsvSource({"0, false", "1, false", "2, false", "3, false", "4, true", "5, true", "6, true", "7, true", "8, true", "9, true"})
+
+    @CsvSource({"0, false", "1, false", "2, false", "3, false", "4, true", "5, true", "6, true",
+        "7, true", "8, true", "9, true"})
     @ParameterizedTest(name = "자동차 전진 테스트: input = {0}, 전진 성공 = {1}")
     void move_car(int number, boolean expected) {
         // given
@@ -34,7 +36,7 @@ public class CarTest {
 
         // when, then
         assertThatThrownBy(() -> new Car(name, 0))
-                .isInstanceOf(ValidationException.class)
-                .hasMessageContaining("name can't over 5 letters");
+            .isInstanceOf(ValidationException.class)
+            .hasMessageContaining("name can't over 5 letters");
     }
 }
