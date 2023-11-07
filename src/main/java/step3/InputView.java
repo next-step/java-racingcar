@@ -9,7 +9,7 @@ public class InputView {
     protected static final String QUESTION_ABOUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
     protected static final String QUESTION_ABOUT_ATTEMPT_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    public int inputCarCount() {
+    public static int inputCarCount() {
         int carCount = 0;
         System.out.println(QUESTION_ABOUT_CAR_COUNT);
         try {
@@ -21,7 +21,7 @@ public class InputView {
         return carCount;
     }
 
-    public int inputAttemptCount()  {
+    public static int inputAttemptCount()  {
         int attemptCount = 0;
         System.out.println(QUESTION_ABOUT_ATTEMPT_COUNT);
 
