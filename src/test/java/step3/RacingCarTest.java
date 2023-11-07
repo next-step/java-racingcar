@@ -21,4 +21,17 @@ public class RacingCarTest {
         assertThat(randomInt).isGreaterThan(-1);
     }
 
+    @Test
+    @DisplayName("random 값이 4이상 9이하일 경우, 자동차는 이동한다.")
+    void move() {
+        // given
+        RacingCar car = new RacingCar();
+        int randomInt = 8;
+
+        // when
+        car.move(randomInt);
+
+        // then
+        assertThat(car.getDistance()).isEqualTo(1);
+    }
 }
