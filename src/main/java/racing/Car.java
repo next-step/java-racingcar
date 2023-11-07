@@ -9,6 +9,9 @@ public class Car {
     /** 사용자가 위치를 지정하지 않았을 때 기본 시작할 자동차의 위치 */
     private static final int DEFAULT_INIT_POSITION = 1;
 
+    /** 허용하는 최대 이름 글자 수 */
+    public static final int MAX_NAME_LENGTH = 5;
+
     /** 자동차의 현재 위치를 나타냅니다. */
     private int position = 0;
 
@@ -31,7 +34,7 @@ public class Car {
         Car car = new Car();
 
         car.position = DEFAULT_INIT_POSITION;
-        car.name = "noname";
+        car.name = "";
 
         return car;
     }
@@ -45,6 +48,7 @@ public class Car {
      * @return 생성된 자동차 객체
      */
     public static Car createWithName(String name) {
+        validateName(name);
         Car car = Car.create();
         car.name = name;
         return car;
@@ -73,10 +77,13 @@ public class Car {
      * @return
      */
     public static Car create(String name, int position) {
+        validateName(name);
         validatePosition(position);
+
         Car car = Car.create();
         car.position = position;
         car.name = name;
+
         return car;
     }
 
@@ -104,6 +111,16 @@ public class Car {
     private static void validatePosition(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("위치는 0 이상이어야 하지만 " + position + "이 되었습니다.");
+        }
+    }
+
+    private static void validateName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("이름이 null입니다.");
+        }
+
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("주어진 이름은 너무 깁니다.");
         }
     }
 

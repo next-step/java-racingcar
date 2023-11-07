@@ -52,4 +52,12 @@ public class CarTest {
         assertThat(mySummerCar.getName())
                 .isEqualTo("masum");
     }
+
+    @Test
+    @DisplayName("[Car] 자동차 생성 시 이름 6글자 ->  IllegalArgumentException 던짐")
+    public void longCarName() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Car.createWithName("123456");
+        });
+    }
 }
