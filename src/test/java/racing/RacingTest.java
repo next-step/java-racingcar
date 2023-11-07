@@ -27,10 +27,10 @@ public class RacingTest {
         Racing racing = new Racing(inputNames, 0);
 
         // then
-        int participatingCarCount = racing.participatingCars().size();
+        int participatingCarCount = racing.participatingCars().numberOfCars();
         assertThat(participatingCarCount).isEqualTo(3);
         for (int i = 0; i < participatingCarCount; ++i) {
-            assertThat(racing.participatingCars().get(i).name()).isEqualTo("test" + (i + 1));
+            assertThat(racing.participatingCars().cars().get(i).name()).isEqualTo("test" + (i + 1));
         }
     }
 

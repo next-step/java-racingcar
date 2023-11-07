@@ -26,8 +26,8 @@ public class Racing {
      *
      * @return
      */
-    public List<Car> participatingCars() {
-        return participatingCars.cars();
+    public ParticipatingCars participatingCars() {
+        return participatingCars;
     }
 
     /**
@@ -39,16 +39,6 @@ public class Racing {
         return this.participatingCars.winners();
     }
 
-    private List<Car> attemptGo() {
-        List<Car> cars = new ArrayList<>();
-        for (Car car : this.participatingCars()) {
-            int input = random.nextInt(RANDOM_SEED_NUMBER);
-            car.move(input);
-            cars.add(new Car(car.name().toString(), car.position().position()));
-        }
-        return cars;
-    }
-
     public List<List<Car>> result() {
         List<List<Car>> result = new ArrayList<>();
         for (int i = 0; i < attemptCount; ++i) {
@@ -56,6 +46,17 @@ public class Racing {
         }
         return result;
     }
+
+    private List<Car> attemptGo() {
+        List<Car> cars = new ArrayList<>();
+        for (Car car : this.participatingCars().cars()) {
+            int input = random.nextInt(RANDOM_SEED_NUMBER);
+            car.move(input);
+            cars.add(new Car(car.name().toString(), car.position().position()));
+        }
+        return cars;
+    }
+
 
     public static class ParticipatingCars {
 
@@ -68,11 +69,15 @@ public class Racing {
             }
         }
 
+        public int numberOfCars() {
+            return this.participatingCars.size();
+        }
+
         public List<Car> cars() {
             return this.participatingCars;
         }
 
-        public List<Car> winners() {
+        private List<Car> winners() {
             List<Car> winners = new ArrayList<>();
             Position position = new Position(INIT_POSITION);
             for (Car car : this.participatingCars) {
