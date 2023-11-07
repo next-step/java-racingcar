@@ -8,19 +8,22 @@ public class Car {
 
     private static final int THRESHOLD = 4;
 
-    private int cars;
+    private int moveCount;
 
-    public List<Boolean> goForward() {
-        List<Boolean> movements = new ArrayList<>();
-        for (int car = 0; car < cars; car++) {
-            int number = new Random().nextInt(10);
-            movements.add(THRESHOLD < number);
-        }
-
-        return movements;
+    public int getMoveCount() {
+        return moveCount;
     }
 
-    public void setCars(int cars) {
-        this.cars = cars;
+    public void move() {
+        int number = new Random().nextInt(10);
+        moveCount += (number > THRESHOLD) ? number : 0;
+    }
+
+    public static List<Car> getCars(int vehicleCount) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < vehicleCount; i++) {
+            cars.add(new Car());
+        }
+        return cars;
     }
 }

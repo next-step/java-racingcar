@@ -1,7 +1,6 @@
 package game.race;
 
 import game.race.model.InputView;
-import game.race.model.ResultView;
 import game.race.support.CarRacingManager;
 
 public class CarRacing {
@@ -11,8 +10,9 @@ public class CarRacing {
     }
 
     public static void race() {
-        InputView inputView = CarRacingManager.showPrompt();
-        ResultView resultView = CarRacingManager.start(inputView);
-        CarRacingManager.showResult(resultView);
+        InputView inputView = new InputView();
+        inputView.showPrompt();
+
+        CarRacingManager.start(inputView);
     }
 }

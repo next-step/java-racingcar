@@ -1,28 +1,40 @@
 package game.race.model;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import game.race.Car;
 
 public class ResultView {
 
-    public static final String END_MARK = "";
+    private static final String SHOW_RESULT = "실행 결과";
+    private static final String END_MARK = "";
+    private static final String MARK = "-";
 
-    private final Map<Integer, List<String>> results = new HashMap<>();
-
-    public void setNewTireMarks(int idx, List<String> tireMarks) {
-        results.put(idx, tireMarks);
+    public void showPrompt() {
+        System.out.println(SHOW_RESULT);
     }
 
-    public List<String> getTireMarks(int trial) {
-        return results.get(trial);
+    public void markEnd() {
+        System.out.println(END_MARK);
     }
 
-    public Map<Integer, List<String>> getResults() {
-        return results;
+    public void showCars(List<Car> cars) {
+        for (Car car : cars) {
+            printMark(car.getMoveCount());
+        }
     }
 
-    public String markEnd() {
-        return END_MARK;
+    private void printMark(int moveCount) {
+        if (moveCount == 0) {
+            System.out.println(MARK);
+            return;
+        }
+
+        String tireMark = "";
+        for (int move = 0; move < moveCount; move++) {
+            tireMark = tireMark.concat(MARK);
+        }
+
+        System.out.println(tireMark);
     }
 }
