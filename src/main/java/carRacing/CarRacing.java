@@ -7,10 +7,16 @@ public class CarRacing {
 
 	private List<Car> cars = new ArrayList<>();
 
-	public List<Car> makeCars(int input) {
-		for (int i = 0; i < input; i++) {
+	public List<Car> makeCars(int carCount) {
+		for (int i = 0; i < carCount; i++) {
 			cars.add(new Car());
 		}
 		return cars;
+	}
+
+	public void moveCars(int moveCount) {
+		for (Car car : cars) {
+			car.moveCar();
+		}
 	}
 }
