@@ -1,7 +1,7 @@
 package racingcar;
 
+import racingcar.application.RacingCarGameService;
 import racingcar.ui.InputView;
-import racingcar.ui.RacingGameController;
 import racingcar.ui.ResultView;
 import racingcar.ui.dto.RacingGameRequest;
 import racingcar.ui.dto.RacingGameResponse;
@@ -16,10 +16,10 @@ public class RacingCarGame {
 
     private static void gameStart(int carNumber, int endTurn) {
         System.out.println("게임 시작");
-        RacingGameController controller = new RacingGameController(new RacingGameRequest(carNumber));
-        ResultView resultView = new ResultView(controller);
-        for (int currentTurn=1; currentTurn <= endTurn; currentTurn++) {
-            RacingGameResponse response = controller.gameStart();
+        ResultView resultView = new ResultView();
+        RacingCarGameService service = new RacingCarGameService(new RacingGameRequest(carNumber));
+        for (int currentTurn = 1; currentTurn <= endTurn; currentTurn++) {
+            RacingGameResponse response = service.start();
             resultView.showRacingCarGame(currentTurn, response);
         }
         System.out.println("게임 종료");

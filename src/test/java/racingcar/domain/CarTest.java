@@ -9,12 +9,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("자동차 도메인 테스트")
 public class CarTest {
+    private final int INITIAL_CAR_NUMBER = 5;
 
     private Cars cars;
 
     @BeforeEach
     void setUp() {
-        cars = new Cars();
+        cars = new Cars(INITIAL_CAR_NUMBER);
     }
 
     @DisplayName("랜덤 값에 따라 자동차가 멈추거나 전진한다.")
@@ -30,7 +31,7 @@ public class CarTest {
     @Test
     void addCar() {
         cars.addCar(new Car());
-        Assertions.assertThat(cars.getNumberOfCar()).isEqualTo(1);
+        Assertions.assertThat(cars.getNumberOfCar()).isEqualTo(INITIAL_CAR_NUMBER + 1);
     }
 
     @DisplayName("추가한 자동차들이 자동차 리스트에 존재하는지 확인한다.")
