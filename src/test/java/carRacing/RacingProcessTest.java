@@ -1,24 +1,25 @@
 package carRacing;
 
-import org.assertj.core.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingProcessTest {
 
-    private int carCount;
+    private  String[] nameArray = {"rubal", "pubao", "ibao"};
     private RacingProcess racingProcess;
     MovingStrategy movingStrategy;
 
     @BeforeEach
     void create() {
         movingStrategy = new GreaterThanThreeMovingStrategy();
-        carCount = 5;
-        racingProcess = new RacingProcess(carCount, movingStrategy);
+        racingProcess = new RacingProcess(nameArray, movingStrategy);
     }
 
     @Test
@@ -32,7 +33,7 @@ public class RacingProcessTest {
     @DisplayName("경주시작 시 자동차 객체를 입력한 자동차 대수만큼 생성시키는지 확인")
     void 자동차준비_확인() {
 
-        assertThat(racingProcess.getCarsDistance()).hasSize(carCount);
+        assertThat(racingProcess.getCarsStatus()).hasSize(nameArray.length);
     }
 
     @Test
@@ -40,8 +41,7 @@ public class RacingProcessTest {
     void 자동차경주_라운드_진행_결과() {
         NumberGenerator movableRandomGenerator = new MovableRandomGenerator();
         racingProcess.roundPlay(movableRandomGenerator);
-        assertThat(racingProcess.getCarsDistance()).containsOnly(1, 1, 1, 1, 1);
+        assertThat(racingProcess.getCarsStatus())
+                .containsOnly(entry(nameArray[0],1),entry(nameArray[1],1),entry(nameArray[2],1));
     }
-
-
 }

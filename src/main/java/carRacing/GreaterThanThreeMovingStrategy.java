@@ -1,6 +1,6 @@
 package carRacing;
 
-public class GreaterThanThreeMovingStrategy implements MovingStrategy{
+public class GreaterThanThreeMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean isRide(int randomNumber) {
