@@ -1,13 +1,29 @@
 package me.namuhuchutong.step4;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.stream.Stream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class UserInputInterceptorTest {
+
+    @DisplayName("자동차 이름은 5자를 넘길 수 없다.")
+    @Test
+    void car_name_should_be_under_5_character() {
+        //given
+        String inputString = "abcde,abcdefg";
+        int times = 1;
+        UserRequest request = new UserRequest(inputString, times);
+        UserInputInterceptor interceptor = new UserInputInterceptor();
+
+        //when, then
+        assertThatThrownBy(() -> interceptor.handleUserInput(request))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @DisplayName("이름들의 수와 자동차의 수는 동일하다.")
     @ParameterizedTest(name = "given Text: [{0}], expected: [{1}]")
@@ -21,7 +37,7 @@ class UserInputInterceptorTest {
         UserInputInformation inputInformation = userInputInterceptor.handleUserInput(request);
 
         //then
-        Assertions.assertThat(inputInformation.getNumberOfCars()).isEqualTo(expected);
+        assertThat(inputInformation.getNumberOfCars()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> givenTextAndNumberOfCars() {
