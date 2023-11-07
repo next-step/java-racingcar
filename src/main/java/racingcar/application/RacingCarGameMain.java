@@ -1,22 +1,22 @@
-package step3.application;
+package racingcar.application;
 
-import static step3.presentation.InputView.scanAndGetValues;
+import static racingcar.presentation.InputView.scanAndGetValues;
 
 import java.util.List;
 import java.util.stream.IntStream;
-import step3.domain.Car;
-import step3.domain.SimpleRacingCarGame;
-import step3.presentation.OutputView;
-import step3.presentation.dto.RacingGameInput;
+import racingcar.domain.Car;
+import racingcar.domain.SimpleRacingCarGame;
+import racingcar.presentation.OutputView;
+import racingcar.presentation.dto.RacingGameInput;
 
 public class RacingCarGameMain {
 
         public static void main(String args[]) {
                 RacingGameInput inputValue = scanAndGetValues();
-                int carCnt = inputValue.getCarCnt();
+                int carCount = inputValue.getCarCount();
                 int round = inputValue.getRound();
 
-                SimpleRacingCarGame game = new SimpleRacingCarGame(carCnt);
+                SimpleRacingCarGame game = new SimpleRacingCarGame(carCount);
                 List<Car> cars = game.joinCars();
 
                 IntStream.range(0, round).forEach(thisRound -> {

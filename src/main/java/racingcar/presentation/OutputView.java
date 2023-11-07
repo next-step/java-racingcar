@@ -1,8 +1,7 @@
-package step3.presentation;
+package racingcar.presentation;
 
 import java.util.List;
-import java.util.stream.IntStream;
-import step3.domain.Car;
+import racingcar.domain.Car;
 
 public class OutputView {
 
@@ -17,8 +16,8 @@ public class OutputView {
                 printNewLine();
         }
 
-        private static void printCurrentPosition(int currentPosition){
-                IntStream.range(0, currentPosition).forEach(i -> System.out.print(PATH_SIGN));
+        private static void printCurrentPosition(int currentPosition) {
+                PATH_SIGN.repeat(currentPosition);
                 printNewLine();
         }
 
