@@ -5,7 +5,12 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void print(int position) {
-        System.out.println(("-".repeat(position)));
+    public static String createNameAndPositionView(String name, int position) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name);
+        sb.append(" : ");
+        sb.append(("-".repeat(position)));
+
+        return sb.toString();
     }
 }

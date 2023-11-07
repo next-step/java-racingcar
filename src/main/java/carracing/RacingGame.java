@@ -3,7 +3,6 @@ package carracing;
 import carracing.ui.ResultView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static carracing.util.InputValueValidate.splitCommaInputCarName;
@@ -33,7 +32,7 @@ public class RacingGame {
 
     private void racingGameProcess() {
         for (Car car : carList) {
-            ResultView.print(car.getPosition());
+            printResultRaceGameProcess(car);
             car.move(random.getRandomNumber());
         }
     }
@@ -41,11 +40,10 @@ public class RacingGame {
     private static List<Car> makeCarList(String carName) {
         String[] names = splitCommaInputCarName(carName);
         checkExceedFiveCarName(names);
-        System.out.println(Arrays.toString(names));
 
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            Car car = new Car();
+        for (String name : names) {
+            Car car = new Car(name);
             carList.add(car);
         }
         return carList;
@@ -62,6 +60,11 @@ public class RacingGame {
             throw new RuntimeException();
         }
         return number;
+    }
+
+    private static void printResultRaceGameProcess(Car car) {
+        String nameAndPositionView = ResultView.createNameAndPositionView(car.getName(), car.getPosition());
+        System.out.println(nameAndPositionView);
     }
 
 }
