@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static car.CarService.generate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
@@ -16,7 +15,7 @@ public class CarTest {
         Car car = new Car();
         int initPosition = car.currentPosition();
 
-        car.moveAndRecord(number);
+        car.move(number);
 
         assertThat(car.currentPosition()).isEqualTo(initPosition + 1);
     }
@@ -28,16 +27,11 @@ public class CarTest {
         Car car = new Car();
         int initPosition = car.currentPosition();
 
-        car.moveAndRecord(number);
+        car.move(number);
 
         assertThat(car.currentPosition()).isEqualTo(initPosition);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {3})
-    @DisplayName("car 생성 테스트")
-    void 자동창_생성_크기(int number) {
-        assertThat(generate(number)).hasSize(number);
-    }
+
 
 }
