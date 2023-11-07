@@ -20,4 +20,15 @@ public class CarRacing {
                 .moveForward(carRacer.stepOnAccelerator());
         }
     }
+
+    public int[] findPositions() {
+        int numOfCar = cars.getNumOfCars();
+
+        int[] positions = new int[numOfCar];
+        for (int i=0; i<numOfCar; i++) {
+            positions[i] = cars.findCarBy(i).getCurrentPosition();
+        }
+
+        return positions;
+    }
 }

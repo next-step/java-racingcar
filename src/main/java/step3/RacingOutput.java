@@ -20,26 +20,14 @@ public class RacingOutput {
         for (int i=0; i<numOfTry; i++) {
             carRacing.moveCars();
 
-            int[] positions = findPositions(carRacing);
-            printCarPosition(positions);
-
-            System.out.println();
+            printCarPositions(carRacing.findPositions());
         }
     }
 
-    private int[] findPositions(CarRacing carRacing) {
-        int numOfCar = carRacing.getCars().getNumOfCars();
-
-        int[] positions = new int[numOfCar];
-        for (int i=0; i<numOfCar; i++) {
-            positions[i] = carRacing.getCars().findCarBy(i).getCurrentPosition();
-        }
-
-        return positions;
-    }
-
-    private void printCarPosition(int[] positions) {
+    private void printCarPositions(int[] positions) {
         Arrays.stream(positions)
             .forEach(position -> System.out.println(VIEW_OF_CAR.repeat(position)));
+
+        System.out.println();
     }
 }
