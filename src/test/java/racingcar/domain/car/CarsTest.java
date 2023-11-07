@@ -60,7 +60,7 @@ class CarsTest {
 
     @Test
     @DisplayName("경기중 가장 많은 위치를 움직인 자동차의 이름들을 반환한다.")
-    void findWinner() {
+    void findWinners() {
         List<Car> testCars = Arrays.asList(new Car("엄태권", 1), new Car("OWEN", 3), new Car("TEST", 3));
         Cars cars = new Cars(testCars);
 
