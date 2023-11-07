@@ -19,6 +19,17 @@
 8. 일급 콜렉션을 쓴다.
 9. 게터/세터/프로퍼티를 쓰지 않는다.
 
+# Commit 규칙
+* [AngularJS Commit Message Conventions](https://edu.nextstep.camp/s/twbNYuxs/ls/4iPs94sh#:~:text=%EC%B0%B8%EA%B3%A0%EB%AC%B8%EC%84%9C%3A-,AngularJS%20Commit%20Message%20Conventions,-AngularJS%20Commit%20Message)
+  * feat(feature): 새로운 기능 추가
+  * fix(bug fix): 버그를 고친 경우
+  * docs(documentation): 문서를 수정한 경우
+  * style(formatting, missing semi colons, ..): 코드 포멧 변경, 세미 콜론 누락 등 기능적 변경이 없는 경우
+  * refactor: 코드 리팩토링을 한 경우
+  * test(when adding missing tests): 테스트 추가, 테스트 리팩토링을 한 경우
+  * chore(maintain): 빌드, 패키지 매니저 설정을 변경한 경우
+
+
 # 문자열 덧셈계산기 기능요구사항
 ## TODO
 - [ ] 쉼표(,) 또는 콜론(:)을 구분자로 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환 (예: “” => 0, "1,2" => 3, "1,2,3" => 6, “1,2:3” => 6)
@@ -39,3 +50,10 @@
 - [x] 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
   - [x] 음수인 경우
   - [x] 숫자가 아닌 수를 입력한 경우
+
+# step3 자동차 경주 기능요구사항
+- [x] 핵심 로직을 구현하는 코드 
+  - [x] 랜덤이 4 이상이면 전진
+  - [x] 랜덤이 3 이하면 정지
+- [x] UI를 담당하는 로직을 구분한다
+
