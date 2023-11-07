@@ -2,6 +2,7 @@ package step3;
 
 import step3.dto.RacingCar;
 import step3.view.InputView;
+import step3.view.ResultView;
 
 import java.util.Random;
 
@@ -15,18 +16,16 @@ public class RacingGame {
 
         // 초기화
         racingCars = new RacingCar[carNum];
-        for (int carNo = 0; carNo < attemptNum; carNo++) {
+        for (int carNo = 0; carNo < carNum; carNo++) {
             racingCars[carNo] = new RacingCar();
         }
 
         // 레이싱 진행
+        ResultView.title();
         for (int attempt = 0; attempt < attemptNum; attempt++) {
             racing();
+            ResultView.printResult(racingCars);
         }
-
-        System.out.println(racingCars[0].getDistance());
-        System.out.println(racingCars[1].getDistance());
-        System.out.println(racingCars[2].getDistance());
     }
 
     private static void racing() {
