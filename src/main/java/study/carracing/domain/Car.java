@@ -1,27 +1,26 @@
 package study.carracing.domain;
 
-import study.carracing.util.RandomGenerator;
+import study.carracing.util.MoveStrategy;
 
 public class Car {
 
-    private static final int MIN_MOVE_VALUE = 4;
     private static final int INITIAL_POSITION = 1;
     private static final String PROGRESS_DASH = "-";
 
     private int position;
-    private RandomGenerator randomGenerator;
+    private MoveStrategy moveStrategy;
 
-    public Car(RandomGenerator randomGenerator) {
+    public Car(MoveStrategy moveStrategy) {
         this.position = INITIAL_POSITION;
-        this.randomGenerator = randomGenerator;
+        this.moveStrategy = moveStrategy;
+    }
+
+    public void setMoveStrategy(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public void move() {
-        go(randomGenerator.nextInt(10));
-    }
-
-    public void go(int randomValue) {
-        if (randomValue >= MIN_MOVE_VALUE) {
+        if (moveStrategy.canMove()) {
             position += 1;
         }
     }
