@@ -7,7 +7,7 @@ import racingcar3.model.Car;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class racingCarTest {
+public class RacingCar3Test {
 
     @DisplayName("랜덤 값이 4이상일 때 한칸 전진한다.")
     @Test

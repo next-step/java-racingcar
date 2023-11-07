@@ -6,7 +6,7 @@ public class Car {
     private static final int RANDOM_VALUE_RANGE = 10;
     private static final int ADVANCE_MINIMUM_VALUE = 4;
     private int position;
-    private String name;
+    private final String name;
 
     private final Random random = new Random();
 
@@ -37,6 +37,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }
