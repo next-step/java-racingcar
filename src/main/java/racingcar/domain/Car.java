@@ -1,4 +1,4 @@
-package racingcar.core;
+package racingcar.domain;
 
 public class Car {
     private int forwardCnt;

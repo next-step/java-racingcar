@@ -1,6 +1,6 @@
 package racingcar.core;
 
-import racingcar.ui.RacingResultView;
+import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -16,11 +16,9 @@ public class RacingCar {
     }
 
     public void start() {
-        RacingResultView racingResultView = new RacingResultView();
-        System.out.println("실행 결과");
+
         for (int i = 0; i < raceTimes; i++) {
             goRace(raceTimes, cars);
-            racingResultView.resultView(cars);
         }
     }
 

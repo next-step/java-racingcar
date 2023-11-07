@@ -1,13 +1,13 @@
 package racingcar.ui;
 
-import racingcar.core.Car;
+import racingcar.domain.Car;
 
 import java.util.List;
 
 public class RacingResultView {
     private static final String CAR_PRINT = "-";
 
-    public void resultView(List<Car> cars) {
+    public static void printResult(List<Car> cars) {
         System.out.println();
         for (Car car : cars) {
             StringBuffer sb = new StringBuffer();
