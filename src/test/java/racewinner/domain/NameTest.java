@@ -23,12 +23,11 @@ class NameTest {
         assertThatThrownBy(() -> new Name(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @DisplayName("자동차 이름은 5글자를 초과하면 IllegalArgumentException 예외가 발생한다.")
     @Test
     void nameTooLong() {
         assertThatThrownBy(() -> new Name("abcdef"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
 }
