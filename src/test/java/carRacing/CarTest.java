@@ -12,7 +12,7 @@ class CarTest {
 	void moveCar() {
 		Car car = new Car();
 		car.isRanNumAboveFour = true;
-		car.moveCar(car.isRanNumAboveFour);
+		car.moveCar();
 
 		assertThat(car.index).isEqualTo(1);
 	}
@@ -22,7 +22,7 @@ class CarTest {
 	void stopCar() {
 		Car car = new Car();
 		car.isRanNumAboveFour = false;
-		car.moveCar(car.isRanNumAboveFour);
+		car.moveCar();
 
 		assertThat(car.index).isEqualTo(0);
 	}

@@ -8,7 +8,7 @@ public class Car {
 	private RandomNumMaker ran = new RandomNumMaker();
 	public boolean isRanNumAboveFour = ran.isAboveBoundary();
 
-	public void moveCar(boolean isRanNumAboveFour) {
+	public void moveCar() {
 		if (isRanNumAboveFour) {
 			index++;
 		}
