@@ -2,8 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import racing.model.RacingCar;
 
 import static org.assertj.core.api.Assertions.*;
 

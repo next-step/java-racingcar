@@ -1,17 +1,22 @@
 package racing;
 
+import racing.model.RacingCar;
+import racing.view.InputView;
+import racing.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Simulator {
     private static final int BEGINNING = 0;
 
+    static String[] carName;
     static int carCount;
     static int raceRound;
     static List<RacingCar> cars = new ArrayList<>();
 
     public static void main(String[] args) {
-        carCount = InputView.getCarCount();
+        carName = InputView.getCarName();
         raceRound = InputView.getRaceRound();
         for (int i = 0; i < carCount; i++) {
             cars.add(new RacingCar(BEGINNING));
