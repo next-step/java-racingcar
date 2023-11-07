@@ -1,38 +1,30 @@
 package study.carracing.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import study.carracing.domain.Car;
-import study.carracing.domain.RacingCars;
+import study.carracing.domain.Racing;
+import study.carracing.ui.InputView;
 import study.carracing.ui.ResultView;
+import study.carracing.util.Validator;
 
 public class RacingController {
 
-    private RacingCars racingCars;
+    private InputView inputView;
+    private ResultView resultView;
 
-    public void start(int carCount, int tryCount) {
-        this.racingCars = addRacingCars(carCount);
-        this.move(tryCount);
+    public RacingController(InputView inputView, ResultView resultView) {
+        this.inputView = inputView;
+        this.resultView = resultView;
     }
 
-    private void move(int tryCount) {
-        ResultView.outputTitle();
-        for (int i = 0; i < tryCount; i++) {
-            racingCars.move();
-            ResultView.outputResult(racingCars.getCars());
-        }
+    public Racing start() {
+        final int carCount = Validator.validateInput(inputView.inputCarCount());
+        final int tryCount = Validator.validateInput(inputView.inputTryCount());
+
+        resultView.outputTitle();
+        Racing racing = new Racing();
+        racing.start(carCount, tryCount);
+        resultView.outputResult(racing.getRacingCars());
+
+        return racing;
     }
 
-    private RacingCars addRacingCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-
-        return new RacingCars(cars);
-    }
-
-    public RacingCars getRacingCars() {
-        return racingCars;
-    }
 }
