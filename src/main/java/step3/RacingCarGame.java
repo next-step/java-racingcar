@@ -1,15 +1,18 @@
 package step3;
 
+import java.awt.*;
 import java.util.List;
+import java.util.Random;
 
 public class RacingCarGame {
 
     public static void main (String[] arg) {
-        List<Integer> intput = InputView.display();
-        int numCar = intput.get(0);
-        int numAttempt = intput.get(1);
+        List<Integer> input = InputView.display();
+        int numCar = input.get(0);
+        int numAttempt = input.get(1);
+        Random random = new Random();
 
-        Racing racingGame = new Racing(new int[numCar], numAttempt);
+        Racing racingGame = new Racing(new int[numCar], numAttempt, random);
         racingGame.startGame();
     }
 }
