@@ -3,7 +3,6 @@ package racingcar.domain.game;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.game.strategy.MoveStrategy;
-import racingcar.domain.game.strategy.RandomMoveStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
