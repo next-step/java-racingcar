@@ -1,23 +1,28 @@
 package racingcar.domain;
 
+import racingcar.service.ValidationCheck;
+
 import java.util.*;
 
 public class Cars {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars(int carCount) {
+    public Cars(String input) {
         this.cars = new ArrayList<>();
-        addCar(carCount);
+        addCar(input);
     }
 
     public List<Car> getCarList() {
         return Collections.unmodifiableList(cars);
     }
 
-    public void addCar(int input) {
-        for (int i = 0; i < input; i++) {
-            cars.add(new Car());
+    private void addCar(String input) {
+        String[] names = input.split(",");
+
+        for (int i = 0; i < names.length; i++) {
+            ValidationCheck.checkInputCarName(names[i]);
+            cars.add(new Car(names[i]));
         }
     }
 }
