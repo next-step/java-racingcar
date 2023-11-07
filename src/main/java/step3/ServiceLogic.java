@@ -39,4 +39,12 @@ public class ServiceLogic {
             }
         }
     }
+
+    public Map<Integer, LinkedList<String>> getResultMap() {
+        return resultMap;
+    }
+
+    public ResultView getResultView() {
+        return resultView;
+    }
 }
