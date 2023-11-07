@@ -1,4 +1,4 @@
-package ui;
+package racing.ui;
 
 import racing.Car;
 
@@ -14,7 +14,7 @@ public class CarRenderer {
      * @return "---"와 같은 자동차 궤적 문자열.
      */
     public static String getMoveTrajectory(Car car) {
-        StringBuilder trajectory = new StringBuilder();
+        StringBuilder trajectory = new StringBuilder(car.getName() + ": ");
 
         for (int i = 1; i <= car.getPosition(); i++) {
             trajectory.append(TRAJECTORY_CHARACTER);

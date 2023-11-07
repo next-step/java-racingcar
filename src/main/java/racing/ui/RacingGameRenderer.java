@@ -1,7 +1,8 @@
-package ui;
+package racing.ui;
 
 import racing.Car;
-import racing.RacingGame;
+import racing.RacingGameLogic;
+import racing.RacingGameState;
 
 import java.util.List;
 
@@ -28,19 +29,26 @@ public class RacingGameRenderer {
     /**
      * 게임을 렌더링 한 결과를 얻습니다.
      *
-     * @param racingGame 렌더링 할 레이싱 게임 상태 객체
+     * @param state 렌더링 할 레이싱 게임 상태 객체
      */
-    public static String getGameRendering(RacingGame racingGame) {
-        return getCarsTrajectories(racingGame.getCarList());
+    public static String getGameRendering(RacingGameState state) {
+        return getCarsTrajectories(state.getCarList());
     }
 
     /**
      * 게임을 화면에 출력합니다.
      *
-     * @param racingGame 출력할 레이싱 게임 상태 객체
+     * @param state 출력할 레이싱 게임 상태 객체
      */
-    public static void renderGame(RacingGame racingGame) {
-        System.out.println(getGameRendering(racingGame));
+    public static void renderGame(RacingGameState state) {
+        System.out.println(getGameRendering(state));
         System.out.println("");
+    }
+
+    public static void renderWinners(List<Car> winnerList) {
+        System.out.println("우승자 목록: ");
+        for (Car car : winnerList) {
+            System.out.println("- " + car.getName());
+        }
     }
 }
