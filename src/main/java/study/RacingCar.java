@@ -65,7 +65,7 @@ public class RacingCar {
         this.randomsByStep = randomsByStep;
     }
 
-    public void move(int stepNo){
+    public String move(int stepNo){
 
         String moveStr = BLANK;
 
@@ -76,7 +76,7 @@ public class RacingCar {
             }
         }
 
-        System.out.println(this.getCarName() + " : " + moveStr);
+        return this.getCarName() + " : " + moveStr;
     }
 
 }

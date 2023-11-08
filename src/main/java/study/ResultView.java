@@ -24,7 +24,7 @@ public class ResultView {
         for(int i = 0; i<loopNum; i++){
 
             for(int j = 0; j<carNum ; j++){
-                carList.get(j).move(i);
+                System.out.println(carList.get(j).move(i));
             }
             System.out.println();
         }
