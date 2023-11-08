@@ -66,16 +66,12 @@ public class CarList {
 		}
 	}
 
-	public List<String> findWinners() {
+	public List<String> winners() {
 		int maxPosition = getMaxPosition();
 		List<String> winners = new ArrayList<>();
 		for (int i = 0; i < this.numberOfCars; i++) {
 			addWinner(maxPosition, winners, i);
 		}
 		return winners;
-	}
-
-	public List<String> winners() {
-		return findWinners();
 	}
 }
