@@ -28,14 +28,14 @@ class RacingTest {
         AtomicInteger sumAfterStartGame = new AtomicInteger();
 
         newGame.cars.forEach(car -> {
-            sumBeforeStartGame.set(+car.index);
+            sumBeforeStartGame.set(+car.getDistance());
         });
 
         assertThat(sumBeforeStartGame.get()).isEqualTo(0);
 
         newGame.startGame();
         newGame.cars.forEach(car -> {
-            sumAfterStartGame.addAndGet(1);
+            sumAfterStartGame.set(+car.getDistance());
         });
         assertThat(sumAfterStartGame.get()).isGreaterThan(0);
     }

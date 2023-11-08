@@ -1,9 +1,17 @@
 package step3;
 
 public class Car {
-    int index;
+    private int distance;
 
     public Car() {
-        this.index = 0;
+        this.distance = 0;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }
