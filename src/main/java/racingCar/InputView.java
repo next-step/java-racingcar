@@ -2,7 +2,7 @@ package racingCar;
 
 import java.util.Scanner;
 
-public class inputView {
+public class InputView {
     private final Scanner scanner = new Scanner(System.in);
 
     public int getInputNumber(String question) {
