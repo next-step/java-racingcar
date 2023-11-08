@@ -9,7 +9,7 @@ public class CarList {
 		this.numberOfCars = numberOfCars;
 		cars = new Car[numberOfCars];
 		for (int i = 0; i < this.numberOfCars; i++) {
-			cars[i] = new Car();
+			cars[i] = new Car(4, 1, 1);
 		}
 	}
 
