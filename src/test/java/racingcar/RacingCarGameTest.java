@@ -35,8 +35,7 @@ class SimpleRacingCarGameTest {
     @Test
     void 자동차_경주_1라운드_정상_실행(){
         List<Car> cars = new ArrayList<>();
-        int carCount = 5;
-        SimpleRacingCarGame game = new SimpleRacingCarGame(carCount);
+        SimpleRacingCarGame game = new SimpleRacingCarGame(cars);
         assertThatCode(()->game.moveOneRound(cars)).doesNotThrowAnyException();
     }
 

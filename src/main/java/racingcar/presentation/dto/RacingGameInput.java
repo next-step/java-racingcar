@@ -2,16 +2,16 @@ package racingcar.presentation.dto;
 
 public class RacingGameInput {
 
-    private int carCount;
+    private String carNamesInOneText;
     private int round;
 
-    public RacingGameInput(int carCount, int round) {
-        this.carCount = carCount;
+    public RacingGameInput(String carNamesInOneText, int round) {
+        this.carNamesInOneText = carNamesInOneText;
         this.round = round;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNamesInOneText() {
+        return carNamesInOneText;
     }
 
     public int getRound() {
