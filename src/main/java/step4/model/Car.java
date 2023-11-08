@@ -3,7 +3,7 @@ package step4.model;
 public class Car {
 
     private int currentStatus;
-    private String name;
+    private final String name;
 
     public Car(String name) {
         this.name = name;

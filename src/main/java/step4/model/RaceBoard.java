@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class RaceBoard {
 
-    private List<String> carNames;
+    private final List<String> carNames;
 
     public RaceBoard(List<String> carNames) {
         this.carNames = carNames;
