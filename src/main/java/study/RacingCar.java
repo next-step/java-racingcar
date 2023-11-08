@@ -1,57 +1,51 @@
 package study;
 
-import study.utils.ArrayListUtils;
+import study.car.Car;
+import study.car.CarServiceImpl;
+import study.car.MemoryCarRepository;
+import study.racing.RacingCarPolicy;
 import study.utils.RandomUtils;
-import study.view.InputView;
 import study.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
 
     private int numberOfCar;
     private int numberOfMoves;
-    private final InputView inputView = new InputView();
-    private final ResultView resultView = new ResultView();
+    private MemoryCarRepository memoryCarRepository;
+    private CarServiceImpl carService;
 
-    public void startRacer() {
-        setNumberOfCars();
-        setNumberOfMoves();
-        playRacerAndPrintOneRacingResult();
+    public RacingCar(int numberOfCar, int numberOfMoves, MemoryCarRepository memoryCarRepository) {
+        this.numberOfCar = numberOfCar;
+        this.numberOfMoves = numberOfMoves;
+        this.memoryCarRepository = memoryCarRepository;
+        this.carService = new CarServiceImpl(memoryCarRepository);
     }
 
-    private void setNumberOfCars() {
-        numberOfCar = inputView.setNumberOfCars();
-    }
+    public void startRacing() {
+        setCarList();
+        ResultView.beforeRacingPrintMessage();
 
-    private void setNumberOfMoves() {
-        numberOfMoves = inputView.setNumberOfMoves();
-    }
-
-    private void playRacerAndPrintOneRacingResult() {
-        resultView.beforeRacingPrintMessage();
-
-        ArrayList<String>[] raceList = ArrayListUtils.get2ArrayList(numberOfCar);
-
+        List<Car> Cars = carService.findAllCars();
         for (int i = 0; i < numberOfMoves; i++) {
-            goOrStopCar(raceList);
-            resultView.printOneRacingResult(raceList);
+            moveOrStopCar(Cars);
+            ResultView.printOneRacingResult(Cars);
         }
     }
 
-    private void goOrStopCar(ArrayList<String>[] raceList) {
-        for (List<String> car : raceList) {
-            if (canMovingCar()) {
-                car.add("-");
+    private void setCarList() {
+        for (int i = 0; i < numberOfCar; i++) {
+            Car car = new Car();
+            carService.join(car);
+        }
+    }
+
+    private void moveOrStopCar(List<Car> Cars) {
+        for (Car car : Cars) {
+            if (RacingCarPolicy.canMovingCar(RandomUtils.getRandomNumberZeroToNine())) {
+                carService.movingCar(car);
             }
         }
-    }
-
-    private boolean canMovingCar() {
-        if (RandomUtils.getRandomBetween0To9Number() >= 4) {
-            return true;
-        }
-        return false;
     }
 }

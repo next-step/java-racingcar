@@ -1,20 +1,21 @@
 package study.view;
 
-import java.util.ArrayList;
+import study.car.Car;
+
 import java.util.List;
 
 public class ResultView {
 
-    public void beforeRacingPrintMessage() {
+    private ResultView() { //인스턴스화 방지
+    }
+
+    public static void beforeRacingPrintMessage() {
         System.out.println("\n실행 결과");
     }
 
-    public void printOneRacingResult(ArrayList<String>[] raceList) {
-        for (List<String> raceResult : raceList) {
-            for (int i = 0; i < raceResult.size(); i++) {
-                System.out.print(raceResult.get(i));
-            }
-            System.out.println("");
+    public static void printOneRacingResult(List<Car> raceList) {
+        for (Car car : raceList) {
+            System.out.println(car.getStatus());
         }
         System.out.println("");
     }
