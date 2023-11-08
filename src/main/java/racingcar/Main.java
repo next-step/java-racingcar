@@ -1,6 +1,6 @@
-package step3;
+package racingcar;
 
-import step3.controller.RacingController;
+import racingcar.controller.RacingController;
 
 public class Main {
     public static void main(String[] args) {

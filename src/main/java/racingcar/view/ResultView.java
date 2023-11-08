@@ -1,7 +1,7 @@
-package step3.view;
+package racingcar.view;
 
-import step3.domain.Car;
-import step3.domain.Round;
+import racingcar.domain.Car;
+import racingcar.domain.Round;
 
 import java.util.List;
 

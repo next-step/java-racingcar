@@ -1,4 +1,4 @@
-package step3.view;
+package racingcar.view;
 
 import java.util.Scanner;
 
@@ -6,15 +6,15 @@ public class InputView {
 
     private static Scanner scan = new Scanner(System.in);
 
-    private static final String JOIN_RACING_CAR_INPUT_MESSAGE = "레이싱에 참여할 자동차는 몇대 인가요?";
+    private static final String JOIN_RACING_CAR_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분합니다).";
     private static final String RACING_TRY_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇회 인가요?";
 
 
-    public int inputRacingCarCount() {
+    public String inputRacingCarNames() {
         System.out.println(JOIN_RACING_CAR_INPUT_MESSAGE);
-        int inputRacingCarNumber = scan.nextInt();
-        validateInputNumber(inputRacingCarNumber);
-        return inputRacingCarNumber;
+        String inputRacingCarNames = scan.nextLine();
+        validateInputRacingCarNames(inputRacingCarNames);
+        return inputRacingCarNames;
     }
 
     public int inputTryCount() {
@@ -22,6 +22,12 @@ public class InputView {
         int inputTryCount = scan.nextInt();
         validateInputNumber(inputTryCount);
         return inputTryCount;
+    }
+
+    private void validateInputRacingCarNames(String inputRacingCarNames) {
+        if(inputRacingCarNames == null || inputRacingCarNames.isEmpty()) {
+            throw new IllegalArgumentException("최소 한 개 이상의 자동차 이름을 입력해야 합니다.");
+        }
     }
 
     private void validateInputNumber(final int inputNumber) {

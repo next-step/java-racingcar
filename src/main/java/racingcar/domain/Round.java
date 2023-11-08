@@ -1,7 +1,7 @@
-package step3.domain;
+package racingcar.domain;
 
 
-import step3.utils.NumberGenerator;
+import racingcar.utils.NumberGenerator;
 
 public class Round {
 

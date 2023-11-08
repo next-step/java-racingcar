@@ -1,7 +1,7 @@
-package step3.domain;
+package racingcar.domain;
 
-import step3.utils.NumberGenerator;
-import step3.utils.RandomNumberGenerator;
+import racingcar.utils.NumberGenerator;
+import racingcar.utils.RandomNumberGenerator;
 
 import java.util.Collections;
 import java.util.List;
@@ -10,15 +10,11 @@ import java.util.stream.Stream;
 
 public class RacingGame {
 
-    private int racingCarNumber;
-    private int tryCountNumber;
     private List<Round> rounds;
     private Cars cars;
 
-    public RacingGame(final int racingCarNumber, final int tryCountNumber) {
-        this.racingCarNumber = racingCarNumber;
-        this.tryCountNumber = tryCountNumber;
-        this.cars = new Cars(CarFactory.createCars(racingCarNumber));
+    public RacingGame(final List<String> carNames, final int tryCountNumber) {
+        this.cars = new Cars(CarFactory.createCars(carNames));
         this.rounds = createRounds(tryCountNumber);
     }
 
