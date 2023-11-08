@@ -1,8 +1,11 @@
 package ch3;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class CarTest {
 
@@ -34,6 +37,15 @@ public class CarTest {
         Car car = new Car();
         car.makeName("이창섭");
         assertThat(car.name()).isEqualTo("이창섭");
+    }
+
+    @Test 
+    void 차의_이름은_5자를_초과할_수_없다() {
+        Car car = new Car();
+        assertThatThrownBy(() -> {
+            car.makeName("넥스트스텝 클린코드");
+        }).isInstanceOf(RuntimeException.class)
+        .hasMessage("이름은 5자를 초과할 수 없습니다");
     }
 
 }
