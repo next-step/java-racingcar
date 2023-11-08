@@ -26,12 +26,14 @@
 ## 구현
 - 메소드가 너무 많은 일을 하지 않도록 분리하기
 - 값 검증시에는 VO 객체로 생성하여 검증
+  - https://medium.com/sjk5766/vo-value-object-%EC%A0%95%EB%A6%AC-63c207aa39f6
 - 가능한 불변(final)으로 상태값 선언, 가변적인 상태는 추적이 힘듬
-
+- 일급 컬렉션 사용하기 
+  - https://tecoble.techcourse.co.kr/post/2020-05-08-First-Class-Collection/
 ---
 
 ## 테스트
-- 테스트 코드명은 명시적으로 작성 :exclamation:
+- 테스트 코드명은 명시적으로 작성
 - 테스트도 클래스도 각각 개별로 모두 구현
 - private 메서드 테스트 
   - private 메서드를 호출하는 public 메서드에서 간접적으로 테스트 
@@ -42,7 +44,11 @@
     int random = Random().next() // 직접 의존 
     int random = numberGenerator.get() // 인터페이스 의존
     ```
-  
+
+### LINK
+- AssertJ
+  - https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests
+
 ---
 
 ## 리팩토링
@@ -50,7 +56,16 @@
 
 ---
 
-## 기타
+## GIT
 - 하나의 커밋 보다는 여러개의 커밋으로 나누어 작업 과정 표현
-
+- Commit Message Conventions
+  ```text
+  feat (feature)
+  fix (bug fix)
+  docs (documentation)
+  style (formatting, missing semi colons, …)
+  refactor
+  test (when adding missing tests)
+  chore (maintain, package path change, file move)
+  ```
 
