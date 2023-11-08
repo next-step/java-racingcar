@@ -1,6 +1,6 @@
-package step5.result;
+package step5.view;
 
-import step5.racingcar.RacingCar;
+import step5.domain.RacingCar;
 
 import java.util.List;
 

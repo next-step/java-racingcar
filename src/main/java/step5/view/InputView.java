@@ -1,4 +1,6 @@
-package step5.input;
+package step5.view;
+
+import step5.domain.UserInput;
 
 import java.util.Scanner;
 

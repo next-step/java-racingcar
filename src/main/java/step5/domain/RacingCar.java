@@ -1,4 +1,4 @@
-package step5.racingcar;
+package step5.domain;
 
 public class RacingCar implements Comparable<RacingCar> {
     private final String carName;

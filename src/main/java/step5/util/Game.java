@@ -1,10 +1,9 @@
-package step5.game;
+package step5.util;
 
-import step5.input.InputView;
-import step5.input.UserInput;
-import step5.racingcar.RacingCar;
-import step5.random.RandomValueGenerator;
-import step5.result.ResultView;
+import step5.domain.RacingCar;
+import step5.domain.UserInput;
+import step5.view.InputView;
+import step5.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

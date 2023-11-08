@@ -1,4 +1,4 @@
-package step5.input;
+package step5.domain;
 
 import java.util.Arrays;
 
