@@ -1,7 +1,6 @@
 package racingcar;
 
 public class Car {
-
     private int distance;
 
     protected int getDistance() {
@@ -13,5 +12,4 @@ public class Car {
             distance++;
         }
     }
-
 }
