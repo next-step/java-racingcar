@@ -9,6 +9,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class racingCarTest {
 
+    @Test
+    @DisplayName("입력한 자동차 대수를 한 번 움직인 결과로 1 또는 0으로 이루어진 숫자 배열을 반환한다.")
+    public void 랜덤숫자를_정지_또는_전진으로_배열_반환(){
+        Cars cars = new Cars(3);
+        int[] movingResult = RacingCar.addMoving(cars.carArray);
+
+        assertThat(movingResult).hasSize(3);
+        for(int i=0; i<3; i++) {
+            assertThat(movingResult[i]).isBetween(0, 1);
+        }
+    }
+
     @ParameterizedTest
     @DisplayName("입력값이 3이하일 경우 0(정지)을 반환하고, 4이상일 경우 1(전진)을 반환한다.")
     @CsvSource(value = {"0:0","1:0","2:0","3:0","4:1","5:1","6:1","7:1","8:1","9:1"}, delimiter = ':')
