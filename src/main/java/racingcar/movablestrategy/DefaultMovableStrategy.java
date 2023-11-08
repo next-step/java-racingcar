@@ -1,6 +1,6 @@
 package racingcar.movablestrategy;
 
-public class MoveStrategy implements MovableStrategy {
+public class DefaultMovableStrategy implements MovableStrategy {
 
     @Override
     public boolean movable() {
