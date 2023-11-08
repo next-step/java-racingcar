@@ -13,7 +13,7 @@ class RacingTest {
 
     @Test
     void assertGameSetup() {
-        Racing newGame = new Racing();
+        GameSetup newGame = new GameSetup();
         newGame.setupGame(5,2, random);
 
         assertThat(newGame.cars.size()).isEqualTo(5);
@@ -22,7 +22,7 @@ class RacingTest {
 
     @Test
     void assertStartGame() {
-        Racing newGame = new Racing();
+        GameSetup newGame = new GameSetup();
         newGame.setupGame(5,2, random);
         AtomicInteger sumBeforeStartGame = new AtomicInteger();
         AtomicInteger sumAfterStartGame = new AtomicInteger();

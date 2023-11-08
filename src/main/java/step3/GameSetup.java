@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Racing {
+public class GameSetup {
     List<Car> cars = new ArrayList<>();
     int round;
     Random random;
@@ -28,13 +28,7 @@ public class Racing {
 
     private void moveCar(Random random) {
         for (int i = 0; i < cars.size(); i++) {
-            moveIfNumberIsGreaterThanFour(random, i);
-        }
-    }
-
-    private void moveIfNumberIsGreaterThanFour(Random random, int j) {
-        if (random.nextInt(10) >= 4) {
-            cars.get(j).moveCar();
+            cars.get(i).validateForMovce(random);
         }
     }
 }

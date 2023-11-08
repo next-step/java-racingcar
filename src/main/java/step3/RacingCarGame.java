@@ -1,7 +1,5 @@
 package step3;
 
-import java.awt.*;
-import java.util.List;
 import java.util.Random;
 
 public class RacingCarGame {
@@ -10,9 +8,9 @@ public class RacingCarGame {
         InputView.display();
         Random random = new Random();
 
-        Racing racingGame = new Racing();
-        racingGame.setupGame(InputView.numCar, InputView.numAttempt, random);
+        GameSetup gameSetup = new GameSetup();
+        gameSetup.setupGame(InputView.numCar, InputView.numAttempt, random);
 
-        racingGame.startGame();
+        gameSetup.startGame();
     }
 }

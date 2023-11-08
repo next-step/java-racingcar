@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.Random;
+
 public class Car {
     private int distance;
 
@@ -8,10 +10,16 @@ public class Car {
     }
 
     public int getDistance() {
-        return distance;
+        return this.distance;
     }
 
     public void moveCar() {
         this.distance++;
+    }
+
+    public void validateForMovce(Random random) {
+        if (random.nextInt(10) >= 4) {
+            this.moveCar();
+        }
     }
 }
