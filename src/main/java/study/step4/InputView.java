@@ -7,8 +7,10 @@ import static study.step4.InputParser.parse;
 
 public class InputView {
 
-    public static Rule request() {
-        return new Rule(parse(getCarNames()), getMovingTimes());
+    public static Rule requestRule() {
+        Rule rule = new Rule(parse(getCarNames()), getMovingTimes());
+        System.out.println();
+        return rule;
     }
 
     private static String getCarNames() {

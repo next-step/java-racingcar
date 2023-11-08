@@ -17,6 +17,14 @@ public class Rule {
         this.movingTimes = movingTimes;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getMovingTimes() {
+        return movingTimes;
+    }
+
     private static void validate(List<Car> cars, int movingTimes) {
         if (!isValidNumberOfCars(cars)) {
             throw new RacingException("RuleValidationError: 자동차 대수는 2대 이상이여야 합니다.");
