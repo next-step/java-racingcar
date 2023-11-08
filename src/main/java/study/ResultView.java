@@ -1,23 +1,21 @@
 package study;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static study.RacingCar.BLANK;
+import static study.RacingCarGame.*;
 import static study.StringAddCalculator.ZERO;
 
 public class ResultView {
 
     public static void result(ArrayList<RacingCar> carList){
 
-        String champians = BLANK;
         int carNum = carList.size();
         int loopNum = ZERO;
+        String Champions = BLANK;
+
         if(carList.size()==0){
-            System.out.println("차량들이 레이싱을 하지 않았습니다.");
+            throw new IllegalArgumentException("차량들이 레이싱을 하지 않았습니다.");
+
         }
 
         loopNum = carList.get(0).getLoopCount();
@@ -31,10 +29,18 @@ public class ResultView {
             System.out.println();
         }
         /**
-         * sort 출력
+         * Champion 출력
          */
+        int maxCount = maxStep(carList);
 
-        System.out.println("가 최종 우승했습니다.");
+        /**
+         * Champion List 가져오기
+         */
+        ArrayList<RacingCar> championList = championList(carList,maxCount);
+
+        Champions = combineName(championList);
+
+        System.out.println(Champions+"가 최종 우승했습니다.");
 
     }
 

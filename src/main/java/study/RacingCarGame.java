@@ -3,11 +3,12 @@ package study;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static study.RacingCar.CONDITION_VAL;
+
 public class RacingCarGame {
 
     public static final int ZERO = 0;
-    public static final boolean VALID = true;
-    public static final boolean INVALID = false;
+
     public static final int THRESHOLD = 5;
 
 
@@ -17,9 +18,6 @@ public class RacingCarGame {
     public static ArrayList<RacingCar> creatCar(String carText,String carNames, String stepText){
         int carNum = ZERO;
         int loopNum = ZERO;
-        int drive = ZERO;
-        //차량명 유효 체크
-        boolean isValid = VALID;
 
         ArrayList<RacingCar> carList = new ArrayList<RacingCar>();;
 
@@ -33,13 +31,19 @@ public class RacingCarGame {
         }
 
         for (int i=0; i<carNum ;i++){
+            // 차량명 길이 체크
             _checkValid(carNameList[i]);
-            carList.add(new RacingCar(carNameList[i],drive,loopNum,_creatRandom(loopNum)));
+            ArrayList<Double> randomList = creatRandom(loopNum);
+            carList.add(new RacingCar(carNameList[i],countDrive(randomList),loopNum,randomList));
         }
 
         return carList;
     }
 
+    /**
+     * 차량명 길이 체크
+     * @param carName
+     */
     private static void _checkValid(String carName) {
         if(carName.length()> THRESHOLD){
             throw new IllegalArgumentException("자동차 이름은 5자를 초과 하였습니다.");
@@ -49,7 +53,7 @@ public class RacingCarGame {
     /**
      *  RacingCar 생성
      */
-    private static ArrayList<Double> _creatRandom(int loopNum){
+    public static ArrayList<Double> creatRandom(int loopNum){
         ArrayList<Double> randomList = new ArrayList<Double>();
 
         for (int i=0; i<loopNum ;i++){
@@ -101,13 +105,38 @@ public class RacingCarGame {
     /**
      * 4보다 큰값 Count
      */
-    public static int countDrive(Map<Integer, Double> randomListMap){
+    public static int countDrive(ArrayList<Double> randomList){
 
-        Map<Integer, Double> drivenMap = randomListMap.entrySet().stream()
-                .filter(map -> map.getValue() >= 4)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        ArrayList<Double> list = (ArrayList<Double>) randomList.stream()
+                .filter(item -> item >= CONDITION_VAL)
+                .collect(Collectors.toList());
 
-        return drivenMap.size();
+        return list.size();
+    }
+
+    public static int maxStep(ArrayList<RacingCar> carList){
+
+        int maxNum = carList
+                .stream()
+                .mapToInt(car -> car.getDrive())
+                .max().orElseThrow(NoSuchElementException::new);
+
+        return maxNum;
+    }
+
+    public static ArrayList<RacingCar> championList(ArrayList<RacingCar> carList, int maxCount){
+
+        return (ArrayList<RacingCar>) carList.stream()
+                .filter(item -> item.getDrive() == maxCount)
+                .collect(Collectors.toList());
+    }
+
+
+    public static String combineName(ArrayList<RacingCar> champions){
+
+        return champions.stream()
+                .map(RacingCar::getCarName)
+                .collect(Collectors.joining(", "));
     }
 
 }
