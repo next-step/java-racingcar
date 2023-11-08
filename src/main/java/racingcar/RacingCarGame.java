@@ -23,19 +23,6 @@ public class RacingCarGame {
     private List<Car> cars;
     private List<Race> races;
 
-    public RacingCarGame(InputView inputView, ResultView resultView, Rule rule, NumberGenerator numberGenerator) {
-        this.carCount = inputView.readCarCount();
-        this.raceCount = inputView.readRaceCount();
-
-        this.resultView = resultView;
-
-        this.rule = rule;
-        this.numberGenerator = numberGenerator;
-
-        this.cars = new ArrayList<>();
-        this.races = new ArrayList<>();
-    }
-
     public RacingCarGame(int carCount, int raceCount, ResultView resultView, Rule rule, NumberGenerator numberGenerator) {
         this.carCount = carCount;
         this.raceCount = raceCount;
@@ -47,6 +34,10 @@ public class RacingCarGame {
 
         this.cars = new ArrayList<>();
         this.races = new ArrayList<>();
+    }
+
+    public RacingCarGame(InputView inputView, ResultView resultView, Rule rule, NumberGenerator numberGenerator) {
+        this(inputView.readCarCount(), inputView.readRaceCount(), resultView, rule, numberGenerator);
     }
 
     public void start() {
