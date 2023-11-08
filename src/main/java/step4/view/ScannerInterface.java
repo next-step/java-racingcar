@@ -1,4 +1,4 @@
-package step4.controller;
+package step4.view;
 
 public interface ScannerInterface {
 

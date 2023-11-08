@@ -1,7 +1,11 @@
 package step4.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CarRacingPlay {
 
@@ -9,9 +13,9 @@ public class CarRacingPlay {
 
     private final RandomValueGenerator randomValueGenerator;
 
-    public CarRacingPlay(RandomValueGenerator randomValueGenerator, int attendCarNumber) {
+    public CarRacingPlay(RandomValueGenerator randomValueGenerator, List<String> attendCarNames) {
         this.randomValueGenerator = randomValueGenerator;
-        initializeRacingCars(attendCarNumber);
+        initializeRacingCars(attendCarNames);
     }
 
     public List<Car> raceOneCycle() {
@@ -22,9 +26,22 @@ public class CarRacingPlay {
         return cars;
     }
 
-    private void initializeRacingCars(int attendCarNumber) {
-        for (int i = 0; i < attendCarNumber; i++) {
-            cars.add(Car.makeCar());
-        }
+    public ChampionCarsDto findChampions() {
+        Car maxCar = cars.stream()
+                .max(Comparator.comparingInt(Car::getDistance)).get();
+
+        List<Car> carList = cars.stream().filter(car -> car.getDistance() == maxCar.getDistance())
+                .collect(Collectors.toList());
+
+        return new ChampionCarsDto(carList);
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    private void initializeRacingCars(List<String> attendCarNames) {
+        attendCarNames.forEach(carName -> cars.add(Car.makeCar(carName)));
+    }
+
 }
