@@ -1,21 +1,21 @@
 package racingcar;
 
+import racingcar.movablestrategy.DefaultMovableStrategy;
 import racingcar.movablestrategy.MovableStrategy;
-import racingcar.movablestrategy.RandomStrategy;
+import racingcar.movablestrategy.RandomRacingStrategy;
 
 public class Car {
     public static final int MOVE_DISTANCE = 1;
-    public static final int MOVE_CONDITION = 4;
     private int currentPosition = 0;
     private String racerName;
     private MovableStrategy movableStrategy;
 
     public Car() {
-        this("noName",new RandomStrategy(MOVE_CONDITION, 10));
+        this("noName",new DefaultMovableStrategy());
     }
 
     public Car(String racerName) {
-        this(racerName, new RandomStrategy(MOVE_CONDITION, 10));
+        this(racerName, new DefaultMovableStrategy());
     }
 
     public Car(MovableStrategy movableStrategy) {
