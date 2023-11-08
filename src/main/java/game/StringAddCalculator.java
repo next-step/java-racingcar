@@ -1,4 +1,4 @@
-package step2;
+package game;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -8,9 +8,7 @@ public class StringAddCalculator {
 
     private static final String BASIC_DELIMITER = ",|:";
     private static final String SPECIAL_DELIMITER = "//(.)\n(.*)";
-
     private static final String NEGATIVE_NUMBER_ERROR = "문자열에 음수가 포함되어 있습니다.";
-
     private static final Pattern SPECIAL_PATTERN = Pattern.compile(SPECIAL_DELIMITER);
 
     public static int splitAndSum(String numberStr) {
