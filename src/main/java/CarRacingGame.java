@@ -1,13 +1,17 @@
 import java.util.List;
 
 public class CarRacingGame {
-    private List<Car> racingCars;
+    private Cars racingCars;
 
-    private CarRacingGame(List<Car> racingCars) {
+    private CarRacingGame(Cars racingCars) {
         this.racingCars = racingCars;
     }
 
-    public static CarRacingGame start(int howManyCars, int howManyTimesCanTry) {
-        return null;
+    public static CarRacingGame gameSetting(Cars cars) {
+        return new CarRacingGame(cars);
+    }
+
+    public void start() {
+
     }
 }

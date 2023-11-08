@@ -15,8 +15,9 @@ public class Car {
             return;
         }
         distance ++;
+        howManyTimesTry--;
     }
-    private boolean canMove() {
+    public boolean canMove() {
         return howManyTimesTry > 0;
     }
 }
