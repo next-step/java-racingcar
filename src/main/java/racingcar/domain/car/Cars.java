@@ -32,7 +32,7 @@ public class Cars {
     public List<String> getWinners() {
         return getCars()
                 .stream()
-                .filter(car -> car.getPosition() == getMaxPosition())
+                .filter(car -> car.isEqualPosition(getMaxPosition()))
                 .map(Car::getCarName)
                 .collect(Collectors.toUnmodifiableList());
     }

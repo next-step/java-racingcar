@@ -33,6 +33,10 @@ public class Car {
         }
     }
 
+    public boolean isEqualPosition(int otherPosition) {
+        return this.position == otherPosition;
+    }
+
     private void validate(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차의 이름은 비어있을 수 없습니다.");
