@@ -9,7 +9,6 @@ public class RacingResultView {
 
     public static void printResult(Cars cars) {
         System.out.println();
-
         for (Car car : cars.carList()) {
             StringBuffer sb = new StringBuffer();
             printCarPosition(car, sb);
