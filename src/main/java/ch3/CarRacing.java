@@ -63,8 +63,9 @@ public class CarRacing {
         resultView.showResultComment("실행 결과");
         while (executeCount-- > 0) {
             executeRace();
-            resultView.showResultCarRacing(cars);
+            resultView.showCarRacing(cars);
         }
+        resultView.showResultCarRacing(cars);
     }
 
     public List<Car> viewResultRaceCars() {
