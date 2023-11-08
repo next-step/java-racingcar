@@ -26,7 +26,7 @@ public class Game {
         ResultView.printWinners(toNames(extractWinners(cars)));
     }
 
-    private static List<RacingCar> makeCars(final String[] carNames) {
+    public static List<RacingCar> makeCars(final String[] carNames) {
         List<RacingCar> cars = new ArrayList<>();
 
         for (final String carName : carNames) {
