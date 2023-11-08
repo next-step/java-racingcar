@@ -33,7 +33,7 @@ public class CarRacingTest {
 
     @Test
     void 자동차를_받은_갯수만큼_자동차시행숫자가_생긴다() {
-        carRacing.makingCar(4);
+        carRacing.makingCar("pobi,karl,evan,david");
         assertAll(() -> {
             assertEquals(carRacing.getExecuteNumbers().size(), 4);
             assertEquals(carRacing.getExecuteNumbers().peek().getClass(), Integer.class);
@@ -43,7 +43,7 @@ public class CarRacingTest {
 
     @Test
     void 시행하면_랜덤숫자가_변한다() {
-        carRacing.makingCar(3);
+        carRacing.makingCar("pobi,karl,evan");
         List<Integer> actual = new ArrayList<>(carRacing.getExecuteNumbers());
         carRacing.executeRace();
         List<Integer> result = new ArrayList<>(carRacing.getExecuteNumbers());
