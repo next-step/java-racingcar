@@ -15,7 +15,6 @@ public class TextManipulator {
 
     public static String joinTextWithComma(String[] texts){
         return String.join(", ", texts);
-
     }
 
 }
