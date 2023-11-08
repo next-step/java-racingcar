@@ -5,7 +5,7 @@ public class Car {
 	private final int MOVE_BOUND;
 	private final int MOVE_INTERVAL;
 
-	private int id;
+	private String name;
 	private int position;
 
 	public Car(int bound, int interval, int position) {
@@ -19,12 +19,12 @@ public class Car {
 			this.position += MOVE_INTERVAL;
 	}
 
-	public int getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getPosition() {

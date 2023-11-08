@@ -5,6 +5,15 @@ public class CarList {
 	private final Car[] cars;
 	private final int numberOfCars;
 
+	public CarList(int numberOfCars, String[] carNames) {
+		this.numberOfCars = numberOfCars;
+		cars = new Car[numberOfCars];
+		for (int i = 0; i < this.numberOfCars; i++) {
+			cars[i] = new Car(4, 1, 1);
+			cars[i].setName(carNames[i]);
+		}
+	}
+
 	public CarList(int numberOfCars) {
 		this.numberOfCars = numberOfCars;
 		cars = new Car[numberOfCars];

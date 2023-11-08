@@ -9,11 +9,13 @@ import racing.view.ResultView;
 public class Main {
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
-		int numberOfCars = inputView.cars();
+
+		String[] inputs = inputView.cars();
+		int numberOfCars = inputs.length;
 		int numberOfAttempts = inputView.attempts();
 
-		Game game = new Game(new RandomReturnZeroToNine(9));
-		CarList cars = new CarList(numberOfCars);
+		Game game = new Game(new RandomReturnZeroToNine());
+		CarList cars = new CarList(numberOfCars, inputs);
 
 		ResultView resultView = new ResultView();
 		for (int i = 0; i < numberOfAttempts; i++) {
