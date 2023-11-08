@@ -1,41 +1,23 @@
-package car_racing;
+package racing;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class InputView {
-    private int number;
-    private int count;
+    private static final String NUMBER = "number";
+    private static final String COUNT = "count";
 
-    public int number() {
-        return this.number;
-    }
+    public static Map<String, Integer> inputResult() {
+        Map<String, Integer> input = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
 
-    public int count() {
-        return count;
-    }
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        input.put(NUMBER, scanner.nextInt());
 
-    private InputView(Builder builder) {
-        this.number = builder.number;
-        this.count = builder.count;
-    }
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        input.put(COUNT, scanner.nextInt());
 
-    public static class Builder {
-        private int number;
-        private int count;
-
-        public Builder() {
-        }
-
-        public Builder number(int number) {
-            this.number = number;
-            return this;
-        }
-
-        public Builder count(int count) {
-            this.count = count;
-            return this;
-        }
-
-        public  InputView build() {
-            return new InputView(this);
-        }
+        return input;
     }
 }

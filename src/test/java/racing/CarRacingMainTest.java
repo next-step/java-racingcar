@@ -1,6 +1,4 @@
-package car_racing;
-
-import static org.junit.jupiter.api.Assertions.*;
+package racing;
 
 class CarRacingMainTest {
 
