@@ -1,20 +1,19 @@
 package racingcar.domain;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class SimpleRacingCarGame {
+public class RacingCarGame {
 
         private final String[] carNames;
-        public SimpleRacingCarGame(String[] carNames) {
+        public RacingCarGame(String[] carNames) {
                 this.carNames = carNames;
         }
 
         public List<Car> joinCars() {
-                return IntStream.range(0, carNames.length).mapToObj(idx -> new Car(carNames[idx]))
-                        .collect(Collectors.toList());
+                return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
         }
 
         public void moveOneRound(List<Car> cars) {
