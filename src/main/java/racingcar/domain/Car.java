@@ -37,14 +37,12 @@ public class Car {
         return grade;
     }
 
-    public CarStatus game() {
+    public void game() {
         GameNumber gameNumber = randomPicker.pickNumber();
 
         if (gameNumber.isMovableNumber()) {
             moveForward();
         }
-
-        return new CarStatus(name, grade);
     }
 
     private void moveForward() {
@@ -53,5 +51,9 @@ public class Car {
 
     public boolean isWinner(int winnerGrade) {
         return grade == winnerGrade;
+    }
+
+    public String status() {
+        return name + " : " + "-".repeat(Math.max(0, grade));
     }
 }

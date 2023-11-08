@@ -21,14 +21,10 @@ public class Cars {
         return new Cars(value);
     }
 
-    public List<String> game() {
-        List<String> results = new ArrayList<>(value.size());
-
+    public void game() {
         for (Car car: value) {
-            results.add(car.game().toString());
+            car.game();
         }
-
-        return results;
     }
 
     public List<String> winnerNames() {
@@ -56,5 +52,15 @@ public class Cars {
         }
 
         return maxGrade;
+    }
+
+    public List<String> carStatuses() {
+        List<String> carStatus = new ArrayList<>(value.size());
+
+        for (Car car: value) {
+            carStatus.add(car.status());
+        }
+
+        return carStatus;
     }
 }

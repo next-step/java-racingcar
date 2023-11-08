@@ -16,15 +16,15 @@ public class RacingGameRunner {
 
         play(cars, moveCount);
 
-        ResultView.printWinners(cars.winnerNames());
+        ResultView.printWinners(cars);
     }
 
     private static void play(Cars cars, int moveCount) {
         ResultView.printResultStart();
 
         for (int idx = 0; idx < moveCount; idx++) {
-            List<String> results = cars.game();
-            ResultView.printOneGameResult(results);
+            cars.game();
+            ResultView.printResult(cars);
         }
     }
 }
