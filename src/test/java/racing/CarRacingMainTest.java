@@ -1,5 +1,0 @@
-package racing;
-
-class CarRacingMainTest {
-
-}
