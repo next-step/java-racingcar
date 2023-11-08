@@ -10,12 +10,21 @@ public class Car {
         this.position = Position.startPosition();
     }
 
+    public Car(String name, int position) {
+        this.name = Name.from(name);
+        this.position = new Position(position);
+    }
+
     public String getName() {
         return this.name.getName();
     }
 
     public Integer getPosition() {
         return this.position.getPosition();
+    }
+
+    public boolean isSamePosition(Car car) {
+        return this.position.equals(car.position);
     }
 
     public void move(int position) {

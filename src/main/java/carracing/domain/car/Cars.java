@@ -2,9 +2,10 @@ package carracing.domain.car;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Comparator.comparing;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
@@ -26,11 +27,12 @@ public class Cars {
         cars.forEach((car) -> car.move(i));
     }
 
-    private int getMaxPosition() {
-        return this.cars.stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
+    private Car getMaxPosition() {
+        return this.cars.stream().max(comparing(Car::getPosition)).get();
     }
 
     public List<Car> getFastestCars() {
-        return this.cars.stream().filter(car -> car.getPosition().equals(getMaxPosition())).collect(Collectors.toList());
+        Car maxPosition = getMaxPosition();
+        return this.cars.stream().filter(maxPosition::isSamePosition).collect(Collectors.toList());
     }
 }
