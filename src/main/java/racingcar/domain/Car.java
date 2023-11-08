@@ -4,6 +4,8 @@ public class Car {
 
     private static final int MOVE_GRADE = 1;
 
+    private static final int MAX_LENGTH_OF_NAME = 5;
+
     private final RandomPicker randomPicker;
 
     private final String name;
@@ -26,7 +28,7 @@ public class Car {
     }
 
     private static void checkNameIsValid(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_LENGTH_OF_NAME) {
             throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
         }
     }
@@ -35,14 +37,12 @@ public class Car {
         return grade;
     }
 
-    public CarStatus game() {
+    public void game() {
         GameNumber gameNumber = randomPicker.pickNumber();
 
         if (gameNumber.isMovableNumber()) {
             moveForward();
         }
-
-        return new CarStatus(name, grade);
     }
 
     private void moveForward() {
@@ -51,5 +51,9 @@ public class Car {
 
     public boolean isWinner(int winnerGrade) {
         return grade == winnerGrade;
+    }
+
+    public String status() {
+        return name + " : " + "-".repeat(Math.max(0, grade));
     }
 }

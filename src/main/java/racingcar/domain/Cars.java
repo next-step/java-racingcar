@@ -7,11 +7,11 @@ public class Cars {
 
     private final List<Car> value;
 
-    public Cars(List<Car> value) {
+    private Cars(List<Car> value) {
         this.value = value;
     }
 
-    public static Cars init(List<String> carNames) {
+    public static Cars creatCarsByNames(List<String> carNames) {
         List<Car> value = new ArrayList<>(carNames.size());
 
         for (String carName: carNames) {
@@ -21,14 +21,14 @@ public class Cars {
         return new Cars(value);
     }
 
-    public List<String> game() {
-        List<String> results = new ArrayList<>(value.size());
+    public static Cars fromCars(List<Car> cars) {
+        return new Cars(cars);
+    }
 
+    public void game() {
         for (Car car: value) {
-            results.add(car.game().toString());
+            car.game();
         }
-
-        return results;
     }
 
     public List<String> winnerNames() {
@@ -56,5 +56,15 @@ public class Cars {
         }
 
         return maxGrade;
+    }
+
+    public List<String> carStatuses() {
+        List<String> carStatus = new ArrayList<>(value.size());
+
+        for (Car car: value) {
+            carStatus.add(car.status());
+        }
+
+        return carStatus;
     }
 }
