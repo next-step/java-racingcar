@@ -7,15 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-
-    public static final int MOVABLE_NUMBER = 4;
     private Cars cars;
 
     @BeforeEach
     void setUp() {
         List<Car> carList = List.of(
-            new Car(new CarName("pobi"), new MovingValidator(new TestMovingStrategy(
-                MOVABLE_NUMBER))));
+            new Car(new CarName("pobi")));
         cars = new Cars(carList);
     }
 
@@ -30,10 +27,8 @@ class CarsTest {
     @Test
     void 자동차들이_움직인다() {
         List<Car> carList = List.of(
-            new Car(new CarName("pobi"), new Distance(1),
-                new MovingValidator(new TestMovingStrategy(
-                    MOVABLE_NUMBER))));
-        cars.move();
+            new Car(new CarName("pobi"), new Distance(1)));
+        cars.move(0);
 
         Cars actual = this.cars;
         Cars expected = new Cars(carList);
@@ -50,19 +45,16 @@ class CarsTest {
     }
 
     @Test
-    void 자동차의_요소를_추출_할_수_있다() {
-        Car actual = cars.find(0);
-        Car expected = new Car(new CarName("pobi"),
-            new MovingValidator(new TestMovingStrategy(MOVABLE_NUMBER)));
+    void 자동차들을_생성_할_수_있다() {
+        boolean actual = cars.contain(Cars.from(new String[]{"pobi"}));
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isTrue();
     }
 
     @Test
     void 자동차의_모든_요소를_추출_할_수_있다() {
         List<Car> actual = List.of(
-            new Car(new CarName("pobi"), new MovingValidator(new TestMovingStrategy(
-                MOVABLE_NUMBER))));
+            new Car(new CarName("pobi")));
         List<Car> expected = cars.findAll();
 
         assertThat(actual).isEqualTo(expected);

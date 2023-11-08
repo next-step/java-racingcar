@@ -8,10 +8,10 @@ public class Cars {
 
     private final List<Car> carList;
 
-    public static Cars from(String[] names, MovingValidator movingValidator) {
+    public static Cars from(String[] names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            Car car = new Car(new CarName(name), movingValidator);
+            Car car = new Car(new CarName(name));
             cars.add(car);
         }
         return new Cars(cars);
@@ -25,10 +25,9 @@ public class Cars {
         return this.carList.size();
     }
 
-    public void move() {
-        for (Car car : this.carList) {
-            car.move();
-        }
+    public void move(int index) {
+        Car car = this.carList.get(index);
+        car.move();
     }
 
     public List<Distance> movingDistances() {
@@ -40,8 +39,8 @@ public class Cars {
         return distances;
     }
 
-    public Car find(int index) {
-        return carList.get(index);
+    public boolean contain(Cars cars) {
+        return equals(cars);
     }
 
     public List<Car> findAll() {
@@ -67,17 +66,10 @@ public class Cars {
         Distance maxDistance = new Distance();
 
         for (Car car : this.carList) {
-            maxDistance = max(maxDistance, car.movingDistance());
+            maxDistance = maxDistance.getLonger(car.movingDistance());
         }
 
         return maxDistance;
-    }
-
-    private Distance max(Distance existingDistance, Distance comparisonDistance) {
-        if (existingDistance.isLongger(comparisonDistance)) {
-            return existingDistance;
-        }
-        return comparisonDistance;
     }
 
     public List<CarName> names() {

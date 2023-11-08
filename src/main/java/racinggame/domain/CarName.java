@@ -1,7 +1,7 @@
 package racinggame.domain;
 
 import racinggame.domain.exception.InputIsBlankException;
-import racinggame.domain.exception.InputOverFiveLengthException;
+import racinggame.domain.exception.InputOverLengthException;
 
 public class CarName {
 
@@ -13,7 +13,7 @@ public class CarName {
             throw new InputIsBlankException();
         }
         if (isOverFiveLength(name)) {
-            throw new InputOverFiveLengthException();
+            throw new InputOverLengthException();
         }
 
         this.name = name;

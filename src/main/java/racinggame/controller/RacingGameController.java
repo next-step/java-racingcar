@@ -1,11 +1,9 @@
 package racinggame.controller;
 
-import java.util.Random;
 import java.util.Scanner;
 import racinggame.domain.Cars;
-import racinggame.domain.MovingValidator;
 import racinggame.domain.RacingGame;
-import racinggame.domain.strategy.RandomNumberMovingStrategy;
+import racinggame.domain.strategy.RandomMovingStrategy;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
@@ -17,15 +15,15 @@ public class RacingGameController {
         String[] carNames = InputView.carNames(scanner);
         int number = InputView.playCount(scanner);
 
-        RacingGame racingGame = new RacingGame(Cars.from(carNames, new MovingValidator(new RandomNumberMovingStrategy(new Random()))));
+        RacingGame racingGame = new RacingGame(Cars.from(carNames));
 
         ResultView.br();
         ResultView.resultSign();
         for (int i = 0; i < number; i++) {
-            racingGame.play();
+            racingGame.play(new RandomMovingStrategy());
             ResultView.report(racingGame.cars());
-            ResultView.winners(racingGame.winners());
         }
+        ResultView.winners(racingGame.winners());
     }
 
 }
