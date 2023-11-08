@@ -7,8 +7,8 @@ import racingcar.view.ResultView;
 
 public class RacingGameController {
     public static void main(String[] args) {
-        String inputCarName = InputView.getCarCount();
-        int totalGameCont = InputView.getTotalGameCont();
+        String inputCarName = InputView.printRequestCarName();
+        int totalGameCont = InputView.printRequestGameCount();
 
         RacingGame racingGame = new RacingGame(inputCarName, totalGameCont);
         while (!racingGame.isEndGame()) {
