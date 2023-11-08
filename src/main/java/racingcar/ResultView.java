@@ -1,4 +1,4 @@
-package racingCar;
+package racingcar;
 
 public class ResultView {
     public static void printRacingResult(Car car) {
