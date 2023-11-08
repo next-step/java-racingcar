@@ -14,7 +14,7 @@ public class ResultView {
     public void showCarRacing(List<Car> carList) {
         for (Car car : carList) {
             System.out.print(car.name() + " : ");
-            System.out.println(SYMBOL.repeat(car.getPosition()));
+            System.out.println(SYMBOL.repeat(car.position()));
         }
         System.out.println();
     }

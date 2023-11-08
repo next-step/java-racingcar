@@ -5,7 +5,7 @@ public class Car {
     private int position = 0;
     private String name;
 
-    public int getPosition() {
+    public int position() {
         return position;
     }
 

@@ -13,6 +13,6 @@
 
 ## 리뷰 개선 사항
 
-- [] carRacing.size()! (디미터의 법칙 적용)
+- [x] carRacing.size()! (디미터의 법칙 적용)
 - [x] 움직임 조건을 메소드화
 - [x] getter 지양
