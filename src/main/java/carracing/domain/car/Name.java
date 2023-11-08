@@ -7,8 +7,8 @@ public class Name {
     private final String name;
 
     private Name(String name) {
-        this.name = name;
         validateMaximumLength();
+        this.name = name;
     }
 
     public String getName() {
