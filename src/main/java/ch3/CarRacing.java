@@ -78,11 +78,8 @@ public class CarRacing {
     }
 
     private List<Car> findWinningCars(int maxPosition) {
-        List<Car> winningCars = new ArrayList<>();
-        for (Car car : cars) {
-            if (maxPosition == car.getPosition())
-                winningCars.add(car);
-        }
+        List<Car> winningCars = new ArrayList<>(cars);
+        winningCars.removeIf(it -> !it.isWinningCar(maxPosition));
         return winningCars;
     }
 
