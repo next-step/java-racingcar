@@ -1,12 +1,13 @@
 package racing;
 
-import racing.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import static racing.view.ResultView.*;
+
 public class Racing {
     private List<Car> carList = new ArrayList<>();
+    private final NumberGenerator numberGenerator = new RandomGenerator();
 
     public Racing(int carCount){
         for(int i=0; i<carCount; i++){
@@ -15,7 +16,7 @@ public class Racing {
     }
 
     public void race(int tryCount){
-        ResultView.printResultMessage();
+        printResultMessage();
         for(int i=0; i<tryCount; i++){
             roundStart();
         }
@@ -23,9 +24,13 @@ public class Racing {
 
     public void roundStart(){
         for(Car car : carList){
-            car.turn(RandomGenerator.getNumber());
-            ResultView.printString(car.drawPosition());
+            car.turn(numberGenerator);
         }
-        ResultView.printNewLine();
+        print();
+    }
+
+    public void print(){
+        printPositionList(carList);
+        printNewLine();
     }
 }
