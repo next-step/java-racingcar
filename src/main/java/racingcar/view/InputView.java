@@ -12,11 +12,7 @@ public class InputView {
 
     public static String getCarCount() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        try {
-            return scanner.nextLine();
-        } catch (InputMismatchException exception) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
-        }
+        return scanner.nextLine();
     }
 
     public static int getTotalGameCont() {
