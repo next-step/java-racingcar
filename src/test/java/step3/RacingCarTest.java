@@ -2,38 +2,36 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
     @Test
-    @DisplayName("자동차의 이동 여부를 결정하는 random 값은 0에서 9사이이다.")
-    void carMoveException() {
+    @DisplayName("자동차는 특정 조건을 만족할 때, 거리 1만큼 이동한다..")
+    void 자동차_이동() {
         // given
         RacingCar car = new RacingCar();
+        MovingStrategy forwardStrategy = () -> true;
 
         // when
-        int randomInt = car.getRandomInt();
+        car.move(forwardStrategy);
 
         // then
-        assertThat(randomInt).isLessThan(10);
-        assertThat(randomInt).isGreaterThan(-1);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
-    @ParameterizedTest
-    @DisplayName("자동차는 random 값이 4이상 9이하일 경우 이동하고, 0이상 3이하일 경우 정지한다.")
-    @CsvSource(value = {"1:0", "2:0", "6:1", "7:1"}, delimiter = ':')
-    void move(int randomInt, int distance) {
+    @Test
+    @DisplayName("자동차는 특정 조건을 만족하지 못하면, 정지한다.")
+    void 자동차_정지() {
         // given
         RacingCar car = new RacingCar();
+        MovingStrategy nonForwardStrategy = () -> false;
 
         // when
-        car.move(randomInt);
+        car.move(nonForwardStrategy);
 
         // then
-        assertThat(car.getDistance()).isEqualTo(distance);
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 }

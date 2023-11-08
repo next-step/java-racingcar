@@ -1,5 +1,8 @@
 package step3;
 
+import step3.util.InputView;
+import step3.util.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +10,7 @@ public class RacingCarGame {
     static int carCount;
     static int attemptCount;
     static List<RacingCar> cars = new ArrayList<>();
+    static MovingStrategy strategy = new RandomNumMovingStrategy();
 
     public static void main(String[] args) {
         carCount = InputView.inputCarCount();
@@ -31,7 +35,7 @@ public class RacingCarGame {
 
     private static void race() {
         for (RacingCar car : cars) {
-            car.move(car.getRandomInt());
+            car.move(strategy);
             ResultView.showResult(car.getDistance());
         }
     }
