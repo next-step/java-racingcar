@@ -21,7 +21,7 @@ class RacingTest {
 
     @Test
     void assertStartGame() {
-        GameSetup newGame = new GameSetup(5,2, random);
+        GameSetup newGame = new GameSetup(5,3, random);
         AtomicInteger sumBeforeStartGame = new AtomicInteger();
         AtomicInteger sumAfterStartGame = new AtomicInteger();
 
@@ -31,10 +31,20 @@ class RacingTest {
 
         assertThat(sumBeforeStartGame.get()).isEqualTo(0);
 
-        newGame.moveCar(random);
+        for (int i = 0; i < newGame.round; i++) {
+            newGame.moveCar(random);
+        }
         newGame.cars.forEach(car -> {
             sumAfterStartGame.set(+car.getDistance());
         });
         assertThat(sumAfterStartGame.get()).isGreaterThan(0);
+    }
+
+    @Test
+    void assertCar() {
+        Car car = new Car();
+        car.moveCar();
+
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
