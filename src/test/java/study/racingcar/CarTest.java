@@ -1,13 +1,14 @@
 package study.racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+
+import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatNoException;
+import study.racingcar.fake.FailRandomGenratorStub;
+import study.racingcar.fake.SuccessRandomGenratorStub;
 
 public class CarTest {
 

@@ -1,10 +1,11 @@
-package study.racingcar;
+package study.racingcar.fake;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
 import java.util.Random;
+import study.racingcar.RandomGenerator;
 
 public class RandomGeneratorTest {
 
