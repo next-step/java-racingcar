@@ -20,7 +20,7 @@ public class Cars {
     }
 
     private void moveCar(Rule rule, Car car) {
-        if(movable(rule)) car.move();
+        if (movable(rule)) car.move();
     }
 
     private boolean movable(Rule rule) {

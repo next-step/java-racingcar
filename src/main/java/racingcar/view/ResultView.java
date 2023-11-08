@@ -18,7 +18,6 @@ public class ResultView {
     private void printRaces(List<Race> races) {
         for (Race race : races) {
             printRaceRecords(race);
-            System.out.println();
         }
     }
 
@@ -26,6 +25,7 @@ public class ResultView {
         for (RaceRecord raceRecord : race.raceRecords().list()) {
             System.out.println(raceRecord.car().name() + ":" + createPath(raceRecord.distance()));
         }
+        System.out.println();
     }
 
     private String createPath(int count) {
@@ -39,16 +39,21 @@ public class ResultView {
     }
 
     private String winnerMessage(List<Car> winners) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
-        for (Car winner : winners) {
-            sb.append(winner.name() + ",");
+        for (int index = 0; index < winners.size(); index++) {
+            stringBuilder.append(winners.get(index).name());
+            addComma(winners, index, stringBuilder);
         }
 
-        return String.format(WINNER_MESSAGE, removeLastComma(sb));
+        return String.format(WINNER_MESSAGE, stringBuilder);
     }
 
-    private String removeLastComma(StringBuilder sb) {
-        return sb.deleteCharAt(sb.length() - 1).toString();
+    private void addComma(List<Car> winners, int i, StringBuilder sb) {
+        if(notLastIndex(winners, i)) sb.append(",");
+    }
+
+    private boolean notLastIndex(List<Car> winners, int i) {
+        return winners.size() - 1 > i;
     }
 }

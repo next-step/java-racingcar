@@ -42,9 +42,8 @@ public class RaceRecords {
 
     private RaceRecord findByMaxRaceRecord() {
         Comparator<RaceRecord> comparatorByDistance = Comparator.comparingInt(RaceRecord::distance);
-        RaceRecord maxRecord = raceRecords.stream()
+        return raceRecords.stream()
                 .max(comparatorByDistance)
                 .orElseThrow(NoSuchFieldError::new);
-        return maxRecord;
     }
 }

@@ -44,11 +44,11 @@ public class RacingCarGame {
     }
 
     private void createCar() {
-        if(isCountView()) {
+        if (isCountView()) {
             createCarByCount((Integer) inputView.readCar());
         }
 
-        if (isStringView()){
+        if (isStringView()) {
             createCarByNames((String[]) inputView.readCar());
         }
     }
@@ -67,7 +67,7 @@ public class RacingCarGame {
         }
     }
 
-    private void createRace(){
+    private void createRace() {
         createRaceByCount((Integer) inputView.readRace());
     }
 
