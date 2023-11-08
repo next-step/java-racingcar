@@ -10,8 +10,7 @@ public class RaceService {
 
     public static void startRace(List<Car> cars) {
         for (Car car : cars) {
-            if (car.isMovable(random.nextInt(10)))
-                car.moveForward();
+            car.moveForwardByCondition(random.nextInt(10));
         }
     }
 }

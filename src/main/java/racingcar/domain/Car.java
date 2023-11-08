@@ -12,11 +12,13 @@ public class Car {
         return position;
     }
 
-    public void moveForward() {
-        this.position++;
+    public void moveForwardByCondition(int number) {
+        if (isMovable(number)) {
+            this.position++;
+        }
     }
 
-    public boolean isMovable(int randomNumber) {
+    private boolean isMovable(int randomNumber) {
         return randomNumber > MOVE_CONDITION;
     }
 }
