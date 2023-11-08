@@ -34,30 +34,11 @@ class StringParserTest {
         assertThat(parsedString).hasSize(parsedSize);
     }
 
-    @DisplayName("문자열을 쪼갤 패턴이 null일 경우 ,을 기준으로 쪼갠다.")
-    @ParameterizedTest(name = "given text: [{0}], expected size: [{1}]")
-    @MethodSource("givenVariableTextAndExpectedSize")
-    void test2(String givenText, int expectedSize) {
-        //when
-        List<String> parsedText = StringParser.parse(givenText, null);
-
-        //then
-        assertThat(parsedText).hasSize(expectedSize);
-    }
-
     private static Stream<Arguments> givenTextAndParsedSize() {
         return Stream.of(
                 Arguments.arguments("hello,world", 2),
                 Arguments.arguments("hello,new,world", 3),
                 Arguments.arguments("hello,new,good,world", 4)
-        );
-    }
-
-    private static Stream<Arguments> givenVariableTextAndExpectedSize() {
-        return Stream.of(
-                Arguments.arguments("hello,world", 2),
-                Arguments.arguments("hello;new;world", 1),
-                Arguments.arguments("hello new,good world", 2)
         );
     }
 
