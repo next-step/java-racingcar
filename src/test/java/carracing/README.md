@@ -27,3 +27,40 @@
 
 - [x] 문자열계산기를 책임사슬패턴으로 구현해본다.
 - [X] 레이싱을 전략패턴으로 구현해본다.
+
+---
+# Step4
+## Step3 리뷰반영 TODO
+- NotNumberException -> NumberFormatException (자바표준 Exception으로 변경)
+- RandomPoint 랜덤넘버 상수화
+- TrackHistory를 dto로 생각하고 분리하기
+    - CarRace에서 게임 횟수로 동작하게 하고 List<CarRaceResponse>로 쌓이게 구현
+    - Clonable 제거
+
+## 기능 요구사항
+- 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
+- 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+- 자동차 이름은 쉼표(,)를 기준으로 구분한다.
+- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
+
+
+## TODO
+- inputView에서 이름목록 추출
+- 자동차에 이름 필드 추가, 제한사항 5글자
+- CarsResponse에 이름도 변환
+- Track에서 우승자 확인하는 기능 추가
+- CarRaseResponse에 우승자 필드 추가
+- OutputView에서 우승자 필드 출력 추가
+
+---
+# Step5
+## Step4 리뷰반영 TODO
+- Track 클래스 제거하기
+  - 이동 전략은 Car의 Move
+  - run, winners는 Cars로
+- Position 클래스 래핑
+- 우승자 구하는 코드 리팩토링
+
+## TODO
+- Response에는 값만 들어가고 화면 보여주는 로직은 OutputView로 분리
+- InputView와 Request분리하기
