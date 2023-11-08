@@ -4,18 +4,17 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class ResultView {
-    private final Map<Integer, LinkedList<String>> resultMap;
+    private final Map<Integer, Integer> resultMap;
 
-    public ResultView(Map<Integer, LinkedList<String>> resultMap) {
+    public ResultView(Map<Integer, Integer> resultMap) {
         this.resultMap = resultMap;
     }
 
-    public void printResult() {
-
+    public void printResult(char displayChar) {
         for (Integer key : resultMap.keySet()) {
             System.out.print(key + " : ");
-            for (String value : resultMap.get(key)) {
-                System.out.print(value);
+            for (int i = 0; i < resultMap.get(key); i++) {
+                System.out.print(displayChar);
             }
             System.out.println();
         }

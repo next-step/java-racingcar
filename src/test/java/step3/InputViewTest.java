@@ -10,13 +10,12 @@ class InputViewTest {
     @ParameterizedTest
     @CsvSource(value = {"1:2", "3:4", "5:6"}, delimiter = ':')
     public void processTest(int carNumber, int tryCount) {
-        ServiceLogic serviceLogic = new ServiceLogic();
-        serviceLogic.process(carNumber, tryCount);
-
-        assertThat(serviceLogic.getResultMap().size()).isEqualTo(carNumber);
-
-        serviceLogic.getResultMap().forEach((integer, strings) -> {
-            assertThat(strings.size()).isLessThanOrEqualTo(tryCount);
+        MoveCarStatus moveCarStatus = new MoveCarStatus(carNumber);
+        MoveCars moveCars = new MoveCars(tryCount, 4);
+        moveCars.process(moveCarStatus, new ResultView(moveCarStatus.getResultMap()));
+        assertThat(moveCarStatus.getResultMap().size()).isEqualTo(carNumber);
+        moveCarStatus.getResultMap().forEach((integer1, integer2) -> {
+            assertThat(integer2).isLessThanOrEqualTo(tryCount);
         });
 
     }
