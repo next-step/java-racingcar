@@ -4,19 +4,19 @@ import java.util.List;
 
 public class Racing {
 
-    private RacingCars racingCars;
+    private final RacingCars racingCars;
 
     public Racing() {
         racingCars = new RacingCars();
     }
 
-    public void start(int carCount, int tryCount) {
-        addRacingCars(carCount);
+    public void start(String[] carsName, int tryCount) {
+        addRacingCars(carsName, tryCount);
         move(tryCount);
     }
 
-    private void addRacingCars(int carCount) {
-        racingCars.addCar(carCount);
+    private void addRacingCars(String[] carsName, int tryCount) {
+        racingCars.addCar(carsName);
     }
 
     private void move(int tryCount) {

@@ -7,8 +7,8 @@ import study.carracing.util.Validator;
 
 public class RacingController {
 
-    private InputView inputView;
-    private ResultView resultView;
+    private final InputView inputView;
+    private final ResultView resultView;
 
     public RacingController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
@@ -16,15 +16,14 @@ public class RacingController {
     }
 
     public Racing start() {
-        final int carCount = Validator.validateInput(inputView.inputCarCount());
-        final int tryCount = Validator.validateInput(inputView.inputTryCount());
+        final String[] carsName = Validator.validateCarName(inputView.inputCarsName());
+        final int tryCount = Validator.validateNumber(inputView.inputTryCount());
 
         resultView.outputTitle();
         Racing racing = new Racing();
-        racing.start(carCount, tryCount);
+        racing.start(carsName, tryCount);
         resultView.outputResult(racing.getRacingCars());
 
         return racing;
     }
-
 }
