@@ -1,16 +1,15 @@
 package racingcar.domain;
 
 public class Car {
-    private int forwardCnt;
-    private int randomNumber;
-    private static final int CONDITION_NUMBER = 4;
 
-    public Car(int forwardCnt, int randomNumber) {
-        this.forwardCnt = forwardCnt;
-        this.randomNumber = randomNumber;
+    private static final int CONDITION_NUMBER = 4;
+    private int forwardCnt;
+
+    public Car() {
+        this.forwardCnt = 0;
     }
 
-    public void moveForward() {
+    public void moveForward(int randomNumber) {
         if (randomNumber >= CONDITION_NUMBER) {
             forwardCnt++;
         }

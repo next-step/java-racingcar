@@ -1,14 +1,17 @@
 package racingcar.ui;
 
 import java.util.Scanner;
+
 //        RacingInputView inputView = new RacingInputView(new Scanner(System.in));
 public class RacingInputView {
+
     private static Scanner scanner;
+
     static {
         scanner = new Scanner(System.in);
     }
 
-    public static void initScanner(Scanner scanner){
+    public static void initScanner(Scanner scanner) {
         RacingInputView.scanner = scanner;
     }
 

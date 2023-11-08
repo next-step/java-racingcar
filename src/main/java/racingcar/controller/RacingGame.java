@@ -1,41 +1,42 @@
 package racingcar.controller;
 
+import java.util.Random;
 import racingcar.domain.Car;
-import racingcar.util.RandomNumber;
-
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.domain.Cars;
 
 public class RacingGame {
+
     private int carCount;
     private int tryCount;
-    private List<Car> cars;
+    private static final int RANDOM_MAX_BOUND = 10;
+    private Cars cars;
 
     public RacingGame(int carCount, int tryCount) {
         this.carCount = carCount;
         this.tryCount = tryCount;
     }
 
-    public void startRacing() {
-        cars = new ArrayList<>();
-        for (int i = 0; i <= carCount; i++) {
-            cars.add(new Car(0, RandomNumber.getNumber()));
+    public Cars initRacing() {
+        cars = new Cars();
+        for (int i = 0; i < carCount; i++) {
+            cars.addCar(new Car());
         }
-        moveCar(cars);
-        tryCount--;
+        System.out.println("실행결과");
+        return cars;
     }
 
-    private void moveCar(List<Car> cars) {
-        for (Car car : cars) {
-            car.moveForward();
+    private void moveCar(Cars cars) {
+        for (Car car : cars.carList()) {
+            car.moveForward(new Random().nextInt(RANDOM_MAX_BOUND));
         }
     }
 
     public boolean isEndGame() {
-        return tryCount == 0 ? true : false;
+        return tryCount > 0 ? false : true;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public void start() {
+        moveCar(cars);
+        tryCount--;
     }
 }

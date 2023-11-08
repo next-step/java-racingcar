@@ -1,15 +1,16 @@
 package racingcar.ui;
 
 import racingcar.domain.Car;
-
-import java.util.List;
+import racingcar.domain.Cars;
 
 public class RacingResultView {
+
     private static final String CAR_PRINT = "-";
 
-    public static void printResult(List<Car> cars) {
+    public static void printResult(Cars cars) {
         System.out.println();
-        for (Car car : cars) {
+
+        for (Car car : cars.carList()) {
             StringBuffer sb = new StringBuffer();
             printCarPosition(car, sb);
         }
