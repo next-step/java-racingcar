@@ -3,7 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.NumberGeneratorImp;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +11,7 @@ class CarsTest {
 
     @BeforeEach
     void setUp(){
-//        cars = new Cars(new NumberGenerratorTest());
+        cars = new Cars();
     }
     @Test
     @DisplayName("Cars 에 car 객체 추가되는 지 확인")
