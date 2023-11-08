@@ -34,8 +34,7 @@ public class Racing {
 
     private void moveIfNumberIsGreaterThanFour(Random random, int j) {
         if (random.nextInt(10) >= 4) {
-            int currentDistance = cars.get(j).getDistance();
-            cars.get(j).setDistance(currentDistance + 1);
+            cars.get(j).moveCar();
         }
     }
 }
