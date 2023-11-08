@@ -24,7 +24,9 @@ public class RacingCar {
         for (int i = 0; i < chance; i++) {
             for (int j = 0; j < carCount; j++) {
                 this.cars[j].moveCar(getRandomValue());
+                ResultView.printRacingResult(this.cars[j]);
             }
+            System.out.println("*******************************************");
         }
     }
 

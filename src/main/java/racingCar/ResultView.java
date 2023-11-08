@@ -1,11 +1,10 @@
 package racingCar;
 
 public class ResultView {
-    public static void printResult(int[] cars) {
-        for (int car : cars) {
-            for (int j = 0; j < car; j++) {
-                System.out.print('-');
-            }
+    public static void printRacingResult(Car car) {
+        for (int j = 0; j < car.getIndex(); j++) {
+            System.out.print('-');
         }
+        System.out.println();
     }
 }
