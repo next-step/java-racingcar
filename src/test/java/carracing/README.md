@@ -58,6 +58,9 @@
 - Track 클래스 리팩토링
   - 이동 전략은 Car의 Move
   - run, winners는 Cars로
+- Track을 CarRaceService로 변경
+  - Track로직을 service로 이동
+  - CarRaceApplication 로직 service로 이동
 - Position 클래스 래핑
 - 우승자 구하는 코드 리팩토링
 

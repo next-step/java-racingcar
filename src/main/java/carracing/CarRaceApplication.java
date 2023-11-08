@@ -1,24 +1,17 @@
 package carracing;
 
 import carracing.dto.CarRaceResponse;
-import carracing.dto.CarsResponse;
 import carracing.ui.InputView;
 import carracing.ui.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CarRaceApplication {
     public static void main(String[] args) {
+        CarRaceService carRaceService = new CarRaceService();
+
         InputView inputView = InputView.input();
-        Track track = inputView.toTrack();
 
-        List<CarsResponse> carsResponses = new ArrayList<>();
-        for (int i = 0; i < inputView.getMovingCount(); i++) {
-            track.run();
-            carsResponses.add(CarsResponse.from(track.carHistory()));
-        }
+        CarRaceResponse response = carRaceService.race(inputView.toRequest());
 
-        OutputView.output(new CarRaceResponse(carsResponses, track.winners()));
+        OutputView.output(response);
     }
 }
