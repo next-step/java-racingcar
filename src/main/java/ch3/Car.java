@@ -35,4 +35,8 @@ public class Car {
         final int MAX_NAME_LENGTH = 5;
         return name.length() > MAX_NAME_LENGTH;
     }
+
+    public boolean isWinningCar(int maxPosition) {
+        return maxPosition == position;
+    }
 }

@@ -1,11 +1,10 @@
 package ch3;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarTest {
 
@@ -46,6 +45,12 @@ public class CarTest {
             car.makeName("넥스트스텝 클린코드");
         }).isInstanceOf(RuntimeException.class)
         .hasMessage("이름은 5자를 초과할 수 없습니다");
+    }
+
+    @Test
+    void 우승위치와_같은_위치면_우승차량이다() {
+        Car car = new Car();
+        assertTrue(car.isWinningCar(0));
     }
 
 }
