@@ -21,7 +21,7 @@ public class ResultView {
     }
 
     private void printRaceRecords(Race race) {
-        for (RaceRecord raceRecord : race.raceRecords()) {
+        for (RaceRecord raceRecord : race.raceRecords().list()) {
             System.out.println(createPath(raceRecord.distance()));
         }
     }

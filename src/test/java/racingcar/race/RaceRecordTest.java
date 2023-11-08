@@ -29,6 +29,7 @@ class RaceRecordTest {
 
 
         race.raceRecords()
+                .list()
                 .forEach(raceRecord -> {
                     assertThat(cars).contains(raceRecord.car());
                     assertThat(raceRecord.distance()).isEqualTo(1);

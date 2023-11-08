@@ -86,7 +86,7 @@ class RacingCarGameTest {
         racingCarGame.start();
         int count = racingCarGame.races()
                 .stream()
-                .map(race -> race.raceRecords().size())
+                .map(race -> race.raceRecords().list().size())
                 .mapToInt(Integer::valueOf)
                 .sum();
 
