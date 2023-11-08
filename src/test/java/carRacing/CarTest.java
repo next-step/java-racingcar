@@ -1,7 +1,6 @@
 package carRacing;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchIndexOutOfBoundsException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,5 +27,13 @@ class CarTest {
 		car.moveCar(input);
 
 		assertThat(car.getPosition()).isEqualTo(0);
+	}
+
+	@DisplayName("자동차에 이름을 부여할 수 있다")
+	@Test
+	void giveNameCar() {
+		Car car = new Car("pobi");
+
+		assertThat(car.getName()).isEqualTo("pobi");
 	}
 }
