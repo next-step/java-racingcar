@@ -25,12 +25,16 @@ public class CarRacing {
     public void makingCar(String inputString) {
         String[] names = inputString.split(",");
         this.cars = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            Car car = new Car(); 
-            car.makeName(names[i]);
+        makingNamingCars(names);
+        makingExecuteNumbers();
+    }
+
+    private void makingNamingCars(String[] names) {
+        for (String name : names) {
+            Car car = new Car();
+            car.makeName(name);
             cars.add(car);
         }
-        makingExecuteNumbers();
     }
 
     public List<Car> getCars() {
