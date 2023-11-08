@@ -1,3 +1,12 @@
+package step3;
+
+import step3.domain.Car;
+import step3.domain.Racing;
+import step3.helper.CarFactory;
+import step3.view.InputView;
+
+import java.util.List;
+
 public class RacingApp {
 
     public static void main(String[] args) {
@@ -5,7 +14,7 @@ public class RacingApp {
         int numberOfCars = inputView.inputNumberOfCars();
         int round = inputView.inputRound();
 
-        Car[] cars = CarFactory.createCars(numberOfCars);
+        List<Car> cars = CarFactory.createCars(numberOfCars);
 
         Racing racing = new Racing(cars, round);
         racing.start();

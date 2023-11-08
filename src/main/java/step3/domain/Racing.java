@@ -1,9 +1,16 @@
+package step3.domain;
+
+import step3.helper.NumberUtil;
+import step3.view.ResultView;
+
+import java.util.List;
+
 public class Racing {
 
-    private final Car[] cars;
+    private final List<Car> cars;
     private final int round;
 
-    public Racing(Car[] cars, int round) {
+    public Racing(List<Car> cars, int round) {
         this.cars = cars;
         this.round = round;
     }

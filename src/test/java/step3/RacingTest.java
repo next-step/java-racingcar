@@ -1,6 +1,12 @@
+package step3;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step3.domain.Car;
+import step3.helper.CarFactory;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,7 +16,7 @@ public class RacingTest {
     @ValueSource(ints = {1, 3, 5})
     @DisplayName("자동차를 N대 생성한다.")
     void create_cars(int size) {
-        Car[] cars = CarFactory.createCars(size);
+        List<Car> cars = CarFactory.createCars(size);
         assertThat(cars).hasSize(size);
         assertThat(cars).doesNotContainNull();
     }
@@ -21,9 +27,9 @@ public class RacingTest {
     void move_test(int randomNumber) {
         Car car = new Car();
 
-        int prevForwardCount = car.forwardCount;
+        int prevForwardCount = car.getForwardCount();
         car.move(randomNumber);
-        int nextForwardCount = car.forwardCount;
+        int nextForwardCount = car.getForwardCount();
 
         assertThat(prevForwardCount).isEqualTo(nextForwardCount - 1);
     }
@@ -34,9 +40,9 @@ public class RacingTest {
     void stop_test(int randomNumber) {
         Car car = new Car();
 
-        int prevForwardCount = car.forwardCount;
+        int prevForwardCount = car.getForwardCount();
         car.move(randomNumber);
-        int nextForwardCount = car.forwardCount;
+        int nextForwardCount = car.getForwardCount();
 
         assertThat(prevForwardCount).isEqualTo(nextForwardCount);
     }
