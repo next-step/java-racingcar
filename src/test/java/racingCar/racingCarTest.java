@@ -10,8 +10,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class racingCarTest {
 
     @Test
+    @DisplayName("입력한 횟수만큼 자동차 한대를 움직인 결과를 반환한다. ")
+    public void 자동차_한대를_입력_횟수_만큼_움직인_결과(){
+        Cars cars = new Cars(1);
+        int[] result = RacingCar.movingResult(cars.carArray,5);
+        assertThat(result[0]).isBetween(0,5);
+    }
+
+    @Test
     @DisplayName("입력한 자동차 대수를 한 번 움직인 결과로 1 또는 0으로 이루어진 숫자 배열을 반환한다.")
-    public void 랜덤숫자를_정지_또는_전진으로_배열_반환(){
+    public void 입력한_자동차_대수를_한번_움직인_결과(){
         Cars cars = new Cars(3);
         int[] movingResult = RacingCar.addMoving(cars.carArray);
 

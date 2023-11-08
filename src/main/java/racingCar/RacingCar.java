@@ -14,4 +14,12 @@ public class RacingCar {
 
         return carArray;
     }
+
+    public static int[] movingResult(int[] carArray, int movingCnt){
+        for(int i=0; i<movingCnt; i++){
+            addMoving(carArray);
+        }
+
+        return carArray;
+    }
 }
