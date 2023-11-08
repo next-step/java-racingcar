@@ -5,7 +5,7 @@ public class Car {
     private static final int THRESHOLD = 4;
 
     public void moveCar(int input) {
-        if(input >= THRESHOLD) {
+        if (input >= THRESHOLD) {
             this.index++;
         }
     }
