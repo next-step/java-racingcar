@@ -2,11 +2,11 @@ package carracing.domain.car;
 
 import carracing.utils.exception.CarNameExceedMaxLengthException;
 
-public class CarName {
+public class Name {
     private static final int MAXIMUM_LENGTH = 5;
     private final String name;
 
-    private CarName(String name) {
+    private Name(String name) {
         this.name = name;
         validateMaximumLength();
     }
@@ -15,8 +15,8 @@ public class CarName {
         return name;
     }
 
-    public static CarName from(String name) {
-        return new CarName(name);
+    public static Name from(String name) {
+        return new Name(name);
     }
 
     private void validateMaximumLength() {

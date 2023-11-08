@@ -2,14 +2,12 @@ package carracing.domain.car;
 
 public class Car {
 
-    private static final int START_POSITION = 1;
-
-    private CarName name;
-    private Integer position;
+    private Name name;
+    private Position position;
 
     public Car(String name) {
-        this.name = CarName.from(name);
-        this.position = START_POSITION;
+        this.name = Name.from(name);
+        this.position = Position.startPosition();
     }
 
     public String getName() {
@@ -17,10 +15,10 @@ public class Car {
     }
 
     public Integer getPosition() {
-        return this.position;
+        return this.position.getPosition();
     }
 
-    public void move(int i) {
-        position += i;
+    public void move(int position) {
+        this.position = this.position.move(position);
     }
 }
