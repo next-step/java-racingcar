@@ -6,21 +6,20 @@ import racingcar.common.utils.TextLimitSizeValidator;
 public class Car {
 
         private static final int RANDOM_BOUND = 10;
-        private static final int START_INIT_VALUE = 1;
         private static final int LOWER_LIMIT = 4;
         private static final int NAME_LENGTH_LIMIT = 5;
         private static final Random random = new Random();
         private final String name;
-        private int currentPosition;
+        private final Position currentPosition;
 
         public Car(String name) {
                 this.name = name;
-                currentPosition = START_INIT_VALUE;
+                this.currentPosition = new Position();
                 errorIfNameLengthLimitOver();
         }
 
         public void moveForward() {
-                ++currentPosition;
+                currentPosition.addOnePosition();
         }
 
         public boolean movedForwardIfCan() {
@@ -46,7 +45,7 @@ public class Car {
         }
 
         public int getCurrentPosition() {
-                return currentPosition;
+                return currentPosition.getPosition();
         }
 
 }
