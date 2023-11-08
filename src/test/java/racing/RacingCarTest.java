@@ -2,51 +2,43 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.model.RacingCar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
     RacingCar car;
-    List<RacingCar> cars;
     @BeforeEach
     void init(){
-        car = new RacingCar(3,"car");
-        cars = getCars();
+        car = new RacingCar(0,"");
     }
     @Test
-    void 자동차이름_5자_초과되지않음() throws Exception {
-        assertThat(car.getName().length()).isLessThan(6);
+    void random값은_0_9_사이이다() throws Exception {
+        assertThat(car.getRandomInt()).isLessThan(10);
     }
     @Test
-    void 자동차는_이름_전진횟수를_가진다() throws Exception {
-        assertThat(car.getProgress()).isNotZero();
-        assertThat(car.getName()).isNotNull();
-    }
-    @ParameterizedTest
-    @CsvSource("3")
-    void 가장_많은_전진횟수_우승_1명이상() throws Exception {
+    void random값이_4이상_전진() throws Exception {
+        // given
+        int randomInt = 9;
+        int beforeProgress = 3;
+        car = new RacingCar(beforeProgress, "");
         // when
-        List<RacingCar> winners = Simulator.getWinners(cars);
+        car.race(randomInt);
         // then
-        assertThat(winners.stream().anyMatch(car -> "a".equals(car.getName()))).isTrue();
-        assertThat(winners.stream().anyMatch(car -> "b".equals(car.getName()))).isTrue();
+        assertThat(beforeProgress + 1).isEqualTo(car.getProgress());
     }
-
-    private List<RacingCar> getCars() {
-        List<RacingCar> cars = new ArrayList<>();
-        RacingCar carA = new RacingCar(3, "a");
-        RacingCar carB = new RacingCar(3, "b");
-        RacingCar carC = new RacingCar(2, "c");
-        cars.add(carA);
-        cars.add(carB);
-        cars.add(carC);
-        return cars;
+    @Test
+    void random값이_4미만_멈춤() throws Exception {
+        // given
+        int randomInt = 3;
+        int beforeProgress = 3;
+        car = new RacingCar(beforeProgress, "");
+        // when
+        car.race(randomInt);
+        // then
+        assertThat(beforeProgress).isEqualTo(car.getProgress());
     }
 
 }

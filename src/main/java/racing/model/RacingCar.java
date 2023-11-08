@@ -15,10 +15,14 @@ public class RacingCar {
     }
 
     public void race(int randomValue) {
-        if (randomValue < CAN_I_MOVE) {
+        if (notMovable(randomValue)) {
             return;
         }
         this.progress++;
+    }
+
+    private boolean notMovable(int randomValue) {
+        return randomValue < CAN_I_MOVE;
     }
 
     public int getProgress() {
