@@ -1,5 +1,7 @@
 package racingCar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCar {
@@ -8,8 +10,16 @@ public class RacingCar {
 	}
 
 	public static boolean canMove(int randomNumber) {
-		if (randomNumber > 3) {
-			return true;
+		return randomNumber > 3;
+	}
+
+	public static List<Car> getCarList(int carCount) {
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < carCount; i++) {
+			carList.add(new Car());
+		}
+		return carList;
+	}
 		}
 		return false;
 	}
