@@ -4,18 +4,20 @@ import java.util.Random;
 
 public class Car {
 
-    private static final String MOVE = "-";
+    private static final int MINIMUM_RANDOM_NUMBER = 4;
+    private Moving moving;
 
-    private String movingDistance = "";
-
-    public void move(int number) {
-       if (number >= 4) {
-           movingDistance += MOVE;
-       }
+    public Car(Moving moving) {
+        this.moving = moving;
     }
 
-    public String getMovingDistance() {
-        return movingDistance;
+    public Moving getMoving() {
+        return moving;
     }
 
+    public void move(Integer randomNumber) {
+        if (randomNumber >= MINIMUM_RANDOM_NUMBER) {
+            moving.move(randomNumber);
+        }
+    }
 }

@@ -11,7 +11,7 @@ public class RacingCars {
     public RacingCars(Integer carNumbers) {
         List<Car> racingCars = new ArrayList<>();
         for (int i = 0; i < carNumbers; i++) {
-            racingCars.add(new Car());
+            racingCars.add(new Car(new CarMoving()));
         }
         this.racingCars = racingCars;
     }
@@ -19,6 +19,5 @@ public class RacingCars {
     public List<Car> getRacingCars() {
         return racingCars;
     }
-
 
 }
