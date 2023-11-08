@@ -1,25 +1,16 @@
 package camp.nextstep.edu.racingcar.view;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class RacingInputView {
 
-    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private static final Scanner sc = new Scanner(System.in);
 
     public int readCarAmount(){
-        return readInt();
+        return sc.nextInt();
     }
 
     public int readRoundAmount() {
-        return readInt();
-    }
-
-    private int readInt() {
-        try {
-            return Integer.parseInt(br.readLine());
-        } catch (Exception exception) {
-            throw new RuntimeException(exception);
-        }
+        return sc.nextInt();
     }
 }
