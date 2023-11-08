@@ -10,7 +10,7 @@ public class Car {
     private final String name;
 
     public static Car from(Car car) {
-        return new Car(car.getPosition(), car.getName());
+        return new Car(car.position, car.name);
     }
 
     public Car(String name) {

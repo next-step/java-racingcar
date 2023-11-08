@@ -5,7 +5,7 @@ public class Car {
     private int position;
 
     public static Car from(Car car) {
-        return new Car(car.getPosition());
+        return new Car(car.position);
     }
 
     public Car() {
