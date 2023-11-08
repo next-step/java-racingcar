@@ -1,8 +1,6 @@
 package racingcar;
 
-import racingcar.movablestrategy.DefaultMovableStrategy;
 import racingcar.movablestrategy.MovableStrategy;
-import racingcar.movablestrategy.RandomRacingStrategy;
 
 public class Car {
     public static final int MOVE_DISTANCE = 1;
@@ -11,11 +9,11 @@ public class Car {
     private MovableStrategy movableStrategy;
 
     public Car() {
-        this("noName",new DefaultMovableStrategy());
+        this("noName",() -> true);
     }
 
     public Car(String racerName) {
-        this(racerName, new DefaultMovableStrategy());
+        this(racerName, () -> true);
     }
 
     public Car(MovableStrategy movableStrategy) {
