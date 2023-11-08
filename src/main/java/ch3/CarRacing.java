@@ -37,6 +37,10 @@ public class CarRacing {
         }
     }
 
+    public int totalCarCount() {
+        return cars.size();
+    }
+
     public List<Car> getCars() {
         return this.cars;
     }

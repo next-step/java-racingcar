@@ -26,7 +26,7 @@ public class CarRacingTest {
     @Test
     void 받은_이름의_수_만큼_자동차가_생긴다() {
         carRacing.makingCar("pobi,karl");
-        assertEquals(carRacing.getCars().size(), 2);
+        assertEquals(carRacing.totalCarCount(), 2);
         assertEquals(carRacing.getCars().get(0).getClass(), Car.class);
     }
 
