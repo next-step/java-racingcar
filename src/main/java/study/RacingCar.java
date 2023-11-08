@@ -13,13 +13,11 @@ public class RacingCar {
 
     private int numberOfCar;
     private int numberOfMoves;
-    private MemoryCarRepository memoryCarRepository;
     private CarServiceImpl carService;
 
     public RacingCar(int numberOfCar, int numberOfMoves, MemoryCarRepository memoryCarRepository) {
         this.numberOfCar = numberOfCar;
         this.numberOfMoves = numberOfMoves;
-        this.memoryCarRepository = memoryCarRepository;
         this.carService = new CarServiceImpl(memoryCarRepository);
     }
 
