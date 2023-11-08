@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -41,6 +42,7 @@ class CarTest {
     @Test
     @DisplayName("기존에 한칸 이동한 차량은 4이상의 값을 얻으면 한칸 더 이동한다. ")
     void 기존에_전진한_차량은_4이상의_값을_얻으면_한칸_더_이동한다() {
+      
         Car 한칸_움직인_차 = new Car(new CarMoving(1));
 
         한칸_움직인_차.move(4);

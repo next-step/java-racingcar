@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Round {
 
-    private final RacingCars racingCars;
 
+    private final RacingCars racingCars;
 
     public Round(RacingCars racingCars) {
         this.racingCars = racingCars;
@@ -20,5 +20,4 @@ public class Round {
     private Integer getRandomNumber() {
         return new Random().nextInt(10);
     }
-
 }
