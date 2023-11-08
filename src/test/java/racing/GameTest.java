@@ -3,6 +3,10 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.game.Game;
+import racing.game.RandomNextInt;
+
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,9 +14,20 @@ public class GameTest {
 
 	Game game;
 
+	static class Return_0_to_9 implements RandomNextInt {
+
+		static Random RANDOM = new Random();
+
+		@Override
+		public int nextInt() {
+			return RANDOM.nextInt(10);
+		}
+
+	}
+
 	@BeforeEach
-	void testSetup() {
-		game = new Game();
+	void beforeEach() {
+		game = new Game(new Return_0_to_9());
 	}
 
 	@Test
