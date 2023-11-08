@@ -1,10 +1,12 @@
 package racing.game;
 
-public class Game {
-	private final RandomNextInt RANDOM;
+import java.util.Random;
 
-	public Game(RandomNextInt randomNextInt) {
-		RANDOM = randomNextInt;
+public class Game {
+	private final Random RANDOM;
+
+	public Game(Random random) {
+		RANDOM = random;
 	}
 
 	public int bound() {

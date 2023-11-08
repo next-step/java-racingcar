@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test;
 import racing.car.Car;
 import racing.car.CarList;
 import racing.game.Game;
-import racing.game.RandomNextInt;
 
+
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,15 +25,14 @@ public class CarListTest {
 		}
 	}
 
-	static class AlwaysReturn4 implements RandomNextInt {
+	static class AlwaysReturn4 extends Random {
 
 		@Override
 		public int nextInt() {
 			return 4;
 		}
 	}
-
-
+	
 	@Test
 	@DisplayName("3대의 자동차가 한번에 모두 전진한다")
 	void move_all_cars() {

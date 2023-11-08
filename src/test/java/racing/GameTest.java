@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.game.Game;
-import racing.game.RandomNextInt;
 
 import java.util.Random;
 
@@ -14,13 +13,11 @@ public class GameTest {
 
 	Game game;
 
-	static class Return_0_to_9 implements RandomNextInt {
-
-		static Random RANDOM = new Random();
+	static class Return_0_to_9 extends Random {
 
 		@Override
 		public int nextInt() {
-			return RANDOM.nextInt(10);
+			return nextInt(10);
 		}
 
 	}
