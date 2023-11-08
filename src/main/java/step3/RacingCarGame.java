@@ -7,13 +7,11 @@ import java.util.Random;
 public class RacingCarGame {
 
     public static void main (String[] arg) {
-        List<Integer> input = InputView.display();
-        int numCar = input.get(0);
-        int numAttempt = input.get(1);
+        InputView.display();
         Random random = new Random();
 
         Racing racingGame = new Racing();
-        racingGame.setupGame(numCar, numAttempt, random);
+        racingGame.setupGame(InputView.numCar, InputView.numAttempt, random);
 
         racingGame.startGame();
     }
