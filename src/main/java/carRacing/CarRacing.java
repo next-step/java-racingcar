@@ -14,9 +14,9 @@ public class CarRacing {
 		return cars;
 	}
 
-	public void moveCars(List<Car> cars) {
+	public void moveCars(List<Car> cars, RandomNumMaker randomNumMaker) {
 		for (Car car : cars) {
-			car.moveCar();
+			car.moveCar(randomNumMaker.makeRandomNumber());
 		}
 	}
 }

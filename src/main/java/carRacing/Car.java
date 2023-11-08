@@ -2,13 +2,18 @@ package carRacing;
 
 public class Car {
 
-	private int position;
-	private RandomNumMaker ran = new RandomNumMaker();
+	private static final int MINIMUM_TO_MOVE = 4;
 
-	public void moveCar() {
-		if (ran.isAboveBoundary()){
+	private int position;
+
+	public void moveCar(int randomNum) {
+		if (isCarFoward(randomNum)) {
 			position++;
 		}
+	}
+
+	public boolean isCarFoward(int num) {
+		return num >= MINIMUM_TO_MOVE;
 	}
 
 	public int getPosition() {
