@@ -1,44 +1,33 @@
 package racingcar.domain;
 
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public class RacingCarGame {
+public class SimpleRacingCarGame {
 
-        private static final Random random = new Random();
-        private static final int RANDOM_BOUND = 10;
         private final String[] carNames;
-        private final List<Car> cars;
-        private int round;
-
-        public RacingCarGame(int round, String[] carNames) {
-                this.round = round;
+        public SimpleRacingCarGame(String[] carNames) {
                 this.carNames = carNames;
-                this.cars = joinCars();
         }
 
-        public boolean isOngoing(){
-                return --round != -1;
+        public List<Car> joinCars() {
+                return IntStream.range(0, carNames.length).mapToObj(idx -> new Car(carNames[idx]))
+                        .collect(Collectors.toList());
         }
 
-        public void moveOneRound() {
-                cars.forEach(car ->{
-                        car.movedForwardIfCan(randomNo());
-                });
+        public void moveOneRound(List<Car> cars) {
+                cars.forEach(Car::movedForwardIfCan);
         }
 
-        private int randomNo(){
-                return random.nextInt(RANDOM_BOUND);
+        public List<Car> findWinners(List<Car> cars) {
+                int maxPosition = getMaxPosition(cars);
+                return cars.stream().filter(car -> car.getCurrentPosition() == maxPosition).collect(Collectors.toList());
         }
 
-        private List<Car> joinCars() {
-                return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
-        }
-
-        public List<Car> cars(){
-                return this.cars;
+        public int getMaxPosition(List<Car> cars){
+                return cars.stream().max(Comparator.comparingInt(Car::getCurrentPosition)).get().getCurrentPosition();
         }
 
 }
