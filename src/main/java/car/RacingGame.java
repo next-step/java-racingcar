@@ -8,6 +8,7 @@ public class RacingGame {
     private static final int START_DISTANCE = 0;
     private static final int GREATER_THAN_WINNER = 0;
     private static final InputParser inputParser = new InputParser();
+    private static final Integer START_DISTANCE = 0;
     private final RandomNumberGenerator randomNumberGenerator;
 
     public RacingGame(RandomNumberGenerator randomNumberGenerator) {
