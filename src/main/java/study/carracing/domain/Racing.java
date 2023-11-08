@@ -1,22 +1,21 @@
 package study.carracing.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
 
     private final RacingCars racingCars;
-    private List<String> winners;
+    private Winners winners;
 
     public Racing() {
         racingCars = new RacingCars();
+        winners = new Winners();
     }
 
     public void start(String[] carsName, int tryCount) {
         addRacingCars(carsName);
         move(tryCount);
-        findWinners();
+        pickWinners();
     }
 
     private void addRacingCars(String[] carsName) {
@@ -29,19 +28,8 @@ public class Racing {
         }
     }
 
-    private void findWinners() {
-        final int maxPosition = getMaxPosition();
-        addWinners(maxPosition);
-    }
-
-    private void addWinners(int maxPosition) {
-        winners = new ArrayList<>();
-        winners.addAll(
-                getRacingCars().stream()
-                        .filter(car -> car.getPosition() == maxPosition)
-                        .map(Car::getName)
-                        .collect(Collectors.toList())
-        );
+    private void pickWinners() {
+        winners.addNames(racingCars.getCars(), getMaxPosition());
     }
 
     private int getMaxPosition() {
@@ -52,7 +40,7 @@ public class Racing {
         return racingCars.getCars();
     }
 
-    public List<String> getWinners() {
-        return winners;
+    public List<String> getWinnersName() {
+        return winners.getNames();
     }
 }

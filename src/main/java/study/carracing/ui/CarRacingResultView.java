@@ -22,7 +22,7 @@ public class CarRacingResultView implements ResultView {
     @Override
     public <Type> void outputResultAndComment(List<Type> items) {
         for (Type item : items) {
-            System.out.println(item);
+            System.out.print(item);
         }
         System.out.println(comment);
     }
