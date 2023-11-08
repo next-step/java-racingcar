@@ -7,11 +7,10 @@ import racingcar.view.InputView;
 public class RacingCarController {
 
     public static void main(String[] args) {
-
-        int carCount = ValidationCheck.checkInputCarCount(InputView.inputCarCount());
-        int tryCount = ValidationCheck.checkInputCarCount(InputView.inputTryCount());
+        String inputCarNames = InputView.inputCarNames();
+        int tryCount = ValidationCheck.checkInputTryCount(InputView.inputTryCount());
 
         Racing racing = new Racing();
-        racing.startRacing(carCount, tryCount);
+        racing.startRacing(inputCarNames, tryCount);
     }
 }
