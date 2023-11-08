@@ -13,7 +13,7 @@ public class CalculatorTest {
 
     @Test
     void null_공백_체크() {
-        String data = "";
+        String data = null;
         assertThat(cal(data)).isEqualTo(0);
     }
 
