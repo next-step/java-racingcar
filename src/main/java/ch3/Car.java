@@ -23,7 +23,8 @@ public class Car {
     }
 
     public void makeName(String name) {
-        if (name.length() >= 5) {
+        final int MAX_NAME_LENGTH = 5;
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new RuntimeException("이름은 5자를 초과할 수 없습니다");
         }
         this.name = name;
