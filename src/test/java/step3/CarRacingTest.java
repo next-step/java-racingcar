@@ -21,23 +21,27 @@ public class CarRacingTest {
         assertThat(carRacing.getCars().getNumOfCars()).isEqualTo(5);
     }
 
-    @DisplayName("경주가 시작하면 자동차를 앞으로 움직인다.")
+    @DisplayName("경주가 시작하면 임의의 수를 전달 받아 자동차를 앞으로 움직인다.")
     @Test
     void startRace() {
         // given
         CarRacing carRacing = new CarRacing();
-        int numOfCars = 5;
+        int numOfCars = 6;
         carRacing.createCarsOf(numOfCars);
 
         // when
-        carRacing.moveCars();
+        for (int i=0; i<numOfCars; i++) {
+            carRacing.moveCar(i, i);
+        }
 
         // then
         for (int i=0; i<numOfCars; i++) {
-            assertThat(carRacing.getCars()
-                .findCarBy(i)
-                .getCurrentPosition())
-                .isBetween(0, 1);
+            if (i < 4) {
+                assertThat(carRacing.getCars().findCarBy(i).getCurrentPosition()).isEqualTo(0);
+                continue;
+            }
+
+            assertThat(carRacing.getCars().findCarBy(i).getCurrentPosition()).isEqualTo(1);
         }
     }
 }
