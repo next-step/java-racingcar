@@ -34,7 +34,7 @@ public class CarRacingTest {
     void 자동차를_받은_갯수만큼_자동차시행숫자가_생긴다() {
         carRacing.makingCar("pobi,karl,evan,david");
         assertAll(() -> {
-            assertEquals(carRacing.executeNumbers().size(), 4);
+            assertEquals(carRacing.executeNumbersCount(), 4);
             assertEquals(carRacing.executeNumbers().peek().getClass(), Integer.class);
         });
     }

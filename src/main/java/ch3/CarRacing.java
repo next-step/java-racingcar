@@ -49,6 +49,10 @@ public class CarRacing {
         return this.executeNumbers;
     }
 
+    public int executeNumbersCount() {
+        return executeNumbers.size();
+    }
+
     public void executeRace() {
         for (Car car : cars) {
             car.move(executeNumbers.poll());
