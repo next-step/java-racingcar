@@ -26,7 +26,7 @@ class CarsTest {
     void winnerNames_가장_많이_이동한_자동차가_우승자이다() {
         // given
         String winnerName = "pobi";
-        Cars cars = new Cars(List.of(car("crong", 1),
+        Cars cars = Cars.fromCars(List.of(car("crong", 1),
                 car("honux", 2),
                 car(winnerName, 3)));
         // when
@@ -42,7 +42,7 @@ class CarsTest {
         // given
         String winnerName1 = "pobi";
         String winnerName2 = "honux";
-        Cars cars = new Cars(List.of(car("crong", 1),
+        Cars cars = Cars.fromCars(List.of(car("crong", 1),
                 car(winnerName1, 3),
                 car(winnerName2, 3)));
         // when

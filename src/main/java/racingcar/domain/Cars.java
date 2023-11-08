@@ -7,11 +7,11 @@ public class Cars {
 
     private final List<Car> value;
 
-    public Cars(List<Car> value) {
+    private Cars(List<Car> value) {
         this.value = value;
     }
 
-    public static Cars init(List<String> carNames) {
+    public static Cars creatCarsByNames(List<String> carNames) {
         List<Car> value = new ArrayList<>(carNames.size());
 
         for (String carName: carNames) {
@@ -19,6 +19,10 @@ public class Cars {
         }
 
         return new Cars(value);
+    }
+
+    public static Cars fromCars(List<Car> cars) {
+        return new Cars(cars);
     }
 
     public void game() {

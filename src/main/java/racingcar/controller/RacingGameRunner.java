@@ -12,7 +12,7 @@ public class RacingGameRunner {
         List<String> carNames = InputView.inputCarNames();
         int moveCount = InputView.inputMoveCount();
 
-        Cars cars = Cars.init(carNames);
+        Cars cars = Cars.creatCarsByNames(carNames);
 
         play(cars, moveCount);
 
