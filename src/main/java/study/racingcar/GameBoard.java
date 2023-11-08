@@ -7,12 +7,12 @@ import java.util.stream.IntStream;
 public class GameBoard {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-
+    private final RandomGenerator randomGenerator = new RandomGenerator(new Random());
     public void racingGameStart(){
 
         outputView.printRequestTextInitCar();
         Cars cars = IntStream.range(0, inputView.initRound())
-                .mapToObj(i -> new Car(new RandomGenerator(new Random())))
+                .mapToObj(i -> new Car(randomGenerator))
                 .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::from));
 
         outputView.printRequestTextInitRound();
