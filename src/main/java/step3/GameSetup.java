@@ -18,17 +18,9 @@ public class GameSetup {
         this.random = random;
     }
 
-    public void startGame() {
-        for (int i = 0; i < round; i++) {
-            moveCar(random);
-            System.out.println("******** "+(i+1)+" 라운드 ********"); // 라운드별 구분자
-            ResultView.display(cars);
-        }
-    }
-
-    private void moveCar(Random random) {
+    public void moveCar(Random random) {
         for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).validateForMovce(random);
+            cars.get(i).validateForMove(random);
         }
     }
 }

@@ -10,6 +10,10 @@ public class RacingCarGame {
 
         GameSetup gameSetup = new GameSetup(InputView.numCar, InputView.numAttempt, random);
 
-        gameSetup.startGame();
+        for (int i = 0; i < InputView.numAttempt; i++) {
+            gameSetup.moveCar(random);
+            System.out.println("******** "+(i+1)+" 라운드 ********"); // 라운드별 구분자
+            ResultView.display(gameSetup.cars);
+        }
     }
 }

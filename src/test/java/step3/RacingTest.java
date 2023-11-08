@@ -31,7 +31,7 @@ class RacingTest {
 
         assertThat(sumBeforeStartGame.get()).isEqualTo(0);
 
-        newGame.startGame();
+        newGame.moveCar(random);
         newGame.cars.forEach(car -> {
             sumAfterStartGame.set(+car.getDistance());
         });
