@@ -31,4 +31,11 @@ public class StringTest {
                     data.charAt(3);
                 }).withMessageMatching("String index out of range: 3");
     }
+
+    @Test
+    void StringToInt()
+    {
+        String[] data = "1,2,3".split(",");
+        assertThat(data).contains("1", "2", "3");
+    }
 }
