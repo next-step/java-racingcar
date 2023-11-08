@@ -1,9 +1,7 @@
 package racing;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
-import java.util.Scanner;
 
 public class CarRacingMain {
     private static final String NUMBER = "number";
@@ -16,6 +14,7 @@ public class CarRacingMain {
         play(input.get(NUMBER), input.get(COUNT));
 
         System.out.println("실행 결과");
+        ResultView.racingResult();
     }
 
     public static void play(int number, int count) {
