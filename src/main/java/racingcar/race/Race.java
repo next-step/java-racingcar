@@ -2,7 +2,6 @@ package racingcar.race;
 
 import racingcar.rule.Rule;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {

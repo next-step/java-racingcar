@@ -3,20 +3,18 @@ package racingcar.race;
 public class Car {
 
     public static final int MAX_NAME_LENGTH = 5;
-    private static int sequence = 0;
+    public static final String EMPTY_NAME = "EMPTY";
 
     private final String name;
-    private final int id;
     private int distance;
 
     public Car() {
-        this(null);
+        this(EMPTY_NAME);
     }
 
     public Car(String name) {
         validationName(name);
         this.name = name;
-        this.id = newSequence();
         this.distance = 0;
     }
 
@@ -28,14 +26,6 @@ public class Car {
 
     public String name() {
         return name;
-    }
-
-    private int newSequence() {
-        return ++sequence;
-    }
-
-    public int id() {
-        return id;
     }
 
     public int distance() {
