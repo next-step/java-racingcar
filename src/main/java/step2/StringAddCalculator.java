@@ -7,7 +7,10 @@ public class StringAddCalculator {
     public static final int DEFAULT_VALUE = 0;
     public static final int CUSTOM_DELIMITER_MODE = 1;
     public static final int SPLIT_MODE = 2;
+    public static final String BASIC_DELIMITER_PATTERN = "[,|:]";
     public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+
+    private StringAddCalculator() {}
 
     public static int splitAndSum(String text) {
         if (isBlankOrNull(text)) {
@@ -15,7 +18,7 @@ public class StringAddCalculator {
         }
 
         if (text.contains(",") || text.contains(":")) {
-            String[] nums = text.split(",|:");
+            String[] nums = text.split(BASIC_DELIMITER_PATTERN);
             return sum(parseInt(nums));
         }
 
