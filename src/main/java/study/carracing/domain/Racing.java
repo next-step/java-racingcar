@@ -11,11 +11,11 @@ public class Racing {
     }
 
     public void start(String[] carsName, int tryCount) {
-        addRacingCars(carsName, tryCount);
+        addRacingCars(carsName);
         move(tryCount);
     }
 
-    private void addRacingCars(String[] carsName, int tryCount) {
+    private void addRacingCars(String[] carsName) {
         racingCars.addCar(carsName);
     }
 
