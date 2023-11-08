@@ -7,6 +7,10 @@ public class ResultView {
     private static final String COUNT = "count";
     private static String[][] result;
 
+    public static String[][] value() {
+        return result;
+    }
+
     public static void init(Map<String, Integer> input) {
         result = new String[input.get(COUNT)][input.get(NUMBER)];
     }
