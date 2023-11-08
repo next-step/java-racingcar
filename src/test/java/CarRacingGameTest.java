@@ -31,13 +31,13 @@ public class CarRacingGameTest {
     @DisplayName("자동차 이동 기능 -> 이동 가능할 경우")
     public void can_move_car() {
         // given
-        Car car = Car.create(1);
+        Car car = Car.create(3);
 
         // when
         car.move();
 
         // then
-        assertThat(car.canMove()).isFalse();
+        assertThat(car).extracting("distance").isEqualTo(2);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class CarRacingGameTest {
         referee.judge(car);
 
         // then
-        assertThat(car.canMove()).isTrue();
+        assertThat(car).extracting("distance").isIn(1,2);
     }
 
 }
