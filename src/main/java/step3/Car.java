@@ -1,6 +1,6 @@
 package step3;
 
-public class RacingCar {
+public class Car {
     private int distance = 0;
 
     public void move(MovingStrategy strategy) {

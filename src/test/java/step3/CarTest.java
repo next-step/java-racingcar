@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingCarTest {
+public class CarTest {
 
     @Test
     @DisplayName("자동차는 특정 조건을 만족할 때, 거리 1만큼 이동한다..")
     void 자동차_이동() {
         // given
-        RacingCar car = new RacingCar();
+        Car car = new Car();
         MovingStrategy forwardStrategy = () -> true;
 
         // when
@@ -25,7 +25,7 @@ public class RacingCarTest {
     @DisplayName("자동차는 특정 조건을 만족하지 못하면, 정지한다.")
     void 자동차_정지() {
         // given
-        RacingCar car = new RacingCar();
+        Car car = new Car();
         MovingStrategy nonForwardStrategy = () -> false;
 
         // when

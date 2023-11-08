@@ -6,4 +6,8 @@ public class ResultView {
     public static void showResult(int distance) {
         System.out.println(MOVE_SYMBOL.repeat(distance));
     }
+
+    public static void showComment(String comment) {
+        System.out.println(comment);
+    }
 }
