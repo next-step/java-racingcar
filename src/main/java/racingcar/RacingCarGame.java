@@ -92,20 +92,4 @@ public class RacingCarGame {
             race.start();
         }
     }
-
-    public int carCount() {
-        return cars.size();
-    }
-
-    public int raceCount() {
-        return races.size();
-    }
-
-    public List<Car> cars() {
-        return cars;
-    }
-
-    public List<Race> races() {
-        return races;
-    }
 }
