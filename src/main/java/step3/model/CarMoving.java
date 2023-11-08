@@ -4,6 +4,8 @@ public class CarMoving implements Moving {
 
     private int movingDistance;
 
+    private static final int MINIMAL_RANDOM_NUMBER = 4;
+
     public CarMoving() {}
 
     public CarMoving(int movingDistance) {
@@ -12,7 +14,7 @@ public class CarMoving implements Moving {
 
     @Override
     public void move(Integer randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= MINIMAL_RANDOM_NUMBER) {
             movingDistance++;
         }
     }
