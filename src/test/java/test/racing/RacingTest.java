@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
+import racing.domain.Racing;
 
 import java.util.Random;
 
@@ -32,26 +33,12 @@ public class RacingTest {
         assertThat(0).isEqualTo(car.getMoveCount());
     }
 
-//    @DisplayName("랜덤값")
-//    @ParameterizedTest
-//    @ValueSource(ints = {10})
-//    public void 랜덤값(int number){
-//        Racing racing = new Racing();
-//
-//        assertThat(number).isGreaterThan(racing.randomNumber());
-//    }
-
+    @DisplayName("랜덤값")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    public void test(int number){
+    @ValueSource(ints = {10})
+    public void 랜덤값(int number){
 
-        test1(new Random().nextInt(10));
-
+        assertThat(number).isGreaterThan(new Random().nextInt(10));
     }
-
-    public void test1(int number){
-        System.out.println(number);
-    }
-
 
 }
