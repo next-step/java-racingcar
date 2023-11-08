@@ -15,7 +15,7 @@ public class RacingController {
         this.resultView = resultView;
     }
 
-    public Racing start() {
+    public void start() {
         final String[] carsName = Validator.validateCarName(inputView.inputCarsName());
         final int tryCount = Validator.validateNumber(inputView.inputTryCount());
 
@@ -23,7 +23,6 @@ public class RacingController {
         Racing racing = new Racing();
         racing.start(carsName, tryCount);
         resultView.outputResult(racing.getRacingCars());
-
-        return racing;
+        resultView.outputResult(racing.getWinners());
     }
 }

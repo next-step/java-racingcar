@@ -22,6 +22,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return name + " : " + PROGRESS_DASH.repeat(position);
