@@ -14,5 +14,6 @@ public class RacingCarMain {
         );
         racingCarGame.start();
         racingCarGame.raceResult();
+        racingCarGame.winnerResult();
     }
 }

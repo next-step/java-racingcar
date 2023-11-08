@@ -39,6 +39,10 @@ public class RacingCarGame {
         resultView.print(races);
     }
 
+    public void winnerResult() {
+        resultView.printWinner(races);
+    }
+
     private void createCar() {
         if(isCountView()) {
             createCarByCount((Integer) inputView.readCar());
