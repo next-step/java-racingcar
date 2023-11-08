@@ -3,7 +3,6 @@ package racingcar4.model;
 import java.util.*;
 
 public class RacingGame {
-    private static final int NAME_LENGTH_MAXIMUM = 5;
     private final List<Car> cars;
 
     public RacingGame(String nameOfCars) {
@@ -11,13 +10,12 @@ public class RacingGame {
         nameOfCarsList = removeOverlap(nameOfCarsList);
         this.cars = new ArrayList<>(nameOfCarsList.length);
         for (String name : nameOfCarsList) {
-            carNameTest(name);
             cars.add(new Car(name));
         }
     }
 
     public String[] removeOverlap(String[] names) {
-        Set<String> setNames = new HashSet<String>(Arrays.asList(names));
+        Set<String> setNames = new HashSet<>(Arrays.asList(names));
         return setNames.toArray(new String[0]);
     }
 
@@ -29,12 +27,6 @@ public class RacingGame {
 
     public String[] splitNames(String names) {
         return names.split(",");
-    }
-
-    public void carNameTest(String name) {
-        if (name.length() > NAME_LENGTH_MAXIMUM) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
-        }
     }
 
     public int[] getCarsPosition() {
