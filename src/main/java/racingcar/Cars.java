@@ -36,7 +36,7 @@ public class Cars {
         for (int i = 0; i < roundCount; i++) {
             for(Car car : cars) {
                 car.move();
-                ResultView.positionPrint(car.currentPosition());
+                ResultView.carStatPrint(car);
             }
             ResultView.roundFinish();
         }

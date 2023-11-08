@@ -2,7 +2,7 @@ package racingcar;
 
 public class RacingGame {
     public static void main(String[] args) {
-        Racing racing = new Racing(InputView.carCount(), InputView.roundCount());
+        Racing racing = new Racing(InputView.racerNames(), InputView.roundCount());
 
         if (!racing.holdPossible()) {
             ResultView.noRace();
@@ -11,5 +11,6 @@ public class RacingGame {
 
         ResultView.racingStart();
         racing.race();
+        ResultView.winner(racing.cars());
     }
 }
