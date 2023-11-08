@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 public class RacingCarTests {
 
     @ParameterizedTest
-    @ValueSource(ints = {3})
+    @ValueSource(ints = {1,2,3})
     @DisplayName("랜덤으로 뽑혔던 숫자가 4보다 작을 경우 false를 반환한다.")
     void canRaceStart(int times) {
         assertThat(new Car().isMovable(times)).isFalse();
@@ -47,7 +47,7 @@ public class RacingCarTests {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2:5"}, delimiter = ':')
+    @CsvSource(value = {"2:5","3:7","4:6","5:8"}, delimiter = ':')
     @DisplayName("4 이상의 랜덤숫자가 나왔다면 자동차를 1칸 전진시킨다.")
     void carMoves(int cars, int randomValue) {
         List<Car> carList = new RaceBoard(cars).generate();
@@ -58,7 +58,7 @@ public class RacingCarTests {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2:3"}, delimiter = ':')
+    @CsvSource(value = {"2:3","2:1","3:0"}, delimiter = ':')
     @DisplayName("4보다 작은 랜덤숫자가 나왔다면 자동차를 전진시키지 않는다.")
     void carDoNotMove(int cars, int randomValue) {
         List<Car> carList = new RaceBoard(cars).generate();
