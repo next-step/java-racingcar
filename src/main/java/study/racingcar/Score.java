@@ -8,9 +8,9 @@ public class Score {
     private final Car car;
     private final MoveStatus moveStatus;
 
-    public Score(Car car) {
+    public Score(Car car,RandomGenerator randomGenerator) {
         this.car = car;
-        this.moveStatus = car.canMove();
+        this.moveStatus = car.canMove(randomGenerator);
     }
 
     public String score(){

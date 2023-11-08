@@ -4,20 +4,14 @@ public class Car {
 
     private static final int MOVE_CONDITION = 4;
 
-    private final RandomGenerator randomGenerator;
-
-    public Car(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
-    }
-
-    public MoveStatus canMove() {
-        if (pickRandomValue() >= MOVE_CONDITION) {
+    public MoveStatus canMove(RandomGenerator randomGenerator) {
+        if (pickRandomValue(randomGenerator) >= MOVE_CONDITION) {
             return MoveStatus.MOVE;
         }
         return MoveStatus.STOP;
     }
 
-    private int pickRandomValue() {
+    private int pickRandomValue(RandomGenerator randomGenerator) {
         return randomGenerator.number();
     }
 

@@ -12,7 +12,7 @@ public class GameBoard {
 
         outputView.printRequestTextInitCar();
         Cars cars = IntStream.range(0, inputView.initRound())
-                .mapToObj(i -> new Car(randomGenerator))
+                .mapToObj(i -> new Car())
                 .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::from));
 
         outputView.printRequestTextInitRound();
@@ -23,7 +23,7 @@ public class GameBoard {
         ScoreBoard scoreBoard = new ScoreBoard();
 
         rounds.roundList().forEach(round -> {
-            round.race(scoreBoard);
+            round.race(scoreBoard, randomGenerator);
         });
 
         outputView.printListMapValues(scoreBoard.scores());

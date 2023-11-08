@@ -16,11 +16,13 @@ import study.racingcar.fake.SuccessRandomGenratorStub;
 public class RoundTest {
     private Cars movingCars;
     private Cars stopedCars;
+    private RandomGenerator successRandomGenratorStub = new SuccessRandomGenratorStub(new Random());
+    private RandomGenerator failRandomGenratorStub = new FailRandomGenratorStub(new Random());
 
     @BeforeEach
     void init(){
-        Car carAlwaysReturnAboveFour = new Car(new SuccessRandomGenratorStub(new Random()));
-        Car carAlwaysReturnBelowFour = new Car(new FailRandomGenratorStub(new Random()));
+        Car carAlwaysReturnAboveFour = new Car();
+        Car carAlwaysReturnBelowFour = new Car();
 
         List<Car> movedCarList = new ArrayList<>(List.of(carAlwaysReturnAboveFour));
         movingCars = Cars.from(movedCarList);
@@ -34,7 +36,7 @@ public class RoundTest {
     void roundRacingWithoutException(){
         Round round = emptyRound();
         ScoreBoard scoreBoard = new ScoreBoard();
-        assertThatNoException().isThrownBy(() -> round.race(scoreBoard));
+        assertThatNoException().isThrownBy(() -> round.race(scoreBoard, successRandomGenratorStub));
     }
 
     @DisplayName("라운드 race() - 차가 움직임")
@@ -42,11 +44,11 @@ public class RoundTest {
     void roundRacingWhenCarMoving(){
         Round round = new Round(movingCars);
         ScoreBoardStub scoreBoard = new ScoreBoardStub();
-        round.race(scoreBoard);
+        round.race(scoreBoard, successRandomGenratorStub);
 
         scoreBoard.scores().forEach(score -> {
             score.keySet().forEach(car -> {
-                assertThat(car.canMove()).isEqualTo(MoveStatus.MOVE);
+                assertThat(car.canMove(successRandomGenratorStub)).isEqualTo(MoveStatus.MOVE);
             });
         });
     }
@@ -56,17 +58,17 @@ public class RoundTest {
     void roundRacingWhenCarStop(){
         Round round = new Round(stopedCars);
         ScoreBoardStub scoreBoard = new ScoreBoardStub();
-        round.race(scoreBoard);
+        round.race(scoreBoard, failRandomGenratorStub);
 
         scoreBoard.scores().forEach(score -> {
             score.keySet().forEach(car -> {
-                assertThat(car.canMove()).isEqualTo(MoveStatus.STOP);
+                assertThat(car.canMove(failRandomGenratorStub)).isEqualTo(MoveStatus.STOP);
             });
         });
     }
 
     Round emptyRound(){
-        List<Car> carList = List.of(new Car(new RandomGenerator(new Random())));
+        List<Car> carList = List.of(new Car());
         return new Round(new Cars(carList));
     }
 
