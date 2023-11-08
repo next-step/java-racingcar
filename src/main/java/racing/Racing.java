@@ -1,35 +1,33 @@
 package racing;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Racing {
 
-    public static final int BOUND = 9;
-    private static final Random random = new Random();
-
-    private Racing() {
+    public Racing() {
     }
 
-    private static int random() {
-        return random.nextInt(BOUND);
+    public List<Car> generateNamedCar(RaceInfo raceInfo) {
+        String[] names = raceInfo.nameData();
+        return Arrays.stream(names).map(Car::new).collect(Collectors.toList());
     }
 
-    public static void goRacing(List<Car> cars, RaceInfo raceInfo) {
+    public void goRacing(List<Car> cars, RaceInfo raceInfo) {
         int trials = raceInfo.trialData();
-        System.out.println("\n실행 결과");
-
-        for (int i = 0; i < trials; i++) {
-            drive(cars);
-            System.out.println();
-        }
+        new Car().race(cars, trials);
     }
 
-    private static void drive(List<Car> cars) {
-        cars.forEach(car -> {
-            car.move(random());
-            ResultView.status(car);
-        });
-    }
+    public List<String> winner(List<Car> cars) {
+        int maxDistance = cars.stream()
+                .mapToInt(Car::carDistance)
+                .max().orElseThrow(NoSuchElementException::new);
 
+        return cars.stream()
+                .filter(car -> car.equalDistance(maxDistance))
+                .map(Car::carName)
+                .collect(Collectors.toList());
+    }
 }

@@ -10,10 +10,11 @@ public class GameMain {
         RaceInfo raceInfo = InputView.inputNameInfo();
 
         //자동차 생성
-        List<Car> cars = new Car().generateNamedCar(raceInfo);
+        Racing racing = new Racing();
+        List<Car> cars = racing.generateNamedCar(raceInfo);
 
         //게임 진행 & 상태 출력
-        Racing.goRacing(cars, raceInfo);
+        racing.goRacing(cars, raceInfo);
 
         //우승자 출력
         ResultView.raceResult(cars);

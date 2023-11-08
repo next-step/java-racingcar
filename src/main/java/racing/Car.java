@@ -1,22 +1,16 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 public class Car {
 
-    public static final int FORWARD_CONDITION = 4;
+    public static final int NAME_LIMIT = 5;
 
-    private int number;
     private String name;
     private int distance;
-
-    public Car(int number) {
-        this.number = number;
-        this.distance = 0;
-    }
 
     public Car(String name) {
         this.name = name;
@@ -26,34 +20,61 @@ public class Car {
     public Car() {
     }
 
-    public int carNumber() {
-        return number;
-    }
-
     public String carName() { return  name; }
 
     public int carDistance() {
         return distance;
     }
 
-    public void move(int random) {
-        if (random >= FORWARD_CONDITION) {
+    public Boolean equalDistance(int distance) {
+        if (this.distance == distance) return TRUE;
+        return FALSE;
+    }
+
+    public static Boolean lengthCheck(String[] names) {
+        for (String name : names) {
+            if (count(name) == FALSE) return FALSE;
+        }
+        return TRUE;
+    }
+
+    private static Boolean count(String name) {
+        if (name.length() > NAME_LIMIT) {
+            System.out.println("자동차 이름은 5자 이하로 입력하세요.");
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+    public void race(List<Car> cars, int trials) {
+        for (int i = 0; i < trials; i++) {
+            drive(cars);
+            newLine();
+        }
+    }
+
+    private void drive(List<Car> cars) {
+        cars.forEach(car -> {
+            car.move(new RandomMoveCondition());
+            car.status();
+        });
+    }
+
+    public void move(MoveCondition moveCondition) {
+        if (moveCondition.move()) {
             distance += 1;
         }
     }
 
-    public List<Car> generateCar(int number) {
-
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < number; i++) {
-            Car car = new Car(i);
-            cars.add(car);
+    public void status() {
+        StringBuilder status = new StringBuilder();
+        for (int i = 0; i < carDistance(); i++) {
+            status.append("-");
         }
-        return cars;
+        System.out.println(carName() + ": " + status);
     }
 
-    public List<Car> generateNamedCar(RaceInfo raceInfo) {
-        String[] names = raceInfo.nameData();
-        return Arrays.stream(names).map(Car::new).collect(Collectors.toList());
+    private void newLine() {
+        System.out.println();
     }
 }
