@@ -26,6 +26,26 @@ class CarsTest {
         assertThat(this.cars.getCars()).hasSize(3);
     }
 
+    @Test
+    @DisplayName("쉼표(,)로 구분된 3개의 이름을 입력하면 3개의 자동차가 생성된다.")
+    void createCars_쉼표구분이름() {
+        String[] inputCarNames = new String[]{"엄태권", "OWEN", "서버마법사"};
+
+        Cars cars = new Cars(inputCarNames);
+
+        assertThat(cars.getCars()).hasSize(3);
+    }
+
+    @Test
+    @DisplayName("쉼표(,)로 구분된 3개의 이름 가운데 비어있는 이름이 있다면 자동차가 생성되지 않는다.")
+    void createCars_중간에비어있는이름() {
+        String[] inputCarNames = new String[]{"엄태권", "", "서버마법사"};
+
+        assertThatThrownBy(() -> new Cars(inputCarNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차의 이름은 비어있을 수 없습니다.");
+    }
+
 
     @Test
     @DisplayName("랜덤한 숫자중 4이상의 숫자가 나오면 자동차가 1칸 움직인다.")

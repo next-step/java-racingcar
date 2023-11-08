@@ -2,6 +2,7 @@ package racingcar.domain.car;
 
 import racingcar.domain.game.strategy.MoveStrategy;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +13,12 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public Cars(String[] carNames) {
+        this.cars = Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void move(final MoveStrategy moveStrategy) {

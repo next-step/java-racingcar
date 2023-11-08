@@ -1,13 +1,10 @@
 package racingcar.domain.game;
 
-import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.game.strategy.MoveStrategy;
 import racingcar.util.Splitter;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private final RoundInfo roundInfo;
@@ -38,10 +35,6 @@ public class RacingGame {
     private Cars createCars(String inputCarName) {
         String[] carNames = Splitter.splitString(inputCarName);
 
-        List<Car> carList = Arrays.stream(carNames)
-                .map(Car::new)
-                .collect(Collectors.toList());
-
-        return new Cars(carList);
+        return new Cars(carNames);
     }
 }
