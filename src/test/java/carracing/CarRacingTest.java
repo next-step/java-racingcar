@@ -12,4 +12,13 @@ public class CarRacingTest {
         int result = CarRacing.createCars(4).size();
         assertThat(result).isEqualTo(4);
     }
+
+    @Test
+    @DisplayName("자동차 이동 횟수 테스트")
+    void moveCount_test(){
+        Car car = new Car();
+        car.setMaxMovementCount(5);
+        int result = car.getMaxMovementCount();
+        assertThat(result).isEqualTo(5);
+    }
 }
