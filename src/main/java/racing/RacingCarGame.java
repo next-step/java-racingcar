@@ -1,6 +1,4 @@
-package step3;
-
-import java.util.Random;
+package racing;
 
 public class RacingCarGame {
 

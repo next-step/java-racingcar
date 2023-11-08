@@ -1,8 +1,7 @@
-package step3;
+package racing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class GameSetup {
     List<Car> cars = new ArrayList<>();
