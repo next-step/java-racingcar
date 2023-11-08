@@ -14,10 +14,9 @@ public class CarMain {
 		ResultView result = new ResultView();
 		CarRacing carRacing = new CarRacing();
 		List<Car> cars = carRacing.makeCars(carCount);
-		RandomNumMaker randomNumMaker = new RandomNumMaker();
 
 		for (int i = 0; i < moveCount; i++) {
-			carRacing.moveCars(cars, randomNumMaker);
+			carRacing.moveCars(cars, new RandomNumMaker());
 			result.showResult(cars);
 		}
 	}
