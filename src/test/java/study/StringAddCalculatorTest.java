@@ -1,6 +1,7 @@
-package study.nextstep;
+package study;
 
 import org.junit.jupiter.api.Test;
+import study.StringAddCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
