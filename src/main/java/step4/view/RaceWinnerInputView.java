@@ -9,7 +9,7 @@ import static step4.constants.QuestionConstants.*;
 
 public class RaceWinnerInputView {
 
-    public static List<String> driverInput(Scanner scanner) {
+    public static List<String> carNameInput(Scanner scanner) {
         System.out.println(WHO_IS_DRIVER);
         String carNames = scanner.nextLine();
 

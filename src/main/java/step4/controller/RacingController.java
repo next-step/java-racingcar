@@ -15,7 +15,7 @@ public class RacingController {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<String> carNames = RaceWinnerInputView.driverInput(scanner);
+        List<String> carNames = RaceWinnerInputView.carNameInput(scanner);
         int times = RaceWinnerInputView.raceTimeInput(scanner);
 
         List<Car> cars = new RaceBoard(carNames).generate();
