@@ -19,7 +19,7 @@ public class RaceStartLine {
 
         List<Car> carList = new RaceBoard(cars).generate();
         IntStream.range(0, times).forEach(t -> {
-            new Race(carList).playing(times);
+            new Race(carList).playing(Race.getRandomValue());
             new RaceResultView(carList).show();
         });
     }
