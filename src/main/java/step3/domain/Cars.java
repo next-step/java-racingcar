@@ -21,19 +21,19 @@ public class Cars {
     }
 
     public Cars maxPositionCars() {
-        int maxPosition = maxPosition();
+        Position maxPosition = maxPosition();
 
         return new Cars(this.cars.stream()
-            .filter(car -> car.isMaxPosition(maxPosition))
+            .filter(car -> car.isSamePosition(maxPosition))
             .collect(Collectors.toList()));
     }
 
-    private int maxPosition() {
-        return this.cars.stream()
-            .map(Car::position)
-            .mapToInt(Position::position)
-            .max()
-            .orElse(DEFAULT_POSITION);
+    private Position maxPosition() {
+        Position maxPosition = new Position(DEFAULT_POSITION);
+        for (Car car : cars) {
+            maxPosition = maxPosition.greaterPosition(car.position());
+        }
+        return maxPosition;
     }
 
     public List<Car> cars() {

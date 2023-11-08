@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import step3.domain.Car;
 import step3.domain.Name;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -21,7 +22,7 @@ public class CarGeneratorTest {
         assertThat(cars)
             .extracting(Car::name)
             .extracting(Name::name)
-            .containsExactly(NAME_OF_CARS);
+            .isEqualTo(Arrays.asList(NAME_OF_CARS));
     }
 
 }

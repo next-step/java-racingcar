@@ -14,7 +14,7 @@ public class PositionTest {
         int pos = 1;
         Position position = new Position(pos);
 
-        assertThat(position.isSamePosition(pos)).isTrue();
+        assertThat(position.equals(new Position(pos))).isTrue();
     }
 
 }

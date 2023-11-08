@@ -23,7 +23,7 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(cars, NUMBER_OF_TRY);
 
         // when
-        for (int round = 0; !game.isEnd(round); round++) {
+        for (int round = 0; round < game.totalRound(); round++) {
             game.playRound();
         }
 

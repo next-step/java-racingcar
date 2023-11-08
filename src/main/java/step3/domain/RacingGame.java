@@ -18,10 +18,6 @@ public class RacingGame {
         this.totalRound = numberOfTry;
     }
 
-    public boolean isEnd(int round) {
-        return this.totalRound == round;
-    }
-
     public void playRound() {
         this.cars.move(randomUtil);
     }
@@ -32,6 +28,10 @@ public class RacingGame {
 
     public Cars cars() {
         return this.cars;
+    }
+
+    public int totalRound() {
+        return this.totalRound;
     }
 
 }

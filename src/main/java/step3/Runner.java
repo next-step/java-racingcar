@@ -15,7 +15,7 @@ public class Runner {
         RacingGame game = new RacingGame(CarGenerator.generate(nameOfCars), numberOfTry);
 
         ResultView.printResultInfoMessage();
-        for (int round = 0; !game.isEnd(round); round++) {
+        for (int round = 0; round < game.totalRound() ; round++) {
             game.playRound();
             ResultView.printRoundResult(game.cars());
         }
