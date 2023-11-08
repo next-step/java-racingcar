@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.rule.MinimumRule;
 import racingcar.util.BasicNumberGenerator;
+import racingcar.view.CountView;
 import racingcar.view.ResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,8 +22,7 @@ class RacingCarGameTest {
     @DisplayName("게임 상태 관리 - 자동차 수, 경기 회수를 저장 한다")
     void racing_car_and_race_count() {
         RacingCarGame racingCarGame = new RacingCarGame(
-                3,
-                5,
+                new CountView(3, 5),
                 new ResultView(),
                 new MinimumRule(4, new BasicNumberGenerator(9))
         );
@@ -37,8 +37,7 @@ class RacingCarGameTest {
     @DisplayName("자동차 생성 - 입력한 수만큼 자동차를 생성한다.")
     void create_car_count() {
         RacingCarGame racingCarGame = new RacingCarGame(
-                3,
-                5,
+                new CountView(3, 5),
                 new ResultView(),
                 new MinimumRule(4, new BasicNumberGenerator(9))
         );
@@ -52,8 +51,7 @@ class RacingCarGameTest {
     @DisplayName("경기 생성 - 입력한 수만큼 경기를 생성한다.")
     void create_race_count() {
         RacingCarGame racingCarGame = new RacingCarGame(
-                3,
-                5,
+                new CountView(3, 5),
                 new ResultView(),
                 new MinimumRule(4, new BasicNumberGenerator(9))
         );
@@ -77,8 +75,7 @@ class RacingCarGameTest {
         int raceCount = 5;
 
         RacingCarGame racingCarGame = new RacingCarGame(
-                carCount,
-                raceCount,
+                new CountView(carCount, raceCount),
                 new ResultView(),
                 new MinimumRule(4, new BasicNumberGenerator(9))
         );
