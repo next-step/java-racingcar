@@ -3,12 +3,13 @@ package racewinner.domain;
 import java.util.Objects;
 
 public class Position {
-    private int position;
     private final static String NEGATIVE_NUMBER_MSG = "position 객체는 음수를 가질 수 없습니다.";
+    private final static String STEP_STRING = "-";
     private final int NEGATIVE_NUMBER = 0;
+    private int position;
+
     public Position(final int position) {
         validationCheck(position);
-
         this.position = position;
     }
 
@@ -22,8 +23,12 @@ public class Position {
         this.position++;
     }
 
-    public int get() {
+    private int get() {
         return position;
+    }
+
+    public boolean isGreaterThan(final Position position) {
+        return this.position > position.get();
     }
 
     @Override
@@ -37,5 +42,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    public String toString() {
+        return STEP_STRING.repeat(position);
     }
 }

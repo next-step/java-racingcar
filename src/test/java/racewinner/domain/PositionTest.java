@@ -21,4 +21,11 @@ class PositionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("더 큰 position이 입력되면 True를 반환한다.")
+    @Test
+    void isGreaterThanTest() {
+        final Position position = new Position(5);
+        final boolean result = position.isGreaterThan(new Position(2));
+        assertThat(result).isTrue();
+    }
 }

@@ -1,74 +1,52 @@
 package racewinner.domain;
 
-import racewinner.expteion.CarNameTooLongException;
-import racewinner.strategy.MoveStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final static String TOO_LONG_CAR_NAME_MSG = "자동차의 이름은 5글자를 초과 할 수 없습니다.";
+    private final List<Car> cars;
 
-    private final List<Car> cars = new ArrayList<>();
-    private final MoveStrategy moveStrategy;
-
-    public Cars(final MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-    }
-
-    public void add(final String name) {
-        carNameCheck(name);
-
-        cars.add(new Car(name));
-    }
-
-    private void carNameCheck(final String name) {
-        if (name.length() > 5) {
-            throw new CarNameTooLongException(TOO_LONG_CAR_NAME_MSG);
-        }
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void move() {
         for (Car car: cars) {
-            car.move(moveStrategy.getNumber());
+            car.move();
         }
     }
 
     public List<String> findWinner() {
-        return getWinnerList(getMaxStep());
+        return getWinnerList(getMaxPosition());
     }
 
-    private int getMaxStep() {
-        int maxStep = 0;
+    private Position getMaxPosition() {
+        Position maxPosition = new Position(0);
         for (Car car : cars) {
-            maxStep = getMaxStep(maxStep, car);
+            maxPosition = getMaxPosition(maxPosition, car);
         }
-        return maxStep;
+        return maxPosition;
     }
 
-    private int getMaxStep(int maxStep, Car car) {
-        if (isMaxStep(maxStep, car)) {
-            return car.currentStep();
+    private Position getMaxPosition(Position position, Car car) {
+        if (car.isMaxPosition(position)) {
+            return car.currentPosition();
         }
 
-        return maxStep;
+        return position;
     }
 
-    private boolean isMaxStep(int maxStep, Car car) {
-        return car.currentStep() > maxStep;
-    }
-
-    private List<String> getWinnerList(int maxStep) {
+    private List<String> getWinnerList(Position position) {
         final List<String> winnerList = new ArrayList<>();
         for (Car car : cars) {
-            addWinner(maxStep, winnerList, car);
+            addWinner(position, winnerList, car);
         }
 
         return winnerList;
     }
 
-    private void addWinner(int maxStep, List<String> winnerList, Car car) {
-        if (maxStep == car.currentStep()) {
+    private void addWinner(Position position, List<String> winnerList, Car car) {
+        if (car.isWinner(position)) {
             winnerList.add(car.name());
         }
     }
@@ -77,7 +55,7 @@ public class Cars {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car: cars) {
-            stringBuilder.append(car.toString() + "\n");
+            stringBuilder.append(car.toString()).append("\n");
         }
 
         return stringBuilder.toString();
