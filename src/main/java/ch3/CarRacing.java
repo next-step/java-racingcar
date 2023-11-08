@@ -22,10 +22,13 @@ public class CarRacing {
         return resultView;
     }
 
-    public void makingCar(int number) {
+    public void makingCar(String inputString) {
+        String[] names = inputString.split(",");
         this.cars = new ArrayList<>();
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < names.length; i++) {
+            Car car = new Car(); 
+            car.makeName(names[i]);
+            cars.add(car);
         }
         makingExecuteNumbers();
     }
@@ -54,9 +57,9 @@ public class CarRacing {
     }
 
     public void startGame() {
-        int carCount = inputView.getInputValue("자동차 대수는 몇 대 인가요?");
-        makingCar(carCount);
-        int executeCount = inputView.getInputValue("시도할 회수는 몇 회 인가요?");
+        String names = inputView.getInputStringValue("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
+        makingCar(names);
+        int executeCount = inputView.getInputIntValue("시도할 회수는 몇 회 인가요?");
         resultView.showResultComment("실행 결과");
         while (executeCount-- > 0) {
             executeRace();
