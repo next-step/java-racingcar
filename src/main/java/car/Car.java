@@ -20,7 +20,7 @@ public class Car implements Comparable<Car> {
 
     public void game(int randomNumber) {
         if(isMovableForwardNumber(randomNumber)) {
-            carPosition.incrementDistance();
+            carPosition.increaseDistance();
         }
     }
 

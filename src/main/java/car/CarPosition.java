@@ -6,11 +6,11 @@ public class CarPosition implements Comparable<CarPosition> {
     private static final int MIN_DISTANCE = 0;
 
     public CarPosition(int distance) {
-        isMoreThanMinDistance(distance);
+        validateMoreThanMinDistance(distance);
         this.distance = distance;
     }
 
-    private void isMoreThanMinDistance(int distance) {
+    private void validateMoreThanMinDistance(int distance) {
         if (distance < MIN_DISTANCE) {
             throw new IllegalArgumentException("distance는 항상 0 이상이어야 합니다.");
         }
@@ -20,7 +20,7 @@ public class CarPosition implements Comparable<CarPosition> {
         return distance;
     }
 
-    public void incrementDistance() {
+    public void increaseDistance() {
         distance++;
     }
 
