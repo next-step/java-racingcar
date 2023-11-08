@@ -2,11 +2,11 @@ package study.racingcar;
 
 public class Score {
 
+    public static final String MOVE_SCORE = "-";
+    public static final String STOP_SCORE = "";
+
     private final Car car;
     private final MoveStatus moveStatus;
-
-    public final static String MOVE_SCORE = "-";
-    public final static String STOP_SCORE = "";
 
     public Score(Car car) {
         this.car = car;
