@@ -1,6 +1,8 @@
-package carracing;
+package carracing.domain.race;
 
-import carracing.move_strategy.MoveStrategy;
+import carracing.domain.car.Car;
+import carracing.domain.car.Cars;
+import carracing.domain.race.move.MoveStrategy;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain.car;
 
 public class Car {
 

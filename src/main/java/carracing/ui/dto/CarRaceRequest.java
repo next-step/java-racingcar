@@ -1,7 +1,7 @@
-package carracing.dto;
+package carracing.ui.dto;
 
-import carracing.Cars;
-import carracing.CarRace;
+import carracing.domain.car.Cars;
+import carracing.domain.race.CarRace;
 
 import java.util.ArrayList;
 import java.util.List;

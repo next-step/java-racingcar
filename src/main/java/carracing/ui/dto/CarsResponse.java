@@ -1,6 +1,6 @@
-package carracing.dto;
+package carracing.ui.dto;
 
-import carracing.Cars;
+import carracing.domain.car.Cars;
 
 public class CarsResponse {
     private static final String POSTION_STRING = "-";

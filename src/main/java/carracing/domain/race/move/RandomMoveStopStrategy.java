@@ -1,4 +1,4 @@
-package carracing.move_strategy;
+package carracing.domain.race.move;
 
 import static carracing.utils.RandomUtils.getPoint;
 

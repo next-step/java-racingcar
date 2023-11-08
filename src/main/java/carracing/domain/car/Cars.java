@@ -1,6 +1,4 @@
-package carracing;
-
-import carracing.move_strategy.MoveStrategy;
+package carracing.domain.car;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +14,8 @@ public class Cars {
     }
 
     public static Cars makeCars(List<String> carNames) {
-        return new Cars(carNames.stream().map(Car::new).collect(Collectors.toList()));
+        List<Car> cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+        return new Cars(cars);
     }
 
     public List<Car> getCars() {

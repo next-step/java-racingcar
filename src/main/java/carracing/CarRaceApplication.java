@@ -1,7 +1,7 @@
 package carracing;
 
-import carracing.dto.CarRaceResponse;
-import carracing.move_strategy.RandomMoveStopStrategy;
+import carracing.ui.dto.CarRaceResponse;
+import carracing.domain.race.move.RandomMoveStopStrategy;
 import carracing.ui.InputView;
 import carracing.ui.OutputView;
 

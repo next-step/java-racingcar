@@ -1,11 +1,12 @@
 package carracing;
 
+import carracing.domain.car.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static carracing.Cars.makeCars;
+import static carracing.domain.car.Cars.makeCars;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {

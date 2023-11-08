@@ -1,6 +1,6 @@
 package carracing.ui;
 
-import carracing.dto.CarRaceRequest;
+import carracing.ui.dto.CarRaceRequest;
 
 import java.util.ArrayList;
 import java.util.List;

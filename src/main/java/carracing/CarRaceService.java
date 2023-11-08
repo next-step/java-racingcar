@@ -1,9 +1,10 @@
 package carracing;
 
-import carracing.dto.CarRaceRequest;
-import carracing.dto.CarRaceResponse;
-import carracing.dto.CarsResponse;
-import carracing.move_strategy.MoveStrategy;
+import carracing.domain.race.CarRace;
+import carracing.ui.dto.CarRaceRequest;
+import carracing.ui.dto.CarRaceResponse;
+import carracing.ui.dto.CarsResponse;
+import carracing.domain.race.move.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

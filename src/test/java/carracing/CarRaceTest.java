@@ -1,6 +1,8 @@
 package carracing;
 
-import carracing.move_strategy.MoveStrategy;
+import carracing.domain.car.Car;
+import carracing.domain.car.Cars;
+import carracing.domain.race.CarRace;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

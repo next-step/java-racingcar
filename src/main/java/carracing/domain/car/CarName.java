@@ -1,6 +1,6 @@
-package carracing;
+package carracing.domain.car;
 
-import carracing.exception.CarNameExceedMaxLengthException;
+import carracing.utils.exception.CarNameExceedMaxLengthException;
 
 public class CarName {
     private static final int MAXIMUM_LENGTH = 5;

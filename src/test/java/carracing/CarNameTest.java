@@ -1,6 +1,7 @@
 package carracing;
 
-import carracing.exception.CarNameExceedMaxLengthException;
+import carracing.domain.car.CarName;
+import carracing.utils.exception.CarNameExceedMaxLengthException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
