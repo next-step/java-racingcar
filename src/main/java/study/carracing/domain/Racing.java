@@ -31,6 +31,10 @@ public class Racing {
 
     private void findWinners() {
         final int maxPosition = getMaxPosition();
+        addWinners(maxPosition);
+    }
+
+    private void addWinners(int maxPosition) {
         winners = new ArrayList<>();
         winners.addAll(
                 getRacingCars().stream()
