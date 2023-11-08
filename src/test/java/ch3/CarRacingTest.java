@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CarRacingTest {
@@ -48,6 +47,15 @@ public class CarRacingTest {
         carRacing.executeRace();
         List<Integer> result = new ArrayList<>(carRacing.getExecuteNumbers());
         assertThat(result).isNotEqualTo(actual);
+    }
+
+    @Test
+    void 경주가_종료하면_우승차가_1명이상이다() {
+        carRacing.makingCar("pobi,karl,evan");
+        carRacing.executeRace();
+        List<Car> winningCars = carRacing.viewResultRaceCars();
+        assertFalse(winningCars.isEmpty());
+
     }
 
 

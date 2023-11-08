@@ -66,4 +66,17 @@ public class CarRacing {
             resultView.showResultCarRacing(cars);
         }
     }
+
+    public List<Car> viewResultRaceCars() {
+        List<Car> winningCars = new ArrayList<>();
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(car.getPosition(), maxPosition);
+        }
+        for (Car car : cars) {
+            if (maxPosition == car.getPosition())
+                winningCars.add(car);
+        }
+        return winningCars;
+    }
 }
