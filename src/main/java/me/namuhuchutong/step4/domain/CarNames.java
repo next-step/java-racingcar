@@ -23,8 +23,9 @@ public class CarNames {
         }
     }
 
+    // 3차 피드백 반영
     public List<String> getNames() {
-        return List.copyOf(names);
+        return names;
     }
 
     public int getNumberOfNames() {
