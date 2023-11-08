@@ -1,6 +1,8 @@
-package step3;
+package step3.controller;
 
-public class CarRacing {
+import step3.domain.Cars;
+
+public class CarController {
 
     private Cars cars;
 

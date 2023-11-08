@@ -1,4 +1,7 @@
-package step3;
+package step3.presentation;
+
+import step3.controller.CarController;
+import step3.util.NumberUtil;
 
 import java.util.Arrays;
 
@@ -6,28 +9,28 @@ public class RacingResultView {
 
     private static final String VIEW_OF_CAR = "-";
 
-    private CarRacing carRacing;
+    private CarController carController;
 
     public RacingResultView() {
     }
 
-    public RacingResultView(CarRacing carRacing) {
-        this.carRacing = carRacing;
+    public RacingResultView(CarController carController) {
+        this.carController = carController;
     }
 
     public void printCarRacing(int numOfTry) {
         System.out.println("실행 결과");
 
-        int numOfCars = carRacing.getCars().getNumOfCars();
+        int numOfCars = carController.getCars().getNumOfCars();
         for (int i=0; i<numOfTry; i++) {
             tryCarMoving(numOfCars);
-            printCarPositions(carRacing.findPositions());
+            printCarPositions(carController.findPositions());
         }
     }
 
     private void tryCarMoving(int numOfCars) {
         for (int carNo = 0; carNo< numOfCars; carNo++) {
-            carRacing.moveCar(NumberUtil.createRandomNum(), carNo);
+            carController.moveCar(NumberUtil.createRandomNum(), carNo);
         }
     }
 

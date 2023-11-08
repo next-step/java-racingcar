@@ -1,14 +1,13 @@
 package step3;
 
+import step3.controller.CarRacing;
+
 import java.io.IOException;
 
-public class CarRacingView {
+public class CarRacingApp {
     
     public static void main(String[] args) throws IOException {
         CarRacing carRacing = new CarRacing();
-        RacingInputView input = new RacingInputView(carRacing);
-
-        input.inputNumOfCars();
-        input.inputNumOfTry();
+        carRacing.startGame();
     }
 }
