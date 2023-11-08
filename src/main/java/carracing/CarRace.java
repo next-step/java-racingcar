@@ -1,20 +1,18 @@
 package carracing;
 
 import carracing.move_strategy.MoveStrategy;
-import carracing.move_strategy.RandomMoveStopStrategy;
 
 import java.util.List;
 
-public class Track {
-    private static final MoveStrategy moveStrategy = new RandomMoveStopStrategy();
+public class CarRace {
     private final Cars cars;
 
-    public Track(Cars cars) {
+    public CarRace(Cars cars) {
         this.cars = cars;
     }
 
-    public void run() {
-        cars.move(moveStrategy);
+    public void run(MoveStrategy moveStrategy) {
+        cars.move(moveStrategy.getMovePoint());
     }
 
     public List<Car> winners() {

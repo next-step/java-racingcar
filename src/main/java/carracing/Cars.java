@@ -23,8 +23,8 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        cars.forEach((car) -> car.move(moveStrategy.getMovePoint()));
+    public void move(int i) {
+        cars.forEach((car) -> car.move(i));
     }
 
     private int getMaxPosition() {

@@ -1,7 +1,7 @@
 package carracing.dto;
 
 import carracing.Cars;
-import carracing.Track;
+import carracing.CarRace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ public class CarRaceRequest {
         this.movingCount = movingCount;
     }
 
-    public Track toTrack() {
-        return new Track(Cars.makeCars(carNames));
+    public CarRace toCarRace() {
+        return new CarRace(Cars.makeCars(carNames));
     }
 
     public Integer getMovingCount() {
