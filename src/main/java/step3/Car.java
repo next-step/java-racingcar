@@ -17,8 +17,8 @@ public class Car {
         this.distance++;
     }
 
-    public void validateForMove(Random random) {
-        if (random.nextInt(10) >= 4) {
+    public void validateForMove(int randomValue) {
+        if (randomValue >= 4) {
             this.moveCar();
         }
     }

@@ -2,18 +2,15 @@ package step3;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
 
-    private Random random = new Random();
-
     @Test
     void assertGameSetup() {
-        GameSetup newGame = new GameSetup(5,2, random);
+        GameSetup newGame = new GameSetup(5,2);
 
         assertThat(newGame.cars.size()).isEqualTo(5);
         assertThat(newGame.round).isEqualTo(2);
@@ -21,7 +18,7 @@ class RacingTest {
 
     @Test
     void assertStartGame() {
-        GameSetup newGame = new GameSetup(5,3, random);
+        GameSetup newGame = new GameSetup(5,3);
         AtomicInteger sumBeforeStartGame = new AtomicInteger();
         AtomicInteger sumAfterStartGame = new AtomicInteger();
 
@@ -32,7 +29,7 @@ class RacingTest {
         assertThat(sumBeforeStartGame.get()).isEqualTo(0);
 
         for (int i = 0; i < newGame.round; i++) {
-            newGame.moveCar(random);
+            newGame.moveCar();
         }
         newGame.cars.forEach(car -> {
             sumAfterStartGame.set(+car.getDistance());
@@ -43,8 +40,17 @@ class RacingTest {
     @Test
     void assertCar() {
         Car car = new Car();
+        int testValueLessThanFour = 3;
+        int testValueGreaterThanFour = 5;
+
         car.moveCar();
 
         assertThat(car.getDistance()).isEqualTo(1);
+
+        car.validateForMove(testValueLessThanFour);
+        assertThat(car.getDistance()).isEqualTo(1);
+
+        car.validateForMove(testValueGreaterThanFour);
+        assertThat(car.getDistance()).isEqualTo(2);
     }
 }
