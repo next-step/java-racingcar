@@ -4,6 +4,7 @@ import racingcar.movablestrategy.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.StringJoiner;
 
 public class Cars {
@@ -32,14 +33,12 @@ public class Cars {
         return cars.size() >= racingCondition;
     }
 
-    public void race(int roundCount) {
-        for (int i = 0; i < roundCount; i++) {
-            for(Car car : cars) {
-                car.move();
-                ResultView.carStatPrint(car);
-            }
-            ResultView.roundFinish();
+    public void race() {
+        for(Car car : cars) {
+            car.move();
+            ResultView.carStatPrint(car);
         }
+        ResultView.roundFinish();
     }
 
     public int size() {
@@ -60,23 +59,31 @@ public class Cars {
     }
 
     public String mostFastest() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = measurementMaxPosition(car.currentPosition(), maxPosition);
-        }
-        StringJoiner fastestRacer = new StringJoiner(",");
-        for (Car car : cars) {
-            if (car.currentPosition() == maxPosition) {
-                fastestRacer.add(car.racerName());
-            }
-        }
-        return fastestRacer.toString();
+        int maxPosition = measurementMaxPosition();
+
+        return findRacerNameByPosition(maxPosition);
     }
 
-    private int measurementMaxPosition(int position, int maxPositionCondition) {
-        if (position > maxPositionCondition) {
-            return position;
+    private int measurementMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(car.currentPosition(), maxPosition);
         }
-        return maxPositionCondition;
+        return maxPosition;
+    }
+
+    private String findRacerNameByPosition(int position) {
+        StringJoiner racer = new StringJoiner(",");
+        for (Car car : cars) {
+            Optional.ofNullable(samePositionRacerSelection(car, position))
+                    .ifPresent(racer::add);
+        }
+        return racer.toString();
+    }
+    private String samePositionRacerSelection(Car car, int position) {
+        if(car.currentPosition() == position) {
+            return car.racerName();
+        }
+        return null;
     }
 }

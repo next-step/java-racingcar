@@ -21,14 +21,13 @@ public class Racing {
     }
 
     public boolean holdPossible() {
-        if (cars.carsReady(MINIMUM_CAR_COUNT) && roundCount >= MINIMUM_ROUND_COUNT) {
-            return true;
-        }
-        return false;
+        return cars.carsReady(MINIMUM_CAR_COUNT) && roundCount >= MINIMUM_ROUND_COUNT;
     }
 
-    public void race() {
-        cars.race(roundCount);
+    public void start() {
+        for(int round = 0; round < roundCount; round++) {
+            cars.race();
+        }
     }
 
     public Cars cars() {

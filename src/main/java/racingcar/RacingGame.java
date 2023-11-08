@@ -10,7 +10,7 @@ public class RacingGame {
         }
 
         ResultView.racingStart();
-        racing.race();
+        racing.start();
         ResultView.winner(racing.cars());
     }
 }
