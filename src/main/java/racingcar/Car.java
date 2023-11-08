@@ -1,16 +1,16 @@
 package racingcar;
 
 public class Car {
-    private int index = 0;
+    private int position = 0;
     private static final int THRESHOLD = 4;
 
     public void moveCar(int input) {
         if (input >= THRESHOLD) {
-            this.index++;
+            this.position++;
         }
     }
 
-    public int getIndex() {
-        return this.index;
+    public int getPosition() {
+        return this.position;
     }
 }

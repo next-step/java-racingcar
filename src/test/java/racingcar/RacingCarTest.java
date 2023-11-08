@@ -14,6 +14,6 @@ public class RacingCarTest {
     void isCarMoveable(int input, int expectedIdx) {
         Car car = new Car();
         car.moveCar(input);
-        assertThat(car.getIndex()).isEqualTo(expectedIdx);
+        assertThat(car.getPosition()).isEqualTo(expectedIdx);
     }
 }
