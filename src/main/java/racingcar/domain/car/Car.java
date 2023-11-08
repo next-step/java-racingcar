@@ -5,7 +5,6 @@ import racingcar.domain.game.strategy.MoveStrategy;
 public class Car {
     private static final int DEFAULT_MOVE_POSITION = 1;
     private static final int DEFAULT_CAR_NAME_LENGTH = 5;
-    private static final int DEFAULT_CAR_POSITION = 0;
     private final String name;
     private int position;
 
