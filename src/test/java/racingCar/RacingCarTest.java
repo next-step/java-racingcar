@@ -32,4 +32,25 @@ public class RacingCarTest {
 	void Car_생성테스트(int input, int expected) {
 		assertThat(RacingCar.getCarList(input)).hasSize(expected);
 	}
+
+	@Test
+	@DisplayName("setResult_생성된 List 크기 확인_tryCount")
+	void setResult_결과확인() {
+		Car car = new Car();
+		setResult(5, car);
+		assertThat(car.resultList).hasSize(5);
+	}
+
+	@Test
+	@DisplayName("move_carList 전체 resultList size 확인_tryCount")
+	void move_작동() {
+		List<Car> carList = new ArrayList<>();
+		carList.add(new Car());
+		carList.add(new Car());
+
+		move(3, carList);
+		for (Car car : carList){
+			assertThat(car.resultList).hasSize(3);
+		}
+	}
 }

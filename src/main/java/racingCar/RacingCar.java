@@ -20,7 +20,20 @@ public class RacingCar {
 		}
 		return carList;
 	}
+
+	public static void move(int tryCount, List<Car> carList) {
+		for (Car car : carList){
+			setResult(tryCount, car);
 		}
-		return false;
+	}
+
+	public static void setResult(int tryCount, Car car) {
+		int result = 0;
+		for (int i = 0; i< tryCount; i++){
+			if (RacingCar.canMove(RacingCar.getRandomNumber())){
+				result++;
+			}
+			car.resultList.add(result);
+		}
 	}
 }
