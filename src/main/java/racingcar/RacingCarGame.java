@@ -3,7 +3,6 @@ package racingcar;
 import racingcar.race.Car;
 import racingcar.race.Race;
 import racingcar.rule.Rule;
-import racingcar.util.NumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -17,10 +16,10 @@ public class RacingCarGame {
 
     private final ResultView resultView;
 
-    private Rule rule;
+    private final Rule rule;
 
-    private List<Car> cars;
-    private List<Race> races;
+    private final List<Car> cars;
+    private final List<Race> races;
 
     public RacingCarGame(int carCount, int raceCount, ResultView resultView, Rule rule) {
         this.carCount = carCount;

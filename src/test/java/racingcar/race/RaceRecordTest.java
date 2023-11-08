@@ -2,8 +2,6 @@ package racingcar.race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.race.Car;
-import racingcar.race.Race;
 import racingcar.rule.MinimumRule;
 import racingcar.util.BasicNumberGenerator;
 
@@ -31,7 +29,6 @@ class RaceRecordTest {
 
 
         race.raceRecords()
-                .stream()
                 .forEach(raceRecord -> {
                     assertThat(cars).contains(raceRecord.car());
                     assertThat(raceRecord.distance()).isEqualTo(1);

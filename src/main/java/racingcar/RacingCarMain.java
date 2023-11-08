@@ -1,7 +1,6 @@
 package racingcar;
 
 import racingcar.rule.MinimumRule;
-import racingcar.util.BasicNumberGenerator;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;

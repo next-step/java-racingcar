@@ -1,18 +1,17 @@
 package racingcar.race;
 
 import racingcar.rule.Rule;
-import racingcar.util.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
 
-    private Rule rule;
+    private final Rule rule;
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    private List<RaceRecord> raceRecords;
+    private final List<RaceRecord> raceRecords;
 
     public Race(List<Car> cars, Rule rule) {
         this.cars = cars;
