@@ -11,6 +11,10 @@ public class Main {
 		InputView inputView = new InputView();
 
 		String[] inputs = inputView.cars();
+		if (inputs == null) {
+			System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
+			return;
+		}
 		int numberOfCars = inputs.length;
 		int numberOfAttempts = inputView.attempts();
 
@@ -18,10 +22,12 @@ public class Main {
 		CarList cars = new CarList(numberOfCars, inputs);
 
 		ResultView resultView = new ResultView();
+		resultView.print(cars);
 		for (int i = 0; i < numberOfAttempts; i++) {
 			cars.moveAll(game.bounds(numberOfCars));
 			resultView.print(cars);
 		}
+		resultView.printWinners(cars.winners());
 
 	}
 }
