@@ -16,7 +16,6 @@ public class CarRacingMain {
         play(input.get(NUMBER), input.get(COUNT));
 
         System.out.println("실행 결과");
-        ResultView.racingResult();
     }
 
     public static void play(int number, int count) {
