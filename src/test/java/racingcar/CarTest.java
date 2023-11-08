@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class RacingCarTest {
+public class CarTest {
 
     @DisplayName("4이상일때 차가 한 칸 전진한다.")
     @ParameterizedTest

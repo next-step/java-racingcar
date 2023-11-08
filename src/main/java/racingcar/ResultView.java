@@ -7,4 +7,8 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void printAsterisk() {
+        System.out.println("*******************************************");
+    }
 }

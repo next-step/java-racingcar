@@ -2,13 +2,11 @@ package racingcar;
 
 import java.util.Random;
 
-public class RacingCar {
-    private int carCount;
-    private int chance;
+public class RacingGame {
+    private final int chance;
     private Car[] cars;
 
-    public RacingCar(int carCount, int chance) {
-        this.carCount = carCount;
+    public RacingGame(int carCount, int chance) {
         this.chance = chance;
         initCars(carCount);
     }
@@ -22,11 +20,11 @@ public class RacingCar {
 
     public void racing() {
         for (int i = 0; i < chance; i++) {
-            for (int j = 0; j < carCount; j++) {
-                this.cars[j].moveCar(getRandomValue());
-                ResultView.printRacingResult(this.cars[j]);
+            for (Car car : this.cars) {
+                car.moveCar(getRandomValue());
+                ResultView.printRacingResult(car);
             }
-            System.out.println("*******************************************");
+            ResultView.printAsterisk();
         }
     }
 

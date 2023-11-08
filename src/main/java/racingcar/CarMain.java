@@ -8,7 +8,7 @@ public class CarMain {
         int chance = inputView.getInputNumber("시도할 횟수는 몇 회 인가요?");
 
         // 경주
-        RacingCar racingCar = new RacingCar(carCount, chance);
-        racingCar.racing();
+        RacingGame racingGame = new RacingGame(carCount, chance);
+        racingGame.racing();
     }
 }
