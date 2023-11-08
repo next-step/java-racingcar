@@ -1,9 +1,11 @@
 package racingcar.common.utils;
 
-public class CharacterCountValidator {
+public class TextLimitSizeValidator {
 
-    public static void isOverSize(String ){
+    private TextLimitSizeValidator(){}
 
+    public static boolean isOverLimitSize(String text, int limitSize){
+        return text.length() > limitSize;
     }
 
 }
