@@ -8,4 +8,10 @@ public class Car {
         return distance;
     }
 
+    protected void move(int randomNumber) {
+        if (randomNumber > 3) {
+            distance++;
+        }
+    }
+
 }
