@@ -11,20 +11,20 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    private Cars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars.addAll(cars);
+    }
+
+    public static Cars makeCars(List<String> carNames) {
+        return new Cars(carNames.stream().map(Car::new).collect(Collectors.toList()));
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 
-    public static Cars makeCars(List<String> carNames, MoveStrategy moveStrategy) {
-        return new Cars(carNames.stream().map(carName -> new Car(carName, moveStrategy)).collect(Collectors.toList()));
-    }
-
-    public void move() {
-        cars.forEach(Car::move);
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach((car) -> car.move(moveStrategy.getMovePoint()));
     }
 
     private int getMaxPosition() {

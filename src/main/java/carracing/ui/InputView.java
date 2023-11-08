@@ -1,5 +1,6 @@
 package carracing.ui;
 
+import carracing.Cars;
 import carracing.Track;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class InputView {
     }
 
     public Track toTrack() {
-        return new Track(carNames);
+        return new Track(Cars.makeCars(carNames));
     }
 
     public Integer getMovingCount() {

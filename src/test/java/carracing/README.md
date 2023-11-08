@@ -55,7 +55,7 @@
 ---
 # Step5
 ## Step4 리뷰반영 TODO
-- Track 클래스 제거하기
+- Track 클래스 리팩토링
   - 이동 전략은 Car의 Move
   - run, winners는 Cars로
 - Position 클래스 래핑
