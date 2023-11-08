@@ -15,7 +15,11 @@ public class RacingController {
         List<String> carNames = NameSplitter.splitUserName(inputView.inputRacingCarNames());
         int tryCountNumber = inputView.inputTryCount();
 
+        resultView.printResultMessage();
         RacingGame racingGame = new RacingGame(carNames, tryCountNumber);
+        racingGame.play();
+        resultView.printRacingResults(racingGame.getRounds());
+        resultView.printWinner(racingGame.getWinners());
     }
 
 }

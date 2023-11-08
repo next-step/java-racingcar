@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private CarName carName;
     private Position position;
@@ -14,11 +14,16 @@ public class Car {
     }
 
     public Car(final Car car) {
+        this.carName = car.carName;
         this.position = car.position;
     }
 
     public int getCarPosition() {
         return position.getPosition();
+    }
+
+    public String getCarName() {
+        return carName.getCarName();
     }
 
     public void tryMove(final int randomNumber) {
@@ -27,7 +32,12 @@ public class Car {
         }
     }
 
-    public static Car copyCar(Car car) {
+    public static Car copyCar(final Car car) {
         return new Car(car);
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return Integer.compare(this.getCarPosition(), car.getCarPosition());
     }
 }

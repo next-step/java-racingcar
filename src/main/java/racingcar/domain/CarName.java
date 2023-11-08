@@ -11,7 +11,7 @@ public class CarName {
         this.carName = carName;
     }
 
-    public String getUserName() {
+    public String getCarName() {
         return carName;
     }
 
