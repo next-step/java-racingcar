@@ -11,8 +11,14 @@ public class ReceiveInputValue {
     }
 
     public int receiveInputValueForCar() {
-        System.out.println("자동차 대수를 입력하세요.");
         return scanner.nextInt();
+    }
+
+    public static void main(String[] args) {
+        ReceiveInputValue receiveInputValue = new ReceiveInputValue();
+        int result = receiveInputValue.receiveInputValueForCar();
+
+        System.out.println("결과: " + result);
     }
 
 
