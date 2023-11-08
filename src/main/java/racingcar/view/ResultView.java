@@ -22,7 +22,7 @@ public class ResultView {
 
     private void printRaceRecords(Race race) {
         for (RaceRecord raceRecord : race.raceRecords().list()) {
-            System.out.println(createPath(raceRecord.distance()));
+            System.out.println(raceRecord.car().name() + ":" + createPath(raceRecord.distance()));
         }
     }
 
