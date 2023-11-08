@@ -6,12 +6,8 @@ public class Car {
 
     private static final int FORWARD_VALUE = 1;
 
-    private int position;
+    private final int position;
     private final String name;
-
-    public static Car from(Car car) {
-        return new Car(car.position, car.name);
-    }
 
     public Car(String name) {
         this(0, name);
@@ -22,10 +18,12 @@ public class Car {
         this.name = name;
     }
 
-    public void move(RacingRule racingRule) {
+    public Car move(RacingRule racingRule) {
         if (racingRule.isSatisfiedRule()) {
-            this.position += FORWARD_VALUE;
+            int movedPosition = this.position + FORWARD_VALUE;
+            return new Car(movedPosition, this.name);
         }
+        return new Car(this.position, this.name);
     }
 
     public int getPosition() {

@@ -24,9 +24,13 @@ class CarTest {
     void car_moves_only_one(int givenIterateNumber) {
         //given
         Car car = new Car("Tester");
+        Car finishedCar = null;
 
         // when
-        for (int i = 0; i < givenIterateNumber; i++) car.move(alwaysMoveRule);
+        for (int i = 0; i < givenIterateNumber; i++) {
+            finishedCar = car.move(alwaysMoveRule);
+            car = finishedCar;
+        }
 
         //then
         assertEquals(car.getPosition(), givenIterateNumber);

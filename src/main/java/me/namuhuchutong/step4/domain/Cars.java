@@ -32,15 +32,12 @@ public class Cars {
     }
 
     public Cars raceAllCars(RacingRule racingRule) {
-        this.values.forEach(car -> car.move(racingRule));
-        return new Cars(copyOf(this.values));
+        List<Car> collect = this.values.stream()
+                                       .map(car -> car.move(racingRule))
+                                       .collect(toUnmodifiableList());
+        return new Cars(collect);
     }
 
-    private List<Car> copyOf(List<Car> values) {
-        return values.stream()
-                     .map(Car::from)
-                     .collect(toUnmodifiableList());
-    }
 
     public List<Car> getValues() {
         return List.copyOf(this.values);
