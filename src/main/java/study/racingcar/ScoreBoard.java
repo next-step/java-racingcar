@@ -20,14 +20,16 @@ public class ScoreBoard {
         grids.forEach(scoreEachRound -> {
             if (result.isEmpty()) {
                 result.add(
-                        scoreEachRound.roundScores().stream()
-                                .collect(Collectors.toMap(Score::whozScore, score -> String.valueOf(score.score()))));
+                    scoreEachRound.roundScores().stream()
+                        .collect(Collectors.toMap(Score::whozScore,
+                            score -> String.valueOf(score.score().moveString()))));
                 return;
             }
             Map<Car, String> last = result.getLast();
             result.add(scoreEachRound.roundScores().stream()
-                    .map(score -> Map.entry(score.whozScore(), last.get(score.whozScore()) + score.score()))
-                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+                .map(score -> Map.entry(score.whozScore(),
+                    last.get(score.whozScore()) + score.score().moveString()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
         });
         return result;
     }

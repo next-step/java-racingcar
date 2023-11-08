@@ -19,13 +19,13 @@ class ScoreTest {
     @Test
     void whenCarMoveMustReturnCharacter(){
         Score score = new Score(car, successRandomGenratorStub);
-        assertThat(score.score()).isEqualTo(Score.MOVE_SCORE);
+        assertThat(score.score()).isEqualTo(MoveStatus.MOVE);
     }
 
     @DisplayName("차의 움짐임에 따라 점수를 char로 반환 - 차가 움직이지 않았을 때")
     @Test
     void whenCarStopMustReturnCharacter(){
         Score score = new Score(car, failRandomGenratorStub);
-        assertThat(score.score()).isEqualTo(Score.STOP_SCORE);
+        assertThat(score.score()).isEqualTo(MoveStatus.STOP);
     }
 }
