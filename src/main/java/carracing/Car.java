@@ -1,17 +1,18 @@
 package carracing;
 
 public class Car {
-    final int RANDOM_RANGE_0_TO_9 = 10;
 
-    private String carName;
+    final int ONE_STEP_FORWARD = 1;
     private int maxMovementCount;
-
-    public void setCarName(String name){
-        carName = name;
+    private int carPosition = 0;
+    public void carMove(MoveStrategy strategy){
+        if(strategy.executeMove()){
+            this.carPosition += ONE_STEP_FORWARD;
+        }
     }
 
-    public String getCarName(){
-        return carName;
+    public int getCarPosition(){
+        return carPosition;
     }
 
     public void setMaxMovementCount(int moveCount){
