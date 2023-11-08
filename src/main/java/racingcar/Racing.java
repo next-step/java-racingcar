@@ -14,6 +14,12 @@ public class Racing {
         cars = new Cars(inputCarCount, new RandomStrategy(Car.MOVE_CONDITION, 10));
     }
 
+    public Racing(String racerNames, int inputRoundCount) {
+        this.roundCount = inputRoundCount;
+
+        cars = new Cars(racerNames);
+    }
+
     public boolean holdPossible() {
         if (cars.carsReady(MINIMUM_CAR_COUNT) && roundCount >= MINIMUM_ROUND_COUNT) {
             return true;
@@ -23,5 +29,9 @@ public class Racing {
 
     public void race() {
         cars.race(roundCount);
+    }
+
+    public Cars cars() {
+        return cars;
     }
 }
