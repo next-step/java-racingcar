@@ -12,7 +12,7 @@ public class Car {
 		}
 	}
 
-	public boolean isCarFoward(int num) {
+	private boolean isCarFoward(int num) {
 		return num >= MINIMUM_TO_MOVE;
 	}
 

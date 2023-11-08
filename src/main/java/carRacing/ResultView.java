@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
 
-	public static final String HYPHEN = "-";
+	private static final String HYPHEN = "-";
 
 	public void showResult(List<Car> cars) {
 		for (Car car : cars) {
