@@ -12,8 +12,8 @@ public class RaceStartLine {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int cars = new RaceInputView(scanner).carsInput();
-        int times = new RaceInputView(scanner).raceTimeInput();
+        int cars = RaceInputView.carsInput(scanner);
+        int times = RaceInputView.raceTimeInput(scanner);
 
         List<Car> carList = new RaceBoard(cars).generate();
         new Race(carList).playing(times);

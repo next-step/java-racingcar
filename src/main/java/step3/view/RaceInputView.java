@@ -9,22 +9,16 @@ import static step3.constants.QuestionConstants.HOW_MANY_TIMES;
 
 public class RaceInputView {
 
-    private final Scanner scanner;
-
-    public RaceInputView(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    public int carsInput() {
+    public static int carsInput(Scanner scanner) {
         System.out.println(HOW_MANY_CARS);
-        int cars = this.scanner.nextInt();
+        int cars = scanner.nextInt();
 
         return ValidateRacingCarInput.positiveNumber(cars);
     }
 
-    public int raceTimeInput() {
+    public static int raceTimeInput(Scanner scanner) {
         System.out.println(HOW_MANY_TIMES);
-        int times = this.scanner.nextInt();
+        int times = scanner.nextInt();
 
         return ValidateRacingCarInput.positiveNumber(times);
     }
