@@ -1,18 +1,20 @@
 package carracing;
 
-import carracing.ui.dto.CarRaceResponse;
-import carracing.domain.race.move.RandomMoveStopStrategy;
 import carracing.ui.InputView;
-import carracing.ui.OutputView;
+import carracing.ui.dto.CarRaceResponse;
+
+import static carracing.ui.InputView.input;
+import static carracing.ui.OutputView.output;
+import static carracing.utils.config.CarRaceFactory.carRaceService;
+import static carracing.utils.config.CarRaceFactory.init;
 
 public class CarRaceApplication {
     public static void main(String[] args) {
-        CarRaceService carRaceService = new CarRaceService(new RandomMoveStopStrategy());
-
-        InputView inputView = InputView.input();
+        init();
+        InputView inputView = input();
 
         CarRaceResponse response = carRaceService.race(inputView.toRequest());
 
-        OutputView.output(response);
+        output(response);
     }
 }

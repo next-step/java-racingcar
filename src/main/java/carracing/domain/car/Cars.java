@@ -1,5 +1,7 @@
 package carracing.domain.car;
 
+import carracing.domain.race.move.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,8 +25,8 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public void move(int i) {
-        cars.forEach((car) -> car.move(i));
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach((car) -> car.move(moveStrategy.getMovePoint()));
     }
 
     private Car getMaxPosition() {

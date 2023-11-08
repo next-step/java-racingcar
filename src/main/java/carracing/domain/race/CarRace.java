@@ -14,7 +14,7 @@ public class CarRace {
     }
 
     public void run(MoveStrategy moveStrategy) {
-        cars.move(moveStrategy.getMovePoint());
+        cars.move(moveStrategy);
     }
 
     public List<Car> winners() {
