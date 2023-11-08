@@ -29,4 +29,11 @@ public class CarTest {
         assertThat(actual).isEqualTo(0);
     }
 
+    @Test
+    void 차는_이름을_부여할_수_있다() {
+        Car car = new Car();
+        car.makeName("이창섭");
+        assertThat(car.name()).isEqualTo("이창섭");
+    }
+
 }
