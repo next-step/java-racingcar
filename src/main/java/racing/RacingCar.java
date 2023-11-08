@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.Arrays;
+
 public class RacingCar {
 
     public static void main(String[] args) {
@@ -8,8 +10,8 @@ public class RacingCar {
         ResultView.print("시도할 회수는 몇 회 인가요?");
         int round = InputView.input();
 
-        Car car = new Car(cars, round);
+        Racing racing = new Racing(cars, round);
         ResultView.print("실행 결과");
-        car.race();
+        racing.race();
     }
 }

@@ -3,34 +3,28 @@ package racing;
 import java.util.Random;
 
 public class Car {
-    static String DISTANCE = "-";
+    static String DISTANCE_STRING = "-";
 
-    private int[] distance;
-    private int round;
+    private int distance = 0;
 
-    public Car(int cars, int round) {
-        this.distance = new int[cars];
-        this.round = round;
+    public int getDistance() {
+        return distance;
     }
 
-    private void move(int idx) {
+    public void move() {
         Random random = new Random();
         if (random.nextInt(10) >= 4) {
-            distance[idx]++;
+            distance++;
         }
     }
 
-    private void distance() {
-        for (int i=0; i<distance.length; i++) {
-            move(i);
-            ResultView.print(DISTANCE.repeat(distance[i]));
+    public void move(int n) {
+        if (n >= 4) {
+            distance++;
         }
-        ResultView.print("");
     }
 
-    public void race() {
-        for (int i=0; i<round; i++) {
-            distance();
-        }
+    public void showDistance() {
+        ResultView.print(DISTANCE_STRING.repeat(distance));
     }
 }
