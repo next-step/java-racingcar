@@ -1,9 +1,13 @@
 package com.racing.game;
 
 import com.racing.game.dto.RaceEntry;
-import java.util.concurrent.ThreadLocalRandom;
+import com.racing.game.dto.RaceResult;
+import java.util.Arrays;
+import java.util.Random;
 
 public class CarRace {
+
+    private static final Random random = new Random();
 
     private static final String EXCEPTION_MSG_UTILITY_CLASS = "Utility class";
 
@@ -11,27 +15,24 @@ public class CarRace {
         throw new IllegalStateException(EXCEPTION_MSG_UTILITY_CLASS);
     }
 
-    public static int[][] race(RaceEntry raceEntry) {
-        int[][] result = new int[raceEntry.carCount()][raceEntry.tryCount()];
-        for (int i = 0; i < raceEntry.tryCount(); i++) {
-            randomRace(raceEntry.carCount(), result[i]);
-        }
-        return result;
+    public static RaceResult race(RaceEntry raceEntry) {
+        return RaceResult.of(
+                Arrays.stream(new int[raceEntry.tryCount()][raceEntry.carCount()])
+                        .map(CarRace::randomRace).toArray(int[][]::new));
     }
 
-    private static void randomRace(int carCount, int[] result) {
-        for (int j = 0; j < carCount; j++) {
-            randomGoForward(result, j);
-        }
+    private static int[] randomRace(int[] input) {
+        return Arrays.stream(input).map(CarRace::randomGoForward).toArray();
     }
 
-    private static void randomGoForward(int[] result, int j) {
+    private static int randomGoForward(int input) {
         if (isGoForward()) {
-            result[j]++;
+            return input + 1;
         }
+        return input;
     }
 
     private static boolean isGoForward() {
-        return ThreadLocalRandom.current().nextInt(10) >= 4;
+        return random.nextInt(10) >= 4;
     }
 }
