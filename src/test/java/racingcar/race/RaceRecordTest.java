@@ -24,9 +24,9 @@ class RaceRecordTest {
         cars.add(new Car());
 
         BasicNumberGenerator generator = new BasicNumberGenerator(5);
-        MinimumRule rule = new MinimumRule(5);
+        MinimumRule rule = new MinimumRule(5, generator);
 
-        Race race = new Race(cars, rule, generator);
+        Race race = new Race(cars, rule);
         race.start();
 
 

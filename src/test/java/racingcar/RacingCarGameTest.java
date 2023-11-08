@@ -24,8 +24,8 @@ class RacingCarGameTest {
                 3,
                 5,
                 new ResultView(),
-                new MinimumRule(4),
-                new BasicNumberGenerator(9));
+                new MinimumRule(4, new BasicNumberGenerator(9))
+        );
 
         racingCarGame.start();
 
@@ -40,8 +40,8 @@ class RacingCarGameTest {
                 3,
                 5,
                 new ResultView(),
-                new MinimumRule(4),
-                new BasicNumberGenerator(9));
+                new MinimumRule(4, new BasicNumberGenerator(9))
+        );
 
         racingCarGame.start();
 
@@ -55,8 +55,8 @@ class RacingCarGameTest {
                 3,
                 5,
                 new ResultView(),
-                new MinimumRule(4),
-                new BasicNumberGenerator(9));
+                new MinimumRule(4, new BasicNumberGenerator(9))
+        );
 
         racingCarGame.start();
 
@@ -80,8 +80,8 @@ class RacingCarGameTest {
                 carCount,
                 raceCount,
                 new ResultView(),
-                new MinimumRule(4),
-                new BasicNumberGenerator(9));
+                new MinimumRule(4, new BasicNumberGenerator(9))
+        );
 
         racingCarGame.start();
         int count = racingCarGame.races()

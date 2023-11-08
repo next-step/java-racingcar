@@ -10,16 +10,13 @@ public class Race {
 
     private Rule rule;
 
-    private NumberGenerator numberGenerator;
-
     private List<Car> cars;
 
     private List<RaceRecord> raceRecords;
 
-    public Race(List<Car> cars, Rule rule, NumberGenerator numberGenerator) {
+    public Race(List<Car> cars, Rule rule) {
         this.cars = cars;
         this.rule = rule;
-        this.numberGenerator = numberGenerator;
         this.raceRecords = new ArrayList<>();
     }
 
@@ -37,7 +34,7 @@ public class Race {
     }
 
     private boolean movable() {
-        return rule.verify(numberGenerator.get());
+        return rule.verify();
     }
 
     private void record(Car car) {

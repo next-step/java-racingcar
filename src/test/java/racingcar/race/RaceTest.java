@@ -24,9 +24,9 @@ class RaceTest {
         cars.add(new Car());
 
         BasicNumberGenerator generator = new BasicNumberGenerator(input);
-        MinimumRule rule = new MinimumRule(minimum);
+        MinimumRule rule = new MinimumRule(minimum, generator);
 
-        Race race = new Race(cars, rule, generator);
+        Race race = new Race(cars, rule);
         race.start();
 
         for (Car car : cars) {
