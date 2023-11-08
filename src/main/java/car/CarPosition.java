@@ -3,14 +3,15 @@ package car;
 public class CarPosition implements Comparable<CarPosition> {
 
     private int distance;
+    private static final int MIN_DISTANCE = 0;
 
     public CarPosition(int distance) {
-        isMoreThanZero(distance);
+        isMoreThanMinDistance(distance);
         this.distance = distance;
     }
 
-    private void isMoreThanZero(int distance) {
-        if (distance < 0) {
+    private void isMoreThanMinDistance(int distance) {
+        if (distance < MIN_DISTANCE) {
             throw new IllegalArgumentException("distance는 항상 0 이상이어야 합니다.");
         }
     }

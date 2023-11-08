@@ -5,7 +5,8 @@ import java.util.List;
 
 public class RacingGame {
 
-    private static final Integer START_DISTANCE = 0;
+    private static final int START_DISTANCE = 0;
+    private static final int GREATER_THAN_WINNER = 0;
     private static final InputParser inputParser = new InputParser();
     private final RandomNumberGenerator randomNumberGenerator;
 
@@ -64,7 +65,7 @@ public class RacingGame {
     }
 
     private Car changeWinnerCar(Car winnerCar, Car car) {
-        if (car.compareTo(winnerCar) > 0) { //todo
+        if (car.compareTo(winnerCar) > GREATER_THAN_WINNER) { //todo
             return car;
         }
         return winnerCar;

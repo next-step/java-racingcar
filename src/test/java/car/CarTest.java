@@ -12,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(START_DISTANCE, "TEMP_CARNAME");
+        car = new Car(START_DISTANCE, "car");
     }
 
     @ParameterizedTest
