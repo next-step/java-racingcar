@@ -42,4 +42,14 @@ class CarTest {
 
         assertThat(car.toString()).isEqualTo("car1 : --");
     }
+
+    @Test
+    @DisplayName("생성자를 통해 position을 주입할 수 있다.")
+    void setPosition() {
+        Car car = new Car(4, "hyun");
+
+        car.move(5);
+
+        assertThat(car.getPosition()).isEqualTo(5);
+    }
 }

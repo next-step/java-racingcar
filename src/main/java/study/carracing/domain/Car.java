@@ -2,13 +2,20 @@ package study.carracing.domain;
 
 public class Car {
 
+    private static final int INITIAL_POSITION = 1;
     private static final String PROGRESS_DASH = "-";
     private static final int MOVE_CONDITION_NUMBER = 4;
 
-    private int position = 1;
+    private int position;
     private final String name;
 
     public Car(String name) {
+        this.name = name;
+        this.position = INITIAL_POSITION;
+    }
+
+    public Car(int position, String name) {
+        this.position = position;
         this.name = name;
     }
 
