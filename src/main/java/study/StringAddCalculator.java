@@ -1,4 +1,4 @@
-package study.nextstep;
+package study;
 
 import java.util.Arrays;
 import java.util.HashMap;
