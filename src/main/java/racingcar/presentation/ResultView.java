@@ -1,10 +1,9 @@
 package racingcar.presentation;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.domain.Car;
 
-public class ResultView {
+public class OutputView {
 
         private static final String PATH_SIGN = "-";
         private static final String BETWEEN_NAME_AND_PATH_SIGN = " : ";
@@ -25,13 +24,13 @@ public class ResultView {
         }
 
         public static void printWinner(List<Car> cars){
-                String winnersInOneLine = cars.stream().map(car -> car.name().getText()).collect(Collectors.joining(COMMA));
+                String winnersInOneLine = cars.stream().map(Car::getName).collect(Collectors.joining(COMMA));
                 System.out.println(winnersInOneLine + "가 최종 우승했습니다.");
         }
 
         private static void printCurrentPosition(Car car) {
-                printName(car.name().getText());
-                System.out.print(PATH_SIGN.repeat(car.currentPosition().getNumber()));
+                printName(car.getName());
+                System.out.print(PATH_SIGN.repeat(car.getCurrentPosition()));
                 printNewLine();
         }
 
