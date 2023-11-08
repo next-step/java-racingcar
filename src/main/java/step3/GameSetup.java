@@ -9,13 +9,13 @@ public class GameSetup {
     int round;
     Random random;
 
-    public void setupGame(int numCar, int round, Random random) {
+    public GameSetup(int numCar, int round, Random random) {
         this.round = round;
-        this.random = random;
         for (int i = 0; i < numCar ; i++) {
             Car car = new Car();
             cars.add(car);
         }
+        this.random = random;
     }
 
     public void startGame() {

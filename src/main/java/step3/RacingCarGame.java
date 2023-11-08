@@ -8,8 +8,7 @@ public class RacingCarGame {
         InputView.display();
         Random random = new Random();
 
-        GameSetup gameSetup = new GameSetup();
-        gameSetup.setupGame(InputView.numCar, InputView.numAttempt, random);
+        GameSetup gameSetup = new GameSetup(InputView.numCar, InputView.numAttempt, random);
 
         gameSetup.startGame();
     }
