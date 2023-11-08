@@ -5,6 +5,8 @@ import carracing.ui.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static carracing.GameWinner.carRaceTopPosition;
+import static carracing.ui.ResultView.carRacingWinnersView;
 import static carracing.util.InputValueValidate.splitCommaInputCarName;
 import static carracing.util.InputValueValidate.verifyExceedFiveCarName;
 
@@ -24,6 +26,7 @@ public class RacingGame {
             racingGameProcess();
             System.out.println();
         }
+        carRacingWinnersView(carList);
     }
 
     private List<Car> cars(String carName) {
@@ -34,6 +37,7 @@ public class RacingGame {
         for (Car car : carList) {
             printResultRaceGameProcess(car);
             car.move(random.getRandomNumber());
+            carRaceTopPosition(car);
         }
     }
 

@@ -1,7 +1,13 @@
 package carracing.ui;
 
-public class ResultView {
+import carracing.Car;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static carracing.GameWinner.getWinnerPoint;
+
+public class ResultView {
     private ResultView() {
     }
 
@@ -12,5 +18,18 @@ public class ResultView {
         sb.append(("-".repeat(position)));
 
         return sb.toString();
+    }
+
+    public static void carRacingWinnersView(List<Car> winners) {
+        List<String> winnersNameBox = new ArrayList<>();
+        int winnerPoint = getWinnerPoint();
+
+        for (Car winner : winners) {
+            if (winner.getPrevPosition() == winnerPoint) {
+                winnersNameBox.add(winner.getName());
+            }
+        }
+
+        System.out.println(String.join(", ", winnersNameBox) + "가 최종 우승했습니다.");
     }
 }
