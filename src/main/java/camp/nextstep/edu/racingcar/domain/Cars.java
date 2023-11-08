@@ -3,24 +3,24 @@ package camp.nextstep.edu.racingcar.domain;
 import camp.nextstep.edu.racingcar.domain.result.DriveResult;
 import camp.nextstep.edu.racingcar.domain.strategy.DriveStrategy;
 import camp.nextstep.edu.racingcar.domain.result.RoundResult;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cars {
 
     private final DriveStrategy driveStrategy;
-    private final int carAmount;
-    private final Car[] cars;
+    private final List<Car> cars;
 
     public Cars(DriveStrategy driveStrategy, int carAmount) {
         this.driveStrategy = driveStrategy;
-        this.carAmount = carAmount;
-
-        cars = initializeCars(carAmount);
+        this.cars = initializeCars(carAmount);
     }
 
-    private Car[] initializeCars(int carAmount) {
-        final Car[] cars = new Car[carAmount];
+    private List<Car> initializeCars(int carAmount) {
+        final List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carAmount; i++) {
-            cars[i] = new Car(driveStrategy);
+            Car car = new Car(driveStrategy);
+            cars.add(car);
         }
         return cars;
     }
@@ -28,11 +28,10 @@ public class Cars {
     public RoundResult drive() {
         RoundResult roundResult = new RoundResult();
 
-        for (int i = 0; i < carAmount; i++) {
-            DriveResult driveResult = cars[i].drive();
+        for (Car car : cars) {
+            DriveResult driveResult = car.drive();
             roundResult.report(driveResult);
         }
-
         return roundResult;
     }
 }

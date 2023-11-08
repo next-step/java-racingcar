@@ -3,8 +3,10 @@ package camp.nextstep.edu.racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.racingcar.domain.Cars;
+import camp.nextstep.edu.racingcar.domain.result.DriveResult;
 import camp.nextstep.edu.racingcar.domain.result.RoundResult;
 import camp.nextstep.edu.racingcar.domain.strategy.DriveStrategy;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,8 +24,15 @@ public class CarsTest {
         RoundResult roundResult2 = cars.drive();
 
         // then
-        assertThat(roundResult1.toString()).isEqualTo("-\n-\n");
-        assertThat(roundResult2.toString()).isEqualTo("--\n--\n");
+        List<DriveResult> driveResults1 = roundResult1.driveResults();
+        assertThat(driveResults1.size()).isEqualTo(2);
+        assertThat(driveResults1.get(0).drivenDistance()).isEqualTo(1);
+        assertThat(driveResults1.get(1).drivenDistance()).isEqualTo(1);
+
+        List<DriveResult> driveResults2 = roundResult2.driveResults();
+        assertThat(driveResults2.size()).isEqualTo(2);
+        assertThat(driveResults2.get(0).drivenDistance()).isEqualTo(2);
+        assertThat(driveResults2.get(1).drivenDistance()).isEqualTo(2);
     }
 
     @Test
@@ -38,7 +47,14 @@ public class CarsTest {
         RoundResult roundResult2 = cars.drive();
 
         // then
-        assertThat(roundResult1.toString()).isEqualTo('\n');
-        assertThat(roundResult2.toString()).isEqualTo('\n');
+        List<DriveResult> driveResults1 = roundResult1.driveResults();
+        assertThat(driveResults1.size()).isEqualTo(2);
+        assertThat(driveResults1.get(0).drivenDistance()).isEqualTo(0);
+        assertThat(driveResults1.get(1).drivenDistance()).isEqualTo(0);
+
+        List<DriveResult> driveResults2 = roundResult2.driveResults();
+        assertThat(driveResults2.size()).isEqualTo(2);
+        assertThat(driveResults2.get(0).drivenDistance()).isEqualTo(0);
+        assertThat(driveResults2.get(1).drivenDistance()).isEqualTo(0);
     }
 }

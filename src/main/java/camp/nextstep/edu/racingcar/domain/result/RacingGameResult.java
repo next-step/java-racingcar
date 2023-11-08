@@ -15,6 +15,10 @@ public class RacingGameResult {
         roundResults.add(roundResult);
     }
 
+    public List<RoundResult> roundResults() {
+        return this.roundResults;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

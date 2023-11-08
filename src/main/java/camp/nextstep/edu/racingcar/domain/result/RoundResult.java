@@ -23,4 +23,8 @@ public class RoundResult {
         }
         return result.toString();
     }
+
+    public List<DriveResult> driveResults() {
+        return driveResults;
+    }
 }

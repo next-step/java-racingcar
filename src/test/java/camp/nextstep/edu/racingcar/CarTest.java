@@ -22,8 +22,8 @@ public class CarTest {
         DriveResult driveResult2 = car.drive();
 
         // then
-        assertThat(driveResult1.toString()).isEqualTo("-");
-        assertThat(driveResult2.toString()).isEqualTo("--");
+        assertThat(driveResult1.drivenDistance()).isEqualTo(1);
+        assertThat(driveResult2.drivenDistance()).isEqualTo(2);
     }
 
     @Test
