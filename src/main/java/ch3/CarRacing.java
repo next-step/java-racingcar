@@ -14,11 +14,11 @@ public class CarRacing {
         this.resultView = resultView;
     }
 
-    public InputView getInputView() {
+    public InputView inputView() {
         return inputView;
     }
 
-    public ResultView getResultView() {
+    public ResultView resultView() {
         return resultView;
     }
 
@@ -41,11 +41,11 @@ public class CarRacing {
         return cars.size();
     }
 
-    public List<Car> getCars() {
+    public List<Car> cars() {
         return this.cars;
     }
 
-    public Queue<Integer> getExecuteNumbers() {
+    public Queue<Integer> executeNumbers() {
         return this.executeNumbers;
     }
 
