@@ -53,7 +53,7 @@ public class CarRacingTest {
     void 경주가_종료하면_우승차가_1명이상이다() {
         carRacing.makingCar("pobi,karl,evan");
         carRacing.executeRace();
-        List<Car> winningCars = carRacing.viewResultRaceCars();
+        List<Car> winningCars = carRacing.getWinningRaceCars();
         assertFalse(winningCars.isEmpty());
 
     }

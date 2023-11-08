@@ -69,10 +69,10 @@ public class CarRacing {
             executeRace();
             resultView.showCarRacing(cars);
         }
-        resultView.showResultCarRacing(cars);
+        resultView.showResultCarRacing(getWinningRaceCars());
     }
 
-    public List<Car> viewResultRaceCars() {
+    public List<Car> getWinningRaceCars() {
         int maxPosition = findMaxPosition();
         return findWinningCars(maxPosition);
     }
