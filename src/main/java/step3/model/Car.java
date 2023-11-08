@@ -1,7 +1,5 @@
 package step3.model;
 
-import static step3.model.Race.getRandomValue;
-
 public class Car {
 
     private static final int MINIMUM_RANDOM_VALUE = 4;
@@ -17,9 +15,7 @@ public class Car {
     }
 
     public void go() {
-        if (isMovable(getRandomValue())) {
-            this.currentStatus++;
-        }
+        this.currentStatus++;
     }
 
     public int getCurrentStatus() {

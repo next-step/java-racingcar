@@ -1,10 +1,7 @@
 package step3.model;
 
-import step3.view.RaceResultView;
-
 import java.util.List;
 import java.util.Random;
-import java.util.stream.IntStream;
 
 public class Race {
 
@@ -16,11 +13,10 @@ public class Race {
         this.cars = cars;
     }
 
-    public void playing(int times) {
-        IntStream.range(0, times).forEach(t -> {
+    public void playing(int randomValue) {
+        if (new Car().isMovable(randomValue)) {
             cars.forEach(Car::go);
-            new RaceResultView(cars).show();
-        });
+        }
     }
 
     public static int getRandomValue() {

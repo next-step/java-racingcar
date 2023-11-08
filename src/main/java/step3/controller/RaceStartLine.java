@@ -4,9 +4,11 @@ import step3.model.Car;
 import step3.model.Race;
 import step3.model.RaceBoard;
 import step3.view.RaceInputView;
+import step3.view.RaceResultView;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class RaceStartLine {
 
@@ -16,6 +18,9 @@ public class RaceStartLine {
         int times = RaceInputView.raceTimeInput(scanner);
 
         List<Car> carList = new RaceBoard(cars).generate();
-        new Race(carList).playing(times);
+        IntStream.range(0, times).forEach(t -> {
+            new Race(carList).playing(times);
+            new RaceResultView(carList).show();
+        });
     }
 }
