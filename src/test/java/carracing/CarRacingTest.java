@@ -3,6 +3,11 @@ package carracing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static carracing.GameWinner.carRaceTopPosition;
+import static carracing.GameWinner.getWinnerPoint;
 import static carracing.util.InputValueValidate.splitCommaInputCarName;
 import static carracing.util.InputValueValidate.verifyExceedFiveCarName;
 import static org.assertj.core.api.Assertions.*;
@@ -72,6 +77,29 @@ public class CarRacingTest {
     public void exceed_five_car_name_validate() {
         assertThatThrownBy(() -> verifyExceedFiveCarName("abcde"))
                 .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("3대의 자동차가 3회 움직인다면 우승자 점수는 현재 높은 수의 이동된 수로 변경된다.")
+    public void find_top_position() {
+        Car car1 = new Car("a");
+        Car car2 = new Car("bb");
+        Car car3 = new Car("ccc");
+
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+
+        cars.get(0).move(4);
+        cars.get(0).move(5);
+        cars.get(0).move(6);
+        cars.get(1).move(3);
+        cars.get(2).move(2);
+
+        for (Car car : cars) {
+            carRaceTopPosition(car);
+        }
+
+        assertThat(getWinnerPoint()).isEqualTo(3);
+
     }
 
 }

@@ -1,12 +1,11 @@
 package carracing;
 
-import carracing.ui.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static carracing.GameWinner.carRaceTopPosition;
 import static carracing.ui.ResultView.carRacingWinnersView;
+import static carracing.ui.ResultView.printResultRaceGameProcess;
 import static carracing.util.InputValueValidate.splitCommaInputCarName;
 import static carracing.util.InputValueValidate.verifyExceedFiveCarName;
 
@@ -64,11 +63,6 @@ public class RacingGame {
             throw new RuntimeException();
         }
         return number;
-    }
-
-    private static void printResultRaceGameProcess(Car car) {
-        String nameAndPositionView = ResultView.createNameAndPositionView(car.getName(), car.getPosition());
-        System.out.println(nameAndPositionView);
     }
 
 }
