@@ -27,4 +27,22 @@ class WinnersTest {
         //then
         assertThat(winners).hasSize(expected);
     }
+
+    @DisplayName("가장 큰 position 값을 가진 자동차가 우승자이다.")
+    @Test
+    void winner_has_the_biggest_position() {
+        //given
+        Car tester1 = new Car(1, "Tester1");
+        Car tester2 = new Car(3, "Tester2");
+        Car tester3 = new Car(4, "Tester3");
+        Cars cars = new Cars(List.of(tester1, tester2, tester3));
+
+        //when
+        List<String> names = Winners.from(cars)
+                                    .getNames();
+
+        //then
+        assertThat(names).contains("Tester3");
+    }
+
 }
