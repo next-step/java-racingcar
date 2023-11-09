@@ -6,11 +6,11 @@ import racingcar.domain.Car;
 
 public class Winner {
 
-    private static int MAX_SCORE = 0;
+    private static int maxScore = 0;
     private static List<String> winners = new ArrayList<>();
 
     public static String getWinners(List<Car> input) {
-        maxScore(input);
+        getMaxScore(input);
 
         for (Car car : input) {
             getWinnerName(car);
@@ -18,15 +18,15 @@ public class Winner {
         return String.join(", ", winners);
     }
 
-    private static int maxScore(List<Car> input) {
+    private static int getMaxScore(List<Car> input) {
         for (Car car : input) {
-            MAX_SCORE = Math.max(MAX_SCORE, car.position());
+            maxScore = Math.max(maxScore, car.position());
         }
-        return MAX_SCORE;
+        return maxScore;
     }
 
     private static void getWinnerName(Car input) {
-        if (input.position() == MAX_SCORE) {
+        if (input.position() == maxScore) {
             winners.add(input.name());
         }
     }
