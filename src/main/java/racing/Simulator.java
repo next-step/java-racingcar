@@ -35,16 +35,15 @@ public class Simulator {
     }
 
     public static List<RacingCar> getWinners(List<RacingCar> cars) {
-        int topSpeed = getTopSpeed(cars);
         return cars.stream()
-                .filter(car -> car.isSameProgress(topSpeed))
+                .filter(car -> car.isSameProgress(getTopSpeed(cars)))
                 .collect(Collectors.toList());
     }
 
     public static int getTopSpeed(List<RacingCar> cars) {
         int max = 0;
         for (RacingCar car : cars) {
-            max = Math.max(max, car.getProgress());
+            max = car.max(max);
         }
         return max;
     }

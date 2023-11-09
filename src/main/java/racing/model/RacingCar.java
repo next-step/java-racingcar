@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class RacingCar {
     public static final int CAN_I_MOVE = 4;
+    public static final int MAX_NAME_LENGTH = 5;
 
     private final Random random = new Random();
     private int progress;
@@ -12,7 +13,7 @@ public class RacingCar {
     public RacingCar(int progress, String name) throws IllegalAccessException {
         this.progress = progress;
         this.name = name;
-        if (name.length() >= 6) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalAccessException("이름은 최대 5글자 입니다.");
         }
     }
@@ -22,6 +23,10 @@ public class RacingCar {
             return;
         }
         this.progress++;
+    }
+
+    public int max(int number) {
+        return Math.max(progress, number);
     }
 
     private boolean notMovable(int randomValue) {
