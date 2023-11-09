@@ -30,7 +30,7 @@ public class Car {
         if (driveStrategy.canDrive()) {
             this.drivenDistance++;
         }
-        return new DriveResult(drivenDistance);
+        return new DriveResult(name, drivenDistance);
     }
 
     public String name() {

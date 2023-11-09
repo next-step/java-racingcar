@@ -9,9 +9,9 @@ public class RacingGame {
     private final int roundAmount;
     private final Cars cars;
 
-    public RacingGame(DriveStrategy driveStrategy, int carAmount, int roundAmount) {
+    public RacingGame(DriveStrategy driveStrategy, String carNames, int roundAmount) {
         this.roundAmount = roundAmount;
-        this.cars = new Cars(driveStrategy, carAmount);
+        this.cars = new Cars(driveStrategy, carNames);
     }
 
     public RacingGameResult play() {

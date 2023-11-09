@@ -17,7 +17,7 @@ public class CarsTest {
     void mustDrive() {
         // given
         DriveStrategy driveStrategy = () -> true;
-        Cars cars = new Cars(driveStrategy, 2);
+        Cars cars = new Cars(driveStrategy, "tmp,tmp2");
 
         // when
         RoundResult roundResult1 = cars.drive();
@@ -40,7 +40,7 @@ public class CarsTest {
     void mustNotDrive() {
         // given
         DriveStrategy driveStrategy = () -> false;
-        Cars cars = new Cars(driveStrategy, 2);
+        Cars cars = new Cars(driveStrategy, "tmp,tmp2");
 
         // when
         RoundResult roundResult1 = cars.drive();
@@ -56,5 +56,22 @@ public class CarsTest {
         assertThat(driveResults2.size()).isEqualTo(2);
         assertThat(driveResults2.get(0).drivenDistance).isEqualTo(0);
         assertThat(driveResults2.get(1).drivenDistance).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차 이름들을 ,로 구분하여 받아 자동차들을 생성한다")
+    void carNames() {
+        // given
+        DriveStrategy driveStrategy = () -> false;
+        Cars cars = new Cars(driveStrategy, "a,b");
+
+        // when
+        RoundResult roundResult = cars.drive();
+        List<DriveResult> driveResults = roundResult.driveResults();
+
+        // then
+        assertThat(driveResults.size()).isEqualTo(2);
+        assertThat(driveResults.get(0).name).isEqualTo("a");
+        assertThat(driveResults.get(1).name).isEqualTo("b");
     }
 }

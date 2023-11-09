@@ -11,20 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
         DriveStrategy driveStrategy = new RandomDriveStrategy();
-        int carAmount = inputCarAmount();
-        int roundAmount = inputRoundAmount();
+        String carNames = RacingInputView.readCarNames();
+        int roundAmount = RacingInputView.readRoundAmount();
 
-        RacingGame racingGame = new RacingGame(driveStrategy, carAmount, roundAmount);
+        RacingGame racingGame = new RacingGame(driveStrategy, carNames, roundAmount);
         RacingGameResult gameResult = racingGame.play();
 
         RacingOutputView.printGameResult(gameResult);
-    }
-
-    private static int inputCarAmount() {
-        return RacingInputView.readCarAmount();
-    }
-
-    private static int inputRoundAmount() {
-        return RacingInputView.readRoundAmount();
     }
 }

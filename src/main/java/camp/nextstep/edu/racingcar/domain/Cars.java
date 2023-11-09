@@ -8,18 +8,18 @@ import java.util.List;
 
 public class Cars {
 
-    private final DriveStrategy driveStrategy;
     private final List<Car> cars;
 
-    public Cars(DriveStrategy driveStrategy, int carAmount) {
-        this.driveStrategy = driveStrategy;
-        this.cars = initializeCars(carAmount);
+    public Cars(DriveStrategy driveStrategy, String carNames) {
+        this.cars = initializeCars(driveStrategy, carNames);
     }
 
-    private List<Car> initializeCars(int carAmount) {
+    private List<Car> initializeCars(DriveStrategy driveStrategy, String carNames) {
+        String[] arrCarNames = carNames.split(",");
+
         final List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carAmount; i++) {
-            Car car = new Car("temp", driveStrategy);
+        for (String carName : arrCarNames) {
+            Car car = new Car(carName.trim(), driveStrategy);
             cars.add(car);
         }
         return cars;
