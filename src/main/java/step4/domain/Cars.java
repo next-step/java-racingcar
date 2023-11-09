@@ -1,6 +1,7 @@
 package step4.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
@@ -9,10 +10,9 @@ public class Cars {
 
     public Cars() {}
 
-    public Cars(int numOfCars) {
-        for (int i=0; i<numOfCars; i++) {
-            cars.add(new Car());
-        }
+    public Cars(String[] nameOfCars) {
+        Arrays.stream(nameOfCars)
+            .forEach(name -> cars.add(new Car(name)));
     }
 
     public int getNumOfCars() {
