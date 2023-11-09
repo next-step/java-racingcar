@@ -4,8 +4,6 @@ package car;
 import java.util.List;
 import java.util.Scanner;
 
-import static car.CarService.winnersList;
-
 public class IoMain {
     private static Scanner sc = new Scanner(System.in);
 
@@ -48,9 +46,11 @@ public class IoMain {
     }
 
     public static String winnersString(List<Car> cars) {
-        List<String> list = winnersList(cars);
+        Win win = new Win(cars);
 
-        return list.toString().replaceAll("[\\[\\]]", "");
+        List<String> winnersName = win.winnersNameList();
+
+        return winnersName.toString().replaceAll("[\\[\\]]", "");
     }
 
     public static void printChampion(List<Car> cars) {

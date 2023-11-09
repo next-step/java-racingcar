@@ -5,17 +5,14 @@ public class Car {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private int position;
-    private String name;
+    private final String name;
 
     public Car() {
-        this.position = 0;
+        this("", 0);
     }
 
     public Car(String name) {
-        validateCarNameLength(name);
-
-        this.position = 0;
-        this.name = name;
+        this(name, 0);
     }
 
     public Car(String name, int position) {
