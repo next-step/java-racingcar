@@ -13,15 +13,14 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class GameTest {
-
+class GameManagerTest {
     @ParameterizedTest
     @MethodSource("makeCarsProvider")
     @DisplayName("makeCars 메서드는 입력으로 들어온 배열의 크기만큼 RacingCar 객체가 들어있는 List를 반환한다.")
     void testMakeCarsReturnList(String[] carNames, int expectedSize) {
         //given
         //when
-        final List<RacingCar> cars = Game.makeCars(carNames);
+        final List<RacingCar> cars = GameManager.makeCars(carNames);
 
         //then
         assertThat(cars).hasSize(expectedSize);
@@ -45,7 +44,7 @@ class GameTest {
         final List<RacingCar> cars = new ArrayList<>(List.of(car1, car2, car3, car4));
 
         //when
-        final List<RacingCar> winners = Game.extractWinners(cars);
+        final List<RacingCar> winners = GameManager.extractWinners(cars);
 
         //then
         assertThat(winners).containsExactly(car3, car4);
@@ -60,7 +59,7 @@ class GameTest {
                 new RacingCar("car2")));
 
         //when
-        final String[] carNames = Game.toNames(cars);
+        final String[] carNames = GameManager.toNames(cars);
 
         //then
         assertThat(carNames).containsExactlyInAnyOrder("car1", "car2");

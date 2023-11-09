@@ -5,7 +5,6 @@ import step5.domain.UserInput;
 import step5.view.InputView;
 import step5.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -13,7 +12,7 @@ public class Game {
         //inputView
         final UserInput userInput = InputView.input();
 
-        List<RacingCar> cars = makeCars(userInput.getCarNames());
+        List<RacingCar> cars = GameManager.makeCars(userInput.getCarNames());
 
         //resultView
         ResultView.printResultText();
@@ -23,56 +22,12 @@ public class Game {
             ResultView.printTryResult(cars);
         }
 
-        ResultView.printWinners(toNames(extractWinners(cars)));
-    }
-
-    public static List<RacingCar> makeCars(final String[] carNames) {
-        List<RacingCar> cars = new ArrayList<>();
-
-        for (final String carName : carNames) {
-            cars.add(new RacingCar(carName));
-        }
-
-        return cars;
+        ResultView.printWinners(GameManager.toNames(GameManager.extractWinners(cars)));
     }
 
     private static void tryMove(final List<RacingCar> cars) {
         for (RacingCar car : cars) {
             car.moveIfInRange(RandomValueGenerator.generateRandomValueFromZeroToNine());
         }
-    }
-
-    public static List<RacingCar> extractWinners(final List<RacingCar> cars) {
-        cars.sort(null);
-
-        final RacingCar winnerCar = cars.get(0);
-
-        List<RacingCar> winnerCars = new ArrayList<>();
-
-        for (final RacingCar car : cars) {
-            addCarIfWinnerDistanceEqualWithCarDistance(winnerCar, car, winnerCars);
-        }
-
-        return winnerCars;
-    }
-
-    private static void addCarIfWinnerDistanceEqualWithCarDistance(final RacingCar winnerCar, final RacingCar car, final List<RacingCar> winnerCars) {
-        if (winnerCar.currentDistance() != car.currentDistance()) {
-            return;
-        }
-
-        winnerCars.add(car);
-    }
-
-    public static String[] toNames(final List<RacingCar> winners) {
-        String[] winnerNames = new String[winners.size()];
-
-        for (int i = 0; i < winners.size(); i++) {
-            final RacingCar winner = winners.get(i);
-
-            winnerNames[i] = winner.carName();
-        }
-
-        return winnerNames;
     }
 }
