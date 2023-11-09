@@ -59,7 +59,7 @@ class CarTest {
 
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> new Car(inputName))
-                    .withMessage("이름은 5글자를 초과할 수 없습니다. 초과된 이름 :" + inputName);
+                    .withMessage("이름은 5글자를 초과할 수 없습니다. 초과된 이름 : " + inputName);
         }
     }
 }
