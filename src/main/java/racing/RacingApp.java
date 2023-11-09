@@ -1,11 +1,9 @@
 package racing;
 
-import racing.Racing.ParticipatingCars;
-import racing.car.Car;
-import racing.ui.InputView;
-import racing.ui.ResultView;
+import racing.domain.racing.Racing;
+import racing.view.InputView;
+import racing.view.ResultView;
 
-import java.util.List;
 import java.util.Random;
 
 public class RacingApp {

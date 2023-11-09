@@ -1,7 +1,7 @@
-package racing;
+package racing.domain.racing;
 
-import racing.car.Car;
-import racing.car.Position;
+import racing.domain.car.Car;
+import racing.domain.car.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class Racing {
         for (Car car : this.participatingCars().cars()) {
             int input = random.nextInt(RANDOM_SEED_NUMBER);
             car.move(input);
-            cars.add(new Car(car.name().toString(), car.position().position()));
+            cars.add(new Car(car.name().toString()));
         }
         return cars;
     }
@@ -65,7 +65,7 @@ public class Racing {
         public ParticipatingCars(String inputNames) {
             String[] names = inputNames.split(",");
             for (String name : names) {
-                this.participatingCars.add(new Car(name, INIT_POSITION));
+                this.participatingCars.add(new Car(name));
             }
         }
 
@@ -79,27 +79,23 @@ public class Racing {
 
         private List<Car> winners() {
             List<Car> winners = new ArrayList<>();
-            Position position = new Position(INIT_POSITION);
+            Position max = max();
             for (Car car : this.participatingCars) {
-                position = checkWinner(winners, position, car);
+                if (car.position().equals(max)) {
+                    winners.add(car);
+                }
             }
             return winners;
         }
 
-        private static Position checkWinner(List<Car> winners, Position position, Car car) {
-            switch (position.compareTo(car.position())) {
-                case 0:// 같을 때
-                    winners.add(car);
-                    break;
-                case 1:// 새로운 자동차가 더 앞에 있을 때
-                    winners.clear();
-                    winners.add(car);
-                    position = new Position(car.position().position());
-                    break;
-                default:
-                    break;
+        private Position max() {
+            int max = 0;
+            for (Car car : this.participatingCars) {
+                if (max < car.position().position()) {
+                    max = car.position().position();
+                }
             }
-            return position;
+            return new Position(max);
         }
     }
 }

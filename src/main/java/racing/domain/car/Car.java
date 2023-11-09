@@ -1,15 +1,20 @@
-package racing.car;
+package racing.domain.car;
 
 
 import java.util.Objects;
 
 public class Car {
 
-    private Name name;
-    private int THRESHOLD = 4;
+    private final Name name;
+    private final int THRESHOLD = 4;
     private Position position;
 
-    public Car(String name, int position) {
+    public Car(String name) {
+        this.name = new Name(name);
+        this.position = new Position(0);
+    }
+
+    Car(String name, int position) {
         this.name = new Name(name);
         this.position = new Position(position);
     }

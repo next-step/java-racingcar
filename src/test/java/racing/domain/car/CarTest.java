@@ -1,12 +1,9 @@
-package racing;
+package racing.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.car.Car;
-import racing.car.Position;
-import racing.car.ValidationException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -38,5 +35,17 @@ public class CarTest {
         assertThatThrownBy(() -> new Car(name, 0))
             .isInstanceOf(ValidationException.class)
             .hasMessageContaining("name can't over 5 letters");
+    }
+
+    @DisplayName("우승자 확인 테스트")
+    @Test
+    void winner() {
+        // given
+        Car car1 = new Car("test1", 0);
+        Car car2 = new Car("test2", 1);
+        Car car3 = new Car("test3", 2);
+
+        // when, then
+
     }
 }
