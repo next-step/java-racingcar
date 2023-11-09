@@ -1,7 +1,6 @@
 package carRacing;
 
 import java.util.List;
-import java.util.Map;
 
 public class ResultView {
     public static final String LINE = "-";
@@ -12,8 +11,8 @@ public class ResultView {
 
     public static void printRoundResult(List<Car> cars) {
         for (Car car : cars) {
-            String line = LINE.repeat(car.getDistance());
-            System.out.println(car.getCarName() + " : " + line);
+            String line = LINE.repeat(car.getDistanceForPrint());
+            System.out.println(car.getCarNameForPrint() + " : " + line);
         }
         System.out.println();
     }

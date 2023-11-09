@@ -18,7 +18,6 @@ public class RacingGameApplication {
         printRacingWinner(racingProcess.callCarRacingWinners());
 
 
-
     }
 
     private static void startRacingGame(RacingProcess racingProcess, int raceCount) {

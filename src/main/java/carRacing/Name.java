@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Objects;
 
 public class Name {
-    private String name;
+    private final String name;
 
     public Name(String name) {
         this.name = validateName(name);
@@ -23,10 +23,12 @@ public class Name {
 
     @Override
     public boolean equals(Object obj) {
-       if(this == obj) return true;
-       if(obj  == null || getClass() != obj.getClass()) return false;
-       final Name carName = (Name) obj;
-       return carName.name.equals(name);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Name carName = (Name) obj;
+        return carName.name.equals(name);
     }
 
     @Override

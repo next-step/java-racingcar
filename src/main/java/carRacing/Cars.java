@@ -9,13 +9,13 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move(NumberGenerator numberGenerator) {
+    public void operate(NumberGenerator numberGenerator) {
         for (Car car : cars) {
             car.move(numberGenerator.generate());
         }
     }
 
-    public List<Car> getCarList() {
+    public List<Car> getCarListForPrint() {
         return Collections.unmodifiableList(cars);
     }
 
@@ -30,14 +30,14 @@ public class Cars {
         return result;
     }
 
-    private static void addWinnerName(List<String> result, int maxDistance, Car car) {
+    private void addWinnerName(List<String> result, int maxDistance, Car car) {
         if (isMaxDistance(maxDistance, car)) {
-            result.add(car.getCarName());
+            result.add(car.getCarNameForPrint());
         }
     }
 
-    private static boolean isMaxDistance(int maxDistance, Car car) {
-        return car.isMaxDistance(maxDistance);
+    private boolean isMaxDistance(int maxDistance, Car car) {
+        return car.isSameDistance(maxDistance);
     }
 
     private int maxDistance() {

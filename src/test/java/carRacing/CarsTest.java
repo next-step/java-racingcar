@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.entry;
 
 public class CarsTest {
     private Cars cars;
@@ -32,13 +31,12 @@ public class CarsTest {
     @Test
     @DisplayName("자동차 목록 생성 확인")
     void 자동차목록_객체_확인() {
-        assertThat(cars).isNotNull();
-    }
+        List<Car> list = new ArrayList<>();
+        list.add(new Car(nameList.get(0), movingStrategy));
+        list.add(new Car(nameList.get(1), movingStrategy));
+        list.add(new Car(nameList.get(2), movingStrategy));
 
-    @Test
-    @DisplayName("자동차 목록이 선언된 자동차 수만큼 생성되었는지 확인")
-    void 자동차목록_거리_반환_확인() {
-        assertThat(cars.getCarList()).hasSize(nameList.size());
+        assertThat(cars.getCarListForPrint()).isEqualTo(list);
     }
 
 
@@ -47,7 +45,7 @@ public class CarsTest {
     void 자동차경주_우승자_목록_확인() {
         NumberGenerator movableRandomGenerator = new MovableRandomGenerator();
 
-        cars.move(movableRandomGenerator);
+        cars.operate(movableRandomGenerator);
         List<String> result = cars.callWinners();
         assertThat(result).hasSameElementsAs(nameList);
     }

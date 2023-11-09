@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RacingProcessTest {
 
-    private  String[] nameArray = {"rubal", "pubao", "ibao"};
+    private String[] nameArray = {"rubal", "pubao", "ibao"};
     private RacingProcess racingProcess;
     MovingStrategy movingStrategy;
 
@@ -31,20 +31,13 @@ public class RacingProcessTest {
 
 
     @Test
-    @DisplayName("경주시작 시 자동차 객체를 입력한 자동차 대수만큼 생성시키는지 확인")
-    void 자동차준비_확인() {
-
-        assertThat(racingProcess.getCarsStatus()).hasSize(nameArray.length);
-    }
-
-    @Test
     @DisplayName("자동차 경주를 실행시켜 모든 자동차를 전진하게 할 때 결과 확인")
     void 자동차경주_라운드_진행_결과() {
         NumberGenerator movableRandomGenerator = new MovableRandomGenerator();
         racingProcess.roundPlay(movableRandomGenerator);
         List<Car> result = racingProcess.getCarsStatus();
 
-        assertThat(result).extracting("distance").contains(1,1,1);
+        assertThat(result).extracting("distance").contains(1, 1, 1);
 
     }
 }

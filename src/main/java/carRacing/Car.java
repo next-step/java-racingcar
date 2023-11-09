@@ -1,16 +1,17 @@
 package carRacing;
 
 
-public class Car implements Comparable<Car> {
+import java.util.Objects;
+
+public class Car {
+    private final Name name;
+    private final MovingStrategy movingStrategy;
     private int distance = 0;
-    private Name name;
-    private MovingStrategy movingStrategy;
 
     public Car(String name, MovingStrategy movingStrategy) {
         this.name = new Name(name);
         this.movingStrategy = movingStrategy;
     }
-
 
     public void move(int number) {
         if (movingStrategy.isRide(number)) {
@@ -18,16 +19,16 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public int getDistance() {
+    public int getDistanceForPrint() {
         return distance;
     }
 
-    public String getCarName() {
+    public String getCarNameForPrint() {
         return name.getName();
     }
 
-    public boolean isMaxDistance(int maxDistance) {
-        return maxDistance == distance;
+    public boolean isSameDistance(int number) {
+        return number == distance;
     }
 
     public int findLongerDistance(int number) {
@@ -36,8 +37,20 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo(Car car) {
-        return this.distance - car.getDistance();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return distance == car.distance && Objects.equals(name, car.name) && Objects.equals(movingStrategy, car.movingStrategy);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, movingStrategy, distance);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" + "name=" + name + ", movingStrategy=" + movingStrategy + ", distance=" + distance + '}';
     }
 }
