@@ -2,6 +2,7 @@ package step4.model;
 
 public class Car {
 
+    private static final int MOVE_CONDITION = 4;
     private int currentStatus;
     private final String name;
 
@@ -9,8 +10,8 @@ public class Car {
         this.name = name;
     }
 
-    public void go() {
-        if (Rule.isCarMovable(Rule.getRandomValue())) {
+    public void go(int condition) {
+        if (condition >= MOVE_CONDITION) {
             this.currentStatus++;
         }
     }

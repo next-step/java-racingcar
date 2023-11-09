@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Winner {
+public class Winners {
 
     private final List<Car> cars;
 
-    public Winner(List<Car> cars) {
+    public Winners(List<Car> cars) {
         this.cars = cars;
     }
 
