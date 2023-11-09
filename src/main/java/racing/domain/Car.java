@@ -2,7 +2,7 @@ package racing.domain;
 
 public class Car {
 
-    final int MOVE_CHECK_NUMBER = 4;
+    static final int MOVE_CHECK_NUMBER = 4;
 
     private int moveCount = 0;
 
