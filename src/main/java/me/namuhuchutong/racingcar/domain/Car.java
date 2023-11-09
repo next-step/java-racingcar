@@ -2,7 +2,7 @@ package me.namuhuchutong.racingcar.domain;
 
 import me.namuhuchutong.racingcar.domain.rule.RacingRule;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private static final int FORWARD_VALUE = 1;
 
@@ -32,5 +32,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return Integer.compare(this.position, car.getPosition());
     }
 }
