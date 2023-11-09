@@ -2,10 +2,13 @@ package racing.domain.car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import jdk.jfr.Name;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class PositionTest {
 
+    @DisplayName("포지션 일치 테스트")
     @Test
     void positionEqualTest() {
         Position position = new Position(1);
@@ -14,6 +17,7 @@ public class PositionTest {
         assertThat(position).isEqualTo(position1);
     }
 
+    @DisplayName("이동 테스트")
     @Test
     void moveTest() {
         // given
