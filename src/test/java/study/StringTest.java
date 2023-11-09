@@ -57,7 +57,6 @@ public class StringTest {
                         }).withMessageMatching("String index out of range: "+index)
         );
 
-
     }
 
 
