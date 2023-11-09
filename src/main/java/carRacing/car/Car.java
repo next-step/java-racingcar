@@ -17,6 +17,11 @@ public class Car {
 		this.name = name;
 	}
 
+	public Car(int position, String name) {
+		this.position = position;
+		this.name = name;
+	}
+
 	public void moveCar(NumberMaker numberMaker) {
 		if (isCarFoward(numberMaker.makeNumber())) {
 			position++;
