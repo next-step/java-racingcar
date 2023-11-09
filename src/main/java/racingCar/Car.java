@@ -2,19 +2,25 @@ package racingCar;
 
 public class Car {
     private String carName;
+    private int forwardCnt;
 
-    public Car(String carName){
+    public Car(String carName, int forwardCnt){
         checkCarName(carName);
         this.carName = carName;
-    }
-
-    public String getCarName(){
-        return carName;
+        this.forwardCnt = forwardCnt;
     }
 
     private void checkCarName(String carName){
         if(carName.length()>5){
             throw new RuntimeException();
         }
+    }
+
+    public String getCarName(){
+        return carName;
+    }
+
+    public int getForwardCnt(){
+        return forwardCnt;
     }
 }

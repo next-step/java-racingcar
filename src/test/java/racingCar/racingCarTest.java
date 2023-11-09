@@ -11,17 +11,33 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class racingCarTest {
 
     @Test
+    @DisplayName("입력한 여러대의 자동차 이름을 콤마 구분자로 구분하여 자동차 이름을 부여하고 0번 움직인 결과를 반환한다.")
+    public void 자동차_경주_초기_설정(){
+        String carNames = "aaa,bbb,ccc";
+
+        NamedCars cars = new NamedCars(carNames);
+
+        assertThat(cars.getCarList().get(0).getCarName()).isEqualTo("aaa");
+        assertThat(cars.getCarList().get(1).getCarName()).isEqualTo("bbb");
+        assertThat(cars.getCarList().get(2).getCarName()).isEqualTo("ccc");
+
+        assertThat(cars.getCarList().get(0).getForwardCnt()).isEqualTo(0);
+        assertThat(cars.getCarList().get(1).getForwardCnt()).isEqualTo(0);
+        assertThat(cars.getCarList().get(2).getForwardCnt()).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("자동차 이름이 5자를 초과할 경우 예외를 발생한다.")
     public void 자동차_이름_5자_초과(){
         assertThatThrownBy(() -> {
-            assertThat(new Car("abcedf"));
+            assertThat(new Car("abcedf",0));
         }).isInstanceOf(RuntimeException.class);
     }
 
     @Test
     @DisplayName("자동차 이름을 입력할 경우 해당 이름을 가진 자동차 객체를 생성한다.")
     public void 자동차_이름_부여(){
-        Car car = new Car("pobi");
+        Car car = new Car("pobi",0);
         assertThat(car.getCarName()).isEqualTo("pobi");
     }
 
