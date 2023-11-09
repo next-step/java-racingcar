@@ -38,9 +38,7 @@ public class RacingGame {
 
     private static void moveCar(RacingCar racingCar) {
         int movingCondition = new Random().nextInt(10);
-        if (RacingRule.canMove(movingCondition)) {
-            racingCar.move();
-        }
+        racingCar.move(movingCondition);
     }
 
 }
