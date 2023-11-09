@@ -1,12 +1,14 @@
 package step3;
 
+import step3.domain.NumberGenerator;
 import step3.domain.RacingCar;
+import step3.domain.RandomNumberGenerator;
 import step3.view.InputView;
 import step3.view.ResultView;
 
-import java.util.Random;
-
 public class RacingGame {
+
+    private static NumberGenerator numberGenerator = new RandomNumberGenerator();
 
     public static void gameStart() {
         int carNum = InputView.askNumberOfCars();
@@ -32,13 +34,8 @@ public class RacingGame {
 
     private static void racing(RacingCar[] racingCars) {
         for (RacingCar racingCar : racingCars) {
-            moveCar(racingCar);
+            racingCar.move(numberGenerator.generate());
         }
-    }
-
-    private static void moveCar(RacingCar racingCar) {
-        int movingCondition = new Random().nextInt(10);
-        racingCar.move(movingCondition);
     }
 
 }
