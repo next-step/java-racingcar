@@ -23,7 +23,7 @@ public class racingCarTest {
 
         NamedCars cars = new NamedCars(carList);
 
-        List<String> winners = RacingCar.returnWinner(cars);
+        List<String> winners = WinnerCar.returnWinner(cars);
         assertThat(winners).hasSize(2);
         assertThat(winners).containsExactly("pobi","honux");
     }

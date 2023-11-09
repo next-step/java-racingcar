@@ -1,6 +1,5 @@
 package racingCar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
@@ -36,6 +35,7 @@ public class RacingCar {
 
         for(Car car : carList){
             car.addForward(moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE)));
+            ResultView.printNamedCar(car.getCarName(), car.getForwardCnt());
         }
 
         return carList;
@@ -57,18 +57,6 @@ public class RacingCar {
         }
 
         return namedCars;
-    }
-
-    public static List<String> returnWinner(NamedCars namedCars){
-        int maxForward = namedCars.getMaxForward();
-
-        List<String> winners = new ArrayList<>();
-
-        for(Car car : namedCars.getCarList()){
-            if(car.getForwardCnt() == maxForward) winners.add(car.getCarName());
-        }
-
-        return winners;
     }
 
 }
