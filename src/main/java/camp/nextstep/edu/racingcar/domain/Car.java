@@ -6,7 +6,7 @@ import camp.nextstep.edu.racingcar.domain.strategy.DriveStrategy;
 public class Car {
 
     private final DriveStrategy driveStrategy;
-    public int drivenDistance;
+    private int drivenDistance;
 
     public Car(DriveStrategy driveStrategy) {
         this.driveStrategy = driveStrategy;

@@ -6,11 +6,17 @@ public class RacingInputView {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public int readCarAmount(){
+    private RacingInputView() {
+
+    }
+
+    public static int readCarAmount(){
+        System.out.println("자동차 대수는 몇 대 인가요?");
         return sc.nextInt();
     }
 
-    public int readRoundAmount() {
+    public static int readRoundAmount() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
         return sc.nextInt();
     }
 }
