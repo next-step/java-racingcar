@@ -1,10 +1,10 @@
 package racingcar;
 
 public class Car {
-    private int position = 0;
     private static final int THRESHOLD = 4;
+    private int position = 0;
 
-    public void moveCar(int input) {
+    public void moveForward(int input) {
         if (input >= THRESHOLD) {
             this.position++;
         }

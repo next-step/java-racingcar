@@ -13,7 +13,7 @@ public class CarTest {
     @CsvSource(value = {"1:0", "2:0", "3:0", "4:1", "5:1"}, delimiter = ':')
     void isCarMoveable(int input, int expectedIdx) {
         Car car = new Car();
-        car.moveCar(input);
+        car.moveForward(input);
         assertThat(car.getPosition()).isEqualTo(expectedIdx);
     }
 }
