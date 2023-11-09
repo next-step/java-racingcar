@@ -6,7 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RandomGeneratorTest {
     @RepeatedTest(10)
     void getRandomNumber(){
-        int number = RandomGenerator.getNumber();
+        NumberGenerator generator = new RandomGenerator();
+        int number = generator.generate();
         assertThat(number <= 9 && number >= 0).isTrue();
     }
 }
