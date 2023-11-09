@@ -11,12 +11,11 @@ public class RacingMain {
 
     public static void main(String[] args) {
         // view
-        int carCount = InputView.getCarCount();
-        int tryCount = InputView.getTryCount();
+        InputView.setCarCount();
+        InputView.setTryCount();
+        Racing racing = new Racing();
 
-        Racing racing = new Racing(carCount, tryCount);
-
-        for(int i=0; i<tryCount; i++) {
+        for(int i=0; i<InputView.getTryCount(); i++) {
             racing.racingStart(random);
             ResultView.viewResultView(racing.getCars());
         }

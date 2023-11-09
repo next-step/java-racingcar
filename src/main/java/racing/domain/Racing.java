@@ -1,6 +1,8 @@
 package racing.domain;
 
 
+import racing.ui.InputView;
+
 import java.util.Random;
 
 public class Racing {
@@ -13,9 +15,9 @@ public class Racing {
 
     private Cars carList = new Cars();
 
-    public Racing(int carCount, int tryCount){
-        this.carCount = carCount;
-        this.tryCount = tryCount;
+    public Racing(){
+        this.carCount = InputView.getCarCount();
+        this.tryCount = InputView.getTryCount();
         makeCarList(carCount);
     }
 
