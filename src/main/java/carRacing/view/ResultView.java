@@ -1,7 +1,6 @@
 package carRacing.view;
 
 import carRacing.car.Car;
-import java.util.HashSet;
 import java.util.List;
 
 public class ResultView {
@@ -16,7 +15,7 @@ public class ResultView {
 		System.out.println();
 	}
 
-	public void showWinner(HashSet<Car> winnerList) {
+	public void showWinner(List<Car> winnerList) {
 		for (Car winnerCar : winnerList) {
 			System.out.print(winnerCar.getName() + " ");
 		}
