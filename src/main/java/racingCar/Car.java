@@ -23,4 +23,8 @@ public class Car {
     public int getForwardCnt(){
         return forwardCnt;
     }
+
+    public void addForward(int forwardCnt){
+        this.forwardCnt += forwardCnt;
+    }
 }

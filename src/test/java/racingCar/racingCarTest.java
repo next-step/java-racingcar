@@ -11,6 +11,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class racingCarTest {
 
     @Test
+    @DisplayName("입력한 자동차 이름과 시도 횟수 만큼 자동차를 움직인 결과를 반환한다.")
+    public void 이름있는_자동차_경주_결과_반환(){
+        NamedCars cars = RacingCar.movingResultNamedCar(new NamedCars("pobi,crong,honux"), 5);
+
+        assertThat(cars.getCarList()).hasSize(3);
+
+        for(int i=0; i<3; i++) {
+            assertThat(cars.getCarList().get(i).getForwardCnt()).isBetween(0, 5);
+        }
+
+    }
+
+    @Test
     @DisplayName("입력한 여러대의 자동차 이름을 콤마 구분자로 구분하여 자동차 이름을 부여하고 0번 움직인 결과를 반환한다.")
     public void 자동차_경주_초기_설정(){
         String carNames = "aaa,bbb,ccc";
