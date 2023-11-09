@@ -7,9 +7,9 @@ public class CarRacing {
 
 	private List<Car> cars = new ArrayList<>();
 
-	public List<Car> makeCars(int carCount) {
+	public List<Car> makeCars(int carCount, String[] name) {
 		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car());
+			cars.add(new Car(name[i]));
 		}
 		return cars;
 	}
