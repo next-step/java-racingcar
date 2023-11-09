@@ -3,8 +3,6 @@ package racing.domain;
 
 import racing.ui.InputView;
 
-import java.util.Random;
-
 public class Racing {
 
     private final String CANNOT_BE_NEGATIVE_NUMBERS = "음수 입력 불가능합니다.";
@@ -21,12 +19,9 @@ public class Racing {
         carList.makeCarList(carCount);
     }
 
-    public Cars racingStart(Random random){
+    public Cars racingStart(RandomMoveStrategy random){
         validation(carCount, tryCount);
-        for(int i=0; i< carList.getSize(); i++){
-            Car car = carList.getCar(i);
-            car.moveCar(random.nextInt(10));
-        }
+        carList.move(random);
         return carList;
     }
 

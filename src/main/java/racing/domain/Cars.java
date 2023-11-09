@@ -20,4 +20,8 @@ public class Cars {
         }
     }
 
+    public void move(final MoveStrategy moveStrategy) {
+        this.carList.forEach(car -> car.moveCar(moveStrategy.movable()));
+    }
+
 }
