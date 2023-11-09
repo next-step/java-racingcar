@@ -34,7 +34,19 @@ public class CarRacingController {
 
 
     private List<String> extractCarNames(String carNames) {
-        return List.of(carNames.split(","));
+        String[] carNameArray = carNames.split(",");
+
+        for (String carName : carNameArray) {
+            checkCarNameLength(carName);
+        }
+        
+        return List.of(carNameArray);
+    }
+
+    private void checkCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new RuntimeException("자동차 이름은 5글자를 초과하면 안됩니다.");
+        }
     }
 
     public CarRacingPlay getCarRacingPlay() {

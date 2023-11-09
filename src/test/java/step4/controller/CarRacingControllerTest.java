@@ -26,4 +26,16 @@ class CarRacingControllerTest {
                         tuple("honux", 0)
                 );
     }
+
+    @Test
+    @DisplayName("입력받은 차 이름이 5글자를 초과하면 RuntimeException을 보냅니다.")
+    void checkCarNameLength() {
+        // given
+        InputDto inputDto = new InputDto("pobi,cronggggg,honux", 4);
+        // when
+        // then
+        assertThatThrownBy(() -> new CarRacingController(inputDto))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("자동차 이름은 5글자를 초과하면 안됩니다.");
+    }
 }
