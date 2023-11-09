@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+## 기능 목록
+
+1. UI 로직의 InputView 클래스 구현
+2. UI 로직의 ResultView 클래스 구현
+3. 자동차 대수가 하나일때 n번 시도할 경우(자바 java.util.Random 클래스의 nextInt(10) 메소드를 활용) 기능 구현
+4. 자동차 대수가 둘 이상일때 n번 시도할 경우 기능 구현
+5. 리팩토링

@@ -4,13 +4,16 @@ public class StringAddCalculator {
 
     private static final int NULL_EMPTY_NUM = 0;
 
+
     private StringAddCalculator() {
     }
+
 
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()){
             return NULL_EMPTY_NUM;
         }
+
 
         return sum(getNumbers(customDelimiter(text)));
     }
@@ -47,8 +50,10 @@ public class StringAddCalculator {
         return result;
     }
 
+
     private static void negativeException(int num){
         //음수가 입력되었을 경우 RuntimeException 발생
+
         if (num < 0){
             throw new RuntimeException();
         }

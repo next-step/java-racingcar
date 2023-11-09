@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 public class StringTest {
@@ -55,6 +56,7 @@ public class StringTest {
                             char result = str.charAt(index);
                         }).withMessageMatching("String index out of range: "+index)
         );
+
 
     }
 
