@@ -4,8 +4,8 @@ import step4.domain.primitivewrapper.Name;
 
 public class Car {
 
-    private static final int MOVABLE_POWER = 4;
-    private static final int[] RANGE_OF_ACCELERATOR = {0, 9};
+    private static final int CONDITION_OF_MOVE = 4;
+    private static final int[] RANGE_OF_NUMBER = {0, 9};
 
     private int position;
     private Name name;
@@ -14,8 +14,17 @@ public class Car {
         this.position = 0;
     }
 
+    public Car(String name) {
+        this.position = 0;
+        this.name = new Name(name);
+    }
+
     public int getCurrentPosition() {
         return this.position;
+    }
+
+    public String getCarName() {
+        return this.name.toString();
     }
 
     public void moveForward(int power) {
@@ -23,12 +32,16 @@ public class Car {
             throw new IllegalArgumentException("엑셀의 작동 범위를 벗어납니다.");
         }
 
-        if (power >= MOVABLE_POWER) {
+        if (isMovable(power)) {
             this.position++;
         }
     }
 
     private boolean isOutOfRange(int power) {
-        return power < RANGE_OF_ACCELERATOR[0] || power > RANGE_OF_ACCELERATOR[1];
+        return power < RANGE_OF_NUMBER[0] || power > RANGE_OF_NUMBER[1];
+    }
+
+    private boolean isMovable(int power) {
+        return power >= CONDITION_OF_MOVE;
     }
 }

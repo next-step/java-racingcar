@@ -33,7 +33,7 @@ class NameTest {
             .hasMessage("이름은 5글자를 초과할 수 없습니다.");
     }
 
-    @DisplayName("이름이 x빈 문자열이면 예외를 던진다.")
+    @DisplayName("이름이 빈 문자열이면 예외를 던진다.")
     @ParameterizedTest
     @NullAndEmptySource
     void validateNameIsNone(String name) {

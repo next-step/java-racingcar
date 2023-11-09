@@ -4,7 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import step4.domain.primitivewrapper.Name;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -22,6 +24,40 @@ class CarTest {
 
         // then
         assertThat(currentPosition).isEqualTo(0);
+    }
+
+    @DisplayName("자동차를 생성할 때 이름을 부여한다.")
+    @Test
+    void createCarWithName() {
+        // given
+        String name = "abcde";
+        Car car = new Car(name);
+
+        // when
+        String carName = car.getCarName();
+
+        // then
+        assertThat(carName).isEqualTo("abcde");
+    }
+
+    @DisplayName("자동차 생성 시 인자로 받는 이름이 5글자를 초과하면 예외를 던진다.")
+    @Test
+    void createCarWhenNameIsOverFiveChar() {
+        // given
+        String name = "abcdef";
+
+        // when & then
+        assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("이름은 5글자를 초과할 수 없습니다.");
+    }
+
+    @DisplayName("자동차 생성시 인자로 받는 이름이 빈 문자열이면 예외를 던진다.")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void validateNameIsNone(String name) {
+        // when & then
+        assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("이름은 빈 문자열이 될 수 없습니다.");
     }
 
     @DisplayName("자동차의 엑셀을 밟는 힘이 4이상이면 앞으로 이동한다.")
