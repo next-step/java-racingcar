@@ -19,7 +19,7 @@ public class RacingCarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 전진(int input) {
         Car car = new Car();
         car.move(input);
@@ -28,7 +28,7 @@ public class RacingCarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     public void 멈춤(int input) {
         Car car = new Car();
         car.move(input);
