@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayDeque;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -39,9 +40,19 @@ class CarRacingPlayTest {
     @DisplayName("distance 가 가장 높은 우승자 자동차 리스트를 반환합니다.")
     void findChampions() {
         // given
-        CarRacingPlay carRacingPlay = new CarRacingPlay(() -> 3, List.of("first", "second", "third"));
-        carRacingPlay.getCars().get(1).go(5);
-        carRacingPlay.getCars().get(2).go(5);
+        CarRacingPlay carRacingPlay = new CarRacingPlay(new RandomValueGenerator() {
+            private final int[] randoms = {1, 4, 9};
+            private int count = 0;
+
+            @Override
+            public int generateRandomValue() {
+                int random = randoms[count % 3];
+                count ++;
+                return random;
+            }
+        }, List.of("first", "second", "third"));
+
+        carRacingPlay.raceOneCycle();
 
         // when
         ChampionCarsDto championsDto = carRacingPlay.findChampions();
