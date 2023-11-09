@@ -10,8 +10,8 @@ public class CarController {
         return this.cars;
     }
 
-    public void createCarsOf(int numOfCars) {
-        cars = new Cars(numOfCars);
+    public void createCarsOf(String[] nameOfCars) {
+        cars = new Cars(nameOfCars);
     }
 
     public void moveCar(int randomNum, int carNo) {

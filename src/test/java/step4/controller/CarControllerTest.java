@@ -2,21 +2,20 @@ package step4.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.controller.CarController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarControllerTest {
 
-    @DisplayName("사용자에게 입력받은 수만큼 자동차를 생성한다.")
+    @DisplayName("사용자에게 입력받은 이름 개수만큼 자동차를 생성한다.")
     @Test
     void createCars() {
         // given
         CarController carController = new CarController();
-        int numOfCars = 5;
+        String[] nameOfCars = {"hong","kim","lee","park","ahn"};
 
         // when
-        carController.createCarsOf(numOfCars);
+        carController.createCarsOf(nameOfCars);
 
         // then
         assertThat(carController.getCars().getNumOfCars()).isEqualTo(5);
@@ -27,16 +26,16 @@ public class CarControllerTest {
     void startRace() {
         // given
         CarController carController = new CarController();
-        int numOfCars = 6;
-        carController.createCarsOf(numOfCars);
+        String[] nameOfCars = {"hong","kim","lee","park","ahn"};
+        carController.createCarsOf(nameOfCars);
 
         // when
-        for (int i=0; i<numOfCars; i++) {
+        for (int i=0; i<nameOfCars.length; i++) {
             carController.moveCar(i, i);
         }
 
         // then
-        for (int i=0; i<numOfCars; i++) {
+        for (int i=0; i<nameOfCars.length; i++) {
             if (i < 4) {
                 assertThat(carController.getCars().findCarBy(i).getCurrentPosition()).isEqualTo(0);
                 continue;
