@@ -1,9 +1,10 @@
 package racing.domain;
 
 public class Position {
-    int value;
+    private int value;
 
     public Position(int value) {
+        validatePositionValue(value);
         this.value = value;
     }
 
@@ -11,10 +12,14 @@ public class Position {
         return value;
     }
 
-    public void setValue(int value) {
+    private void validatePositionValue(int value) {
         if (value < 0) {
             throw new IllegalArgumentException("음수는 위치값으로 가질 수 없습니다.");
         }
-        this.value = value;
+
+    }
+
+    public void move() {
+        this.value++;
     }
 }

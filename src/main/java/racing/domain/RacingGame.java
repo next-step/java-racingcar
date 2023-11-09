@@ -4,25 +4,12 @@ import common.StringSpliter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private final int gameCount;
     private final CarMoveStrategy carMoveStrategy;
     private final List<Car> cars = new ArrayList<>();
     private int currentRound;
-
-    public RacingGame(int carCount, int gameCount) {
-        this(carCount, gameCount, new CarMoveStrategy(new Random()));
-    }
-
-    public RacingGame(int carCount, int gameCount, CarMoveStrategy carMoveStrategy) {
-        this.gameCount = gameCount;
-        this.carMoveStrategy = carMoveStrategy;
-        this.currentRound = 0;
-        initRacingCar(carCount);
-    }
 
     public RacingGame(String userNameAnswer, int carCount, int gameCount, CarMoveStrategy carMoveStrategy) {
         this.gameCount = gameCount;
@@ -54,15 +41,7 @@ public class RacingGame {
         this.currentRound++;
     }
 
-    public String getWinnersName() {
-        List<String> userNameList = getWinners()
-                .stream()
-                .map(Car::getUserName)
-                .collect(Collectors.toList());
-        return String.join(",", userNameList);
-    }
-
-    private List<Car> getWinners() {
+    public List<Car> getWinners() {
         int maxPosition = getMaxPosition();
         List<Car> winCars = new ArrayList<>();
 
@@ -78,12 +57,7 @@ public class RacingGame {
         final String NAME_SPLIT_DELIMITER = ",";
         return StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
     }
-
-    private void initRacingCar(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-    }
+    
 
     private void initRacingCar(String[] userNames, int carCount) {
         for (int i = 0; i < carCount; i++) {

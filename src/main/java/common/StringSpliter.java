@@ -3,7 +3,7 @@ package common;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static common.ObjectUtils.isEmpty;
+import static common.StringUtils.isEmpty;
 
 public class StringSpliter {
     private static final String DEFAULT_DELIMITER = ",:";

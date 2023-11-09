@@ -1,8 +1,8 @@
 package calculator;
 
-import static common.ObjectUtils.isEmpty;
 import static common.StringSpliter.getIntArray;
 import static common.StringSpliter.getSplittedString;
+import static common.StringUtils.isEmpty;
 
 public class AddCalculator {
     private static final int ZERO = 0;

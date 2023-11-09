@@ -11,10 +11,10 @@ import java.util.Random;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        String userNameAnswer = InputView.generateUserNameQuestion();
+        String userNameAnswer = InputView.getUserNameQuestion();
         String[] userNames = StringSpliter.getSplittedString(userNameAnswer);
         int carCount = userNames.length;
-        int gameCount = InputView.generateGameCountQuestion();
+        int gameCount = InputView.getGameCountQuestion();
 
         RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount, new CarMoveStrategy(new Random()));
 

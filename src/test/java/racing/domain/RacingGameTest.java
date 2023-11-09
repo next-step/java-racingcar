@@ -11,6 +11,7 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
+    private final String userNameAnswer = "a,b,c";
 
     // 무조건 전진하는 이동전략
     private final TestMoveStrategy testMoveStrategy = new TestMoveStrategy(new Random());
@@ -20,11 +21,11 @@ class RacingGameTest {
     @Test
     void create_racing_success() {
         // given
-        int carCount = 5;
+        int carCount = 3;
         int gameCount = 1;
 
         // when
-        RacingGame racingGame = new RacingGame(carCount, gameCount, testMoveStrategy);
+        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount, testMoveStrategy);
 
         // then
         racingGame.doRacing();
@@ -37,11 +38,11 @@ class RacingGameTest {
     @Test
     void first_car_position_is_zero_success() {
         // given
-        int carCount = 5;
+        int carCount = 3;
         int gameCount = 1;
 
         // when
-        RacingGame racingGame = new RacingGame(carCount, gameCount);
+        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount, testMoveStrategy);
 
         // then
         assertThat(racingGame.getGameCount()).isEqualTo(1);
@@ -54,7 +55,8 @@ class RacingGameTest {
     @ValueSource(ints = {3, 4, 5})
     void create_car_by_input_success(int input) {
         // given
-        RacingGame racingGame = new RacingGame(input, 5);
+        String userNameAnswer = "a,b,c,d,e";
+        RacingGame racingGame = new RacingGame(userNameAnswer, input, 5, testMoveStrategy);
 
         // when
         List<Car> racingCarList = racingGame.getRacingCars();
@@ -68,7 +70,7 @@ class RacingGameTest {
     void do_race_success() {
         // given
         CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random(), 3);
-        RacingGame racingGame = new RacingGame(3, 5, carMoveStrategy);
+        RacingGame racingGame = new RacingGame(userNameAnswer, 3, 5, carMoveStrategy);
 
         // when
         racingGame.doRacing();
@@ -93,30 +95,10 @@ class RacingGameTest {
         // then
         assertThat(racingGame).isNotNull();
         assertThat(racingGame.getRacingCars())
-                .extracting("userName")
+                .extracting("carName")
                 .containsExactly("김동규", "박동규", "최동규");
     }
 
-    @DisplayName("자동차 경주의 우승자들의 이름을 리턴한다.")
-    @Test
-    void get_racing_game_winners() {
-        // given
-        final String userNameAnswer = "김동규,박동규,최동규";
-        final int carCount = 3;
-        final int gameCount = 5;
-
-        // when
-        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount, testMoveStrategy);
-
-        racingGame.doRacing();
-
-        // then
-        assertThat(racingGame).isNotNull();
-        assertThat(racingGame.getWinnersName()).isEqualTo(userNameAnswer);
-        assertThat(racingGame.getRacingCars())
-                .extracting("position")
-                .containsExactly(1, 1, 1);
-    }
 
     static class TestMoveStrategy extends CarMoveStrategy {
         public TestMoveStrategy(Random random) {

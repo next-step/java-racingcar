@@ -1,7 +1,7 @@
 package common;
 
-public class ObjectUtils {
-    private ObjectUtils() {
+public class StringUtils {
+    private StringUtils() {
     }
 
     public static boolean isEmpty(String input) {
