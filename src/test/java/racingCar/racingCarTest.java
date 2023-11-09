@@ -10,6 +10,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class racingCarTest {
 
     @Test
+    @DisplayName("자동차 이름을 입력할 경우 해당 이름을 가진 자동차 객체를 생성한다.")
+    public void 자동차_이름_부여(){
+        Car car = new Car("pobi");
+        assertThat(car.getCarName()).isEqualTo("pobi");
+    }
+
+    @Test
     @DisplayName("입력한 횟수만큼 자동차 한대를 움직인 결과를 반환한다. ")
     public void 자동차_한대를_입력_횟수_만큼_움직인_결과(){
         Cars cars = new Cars(1);
