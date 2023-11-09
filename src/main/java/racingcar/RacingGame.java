@@ -42,4 +42,37 @@ public class RacingGame {
     private int getRandomValue() {
         return new Random().nextInt(10);
     }
+
+    public List<String> getWinners() {
+        return getWinnerCarNames(getMaxPosition());
+    }
+
+    private List<String> getWinnerCarNames(int maxPosition) {
+        List<String> winnerCarNames = new ArrayList<>();
+        for (Car car : this.cars) {
+            addWinnerCarNames(maxPosition, winnerCarNames, car);
+        }
+        return winnerCarNames;
+    }
+
+    private void addWinnerCarNames(int maxPosition, List<String> winnerCarNames, Car car) {
+        if (maxPosition == car.getPosition()) {
+            winnerCarNames.add(car.getName());
+        }
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : this.cars) {
+            maxPosition = comparePosition(maxPosition, car);
+        }
+        return maxPosition;
+    }
+
+    private int comparePosition(int maxPosition, Car car) {
+        if (maxPosition < car.getPosition()) {
+            maxPosition = car.getPosition();
+        }
+        return maxPosition;
+    }
 }

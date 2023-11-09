@@ -10,5 +10,8 @@ public class CarMain {
         // 경주
         RacingGame racingGame = new RacingGame(carNames, round);
         racingGame.racing();
+
+        // 결과출력
+        ResultView.printWinners(racingGame.getWinners());
     }
 }
