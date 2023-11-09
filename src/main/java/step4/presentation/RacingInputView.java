@@ -12,6 +12,7 @@ public class RacingInputView {
 
     private BufferedReader br;
     private CarController carController;
+    private InputValidation inputValidation;
 
     public RacingInputView() {
     }
@@ -19,6 +20,7 @@ public class RacingInputView {
     public RacingInputView(CarController carController) {
         this.br = new BufferedReader(new InputStreamReader(System.in));
         this.carController = carController;
+        this.inputValidation = new InputValidation();
     }
 
     public void inputNameOfCars() throws IOException {
@@ -28,12 +30,15 @@ public class RacingInputView {
     }
 
     private String[] splitInputToNameOfCars() throws IOException {
-        return br.readLine().split(DELIMITER_OF_CAR_NAME);
+        String input = br.readLine();
+        inputValidation.validateNameOfCars(input, DELIMITER_OF_CAR_NAME);
+
+        return input.split(DELIMITER_OF_CAR_NAME);
     }
 
     public int inputNumOfTry() throws IOException {
         System.out.println("시도할 횟수는 몇 회 인가요?");
 
-        return Integer.parseInt(br.readLine());
+        return inputValidation.validateNumOfTry(br.readLine());
     }
 }

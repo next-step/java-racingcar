@@ -12,7 +12,37 @@ public class CarRacing {
         RacingInputView inputView = new RacingInputView(carController);
         RacingResultView resultView = new RacingResultView(carController);
 
-        inputView.inputNameOfCars();
-        resultView.printCarRacing(inputView.inputNumOfTry());
+        loopUntilNameOfCarsIsCorrect(inputView);
+        int numOfTry = loopUntilNumOfTryIsCorrect(inputView);
+
+        resultView.printCarRacing(numOfTry);
+    }
+
+    private int loopUntilNumOfTryIsCorrect(RacingInputView inputView) throws IOException {
+        int numOfTry;
+        while (true) {
+            try {
+                numOfTry = inputView.inputNumOfTry();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+
+            break;
+        }
+        return numOfTry;
+    }
+
+    private void loopUntilNameOfCarsIsCorrect(RacingInputView inputView) throws IOException {
+        while (true) {
+            try {
+                inputView.inputNameOfCars();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+
+            break;
+        }
     }
 }
