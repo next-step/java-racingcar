@@ -3,6 +3,7 @@ package racingcar.race;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Position;
 import racingcar.rule.MinimumRule;
 import racingcar.rule.Rule;
 import racingcar.util.BasicNumberGenerator;
@@ -26,7 +27,7 @@ class CarsTest {
         Cars cars = new Cars(list);
         cars.move(rule);
 
-        Assertions.assertThat(carA.distance()).isEqualTo(1);
-        Assertions.assertThat(carA.distance()).isEqualTo(1);
+        Assertions.assertThat(carA.position()).isEqualTo(new Position(1));
+        Assertions.assertThat(carB.position()).isEqualTo(new Position(1));
     }
 }

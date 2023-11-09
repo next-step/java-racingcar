@@ -2,6 +2,7 @@ package racingcar.race;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.Position;
 import racingcar.rule.MinimumRule;
 import racingcar.util.BasicNumberGenerator;
 
@@ -28,7 +29,7 @@ class RaceTest {
         race.start();
 
         for (Car car : cars) {
-            assertThat(car.distance()).isEqualTo(distance);
+            assertThat(car.position()).isEqualTo(new Position(distance));
         }
     }
 }

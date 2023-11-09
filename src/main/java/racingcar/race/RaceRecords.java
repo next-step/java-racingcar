@@ -1,5 +1,7 @@
 package racingcar.race;
 
+import racingcar.domain.Position;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,18 +34,19 @@ public class RaceRecords {
     }
 
     public List<Car> winners() {
-        RaceRecord maxRaceRecord = findByMaxRaceRecord();
+        Position positionMax = positionMax();
 
         return raceRecords.stream()
-                .filter(raceRecord -> raceRecord.distance() == maxRaceRecord.distance())
+                .filter(raceRecord -> positionMax.same(raceRecord.position()))
                 .map(RaceRecord::car)
                 .collect(Collectors.toList());
     }
 
-    private RaceRecord findByMaxRaceRecord() {
-        Comparator<RaceRecord> comparatorByDistance = Comparator.comparingInt(RaceRecord::distance);
+    private Position positionMax() {
+        Comparator<Position> comparatorByPosition = Comparator.comparingInt(Position::value);
         return raceRecords.stream()
-                .max(comparatorByDistance)
+                .map(RaceRecord::position)
+                .max(comparatorByPosition)
                 .orElseThrow(NoSuchFieldError::new);
     }
 }

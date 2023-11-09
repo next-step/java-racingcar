@@ -1,19 +1,21 @@
 package racingcar.race;
 
+import racingcar.domain.Position;
+
 public class RaceRecord {
     private final Car car;
-    private final int distance;
+    private final Position position;
 
     public RaceRecord(Car car) {
         this.car = car;
-        this.distance = car.distance();
+        this.position = car.position();
     }
 
     public Car car() {
         return car;
     }
 
-    public int distance() {
-        return distance;
+    public Position position() {
+        return position;
     }
 }

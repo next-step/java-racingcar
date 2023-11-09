@@ -20,13 +20,4 @@ class CarTest {
         assertThatThrownBy(() -> new Car("123456"))
                 .isInstanceOf(RuntimeException.class);
     }
-
-
-    @Test
-    @DisplayName("자동차가 이동하면 이동거리가 1 증가 한다")
-    void move_car() {
-        Car car = new Car();
-        car.move();
-        assertThat(car.distance()).isEqualTo(1);
-    }
 }
