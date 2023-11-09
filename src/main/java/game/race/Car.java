@@ -46,6 +46,7 @@ public class Car {
         for (int i = 0; i < raceDto.getVehicleCnt(); i++) {
             cars.add(new Car(raceDto.getVehicleNames().get(i)));
         }
+
         return cars;
     }
 }
