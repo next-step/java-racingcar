@@ -4,9 +4,15 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public int getInputValue(String text) {
-        Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
+
+    public int getInputIntValue(String text) {
         System.out.println(text);
         return scanner.nextInt();
+    }
+
+    public String getInputStringValue(String text) {
+        System.out.println(text);
+        return scanner.nextLine();
     }
 }
