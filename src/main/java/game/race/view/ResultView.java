@@ -1,4 +1,4 @@
-package game.race.model;
+package game.race.view;
 
 import java.util.List;
 
@@ -14,27 +14,16 @@ public class ResultView {
         System.out.println(SHOW_RESULT);
     }
 
-    public void markEnd() {
-        System.out.println(END_MARK);
-    }
-
     public void showCars(List<Car> cars) {
         for (Car car : cars) {
             printMark(car.getMoveCount());
         }
+
+        System.out.println(END_MARK);
     }
 
     private void printMark(int moveCount) {
-        if (moveCount == 0) {
-            System.out.println(MARK);
-            return;
-        }
-
-        String tireMark = "";
-        for (int move = 0; move < moveCount; move++) {
-            tireMark = tireMark.concat(MARK);
-        }
-
+        String tireMark = (moveCount == 0) ? MARK : MARK.repeat(moveCount);
         System.out.println(tireMark);
     }
 }

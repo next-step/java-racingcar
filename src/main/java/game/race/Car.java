@@ -8,6 +8,7 @@ public class Car {
 
     private static final int THRESHOLD = 4;
 
+    private String name;
     private int moveCount;
 
     public int getMoveCount() {

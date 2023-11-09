@@ -1,43 +1,26 @@
-package game.race.model;
+package game.race.view;
 
 import java.util.Scanner;
+
+import game.race.dto.RaceDto;
 
 public class InputView {
 
     private static final String ASK_VEHICLE_COUNT = "자동차 대수는 몇 대 인가요?";
     private static final String ASK_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
-    private int vehicleCnt;
-    private int tryCnt;
-
-    public int getVehicleCnt() {
-        return vehicleCnt;
-    }
-
-    public int getTryCnt() {
-        return tryCnt;
-    }
-
-    public void setVehicleCnt(int vehicleCnt) {
-        this.vehicleCnt = vehicleCnt;
-    }
-
-    public void setTryCnt(int tryCnt) {
-        this.tryCnt = tryCnt;
-    }
-
-    public void showPrompt() {
+    public RaceDto showPrompt() {
         System.out.println(ASK_VEHICLE_COUNT);
-        String vehicles = scanner.nextLine();
+        String vehicles = SCANNER.nextLine();
         checkInput(vehicles);
 
         System.out.println(ASK_TRY_COUNT);
-        String trials = scanner.nextLine();
+        String trials = SCANNER.nextLine();
         checkInput(trials);
 
-        vehicleCnt = Integer.parseInt(vehicles);
-        tryCnt = Integer.parseInt(trials);
+        return RaceDto.of(Integer.parseInt(vehicles),
+                          Integer.parseInt(trials));
     }
 
     public void checkInput(String input) {
