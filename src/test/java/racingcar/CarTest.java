@@ -3,8 +3,10 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class CarTest {
 
@@ -15,5 +17,14 @@ public class CarTest {
         Car car = new Car();
         car.moveForward(input);
         assertThat(car.getPosition()).isEqualTo(expectedIdx);
+    }
+
+    @DisplayName("자동차명이 5글자를 초과할떄 exception test")
+    @ParameterizedTest
+    @ValueSource(strings = {"nextstep", "unlucky"})
+    void setCarName(String input) {
+        Car car = new Car();
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> car.setName(input)).withMessageMatching("자동차명은 5글자를 넘길 수 없습니다 : .*");
     }
 }
