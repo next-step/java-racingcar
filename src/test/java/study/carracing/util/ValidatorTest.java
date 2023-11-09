@@ -23,12 +23,4 @@ class ValidatorTest {
                 .isInstanceOf(InvalidNameException.class)
                 .hasMessageContaining("형식에 맞지 않는 값이 입력됐습니다.");
     }
-
-    @Test
-    @DisplayName("자동차의 이름이 5자를 초과할 시 RunTimeException이 발생한다.")
-    void carNameLength() {
-        assertThatThrownBy(() -> Validator.validateCarName("racingcar,pobi"))
-                .isInstanceOf(InvalidNameException.class)
-                .hasMessageContaining("자동차의 이름은 5자를 초과할 수 없습니다.");
-    }
 }

@@ -4,8 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.carracing.exceptions.InvalidNameException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -51,5 +53,21 @@ class CarTest {
         car.move(5);
 
         assertThat(car.getPosition()).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("자동차의 이름이 5자를 초과할 시 예외가 발생한다.")
+    void carNameLength() {
+        assertThatThrownBy(() -> new Car("racingcar"))
+                .isInstanceOf(InvalidNameException.class)
+                .hasMessageContaining("자동차의 이름은 5자를 초과할 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("자동차의 이름이 공백일 시 예외가 발생한다.")
+    void carNameBlank() {
+        assertThatThrownBy(() -> new Car(" ".trim()))
+                .isInstanceOf(InvalidNameException.class)
+                .hasMessageContaining("자동차의 이름이 입력되지 않았습니다.");
     }
 }
