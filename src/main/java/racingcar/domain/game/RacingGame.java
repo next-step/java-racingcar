@@ -1,27 +1,22 @@
 package racingcar.domain.game;
 
-import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.game.strategy.MoveStrategy;
-import racingcar.domain.game.strategy.RandomMoveStrategy;
+import racingcar.util.Splitter;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingGame {
     private final RoundInfo roundInfo;
-    private final MoveStrategy moveStrategy;
     private final Cars cars;
 
-    public RacingGame(int carCount, int totalGameCount) {
+    public RacingGame(String carNames, int totalGameCount) {
         this.roundInfo = new RoundInfo(totalGameCount);
-        this.moveStrategy = new RandomMoveStrategy();
-        this.cars = createCars(carCount);
+        this.cars = createCars(carNames);
     }
 
-    public void startRacing() {
-        this.cars.move(this.moveStrategy);
+    public void startRacing(MoveStrategy moveStrategy) {
+        this.cars.move(moveStrategy);
         this.roundInfo.increaseRound();
     }
 
@@ -29,23 +24,17 @@ public class RacingGame {
         return this.roundInfo.isEndGame();
     }
 
+    public List<String> getWinners() {
+        return this.cars.getWinners();
+    }
+
     public Cars getCars() {
         return this.cars;
     }
 
-    private Cars createCars(int carCount) {
-        validateCarCount(carCount);
+    private Cars createCars(String inputCarName) {
+        String[] carNames = Splitter.splitString(inputCarName);
 
-        List<Car> carList = Stream.generate(Car::new)
-                .limit(carCount)
-                .collect(Collectors.toList());
-
-        return new Cars(carList);
-    }
-
-    private void validateCarCount(int carCount) {
-        if (carCount <= 0) {
-            throw new IllegalArgumentException("최소 1개 이상의 자동차를 만들어야합니다.");
-        }
+        return new Cars(carNames);
     }
 }
