@@ -60,7 +60,7 @@ public class StringAddCalculatorTest {
     @Test
     @DisplayName("숫자 이외의 값과 음수인 경우 RuntimeException 예외가 발생한다.")
     void NotNumberOrNegativeErrorTest() {
-        assertThrows(RuntimeException.class, () -> stringAddCalculator.splitAndSum("a:1:2"));
+        assertThrows(RuntimeException.class, () -> stringAddCalculator.splitAndSum("-1:1:2"));
     }
 
     @Test

@@ -26,13 +26,7 @@ public class StringAddCalculator {
     }
 
     private int getParseInt(String stringTypeNumber) throws RuntimeException {
-        try {
-            return validateNegativeNumber(Integer.parseInt(stringTypeNumber));
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-
-            throw new RuntimeException(e);
-        }
+        return validateNegativeNumber(Integer.parseInt(stringTypeNumber));
     }
 
     private int validateNegativeNumber(int number) {
@@ -43,7 +37,6 @@ public class StringAddCalculator {
     }
 
     private String[] SplitAndGetStrings(String input) {
-
         String[] stringTypeNumbers;
         Matcher matcher = CUSTOM_PATTERN.matcher(input);
         if (matcher.find()) {

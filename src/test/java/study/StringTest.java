@@ -15,7 +15,7 @@ public class StringTest {
     }
 
     @Test
-    void subStringTest(){
+    void subStringTest() {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).contains("1,2");
     }
