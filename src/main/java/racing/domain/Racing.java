@@ -18,13 +18,7 @@ public class Racing {
     public Racing(){
         this.carCount = InputView.getCarCount();
         this.tryCount = InputView.getTryCount();
-        makeCarList(carCount);
-    }
-
-    private void makeCarList(int carCount) {
-        for(int i = 0; i< carCount; i++){
-            carList.addCar(new Car());
-        }
+        carList.makeCarList(carCount);
     }
 
     public Cars racingStart(Random random){

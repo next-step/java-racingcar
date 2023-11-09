@@ -10,14 +10,28 @@ public class InputView {
 
     static String CAR_COUNT = "자동차 대수는 몇 대 인가요?";
 
-    public static int getTryCount() {
+    private static int carCount = 0;
+
+    private static int tryCount = 0;
+
+    public static int setTryCount() {
         System.out.println(TRY_COUNT);
-        return SCANNER.nextInt();
+        tryCount = SCANNER.nextInt();
+        return tryCount;
     }
 
-    public static int getCarCount() {
+    public static int setCarCount() {
         System.out.println(CAR_COUNT);
-        return SCANNER.nextInt();
+        carCount = SCANNER.nextInt();
+        return carCount;
+    }
+
+    public static int getTryCount(){
+        return tryCount;
+    }
+
+    public static int getCarCount(){
+        return carCount;
     }
 
 }
