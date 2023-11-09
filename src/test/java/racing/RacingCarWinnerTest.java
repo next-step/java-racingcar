@@ -15,13 +15,13 @@ class RacingCarWinnerTest {
     RacingCar car;
     List<RacingCar> cars;
     @BeforeEach
-    void init(){
+    void init() throws IllegalAccessException {
         car = new RacingCar(3,"car");
         cars = getCars();
     }
     @Test
     void 자동차이름_5자_초과되지않음() throws Exception {
-        assertThat(car.getName().length()).isLessThan(6);
+        assertThatThrownBy(() -> new RacingCar(3, "abcdefg")).isInstanceOf(IllegalAccessException.class);
     }
     @Test
     void 자동차는_이름_전진횟수를_가진다() throws Exception {
@@ -38,7 +38,7 @@ class RacingCarWinnerTest {
         assertThat(winners.stream().anyMatch(car -> "b".equals(car.getName()))).isTrue();
     }
 
-    private List<RacingCar> getCars() {
+    private List<RacingCar> getCars() throws IllegalAccessException {
         List<RacingCar> cars = new ArrayList<>();
         RacingCar carA = new RacingCar(3, "a");
         RacingCar carB = new RacingCar(3, "b");

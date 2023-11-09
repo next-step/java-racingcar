@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 class RacingCarTest {
     RacingCar car;
     @BeforeEach
-    void init(){
+    void init() throws IllegalAccessException {
         car = new RacingCar(0,"");
     }
     @Test

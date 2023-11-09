@@ -18,7 +18,7 @@ public class Simulator {
     static int raceRound;
     static List<RacingCar> cars = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalAccessException {
         carName = InputView.getCarName();
         carCount = carName.length;
         raceRound = InputView.getRaceRound();
@@ -37,7 +37,7 @@ public class Simulator {
     public static List<RacingCar> getWinners(List<RacingCar> cars) {
         int topSpeed = getTopSpeed(cars);
         return cars.stream()
-                .filter(car -> car.getProgress() == topSpeed)
+                .filter(car -> car.isSameProgress(topSpeed))
                 .collect(Collectors.toList());
     }
 
