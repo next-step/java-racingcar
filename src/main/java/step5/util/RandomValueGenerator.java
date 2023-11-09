@@ -2,10 +2,11 @@ package step5.util;
 
 import java.util.Random;
 
-public class RandomValueGenerator {
+public class RandomValueGenerator implements MoveStrategy {
     private static final Random RANDOM = new Random();
-
-    public static int generateRandomValueFromZeroToNine() {
+    
+    @Override
+    public int getMoveValue() {
         return RANDOM.nextInt(10);
     }
 }

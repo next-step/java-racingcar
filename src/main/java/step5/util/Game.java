@@ -8,7 +8,7 @@ import step5.view.ResultView;
 import java.util.List;
 
 public class Game {
-    public static void start() {
+    public static void start(final MoveStrategy moveStrategy) {
         final UserInput userInput = InputView.input();
 
         List<RacingCar> cars = GameManager.makeCars(userInput.getCarNames());
@@ -16,16 +16,16 @@ public class Game {
         ResultView.printResultText();
 
         for (int i = 0; i < userInput.getTryNumber(); i++) {
-            tryMove(cars);
+            tryMove(cars, moveStrategy);
             ResultView.printTryResult(cars);
         }
 
         ResultView.printWinners(GameManager.toNames(GameManager.extractWinners(cars)));
     }
 
-    private static void tryMove(final List<RacingCar> cars) {
+    private static void tryMove(final List<RacingCar> cars, final MoveStrategy moveStrategy) {
         for (RacingCar car : cars) {
-            car.moveIfInRange(RandomValueGenerator.generateRandomValueFromZeroToNine());
+            car.moveIfInRange(moveStrategy.getMoveValue());
         }
     }
 }

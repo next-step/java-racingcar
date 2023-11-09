@@ -10,8 +10,10 @@ class RandomValueGeneratorTest {
     @DisplayName("0에서 9이하의 랜덤 값을 생성한다.")
     void generateRandomValueFromZeroToNine() {
         //given
+        RandomValueGenerator randomValueGenerator = new RandomValueGenerator();
+
         //when
-        int randomValue = RandomValueGenerator.generateRandomValueFromZeroToNine();
+        int randomValue = randomValueGenerator.getMoveValue();
 
         //then
         assertThat(randomValue).isBetween(0, 9);
