@@ -9,8 +9,10 @@ public class Player {
         int howManyTimesToTry = scanner.nextInt();
 
         CarFactory carFactory = new CarFactory();
-        Cars cars = carFactory.create(howManyCars, howManyTimesToTry);
-        CarRacingGame carRacingGame = CarRacingGame.gameSetting(cars);
-        carRacingGame.start();
+        Cars cars = carFactory.make(howManyCars);
+
+        Referee referee = new Referee();
+        CarRacing carRacing = CarRacing.gameSetting(cars,referee);
+        carRacing.start(howManyTimesToTry);
     }
 }

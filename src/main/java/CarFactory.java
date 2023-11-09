@@ -5,10 +5,10 @@ public class CarFactory {
     public CarFactory() {
     }
 
-    public Cars create(int howManyCars, int howManyTimesTry) {
-        List<Car> cars = new ArrayList<Car>();
+    public Cars make(int howManyCars) {
+        List<Car> cars = new ArrayList<>();
         for (int i = 0 ; i < howManyCars; i++) {
-            cars.add(Car.create(howManyTimesTry));
+            cars.add(Car.create());
         }
         return new Cars(cars);
     }
