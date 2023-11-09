@@ -14,7 +14,7 @@ public class Position implements Comparable<Position> {
         return this.position;
     }
 
-    public Position move(int offset) {
+    Position move(int offset) {
         int currentPosition = this.position;
         return new Position(currentPosition + offset);
     }

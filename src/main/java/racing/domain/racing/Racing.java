@@ -60,13 +60,18 @@ public class Racing {
 
     public static class ParticipatingCars {
 
-        private final List<Car> participatingCars = new ArrayList<>();
+        private final List<Car> participatingCars;
 
         public ParticipatingCars(String inputNames) {
+            participatingCars = new ArrayList<>();
             String[] names = inputNames.split(",");
             for (String name : names) {
                 this.participatingCars.add(new Car(name));
             }
+        }
+
+        public ParticipatingCars(List<Car> cars) {
+            this.participatingCars = cars;
         }
 
         public int numberOfCars() {
@@ -77,7 +82,7 @@ public class Racing {
             return this.participatingCars;
         }
 
-        private List<Car> winners() {
+        public List<Car> winners() {
             List<Car> winners = new ArrayList<>();
             Position max = max();
             for (Car car : this.participatingCars) {
@@ -91,7 +96,7 @@ public class Racing {
         private Position max() {
             int max = 0;
             for (Car car : this.participatingCars) {
-                if (car.isForward(0)) {
+                if (car.isForward(max)) {
                     max = car.position().position();
                 }
             }

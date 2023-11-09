@@ -14,7 +14,7 @@ public class Car {
         this.position = new Position(0);
     }
 
-    Car(String name, int position) {
+    public Car(String name, int position) {
         this.name = new Name(name);
         this.position = new Position(position);
     }
@@ -42,6 +42,14 @@ public class Car {
         return position < this.position.position();
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+            "name=" + name +
+            ", position=" + position +
+            '}';
+    }
+
     private boolean isOverThreshHold(int input) {
         return THRESHOLD <= input;
     }
@@ -55,6 +63,23 @@ public class Car {
         public Name(String name) {
             this.validateNameLength(name);
             this.name = name;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Name name1 = (Name) o;
+            return Objects.equals(name, name1.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
         }
 
         public String toString() {
