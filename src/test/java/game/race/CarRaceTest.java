@@ -10,8 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import game.race.view.InputView;
-import game.race.dto.RaceDto;
+import game.race.model.InputView;
 import game.race.support.CarRacingManager;
 
 class CarRaceTest {
@@ -56,6 +55,10 @@ class CarRaceTest {
             "3, 3"
     })
     void 자동차_수와_시도_횟수에_맞게_타이어_자국_수를_확인_하는_테스트(int cars, int tryCnt) {
-        CarRacingManager.start(RaceDto.of(cars, tryCnt));
+        InputView inputView = new InputView();
+        inputView.setVehicleCnt(cars);
+        inputView.setTryCnt(tryCnt);
+
+        CarRacingManager.start(inputView);
     }
 }
