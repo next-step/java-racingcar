@@ -10,7 +10,7 @@ public class CarRacingManager {
 
     public static void start(RaceDto raceDto) {
         ResultView resultView = new ResultView();
-        List<Car> cars = Car.getCars(raceDto.getVehicleCnt());
+        List<Car> cars = Car.getCars(raceDto);
 
         resultView.showPrompt();
         for (int trial = 0; trial < raceDto.getTryCnt(); trial++) {
@@ -18,7 +18,12 @@ public class CarRacingManager {
                 car.move();
             }
 
-            resultView.showCars(cars);
+            resultView.showCars(raceDto, cars);
+
+            int lastTrialIndex = raceDto.getTryCnt() - 1;
+            if (trial == lastTrialIndex) {
+                resultView.printWinner(cars);
+            }
         }
     }
 }
