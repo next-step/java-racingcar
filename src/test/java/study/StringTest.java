@@ -36,4 +36,5 @@ public class StringTest {
             throw new IndexOutOfBoundsException("5");
         }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("5");
     }
+
 }

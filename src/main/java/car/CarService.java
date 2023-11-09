@@ -7,17 +7,17 @@ import java.util.Random;
 public class CarService {
     private static final Random random = new Random();
 
-    public static List<Car> generate(int count) {
+    public static List<Car> generate(String[] names) {
         List<Car> cars = new ArrayList<Car>();
 
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
 
         return cars;
     }
 
-    public static int randomValue() {
+    private static int randomValue() {
         return random.nextInt(10);
     }
 
@@ -26,4 +26,5 @@ public class CarService {
             car.move(randomValue());
         }
     }
+
 }
