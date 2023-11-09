@@ -1,6 +1,8 @@
 package racingCar;
 
 public class RacingCar {
+    public static final int FORWRARD_BOUNDARY_VALUE = 3;
+    public static final int RANDOM_LIMIT_VALUE = 10;
 
     public static void main(String[] args) {
         int[] inputValues = InputView.input();
@@ -13,14 +15,14 @@ public class RacingCar {
 
     }
 
-    public static int moveCar(int randomValue){
-        if(randomValue<=3) return 0;
+    public static int moveCar(int inputValue){
+        if(inputValue<=FORWRARD_BOUNDARY_VALUE) return 0;
         return 1;
     }
 
     public static int[] addMoving(int[] carArray){
         for (int i=0; i<carArray.length; i++){
-            carArray[i] += moveCar(RandomNumber.getRandom(10));
+            carArray[i] += moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE));
             ResultView.print(carArray[i]);
         }
 

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class InputView {
 
+    private InputView(){}
+
     public static int[] input() {
         int[] inputValues = new int[2];
 
