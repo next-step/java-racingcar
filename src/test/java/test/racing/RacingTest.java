@@ -9,6 +9,7 @@ import racing.domain.Car;
 import racing.domain.Cars;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -81,8 +82,7 @@ public class RacingTest {
         cars.getCar(2).moveCar(true);
 
         String result = cars.findWinner();
-
-        System.out.println(result);
-
+        List<String> resultList = Arrays.asList(result.replace(" ", "").split(","));
+        assertThat(resultList.contains("java")).isTrue();
     }
 }
