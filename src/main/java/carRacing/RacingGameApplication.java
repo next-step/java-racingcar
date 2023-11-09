@@ -7,23 +7,21 @@ public class RacingGameApplication {
     private static final NumberGenerator RANDOM_NUMBER_GENERATOR = new RandomNumberGenerator();
     private static final MovingStrategy MOVING_STRATEGY = new GreaterThanThreeMovingStrategy();
 
-    private static RacingProcess racingProcess;
-
     public static void main(String[] args) {
 
         String[] nameArray = readCarList();
         int raceCount = readRaceCount();
-        racingProcess = new RacingProcess(nameArray, MOVING_STRATEGY);
+        RacingProcess racingProcess = new RacingProcess(nameArray, MOVING_STRATEGY);
 
         resultTitle();
-        startRacingGame(nameArray, raceCount);
+        startRacingGame(racingProcess, raceCount);
         printRacingWinner(racingProcess.callCarRacingWinners());
 
 
 
     }
 
-    private static void startRacingGame(String[] nameArray, int raceCount) {
+    private static void startRacingGame(RacingProcess racingProcess, int raceCount) {
 
         for (int i = 0; i < raceCount; i++) {
             racingProcess.roundPlay(RANDOM_NUMBER_GENERATOR);

@@ -25,13 +25,11 @@ public class RacingProcess {
         cars.move(numberGenerator);
     }
 
-    public Map<String, Integer> getCarsStatus() {
-        return cars.getState();
+    public List<Car> getCarsStatus() {
+        return cars.getCarList();
     }
 
     public List<String> callCarRacingWinners() {
         return cars.callWinners();
     }
-
-    ;
 }

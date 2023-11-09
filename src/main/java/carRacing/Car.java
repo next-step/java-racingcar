@@ -1,17 +1,13 @@
 package carRacing;
 
 
-import java.util.InputMismatchException;
-
-import static carRacing.MovingStrategy.*;
-
-public class Car {
+public class Car implements Comparable<Car> {
     private int distance = 0;
-    private String name;
+    private Name name;
     private MovingStrategy movingStrategy;
 
     public Car(String name, MovingStrategy movingStrategy) {
-        this.name = validateName(name);
+        this.name = new Name(name);
         this.movingStrategy = movingStrategy;
     }
 
@@ -27,13 +23,21 @@ public class Car {
     }
 
     public String getCarName() {
-        return name;
+        return name.getName();
     }
 
-    private String validateName(String name){
-        if(name.length()>5){
-            throw new InputMismatchException("자동차 이름은 5글자 이상일 수 없습니다.");
-        }
-        return name;
+    public boolean isMaxDistance(int maxDistance) {
+        return maxDistance == distance;
+    }
+
+    public int findLongerDistance(int number) {
+        return Math.max(number, distance);
+
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return this.distance - car.getDistance();
+
     }
 }

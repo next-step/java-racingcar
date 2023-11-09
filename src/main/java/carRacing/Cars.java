@@ -1,9 +1,6 @@
 package carRacing;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Cars {
     private final List<Car> cars;
@@ -18,12 +15,8 @@ public class Cars {
         }
     }
 
-    public Map<String, Integer> getState() {
-        Map<String, Integer> list = new HashMap<>();
-        for (Car car : cars) {
-            list.put(car.getCarName(), car.getDistance());
-        }
-        return list;
+    public List<Car> getCarList() {
+        return Collections.unmodifiableList(cars);
     }
 
     public List<String> callWinners() {
@@ -31,26 +24,26 @@ public class Cars {
         int maxDistance = maxDistance();
 
         for (Car car : cars) {
-            findWinnerName(result, maxDistance, car);
+            addWinnerName(result, maxDistance, car);
         }
 
         return result;
     }
 
-    private static void findWinnerName(List<String> result, int maxDistance, Car car) {
+    private static void addWinnerName(List<String> result, int maxDistance, Car car) {
         if (isMaxDistance(maxDistance, car)) {
             result.add(car.getCarName());
         }
     }
 
     private static boolean isMaxDistance(int maxDistance, Car car) {
-        return maxDistance == car.getDistance();
+        return car.isMaxDistance(maxDistance);
     }
 
     private int maxDistance() {
         int maxNumber = Integer.MIN_VALUE;
         for (Car car : cars) {
-            maxNumber = Math.max(car.getDistance(), maxNumber);
+            maxNumber = car.findLongerDistance(maxNumber);
         }
         return maxNumber;
     }

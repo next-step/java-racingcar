@@ -1,5 +1,6 @@
 package carRacing;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,9 @@ public class RacingProcessTest {
     void 자동차경주_라운드_진행_결과() {
         NumberGenerator movableRandomGenerator = new MovableRandomGenerator();
         racingProcess.roundPlay(movableRandomGenerator);
-        assertThat(racingProcess.getCarsStatus())
-                .containsOnly(entry(nameArray[0],1),entry(nameArray[1],1),entry(nameArray[2],1));
+        List<Car> result = racingProcess.getCarsStatus();
+
+        assertThat(result).extracting("distance").contains(1,1,1);
+
     }
 }

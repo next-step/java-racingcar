@@ -10,10 +10,10 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printRoundResult(Map<String, Integer> carStateList) {
-        for (String name : carStateList.keySet()) {
-            String line = LINE.repeat(carStateList.get(name));
-            System.out.println(name + " : " + line);
+    public static void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            String line = LINE.repeat(car.getDistance());
+            System.out.println(car.getCarName() + " : " + line);
         }
         System.out.println();
     }
