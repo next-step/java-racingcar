@@ -5,7 +5,16 @@ import java.util.Random;
 public class Car {
     private static final String DISTANCE_STRING = "-";
 
+    private String name;
     private int distance = 0;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getDistance() {
         return distance;
@@ -25,6 +34,10 @@ public class Car {
     }
 
     public void showDistance() {
-        ResultView.print(DISTANCE_STRING.repeat(distance));
+        if (this.name.isEmpty()) {
+            ResultView.print(DISTANCE_STRING.repeat(distance));
+            return;
+        }
+        ResultView.print(this.name + " : " + DISTANCE_STRING.repeat(distance));
     }
 }
