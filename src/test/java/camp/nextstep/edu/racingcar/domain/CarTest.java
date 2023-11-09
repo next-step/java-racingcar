@@ -1,4 +1,4 @@
-package camp.nextstep.edu.racingcar;
+package camp.nextstep.edu.racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
