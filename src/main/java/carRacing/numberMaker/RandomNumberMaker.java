@@ -1,14 +1,15 @@
-package carRacing;
+package carRacing.numberMaker;
 
 import java.util.Random;
 
-public class RandomNumMaker {
+public class RandomNumberMaker implements NumberMaker {
 
 	private static final int MAXIMUM_BOUND = 10;
 
 	private Random random = new Random();
 
-	public int makeRandomNumber() {
+	@Override
+	public int makeNumber() {
 		return random.nextInt(MAXIMUM_BOUND);
 	}
 }

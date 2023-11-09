@@ -1,8 +1,14 @@
 package carRacing;
 
+import carRacing.car.Car;
+import carRacing.car.CarRacing;
+import carRacing.numberMaker.NumberMaker;
+import carRacing.numberMaker.RandomNumberMaker;
+import carRacing.view.InputView;
+import carRacing.view.ResultView;
 import java.util.List;
 
-public class CarMain {
+public class CarRacingMain {
 
 	public static void main(String[] args) {
 		InputView input = new InputView();
@@ -14,10 +20,10 @@ public class CarMain {
 		ResultView result = new ResultView();
 		CarRacing carRacing = new CarRacing();
 		List<Car> cars = carRacing.makeCars(nameInputs.length, nameInputs);
-		RandomNumMaker randomNumMaker = new RandomNumMaker();
+		NumberMaker numberMaker = new RandomNumberMaker();
 
 		for (int i = 0; i < numberOfAttempts; i++) {
-			carRacing.moveCars(cars, randomNumMaker);
+			carRacing.moveCars(numberMaker);
 			result.showResult(cars);
 		}
 	}

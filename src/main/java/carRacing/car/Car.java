@@ -1,4 +1,6 @@
-package carRacing;
+package carRacing.car;
+
+import carRacing.numberMaker.NumberMaker;
 
 public class Car {
 
@@ -11,12 +13,12 @@ public class Car {
 	}
 
 	public Car(String name) {
-		this.position = 0;
+		this.position = position;
 		this.name = name;
 	}
 
-	public void moveCar(int randomNum) {
-		if (isCarFoward(randomNum)) {
+	public void moveCar(NumberMaker numberMaker) {
+		if (isCarFoward(numberMaker.makeNumber())) {
 			position++;
 		}
 	}

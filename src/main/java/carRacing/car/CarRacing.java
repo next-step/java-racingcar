@@ -1,5 +1,7 @@
-package carRacing;
+package carRacing.car;
 
+import carRacing.car.Car;
+import carRacing.numberMaker.NumberMaker;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +16,9 @@ public class CarRacing {
 		return cars;
 	}
 
-	public void moveCars(List<Car> cars, RandomNumMaker randomNumMaker) {
+	public void moveCars(NumberMaker numberMaker) {
 		for (Car car : cars) {
-			car.moveCar(randomNumMaker.makeRandomNumber());
+			car.moveCar(numberMaker);
 		}
 	}
 }
