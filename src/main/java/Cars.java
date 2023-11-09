@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -11,15 +12,23 @@ public class Cars {
         return cars.size() == size;
     }
 
-    public void start(Referee referee, int howManyTimes) {
+    public void start(Referee referee, int howManyTimes,OutPutView outPutView) {
         for (int i = 0 ; i < howManyTimes; i++) {
-            judge(referee);
+            this.judge(referee);
+            this.result(outPutView);
         }
     }
 
     private void judge(Referee referee) {
         for (Car each : cars) {
             referee.judge(each);
+        }
+    }
+
+    public void result(OutPutView outPutView) {
+        outPutView.printGap();
+        for (Car each : this.cars) {
+            each.result(outPutView);
         }
     }
 }

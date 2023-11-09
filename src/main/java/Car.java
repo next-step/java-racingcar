@@ -13,5 +13,9 @@ public class Car {
         distance ++;
     }
 
+    public void result(OutPutView outPutView) {
+        outPutView.print(this.distance);
+    }
+
 }
 

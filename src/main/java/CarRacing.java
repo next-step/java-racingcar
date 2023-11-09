@@ -1,16 +1,23 @@
 public class CarRacing {
-    private Cars racingCars;
-    private Referee referee;
+    private final Cars racingCars;
+    private final Referee referee;
+    private final int howManyTimes;
 
-    private CarRacing(Cars racingCars, Referee referee) {
+    private CarRacing(Cars racingCars, Referee referee,int howManyTimes) {
         this.racingCars = racingCars;
+        this.referee = referee;
+        this.howManyTimes = howManyTimes;
     }
 
-    public static CarRacing gameSetting(Cars cars , Referee referee) {
-        return new CarRacing(cars,referee);
+    public static CarRacing setting(Cars cars , Referee referee, int howManyTimes) {
+        return new CarRacing(cars,referee,howManyTimes);
     }
 
-    public void start(int howManyTimes) {
-        racingCars.start(referee, howManyTimes);
+    public void start(OutPutView outPutView) {
+        racingCars.start(this.referee, this.howManyTimes,outPutView);
+    }
+
+    public void result(OutPutView outPutView) {
+        racingCars.result(outPutView);
     }
 }

@@ -9,7 +9,7 @@ public class CarRacingTest {
     void make_racing_test() {
         CarFactory carFactory = new CarFactory();
         Cars cars = carFactory.make(5);
-        carRacing = CarRacing.gameSetting(cars, new Referee());
+        carRacing = CarRacing.setting(cars, new Referee(),5);
     }
     @Test
     @DisplayName("경주 게임 생성 기능")
