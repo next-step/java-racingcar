@@ -12,7 +12,8 @@ public class RacingMain {
 
     public static void main(String[] args) {
         // view
-        InputView.setCarCount();
+//        InputView.setCarCount();
+        InputView.setCarName();
         InputView.setTryCount();
         Racing racing = new Racing();
 
@@ -20,6 +21,8 @@ public class RacingMain {
             racing.racingStart(new RandomMoveStrategy());
             ResultView.viewResultView(racing.getCars());
         }
+
+        ResultView.winnerView(racing.findWinner());
     }
 
 }

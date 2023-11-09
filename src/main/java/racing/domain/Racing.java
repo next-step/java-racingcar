@@ -3,6 +3,9 @@ package racing.domain;
 
 import racing.ui.InputView;
 
+import java.util.Collection;
+import java.util.Collections;
+
 public class Racing {
 
     private final String CANNOT_BE_NEGATIVE_NUMBERS = "음수 입력 불가능합니다.";
@@ -16,7 +19,7 @@ public class Racing {
     public Racing(){
         this.carCount = InputView.getCarCount();
         this.tryCount = InputView.getTryCount();
-        carList.makeCarList(carCount);
+        carList.makeCarList(InputView.getCarName());
     }
 
     public Cars racingStart(RandomMoveStrategy random){
@@ -29,6 +32,11 @@ public class Racing {
         if(carCount < 0 || tryCount < 0){
             throw new RuntimeException(CANNOT_BE_NEGATIVE_NUMBERS);
         }
+    }
+
+    public String findWinner(){
+        String winner = carList.findWinner();
+        return winner;
     }
 
     public Cars getCars(){
