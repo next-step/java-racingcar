@@ -1,22 +1,22 @@
 package step3;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MoveCarStatus {
-    private Map<Integer, Integer> resultMap= new HashMap<>();
+    private List<Car> cars = new ArrayList<>();
 
-    public MoveCarStatus(int cars) {
-        //resultMap 초기화
-        for (int i = 1; i <= cars; i++) {
-            resultMap.put(i, 0);
+    public MoveCarStatus(String[] carNames, int position, int decisionValue) {
+        for(String carName : carNames) {
+            cars.add(new Car(carName, position, decisionValue));
         }
     }
 
-    public Map<Integer, Integer>  getResultMap() {
-        return resultMap;
+    public List<Car> getCars() {
+        return cars;
     }
-    public void setResultMap(Map<Integer, Integer> resultMap) {
-        this.resultMap = resultMap;
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 }

@@ -1,22 +1,20 @@
 package step3;
 
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.List;
 
 public class ResultView {
-    private final Map<Integer, Integer> resultMap;
 
-    public ResultView(Map<Integer, Integer> resultMap) {
-        this.resultMap = resultMap;
+    public void printResult(List<Car> cars) {
+        for (Car car : cars) {
+            printCarPosition(car);
+        }
+        System.out.println();
     }
 
-    public void printResult(char displayChar) {
-        for (Integer key : resultMap.keySet()) {
-            System.out.print(key + " : ");
-            for (int i = 0; i < resultMap.get(key); i++) {
-                System.out.print(displayChar);
-            }
-            System.out.println();
+    public void printCarPosition(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print("-");
         }
         System.out.println();
     }

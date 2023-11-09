@@ -10,4 +10,8 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public static String readStringInput(String msg) {
+        System.out.println(msg);
+        return scanner.next();
+    }
 }

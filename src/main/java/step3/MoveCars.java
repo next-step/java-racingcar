@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class MoveCars {
     private final int turnCount;
     private final int decisionValue;
@@ -11,14 +13,16 @@ public class MoveCars {
 
     public void process(MoveCarStatus moveCarStatus, ResultView resultView) {
         for (int i = 0; i < turnCount; i++) {
-            moveCarStatus.getResultMap().forEach((key, value) -> {
-                int randomValue = (int) (Math.random() * 10);
-                if (randomValue >= decisionValue) {
-                    moveCarStatus.getResultMap().put(key, value + 1);
-                }
-            });
-            resultView.printResult('*');
+            moveCar(moveCarStatus.getCars());
+            resultView.printResult(moveCarStatus.getCars());
         }
     }
 
+    private void moveCar(List<Car> cars) {
+        for (Car car : cars) {
+            int randomValue = (int) (Math.random() * 10);
+            car.move(randomValue, decisionValue);
+        }
+
+    }
 }
