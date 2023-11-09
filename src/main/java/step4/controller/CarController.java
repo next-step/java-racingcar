@@ -22,17 +22,6 @@ public class CarController {
         cars.findCarBy(carNo).moveForward(randomNum);
     }
 
-    public int[] findPositions() {
-        int numOfCar = cars.getNumOfCars();
-
-        int[] positions = new int[numOfCar];
-        for (int i=0; i<numOfCar; i++) {
-            positions[i] = cars.findCarBy(i).getCurrentPosition();
-        }
-
-        return positions;
-    }
-
     public List<String> findWinners(int numOfTry) {
         List<String> winners = new ArrayList<>();
 
