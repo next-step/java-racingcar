@@ -15,7 +15,7 @@ public class CarRacingController {
     private int carRacingChance;
 
     public CarRacingController(InputDto inputDto) {
-        this.carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator(), extractCarNames(inputDto.getCarNames()));
+        this.carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator(), inputDto.getCarNames());
         carRacingChance = inputDto.getCarRacingChance();
     }
 
@@ -30,30 +30,5 @@ public class CarRacingController {
 
         ChampionCarsDto champions = carRacingPlay.findChampions();
         resultView.printChampionCars(champions);
-    }
-
-
-    private List<String> extractCarNames(String carNames) {
-        String[] carNameArray = carNames.split(",");
-
-        for (String carName : carNameArray) {
-            checkCarNameLength(carName);
-        }
-        
-        return List.of(carNameArray);
-    }
-
-    private void checkCarNameLength(String carName) {
-        if (carName.length() > 5) {
-            throw new RuntimeException("자동차 이름은 5글자를 초과하면 안됩니다.");
-        }
-    }
-
-    public CarRacingPlay getCarRacingPlay() {
-        return carRacingPlay;
-    }
-
-    public int getCarRacingChance() {
-        return carRacingChance;
     }
 }

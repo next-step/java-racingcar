@@ -13,9 +13,9 @@ public class CarRacingPlay {
 
     private final RandomValueGenerator randomValueGenerator;
 
-    public CarRacingPlay(RandomValueGenerator randomValueGenerator, List<String> attendCarNames) {
+    public CarRacingPlay(RandomValueGenerator randomValueGenerator, String inputCarNames) {
         this.randomValueGenerator = randomValueGenerator;
-        initializeRacingCars(attendCarNames);
+        initializeRacingCars(extractCarNames(inputCarNames));
     }
 
     public List<Car> raceOneCycle() {
@@ -42,6 +42,22 @@ public class CarRacingPlay {
 
     private void initializeRacingCars(List<String> attendCarNames) {
         attendCarNames.forEach(carName -> cars.add(Car.makeCar(carName)));
+    }
+
+    private List<String> extractCarNames(String carNames) {
+        String[] carNameArray = carNames.split(",");
+
+        for (String carName : carNameArray) {
+            checkCarNameLength(carName);
+        }
+
+        return List.of(carNameArray);
+    }
+
+    private void checkCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new RuntimeException("자동차 이름은 5글자를 초과하면 안됩니다.");
+        }
     }
 
 }

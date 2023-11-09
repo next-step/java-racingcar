@@ -6,6 +6,7 @@ import step4.view.InputDto;
 import step4.view.MyScanner;
 import step4.view.ScannerInterface;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CarRacing {

@@ -5,18 +5,34 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayDeque;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class CarRacingPlayTest {
 
+    @Test
+    @DisplayName("스트링으로 된 자동차 이름들을 입력받으면 자동차 인스턴스를 갖는 리스트를 생성해줍니다.")
+    void construct() {
+        // given
+        // when
+        CarRacingPlay carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator(), "car1,car2,car3");
+
+        // then
+        assertThat(carRacingPlay.getCars()).hasSize(3)
+                .extracting("name", "distance")
+                .containsExactly(
+                        tuple("car1", 0),
+                        tuple("car2", 0),
+                        tuple("car3", 0)
+                );
+    }
+
     @ParameterizedTest(name = "랜점 숫자가 0 ~ 3 이하인 경우 차량은 움직이지 않습니다.")
     @ValueSource(ints = {0, 1, 2, 3})
     void doNotMoveOneCycle(int randomValue) {
         // given
-        CarRacingPlay carRacingPlay = new CarRacingPlay(() -> randomValue, List.of("test"));
+        CarRacingPlay carRacingPlay = new CarRacingPlay(() -> randomValue, "test");
         // when
         List<Car> cars = carRacingPlay.raceOneCycle();
         // then
@@ -28,7 +44,7 @@ class CarRacingPlayTest {
     @ValueSource(ints = {4, 7, 9})
     void moveOneCycle(int randomValue) {
         // given
-        CarRacingPlay carRacingPlay = new CarRacingPlay(() -> randomValue, List.of("test"));
+        CarRacingPlay carRacingPlay = new CarRacingPlay(() -> randomValue, "test");
         // when
         List<Car> cars = carRacingPlay.raceOneCycle();
         // then
@@ -50,7 +66,7 @@ class CarRacingPlayTest {
                 count ++;
                 return random;
             }
-        }, List.of("first", "second", "third"));
+        }, "car1,car2,car3");
 
         carRacingPlay.raceOneCycle();
 
@@ -62,8 +78,8 @@ class CarRacingPlayTest {
         assertThat(champions)
                 .extracting("name", "distance")
                 .containsExactly(
-                        tuple("second", 1),
-                        tuple("third", 1)
+                        tuple("car2", 1),
+                        tuple("car3", 1)
                 );
     }
 
