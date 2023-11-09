@@ -1,7 +1,8 @@
 package calculator;
 
-import static calculator.StringSpliter.getIntArray;
-import static calculator.StringSpliter.getSplittedString;
+import static common.StringSpliter.getIntArray;
+import static common.StringSpliter.getSplittedString;
+import static common.StringUtils.isEmpty;
 
 public class AddCalculator {
     private static final int ZERO = 0;
@@ -18,9 +19,6 @@ public class AddCalculator {
         return sum(intArray);
     }
 
-    static boolean isEmpty(String input) {
-        return input == null || input.isBlank();
-    }
 
     private static int sum(int[] numbers) {
         int result = ZERO;

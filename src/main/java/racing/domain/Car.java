@@ -2,23 +2,32 @@ package racing.domain;
 
 public class Car {
     private final int MOVE_THRESHOLD = 4;
-    private int position;
 
-    public Car() {
-        this.position = 0;
+    private final Position position;
+
+    private final CarName carName;
+
+    public Car(String carName) {
+        this.position = new Position(0);
+        this.carName = new CarName(carName);
     }
 
     public int getPosition() {
-        return position;
+        return this.position.getValue();
+    }
+
+    public String getCarName() {
+        return carName.getCarName();
     }
 
     public void move(int input) {
         if (isMovable(input)) {
-            this.position++;
+            position.move();
         }
     }
 
     private boolean isMovable(int input) {
         return input >= MOVE_THRESHOLD;
     }
+
 }

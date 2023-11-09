@@ -8,14 +8,18 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
+
+    private final String userName = "김동규";
+
     @DisplayName("자동차는 전진할 수 있다.")
     @Test
     void car_move_success() {
         // given
         final int FOUR = 4;
-        Car car = new Car();
+        Car car = new Car(userName);
         assertThat(car.getPosition()).isZero();
 
         // when
@@ -27,7 +31,7 @@ class CarTest {
     @Test
     void car_stop_success() {
         // given
-        Car car = new Car();
+        Car car = new Car(userName);
         assertThat(car.getPosition()).isZero();
 
         // when
@@ -40,7 +44,7 @@ class CarTest {
     @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
     void car_move_when_input_more_than_4(int input, int result) {
         // given
-        Car car = new Car();
+        Car car = new Car(userName);
 
         // when
         car.move(input);
@@ -54,7 +58,7 @@ class CarTest {
     @Test
     void car_stop_when_random_bound_to_3() {
         // given
-        Car car = new Car();
+        Car car = new Car(userName);
         CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random(), 3);
 
         // when
@@ -64,6 +68,29 @@ class CarTest {
         // then
         assertThat(car.getPosition()).isZero();
         assertThat(result).isLessThan(4);
+    }
+
+    @DisplayName("자동차는 이름을 가진다.")
+    @Test
+    void create_car_with_user_name() {
+        // given
+        final String userName = "김동규";
+
+        // when
+        Car car = new Car(userName);
+
+        // then
+        assertThat(car.getCarName()).isEqualTo(userName);
+    }
+
+    @DisplayName("자동차의 이름은 5자를 초과할 수 없다. 초과시, IllegalArgumentException 을 발생시킨다.")
+    @Test
+    void create_car_with_long_user_name() {
+        // given
+        final String userName = "여섯글자이름";
+
+        // then
+        assertThatThrownBy(() -> new Car(userName)).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

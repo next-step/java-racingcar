@@ -1,61 +1,83 @@
 package racing.domain;
 
+import common.StringSpliter;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
-    private final int carCount;
     private final int gameCount;
     private final CarMoveStrategy carMoveStrategy;
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
     private int currentRound;
 
-    public RacingGame(int carCount, int gameCount) {
-        this(carCount, gameCount, new CarMoveStrategy(new Random()));
-    }
-
-    public RacingGame(int carCount, int gameCount, CarMoveStrategy carMoveStrategy) {
-        this.carCount = carCount;
+    public RacingGame(String userNameAnswer, int carCount, int gameCount, CarMoveStrategy carMoveStrategy) {
         this.gameCount = gameCount;
         this.carMoveStrategy = carMoveStrategy;
         this.currentRound = 0;
-        initRacingCar(carCount);
+
+        String[] userNames = parseUserName(userNameAnswer);
+        initRacingCar(userNames, carCount);
     }
 
     public boolean isProgress() {
         return this.getCurrentRound() < this.getGameCount();
     }
 
-    public int getCarCount() {
-        return carCount;
-    }
-
     public int getGameCount() {
         return gameCount;
+    }
+
+    public List<Car> getRacingCars() {
+        return cars;
     }
 
     public int getCurrentRound() {
         return currentRound;
     }
 
-    private void initRacingCar(int carCount) {
+    public void doRacing() {
+        cars.forEach(this::doGame);
+        this.currentRound++;
+    }
+
+    public List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
+        List<Car> winCars = new ArrayList<>();
+
+        List<Car> racingCars = getRacingCars();
+        racingCars.stream()
+                .filter(o -> o.getPosition() == maxPosition)
+                .forEach(winCars::add);
+        return winCars;
+    }
+
+
+    private String[] parseUserName(String userNameAnswer) {
+        final String NAME_SPLIT_DELIMITER = ",";
+        return StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
+    }
+    
+
+    private void initRacingCar(String[] userNames, int carCount) {
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            cars.add(new Car(userNames[i]));
         }
     }
 
-    public List<Car> getRacingCars() {
-        return carList;
-    }
-
-    void doGame(Car car) {
+    private void doGame(Car car) {
         int result = carMoveStrategy.getResult();
         car.move(result);
     }
 
-    public void doRacing() {
-        carList.forEach(this::doGame);
-        this.currentRound++;
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        List<Car> racingCars = getRacingCars();
+        for (Car racingCar : racingCars) {
+            if (racingCar.getPosition() >= maxPosition) {
+                maxPosition = racingCar.getPosition();
+            }
+        }
+        return maxPosition;
     }
 }

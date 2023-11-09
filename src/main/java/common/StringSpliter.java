@@ -1,45 +1,31 @@
-package calculator;
+package common;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static calculator.AddCalculator.isEmpty;
+import static common.StringUtils.isEmpty;
 
 public class StringSpliter {
     private static final String DEFAULT_DELIMITER = ",:";
     private static final String CUSTOM_DELIMITER_REGEX = "//(.*?)\\n(.*?)";
     private static final Pattern CUSTOM_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX);
 
+    public static String[] getSplittedString(String input, String delimiter) {
+        return input.split("[" + delimiter + "]");
+    }
 
-    static String[] getSplittedString(String input) {
+    public static String[] getSplittedString(String input) {
         String customDelimiter = existsCustomDelimiter(input);
 
         if (isEmpty(customDelimiter)) {
-            return getSplit(input, DEFAULT_DELIMITER);
+            return getSplittedString(input, DEFAULT_DELIMITER);
         }
 
         String numberArea = getNumberAreaFromInput(input);
-        return getSplit(numberArea, customDelimiter);
+        return getSplittedString(numberArea, customDelimiter);
     }
 
-    private static Matcher getMatcher(String input) {
-        return CUSTOM_PATTERN.matcher(input);
-    }
-
-
-    private static String existsCustomDelimiter(String input) {
-        Matcher matcher = getMatcher(input);
-        return matcher.find() ? matcher.group(1) : "";
-    }
-
-
-    private static String getNumberAreaFromInput(String input) {
-        Matcher matcher = getMatcher(input);
-        return matcher.find() ? input.substring(matcher.group(0).length()) : "";
-    }
-
-
-    static int[] getIntArray(String[] values) {
+    public static int[] getIntArray(String[] values) {
         int[] ints = new int[values.length];
         for (int i = 0; i < values.length; i++) {
             if (!isEmpty(values[i]) && isNegative(values[i])) {
@@ -50,13 +36,21 @@ public class StringSpliter {
         return ints;
     }
 
+    private static Matcher getMatcher(String input) {
+        return CUSTOM_PATTERN.matcher(input);
+    }
+
+    private static String existsCustomDelimiter(String input) {
+        Matcher matcher = getMatcher(input);
+        return matcher.find() ? matcher.group(1) : "";
+    }
+
+    private static String getNumberAreaFromInput(String input) {
+        Matcher matcher = getMatcher(input);
+        return matcher.find() ? input.substring(matcher.group(0).length()) : "";
+    }
+
     private static boolean isNegative(String values) {
         return Integer.parseInt(values) < 0;
     }
-
-
-    private static String[] getSplit(String input, String delimiter) {
-        return input.split("[" + delimiter + "]");
-    }
-
 }
