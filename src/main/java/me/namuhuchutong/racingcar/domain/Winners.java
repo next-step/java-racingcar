@@ -4,7 +4,6 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.function.Predicate;
 
 public class Winners {
 
@@ -14,7 +13,7 @@ public class Winners {
         Car winnerCar = findWinnerPosition(cars);
         List<String> collect = cars.getValues()
                                    .stream()
-                                   .filter(isSamePosition(winnerCar))
+                                   .filter(car -> car.compareTo(winnerCar) == 0)
                                    .map(Car::getName)
                                    .collect(toUnmodifiableList());
         return new Winners(collect);
@@ -25,10 +24,6 @@ public class Winners {
                    .stream()
                    .max(Car::compareTo)
                    .orElseThrow(NoSuchElementException::new);
-    }
-
-    private static Predicate<Car> isSamePosition(Car winnerCar) {
-        return car -> car.getPosition() == winnerCar.getPosition();
     }
 
     public Winners(List<String> names) {
