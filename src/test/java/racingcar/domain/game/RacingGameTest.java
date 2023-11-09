@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import racingcar.domain.car.Cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class RacingGameTest {
 
@@ -61,33 +61,33 @@ class RacingGameTest {
         @NullAndEmptySource
         @DisplayName("자동차 게임 생성시 자동차의 이름을 입력하지 않으면 오류가 발생한다.")
         void createGame_자동차0대(String inputString) {
-            assertThatThrownBy(() -> new RacingGame(inputString, 5))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("최소 한 글자 이상을 입력해야 합니다.");
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> new RacingGame(inputString, 5))
+                    .withMessage("최소 한 글자 이상을 입력해야 합니다.");
         }
 
         @Test
         @DisplayName("중간에 비어있는 이름을 입력하는 경우 '엄태권,,서버마법사' 자동차 생성에 실패한다.")
         void createGame_비어있는이름() {
-            assertThatThrownBy(() -> new RacingGame("엄태권,,서버마법사", 5))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("이름은 비어있을 수 없습니다.");
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> new RacingGame("엄태권,,서버마법사", 5))
+                    .withMessage("이름은 비어있을 수 없습니다.");
         }
 
         @Test
         @DisplayName("이름이 5글자 이상인 자동차가 있을 경우 자동차 생성에 실패한다.")
         void createGame_5글자이상() {
-            assertThatThrownBy(() -> new RacingGame("엄태권,T,ServerWizard", 5))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("이름은 5글자를 초과할 수 없습니다. 초과된 이름 : ServerWizard");
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> new RacingGame("엄태권,T,ServerWizard", 5))
+                    .withMessage("이름은 5글자를 초과할 수 없습니다. 초과된 이름 : ServerWizard");
         }
 
         @Test
         @DisplayName("자동차 게임 생성시 0회의 게임을 생성하면 오류가 발생한다.")
         void createGame_게임0회() {
-            assertThatThrownBy(() -> new RacingGame("엄태권,Owen,ServerWizard", 0))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("최소 1번 이상의 게임을 진행해야 합니다.");
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> new RacingGame("엄태권,Owen,ServerWizard", 0))
+                    .withMessage("최소 1번 이상의 게임을 진행해야 합니다.");
         }
     }
 }

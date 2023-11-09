@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarsTest {
@@ -41,11 +42,10 @@ class CarsTest {
     void createCars_중간에비어있는이름() {
         String[] inputCarNames = new String[]{"엄태권", "", "서버마법사"};
 
-        assertThatThrownBy(() -> new Cars(inputCarNames))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름은 비어있을 수 없습니다.");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Cars(inputCarNames))
+                .withMessage("이름은 비어있을 수 없습니다.");
     }
-
 
     @Test
     @DisplayName("랜덤한 숫자중 4이상의 숫자가 나오면 자동차가 1칸 움직인다.")
