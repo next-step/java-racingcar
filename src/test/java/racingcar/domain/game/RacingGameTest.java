@@ -71,7 +71,7 @@ class RacingGameTest {
         void createGame_비어있는이름() {
             assertThatThrownBy(() -> new RacingGame("엄태권,,서버마법사", 5))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("자동차의 이름은 비어있을 수 없습니다.");
+                    .hasMessage("이름은 비어있을 수 없습니다.");
         }
 
         @Test
@@ -79,7 +79,7 @@ class RacingGameTest {
         void createGame_5글자이상() {
             assertThatThrownBy(() -> new RacingGame("엄태권,T,ServerWizard", 5))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("자동차의 이름은 5글자를 초과할 수 없습니다. 초과된 자동차 : ServerWizard");
+                    .hasMessage("이름은 5글자를 초과할 수 없습니다. 초과된 이름 : ServerWizard");
         }
 
         @Test

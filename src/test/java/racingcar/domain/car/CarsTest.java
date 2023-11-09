@@ -43,7 +43,7 @@ class CarsTest {
 
         assertThatThrownBy(() -> new Cars(inputCarNames))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차의 이름은 비어있을 수 없습니다.");
+                .hasMessage("이름은 비어있을 수 없습니다.");
     }
 
 

@@ -49,7 +49,7 @@ class CarTest {
         void createName_null_empty(String inputName) {
             Assertions.assertThatThrownBy(() -> new Car(inputName))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("자동차의 이름은 비어있을 수 없습니다.");
+                    .hasMessage("이름은 비어있을 수 없습니다.");
         }
 
         @Test
@@ -59,7 +59,7 @@ class CarTest {
 
             Assertions.assertThatThrownBy(() -> new Car(inputName))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("자동차의 이름은 5글자를 초과할 수 없습니다. 초과된 자동차 : ServerWizard");
+                    .hasMessage("이름은 5글자를 초과할 수 없습니다. 초과된 이름 : ServerWizard");
         }
     }
 }
