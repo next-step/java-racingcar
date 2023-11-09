@@ -11,18 +11,19 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class IoMainTest {
 
-    private List<Car> cars = new ArrayList<Car>();
-    private List<Car> dupleWinners = new ArrayList<Car>();
+    private List<Car> oneWinners = new ArrayList<Car>();
+    private List<Car> twoWinners = new ArrayList<Car>();
+
 
     @BeforeEach
     void setCars() {
-        cars.add(new Car("pobi", 3));
-        cars.add(new Car("crong", 5));
-        cars.add(new Car("honux", 6));
+        oneWinners.add(new Car("pobi", 3));
+        oneWinners.add(new Car("crong", 5));
+        oneWinners.add(new Car("honux", 6));
 
-        dupleWinners.add(new Car("pobi", 4));
-        dupleWinners.add(new Car("crong", 6));
-        dupleWinners.add(new Car("honux", 6));
+        twoWinners.add(new Car("pobi", 4));
+        twoWinners.add(new Car("crong", 6));
+        twoWinners.add(new Car("honux", 6));
     }
 
     @DisplayName("split 테스트")
@@ -34,7 +35,7 @@ public class IoMainTest {
     @DisplayName("우승자 테스트")
     @Test
     void 우승자_테스트() {
-        assertThat(IoMain.winnersString(cars)).isEqualTo("honux");
-        assertThat(IoMain.winnersString(dupleWinners)).isEqualTo("crong, honux");
+        assertThat(IoMain.winnersString(oneWinners)).isEqualTo("honux");
+        assertThat(IoMain.winnersString(twoWinners)).isEqualTo("crong, honux");
     }
 }
