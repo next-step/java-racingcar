@@ -1,6 +1,6 @@
 package step3;
 
-import step3.dto.RacingCar;
+import step3.domain.RacingCar;
 import step3.view.InputView;
 import step3.view.ResultView;
 

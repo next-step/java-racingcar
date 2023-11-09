@@ -1,4 +1,4 @@
-package step3.dto;
+package step3.domain;
 
 import org.junit.jupiter.api.Test;
 
