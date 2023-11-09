@@ -1,6 +1,5 @@
 package racingcar.domain.car;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
@@ -47,9 +47,9 @@ class CarTest {
         @NullAndEmptySource
         @DisplayName("비어있는 이름이나, 이름을 입력하지 않을 경우 이름 생성에 실패한다.")
         void createName_null_empty(String inputName) {
-            Assertions.assertThatThrownBy(() -> new Car(inputName))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("자동차의 이름은 비어있을 수 없습니다.");
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> new Car(inputName))
+                    .withMessage("이름은 비어있을 수 없습니다.");
         }
 
         @Test
@@ -57,9 +57,9 @@ class CarTest {
         void createName_5글자초과() {
             String inputName = "ServerWizard";
 
-            Assertions.assertThatThrownBy(() -> new Car(inputName))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("자동차의 이름은 5글자를 초과할 수 없습니다. 초과된 자동차 : ServerWizard");
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> new Car(inputName))
+                    .withMessage("이름은 5글자를 초과할 수 없습니다. 초과된 이름 : " + inputName);
         }
     }
 }

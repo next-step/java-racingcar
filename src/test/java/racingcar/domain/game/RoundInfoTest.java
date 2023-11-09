@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class RoundInfoTest {
 
@@ -37,8 +37,8 @@ class RoundInfoTest {
     @Test
     @DisplayName("1개 미만의 숫자를 입력했을 경우 오류가 발생한다.")
     void createRoundInfo_1개미만() {
-        assertThatThrownBy(() -> new RoundInfo(0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("최소 1번 이상의 게임을 진행해야 합니다.");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new RoundInfo(0))
+                .withMessage("최소 1번 이상의 게임을 진행해야 합니다.");
     }
 }
