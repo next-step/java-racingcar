@@ -1,11 +1,14 @@
 package step4.domain;
 
+import step4.domain.primitivewrapper.Name;
+
 public class Car {
 
     private static final int MOVABLE_POWER = 4;
     private static final int[] RANGE_OF_ACCELERATOR = {0, 9};
 
     private int position;
+    private Name name;
 
     public Car() {
         this.position = 0;
