@@ -2,9 +2,6 @@ package racing;
 
 import java.util.Scanner;
 
-import static java.lang.Boolean.TRUE;
-import static racing.Car.lengthCheck;
-
 public class InputView {
 
     public static final String DELIMITER = ",";
@@ -18,9 +15,6 @@ public class InputView {
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
         String[] names = splitNames(scanner);
-        while (!lengthCheck(names).equals(TRUE)) {
-            names = splitNames(scanner);
-        }
 
         System.out.println("시도할 횟수는 몇 회 인가요?");
         int trials = scanner.nextInt();

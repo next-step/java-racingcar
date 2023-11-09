@@ -4,7 +4,15 @@ import java.util.*;
 
 public class ResultView {
 
-    private ResultView() {
+    public ResultView() {
+    }
+
+    public void status(String name, int distance) {
+        System.out.println(name + ": " + position(distance));
+    }
+
+    private String position(int distance) {
+        return "-".repeat(Math.max(0, distance));
     }
 
     public static void raceResult(List<Car> cars) {

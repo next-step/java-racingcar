@@ -16,8 +16,20 @@ public class Racing {
     }
 
     public void goRacing(List<Car> cars, RaceInfo raceInfo) {
-        int trials = raceInfo.trialData();
-        new Car().race(cars, trials);
+        RandomMoveCondition moveCondition = new RandomMoveCondition();
+        race(cars, raceInfo, moveCondition);
+    }
+
+    private void race(List<Car> cars, RaceInfo raceInfo, RandomMoveCondition moveCondition) {
+        for (int i = 0; i < raceInfo.trialData(); i++) {
+            drive(cars, moveCondition);
+        }
+    }
+
+    public void drive(List<Car> cars, MoveCondition moveCondition) {
+        cars.forEach(car -> {
+            car.move(moveCondition);
+        });
     }
 
     public List<String> winner(List<Car> cars) {
