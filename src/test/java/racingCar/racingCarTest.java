@@ -6,8 +6,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class racingCarTest {
+
+    @Test
+    @DisplayName("자동차 이름이 5자를 초과할 경우 예외를 발생한다.")
+    public void 자동차_이름_5자_초과(){
+        assertThatThrownBy(() -> {
+            assertThat(new Car("abcedf"));
+        }).isInstanceOf(RuntimeException.class);
+    }
 
     @Test
     @DisplayName("자동차 이름을 입력할 경우 해당 이름을 가진 자동차 객체를 생성한다.")
