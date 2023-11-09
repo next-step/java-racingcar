@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ResultView {
 
-    static String DISPLAY_TEST = "-";
+    static private String DISPLAY_TEST = "-";
 
     public static void viewResultView(Cars resultList) {
 
