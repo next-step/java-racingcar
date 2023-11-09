@@ -3,7 +3,7 @@ package racing;
 import java.util.Random;
 
 public class Car {
-    static String DISTANCE_STRING = "-";
+    private static final String DISTANCE_STRING = "-";
 
     private int distance = 0;
 
