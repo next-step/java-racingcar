@@ -9,4 +9,9 @@ public class InputView {
         System.out.println(question);
         return scanner.nextInt();
     }
+
+    public String getInputString(String question) {
+        System.out.println(question);
+        return scanner.nextLine();
+    }
 }

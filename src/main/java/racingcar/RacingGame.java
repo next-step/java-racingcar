@@ -8,14 +8,14 @@ public class RacingGame {
     private final int round;
     private final List<Car> cars = new ArrayList<>();
 
-    public RacingGame(int carCount, int round) {
+    public RacingGame(String carNames, int round) {
         this.round = round;
-        initCars(carCount);
+        initCars(carNames.split(","));
     }
 
-    private void initCars(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    private void initCars(String[] carNames) {
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 
