@@ -19,7 +19,7 @@ public class Cars {
     private List<Car> initializeCars(int carAmount) {
         final List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carAmount; i++) {
-            Car car = new Car(driveStrategy);
+            Car car = new Car("temp", driveStrategy);
             cars.add(car);
         }
         return cars;
