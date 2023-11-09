@@ -18,7 +18,7 @@ public class OutputView {
                                 .flatMap(this::flatCarsAndPrintNewLine)
                                 .map(createResultString())
                                 .forEach(System.out::println);
-        printWinner(racingResult.getWinners());
+        printWinner(racingResult.getWinnersName());
     }
 
     private Function<Car, String> createResultString() {

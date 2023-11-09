@@ -27,6 +27,6 @@ public class RacingCarService {
             collect.add(finishedCars);
             cars = finishedCars;
         }
-        return new RacingResult(collect, cars.getWinners());
+        return new RacingResult(collect, Winners.from(cars));
     }
 }

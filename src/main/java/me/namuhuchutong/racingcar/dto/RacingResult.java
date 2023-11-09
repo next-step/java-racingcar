@@ -2,14 +2,15 @@ package me.namuhuchutong.racingcar.dto;
 
 import java.util.List;
 import me.namuhuchutong.racingcar.domain.Cars;
+import me.namuhuchutong.racingcar.domain.Winners;
 
 public class RacingResult {
 
     private final List<Cars> values;
 
-    private final List<String> winners;
+    private final Winners winners;
 
-    public RacingResult(List<Cars> values, List<String> winners) {
+    public RacingResult(List<Cars> values, Winners winners) {
         this.values = values;
         this.winners = winners;
     }
@@ -22,7 +23,7 @@ public class RacingResult {
         return List.copyOf(values);
     }
 
-    public List<String> getWinners() {
-        return List.copyOf(winners);
+    public List<String> getWinnersName() {
+        return this.winners.getNames();
     }
 }
