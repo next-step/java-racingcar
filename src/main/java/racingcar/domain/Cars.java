@@ -2,11 +2,10 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int RANDOM_MAX_BOUND = 10;
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars() {
         cars = new ArrayList<>();
@@ -20,8 +19,17 @@ public class Cars {
         return cars;
     }
 
-    public void moveCars() {
-        cars.forEach(car -> car.moveForward(new Random().nextInt(RANDOM_MAX_BOUND)));
+    public List<String> maxPositionCars() {
+        return cars.stream()
+                .filter(car -> car.forwardCnt() == (maxPosition()))
+                .map(car -> car.carName())
+                .collect(Collectors.toList());
     }
 
+    private int maxPosition() {
+        return cars.stream()
+                .mapToInt(Car::forwardCnt)
+                .max()
+                .getAsInt();
+    }
 }
