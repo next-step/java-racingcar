@@ -22,7 +22,7 @@ public class CarTest {
     @ValueSource(ints = {4, 9})
     @DisplayName("전진 테스트")
     void 전진(int number) {
-        Car car = new Car();
+        Car car = new Car("test");
         int initPosition = car.currentPosition();
 
         car.move(number);
@@ -34,7 +34,7 @@ public class CarTest {
     @ValueSource(ints = {0, 3})
     @DisplayName("정지 테스트")
     void 정지(int number) {
-        Car car = new Car();
+        Car car = new Car("test");
         int initPosition = car.currentPosition();
 
         car.move(number);

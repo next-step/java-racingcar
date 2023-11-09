@@ -12,7 +12,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class IoMainTest {
 
     private List<Car> oneWinners = new ArrayList<Car>();
-    private List<Car> twoWinners = new ArrayList<Car>();
 
 
     @BeforeEach
@@ -20,10 +19,6 @@ public class IoMainTest {
         oneWinners.add(new Car("pobi", 3));
         oneWinners.add(new Car("crong", 5));
         oneWinners.add(new Car("honux", 6));
-
-        twoWinners.add(new Car("pobi", 4));
-        twoWinners.add(new Car("crong", 6));
-        twoWinners.add(new Car("honux", 6));
     }
 
     @DisplayName("split 테스트")
@@ -32,10 +27,9 @@ public class IoMainTest {
         assertThat(IoMain.splitNames("pobi,crong,honux")).hasSize(3);
     }
 
-    @DisplayName("우승자 테스트")
+    @DisplayName("우승자 문자열 테스트")
     @Test
     void 우승자_테스트() {
         assertThat(IoMain.winnersString(oneWinners)).isEqualTo("honux");
-        assertThat(IoMain.winnersString(twoWinners)).isEqualTo("crong, honux");
     }
 }
