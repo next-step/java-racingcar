@@ -4,6 +4,12 @@ public class Car {
     private String carName;
     private int forwardCnt;
 
+    public Car(String carName){
+        checkCarName(carName);
+        this.carName = carName;
+        this.forwardCnt = 0;
+    }
+
     public Car(String carName, int forwardCnt){
         checkCarName(carName);
         this.carName = carName;

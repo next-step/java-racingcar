@@ -5,10 +5,28 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class racingCarTest {
+
+    @Test
+    @DisplayName("가장 많이 전진한 자동차 이름을 반환한다.")
+    public void 가장_많이_전진한_자동차_반환(){
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("pobi", 5));
+        carList.add(new Car("crong", 3));
+        carList.add(new Car("honux", 5));
+
+        NamedCars cars = new NamedCars(carList);
+
+        List<String> winners = RacingCar.returnWinner(cars);
+        assertThat(winners).hasSize(2);
+        assertThat(winners).containsExactly("pobi","honux");
+    }
 
     @Test
     @DisplayName("입력한 자동차 이름과 시도 횟수 만큼 자동차를 움직인 결과를 반환한다.")

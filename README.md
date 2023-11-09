@@ -22,7 +22,7 @@
 * [X] 자동차 이름이 5자를 초과할 경우 예외를 발생한다.
 * [X] 여러대의 자동차 이름을 콤마 구분자로 구분하여 자동차 이름을 부여하고 0번 움직인 결과를 반환한다.
 * [X] 입력한 자동차 이름과 시도 횟수 만큼 자동차를 움직인 결과를 반환한다.
-* [ ] 가장 많이 전진한 자동차 이름을 반환한다. (ex. {pobi:4, crong:3, honux:4} ⇒ pobi, honux)
+* [X] 가장 많이 전진한 자동차 이름을 반환한다. (ex. {pobi:4, crong:3, honux:4} ⇒ pobi, honux)
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
