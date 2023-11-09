@@ -12,7 +12,7 @@ public class CarRacing {
         RacingInputView inputView = new RacingInputView(carController);
         RacingResultView resultView = new RacingResultView(carController);
 
-        inputView.inputNumOfCars();
+        inputView.inputNameOfCars();
         resultView.printCarRacing(inputView.inputNumOfTry());
     }
 }

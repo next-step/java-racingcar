@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 
 public class RacingInputView {
 
+    public static final String DELIMITER_OF_CAR_NAME = ",";
+
     private BufferedReader br;
     private CarController carController;
 
@@ -19,10 +21,14 @@ public class RacingInputView {
         this.carController = carController;
     }
 
-    public void inputNumOfCars() throws IOException {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public void inputNameOfCars() throws IOException {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        carController.createCarsOf(Integer.parseInt(br.readLine()));
+        carController.createCarsOf(splitInputToNameOfCars());
+    }
+
+    private String[] splitInputToNameOfCars() throws IOException {
+        return br.readLine().split(DELIMITER_OF_CAR_NAME);
     }
 
     public int inputNumOfTry() throws IOException {
