@@ -1,4 +1,4 @@
-package carRacing;
+package carRacing.numberMaker;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
