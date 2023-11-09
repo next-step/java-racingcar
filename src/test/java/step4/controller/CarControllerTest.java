@@ -3,6 +3,8 @@ package step4.controller;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarControllerTest {
@@ -43,5 +45,31 @@ public class CarControllerTest {
 
             assertThat(carController.getCars().findCarBy(i).getCurrentPosition()).isEqualTo(1);
         }
+    }
+
+    @DisplayName("자동차 경주 완료 후 우승자들의 이름을 배열에 담아 반환한다.")
+    @Test
+    void findWinners() {
+        // given
+        CarController carController = new CarController();
+        String[] nameOfCars = {"hong","kim","lee"};
+        carController.createCarsOf(nameOfCars);
+
+        carController.moveCar(5,0);
+        carController.moveCar(5,1);
+        carController.moveCar(3, 2);
+
+        carController.moveCar(6,0);
+        carController.moveCar(7,1);
+        carController.moveCar(5, 2);
+
+        int numOfTry = 2;
+
+        // when
+        List<String> winners = carController.findWinners(numOfTry);
+
+        // then
+        assertThat(winners).hasSize(2)
+            .contains("hong", "kim");
     }
 }
