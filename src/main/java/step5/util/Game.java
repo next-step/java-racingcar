@@ -9,12 +9,10 @@ import java.util.List;
 
 public class Game {
     public static void start() {
-        //inputView
         final UserInput userInput = InputView.input();
 
         List<RacingCar> cars = GameManager.makeCars(userInput.getCarNames());
 
-        //resultView
         ResultView.printResultText();
 
         for (int i = 0; i < userInput.getTryNumber(); i++) {
