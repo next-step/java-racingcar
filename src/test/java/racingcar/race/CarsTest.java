@@ -9,6 +9,7 @@ import racingcar.rule.Rule;
 import racingcar.util.BasicNumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class CarsTest {
@@ -18,16 +19,15 @@ class CarsTest {
     public void cars_move(){
         Rule rule = new MinimumRule(4, new BasicNumberGenerator(4));
 
-        List<Car> list = new ArrayList<>();
-        Car carA = new Car();
-        Car carB = new Car();
-        list.add(carA);
-        list.add(carB);
+        List<Car> list = Arrays.asList(
+                new Car("carA"),
+                new Car("carB"));
 
         Cars cars = new Cars(list);
         cars.move(rule);
 
-        Assertions.assertThat(carA.position()).isEqualTo(new Position(1));
-        Assertions.assertThat(carB.position()).isEqualTo(new Position(1));
+
+        Assertions.assertThat(list.get(0).position().equals(new Position(1))).isTrue();
+        Assertions.assertThat(list.get(1).position().equals(new Position(1))).isTrue();
     }
 }

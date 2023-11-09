@@ -55,7 +55,7 @@ public class RacingCarGame {
 
     private void createCarByCount(int count) {
         for (int i = 0; i < count; i++) {
-            Car car = new Car();
+            Car car = new Car(String.valueOf(i));
             cars.add(car);
         }
     }

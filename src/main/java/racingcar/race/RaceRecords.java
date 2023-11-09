@@ -37,7 +37,7 @@ public class RaceRecords {
         Position positionMax = positionMax();
 
         return raceRecords.stream()
-                .filter(raceRecord -> positionMax.same(raceRecord.position()))
+                .filter(raceRecord -> positionMax.equals(raceRecord.position()))
                 .map(RaceRecord::car)
                 .collect(Collectors.toList());
     }

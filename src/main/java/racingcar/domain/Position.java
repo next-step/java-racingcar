@@ -18,10 +18,6 @@ public class Position {
         ++number;
     }
 
-    public boolean same(Position position) {
-        return this.equals(position);
-    }
-
     public int value() {
         return number;
     }
