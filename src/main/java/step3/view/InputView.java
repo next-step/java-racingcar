@@ -1,8 +1,10 @@
 package step3.view;
 
-import step3.util.UserInput;
+import java.util.Scanner;
 
 public class InputView {
+
+    static Scanner scanner = new Scanner(System.in);
 
     public static int askNumberOfCars() {
         return askNumericInput("자동차 대수는 몇 대 인가요?");
@@ -14,7 +16,7 @@ public class InputView {
 
     private static int askNumericInput(String question) {
         System.out.println(question);
-        return UserInput.getInt();
+        return scanner.nextInt();
     }
 
 }
