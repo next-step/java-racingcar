@@ -3,6 +3,7 @@ package step4.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,19 +24,19 @@ class CarsTest {
         assertThat(cars.getNumOfCars()).isEqualTo(3);
     }
 
-    @DisplayName("인자로 인덱스를 받아 해당 인덱스의 Car객체를 반환한다.")
+    @DisplayName("인자로 인덱스를 받아 해당 인덱스의 Car객체의 이름을 반환한다.")
     @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3,4})
-    void getCarBy(int idx) {
+    @CsvSource({"0,hong", "1,kim", "2,lee", "3,park", "4,ahn"})
+    void getCarBy(int idx, String expectedName) {
         // given
-        String[] nameOfCars = {"hong","kim","lee"};
+        String[] nameOfCars = {"hong","kim","lee","park","ahn"};
         Cars cars = new Cars(nameOfCars);
 
         // when
         Car car = cars.findCarBy(idx);
 
         // then
-        assertThat(car).isNotNull();
+        assertThat(car.getCarName()).isEqualTo(expectedName);
     }
 
     @DisplayName("인자로 인덱스를 받아 해당 인덱스의 Car객체를 반환할 때 인덱스의 범위가 벗어나면 예외를 던진다.")
