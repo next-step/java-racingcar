@@ -7,13 +7,14 @@ public class Calculator {
     private static final int DELIMITER_IDX = 1;
     private static final int NUMBERS_IDX = 2;
     private static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.)\n(.*)");
+    private static final String DESIGNATED_DELIMITER = "[,:]";
 
     public static int cal(String input) {
         if (isBlank(input)) {
             return 0;
         }
-        if (containsDelimiter(input)){
-            return sum(parseArray(split(input, "[,:]")));
+        if (containsDelimiter(input)) {
+            return sum(parseArray(split(input, DESIGNATED_DELIMITER)));
         }
         Matcher m = compilePattern(input);
         if (m.find()) {
@@ -41,7 +42,7 @@ public class Calculator {
     }
 
     private static void validateNegative(int value) {
-        if(value < 0) {
+        if (value < 0) {
             throw new NumberFormatException("For input string: " + value);
         }
     }
@@ -55,8 +56,8 @@ public class Calculator {
     }
 
     private static int[] parseArray(String[] values) {
-        int [] parsed = new int[values.length];
-        for(int i = 0; i< values.length ; i++){
+        int[] parsed = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
             parsed[i] = parse(values[i]);
         }
         return parsed;
