@@ -81,7 +81,7 @@ public class Racing {
             List<Car> winners = new ArrayList<>();
             Position max = max();
             for (Car car : this.participatingCars) {
-                if (car.position().equals(max)) {
+                if (car.equalPosition(max)) {
                     winners.add(car);
                 }
             }
@@ -91,7 +91,7 @@ public class Racing {
         private Position max() {
             int max = 0;
             for (Car car : this.participatingCars) {
-                if (max < car.position().position()) {
+                if (car.isForward(0)) {
                     max = car.position().position();
                 }
             }

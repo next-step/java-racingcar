@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Car {
 
     private final Name name;
-    private final int THRESHOLD = 4;
+    private final static int THRESHOLD = 4;
     private Position position;
 
     public Car(String name) {
@@ -32,6 +32,14 @@ public class Car {
             Position currentPosition = this.position();
             this.position = currentPosition.move(1);
         }
+    }
+
+    public boolean equalPosition(Position position) {
+        return this.position.equals(position);
+    }
+
+    public boolean isForward(int position) {
+        return position < this.position.position();
     }
 
     private boolean isOverThreshHold(int input) {
@@ -70,7 +78,7 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return THRESHOLD == car.THRESHOLD && Objects.equals(name, car.name)
+        return Objects.equals(name, car.name)
             && Objects.equals(position, car.position);
     }
 
