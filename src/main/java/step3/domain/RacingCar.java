@@ -1,10 +1,8 @@
 package step3.domain;
 
-import step3.RacingRule;
-
 public class RacingCar {
 
-    private RacingRule rule = new RacingRule();
+    private RacingCarRule rule = new RacingCarRule();
     private int distance = 0;
 
     public int getDistance() {
