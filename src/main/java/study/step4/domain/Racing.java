@@ -1,71 +1,34 @@
 package study.step4.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import study.step4.NumberGenerator;
 
-import static study.step4.view.ResultView.showResult;
+import static study.step4.view.ResultView.showProgress;
 
 public class Racing {
 
-    NumberGenerator numberGenerator;
-    List<Car> winners = new ArrayList<>();
+    private final NumberGenerator numberGenerator;
 
     public Racing(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
 
-    public List<Car> run(Rule rule) {
+    public Cars run(Rule rule) {
         return start(rule);
     }
 
-    private List<Car> start(Rule rule) {
-        List<Car> cars = rule.getCars();
+    private Cars start(Rule rule) {
+        Cars cars = rule.getCars();
         for (int i = 0; i < rule.getMovingTimes(); i++) {
             moveCars(cars);
-            showResult(cars);
+            showProgress(cars);
         }
-        return getWinners(cars);
+        return cars.winners();
     }
 
-    private void moveCars(List<Car> cars) {
-        for (Car car: cars) {
-            move(car);
-        }
-    }
-
-    private void move(Car car) {
-        car.move(numberGenerator.generate());
-    }
-
-    private List<Car> getWinners(List<Car> cars) {
-        for (Car car: cars) {
-            addWinner(car, getMaxPosition(cars));
-        }
-        return winners;
-    }
-
-    private void addWinner(Car car, int maxPosition) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car);
+    private void moveCars(Cars cars) {
+        for (Car car: cars.getCars()) {
+            car.move(numberGenerator.generate());
         }
     }
-
-    private int getMaxPosition(List<Car> cars) {
-        int maxPosition = 0;
-        for (Car car: cars) {
-            maxPosition = compare(maxPosition, car.getPosition());
-        }
-        return maxPosition;
-    }
-
-    private int compare(int maxValue, int currentValue) {
-        if (currentValue >= maxValue) {
-            maxValue = currentValue;
-        }
-        return maxValue;
-    }
-
 
 }

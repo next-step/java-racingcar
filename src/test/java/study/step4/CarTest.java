@@ -23,17 +23,17 @@ public class CarTest {
     @ValueSource(ints = {4, 7, 9})
     void 자동차_전진_조건(int randomValue) {
         Car car = new Car("소나타");
-        int previousPosition = car.getPosition();
+        int previousPosition = car.position().getPosition();
         car.move(randomValue);
-        assertThat(car.getPosition()).isEqualTo(previousPosition + 1);
+        assertThat(car.position().getPosition()).isEqualTo(previousPosition + 1);
     }
 
     @ParameterizedTest(name = "자동차 정지 조건 테스트: {0}")
     @ValueSource(ints = {0, 1, 3})
     void 자동차_정지_조건(int randomValue) {
         Car car = new Car("소나타");
-        int previousPosition = car.getPosition();
+        int previousPosition = car.position().getPosition();
         car.move(randomValue);
-        assertThat(car.getPosition()).isEqualTo(previousPosition);
+        assertThat(car.position().getPosition()).isEqualTo(previousPosition);
     }
 }

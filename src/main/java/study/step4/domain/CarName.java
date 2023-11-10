@@ -12,6 +12,10 @@ public class CarName {
         this.name = trimmedName;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void validate(String name) {
         if (!isValidName(name)) {
             throw new CarException("CarNameError: 자동차 이름은 1자 이상 5자 입니다.");
@@ -23,8 +27,4 @@ public class CarName {
         return length >= 1 && length <= 5;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

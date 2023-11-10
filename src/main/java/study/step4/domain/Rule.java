@@ -7,16 +7,16 @@ import study.step4.exception.RacingException;
 
 public class Rule {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final int movingTimes;
 
     public Rule(List<Car> cars, int movingTimes) {
         validate(cars, movingTimes);
-        this.cars = cars;
+        this.cars = new Cars(cars);
         this.movingTimes = movingTimes;
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 
@@ -24,7 +24,7 @@ public class Rule {
         return movingTimes;
     }
 
-    private static void validate(List<Car> cars, int movingTimes) {
+    private void validate(List<Car> cars, int movingTimes) {
         if (!isValidNumberOfCars(cars)) {
             throw new RacingException("RuleValidationError: 자동차 대수는 2대 이상이여야 합니다.");
         }
@@ -33,11 +33,11 @@ public class Rule {
         }
     }
 
-    private static boolean isValidNumberOfCars(List<Car> cars) {
+    private boolean isValidNumberOfCars(List<Car> cars) {
         return cars.size() >= 2;
     }
 
-    private static boolean isValidMovingTimes(int movingTimes) {
+    private boolean isValidMovingTimes(int movingTimes) {
         return movingTimes >= 1;
     }
 
