@@ -3,8 +3,6 @@
 ## Todo
 ----
 ## Done
-* [X] 빈 문자열 또는 null 값인 경우 0을 반환("" -> 0, null -> 0)
-* [X] 숫자 하나일 때 숫자 그대로의 값을 반환("1" -> 1)
-* [X] 음수를 전달할 경우 IllegalArgumentException
-* [X] 숫자 이외의 값이 들어오면 NumberFormatException
+* [X] random값의 범위가 0이상 9이하인가
+* [X] 4,5,6,7,8,9의 값이 입력되었을때 '-'를 리턴하는가
 

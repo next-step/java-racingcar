@@ -1,57 +1,35 @@
 package carracing;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class CarRacing {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carNumber = carInputProcess(scanner.nextLine());
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int tryNumber = carInputProcess(scanner.nextLine());
 
-        letsRace(tryNumber, carNumber);
-    }
+        List<Integer> inputList = InputView.inputView();
+        int carCnt = inputList.get(0);
+        int tryCnt = inputList.get(1);
 
-    private static void letsRace(int tryNumber, int carNumber) {
-        Random random = new Random();
-        String[] carGarage = new String[carNumber];
-        Arrays.fill(carGarage, "");
+        List<Car> carList = new ArrayList<>();
 
-        System.out.println();
-        System.out.println("실행 결과");
+        for(int i = 0; i < carCnt; i++) {
+            carList.add(new Car());
+        }
 
-        for (int i = 0; i < tryNumber; i++) {
-
-            for (int j = 0; j < carNumber; j++) {
-                int randomRun = random.nextInt(10);
-                if (randomRun >= 4) {
-                    carGarage[j] += '-';
-                }
-                System.out.println(carGarage[j]);
-            }
-            System.out.println();
+        ResultView.outMsg();
+        for(int i = 0; i <tryCnt; i++) {
+            race(carList);
+            System.out.println("");
         }
     }
 
-    public static int carInputProcess(String text) {
-        try {
-            if (isBlank(text)) {
-                return 0;
-            }
-            if (text.contains("-")) throw new IllegalArgumentException();
-
-            return toInt(text);
-        } catch (NumberFormatException e) {
-            System.out.println("숫자만 입력 가능합니다." + e.getMessage());
+    private static void race(List<Car> carList) {
+        for(Car car : carList) {
+            car.move();
+            ResultView.resultView(car.distance());
         }
-        return toInt(text);
     }
-
 
     private static boolean isBlank(String text) {
         return text == null || text.isBlank();
