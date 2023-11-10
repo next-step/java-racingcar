@@ -11,7 +11,7 @@ public class RacingGame {
 
     public List<Car> generateCars (int carCount) {
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            cars.add(new Car("toby"));
         }
         return cars;
     }

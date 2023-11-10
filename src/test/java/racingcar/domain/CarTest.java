@@ -11,7 +11,17 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("toby");
+    }
+
+    @Test
+    @DisplayName("자동차의 이름이 5자를 초과하면 예외가 발생한다.")
+    void name() {
+        // given
+        // when
+        Assertions.assertThatThrownBy(() -> new Car("kimbro", 0))
+                .isInstanceOf(RuntimeException.class);
+        // then
     }
 
     @Test
