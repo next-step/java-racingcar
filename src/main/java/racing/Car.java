@@ -6,18 +6,28 @@ public class Car {
     private static final String DISTANCE_STRING = "-";
 
     private String name;
-    private int distance = 0;
+    private int distance;
+
+    public Car() { }
+
+    public Car(String name) {
+        checkName(name);
+        this.name = name;
+        this.distance = 0;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getDistance() {
         return distance;
+    }
+
+    private void checkName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 
     public void move() {
