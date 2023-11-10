@@ -38,15 +38,15 @@ public class InputView {
         return carCount;
     }
 
-    public static String setCarName(){
+    public static List<String> setCarName(){
         System.out.println(CAR_NAMES);
         carNames = SCANNER.nextLine();
-        return carNames;
+        return List.of(carNames.split(","));
     }
 
-    public static List<String> getCarName(){
-        List<String> carNameList = List.of(carNames.split(","));
-        return carNameList;
-    }
+//    public static List<String> getCarName(){
+//        List<String> carNameList =
+//        return carNameList;
+//    }
 
 }

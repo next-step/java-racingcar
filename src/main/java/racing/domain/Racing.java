@@ -1,10 +1,6 @@
 package racing.domain;
 
-
-import racing.ui.InputView;
-
-import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 public class Racing {
 
@@ -16,10 +12,10 @@ public class Racing {
 
     private Cars carList = new Cars();
 
-    public Racing(){
-        this.carCount = InputView.getCarCount();
-        this.tryCount = InputView.getTryCount();
-        carList.makeCarList(InputView.getCarName());
+    public Racing(List<String> carNames, int tryCount){
+//        this.carCount = InputView.getCarCount();
+        this.tryCount = tryCount;
+        carList.makeCarList(carNames);
     }
 
     public Cars racingStart(MoveStrategy moveStrategy){

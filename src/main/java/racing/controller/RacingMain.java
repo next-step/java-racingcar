@@ -5,6 +5,7 @@ import racing.domain.RandomMoveStrategy;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
+import java.util.List;
 import java.util.Random;
 
 public class RacingMain {
@@ -13,9 +14,9 @@ public class RacingMain {
     public static void main(String[] args) {
         // view
 //        InputView.setCarCount();
-        InputView.setCarName();
-        InputView.setTryCount();
-        Racing racing = new Racing();
+        List<String> carNames = InputView.setCarName();
+        int tryCount = InputView.setTryCount();
+        Racing racing = new Racing(carNames, tryCount);
 
         for(int i=0; i<InputView.getTryCount(); i++) {
             racing.racingStart(new RandomMoveStrategy());
