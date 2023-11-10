@@ -2,7 +2,6 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.Car;
 import racing.car.CarList;
 import racing.game.Game;
 
@@ -29,7 +28,7 @@ public class CarListTest {
 
 		carList.moveAll(game.bounds(cars));
 
-		List<String> winners = carList.winners();
+		List<String> winners = carList.getWinners();
 		assertThat(winners).contains("A", "B", "C");
 		assertThat(winners).hasSize(3);
 	}
@@ -42,7 +41,7 @@ public class CarListTest {
 
 		carList.moveAll(new int[]{4, 3, 3});
 
-		List<String> winners = carList.winners();
+		List<String> winners = carList.getWinners();
 		assertThat(winners).contains("A");
 		assertThat(winners).hasSize(1);
 	}
@@ -52,10 +51,10 @@ public class CarListTest {
 	void init() {
 		int cars = 3;
 		CarList carList = new CarList(cars);
-		Car[] carListAll = carList.getAll();
+		List<Integer> carListAllPosition = carList.getAllPosition();
 
-		for (Car car : carListAll) {
-			assertThat(car.getPosition()).isEqualTo(1);
+		for (Integer position : carListAllPosition) {
+			assertThat(position).isEqualTo(1);
 		}
 	}
 
@@ -68,8 +67,9 @@ public class CarListTest {
 
 		carList.moveAll(game.bounds(cars));
 
-		for (Car car : carList.getAll()) {
-			assertThat(car.getPosition()).isEqualTo(2);
+		List<Integer> allPosition = carList.getAllPosition();
+		for (Integer position : allPosition) {
+			assertThat(position).isEqualTo(2);
 		}
 
 	}

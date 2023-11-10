@@ -5,13 +5,14 @@ public class Car {
 	private final int MOVE_BOUND;
 	private final int MOVE_INTERVAL;
 
-	private String name;
+	private final CarName name;
 	private int position;
 
-	public Car(int bound, int interval, int position) {
+	public Car(int bound, int interval, int position, CarName name) {
 		this.MOVE_BOUND = bound;
 		this.MOVE_INTERVAL = interval;
 		this.position = position;
+		this.name = name;
 	}
 
 	public void move(int bound) {
@@ -20,19 +21,11 @@ public class Car {
 	}
 
 	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		return name.getName();
 	}
 
 	public int getPosition() {
 		return position;
-	}
-
-	public void setPosition(int position) {
-		this.position = position;
 	}
 
 }

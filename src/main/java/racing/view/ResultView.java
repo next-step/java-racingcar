@@ -14,8 +14,9 @@ public class ResultView {
 	public void print(CarList carList) {
 		StringBuilder result = new StringBuilder();
 
-		for (int i = 0; i < carList.getNumberOfCars(); i++) {
-			toString(carList.get(i), result);
+		int numberOfCars = carList.getNumberOfCars();
+		for (int i = 0; i < numberOfCars; i++) {
+			System.out.println(carList.getStatus(i));
 		}
 		System.out.println(result);
 	}
@@ -28,15 +29,6 @@ public class ResultView {
 		result.delete(result.length() - 2, result.length());
 		result.append("가 최종 우승했습니다.");
 		System.out.println(result);
-	}
-
-	private static void toString(Car car, StringBuilder result) {
-		int position = car.getPosition();
-		result.append(car.getName()).append(" : ");
-		for (int i = 0; i < position; i++) {
-			result.append("-");
-		}
-		result.append("\n");
 	}
 
 }

@@ -27,7 +27,7 @@ public class Main {
 			cars.moveAll(game.bounds(numberOfCars));
 			resultView.print(cars);
 		}
-		resultView.printWinners(cars.winners());
+		resultView.printWinners(cars.getWinners());
 
 	}
 }

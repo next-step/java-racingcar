@@ -5,44 +5,41 @@ import java.util.List;
 
 public class CarList {
 
-	private final Car[] cars;
-	private final int numberOfCars;
 	private static final boolean WINNER = true;
 	private static final boolean LOSER = false;
+	private final List<Car> cars;
 
 	public CarList(int numberOfCars, String[] carNames) {
-		this.numberOfCars = numberOfCars;
-		cars = new Car[numberOfCars];
-		for (int i = 0; i < this.numberOfCars; i++) {
-			cars[i] = new Car(4, 1, 1);
-			cars[i].setName(carNames[i]);
+		cars = new ArrayList<>();
+		for (int i = 0; i < numberOfCars; i++) {
+			cars.add(new Car(4, 1, 1, new CarName(carNames[i])));
 		}
 	}
 
 	public CarList(int numberOfCars) {
-		this.numberOfCars = numberOfCars;
-		cars = new Car[numberOfCars];
-		for (int i = 0; i < this.numberOfCars; i++) {
-			cars[i] = new Car(4, 1, 1);
+		cars = new ArrayList<>();
+		for (int i = 0; i < numberOfCars; i++) {
+			cars.add(new Car(4, 1, 1, null));
 		}
 	}
 
 	public void moveAll(int[] bounds) {
-		for (int i = 0; i < this.numberOfCars; i++) {
-			cars[i].move(bounds[i]);
+		int numberOfCars = cars.size();
+		for (int i = 0; i < numberOfCars; i++) {
+			cars.get(i).move(bounds[i]);
 		}
 	}
 
 	public int getNumberOfCars() {
-		return numberOfCars;
+		return cars.size();
 	}
 
-	public Car get(int index) {
-		return cars[index];
-	}
-
-	public Car[] getAll() {
-		return cars;
+	public List<Integer> getAllPosition() {
+		List<Integer> result = new ArrayList<>();
+		for (Car car : cars) {
+			result.add(car.getPosition());
+		}
+		return result;
 	}
 
 	private int getMaxPosition() {
@@ -61,17 +58,32 @@ public class CarList {
 	}
 
 	private void addWinner(int maxPosition, List<String> winners, int i) {
-		if (isWinner(cars[i], maxPosition)) {
-			winners.add(cars[i].getName());
+		if (isWinner(cars.get(i), maxPosition)) {
+			winners.add(cars.get(i).getName());
 		}
 	}
 
-	public List<String> winners() {
+	public List<String> getWinners() {
 		int maxPosition = getMaxPosition();
 		List<String> winners = new ArrayList<>();
-		for (int i = 0; i < this.numberOfCars; i++) {
+
+		int numberOfCars = cars.size();
+		for (int i = 0; i < numberOfCars; i++) {
 			addWinner(maxPosition, winners, i);
 		}
 		return winners;
 	}
+
+	public String getStatus(int index) {
+		StringBuilder result = new StringBuilder();
+
+		int position = cars.get(index).getPosition();
+		result.append(cars.get(index).getName()).append(" : ");
+		for (int i = 0; i < position; i++) {
+			result.append("-");
+		}
+		result.append("\n");
+		return result.toString();
+	}
+
 }
