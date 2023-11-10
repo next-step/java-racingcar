@@ -1,6 +1,6 @@
-package racing.ui;
+package view;
 
-import racing.Car;
+import domain.Car;
 
 public class CarRenderer {
 

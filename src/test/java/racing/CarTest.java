@@ -1,10 +1,11 @@
 package racing;
 
+import domain.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.type.CarName;
-import racing.type.Position;
+import domain.type.CarName;
+import domain.type.Position;
 
 import static org.assertj.core.api.Assertions.*;
 

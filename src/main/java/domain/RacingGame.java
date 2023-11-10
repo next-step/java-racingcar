@@ -1,17 +1,18 @@
-package racing;
+package domain;
 
-import racing.type.Position;
-import racing.util.CarGenerator;
+import domain.type.Position;
+import domain.type.RacingGameState;
+import util.generator.CarGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RacingGameLogic {
+public class RacingGame {
     public static final int RANDOM_MAX_BOUND = 10;
     private static Random random = new Random();
 
-    private RacingGameLogic() {
+    private RacingGame() {
     }
 
     /**
@@ -38,7 +39,7 @@ public class RacingGameLogic {
      * @return 새로 생성된 게임 상태
      */
     public static RacingGameState init(int theNumberOfCar, int theNumberOfCycles) {
-        return RacingGameLogic.init(
+        return RacingGame.init(
                 CarGenerator.createMultipleDefaultCars(theNumberOfCar),
                 theNumberOfCycles
         );
@@ -53,7 +54,7 @@ public class RacingGameLogic {
      * @return 새로 생성된 게임 상태
      */
     public static RacingGameState init(String namesOfCar, int theNumberOfCycles) {
-        return RacingGameLogic.init(
+        return RacingGame.init(
                 CarGenerator.createByMultiNameString(namesOfCar),
                 theNumberOfCycles
         );

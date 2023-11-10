@@ -1,7 +1,7 @@
-package racing.util;
+package util.generator;
 
-import racing.Car;
-import racing.type.CarName;
+import domain.Car;
+import domain.type.CarName;
 
 import java.util.ArrayList;
 import java.util.List;

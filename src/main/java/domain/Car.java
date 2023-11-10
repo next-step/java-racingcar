@@ -1,7 +1,7 @@
-package racing;
+package domain;
 
-import racing.type.CarName;
-import racing.type.Position;
+import domain.type.CarName;
+import domain.type.Position;
 
 /**
  * 초간단 자동차 경주 게임의 자동차 개체 하나를 나타냅니다.

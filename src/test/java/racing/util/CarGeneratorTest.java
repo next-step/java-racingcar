@@ -1,9 +1,9 @@
 package racing.util;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.Car;
+import domain.Car;
+import util.generator.CarGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

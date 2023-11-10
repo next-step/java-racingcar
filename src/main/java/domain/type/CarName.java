@@ -1,4 +1,4 @@
-package racing.type;
+package domain.type;
 
 import java.util.Objects;
 

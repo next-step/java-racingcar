@@ -1,8 +1,8 @@
-import racing.RacingGameEngine;
+import controller.RacingGameController;
 
 public class Application {
     public static void main(String[] args) {
-        RacingGameEngine gameEngine = new RacingGameEngine();
+        RacingGameController gameEngine = new RacingGameController();
         gameEngine.init();
 
         gameEngine.play();
