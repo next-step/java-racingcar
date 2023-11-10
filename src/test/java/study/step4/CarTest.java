@@ -1,6 +1,5 @@
 package study.step4;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step4.exception.CarException;
@@ -10,10 +9,12 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
 
-    @Test
-    void 자동차_이름은_1자_이상_5자_이하() {
+
+    @ParameterizedTest(name = "자동차_이름_1자_미만_5자_초과: {0}")
+    @ValueSource(strings = {"마세라티 기블리", ""})
+    void 자동차_이름_1자_미만_5자_초과(String string) {
         assertThatExceptionOfType(CarException.class)
-            .isThrownBy(() -> new Car("마세라티기블리"))
+            .isThrownBy(() -> new Car(string))
             .withMessageContaining("CarNameError");
     }
 

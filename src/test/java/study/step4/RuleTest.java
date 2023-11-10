@@ -20,17 +20,6 @@ public class RuleTest {
     }
 
     @Test
-    void 이름_길이_초과() {
-        List<Car> cars = List.of(
-            new Car("소나타신형나왔어요"),
-            new Car("그랜져")
-        );
-        assertThatExceptionOfType(RacingException.class)
-            .isThrownBy(() -> new Rule(cars, 5))
-            .withMessageContaining("RuleValidationError");
-    }
-
-    @Test
     void 자동차가_한대만_있는_경우() {
         List<Car> cars = List.of(
             new Car("그랜져")
