@@ -29,10 +29,4 @@ public class RacingCars {
         }
     }
 
-    public int getMaxPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
-    }
 }
