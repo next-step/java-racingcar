@@ -1,5 +1,8 @@
 package carracing.car;
 
+import carracing.controlstatement.Boolean;
+import carracing.controlstatement.Equal;
+
 public class Car {
 	private static final int MOVING_DISTANCE = 1;
 	private static final int NAME_LENGTH_MIN = 1;
@@ -45,5 +48,11 @@ public class Car {
 
 	public String name() {
 		return this.name;
+	}
+
+	public boolean sameDistance(int maxMovingDistance) {
+		Boolean same = new Equal(this.movingDistance, maxMovingDistance);
+		
+		return same.booleanValue();
 	}
 }
