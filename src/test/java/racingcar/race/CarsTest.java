@@ -8,7 +8,6 @@ import racingcar.rule.MinimumRule;
 import racingcar.rule.Rule;
 import racingcar.util.BasicNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
