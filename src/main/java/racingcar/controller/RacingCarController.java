@@ -8,7 +8,10 @@ public class RacingCarController {
 
     public static void main(String[] args) {
         String inputCarNames = InputView.inputCarNames();
-        int tryCount = ValidationCheck.checkInputTryCount(InputView.inputTryCount());
+        ValidationCheck.checkInputCarName(inputCarNames);
+
+        int tryCount = InputView.inputTryCount();
+        ValidationCheck.checkInputTryCount(tryCount);
 
         Racing racing = new Racing();
         racing.startRacing(inputCarNames, tryCount);
