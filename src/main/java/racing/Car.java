@@ -18,9 +18,6 @@ public class Car {
     /** 자동차의 이름 */
     private String name = "";
 
-
-    private final Random random = new Random();
-
     private Car() {
     }
 
