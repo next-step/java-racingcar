@@ -2,6 +2,7 @@ package step4.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.domain.Cars;
 
 import java.util.List;
 
@@ -52,24 +53,13 @@ public class CarControllerTest {
     void findWinners() {
         // given
         CarController carController = new CarController();
-        String[] nameOfCars = {"hong","kim","lee"};
-        carController.createCarsOf(nameOfCars);
-
-        carController.moveCar(5,0);
-        carController.moveCar(5,1);
-        carController.moveCar(3, 2);
-
-        carController.moveCar(6,0);
-        carController.moveCar(7,1);
-        carController.moveCar(5, 2);
-
-        int numOfTry = 2;
+        carController.createCarsOf(List.of("hong", "kim", "lee", "park", "ahn"), List.of(5, 7, 7, 2, 4));
 
         // when
-        List<String> winners = carController.findWinners(numOfTry);
+        List<String> winners = carController.findWinners();
 
         // then
         assertThat(winners).hasSize(2)
-            .contains("hong", "kim");
+            .contains("kim", "lee");
     }
 }
