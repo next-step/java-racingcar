@@ -13,9 +13,9 @@ public class RaceTest {
     private static final List<String> carNames = List.of("pobi", "edu");
 
     @Test
-    @DisplayName("생성/자동차N대 생성/생성된다.")
+    @DisplayName("생성/자동차2대 생성/2대 생성된다.")
     void createTrack() {
         Race race = new Race(RaceCars.makeCars(carNames));
-        assertThat(race).isInstanceOf(Race.class);
+        assertThat(race.carHistory().getCars()).hasSize(2);
     }
 }
