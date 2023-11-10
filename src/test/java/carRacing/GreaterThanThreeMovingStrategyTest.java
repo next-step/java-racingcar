@@ -9,9 +9,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GreaterThanThreeMovingStrategyTest {
     MovingStrategy movingStrategy;
+
     @BeforeEach
-    void create(){
-       movingStrategy = new GreaterThanThreeMovingStrategy();
+    void create() {
+        movingStrategy = new GreaterThanThreeMovingStrategy();
     }
 
     @ParameterizedTest

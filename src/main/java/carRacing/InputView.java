@@ -1,14 +1,29 @@
 package carRacing;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
+    public static final String PATTERN = ",";
 
-    public static int readCarCount() {
-        System.out.println("자동차 대수를 몇 대 인가요?");
-        return isPositive(isNumber());
+    public static String[] readCarList() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String text = SCANNER.next();
+        return splitInputWithPatter(havePatter(text));
+    }
+
+    private static String havePatter(String text) {
+        if (text.contains(PATTERN)) {
+            return text;
+        }
+        throw new InputMismatchException("한대 이상의 자동차를 입력하여야 합니다.");
+    }
+
+    private static String[] splitInputWithPatter(String text) {
+        return text.split(PATTERN);
+
     }
 
     public static int readRaceCount() {

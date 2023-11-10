@@ -1,34 +1,33 @@
 package carRacing;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class RacingProcess {
-
-    private final int carCount;
     private final Cars cars;
 
-    public RacingProcess(int carCount, MovingStrategy movingStrategy) {
+    public RacingProcess(String[] nameArray, MovingStrategy movingStrategy) {
 
-        this.carCount = carCount;
-        this.cars = new Cars(generateCarList(movingStrategy));
+        this.cars = new Cars(generateCarList(nameArray, movingStrategy));
     }
 
-
-    private List<Car> generateCarList( MovingStrategy movingStrategy) {
+    private List<Car> generateCarList(String[] nameArray, MovingStrategy movingStrategy) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car(movingStrategy));
+        for (String name : nameArray) {
+            carList.add(new Car(name, movingStrategy));
         }
         return carList;
     }
 
     public void roundPlay(NumberGenerator numberGenerator) {
-        cars.move(numberGenerator);
+        cars.operate(numberGenerator);
     }
 
-    public List<Integer> getCarsDistance() {
-        return cars.getDistances();
+    public List<Car> getCarsStatus() {
+        return cars.getCarListForPrint();
+    }
+
+    public List<String> callCarRacingWinners() {
+        return cars.callWinners();
     }
 }
