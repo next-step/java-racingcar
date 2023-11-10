@@ -7,7 +7,7 @@ public class Name {
     private final String name;
 
     private Name(String name) {
-        validateMaximumLength();
+        validateMaximumLength(name);
         this.name = name;
     }
 
@@ -19,8 +19,8 @@ public class Name {
         return new Name(name);
     }
 
-    private void validateMaximumLength() {
-        if (this.name.length() > MAXIMUM_LENGTH) {
+    private void validateMaximumLength(String name) {
+        if (name.length() > MAXIMUM_LENGTH) {
             throw new CarNameExceedMaxLengthException();
         }
     }
