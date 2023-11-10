@@ -13,4 +13,7 @@ public class RacingApplication {
         this.inputView = inputView;
         this.resultView = resultView;
     }
+
+    public void run() {
+    }
 }
