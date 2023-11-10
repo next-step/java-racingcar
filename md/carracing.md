@@ -29,7 +29,11 @@
   * 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
   * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
-## 리팩토링 해보고 싶은 것
-* getter 메서드를 사용하지 않기(객체에게 시키기)
-* 결과 단계별로 출력하기
-* 전진 전략 패턴 추가
+## 리팩토링 해야 할 것
+* All - getter 메서드를 사용하지 않기(객체에게 시키기)
+* View - 결과 단계별로 출력하기
+* Car - 전진 전략 패턴 추가
+* Car - Name, Position 분리 -> 이름 유효성 검증도 이관
+* Racing - Winners 필드 제거 (메서드 로컬 변수로 충분)
+* Racing - 중요 로직 테스트 추가
+* RacingCars - Collection.toUnmodifiableList 사용 (생성된 리스트를 불변상태로 만드는 메서드)
