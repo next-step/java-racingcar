@@ -2,7 +2,7 @@ package racingcar.util;
 
 import java.util.Random;
 
-public class RandomNumberGenerator implements NumberGenerator{
+public class RandomNumberGenerator implements NumberGenerator {
 
     private final Random random;
     private final int max;

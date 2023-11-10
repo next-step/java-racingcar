@@ -1,11 +1,5 @@
-package racingcar.race;
+package racingcar.domain;
 
-import racingcar.domain.Car;
-import racingcar.domain.CarName;
-import racingcar.domain.Position;
-import racingcar.domain.RaceRecord;
-
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

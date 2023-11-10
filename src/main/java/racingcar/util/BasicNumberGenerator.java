@@ -1,6 +1,6 @@
 package racingcar.util;
 
-public class BasicNumberGenerator implements NumberGenerator{
+public class BasicNumberGenerator implements NumberGenerator {
 
     private final int value;
 

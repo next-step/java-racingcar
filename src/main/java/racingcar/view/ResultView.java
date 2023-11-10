@@ -1,10 +1,9 @@
 package racingcar.view;
 
 import racingcar.domain.CarName;
-import racingcar.race.Cars;
-import racingcar.race.Race;
+import racingcar.domain.Race;
 import racingcar.domain.RaceRecord;
-import racingcar.race.RaceRecords;
+import racingcar.domain.RaceRecords;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class ResultView {
     }
 
     private void addComma(List<CarName> winners, int i, StringBuilder sb) {
-        if(notLastIndex(winners, i)) sb.append(",");
+        if (notLastIndex(winners, i)) sb.append(",");
     }
 
     private boolean notLastIndex(List<CarName> winners, int i) {

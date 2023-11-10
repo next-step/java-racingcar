@@ -1,9 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.CarName;
-import racingcar.domain.Position;
-import racingcar.domain.RaceRecord;
-
 public class Car {
     private final CarName name;
     private final Position position;

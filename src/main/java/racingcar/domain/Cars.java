@@ -1,11 +1,8 @@
-package racingcar.race;
+package racingcar.domain;
 
-import racingcar.domain.Car;
-import racingcar.domain.RaceRecord;
 import racingcar.rule.Rule;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,9 +41,5 @@ public class Cars {
         return new RaceRecords(cars.stream()
                 .map(Car::record)
                 .collect(Collectors.toList()));
-    }
-
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
     }
 }

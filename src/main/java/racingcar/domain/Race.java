@@ -1,6 +1,5 @@
-package racingcar.race;
+package racingcar.domain;
 
-import racingcar.domain.Car;
 import racingcar.rule.Rule;
 
 import java.util.List;

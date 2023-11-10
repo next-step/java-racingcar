@@ -10,7 +10,7 @@ public class Position {
     }
 
     public Position(final int number) {
-        if(number < 0) throw new IllegalArgumentException("음수 값은 입력할 수 없습니다");
+        if (number < 0) throw new IllegalArgumentException("음수 값은 입력할 수 없습니다");
         this.number = number;
     }
 

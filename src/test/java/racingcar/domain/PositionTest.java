@@ -9,7 +9,7 @@ class PositionTest {
 
     @Test
     public void create() {
-        assertThatThrownBy(()-> new Position(-1)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new Position(-1)).isInstanceOf(RuntimeException.class);
         assertThat(new Position()).isEqualTo(new Position(0));
     }
 

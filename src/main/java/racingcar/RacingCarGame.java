@@ -1,9 +1,9 @@
 package racingcar;
 
 import racingcar.domain.Car;
-import racingcar.race.Cars;
-import racingcar.race.Race;
-import racingcar.race.RaceRecords;
+import racingcar.domain.Cars;
+import racingcar.domain.Race;
+import racingcar.domain.RaceRecords;
 import racingcar.rule.Rule;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -29,22 +29,22 @@ public class RacingCarGame {
         this.cars = new Cars();
         this.races = new ArrayList<>();
 
-
-        String[] carNames = inputView.readCar();
-        int raceCount = inputView.readRace();
-
-        createCar(carNames);
-        createRace(raceCount);
+        createCar();
+        createRace();
     }
 
-    private void createCar(String[] carNames) {
+    private void createCar() {
+        String[] carNames = inputView.readCar();
+
         for (String name : carNames) {
             Car car = new Car(name);
             cars.add(car);
         }
     }
 
-    private void createRace(int raceCount) {
+    private void createRace() {
+        int raceCount = inputView.readRace();
+
         for (int i = 0; i < raceCount; i++) {
             Race race = new Race(cars, rule);
             races.add(race);

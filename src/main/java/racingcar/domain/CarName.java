@@ -13,7 +13,7 @@ public class CarName {
     }
 
     private void validation(String name) {
-        if(name == null || name.isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름을 입력해 주세요.");
         }
 

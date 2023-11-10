@@ -1,10 +1,7 @@
-package racingcar.race;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.CarName;
-import racingcar.domain.Position;
-import racingcar.domain.RaceRecord;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +13,7 @@ class RaceRecordsTest {
 
     @Test
     @DisplayName("경기 우승자를 가져온다. 우승자는 한명 이상일 수 있다.")
-    public void race_record_winner(){
+    public void race_record_winner() {
         List<RaceRecord> list = Arrays.asList(
                 new RaceRecord(new CarName("carA"), new Position(1)),
                 new RaceRecord(new CarName("carB"), new Position(2)),
