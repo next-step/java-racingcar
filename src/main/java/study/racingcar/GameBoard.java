@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -32,6 +34,8 @@ public class GameBoard {
             scoreBoard.score(race);
         });
 
-        ScoreBoardView.printResult(ScoreBoardResult.create().result(scoreBoard));
+        LinkedList<Map<Car, String>> result = ScoreBoardResult.create().result(scoreBoard);
+        ScoreBoardView.printResult(result);
+        ScoreBoardView.printWinner(result);
     }
 }
