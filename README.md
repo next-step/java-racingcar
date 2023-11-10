@@ -11,8 +11,13 @@
 
 ## 기능 목록
 
-1. UI 로직의 InputView 클래스 구현
-2. UI 로직의 ResultView 클래스 구현
-3. 자동차 대수가 하나일때 n번 시도할 경우(자바 java.util.Random 클래스의 nextInt(10) 메소드를 활용) 기능 구현
-4. 자동차 대수가 둘 이상일때 n번 시도할 경우 기능 구현
-5. 리팩토링
+1. InputView, ResultView, Conroller, RacingModel 클래스를 나눈다.
+2. InputView에서 자동차 개수를 입력받는다.
+3. InputView에서 시도할 횟수를 입력받는다.
+4. controller에서 exception을 고려하여 inputview를 실행시킨다.
+5. RacingModel에서 0에서 9 사이의 random값을 만드는 객체를 생성한다.
+6. radom값이 4 이상일 경우 true 반환 테스트
+7. 6번 조건이 만족될때 전진하는 객체 생성 / 테스트
+8. 6번 조건이 만족되지 않을때 정지하는 객체 생성 / 테스트
+9. round마다 자동차 개수만큼 랜덤 객체 호출
+10. ResultView에 전진시 "-"출력
