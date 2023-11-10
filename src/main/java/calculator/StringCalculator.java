@@ -1,3 +1,5 @@
+package calculator;
+
 public class StringCalculator {
 
     private static final String DEFAULT_DELIMETER = ",:";
