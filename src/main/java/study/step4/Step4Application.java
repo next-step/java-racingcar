@@ -2,9 +2,11 @@ package study.step4;
 
 import java.util.List;
 
-import static study.step4.InputView.requestRule;
-import static study.step4.ResultView.getWinners;
-import static study.step4.ResultView.show;
+import study.step4.domain.*;
+
+import static study.step4.view.InputView.requestRule;
+import static study.step4.view.ResultView.getWinners;
+import static study.step4.view.ResultView.show;
 
 public class Step4Application {
 

@@ -1,9 +1,11 @@
-package study.step4;
+package study.step4.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static study.step4.ResultView.showResult;
+import study.step4.NumberGenerator;
+
+import static study.step4.view.ResultView.showResult;
 
 public class Racing {
 

@@ -3,9 +3,10 @@ package study.step4;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import study.step4.domain.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.step4.ResultView.getWinners;
+import static study.step4.view.ResultView.getWinners;
 
 public class RacingTest {
 

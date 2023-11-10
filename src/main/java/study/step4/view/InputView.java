@@ -1,8 +1,10 @@
-package study.step4;
+package study.step4.view;
 
 import java.util.Scanner;
 
-import static study.step4.InputParser.parse;
+import study.step4.domain.Rule;
+
+import static study.step4.view.InputParser.parse;
 
 
 public class InputView {

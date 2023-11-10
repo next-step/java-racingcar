@@ -3,6 +3,8 @@ package study.step4;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import study.step4.domain.Car;
+import study.step4.domain.Rule;
 import study.step4.exception.RacingException;
 
 import static org.assertj.core.api.Assertions.assertThat;

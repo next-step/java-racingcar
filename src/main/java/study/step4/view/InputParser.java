@@ -1,7 +1,9 @@
-package study.step4;
+package study.step4.view;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import study.step4.domain.Car;
 
 
 public class InputParser {
