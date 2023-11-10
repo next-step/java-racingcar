@@ -32,4 +32,11 @@ public class CarGeneratorTest {
 
         assertThat(nameList).hasSameElementsAs(List.of("hello", "world", "my", "name"));
     }
+
+    @Test
+    @DisplayName("[CarGenerator.createByMultiNameString] 빈 이름 주면 -> 빈 리스트 반환")
+    public void createWithNoNames() {
+        assertThat(CarGenerator.createByMultiNameString("")).hasSize(0);
+        assertThat(CarGenerator.createByMultiNameString(null)).hasSize(0);
+    }
 }
