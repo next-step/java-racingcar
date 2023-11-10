@@ -8,8 +8,11 @@ public class Car {
     private final MoveStrategy moveStrategy;
 
     public Car(final String name, final MoveStrategy moveStrategy) {
+        this(name, new Position(0), moveStrategy);
+    }
+    public Car(final String name, final Position position, final MoveStrategy moveStrategy) {
         this.name = new Name(name);
-        this.position = new Position(0);
+        this.position = position;
         this.moveStrategy = moveStrategy;
     }
 

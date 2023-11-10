@@ -3,7 +3,7 @@ package racewinner.controller;
 
 import racewinner.domain.CarRacing;
 import racewinner.domain.Cars;
-import racewinner.domain.factory.CarsFactory;
+import racewinner.domain.CarsFactory;
 import racewinner.view.InputView;
 import racewinner.view.ResultView;
 
