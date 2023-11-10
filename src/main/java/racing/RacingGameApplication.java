@@ -13,13 +13,12 @@ public class RacingGameApplication {
     public static void main(String[] args) {
         String userNameAnswer = InputView.getUserNameQuestion();
         String[] userNames = StringSpliter.getSplittedString(userNameAnswer);
-        int carCount = userNames.length;
         int gameCount = InputView.getGameCountQuestion();
 
-        RacingGame racingGame = new RacingGame(userNameAnswer, carCount, gameCount, new CarMoveStrategy(new Random()));
+        RacingGame racingGame = new RacingGame(userNames, gameCount, new CarMoveStrategy(new Random()));
 
         while (racingGame.isProgress()) {
-            racingGame.doRacing();
+            racingGame.race();
             ResultView.printProgressView(racingGame);
         }
 

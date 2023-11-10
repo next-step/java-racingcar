@@ -1,7 +1,5 @@
 package racing.domain;
 
-import common.StringSpliter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,33 +9,28 @@ public class RacingGame {
     private final List<Car> cars = new ArrayList<>();
     private int currentRound;
 
-    public RacingGame(String userNameAnswer, int carCount, int gameCount, CarMoveStrategy carMoveStrategy) {
+    public RacingGame(String[] userNames, int gameCount, CarMoveStrategy carMoveStrategy) {
         this.gameCount = gameCount;
         this.carMoveStrategy = carMoveStrategy;
         this.currentRound = 0;
 
-        String[] userNames = parseUserName(userNameAnswer);
-        initRacingCar(userNames, carCount);
+        initRacingCar(userNames);
     }
+
+    private void initRacingCar(String[] userNames) {
+        for (int i = 0; i < userNames.length; i++) {
+            cars.add(new Car(userNames[i]));
+        }
+    }
+
 
     public boolean isProgress() {
         return this.getCurrentRound() < this.getGameCount();
     }
 
-    public int getGameCount() {
-        return gameCount;
-    }
 
-    public List<Car> getRacingCars() {
-        return cars;
-    }
-
-    public int getCurrentRound() {
-        return currentRound;
-    }
-
-    public void doRacing() {
-        cars.forEach(this::doGame);
+    public void race() {
+        cars.forEach(this::playGame);
         this.currentRound++;
     }
 
@@ -52,20 +45,7 @@ public class RacingGame {
         return winCars;
     }
 
-
-    private String[] parseUserName(String userNameAnswer) {
-        final String NAME_SPLIT_DELIMITER = ",";
-        return StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
-    }
-    
-
-    private void initRacingCar(String[] userNames, int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(userNames[i]));
-        }
-    }
-
-    private void doGame(Car car) {
+    private void playGame(Car car) {
         int result = carMoveStrategy.getResult();
         car.move(result);
     }
@@ -80,4 +60,17 @@ public class RacingGame {
         }
         return maxPosition;
     }
+
+    public int getGameCount() {
+        return gameCount;
+    }
+
+    public List<Car> getRacingCars() {
+        return cars;
+    }
+
+    public int getCurrentRound() {
+        return currentRound;
+    }
+
 }
