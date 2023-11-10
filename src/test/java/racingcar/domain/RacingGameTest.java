@@ -12,8 +12,9 @@ class RacingGameTest {
     void generateCars() {
         // given
         RacingGame racingGame = new RacingGame();
+        String[] carNames = {"tody", "podi", "kim"};
         // when
-        List<Car> cars = racingGame.generateCars(3);
+        List<Car> cars = racingGame.generateCars(carNames);
         // then
         Assertions.assertThat(cars).hasSize(3);
     }
