@@ -36,27 +36,24 @@ public class Calculator {
 		return fullText.split(delimiter);
 	}
 
-	private static List<Integer> toIntegerList(String[] textArray) {
+	private static List<PositiveNumber> toIntegerList(String[] textArray) {
 		int[] intArray = new int[textArray.length];
-		List<Integer> integerList = new ArrayList<>();
+		List<PositiveNumber> integerList = new ArrayList<>();
  		for (int i = 0; i < intArray.length; i++) {
 			integerList.add(getNumber(textArray[i]));
 		}
 		return integerList;
 	}
 
-	private static int getNumber(String text) {
+	private static PositiveNumber getNumber(String text) {
 		PositiveNumber positiveNumber = new PositiveNumber(Integer.parseInt(text));
-		if (positiveNumber.isPositive()) {
-			throw new RuntimeException("숫자 이외의 값 혹은 음수가 입력되었습니다.");
-		}
-		return positiveNumber.getNumber();
+		return positiveNumber;
 	}
 
-	private static int sum(List<Integer> integerList) {
+	private static int sum(List<PositiveNumber> positiveNumberList) {
 		int sum = 0;
-		for (int number : integerList) {
-			sum += number;
+		for (PositiveNumber positiveNumber : positiveNumberList) {
+			sum += positiveNumber.getNumber();
 		}
 		return sum;
 	}
