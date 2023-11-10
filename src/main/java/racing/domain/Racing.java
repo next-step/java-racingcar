@@ -22,9 +22,9 @@ public class Racing {
         carList.makeCarList(InputView.getCarName());
     }
 
-    public Cars racingStart(RandomMoveStrategy random){
+    public Cars racingStart(MoveStrategy moveStrategy){
         validation(carCount, tryCount);
-        carList.move(random);
+        carList.move(moveStrategy);
         return carList;
     }
 
@@ -35,8 +35,7 @@ public class Racing {
     }
 
     public String findWinner(){
-        String winner = carList.findWinner();
-        return winner;
+        return carList.findWinner();
     }
 
     public Cars getCars(){
