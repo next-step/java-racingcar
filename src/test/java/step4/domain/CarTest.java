@@ -101,4 +101,18 @@ class CarTest {
         // then
         assertThat(realResult).isEqualTo(expectedResult);
     }
+
+    @DisplayName("인자로 받은 최대 이동 값이 자신의 이동 위치가 같으면 true, 아니면 false를 반환한다.")
+    @ParameterizedTest
+    @CsvSource({"5,true", "6,false"})
+    void isMaxPosition(int max, boolean expectedResult) {
+        // given
+        Car hong = new Car("hong", 5);
+
+        // when
+        boolean maxPosition = hong.isMaxPosition(max);
+
+        // then
+        assertThat(maxPosition).isEqualTo(expectedResult);
+    }
 }

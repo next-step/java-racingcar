@@ -3,6 +3,7 @@ package step4.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -17,6 +18,12 @@ public class Cars {
 
     public Cars(List<Integer> positions) {
         positions.forEach(position -> cars.add(new Car(position)));
+    }
+
+    public Cars(List<String> nameOfCars, List<Integer> positions) {
+        for (int i=0; i<nameOfCars.size(); i++) {
+            cars.add(new Car(nameOfCars.get(i), positions.get(i)));
+        }
     }
 
     public int getNumOfCars() {
@@ -47,5 +54,12 @@ public class Cars {
         }
 
         return max;
+    }
+
+    public List<String> findCarNamesMovingLongest(int maxPosition) {
+        return cars.stream()
+            .filter(car -> car.isMaxPosition(maxPosition))
+            .map(Car::getCarName)
+            .collect(Collectors.toUnmodifiableList());
     }
 }

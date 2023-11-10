@@ -82,4 +82,19 @@ class CarsTest {
         // then
         assertThat(maxPosition).isEqualTo(7);
     }
+
+    @DisplayName("최대 이동 값과 같은 이동 위치를 가진 자동차들의 이름을 찾아 반환한다.")
+    @Test
+    void findCarNamesMoveMaxPosition() {
+        // given
+        Cars cars = new Cars(List.of("hong", "kim", "lee", "park", "ahn"), List.of(5, 7, 7, 2, 4));
+        int maxPosition = 7;
+
+        // when
+        List<String> winners = cars.findCarNamesMovingLongest(maxPosition);
+
+        // then
+        assertThat(winners).hasSize(2)
+            .contains("kim", "lee");
+    }
 }

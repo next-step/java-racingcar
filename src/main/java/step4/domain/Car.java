@@ -57,4 +57,8 @@ public class Car {
     public int comparePosition(int position) {
         return Math.max(position, this.position);
     }
+
+    public boolean isMaxPosition(int max) {
+        return this.position == max;
+    }
 }
