@@ -14,7 +14,7 @@ import study.racingcar.fake.SuccessRandomGenratorStub;
 
 public class RoundTest {
 
-    private final Car car = new Car();
+    private final Car car = new Car("name");
     private Cars cars;
     private final RandomGenerator successRandomGenratorStub = new SuccessRandomGenratorStub(new Random());
     private final RandomGenerator failRandomGenratorStub = new FailRandomGenratorStub(new Random());
@@ -53,7 +53,7 @@ public class RoundTest {
     }
 
     Round emptyRound(){
-        List<Car> carList = List.of(new Car());
+        List<Car> carList = List.of(new Car(name));
         return new Round(new Cars(carList));
     }
 

@@ -10,7 +10,7 @@ import study.racingcar.fake.SuccessRandomGenratorStub;
 
 class ScoreTest {
 
-    private final Car car = new Car();
+    private final Car car = new Car("name");
     private final RandomGenerator successRandomGenratorStub = new SuccessRandomGenratorStub(new Random());
 
     private final RandomGenerator failRandomGenratorStub = new FailRandomGenratorStub(new Random());

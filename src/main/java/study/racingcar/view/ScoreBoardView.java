@@ -2,6 +2,7 @@ package study.racingcar.view;
 
 import java.util.List;
 import java.util.Map;
+import study.racingcar.Car;
 import study.racingcar.MoveStatus;
 
 public class ScoreBoardView {
@@ -17,9 +18,10 @@ public class ScoreBoardView {
         return STOP_SCORE;
     }
 
-    public static <T> void printResult(List<Map<T, String>> listMap) {
+    public static void printResult(List<Map<Car, String>> listMap) {
         listMap.forEach(map ->{
-            map.forEach((t, s) -> {
+            map.forEach((car, s) -> {
+                System.out.print(car.name() + " : ");
                 System.out.println(s);
             });
             System.out.println("\n");

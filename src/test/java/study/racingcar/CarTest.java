@@ -22,8 +22,8 @@ public class CarTest {
 
     @BeforeEach
     void init(){
-        carAlwaysReturnAboveFour = new Car();
-        carAlwaysReturnBelowFour = new Car();
+        carAlwaysReturnAboveFour = new Car("name");
+        carAlwaysReturnBelowFour = new Car("name");
     }
 
     @DisplayName("자동차가 전진합니다.")
