@@ -1,6 +1,6 @@
 package racing;
 
-import java.util.Random;
+import racing.type.CarName;
 
 /**
  * 초간단 자동차 경주 게임의 자동차 개체 하나를 나타냅니다.
@@ -16,7 +16,7 @@ public class Car {
     private int position = 0;
 
     /** 자동차의 이름 */
-    private String name = "";
+    private CarName name = CarName.anonymous();
 
     private Car() {
     }
@@ -31,7 +31,7 @@ public class Car {
         Car car = new Car();
 
         car.position = DEFAULT_INIT_POSITION;
-        car.name = "";
+        car.name = CarName.anonymous();
 
         return car;
     }
@@ -44,8 +44,7 @@ public class Car {
      *
      * @return 생성된 자동차 객체
      */
-    public static Car createWithName(String name) {
-        validateName(name);
+    public static Car createWithName(CarName name) {
         Car car = Car.create();
         car.name = name;
         return car;
@@ -73,8 +72,7 @@ public class Car {
      * @param position 자동차 위치
      * @return
      */
-    public static Car create(String name, int position) {
-        validateName(name);
+    public static Car create(CarName name, int position) {
         validatePosition(position);
 
         Car car = Car.create();
@@ -111,16 +109,6 @@ public class Car {
         }
     }
 
-    private static void validateName(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("이름이 null입니다.");
-        }
-
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("주어진 이름은 너무 깁니다.");
-        }
-    }
-
     // 이 이하로 단순 getter 모음
     /**
      * @return 자동차의 현재 위치. 위치는 0 이상입니다.
@@ -132,7 +120,7 @@ public class Car {
     /**
      * @return 자동차의 이름
      */
-    public String getName() {
+    public CarName getName() {
         return this.name;
     }
 

@@ -27,7 +27,7 @@ public class CarGeneratorTest {
 
         List<String> nameList = new ArrayList<>();
         for (Car car : carList) {
-            nameList.add(car.getName());
+            nameList.add(car.getName().toString());
         }
 
         assertThat(nameList).hasSameElementsAs(List.of("hello", "world", "my", "name"));

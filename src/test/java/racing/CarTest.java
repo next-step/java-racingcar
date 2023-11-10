@@ -3,6 +3,7 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.type.CarName;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -11,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     public void beforeEach() {
-        mySummerCar = Car.create("masum", 3);
+        mySummerCar = Car.create(new CarName("masum"), 3);
     }
 
     @Test
@@ -50,14 +51,14 @@ public class CarTest {
     @DisplayName("[Car.getName] 생성 시 부여한 이름 조회 가능해야 함")
     public void carName() {
         assertThat(mySummerCar.getName())
-                .isEqualTo("masum");
+                .isEqualTo(new CarName("masum"));
     }
 
     @Test
     @DisplayName("[Car] 자동차 생성 시 이름 6글자 ->  IllegalArgumentException 던짐")
     public void longCarName() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Car.createWithName("123456");
+            Car.createWithName(new CarName("123456"));
         });
     }
 }

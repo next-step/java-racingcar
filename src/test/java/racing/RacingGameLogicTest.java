@@ -3,6 +3,7 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import racing.type.CarName;
 
 import java.util.List;
 
@@ -43,9 +44,9 @@ public class RacingGameLogicTest {
     @Test
     @DisplayName("[RacingGameLogic.getWinnerNames] 현 게임 상태 주면 -> 이기고 있는 사람 목록 반환")
     public void getWinnerNames() {
-        Car carA = Car.create("carA", 4);
-        Car carB = Car.create("carB", 2);
-        Car carC = Car.create("carC", 4);
+        Car carA = Car.create(new CarName("carA"), 4);
+        Car carB = Car.create(new CarName("carB"), 2);
+        Car carC = Car.create(new CarName("carC"), 4);
 
         RacingGameState state = RacingGameState.createNewGame(
                 List.of(carA, carB, carC),
