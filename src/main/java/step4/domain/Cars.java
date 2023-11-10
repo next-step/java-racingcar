@@ -30,4 +30,8 @@ public class Cars {
     private boolean isOutOfIndex(int idx) {
         return idx >= cars.size() || idx < 0;
     }
+
+    public void moveCarBy(int randomNum, int carNo) {
+        cars.get(carNo).moveForward(randomNum);
+    }
 }

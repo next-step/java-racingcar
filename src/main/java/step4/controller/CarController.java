@@ -19,7 +19,7 @@ public class CarController {
     }
 
     public void moveCar(int randomNum, int carNo) {
-        cars.findCarBy(carNo).moveForward(randomNum);
+        cars.moveCarBy(randomNum, carNo);
     }
 
     public List<String> findWinners(int numOfTry) {

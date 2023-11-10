@@ -51,4 +51,20 @@ class CarsTest {
         assertThatThrownBy(() -> cars.findCarBy(idx)).isInstanceOf(IndexOutOfBoundsException.class)
             .hasMessage("해당 번호의 차량은 존재하지 않습니다.");
     }
+
+    @DisplayName("인자로 자동차 번호(인덱스)와 임의의 수를 전달 받아 자동차를 앞으로 움직인다.")
+    @ParameterizedTest
+    @CsvSource({"0,0,0", "2,1,0", "4,2,1", "6,3,1", "9,4,1"})
+    void moveCayBy(int randomNum, int carNo, int expectedResult) {
+        // given
+        String[] nameOfCars = {"hong","kim","lee","park","ahn"};
+        Cars cars = new Cars(nameOfCars);
+
+        // when
+        cars.moveCarBy(randomNum, carNo);
+        int realResult = cars.findCarBy(carNo).getCurrentPosition();
+
+        // then
+        assertThat(realResult).isEqualTo(expectedResult);
+    }
 }
