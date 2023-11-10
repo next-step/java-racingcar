@@ -13,7 +13,5 @@ public class RacingCarMain {
                 new MinimumRule(4, new RandomNumberGenerator(9))
         );
         racingCarGame.start();
-        racingCarGame.raceResult();
-        racingCarGame.winnerResult();
     }
 }

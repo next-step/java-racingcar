@@ -14,6 +14,7 @@ public class InputView {
         scanner = new Scanner(System.in);
     }
 
+
     public String[] readCar() {
         System.out.println(CAR_NAME_MESSAGE);
         return scanner.nextLine().split(DELIMITER);

@@ -19,10 +19,6 @@ public class RaceRecords {
         this.raceRecords = new ArrayList<>(raceRecords);
     }
 
-    public List<RaceRecord> list() {
-        return Collections.unmodifiableList(raceRecords);
-    }
-
     public List<CarName> winners() {
         Position positionMax = positionMax();
 
@@ -38,5 +34,9 @@ public class RaceRecords {
                 .map(RaceRecord::position)
                 .max(comparatorByPosition)
                 .orElseThrow(NoSuchFieldError::new);
+    }
+
+    public List<RaceRecord> getRaceRecords() {
+        return Collections.unmodifiableList(raceRecords);
     }
 }

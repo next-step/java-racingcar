@@ -12,8 +12,16 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
+    public Cars() {
+        this(new ArrayList<>());
+    }
+
     public Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
+    }
+
+    public void add(Car car) {
+        cars.add(car);
     }
 
     public RaceRecords move(Rule rule) {

@@ -11,6 +11,11 @@ public class Race {
     private final Cars cars;
     private RaceRecords raceRecords;
 
+    public Race(Cars cars, Rule rule) {
+        this.cars = cars;
+        this.rule = rule;
+    }
+
     public Race(List<Car> cars, Rule rule) {
         this.cars = new Cars(cars);
         this.rule = rule;
