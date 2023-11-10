@@ -11,13 +11,13 @@ public class RacingCarGame {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        gameStart(inputView.inputCarNumber(), inputView.inputGameTurn());
+        gameStart(inputView.inputCars(), inputView.inputGameTurn());
     }
 
-    private static void gameStart(int carNumber, int endTurn) {
+    private static void gameStart(String inputCars, int endTurn) {
         System.out.println("게임 시작");
         RacingCarGameService service = new RacingCarGameService();
-        RacingGameResponse response = service.start(new RacingGameRequest(carNumber, endTurn));
+        RacingGameResponse response = service.start(new RacingGameRequest(inputCars, endTurn));
         ResultView resultView = new ResultView();
         resultView.showRacingCarGame(response);
         System.out.println("게임 종료");

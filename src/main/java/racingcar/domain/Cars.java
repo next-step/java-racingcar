@@ -8,15 +8,16 @@ public class Cars {
     private List<Car> cars;
     private Random random = new Random();
 
-    public Cars(int carNumber) {
+    public Cars(String inputCars) {
         cars = new ArrayList<>();
-        initializeCars(carNumber);
+        initializeCars(inputCars);
     }
 
-    private void initializeCars(int carNumber) {
-        checkCarNumber(carNumber);
-        for (int i = 0; i < carNumber; i++) {
-            this.addCar(new Car());
+    private void initializeCars(String inputCars) {
+        String[] carNames = inputCars.split(",");
+        checkCarNumber(carNames.length);
+        for (String carName : carNames) {
+            this.addCar(new Car(carName));
         }
     }
 
@@ -40,14 +41,6 @@ public class Cars {
         return random.nextInt(10);
     }
 
-    public List<Integer> getAllMoveCount() {
-        List<Integer> moveCounts = new ArrayList<>();
-        for (Car car : cars) {
-            moveCounts.add(car.getMoveCount());
-        }
-        return moveCounts;
-    }
-
     public final List<Car> getAllCar() {
         return cars;
     }
@@ -55,4 +48,5 @@ public class Cars {
     public int getNumberOfCar() {
         return cars.size();
     }
+
 }
