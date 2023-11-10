@@ -2,6 +2,7 @@ package racing.domain;
 
 public class Car {
     private int distance;
+    private static final int CONDITION_FOR_MOVE = 4;
 
     public Car() {
         this.distance = 0;
@@ -16,8 +17,12 @@ public class Car {
     }
 
     public void validateForMove(int randomValue) {
-        if (randomValue >= 4) {
+        if (isMovable(randomValue)) {
             this.moveCar();
         }
+    }
+
+    private static boolean isMovable(int randomValue) {
+        return randomValue >= CONDITION_FOR_MOVE;
     }
 }
