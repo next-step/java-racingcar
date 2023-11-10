@@ -1,32 +1,26 @@
 package study.carracing.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winners {
 
-    private List<String> names;
-
-    public Winners() {
-        this.names = new ArrayList<>();
-    }
-
-    public void addNames(List<Car> cars, int maxPosition) {
-        names.addAll(cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+    public List<String> pickWinners(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+        winners.addAll(cars.stream()
+                .filter(car -> car.getPosition() == getMaxPosition(cars))
                 .map(Car::getName)
                 .collect(Collectors.toList())
         );
+
+        return winners;
     }
 
-    public List<String> getNames() {
-        return names;
-    }
-
-    @Override
-    public String toString() {
-        return Arrays.toString(names.toArray());
+    public int getMaxPosition(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 }

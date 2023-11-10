@@ -5,17 +5,14 @@ import java.util.List;
 public class Racing {
 
     private final RacingCars racingCars;
-    private Winners winners;
 
     public Racing() {
         racingCars = new RacingCars();
-        winners = new Winners();
     }
 
     public void start(String[] carsName, int tryCount) {
         addRacingCars(carsName);
         move(tryCount);
-        pickWinners();
     }
 
     private void addRacingCars(String[] carsName) {
@@ -28,19 +25,12 @@ public class Racing {
         }
     }
 
-    private void pickWinners() {
-        winners.addNames(racingCars.getCars(), getMaxPosition());
-    }
-
-    private int getMaxPosition() {
-        return racingCars.getMaxPosition();
-    }
-
     public List<Car> getRacingCars() {
         return racingCars.getCars();
     }
 
-    public List<String> getWinnersName() {
-        return winners.getNames();
+    public List<String> winners() {
+        Winners winners = new Winners();
+        return winners.pickWinners(racingCars.getCars());
     }
 }

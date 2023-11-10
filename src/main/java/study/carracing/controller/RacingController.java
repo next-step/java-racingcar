@@ -26,6 +26,6 @@ public class RacingController {
         Racing racing = new Racing();
         racing.start(carsName.split(NAMES_DELIMITER), tryCount);
         resultView.outputResult(racing.getRacingCars());
-        resultView.outputResultAndComment(racing.getWinnersName());
+        resultView.outputResultAndComment(racing.winners());
     }
 }
