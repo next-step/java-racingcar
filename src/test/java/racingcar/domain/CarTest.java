@@ -19,6 +19,7 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("자동차가 이동한다. 이동거리가 1 증가한다")
     public void car_move() {
         Car car = new Car("car", 0);
         car.move();
