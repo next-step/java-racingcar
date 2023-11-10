@@ -2,6 +2,7 @@ package racingcar.race;
 
 import racingcar.domain.CarName;
 import racingcar.domain.Position;
+import racingcar.domain.RaceRecord;
 
 public class Car {
     private final CarName name;
@@ -18,6 +19,10 @@ public class Car {
 
     public void move() {
         position.move();
+    }
+
+    public RaceRecord record() {
+        return new RaceRecord(this);
     }
 
     public CarName name() {

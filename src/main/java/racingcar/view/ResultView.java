@@ -1,8 +1,8 @@
 package racingcar.view;
 
-import racingcar.race.Car;
+import racingcar.domain.CarName;
 import racingcar.race.Race;
-import racingcar.race.RaceRecord;
+import racingcar.domain.RaceRecord;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class ResultView {
 
     private void printRaceRecords(Race race) {
         for (RaceRecord raceRecord : race.raceRecords().list()) {
-            System.out.println(raceRecord.car().name() + ":" + createPath(raceRecord.position().value()));
+            System.out.println(raceRecord.carName().value() + ":" + createPath(raceRecord.position().value()));
         }
         System.out.println();
     }
@@ -34,26 +34,26 @@ public class ResultView {
 
     public void printWinner(List<Race> races) {
         Race lastRace = races.get(races.size() - 1);
-        List<Car> winners = lastRace.raceRecords().winners();
+        List<CarName> winners = lastRace.raceRecords().winners();
         System.out.println(winnerMessage(winners));
     }
 
-    private String winnerMessage(List<Car> winners) {
+    private String winnerMessage(List<CarName> winners) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int index = 0; index < winners.size(); index++) {
-            stringBuilder.append(winners.get(index).name());
+            stringBuilder.append(winners.get(index).value());
             addComma(winners, index, stringBuilder);
         }
 
         return String.format(WINNER_MESSAGE, stringBuilder);
     }
 
-    private void addComma(List<Car> winners, int i, StringBuilder sb) {
+    private void addComma(List<CarName> winners, int i, StringBuilder sb) {
         if(notLastIndex(winners, i)) sb.append(",");
     }
 
-    private boolean notLastIndex(List<Car> winners, int i) {
+    private boolean notLastIndex(List<CarName> winners, int i) {
         return winners.size() - 1 > i;
     }
 }

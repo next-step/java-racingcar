@@ -2,6 +2,7 @@ package racingcar.race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarName;
 import racingcar.domain.Position;
 import racingcar.rule.MinimumRule;
 import racingcar.rule.Rule;
@@ -32,8 +33,8 @@ class RaceRecordsTest {
         RaceRecords raceRecords = new RaceRecords();
         raceRecords.record(cars.list());
 
-        assertThat(raceRecords.list().get(0).car()).isEqualTo(carA);
-        assertThat(raceRecords.list().get(1).car()).isEqualTo(carB);
+        assertThat(raceRecords.list().get(0).carName().equals("carA"));
+        assertThat(raceRecords.list().get(1).carName().equals("carB"));
     }
 
     @Test
@@ -48,8 +49,8 @@ class RaceRecordsTest {
         RaceRecords raceRecords = new RaceRecords();
         raceRecords.record(list);
 
-        List<Car> winners = raceRecords.winners();
+        List<CarName> winners = raceRecords.winners();
 
-        assertThat(winners).containsExactly(carA, carB);
+        assertThat(winners).containsExactly(new CarName("carA"), new CarName("carB"));
     }
 }

@@ -1,6 +1,8 @@
 package racingcar.race;
 
+import racingcar.domain.CarName;
 import racingcar.domain.Position;
+import racingcar.domain.RaceRecord;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +24,7 @@ public class RaceRecords {
     }
 
     private void add(Car car) {
-        add(new RaceRecord(car));
+        add(car.record());
     }
 
     private void add(RaceRecord raceRecord) {
@@ -33,12 +35,12 @@ public class RaceRecords {
         return Collections.unmodifiableList(raceRecords);
     }
 
-    public List<Car> winners() {
+    public List<CarName> winners() {
         Position positionMax = positionMax();
 
         return raceRecords.stream()
                 .filter(raceRecord -> positionMax.equals(raceRecord.position()))
-                .map(RaceRecord::car)
+                .map(RaceRecord::carName)
                 .collect(Collectors.toList());
     }
 

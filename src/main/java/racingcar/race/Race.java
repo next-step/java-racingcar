@@ -7,9 +7,7 @@ import java.util.List;
 public class Race {
 
     private final Rule rule;
-
     private final Cars cars;
-
     private final RaceRecords raceRecords;
 
     public Race(List<Car> cars, Rule rule) {
