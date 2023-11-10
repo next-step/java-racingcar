@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -66,5 +68,18 @@ class CarsTest {
 
         // then
         assertThat(realResult).isEqualTo(expectedResult);
+    }
+
+    @DisplayName("가장 많이 이동한 자동차의 위치 값을 찾아 반환한다.")
+    @Test
+    void findMaxPosition() {
+        // given
+        Cars cars = new Cars(List.of(5, 6, 7, 2, 4));
+
+        // when
+        int maxPosition = cars.findMaxPosition();
+
+        // then
+        assertThat(maxPosition).isEqualTo(7);
     }
 }

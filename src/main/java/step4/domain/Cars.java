@@ -15,6 +15,10 @@ public class Cars {
             .forEach(name -> cars.add(new Car(name)));
     }
 
+    public Cars(List<Integer> positions) {
+        positions.forEach(position -> cars.add(new Car(position)));
+    }
+
     public int getNumOfCars() {
         return cars.size();
     }
@@ -33,5 +37,15 @@ public class Cars {
 
     public void moveCarBy(int randomNum, int carNo) {
         cars.get(carNo).moveForward(randomNum);
+    }
+
+    public int findMaxPosition() {
+        int max = 0;
+
+        for (Car car : cars) {
+            max = car.comparePosition(max);
+        }
+
+        return max;
     }
 }

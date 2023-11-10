@@ -14,14 +14,18 @@ public class Car {
         this.position = 0;
     }
 
+    public Car(int position) {
+        this.position = position;
+    }
+
     public Car(String name) {
-        this.position = 0;
+        this(0);
         this.name = new Name(name);
     }
 
     public Car(String name, int position) {
+        this(position);
         this.name = new Name(name);
-        this.position = position;
     }
 
     public int getCurrentPosition() {
