@@ -20,7 +20,7 @@ public class RacingPlay {
 
     public void playRacingCar(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
-            moveForward(getRandomNumber(), carList.get(i));
+            carList.get(i).move(getRandomNumber());
         }
     }
 
@@ -28,20 +28,10 @@ public class RacingPlay {
         return randomNumber.getRandomNumber(10);
     }
 
-    private void moveForward(int randomNumber, Car car) {
-        if (isPossibleToMove(randomNumber)) {
-            car.move();
-        }
-    }
-
-    private boolean isPossibleToMove(int randomNumber) {
-        return randomNumber >= 4;
-    }
-
     public String findWinner(List<Car> racingOutput) {
         int maxLocation = findMaxLocation(racingOutput);
         return racingOutput.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> car.isMaxLocation(maxLocation))
                 .map(Car::getName).collect(Collectors.joining(", "));
     }
 
