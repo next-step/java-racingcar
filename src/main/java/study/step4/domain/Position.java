@@ -16,12 +16,4 @@ public class Position {
         position += 1;
     }
 
-    public boolean eq(int value) {
-        return position == value;
-    }
-
-    public boolean gt(int value) {
-        return position >= value;
-    }
-
 }
