@@ -28,8 +28,15 @@ public class Car {
 		}
 	}
 
-	public int getPosition() {
-		return position;
+	public boolean isSamePosition(int maxPosition) {
+		return maxPosition == this.position;
+	}
+
+	public int maxPosition(int maxPosition) {
+		if (this.position > maxPosition) {
+			return this.position;
+		}
+		return maxPosition;
 	}
 
 	public String getName() {
