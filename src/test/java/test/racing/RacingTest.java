@@ -5,8 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.Car;
-import racing.domain.Cars;
+import racing.domain.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,4 +84,17 @@ public class RacingTest {
         List<String> resultList = Arrays.asList(result.replace(" ", "").split(","));
         assertThat(resultList.contains("java")).isTrue();
     }
+
+    @DisplayName("자동차가 이동하는 케이스")
+    @Test
+    public void 전진_테스트(){
+        assertThat(new ForwardMoveStrategy().movable()).isEqualTo(true);
+    }
+
+    @DisplayName("자동차가 멈춰있는 케이스")
+    @Test
+    public void 멈춰있는_테스트(){
+        assertThat(new StopMoveStrategy().movable()).isEqualTo(false);
+    }
+
 }
