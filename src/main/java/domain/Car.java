@@ -1,25 +1,22 @@
-package racing;
+package domain;
 
-import java.util.Random;
+import domain.type.CarName;
+import domain.type.Position;
 
 /**
  * 초간단 자동차 경주 게임의 자동차 개체 하나를 나타냅니다.
  */
 public class Car {
     /** 사용자가 위치를 지정하지 않았을 때 기본 시작할 자동차의 위치 */
-    private static final int DEFAULT_INIT_POSITION = 1;
-
-    /** 허용하는 최대 이름 글자 수 */
-    public static final int MAX_NAME_LENGTH = 5;
+    private static final Position DEFAULT_INIT_POSITION = new Position(1);
+    public static final int DEFAULT_MOVE = 1;
+    public static final int MOVE_THRESHOLD = 4;
 
     /** 자동차의 현재 위치를 나타냅니다. */
-    private int position = 0;
+    private Position position = DEFAULT_INIT_POSITION;
 
     /** 자동차의 이름 */
-    private String name = "";
-
-
-    private final Random random = new Random();
+    private CarName name = CarName.anonymous();
 
     private Car() {
     }
@@ -34,7 +31,7 @@ public class Car {
         Car car = new Car();
 
         car.position = DEFAULT_INIT_POSITION;
-        car.name = "";
+        car.name = CarName.anonymous();
 
         return car;
     }
@@ -47,8 +44,7 @@ public class Car {
      *
      * @return 생성된 자동차 객체
      */
-    public static Car createWithName(String name) {
-        validateName(name);
+    public static Car createWithName(CarName name) {
         Car car = Car.create();
         car.name = name;
         return car;
@@ -62,8 +58,7 @@ public class Car {
      *
      * @return 생성된 자동차 객체
      */
-    public static Car createWithPosition(int position) {
-        validatePosition(position);
+    public static Car createWithPosition(Position position) {
         Car car = Car.create();
         car.position = position;
         return car;
@@ -76,10 +71,7 @@ public class Car {
      * @param position 자동차 위치
      * @return
      */
-    public static Car create(String name, int position) {
-        validateName(name);
-        validatePosition(position);
-
+    public static Car create(CarName name, Position position) {
         Car car = Car.create();
         car.position = position;
         car.name = name;
@@ -88,54 +80,34 @@ public class Car {
     }
 
     /**
-     * 자동차를 앞으로 또는 뒤로 움직입니다.
+     * 자동차를 앞으로 또는 뒤로 "강제로" 움직입니다.
      *
      * @param distance 움직일 거리. 양수면 앞으로 이동, 음수면 뒤로 이동, 0이면 움직이지 않습니다.
      */
     public void move(int distance) {
-        this.position += distance;
-
-        validatePosition(this.position);
+        this.position = this.position.add(distance);
     }
 
     /**
-     * 전략에 따라 자동차를 앞으로 한 칸 이동합니다.
+     * 전략에 따라 자동차를 앞으로 미리 지정된 만큼 움직입니다.
+     *
+     * @param decisionSeed 판단의 근거가 될 값입니다. 이 값에 무엇이 들어오는지에 따라 앞으로 가거나 말거나가 결정됩니다. 상위에서 랜덤값을 줄 수도 있습니다.
      */
-    public void go() {
-        if (CarMoveStrategy.doIMove()) {
-            this.move(1);
-        }
-    }
-
-    // 이 이하로 validation 함수 모음
-    private static void validatePosition(int position) {
-        if (position < 0) {
-            throw new IllegalArgumentException("위치는 0 이상이어야 하지만 " + position + "이 되었습니다.");
-        }
-    }
-
-    private static void validateName(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("이름이 null입니다.");
-        }
-
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("주어진 이름은 너무 깁니다.");
+    public void go(int decisionSeed) {
+        if (decisionSeed >= MOVE_THRESHOLD) {
+            this.move(DEFAULT_MOVE);
         }
     }
 
     // 이 이하로 단순 getter 모음
-    /**
-     * @return 자동차의 현재 위치. 위치는 0 이상입니다.
-     */
-    public int getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 
     /**
      * @return 자동차의 이름
      */
-    public String getName() {
+    public CarName getName() {
         return this.name;
     }
 

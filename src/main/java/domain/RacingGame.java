@@ -1,12 +1,18 @@
-package racing;
+package domain;
 
-import racing.util.CarGenerator;
+import domain.type.Position;
+import domain.type.RacingGameState;
+import util.generator.CarGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class RacingGameLogic {
-    private RacingGameLogic() {
+public class RacingGame {
+    public static final int RANDOM_MAX_BOUND = 10;
+    private static Random random = new Random();
+
+    private RacingGame() {
     }
 
     /**
@@ -33,7 +39,7 @@ public class RacingGameLogic {
      * @return 새로 생성된 게임 상태
      */
     public static RacingGameState init(int theNumberOfCar, int theNumberOfCycles) {
-        return RacingGameLogic.init(
+        return RacingGame.init(
                 CarGenerator.createMultipleDefaultCars(theNumberOfCar),
                 theNumberOfCycles
         );
@@ -48,7 +54,7 @@ public class RacingGameLogic {
      * @return 새로 생성된 게임 상태
      */
     public static RacingGameState init(String namesOfCar, int theNumberOfCycles) {
-        return RacingGameLogic.init(
+        return RacingGame.init(
                 CarGenerator.createByMultiNameString(namesOfCar),
                 theNumberOfCycles
         );
@@ -66,13 +72,18 @@ public class RacingGameLogic {
         List<Car> carList = beforeState.getCarList();
         int currentCycle = beforeState.getCurrentCycle();
 
+
         for (Car car : carList) {
-            car.go();
+            car.go(getRandomMoveSeed());
         }
 
         currentCycle += 1;
 
         return beforeState.copyWithCarListAndCurrentCycle(carList, currentCycle);
+    }
+
+    private static int getRandomMoveSeed() {
+        return random.nextInt(RANDOM_MAX_BOUND);
     }
 
     /**
@@ -93,7 +104,7 @@ public class RacingGameLogic {
      * @return 이기고 있는 자동차들
      */
     public static List<Car> getWinnerList(RacingGameState state) {
-        int maxPosition = 0;
+        Position maxPosition = Position.origin();
 
         for (Car car : state.getCarList()) {
             maxPosition = getBiggerPosition(car, maxPosition);
@@ -107,14 +118,14 @@ public class RacingGameLogic {
         return winnerList;
     }
 
-    private static void addCarIfItWins(Car car, int maxPosition, List<Car> winnerList) {
-        if (car.getPosition() == maxPosition) {
+    private static void addCarIfItWins(Car car, Position maxPosition, List<Car> winnerList) {
+        if (car.getPosition().equals(maxPosition)) {
             winnerList.add(car);
         }
     }
 
-    private static int getBiggerPosition(Car car, int maxPosition) {
-        if (car.getPosition() > maxPosition) {
+    private static Position getBiggerPosition(Car car, Position maxPosition) {
+        if (car.getPosition().isBiggerThan(maxPosition)) {
             maxPosition = car.getPosition();
         }
         return maxPosition;

@@ -1,6 +1,7 @@
-package racing.util;
+package util.generator;
 
-import racing.Car;
+import domain.Car;
+import domain.type.CarName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class CarGenerator {
 
         for (String name : nameList) {
             carList.add(
-                    Car.createWithName(name)
+                    Car.createWithName(new CarName(name))
             );
         }
 

@@ -1,8 +1,7 @@
-package racing.ui;
+package view;
 
-import racing.Car;
-import racing.RacingGameLogic;
-import racing.RacingGameState;
+import domain.Car;
+import domain.type.RacingGameState;
 
 import java.util.List;
 

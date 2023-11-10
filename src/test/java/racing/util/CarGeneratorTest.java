@@ -1,9 +1,9 @@
 package racing.util;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.Car;
+import domain.Car;
+import util.generator.CarGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +27,16 @@ public class CarGeneratorTest {
 
         List<String> nameList = new ArrayList<>();
         for (Car car : carList) {
-            nameList.add(car.getName());
+            nameList.add(car.getName().toString());
         }
 
         assertThat(nameList).hasSameElementsAs(List.of("hello", "world", "my", "name"));
+    }
+
+    @Test
+    @DisplayName("[CarGenerator.createByMultiNameString] 빈 이름 주면 -> 빈 리스트 반환")
+    public void createWithNoNames() {
+        assertThat(CarGenerator.createByMultiNameString("")).hasSize(0);
+        assertThat(CarGenerator.createByMultiNameString(null)).hasSize(0);
     }
 }

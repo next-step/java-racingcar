@@ -1,4 +1,6 @@
-package racing;
+package domain.type;
+
+import domain.Car;
 
 import java.util.List;
 

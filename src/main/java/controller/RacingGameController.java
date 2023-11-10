@@ -1,12 +1,14 @@
-package racing;
+package controller;
 
-import racing.ui.RacingGameInput;
-import racing.ui.RacingGameRenderer;
+import domain.RacingGame;
+import domain.type.RacingGameState;
+import view.RacingGameInput;
+import view.RacingGameRenderer;
 
 /**
  * 레이싱 게임을 구동하는 게임 엔진
  */
-public class RacingGameEngine {
+public class RacingGameController {
     private RacingGameState gameState;
 
     /**
@@ -18,7 +20,7 @@ public class RacingGameEngine {
         String carNamesString = RacingGameInput.askNamesOfCars();
         int theNumberOfCycle = RacingGameInput.askTheNumberOfCycle();
 
-        gameState = RacingGameLogic.init(carNamesString, theNumberOfCycle);
+        gameState = RacingGame.init(carNamesString, theNumberOfCycle);
     }
 
     /**
@@ -26,11 +28,11 @@ public class RacingGameEngine {
      * 업데이트 -> 렌더링이 하나의 틱이며 틱이 계속 반복됩니다.
      */
     public void play() {
-        while (!RacingGameLogic.isGameOver(gameState)) {
-            gameState = RacingGameLogic.update(gameState);
+        while (!RacingGame.isGameOver(gameState)) {
+            gameState = RacingGame.update(gameState);
             RacingGameRenderer.renderGame(gameState);
         }
 
-        RacingGameRenderer.renderWinners(RacingGameLogic.getWinnerList(gameState));
+        RacingGameRenderer.renderWinners(RacingGame.getWinnerList(gameState));
     }
 }
