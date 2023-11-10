@@ -33,9 +33,9 @@ class CarsTest {
 		MoveStrategy moveStrategy = () -> true;
 		carRacing.moveCars(moveStrategy);
 
-		assertThat(cars.get(0).getPosition()).isEqualTo(1);
-		assertThat(cars.get(1).getPosition()).isEqualTo(1);
-		assertThat(cars.get(2).getPosition()).isEqualTo(1);
+		assertThat((cars.get(0)).isSamePosition(1)).isTrue();
+		assertThat((cars.get(1)).isSamePosition(1)).isTrue();
+		assertThat((cars.get(2)).isSamePosition(1)).isTrue();
 	}
 
 	@DisplayName("랜덤값이 4미안 일 때 카 리스트들의 차는 정지한다")
@@ -47,8 +47,8 @@ class CarsTest {
 		MoveStrategy moveStrategy = () -> false;
 		carRacing.moveCars(moveStrategy);
 
-		assertThat(cars.get(0).getPosition()).isEqualTo(0);
-		assertThat(cars.get(1).getPosition()).isEqualTo(0);
-		assertThat(cars.get(2).getPosition()).isEqualTo(0);
+		assertThat((cars.get(0)).isSamePosition(0)).isTrue();
+		assertThat((cars.get(1)).isSamePosition(0)).isTrue();
+		assertThat((cars.get(2)).isSamePosition(0)).isTrue();
 	}
 }

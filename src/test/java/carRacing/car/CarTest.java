@@ -15,7 +15,7 @@ class CarTest {
 		MoveStrategy moveStrategy = () -> true;
 		car.moveCar(moveStrategy);
 
-		assertThat(car.getPosition()).isEqualTo(1);
+		assertThat(car.isSamePosition(1)).isTrue();
 	}
 
 	@DisplayName("random값이 4미만일 경우 차는 그대로 서있는다")
@@ -25,7 +25,7 @@ class CarTest {
 		MoveStrategy moveStrategy = () -> false;
 		car.moveCar(moveStrategy);
 
-		assertThat(car.getPosition()).isEqualTo(0);
+		assertThat(car.isSamePosition(1)).isFalse();
 	}
 
 	@DisplayName("자동차에 이름을 부여할 수 있다")

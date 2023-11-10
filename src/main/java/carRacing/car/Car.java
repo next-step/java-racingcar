@@ -28,8 +28,8 @@ public class Car {
 		}
 	}
 
-	public boolean isSamePosition(int maxPosition) {
-		return maxPosition == this.position;
+	public boolean isSamePosition(int position) {
+		return position == this.position;
 	}
 
 	public int maxPosition(int maxPosition) {
@@ -39,6 +39,9 @@ public class Car {
 		return maxPosition;
 	}
 
+	public int getPosition() {
+		return position;
+	}
 	public String getName() {
 		return name;
 	}
