@@ -1,11 +1,13 @@
 package racingcar.race;
 
 import racingcar.domain.Car;
+import racingcar.domain.RaceRecord;
 import racingcar.rule.Rule;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -14,10 +16,12 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public void move(Rule rule) {
+    public RaceRecords move(Rule rule) {
         for (Car car : cars) {
             moveCar(rule, car);
         }
+
+        return raceRecords();
     }
 
     private void moveCar(Rule rule, Car car) {
@@ -26,10 +30,15 @@ public class Cars {
 
     private boolean movable(Rule rule) {
         return rule.verify();
-
     }
 
-    public List<Car> list() {
+    private RaceRecords raceRecords() {
+        return new RaceRecords(cars.stream()
+                .map(Car::record)
+                .collect(Collectors.toList()));
+    }
+
+    public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 }

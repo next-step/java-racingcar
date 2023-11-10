@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.race.Race;
+import racingcar.race.RaceRecords;
 import racingcar.rule.Rule;
 import racingcar.view.*;
 
@@ -9,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
-
-
     private final ResultView resultView;
     private final InputView inputView;
 
@@ -27,12 +26,15 @@ public class RacingCarGame {
 
         this.cars = new ArrayList<>();
         this.races = new ArrayList<>();
+
+        createCar();
+        createRace();
     }
 
     public void start() {
-        createCar();
-        createRace();
-        startRace();
+        for (Race race : races) {
+            RaceRecords raceRecords = race.start();
+        }
     }
 
     public void raceResult() {
@@ -85,11 +87,5 @@ public class RacingCarGame {
     private boolean isCountView() {
         return inputView instanceof InputCountView
                 || inputView instanceof CountView;
-    }
-
-    private void startRace() {
-        for (Race race : races) {
-            race.start();
-        }
     }
 }
