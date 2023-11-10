@@ -3,6 +3,9 @@ package study.racingcar;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import study.racingcar.view.InputView;
+import study.racingcar.view.OutputView;
+import study.racingcar.view.ScoreBoardView;
 
 public class GameBoard {
     private final InputView inputView = new InputView();
@@ -26,7 +29,6 @@ public class GameBoard {
             round.race(scoreBoard, randomGenerator);
         });
 
-        outputView.printListMapValues(scoreBoard.scores());
-        outputView.printEnter();
+        ScoreBoardView.printResult(ScoreBoardResult.create().result(scoreBoard));
     }
 }

@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import java.util.Objects;
+
 public class Score {
 
     private final Car car;
@@ -10,8 +12,8 @@ public class Score {
         this.moveStatus = car.canMove(randomGenerator);
     }
 
-    public MoveStatus score() {
-        if (moveStatus.equals(MoveStatus.MOVE)) {
+    public MoveStatus scoreMoveStatus(){
+        if (moveStatus.equals(MoveStatus.MOVE)){
             return MoveStatus.MOVE;
         }
         return MoveStatus.STOP;
@@ -19,5 +21,22 @@ public class Score {
 
     public Car whozScore() {
         return car;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Score score = (Score) o;
+        return Objects.equals(car, score.car) && moveStatus == score.moveStatus;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(car, moveStatus);
     }
 }

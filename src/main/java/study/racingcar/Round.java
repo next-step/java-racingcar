@@ -11,13 +11,10 @@ public class Round {
         this.participateCars = cars;
     }
 
-    public void race(ScoreBoard scoreBoard, RandomGenerator randomGenerator) {
-        ScoreEachRound scoreEachRound = new ScoreEachRound(participateCars.carlist().stream()
-                        .map(car -> {
-                            return new Score(car, randomGenerator);
-                        })
+    public ScoreEachRound race(ScoreBoard scoreBoard, RandomGenerator randomGenerator) {
+        return new ScoreEachRound(participateCars.carlist().stream()
+                        .map(car -> new Score(car, randomGenerator))
                         .collect(Collectors.toList())
         );
-        scoreBoard.score(scoreEachRound);
     }
 }
