@@ -1,8 +1,8 @@
-package racing;
+package racing.domain;
 
 import java.util.Random;
 
-public class RandomMoveCondition implements MoveCondition {
+public class MoveConditionRandom implements MoveCondition {
 
     private static final int BOUND = 9;
     private static final int FORWARD_CONDITION = 4;
