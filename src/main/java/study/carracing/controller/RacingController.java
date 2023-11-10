@@ -9,6 +9,7 @@ public class RacingController {
 
     private final InputView inputView;
     private final ResultView resultView;
+    private static final String NAMES_DELIMITER = ",";
 
     public RacingController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
@@ -16,12 +17,14 @@ public class RacingController {
     }
 
     public void start() {
-        final String[] carsName = Validator.validateCarName(inputView.inputCarsName());
-        final int tryCount = Validator.validateNumber(inputView.inputTryCount());
+        final String carsName = inputView.inputCarsName();
+        Validator.validateCarName(carsName);
+        final int tryCount = inputView.inputTryCount();
+        Validator.validateNumber(tryCount);
 
         resultView.outputTitle();
         Racing racing = new Racing();
-        racing.start(carsName, tryCount);
+        racing.start(carsName.split(NAMES_DELIMITER), tryCount);
         resultView.outputResult(racing.getRacingCars());
         resultView.outputResultAndComment(racing.getWinnersName());
     }
