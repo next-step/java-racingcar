@@ -1,11 +1,10 @@
 package carRacing.car;
 
-import carRacing.car.Car;
 import carRacing.numberMaker.NumberMaker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarRacing {
+public class Cars {
 
 	private List<Car> cars = new ArrayList<>();
 

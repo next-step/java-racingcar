@@ -1,7 +1,7 @@
 package carRacing;
 
 import carRacing.car.Car;
-import carRacing.car.CarRacing;
+import carRacing.car.Cars;
 import carRacing.car.CarWinner;
 import carRacing.numberMaker.NumberMaker;
 import carRacing.numberMaker.RandomNumberMaker;
@@ -19,7 +19,7 @@ public class CarRacingMain {
 		System.out.println("실행 결과");
 
 		ResultView result = new ResultView();
-		CarRacing carRacing = new CarRacing();
+		Cars carRacing = new Cars();
 		List<Car> cars = carRacing.makeCars(nameInputs.length, nameInputs);
 		NumberMaker numberMaker = new RandomNumberMaker();
 

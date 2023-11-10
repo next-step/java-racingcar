@@ -7,17 +7,16 @@ import carRacing.numberMaker.NotMoveableNumberMaker;
 import carRacing.numberMaker.NumberMaker;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class CarRacingTest {
+class CarsTest {
 
 	@DisplayName("입력받은 이름들에 맞게 카 리스트를 만들 수 있다")
 	@ParameterizedTest
 	@ValueSource(ints = {3})
 	void makeCarList(int carCount) {
-		CarRacing carRacing = new CarRacing();
+		Cars carRacing = new Cars();
 		List<Car> cars = carRacing.makeCars(carCount, new String[]{"pobi", "lee", "geun"});
 
 		assertThat(cars.size()).isEqualTo(3);
@@ -31,7 +30,7 @@ class CarRacingTest {
 	@ParameterizedTest
 	@ValueSource(ints = {3})
 	void moveCarList(int carCount) {
-		CarRacing carRacing = new CarRacing();
+		Cars carRacing = new Cars();
 		List<Car> cars = carRacing.makeCars(carCount, new String[]{"pobi", "lee", "geun"});
 		NumberMaker numberMaker = new MoveableNumberMaker();
 		carRacing.moveCars(numberMaker);
@@ -45,7 +44,7 @@ class CarRacingTest {
 	@ParameterizedTest
 	@ValueSource(ints = {3})
 	void stopCarList(int carCount) {
-		CarRacing carRacing = new CarRacing();
+		Cars carRacing = new Cars();
 		List<Car> cars = carRacing.makeCars(carCount, new String[]{"pobi", "lee", "geun"});
 		NumberMaker numberMaker = new NotMoveableNumberMaker();
 		carRacing.moveCars(numberMaker);
