@@ -5,9 +5,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingCarTest {
+
+    @Test
+    void 자동차이름_길이확인() {
+        assertThatThrownBy(() -> {
+            Car actual = new Car("jonndan");
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
+    }
 
     @Test
     void 랜덤값() {

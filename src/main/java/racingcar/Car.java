@@ -5,8 +5,16 @@ import java.util.Objects;
 public class Car {
     public static final int VALUE = 3;
     private int distance;
+    private String name;
 
     public Car() {}
+
+    public Car(String name) {
+        if (name.length() > 5) {
+            throw new StringIndexOutOfBoundsException();
+        }
+        this.name = name;
+    }
 
     public Car(int distance) {
         this.distance = distance;
