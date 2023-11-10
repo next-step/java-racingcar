@@ -4,7 +4,7 @@ package racewinner.controller;
 import racewinner.domain.CarRacing;
 import racewinner.domain.Cars;
 import racewinner.domain.CarsFactory;
-import racewinner.domain.strategy.RandomMoveStrategy;
+import racewinner.util.RandomGenerator;
 import racewinner.view.InputView;
 import racewinner.view.ResultView;
 
@@ -14,7 +14,7 @@ public class RaceApp {
         final int raceAttemptCount = InputView.inputRaceAttemptCount();
 
         final Cars cars = new CarsFactory().create(carNameList);
-        final CarRacing carRacing = new CarRacing(cars, raceAttemptCount, new RandomMoveStrategy());
+        final CarRacing carRacing = new CarRacing(cars, raceAttemptCount, new RandomGenerator());
 
         while (!carRacing.isFinished()) {
             carRacing.race();

@@ -1,10 +1,9 @@
-package racewinner.domain.strategy;
+package racewinner.util;
 
 import java.util.Random;
 
-public class RandomMoveStrategy implements MoveStrategy {
+public class RandomGenerator {
     private final static int MAX_NUMBER = 10;
-    @Override
     public int number() {
         return new Random().nextInt(MAX_NUMBER);
     }

@@ -1,6 +1,6 @@
 package racewinner.domain;
 
-import racewinner.domain.strategy.MoveStrategy;
+import racewinner.util.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public void move(RandomGenerator generator) {
         for (Car car: cars) {
-            car.move(moveStrategy.number());
+            car.move(generator.number());
         }
     }
 

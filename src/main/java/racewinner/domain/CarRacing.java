@@ -1,20 +1,21 @@
 package racewinner.domain;
 
-import racewinner.domain.strategy.MoveStrategy;
 import racewinner.exception.NegativeNumberException;
+import racewinner.util.RandomGenerator;
+
 import java.util.List;
 
 public class CarRacing {
     private final Cars cars;
     private int remainCount;
-    private MoveStrategy moveStrategy;
+    private RandomGenerator generator;
 
-    public CarRacing(Cars cars, int raceAttemptCount, MoveStrategy moveStrategy) {
+    public CarRacing(Cars cars, int raceAttemptCount, RandomGenerator generator) {
         this.cars = cars;
 
         negativeNumberCheck(raceAttemptCount);
         this.remainCount = raceAttemptCount;
-        this.moveStrategy = moveStrategy;
+        this.generator = generator;
     }
 
     private void negativeNumberCheck(final int raceAttemptCount) {
@@ -25,7 +26,7 @@ public class CarRacing {
 
     public void race() {
         this.remainCount--;
-        cars.move(moveStrategy);
+        cars.move(generator);
     }
 
     public boolean isFinished() {

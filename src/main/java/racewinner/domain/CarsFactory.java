@@ -1,9 +1,5 @@
 package racewinner.domain;
 
-import racewinner.domain.Car;
-import racewinner.domain.Cars;
-import racewinner.domain.strategy.MoveStrategy;
-import racewinner.domain.strategy.RandomMoveStrategy;
 import racewinner.exception.InputEmptyException;
 import racewinner.exception.InvalidDelimiterException;
 
