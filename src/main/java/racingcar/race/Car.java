@@ -9,7 +9,11 @@ public class Car {
     private final Position position;
 
     public Car(String name) {
-        this(name, new Position(0));
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
+        this(name, new Position(position));
     }
 
     public Car(String name, Position position) {
