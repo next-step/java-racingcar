@@ -1,4 +1,4 @@
-package study.carRacing;
+package study.race;
 
 import java.util.Scanner;
 
@@ -19,7 +19,6 @@ public class ReceiveInputValue {
 
     public int receiveInputValueForRound() {
         System.out.println(ROUND_INPUT_MESSAGE);
-        return this.scanner.nextInt();
+        return this.scanner.nextInt() - 1;
     }
-
 }

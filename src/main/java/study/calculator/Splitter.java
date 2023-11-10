@@ -1,6 +1,5 @@
-package study.stringCalculator;
+package study.calculator;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Splitter {
