@@ -6,17 +6,13 @@ import java.util.List;
 public class MoveCarStatus {
     private List<Car> cars = new ArrayList<>();
 
-    public MoveCarStatus(String[] carNames, int position, int decisionValue) {
+    public MoveCarStatus(String[] carNames, int position) {
         for(String carName : carNames) {
-            cars.add(new Car(carName, position, decisionValue));
+            cars.add(new Car(carName, position));
         }
     }
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
     }
 }
