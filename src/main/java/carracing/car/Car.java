@@ -52,7 +52,7 @@ public class Car {
 
 	public boolean sameDistance(int maxMovingDistance) {
 		Boolean same = new Equal(this.movingDistance, maxMovingDistance);
-		
+
 		return same.booleanValue();
 	}
 }

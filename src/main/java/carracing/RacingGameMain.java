@@ -4,32 +4,26 @@ import carracing.car.Car;
 import carracing.car.Cars;
 import carracing.car.MaxMoving;
 import carracing.car.MovingStrategy;
+import carracing.car.RacingGame;
 import carracing.car.RandomRange;
+import carracing.view.InputView;
+import carracing.view.ResultView;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class RacingGameMain {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		List<Car> cars = InputView.inputCars(scanner);
+		List<Car> inputCars = InputView.inputCars(scanner);
+		Cars racingCars = new Cars(inputCars);
+
+		RacingGame racingGame = new RacingGame(racingCars);
+		MovingStrategy movingStrategy = new RandomRange(0, 9);
 		int tryingTimes = InputView.inputTryingNumber(scanner);
+		racingGame.race(movingStrategy, tryingTimes);
 
 		ResultView.printResultPhrase();
-		for (int i = 0; i < tryingTimes; i++) {
-			racing(cars);
-		}
-
-		Cars racingCars = new Cars(cars);
 		ResultView.printWinners(racingCars.winners(new MaxMoving()));
-	}
-
-	public static void racing(List<Car> cars) {
-		MovingStrategy movingStrategy = new RandomRange(0, 9);
-		for (Car car : cars) {
-			car.move(movingStrategy);
-			ResultView.printMovingResult(car);
-		}
-		ResultView.empty();
 	}
 }

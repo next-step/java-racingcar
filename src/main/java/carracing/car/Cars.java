@@ -16,4 +16,16 @@ public class Cars {
 	public List<Car> winners(WinnerStrategy winnerStrategy) {
 		return winnerStrategy.winners(cars);
 	}
+
+	public void race(MovingStrategy movingStrategy, int tryingTimes) {
+		for (int i = 0; i < tryingTimes; i++) {
+			this.race(movingStrategy);
+		}
+	}
+
+	private void race(MovingStrategy movingStrategy) {
+		for (Car car : cars) {
+			car.move(movingStrategy);
+		}
+	}
 }
