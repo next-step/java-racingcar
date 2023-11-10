@@ -1,10 +1,10 @@
 package step4;
 
-import step4.controller.CarRacingController;
-import step4.view.CarRacingInputView;
-import step4.view.InputDto;
-import step4.view.MyScanner;
-import step4.view.ScannerInterface;
+import step4.model.Car;
+import step4.model.CarRacingPlay;
+import step4.model.ChampionCarsDto;
+import step4.model.MyRandomValueGenerator;
+import step4.view.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +19,18 @@ public class CarRacing {
         CarRacingInputView carRacingInputView = new CarRacingInputView(myScanner);
         InputDto inputDto = carRacingInputView.inputRacingCondition();
 
-        CarRacingController carRacingController = new CarRacingController(inputDto);
-        carRacingController.carRacing();
+
+        ResultView resultView = new ResultView();
+        resultView.printRacingResultStartText();
+
+        CarRacingPlay carRacingPlay = new CarRacingPlay(new MyRandomValueGenerator(), inputDto.getCarNames());
+
+        for (int i = 0; i < inputDto.getCarRacingChance(); i++) {
+            List<Car> cars = carRacingPlay.raceOneCycle();
+            resultView.printRacingStatus(cars);
+        }
+
+        ChampionCarsDto champions = carRacingPlay.findChampions();
+        resultView.printChampionCars(champions);
     }
 }
