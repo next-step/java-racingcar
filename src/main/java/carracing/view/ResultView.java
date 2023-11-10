@@ -1,6 +1,7 @@
 package carracing.view;
 
-import carracing.car.Car;
+import carracing.domain.car.Car;
+import carracing.domain.car.Cars;
 
 import java.util.List;
 
@@ -9,9 +10,9 @@ public class ResultView {
 		System.out.println("실행 결과");
 	}
 
-	public static void printMovingResult(Car car) {
-		String result = "-".repeat(Math.max(0, car.movingDistance()));
-		System.out.println(car.name() + " : " + result);
+	public static void printMovingResult(Cars cars) {
+		cars.printMovingResult();
+		empty();
 	}
 
 	public static void empty() {
