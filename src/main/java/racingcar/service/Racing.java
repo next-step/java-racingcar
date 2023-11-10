@@ -20,7 +20,7 @@ public class Racing {
             moveCars(carList);
             System.out.println("");
         }
-        ResultView.printWinner(Winner.getWinners(carList));
+        ResultView.printWinner(cars.getWinners());
     }
 
     private void moveCars(List<Car> cars) {

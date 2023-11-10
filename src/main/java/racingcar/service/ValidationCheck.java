@@ -21,9 +21,6 @@ public class ValidationCheck {
     public static void checkInputTryCount(int input) {
         String checkInput = Integer.toString(input);
 
-        if (isEmpty(input)) {
-            throw new NullPointerException("숫자만 입력가능합니다.");
-        }
         if (!isNumber(checkInput)) {
             throw new IllegalArgumentException("숫자만 입력가능합니다.");
         }
@@ -35,13 +32,6 @@ public class ValidationCheck {
 
     private static boolean isNumber(String input) {
         return Pattern.matches(REG_EXP, input);
-    }
-
-    private static boolean isEmpty(Integer input) {
-        if (input == null) {
-            return true;
-        }
-        return false;
     }
 
     private static boolean isEmpty(String input) {
