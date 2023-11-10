@@ -11,7 +11,7 @@ public class CarRacingTest {
     @DisplayName("음수의 레이싱횟수를 입력하면 NegativeNumberException가 발생한다.")
     @Test
     void negativeNumber() {
-        assertThatThrownBy(() -> new CarRacing(null, -1))
+        assertThatThrownBy(() -> new CarRacing(null, -1, null))
                 .isInstanceOf(NegativeNumberException.class);
     }
 }

@@ -1,32 +1,29 @@
 package racewinner.domain;
 
-import racewinner.domain.strategy.MoveStrategy;
 
 public class Car {
+    private final static int FORWARD_NUMBER = 4;
     private final Name name;
     private final Position position;
-    private final MoveStrategy moveStrategy;
 
-    public Car(final String name, final MoveStrategy moveStrategy) {
-        this(name, new Position(0), moveStrategy);
+    public Car(final String name) {
+        this(name, new Position(0));
     }
-    public Car(final String name, final Position position, final MoveStrategy moveStrategy) {
+    public Car(final String name, final Position position) {
         this.name = new Name(name);
         this.position = position;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
-        if (moveStrategy.isMovable()) {
+    public void move(final int number) {
+        if (isMovable(number)) {
             position.move();
         }
     }
 
-    public Position currentPosition() {
-        return position;
+    private boolean isMovable(int number) {
+        return FORWARD_NUMBER <= number;
     }
-
-    public String name() { return name.get(); }
+    String name() { return name.get(); }
 
     public boolean isWinner(final Position position) {
         return this.position.equals(position);

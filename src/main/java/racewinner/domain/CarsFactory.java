@@ -13,17 +13,17 @@ import java.util.List;
 public class CarsFactory {
     private final static String SPLIT_DELIMITER = ",";
     public Cars create(final String carNameList) {
-        return initCars(carNameList, new RandomMoveStrategy());
+        return initCars(carNameList);
     }
 
-    private Cars initCars(final String inputCarListName, final MoveStrategy moveStrategy) {
+    private Cars initCars(final String inputCarListName) {
         validationInput(inputCarListName);
 
         String[] carNameList = splitInputText(inputCarListName);
 
         final List<Car> cars = new ArrayList<>();
         for (String carName: carNameList) {
-            cars.add(new Car(carName, moveStrategy));
+            cars.add(new Car(carName));
         }
 
         return new Cars(cars);

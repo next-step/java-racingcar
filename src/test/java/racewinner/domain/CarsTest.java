@@ -13,9 +13,9 @@ public class CarsTest {
     @Test
     void winnerTest() {
         //given
-        final Car bobo = new Car("bobo", new Position(3),  null);
-        final Car coco = new Car("coco", new Position(3), null);
-        final Car nono = new Car("nono", new Position(1), null);
+        final Car bobo = new Car("bobo", new Position(3));
+        final Car coco = new Car("coco", new Position(3));
+        final Car nono = new Car("nono", new Position(1));
         final Cars cars = new Cars(Arrays.asList(bobo, coco, nono));
 
         //when

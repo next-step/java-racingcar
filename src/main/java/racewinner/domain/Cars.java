@@ -1,5 +1,7 @@
 package racewinner.domain;
 
+import racewinner.domain.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +12,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         for (Car car: cars) {
-            car.move();
+            car.move(moveStrategy.number());
         }
     }
 
