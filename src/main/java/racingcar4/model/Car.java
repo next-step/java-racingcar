@@ -1,5 +1,6 @@
 package racingcar4.model;
 
+
 //자동차 자체 모델
 public class Car {
     private static final int ADVANCE_MINIMUM_VALUE = 4;
@@ -34,6 +35,7 @@ public class Car {
         forwardOneStep(canMove);
     }
 
+
     //글자수 초과
     private void carNameTest(String name) {
         if (name.length() > NAME_LENGTH_MAXIMUM) {
@@ -57,5 +59,4 @@ public class Car {
     public void getStatus() {
         System.out.println(name + " : " + "-".repeat(position));
     }
-
 }
