@@ -6,11 +6,21 @@ import carracing.domain.race.move.RandomMoveStopStrategy;
 import carracing.domain.race.point.RandomPointProvider;
 
 public class CarRaceConfig {
-    public static CarRaceService carRaceService() {
+    private CarRaceService carRaceService;
+
+    public CarRaceConfig() {
+        this.carRaceService = this.carRaceService();
+    }
+
+    private CarRaceService carRaceService() {
         return new CarRaceService(moveStrategy());
     }
 
-    public static MoveStrategy moveStrategy() {
+    private MoveStrategy moveStrategy() {
         return new RandomMoveStopStrategy(new RandomPointProvider());
+    }
+
+    public CarRaceService getCarRaceService() {
+        return carRaceService;
     }
 }
