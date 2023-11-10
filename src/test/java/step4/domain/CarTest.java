@@ -87,4 +87,18 @@ class CarTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("엑셀의 작동 범위를 벗어납니다.");
     }
+
+    @DisplayName("인자로 받은 수와 자신의 이동위치를 비교해 더 큰 값을 반환한다.")
+    @ParameterizedTest
+    @CsvSource({"1,5", "3,5", "6,6", "7,7"})
+    void comparePosition(int position, int expectedResult) {
+        // given
+        Car hong = new Car("hong", 5);
+
+        // when
+        int realResult = hong.comparePosition(position);
+
+        // then
+        assertThat(realResult).isEqualTo(expectedResult);
+    }
 }

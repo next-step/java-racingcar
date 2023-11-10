@@ -19,6 +19,11 @@ public class Car {
         this.name = new Name(name);
     }
 
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = position;
+    }
+
     public int getCurrentPosition() {
         return this.position;
     }
@@ -43,5 +48,9 @@ public class Car {
 
     private boolean isMovable(int power) {
         return power >= CONDITION_OF_MOVE;
+    }
+
+    public int comparePosition(int position) {
+        return Math.max(position, this.position);
     }
 }
