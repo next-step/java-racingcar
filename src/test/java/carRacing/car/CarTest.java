@@ -2,10 +2,7 @@ package carRacing.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import carRacing.car.Car;
-import carRacing.numberMaker.MoveableNumberMaker;
-import carRacing.numberMaker.NotMoveableNumberMaker;
-import carRacing.numberMaker.NumberMaker;
+import carRacing.moveStrategy.MoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +12,8 @@ class CarTest {
 	@Test
 	void moveCar() {
 		Car car = new Car();
-		NumberMaker numberMaker = new MoveableNumberMaker();
-		car.moveCar(numberMaker);
+		MoveStrategy moveStrategy = () -> true;
+		car.moveCar(moveStrategy);
 
 		assertThat(car.getPosition()).isEqualTo(1);
 	}
@@ -25,8 +22,8 @@ class CarTest {
 	@Test
 	void stopCar() {
 		Car car = new Car();
-		NumberMaker numberMaker = new NotMoveableNumberMaker();
-		car.moveCar(numberMaker);
+		MoveStrategy moveStrategy = () -> false;
+		car.moveCar(moveStrategy);
 
 		assertThat(car.getPosition()).isEqualTo(0);
 	}

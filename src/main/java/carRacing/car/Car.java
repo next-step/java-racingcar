@@ -1,6 +1,6 @@
 package carRacing.car;
 
-import carRacing.numberMaker.NumberMaker;
+import carRacing.moveStrategy.MoveStrategy;
 
 public class Car {
 
@@ -22,14 +22,10 @@ public class Car {
 		this.name = name;
 	}
 
-	public void moveCar(NumberMaker numberMaker) {
-		if (isCarFoward(numberMaker.makeNumber())) {
+	public void moveCar(MoveStrategy moveStrategy) {
+		if (moveStrategy.isForward()) {
 			position++;
 		}
-	}
-
-	private boolean isCarFoward(int num) {
-		return num >= MINIMUM_TO_MOVE;
 	}
 
 	public int getPosition() {

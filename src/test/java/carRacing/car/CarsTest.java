@@ -2,9 +2,7 @@ package carRacing.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import carRacing.numberMaker.MoveableNumberMaker;
-import carRacing.numberMaker.NotMoveableNumberMaker;
-import carRacing.numberMaker.NumberMaker;
+import carRacing.moveStrategy.MoveStrategy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -32,8 +30,8 @@ class CarsTest {
 	void moveCarList(int carCount) {
 		Cars carRacing = new Cars();
 		List<Car> cars = carRacing.makeCars(carCount, new String[]{"pobi", "lee", "geun"});
-		NumberMaker numberMaker = new MoveableNumberMaker();
-		carRacing.moveCars(numberMaker);
+		MoveStrategy moveStrategy = () -> true;
+		carRacing.moveCars(moveStrategy);
 
 		assertThat(cars.get(0).getPosition()).isEqualTo(1);
 		assertThat(cars.get(1).getPosition()).isEqualTo(1);
@@ -46,8 +44,8 @@ class CarsTest {
 	void stopCarList(int carCount) {
 		Cars carRacing = new Cars();
 		List<Car> cars = carRacing.makeCars(carCount, new String[]{"pobi", "lee", "geun"});
-		NumberMaker numberMaker = new NotMoveableNumberMaker();
-		carRacing.moveCars(numberMaker);
+		MoveStrategy moveStrategy = () -> false;
+		carRacing.moveCars(moveStrategy);
 
 		assertThat(cars.get(0).getPosition()).isEqualTo(0);
 		assertThat(cars.get(1).getPosition()).isEqualTo(0);

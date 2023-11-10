@@ -1,6 +1,6 @@
 package carRacing.car;
 
-import carRacing.numberMaker.NumberMaker;
+import carRacing.moveStrategy.MoveStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +15,9 @@ public class Cars {
 		return cars;
 	}
 
-	public void moveCars(NumberMaker numberMaker) {
+	public void moveCars(MoveStrategy moveStrategy) {
 		for (Car car : cars) {
-			car.moveCar(numberMaker);
+			car.moveCar(moveStrategy);
 		}
 	}
 }
