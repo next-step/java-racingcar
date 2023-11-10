@@ -3,22 +3,20 @@ package study;
 import java.util.ArrayList;
 import static study.RacingCar.BLANK;
 import static study.RacingCarGame.*;
-import static study.StringAddCalculator.ZERO;
 
 public class ResultView {
 
-    public static void result(ArrayList<RacingCar> carList){
+    public static void result(ArrayList<RacingCar> carList,int stepNum){
 
         int carNum = carList.size();
-        int loopNum = ZERO;
-        String Champions = BLANK;
+        int loopNum = stepNum;
+        String champions = BLANK;
 
         if(carList.size()==0){
             throw new IllegalArgumentException("차량들이 레이싱을 하지 않았습니다.");
 
         }
 
-        loopNum = carList.get(0).getLoopCount();
         System.out.println("실행 결과");
 
         for(int i = 0; i<loopNum; i++){
@@ -38,9 +36,9 @@ public class ResultView {
          */
         ArrayList<RacingCar> championList = championList(carList,maxCount);
 
-        Champions = combineName(championList);
+        champions = combineName(championList);
 
-        System.out.println(Champions+"가 최종 우승했습니다.");
+        System.out.println(champions+"가 최종 우승했습니다.");
 
     }
 

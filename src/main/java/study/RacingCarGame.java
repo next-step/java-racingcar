@@ -15,16 +15,9 @@ public class RacingCarGame {
     /**
      *  RacingCar 생성
      */
-    public static ArrayList<RacingCar> creatCar(String carText,String carNames, String stepText){
-        int carNum = ZERO;
-        int loopNum = ZERO;
+    public static ArrayList<RacingCar> creatCar(int carNum,String[] carNameList, int loopNum){
 
         ArrayList<RacingCar> carList = new ArrayList<RacingCar>();;
-
-        String[] carNameList = carNames.split(",");
-
-        carNum = _checkValue(carText);
-        loopNum = _checkValue(stepText);
 
         if(carNum != carNameList.length){
             throw new IllegalArgumentException("입력한 차량 대수와 차량명 개수가 다릅니다.");
@@ -32,9 +25,10 @@ public class RacingCarGame {
 
         for (int i=0; i<carNum ;i++){
             // 차량명 길이 체크
-            _checkValid(carNameList[i]);
-            ArrayList<Double> randomList = creatRandom(loopNum);
-            carList.add(new RacingCar(carNameList[i],countDrive(randomList),loopNum,randomList));
+            checkValid(carNameList[i]);
+            ArrayList<Integer> randomList = creatRandom(loopNum);
+
+            carList.add(new RacingCar(carNameList[i],countDrive(randomList),randomList));
         }
 
         return carList;
@@ -44,7 +38,7 @@ public class RacingCarGame {
      * 차량명 길이 체크
      * @param carName
      */
-    private static void _checkValid(String carName) {
+    private static void checkValid(String carName) {
         if(carName.length()> THRESHOLD){
             throw new IllegalArgumentException("자동차 이름은 5자를 초과 하였습니다.");
         }
@@ -53,8 +47,8 @@ public class RacingCarGame {
     /**
      *  RacingCar 생성
      */
-    public static ArrayList<Double> creatRandom(int loopNum){
-        ArrayList<Double> randomList = new ArrayList<Double>();
+    public static ArrayList<Integer> creatRandom(int loopNum){
+        ArrayList<Integer> randomList = new ArrayList<Integer>();
 
         for (int i=0; i<loopNum ;i++){
             randomList.add(randomValue());
@@ -69,7 +63,7 @@ public class RacingCarGame {
      * @param text
      * @return 숫자
      */
-    private static int _checkValue(String text){
+    public static int checkValue(String text){
 
         /*
         공백, null 일때 Exception 발생
@@ -97,7 +91,7 @@ public class RacingCarGame {
      * Random 숫자 생성
      * @return 0 ~ 9 자연수
      */
-    public static double randomValue(){
+    public static int randomValue(){
         Random random = new Random();
         return random.nextInt(10);
     }
@@ -105,9 +99,9 @@ public class RacingCarGame {
     /**
      * 4보다 큰값 Count
      */
-    public static int countDrive(ArrayList<Double> randomList){
+    private static int countDrive(ArrayList<Integer> randomList){
 
-        ArrayList<Double> list = (ArrayList<Double>) randomList.stream()
+        ArrayList<Integer> list = (ArrayList<Integer>) randomList.stream()
                 .filter(item -> item >= CONDITION_VAL)
                 .collect(Collectors.toList());
 
@@ -116,10 +110,11 @@ public class RacingCarGame {
 
     public static int maxStep(ArrayList<RacingCar> carList){
 
-        int maxNum = carList
-                .stream()
-                .mapToInt(car -> car.getDrive())
-                .max().orElseThrow(NoSuchElementException::new);
+        int maxNum = ZERO;
+
+        for(RacingCar car: carList){
+            maxNum = car.maxStep(maxNum);
+        }
 
         return maxNum;
     }
@@ -127,7 +122,7 @@ public class RacingCarGame {
     public static ArrayList<RacingCar> championList(ArrayList<RacingCar> carList, int maxCount){
 
         return (ArrayList<RacingCar>) carList.stream()
-                .filter(item -> item.getDrive() == maxCount)
+                .filter(item -> item.checkChampion(maxCount))
                 .collect(Collectors.toList());
     }
 
@@ -135,7 +130,7 @@ public class RacingCarGame {
     public static String combineName(ArrayList<RacingCar> champions){
 
         return champions.stream()
-                .map(RacingCar::getCarName)
+                .map(RacingCar::carName)
                 .collect(Collectors.joining(", "));
     }
 
