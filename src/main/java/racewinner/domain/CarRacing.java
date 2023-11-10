@@ -1,6 +1,6 @@
 package racewinner.domain;
 
-import racewinner.expteion.NegativeNumberException;
+import racewinner.exception.NegativeNumberException;
 import java.util.List;
 
 public class CarRacing {

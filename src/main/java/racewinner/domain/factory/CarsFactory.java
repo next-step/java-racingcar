@@ -4,8 +4,8 @@ import racewinner.domain.Car;
 import racewinner.domain.Cars;
 import racewinner.domain.strategy.MoveStrategy;
 import racewinner.domain.strategy.RandomMoveStrategy;
-import racewinner.expteion.InputEmptyException;
-import racewinner.expteion.InvalidDelimiterException;
+import racewinner.exception.InputEmptyException;
+import racewinner.exception.InvalidDelimiterException;
 
 import java.util.ArrayList;
 import java.util.List;

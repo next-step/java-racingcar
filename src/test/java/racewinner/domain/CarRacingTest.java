@@ -2,7 +2,7 @@ package racewinner.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racewinner.expteion.NegativeNumberException;
+import racewinner.exception.NegativeNumberException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

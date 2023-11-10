@@ -3,8 +3,8 @@ package racewinner.factory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racewinner.domain.factory.CarsFactory;
-import racewinner.expteion.InputEmptyException;
-import racewinner.expteion.InvalidDelimiterException;
+import racewinner.exception.InputEmptyException;
+import racewinner.exception.InvalidDelimiterException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
