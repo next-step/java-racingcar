@@ -30,7 +30,7 @@ public class RaceCars {
     }
 
     private Car getMaxPosition() {
-        return this.cars.stream().max(comparing(Car::getPosition)).get();
+        return this.cars.stream().max(Comparable::compareTo).get();
     }
 
     public List<Car> getFastestCars() {
