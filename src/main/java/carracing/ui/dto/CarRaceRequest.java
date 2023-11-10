@@ -1,7 +1,7 @@
 package carracing.ui.dto;
 
-import carracing.domain.car.Cars;
-import carracing.domain.race.CarRace;
+import carracing.domain.car.RaceCars;
+import carracing.domain.race.Race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ public class CarRaceRequest {
         this.movingCount = movingCount;
     }
 
-    public CarRace toCarRace() {
-        return new CarRace(Cars.makeCars(carNames));
+    public Race toCarRace() {
+        return new Race(RaceCars.makeCars(carNames));
     }
 
     public Integer getMovingCount() {

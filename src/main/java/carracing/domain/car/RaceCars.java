@@ -9,16 +9,16 @@ import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
 
-public class Cars {
+public class RaceCars {
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(List<Car> cars) {
+    public RaceCars(List<Car> cars) {
         this.cars.addAll(cars);
     }
 
-    public static Cars makeCars(List<String> carNames) {
+    public static RaceCars makeCars(List<String> carNames) {
         List<Car> cars = carNames.stream().map(Car::new).collect(Collectors.toList());
-        return new Cars(cars);
+        return new RaceCars(cars);
     }
 
     public List<Car> getCars() {
