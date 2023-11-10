@@ -14,7 +14,9 @@ public class Car {
         if(ableMove(randomNumber))
             forwardCnt++;
     }
-
+public void moveForward() {
+        forwardCnt++;
+}
     private boolean ableMove(int randomNumber) {
         return randomNumber >= CONDITION_NUMBER;
     }
@@ -25,5 +27,9 @@ public class Car {
 
     public String carName() {
         return carName;
+    }
+
+    public boolean matchPosition(int maxPosition){
+        return forwardCnt == maxPosition;
     }
 }
