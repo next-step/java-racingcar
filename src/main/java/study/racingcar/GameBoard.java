@@ -26,7 +26,8 @@ public class GameBoard {
         ScoreBoard scoreBoard = new ScoreBoard();
 
         rounds.roundList().forEach(round -> {
-            round.race(scoreBoard, randomGenerator);
+            ScoreEachRound race = round.race(scoreBoard, randomGenerator);
+            scoreBoard.score(race);
         });
 
         ScoreBoardView.printResult(ScoreBoardResult.create().result(scoreBoard));

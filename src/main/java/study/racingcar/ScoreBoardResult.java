@@ -42,5 +42,4 @@ public class ScoreBoardResult {
                 .collect(Collectors.toMap(Score::whozScore, score -> ScoreBoardView.scoreToString(score.scoreMoveStatus()))));
     }
 
-
 }
