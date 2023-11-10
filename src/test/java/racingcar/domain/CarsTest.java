@@ -1,9 +1,11 @@
-package racingcar.race;
+package racingcar.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 import racingcar.domain.Position;
+import racingcar.race.Cars;
 import racingcar.rule.MinimumRule;
 import racingcar.rule.Rule;
 import racingcar.util.BasicNumberGenerator;

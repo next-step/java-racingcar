@@ -1,5 +1,6 @@
 package racingcar.race;
 
+import racingcar.domain.Car;
 import racingcar.domain.CarName;
 import racingcar.domain.Position;
 import racingcar.domain.RaceRecord;

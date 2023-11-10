@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.race.Car;
+import racingcar.domain.Car;
 import racingcar.race.Race;
 import racingcar.rule.Rule;
 import racingcar.view.*;
