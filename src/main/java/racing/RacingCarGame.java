@@ -1,5 +1,9 @@
 package racing;
 
+import racing.controller.GameSetup;
+import racing.view.InputView;
+import racing.view.ResultView;
+
 public class RacingCarGame {
 
     public static void main (String[] arg) {

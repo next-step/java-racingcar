@@ -1,11 +1,14 @@
-package racing;
+package racing.controller;
+
+import racing.domain.Car;
+import racing.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameSetup {
-    List<Car> cars = new ArrayList<>();
-    int round;
+    public List<Car> cars = new ArrayList<>();
+    public int round;
 
     public GameSetup(int numCar, int round) {
         this.round = round;

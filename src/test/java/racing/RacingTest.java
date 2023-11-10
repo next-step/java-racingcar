@@ -1,6 +1,7 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
+import racing.controller.GameSetup;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
