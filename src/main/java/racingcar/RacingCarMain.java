@@ -12,6 +12,7 @@ public class RacingCarMain {
                 new ResultView(),
                 new MinimumRule(4, new RandomNumberGenerator(9))
         );
+
         racingCarGame.start();
     }
 }

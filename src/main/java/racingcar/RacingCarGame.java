@@ -8,9 +8,6 @@ import racingcar.rule.Rule;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingCarGame {
     private final ResultView resultView;
     private final InputView inputView;
@@ -18,7 +15,7 @@ public class RacingCarGame {
     private final Rule rule;
 
     private final Cars cars;
-    private final List<Race> races;
+    private final Races races;
 
     public RacingCarGame(InputView inputView, ResultView resultView, Rule rule) {
         this.inputView = inputView;
@@ -27,7 +24,7 @@ public class RacingCarGame {
         this.rule = rule;
 
         this.cars = new Cars();
-        this.races = new ArrayList<>();
+        this.races = new Races();
 
         createCar();
         createRace();
@@ -52,17 +49,17 @@ public class RacingCarGame {
     }
 
     public void start() {
-        for (Race race : races) {
-            printRaceResult(race.start());
+        for (Race race : races.getRaces()) {
+            printRaceRecord(race.start());
         }
         printWinners();
     }
 
-    private void printRaceResult(RaceRecords raceRecords) {
+    private void printRaceRecord(RaceRecords raceRecords) {
         resultView.printRaceRecords(raceRecords);
     }
 
     private void printWinners() {
-        resultView.printWinner(races);
+        resultView.printWinner(races.winners());
     }
 }

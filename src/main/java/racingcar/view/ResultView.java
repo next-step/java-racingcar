@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.CarName;
-import racingcar.domain.Race;
 import racingcar.domain.RaceRecord;
 import racingcar.domain.RaceRecords;
 
@@ -13,7 +12,6 @@ public class ResultView {
     public static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
 
     public void printRaceRecords(RaceRecords raceRecords) {
-
         for (RaceRecord raceRecord : raceRecords.getRaceRecords()) {
             System.out.println(raceRecord.carName().value() + ":" + createPath(raceRecord.position().value()));
         }
@@ -24,9 +22,7 @@ public class ResultView {
         return CAR_PATH.repeat(count);
     }
 
-    public void printWinner(List<Race> races) {
-        Race lastRace = races.get(races.size() - 1);
-        List<CarName> winners = lastRace.raceRecords().winners();
+    public void printWinner(List<CarName> winners) {
         System.out.println(winnerMessage(winners));
     }
 
