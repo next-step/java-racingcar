@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ResultView {
+    private final String CAR_STATUS_EXPRESSION = "-";
 
     public void showRacingCarGame(RacingGameResponse response) {
         HashMap<Integer, List<Integer>> moveCountsByTurn = response.getMoveCountsByTurn();
@@ -22,6 +23,6 @@ public class ResultView {
     }
 
     private void displayCarStatus(int moveCount) {
-        System.out.println("-".repeat(moveCount));
+        System.out.println(CAR_STATUS_EXPRESSION.repeat(moveCount));
     }
 }

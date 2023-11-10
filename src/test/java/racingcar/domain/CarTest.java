@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
 @DisplayName("자동차 도메인 테스트")
 public class CarTest {
     private final int INITIAL_CAR_NUMBER = 5;
@@ -42,5 +44,14 @@ public class CarTest {
         cars.addCar(car1);
         cars.addCar(car2);
         Assertions.assertThat(cars.getAllCar()).contains(car1, car2);
+    }
+
+    @DisplayName("입력된 자동차의 수가 0일 경우 예외가 발생한다.")
+    @Test
+    void inputCarNumberException() {
+        int carNumber = 0;
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Cars newCars = new Cars(carNumber);
+        });
     }
 }

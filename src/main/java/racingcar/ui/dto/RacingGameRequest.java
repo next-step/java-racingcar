@@ -2,8 +2,8 @@ package racingcar.ui.dto;
 
 public class RacingGameRequest {
 
-    private int carNumber;
-    private int endTurn;
+    private final int carNumber;
+    private final int endTurn;
 
     public RacingGameRequest(int carNumber, int endTurn) {
         this.carNumber = carNumber;

@@ -6,15 +6,23 @@ import java.util.Random;
 
 public class Cars {
     private List<Car> cars;
+    private Random random = new Random();
 
     public Cars(int carNumber) {
         cars = new ArrayList<>();
         initializeCars(carNumber);
     }
 
-    public void initializeCars(int carNumber) {
+    private void initializeCars(int carNumber) {
+        checkCarNumber(carNumber);
         for (int i = 0; i < carNumber; i++) {
             this.addCar(new Car());
+        }
+    }
+
+    private void checkCarNumber(int carNumber) {
+        if (carNumber <= 0) {
+            throw new IllegalArgumentException("Input positive car number.");
         }
     }
 
@@ -29,7 +37,6 @@ public class Cars {
     }
 
     private int getRandomValue() {
-        Random random = new Random();
         return random.nextInt(10);
     }
 
@@ -41,7 +48,7 @@ public class Cars {
         return moveCounts;
     }
 
-    public List<Car> getAllCar() {
+    public final List<Car> getAllCar() {
         return cars;
     }
 
