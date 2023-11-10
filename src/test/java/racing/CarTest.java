@@ -62,4 +62,22 @@ public class CarTest {
             Car.createWithName(new CarName("123456"));
         });
     }
+
+    @Test
+    @DisplayName("[Car.go] 4 주어지면 -> 앞으로 이동")
+    public void goIf4() {
+        mySummerCar.go(4);
+
+        assertThat(mySummerCar.getPosition())
+                .isEqualTo(new Position(4));
+    }
+
+    @Test
+    @DisplayName("[Car.go] 3 주어지면 -> 현 위치 고수")
+    public void stopIf3() {
+        mySummerCar.go(3);
+
+        assertThat(mySummerCar.getPosition())
+                .isEqualTo(new Position(3));
+    }
 }

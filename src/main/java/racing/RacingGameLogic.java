@@ -5,8 +5,12 @@ import racing.util.CarGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingGameLogic {
+    public static final int RANDOM_MAX_BOUND = 10;
+    private static Random random = new Random();
+
     private RacingGameLogic() {
     }
 
@@ -67,13 +71,18 @@ public class RacingGameLogic {
         List<Car> carList = beforeState.getCarList();
         int currentCycle = beforeState.getCurrentCycle();
 
+
         for (Car car : carList) {
-            car.go();
+            car.go(getRandomMoveSeed());
         }
 
         currentCycle += 1;
 
         return beforeState.copyWithCarListAndCurrentCycle(carList, currentCycle);
+    }
+
+    private static int getRandomMoveSeed() {
+        return random.nextInt(RANDOM_MAX_BOUND);
     }
 
     /**

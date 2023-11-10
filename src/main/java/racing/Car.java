@@ -9,6 +9,8 @@ import racing.type.Position;
 public class Car {
     /** 사용자가 위치를 지정하지 않았을 때 기본 시작할 자동차의 위치 */
     private static final Position DEFAULT_INIT_POSITION = new Position(1);
+    public static final int DEFAULT_MOVE = 1;
+    public static final int MOVE_THRESHOLD = 4;
 
     /** 자동차의 현재 위치를 나타냅니다. */
     private Position position = DEFAULT_INIT_POSITION;
@@ -78,7 +80,7 @@ public class Car {
     }
 
     /**
-     * 자동차를 앞으로 또는 뒤로 움직입니다.
+     * 자동차를 앞으로 또는 뒤로 "강제로" 움직입니다.
      *
      * @param distance 움직일 거리. 양수면 앞으로 이동, 음수면 뒤로 이동, 0이면 움직이지 않습니다.
      */
@@ -87,11 +89,13 @@ public class Car {
     }
 
     /**
-     * 전략에 따라 자동차를 앞으로 한 칸 이동합니다.
+     * 전략에 따라 자동차를 앞으로 미리 지정된 만큼 움직입니다.
+     *
+     * @param decisionSeed 판단의 근거가 될 값입니다. 이 값에 무엇이 들어오는지에 따라 앞으로 가거나 말거나가 결정됩니다. 상위에서 랜덤값을 줄 수도 있습니다.
      */
-    public void go() {
-        if (CarMoveStrategy.doIMove()) {
-            this.move(1);
+    public void go(int decisionSeed) {
+        if (decisionSeed >= MOVE_THRESHOLD) {
+            this.move(DEFAULT_MOVE);
         }
     }
 

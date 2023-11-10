@@ -13,19 +13,6 @@ import static org.mockito.Mockito.verify;
 
 public class RacingGameLogicTest {
     @Test
-    @DisplayName("한 사이클 진행")
-    public void oneCycle() {
-        Car mySpringCar = Mockito.mock(Car.class);
-        Car mySummerCar = Mockito.mock(Car.class);
-        RacingGameState state = RacingGameLogic.init(List.of(mySpringCar, mySummerCar), 5);
-
-        RacingGameLogic.update(state);
-
-        verify(mySpringCar).go();
-        verify(mySummerCar).go();
-    }
-
-    @Test
     @DisplayName("지정된 횟수만큼의 사이클 진행")
     public void specifiedCycles() {
         final int theNumberOfCycles = 5;
