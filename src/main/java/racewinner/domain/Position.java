@@ -6,11 +6,11 @@ public class Position {
     private final static String NEGATIVE_NUMBER_MSG = "position 객체는 음수를 가질 수 없습니다.";
     private final static String STEP_STRING = "-";
     private final int NEGATIVE_NUMBER = 0;
-    private int position;
+    private int value;
 
     public Position(final int position) {
         validationCheck(position);
-        this.position = position;
+        this.value = position;
     }
 
     private void validationCheck(final int position) {
@@ -20,15 +20,15 @@ public class Position {
     }
 
     public void move() {
-        this.position++;
+        this.value++;
     }
 
     private int get() {
-        return position;
+        return value;
     }
 
     public boolean isGreaterThan(final Position position) {
-        return this.position > position.get();
+        return this.value > position.get();
     }
 
     @Override
@@ -36,16 +36,16 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Position position1 = (Position) o;
-        return position == position1.position;
+        return value == position1.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(value);
     }
 
     @Override
     public String toString() {
-        return STEP_STRING.repeat(position);
+        return STEP_STRING.repeat(value);
     }
 }

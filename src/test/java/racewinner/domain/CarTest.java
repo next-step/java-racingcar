@@ -31,29 +31,25 @@ class CarTest {
         // then
         assertThat(car.currentPosition()).isEqualTo(new Position(0));
     }
-    @DisplayName("isMaxPositionTest()의 인자로 더 높은 Position이 들어오면 True를 반환한다.")
+    @DisplayName("isMaxPositionTest()에 입력되는 Position보다 더 높으면 True를 반환한다.")
     @Test
     void isMaxPositionTest() {
         // given
-        final Car popo = new Car("popo", () -> true);
-        final Car bobo = new Car("bobo", () -> true);
+        final Car popo = new Car("popo", new Position(3), () -> true);
 
         // when
-        popo.move();
-
         // then
-        assertThat(popo.isMaxPosition(bobo.currentPosition())).isTrue();
+        assertThat(popo.isMaxPosition(new Position(2))).isTrue();
+        assertThat(popo.isMaxPosition(new Position(5))).isFalse();
     }
 
     @DisplayName("isWinnerTest()의 인자로 들어오는 max position과 일치하면 True를 반환한다.")
     @Test
     void isWinnerTest() {
         // given
-        final Car popo = new Car("popo", () -> true);
+        final Car popo = new Car("popo", new Position(1), () -> true);
 
         // when
-        popo.move();
-
         // then
         assertThat(popo.isWinner(new Position(1))).isTrue();
     }
