@@ -1,4 +1,4 @@
-package racewinner.factory;
+package racewinner.domain.factory;
 
 import racewinner.domain.Car;
 import racewinner.domain.Cars;

@@ -3,10 +3,10 @@ package racewinner.domain;
 import java.util.Objects;
 
 public class Name {
-    private final String name;
     private final static String EMPTY_NAME_MSG = "자동차 이름은 값이 존재해야 합니다.";
     private final static String LONG_NAME_MSG = "자동차 이름은 5글자를 초과할 수 없습니다.";
     private final static int MAX_NAME_LENGTH = 5;
+    private final String name;
 
     public Name(String name) {
         validationCheck(name);
