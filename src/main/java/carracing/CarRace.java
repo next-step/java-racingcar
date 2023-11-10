@@ -4,7 +4,7 @@ import carracing.ui.InputView;
 
 public class CarRace {
     public static void main(String[] args) {
-        RacingGame game = new RacingGame(InputView.inputCarCount(), InputView.inputTrialCount());
+        RacingGame game = new RacingGame(InputView.inputGiveCarName(), InputView.inputTrialCount());
         game.gameStart();
     }
 }
