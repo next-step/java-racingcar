@@ -8,7 +8,6 @@ import racingcar.rule.MinimumRule;
 import racingcar.rule.Rule;
 import racingcar.util.BasicNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,8 +32,8 @@ class RaceRecordsTest {
         RaceRecords raceRecords = new RaceRecords();
         raceRecords.record(cars.list());
 
-        assertThat(raceRecords.list().get(0).carName().equals("carA"));
-        assertThat(raceRecords.list().get(1).carName().equals("carB"));
+        assertThat(raceRecords.list().get(0).carName().equals("carA")).isTrue();
+        assertThat(raceRecords.list().get(1).carName().equals("carB")).isTrue();
     }
 
     @Test

@@ -6,7 +6,6 @@ import racingcar.domain.Position;
 import racingcar.rule.MinimumRule;
 import racingcar.util.BasicNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

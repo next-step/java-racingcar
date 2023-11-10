@@ -26,7 +26,6 @@ class CarsTest {
         Cars cars = new Cars(list);
         cars.move(rule);
 
-
         Assertions.assertThat(list.get(0).position().equals(new Position(1))).isTrue();
         Assertions.assertThat(list.get(1).position().equals(new Position(1))).isTrue();
     }
