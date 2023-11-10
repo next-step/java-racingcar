@@ -15,7 +15,7 @@ public class RacingCars {
 
     public void addCar(String[] carsName) {
         for (String name : carsName) {
-            cars.add(new Car(name));
+            cars.add(new Car(new Name(name)));
         }
     }
 
