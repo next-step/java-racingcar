@@ -14,6 +14,7 @@ public class RacingGame{
     private final int gameCount;
 
     private final List<Car> carList;
+    private final Response response = new Response();
 
     public RacingGame(String[] carNames, int gameCount){
         inputCheck(carNames, gameCount);
@@ -33,16 +34,17 @@ public class RacingGame{
         }
     }
 
-    public List<Car> play() {
+    public Response play() {
 
         entireGame(carList);
 
-        return carList;
+        return response;
     }
 
     private void entireGame(List<Car> carList) {
         for(int i=0; i<gameCount; i++){
             eachGame(carList);
+            response.addEachStageInfo(carList.stream().map(Car::toString).toArray(String[]::new));
         }
 
     }

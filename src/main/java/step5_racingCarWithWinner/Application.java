@@ -2,6 +2,7 @@ package step5_racingCarWithWinner;
 
 import step5_racingCarWithWinner.domain.Car;
 import step5_racingCarWithWinner.domain.RacingGame;
+import step5_racingCarWithWinner.domain.Response;
 import step5_racingCarWithWinner.view.RacingGameResultView;
 import step5_racingCarWithWinner.view.InputView;
 
@@ -17,7 +18,7 @@ public class Application {
         String[] carNames = InputView.stringsSplitByComma(CAR_NAME_QUESTION);
         int gameCount = InputView.intInput(GAME_NAME_QUESTION);
 
-        List<Car> result = new RacingGame(carNames, gameCount).play();
+        Response result = new RacingGame(carNames, gameCount).play();
 
         new RacingGameResultView().printResult(result);
     }
