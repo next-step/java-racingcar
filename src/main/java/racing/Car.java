@@ -1,19 +1,17 @@
 package racing;
 
 import racing.type.CarName;
+import racing.type.Position;
 
 /**
  * 초간단 자동차 경주 게임의 자동차 개체 하나를 나타냅니다.
  */
 public class Car {
     /** 사용자가 위치를 지정하지 않았을 때 기본 시작할 자동차의 위치 */
-    private static final int DEFAULT_INIT_POSITION = 1;
-
-    /** 허용하는 최대 이름 글자 수 */
-    public static final int MAX_NAME_LENGTH = 5;
+    private static final Position DEFAULT_INIT_POSITION = new Position(1);
 
     /** 자동차의 현재 위치를 나타냅니다. */
-    private int position = 0;
+    private Position position = DEFAULT_INIT_POSITION;
 
     /** 자동차의 이름 */
     private CarName name = CarName.anonymous();
@@ -58,8 +56,7 @@ public class Car {
      *
      * @return 생성된 자동차 객체
      */
-    public static Car createWithPosition(int position) {
-        validatePosition(position);
+    public static Car createWithPosition(Position position) {
         Car car = Car.create();
         car.position = position;
         return car;
@@ -72,9 +69,7 @@ public class Car {
      * @param position 자동차 위치
      * @return
      */
-    public static Car create(CarName name, int position) {
-        validatePosition(position);
-
+    public static Car create(CarName name, Position position) {
         Car car = Car.create();
         car.position = position;
         car.name = name;
@@ -88,9 +83,7 @@ public class Car {
      * @param distance 움직일 거리. 양수면 앞으로 이동, 음수면 뒤로 이동, 0이면 움직이지 않습니다.
      */
     public void move(int distance) {
-        this.position += distance;
-
-        validatePosition(this.position);
+        this.position = this.position.add(distance);
     }
 
     /**
@@ -102,18 +95,8 @@ public class Car {
         }
     }
 
-    // 이 이하로 validation 함수 모음
-    private static void validatePosition(int position) {
-        if (position < 0) {
-            throw new IllegalArgumentException("위치는 0 이상이어야 하지만 " + position + "이 되었습니다.");
-        }
-    }
-
     // 이 이하로 단순 getter 모음
-    /**
-     * @return 자동차의 현재 위치. 위치는 0 이상입니다.
-     */
-    public int getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 

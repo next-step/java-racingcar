@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.type.CarName;
+import racing.type.Position;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -12,7 +13,7 @@ public class CarTest {
 
     @BeforeEach
     public void beforeEach() {
-        mySummerCar = Car.create(new CarName("masum"), 3);
+        mySummerCar = Car.create(new CarName("masum"), new Position(3));
     }
 
     @Test
@@ -20,7 +21,7 @@ public class CarTest {
     public void forwardCar() {
         mySummerCar.move(4);
         assertThat(mySummerCar.getPosition())
-                .isEqualTo(7);
+                .isEqualTo(new Position(7));
     }
 
     @Test
@@ -28,7 +29,7 @@ public class CarTest {
     public void backwardCar() {
         mySummerCar.move(-2);
         assertThat(mySummerCar.getPosition())
-                .isEqualTo(1);
+                .isEqualTo(new Position(1));
     }
 
     @Test
@@ -36,7 +37,7 @@ public class CarTest {
     public void stopCar() {
         mySummerCar.move(0);
         assertThat(mySummerCar.getPosition())
-                .isEqualTo(3);
+                .isEqualTo(new Position(3));
     }
 
     @Test

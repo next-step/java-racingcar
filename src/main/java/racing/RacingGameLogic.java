@@ -1,5 +1,6 @@
 package racing;
 
+import racing.type.Position;
 import racing.util.CarGenerator;
 
 import java.util.ArrayList;
@@ -93,7 +94,7 @@ public class RacingGameLogic {
      * @return 이기고 있는 자동차들
      */
     public static List<Car> getWinnerList(RacingGameState state) {
-        int maxPosition = 0;
+        Position maxPosition = Position.origin();
 
         for (Car car : state.getCarList()) {
             maxPosition = getBiggerPosition(car, maxPosition);
@@ -107,14 +108,14 @@ public class RacingGameLogic {
         return winnerList;
     }
 
-    private static void addCarIfItWins(Car car, int maxPosition, List<Car> winnerList) {
-        if (car.getPosition() == maxPosition) {
+    private static void addCarIfItWins(Car car, Position maxPosition, List<Car> winnerList) {
+        if (car.getPosition().equals(maxPosition)) {
             winnerList.add(car);
         }
     }
 
-    private static int getBiggerPosition(Car car, int maxPosition) {
-        if (car.getPosition() > maxPosition) {
+    private static Position getBiggerPosition(Car car, Position maxPosition) {
+        if (car.getPosition().isBiggerThan(maxPosition)) {
             maxPosition = car.getPosition();
         }
         return maxPosition;

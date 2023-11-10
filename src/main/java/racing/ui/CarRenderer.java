@@ -16,7 +16,7 @@ public class CarRenderer {
     public static String getMoveTrajectory(Car car) {
         StringBuilder trajectory = new StringBuilder(car.getName() + ": ");
 
-        for (int i = 1; i <= car.getPosition(); i++) {
+        for (int i = 1; i <= car.getPosition().length(); i++) {
             trajectory.append(TRAJECTORY_CHARACTER);
         }
 
