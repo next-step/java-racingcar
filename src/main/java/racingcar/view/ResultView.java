@@ -7,9 +7,8 @@ import java.util.List;
 public class ResultView {
     public void viewGame(List<Car> cars) {
         for (Car car : cars){
-            String printValue = "-".repeat(car.getPosition());
+            String printValue = car.getName() + " " + ": " + "-".repeat(car.getPosition());
             System.out.println(printValue);
-
         }
         System.out.println();
     }
