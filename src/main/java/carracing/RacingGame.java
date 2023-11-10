@@ -34,8 +34,8 @@ public class RacingGame {
 
     private void racingGameProcess() {
         for (Car car : carList) {
-            printResultRaceGameProcess(car);
             car.move(random.getRandomNumber());
+            printResultRaceGameProcess(car);
             carRaceTopPosition(car);
         }
     }

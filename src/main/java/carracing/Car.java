@@ -5,7 +5,6 @@ public class Car {
     private static final int STANDARD_MOVE_VALUE = 4;
     private static final int START_POSITION = 1;
     private int position;
-    private int prevPosition;
     private String name;
 
     public Car() {
@@ -18,7 +17,6 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        prevPosition = position;
         if (checkStandardMove(randomNumber)) {
             position += 1;
         }
@@ -36,9 +34,4 @@ public class Car {
     public String getName() {
         return name;
     }
-
-    public int getPrevPosition() {
-        return prevPosition;
-    }
-
 }

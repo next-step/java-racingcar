@@ -2,17 +2,17 @@ package carracing.ui;
 
 import carracing.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static carracing.GameWinner.getWinnerPoint;
 import static carracing.GameWinner.findWinners;
+import static carracing.GameWinner.getWinnerPoint;
 
 public class ResultView {
 
     private static final StringBuilder sb = new StringBuilder();
 
-    private ResultView() {}
+    private ResultView() {
+    }
 
     public static String createNameAndPositionView(String name, int position) {
         sb.setLength(0);
@@ -25,16 +25,15 @@ public class ResultView {
     }
 
     public static void carRacingWinnersView(List<Car> winners) {
-        List<String> winnersNameBox = new ArrayList<>();
         int winnerPoint = getWinnerPoint();
 
-        findWinners(winners, winnerPoint, winnersNameBox);
+        List<String> finalWinner = findWinners(winners, winnerPoint);
 
-        System.out.println(String.join(", ", winnersNameBox) + "가 최종 우승했습니다.");
+        System.out.println(String.join(", ", finalWinner) + "가 최종 우승했습니다.");
     }
 
     public static void printResultRaceGameProcess(Car car) {
-        String nameAndPositionView = ResultView.createNameAndPositionView(car.getName(), car.getPosition());
+        String nameAndPositionView = createNameAndPositionView(car.getName(), car.getPosition());
         System.out.println(nameAndPositionView);
     }
 

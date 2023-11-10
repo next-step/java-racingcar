@@ -98,7 +98,7 @@ public class CarRacingTest {
             carRaceTopPosition(car);
         }
 
-        assertThat(getWinnerPoint()).isEqualTo(3);
+        assertThat(getWinnerPoint()).isEqualTo(4);
 
     }
 
