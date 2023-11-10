@@ -21,18 +21,16 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 전진(int input) {
-        Car car = new Car();
-        car.move(input);
-        int actual = car.getDistance();
-        assertThat(actual).isEqualTo(1);
+        Car actual = new Car();
+        actual.move(input);
+        assertThat(actual).isEqualTo(new Car(1));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     public void 멈춤(int input) {
-        Car car = new Car();
-        car.move(input);
-        int actual = car.getDistance();
-        assertThat(actual).isEqualTo(0);
+        Car actual = new Car();
+        actual.move(input);
+        assertThat(actual).isEqualTo(new Car(0));
     }
 }

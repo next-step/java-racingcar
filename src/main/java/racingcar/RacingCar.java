@@ -19,12 +19,12 @@ public class RacingCar {
             carList.add(new Car());
         }
 
+        Cars cars = new Cars(carList);
+
         ResultView.output(RESULT_MSG);
         for (int i = 0; i < moveCount; i++) {
-            for (Car car : carList) {
-                car.move(getRandom());
-                ResultView.resultOutput(car.getDistance());
-            }
+            cars.move();
+            ResultView.resultOutput(cars);
             ResultView.output("");
         }
     }
