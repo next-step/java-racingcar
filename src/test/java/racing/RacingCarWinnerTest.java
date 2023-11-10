@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.model.Cars;
 import racing.model.RacingCar;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ class RacingCarWinnerTest {
     @CsvSource("3")
     void 가장_많은_전진횟수_우승_1명이상() throws Exception {
         // when
-        List<RacingCar> winners = Simulator.getWinners(cars);
+        List<RacingCar> winners = Cars.getWinners(cars);
         // then
         assertThat(winners.stream().anyMatch(car -> "a".equals(car.getName()))).isTrue();
         assertThat(winners.stream().anyMatch(car -> "b".equals(car.getName()))).isTrue();
