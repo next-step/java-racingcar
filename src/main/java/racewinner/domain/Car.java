@@ -28,12 +28,16 @@ public class Car {
 
     public String name() { return name.get(); }
 
-    public boolean isMaxPosition(final Position position) {
-        return this.position.isGreaterThan(position);
-    }
-
     public boolean isWinner(final Position position) {
         return this.position.equals(position);
+    }
+
+    public Position max(Position position) {
+        if (this.position.isGreaterThan(position)) {
+            return this.position;
+        }
+
+        return position;
     }
 
     @Override

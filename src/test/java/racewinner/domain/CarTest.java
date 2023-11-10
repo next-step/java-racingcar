@@ -31,7 +31,7 @@ class CarTest {
         // then
         assertThat(car.currentPosition()).isEqualTo(new Position(0));
     }
-    @DisplayName("isMaxPositionTest()에 입력되는 Position보다 더 높으면 True를 반환한다.")
+    @DisplayName("max()는 더 높으면 Position을 반환한다.")
     @Test
     void isMaxPositionTest() {
         // given
@@ -39,8 +39,8 @@ class CarTest {
 
         // when
         // then
-        assertThat(popo.isMaxPosition(new Position(2))).isTrue();
-        assertThat(popo.isMaxPosition(new Position(5))).isFalse();
+        assertThat(popo.max(new Position(1))).isEqualTo(new Position(3));
+        assertThat(popo.max(new Position(5))).isEqualTo(new Position(5));
     }
 
     @DisplayName("isWinnerTest()의 인자로 들어오는 max position과 일치하면 True를 반환한다.")
@@ -52,6 +52,7 @@ class CarTest {
         // when
         // then
         assertThat(popo.isWinner(new Position(1))).isTrue();
+        assertThat(popo.isWinner(new Position(2))).isFalse();
     }
 
 }

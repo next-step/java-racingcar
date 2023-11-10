@@ -23,17 +23,9 @@ public class Cars {
     private Position getMaxPosition() {
         Position maxPosition = new Position(0);
         for (Car car : cars) {
-            maxPosition = getMaxPosition(maxPosition, car);
+            maxPosition = car.max(maxPosition);
         }
         return maxPosition;
-    }
-
-    private Position getMaxPosition(Position position, Car car) {
-        if (car.isMaxPosition(position)) {
-            return car.currentPosition();
-        }
-
-        return position;
     }
 
     private List<String> getWinnerList(Position position) {
