@@ -1,14 +1,11 @@
 package racingcar4.model;
 
-import java.util.Random;
-
+//자동차 자체 모델
 public class Car {
-    private static final int RANDOM_VALUE_RANGE = 10;
     private static final int ADVANCE_MINIMUM_VALUE = 4;
     private static final int NAME_LENGTH_MAXIMUM = 5;
     private int position;
     private final String name;
-    private final Random random = new Random();
 
     public Car(String name) {
         this.position = 0;
@@ -16,20 +13,20 @@ public class Car {
         this.name = name;
     }
 
-    public int randomValue() {
-        return random.nextInt(RANDOM_VALUE_RANGE);
+    //랜덤숫자 생성
+    private int randomValue() {
+        return new RandomNumber().getNumber();
     }
 
-    public boolean canMove(int number) {
+    private boolean canMove(int number) {
         return number >= ADVANCE_MINIMUM_VALUE;
     }
 
-    public void forwardOneStep(boolean canMove) {
+    private void forwardOneStep(boolean canMove) {
         if (canMove) {
             position++;
         }
     }
-
 
     public void carTurn() {
         int randomNumber = randomValue();
@@ -37,19 +34,28 @@ public class Car {
         forwardOneStep(canMove);
     }
 
-    // 글자수 초과
+    //글자수 초과
     private void carNameTest(String name) {
         if (name.length() > NAME_LENGTH_MAXIMUM) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
     }
 
-    public int getPosition() {
-        return position;
-    }
-
+    //자동차 이름 출력
     public String getName() {
         return name;
+    }
+
+    public int maxPosition(int maxPosition) {
+        return Math.max(maxPosition, position);
+    }
+
+    public boolean victoryCar(int maxPosition) {
+        return position == maxPosition;
+    }
+
+    public void getStatus() {
+        System.out.println(name + " : " + "-".repeat(position));
     }
 
 }
