@@ -1,5 +1,7 @@
 package carRacing.moveStrategy;
 
+@FunctionalInterface
 public interface MoveStrategy {
-	public boolean isForward();
+
+	boolean isForward();
 }

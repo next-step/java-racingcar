@@ -4,17 +4,15 @@ import carRacing.moveStrategy.MoveStrategy;
 
 public class Car {
 
-	private static final int MINIMUM_TO_MOVE = 4;
-
 	private int position;
 	private String name;
 
 	public Car() {
+		this(0,"");
 	}
 
 	public Car(String name) {
-		this.position = position;
-		this.name = name;
+		this(0, name);
 	}
 
 	public Car(int position, String name) {
