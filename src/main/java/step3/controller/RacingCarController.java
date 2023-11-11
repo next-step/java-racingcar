@@ -1,16 +1,18 @@
-package step3;
+package step3.controller;
 
-import step3.util.InputView;
-import step3.util.ResultView;
+import step3.domain.Car;
+import step3.strategy.MovingStrategy;
+import step3.view.InputView;
+import step3.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarRacing {
+public class RacingCarController {
     private List<Car> cars = new ArrayList<>();
     private final MovingStrategy strategy;
 
-    public CarRacing(MovingStrategy strategy) {
+    public RacingCarController(MovingStrategy strategy) {
         this.strategy = strategy;
     }
 

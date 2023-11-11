@@ -1,4 +1,4 @@
-package step3.util;
+package step3.view;
 
 public class ResultView {
     private static final String MOVE_SYMBOL = "-";

@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.strategy.MovingStrategy;
 
 public class Car {
     private int distance = 0;

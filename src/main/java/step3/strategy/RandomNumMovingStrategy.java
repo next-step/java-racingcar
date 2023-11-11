@@ -1,4 +1,4 @@
-package step3;
+package step3.strategy;
 
 import step3.util.RandomNumberGenerator;
 
