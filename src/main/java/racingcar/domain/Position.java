@@ -3,17 +3,25 @@ package racingcar.domain;
 public class Position {
 
     private static final int START_INIT_VALUE = 1;
-    private int currentPosition;
+    private int number;
 
     public Position(){
-        currentPosition = START_INIT_VALUE;
+        this.number = START_INIT_VALUE;
+    }
+
+    public boolean isAtPosition(int number){
+        return this.number == number;
     }
 
     public void addOnePosition(){
-        ++currentPosition;
+        ++this.number;
     }
 
-    public int getPosition(){
-        return currentPosition;
+    public int max(int number){
+        return Math.max(this.number, number);
+    }
+
+    public int getNumber(){
+        return this.number;
     }
 }
