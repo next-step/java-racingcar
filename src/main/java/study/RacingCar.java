@@ -1,7 +1,8 @@
 package study;
 
 import lombok.*;
-import java.util.Map;
+
+import java.util.ArrayList;
 
 @NoArgsConstructor
 public class RacingCar {
@@ -11,19 +12,26 @@ public class RacingCar {
     public static final String DASH = "-";
     public static final int CONDITION_VAL = 4;
 
-    @Getter @Setter
+    // 자동차 명
+    private String carName = BLANK;
+
+    // 자동차 이동 횟수
     private int drive = ZERO;
 
-    @Getter @Setter
-    private int stop = ZERO;
+    //random number 저장용
+    private ArrayList<Integer> randomsByStep;
 
-    @Getter @Setter
-    private int loopCount = ZERO;
+    public RacingCar(String carName, int drive, ArrayList<Integer> randomsByStep) {
+        this.carName = carName;
+        this.drive = drive;
+        this.randomsByStep = randomsByStep;
+    }
 
-    @Getter @Setter
-    private Map<Integer, Double> randomsByStep;
+    public String carName() {
+        return this.carName;
+    }
 
-    public void move(int stepNo){
+    public String move(int stepNo){
 
         String moveStr = BLANK;
 
@@ -34,8 +42,25 @@ public class RacingCar {
             }
         }
 
-        System.out.println(moveStr);
+        return this.carName() + " : " + moveStr;
     }
+
+    boolean checkChampion(int val){
+        if(val == this.drive){
+            return true;
+        }
+        return false;
+    }
+
+    int maxStep(int val){
+
+        if(val<this.drive){
+            return this.drive;
+        }
+        return val;
+    }
+
+
 
 }
 
