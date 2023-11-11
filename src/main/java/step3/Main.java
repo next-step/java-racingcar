@@ -2,6 +2,7 @@ package step3;
 
 import step3.domain.RacingCar;
 import step3.domain.RacingGame;
+import step3.domain.RandomNumberGenerator;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -12,7 +13,7 @@ public class Main {
         int attemptCount = InputView.askNumberOfAttempts();
 
         ResultView.title();
-        RacingGame racingGame = new RacingGame(carCount);
+        RacingGame racingGame = new RacingGame(carCount, new RandomNumberGenerator());
         for (int attempt = 0; attempt < attemptCount; attempt++) {
             RacingCar[] racingCar = racingGame.runRound();
             ResultView.printRacingCarsStatus(racingCar);

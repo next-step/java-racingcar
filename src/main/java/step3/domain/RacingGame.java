@@ -2,11 +2,12 @@ package step3.domain;
 
 public class RacingGame {
 
-    private static NumberGenerator numberGenerator = new RandomNumberGenerator();
+    private NumberGenerator numberGenerator;
 
     private RacingCar[] racingCars;
 
-    public RacingGame(int carCount) {
+    public RacingGame(int carCount, NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
         initRacingCars(carCount);
     }
 
