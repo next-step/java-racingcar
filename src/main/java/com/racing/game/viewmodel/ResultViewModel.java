@@ -1,24 +1,16 @@
 package com.racing.game.viewmodel;
 
-import com.racing.game.RaceStorage;
+import com.racing.game.entity.Circuit;
 
 public class ResultViewModel {
 
-    private final RaceStorage raceStorage;
+    private final Circuit circuit;
 
-    public ResultViewModel(RaceStorage raceStorage){
-        this.raceStorage = raceStorage;
+    public ResultViewModel(Circuit circuit){
+        this.circuit = circuit;
     }
 
     public String allResultString(){
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < raceStorage.totalLaps(); i++) {
-            builder.append(raceStorage.raceStatus(i));
-        }
-        return builder.toString();
-    }
-
-    private String resultString(int lap) {
-        return raceStorage.raceStatus(lap).toString();
+        return circuit.toString();
     }
 }

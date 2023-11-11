@@ -14,12 +14,11 @@ public class RaceEntry {
         return new RaceEntry(cars);
     }
 
-    public List<Car> lineup() {
-        return cars;
-    }
-
-    public int carCount() {
-        return cars.size();
+    public List<Car> progressCars() {
+        return cars.stream().map(e -> {
+            e.incrementProgress();
+            return e;
+        }).collect(Collectors.toList());
     }
 
     @Override

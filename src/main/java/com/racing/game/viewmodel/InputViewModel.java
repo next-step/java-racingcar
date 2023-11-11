@@ -1,22 +1,22 @@
 package com.racing.game.viewmodel;
 
-import com.racing.game.RaceStorage;
+import com.racing.game.entity.Circuit;
 import com.racing.game.entity.RaceEntry;
 
 public class InputViewModel {
 
-    private RaceStorage raceStorage;
+    private Circuit circuit;
 
-    public InputViewModel(RaceStorage raceStorage) {
-        this.raceStorage = raceStorage;
+    public InputViewModel(Circuit circuit) {
+        this.circuit = circuit;
     }
 
-    public void saveCar(RaceEntry raceEntry){
-        raceStorage.saveNextRaceEntry(raceEntry);
+    public void readyToRace(RaceEntry raceEntry){
+        circuit.readyToRace(raceEntry);
     }
 
     public void saveLaps(int lap) {
-        raceStorage.saveLaps(lap);
+        circuit.saveLaps(lap);
     }
 
 }

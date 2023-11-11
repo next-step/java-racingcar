@@ -20,7 +20,7 @@ public class InputView {
 
     public void drawCarCountInputView() {
         System.out.println(USER_INPUT_MESSAGE_CAR_NAMES);
-        inputViewModel.saveCar(
+        inputViewModel.readyToRace(
                 RaceEntry.from(InputUtils.toCarList(scanner.nextLine())));
     }
 
