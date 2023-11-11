@@ -1,8 +1,7 @@
-package step3;
+package step3.domain;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.domain.RacingCarRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -3,7 +3,7 @@ package step3.view;
 import step3.domain.RacingCar;
 
 public class ResultView {
-    public static void printResult(RacingCar[] racingCars) {
+    public static void printRacingCarsStatus(RacingCar[] racingCars) {
         for (RacingCar racingCar : racingCars) {
             System.out.println("-".repeat(racingCar.getDistance()));
         }
