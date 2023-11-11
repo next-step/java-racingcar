@@ -1,6 +1,7 @@
 package carRacing.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import carRacing.moveStrategy.MoveStrategy;
 import org.junit.jupiter.api.DisplayName;
@@ -34,5 +35,14 @@ class CarTest {
 		Car car = new Car("pobi");
 
 		assertThat(car.getName()).isEqualTo("pobi");
+	}
+
+	@DisplayName("자동차 이름이 5자 이상이면 예외를 발생한다")
+	@Test
+	void carNameLengthException() {
+		assertThatThrownBy(() -> {
+			new Car(0, "five5");
+		}).isInstanceOf(IllegalArgumentException.class)
+				.hasMessage("자동차 이름이 5자를 초과했습니다.");
 	}
 }

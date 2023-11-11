@@ -1,24 +1,24 @@
 package carRacing;
 
-import carRacing.car.Car;
 import carRacing.car.Cars;
 import carRacing.car.CarWinner;
 import carRacing.moveStrategy.MoveStrategy;
 import carRacing.moveStrategy.RandomMoveStrategy;
 import carRacing.view.InputView;
 import carRacing.view.ResultView;
+import java.util.List;
 
 public class CarRacingMain {
 
 	public static void main(String[] args) {
 		InputView input = new InputView();
-		String[] nameInputs = input.inputCarName();
-		int numberOfAttempts = input.inputMoveCount();
+		List<String> carNames = input.inputCarsName();
+		int numberOfAttempts = input.inputAttemptsCount();
 
 		System.out.println("실행 결과");
 
 		ResultView result = new ResultView();
-		Cars cars = new Cars(nameInputs.length, nameInputs);
+		Cars cars = new Cars(carNames);
 		MoveStrategy moveStrategy = new RandomMoveStrategy();
 
 
