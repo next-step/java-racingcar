@@ -30,10 +30,10 @@
   * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
 ## 리팩토링 해야 할 것
-* All - getter 메서드를 사용하지 않기(객체에게 시키기)
-* View - 결과 단계별로 출력하기
-* Car - 전진 전략 패턴 추가
-* Car - Name, Position 분리 -> 이름 유효성 검증도 이관
-* Racing - Winners 필드 제거 (메서드 로컬 변수로 충분)
-* Racing - 중요 로직 테스트 추가
-* RacingCars - Collection.toUnmodifiableList 사용 (생성된 리스트를 불변상태로 만드는 메서드)
+- [X] All - getter 메서드를 사용하지 않기(객체에게 시키기)
+- [ ] View - 결과 단계별로 출력하기
+- [ ] Car - 전진 전략 패턴 추가
+- [X] Car - Name, Position 분리 -> 이름 유효성 검증도 이관
+- [X] Racing - Winners 필드 제거 (메서드 로컬 변수로 충분)
+- [X] Racing - 중요 로직 테스트 추가
+- [X] RacingCars - Collection.toUnmodifiableList 사용 (생성된 리스트를 불변상태로 만드는 메서드)
