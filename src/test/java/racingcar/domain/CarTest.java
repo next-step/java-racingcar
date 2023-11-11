@@ -20,7 +20,7 @@ public class CarTest {
         // given
         // when
         Assertions.assertThatThrownBy(() -> new Car("kimbro", 0))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
         // then
     }
 

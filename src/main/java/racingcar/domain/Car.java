@@ -11,7 +11,7 @@ public class Car {
 
     public Car(String name, int position) {
         if (isNameLength(name)) {
-            throw new RuntimeException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
         this.name = name;
         this.position = position;
