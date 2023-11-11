@@ -3,24 +3,31 @@ package step4.controller;
 import step4.presentation.RacingInputView;
 import step4.presentation.RacingResultView;
 
+import java.util.function.Supplier;
+
 public class CarRacing {
 
-    public void startGame() {
+    private final RacingInputView inputView;
+    private final RacingResultView resultView;
+
+    public CarRacing() {
         CarController carController = new CarController();
-        RacingInputView inputView = new RacingInputView(carController);
-        RacingResultView resultView = new RacingResultView(carController);
-
-        loopUntilNameOfCarsIsCorrect(inputView);
-        int numOfTry = loopUntilNumOfTryIsCorrect(inputView);
-
-        resultView.printCarRacing(numOfTry);
+        this.inputView = new RacingInputView(carController);
+        this.resultView = new RacingResultView(carController);
     }
 
-    private int loopUntilNumOfTryIsCorrect(RacingInputView inputView) {
-        int numOfTry;
+    public void startGame() {
+        int numOfCars = repeatUntilWorkCorrect(inputView::inputNameOfCars);
+        int numOfTry = repeatUntilWorkCorrect(inputView::inputNumOfTry);
+
+        resultView.printCarRacing(numOfCars, numOfTry);
+    }
+
+    private int repeatUntilWorkCorrect(Supplier<Integer> supplier) {
+        int result;
         while (true) {
             try {
-                numOfTry = inputView.inputNumOfTry();
+                result = supplier.get();
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
                 continue;
@@ -28,19 +35,6 @@ public class CarRacing {
 
             break;
         }
-        return numOfTry;
-    }
-
-    private void loopUntilNameOfCarsIsCorrect(RacingInputView inputView) {
-        while (true) {
-            try {
-                inputView.inputNameOfCars();
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-                continue;
-            }
-
-            break;
-        }
+        return result;
     }
 }

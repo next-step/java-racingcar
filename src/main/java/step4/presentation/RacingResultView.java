@@ -21,10 +21,9 @@ public class RacingResultView {
         this.carController = carController;
     }
 
-    public void printCarRacing(int numOfTry) {
+    public void printCarRacing(int numOfCars, int numOfTry) {
         System.out.println("실행 결과");
 
-        int numOfCars = carController.getCars().getNumOfCars();
         for (int i=0; i<numOfTry; i++) {
             tryCarMoving(numOfCars);
             printCars(carController.getCars());
