@@ -11,12 +11,14 @@ public class Car {
     }
 
     public void moveForward(int randomNumber) {
-        if(ableMove(randomNumber))
+        if (ableMove(randomNumber))
             forwardCnt++;
     }
-public void moveForward() {
+
+    public void moveForward() {
         forwardCnt++;
-}
+    }
+
     private boolean ableMove(int randomNumber) {
         return randomNumber >= CONDITION_NUMBER;
     }
@@ -29,7 +31,7 @@ public void moveForward() {
         return carName;
     }
 
-    public boolean matchPosition(int maxPosition){
+    public boolean matchPosition(int maxPosition) {
         return forwardCnt == maxPosition;
     }
 }

@@ -1,11 +1,12 @@
 package racingcar.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.factory.CarFactory;
 import racingcar.strategy.RandomMoveStrategyTest;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
@@ -15,7 +16,7 @@ class RacingGameTest {
     void setUp() {
         String carsName = "a,b,c";
         int tryCount = 5;
-        racingGame = new RacingGame(new Cars(carsName), tryCount);
+        racingGame = new RacingGame(new Cars(new CarFactory().generate(new CarName(carsName).carNameList())), tryCount);
         for (int i = 0; i < tryCount; i++) {
             racingGame.start(new RandomMoveStrategyTest(6));
         }

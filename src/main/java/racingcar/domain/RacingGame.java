@@ -18,9 +18,16 @@ public class RacingGame {
         return tryCount > 0 ? false : true;
     }
 
+//    public Cars start(MoveStrategy moveStrategy) {
+//        tryCount--;
+//        cars.carList().forEach(car -> car.moveForward(moveStrategy.randomNumber()));
+//        return cars;
+//    }
+
     public Cars start(MoveStrategy moveStrategy) {
         tryCount--;
-        cars.carList().forEach(car -> car.moveForward(moveStrategy.randomNumber()));
+        cars.moveCars(moveStrategy);
+//        cars.carList().forEach(car -> car.moveForward(moveStrategy));
         return cars;
     }
 
