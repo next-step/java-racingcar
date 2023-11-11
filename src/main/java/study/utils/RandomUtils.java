@@ -8,6 +8,10 @@ public class RandomUtils {
     private RandomUtils() { //인스턴스화 방지
     }
 
+    private static int getRandomNumber() {
+        return random.nextInt(10);
+    }
+
     public static int getRandomNumberZeroToNine() {
         return random.nextInt(10);
     }

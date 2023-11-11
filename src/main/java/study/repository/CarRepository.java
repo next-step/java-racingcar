@@ -1,12 +1,14 @@
-package study.car;
+package study.repository;
+
+import study.domain.Car;
 
 import java.util.List;
 
 public interface CarRepository {
 
-    long save(Car car);
+    Car save(Car car);
 
-    Car findCarById(Long id);
+    Car findCarByName(Car car);
 
     List<Car> findCarAll();
 
