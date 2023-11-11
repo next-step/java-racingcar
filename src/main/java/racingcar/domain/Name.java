@@ -1,27 +1,32 @@
 package racingcar.domain;
 
-public class Position {
+import racingcar.common.utils.TextLimitSizeValidator;
 
-    private static final int START_INIT_VALUE = 1;
-    private int number;
+public class Name {
 
-    public Position(){
-        this.number = START_INIT_VALUE;
+    private static final int TEXT_LENGTH_LIMIT = 5;
+    private final String text;
+
+    public Name(String text){
+        if(isEmptyOrNull(text)){
+            throw new IllegalArgumentException("한 글자 이상의 이름을 입력해주세요.");
+        }
+        this.text = text;
+        errorIfTextLengthLimitOver();
     }
 
-    public  boolean isAtPosition(int number){
-        return this.number == number;
+    private void errorIfTextLengthLimitOver(){
+        if (TextLimitSizeValidator.isOverLimitSize(this.text, TEXT_LENGTH_LIMIT)){
+            throw new IllegalArgumentException("자동차 이름은" + TEXT_LENGTH_LIMIT + "자 이상만 입력 가능합니다.");
+        }
     }
 
-    public void addOnePosition(){
-        ++this.number;
+    private boolean isEmptyOrNull(String text) {
+        return text == null || text.isEmpty();
     }
 
-    public int max(int number){
-        return Math.max(this.number, number);
+    public String getText(){
+        return this.text;
     }
 
-    public int getNumber(){
-        return this.number;
-    }
 }
