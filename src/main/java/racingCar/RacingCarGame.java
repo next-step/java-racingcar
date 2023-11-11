@@ -1,26 +1,24 @@
 package racingCar;
 
-import java.util.List;
+import racingCar.ui.InputView;
+import racingCar.ui.ResultView;
 
-import static racingCar.RacingCar.getCarList;
-import static racingCar.RacingCar.move;
+import java.util.ArrayList;
 
-public class RacingCarGame {
-	public static void main(String[] args) {
-		InputView inputView = new InputView();
+public class RacingCarGame { // 자동차 경주를 수행한다.
 
-		int carCount = inputView.carCount;
-		int tryCount = inputView.tryCount;
+	public void run() {
+		// 입력받는다.
+		InputView.takeInputFromUser();
+		int carCount = InputView.carCount;
+		int tryCount = InputView.tryCount;
 
-		List<Car> carList = game(carCount, tryCount);
+		System.out.println();
+		System.out.println(ResultView.RESULT_PREFIX);
 
-		new ResultView(carList, tryCount);
+		CarList carList = new CarList(new ArrayList<>());
+		carList.addCar(carCount);
+		carList.moveByTryCount(tryCount);
 	}
 
-	private static List<Car> game(int carCount, int tryCount) {
-		List<Car> carList = getCarList(carCount);
-		move(tryCount, carList);
-
-		return carList;
-	}
 }

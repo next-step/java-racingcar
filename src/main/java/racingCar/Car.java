@@ -1,9 +1,10 @@
 package racingCar;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class Car {
-	public List<Integer> resultList = new ArrayList<>();
+	public int distance;
+	public void move() {
+		if (RacingUtil.getRandomNumber() > 3) {
+			distance++;
+		}
+	}
 }
