@@ -1,5 +1,6 @@
 package com.racing.game.entity;
 
+import com.racing.game.dto.Winners;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +21,10 @@ public class RaceRecord {
 
     public boolean isRaceOver(int lap){
         return value.size() < lap;
+    }
+
+    public Winners winners(){
+        return value.get(value.size()-1).winners();
     }
 
     @Override

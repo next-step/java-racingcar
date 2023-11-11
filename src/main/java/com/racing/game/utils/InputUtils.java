@@ -11,7 +11,7 @@ public class InputUtils {
         throw new IllegalArgumentException("Utility Class");
     }
 
-    public static List<Car> toCarList(String carNames){
+    public static List<Car> toCarList(String carNames) {
         return Arrays.stream(toSplitList(carNames))
                 .map(Car::from)
                 .collect(Collectors.toList());

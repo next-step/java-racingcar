@@ -47,7 +47,7 @@ class RacingCarTest {
     @Test
     void carName_5글자초과예외() {
         String dummy = "nextStep";
-        assertThatThrownBy(()->{
+        assertThatThrownBy(() -> {
             Car.from(dummy);
         }).hasMessageContaining("자동차 이름은 5글자를 넘어서면 안됩니다.");
     }
@@ -60,7 +60,7 @@ class RacingCarTest {
 
         assertThat(circuit.toString()).hasToString("pobi : \n\n");
 
-        viewModel.readyToRace(RaceEntry.from(List.of(Car.from("pobi"),Car.from("popo"),Car.from("bibi"))));
+        viewModel.readyToRace(RaceEntry.from(List.of(Car.from("pobi"), Car.from("popo"), Car.from("bibi"))));
         assertThat(circuit.toString()).hasToString("pobi : \npopo : \nbibi : \n\n");
     }
 
@@ -90,5 +90,33 @@ class RacingCarTest {
         circuit.startRace();
 
         assertThat(circuit.toString().split("\n\n")).hasSize(5);
+    }
+
+    @Test
+    void winners() {
+        circuit.readyToRace(
+                RaceEntry.from(
+                        List.of(
+                                Car.of("crong", 3),
+                                Car.of("honux", 2),
+                                Car.of("abc", 1)
+                        )
+                )
+        );
+
+        assertThat(circuit.winners().winnersName()).hasToString("crong");
+
+        circuit.readyToRace(
+                RaceEntry.from(
+                        List.of(
+                                Car.of("crong", 3),
+                                Car.of("honux", 3),
+                                Car.of("abc", 1)
+                        )
+                )
+        );
+
+        assertThat(circuit.winners().winnersName()).hasToString("crong,honux");
+
     }
 }

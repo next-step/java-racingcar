@@ -2,37 +2,37 @@ package com.racing.game.vo;
 
 import java.util.Objects;
 
-public class Progress implements Comparable<Progress>{
+public class Progress implements Comparable<Progress> {
     private final int value;
 
-    private Progress(int value){
-        if(value < 0){
+    private Progress(int value) {
+        if (value < 0) {
             throw new IllegalArgumentException("음수는 허용하지 않습니다.");
         }
         this.value = value;
     }
 
-    public static Progress from(int value){
+    public static Progress from(int value) {
         return new Progress(value);
     }
 
-    public boolean isGreaterThan(int value){
+    public boolean isGreaterThan(int value) {
         return value < this.value;
     }
 
-    public boolean isSame(int value){
+    public boolean isSame(int value) {
         return value == this.value;
     }
 
-    public Progress goForward(){
+    public Progress goForward() {
         return new Progress(value + 1);
     }
 
-    public String status(){
+    public String status() {
         return "-".repeat(value);
     }
 
-    public int value(){
+    public int value() {
         return value;
     }
 

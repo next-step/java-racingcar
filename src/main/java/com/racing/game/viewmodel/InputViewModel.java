@@ -11,7 +11,7 @@ public class InputViewModel {
         this.circuit = circuit;
     }
 
-    public void readyToRace(RaceEntry raceEntry){
+    public void readyToRace(RaceEntry raceEntry) {
         circuit.readyToRace(raceEntry);
     }
 

@@ -1,5 +1,6 @@
 package com.racing.game.entity;
 
+import com.racing.game.dto.Winners;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Circuit {
     }
 
     public void startRace() {
-        while(raceRecord.isRaceOver(lap)){
+        while (raceRecord.isRaceOver(lap)) {
             raceRecord.progressNextLap();
         }
     }
@@ -29,6 +30,10 @@ public class Circuit {
 
     public int totalLaps() {
         return lap;
+    }
+
+    public Winners winners() {
+        return raceRecord.winners();
     }
 
     @Override

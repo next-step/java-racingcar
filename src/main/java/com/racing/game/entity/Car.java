@@ -4,7 +4,7 @@ import com.racing.game.utils.CarRandomMove;
 import com.racing.game.vo.Progress;
 import java.util.Objects;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     private final String name;
 
     private Progress progress;
@@ -41,11 +41,11 @@ public class Car implements Comparable<Car>{
         }
     }
 
-    public String name(){
+    public String name() {
         return name;
     }
 
-    public int progress(){
+    public int progress() {
         return this.progress.value();
     }
 
@@ -53,7 +53,7 @@ public class Car implements Comparable<Car>{
         return this.progress.isGreaterThan(progress);
     }
 
-    public boolean isSame(int progress){
+    public boolean isSame(int progress) {
         return this.progress.isSame(progress);
     }
 

@@ -8,6 +8,7 @@ public class CarRandomMove {
     private CarRandomMove() {
         throw new IllegalStateException("Utility class");
     }
+
     public static int randomGoForward(int input) {
         if (isGoForward()) {
             return input + 1;

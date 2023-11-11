@@ -13,4 +13,8 @@ public class ResultViewModel {
     public String allResultString(){
         return circuit.toString();
     }
+
+    public String winnersName(){
+        return circuit.winners().winnersName();
+    }
 }

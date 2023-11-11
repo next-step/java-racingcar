@@ -26,5 +26,6 @@ public class RacingController {
 
         ResultView resultView = new ResultView(resultViewModel);
         resultView.drawResultView();
+        resultView.drawWinnersView();
     }
 }
