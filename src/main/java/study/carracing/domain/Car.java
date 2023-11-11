@@ -28,7 +28,6 @@ public class Car {
         return position.getPosition();
     }
 
-
     public String getName() {
         return name.getName();
     }
@@ -36,5 +35,13 @@ public class Car {
     @Override
     public String toString() {
         return getName() + " : " + PROGRESS_DASH.repeat(getPosition());
+    }
+
+    public int compareToMaxPosition(int maxPosition) {
+        return this.position.compareToMaxPosition(maxPosition);
+    }
+
+    public boolean isSame(int maxPosition) {
+        return this.position.isSame(maxPosition);
     }
 }

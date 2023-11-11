@@ -21,4 +21,12 @@ public class Position {
     public void plusPosition() {
         position += 1;
     }
+
+    public int compareToMaxPosition(int maxPosition) {
+        return Math.max(position, maxPosition);
+    }
+
+    public boolean isSame(int maxPosition) {
+        return position == maxPosition;
+    }
 }
