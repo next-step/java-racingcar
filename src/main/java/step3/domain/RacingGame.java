@@ -13,7 +13,7 @@ public class RacingGame {
 
     public RacingCar[] runRound() {
         for (RacingCar racingCar : racingCars) {
-            racingCar.move(numberGenerator.generate());
+            racingCar.move(numberGenerator);
         }
         return getRacingCarsStatus();
     }

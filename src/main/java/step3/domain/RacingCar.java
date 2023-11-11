@@ -9,7 +9,8 @@ public class RacingCar {
         return distance;
     }
 
-    public void move(int movingCondition) {
+    public void move(NumberGenerator numberGenerator) {
+        int movingCondition = numberGenerator.generate();
         if (rule.canMove(movingCondition)) {
             distance += 1;
         }

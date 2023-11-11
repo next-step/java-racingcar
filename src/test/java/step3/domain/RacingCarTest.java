@@ -13,7 +13,7 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar();
         assertThat(racingCar.getDistance()).isEqualTo(0);
 
-        racingCar.move(numberGenerator.generate());
+        racingCar.move(numberGenerator);
         assertThat(racingCar.getDistance()).isEqualTo(1);
     }
 
@@ -24,7 +24,7 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar();
         assertThat(racingCar.getDistance()).isEqualTo(0);
 
-        racingCar.move(numberGenerator.generate());
+        racingCar.move(numberGenerator);
         assertThat(racingCar.getDistance()).isEqualTo(0);
     }
 
