@@ -5,7 +5,11 @@ import step3.domain.RacingCar;
 public class ResultView {
     public static void printRacingCarsStatus(RacingCar[] racingCars) {
         for (RacingCar racingCar : racingCars) {
-            System.out.println("-".repeat(racingCar.getDistance()));
+            String status = new StringBuilder(racingCar.getName())
+                    .append(" : ")
+                    .append("-".repeat(racingCar.getDistance()))
+                    .toString();
+            System.out.println(status);
         }
         System.out.println();
     }
