@@ -7,6 +7,7 @@ public class InputView {
 
 	private static final int MINIMUM_NATURAL_NUM = 1;
 	private static final String COMMA = ",";
+	public static final int MAX_CAR_NAME = 5;
 
 	private Scanner sc = new Scanner(System.in);
 
@@ -29,7 +30,7 @@ public class InputView {
 	}
 
 	private void isCarNameValid(String carName) {
-		if (carName.length() > 5) {
+		if (carName.length() > MAX_CAR_NAME) {
 			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다");
 		}
 	}

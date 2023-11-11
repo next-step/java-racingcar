@@ -34,7 +34,7 @@ class CarTest {
 	void giveNameCar() {
 		Car car = new Car("pobi");
 
-		assertThat(car.getName()).isEqualTo("pobi");
+		assertThat(car.getCarName()).isEqualTo("pobi");
 	}
 
 	@DisplayName("자동차 이름이 5자 이상이면 예외를 발생한다")
