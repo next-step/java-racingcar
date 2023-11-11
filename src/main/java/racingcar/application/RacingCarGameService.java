@@ -14,7 +14,7 @@ public class RacingCarGameService {
         int endTurn = request.getEndTurn();
         Cars cars = new Cars(request.getCarNames());
         HashMap<Integer, List<Car>> movedCarsByTurn = getMovedCarsByTurn(cars, endTurn);
-        return new RacingGameResponse(movedCarsByTurn, cars.findWinners(endTurn));
+        return new RacingGameResponse(movedCarsByTurn, cars.findWinners());
     }
 
     private HashMap<Integer, List<Car>> getMovedCarsByTurn(Cars cars, int endTurn) {

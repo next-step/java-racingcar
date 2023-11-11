@@ -36,11 +36,10 @@ public class ResultView {
     }
 
     private void displayWinners(RacingGameResponse response) {
-        String winnersToString = "";
+        System.out.print("최종 우승: ");
         for (String winner : response.getWinners()) {
-            winnersToString = winner + " ";
+            System.out.print(winner + " ");
         }
-        System.out.print("최종 우승: " + winnersToString);
         System.out.println("");
     }
 }

@@ -56,6 +56,8 @@ public class CarTest {
                 .contains("kwon", "park");
     }
 
+
+
     @DisplayName("자동차의 이름이 5글자가 넘어가면 예외가 발생한다.")
     @Test
     void inputCarNumberException() {
