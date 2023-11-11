@@ -2,6 +2,7 @@ package racingcar.application;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Strategy;
 import racingcar.ui.dto.RacingGameRequest;
 import racingcar.ui.dto.RacingGameResponse;
 

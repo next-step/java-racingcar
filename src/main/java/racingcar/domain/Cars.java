@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Cars {
     private List<Car> cars;
-    private Strategy strategy;
 
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
@@ -30,8 +29,9 @@ public class Cars {
     }
 
     public void moveAllCar() {
+        Strategy numberStrategy = new NumberStrategy();
         for (Car car : cars) {
-            car.stopOrMove(strategy);
+            car.stopOrMove(numberStrategy);
         }
     }
 
