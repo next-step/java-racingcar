@@ -9,11 +9,16 @@ import step3.view.ResultView;
 public class Main {
 
     public static void main(String[] args) {
-        int carCount = InputView.askNumberOfCars();
+        String[] carNames = InputView.askCarNames();
         int attemptCount = InputView.askNumberOfAttempts();
 
+        RacingCar[] racingCars = new RacingCar[carNames.length];
+        for (int idx = 0; idx < carNames.length; idx++) {
+            racingCars[idx] = new RacingCar(carNames[idx]);
+        }
+
         ResultView.title();
-        RacingGame racingGame = new RacingGame(carCount, new RandomNumberGenerator());
+        RacingGame racingGame = new RacingGame(racingCars, new RandomNumberGenerator());
         for (int attempt = 0; attempt < attemptCount; attempt++) {
             RacingCar[] racingCar = racingGame.runRound();
             ResultView.printRacingCarsStatus(racingCar);

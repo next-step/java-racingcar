@@ -6,9 +6,9 @@ public class RacingGame {
 
     private RacingCar[] racingCars;
 
-    public RacingGame(int carCount, NumberGenerator numberGenerator) {
+    public RacingGame(RacingCar[] racingCars, NumberGenerator numberGenerator) {
+        this.racingCars = racingCars;
         this.numberGenerator = numberGenerator;
-        initRacingCars(carCount);
     }
 
     public RacingCar[] runRound() {
@@ -22,10 +22,4 @@ public class RacingGame {
         return racingCars;
     }
 
-    private void initRacingCars(int carCount) {
-        this.racingCars = new RacingCar[carCount];
-        for (int carNo = 0; carNo < carCount; carNo++) {
-            racingCars[carNo] = new RacingCar();
-        }
-    }
 }
