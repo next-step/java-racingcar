@@ -1,0 +1,35 @@
+package racingcar.domain;
+
+public class Car {
+    private final CarName name;
+    private final Position position;
+
+    public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
+        this(name, new Position(position));
+    }
+
+    public Car(String name, Position position) {
+        this.name = new CarName(name);
+        this.position = position;
+    }
+
+    public void move() {
+        position.move();
+    }
+
+    public RaceRecord record() {
+        return new RaceRecord(this);
+    }
+
+    public CarName name() {
+        return name;
+    }
+
+    public Position position() {
+        return position;
+    }
+}
