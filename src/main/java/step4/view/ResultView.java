@@ -16,6 +16,7 @@ public class ResultView {
     }
 
     private static void printLine(Car car) {
+        System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getForwardCount(); i++) {
             System.out.print('-');
         }

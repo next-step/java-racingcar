@@ -11,10 +11,10 @@ public class RacingApp {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int numberOfCars = inputView.inputNumberOfCars();
+        String carNameStr = inputView.inputNumberOfCars();
         int round = inputView.inputRound();
 
-        List<Car> cars = CarFactory.createCars("");
+        List<Car> cars = CarFactory.createCars(carNameStr);
 
         Racing racing = new Racing(cars, round);
         racing.start();
