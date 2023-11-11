@@ -23,6 +23,24 @@ public class CarList {
 		}
 	}
 
+	public Car get(int index) {
+		if (index < getNumberOfCars()) {
+			Car findCar = cars.get(index);
+			return new Car(findCar.getMOVE_BOUND(), findCar.getMOVE_INTERVAL(), findCar.getPosition(), findCar.getCarName());
+		}
+		return null;
+	}
+
+	public Car get(CarName carName) {
+		int numberOfCars = getNumberOfCars();
+		for (int i = 0; i < numberOfCars; i++) {
+			if (cars.get(i).getCarName().equals(carName)) {
+				return get(i);
+			}
+		}
+		return null;
+	}
+
 	public void moveAll(int[] bounds) {
 		int numberOfCars = cars.size();
 		for (int i = 0; i < numberOfCars; i++) {
@@ -59,7 +77,7 @@ public class CarList {
 
 	private void addWinner(int maxPosition, List<String> winners, int i) {
 		if (isWinner(cars.get(i), maxPosition)) {
-			winners.add(cars.get(i).getName());
+			winners.add(cars.get(i).getCarName().getName());
 		}
 	}
 
@@ -78,11 +96,10 @@ public class CarList {
 		StringBuilder result = new StringBuilder();
 
 		int position = cars.get(index).getPosition();
-		result.append(cars.get(index).getName()).append(" : ");
+		result.append(cars.get(index).getCarName().getName()).append(" : ");
 		for (int i = 0; i < position; i++) {
 			result.append("-");
 		}
-		result.append("\n");
 		return result.toString();
 	}
 

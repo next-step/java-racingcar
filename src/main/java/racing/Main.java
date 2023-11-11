@@ -11,23 +11,22 @@ public class Main {
 		InputView inputView = new InputView();
 
 		String[] inputs = inputView.cars();
-		if (inputs == null) {
-			System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
-			return;
-		}
 		int numberOfCars = inputs.length;
-		int numberOfAttempts = inputView.attempts();
+		try {
+			int numberOfAttempts = inputView.attempts();
 
-		Game game = new Game(new RandomReturnZeroToNine());
-		CarList cars = new CarList(numberOfCars, inputs);
+			CarList cars = new CarList(numberOfCars, inputs);
+			Game game = new Game(new RandomReturnZeroToNine());
 
-		ResultView resultView = new ResultView();
-		resultView.print(cars);
-		for (int i = 0; i < numberOfAttempts; i++) {
-			cars.moveAll(game.bounds(numberOfCars));
+			ResultView resultView = new ResultView();
 			resultView.print(cars);
+			for (int i = 0; i < numberOfAttempts; i++) {
+				cars.moveAll(game.bounds(numberOfCars));
+				resultView.print(cars);
+			}
+			resultView.printWinners(cars.getWinners());
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		}
-		resultView.printWinners(cars.getWinners());
-
 	}
 }

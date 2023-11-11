@@ -6,7 +6,7 @@ public class CarName {
 
 	public CarName(String name) throws IllegalArgumentException {
 		if (name.length() > 5) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
 		}
 		this.name = name;
 	}

@@ -12,13 +12,11 @@ public class ResultView {
 	}
 
 	public void print(CarList carList) {
-		StringBuilder result = new StringBuilder();
-
 		int numberOfCars = carList.getNumberOfCars();
 		for (int i = 0; i < numberOfCars; i++) {
 			System.out.println(carList.getStatus(i));
 		}
-		System.out.println(result);
+		System.out.println();
 	}
 
 	public void printWinners(List<String> winners) {
