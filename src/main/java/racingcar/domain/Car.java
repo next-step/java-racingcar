@@ -29,4 +29,15 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public int selectMaxPosition(int maxPosition) {
+        if (this.getPosition() > maxPosition) {
+            maxPosition = this.getPosition();
+        }
+        return maxPosition;
+    }
+
+    public boolean isCarAtMaxPosition(int maxPosition) {
+        return maxPosition == this.getPosition();
+    }
 }

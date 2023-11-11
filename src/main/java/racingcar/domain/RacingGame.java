@@ -19,15 +19,22 @@ public class RacingGame {
     }
 
     public List<Car> findWinners() {
+        int maxPosition = getMaxPosition();
+        return getWinners(maxPosition);
+    }
+
+    private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
+            maxPosition = car.selectMaxPosition(maxPosition);
         }
+        return maxPosition;
+    }
+
+    private List<Car> getWinners(int maxPosition) {
         List<Car> Winners = new ArrayList<>();
         for (Car car : cars) {
-            if (maxPosition == car.getPosition()) {
+            if (car.isCarAtMaxPosition(maxPosition)) {
                 Winners.add(car);
             }
         }
