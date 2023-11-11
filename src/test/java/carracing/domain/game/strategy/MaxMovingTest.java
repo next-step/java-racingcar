@@ -1,6 +1,8 @@
 package carracing.domain.game.strategy;
 
 import carracing.domain.car.Car;
+import carracing.domain.car.Cars;
+import carracing.domain.car.Winners;
 import carracing.domain.game.MaxMoving;
 import carracing.domain.game.WinnerStrategy;
 import org.junit.jupiter.api.Test;
@@ -30,9 +32,10 @@ class MaxMovingTest {
 		List<Car> cars = List.of(car1, car2, car3);
 		WinnerStrategy maxMoving = new MaxMoving();
 
-		List<Car> winners = maxMoving.winners(cars);
+		Winners winners = maxMoving.winners(cars);
+		Cars winCars = new Cars(List.of(car1));
 
-		assertThat(winners).isEqualTo(List.of(car1));
+		assertThat(winners.isWinners(winCars)).isTrue();
 	}
 
 	@Test
@@ -43,8 +46,9 @@ class MaxMovingTest {
 		List<Car> cars = List.of(car1, car2, car3);
 		WinnerStrategy maxMoving = new MaxMoving();
 
-		List<Car> winners = maxMoving.winners(cars);
+		Winners winners = maxMoving.winners(cars);
+		Cars winCars = new Cars(List.of(car1, car2));
 
-		assertThat(winners).isEqualTo(List.of(car1, car2));
+		assertThat(winners.isWinners(winCars)).isTrue();
 	}
 }

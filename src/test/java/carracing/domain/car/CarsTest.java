@@ -4,6 +4,7 @@ import carracing.domain.game.MaxMoving;
 import carracing.domain.game.MovingStrategy;
 import carracing.domain.game.RandomRange;
 import carracing.domain.game.WinnerStrategy;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,6 +14,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
+	private MovingStrategy randomRange;
+	private WinnerStrategy maxMoving;
+
+	@BeforeEach
+	void setUp() {
+		randomRange = new RandomRange(1, 1);
+		maxMoving = new MaxMoving();
+	}
+
 	@Test
 	void newObject_emptyCars_throwsException() {
 		List<Car> emptyCars = new ArrayList<>();
@@ -22,31 +32,56 @@ public class CarsTest {
 	}
 
 	@Test
-	void race_threeCars_oneWinners() {
-		Car car1 = new Car(5, "abc");
-		Car car2 = new Car(3, "abc");
-		Car car3 = new Car(1, "abc");
-		MovingStrategy randomRange = new RandomRange(1, 1);
-		WinnerStrategy maxMoving = new MaxMoving();
-
+	void isWinners_twoWinners_true() {
+		Car car1 = new Car(10, "abc");
+		Car car2 = new Car(10, "abc");
+		Car car3 = new Car(8, "abc");
 		Cars cars = new Cars(List.of(car1, car2, car3));
-		cars.race(randomRange, 5);
-		List<Car> racingCars = cars.winners(maxMoving);
 
-		assertThat(racingCars).isEqualTo(List.of(car1));
+		Winners winners = cars.winners(maxMoving);
+		Cars winCars = new Cars(List.of(car1, car2));
+
+		assertThat(winners.isWinners(winCars)).isTrue();
 	}
 
 	@Test
-	void winners_threeCars_oneWinners() {
+	void isWinners_twoWinners_false() {
+		Car car1 = new Car(10, "abc");
+		Car car2 = new Car(9, "abc");
+		Cars cars = new Cars(List.of(car1, car2));
+
+		Winners winners = cars.winners(maxMoving);
+		Cars winCars = new Cars(List.of(car2));
+
+		assertThat(winners.isWinners(winCars)).isFalse();
+	}
+
+	@Test
+	void race_threeCars_fiveTries_oneWinners() {
+		Car car1 = new Car(5, "abc");
+		Car car2 = new Car(3, "abc");
+		Car car3 = new Car(1, "abc");
+		Cars cars = new Cars(List.of(car1, car2, car3));
+
+		cars.race(randomRange, 5);
+		Winners winners = cars.winners(maxMoving);
+		Cars winCars = new Cars(List.of(car1));
+
+		assertThat(winners.isWinners(winCars)).isTrue();
+	}
+
+	@Test
+	void winners_threeCars_oneTry_oneWinners() {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(9, "abc");
 		Car car3 = new Car(8, "abc");
-		WinnerStrategy maxMoving = new MaxMoving();
-
 		Cars cars = new Cars(List.of(car1, car2, car3));
-		List<Car> racingCars = cars.winners(maxMoving);
 
-		assertThat(racingCars).isEqualTo(List.of(car1));
+		cars.race(randomRange);
+		Winners winners = cars.winners(maxMoving);
+		Cars winCars = new Cars(List.of(car1));
+
+		assertThat(winners.isWinners(winCars)).isTrue();
 	}
 
 	@Test
@@ -54,11 +89,12 @@ public class CarsTest {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(10, "abc");
 		Car car3 = new Car(8, "abc");
-		WinnerStrategy maxMoving = new MaxMoving();
-
 		Cars cars = new Cars(List.of(car1, car2, car3));
-		List<Car> racingCars = cars.winners(maxMoving);
 
-		assertThat(racingCars).isEqualTo(List.of(car1, car2));
+		cars.race(randomRange);
+		Winners winners = cars.winners(maxMoving);
+		Cars winCars = new Cars(List.of(car1, car2));
+
+		assertThat(winners.isWinners(winCars)).isTrue();
 	}
 }

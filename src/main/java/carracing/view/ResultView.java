@@ -1,9 +1,7 @@
 package carracing.view;
 
-import carracing.domain.car.Car;
 import carracing.domain.car.Cars;
-
-import java.util.List;
+import carracing.domain.car.Winners;
 
 public class ResultView {
 	public static void printResultPhrase() {
@@ -19,13 +17,7 @@ public class ResultView {
 		System.out.println("");
 	}
 
-	public static void printWinners(List<Car> winners) {
-		StringBuilder sb = new StringBuilder();
-		for (Car winner : winners) {
-			sb.append(winner.name()).append(", ");
-		}
-		sb.setLength(sb.length() - 2);
-		sb.append("가 최종 우승했습니다.");
-		System.out.println(sb.toString());
+	public static void printWinners(Winners winners) {
+		winners.printWinners();
 	}
 }

@@ -1,9 +1,10 @@
 package carracing.controller;
 
 import carracing.domain.car.Cars;
-import carracing.domain.game.RacingGame;
+import carracing.domain.car.Winners;
 import carracing.domain.game.MaxMoving;
 import carracing.domain.game.MovingStrategy;
+import carracing.domain.game.RacingGame;
 import carracing.domain.game.RandomRange;
 import carracing.domain.game.WinnerStrategy;
 import carracing.view.InputView;
@@ -23,6 +24,7 @@ public class RacingGameController {
 
 		ResultView.printResultPhrase();
 		WinnerStrategy maxMoving = new MaxMoving();
-		ResultView.printWinners(racingCars.winners(maxMoving));
+		Winners winners = racingCars.winners(maxMoving);
+		ResultView.printWinners(winners);
 	}
 }

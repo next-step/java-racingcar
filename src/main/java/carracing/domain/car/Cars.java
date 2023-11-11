@@ -4,6 +4,7 @@ import carracing.domain.game.MovingStrategy;
 import carracing.domain.game.WinnerStrategy;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Cars {
 	private final List<Car> cars;
@@ -16,7 +17,7 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public List<Car> winners(WinnerStrategy winnerStrategy) {
+	public Winners winners(WinnerStrategy winnerStrategy) {
 		return winnerStrategy.winners(cars);
 	}
 
@@ -37,5 +38,28 @@ public class Cars {
 			String result = "-".repeat(Math.max(0, car.movingDistance()));
 			System.out.println(car.name() + " : " + result);
 		}
+	}
+
+	public void printWinners() {
+		StringBuilder sb = new StringBuilder();
+		for (Car winner : cars) {
+			sb.append(winner.name()).append(", ");
+		}
+		sb.setLength(sb.length() - 2);
+		sb.append("가 최종 우승했습니다.");
+		System.out.println(sb.toString());
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Cars inputCars = (Cars) o;
+		return Objects.equals(cars, inputCars.cars);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cars);
 	}
 }

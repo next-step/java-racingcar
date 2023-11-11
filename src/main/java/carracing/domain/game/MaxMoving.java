@@ -1,6 +1,8 @@
 package carracing.domain.game;
 
 import carracing.domain.car.Car;
+import carracing.domain.car.Cars;
+import carracing.domain.car.Winners;
 
 import java.util.Comparator;
 import java.util.List;
@@ -8,11 +10,12 @@ import java.util.stream.Collectors;
 
 public class MaxMoving implements WinnerStrategy {
 	@Override
-	public List<Car> winners(List<Car> cars) {
+	public Winners winners(List<Car> cars) {
 		int maxMovingDistance = maxMovingDistance(cars);
 		List<Car> winners = winnersWithMaxMovingDistance(cars, maxMovingDistance);
+		Cars racingWinners = new Cars(winners);
 
-		return winners;
+		return new Winners(racingWinners);
 	}
 
 	private int maxMovingDistance(List<Car> cars) {
