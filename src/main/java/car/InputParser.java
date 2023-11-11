@@ -19,7 +19,7 @@ public class InputParser {
         }
     }
 
-    private static void checkMoreThanLimitLength(String carName) {
+    private void checkMoreThanLimitLength(String carName) {
         if(carName.length() > LIMIT_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과해서는 안됩니다");
         }

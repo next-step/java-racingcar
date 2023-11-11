@@ -2,7 +2,7 @@ package car;
 
 public class CarPosition implements Comparable<CarPosition> {
 
-    private int distance;
+    private final int distance;
     private static final int MIN_DISTANCE = 0;
 
     public CarPosition(int distance) {
