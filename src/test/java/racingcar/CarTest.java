@@ -23,7 +23,7 @@ public class CarTest {
     @DisplayName("자동차명이 5글자를 초과할떄 exception test")
     @ParameterizedTest
     @ValueSource(strings = {"nextstep", "unlucky"})
-    void setCarName(String input) {
+    void setCarRName(String input) {
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> new Car(input)).withMessageMatching("자동차명은 5글자를 넘길 수 없습니다 : .*");
     }
 }

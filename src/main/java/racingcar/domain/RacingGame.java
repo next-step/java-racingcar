@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,24 +20,21 @@ public class RacingGame {
         }
     }
 
-    public void racing() {
+    public List<List<Car>> race() {
+        List<List<Car>> racingResult = new ArrayList<>();
         for (int i = 0; i < round; i++) {
-            moveCar();
-            printRoundResult();
+            racingResult.add(moveCar());
         }
+        return racingResult;
     }
 
-    private void moveCar() {
+    private List<Car> moveCar() {
+        List<Car> roundResult = new ArrayList<>();
         for (Car car : this.cars) {
             car.moveForward(getRandomValue());
+            roundResult.add(car);
         }
-    }
-
-    private void printRoundResult() {
-        ResultView.printAsterisk();
-        for (Car car : this.cars) {
-            ResultView.printRacingResult(car);
-        }
+        return roundResult;
     }
 
     private int getRandomValue() {
