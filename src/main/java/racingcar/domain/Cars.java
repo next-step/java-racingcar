@@ -46,4 +46,18 @@ public class Cars {
     public int getNumberOfCar() {
         return cars.size();
     }
+
+    public List<String> findWinners(int endTurn) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            decisionWinner(winners, car, endTurn);
+        }
+        return winners;
+    }
+
+    private void decisionWinner(List<String> winners, Car car, int endTurn) {
+        if (car.getMoveCount() == endTurn) {
+            winners.add(car.getName());
+        }
+    }
 }
