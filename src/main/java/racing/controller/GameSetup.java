@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSetup {
-    public List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
     private int round;
 
     public GameSetup(int numCar, int round) {
@@ -18,8 +18,12 @@ public class GameSetup {
         }
     }
 
-    public int getRound() {
+    public int round() {
         return round;
+    }
+
+    public List<Car> cars() {
+        return cars;
     }
 
     public void moveCar() {

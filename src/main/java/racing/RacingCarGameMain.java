@@ -20,7 +20,7 @@ public class RacingCarGameMain {
             gameSetup.moveCar();
 
             OutputView.showRound(i);
-            OutputView.display(gameSetup.cars);
+            OutputView.display(gameSetup.cars());
         }
     }
 }
