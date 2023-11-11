@@ -1,6 +1,6 @@
-package carRacing.car;
+package carRacing.domain;
 
-import carRacing.moveStrategy.MoveStrategy;
+import carRacing.strategy.MoveStrategy;
 
 public class Car {
 

@@ -1,9 +1,9 @@
-package carRacing.car;
+package carRacing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import carRacing.moveStrategy.MoveStrategy;
+import carRacing.strategy.MoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
