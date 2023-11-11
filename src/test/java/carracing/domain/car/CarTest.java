@@ -86,5 +86,23 @@ public class CarTest {
 				() -> new Car(nullAndEmptyInput)
 		).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	void sameDistance_sameMovingDistance_true() {
+		Car car = new Car(10, "abc");
+
+		boolean sameDistance = car.sameDistance(10);
+
+		assertThat(sameDistance).isTrue();
+	}
+
+	@Test
+	void sameDistance_differentMovingDistance_false() {
+		Car car = new Car(10, "abc");
+
+		boolean sameDistance = car.sameDistance(5);
+
+		assertThat(sameDistance).isFalse();
+	}
 }
 

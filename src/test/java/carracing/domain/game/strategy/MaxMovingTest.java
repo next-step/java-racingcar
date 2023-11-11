@@ -16,11 +16,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class MaxMovingTest {
 	@Test
 	void winners_emptyCars_throwsException() {
-		List<Car> emptyCars = new ArrayList<>();
 		WinnerStrategy maxMoving = new MaxMoving();
 
 		assertThatThrownBy(
-				() -> maxMoving.winners(emptyCars)
+				() -> maxMoving.winners(new Cars(new ArrayList<>()))
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -29,7 +28,7 @@ class MaxMovingTest {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(9, "abc");
 		Car car3 = new Car(8, "abc");
-		List<Car> cars = List.of(car1, car2, car3);
+		Cars cars = new Cars(List.of(car1, car2, car3));
 		WinnerStrategy maxMoving = new MaxMoving();
 
 		Winners winners = maxMoving.winners(cars);
@@ -43,7 +42,7 @@ class MaxMovingTest {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(10, "abc");
 		Car car3 = new Car(8, "abc");
-		List<Car> cars = List.of(car1, car2, car3);
+		Cars cars = new Cars(List.of(car1, car2, car3));
 		WinnerStrategy maxMoving = new MaxMoving();
 
 		Winners winners = maxMoving.winners(cars);

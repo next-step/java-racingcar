@@ -3,8 +3,10 @@ package carracing.domain.car;
 import carracing.domain.game.MovingStrategy;
 import carracing.domain.game.WinnerStrategy;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
 	private final List<Car> cars;
@@ -18,7 +20,7 @@ public class Cars {
 	}
 
 	public Winners winners(WinnerStrategy winnerStrategy) {
-		return winnerStrategy.winners(cars);
+		return winnerStrategy.winners(this);
 	}
 
 	public void race(MovingStrategy movingStrategy, int tryingTimes) {
@@ -31,6 +33,21 @@ public class Cars {
 		for (Car car : cars) {
 			car.move(movingStrategy);
 		}
+	}
+
+	public int maxMovingDistance() {
+		return this.cars.stream()
+				.map(Car::movingDistance)
+				.max(Comparator.comparingInt(movingDistance -> movingDistance))
+				.orElseThrow(IllegalArgumentException::new);
+	}
+
+	public Cars winnersWithMaxMovingDistance(int maxMovingDistance) {
+		List<Car> cars = this.cars.stream()
+				.filter(car -> car.sameDistance(maxMovingDistance))
+				.collect(Collectors.toList());
+
+		return new Cars(cars);
 	}
 
 	public void printMovingResult() {
@@ -47,7 +64,7 @@ public class Cars {
 		}
 		sb.setLength(sb.length() - 2);
 		sb.append("가 최종 우승했습니다.");
-		System.out.println(sb.toString());
+		System.out.println(sb);
 	}
 
 	@Override

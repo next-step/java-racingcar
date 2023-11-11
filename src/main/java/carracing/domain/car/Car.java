@@ -1,8 +1,8 @@
 package carracing.domain.car;
 
+import carracing.domain.game.MovingStrategy;
 import carracing.util.controlstatement.Boolean;
 import carracing.util.controlstatement.Equal;
-import carracing.domain.game.MovingStrategy;
 
 public class Car {
 	private static final int MOVING_DISTANCE = 1;
@@ -51,8 +51,8 @@ public class Car {
 		return this.name;
 	}
 
-	public boolean sameDistance(int maxMovingDistance) {
-		Boolean same = new Equal(this.movingDistance, maxMovingDistance);
+	public boolean sameDistance(int movingDistance) {
+		Boolean same = new Equal(this.movingDistance, movingDistance);
 
 		return same.booleanValue();
 	}

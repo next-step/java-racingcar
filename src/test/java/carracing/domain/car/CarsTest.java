@@ -32,69 +32,69 @@ public class CarsTest {
 	}
 
 	@Test
-	void isWinners_twoWinners_true() {
-		Car car1 = new Car(10, "abc");
-		Car car2 = new Car(10, "abc");
-		Car car3 = new Car(8, "abc");
-		Cars cars = new Cars(List.of(car1, car2, car3));
-
-		Winners winners = cars.winners(maxMoving);
-		Cars winCars = new Cars(List.of(car1, car2));
-
-		assertThat(winners.isWinners(winCars)).isTrue();
-	}
-
-	@Test
-	void isWinners_twoWinners_false() {
-		Car car1 = new Car(10, "abc");
-		Car car2 = new Car(9, "abc");
-		Cars cars = new Cars(List.of(car1, car2));
-
-		Winners winners = cars.winners(maxMoving);
-		Cars winCars = new Cars(List.of(car2));
-
-		assertThat(winners.isWinners(winCars)).isFalse();
-	}
-
-	@Test
-	void race_threeCars_fiveTries_oneWinners() {
+	void race_threeCars_fiveTriesWithMaxMoving_oneWinners() {
 		Car car1 = new Car(5, "abc");
 		Car car2 = new Car(3, "abc");
 		Car car3 = new Car(1, "abc");
 		Cars cars = new Cars(List.of(car1, car2, car3));
+		Cars winCars = new Cars(List.of(car1));
 
 		cars.race(randomRange, 5);
 		Winners winners = cars.winners(maxMoving);
-		Cars winCars = new Cars(List.of(car1));
 
 		assertThat(winners.isWinners(winCars)).isTrue();
 	}
 
 	@Test
-	void winners_threeCars_oneTry_oneWinners() {
+	void winners_threeCars_oneTryWithMaxMoving_oneWinners() {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(9, "abc");
 		Car car3 = new Car(8, "abc");
 		Cars cars = new Cars(List.of(car1, car2, car3));
+		Cars winCars = new Cars(List.of(car1));
 
 		cars.race(randomRange);
 		Winners winners = cars.winners(maxMoving);
-		Cars winCars = new Cars(List.of(car1));
 
 		assertThat(winners.isWinners(winCars)).isTrue();
 	}
 
 	@Test
-	void winners_threeCars_twoWinners() {
+	void winners_threeCars_oneTryWithMaxMoving_twoWinners() {
+		Car car1 = new Car(10, "abc");
+		Car car2 = new Car(10, "abc");
+		Car car3 = new Car(8, "abc");
+		Cars cars = new Cars(List.of(car1, car2, car3));
+		Cars winCars = new Cars(List.of(car1, car2));
+
+		cars.race(randomRange);
+		Winners winners = cars.winners(maxMoving);
+
+		assertThat(winners.isWinners(winCars)).isTrue();
+	}
+
+	@Test
+	void maxMovingDistance_withMaxTen_maxMovingDistance() {
 		Car car1 = new Car(10, "abc");
 		Car car2 = new Car(10, "abc");
 		Car car3 = new Car(8, "abc");
 		Cars cars = new Cars(List.of(car1, car2, car3));
 
-		cars.race(randomRange);
-		Winners winners = cars.winners(maxMoving);
-		Cars winCars = new Cars(List.of(car1, car2));
+		int maxMovingDistance = cars.maxMovingDistance();
 
-		assertThat(winners.isWinners(winCars)).isTrue();
+		assertThat(maxMovingDistance).isEqualTo(10);
+	}
+
+	@Test
+	void winnersWithMaxMovingDistance_withMaxTen_matchedWinnersWithMaxTen() {
+		Car car1 = new Car(10, "abc");
+		Car car2 = new Car(10, "abc");
+		Car car3 = new Car(8, "abc");
+		Cars cars = new Cars(List.of(car1, car2, car3));
+		Cars winners = new Cars(List.of(car1, car2));
+
+		Cars matchedCars = cars.winnersWithMaxMovingDistance(10);
+
+		assertThat(matchedCars).isEqualTo(winners);
 	}
 }
