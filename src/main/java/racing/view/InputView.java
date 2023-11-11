@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.domain.RaceInfo;
 
 import java.util.Scanner;
 
@@ -6,10 +8,7 @@ public class InputView {
 
     public static final String DELIMITER = ",";
 
-    private InputView() {
-    }
-
-    public static RaceInfo inputNameInfo() {
+    public RaceInfo inputNameInfo() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -24,7 +23,7 @@ public class InputView {
         return new RaceInfo(names, trials);
     }
 
-    private static String[] splitNames(Scanner scanner) {
+    private String[] splitNames(Scanner scanner) {
         String inputNames = scanner.nextLine();
         return inputNames.split(DELIMITER);
     }

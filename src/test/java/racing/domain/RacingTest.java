@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,18 +26,8 @@ class RacingTest {
 
         Car test1 = new Car("test1");
         Car test2 = new Car("test2");
-        test1.move(new RandomMoveCondition(){
-            @Override
-            public boolean move() {
-                return true;
-            }
-        });
-        test2.move(new RandomMoveCondition(){
-            @Override
-            public boolean move() {
-                return false;
-            }
-        });
+        test1.move(() -> true);
+        test2.move(() -> false);
 
         List<Car> cars = new ArrayList<>();
         cars.add(test1);
