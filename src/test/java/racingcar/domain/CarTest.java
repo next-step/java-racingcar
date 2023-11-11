@@ -2,9 +2,8 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.strategy.RandomMoveStrategyTest;
+import racingcar.strategy.ForwardMoveStrategyTest;
+import racingcar.strategy.StopMoveStrategy;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -13,7 +12,7 @@ public class CarTest {
     @DisplayName("랜덤숫자가 4이상일 때 전진 확인")
     void car_전진확인() {
         Car car = new Car( "a");
-        car.moveForward(4);
+        car.moveForward(new ForwardMoveStrategyTest());
         assertThat(car.forwardCnt()).isEqualTo(1);
     }
 
@@ -21,7 +20,7 @@ public class CarTest {
     @DisplayName("랜덤숫자가 4미만일 때 정지 확인")
     void car_정지확인() {
         Car car = new Car( "a");
-        car.moveForward(0);
+        car.moveForward(new StopMoveStrategy());
         assertThat(car.forwardCnt()).isEqualTo(0);
     }
 

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.factory.CarFactory;
-import racingcar.strategy.RandomMoveStrategyTest;
+import racingcar.strategy.ForwardMoveStrategyTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +18,7 @@ class RacingGameTest {
         int tryCount = 5;
         racingGame = new RacingGame(new Cars(new CarFactory().generate(new CarName(carsName).carNameList())), tryCount);
         for (int i = 0; i < tryCount; i++) {
-            racingGame.start(new RandomMoveStrategyTest(6));
+            racingGame.start(new ForwardMoveStrategyTest());
         }
     }
 

@@ -1,8 +1,11 @@
 package racingcar.domain;
 
+import racingcar.strategy.MoveStrategy;
+
 public class Car {
 
     private static final int CONDITION_NUMBER = 4;
+    private static final int DEFAULT_MOVE_POSITION = 1;
     private int forwardCnt;
     private String carName;
 
@@ -10,17 +13,10 @@ public class Car {
         this.carName = carName;
     }
 
-    public void moveForward(int randomNumber) {
-        if (ableMove(randomNumber))
-            forwardCnt++;
-    }
-
-    public void moveForward() {
-        forwardCnt++;
-    }
-
-    private boolean ableMove(int randomNumber) {
-        return randomNumber >= CONDITION_NUMBER;
+    public void moveForward(MoveStrategy moveStrategy) {
+        if (moveStrategy.ableMove()) {
+            forwardCnt += DEFAULT_MOVE_POSITION;
+        }
     }
 
     public int forwardCnt() {

@@ -9,13 +9,8 @@ public class RandomMoveStrategy implements MoveStrategy {
     private static final Random random = new Random();
 
     @Override
-    public int randomNumber() {
-        return random.nextInt(RANDOM_MAX_BOUND);
-    }
-
-    @Override
     public boolean ableMove() {
-        return randomNumber() >= CONDITION_NUMBER;
+        return random.nextInt(RANDOM_MAX_BOUND) >= CONDITION_NUMBER;
     }
 
 }

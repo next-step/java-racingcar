@@ -35,8 +35,6 @@ public class Cars {
     }
 
     public void moveCars(MoveStrategy moveStrategy) {
-        carList().forEach(car -> {
-            if (moveStrategy.ableMove()) car.moveForward(moveStrategy.randomNumber());
-        });
+        cars.forEach(car -> car.moveForward(moveStrategy));
     }
 }
