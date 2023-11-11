@@ -17,6 +17,23 @@ public class RacingGame {
         moveCars();
         return cars;
     }
+
+    public List<Car> findWinners() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        List<Car> Winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (maxPosition == car.getPosition()) {
+                Winners.add(car);
+            }
+        }
+        return Winners;
+    }
+
     private void moveCars() {
         for (Car car : cars) {
             car.move(new RandomNumberMoveStrategy());

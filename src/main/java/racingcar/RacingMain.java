@@ -23,5 +23,7 @@ public class RacingMain {
             List<Car> cars = racingGame.race();
             resultView.viewGame(cars);
         }
+        List<Car> winners = racingGame.findWinners();
+        resultView.viewWinner(winners);
     }
 }
