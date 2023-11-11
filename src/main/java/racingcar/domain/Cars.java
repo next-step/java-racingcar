@@ -2,11 +2,10 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Cars {
     private List<Car> cars;
-    private Random random = new Random();
+    private Strategy strategy;
 
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
@@ -32,20 +31,19 @@ public class Cars {
 
     public void moveAllCar() {
         for (Car car : cars) {
-            car.stopOrMove(getRandomValue());
+            car.stopOrMove(strategy);
         }
     }
 
-    private int getRandomValue() {
-        return random.nextInt(10);
-    }
-
     public final List<Car> getAllCar() {
-        return cars;
+        List<Car> copyCars = new ArrayList<>();
+        for (Car car : cars) {
+            copyCars.add(car.clone());
+        }
+        return copyCars;
     }
 
     public int getNumberOfCar() {
         return cars.size();
     }
-
 }
