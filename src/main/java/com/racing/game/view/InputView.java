@@ -1,11 +1,14 @@
 package com.racing.game.view;
 
+import com.racing.game.utils.InputUtils;
 import com.racing.game.viewmodel.InputViewModel;
-import com.racing.game.vo.CarCount;
-import com.racing.game.vo.TryCount;
+import com.racing.game.entity.RaceEntry;
 import java.util.Scanner;
 
 public class InputView {
+
+    private final String USER_INPUT_MESSAGE_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private final String USER_INPUT_MESSAGE_LAPS = "시도할 회수는 몇회인가요?";
 
     private final InputViewModel inputViewModel;
 
@@ -16,12 +19,13 @@ public class InputView {
     private final Scanner scanner = new Scanner(System.in);
 
     public void drawCarCountInputView() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        inputViewModel.saveCarCount(CarCount.of(scanner.nextInt()));
+        System.out.println(USER_INPUT_MESSAGE_CAR_NAMES);
+        inputViewModel.readyToRace(
+                RaceEntry.from(InputUtils.toCarList(scanner.nextLine())));
     }
 
     public void drawTryCountInputView() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        inputViewModel.saveTryCount(TryCount.of(scanner.nextInt()));
+        System.out.println(USER_INPUT_MESSAGE_LAPS);
+        inputViewModel.saveLaps(scanner.nextInt());
     }
 }

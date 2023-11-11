@@ -1,11 +1,8 @@
 package com.racing.game.view;
 
 import com.racing.game.viewmodel.ResultViewModel;
-import java.util.List;
 
 public class ResultView {
-
-    private static final String CAR_PROGRESS_SYMBOL = "-";
 
     private final ResultViewModel resultViewModel;
 
@@ -14,22 +11,11 @@ public class ResultView {
     }
 
     public void drawResultView() {
-        for (List<Integer> lap : resultViewModel.raceResult().toResultForm()) {
-            printCurrentLapResult(lap);
-        }
+        System.out.println("실행결과");
+        System.out.println(resultViewModel.allResultString());
     }
 
-    private void printCurrentLapResult(List<Integer> lap) {
-        for (int progress : lap) {
-            printCarProgress(progress);
-        }
-        System.out.println();
-    }
-
-    private void printCarProgress(int progress) {
-        for (int i = 0; i < progress; i++) {
-            System.out.print(CAR_PROGRESS_SYMBOL);
-        }
-        System.out.println();
+    public void drawWinnersView(){
+        System.out.println(resultViewModel.winnersName().concat("(이)가 최종 우승했습니다."));
     }
 }

@@ -1,15 +1,20 @@
 package com.racing.game.viewmodel;
 
-import com.racing.game.dto.RaceResult;
+import com.racing.game.entity.Circuit;
 
 public class ResultViewModel {
-    private RaceResult raceResult;
 
-    public void saveRaceResult(RaceResult raceResult) {
-        this.raceResult = raceResult;
+    private final Circuit circuit;
+
+    public ResultViewModel(Circuit circuit){
+        this.circuit = circuit;
     }
 
-    public RaceResult raceResult() {
-        return raceResult;
+    public String allResultString(){
+        return circuit.toString();
+    }
+
+    public String winnersName(){
+        return circuit.winners().winnersName();
     }
 }

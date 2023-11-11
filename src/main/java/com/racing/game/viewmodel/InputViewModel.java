@@ -1,27 +1,22 @@
 package com.racing.game.viewmodel;
 
-import com.racing.game.vo.CarCount;
-import com.racing.game.vo.TryCount;
+import com.racing.game.entity.Circuit;
+import com.racing.game.entity.RaceEntry;
 
 public class InputViewModel {
 
-    private CarCount carCount;
-    private TryCount tryCount;
+    private Circuit circuit;
 
-    public void saveCarCount(CarCount carCount) {
-        this.carCount = carCount;
+    public InputViewModel(Circuit circuit) {
+        this.circuit = circuit;
     }
 
-    public void saveTryCount(TryCount tryCount) {
-        this.tryCount = tryCount;
+    public void readyToRace(RaceEntry raceEntry) {
+        circuit.readyToRace(raceEntry);
     }
 
-    public CarCount carCount() {
-        return carCount;
-    }
-
-    public TryCount tryCount() {
-        return tryCount;
+    public void saveLaps(int lap) {
+        circuit.saveLaps(lap);
     }
 
 }
