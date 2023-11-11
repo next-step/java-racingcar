@@ -2,9 +2,11 @@ package step4.presentation;
 
 public class InputValidation {
 
-    public void validateNameOfCars(String input, String delimiter) {
+    public String validateNameOfCars(String input, String delimiter) {
         validateNone(input);
         validateNumOfCars(input, delimiter);
+
+        return input;
     }
 
     private void validateNone(String input) {

@@ -30,7 +30,7 @@ public class RacingResultView {
             printCars(carController.getCars());
         }
 
-        printWinners(carController.findWinners(numOfTry));
+        printWinners(carController.findWinners());
     }
 
     private void tryCarMoving(int numOfCars) {

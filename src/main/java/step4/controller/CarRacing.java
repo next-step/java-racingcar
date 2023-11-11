@@ -3,11 +3,9 @@ package step4.controller;
 import step4.presentation.RacingInputView;
 import step4.presentation.RacingResultView;
 
-import java.io.IOException;
-
 public class CarRacing {
 
-    public void startGame() throws IOException {
+    public void startGame() {
         CarController carController = new CarController();
         RacingInputView inputView = new RacingInputView(carController);
         RacingResultView resultView = new RacingResultView(carController);
@@ -18,12 +16,12 @@ public class CarRacing {
         resultView.printCarRacing(numOfTry);
     }
 
-    private int loopUntilNumOfTryIsCorrect(RacingInputView inputView) throws IOException {
+    private int loopUntilNumOfTryIsCorrect(RacingInputView inputView) {
         int numOfTry;
         while (true) {
             try {
                 numOfTry = inputView.inputNumOfTry();
-            } catch (IllegalArgumentException e) {
+            } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
                 continue;
             }
@@ -33,11 +31,11 @@ public class CarRacing {
         return numOfTry;
     }
 
-    private void loopUntilNameOfCarsIsCorrect(RacingInputView inputView) throws IOException {
+    private void loopUntilNameOfCarsIsCorrect(RacingInputView inputView) {
         while (true) {
             try {
                 inputView.inputNameOfCars();
-            } catch (IllegalArgumentException e) {
+            } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
                 continue;
             }
