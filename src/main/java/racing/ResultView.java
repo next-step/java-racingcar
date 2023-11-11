@@ -1,24 +1,24 @@
 package racing;
 
 public class ResultView {
-    public static void show_status(int[] cars){
-        for (int car: cars) {
-            System.out.println("-".repeat(car));
+    public static void showStatus(Car[] cars){
+        for (Car car: cars) {
+            System.out.println("-".repeat(car.getMoveCount()));
         }
         System.out.println();
     }
 
-    public static void show_result(int[] cars, int moveCount){
-        String result_message = "결승점에 도달한 차는 ";
-        boolean multi_flag = false;
+    public static void showResult(Car[] cars, int moveCount){
+        String resultMessage = "결승점에 도달한 차는 ";
+        boolean multiFlag = false;
         for(int index = 0; index < cars.length; ++index){
-            if(cars[index] == moveCount){
-                if (multi_flag) result_message += ", ";
-                result_message += (index + 1);
-                multi_flag = true;
+            if(cars[index].getMoveCount() == moveCount){
+                if (multiFlag) resultMessage += ", ";
+                resultMessage += (index + 1);
+                multiFlag = true;
             }
         }
-        result_message += "번 입니다.";
-        System.out.println(result_message);
+        resultMessage += "번 입니다.";
+        System.out.println(resultMessage);
     }
 }
