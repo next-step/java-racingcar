@@ -1,23 +1,24 @@
 package carracing;
 
-import java.lang.reflect.AnnotatedType;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Car {
-    private String distance = "";
-
-    public String distance() {
-        return distance;
-    }
+    public int distance = 0;
 
     public void move() {
-        int randomNum = random();
-        if(randomNum > 3) {
-            distance += '-';
+        int randomNum = getRandom();
+        getMove(randomNum);
+    }
+
+    public void getMove(int randomNum) {
+        if (randomNum > 3) {
+            distance++;
         }
     }
 
-    public int random() {
+    private int getRandom() {
         Random random = new Random();
         int randomNum = random.nextInt(10);
         return randomNum;
