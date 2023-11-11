@@ -7,11 +7,10 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private List<Car> cars = new ArrayList<>();
 
-    public List<Car> generateCars (String[] carNames) {
+    public RacingGame(String[] carNames) {
         for (int i = 0; i < carNames.length; i++) {
             cars.add(new Car(carNames[i]));
         }
-        return cars;
     }
 
     public List<Car> race() {
@@ -42,5 +41,9 @@ public class RacingGame {
         for (Car car : cars) {
             car.move(new RandomNumberMoveStrategy());
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

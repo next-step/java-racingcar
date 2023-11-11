@@ -11,10 +11,10 @@ class RacingGameTest {
     @DisplayName("n개의 자동차를 만들 수 있다.")
     void generateCars() {
         // given
-        RacingGame racingGame = new RacingGame();
         String[] carNames = {"tody", "podi", "kim"};
+        RacingGame racingGame = new RacingGame(carNames);
         // when
-        List<Car> cars = racingGame.generateCars(carNames);
+        List<Car> cars = racingGame.getCars();
         // then
         Assertions.assertThat(cars).hasSize(3);
     }
