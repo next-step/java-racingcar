@@ -1,15 +1,16 @@
 package carracing.ui;
 
 import carracing.Car;
+import carracing.GameWinner;
 
 import java.util.List;
 
-import static carracing.GameWinner.findWinners;
 import static carracing.GameWinner.getWinnerPoint;
 
 public class ResultView {
 
     private static final StringBuilder sb = new StringBuilder();
+    private static final GameWinner gameWinner = new GameWinner();
 
     private ResultView() {
     }
@@ -27,7 +28,7 @@ public class ResultView {
     public static void carRacingWinnersView(List<Car> winners) {
         int winnerPoint = getWinnerPoint();
 
-        List<String> finalWinner = findWinners(winners, winnerPoint);
+        List<String> finalWinner = gameWinner.findWinners(winners, winnerPoint);
 
         System.out.println(String.join(", ", finalWinner) + "가 최종 우승했습니다.");
     }
