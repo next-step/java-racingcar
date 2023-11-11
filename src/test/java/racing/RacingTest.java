@@ -14,7 +14,7 @@ class RacingTest {
         GameSetup newGame = new GameSetup(5,2);
 
         assertThat(newGame.cars.size()).isEqualTo(5);
-        assertThat(newGame.round).isEqualTo(2);
+        assertThat(newGame.getRound()).isEqualTo(2);
     }
 
     @Test
@@ -29,7 +29,7 @@ class RacingTest {
 
         assertThat(sumBeforeStartGame.get()).isEqualTo(0);
 
-        for (int i = 0; i < newGame.round; i++) {
+        for (int i = 0; i < newGame.getRound(); i++) {
             newGame.moveCar();
         }
         newGame.cars.forEach(car -> {
