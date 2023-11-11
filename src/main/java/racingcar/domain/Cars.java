@@ -8,13 +8,12 @@ public class Cars {
     private List<Car> cars;
     private Random random = new Random();
 
-    public Cars(String inputCars) {
+    public Cars(String[] carNames) {
         cars = new ArrayList<>();
-        initializeCars(inputCars);
+        initializeCars(carNames);
     }
 
-    private void initializeCars(String inputCars) {
-        String[] carNames = inputCars.split(",");
+    private void initializeCars(String[] carNames) {
         checkCarNumber(carNames.length);
         for (String carName : carNames) {
             this.addCar(new Car(carName));

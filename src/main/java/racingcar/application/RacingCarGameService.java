@@ -16,7 +16,7 @@ public class RacingCarGameService {
 
     public RacingGameResponse start(RacingGameRequest request) {
         endTurn = request.getEndTurn();
-        cars = new Cars(request.getInputCars());
+        cars = new Cars(request.getCarNames());
         HashMap<Integer, List<Car>> movedCarsByTurn = getMovedCarsByTurn();
         return new RacingGameResponse(movedCarsByTurn, findWinners(movedCarsByTurn));
     }
