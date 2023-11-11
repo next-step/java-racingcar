@@ -1,20 +1,27 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 public class Cars {
     private List<Car> cars;
 
-    public Cars(int carNumber) {
+    public Cars(String[] carNames) {
         cars = new ArrayList<>();
-        initializeCars(carNumber);
+        initializeCars(carNames);
     }
 
-    public void initializeCars(int carNumber) {
-        for (int i = 0; i < carNumber; i++) {
-            this.addCar(new Car());
+    private void initializeCars(String[] carNames) {
+        checkCarNumber(carNames.length);
+        for (String carName : carNames) {
+            this.addCar(new Car(carName));
+        }
+    }
+
+    private void checkCarNumber(int carNumber) {
+        if (carNumber <= 0) {
+            throw new IllegalArgumentException("Input positive car number.");
         }
     }
 
@@ -23,29 +30,38 @@ public class Cars {
     }
 
     public void moveAllCar() {
+        Strategy numberStrategy = new NumberStrategy();
         for (Car car : cars) {
-            car.stopOrMove(getRandomValue());
+            car.stopOrMove(numberStrategy);
         }
     }
 
-    private int getRandomValue() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
-    public List<Integer> getAllMoveCount() {
-        List<Integer> moveCounts = new ArrayList<>();
+    public final List<Car> getAllCar() {
+        List<Car> copyCars = new ArrayList<>();
         for (Car car : cars) {
-            moveCounts.add(car.getMoveCount());
+            copyCars.add(car.clone());
         }
-        return moveCounts;
-    }
-
-    public List<Car> getAllCar() {
-        return cars;
+        return copyCars;
     }
 
     public int getNumberOfCar() {
         return cars.size();
+    }
+
+    public List<String> findWinners() {
+        List<String> winners = new ArrayList<>();
+        cars.sort(Comparator.comparingInt(Car::getMoveCount).reversed());
+        int winnerMoveCount = cars.get(0).getMoveCount();
+        decisionWinner(winners, winnerMoveCount);
+        return winners;
+    }
+
+    private void decisionWinner(List<String> winners, int winnerMoveCount) {
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
+            if (car.getMoveCount() == winnerMoveCount) {
+                winners.add(car.getName());
+            }
+        }
     }
 }

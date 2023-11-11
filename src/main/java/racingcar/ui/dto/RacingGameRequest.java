@@ -2,16 +2,20 @@ package racingcar.ui.dto;
 
 public class RacingGameRequest {
 
-    private int carNumber;
-    private int endTurn;
+    private final String[] carNames;
+    private final int endTurn;
 
-    public RacingGameRequest(int carNumber, int endTurn) {
-        this.carNumber = carNumber;
+    public RacingGameRequest(String[] carNames, int endTurn) {
+        this.carNames = carNames;
+        if (endTurn <= 0) {
+            throw new IllegalArgumentException("End turn must be more than 0.");
+        }
+
         this.endTurn = endTurn;
     }
 
-    public int getCarNumber() {
-        return carNumber;
+    public String[] getCarNames() {
+        return carNames;
     }
 
     public int getEndTurn() { return endTurn; }
