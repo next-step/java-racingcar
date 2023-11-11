@@ -1,53 +1,38 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import racingcar.utils.NumberGenerator;
-import racingcar.utils.RandomNumberGenerator;
-
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
+import racingcar.utils.RandomNumberGenerator;
 
 public class RacingGame {
 
-    private List<Round> rounds;
-    private Cars cars;
+    private final int truCountNumber;
+    private final List<Round> rounds = new ArrayList<>();
+    private final Cars cars;
+
+    private static final int BEGIN_ROUND_INDEX = 0;
 
     public RacingGame(final List<String> carNames, final int tryCountNumber) {
+        this.truCountNumber = tryCountNumber;
         this.cars = new Cars(CarFactory.createCars(carNames));
-        this.rounds = createRounds(tryCountNumber, new RandomNumberGenerator());
     }
 
     public void play() {
-        rounds.stream().forEach(round -> {
-            round.playRound(cars);
-            cars = round.getRoundCarStatus().copyCars();
-        });
+        IntStream.range(BEGIN_ROUND_INDEX, truCountNumber)
+            .forEach(round -> {
+                rounds.add(cars.moveForwardCars(new RandomNumberGenerator()));
+            });
     }
 
     public List<Round> getRounds() {
         return Collections.unmodifiableList(rounds);
     }
 
-    public String getWinners() {
-        return cars.getCars().stream()
-            .filter(car -> car.getCarPosition() == getMaxPosition())
-            .map(Car::getCarName)
-            .collect(Collectors.joining(","));
-    }
-
-    private List<Round> createRounds(final int tryCountNumber,
-        final NumberGenerator numberGenerator) {
-        return Stream.generate(() -> new Round(cars, numberGenerator))
-            .limit(tryCountNumber)
-            .collect(Collectors.toList());
-    }
-
-    private int getMaxPosition() {
-        return cars.getCars().stream()
-            .mapToInt(car -> car.getCarPosition())
-            .max()
-            .orElseThrow(() -> new IllegalArgumentException("자동차가 존재하지 않습니다."));
+    public List<Car> getWinners() {
+        Winners winners = new Winners();
+        return winners.findWinners(cars);
     }
 
 }

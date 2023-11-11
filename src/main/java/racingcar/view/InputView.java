@@ -17,17 +17,17 @@ public class InputView {
         return inputRacingCarNames;
     }
 
+    private void validateInputRacingCarNames(String inputRacingCarNames) {
+        if (inputRacingCarNames == null || inputRacingCarNames.isEmpty()) {
+            throw new IllegalArgumentException("최소 한 개 이상의 자동차 이름을 입력해야 합니다.");
+        }
+    }
+
     public int inputTryCount() {
         System.out.println(RACING_TRY_COUNT_INPUT_MESSAGE);
         int inputTryCount = scan.nextInt();
         validateInputNumber(inputTryCount);
         return inputTryCount;
-    }
-
-    private void validateInputRacingCarNames(String inputRacingCarNames) {
-        if(inputRacingCarNames == null || inputRacingCarNames.isEmpty()) {
-            throw new IllegalArgumentException("최소 한 개 이상의 자동차 이름을 입력해야 합니다.");
-        }
     }
 
     private void validateInputNumber(final int inputNumber) {

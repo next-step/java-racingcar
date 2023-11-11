@@ -6,12 +6,12 @@ public class Position {
 
     private final int DEFAULT_MOVE_POINT = 1;
 
-    public Position(int position) {
+    public Position(final int position) {
         this.position = position;
     }
 
     public Position move() {
-        return new Position(this.position + DEFAULT_MOVE_POINT);
+        return new Position(position + DEFAULT_MOVE_POINT);
     }
 
     public int getPosition() {

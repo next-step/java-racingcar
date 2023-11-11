@@ -1,10 +1,10 @@
 package racingcar.domain;
 
+import java.util.stream.Collectors;
 import racingcar.utils.NumberGenerator;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -14,18 +14,30 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void moveForwardCars(final NumberGenerator numberGenerator) {
+    public Round moveForwardCars(final NumberGenerator numberGenerator) {
+        Round round = new Round();
         cars.stream().forEach(car -> car.tryMove(numberGenerator.generateNumber()));
+        round.recordRound(copyCars());
+        return round;
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 
+    public int getMaxPosition() {
+        return cars.stream()
+            .mapToInt(Car::getCarPosition)
+            .max()
+            .orElseThrow(() -> new IllegalArgumentException("자동차가 존재하지 않습니다."));
+    }
+
     public Cars copyCars() {
         return new Cars(cars.stream()
-                .map(Car::copyCar)
-                .collect(Collectors.toList()));
+            .map(Car::copyCar)
+            .collect(Collectors.toList()));
     }
 
 }
+
+

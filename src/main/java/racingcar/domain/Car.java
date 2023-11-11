@@ -1,8 +1,10 @@
 package racingcar.domain;
 
-public class Car implements Comparable<Car> {
+import java.util.Objects;
 
-    private CarName carName;
+public class Car {
+
+    private final CarName carName;
     private Position position;
 
     private static final int DEFAULT_CAR_POSITION = 0;
@@ -11,6 +13,11 @@ public class Car implements Comparable<Car> {
     public Car(final String carName) {
         this.carName = new CarName(carName);
         this.position = new Position(DEFAULT_CAR_POSITION);
+    }
+
+    public Car(final String carName, final int distance) {
+        this.carName = new CarName(carName);
+        this.position = new Position(distance);
     }
 
     public Car(final Car car) {
@@ -26,10 +33,16 @@ public class Car implements Comparable<Car> {
         return carName.getCarName();
     }
 
-    public void tryMove(final int randomNumber) {
+    public Car tryMove(final int randomNumber) {
         if (randomNumber >= ACCEPT_MOVE_NUMBER) {
-            this.position = position.move();
+            position = position.move();
         }
+
+        return new Car(this.getCarName(), position.getPosition());
+    }
+
+    public boolean isAtMaxPosition(final int maxPosition) {
+        return position.getPosition() == maxPosition;
     }
 
     public static Car copyCar(final Car car) {
@@ -37,7 +50,17 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo(Car car) {
-        return Integer.compare(this.getCarPosition(), car.getCarPosition());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(carName, car.carName) && Objects.equals(position, car.position);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, position);
+    }
+
+
 }

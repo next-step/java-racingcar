@@ -27,7 +27,7 @@ public class CarTest {
 
     @ParameterizedTest
     @DisplayName("4 이상인 경우 자동차는 전진한다.")
-    @CsvSource(value = {"5,1", "9, 1"}, delimiter = ',')
+    @CsvSource(value = {"5,1", "4, 1"}, delimiter = ',')
     void racingCarMoveForward(int value, int expected) {
         Car car = new Car("g80");
         car.tryMove(value);

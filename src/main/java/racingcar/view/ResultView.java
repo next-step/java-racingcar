@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Round;
 
@@ -22,14 +23,16 @@ public class ResultView {
         }
     }
 
-    public void printWinner(final String winners) {
-        System.out.println(winners + WINNER_MESSAGE);
-    }
-
-    private void printRoundResults(Round round) {
+    private void printRoundResults(final Round round) {
         round.getRoundCarStatus().getCars().forEach(car -> {
             printCurrentCarPosition(car);
         });
+    }
+
+    private String buildRoundResult(final Car car) {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append(car.getCarName()).append(" : ").append(buildCarPosition(
+            car.getCarPosition())).toString();
     }
 
     private void printCurrentCarPosition(final Car car) {
@@ -44,10 +47,12 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    private String buildRoundResult(final Car car) {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(car.getCarName()).append(" : ").append(buildCarPosition(
-            car.getCarPosition())).toString();
+    public void printWinner(final List<Car> cars) {
+        System.out.println(getWinnersCarName(cars) + WINNER_MESSAGE);
+    }
+
+    private String getWinnersCarName(final List<Car> cars) {
+        return cars.stream().map(Car::getCarName).collect(Collectors.joining(","));
     }
 
 }
