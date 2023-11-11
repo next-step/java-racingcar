@@ -32,6 +32,6 @@ public class Racing {
 
     public List<String> winners() {
         Winners winners = new Winners();
-        return winners.pickWinners(racingCars.getCars());
+        return winners.pickWinners(racingCars.getCars()).stream().collect(Collectors.toUnmodifiableList());
     }
 }
