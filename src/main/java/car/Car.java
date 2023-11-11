@@ -1,13 +1,13 @@
 package car;
 
 public class Car implements Comparable<Car> {
-    private final CarPosition carPosition;
-    private final String carName;
+    private CarPosition carPosition;
+    private final CarName carName;
     private static final int FORWARD_BOUNDARY_NUMBER = 4;
 
     public Car(int distance, String carName) {
         this.carPosition = new CarPosition(distance);
-        this.carName = carName;
+        this.carName = new CarName(carName);
     }
 
     public int getDistance() {
@@ -15,12 +15,12 @@ public class Car implements Comparable<Car> {
     }
 
     public String getCarName() {
-        return carName;
+        return carName.getName();
     }
 
     public void game(int randomNumber) {
         if(isMovableForwardNumber(randomNumber)) {
-            carPosition.increaseDistance();
+            this.carPosition = new CarPosition(carPosition.getDistance() + 1);
         }
     }
 

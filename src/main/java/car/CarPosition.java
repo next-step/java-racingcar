@@ -20,10 +20,6 @@ public class CarPosition implements Comparable<CarPosition> {
         return distance;
     }
 
-    public void increaseDistance() {
-        distance++;
-    }
-
     @Override
     public int compareTo(CarPosition otherCarPosition) {
         return this.distance - otherCarPosition.distance;

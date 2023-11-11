@@ -42,7 +42,6 @@ public class RacingGame {
         }
     }
 
-    //todo 들여쓰기 1로 줄이기 위해, 파라미터가 증가하는데 괜찮은지
     public List<String> findTiedWinnerCarNames(List<Car> cars, Car winnerCar) {
         return cars.stream()
                 .filter(car -> car.isSameDistance(winnerCar))
