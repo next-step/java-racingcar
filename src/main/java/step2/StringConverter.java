@@ -1,4 +1,4 @@
-package study;
+package step2;
 
 public class StringConverter {
 
