@@ -10,7 +10,7 @@ public class RacingCarGameMain {
 
     public static void main (String[] arg) {
         OutputView.requestCarNames();
-        List<String> carNames = List.of(InputView.getCarNames().split(","));
+        List<String> carNames = InputView.getCarNames();
 
         OutputView.requestRoundNum();
         int numOfRound = InputView.getNumberOfRound();

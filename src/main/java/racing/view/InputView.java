@@ -1,5 +1,6 @@
 package racing.view;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -13,7 +14,14 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static String getCarNames() {
-        return scanner.nextLine();
+    public static List<String> getCarNames() {
+        List<String> carNames = List.of(scanner.nextLine().split(","));
+        carNames.forEach(name -> {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+            }
+        });
+
+        return carNames;
     }
 }
