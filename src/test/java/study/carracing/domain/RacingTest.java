@@ -4,7 +4,10 @@ package study.carracing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingTest {
 
@@ -16,5 +19,17 @@ class RacingTest {
         racingCars.addCar("car1,car2,car3".split(","));
 
         assertThat(racingCars.getCars().size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("꺼내온 자동차들의 값을 변경하면 UnsupportedOperationException예외가 발생한다.")
+    void 불변테스트() {
+        Racing racing = new Racing();
+        racing.start("car1,car2,car3".split(","), 3);
+        List<Car> racingCars = racing.getRacingCars();
+
+        assertThatThrownBy(() -> racingCars.add(new Car(new Name("pobi"))))
+                .isInstanceOf(UnsupportedOperationException.class);
+
     }
 }

@@ -1,6 +1,7 @@
 package study.carracing.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racing {
 
@@ -26,7 +27,7 @@ public class Racing {
     }
 
     public List<Car> getRacingCars() {
-        return racingCars.getCars();
+        return racingCars.getCars().stream().collect(Collectors.toUnmodifiableList());
     }
 
     public List<String> winners() {
