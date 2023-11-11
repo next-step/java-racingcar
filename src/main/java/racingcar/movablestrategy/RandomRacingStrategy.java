@@ -1,12 +1,10 @@
 package racingcar.movablestrategy;
 
-import racingcar.Racing;
-
 import java.util.Random;
 
 public class RandomRacingStrategy implements MovableStrategy {
-    private int rangeFromOne = Racing.RANDOM_NUMBER_RANGE;
-    private int moveCondition = Racing.MOVE_CONDITION;
+    private int rangeFromOne = 10;
+    private int moveCondition = 4;
 
     @Override
     public boolean movable() {
