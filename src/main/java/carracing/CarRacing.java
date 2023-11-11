@@ -1,13 +1,31 @@
 package carracing;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class CarRacing {
-    public static ArrayList<Car> createCars(int totalCars) {
-        ArrayList<Car> carList = new ArrayList<>();
-        for(int i = 0 ; i < totalCars ; i++) {
-            carList.add(new Car());
+
+    public void StartRacingGame(){
+
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
+        List<Car> cars = new ArrayList<Car>();
+        int carsValue = inputView.getInputValue("자동차 대수는 몇 대 인가요?");
+        for (int i = 0; i < carsValue; i++) {
+            cars.add(new Car());
         }
-        return carList;
+
+        int moveCount = inputView.getInputValue("시도할 회수는 몇 회 인가요?");
+
+        resultView.showResultComment("\n실행 결과");
+
+        for (int i = 0; i < moveCount; i++) {
+            for (Car car : cars) {
+                car.move(new Random().nextInt(10));
+                resultView.showResultComment(car.getPositionRepeat());
+            }
+            resultView.showResultComment("\n");
+        }
     }
 }

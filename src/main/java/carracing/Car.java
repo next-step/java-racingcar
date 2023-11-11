@@ -2,24 +2,23 @@ package carracing;
 
 public class Car {
 
-    final int ONE_STEP_FORWARD = 1;
-    private int maxMovementCount;
-    private int carPosition = 0;
-    public void carMove(MoveStrategy strategy){
-        if(strategy.executeMove()){
-            this.carPosition += ONE_STEP_FORWARD;
+    private int position;
+    public Car() {
+        this(0);
+    }
+    public Car(int position) {
+        this.position = position;
+    }
+    public String getPositionRepeat() {
+        return "-".repeat(position);
+    }
+    public int getPosition() {
+        return position;
+    }
+
+    public void move(int value) {
+        if(value >= 4){
+            position++;
         }
-    }
-
-    public int getCarPosition(){
-        return carPosition;
-    }
-
-    public void setMaxMovementCount(int moveCount){
-        maxMovementCount = moveCount;
-    }
-
-    public int getMaxMovementCount(){
-        return maxMovementCount;
     }
 }
