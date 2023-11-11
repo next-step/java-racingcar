@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingCar {
     public static final String CAR_NAME_INPUT_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -22,6 +23,14 @@ public class RacingCar {
             ResultView.resultOutput(cars);
             ResultView.output("");
         }
+
+        List<Car> winnerList = Winner.findWinner(cars);
+        ResultView.winnerOutput(winnerList);
+    }
+
+    protected static int getRandom() {
+        Random random = new Random();
+        return random.nextInt(BOUND);
     }
 
     static Cars makeCarList(String carNameInput) {
@@ -34,10 +43,4 @@ public class RacingCar {
         return new Cars(carList);
     }
 
-
-
-    protected static int getRandom() {
-        Random random = new Random();
-        return random.nextInt(BOUND);
-    }
 }

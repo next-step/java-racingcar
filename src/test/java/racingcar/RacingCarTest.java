@@ -4,11 +4,41 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingCarTest {
+
+    @Test
+    void 큰값() {
+        Car car = new Car(5);
+        int actual = car.max(10);
+        assertThat(actual).isEqualTo(10);
+    }
+
+    @Test
+    void 같은값() {
+        Car car = new Car(5);
+        boolean actual = car.matchDistance(5);
+        assertThat(actual).isTrue();
+    }
+
+    @Test
+    void 우승자() {
+        Car son = new Car("son", 5);
+        Car john = new Car("john", 7);
+        Car alice = new Car("alice", 3);
+        List<Car> carList = Arrays.asList(son, john, alice);
+        Cars cars = new Cars(carList);
+        List<Car> actual = Winner.findWinner(cars);
+
+        assertThat(actual).contains(john);
+    }
 
     @Test
     void 자동차이름_길이확인() {
@@ -29,7 +59,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 전진(int input) {
-        Car actual = new Car();
+        Car actual = new Car("");
         actual.move(input);
         assertThat(actual).isEqualTo(new Car(1));
     }
@@ -37,7 +67,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     public void 멈춤(int input) {
-        Car actual = new Car();
+        Car actual = new Car("");
         actual.move(input);
         assertThat(actual).isEqualTo(new Car(0));
     }

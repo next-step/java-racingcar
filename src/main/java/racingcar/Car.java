@@ -9,29 +9,47 @@ public class Car {
 
     public Car() {}
 
-    public Car(String name) {
+    public Car(String name, int distance) {
+        name = name.trim();
         if (name.length() > 5) {
             throw new StringIndexOutOfBoundsException();
         }
         this.name = name;
+        this.distance = distance;
+    }
+
+    public Car(String name) {
+        this(name, 0);
     }
 
     public Car(int distance) {
-        this.distance = distance;
+        this("", distance);
     }
 
     protected void move(int randomNumber) {
         if (randomNumber > VALUE) {
-            distance++;
+            this.distance++;
         }
     }
 
     int distance() {
-        return distance;
+        return this.distance;
     }
 
     String name() {
-        return name;
+        return this.name;
+    }
+
+    boolean matchDistance(int distance) {
+        return this.distance == distance;
+    }
+
+    int max(int maxDistance) {
+        if (this.distance > maxDistance) {
+            return this.distance;
+        }
+
+        return maxDistance;
     }
 
     @Override
@@ -39,18 +57,19 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return distance == car.distance;
+        return distance == car.distance && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distance);
+        return Objects.hash(distance, name);
     }
 
     @Override
     public String toString() {
         return "Car{" +
                 "distance=" + distance +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
