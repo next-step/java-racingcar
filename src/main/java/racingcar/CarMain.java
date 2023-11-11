@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.RacingGame;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 public class CarMain {
     public static void main(String[] args) {
         // 입력
@@ -12,6 +16,6 @@ public class CarMain {
         racingGame.racing();
 
         // 결과출력
-        ResultView.printWinners(racingGame.getWinners());
+        ResultView.printWinners(racingGame.getWinnerNames());
     }
 }
