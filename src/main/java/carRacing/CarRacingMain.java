@@ -21,7 +21,6 @@ public class CarRacingMain {
 		Cars cars = new Cars(carNames);
 		MoveStrategy moveStrategy = new RandomMoveStrategy();
 
-
 		for (int i = 0; i < numberOfAttempts; i++) {
 			cars.moveCars(moveStrategy);
 			result.showResult(cars.getCars());
