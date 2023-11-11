@@ -14,7 +14,7 @@ public class Winners {
                 .collect(Collectors.toList());
     }
 
-    public int getMaxPosition(List<Car> cars) {
+    private int getMaxPosition(List<Car> cars) {
         int maxPosition = 0;
 
         for (Car car : cars) {
