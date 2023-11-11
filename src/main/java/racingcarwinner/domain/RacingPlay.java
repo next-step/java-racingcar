@@ -1,17 +1,20 @@
-package racingcarwinner;
+package racingcarwinner.domain;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcarwinner.Car.createDefaultCar;
+import static racingcarwinner.domain.Car.createDefaultCar;
 
 public class RacingPlay {
 
-    private RandomNumber randomNumber;
+    private MovableStrategy movableStrategy;
 
     public RacingPlay() {
-        this.randomNumber = new RandomNumberImpl();
+    }
+
+    public RacingPlay(MovableStrategy movableStrategy) {
+        this.movableStrategy = movableStrategy;
     }
 
     public List<Car> readyForRacing(String[] carNames) {
@@ -20,22 +23,18 @@ public class RacingPlay {
 
     public void playRacingCar(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(getRandomNumber());
+            carList.get(i).move(movableStrategy);
         }
-    }
-
-    private int getRandomNumber() {
-        return randomNumber.getRandomNumber(10);
     }
 
     public String findWinner(List<Car> racingOutput) {
         int maxLocation = findMaxLocation(racingOutput);
         return racingOutput.stream()
                 .filter(car -> car.isMaxLocation(maxLocation))
-                .map(Car::getName).collect(Collectors.joining(", "));
+                .map(Car::name).collect(Collectors.joining(", "));
     }
 
     private int findMaxLocation(List<Car> racingOutput) {
-        return racingOutput.stream().mapToInt(Car::getLocation).max().orElse(1);
+        return racingOutput.stream().mapToInt(Car::location).max().orElse(1);
     }
 }
