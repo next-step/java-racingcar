@@ -9,25 +9,23 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RacingCarGameService {
-    private int endTurn;
-    private Cars cars;
 
     public RacingGameResponse start(RacingGameRequest request) {
-        endTurn = request.getEndTurn();
-        cars = new Cars(request.getCarNames());
-        HashMap<Integer, List<Car>> movedCarsByTurn = getMovedCarsByTurn();
+        int endTurn = request.getEndTurn();
+        Cars cars = new Cars(request.getCarNames());
+        HashMap<Integer, List<Car>> movedCarsByTurn = getMovedCarsByTurn(cars, endTurn);
         return new RacingGameResponse(movedCarsByTurn, cars.findWinners(endTurn));
     }
 
-    private HashMap<Integer, List<Car>> getMovedCarsByTurn() {
+    private HashMap<Integer, List<Car>> getMovedCarsByTurn(Cars cars, int endTurn) {
         HashMap<Integer, List<Car>> movedCarsByTurn = new HashMap<>();
         for (int currentTurn = 1; currentTurn <= endTurn; currentTurn++) {
-            movedCarsByTurn.put(currentTurn, getMovedCars());
+            movedCarsByTurn.put(currentTurn, getMovedCars(cars));
         }
         return movedCarsByTurn;
     }
 
-    private List<Car> getMovedCars() {
+    private List<Car> getMovedCars(Cars cars) {
         cars.moveAllCar();
         return cars.getAllCar();
     }
