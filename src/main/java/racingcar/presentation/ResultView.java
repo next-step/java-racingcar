@@ -25,13 +25,13 @@ public class ResultView {
         }
 
         public static void printWinner(List<Car> cars){
-                String winnersInOneLine = cars.stream().map(Car::getName).collect(Collectors.joining(COMMA));
+                String winnersInOneLine = cars.stream().map(car -> car.name().getText()).collect(Collectors.joining(COMMA));
                 System.out.println(winnersInOneLine + "가 최종 우승했습니다.");
         }
 
         private static void printCurrentPosition(Car car) {
-                printName(car.getName());
-                System.out.print(PATH_SIGN.repeat(car.getCurrentPosition()));
+                printName(car.name().getText());
+                System.out.print(PATH_SIGN.repeat(car.currentPosition().getNumber()));
                 printNewLine();
         }
 
