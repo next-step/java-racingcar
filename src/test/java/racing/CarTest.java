@@ -3,13 +3,15 @@ package racing;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
     @Test
     void assertCar() {
-        Car car = new Car();
+        Car car = new Car("SONNY");
         int TEST_NUMBER_LESS_THAN_FOUR = 3;
         int TEST_NUMBER_GREATER_THAN_FOUR = 5;
 

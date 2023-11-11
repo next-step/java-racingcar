@@ -10,12 +10,16 @@ public class GameSetup {
     private List<Car> cars = new ArrayList<>();
     private int round;
 
-    public GameSetup(int numCar, int round) {
+    public GameSetup(int round, List<String> names) {
         this.round = round;
-        for (int i = 0; i < numCar ; i++) {
-            Car car = new Car();
+        assignCarName(names);
+    }
+
+    private void assignCarName(List<String> names) {
+        names.forEach(name -> {
+            Car car = new Car(name);
             cars.add(car);
-        }
+        });
     }
 
     public int round() {
