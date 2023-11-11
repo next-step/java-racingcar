@@ -12,11 +12,10 @@ public class Cars {
 		makeCars(carNames);
 	}
 
-	private List<Car> makeCars(List<String> carNames) {
-		for (int i = 0; i < carNames.size(); i++) {
-			cars.add(new Car(0, carNames.get(i)));
+	private void makeCars(List<String> carNames) {
+		for (String carName : carNames) {
+			cars.add(new Car(carName));
 		}
-		return cars;
 	}
 
 	public void moveCars(MoveStrategy moveStrategy) {

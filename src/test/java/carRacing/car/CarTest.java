@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-	@DisplayName("random값이 4이상일 경우 한 칸 전진한다")
+	@DisplayName("움직이는 전략이 true일 때 한 칸 전진한다")
 	@Test
 	void moveCar() {
 		Car car = new Car();
@@ -19,7 +19,7 @@ class CarTest {
 		assertThat(car.isSamePosition(1)).isTrue();
 	}
 
-	@DisplayName("random값이 4미만일 경우 차는 그대로 서있는다")
+	@DisplayName("움직이는 전략이 false일 때 차는 그대로 서있는다")
 	@Test
 	void stopCar() {
 		Car car = new Car();
