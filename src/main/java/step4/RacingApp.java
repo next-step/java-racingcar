@@ -1,9 +1,10 @@
 package step4;
 
+import step4.domain.Car;
 import step4.domain.Racing;
 import step4.helper.CarFactory;
-import step4.domain.Car;
 import step4.view.InputView;
+import step4.view.ResultView;
 
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class RacingApp {
         List<Car> cars = CarFactory.createCars(carNameStr);
 
         Racing racing = new Racing(cars, round);
-        racing.start();
+        List<Car> winners = racing.start();
+        ResultView.printWinners(winners);
     }
 
 }

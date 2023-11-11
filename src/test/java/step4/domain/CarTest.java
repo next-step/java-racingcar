@@ -1,8 +1,9 @@
-package step4;
+package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.Car;
+import step4.domain.Racing;
 import step4.helper.CarFactory;
 
 import java.util.List;
@@ -33,8 +34,17 @@ public class CarTest {
                 .isThrownBy(() -> {
                     new Car("hypenova1");
                 });
+    }
 
+    @DisplayName("우승자를 선정한다 우승자는 1명 이상이다.")
+    @Test
+    void test3() {
+        List<Car> cars = CarFactory.createCars("hypem,prodo,sam");
 
+        Racing racing = new Racing(cars, 3);
+        List<Car> winners = racing.start();
+
+        assertThat(winners).hasSizeGreaterThan(0);
     }
 
 }

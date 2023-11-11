@@ -28,6 +28,14 @@ public class Car {
         return this.forwardCount;
     }
 
+    public  int graterThanForwardCount(int value) {
+        return Math.max(this.forwardCount, value);
+    }
+
+    public boolean equalForwardCount(int value) {
+        return value == this.getForwardCount();
+    }
+
     private boolean isImmovable(int number) {
         return number < THRESHOLD;
     }
