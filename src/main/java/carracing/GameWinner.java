@@ -6,9 +6,9 @@ import java.util.List;
 public class GameWinner {
 
     private static int carRacingWinnerPoint = 1;
-    private static final List<String> winnersNameBox = new ArrayList<>();
+    private final List<String> winnersNameBox = new ArrayList<>();
 
-    private GameWinner() {
+    public GameWinner() {
     }
 
     public static void carRaceTopPosition(Car car) {
@@ -17,18 +17,17 @@ public class GameWinner {
         }
     }
 
-    public static List<String> findWinners(List<Car> winners, int winnerPoint) {
+    public List<String> findWinners(List<Car> winners, int winnerPoint) {
         for (Car winner : winners) {
-            return findTopPositionPlayer(winnerPoint, winner);
+            findTopPositionPlayer(winnerPoint, winner);
         }
         return winnersNameBox;
     }
 
-    private static List<String> findTopPositionPlayer(int winnerPoint, Car winner) {
+    private void findTopPositionPlayer(int winnerPoint, Car winner) {
         if (winner.getPosition() == winnerPoint) {
             winnersNameBox.add(winner.getName());
         }
-        return winnersNameBox;
     }
 
     public static int getWinnerPoint() {
