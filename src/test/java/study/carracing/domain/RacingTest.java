@@ -23,12 +23,24 @@ class RacingTest {
 
     @Test
     @DisplayName("꺼내온 자동차들의 값을 변경하면 UnsupportedOperationException예외가 발생한다.")
-    void 불변테스트() {
+    void not_allow_to_modify_racingCars() {
         Racing racing = new Racing();
         racing.start("car1,car2,car3".split(","), 3);
         List<Car> racingCars = racing.getRacingCars();
 
         assertThatThrownBy(() -> racingCars.add(new Car(new Name("pobi"))))
+                .isInstanceOf(UnsupportedOperationException.class);
+
+    }
+
+    @Test
+    @DisplayName("꺼내온 우승자 리스트의 값을 변경하면 UnsupportedOperationException예외가 발생한다.")
+    void not_allow_to_modify_winners() {
+        Racing racing = new Racing();
+        racing.start("car1,car2,car3".split(","), 3);
+        List<String> winners = racing.winners();
+
+        assertThatThrownBy(() -> winners.add("new winner"))
                 .isInstanceOf(UnsupportedOperationException.class);
 
     }
