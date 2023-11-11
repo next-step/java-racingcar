@@ -53,7 +53,7 @@ public class RoundTest {
     }
 
     Round emptyRound(){
-        List<Car> carList = List.of(new Car(name));
+        List<Car> carList = List.of(new Car("name"));
         return new Round(new Cars(carList));
     }
 
