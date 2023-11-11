@@ -25,3 +25,15 @@
 
 
 * commit 3 : UI 로직인 출력값을 출력하는 ResultView 클래스 구현
+
+
+---
+
+## 4단계 - 자동차 경주
+* commit 1 : step3 에서 진행했던 코드들 복사
+
+
+* commit 2 : CarRacingInputView 와 입력값을 전달하는 controller 분리
+  * CarRacingController 내부에서 CarRacingPlay 클래스를 사용하도록 구현
+  * 최종 우승한 자동차 출력 추가
+  * 자동차 이름을 입력받아서 Car 클래스를 생성하도록 추가
