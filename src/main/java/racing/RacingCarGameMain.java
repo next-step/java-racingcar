@@ -24,5 +24,6 @@ public class RacingCarGameMain {
             OutputView.showRound(i);
             OutputView.display(gameSetup.cars());
         }
+        OutputView.showWinner(gameSetup.validateWinner());
     }
 }
