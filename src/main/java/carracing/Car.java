@@ -1,14 +1,12 @@
 package carracing;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import static carracing.CarUtil.getRandomNumber;
 
 public class Car {
     public int distance = 0;
 
     public void move() {
-        int randomNum = getRandom();
+        int randomNum = getRandomNumber();
         getMove(randomNum);
     }
 
@@ -18,9 +16,5 @@ public class Car {
         }
     }
 
-    private int getRandom() {
-        Random random = new Random();
-        int randomNum = random.nextInt(10);
-        return randomNum;
-    }
+
 }
