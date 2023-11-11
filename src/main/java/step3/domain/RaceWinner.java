@@ -1,12 +1,12 @@
-package step3;
+package step3.domain;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class RaceWinner {
     
-    public List<String> getWinners(List<Car> cars) {
-        return winnerNames(cars, maxPosition(cars));
+    public List<String> getWinners(Cars cars) {
+        return winnerNames(cars.getCars(), maxPosition(cars.getCars()));
     }
 
     private List<String> winnerNames(List<Car> cars, int maxPosition) {
@@ -20,9 +20,5 @@ public class RaceWinner {
         return cars.stream().max(Comparator.comparing(Car::position)).get().position();
     }
 
-    public void printWinner(List<String> winners) {
-        System.out.print("최종 우승자는 ");
-        winners.forEach(winner -> System.out.print(winner + ","));
-        System.out.println(" 입니다.");
-    }
+
 }
