@@ -8,41 +8,34 @@ import study.racingcar.view.ScoreBoardView;
 
 public class ScoreBoardResult {
 
-    public static ScoreBoardResult create() {
-        return new ScoreBoardResult();
+    public History history(ScoreBoard scoreBoard) {
+        return new History(makingResult(scoreBoard.grids()));
     }
 
-    public LinkedList<Map<Car, String>> result(ScoreBoard scoreBoard) {
-        LinkedList<Map<Car, String>> result = new LinkedList<>();
-        makingResult(scoreBoard.grids(), result);
-        return result;
-    }
 
-    private void makingResult(List<ScoreEachRound> grids, LinkedList<Map<Car, String>> result) {
+    private LinkedList<Map<Car,String>> makingResult(List<ScoreEachRound> grids) {
+        LinkedList<Map<Car,String>> resultList = new LinkedList<>();
         grids.forEach(scoreEachRound -> {
-            if (result.isEmpty()) {
-                firstRoundResult(scoreEachRound, result);
+            if (resultList.isEmpty()) {
+                firstRoundResult(resultList, scoreEachRound);
                 return;
             }
-            firstAfterRoundResult(scoreEachRound, result);
+            firstAfterRoundResult(resultList, scoreEachRound);
         });
+        return resultList;
     }
 
-    private void firstAfterRoundResult(ScoreEachRound scoreEachRound,
-        LinkedList<Map<Car, String>> result) {
-        Map<Car, String> last = result.getLast();
-        result.add(scoreEachRound.roundScores().stream().map(score -> {
+    private void firstAfterRoundResult(LinkedList<Map<Car,String>> resultList, ScoreEachRound scoreEachRound) {
+        Map<Car, String> last = resultList.getLast();
+        resultList.add(scoreEachRound.roundScores().stream().map(score -> {
             return Map.entry(score.whozScore(),
-                last.get(score.whozScore()) + ScoreBoardView.scoreToString(
-                    score.scoreMoveStatus()));
+                last.get(score.whozScore()) + ScoreBoardView.scoreToString(score.scoreMoveStatus()));
         }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
-    private void firstRoundResult(ScoreEachRound scoreEachRound,
-        LinkedList<Map<Car, String>> result) {
-        result.add(scoreEachRound.roundScores().stream().collect(Collectors.toMap(Score::whozScore,
+    private void firstRoundResult(LinkedList<Map<Car,String>> resultList, ScoreEachRound scoreEachRound) {
+        resultList.add(scoreEachRound.roundScores().stream().collect(Collectors.toMap(Score::whozScore,
             score -> ScoreBoardView.scoreToString(score.scoreMoveStatus()))));
     }
-
 
 }
