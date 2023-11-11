@@ -1,15 +1,15 @@
-package carRacing.car;
+package carRacing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import carRacing.moveStrategy.MoveStrategy;
+import carRacing.strategy.MoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-	@DisplayName("random값이 4이상일 경우 한 칸 전진한다")
+	@DisplayName("움직이는 전략이 true일 때 한 칸 전진한다")
 	@Test
 	void moveCar() {
 		Car car = new Car();
@@ -19,7 +19,7 @@ class CarTest {
 		assertThat(car.isSamePosition(1)).isTrue();
 	}
 
-	@DisplayName("random값이 4미만일 경우 차는 그대로 서있는다")
+	@DisplayName("움직이는 전략이 false일 때 차는 그대로 서있는다")
 	@Test
 	void stopCar() {
 		Car car = new Car();
@@ -34,7 +34,7 @@ class CarTest {
 	void giveNameCar() {
 		Car car = new Car("pobi");
 
-		assertThat(car.getName()).isEqualTo("pobi");
+		assertThat(car.getCarName()).isEqualTo("pobi");
 	}
 
 	@DisplayName("자동차 이름이 5자 이상이면 예외를 발생한다")

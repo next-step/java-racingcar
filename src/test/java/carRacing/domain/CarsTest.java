@@ -1,8 +1,8 @@
-package carRacing.car;
+package carRacing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import carRacing.moveStrategy.MoveStrategy;
+import carRacing.strategy.MoveStrategy;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;

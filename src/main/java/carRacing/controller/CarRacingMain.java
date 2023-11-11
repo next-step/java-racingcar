@@ -1,9 +1,9 @@
-package carRacing;
+package carRacing.controller;
 
-import carRacing.car.Cars;
-import carRacing.car.CarWinner;
-import carRacing.moveStrategy.MoveStrategy;
-import carRacing.moveStrategy.RandomMoveStrategy;
+import carRacing.domain.Cars;
+import carRacing.domain.CarWinner;
+import carRacing.strategy.MoveStrategy;
+import carRacing.strategy.RandomMoveStrategy;
 import carRacing.view.InputView;
 import carRacing.view.ResultView;
 import java.util.List;
@@ -20,7 +20,6 @@ public class CarRacingMain {
 		ResultView result = new ResultView();
 		Cars cars = new Cars(carNames);
 		MoveStrategy moveStrategy = new RandomMoveStrategy();
-
 
 		for (int i = 0; i < numberOfAttempts; i++) {
 			cars.moveCars(moveStrategy);
