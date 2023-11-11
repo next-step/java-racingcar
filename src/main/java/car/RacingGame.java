@@ -2,6 +2,7 @@ package car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -43,17 +44,10 @@ public class RacingGame {
 
     //todo 들여쓰기 1로 줄이기 위해, 파라미터가 증가하는데 괜찮은지
     public List<String> findTiedWinnerCarNames(List<Car> cars, Car winnerCar) {
-        List<String> winnerCarNames = new ArrayList<>();
-        for (Car car : cars) {
-            addTiedWinnerCarName(winnerCarNames, car, winnerCar);
-        }
-        return winnerCarNames;
-    }
-
-    private void addTiedWinnerCarName(List<String> winnerCarNames, Car car, Car winnerCar) {
-        if (car.isSameDistance(winnerCar)) {
-            winnerCarNames.add(car.getCarName());
-        }
+        return cars.stream()
+                .filter(car -> car.isSameDistance(winnerCar))
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
     }
 
     public Car findFinalWinner(List<Car> cars) {
