@@ -35,11 +35,8 @@ public class Car {
         return name;
     }
 
-    public int selectMaxPosition(int maxPosition) {
-        if (this.getPosition() > maxPosition) {
-            maxPosition = this.getPosition();
-        }
-        return maxPosition;
+    public int maxPosition(int maxPosition) {
+        return Math.max(maxPosition, this.getPosition());
     }
 
     public boolean isCarAtMaxPosition(int maxPosition) {

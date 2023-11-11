@@ -27,7 +27,7 @@ public class RacingGame {
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = car.selectMaxPosition(maxPosition);
+            maxPosition = car.maxPosition(maxPosition);
         }
         return maxPosition;
     }
