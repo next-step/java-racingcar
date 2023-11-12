@@ -15,6 +15,13 @@ public class CarTest {
     }
 
     @Test
+    void maxPosition() {
+        // given
+        Car car1 = new Car("kim", 3);
+        // then
+        Assertions.assertThat(car1.maxPosition(0)).isEqualTo(3);
+    }
+    @Test
     @DisplayName("포지션 일치 하면 true 값을 리턴한다.")
     void matchPosition() {
         Assertions.assertThat(car.matchPosition(0)).isTrue();
