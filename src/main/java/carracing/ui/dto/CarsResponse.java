@@ -1,6 +1,6 @@
-package carracing.dto;
+package carracing.ui.dto;
 
-import carracing.Cars;
+import carracing.domain.car.RaceCars;
 
 public class CarsResponse {
     private static final String POSTION_STRING = "-";
@@ -13,9 +13,9 @@ public class CarsResponse {
         this.carsInfo = carsInfo;
     }
 
-    public static CarsResponse from(Cars cars) {
+    public static CarsResponse from(RaceCars raceCars) {
         StringBuffer sb = new StringBuffer();
-        cars.getCars().forEach(car -> {
+        raceCars.getCars().forEach(car -> {
             sb.append(car.getName());
             sb.append(NAME_POSITION_SEPARATOR);
             sb.append(POSTION_STRING.repeat(car.getPosition()));

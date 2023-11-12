@@ -1,4 +1,4 @@
-package carracing.exception;
+package carracing.utils.exception;
 
 public class CarNameExceedMaxLengthException extends RuntimeException {
     public CarNameExceedMaxLengthException() {
