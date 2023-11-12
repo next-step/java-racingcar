@@ -5,28 +5,22 @@ import java.util.Random;
 
 public class Car {
 
-    private final int[] cars;
-
     public static final int MOVE_CONDITION = 4;
     public static final int MAX_RANDOM_NUMBER = 10;
 
-    public Car(int carCount) {
-        cars = new int[carCount];
-        Arrays.fill(cars, 1);
+    private int position;
+
+    public int getPosition() {
+        return position;
     }
 
-    private void moveCars() {
-        for (int i = 0; i < cars.length; i++) {
-            if (isMove(getRandomNumber())) {
-                cars[i]++;
-            }
-        }
+    public Car() {
+        this.position = 1;
     }
-    public void start(int retryCount) {
-        System.out.println("실행 결과");
-        for (int i = 0; i < retryCount; i++) {
-            ResultView.displayRace(cars);
-            moveCars();
+
+    public void move() {
+        if (isMove(getRandomNumber())) {
+            position++;
         }
     }
 
