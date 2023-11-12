@@ -1,9 +1,10 @@
 package study.carracing.domain;
 
+import study.carracing.util.MoveStrategy;
+
 public class Car {
 
     private static final String PROGRESS_DASH = "-";
-    private static final int MOVE_CONDITION_NUMBER = 4;
 
     private final Position position;
 
@@ -18,8 +19,8 @@ public class Car {
         this.name = name;
     }
 
-    public void move(int value) {
-        if (value >= MOVE_CONDITION_NUMBER) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             position.plusPosition();
         }
     }
@@ -32,16 +33,16 @@ public class Car {
         return name.getName();
     }
 
-    @Override
-    public String toString() {
-        return getName() + " : " + PROGRESS_DASH.repeat(getPosition());
-    }
-
     public int compareToMaxPosition(int maxPosition) {
         return this.position.compareToMaxPosition(maxPosition);
     }
 
     public boolean isSame(int maxPosition) {
         return this.position.isSame(maxPosition);
+    }
+
+    @Override
+    public String toString() {
+        return getName() + " : " + PROGRESS_DASH.repeat(getPosition());
     }
 }

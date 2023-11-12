@@ -1,6 +1,6 @@
 package study.carracing.domain;
 
-import study.carracing.util.RandomNumberGenerator;
+import study.carracing.util.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,7 @@ public class RacingCars {
 
     public void move() {
         for (Car car : cars) {
-            car.move(new RandomNumberGenerator().generatorNumber());
+            car.move(new RandomMoveStrategy());
         }
     }
-
 }
