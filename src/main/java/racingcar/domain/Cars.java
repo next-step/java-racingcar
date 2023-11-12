@@ -21,7 +21,8 @@ public class Cars {
 
     private void checkCarNumber(int carNumber) {
         if (carNumber <= 0) {
-            throw new IllegalArgumentException("Input positive car number.");
+            throw new IllegalArgumentException(String
+                    .format("Input car number : %s, Input positive car number.", carNumber));
         }
     }
 

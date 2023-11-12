@@ -9,7 +9,8 @@ public class Car implements Cloneable {
 
     public Car(String carName) {
         if (carName.length() > STANDARD_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("Car name must be less than 6 characters.");
+            throw new IllegalArgumentException(String
+                    .format("Input Car name : %s, car name must be less than 6 characters.", carName));
         }
         name = carName;
     }

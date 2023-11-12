@@ -39,7 +39,9 @@ public class StringAddCalculator {
     }
 
     private static int checkNegative(int number) {
-        if (number < 0) { throw new IllegalArgumentException("Input number is must positive"); }
+        if (number < 0) {
+            throw new IllegalArgumentException(String.format("Input number is %d, Input number must be positive", number));
+        }
         return number;
     }
 }
