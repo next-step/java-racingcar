@@ -1,5 +1,6 @@
-package ch3;
+package controller;
 
+import domain.Car;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

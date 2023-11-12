@@ -1,6 +1,10 @@
-package ch3;
+package controller;
 
+import domain.Car;
+import domain.CarRacing;
 import org.junit.jupiter.api.Test;
+import view.InputView;
+import view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

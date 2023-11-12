@@ -1,4 +1,7 @@
-package ch3;
+package domain;
+
+import view.InputView;
+import view.ResultView;
 
 import java.util.*;
 

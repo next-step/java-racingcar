@@ -1,4 +1,8 @@
-package ch3;
+package controller;
+
+import domain.CarRacing;
+import view.InputView;
+import view.ResultView;
 
 public class Application {
 
