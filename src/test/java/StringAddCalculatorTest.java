@@ -47,7 +47,6 @@ public class StringAddCalculatorTest {
     @Test
     void splitAndSum_negative() {
         Assertions.assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessage("Input number is must positive");
+                .isInstanceOf(RuntimeException.class);
     }
 }

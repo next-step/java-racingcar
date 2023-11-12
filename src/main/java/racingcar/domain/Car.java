@@ -1,40 +1,36 @@
 package racingcar.domain;
 
-public class Car implements Cloneable {
+public class Car implements Comparable<Car> {
 
-    private static final int STANDARD_CAR_NAME_LENGTH = 5;
-
-    private String name;
+    private Name name;
     private int moveCount = 0;
 
     public Car(String carName) {
-        if (carName.length() > STANDARD_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("Car name must be less than 6 characters.");
-        }
-        name = carName;
+        this(carName, 0);
     }
 
-    @Override
-    public Car clone() {
-        try {
-            return (Car) super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public void stopOrMove(Strategy strategy) {
-        if (strategy.isMovable()) {
-            moveCount += 1;
-        }
+    public Car(String carName, int moveCount) {
+        name = new Name(carName);
+        this.moveCount = moveCount;
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return moveCount - other.moveCount;
+    }
+
+    public Car stopOrMove(Strategy strategy) {
+        if (strategy.isMovable()) {
+            return new Car(name.getName(), moveCount + 1);
+        }
+        return this;
     }
 }

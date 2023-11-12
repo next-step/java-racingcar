@@ -11,15 +11,11 @@ public class NumberStrategy implements Strategy {
 
     @Override
     public boolean isMovable() {
-        return INCREASE_STANDARD_NUMBER <= createRandomValue();
+        return INCREASE_STANDARD_NUMBER <= getRandomValue();
     }
 
-    private int createRandomValue() {
+    private int getRandomValue() {
         randomValue =  random.nextInt(RANDOM_MAX_VALUE);
-        return randomValue;
-    }
-
-    public int getRandomValue() {
         return randomValue;
     }
 }

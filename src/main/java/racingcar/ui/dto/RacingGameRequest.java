@@ -8,9 +8,9 @@ public class RacingGameRequest {
     public RacingGameRequest(String[] carNames, int endTurn) {
         this.carNames = carNames;
         if (endTurn <= 0) {
-            throw new IllegalArgumentException("End turn must be more than 0.");
+            throw new IllegalArgumentException(String
+                    .format("Input end turn : %s, End turn must be more than 0.", endTurn));
         }
-
         this.endTurn = endTurn;
     }
 
@@ -18,5 +18,7 @@ public class RacingGameRequest {
         return carNames;
     }
 
-    public int getEndTurn() { return endTurn; }
+    public int getEndTurn() {
+        return endTurn;
+    }
 }

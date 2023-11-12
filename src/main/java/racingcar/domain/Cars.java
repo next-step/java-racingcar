@@ -1,11 +1,16 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    public List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
 
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
@@ -21,7 +26,8 @@ public class Cars {
 
     private void checkCarNumber(int carNumber) {
         if (carNumber <= 0) {
-            throw new IllegalArgumentException("Input positive car number.");
+            throw new IllegalArgumentException(String
+                    .format("Input car number : %s, Input positive car number.", carNumber));
         }
     }
 
@@ -29,39 +35,42 @@ public class Cars {
         cars.add(car);
     }
 
-    public void moveAllCar() {
-        Strategy numberStrategy = new NumberStrategy();
-        for (Car car : cars) {
-            car.stopOrMove(numberStrategy);
-        }
-    }
-
-    public final List<Car> getAllCar() {
-        List<Car> copyCars = new ArrayList<>();
-        for (Car car : cars) {
-            copyCars.add(car.clone());
-        }
-        return copyCars;
-    }
-
     public int getNumberOfCar() {
         return cars.size();
     }
 
+    public final List<Car> getAllCar() {
+        return Collections.unmodifiableList(cars);
+    }
+
+    public final List<Car> moveAllCar() {
+        List<Car> newCars = new ArrayList<>();
+        for (Car car : cars) {
+            Car newCar = car.stopOrMove(new NumberStrategy());
+            newCars.add(newCar);
+        }
+        cars = newCars;
+        return newCars;
+    }
+
     public List<String> findWinners() {
-        List<String> winners = new ArrayList<>();
-        cars.sort(Comparator.comparingInt(Car::getMoveCount).reversed());
-        int winnerMoveCount = cars.get(0).getMoveCount();
-        decisionWinner(winners, winnerMoveCount);
+        cars.sort(Car::compareTo);
+        int winnerMoveCount = cars.get(cars.size() - 1).getMoveCount();
+        List<String> winners = decisionWinner(winnerMoveCount);
         return winners;
     }
 
-    private void decisionWinner(List<String> winners, int winnerMoveCount) {
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            if (car.getMoveCount() == winnerMoveCount) {
-                winners.add(car.getName());
-            }
+    private List<String> decisionWinner(int winnerMoveCount) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            insertWinner(winners, winnerMoveCount, car);
+        }
+        return winners;
+    }
+
+    private void insertWinner(List<String> winners, int winnerMoveCount, Car car) {
+        if (car.getMoveCount() == winnerMoveCount) {
+            winners.add(car.getName());
         }
     }
 }

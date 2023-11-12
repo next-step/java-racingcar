@@ -1,24 +1,25 @@
 package racingcar.ui.dto;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class RacingGameResponse {
     private HashMap<Integer, List<Car>> movedCarsByTurn;
-    private List<String> winners;
+    private Cars cars;
 
-    public RacingGameResponse(HashMap<Integer, List<Car>> movedCarsByTurn, List<String> winners) {
+    public RacingGameResponse(HashMap<Integer, List<Car>> movedCarsByTurn, Cars cars) {
         this.movedCarsByTurn = movedCarsByTurn;
-        this.winners = winners;
+        this.cars = cars;
     }
 
     public HashMap<Integer, List<Car>> getMovedCarsByTurn() {
         return movedCarsByTurn;
     }
 
-    public List<String> getWinners() {
-        return winners;
+    public Cars getCars() {
+        return cars;
     }
 }
