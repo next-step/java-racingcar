@@ -1,5 +1,7 @@
 package racing;
 
+import racing.inout.OutPutView;
+
 public class Name {
     private final String name;
 
@@ -8,7 +10,7 @@ public class Name {
     }
 
     public static Name defaultOf(String name) {
-        if (name.length() > 4) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
         }
         return new Name(name);
@@ -19,5 +21,9 @@ public class Name {
         return "Name{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    public void print(OutPutView outPutView) {
+        outPutView.printName(name);
     }
 }

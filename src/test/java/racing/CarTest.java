@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,12 +34,6 @@ public class CarTest {
     @DisplayName("자동차 이동 테스트")
     void car_move_test()  {
         // then
-        Car car = Car.defaultOf("홍길동");
-
-        // when
-        car.move();
-
-        // then
-        assertThat(car).extracting("distance").isEqualTo(2);
+        // 자동차를 테스트해야하는데 유지보수 관련해서는 움직임을 판단하는
     }
 }

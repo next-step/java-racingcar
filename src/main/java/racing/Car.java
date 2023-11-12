@@ -1,5 +1,7 @@
 package racing;
 
+import racing.inout.OutPutView;
+
 public class Car {
     private Distance distance;
     private final Name name;
@@ -20,12 +22,12 @@ public class Car {
         return new Car(Name.defaultOf(name),howFar);
     }
 
-    public void move() {
-        this.distance.plus(1);
+    public void move(boolean canMove) {
+        if (canMove) {
+            this.distance.plus(1);
+        }
     }
 
-    // 자동차끼리 비교
-    //
     public Car winnerIs(Car car) {
         if (this.fartherThan(car.distance)) {
             return this;
@@ -38,6 +40,12 @@ public class Car {
         return this.distance.fartherThan(distance);
     }
 
+    public void printStatus(OutPutView outPutView) {
+        outPutView.printStatus(this.name,this.distance);
+    }
+    public void printName(OutPutView outPutView) {
+        this.name.print(outPutView);
+    }
 
     public boolean equalsDistance(Object o) {
         if (this == o) return true;
@@ -55,4 +63,6 @@ public class Car {
                 ", name=" + name +
                 '}';
     }
+
+
 }

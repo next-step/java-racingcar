@@ -1,5 +1,7 @@
 package racing;
 
+import racing.inout.OutPutView;
+
 import java.util.List;
 
 public class Winners {
@@ -12,6 +14,15 @@ public class Winners {
 
     public static Winners defaultOf(List<Car> winners) {
         return new Winners(winners);
+    }
+
+    public void printWinners(OutPutView outPutView) {
+        int size = winners.size();
+        for (int i = 0; i < size; i++) {
+            winners.get(i).printName(outPutView);
+            outPutView.printCommas(size-1 != i);
+        }
+        outPutView.printWinnerMessage();
     }
 
     @Override

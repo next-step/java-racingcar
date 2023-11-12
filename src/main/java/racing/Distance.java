@@ -1,5 +1,7 @@
 package racing;
 
+import racing.inout.OutPutView;
+
 public class Distance {
     private int distance;
 
@@ -43,5 +45,9 @@ public class Distance {
         return "Distance{" +
                 "distance=" + distance +
                 '}';
+    }
+
+    public void print(OutPutView outPutView) {
+        outPutView.printDistance(distance);
     }
 }
