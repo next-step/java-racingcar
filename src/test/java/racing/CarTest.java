@@ -3,10 +3,8 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
 
@@ -30,10 +28,4 @@ public class CarTest {
         );
     }
 
-    @Test
-    @DisplayName("자동차 이동 테스트")
-    void car_move_test()  {
-        // then
-        // 자동차를 테스트해야하는데 유지보수 관련해서는 움직임을 판단하는
-    }
 }

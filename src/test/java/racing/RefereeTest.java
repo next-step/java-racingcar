@@ -46,7 +46,7 @@ public class RefereeTest {
         Winners winner = cars.voteWinner(referee);
 
         // then
-        System.out.println(winner);
+        // 일급 컬렉션은 어떤 방식으로 테스트할 수 있을까요? 리뷰어님?
 
     }
 }

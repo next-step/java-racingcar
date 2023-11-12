@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class NameTest {
 
@@ -26,18 +26,5 @@ public class NameTest {
         String sut = "홍길동";
         // then
         Assertions.assertThrows(IllegalArgumentException.class, () -> Name.defaultOf("5자가넘어"));
-    }
-
-    @Test
-    @DisplayName("이름 분할 기능")
-    public void split_name_list() throws Exception {
-        // given
-        String nameList = "포비, 아톰, 케이캅스, 브레이보";
-
-        // when
-        String[] split = nameList.split(",");
-
-        // then
-        assertThat(split).containsExactly("포비", " 아톰", " 케이캅스", " 브레이보");
     }
 }
