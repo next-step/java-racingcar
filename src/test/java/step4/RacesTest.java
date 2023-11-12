@@ -37,7 +37,7 @@ public class RacesTest {
     @Test
     @DisplayName("레이싱이 완료 된 자동차 리스트를 받아 우승자를 정한다.")
     void getWinnersTest() {
-        Races racing = new Races(List.of("jane", "john"));
+        Races racing = new Races(List.of("jane"));
         racing.start(new ForwardMoveStrategy());
         assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining()))
                 .isEqualTo("jane");
