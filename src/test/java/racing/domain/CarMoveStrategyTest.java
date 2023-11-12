@@ -7,11 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarMoveStrategyTest {
 
-    @DisplayName("Random을 인자로 받은 CarMoveStrategy의 결과는 0~9의 값을 리턴한다.")
+    @DisplayName("bound를 인자로 받은 CarMoveStrategy의 결과는 항상 0~bound 내 값을 리턴한다.")
     @Test
     void car_move_strategy_result() {
         // given
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy();
+        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(10);
 
         // when
         int result = carMoveStrategy.getMoveSource();
