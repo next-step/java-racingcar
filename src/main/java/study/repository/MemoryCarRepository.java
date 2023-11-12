@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MemoryCarRepository implements CarRepository {
-    private static final Map<String, Car> store = new HashMap<>();
+    private final Map<String, Car> store = new HashMap<>();
 
     @Override
     public Car save(Car car) {
