@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Comparator;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -56,7 +55,6 @@ public class CarTest {
         List<Car> cars = Arrays.asList(winner, car);
         Assertions.assertThat(new Cars(cars).findWinners()).containsOnly("kwon");
     }
-
 
     @DisplayName("자동차의 이름이 5글자가 넘어가면 예외가 발생한다.")
     @Test

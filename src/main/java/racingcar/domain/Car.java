@@ -24,7 +24,9 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car comparedCar) {
-        if (comparedCar.getMoveCount() <= moveCount) {
+        if (moveCount < comparedCar.getMoveCount()) {
+            return -1;
+        } else if (moveCount > comparedCar.getMoveCount()) {
             return 1;
         }
         return 0;

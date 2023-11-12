@@ -55,7 +55,7 @@ public class Cars {
     public List<String> findWinners() {
         List<String> winners = new ArrayList<>();
         cars.sort(Car::compareTo);
-        int winnerMoveCount = cars.get(cars.size() - 1).getMoveCount();
+        int winnerMoveCount = cars.get(cars.size()-1).getMoveCount();
         decisionWinner(winners, winnerMoveCount);
         return winners;
     }
