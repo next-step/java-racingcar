@@ -6,8 +6,7 @@ public class Car {
     private final Position position;
 
     public Car(String name) {
-        this.name = new CarName(name);
-        this.position = new Position(1);
+        this(name, 1);
     }
 
     public Car(String name, int position) {
@@ -32,8 +31,12 @@ public class Car {
     private boolean isForwardCondition(int number) {
         return number >= 4;
     }
-    
+
     public int greaterThanPosition(int position) {
         return Math.max(this.position.getPosition(), position);
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return position.getPosition() == maxPosition;
     }
 }
