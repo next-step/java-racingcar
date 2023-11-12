@@ -30,4 +30,12 @@ public class RacingCar {
         }
     }
 
+    public boolean matchDistance(int maxDistance) {
+        return distance == maxDistance;
+    }
+
+    public int getMaxDistance(int maxDistance) {
+        if (distance > maxDistance) return distance;
+        return maxDistance;
+    }
 }

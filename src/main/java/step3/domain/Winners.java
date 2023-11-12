@@ -17,21 +17,16 @@ public class Winners {
     }
 
     private static void addWinner(int maxDistance, List<RacingCar> racingCarList, RacingCar racingCar) {
-        if (racingCar.getDistance() != maxDistance) return;
+        if (!racingCar.matchDistance(maxDistance)) return;
         racingCarList.add(racingCar);
     }
 
     private static int getMaxDistance(RacingCar[] racingCars) {
         int maxDistance = 0;
         for (RacingCar racingCar : racingCars) {
-            maxDistance = getMax(maxDistance, racingCar.getDistance());
+            maxDistance = racingCar.getMaxDistance(maxDistance);
         }
         return maxDistance;
-    }
-
-    private static int getMax(int max, int distance) {
-        if (distance > max) return distance;
-        return max;
     }
 
     public static List<CarName> getWinnerNames(RacingCar[] racingCars) {
