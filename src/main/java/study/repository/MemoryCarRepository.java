@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MemoryCarRepository implements CarRepository{
+public class MemoryCarRepository implements CarRepository {
     private static final Map<String, Car> store = new HashMap<>();
 
     @Override
@@ -18,6 +18,7 @@ public class MemoryCarRepository implements CarRepository{
     public Car findCarByName(Car car) {
         return store.get(car.getName());
     }
+
     @Override
     public List<Car> findCarAll() {
         return new ArrayList<>(store.values());

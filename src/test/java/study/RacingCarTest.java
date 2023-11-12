@@ -31,7 +31,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("0-9 사이의 랜덤 숫자를 생성한다.")
     void getRandom0To9NumberTest() {
-        int randomNumber = RandomUtils.getRandomNumberZeroToNine();
+        int randomNumber = RandomUtils.getRandomNumber();
         assertThat(randomNumber).isBetween(0, 9);
     }
 

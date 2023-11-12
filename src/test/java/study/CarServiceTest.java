@@ -58,4 +58,10 @@ public class CarServiceTest {
         assertThat(oneCar.getPosition()).isEqualTo(5);
     }
 
+    @Test
+    @DisplayName("position이 같으면 true를 출력한다. ")
+    void matchPositionTest() {
+        Car car = new Car("a", 3);
+        assertThat(car.matchPosition(3)).isTrue();
+    }
 }

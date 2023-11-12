@@ -1,7 +1,6 @@
 package study.domain;
 
 import study.repository.CarRepository;
-import study.utils.RandomUtils;
 import study.view.ResultView;
 
 import java.util.List;
@@ -19,16 +18,13 @@ public class RacingCar {
 
     public void startRacing() {
         carService.setCarListByName(nameOfCars);
-        List<Car> cars = carService.findAllCars();
         for (int i = 0; i < numberOfMoves; i++) {
-            for (Car car : cars) {
-                car.moving(RandomUtils.getRandomNumberZeroToNine());
-            }
-            ResultView.printCarNameAndRacingResult(cars);
+            ResultView.printCarNameAndRacingResult(carService.racingCar());
         }
     }
 
     public List<Car> findWinner() {
-        return Winner.findWinner(carService.findAllCars());
+        Winner winner = new Winner(carService.findAllCars());
+        return winner.findWinner();
     }
 }

@@ -5,13 +5,19 @@ import java.util.List;
 
 public class Winner {
 
-    public static List<Car> findWinner(List<Car> carList) {
-        return findWinner(carList, getWinnerPosition(carList));
+    private final List<Car> cars;
+
+    public Winner(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private static List<Car> findWinner(List<Car> carList, int winnerPosition) {
+    public List<Car> findWinner() {
+        return findWinner(getWinnerPosition());
+    }
+
+    private List<Car> findWinner(int winnerPosition) {
         List<Car> winnerList = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.matchPosition(winnerPosition)) {
                 winnerList.add(car);
             }
@@ -19,9 +25,9 @@ public class Winner {
         return winnerList;
     }
 
-    private static int getWinnerPosition(List<Car> carList) {
+    private int getWinnerPosition() {
         int maxPosition = 0;
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
                 maxPosition = car.getPosition();
             }

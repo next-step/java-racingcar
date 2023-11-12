@@ -1,6 +1,7 @@
 package study.domain;
 
 import study.repository.CarRepository;
+import study.utils.RandomUtils;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class CarService {
         this.memoryCarRepository = memoryCarRepository;
     }
 
-    public Car join(Car car) {
-        return memoryCarRepository.save(car);
+    public void join(Car car) {
+        memoryCarRepository.save(car);
     }
 
     public Car findOneCar(Car car) {
@@ -31,4 +32,11 @@ public class CarService {
         }
     }
 
+    public List<Car> racingCar() {
+        List<Car> cars = findAllCars();
+        for (Car car : cars) {
+            car.moving(RandomUtils.getRandomNumber());
+        }
+        return cars;
+    }
 }
