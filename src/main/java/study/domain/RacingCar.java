@@ -1,8 +1,9 @@
-package study;
+package study.domain;
 
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 @NoArgsConstructor
 public class RacingCar {
@@ -60,8 +61,18 @@ public class RacingCar {
         return val;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return drive == racingCar.drive && Objects.equals(carName, racingCar.carName) && Objects.equals(randomsByStep, racingCar.randomsByStep);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, drive, randomsByStep);
+    }
 }
 
 
