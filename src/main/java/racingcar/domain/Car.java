@@ -39,7 +39,7 @@ public class Car {
         return Math.max(maxPosition, this.getPosition());
     }
 
-    public boolean isCarAtMaxPosition(int maxPosition) {
+    public boolean matchPosition(int maxPosition) {
         return maxPosition == this.getPosition();
     }
 }
