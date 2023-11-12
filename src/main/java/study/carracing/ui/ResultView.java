@@ -2,16 +2,11 @@ package study.carracing.ui;
 
 import java.util.List;
 
-public class ResultView {
+public interface ResultView {
 
-    public void outputTitle() {
-        System.out.println("실행 결과");
-    }
+    void outputTitle();
 
-    public <Type> void outputResult(List<Type> items) {
-        for (Type item : items) {
-            System.out.println(item);
-        }
-        System.out.println();
-    }
+    <Type> void outputResult(List<Type> items);
+
+    <Type> void outputResultAndComment(List<Type> items);
 }

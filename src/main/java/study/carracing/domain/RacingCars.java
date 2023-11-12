@@ -1,8 +1,9 @@
 package study.carracing.domain;
 
+import study.carracing.util.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
-import study.carracing.util.RandomNumberGenerator;
 
 public class RacingCars {
 
@@ -12,9 +13,9 @@ public class RacingCars {
         this.cars = new ArrayList<>();
     }
 
-    public void addCar(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    public void addCar(String[] carsName) {
+        for (String name : carsName) {
+            cars.add(new Car(new Name(name)));
         }
     }
 
@@ -27,4 +28,5 @@ public class RacingCars {
             car.move(new RandomNumberGenerator().generatorNumber());
         }
     }
+
 }

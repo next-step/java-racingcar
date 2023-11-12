@@ -7,24 +7,25 @@ import study.carracing.util.Validator;
 
 public class RacingController {
 
-    private InputView inputView;
-    private ResultView resultView;
+    private final InputView inputView;
+    private final ResultView resultView;
+    private static final String NAMES_DELIMITER = ",";
 
     public RacingController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
     }
 
-    public Racing start() {
-        final int carCount = Validator.validateInput(inputView.inputCarCount());
-        final int tryCount = Validator.validateInput(inputView.inputTryCount());
+    public void start() {
+        final String carsName = inputView.inputCarsName();
+        Validator.validateCarName(carsName);
+        final int tryCount = inputView.inputTryCount();
+        Validator.validateNumber(tryCount);
 
         resultView.outputTitle();
         Racing racing = new Racing();
-        racing.start(carCount, tryCount);
-        resultView.outputResult(racing.getRacingCars());
-
-        return racing;
+        racing.start(carsName.split(NAMES_DELIMITER), tryCount);
+        resultView.outputResult(racing.getHistory().getScores());
+        resultView.outputResultAndComment(racing.winners());
     }
-
 }

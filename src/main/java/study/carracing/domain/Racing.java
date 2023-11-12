@@ -4,28 +4,37 @@ import java.util.List;
 
 public class Racing {
 
-    private RacingCars racingCars;
+    private final RacingCars racingCars;
+
+    private final History history;
 
     public Racing() {
         racingCars = new RacingCars();
+        history = new History();
     }
 
-    public void start(int carCount, int tryCount) {
-        addRacingCars(carCount);
+    public void start(String[] carsName, int tryCount) {
+        addRacingCars(carsName);
         move(tryCount);
     }
 
-    private void addRacingCars(int carCount) {
-        racingCars.addCar(carCount);
+    private void addRacingCars(String[] carsName) {
+        racingCars.addCar(carsName);
     }
 
     private void move(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             racingCars.move();
+            history.addScores(racingCars);
         }
     }
 
-    public List<Car> getRacingCars() {
-        return racingCars.getCars();
+    public History getHistory() {
+        return history;
+    }
+
+    public List<String> winners() {
+        Winners winners = new Winners();
+        return winners.pickWinners(racingCars.getCars());
     }
 }

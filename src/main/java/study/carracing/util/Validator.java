@@ -1,20 +1,31 @@
 package study.carracing.util;
 
+import study.carracing.exceptions.InvalidNameException;
+import study.carracing.exceptions.InvalidNumberException;
+
 import java.util.regex.Pattern;
 
 public class Validator {
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("\\d+");
+    private static final Pattern NAMES_PATTERN = Pattern.compile("^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$");
 
-    private static final Pattern NUMBER_PATTERN = Pattern.compile("-?\\d+");
-
-    public static int validateInput(int input) {
-        if (isNotNumberOrNegative(input)) {
-            throw new IllegalArgumentException("숫자 이외의 값 또는 음수가 입력됐습니다." + input);
+    public static void validateNumber(int number) {
+        if (!isNumber(number)) {
+            throw new InvalidNumberException("숫자 이외의 값 또는 음수가 입력됐습니다." + number);
         }
-
-        return input;
     }
 
-    public static boolean isNotNumberOrNegative(int input) {
-        return !NUMBER_PATTERN.matcher(String.valueOf(input)).matches();
+    public static void validateCarName(String names) {
+        if (!isMatchesNamesPattern(names)) {
+            throw new InvalidNameException("형식에 맞지 않는 값이 입력됐습니다." + names);
+        }
+    }
+
+    private static boolean isNumber(int number) {
+        return NUMBER_PATTERN.matcher(String.valueOf(number)).matches();
+    }
+
+    private static boolean isMatchesNamesPattern(String names) {
+        return NAMES_PATTERN.matcher(String.valueOf(names)).matches();
     }
 }
