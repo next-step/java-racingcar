@@ -25,8 +25,7 @@ class RacesTest {
 
         Races races = Races.newInstance(cars, rule, 3);
 
-        races.getRaces().stream()
-                .forEach(Race::start);
+        races.getRaces().forEach(Race::start);
 
         List<CarName> winners = races.winners();
 

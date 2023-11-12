@@ -37,8 +37,7 @@ public class Races {
     }
 
     private Race lastLace() {
-        Race lastRace = races.get(races.size() - 1);
-        return lastRace;
+        return races.get(races.size() - 1);
     }
 
     public List<Race> getRaces() {
