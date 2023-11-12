@@ -1,16 +1,16 @@
-package racing;
+package racing.game;
 
 import java.util.Random;
 
 public class Game {
-	private static final Random RANDOM = new Random();
-	private static final int RANDOM_BOUND = 10;
+	private final Random RANDOM;
 
-	public Game() {
+	public Game(Random random) {
+		RANDOM = random;
 	}
 
 	public int bound() {
-		return RANDOM.nextInt(RANDOM_BOUND);
+		return RANDOM.nextInt();
 	}
 
 	public int[] bounds(int length) {

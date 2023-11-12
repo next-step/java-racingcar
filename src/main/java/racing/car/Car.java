@@ -2,15 +2,17 @@ package racing.car;
 
 public class Car {
 
-	private static final int MOVE_BOUND = 4;
-	private static final int MOVE_INTERVAL = 1;
-	private static final int INIT_POSITION = 0;
+	private final int MOVE_BOUND;
+	private final int MOVE_INTERVAL;
 
-	private int id;
+	private final CarName carName;
 	private int position;
 
-	public Car() {
-		this.position = INIT_POSITION;
+	public Car(int bound, int interval, int position, CarName carName) {
+		this.MOVE_BOUND = bound;
+		this.MOVE_INTERVAL = interval;
+		this.position = position;
+		this.carName = carName;
 	}
 
 	public void move(int bound) {
@@ -18,20 +20,19 @@ public class Car {
 			this.position += MOVE_INTERVAL;
 	}
 
-	public int getId() {
-		return id;
+	public int getMOVE_BOUND() {
+		return MOVE_BOUND;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getMOVE_INTERVAL() {
+		return MOVE_INTERVAL;
+	}
+
+	public CarName getCarName() {
+		return carName;
 	}
 
 	public int getPosition() {
 		return position;
 	}
-
-	public void setPosition(int position) {
-		this.position = position;
-	}
-
 }
