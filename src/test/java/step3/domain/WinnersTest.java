@@ -42,8 +42,9 @@ class WinnersTest {
         RacingCar three = new RacingCar("three", 1);
         RacingCar[] racingCars = new RacingCar[]{one, two, three};
 
-        String winners = Winners.getWinnerNames(racingCars);
-        assertThat(winners).isEqualTo("one, two");
+        List<CarName> winnerNames = Winners.getWinnerNames(racingCars);
+        assertThat(winnerNames.get(0).value()).isEqualTo("one");
+        assertThat(winnerNames.get(1).value()).isEqualTo("two");
     }
 
 }

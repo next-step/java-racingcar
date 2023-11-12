@@ -35,7 +35,7 @@ class RacingCarTest {
     @ValueSource(strings = {"car", "car5자"})
     void correctNameTest(String correctName) {
         RacingCar racingCar = new RacingCar(correctName);
-        assertThat(racingCar.getName()).isEqualTo(correctName);
+        assertThat(racingCar.name().value()).isEqualTo(correctName);
     }
 
     @ParameterizedTest

@@ -34,12 +34,12 @@ public class Winners {
         return max;
     }
 
-    public static String getWinnerNames(RacingCar[] racingCars) {
-        List<String> winnerNames = new ArrayList<>();
+    public static List<CarName> getWinnerNames(RacingCar[] racingCars) {
+        List<CarName> winnerNames = new ArrayList<>();
         for (RacingCar racingCar : getWinners(racingCars)) {
-            winnerNames.add(racingCar.getName());
+            winnerNames.add(racingCar.name());
         }
-        return String.join(", ", winnerNames);
+        return winnerNames;
     }
 
 }
