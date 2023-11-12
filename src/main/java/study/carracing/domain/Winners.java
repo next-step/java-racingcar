@@ -11,7 +11,7 @@ public class Winners {
         return cars.stream()
                 .filter(car -> car.isSame(maxPosition))
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private int getMaxPosition(List<Car> cars) {
