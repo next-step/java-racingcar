@@ -6,6 +6,7 @@ public class RacingCar {
 
     public static void race() {
         int[] inputValues = input();
+        validateInput(inputValues);
     }
 
     private static int[] input() {
@@ -18,5 +19,13 @@ public class RacingCar {
         int tryNumber = scanner.nextInt();
 
         return new int[] {carNumber, tryNumber};
+    }
+
+    public static void validateInput(int[] input) {
+        for (int i : input) {
+            if (i < 0) {
+                throw new RuntimeException("Negative numbers are not allowed.");
+            }
+        }
     }
 }
