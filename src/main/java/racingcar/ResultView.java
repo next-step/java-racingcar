@@ -3,7 +3,7 @@ package racingcar;
 public class ResultView {
     private static String START_MESSAGE = "실행 결과";
 
-    public static void printResult(RacingGame game) {
+    public static void printRoundResult(RacingGame game) {
         startPrint(game);
 
         for (RacingCar car : game.getCars()) {
