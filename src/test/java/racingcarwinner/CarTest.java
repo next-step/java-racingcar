@@ -3,14 +3,14 @@ package racingcarwinner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.stream.IntStream;
+import racingcarwinner.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcarwinner.Car.createDefaultCar;
+import static racingcarwinner.domain.Car.createDefaultCar;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarTest {
@@ -22,12 +22,17 @@ class CarTest {
         assertThatThrownBy(() -> createDefaultCar(input)).isInstanceOf(IllegalStateException.class);
     }
 
-    @DisplayName("move 수행 횟수 만큼 location 증가")
-    @ParameterizedTest
-    @CsvSource(value = {"3,4", "5,6"})
-    void move_수행_후_location_증가(int input, int expected) {
+    @Test
+    void move_수행_후_location_증가() {
         Car car = new Car("test", 1);
-        IntStream.range(0, input).forEach(i -> car.move(4));
-        assertThat(car.getLocation()).isEqualTo(expected);
+        car.move(() -> true);
+        assertThat(car.location()).isEqualTo(2);
+    }
+
+    @Test
+    void move_수행_후_location_유지() {
+        Car car = new Car("test", 1);
+        car.move(() -> false);
+        assertThat(car.location()).isEqualTo(1);
     }
 }

@@ -1,5 +1,8 @@
 package racingcarwinner;
 
+import racingcarwinner.domain.Car;
+import racingcarwinner.domain.RacingPlay;
+import racingcarwinner.domain.RandomNumber;
 import racingcarwinner.view.InputView;
 import racingcarwinner.view.OutputView;
 
@@ -9,8 +12,8 @@ public class GameMain {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        RacingPlay racingPlay = new RacingPlay();
         OutputView outputView = new OutputView();
+        RacingPlay racingPlay = new RacingPlay(new RandomNumber());
 
         String[] carNames = inputView.carNames();
         int playCount = inputView.playCount();
