@@ -24,7 +24,19 @@ public class RacingCar {
         }
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getLocation() {
         return this.location;
+    }
+
+    public String getLocationMark() {
+        String locationMark = "";
+        for (int i = 0; i<this.getLocation(); i++) {
+            locationMark += "-";
+        }
+        return locationMark;
     }
 }

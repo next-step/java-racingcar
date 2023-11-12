@@ -20,9 +20,7 @@ public class ResultView {
     }
 
     private static void printLocationOfCar(RacingCar car) {
-        for (int i = 0; i<car.getLocation(); i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+        String result = car.getName() + " : " + car.getLocationMark();
+        System.out.println(result);
     }
 }
