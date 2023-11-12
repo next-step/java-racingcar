@@ -1,5 +1,7 @@
 package car;
 
+import java.util.Objects;
+
 public class CarPosition implements Comparable<CarPosition> {
 
     private final int distance;
@@ -27,5 +29,22 @@ public class CarPosition implements Comparable<CarPosition> {
 
     public boolean isSameDistance(CarPosition winnerCarPosition) {
         return this.distance == winnerCarPosition.distance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarPosition that = (CarPosition) o;
+        return distance == that.distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance);
     }
 }
