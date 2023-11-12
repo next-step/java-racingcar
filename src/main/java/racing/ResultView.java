@@ -1,14 +1,14 @@
 package racing;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.List;
 
 public class ResultView {
 
-    public static void displayRace(int[] carPositions) {
-        for (int position : carPositions) {
-            System.out.println("-".repeat(position));
+    public void print(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println("-".repeat(car.getPosition()));
         }
         System.out.println();
     }
+
 }
