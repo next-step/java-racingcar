@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
-    @DisplayName("4 이상의 숫자를 받는다면 앞으로 전진한다.")
+    @DisplayName("자동차가 앞으로 전진하는지 확인한다.")
     void carGoTest() {
         Car car = new Car("tester1", 0);
         assertThat(car.getCurrentStatus()).isEqualTo(0);
@@ -26,7 +26,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("4보다 작은 숫자를 받는다면 앞으로 전진하지 않는다.")
+    @DisplayName("자동차가 멈춰야 할 경우를 확인한다.")
     void carDoNotGoTest() {
         Car car = new Car("tester1", 0);
         assertThat(car.getCurrentStatus()).isEqualTo(0);
