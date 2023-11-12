@@ -27,11 +27,4 @@ public class RacingCar {
     public int getLocation() {
         return this.location;
     }
-
-    public void printLocationOfCar() {
-        for (int i = 0; i<this.location; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
 }

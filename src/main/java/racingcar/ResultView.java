@@ -7,7 +7,7 @@ public class ResultView {
         startPrint(game);
 
         for (RacingCar car : game.getCars()) {
-            car.printLocationOfCar();
+            printLocationOfCar(car);
         }
         System.out.println();
     }
@@ -17,5 +17,12 @@ public class ResultView {
             System.out.println();
             System.out.println(START_MESSAGE);
         }
+    }
+
+    private static void printLocationOfCar(RacingCar car) {
+        for (int i = 0; i<car.getLocation(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
