@@ -3,13 +3,14 @@ package study.carracing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.carracing.fake.TestMoveStrategy;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingTest {
-    private Racing racing = new Racing();
+    private Racing racing = new Racing(new TestMoveStrategy());
 
     @Test
     @DisplayName("게임 히스토리 값을 변경하면 UnsupportedOperationException예외가 발생한다.")
