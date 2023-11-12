@@ -3,25 +3,24 @@ package game.race;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import game.race.support.move.MovePolicy;
 import game.race.support.move.impl.RandomPolicy;
 import game.race.view.InputView;
 
 class CarRaceTest {
 
-    Car car;
-    InputView inputView;
+    static Car car;
+    static InputView inputView;
 
-    @BeforeEach
-    void init() {
-        MovePolicy policy = new RandomPolicy();
-        car = new Car("TEST", policy);
+    @BeforeAll
+    static void init() {
+        car = new Car("TEST");
         inputView = new InputView();
     }
 
@@ -38,16 +37,22 @@ class CarRaceTest {
         assertThatThrownBy(() -> inputView.checkInput("0")).isInstanceOf(IllegalArgumentException.class);
     }
 
+
     @ParameterizedTest
-    @CsvSource({
-            "5,5",
-            "6,6",
-            "7,7",
-            "8,8",
-            "9,9"
-    })
-    void 자동차_움직임_확인_하는_테스트(int number, int moveCount) {
-        car.move(number);
+    @CsvSource({"5, 1", "6, 2", "7, 3", "1, 3", "9, 4", "0, 4"})
+    void 자동차_움직임_확인_하는_테스트(int randomNumber, int moveCount) {
+        // given
+        RandomPolicy randomPolicy = new RandomPolicy() {
+            @Override
+            public int getPolicyNumber() {
+                return randomNumber;
+            }
+        };
+
+        // when
+        car.move(randomPolicy);
+
+        // then
         assertThat(car.getMoveCount()).isEqualTo(moveCount);
     }
 }

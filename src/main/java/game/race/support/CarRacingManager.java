@@ -1,8 +1,5 @@
 package game.race.support;
 
-import java.util.List;
-
-import game.race.Car;
 import game.race.dto.RaceDto;
 import game.race.support.move.MovePolicy;
 import game.race.support.move.impl.RandomPolicy;
@@ -13,22 +10,27 @@ public class CarRacingManager {
     public void start(RaceDto raceDto) {
         ResultView resultView = new ResultView();
         MovePolicy policy = new RandomPolicy();
-        // MovePolicy policy = new WeatherPolicy();
-        List<Car> cars = Cars.of(raceDto.getVehicleNames(), policy);
+        Cars cars = new Cars();
+        cars.of(raceDto.getVehicleNames());
 
         resultView.showPrompt();
-        for (int trial = 0; trial < raceDto.getTryCnt(); trial++) {
-            for (Car car : cars) {
-                car.move(policy.getMoveCount(RandomPolicy.getPolicyNumber()));
-                //car.move(policy.getMoveCount(WeatherPolicy.WINDY));
-            }
 
-            resultView.showCars(raceDto, cars);
+        int tryCnt = raceDto.getTryCnt();
+        for (int trial = 0; trial < tryCnt; trial++) {
+            cars.move(policy);
+            resultView.showCars(raceDto, cars.getCars());
 
-            int lastTrialIndex = raceDto.getTryCnt() - 1;
-            if (trial == lastTrialIndex) {
-                resultView.print(Cars.getWinners());
-            }
+            findWinner(tryCnt, trial, cars, resultView);
+        }
+    }
+
+    private static void findWinner(int tryCnt,
+                                   int trial,
+                                   Cars cars,
+                                   ResultView resultView) {
+        int lastTrialIndex = tryCnt - 1;
+        if (trial == lastTrialIndex) {
+            resultView.print(cars.getWinners());
         }
     }
 }

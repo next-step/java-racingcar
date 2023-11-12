@@ -1,8 +1,8 @@
 package game.race.support.move;
 
-public abstract class MovePolicy {
+public interface MovePolicy {
 
-    public abstract int move(int number);
+    boolean move();
 
-    public abstract int getMoveCount(int policyNumber);
+    int getPolicyNumber();
 }

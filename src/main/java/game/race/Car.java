@@ -6,12 +6,10 @@ public class Car {
 
     private final String name;
     private int moveCount;
-    private final MovePolicy movePolicy;
 
-    public Car(String name, MovePolicy movePolicy) {
+    public Car(String name) {
         this.name = name;
         this.moveCount = 0;
-        this.movePolicy = movePolicy;
     }
 
     public int getMoveCount() {
@@ -22,7 +20,7 @@ public class Car {
         return name;
     }
 
-    public void move(int number) {
-        moveCount+= movePolicy.move(number);
+    public void move(MovePolicy policy) {
+        moveCount = policy.move() ? moveCount + 1 : moveCount;
     }
 }

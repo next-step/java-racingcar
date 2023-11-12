@@ -4,22 +4,19 @@ import java.util.Random;
 
 import game.race.support.move.MovePolicy;
 
-public class RandomPolicy extends MovePolicy {
+public class RandomPolicy implements MovePolicy {
 
     private static final int THRESHOLD = 4;
 
     @Override
-    public int move(int number) {
-        return (number > THRESHOLD) ? number : 0;
+    public boolean move() {
+        int number = getPolicyNumber();
+        return (number > THRESHOLD);
 
     }
 
     @Override
-    public int getMoveCount(int policyNumber) {
-        return policyNumber;
-    }
-
-    public static int getPolicyNumber() {
+    public int getPolicyNumber() {
         return new Random().nextInt(10);
     }
 }
