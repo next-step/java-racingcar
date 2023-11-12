@@ -1,7 +1,10 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
     private static String START_MESSAGE = "실행 결과";
+    private static String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
     public static void printRoundResult(RacingGame game) {
         startPrint(game);
@@ -21,6 +24,16 @@ public class ResultView {
 
     private static void printLocationOfCar(RacingCar car) {
         String result = car.getName() + " : " + car.getLocationMark();
+        System.out.println(result);
+    }
+
+    public static void printWinners(List<RacingCar> winners) {
+        String[] winnersName = new String[winners.size()];
+        for (int i=0; i<winners.size(); i++) {
+            winnersName[i] = winners.get(i).getName();
+        }
+        String result = String.join(", ", winnersName);
+        result += WINNER_MESSAGE;
         System.out.println(result);
     }
 }

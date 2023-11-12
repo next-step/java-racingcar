@@ -62,6 +62,7 @@ public class RacingGame {
 
     private void endGame() {
         List<RacingCar> finalWinners = findWinner();
+        ResultView.printWinners(finalWinners);
     }
 
     private List<RacingCar> findWinner() {
