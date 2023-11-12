@@ -22,7 +22,6 @@ public class ResultView {
         for (Car car : movedCars) {
             displayCarStatus(car);
         }
-
     }
 
     private void displayCarStatus(Car car) {

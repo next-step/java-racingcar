@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    public List<Car> cars;
 
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
@@ -29,19 +29,14 @@ public class Cars {
         cars.add(car);
     }
 
-    public void moveAllCar() {
-        Strategy numberStrategy = new NumberStrategy();
+    public final List<Car> moveAllCar() {
+        List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            car.stopOrMove(numberStrategy);
+            Car newCar = car.stopOrMove(new NumberStrategy());
+            newCars.add(newCar);
         }
-    }
-
-    public final List<Car> getAllCar() {
-        List<Car> copyCars = new ArrayList<>();
-        for (Car car : cars) {
-            copyCars.add(car.clone());
-        }
-        return copyCars;
+        cars = newCars;
+        return newCars;
     }
 
     public int getNumberOfCar() {
@@ -57,8 +52,7 @@ public class Cars {
     }
 
     private void decisionWinner(List<String> winners, int winnerMoveCount) {
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
+        for (Car car : cars) {
             if (car.getMoveCount() == winnerMoveCount) {
                 winners.add(car.getName());
             }

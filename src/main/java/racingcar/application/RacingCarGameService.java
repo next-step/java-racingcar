@@ -26,7 +26,6 @@ public class RacingCarGameService {
     }
 
     private List<Car> getMovedCars(Cars cars) {
-        cars.moveAllCar();
-        return cars.getAllCar();
+        return cars.moveAllCar();
     }
 }

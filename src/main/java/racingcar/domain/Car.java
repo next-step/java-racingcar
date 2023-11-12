@@ -14,20 +14,16 @@ public class Car implements Cloneable {
         name = carName;
     }
 
-    @Override
-    public Car clone() {
-        try {
-            return (Car) super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public Car(String name, int moveCount) {
+        this.name = name;
+        this.moveCount = moveCount;
     }
 
-    public void stopOrMove(Strategy strategy) {
+    public Car stopOrMove(Strategy strategy) {
         if (strategy.isMovable()) {
-            moveCount += 1;
+            return new Car(name, moveCount + 1);
         }
+        return this;
     }
 
     public String getName() {
