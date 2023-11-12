@@ -15,7 +15,7 @@ class RacingTest {
     @DisplayName("게임 히스토리 값을 변경하면 UnsupportedOperationException예외가 발생한다.")
     void not_allow_to_modify_history() {
         racing.start("car1,car2,car3".split(","), 3);
-        List<String> scores = racing.getHistory().getScores();
+        List<String> scores = racing.racingHistory();
 
         assertThatThrownBy(() -> scores.add("test score"))
                 .isInstanceOf(UnsupportedOperationException.class);
