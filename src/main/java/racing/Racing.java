@@ -1,28 +1,30 @@
 package racing;
 
+import racing.domain.Cars;
+import racing.view.ResultView;
+
 public class Racing {
-    private Car[] participants;
+
+    private Cars cars;
     private int round;
 
-    public Racing(int cars, int round) {
-        this.participants = new Car[cars];
-        for (int i=0; i<cars; i++) {
-            participants[i] = new Car();
-        }
+    public Racing(String[] carNames, int round) {
+        this.cars = Cars.createCars(carNames);
         this.round = round;
     }
 
-    public void race() {
-        for (int i=0; i<round; i++) {
-            updateCar();
-            ResultView.print("");
+    public Cars getCars() {
+        return cars;
+    }
+
+    public void play() {
+        for (int i = 0; i < round; i++) {
+            cars.tryMove();
+            ResultView.carStatus(cars);
         }
     }
 
-    private void updateCar() {
-        for (Car participant : participants) {
-            participant.move();
-            participant.showDistance();
-        }
+    public Cars winners() {
+        return cars.findWinners();
     }
 }
