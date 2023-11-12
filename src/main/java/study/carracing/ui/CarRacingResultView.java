@@ -16,7 +16,6 @@ public class CarRacingResultView implements ResultView {
         for (Type item : items) {
             System.out.println(item);
         }
-        System.out.println();
     }
 
     @Override
