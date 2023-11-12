@@ -25,32 +25,29 @@ public class RacesTest {
         assertThat(races.getCars()).size().isEqualTo(2);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4})
-    @DisplayName("랜덤숫자를 넘긴다면 레이스가 시작된다.")
-    void raceStartTest(int condition) {
+    @Test
+    @DisplayName("레이스가 정상적으로 실행되는지 확인한다.")
+    void raceStartTest() {
         Races races = mock(Races.class);
-        races.start(condition);
-        verify(races, times(1)).start(condition);
+        races.start(true);
+        verify(races, times(1)).start(true);
     }
 
     @Test
     @DisplayName("레이싱이 완료 된 자동차 리스트를 받아 우승자를 정한다.")
     void getWinnersTest() {
         Races racing = new Races(List.of("jane", "john"));
-        racing.start(4);
+        racing.start(true);
         assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining()))
                 .isEqualTo("jane");
-
     }
 
     @Test
     @DisplayName("레이싱이 완료 된 자동차 리스트를 받아 우승자가 2명 이상이라면 두명 다 조회된다.")
     void getMultipleWinnersTest() {
         Races racing = new Races(List.of("jane", "john"));
-        racing.start(4);
+        racing.start(true);
         assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining(",")))
                 .isEqualTo("jane,john");
-
     }
 }
