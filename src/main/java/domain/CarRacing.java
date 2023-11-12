@@ -1,29 +1,11 @@
 package domain;
 
-import view.InputView;
-import view.ResultView;
-
 import java.util.*;
 
 public class CarRacing {
 
-    private final InputView inputView;
-    private final ResultView resultView;
     private List<Car> cars;
     private Queue<Integer> executeNumbers = new LinkedList<>();
-
-    public CarRacing(InputView inputView, ResultView resultView) {
-        this.inputView = inputView;
-        this.resultView = resultView;
-    }
-
-    public InputView inputView() {
-        return inputView;
-    }
-
-    public ResultView resultView() {
-        return resultView;
-    }
 
     public void makingCar(String inputString) {
         String[] names = inputString.split(",");
@@ -69,18 +51,6 @@ public class CarRacing {
         while (carSize-- > 0) {
             this.executeNumbers.add(random.nextInt(10));
         }
-    }
-
-    public void startGame() {
-        String names = inputView.getInputStringValue("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
-        makingCar(names);
-        int executeCount = inputView.getInputIntValue("시도할 회수는 몇 회 인가요?");
-        resultView.showResultComment("실행 결과");
-        while (executeCount-- > 0) {
-            executeRace();
-            resultView.showCarRacing(cars);
-        }
-        resultView.showResultCarRacing(getWinningRaceCars());
     }
 
     public List<Car> getWinningRaceCars() {
