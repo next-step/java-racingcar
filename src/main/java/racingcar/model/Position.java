@@ -9,10 +9,6 @@ public class Position implements Comparable<Position> {
                 this.number = START_INIT_VALUE;
         }
 
-        public boolean isSamePosition(Position position) {
-                return compareTo(position) == 0;
-        }
-
         public void addOnePosition() {
                 ++this.number;
         }
@@ -25,4 +21,9 @@ public class Position implements Comparable<Position> {
         public int compareTo(Position o) {
                 return this.number - o.getNumber();
         }
+
+        boolean isSamePosition(Position position) {
+                return compareTo(position) == 0;
+        }
+
 }

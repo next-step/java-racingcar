@@ -11,6 +11,14 @@ public class Car {
                 this.currentPosition = new Position();
         }
 
+        public Position currentPosition() {
+                return currentPosition;
+        }
+
+        public Name name() {
+                return name;
+        }
+
         public void movedForwardIfCan(int randomNumber) {
                 if (isAbleToMove(randomNumber)) {
                         this.moveForward();
@@ -23,13 +31,5 @@ public class Car {
 
         private boolean isAbleToMove(int randomNumber) {
                 return randomNumber >= LOWER_LIMIT;
-        }
-
-        public Position currentPosition() {
-                return currentPosition;
-        }
-
-        public Name name() {
-                return name;
         }
 }

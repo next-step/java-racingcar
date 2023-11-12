@@ -18,12 +18,19 @@ public class RacingCarGame {
                 this.cars = joinCars();
         }
 
+        public Cars cars() {
+                return this.cars;
+        }
+
         public boolean isOngoing() {
                 return --round != -1;
         }
 
         public void moveOneRound() {
-                cars.moveOneRound(randomNumber());
+                cars.getCars().forEach(car -> {
+                        car.movedForwardIfCan(randomNumber());
+                });
+
         }
 
         private int randomNumber() {
@@ -32,10 +39,6 @@ public class RacingCarGame {
 
         private Cars joinCars() {
                 return new Cars(Arrays.stream(carNames).map(Car::new).collect(Collectors.toList()));
-        }
-
-        public Cars cars() {
-                return this.cars;
         }
 
 }

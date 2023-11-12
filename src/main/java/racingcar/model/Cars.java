@@ -14,12 +14,6 @@ public class Cars {
                 return Winners.findWinners(cars);
         }
 
-        public void moveOneRound(int randomNumber) {
-                cars.forEach(car -> {
-                        car.movedForwardIfCan(randomNumber);
-                });
-        }
-
         public List<Car> getCars() {
                 return cars;
         }
