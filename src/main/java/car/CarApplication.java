@@ -2,7 +2,7 @@ package car;
 
 public class CarApplication {
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(new RandomNumberGenerator());
-        racingGame.startRacingGame();
+        GameController gameController = new GameController(new RacingGame(new RandomNumberGenerator()));
+        gameController.startRacingGame();
     }
 }
