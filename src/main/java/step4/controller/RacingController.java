@@ -18,7 +18,7 @@ public class RacingController {
 
         Races races = new Races(carNames);
         IntStream.range(0, times).forEach(t -> {
-            races.start(new RandomMoveStrategy().isMovable());
+            races.start(new RandomMoveStrategy());
             new RaceWinnerOutputView(races.getCars()).progressInGame();
         });
 

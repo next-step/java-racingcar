@@ -14,8 +14,8 @@ public class Car {
         this.currentStatus = currentStatus;
     }
 
-    public void go(boolean isMovable) {
-        if (isMovable) this.currentStatus++;
+    public void go() {
+        this.currentStatus++;
     }
 
     public int getCurrentStatus() {

@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import step4.model.Car;
+import step4.model.ForwardMoveStrategy;
 import step4.model.Races;
 
 import java.util.Arrays;
@@ -29,15 +30,15 @@ public class RacesTest {
     @DisplayName("레이스가 정상적으로 실행되는지 확인한다.")
     void raceStartTest() {
         Races races = mock(Races.class);
-        races.start(true);
-        verify(races, times(1)).start(true);
+        races.start(new ForwardMoveStrategy());
+        verify(races, times(1)).start(new ForwardMoveStrategy());
     }
 
     @Test
     @DisplayName("레이싱이 완료 된 자동차 리스트를 받아 우승자를 정한다.")
     void getWinnersTest() {
         Races racing = new Races(List.of("jane", "john"));
-        racing.start(true);
+        racing.start(new ForwardMoveStrategy());
         assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining()))
                 .isEqualTo("jane");
     }
@@ -46,7 +47,7 @@ public class RacesTest {
     @DisplayName("레이싱이 완료 된 자동차 리스트를 받아 우승자가 2명 이상이라면 두명 다 조회된다.")
     void getMultipleWinnersTest() {
         Races racing = new Races(List.of("jane", "john"));
-        racing.start(true);
+        racing.start(new ForwardMoveStrategy());
         assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining(",")))
                 .isEqualTo("jane,john");
     }

@@ -9,6 +9,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMovable() {
-        return (new Random().nextInt(MAX_RANDOM_VALUE) >= MOVE_CONDITION);
+        int randomValue = new Random().nextInt(MAX_RANDOM_VALUE);
+        return (randomValue >= MOVE_CONDITION);
     }
 }
