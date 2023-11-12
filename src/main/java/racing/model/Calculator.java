@@ -1,4 +1,4 @@
-package calculator;
+package racing.model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class Calculator {
 
     public static final String DELIMITER_TEXT_SPLIT_REGEX = "//(.)\n(.*)";
+    public static final Pattern PATTERN = Pattern.compile(DELIMITER_TEXT_SPLIT_REGEX);
     public static final int DELIMITER_GROUP = 1;
     public static final String OR = "|";
     public static String REGEX = ",|:";
@@ -19,8 +20,7 @@ public class Calculator {
     }
 
     private static String getTextWithOutCustomGroup(String text) {
-        Pattern pattern = Pattern.compile(DELIMITER_TEXT_SPLIT_REGEX);
-        Matcher matcher = pattern.matcher(text);
+        Matcher matcher = PATTERN.matcher(text);
         if (matcher.find()) {
             addRegex(matcher);
             return matcher.group(2);
