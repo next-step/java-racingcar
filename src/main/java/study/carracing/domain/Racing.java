@@ -7,8 +7,11 @@ public class Racing {
 
     private final RacingCars racingCars;
 
+    private History history;
+
     public Racing() {
         racingCars = new RacingCars();
+        history = new History();
     }
 
     public void start(String[] carsName, int tryCount) {
@@ -23,15 +26,16 @@ public class Racing {
     private void move(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             racingCars.move();
+            history.addScores(racingCars);
         }
     }
 
-    public List<Car> getRacingCars() {
-        return racingCars.getCars().stream().collect(Collectors.toUnmodifiableList());
+    public History getHistory() {
+        return history;
     }
 
     public List<String> winners() {
         Winners winners = new Winners();
-        return winners.pickWinners(racingCars.getCars()).stream().collect(Collectors.toUnmodifiableList());
+        return winners.pickWinners(racingCars.getCars());
     }
 }
