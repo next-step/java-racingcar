@@ -1,26 +1,28 @@
 package game.race;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import game.race.support.CarRacingManager;
+import game.race.support.move.MovePolicy;
+import game.race.support.move.impl.RandomPolicy;
 import game.race.view.InputView;
 
 class CarRaceTest {
 
     Car car;
     InputView inputView;
-    CarRacingManager manager;
 
     @BeforeEach
     void init() {
+        MovePolicy policy = new RandomPolicy();
+        car = new Car("TEST", policy);
         inputView = new InputView();
-        car = new Car();
-        manager = new CarRacingManager();
     }
 
     @ParameterizedTest
@@ -34,5 +36,18 @@ class CarRaceTest {
     @Test
     void 문자_0_을_입력하면_오류를_발생_시키는_테스트() {
         assertThatThrownBy(() -> inputView.checkInput("0")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "5,5",
+            "6,6",
+            "7,7",
+            "8,8",
+            "9,9"
+    })
+    void 자동차_움직임_확인_하는_테스트(int number, int moveCount) {
+        car.move(number);
+        assertThat(car.getMoveCount()).isEqualTo(moveCount);
     }
 }

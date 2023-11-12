@@ -14,6 +14,7 @@ public class CarRacing {
         InputView inputView = new InputView();
         RaceDto raceDto = inputView.showPrompt();
 
-        CarRacingManager.start(raceDto);
+        CarRacingManager manager = new CarRacingManager();
+        manager.start(raceDto);
     }
 }
