@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private int location = 0;
+    private int location = 1;
 
 
     public static int getRandomValue() {
@@ -21,5 +21,12 @@ public class RacingCar {
 
     public int getLocation() {
         return this.location;
+    }
+
+    public void printLocationOfCar() {
+        for (int i = 0; i<this.location; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }

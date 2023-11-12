@@ -1,10 +1,9 @@
 package racingcar;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGame {
-    private int tryNumber;
+    private int roundNumber;
     private RacingCar[] cars;
 
     public void play() {
@@ -28,7 +27,7 @@ public class RacingGame {
     private void makeGame(int[] inputValues) {
         validateInput(inputValues);
         this.makeCars(inputValues[0]);
-        this.tryNumber = inputValues[1];
+        this.roundNumber = inputValues[1];
     }
 
     private void makeCars(int carNumber) {
@@ -44,14 +43,26 @@ public class RacingGame {
     }
 
     private void startGame() {
-        for (int i=0; i<this.tryNumber; i++) {
-            playOneTry();
+        for (int i = 0; i<this.roundNumber; i++) {
+            playOneRound();
+            printResult(i);
         }
     }
 
-    private void playOneTry() {
+    private void playOneRound() {
         for (RacingCar car : this.cars) {
             car.moveOrStop(RacingCar.getRandomValue());
         }
+    }
+
+    private void printResult(int round) {
+        if (round == 1) {
+            System.out.println("실행 결과");
+        }
+
+        for (RacingCar car : cars) {
+            car.printLocationOfCar();
+        }
+        System.out.println();
     }
 }

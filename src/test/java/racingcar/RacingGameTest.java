@@ -26,11 +26,11 @@ public class RacingGameTest {
         RacingCar car = new RacingCar();
         car.moveOrStop(1);
         assertThat(car.getLocation())
-                .isEqualTo(0);
+                .isEqualTo(1);
 
         car.moveOrStop(4);
         assertThat(car.getLocation())
-                .isEqualTo(1);
+                .isEqualTo(2);
     }
 
 }
