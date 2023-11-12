@@ -1,17 +1,15 @@
 package racing.model;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racing.view.ResultView;
 
 public class Cars {
-    static List<RacingCar> cars;
+    private final List<RacingCar> cars;
 
     public Cars(List<RacingCar> cars) {
-        this.cars = cars;
-    }
-    public List<RacingCar> cars(){
-        return cars;
+        this.cars = Collections.unmodifiableList(cars);
     }
     public void raceAllCars() {
         for (RacingCar car : cars) {
