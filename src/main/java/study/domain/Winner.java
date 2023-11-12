@@ -28,9 +28,14 @@ public class Winner {
     private int getWinnerPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
+            maxPosition = compareAndUpdateMaxPosition(maxPosition, car);
+        }
+        return maxPosition;
+    }
+
+    private static int compareAndUpdateMaxPosition(int maxPosition, Car car) {
+        if (car.getPosition() > maxPosition) {
+            maxPosition = car.getPosition();
         }
         return maxPosition;
     }

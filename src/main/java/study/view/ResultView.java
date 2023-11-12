@@ -16,34 +16,41 @@ public class ResultView {
 
     public static void printOneRacingResult(List<Car> raceList) {
         for (Car car : raceList) {
-            for (int i = 0; i < car.getPosition(); i++) {
-                System.out.print("-");
-            }
-            System.out.println("");
+            visualizeCarPosition(car);
         }
         System.out.println("");
     }
 
-    public static void printCarNameAndRacingResult(List<Car> raceList) {
+    public static void printCarNamesAndResults(List<Car> raceList) {
         for (Car car : raceList) {
             System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getPosition(); i++) {
-                System.out.print("-");
-            }
-            System.out.println("");
+            visualizeCarPosition(car);
         }
         System.out.println("");
     }
 
-    public static void printWinnerCar(List<Car> winnerList) {
-        Iterator<Car> winners = winnerList.iterator();
-        while (winners.hasNext()) {
-            Car winner = winners.next();
-            System.out.print(winner.getName());
-            if (winners.hasNext()) {
-                System.out.print(", ");
-            }
+    private static void visualizeCarPosition(Car car) {
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print("-");
         }
+        System.out.println("");
+    }
+
+    public static void printFinalWinnerNames(List<Car> winnerList) {
+        Iterator<Car> winners = winnerList.iterator();
+
+        while (winners.hasNext()) {
+            printWinnerName(winners);
+        }
+
         System.out.println(" 가 최종 우승했습니다.");
+    }
+
+    private static void printWinnerName(Iterator<Car> winners) {
+        System.out.print(winners.next().getName());
+
+        if (winners.hasNext()) {
+            System.out.print(", ");
+        }
     }
 }

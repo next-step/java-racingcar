@@ -19,7 +19,7 @@ public class RacingCar {
     public void startRacing() {
         carService.setCarListByName(nameOfCars);
         for (int i = 0; i < numberOfMoves; i++) {
-            ResultView.printCarNameAndRacingResult(carService.racingCar());
+            ResultView.printCarNamesAndResults(carService.racingCar());
         }
     }
 

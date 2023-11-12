@@ -20,6 +20,6 @@ public class RacingCarApplication {
         // business logic
         ResultView.beforeRacingPrintMessage();
         racingCar.startRacing();
-        ResultView.printWinnerCar(racingCar.findWinner());
+        ResultView.printFinalWinnerNames(racingCar.findWinner());
     }
 }
