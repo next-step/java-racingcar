@@ -10,7 +10,7 @@ public class RacingGame {
     public void play() {
         int[] inputValues = input();
         makeGame(inputValues);
-        int randomValue = getRandomValue();
+        startGame();
     }
 
     private static int[] input() {
@@ -43,8 +43,15 @@ public class RacingGame {
         }
     }
 
-    public static int getRandomValue() {
-        Random rand = new Random();
-        return rand.nextInt(10);
+    private void startGame() {
+        for (int i=0; i<this.tryNumber; i++) {
+            playOneTry();
+        }
+    }
+
+    private void playOneTry() {
+        for (RacingCar car : this.cars) {
+            car.moveOrStop(RacingCar.getRandomValue());
+        }
     }
 }

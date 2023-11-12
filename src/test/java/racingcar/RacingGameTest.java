@@ -15,10 +15,22 @@ public class RacingGameTest {
 
     @Test
     public void random_범위() {
-        int random = RacingGame.getRandomValue();
+        int random = RacingCar.getRandomValue();
         assertThat(random)
                 .isGreaterThanOrEqualTo(0)
                 .isLessThanOrEqualTo(9);
+    }
+
+    @Test
+    public void 전진_여부() {
+        RacingCar car = new RacingCar();
+        car.moveOrStop(1);
+        assertThat(car.getLocation())
+                .isEqualTo(0);
+
+        car.moveOrStop(4);
+        assertThat(car.getLocation())
+                .isEqualTo(1);
     }
 
 }
