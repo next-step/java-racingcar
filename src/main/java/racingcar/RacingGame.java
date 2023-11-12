@@ -7,21 +7,9 @@ public class RacingGame {
     private RacingCar[] cars;
 
     public void play() {
-        int[] inputValues = input();
+        int[] inputValues = InputView.input();
         makeGame(inputValues);
         startGame();
-    }
-
-    private static int[] input() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carNumber = scanner.nextInt();
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int tryNumber = scanner.nextInt();
-
-        return new int[] {carNumber, tryNumber};
     }
 
     private void makeGame(int[] inputValues) {
