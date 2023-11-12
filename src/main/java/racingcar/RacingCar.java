@@ -6,6 +6,11 @@ public class RacingCar {
 
     private static Random rand = new Random();
     private int location = 1;
+    private String name;
+
+    public RacingCar(String name) {
+        this.name = name;
+    }
 
 
     public static int getRandomValue() {

@@ -10,19 +10,21 @@ public class RacingGame {
     public void play() {
         InputView inputView = new InputView();
         inputView.input();
-        makeGame(inputView.getCarNumber(), inputView.getRoundNumber());
+        makeGame(inputView.getCarNameList(), inputView.getRoundNumber());
         startGame();
     }
 
-    private void makeGame(int carNumber, int roundNumber) {
-        this.makeCars(carNumber);
+    private void makeGame(String[] carNameList, int roundNumber) {
+        this.makeCars(carNameList);
         this.roundNumber = roundNumber;
     }
 
-    private void makeCars(int carNumber) {
+    private void makeCars(String[] carNameList) {
+        int carNumber = carNameList.length;
         this.cars = new RacingCar[carNumber];
         for (int i=0; i<carNumber; i++) {
-            this.cars[i] = new RacingCar();
+            RacingCar newCar = new RacingCar(carNameList[i]);
+            this.cars[i] = newCar;
         }
     }
 
