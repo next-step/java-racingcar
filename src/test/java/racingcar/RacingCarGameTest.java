@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import racingcar.common.utils.TextManipulator;
 import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.model.Position;
 import racingcar.model.Positions;
 import racingcar.model.RacingCarGame;
-import racingcar.model.Winners;
 
 @TestMethodOrder(OrderAnnotation.class)
 class RacingCarGameTest {
@@ -26,7 +26,7 @@ class RacingCarGameTest {
                 int round = 5;
                 String[] carNames = TextManipulator.splitTextByComma(carNamesInOneText);
                 RacingCarGame game = new RacingCarGame(round, carNames);
-                assertThat(game.cars()).hasSize(carNames.length);
+                assertThat(game.cars().getCars()).hasSize(carNames.length);
         }
 
         @Test
@@ -75,7 +75,7 @@ class RacingCarGameTest {
                 position2.addOnePosition();
                 position2.addOnePosition();
                 Positions positions = new Positions(List.of(position1, position2, position3, position4));
-                assertThat(positions.getMaxPosition()).isEqualTo(3);
+                assertThat(positions.getMaxPosition().getNumber()).isEqualTo(3);
         }
 
         @Test
@@ -87,8 +87,8 @@ class RacingCarGameTest {
                 Car car4 = new Car("car4");
                 car1.currentPosition().addOnePosition();
                 car2.currentPosition().addOnePosition();
-                List<Car> cars = List.of(car1, car2, car3, car4);
                 List<Car> winners = List.of(car1, car2);
-                assertThat(Winners.findWinners(cars).containsAll(winners)).isTrue();
+                Cars cars = new Cars(List.of(car1, car2, car3, car4));
+                assertThat(cars.findWinners().containsAll(winners)).isTrue();
         }
 }
