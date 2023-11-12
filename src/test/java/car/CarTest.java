@@ -62,4 +62,21 @@ public class CarTest {
         });
     }
 
+    @DisplayName("max와 같은지 비교")
+    @ParameterizedTest
+    @ValueSource(ints = {6})
+    void 자동차_위치_최대값_같은지(int number) {
+        Car car = new Car("test", 6);
+
+        assertThat(car.isSameMax(number)).isTrue();
+    }
+    
+    @DisplayName("max와 크기 비교")
+    @ParameterizedTest
+    @ValueSource(ints = {6})
+    void max와_크기_비교(int number) {
+        Car car = new Car("test", 4);
+
+        assertThat(car.compareMaxPosition(number)).isEqualTo(6);
+    }
 }
