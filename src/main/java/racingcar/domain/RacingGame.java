@@ -1,30 +1,37 @@
 package racingcar.domain;
 
+import racingcar.strategy.MoveStrategy;
+
 public class RacingGame {
+
     private int tryCount;
 
     private Cars cars;
 
-    public RacingGame(int carCount, int tryCount) {
+    public RacingGame(Cars cars, int tryCount) {
         this.tryCount = tryCount;
-        this.cars = initRacing(carCount);
+        this.cars = cars;
     }
 
-    public Cars initRacing(int carCount) {
-        cars = new Cars();
-        for (int i = 0; i < carCount; i++) {
-            cars.addCar(new Car());
-        }
-        return cars;
-    }
 
     public boolean isEndGame() {
         return tryCount > 0 ? false : true;
     }
 
-    public Cars start() {
+//    public Cars start(MoveStrategy moveStrategy) {
+//        tryCount--;
+//        cars.carList().forEach(car -> car.moveForward(moveStrategy.randomNumber()));
+//        return cars;
+//    }
+
+    public Cars start(MoveStrategy moveStrategy) {
         tryCount--;
-        cars.moveCars();
+        cars.moveCars(moveStrategy);
+//        cars.carList().forEach(car -> car.moveForward(moveStrategy));
+        return cars;
+    }
+
+    public Cars cars() {
         return cars;
     }
 }

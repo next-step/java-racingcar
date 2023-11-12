@@ -1,27 +1,40 @@
 package racingcar.domain;
 
+import racingcar.strategy.MoveStrategy;
+import racingcar.ui.RacingInputView;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int RANDOM_MAX_BOUND = 10;
-    private List<Car> cars;
 
-    public Cars() {
-        cars = new ArrayList<>();
-    }
+    private static final String DELIMITER = ",";
+    private final List<Car> cars;
 
-    public void addCar(Car car) {
-        cars.add(car);
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> carList() {
         return cars;
     }
 
-    public void moveCars() {
-        cars.forEach(car -> car.moveForward(new Random().nextInt(RANDOM_MAX_BOUND)));
+    public List<String> maxPositionCars() {
+        return cars.stream()
+                .filter(car -> car.matchPosition(maxPosition()))
+                .map(car -> car.carName())
+                .collect(Collectors.toList());
     }
 
+    private int maxPosition() {
+        return cars.stream()
+                .mapToInt(Car::forwardCnt)
+                .max()
+                .getAsInt();
+    }
+
+    public void moveCars(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.moveForward(moveStrategy));
+    }
 }
