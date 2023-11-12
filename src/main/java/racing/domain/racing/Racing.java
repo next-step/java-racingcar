@@ -11,7 +11,6 @@ public class Racing {
 
     private static final Random random = new Random();
     private static final int RANDOM_SEED_NUMBER = 10;
-    private static final int INIT_POSITION = 0;
 
     private final ParticipatingCars participatingCars;
     private final int attemptCount;

@@ -5,8 +5,10 @@ import java.util.Objects;
 
 public class Car {
 
-    private final Name name;
     private final static int THRESHOLD = 4;
+
+    private final Name name;
+
     private Position position;
 
     public Car(String name) {
