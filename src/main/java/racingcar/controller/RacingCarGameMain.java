@@ -4,7 +4,6 @@ import static racingcar.view.InputView.scanAndGetValues;
 
 import racingcar.common.utils.TextManipulator;
 import racingcar.model.RacingCarGame;
-import racingcar.model.Winners;
 import racingcar.view.ResultView;
 import racingcar.view.dto.RacingGameInput;
 
@@ -19,11 +18,11 @@ public class RacingCarGameMain {
                 RacingCarGame game = new RacingCarGame(round, carNames);
                 while (game.isOngoing()) {
                         game.moveOneRound();
-                        ResultView.printPositionForAllCarsInCurrentRound(game.cars());
+                        ResultView.printPositionForAllCarsInCurrentRound(game.cars().getCars());
                 }
 
                 ResultView.printResultViewTitle();
-                ResultView.printPositionForAllCarsInCurrentRound(game.cars());
-                ResultView.printWinner(Winners.findWinners(game.cars()));
+                ResultView.printPositionForAllCarsInCurrentRound(game.cars().getCars());
+                ResultView.printWinner(game.cars().findWinners());
         }
 }

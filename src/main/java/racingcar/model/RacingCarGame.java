@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -10,7 +9,7 @@ public class RacingCarGame {
         private static final Random random = new Random();
         private static final int RANDOM_BOUND = 10;
         private final String[] carNames;
-        private final List<Car> cars;
+        private final Cars cars;
         private int round;
 
         public RacingCarGame(int round, String[] carNames) {
@@ -24,20 +23,18 @@ public class RacingCarGame {
         }
 
         public void moveOneRound() {
-                cars.forEach(car -> {
-                        car.movedForwardIfCan(randomNumber());
-                });
+                cars.moveOneRound(randomNumber());
         }
 
         private int randomNumber() {
                 return random.nextInt(RANDOM_BOUND);
         }
 
-        private List<Car> joinCars() {
-                return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+        private Cars joinCars() {
+                return new Cars(Arrays.stream(carNames).map(Car::new).collect(Collectors.toList()));
         }
 
-        public List<Car> cars() {
+        public Cars cars() {
                 return this.cars;
         }
 
