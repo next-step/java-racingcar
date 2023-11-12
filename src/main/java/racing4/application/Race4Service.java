@@ -35,7 +35,7 @@ public class Race4Service {
         ResultView.displayGameResult(this.race4Cars);
     }
 
-    private List<String> getWinnerNames() {
+    public List<String> getWinnerNames() {
         return race4Cars.stream()
                         .filter(race4Car -> race4Car.isMaxPosition(getMaxPosition()))
                         .map(Race4Car::getName)

@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class ResultView {
-    private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
-
     public static void displayGameResult(List<Race4Car> cars) {
         cars.forEach(ResultView::displayGameResult);
         System.out.println();
@@ -22,6 +20,7 @@ public class ResultView {
 
     public static void printWinner(List<String> winners) {
         String formattedWinners = String.join(",", winners);
-        System.out.println(String.format(WINNER_MESSAGE, formattedWinners));
+        System.out.println(String.format("%s가 최종 우승했습니다.",
+                                         formattedWinners));
     }
 }
