@@ -2,6 +2,7 @@ package step3;
 
 import step3.domain.RacingCar;
 import step3.domain.RacingGame;
+import step3.domain.Winners;
 import step3.domain.RandomNumberGenerator;
 import step3.view.InputView;
 import step3.view.ResultView;
@@ -23,6 +24,9 @@ public class Main {
             RacingCar[] racingCar = racingGame.runRound();
             ResultView.printRacingCarsStatus(racingCar);
         }
+
+        RacingCar[] status = racingGame.getRacingCarsStatus();
+        ResultView.printWinners(Winners.getWinnerNames(status));
     }
 
 }
