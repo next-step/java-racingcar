@@ -29,8 +29,8 @@ public class Racing {
         }
     }
 
-    public History getHistory() {
-        return history;
+    public List<String> racingHistory() {
+        return history.getScores();
     }
 
     public List<String> winners() {
