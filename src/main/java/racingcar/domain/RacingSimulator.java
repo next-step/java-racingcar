@@ -1,27 +1,22 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static racingcar.Dice.roll;
-import static racingcar.ResultView.*;
-import static racingcar.WinnerFinder.findWinner;
 
 public class RacingSimulator {
 
-    private RacingSimulator() {
+    private int tryCount;
+    private List<RacingCar> racingCars;
+
+    public RacingSimulator(List<String> carNames, int tryCount) {
+        this.tryCount = tryCount;
+        this.racingCars = initRacingCars(carNames);
     }
 
-    public static void simulate(List<String> carNames, int tryCount) {
-        List<RacingCar> racingCars = initRacingCars(carNames);
-        printResult();
-
-        for (int i = 0; i < tryCount; i++) {
-            eachCarAction(racingCars);
-            printCarsPosition(racingCars);
-        }
-
-        printWinner(findWinner(racingCars));
+    public void simulate() {
+        eachCarAction(racingCars);
     }
 
     private static void eachCarAction(List<RacingCar> racingCars) {
@@ -34,6 +29,14 @@ public class RacingSimulator {
         for (int i = 0; i < carNames.size(); i++) {
             racingCars.add(new RacingCar(carNames.get(i)));
         }
+        return racingCars;
+    }
+
+    public boolean isEnd() {
+        return --tryCount < 0;
+    }
+
+    public List<RacingCar> getRacingCars() {
         return racingCars;
     }
 }
