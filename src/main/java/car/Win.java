@@ -24,7 +24,7 @@ public class Win {
     }
 
     private void addWinner(Car car, int max, List<String> winners) {
-        if (max == car.currentPosition()) {
+        if (car.isSameMax(max)) {
             winners.add(car.carName());
         }
     }
@@ -33,7 +33,7 @@ public class Win {
         int max = 0;
 
         for (Car car : allCarList()) {
-            max = max <= car.currentPosition() ? car.currentPosition() : 0;
+            max = car.compareMaxPosition(max);
         }
         return max;
     }
