@@ -8,29 +8,21 @@ public class RacingGame {
     private int round=1;
 
     public void play() {
-        int[] inputValues = InputView.input();
-        makeGame(inputValues);
+        InputView inputView = new InputView();
+        inputView.input();
+        makeGame(inputView.getCarNumber(), inputView.getRoundNumber());
         startGame();
     }
 
-    private void makeGame(int[] inputValues) {
-        validateInput(inputValues);
-        this.makeCars(inputValues[0]);
-        this.roundNumber = inputValues[1];
+    private void makeGame(int carNumber, int roundNumber) {
+        this.makeCars(carNumber);
+        this.roundNumber = roundNumber;
     }
 
     private void makeCars(int carNumber) {
         this.cars = new RacingCar[carNumber];
         for (int i=0; i<carNumber; i++) {
             this.cars[i] = new RacingCar();
-        }
-    }
-
-    public static void validateInput(int[] input) {
-        for (int i : input) {
-            if (i < 0) {
-                throw new RuntimeException("Negative numbers are not allowed.");
-            }
         }
     }
 

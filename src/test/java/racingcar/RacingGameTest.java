@@ -9,7 +9,8 @@ public class RacingGameTest {
 
     @Test
     public void validate_음수_입력값() {
-        assertThatThrownBy(() -> RacingGame.validateInput(new int[] {-1, 3}))
+        InputView inputView = new InputView();
+        assertThatThrownBy(() -> inputView.validateInput(new int[] {-1, 3}))
                 .isInstanceOf(RuntimeException.class);
     }
 
