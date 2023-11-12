@@ -1,29 +1,27 @@
 package game.race;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.List;
-
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import game.race.model.InputView;
-import game.race.support.CarRacingManager;
+import game.race.support.move.impl.RandomPolicy;
+import game.race.view.InputView;
 
 class CarRaceTest {
 
-    Car car;
-    InputView inputView;
-    CarRacingManager manager;
+    static Car car;
+    static InputView inputView;
 
-    @BeforeEach
-    void init() {
+    @BeforeAll
+    static void init() {
+        car = new Car("TEST");
         inputView = new InputView();
-        car = new Car();
-        manager = new CarRacingManager();
     }
 
     @ParameterizedTest
@@ -39,26 +37,22 @@ class CarRaceTest {
         assertThatThrownBy(() -> inputView.checkInput("0")).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest
-    @CsvSource({"3", "4","5"})
-    void 자동차_수와_맞게_각_자동차_이동_결과를_반환_하는_테스트(int cars) {
-        List<Car> carList = Car.getCars(cars);
-        for (Car car : carList) {
-            System.out.println("move count: " + car.getMoveCount());
-        }
-    }
 
     @ParameterizedTest
-    @CsvSource({
-            "3, 5",
-            "2, 4",
-            "3, 3"
-    })
-    void 자동차_수와_시도_횟수에_맞게_타이어_자국_수를_확인_하는_테스트(int cars, int tryCnt) {
-        InputView inputView = new InputView();
-        inputView.setVehicleCnt(cars);
-        inputView.setTryCnt(tryCnt);
+    @CsvSource({"5, 1", "6, 2", "7, 3", "1, 3", "9, 4", "0, 4"})
+    void 자동차_움직임_확인_하는_테스트(int randomNumber, int moveCount) {
+        // given
+        RandomPolicy randomPolicy = new RandomPolicy() {
+            @Override
+            public int getPolicyNumber() {
+                return randomNumber;
+            }
+        };
 
-        CarRacingManager.start(inputView);
+        // when
+        car.move(randomPolicy);
+
+        // then
+        assertThat(car.getMoveCount()).isEqualTo(moveCount);
     }
 }
