@@ -9,7 +9,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingTest {
-    private RacingCars racingCars = new RacingCars();
     private Racing racing = new Racing();
 
     @Test

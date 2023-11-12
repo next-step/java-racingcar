@@ -1,13 +1,12 @@
 package study.carracing.domain;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
 
     private final RacingCars racingCars;
 
-    private History history;
+    private final History history;
 
     public Racing() {
         racingCars = new RacingCars();

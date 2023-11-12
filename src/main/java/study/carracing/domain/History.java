@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class History {
-    private List<String> scores;
+    private final List<String> scores;
 
     public History() {
         this.scores = new ArrayList<>();
