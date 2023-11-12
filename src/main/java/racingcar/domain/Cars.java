@@ -54,8 +54,8 @@ public class Cars {
 
     public List<String> findWinners() {
         List<String> winners = new ArrayList<>();
-        cars.sort(Comparator.comparingInt(Car::getMoveCount).reversed());
-        int winnerMoveCount = cars.get(0).getMoveCount();
+        cars.sort(Car::compareTo);
+        int winnerMoveCount = cars.get(cars.size() - 1).getMoveCount();
         decisionWinner(winners, winnerMoveCount);
         return winners;
     }
