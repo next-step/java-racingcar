@@ -18,15 +18,22 @@ class RacingGameTest {
     @Test
     void runRoundWhenCarMovingTest() {
         RacingGame racingGame = new RacingGame(racingCars, new MovableNumberGenerator());
-        RacingCar[] racingCars = racingGame.runRound();
-        assertThat(racingCars[0].getDistance()).isEqualTo(1);
+        runTwoRound(racingGame);
+        RacingCar[] racingCars = racingGame.getRacingCarsStatus();
+        assertThat(racingCars[0].getDistance()).isEqualTo(2);
     }
 
     @Test
     void runRoundWhenCarNotMovingTest() {
         RacingGame racingGame = new RacingGame(racingCars, new NonMovableNumberGenerator());
-        RacingCar[] racingCars = racingGame.runRound();
+        runTwoRound(racingGame);
+        RacingCar[] racingCars = racingGame.getRacingCarsStatus();
         assertThat(racingCars[0].getDistance()).isEqualTo(0);
+    }
+
+    private static void runTwoRound(RacingGame racingGame) {
+        racingGame.runRound();
+        racingGame.runRound();
     }
 
     private class MovableNumberGenerator implements NumberGenerator {
