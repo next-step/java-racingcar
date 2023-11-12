@@ -1,4 +1,6 @@
-package study.car;
+package study.repository;
+
+import study.domain.Car;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,20 +8,15 @@ import java.util.List;
 import java.util.Map;
 
 public class MemoryCarRepository implements CarRepository {
-    private static Map<Long, Car> store = new HashMap<>();
-    private static long SEQUENCE = 0L;
+    private final Map<String, Car> store = new HashMap<>();
 
     @Override
-    public long save(Car car) {
-        car.setId(++SEQUENCE);
-        car.setStatus("");
-        store.put(car.getId(), car);
-        return car.getId();
+    public Car save(Car car) {
+        return store.put(car.getName(), car);
     }
 
-    @Override
-    public Car findCarById(Long id) {
-        return store.get(id);
+    public Car findCarByName(Car car) {
+        return store.get(car.getName());
     }
 
     @Override
@@ -27,6 +24,7 @@ public class MemoryCarRepository implements CarRepository {
         return new ArrayList<>(store.values());
     }
 
+    @Override
     public void clearStore() {
         store.clear();
     }

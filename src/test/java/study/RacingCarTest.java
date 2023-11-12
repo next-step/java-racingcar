@@ -1,15 +1,12 @@
 package study;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.car.CarServiceImpl;
-import study.car.MemoryCarRepository;
-import study.racing.RacingCarPolicy;
+import study.policy.RacingCarPolicy;
 import study.utils.RandomUtils;
+import study.utils.StringUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -18,20 +15,6 @@ import java.util.Scanner;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingCarTest {
-
-    MemoryCarRepository memoryCarRepository;
-    CarServiceImpl carService;
-
-    @BeforeEach
-    public void beforeEach() {
-        memoryCarRepository = new MemoryCarRepository();
-        carService = new CarServiceImpl(memoryCarRepository);
-    }
-
-    @AfterEach
-    public void afterEach() {
-        memoryCarRepository.clearStore();
-    }
 
     @ParameterizedTest
     @ValueSource(strings = "1")
@@ -48,14 +31,14 @@ public class RacingCarTest {
     @Test
     @DisplayName("0-9 사이의 랜덤 숫자를 생성한다.")
     void getRandom0To9NumberTest() {
-        int randomNumber = RandomUtils.getRandomNumberZeroToNine();
+        int randomNumber = RandomUtils.getRandomNumber();
         assertThat(randomNumber).isBetween(0, 9);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"0", "1", "2", "3"})
     @DisplayName("0-3의 숫자인 경우 false를 반환한다.")
-    void stopCarTest(int input) {
+    void stopBooleanTest(int input) {
         boolean result = RacingCarPolicy.canMovingCar(input);
         assertThat(result).isFalse();
     }
@@ -63,19 +46,8 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = {"4", "5", "6", "7", "8", "9"})
     @DisplayName("4-9의 숫자인 경우 true를 반환한다.")
-    void goCarTest(int input) {
+    void movingBooleanTest(int input) {
         boolean result = RacingCarPolicy.canMovingCar(input);
         assertThat(result).isTrue();
     }
-
-    @Test
-    void setRacingCarTest() {
-        //given
-        RacingCar racingCar = new RacingCar(3, 3, memoryCarRepository);
-
-        //when
-        racingCar.startRacing();
-
-    }
-
 }

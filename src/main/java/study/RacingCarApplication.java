@@ -1,16 +1,25 @@
 package study;
 
-import study.car.MemoryCarRepository;
+import study.domain.RacingCar;
+import study.repository.CarRepository;
+import study.repository.MemoryCarRepository;
 import study.view.InputView;
+import study.view.ResultView;
+
+import static study.utils.StringUtils.splitStringAndValidateNames;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        MemoryCarRepository memoryCarRepository = new MemoryCarRepository();
+        CarRepository memoryCarRepository = new MemoryCarRepository();
 
-        int setNumberOfCars = InputView.setNumberOfCars();
+        String setNameOfCars = InputView.setNameOfCars();
+        String[] carNames = splitStringAndValidateNames(setNameOfCars);
         int setNumberOfMoves = InputView.setNumberOfMoves();
+        RacingCar racingCar = new RacingCar(carNames, setNumberOfMoves, memoryCarRepository);
 
-        RacingCar racingCar = new RacingCar(setNumberOfCars, setNumberOfMoves, memoryCarRepository);
+        // business logic
+        ResultView.beforeRacingPrintMessage();
         racingCar.startRacing();
+        ResultView.printFinalWinnerNames(racingCar.findWinner());
     }
 }

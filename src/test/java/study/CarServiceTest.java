@@ -4,23 +4,23 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.car.Car;
-import study.car.CarServiceImpl;
-import study.car.MemoryCarRepository;
-
-import java.util.List;
+import study.domain.Car;
+import study.domain.CarService;
+import study.repository.CarRepository;
+import study.repository.MemoryCarRepository;
+import study.utils.RandomUtils;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarServiceTest {
 
-    MemoryCarRepository memoryCarRepository;
-    CarServiceImpl carService;
+    CarService carService;
+    CarRepository memoryCarRepository;
 
     @BeforeEach
     public void beforeEach() {
         memoryCarRepository = new MemoryCarRepository();
-        carService = new CarServiceImpl(memoryCarRepository);
+        carService = new CarService(memoryCarRepository);
     }
 
     @AfterEach
@@ -32,47 +32,36 @@ public class CarServiceTest {
     @DisplayName("Car 객체를 생성해 repository에 저장한다.")
     void setCarTest() {
         //given
-        Car car = new Car();
+        Car car = new Car("a", 1);
 
         //when
-        long id = carService.join(car);
+        carService.join(car);
+        Car savedCar = carService.findOneCar(car);
 
         //then
-        Car carById = carService.findOneCar(id);
+        assertThat(savedCar).isEqualTo(car);
     }
 
     @Test
-    @DisplayName("저장되어있는 모든 Car 객체를 조회한다.")
-    void findAllCarTest() {
-        //given
-        Car car1 = new Car();
-        Car car2 = new Car();
-
-        carService.join(car1);
-        carService.join(car2);
-
-        //when
-        List<Car> allCars = carService.findAllCars();
-
-        //then
-        for (Car car : allCars) {
-            System.out.println("car id = " + car.getId() + " status = " + car.getStatus());
-        }
-    }
-
-
-    @Test
-    @DisplayName("차를 움직이는 경우 하이픈이 추가된다.")
+    @DisplayName("차를 움직이는 경우 position이 증가된다.")
     void movingCarTest() {
         //given
-        Car car = new Car();
+        Car car = new Car("A", 3);
         carService.join(car);
-
+        Car oneCar = carService.findOneCar(car);
         //when
-        carService.movingCar(car);
-        carService.movingCar(car);
+        oneCar.moving(4);
+        oneCar.moving(3);
+        oneCar.moving(5);
 
         //then
-        assertThat(car.getStatus()).isEqualTo("--");
+        assertThat(oneCar.getPosition()).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("position이 같으면 true를 출력한다. ")
+    void matchPositionTest() {
+        Car car = new Car("a", 3);
+        assertThat(car.matchPosition(3)).isTrue();
     }
 }
