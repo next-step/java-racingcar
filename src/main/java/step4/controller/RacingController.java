@@ -1,17 +1,15 @@
 package step4.controller;
 
 import step4.model.Races;
+import step4.model.RandomMoveStrategy;
 import step4.view.RaceWinnerInputView;
 import step4.view.RaceWinnerOutputView;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class RacingController {
-
-    private static final int MAX_RANDOM_VALUE = 10;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -20,7 +18,7 @@ public class RacingController {
 
         Races races = new Races(carNames);
         IntStream.range(0, times).forEach(t -> {
-            races.start(new Random().nextInt(MAX_RANDOM_VALUE));
+            races.start(new RandomMoveStrategy().isMovable());
             new RaceWinnerOutputView(races.getCars()).progressInGame();
         });
 
