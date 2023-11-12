@@ -7,10 +7,6 @@ public class Car {
     private int position;
     private final String name;
 
-    public Car() {
-        this("", 0);
-    }
-
     public Car(String name) {
         this(name, 0);
     }
@@ -34,6 +30,14 @@ public class Car {
 
     public int currentPosition() {
         return this.position;
+    }
+
+    public boolean isSameMax(int max) {
+        return this.position == max;
+    }
+
+    public int compareMaxPosition(int max) {
+        return Math.max(this.position, max);
     }
 
     private void validateCarNameLength(String name) {
