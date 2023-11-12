@@ -3,6 +3,7 @@ package study.carracing.controller;
 import study.carracing.domain.Racing;
 import study.carracing.ui.InputView;
 import study.carracing.ui.ResultView;
+import study.carracing.util.RandomMoveStrategy;
 import study.carracing.util.Validator;
 
 public class RacingController {
@@ -23,7 +24,7 @@ public class RacingController {
         Validator.validateNumber(tryCount);
 
         resultView.outputTitle();
-        Racing racing = new Racing();
+        Racing racing = new Racing(new RandomMoveStrategy());
         racing.start(carsName.split(NAMES_DELIMITER), tryCount);
         resultView.outputResult(racing.racingHistory());
         resultView.outputResultAndComment(racing.winners());

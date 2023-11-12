@@ -1,6 +1,6 @@
 package study.carracing.domain;
 
-import study.carracing.util.RandomMoveStrategy;
+import study.carracing.util.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ public class RacingCars {
         return cars;
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(new RandomMoveStrategy());
+            car.move(moveStrategy);
         }
     }
 }

@@ -1,16 +1,19 @@
 package study.carracing.domain;
 
+import study.carracing.util.MoveStrategy;
+
 import java.util.List;
 
 public class Racing {
 
+    private final MoveStrategy moveStrategy;
     private final RacingCars racingCars;
-
     private final History history;
 
-    public Racing() {
-        racingCars = new RacingCars();
-        history = new History();
+    public Racing(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+        this.racingCars = new RacingCars();
+        this.history = new History();
     }
 
     public void start(String[] carsName, int tryCount) {
@@ -24,7 +27,7 @@ public class Racing {
 
     private void move(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
-            racingCars.move();
+            racingCars.move(moveStrategy);
             history.addScores(racingCars);
         }
     }
