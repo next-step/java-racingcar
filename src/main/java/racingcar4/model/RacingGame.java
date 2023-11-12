@@ -25,7 +25,7 @@ public class RacingGame {
     //한턴 진행
     public void oneTurn() {
         for (Car car:cars) {
-            car.carTurn();
+            car.carTurn(RandomNumber.getNumber());
         }
     }
 
@@ -55,11 +55,9 @@ public class RacingGame {
         return names;
     }
 
-    private List<String> victoryCars(int maxPosition, Car car, List<String> names) {
+    private void victoryCars(int maxPosition, Car car, List<String> names) {
         if (car.victoryCar(maxPosition)) {
             names.add(car.getName());
-            return names;
         }
-        return names;
     }
 }

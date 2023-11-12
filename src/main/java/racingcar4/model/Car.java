@@ -14,11 +14,6 @@ public class Car {
         this.name = name;
     }
 
-    //랜덤숫자 생성
-    private int randomValue() {
-        return new RandomNumber().getNumber();
-    }
-
     private boolean canMove(int number) {
         return number >= ADVANCE_MINIMUM_VALUE;
     }
@@ -29,9 +24,8 @@ public class Car {
         }
     }
 
-    public void carTurn() {
-        int randomNumber = randomValue();
-        boolean canMove = canMove(randomNumber);
+    public void carTurn(int number) {
+        boolean canMove = canMove(number);
         forwardOneStep(canMove);
     }
 

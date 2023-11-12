@@ -23,4 +23,19 @@ public class RacingCar4CarTest {
         assertThat(car.getName()).isEqualTo("shy");
     }
 
+    @DisplayName("자동차 턴 진행시 4이상이면 이동한다.")
+    @Test
+    void moveCar() {
+        Car car = new Car("shy");
+        car.carTurn(4);
+        assertThat(car.victoryCar(1)).isTrue();
+    }
+
+    @DisplayName("자동차 턴 진행시 4미만이면 이동하지않는다.")
+    @Test
+    void stopCar() {
+        Car car = new Car("shy");
+        car.carTurn(3);
+        assertThat(car.victoryCar(1)).isFalse();
+    }
 }
