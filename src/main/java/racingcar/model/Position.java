@@ -1,6 +1,6 @@
 package racingcar.model;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
         private static final int START_INIT_VALUE = 1;
         private int number;
@@ -9,8 +9,8 @@ public class Position {
                 this.number = START_INIT_VALUE;
         }
 
-        public boolean isSamePosition(int number) {
-                return this.number == number;
+        public boolean isSamePosition(Position position) {
+                return compareTo(position) == 0;
         }
 
         public void addOnePosition() {
@@ -19,5 +19,10 @@ public class Position {
 
         public int getNumber() {
                 return this.number;
+        }
+
+        @Override
+        public int compareTo(Position o) {
+                return this.number - o.getNumber();
         }
 }

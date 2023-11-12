@@ -1,6 +1,8 @@
 package racingcar.model;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Positions {
 
@@ -10,7 +12,8 @@ public class Positions {
                 this.positions = positions;
         }
 
-        public int getMaxPosition() {
-                return positions.stream().mapToInt(Position::getNumber).max().getAsInt();
+        public Position getMaxPosition() {
+                Comparator<Position> comparatorByPosition = Comparator.comparingInt(Position::getNumber);
+                return positions.stream().max(comparatorByPosition).orElseThrow(NoSuchElementException::new);
         }
 }
