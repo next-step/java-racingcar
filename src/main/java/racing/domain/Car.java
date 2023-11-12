@@ -12,8 +12,12 @@ public class Car {
         this.carName = new CarName(carName);
     }
 
-    public int getPosition() {
-        return this.position.getValue();
+    public Position getPosition() {
+        return this.position;
+    }
+
+    public boolean isFartherOrEqual(int maxPosition) {
+        return this.position.getValue() >= maxPosition;
     }
 
     public String getCarName() {

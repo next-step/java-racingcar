@@ -6,8 +6,6 @@ import racing.domain.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.Random;
-
 public class RacingGameApplication {
 
     public static void main(String[] args) {
@@ -15,7 +13,7 @@ public class RacingGameApplication {
         String[] userNames = StringSpliter.getSplittedString(userNameAnswer);
         int gameCount = InputView.getGameCountQuestion();
 
-        RacingGame racingGame = new RacingGame(userNames, gameCount, new CarMoveStrategy(new Random()));
+        RacingGame racingGame = new RacingGame(userNames, gameCount, new CarMoveStrategy());
 
         while (racingGame.isProgress()) {
             racingGame.race();

@@ -40,13 +40,13 @@ public class RacingGame {
 
         List<Car> racingCars = getRacingCars();
         racingCars.stream()
-                .filter(o -> o.getPosition() == maxPosition)
+                .filter(o -> o.isFartherOrEqual(maxPosition))
                 .forEach(winCars::add);
         return winCars;
     }
 
     private void playGame(Car car) {
-        int result = carMoveStrategy.getResult();
+        int result = carMoveStrategy.getMoveSource();
         car.move(result);
     }
 
@@ -54,8 +54,8 @@ public class RacingGame {
         int maxPosition = 0;
         List<Car> racingCars = getRacingCars();
         for (Car racingCar : racingCars) {
-            if (racingCar.getPosition() >= maxPosition) {
-                maxPosition = racingCar.getPosition();
+            if (racingCar.isFartherOrEqual(maxPosition)) {
+                maxPosition = racingCar.getPosition().getValue();
             }
         }
         return maxPosition;

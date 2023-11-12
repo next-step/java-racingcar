@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +13,7 @@ class RacingGameTest {
     private final String[] userNames = StringSpliter.getSplittedString(userNameAnswer);
 
     // 무조건 전진하는 이동전략
-    private final TestMoveStrategy testMoveStrategy = new TestMoveStrategy(new Random());
+    private final TestMoveStrategy testMoveStrategy = new TestMoveStrategy();
 
 
     @DisplayName("횟수와 자동차 대수를 입력받아 레이싱 게임을 생성한다. 자동차는 게임을 수행하면 전진한다.")
@@ -30,7 +29,7 @@ class RacingGameTest {
         racingGame.race();
 
         assertThat(racingGame.getGameCount()).isEqualTo(1);
-        assertThat(racingGame.getRacingCars()).extracting("position").containsOnly(1);
+        assertThat(racingGame.getRacingCars()).extracting("position.value").containsOnly(1);
     }
 
     @DisplayName("생성된 레이싱 게임의 초기 자동차 이동거리는 0 이다.")
@@ -44,7 +43,7 @@ class RacingGameTest {
 
         // then
         assertThat(racingGame.getGameCount()).isEqualTo(1);
-        assertThat(racingGame.getRacingCars()).extracting("position")
+        assertThat(racingGame.getRacingCars()).extracting("position.value")
                 .containsOnly(0);
     }
 
@@ -65,7 +64,7 @@ class RacingGameTest {
     @Test
     void do_race_success() {
         // given
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random(), 3);
+        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(3);
         RacingGame racingGame = new RacingGame(userNames, 5, carMoveStrategy);
 
         // when
@@ -73,7 +72,7 @@ class RacingGameTest {
 
         // then
         assertThat(racingGame.getRacingCars()).hasSize(3)
-                .extracting(Car::getPosition)
+                .extracting("position.value")
                 .containsExactly(0, 0, 0);
     }
 
@@ -97,12 +96,12 @@ class RacingGameTest {
 
 
     static class TestMoveStrategy extends CarMoveStrategy {
-        public TestMoveStrategy(Random random) {
-            super(random);
+        public TestMoveStrategy() {
+            super();
         }
 
         @Override
-        public int getResult() {
+        public int getMoveSource() {
             return 5;
         }
     }

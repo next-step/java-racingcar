@@ -1,16 +1,16 @@
 package racing.domain;
 
 public class CarName {
-    private final int MAX_USER_NAME_LENGTH = 5;
-    private final String carName;
+    private static final int MAX_USER_NAME_LENGTH = 5;
+    private final String value;
 
     public CarName(String carName) {
         validateCarNameLength(carName);
-        this.carName = carName;
+        this.value = carName;
     }
 
     public String getCarName() {
-        return carName;
+        return value;
     }
 
     private void validateCarNameLength(String userName) {
