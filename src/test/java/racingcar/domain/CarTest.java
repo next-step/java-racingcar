@@ -15,6 +15,11 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("포지션 일치 하면 true 값을 리턴한다.")
+    void matchPosition() {
+        Assertions.assertThat(car.matchPosition(0)).isTrue();
+    }
+    @Test
     @DisplayName("자동차의 이름이 5자를 초과하면 예외가 발생한다.")
     void name() {
         // given
