@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCar {
@@ -7,6 +8,7 @@ public class RacingCar {
     public static void race() {
         int[] inputValues = input();
         validateInput(inputValues);
+        int randomValue = getRandomValue();
     }
 
     private static int[] input() {
@@ -27,5 +29,10 @@ public class RacingCar {
                 throw new RuntimeException("Negative numbers are not allowed.");
             }
         }
+    }
+
+    public static int getRandomValue() {
+        Random rand = new Random();
+        return rand.nextInt(10);
     }
 }
