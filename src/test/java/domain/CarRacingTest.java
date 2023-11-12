@@ -1,10 +1,6 @@
-package controller;
+package domain;
 
-import domain.Car;
-import domain.CarRacing;
 import org.junit.jupiter.api.Test;
-import view.InputView;
-import view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,17 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CarRacingTest {
 
-    InputView inputView = new InputView();
-    ResultView resultView = new ResultView();
-    CarRacing carRacing = new CarRacing(inputView, resultView);
-
-    @Test
-    void 자동차_경주는_input_view_result_view를_만들어진다() {
-        assertAll(() -> {
-            assertEquals(inputView, carRacing.inputView());
-            assertEquals(resultView, carRacing.resultView());
-        });
-    }
+    CarRacing carRacing = new CarRacing();
 
     @Test
     void 받은_이름의_수_만큼_자동차가_생긴다() {
