@@ -20,8 +20,7 @@ class RaceRecordsTest {
                 new RaceRecord(new CarName("carC"), new Position(2))
         );
         RaceRecords raceRecords = new RaceRecords(list);
-        List<CarName> winners = raceRecords.winners();
 
-        assertThat(winners).hasSize(2);
+        assertThat(raceRecords.winners()).containsExactly(new CarName("carB"), new CarName("carC"));
     }
 }

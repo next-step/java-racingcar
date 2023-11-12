@@ -9,12 +9,24 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars() {
-        this(new ArrayList<>());
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public Cars(List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
+    public static Cars ofCars(List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    public static Cars ofString(List<String> carNames) {
+
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : carNames) {
+            Car car = new Car(name);
+            cars.add(car);
+        }
+
+        return new Cars(cars);
     }
 
     public void add(Car car) {
@@ -41,5 +53,9 @@ public class Cars {
         return new RaceRecords(cars.stream()
                 .map(Car::record)
                 .collect(Collectors.toList()));
+    }
+
+    public Races races(Rule rule, int count) {
+        return Races.newInstance(this, rule, count);
     }
 }
