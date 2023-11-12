@@ -24,7 +24,7 @@ public class RacingCar {
             ResultView.output("");
         }
 
-        List<Car> winnerList = Winner.findWinner(cars);
+        List<Car> winnerList = cars.findWinner();
         ResultView.winnerOutput(winnerList);
     }
 

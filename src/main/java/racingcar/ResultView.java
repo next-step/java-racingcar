@@ -12,9 +12,9 @@ public class ResultView {
     }
 
     public static void resultOutput(Cars cars) {
-        List<Car> carList = cars.getCars();
+        List<Car> carList = cars.Cars();
         for (Car car : carList) {
-            System.out.println(car.name() + COLON + HYPHEN.repeat(car.distance()));
+            System.out.println(car.name() + COLON + HYPHEN.repeat(car.distance().distance()));
         }
     }
 
@@ -24,13 +24,13 @@ public class ResultView {
             result += car.name();
             result += COMMA;
         }
-        result = removeComma(result);
+        result = removeLastComma (result);
         result += "가 최종 우승했습니다";
 
         System.out.println(result);
     }
 
-    static String removeComma(String text) {
+    static String removeLastComma (String text) {
         if (text.endsWith(", ")) {
             return text.substring(0, text.length() - 2);
         }

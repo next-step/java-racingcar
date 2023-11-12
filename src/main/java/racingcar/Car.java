@@ -4,18 +4,12 @@ import java.util.Objects;
 
 public class Car {
     public static final int VALUE = 3;
-    private int distance;
-    private String name;
-
-    public Car() {}
+    private Distance distance;
+    private Name name;
 
     public Car(String name, int distance) {
-        name = name.trim();
-        if (name.length() > 5) {
-            throw new StringIndexOutOfBoundsException();
-        }
-        this.name = name;
-        this.distance = distance;
+        this.name = new Name(name);
+        this.distance = new Distance(distance);
     }
 
     public Car(String name) {
@@ -26,30 +20,18 @@ public class Car {
         this("", distance);
     }
 
-    protected void move(int randomNumber) {
-        if (randomNumber > VALUE) {
-            this.distance++;
+    void move(int distance) {
+        if (distance > VALUE) {
+            this.distance.plus();
         }
     }
 
-    int distance() {
+    Distance distance() {
         return this.distance;
     }
 
-    String name() {
+    Name name() {
         return this.name;
-    }
-
-    boolean matchDistance(int distance) {
-        return this.distance == distance;
-    }
-
-    int max(int maxDistance) {
-        if (this.distance > maxDistance) {
-            return this.distance;
-        }
-
-        return maxDistance;
     }
 
     @Override
@@ -57,7 +39,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return distance == car.distance && Objects.equals(name, car.name);
+        return Objects.equals(distance, car.distance) && Objects.equals(name, car.name);
     }
 
     @Override
@@ -69,7 +51,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "distance=" + distance +
-                ", name='" + name + '\'' +
+                ", name=" + name +
                 '}';
     }
 }

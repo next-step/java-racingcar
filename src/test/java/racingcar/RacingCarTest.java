@@ -17,14 +17,14 @@ public class RacingCarTest {
     @Test
     void 큰값() {
         Car car = new Car(5);
-        int actual = car.max(10);
+        int actual = car.distance().max(10);
         assertThat(actual).isEqualTo(10);
     }
 
     @Test
     void 같은값() {
         Car car = new Car(5);
-        boolean actual = car.matchDistance(5);
+        boolean actual = car.distance().matchDistance(5);
         assertThat(actual).isTrue();
     }
 
@@ -35,7 +35,7 @@ public class RacingCarTest {
         Car alice = new Car("alice", 3);
         List<Car> carList = Arrays.asList(son, john, alice);
         Cars cars = new Cars(carList);
-        List<Car> actual = Winner.findWinner(cars);
+        List<Car> actual = cars.findWinner();
 
         assertThat(actual).contains(john);
     }
