@@ -6,7 +6,7 @@ public class Car implements Comparable<Car> {
     private int moveCount = 0;
 
     public Car(String carName) {
-        name = new Name(carName);
+        this(carName, 0);
     }
 
     public Car(String carName, int moveCount) {
@@ -23,13 +23,8 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo(Car comparedCar) {
-        if (moveCount < comparedCar.getMoveCount()) {
-            return -1;
-        } else if (moveCount > comparedCar.getMoveCount()) {
-            return 1;
-        }
-        return 0;
+    public int compareTo(Car other) {
+        return moveCount - other.moveCount;
     }
 
     public Car stopOrMove(Strategy strategy) {

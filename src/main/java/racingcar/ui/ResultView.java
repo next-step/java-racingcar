@@ -15,7 +15,7 @@ public class ResultView {
             System.out.println("Turn " + currentTurn);
             displayAllCarStatus(movedCarsByTurn.get(currentTurn));
         }
-        checkWinners(response);
+        displayWinners(response);
     }
 
     private void displayAllCarStatus(List<Car> movedCars) {
@@ -28,15 +28,9 @@ public class ResultView {
         System.out.println(car.getName() + " : " + CAR_STATUS_EXPRESSION.repeat(car.getMoveCount()));
     }
 
-    private void checkWinners(RacingGameResponse response) {
-        if (response.getWinners() != null) {
-            displayWinners(response);
-        }
-    }
-
     private void displayWinners(RacingGameResponse response) {
         System.out.print("최종 우승: ");
-        for (String winner : response.getWinners()) {
+        for (String winner : response.getCars().findWinners()) {
             System.out.print(winner + " ");
         }
         System.out.println("");

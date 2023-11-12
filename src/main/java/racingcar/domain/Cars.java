@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Cars {
     }
 
     public final List<Car> getAllCar() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public final List<Car> moveAllCar() {
@@ -53,18 +54,23 @@ public class Cars {
     }
 
     public List<String> findWinners() {
-        List<String> winners = new ArrayList<>();
         cars.sort(Car::compareTo);
-        int winnerMoveCount = cars.get(cars.size()-1).getMoveCount();
-        decisionWinner(winners, winnerMoveCount);
+        int winnerMoveCount = cars.get(cars.size() - 1).getMoveCount();
+        List<String> winners = decisionWinner(winnerMoveCount);
         return winners;
     }
 
-    private void decisionWinner(List<String> winners, int winnerMoveCount) {
+    private List<String> decisionWinner(int winnerMoveCount) {
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getMoveCount() == winnerMoveCount) {
-                winners.add(car.getName());
-            }
+            insertWinner(winners, winnerMoveCount, car);
+        }
+        return winners;
+    }
+
+    private void insertWinner(List<String> winners, int winnerMoveCount, Car car) {
+        if (car.getMoveCount() == winnerMoveCount) {
+            winners.add(car.getName());
         }
     }
 }
