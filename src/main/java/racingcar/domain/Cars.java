@@ -7,6 +7,10 @@ import java.util.List;
 public class Cars {
     public List<Car> cars;
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
         initializeCars(carNames);
@@ -30,6 +34,14 @@ public class Cars {
         cars.add(car);
     }
 
+    public int getNumberOfCar() {
+        return cars.size();
+    }
+
+    public final List<Car> getAllCar() {
+        return cars;
+    }
+
     public final List<Car> moveAllCar() {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
@@ -38,10 +50,6 @@ public class Cars {
         }
         cars = newCars;
         return newCars;
-    }
-
-    public int getNumberOfCar() {
-        return cars.size();
     }
 
     public List<String> findWinners() {

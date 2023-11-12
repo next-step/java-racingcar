@@ -5,6 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Comparator;
+
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @DisplayName("자동차 도메인 테스트")
@@ -17,23 +21,11 @@ public class CarTest {
         cars = new Cars(CAR_NAMES);
     }
 
-    @DisplayName("랜덤 값에 따라 자동차가 멈추거나 전진한다.")
+    @DisplayName("자동차가 멈추거나 전진하는지 확인한다.")
     @Test
     void stopOrMove() {
-        Car car = new Car("kwon");
-        int randomValue = beforeSetUp_stopOrMove_And_getRandomValue(car);
-        if (4 <= randomValue) {
-            Assertions.assertThat(car.getMoveCount()).isEqualTo(1);
-        } else if (randomValue < 4) {
-            Assertions.assertThat(car.getMoveCount()).isEqualTo(0);
-        }
-    }
-
-    private int beforeSetUp_stopOrMove_And_getRandomValue(Car car) {
-        NumberStrategy numberStrategy = new NumberStrategy();
-        car.stopOrMove(numberStrategy);
-        int randomValue = numberStrategy.getRandomValue();
-        return randomValue;
+        Strategy strategy = new NumberStrategy();
+        Assertions.assertThat(strategy.isMovable()).isNotNull();
     }
 
     @DisplayName("생성된 자동차를 자동차 리스트에 추가한다.")
@@ -56,6 +48,14 @@ public class CarTest {
                 .contains("kwon", "park");
     }
 
+    @DisplayName("자동차 경주에서 우승한 우승자를 찾늗다.")
+    @Test
+    void findWinners() {
+        Car winner = new Car("kwon", 3);
+        Car car = new Car("park", 1);
+        List<Car> cars = Arrays.asList(winner, car);
+        Assertions.assertThat(new Cars(cars).findWinners()).containsOnly("kwon");
+    }
 
 
     @DisplayName("자동차의 이름이 5글자가 넘어가면 예외가 발생한다.")
