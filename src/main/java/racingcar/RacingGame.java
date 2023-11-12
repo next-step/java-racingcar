@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class RacingGame {
     private int roundNumber;
     private RacingCar[] cars;
+    private int round=1;
 
     public void play() {
         int[] inputValues = InputView.input();
@@ -36,7 +37,8 @@ public class RacingGame {
     private void startGame() {
         for (int i = 0; i<this.roundNumber; i++) {
             this.playOneRound();
-            this.printResult(i);
+            ResultView.printResult(this);
+            round += 1;
         }
     }
 
@@ -46,15 +48,14 @@ public class RacingGame {
         }
     }
 
-    private void printResult(int round) {
-        if (round == 0) {
-            System.out.println();
-            System.out.println("실행 결과");
+    public boolean checkFirstRound() {
+        if (this.round == 1) {
+            return true;
         }
+        return false;
+    }
 
-        for (RacingCar car : cars) {
-            car.printLocationOfCar();
-        }
-        System.out.println();
+    public RacingCar[] getCars() {
+        return this.cars;
     }
 }
