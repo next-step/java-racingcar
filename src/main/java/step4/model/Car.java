@@ -2,7 +2,6 @@ package step4.model;
 
 public class Car {
 
-    private static final int MOVE_CONDITION = 4;
     private int currentStatus;
     private final String name;
 
@@ -10,10 +9,13 @@ public class Car {
         this.name = name;
     }
 
-    public void go(int condition) {
-        if (condition >= MOVE_CONDITION) {
-            this.currentStatus++;
-        }
+    public Car(String name, int currentStatus) {
+        this.name = name;
+        this.currentStatus = currentStatus;
+    }
+
+    public void go(boolean isMovable) {
+        if (isMovable) this.currentStatus++;
     }
 
     public int getCurrentStatus() {
