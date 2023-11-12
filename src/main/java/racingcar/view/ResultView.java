@@ -1,9 +1,10 @@
-package racingcar.presentation;
+package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
+import java.util.stream.Collectors;
+import racingcar.model.Car;
 
-public class OutputView {
+public class ResultView {
 
         private static final String PATH_SIGN = "-";
         private static final String BETWEEN_NAME_AND_PATH_SIGN = " : ";
@@ -14,7 +15,7 @@ public class OutputView {
         private ResultView() {
         }
 
-        public static void printResultViewTitle(){
+        public static void printResultViewTitle() {
                 System.out.println(NEW_LINE + RESULT_VIEW_TITLE);
         }
 
@@ -23,8 +24,9 @@ public class OutputView {
                 printNewLine();
         }
 
-        public static void printWinner(List<Car> cars){
-                String winnersInOneLine = cars.stream().map(car -> car.name().getText()).collect(Collectors.joining(COMMA));
+        public static void printWinner(List<Car> cars) {
+                String winnersInOneLine = cars.stream().map(car -> car.name().getText())
+                    .collect(Collectors.joining(COMMA));
                 System.out.println(winnersInOneLine + "가 최종 우승했습니다.");
         }
 
@@ -34,11 +36,11 @@ public class OutputView {
                 printNewLine();
         }
 
-        private static void printName(String name){
+        private static void printName(String name) {
                 System.out.print(name + BETWEEN_NAME_AND_PATH_SIGN);
         }
 
-        private static void printNewLine(){
+        private static void printNewLine() {
                 System.out.print(NEW_LINE);
         }
 

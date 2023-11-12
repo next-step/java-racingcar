@@ -1,12 +1,12 @@
-package racingcar.application;
+package racingcar.controller;
 
-import static racingcar.presentation.InputView.scanAndGetValues;
+import static racingcar.view.InputView.scanAndGetValues;
 
 import racingcar.common.utils.TextManipulator;
-import racingcar.domain.RacingCarGame;
-import racingcar.domain.Winners;
-import racingcar.presentation.ResultView;
-import racingcar.presentation.dto.RacingGameInput;
+import racingcar.model.RacingCarGame;
+import racingcar.model.Winners;
+import racingcar.view.ResultView;
+import racingcar.view.dto.RacingGameInput;
 
 public class RacingCarGameMain {
 

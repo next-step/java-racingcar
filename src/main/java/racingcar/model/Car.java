@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.model;
 
 public class Car {
 
@@ -11,8 +11,8 @@ public class Car {
                 this.currentPosition = new Position();
         }
 
-        public void movedForwardIfCan(int randomNo) {
-                if (isAbleToMove(randomNo)) {
+        public void movedForwardIfCan(int randomNumber) {
+                if (isAbleToMove(randomNumber)) {
                         this.moveForward();
                 }
         }
@@ -21,15 +21,15 @@ public class Car {
                 currentPosition.addOnePosition();
         }
 
-        private boolean isAbleToMove(int randomNo) {
-                return randomNo >= LOWER_LIMIT;
+        private boolean isAbleToMove(int randomNumber) {
+                return randomNumber >= LOWER_LIMIT;
         }
 
         public Position currentPosition() {
                 return currentPosition;
         }
 
-        public Name name(){
+        public Name name() {
                 return name;
         }
 }
