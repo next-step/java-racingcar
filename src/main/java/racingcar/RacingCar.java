@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class RacingCar {
 
+    private static Random rand = new Random();
     private int location = 1;
 
 
     public static int getRandomValue() {
-        Random rand = new Random();
         return rand.nextInt(10);
     }
 

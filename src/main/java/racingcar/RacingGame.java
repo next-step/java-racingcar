@@ -32,6 +32,9 @@ public class RacingGame {
 
     private void makeCars(int carNumber) {
         this.cars = new RacingCar[carNumber];
+        for (int i=0; i<carNumber; i++) {
+            this.cars[i] = new RacingCar();
+        }
     }
 
     public static void validateInput(int[] input) {
@@ -44,8 +47,8 @@ public class RacingGame {
 
     private void startGame() {
         for (int i = 0; i<this.roundNumber; i++) {
-            playOneRound();
-            printResult(i);
+            this.playOneRound();
+            this.printResult(i);
         }
     }
 
@@ -56,7 +59,8 @@ public class RacingGame {
     }
 
     private void printResult(int round) {
-        if (round == 1) {
+        if (round == 0) {
+            System.out.println();
             System.out.println("실행 결과");
         }
 
