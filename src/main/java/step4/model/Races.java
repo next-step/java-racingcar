@@ -1,6 +1,8 @@
 package step4.model;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Races {
@@ -14,6 +16,11 @@ public class Races {
 
     public void start(int condition) {
         this.cars.forEach(car -> car.go(condition));
+    }
+
+    public List<Car> getWinners() {
+        Map<Integer, List<Car>> mappedByStatus = this.cars.stream().collect(Collectors.groupingBy(Car::getCurrentStatus));
+        return mappedByStatus.get(Collections.max(mappedByStatus.keySet()));
     }
 
     public List<Car> getCars() {

@@ -1,8 +1,6 @@
 package step4.controller;
 
-import step4.model.Car;
 import step4.model.Races;
-import step4.model.Winners;
 import step4.view.RaceWinnerInputView;
 import step4.view.RaceWinnerOutputView;
 
@@ -26,7 +24,6 @@ public class RacingController {
             new RaceWinnerOutputView(races.getCars()).progressInGame();
         });
 
-        List<Car> winners = new Winners(races.getCars()).get();
-        new RaceWinnerOutputView(winners).winner();
+        new RaceWinnerOutputView(races.getWinners()).winner();
     }
 }
