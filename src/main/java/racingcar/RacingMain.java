@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
+import racingcar.domain.Winners;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -22,7 +23,8 @@ public class RacingMain {
             List<Car> cars = racingGame.race();
             resultView.viewGame(cars);
         }
-        List<Car> winners = racingGame.findWinners();
-        resultView.viewWinner(winners);
+        Winners winners = new Winners();
+        List<Car> WinnerCars = winners.findWinners(racingGame.getCars());
+        resultView.viewWinner(WinnerCars);
     }
 }
