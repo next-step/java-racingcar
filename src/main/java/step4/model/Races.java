@@ -14,8 +14,8 @@ public class Races {
                 .map(Car::new).collect(Collectors.toList());
     }
 
-    public void start(int condition) {
-        this.cars.forEach(car -> car.go(condition));
+    public void start(boolean isMovable) {
+        this.cars.forEach(car -> car.go(isMovable));
     }
 
     public List<Car> getWinners() {
