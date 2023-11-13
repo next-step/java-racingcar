@@ -11,8 +11,6 @@ public class RacingGame {
     private RacingCar[] cars;
     private int round=1;
 
-    private int winRecord = 0;
-    private List<RacingCar> winnerList = new ArrayList<RacingCar>();
 
     public void play() {
         makeGame();
@@ -80,30 +78,8 @@ public class RacingGame {
     }
 
     private void endGame() {
-        List<RacingCar> finalWinners = findWinner();
+        Referee referee = new Referee();
+        List<RacingCar> finalWinners = referee.findWinner(this.cars);
         ResultView.printWinners(finalWinners);
-    }
-
-    private List<RacingCar> findWinner() {
-        for (RacingCar car : this.cars) {
-            updateWinnerList(car);
-        }
-        return winnerList;
-    }
-
-    private List<RacingCar> updateWinnerList(RacingCar car) {
-        if (car.getLocation() > winRecord) {
-            winRecord = car.getLocation();
-            winnerList = new ArrayList<RacingCar>();
-            winnerList.add(car);
-            return winnerList;
-        }
-
-        if (car.getLocation() == winRecord) {
-            winnerList.add(car);
-            return winnerList;
-        }
-
-        return winnerList;
     }
 }
