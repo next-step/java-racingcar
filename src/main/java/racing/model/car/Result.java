@@ -1,4 +1,4 @@
-package racing.model;
+package racing.model.car;
 
 public class Result {
 	public static final boolean WINNER = true;

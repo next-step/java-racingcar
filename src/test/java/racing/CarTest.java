@@ -3,9 +3,9 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.model.Position;
-import racing.model.Car;
-import racing.model.CarName;
+import racing.model.car.Position;
+import racing.model.car.Car;
+import racing.model.car.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

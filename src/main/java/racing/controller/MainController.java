@@ -1,20 +1,19 @@
-package racing;
+package racing.controller;
 
-import racing.model.CarList;
-import racing.game.Game;
-import racing.random.RandomReturnZeroToNine;
+import racing.model.car.CarList;
+import racing.model.game.Game;
+import racing.model.random.RandomReturnZeroToNine;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-public class Main {
+public class MainController {
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
-
 		String[] inputs = inputView.cars();
 		int numberOfCars = inputs.length;
-		try {
-			int numberOfAttempts = inputView.attempts();
+		int numberOfAttempts = inputView.attempts();
 
+		try {
 			CarList cars = new CarList(numberOfCars, inputs);
 			Game game = new Game(new RandomReturnZeroToNine());
 

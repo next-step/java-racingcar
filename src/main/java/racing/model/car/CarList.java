@@ -1,4 +1,4 @@
-package racing.model;
+package racing.model.car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +28,10 @@ public class CarList {
 		return null;
 	}
 
-	public void moveAll(int[] bounds) {
+	public void moveAll(List<Integer> bounds) {
 		int numberOfCars = cars.size();
 		for (int i = 0; i < numberOfCars; i++) {
-			cars.get(i).move(bounds[i]);
+			cars.get(i).move(bounds.get(i));
 		}
 	}
 
@@ -84,9 +84,7 @@ public class CarList {
 
 		int position = cars.get(index).position().current();
 		result.append(cars.get(index).name()).append(" : ");
-		for (int i = 0; i < position; i++) {
-			result.append("-");
-		}
+		result.append("-".repeat(Math.max(0, position)));
 		return result.toString();
 	}
 
