@@ -24,5 +24,6 @@ class HistoryTest {
         assertThat(winners.size()).isEqualTo(1);
         assertThat(winners.get(0)).isEqualTo(carA.name());
         assertThat(winners).doesNotContain(carB.name());
+        assertThat(winners).containsExactly("a");
     }
 }
