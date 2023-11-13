@@ -18,7 +18,7 @@ public class Racing {
             carList.add(new Car(name));
         }
     }
-
+  
     public void roundStart(){
         for(Car car : carList){
             car.turn(numberGenerator);
