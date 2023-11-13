@@ -8,8 +8,10 @@ public class Position {
         this.position = position;
     }
 
-    public void move() {
-        this.position++;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            this.position++;
+        }
     }
 
     public int getCurrentStatus() {

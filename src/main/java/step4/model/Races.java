@@ -16,7 +16,7 @@ public class Races {
     }
 
     public void start(MoveStrategy moveStrategy) {
-        this.cars.forEach(car -> car.go(moveStrategy));
+        this.cars.forEach(car -> car.getPosition().move(moveStrategy));
     }
 
     public List<Car> getWinners() {
