@@ -14,23 +14,26 @@ public class RacingGame {
     private List<RacingCar> winnerList = new ArrayList<RacingCar>();
 
     public void play() {
-        InputView inputView = new InputView();
-        inputView.input();
-        makeGame(inputView.getCarNameList(), inputView.getRoundNumber());
+        makeGame();
         startGame();
         endGame();
     }
 
-    private void makeGame(String[] carNameList, int roundNumber) {
+    private void makeGame() {
+        InputView inputView = new InputView();
+
+        List<String> carNameList = inputView.inputCarNameList();
+        int roundNumber = inputView.inputRoundNumber();
+
         this.makeCars(carNameList);
         this.roundNumber = roundNumber;
     }
 
-    private void makeCars(String[] carNameList) {
-        int carNumber = carNameList.length;
+    private void makeCars(List<String> carNameList) {
+        int carNumber = carNameList.size();
         this.cars = new RacingCar[carNumber];
         for (int i=0; i<carNumber; i++) {
-            RacingCar newCar = new RacingCar(carNameList[i]);
+            RacingCar newCar = new RacingCar(carNameList.get(i));
             this.cars[i] = newCar;
         }
     }
