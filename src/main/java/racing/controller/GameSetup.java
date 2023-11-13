@@ -47,8 +47,8 @@ public class GameSetup {
     }
 
     public void moveCar() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).validateForMove(RandomUtil.returnRandomNumber());
+        for (Car car: cars) {
+            car.validateForMove(RandomUtil.returnRandomNumber());
         }
     }
 }
