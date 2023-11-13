@@ -15,10 +15,7 @@ public class Car {
     public Position getPosition() {
         return this.position;
     }
-
-    public boolean isFartherOrEqual(int maxPosition) {
-        return this.position.getValue() >= maxPosition;
-    }
+    
 
     public String getCarName() {
         return carName.getCarName();

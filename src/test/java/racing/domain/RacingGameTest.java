@@ -105,4 +105,5 @@ class RacingGameTest {
             return 5;
         }
     }
+
 }
