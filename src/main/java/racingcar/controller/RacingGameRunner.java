@@ -20,5 +20,6 @@ public class RacingGameRunner {
             cars.moveCars();
             ResultView.printCars(cars);
         }
+        ResultView.printWinners(cars);
     }
 }

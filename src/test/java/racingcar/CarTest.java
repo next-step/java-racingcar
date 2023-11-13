@@ -11,9 +11,7 @@ public class CarTest {
     void test_자동차_이름을_5자_초과하여_생성() {
         String name = "일곱글자입니다";
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Car(name);
-        });
+        assertThrows(IllegalArgumentException.class, () -> new Car(name));
     }
 
     @Test
