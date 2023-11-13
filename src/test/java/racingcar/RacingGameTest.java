@@ -18,7 +18,7 @@ public class RacingGameTest {
 
     @Test
     public void random_범위() {
-        int random = RacingCar.getRandomValue();
+        int random = RacingGame.getRandomValue();
         assertThat(random)
                 .isGreaterThanOrEqualTo(0)
                 .isLessThanOrEqualTo(9);

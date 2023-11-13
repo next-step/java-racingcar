@@ -1,11 +1,10 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingGame {
+    private static final Random rand = new Random();
+    private static final int RANDOM_VALUE_BOUND = 10;
     private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
 
     private int roundNumber;
@@ -61,8 +60,12 @@ public class RacingGame {
 
     private void playOneRound() {
         for (RacingCar car : this.cars) {
-            car.moveOrStop(RacingCar.getRandomValue());
+            car.moveOrStop(getRandomValue());
         }
+    }
+
+    public static int getRandomValue() {
+        return rand.nextInt(RANDOM_VALUE_BOUND);
     }
 
     public boolean checkFirstRound() {
