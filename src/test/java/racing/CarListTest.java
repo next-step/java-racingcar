@@ -2,7 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.car.CarList;
+import racing.model.CarList;
 import racing.game.Game;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class CarListTest {
 
 		carList.moveAll(game.bounds(cars));
 
-		List<String> winners = carList.getWinners();
+		List<String> winners = carList.winners();
 		assertThat(winners).contains("A", "B", "C");
 		assertThat(winners).hasSize(3);
 	}
@@ -41,7 +41,7 @@ public class CarListTest {
 
 		carList.moveAll(new int[]{4, 3, 3});
 
-		List<String> winners = carList.getWinners();
+		List<String> winners = carList.winners();
 		assertThat(winners).contains("A");
 		assertThat(winners).hasSize(1);
 	}

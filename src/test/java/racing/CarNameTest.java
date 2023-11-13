@@ -2,7 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.car.CarName;
+import racing.model.CarName;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

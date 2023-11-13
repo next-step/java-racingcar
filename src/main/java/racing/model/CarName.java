@@ -1,4 +1,4 @@
-package racing.model.car;
+package racing.model;
 
 public class CarName {
 
@@ -11,8 +11,12 @@ public class CarName {
 		this.name = name;
 	}
 
-	public String getName() {
+	public String name() {
 		return name;
+	}
+
+	public CarName deepCopy() {
+		return new CarName(name);
 	}
 
 	@Override
@@ -22,11 +26,11 @@ public class CarName {
 
 		CarName carName = (CarName) o;
 
-		return getName() != null ? getName().equals(carName.getName()) : carName.getName() == null;
+		return name() != null ? name().equals(carName.name()) : carName.name() == null;
 	}
 
 	@Override
 	public int hashCode() {
-		return getName() != null ? getName().hashCode() : 0;
+		return name() != null ? name().hashCode() : 0;
 	}
 }

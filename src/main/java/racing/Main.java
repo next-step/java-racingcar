@@ -1,6 +1,6 @@
 package racing;
 
-import racing.model.car.CarList;
+import racing.model.CarList;
 import racing.game.Game;
 import racing.random.RandomReturnZeroToNine;
 import racing.view.InputView;
@@ -24,7 +24,7 @@ public class Main {
 				cars.moveAll(game.bounds(numberOfCars));
 				resultView.printCars(cars);
 			}
-			resultView.printWinners(cars.getWinners());
+			resultView.printWinners(cars.winners());
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
