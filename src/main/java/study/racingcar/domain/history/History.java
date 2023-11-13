@@ -1,10 +1,11 @@
-package study.racingcar;
+package study.racingcar.domain.history;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import study.racingcar.domain.car.Car;
 
 public class History {
 

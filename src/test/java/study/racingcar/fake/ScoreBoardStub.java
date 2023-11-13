@@ -2,8 +2,8 @@ package study.racingcar.fake;
 
 import java.util.ArrayList;
 import java.util.List;
-import study.racingcar.ScoreBoard;
-import study.racingcar.ScoreEachRound;
+import study.racingcar.domain.score.ScoreBoard;
+import study.racingcar.domain.score.ScoreEachRound;
 
 public class ScoreBoardStub extends ScoreBoard {
 

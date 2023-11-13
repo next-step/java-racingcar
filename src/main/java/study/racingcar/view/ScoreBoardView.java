@@ -2,9 +2,9 @@ package study.racingcar.view;
 
 import java.util.List;
 import java.util.Map;
-import study.racingcar.Car;
-import study.racingcar.History;
-import study.racingcar.MoveStatus;
+import study.racingcar.domain.car.Car;
+import study.racingcar.domain.history.History;
+import study.racingcar.util.MoveStatus;
 
 public class ScoreBoardView {
 

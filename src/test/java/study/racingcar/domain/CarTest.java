@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
@@ -8,8 +8,11 @@ import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.domain.car.Car;
 import study.racingcar.fake.FailRandomGenratorStub;
 import study.racingcar.fake.SuccessRandomGenratorStub;
+import study.racingcar.util.MoveStatus;
+import study.racingcar.util.RandomGenerator;
 
 public class CarTest {
 

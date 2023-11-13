@@ -1,9 +1,11 @@
-package study.racingcar;
+package study.racingcar.domain.score;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import study.racingcar.domain.history.History;
+import study.racingcar.domain.car.Car;
 import study.racingcar.view.ScoreBoardView;
 
 public class ScoreBoardResult {

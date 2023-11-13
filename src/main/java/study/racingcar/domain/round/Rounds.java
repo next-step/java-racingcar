@@ -1,7 +1,6 @@
-package study.racingcar;
+package study.racingcar.domain.round;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Rounds {

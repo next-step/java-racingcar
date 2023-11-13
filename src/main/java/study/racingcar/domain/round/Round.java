@@ -1,7 +1,12 @@
-package study.racingcar;
+package study.racingcar.domain.round;
 
 
 import java.util.stream.Collectors;
+import study.racingcar.util.RandomGenerator;
+import study.racingcar.domain.score.Score;
+import study.racingcar.domain.score.ScoreBoard;
+import study.racingcar.domain.score.ScoreEachRound;
+import study.racingcar.domain.car.Cars;
 
 public class Round {
 

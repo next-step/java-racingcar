@@ -1,4 +1,7 @@
-package study.racingcar;
+package study.racingcar.domain.car;
+
+import study.racingcar.util.MoveStatus;
+import study.racingcar.util.RandomGenerator;
 
 public class Car {
 

@@ -1,11 +1,12 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import study.racingcar.domain.car.Cars;
+import study.racingcar.domain.round.Round;
+import study.racingcar.domain.score.ScoreBoard;
 
 public class ScoreBoardTest {
 

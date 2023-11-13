@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.racingcar.domain.car.Car;
+import study.racingcar.domain.car.Cars;
 
 public class CarsTest {
     @DisplayName("입력 값만큼 자동차를 생성")

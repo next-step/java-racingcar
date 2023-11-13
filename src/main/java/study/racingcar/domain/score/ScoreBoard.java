@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain.score;
 
 import java.util.ArrayList;
 import java.util.List;
