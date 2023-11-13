@@ -4,9 +4,16 @@ package racing;
 public class Car {
     private static final int BASIS_RANDOM_VALUE = 4;
     private int position = 0;
+    private String name;
+
+    Car(){}
+
+    Car(String name){
+        this.name = name;
+    }
 
     public void move(){
-        position++;
+        this.position++;
     }
 
     public void turn(NumberGenerator numberGenerator){
@@ -15,6 +22,10 @@ public class Car {
     }
 
     public int getPosition(){
-        return position;
+        return this.position;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }
