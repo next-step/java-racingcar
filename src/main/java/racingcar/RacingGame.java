@@ -1,5 +1,10 @@
 package racingcar;
 
+import racingcar.domain.Racing;
+import racingcar.movablestrategy.RandomRacingStrategy;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 public class RacingGame {
     public static void main(String[] args) {
         String racerNames = InputView.racerNames();
@@ -13,7 +18,7 @@ public class RacingGame {
 
         ResultView.racingStart();
         for (int round = 0; round < roundCount; round++) {
-            racing.processRound();
+            racing.processRound(new RandomRacingStrategy());
             ResultView.carStatPrint(racing.racingInfo());
             ResultView.roundFinish();
         }

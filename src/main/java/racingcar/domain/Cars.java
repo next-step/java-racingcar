@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.movablestrategy.MovableStrategy;
 
@@ -13,21 +13,17 @@ public class Cars {
     }
 
     public Cars(int carCount) {
-        this(carCount, () -> true);
-    }
-
-    public Cars(int carCount, MovableStrategy movableStrategy) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car("noName", movableStrategy));
+            cars.add(new Car());
         }
     }
 
-    public Cars(String racerNames, MovableStrategy movableStrategy) {
+    public Cars(String racerNames) {
         this.cars = new ArrayList<>();
-        String[] names = Car.nameSplitByComma(racerNames);
+        String[] names = Car.nameSplitByDelimiter(racerNames);
         for (String name : names) {
-            cars.add(new Car(name, movableStrategy));
+            cars.add(new Car(name));
         }
     }
 
@@ -35,9 +31,9 @@ public class Cars {
         return cars.size() >= racingCondition;
     }
 
-    public void race() {
+    public void race(MovableStrategy movableStrategy) {
         for (Car car : cars) {
-            car.move();
+            car.move(movableStrategy);
         }
     }
 
@@ -64,15 +60,7 @@ public class Cars {
 
     private List<Car> findCarByPosition(int position) {
         return cars.stream()
-                .map(car -> samePositionRacerSelection(car, position))
-                .filter(Objects::nonNull)
+                .filter(car -> car.isSamePosition(position))
                 .collect(Collectors.toList());
-    }
-
-    private Car samePositionRacerSelection(Car car, int position) {
-        if (car.isSamePosition(position)) {
-            return car;
-        }
-        return null;
     }
 }
