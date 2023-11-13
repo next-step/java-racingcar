@@ -22,8 +22,16 @@ public class ResultView {
         }
     }
 
+    private static String getLocationMark(int location) {
+        String locationMark = "";
+        for (int i = 0; i<location; i++) {
+            locationMark += "-";
+        }
+        return locationMark;
+    }
+
     private static void printLocationOfCar(RacingCar car) {
-        String result = car.getName() + " : " + car.getLocationMark();
+        String result = car.getName() + " : " + getLocationMark(car.getLocation());
         System.out.println(result);
     }
 

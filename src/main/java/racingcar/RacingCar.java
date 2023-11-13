@@ -30,14 +30,6 @@ public class RacingCar {
         return this.location;
     }
 
-    public String getLocationMark() {
-        String locationMark = "";
-        for (int i = 0; i<this.getLocation(); i++) {
-            locationMark += "-";
-        }
-        return locationMark;
-    }
-
     public void validateCarName(String name) {
         if (name.length() > NAME_MAX_LENGTH) {
             throw new RuntimeException(ERR_NAME_LENGTH);
