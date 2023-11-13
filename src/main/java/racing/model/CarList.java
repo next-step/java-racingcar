@@ -5,8 +5,6 @@ import java.util.List;
 
 public class CarList {
 
-	private static final boolean WINNER = true;
-	private static final boolean LOSER = false;
 	private final List<Car> cars;
 
 	public CarList(int numberOfCars, String[] carNames) {
@@ -59,9 +57,9 @@ public class CarList {
 
 	private boolean isWinner(Car car, int maxPosition) {
 		if (car.position().match(maxPosition)) {
-			return WINNER;
+			return Result.WINNER;
 		}
-		return LOSER;
+		return Result.LOSER;
 	}
 
 	private void addWinner(int maxPosition, List<String> winners, int i) {
