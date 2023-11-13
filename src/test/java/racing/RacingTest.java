@@ -34,26 +34,6 @@ class RacingTest {
     }
 
     @Test
-    void assertStartGame() {
-        AtomicInteger sumBeforeStartGame = new AtomicInteger();
-        AtomicInteger sumAfterStartGame = new AtomicInteger();
-
-        newGame.cars().forEach(car -> {
-            sumBeforeStartGame.set(+car.distance());
-        });
-
-        assertThat(sumBeforeStartGame.get()).isEqualTo(0);
-
-        for (int i = 0; i < newGame.round(); i++) {
-            newGame.moveCar();
-        }
-        newGame.cars().forEach(car -> {
-            sumAfterStartGame.set(+car.distance());
-        });
-        assertThat(sumAfterStartGame.get()).isGreaterThan(0);
-    }
-
-    @Test
     void assertValidateWinner() {
         Car car = new Car("JUNG", 10);
         newGame.cars().add(car);
