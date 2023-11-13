@@ -26,7 +26,7 @@ public class Car {
     }
 
     public int distance() {
-        return this.distance;
+        return distance;
     }
 
     public String name() {
@@ -34,7 +34,7 @@ public class Car {
     }
 
     public void moveCar() {
-        this.distance++;
+        distance++;
     }
 
     public void validateForMove(int randomValue) {
