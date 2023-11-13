@@ -6,12 +6,13 @@ import camp.nextstep.edu.racingcar.domain.result.RoundResult;
 
 public class RacingGame {
 
+    public static final String CAR_NAME_DELIMITER = ",";
     private final int roundAmount;
     private final Cars cars;
 
     public RacingGame(DriveStrategy driveStrategy, String carNames, int roundAmount) {
         this.roundAmount = roundAmount;
-        this.cars = new Cars(driveStrategy, carNames);
+        this.cars = new Cars(driveStrategy, carNames.split(CAR_NAME_DELIMITER));
     }
 
     public RacingGameResult play() {

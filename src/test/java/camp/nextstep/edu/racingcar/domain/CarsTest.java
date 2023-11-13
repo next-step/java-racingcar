@@ -17,7 +17,7 @@ public class CarsTest {
     void mustDrive() {
         // given
         DriveStrategy driveStrategy = () -> true;
-        Cars cars = new Cars(driveStrategy, "tmp,tmp2");
+        Cars cars = new Cars(driveStrategy, new String[] { "tmp", "tmp2" });
 
         // when
         RoundResult roundResult1 = cars.drive();
@@ -40,7 +40,7 @@ public class CarsTest {
     void mustNotDrive() {
         // given
         DriveStrategy driveStrategy = () -> false;
-        Cars cars = new Cars(driveStrategy, "tmp,tmp2");
+        Cars cars = new Cars(driveStrategy, new String[] { "tmp", "tmp2" });
 
         // when
         RoundResult roundResult1 = cars.drive();
@@ -63,7 +63,7 @@ public class CarsTest {
     void carNames() {
         // given
         DriveStrategy driveStrategy = () -> false;
-        Cars cars = new Cars(driveStrategy, "a,b");
+        Cars cars = new Cars(driveStrategy, new String[] { "a", "b" });
 
         // when
         RoundResult roundResult = cars.drive();

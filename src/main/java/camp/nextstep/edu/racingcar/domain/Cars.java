@@ -10,15 +10,13 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(DriveStrategy driveStrategy, String carNames) {
+    public Cars(DriveStrategy driveStrategy, String[] carNames) {
         this.cars = initializeCars(driveStrategy, carNames);
     }
 
-    private List<Car> initializeCars(DriveStrategy driveStrategy, String carNames) {
-        String[] arrCarNames = carNames.split(",");
-
+    private List<Car> initializeCars(DriveStrategy driveStrategy, String[] carNames) {
         final List<Car> cars = new ArrayList<>();
-        for (String carName : arrCarNames) {
+        for (String carName : carNames) {
             Car car = new Car(carName.trim(), driveStrategy);
             cars.add(car);
         }
