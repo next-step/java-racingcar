@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -20,17 +20,17 @@ public class Car {
         this("", distance);
     }
 
-    void move(int distance) {
+    public void move(int distance) {
         if (distance > VALUE) {
             this.distance.plus();
         }
     }
 
-    Distance distance() {
+    public Distance distance() {
         return this.distance;
     }
 
-    Name name() {
+    public Name name() {
         return this.name;
     }
 
