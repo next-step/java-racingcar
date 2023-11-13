@@ -1,25 +1,36 @@
 package game.race.support;
 
-import java.util.List;
-
-import game.race.Car;
-import game.race.model.InputView;
-import game.race.model.ResultView;
+import game.race.dto.RaceDto;
+import game.race.support.move.MovePolicy;
+import game.race.support.move.impl.RandomPolicy;
+import game.race.view.ResultView;
 
 public class CarRacingManager {
 
-    public static void start(InputView inputView) {
+    public void start(RaceDto raceDto) {
         ResultView resultView = new ResultView();
-        List<Car> cars = Car.getCars(inputView.getVehicleCnt());
+        MovePolicy policy = new RandomPolicy();
+        Cars cars = new Cars();
+        cars.of(raceDto.getVehicleNames());
 
         resultView.showPrompt();
-        for (int trial = 0; trial < inputView.getTryCnt(); trial++) {
-            for (Car car : cars) {
-                car.move();
-            }
 
-            resultView.showCars(cars);
-            resultView.markEnd();
+        int tryCnt = raceDto.getTryCnt();
+        for (int trial = 0; trial < tryCnt; trial++) {
+            cars.move(policy);
+            resultView.showCars(raceDto, cars.getCars());
+
+            findWinner(tryCnt, trial, cars, resultView);
+        }
+    }
+
+    private static void findWinner(int tryCnt,
+                                   int trial,
+                                   Cars cars,
+                                   ResultView resultView) {
+        int lastTrialIndex = tryCnt - 1;
+        if (trial == lastTrialIndex) {
+            resultView.print(cars.getWinners());
         }
     }
 }

@@ -1,29 +1,26 @@
 package game.race;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import game.race.support.move.MovePolicy;
 
 public class Car {
 
-    private static final int THRESHOLD = 4;
-
+    private final String name;
     private int moveCount;
+
+    public Car(String name) {
+        this.name = name;
+        this.moveCount = 0;
+    }
 
     public int getMoveCount() {
         return moveCount;
     }
 
-    public void move() {
-        int number = new Random().nextInt(10);
-        moveCount += (number > THRESHOLD) ? number : 0;
+    public String getName() {
+        return name;
     }
 
-    public static List<Car> getCars(int vehicleCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < vehicleCount; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+    public void move(MovePolicy policy) {
+        moveCount = policy.move() ? moveCount + 1 : moveCount;
     }
 }
