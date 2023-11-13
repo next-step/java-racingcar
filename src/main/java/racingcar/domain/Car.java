@@ -31,10 +31,17 @@ public class Car {
         this.currentPosition = position;
     }
 
-    public void move(MovableStrategy movableStrategy) {
+    public CarStatDTO move(MovableStrategy movableStrategy) {
         if (movableStrategy.movable()) {
             this.currentPosition += MOVE_DISTANCE;
         }
+        CarStatDTO carStatDTO = new CarStatDTO(this.racerName, this.currentPosition);
+        return carStatDTO;
+    }
+
+    public CarStatDTO carStatDTO() {
+        CarStatDTO carStatDTO = new CarStatDTO(this.racerName, this.currentPosition);
+        return carStatDTO;
     }
 
     public int fasterPosition(int position) {
@@ -43,14 +50,6 @@ public class Car {
 
     public boolean isSamePosition(int position) {
         return this.currentPosition == position;
-    }
-
-    public String racerName() {
-        return racerName;
-    }
-
-    public int currentPosition() {
-        return this.currentPosition;
     }
 
     public static String[] nameSplitByDelimiter(String input) {

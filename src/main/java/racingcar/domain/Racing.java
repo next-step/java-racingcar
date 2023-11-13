@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import racingcar.movablestrategy.MovableStrategy;
 
+import java.util.List;
+
 public class Racing {
     public static final int MINIMUM_CAR_COUNT = 2;
     public static final int MINIMUM_ROUND_COUNT = 1;
@@ -24,8 +26,8 @@ public class Racing {
         return cars.carsReady(MINIMUM_CAR_COUNT) && roundCount >= MINIMUM_ROUND_COUNT;
     }
 
-    public void processRound(MovableStrategy movableStrategy) {
-        cars.race(movableStrategy);
+    public List<CarStatDTO> processRound(MovableStrategy movableStrategy) {
+        return cars.race(movableStrategy);
     }
 
     public Cars racingInfo() {

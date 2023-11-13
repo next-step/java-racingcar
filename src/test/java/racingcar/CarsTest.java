@@ -3,9 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.CarStatDTO;
 import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,14 +27,14 @@ class CarsTest {
 
         assertThat(cars.size()).isEqualTo(4);
 
-        List<Car> carsList = cars.getCars();
+        Cars expectedCars = new Cars(Arrays.asList(new Car("mon"), new Car("fri"), new Car("sat"), new Car("sun")));
 
-        assertThat(carsList)
-                .usingRecursiveFieldByFieldElementComparator()
-                .containsExactly(new Car("mon"), new Car("fri"), new Car("sat"), new Car("sun"));
+        assertThat(cars)
+                .usingRecursiveComparison()
+                .isEqualTo(expectedCars);
     }
 
-    @DisplayName("가장 빠른 자동차가 한 대 일떄 그 자동차만 포함한 리스트를 반환한다.")
+    @DisplayName("가장 빠른 자동차가 한 대 일떄 그 자동차 정보만 포함한 리스트를 반환한다.")
     @Test
     void Cars_가장_빠른_자동차() {
         Car movableCar = new Car("a", 3);
@@ -40,10 +42,12 @@ class CarsTest {
         Cars cars = new Cars(List.of(movableCar, pauseCar));
 
         assertThat(cars.mostFastestCar().size()).isEqualTo(1);
-        assertThat(cars.mostFastestCar()).containsExactly(movableCar);
+        assertThat(cars.mostFastestCar())
+                .usingRecursiveFieldByFieldElementComparator()
+                .containsExactly(new CarStatDTO("a", 3));
     }
 
-    @DisplayName("가장 빠른 자동차가 두 대 이상일떄 자동차 리스트를 반환한다.")
+    @DisplayName("가장 빠른 자동차가 두 대 이상일떄 자동차 정보 리스트를 반환한다.")
     @Test
     void Cars_가장_빠른_자동차들() {
         Car samePositionCar1 = new Car("a", 3);
@@ -51,6 +55,8 @@ class CarsTest {
         Cars cars = new Cars(List.of(samePositionCar1, samePositionCar2));
 
         assertThat(cars.size()).isEqualTo(2);
-        assertThat(cars.mostFastestCar()).containsExactly(samePositionCar1, samePositionCar2);
+        assertThat(cars.mostFastestCar())
+                .usingRecursiveFieldByFieldElementComparator()
+                .containsExactly(new CarStatDTO("a", 3), new CarStatDTO("b", 3));
     }
 }

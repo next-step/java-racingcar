@@ -14,7 +14,7 @@ public class CarTest {
     @Test
     void 초기위치_0() {
         Car car = new Car();
-        assertThat(car.currentPosition()).isEqualTo(Car.INITIAL_POSITION);
+        assertThat(car.carStatDTO().getPosition()).isEqualTo(Car.INITIAL_POSITION);
     }
 
     @DisplayName("자동차가 전진할수있다.")
@@ -22,7 +22,7 @@ public class CarTest {
     void 전진() {
         Car car = new Car();
         car.move(() ->true);
-        assertThat(car.currentPosition()).isEqualTo(car.MOVE_DISTANCE);
+        assertThat(car.carStatDTO().getPosition()).isEqualTo(car.MOVE_DISTANCE);
     }
 
     @DisplayName("자동차가 멈춘다")
@@ -30,7 +30,7 @@ public class CarTest {
     void 멈춤() {
         Car car = new Car();
         car.move(() -> false);
-        assertThat(car.currentPosition()).isZero();
+        assertThat(car.carStatDTO().getPosition()).isZero();
     }
 
     @DisplayName("입력된 레이서 이름을 쉼표로 구분한다.")

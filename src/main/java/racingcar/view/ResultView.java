@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.CarStatDTO;
 import racingcar.domain.Cars;
 
 import java.util.List;
@@ -11,12 +12,12 @@ public class ResultView {
         resultPrintln("경주 시작 조건이 충족되지 않아 경주가 개최되지 않았습니다.");
     }
 
-    public static void carStatPrint(Cars cars) {
-        for (Car car : cars.getCars()) {
+    public static void carStatPrint(List<CarStatDTO> carStatDTOS) {
+        for (CarStatDTO carStatDTO : carStatDTOS) {
             StringBuilder carStat = new StringBuilder();
-            carStat.append(car.racerName());
+            carStat.append(carStatDTO.getRacerName());
             carStat.append(" : ");
-            carPosition(carStat, car.currentPosition());
+            carPosition(carStat, carStatDTO.getPosition());
             resultPrintln(carStat.toString());
         }
     }
@@ -29,9 +30,9 @@ public class ResultView {
 
     public static void winner(Cars cars) {
         StringJoiner joiner = new StringJoiner(", ");
-        List<Car> winners = cars.mostFastestCar();
-        for (Car car : winners) {
-            joiner.add(car.racerName());
+        List<CarStatDTO> winners = cars.mostFastestCar();
+        for (CarStatDTO carStatDTO : winners) {
+            joiner.add(carStatDTO.getRacerName());
         }
         resultPrintln(joiner + "가 최종 우승했습니다.");
     }

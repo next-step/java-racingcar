@@ -18,8 +18,7 @@ public class RacingGame {
 
         ResultView.racingStart();
         for (int round = 0; round < roundCount; round++) {
-            racing.processRound(new RandomRacingStrategy());
-            ResultView.carStatPrint(racing.racingInfo());
+            ResultView.carStatPrint(racing.processRound(new RandomRacingStrategy()));
             ResultView.roundFinish();
         }
 

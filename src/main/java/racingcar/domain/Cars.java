@@ -31,23 +31,21 @@ public class Cars {
         return cars.size() >= racingCondition;
     }
 
-    public void race(MovableStrategy movableStrategy) {
+    public List<CarStatDTO> race(MovableStrategy movableStrategy) {
+        List<CarStatDTO> carStatDTOS = new ArrayList<>();
         for (Car car : cars) {
-            car.move(movableStrategy);
+            carStatDTOS.add(car.move(movableStrategy));
         }
+        return carStatDTOS;
     }
 
     public int size() {
         return cars.size();
     }
 
-    public List<Car> mostFastestCar() {
+    public List<CarStatDTO> mostFastestCar() {
         int maxPosition = measurementMaxPosition();
         return findCarByPosition(maxPosition);
-    }
-
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
     }
 
     private int measurementMaxPosition() {
@@ -58,9 +56,10 @@ public class Cars {
         return maxPosition;
     }
 
-    private List<Car> findCarByPosition(int position) {
+    private List<CarStatDTO> findCarByPosition(int position) {
         return cars.stream()
                 .filter(car -> car.isSamePosition(position))
+                .map(car -> car.carStatDTO())
                 .collect(Collectors.toList());
     }
 }
