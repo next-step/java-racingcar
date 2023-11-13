@@ -4,6 +4,7 @@ public class Car {
     private int distance;
     private String name;
     private static final int CONDITION_FOR_MOVE = 4;
+    private static final int CONDITION_FOR_NAME_LENGTH = 5;
 
     public Car(String name) {
         this.distance = 0;
@@ -18,7 +19,7 @@ public class Car {
     }
 
     private static void validateLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > CONDITION_FOR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
     }
