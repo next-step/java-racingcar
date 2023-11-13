@@ -11,7 +11,7 @@ repositories {
 dependencies {
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    testImplementation 'junit:junit:4.12'
+//    testImplementation 'junit:junit:4.12' junit4 expected exception 사용 경험
 }
 
 java {
