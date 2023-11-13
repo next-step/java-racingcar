@@ -6,46 +6,39 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingGameTest {
 
-//    @Test
-//    public void validate_음수_입력값() {
-//        InputView inputView = new InputView();
-//        String[] nameList = new String[] {"abc"};
-//        assertThatThrownBy(() -> inputView.validateInput(nameList, -1)
-//                .isInstanceOf(RuntimeException.class);
-//    }
-
     @Test
-    @DisplayName("random 값은 0~9 사이의 값으로 제한")
-    public void random_범위() {
-        int random = RacingGame.getRandomValue();
-        assertThat(random)
-                .isGreaterThanOrEqualTo(0)
-                .isLessThanOrEqualTo(9);
+    @DisplayName("round 횟수는 항상 양수로 입력되어야 함")
+    public void validate_round_음수() {
+        assertThatThrownBy(() -> new RacingGame(Arrays.asList("a", "b", "c"), -1))
+                .isInstanceOf(RuntimeException.class);
     }
 
     @Test
-    @DisplayName("moveOrStop의 인수가 4 이상이면 전진, 미만이면 멈춤(location 변경 없음)")
-    public void 전진_여부() {
-        RacingCar car = new RacingCar("abc");
-        car.moveOrStop(1);
-        assertThat(car.getLocation())
-                .isEqualTo(1);
+    @DisplayName("한 round에는 최대 1칸 이동, 후진 없음")
+    public void one_round_이동칸수() {
+        RacingGame game = new RacingGame(Arrays.asList("a", "b", "c"), 5);
+        List<RacingCar> cars = game.getCars();
 
-        car.moveOrStop(4);
-        assertThat(car.getLocation())
-                .isEqualTo(2);
-    }
+        List<Integer> beforePositions = new ArrayList<>();
+        for (RacingCar car: cars) {
+            beforePositions.add(car.getPosition());
+        }
+        game.playOneRound();
 
-    @Test
-    @DisplayName("자동차 이름은 5자 이하로 설정되어야 함")
-    public void 자동차_이름_5자_이하() {
-        Assertions.assertThatThrownBy(() -> new RacingCar("abcdefg"))
-                        .isInstanceOf(RuntimeException.class);
+        for (int i=0; i<cars.size(); i++) {
+            int diff = cars.get(i).getPosition() - beforePositions.get(i);
+            assertThat(diff).isLessThanOrEqualTo(1)
+                    .isGreaterThanOrEqualTo(0);
+        }
     }
 
 }
