@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.game;
 
 public class GameRequest {
     private final int carCount;

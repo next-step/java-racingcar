@@ -1,7 +1,7 @@
 package racingCar.ui;
 
-import racingCar.Car;
-import racingCar.Cars;
+import racingCar.car.Car;
+import racingCar.car.Cars;
 
 import java.util.List;
 

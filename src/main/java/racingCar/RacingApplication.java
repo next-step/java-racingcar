@@ -1,7 +1,6 @@
 package racingCar;
 
-import racingCar.ui.InputView;
-import racingCar.ui.ResultView;
+import racingCar.game.RacingCarGame;
 
 public class RacingApplication { // 자동차 경주를 시작한다.
 	public static void main(String[] args) {

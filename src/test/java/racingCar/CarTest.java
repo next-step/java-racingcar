@@ -1,19 +1,19 @@
 package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import racingCar.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-
-	@Test
-	@DisplayName("move_getDistance_0 <= distance <= 횟수")
-	void move_test() {
-		Car car = new Car();
-		for (int i = 0; i < 5; i++) {
-			car.move();
-		}
-		assertThat(car.distance).isBetween(0, 5);
-	}
+    @ParameterizedTest
+    @CsvSource({"3,0", "4,1"})
+    @DisplayName("move_결과 0,1의 경계값 입력_0,1")
+    void move(int input, int expected) {
+        Car car = new Car();
+        car.move(input);
+        assertThat(car.distance).isEqualTo(expected);
+    }
 }

@@ -1,5 +1,6 @@
-package racingCar;
+package racingCar.game;
 
+import racingCar.car.Cars;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
