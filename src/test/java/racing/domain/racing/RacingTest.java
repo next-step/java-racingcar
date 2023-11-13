@@ -34,9 +34,13 @@ public class RacingTest {
     @Test
     void winners() {
         // given
-        Car car1 = new Car("test1", 0);
-        Car car2 = new Car("test2", 10);
-        Car car3 = new Car("test3", 5);
+        Car car1 = new Car("test1");
+        Car car2 = new Car("test2");
+        Car car3 = new Car("test3");
+        car1.move(5);
+        car2.move(1);
+        car3.move(3);
+
         List<Car> cars = new ArrayList<>();
         cars.add(car1);
         cars.add(car2);
