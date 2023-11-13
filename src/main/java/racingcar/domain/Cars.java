@@ -1,15 +1,13 @@
 package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
-import racingcar.ui.RacingInputView;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final String DELIMITER = ",";
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -27,11 +25,10 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private int maxPosition() {
+    private Position maxPosition() {
         return cars.stream()
-                .mapToInt(Car::forwardCnt)
-                .max()
-                .getAsInt();
+                .map(Car::getPosition)
+                .max(Comparator.naturalOrder()).orElse(null);
     }
 
     public void moveCars(MoveStrategy moveStrategy) {

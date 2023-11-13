@@ -19,7 +19,7 @@ public class RacingResultView {
     }
 
     private static void printCarPosition(Car car, StringBuffer sb) {
-        for (int i = 0; i < car.forwardCnt(); i++) {
+        for (int i = 0; i < car.getPosition().position(); i++) {
             sb.append(CAR_PRINT);
         }
         System.out.print(sb);

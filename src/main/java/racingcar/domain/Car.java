@@ -4,30 +4,29 @@ import racingcar.strategy.MoveStrategy;
 
 public class Car {
 
-    private static final int CONDITION_NUMBER = 4;
-    private static final int DEFAULT_MOVE_POSITION = 1;
-    private int forwardCnt;
+    private Position position;
     private String carName;
 
     public Car(String carName) {
         this.carName = carName;
+        position = new Position();
     }
 
     public void moveForward(MoveStrategy moveStrategy) {
         if (moveStrategy.ableMove()) {
-            forwardCnt += DEFAULT_MOVE_POSITION;
+            position.move();
         }
     }
 
-    public int forwardCnt() {
-        return forwardCnt;
+    public Position getPosition() {
+        return position;
     }
 
     public String carName() {
         return carName;
     }
 
-    public boolean matchPosition(int maxPosition) {
-        return forwardCnt == maxPosition;
+    public boolean matchPosition(Position maxPosition) {
+        return this.position.equals(maxPosition);
     }
 }
