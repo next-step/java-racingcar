@@ -1,8 +1,8 @@
 package racingCar;
 
 public class GameRequest {
-    private int carCount;
-    private int tryCount;
+    private final int carCount;
+    private final int tryCount;
 
     public GameRequest(int carCount, int tryCount) {
         this.carCount = carCount;

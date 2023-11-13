@@ -1,6 +1,7 @@
 package racingCar.ui;
 
 import racingCar.Car;
+import racingCar.Cars;
 
 import java.util.List;
 
@@ -12,11 +13,10 @@ public class ResultView {
         System.out.println(ResultView.RESULT_PREFIX);
     }
 
-    public static void printDistance(List<Car> carList) {
+    public static void printDistance(Cars cars) {
+        List<Car> carList = cars.carList();
         for (Car car : carList) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("-".repeat(car.distance));
-            System.out.println(stringBuilder);
+            System.out.println("-".repeat(car.distance));
         }
         System.out.println();
     }
