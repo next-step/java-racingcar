@@ -62,9 +62,6 @@ public class Car {
     }
 
     public int presentHigherDistance(int highestDistance) {
-        if (distance > highestDistance) {
-            return distance;
-        }
-        return highestDistance;
+        return Math.max(distance, highestDistance);
     }
 }
