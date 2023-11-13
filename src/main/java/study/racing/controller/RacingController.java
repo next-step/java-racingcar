@@ -1,7 +1,6 @@
 package study.racing.controller;
 
 import study.racing.domain.Cars;
-import study.racing.domain.CarsNumber;
 import study.racing.domain.Names;
 import study.racing.domain.NumberGenerator;
 import study.racing.view.InputView;
