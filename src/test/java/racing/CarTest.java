@@ -11,17 +11,17 @@ class CarTest {
     @Test
     void assertMoveCar() {
         Car car = new Car("SONNY");
-        int TestNumberLessThanFour = 3;
-        int TestNumberGreaterThanFour = 5;
+        int testNumberLessThanFour = 3;
+        int testNumberGreaterThanFour = 5;
 
         car.moveCar();
 
         assertThat(car.distance()).isEqualTo(1);
 
-        car.validateForMove(TestNumberLessThanFour);
+        car.validateForMove(testNumberLessThanFour);
         assertThat(car.distance()).isEqualTo(1);
 
-        car.validateForMove(TestNumberGreaterThanFour);
+        car.validateForMove(testNumberGreaterThanFour);
         assertThat(car.distance()).isEqualTo(2);
     }
 
