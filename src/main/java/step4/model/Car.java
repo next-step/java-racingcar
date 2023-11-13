@@ -2,24 +2,26 @@ package step4.model;
 
 public class Car {
 
-    private int currentStatus;
+    private Position position;
     private final Name name;
 
     public Car(Name name) {
         this.name = name;
     }
 
-    public Car(Name name, int currentStatus) {
+    public Car(Name name, Position position) {
         this.name = name;
-        this.currentStatus = currentStatus;
+        this.position = position;
     }
 
-    public void go() {
-        this.currentStatus++;
+    public void go(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            this.position.move();
+        }
     }
 
-    public int getCurrentStatus() {
-        return this.currentStatus;
+    public Position getPosition() {
+        return this.position;
     }
 
     public Name getName() {

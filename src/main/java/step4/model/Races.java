@@ -11,18 +11,16 @@ public class Races {
 
     public Races(List<String> carNames) {
         this.cars = carNames.stream()
-                .map(name -> new Car(new Name(name)))
+                .map(name -> new Car(new Name(name), new Position(0)))
                 .collect(Collectors.toList());
     }
 
     public void start(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMovable()) {
-            this.cars.forEach(Car::go);
-        }
+        this.cars.forEach(car -> car.go(moveStrategy));
     }
 
     public List<Car> getWinners() {
-        Map<Integer, List<Car>> mappedByStatus = this.cars.stream().collect(Collectors.groupingBy(Car::getCurrentStatus));
+        Map<Integer, List<Car>> mappedByStatus = this.cars.stream().collect(Collectors.groupingBy(car -> car.getPosition().getCurrentStatus()));
         return mappedByStatus.get(Collections.max(mappedByStatus.keySet()));
     }
 

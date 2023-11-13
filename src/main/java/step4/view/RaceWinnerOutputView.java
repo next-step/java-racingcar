@@ -20,6 +20,6 @@ public class RaceWinnerOutputView {
     }
 
     public void progressInGame() {
-        cars.forEach(car -> System.out.println(car.getName().toString() + " : " + SIGN.repeat(car.getCurrentStatus())));
+        cars.forEach(car -> System.out.println(car.getName().toString() + " : " + SIGN.repeat(car.getPosition().getCurrentStatus())));
     }
 }
