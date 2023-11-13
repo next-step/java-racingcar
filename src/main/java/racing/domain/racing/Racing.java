@@ -96,13 +96,13 @@ public class Racing {
         }
 
         private Position max() {
-            int max = 0;
+            Position max = new Position(0);
             for (Car car : this.participatingCars) {
                 if (car.isForward(max)) {
-                    max = car.position().position();
+                    max = new Position(car.position().position());
                 }
             }
-            return new Position(max);
+            return max;
         }
     }
 }

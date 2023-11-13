@@ -39,8 +39,8 @@ public class Car {
         return this.position.equals(position);
     }
 
-    public boolean isForward(int position) {
-        return position < this.position.position();
+    public boolean isForward(Position position) {
+        return this.position.isForward(position);
     }
 
     @Override

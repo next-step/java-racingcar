@@ -19,6 +19,10 @@ public class Position implements Comparable<Position> {
         return new Position(currentPosition + offset);
     }
 
+    public boolean isForward(Position position) {
+        return position.position() < this.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
