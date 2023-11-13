@@ -1,6 +1,6 @@
 package study;
 
-import study.stringCalculator.StringCalculator;
+import study.calculator.StringCalculator;
 
 public class Step2 {
 

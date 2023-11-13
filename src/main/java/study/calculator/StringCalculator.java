@@ -1,8 +1,8 @@
-package study.stringCalculator;
+package study.calculator;
 
 public class StringCalculator {
 
-    public final int ZERO_RESULT = 0;
+    private final int ZERO_RESULT = 0;
     private Splitter splitter;
 
     public StringCalculator() {

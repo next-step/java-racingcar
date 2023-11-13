@@ -1,8 +1,6 @@
-package study.stringCalculator;
+package study.calculator;
 
 public class ExceptionHandler {
-    private boolean isNegativeNumber = false;
-    private boolean isNumber = true;
 
     public void checkNegativeNumber(int value) {
         if (value < 0) {  // 음수 검사
