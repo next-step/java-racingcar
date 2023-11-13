@@ -1,7 +1,6 @@
 package study.racingcar;
 
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -9,9 +8,9 @@ import java.util.stream.Collectors;
 
 public class History {
 
-    private final LinkedList<Map<Car,String>> history;
+    private final List<Map<Car,String>> history;
 
-    public History(LinkedList<Map<Car, String>> result) {
+    public History(List<Map<Car, String>> result) {
         this.history = result;
     }
 
@@ -20,7 +19,7 @@ public class History {
     }
 
     public List<String> winners() {
-        Map<Car, String> map = this.history.getLast();
+        Map<Car, String> map = this.history.get(lastIndexOfhistory());
 
         String maxValue = map.values().stream()
             .max(Comparator.comparing(String::length))
@@ -31,5 +30,9 @@ public class History {
             .map(Entry::getKey)
             .map(Car::name)
             .collect(Collectors.toList());
+    }
+
+    private int lastIndexOfhistory() {
+        return this.history.size() - 1;
     }
 }
