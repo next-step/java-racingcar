@@ -39,7 +39,7 @@ class RacingTest {
         AtomicInteger sumAfterStartGame = new AtomicInteger();
 
         newGame.cars().forEach(car -> {
-            sumBeforeStartGame.set(+car.getDistance());
+            sumBeforeStartGame.set(+car.distance());
         });
 
         assertThat(sumBeforeStartGame.get()).isEqualTo(0);
@@ -48,7 +48,7 @@ class RacingTest {
             newGame.moveCar();
         }
         newGame.cars().forEach(car -> {
-            sumAfterStartGame.set(+car.getDistance());
+            sumAfterStartGame.set(+car.distance());
         });
         assertThat(sumAfterStartGame.get()).isGreaterThan(0);
     }

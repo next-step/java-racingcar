@@ -7,7 +7,7 @@ import java.util.List;
 public class OutputView {
     public static void display(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-            System.out.println(cars.get(i).name()+ " : "+"-".repeat(cars.get(i).getDistance()));
+            System.out.println(cars.get(i).name()+ " : "+"-".repeat(cars.get(i).distance()));
         }
     }
 

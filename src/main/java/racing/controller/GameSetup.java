@@ -18,13 +18,13 @@ public class GameSetup {
 
     public List<String> presentWinners() {
         int highestDistance = cars.stream()
-                .max(Comparator.comparing(car -> car.getDistance()))
+                .max(Comparator.comparing(car -> car.distance()))
                 .get()
-                .getDistance();
+                .distance();
         List<String> winnerList = new ArrayList<>();
 
         cars.forEach(car -> {
-            if (car.getDistance() == highestDistance) {
+            if (car.distance() == highestDistance) {
                 winnerList.add(car.name());
             }
         });
