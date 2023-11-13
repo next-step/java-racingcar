@@ -34,7 +34,7 @@ public class Car {
         return new DriveResult(name, drivenDistance);
     }
 
-    public String name() {
+    protected String name() {
         return this.name;
     }
 }
