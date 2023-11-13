@@ -1,7 +1,5 @@
 package racing.domain;
 
-import common.StringSpliter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,17 +9,56 @@ public class RacingGame {
     private final List<Car> cars = new ArrayList<>();
     private int currentRound;
 
-    public RacingGame(String userNameAnswer, int carCount, int gameCount, CarMoveStrategy carMoveStrategy) {
+    public RacingGame(String[] userNames, int gameCount, CarMoveStrategy carMoveStrategy) {
         this.gameCount = gameCount;
         this.carMoveStrategy = carMoveStrategy;
         this.currentRound = 0;
 
-        String[] userNames = parseUserName(userNameAnswer);
-        initRacingCar(userNames, carCount);
+        initRacingCar(userNames);
     }
+
+    private void initRacingCar(String[] userNames) {
+        for (int i = 0; i < userNames.length; i++) {
+            cars.add(new Car(userNames[i]));
+        }
+    }
+
 
     public boolean isProgress() {
         return this.getCurrentRound() < this.getGameCount();
+    }
+
+
+    public void race() {
+        cars.forEach(this::playGame);
+        this.currentRound++;
+    }
+
+    public List<Car> getWinners() {
+        Position maxPosition = getMaxPosition();
+        List<Car> winCars = new ArrayList<>();
+
+        List<Car> racingCars = getRacingCars();
+        racingCars.stream()
+                .filter(o -> o.getPosition().isFartherOrEqual(maxPosition))
+                .forEach(winCars::add);
+        return winCars;
+    }
+
+    private void playGame(Car car) {
+        int result = carMoveStrategy.getMoveSource();
+        car.move(result);
+    }
+
+    private Position getMaxPosition() {
+        Position maxPosition = new Position(0);
+        List<Car> racingCars = getRacingCars();
+        for (Car racingCar : racingCars) {
+            if (racingCar.getPosition().isFartherOrEqual(maxPosition)) {
+                maxPosition = racingCar.getPosition();
+            }
+        }
+        return maxPosition;
     }
 
     public int getGameCount() {
@@ -36,48 +73,4 @@ public class RacingGame {
         return currentRound;
     }
 
-    public void doRacing() {
-        cars.forEach(this::doGame);
-        this.currentRound++;
-    }
-
-    public List<Car> getWinners() {
-        int maxPosition = getMaxPosition();
-        List<Car> winCars = new ArrayList<>();
-
-        List<Car> racingCars = getRacingCars();
-        racingCars.stream()
-                .filter(o -> o.getPosition() == maxPosition)
-                .forEach(winCars::add);
-        return winCars;
-    }
-
-
-    private String[] parseUserName(String userNameAnswer) {
-        final String NAME_SPLIT_DELIMITER = ",";
-        return StringSpliter.getSplittedString(userNameAnswer, NAME_SPLIT_DELIMITER);
-    }
-    
-
-    private void initRacingCar(String[] userNames, int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(userNames[i]));
-        }
-    }
-
-    private void doGame(Car car) {
-        int result = carMoveStrategy.getResult();
-        car.move(result);
-    }
-
-    private int getMaxPosition() {
-        int maxPosition = 0;
-        List<Car> racingCars = getRacingCars();
-        for (Car racingCar : racingCars) {
-            if (racingCar.getPosition() >= maxPosition) {
-                maxPosition = racingCar.getPosition();
-            }
-        }
-        return maxPosition;
-    }
 }

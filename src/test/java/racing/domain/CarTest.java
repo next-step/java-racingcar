@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -20,11 +18,11 @@ class CarTest {
         // given
         final int FOUR = 4;
         Car car = new Car(userName);
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition().getValue()).isZero();
 
         // when
         car.move(FOUR);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition().getValue()).isEqualTo(1);
     }
 
     @DisplayName("자동차는 정지할 수 있다.")
@@ -32,11 +30,11 @@ class CarTest {
     void car_stop_success() {
         // given
         Car car = new Car(userName);
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition().getValue()).isZero();
 
         // when
         car.move(0);
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition().getValue()).isZero();
     }
 
     @DisplayName("자동차는 0-9 사이의 값중 4이상의 값이 들어올 때 전진한다.")
@@ -50,7 +48,7 @@ class CarTest {
         car.move(input);
 
         // then
-        assertThat(car.getPosition())
+        assertThat(car.getPosition().getValue())
                 .isEqualTo(result);
     }
 
@@ -59,14 +57,14 @@ class CarTest {
     void car_stop_when_random_bound_to_3() {
         // given
         Car car = new Car(userName);
-        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(new Random(), 3);
+        CarMoveStrategy carMoveStrategy = new CarMoveStrategy(3);
 
         // when
-        int result = carMoveStrategy.getResult();
+        int result = carMoveStrategy.getMoveSource();
         car.move(result);
 
         // then
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getPosition().getValue()).isZero();
         assertThat(result).isLessThan(4);
     }
 

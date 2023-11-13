@@ -12,6 +12,10 @@ public class Position {
         return value;
     }
 
+    public boolean isFartherOrEqual(Position position) {
+        return this.value >= position.value;
+    }
+
     private void validatePositionValue(int value) {
         if (value < 0) {
             throw new IllegalArgumentException("음수는 위치값으로 가질 수 없습니다.");

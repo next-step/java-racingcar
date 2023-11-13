@@ -3,12 +3,12 @@ package racing.domain;
 import java.util.Random;
 
 public class CarMoveStrategy {
+    private static final int RANDOM_BOUND = 10;
     private final Random random;
-    private final int RANDOM_BOUND = 10;
     private final int bound;
 
-    public CarMoveStrategy(Random random) {
-        this.random = random;
+    public CarMoveStrategy() {
+        this.random = new Random();
         this.bound = RANDOM_BOUND;
     }
 
@@ -16,12 +16,12 @@ public class CarMoveStrategy {
     /*
      * When created with no bound parameter, default is 10.
      */
-    public CarMoveStrategy(Random random, int bound) {
-        this.random = random;
+    public CarMoveStrategy(int bound) {
+        this.random = new Random();
         this.bound = bound;
     }
 
-    public int getResult() {
+    public int getMoveSource() {
         return random.nextInt(bound);
     }
 }

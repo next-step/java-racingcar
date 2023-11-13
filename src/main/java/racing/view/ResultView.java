@@ -16,8 +16,8 @@ public class ResultView {
     }
 
     public static void printProgressView(RacingGame racingGame) {
-        List<Car> racingCarList = racingGame.getRacingCars();
-        racingCarList.forEach(o -> printProgress(o.getCarName(), o.getPosition()));
+        List<Car> racingCars = racingGame.getRacingCars();
+        racingCars.forEach(o -> printProgress(o.getCarName(), o.getPosition().getValue()));
     }
 
     public static void printWinnerNoticeView(RacingGame racingGame) {
@@ -35,10 +35,10 @@ public class ResultView {
     }
 
     private static String getWinnersName(RacingGame racingGame) {
-        List<String> userNameList = racingGame.getWinners()
+        List<String> userNames = racingGame.getWinners()
                 .stream()
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
-        return String.join(",", userNameList);
+        return String.join(",", userNames);
     }
 }
