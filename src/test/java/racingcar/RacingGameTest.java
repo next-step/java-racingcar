@@ -2,9 +2,10 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.function.Function;
-
 import org.junit.jupiter.api.Test;
+
+import racingcar.domain.MoveStrategy;
+import racingcar.domain.RacingGame;
 
 public class RacingGameTest {
 
