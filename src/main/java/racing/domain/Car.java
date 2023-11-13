@@ -1,10 +1,11 @@
 package racing.domain;
 
 public class Car {
-    private int distance;
-    private String name;
     private static final int CONDITION_FOR_MOVE = 4;
     private static final int CONDITION_FOR_NAME_LENGTH = 5;
+
+    private int distance;
+    private String name;
 
     public Car(String name) {
         this.distance = 0;
