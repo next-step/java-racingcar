@@ -45,4 +45,25 @@ public class Car {
     private static boolean isMovable(int randomValue) {
         return randomValue >= CONDITION_FOR_MOVE;
     }
+
+    public Boolean isThisWinningWithOthers(int highestDistance) {
+        if (distance == highestDistance) {
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean isThisWinningAlone(int highestDistance) {
+        if (distance > highestDistance) {
+            return true;
+        }
+        return false;
+    }
+
+    public int presentHigherDistance(int highestDistance) {
+        if (distance > highestDistance) {
+            return distance;
+        }
+        return highestDistance;
+    }
 }

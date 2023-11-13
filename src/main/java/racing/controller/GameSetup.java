@@ -4,7 +4,6 @@ import racing.domain.Car;
 import racing.util.RandomUtil;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class GameSetup {
@@ -17,17 +16,21 @@ public class GameSetup {
     }
 
     public List<String> presentWinners() {
-        int highestDistance = cars.stream()
-                .max(Comparator.comparing(car -> car.distance()))
-                .get()
-                .distance();
+        int highestDistance = 0;
         List<String> winnerList = new ArrayList<>();
 
-        cars.forEach(car -> {
-            if (car.distance() == highestDistance) {
+        for (Car car: cars) {
+            if (car.isThisWinningWithOthers(highestDistance)) {
                 winnerList.add(car.name());
+                highestDistance = car.presentHigherDistance(highestDistance);
             }
-        });
+
+            if (car.isThisWinningAlone(highestDistance)) {
+                winnerList.clear();
+                winnerList.add(car.name());
+                highestDistance = car.presentHigherDistance(highestDistance);
+            }
+        }
         return winnerList;
     }
 

@@ -32,4 +32,25 @@ class CarTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5글자를 초과할 수 없습니다.");
     }
+
+    @Test
+    void assertIsThisWinningWithAlone() {
+        Car car = new Car("SONNY", 3);
+
+        assertThat(car.isThisWinningAlone(2)).isEqualTo(true);
+    }
+
+    @Test
+    void assertIsThisWinningWithOthers() {
+        Car car = new Car("SONNY", 2);
+
+        assertThat(car.isThisWinningWithOthers(2)).isEqualTo(true);
+    }
+
+    @Test
+    void assertPresentHigherDistance() {
+        Car car = new Car("SONNY", 3);
+
+        assertThat(car.presentHigherDistance(1)).isEqualTo(3);
+    }
 }
