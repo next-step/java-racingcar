@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
     private int location = 1;
     private String name;
 

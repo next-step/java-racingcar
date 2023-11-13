@@ -3,8 +3,8 @@ package racingcar;
 import java.util.Scanner;
 
 public class InputView {
-    private Scanner scanner = new Scanner(System.in);
-    private String[] questions = new String[] {
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final String[] questions = new String[] {
             "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).",
             "시도할 회수는 몇 회 인가요?"
     };
@@ -12,9 +12,9 @@ public class InputView {
     private int carNumber;
     private int roundNumber;
 
-    private static String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
-    private static String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
-    private static String NAME_DELIMITER = ",";
+    private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
+    private static final String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
+    private static final String NAME_DELIMITER = ",";
 
     public void input() {
         // car List
