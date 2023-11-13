@@ -58,6 +58,6 @@ class RacingTest {
         Car car = new Car("JUNG", 10);
         newGame.cars().add(car);
 
-        assertThat(newGame.validateWinner().get(0)).isEqualTo("JUNG");
+        assertThat(newGame.presentWinners().get(0)).isEqualTo("JUNG");
     }
 }

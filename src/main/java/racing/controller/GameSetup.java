@@ -16,7 +16,7 @@ public class GameSetup {
         assignCarName(names);
     }
 
-    public List<String> validateWinner() {
+    public List<String> presentWinners() {
         int highestDistance = cars.stream()
                 .max(Comparator.comparing(car -> car.getDistance()))
                 .get()
