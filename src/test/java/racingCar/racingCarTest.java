@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class racingCarTest {
 
@@ -25,7 +26,7 @@ public class racingCarTest {
 
         List<String> winners = WinnerCar.returnWinner(cars);
         assertThat(winners).hasSize(2);
-        assertThat(winners).containsExactly("pobi","honux");
+        assertThat(winners).containsExactly("pobi", "honux");
     }
 
     @Test
@@ -36,7 +37,7 @@ public class racingCarTest {
         assertThat(cars.getCarList()).hasSize(3);
 
         for(int i=0; i<3; i++) {
-            assertThat(cars.getCarList().get(i).getForwardCnt()).isBetween(0, 5);
+            assertThat(cars.forwardCountOf(i)).isBetween(0, 5);
         }
 
     }
@@ -44,25 +45,29 @@ public class racingCarTest {
     @Test
     @DisplayName("입력한 여러대의 자동차 이름을 콤마 구분자로 구분하여 자동차 이름을 부여하고 0번 움직인 결과를 반환한다.")
     public void 자동차_경주_초기_설정(){
-        String carNames = "aaa,bbb,ccc";
+        String carNames = "pobi,crong,honux";
 
         NamedCars cars = new NamedCars(carNames);
 
-        assertThat(cars.getCarList().get(0).getCarName()).isEqualTo("aaa");
-        assertThat(cars.getCarList().get(1).getCarName()).isEqualTo("bbb");
-        assertThat(cars.getCarList().get(2).getCarName()).isEqualTo("ccc");
+        assertAll(
+                () -> assertThat(cars.carNameOf(0)).isEqualTo("pobi"),
+                () -> assertThat(cars.carNameOf(1)).isEqualTo("crong"),
+                () -> assertThat(cars.carNameOf(2)).isEqualTo("honux")
+        );
 
-        assertThat(cars.getCarList().get(0).getForwardCnt()).isEqualTo(0);
-        assertThat(cars.getCarList().get(1).getForwardCnt()).isEqualTo(0);
-        assertThat(cars.getCarList().get(2).getForwardCnt()).isEqualTo(0);
+        assertAll(
+                () -> assertThat(cars.forwardCountOf(0)).isEqualTo(0),
+                () -> assertThat(cars.forwardCountOf(1)).isEqualTo(0),
+                () ->  assertThat(cars.forwardCountOf(2)).isEqualTo(0)
+        );
     }
 
     @Test
-    @DisplayName("자동차 이름이 5자를 초과할 경우 예외를 발생한다.")
-    public void 자동차_이름_5자_초과(){
+    @DisplayName("자동차 이름이 최대 길이를 초과할 경우 예외를 발생한다.")
+    public void 자동차_이름_최대_길이_초과(){
         assertThatThrownBy(() -> {
             assertThat(new Car("abcedf",0));
-        }).isInstanceOf(RuntimeException.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

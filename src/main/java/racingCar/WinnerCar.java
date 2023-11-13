@@ -16,13 +16,7 @@ public class WinnerCar {
     }
 
     public static List<String> returnWinner(NamedCars namedCars){
-        int maxForward = namedCars.getMaxForward();
-
-        List<String> winners = new ArrayList<>();
-
-        for(Car car : namedCars.getCarList()){
-            if(car.getForwardCnt() == maxForward) winners.add(car.getCarName());
-        }
+        List<String> winners = namedCars.returnWinnerCars();
 
         ResultView.printWinner(winners);
 
