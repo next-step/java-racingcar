@@ -7,8 +7,10 @@ public class Car {
 
     }
 
-    public void moveCar(){
-        ++moveCount;
+    public void moveCar(Strategy strategy){
+        if(strategy.isMovable) {
+            ++moveCount;
+        }
     }
 
     public int getMoveCount(){

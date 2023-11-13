@@ -1,54 +1,50 @@
 package racing;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 import static racing.InputView.*;
 import static racing.ResultView.*;
 
 public class Racing {
     private static final int START = 1;
-    private static final int MAX_RANDOM_NUMBER = 10;
-    private static final int MOVE_THRESHOLD = 4;
 
     public static void main(String[] args) {
-        Car[] cars = new Car[inputCarCount()];
-        for(int index = 0; index < cars.length; ++index){
-            cars[index] = new Car();
+        int carCount = inputCarCount();
+        List<Car> carList = new ArrayList<>();
+        for(int i = 0; i < carCount; ++i){
+            carList.add(new Car());
         }
         int moveCount = inputMoveCount();
 
         System.out.println("실행 결과");
-        doRacing(cars, moveCount);
+        doRacing(carList, moveCount);
     }
 
-    public static void doRacing(Car[] cars, int moveCount) {
+    public static void doRacing(List<Car> carList, int moveCount) {
         int maxCarMove = START;
+        Strategy strategy = new Strategy();
+
         while(maxCarMove < moveCount){
-            for(Car car : cars){
-                if (checkMove()){
-                    car.moveCar();
-                }
+            for(Car car : carList){
+                strategy.setMovable();
+                car.moveCar(strategy);
             }
 
-            int currentMaxCarMove = getMaxCarMove(cars);
+            int currentMaxCarMove = getMaxCarMove(carList);
             if (maxCarMove <= currentMaxCarMove){
-                showStatus(cars);
+                showStatus(carList);
                 maxCarMove = currentMaxCarMove;
             }
         }
 
-        showResult(cars, moveCount);
+        showResult(carList, moveCount);
     }
 
-    public static boolean checkMove() {
-        Random random = new Random();
-        return random.nextInt(MAX_RANDOM_NUMBER) >= MOVE_THRESHOLD;
-    }
 
-    private static int getMaxCarMove(Car[] cars) {
+    private static int getMaxCarMove(List<Car> carList) {
         int maxMove = 0;
-        for(Car car : cars){
+        for(Car car : carList){
             maxMove = Math.max(maxMove, car.getMoveCount());
         }
         return maxMove;

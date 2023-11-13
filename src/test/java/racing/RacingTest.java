@@ -20,11 +20,14 @@ public class RacingTest {
     @DisplayName("2개의 차가 달리고 2번째 차량이 움직인 경우 테스트")
     @Test
     void 정상_작동_확인(){
+        Strategy strategy = new Strategy();
         Car[] cars = new Car[2];
         for(int index = 0; index < cars.length; ++index){
             cars[index] = new Car();
         }
-        cars[1].moveCar();
+
+        strategy.setMovable(true);
+        cars[1].moveCar(strategy);
 
         assertThat(cars[0].getMoveCount()).isEqualTo(1);
         assertThat(cars[1].getMoveCount()).isEqualTo(2);
