@@ -1,12 +1,14 @@
-package study;
+package study.view;
+
+import study.domain.RacingCar;
 
 import java.util.ArrayList;
-import static study.RacingCar.BLANK;
-import static study.RacingCarGame.*;
+import static study.domain.RacingCar.BLANK;
+import static study.domain.RacingCarGame.*;
 
 public class ResultView {
 
-    public static void result(ArrayList<RacingCar> carList,int stepNum){
+    public static void result(ArrayList<RacingCar> carList, int stepNum){
 
         int carNum = carList.size();
         int loopNum = stepNum;

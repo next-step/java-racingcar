@@ -2,13 +2,15 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.domain.RacingCar;
+import study.domain.RacingCarGame;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.RacingCarGame.*;
-import static study.RacingCarGame.combineName;
+import static study.domain.RacingCarGame.*;
+import static study.domain.RacingCarGame.combineName;
 
 public class RacingCarGameTest {
 
@@ -86,5 +88,15 @@ public class RacingCarGameTest {
 
     }
 
+    @Test
+    @DisplayName("차량 동일 여부 테스트")
+    void equalCar_차량동일여부() {
 
+        ArrayList<Integer> randomList = new ArrayList<>(List.of(4, 5, 5, 6)); //전진 4
+        RacingCar car1 = new RacingCar("test",4,randomList);
+        RacingCar car2 = new RacingCar("test",4,randomList);
+
+        assertThat(car1).isEqualTo(car2);
+
+    }
 }

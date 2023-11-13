@@ -1,26 +1,29 @@
 package study;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import study.domain.RacingCar;
+import study.domain.RacingCarGame;
+import study.view.InputView;
+import study.view.ResultView;
 
-import static study.RacingCarGame.checkValue;
+import java.util.ArrayList;
+
+import static study.domain.RacingCarGame.checkValue;
 
 
 public class RacingCarViewMain {
 
     public static void main(String[] args) {
 
-        ArrayList<RacingCar> carMapList = new ArrayList<RacingCar>();
+        ArrayList<RacingCar> carList = new ArrayList<RacingCar>();
 
         int carNum = checkValue(InputView.inputCarValue());
         int stepNum = checkValue(InputView.inputStepValue());
 
         String[] carNameList = InputView.inputCarName().split(",");
 
-        carMapList = RacingCarGame.creatCar(carNum,carNameList,stepNum);
+        carList = RacingCarGame.creatCar(carNum,carNameList,stepNum);
 
-        ResultView.result(carMapList, stepNum);
+        ResultView.result(carList, stepNum);
 
     }
 }

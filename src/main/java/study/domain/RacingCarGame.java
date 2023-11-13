@@ -1,9 +1,9 @@
-package study;
+package study.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static study.RacingCar.CONDITION_VAL;
+import static study.domain.RacingCar.CONDITION_VAL;
 
 public class RacingCarGame {
 
