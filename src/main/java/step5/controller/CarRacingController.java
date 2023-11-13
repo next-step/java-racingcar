@@ -3,8 +3,11 @@ package step5.controller;
 import step5.model.Car;
 import step5.model.CarRacingPlay;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CarRacingController {
 
@@ -20,17 +23,19 @@ public class CarRacingController {
     }
 
     public RacingResultDto race(int racingCycle) {
-        RacingResultDto racingResultDto = new RacingResultDto();
 
-        for (int cycle = 1; cycle <= racingCycle; cycle++) {
-            List<Car> cars = carRacingPlay.raceOneCycle();
-            List<Car> copyCars = cars.stream()
-                    .map(Car::deepCopy)
-                    .collect(Collectors.toList());
-            racingResultDto.racingResult.put(cycle, copyCars);
-        }
+        LinkedHashMap<Integer, List<Car>> result = IntStream.range(1, racingCycle + 1)
+                .boxed()
+                .collect(Collectors.toMap(
+                        cycle -> cycle,
+                        cycle -> carRacingPlay.raceOneCycle()
+                                .stream().map(Car::deepCopy)
+                                .collect(Collectors.toList()),
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
 
-        return racingResultDto;
+        return new RacingResultDto(result);
     }
 
     public ChampionCarsDto findChampions() {

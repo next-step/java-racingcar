@@ -8,5 +8,9 @@ import java.util.Map;
 
 public class RacingResultDto {
 
-    public Map<Integer, List<Car>> racingResult = new LinkedHashMap<>();
+    public Map<Integer, List<Car>> racingResult;
+
+    public RacingResultDto(LinkedHashMap<Integer, List<Car>> racingResult) {
+        this.racingResult = racingResult;
+    }
 }
