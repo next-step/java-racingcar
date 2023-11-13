@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final String DELIMITER = " : ";
     private static final int NEXT_POSITION = 1;
     private static final int STANDARD_NUMBER = 4;
     private final Name name;
@@ -19,7 +20,15 @@ public class Car {
         if (randomNumber >= STANDARD_NUMBER) {
             this.position = new Position(position.getValue() + NEXT_POSITION);
         }
-        return position.getDash();
+        return name.getValue() + DELIMITER + position.getDash();
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
     @Override

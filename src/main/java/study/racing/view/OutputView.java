@@ -20,4 +20,9 @@ public class OutputView {
 
         System.out.println(RACING_RESULT_MESSAGE + racingResult);
     }
+
+    public void printWinner(String winners) {
+
+        System.out.println(winners + "가 최종 우승했습니다.");
+    }
 }

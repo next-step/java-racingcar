@@ -29,5 +29,6 @@ public class RacingController {
         String results = cars.move(randomGenerator, inputView.inputTryCounts());
 
         outputView.printRacingResultMessage(results);
+        outputView.printWinner(cars.findWinners());
     }
 }
