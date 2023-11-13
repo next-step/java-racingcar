@@ -1,11 +1,13 @@
-package racing.game;
+package racing.random;
 
 import java.util.Random;
 
 public class RandomReturnZeroToNine extends Random {
 
+	private static final int BOUND = 10;
+
 	@Override
 	public int nextInt() {
-		return nextInt(10);
+		return nextInt(BOUND);
 	}
 }

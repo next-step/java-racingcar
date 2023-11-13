@@ -1,8 +1,8 @@
 package racing;
 
-import racing.car.CarList;
+import racing.model.car.CarList;
 import racing.game.Game;
-import racing.game.RandomReturnZeroToNine;
+import racing.random.RandomReturnZeroToNine;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -19,10 +19,10 @@ public class Main {
 			Game game = new Game(new RandomReturnZeroToNine());
 
 			ResultView resultView = new ResultView();
-			resultView.print(cars);
+			resultView.printCars(cars);
 			for (int i = 0; i < numberOfAttempts; i++) {
 				cars.moveAll(game.bounds(numberOfCars));
-				resultView.print(cars);
+				resultView.printCars(cars);
 			}
 			resultView.printWinners(cars.getWinners());
 		} catch (IllegalArgumentException e) {
