@@ -2,12 +2,12 @@ package camp.nextstep.edu.racingcar.view;
 
 import java.util.Scanner;
 
-public class RacingInputView {
+public final class RacingInputView {
 
     private static final Scanner sc = new Scanner(System.in);
 
     private RacingInputView() {
-
+        throw new AssertionError("Cannot create a instance");
     }
 
     public static String readCarNames() {
