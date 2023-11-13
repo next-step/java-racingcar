@@ -67,3 +67,7 @@
 * [ ] CarList.moveByTryCount()에 대한 Test도 위에 언급한 바와 같다. 확실한 상태값에 대한 테스트를 진행하고, for loop / if-else와 같은 반복, 조건문을 지양한다.
   * 테스트 삭제
 * [x] getRandomNumber() Test는 굳이 필요가 없을 듯 하다.
+
+### Feedback 23.11.13
+* [x] 의존성 역전을 통해 핵심 메서드인 move() 개선 + InputView, ResultView
+* [ ] 현재 addCar()는 직접 제어할 수 없는 상태(테스트하기 힘들다.) 추후 개선 요망

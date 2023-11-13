@@ -1,35 +1,35 @@
 package racingCar.car;
 
-import racingCar.game.RacingUtil;
+import racingCar.util.RandomNumberSupplier;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> carList = new ArrayList<>();
+	private final List<Car> carList = new ArrayList<>();
 
-    private Cars() {
-    }
+	private Cars() {
+	}
 
-    public static Cars of(int carCount) {
-        Cars cars = new Cars();
-        cars.addCar(carCount);
-        return cars;
-    }
+	public static Cars of(int carCount) {
+		Cars cars = new Cars();
+		cars.addCar(carCount);
+		return cars;
+	}
 
-    public List<Car> carList() {
-        return carList;
-    }
+	public List<Car> carList() {
+		return carList;
+	}
 
-    public void addCar(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
-        }
-    }
+	private void addCar(int carCount) {
+		for (int i = 0; i < carCount; i++) {
+			carList.add(new Car(0, new RandomNumberSupplier()));
+		}
+	}
 
-    public void moveOnce() {
-        for (Car car : carList) {
-            car.move(RacingUtil.getRandomNumber());
-        }
-    }
+	public void moveOnce() {
+		for (Car car : carList) {
+			car.move();
+		}
+	}
 }
