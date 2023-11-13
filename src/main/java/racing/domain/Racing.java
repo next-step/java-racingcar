@@ -1,11 +1,10 @@
 package racing.domain;
 
-
-import java.util.Random;
+import java.util.List;
 
 public class Racing {
 
-    private final String CANNOT_BE_NEGATIVE_NUMBERS = "음수 입력 불가능합니다.";
+    private static final String CANNOT_BE_NEGATIVE_NUMBERS = "음수 입력 불가능합니다.";
 
     private int carCount = 0;
 
@@ -13,24 +12,14 @@ public class Racing {
 
     private Cars carList = new Cars();
 
-    public Racing(int carCount, int tryCount){
-        this.carCount = carCount;
+    public Racing(String carNames, int tryCount){
         this.tryCount = tryCount;
-        makeCarList(carCount);
+        carList.makeCarList(carNames);
     }
 
-    private void makeCarList(int carCount) {
-        for(int i = 0; i< carCount; i++){
-            carList.addCar(new Car());
-        }
-    }
-
-    public Cars racingStart(Random random){
+    public Cars racingStart(MoveStrategy moveStrategy){
         validation(carCount, tryCount);
-        for(int i=0; i< carList.getSize(); i++){
-            Car car = carList.getCar(i);
-            car.moveCar(random.nextInt(10));
-        }
+        carList.move(moveStrategy);
         return carList;
     }
 
@@ -38,6 +27,10 @@ public class Racing {
         if(carCount < 0 || tryCount < 0){
             throw new RuntimeException(CANNOT_BE_NEGATIVE_NUMBERS);
         }
+    }
+
+    public String findWinner(){
+        return carList.findWinner();
     }
 
     public Cars getCars(){

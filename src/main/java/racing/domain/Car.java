@@ -2,18 +2,30 @@ package racing.domain;
 
 public class Car {
 
-    final int MOVE_CHECK_NUMBER = 4;
+    private String carName = "";
 
     private int moveCount = 0;
 
-    public void moveCar(int randomNumber){
-        if(randomNumber >= MOVE_CHECK_NUMBER){
+    public Car(){
+        this("test");
+    }
+
+    public Car(String carName){
+        this.carName = carName;
+    }
+
+    public void moveCar(MoveStrategy moveStrategy){
+        if(moveStrategy.movable()){
             this.moveCount++;
         }
     }
 
     public int getMoveCount(){
         return this.moveCount;
+    }
+
+    public String getCarName(){
+        return this.carName;
     }
 
 }
