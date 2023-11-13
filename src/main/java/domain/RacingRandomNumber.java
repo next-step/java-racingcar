@@ -15,6 +15,8 @@ public class RacingRandomNumber {
     }
 
     public Integer number() {
+        if (number >= 10)
+            throw new IllegalArgumentException();
         return number;
     }
 }
