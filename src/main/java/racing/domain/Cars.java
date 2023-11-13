@@ -32,6 +32,10 @@ public class Cars {
         }
     }
 
+    public void playRound() {
+        this.tryMove();
+    }
+
     public Car getCar(int index) {
         return cars.get(index);
     }

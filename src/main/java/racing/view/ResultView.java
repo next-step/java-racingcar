@@ -14,7 +14,7 @@ public class ResultView {
     private static final String INFORMATION_FOR_RESULT = "실행결과";
     private static final String INFORMATION_FOR_WINNER = "가 최종 우숭했습니다.";
 
-    public static void carStatus(Cars cars) {
+    public void carStatus(Cars cars) {
         int size = cars.getSize();
         for (int i = 0; i < size; i++) {
             Car car = cars.getCar(i);
@@ -23,12 +23,12 @@ public class ResultView {
         System.out.println(BLANK);
     }
 
-    public static void resultMessage() {
+    public void resultMessage() {
         System.out.println(BLANK);
         System.out.println(INFORMATION_FOR_RESULT);
     }
     
-    public static void showWinner(Cars cars) {
+    public void showWinner(Cars cars) {
         List<String> winnerNames = new ArrayList<>();
         int size = cars.getSize();
         for (int i = 0; i < size; i++) {
