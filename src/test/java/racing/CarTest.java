@@ -37,14 +37,14 @@ class CarTest {
     void assertIsThisWinningWithAlone() {
         Car car = new Car("SONNY", 3);
 
-        assertThat(car.isThisWinningAlone(2)).isEqualTo(true);
+        assertThat(car.isThisWinningAlone(2)).isTrue();
     }
 
     @Test
     void assertIsThisWinningWithOthers() {
         Car car = new Car("SONNY", 2);
 
-        assertThat(car.isThisWinningWithOthers(2)).isEqualTo(true);
+        assertThat(car.isThisWinningWithOthers(2)).isTrue();
     }
 
     @Test
