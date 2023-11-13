@@ -1,6 +1,6 @@
 package study;
 
-import study.race.CarRacing;
+import study.race.controller.CarRacing;
 
 public class Step3 {
 

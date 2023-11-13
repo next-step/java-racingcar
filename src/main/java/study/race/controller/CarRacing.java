@@ -1,8 +1,8 @@
-package study.race;
+package study.race.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import study.race.view.ReceiveInputValue;
+import study.race.model.RunTrack;
+import study.race.view.ViewResult;
 
 public class CarRacing {
 
@@ -20,7 +20,7 @@ public class CarRacing {
 
         RunTrack runTrack = new RunTrack(numberOfCar);
 
-        System.out.println("\nExecution Results");
+        System.out.println("\nExecution Result");
         this.viewResult.printResult(runTrack.getRaceResult());
         for (int i = 0; i < roundOfTrack; i++) {
             runTrack.start();

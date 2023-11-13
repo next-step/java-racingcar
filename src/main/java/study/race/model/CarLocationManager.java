@@ -1,16 +1,18 @@
-package study.race;
+package study.race.model;
 
 public class CarLocationManager {
 
-    private final int STARTING_PORING = 1;
+    private final int STARTING_POINT = 0;
+    private final int MOVE = 1;
     private final int FORWARD_CONDITION_THRESHOLD = 4;
+
     public int initMovingDistance() {
-        return STARTING_PORING;
+        return STARTING_POINT;
     }
 
     public int updateLocation(int currentDistance, int movingDistance) {
-        if (checkForwardCondition(movingDistance)) {
-            return currentDistance + movingDistance;
+        if (checkForwardCondition(movingDistance) || currentDistance == STARTING_POINT) {
+            return currentDistance + MOVE;
         }
         return currentDistance;
     }

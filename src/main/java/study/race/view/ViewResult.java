@@ -1,4 +1,4 @@
-package study.race;
+package study.race.view;
 
 import java.util.List;
 
@@ -8,6 +8,6 @@ public class ViewResult {
         for (int result: results) {
             System.out.println("-".repeat(result));
         }
-        System.out.println("");
+        System.out.println();
     }
 }

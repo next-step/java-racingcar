@@ -1,4 +1,4 @@
-package study.race;
+package study.race.model;
 
 public class Car {
 
