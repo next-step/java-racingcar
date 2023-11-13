@@ -7,8 +7,12 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
     private static final String SPLIT_SEPARATOR = ",";
+
+    public InputView(Scanner scanner) {
+        this.scanner = scanner;
+    }
 
     public List<String> initCar(){
         String carNames = scanner.next();
