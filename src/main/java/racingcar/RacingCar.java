@@ -7,6 +7,7 @@ public class RacingCar {
     private static final Random rand = new Random();
     private static final String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
     private static final int NAME_MAX_LENGTH = 5;
+    private static final int THRESHOLD_NUMBER = 4;
 
     private int location = 1;
     private String name;
@@ -22,7 +23,7 @@ public class RacingCar {
     }
 
     public void moveOrStop(int value) {
-        if (value >= 4) {
+        if (value >= THRESHOLD_NUMBER) {
             // move
             this.location += 1;
         }
