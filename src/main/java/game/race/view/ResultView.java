@@ -28,27 +28,8 @@ public class ResultView {
         System.out.println(vehicleName + " : " + tireMark);
     }
 
-    public void print(List<String> winners) {
-        for (int i = 0; i < winners.size(); i++) {
-            if (finalPrint(winners, i)) {
-                return;
-            }
-
-            System.out.print(winners.get(i) + ", ");
-        }
-    }
-
-    private static boolean finalPrint(List<String> winners, int i) {
-        if (winners.size() == 1) { // only one winner
-            System.out.println(winners.get(i) + "가 최종 우승했습니다.");
-            return true;
-        }
-
-        if (i == winners.size() - 1) { // more winners
-            System.out.println(winners.get(i) + "가 최종 우승했습니다.");
-            return true;
-        }
-
-        return false;
+    public static void printWinners(List<String> winners) {
+        String winner = String.join(", ", winners);
+        System.out.println(winner + "가 최종 우승했습니다.");
     }
 }

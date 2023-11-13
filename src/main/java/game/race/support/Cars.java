@@ -9,42 +9,45 @@ import game.race.support.move.MovePolicy;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> carList;
 
-    public Cars() {
-        this.cars = new ArrayList<>();
+    public Cars(List<Car> carList) {
+        this.carList = carList;
     }
 
-    public List<Car> of(List<String> vehicleNames) {
-        cars.addAll(vehicleNames.stream()
-                                .map(Car::new)
-                                .collect(Collectors.toList()));
+    public static Cars of(List<String> vehicleNames) {
+        Cars cars = new Cars(new ArrayList<>());
+        cars.getCarList().addAll(vehicleNames.stream().map(Car::new).collect(Collectors.toList()));
 
         return cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Car> getCarList() {
+        return carList;
     }
 
     public void move(MovePolicy policy) {
-        for (Car car : cars) {
+        for (Car car : carList) {
             car.move(policy);
         }
     }
 
     public List<String> getWinners() {
-        int maxMoveCount = 0;
         List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
-        }
-
-        for (Car car : cars) {
-            addWinner(car, maxMoveCount, winners);
+        for (Car car : carList) {
+            addWinner(car, getMaxMoveCount(), winners);
         }
 
         return winners;
+    }
+
+    private int getMaxMoveCount() {
+        int maxMoveCount = 0;
+        for (Car car : carList) {
+            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
+        }
+
+        return maxMoveCount;
     }
 
     private void addWinner(Car car,

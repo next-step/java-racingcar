@@ -15,8 +15,7 @@ public class RandomPolicy implements MovePolicy {
 
     }
 
-    @Override
-    public int getPolicyNumber() {
+    protected int getPolicyNumber() {
         return new Random().nextInt(10);
     }
 }

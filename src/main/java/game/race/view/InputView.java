@@ -10,21 +10,34 @@ public class InputView {
     private static final String ASK_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public RaceDto showPrompt() {
+    public static RaceDto showPrompt() {
         System.out.println(ASK_VEHICLE_NAME);
         String vehicleNames = SCANNER.nextLine();
-        checkInput(vehicleNames);
+        checkNames(vehicleNames);
 
         System.out.println(ASK_TRY_COUNT);
         String trials = SCANNER.nextLine();
-        checkInput(trials);
+        checkTryCount(trials);
 
         return RaceDto.of(vehicleNames, Integer.parseInt(trials));
     }
 
-    public void checkInput(String input) {
+    public static void checkNames(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("값을 입력 하세요.");
+            throw new IllegalArgumentException("값을 입력 하세요. - " + input);
+        }
+    }
+
+    public static void checkTryCount(String input) {
+        int number;
+        try {
+            number = Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("0이 아닌 숫자를 입력 하세요. - " + input);
+        }
+
+        if (number == 0) {
+            throw new IllegalArgumentException("0이 아닌 숫자를 입력 하세요. - " + input);
         }
     }
 }

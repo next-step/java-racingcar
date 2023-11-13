@@ -16,7 +16,7 @@ public class WeatherPolicy implements MovePolicy {
     }
 
     // TBD
-    public int getPolicyNumber() {
+    private int getPolicyNumber() {
         return 0;
     }
 }
