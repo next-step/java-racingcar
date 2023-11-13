@@ -52,3 +52,7 @@
 * 모든 로직에 단위 테스트를 구현한다. 단, UI(System.out, System.in) 로직은 제외
 * 자바 코드 컨벤션을 지키면서 프로그래밍한다
 * else 예약어를 쓰지 않는다.
+
+
+## 참고
+* [📌 VO 객체 관리](https://tecoble.techcourse.co.kr/post/2020-06-11-value-object/)
