@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingRuleTest {
+class RacingCarRuleTest {
 
     @ParameterizedTest
     @CsvSource(value = {"0,false", "3,false", "4,true", "9,true"})

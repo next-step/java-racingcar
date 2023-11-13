@@ -2,17 +2,18 @@ package step3.domain;
 
 public class RacingGame {
 
-    private static NumberGenerator numberGenerator = new RandomNumberGenerator();
+    private NumberGenerator numberGenerator;
 
     private RacingCar[] racingCars;
 
-    public RacingGame(int carCount) {
-        initRacingCars(carCount);
+    public RacingGame(RacingCar[] racingCars, NumberGenerator numberGenerator) {
+        this.racingCars = racingCars;
+        this.numberGenerator = numberGenerator;
     }
 
     public RacingCar[] runRound() {
         for (RacingCar racingCar : racingCars) {
-            racingCar.move(numberGenerator.generate());
+            racingCar.move(numberGenerator);
         }
         return getRacingCarsStatus();
     }
@@ -21,10 +22,4 @@ public class RacingGame {
         return racingCars;
     }
 
-    private void initRacingCars(int carCount) {
-        this.racingCars = new RacingCar[carCount];
-        for (int carNo = 0; carNo < carCount; carNo++) {
-            racingCars[carNo] = new RacingCar();
-        }
-    }
 }
