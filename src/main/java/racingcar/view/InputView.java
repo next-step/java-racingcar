@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,12 +12,12 @@ public class InputView {
     private static final String NAME_DELIMITER = ",";
 
 
-    public List<String> inputCarNameList() {
+    public static List<String> inputCarNameList() {
         System.out.println(QUESTION_CAR_NAMES);
         return Arrays.asList(scanner.nextLine().split(NAME_DELIMITER));
     }
 
-    public int inputRoundNumber() {
+    public static int inputRoundNumber() {
         System.out.println(QUESTION_ROUND_NUMBER);
         return scanner.nextInt();
     }
