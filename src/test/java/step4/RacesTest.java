@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.model.Car;
 import step4.model.Races;
 
 import java.util.Arrays;
@@ -37,7 +36,7 @@ public class RacesTest {
     void getWinnersTest() {
         Races racing = new Races(List.of("jane"));
         racing.start(new ForwardMoveStrategy());
-        assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining()))
+        assertThat(racing.getWinners().stream().map(car -> car.getName().toString()).collect(Collectors.joining()))
                 .isEqualTo("jane");
     }
 
@@ -46,7 +45,7 @@ public class RacesTest {
     void getMultipleWinnersTest() {
         Races racing = new Races(List.of("jane", "john"));
         racing.start(new ForwardMoveStrategy());
-        assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining(",")))
+        assertThat(racing.getWinners().stream().map(car -> car.getName().toString()).collect(Collectors.joining(",")))
                 .isEqualTo("jane,john");
     }
 }

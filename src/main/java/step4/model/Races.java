@@ -11,7 +11,8 @@ public class Races {
 
     public Races(List<String> carNames) {
         this.cars = carNames.stream()
-                .map(Car::new).collect(Collectors.toList());
+                .map(name -> new Car(new Name(name)))
+                .collect(Collectors.toList());
     }
 
     public void start(MoveStrategy moveStrategy) {

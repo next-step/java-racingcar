@@ -1,8 +1,10 @@
 package step4;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import step4.model.Car;
+import step4.model.Name;
 import step4.model.Races;
 
 import java.util.List;
@@ -11,25 +13,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"tester1"})
     @DisplayName("자동차가 앞으로 전진하는지 확인한다.")
-    void carGoTest() {
-        Car car = new Car("tester1", 0);
+    void carGoTest(String carName) {
+        Car car = new Car(new Name(carName), 0);
         assertThat(car.getCurrentStatus()).isEqualTo(0);
 
-        Races races = new Races(List.of("tester1"));
+        Races races = new Races(List.of(carName));
         races.start(new ForwardMoveStrategy());
         car.go();
         assertThat(car.getCurrentStatus()).isEqualTo(1);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"tester1"})
     @DisplayName("자동차가 멈춰야 할 경우를 확인한다.")
-    void carDoNotGoTest() {
-        Car car = new Car("tester1", 0);
+    void carDoNotGoTest(String carName) {
+        Car car = new Car(new Name(carName), 0);
         assertThat(car.getCurrentStatus()).isEqualTo(0);
 
-        Races races = new Races(List.of("tester1"));
+        Races races = new Races(List.of(carName));
         races.start(new StopMoveStrategy());
 
         assertThat(car.getCurrentStatus()).isEqualTo(0);
