@@ -1,25 +1,23 @@
-package game.race.support;
+package game.race.domain.support;
 
 import java.util.List;
 
-import game.race.dto.RaceDto;
-import game.race.support.move.MovePolicy;
-import game.race.support.move.impl.RandomPolicy;
+import game.race.domain.support.move.MovePolicy;
+import game.race.domain.support.move.impl.RandomPolicy;
 import game.race.view.ResultView;
 
 public class CarRacingManager {
 
-    public List<String> start(RaceDto raceDto) {
+    public List<String> start(int tryCnt, List<String> vehicleNames) {
         ResultView resultView = new ResultView();
         MovePolicy policy = new RandomPolicy();
-        Cars cars = Cars.of(raceDto.getVehicleNames());
+        Cars cars = Cars.of(vehicleNames);
 
         resultView.showPrompt();
 
-        int tryCnt = raceDto.getTryCnt();
         for (int trial = 0; trial < tryCnt; trial++) {
             cars.move(policy);
-            resultView.showCars(raceDto, cars.getCarList());
+            resultView.showCars(vehicleNames, cars.getCarList());
         }
 
        return cars.getWinners();

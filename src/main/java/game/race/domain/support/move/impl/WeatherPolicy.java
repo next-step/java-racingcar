@@ -1,6 +1,6 @@
-package game.race.support.move.impl;
+package game.race.domain.support.move.impl;
 
-import game.race.support.move.MovePolicy;
+import game.race.domain.support.move.MovePolicy;
 
 public class WeatherPolicy implements MovePolicy {
 

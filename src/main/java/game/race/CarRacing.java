@@ -4,7 +4,7 @@ import java.util.List;
 
 import game.race.view.InputView;
 import game.race.dto.RaceDto;
-import game.race.support.CarRacingManager;
+import game.race.domain.support.CarRacingManager;
 import game.race.view.ResultView;
 
 public class CarRacing {
@@ -17,7 +17,7 @@ public class CarRacing {
         RaceDto raceDto = InputView.showPrompt();
 
         CarRacingManager manager = new CarRacingManager();
-        List<String> winner = manager.start(raceDto);
+        List<String> winner = manager.start(raceDto.getTryCnt(), raceDto.getVehicleNames());
 
         ResultView.printWinners(winner);
     }

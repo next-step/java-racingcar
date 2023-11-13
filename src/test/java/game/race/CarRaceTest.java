@@ -9,7 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import game.race.support.move.impl.RandomPolicy;
+import game.race.domain.Car;
+import game.race.domain.support.move.impl.RandomPolicy;
 import game.race.view.InputView;
 
 class CarRaceTest {

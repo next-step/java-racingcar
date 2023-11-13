@@ -2,7 +2,7 @@ package game.race.view;
 
 import java.util.List;
 
-import game.race.Car;
+import game.race.domain.Car;
 import game.race.dto.RaceDto;
 
 public class ResultView {
@@ -15,9 +15,9 @@ public class ResultView {
         System.out.println(SHOW_RESULT);
     }
 
-    public void showCars(RaceDto raceDto, List<Car> cars) {
+    public void showCars(List<String> vehicleNames, List<Car> cars) {
         for (int idx = 0; idx < cars.size(); idx++) {
-            printMark(raceDto.getVehicleNames().get(idx), cars.get(idx).getMoveCount());
+            printMark(vehicleNames.get(idx), cars.get(idx).getMoveCount());
         }
 
         System.out.println(END_MARK);

@@ -1,6 +1,6 @@
-package game.race;
+package game.race.domain;
 
-import game.race.support.move.MovePolicy;
+import game.race.domain.support.move.MovePolicy;
 
 public class Car {
 

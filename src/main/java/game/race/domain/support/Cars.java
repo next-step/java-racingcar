@@ -1,11 +1,11 @@
-package game.race.support;
+package game.race.domain.support;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import game.race.Car;
-import game.race.support.move.MovePolicy;
+import game.race.domain.Car;
+import game.race.domain.support.move.MovePolicy;
 
 public class Cars {
 
