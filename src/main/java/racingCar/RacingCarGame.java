@@ -9,16 +9,15 @@ public class RacingCarGame { // 자동차 경주를 수행한다.
 
 	public void run() {
 		// 입력받는다.
-		InputView.takeInputFromUser();
-		int carCount = InputView.carCount;
-		int tryCount = InputView.tryCount;
+		InputView inputView = new InputView();
+		GameRequest gameRequest = inputView.gameRequest();
 
-		System.out.println();
-		System.out.println(ResultView.RESULT_PREFIX);
+		ResultView.printPrefix();
 
-		CarList carList = new CarList(new ArrayList<>());
-		carList.addCar(carCount);
-		carList.moveByTryCount(tryCount);
+		Cars carList = new Cars(new ArrayList<>());
+		carList.addCar(gameRequest.carCount());
+		carList.moveByTryCount(gameRequest.tryCount());
+
 	}
 
 }

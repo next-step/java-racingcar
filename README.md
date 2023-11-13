@@ -56,3 +56,13 @@
 * [x] RacingCar에 static으로 구현된 메서드를 모두 별도의 클래스로 옮겨 각자 책임을 부여
 * [x] List<Car> 타입 변수를 CarList라는 일급 컬렉션으로 변경해서 관리
 * [x] 전체적으로 OOP의 개념에 입각해 여러 객체를 도출하고 객체간 메시지를 주고받으며 협력하도록 구조 개선
+
+### Feedback 23.11.12
+* [x] 일급 컬렉션 CarList의 클래스명을 컬렉션 성격을 드러내지 않도록 변경한다.
+* [x] InputView에서 사용자에게 입력받은 값을 InputView의 멤버변수, 정적변수로 두면 객체 재활용 시 문제가 됨. InputView에게 필요한 변수를 얻는 메서드로 구현하자.
+* [ ] 콘솔에서 출력하는 부분은 언제든지 바뀔 수 있으므로, CarList 내 ResultView 부분은 모두 제거하고, CarList에게 얻은 값을 ResultView에게 전달하도록 구현
+* [ ] ResultView 외 위치한 println()의 위치 변경
+* [ ] 현재 자동차 생성 시 CarList 생성 후 addCar, moveByTryCount의 순서가 보장되지 않는다. 팩터리 메서드를 이용해 CarList를 생성할 때 미리 Car객체를 생성하도록 해보자.
+* [ ] 현재 작성한 Car.move()의 결과값 범위 테스트보다는, 확실한 상태에 대한 Test를 작성하자. 의존성 역전에 대해 알아보고 적용해볼 것.
+* [ ] CarList.moveByTryCount()에 대한 Test도 위에 언급한 바와 같다. 확실한 상태값에 대한 테스트를 진행하고, for loop / if-else와 같은 반복, 조건문을 지양한다.
+* [ ] getRandomNumber() Test는 굳이 필요가 없을 듯 하다.
