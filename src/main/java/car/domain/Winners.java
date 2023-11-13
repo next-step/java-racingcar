@@ -1,12 +1,14 @@
-package car;
+package car.domain;
+
+import car.model.Position;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Win {
+public class Winners {
     private final List<Car> allCar;
 
-    public Win(List<Car> allCar) {
+    public Winners(List<Car> allCar) {
         this.allCar = allCar;
     }
 
@@ -25,7 +27,7 @@ public class Win {
 
     private void addWinner(Car car, int max, List<String> winners) {
         if (car.isSameMax(max)) {
-            winners.add(car.carName());
+            winners.add(car.getCarName());
         }
     }
 
@@ -33,7 +35,7 @@ public class Win {
         int max = 0;
 
         for (Car car : allCarList()) {
-            max = car.compareMaxPosition(max);
+            max = car.compareCarPosition(max);
         }
         return max;
     }
