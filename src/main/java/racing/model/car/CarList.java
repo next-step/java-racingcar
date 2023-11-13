@@ -21,13 +21,6 @@ public class CarList {
 		}
 	}
 
-	public Car get(int index) {
-		if (index < numberOfCars()) {
-			return cars.get(index).deepCopy();
-		}
-		return null;
-	}
-
 	public void moveAll(List<Integer> bounds) {
 		int numberOfCars = cars.size();
 		for (int i = 0; i < numberOfCars; i++) {
