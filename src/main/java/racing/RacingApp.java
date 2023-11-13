@@ -1,6 +1,7 @@
 package racing;
 
 import racing.domain.racing.Racing;
+import racing.domain.racing.RandomNumber;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -14,7 +15,7 @@ public class RacingApp {
         String inputNames = InputView.getInputNames();
         int attemptCount = InputView.getNumberOfAttempts();
 
-        Racing racing = new Racing(inputNames, attemptCount);
+        Racing racing = new Racing(inputNames, attemptCount, new RandomNumber(10));
         ResultView.showCurrentPosition(racing.result());
         ResultView.showWinners(racing.winners());
     }

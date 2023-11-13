@@ -31,6 +31,10 @@ public class Car {
         }
     }
 
+    private boolean isOverThreshHold(int input) {
+        return THRESHOLD <= input;
+    }
+
     public boolean equalPosition(Position position) {
         return this.position.equals(position);
     }
@@ -45,10 +49,6 @@ public class Car {
             "name=" + name +
             ", position=" + position +
             '}';
-    }
-
-    private boolean isOverThreshHold(int input) {
-        return THRESHOLD <= input;
     }
 
 

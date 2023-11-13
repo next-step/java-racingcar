@@ -19,7 +19,7 @@ public class RacingTest {
         String inputNames = "test1,test2,test3";
 
         // when
-        Racing racing = new Racing(inputNames, 0);
+        Racing racing = new Racing(inputNames, 0, new RandomNumber(10));
 
         // then
         int participatingCarCount = racing.participatingCars().numberOfCars();
@@ -48,6 +48,6 @@ public class RacingTest {
         ParticipatingCars participatingCars = new ParticipatingCars(cars);
 
         // when, then
-        assertThat(participatingCars.winners()).contains(car2);
+        assertThat(participatingCars.winners()).contains(car1);
     }
 }

@@ -15,9 +15,12 @@ public class Racing {
     private final ParticipatingCars participatingCars;
     private final int attemptCount;
 
-    public Racing(String inputNames, int attemptCount) {
+    private final RandomNumber randomNumber;
+
+    public Racing(String inputNames, int attemptCount, RandomNumber randomNumber) {
         this.participatingCars = new ParticipatingCars(inputNames);
         this.attemptCount = attemptCount;
+        this.randomNumber = randomNumber;
     }
 
     /**
