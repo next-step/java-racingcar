@@ -1,4 +1,4 @@
-package study.step4.domain;
+package study.step5.domain;
 
 public class Car {
 
@@ -30,10 +30,6 @@ public class Car {
 
     private boolean isForwardCondition(int number) {
         return number >= 4;
-    }
-
-    public int greaterThanPosition(int position) {
-        return Math.max(this.position.getPosition(), position);
     }
 
     public boolean isWinner(int maxPosition) {
