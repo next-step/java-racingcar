@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.List;
+
+import racingcar.domain.Car;
+import racingcar.domain.Round;
 
 public class ResultView {
 	public void showRoundsResult(List<Round> rounds) {

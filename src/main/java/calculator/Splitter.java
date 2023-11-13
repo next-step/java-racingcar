@@ -1,3 +1,5 @@
+package calculator;
+
 public class Splitter {
 	private final String target;
 	private final String delimiter;

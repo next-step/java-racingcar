@@ -1,8 +1,14 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.Scanner;
 
-public class Main {
+import racingcar.domain.MoveStrategy;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RandomStrategy;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
+public class RacingGameController {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		InputView inputView = new InputView();
