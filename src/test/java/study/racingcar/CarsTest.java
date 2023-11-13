@@ -13,7 +13,7 @@ public class CarsTest {
     @ValueSource(ints = {1,5,10,100})
     @ParameterizedTest
     void createCarList(int expected) {
-        List<Car> carList = Collections.nCopies(expected, new Car());
+        List<Car> carList = Collections.nCopies(expected, new Car("name"));
         Cars cars = Cars.from(carList);
         assertThat(cars.numberOfCar()).isEqualTo(expected);
     }
