@@ -1,24 +1,18 @@
 package racing;
 
 import java.util.List;
+import javax.swing.plaf.LabelUI;
 
 public class ResultView {
 
-    private static final String outputRacing = "-";
-    public static void outputPrint(List<Integer> racingData) {
+    private static final String OutputRacing = "-";
+    public static void outputPrint(List<Car> carList) {
 
-        for (Integer countRacing : racingData) {
-            System.out.println(addString(countRacing));
+        for (Car car : carList) {
+            System.out.println(OutputRacing.repeat(car.getDistance()));
         }
         System.out.println(" ");
     }
 
-    public static String addString(Integer count) {
-        String result = "";
-        for (int i = 0; i < count; i++) {
-            result += outputRacing;
-        }
 
-        return result;
-    }
 }
