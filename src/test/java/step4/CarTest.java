@@ -3,9 +3,7 @@ package step4;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.model.Car;
-import step4.model.ForwardMoveStrategy;
 import step4.model.Races;
-import step4.model.StopMoveStrategy;
 
 import java.util.List;
 

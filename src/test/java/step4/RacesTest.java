@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step4.model.Car;
-import step4.model.ForwardMoveStrategy;
 import step4.model.Races;
 
 import java.util.Arrays;
