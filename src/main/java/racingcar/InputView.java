@@ -10,18 +10,12 @@ public class InputView {
     private static final String QUESTION_ROUND_NUMBER = "시도할 회수는 몇 회 인가요?";
 
     private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
-    private static final String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
     private static final String NAME_DELIMITER = ",";
-    private static final int NAME_MAX_LENGTH = 5;
 
 
     public List<String> inputCarNameList() {
         System.out.println(QUESTION_CAR_NAMES);
-
-        List<String> carNames = Arrays.asList(scanner.nextLine().split(NAME_DELIMITER));
-
-        validateCarNameList(carNames);
-        return carNames;
+        return Arrays.asList(scanner.nextLine().split(NAME_DELIMITER));
     }
 
     public int inputRoundNumber() {
@@ -31,18 +25,6 @@ public class InputView {
 
         validateRoundNumber(roundNumber);
         return roundNumber;
-    }
-
-    private void validateCarNameList(List<String> names) {
-        for (String name : names) {
-            validateCarName(name);
-        }
-    }
-
-    private void validateCarName(String name) {
-        if (name.length() > NAME_MAX_LENGTH) {
-            throw new RuntimeException(ERR_NAME_LENGTH);
-        }
     }
 
     private void validateRoundNumber(int roundNumber) {

@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,6 +34,12 @@ public class RacingGameTest {
         car.moveOrStop(4);
         assertThat(car.getLocation())
                 .isEqualTo(2);
+    }
+
+    @Test
+    public void 자동차_이름_5자_이하() {
+        Assertions.assertThatThrownBy(() -> new RacingCar("abcdefg"))
+                        .isInstanceOf(RuntimeException.class);
     }
 
 }
