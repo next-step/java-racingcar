@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class GameSetup {
-    private static List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
     private int round;
 
     public GameSetup(int round, List<String> names) {
