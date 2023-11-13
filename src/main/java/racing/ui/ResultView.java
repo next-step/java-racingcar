@@ -7,9 +7,9 @@ import java.util.List;
 
 public class ResultView {
 
-    static private String DISPLAY_TEST = "-";
+    private static final String DISPLAY_TEST = "-";
 
-    static private String WINNER = "가 최종 우승했습니다.";
+    private static final String WINNER = "가 최종 우승했습니다.";
 
     public static void viewResultView(Cars resultList) {
 

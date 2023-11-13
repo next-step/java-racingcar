@@ -18,35 +18,19 @@ public class InputView {
 
     private static String carNames = "";
 
-    public static int setTryCount() {
+    public static int getTryCount() {
         System.out.println(TRY_COUNT);
-        tryCount = SCANNER.nextInt();
-        return tryCount;
+        return SCANNER.nextInt();
     }
 
-    public static int setCarCount() {
+    public static int getCarCount() {
         System.out.println(CAR_COUNT);
-        carCount = SCANNER.nextInt();
-        return carCount;
+        return SCANNER.nextInt();
     }
 
-    public static int getTryCount(){
-        return tryCount;
-    }
-
-    public static int getCarCount(){
-        return carCount;
-    }
-
-    public static List<String> setCarName(){
+    public static String getCarName(){
         System.out.println(CAR_NAMES);
-        carNames = SCANNER.nextLine();
-        return List.of(carNames.split(","));
+        return SCANNER.nextLine();
     }
-
-//    public static List<String> getCarName(){
-//        List<String> carNameList =
-//        return carNameList;
-//    }
 
 }

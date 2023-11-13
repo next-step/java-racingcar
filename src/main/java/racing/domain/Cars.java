@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cars {
 
-    static final int MAX_CAR_NAME = 5;
+    private static final int MAX_CAR_NAME = 5;
     private List<Car> carList = new ArrayList<>();
 
     private String winner = "";
@@ -20,7 +20,9 @@ public class Cars {
         return carList.size();
     }
 
-    public void makeCarList(List<String> carNameList){
+    public void makeCarList(String carNames){
+
+        List<String> carNameList = getCarNameList(carNames);
         try {
             for(int i = 0; i< carNameList.size(); i++){
                 carNameValidation(carNameList, i);
@@ -29,6 +31,11 @@ public class Cars {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static List<String> getCarNameList(String carNames) {
+        List<String> carNameList = List.of(carNames.split(","));
+        return carNameList;
     }
 
     private static void carNameValidation(List<String> carNameList, int i) throws Exception {
@@ -61,7 +68,7 @@ public class Cars {
     }
 
     public void move(final MoveStrategy moveStrategy) {
-        this.carList.forEach(car -> car.moveCar(moveStrategy.movable()));
+        this.carList.forEach(car -> car.moveCar(moveStrategy));
     }
 
 }

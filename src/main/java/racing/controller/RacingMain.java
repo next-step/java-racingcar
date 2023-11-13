@@ -13,12 +13,11 @@ public class RacingMain {
 
     public static void main(String[] args) {
         // view
-//        InputView.setCarCount();
-        List<String> carNames = InputView.setCarName();
-        int tryCount = InputView.setTryCount();
+        String carNames = InputView.getCarName();
+        int tryCount = InputView.getTryCount();
         Racing racing = new Racing(carNames, tryCount);
 
-        for(int i=0; i<InputView.getTryCount(); i++) {
+        for(int i=0; i<tryCount; i++) {
             racing.racingStart(new RandomMoveStrategy());
             ResultView.viewResultView(racing.getCars());
         }
