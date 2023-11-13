@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame {
+    private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
+
     private int roundNumber;
     private RacingCar[] cars;
     private int round=1;
@@ -26,7 +28,7 @@ public class RacingGame {
         int roundNumber = inputView.inputRoundNumber();
 
         this.makeCars(carNameList);
-        this.roundNumber = roundNumber;
+        this.setRoundNumber(roundNumber);
     }
 
     private void makeCars(List<String> carNameList) {
@@ -35,6 +37,17 @@ public class RacingGame {
         for (int i=0; i<carNumber; i++) {
             RacingCar newCar = new RacingCar(carNameList.get(i));
             this.cars[i] = newCar;
+        }
+    }
+
+    private void setRoundNumber(int roundNumber) {
+        validateRoundNumber(roundNumber);
+        this.roundNumber = roundNumber;
+    }
+
+    private void validateRoundNumber(int roundNumber) {
+        if (roundNumber < 0) {
+            throw new RuntimeException(ERR_NEGATIVE_NUMBER);
         }
     }
 
