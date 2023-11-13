@@ -47,14 +47,14 @@ public class Car {
         return randomValue >= CONDITION_FOR_MOVE;
     }
 
-    public Boolean isThisWinningWithOthers(int highestDistance) {
+    public boolean isThisWinningWithOthers(int highestDistance) {
         if (distance == highestDistance) {
             return true;
         }
         return false;
     }
 
-    public Boolean isThisWinningAlone(int highestDistance) {
+    public boolean isThisWinningAlone(int highestDistance) {
         if (distance > highestDistance) {
             return true;
         }
