@@ -4,17 +4,17 @@ public class Car {
     private static final int CONDITION_FOR_MOVE = 4;
     private static final int CONDITION_FOR_NAME_LENGTH = 5;
 
-    private int distance;
+    private Distance distance;
     private String name;
 
     public Car(String name) {
-        this.distance = 0;
+        this.distance = new Distance();
         validateLength(name);
         this.name = name;
     }
 
     public Car(String name, int distance) {
-        this.distance = distance;
+        this.distance = new Distance(distance);
         validateLength(name);
         this.name = name;
     }
@@ -25,7 +25,7 @@ public class Car {
         }
     }
 
-    public int distance() {
+    public Distance distance() {
         return distance;
     }
 
@@ -34,7 +34,7 @@ public class Car {
     }
 
     public void moveCar() {
-        distance++;
+        distance.addDistance();
     }
 
     public void validateForMove(int randomValue) {
@@ -48,20 +48,14 @@ public class Car {
     }
 
     public boolean isThisWinningWithOthers(int highestDistance) {
-        if (distance == highestDistance) {
-            return true;
-        }
-        return false;
+        return distance.isEqual(highestDistance);
     }
 
     public boolean isThisWinningAlone(int highestDistance) {
-        if (distance > highestDistance) {
-            return true;
-        }
-        return false;
+        return distance.isGreater(highestDistance);
     }
 
     public int presentHigherDistance(int highestDistance) {
-        return Math.max(distance, highestDistance);
+        return distance.maxNum(highestDistance);
     }
 }

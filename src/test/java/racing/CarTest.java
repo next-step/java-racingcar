@@ -16,13 +16,13 @@ class CarTest {
 
         car.moveCar();
 
-        assertThat(car.distance()).isEqualTo(1);
+        assertThat(car.distance().value()).isEqualTo(1);
 
         car.validateForMove(testNumberLessThanFour);
-        assertThat(car.distance()).isEqualTo(1);
+        assertThat(car.distance().value()).isEqualTo(1);
 
         car.validateForMove(testNumberGreaterThanFour);
-        assertThat(car.distance()).isEqualTo(2);
+        assertThat(car.distance().value()).isEqualTo(2);
     }
 
     @Test
