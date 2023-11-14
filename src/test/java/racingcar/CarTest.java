@@ -33,4 +33,11 @@ public class CarTest {
         car.tryMove(value);
         assertThat(car.getCarPosition()).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("복사된 Car 객체 반환")
+    void copyCarTest() {
+        Car car = new Car("g80");
+        assertThat(car).isNotEqualTo(Car.copyCar(car));
+    }
 }

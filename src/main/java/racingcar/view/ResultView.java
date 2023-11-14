@@ -32,7 +32,7 @@ public class ResultView {
     private String buildRoundResult(final Car car) {
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder.append(car.getCarName()).append(" : ").append(buildCarPosition(
-            car.getCarPosition())).toString();
+            car.getCarPosition().getPosition())).toString();
     }
 
     private void printCurrentCarPosition(final Car car) {

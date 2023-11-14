@@ -21,28 +21,27 @@ public class Car {
     }
 
     public Car(final Car car) {
-        this.carName = car.carName;
-        this.position = car.position;
+        this.carName = new CarName(car.carName.getCarName());
+        this.position = new Position(car.position.getPosition());
     }
 
-    public int getCarPosition() {
-        return position.getPosition();
+    public Position getCarPosition() {
+        return position;
     }
 
     public String getCarName() {
         return carName.getCarName();
     }
 
-    public Car tryMove(final int randomNumber) {
+    public void tryMove(final int randomNumber) {
         if (randomNumber >= ACCEPT_MOVE_NUMBER) {
             position = position.move();
         }
-
-        return new Car(this.getCarName(), position.getPosition());
+        // return new Car(this.getCarName(), position.getPosition());
     }
 
-    public boolean isAtMaxPosition(final int maxPosition) {
-        return position.getPosition() == maxPosition;
+    public boolean isAtPosition(final Position maxPosition) {
+        return position.isMaxPosition(maxPosition);
     }
 
     public static Car copyCar(final Car car) {
@@ -51,8 +50,12 @@ public class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Car car = (Car) o;
         return Objects.equals(carName, car.carName) && Objects.equals(position, car.position);
     }
@@ -61,6 +64,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(carName, position);
     }
-
 
 }

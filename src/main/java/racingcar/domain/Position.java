@@ -17,4 +17,9 @@ public class Position {
     public int getPosition() {
         return position;
     }
+
+    public boolean isMaxPosition(Position maxPosition) {
+        return position == maxPosition.position;
+    }
+
 }
