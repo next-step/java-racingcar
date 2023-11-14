@@ -5,9 +5,77 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class racingCarTest {
+
+    @Test
+    @DisplayName("가장 많이 전진한 자동차 이름을 반환한다.")
+    public void 가장_많이_전진한_자동차_반환(){
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("pobi", 5));
+        carList.add(new Car("crong", 3));
+        carList.add(new Car("honux", 5));
+
+        NamedCars cars = new NamedCars(carList);
+
+        List<String> winners = WinnerCar.returnWinner(cars);
+        assertThat(winners).hasSize(2);
+        assertThat(winners).containsExactly("pobi", "honux");
+    }
+
+    @Test
+    @DisplayName("입력한 자동차 이름과 시도 횟수 만큼 자동차를 움직인 결과를 반환한다.")
+    public void 이름있는_자동차_경주_결과_반환(){
+        NamedCars cars = RacingCar.movingResultNamedCar(new NamedCars("pobi,crong,honux"), 5);
+
+        assertThat(cars.getCarList()).hasSize(3);
+
+        for(int i=0; i<3; i++) {
+            assertThat(cars.forwardCountOf(i)).isBetween(0, 5);
+        }
+
+    }
+
+    @Test
+    @DisplayName("입력한 여러대의 자동차 이름을 콤마 구분자로 구분하여 자동차 이름을 부여하고 0번 움직인 결과를 반환한다.")
+    public void 자동차_경주_초기_설정(){
+        String carNames = "pobi,crong,honux";
+
+        NamedCars cars = new NamedCars(carNames);
+
+        assertAll(
+                () -> assertThat(cars.carNameOf(0)).isEqualTo("pobi"),
+                () -> assertThat(cars.carNameOf(1)).isEqualTo("crong"),
+                () -> assertThat(cars.carNameOf(2)).isEqualTo("honux")
+        );
+
+        assertAll(
+                () -> assertThat(cars.forwardCountOf(0)).isEqualTo(0),
+                () -> assertThat(cars.forwardCountOf(1)).isEqualTo(0),
+                () ->  assertThat(cars.forwardCountOf(2)).isEqualTo(0)
+        );
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 최대 길이를 초과할 경우 예외를 발생한다.")
+    public void 자동차_이름_최대_길이_초과(){
+        assertThatThrownBy(() -> {
+            assertThat(new Car("abcedf",0));
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("자동차 이름을 입력할 경우 해당 이름을 가진 자동차 객체를 생성한다.")
+    public void 자동차_이름_부여(){
+        Car car = new Car("pobi",0);
+        assertThat(car.getCarName()).isEqualTo("pobi");
+    }
 
     @Test
     @DisplayName("입력한 횟수만큼 자동차 한대를 움직인 결과를 반환한다. ")
