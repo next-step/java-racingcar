@@ -20,24 +20,22 @@ public class Cars {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.move(RandomPicker.getRandomNumberInRange(9));
+            car.move(RandomPicker.getRandomNumberInRange(car.getRandomRange()));
         }
     }
 
-    public List<String> getWinners() {
-        int maxPosition = findMaxPosition();
-        return cars.stream().filter(car -> car.getPosition() == maxPosition).map(Car::getName).collect(Collectors.toList());
+    public List<Car> getWinners() {
+        Car maxPositionCar = findMaxPositionCar();
+        return cars.stream().filter(car -> car.isMaxPosition(maxPositionCar)).collect(Collectors.toList());
     }
 
-    private int findMaxPosition() {
+    private Car findMaxPositionCar() {
         Car maxPositionCar = cars.get(0);
 
         for (Car car : cars) {
-            if (car.getPosition() > maxPositionCar.getPosition()) {
-                maxPositionCar = car;
-            }
+            maxPositionCar = car.getMaxPositionCar(maxPositionCar);
         }
 
-        return maxPositionCar.getPosition();
+        return maxPositionCar;
     }
 }

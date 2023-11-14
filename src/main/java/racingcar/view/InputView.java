@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String enter() {
+    public String enter() {
         return scanner.nextLine();
     }
 
-    public static int enterNumber() {
+    public int enterNumber() {
         return scanner.nextInt();
     }
 
