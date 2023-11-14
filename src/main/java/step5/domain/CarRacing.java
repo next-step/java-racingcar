@@ -16,10 +16,6 @@ public class CarRacing {
         cars = new Cars(nameOfCars);
     }
 
-    public void createCarsOf(List<String> nameOfCars, List<Integer> positions) {
-        cars = new Cars(nameOfCars, positions);
-    }
-
     public void moveCar(int randomNum, int carNo) {
         cars.moveCarBy(randomNum, carNo);
     }
