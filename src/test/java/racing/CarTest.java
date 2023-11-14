@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racing.Car.*;
+import static racing.RacingGame.splitCarName;
 
 public class CarTest {
 
@@ -31,6 +32,12 @@ public class CarTest {
     void 자동차_이름이_5글자_초과되면_에러가_발생한다() {
         assertThatThrownBy(() -> new Car("njwnjw"))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 자동차_이름을_쉼표로_구분하여_입력받을_수_있다() {
+        String[] carNames = splitCarName("njw,njw2,njw3");
+        assertThat(carNames).containsExactly("njw", "njw2", "njw3");
     }
 
 

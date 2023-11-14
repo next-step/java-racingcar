@@ -39,4 +39,8 @@ public class RacingGame {
             car.move();
         }
     }
+
+    public static String[] splitCarName(String carNames) {
+        return carNames.split(",");
+    }
 }
