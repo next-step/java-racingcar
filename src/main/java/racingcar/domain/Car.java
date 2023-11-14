@@ -20,7 +20,7 @@ public class Car {
         this.position = new Position(distance);
     }
 
-    public Car(final Car car) {
+    private Car(final Car car) {
         this.carName = new CarName(car.carName.getCarName());
         this.position = new Position(car.position.getPosition());
     }
