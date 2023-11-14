@@ -18,7 +18,7 @@ public class Names {
         return value.size();
     }
 
-    public Name getName(int index) {
+    public Name find(int index) {
         return value.get(index);
     }
 }

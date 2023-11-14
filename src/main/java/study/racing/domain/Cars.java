@@ -19,7 +19,7 @@ public class Cars {
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < names.size(); i++) {
-            cars.add(new Car(names.getName(i), new Position(DEFAULT_POSITION)));
+            cars.add(new Car(names.find(i), new Position(DEFAULT_POSITION)));
         }
 
         this.value = cars;
