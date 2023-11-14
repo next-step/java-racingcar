@@ -38,7 +38,7 @@ class CarsTest {
         Car car = cars.findCarBy(idx);
 
         // then
-        assertThat(car.getCarName()).isEqualTo(expectedName);
+        assertThat(car.carName()).isEqualTo(expectedName);
     }
 
     @DisplayName("인자로 인덱스를 받아 해당 인덱스의 Car객체를 반환할 때 인덱스의 범위가 벗어나면 예외를 던진다.")
@@ -64,7 +64,7 @@ class CarsTest {
 
         // when
         cars.moveCarBy(randomNum, carNo);
-        int realResult = cars.findCarBy(carNo).getCurrentPosition();
+        int realResult = cars.findCarBy(carNo).position();
 
         // then
         assertThat(realResult).isEqualTo(expectedResult);

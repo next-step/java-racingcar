@@ -5,7 +5,8 @@ import step5.domain.primitivewrapper.Name;
 public class Car {
 
     private static final int CONDITION_OF_MOVE = 4;
-    private static final int[] RANGE_OF_NUMBER = {0, 9};
+    private static final int MIN_RANGE = 0;
+    private static final int MAX_RANGE = 9;
 
     private int position;
     private Name name;
@@ -28,17 +29,17 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public int getCurrentPosition() {
+    public int position() {
         return this.position;
     }
 
-    public String getCarName() {
+    public String carName() {
         return this.name.toString();
     }
 
     public void moveForward(int power) {
         if(isOutOfRange(power)) {
-            throw new IllegalArgumentException("엑셀의 작동 범위를 벗어납니다.");
+            throw new IllegalArgumentException("입력 가능한 숫자의 범위를 벗어납니다.");
         }
 
         if (isMovable(power)) {
@@ -47,7 +48,7 @@ public class Car {
     }
 
     private boolean isOutOfRange(int power) {
-        return power < RANGE_OF_NUMBER[0] || power > RANGE_OF_NUMBER[1];
+        return power < MIN_RANGE || power > MAX_RANGE;
     }
 
     private boolean isMovable(int power) {

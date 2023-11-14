@@ -19,7 +19,7 @@ class CarTest {
         Car car = new Car();
 
         // when
-        int currentPosition = car.getCurrentPosition();
+        int currentPosition = car.position();
 
         // then
         assertThat(currentPosition).isEqualTo(0);
@@ -33,7 +33,7 @@ class CarTest {
         Car car = new Car(name);
 
         // when
-        String carName = car.getCarName();
+        String carName = car.carName();
 
         // then
         assertThat(carName).isEqualTo("abcde");
@@ -68,7 +68,7 @@ class CarTest {
         car.moveForward(power);
 
         // when
-        int realPosition = car.getCurrentPosition();
+        int realPosition = car.position();
 
         // then
         assertThat(realPosition).isEqualTo(expectedPosition);

@@ -58,7 +58,7 @@ public class Cars {
     public List<String> findCarNamesMovingLongest(int maxPosition) {
         return cars.stream()
             .filter(car -> car.isMaxPosition(maxPosition))
-            .map(Car::getCarName)
+            .map(Car::carName)
             .collect(Collectors.toUnmodifiableList());
     }
 }
