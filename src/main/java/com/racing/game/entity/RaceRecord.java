@@ -29,6 +29,6 @@ public class RaceRecord {
 
     @Override
     public String toString() {
-        return value.stream().map(e -> e.toString().concat("\n")).collect(Collectors.joining()).stripTrailing();
+        return value.stream().map(e -> e.toString().concat(System.lineSeparator())).collect(Collectors.joining()).stripTrailing();
     }
 }

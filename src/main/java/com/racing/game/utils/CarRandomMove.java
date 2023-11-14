@@ -9,13 +9,6 @@ public class CarRandomMove {
         throw new IllegalStateException("Utility class");
     }
 
-    public static int randomGoForward(int input) {
-        if (isGoForward()) {
-            return input + 1;
-        }
-        return input;
-    }
-
     public static boolean isGoForward() {
         return random.nextInt(10) >= 4;
     }
