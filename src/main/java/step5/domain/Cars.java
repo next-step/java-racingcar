@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -21,9 +22,8 @@ public class Cars {
     }
 
     public Cars(List<String> nameOfCars, List<Integer> positions) {
-        for (int i=0; i<nameOfCars.size(); i++) {
-            cars.add(new Car(nameOfCars.get(i), positions.get(i)));
-        }
+        IntStream.range(0, nameOfCars.size())
+            .forEach(i -> cars.add(new Car(nameOfCars.get(i), positions.get(i))));
     }
 
     public int getNumOfCars() {
@@ -47,13 +47,12 @@ public class Cars {
     }
 
     public int findMaxPosition() {
-        int max = 0;
+        int zero = 0;
 
-        for (Car car : cars) {
-            max = car.comparePosition(max);
-        }
-
-        return max;
+        return cars.stream()
+            .mapToInt(car -> car.comparePosition(zero))
+            .max()
+            .orElse(zero);
     }
 
     public List<String> findCarNamesMovingLongest(int maxPosition) {
