@@ -3,15 +3,23 @@ package car;
 public class GameController {
 
     private static final InputParser inputParser = new InputParser();
-    private final RacingGame racingGame;
+    private final RandomNumberGenerator randomNumberGenerator;
 
-    public GameController(RacingGame racingGame) {
-        this.racingGame = racingGame;
+    public GameController(RandomNumberGenerator randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     public void startRacingGame() {
         Cars cars = new Cars(inputParser.parseUserInputByDelimiter(InputView.inputCarNames()));
-        racingGame.playGame(InputView.inputNumberOfGames(), cars);
+        playGame(InputView.inputNumberOfGames(), cars);
         ResultView.outputFinalGameResult(cars.findTiedWinnerCarNames());
+    }
+
+    private void playGame(Integer numberOfGames, Cars cars) {
+        int totalCarCount = cars.getTotalCarCount();
+        for (int i = 0; i < numberOfGames; i++) {
+            cars.playGameByCars(randomNumberGenerator.makeRandomNumbers(totalCarCount));
+            ResultView.outputEachGameResult(cars.getCars());
+        }
     }
 }
