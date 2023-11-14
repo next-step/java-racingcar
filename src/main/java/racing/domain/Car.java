@@ -34,7 +34,7 @@ public class Car {
     }
 
     public void moveCar() {
-        distance.addDistance();
+        distance = distance.addDistance();
     }
 
     public void validateForMove(int randomValue) {

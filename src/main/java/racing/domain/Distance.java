@@ -1,7 +1,7 @@
 package racing.domain;
 
 public class Distance {
-    private int value;
+    private final int value;
 
     public Distance() {
         this.value = 0;
@@ -26,8 +26,8 @@ public class Distance {
         return Math.max(value, distance);
     }
 
-    public void addDistance() {
-        value++;
+    public Distance addDistance() {
+        int addedValue = value + 1;
+        return new Distance(addedValue);
     }
-
 }
