@@ -27,10 +27,6 @@ public class CarPosition implements Comparable<CarPosition> {
         return this.distance - otherCarPosition.distance;
     }
 
-    public boolean isSameDistance(CarPosition winnerCarPosition) {
-        return this.distance == winnerCarPosition.distance;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

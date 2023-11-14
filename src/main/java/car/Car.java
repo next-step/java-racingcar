@@ -40,8 +40,8 @@ public class Car {
         return this.carPosition.compareTo(otherCar.carPosition);
     }
 
-    public boolean isSameDistance(Car winnerCar) {
-        return this.carPosition.isSameDistance(winnerCar.carPosition);
+    public boolean isSameDistance(Car otherCar) {
+        return this.carPosition.equals(otherCar.carPosition);
     }
 
     @Override
