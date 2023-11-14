@@ -17,7 +17,7 @@ public class CarTest {
     void isCarMoveable(int input, int expectedIdx) {
         Car car = new Car();
         car.moveForward(input);
-        assertThat(car.getPosition()).isEqualTo(expectedIdx);
+        assertThat(car.getPosition().getPosition()).isEqualTo(expectedIdx);
     }
 
     @DisplayName("자동차명이 5글자를 초과할떄 exception test")

@@ -24,7 +24,7 @@ public class ResultView {
 
     private void printPosition(Car car) {
         System.out.print(car.getName() + " : ");
-        for (int j = 0; j < car.getPosition(); j++) {
+        for (int j = 0; j < car.getPosition().getPosition(); j++) {
             System.out.print('-');
         }
         System.out.println();

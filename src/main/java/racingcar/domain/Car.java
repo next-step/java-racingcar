@@ -4,7 +4,7 @@ public class Car {
     private static final int MOVABLE_THRESHOLD = 4;
     private static final int MAX_NM_LENGTH = 5;
 
-    private int position = 0;
+    private Position position = new Position(0);
     private final String name;
 
 
@@ -19,13 +19,13 @@ public class Car {
 
     public Car(int position, String name) {
         validateNameLen(name);
-        this.position = position;
+        this.position = new Position(position);
         this.name = name;
     }
 
     public void moveForward(int input) {
         if (input >= MOVABLE_THRESHOLD) {
-            this.position++;
+           position.move();
         }
     }
 
@@ -35,7 +35,7 @@ public class Car {
         }
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 

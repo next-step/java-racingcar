@@ -20,7 +20,7 @@ public class Winner {
         return winners.stream().map(Car::getName).collect(Collectors.joining(","));
     }
 
-    private List<Car> calculatePosition(int maxPosition) {
+    private List<Car> calculatePosition(Position maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : this.cars) {
             addWinners(maxPosition, winners, car);
@@ -28,26 +28,24 @@ public class Winner {
         return winners;
     }
 
-    private static void addWinners(int maxPosition, List<Car> winners, Car car) {
-        if (maxPosition == car.getPosition()) {
+    private static void addWinners(Position maxPosition, List<Car> winners, Car car) {
+        if (maxPosition.equals(car.getPosition())) {
             winners.add(car);
         }
     }
 
-    private int getMaxPosition() {
-        int maxPosition = 0;
+    private Position getMaxPosition() {
+        Position maxPosition = new Position(0);
         for (Car car : this.cars) {
             maxPosition = comparePosition(maxPosition, car);
         }
         return maxPosition;
     }
 
-    private int comparePosition(int maxPosition, Car car) {
-        if (maxPosition < car.getPosition()) {
+    private Position comparePosition(Position maxPosition, Car car) {
+        if (car.getPosition().comparePosition(maxPosition)) {
             maxPosition = car.getPosition();
         }
         return maxPosition;
     }
-
-
 }
