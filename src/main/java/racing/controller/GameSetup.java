@@ -9,7 +9,6 @@ import java.util.List;
 public class GameSetup {
     private List<Car> cars = new ArrayList<>();
     private int round;
-    private int highestDistance;
     public GameSetup(int round, List<String> names) {
         this.round = round;
         assignCarName(names);
@@ -17,13 +16,15 @@ public class GameSetup {
 
     public List<String> presentWinners() {
         List<String> winnerList = new ArrayList<>();
+        int highestDistance = 0;
 
         for (Car car: cars) {
             highestDistance = car.presentHigherDistance(highestDistance);
         }
 
+        int finalHighestDistance = highestDistance;
         cars.stream()
-            .filter(car -> car.distance().isEqual(highestDistance))
+            .filter(car -> car.distance().isEqual(finalHighestDistance))
             .forEach(car -> {
                 winnerList.add(car.name());
             });
