@@ -3,34 +3,31 @@ package racingcar.view;
 import racingcar.domain.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
-    public void printWinners(String winnerNames) {
-        System.out.println(winnerNames + "가 최종 우승했습니다.");
+    public static void printWinners(List<Car> winners) {
+        System.out.println(winners.stream().map(Car::getName).collect(Collectors.joining(",")) + "가 최종 우승했습니다.");
     }
 
-    public void printResult(List<List<Car>> results) {
+    public static void printResult(List<List<Car>> results) {
         for (List<Car> roundResult : results) {
-            this.printAsterisk();
+            System.out.println("*******************************************");
             printRound(roundResult);
         }
     }
 
-    private void printRound(List<Car> roundResult) {
+    private static void printRound(List<Car> roundResult) {
         for (Car car : roundResult) {
-            this.printPosition(car);
+            printPosition(car);
         }
     }
 
-    private void printPosition(Car car) {
+    private static void printPosition(Car car) {
         System.out.print(car.getName() + " : ");
         for (int j = 0; j < car.getPosition().getPosition(); j++) {
             System.out.print('-');
         }
         System.out.println();
-    }
-
-    private void printAsterisk() {
-        System.out.println("*******************************************");
     }
 }

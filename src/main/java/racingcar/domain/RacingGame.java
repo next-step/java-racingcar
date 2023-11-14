@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
+    public static final int RANDOM_BOUND = 10;
     private final int round;
     private final List<Car> cars = new ArrayList<>();
 
@@ -38,11 +39,6 @@ public class RacingGame {
     }
 
     private int getRandomValue() {
-        return new Random().nextInt(10);
-    }
-
-    public String getWinnerNames() {
-        Winner winner = new Winner(this.cars);
-        return winner.joinWinners(winner.findWinners());
+        return new Random().nextInt(RANDOM_BOUND);
     }
 }

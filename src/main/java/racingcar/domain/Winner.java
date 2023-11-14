@@ -2,27 +2,15 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Winner {
-    private final List<Car> cars;
-
-
-    public Winner(List<Car> cars) {
-        this.cars = cars;
+    public List<Car> findWinners(List<Car> raceResult) {
+        return calculatePosition(getMaxPosition(raceResult), raceResult);
     }
 
-    public List<Car> findWinners() {
-        return calculatePosition(getMaxPosition());
-    }
-
-    public String joinWinners(List<Car> winners) {
-        return winners.stream().map(Car::getName).collect(Collectors.joining(","));
-    }
-
-    private List<Car> calculatePosition(Position maxPosition) {
+    private List<Car> calculatePosition(Position maxPosition, List<Car> raceResult) {
         List<Car> winners = new ArrayList<>();
-        for (Car car : this.cars) {
+        for (Car car : raceResult) {
             addWinners(maxPosition, winners, car);
         }
         return winners;
@@ -34,9 +22,9 @@ public class Winner {
         }
     }
 
-    private Position getMaxPosition() {
+    private Position getMaxPosition(List<Car> raceResult) {
         Position maxPosition = new Position(0);
-        for (Car car : this.cars) {
+        for (Car car : raceResult) {
             maxPosition = comparePosition(maxPosition, car);
         }
         return maxPosition;

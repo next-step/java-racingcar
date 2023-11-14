@@ -17,22 +17,9 @@ public class WinnerTest {
         Car blue = new Car(5, "blue");
         Car black = new Car(3, "black");
 
-        Winner winner = new Winner(Arrays.asList(red, black, blue));
-        List<Car> winners = winner.findWinners();
+        Winner winner = new Winner();
+        List<Car> winners = winner.findWinners(Arrays.asList(red, black, blue));
 
         assertThat(winners).contains(blue);
-    }
-
-    @Test
-    void string_join() {
-
-        Car red = new Car(3, "red");
-        Car blue = new Car(5, "blue");
-        Car black = new Car(5, "black");
-
-        Winner winner = new Winner(Arrays.asList(red, blue, black));
-
-        assertThat(winner.joinWinners(winner.findWinners())).isEqualTo("blue,black");
-
     }
 }

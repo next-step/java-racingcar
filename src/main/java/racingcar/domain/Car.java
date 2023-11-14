@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Car {
     private static final int MOVABLE_THRESHOLD = 4;
-    private static final int MAX_NM_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
 
     private Position position = new Position(0);
     private final String name;
@@ -25,12 +25,12 @@ public class Car {
 
     public void moveForward(int input) {
         if (input >= MOVABLE_THRESHOLD) {
-           position.move();
+            position.move();
         }
     }
 
     private void validateNameLen(String name) {
-        if (name.length() > MAX_NM_LENGTH) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차명은 5글자를 넘길 수 없습니다 : " + name);
         }
     }
