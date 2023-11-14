@@ -8,7 +8,7 @@ public class Name {
     private final String value;
 
     public Name(String value) {
-        if (!nameValid()) {
+        if (!nameValid(value)) {
             throw new IllegalArgumentException("이름은 1글자 이상, 5자 이하만 가능합니다.");
         }
         this.value = value;
@@ -18,7 +18,7 @@ public class Name {
         return value;
     }
 
-    private boolean nameValid() {
+    private boolean nameValid(String value) {
 
         return !value.isEmpty() && !value.isBlank() && value.length() <= MAX_NAME_LENGTH;
     }

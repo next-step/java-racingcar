@@ -18,8 +18,8 @@ public class Cars {
 
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < names.getValue().size(); i++) {
-            cars.add(new Car(names.getValue().get(i), new Position(DEFAULT_POSITION)));
+        for (int i = 0; i < names.size(); i++) {
+            cars.add(new Car(names.getName(i), new Position(DEFAULT_POSITION)));
         }
 
         this.value = cars;

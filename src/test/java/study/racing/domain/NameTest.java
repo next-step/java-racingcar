@@ -16,7 +16,7 @@ class NameTest {
         // when & then
         assertThatThrownBy(() -> new Name(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이름은 5자 이하만 가능합니다.");
+                .hasMessageContaining("이름은 1글자 이상, 5자 이하만 가능합니다.");
 
     }
 }

@@ -15,10 +15,6 @@ class CarsTest {
     void generateCarsTest() {
         // given
         Names names = new Names(List.of("car1", "car2", "car3"));
-        List<Name> value1 = names.getValue();
-
-        Name name = value1.get(0);
-        Name name1 = new Name("car1");
 
         // when
         Cars cars = new Cars(names);

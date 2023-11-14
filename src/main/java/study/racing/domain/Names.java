@@ -14,7 +14,11 @@ public class Names {
                 .collect(Collectors.toList());
     }
 
-    public List<Name> getValue() {
-        return value;
+    public int size() {
+        return value.size();
+    }
+
+    public Name getName(int index) {
+        return value.get(index);
     }
 }
