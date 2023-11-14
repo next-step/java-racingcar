@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
+    private static final int CONDITION_FOR_NAME_LENGTH = 5;
 
     @Test
     void assertMoveCar() {
@@ -30,7 +31,7 @@ class CarTest {
         assertThatThrownBy(() -> {
             Car car = new Car("SONNYYYYYY");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5글자를 초과할 수 없습니다.");
+                .hasMessageContaining("자동차 이름은 "+CONDITION_FOR_NAME_LENGTH+"글자를 초과할 수 없습니다.");
     }
 
     @Test

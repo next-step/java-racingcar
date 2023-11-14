@@ -21,7 +21,7 @@ public class Car {
 
     private static void validateLength(String name) {
         if (name.length() > CONDITION_FOR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("자동차 이름은 "+CONDITION_FOR_NAME_LENGTH+"글자를 초과할 수 없습니다.");
         }
     }
 
