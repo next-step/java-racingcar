@@ -2,7 +2,7 @@ package study.racing.domain;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private static final String DASH = "-";
     private final int value;
@@ -18,6 +18,12 @@ public class Position {
     public String getDash() {
 
         return DASH.repeat(value);
+    }
+
+    @Override
+    public int compareTo(Position compareTarget) {
+
+        return Integer.compare(this.value, compareTarget.value);
     }
 
     @Override

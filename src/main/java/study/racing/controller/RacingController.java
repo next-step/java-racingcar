@@ -1,7 +1,7 @@
 package study.racing.controller;
 
 import study.racing.domain.Cars;
-import study.racing.domain.CarsNumber;
+import study.racing.domain.Names;
 import study.racing.domain.NumberGenerator;
 import study.racing.view.InputView;
 import study.racing.view.OutputView;
@@ -21,12 +21,13 @@ public class RacingController {
     public void startGame() {
 
         outputView.printCarsNumberMessage();
-        CarsNumber carsNumber = inputView.inputCarsNumber();
-        Cars cars = new Cars(carsNumber);
+        Names names = inputView.inputCarsNumber();
+        Cars cars = new Cars(names);
 
         outputView.printRacingCountMessage();
         String results = cars.move(randomGenerator, inputView.inputTryCounts());
 
         outputView.printRacingResultMessage(results);
+        outputView.printWinner(cars.findWinners());
     }
 }

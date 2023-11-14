@@ -1,18 +1,19 @@
 package study.racing.view;
 
-import study.racing.domain.CarsNumber;
+import study.racing.domain.Names;
 import study.racing.domain.TryCounts;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
 
-    public CarsNumber inputCarsNumber() {
+    public Names inputCarsNumber() {
 
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
 
-        return new CarsNumber(value);
+        return new Names(Arrays.asList(value.split(",")));
     }
 
     public TryCounts inputTryCounts() {

@@ -3,20 +3,23 @@ package study.racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
 
+    private static final String DELIMITER = ", ";
+    private static final int MANY_WINNERS = 0;
     private static final int DEFAULT_POSITION = 1;
     private static final int RANDOM_RANGE = 10;
     private static final String NEXT_LINE = "\n";
     private final List<Car> value;
 
-    public Cars(CarsNumber carsNumber) {
+    public Cars(Names names) {
 
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < carsNumber.getValue(); i++) {
-            cars.add(new Car(new Position(DEFAULT_POSITION)));
+        for (int i = 0; i < names.size(); i++) {
+            cars.add(new Car(names.find(i), new Position(DEFAULT_POSITION)));
         }
 
         this.value = cars;
@@ -44,6 +47,43 @@ public class Cars {
         }
 
         return positionBuilder.toString();
+    }
+
+    public String findWinners() {
+        StringBuilder winners = new StringBuilder();
+
+        int maxPosition = findMaxPosition();
+
+        List<Car> winningCars = findWinners(maxPosition);
+
+        // 우승자 목록 반환
+        for (Car car : winningCars) {
+            if (winners.length() > MANY_WINNERS) {
+                winners.append(DELIMITER);
+            }
+            winners.append(car.getName().getValue());
+        }
+
+        return winners.toString();
+    }
+
+    private List<Car> findWinners(int maxPosition) {
+
+        return value.stream()
+                .filter(car -> car.getPosition().getValue() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    private int findMaxPosition() {
+
+        return value.stream()
+                .mapToInt(Car::position)
+                .max()
+                .orElse(DEFAULT_POSITION);
+    }
+
+    public List<Car> getValue() {
+        return value;
     }
 
     @Override
