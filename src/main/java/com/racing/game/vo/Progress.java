@@ -1,5 +1,7 @@
 package com.racing.game.vo;
 
+import static com.racing.game.utils.ViewUtils.PROGRESS_STATUS;
+
 import java.util.Objects;
 
 public class Progress implements Comparable<Progress> {
@@ -29,7 +31,7 @@ public class Progress implements Comparable<Progress> {
     }
 
     public String status() {
-        return "-".repeat(value);
+        return PROGRESS_STATUS.repeat(value);
     }
 
     public int value() {
@@ -55,6 +57,6 @@ public class Progress implements Comparable<Progress> {
 
     @Override
     public int compareTo(Progress other) {
-        return value - other.value();
+        return Integer.compare(value,other.value());
     }
 }
