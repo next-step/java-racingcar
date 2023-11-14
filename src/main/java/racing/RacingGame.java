@@ -8,10 +8,11 @@ public class RacingGame {
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-        int carCount = inputView.getCarCount();
+        String carNames = inputView.getCarNames();
+        String[] splitCarName = splitCarName(carNames);
         int retryCount = inputView.getRetryCount();
 
-        List<Car> cars = createCar(carCount);
+        List<Car> cars = createCar(splitCarName);
 
         ResultView resultView = new ResultView();
         System.out.println("실행 결과");
@@ -19,10 +20,10 @@ public class RacingGame {
 
     }
 
-    private static List<Car> createCar(int carCount) {
+    private static List<Car> createCar(String[] splitCarName) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String s : splitCarName) {
+            cars.add(new Car(s));
         }
         return cars;
     }
