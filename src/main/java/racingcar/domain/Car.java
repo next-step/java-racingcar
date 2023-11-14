@@ -37,7 +37,6 @@ public class Car {
         if (randomNumber >= ACCEPT_MOVE_NUMBER) {
             position = position.move();
         }
-        // return new Car(this.getCarName(), position.getPosition());
     }
 
     public boolean isAtPosition(final Position maxPosition) {
