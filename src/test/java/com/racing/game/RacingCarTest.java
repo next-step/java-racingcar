@@ -58,10 +58,10 @@ class RacingCarTest {
 
         viewModel.readyToRace(RaceEntry.from(List.of(Car.from("pobi"))));
 
-        assertThat(circuit.toString()).hasToString("pobi : \n\n");
+        assertThat(circuit.toString()).hasToString("pobi :");
 
         viewModel.readyToRace(RaceEntry.from(List.of(Car.from("pobi"), Car.from("popo"), Car.from("bibi"))));
-        assertThat(circuit.toString()).hasToString("pobi : \npopo : \nbibi : \n\n");
+        assertThat(circuit.toString()).hasToString("pobi : \npopo : \nbibi :");
     }
 
     @Test
@@ -74,7 +74,7 @@ class RacingCarTest {
     @Test
     void resultString() {
         circuit.readyToRace(RaceEntry.from(List.of(Car.from("crong"), Car.from("honux"), Car.from("abc"))));
-        assertThat(circuit.toString()).hasToString("crong : \nhonux : \nabc : \n\n");
+        assertThat(circuit.toString()).hasToString("crong : \nhonux : \nabc :");
     }
 
     @Test
