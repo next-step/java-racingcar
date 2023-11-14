@@ -2,7 +2,7 @@ package step3.domain;
 
 public class CarName {
 
-    private String value;
+    private final String value;
 
     public CarName(String value) {
         validate(value);
