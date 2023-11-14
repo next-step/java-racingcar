@@ -16,6 +16,16 @@ public class Cars {
     public static Cars defaultOf(List<Car> carList) {
         return new Cars(carList);
     }
+    public static Cars of(String names) {
+        String[] carNames = names.split(",");
+
+        List<Car> cars = new ArrayList<>();
+        for (String carname: carNames) {
+            cars.add(Car.defaultOf(carname));
+        }
+
+        return Cars.defaultOf(cars);
+    }
 
     public Winners voteWinner() {
         Car winner = this.findWinner(participationCars);
