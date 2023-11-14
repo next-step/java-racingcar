@@ -38,7 +38,7 @@ public class RacingResultView {
     }
 
     private void printCars(Cars cars) {
-        for (int i=0; i<cars.getNumOfCars(); i++) {
+        for (int i = 0; i<cars.countCars(); i++) {
             Car car = cars.findCarBy(i);
             System.out.println(car.carName() + " : " + VIEW_OF_CAR.repeat(car.position()));
         }

@@ -29,7 +29,7 @@ public class RacingInputView {
 
         carRacing.createCarsOf(splitInputToNameOfCars());
 
-        return carRacing.getCars().getNumOfCars();
+        return carRacing.getCars().countCars();
     }
 
     private String[] splitInputToNameOfCars() {

@@ -23,7 +23,7 @@ class CarsTest {
         Cars cars = new Cars(nameOfCars);
 
         // then
-        assertThat(cars.getNumOfCars()).isEqualTo(3);
+        assertThat(cars.countCars()).isEqualTo(3);
     }
 
     @DisplayName("인자로 인덱스를 받아 해당 인덱스의 Car객체의 이름을 반환한다.")
@@ -91,7 +91,7 @@ class CarsTest {
         int maxPosition = 7;
 
         // when
-        List<String> winners = cars.findCarNamesMovingLongest(maxPosition);
+        List<String> winners = cars.findCarNamesBy(maxPosition);
 
         // then
         assertThat(winners).hasSize(2)

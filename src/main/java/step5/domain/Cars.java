@@ -26,7 +26,7 @@ public class Cars {
             .forEach(i -> cars.add(new Car(nameOfCars.get(i), positions.get(i))));
     }
 
-    public int getNumOfCars() {
+    public int countCars() {
         return cars.size();
     }
 
@@ -55,7 +55,7 @@ public class Cars {
             .orElse(zero);
     }
 
-    public List<String> findCarNamesMovingLongest(int maxPosition) {
+    public List<String> findCarNamesBy(int maxPosition) {
         return cars.stream()
             .filter(car -> car.isMaxPosition(maxPosition))
             .map(Car::carName)

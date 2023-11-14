@@ -1,7 +1,5 @@
 package step5.domain;
 
-import step5.domain.Cars;
-
 import java.util.List;
 
 public class CarRacing {
@@ -21,6 +19,6 @@ public class CarRacing {
     }
 
     public List<String> findWinners() {
-        return cars.findCarNamesMovingLongest(cars.findMaxPosition());
+        return cars.findCarNamesBy(cars.findMaxPosition());
     }
 }
