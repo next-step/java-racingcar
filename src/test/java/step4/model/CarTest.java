@@ -13,7 +13,7 @@ class CarTest {
     void 자동차는_이름을_5자_초과해서_가질면_예외를_발생한다(String carName) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    new Car(carName);
+                    new Car(carName, null);
                 }).withMessageMatching("자동차 이름은 \\d+자를 초과할 수 없습니다.");
 
     }
@@ -22,7 +22,7 @@ class CarTest {
     @ValueSource(strings = {"차", "TT", "포르쉐", "랜드로바", "람보르기니"})
     @DisplayName("5자 미만의 이름을 가진 자동차는 정상 생성된다.")
     void 자동차는_5자_미만의_이름을_가지면_생성된다(String carName) {
-        Assertions.assertThat(new Car(carName).getName()).isEqualTo(carName);
+        Assertions.assertThat(new Car(carName, null).getName()).isEqualTo(carName);
     }
 
 }

@@ -15,5 +15,6 @@ public class RacingApplication {
     }
 
     public void run() {
+        resultView.show(inputView.getInput());
     }
 }
