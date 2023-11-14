@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RefereeTest {
@@ -40,7 +39,7 @@ public class RefereeTest {
         // given
         AdvanceprobabilitySixtyPercentReferee referee  = new AdvanceprobabilitySixtyPercentReferee();
         List<Car> carList = List.of(Car.defaultOf("포비",5) ,Car.defaultOf("브레이보",6),  Car.defaultOf("와우",6), Car.defaultOf("디기딩",2));
-        ParticipationCars cars = ParticipationCars.defaultOf(carList);
+        Cars cars = Cars.defaultOf(carList);
 
         // when
         Winners winner = cars.voteWinner();

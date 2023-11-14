@@ -5,16 +5,16 @@ import racing.inout.OutPutView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParticipationCars {
+public class Cars {
 
     private final List<Car> participationCars;
 
-    private ParticipationCars(List<Car> participationCars) {
+    private Cars(List<Car> participationCars) {
         this.participationCars = participationCars;
     }
 
-    public static ParticipationCars defaultOf(List<Car> carList) {
-        return new ParticipationCars(carList);
+    public static Cars defaultOf(List<Car> carList) {
+        return new Cars(carList);
     }
 
     public Winners voteWinner() {

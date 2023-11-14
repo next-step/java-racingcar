@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CarFactory {
 
-    public ParticipationCars settingRacingCars(String names) {
+    public Cars settingRacingCars(String names) {
         String[] carNames = names.split(",");
 
         List<Car> cars = new ArrayList<>();
@@ -13,6 +13,6 @@ public class CarFactory {
             cars.add(Car.defaultOf(carname));
         }
 
-        return ParticipationCars.defaultOf(cars);
+        return Cars.defaultOf(cars);
     }
 }

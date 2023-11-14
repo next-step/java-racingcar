@@ -3,26 +3,26 @@ package racing;
 import racing.inout.OutPutView;
 
 public class CarRacing {
-    private final ParticipationCars participationCars;
+    private final Cars cars;
     private final Referee referee;
     private final int howManyTimesToTry;
 
-    private CarRacing(ParticipationCars participationCars, int howManyTimesToTry, Referee referee) {
-        this.participationCars = participationCars;
+    private CarRacing(Cars cars, int howManyTimesToTry, Referee referee) {
+        this.cars = cars;
         this.howManyTimesToTry = howManyTimesToTry;
         this.referee = referee;
     }
 
-    public static CarRacing defaultOf(ParticipationCars participationCars, int howManyTimesToTry, Referee referee) {
-        return new CarRacing(participationCars,howManyTimesToTry, referee);
+    public static CarRacing defaultOf(Cars cars, int howManyTimesToTry, Referee referee) {
+        return new CarRacing(cars,howManyTimesToTry, referee);
     }
 
     public void start(OutPutView outPutView) {
         for (int i = 0; i < howManyTimesToTry; i++) {
-            participationCars.move(referee);
-            participationCars.printStatus(outPutView);
+            cars.move(referee);
+            cars.printStatus(outPutView);
         }
-        Winners winners = participationCars.voteWinner();
+        Winners winners = cars.voteWinner();
         winners.printWinners(outPutView);
     }
 }

@@ -11,10 +11,10 @@ public class CarRacingGameMachine {
         int howManyTimesToTry = InPutView.howManyTimesToTry();
 
         CarFactory carFactory = new CarFactory();
-        ParticipationCars participationCars = carFactory.settingRacingCars(names);
+        Cars cars = carFactory.settingRacingCars(names);
 
         Referee referee = new AdvanceprobabilitySixtyPercentReferee();
-        CarRacing carRacing = CarRacing.defaultOf(participationCars, howManyTimesToTry, referee);
+        CarRacing carRacing = CarRacing.defaultOf(cars, howManyTimesToTry, referee);
         OutPutView outPutView = new OutPutView();
         carRacing.start(outPutView);
     }
