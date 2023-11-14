@@ -1,5 +1,7 @@
 package racing;
 
+import racing.domain.Car;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,12 @@ public class Racing {
         }
     }
 
+    public Racing(String[] carNames){
+        for(String name : carNames){
+            carList.add(new Car(name));
+        }
+    }
+  
     public void roundStart(){
         for(Car car : carList){
             car.turn(numberGenerator);

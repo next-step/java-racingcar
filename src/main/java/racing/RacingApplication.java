@@ -5,11 +5,11 @@ import racing.view.ResultView;
 
 public class RacingApplication {
     public static void main(String[] args){
-        int carCount = InputView.inputCarCount();
+        String[] carNames = InputView.inputCarNames();
         int tryCount = InputView.inputTryCount();
 
         ResultView.printResultMessage();
-        race(carCount, tryCount);
+        race(carNames, tryCount);
     }
 
     public static void race(int carCount, int tryCount){
@@ -19,5 +19,15 @@ public class RacingApplication {
             ResultView.printPositionList(racing.getCarList());
             ResultView.printNewLine();
         }
+    }
+
+    public static void race(String[] carNames, int tryCount){
+        Racing racing = new Racing(carNames);
+        for(int i=0; i<tryCount; i++){
+            racing.roundStart();
+            ResultView.printPositionWithNameList(racing.getCarList());
+            ResultView.printNewLine();
+        }
+        ResultView.printWinner(racing.getCarList());
     }
 }
