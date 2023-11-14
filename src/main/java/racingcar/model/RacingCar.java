@@ -6,7 +6,7 @@ public class RacingCar {
     private static final String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
     private static final int NAME_MAX_LENGTH = 5;
     private static final int THRESHOLD_NUMBER = 4;
-    private static final int START_POSITION = 1;
+    private static final int START_POSITION = 0;
     private static final int STEP = 1;
 
     private int position;
