@@ -5,10 +5,12 @@ public class Calculator {
     private static final String DELIMITER = ",|:";
     private static final int CUSTOM_DELIMITER_INDEX = 1;
     private static final int CUSTOM_TEXT_INDEX = 2;
+    private static final int NULL_ZERO_VALUE = 0;
+    private static final int NUM_THRESHOLD = 0;
 
     public static int calculate(String text) {
         if(isBlank(text)) {
-            return 0;
+            return NULL_ZERO_VALUE;
         }
         return sum(toInts(split(text)));
     }
@@ -60,7 +62,7 @@ public class Calculator {
     }
 
     private static void validatePositive(int number){
-        if(number < 0) {
+        if(number < NUM_THRESHOLD) {
             throw new IllegalArgumentException("DO NOT INPUT MINUS NUMBER");
         }
     }
