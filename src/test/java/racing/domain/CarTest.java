@@ -1,7 +1,6 @@
 package racing.domain;
 
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,10 +27,11 @@ class CarTest {
 
     @Test
     void assertCarNameLength() {
+        String errorMessage = String.format("자동차 이름은 %s글자를 초과할 수 없습니다.", CONDITION_FOR_NAME_LENGTH);
         assertThatThrownBy(() -> {
             Car car = new Car("SONNYYYYYY");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 "+CONDITION_FOR_NAME_LENGTH+"글자를 초과할 수 없습니다.");
+                .hasMessageContaining(errorMessage);
     }
 
     @Test

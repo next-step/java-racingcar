@@ -20,8 +20,9 @@ public class Car {
     }
 
     private static void validateLength(String name) {
+        String errorMessage = String.format("자동차 이름은 %s글자를 초과할 수 없습니다.", CONDITION_FOR_NAME_LENGTH);
         if (name.length() > CONDITION_FOR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 "+CONDITION_FOR_NAME_LENGTH+"글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
