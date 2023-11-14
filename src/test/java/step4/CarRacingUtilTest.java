@@ -11,7 +11,7 @@ public class CarRacingUtilTest {
     }
 
     @Test
-    void ttt() {
+    void splitTest() {
         CarRacingUtil carRacingUtil = new CarRacingUtil();
         assertThat(carRacingUtil.splitCarNames("ddd,fff,ggg")).isEqualTo("ddd");
     }
