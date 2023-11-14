@@ -9,7 +9,7 @@ public class Distance {
         this.distance = howFar;
     }
 
-    public static Distance defaultOf(int howFar) {
+    public static Distance of(int howFar) {
         return new Distance(howFar);
     }
 

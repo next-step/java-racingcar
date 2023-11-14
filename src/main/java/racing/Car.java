@@ -6,12 +6,12 @@ public class Car {
     private Distance distance;
     private final Name name;
     private Car(Name name) {
-        this.distance = Distance.defaultOf(1);
+        this.distance = Distance.of(1);
         this.name = name;
     }
 
     private Car(Name name,int howFar) {
-        this.distance = Distance.defaultOf(howFar);
+        this.distance = Distance.of(howFar);
         this.name = name;
     }
 
