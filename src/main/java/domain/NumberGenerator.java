@@ -1,15 +1,20 @@
 package domain;
 
+import java.util.Random;
+
 public class NumberGenerator {
 
-    private RacingRandomNumber randomNumber;
+    private Random random;
 
-    public NumberGenerator(RacingRandomNumber number) {
-        this.randomNumber = number;
+    public NumberGenerator() {
     }
 
-    public Integer moveCondition() {
-        return randomNumber.number();
+    public NumberGenerator(Random random) {
+        this.random = random;
+    }
+
+    protected Integer moveCondition() {
+        return random.nextInt(10);
     }
 
 

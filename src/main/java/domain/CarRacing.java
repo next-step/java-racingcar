@@ -1,17 +1,25 @@
 package domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class CarRacing {
 
     private List<Car> cars;
     private Queue<Integer> executeNumbers = new LinkedList<>();
+    private NumberGenerator numberGenerator;
+
+    public CarRacing(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
 
     public void makingCar(String inputString) {
         String[] names = inputString.split(",");
         this.cars = new ArrayList<>();
         makingNamingCars(names);
-        makingExecuteNumbers();
+        makingExecuteNumbers(numberGenerator);
     }
 
     private void makingNamingCars(String[] names) {
@@ -42,14 +50,13 @@ public class CarRacing {
         for (Car car : cars) {
             car.move(executeNumbers.poll());
         }
-        makingExecuteNumbers();
+        makingExecuteNumbers(numberGenerator);
     }
 
-    private void makingExecuteNumbers() {
-        Random random = new Random();
+    private void makingExecuteNumbers(NumberGenerator numberGenerator) {
         int carSize = cars.size();
         while (carSize-- > 0) {
-            this.executeNumbers.add(random.nextInt(10));
+            this.executeNumbers.add(numberGenerator.moveCondition());
         }
     }
 
