@@ -1,9 +1,12 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.StringParser;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
+
+import java.util.ArrayList;
 
 public class RacingGameRunner {
     public static void main(String[] args) {
@@ -15,7 +18,12 @@ public class RacingGameRunner {
         System.out.println("시도할 회수는 몇회인가요?");
         int numbers = inputView.enterNumber();
 
-        Cars cars = new Cars(names);
+        ArrayList<Car> carList = new ArrayList<>();
+        for (String name : names) {
+            carList.add(new Car(name));
+        }
+
+        Cars cars = new Cars(carList);
         ResultView resultView = new ResultView();
         resultView.printCars(cars);
         System.out.println("실행 결과:");
