@@ -36,6 +36,18 @@ public class RacingCar {
     }
 
 
+    public int biggerPosition(int position) {
+        if (this.position > position) {
+            return this.position;
+        }
+        return position;
+    }
+
+    public boolean matchPosition(int position) {
+        return this.position == position;
+    }
+
+
     public String getName() {
         return this.name;
     }

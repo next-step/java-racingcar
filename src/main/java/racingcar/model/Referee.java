@@ -5,31 +5,26 @@ import racingcar.model.RacingCar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Referee {
-    private int winRecord = 0;
-    private List<RacingCar> winnerList = new ArrayList<RacingCar>();
-
 
     public List<RacingCar> findWinner(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            updateWinnerList(car);
-        }
-        return this.winnerList;
+        int maxPosition = maxPosition(cars);
+        return winners(cars, maxPosition);
     }
 
-    private void updateWinnerList(RacingCar car) {
-        int record = car.getPosition();
-
-        if (record > winRecord) {
-            winRecord = record;
-            winnerList = new ArrayList<RacingCar>(Arrays.asList(car));
-            return;
+    private int maxPosition(List<RacingCar> cars) {
+        int maxPosition = 0;
+        for (RacingCar car : cars) {
+            maxPosition = car.biggerPosition(maxPosition);
         }
+        return maxPosition;
+    }
 
-        if (record == winRecord) {
-            winnerList.add(car);
-            return;
-        }
+    private List<RacingCar> winners(List<RacingCar> cars, int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.matchPosition(maxPosition))
+                .collect(Collectors.toList());
     }
 }
