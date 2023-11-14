@@ -18,8 +18,8 @@ public class Car {
         this.position = position;
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public String getName() {
