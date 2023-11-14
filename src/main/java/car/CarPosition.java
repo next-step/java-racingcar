@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class CarPosition implements Comparable<CarPosition> {
 
-    private final int distance;
     private static final int MIN_DISTANCE = 0;
+    private final int distance;
 
     public CarPosition(int distance) {
         validateMoreThanMinDistance(distance);

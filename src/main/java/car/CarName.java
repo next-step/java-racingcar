@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class CarName {
 
-    private String name;
     private static final int MAX_LENGTH = 5;
+    private String name;
 
     public CarName(String name) {
         validateLessThanMaxLength(name.length());
