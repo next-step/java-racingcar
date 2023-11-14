@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import step4.domain.primitivewrapper.Name;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -18,7 +17,7 @@ class NameTest {
         String inputName = "abc";
 
         // when
-        step4.domain.primitivewrapper.Name name = new step4.domain.primitivewrapper.Name(inputName);
+        Name name = new Name(inputName);
 
         // then
         assertThat(name.toString()).isEqualTo("abc");
@@ -31,7 +30,7 @@ class NameTest {
         String name = "abcdef";
 
         // when & then
-        assertThatThrownBy(() -> new step4.domain.primitivewrapper.Name(name)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new Name(name)).isInstanceOf(IllegalArgumentException.class)
             .hasMessage("이름은 5글자를 초과할 수 없습니다.");
     }
 

@@ -1,6 +1,6 @@
 package step5.presentation;
 
-import step5.controller.CarController;
+import step5.domain.CarRacing;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,24 +12,24 @@ public class RacingInputView {
     public static final String DELIMITER_OF_CAR_NAME = ",";
 
     private BufferedReader br;
-    private CarController carController;
+    private CarRacing carRacing;
     private InputValidation inputValidation;
 
     public RacingInputView() {
     }
 
-    public RacingInputView(CarController carController) {
+    public RacingInputView(CarRacing carRacing) {
         this.br = new BufferedReader(new InputStreamReader(System.in));
-        this.carController = carController;
+        this.carRacing = carRacing;
         this.inputValidation = new InputValidation();
     }
 
     public int inputNameOfCars() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        carController.createCarsOf(splitInputToNameOfCars());
+        carRacing.createCarsOf(splitInputToNameOfCars());
 
-        return carController.getCars().getNumOfCars();
+        return carRacing.getCars().getNumOfCars();
     }
 
     private String[] splitInputToNameOfCars() {

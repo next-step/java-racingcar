@@ -1,19 +1,21 @@
 package step5.controller;
 
+import step5.domain.CarRacing;
 import step5.presentation.RacingInputView;
 import step5.presentation.RacingResultView;
 
 import java.util.function.Supplier;
 
-public class CarRacing {
+public class CarRacingController {
 
+    private final CarRacing carRacing;
     private final RacingInputView inputView;
     private final RacingResultView resultView;
 
-    public CarRacing() {
-        CarController carController = new CarController();
-        this.inputView = new RacingInputView(carController);
-        this.resultView = new RacingResultView(carController);
+    public CarRacingController() {
+        this.carRacing = new CarRacing();
+        this.inputView = new RacingInputView(carRacing);
+        this.resultView = new RacingResultView(carRacing);
     }
 
     public void startGame() {

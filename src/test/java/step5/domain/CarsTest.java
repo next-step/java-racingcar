@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.domain.Car;
-import step4.domain.Cars;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ class CarsTest {
         String[] nameOfCars = {"hong","kim","lee"};
 
         // when
-        step4.domain.Cars cars = new step4.domain.Cars(nameOfCars);
+        Cars cars = new Cars(nameOfCars);
 
         // then
         assertThat(cars.getNumOfCars()).isEqualTo(3);
@@ -34,7 +32,7 @@ class CarsTest {
     void getCarBy(int idx, String expectedName) {
         // given
         String[] nameOfCars = {"hong","kim","lee","park","ahn"};
-        step4.domain.Cars cars = new step4.domain.Cars(nameOfCars);
+        Cars cars = new Cars(nameOfCars);
 
         // when
         Car car = cars.findCarBy(idx);
@@ -49,7 +47,7 @@ class CarsTest {
     void getCarByWhenOufOfIndex(int idx) {
         // given
         String[] nameOfCars = {"hong","kim","lee"};
-        step4.domain.Cars cars = new step4.domain.Cars(nameOfCars);
+        Cars cars = new Cars(nameOfCars);
 
         // when & then
         assertThatThrownBy(() -> cars.findCarBy(idx)).isInstanceOf(IndexOutOfBoundsException.class)
@@ -62,7 +60,7 @@ class CarsTest {
     void moveCayBy(int randomNum, int carNo, int expectedResult) {
         // given
         String[] nameOfCars = {"hong","kim","lee","park","ahn"};
-        step4.domain.Cars cars = new step4.domain.Cars(nameOfCars);
+        Cars cars = new Cars(nameOfCars);
 
         // when
         cars.moveCarBy(randomNum, carNo);
@@ -76,7 +74,7 @@ class CarsTest {
     @Test
     void findMaxPosition() {
         // given
-        step4.domain.Cars cars = new step4.domain.Cars(List.of(5, 6, 7, 2, 4));
+        Cars cars = new Cars(List.of(5, 6, 7, 2, 4));
 
         // when
         int maxPosition = cars.findMaxPosition();
@@ -89,7 +87,7 @@ class CarsTest {
     @Test
     void findCarNamesMoveMaxPosition() {
         // given
-        step4.domain.Cars cars = new Cars(List.of("hong", "kim", "lee", "park", "ahn"), List.of(5, 7, 7, 2, 4));
+        Cars cars = new Cars(List.of("hong", "kim", "lee", "park", "ahn"), List.of(5, 7, 7, 2, 4));
         int maxPosition = 7;
 
         // when

@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,7 +16,7 @@ class CarTest {
     @Test
     void createCar() {
         // given
-        step4.domain.Car car = new step4.domain.Car();
+        Car car = new Car();
 
         // when
         int currentPosition = car.getCurrentPosition();
@@ -31,7 +30,7 @@ class CarTest {
     void createCarWithName() {
         // given
         String name = "abcde";
-        step4.domain.Car car = new step4.domain.Car(name);
+        Car car = new Car(name);
 
         // when
         String carName = car.getCarName();
@@ -47,7 +46,7 @@ class CarTest {
         String name = "abcdef";
 
         // when & then
-        assertThatThrownBy(() -> new step4.domain.Car(name)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class)
             .hasMessage("이름은 5글자를 초과할 수 없습니다.");
     }
 
@@ -56,7 +55,7 @@ class CarTest {
     @NullAndEmptySource
     void validateNameIsNone(String name) {
         // when & then
-        assertThatThrownBy(() -> new step4.domain.Car(name)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class)
             .hasMessage("이름은 빈 문자열이 될 수 없습니다.");
     }
 
@@ -65,7 +64,7 @@ class CarTest {
     @CsvSource({"1,0", "3,0", "4,1", "9,1"})
     void moveForward(int power, int expectedPosition) {
         // given
-        step4.domain.Car car = new step4.domain.Car();
+        Car car = new Car();
         car.moveForward(power);
 
         // when
@@ -80,7 +79,7 @@ class CarTest {
     @ValueSource(ints = {-1, 10})
     void moveForwardWhenOverAndUnderPower(int power) {
         // given
-        step4.domain.Car car = new step4.domain.Car();
+        Car car = new Car();
 
         // when & then
         assertThatThrownBy(() -> car.moveForward(power))
@@ -93,7 +92,7 @@ class CarTest {
     @CsvSource({"1,5", "3,5", "6,6", "7,7"})
     void comparePosition(int position, int expectedResult) {
         // given
-        step4.domain.Car hong = new step4.domain.Car("hong", 5);
+        Car hong = new Car("hong", 5);
 
         // when
         int realResult = hong.comparePosition(position);
@@ -107,7 +106,7 @@ class CarTest {
     @CsvSource({"5,true", "6,false"})
     void isMaxPosition(int max, boolean expectedResult) {
         // given
-        step4.domain.Car hong = new Car("hong", 5);
+        Car hong = new Car("hong", 5);
 
         // when
         boolean maxPosition = hong.isMaxPosition(max);

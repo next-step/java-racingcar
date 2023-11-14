@@ -1,6 +1,6 @@
 package step5.presentation;
 
-import step5.controller.CarController;
+import step5.domain.CarRacing;
 import step5.domain.Car;
 import step5.domain.Cars;
 import step5.util.NumberUtil;
@@ -11,13 +11,13 @@ public class RacingResultView {
 
     private static final String VIEW_OF_CAR = "-";
 
-    private CarController carController;
+    private CarRacing carRacing;
 
     public RacingResultView() {
     }
 
-    public RacingResultView(CarController carController) {
-        this.carController = carController;
+    public RacingResultView(CarRacing carRacing) {
+        this.carRacing = carRacing;
     }
 
     public void printCarRacing(int numOfCars, int numOfTry) {
@@ -25,15 +25,15 @@ public class RacingResultView {
 
         for (int i=0; i<numOfTry; i++) {
             tryCarMoving(numOfCars);
-            printCars(carController.getCars());
+            printCars(carRacing.getCars());
         }
 
-        printWinners(carController.findWinners());
+        printWinners(carRacing.findWinners());
     }
 
     private void tryCarMoving(int numOfCars) {
         for (int carNo = 0; carNo< numOfCars; carNo++) {
-            carController.moveCar(NumberUtil.createRandomNum(), carNo);
+            carRacing.moveCar(NumberUtil.createRandomNum(), carNo);
         }
     }
 

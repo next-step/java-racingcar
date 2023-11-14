@@ -1,4 +1,4 @@
-package step5.controller;
+package step5.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,13 +8,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarControllerTest {
+public class CarRacingTest {
 
     @DisplayName("사용자에게 입력받은 이름 개수만큼 자동차를 생성한다.")
     @Test
     void createCars() {
         // given
-        step4.controller.CarController carController = new step4.controller.CarController();
+        CarController carController = new CarController();
         String[] nameOfCars = {"hong","kim","lee","park","ahn"};
 
         // when
@@ -28,7 +28,7 @@ public class CarControllerTest {
     @Test
     void startRace() {
         // given
-        step4.controller.CarController carController = new step4.controller.CarController();
+        CarController carController = new CarController();
         String[] nameOfCars = {"hong","kim","lee","park","ahn"};
         carController.createCarsOf(nameOfCars);
 
@@ -52,7 +52,7 @@ public class CarControllerTest {
     @Test
     void findWinners() {
         // given
-        step4.controller.CarController carController = new CarController();
+        CarController carController = new CarController();
         carController.createCarsOf(List.of("hong", "kim", "lee", "park", "ahn"), List.of(5, 7, 7, 2, 4));
 
         // when

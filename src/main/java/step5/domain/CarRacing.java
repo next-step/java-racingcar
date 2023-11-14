@@ -1,10 +1,10 @@
-package step5.controller;
+package step5.domain;
 
 import step5.domain.Cars;
 
 import java.util.List;
 
-public class CarController {
+public class CarRacing {
 
     private Cars cars;
 
