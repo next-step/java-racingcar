@@ -26,13 +26,6 @@ public class AdvanceprobabilitySixtyPercentReferee implements Referee {
         }
         return Winners.defaultOf(winners);
     }
-
-    private void addSameDistanceCar(Car winner, Car each, List<Car> winners) {
-        if (each.equalsDistance(winner)) {
-            winners.add(each);
-        }
-    }
-
     private Car findWinner(List<Car> participationCars) {
         int size = participationCars.size();
         Car winner = null;
@@ -43,6 +36,14 @@ public class AdvanceprobabilitySixtyPercentReferee implements Referee {
         }
         return winner;
     }
+
+    private void addSameDistanceCar(Car winner, Car each, List<Car> winners) {
+        if (each.equalsDistance(winner)) {
+            winners.add(each);
+        }
+    }
+
+
 
 
 }

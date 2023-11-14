@@ -22,7 +22,7 @@ public class CarRacing {
             participationCars.move(referee);
             participationCars.printStatus(outPutView);
         }
-        Winners winners = participationCars.voteWinner(referee);
+        Winners winners = participationCars.voteWinner();
         winners.printWinners(outPutView);
     }
 }
