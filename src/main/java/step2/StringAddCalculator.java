@@ -4,20 +4,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    public static final int DEFAULT_VALUE = 0;
+    public static final int CUSTOM_DELIMITER_MODE = 1;
+    public static final int SPLIT_MODE = 2;
+    public static final String BASIC_DELIMITER_PATTERN = "[,|:]";
+    public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+
+    private StringAddCalculator() {}
+
     public static int splitAndSum(String text) {
         if (isBlankOrNull(text)) {
-            return 0;
+            return DEFAULT_VALUE;
         }
 
         if (text.contains(",") || text.contains(":")) {
-            String[] nums = text.split(",|:");
+            String[] nums = text.split(BASIC_DELIMITER_PATTERN);
             return sum(parseInt(nums));
         }
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] nums = m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(CUSTOM_DELIMITER_MODE);
+            String[] nums = m.group(SPLIT_MODE).split(customDelimiter);
             return sum(parseInt(nums));
         }
 
