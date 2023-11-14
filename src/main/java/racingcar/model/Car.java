@@ -4,15 +4,12 @@ public class Car {
 
     private static final int MINIMUM_SUCCESS_VALUE = 4;
     private static final int RANDOM_RANGE = 9;
-    private final String name;
+    private final CarName carName;
     private Position position;
 
 
     public Car(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-        this.name = name;
+        this.carName = new CarName(name);
         this.position = new Position(0);
     }
 
@@ -26,7 +23,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 
     public boolean isMaxPosition(Car car) {
