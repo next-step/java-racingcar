@@ -13,7 +13,7 @@ public class RacingCarTest {
     @DisplayName("자동차 이름은 5자 이하로 설정되어야 함")
     public void 자동차_이름_5자_이하() {
         Assertions.assertThatThrownBy(() -> new RacingCar("abcdefg"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -22,11 +22,11 @@ public class RacingCarTest {
         RacingCar car = new RacingCar("abc");
         car.moveOrStop(1);
         assertThat(car.getPosition())
-                .isEqualTo(1);
+                .isEqualTo(0);
 
         car.moveOrStop(4);
         assertThat(car.getPosition())
-                .isEqualTo(2);
+                .isEqualTo(1);
     }
 
 }

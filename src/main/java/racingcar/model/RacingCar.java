@@ -23,7 +23,7 @@ public class RacingCar {
 
     private void validateCarName(String name) {
         if (name.length() > NAME_MAX_LENGTH) {
-            throw new RuntimeException(ERR_NAME_LENGTH);
+            throw new IllegalArgumentException(ERR_NAME_LENGTH);
         }
     }
 
