@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.Car;
+import racing.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,7 +61,7 @@ public class ResultView {
     public static List<String> getWinnersName(List<Car> carList){
         int maxVal = getWinnerPosition(carList);
         return carList.stream()
-                .filter(car -> car.getPosition() == maxVal)
+                .filter(car -> car.isWinner(maxVal))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
