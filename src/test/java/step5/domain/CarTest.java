@@ -84,7 +84,7 @@ class CarTest {
         // when & then
         assertThatThrownBy(() -> car.moveForward(power))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("엑셀의 작동 범위를 벗어납니다.");
+            .hasMessage("입력 가능한 숫자의 범위를 벗어납니다.");
     }
 
     @DisplayName("인자로 받은 수와 자신의 이동위치를 비교해 더 큰 값을 반환한다.")

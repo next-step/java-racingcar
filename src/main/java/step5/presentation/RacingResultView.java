@@ -24,14 +24,14 @@ public class RacingResultView {
         System.out.println("실행 결과");
 
         for (int i=0; i<numOfTry; i++) {
-            tryCarMoving(numOfCars);
+            moveCar(numOfCars);
             printCars(carRacing.getCars());
         }
 
         printWinners(carRacing.findWinners());
     }
 
-    private void tryCarMoving(int numOfCars) {
+    private void moveCar(int numOfCars) {
         for (int carNo = 0; carNo< numOfCars; carNo++) {
             carRacing.moveCar(NumberUtil.createRandomNum(), carNo);
         }
