@@ -1,6 +1,7 @@
 package car;
 
 import car.domain.Car;
+import car.domain.Name;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
