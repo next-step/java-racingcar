@@ -3,6 +3,7 @@ package racing;
 import racing.inout.OutPutView;
 
 public class Name {
+    private static final int LIMIT_NAME_LENGTH = 5;
     private final String name;
 
     private Name(String name) {
