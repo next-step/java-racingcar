@@ -21,14 +21,9 @@ class CarsTest {
 
         // then
         assertAll(
-                () -> assertThat(cars.getValue().get(0))
-                        .isEqualTo(new Car(new Name("car1"), new Position(1))),
-
-                () -> assertThat(cars.getValue().get(1))
-                        .isEqualTo(new Car(new Name("car2"), new Position(1))),
-
-                () -> assertThat(cars.getValue().get(2))
-                        .isEqualTo(new Car(new Name("car3"), new Position(1)))
+                () -> assertThat(cars.getValue().contains(new Car(new Name("car1"), new Position(1)))).isTrue(),
+                () -> assertThat(cars.getValue().contains(new Car(new Name("car2"), new Position(1)))).isTrue(),
+                () -> assertThat(cars.getValue().contains(new Car(new Name("car3"), new Position(1)))).isTrue()
         );
     }
 

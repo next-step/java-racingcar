@@ -9,7 +9,7 @@ public class Name {
 
     public Name(String value) {
         if (!nameValid(value)) {
-            throw new IllegalArgumentException("이름은 1글자 이상, 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException("이름의 길이를 벗어났습니다.");
         }
         this.value = value;
     }
