@@ -11,8 +11,6 @@ public class ResultView {
 
 
     public static void printRoundResult(RacingGame game) {
-        startPrint(game);
-
         for (RacingCar car : game.getCars()) {
             printLocationOfCar(car);
         }
@@ -20,11 +18,9 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void startPrint(RacingGame game) {
-        if (game.getRound() == 1) {
-            System.out.println();
-            System.out.println(START_MESSAGE);
-        }
+    public static void startPrint() {
+        System.out.println();
+        System.out.println(START_MESSAGE);
     }
 
     private static void printLocationOfCar(RacingCar car) {

@@ -13,7 +13,6 @@ public class RacingGame {
     private final Referee referee = new Referee();
     private List<RacingCar> cars;
     private List<RacingCar> winners;
-    private int round = 0;
 
 
     public RacingGame(List<String> carNameList, int roundNumber) {
@@ -47,7 +46,6 @@ public class RacingGame {
         for (RacingCar car : this.cars) {
             car.moveOrStop(getRandomValue());
         }
-        this.round += 1;
     }
 
     private static int getRandomValue() {
@@ -62,10 +60,6 @@ public class RacingGame {
 
     public List<RacingCar> getCars() {
         return this.cars;
-    }
-
-    public int getRound() {
-        return this.round;
     }
 
     public List<RacingCar> getWinners() {
