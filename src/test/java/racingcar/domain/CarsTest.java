@@ -8,7 +8,6 @@ import racingcar.rule.Rule;
 import racingcar.util.BasicNumberGenerator;
 
 import java.util.Arrays;
-import java.util.List;
 
 class CarsTest {
 
@@ -17,14 +16,11 @@ class CarsTest {
     public void cars_move() {
         Rule rule = new MinimumRule(4, new BasicNumberGenerator(4));
 
-        List<Car> list = Arrays.asList(
-                new Car("carA"),
-                new Car("carB"));
+        Cars cars = Cars.ofString(Arrays.asList("carA", "carB"));
+        RaceRecords raceRecords = cars.move(rule);
 
-        Cars cars = new Cars(list);
-        cars.move(rule);
-
-        Assertions.assertThat(list.get(0).position().equals(new Position(1))).isTrue();
-        Assertions.assertThat(list.get(1).position().equals(new Position(1))).isTrue();
+        for (RaceRecord raceRecord : raceRecords.getRaceRecords()) {
+            Assertions.assertThat(raceRecord.position().equals(new Position(1))).isTrue();
+        }
     }
 }

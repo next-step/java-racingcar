@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.controller.RacingCarGame;
 import racingcar.rule.MinimumRule;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
