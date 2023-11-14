@@ -77,7 +77,7 @@ public class Cars {
     private int findMaxPosition() {
 
         return value.stream()
-                .mapToInt(car -> car.getPosition().getValue())
+                .mapToInt(Car::position)
                 .max()
                 .orElse(DEFAULT_POSITION);
     }
