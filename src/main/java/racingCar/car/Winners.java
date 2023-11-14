@@ -4,35 +4,33 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Winners {
-	private final List<Car> winners;
+	private final LinkedList<Car> winners;
 
 	public Winners(Cars cars) {
-		this.winners = selectWinners(cars);
+		winners = new LinkedList<>();
+		setWinners(cars);
 	}
 
-	private List<Car> selectWinners(Cars cars) {
-		LinkedList<Car> winners = new LinkedList<>();
+	private void setWinners(Cars cars) {
 		List<Car> carList = cars.carList();
-		for (int i = 0; i < carList.size(); i++) {
-			Car currentCar = carList.get(i);
-			if (i == 0) {
-				winners.add(currentCar);
-				continue;
-			}
-			Car winner = winners.getLast();
-			if (winner.distance < currentCar.distance) {
-				winners.clear();
-				winners.add(currentCar);
-				continue;
-			}
-			if (winner.distance == currentCar.distance) {
-				winners.add(currentCar);
-			}
+
+		for (Car currentCar : carList) {
+			setWinnerByCondition(winners, currentCar);
 		}
-		return winners;
 	}
 
-	public List<Car> winnerList() {
+	private void setWinnerByCondition(LinkedList<Car> winners, Car currentCar) {
+		if (winners.isEmpty() || winners.getLast().distance < currentCar.distance) {
+			winners.clear();
+			winners.add(currentCar);
+			return;
+		}
+		if (winners.getLast().distance == currentCar.distance) {
+			winners.add(currentCar);
+		}
+	}
+
+	public List<Car> winners() {
 		return winners;
 	}
 }

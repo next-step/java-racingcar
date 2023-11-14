@@ -35,7 +35,7 @@ public class ConsoleResultView implements ResultView {
 	@Override
 	public void printWinner(Winners winners) {
 		StringBuilder stringBuilder = new StringBuilder();
-		for (Car winner : winners.winnerList()) {
+		for (Car winner : winners.winners()) {
 			stringBuilder.append(winner.name);
 			stringBuilder.append(", ");
 		}

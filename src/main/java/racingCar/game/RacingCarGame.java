@@ -6,32 +6,32 @@ import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
 public class RacingCarGame { // 자동차 경주를 수행한다.
-    private final InputView inputView;
-    private final ResultView resultView;
-    private GameRequest gameRequest;
-    private Cars cars;
+	private final InputView inputView;
+	private final ResultView resultView;
+	private RacingGameRequest racingGameRequest;
+	private Cars cars;
 
-    public RacingCarGame(InputView inputView, ResultView resultView) {
-        this.inputView = inputView;
-        this.resultView = resultView;
-    }
+	public RacingCarGame(InputView inputView, ResultView resultView) {
+		this.inputView = inputView;
+		this.resultView = resultView;
+	}
 
-    public void run() {
-        gameRequest = inputView.gameRequest();
+	public void run() {
+		racingGameRequest = inputView.gameRequestWithNames();
 
-        resultView.printPrefix();
+		resultView.printPrefix();
 
-        cars = Cars.of(gameRequest.carNameList());
+		cars = new Cars(racingGameRequest.cars());
+		moveByTryCount();
 
-        moveByTryCount();
-        Winners winners = new Winners(cars);
-        resultView.printWinner(winners);
-    }
+		Winners winners = new Winners(cars);
+		resultView.printWinner(winners);
+	}
 
-    private void moveByTryCount() {
-        for (int i = 0; i < gameRequest.tryCount(); i++) {
-            cars.moveOnce();
-            resultView.printDistanceWithName(cars);
-        }
-    }
+	private void moveByTryCount() {
+		for (int i = 0; i < racingGameRequest.tryCount(); i++) {
+			cars.moveOnce();
+			resultView.printDistanceWithName(cars);
+		}
+	}
 }
