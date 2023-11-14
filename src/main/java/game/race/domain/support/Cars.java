@@ -9,32 +9,32 @@ import game.race.domain.support.move.MovePolicy;
 
 public class Cars {
 
-    private final List<Car> carList;
+    private final List<Car> cars;
 
-    public Cars(List<Car> carList) {
-        this.carList = carList;
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public static Cars of(List<String> vehicleNames) {
-        Cars cars = new Cars(new ArrayList<>());
-        cars.getCarList().addAll(vehicleNames.stream().map(Car::new).collect(Collectors.toList()));
+        List<Car> carList = vehicleNames.stream()
+                                        .map(Car::new)
+                                        .collect(Collectors.toList());
+        return new Cars(carList);
+    }
 
+    public List<Car> getCars() {
         return cars;
     }
 
-    public List<Car> getCarList() {
-        return carList;
-    }
-
     public void move(MovePolicy policy) {
-        for (Car car : carList) {
+        for (Car car : cars) {
             car.move(policy);
         }
     }
 
     public List<String> getWinners() {
         List<String> winners = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : cars) {
             addWinner(car, getMaxMoveCount(), winners);
         }
 
@@ -43,7 +43,7 @@ public class Cars {
 
     private int getMaxMoveCount() {
         int maxMoveCount = 0;
-        for (Car car : carList) {
+        for (Car car : cars) {
             maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
         }
 

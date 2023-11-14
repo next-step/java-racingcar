@@ -3,7 +3,6 @@ package game.race.view;
 import java.util.List;
 
 import game.race.domain.Car;
-import game.race.dto.RaceDto;
 
 public class ResultView {
 
@@ -11,11 +10,11 @@ public class ResultView {
     private static final String END_MARK = "";
     private static final String MARK = "-";
 
-    public void showPrompt() {
+    public static void showPrompt() {
         System.out.println(SHOW_RESULT);
     }
 
-    public void showCars(List<String> vehicleNames, List<Car> cars) {
+    public static void showCars(List<String> vehicleNames, List<Car> cars) {
         for (int idx = 0; idx < cars.size(); idx++) {
             printMark(vehicleNames.get(idx), cars.get(idx).getMoveCount());
         }
@@ -23,7 +22,7 @@ public class ResultView {
         System.out.println(END_MARK);
     }
 
-    private void printMark(String vehicleName, int moveCount) {
+    private static void printMark(String vehicleName, int moveCount) {
         String tireMark = (moveCount == 0) ? MARK : MARK.repeat(moveCount);
         System.out.println(vehicleName + " : " + tireMark);
     }

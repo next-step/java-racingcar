@@ -1,6 +1,11 @@
 package game.race.view;
 
+import static java.lang.Integer.parseInt;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import game.race.dto.RaceDto;
 
@@ -13,31 +18,44 @@ public class InputView {
     public static RaceDto showPrompt() {
         System.out.println(ASK_VEHICLE_NAME);
         String vehicleNames = SCANNER.nextLine();
-        checkNames(vehicleNames);
 
         System.out.println(ASK_TRY_COUNT);
         String trials = SCANNER.nextLine();
+        List<String> names = getNames(vehicleNames);
+
+        checkNames(names);
         checkTryCount(trials);
 
-        return RaceDto.of(vehicleNames, Integer.parseInt(trials));
+        return RaceDto.of(parseInt(trials), names);
     }
 
-    public static void checkNames(String input) {
-        if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("값을 입력 하세요. - " + input);
+    public static List<String> getNames(String vehicleNames) {
+        if (vehicleNames == null || vehicleNames.isBlank()) {
+            throw new IllegalArgumentException("값을 입력 하세요. - " + vehicleNames);
         }
+
+        return Arrays.stream(vehicleNames.split(","))
+                     .collect(Collectors.toList());
     }
 
     public static void checkTryCount(String input) {
         int number;
         try {
-            number = Integer.parseInt(input);
+            number = parseInt(input);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("0이 아닌 숫자를 입력 하세요. - " + input);
         }
 
         if (number == 0) {
             throw new IllegalArgumentException("0이 아닌 숫자를 입력 하세요. - " + input);
+        }
+    }
+
+    public static void checkNames(List<String> names) {
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("이름은 다섯자를 넘을 수 없습니다. - " + name);
+            }
         }
     }
 }

@@ -3,29 +3,25 @@ package game.race;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.BeforeAll;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import game.race.domain.Car;
+import game.race.domain.support.Cars;
 import game.race.domain.support.move.impl.RandomPolicy;
 import game.race.view.InputView;
 
 class CarRaceTest {
 
-    static Car car;
-
-    @BeforeAll
-    static void init() {
-        car = new Car("TEST");
-    }
-
     @ParameterizedTest
     @NullAndEmptySource
     void 빈문자_또는_null_입력_되면_오류를_발생_시키는_테스트(String input) {
-        assertThatThrownBy(() -> InputView.checkNames(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> InputView.getNames(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -33,10 +29,17 @@ class CarRaceTest {
        assertThatThrownBy(() -> InputView.checkTryCount("0")).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 하나라도_이름의_길이가_다섯자를_초과하면_실패하는_테스트() {
+        List<String> list = Arrays.asList("abc", "abcdef", "abcc");
+        assertThatThrownBy(() -> InputView.checkNames(list)).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @ParameterizedTest
     @CsvSource({"5, 1", "6, 2", "7, 3", "1, 3", "9, 4", "0, 4"})
     void 자동차_움직임_확인_하는_테스트(int randomNumber, int moveCount) {
         // given
+        Car car = new Car("TEST");
         RandomPolicy randomPolicy = new RandomPolicy() {
             @Override
             public int getPolicyNumber() {
@@ -49,5 +52,41 @@ class CarRaceTest {
 
         // then
         assertThat(car.getMoveCount()).isEqualTo(moveCount);
+    }
+
+    @Test
+    void 자동차_우승자를_확인하는_테스트() {
+        // given
+        List<String> list = Arrays.asList("abc", "abcd", "abcdef");
+        Cars cars = Cars.of(list);
+        RandomPolicy abcPolicy = new RandomPolicy() {
+            @Override
+            public int getPolicyNumber() {
+                return 5;
+            }
+        };
+
+        RandomPolicy abcdPolicy = new RandomPolicy() {
+            @Override
+            public int getPolicyNumber() {
+                return 1;
+            }
+        };
+
+        RandomPolicy abcdefPolicy = new RandomPolicy() {
+            @Override
+            public int getPolicyNumber() {
+                return 2;
+            }
+        };
+
+        // when
+        cars.getCars().get(0).move(abcPolicy);
+        cars.getCars().get(1).move(abcdPolicy);
+        cars.getCars().get(2).move(abcdefPolicy);
+
+        // then
+        assertThat(cars.getWinners().size()).isEqualTo(1);
+        assertThat(cars.getWinners().get(0)).isEqualTo("abc");
     }
 }

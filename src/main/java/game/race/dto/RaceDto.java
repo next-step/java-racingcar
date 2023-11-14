@@ -1,8 +1,6 @@
 package game.race.dto;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RaceDto {
 
@@ -22,9 +20,7 @@ public class RaceDto {
         return vehicleNames;
     }
 
-    public static RaceDto of(String vehicleName, int tryCnt) {
-        List<String> names = Arrays.stream(vehicleName.split(","))
-                                   .collect(Collectors.toList());
+    public static RaceDto of(int tryCnt, List<String> names) {
         return new RaceDto(tryCnt, names);
     }
 }
