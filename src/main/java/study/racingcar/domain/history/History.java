@@ -9,28 +9,25 @@ import study.racingcar.domain.car.Car;
 
 public class History {
 
-    private final List<Map<Car,String>> history;
+    private final List<Map<Car, Integer>> history;
 
-    public History(List<Map<Car, String>> result) {
+    public History(List<Map<Car, Integer>> result) {
         this.history = result;
     }
 
-    public List<Map<Car, String>> history() {
+    public List<Map<Car, Integer>> history() {
         return history;
     }
 
     public List<String> winners() {
-        Map<Car, String> map = this.history.get(lastIndexOfhistory());
+        Map<Car, Integer> map = this.history.get(lastIndexOfhistory());
 
-        String maxValue = map.values().stream()
-            .max(Comparator.comparing(String::length))
+        int maxValue = map.values().stream().max(Comparator.comparing(Integer::intValue))
             .orElseThrow(() -> new IllegalArgumentException("참여자를 찾을 수 없습니다."));
 
         return map.entrySet().stream()
-            .filter(carStringEntry -> carStringEntry.getValue().equals(maxValue))
-            .map(Entry::getKey)
-            .map(Car::name)
-            .collect(Collectors.toList());
+            .filter(carStringEntry -> carStringEntry.getValue().equals(maxValue)).map(Entry::getKey)
+            .map(Car::name).collect(Collectors.toList());
     }
 
     private int lastIndexOfhistory() {

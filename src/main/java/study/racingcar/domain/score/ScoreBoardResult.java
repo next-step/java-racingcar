@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import study.racingcar.domain.history.History;
 import study.racingcar.domain.car.Car;
-import study.racingcar.view.ScoreBoardView;
+import study.racingcar.util.MoveStatus;
 
 public class ScoreBoardResult {
 
@@ -15,8 +15,8 @@ public class ScoreBoardResult {
     }
 
 
-    private LinkedList<Map<Car,String>> makingResult(List<ScoreEachRound> grids) {
-        LinkedList<Map<Car,String>> resultList = new LinkedList<>();
+    private LinkedList<Map<Car, Integer>> makingResult(List<ScoreEachRound> grids) {
+        LinkedList<Map<Car, Integer>> resultList = new LinkedList<>();
         grids.forEach(scoreEachRound -> {
             if (resultList.isEmpty()) {
                 firstRoundResult(resultList, scoreEachRound);
@@ -27,17 +27,30 @@ public class ScoreBoardResult {
         return resultList;
     }
 
-    private void firstAfterRoundResult(LinkedList<Map<Car,String>> resultList, ScoreEachRound scoreEachRound) {
-        Map<Car, String> last = resultList.getLast();
+    private void firstAfterRoundResult(LinkedList<Map<Car, Integer>> resultList,
+        ScoreEachRound scoreEachRound) {
+        Map<Car, Integer> last = resultList.getLast();
         resultList.add(scoreEachRound.roundScores().stream().map(score -> {
-            return Map.entry(score.whozScore(),
-                last.get(score.whozScore()) + ScoreBoardView.scoreToString(score.scoreMoveStatus()));
+            return Map.entry(score.whozScore(), addScore(score, last));
         }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
-    private void firstRoundResult(LinkedList<Map<Car,String>> resultList, ScoreEachRound scoreEachRound) {
-        resultList.add(scoreEachRound.roundScores().stream().collect(Collectors.toMap(Score::whozScore,
-            score -> ScoreBoardView.scoreToString(score.scoreMoveStatus()))));
+    private static int addScore(Score score, Map<Car, Integer> last) {
+        return last.get(score.whozScore()) + getScorePoint(score);
+    }
+
+    private void firstRoundResult(LinkedList<Map<Car, Integer>> resultList,
+        ScoreEachRound scoreEachRound) {
+        resultList.add(
+            scoreEachRound.roundScores().stream().collect(Collectors.toMap(Score::whozScore,
+                ScoreBoardResult::getScorePoint)));
+    }
+
+    private static Integer getScorePoint(Score score) {
+        if (score.scoreMoveStatus().equals(MoveStatus.MOVE)) {
+            return 1;
+        }
+        return 0;
     }
 
 }

@@ -19,7 +19,7 @@ class HistoryTest {
         Car carA = new Car("a");
         Car carB = new Car("b");
 
-        Map<Car, String> map = Map.of(carA, "----", carB, "-");
+        Map<Car, Integer> map = Map.of(carA, 5, carB, 2);
 
         History history = new History(new LinkedList<>(List.of(map)));
         List<String> winners = history.winners();
