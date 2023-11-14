@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.movablestrategy.MovableStrategy;
 
@@ -13,21 +13,17 @@ public class Cars {
     }
 
     public Cars(int carCount) {
-        this(carCount, () -> true);
-    }
-
-    public Cars(int carCount, MovableStrategy movableStrategy) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car("noName", movableStrategy));
+            cars.add(new Car());
         }
     }
 
-    public Cars(String racerNames, MovableStrategy movableStrategy) {
+    public Cars(String racerNames) {
         this.cars = new ArrayList<>();
-        String[] names = Car.nameSplitByComma(racerNames);
+        String[] names = Car.nameSplitByDelimiter(racerNames);
         for (String name : names) {
-            cars.add(new Car(name, movableStrategy));
+            cars.add(new Car(name));
         }
     }
 
@@ -35,23 +31,21 @@ public class Cars {
         return cars.size() >= racingCondition;
     }
 
-    public void race() {
+    public List<CarStatDTO> race(MovableStrategy movableStrategy) {
+        List<CarStatDTO> carStatDTOS = new ArrayList<>();
         for (Car car : cars) {
-            car.move();
+            carStatDTOS.add(car.move(movableStrategy));
         }
+        return carStatDTOS;
     }
 
     public int size() {
         return cars.size();
     }
 
-    public List<Car> mostFastestCar() {
+    public List<CarStatDTO> mostFastestCar() {
         int maxPosition = measurementMaxPosition();
         return findCarByPosition(maxPosition);
-    }
-
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
     }
 
     private int measurementMaxPosition() {
@@ -62,17 +56,10 @@ public class Cars {
         return maxPosition;
     }
 
-    private List<Car> findCarByPosition(int position) {
+    private List<CarStatDTO> findCarByPosition(int position) {
         return cars.stream()
-                .map(car -> samePositionRacerSelection(car, position))
-                .filter(Objects::nonNull)
+                .filter(car -> car.isSamePosition(position))
+                .map(car -> car.carStatDTO())
                 .collect(Collectors.toList());
-    }
-
-    private Car samePositionRacerSelection(Car car, int position) {
-        if (car.isSamePosition(position)) {
-            return car;
-        }
-        return null;
     }
 }
