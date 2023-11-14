@@ -10,7 +10,7 @@ public class ResultView {
         for (RacingCar racingCar : racingCars) {
             StringBuilder status = new StringBuilder(racingCar.name().value())
                     .append(" : ")
-                    .append("-".repeat(racingCar.getDistance()));
+                    .append(racingCar.drawDistance());
             System.out.println(status);
         }
         System.out.println();

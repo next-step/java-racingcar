@@ -38,4 +38,8 @@ public class RacingCar {
         if (distance > maxDistance) return distance;
         return maxDistance;
     }
+
+    public String drawDistance() {
+        return "-".repeat(distance);
+    }
 }

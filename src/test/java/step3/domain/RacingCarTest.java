@@ -46,6 +46,18 @@ class RacingCarTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void drawDistanceTest() {
+        NumberGenerator numberGenerator = new MovableNumberGenerator();
+        RacingCar racingCar = new RacingCar("test");
+
+        racingCar.move(numberGenerator);
+        racingCar.move(numberGenerator);
+        racingCar.move(numberGenerator);
+
+        assertThat(racingCar.drawDistance()).isEqualTo("---");
+    }
+
     private class MovableNumberGenerator implements NumberGenerator {
         @Override
         public int generate() {
