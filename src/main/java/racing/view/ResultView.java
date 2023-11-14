@@ -1,7 +1,6 @@
 package racing.view;
 
-import racing.car.Car;
-import racing.car.CarList;
+import racing.model.car.CarList;
 
 import java.util.List;
 
@@ -11,10 +10,10 @@ public class ResultView {
 		System.out.println("실행 결과");
 	}
 
-	public void print(CarList carList) {
-		int numberOfCars = carList.getNumberOfCars();
+	public void printCars(CarList carList) {
+		int numberOfCars = carList.numberOfCars();
 		for (int i = 0; i < numberOfCars; i++) {
-			System.out.println(carList.getStatus(i));
+			System.out.println(carList.status(i));
 		}
 		System.out.println();
 	}
