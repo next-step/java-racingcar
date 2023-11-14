@@ -4,11 +4,10 @@ public class Car {
     private int moveCount = 1;
 
     public Car() {
-
     }
 
     public void moveCar(Strategy strategy){
-        if(strategy.isMovable) {
+        if(strategy.isMovable()) {
             ++moveCount;
         }
     }

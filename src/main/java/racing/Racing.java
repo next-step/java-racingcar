@@ -7,10 +7,10 @@ import static racing.InputView.*;
 import static racing.ResultView.*;
 
 public class Racing {
-    private static final int START = 1;
 
     public static void main(String[] args) {
         int carCount = inputCarCount();
+
         List<Car> carList = new ArrayList<>();
         for(int i = 0; i < carCount; ++i){
             carList.add(new Car());
@@ -22,31 +22,20 @@ public class Racing {
     }
 
     public static void doRacing(List<Car> carList, int moveCount) {
-        int maxCarMove = START;
-        Strategy strategy = new Strategy();
-
-        while(maxCarMove < moveCount){
-            for(Car car : carList){
-                strategy.setMovable();
-                car.moveCar(strategy);
-            }
-
-            int currentMaxCarMove = getMaxCarMove(carList);
-            if (maxCarMove <= currentMaxCarMove){
-                showStatus(carList);
-                maxCarMove = currentMaxCarMove;
-            }
+        for(int i = 0; i < moveCount; ++i){
+            moveCars(carList);
         }
 
-        showResult(carList, moveCount);
+        showResult(carList);
     }
 
-
-    private static int getMaxCarMove(List<Car> carList) {
-        int maxMove = 0;
+    private static void moveCars(List<Car> carList) {
+        Strategy strategy = new RandomStrategy();
+        
         for(Car car : carList){
-            maxMove = Math.max(maxMove, car.getMoveCount());
+            car.moveCar(strategy);
         }
-        return maxMove;
+
+        showStatus(carList);
     }
 }

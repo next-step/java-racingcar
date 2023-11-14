@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static racing.InputView.*;
-import static racing.Car.*;
 
 public class RacingTest {
     @DisplayName("자동차 대수와 이동 횟수는 자연수이고 2대 이상이어야 함")
@@ -20,16 +22,18 @@ public class RacingTest {
     @DisplayName("2개의 차가 달리고 2번째 차량이 움직인 경우 테스트")
     @Test
     void 정상_작동_확인(){
-        Strategy strategy = new Strategy();
-        Car[] cars = new Car[2];
-        for(int index = 0; index < cars.length; ++index){
-            cars[index] = new Car();
+        Strategy strategy = new RandomStrategy();
+        List<Car> carList = new ArrayList<>();
+        for(int index = 0; index < 2; ++index){
+            carList.add(new Car());
         }
 
-        strategy.setMovable(true);
-        cars[1].moveCar(strategy);
+        // 2번째 차량(index - 1)이 움직이도록 함
+        while(carList.get(1).getMoveCount() < 2){
+            carList.get(1).moveCar(strategy);
+        }
 
-        assertThat(cars[0].getMoveCount()).isEqualTo(1);
-        assertThat(cars[1].getMoveCount()).isEqualTo(2);
+        assertThat(carList.get(0).getMoveCount()).isEqualTo(1);
+        assertThat(carList.get(1).getMoveCount()).isEqualTo(2);
     }
 }
