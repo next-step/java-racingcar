@@ -1,6 +1,6 @@
-package calculator;
+package step2;
 
-import static calculator.Calculator.sumText;
+import static step2.Calculator.sumText;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
