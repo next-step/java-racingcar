@@ -4,10 +4,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racing.Car.*;
 import static racing.RacingGame.splitCarName;
+import static racing.RacingGame.winner;
 
 public class CarTest {
 
@@ -40,5 +44,18 @@ public class CarTest {
         assertThat(carNames).containsExactly("njw", "njw2", "njw3");
     }
 
+    @Test
+    void 경기가_끝나면_우승한_자동차를_가져올_수_있다() {
+        List<Car> cars = List.of(new Car("A", 3), new Car("B", 2), new Car("C", 1));
+        String winner = winner(cars);
+        assertThat(winner).isEqualTo("A");
+    }
+
+    @Test
+    void 경기가_끝나면_우승한_자동차를_가져올_수_있다_여러명() {
+        List<Car> cars = List.of(new Car("Q", 5), new Car("W", 2), new Car("E", 5));
+        String winner = winner(cars);
+        assertThat(winner).isEqualTo("Q,E");
+    }
 
 }

@@ -17,7 +17,7 @@ public class RacingGame {
         ResultView resultView = new ResultView();
         System.out.println("실행 결과");
         raceCars(cars, retryCount, resultView);
-
+        resultView.printWinner(winner(cars));
     }
 
     private static List<Car> createCar(String[] splitCarName) {
@@ -43,5 +43,24 @@ public class RacingGame {
 
     public static String[] splitCarName(String carNames) {
         return carNames.split(",");
+    }
+
+    public static String winner(List<Car> cars) {
+        int maxPosition = 0;
+        List<String> winners = new ArrayList<>();
+        getMaxPosition(cars, maxPosition, winners);
+        return String.join(",", winners);
+    }
+
+    private static void getMaxPosition(List<Car> cars, int maxPosition, List<String> winners) {
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+                winners.clear();
+                winners.add(car.getName());
+            } else if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
     }
 }
