@@ -21,5 +21,5 @@ public class Position {
     public boolean isMaxPosition(Position maxPosition) {
         return position == maxPosition.position;
     }
-
+  
 }
