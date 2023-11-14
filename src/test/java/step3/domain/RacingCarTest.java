@@ -2,6 +2,7 @@ package step3.domain;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -47,15 +48,24 @@ class RacingCarTest {
     }
 
     @Test
-    void drawDistanceTest() {
-        NumberGenerator numberGenerator = new MovableNumberGenerator();
-        RacingCar racingCar = new RacingCar("test");
+    void matchDistanceTest() {
+        RacingCar test1 = new RacingCar("test1", 3);
+        RacingCar test2 = new RacingCar("test2", 3);
+        assertThat(test1.matchDistance(test2)).isTrue();
+    }
 
-        racingCar.move(numberGenerator);
-        racingCar.move(numberGenerator);
-        racingCar.move(numberGenerator);
+    @Test
+    void getFasterTest() {
+        RacingCar faster = new RacingCar("fast", 5);
+        RacingCar slower = new RacingCar("slow", 1);
+        assertThat(faster.getFaster(slower)).isEqualTo(faster);
+    }
 
-        assertThat(racingCar.drawDistance()).isEqualTo("---");
+    @ParameterizedTest
+    @CsvSource(value = {"3,---", "4,----"})
+    void drawDistanceTest(int distance, String expected) {
+        RacingCar racingCar = new RacingCar("test", distance);
+        assertThat(racingCar.drawDistance()).isEqualTo(expected);
     }
 
     private class MovableNumberGenerator implements NumberGenerator {
