@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class RefereeTest {
 
     @Test
@@ -18,7 +20,7 @@ public class RefereeTest {
         boolean goOrNot = referee.judgeToMove();
 
         // then 이렇게 테스트하는게 무슨 의미가 있을까? 더 좋은 방법이 없을까?
-        Assertions.assertThat(goOrNot).isIn(true,false);
+        assertThat(goOrNot).isIn(true,false);
     }
 
     @Test
@@ -30,7 +32,7 @@ public class RefereeTest {
         // when
         Car winner = 포비.winnerIs(브레이보);
         // then
-        Assertions.assertThat(winner).isEqualTo(브레이보);
+        assertThat(winner).isEqualTo(브레이보);
     }
 
     @Test
@@ -46,6 +48,7 @@ public class RefereeTest {
 
         // then
         // 일급 컬렉션은 어떤 방식으로 테스트할 수 있을까요? 리뷰어님?
+        assertThat(winner.contains(Car.defaultOf("브레이보",6)));
 
     }
 }

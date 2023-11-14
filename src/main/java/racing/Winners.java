@@ -25,6 +25,15 @@ public class Winners {
         outPutView.printWinnerMessage();
     }
 
+    public boolean contains(Car car) {
+        for (Car winner : this.winners) {
+            if (winner.equals(car)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Winners{" +

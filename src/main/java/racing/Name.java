@@ -10,8 +10,8 @@ public class Name {
     }
 
     public static Name defaultOf(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
+        if (name.length() > LIMIT_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 { }자를 초과할 수 없습니다.");
         }
         return new Name(name);
     }
