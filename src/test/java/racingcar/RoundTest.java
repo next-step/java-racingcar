@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -15,7 +14,7 @@ import racingcar.utils.NumberGenerator;
 public class RoundTest {
 
     @Test
-    @DisplayName("")
+    @DisplayName("Round별 이동된 자동차 저장 확인")
     void roundRecordTest() {
         List<Car> carList = Arrays.asList(new Car("Car1"), new Car("Car2"), new Car("Car3"));
         Cars cars = new Cars(carList);
