@@ -18,7 +18,8 @@ public class RaceEntry {
     }
 
     public List<Car> progressCars() {
-        return cars.stream().map(e -> {
+        List<Car> carList = cars.stream().map(e -> Car.of(e.name(), e.progress())).collect(Collectors.toList());
+        return carList.stream().map(e -> {
             e.incrementProgress();
             return e;
         }).collect(Collectors.toList());
@@ -36,6 +37,6 @@ public class RaceEntry {
 
     @Override
     public String toString() {
-        return cars.stream().map(e -> e.toString().concat("\n")).collect(Collectors.joining());
+        return cars.stream().map(e -> e.toString().concat(System.lineSeparator())).collect(Collectors.joining());
     }
 }
