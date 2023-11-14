@@ -1,6 +1,7 @@
 package racingCar.game;
 
 import racingCar.car.Cars;
+import racingCar.car.Winners;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
@@ -20,15 +21,17 @@ public class RacingCarGame { // 자동차 경주를 수행한다.
 
         resultView.printPrefix();
 
-        cars = Cars.of(gameRequest.carCount());
+        cars = Cars.of(gameRequest.carNameList());
 
         moveByTryCount();
+        Winners winners = new Winners(cars);
+        resultView.printWinner(winners);
     }
 
     private void moveByTryCount() {
         for (int i = 0; i < gameRequest.tryCount(); i++) {
             cars.moveOnce();
-            resultView.printDistance(cars);
+            resultView.printDistanceWithName(cars);
         }
     }
 }

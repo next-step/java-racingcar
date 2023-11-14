@@ -17,8 +17,20 @@ public class Cars {
 		return cars;
 	}
 
+	public static Cars of(List<String> carNameList) {
+		Cars cars = new Cars();
+		cars.addCar(carNameList);
+		return cars;
+	}
+
 	public List<Car> carList() {
 		return carList;
+	}
+
+	private void addCar(List<String> carNames) {
+		for (String name : carNames) {
+			carList.add(new Car(0, new RandomNumberSupplier(), name));
+		}
 	}
 
 	private void addCar(int carCount) {

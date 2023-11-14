@@ -1,6 +1,7 @@
 package racingCar.ui;
 
 import racingCar.car.Cars;
+import racingCar.car.Winners;
 
 public interface ResultView {
 	String RESULT_PREFIX = "실행 결과";
@@ -8,4 +9,8 @@ public interface ResultView {
 	void printPrefix();
 
 	void printDistance(Cars cars);
+
+	void printDistanceWithName(Cars cars);
+
+	void printWinner(Winners winners);
 }

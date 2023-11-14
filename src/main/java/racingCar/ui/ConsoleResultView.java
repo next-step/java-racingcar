@@ -2,6 +2,7 @@ package racingCar.ui;
 
 import racingCar.car.Car;
 import racingCar.car.Cars;
+import racingCar.car.Winners;
 
 import java.util.List;
 
@@ -19,5 +20,27 @@ public class ConsoleResultView implements ResultView {
 			System.out.println("-".repeat(car.distance));
 		}
 		System.out.println();
+	}
+
+	@Override
+	public void printDistanceWithName(Cars cars) {
+		List<Car> carList = cars.carList();
+		for (Car car : carList) {
+			System.out.print(car.name + " : ");
+			System.out.println("-".repeat(car.distance));
+		}
+		System.out.println();
+	}
+
+	@Override
+	public void printWinner(Winners winners) {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (Car winner : winners.winnerList()) {
+			stringBuilder.append(winner.name);
+			stringBuilder.append(", ");
+		}
+		stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+		stringBuilder.append("가 최종 우승했습니다.");
+		System.out.println(stringBuilder);
 	}
 }
