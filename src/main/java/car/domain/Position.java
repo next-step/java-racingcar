@@ -1,4 +1,4 @@
-package car.model;
+package car.domain;
 
 public class Position {
     private int position;

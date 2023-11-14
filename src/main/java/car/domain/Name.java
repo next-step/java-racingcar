@@ -1,9 +1,11 @@
-package car.model;
+package car.domain;
+
+import java.util.Objects;
 
 public class Name {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
-    String carName;
+    private final String carName;
 
     public Name(String carName) {
         validateCarNameLength(carName);

@@ -1,4 +1,4 @@
-package car.domain;
+package car.service;
 
 import car.domain.Car;
 import car.util.RandomUtil;

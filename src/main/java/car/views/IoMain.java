@@ -2,8 +2,8 @@ package car.views;
 
 
 import car.domain.Car;
-import car.domain.CarService;
-import car.domain.Winners;
+import car.service.CarService;
+import car.service.WinnerService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -53,7 +53,7 @@ public class IoMain {
     }
 
     public static String winnersString(List<Car> cars) {
-        Winners win = new Winners(cars);
+        WinnerService win = new WinnerService(cars);
 
         List<String> winnersName = win.winnersNameList();
 

@@ -1,8 +1,5 @@
 package car.domain;
 
-import car.model.Name;
-import car.model.Position;
-
 public class Car {
     private static final int MIN_RANDOM_NUMBER = 4;
 

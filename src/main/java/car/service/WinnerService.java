@@ -1,14 +1,14 @@
-package car.domain;
+package car.service;
 
-import car.model.Position;
+import car.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winners {
+public class WinnerService {
     private final List<Car> allCar;
 
-    public Winners(List<Car> allCar) {
+    public WinnerService(List<Car> allCar) {
         this.allCar = allCar;
     }
 
