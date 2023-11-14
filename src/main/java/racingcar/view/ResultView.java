@@ -13,7 +13,7 @@ public class ResultView {
         }
     }
 
-    public static void displayRace(List<Car> cars) {
+    private static void displayRace(List<Car> cars) {
         cars.forEach(car -> System.out.println("-".repeat(car.getPosition())));
         System.out.println();
     }
