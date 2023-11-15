@@ -1,8 +1,8 @@
-package game.race.support.move.impl;
+package game.race.domain.support.move.impl;
 
 import java.util.Random;
 
-import game.race.support.move.MovePolicy;
+import game.race.domain.support.move.MovePolicy;
 
 public class RandomPolicy implements MovePolicy {
 
@@ -15,8 +15,7 @@ public class RandomPolicy implements MovePolicy {
 
     }
 
-    @Override
-    public int getPolicyNumber() {
+    protected int getPolicyNumber() {
         return new Random().nextInt(10);
     }
 }

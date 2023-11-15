@@ -1,8 +1,14 @@
 package game.race.view;
 
+import static java.lang.Integer.parseInt;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import game.race.dto.RaceDto;
+import game.race.util.Validator;
 
 public class InputView {
 
@@ -10,21 +16,26 @@ public class InputView {
     private static final String ASK_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public RaceDto showPrompt() {
+    public static RaceDto showPrompt() {
         System.out.println(ASK_VEHICLE_NAME);
         String vehicleNames = SCANNER.nextLine();
-        checkInput(vehicleNames);
 
         System.out.println(ASK_TRY_COUNT);
         String trials = SCANNER.nextLine();
-        checkInput(trials);
+        List<String> names = getNames(vehicleNames);
 
-        return RaceDto.of(vehicleNames, Integer.parseInt(trials));
+        Validator.checkNames(names);
+        Validator.checkTryCount(trials);
+
+        return RaceDto.of(parseInt(trials), names);
     }
 
-    public void checkInput(String input) {
-        if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("값을 입력 하세요.");
+    public static List<String> getNames(String vehicleNames) {
+        if (vehicleNames == null || vehicleNames.isBlank()) {
+            throw new IllegalArgumentException("값을 입력 하세요. - " + vehicleNames);
         }
+
+        return Arrays.stream(vehicleNames.split(","))
+                     .collect(Collectors.toList());
     }
 }

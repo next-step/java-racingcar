@@ -1,8 +1,11 @@
 package game.race;
 
-import game.race.view.InputView;
+import game.race.domain.support.Cars;
+import game.race.domain.support.move.MovePolicy;
+import game.race.domain.support.move.impl.RandomPolicy;
 import game.race.dto.RaceDto;
-import game.race.support.CarRacingManager;
+import game.race.view.InputView;
+import game.race.view.ResultView;
 
 public class CarRacing {
 
@@ -11,10 +14,17 @@ public class CarRacing {
     }
 
     public static void race() {
-        InputView inputView = new InputView();
-        RaceDto raceDto = inputView.showPrompt();
+        RaceDto raceData = InputView.showPrompt();
+        ResultView.showPrompt();
 
-        CarRacingManager manager = new CarRacingManager();
-        manager.start(raceDto);
+        Cars cars = Cars.of(raceData.getVehicleNames());
+        for (int trial = 0; trial < raceData.getTryCnt(); trial++) {
+            MovePolicy policy = new RandomPolicy();
+            cars.move(policy);
+
+            ResultView.showCars(cars.getCars());
+        }
+
+        ResultView.printWinners(cars.getWinners());
     }
 }
