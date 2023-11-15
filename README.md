@@ -89,3 +89,5 @@
 
 ### Feedback
 * [x] Car의 원시값 name을 포장한 CarName 클래스 추가
+* [x] move의 이동 조건인 랜덤값 3 초과에서 '3'을 상수로 변환
+* [ ] Winners 객체의 우승자 선정 역할을 Cars가 하도록 변경

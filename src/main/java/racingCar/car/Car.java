@@ -3,6 +3,8 @@ package racingCar.car;
 import racingCar.util.NumberSupplier;
 
 public class Car {
+	private static final int FORWARD_CONDITION_NUM = 3;
+
 	public int distance;
 	public CarName carName;
 	private final NumberSupplier numberSupplier;
@@ -20,7 +22,7 @@ public class Car {
 
 	public void move() {
 		int randomNumber = numberSupplier.get();
-		if (randomNumber > 3) {
+		if (randomNumber > FORWARD_CONDITION_NUM) {
 			distance++;
 		}
 	}
