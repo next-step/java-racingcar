@@ -19,7 +19,7 @@ public class RacingCarGame { // 자동차 경주를 수행한다.
 
 		resultView.printPrefix();
 
-		Cars cars = new Cars(racingGameRequest.cars());
+		Cars cars = Cars.of(racingGameRequest.carNames());
 		cars.setCallBack(new Cars.CallBack() {
 			@Override
 			public void printCallBack(Cars cars) {

@@ -26,7 +26,7 @@ public class ConsoleResultView implements ResultView {
 	public void printDistanceWithName(Cars cars) {
 		List<Car> carList = cars.carList();
 		for (Car car : carList) {
-			System.out.print(car.carName + " : ");
+			System.out.print(car.carName.carName() + " : ");
 			System.out.println("-".repeat(car.distance));
 		}
 		System.out.println();
@@ -36,7 +36,7 @@ public class ConsoleResultView implements ResultView {
 	public void printWinner(Winners winners) {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (Car winner : winners.winners()) {
-			stringBuilder.append(winner.carName);
+			stringBuilder.append(winner.carName.carName());
 			stringBuilder.append(", ");
 		}
 		stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());

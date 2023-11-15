@@ -1,5 +1,8 @@
 package racingCar.car;
 
+import racingCar.util.RandomNumberSupplier;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,6 +13,14 @@ public class Cars {
 
 	public interface CallBack {
 		void printCallBack(Cars cars);
+	}
+
+	public static Cars of(List<String> carNames) {
+		List<Car> cars = new ArrayList<>();
+		for (String name : carNames) {
+			cars.add(new Car(0, new RandomNumberSupplier(), new CarName(name)));
+		}
+		return new Cars(cars);
 	}
 
 	public Cars(List<Car> carList) {

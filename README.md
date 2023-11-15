@@ -94,3 +94,5 @@
   * 우승자 선정 로직 수정
 * [x] RacingCarGame 내 일부 멤버변수 -> 지역변수 위치 이동
 * [x] RacingCar moveOnce() 결과 callback 함수로 호출
+* [x] RacingGameRequest 역할 분리
+  * Cars 생성은 Cars 역할로 분리
