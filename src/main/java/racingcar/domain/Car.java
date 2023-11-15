@@ -39,8 +39,8 @@ public class Car {
         }
     }
 
-    public boolean isAtPosition(final Position maxPosition) {
-        return position.isMaxPosition(maxPosition);
+    public boolean isAtPosition(final Position position) {
+        return this.position.equals(position);
     }
 
     public static Car copyCar(final Car car) {
@@ -49,12 +49,8 @@ public class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return Objects.equals(carName, car.carName) && Objects.equals(position, car.position);
     }

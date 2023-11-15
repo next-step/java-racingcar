@@ -1,6 +1,8 @@
 package racingcar.domain;
 
-public class Position {
+import java.util.Objects;
+
+public class Position implements Comparable<Position> {
 
     private final int position;
 
@@ -18,8 +20,21 @@ public class Position {
         return position;
     }
 
-    public boolean isMaxPosition(Position maxPosition) {
-        return position == maxPosition.position;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position otherPosition = (Position) o;
+        return position == otherPosition.position;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return Integer.compare(this.position, o.position);
+    }
 }

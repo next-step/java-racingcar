@@ -27,7 +27,7 @@ public class Cars {
     public Position getMaxPosition() {
         return cars.stream()
             .map(Car::getCarPosition)
-            .max(Comparator.comparingInt(Position::getPosition))
+            .max(Position::compareTo)
             .orElseThrow(() -> new IllegalArgumentException("자동차가 존재하지 않습니다."));
     }
 

@@ -19,7 +19,7 @@ class CarsTest {
         List<Car> cars = List.of(avante, sonata);
         Cars racingCars = new Cars(cars);
 
-        assertThat(racingCars.getMaxPosition()).isEqualTo(5);
+        assertThat(racingCars.getMaxPosition().getPosition()).isEqualTo(5);
     }
 
     @Test

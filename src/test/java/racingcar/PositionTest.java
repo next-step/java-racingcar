@@ -22,7 +22,7 @@ public class PositionTest {
     void maxPositionTest() {
         Position maxPosition = new Position(3);
         Position position = new Position(3);
-        assertThat(position.isMaxPosition(maxPosition)).isEqualTo(true);
+        assertThat(position.equals(maxPosition)).isEqualTo(true);
     }
 
 }
