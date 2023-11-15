@@ -4,8 +4,12 @@ import java.util.Random;
 
 public class RacingModel {
 
-
-    public static boolean roundRun(int num) {
-        return num>3;
+    public RacingModel() {
     }
+
+    public int randomNum(){
+        Random random = new Random();
+        return random.nextInt(10);
+    }
+
 }

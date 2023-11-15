@@ -1,36 +1,40 @@
 package study.racingCar;
 
-import static study.racingCar.InputView.inputCars;
-import static study.racingCar.InputView.inputRounds;
-import static study.racingCar.RacingModel.roundRun;
+import static study.racingCar.ResultView.printRacing;
 import static study.racingCar.StringToIntConverter.stringToIntConverter;
 
 public class Controller {
 
 
     public static void main(String[] args){
+        RacingModel model = new RacingModel();
+        InputView inputView = new InputView();
+
         int cars = 0;
         int rounds = 0;
         Car[] carList;
 
         try{
 
-            String str = inputCars();
-            String rnds = inputRounds();
+            cars = stringToIntConverter(inputView.inputCars());
+            rounds = stringToIntConverter(inputView.inputRounds());
 
             carList = new Car[cars];
-
-            System.out.println("cars: "+cars);
-            System.out.println("rounds: "+rounds);
-
 
             for (int i = 0; i < cars; i++) {
                 carList[i] = new Car();
             }
 
             for (int i = 0; i < rounds; i++) {
-                for (Car car : carList) {
-                    car.carAddPosition(roundRun(car.randomNum()));
+                System.out.println("round:" + i);
+
+                for (int j = 0; j < cars; j++) {
+                    System.out.println("car: " + j);
+                    Position p = carList[j].currentPosition();
+                    p = p.increase(model.randomNum());
+                    carList[j] = new Car(p.position());
+                    printRacing(p.position());
+                    System.out.println();
                 }
                 System.out.println();
             }
