@@ -1,36 +1,49 @@
 package racingcar.model;
 
 public class Car {
-    private static final int RANDOM_VALUE_RANGE = 10;
-    private static final int SUCCESS_MINIMUM_VALUE = 4;
-    private int position;
 
-    public Car() {
-        this.position = 1;
+    private static final int MINIMUM_SUCCESS_VALUE = 4;
+    private static final int RANDOM_RANGE = 9;
+    private final CarName carName;
+    private Position position;
+
+
+    public Car(String name) {
+        this.carName = new CarName(name);
+        this.position = new Position(0);
     }
 
-    public void moveCar(boolean canMove) {
-        if (canMove) {
-            position++;
-        }
-    }
-
-    public void moveOnce() {
-        int randomNumber = generateRandomNumber();
-        boolean canMove = tryToMove(randomNumber);
-        moveCar(canMove);
+    public Car(String name, Position position) {
+        this(name);
+        this.position = position;
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
-    public boolean tryToMove(int random) {
-        return random >= SUCCESS_MINIMUM_VALUE;
+    public String getName() {
+        return carName.getName();
     }
 
-    public int generateRandomNumber() {
-        return (int) (Math.floor(Math.random() * (Car.RANDOM_VALUE_RANGE + 1)));
+    public boolean isMaxPosition(Car car) {
+        return this.position.compareTo(car.position) > 0;
     }
 
+    public Car getMaxPositionCar(Car car)
+    {
+        if(isMaxPosition(car))
+            return car;
+        return this;
+    }
+
+    public int getRandomRange() {
+        return RANDOM_RANGE;
+    }
+
+    public void move(int number) {
+        if (number >= MINIMUM_SUCCESS_VALUE) {
+            position.increase();
+        }
+    }
 }
