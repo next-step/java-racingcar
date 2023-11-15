@@ -1,6 +1,7 @@
 package racingCar.game;
 
 import racingCar.car.Car;
+import racingCar.car.CarName;
 import racingCar.util.RandomNumberSupplier;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class RacingGameRequest {
 	private List<Car> carsByCarNames(List<String> carNames) {
 		List<Car> cars = new ArrayList<>();
 		for (String name : carNames) {
-			cars.add(new Car(0, new RandomNumberSupplier(), name));
+			cars.add(new Car(0, new RandomNumberSupplier(), new CarName(name)));
 		}
 		return cars;
 	}

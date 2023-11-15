@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingCar.car.Car;
+import racingCar.car.CarName;
 import racingCar.util.NumberSupplier;
 import racingCar.util.RandomNumberSupplier;
 
@@ -31,15 +32,15 @@ public class CarTest {
 	@CsvSource({"testN, testN"})
 	@DisplayName("addCar_생성자에 distance randomNumberSupplier, name 입력_name값이 있는 Car 객체 생성")
 	void addCar(String input, String expected) {
-		Car car = new Car(0, new RandomNumberSupplier(), input);
-		assertThat(car.name).isEqualTo(expected);
+		Car car = new Car(0, new RandomNumberSupplier(), new CarName(input));
+		assertThat(car.carName.carName()).isEqualTo(expected);
 	}
 
 	@Test
 	@DisplayName("new Car(distance, RandomNumberSupplier, name)_name에 5자를 초과한 String 입력_throw RuntimeException")
 	void addCarThrowException() {
 		assertThatThrownBy(() -> {
-			Car car = new Car(0, new RandomNumberSupplier(), "testName");
+			Car car = new Car(0, new RandomNumberSupplier(), new CarName("testName"));
 		}).isInstanceOf(RuntimeException.class).hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
 	}
 }

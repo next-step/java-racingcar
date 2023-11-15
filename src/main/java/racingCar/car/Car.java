@@ -4,7 +4,7 @@ import racingCar.util.NumberSupplier;
 
 public class Car {
 	public int distance;
-	public String name;
+	public CarName carName;
 	private final NumberSupplier numberSupplier;
 
 	public Car(int distance, NumberSupplier numberSupplier) {
@@ -12,13 +12,10 @@ public class Car {
 		this.numberSupplier = numberSupplier;
 	}
 
-	public Car(int distance, NumberSupplier numberSupplier, String name) {
+	public Car(int distance, NumberSupplier numberSupplier, CarName carName) {
 		this.distance = distance;
 		this.numberSupplier = numberSupplier;
-		if (name.length() > 5) {
-			throw new RuntimeException("자동차 이름은 5자를 초과할 수 없습니다.");
-		}
-		this.name = name;
+		this.carName = carName;
 	}
 
 	public void move() {
