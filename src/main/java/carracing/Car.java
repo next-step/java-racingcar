@@ -19,6 +19,9 @@ public class Car {
     }
 
     public void move(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("전진 값은 음수 일 수 없습니다 -" + value);
+        }
         if (value >= MIN_FORWARD_MOVEMENT) {
             position++;
         }
