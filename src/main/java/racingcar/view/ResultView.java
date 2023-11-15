@@ -14,10 +14,10 @@ public class ResultView {
         System.out.println();
     }
 
-    public void viewWinner(List<Car> winners) {
+    public void viewWinner(List<String> winners) {
         String printWinner = "";
-        for (Car winner : winners) {
-            printWinner += winner.getName() + ", ";
+        for (String name : winners) {
+            printWinner += name + ", ";
         }
         printWinner = printWinner.substring(0, printWinner.length() - 2);
         System.out.println(printWinner + "가 최종 우승했습니다.");

@@ -24,7 +24,7 @@ public class RacingMain {
             resultView.viewGame(cars);
         }
         Winners winners = new Winners();
-        List<Car> WinnerCars = winners.findWinners(racingGame.getCars());
+        List<String> WinnerCars = winners.findWinners(racingGame.getCars());
         resultView.viewWinner(WinnerCars);
     }
 }

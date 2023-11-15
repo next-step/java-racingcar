@@ -18,9 +18,9 @@ public class WinnersTest {
         List<Car> cars = Arrays.asList(toby, kim, kang);
         // when
         Winners winners = new Winners();
-        List<Car> winnerCars = winners.findWinners(cars);
+        List<String> winnerCars = winners.findWinners(cars);
         // then
         Assertions.assertThat(winnerCars).hasSize(1);
-        Assertions.assertThat(winnerCars).contains(toby);
+        Assertions.assertThat(winnerCars).contains("toby");
     }
 }
