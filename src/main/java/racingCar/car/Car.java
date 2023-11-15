@@ -26,4 +26,15 @@ public class Car {
 			distance++;
 		}
 	}
+
+	public int maxDistance(int maxDistance) {
+		if (this.distance > maxDistance) {
+			return this.distance;
+		}
+		return maxDistance;
+	}
+
+	public boolean matchMaxDistance(int maxDistance) {
+		return this.distance == maxDistance;
+	}
 }
