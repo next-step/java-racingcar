@@ -15,7 +15,7 @@ public class WinnersTest {
         Car toby = new Car("toby", 10);
         Car kim = new Car("kim", 1);
         Car kang = new Car("kang", 3);
-        List<Car> cars = Arrays.asList(toby, kim, kang);
+        List<Car> cars = List.of(toby, kim, kang);
         // when
         Winners winners = new Winners();
         List<String> winnerCars = winners.findWinners(cars);
