@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.NumberGenerator;
+import racing.generator.NumberGenerator;
 
 public class Car {
     private static final int BASIS_RANDOM_VALUE = 4;

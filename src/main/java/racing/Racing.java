@@ -1,6 +1,8 @@
 package racing;
 
 import racing.domain.Car;
+import racing.generator.NumberGenerator;
+import racing.generator.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

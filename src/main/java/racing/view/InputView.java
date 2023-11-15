@@ -28,19 +28,11 @@ public class InputView {
     }
 
     public static String[] getSplitCarNames(String carList){
-        String[] carNames = carList.split(SEPARATOR);
-        for(String name : carNames){
-            validNameLength(name);
-        }
-        return carNames;
+        return carList.split(SEPARATOR);
     }
 
     public static int inputTryCount(){
         System.out.println(QUESTION_MESSAGE_OF_TRY_COUNT);
         return scanner.nextInt();
     }
-    private static void validNameLength(String name){
-        if(name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException(ERROR_MESSAGE_OF_EXCEED_NAME_LENGTH);
-    }
-
 }
