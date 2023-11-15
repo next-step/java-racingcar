@@ -5,15 +5,28 @@ import java.util.Objects;
 public class Car {
 
     private final String name;
+    private Position position;
 
     public Car() {
-        this.name = "";
+        this("");
     }
 
     public Car(String name) {
         this.name = name;
+        this.position = new Position();
     }
 
+    public void move(int num){
+        this.position = position.increase(num);
+    }
+
+    public void printName(){
+        System.out.print(this.name+": ");
+    }
+
+    public void printPosition(){
+        this.position.print();
+    }
 
     @Override
     public String toString() {
