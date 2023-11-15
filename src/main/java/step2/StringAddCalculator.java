@@ -6,16 +6,18 @@ import java.util.regex.Pattern;
 
 
 public class StringAddCalculator {
-    private static final int EMPTY_RESULT = 0;
+    private static final int DEFAULT_SUM_VALUE = 0;
     private static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
     private static final String DEFAULT_DELIMITER = ",|:";
 
     private static final String IS_NUMBER_PATTERN = "\\d+";
 
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_PATTERN);
+
 
     public static int splitAndSum(String text) {
 
-        int sum = EMPTY_RESULT;
+        int sum = DEFAULT_SUM_VALUE;
         if (isNullOrEmpty(text)) {
             return sum;
         }
@@ -33,7 +35,7 @@ public class StringAddCalculator {
     }
 
     private static String[] splitText(String text) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             String delimiter = matcher.group(1);
             String[] tokens = matcher.group(2).split(delimiter);
