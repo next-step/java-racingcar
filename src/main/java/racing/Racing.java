@@ -5,37 +5,59 @@ import java.util.List;
 
 import static racing.InputView.*;
 import static racing.ResultView.*;
+import static racing.Validate.*;
 
 public class Racing {
 
     public static void main(String[] args) {
-        int carCount = inputCarCount();
+        String carNames = inputCarCount();
 
-        List<Car> carList = new ArrayList<>();
-        for(int i = 0; i < carCount; ++i){
-            carList.add(new Car());
+        List<Car> cars = new ArrayList<>();
+        for(String name : carNames.split(",")){
+            validName(name);
+            cars.add(new Car(name));
         }
         int moveCount = inputMoveCount();
 
         System.out.println("실행 결과");
-        doRacing(carList, moveCount);
+        doRacing(cars, moveCount);
+
+        showResult(getWinners(cars));
     }
 
-    public static void doRacing(List<Car> carList, int moveCount) {
-        for(int i = 0; i < moveCount; ++i){
-            moveCars(carList);
-        }
-
-        showResult(carList);
-    }
-
-    private static void moveCars(List<Car> carList) {
+    public static void doRacing(List<Car> cars, int moveCount) {
         Strategy strategy = new RandomStrategy();
-        
-        for(Car car : carList){
+
+        for(int i = 0; i < moveCount; ++i){
+            moveCars(cars, strategy);
+            showStatus(cars);
+        }
+    }
+
+    private static void moveCars(List<Car> cars, Strategy strategy) {
+        for(Car car : cars){
             car.moveCar(strategy);
         }
+    }
 
-        showStatus(carList);
+    private static List<String> getWinners(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+
+        int maxMoveCount = getMaxMoveCount(cars);
+        for(Car car : cars){
+            if(car.getMoveCount() == maxMoveCount){
+                winners.add(car.getCarName());
+            }
+        }
+
+        return winners;
+    }
+
+    private static int getMaxMoveCount(List<Car> cars) {
+        int maxMove = 0;
+        for(Car car : cars){
+            maxMove = Math.max(maxMove, car.getMoveCount());
+        }
+        return maxMove;
     }
 }
