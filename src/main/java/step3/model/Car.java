@@ -3,19 +3,18 @@ package step3.model;
 import java.util.Random;
 
 public class Car {
+  
+    private Moving moving;
 
-    private static final String MOVE = "-";
-
-    private String movingDistance = "";
-
-    public void move(int number) {
-       if (number >= 4) {
-           movingDistance += MOVE;
-       }
+    public Car(Moving moving) {
+        this.moving = moving;
     }
 
-    public String getMovingDistance() {
-        return movingDistance;
+    public Moving getMoving() {
+        return moving;
     }
 
+    public void move(Integer randomNumber) {
+        moving.move(randomNumber);
+    }
 }
