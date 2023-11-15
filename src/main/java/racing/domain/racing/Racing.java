@@ -9,18 +9,15 @@ import java.util.Random;
 
 public class Racing {
 
-    private static final Random random = new Random();
     private static final int RANDOM_SEED_NUMBER = 10;
 
     private final ParticipatingCars participatingCars;
     private final int attemptCount;
 
-    private final RandomNumber randomNumber;
 
-    public Racing(String inputNames, int attemptCount, RandomNumber randomNumber) {
+    public Racing(String inputNames, int attemptCount) {
         this.participatingCars = new ParticipatingCars(inputNames);
         this.attemptCount = attemptCount;
-        this.randomNumber = randomNumber;
     }
 
     /**
@@ -52,7 +49,7 @@ public class Racing {
     private List<Car> attemptGo() {
         List<Car> cars = new ArrayList<>();
         for (Car car : this.participatingCars().cars()) {
-            int input = random.nextInt(RANDOM_SEED_NUMBER);
+            int input = RandomNumber.randomNumberUnder10();
             car.move(input);
             cars.add(new Car(car.name().toString()));
         }

@@ -19,7 +19,7 @@ public class RacingTest {
         String inputNames = "test1,test2,test3";
 
         // when
-        Racing racing = new Racing(inputNames, 0, new RandomNumber(10));
+        Racing racing = new Racing(inputNames, 0);
 
         // then
         int participatingCarCount = racing.participatingCars().numberOfCars();
