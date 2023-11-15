@@ -12,14 +12,20 @@ public class RacingGame {
         }
     }
 
-    public List<Car> race() {
-        moveCars();
+    public List<Car> race(MoveStrategy moveStrategy) {
+        moveCars(moveStrategy);
         return cars;
     }
 
-    private void moveCars() {
+    private void moveCars(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(new RandomNumberMoveStrategy());
+            isMoveAble(moveStrategy, car);
+        }
+    }
+
+    private static void isMoveAble(MoveStrategy moveStrategy, Car car) {
+        if (moveStrategy.moveAble()) {
+            car.move();
         }
     }
 

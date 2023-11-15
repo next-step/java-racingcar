@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
+import racingcar.domain.RandomNumberMoveStrategy;
 import racingcar.domain.Winners;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -20,7 +21,7 @@ public class RacingMain {
 
         RacingGame racingGame = new RacingGame(carNames);
         for (int i = 0; i < tryCount; i++) {
-            List<Car> cars = racingGame.race();
+            List<Car> cars = racingGame.race(new RandomNumberMoveStrategy());
             resultView.viewGame(cars);
         }
         Winners winners = new Winners();

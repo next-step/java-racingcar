@@ -21,10 +21,8 @@ public class Car {
         return name.length() > NAME_MAX_LENGTH;
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.moveAble()) {
-            position++;
-        }
+    public void move() {
+        position++;
     }
 
     public int getPosition() {
