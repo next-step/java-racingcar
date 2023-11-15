@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import game.race.dto.RaceDto;
+import game.race.util.Validator;
 
 public class InputView {
 
@@ -23,8 +24,8 @@ public class InputView {
         String trials = SCANNER.nextLine();
         List<String> names = getNames(vehicleNames);
 
-        checkNames(names);
-        checkTryCount(trials);
+        Validator.checkNames(names);
+        Validator.checkTryCount(trials);
 
         return RaceDto.of(parseInt(trials), names);
     }
@@ -36,26 +37,5 @@ public class InputView {
 
         return Arrays.stream(vehicleNames.split(","))
                      .collect(Collectors.toList());
-    }
-
-    public static void checkTryCount(String input) {
-        int number;
-        try {
-            number = parseInt(input);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("0이 아닌 숫자를 입력 하세요. - " + input);
-        }
-
-        if (number == 0) {
-            throw new IllegalArgumentException("0이 아닌 숫자를 입력 하세요. - " + input);
-        }
-    }
-
-    public static void checkNames(List<String> names) {
-        for (String name : names) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("이름은 다섯자를 넘을 수 없습니다. - " + name);
-            }
-        }
     }
 }

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import game.race.domain.Car;
 import game.race.domain.support.move.MovePolicy;
+import game.race.util.Validator;
 
 public class Cars {
 
@@ -16,6 +17,7 @@ public class Cars {
     }
 
     public static Cars of(List<String> vehicleNames) {
+        Validator.checkNames(vehicleNames);
         List<Car> carList = vehicleNames.stream()
                                         .map(Car::new)
                                         .collect(Collectors.toList());
@@ -32,8 +34,8 @@ public class Cars {
         }
     }
 
-    public List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
+    public List<Car> getWinners() {
+        List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             addWinner(car, getMaxMoveCount(), winners);
         }
@@ -52,9 +54,9 @@ public class Cars {
 
     private void addWinner(Car car,
                            int maxMoveCount,
-                           List<String> winners) {
+                           List<Car> winners) {
         if (maxMoveCount == car.getMoveCount()) {
-            winners.add(car.getName());
+            winners.add(car);
         }
     }
 }

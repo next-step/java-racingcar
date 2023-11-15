@@ -14,11 +14,8 @@ public class ResultView {
         System.out.println(SHOW_RESULT);
     }
 
-    public static void showCars(List<String> vehicleNames, List<Car> cars) {
-        for (int idx = 0; idx < cars.size(); idx++) {
-            printMark(vehicleNames.get(idx), cars.get(idx).getMoveCount());
-        }
-
+    public static void showCars(List<Car> cars) {
+        cars.forEach(car -> printMark(car.getName(), car.getMoveCount()));
         System.out.println(END_MARK);
     }
 
@@ -27,8 +24,12 @@ public class ResultView {
         System.out.println(vehicleName + " : " + tireMark);
     }
 
-    public static void printWinners(List<String> winners) {
-        String winner = String.join(", ", winners);
-        System.out.println(winner + "가 최종 우승했습니다.");
+    public static void printWinners(List<Car> winners) {
+        String win = "";
+        for (Car winner : winners) {
+            win = String.join(",", winner.getName());
+        }
+
+        System.out.println(win + "가 최종 우승했습니다.");
     }
 }

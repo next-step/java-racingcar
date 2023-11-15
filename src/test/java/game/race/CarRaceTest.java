@@ -13,7 +13,9 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import game.race.domain.Car;
 import game.race.domain.support.Cars;
+import game.race.domain.support.move.MovePolicy;
 import game.race.domain.support.move.impl.RandomPolicy;
+import game.race.util.Validator;
 import game.race.view.InputView;
 
 class CarRaceTest {
@@ -26,13 +28,13 @@ class CarRaceTest {
 
     @Test
     void 문자_0_을_입력_되면_오류를_발생_시키는_테스트() {
-       assertThatThrownBy(() -> InputView.checkTryCount("0")).isInstanceOf(IllegalArgumentException.class);
+       assertThatThrownBy(() -> Validator.checkTryCount("0")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 하나라도_이름의_길이가_다섯자를_초과하면_실패하는_테스트() {
         List<String> list = Arrays.asList("abc", "abcdef", "abcc");
-        assertThatThrownBy(() -> InputView.checkNames(list)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkNames(list)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -59,31 +61,13 @@ class CarRaceTest {
         // given
         List<String> list = Arrays.asList("abc", "abcd", "abcdef");
         Cars cars = Cars.of(list);
-        RandomPolicy abcPolicy = new RandomPolicy() {
-            @Override
-            public int getPolicyNumber() {
-                return 5;
-            }
-        };
-
-        RandomPolicy abcdPolicy = new RandomPolicy() {
-            @Override
-            public int getPolicyNumber() {
-                return 1;
-            }
-        };
-
-        RandomPolicy abcdefPolicy = new RandomPolicy() {
-            @Override
-            public int getPolicyNumber() {
-                return 2;
-            }
-        };
+        MovePolicy forward = () -> true;
+        MovePolicy stop = () -> false;
 
         // when
-        cars.getCars().get(0).move(abcPolicy);
-        cars.getCars().get(1).move(abcdPolicy);
-        cars.getCars().get(2).move(abcdefPolicy);
+        cars.getCars().get(0).move(forward);
+        cars.getCars().get(1).move(stop);
+        cars.getCars().get(2).move(stop);
 
         // then
         assertThat(cars.getWinners().size()).isEqualTo(1);

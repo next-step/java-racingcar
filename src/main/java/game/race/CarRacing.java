@@ -22,7 +22,7 @@ public class CarRacing {
             MovePolicy policy = new RandomPolicy();
             cars.move(policy);
 
-            ResultView.showCars(raceData.getVehicleNames(), cars.getCars());
+            ResultView.showCars(cars.getCars());
         }
 
         ResultView.printWinners(cars.getWinners());
