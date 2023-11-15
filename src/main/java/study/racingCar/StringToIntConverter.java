@@ -4,7 +4,11 @@ public class StringToIntConverter {
     public StringToIntConverter() {
     }
 
-    public int StringToIntConverter(String str){
-        return Integer.parseInt(str);
+    public int converter(String str){
+        int num = Integer.parseInt(str);
+        if (num < 0){
+            throw new IllegalArgumentException();
+        }
+        return num;
     }
 }

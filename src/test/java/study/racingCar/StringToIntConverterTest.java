@@ -21,12 +21,18 @@ class StringToIntConverterTest {
 
     @Test
     void 컨버터() {
-        assertThat(converter.StringToIntConverter("2")).isEqualTo(2);
+        assertThat(converter.converter("2")).isEqualTo(2);
     }
 
     @Test
-    void 오류테스트() {
-        assertThatThrownBy(() -> converter.StringToIntConverter("a"))
+    void 문자열오류테스트() {
+        assertThatThrownBy(() -> converter.converter("a"))
                 .isInstanceOf(NumberFormatException.class);
+    }
+
+    @Test
+    void 음수오류테스트(){
+        assertThatThrownBy(() -> converter.converter("-1"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
