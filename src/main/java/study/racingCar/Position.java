@@ -17,15 +17,15 @@ public class Position {
         this.currentPosition = num;
     }
 
-    int position(){
+    public int position(){
         return currentPosition;
     }
 
-    Position increase(int num) {
+    public Position increase(int num) {
         if (num > 3){
             return new Position(this.currentPosition+1);
         }
-        return new Position();
+        return this;
     }
 
 

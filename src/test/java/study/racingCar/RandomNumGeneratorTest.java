@@ -5,19 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static study.racingCar.ResultView.printRacing;
 
-class RacingModelTest {
+class RandomNumGeneratorTest {
 
     @Test
     void moveCar() {
         Car car = new Car();
-        Position p = car.currentPosition();
-        p.increase(3);
+        car.move(5);
+        assertThat(car.currentPosition()).isEqualTo(new Position(1));
     }
 
-    @Test
-    void printTest() {
-        System.out.println("!?!?!?!?:");
-        printRacing(3);
-        System.out.println();
-    }
 }

@@ -2,9 +2,9 @@ package study.racingCar;
 
 import java.util.Random;
 
-public class RacingModel {
+public class RandomNumGenerator {
 
-    public RacingModel() {
+    public RandomNumGenerator() {
     }
 
     public int randomNum(){
