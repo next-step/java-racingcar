@@ -8,13 +8,14 @@ public class CarRacing {
 
     final Random RANDOM = new Random();
     final int MAX_RANDOM_VALUE = 10;
-    public void StartRacingGame(){
+
+    public void StartRacingGame() {
 
         InputView inputView = InputView.getInstance();
         ResultView resultView = ResultView.getInstance();
 
         List<Car> cars = new ArrayList<Car>();
-        int carCount= inputView.requestCarCount();
+        int carCount = inputView.requestCarCount();
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }

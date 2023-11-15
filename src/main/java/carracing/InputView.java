@@ -6,6 +6,7 @@ public class InputView {
 
     private static InputView instance;
     private final Scanner SCANNER = new Scanner(System.in);
+
     public int requestCarCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         return SCANNER.nextInt();

@@ -13,7 +13,7 @@ public class ResultView {
         System.out.println("실행결과");
     }
 
-    public void showRacingRoundEndComment(){
+    public void showRacingRoundEndComment() {
         System.out.print("\n");
     }
 
