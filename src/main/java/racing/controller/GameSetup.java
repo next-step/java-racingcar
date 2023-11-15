@@ -9,28 +9,26 @@ import java.util.List;
 public class GameSetup {
     private List<Car> cars = new ArrayList<>();
     private int round;
-
     public GameSetup(int round, List<String> names) {
         this.round = round;
         assignCarName(names);
     }
 
     public List<String> presentWinners() {
-        int highestDistance = 0;
         List<String> winnerList = new ArrayList<>();
+        int highestDistance = 0;
 
         for (Car car: cars) {
-            if (car.isThisWinningWithOthers(highestDistance)) {
-                winnerList.add(car.name());
-                highestDistance = car.presentHigherDistance(highestDistance);
-            }
-
-            if (car.isThisWinningAlone(highestDistance)) {
-                winnerList.clear();
-                winnerList.add(car.name());
-                highestDistance = car.presentHigherDistance(highestDistance);
-            }
+            highestDistance = car.presentHigherDistance(highestDistance);
         }
+
+        int finalHighestDistance = highestDistance;
+        cars.stream()
+            .filter(car -> car.distance().isEqual(finalHighestDistance))
+            .forEach(car -> {
+                winnerList.add(car.name());
+            });
+
         return winnerList;
     }
 

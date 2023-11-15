@@ -1,31 +1,33 @@
 package racing.domain;
 
 public class Car {
-    private int distance;
-    private String name;
     private static final int CONDITION_FOR_MOVE = 4;
     private static final int CONDITION_FOR_NAME_LENGTH = 5;
 
+    private Distance distance;
+    private String name;
+
     public Car(String name) {
-        this.distance = 0;
+        this.distance = new Distance();
         validateLength(name);
         this.name = name;
     }
 
     public Car(String name, int distance) {
-        this.distance = distance;
+        this.distance = new Distance(distance);
         validateLength(name);
         this.name = name;
     }
 
     private static void validateLength(String name) {
+        String errorMessage = String.format("자동차 이름은 %s글자를 초과할 수 없습니다.", CONDITION_FOR_NAME_LENGTH);
         if (name.length() > CONDITION_FOR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
-    public int distance() {
-        return this.distance;
+    public Distance distance() {
+        return distance;
     }
 
     public String name() {
@@ -33,7 +35,7 @@ public class Car {
     }
 
     public void moveCar() {
-        this.distance++;
+        distance = distance.addDistance();
     }
 
     public void validateForMove(int randomValue) {
@@ -46,24 +48,15 @@ public class Car {
         return randomValue >= CONDITION_FOR_MOVE;
     }
 
-    public Boolean isThisWinningWithOthers(int highestDistance) {
-        if (distance == highestDistance) {
-            return true;
-        }
-        return false;
+    public boolean isThisWinningWithOthers(int highestDistance) {
+        return distance.isEqual(highestDistance);
     }
 
-    public Boolean isThisWinningAlone(int highestDistance) {
-        if (distance > highestDistance) {
-            return true;
-        }
-        return false;
+    public boolean isThisWinningAlone(int highestDistance) {
+        return distance.isGreater(highestDistance);
     }
 
     public int presentHigherDistance(int highestDistance) {
-        if (distance > highestDistance) {
-            return distance;
-        }
-        return highestDistance;
+        return distance.maxNum(highestDistance);
     }
 }
