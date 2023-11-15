@@ -23,8 +23,8 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
-    public int getSize() {
-        return this.cars.size();
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void tryMove() {
@@ -46,10 +46,11 @@ public class Cars {
         return maxPosition;
     }
 
-    public Cars findWinners() {
+    public Winners findWinners() {
         int maxPosition = getMaxPosition();
-        return new Cars(cars.stream()
+        return new Winners(cars.stream()
                 .filter(car -> car.getCarPosition().getPosition() == maxPosition)
+                .map(car -> car.getCarName().getName())
                 .collect(Collectors.toList()));
     }
 }

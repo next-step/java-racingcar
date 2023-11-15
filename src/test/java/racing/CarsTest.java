@@ -21,7 +21,7 @@ class CarsTest {
         Car car3 = new Car(new CarName(CarName.checkCarName("t3").getName()), new CarPosition(0));
         Cars cars = new Cars(List.of(car1, car2, car3));
 
-        assertThat(cars.getSize()).isEqualTo(3);
+        assertThat(cars.getCars().size()).isEqualTo(3);
     }
 
     @DisplayName("생성한 자동차들에서 인덱스를 넘기면 해당 자동차를 가져올 수 있다.")
@@ -43,7 +43,7 @@ class CarsTest {
         Car car3 = new Car(new CarName(CarName.checkCarName("t3").getName()), new CarPosition(1));
         Cars cars = new Cars(List.of(car1, car2, car3));
 
-        assertThat(cars.findWinners().getSize()).isEqualTo(1);
+        assertThat(cars.findWinners().getWinners().size()).isEqualTo(1);
     }
 
     @DisplayName("가장 멀리간 자동차들을 가져올 수 있다.")
@@ -54,6 +54,6 @@ class CarsTest {
         Car car3 = new Car(new CarName(CarName.checkCarName("t3").getName()), new CarPosition(5));
         Cars cars = new Cars(List.of(car1, car2, car3));
 
-        assertThat(cars.findWinners().getSize()).isEqualTo(2);
+        assertThat(cars.findWinners().getWinners().size()).isEqualTo(2);
     }
 }
