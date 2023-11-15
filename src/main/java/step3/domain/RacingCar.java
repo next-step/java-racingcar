@@ -39,7 +39,4 @@ public class RacingCar {
         return other;
     }
 
-    public String drawDistance() {
-        return "-".repeat(distance);
-    }
 }

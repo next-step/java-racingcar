@@ -2,7 +2,6 @@ package step3.domain;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,13 +58,6 @@ class RacingCarTest {
         RacingCar faster = new RacingCar("fast", 5);
         RacingCar slower = new RacingCar("slow", 1);
         assertThat(faster.getFaster(slower)).isEqualTo(faster);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"3,---", "4,----"})
-    void drawDistanceTest(int distance, String expected) {
-        RacingCar racingCar = new RacingCar("test", distance);
-        assertThat(racingCar.drawDistance()).isEqualTo(expected);
     }
 
     private class MovableNumberGenerator implements NumberGenerator {
