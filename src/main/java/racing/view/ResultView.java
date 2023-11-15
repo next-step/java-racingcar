@@ -18,7 +18,7 @@ public class ResultView {
         int size = cars.getSize();
         for (int i = 0; i < size; i++) {
             Car car = cars.getCar(i);
-            System.out.println(car.getName() + COLON + PROGRESS.repeat(car.getPosition()));
+            System.out.println(car.getCarName().getName() + COLON + PROGRESS.repeat(car.getCarPosition().getPosition()));
         }
         System.out.println(BLANK);
     }
@@ -32,7 +32,7 @@ public class ResultView {
         List<String> winnerNames = new ArrayList<>();
         int size = cars.getSize();
         for (int i = 0; i < size; i++) {
-            winnerNames.add(cars.getCar(i).getName());
+            winnerNames.add(cars.getCar(i).getCarName().getName());
         }
         System.out.println(String.join(", ", winnerNames) + INFORMATION_FOR_WINNER);
     }

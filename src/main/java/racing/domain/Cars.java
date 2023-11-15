@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
+    private static final int DEFAULT_POSITION = 0;
+
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -17,7 +19,7 @@ public class Cars {
 
     public static Cars createCars(String[] carNames) {
         return new Cars(Arrays.stream(carNames)
-                .map(name -> new Car(name, 0))
+                .map(name -> new Car(new CarName(CarName.checkCarName(name).getName()), new CarPosition(DEFAULT_POSITION)))
                 .collect(Collectors.toList()));
     }
 
@@ -32,26 +34,22 @@ public class Cars {
         }
     }
 
-    public void playRound() {
-        this.tryMove();
-    }
-
     public Car getCar(int index) {
         return cars.get(index);
     }
 
-    private int getMasPosition() {
+    private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = Math.max(car.getPosition(), maxPosition);
+            maxPosition = Math.max(car.getCarPosition().getPosition(), maxPosition);
         }
         return maxPosition;
     }
 
     public Cars findWinners() {
-        int maxPosition = getMasPosition();
+        int maxPosition = getMaxPosition();
         return new Cars(cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.getCarPosition().getPosition() == maxPosition)
                 .collect(Collectors.toList()));
     }
 }

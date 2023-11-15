@@ -4,35 +4,25 @@ public class Car {
 
     private static final int ACCEPT_MOVE_NUMBER = 4;
 
-    private final String name;
-    private int position;
+    private CarName carName;
+    private CarPosition carPosition;
 
-    public Car(final String name, final int position) {
-        this.name = checkName(name);
-        this.position = position;
+    public Car(CarName carName, final CarPosition carPosition) {
+        this.carName = carName;
+        this.carPosition = carPosition;
     }
 
-    private String checkName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차의 이름은 5자를 넘을 수 없습니다.");
-        }
-        if (name.isBlank()) {
-            throw new IllegalArgumentException("자동차의 이름은 1자 이상이여야 합니다.");
-        }
-        return name;
+    public CarName getCarName() {
+        return carName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
+    public CarPosition getCarPosition() {
+        return carPosition;
     }
 
     public void tryMove(int number) {
         if (number >= ACCEPT_MOVE_NUMBER) {
-            position++;
+            carPosition.movePosition();
         }
     }
 }

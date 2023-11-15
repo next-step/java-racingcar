@@ -16,7 +16,7 @@ public class RacingController {
 
         resultView.resultMessage();
         for (int i = 0; i < attemptCount; i++) {
-            cars.playRound();
+            cars.tryMove();
             resultView.carStatus(cars);
         }
 
