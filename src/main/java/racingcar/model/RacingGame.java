@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.model.movestrategy.MoveStrategy;
+import racingcar.model.movestrategy.RandomVarMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -12,7 +14,6 @@ public class RacingGame {
 
     private final Referee referee = new Referee();
     private List<RacingCar> cars;
-    private List<RacingCar> winners;
 
 
     public RacingGame(List<String> carNameList, int roundNumber) {
@@ -20,7 +21,16 @@ public class RacingGame {
         validateRoundNumber(roundNumber);
 
         // setting
-        makeCars(carNameList);
+        MoveStrategy defaultMoveStrategy = new RandomVarMoveStrategy();
+        this.cars = makeCars(defaultMoveStrategy, carNameList);
+    }
+
+    public RacingGame(MoveStrategy moveStrategy, List<String> carNameList, int roundNumber) {
+        // validation
+        validateRoundNumber(roundNumber);
+
+        // setting
+        this.cars = makeCars(moveStrategy, carNameList);
     }
 
     private void validateRoundNumber(int roundNumber) {
@@ -29,16 +39,16 @@ public class RacingGame {
         }
     }
 
-    private void makeCars(List<String> carNameList) {
+    private List<RacingCar> makeCars(MoveStrategy moveStrategy, List<String> carNameList) {
         int carNumber = carNameList.size();
 
         RacingCar[] cars = new RacingCar[carNumber];
         for (int i=0; i<carNumber; i++) {
-            RacingCar newCar = new RacingCar(carNameList.get(i));
+            RacingCar newCar = new RacingCar(moveStrategy, carNameList.get(i));
             cars[i] = newCar;
         }
 
-        this.cars = Arrays.asList(cars);
+        return Arrays.asList(cars);
     }
 
 
@@ -53,16 +63,11 @@ public class RacingGame {
     }
 
 
-    public void endGame() {
-        this.winners = referee.findWinner(this.cars);
-    }
-
-
     public List<RacingCar> getCars() {
         return this.cars;
     }
 
     public List<RacingCar> getWinners() {
-        return this.winners;
+        return referee.findWinner(this.cars);
     }
 }

@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
-import racingcar.model.Referee;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -21,9 +19,8 @@ public class RacingCarController {
             racingGame.playOneRound();
             ResultView.printRoundResult(racingGame);
         }
-        racingGame.endGame();
 
         // output
-        ResultView.printWinners(racingGame);
+        ResultView.printWinners(racingGame.getWinners());
     }
 }

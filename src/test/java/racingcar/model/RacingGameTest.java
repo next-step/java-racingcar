@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
+import racingcar.model.movestrategy.AlwaysMoveStrategy;
+import racingcar.model.movestrategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +27,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("한 round에는 최대 1칸 이동, 후진 없음")
     public void one_round_이동칸수() {
-        RacingGame game = new RacingGame(Arrays.asList("a", "b", "c"), 5);
+        MoveStrategy alwaysMoveStrategy = new AlwaysMoveStrategy();
+        RacingGame game = new RacingGame(alwaysMoveStrategy, Arrays.asList("a", "b", "c"), 5);
         List<RacingCar> cars = game.getCars();
 
         List<Integer> beforePositions = new ArrayList<>();
@@ -36,8 +39,7 @@ public class RacingGameTest {
 
         for (int i=0; i<cars.size(); i++) {
             int diff = cars.get(i).getPosition() - beforePositions.get(i);
-            assertThat(diff).isLessThanOrEqualTo(1)
-                    .isGreaterThanOrEqualTo(0);
+            assertThat(diff).isEqualTo(1);
         }
     }
 

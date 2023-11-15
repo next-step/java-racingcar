@@ -1,4 +1,6 @@
-package racingcar.model;
+package racingcar.model.movestrategy;
+
+import racingcar.model.movestrategy.MoveStrategy;
 
 public class RandomVarMoveStrategy implements MoveStrategy {
     private static final int THRESHOLD_NUMBER = 4;

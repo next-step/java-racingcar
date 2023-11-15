@@ -1,6 +1,7 @@
 package racingcar.model;
 
-import java.util.Random;
+import racingcar.model.movestrategy.MoveStrategy;
+import racingcar.model.movestrategy.RandomVarMoveStrategy;
 
 public class RacingCar {
     private static final String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
@@ -15,6 +16,18 @@ public class RacingCar {
     public RacingCar(String name) {
         // set MoveStrategy
         this.moveStrategy = new RandomVarMoveStrategy();
+
+        // validation
+        validateCarName(name);
+
+        // setting
+        this.name = name;
+        this.position = START_POSITION;
+    }
+
+    public RacingCar(MoveStrategy moveStrategy, String name) {
+        // set MoveStrategy
+        this.moveStrategy = moveStrategy;
 
         // validation
         validateCarName(name);

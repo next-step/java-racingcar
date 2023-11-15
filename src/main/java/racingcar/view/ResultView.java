@@ -37,9 +37,7 @@ public class ResultView {
     }
 
 
-    public static void printWinners(RacingGame game) {
-        List<RacingCar> winners = game.getWinners();
-
+    public static void printWinners(List<RacingCar> winners) {
         String[] winnersName = new String[winners.size()];
         for (int i=0; i<winners.size(); i++) {
             winnersName[i] = winners.get(i).getName();
