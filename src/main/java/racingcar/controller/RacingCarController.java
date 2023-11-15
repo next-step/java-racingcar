@@ -21,6 +21,6 @@ public class RacingCarController {
         }
 
         // output
-        ResultView.printWinners(racingGame.getWinners());
+        ResultView.printWinners(racingGame.winners());
     }
 }

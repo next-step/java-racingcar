@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.Position;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
 
@@ -11,7 +12,7 @@ public class ResultView {
 
 
     public static void printRoundResult(RacingGame game) {
-        for (RacingCar car : game.getCars()) {
+        for (RacingCar car : game.cars()) {
             printLocationOfCar(car);
         }
 
@@ -24,23 +25,15 @@ public class ResultView {
     }
 
     private static void printLocationOfCar(RacingCar car) {
-        String result = car.getName() + " : " + getLocationMark(car.getPosition());
+        String result = car.name() + " : " + car.position().toString();
         System.out.println(result);
-    }
-
-    private static String getLocationMark(int location) {
-        String locationMark = "";
-        for (int i = 0; i<location; i++) {
-            locationMark += "-";
-        }
-        return locationMark;
     }
 
 
     public static void printWinners(List<RacingCar> winners) {
         String[] winnersName = new String[winners.size()];
         for (int i=0; i<winners.size(); i++) {
-            winnersName[i] = winners.get(i).getName();
+            winnersName[i] = winners.get(i).name();
         }
         String result = String.join(", ", winnersName);
 

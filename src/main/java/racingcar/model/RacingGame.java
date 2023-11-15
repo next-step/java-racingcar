@@ -63,11 +63,11 @@ public class RacingGame {
     }
 
 
-    public List<RacingCar> getCars() {
+    public List<RacingCar> cars() {
         return this.cars;
     }
 
-    public List<RacingCar> getWinners() {
+    public List<RacingCar> winners() {
         return referee.findWinner(this.cars);
     }
 }

@@ -21,12 +21,12 @@ public class RacingCarTest {
     public void 전진_여부() {
         RacingCar car = new RacingCar("abc");
         car.moveOrStop(1);
-        assertThat(car.getPosition())
-                .isEqualTo(0);
+        assertThat(car.position())
+                .isEqualTo(new Position(0));
 
         car.moveOrStop(4);
-        assertThat(car.getPosition())
-                .isEqualTo(1);
+        assertThat(car.position())
+                .isEqualTo(new Position(1));
     }
 
 }

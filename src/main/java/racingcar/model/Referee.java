@@ -17,14 +17,14 @@ public class Referee {
     private int maxPosition(List<RacingCar> cars) {
         int maxPosition = 0;
         for (RacingCar car : cars) {
-            maxPosition = car.biggerPosition(maxPosition);
+            maxPosition = car.position().biggerPosition(maxPosition);
         }
         return maxPosition;
     }
 
     private List<RacingCar> winners(List<RacingCar> cars, int maxPosition) {
         return cars.stream()
-                .filter(car -> car.matchPosition(maxPosition))
+                .filter(car -> car.position().matchPosition(maxPosition))
                 .collect(Collectors.toList());
     }
 }

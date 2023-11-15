@@ -29,16 +29,16 @@ public class RacingGameTest {
     public void one_round_이동칸수() {
         MoveStrategy alwaysMoveStrategy = new AlwaysMoveStrategy();
         RacingGame game = new RacingGame(alwaysMoveStrategy, Arrays.asList("a", "b", "c"), 5);
-        List<RacingCar> cars = game.getCars();
+        List<RacingCar> cars = game.cars();
 
         List<Integer> beforePositions = new ArrayList<>();
         for (RacingCar car: cars) {
-            beforePositions.add(car.getPosition());
+            beforePositions.add(car.position().toString().length());
         }
         game.playOneRound();
 
         for (int i=0; i<cars.size(); i++) {
-            int diff = cars.get(i).getPosition() - beforePositions.get(i);
+            int diff = cars.get(i).position().toString().length() - beforePositions.get(i);
             assertThat(diff).isEqualTo(1);
         }
     }
