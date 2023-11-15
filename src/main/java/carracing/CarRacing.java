@@ -8,8 +8,9 @@ public class CarRacing {
 
     public void StartRacingGame(){
 
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
+        InputView inputView = InputView.getInstance();
+        ResultView resultView = ResultView.getInstance();
+
         List<Car> cars = new ArrayList<Car>();
         int carsValue = inputView.getInputValue("자동차 대수는 몇 대 인가요?");
         for (int i = 0; i < carsValue; i++) {
