@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class CarRacing {
 
+    final Random RANDOM = new Random();
     final int MAX_RANDOM_VALUE = 10;
     public void StartRacingGame(){
 
@@ -29,7 +30,7 @@ public class CarRacing {
 
     private void executeRacing(List<Car> cars, ResultView resultView) {
         for (Car car : cars) {
-            car.move(new Random().nextInt(MAX_RANDOM_VALUE));
+            car.move(RANDOM.nextInt(MAX_RANDOM_VALUE));
             resultView.showResultComment(car.getPosition());
         }
     }
