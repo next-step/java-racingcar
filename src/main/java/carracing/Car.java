@@ -13,10 +13,6 @@ public class Car {
         this.position = position;
     }
 
-    public String getPositionRepeat() {
-        return "-".repeat(position);
-    }
-
     public int getPosition() {
         return position;
     }

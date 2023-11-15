@@ -18,14 +18,11 @@ public class CarRacing {
 
         int moveCount = inputView.getInputValue("시도할 회수는 몇 회 인가요?");
 
-        resultView.showResultComment("\n실행 결과");
-
         for (int i = 0; i < moveCount; i++) {
             for (Car car : cars) {
                 car.move(new Random().nextInt(10));
-                resultView.showResultComment(car.getPositionRepeat());
+                resultView.showResultComment(car.getPosition());
             }
-            resultView.showResultComment("\n");
         }
     }
 }
