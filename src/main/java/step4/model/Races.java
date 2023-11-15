@@ -15,8 +15,8 @@ public class Races {
                 .collect(Collectors.toList());
     }
 
-    public void start(MoveStrategy moveStrategy) {
-        this.cars.forEach(car -> car.getPosition().move(moveStrategy));
+    public void start(final MoveStrategy moveStrategy) {
+        this.cars.forEach(car -> car.go(moveStrategy));
     }
 
     public List<Car> getWinners() {

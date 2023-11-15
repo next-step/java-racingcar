@@ -2,16 +2,15 @@ package step4.model;
 
 public class Position {
 
-    private int position;
+    private final int position;
+    private static final int DEFAULT_MOVE_POSITION = 1;
 
     public Position(int position) {
         this.position = position;
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMovable()) {
-            this.position++;
-        }
+    public Position move() {
+        return new Position(this.position + DEFAULT_MOVE_POSITION);
     }
 
     public int getCurrentStatus() {
