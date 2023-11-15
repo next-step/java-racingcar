@@ -6,8 +6,19 @@ import java.util.stream.Collectors;
 public class Cars {
 	private final List<Car> carList;
 
+	private CallBack callBack;
+
+	public interface CallBack {
+		void printCallBack(Cars cars);
+	}
+
 	public Cars(List<Car> carList) {
 		this.carList = carList;
+		this.callBack = null;
+	}
+
+	public void setCallBack(CallBack callBack) {
+		this.callBack = callBack;
 	}
 
 	public List<Car> carList() {
@@ -17,6 +28,9 @@ public class Cars {
 	public void moveOnce() {
 		for (Car car : carList) {
 			car.move();
+		}
+		if (this.callBack != null) {
+			this.callBack.printCallBack(Cars.this);
 		}
 	}
 
@@ -39,5 +53,11 @@ public class Cars {
 				.stream()
 				.filter(car -> car.matchMaxDistance(maxDistance))
 				.collect(Collectors.toList());
+	}
+
+	public void moveByTryCount(int tryCount) {
+		for (int i = 0; i < tryCount; i++) {
+			moveOnce();
+		}
 	}
 }

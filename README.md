@@ -92,3 +92,5 @@
 * [x] move의 이동 조건인 랜덤값 3 초과에서 '3'을 상수로 변환
 * [x] Winners 객체의 우승자 선정 역할을 Cars가 하도록 변경
   * 우승자 선정 로직 수정
+* [x] RacingCarGame 내 일부 멤버변수 -> 지역변수 위치 이동
+* [x] RacingCar moveOnce() 결과 callback 함수로 호출

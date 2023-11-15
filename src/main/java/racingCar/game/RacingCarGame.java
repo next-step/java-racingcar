@@ -8,8 +8,6 @@ import racingCar.ui.ResultView;
 public class RacingCarGame { // 자동차 경주를 수행한다.
 	private final InputView inputView;
 	private final ResultView resultView;
-	private RacingGameRequest racingGameRequest;
-	private Cars cars;
 
 	public RacingCarGame(InputView inputView, ResultView resultView) {
 		this.inputView = inputView;
@@ -17,21 +15,21 @@ public class RacingCarGame { // 자동차 경주를 수행한다.
 	}
 
 	public void run() {
-		racingGameRequest = inputView.gameRequestWithNames();
+		RacingGameRequest racingGameRequest = inputView.gameRequestWithNames();
 
 		resultView.printPrefix();
 
-		cars = new Cars(racingGameRequest.cars());
-		moveByTryCount();
+		Cars cars = new Cars(racingGameRequest.cars());
+		cars.setCallBack(new Cars.CallBack() {
+			@Override
+			public void printCallBack(Cars cars) {
+				resultView.printDistanceWithName(cars);
+			}
+		});
+
+		cars.moveByTryCount(racingGameRequest.tryCount());
 
 		Winners winners = new Winners(cars);
 		resultView.printWinner(winners);
-	}
-
-	private void moveByTryCount() {
-		for (int i = 0; i < racingGameRequest.tryCount(); i++) {
-			cars.moveOnce();
-			resultView.printDistanceWithName(cars);
-		}
 	}
 }
