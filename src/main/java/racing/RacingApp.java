@@ -9,14 +9,24 @@ import java.util.Random;
 
 public class RacingApp {
 
-    private static final Random random = new Random();
-
     public static void main(String[] args) {
         String inputNames = InputView.getInputNames();
         int attemptCount = InputView.getNumberOfAttempts();
+        Racing racing = new Racing(inputNames);
 
-        Racing racing = new Racing(inputNames, attemptCount);
-        ResultView.showCurrentPosition(racing.result());
+        for (int i = 0; i < attemptCount; ++i) {
+            round(racing);
+            ResultView.showCurrentPosition(racing.participatingCars().cars());
+        }
+
         ResultView.showWinners(racing.winners());
+    }
+
+    private static void round(Racing racing) {
+        int[] randomNumbers = new int[racing.participatingCars().numberOfCars()];
+        for (int i = 0; i < racing.participatingCars().numberOfCars(); ++i) {
+            randomNumbers[i] = RandomNumber.randomNumberUnder10();
+        }
+        racing.race(randomNumbers);
     }
 }

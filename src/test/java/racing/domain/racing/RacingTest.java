@@ -19,7 +19,7 @@ public class RacingTest {
         String inputNames = "test1,test2,test3";
 
         // when
-        Racing racing = new Racing(inputNames, 0);
+        Racing racing = new Racing(inputNames);
 
         // then
         int participatingCarCount = racing.participatingCars().numberOfCars();
@@ -34,20 +34,13 @@ public class RacingTest {
     @Test
     void winners() {
         // given
-        Car car1 = new Car("test1");
-        Car car2 = new Car("test2");
-        Car car3 = new Car("test3");
-        car1.move(5);
-        car2.move(1);
-        car3.move(3);
+        int randNums[] = {1, 5};
+        Racing racing = new Racing("test1,test2");
 
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        ParticipatingCars participatingCars = new ParticipatingCars(cars);
+        // when
+        racing.race(randNums);
 
-        // when, then
-        assertThat(participatingCars.winners()).contains(car1);
+        // then
+        assertThat(racing.winners().get(0).name()).isEqualTo(new Name("test2"));
     }
 }

@@ -1,5 +1,6 @@
 package racing.domain.racing;
 
+import java.util.Arrays;
 import racing.domain.car.Car;
 import racing.domain.car.Position;
 
@@ -9,15 +10,16 @@ import java.util.Random;
 
 public class Racing {
 
-    private static final int RANDOM_SEED_NUMBER = 10;
-
     private final ParticipatingCars participatingCars;
-    private final int attemptCount;
 
-
-    public Racing(String inputNames, int attemptCount) {
+    public Racing(String inputNames) {
         this.participatingCars = new ParticipatingCars(inputNames);
-        this.attemptCount = attemptCount;
+    }
+
+    public void race(int[] randomNumbers) {
+        for (int i = 0; i < this.participatingCars.numberOfCars(); ++i) {
+            this.participatingCars.cars().get(i).move(randomNumbers[i]);
+        }
     }
 
     /**
@@ -38,24 +40,6 @@ public class Racing {
         return this.participatingCars.winners();
     }
 
-    public List<List<Car>> result() {
-        List<List<Car>> result = new ArrayList<>();
-        for (int i = 0; i < attemptCount; ++i) {
-            result.add(attemptGo());
-        }
-        return result;
-    }
-
-    private List<Car> attemptGo() {
-        List<Car> cars = new ArrayList<>();
-        for (Car car : this.participatingCars().cars()) {
-            int input = RandomNumber.randomNumberUnder10();
-            car.move(input);
-            cars.add(new Car(car.name().toString()));
-        }
-        return cars;
-    }
-
 
     public static class ParticipatingCars {
 
@@ -67,10 +51,6 @@ public class Racing {
             for (String name : names) {
                 this.participatingCars.add(new Car(name));
             }
-        }
-
-        public ParticipatingCars(List<Car> cars) {
-            this.participatingCars = cars;
         }
 
         public int numberOfCars() {
