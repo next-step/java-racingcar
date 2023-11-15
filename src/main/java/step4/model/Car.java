@@ -1,11 +1,14 @@
 package step4.model;
 
+import static step4.constants.CarConstants.MAX_CAR_NAME_LENGTH;
+
 public class Car {
 
     private Position position;
     private final Name name;
 
     public Car(Name name) {
+        verifyNameLength(name);
         this.name = name;
     }
 
@@ -16,6 +19,16 @@ public class Car {
 
     public Position getPosition() {
         return this.position;
+    }
+
+    private void verifyNameLength(Name name) {
+        if (name.toString() == null || name.toString().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름이 없습니다.");
+        }
+
+        if (name.toString().length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 넘을 수 없습니다.");
+        }
     }
 
     public Name getName() {

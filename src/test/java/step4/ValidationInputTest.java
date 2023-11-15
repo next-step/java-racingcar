@@ -3,9 +3,9 @@ package step4;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step4.model.Car;
+import step4.model.Name;
 import step4.view.validation.ValidationInput;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -30,20 +30,18 @@ public class ValidationInputTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"jane,john"})
+    @ValueSource(strings = {"jane","john"})
     @DisplayName("5글자 이하의 자동차 이름이 들어올 경우 길이 검증에 통과하여 자동차 리스트를 리턴한다.")
     void verifyInputLengthTest(String carNames) {
-        assertThat(ValidationInput.verifyInputLength(carNames))
-                .isInstanceOf(List.class)
-                .size().isEqualTo(2);
+        assertThat(new Car(new Name(carNames))).isInstanceOf(Car.class);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"janehahaha,john"})
+    @ValueSource(strings = {"janehahaha", "johnhahaha"})
     @DisplayName("5글자 이상의 자동차 이름이 들어올 경우 예외를 발생시킨다.")
     void verifyInputLengthExceptionTest(String carNames) {
-        assertThatThrownBy(() -> ValidationInput.verifyInputLength(carNames))
+        assertThatThrownBy(() -> new Car(new Name(carNames)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 5글자를 초과할 수 없습니다.");
+                .hasMessage("자동차 이름은 5글자를 넘을 수 없습니다.");
     }
 }
