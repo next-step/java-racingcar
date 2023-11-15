@@ -33,4 +33,5 @@ class CarsTest {
 
         assertThat(racingCars.findWinners()).contains(avante);
     }
+  
 }
