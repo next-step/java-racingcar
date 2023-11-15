@@ -11,12 +11,4 @@ public class CarListGenerator {
         }
         return cars;
     }
-
-    public Cars generateCarList(int numberOfCar) {
-        Cars cars = new Cars();
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.addCar();
-        }
-        return cars;
-    }
 }

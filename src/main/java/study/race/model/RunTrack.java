@@ -4,16 +4,11 @@ import java.util.Random;
 
 public class RunTrack {
 
+    private  final int RANDOM_LIMIT_NUMBER = 10;
     private Random random;
     private Cars cars;
     private RaceResult raceResult;
 
-
-    public RunTrack(int numberOfCar) {
-        this.random = new Random();
-        this.cars = new CarListGenerator().generateCarList(numberOfCar);
-        this.raceResult = new RaceResult(this.cars);
-    }
 
     public RunTrack(String[] namesOfCar) {
         this.random = new Random();
@@ -23,7 +18,7 @@ public class RunTrack {
 
     public void start() {
         for (int i = 0; i < this.cars.carList().size(); i++) {
-            int movingDistance = random.nextInt(10);
+            int movingDistance = random.nextInt(RANDOM_LIMIT_NUMBER);
             this.cars.carList().get(i).move(movingDistance);
         }
         this.raceResult.updateRaceResult();
