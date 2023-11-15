@@ -24,7 +24,8 @@ public class Race {
 
     private void prepareRace() {
         CarFactory carFactory = new CarFactory();
-        this.racingCars = carFactory.makeCars(InputView.numberOfCar());
+        List<CarName> carNames = CarNameSplitter.names(InputView.carNames());
+        this.racingCars = carFactory.makeCars(carNames);
         this.numberOfRace = InputView.numberOfRace();
     }
 
@@ -33,11 +34,14 @@ public class Race {
         for (int i = 0; i < this.numberOfRace; i++) {
             singleRace();
         }
+        ResultView.announceWinner(Referee.findWinners(this.racingCars));
     }
 
     private void singleRace() {
         for (int i = 0; i < this.racingCars.size(); i++) {
-            ResultView.showDistance(racingCars.get(i).moveForward(randomNumber()));
+            Car car = racingCars.get(i);
+            car.moveForward(randomNumber());
+            ResultView.showDistance(car);
         }
         ResultView.showNextRound();
     }

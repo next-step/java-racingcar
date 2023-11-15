@@ -1,6 +1,9 @@
 package racingCar.view;
 
-import racingCar.domain.Distance;
+import java.util.ArrayList;
+import java.util.List;
+
+import racingCar.domain.Car;
 
 public class ResultView {
 
@@ -8,12 +11,23 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void showDistance(Distance distance) {
-        System.out.println("-".repeat(distance.getDistance()));
+    public static void showDistance(Car car) {
+        System.out.println(car.carName().getValue() + " : " + "-".repeat(car.distance().getValue()));
     }
 
     public static void showNextRound() {
         System.out.println();
+    }
+
+    public static void announceWinner(List<Car> cars) {System.out.println(carNamesString(cars) + "가 최종 우승했습니다.");}
+
+    private static String carNamesString(List<Car> cars) {
+        List<String> carNameList = new ArrayList<>();
+        for (Car car : cars) {
+            carNameList.add(car.carName().getValue());
+        }
+
+        return String.join(",", carNameList);
     }
 
 }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
-    public List<Car> makeCars(int numberOfCar) {
+    public List<Car> makeCars(List<CarName> carNames) {
         List<Car> preparedCar = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            Car newCar = new Car();
+        for (CarName carName : carNames) {
+            Car newCar = new Car(carName);
             preparedCar.add(newCar);
         }
         return preparedCar;
