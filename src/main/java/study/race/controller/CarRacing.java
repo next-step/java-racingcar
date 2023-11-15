@@ -15,11 +15,15 @@ public class CarRacing {
     }
 
     public void runCarRacing() {
-        int numberOfCar = receiveInputValue.receiveInputValueForCar();
-        int roundOfTrack = receiveInputValue.receiveInputValueForRound();
-        String namesOfCar = receiveInputValue.receiveInputValueForCarNames();
+        String[] names;
+        do {
+            String namesOfCar = receiveInputValue.receiveInputValueForCarNames();
 
-        String[] names = namesOfCar.split(",");
+             names = namesOfCar.split(",");
+        } while (checkLengthLimitOfCarName(names));
+
+        int roundOfTrack = receiveInputValue.receiveInputValueForRound();
+
         RunTrack runTrack = new RunTrack(names);
 
         System.out.println("\nExecution Result");
@@ -28,5 +32,15 @@ public class CarRacing {
             runTrack.start();
             this.viewResult.printResult(runTrack.getRaceResult());
         }
+    }
+
+    public boolean checkLengthLimitOfCarName(String[] names) {
+        for (String name: names) {
+            if (name.length() > 5) {
+                System.out.println("The length of the car name '" + name + "' exceeds 5.");
+                return false;
+            }
+        }
+        return true;
     }
 }

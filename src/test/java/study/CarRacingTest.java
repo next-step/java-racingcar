@@ -7,6 +7,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.race.controller.CarRacing;
 import study.race.model.Car;
 import study.race.model.CarListGenerator;
 import study.race.model.Cars;
@@ -80,7 +81,6 @@ public class CarRacingTest {
         assertThat(result[0]).isEqualTo(expected);
     }
 
-
     @ParameterizedTest()
     @DisplayName("Generating car as many as car names")
     @ValueSource(strings = { "car1,car2", "car1,car2,car3", "car1,car2,car3,car4"})
@@ -88,5 +88,15 @@ public class CarRacingTest {
         String[] names = input.split(",");
         Cars cars = new CarListGenerator().generateCarList(names);
         assertThat(cars.carList().size()).isEqualTo(names.length);
+    }
+
+    @ParameterizedTest()
+    @DisplayName("Check for length of car's name greater than 5.")
+    @ValueSource(strings = { "car1,superCar", "car1,car2,car34567", "audi,benz,hyundai,kia"})
+    void checkLengthOfCarNameTest(String input) {
+        String[] names = input.split(",");
+
+        boolean result = new CarRacing().checkLengthLimitOfCarName(names);
+        assertThat(result).isEqualTo(false);
     }
 }
