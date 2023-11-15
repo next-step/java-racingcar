@@ -1,7 +1,5 @@
-package step3.view;
+package racingCar.view;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class InputView {

@@ -1,10 +1,10 @@
-package step3.domain;
+package racingCar.domain;
 
 import java.util.List;
 import java.util.Random;
 
-import step3.view.InputView;
-import step3.view.ResultView;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 public class Race {
     private static final int MAX_RANDOM_NUMBER = 10;

@@ -1,11 +1,11 @@
-package step3;
+package racingCar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import step3.domain.Distance;
+import racingCar.domain.Distance;
 
 public class DistanceTest {
     private static final int NEGATIVE_NUMBER = -1;

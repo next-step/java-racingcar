@@ -1,6 +1,4 @@
-package step3.domain;
-
-import step3.view.ResultView;
+package racingCar.domain;
 
 public class Car {
     private static final int RUNNABLE_LIMIT_NUMBER = 4;

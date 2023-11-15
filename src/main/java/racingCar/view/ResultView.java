@@ -1,6 +1,6 @@
-package step3.view;
+package racingCar.view;
 
-import step3.domain.Distance;
+import racingCar.domain.Distance;
 
 public class ResultView {
 
