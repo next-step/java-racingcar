@@ -1,5 +1,7 @@
 package car;
 
+import car.domain.Car;
+import car.service.WinnerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,8 +11,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WinTest {
-    private Win allCars;
+public class WinnerServiceTest {
+    private WinnerService allCars;
     private List<Car> cars;
 
     @BeforeEach
@@ -21,7 +23,7 @@ public class WinTest {
         cars.add(new Car("crong", 5));
         cars.add(new Car("honux", 6));
 
-        allCars = new Win(cars);
+        allCars = new WinnerService(cars);
     }
 
     @DisplayName("우승자 리스트")

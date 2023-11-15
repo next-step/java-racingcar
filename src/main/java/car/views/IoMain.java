@@ -1,11 +1,18 @@
-package car;
+package car.views;
 
+
+import car.domain.Car;
+import car.service.CarService;
+import car.service.WinnerService;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class IoMain {
     private static Scanner sc = new Scanner(System.in);
+    private static final String REPLACE_ALL = "[\\[\\]]";
+    private static final String MARK = "-";
+    private static final String SPLITER = ",";
 
     public static void main(String[] args) {
         //pobi,crong,honux
@@ -35,22 +42,22 @@ public class IoMain {
     }
 
     public static String[] splitNames(String ioName) {
-        return ioName.split(",");
+        return ioName.split(SPLITER);
     }
 
     public static void printMark(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.carName() + " : " + "-".repeat(car.currentPosition()));
+            System.out.println(car.getCarName() + " : " + MARK.repeat(car.getCarPosition()));
         }
         System.out.println();
     }
 
     public static String winnersString(List<Car> cars) {
-        Win win = new Win(cars);
+        WinnerService win = new WinnerService(cars);
 
         List<String> winnersName = win.winnersNameList();
 
-        return winnersName.toString().replaceAll("[\\[\\]]", "");
+        return winnersName.toString().replaceAll(REPLACE_ALL, "");
     }
 
     public static void printChampion(List<Car> cars) {
