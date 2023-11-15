@@ -1,4 +1,4 @@
-package ch3;
+package domain;
 
 import org.junit.jupiter.api.Test;
 

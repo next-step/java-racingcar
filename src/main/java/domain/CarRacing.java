@@ -1,32 +1,25 @@
-package ch3;
+package domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class CarRacing {
 
-    private final InputView inputView;
-    private final ResultView resultView;
     private List<Car> cars;
     private Queue<Integer> executeNumbers = new LinkedList<>();
+    private NumberGenerator numberGenerator;
 
-    public CarRacing(InputView inputView, ResultView resultView) {
-        this.inputView = inputView;
-        this.resultView = resultView;
-    }
-
-    public InputView inputView() {
-        return inputView;
-    }
-
-    public ResultView resultView() {
-        return resultView;
+    public CarRacing(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
     }
 
     public void makingCar(String inputString) {
         String[] names = inputString.split(",");
         this.cars = new ArrayList<>();
         makingNamingCars(names);
-        makingExecuteNumbers();
+        makingExecuteNumbers(numberGenerator);
     }
 
     private void makingNamingCars(String[] names) {
@@ -57,27 +50,14 @@ public class CarRacing {
         for (Car car : cars) {
             car.move(executeNumbers.poll());
         }
-        makingExecuteNumbers();
+        makingExecuteNumbers(numberGenerator);
     }
 
-    private void makingExecuteNumbers() {
-        Random random = new Random();
+    private void makingExecuteNumbers(NumberGenerator numberGenerator) {
         int carSize = cars.size();
         while (carSize-- > 0) {
-            this.executeNumbers.add(random.nextInt(10));
+            this.executeNumbers.add(numberGenerator.moveCondition());
         }
-    }
-
-    public void startGame() {
-        String names = inputView.getInputStringValue("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
-        makingCar(names);
-        int executeCount = inputView.getInputIntValue("시도할 회수는 몇 회 인가요?");
-        resultView.showResultComment("실행 결과");
-        while (executeCount-- > 0) {
-            executeRace();
-            resultView.showCarRacing(cars);
-        }
-        resultView.showResultCarRacing(getWinningRaceCars());
     }
 
     public List<Car> getWinningRaceCars() {

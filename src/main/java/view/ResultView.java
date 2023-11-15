@@ -1,4 +1,6 @@
-package ch3;
+package view;
+
+import domain.Car;
 
 import java.util.LinkedList;
 import java.util.List;

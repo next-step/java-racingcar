@@ -1,4 +1,4 @@
-package ch3;
+package domain;
 
 public class Car {
 
