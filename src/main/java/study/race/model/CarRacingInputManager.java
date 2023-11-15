@@ -27,7 +27,6 @@ public class CarRacingInputManager {
         this.raceInfo.setCarNames(names);
     }
 
-
     private boolean hasOverLengthForCarNames(String[] names) {
         return countNumberOfNamesForOverLength(names) > 0;
     }
