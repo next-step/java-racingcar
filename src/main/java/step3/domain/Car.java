@@ -3,26 +3,24 @@ package step3.domain;
 import step3.view.ResultView;
 
 public class Car {
-    private static final int STARTING_POINT = 0;
     private static final int RUNNABLE_LIMIT_NUMBER = 4;
-    private int distance;
 
-    public Car() {
-        this.distance = STARTING_POINT;
-    }
+    private Distance distance;
+
+    public Car() {}
 
     public Car(int distance) {
-        this.distance = distance;
+        this.distance = new Distance(distance);
     }
 
-    public int moveForward(int randomNumber) {
+    public Distance moveForward(int randomNumber) {
         if (isRunnable(randomNumber)) {
-            distance++;
+             distance.moveForward();
         }
         return distance;
     }
 
     private boolean isRunnable(int randomNumber) {
-        return (randomNumber >= RUNNABLE_LIMIT_NUMBER) ? Boolean.TRUE : Boolean.FALSE;
+        return randomNumber >= RUNNABLE_LIMIT_NUMBER;
     }
 }

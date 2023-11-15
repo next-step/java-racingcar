@@ -1,7 +1,6 @@
 package step3;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -9,7 +8,7 @@ import step3.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarRaceTest {
+public class CarTest {
 
     @ParameterizedTest
     @DisplayName("random한 수가 4 이상이면 전진한다.")
