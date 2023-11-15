@@ -6,24 +6,31 @@ import java.util.Random;
 
 public class CarRacing {
 
+    final int MAX_RANDOM_VALUE = 10;
     public void StartRacingGame(){
 
         InputView inputView = InputView.getInstance();
         ResultView resultView = ResultView.getInstance();
 
         List<Car> cars = new ArrayList<Car>();
-        int carsValue = inputView.getInputValue("자동차 대수는 몇 대 인가요?");
-        for (int i = 0; i < carsValue; i++) {
+        int carCount= inputView.requestCarCount();
+        for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
 
-        int moveCount = inputView.getInputValue("시도할 회수는 몇 회 인가요?");
+        int moveCount = inputView.requestCarMovementCount();
 
+        resultView.showRacingGameResultComment();
         for (int i = 0; i < moveCount; i++) {
-            for (Car car : cars) {
-                car.move(new Random().nextInt(10));
-                resultView.showResultComment(car.getPosition());
-            }
+            executeRacing(cars, resultView);
+            resultView.showRacingRoundEndComment();
+        }
+    }
+
+    private void executeRacing(List<Car> cars, ResultView resultView) {
+        for (Car car : cars) {
+            car.move(new Random().nextInt(MAX_RANDOM_VALUE));
+            resultView.showResultComment(car.getPosition());
         }
     }
 }
