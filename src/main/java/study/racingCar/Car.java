@@ -20,12 +20,23 @@ public class Car {
         this.position = position.increase(num);
     }
 
+    public Car getTheWinner(Car car){
+        if (position.isBiggerThan(car.position)){
+            return this;
+        }
+        return car;
+    }
+
     public void printName(){
-        System.out.print(this.name+": ");
+        System.out.print(this.name);
     }
 
     public void printPosition(){
         this.position.print();
+    }
+
+    public boolean isSamePosition(Car car){
+        return position.equals(car.position);
     }
 
     @Override

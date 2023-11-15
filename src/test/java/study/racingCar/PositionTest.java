@@ -24,4 +24,10 @@ class PositionTest {
     void increaseUpTest() {
         assertThat(p.increase(4)).isEqualTo(new Position(1));
     }
+
+    @Test
+    void isBiggerThan() {
+        p = new Position(3);
+        assertThat(p.isBiggerThan(new Position(3))).isTrue();
+    }
 }
