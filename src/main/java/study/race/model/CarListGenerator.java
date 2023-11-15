@@ -4,6 +4,14 @@ import study.race.model.Cars;
 
 public class CarListGenerator {
 
+    public Cars generateCarList(String[] carNameList) {
+        Cars cars = new Cars();
+        for (int i = 0; i < carNameList.length; i++) {
+            cars.addCar();
+        }
+        return cars;
+    }
+
     public Cars generateCarList(int numberOfCar) {
         Cars cars = new Cars();
         for (int i = 0; i < numberOfCar; i++) {

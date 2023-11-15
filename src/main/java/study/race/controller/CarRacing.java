@@ -17,8 +17,10 @@ public class CarRacing {
     public void runCarRacing() {
         int numberOfCar = receiveInputValue.receiveInputValueForCar();
         int roundOfTrack = receiveInputValue.receiveInputValueForRound();
+        String namesOfCar = receiveInputValue.receiveInputValueForCarNames();
 
-        RunTrack runTrack = new RunTrack(numberOfCar);
+        String[] names = namesOfCar.split(",");
+        RunTrack runTrack = new RunTrack(names);
 
         System.out.println("\nExecution Result");
         this.viewResult.printResult(runTrack.getRaceResult());

@@ -15,6 +15,12 @@ public class RunTrack {
         this.raceResult = new RaceResult(this.cars);
     }
 
+    public RunTrack(String[] namesOfCar) {
+        this.random = new Random();
+        this.cars = new CarListGenerator().generateCarList(namesOfCar);
+        this.raceResult = new RaceResult(this.cars);
+    }
+
     public void start() {
         for (int i = 0; i < this.cars.carList().size(); i++) {
             int movingDistance = random.nextInt(10);

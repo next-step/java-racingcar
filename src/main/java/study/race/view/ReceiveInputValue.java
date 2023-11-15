@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class ReceiveInputValue {
 
     private Scanner scanner;
-    private final String CAR_INPUT_MESSAGE = "Enter the number of cars.";
+    private final String CAR_INT_INPUT_MESSAGE = "Enter the number of cars.";
+    private final String CAR_STRING_INPUT_MESSAGE = "Enter the names of the cars to race.";
     private final String ROUND_INPUT_MESSAGE = "Enter how many rounds are we going to do.";
 
     public ReceiveInputValue() {
@@ -13,8 +14,13 @@ public class ReceiveInputValue {
     }
 
     public int receiveInputValueForCar() {
-        System.out.println(CAR_INPUT_MESSAGE);
+        System.out.println(CAR_INT_INPUT_MESSAGE);
         return this.scanner.nextInt();
+    }
+
+    public String receiveInputValueForCarNames() {
+        System.out.println(CAR_STRING_INPUT_MESSAGE);
+        return this.scanner.nextLine();
     }
 
     public int receiveInputValueForRound() {
