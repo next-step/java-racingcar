@@ -1,7 +1,7 @@
 package study.racingcar.fake;
 
 import java.util.Random;
-import study.racingcar.RandomGenerator;
+import study.racingcar.util.RandomGenerator;
 
 public class SuccessRandomGenratorStub extends RandomGenerator {
     public SuccessRandomGenratorStub(Random random) {

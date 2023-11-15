@@ -1,6 +1,9 @@
-package study.racingcar;
+package study.racingcar.domain.score;
 
 import java.util.Objects;
+import study.racingcar.util.MoveStatus;
+import study.racingcar.util.RandomGenerator;
+import study.racingcar.domain.car.Car;
 
 public class Score {
 

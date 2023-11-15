@@ -1,4 +1,7 @@
-package study.racingcar;
+package study.racingcar.domain.car;
+
+import study.racingcar.util.MoveStatus;
+import study.racingcar.util.RandomGenerator;
 
 public class Car {
 
@@ -11,7 +14,7 @@ public class Car {
         this.name = name;
     }
 
-    private static void carNameValidation(String name) {
+    private void carNameValidation(String name) {
         if(name.length()>5){
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }

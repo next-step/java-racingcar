@@ -1,14 +1,14 @@
-package study.racingcar;
+package study.racingcar.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import study.racingcar.domain.car.Cars;
+import study.racingcar.domain.round.Round;
+import study.racingcar.domain.round.Rounds;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

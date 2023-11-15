@@ -1,12 +1,16 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.domain.car.Car;
+import study.racingcar.domain.score.Score;
 import study.racingcar.fake.FailRandomGenratorStub;
 import study.racingcar.fake.SuccessRandomGenratorStub;
+import study.racingcar.util.MoveStatus;
+import study.racingcar.util.RandomGenerator;
 
 class ScoreTest {
 
