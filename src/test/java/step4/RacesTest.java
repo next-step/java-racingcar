@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.model.Car;
-import step4.model.ForwardMoveStrategy;
 import step4.model.Races;
 
 import java.util.Arrays;
@@ -13,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
 
 public class RacesTest {
 
@@ -26,19 +23,12 @@ public class RacesTest {
     }
 
     @Test
-    @DisplayName("레이스가 정상적으로 실행되는지 확인한다.")
-    void raceStartTest() {
-        Races races = mock(Races.class);
-        races.start(new ForwardMoveStrategy());
-        verify(races, times(1)).start(new ForwardMoveStrategy());
-    }
-
-    @Test
     @DisplayName("레이싱이 완료 된 자동차 리스트를 받아 우승자를 정한다.")
     void getWinnersTest() {
         Races racing = new Races(List.of("jane"));
         racing.start(new ForwardMoveStrategy());
-        assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining()))
+
+        assertThat(racing.getWinners().stream().map(car -> car.getName().toString()).collect(Collectors.joining()))
                 .isEqualTo("jane");
     }
 
@@ -47,7 +37,7 @@ public class RacesTest {
     void getMultipleWinnersTest() {
         Races racing = new Races(List.of("jane", "john"));
         racing.start(new ForwardMoveStrategy());
-        assertThat(racing.getWinners().stream().map(Car::getName).collect(Collectors.joining(",")))
+        assertThat(racing.getWinners().stream().map(car -> car.getName().toString()).collect(Collectors.joining(",")))
                 .isEqualTo("jane,john");
     }
 }

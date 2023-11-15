@@ -1,4 +1,6 @@
-package step4.model;
+package step4;
+
+import step4.model.MoveStrategy;
 
 public class StopMoveStrategy implements MoveStrategy {
 

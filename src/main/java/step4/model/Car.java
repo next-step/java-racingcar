@@ -1,28 +1,43 @@
 package step4.model;
 
+import static step4.constants.CarConstants.MAX_CAR_NAME_LENGTH;
+
 public class Car {
 
-    private int currentStatus;
-    private final String name;
+    private Position position;
+    private final Name name;
 
-    public Car(String name) {
+    public Car(Name name) {
+        verifyNameLength(name);
         this.name = name;
     }
 
-    public Car(String name, int currentStatus) {
+    public Car(Name name, Position position) {
         this.name = name;
-        this.currentStatus = currentStatus;
+        this.position = position;
     }
 
-    public void go() {
-        this.currentStatus++;
+    public Position getPosition() {
+        return this.position;
     }
 
-    public int getCurrentStatus() {
-        return this.currentStatus;
+    public void go(final MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            this.position = this.position.move();
+        }
     }
 
-    public String getName() {
+    private void verifyNameLength(Name name) {
+        if (name.toString() == null || name.toString().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름이 없습니다.");
+        }
+
+        if (name.toString().length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 넘을 수 없습니다.");
+        }
+    }
+
+    public Name getName() {
         return this.name;
     }
 }
