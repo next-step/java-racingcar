@@ -8,7 +8,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.List;
 
+import static calculator.Calculator.calculate;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racing.Validate.*;
 
 public class RacingTest {
@@ -20,12 +22,7 @@ public class RacingTest {
     @DisplayName("2개의 차가 달리고 2번째 차량이 움직인 경우 테스트")
     @Test
     void 정상_작동_확인(){
-        Strategy forwardStrategy = new Strategy(){
-            @Override
-            public boolean isMovable(){
-                return true;
-            }
-        };
+        Strategy forwardStrategy = () -> true;
 
         List<Car> cars = new ArrayList<>();
         String names = "A,B,C";
@@ -45,7 +42,20 @@ public class RacingTest {
     @ValueSource(strings = {"adam", "brian", "frank"})
     void 자동차_이름_확인(String name){ validName(name); }
 
+    @DisplayName("Car 클래스 생성 테스트 - 정상 생성되는지 확인")
+    @Test
+    void Car_생성_확인() {
+        String[] testStrings = {"adam", "brain" ,"frank"};
+        List<Car> cars = new ArrayList<>();
+        for (String testString : testStrings) {
+            cars.add(new Car(testString));
+        }
+    }
+
     @DisplayName("자동차 이름은 콤마(',')로 구분되어야 함")
     @Test
-    void 자동차_구분자_확인(){ validInputNames("a,b,c"); }
+    void 자동차_구분자_확인(){
+        validInputNames("a,b,c");
+        assertThatThrownBy(()-> calculate("adam,carter,amanda")).isInstanceOf(RuntimeException.class);
+    }
 }

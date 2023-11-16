@@ -5,13 +5,13 @@ public class Validate {
     private static final int NAME_THRESHOLD = 5;
 
     public static void validInputNames(String names){
-        if(!names.contains(",")){
+        if (!names.contains(",")) {
             throw new IllegalArgumentException("PLEASE SEPARATE THE NAMES WITH COMMA(',')");
         }
     }
 
     public static void validName(String name){
-        if(name.length() > NAME_THRESHOLD){
+        if (name.length() > NAME_THRESHOLD) {
             throw new IllegalArgumentException("PLEASE INPUT VALID NAME (5 OR LESS CHARACTER)");
         }
     }

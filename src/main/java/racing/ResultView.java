@@ -11,14 +11,7 @@ public class ResultView {
     }
 
     public static void showResult(List<String> cars){
-        String resultMessage = "우승자는 ";
-        for(int i = 0; i < cars.size(); ++i){
-            resultMessage += cars.get(i);
-            if(i < cars.size() - 1){
-                resultMessage += ", ";
-            }
-        }
-        resultMessage += " 입니다.";
-        System.out.println(resultMessage);
+        String winners = String.join(", ", cars);
+        System.out.println(String.format("우승자는 %s 입니다.", winners));
     }
 }
