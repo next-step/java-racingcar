@@ -9,12 +9,15 @@ import java.util.Map;
 public class RaceResult {
 
     private int numberOfCar;
+    private int maxDistance;
+    private String[] winners;
     private Map<String, Integer> racingResult;
     private Cars cars;
 
     public RaceResult(Cars cars) {
         this.cars = cars;
         this.numberOfCar = cars.carList().size();
+        this.maxDistance = 0;
         racingResult = new LinkedHashMap<>();
         this.updateRaceResult();
     }
@@ -29,4 +32,6 @@ public class RaceResult {
     public Map<String, Integer> getResult() {
         return this.racingResult;
     }
+
+
 }
