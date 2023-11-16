@@ -10,6 +10,13 @@ public class DriveResult {
         this.drivenDistance = drivenDistance;
     }
 
+    public String name() {
+        return this.name;
+    }
+
+    public int drivenDistance() {
+        return this.drivenDistance;
+    }
 
     @Override
     public String toString() {
