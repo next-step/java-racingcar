@@ -1,6 +1,7 @@
 package study.racingCar;
 
 import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,5 +30,6 @@ class PositionTest {
     void isBiggerThan() {
         p = new Position(3);
         assertThat(p.isBiggerThan(new Position(3))).isTrue();
+
     }
 }

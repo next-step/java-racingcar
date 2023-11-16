@@ -35,4 +35,5 @@ class StringToIntConverterTest {
         assertThatThrownBy(() -> converter.converter("-1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }

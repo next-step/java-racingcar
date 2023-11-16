@@ -44,6 +44,29 @@ public class Car {
         return "Car{" +
                 "name='" + name + '\'' +
                 '}';
+=======
+import java.util.PrimitiveIterator;
+import java.util.Random;
+
+public class Car {
+
+    private Position position;
+
+    public Car() {
+        this(0);
+    }
+
+    public Car(int num){
+        this.position =  new Position(num);
+    }
+
+    public Position currentPosition(){
+        return position;
+    }
+
+    public void move(int num){
+        this.position = this.position.increase(num);
+
     }
 
     @Override
@@ -52,10 +75,12 @@ public class Car {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return Objects.equals(name, car.name);
+
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name);
+
     }
 }
