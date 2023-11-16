@@ -1,11 +1,13 @@
 package step3.domain;
 
+import step3.strategy.MovingStrategy;
+
 public class Car {
 
     private int distance;
 
-    public void move(boolean canMove) {
-        if (canMove) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.canForward()) {
             distance++;
         }
     }
