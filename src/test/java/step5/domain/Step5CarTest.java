@@ -56,5 +56,19 @@ import static org.junit.jupiter.api.Assertions.*;
         Assertions.assertThat(car.isDistance(2)).isTrue();
     }
 
+    @Test
+    @DisplayName("자동차 거리 비교")
+    public void compareCarDistance() throws Exception {
+        // given
+        Car loser = Car.defaultOf("포비",3);
+        Car winner = Car.defaultOf("아톰",4);
+
+        // when
+        boolean result = winner.fartherThan(loser);
+
+        // then
+        Assertions.assertThat(result).isTrue();
+    }
+
 
 }

@@ -37,4 +37,8 @@ public class Distance {
     public int hashCode() {
         return distance;
     }
+
+    public boolean fartherThan(Distance distance) {
+        return this.distance > distance.distance;
+    }
 }
