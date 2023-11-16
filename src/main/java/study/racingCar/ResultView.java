@@ -2,10 +2,17 @@ package study.racingCar;
 
 public class ResultView {
 
-    static void printRacing(Position position){
-        for (int i = 0; i < position.position(); i++) {
-            System.out.print("-");
-        }
+    public ResultView() {
     }
 
+    public void printResult(){
+        System.out.println("*********** 실행결과 ***********");
+    }
+
+    public void printRoundResult(Car car){
+        car.printName();
+        System.out.print(": ");
+        car.printPosition();
+        System.out.println();
+    }
 }

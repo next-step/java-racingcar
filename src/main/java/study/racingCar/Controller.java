@@ -1,33 +1,26 @@
 package study.racingCar;
 
-import static study.racingCar.ResultView.printRacing;
-import static study.racingCar.StringToIntConverter.stringToIntConverter;
+import static study.racingCar.RandomNumGenerator.getRandomNum;
 
 public class Controller {
 
-
     public static void main(String[] args){
+        CarRacingGame game = new CarRacingGame();
         InputView inputView = new InputView();
-        PlayCarRacingGame game = new PlayCarRacingGame();
-
-        int cars = 0;
-        int rounds = 0;
+        ResultView resultView = new ResultView();
+        StringToIntConverter converter = new StringToIntConverter();
+        Car[] cars;
+        int tryCount = 0;
 
         try{
+            cars = game.createCarList(inputView.inputCarNames());
+            tryCount = converter.converter(inputView.inputTryCount());
 
-            cars = stringToIntConverter(inputView.inputCars());
-            rounds = stringToIntConverter(inputView.inputRounds());
-
-            CarList carList = new CarList(cars);
-
-            for (int i = 0; i < rounds; i++) {
-                game.play(cars, carList);
-                System.out.println();
-            }
+            resultView.printResult();
+            game.playGame(tryCount, cars);
 
         }catch (Exception e){
             e.printStackTrace();
-            System.out.println("숫자 양수로만 입력해주세요.");
         }
 
     }

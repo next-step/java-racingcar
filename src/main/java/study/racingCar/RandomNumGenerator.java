@@ -4,12 +4,8 @@ import java.util.Random;
 
 public class RandomNumGenerator {
 
-    public RandomNumGenerator() {
+    public static int getRandomNum(){
+        Random r = new Random();
+        return r.nextInt(10);
     }
-
-    public int randomNum(){
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
 }

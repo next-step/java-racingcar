@@ -11,6 +11,7 @@
 
 ## 기능 목록
 
+
 1. InputView, ResultView, Conroller, RacingModel 클래스를 나눈다.
 2. InputView에서 자동차 개수를 입력받는다.
 3. InputView에서 시도할 횟수를 입력받는다.
@@ -22,5 +23,6 @@
 9. car에서 position을 받아서 전진 테스트
 10. car에서 position을 받아서 멈춤 테스트
 11. 라운드가 진행될 때 car객체들의 position을 받아와서 출력
+
 
 
