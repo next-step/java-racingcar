@@ -14,40 +14,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MaxMovingTest {
-	@Test
-	void winners_emptyCars_throwsException() {
-		WinnerStrategy maxMoving = new MaxMoving();
+    @Test
+    void winners_emptyCars_throwsException() {
+        WinnerStrategy maxMoving = new MaxMoving();
 
-		assertThatThrownBy(
-				() -> maxMoving.winners(new Cars(new ArrayList<>()))
-		).isInstanceOf(IllegalArgumentException.class);
-	}
+        assertThatThrownBy(
+            () -> maxMoving.winners(new Cars(new ArrayList<>()))
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
 
-	@Test
-	void winners_threeCars_oneWinners() {
-		Car car1 = new Car(10, "abc");
-		Car car2 = new Car(9, "abc");
-		Car car3 = new Car(8, "abc");
-		Cars cars = new Cars(List.of(car1, car2, car3));
-		WinnerStrategy maxMoving = new MaxMoving();
+    @Test
+    void winners_threeCars_oneWinners() {
+        Car car1 = new Car(10, "abc");
+        Car car2 = new Car(9, "abc");
+        Car car3 = new Car(8, "abc");
+        Cars cars = new Cars(List.of(car1, car2, car3));
+        WinnerStrategy maxMoving = new MaxMoving();
 
-		Winners winners = maxMoving.winners(cars);
-		Cars winCars = new Cars(List.of(car1));
+        Winners winners = maxMoving.winners(cars);
+        Cars winCars = new Cars(List.of(car1));
+        Winners expected = new Winners(winCars);
 
-		assertThat(winners.isWinners(winCars)).isTrue();
-	}
+        assertThat(expected).isEqualTo(winners);
+    }
 
-	@Test
-	void winners_threeCars_twoWinners() {
-		Car car1 = new Car(10, "abc");
-		Car car2 = new Car(10, "abc");
-		Car car3 = new Car(8, "abc");
-		Cars cars = new Cars(List.of(car1, car2, car3));
-		WinnerStrategy maxMoving = new MaxMoving();
+    @Test
+    void winners_threeCars_twoWinners() {
+        Car car1 = new Car(10, "abc");
+        Car car2 = new Car(10, "abc");
+        Car car3 = new Car(8, "abc");
+        Cars cars = new Cars(List.of(car1, car2, car3));
+        WinnerStrategy maxMoving = new MaxMoving();
 
-		Winners winners = maxMoving.winners(cars);
-		Cars winCars = new Cars(List.of(car1, car2));
+        Winners winners = maxMoving.winners(cars);
+        Cars winCars = new Cars(List.of(car1, car2));
+        Winners expected = new Winners(winCars);
 
-		assertThat(winners.isWinners(winCars)).isTrue();
-	}
+        assertThat(expected).isEqualTo(winners);
+    }
 }
