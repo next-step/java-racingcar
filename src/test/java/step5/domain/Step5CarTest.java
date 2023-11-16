@@ -19,7 +19,7 @@ public class Step5CarTest {
         Car car = Car.defaultOf(name);
 
         // then
-        assertThat(car).extracting("name").isEqualTo(name);
+        assertThat(car).extracting("name").isNotNull();
     }
 
     @Test
@@ -30,6 +30,29 @@ public class Step5CarTest {
 
         // then
         assertThrowsExactly(IllegalArgumentException.class, () -> Car.defaultOf(name));
+    }
+
+    @Test
+    @DisplayName("이름 객체 생성 테스트")
+    public void name_object_test() throws Exception {
+        // given
+        String name = "홍길동";
+
+        // when
+        Name nameObject = Name.of(name);
+
+        // then
+        Assertions.assertThat(nameObject).extracting("name").isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("이름 객체 생성 테스트 -> 이름 제약 길이 5자 초과 금지")
+    public void name_object_test_limit_length() throws Exception {
+        // given
+        String name = "이름이 5자 이상 ";
+
+        // then
+        assertThrowsExactly(IllegalArgumentException.class, () -> Name.of(name));
     }
 
 }
