@@ -1,6 +1,5 @@
-package racing.ui;
+package racing.view;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {

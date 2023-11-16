@@ -1,17 +1,16 @@
-package racing.ui;
+package racing.view;
 
-import racing.car.Car;
+import racing.domain.car.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void showCurrentPosition(List<List<Car>> result) {
-        for (List<Car> cars : result) {
-            printRound(cars);
-            System.out.println();
-        }
+
+    public static void showCurrentPosition(List<Car> result) {
+        printRound(result);
+        System.out.println();
     }
 
     private static void printRound(List<Car> cars) {

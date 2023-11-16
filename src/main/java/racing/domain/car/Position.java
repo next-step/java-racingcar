@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain.car;
 
 import java.util.Objects;
 
@@ -14,9 +14,13 @@ public class Position implements Comparable<Position> {
         return this.position;
     }
 
-    public Position move(int offset) {
+    Position move(int offset) {
         int currentPosition = this.position;
         return new Position(currentPosition + offset);
+    }
+
+    public boolean isForward(Position position) {
+        return position.position() < this.position;
     }
 
     @Override

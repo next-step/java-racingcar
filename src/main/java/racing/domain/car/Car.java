@@ -1,17 +1,19 @@
-package racing.car;
+package racing.domain.car;
 
 
 import java.util.Objects;
 
 public class Car {
 
-    private Name name;
-    private int THRESHOLD = 4;
+    private final static int THRESHOLD = 4;
+
+    private final Name name;
+
     private Position position;
 
-    public Car(String name, int position) {
+    public Car(String name) {
         this.name = new Name(name);
-        this.position = new Position(position);
+        this.position = new Position(0);
     }
 
     public Name name() {
@@ -33,6 +35,22 @@ public class Car {
         return THRESHOLD <= input;
     }
 
+    public boolean equalPosition(Position position) {
+        return this.position.equals(position);
+    }
+
+    public boolean isForward(Position position) {
+        return this.position.isForward(position);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+            "name=" + name +
+            ", position=" + position +
+            '}';
+    }
+
 
     public static class Name {
 
@@ -42,6 +60,23 @@ public class Car {
         public Name(String name) {
             this.validateNameLength(name);
             this.name = name;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Name name1 = (Name) o;
+            return Objects.equals(name, name1.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
         }
 
         public String toString() {
@@ -65,7 +100,7 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return THRESHOLD == car.THRESHOLD && Objects.equals(name, car.name)
+        return Objects.equals(name, car.name)
             && Objects.equals(position, car.position);
     }
 
