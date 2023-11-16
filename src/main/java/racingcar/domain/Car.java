@@ -20,29 +20,27 @@ public class Car {
         this.position = new Position(distance);
     }
 
-    public Car(final Car car) {
-        this.carName = car.carName;
-        this.position = car.position;
+    private Car(final Car car) {
+        this.carName = new CarName(car.carName.getCarName());
+        this.position = new Position(car.position.getPosition());
     }
 
-    public int getCarPosition() {
-        return position.getPosition();
+    public Position getCarPosition() {
+        return position;
     }
 
     public String getCarName() {
         return carName.getCarName();
     }
 
-    public Car tryMove(final int randomNumber) {
+    public void tryMove(final int randomNumber) {
         if (randomNumber >= ACCEPT_MOVE_NUMBER) {
             position = position.move();
         }
-
-        return new Car(this.getCarName(), position.getPosition());
     }
 
-    public boolean isAtMaxPosition(final int maxPosition) {
-        return position.getPosition() == maxPosition;
+    public boolean isAtPosition(final Position position) {
+        return this.position.equals(position);
     }
 
     public static Car copyCar(final Car car) {
@@ -61,6 +59,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(carName, position);
     }
-
 
 }

@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Comparator;
 import java.util.stream.Collectors;
 import racingcar.utils.NumberGenerator;
 
@@ -15,21 +16,25 @@ public class Cars {
     }
 
     public Round moveForwardCars(final NumberGenerator numberGenerator) {
-        Round round = new Round();
         cars.stream().forEach(car -> car.tryMove(numberGenerator.generateNumber()));
-        round.recordRound(copyCars());
-        return round;
+        return new Round(copyCars());
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 
-    public int getMaxPosition() {
+    public Position getMaxPosition() {
         return cars.stream()
-            .mapToInt(Car::getCarPosition)
-            .max()
+            .map(Car::getCarPosition)
+            .max(Position::compareTo)
             .orElseThrow(() -> new IllegalArgumentException("자동차가 존재하지 않습니다."));
+    }
+
+    public List<Car> findWinners() {
+        return cars.stream()
+            .filter(car -> car.isAtPosition(getMaxPosition()))
+            .collect(Collectors.toList());
     }
 
     public Cars copyCars() {
@@ -39,5 +44,3 @@ public class Cars {
     }
 
 }
-
-

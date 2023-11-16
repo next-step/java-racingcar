@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.RacingGame;
 import racingcar.utils.NameSplitter;
+import racingcar.utils.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -17,7 +18,7 @@ public class RacingController {
 
         resultView.printResultMessage();
         RacingGame racingGame = new RacingGame(carNames, tryCountNumber);
-        racingGame.play();
+        racingGame.play(new RandomNumberGenerator());
         resultView.printRacingResults(racingGame.getRounds());
         resultView.printWinner(racingGame.getWinners());
     }

@@ -19,6 +19,19 @@ class CarsTest {
         List<Car> cars = List.of(avante, sonata);
         Cars racingCars = new Cars(cars);
 
-        assertThat(racingCars.getMaxPosition()).isEqualTo(5);
+        assertThat(racingCars.getMaxPosition().getPosition()).isEqualTo(5);
     }
+
+    @Test
+    @DisplayName("레이싱게임의 우승한 Car를 찾는다.")
+    void findWinners() {
+        Car avante = new Car("아반떼", 5);
+        Car sonata = new Car("소나타", 2);
+
+        List<Car> cars = List.of(avante, sonata);
+        Cars racingCars = new Cars(cars);
+
+        assertThat(racingCars.findWinners()).contains(avante);
+    }
+  
 }

@@ -3,9 +3,9 @@ package racingcar.domain;
 
 public class Round {
 
-    private Cars cars;
+    private final Cars cars;
 
-    public void recordRound(final Cars cars) {
+    public Round(Cars cars) {
         this.cars = cars;
     }
 
