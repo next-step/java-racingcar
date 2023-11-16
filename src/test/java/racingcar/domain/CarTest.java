@@ -37,9 +37,16 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차는 앞으로 이동할 수 있다.")
-    void move() {
-        car.move();
+    @DisplayName("자동차 이동 가능 여부가 false 값이면 이동할 수 없다.")
+    void move_X() {
+        car.move(() -> false);
+        Assertions.assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차 이동 가능 여부가 true 값이면 이동할 수 있다.")
+    void move_O() {
+        car.move(() -> true);
         Assertions.assertThat(car.getPosition()).isEqualTo(1);
     }
 }

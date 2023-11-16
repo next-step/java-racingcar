@@ -5,14 +5,19 @@ import java.util.List;
 
 public class RacingGame {
     private List<Car> cars = new ArrayList<>();
+    private MoveStrategy moveStrategy;
 
     public RacingGame(String[] carNames) {
+        this(carNames, new RandomNumberMoveStrategy());
+    }
+    public RacingGame(String[] carNames, MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
         for (int i = 0; i < carNames.length; i++) {
             cars.add(new Car(carNames[i]));
         }
     }
 
-    public List<Car> race(MoveStrategy moveStrategy) {
+    public List<Car> race() {
         moveCars(moveStrategy);
         return cars;
     }
@@ -23,10 +28,8 @@ public class RacingGame {
         }
     }
 
-    private static void isMoveAble(MoveStrategy moveStrategy, Car car) {
-        if (moveStrategy.moveAble()) {
-            car.move();
-        }
+    private void isMoveAble(MoveStrategy moveStrategy, Car car) {
+        car.move(moveStrategy);
     }
 
     public List<Car> getCars() {

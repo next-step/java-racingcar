@@ -19,9 +19,9 @@ public class RacingMain {
         ResultView resultView = new ResultView();
         resultView.view();
 
-        RacingGame racingGame = new RacingGame(carNames);
+        RacingGame racingGame = new RacingGame(carNames, new RandomNumberMoveStrategy());
         for (int i = 0; i < tryCount; i++) {
-            List<Car> cars = racingGame.race(new RandomNumberMoveStrategy());
+            List<Car> cars = racingGame.race();
             resultView.viewGame(cars);
         }
         Winners winners = new Winners();
