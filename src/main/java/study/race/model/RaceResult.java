@@ -3,27 +3,30 @@ package study.race.model;
 import study.race.model.Car;
 import study.race.model.Cars;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class RaceResult {
 
     private int numberOfCar;
-    private int[] racingResult;
+    private Map<String, Integer> racingResult;
     private Cars cars;
 
     public RaceResult(Cars cars) {
         this.cars = cars;
         this.numberOfCar = cars.carList().size();
-        racingResult = new int[this.numberOfCar];
+        racingResult = new LinkedHashMap<>();
         this.updateRaceResult();
-    }
-
-    public int[] getResult() {
-        return this.racingResult;
     }
 
     public void updateRaceResult() {
         for (int i = 0; i < this.numberOfCar; i++) {
             Car car = cars.carList().get(i);
-            racingResult[i] = car.getCurrentLocation();
+            racingResult.put(car.getName(), car.getCurrentLocation());
         }
+    }
+
+    public Map<String, Integer> getResult() {
+        return this.racingResult;
     }
 }

@@ -73,12 +73,14 @@ public class CarRacingTest {
         RaceResult raceResult = new RaceResult(stopCars);
 
         // 차량 이동 및 결과 업데이트
-        stopCars.carList().get(0).move(movingDistance);
+        Car car = stopCars.carList().get(0);
+        String carName = car.getName();
+        car.move(movingDistance);
         raceResult.updateRaceResult();
 
         // 결과 확인
-        int[] result = raceResult.getResult();
-        assertThat(result[0]).isEqualTo(expected);
+        int result = raceResult.getResult().get(carName);
+        assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest()
@@ -90,15 +92,17 @@ public class CarRacingTest {
         assertThat(cars.carList().size()).isEqualTo(names.length);
     }
 
-//    @ParameterizedTest()
-//    @DisplayName("Check for length of car's name greater than 5.")
-//    @ValueSource(strings = { "car1,superCar", "car1,car2,car34567", "audi,benz,hyundai,kia"})
-//    void checkLengthOfCarNameTest(String input) {
-//        String[] names = input.split(",");
-//
-//        new CarRacingInputManager().getRaceInfo();
-//
-//        boolean result = new CarRacing().checkLengthLimitOfCarName(names);
-//        assertThat(result).isEqualTo(false);
-//    }
+    @ParameterizedTest()
+    @DisplayName("Check for length of car's name greater than 5.")
+    @ValueSource(strings = { "car1,superCar", "car1,car2,car34567", "audi,benz,hyundai,kia"})
+    void checkLengthOfCarNameTest(String input) {
+        String[] names = input.split(",");
+
+        new CarRacingInputManager().getRaceInfo();
+
+        //Test에서 RaceInfo를 받아서 거기에 있는 이름이 다섯자를 안넘는지 체크
+
+        boolean result = new CarRacing().checkLengthLimitOfCarName(names);
+        assertThat(result).isEqualTo(false);
+    }
 }

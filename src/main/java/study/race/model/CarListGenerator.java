@@ -7,7 +7,7 @@ public class CarListGenerator {
     public Cars generateCarList(String[] carNameList) {
         Cars cars = new Cars();
         for (int i = 0; i < carNameList.length; i++) {
-            cars.addCar();
+            cars.addCar(carNameList[i]);
         }
         return cars;
     }

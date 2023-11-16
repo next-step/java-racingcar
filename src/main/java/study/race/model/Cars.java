@@ -17,7 +17,7 @@ public class Cars {
         return this.carList;
     }
 
-    public void addCar() {
-        this.carList.add(new Car());
+    public void addCar(String name) {
+        this.carList.add(new Car(name));
     }
 }

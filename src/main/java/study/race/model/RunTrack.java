@@ -24,7 +24,7 @@ public class RunTrack {
         this.raceResult.updateRaceResult();
     }
 
-    public int[] getRaceResult() {
-        return this.raceResult.getResult();
+    public RaceResult getRaceResult() {
+        return this.raceResult;
     }
 }

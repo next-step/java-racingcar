@@ -22,7 +22,7 @@ public class CarRacing {
         System.out.println("\nExecution Result");
         for (int i = 0; i < raceInfo.getRoundOfTrack(); i++) {
             runTrack.start();
-            this.viewResult.printResult(runTrack.getRaceResult());
+            this.viewResult.printRaceResult(runTrack.getRaceResult());
         }
     }
 }
