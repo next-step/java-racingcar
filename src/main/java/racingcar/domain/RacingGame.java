@@ -1,16 +1,18 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
     private MoveStrategy moveStrategy;
 
     public RacingGame(String[] carNames) {
         this(carNames, new RandomNumberMoveStrategy());
     }
     public RacingGame(String[] carNames, MoveStrategy moveStrategy) {
+        this.cars = new ArrayList<>();
         this.moveStrategy = moveStrategy;
         for (int i = 0; i < carNames.length; i++) {
             cars.add(new Car(carNames[i]));
@@ -33,6 +35,6 @@ public class RacingGame {
     }
 
     public List<Car> getCars() {
-        return new ArrayList<>(cars);
+        return Collections.unmodifiableList(cars);
     }
 }
