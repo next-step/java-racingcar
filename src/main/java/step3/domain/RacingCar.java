@@ -30,12 +30,13 @@ public class RacingCar {
         }
     }
 
-    public boolean matchDistance(int maxDistance) {
-        return distance == maxDistance;
+    public boolean matchDistance(RacingCar other) {
+        return this.distance == other.distance;
     }
 
-    public int getMaxDistance(int maxDistance) {
-        if (distance > maxDistance) return distance;
-        return maxDistance;
+    public RacingCar getFaster(RacingCar other) {
+        if (this.distance > other.distance) return this;
+        return other;
     }
+
 }
