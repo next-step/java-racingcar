@@ -1,5 +1,6 @@
 package racingCar.car;
 
+import racingCar.game.RacingCarGame;
 import racingCar.util.RandomNumberSupplier;
 
 import java.util.ArrayList;
@@ -9,10 +10,12 @@ import java.util.stream.Collectors;
 public class Cars {
 	private final List<Car> carList;
 
-	private CallBack callBack;
+	public Cars(List<Car> carList) {
+		this.carList = carList;
+	}
 
-	public interface CallBack {
-		void printCallBack(Cars cars);
+	public List<Car> carList() {
+		return carList;
 	}
 
 	public static Cars of(List<String> carNames) {
@@ -23,31 +26,23 @@ public class Cars {
 		return new Cars(cars);
 	}
 
-	public Cars(List<Car> carList) {
-		this.carList = carList;
-		this.callBack = null;
+	public void moveByTryCount(int tryCount, RacingCarGame.Callback callback) {
+		for (int i = 0; i < tryCount; i++) {
+			moveOnce(callback);
+		}
 	}
 
-	public void setCallBack(CallBack callBack) {
-		this.callBack = callBack;
-	}
-
-	public List<Car> carList() {
-		return carList;
-	}
-
-	public void moveOnce() {
+	public void moveOnce(RacingCarGame.Callback callback) {
 		for (Car car : carList) {
 			car.move();
 		}
-		if (this.callBack != null) {
-			this.callBack.printCallBack(Cars.this);
+		if (callback != null) {
+			callback.printCallBack(Cars.this);
 		}
 	}
 
 	public List<Car> winners() {
 		int maxDistance = maxDistance();
-
 		return findWinners(maxDistance);
 	}
 
@@ -64,11 +59,5 @@ public class Cars {
 				.stream()
 				.filter(car -> car.matchMaxDistance(maxDistance))
 				.collect(Collectors.toList());
-	}
-
-	public void moveByTryCount(int tryCount) {
-		for (int i = 0; i < tryCount; i++) {
-			moveOnce();
-		}
 	}
 }

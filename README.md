@@ -96,3 +96,6 @@
 * [x] RacingCar moveOnce() 결과 callback 함수로 호출
 * [x] RacingGameRequest 역할 분리
   * Cars 생성은 Cars 역할로 분리
+
+### Feedback 23.11.16
+* [x] Cars 내 멤버변수 Callback을 일급컬렉션 개념에 맞게 위치 수정
