@@ -3,6 +3,7 @@ package step5.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step5.domain.car.Distance;
 
 public class Step5DistanceTest {
 

@@ -1,4 +1,4 @@
-package step5.domain;
+package step5.domain.car;
 
 public class Car {
     private Name name;
