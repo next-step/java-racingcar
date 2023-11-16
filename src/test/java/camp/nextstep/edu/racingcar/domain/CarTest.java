@@ -8,6 +8,8 @@ import camp.nextstep.edu.racingcar.domain.result.DriveResult;
 import camp.nextstep.edu.racingcar.domain.strategy.DriveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
 
@@ -43,22 +45,18 @@ public class CarTest {
         assertThat(driveResult2.drivenDistance).isEqualTo(0);
     }
 
-    @Test
-    @DisplayName("차의 이름은 공백 제외 1~5자여야 한다")
-    void carName() {
-        DriveStrategy driveStrategy = () -> true;
+    @ParameterizedTest
+    @ValueSource(strings = { "a", "aa", "aaa", "aaaa", "aaaaa" })
+    @DisplayName("차의 이름이 1~5자라면 잘 만들어진다")
+    void carName(String input) {
+        new Car(input, () -> true);
+    }
 
-        assertThatThrownBy(() -> new Car("", driveStrategy))
-            .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Car("  ", driveStrategy))
-            .isInstanceOf(IllegalArgumentException.class);
-
-        Car lengthOne = new Car("a", driveStrategy);
-        assertThat(lengthOne.name()).hasSize(1);
-        Car lengthFive = new Car("aaaaa", driveStrategy);
-        assertThat(lengthFive.name()).hasSize(5);
-
-        assertThatThrownBy(() -> new Car("aaaaaa", driveStrategy))
+    @ParameterizedTest
+    @ValueSource(strings = { "", " ", "aaaaaa" })
+    @DisplayName("차의 이름이 1~5자가 아니라면 예외가 발생한다")
+    void carNameException(String input) {
+        assertThatThrownBy(() -> new Car("", () -> true))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
