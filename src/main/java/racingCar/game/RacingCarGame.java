@@ -1,28 +1,35 @@
 package racingCar.game;
 
 import racingCar.car.Cars;
+import racingCar.car.Winners;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
 public class RacingCarGame { // 자동차 경주를 수행한다.
-    private final InputView inputView = new InputView();
-    private GameRequest gameRequest;
-    private Cars cars;
+	private final InputView inputView;
+	private final ResultView resultView;
 
-    public void run() {
-        gameRequest = inputView.gameRequest();
+	public RacingCarGame(InputView inputView, ResultView resultView) {
+		this.inputView = inputView;
+		this.resultView = resultView;
+	}
 
-        ResultView.printPrefix();
+	public void run() {
+		RacingGameRequest racingGameRequest = inputView.gameRequestWithNames();
 
-        cars = Cars.of(gameRequest.carCount());
+		resultView.printPrefix();
 
-        moveByTryCount();
-    }
+		Cars cars = Cars.of(racingGameRequest.carNames());
+		cars.setCallBack(new Cars.CallBack() {
+			@Override
+			public void printCallBack(Cars cars) {
+				resultView.printDistanceWithName(cars);
+			}
+		});
 
-    private void moveByTryCount() {
-        for (int i = 0; i < gameRequest.tryCount(); i++) {
-            cars.moveOnce();
-            ResultView.printDistance(cars);
-        }
-    }
+		cars.moveByTryCount(racingGameRequest.tryCount());
+
+		Winners winners = new Winners(cars);
+		resultView.printWinner(winners);
+	}
 }
