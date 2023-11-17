@@ -27,6 +27,9 @@ public class Position {
         return this;
     }
 
+    public boolean isBiggerThan(Position p){
+        return this.position > p.position;
+    }
 
     @Override
     public boolean equals(Object o) {

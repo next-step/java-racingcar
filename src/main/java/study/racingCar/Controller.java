@@ -17,14 +17,7 @@ public class Controller {
             tryCount = converter.converter(inputView.inputTryCount());
 
             resultView.printResult();
-            for (int i = 0; i < tryCount; i++) {
-                for (Car car : cars) {
-                    car.move(getRandomNum());
-                    resultView.printRoundResult(car);
-                }
-                System.out.println();
-            }
-
+            game.playGame(tryCount, cars);
 
         }catch (Exception e){
             e.printStackTrace();
