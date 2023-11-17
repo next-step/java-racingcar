@@ -31,10 +31,6 @@ public class Car {
         return carName;
     }
 
-    public int getForwardCount(){
-        return forwardCount;
-    }
-
     public static boolean isMoveCar(int inputValue){
         return inputValue > FORWARD_BOUNDARY_VALUE;
     }
@@ -49,6 +45,11 @@ public class Car {
 
     public void moveNamedCar(){
         if(isMoveNamedCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE))) forwardCount++;
+    }
+
+    public int returnMaxCount(int maxForwardCount) {
+        if(forwardCount >= maxForwardCount) return forwardCount;
+        return maxForwardCount;
     }
 
     public List<String> addMaxForwardCar(int maxForwardCount, List<String> winners){

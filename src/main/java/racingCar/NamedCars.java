@@ -34,7 +34,7 @@ public class NamedCars {
     public int getMaxForward(){
         int maxForward = 0;
         for(Car car : carList){
-            if(car.getForwardCount() >= maxForward) maxForward = car.getForwardCount();
+            maxForward = car.returnMaxCount(maxForward);
         }
 
         return maxForward;

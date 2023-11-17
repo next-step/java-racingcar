@@ -3,8 +3,6 @@ package racingCar;
 import java.util.List;
 
 public class RacingCar {
-    public static final int FORWARD_BOUNDARY_VALUE = 3;
-    public static final int RANDOM_LIMIT_VALUE = 10;
 
     public static void main(String[] args) {
         int[] inputValues = InputView.input();
