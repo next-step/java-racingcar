@@ -36,7 +36,7 @@ public class RefereeTest {
     public void 공동우승() {
         RacingCar car1 = new RacingCar(new AlwaysStopStrategy(), "abc");
         RacingCar car2 = new RacingCar(new AlwaysMoveStrategy(), "def");
-        RacingCar car3 = new RacingCar(new AlwaysMoveStrategy(),"ghi");
+        RacingCar car3 = new RacingCar(new AlwaysMoveStrategy(), "ghi");
         List<RacingCar> cars = Arrays.asList(car1, car2, car3);
 
         car1.moveOrStop();

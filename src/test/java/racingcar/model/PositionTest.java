@@ -10,9 +10,9 @@ public class PositionTest {
     public void 더_큰_position() {
         Position position = new Position(5);
         Assertions.assertThat(position.biggerPosition(10))
-                        .isEqualTo(10);
+                .isEqualTo(10);
         Assertions.assertThat(position.biggerPosition(3))
-                        .isEqualTo(5);
+                .isEqualTo(5);
     }
 
     @Test

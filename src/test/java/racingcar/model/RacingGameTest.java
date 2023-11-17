@@ -32,12 +32,12 @@ public class RacingGameTest {
         List<RacingCar> cars = game.cars();
 
         List<Integer> beforePositions = new ArrayList<>();
-        for (RacingCar car: cars) {
+        for (RacingCar car : cars) {
             beforePositions.add(car.position().mark("-").length());
         }
         game.playOneRound();
 
-        for (int i=0; i<cars.size(); i++) {
+        for (int i = 0; i < cars.size(); i++) {
             int diff = cars.get(i).position().mark("-").length() - beforePositions.get(i);
             assertThat(diff).isEqualTo(1);
         }

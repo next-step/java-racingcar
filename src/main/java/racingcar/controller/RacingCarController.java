@@ -15,7 +15,7 @@ public class RacingCarController {
         // control
         RacingGame racingGame = new RacingGame(carNameList, roundNumber);
         ResultView.startPrint();
-        for (int round=1; round<=roundNumber; round++) {
+        for (int round = 1; round <= roundNumber; round++) {
             racingGame.playOneRound();
             ResultView.printRoundResult(racingGame);
         }

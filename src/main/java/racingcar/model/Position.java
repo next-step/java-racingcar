@@ -31,7 +31,7 @@ public class Position {
 
     public String mark(String mark) {
         String resultMark = "";
-        for (int i = 0; i<position; i++) {
+        for (int i = 0; i < position; i++) {
             resultMark += mark;
         }
         return resultMark;

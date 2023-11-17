@@ -41,7 +41,7 @@ public class RacingGame {
         int carNumber = carNameList.size();
 
         RacingCar[] cars = new RacingCar[carNumber];
-        for (int i=0; i<carNumber; i++) {
+        for (int i = 0; i < carNumber; i++) {
             RacingCar newCar = new RacingCar(moveStrategy, carNameList.get(i));
             cars[i] = newCar;
         }
