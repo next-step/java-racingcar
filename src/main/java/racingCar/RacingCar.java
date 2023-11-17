@@ -53,7 +53,7 @@ public class RacingCar {
     public static NamedCars movingResultNamedCar(NamedCars namedCars, int tryNum){
         for(int i=0; i< tryNum; i++){
             addMovingNamedCar(namedCars.getCarList());
-            System.out.println();
+            ResultView.printNewLine();
         }
 
         return namedCars;

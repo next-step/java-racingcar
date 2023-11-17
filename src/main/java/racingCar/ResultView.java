@@ -29,4 +29,8 @@ public class ResultView {
 
     }
 
+    public static void printNewLine(){
+        System.out.println();
+    }
+
 }
