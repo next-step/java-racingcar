@@ -1,17 +1,14 @@
 package racing.model;
 
-import java.util.Random;
-
 public class RacingCar {
     public static final int CAN_I_MOVE = 4;
 
-    private final Random random = new Random();
     private int progress;
     private String name;
 
-    public RacingCar(int progress, String name) throws IllegalAccessException {
+    public RacingCar(int progress, String name) {
         this.progress = progress;
-        this.name = Name.getName(name);
+        this.name = name;
     }
 
     public void race(int randomValue) {
@@ -37,9 +34,6 @@ public class RacingCar {
         return this.name;
     }
 
-    public int getRandomInt() {
-        return random.nextInt(10);
-    }
     public boolean isSameProgress(int progress){
         return this.progress == progress;
     }
