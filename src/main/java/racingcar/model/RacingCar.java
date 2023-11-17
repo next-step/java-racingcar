@@ -12,15 +12,7 @@ public class RacingCar {
     private String name;
 
     public RacingCar(String name) {
-        // set MoveStrategy
-        this.moveStrategy = new RandomVarMoveStrategy();
-
-        // validation
-        validateCarName(name);
-
-        // setting
-        this.name = name;
-        this.position = new Position();
+        this(new RandomVarMoveStrategy(), name);
     }
 
     public RacingCar(MoveStrategy moveStrategy, String name) {
