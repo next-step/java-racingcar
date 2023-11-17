@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
+    public static final int FORWARD_BOUNDARY_VALUE = 3;
+    public static final int RANDOM_LIMIT_VALUE = 10;
     private String carName;
     private int forwardCount;
 
@@ -33,8 +35,20 @@ public class Car {
         return forwardCount;
     }
 
-    public void addForward(int forwardCount){
-        this.forwardCount += forwardCount;
+    public static boolean isMoveCar(int inputValue){
+        return inputValue > FORWARD_BOUNDARY_VALUE;
+    }
+
+    public static void moveCar(int carForward){
+        if(isMoveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE))) carForward++;
+    }
+
+    private boolean isMoveNamedCar(int inputValue){
+        return inputValue <= FORWARD_BOUNDARY_VALUE;
+    }
+
+    public void moveNamedCar(){
+        if(isMoveNamedCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE))) forwardCount++;
     }
 
     public List<String> addMaxForwardCar(int maxForwardCount, List<String> winners){
@@ -55,7 +69,6 @@ public class Car {
                 ", forwardCount=" + forwardCount +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {

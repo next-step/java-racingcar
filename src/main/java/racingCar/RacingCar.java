@@ -17,24 +17,18 @@ public class RacingCar {
 
     }
 
-    public static int moveCar(int inputValue){
-        if(inputValue <= FORWARD_BOUNDARY_VALUE) return 0;
-        return 1;
-    }
-
     public static int[] addMoving(int[] carArray){
         for (int i=0; i<carArray.length; i++){
-            carArray[i] += moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE));
+            Car.moveCar(carArray[i]);
             ResultView.print(carArray[i]);
         }
 
         return carArray;
     }
 
-    public static List<Car> addMovingNamedCar(List<Car> carList){
-
+    public static List<Car> addNamedCarMoving(List<Car> carList){
         for(Car car : carList){
-            car.addForward(moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE)));
+            car.moveNamedCar();
             car.printCar();
         }
 
@@ -50,9 +44,9 @@ public class RacingCar {
         return carArray;
     }
 
-    public static NamedCars movingResultNamedCar(NamedCars namedCars, int tryNum){
+    public static NamedCars movingNamedCarResult(NamedCars namedCars, int tryNum){
         for(int i=0; i< tryNum; i++){
-            addMovingNamedCar(namedCars.getCarList());
+            addNamedCarMoving(namedCars.getCarList());
             ResultView.printNewLine();
         }
 

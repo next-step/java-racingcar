@@ -31,10 +31,6 @@ public class NamedCars {
         return carList;
     }
 
-    public int forwardCountOf(int index){
-        return carList.get(index).getForwardCount();
-    }
-
     public int getMaxForward(){
         int maxForward = 0;
         for(Car car : carList){

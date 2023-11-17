@@ -1,6 +1,5 @@
 package racingCar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class WinnerCar {
         int tyrNum = (int) inputMap.get("tryNum");
 
         NamedCars namedCars = new NamedCars(carNames);
-        RacingCar.movingResultNamedCar(namedCars, tyrNum);
+        RacingCar.movingNamedCarResult(namedCars, tyrNum);
         WinnerCar.returnWinner(namedCars);
     }
 
