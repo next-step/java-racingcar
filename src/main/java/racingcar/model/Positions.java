@@ -6,14 +6,14 @@ import java.util.NoSuchElementException;
 
 public class Positions {
 
-        private final List<Position> positions;
+        private final List<Position> values;
 
-        public Positions(List<Position> positions) {
-                this.positions = positions;
+        public Positions(List<Position> values) {
+                this.values = values;
         }
 
         public Position getMaxPosition() {
-                Comparator<Position> comparatorByPosition = Comparator.comparingInt(Position::getNumber);
-                return positions.stream().max(comparatorByPosition).orElseThrow(NoSuchElementException::new);
+                Comparator<Position> comparatorByPosition = Comparator.comparingInt(Position::getValue);
+                return values.stream().max(comparatorByPosition).orElseThrow(NoSuchElementException::new);
         }
 }

@@ -3,23 +3,23 @@ package racingcar.model;
 public class Position implements Comparable<Position> {
 
         private static final int START_INIT_VALUE = 1;
-        private int number;
+        private int value;
 
         public Position() {
-                this.number = START_INIT_VALUE;
+                this.value = START_INIT_VALUE;
         }
 
         public void addOnePosition() {
-                ++this.number;
+                ++this.value;
         }
 
-        public int getNumber() {
-                return this.number;
+        public int getValue() {
+                return this.value;
         }
 
         @Override
         public int compareTo(Position o) {
-                return this.number - o.getNumber();
+                return this.value - o.getValue();
         }
 
         boolean isSamePosition(Position position) {

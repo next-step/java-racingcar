@@ -1,21 +1,19 @@
 package racingcar.model;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.stream.Collectors;
+import racingcar.model.movestrategy.MoveStrategy;
 
 public class RacingCarGame {
 
-        private static final Random random = new Random();
-        private static final int RANDOM_BOUND = 10;
-        private final String[] carNames;
         private final Cars cars;
+        private final MoveStrategy moveStrategy;
         private int round;
 
-        public RacingCarGame(int round, String[] carNames) {
+        public RacingCarGame(int round, MoveStrategy moveStrategy, String[] carNames) {
                 this.round = round;
-                this.carNames = carNames;
-                this.cars = joinCars();
+                this.moveStrategy = moveStrategy;
+                this.cars = joinCars(carNames);
         }
 
         public Cars cars() {
@@ -27,18 +25,11 @@ public class RacingCarGame {
         }
 
         public void moveOneRound() {
-                cars.getCars().forEach(car -> {
-                        car.movedForwardIfCan(randomNumber());
-                });
-
+                cars.values().forEach(Car::moveForwardIfCan);
         }
 
-        private int randomNumber() {
-                return random.nextInt(RANDOM_BOUND);
+        private Cars joinCars(String[] carNames) {
+                return new Cars(Arrays.stream(carNames).map(carName -> new Car(carName, moveStrategy))
+                    .collect(Collectors.toList()));
         }
-
-        private Cars joinCars() {
-                return new Cars(Arrays.stream(carNames).map(Car::new).collect(Collectors.toList()));
-        }
-
 }

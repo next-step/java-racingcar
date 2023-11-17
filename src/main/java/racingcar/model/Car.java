@@ -1,14 +1,17 @@
 package racingcar.model;
 
+import racingcar.model.movestrategy.MoveStrategy;
+
 public class Car {
 
-        private static final int LOWER_LIMIT = 4;
         private final Name name;
         private final Position currentPosition;
+        private final MoveStrategy moveStrategy;
 
-        public Car(String name) {
+        public Car(String name, MoveStrategy moveStrategy) {
                 this.name = new Name(name);
                 this.currentPosition = new Position();
+                this.moveStrategy = moveStrategy;
         }
 
         public Position currentPosition() {
@@ -19,8 +22,8 @@ public class Car {
                 return name;
         }
 
-        public void movedForwardIfCan(int randomNumber) {
-                if (isAbleToMove(randomNumber)) {
+        public void moveForwardIfCan() {
+                if (moveStrategy.isAbleToMove()) {
                         this.moveForward();
                 }
         }
@@ -29,7 +32,4 @@ public class Car {
                 currentPosition.addOnePosition();
         }
 
-        private boolean isAbleToMove(int randomNumber) {
-                return randomNumber >= LOWER_LIMIT;
-        }
 }

@@ -1,20 +1,29 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
-        private final List<Car> cars;
+        private final List<Car> values;
 
-        public Cars(List<Car> cars) {
-                this.cars = cars;
+        public Cars(List<Car> values) {
+                this.values = values;
+        }
+
+        public List<Car> values() {
+                return values;
         }
 
         public List<Car> findWinners() {
-                return Winners.findWinners(cars);
+                Position maxPosition = getMaxPosition(values);
+                return values.stream().filter(car -> car.currentPosition().isSamePosition(maxPosition))
+                    .collect(Collectors.toList());
         }
 
-        public List<Car> getCars() {
-                return cars;
+        private Position getMaxPosition(List<Car> cars) {
+                Positions positions = new Positions(
+                    cars.stream().map(Car::currentPosition).collect(Collectors.toList()));
+                return positions.getMaxPosition();
         }
 }

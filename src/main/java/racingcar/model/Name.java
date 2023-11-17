@@ -5,22 +5,22 @@ import racingcar.common.utils.TextLimitSizeValidator;
 public class Name {
 
         private static final int TEXT_LENGTH_LIMIT = 5;
-        private final String text;
+        private final String value;
 
-        Name(String text) {
-                if (isEmptyOrNull(text)) {
+        public Name(String value) {
+                if (isEmptyOrNull(value)) {
                         throw new IllegalArgumentException("한 글자 이상의 이름을 입력해주세요.");
                 }
-                this.text = text;
-                errorIfTextLengthLimitOver();
+                this.value = value;
+                validateTextLengthLimitOver();
         }
 
-        public String getText() {
-                return this.text;
+        public String value() {
+                return this.value;
         }
 
-        private void errorIfTextLengthLimitOver() {
-                TextLimitSizeValidator.validateOverLimitSize(this.text, TEXT_LENGTH_LIMIT);
+        private void validateTextLengthLimitOver() {
+                TextLimitSizeValidator.validateOverLimitSize(this.value, TEXT_LENGTH_LIMIT);
         }
 
         private boolean isEmptyOrNull(String text) {
