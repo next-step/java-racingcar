@@ -3,7 +3,6 @@ package racingcar.model;
 public class Position {
     private static final int START_POSITION = 0;
     private static final int STEP = 1;
-    private static final String LOCATION_MARK = "-";
 
     private int position;
 
@@ -30,13 +29,12 @@ public class Position {
         return this.position == position;
     }
 
-    @Override
-    public String toString() {
-        String mark = "";
+    public String mark(String mark) {
+        String resultMark = "";
         for (int i = 0; i<position; i++) {
-            mark += LOCATION_MARK;
+            resultMark += mark;
         }
-        return mark;
+        return resultMark;
     }
 
     @Override
