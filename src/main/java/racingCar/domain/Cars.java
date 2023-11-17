@@ -1,6 +1,6 @@
-package racingCar.car;
+package racingCar.domain;
 
-import racingCar.game.RacingCarGame;
+import racingCar.controller.RacingCarGame;
 import racingCar.util.RandomNumberSupplier;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class Cars {
 		}
 	}
 
-	public void moveOnce(RacingCarGame.Callback callback) {
+	private void moveOnce(RacingCarGame.Callback callback) {
 		for (Car car : carList) {
 			car.move();
 		}

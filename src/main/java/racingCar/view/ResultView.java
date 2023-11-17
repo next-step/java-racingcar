@@ -1,7 +1,7 @@
-package racingCar.ui;
+package racingCar.view;
 
-import racingCar.car.Cars;
-import racingCar.car.Winners;
+import racingCar.domain.Cars;
+import racingCar.domain.Winners;
 
 public interface ResultView {
 	String RESULT_PREFIX = "실행 결과";

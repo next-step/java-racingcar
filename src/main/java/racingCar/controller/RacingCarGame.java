@@ -1,9 +1,10 @@
-package racingCar.game;
+package racingCar.controller;
 
-import racingCar.car.Cars;
-import racingCar.car.Winners;
-import racingCar.ui.InputView;
-import racingCar.ui.ResultView;
+import racingCar.domain.RacingGameRequest;
+import racingCar.domain.Cars;
+import racingCar.domain.Winners;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 public class RacingCarGame { // 자동차 경주를 수행한다.
 	private final InputView inputView;
