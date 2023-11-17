@@ -9,11 +9,11 @@ public class CarRacingInputManager {
     private final int NOT_EXCEED = 0;
     private String[] carNames;
     private ReceiveInputValue receiveInputValue;
-    private RaceInfo raceInfo;
+    private RaceResister raceInfo;
 
     public CarRacingInputManager() {
         this.receiveInputValue = new ReceiveInputValue();
-        this.raceInfo = new RaceInfo();
+        this.raceInfo = new RaceResister();
         this.getCarNames();
         this.getRoundOfTrack();
     }
@@ -51,7 +51,7 @@ public class CarRacingInputManager {
         this.raceInfo.setRoundOfTrack(receiveInputValue.receiveInputValueForRound());
     }
 
-    public RaceInfo getRaceInfo() {
+    public RaceResister getRaceInfo() {
         return this.raceInfo;
     }
 

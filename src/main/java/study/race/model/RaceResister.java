@@ -1,6 +1,6 @@
 package study.race.model;
 
-public class RaceInfo {
+public class RaceResister {
 
     private String[] carNames;
     private int roundOfTrack;

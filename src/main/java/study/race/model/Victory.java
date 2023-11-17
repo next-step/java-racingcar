@@ -1,13 +1,12 @@
 package study.race.model;
 
-public class FindWinner {
+public class Victory {
 
     private RaceResult raceResult;
 
-    public FindWinner(RaceResult raceResult) {
+    public Victory(RaceResult raceResult) {
         this.raceResult = raceResult;
     }
-
 
     public void findWinner() {
         findMaxDistance();
