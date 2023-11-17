@@ -1,10 +1,10 @@
 package racingcar.model;
 
 public class Position {
+    private final int position;
+
     private static final int START_POSITION = 0;
     private static final int STEP = 1;
-
-    private final int position;
 
     public Position() {
         this.position = START_POSITION;
