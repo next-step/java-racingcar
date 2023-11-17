@@ -1,31 +1,47 @@
 package step4;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Car {
+public class Car{
     public String name;
     private int distance = 0;
+
+    MoveStrategy moveStrategy = new RandomMoveStrategy();
+
+    public Car() {
+    }
 
     public Car(String carNames) {
         this.name = carNames;
     }
-
-    public List<Car> generateCars() {
-        return CarRacingUtil.splitCarNames(this.name);
+    public Car(int distance) {
+        this.distance = distance;
     }
 
-    public void addDistance(int randomNumber) {
-        if (randomNumber >= 4) {
+    public List<Car> generateCars(String carNames) {
+        return splitCarNames(carNames);
+    }
+
+    public static List<Car> splitCarNames(String carNames) {
+        return Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    public void addDistance() {
+        if (moveStrategy.randomNumber() >= 4) {
             distance++;
         }
     }
 
     public void move() {
-        CarRacingUtil carRacingUtil = new CarRacingUtil();
-        addDistance(carRacingUtil.getRandomNumber());
+        addDistance();
     }
 
     public int getDistance() {
         return distance;
     }
 }
+

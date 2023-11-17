@@ -8,14 +8,13 @@ public class CarTest {
     @Test
     void addDistanceTest() {
         Car car = new Car("");
-        car.addDistance(5);
+        car.addDistance();
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
     void moveTest() {
-        Car car = new Car("");
-        car.addDistance(4);
+        Car car = new Car();
         car.move();
         assertThat(1).isEqualTo(car.getDistance());
     }

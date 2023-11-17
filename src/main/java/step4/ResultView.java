@@ -24,7 +24,7 @@ public class ResultView {
         }
     }
 
-    public void printWinners() {
-        System.out.println(Winner.getWinnerNames()+"가 최종 우승했습니다.");
+    public void printWinners(String getWinnerNames) {
+        System.out.println(getWinnerNames+"가 최종 우승했습니다.");
     }
 }
