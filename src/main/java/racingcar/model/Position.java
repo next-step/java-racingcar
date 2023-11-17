@@ -29,6 +29,11 @@ public class Position {
         return this.position == position;
     }
 
+    public int diff(Position other) {
+        System.out.println(other.position);
+        return this.position - other.position;
+    }
+
     public String mark(String mark) {
         String resultMark = "";
         for (int i = 0; i<position; i++) {

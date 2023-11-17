@@ -8,8 +8,6 @@ import racingcar.view.ResultView;
 import java.util.*;
 
 public class RacingGame {
-    private static final Random rand = new Random();
-    private static final int RANDOM_VALUE_BOUND = 10;
     private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
 
     private final Referee referee = new Referee();
@@ -54,12 +52,8 @@ public class RacingGame {
 
     public void playOneRound() {
         for (RacingCar car : this.cars) {
-            car.moveOrStop(getRandomValue());
+            car.moveOrStop();
         }
-    }
-
-    private static int getRandomValue() {
-        return rand.nextInt(RANDOM_VALUE_BOUND);
     }
 
 
