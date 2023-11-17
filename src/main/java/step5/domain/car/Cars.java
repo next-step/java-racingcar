@@ -1,5 +1,7 @@
 package step5.domain.car;
 
+import step5.domain.Winners;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,17 +31,17 @@ public class Cars {
         return cars.size() == questionSize;
     }
 
-    public List<Car> voteWinner() {
+    public Winners voteWinner() {
         Car winnerCar = this.findWinnerCar();
         return this.findJointWinner(winnerCar);
     }
 
-    private List<Car> findJointWinner(Car winnerCar) {
-        List<Car> winner = new ArrayList<>();
+    private Winners findJointWinner(Car winnerCar) {
+        List<Car> winners = new ArrayList<>();
         for (Car each: cars){
-            this.judgeJointWinner(winnerCar, each, winner);
+            this.judgeJointWinner(winnerCar, each, winners);
         }
-        return winner;
+        return Winners.of(winners);
     }
 
     private void judgeJointWinner(Car winnerCar, Car each, List<Car> winner) {
