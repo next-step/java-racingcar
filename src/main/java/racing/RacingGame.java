@@ -22,8 +22,8 @@ public class RacingGame {
 
     private static List<Car> createCar(String[] splitCarName) {
         List<Car> cars = new ArrayList<>();
-        for (String s : splitCarName) {
-            cars.add(new Car(s));
+        for (String name : splitCarName) {
+            cars.add(new Car(name));
         }
         return cars;
     }
