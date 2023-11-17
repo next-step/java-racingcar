@@ -33,8 +33,8 @@ public class RacingCar {
     }
 
 
-    public CarName name() {
-        return this.name;
+    public String name() {
+        return this.name.toString();
     }
 
     public Position position() {

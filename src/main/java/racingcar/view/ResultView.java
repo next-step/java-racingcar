@@ -33,11 +33,11 @@ public class ResultView {
 
 
     public static void printWinners(List<RacingCar> winners) {
-        CarName[] winnersName = new CarName[winners.size()];
+        String[] winnersName = new String[winners.size()];
         for (int i = 0; i < winners.size(); i++) {
             winnersName[i] = winners.get(i).name();
         }
-        String result = String.join(", ", winnersName.toString());
+        String result = String.join(", ", winnersName);
 
         result += WINNER_MESSAGE;
         System.out.println(result);
