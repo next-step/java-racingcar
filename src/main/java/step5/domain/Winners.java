@@ -5,7 +5,7 @@ import step5.domain.car.Car;
 import java.util.List;
 
 public class Winners {
-    List<Car> winners;
+    private final List<Car> winners;
 
     private Winners(List<Car> winners) {
         this.winners = winners;

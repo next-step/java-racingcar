@@ -1,5 +1,6 @@
 package step5.domain.car;
 
+import step5.domain.Referee;
 import step5.domain.Winners;
 
 import java.util.ArrayList;
@@ -65,4 +66,9 @@ public class Cars {
         return winner;
     }
 
+    public void go(Referee referee) {
+        for (Car car: this.cars) {
+            car.move(referee.judgeToMove());
+        }
+    }
 }
