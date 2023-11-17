@@ -24,8 +24,12 @@ public class RacingCar {
 
     public void moveOrStop() {
         if (moveStrategy.canMove()) {
-            this.position.step();
+            this.move();
         }
+    }
+
+    private void move() {
+        this.position = new Position(this.position.step());
     }
 
 

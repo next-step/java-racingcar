@@ -4,7 +4,7 @@ public class Position {
     private static final int START_POSITION = 0;
     private static final int STEP = 1;
 
-    private int position;
+    private final int position;
 
     public Position() {
         this.position = START_POSITION;
@@ -14,8 +14,8 @@ public class Position {
         this.position = value;
     }
 
-    public void step() {
-        this.position += STEP;
+    public int step() {
+        return this.position + STEP;
     }
 
     public int biggerPosition(int position) {
