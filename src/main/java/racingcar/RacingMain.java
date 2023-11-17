@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
+import racingcar.domain.RandomNumberMoveStrategy;
 import racingcar.domain.Winners;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -18,13 +19,13 @@ public class RacingMain {
         ResultView resultView = new ResultView();
         resultView.view();
 
-        RacingGame racingGame = new RacingGame(carNames);
+        RacingGame racingGame = new RacingGame(carNames, new RandomNumberMoveStrategy());
         for (int i = 0; i < tryCount; i++) {
             List<Car> cars = racingGame.race();
             resultView.viewGame(cars);
         }
         Winners winners = new Winners();
-        List<Car> WinnerCars = winners.findWinners(racingGame.getCars());
+        List<String> WinnerCars = winners.findWinners(racingGame.getCars());
         resultView.viewWinner(WinnerCars);
     }
 }

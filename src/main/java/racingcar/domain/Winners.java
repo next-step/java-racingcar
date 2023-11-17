@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winners {
-    public List<Car> findWinners(List<Car> cars) {
+    public List<String> findWinners(List<Car> cars) {
         int maxPosition = getMaxPosition(cars);
         return getWinners(maxPosition, cars);
     }
@@ -17,9 +17,10 @@ public class Winners {
         return maxPosition;
     }
 
-    private List<Car> getWinners(int maxPosition, List<Car> cars) {
+    private List<String> getWinners(int maxPosition, List<Car> cars) {
         return cars.stream()
                 .filter(car -> car.matchPosition(maxPosition))
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }
