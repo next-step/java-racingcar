@@ -9,7 +9,7 @@ public class Car {
     public static final int MAX_RANDOM_NUMBER = 10;
 
     private int position;
-    private String name;
+    private final String name;
 
     public String getName() {
         return name;
@@ -19,9 +19,6 @@ public class Car {
         return position;
     }
 
-    public Car() {
-        this.position = 1;
-    }
 
     public Car(String name) {
         if (name.length() > 5) {
