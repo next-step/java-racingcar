@@ -2,8 +2,8 @@ package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingCar.car.Cars;
-import racingCar.game.RacingGameRequest;
+import racingCar.domain.Cars;
+import racingCar.domain.RacingGameRequest;
 
 import java.util.List;
 

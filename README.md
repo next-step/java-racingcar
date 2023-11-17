@@ -96,3 +96,13 @@
 * [x] RacingCar moveOnce() 결과 callback 함수로 호출
 * [x] RacingGameRequest 역할 분리
   * Cars 생성은 Cars 역할로 분리
+
+### Feedback 23.11.16
+* [x] Cars 내 멤버변수 Callback을 일급컬렉션 개념에 맞게 위치 수정
+---
+##### step5
+### 요구사항 분석
+* [x] 패키지 domain -> 핵심 비지니스 로직 가진 객체 위치
+* [x] 패키지 view -> UI 관련 객체 위치
+* [x] MVC 패턴 기반으로 리팩토링
+* [x] 테스트 가능한 부분과 테스트하기 힘든 부분을 분리해 테스트 가능한 부분에 대해서만 테스트 진행

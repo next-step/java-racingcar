@@ -1,6 +1,5 @@
-package racingCar.car;
+package racingCar.domain;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class Winners {
@@ -9,7 +8,6 @@ public class Winners {
 	public Winners(Cars cars) {
 		this.winners = cars.winners();
 	}
-
 
 	public List<Car> winners() {
 		return winners;

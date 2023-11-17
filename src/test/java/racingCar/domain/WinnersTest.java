@@ -1,14 +1,12 @@
-package racingCar.car;
+package racingCar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.util.RandomNumberSupplier;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.list;
 
 class WinnersTest {
 

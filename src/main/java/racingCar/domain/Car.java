@@ -1,4 +1,4 @@
-package racingCar.car;
+package racingCar.domain;
 
 import racingCar.util.NumberSupplier;
 
