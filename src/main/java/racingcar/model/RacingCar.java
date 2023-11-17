@@ -48,4 +48,15 @@ public class RacingCar {
     public Position position() {
         return this.position;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        RacingCar other = (RacingCar) obj;
+        if (this.name == other.name
+                && this.moveStrategy == other.moveStrategy
+                && this.position == other.position) {
+            return true;
+        }
+        return false;
+    }
 }
