@@ -4,12 +4,9 @@ import racingcar.model.movestrategy.MoveStrategy;
 import racingcar.model.movestrategy.RandomVarMoveStrategy;
 
 public class RacingCar {
-    private static final String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
-    private static final int NAME_MAX_LENGTH = 5;
-
     private MoveStrategy moveStrategy;
     private Position position;
-    private String name;
+    private CarName name;
 
     public RacingCar(String name) {
         this(new RandomVarMoveStrategy(), name);
@@ -19,18 +16,9 @@ public class RacingCar {
         // set MoveStrategy
         this.moveStrategy = moveStrategy;
 
-        // validation
-        validateCarName(name);
-
         // setting
-        this.name = name;
+        this.name = new CarName(name);
         this.position = new Position();
-    }
-
-    private void validateCarName(String name) {
-        if (name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(ERR_NAME_LENGTH);
-        }
     }
 
 
@@ -41,7 +29,7 @@ public class RacingCar {
     }
 
 
-    public String name() {
+    public CarName name() {
         return this.name;
     }
 

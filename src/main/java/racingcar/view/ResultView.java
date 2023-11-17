@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.CarName;
 import racingcar.model.Position;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
@@ -32,11 +33,11 @@ public class ResultView {
 
 
     public static void printWinners(List<RacingCar> winners) {
-        String[] winnersName = new String[winners.size()];
+        CarName[] winnersName = new CarName[winners.size()];
         for (int i=0; i<winners.size(); i++) {
             winnersName[i] = winners.get(i).name();
         }
-        String result = String.join(", ", winnersName);
+        String result = String.join(", ", winnersName.toString());
 
         result += WINNER_MESSAGE;
         System.out.println(result);
