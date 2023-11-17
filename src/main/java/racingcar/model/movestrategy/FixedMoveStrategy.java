@@ -3,7 +3,7 @@ package racingcar.model.movestrategy;
 public class FixedMoveStrategy implements MoveStrategy {
 
         private static final int LOWER_LIMIT = 4;
-        private int value;
+        private final int value;
 
         public FixedMoveStrategy(int value) {
                 this.value = value;
