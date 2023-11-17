@@ -50,15 +50,9 @@ public class racingCarTest {
         NamedCars cars = new NamedCars(carNames);
 
         assertAll(
-                () -> assertThat(cars.carNameOf(0)).isEqualTo("pobi"),
-                () -> assertThat(cars.carNameOf(1)).isEqualTo("crong"),
-                () -> assertThat(cars.carNameOf(2)).isEqualTo("honux")
-        );
-
-        assertAll(
-                () -> assertThat(cars.forwardCountOf(0)).isEqualTo(0),
-                () -> assertThat(cars.forwardCountOf(1)).isEqualTo(0),
-                () ->  assertThat(cars.forwardCountOf(2)).isEqualTo(0)
+                () -> assertThat(cars.findCar("pobi").equals(new Car("pobi", 0))).isTrue(),
+                () -> assertThat(cars.findCar("crong").equals(new Car("crong", 0))).isTrue(),
+                () -> assertThat(cars.findCar("honux").equals(new Car("honux", 0))).isTrue()
         );
     }
 

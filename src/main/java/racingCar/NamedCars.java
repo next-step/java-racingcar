@@ -35,10 +35,6 @@ public class NamedCars {
         return carList.get(index).getForwardCount();
     }
 
-    public String carNameOf(int index) {
-        return carList.get(index).getCarName();
-    }
-
     public int getMaxForward(){
         int maxForward = 0;
         for(Car car : carList){
@@ -56,5 +52,12 @@ public class NamedCars {
         }
 
         return winners;
+    }
+
+    public Car findCar(String carName) {
+        return carList.stream()
+                .filter(car -> carName.equals(car.getCarName()))
+                .findAny()
+                .orElse(null);
     }
 }

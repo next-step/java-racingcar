@@ -1,6 +1,5 @@
 package racingCar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
@@ -47,5 +46,32 @@ public class Car {
 
     public void printCar(){
         ResultView.printNamedCar(carName, forwardCount);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "carName='" + carName + '\'' +
+                ", forwardCount=" + forwardCount +
+                '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (forwardCount != car.forwardCount) return false;
+        return carName != null ? carName.equals(car.carName) : car.carName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = carName != null ? carName.hashCode() : 0;
+        result = 31 * result + forwardCount;
+        return result;
     }
 }
