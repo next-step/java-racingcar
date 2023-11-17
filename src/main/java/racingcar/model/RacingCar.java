@@ -4,9 +4,9 @@ import racingcar.model.movestrategy.MoveStrategy;
 import racingcar.model.movestrategy.RandomVarMoveStrategy;
 
 public class RacingCar {
-    private MoveStrategy moveStrategy;
+    private final CarName name;
+    private final MoveStrategy moveStrategy;
     private Position position;
-    private CarName name;
 
     public RacingCar(String name) {
         this(new RandomVarMoveStrategy(), name);

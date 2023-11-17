@@ -8,7 +8,7 @@ import racingcar.view.ResultView;
 import java.util.*;
 
 public class RacingGame {
-    private List<RacingCar> cars;
+    private final List<RacingCar> cars;
     private final Referee referee = new Referee();
 
     private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
