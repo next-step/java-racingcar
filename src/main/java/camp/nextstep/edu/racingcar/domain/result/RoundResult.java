@@ -2,10 +2,11 @@ package camp.nextstep.edu.racingcar.domain.result;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RoundResult {
 
-    private List<DriveResult> driveResults;
+    private final List<DriveResult> driveResults;
 
     public RoundResult() {
         this.driveResults = new ArrayList<>();
@@ -26,5 +27,20 @@ public class RoundResult {
 
     public List<DriveResult> driveResults() {
         return driveResults;
+    }
+
+    public List<String> getWinners() {
+        int maxDrivenDistance = getMaxDrivenDistance();
+        return driveResults.stream()
+            .filter(driveResult -> driveResult.drivenDistance == maxDrivenDistance)
+            .map(DriveResult::name)
+            .collect(Collectors.toList());
+    }
+
+    private int getMaxDrivenDistance() {
+        return driveResults.stream()
+            .map(DriveResult::drivenDistance)
+            .max(Integer::compareTo)
+            .orElseThrow();
     }
 }

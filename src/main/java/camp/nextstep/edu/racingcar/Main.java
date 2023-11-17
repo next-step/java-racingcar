@@ -9,26 +9,14 @@ import camp.nextstep.edu.racingcar.view.RacingOutputView;
 
 public class Main {
 
-    private static final RacingInputView input = new RacingInputView();
-    private static final RacingOutputView output = new RacingOutputView();
-
     public static void main(String[] args) {
         DriveStrategy driveStrategy = new RandomDriveStrategy();
-        int carAmount = inputCarAmount();
-        int roundAmount = inputRoundAmount();
+        String carNames = RacingInputView.readCarNames();
+        int roundAmount = RacingInputView.readRoundAmount();
 
-        RacingGame racingGame = new RacingGame(driveStrategy, carAmount, roundAmount);
+        RacingGame racingGame = new RacingGame(driveStrategy, carNames, roundAmount);
         RacingGameResult gameResult = racingGame.play();
-        output.printGameResult(gameResult);
-    }
 
-    private static int inputCarAmount() {
-        output.printRequestCarAmount();
-        return input.readCarAmount();
-    }
-
-    private static int inputRoundAmount() {
-        output.printRequestRoundAmount();
-        return input.readRoundAmount();
+        RacingOutputView.printGameResult(gameResult);
     }
 }
