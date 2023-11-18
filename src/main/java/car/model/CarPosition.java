@@ -1,11 +1,11 @@
-package car;
+package car.model;
 
 import java.util.Objects;
 
 public class CarPosition implements Comparable<CarPosition> {
 
-    private final int distance;
     private static final int MIN_DISTANCE = 0;
+    private final int distance;
 
     public CarPosition(int distance) {
         validateMoreThanMinDistance(distance);
@@ -25,10 +25,6 @@ public class CarPosition implements Comparable<CarPosition> {
     @Override
     public int compareTo(CarPosition otherCarPosition) {
         return this.distance - otherCarPosition.distance;
-    }
-
-    public boolean isSameDistance(CarPosition winnerCarPosition) {
-        return this.distance == winnerCarPosition.distance;
     }
 
     @Override

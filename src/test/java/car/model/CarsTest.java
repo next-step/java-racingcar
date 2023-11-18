@@ -1,7 +1,8 @@
-package car;
+package car.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import car.controller.InputParser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

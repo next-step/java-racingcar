@@ -1,14 +1,12 @@
-package car;
+package car.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class RandomNumberGenerator {
-    private static final Random random = new Random();
     private static final int RANDOM_NUMBER_BOUND = 10;
+    private static final Random random = new Random();
 
     public Integer makeRandomNumber() {
         return random.nextInt(RANDOM_NUMBER_BOUND);

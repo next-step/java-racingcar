@@ -1,12 +1,12 @@
-package car;
+package car.model;
 
 import java.util.Objects;
 
 public class Car {
-    private CarPosition carPosition;
-    private final CarName carName;
     private static final int START_DISTANCE = 0;
     private static final int FORWARD_BOUNDARY_NUMBER = 4;
+    private CarPosition carPosition;
+    private final CarName carName;
 
     public Car(String carName) {
         this.carPosition = new CarPosition(START_DISTANCE);
@@ -40,8 +40,8 @@ public class Car {
         return this.carPosition.compareTo(otherCar.carPosition);
     }
 
-    public boolean isSameDistance(Car winnerCar) {
-        return this.carPosition.isSameDistance(winnerCar.carPosition);
+    public boolean isSameDistance(Car otherCar) {
+        return this.carPosition.equals(otherCar.carPosition);
     }
 
     @Override
