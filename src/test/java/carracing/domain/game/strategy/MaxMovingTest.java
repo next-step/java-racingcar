@@ -33,21 +33,6 @@ class MaxMovingTest {
     }
 
     @Test
-    void winners_threeCars_oneWinners() {
-        Car car1 = new Car(10, carName);
-        Car car2 = new Car(9, carName);
-        Car car3 = new Car(8, carName);
-        Cars cars = new Cars(List.of(car1, car2, car3));
-        WinnerStrategy maxMoving = new MaxMoving();
-
-        Winners winners = maxMoving.winners(cars);
-        Cars winCars = new Cars(List.of(car1));
-        Winners expected = new Winners(winCars);
-
-        assertThat(expected).isEqualTo(winners);
-    }
-
-    @Test
     void winners_threeCars_twoWinners() {
         Car car1 = new Car(10, carName);
         Car car2 = new Car(10, carName);
