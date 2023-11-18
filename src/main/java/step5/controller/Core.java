@@ -13,10 +13,13 @@ public class Core {
 
         Referee referee = new Referee();
         Racing racing = Racing.defaultOf(names,referee,howManyTry);
+
         racing.start();
         Winners winners = racing.winnerIs();
 
-        OutPutView.winnerIs(winners);
+
+        OutPutView outPutView = new OutPutView();
+        outPutView.winnerIs(winners);
 
     }
 }

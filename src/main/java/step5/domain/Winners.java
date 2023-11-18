@@ -1,5 +1,6 @@
 package step5.domain;
 
+import step5.controller.OutPutView;
 import step5.domain.car.Car;
 
 import java.util.List;
@@ -22,5 +23,9 @@ public class Winners {
         }
 
         return winners.size();
+    }
+
+    public void print(OutPutView outPutView) {
+
     }
 }

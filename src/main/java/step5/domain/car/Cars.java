@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    List<Car> cars;
+    private final List<Car> cars;
 
     private Cars(List<Car> cars) {
         this.cars = cars;
@@ -59,9 +59,9 @@ public class Cars {
         return winner;
     }
 
-    private Car judgeWinner(Car each, Car winner) {
-        if (each.fartherThan(winner)) {
-            winner = each;
+    private Car judgeWinner(Car car, Car winner) {
+        if (car.fartherThan(winner)) {
+            winner = car;
         }
         return winner;
     }
