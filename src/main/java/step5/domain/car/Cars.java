@@ -18,7 +18,7 @@ public class Cars {
         String[] nameArray = names.split(",");
 
         for (String name: nameArray) {
-            cars.add(Car.defaultOf(name));
+            cars.add(Car.defaultOf(name.trim()));
         }
 
         return new Cars(cars);

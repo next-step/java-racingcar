@@ -25,7 +25,13 @@ public class Winners {
         return winners.size();
     }
 
-    public void print(OutPutView outPutView) {
-
+    public String toStringWinner() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : this.winners) {
+            stringBuilder.append(car.nameToString());
+            stringBuilder.append(", ");
+        }
+        String winners = stringBuilder.toString().trim();
+        return winners.substring(0, winners.length() - 1);
     }
 }

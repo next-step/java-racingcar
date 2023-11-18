@@ -40,6 +40,10 @@ public class Car {
         return Objects.equals(distance, car.distance);
     }
 
+    public String nameToString() {
+        return this.name.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
