@@ -36,8 +36,9 @@ public class RacingGame {
     }
 
     private static void moveCars(List<Car> cars) {
+        RandomGenerateNumber generateNumber = new RandomGenerateNumber();
         for (Car car : cars) {
-            car.move();
+            car.move(generateNumber);
         }
     }
 

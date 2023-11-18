@@ -6,10 +6,10 @@ import java.util.Random;
 public class Car {
 
     public static final int MOVE_CONDITION = 4;
-    public static final int MAX_RANDOM_NUMBER = 10;
     private final String name;
 
     private int position;
+
 
     public Car(String name) {
         this(name, 1);
@@ -21,10 +21,6 @@ public class Car {
         }
         this.name = name;
         this.position = position;
-    }
-
-    public static int getRandomNumber() {
-        return new Random().nextInt(MAX_RANDOM_NUMBER);
     }
 
     public static boolean isMove(int randomNumber) {
@@ -39,8 +35,8 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        if (isMove(getRandomNumber())) {
+    public void move(GenerateNumber generateNumber) {
+        if (isMove(generateNumber.getRandomNumber())) {
             position++;
         }
     }
