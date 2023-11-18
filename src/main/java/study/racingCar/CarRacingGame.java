@@ -6,6 +6,7 @@ import static study.racingCar.RandomNumGenerator.getRandomNum;
 
 public class CarRacingGame {
 
+
     public CarRacingGame() {
     }
 

@@ -52,10 +52,12 @@ public class Car {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return Objects.equals(name, car.name);
+
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name);
+
     }
 }

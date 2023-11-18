@@ -29,5 +29,6 @@ class PositionTest {
     void isBiggerThan() {
         p = new Position(3);
         assertThat(p.isBiggerThan(new Position(3))).isTrue();
+
     }
 }
