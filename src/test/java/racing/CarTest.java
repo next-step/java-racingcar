@@ -25,6 +25,21 @@ public class CarTest {
         assertThat(isMove(3)).isFalse();
     }
 
+    @Test
+    void 랜덤값이_4이상이면_포지션값이_1_증가한다() {
+        TestGenerateNumber generateNumber = new TestGenerateNumber(4);
+        Car car = new Car("njw",1);
+        car.move(generateNumber);
+        assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    void 랜덤값이_4미만이면_포지션값이_그대로다() {
+        TestGenerateNumber generateNumber = new TestGenerateNumber(3);
+        Car car = new Car("njw",1);
+        car.move(generateNumber);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 
     @Test
     void 자동차에_이름을_부여할_수_있다() {
