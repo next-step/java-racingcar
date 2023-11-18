@@ -18,23 +18,6 @@ public class Cars implements Iterable<Car> {
         }
     }
 
-    public void printMovingResult() {
-        for (Car car : cars) {
-            String result = "-".repeat(Math.max(0, car.movingDistance()));
-            System.out.println(car.name() + " : " + result);
-        }
-    }
-
-    public void printWinners() {
-        StringBuilder sb = new StringBuilder();
-        for (Car winner : cars) {
-            sb.append(winner.name()).append(", ");
-        }
-        sb.setLength(sb.length() - 2);
-        sb.append("가 최종 우승했습니다.");
-        System.out.println(sb);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

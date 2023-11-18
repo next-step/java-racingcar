@@ -9,8 +9,8 @@ public class Winners {
         this.winners = winners;
     }
 
-    public void printWinners() {
-        winners.printWinners();
+    public Cars winners() {
+        return this.winners;
     }
 
     @Override
