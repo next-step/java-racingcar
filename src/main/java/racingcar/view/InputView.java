@@ -1,7 +1,7 @@
-package racingcar.presentation;
+package racingcar.view;
 
 import java.util.Scanner;
-import racingcar.presentation.dto.RacingGameInput;
+import racingcar.view.dto.RacingGameInput;
 
 public class InputView {
 

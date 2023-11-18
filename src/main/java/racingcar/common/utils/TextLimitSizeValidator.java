@@ -2,10 +2,12 @@ package racingcar.common.utils;
 
 public class TextLimitSizeValidator {
 
-    private TextLimitSizeValidator(){}
+        private TextLimitSizeValidator() {
+        }
 
-    public static boolean isOverLimitSize(String text, int limitSize){
-        return text.length() > limitSize;
-    }
-
+        public static void validateOverLimitSize(String text, int limitSize) {
+                if (text.length() > limitSize) {
+                        throw new IllegalArgumentException(limitSize + "자 이하만 입력가능합니다.");
+                }
+        }
 }
