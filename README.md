@@ -12,7 +12,7 @@
 
 - 출력결과
   - 위 요구사항에 따라 3대의 자동차가 5번 움직였을 경우 프로그램을 실행한 결과는 다음과 같다.
-  ![img.png](racingresult.png)
+  - <img alt="img.png" height="500" src="racingresult.png" width="500"/>
 
 
 - **기능목록**
