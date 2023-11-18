@@ -1,10 +1,12 @@
 package carracing.domain.game.strategy;
 
 import carracing.domain.car.Car;
+import carracing.domain.car.CarName;
 import carracing.domain.car.Cars;
 import carracing.domain.car.Winners;
 import carracing.domain.game.MaxMoving;
 import carracing.domain.game.WinnerStrategy;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,6 +16,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MaxMovingTest {
+    private CarName carName;
+
+    @BeforeEach
+    void setUp() {
+        this.carName = new CarName("abc");
+    }
+
     @Test
     void winners_emptyCars_throwsException() {
         WinnerStrategy maxMoving = new MaxMoving();
@@ -25,9 +34,9 @@ class MaxMovingTest {
 
     @Test
     void winners_threeCars_oneWinners() {
-        Car car1 = new Car(10, "abc");
-        Car car2 = new Car(9, "abc");
-        Car car3 = new Car(8, "abc");
+        Car car1 = new Car(10, carName);
+        Car car2 = new Car(9, carName);
+        Car car3 = new Car(8, carName);
         Cars cars = new Cars(List.of(car1, car2, car3));
         WinnerStrategy maxMoving = new MaxMoving();
 
@@ -40,9 +49,9 @@ class MaxMovingTest {
 
     @Test
     void winners_threeCars_twoWinners() {
-        Car car1 = new Car(10, "abc");
-        Car car2 = new Car(10, "abc");
-        Car car3 = new Car(8, "abc");
+        Car car1 = new Car(10, carName);
+        Car car2 = new Car(10, carName);
+        Car car3 = new Car(8, carName);
         Cars cars = new Cars(List.of(car1, car2, car3));
         WinnerStrategy maxMoving = new MaxMoving();
 

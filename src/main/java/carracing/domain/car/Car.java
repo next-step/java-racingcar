@@ -6,31 +6,17 @@ import carracing.util.controlstatement.Equal;
 
 public class Car {
     private static final int MOVING_DISTANCE = 1;
-    private static final int NAME_LENGTH_MIN = 1;
-    private static final int NAME_LENGTH_MAX = 5;
-    private int movingDistance;
-    private final String name;
 
-    public Car(String name) {
+    private int movingDistance;
+    private final CarName carName;
+
+    public Car(CarName name) {
         this(0, name);
     }
 
-    public Car(int movingDistance, String name) {
-        checkNameLengthIsValid(name);
+    public Car(int movingDistance, CarName carName) {
         this.movingDistance = movingDistance;
-        this.name = name;
-    }
-
-    private void checkNameLengthIsValid(String name) {
-        if (isNameLengthInvalid(name)) {
-            throw new IllegalArgumentException(
-                String.format("이름은 %d ~ %d 자리이어야 합니다", NAME_LENGTH_MIN, NAME_LENGTH_MAX)
-            );
-        }
-    }
-
-    private boolean isNameLengthInvalid(String name) {
-        return name == null || name.length() < NAME_LENGTH_MIN || name.length() > NAME_LENGTH_MAX;
+        this.carName = carName;
     }
 
     public void move(MovingStrategy movingStrategy) {
@@ -48,7 +34,7 @@ public class Car {
     }
 
     public String name() {
-        return this.name;
+        return this.carName.name();
     }
 
     public boolean sameDistance(int movingDistance) {
