@@ -1,4 +1,9 @@
-package car;
+package car.controller;
+
+import car.model.Cars;
+import car.view.InputView;
+import car.model.RandomNumberGenerator;
+import car.view.ResultView;
 
 public class GameController {
 

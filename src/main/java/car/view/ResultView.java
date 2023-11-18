@@ -1,5 +1,6 @@
-package car;
+package car.view;
 
+import car.model.Car;
 import java.util.List;
 
 public class ResultView {
