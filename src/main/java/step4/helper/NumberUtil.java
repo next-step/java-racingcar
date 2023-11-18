@@ -1,7 +1,14 @@
 package step4.helper;
 
+import java.util.Random;
+
 public class NumberUtil {
-    public static int createRandomNumber() {
-        return (int) (Math.random() * 10);
+
+    private static final Random random = new Random();
+
+    private NumberUtil() {}
+
+    public static int createRandomNumber(int bound) {
+        return random.nextInt(bound) + 1;
     }
 }

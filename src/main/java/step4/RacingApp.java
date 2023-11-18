@@ -10,10 +10,9 @@ import java.util.List;
 
 public class RacingApp {
 
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-        String carNameStr = inputView.inputNumberOfCars();
-        int round = inputView.inputRound();
+    public static void main(String[] args) throws IllegalAccessException {
+        String carNameStr = InputView.inputNumberOfCars();
+        int round = InputView.inputRound();
 
         List<Car> cars = CarFactory.createCars(carNameStr);
 

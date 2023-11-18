@@ -13,6 +13,11 @@ public class Car {
         this.name = name;
     }
 
+    protected Car(String name, int forwardCont) {
+        this(name);
+        this.forwardCount = forwardCont;
+    }
+
     public void move(int randomNumber) {
         if (isImmovable(randomNumber)) {
             return;
@@ -28,7 +33,7 @@ public class Car {
         return this.forwardCount;
     }
 
-    public  int graterThanForwardCount(int value) {
+    public int graterThanForwardCount(int value) {
         return Math.max(this.forwardCount, value);
     }
 
@@ -41,8 +46,8 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.length() > MAX_NAME_SIZE) {
-            throw new RuntimeException();
+        if (name.isEmpty() || name.length() > MAX_NAME_SIZE) {
+            throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다.");
         }
     }
 }

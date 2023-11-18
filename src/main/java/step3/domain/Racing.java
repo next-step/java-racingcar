@@ -16,7 +16,7 @@ public class Racing {
     }
 
     public void start() {
-        System.out.println("실행 결과");
+        ResultView.printResult();
         for (int i = 0; i < this.round; i++) {
             startRound();
             ResultView.print(cars);

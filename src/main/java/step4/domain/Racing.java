@@ -1,5 +1,6 @@
 package step4.domain;
 
+import step4.helper.Judge;
 import step4.helper.NumberUtil;
 import step4.view.ResultView;
 
@@ -23,31 +24,14 @@ public class Racing {
             ResultView.print(cars);
         }
 
-        return this.judgeWinners(cars);
+        return Judge.judgeWinners(cars);
     }
 
-    public List<Car> judgeWinners(List<Car> cars) {
-        int maxForwardCount = getMaxForwardCount(cars);
-        return getMaxForwardCountCar(cars, maxForwardCount);
-    }
+
 
     private void startRound() {
         for (Car car : cars) {
-            car.move(NumberUtil.createRandomNumber());
+            car.move(NumberUtil.createRandomNumber(9));
         }
-    }
-
-    private List<Car> getMaxForwardCountCar(List<Car> cars, int value) {
-        return cars.stream()
-                .filter((car) -> car.equalForwardCount(value))
-                .collect(Collectors.toList());
-    }
-
-    private int getMaxForwardCount(List<Car> cars) {
-        int value = 0;
-        for (Car car : cars) {
-            value = car.graterThanForwardCount(value);
-        }
-        return value;
     }
 }
