@@ -1,26 +1,22 @@
 package carracing.controller;
 
-import carracing.domain.car.Cars;
 import carracing.domain.car.Winners;
-import carracing.domain.game.*;
-import carracing.view.InputView;
+import carracing.domain.game.MovingStrategy;
+import carracing.domain.game.RacingGame;
+import carracing.domain.game.WinnerStrategy;
 import carracing.view.ResultView;
 
 public class RacingGameController {
-    public void race() {
-        Cars racingCars = InputView.inputCars();
-        int tryingTimes = InputView.inputTryingNumber();
-        RacingGame racingGame = new RacingGame(racingCars, tryingTimes);
-        MovingStrategy movingStrategy = new RandomRange(0, 9);
-
-        for (int i = 0; i < tryingTimes; i++) {
+    public void start(RacingGame racingGame,
+                      MovingStrategy movingStrategy,
+                      WinnerStrategy winnerStrategy) {
+        for (int i = 0; i < racingGame.tryNumbers(); i++) {
             racingGame.race(movingStrategy);
-            ResultView.printMovingResult(racingCars);
+            ResultView.printMovingResult(racingGame);
         }
 
         ResultView.printResultPhrase();
-        WinnerStrategy maxMoving = new MaxMoving();
-        Winners winners = racingCars.winners(maxMoving);
+        Winners winners = racingGame.winners(winnerStrategy);
         ResultView.printWinners(winners);
     }
 }

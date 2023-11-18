@@ -28,9 +28,9 @@ public class RacingGameTest {
         Cars racingCars = new Cars(List.of(car1, car2, car3));
         Cars winCars = new Cars(List.of(car1));
 
-        RacingGame racingGame = new RacingGame(racingCars, 5);
+        RacingGame racingGame = new RacingGame(racingCars, 1);
         racingGame.race(randomRange);
-        Winners winners = racingCars.winners(maxMoving);
+        Winners winners = racingGame.winners(maxMoving);
         Winners expected = new Winners(winCars);
 
         assertThat(expected).isEqualTo(winners);

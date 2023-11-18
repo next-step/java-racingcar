@@ -1,19 +1,34 @@
 package carracing.domain.game;
 
+import carracing.domain.car.Car;
 import carracing.domain.car.Cars;
+import carracing.domain.car.Winners;
 
 public class RacingGame {
     private final Cars cars;
-    private final int tryNumber;
+    private final int tryNumbers;
 
-    public RacingGame(Cars cars, int tryNumber) {
+    public RacingGame(Cars cars, int tryNumbers) {
         this.cars = cars;
-        this.tryNumber = tryNumber;
+        this.tryNumbers = tryNumbers;
     }
 
     public void race(MovingStrategy movingStrategy) {
-        for (int i = 0; i < tryNumber; i++) {
-            this.cars.race(movingStrategy);
+        for (Car car : cars) {
+            car.move(movingStrategy);
         }
     }
+
+    public Winners winners(WinnerStrategy winnerStrategy) {
+        return winnerStrategy.winners(cars);
+    }
+
+    public Cars cars() {
+        return this.cars;
+    }
+
+    public int tryNumbers() {
+        return this.tryNumbers;
+    }
+
 }

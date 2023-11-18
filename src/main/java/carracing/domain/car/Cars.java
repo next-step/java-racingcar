@@ -1,14 +1,10 @@
 package carracing.domain.car;
 
-import carracing.domain.game.MovingStrategy;
-import carracing.domain.game.WinnerStrategy;
-
-import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -17,31 +13,6 @@ public class Cars {
         }
 
         this.cars = cars;
-    }
-
-    public Winners winners(WinnerStrategy winnerStrategy) {
-        return winnerStrategy.winners(this);
-    }
-
-    public void race(MovingStrategy movingStrategy) {
-        for (Car car : cars) {
-            car.move(movingStrategy);
-        }
-    }
-
-    public int maxMovingDistance() {
-        return this.cars.stream()
-            .map(Car::movingDistance)
-            .max(Comparator.comparingInt(movingDistance -> movingDistance))
-            .orElseThrow(IllegalArgumentException::new);
-    }
-
-    public Cars winnersWithMaxMovingDistance(int maxMovingDistance) {
-        List<Car> cars = this.cars.stream()
-            .filter(car -> car.sameDistance(maxMovingDistance))
-            .collect(Collectors.toList());
-
-        return new Cars(cars);
     }
 
     public void printMovingResult() {
@@ -72,5 +43,10 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return this.cars.iterator();
     }
 }

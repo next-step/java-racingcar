@@ -10,11 +10,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnersTest {
-    private WinnerStrategy maxMoving;
+    private WinnerStrategy winnerStrategy;
 
     @BeforeEach
     void setUp() {
-        maxMoving = new MaxMoving();
+        winnerStrategy = new MaxMoving();
     }
 
     @Test
@@ -25,7 +25,7 @@ public class WinnersTest {
         Cars cars = new Cars(List.of(car1, car2, car3));
         Cars winCars = new Cars(List.of(car1, car2));
 
-        Winners winners = cars.winners(maxMoving);
+        Winners winners = winnerStrategy.winners(cars);
         Winners expected = new Winners(winCars);
 
         assertThat(expected).isEqualTo(winners);
