@@ -19,10 +19,10 @@ public class CalculatorTest {
         String given = "1,3";
 
         // when
-        long sum = calculator.calculate(given);
+        PositiveNumber result = calculator.calculate(given);
 
         // then
-        assertThat(sum).isEqualTo(4);
+        assertThat(result).isEqualTo(new PositiveNumber("4"));
     }
 
     @Test
@@ -33,10 +33,10 @@ public class CalculatorTest {
         String given = "1:3";
 
         // when
-        long sum = calculator.calculate(given);
+        PositiveNumber result = calculator.calculate(given);
 
         // then
-        assertThat(sum).isEqualTo(4);
+        assertThat(result).isEqualTo(new PositiveNumber("4"));
     }
 
     @Test
@@ -47,10 +47,10 @@ public class CalculatorTest {
         String given = "//&\n1&3";
 
         // when
-        long sum = calculator.calculate(given);
+        PositiveNumber result = calculator.calculate(given);
 
         // then
-        assertThat(sum).isEqualTo(4);
+        assertThat(result).isEqualTo(new PositiveNumber("4"));
     }
 
     @ParameterizedTest
@@ -61,10 +61,10 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         // when
-        long sum = calculator.calculate(given);
+        PositiveNumber result = calculator.calculate(given);
 
         // then
-        assertThat(sum).isEqualTo(0);
+        assertThat(result).isEqualTo(new PositiveNumber("0"));
     }
 
     @ParameterizedTest
@@ -87,9 +87,9 @@ public class CalculatorTest {
         String given = "4";
 
         // when
-        long sum = calculator.calculate(given);
+        PositiveNumber result = calculator.calculate(given);
 
         // then
-        assertThat(sum).isEqualTo(4);
+        assertThat(result).isEqualTo(new PositiveNumber("4"));
     }
 }
