@@ -1,14 +1,13 @@
 package racingcar.controller;
 
-import static racingcar.constant.Constant.NONE_LEFT_NUMBER_OF_ATTEMPTS;
-
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingGame;
-import racingcar.view.RacingGameResult;
 import racingcar.view.OutputView;
+import racingcar.view.RacingGameResult;
 
 public class RacingGameController {
 
@@ -35,12 +34,13 @@ public class RacingGameController {
         return racingCars;
     }
 
-    private void startAllGames(PositiveNumber positiveNumber, List<RacingCar> racingCars) {
+    private void startAllGames(PositiveNumber numberOfAttempts, List<RacingCar> racingCars) {
         outputView.printGameResultMessage();
-        long numberOfAttempts = positiveNumber.getNumber();
-        while (numberOfAttempts-- > NONE_LEFT_NUMBER_OF_ATTEMPTS) {
+        NumberOfAttempts leftNumberOfAttempts = new NumberOfAttempts(numberOfAttempts.getNumber());
+        do {
             racingGame.startSingleGame(racingCars);
             outputView.printSingleGameResult(racingGameResult.create(racingCars));
-        }
+            leftNumberOfAttempts.attempt();
+        } while (leftNumberOfAttempts.existsLeftNumberOfAttempts());
     }
 }

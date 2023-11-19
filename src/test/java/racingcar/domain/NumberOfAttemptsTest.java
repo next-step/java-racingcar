@@ -34,4 +34,18 @@ public class NumberOfAttemptsTest {
                 .isExactlyInstanceOf(IllegalStateException.class)
                 .hasMessage(NONE_LEFT_NUMBER_OF_ATTEMPTS_EXCEPTION);
     }
+
+    @ParameterizedTest
+    @DisplayName("남은 경주 횟수가 존재하는지 확인한다.")
+    @CsvSource(value = {"0, false", "1, true"})
+    void check_left_number_of_attempts_exists(long given, boolean expected) {
+        // given
+        NumberOfAttempts numberOfAttempts = new NumberOfAttempts(given);
+
+        // when
+        boolean result = numberOfAttempts.existsLeftNumberOfAttempts();
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
 }

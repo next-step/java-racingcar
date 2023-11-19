@@ -28,6 +28,10 @@ public class NumberOfAttempts {
         return new NumberOfAttempts(this.number - NUMBER_OF_TRIALS);
     }
 
+    public boolean existsLeftNumberOfAttempts() {
+        return this.number > NO_REMAINING_RACES_NUMBER;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
