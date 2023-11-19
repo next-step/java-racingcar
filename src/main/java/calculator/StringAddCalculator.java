@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.util.StringUtils;
 import error.CustomError;
 
 import java.util.Arrays;
@@ -11,15 +12,11 @@ public class StringAddCalculator {
     private static final String DEFAULT_PATTERN = ",|:";
 
     public static int splitAndSum(String input) {
-        if (isBlank(input)) {
+        if (StringUtils.isBlank(input)) {
             return 0;
         }
         String[] inputs = splitByDelimiter(input);
         return splitAndSum(inputs);
-    }
-
-    private static boolean isBlank(String input) {
-        return input == null || input.isBlank();
     }
 
     private static int splitAndSum(String[] inputs) {
