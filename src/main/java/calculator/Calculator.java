@@ -18,13 +18,9 @@ public class Calculator {
             return calculateSumWithNothing();
         }
 
-        for (Separator separator : separators) {
-            if (separator.matchable(text)) {
-                return calculateSum(separator.separate(text));
-            }
-        }
-
-        throw new IllegalStateException(CANNOT_CALCULATE_EXCEPTION);
+        return separators.stream().filter(separator -> separator.matchable(text)).findFirst()
+                .map(separator -> calculateSum(separator.separate(text)))
+                .orElseThrow(() -> new IllegalStateException(CANNOT_CALCULATE_EXCEPTION));
     }
 
     private boolean isNothing(String text) {
