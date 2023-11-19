@@ -8,19 +8,19 @@ import static racingcar.constant.Constant.ZERO;
 import java.util.Objects;
 
 public class RacingCar {
-    private int position;
+    private Position position;
 
     public RacingCar() {
         this(START_POSITION);
     }
 
-    public RacingCar(int position) {
-        this.position = position;
+    public RacingCar(long position) {
+        this.position = new Position(position);
     }
 
     public void move(int randomNumber) {
         if (movable(randomNumber)) {
-            this.position++;
+            this.position = position.move();
         }
     }
 
@@ -29,7 +29,7 @@ public class RacingCar {
     }
 
     public String movingDistance() {
-        return DASH.repeat(Math.max(ZERO, position));
+        return DASH.repeat(position.sizeComparison(ZERO));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class RacingCar {
             return false;
         }
         RacingCar racingCar = (RacingCar) o;
-        return position == racingCar.position;
+        return Objects.equals(position, racingCar.position);
     }
 
     @Override
