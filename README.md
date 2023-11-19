@@ -25,6 +25,9 @@
 * `RacingGame` : 경주차 게임
     * [x] : 자동차 경주 게임을 실행한다.
 
+* `NumberOfAttempts` : 남은 경주 횟수
+    * [x] : 남은 경주 횟수를 계산한다.
+
 * `RacingGameResult` : 경주 게임 결과를 알려준다.
     * [x] : 게임 실행 결과를 알려준다.
 
