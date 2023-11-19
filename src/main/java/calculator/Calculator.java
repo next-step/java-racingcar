@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Calculator {
 
-    private static final String ZERO = "0";
+    private static final String DEFAULT_SUM_NUMBER = "0";
     public static final String CANNOT_CALCULATE_EXCEPTION = "계산할 수 없는 수식입니다. 현재 계산기에 해당 수식을 계산할 수 있는 구분자가 존재하지 않습니다.";
     private final List<Separator> separators;
 
@@ -28,11 +28,11 @@ public class Calculator {
     }
 
     private PositiveNumber calculateSumWithNothing() {
-        return new PositiveNumber(ZERO);
+        return new PositiveNumber(DEFAULT_SUM_NUMBER);
     }
 
     private PositiveNumber calculateSum(List<String> separatedText) {
-        PositiveNumber sum = new PositiveNumber(ZERO);
+        PositiveNumber sum = new PositiveNumber(DEFAULT_SUM_NUMBER);
         for (String value : separatedText) {
             PositiveNumber number = new PositiveNumber(value);
             sum = sum.plus(number);
