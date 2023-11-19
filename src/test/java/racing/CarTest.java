@@ -1,17 +1,13 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racing.Car.*;
+import static racing.Car.isMove;
 import static racing.RacingGame.splitCarName;
-import static racing.RacingGame.winner;
 
 public class CarTest {
 
@@ -61,16 +57,27 @@ public class CarTest {
 
     @Test
     void 경기가_끝나면_우승한_자동차를_가져올_수_있다() {
-        List<Car> cars = List.of(new Car("A", 3), new Car("B", 2), new Car("C", 1));
-        String winner = winner(cars);
-        assertThat(winner).isEqualTo("A");
+        Car car1 = new Car("A", 3);
+        Car car2 = new Car("B", 2);
+        Car car3 = new Car("C", 1);
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        String winners = cars.getWinner();
+
+        assertThat(winners).isEqualTo("A");
     }
 
     @Test
     void 경기가_끝나면_우승한_자동차를_가져올_수_있다_여러명() {
-        List<Car> cars = List.of(new Car("Q", 5), new Car("W", 2), new Car("E", 5));
-        String winner = winner(cars);
-        assertThat(winner).isEqualTo("Q,E");
+        Car car1 = new Car("Q", 5);
+        Car car2 = new Car("W", 2);
+        Car car3 = new Car("E", 5);
+
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        String winners = cars.getWinner();
+
+        assertThat(winners).isEqualTo("Q,E");
     }
 
 }
