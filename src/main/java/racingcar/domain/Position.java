@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import static racingcar.constant.Constant.NUMBER_OF_COMPARTMENTS_TO_MOVE;
-import static racingcar.constant.Constant.ZERO;
+import static racingcar.constant.Constant.FIRST_POSITION;
 
 import java.util.Objects;
 
@@ -21,7 +21,7 @@ public class Position {
     }
 
     private boolean isMinus(long number) {
-        return number < ZERO;
+        return number < FIRST_POSITION;
     }
 
     public Position move() {
