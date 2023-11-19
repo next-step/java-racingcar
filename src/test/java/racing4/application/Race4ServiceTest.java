@@ -9,21 +9,20 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class Race4ServiceTest {
-    Race4Service race4Service;
+    List<Race4Car> race4Cars;
 
     @BeforeEach
     void setUp() {
-        List<Race4Car> race4Cars = List.of(new Race4Car("name1"),
-                                           new Race4Car("name2"),
-                                           new Race4Car("name3"));
+        race4Cars = List.of(new Race4Car("name1"),
+                            new Race4Car("name2"),
+                            new Race4Car("name3"));
         race4Cars.get(2).moveForwardByCondition(9);
-        race4Service = new Race4Service(race4Cars, 3);
     }
 
     @Test
     void getWinnerNamesTest() {
         // when
-        List<String> winnerNames = race4Service.getWinnerNames();
+        List<String> winnerNames = Race4Service.getWinnerNames(race4Cars);
         // then
         assertThat(winnerNames).isEqualTo(List.of("name3"));
     }

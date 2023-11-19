@@ -9,40 +9,32 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Race4Service {
-    private final List<Race4Car> race4Cars;
-    private final int tryCount;
-
-    public Race4Service(List<Race4Car> race4Cars, int tryCount) {
-        this.race4Cars = race4Cars;
-        this.tryCount = tryCount;
-    }
-
-    public void playAndDisplay() {
+    public static void playAndDisplay(List<Race4Car> race4Cars, int tryCount) {
         System.out.println();
         System.out.println("실행 결과");
-        playGamesByRound();
-        ResultView.printWinner(getWinnerNames());
+        playGamesByRound(race4Cars, tryCount);
+        ResultView.printWinner(getWinnerNames(race4Cars));
     }
 
-    private void playGamesByRound() {
-        IntStream.range(0, this.tryCount)
-                 .forEach(i -> playGame());
+    private static void playGamesByRound(List<Race4Car> race4Cars, int tryCount) {
+        IntStream.range(0, tryCount)
+                 .forEach(i -> playGame(race4Cars));
     }
 
-    private void playGame() {
+    private static void playGame(List<Race4Car> race4Cars) {
         int randomNumber = new Random().nextInt(10);
         race4Cars.forEach(car -> car.moveForwardByCondition(randomNumber));
-        ResultView.displayGameResult(this.race4Cars);
+        ResultView.displayGameResult(race4Cars);
     }
 
-    public List<String> getWinnerNames() {
+    public static List<String> getWinnerNames(List<Race4Car> race4Cars) {
         return race4Cars.stream()
-                        .filter(race4Car -> race4Car.isMaxPosition(getMaxPosition()))
+                        .filter(race4Car -> race4Car.isMaxPosition(getMaxPosition(race4Cars)))
                         .map(Race4Car::getName)
                         .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
+    private static int getMaxPosition(List<Race4Car> race4Cars) {
         return race4Cars.stream()
                         .mapToInt(Race4Car::getPosition)
                         .max()
