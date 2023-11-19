@@ -5,7 +5,7 @@ import java.util.List;
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     public static final int FORWARD_BOUNDARY_VALUE = 3;
-    public static final int RANDOM_LIMIT_VALUE = 10;
+
     private String carName;
     private int forwardCount;
 
@@ -21,6 +21,10 @@ public class Car {
         this.forwardCount = forwardCount;
     }
 
+    public Car(int forwardCount) {
+        this.forwardCount = forwardCount;
+    }
+
     private void checkCarName(String carName){
         if(carName.length() > MAX_NAME_LENGTH){
             throw new IllegalArgumentException();
@@ -31,20 +35,12 @@ public class Car {
         return carName;
     }
 
-    public static boolean isMoveCar(int inputValue){
+    private boolean isMoveCar(int inputValue){
         return inputValue > FORWARD_BOUNDARY_VALUE;
     }
 
-    public static void moveCar(int carForward){
-        if(isMoveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE))) carForward++;
-    }
-
-    private boolean isMoveNamedCar(int inputValue){
-        return inputValue <= FORWARD_BOUNDARY_VALUE;
-    }
-
-    public void moveNamedCar(){
-        if(isMoveNamedCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE))) forwardCount++;
+    public void moveCar(int randomNumber){
+        if(isMoveCar(randomNumber)) forwardCount++;
     }
 
     public int returnMaxCount(int maxForwardCount) {
@@ -61,6 +57,10 @@ public class Car {
 
     public void printCar(){
         ResultView.printNamedCar(carName, forwardCount);
+    }
+
+    public void printCarNoName(){
+        ResultView.printCar(forwardCount);
     }
 
     @Override

@@ -3,6 +3,7 @@ package racingCar;
 import java.util.List;
 
 public class RacingCar {
+    public static final int RANDOM_LIMIT_VALUE = 10;
 
     public static void main(String[] args) {
         int[] inputValues = InputView.input();
@@ -10,45 +11,49 @@ public class RacingCar {
         int tryNum = inputValues[1];
 
         Cars cars = new Cars(carNum);
-
-        movingResult(cars.carArray, tryNum);
+        movingResult(cars, tryNum);
 
     }
 
-    public static int[] addMoving(int[] carArray){
-        for (int i=0; i<carArray.length; i++){
-            Car.moveCar(carArray[i]);
-            ResultView.print(carArray[i]);
+    public static Cars movingResult(Cars cars, int tryNum){
+        for(int i=0; i< tryNum; i++){
+            addCarMoving(cars.getCarList());
+            ResultView.printNewLine();
         }
 
-        return carArray;
+        return cars;
     }
 
-    public static List<Car> addNamedCarMoving(List<Car> carList){
+    public static List<Car> addCarMoving(List<Car> carList){
+        int randomNumber = RandomNumber.getRandom(RANDOM_LIMIT_VALUE);
+
         for(Car car : carList){
-            car.moveNamedCar();
-            car.printCar();
+            car.moveCar(randomNumber);
+            car.printCarNoName();
         }
 
         return carList;
     }
 
-    public static int[] movingResult(int[] carArray, int tryNum){
-        for(int i=0; i< tryNum; i++){
-            addMoving(carArray);
-            System.out.println();
-        }
 
-        return carArray;
-    }
-
-    public static NamedCars movingNamedCarResult(NamedCars namedCars, int tryNum){
+    public static Cars movingNamedCarResult(Cars cars, int tryNum){
         for(int i=0; i< tryNum; i++){
-            addNamedCarMoving(namedCars.getCarList());
+            addNamedCarMoving(cars.getCarList());
             ResultView.printNewLine();
         }
 
-        return namedCars;
+        return cars;
+    }
+
+    public static List<Car> addNamedCarMoving(List<Car> carList){
+        int randomNumber = RandomNumber.getRandom(RANDOM_LIMIT_VALUE);
+
+        for(Car car : carList){
+            car.moveCar(randomNumber);
+            car.printCar();
+        }
+
+        return carList;
     }
 
 }

@@ -6,7 +6,7 @@ public class ResultView {
 
     private ResultView(){}
 
-    public static void print(int printCount){
+    public static void printCar(int printCount){
         for(int i=0; i < printCount; i++){
             System.out.print("-");
         }

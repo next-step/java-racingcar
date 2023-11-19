@@ -1,6 +1,5 @@
 package racingCar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,13 +9,13 @@ public class WinnerCar {
         String carNames = inputMap.get("carNames").toString();
         int tyrNum = (int) inputMap.get("tryNum");
 
-        NamedCars namedCars = new NamedCars(carNames);
-        RacingCar.movingNamedCarResult(namedCars, tyrNum);
-        WinnerCar.returnWinner(namedCars);
+        Cars cars = new Cars(carNames);
+        RacingCar.movingNamedCarResult(cars, tyrNum);
+        WinnerCar.returnWinner(cars);
     }
 
-    public static List<String> returnWinner(NamedCars namedCars){
-        List<String> winners = namedCars.returnWinnerCars();
+    public static List<String> returnWinner(Cars cars){
+        List<String> winners = cars.returnWinnerCars();
 
         ResultView.printWinner(winners);
 
