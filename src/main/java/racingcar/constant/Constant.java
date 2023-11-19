@@ -9,4 +9,6 @@ public class Constant {
     public static final long DEFAULT_POSITION = 0;
     public static final int BOUND = 10;
     public static final String ENTER = "\n";
+    public static final int NUMBER_OF_COMPARTMENTS_TO_MOVE = 1;
+    public static final int ZERO = 0;
 }

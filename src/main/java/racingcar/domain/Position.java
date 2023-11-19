@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.constant.Constant.NUMBER_OF_COMPARTMENTS_TO_MOVE;
+import static racingcar.constant.Constant.ZERO;
+
 import java.util.Objects;
 
 public class Position {
@@ -18,11 +21,11 @@ public class Position {
     }
 
     private boolean isMinus(long number) {
-        return number < 0;
+        return number < ZERO;
     }
 
     public Position move() {
-        return new Position(this.number + 1);
+        return new Position(this.number + NUMBER_OF_COMPARTMENTS_TO_MOVE);
     }
 
     public int sizeComparison(long number) {
