@@ -33,6 +33,10 @@ public class RacingCar {
         return DASH.repeat(position.sizeComparison(DEFAULT_POSITION));
     }
 
+    public String getCarName() {
+        return this.name.getName();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

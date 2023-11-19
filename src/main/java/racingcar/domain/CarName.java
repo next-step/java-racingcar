@@ -22,6 +22,10 @@ public class CarName {
         return name.isEmpty() || name.isBlank() || name.length() > 5;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

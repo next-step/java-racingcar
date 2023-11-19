@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import static racingcar.constant.Constant.COLON;
 import static racingcar.constant.Constant.ENTER;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class RacingGameResult {
     public String create(List<RacingCar> racingCars) {
         StringJoiner stringJoiner = new StringJoiner(ENTER);
         for (RacingCar racingCar : racingCars) {
-            stringJoiner.add(racingCar.movingDistance());
+            stringJoiner.add(racingCar.getCarName() + COLON + racingCar.movingDistance());
         }
         return stringJoiner.add(ENTER).toString();
     }

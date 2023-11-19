@@ -22,9 +22,9 @@ public class RacingGameResultTest {
 
         // then
         assertThat(result).isEqualTo(
-                "-\n"
-                        + "--\n"
-                        + "---\n"
+                "tobi : -\n"
+                        + "pobi : --\n"
+                        + "k3 : ---\n"
                         + "\n");
     }
 
