@@ -2,50 +2,52 @@ package StringAddCalculator;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAddCalculator {
-    private static final Pattern NUMBER_PATTERN = Pattern.compile("\\d+");
+    public static final Pattern INPUT_PATTERN = Pattern.compile("//(.)\n(.*)");
+    public static final String COMMA = ",";
+    public static final String COLUMN = ":";
 
-    public static int splitAndSum(Object rawInput) {
-        rawInput = convertEmpty(rawInput);
-        List<String> inputValues = split((String) rawInput);
+    public static int splitAndSum(String rawInput) {
+        String input = convertEmpty(rawInput);
+        List<String> inputValues = split(input);
         validate(inputValues);
-        return caluate(inputValues);
+        return calculate(convertToInt(inputValues));
     }
 
-    private static Object convertEmpty(Object rawInput) {
+    private static String convertEmpty(String rawInput) {
         if (isEmpty(rawInput)) {
             return "0";
         }
         return rawInput;
     }
 
-    private static boolean isEmpty(Object rawInput) {
-        return rawInput == null || rawInput.equals("");
+    private static boolean isEmpty(String rawInput) {
+        return Objects.isNull(rawInput) || rawInput.equals("");
     }
 
     private static List<String> split(String input) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        Matcher m = INPUT_PATTERN.matcher(input);
         String[] tokens;
         if (m.find()) {
             tokens = splitWithCustom(m);
+            return removeBlank(tokens);
         }
-        else {
-            tokens = splitDefault(input);
-        }
+        tokens = splitDefault(input);
         return removeBlank(tokens);
     }
 
     private static String[] splitWithCustom(Matcher m) {
         String customDelimiter = m.group(1);
-        return m.group(2).split(",|:|" + customDelimiter);
+        return m.group(2).split(COMMA + "|" + COLUMN + "|" + customDelimiter);
     }
 
     private static String[] splitDefault(String input) {
-        return input.split(",|:|");
+        return input.split(COMMA + "|" + COLUMN + "|");
     }
 
     private static List<String> removeBlank(String[] tokens) {
@@ -56,19 +58,8 @@ public class StringAddCalculator {
 
     private static void validate(List<String> inputSplit) {
         for (String value : inputSplit) {
-            validateNumber(value);
             validatePositiveNumber(value);
         }
-    }
-
-    private static void validateNumber(String value) {
-        if (!isNumber(value)) {
-            throw new RuntimeException("숫자로로 입력해주세요");
-        }
-    }
-
-    private static boolean isNumber(String value) {
-        return NUMBER_PATTERN.matcher(value).matches();
     }
 
     private static void validatePositiveNumber(String value) {
@@ -82,13 +73,17 @@ public class StringAddCalculator {
     }
 
     private static int convertToInt(String value) {
-        return Integer.parseInt(value);
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자로 입력해주세요");
+        }
     }
 
-    private static int caluate(List<String> rawInputValues) {
-        List<Integer> inputValues = convertToInt(rawInputValues);
+
+    private static int calculate(List<Integer> values) {
         int sum = 0;
-        for (int value : inputValues) {
+        for (int value : values) {
             sum += value;
         }
         return sum;
