@@ -21,15 +21,15 @@ public class RacingGameController {
         this.outputView = outputView;
     }
 
-    public void run(PositiveNumber numberOfCars, PositiveNumber numberOfAttempts) {
-        List<RacingCar> racingCars = createRacingCars(numberOfCars);
+    public void run(List<String> carNames, PositiveNumber numberOfAttempts) {
+        List<RacingCar> racingCars = createRacingCars(carNames);
         startAllGames(numberOfAttempts, racingCars);
     }
 
-    private List<RacingCar> createRacingCars(PositiveNumber numberOfCars) {
+    private List<RacingCar> createRacingCars(List<String> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars.getNumber(); i++) {
-            racingCars.add(new RacingCar());
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
         return racingCars;
     }

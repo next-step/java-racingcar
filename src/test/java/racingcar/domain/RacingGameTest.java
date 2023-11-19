@@ -25,17 +25,17 @@ public class RacingGameTest {
 
     private List<RacingCar> createRacingCars() {
         return Arrays.asList(
-                new RacingCar(0),
-                new RacingCar(0),
-                new RacingCar(0)
+                new RacingCar("tobi", 0),
+                new RacingCar("pobi", 0),
+                new RacingCar("k5", 0)
         );
     }
 
     private List<RacingCar> createExpectedRacingCars() {
         return Arrays.asList(
-                new RacingCar(1),
-                new RacingCar(1),
-                new RacingCar(1)
+                new RacingCar("tobi", 1),
+                new RacingCar("pobi", 1),
+                new RacingCar("k5", 1)
         );
     }
 }

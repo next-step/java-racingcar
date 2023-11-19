@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
-import racingcar.view.RacingGameResult;
 
 public class RacingGameResultTest {
 
@@ -31,9 +30,9 @@ public class RacingGameResultTest {
 
     private List<RacingCar> createRacingCars() {
         return Arrays.asList(
-                new RacingCar(1),
-                new RacingCar(2),
-                new RacingCar(3)
+                new RacingCar("tobi", 1),
+                new RacingCar("pobi", 2),
+                new RacingCar("k3", 3)
         );
     }
 }
