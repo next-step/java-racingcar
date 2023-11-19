@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class SimpleSeparatorTest {
 
-    Separator separator;
+    private Separator separator;
 
     @BeforeEach
     void setUp() {

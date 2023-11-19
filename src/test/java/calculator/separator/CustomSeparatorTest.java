@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class CustomSeparatorTest {
 
-    Separator separator;
+    private Separator separator;
 
     @BeforeEach
     void setUp() {
