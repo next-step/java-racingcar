@@ -5,12 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @Test
-    void addDistanceTest() {
-        Car car = new Car("");
-        car.addDistance();
-        assertThat(car.getDistance()).isEqualTo(1);
-    }
 
     @Test
     void moveTest() {
@@ -18,5 +12,4 @@ public class CarTest {
         car.move();
         assertThat(1).isEqualTo(car.getDistance());
     }
-
 }

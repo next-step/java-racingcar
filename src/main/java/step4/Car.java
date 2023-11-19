@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Car{
+public class Car {
     public String name;
     private int distance = 0;
 
@@ -16,7 +16,9 @@ public class Car{
     public Car(String carNames) {
         this.name = carNames;
     }
-    public Car(int distance) {
+
+    public Car(String carNames, int distance) {
+        this.name = carNames;
         this.distance = distance;
     }
 
@@ -30,18 +32,15 @@ public class Car{
                 .collect(Collectors.toList());
     }
 
-    public void addDistance() {
-        if (moveStrategy.randomNumber() >= 4) {
+    public void move() {
+        if (moveStrategy.isMove()) {
             distance++;
         }
-    }
-
-    public void move() {
-        addDistance();
     }
 
     public int getDistance() {
         return distance;
     }
+
 }
 

@@ -10,15 +10,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class WinnerTest {
     @Test
     void getWinnersTest() {
-        Car pobi = new Car(3);
-        Car crong = new Car(5);
-        Car honux = new Car(10);
-        List<Car> carList = List.of(pobi,crong,honux);
+        Car pobi = new Car("pobi", 3);
+        Car crong = new Car("crong", 5);
+        Car honux = new Car("honux", 10);
+        List<Car> carList = List.of(pobi, crong, honux);
 
         ResultView resultView = new ResultView();
+        resultView.makeResultView(carList);
+
         Winners winners = new Winners();
         winners.getWinners(carList);
-        resultView.printWinners(winners.getWinnerNames());
         assertThat(winners.getWinnerNames()).isEqualTo("honux");
     }
 }

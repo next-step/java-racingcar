@@ -9,4 +9,9 @@ public class RandomMoveStrategy implements MoveStrategy {
         int randomNumber = random.nextInt(10);
         return randomNumber;
     }
+
+    @Override
+    public boolean isMove() {
+        return randomNumber() >= 4;
+    }
 }
