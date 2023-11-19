@@ -4,7 +4,7 @@ public class OutputView {
 
     private static final String EXECUTION_RESULT = "실행 결과";
 
-    public void printGameResultMent() {
+    public void printGameResultMessage() {
         System.out.println(EXECUTION_RESULT);
     }
 

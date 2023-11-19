@@ -4,6 +4,7 @@ import static racingcar.constant.Constant.ZERO;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RacingGameResult;
@@ -21,21 +22,22 @@ public class RacingGameController {
         this.outputView = outputView;
     }
 
-    public void run(int numberOfCars, int numberOfAttempts) {
+    public void run(PositiveNumber numberOfCars, PositiveNumber numberOfAttempts) {
         List<RacingCar> racingCars = createRacingCars(numberOfCars);
         startAllGames(numberOfAttempts, racingCars);
     }
 
-    private List<RacingCar> createRacingCars(int numberOfCars) {
+    private List<RacingCar> createRacingCars(PositiveNumber numberOfCars) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
+        for (int i = 0; i < numberOfCars.getNumber(); i++) {
             racingCars.add(new RacingCar());
         }
         return racingCars;
     }
 
-    private void startAllGames(int numberOfAttempts, List<RacingCar> racingCars) {
-        outputView.printGameResultMent();
+    private void startAllGames(PositiveNumber positiveNumber, List<RacingCar> racingCars) {
+        outputView.printGameResultMessage();
+        long numberOfAttempts = positiveNumber.getNumber();
         while (numberOfAttempts-- > ZERO) {
             racingGame.startSingleGame(racingCars);
             outputView.printSingleGameResult(racingGameResult.create(racingCars));
