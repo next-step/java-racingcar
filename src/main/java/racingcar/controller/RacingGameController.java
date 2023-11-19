@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import static racingcar.constant.Constant.ZERO;
+import static racingcar.constant.Constant.NONE_LEFT_NUMBER_OF_ATTEMPTS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class RacingGameController {
     private void startAllGames(PositiveNumber positiveNumber, List<RacingCar> racingCars) {
         outputView.printGameResultMessage();
         long numberOfAttempts = positiveNumber.getNumber();
-        while (numberOfAttempts-- > ZERO) {
+        while (numberOfAttempts-- > NONE_LEFT_NUMBER_OF_ATTEMPTS) {
             racingGame.startSingleGame(racingCars);
             outputView.printSingleGameResult(racingGameResult.create(racingCars));
         }

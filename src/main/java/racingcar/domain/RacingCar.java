@@ -3,7 +3,7 @@ package racingcar.domain;
 import static racingcar.constant.Constant.DASH;
 import static racingcar.constant.Constant.LEAST_MOVE_CONDITION;
 import static racingcar.constant.Constant.START_POSITION;
-import static racingcar.constant.Constant.ZERO;
+import static racingcar.constant.Constant.DEFAULT_POSITION;
 
 import java.util.Objects;
 
@@ -29,7 +29,7 @@ public class RacingCar {
     }
 
     public String movingDistance() {
-        return DASH.repeat(position.sizeComparison(ZERO));
+        return DASH.repeat(position.sizeComparison(DEFAULT_POSITION));
     }
 
     @Override
