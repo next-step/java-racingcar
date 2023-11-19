@@ -1,7 +1,5 @@
 package racingCar.domain;
 
-import racingCar.domain.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +9,11 @@ public class Cars {
     private List<Car> carList;
 
     public Cars(String carNames){
-        Car car;
         carList = new ArrayList<>();
         String[] carNameArray = splitCarNames(carNames);
 
         for(int i=0; i<carNameArray.length; i++) {
-            car = new Car(carNameArray[i]);
-            this.carList.add(car);
+            this.carList.add(new Car(carNameArray[i]));
         }
     }
 
