@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Position {
-    public static final String POSITION_CANNOT_BE_NEGATIVE_NUMBER_EXCEPTION = "포지션은 양수만 가능합니다.";
+    public static final String POSITION_CANNOT_BE_NEGATIVE_NUMBER_EXCEPTION = "포지션에 음수를 입력했습니다. 포지션은 양수만 가능합니다.";
     private final long number;
 
     public Position(long number) {
