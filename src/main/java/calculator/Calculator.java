@@ -1,91 +1,47 @@
 package calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import calculator.separator.Separator;
+import java.util.List;
 
 public class Calculator {
 
-    private static final String COMMA = ",";
-    private static final String COLUMN = ":";
-    public static final String DEFAULT_REGEX = COMMA + "|" + COLUMN;
-    private static final String CUSTOM_REGEX = "//(.)\n(.*)";
-    private static final int ZERO = 0;
+    private static final String ZERO = "0";
+    public static final String CANNOT_CALCULATE_EXCEPTION = "계산할 수 없는 수식입니다.";
+    private final List<Separator> separators;
 
-    public long calculate(String text) {
+    public Calculator(List<Separator> separators) {
+        this.separators = separators;
+    }
+
+    public PositiveNumber calculate(String text) {
+
         if (isNothing(text)) {
             return calculateSumWithNothing();
         }
-
-        Matcher m = getMatcher(text);
-        if (matchable(m)) {
-            return calculateSumWithCustomRegex(m);
+      
+        for (Separator separator : separators) {
+            if (separator.matchable(text)) {
+                return calculateSum(separator.separate(text));
+            }
         }
 
-        if (containsDefaultRegex(text)) {
-            return calculateSumWithDefaultRegex(text);
-        }
-
-        return calculateSimpleNumber(text);
+        throw new IllegalStateException(CANNOT_CALCULATE_EXCEPTION);
     }
 
     private boolean isNothing(String text) {
         return text == null || text.isBlank() || text.isEmpty();
     }
 
-    private long calculateSumWithNothing() {
-        return ZERO;
+    private PositiveNumber calculateSumWithNothing() {
+        return new PositiveNumber(ZERO);
     }
 
-    private Matcher getMatcher(String text) {
-        return Pattern.compile(CUSTOM_REGEX).matcher(text);
-    }
-
-    private boolean matchable(Matcher matcher) {
-        return matcher.find();
-    }
-
-    private long calculateSumWithCustomRegex(Matcher matcher) {
-        return calculateSum(matcher.group(2), createDelimiter(matcher));
-    }
-
-    private String createDelimiter(Matcher matcher) {
-        return matcher.group(1);
-    }
-
-    private long calculateSum(String target, String customDelimiter) {
-        long sum = 0L;
-        for (String number : target.split(customDelimiter)) {
-            sum += parse(number);
+    private PositiveNumber calculateSum(List<String> separatedText) {
+        PositiveNumber sum = new PositiveNumber(ZERO);
+        for (String value : separatedText) {
+            PositiveNumber number = new PositiveNumber(value);
+            sum = sum.plus(number);
         }
         return sum;
-    }
-
-    private long parse(String number) {
-        long targetNumber;
-        try {
-            targetNumber = Long.parseLong(number);
-            if (isMinus(targetNumber)) {
-                throw new RuntimeException("음수는 입력할 수 없습니다.");
-            }
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자 이외의 값은 입력할 수 없습니다.");
-        }
-        return targetNumber;
-    }
-
-    private boolean isMinus(long targetNumber) {
-        return targetNumber < 0;
-    }
-
-    private boolean containsDefaultRegex(String text) {
-        return text.contains(COMMA) || text.contains(COLUMN);
-    }
-
-    private long calculateSumWithDefaultRegex(String text) {
-        return calculateSum(text, DEFAULT_REGEX);
-    }
-
-    private long calculateSimpleNumber(String text) {
-        return Long.parseLong(text);
     }
 }
