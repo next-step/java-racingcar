@@ -12,56 +12,25 @@ public class RacingGame {
         String[] splitCarName = splitCarName(carNames);
         int retryCount = inputView.getRetryCount();
 
-        List<Car> cars = createCar(splitCarName);
+        Cars cars = createCar(splitCarName);
 
         ResultView resultView = new ResultView();
         System.out.println("실행 결과");
-        raceCars(cars, retryCount, resultView);
-        resultView.printWinner(winner(cars));
+        cars.moveCars(retryCount, resultView);
+        resultView.printWinner(cars.getWinner());
     }
 
-    private static List<Car> createCar(String[] splitCarName) {
+    private static Cars createCar(String[] splitCarName) {
         List<Car> cars = new ArrayList<>();
         for (String name : splitCarName) {
             cars.add(new Car(name));
         }
-        return cars;
+        return new Cars(cars);
     }
 
-    private static void raceCars(List<Car> cars, int retryCount, ResultView resultView) {
-        for (int i = 0; i < retryCount; i++) {
-            moveCars(cars);
-            resultView.print(cars);
-        }
-    }
-
-    private static void moveCars(List<Car> cars) {
-        RandomGenerateNumber generateNumber = new RandomGenerateNumber();
-        for (Car car : cars) {
-            car.move(generateNumber);
-        }
-    }
 
     public static String[] splitCarName(String carNames) {
         return carNames.split(",");
     }
 
-    public static String winner(List<Car> cars) {
-        int maxPosition = 0;
-        List<String> winners = new ArrayList<>();
-        getMaxPosition(cars, maxPosition, winners);
-        return String.join(",", winners);
-    }
-
-    private static void getMaxPosition(List<Car> cars, int maxPosition, List<String> winners) {
-        for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-                winners.clear();
-                winners.add(car.getName());
-            } else if (car.getPosition() == maxPosition) {
-                winners.add(car.getName());
-            }
-        }
-    }
 }
