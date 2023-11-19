@@ -2,13 +2,14 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.GameResultInfo;
 import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingGame;
-import racingcar.view.Winner;
 import racingcar.view.OutputView;
 import racingcar.view.RacingGameResult;
+import racingcar.view.Winner;
 
 public class RacingGameController {
 
@@ -41,22 +42,35 @@ public class RacingGameController {
     private void startAllGames(PositiveNumber numberOfAttempts, List<RacingCar> racingCars) {
         outputView.printGameResultMessage();
         NumberOfAttempts leftNumberOfAttempts = new NumberOfAttempts(numberOfAttempts.getNumber());
-        winner.inform(getFinalGameResult(racingCars, leftNumberOfAttempts));
+        outputView.printWinners(getWinners(racingCars, leftNumberOfAttempts));
+    }
+
+    private String getWinners(List<RacingCar> racingCars, NumberOfAttempts leftNumberOfAttempts) {
+        return winner.inform(getFinalGameResult(racingCars, leftNumberOfAttempts));
     }
 
     private String getFinalGameResult(List<RacingCar> racingCars, NumberOfAttempts leftNumberOfAttempts) {
         String gameResult;
         do {
-            gameResult = renewRecentGameResult(racingCars, leftNumberOfAttempts);
+            GameResultInfo gameResultInfo = getGameResultInfo(racingCars, leftNumberOfAttempts);
+            leftNumberOfAttempts = renewLeftNumberOfAttempts(gameResultInfo);
+            gameResult = renewGameResult(gameResultInfo);
         } while (leftNumberOfAttempts.existsLeftNumberOfAttempts());
         return gameResult;
     }
 
-    private String renewRecentGameResult(List<RacingCar> racingCars, NumberOfAttempts leftNumberOfAttempts) {
+    private GameResultInfo getGameResultInfo(List<RacingCar> racingCars, NumberOfAttempts leftNumberOfAttempts) {
         racingGame.startSingleGame(racingCars);
         String gameResult = racingGameResult.create(racingCars);
         outputView.printSingleGameResult(gameResult);
-        leftNumberOfAttempts.attempt();
-        return gameResult;
+        return new GameResultInfo(leftNumberOfAttempts.attempt(), gameResult);
+    }
+
+    private NumberOfAttempts renewLeftNumberOfAttempts(GameResultInfo gameResultInfo) {
+        return gameResultInfo.getLeftNumberOfAttempts();
+    }
+
+    private String renewGameResult(GameResultInfo gameResultInfo) {
+        return gameResultInfo.getGameResult();
     }
 }
