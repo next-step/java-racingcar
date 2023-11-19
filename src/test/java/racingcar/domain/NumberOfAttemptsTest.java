@@ -1,10 +1,13 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.domain.NumberOfAttempts.NONE_LEFT_NUMBER_OF_ATTEMPTS_EXCEPTION;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class NumberOfAttemptsTest {
 
@@ -20,5 +23,15 @@ public class NumberOfAttemptsTest {
 
         // then
         assertThat(result).isEqualTo(new NumberOfAttempts(expected));
+    }
+
+    @ParameterizedTest
+    @DisplayName("남은 경주 횟수가 음수면 예외를 던진다.")
+    @ValueSource(longs = {0, -1, -16})
+    void create_number_of_attempts_exception(long given) {
+        // when // then
+        assertThatThrownBy(() -> new NumberOfAttempts(given).attempt())
+                .isExactlyInstanceOf(IllegalStateException.class)
+                .hasMessage(NONE_LEFT_NUMBER_OF_ATTEMPTS_EXCEPTION);
     }
 }
