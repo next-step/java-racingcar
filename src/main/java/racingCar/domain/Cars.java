@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static final String SPLIT_DELIMETER = ",";
+    private static final String SPLIT_DELIMITER = ",";
 
     private List<Car> carList;
 
@@ -33,7 +33,7 @@ public class Cars {
     }
 
     private String[] splitCarNames(String carNames){
-        return carNames.split(SPLIT_DELIMETER);
+        return carNames.split(SPLIT_DELIMITER);
     }
 
     public int getMaxForward(){

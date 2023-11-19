@@ -44,11 +44,11 @@ public class Car {
         }
     }
 
-    public int returnMaxCount(int maxForwardCount) {
+    int returnMaxCount(int maxForwardCount) {
         return forward.returnMaxCount(maxForwardCount);
     }
 
-    public List<String> addMaxForwardCar(int maxForwardCount, List<String> winners){
+    List<String> addMaxForwardCar(int maxForwardCount, List<String> winners){
         if(forward.matchMaxForwardCount(maxForwardCount)) {
             winners.add(carName);
         }

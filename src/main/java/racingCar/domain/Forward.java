@@ -13,16 +13,16 @@ public class Forward {
         return this.forwardCount;
     }
 
-    public int returnMaxCount(int maxForwardCount) {
+    int returnMaxCount(int maxForwardCount) {
         if(forwardCount >= maxForwardCount) return forwardCount;
         return maxForwardCount;
     }
 
-    public void addForwardCount(){
+    void addForwardCount(){
         this.forwardCount ++;
     }
 
-    public boolean matchMaxForwardCount(int forwardCount){
+    boolean matchMaxForwardCount(int forwardCount){
         return this.forwardCount == forwardCount;
     }
 
