@@ -8,10 +8,9 @@ import racingcar.view.ResultView;
 import java.util.*;
 
 public class RacingGame {
+    private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
     private final List<RacingCar> cars;
     private final Referee referee = new Referee();
-
-    private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
 
     public RacingGame(List<String> carNameList, int roundNumber) {
         // validation

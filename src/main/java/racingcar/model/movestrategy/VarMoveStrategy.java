@@ -1,9 +1,8 @@
 package racingcar.model.movestrategy;
 
 public class VarMoveStrategy implements MoveStrategy {
-    private final int value;
-
     private static final int THRESHOLD_NUMBER = 4;
+    private final int value;
 
     public VarMoveStrategy(int value) {
         this.value = value;

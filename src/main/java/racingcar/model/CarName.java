@@ -1,10 +1,9 @@
 package racingcar.model;
 
 public class CarName {
-    private final String name;
-
     private static final String ERR_NAME_LENGTH = "Names longer than 5 characters are not allowed.";
     private static final int NAME_MAX_LENGTH = 5;
+    private final String name;
 
     public CarName(String name) {
         validateCarName(name);
