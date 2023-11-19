@@ -16,9 +16,7 @@ class Race4ServiceTest {
         List<Race4Car> race4Cars = List.of(new Race4Car("name1"),
                                            new Race4Car("name2"),
                                            new Race4Car("name3"));
-        race4Cars.get(0).setPosition(1);
-        race4Cars.get(1).setPosition(2);
-        race4Cars.get(2).setPosition(3);
+        race4Cars.get(2).moveForwardByCondition(9);
         race4Service = new Race4Service(race4Cars, 3);
     }
 

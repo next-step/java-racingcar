@@ -29,7 +29,8 @@ class ResultViewTest {
     void displayGameResultTest() {
         // given
         Race4Car race4Car = new Race4Car("name");
-        race4Car.setPosition(2);
+        race4Car.moveForwardByCondition(9);
+        race4Car.moveForwardByCondition(9);
         // when
         ResultView.displayGameResult(List.of(race4Car));
         // then
