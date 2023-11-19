@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.List;
 
@@ -25,14 +25,16 @@ public class Car {
         this.forwardCount = forwardCount;
     }
 
+    public String getCarName(){
+        return carName;
+    }
+
+    public int getForwardCount() { return forwardCount; }
+
     private void checkCarName(String carName){
         if(carName.length() > MAX_NAME_LENGTH){
             throw new IllegalArgumentException();
         }
-    }
-
-    public String getCarName(){
-        return carName;
     }
 
     private boolean isMoveCar(int inputValue){
@@ -53,14 +55,6 @@ public class Car {
             winners.add(carName);
 
         return winners;
-    }
-
-    public void printCar(){
-        ResultView.printNamedCar(carName, forwardCount);
-    }
-
-    public void printCarNoName(){
-        ResultView.printCar(forwardCount);
     }
 
     @Override

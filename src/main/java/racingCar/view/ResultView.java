@@ -1,4 +1,6 @@
-package racingCar;
+package racingCar.view;
+
+import racingCar.domain.Car;
 
 import java.util.List;
 
@@ -6,16 +8,16 @@ public class ResultView {
 
     private ResultView(){}
 
-    public static void printCar(int printCount){
-        for(int i=0; i < printCount; i++){
+    public static void printCar(Car car){
+        for(int i=0; i < car.getForwardCount(); i++){
             System.out.print("-");
         }
         System.out.println();
     }
 
-    public static void printNamedCar(String carName, int printCount){
-        System.out.print(carName+" : ");
-        for(int i=0; i < printCount; i++){
+    public static void printNamedCar(Car car){
+        System.out.print(car.getCarName() + " : ");
+        for(int i=0; i < car.getForwardCount(); i++){
             System.out.print("-");
         }
         System.out.println();

@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.view;
 
 import java.util.HashMap;
 import java.util.Map;

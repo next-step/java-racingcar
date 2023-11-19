@@ -1,5 +1,11 @@
 package racingCar;
 
+import racingCar.domain.Car;
+import racingCar.domain.Cars;
+import racingCar.domain.RandomNumber;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
+
 import java.util.List;
 
 public class RacingCar {
@@ -25,11 +31,10 @@ public class RacingCar {
     }
 
     public static List<Car> addCarMoving(List<Car> carList){
-        int randomNumber = RandomNumber.getRandom(RANDOM_LIMIT_VALUE);
 
         for(Car car : carList){
-            car.moveCar(randomNumber);
-            car.printCarNoName();
+            car.moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE));
+            ResultView.printCar(car);
         }
 
         return carList;
@@ -46,11 +51,10 @@ public class RacingCar {
     }
 
     public static List<Car> addNamedCarMoving(List<Car> carList){
-        int randomNumber = RandomNumber.getRandom(RANDOM_LIMIT_VALUE);
 
         for(Car car : carList){
-            car.moveCar(randomNumber);
-            car.printCar();
+            car.moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE));
+            ResultView.printNamedCar(car);
         }
 
         return carList;
