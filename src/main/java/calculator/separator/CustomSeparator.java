@@ -29,7 +29,8 @@ public class CustomSeparator implements Separator {
     }
 
     private List<String> createSeparatedTextWithCustomRegex(Matcher matcher) {
-        return Arrays.asList(createTarget(matcher).split(Pattern.quote(createDelimiter(matcher))));
+        return Arrays.asList(createTarget(matcher)
+                .split(Pattern.quote(createDelimiter(matcher))));
     }
 
     private String createTarget(Matcher matcher) {
