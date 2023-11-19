@@ -2,7 +2,6 @@ package racingcar.view;
 
 import static racingcar.constant.Constant.COMMA;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import racingcar.domain.PositiveNumber;
