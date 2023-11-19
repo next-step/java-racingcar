@@ -1,8 +1,8 @@
 package racingCar.view;
 
-import racingCar.RacingCar;
 import racingCar.domain.Car;
 import racingCar.domain.Cars;
+import racingCar.domain.Winners;
 
 import java.util.List;
 import java.util.Map;
@@ -12,11 +12,16 @@ public class WinnerResultView {
     public static void main(String[] args) {
         Map<String, Object> inputMap = WinnerInputView.input();
         String carNames = inputMap.get("carNames").toString();
-        int tyrNum = (int) inputMap.get("tryNum");
+        int tryNum = (int) inputMap.get("tryNum");
 
         Cars cars = new Cars(carNames);
-        RacingCar.movingNamedCarResult(cars, tyrNum);
-        RacingCar.returnWinner(cars);
+
+        for(int i=0; i< tryNum; i++){
+            cars.addCarMoving();
+            printNamedCar(cars.getCarList());
+        }
+
+        printWinner(Winners.findWinner(cars.getCarList()));
     }
 
     public static void printEachNamedCar(Car car){

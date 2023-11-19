@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingCar.domain.Car;
 import racingCar.domain.Cars;
 import racingCar.domain.RandomNumber;
+import racingCar.domain.Winners;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +24,7 @@ public class racingCarTest {
                 new Car("crong", 3),
                 new Car("honux", 5)));
 
-        List<String> winners = RacingCar.returnWinner(cars);
+        List<String> winners = Winners.findWinner(cars.getCarList());
 
         assertThat(winners).hasSize(2);
         assertThat(winners).containsExactly("pobi","honux");
@@ -37,7 +38,7 @@ public class racingCarTest {
                 new Car("crong", 3),
                 new Car("honux", 5)));
 
-        assertThat(cars.getMaxForward()).isEqualTo(5);
+        assertThat(Winners.getMaxForward(cars.getCarList())).isEqualTo(5);
     }
 
     @Test

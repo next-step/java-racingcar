@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Cars {
     private static final String SPLIT_DELIMITER = ",";
+    public static final int RANDOM_LIMIT_VALUE = 10;
 
     private List<Car> carList;
 
@@ -36,23 +37,13 @@ public class Cars {
         return carNames.split(SPLIT_DELIMITER);
     }
 
-    public int getMaxForward(){
-        int maxForward = 0;
-        for(Car car : carList){
-            maxForward = car.returnMaxCount(maxForward);
-        }
-
-        return maxForward;
-    }
-
-    public List<String> returnWinnerCars(){
-        List<String> winners = new ArrayList<>();
+    public List<Car> addCarMoving(){
 
         for(Car car : carList){
-            car.addMaxForwardCar(getMaxForward(), winners);
+            car.moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE));
         }
 
-        return winners;
+        return carList;
     }
 
     public Car findCar(String carName) {

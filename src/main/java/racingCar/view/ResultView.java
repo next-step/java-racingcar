@@ -1,6 +1,5 @@
 package racingCar.view;
 
-import racingCar.RacingCar;
 import racingCar.domain.Car;
 import racingCar.domain.Cars;
 
@@ -14,7 +13,11 @@ public class ResultView {
         int tryNum = inputValues[1];
 
         Cars cars = new Cars(carNum);
-        RacingCar.movingResult(cars, tryNum);
+
+        for(int i=0; i< tryNum; i++){
+            cars.addCarMoving();
+            printCar(cars.getCarList());
+        }
 
     }
 
