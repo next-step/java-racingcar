@@ -7,7 +7,7 @@ import java.util.List;
 import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingGameResult;
+import racingcar.view.RacingGameResult;
 import racingcar.view.OutputView;
 
 public class RacingGameController {

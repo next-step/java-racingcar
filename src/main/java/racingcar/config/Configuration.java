@@ -5,7 +5,7 @@ import java.util.Scanner;
 import racingcar.controller.RacingGameController;
 import racingcar.domain.DefaultRandomService;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingGameResult;
+import racingcar.view.RacingGameResult;
 import racingcar.domain.RandomService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

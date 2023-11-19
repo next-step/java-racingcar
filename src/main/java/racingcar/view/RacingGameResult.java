@@ -1,9 +1,10 @@
-package racingcar.domain;
+package racingcar.view;
 
 import static racingcar.constant.Constant.ENTER;
 
 import java.util.List;
 import java.util.StringJoiner;
+import racingcar.domain.RacingCar;
 
 public class RacingGameResult {
 
