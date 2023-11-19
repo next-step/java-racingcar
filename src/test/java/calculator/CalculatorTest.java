@@ -80,8 +80,6 @@ public class CalculatorTest {
     @DisplayName("빈 문자열이나 null이 주어지면 0을 반환한다.")
     @NullAndEmptySource
     void return_zero(String given) {
-        // given
-
         // when
         PositiveNumber result = calculator.calculate(given);
 
@@ -93,8 +91,6 @@ public class CalculatorTest {
     @DisplayName("숫자 이외의 값이나 음수가 주어지면 예외를 반환한다.")
     @ValueSource(strings = {"-3:2", "숫자아님,숫자아니다", "//&\n-3&3", "//&\n숫자아니다&3"})
     void throw_exception(String given) {
-        // given
-
         // when // then
         assertThatThrownBy(() -> calculator.calculate(given))
                 .isInstanceOf(RuntimeException.class);

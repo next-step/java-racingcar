@@ -14,10 +14,11 @@ public class Calculator {
     }
 
     public PositiveNumber calculate(String text) {
+
         if (isNothing(text)) {
             return calculateSumWithNothing();
         }
-
+      
         for (Separator separator : separators) {
             if (separator.matchable(text)) {
                 return calculateSum(separator.separate(text));
