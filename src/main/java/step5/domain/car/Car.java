@@ -3,8 +3,8 @@ package step5.domain.car;
 import java.util.Objects;
 
 public class Car {
-    private Name name;
-    private Distance distance;
+    private final Name name;
+    private final Distance distance;
 
     private Car(Name name, Distance distance) {
         this.name = name;
@@ -18,6 +18,13 @@ public class Car {
 
     public static Car defaultOf(String name, int distance) {
         return new Car(Name.of(name), Distance.of(distance));
+    }
+    public static Car defaultOf(Name name, Distance distance) {
+        return new Car(name, distance);
+    }
+    public Car deepCopy() {
+        return Car.defaultOf(this.name.deepCopy(), this.distance.deepCopy());
+
     }
 
     public boolean isDistance(int distanceOfComparing) {
@@ -43,6 +50,14 @@ public class Car {
     public String nameToString() {
         return this.name.toString();
     }
+    public String distanceToString() {
+        return this.distance.statusToString();
+    }
+    public String statusToString() {
+        String name = this.nameToString();
+        String distance = this.distanceToString();
+        return name + " : " + distance;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,4 +76,6 @@ public class Car {
         result = 31 * result + (distance != null ? distance.hashCode() : 0);
         return result;
     }
+
+
 }

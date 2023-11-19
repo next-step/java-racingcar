@@ -18,4 +18,8 @@ public class Name {
     public String toString() {
         return  name;
     }
+
+    public Name deepCopy() {
+        return Name.of(this.name);
+    }
 }

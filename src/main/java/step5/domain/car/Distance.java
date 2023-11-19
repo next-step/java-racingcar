@@ -22,6 +22,13 @@ public class Distance {
     public void add(int distance) {
         this.distance += distance;
     }
+    public String statusToString() {
+        String distanceToString= "-";
+        for (int i = 0; i < distance - 1; i++) {
+            distanceToString = distanceToString +  "-";
+        }
+        return distanceToString;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,5 +47,9 @@ public class Distance {
 
     public boolean fartherThan(Distance distance) {
         return this.distance > distance.distance;
+    }
+
+    public Distance deepCopy() {
+        return Distance.of(this.distance);
     }
 }

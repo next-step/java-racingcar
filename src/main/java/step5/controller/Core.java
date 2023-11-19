@@ -19,6 +19,7 @@ public class Core {
 
 
         OutPutView outPutView = new OutPutView();
+        outPutView.printHistory(racing);
         outPutView.winnerIs(winners);
 
     }

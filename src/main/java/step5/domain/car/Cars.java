@@ -27,6 +27,13 @@ public class Cars {
     public static Cars defaultOf(List<Car> cars) {
         return new Cars(cars);
     }
+    public Cars deepCopy() {
+        List<Car> deepCopyCars = new ArrayList<>();
+        for (Car car :cars) {
+            deepCopyCars.add(car.deepCopy());
+        }
+        return Cars.defaultOf(deepCopyCars);
+    }
 
     public boolean hasSize(int questionSize) {
         return cars.size() == questionSize;
@@ -70,5 +77,20 @@ public class Cars {
         for (Car car: this.cars) {
             car.move(referee.judgeToMove());
         }
+    }
+
+    public Cars makeHistory(){
+        return this.deepCopy();
+    }
+
+    public String statusToString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : this.cars) {
+            stringBuilder.append(car.statusToString());
+            stringBuilder.append("\n");
+        }
+        stringBuilder.append("\n");
+
+        return stringBuilder.toString();
     }
 }
