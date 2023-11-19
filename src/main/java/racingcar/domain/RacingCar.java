@@ -7,28 +7,16 @@ import static racingcar.constant.Constant.LEAST_MOVE_CONDITION;
 import java.util.Objects;
 
 public class RacingCar {
-    public static final String CAR_NAME_LENGTH_EXCEPTION = "자동차 이름은 1자에서 5자 사이여야 합니다. 이름이 공백이거나 비어있어도 안됩니다.";
-    private final String name;
+    private final CarName name;
     private Position position;
 
-    public RacingCar(String carName, long position) {
-        validateCarName(carName);
-        this.name = carName;
+    public RacingCar(String name, long position) {
+        this.name = new CarName(name);
         this.position = new Position(position);
     }
 
-    private void validateCarName(String carName) {
-        if (isOutOfLength(carName)) {
-            throw new IllegalStateException(CAR_NAME_LENGTH_EXCEPTION);
-        }
-    }
-
-    private boolean isOutOfLength(String carName) {
-        return carName.isEmpty() || carName.isBlank() || carName.length() > 5;
-    }
-
-    public RacingCar(String carName) {
-        this(carName, 0);
+    public RacingCar(String name) {
+        this(name, 0);
     }
 
     public void move(int randomNumber) {
