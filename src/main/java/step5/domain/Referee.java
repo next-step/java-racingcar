@@ -1,11 +1,12 @@
 package step5.domain;
 
+import step5.model.enums.StandardNumber;
+
 import java.util.Random;
 
 public class Referee {
-    public static final int CAR_MOBILITY_STANDARD = 5;
     public boolean judgeToMove() {
         Random random = new Random();
-        return random.nextInt(10) > CAR_MOBILITY_STANDARD;
+        return random.nextInt(10) > StandardNumber.CAR_MOBILITY_STANDARD.number();
     }
 }

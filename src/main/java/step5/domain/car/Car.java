@@ -47,18 +47,18 @@ public class Car {
         return Objects.equals(distance, car.distance);
     }
 
-    public String nameToString() {
-        return this.name.toString();
-    }
-    public String distanceToString() {
-        return this.distance.statusToString();
-    }
+
     public String statusToString() {
         String name = this.nameToString();
         String distance = this.distanceToString();
         return name + " : " + distance;
     }
-
+    public String nameToString() {
+        return this.name.toString();
+    }
+    private String distanceToString() {
+        return this.distance.statusToString();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
