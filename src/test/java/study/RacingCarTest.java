@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.policy.RacingCarPolicy;
-import study.utils.RandomUtils;
-import study.utils.StringUtils;
+import study.util.RandomNumberGenerator;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -31,7 +30,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("0-9 사이의 랜덤 숫자를 생성한다.")
     void getRandom0To9NumberTest() {
-        int randomNumber = RandomUtils.getRandomNumber();
+        int randomNumber = RandomNumberGenerator.getRandomNumber();
         assertThat(randomNumber).isBetween(0, 9);
     }
 

@@ -5,10 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.domain.Car;
-import study.domain.CarService;
+import study.service.CarService;
 import study.repository.CarRepository;
 import study.repository.MemoryCarRepository;
-import study.utils.RandomUtils;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

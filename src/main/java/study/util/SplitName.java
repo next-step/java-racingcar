@@ -1,14 +1,12 @@
-package study.utils;
+package study.util;
 
 import study.validator.NameValidator;
 
-import java.util.regex.Pattern;
-
-public class StringUtils {
+public class SplitName {
     private static final String PATTERN = ",";
 
     public static String[] splitStringAndValidateNames(String input) {
-        String[] names = StringUtils.splitString(input);
+        String[] names = SplitName.splitString(input);
         for (String name : names) {
             NameValidator.carsNameValidator(name);
         }

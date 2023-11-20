@@ -1,6 +1,7 @@
 package study.domain;
 
 import study.repository.CarRepository;
+import study.service.CarService;
 import study.view.ResultView;
 
 import java.util.List;

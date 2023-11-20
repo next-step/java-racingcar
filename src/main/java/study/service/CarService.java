@@ -1,7 +1,8 @@
-package study.domain;
+package study.service;
 
+import study.domain.Car;
 import study.repository.CarRepository;
-import study.utils.RandomUtils;
+import study.util.RandomNumberGenerator;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class CarService {
     public List<Car> racingCar() {
         List<Car> cars = findAllCars();
         for (Car car : cars) {
-            car.moving(RandomUtils.getRandomNumber());
+            car.moving(RandomNumberGenerator.getRandomNumber());
         }
         return cars;
     }
