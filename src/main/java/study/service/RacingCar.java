@@ -18,7 +18,6 @@ public class RacingCar {
     }
     public List<Car> racing() {
         return carService.racingCar();
-
     }
 
     public List<Car> findWinner() {

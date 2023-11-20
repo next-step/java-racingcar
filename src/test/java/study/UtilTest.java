@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class RacingCarTest {
+public class UtilTest {
 
     @ParameterizedTest
     @ValueSource(strings = "1")
@@ -49,4 +49,5 @@ public class RacingCarTest {
         boolean result = RacingCarPolicy.canMovingCar(input);
         assertThat(result).isTrue();
     }
+
 }

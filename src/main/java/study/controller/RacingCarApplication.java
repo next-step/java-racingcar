@@ -14,12 +14,12 @@ public class RacingCarApplication {
 
         String setNameOfCars = InputView.setNameOfCars();
         String[] carNames = splitStringAndValidateNames(setNameOfCars);
-        int setNumberOfMoves = InputView.setNumberOfMoves();
         RacingCar racingCar = new RacingCar(memoryCarRepository);
+        racingCar.setCarName(carNames);
+        int setNumberOfMoves = InputView.setNumberOfMoves();
 
         // business logic
         ResultView.beforeRacingPrintMessage();
-        racingCar.setCarName(carNames);
         for (int i = 0; i < setNumberOfMoves; i++) {
             ResultView.printCarNamesAndResults(racingCar.racing());
         }
