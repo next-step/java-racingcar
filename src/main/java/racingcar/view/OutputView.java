@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.List;
+
 public class OutputView {
 
     private static final String EXECUTION_RESULT = "실행 결과";
@@ -9,8 +11,8 @@ public class OutputView {
         System.out.println(EXECUTION_RESULT);
     }
 
-    public void printSingleGameResult(String gameResult) {
-        System.out.print(gameResult);
+    public void printGameResult(List<String> gameResults) {
+        gameResults.forEach(System.out::print);
     }
 
     public void printWinners(String winners) {

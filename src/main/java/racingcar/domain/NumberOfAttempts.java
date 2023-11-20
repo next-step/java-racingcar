@@ -28,7 +28,7 @@ public class NumberOfAttempts {
         return new NumberOfAttempts(this.number - NUMBER_OF_TRIALS);
     }
 
-    public boolean existsLeftNumberOfAttempts() {
+    public boolean isLeft() {
         return this.number > NO_REMAINING_RACES_NUMBER;
     }
 
@@ -40,8 +40,8 @@ public class NumberOfAttempts {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        NumberOfAttempts that = (NumberOfAttempts) o;
-        return number == that.number;
+        NumberOfAttempts number1 = (NumberOfAttempts) o;
+        return number == number1.number;
     }
 
     @Override

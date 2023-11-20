@@ -37,6 +37,14 @@ public class RacingCar {
         return this.name.getName();
     }
 
+    public long updateMaxPosition(long maxPosition) {
+        return this.position.compare(maxPosition);
+    }
+
+    public boolean isLocated(long finishLine) {
+        return this.position.isSame(finishLine);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -1,22 +1,24 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.BOUND;
-
-import java.util.List;
+import racingcar.dto.GameResultInfo;
 
 public class RacingGame {
     private final RandomService randomService;
+    private final RacingCars racingCars;
+    private final NumberOfAttempts numberOfAttempts;
 
-    public RacingGame(RandomService randomService) {
+    public RacingGame(RandomService randomService, RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
         this.randomService = randomService;
+        this.racingCars = racingCars;
+        this.numberOfAttempts = numberOfAttempts;
     }
 
-    public List<RacingCar> startSingleGame(List<RacingCar> racingCars) {
-        raceOnce(racingCars);
-        return racingCars;
+    public GameResultInfo startSingleGame() {
+        racingCars.raceOnce(randomService);
+        return createGameResultInfo();
     }
 
-    private void raceOnce(List<RacingCar> racingCars) {
-        racingCars.forEach(racingCar -> racingCar.move(randomService.nextInt(BOUND)));
+    private GameResultInfo createGameResultInfo() {
+        return new GameResultInfo(racingCars.createGameResult(), numberOfAttempts.attempt());
     }
 }

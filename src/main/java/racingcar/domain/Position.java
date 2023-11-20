@@ -32,6 +32,14 @@ public class Position {
         return (int) Math.max(this.number, number);
     }
 
+    public long compare(long maxPosition) {
+        return Math.max(maxPosition, this.number);
+    }
+
+    public boolean isSame(long finishLine) {
+        return this.number == finishLine;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

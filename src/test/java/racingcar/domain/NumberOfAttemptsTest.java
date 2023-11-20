@@ -43,7 +43,7 @@ public class NumberOfAttemptsTest {
         NumberOfAttempts numberOfAttempts = new NumberOfAttempts(given);
 
         // when
-        boolean result = numberOfAttempts.existsLeftNumberOfAttempts();
+        boolean result = numberOfAttempts.isLeft();
 
         // then
         assertThat(result).isEqualTo(expected);
