@@ -2,17 +2,16 @@ package study.race.model;
 
 import java.util.Random;
 
-public class RunTrack {
+public class Racing {
 
     private  final int RANDOM_LIMIT_NUMBER = 10;
     private Random random;
     private Cars cars;
     private RaceResult raceResult;
 
-
-    public RunTrack(String[] namesOfCar) {
+    public Racing(Cars cars) {
         this.random = new Random();
-        this.cars = new CarListGenerator().generateCarList(namesOfCar);
+        this.cars = cars;
         this.raceResult = new RaceResult(this.cars);
     }
 
@@ -26,5 +25,10 @@ public class RunTrack {
 
     public RaceResult getRaceResult() {
         return this.raceResult;
+    }
+
+    public String getWinners() {
+        Winners winners = this.raceResult.findWinners();
+        return winners.getString();
     }
 }

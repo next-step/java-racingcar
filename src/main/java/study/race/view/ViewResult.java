@@ -7,10 +7,14 @@ import java.util.Map;
 
 public class ViewResult {
 
-    public void printRaceResult(RaceResult raceResult) {
-        for (Map.Entry<String, Integer> result: raceResult.getResult().entrySet()) {
+    public void printRacingResult(RaceResult raceResult) {
+        for (Map.Entry<String, Integer> result : raceResult.getResult().entrySet()) {
             System.out.println(result.getKey() + " : " + "-".repeat(result.getValue()));
         }
         System.out.println();
+    }
+
+    public void printRacingWinners(String winners) {
+        System.out.println(winners + " won in the racing.");
     }
 }

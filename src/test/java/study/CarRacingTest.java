@@ -3,7 +3,6 @@ package study;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,31 +14,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingTest {
 
-    private static final int NUMBER_OF_CAR = 3;
     private static final String CAR_NAMES = "audi,benz,hd,kia";
-    private static String[] carNames;
     private static Cars stopCars;
     private static Cars moveCars;
 
     @BeforeAll
     static void init() {
-        carNames = CAR_NAMES.split(",");
-        stopCars = new CarListGenerator().generateCarList(carNames);
-        moveCars = new CarListGenerator().generateCarList(carNames);
+        stopCars = new RacingRegister().register(CAR_NAMES);
+        moveCars = new RacingRegister().register(CAR_NAMES);
     }
 
     @Test
     @DisplayName("Create Cars to Race")
-    void generateCarListTest() {
-        Cars cars = new CarListGenerator().generateCarList(carNames);
-        assertThat(cars.carList().size()).isEqualTo(carNames.length);
+    void generateCarsTest() {
+        Cars cars = new RacingRegister().register(CAR_NAMES);
+        assertThat(cars.carList().size()).isEqualTo(CAR_NAMES.split(",").length);
     }
 
     @ParameterizedTest()
     @DisplayName("When moving distance is 3 or less, car initial movement Test")
     @CsvSource({"0, 1", "1, 1", "2, 1", "3, 1"})
     void initialMoveCar() {
-        Cars cars = new CarListGenerator().generateCarList(carNames);
+        Cars cars = new RacingRegister().register(CAR_NAMES);
         Car car = cars.carList().get(0);
         car.move(1);
         int result = car.getCurrentLocation();
@@ -87,22 +83,19 @@ public class CarRacingTest {
     @DisplayName("Generating car as many as car names")
     @ValueSource(strings = {"car1,car2", "car1,car2,car3", "car1,car2,car3,car4"})
     void generateCarAsManyAsCarNames(String input) {
-        String[] names = input.split(",");
-        Cars cars = new CarListGenerator().generateCarList(names);
-        assertThat(cars.carList().size()).isEqualTo(names.length);
+        Cars cars = new RacingRegister().register(input);
+        assertThat(cars.carList().size()).isEqualTo(input.split(",").length);
     }
 
     @ParameterizedTest()
     @DisplayName("Check for length of car's name greater than 5.")
     @ValueSource(strings = { "car1,superCar", "car1,car2,car34567", "audi,benz,hyundai,kia"})
     void checkLengthOfCarNameTest(String input) {
-        String[] names = input.split(",");
+        Cars cars = new RacingRegister().register(input);
 
-        new CarRacingInputManager().getRaceInfo();
-
-        //Test에서 RaceInfo를 받아서 거기에 있는 이름이 다섯자를 안넘는지 체크
-
-        boolean result = new CarRacing().checkLengthLimitOfCarName(names);
-        assertThat(result).isEqualTo(false);
+        for (Car car: cars.carList()) {
+            String carName = car.getName();
+            assertThat(carName.length()).isLessThan(6);
+        }
     }
 }

@@ -4,12 +4,12 @@ public class Car {
 
     private String name;
     private int currentLocation;
-    private CarLocationManager carLocationManager;
+    private CarMovingDistance carMovingDistance;
 
     public Car(String name) {
         this.name = name;
-        this.carLocationManager = new CarLocationManager();
-        this.currentLocation = carLocationManager.initMovingDistance();
+        this.carMovingDistance = new CarMovingDistance();
+        this.currentLocation = carMovingDistance.initMovingDistance();
     }
 
     public String getName() {
@@ -20,6 +20,6 @@ public class Car {
     }
 
     public void move(int movingDistance) {
-        this.currentLocation = carLocationManager.updateLocation(this.currentLocation, movingDistance);
+        this.currentLocation = this.carMovingDistance.updateMovingDistance(this.currentLocation, movingDistance);
     }
 }
