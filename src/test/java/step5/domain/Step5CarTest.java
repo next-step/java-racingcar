@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
         String name = "홍길동";
         Car car = Car.defaultOf(name);
 
-        boolean result = car.isDistance(1);
+        boolean result = car.sameDistance(1);
 
         assertThat(result).isTrue();
     }
@@ -53,7 +53,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
         car.move(true);
 
-        Assertions.assertThat(car.isDistance(2)).isTrue();
+        Assertions.assertThat(car.sameDistance(2)).isTrue();
     }
 
     @Test

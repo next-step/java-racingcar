@@ -24,7 +24,7 @@ public class Strep5NameTest {
     }
 
     @Test
-    @DisplayName("이름 길이 5자 초과 금지")
+    @DisplayName("이름 길이 초과 예외 테스트")
     void name_object_test_limit_length() throws Exception {
 
         String name = "이름이 5자 이상 ";

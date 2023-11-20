@@ -27,7 +27,7 @@ public class Car {
 
     }
 
-    public boolean isDistance(int distanceOfComparing) {
+    public boolean sameDistance(int distanceOfComparing) {
         return this.distance.equals(Distance.of(distanceOfComparing));
     }
 
