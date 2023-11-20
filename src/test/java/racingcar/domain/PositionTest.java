@@ -35,4 +35,18 @@ public class PositionTest {
         // then
         assertThat(result).isEqualTo(new Position(expected));
     }
+
+    @ParameterizedTest
+    @DisplayName("포지션을 비교해 더 큰 포지션을 알려준다.")
+    @CsvSource(value = {"1, 2, 2", "1, 1, 1", "16, 15, 16"})
+    void compare_position(long given, long when, long expected) {
+        // given
+        Position position = new Position(given);
+
+        // when
+        long result = position.compare(when);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
 }
