@@ -21,12 +21,6 @@ public class GeneralValidator {
         }
     }
 
-    public static void validateContains(String substring, String value, String message) {
-        if (!value.contains(substring)) {
-            throw new IllegalArgumentException(message);
-        }
-    }
-
     private static boolean containsDuplicateSubstring(String substring, String value) {
         String doubleSubstring = substring.repeat(2);
         return value.contains(doubleSubstring);

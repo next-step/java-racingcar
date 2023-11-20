@@ -9,7 +9,7 @@ public class CarNameValidator {
 
     private static void validateLength(String name) {
         if (!isValidLength(name)){
-            throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
+            throw new IllegalArgumentException(String.format("이름은 %d자를 넘을 수 없습니다.", MAX_NAME_LENGTH));
         }
     }
 

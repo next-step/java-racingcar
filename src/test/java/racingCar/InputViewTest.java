@@ -23,6 +23,7 @@ public class InputViewTest {
         Reader reader = new FakeReader(input);
         InputView inputView = InputView.of(reader, printer);
 
+        // when & then
         assertThatIllegalArgumentException().isThrownBy(inputView::inputPlayer)
                 .withMessage("플레이어의 이름은 ,로 구분된 형식으로 입력해야합니다. 예) pobi,crong,honux");
     }
@@ -35,6 +36,7 @@ public class InputViewTest {
         Reader reader = new FakeReader(input);
         InputView inputView = InputView.of(reader, printer);
 
+        // when & then
         assertThatCode(inputView::inputPlayer)
                 .doesNotThrowAnyException();
     }

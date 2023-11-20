@@ -23,6 +23,7 @@ public class Application {
 
         NumberGenerator numberGenerator = new RandomNumberGenerator();
         MovementGenerator movementGenerator = new MovementGenerator(numberGenerator);
+
         RacingController racingController = new RacingController(inputView, outputView, movementGenerator);
         racingController.run();
     }

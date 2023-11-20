@@ -39,6 +39,6 @@ public class CarGroup {
         return carGroup.stream()
                 .map(Car::getDistance)
                 .max(Integer::compareTo)
-                .orElse(0);
+                .orElse(Distance.DEFAULT_DISTANCE);
     }
 }

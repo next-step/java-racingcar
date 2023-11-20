@@ -1,6 +1,7 @@
 package racingCar.domain;
 
 public class Distance{
+    public static final int DEFAULT_DISTANCE = 0;
     private int distance;
 
     public Distance(int distance) {
@@ -8,7 +9,7 @@ public class Distance{
     }
 
     public static Distance init() {
-        return new Distance(0);
+        return new Distance(DEFAULT_DISTANCE);
     }
 
     public void increase() {
