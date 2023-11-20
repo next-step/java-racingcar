@@ -49,4 +49,19 @@ public class PositionTest {
         // then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @DisplayName("포지션을 비교해 동일한 포지션인지 확인한다.")
+    @CsvSource(value = {"1, 2, false", "1, 1, true", "16, 16, true"})
+    void validate_position_that_is_same_or_not(long given, long when, boolean expected) {
+        // given
+        Position position = new Position(given);
+
+        // when
+        boolean result = position.isSame(when);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
+
 }
