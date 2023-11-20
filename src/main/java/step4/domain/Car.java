@@ -1,13 +1,13 @@
 package step4.domain;
 
 public class Car {
-    private String name;
+    private Name name;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
     }
 
     public String name() {
-        return this.name;
+        return this.name.name();
     }
 }
