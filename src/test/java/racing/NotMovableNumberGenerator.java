@@ -1,6 +1,8 @@
 package racing;
 
-public class NotMovableNumberGenerator implements NumberGenerator{
+import racing.generator.NumberGenerator;
+
+public class NotMovableNumberGenerator implements NumberGenerator {
     private static final int DEFAULT_NOT_MOVABLE_VALUE = 1;
 
     @Override
