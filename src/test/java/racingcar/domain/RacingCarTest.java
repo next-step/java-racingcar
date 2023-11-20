@@ -63,4 +63,18 @@ public class RacingCarTest {
         // then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @DisplayName("경주차가 결승선에 위치해 있는지 확인한다.")
+    @CsvSource(value = {"3, 4, false", "6, 6, true", "4, 0, false"})
+    void validate_position_that_is_finish_line(long given, long when, boolean expected) {
+        // given
+        RacingCar racingCar = new RacingCar("k5", given);
+
+        // when
+        boolean result = racingCar.isLocated(when);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
 }
