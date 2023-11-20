@@ -17,7 +17,6 @@ public class CarName {
         }
     }
 
-
     private boolean isOutOfLength(String name) {
         return name.isEmpty() || name.isBlank() || name.length() > 5;
     }

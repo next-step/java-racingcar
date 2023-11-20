@@ -9,9 +9,9 @@ import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 import racingcar.domain.RandomService;
+import racingcar.dto.TotalRacingGameResult;
 import racingcar.service.RacingCarService;
 import racingcar.view.OutputView;
-import racingcar.dto.TotalRacingGameResult;
 import racingcar.view.WinnerUtils;
 
 public class RacingGameController {

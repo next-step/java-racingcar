@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.NUMBER_OF_COMPARTMENTS_TO_MOVE;
 import static racingcar.constant.Constant.FIRST_POSITION;
+import static racingcar.constant.Constant.NUMBER_OF_COMPARTMENTS_TO_MOVE;
 
 import java.util.Objects;
 

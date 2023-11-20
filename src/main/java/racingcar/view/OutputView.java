@@ -4,8 +4,8 @@ import java.util.List;
 
 public class OutputView {
 
-    private static final String EXECUTION_RESULT = "실행 결과";
     public static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
+    private static final String EXECUTION_RESULT = "실행 결과";
 
     public void printGameResultMessage() {
         System.out.println(EXECUTION_RESULT);

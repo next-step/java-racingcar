@@ -3,8 +3,6 @@ package racingcar.config;
 import java.util.Random;
 import java.util.Scanner;
 import racingcar.controller.RacingGameController;
-import racingcar.domain.DefaultRandomService;
-import racingcar.domain.RandomService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

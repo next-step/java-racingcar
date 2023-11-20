@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Calculator {
 
-    private static final String DEFAULT_SUM_NUMBER = "0";
     public static final String CANNOT_CALCULATE_EXCEPTION = "계산할 수 없는 수식입니다. 현재 계산기에 해당 수식을 계산할 수 있는 구분자가 존재하지 않습니다.";
+    private static final String DEFAULT_SUM_NUMBER = "0";
     private final List<Separator> separators;
 
     public Calculator(List<Separator> separators) {

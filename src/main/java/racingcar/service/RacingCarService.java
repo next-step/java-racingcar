@@ -2,11 +2,11 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.dto.GameResultInfo;
 import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RandomService;
+import racingcar.dto.GameResultInfo;
 import racingcar.dto.TotalRacingGameResult;
 
 public class RacingCarService {
