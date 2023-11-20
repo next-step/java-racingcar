@@ -1,21 +1,22 @@
 package racingcar.domain;
 
 import static racingcar.constant.Constant.DASH;
+import static racingcar.constant.Constant.DEFAULT_POSITION;
 import static racingcar.constant.Constant.LEAST_MOVE_CONDITION;
-import static racingcar.constant.Constant.START_POSITION;
-import static racingcar.constant.Constant.ZERO;
 
 import java.util.Objects;
 
 public class RacingCar {
+    private final CarName name;
     private Position position;
 
-    public RacingCar() {
-        this(START_POSITION);
+    public RacingCar(String name, long position) {
+        this.name = new CarName(name);
+        this.position = new Position(position);
     }
 
-    public RacingCar(long position) {
-        this.position = new Position(position);
+    public RacingCar(String name) {
+        this(name, 0);
     }
 
     public void move(int randomNumber) {
@@ -29,7 +30,19 @@ public class RacingCar {
     }
 
     public String movingDistance() {
-        return DASH.repeat(position.sizeComparison(ZERO));
+        return DASH.repeat(position.sizeComparison(DEFAULT_POSITION));
+    }
+
+    public String getCarName() {
+        return this.name.getName();
+    }
+
+    public long updateMaxPosition(long maxPosition) {
+        return this.position.compare(maxPosition);
+    }
+
+    public boolean isLocated(long finishLine) {
+        return this.position.isSame(finishLine);
     }
 
     @Override

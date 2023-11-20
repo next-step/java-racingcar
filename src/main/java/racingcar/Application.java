@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.config.Configuration;
 import racingcar.controller.RacingGameController;
 import racingcar.domain.PositiveNumber;
@@ -11,10 +12,10 @@ public class Application {
         Configuration configuration = new Configuration();
         InputView inputView = configuration.inputView();
 
-        PositiveNumber numberOfCars = inputView.numberOfCars();
+        List<String> carNames = inputView.carNames();
         PositiveNumber numberOfAttempts = inputView.numberOfAttempts();
 
         RacingGameController controller = configuration.racingGameController();
-        controller.run(numberOfCars, numberOfAttempts);
+        controller.run(carNames, numberOfAttempts);
     }
 }

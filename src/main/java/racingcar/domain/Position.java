@@ -1,9 +1,12 @@
 package racingcar.domain;
 
+import static racingcar.constant.Constant.FIRST_POSITION;
+import static racingcar.constant.Constant.NUMBER_OF_COMPARTMENTS_TO_MOVE;
+
 import java.util.Objects;
 
 public class Position {
-    public static final String POSITION_CANNOT_BE_NEGATIVE_NUMBER_EXCEPTION = "포지션은 양수만 가능합니다.";
+    public static final String POSITION_CANNOT_BE_NEGATIVE_NUMBER_EXCEPTION = "포지션에 음수를 입력했습니다. 포지션은 양수만 가능합니다.";
     private final long number;
 
     public Position(long number) {
@@ -18,15 +21,23 @@ public class Position {
     }
 
     private boolean isMinus(long number) {
-        return number < 0;
+        return number < FIRST_POSITION;
     }
 
     public Position move() {
-        return new Position(this.number + 1);
+        return new Position(this.number + NUMBER_OF_COMPARTMENTS_TO_MOVE);
     }
 
     public int sizeComparison(long number) {
         return (int) Math.max(this.number, number);
+    }
+
+    public long compare(long maxPosition) {
+        return Math.max(maxPosition, this.number);
+    }
+
+    public boolean isSame(long finishLine) {
+        return this.number == finishLine;
     }
 
     @Override

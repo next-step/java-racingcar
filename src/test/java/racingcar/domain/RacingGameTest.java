@@ -3,9 +3,9 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.GameResultInfo;
 
 public class RacingGameTest {
 
@@ -13,29 +13,36 @@ public class RacingGameTest {
     @DisplayName("자동차 게임을 실행한다.")
     void startGame() {
         // given
-        RacingGame racingGame = new RacingGame(new DoubleRandomService(4));
-        List<RacingCar> racingCars = createRacingCars();
+        RacingGame racingGame = new RacingGame(new DoubleRandomService(4), createRacingCars(),
+                createNumberOfAttempts());
 
         // when
-        List<RacingCar> result = racingGame.startSingleGame(racingCars);
+        GameResultInfo gameResultInfo = racingGame.startSingleGame();
 
         // then
-        assertThat(result).isEqualTo(createExpectedRacingCars());
+        assertThat(gameResultInfo).isEqualTo(createExpectedGameResultInfo());
     }
 
-    private List<RacingCar> createRacingCars() {
-        return Arrays.asList(
-                new RacingCar(0),
-                new RacingCar(0),
-                new RacingCar(0)
-        );
+    private RacingCars createRacingCars() {
+        return new RacingCars(Arrays.asList(
+                new RacingCar("tobi", 0),
+                new RacingCar("pobi", 0),
+                new RacingCar("k5", 0)
+        ));
     }
 
-    private List<RacingCar> createExpectedRacingCars() {
-        return Arrays.asList(
-                new RacingCar(1),
-                new RacingCar(1),
-                new RacingCar(1)
-        );
+    private NumberOfAttempts createNumberOfAttempts() {
+        return new NumberOfAttempts(3);
+    }
+
+    private GameResultInfo createExpectedGameResultInfo() {
+        return new GameResultInfo(createGameResult(), new NumberOfAttempts(2));
+    }
+
+    private String createGameResult() {
+        return "tobi : -\n"
+                + "pobi : -\n"
+                + "k5 : -\n"
+                + '\n';
     }
 }

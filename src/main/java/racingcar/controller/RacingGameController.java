@@ -1,46 +1,51 @@
 package racingcar.controller;
 
-import static racingcar.constant.Constant.ZERO;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import racingcar.domain.DefaultRandomService;
+import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
-import racingcar.domain.RacingGame;
-import racingcar.domain.RacingGameResult;
+import racingcar.domain.RacingCars;
+import racingcar.domain.RandomService;
+import racingcar.dto.TotalRacingGameResult;
+import racingcar.service.RacingCarService;
 import racingcar.view.OutputView;
+import racingcar.view.WinnerUtils;
 
 public class RacingGameController {
-
-    private final RacingGame racingGame;
-    private final RacingGameResult racingGameResult;
     private final OutputView outputView;
 
-    public RacingGameController(RacingGame racingGame, RacingGameResult racingGameResult, OutputView outputView) {
-        this.racingGame = racingGame;
-        this.racingGameResult = racingGameResult;
+    public RacingGameController(OutputView outputView) {
         this.outputView = outputView;
     }
 
-    public void run(PositiveNumber numberOfCars, PositiveNumber numberOfAttempts) {
-        List<RacingCar> racingCars = createRacingCars(numberOfCars);
-        startAllGames(numberOfAttempts, racingCars);
+    public void run(List<String> carNames, PositiveNumber numberOfAttempts) {
+        startAllGames(createRacingCars(carNames), createNumberOfAttempts(numberOfAttempts));
     }
 
-    private List<RacingCar> createRacingCars(PositiveNumber numberOfCars) {
+    private RacingCars createRacingCars(List<String> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars.getNumber(); i++) {
-            racingCars.add(new RacingCar());
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
-        return racingCars;
+        return new RacingCars(racingCars);
     }
 
-    private void startAllGames(PositiveNumber positiveNumber, List<RacingCar> racingCars) {
+    private NumberOfAttempts createNumberOfAttempts(PositiveNumber numberOfAttempts) {
+        return new NumberOfAttempts(numberOfAttempts.getNumber());
+    }
+
+    private void startAllGames(RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
         outputView.printGameResultMessage();
-        long numberOfAttempts = positiveNumber.getNumber();
-        while (numberOfAttempts-- > ZERO) {
-            racingGame.startSingleGame(racingCars);
-            outputView.printSingleGameResult(racingGameResult.create(racingCars));
-        }
+        RacingCarService racingCarService = new RacingCarService(createRandomService(), racingCars, numberOfAttempts);
+        TotalRacingGameResult totalRacingGameResult = racingCarService.startGame();
+        outputView.printGameResult(totalRacingGameResult.getGameResults());
+        outputView.printWinners(WinnerUtils.inform(totalRacingGameResult.getWinners()));
+    }
+
+    private RandomService createRandomService() {
+        return new DefaultRandomService(new Random());
     }
 }

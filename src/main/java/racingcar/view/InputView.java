@@ -1,27 +1,23 @@
 package racingcar.view;
 
+import static racingcar.constant.Constant.COMMA;
+
+import java.util.List;
 import java.util.Scanner;
 import racingcar.domain.PositiveNumber;
 
 public class InputView {
-
-    public static final String INPUT_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
+    public static final String INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     public static final String INPUT_NUMBER_OF_ATTEMPTS = "시도할 회수는 몇 회 인가요?";
-    public static final String INPUT_NUMBER_OF_CARS_EXCEPTION = "입력한 자동차 갯수가 올바르지 않습니다.";
     private final Scanner scanner;
 
     public InputView(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public PositiveNumber numberOfCars() {
-        System.out.println(INPUT_NUMBER_OF_CARS);
-        try {
-            return readPositiveNumber();
-        } catch (IllegalArgumentException e) {
-            scanner.close();
-            throw new IllegalArgumentException(INPUT_NUMBER_OF_CARS_EXCEPTION);
-        }
+    public List<String> carNames() {
+        System.out.println(INPUT_CAR_NAMES);
+        return List.of(scanner.nextLine().split(COMMA));
     }
 
     public PositiveNumber numberOfAttempts() {
