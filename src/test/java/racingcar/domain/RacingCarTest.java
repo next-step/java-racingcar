@@ -49,4 +49,18 @@ public class RacingCarTest {
         // then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @DisplayName("가장 큰 위치를 갱신한다.")
+    @CsvSource(value = {"3, 4, 4", "6, 5, 6", "4, 0, 4"})
+    void compare_position_and_tmp_max_position(long given, long when, long expected) {
+        // given
+        RacingCar racingCar = new RacingCar("k5", given);
+
+        // when
+        long result = racingCar.updateMaxPosition(when);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
 }
