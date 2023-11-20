@@ -1,5 +1,6 @@
 package racingCar.view;
 
+import java.util.List;
 import racingCar.domain.Car;
 import racingCar.domain.CarGroup;
 import racingCar.view.formatter.OutputFomatter;
@@ -24,5 +25,10 @@ public class OutputView {
         String carName = formatter.toCarName(car);
         String movement = formatter.toMovement(car);
         printer.printLine("%s : %s", carName, movement);
+    }
+
+    public void printWinnerGroup(List<Car> winnerGroup) {
+        String winners = formatter.toWinners(winnerGroup);
+        printer.printLine("%s가 최종우승했습니다.", winners);
     }
 }

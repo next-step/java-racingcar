@@ -12,15 +12,17 @@ public class RacingManagerTest {
     @ParameterizedTest
     @CsvSource(value = {"2, false", "3, true"})
     void canPlay(int maxCount, boolean canPlay) {
+        // given
         CarGroup carGroup = CarGroup.from(List.of("pobi","crong"));
         TryCount tryCount = TryCount.from(maxCount);
         MovementGenerator movementGenerator = new MovementGenerator(new RandomNumberGenerator());
         RacingManager racingManager = new RacingManager(carGroup, tryCount, movementGenerator);
 
+        // when
         racingManager.playTurn();
         racingManager.playTurn();
 
+        // then
         assertThat(racingManager.canPlay()).isEqualTo(canPlay);
     }
-
 }

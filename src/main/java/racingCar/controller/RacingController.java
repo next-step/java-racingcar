@@ -1,5 +1,7 @@
 package racingCar.controller;
 
+import java.util.List;
+import racingCar.domain.Car;
 import racingCar.domain.CarGroup;
 import racingCar.domain.MovementGenerator;
 import racingCar.domain.RacingManager;
@@ -26,5 +28,6 @@ public class RacingController {
             racingManager.playTurn();
             outputView.printMovement(carGroup);
         }
+        outputView.printWinnerGroup(carGroup.getWinnerGroup());
     }
 }

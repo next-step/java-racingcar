@@ -27,4 +27,18 @@ public class CarGroup {
     public List<Car> getCarGroup() {
         return carGroup;
     }
+
+    public List<Car> getWinnerGroup() {
+        int maxDistance = getMaxDistance();
+        return carGroup.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    private int getMaxDistance() {
+        return carGroup.stream()
+                .map(Car::getDistance)
+                .max(Integer::compareTo)
+                .orElse(0);
+    }
 }

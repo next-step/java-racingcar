@@ -1,6 +1,6 @@
 package racingCar.domain;
 
-public class Distance {
+public class Distance{
     private int distance;
 
     public Distance(int distance) {
