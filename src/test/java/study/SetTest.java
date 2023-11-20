@@ -25,6 +25,13 @@ public class SetTest {
         numbers.add(3);
     }
 
+    @Test
+    @DisplayName("set 자료구조 중복 제거 검사")
+    public void contains1() {
+
+        assertThat(numbers.size() == 3).isTrue();
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("특정 값이 Set에 존재하는지 확인하는 테스트")

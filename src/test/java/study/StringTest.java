@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,14 +21,11 @@ public class StringTest {
     }
 
 
-    @Test
+    @ParameterizedTest
     @DisplayName("특정 문자열 (괄호) 제거")
-    public String split2(String input) {
-
-        String result = removeParentheses(input);
-
-        return result;
-        // assertThat(result).contains("1,2");
+    @CsvSource(value = {"(1,2):1,2"}, delimiter = ':')
+    public void split2(String input, String expected) {
+        assertThat(removeParentheses(input)).isEqualTo(expected);
     }
 
     private String removeParentheses(String input) {
@@ -38,7 +37,6 @@ public class StringTest {
     @DisplayName("제한 위치 외 문자열 검색 에러")
     public void split3() {
 
-        // 범위를 벗어나는 위치의 문자 가져오기 - StringIndexOutOfBoundsException 예상
         assertThrows(StringIndexOutOfBoundsException.class, () -> {
             char result = ABC.charAt(5);
         });
