@@ -1,13 +1,15 @@
 package racing.model;
 
+import racing.model.strategy.NumberGeneratorStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private final Random random = new Random();
     public static final int START_PROGRESS = 0;
+    public static final int NUMBER_RANGE = 10;
     private final List<RacingCar> cars;
 
     Cars(List<RacingCar> cars) {
@@ -25,14 +27,10 @@ public class Cars {
         return this.cars;
     }
 
-    public void raceAllCars(){
+    public void raceAllCars(NumberGeneratorStrategy strategy){
         for (RacingCar car : this.cars) {
-            car.race(generateRandomInt());
+            car.race(strategy.generateNumber(NUMBER_RANGE));
         }
-    }
-
-    public int generateRandomInt(){
-        return random.nextInt(10);
     }
 
     public int getTopSpeed() {

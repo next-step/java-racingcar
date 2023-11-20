@@ -16,7 +16,7 @@ public class OutputView {
 
     public void showRaceProgress(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            System.out.println(car.getName() + " : " + ICON.repeat(car.getProgress()));
+            System.out.println(car.getName() + " : " + ICON.repeat(car.getMoveCondition()));
         }
         System.out.println();
     }

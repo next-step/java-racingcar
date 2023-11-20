@@ -18,7 +18,8 @@ public class Names {
     public int size() {
         return this.names.size();
     }
-    public String name(int index){
+
+    public String name(int index) {
         if (names.size() <= index) {
             throw new ArrayIndexOutOfBoundsException("인덱스 범위를 벗어납니다.");
         }
