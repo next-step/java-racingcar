@@ -14,6 +14,7 @@ public class RacingCarService {
         for (int i = 0; i < roundCount; i++) {
             result.saveRoundResult(cars.race());
         }
+        result.saveWinners(cars);
 
         return result;
     }

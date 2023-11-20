@@ -22,8 +22,8 @@ public class Car {
         this.distance = distance;
     }
 
-    public Name name() {
-        return this.name;
+    public String name() {
+        return this.name.name();
     }
 
     public void move(MovingStrategy movingStrategy) {

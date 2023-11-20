@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GameResult {
     private static final List<List<Integer>> resultBoard = new ArrayList<>();
-//    private  winnerList = new ArrayList<>();
+    private  Winners winnerList = new Winners();
 
     public List<List<Integer>> resultBoard() {
         return Collections.unmodifiableList(resultBoard);
@@ -14,5 +14,13 @@ public class GameResult {
 
     public void saveRoundResult(List<Integer> roundResult) {
         resultBoard.add(roundResult);
+    }
+
+    public void saveWinners(Cars cars) {
+        winnerList.findWinners(cars);
+    }
+
+    public Winners winnerList() {
+        return winnerList;
     }
 }

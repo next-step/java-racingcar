@@ -9,6 +9,7 @@ public class CarRacingController {
         GameResult result = RacingCarService.playRound(nameString, roundCount);
         OutputView.printResultStatement();
         OutputView.drawResultView(result.resultBoard());
+        OutputView.printWinner(result.winnerList().winners());
     }
 
 }

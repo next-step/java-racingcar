@@ -39,8 +39,8 @@ public class Cars {
         return Collections.unmodifiableList(resultPerRound);
     }
 
-    public List<Name> findWinners() {
-        List<Name> winnerList = new ArrayList<>();
+    public List<String> findWinners() {
+        List<String> winnerList = new ArrayList<>();
         int maxDistance = findMaxDistance();
         for (Car car : carList) {
             addWinner(winnerList, car, maxDistance);
@@ -49,7 +49,7 @@ public class Cars {
         return winnerList;
     }
 
-    private void addWinner(List<Name> winnerList, Car car, int maxDistance) {
+    private void addWinner(List<String> winnerList, Car car, int maxDistance) {
         if (car.distance() == maxDistance) {
             winnerList.add(car.name());
         }
