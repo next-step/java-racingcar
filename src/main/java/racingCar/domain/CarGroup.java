@@ -1,5 +1,6 @@
 package racingCar.domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,15 +25,11 @@ public class CarGroup {
         carGroup.forEach(car -> car.move(movementGenerator.generate()));
     }
 
-    public List<Car> getCarGroup() {
-        return carGroup;
-    }
-
-    public List<Car> getWinnerGroup() {
+    public WinnerGroup getWinnerGroup() {
         int maxDistance = getMaxDistance();
         return carGroup.stream()
                 .filter(car -> car.getDistance() == maxDistance)
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(), WinnerGroup::new));
     }
 
     private int getMaxDistance() {
@@ -40,5 +37,9 @@ public class CarGroup {
                 .map(Car::getDistance)
                 .max(Integer::compareTo)
                 .orElse(Distance.DEFAULT_DISTANCE);
+    }
+
+    public List<Car> getCarGroup() {
+        return Collections.unmodifiableList(carGroup);
     }
 }

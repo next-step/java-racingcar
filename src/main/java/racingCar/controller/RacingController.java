@@ -4,6 +4,7 @@ import racingCar.domain.CarGroup;
 import racingCar.domain.MovementGenerator;
 import racingCar.domain.RacingManager;
 import racingCar.domain.TryCount;
+import racingCar.domain.WinnerGroup;
 import racingCar.view.InputView;
 import racingCar.view.OutputView;
 
@@ -36,6 +37,7 @@ public class RacingController {
     }
 
     private void showWinnerGroup(CarGroup carGroup) {
-        outputView.printWinnerGroup(carGroup.getWinnerGroup());
+        WinnerGroup winnerGroup = carGroup.getWinnerGroup();
+        outputView.printWinnerGroup(winnerGroup);
     }
 }

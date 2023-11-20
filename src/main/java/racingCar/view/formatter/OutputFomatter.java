@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingCar.common.Symbol;
 import racingCar.domain.Car;
+import racingCar.domain.WinnerGroup;
 
 public class OutputFomatter {
 
@@ -18,8 +19,8 @@ public class OutputFomatter {
         return MOVEMENT_MARK.repeat(car.getDistance());
     }
 
-    public String toWinners(List<Car> winners) {
-        List<String> winnerGroup = winners.stream()
+    public String toWinners(WinnerGroup winners) {
+        List<String> winnerGroup = winners.getWinnerGroup().stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
         return String.join(WINNERS_SEPARATOR, winnerGroup);
