@@ -16,7 +16,7 @@ public class Winner {
         return winners;
     }
 
-    private static void addWinners(Position maxPosition, List<Car> winners, Car car) {
+    private void addWinners(Position maxPosition, List<Car> winners, Car car) {
         if (maxPosition.equals(car.getPosition())) {
             winners.add(car);
         }
