@@ -1,5 +1,7 @@
 package study.racingCar;
 
+import java.util.List;
+
 import static study.racingCar.RandomNumGenerator.getRandomNum;
 
 public class Controller {
@@ -9,7 +11,7 @@ public class Controller {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         StringToIntConverter converter = new StringToIntConverter();
-        Car[] cars;
+        List<Car> cars;
         int tryCount = 0;
 
         try{

@@ -1,6 +1,7 @@
 package study.racingCar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static study.racingCar.RandomNumGenerator.getRandomNum;
 
@@ -10,7 +11,7 @@ public class CarRacingGame {
     public CarRacingGame() {
     }
 
-    public void playGame(int tryCount, Car[] cars){
+    public void playGame(int tryCount, List<Car> cars){
         for (int i = 0; i < tryCount; i++) {
             roundGameResult(cars);
             System.out.println();
@@ -19,7 +20,7 @@ public class CarRacingGame {
         printWinners(theWinner.createWinners(cars, theWinner.findTheWinner(cars)));
     }
 
-    private void printWinners(ArrayList<Car> theWinners){
+    private void printWinners(List<Car> theWinners){
         System.out.print("우승자:: ");
         for (Car theWinner : theWinners) {
             theWinner.printName();
@@ -27,7 +28,7 @@ public class CarRacingGame {
         }
     }
 
-    private void roundGameResult(Car[] cars){
+    private void roundGameResult(List<Car> cars){
         ResultView resultView = new ResultView();
         for (Car car : cars) {
             car.move(getRandomNum());
@@ -35,11 +36,11 @@ public class CarRacingGame {
         }
     }
 
-    public Car[] createCarList(String carName){
+    public List<Car> createCarList(String carName){
         String[] carNames = nameSplit(carName);
-        Car[] cars = new Car[carNames.length];
-        for (int i=0; i<carNames.length; i++) {
-            cars[i] = new Car(carNames[i]);
+        List<Car> cars = new ArrayList<Car>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
         return cars;
     }

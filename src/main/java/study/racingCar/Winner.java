@@ -5,21 +5,21 @@ import java.util.List;
 
 public class Winner {
 
-    private final ArrayList<Car> winners;
+    private final List<Car> winners;
 
     public Winner() {
         this.winners = new ArrayList<>();
     }
 
-    public Car findTheWinner(Car[] cars){
-        Car theWinner = cars[0];
+    public Car findTheWinner(List<Car> cars){
+        Car theWinner = cars.get(0);
         for (Car car : cars) {
             theWinner = car.getTheWinner(theWinner);
         }
         return theWinner;
     }
 
-    public ArrayList<Car> createWinners(Car[] cars, Car winner){
+    public List<Car> createWinners(List<Car> cars, Car winner){
         for (Car car : cars) {
             addWinners(car, winner);
         }
