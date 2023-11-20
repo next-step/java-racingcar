@@ -11,18 +11,11 @@
 
 ## 기능 목록
 
-
-1. InputView, ResultView, Conroller, RacingModel 클래스를 나눈다.
-2. InputView에서 자동차 개수를 입력받는다.
-3. InputView에서 시도할 횟수를 입력받는다.
-4. controller에서 exception을 고려하여 inputview를 실행시킨다.
-5. RacingModel에서 0에서 9 사이의 random값을 만드는 객체를 생성한다.
-7. position에서 생성자로 포지션값을 설정할 수 있도록 / 테스트
-8. position에서 음수값을 가졌을때 오류
-8. car객체에서 position을 갖고있음
-9. car에서 position을 받아서 전진 테스트
-10. car에서 position을 받아서 멈춤 테스트
-11. 라운드가 진행될 때 car객체들의 position을 받아와서 출력
-
+1. 자동차에 이름을 부여 -> car 클래스 생성자에서 이름을 가질 수 있도록 생성
+2. 자동차 이름은 5자를 초과할 수 없다.
+3. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+4. 자동차 이름은 쉼표(,)를 기준으로 구분한다. -> 자동차 이름 입력시 split로 구분
+5. 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다
+6. 우승자는 한명 이상일 수 있다.
 
 

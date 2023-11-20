@@ -44,29 +44,6 @@ public class Car {
         return "Car{" +
                 "name='" + name + '\'' +
                 '}';
-=======
-import java.util.PrimitiveIterator;
-import java.util.Random;
-
-public class Car {
-
-    private Position position;
-
-    public Car() {
-        this(0);
-    }
-
-    public Car(int num){
-        this.position =  new Position(num);
-    }
-
-    public Position currentPosition(){
-        return position;
-    }
-
-    public void move(int num){
-        this.position = this.position.increase(num);
-
     }
 
     @Override

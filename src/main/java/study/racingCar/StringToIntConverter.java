@@ -12,5 +12,4 @@ public class StringToIntConverter {
         }
         return num;
     }
-
 }

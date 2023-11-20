@@ -1,51 +1,34 @@
 package study.racingCar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static study.racingCar.RandomNumGenerator.getRandomNum;
 
 public class CarRacingGame {
 
-    private ArrayList<Car> theWinners;
 
     public CarRacingGame() {
-        this.theWinners = new ArrayList<>();
     }
 
-    public void playGame(int tryCount, Car[] cars){
+    public void playGame(int tryCount, List<Car> cars){
         for (int i = 0; i < tryCount; i++) {
             roundGameResult(cars);
             System.out.println();
         }
-        Car winner = getTheWinner(cars);
-        getTheWinners(cars, winner);
-        printWinners();
+        Winner theWinner = new Winner();
+        printWinners(theWinner.createWinners(cars, theWinner.findTheWinner(cars)));
     }
 
-    private void printWinners(){
-        System.out.print("승자:: ");
+    private void printWinners(List<Car> theWinners){
+        System.out.print("우승자:: ");
         for (Car theWinner : theWinners) {
             theWinner.printName();
+            System.out.println(" ");
         }
     }
 
-    private void getTheWinners(Car[] cars, Car winner){
-        for (Car car : cars) {
-            if (car.isSamePosition(winner)){
-                this.theWinners.add(car);
-            }
-        }
-    }
-
-    private Car getTheWinner(Car[] cars){
-        Car theWinner = cars[0];
-        for (Car car : cars) {
-            theWinner = car.getTheWinner(theWinner);
-        }
-        return theWinner;
-    }
-
-    private void roundGameResult(Car[] cars){
+    private void roundGameResult(List<Car> cars){
         ResultView resultView = new ResultView();
         for (Car car : cars) {
             car.move(getRandomNum());
@@ -53,11 +36,11 @@ public class CarRacingGame {
         }
     }
 
-    public Car[] createCarList(String carName){
+    public List<Car> createCarList(String carName){
         String[] carNames = nameSplit(carName);
-        Car[] cars = new Car[carNames.length];
-        for (int i=0; i<carNames.length; i++) {
-            cars[i] = new Car(carNames[i]);
+        List<Car> cars = new ArrayList<Car>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
         return cars;
     }
