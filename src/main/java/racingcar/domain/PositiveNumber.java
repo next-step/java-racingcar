@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.ZERO_NUMBER;
-
 public class PositiveNumber {
     public static final String NOT_NUMBER_EXCEPTION = "값이 숫자가 아닙니다. 숫자만 입력할 수 있습니다.";
     public static final String NOT_POSITIVE_NUMBER_EXCEPTION = "숫자가 음수입니다. 숫자는 양수만 입력할 수 있습니다.";
@@ -30,7 +28,7 @@ public class PositiveNumber {
     }
 
     private boolean isMinus(long number) {
-        return number < ZERO_NUMBER;
+        return number < 0;
     }
 
     public long getNumber() {
