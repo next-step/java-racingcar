@@ -33,4 +33,17 @@ public class RacingCarsTest {
                 new RacingCar("k7", 2)
         );
     }
+
+    @Test
+    @DisplayName("우승자를 알려준다.")
+    void find_winners() {
+        // given
+        RacingCars racingCars = new RacingCars(createRacingCars());
+
+        // when
+        List<String> result = racingCars.findWinners();
+
+        // then
+        assertThat(result).isEqualTo(List.of("k3"));
+    }
 }
