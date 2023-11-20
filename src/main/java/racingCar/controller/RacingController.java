@@ -1,6 +1,7 @@
 package racingCar.controller;
 
 import racingCar.domain.PlayerGroup;
+import racingCar.domain.TryCount;
 import racingCar.view.InputView;
 import racingCar.view.OutputView;
 
@@ -14,6 +15,7 @@ public class RacingController {
     }
 
     public void run() {
-        PlayerGroup.from(inputView.inputPlayer());
+        PlayerGroup playerGroup = PlayerGroup.from(inputView.inputPlayer());
+        TryCount tryCount = TryCount.from(inputView.inputTryCount());
     }
 }

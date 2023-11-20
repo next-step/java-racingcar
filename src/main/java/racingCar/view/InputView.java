@@ -24,9 +24,16 @@ public class InputView {
     }
 
     public List<String> inputPlayer() {
-        printer.printLine("플레이어의 이름은 ,로 구분된 형식으로 입력해야합니다. 예) pobi,crong,honux");
+        printer.printLine("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String playerGroup = reader.readLine();
         validator.validatePlayerGroup(PLAYER_SEPARATOR, playerGroup);
         return Converter.splitToList(PLAYER_SEPARATOR, playerGroup);
+    }
+
+    public int inputTryCount() {
+        printer.printLine("시도할 회수는 몇회인가요?");
+        String tryCount = reader.readLine();
+        validator.validateTryCount(tryCount);
+        return Converter.convertToInt(tryCount);
     }
 }
