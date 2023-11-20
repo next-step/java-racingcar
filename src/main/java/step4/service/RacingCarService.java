@@ -1,7 +1,5 @@
 package step4.service;
 
-
-import step4.domain.Car;
 import step4.domain.Cars;
 import step4.domain.GameResult;
 import step4.strategy.MovingStrategy;

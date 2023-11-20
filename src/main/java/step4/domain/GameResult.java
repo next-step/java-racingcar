@@ -7,7 +7,7 @@ import java.util.List;
 public class GameResult {
     private static final List<List<Integer>> resultBoard = new ArrayList<>();
 
-    public List<List<Integer>> showResult() {
+    public List<List<Integer>> resultBoard() {
         return Collections.unmodifiableList(resultBoard);
     }
 
