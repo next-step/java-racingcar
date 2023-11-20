@@ -1,6 +1,9 @@
 package racingCar;
 
 import racingCar.controller.RacingController;
+import racingCar.domain.MovementGenerator;
+import racingCar.domain.NumberGenerator;
+import racingCar.domain.RandomNumberGenerator;
 import racingCar.view.InputView;
 import racingCar.view.OutputView;
 import racingCar.view.formatter.OutputFomatter;
@@ -18,7 +21,9 @@ public class Application {
         OutputFomatter outputFomatter = new OutputFomatter();
         OutputView outputView = new OutputView(printer, outputFomatter);
 
-        RacingController racingController = new RacingController(inputView, outputView);
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        MovementGenerator movementGenerator = new MovementGenerator(numberGenerator);
+        RacingController racingController = new RacingController(inputView, outputView, movementGenerator);
         racingController.run();
     }
 }
