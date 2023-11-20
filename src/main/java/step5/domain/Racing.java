@@ -28,7 +28,7 @@ public class Racing {
         }
     }
 
-    public Winners winnerIs() {
+    public Cars winnerIs() {
         return this.cars.voteWinner();
     }
 

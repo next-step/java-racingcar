@@ -59,6 +59,8 @@ public class Car {
     private String distanceToString() {
         return this.distance.statusToString();
     }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

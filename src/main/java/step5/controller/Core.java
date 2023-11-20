@@ -2,7 +2,7 @@ package step5.controller;
 
 import step5.domain.Racing;
 import step5.domain.Referee;
-import step5.domain.Winners;
+import step5.domain.car.Cars;
 import step5.view.InPutView;
 
 public class Core {
@@ -18,7 +18,7 @@ public class Core {
         Racing racing = Racing.defaultOf(names,referee,howManyTry);
 
         racing.start();
-        Winners winners = racing.winnerIs();
+        Cars winners = racing.winnerIs();
 
         // 최대한 View객체가 도메인으로 침투하지 않는 방식을 생각해봤습니다.
         // 상태에 대한 값이 아니라 String을 반환받아 출력하는 형식으로 도전해봤습니다.

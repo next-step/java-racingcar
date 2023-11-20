@@ -38,7 +38,7 @@ public class Step5CarsTest {
         Cars cars = Cars.defaultOf(List.of(포비, 쿠키, 포우));
 
         // when
-        Winners winners = cars.voteWinner();
+        Cars winners = cars.voteWinner();
 
         // then
         Assertions.assertThat(winners.count()).isEqualTo(2);
