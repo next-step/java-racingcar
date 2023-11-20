@@ -1,6 +1,5 @@
 package racingcar.config;
 
-import java.util.Random;
 import java.util.Scanner;
 import racingcar.controller.RacingGameController;
 import racingcar.view.InputView;
@@ -18,10 +17,6 @@ public class Configuration {
 
     public RacingGameController racingGameController() {
         return new RacingGameController(outputView());
-    }
-
-    private Random random() {
-        return new Random();
     }
 
     private OutputView outputView() {
