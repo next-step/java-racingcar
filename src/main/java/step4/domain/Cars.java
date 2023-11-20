@@ -15,6 +15,12 @@ public class Cars {
         }
     }
 
+    Cars(String[] nameArr, int[] distanceArr) {
+        for (int i = 0; i < nameArr.length; i++) {
+            add(new Car(nameArr[i], distanceArr[i]));
+        }
+    }
+
     public int carCount() {
         return carList.size();
     }
@@ -31,5 +37,33 @@ public class Cars {
         }
 
         return Collections.unmodifiableList(resultPerRound);
+    }
+
+    public List<Name> findWinners() {
+        List<Name> winnerList = new ArrayList<>();
+        int maxDistance = findMaxDistance();
+        for (Car car : carList) {
+            addWinner(winnerList, car, maxDistance);
+        }
+
+        return winnerList;
+    }
+
+    private void addWinner(List<Name> winnerList, Car car, int maxDistance) {
+        if (car.distance() == maxDistance) {
+            winnerList.add(car.name());
+        }
+    }
+    private int findMaxDistance() {
+        int maxDistance = 0;
+        for (Car car : carList) {
+            maxDistance = compareDistance(maxDistance, car.distance());
+        }
+
+        return maxDistance;
+    }
+
+    private int compareDistance(int distance1, int distance2) {
+        return Math.max(distance1, distance2);
     }
 }

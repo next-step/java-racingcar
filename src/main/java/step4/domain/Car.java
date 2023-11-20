@@ -13,12 +13,17 @@ public class Car {
         this.movingStrategy = movingStrategy;
     }
 
-    public Car(String name) {
+    Car(String name) {
         this.name = new Name(name);
     }
 
-    public String name() {
-        return this.name.name();
+    Car(String name, int distance) {
+        this.name = new Name(name);
+        this.distance = distance;
+    }
+
+    public Name name() {
+        return this.name;
     }
 
     public void move(MovingStrategy movingStrategy) {
