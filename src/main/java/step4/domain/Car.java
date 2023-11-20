@@ -1,7 +1,7 @@
 package step4.domain;
 
 public class Car {
-    private Name name;
+    private final Name name;
 
     public Car(String name) {
         this.name = new Name(name);
