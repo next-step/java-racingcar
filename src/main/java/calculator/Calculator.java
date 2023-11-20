@@ -51,7 +51,7 @@ public class Calculator {
     }
 
     private static void checkException(String str) {
-        if(!Pattern.compile("\\d").matcher(str).find()){
+        if(!Pattern.compile("\\d+").matcher(str).matches()){
             throw new RuntimeException("올바르지 않은 문자입력 : " + str);
         }
     }
@@ -73,15 +73,6 @@ public class Calculator {
         for (int i = 0; i < values.length; i++) {
             numbers[i] = Integer.parseInt(values[i]);
         }
-        negativeValueValidation(numbers);
         return numbers;
-    }
-
-    private static void negativeValueValidation(int[] intArray) {
-        for (int val : intArray) {
-            if (val < 0) {
-                throw new RuntimeException("올바르지 않은 문자입력 : " + val);
-            }
-        }
     }
 }
