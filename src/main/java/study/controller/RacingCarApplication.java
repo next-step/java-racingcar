@@ -1,6 +1,6 @@
 package study.controller;
 
-import study.domain.RacingCar;
+import study.service.RacingCar;
 import study.repository.CarRepository;
 import study.repository.MemoryCarRepository;
 import study.view.InputView;
@@ -15,11 +15,14 @@ public class RacingCarApplication {
         String setNameOfCars = InputView.setNameOfCars();
         String[] carNames = splitStringAndValidateNames(setNameOfCars);
         int setNumberOfMoves = InputView.setNumberOfMoves();
-        RacingCar racingCar = new RacingCar(carNames, setNumberOfMoves, memoryCarRepository);
+        RacingCar racingCar = new RacingCar(memoryCarRepository);
 
         // business logic
         ResultView.beforeRacingPrintMessage();
-        racingCar.startRacing();
+        racingCar.setCarName(carNames);
+        for (int i = 0; i < setNumberOfMoves; i++) {
+            ResultView.printCarNamesAndResults(racingCar.racing());
+        }
         ResultView.printFinalWinnerNames(racingCar.findWinner());
     }
 }

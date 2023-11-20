@@ -1,6 +1,7 @@
 package study.domain;
 
 import study.policy.RacingCarPolicy;
+import study.util.RandomNumberGenerator;
 
 import java.util.Objects;
 
@@ -25,10 +26,20 @@ public class Car {
         return position;
     }
 
+    public void moving() {
+        if (RacingCarPolicy.canMovingCar(getRandomNumber())) {
+            this.position += 1;
+        }
+    }
+
     public void moving(int num) {
         if (RacingCarPolicy.canMovingCar(num)) {
             this.position += 1;
         }
+    }
+
+    protected int getRandomNumber() {
+        return RandomNumberGenerator.getRandomNumber();
     }
 
     public boolean matchPosition(int position) {
