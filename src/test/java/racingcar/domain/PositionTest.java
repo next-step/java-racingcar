@@ -24,4 +24,13 @@ public class PositionTest {
 
         assertThat(position_a.equals(position_b)).isTrue();
     }
+
+    @Test
+    @DisplayName("포지션 이동 비교 테스트")
+    void position_move() {
+        Position position = new Position(3);
+        position.move();
+
+        assertThat(position.equals(new Position(4))).isTrue();
+    }
 }
