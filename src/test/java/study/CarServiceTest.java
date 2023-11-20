@@ -63,4 +63,18 @@ public class CarServiceTest {
         Car car = new Car("a", 3);
         assertThat(car.matchPosition(3)).isTrue();
     }
+
+    @Test
+    @DisplayName("테스트하기 힘든 부분을 분리해 테스트 가능하도록 구조화한다. ")
+    void carRandomTest() {
+        Car car = new Car("a") {
+            @Override
+            protected int getRandomNumber() {
+                return 4;
+            }
+        };
+
+        car.moving();
+        assertThat(car.matchPosition(1)).isTrue();
+    }
 }
