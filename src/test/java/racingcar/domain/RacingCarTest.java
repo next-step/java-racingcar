@@ -35,4 +35,18 @@ public class RacingCarTest {
         // then
         assertThat(racingCar).isEqualTo(new RacingCar("pobi", 0));
     }
+
+    @ParameterizedTest
+    @DisplayName("이동한 거리만큼 DASH 를 그린다.")
+    @CsvSource(value = {"3, ---", "6, ------", "0,''"})
+    void create_dash_with_moving_distance(long given, String expected) {
+        // given
+        RacingCar racingCar = new RacingCar("k5", given);
+
+        // when
+        String result = racingCar.movingDistance();
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
 }
