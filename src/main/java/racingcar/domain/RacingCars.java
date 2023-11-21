@@ -1,59 +1,60 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.BOUND;
-import static racingcar.constant.Constant.COLON;
-import static racingcar.constant.Constant.ENTER;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingCars {
-
+    public static final int BOUND = 10;
     private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
 
-    public void raceOnce(RandomService randomService) {
+    public RacingCars raceOnce(RandomService randomService) {
         for (RacingCar racingCar : this.racingCars) {
             racingCar.move(randomService.nextInt(BOUND));
         }
-    }
-
-    public String createGameResult() {
-        StringJoiner stringJoiner = new StringJoiner(ENTER);
-        for (RacingCar racingCar : this.racingCars) {
-            stringJoiner.add(racingCar.getCarName() + COLON + racingCar.movingDistance());
-        }
-        return stringJoiner.add(ENTER).toString();
+        return this;
     }
 
     public List<String> findWinners() {
-        List<String> winners = new ArrayList<>();
-        long finishLine = findMaxPosition();
-        for (RacingCar racingCar : this.racingCars) {
-            addWinnerTo(racingCar, finishLine, winners);
-        }
-        return winners;
+        return findWinnersWith(findMaxPosition());
     }
 
-    private void addWinnerTo(RacingCar racingCar, long finishLine, List<String> winners) {
-        if (isWinner(racingCar, finishLine)) {
-            winners.add(racingCar.getCarName());
-        }
-    }
-
-    private boolean isWinner(RacingCar racingCar, long finishLine) {
-        return racingCar.isLocated(finishLine);
+    private List<String> findWinnersWith(long finishLine) {
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isLocated(finishLine))
+                .map(RacingCar::getCarName)
+                .collect(Collectors.toList());
     }
 
     private long findMaxPosition() {
-        long maxPosition = 0;
-        for (RacingCar racingCar : this.racingCars) {
-            maxPosition = racingCar.updateMaxPosition(maxPosition);
+        return this.racingCars.stream()
+                .reduce(0L,
+                        (currentMax, racingCar) -> racingCar.updateMaxPosition(currentMax),
+                        Long::max);
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
-        return maxPosition;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(racingCars, that.racingCars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingCars);
     }
 }

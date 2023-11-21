@@ -13,11 +13,10 @@ public class RacingGameTest {
     @DisplayName("자동차 게임을 실행한다.")
     void startGame() {
         // given
-        RacingGame racingGame = new RacingGame(new DoubleRandomService(4), createRacingCars(),
-                createNumberOfAttempts());
+        RacingGame racingGame = new RacingGame(new DoubleRandomService(4));
 
         // when
-        GameResultInfo gameResultInfo = racingGame.startSingleGame();
+        GameResultInfo gameResultInfo = racingGame.startSingleGame(createRacingCars(), createNumberOfAttempts());
 
         // then
         assertThat(gameResultInfo).isEqualTo(createExpectedGameResultInfo());
@@ -36,13 +35,14 @@ public class RacingGameTest {
     }
 
     private GameResultInfo createExpectedGameResultInfo() {
-        return new GameResultInfo(createGameResult(), new NumberOfAttempts(2));
+        return GameResultInfo.valueOf(createExpectedRacingCars(), new NumberOfAttempts(2));
     }
 
-    private String createGameResult() {
-        return "tobi : -\n"
-                + "pobi : -\n"
-                + "k5 : -\n"
-                + '\n';
+    private RacingCars createExpectedRacingCars() {
+        return new RacingCars(Arrays.asList(
+                new RacingCar("tobi", 1),
+                new RacingCar("pobi", 1),
+                new RacingCar("k5", 1)
+        ));
     }
 }

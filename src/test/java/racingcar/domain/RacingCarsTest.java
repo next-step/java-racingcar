@@ -16,17 +16,16 @@ public class RacingCarsTest {
     @CsvSource(value = {"4, 4, 3, 3", "3, 3, 2, 2"})
     void race_once(int randomNumber, long position1, long position2, long position3) {
         // given
-        List<RacingCar> result = createRacingCars();
-        RacingCars racingCars = new RacingCars(result);
+        RacingCars racingCars = new RacingCars(createRacingCars());
 
         // when
-        racingCars.raceOnce(new DoubleRandomService(randomNumber));
+        RacingCars result = racingCars.raceOnce(new DoubleRandomService(randomNumber));
 
         // then
-        assertThat(result).isEqualTo(Arrays.asList(
+        assertThat(result).isEqualTo(new RacingCars(Arrays.asList(
                 new RacingCar("k3", position1),
                 new RacingCar("k5", position2),
-                new RacingCar("k7", position3)
+                new RacingCar("k7", position3))
         ));
     }
 
@@ -36,23 +35,6 @@ public class RacingCarsTest {
                 new RacingCar("k5", 2),
                 new RacingCar("k7", 2)
         );
-    }
-
-    @Test
-    @DisplayName("1회 경주 결과를 알려준다.")
-    void create_single_game_result() {
-        // given
-        RacingCars racingCars = new RacingCars(createRacingCars());
-
-        // when
-        String result = racingCars.createGameResult();
-
-        // then
-        assertThat(result).isEqualTo(
-                "k3 : ---\n"
-                        + "k5 : --\n"
-                        + "k7 : --\n"
-                        + "\n");
     }
 
     @Test

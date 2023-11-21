@@ -1,12 +1,9 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.DASH;
-import static racingcar.constant.Constant.DEFAULT_POSITION;
-import static racingcar.constant.Constant.LEAST_MOVE_CONDITION;
-
 import java.util.Objects;
 
 public class RacingCar {
+    public static final int LEAST_MOVE_CONDITION = 4;
     private final CarName name;
     private Position position;
 
@@ -29,12 +26,12 @@ public class RacingCar {
         return randomNumber >= LEAST_MOVE_CONDITION;
     }
 
-    public String movingDistance() {
-        return DASH.repeat(position.sizeComparison(DEFAULT_POSITION));
-    }
-
     public String getCarName() {
         return this.name.getName();
+    }
+
+    public long getPosition() {
+        return this.position.getNumber();
     }
 
     public long updateMaxPosition(long maxPosition) {

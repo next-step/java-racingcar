@@ -2,27 +2,50 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import racingcar.domain.DefaultRandomService;
 import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.domain.RandomService;
-import racingcar.dto.TotalRacingGameResult;
+import racingcar.dto.GameResultInfo;
+import racingcar.dto.RacingCarDto;
 import racingcar.service.RacingCarService;
 import racingcar.view.OutputView;
-import racingcar.view.WinnerUtils;
 
 public class RacingGameController {
+    private final RacingCarService racingCarService;
     private final OutputView outputView;
 
-    public RacingGameController(OutputView outputView) {
+    public RacingGameController(RacingCarService racingCarService, OutputView outputView) {
         this.outputView = outputView;
+        this.racingCarService = racingCarService;
     }
 
     public void run(List<String> carNames, PositiveNumber numberOfAttempts) {
-        startAllGames(createRacingCars(carNames), createNumberOfAttempts(numberOfAttempts));
+        informWinners(startAllGames(createRacingCars(carNames), createNumberOfAttempts(numberOfAttempts)));
+    }
+
+    private void informWinners(List<RacingCarDto> finalGameResult) {
+        outputView.printWinners(createRacingCarsWith(finalGameResult).findWinners());
+    }
+
+    private RacingCars createRacingCarsWith(List<RacingCarDto> finalGameResult) {
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (RacingCarDto racingCarDto : finalGameResult) {
+            racingCars.add(new RacingCar(racingCarDto.getCarName(), racingCarDto.getPosition()));
+        }
+        return new RacingCars(racingCars);
+    }
+
+    private List<RacingCarDto> startAllGames(RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
+        outputView.printGameResultMessage();
+        List<RacingCarDto> racingCarDtos;
+        do {
+            GameResultInfo gameResultInfo = racingCarService.startGame(racingCars, numberOfAttempts);
+            numberOfAttempts = gameResultInfo.getLeftNumberOfAttempts();
+            racingCarDtos = gameResultInfo.getRacingCarDtos();
+            outputView.printGameResult(racingCarDtos);
+        } while (numberOfAttempts.isLeft());
+        return racingCarDtos;
     }
 
     private RacingCars createRacingCars(List<String> carNames) {
@@ -35,17 +58,5 @@ public class RacingGameController {
 
     private NumberOfAttempts createNumberOfAttempts(PositiveNumber numberOfAttempts) {
         return new NumberOfAttempts(numberOfAttempts.getNumber());
-    }
-
-    private void startAllGames(RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
-        outputView.printGameResultMessage();
-        RacingCarService racingCarService = new RacingCarService(createRandomService(), racingCars, numberOfAttempts);
-        TotalRacingGameResult totalRacingGameResult = racingCarService.startGame();
-        outputView.printGameResult(totalRacingGameResult.getGameResults());
-        outputView.printWinners(WinnerUtils.inform(totalRacingGameResult.getWinners()));
-    }
-
-    private RandomService createRandomService() {
-        return new DefaultRandomService(new Random());
     }
 }

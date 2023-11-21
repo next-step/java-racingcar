@@ -37,20 +37,6 @@ public class RacingCarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("이동한 거리만큼 DASH 를 그린다.")
-    @CsvSource(value = {"3, ---", "6, ------", "0,''"})
-    void create_dash_with_moving_distance(long given, String expected) {
-        // given
-        RacingCar racingCar = new RacingCar("k5", given);
-
-        // when
-        String result = racingCar.movingDistance();
-
-        // then
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
     @DisplayName("가장 큰 위치를 갱신한다.")
     @CsvSource(value = {"3, 4, 4", "6, 5, 6", "4, 0, 4"})
     void compare_position_and_tmp_max_position(long given, long when, long expected) {

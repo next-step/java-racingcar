@@ -1,11 +1,10 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.NO_REMAINING_RACES_NUMBER;
-import static racingcar.constant.Constant.NUMBER_OF_TRIALS;
-
 import java.util.Objects;
 
 public class NumberOfAttempts {
+    public static final int NUMBER_OF_TRIALS = 1;
+    public static final int NO_REMAINING_RACES_NUMBER = 0;
     public static final String NONE_LEFT_NUMBER_OF_ATTEMPTS_EXCEPTION = "남은 경주 횟수가 0이거나 0보다 작은 경우 경주를 할 수 없습니다.";
     private final long number;
 
