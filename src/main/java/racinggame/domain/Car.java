@@ -3,23 +3,21 @@ package racinggame.domain;
 public class Car {
 
     private String name;
-
-    private int position;
+    private Position position;
 
     public Car(String name, int position) {
         this.name = name;
-        this.position = position;
+        this.position = new Position(position);
     }
 
-    public int move(int value) {
-        if(value < 0){
+    public void move(int value) {
+        if (value < 0) {
             throw new IllegalArgumentException("음수는 입력 할 수 없습니다.");
         }
 
-        if(value >= 4){
-            return position += 1;
+        if (value >= 4) {
+            position.move();
         }
-        return 0;
     }
 
     public String getName() {
@@ -27,6 +25,6 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 }

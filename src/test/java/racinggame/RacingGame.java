@@ -14,12 +14,13 @@ public class RacingGame {
 
     @DisplayName("자동차 전진은 입력된 값이 4이상의 경우 position에 1만큼 더해 준다.")
     @Test
-    void 자동차_전진_성공_테스트(){
+    void 자동차_전진_성공_테스트() {
         //given
-        Car car = new Car("A",0);
+        Car car = new Car("A", 0);
 
         //when
-        int result = car.move(4);
+        car.move(4);
+        int result = car.getPosition();
 
         //then
         assertThat(result).isEqualTo(1);
@@ -27,12 +28,13 @@ public class RacingGame {
 
     @DisplayName("자동차 전진은 입력된 값이 3이하의 경우 position 변경이 없다.")
     @Test
-    void 자동차_전진_불가_테스트(){
+    void 자동차_전진_불가_테스트() {
         //given
-        Car car = new Car("A",0);
+        Car car = new Car("A", 0);
 
         //when
-        int result = car.move(3);
+        car.move(3);
+        int result = car.getPosition();
 
         //then
         assertThat(result).isEqualTo(0);
@@ -40,13 +42,13 @@ public class RacingGame {
 
     @DisplayName("자동차 전진은 입력된 값이 음수인 경우 오류가 발생된다.")
     @Test
-    void 자동차_전진_오류_테스트(){
-        assertThrows(IllegalArgumentException.class, () -> new Car("A",0).move(-1));
+    void 자동차_전진_오류_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> new Car("A", 0).move(-1));
     }
 
     @DisplayName("자동차 중 제일 큰 position를 구한 뒤, position의 값이 구한 값과 동일한 자동차를 우승자로 선정한다. 중복허용")
     @Test
-    void 자동차_우승자_선정_테스트(){
+    void 자동차_우승자_선정_테스트() {
         //given
         Car car1 = new Car("A", 5);
         Car car2 = new Car("B", 4);
