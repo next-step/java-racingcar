@@ -27,10 +27,6 @@ public class Position {
         return new Position(this.number + NUMBER_OF_COMPARTMENTS_TO_MOVE);
     }
 
-    public int sizeComparison(long number) {
-        return (int) Math.max(this.number, number);
-    }
-
     public long compare(long maxPosition) {
         return Math.max(maxPosition, this.number);
     }

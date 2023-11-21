@@ -31,10 +31,6 @@ public class NumberOfAttempts {
         return this.number > NO_REMAINING_RACES_NUMBER;
     }
 
-    public long getNumber() {
-        return number;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
