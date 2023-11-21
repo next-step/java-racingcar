@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GameResult {
     private static final List<List<Integer>> resultBoard = new ArrayList<>();
-    private  Winners winnerList = new Winners();
+    private final Winners winnerList = new Winners();
 
     public List<List<Integer>> resultBoard() {
         return Collections.unmodifiableList(resultBoard);

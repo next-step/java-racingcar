@@ -1,6 +1,6 @@
 package step4.domain;
 
-import step4.service.RacingCarService;
+import step4.strategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,9 +9,9 @@ import java.util.List;
 public class Cars {
     private static final List<Car> carList = new ArrayList<>();
 
-    public Cars(String[] nameArr) {
+    public Cars(String[] nameArr, MovingStrategy movingStrategy) {
         for (String name : nameArr) {
-            add(new Car(name, RacingCarService.movingStrategy));
+            add(new Car(name, movingStrategy));
         }
     }
 
