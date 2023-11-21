@@ -10,6 +10,8 @@ import java.util.List;
 public class RacingGame {
     public static void main(String[] args) {
 
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+
         InputView inputView = new InputView();
         String carNames = inputView.getCarNames();
         String[] splitCarName = splitCarName(carNames);
@@ -19,7 +21,10 @@ public class RacingGame {
 
         ResultView resultView = new ResultView();
         System.out.println("실행 결과");
-        cars.moveCars(retryCount, resultView);
+        for (int i = 0; i < retryCount; i++) {
+            cars.moveCars(moveStrategy);
+            resultView.print(cars);
+        }
         resultView.printWinner(cars.getWinner());
     }
 
