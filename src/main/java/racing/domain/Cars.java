@@ -9,28 +9,19 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private final RandomGenerateNumber randomGenerateNumber;
 
 
     public Cars(List<Car> cars) {
         this.cars = cars;
-        this.randomGenerateNumber = new RandomGenerateNumber();
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public void moveCars(int retryCount, ResultView resultView) {
-        for (int i = 0; i < retryCount; i++) {
-            moveCar();
-            resultView.print(cars);
-        }
-    }
-
-    private void moveCar() {
+    public void moveCars(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(randomGenerateNumber);
+            car.move(moveStrategy);
         }
     }
 
