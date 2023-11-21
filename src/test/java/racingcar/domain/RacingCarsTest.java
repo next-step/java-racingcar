@@ -16,17 +16,17 @@ public class RacingCarsTest {
     @CsvSource(value = {"4, 4, 3, 3", "3, 3, 2, 2"})
     void race_once(int randomNumber, long position1, long position2, long position3) {
         // given
-        List<RacingCar> result = createRacingCars();
-        RacingCars racingCars = new RacingCars(result);
+        List<RacingCar> given = createRacingCars();
+        RacingCars racingCars = new RacingCars(given);
 
         // when
-        racingCars.raceOnce(new DoubleRandomService(randomNumber));
+        RacingCars result = racingCars.raceOnce(new DoubleRandomService(randomNumber));
 
         // then
-        assertThat(result).isEqualTo(Arrays.asList(
+        assertThat(result).isEqualTo(new RacingCars(Arrays.asList(
                 new RacingCar("k3", position1),
                 new RacingCar("k5", position2),
-                new RacingCar("k7", position3)
+                new RacingCar("k7", position3))
         ));
     }
 
