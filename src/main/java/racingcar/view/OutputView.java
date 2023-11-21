@@ -1,6 +1,9 @@
 package racingcar.view;
 
+import static racingcar.constant.Constant.COMMA;
+
 import java.util.List;
+import java.util.StringJoiner;
 
 public class OutputView {
 
@@ -15,7 +18,11 @@ public class OutputView {
         gameResults.forEach(System.out::print);
     }
 
-    public void printWinners(String winners) {
-        System.out.printf(WINNER_MESSAGE, winners);
+    public void printWinners(List<String> winners) {
+        StringJoiner stringJoiner = new StringJoiner(COMMA);
+        for (String winner : winners) {
+            stringJoiner.add(winner);
+        }
+        System.out.printf(WINNER_MESSAGE, stringJoiner);
     }
 }

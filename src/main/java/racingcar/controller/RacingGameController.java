@@ -12,7 +12,6 @@ import racingcar.domain.RandomService;
 import racingcar.dto.TotalRacingGameResult;
 import racingcar.service.RacingCarService;
 import racingcar.view.OutputView;
-import racingcar.view.WinnerUtils;
 
 public class RacingGameController {
     private final OutputView outputView;
@@ -42,7 +41,7 @@ public class RacingGameController {
         RacingCarService racingCarService = new RacingCarService(createRandomService(), racingCars, numberOfAttempts);
         TotalRacingGameResult totalRacingGameResult = racingCarService.startGame();
         outputView.printGameResult(totalRacingGameResult.getGameResults());
-        outputView.printWinners(WinnerUtils.inform(totalRacingGameResult.getWinners()));
+        outputView.printWinners(totalRacingGameResult.getWinners());
     }
 
     private RandomService createRandomService() {
