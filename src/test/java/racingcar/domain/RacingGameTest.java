@@ -36,13 +36,14 @@ public class RacingGameTest {
     }
 
     private GameResultInfo createExpectedGameResultInfo() {
-        return new GameResultInfo(createGameResult(), new NumberOfAttempts(2));
+        return GameResultInfo.valueOf(createExpectedRacingCars(), new NumberOfAttempts(2));
     }
 
-    private String createGameResult() {
-        return "tobi : -\n"
-                + "pobi : -\n"
-                + "k5 : -\n"
-                + '\n';
+    private RacingCars createExpectedRacingCars() {
+        return new RacingCars(Arrays.asList(
+                new RacingCar("tobi", 1),
+                new RacingCar("pobi", 1),
+                new RacingCar("k5", 1)
+        ));
     }
 }

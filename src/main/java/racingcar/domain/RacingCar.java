@@ -3,9 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class RacingCar {
-    public static final long DEFAULT_POSITION = 0;
     public static final int LEAST_MOVE_CONDITION = 4;
-    public static final String MOVE_DISTANCE_EXPRESSION = "-";
     private final CarName name;
     private Position position;
 
@@ -28,12 +26,12 @@ public class RacingCar {
         return randomNumber >= LEAST_MOVE_CONDITION;
     }
 
-    public String movingDistance() {
-        return MOVE_DISTANCE_EXPRESSION.repeat(position.sizeComparison(DEFAULT_POSITION));
-    }
-
     public String getCarName() {
         return this.name.getName();
+    }
+
+    public long getPosition() {
+        return this.position.getNumber();
     }
 
     public long updateMaxPosition(long maxPosition) {

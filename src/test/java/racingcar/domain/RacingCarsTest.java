@@ -39,23 +39,6 @@ public class RacingCarsTest {
     }
 
     @Test
-    @DisplayName("1회 경주 결과를 알려준다.")
-    void create_single_game_result() {
-        // given
-        RacingCars racingCars = new RacingCars(createRacingCars());
-
-        // when
-        String result = racingCars.createGameResult();
-
-        // then
-        assertThat(result).isEqualTo(
-                "k3 : ---\n"
-                        + "k5 : --\n"
-                        + "k7 : --\n"
-                        + "\n");
-    }
-
-    @Test
     @DisplayName("우승자를 알려준다.")
     void find_winners() {
         // given

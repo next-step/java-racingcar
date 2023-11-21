@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class RacingCars {
     public static final int BOUND = 10;
@@ -12,18 +11,11 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    public void raceOnce(RandomService randomService) {
+    public RacingCars raceOnce(RandomService randomService) {
         for (RacingCar racingCar : this.racingCars) {
             racingCar.move(randomService.nextInt(BOUND));
         }
-    }
-
-    public String createGameResult() {
-        StringJoiner stringJoiner = new StringJoiner("\n");
-        for (RacingCar racingCar : this.racingCars) {
-            stringJoiner.add(racingCar.getCarName() + " : " + racingCar.movingDistance());
-        }
-        return stringJoiner.add("\n").toString();
+        return this;
     }
 
     public List<String> findWinners() {
@@ -51,5 +43,9 @@ public class RacingCars {
             maxPosition = racingCar.updateMaxPosition(maxPosition);
         }
         return maxPosition;
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }

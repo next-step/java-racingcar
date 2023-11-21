@@ -39,6 +39,10 @@ public class Position {
         return this.number == finishLine;
     }
 
+    public long getNumber() {
+        return number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

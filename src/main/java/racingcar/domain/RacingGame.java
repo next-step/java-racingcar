@@ -14,11 +14,7 @@ public class RacingGame {
     }
 
     public GameResultInfo startSingleGame() {
-        racingCars.raceOnce(randomService);
-        return createGameResultInfo();
-    }
-
-    private GameResultInfo createGameResultInfo() {
-        return new GameResultInfo(racingCars.createGameResult(), numberOfAttempts.attempt());
+        RacingCars racingCars = this.racingCars.raceOnce(randomService);
+        return GameResultInfo.valueOf(racingCars, numberOfAttempts.attempt());
     }
 }
