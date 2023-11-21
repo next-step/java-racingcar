@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.DASH;
+import static racingcar.constant.Constant.MOVE_DISTANCE_EXPRESSION;
 import static racingcar.constant.Constant.DEFAULT_POSITION;
 import static racingcar.constant.Constant.LEAST_MOVE_CONDITION;
 
@@ -30,7 +30,7 @@ public class RacingCar {
     }
 
     public String movingDistance() {
-        return DASH.repeat(position.sizeComparison(DEFAULT_POSITION));
+        return MOVE_DISTANCE_EXPRESSION.repeat(position.sizeComparison(DEFAULT_POSITION));
     }
 
     public String getCarName() {
