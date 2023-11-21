@@ -2,13 +2,10 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import racingcar.domain.DefaultRandomService;
 import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.PositiveNumber;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.domain.RandomService;
 import racingcar.dto.GameResultInfo;
 import racingcar.dto.RacingCarDto;
 import racingcar.service.RacingCarService;
