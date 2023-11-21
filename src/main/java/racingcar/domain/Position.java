@@ -1,11 +1,10 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.FIRST_POSITION;
-import static racingcar.constant.Constant.NUMBER_OF_COMPARTMENTS_TO_MOVE;
-
 import java.util.Objects;
 
 public class Position {
+    public static final int FIRST_POSITION = 0;
+    public static final int NUMBER_OF_COMPARTMENTS_TO_MOVE = 1;
     public static final String POSITION_CANNOT_BE_NEGATIVE_NUMBER_EXCEPTION = "포지션에 음수를 입력했습니다. 포지션은 양수만 가능합니다.";
     private final long number;
 

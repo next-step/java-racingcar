@@ -1,12 +1,11 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.MOVE_DISTANCE_EXPRESSION;
-import static racingcar.constant.Constant.DEFAULT_POSITION;
-import static racingcar.constant.Constant.LEAST_MOVE_CONDITION;
-
 import java.util.Objects;
 
 public class RacingCar {
+    public static final long DEFAULT_POSITION = 0;
+    public static final int LEAST_MOVE_CONDITION = 4;
+    public static final String MOVE_DISTANCE_EXPRESSION = "-";
     private final CarName name;
     private Position position;
 

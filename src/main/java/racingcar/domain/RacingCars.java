@@ -1,13 +1,11 @@
 package racingcar.domain;
 
-import static racingcar.constant.Constant.BOUND;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
 public class RacingCars {
-
+    public static final int BOUND = 10;
     private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
