@@ -38,4 +38,7 @@ public class Car {
         }
     }
 
+    public boolean samePosition(int maxPosition) {
+        return position == maxPosition;
+    }
 }

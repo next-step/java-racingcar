@@ -35,8 +35,9 @@ public class Cars {
     }
 
     public String getWinner() {
+        int maxPosition = getMaxPosition();
         List<String> winners = cars.stream()
-                .filter(car -> car.getPosition() == getMaxPosition())
+                .filter(car -> car.samePosition(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
         return String.join(",", winners);
