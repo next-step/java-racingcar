@@ -19,4 +19,9 @@ public class Name {
             throw new IllegalArgumentException("이름은 5글자를 넘길 수 없습니다 : " + name);
         }
     }
+
+    @Override
+    public String toString() {
+        return name + "";
+    }
 }
