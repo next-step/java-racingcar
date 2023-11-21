@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 import static racingcar.constant.Constant.BOUND;
-import static racingcar.constant.Constant.COLON;
-import static racingcar.constant.Constant.ENTER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +21,11 @@ public class RacingCars {
     }
 
     public String createGameResult() {
-        StringJoiner stringJoiner = new StringJoiner(ENTER);
+        StringJoiner stringJoiner = new StringJoiner("\n");
         for (RacingCar racingCar : this.racingCars) {
-            stringJoiner.add(racingCar.getCarName() + COLON + racingCar.movingDistance());
+            stringJoiner.add(racingCar.getCarName() + " : " + racingCar.movingDistance());
         }
-        return stringJoiner.add(ENTER).toString();
+        return stringJoiner.add("\n").toString();
     }
 
     public List<String> findWinners() {

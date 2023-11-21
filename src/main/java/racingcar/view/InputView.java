@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import static racingcar.constant.Constant.COMMA;
-
 import java.util.List;
 import java.util.Scanner;
 import racingcar.domain.PositiveNumber;
@@ -17,7 +15,7 @@ public class InputView {
 
     public List<String> carNames() {
         System.out.println(INPUT_CAR_NAMES);
-        return List.of(scanner.nextLine().split(COMMA));
+        return List.of(scanner.nextLine().split(","));
     }
 
     public PositiveNumber numberOfAttempts() {

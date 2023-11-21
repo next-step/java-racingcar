@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import static racingcar.constant.Constant.COMMA;
-
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -19,7 +17,7 @@ public class OutputView {
     }
 
     public void printWinners(List<String> winners) {
-        StringJoiner stringJoiner = new StringJoiner(COMMA);
+        StringJoiner stringJoiner = new StringJoiner(",");
         for (String winner : winners) {
             stringJoiner.add(winner);
         }
