@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     public static final int BOUND = 10;
@@ -19,22 +19,11 @@ public class RacingCars {
     }
 
     public List<String> findWinners() {
-        List<String> winners = new ArrayList<>();
         long finishLine = findMaxPosition();
-        for (RacingCar racingCar : this.racingCars) {
-            addWinnerTo(racingCar, finishLine, winners);
-        }
-        return winners;
-    }
-
-    private void addWinnerTo(RacingCar racingCar, long finishLine, List<String> winners) {
-        if (isWinner(racingCar, finishLine)) {
-            winners.add(racingCar.getCarName());
-        }
-    }
-
-    private boolean isWinner(RacingCar racingCar, long finishLine) {
-        return racingCar.isLocated(finishLine);
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isLocated(finishLine))
+                .map(RacingCar::getCarName)
+                .collect(Collectors.toList());
     }
 
     private long findMaxPosition() {
