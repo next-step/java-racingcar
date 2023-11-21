@@ -1,5 +1,8 @@
 package step4.view;
 
+import step4.domain.GameResult;
+import step4.domain.RoundResult;
+
 import java.util.List;
 
 public class OutputView {
@@ -12,15 +15,15 @@ public class OutputView {
         System.out.println(RESULT_STATEMENT);
     }
 
-    public static void printRoundResult(List<Integer> roundResult) {
-        for (Integer carDistance : roundResult) {
+    public static void printRoundResult(RoundResult roundResult) {
+        for (Integer carDistance : roundResult.roundList()) {
             System.out.println(MOVE_SYMBOL.repeat(carDistance));
         }
         System.out.println();
     }
 
-    public static void drawResultView(List<List<Integer>> resultBoard) {
-        for (List<Integer> roundResult : resultBoard) {
+    public static void drawResultView(GameResult resultBoard) {
+        for (RoundResult roundResult : resultBoard.resultBoard()) {
             printRoundResult(roundResult);
         }
     }
