@@ -7,7 +7,7 @@ public class TryCount {
     private final int maxCount;
     private int presentCount;
 
-    public TryCount(int maxCount, int presentCount) {
+    private TryCount(int maxCount, int presentCount) {
         this.maxCount = maxCount;
         this.presentCount = presentCount;
     }

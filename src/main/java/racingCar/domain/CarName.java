@@ -5,7 +5,7 @@ import racingCar.domain.validator.CarNameValidator;
 public class CarName {
     private final String name;
 
-    public CarName(String name) {
+    private CarName(String name) {
         this.name = name;
     }
 

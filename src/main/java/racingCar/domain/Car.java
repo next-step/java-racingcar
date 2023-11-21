@@ -4,7 +4,7 @@ public class Car {
     private final CarName name;
     private Distance distance;
 
-    public Car(CarName name, Distance distance) {
+    private Car(CarName name, Distance distance) {
         this.name = name;
         this.distance = distance;
     }
@@ -13,10 +13,12 @@ public class Car {
         return new Car(CarName.from(name), Distance.init());
     }
 
-    public void move(boolean isMovable) {
-        if (isMovable) {
-            distance.increase();
-        }
+    public void move() {
+        distance.increase();
+    }
+
+    public boolean isSameDistance(int otherDistance) {
+        return distance.isSameDistance(otherDistance);
     }
 
     public String getName() {

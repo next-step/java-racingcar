@@ -3,6 +3,9 @@ package racingCar.domain.validator;
 public class CarNameValidator {
     public static final int MAX_NAME_LENGTH = 5;
 
+    private CarNameValidator() {
+    }
+
     public static void validate(String name) {
         validateLength(name);
     }

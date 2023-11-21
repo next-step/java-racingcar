@@ -9,13 +9,6 @@ public class MovementGenerator {
     }
 
     public boolean generate() {
-        if (isMovable(numberGenerator)) {
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean isMovable(NumberGenerator numberGenerator) {
         return numberGenerator.generate() >= MIN_MOVABLE_NUMBER;
     }
 }

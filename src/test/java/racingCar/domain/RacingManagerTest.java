@@ -13,10 +13,10 @@ public class RacingManagerTest {
     @CsvSource(value = {"2, false", "3, true"})
     void canPlay(int maxCount, boolean canPlay) {
         // given
-        CarGroup carGroup = CarGroup.from(List.of("pobi","crong"));
+        Cars cars = Cars.from(List.of("pobi","crong"));
         TryCount tryCount = TryCount.from(maxCount);
         MovementGenerator movementGenerator = new MovementGenerator(new RandomNumberGenerator());
-        RacingManager racingManager = new RacingManager(carGroup, tryCount, movementGenerator);
+        RacingManager racingManager = new RacingManager(cars, tryCount, movementGenerator);
 
         // when
         racingManager.playTurn();

@@ -23,15 +23,15 @@ public class InputValidator {
         validateValidSeperator(separator, playerGroup, PLAYER_FORMAT_IS_INVALID);
     }
 
-    private void validateValidSeperator(String separator, String value, String message) {
-        GeneralValidator.validateDuplicateSubstring(separator, value, message);
-        GeneralValidator.validateStartSubstring(separator, value, message);
-        GeneralValidator.validateEndSubstring(separator, value, message);
-    }
-
     public void validateTryCount(String tryCount) {
         StringValidator.validateBlank(tryCount, TRY_COUNT_FORMAT_IS_INVALID);
         StringValidator.validateNumeric(tryCount, TRY_COUNT_FORMAT_IS_INVALID);
         StringValidator.validateIntegerRange(tryCount, TRY_COUNT_FORMAT_IS_INVALID);
+    }
+
+    private void validateValidSeperator(String separator, String value, String message) {
+        GeneralValidator.validateDuplicateSubstring(separator, value, message);
+        GeneralValidator.validateStartSubstring(separator, value, message);
+        GeneralValidator.validateEndSubstring(separator, value, message);
     }
 }

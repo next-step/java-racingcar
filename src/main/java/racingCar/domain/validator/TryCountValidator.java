@@ -3,6 +3,9 @@ package racingCar.domain.validator;
 public class TryCountValidator {
     public static final int MIN_TRY_COUNT = 1;
 
+    private TryCountValidator() {
+    }
+
     public static void validate(int tryCount) {
         validateRange(tryCount);
     }

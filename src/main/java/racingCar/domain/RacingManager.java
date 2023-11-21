@@ -1,12 +1,12 @@
 package racingCar.domain;
 
 public class RacingManager {
-    private final CarGroup carGroup;
+    private final Cars cars;
     private final TryCount tryCount;
     private final MovementGenerator movementGenerator;
 
-    public RacingManager(CarGroup carGroup, TryCount tryCount, MovementGenerator movementGenerator) {
-        this.carGroup = carGroup;
+    public RacingManager(Cars cars, TryCount tryCount, MovementGenerator movementGenerator) {
+        this.cars = cars;
         this.tryCount = tryCount;
         this.movementGenerator = movementGenerator;
     }
@@ -16,7 +16,7 @@ public class RacingManager {
     }
 
     public void playTurn() {
-        carGroup.move(movementGenerator);
+        cars.move(movementGenerator);
         tryCount.increaseCount();
     }
 }

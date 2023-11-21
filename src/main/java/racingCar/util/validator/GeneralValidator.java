@@ -1,7 +1,8 @@
 package racingCar.util.validator;
 
 public class GeneralValidator {
-
+    private GeneralValidator() {
+    }
 
     public static void validateDuplicateSubstring(String substring, String value, String message) {
         if (containsDuplicateSubstring(substring, value)) {

@@ -19,4 +19,8 @@ public class Distance{
     public int getDistance() {
         return distance;
     }
+
+    public boolean isSameDistance(int otherDistance) {
+        return distance == otherDistance;
+    }
 }
