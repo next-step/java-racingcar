@@ -32,8 +32,8 @@ public class Car {
         return position;
     }
 
-    public void move(GenerateNumber generateNumber) {
-        if (isMove(generateNumber.getRandomNumber())) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
             position++;
         }
     }
