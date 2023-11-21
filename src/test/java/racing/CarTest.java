@@ -1,9 +1,7 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
-import racing.domain.Cars;
-import racing.domain.TestGenerateNumber;
+import racing.domain.*;
 
 import java.util.List;
 
@@ -26,18 +24,16 @@ public class CarTest {
 
     @Test
     void 랜덤값이_4이상이면_포지션값이_1_증가한다() {
-        TestGenerateNumber generateNumber = new TestGenerateNumber(4);
-        Car car = new Car("njw",1);
-        car.move(generateNumber);
-        assertThat(car.getPosition()).isEqualTo(2);
+        Car car = new Car("njw");
+        car.move(() -> true);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     void 랜덤값이_4미만이면_포지션값이_그대로다() {
-        TestGenerateNumber generateNumber = new TestGenerateNumber(3);
-        Car car = new Car("njw",1);
-        car.move(generateNumber);
-        assertThat(car.getPosition()).isEqualTo(1);
+        Car car = new Car("njw");
+        car.move(() -> false);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
