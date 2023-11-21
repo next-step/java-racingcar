@@ -7,18 +7,13 @@ import racingcar.domain.RandomService;
 import racingcar.dto.GameResultInfo;
 
 public class RacingCarService {
+    private final RacingGame racingGame;
 
-    private final RandomService randomService;
-
-    public RacingCarService(RandomService randomService) {
-        this.randomService = randomService;
+    public RacingCarService(RacingGame racingGame) {
+        this.racingGame = racingGame;
     }
 
     public GameResultInfo startGame(RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
-        return createRacingGame(racingCars, numberOfAttempts).startSingleGame();
-    }
-
-    private RacingGame createRacingGame(RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
-        return new RacingGame(randomService, racingCars, numberOfAttempts);
+        return racingGame.startSingleGame(racingCars, numberOfAttempts);
     }
 }

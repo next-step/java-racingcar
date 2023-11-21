@@ -13,11 +13,10 @@ public class RacingGameTest {
     @DisplayName("자동차 게임을 실행한다.")
     void startGame() {
         // given
-        RacingGame racingGame = new RacingGame(new DoubleRandomService(4), createRacingCars(),
-                createNumberOfAttempts());
+        RacingGame racingGame = new RacingGame(new DoubleRandomService(4));
 
         // when
-        GameResultInfo gameResultInfo = racingGame.startSingleGame();
+        GameResultInfo gameResultInfo = racingGame.startSingleGame(createRacingCars(), createNumberOfAttempts());
 
         // then
         assertThat(gameResultInfo).isEqualTo(createExpectedGameResultInfo());

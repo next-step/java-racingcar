@@ -4,17 +4,20 @@ import racingcar.dto.GameResultInfo;
 
 public class RacingGame {
     private final RandomService randomService;
-    private final RacingCars racingCars;
-    private final NumberOfAttempts numberOfAttempts;
 
-    public RacingGame(RandomService randomService, RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
+    public RacingGame(RandomService randomService) {
         this.randomService = randomService;
-        this.racingCars = racingCars;
-        this.numberOfAttempts = numberOfAttempts;
     }
 
-    public GameResultInfo startSingleGame() {
-        RacingCars racingCars = this.racingCars.raceOnce(randomService);
-        return GameResultInfo.valueOf(racingCars, numberOfAttempts.attempt());
+    public GameResultInfo startSingleGame(RacingCars racingCars, NumberOfAttempts numberOfAttempts) {
+        return GameResultInfo.valueOf(getGameResult(racingCars), getLeftNumberOfAttempts(numberOfAttempts));
+    }
+
+    private RacingCars getGameResult(RacingCars racingCars) {
+        return racingCars.raceOnce(randomService);
+    }
+
+    private NumberOfAttempts getLeftNumberOfAttempts(NumberOfAttempts numberOfAttempts) {
+        return numberOfAttempts.attempt();
     }
 }

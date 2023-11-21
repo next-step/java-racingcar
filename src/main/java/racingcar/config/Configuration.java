@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import racingcar.controller.RacingGameController;
 import racingcar.domain.DefaultRandomService;
+import racingcar.domain.RacingGame;
 import racingcar.domain.RandomService;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
@@ -24,7 +25,11 @@ public class Configuration {
     }
 
     private RacingCarService racingCarService() {
-        return new RacingCarService(randomService());
+        return new RacingCarService(racingGame());
+    }
+
+    private RacingGame racingGame() {
+        return new RacingGame(randomService());
     }
 
     private RandomService randomService() {
