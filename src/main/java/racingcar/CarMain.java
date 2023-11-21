@@ -12,9 +12,5 @@ public class CarMain {
         // 경주
         RacingGame racingGame = new RacingGame(carNames, round);
         racingGame.race();
-
-        // 우승자
-//        Winner winner = new Winner();
-//        ResultView.printWinners(winner.findWinners(racingResult.get(finalRound)));
     }
 }

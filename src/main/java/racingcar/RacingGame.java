@@ -19,7 +19,9 @@ public class RacingGame {
             cars.moveCars();
             ResultView.printRoundResult(cars);
         }
+        ResultView.printWinnerNames(cars.findWinners());
     }
+
 
     private void initCars(String[] carNames) {
         for (String carName : carNames) {
