@@ -19,7 +19,10 @@ public class RacingCars {
     }
 
     public List<String> findWinners() {
-        long finishLine = findMaxPosition();
+        return findWinnersWith(findMaxPosition());
+    }
+
+    private List<String> findWinnersWith(long finishLine) {
         return racingCars.stream()
                 .filter(racingCar -> racingCar.isLocated(finishLine))
                 .map(RacingCar::getCarName)
