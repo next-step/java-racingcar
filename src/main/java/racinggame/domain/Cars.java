@@ -16,7 +16,7 @@ public class Cars {
         int winnerPosition = getWinnerPosition();
         for (Car car : cars) {
             if (winnerPosition == car.getPosition()) {
-                winnerList.add(car.getName());
+                winnerList.add(car.getCarName());
             }
         }
         return winnerList;
