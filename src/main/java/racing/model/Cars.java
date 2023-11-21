@@ -1,32 +1,52 @@
 package racing.model;
 
-import java.util.Collections;
+import racing.model.strategy.NumberGeneratorStrategy;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
-import racing.view.ResultView;
 
 public class Cars {
+    public static final int START_PROGRESS = 0;
+    public static final int NUMBER_RANGE = 10;
     private final List<RacingCar> cars;
 
-    public Cars(List<RacingCar> cars) {
-        this.cars = Collections.unmodifiableList(cars);
+    Cars(List<RacingCar> cars) {
+        this.cars = cars;
     }
-    public void raceAllCars() {
-        for (RacingCar car : cars) {
-            car.race(car.getRandomInt());
-            ResultView.showRaceProgress(car);
-        }
-    }
-    public static List<RacingCar> getWinners(List<RacingCar> cars) {
+
+    public List<String> getWinnerNames() {
         return cars.stream()
-                .filter(car -> car.isSameProgress(getTopSpeed(cars)))
+                .filter(car -> car.isSameProgress(getTopSpeed()))
+                .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
-    public static int getTopSpeed(List<RacingCar> cars) {
+
+    public List<RacingCar> cars() {
+        return this.cars;
+    }
+
+    public void raceAllCars(NumberGeneratorStrategy strategy){
+        for (RacingCar car : this.cars) {
+            car.race(strategy.generateNumber(NUMBER_RANGE));
+        }
+    }
+
+    public int getTopSpeed() {
         int max = 0;
         for (RacingCar car : cars) {
             max = car.max(max);
         }
         return max;
     }
+
+    public static Cars of(Names names) {
+        List<RacingCar> cars = new ArrayList<>();
+        for (int i = 0; i < names.size(); i++) {
+            cars.add(new RacingCar(START_PROGRESS, names.name(i)));
+        }
+        return new Cars(cars);
+    }
+
 }
