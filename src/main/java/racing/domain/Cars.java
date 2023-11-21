@@ -1,6 +1,7 @@
-package racing;
+package racing.domain;
 
-import java.util.ArrayList;
+import racing.view.ResultView;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

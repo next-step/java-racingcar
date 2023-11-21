@@ -1,13 +1,16 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.TestGenerateNumber;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racing.Car.isMove;
-import static racing.RacingGame.splitCarName;
+import static racing.domain.Car.isMove;
+import static racing.domain.RacingGame.splitCarName;
 
 public class CarTest {
 

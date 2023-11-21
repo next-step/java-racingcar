@@ -1,6 +1,4 @@
-package racing;
-
-import java.util.Random;
+package racing.domain;
 
 public class TestGenerateNumber implements GenerateNumber{
 

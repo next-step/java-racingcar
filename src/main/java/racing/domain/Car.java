@@ -1,7 +1,4 @@
-package racing;
-
-import java.util.Arrays;
-import java.util.Random;
+package racing.domain;
 
 public class Car {
 
