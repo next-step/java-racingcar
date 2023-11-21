@@ -16,8 +16,7 @@ public class RacingCarsTest {
     @CsvSource(value = {"4, 4, 3, 3", "3, 3, 2, 2"})
     void race_once(int randomNumber, long position1, long position2, long position3) {
         // given
-        List<RacingCar> given = createRacingCars();
-        RacingCars racingCars = new RacingCars(given);
+        RacingCars racingCars = new RacingCars(createRacingCars());
 
         // when
         RacingCars result = racingCars.raceOnce(new DoubleRandomService(randomNumber));
