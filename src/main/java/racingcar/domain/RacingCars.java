@@ -27,11 +27,10 @@ public class RacingCars {
     }
 
     private long findMaxPosition() {
-        long maxPosition = 0;
-        for (RacingCar racingCar : this.racingCars) {
-            maxPosition = racingCar.updateMaxPosition(maxPosition);
-        }
-        return maxPosition;
+        return this.racingCars.stream()
+                .reduce(0L,
+                        (currentMax, racingCar) -> racingCar.updateMaxPosition(currentMax),
+                        Long::max);
     }
 
     public List<RacingCar> getRacingCars() {
