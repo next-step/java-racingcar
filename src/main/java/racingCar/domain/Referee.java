@@ -12,11 +12,11 @@ public class Referee {
     }
 
     private static Distance findMaxDistance(List<Car> cars) {
-        Distance maxDistance = new Distance();
+        Car fastestCar = new Car(0);
         for (Car car : cars) {
-            maxDistance = maxDistance.max(car.distance());
+            fastestCar = car.fasterCar(fastestCar);
         }
-        return maxDistance;
+        return fastestCar.distance();
     }
 
     private static List<Car> findSameDistanceCars(List<Car> cars, Distance distance) {

@@ -20,7 +20,7 @@ public class CarName {
         return this.value;
     }
 
-    public boolean isEqual(String carName){
+    public boolean isEqual(String carName) {
         return this.value.equals(carName);
     }
 }
