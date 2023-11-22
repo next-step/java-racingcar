@@ -3,7 +3,6 @@ package racingCar.domain;
 public class TryCount {
     private static final int DEFAULT_TRYCOUNT = 0;
     private static final int MIN_TRY_COUNT = 1;
-
     private final int maxCount;
     private int presentCount;
 
@@ -26,7 +25,7 @@ public class TryCount {
     private static boolean isInRagne(int tryCount) {
         return tryCount >= MIN_TRY_COUNT;
     }
-
+  
     public boolean isMaxCount() {
         return presentCount == maxCount;
     }

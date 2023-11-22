@@ -21,7 +21,7 @@ public class Application {
         OutputView outputView = new OutputView(printer, outputFomatter);
 
         MovementGenerator movementGenerator = new RandomMovementGenerator();
-
+      
         RacingController racingController = new RacingController(inputView, outputView, movementGenerator);
         racingController.run();
     }
