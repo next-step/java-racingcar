@@ -26,12 +26,6 @@ public class Car {
         return this.name.name();
     }
 
-    public void move(MovingStrategy movingStrategy) {
-        if (movingStrategy.canForward()) {
-            distance++;
-        }
-    }
-
     public void move() {
         if (movingStrategy.canForward()) {
             distance++;
