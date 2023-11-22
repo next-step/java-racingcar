@@ -34,7 +34,7 @@ public class RacingCarService {
     private static void findWinners(Cars cars, Winners winners) {
         int maxDistance = cars.findMaxDistance();
         for (Car car : cars.carList()) {
-            winners.add(car, maxDistance);
+            winners.addWinner(car, maxDistance);
         }
     }
 }

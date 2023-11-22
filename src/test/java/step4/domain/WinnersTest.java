@@ -1,18 +1,22 @@
 package step4.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnersTest {
 
     @Test
-    @DisplayName("경기 종료 후, 우승자를 구한다.")
+    @DisplayName("경기 종료 후, 우승자일 경우 저장한다.")
     void findWinners() {
-        Cars cars = new Cars(new String[]{"귤", "오렌지", "망고" }, new int[]{1, 3, 1});
+        Car car1 = new Car("망고", 3);
+        Car car2 = new Car("오렌지", 1);
         Winners winners = new Winners();
-//        winners.findWinners(cars);
 
-//        Assertions.assertThat(winners.winners()).containsExactly("오렌지");
+        winners.addWinner(car1, 3);
+        winners.addWinner(car2, 3);
+
+        assertThat(winners.winners()).containsExactly("망고");
     }
 }
