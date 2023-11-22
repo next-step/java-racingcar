@@ -9,6 +9,7 @@ public class OutputView {
     private static final String RESULT_STATEMENT = "실행 결과";
     private static final String MOVE_SYMBOL = "-";
     private static final String WINNER_STATEMENT = "가 우승했습니다.";
+    private static final StringBuilder sb = new StringBuilder();
 
     public static void printResultStatement() {
         System.out.println();
@@ -17,9 +18,11 @@ public class OutputView {
 
     public static void printRoundResult(RoundResult roundResult) {
         for (Integer carDistance : roundResult.roundList()) {
-            System.out.println(MOVE_SYMBOL.repeat(carDistance));
+            String moveRecord = MOVE_SYMBOL.repeat(carDistance);
+            sb.append(moveRecord).append("\n");
         }
-        System.out.println();
+        System.out.println(sb);
+        sb.setLength(0);
     }
 
     public static void drawResultView(GameResult resultBoard) {
