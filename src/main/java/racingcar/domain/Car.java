@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
 public class Car {
-    public static final int VALUE = 3;
+    public static final int MIN_CONDITION = 3;
     private Distance distance;
     private Name name;
 
@@ -20,17 +20,17 @@ public class Car {
         this("", distance);
     }
 
-    void move(int distance) {
-        if (distance > VALUE) {
+    public void move(int distance) {
+        if (distance > MIN_CONDITION) {
             this.distance.plus();
         }
     }
 
-    Distance distance() {
+    public Distance distance() {
         return this.distance;
     }
 
-    Name name() {
+    public Name name() {
         return this.name;
     }
 

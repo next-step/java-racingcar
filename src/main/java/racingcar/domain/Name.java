@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -13,6 +13,10 @@ public class Name {
             throw new StringIndexOutOfBoundsException();
         }
         this.name = name;
+    }
+
+    public String value() {
+        return name;
     }
 
     private boolean isNameGreaterThan(String name) {

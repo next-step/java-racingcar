@@ -1,9 +1,14 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.NumberGenerate;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class RacingCar {
     public static final String CAR_NAME_INPUT_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -15,11 +20,16 @@ public class RacingCar {
         String carNameInput = InputView.nameInput(CAR_NAME_INPUT_MSG);
         int moveCount = InputView.userInput(MOVE_COUNT_INPUT_MSG);
 
-        Cars cars = makeCarList(carNameInput);
+        Cars cars = new Cars(carNameInput);
 
         ResultView.output(RESULT_MSG);
         for (int i = 0; i < moveCount; i++) {
-            cars.move();
+            cars.move(new NumberGenerate() {
+                @Override
+                public int generate() {
+                    return getRandom();
+                }
+            });
             ResultView.resultOutput(cars);
             ResultView.output("");
         }
@@ -28,19 +38,8 @@ public class RacingCar {
         ResultView.winnerOutput(winnerList);
     }
 
-    protected static int getRandom() {
+    public static int getRandom() {
         Random random = new Random();
         return random.nextInt(BOUND);
     }
-
-    static Cars makeCarList(String carNameInput) {
-        List<Car> carList = new ArrayList<>();
-        String[] carNameArr = carNameInput.split(",");
-        for (String carName : carNameArr) {
-            carList.add(new Car(carName));
-        }
-
-        return new Cars(carList);
-    }
-
 }

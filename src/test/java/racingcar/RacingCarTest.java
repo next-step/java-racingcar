@@ -3,8 +3,10 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.controller.RacingCar;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

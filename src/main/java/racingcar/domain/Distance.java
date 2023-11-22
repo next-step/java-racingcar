@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -10,11 +10,11 @@ public class Distance {
         this.distance = distance;
     }
 
-    boolean matchDistance(int distance) {
+    public boolean matchDistance(int distance) {
         return this.distance == distance;
     }
 
-    int max(int maxDistance) {
+    public int max(int maxDistance) {
         if (this.distance > maxDistance) {
             return this.distance;
         }
@@ -26,7 +26,7 @@ public class Distance {
         this.distance++;
     }
 
-    int distance() {
+    public int distance() {
         return this.distance;
     }
 
