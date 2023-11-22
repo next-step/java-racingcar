@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
-    private List<String> winnerList = new ArrayList<>();
-
-    public void findWinners(Cars cars) {
-        winnerList = cars.findWinners();
-    }
+    private final List<String> winnerList = new ArrayList<>();
 
     public List<String> winners() {
         return winnerList;
     }
+
+    public void add(Car car, int maxDistance) {
+        if (car.distance() == maxDistance) {
+            winnerList.add(car.name());
+        }
+    }
+
 }

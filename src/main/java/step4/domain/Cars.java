@@ -3,6 +3,7 @@ package step4.domain;
 import step4.strategy.MovingStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -20,6 +21,10 @@ public class Cars {
         }
     }
 
+    public List<Car> carList() {
+        return Collections.unmodifiableList(carList);
+    }
+
     public int carCount() {
         return carList.size();
     }
@@ -28,32 +33,7 @@ public class Cars {
         carList.add(car);
     }
 
-    public RoundResult race() {
-        RoundResult roundResult = new RoundResult();
-        for (Car car : carList) {
-            car.move();
-            roundResult.add(car.distance());
-        }
-
-        return roundResult;
-    }
-
-    public List<String> findWinners() {
-        List<String> winnerList = new ArrayList<>();
-        int maxDistance = findMaxDistance();
-        for (Car car : carList) {
-            addWinner(winnerList, car, maxDistance);
-        }
-
-        return winnerList;
-    }
-
-    private void addWinner(List<String> winnerList, Car car, int maxDistance) {
-        if (car.distance() == maxDistance) {
-            winnerList.add(car.name());
-        }
-    }
-    private int findMaxDistance() {
+    public int findMaxDistance() {
         int maxDistance = 0;
         for (Car car : carList) {
             maxDistance = compareDistance(maxDistance, car.distance());

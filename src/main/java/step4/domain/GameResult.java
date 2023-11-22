@@ -16,10 +16,6 @@ public class GameResult {
         resultBoard.add(roundResult);
     }
 
-    public void saveWinners(Cars cars) {
-        winnerList.findWinners(cars);
-    }
-
     public Winners winnerList() {
         return winnerList;
     }
