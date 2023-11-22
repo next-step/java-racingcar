@@ -6,30 +6,29 @@ public class RacingRegister {
 
     private final int CAR_NAME_LENGTH_LIMIT = 5;
 
+    private String[] carNameList;
+
     public Cars register(String carName) {
-        String[] carNameList = carName.split(",");
-        carNameList = checkCarNameValid(carNameList);
+        this.carNameList = carName.split(",");
+        checkCarNameValid(carNameList);
         return this.carRegister(carNameList);
     }
 
-    private String[] checkCarNameValid(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            names[i] = getValidCarName(names[i]);
+    private void checkCarNameValid(String[] names) {
+        for (String name : names) {
+            isOverLength(name);
         }
-        return names;
     }
 
-    private String getValidCarName(String name) {
-        if (name.length() > CAR_NAME_LENGTH_LIMIT) {
-            return name.substring(0, 5);
-        }
-        return name;
+    private void isOverLength(String name) {
+        if (name.length() > CAR_NAME_LENGTH_LIMIT)
+            throw new IllegalArgumentException("String length exceeds the allowed maximum(5).");
     }
 
     private Cars carRegister(String[] carNameList) {
         Cars cars = new Cars();
-        for (int i = 0; i < carNameList.length; i++) {
-            cars.addCar(carNameList[i]);
+        for (String carName : carNameList) {
+            cars.addCar(carName);
         }
         return cars;
     }

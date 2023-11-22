@@ -10,6 +10,8 @@ import study.race.controller.CarRacing;
 import study.race.model.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static study.Step2.calculateString;
 
 
 public class CarRacingTest {
@@ -91,11 +93,8 @@ public class CarRacingTest {
     @DisplayName("Check for length of car's name greater than 5.")
     @ValueSource(strings = { "car1,superCar", "car1,car2,car34567", "audi,benz,hyundai,kia"})
     void checkLengthOfCarNameTest(String input) {
-        Cars cars = new RacingRegister().register(input);
-
-        for (Car car: cars.carList()) {
-            String carName = car.getName();
-            assertThat(carName.length()).isLessThan(6);
-        }
+        assertThrows(IllegalArgumentException.class, () -> {
+            Cars cars = new RacingRegister().register(input);
+        });
     }
 }
