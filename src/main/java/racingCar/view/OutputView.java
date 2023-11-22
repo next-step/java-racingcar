@@ -17,7 +17,7 @@ public class OutputView {
     }
 
     public void printMovement(Cars cars) {
-        cars.getCarGroup().forEach(this::printEachCarMovement);
+        cars.getCars().forEach(this::printEachCarMovement);
         printer.printEmptyLine();
     }
 

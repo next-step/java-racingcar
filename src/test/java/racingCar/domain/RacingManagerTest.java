@@ -15,7 +15,7 @@ public class RacingManagerTest {
         // given
         Cars cars = Cars.from(List.of("pobi","crong"));
         TryCount tryCount = TryCount.from(maxCount);
-        MovementGenerator movementGenerator = new MovementGenerator(new RandomNumberGenerator());
+        MovementGenerator movementGenerator = new RandomMovementGenerator();
         RacingManager racingManager = new RacingManager(cars, tryCount, movementGenerator);
 
         // when

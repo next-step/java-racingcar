@@ -1,14 +1,7 @@
 package racingCar.domain;
 
-public class MovementGenerator {
-    public static final int MIN_MOVABLE_NUMBER = 4;
-    private final NumberGenerator numberGenerator;
+public interface MovementGenerator {
+    boolean generate();
 
-    public MovementGenerator(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-    }
-
-    public boolean generate() {
-        return numberGenerator.generate() >= MIN_MOVABLE_NUMBER;
-    }
+    int generateNumber();
 }

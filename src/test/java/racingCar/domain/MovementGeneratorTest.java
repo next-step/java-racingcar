@@ -12,8 +12,17 @@ public class MovementGeneratorTest {
     @CsvSource(value = {"3, false", "4, true"})
     void generate(int randomNumber, boolean isMovable) {
         // given
-        NumberGenerator numberGenerator = () -> randomNumber;
-        MovementGenerator movementGenerator = new MovementGenerator(numberGenerator);
+        MovementGenerator movementGenerator = new MovementGenerator() {
+            @Override
+            public boolean generate() {
+                return generateNumber() >= 4;
+            }
+
+            @Override
+            public int generateNumber() {
+                return randomNumber;
+            }
+        };
 
         // when & then
         assertThat(movementGenerator.generate()).isEqualTo(isMovable);
