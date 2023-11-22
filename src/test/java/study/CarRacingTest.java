@@ -68,11 +68,13 @@ public class CarRacingTest {
     void updateRaceResult(int movingDistance, int expected) {
         RaceResult raceResult = new RaceResult(stopCars);
 
+        // 차량 이동 및 결과 업데이트
         Car car = stopCars.carList().get(0);
         String carName = car.getName();
         car.move(movingDistance);
         raceResult.updateRaceResult();
-      
+
+        // 결과 확인
         int result = raceResult.getResult().get(carName);
         assertThat(result).isEqualTo(expected);
     }
