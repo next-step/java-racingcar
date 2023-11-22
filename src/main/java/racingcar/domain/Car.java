@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Car {
-    public static final int VALUE = 3;
+    public static final int MIN_CONDITION = 3;
     private Distance distance;
     private Name name;
 
@@ -21,7 +21,7 @@ public class Car {
     }
 
     public void move(int distance) {
-        if (distance > VALUE) {
+        if (distance > MIN_CONDITION) {
             this.distance.plus();
         }
     }

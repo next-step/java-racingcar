@@ -23,9 +23,9 @@ public class Cars {
         this.carList = carList;
     }
 
-    public void move() {
+    public void move(NumberGenerate numberGenerate) {
         for (Car car : carList) {
-            car.move(RacingCar.getRandom());
+            car.move(numberGenerate.generate());
         }
     }
 

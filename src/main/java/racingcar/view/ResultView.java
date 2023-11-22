@@ -17,14 +17,14 @@ public class ResultView {
     public static void resultOutput(Cars cars) {
         List<Car> carList = cars.getCars();
         for (Car car : carList) {
-            System.out.println(car.name() + COLON + HYPHEN.repeat(car.distance().distance()));
+            System.out.println(car.name().value() + COLON + HYPHEN.repeat(car.distance().distance()));
         }
     }
 
     public static void winnerOutput(List<Car> carList) {
         String result = "";
         for (Car car : carList) {
-            result += car.name();
+            result += car.name().value();
             result += COMMA_SPACE;
         }
         result = removeLastComma (result);

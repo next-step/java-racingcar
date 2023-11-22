@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.NumberGenerate;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -23,7 +24,12 @@ public class RacingCar {
 
         ResultView.output(RESULT_MSG);
         for (int i = 0; i < moveCount; i++) {
-            cars.move();
+            cars.move(new NumberGenerate() {
+                @Override
+                public int generate() {
+                    return getRandom();
+                }
+            });
             ResultView.resultOutput(cars);
             ResultView.output("");
         }

@@ -15,6 +15,10 @@ public class Name {
         this.name = name;
     }
 
+    public String value() {
+        return name;
+    }
+
     private boolean isNameGreaterThan(String name) {
         return name.length() > MIN_NAME_LENGTH;
     }
