@@ -10,9 +10,10 @@ public class RacingCarService {
 
     }
     public static final MovingStrategy movingStrategy = new RandomNumMovingStrategy();
-    public static GameResult playRound(String nameString, int roundCount) {
+    public static GameResult playGame(String nameString, int roundCount) {
         Cars cars = new Cars(NameSplitter.splitName(nameString), movingStrategy);
         GameResult result = new GameResult();
+
         for (int i = 0; i < roundCount; i++) {
             result.saveRoundResult(race(cars));
         }
