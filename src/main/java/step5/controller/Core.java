@@ -17,8 +17,8 @@ public class Core {
         Referee referee = new Referee();
         Racing racing = Racing.defaultOf(names,referee,howManyTry);
 
-        racing.start();
-        Cars winners = racing.winnerIs();
+        Racing racingResult = racing.start();
+        Cars winners = racingResult.winnerIs();
 
         // 최대한 View객체가 도메인으로 침투하지 않는 방식을 생각해봤습니다.
         // 상태에 대한 값이 아니라 String을 반환받아 출력하는 형식으로 도전해봤습니다.

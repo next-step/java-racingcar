@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RacingHistory {
 
-    private List<Cars> history ;
+    private final List<Cars> history ;
 
     public RacingHistory() {
         this.history = new ArrayList<>();

@@ -31,10 +31,12 @@ public class Car {
         return this.distance.equals(Distance.of(distanceOfComparing));
     }
 
-    public void move(boolean goOrNot) {
+    public Car move(boolean goOrNot) {
         if (goOrNot) {
-            this.distance.addOne();
+            Distance newDistance = this.distance.addOne();
+            return Car.defaultOf(this.name, newDistance);
         }
+        return this;
     }
 
     public boolean fartherThan(Car comparisonTarget) {

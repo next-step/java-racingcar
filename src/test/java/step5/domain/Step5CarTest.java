@@ -51,9 +51,9 @@ import static org.junit.jupiter.api.Assertions.*;
         String name = "홍길동";
         Car car = Car.defaultOf(name);
 
-        car.move(true);
+        Car movedCar = car.move(true);
 
-        Assertions.assertThat(car.sameDistance(2)).isTrue();
+        Assertions.assertThat(movedCar.sameDistance(2)).isTrue();
     }
 
     @Test

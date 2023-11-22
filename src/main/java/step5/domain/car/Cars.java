@@ -72,10 +72,12 @@ public class Cars {
         return winner;
     }
 
-    public void go(Referee referee) {
+    public Cars go(Referee referee) {
+        List<Car> movedCars = new ArrayList<>();
         for (Car car: this.cars) {
-            car.move(referee.judgeToMove());
+            movedCars.add(car.move(referee.judgeToMove()));
         }
+        return Cars.defaultOf(movedCars);
     }
 
     public Cars makeHistory(){

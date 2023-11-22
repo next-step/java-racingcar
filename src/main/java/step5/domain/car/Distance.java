@@ -1,7 +1,7 @@
 package step5.domain.car;
 
 public class Distance {
-    private int distance;
+    private final int distance;
 
     public Distance(int distance) {
         this.distance = distance;
@@ -15,12 +15,12 @@ public class Distance {
         return new Distance(distance);
     }
 
-    public void addOne() {
-        this.distance++;
+    public Distance addOne() {
+        return Distance.of(this.distance + 1);
     }
 
-    public void add(int distance) {
-        this.distance += distance;
+    public Distance add(int distance) {
+        return Distance.of(this.distance + distance);
     }
     public String statusToString() {
         String distanceToString= "-";
