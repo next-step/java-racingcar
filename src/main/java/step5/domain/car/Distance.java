@@ -30,6 +30,15 @@ public class Distance {
         return distanceToString;
     }
 
+    public boolean fartherThan(Distance distance) {
+        return this.distance > distance.distance;
+    }
+
+    public Distance deepCopy() {
+        return Distance.of(this.distance);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,13 +52,5 @@ public class Distance {
     @Override
     public int hashCode() {
         return distance;
-    }
-
-    public boolean fartherThan(Distance distance) {
-        return this.distance > distance.distance;
-    }
-
-    public Distance deepCopy() {
-        return Distance.of(this.distance);
     }
 }

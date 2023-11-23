@@ -38,7 +38,7 @@ public class Step5CarsTest {
         Cars cars = Cars.defaultOf(List.of(포비, 쿠키, 포우));
 
         // when
-        Cars winners = cars.voteWinner();
+        Cars winners = cars.findFartherestCars();
 
         // then
         Assertions.assertThat(winners.count()).isEqualTo(2);

@@ -39,7 +39,7 @@ public class Racing {
     }
 
     public Cars winnerIs() {
-        return this.cars.voteWinner();
+        return this.cars.findFartherestCars();
     }
 
     public String historyToString() {

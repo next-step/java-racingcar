@@ -38,38 +38,38 @@ public class Cars {
         return cars.size() == questionSize;
     }
 
-    public Cars voteWinner() {
-        Car winnerCar = this.findWinnerCar();
-        return this.findJointWinner(winnerCar);
+    public Cars findFartherestCars() {
+        Car winnerCar = this.findFartherestDistanceCar();
+        return this.findSameDistanceCars(winnerCar);
     }
 
-    private Cars findJointWinner(Car winnerCar) {
-        List<Car> winners = new ArrayList<>();
-        for (Car each: cars){
-            this.judgeJointWinner(winnerCar, each, winners);
+    private Cars findSameDistanceCars(Car comparisonStandardCar) {
+        List<Car> sameDistanceCars = new ArrayList<>();
+        for (Car car: cars){
+            this.judgeSameDistanceCars(comparisonStandardCar, car, sameDistanceCars);
         }
-        return Cars.defaultOf(winners);
+        return Cars.defaultOf(sameDistanceCars);
     }
 
-    private void judgeJointWinner(Car winnerCar, Car each, List<Car> winner) {
-        if (each.sameDistance(winnerCar)) {
-            winner.add(each);
+    private void judgeSameDistanceCars(Car comparisonStandardCar, Car each, List<Car> sameDistanceCars) {
+        if (each.sameDistance(comparisonStandardCar)) {
+            sameDistanceCars.add(each);
         }
     }
 
-    private Car findWinnerCar() {
-        Car winner = cars.get(0);
+    private Car findFartherestDistanceCar() {
+        Car fartherest = cars.get(0);
         for (Car each : this.cars) {
-            winner = this.judgeWinner(each, winner);
+            fartherest = this.judgeFartherDistanceCar(each, fartherest);
         }
-        return winner;
+        return fartherest;
     }
 
-    private Car judgeWinner(Car car, Car winner) {
-        if (car.fartherThan(winner)) {
-            winner = car;
+    private Car judgeFartherDistanceCar(Car car, Car fartherestCar) {
+        if (car.fartherThan(fartherestCar)) {
+            return car;
         }
-        return winner;
+        return fartherestCar;
     }
 
     public Cars go(Referee referee) {
