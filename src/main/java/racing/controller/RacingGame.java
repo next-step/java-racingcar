@@ -1,5 +1,9 @@
-package racing.domain;
+package racing.controller;
 
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.MoveStrategy;
+import racing.domain.RandomMoveStrategy;
 import racing.view.InputView;
 import racing.view.ResultView;
 
