@@ -41,4 +41,16 @@ public class MotorRaceApplicationTest {
 
         assertThat(racingCar.getPosition()).isEqualTo(expectedPosition);
     }
+
+    @Test
+    @DisplayName("MOVE_CONSTANT보다 낮은 randomNumber가 주어지면 racingCar의 position은 그대로")
+    void raceCarDontMoveTest(){
+        RacingCar racingCar = new RacingCar();
+        int number = 3;
+        int expectedPosition = 0;
+
+        racingCar.move(number);
+
+        assertThat(racingCar.getPosition()).isEqualTo(expectedPosition);
+    }
 }
