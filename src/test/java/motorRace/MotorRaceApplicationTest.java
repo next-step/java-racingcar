@@ -3,49 +3,42 @@ package motorRace;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 public class MotorRaceApplicationTest {
 
     @Test
     @DisplayName("입력대로 RaceCar생성")
-    void makeRacingCarsTest(){
+    void racingCarFactoryMakeRacingCarListTest(){
+        RacingCarFactory racingCarFactory = new RacingCarFactory();
         int carCnt = 5;
-        List<RacingCar> racingCarList = new ArrayList<>();
-
         int expectedCarCnt = 5;
 
-        List<RacingCar> resultRacingCarList = MotorRaceApplication.makeRacingCars(racingCarList,carCnt);
-        assertThat(resultRacingCarList).hasSize(expectedCarCnt);
+        RacingCars resultRacingCars = racingCarFactory.makeRacingCars(carCnt);
+        assertThat(resultRacingCars.getRacingCarList()).hasSize(expectedCarCnt);
     }
 
     @Test
-    @DisplayName("constantValue보다 높은 수는 move")
-    void conditionTest(){
-        RacingCar racingCar = new RacingCar();
-        int randomValue = 5;
-        int constantValue = 3;
+    @DisplayName("race실행 후 round수만큼 raceResult결과확인")
+    void raceServiceRaceTest(){
+        RaceService raceService = new RaceService();
+        RacingCarFactory racingCarFactory = new RacingCarFactory();
+        RacingCars racingCars = racingCarFactory.makeRacingCars(3);
+        int moveCnt = 4;
+        int expectedRaceResultSize = 4;
 
-        int expectedCarCnt = 1;
-
-        RacingCar resultRacingCar = MotorRaceApplication.condition(racingCar,randomValue,constantValue);
-
-        assertThat(resultRacingCar.getPosition()).isEqualTo(expectedCarCnt);
+        RaceResult raceResult = raceService.race(racingCars,moveCnt);
+        assertThat(raceResult.getRaceCarPostionResultList()).hasSize(expectedRaceResultSize);
     }
 
     @Test
-    @DisplayName("constantValue보다 낮은 수는 dont move")
-    void conditionTest2(){
+    @DisplayName("MOVE_CONSTANT보다 높은 randomNumber가 주어지면 racingCar의 position은 증가")
+    void raceCarMoveTest(){
         RacingCar racingCar = new RacingCar();
-        int randomValue = 3;
-        int constantValue = 5;
+        int number = 5;
+        int expectedPosition = 1;
 
-        int expectedCarCnt = 0;
+        racingCar.move(number);
 
-        RacingCar resultRacingCar = MotorRaceApplication.condition(racingCar,randomValue,constantValue);
-
-        assertThat(resultRacingCar.getPosition()).isEqualTo(expectedCarCnt);
+        assertThat(racingCar.getPosition()).isEqualTo(expectedPosition);
     }
 }

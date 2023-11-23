@@ -1,11 +1,22 @@
 package motorRace;
 
 public class ResultView {
-    public static void systemOut(String msg){
-        System.out.println(msg);
+
+    private static final String RESULT_MSG = "실행 결과";
+
+    public static void raceResultOut(RaceResult raceResult){
+        System.out.println(RESULT_MSG);
+        raceResult.getRaceCarPostionResultList().forEach(
+                roundResult -> {
+                    roundResultOut(roundResult);
+                }
+        );
     }
 
-    public static void systemOut(RacingCar racingCar){
-        System.out.println("-".repeat(racingCar.getPosition()));
+    private static void roundResultOut(RaceResult.RoundResult roundResult){
+        roundResult.getRaceCarPositionList().forEach(position->{
+            System.out.println("-".repeat(position));
+        });
+        System.out.println("");
     }
 }
