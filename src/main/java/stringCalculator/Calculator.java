@@ -1,4 +1,4 @@
-package step2;
+package stringCalculator;
 
 import java.util.Objects;
 
