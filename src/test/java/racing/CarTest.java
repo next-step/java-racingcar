@@ -3,12 +3,10 @@ package racing;
 import org.junit.jupiter.api.Test;
 import racing.domain.*;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racing.domain.Car.isMove;
-import static racing.domain.RacingGame.splitCarName;
+import static racing.controller.RacingGame.splitCarName;
 
 public class CarTest {
 
@@ -26,14 +24,20 @@ public class CarTest {
     void 랜덤값이_4이상이면_포지션값이_1_증가한다() {
         Car car = new Car("njw");
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(1);
+
+        Car expected = new Car("njw", 1);
+
+        assertThat(car).isEqualTo(expected);
     }
 
     @Test
     void 랜덤값이_4미만이면_포지션값이_그대로다() {
         Car car = new Car("njw");
         car.move(() -> false);
-        assertThat(car.getPosition()).isEqualTo(0);
+
+        Car expected = new Car("njw", 0);
+
+        assertThat(car).isEqualTo(expected);
     }
 
     @Test
