@@ -1,6 +1,7 @@
 package step3.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -16,6 +17,6 @@ public class Cars {
     }
 
     public List<Car> carList() {
-        return this.carList;
+        return Collections.unmodifiableList(this.carList);
     }
 }

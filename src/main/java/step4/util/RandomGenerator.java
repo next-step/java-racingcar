@@ -1,6 +1,5 @@
-package step3.util;
+package step4.util;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomGenerator {

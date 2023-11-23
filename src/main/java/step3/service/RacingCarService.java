@@ -26,7 +26,7 @@ public class RacingCarService {
     private static List<Integer> race(Cars cars) {
         List<Integer> resultPerRound = new ArrayList<>();
         for (Car car : cars.carList()) {
-            car.move(movingStrategy.canForward());
+            car.move(movingStrategy);
             resultPerRound.add(car.getDistance());
         }
         return resultPerRound;
