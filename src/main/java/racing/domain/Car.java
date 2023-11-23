@@ -1,5 +1,7 @@
 package racing.domain;
 
+import java.util.Objects;
+
 public class Car {
 
     public static final int MOVE_CONDITION = 4;
@@ -40,5 +42,18 @@ public class Car {
 
     public boolean samePosition(int maxPosition) {
         return position == maxPosition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
