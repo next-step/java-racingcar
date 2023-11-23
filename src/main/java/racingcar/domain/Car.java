@@ -2,44 +2,33 @@ package racingcar.domain;
 
 public class Car {
     private static final int MOVABLE_THRESHOLD = 4;
-    private static final int MAX_NM_LENGTH = 5;
-
-    private int position = 0;
-    private final String name;
+    private Position position = new Position(0);
+    private Name name = new Name("");
 
 
     public Car() {
-        this.name = "";
     }
 
     public Car(final String name) {
-        validateNameLen(name);
-        this.name = name;
+        this.name = new Name(name);
     }
 
     public Car(int position, String name) {
-        validateNameLen(name);
-        this.position = position;
-        this.name = name;
+        this.position = new Position(position);
+        this.name = new Name(name);
     }
 
     public void moveForward(int input) {
         if (input >= MOVABLE_THRESHOLD) {
-            this.position++;
+            position.move();
         }
     }
 
-    private void validateNameLen(String name) {
-        if (name.length() > MAX_NM_LENGTH) {
-            throw new IllegalArgumentException("자동차명은 5글자를 넘길 수 없습니다 : " + name);
-        }
-    }
-
-    public int getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 
-    public String getName() {
+    public Name getName() {
         return this.name;
     }
 
@@ -56,5 +45,10 @@ public class Car {
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return name.toString();
     }
 }
