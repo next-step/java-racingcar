@@ -1,4 +1,11 @@
-package racing;
+package racing.controller;
+
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.MoveStrategy;
+import racing.domain.RandomMoveStrategy;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +13,8 @@ import java.util.List;
 
 public class RacingGame {
     public static void main(String[] args) {
+
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
 
         InputView inputView = new InputView();
         String carNames = inputView.getCarNames();
@@ -16,7 +25,10 @@ public class RacingGame {
 
         ResultView resultView = new ResultView();
         System.out.println("실행 결과");
-        cars.moveCars(retryCount, resultView);
+        for (int i = 0; i < retryCount; i++) {
+            cars.moveCars(moveStrategy);
+            resultView.print(cars);
+        }
         resultView.printWinner(cars.getWinner());
     }
 

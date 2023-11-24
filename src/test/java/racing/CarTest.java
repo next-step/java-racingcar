@@ -1,13 +1,12 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import racing.domain.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racing.Car.isMove;
-import static racing.RacingGame.splitCarName;
+import static racing.domain.Car.isMove;
+import static racing.controller.RacingGame.splitCarName;
 
 public class CarTest {
 
@@ -23,18 +22,22 @@ public class CarTest {
 
     @Test
     void 랜덤값이_4이상이면_포지션값이_1_증가한다() {
-        TestGenerateNumber generateNumber = new TestGenerateNumber(4);
-        Car car = new Car("njw",1);
-        car.move(generateNumber);
-        assertThat(car.getPosition()).isEqualTo(2);
+        Car car = new Car("njw");
+        car.move(() -> true);
+
+        Car expected = new Car("njw", 1);
+
+        assertThat(car).isEqualTo(expected);
     }
 
     @Test
     void 랜덤값이_4미만이면_포지션값이_그대로다() {
-        TestGenerateNumber generateNumber = new TestGenerateNumber(3);
-        Car car = new Car("njw",1);
-        car.move(generateNumber);
-        assertThat(car.getPosition()).isEqualTo(1);
+        Car car = new Car("njw");
+        car.move(() -> false);
+
+        Car expected = new Car("njw", 0);
+
+        assertThat(car).isEqualTo(expected);
     }
 
     @Test
@@ -54,30 +57,4 @@ public class CarTest {
         String[] carNames = splitCarName("njw,njw2,njw3");
         assertThat(carNames).containsExactly("njw", "njw2", "njw3");
     }
-
-    @Test
-    void 경기가_끝나면_우승한_자동차를_가져올_수_있다() {
-        Car car1 = new Car("A", 3);
-        Car car2 = new Car("B", 2);
-        Car car3 = new Car("C", 1);
-        Cars cars = new Cars(List.of(car1, car2, car3));
-
-        String winners = cars.getWinner();
-
-        assertThat(winners).isEqualTo("A");
-    }
-
-    @Test
-    void 경기가_끝나면_우승한_자동차를_가져올_수_있다_여러명() {
-        Car car1 = new Car("Q", 5);
-        Car car2 = new Car("W", 2);
-        Car car3 = new Car("E", 5);
-
-        Cars cars = new Cars(List.of(car1, car2, car3));
-
-        String winners = cars.getWinner();
-
-        assertThat(winners).isEqualTo("Q,E");
-    }
-
 }
