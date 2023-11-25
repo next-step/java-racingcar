@@ -9,12 +9,14 @@ import camp.nextstep.edu.racingcar.view.RacingOutputView;
 
 public class Main {
 
+    public static final String DELIMITER = ",";
+
     public static void main(String[] args) {
         DriveStrategy driveStrategy = new RandomDriveStrategy();
         String carNames = RacingInputView.readCarNames();
         int roundAmount = RacingInputView.readRoundAmount();
 
-        RacingGame racingGame = new RacingGame(driveStrategy, carNames, roundAmount);
+        RacingGame racingGame = new RacingGame(driveStrategy, carNames.split(DELIMITER), roundAmount);
         RacingGameResult gameResult = racingGame.play();
 
         RacingOutputView.printGameResult(gameResult);

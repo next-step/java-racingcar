@@ -18,7 +18,7 @@ public class RacingGameTest {
     void mustDrive() {
         // given
         DriveStrategy driveStrategy = () -> true;
-        RacingGame racingGame = new RacingGame(driveStrategy, "a,b", 2);
+        RacingGame racingGame = new RacingGame(driveStrategy, new String[] { "a", "b" }, 2);
 
         // when
         RacingGameResult gameResult = racingGame.play();
@@ -43,7 +43,7 @@ public class RacingGameTest {
     void mustNotDrive() {
         // given
         DriveStrategy driveStrategy = () -> false;
-        RacingGame racingGame = new RacingGame(driveStrategy, "a,b", 2);
+        RacingGame racingGame = new RacingGame(driveStrategy, new String[] { "a", "b" }, 2);
 
         // when
         RacingGameResult gameResult = racingGame.play();
