@@ -32,7 +32,7 @@ public class RoundResult {
     public List<String> getWinners() {
         int maxDrivenDistance = getMaxDrivenDistance();
         return driveResults.stream()
-            .filter(driveResult -> driveResult.drivenDistance == maxDrivenDistance)
+            .filter(driveResult -> driveResult.drivenDistance() == maxDrivenDistance)
             .map(DriveResult::name)
             .collect(Collectors.toList());
     }

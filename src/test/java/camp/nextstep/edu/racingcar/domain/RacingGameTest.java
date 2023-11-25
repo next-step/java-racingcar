@@ -29,13 +29,13 @@ public class RacingGameTest {
 
         List<DriveResult> driveResultsRound1 = roundResults.get(0).driveResults();
         assertThat(driveResultsRound1.size()).isEqualTo(2);
-        assertThat(driveResultsRound1.get(0).drivenDistance).isEqualTo(1);
-        assertThat(driveResultsRound1.get(1).drivenDistance).isEqualTo(1);
+        assertThat(driveResultsRound1.get(0).drivenDistance()).isEqualTo(1);
+        assertThat(driveResultsRound1.get(1).drivenDistance()).isEqualTo(1);
 
         List<DriveResult> driveResultsRound2 = roundResults.get(1).driveResults();
         assertThat(driveResultsRound2.size()).isEqualTo(2);
-        assertThat(driveResultsRound2.get(0).drivenDistance).isEqualTo(2);
-        assertThat(driveResultsRound2.get(1).drivenDistance).isEqualTo(2);
+        assertThat(driveResultsRound2.get(0).drivenDistance()).isEqualTo(2);
+        assertThat(driveResultsRound2.get(1).drivenDistance()).isEqualTo(2);
     }
 
     @Test
@@ -54,12 +54,12 @@ public class RacingGameTest {
 
         List<DriveResult> driveResultsRound1 = roundResults.get(0).driveResults();
         assertThat(driveResultsRound1.size()).isEqualTo(2);
-        assertThat(driveResultsRound1.get(0).drivenDistance).isEqualTo(0);
-        assertThat(driveResultsRound1.get(1).drivenDistance).isEqualTo(0);
+        assertThat(driveResultsRound1.get(0).drivenDistance()).isEqualTo(0);
+        assertThat(driveResultsRound1.get(1).drivenDistance()).isEqualTo(0);
 
         List<DriveResult> driveResultsRound2 = roundResults.get(1).driveResults();
         assertThat(driveResultsRound2.size()).isEqualTo(2);
-        assertThat(driveResultsRound2.get(0).drivenDistance).isEqualTo(0);
-        assertThat(driveResultsRound2.get(1).drivenDistance).isEqualTo(0);
+        assertThat(driveResultsRound2.get(0).drivenDistance()).isEqualTo(0);
+        assertThat(driveResultsRound2.get(1).drivenDistance()).isEqualTo(0);
     }
 }

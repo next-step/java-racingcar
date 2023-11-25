@@ -25,8 +25,8 @@ public class CarTest {
         DriveResult driveResult2 = car.drive();
 
         // then
-        assertThat(driveResult1.drivenDistance).isEqualTo(1);
-        assertThat(driveResult2.drivenDistance).isEqualTo(2);
+        assertThat(driveResult1.drivenDistance()).isEqualTo(1);
+        assertThat(driveResult2.drivenDistance()).isEqualTo(2);
     }
 
     @Test
@@ -41,8 +41,8 @@ public class CarTest {
         DriveResult driveResult2 = car.drive();
 
         // then
-        assertThat(driveResult1.drivenDistance).isEqualTo(0);
-        assertThat(driveResult2.drivenDistance).isEqualTo(0);
+        assertThat(driveResult1.drivenDistance()).isEqualTo(0);
+        assertThat(driveResult2.drivenDistance()).isEqualTo(0);
     }
 
     @ParameterizedTest

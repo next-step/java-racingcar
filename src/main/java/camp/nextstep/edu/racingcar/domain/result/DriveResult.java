@@ -2,8 +2,8 @@ package camp.nextstep.edu.racingcar.domain.result;
 
 public class DriveResult {
 
-    public final String name;
-    public final int drivenDistance;
+    private final String name;
+    private final int drivenDistance;
 
     public DriveResult(String name, int drivenDistance) {
         this.name = name;

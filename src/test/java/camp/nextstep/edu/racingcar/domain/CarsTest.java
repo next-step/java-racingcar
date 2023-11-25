@@ -26,13 +26,13 @@ public class CarsTest {
         // then
         List<DriveResult> driveResults1 = roundResult1.driveResults();
         assertThat(driveResults1.size()).isEqualTo(2);
-        assertThat(driveResults1.get(0).drivenDistance).isEqualTo(1);
-        assertThat(driveResults1.get(1).drivenDistance).isEqualTo(1);
+        assertThat(driveResults1.get(0).drivenDistance()).isEqualTo(1);
+        assertThat(driveResults1.get(1).drivenDistance()).isEqualTo(1);
 
         List<DriveResult> driveResults2 = roundResult2.driveResults();
         assertThat(driveResults2.size()).isEqualTo(2);
-        assertThat(driveResults2.get(0).drivenDistance).isEqualTo(2);
-        assertThat(driveResults2.get(1).drivenDistance).isEqualTo(2);
+        assertThat(driveResults2.get(0).drivenDistance()).isEqualTo(2);
+        assertThat(driveResults2.get(1).drivenDistance()).isEqualTo(2);
     }
 
     @Test
@@ -49,13 +49,13 @@ public class CarsTest {
         // then
         List<DriveResult> driveResults1 = roundResult1.driveResults();
         assertThat(driveResults1.size()).isEqualTo(2);
-        assertThat(driveResults1.get(0).drivenDistance).isEqualTo(0);
-        assertThat(driveResults1.get(1).drivenDistance).isEqualTo(0);
+        assertThat(driveResults1.get(0).drivenDistance()).isEqualTo(0);
+        assertThat(driveResults1.get(1).drivenDistance()).isEqualTo(0);
 
         List<DriveResult> driveResults2 = roundResult2.driveResults();
         assertThat(driveResults2.size()).isEqualTo(2);
-        assertThat(driveResults2.get(0).drivenDistance).isEqualTo(0);
-        assertThat(driveResults2.get(1).drivenDistance).isEqualTo(0);
+        assertThat(driveResults2.get(0).drivenDistance()).isEqualTo(0);
+        assertThat(driveResults2.get(1).drivenDistance()).isEqualTo(0);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class CarsTest {
 
         // then
         assertThat(driveResults.size()).isEqualTo(2);
-        assertThat(driveResults.get(0).name).isEqualTo("a");
-        assertThat(driveResults.get(1).name).isEqualTo("b");
+        assertThat(driveResults.get(0).name()).isEqualTo("a");
+        assertThat(driveResults.get(1).name()).isEqualTo("b");
     }
 }
