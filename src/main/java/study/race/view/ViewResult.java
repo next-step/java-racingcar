@@ -1,20 +1,19 @@
 package study.race.view;
 
-import study.race.model.RaceResult;
+import study.race.model.Cars;
+import study.race.model.Winners;
 
-import java.util.List;
-import java.util.Map;
 
 public class ViewResult {
 
-    public void printRacingResult(RaceResult raceResult) {
-        for (Map.Entry<String, Integer> result : raceResult.getResult().entrySet()) {
-            System.out.println(result.getKey() + " : " + "-".repeat(result.getValue()));
+    public void printRacingResult(Cars cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(cars.getCarNameAt(i) + " : " + "-".repeat(cars.getCarDistanceAt(i)));
         }
         System.out.println();
     }
 
-    public void printRacingWinners(String winners) {
-        System.out.println(winners + " won in the racing.");
+    public void printRacingWinners(Winners winners) {
+        System.out.println(winners.getWinnersList() + " won in the racing.");
     }
 }

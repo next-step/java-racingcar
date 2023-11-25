@@ -11,16 +11,13 @@ public class CarMovingDistance {
     }
 
     public int updateMovingDistance(int currentDistance, int movingDistance) {
-        if (checkForwardCondition(movingDistance) || currentDistance == STARTING_POINT) {
+        if (checkForwardCondition(movingDistance)) {
             return currentDistance + MOVE;
         }
         return currentDistance;
     }
 
     private boolean checkForwardCondition(int movingDistance) {
-        if (movingDistance >= FORWARD_CONDITION_THRESHOLD) {
-            return true;
-        }
-        return false;
+        return movingDistance >= FORWARD_CONDITION_THRESHOLD;
     }
 }

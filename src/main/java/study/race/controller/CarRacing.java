@@ -30,6 +30,6 @@ public class CarRacing {
             racing.start();
             this.viewResult.printRacingResult(racing.getRaceResult());
         }
-        this.viewResult.printRacingWinners(racing.getWinners());
+        this.viewResult.printRacingWinners(cars.getWinners());
     }
 }

@@ -13,17 +13,25 @@ public class Winners {
         this.winnerList = new ArrayList<>();
     }
 
-    public void addWinners(String name, int distance) {
-        if (distance >= maxDistance) {
-            this.winnerList.add(name);
+    public void checkAndAddWinner(String name, int distance) {
+        if (isWinner(distance)) {
+            addToWinnerList(name);
         }
     }
 
-    public String getString() {
-        String winnerToString = "";
-        for (String winner: this.winnerList) {
-            winnerToString = winnerToString + winner + ", ";
+    private boolean isWinner(int distance) {
+        return distance >= maxDistance;
+    }
+
+    private void addToWinnerList(String name) {
+        this.winnerList.add(name);
+    }
+
+    public String getWinnersList() {
+       String winners = "";
+        for (String winner : this.winnerList) {
+          winners = winners + winner + ", ";
         }
-        return winnerToString.substring(0, winnerToString.length() - 2);
+        return winners.substring(0, winners.length() - 2);
     }
 }

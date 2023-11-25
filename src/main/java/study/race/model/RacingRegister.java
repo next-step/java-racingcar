@@ -11,7 +11,7 @@ public class RacingRegister {
     public Cars register(String carName) {
         this.carNameList = carName.split(",");
         checkCarNameValid(carNameList);
-        return this.carRegister(carNameList);
+        return carRegister(carNameList);
     }
 
     private void checkCarNameValid(String[] names) {
