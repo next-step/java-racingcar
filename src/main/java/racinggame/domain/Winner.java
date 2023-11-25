@@ -2,24 +2,31 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Cars {
+public class Winner {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Winner(List<Car> cars) {
         this.cars = cars;
     }
 
     public List<String> getWinners() {
+        return getWinnerByPosition(getWinnerPosition());
+    }
+
+    private List<String> getWinnerByPosition(int winnerPosition) {
         List<String> winnerList = new ArrayList<>();
-        int winnerPosition = getWinnerPosition();
         for (Car car : cars) {
-            if (winnerPosition == car.getPosition()) {
-                winnerList.add(car.getCarName());
-            }
+            winnerList.add(getWinnerCarName(winnerPosition, car));
         }
+        winnerList.removeIf(Objects::isNull);
         return winnerList;
+    }
+
+    private String getWinnerCarName(int winnerPosition, Car car) {
+        return (winnerPosition == car.getPosition()) ? car.getCarName() : null;
     }
 
     private int getWinnerPosition() {
@@ -30,7 +37,7 @@ public class Cars {
         return maxPosition;
     }
 
-    private static int compareAndUpdateMaxPosition(int maxPosition, Car car) {
+    private int compareAndUpdateMaxPosition(int maxPosition, Car car) {
         if (car.getPosition() > maxPosition) {
             maxPosition = car.getPosition();
         }
