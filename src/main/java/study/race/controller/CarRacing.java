@@ -1,30 +1,35 @@
 package study.race.controller;
 
+import study.race.model.Cars;
+import study.race.model.RacingRegister;
+import study.race.model.Racing;
 import study.race.view.ReceiveInputValue;
-import study.race.model.RunTrack;
 import study.race.view.ViewResult;
 
 public class CarRacing {
 
-    private ReceiveInputValue receiveInputValue;
     private ViewResult viewResult;
+    private RacingRegister racingRegister;
+    private ReceiveInputValue receiveInputValue;
 
     public CarRacing() {
-        this.receiveInputValue = new ReceiveInputValue();
         this.viewResult = new ViewResult();
+        this.racingRegister = new RacingRegister();
+        this.receiveInputValue = new ReceiveInputValue();
     }
 
     public void runCarRacing() {
-        int numberOfCar = receiveInputValue.receiveInputValueForCar();
-        int roundOfTrack = receiveInputValue.receiveInputValueForRound();
+        String carNames =  this.receiveInputValue.receiveInputValueForCarNames();
+        int roundOfTrack = this.receiveInputValue.receiveInputValueForRound();
 
-        RunTrack runTrack = new RunTrack(numberOfCar);
+        Cars cars = this.racingRegister.register(carNames);
+        Racing racing = new Racing(cars);
 
         System.out.println("\nExecution Result");
-        this.viewResult.printResult(runTrack.getRaceResult());
         for (int i = 0; i < roundOfTrack; i++) {
-            runTrack.start();
-            this.viewResult.printResult(runTrack.getRaceResult());
+            racing.start();
+            this.viewResult.printRacingResult(racing.getRaceResult());
         }
+        this.viewResult.printRacingWinners(cars.getWinners());
     }
 }

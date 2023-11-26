@@ -1,6 +1,6 @@
 package study.race.model;
 
-public class CarLocationManager {
+public class CarMovingDistance {
 
     private final int STARTING_POINT = 0;
     private final int MOVE = 1;
@@ -10,17 +10,14 @@ public class CarLocationManager {
         return STARTING_POINT;
     }
 
-    public int updateLocation(int currentDistance, int movingDistance) {
-        if (checkForwardCondition(movingDistance) || currentDistance == STARTING_POINT) {
+    public int updateMovingDistance(int currentDistance, int movingDistance) {
+        if (checkForwardCondition(movingDistance)) {
             return currentDistance + MOVE;
         }
         return currentDistance;
     }
 
     private boolean checkForwardCondition(int movingDistance) {
-        if (movingDistance >= FORWARD_CONDITION_THRESHOLD) {
-            return true;
-        }
-        return false;
+        return movingDistance >= FORWARD_CONDITION_THRESHOLD;
     }
 }

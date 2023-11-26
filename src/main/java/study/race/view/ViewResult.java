@@ -1,13 +1,19 @@
 package study.race.view;
 
-import java.util.List;
+import study.race.model.Cars;
+import study.race.model.Winners;
+
 
 public class ViewResult {
 
-    public void printResult(int[] results) {
-        for (int result: results) {
-            System.out.println("-".repeat(result));
+    public void printRacingResult(Cars cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(cars.getCarNameAt(i) + " : " + "-".repeat(cars.getCarDistanceAt(i)));
         }
         System.out.println();
+    }
+
+    public void printRacingWinners(Winners winners) {
+        System.out.println(winners.getWinnersList() + " won in the racing.");
     }
 }
