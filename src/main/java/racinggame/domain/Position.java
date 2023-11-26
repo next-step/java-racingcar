@@ -3,6 +3,7 @@ package racinggame.domain;
 public class Position {
 
     private final int position;
+    private final int POSITION_INCREMENT = 1;
 
     public Position(int position) {
         if (position < 0) {
@@ -12,7 +13,7 @@ public class Position {
     }
 
     public Position move() {
-        return new Position(position + 1);
+        return new Position(position + POSITION_INCREMENT);
     }
 
     public int getPosition() {
