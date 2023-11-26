@@ -36,7 +36,7 @@ public class CarService {
     public List<Car> racingCar() {
         List<Car> cars = findAllCars();
         for (Car car : cars) {
-            car.moving();
+            car.moving(RandomNumberGenerator.getRandomNumber());
         }
         return cars;
     }

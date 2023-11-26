@@ -5,7 +5,7 @@ import study.util.RandomNumberGenerator;
 
 public class Car {
     private final String name;
-    private Position position;
+    private final Position position;
 
     public Car(String name) {
         this(name, 0);
@@ -24,20 +24,10 @@ public class Car {
         return position.getPosition();
     }
 
-    public void moving() {
-        if (RacingCarPolicy.canMovingCar(getRandomNumber())) {
-            position.move();
-        }
-    }
-
     public void moving(int num) {
         if (RacingCarPolicy.canMovingCar(num)) {
             position.move();
         }
-    }
-
-    protected int getRandomNumber() {
-        return RandomNumberGenerator.getRandomNumber();
     }
 
     public boolean matchPosition(int position) {
