@@ -2,25 +2,24 @@ package study.race.model;
 
 public class Car {
 
-    private String name;
     private int currentLocation;
-    private CarMovingDistance carMovingDistance;
+    private Name name;
+    private Location location;
 
     public Car(String name) {
-        this.name = name;
-        this.carMovingDistance = new CarMovingDistance();
-        this.currentLocation = carMovingDistance.initMovingDistance();
+        this.name = new Name(name);
+        this.location = new Location();
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
 
-    public int getCurrentLocation() {
-        return this.currentLocation;
+    public int getLocation() {
+        return this.location.getLocation();
     }
 
-    public void move(int movingDistance) {
-        this.currentLocation = this.carMovingDistance.updateMovingDistance(this.currentLocation, movingDistance);
+    public void move() {
+        this.location.updateMovingDistance();
     }
 }

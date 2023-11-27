@@ -33,26 +33,6 @@ public class CarRacingTest {
         assertThat(cars.size()).isEqualTo(CAR_NAMES.split(",").length);
     }
 
-    @ParameterizedTest(name = "moving distance: {0}, current location: {1}")
-    @DisplayName("When moving distance is 4 or more, car moving Test")
-    @CsvSource({"4, 1", "5, 2", "6, 3", "7, 4", "8, 5", "9, 6"})
-    void moveCar(int movingDistance, int expected) {
-        Car car = moveCars.get(0);
-        car.move(movingDistance);
-        int result = car.getCurrentLocation();
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @ParameterizedTest(name = "moving distance: {0}, current location: {1}")
-    @DisplayName("When moving distance is 3 or less, car moving Test")
-    @CsvSource({"0, 0", "1, 0", "2, 0", "3, 0"})
-    void stopCar(int movingDistance, int expected) {
-        Car car = stopCars.get(0);
-        car.move(movingDistance);
-        int result = car.getCurrentLocation();
-        assertThat(result).isEqualTo(expected);
-    }
-
     @ParameterizedTest()
     @DisplayName("Generating car as many as car names")
     @ValueSource(strings = {"car1,car2", "car1,car2,car3", "car1,car2,car3,car4"})
