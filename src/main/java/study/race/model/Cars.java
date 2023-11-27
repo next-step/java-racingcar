@@ -17,8 +17,8 @@ public class Cars {
         this.carList.add(new Car(name));
     }
 
-    public void moveCarAt(int i, int movingDistance) {
-        this.carList.get(i).move(movingDistance);
+    public void moveCarAt(int i) {
+        this.carList.get(i).move();
     }
 
     public int size() {
@@ -34,7 +34,7 @@ public class Cars {
     }
 
     public int getCarDistanceAt(int i) {
-        return this.carList.get(i).getCurrentLocation();
+        return this.carList.get(i).getLocation();
     }
 
     public Winners getWinners() {
@@ -44,7 +44,7 @@ public class Cars {
     private int findMaxDistance() {
         int maxDistance = 0;
         for (Car car : carList) {
-            maxDistance = Math.max(maxDistance, car.getCurrentLocation());
+            maxDistance = Math.max(maxDistance, car.getLocation());
         }
         return maxDistance;
     }
@@ -52,7 +52,7 @@ public class Cars {
     private Winners findWinners(int maxDistance) {
         Winners winners = new Winners(maxDistance);
         for (Car car : carList) {
-            winners.checkAndAddWinner(car.getName(), car.getCurrentLocation());
+            winners.checkAndAddWinner(car.getName(), car.getLocation());
         }
         return winners;
     }
