@@ -2,7 +2,7 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.utils.StringUtils;
+import study.util.SplitName;
 import study.validator.NameValidator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -34,7 +34,7 @@ public class NameValidatorTest {
     @Test
     @DisplayName("StringUtils split 사용시 , 기준으로 작동한다.")
     void splitNameTest() {
-        String[] string = StringUtils.splitString("a,b,ggg");
+        String[] string = SplitName.splitString("a,b,ggg");
         assertThat(string).containsExactly("a", "b", "ggg");
     }
 }

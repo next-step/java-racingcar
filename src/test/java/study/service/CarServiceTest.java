@@ -1,16 +1,18 @@
-package study;
+package study.service;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.domain.Car;
-import study.domain.CarService;
+import study.service.CarService;
 import study.repository.CarRepository;
 import study.repository.MemoryCarRepository;
-import study.utils.RandomUtils;
+
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static study.util.SplitName.splitStringAndValidateNames;
 
 public class CarServiceTest {
 
@@ -43,7 +45,7 @@ public class CarServiceTest {
     }
 
     @Test
-    @DisplayName("차를 움직이는 경우 position이 증가된다.")
+    @DisplayName("repository를 활용해 차 상태를 변경한다.")
     void movingCarTest() {
         //given
         Car car = new Car("A", 3);
@@ -59,9 +61,13 @@ public class CarServiceTest {
     }
 
     @Test
-    @DisplayName("position이 같으면 true를 출력한다. ")
-    void matchPositionTest() {
-        Car car = new Car("a", 3);
-        assertThat(car.matchPosition(3)).isTrue();
+    @DisplayName("이름 여러개를 입력해 자동자 객체를 저장한다.")
+    void saveCarTest() {
+        String[] carNames = splitStringAndValidateNames("a,b");
+
+        carService.setCarListByName(carNames);
+        List<Car> allCars = carService.findAllCars();
+
+        assertThat(allCars.size()).isEqualTo(2);
     }
 }

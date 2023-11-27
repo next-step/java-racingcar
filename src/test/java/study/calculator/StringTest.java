@@ -1,4 +1,4 @@
-package study;
+package study.calculator;
 
 import org.assertj.core.data.Index;
 import org.junit.jupiter.api.DisplayName;

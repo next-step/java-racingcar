@@ -1,12 +1,11 @@
 package study.domain;
 
 import study.policy.RacingCarPolicy;
-
-import java.util.Objects;
+import study.util.RandomNumberGenerator;
 
 public class Car {
     private final String name;
-    private int position;
+    private final Position position;
 
     public Car(String name) {
         this(name, 0);
@@ -14,7 +13,7 @@ public class Car {
 
     public Car(String name, int position) {
         this.name = name.trim();
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public String getName() {
@@ -22,37 +21,16 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public void moving(int num) {
         if (RacingCarPolicy.canMovingCar(num)) {
-            this.position += 1;
+            position.move();
         }
     }
 
     public boolean matchPosition(int position) {
-        return this.position == position;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", position=" + position +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return position == car.position && Objects.equals(name, car.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, position);
+        return this.position.isSame(position);
     }
 }

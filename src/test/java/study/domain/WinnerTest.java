@@ -1,4 +1,4 @@
-package study;
+package study.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
