@@ -1,38 +1,19 @@
 package racingCar.view;
 
-import racingCar.domain.Car;
-import racingCar.domain.Cars;
-
 import java.util.List;
 
 public class ResultView {
 
-    public static void main(String[] args) {
-        int[] inputValues = InputView.input();
-        int carNum = inputValues[0];
-        int tryNum = inputValues[1];
-
-        Cars cars = new Cars(carNum);
-
-        for(int i=0; i< tryNum; i++){
-            cars.addCarMoving();
-            printCar(cars.getCarList());
-        }
-
+    public static void printCarStatus(List<String> carStatus){
+        System.out.println(String.join("\n", carStatus));
     }
 
-    public static void printEachCar(Car car){
-        for(int i=0; i < car.getForwardCount(); i++){
-            System.out.print("-");
+    public static void printWinner(List<String> winners){
+        for(int i=0; i < winners.size()-1; i++){
+            System.out.print(winners.get(i) + ", ");
         }
-        System.out.println();
-    }
+        System.out.print(winners.get(winners.size()-1) + "가 최종 우승했습니다.");
 
-    public static void printCar(List<Car> carList){
-        for(Car car : carList) {
-            printEachCar(car);
-        }
-        System.out.println();
     }
 
 }

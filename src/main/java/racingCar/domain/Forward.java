@@ -26,6 +26,15 @@ public class Forward {
         return this.forwardCount == forwardCount;
     }
 
+    String makeForwardString(String forwardMark){
+        String forwardString = "";
+
+        for(int i = 0; i < forwardCount; i++){
+            forwardString += forwardMark;
+        }
+
+        return forwardString;
+    }
     @Override
     public String toString() {
         return "Forward{" +

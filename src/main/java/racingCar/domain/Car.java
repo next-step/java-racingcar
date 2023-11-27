@@ -56,6 +56,14 @@ public class Car {
         return winners;
     }
 
+    public String carStatus(String separate, String forwardMark){
+        StringBuilder carStatus = new StringBuilder();
+        if(carName == null) {
+            return carStatus.append(forward.makeForwardString(forwardMark)).toString();
+        }
+        return carStatus.append(carName).append(separate).append(forward.makeForwardString(forwardMark)).toString();
+    }
+
     @Override
     public String toString() {
         return "Car{" +

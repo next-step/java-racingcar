@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Cars {
     private static final String SPLIT_DELIMITER = ",";
+    private static final String SEPARATE_DELIMITER = " : ";
+    private static final String FORWARD_MARK = "-";
     public static final int RANDOM_LIMIT_VALUE = 10;
 
     private List<Car> carList;
@@ -37,14 +39,27 @@ public class Cars {
         return carNames.split(SPLIT_DELIMITER);
     }
 
-    public List<Car> addCarMoving(){
-
+    private List<String> addCarMoving(){
+        List<String> carStatusList = new ArrayList<>();
         for(Car car : carList){
             car.moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE));
+            carStatusList.add(car.carStatus(SEPARATE_DELIMITER, FORWARD_MARK));
         }
 
-        return carList;
+        return carStatusList;
     }
+
+    public List<String> repeatMove(int tryNum){
+        List<String> allCarStatus = new ArrayList<>();
+
+        for(int i = 0; i < tryNum; i++){
+            allCarStatus.addAll(addCarMoving());
+            allCarStatus.add("");
+        }
+
+        return allCarStatus;
+    }
+
 
     public Car findCar(String carName) {
         return carList.stream()
