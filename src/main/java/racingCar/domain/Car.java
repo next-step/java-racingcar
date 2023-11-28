@@ -12,14 +12,14 @@ public class Car {
         this.distance = new Distance(distance);
     }
 
-    public Car(CarName carName){
+    public Car(CarName carName) {
         this.carName = carName;
         this.distance = new Distance();
     }
 
     public Distance moveForward(int randomNumber) {
         if (isRunnable(randomNumber)) {
-             distance.moveForward();
+            distance.moveForward();
         }
         return distance;
     }

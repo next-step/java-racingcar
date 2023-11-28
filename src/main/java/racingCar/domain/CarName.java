@@ -1,19 +1,18 @@
 package racingCar.domain;
 
 public class CarName {
+    private static final int MAX_NAME_LENGTH = 5;
     private String value;
 
     public CarName(String value) {
-        if (isValid(value)) {
-            this.value = value;
-        }
+        validate(value);
+        this.value = value;
     }
 
-    private boolean isValid(String carName) {
-        if (carName.length() > 5) {
+    private void validate(String carName) {
+        if (carName.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("Car name cannot be longer than 5 char");
         }
-        return Boolean.TRUE;
     }
 
     public String getValue() {
