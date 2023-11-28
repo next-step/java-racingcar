@@ -7,7 +7,6 @@ public class Cars {
     private static final String SPLIT_DELIMITER = ",";
     private static final String SEPARATE_DELIMITER = " : ";
     private static final String FORWARD_MARK = "-";
-    public static final int RANDOM_LIMIT_VALUE = 10;
 
     private List<Car> carList;
 
@@ -42,7 +41,7 @@ public class Cars {
     private List<String> addCarMoving(){
         List<String> carStatusList = new ArrayList<>();
         for(Car car : carList){
-            car.moveCar(RandomNumber.getRandom(RANDOM_LIMIT_VALUE));
+            car.moveCar(new RandomNumber());
             carStatusList.add(car.carStatus(SEPARATE_DELIMITER, FORWARD_MARK));
         }
 

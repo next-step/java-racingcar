@@ -76,17 +76,11 @@ public class racingCarTest {
     public void 전진_결과_테스트(){
         Car car = new Car(0);
 
-        car.moveCar(3);
+        car.moveCar(new RandomNumber(3));
         assertThat(car.equals(new Car(0))).isTrue();
 
-        car.moveCar(4);
+        car.moveCar(new RandomNumber(4));
         assertThat(car.equals(new Car(1))).isTrue();
     }
 
-    @Test
-    @DisplayName("0에서 9사이의 랜덤값을 반환한다.")
-    public void 랜덤값_추출_0과_9사이_정수(){
-        int random = RandomNumber.getRandom(10);
-        assertThat(random).isBetween(0,9);
-    }
 }

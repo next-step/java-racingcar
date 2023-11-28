@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
-    public static final int FORWARD_BOUNDARY_VALUE = 3;
 
     private String carName;
     private Forward forward;
@@ -30,16 +29,14 @@ public class Car {
         return carName;
     }
 
-    public int getForwardCount() { return forward.forwardCount(); }
-
     private void checkCarName(String carName){
         if(carName.length() > MAX_NAME_LENGTH){
             throw new IllegalArgumentException();
         }
     }
 
-    public void moveCar(int randomNumber){
-        if(randomNumber > FORWARD_BOUNDARY_VALUE) {
+    public void moveCar(RandomNumber randomNumber){
+        if(randomNumber.isMovable()) {
             forward.addForwardCount();
         }
     }
