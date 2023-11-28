@@ -1,6 +1,7 @@
 package racingCar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -30,8 +31,8 @@ public class Cars {
         this.carList = carList;
     }
 
-    public List<Car> getCarList(){
-        return carList;
+    public List<Car> getCarList() {
+        return Collections.unmodifiableList(carList);
     }
 
     private String[] splitCarNames(String carNames){
@@ -58,7 +59,6 @@ public class Cars {
 
         return allCarStatus;
     }
-
 
     public Car findCar(String carName) {
         return carList.stream()

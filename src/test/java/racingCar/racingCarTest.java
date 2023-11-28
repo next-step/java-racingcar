@@ -2,10 +2,7 @@ package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingCar.domain.Car;
-import racingCar.domain.Cars;
-import racingCar.domain.RandomNumber;
-import racingCar.domain.Winners;
+import racingCar.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +21,8 @@ public class racingCarTest {
                 new Car("crong", 3),
                 new Car("honux", 5)));
 
-        List<String> winners = Winners.findWinner(cars.getCarList());
+        RacingResult racingResult = new RacingResult(cars);
+        List<String> winners = racingResult.returnWinnerCar();
 
         assertThat(winners).hasSize(2);
         assertThat(winners).containsExactly("pobi","honux");
@@ -34,11 +32,12 @@ public class racingCarTest {
     @DisplayName("입력한 자동차 중 가장 많이 전진한 자동차의 전진 횟수를 반환한다.")
     public void 가장_많이_전진한_자동차_전진횟수_반환(){
         Cars cars = new Cars(Arrays.asList(
-                new Car("pobi", 5),
+                new Car("pobi", 4),
                 new Car("crong", 3),
                 new Car("honux", 5)));
 
-        assertThat(Winners.getMaxForward(cars.getCarList())).isEqualTo(5);
+        RacingResult racingResult = new RacingResult(cars);
+        assertThat(racingResult.getMaxForward()).isEqualTo(5);
     }
 
     @Test

@@ -9,11 +9,8 @@ public class ResultView {
     }
 
     public static void printWinner(List<String> winners){
-        for(int i=0; i < winners.size()-1; i++){
-            System.out.print(winners.get(i) + ", ");
-        }
+        System.out.println(String.join(",", winners));
         System.out.print(winners.get(winners.size()-1) + "가 최종 우승했습니다.");
-
     }
 
 }

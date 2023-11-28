@@ -1,5 +1,5 @@
 import racingCar.domain.Cars;
-import racingCar.domain.Winners;
+import racingCar.domain.RacingResult;
 import racingCar.view.InputView;
 import racingCar.view.ResultView;
 
@@ -15,9 +15,10 @@ public class WinnerCarRacingApp {
         Cars cars = new Cars(carNames);
 
         List<String> status = cars.repeatMove(tryNum);
+        RacingResult racingResult = new RacingResult(cars);
 
         ResultView.printCarStatus(status);
 
-        ResultView.printWinner(Winners.findWinner(cars.getCarList()));
+        ResultView.printWinner(racingResult.returnWinnerCar());
     }
 }
