@@ -18,7 +18,7 @@ public class ResultView {
     private static void printCarPosition(Cars cars) {
         for (Car car : cars.getCars()) {
             car.move(RandomNumberUtil.getRandomNumber());
-            System.out.println("-".repeat(car.getPosition()));
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
     }
 }

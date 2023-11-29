@@ -15,6 +15,4 @@ public class CarRacingGame {
 
         ResultView.printResult(cars, numberOfTry);
     }
-
-
 }
