@@ -10,16 +10,14 @@ public class Distance {
     }
 
     public Distance(int value) {
-        if (isValid(value)) {
-            this.value = value;
-        }
+        validate(value);
+        this.value = value;
     }
 
-    private boolean isValid(int distance) {
+    private void validate(int distance) {
         if (distance < 0) {
             throw new IllegalArgumentException("Negative number is not allowed for distance");
         }
-        return Boolean.TRUE;
     }
 
     public void moveForward() {

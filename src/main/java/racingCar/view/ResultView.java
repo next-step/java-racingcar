@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingCar.domain.Car;
+import racingCar.domain.Cars;
 
 public class ResultView {
 
@@ -11,8 +12,10 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void showDistance(Car car) {
-        System.out.println(car.carName().getValue() + " : " + "-".repeat(car.distance().getValue()));
+    public static void showDistance(Cars cars) {
+        for (Car car : cars.allCar()) {
+            System.out.println(car.carName().getValue() + " : " + "-".repeat(car.distance().getValue()));
+        }
     }
 
     public static void showNextRound() {
