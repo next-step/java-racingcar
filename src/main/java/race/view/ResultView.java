@@ -2,6 +2,7 @@ package race.view;
 
 import race.domain.Car;
 import race.domain.Cars;
+import race.domain.Winners;
 import race.util.RandomNumberUtil;
 
 public class ResultView {
@@ -13,11 +14,18 @@ public class ResultView {
             printCarPosition(cars);
             System.out.println();
         }
+
+        Winners winners = new Winners();
+        winners.findWinners(cars);
+
+        System.out.println("최종 우승 : " + winners.getWinners());
     }
+
 
     private static void printCarPosition(Cars cars) {
         for (Car car : cars.getCars()) {
             car.move(RandomNumberUtil.getRandomNumber());
+            cars.setMaxPosition(car.getPosition());
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
     }

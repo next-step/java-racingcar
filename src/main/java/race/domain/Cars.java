@@ -7,6 +7,8 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
+    private int maxPosition = 0;
+
     public void initCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
@@ -19,4 +21,14 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public int getMaxPosition(){
+        return maxPosition;
+    }
+    public void setMaxPosition(int position) {
+        if (maxPosition < position) {
+            maxPosition = position;
+        }
+    }
+
 }
