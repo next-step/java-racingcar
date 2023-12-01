@@ -11,10 +11,10 @@ public class CarName {
     }
 
     private void validateCarName(String carName) {
-        if(carName == null || carName.isBlank()){
+        if (carName == null || carName.isBlank()) {
             throw new IllegalArgumentException("자동차 이름이 없습니다.");
         }
-        if(carName.length() > MAX_NAME_LENGTH){
+        if (carName.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과 할 수 없습니다.");
         }
     }

@@ -22,13 +22,15 @@ public class ResultView {
     }
 
     public static String printWinner(List<String> winners) {
+        if(winners.isEmpty()){
+            return "모든 자동차가 전진을 못해, 자동차경주 우승자가 없습니다.";
+        }
         return String.join(WINNER_DELTMITER, winners) + "가 최종 우승했습니다.";
     }
 
     private static void printRoundResult(RacingRoundResultDTO racingRoundResultDTO) {
-        for (Car car : racingRoundResultDTO.getCars()) {
-            System.out.println(printCarPosition(car));
-        }
+        racingRoundResultDTO.getCars()
+                .forEach(car -> System.out.println(printCarPosition(car)));
         System.out.print(ROUND_END);
     }
 

@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.domain.rule.MoveStrategy;
+
 public class Car {
 
     private final int MIN_MOVEMENT_VALUE = 4;
@@ -16,12 +18,8 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public void move(int value) {
-        if (value < NON_NEGATIVE_CHECK) {
-            throw new IllegalArgumentException("음수는 입력 할 수 없습니다.");
-        }
-
-        if (value >= MIN_MOVEMENT_VALUE) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.moveRule()) {
             position = position.move();
         }
     }

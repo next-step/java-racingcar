@@ -2,16 +2,15 @@ package racinggame.dto;
 
 import racinggame.domain.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingRoundResultDTO {
 
-    private final int racingRound;
     private final List<Car> cars;
 
-    public RacingRoundResultDTO(int racingRound, List<Car> cars) {
-        this.racingRound = racingRound;
-        this.cars = cars;
+    public RacingRoundResultDTO(List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
     }
 
     public List<Car> getCars() {
