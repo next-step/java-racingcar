@@ -9,10 +9,6 @@ public class Forward {
         this.forwardCount = forwardCount;
     }
 
-    public int forwardCount(){
-        return this.forwardCount;
-    }
-
     int returnMaxCount(int maxForwardCount) {
         if(forwardCount >= maxForwardCount) return forwardCount;
         return maxForwardCount;
@@ -35,6 +31,7 @@ public class Forward {
 
         return forwardString;
     }
+
     @Override
     public String toString() {
         return "Forward{" +

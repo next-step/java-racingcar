@@ -35,8 +35,9 @@ public class Car {
         }
     }
 
-    public void moveCar(RandomNumber randomNumber){
-        if(randomNumber.isMovable()) {
+    public void moveCar(int num){
+        MoveCondition moveCondition = MoveCondition.of(num);
+        if(moveCondition.isMovable()) {
             forward.addForwardCount();
         }
     }

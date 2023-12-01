@@ -39,25 +39,27 @@ public class Cars {
         return carNames.split(SPLIT_DELIMITER);
     }
 
-    private List<String> addCarMoving(){
-        List<String> carStatusList = new ArrayList<>();
-        for(Car car : carList){
-            car.moveCar(new RandomNumber());
-            carStatusList.add(car.carStatus(SEPARATE_DELIMITER, FORWARD_MARK));
-        }
-
-        return carStatusList;
-    }
-
-    public List<String> repeatMove(int tryNum){
+    public List<String> repeatMove(int tryNum, RandomNumber randomNumber){
         List<String> allCarStatus = new ArrayList<>();
 
-        for(int i = 0; i < tryNum; i++){
-            allCarStatus.addAll(addCarMoving());
+        for(int i = 0; i < tryNum; i++) {
+            allCarStatus.addAll(addCarMoving(randomNumber));
             allCarStatus.add("");
         }
 
         return allCarStatus;
+    }
+
+    private List<String> addCarMoving(RandomNumber randomNumber) {
+        List<String> carStatusList = new ArrayList<>();
+        List<Integer> moves = randomNumber.generateRandomNumber(carList.size());
+
+        for(int i = 0; i < carList.size();  i++){
+            carList.get(i).moveCar(moves.get(i));
+            carStatusList.add(carList.get(i).carStatus(SEPARATE_DELIMITER, FORWARD_MARK));
+        }
+
+        return carStatusList;
     }
 
     public Car findCar(String carName) {

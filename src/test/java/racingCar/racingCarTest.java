@@ -14,6 +14,24 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 public class racingCarTest {
 
     @Test
+    @DisplayName("여러대의 자동차가 전진 조건에 따라서 시도횟수 만큼 움직인다.")
+    public void 전진_조건에_따른_여러대_자동차_움직임() {
+        Cars cars  = new Cars("aaa,bbb,ccc");
+        cars.repeatMove(3, new RandomNumber() {
+            @Override
+            public List<Integer> generateRandomNumber(int tryNum) {
+                return List.of(4,3,3);
+            }
+        });
+
+        assertAll(
+                () -> assertThat(cars.findCar("aaa").equals(new Car("aaa", 3))).isTrue(),
+                () -> assertThat(cars.findCar("bbb").equals(new Car("bbb", 0))).isTrue(),
+                () -> assertThat(cars.findCar("ccc").equals(new Car("ccc", 0))).isTrue()
+        );
+    }
+
+    @Test
     @DisplayName("입력한 자동차 중 가장 많이 전진한 자동차 이름을 반환한다.")
     public void 가장_많이_전진한_자동차_이름_반환(){
         Cars cars = new Cars(Arrays.asList(
@@ -75,10 +93,10 @@ public class racingCarTest {
     public void 전진_결과_테스트(){
         Car car = new Car(0);
 
-        car.moveCar(new RandomNumber(3));
+        car.moveCar(3);
         assertThat(car.equals(new Car(0))).isTrue();
 
-        car.moveCar(new RandomNumber(4));
+        car.moveCar(4);
         assertThat(car.equals(new Car(1))).isTrue();
     }
 

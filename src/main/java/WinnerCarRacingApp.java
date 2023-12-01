@@ -1,5 +1,6 @@
 import racingCar.domain.Cars;
 import racingCar.domain.RacingResult;
+import racingCar.domain.RandomNumber;
 import racingCar.view.InputView;
 import racingCar.view.ResultView;
 
@@ -14,7 +15,7 @@ public class WinnerCarRacingApp {
 
         Cars cars = new Cars(carNames);
 
-        List<String> status = cars.repeatMove(tryNum);
+        List<String> status = cars.repeatMove(tryNum, new RandomNumber());
         RacingResult racingResult = new RacingResult(cars);
 
         ResultView.printCarStatus(status);
