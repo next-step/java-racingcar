@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.view;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class InputView {
         return inputValues;
     }
 
-    public static Map<String, Object> inputNamedCar(){
+    public static Map<String, Object> winnerInput(){
         Map<String, Object> inputValues = new HashMap<>();
 
         Scanner scanner = new Scanner(System.in);

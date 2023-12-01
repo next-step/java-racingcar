@@ -2,10 +2,9 @@ package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import racingCar.domain.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,31 +14,48 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 public class racingCarTest {
 
     @Test
-    @DisplayName("가장 많이 전진한 자동차 이름을 반환한다.")
-    public void 가장_많이_전진한_자동차_반환(){
-        List<Car> carList = new ArrayList<>();
-        carList.add(new Car("pobi", 5));
-        carList.add(new Car("crong", 3));
-        carList.add(new Car("honux", 5));
+    @DisplayName("여러대의 자동차가 전진 조건에 따라서 시도횟수 만큼 움직인다.")
+    public void 전진_조건에_따른_여러대_자동차_움직임() {
+        Cars cars  = new Cars("aaa,bbb,ccc");
+        cars.repeatMove(3, new RandomNumber() {
+            @Override
+            public List<Integer> generateRandomNumber(int tryNum) {
+                return List.of(4,3,3);
+            }
+        });
 
-        NamedCars cars = new NamedCars(carList);
-
-        List<String> winners = WinnerCar.returnWinner(cars);
-        assertThat(winners).hasSize(2);
-        assertThat(winners).containsExactly("pobi", "honux");
+        assertAll(
+                () -> assertThat(cars.findCar("aaa").equals(new Car("aaa", 3))).isTrue(),
+                () -> assertThat(cars.findCar("bbb").equals(new Car("bbb", 0))).isTrue(),
+                () -> assertThat(cars.findCar("ccc").equals(new Car("ccc", 0))).isTrue()
+        );
     }
 
     @Test
-    @DisplayName("입력한 자동차 이름과 시도 횟수 만큼 자동차를 움직인 결과를 반환한다.")
-    public void 이름있는_자동차_경주_결과_반환(){
-        NamedCars cars = RacingCar.movingResultNamedCar(new NamedCars("pobi,crong,honux"), 5);
+    @DisplayName("입력한 자동차 중 가장 많이 전진한 자동차 이름을 반환한다.")
+    public void 가장_많이_전진한_자동차_이름_반환(){
+        Cars cars = new Cars(Arrays.asList(
+                new Car("pobi", 5),
+                new Car("crong", 3),
+                new Car("honux", 5)));
 
-        assertThat(cars.getCarList()).hasSize(3);
+        RacingResult racingResult = new RacingResult(cars);
+        List<String> winners = racingResult.returnWinnerCar();
 
-        for(int i=0; i<3; i++) {
-            assertThat(cars.forwardCountOf(i)).isBetween(0, 5);
-        }
+        assertThat(winners).hasSize(2);
+        assertThat(winners).containsExactly("pobi","honux");
+    }
 
+    @Test
+    @DisplayName("입력한 자동차 중 가장 많이 전진한 자동차의 전진 횟수를 반환한다.")
+    public void 가장_많이_전진한_자동차_전진횟수_반환(){
+        Cars cars = new Cars(Arrays.asList(
+                new Car("pobi", 4),
+                new Car("crong", 3),
+                new Car("honux", 5)));
+
+        RacingResult racingResult = new RacingResult(cars);
+        assertThat(racingResult.getMaxForward()).isEqualTo(5);
     }
 
     @Test
@@ -47,18 +63,12 @@ public class racingCarTest {
     public void 자동차_경주_초기_설정(){
         String carNames = "pobi,crong,honux";
 
-        NamedCars cars = new NamedCars(carNames);
+        Cars cars = new Cars(carNames);
 
         assertAll(
-                () -> assertThat(cars.carNameOf(0)).isEqualTo("pobi"),
-                () -> assertThat(cars.carNameOf(1)).isEqualTo("crong"),
-                () -> assertThat(cars.carNameOf(2)).isEqualTo("honux")
-        );
-
-        assertAll(
-                () -> assertThat(cars.forwardCountOf(0)).isEqualTo(0),
-                () -> assertThat(cars.forwardCountOf(1)).isEqualTo(0),
-                () ->  assertThat(cars.forwardCountOf(2)).isEqualTo(0)
+                () -> assertThat(cars.findCar("pobi").equals(new Car("pobi", 0))).isTrue(),
+                () -> assertThat(cars.findCar("crong").equals(new Car("crong", 0))).isTrue(),
+                () -> assertThat(cars.findCar("honux").equals(new Car("honux", 0))).isTrue()
         );
     }
 
@@ -77,37 +87,17 @@ public class racingCarTest {
         assertThat(car.getCarName()).isEqualTo("pobi");
     }
 
-    @Test
-    @DisplayName("입력한 횟수만큼 자동차 한대를 움직인 결과를 반환한다. ")
-    public void 자동차_한대를_입력_횟수_만큼_움직인_결과(){
-        Cars cars = new Cars(1);
-        int[] result = RacingCar.movingResult(cars.carArray,5);
-        assertThat(result[0]).isBetween(0,5);
-    }
 
     @Test
-    @DisplayName("입력한 자동차 대수를 한 번 움직인 결과로 1 또는 0으로 이루어진 숫자 배열을 반환한다.")
-    public void 입력한_자동차_대수를_한번_움직인_결과(){
-        Cars cars = new Cars(3);
-        int[] movingResult = RacingCar.addMoving(cars.carArray);
+    @DisplayName("입력된 값에 따른 전진 결과를 반환한다.")
+    public void 전진_결과_테스트(){
+        Car car = new Car(0);
 
-        assertThat(movingResult).hasSize(3);
-        for(int i=0; i<3; i++) {
-            assertThat(movingResult[i]).isBetween(0, 1);
-        }
+        car.moveCar(3);
+        assertThat(car.equals(new Car(0))).isTrue();
+
+        car.moveCar(4);
+        assertThat(car.equals(new Car(1))).isTrue();
     }
 
-    @ParameterizedTest
-    @DisplayName("입력값이 3이하일 경우 0(정지)을 반환하고, 4이상일 경우 1(전진)을 반환한다.")
-    @CsvSource(value = {"0:0","1:0","2:0","3:0","4:1","5:1","6:1","7:1","8:1","9:1"}, delimiter = ':')
-    public void 정지_또는_전진_조건_테스트(int input, int expected){
-        assertThat(RacingCar.moveCar(input)).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("0에서 9사이의 랜덤값을 반환한다.")
-    public void 랜덤값_추출_0과_9사이_정수(){
-        int random = RandomNumber.getRandom(10);
-        assertThat(random).isBetween(0,9);
-    }
 }
