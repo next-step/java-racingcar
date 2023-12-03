@@ -1,13 +1,13 @@
 package racinggame.domain;
 
 import racinggame.domain.rule.MoveStrategy;
+import racinggame.domain.rule.RandomMoveStrategy;
 
 public class Car {
 
-    private final int MIN_MOVEMENT_VALUE = 4;
-    private final int NON_NEGATIVE_CHECK = 0;
     private CarName carName;
     private Position position;
+    private MoveStrategy moveStrategy;
 
     public Car(String name) {
         this(name, 0);
@@ -16,11 +16,18 @@ public class Car {
     public Car(String name, int position) {
         this.carName = new CarName(name);
         this.position = new Position(position);
+        this.moveStrategy = new RandomMoveStrategy();
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.moveRule()) {
-            position = position.move();
+    public Car(String name, int position, MoveStrategy moveStrategy) {
+        this.carName = new CarName(name);
+        this.position = new Position(position);
+        this.moveStrategy = moveStrategy;
+    }
+
+    public void move() {
+        if (moveStrategy.move()) {
+            position = position.add();
         }
     }
 
