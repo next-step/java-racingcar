@@ -1,8 +1,10 @@
-package racinggame.domain.rule;
+package racinggame.rule;
+
+import racinggame.domain.rule.MoveStrategy;
 
 public class TestTrueMoveStrategy implements MoveStrategy {
     @Override
-    public boolean moveRule() {
+    public boolean move() {
         return true;
     }
 }

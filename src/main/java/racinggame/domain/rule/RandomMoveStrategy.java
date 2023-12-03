@@ -10,7 +10,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
 
     @Override
-    public boolean moveRule() {
+    public boolean move() {
         return random.nextInt(RANDOM_BOUND) >= MIN_MOVEMENT_VALUE;
     }
 }
