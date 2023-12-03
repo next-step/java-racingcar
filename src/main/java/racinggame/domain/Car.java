@@ -1,11 +1,13 @@
 package racinggame.domain;
 
+import racinggame.domain.rule.MoveStrategy;
+import racinggame.domain.rule.RandomMoveStrategy;
+
 public class Car {
 
     private CarName carName;
     private Position position;
-    private final int MIN_MOVEMENT_VALUE = 4;
-    private final int NON_NEGATIVE_CHECK = 0;
+    private MoveStrategy moveStrategy;
 
     public Car(String name) {
         this(name, 0);
@@ -14,15 +16,18 @@ public class Car {
     public Car(String name, int position) {
         this.carName = new CarName(name);
         this.position = new Position(position);
+        this.moveStrategy = new RandomMoveStrategy();
     }
 
-    public void move(int value) {
-        if (value < NON_NEGATIVE_CHECK) {
-            throw new IllegalArgumentException("음수는 입력 할 수 없습니다.");
-        }
+    public Car(String name, int position, MoveStrategy moveStrategy) {
+        this.carName = new CarName(name);
+        this.position = new Position(position);
+        this.moveStrategy = moveStrategy;
+    }
 
-        if (value >= MIN_MOVEMENT_VALUE) {
-            position = position.move();
+    public void move() {
+        if (moveStrategy.move()) {
+            position = position.add();
         }
     }
 

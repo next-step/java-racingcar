@@ -2,6 +2,7 @@ package racinggame.dto;
 
 import racinggame.domain.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingResultDTO {
@@ -12,9 +13,9 @@ public class RacingResultDTO {
     private final List<RacingRoundResultDTO> racingRoundResultDTOS;
 
     public RacingResultDTO(List<Car> carList, List<String> winners, List<RacingRoundResultDTO> racingRoundResultDTOS) {
-        this.carList = carList;
-        this.winners = winners;
-        this.racingRoundResultDTOS = racingRoundResultDTOS;
+        this.carList = new ArrayList<>(carList);
+        this.winners = new ArrayList<>(winners);
+        this.racingRoundResultDTOS = new ArrayList<>(racingRoundResultDTOS);
     }
 
     public List<Car> getCarList() {

@@ -1,5 +1,6 @@
 package racinggame.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingInputDTO {
@@ -7,7 +8,7 @@ public class RacingInputDTO {
     private final int gameCount;
 
     public RacingInputDTO(List<String> carNames, int gameCount) {
-        this.carNames = carNames;
+        this.carNames = new ArrayList<>(carNames);
         this.gameCount = gameCount;
     }
 
