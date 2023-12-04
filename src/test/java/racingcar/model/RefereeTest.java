@@ -18,12 +18,12 @@ public class RefereeTest {
     @Test
     @DisplayName("position 값이 제일 높은 차가 우승")
     public void 우승자_확인() {
-        RacingCar car1 = new RacingCar(new AlwaysStopStrategy(), "abc");
-        RacingCar car2 = new RacingCar(new AlwaysMoveStrategy(), "def");
+        RacingCar car1 = new RacingCar("abc");
+        RacingCar car2 = new RacingCar("def");
         List<RacingCar> cars = Arrays.asList(car1, car2);
 
-        car1.moveOrStop();
-        car2.moveOrStop();
+        car1.moveOrStop(new AlwaysStopStrategy());
+        car2.moveOrStop(new AlwaysMoveStrategy());
 
         Referee referee = new Referee();
 
@@ -34,14 +34,14 @@ public class RefereeTest {
     @Test
     @DisplayName("position 값이 가장 높은 차가 여러 대일 경우 공동 우승")
     public void 공동우승() {
-        RacingCar car1 = new RacingCar(new AlwaysStopStrategy(), "abc");
-        RacingCar car2 = new RacingCar(new AlwaysMoveStrategy(), "def");
-        RacingCar car3 = new RacingCar(new AlwaysMoveStrategy(), "ghi");
+        RacingCar car1 = new RacingCar("abc");
+        RacingCar car2 = new RacingCar("def");
+        RacingCar car3 = new RacingCar("ghi");
         List<RacingCar> cars = Arrays.asList(car1, car2, car3);
 
-        car1.moveOrStop();
-        car2.moveOrStop();
-        car3.moveOrStop();
+        car1.moveOrStop(new AlwaysStopStrategy());
+        car2.moveOrStop(new AlwaysMoveStrategy());
+        car3.moveOrStop(new AlwaysMoveStrategy());
 
         Referee referee = new Referee();
 

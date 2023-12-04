@@ -22,8 +22,8 @@ public class RacingCarTest {
     @Test
     @DisplayName("전진 시 Position 값이 1씩 변경")
     public void 전진_여부_확인() {
-        RacingCar car1 = new RacingCar(new AlwaysMoveStrategy(), "abc");
-        car1.moveOrStop();
+        RacingCar car1 = new RacingCar("abc");
+        car1.moveOrStop(new AlwaysMoveStrategy());
         assertThat(car1.position())
                 .isEqualTo(new Position(1));
     }

@@ -17,16 +17,7 @@ public class RacingGame {
         validateRoundNumber(roundNumber);
 
         // setting
-        MoveStrategy defaultMoveStrategy = new RandomVarMoveStrategy();
-        this.cars = makeCars(defaultMoveStrategy, carNameList);
-    }
-
-    public RacingGame(MoveStrategy moveStrategy, List<String> carNameList, int roundNumber) {
-        // validation
-        validateRoundNumber(roundNumber);
-
-        // setting
-        this.cars = makeCars(moveStrategy, carNameList);
+        this.cars = makeCars(carNameList);
     }
 
     private void validateRoundNumber(int roundNumber) {
@@ -35,12 +26,12 @@ public class RacingGame {
         }
     }
 
-    private List<RacingCar> makeCars(MoveStrategy moveStrategy, List<String> carNameList) {
+    private List<RacingCar> makeCars(List<String> carNameList) {
         int carNumber = carNameList.size();
 
         RacingCar[] cars = new RacingCar[carNumber];
         for (int i = 0; i < carNumber; i++) {
-            RacingCar newCar = new RacingCar(moveStrategy, carNameList.get(i));
+            RacingCar newCar = new RacingCar(carNameList.get(i));
             cars[i] = newCar;
         }
 
@@ -48,9 +39,9 @@ public class RacingGame {
     }
 
 
-    public void playOneRound() {
+    public void playOneRound(MoveStrategy moveStrategy) {
         for (RacingCar car : this.cars) {
-            car.moveOrStop();
+            car.moveOrStop(moveStrategy);
         }
     }
 

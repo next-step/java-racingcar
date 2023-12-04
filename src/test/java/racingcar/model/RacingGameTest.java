@@ -28,14 +28,14 @@ public class RacingGameTest {
     @DisplayName("한 round에는 최대 1칸 이동, 후진 없음")
     public void one_round_이동칸수() {
         MoveStrategy alwaysMoveStrategy = new AlwaysMoveStrategy();
-        RacingGame game = new RacingGame(alwaysMoveStrategy, Arrays.asList("a", "b", "c"), 5);
+        RacingGame game = new RacingGame(Arrays.asList("a", "b", "c"), 5);
         List<RacingCar> cars = game.cars();
 
         List<Integer> beforePositions = new ArrayList<>();
         for (RacingCar car : cars) {
             beforePositions.add(car.position().position());
         }
-        game.playOneRound();
+        game.playOneRound(alwaysMoveStrategy);
 
         for (int i = 0; i < cars.size(); i++) {
             int diff = cars.get(i).position().position() - beforePositions.get(i);
