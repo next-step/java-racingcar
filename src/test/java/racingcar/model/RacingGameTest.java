@@ -33,12 +33,12 @@ public class RacingGameTest {
 
         List<Integer> beforePositions = new ArrayList<>();
         for (RacingCar car : cars) {
-            beforePositions.add(car.position().mark("-").length());
+            beforePositions.add(car.position().position());
         }
         game.playOneRound();
 
         for (int i = 0; i < cars.size(); i++) {
-            int diff = cars.get(i).position().mark("-").length() - beforePositions.get(i);
+            int diff = cars.get(i).position().position() - beforePositions.get(i);
             assertThat(diff).isEqualTo(1);
         }
     }

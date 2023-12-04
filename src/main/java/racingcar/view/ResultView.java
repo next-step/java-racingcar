@@ -27,9 +27,18 @@ public class ResultView {
     }
 
     private static void printLocationOfCar(RacingCar car) {
-        String result = car.name() + " : " + car.position().mark(LOCATION_MARK);
+        String result = car.name() + " : " + getLocationMark(car.position());
         System.out.println(result);
     }
+
+    public static String getLocationMark(Position position) {
+        String resultMark = "";
+        for (int i = 0; i < position.position(); i++) {
+            resultMark += LOCATION_MARK;
+        }
+        return resultMark;
+    }
+
 
 
     public static void printWinners(List<RacingCar> winners) {

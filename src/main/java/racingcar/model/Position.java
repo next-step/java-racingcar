@@ -28,12 +28,8 @@ public class Position {
         return this.position == position;
     }
 
-    public String mark(String mark) {
-        String resultMark = "";
-        for (int i = 0; i < position; i++) {
-            resultMark += mark;
-        }
-        return resultMark;
+    public int position() {
+        return this.position;
     }
 
     @Override
