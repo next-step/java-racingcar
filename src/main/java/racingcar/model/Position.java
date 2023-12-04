@@ -13,10 +13,6 @@ public class Position {
         this.position = value;
     }
 
-    public int step() {
-        return this.position + STEP;
-    }
-
     public int biggerPosition(int position) {
         if (this.position > position) {
             return this.position;
@@ -26,6 +22,10 @@ public class Position {
 
     public boolean matchPosition(int position) {
         return this.position == position;
+    }
+
+    public Position increase() {
+        return new Position(this.position + STEP);
     }
 
     public int position() {

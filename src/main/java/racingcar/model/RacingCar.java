@@ -29,7 +29,7 @@ public class RacingCar {
     }
 
     private void move() {
-        this.position = new Position(this.position.step());
+        this.position = this.position.increase();
     }
 
 
