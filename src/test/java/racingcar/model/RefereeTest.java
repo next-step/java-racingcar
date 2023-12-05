@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
 import racingcar.model.Referee;
+import racingcar.model.movestrategy.AlwaysMoveStrategy;
+import racingcar.model.movestrategy.AlwaysStopStrategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,8 +22,8 @@ public class RefereeTest {
         RacingCar car2 = new RacingCar("def");
         List<RacingCar> cars = Arrays.asList(car1, car2);
 
-        car1.moveOrStop(1);
-        car2.moveOrStop(9);
+        car1.moveOrStop(new AlwaysStopStrategy());
+        car2.moveOrStop(new AlwaysMoveStrategy());
 
         Referee referee = new Referee();
 
@@ -37,9 +39,9 @@ public class RefereeTest {
         RacingCar car3 = new RacingCar("ghi");
         List<RacingCar> cars = Arrays.asList(car1, car2, car3);
 
-        car1.moveOrStop(1);
-        car2.moveOrStop(9);
-        car3.moveOrStop(9);
+        car1.moveOrStop(new AlwaysStopStrategy());
+        car2.moveOrStop(new AlwaysMoveStrategy());
+        car3.moveOrStop(new AlwaysMoveStrategy());
 
         Referee referee = new Referee();
 

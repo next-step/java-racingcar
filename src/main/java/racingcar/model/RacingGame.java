@@ -8,29 +8,16 @@ import racingcar.view.ResultView;
 import java.util.*;
 
 public class RacingGame {
-    private static final Random rand = new Random();
-    private static final int RANDOM_VALUE_BOUND = 10;
     private static final String ERR_NEGATIVE_NUMBER = "Negative numbers are not allowed.";
-
+    private final List<RacingCar> cars;
     private final Referee referee = new Referee();
-    private List<RacingCar> cars;
-
 
     public RacingGame(List<String> carNameList, int roundNumber) {
         // validation
         validateRoundNumber(roundNumber);
 
         // setting
-        MoveStrategy defaultMoveStrategy = new RandomVarMoveStrategy();
-        this.cars = makeCars(defaultMoveStrategy, carNameList);
-    }
-
-    public RacingGame(MoveStrategy moveStrategy, List<String> carNameList, int roundNumber) {
-        // validation
-        validateRoundNumber(roundNumber);
-
-        // setting
-        this.cars = makeCars(moveStrategy, carNameList);
+        this.cars = makeCars(carNameList);
     }
 
     private void validateRoundNumber(int roundNumber) {
@@ -39,12 +26,12 @@ public class RacingGame {
         }
     }
 
-    private List<RacingCar> makeCars(MoveStrategy moveStrategy, List<String> carNameList) {
+    private List<RacingCar> makeCars(List<String> carNameList) {
         int carNumber = carNameList.size();
 
         RacingCar[] cars = new RacingCar[carNumber];
-        for (int i=0; i<carNumber; i++) {
-            RacingCar newCar = new RacingCar(moveStrategy, carNameList.get(i));
+        for (int i = 0; i < carNumber; i++) {
+            RacingCar newCar = new RacingCar(carNameList.get(i));
             cars[i] = newCar;
         }
 
@@ -52,14 +39,10 @@ public class RacingGame {
     }
 
 
-    public void playOneRound() {
+    public void playOneRound(MoveStrategy moveStrategy) {
         for (RacingCar car : this.cars) {
-            car.moveOrStop(getRandomValue());
+            car.moveOrStop(moveStrategy);
         }
-    }
-
-    private static int getRandomValue() {
-        return rand.nextInt(RANDOM_VALUE_BOUND);
     }
 
 

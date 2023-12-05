@@ -2,7 +2,7 @@ package racingcar.model.movestrategy;
 
 public class AlwaysMoveStrategy implements MoveStrategy {
     @Override
-    public boolean canMove(int value) {
+    public boolean canMove() {
         return true;
     }
 }
