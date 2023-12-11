@@ -6,19 +6,19 @@ import race.domain.Winners;
 
 public class ResultView {
 
-    public static void printResult(Cars cars){
+    public static void printResult(Winners winners){
         System.out.println("실행 결과");
-
-        Winners winners = new Winners(cars);
-
         ResultView.printWinners(winners);
     }
 
-    public static void printCarPosition(Car car) {
-        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+    public static void printCarPosition(Cars cars) {
+        for(Car car: cars.cars()){
+            System.out.println(car.name() + " : " + "-".repeat(car.position()));
+        }
+        System.out.println();
     }
 
-    public static void printWinners(Winners winners) {
+    private static void printWinners(Winners winners) {
         System.out.println("최종 우승 : " + winners.getWinners());
     }
 }

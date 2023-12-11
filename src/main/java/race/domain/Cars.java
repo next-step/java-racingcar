@@ -14,8 +14,16 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public int maxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.position());
+        }
+
+        return maxPosition;
     }
 
+    public List<Car> cars() {
+        return cars;
+    }
 }

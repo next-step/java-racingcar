@@ -19,7 +19,7 @@ public class Name {
         }
     }
 
-    public String getName() {
+    public String name() {
         return this.name;
     }
 }

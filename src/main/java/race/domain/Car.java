@@ -7,20 +7,24 @@ public class Car {
 
     public Car(String name) {
         this.name = new Name(name);
-        this.position = new Position(0);
+        this.position = new Position();
     }
 
-    public void move(int number) {
-        if (4 <= number) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
             this.position.moveForward();
         }
     }
-
-    public int getPosition() {
-        return position.getPosition();
+    public boolean isSamePosition(int position) {
+        return this.position.isSame(position);
+    }
+    public int position() {
+        return position.position();
     }
 
-    public String getName() {
-        return name.getName();
+    public String name() {
+        return name.name();
     }
+
+
 }

@@ -4,16 +4,20 @@ public class Position {
 
     private int position;
 
-    public Position(int position) {
-        this.position = position;
+    public Position() {
+        this.position = 0;
     }
 
     public void moveForward() {
         this.position++;
     }
 
-    public int getPosition() {
+    public int position() {
         return this.position;
+    }
+
+    public boolean isSame(int position) {
+        return this.position == position;
     }
 
 }
