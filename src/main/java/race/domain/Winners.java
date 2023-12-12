@@ -9,30 +9,21 @@ public class Winners {
 
     private final List<String> winners;
 
-    private int maxPosition;
-
     public Winners(Cars cars) {
         this.cars = cars;
-        maxPosition = 0;
         winners = new ArrayList<>();
     }
 
     private void findWinners() {
-        calculateMaxPosition();
-        for (Car car : cars.getCars()) {
-            addWinners(car);
+        int maxPosition = cars.maxPosition();
+        for (Car car : cars.cars()) {
+            addWinners(car, maxPosition);
         }
     }
 
-    private void calculateMaxPosition() {
-        for (Car car : cars.getCars()) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-    }
-
-    private void addWinners(Car car) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car.getName());
+    private void addWinners(Car car, int maxPosition) {
+        if (car.isSamePosition(maxPosition)) {
+            winners.add(car.name());
         }
     }
 
