@@ -1,71 +1,50 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
     private static final Pattern INPUT_PATTERN = Pattern.compile("//(.*)\\n(.*)");
-    public static final String DEFAULT_SEPARATOR = ",|:";
+    Adder adder = new Adder();
+    DefaultSplitter defaultSplitter = new DefaultSplitter();
+    CustomSplitter customSplitter = new CustomSplitter();
+    Parser parser = new Parser();
+
     public int calculate(String input){
         if (input == null || input.isBlank()){
             return 0;
         }
-        String separator = parseSeparator(input);
-        String[] numbers = input.split(separator);
-        if (checkNegative(numbers)){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (matchPattern(input)){
+            stringBuilder.append(Arrays.toString(customSplitter.split(input)));
+        }
+        if (!matchPattern(input)){
+            stringBuilder.append(Arrays.toString(defaultSplitter.split(input)));
+        }
+        if (checkNegative(stringBuilder)){
             throw new RuntimeException("음수를 입력하셨습니다.");
         }
-        int result = sumInts(parseInts(numbers));
-        return result;
+        return adder.sumInts(parser.parseInts(stringBuilder));
     }
 
-    private int[] parseInts(String[] numbers){
-        int[] intArray = new int[numbers.length];
-        for (int i = 0; i < numbers.length; i++) {
-            int number = parseInt(numbers[i]);
-            intArray[i] = number;
-        }
-        return intArray;
-    }
-
-    private int parseInt(String number){
-        try {
-            return checkBlank(number);
-        } catch (NumberFormatException exception){
-            throw new NumberFormatException("숫자가 아닌 문자가 있습니다.");
-        }
-    }
-
-    private int sumInts(int[] parsedNumbers){
-        int sum = 0;
-        for (int parsedNumber : parsedNumbers) {
-            sum += parsedNumber;
-        }
-        return sum;
-    }
-
-    private String parseSeparator(String input){
+    private boolean matchPattern(String input){
         Matcher matcher = INPUT_PATTERN.matcher(input);
-        if (matcher.find()){
-            return matcher.group(1);
-        }
-        return DEFAULT_SEPARATOR;
+        return matcher.find();
     }
 
-    private boolean checkNegative(String[] numbers){
-        CharSequence minusSign = "-";
-        for (String number:numbers) {
-            if (number.contains(minusSign)){
+    private boolean checkNegative(StringBuilder numbers){
+        char minusSign = '-';
+
+        for (int i = 0; i < numbers.length(); i++) {
+            char number = numbers.charAt(i);
+            if (number == minusSign){
                 return true;
             }
         }
         return false;
     }
 
-    private int checkBlank(String number){
-        if(number.isBlank()){
-            return 0;
-        }
-        return Integer.parseInt(number);
-    }
+
 }
