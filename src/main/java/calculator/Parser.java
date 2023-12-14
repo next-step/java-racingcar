@@ -1,29 +1,31 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.List;
 
-public class Parser {
-    protected int[] parseInts(StringBuilder numbers){
-        int[] intArray = new int[numbers.length()];
-        for (int i = 0; i < numbers.length(); i++) {
-            int number = parseInt(numbers.charAt(i));
+public final class Parser {
+    public int[] parseInts(List<String> numbers){
+        System.out.println(numbers);
+        int[] intArray = new int[numbers.size()];
+        for (int i = 0; i < numbers.size(); i++) {
+            int number = parseInt(numbers.get(i));
             intArray[i] = number;
         }
         return intArray;
     }
 
-    private int parseInt(char number){
+    private int parseInt(String number){
         try {
             return checkBlank(number);
         } catch (NumberFormatException exception){
-            throw new NumberFormatException("숫자가 아닌 문자가 있습니다.");
+            throw new NumberFormatException(number + "은 숫자가 아닌 문자입니다.");
         }
     }
 
-    private int checkBlank(char number){
-        if(number == ' '){
+    private int checkBlank(String number){
+        if(number.equals(" ")){
             return 0;
         }
-        return Character.getNumericValue(number);
+        return Integer.parseInt(number);
     }
 }
