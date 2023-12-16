@@ -12,6 +12,7 @@ public class StringCalculator {
     private final DefaultSplitter defaultSplitter = new DefaultSplitter();
     private final CustomSplitter customSplitter = new CustomSplitter();
     private final Parser parser = new Parser();
+
     private final PositiveNumber positiveNumber = new PositiveNumber();
 
     public int calculate(String input){
@@ -26,8 +27,10 @@ public class StringCalculator {
             numbers.addAll(List.of(defaultSplitter.split(input)));
         }
         if (positiveNumber.checkNegativeNumber(numbers)){
+
             throw new RuntimeException("음수를 입력하셨습니다.");
         }
         return adder.sumInts(parser.parseInts(numbers));
     }
+
 }
