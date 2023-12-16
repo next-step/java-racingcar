@@ -13,40 +13,24 @@ public class StringCalculator {
     private final CustomSplitter customSplitter = new CustomSplitter();
     private final Parser parser = new Parser();
 
+    private final PositiveNumber positiveNumber = new PositiveNumber();
+
     public int calculate(String input){
         if (input == null || input.isBlank()){
             return 0;
         }
         List<String> numbers = new LinkedList<>();
-        if (isCustomText(input)){
+        if (customSplitter.isCustomText(input)){
             numbers.addAll(0, List.of(customSplitter.split(input)));
         }
-        if (!isCustomText(input)){
+        if (!customSplitter.isCustomText(input)){
             numbers.addAll(List.of(defaultSplitter.split(input)));
         }
-        if (checkNegative(numbers)){
+        if (positiveNumber.checkNegativeNumber(numbers)){
+
             throw new RuntimeException("음수를 입력하셨습니다.");
         }
         return adder.sumInts(parser.parseInts(numbers));
     }
-
-    private boolean isCustomText(String input){
-        Matcher matcher = CUSTOM_PATTERN.matcher(input);
-        if (matcher.find()){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean checkNegative(List<String> numbers){
-        String minusSign = "-";
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i).contains(minusSign)){
-                return true;
-            }
-        }
-        return false;
-    }
-
 
 }
