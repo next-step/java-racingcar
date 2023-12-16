@@ -12,4 +12,12 @@ public final class CustomSplitter {
         String customSeparator = m.group(1);
         return m.group(2).split(customSeparator);
     }
+
+    public boolean isCustomText(String input){
+        Matcher matcher = CUSTOM_PATTERN.matcher(input);
+        if (matcher.find()){
+            return true;
+        }
+        return false;
+    }
 }
