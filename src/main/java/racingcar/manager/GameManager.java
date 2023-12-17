@@ -10,30 +10,29 @@ import java.util.Map;
 
 public class GameManager {
     private UIManager uiManager = new UIManager();
+    private Map<Integer, Car> carList = new HashMap<>();
 
     public void startGame(){
-        introScene();
-    }
-
-    private void introScene() {
         int inputNum = uiManager.showIntro();
         if (inputNum == 1){
-            inGame(uiManager.showStartInGame());
+            Integer carCount = uiManager.showCarCount();
+            createCar(carCount);
+            runRound(carCount, uiManager.showRoundCount());
         }
         if (inputNum == 2){
             System.exit(0);
         }
     }
 
-    private void inGame(List<Integer> inputList) {
-        Integer carCount = inputList.get(0);
-        Map<Integer, Car> carList = new HashMap<>(carCount);
-        Integer roundCount = inputList.get(1);
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    private void createCar(Integer carCount){
         for (int carNum = 1; carNum <= carCount; carNum++) {
             Car car = new Car(carNum, 0);
             carList.put(carNum, car);
         }
+    }
+
+    private void runRound(Integer carCount, Integer roundCount){
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         for (int round = 1; round <= roundCount; round++) {
             for (int carNum = 1; carNum <= carCount; carNum++) {
                 if (randomNumberGenerator.generate() >= 4){
@@ -43,5 +42,4 @@ public class GameManager {
             UIInGame.printPosition(round, carList);
         }
     }
-
 }

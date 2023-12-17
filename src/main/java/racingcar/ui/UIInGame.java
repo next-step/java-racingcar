@@ -5,7 +5,7 @@ import racingcar.model.Car;
 import java.util.Map;
 
 public class UIInGame {
-    public static void printPlayerCountInput(){
+    public static void printCarCountInput(){
         System.out.println("자동차 대수는 몇 대 인가요?");
     }
 

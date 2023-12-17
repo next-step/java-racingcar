@@ -30,12 +30,13 @@ public class UIManager {
         return programStatus;
     }
 
-    public List<Integer> showStartInGame() {
-        List<Integer> startInGameInput = new ArrayList<>();
-        UIInGame.printPlayerCountInput();
-        startInGameInput.add(Input.setInputValue());
+    public Integer showCarCount(){
+        UIInGame.printCarCountInput();
+        return Input.setInputValue();
+    }
+
+    public Integer showRoundCount(){
         UIInGame.printRoundInput();
-        startInGameInput.add(Input.setInputValue());
-        return startInGameInput;
+        return Input.setInputValue();
     }
 }
