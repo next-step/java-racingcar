@@ -5,9 +5,6 @@ import racingcar.ui.UIInGame;
 import racingcar.ui.UIIntro;
 import racingcar.util.Input;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class UIManager {
 
 	public static int showIntro() {
@@ -30,9 +27,9 @@ public class UIManager {
 		return programStatus;
 	}
 
-	public static Integer showCarCount() {
+	public static String[] showCarNames() {
 		UIInGame.printCarCountInput();
-		return Input.setInputValue();
+		return Input.setInputNames();
 	}
 
 	public static Integer showRoundCount() {

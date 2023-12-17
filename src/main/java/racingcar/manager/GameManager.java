@@ -1,11 +1,12 @@
 package racingcar.manager;
 
+import racingcar.Main;
 import racingcar.model.Car;
 import racingcar.ui.UIInGame;
+import racingcar.util.Input;
 import racingcar.util.RandomNumberGenerator;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class GameManager {
@@ -14,19 +15,28 @@ public class GameManager {
 	public void startGame() {
 		int inputNum = UIManager.showIntro();
 		if (inputNum == 1) {
-			Integer carCount = UIManager.showCarCount();
-			createCar(carCount);
-			runRound(carCount, UIManager.showRoundCount());
+			String[] carNames = UIManager.showCarNames();
+			createCar(carNames);
+			runRound(carNames.length, UIManager.showRoundCount());
 		}
 		if (inputNum == 2) {
 			System.exit(0);
 		}
 	}
 
-	private void createCar(Integer carCount) {
-		for (int carNum = 1; carNum <= carCount; carNum++) {
-			Car car = new Car(carNum);
+	private void createCar(String[] carNames) {
+		for (int carNum = 1; carNum <= carNames.length; carNum++) {
+			limitNameLegth(carNames, carNum);
+			Input.validateInput(carNames[carNum - 1]);
+			Car car = new Car(carNames[carNum - 1].trim());
 			carList.put(carNum, car);
+		}
+	}
+
+	private void limitNameLegth(String[] carNames, Integer carNum) {
+		if (carNames[carNum - 1].trim().length() > 5) {
+			String[] args = new String[0];
+			Main.main(args);
 		}
 	}
 
