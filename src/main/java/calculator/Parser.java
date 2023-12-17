@@ -5,7 +5,6 @@ import java.util.List;
 
 public final class Parser {
     public int[] parseInts(List<String> numbers){
-        System.out.println(numbers);
         int[] intArray = new int[numbers.size()];
         for (int i = 0; i < numbers.size(); i++) {
             int number = parseInt(numbers.get(i));
