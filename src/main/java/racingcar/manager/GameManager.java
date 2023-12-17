@@ -26,7 +26,7 @@ public class GameManager {
 
 	private void createCar(Integer carCount) {
 		for (int carNum = 1; carNum <= carCount; carNum++) {
-			Car car = new Car(carNum, 0);
+			Car car = new Car(carNum);
 			carList.put(carNum, car);
 		}
 	}
