@@ -43,7 +43,7 @@ public class StringCalculatorTest {
     @DisplayName("커스텀 구분자로 구분된 숫자들을 모두 더한다")
     @Test
     public void splitAndSum_custom_구분자() throws Exception {
-        int result = stringCalculator.calculate("//;\n1;2;3");
+        int result = stringCalculator.calculate("//:\n1:2:3");
         assertThat(result).isEqualTo(6);
     }
 

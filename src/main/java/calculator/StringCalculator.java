@@ -1,13 +1,10 @@
 package calculator;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\\n(.*)");
     private final Adder adder = new Adder();
     private final DefaultSplitter defaultSplitter = new DefaultSplitter();
     private final CustomSplitter customSplitter = new CustomSplitter();
@@ -21,7 +18,7 @@ public class StringCalculator {
         }
         List<String> numbers = new LinkedList<>();
         if (customSplitter.isCustomText(input)){
-            numbers.addAll(0, List.of(customSplitter.split(input)));
+            input = customSplitter.split(input);
         }
         if (!customSplitter.isCustomText(input)){
             numbers.addAll(List.of(defaultSplitter.split(input)));
