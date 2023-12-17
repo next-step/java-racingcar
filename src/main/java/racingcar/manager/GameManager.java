@@ -3,11 +3,15 @@ package racingcar.manager;
 import racingcar.Main;
 import racingcar.model.Car;
 import racingcar.ui.UIInGame;
+import racingcar.ui.UIWinner;
 import racingcar.util.Input;
 import racingcar.util.RandomNumberGenerator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class GameManager {
 	private Map<Integer, Car> carList = new HashMap<>();
@@ -18,6 +22,8 @@ public class GameManager {
 			String[] carNames = UIManager.showCarNames();
 			createCar(carNames);
 			runRound(carNames.length, UIManager.showRoundCount());
+			List<String> winners = findWinner();
+			UIWinner.printResult(winners);
 		}
 		if (inputNum == 2) {
 			System.exit(0);
@@ -49,5 +55,21 @@ public class GameManager {
 			}
 			UIInGame.printPosition(round, carList);
 		}
+	}
+
+	private List<String> findWinner() {
+		int maxDistance = 0;
+		List<String> winners = new ArrayList<>();
+		for (int carNum = 1; carNum <= carList.size(); carNum++) {
+			if (carList.get(carNum).getDistance() == maxDistance) {
+				winners.add(carList.get(carNum).getName());
+			}
+			if (carList.get(carNum).getDistance() > maxDistance) {
+				winners = new ArrayList<>();
+				winners.add(carList.get(carNum).getName());
+				maxDistance = carList.get(carNum).getDistance();
+			}
+		}
+		return winners;
 	}
 }
