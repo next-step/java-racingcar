@@ -1,6 +1,7 @@
 package racingcar.manager;
 
 import racingcar.model.Car;
+import racingcar.ui.UIInGame;
 import racingcar.util.RandomNumberGenerator;
 
 import java.util.HashMap;
@@ -8,10 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 public class GameManager {
-    UIManager uiManager = new UIManager();
+    private UIManager uiManager = new UIManager();
+
     public void startGame(){
         introScene();
     }
+
     private void introScene() {
         int inputNum = uiManager.showIntro();
         if (inputNum == 1){
@@ -21,6 +24,7 @@ public class GameManager {
             System.exit(0);
         }
     }
+
     private void inGame(List<Integer> inputList) {
         Integer carCount = inputList.get(0);
         Map<Integer, Car> carList = new HashMap<>(carCount);
@@ -36,7 +40,7 @@ public class GameManager {
                     carList.get(carNum).move();
                 }
             }
-            uiManager.inGame.printPosition(round, carList);
+            UIInGame.printPosition(round, carList);
         }
     }
 

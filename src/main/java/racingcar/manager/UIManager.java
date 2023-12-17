@@ -1,5 +1,6 @@
 package racingcar.manager;
 
+import racingcar.Main;
 import racingcar.ui.UIInGame;
 import racingcar.ui.UIIntro;
 import racingcar.util.Input;
@@ -8,32 +9,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UIManager {
-    UIIntro intro = new UIIntro();
-    UIInGame inGame = new UIInGame();
-    Input input = new Input();
-    SecurityManager securityManager = new SecurityManager();
+
     public int showIntro(){
-        intro.printIntro();
+        UIIntro.printIntro();
         return checkValidIntroInputNum();
     }
+
     private int checkValidIntroInputNum() {
-        int programStatus = input.setInputValue();
+        int programStatus = Input.setInputValue();
         if (programStatus == 1){
             return programStatus;
         }
-        if (programStatus == 2){
-            securityManager.checkExit(programStatus);
+        if (programStatus == 2) {
+            SecurityManager.checkExit(programStatus);
             return programStatus;
         }
-        intro.printException();
+        UIIntro.printException();
+        String[] args = new String[0];
+        Main.main(args);
         return programStatus;
     }
+
     public List<Integer> showStartInGame() {
         List<Integer> startInGameInput = new ArrayList<>();
-        inGame.printPlayerCountInput();
-        startInGameInput.add(input.setInputValue());
-        inGame.printRoundInput();
-        startInGameInput.add(input.setInputValue());
+        UIInGame.printPlayerCountInput();
+        startInGameInput.add(Input.setInputValue());
+        UIInGame.printRoundInput();
+        startInGameInput.add(Input.setInputValue());
         return startInGameInput;
     }
 }

@@ -9,7 +9,6 @@ public class StringCalculator {
     private final DefaultSplitter defaultSplitter = new DefaultSplitter();
     private final CustomSplitter customSplitter = new CustomSplitter();
     private final Parser parser = new Parser();
-
     private final PositiveNumber positiveNumber = new PositiveNumber();
 
     public int calculate(String input){
