@@ -10,12 +10,12 @@ import java.util.List;
 
 public class UIManager {
 
-	public int showIntro() {
+	public static int showIntro() {
 		UIIntro.printIntro();
 		return checkValidIntroInputNum();
 	}
 
-	private int checkValidIntroInputNum() {
+	private static int checkValidIntroInputNum() {
 		int programStatus = Input.setInputValue();
 		if (programStatus == 1) {
 			return programStatus;
@@ -30,12 +30,12 @@ public class UIManager {
 		return programStatus;
 	}
 
-	public Integer showCarCount() {
+	public static Integer showCarCount() {
 		UIInGame.printCarCountInput();
 		return Input.setInputValue();
 	}
 
-	public Integer showRoundCount() {
+	public static Integer showRoundCount() {
 		UIInGame.printRoundInput();
 		return Input.setInputValue();
 	}

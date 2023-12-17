@@ -9,15 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 public class GameManager {
-	private UIManager uiManager = new UIManager();
 	private Map<Integer, Car> carList = new HashMap<>();
 
 	public void startGame() {
-		int inputNum = uiManager.showIntro();
+		int inputNum = UIManager.showIntro();
 		if (inputNum == 1) {
-			Integer carCount = uiManager.showCarCount();
+			Integer carCount = UIManager.showCarCount();
 			createCar(carCount);
-			runRound(carCount, uiManager.showRoundCount());
+			runRound(carCount, UIManager.showRoundCount());
 		}
 		if (inputNum == 2) {
 			System.exit(0);
@@ -32,10 +31,9 @@ public class GameManager {
 	}
 
 	private void runRound(Integer carCount, Integer roundCount) {
-		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 		for (int round = 1; round <= roundCount; round++) {
 			for (int carNum = 1; carNum <= carCount; carNum++) {
-				if (randomNumberGenerator.generate() >= 4) {
+				if (RandomNumberGenerator.generate() >= 4) {
 					carList.get(carNum).move();
 				}
 			}
