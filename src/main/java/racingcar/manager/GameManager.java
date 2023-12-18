@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 
 public class GameManager {
 	private Map<Integer, Car> carList = new HashMap<>();
@@ -21,7 +20,7 @@ public class GameManager {
 		if (inputNum == 1) {
 			String[] carNames = UIManager.showCarNames();
 			createCar(carNames);
-			runRound(carNames.length, UIManager.showRoundCount());
+			runRound(UIManager.showRoundCount());
 			List<String> winners = findWinner();
 			UIWinner.printResult(winners);
 		}
@@ -46,14 +45,22 @@ public class GameManager {
 		}
 	}
 
-	private void runRound(Integer carCount, Integer roundCount) {
+	private void runRound(Integer roundCount) {
 		for (int round = 1; round <= roundCount; round++) {
-			for (int carNum = 1; carNum <= carCount; carNum++) {
-				if (RandomNumberGenerator.generate() >= 4) {
-					carList.get(carNum).move();
-				}
-			}
+			race();
 			UIInGame.printPosition(round, carList);
+		}
+	}
+
+	private void race() {
+		for (int carNum = 1; carNum <= carList.size(); carNum++) {
+			moveByRandomValue(carNum);
+		}
+	}
+
+	private void moveByRandomValue(int carNum) {
+		if (RandomNumberGenerator.generate() >= 4) {
+			carList.get(carNum).move();
 		}
 	}
 
