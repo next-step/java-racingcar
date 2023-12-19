@@ -16,7 +16,7 @@ public class UIInGame {
 	public static void printPosition(Integer round, Map<Integer, Car> carList) {
 		System.out.println("Round : " + round);
 		for (int carNum = 1; carNum <= carList.size(); carNum++) {
-			System.out.println(carList.get(carNum).getName() + " : " + "-".repeat(carList.get(carNum).getDistance()));
+			System.out.println(carList.get(carNum).name() + " : " + "-".repeat(carList.get(carNum).distance()));
 		}
 		System.out.println();
 	}

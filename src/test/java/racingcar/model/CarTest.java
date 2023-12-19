@@ -10,7 +10,7 @@ public class CarTest {
 	@Test
 	public void 자동차가_정지한다() {
 		Car car = new Car("pobi");
-		assertThat(car.getDistance()).isEqualTo(0);
+		assertThat(car.distance()).isEqualTo(0);
 	}
 
 	@DisplayName("자동차가 전진한다")
@@ -18,6 +18,6 @@ public class CarTest {
 	public void 자동차가_전진한다() {
 		Car car = new Car("conan");
 		car.move();
-		assertThat(car.getDistance()).isEqualTo(1);
+		assertThat(car.distance()).isEqualTo(1);
 	}
 }

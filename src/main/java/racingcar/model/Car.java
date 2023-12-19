@@ -5,13 +5,13 @@ import racingcar.util.RandomNumberGenerator;
 public class Car {
 	private String name;
 
-	public String getName() {
+	public String name() {
 		return name;
 	}
 
 	private Integer distance;
 
-	public Integer getDistance() {
+	public Integer distance() {
 		return distance;
 	}
 
