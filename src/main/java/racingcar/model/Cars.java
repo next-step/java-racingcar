@@ -13,7 +13,7 @@ public class Cars {
 		cars = new HashMap<>();
 	}
 
-	public int size(){
+	public int size() {
 		return cars.size();
 	}
 
@@ -21,11 +21,11 @@ public class Cars {
 		cars.put(num, car);
 	}
 
-	public Car car(Integer num){
+	public Car car(Integer num) {
 		return cars.get(num);
 	}
 
-	public Map<Integer, Car> cars(){
+	public Map<Integer, Car> cars() {
 		return cars;
 	}
 
