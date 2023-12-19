@@ -54,12 +54,6 @@ public class GameManager {
 
 	private void race() {
 		for (int carNum = 1; carNum <= carList.size(); carNum++) {
-			moveByRandomValue(carNum);
-		}
-	}
-
-	private void moveByRandomValue(int carNum) {
-		if (RandomNumberGenerator.randomNumber() >= 4) {
 			carList.get(carNum).move();
 		}
 	}

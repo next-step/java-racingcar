@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.util.RandomNumberGenerator;
+
 public class Car {
 	private String name;
 
@@ -19,6 +21,8 @@ public class Car {
 	}
 
 	public void move() {
-		distance += 1;
+		if (RandomNumberGenerator.randomNumber() >= 4) {
+			distance++;
+		}
 	}
 }
