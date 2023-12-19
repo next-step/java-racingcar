@@ -18,10 +18,10 @@ public class GameManager {
 	public void startGame() {
 		int inputNum = UIManager.showIntro();
 		if (inputNum == 1) {
-			String[] carNames = UIManager.showCarNames();
+			String[] carNames = UIManager.carNames();
 			createCar(carNames);
-			runRound(UIManager.showRoundCount());
-			List<String> winners = findWinner();
+			runRound(UIManager.roundCount());
+			List<String> winners = winners();
 			UIWinner.printResult(winners);
 		}
 		if (inputNum == 2) {
@@ -59,12 +59,12 @@ public class GameManager {
 	}
 
 	private void moveByRandomValue(int carNum) {
-		if (RandomNumberGenerator.generate() >= 4) {
+		if (RandomNumberGenerator.randomNumber() >= 4) {
 			carList.get(carNum).move();
 		}
 	}
 
-	private List<String> findWinner() {
+	private List<String> winners() {
 		int maxDistance = 0;
 		List<String> winners = new ArrayList<>();
 		for (int carNum = 1; carNum <= carList.size(); carNum++) {

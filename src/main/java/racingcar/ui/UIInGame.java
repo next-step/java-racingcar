@@ -5,7 +5,7 @@ import racingcar.model.Car;
 import java.util.Map;
 
 public class UIInGame {
-	public static void printCarCountInput() {
+	public static void printCarNamesInput() {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 	}
 

@@ -9,11 +9,11 @@ public class UIManager {
 
 	public static int showIntro() {
 		UIIntro.printIntro();
-		return checkValidIntroInputNum();
+		return validatedIntroInputNum();
 	}
 
-	private static int checkValidIntroInputNum() {
-		int programStatus = Input.setInputValue();
+	private static int validatedIntroInputNum() {
+		int programStatus = Input.inputValue();
 		if (programStatus == 1) {
 			return programStatus;
 		}
@@ -27,13 +27,13 @@ public class UIManager {
 		return programStatus;
 	}
 
-	public static String[] showCarNames() {
-		UIInGame.printCarCountInput();
-		return Input.setInputNames();
+	public static String[] carNames() {
+		UIInGame.printCarNamesInput();
+		return Input.inputNames();
 	}
 
-	public static Integer showRoundCount() {
+	public static Integer roundCount() {
 		UIInGame.printRoundInput();
-		return Input.setInputValue();
+		return Input.inputValue();
 	}
 }
