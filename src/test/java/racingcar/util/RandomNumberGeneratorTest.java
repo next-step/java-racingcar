@@ -9,7 +9,6 @@ public class RandomNumberGeneratorTest {
     @DisplayName("랜덤값을 생성한다.")
     @Test
     public void 랜덤값을_생성한다() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        assertThat(randomNumberGenerator.generate()).isBetween(0,9);
+        assertThat(RandomNumberGenerator.randomNumber()).isBetween(0, 9);
     }
 }

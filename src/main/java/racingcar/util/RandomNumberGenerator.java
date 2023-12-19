@@ -1,7 +1,7 @@
 package racingcar.util;
 
 public class RandomNumberGenerator {
-    public Integer generate(){
-        return (int)(Math.random()*10);
-    }
+	public static Integer randomNumber() {
+		return (int)(Math.random() * 10);
+	}
 }
