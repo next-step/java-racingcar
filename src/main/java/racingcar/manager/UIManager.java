@@ -1,5 +1,8 @@
 package racingcar.manager;
 
+import java.util.Arrays;
+import java.util.List;
+
 import racingcar.Main;
 import racingcar.ui.UIInGame;
 import racingcar.ui.UIIntro;
@@ -27,9 +30,9 @@ public class UIManager {
 		return programStatus;
 	}
 
-	public static String[] carNames() {
+	public static List<String> carNames() {
 		UIInGame.printCarNamesInput();
-		return Input.inputNames();
+		return Arrays.asList(Input.inputNames());
 	}
 
 	public static Integer roundCount() {

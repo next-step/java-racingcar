@@ -2,7 +2,7 @@ package racingcar.ui;
 
 import racingcar.model.Car;
 
-import java.util.Map;
+import java.util.List;
 
 public class UIInGame {
 	public static void printCarNamesInput() {
@@ -13,9 +13,9 @@ public class UIInGame {
 		System.out.println("시도할 횟수는 몇 회 인가요?");
 	}
 
-	public static void printPosition(Integer round, Map<Integer, Car> carList) {
+	public static void printPosition(Integer round, List<Car> carList) {
 		System.out.println("Round : " + round);
-		for (int carNum = 1; carNum <= carList.size(); carNum++) {
+		for (int carNum = 0; carNum < carList.size(); carNum++) {
 			System.out.println(carList.get(carNum).name() + " : " + "-".repeat(carList.get(carNum).distance()));
 		}
 		System.out.println();
