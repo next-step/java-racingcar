@@ -1,7 +1,7 @@
 package racingcar.manager;
 
-public class SecurityManager {
-	public static void checkExit(int status) {
+public final class SecurityManager {
+	public static void checkExit(final int status) {
 		if (status != 2) {
 			throw new SecurityException();
 		}

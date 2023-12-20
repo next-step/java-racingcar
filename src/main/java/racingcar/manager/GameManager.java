@@ -5,7 +5,7 @@ import racingcar.model.Cars;
 import racingcar.model.Winners;
 import racingcar.ui.UIWinner;
 
-public class GameManager {
+public final class GameManager {
 	private final Cars cars = new Cars();
 
 	public void startGame() {

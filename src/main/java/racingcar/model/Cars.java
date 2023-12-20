@@ -6,14 +6,14 @@ import java.util.List;
 import racingcar.Main;
 import racingcar.util.Input;
 
-public class Cars {
+public final class Cars {
 	private static List<Car> cars;
 
 	public Cars() {
 		cars = new ArrayList<>();
 	}
 
-	public Cars(List<Car> cars) {
+	public Cars(final List<Car> cars) {
 		Cars.cars = cars;
 	}
 
@@ -21,11 +21,11 @@ public class Cars {
 		return cars.size();
 	}
 
-	public void createCar(Car car) {
+	public void createCar(final Car car) {
 		cars.add(car);
 	}
 
-	public Car car(Integer num) {
+	public Car car(final Integer num) {
 		return cars.get(num);
 	}
 
@@ -33,7 +33,7 @@ public class Cars {
 		return cars;
 	}
 
-	public List<Car> createCars(List<String> carNames) {
+	public List<Car> createCars(final List<String> carNames) {
 		for (int carNum = 0; carNum < carNames.size(); carNum++) {
 			limitNameLegth(carNames, carNum);
 			Input.validateInput(carNames.get(carNum));
@@ -43,7 +43,7 @@ public class Cars {
 		return cars;
 	}
 
-	private void limitNameLegth(List<String> carNames, Integer carNum) {
+	private void limitNameLegth(final List<String> carNames, final Integer carNum) {
 		if (carNames.get(carNum).trim().length() > 5) {
 			String[] args = new String[0];
 			Main.main(args);

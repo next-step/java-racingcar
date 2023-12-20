@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winners {
+public final class Winners {
 	private List<Car> winners;
 
 	public Winners() {
@@ -14,7 +14,7 @@ public class Winners {
 		return winners;
 	}
 
-	public void findWinners(Cars cars) {
+	public void findWinners(final Cars cars) {
 		int maxDistance = 0;
 		for (int carNum = 0; carNum < cars.size(); carNum++) {
 			addCarTheSameSpeedAsFastest(cars, maxDistance, carNum);
@@ -22,13 +22,13 @@ public class Winners {
 		}
 	}
 
-	private void addCarTheSameSpeedAsFastest(Cars cars, int maxDistance, int carNum) {
+	private void addCarTheSameSpeedAsFastest(final Cars cars, final int maxDistance, final int carNum) {
 		if (cars.car(carNum).distance() == maxDistance) {
 			winners.add(cars.car(carNum));
 		}
 	}
 
-	private int addFasterCar(Cars cars, int maxDistance, int carNum) {
+	private int addFasterCar(final Cars cars, int maxDistance, final int carNum) {
 		if (cars.car(carNum).distance() > maxDistance) {
 			winners = new ArrayList<>();
 			winners.add(cars.car(carNum));

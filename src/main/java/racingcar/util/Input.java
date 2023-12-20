@@ -2,7 +2,7 @@ package racingcar.util;
 
 import java.util.Scanner;
 
-public class Input {
+public final class Input {
 	public static int inputValue() {
 		Scanner scanner = new Scanner(System.in);
 		String inputValue = scanner.nextLine();
@@ -17,7 +17,7 @@ public class Input {
 		return inputNames.split(",");
 	}
 
-	public static void validateInput(String input) {
+	public static void validateInput(final String input) {
 		if (input.isBlank()) {
 			throw new RuntimeException("입력값이 없습니다.");
 		}

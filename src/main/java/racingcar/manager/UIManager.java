@@ -8,7 +8,7 @@ import racingcar.ui.UIInGame;
 import racingcar.ui.UIIntro;
 import racingcar.util.Input;
 
-public class UIManager {
+public final class UIManager {
 
 	public static int showIntro() {
 		UIIntro.printIntro();
