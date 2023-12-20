@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class WinnersTest {
 	@DisplayName("우승자 찾기")
 	@Test
-	public void 우승자_찾기() {
+	void 우승자_찾기() {
 		Car pobi = new Car("conan");
 		pobi.move(4);
 		Car conan = new Car("conan");

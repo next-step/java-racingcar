@@ -24,16 +24,16 @@ public final class Winners {
 	}
 
 	private void addCarTheSameSpeedAsFastest(WinnerDTO winnerDTO) {
-		if (winnerDTO.cars().car(winnerDTO.carNum()).distance() == winnerDTO.maxDistance()) {
+		if (winnerDTO.cars().car(winnerDTO.carNum()).distance().distance() == winnerDTO.maxDistance()) {
 			winners.add(winnerDTO.cars().car(winnerDTO.carNum()));
 		}
 	}
 
 	private int addFasterCar(WinnerDTO winnerDTO) {
-		if (winnerDTO.cars().car(winnerDTO.carNum()).distance() > winnerDTO.maxDistance()) {
+		if (winnerDTO.cars().car(winnerDTO.carNum()).distance().distance() > winnerDTO.maxDistance()) {
 			winners = new ArrayList<>();
 			winners.add(winnerDTO.cars().car(winnerDTO.carNum()));
-			winnerDTO.createMaxDistance(winnerDTO.cars().car(winnerDTO.carNum()).distance());
+			winnerDTO.createMaxDistance(winnerDTO.cars().car(winnerDTO.carNum()).distance().distance());
 		}
 		return winnerDTO.maxDistance();
 	}

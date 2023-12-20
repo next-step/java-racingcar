@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 	@DisplayName("자동차를 생성한다")
 	@Test
-	public void 자동차를_생성한다() {
+	void 자동차를_생성한다() {
 		Cars cars = new Cars();
 		List<String> carNames = Arrays.asList("pobi", "conan");
 		cars.createCars(carNames);

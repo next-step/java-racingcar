@@ -7,25 +7,25 @@ public final class Car {
 		return name;
 	}
 
-	private Integer distance;
+	private Distance distance;
 
-	public Integer distance() {
+	public Distance distance() {
 		return distance;
 	}
 
 	public Car(final String name) {
 		this.name = name;
-		this.distance = 0;
+		this.distance = new Distance(0);
 	}
 
-	public Car(final String name, final Integer distance) {
+	public Car(final String name, final Distance distance) {
 		this.name = name;
 		this.distance = distance;
 	}
 
 	public void move(final int randomNumber) {
 		if (randomNumber >= 4) {
-			distance++;
+			this.distance.move();
 		}
 	}
 }
