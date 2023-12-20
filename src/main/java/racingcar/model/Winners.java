@@ -17,18 +17,18 @@ public class Winners {
 	public void findWinners(Cars cars) {
 		int maxDistance = 0;
 		for (int carNum = 0; carNum < cars.size(); carNum++) {
-			addWinnersIfEqualToMax(cars, maxDistance, carNum);
-			maxDistance = addWinnersIfGreaterThanMax(cars, maxDistance, carNum);
+			addCarTheSameSpeedAsFastest(cars, maxDistance, carNum);
+			maxDistance = addFasterCar(cars, maxDistance, carNum);
 		}
 	}
 
-	private void addWinnersIfEqualToMax(Cars cars, int maxDistance, int carNum) {
+	private void addCarTheSameSpeedAsFastest(Cars cars, int maxDistance, int carNum) {
 		if (cars.car(carNum).distance() == maxDistance) {
 			winners.add(cars.car(carNum));
 		}
 	}
 
-	private int addWinnersIfGreaterThanMax(Cars cars, int maxDistance, int carNum) {
+	private int addFasterCar(Cars cars, int maxDistance, int carNum) {
 		if (cars.car(carNum).distance() > maxDistance) {
 			winners = new ArrayList<>();
 			winners.add(cars.car(carNum));

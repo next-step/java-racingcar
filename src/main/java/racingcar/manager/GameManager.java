@@ -6,7 +6,7 @@ import racingcar.model.Winners;
 import racingcar.ui.UIWinner;
 
 public class GameManager {
-	private Cars cars = new Cars();
+	private final Cars cars = new Cars();
 
 	public void startGame() {
 		int inputNum = UIManager.showIntro();

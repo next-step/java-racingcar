@@ -3,8 +3,8 @@ package racingcar.controller;
 import java.util.List;
 
 import racingcar.model.Car;
-import racingcar.model.Cars;
 import racingcar.ui.UIInGame;
+import racingcar.util.RandomNumberGenerator;
 
 public class RacingGame {
 	public static void runRound(List<Car> cars, Integer roundCount) {
@@ -16,7 +16,7 @@ public class RacingGame {
 
 	private static void race(List<Car> cars) {
 		for (int carNum = 0; carNum < cars.size(); carNum++) {
-			cars.get(carNum).move();
+			cars.get(carNum).move(RandomNumberGenerator.randomNumber());
 		}
 	}
 

@@ -13,11 +13,15 @@ public class Cars {
 		cars = new ArrayList<>();
 	}
 
+	public Cars(List<Car> cars) {
+		Cars.cars = cars;
+	}
+
 	public int size() {
 		return cars.size();
 	}
 
-	public static void createCar(Car car) {
+	public void createCar(Car car) {
 		cars.add(car);
 	}
 
@@ -29,7 +33,7 @@ public class Cars {
 		return cars;
 	}
 
-	public static List<Car> createCars(List<String> carNames) {
+	public List<Car> createCars(List<String> carNames) {
 		for (int carNum = 0; carNum < carNames.size(); carNum++) {
 			limitNameLegth(carNames, carNum);
 			Input.validateInput(carNames.get(carNum));
@@ -39,7 +43,7 @@ public class Cars {
 		return cars;
 	}
 
-	private static void limitNameLegth(List<String> carNames, Integer carNum) {
+	private void limitNameLegth(List<String> carNames, Integer carNum) {
 		if (carNames.get(carNum).trim().length() > 5) {
 			String[] args = new String[0];
 			Main.main(args);
