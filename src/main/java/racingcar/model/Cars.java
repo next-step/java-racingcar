@@ -7,7 +7,7 @@ import racingcar.Main;
 import racingcar.util.Input;
 
 public class Cars {
-	private List<Car> cars;
+	private static List<Car> cars;
 
 	public Cars() {
 		cars = new ArrayList<>();
@@ -17,7 +17,7 @@ public class Cars {
 		return cars.size();
 	}
 
-	public void createCar(Car car) {
+	public static void createCar(Car car) {
 		cars.add(car);
 	}
 
@@ -29,7 +29,7 @@ public class Cars {
 		return cars;
 	}
 
-	public List<Car> createCars(List<String> carNames) {
+	public static List<Car> createCars(List<String> carNames) {
 		for (int carNum = 0; carNum < carNames.size(); carNum++) {
 			limitNameLegth(carNames, carNum);
 			Input.validateInput(carNames.get(carNum));
@@ -39,7 +39,7 @@ public class Cars {
 		return cars;
 	}
 
-	private void limitNameLegth(List<String> carNames, Integer carNum) {
+	private static void limitNameLegth(List<String> carNames, Integer carNum) {
 		if (carNames.get(carNum).trim().length() > 5) {
 			String[] args = new String[0];
 			Main.main(args);
