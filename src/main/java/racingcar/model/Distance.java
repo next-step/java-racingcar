@@ -24,6 +24,10 @@ public class Distance {
 		distance++;
 	}
 
+	public boolean compareTo(Distance o){
+		return this.distance > o.distance;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
