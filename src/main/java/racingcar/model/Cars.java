@@ -13,10 +13,6 @@ public final class Cars {
 		cars = new ArrayList<>();
 	}
 
-	public Cars(final List<Car> cars) {
-		this.cars = cars;
-	}
-
 	public List<Car> cars() {
 		return cars;
 	}
