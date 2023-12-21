@@ -17,6 +17,8 @@ public final class UIManager {
 
 	private static int validatedIntroInputNum() {
 		int programStatus = Input.inputValue();
+		String[] args = new String[0];
+
 		if (programStatus == 1) {
 			return programStatus;
 		}
@@ -25,7 +27,6 @@ public final class UIManager {
 			return programStatus;
 		}
 		UIIntro.printException();
-		String[] args = new String[0];
 		Main.main(args);
 		return programStatus;
 	}

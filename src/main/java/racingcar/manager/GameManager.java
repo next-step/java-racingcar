@@ -10,6 +10,7 @@ public final class GameManager {
 
 	public void startGame() {
 		int inputNum = UIManager.showIntro();
+
 		if (inputNum == 1) {
 			RacingGame.runRound(cars.createCars(UIManager.carNames()), UIManager.roundCount());
 			UIWinner.printResult(Winners.findWinners(cars.cars()));

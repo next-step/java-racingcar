@@ -6,6 +6,7 @@ public final class Input {
 	public static int inputValue() {
 		Scanner scanner = new Scanner(System.in);
 		String inputValue = scanner.nextLine();
+
 		validateInput(inputValue);
 		return Integer.parseInt(inputValue);
 	}
@@ -13,6 +14,7 @@ public final class Input {
 	public static String[] inputNames() {
 		Scanner scanner = new Scanner(System.in);
 		String inputNames = scanner.nextLine();
+
 		validateInput(inputNames);
 		return inputNames.split(",");
 	}

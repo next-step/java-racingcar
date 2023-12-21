@@ -3,7 +3,6 @@ package racingcar.model;
 public final class Car {
 	private static final int VALID_RANDOM_NUMBER = 4;
 	private final Name name;
-
 	private Distance distance;
 
 	public Car(final String name) {
