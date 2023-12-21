@@ -15,7 +15,7 @@ public class CarsTest {
 		Cars cars = new Cars();
 		List<String> carNames = Arrays.asList("pobi", "conan");
 		cars.createCars(carNames);
-		assertThat(cars.car(0).name().equals("pobi")).isTrue();
-		assertThat(cars.car(1).name().equals("conan")).isTrue();
+		assertThat(cars.car(0).name().name().equals("pobi")).isTrue();
+		assertThat(cars.car(1).name().name().equals("conan")).isTrue();
 	}
 }

@@ -35,18 +35,10 @@ public final class Cars {
 
 	public List<Car> createCars(final List<String> carNames) {
 		for (int carNum = 0; carNum < carNames.size(); carNum++) {
-			limitNameLegth(carNames, carNum);
 			Input.validateInput(carNames.get(carNum));
-			Car car = new Car(carNames.get(carNum).trim());
+			Car car = new Car(carNames.get(carNum));
 			createCar(car);
 		}
 		return cars;
-	}
-
-	private void limitNameLegth(final List<String> carNames, final Integer carNum) {
-		if (carNames.get(carNum).trim().length() > 5) {
-			String[] args = new String[0];
-			Main.main(args);
-		}
 	}
 }

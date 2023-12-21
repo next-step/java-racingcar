@@ -12,7 +12,7 @@ public class WinnersTest {
 	@DisplayName("우승자 찾기")
 	@Test
 	void 우승자_찾기() {
-		Car pobi = new Car("conan");
+		Car pobi = new Car("pobi");
 		pobi.move(4);
 		Car conan = new Car("conan");
 		conan.move(1);
