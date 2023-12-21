@@ -14,6 +14,7 @@ public class CarsTest {
 	void 자동차를_생성한다() {
 		Cars cars = new Cars();
 		List<String> carNames = Arrays.asList("pobi", "conan");
+
 		cars.createCars(carNames);
 		assertThat(cars.car(0).name().name().equals("pobi")).isTrue();
 		assertThat(cars.car(1).name().name().equals("conan")).isTrue();

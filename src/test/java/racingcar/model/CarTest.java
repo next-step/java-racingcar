@@ -11,6 +11,7 @@ public class CarTest {
 	void 자동차가_정지한다() {
 		Distance distance = new Distance();
 		Car car = new Car("pobi", distance);
+
 		assertThat(car.distance()).isEqualTo(distance);
 	}
 
@@ -18,8 +19,10 @@ public class CarTest {
 	@Test
 	void 자동차가_전진한다() {
 		Car car = new Car("pobi");
-		car.move(4);
 		Distance distance = new Distance(1);
+
+		car.move(4);
+
 		assertThat(car.distance()).isEqualTo(distance);
 	}
 
@@ -29,6 +32,7 @@ public class CarTest {
 		Distance pobiDistance = new Distance(3);
 		Car car = new Car("pobi", pobiDistance);
 		Distance distance = new Distance(3);
+
 		assertThat(car.distance()).isEqualTo(distance);
 	}
 }

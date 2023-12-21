@@ -11,6 +11,7 @@ public class DistanceTest {
 	@Test
 	void 자동차의_거리를_생성한다() {
 		Distance distance = new Distance(3);
+
 		assertThat(distance).isEqualTo(new Distance(3));
 	}
 

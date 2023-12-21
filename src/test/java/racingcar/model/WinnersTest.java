@@ -13,11 +13,13 @@ public class WinnersTest {
 	@Test
 	void 우승자_찾기() {
 		Car pobi = new Car("pobi");
-		pobi.move(4);
 		Car conan = new Car("conan");
-		conan.move(1);
 		List<Car> cars = Arrays.asList(pobi, conan);
 		List<Car> winners = Winners.findWinners(cars);
+		
+		pobi.move(4);
+		conan.move(1);
+
 		assertThat(winners).contains(pobi);
 	}
 }
