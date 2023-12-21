@@ -16,10 +16,8 @@ public class WinnersTest {
 		pobi.move(4);
 		Car conan = new Car("conan");
 		conan.move(1);
-		List<Car> carList = Arrays.asList(pobi, conan);
-		Cars cars = new Cars(carList);
-		Winners winners = new Winners();
-		winners.findWinners(cars);
-		assertThat(winners.winners().contains(pobi)).isTrue();
+		List<Car> cars = Arrays.asList(pobi, conan);
+		List<Car> winners = Winners.findWinners(cars);
+		assertThat(winners).contains(pobi);
 	}
 }

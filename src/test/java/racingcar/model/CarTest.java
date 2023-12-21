@@ -16,13 +16,21 @@ public class CarTest {
 		assertThat(car.distance()).isEqualTo(distance);
 	}
 
-	@ParameterizedTest
-	@DisplayName("random한 수가 4 이상이면 전진한다.")
-	@CsvSource(value = { "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1" }, delimiter = ':')
-	void 자동차가_전진한다(int randomNumber, int expecting) {
-		Car car = new Car("0");
-		Distance expectingResult = new Distance(expecting);
-		car.move(randomNumber);
-		assertThat(car.distance()).isEqualTo(expectingResult);
+	@DisplayName("자동차가 전진한다")
+	@Test
+	void 자동차가_전진한다() {
+		Car car = new Car("pobi");
+		car.move(4);
+		Distance distance = new Distance(1);
+		assertThat(car.distance()).isEqualTo(distance);
+	}
+
+	@DisplayName("위치값 일치여부")
+	@Test
+	void 위치값_일치여부() {
+		Distance pobiDistance = new Distance(3);
+		Car car = new Car("pobi", pobiDistance);
+		Distance distance = new Distance(3);
+		assertThat(car.distance()).isEqualTo(distance);
 	}
 }

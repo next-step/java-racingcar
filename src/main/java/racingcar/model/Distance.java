@@ -25,7 +25,7 @@ public class Distance {
 	}
 
 	public boolean compareTo(Distance o){
-		return this.distance > o.distance;
+		return this.distance < o.distance;
 	}
 
 	@Override

@@ -7,14 +7,18 @@ import racingcar.Main;
 import racingcar.util.Input;
 
 public final class Cars {
-	private static List<Car> cars;
+	private List<Car> cars;
 
 	public Cars() {
 		cars = new ArrayList<>();
 	}
 
 	public Cars(final List<Car> cars) {
-		Cars.cars = cars;
+		this.cars = cars;
+	}
+
+	public List<Car> cars() {
+		return cars;
 	}
 
 	public int size() {

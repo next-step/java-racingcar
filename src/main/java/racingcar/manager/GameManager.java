@@ -12,9 +12,7 @@ public final class GameManager {
 		int inputNum = UIManager.showIntro();
 		if (inputNum == 1) {
 			RacingGame.runRound(cars.createCars(UIManager.carNames()), UIManager.roundCount());
-			Winners winners = new Winners();
-			winners.findWinners(cars);
-			UIWinner.printResult(winners.winners());
+			UIWinner.printResult(Winners.findWinners(cars.cars()));
 		}
 		if (inputNum == 2) {
 			System.exit(0);
