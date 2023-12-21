@@ -29,10 +29,6 @@ public final class Cars {
 		return cars.get(num);
 	}
 
-	public List<Car> cars() {
-		return cars;
-	}
-
 	public List<Car> createCars(final List<String> carNames) {
 		for (int carNum = 0; carNum < carNames.size(); carNum++) {
 			limitNameLegth(carNames, carNum);

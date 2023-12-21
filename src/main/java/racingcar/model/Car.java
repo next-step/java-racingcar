@@ -3,15 +3,7 @@ package racingcar.model;
 public final class Car {
 	private final String name;
 
-	public String name() {
-		return name;
-	}
-
 	private Distance distance;
-
-	public Distance distance() {
-		return distance;
-	}
 
 	public Car(final String name) {
 		this.name = name;
@@ -21,6 +13,14 @@ public final class Car {
 	public Car(final String name, final Distance distance) {
 		this.name = name;
 		this.distance = distance;
+	}
+
+	public String name() {
+		return name;
+	}
+
+	public Distance distance() {
+		return distance;
 	}
 
 	public void move(final int randomNumber) {
