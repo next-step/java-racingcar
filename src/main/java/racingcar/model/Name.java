@@ -3,6 +3,8 @@ package racingcar.model;
 import java.util.Objects;
 
 public class Name {
+	private static final int NAME_LIMIT = 5;
+	private static final int EMPTY_NAME = 0;
 	private final String name;
 
 	public Name(final String name) {
@@ -14,7 +16,7 @@ public class Name {
 	}
 
 	private String validateLength(final String name) {
-		if (name.length() > 5 || name.length() < 1) {
+		if (name.length() > NAME_LIMIT || name.length() <= EMPTY_NAME) {
 			throw new IllegalArgumentException("이름은 5자를 넘어갈 수 없습니다.");
 		}
 		return name;

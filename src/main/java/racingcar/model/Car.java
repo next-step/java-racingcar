@@ -1,6 +1,7 @@
 package racingcar.model;
 
 public final class Car {
+	private static final int VALID_RANDOM_NUMBER = 4;
 	private final Name name;
 
 	private Distance distance;
@@ -23,7 +24,7 @@ public final class Car {
 	}
 
 	public void move(final int randomNumber) {
-		if (randomNumber >= 4) {
+		if (randomNumber >= VALID_RANDOM_NUMBER) {
 			this.distance.move();
 		}
 	}
