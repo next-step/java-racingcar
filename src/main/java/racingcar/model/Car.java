@@ -1,28 +1,30 @@
 package racingcar.model;
 
-import racingcar.util.RandomNumberGenerator;
+public final class Car {
+	private static final int VALID_RANDOM_NUMBER = 4;
+	private final Name name;
+	private Distance distance;
 
-public class Car {
-	private String name;
+	public Car(final String name) {
+		this(name, new Distance(0));
+	}
 
-	public String name() {
+	public Car(final String name, final Distance distance) {
+		this.name = new Name(name);
+		this.distance = distance;
+	}
+
+	public Name name() {
 		return name;
 	}
 
-	private Integer distance;
-
-	public Integer distance() {
+	public Distance distance() {
 		return distance;
 	}
 
-	public Car(String name) {
-		this.name = name;
-		this.distance = 0;
-	}
-
-	public void move() {
-		if (RandomNumberGenerator.randomNumber() >= 4) {
-			distance++;
+	public void move(final int randomNumber) {
+		if (randomNumber >= VALID_RANDOM_NUMBER) {
+			this.distance.move();
 		}
 	}
 }

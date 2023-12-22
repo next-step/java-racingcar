@@ -1,47 +1,40 @@
 package racingcar.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import racingcar.Main;
 import racingcar.util.Input;
 
-public class Cars {
-	private Map<Integer, Car> cars;
+public final class Cars {
+	private List<Car> cars;
 
 	public Cars() {
-		cars = new HashMap<>();
+		cars = new ArrayList<>();
+	}
+
+	public List<Car> cars() {
+		return cars;
 	}
 
 	public int size() {
 		return cars.size();
 	}
 
-	public void createCar(Integer num, Car car) {
-		cars.put(num, car);
+	public void createCar(final Car car) {
+		cars.add(car);
 	}
 
-	public Car car(Integer num) {
+	public Car car(final Integer num) {
 		return cars.get(num);
 	}
 
-	public Map<Integer, Car> cars() {
+	public List<Car> createCars(final List<String> carNames) {
+		for (int carNum = 0; carNum < carNames.size(); carNum++) {
+			Input.validateInput(carNames.get(carNum));
+			Car car = new Car(carNames.get(carNum));
+			createCar(car);
+		}
 		return cars;
-	}
-
-	public void createCars(String[] carNames) {
-		for (int carNum = 1; carNum <= carNames.length; carNum++) {
-			limitNameLegth(carNames, carNum);
-			Input.validateInput(carNames[carNum - 1]);
-			Car car = new Car(carNames[carNum - 1].trim());
-			createCar(carNum, car);
-		}
-	}
-
-	private void limitNameLegth(String[] carNames, Integer carNum) {
-		if (carNames[carNum - 1].trim().length() > 5) {
-			String[] args = new String[0];
-			Main.main(args);
-		}
 	}
 }

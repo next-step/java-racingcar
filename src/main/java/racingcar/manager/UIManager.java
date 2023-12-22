@@ -1,11 +1,14 @@
 package racingcar.manager;
 
+import java.util.Arrays;
+import java.util.List;
+
 import racingcar.Main;
 import racingcar.ui.UIInGame;
 import racingcar.ui.UIIntro;
 import racingcar.util.Input;
 
-public class UIManager {
+public final class UIManager {
 
 	public static int showIntro() {
 		UIIntro.printIntro();
@@ -14,6 +17,8 @@ public class UIManager {
 
 	private static int validatedIntroInputNum() {
 		int programStatus = Input.inputValue();
+		String[] args = new String[0];
+
 		if (programStatus == 1) {
 			return programStatus;
 		}
@@ -22,14 +27,13 @@ public class UIManager {
 			return programStatus;
 		}
 		UIIntro.printException();
-		String[] args = new String[0];
 		Main.main(args);
 		return programStatus;
 	}
 
-	public static String[] carNames() {
+	public static List<String> carNames() {
 		UIInGame.printCarNamesInput();
-		return Input.inputNames();
+		return Arrays.asList(Input.inputNames());
 	}
 
 	public static Integer roundCount() {

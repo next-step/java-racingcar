@@ -3,28 +3,26 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winners {
-	private List<String> winners;
+public final class Winners {
+	public static List<Car> findWinners(final List<Car> cars) {
+		List<Car> winners = new ArrayList<>();
 
-	public Winners() {
-		winners = new ArrayList<>();
-	}
-
-	public void findWinners(Cars cars) {
-		int maxDistance = 0;
-		for (int carNum = 1; carNum <= cars.size(); carNum++) {
-			if (cars.car(carNum).distance() == maxDistance) {
-				winners.add(cars.car(carNum).name());
-			}
-			if (cars.car(carNum).distance() > maxDistance) {
-				winners = new ArrayList<>();
-				winners.add(cars.car(carNum).name());
-				maxDistance = cars.car(carNum).distance();
+		for (Car car : cars) {
+			if (getMaxDistance(cars).equals(car.distance())) {
+				winners.add(car);
 			}
 		}
+		return winners;
 	}
 
-	public List<String> winners() {
-		return winners;
+	private static Distance getMaxDistance(List<Car> cars) {
+		Distance maxDistance = new Distance();
+
+		for (Car car : cars) {
+			if (maxDistance.compareTo(car.distance())) {
+				maxDistance = car.distance();
+			}
+		}
+		return maxDistance;
 	}
 }

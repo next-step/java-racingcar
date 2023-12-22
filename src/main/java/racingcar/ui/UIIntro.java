@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-public class UIIntro {
+public final class UIIntro {
 	public static void printIntro() {
 		String introMessage = "RacingCar GAME\n"
 			+ "1. 게임 시작\n"
