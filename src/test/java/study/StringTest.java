@@ -2,6 +2,7 @@ package study;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class StringTest {
@@ -28,5 +29,15 @@ class StringTest {
         final String subStringInput = input.substring(1, input.length() - 1);
 
         assertThat(subStringInput).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("chatAt 메서드를 통해 범위가 벗어나는 문자를 가져오는 경우 예외가 발생한다.")
+    void getCharacterAtIndexOutOfRange() {
+        final String input = "abc";
+        final int indexOutOfRange = input.length();
+
+        assertThatThrownBy(() -> input.charAt(indexOutOfRange))
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
