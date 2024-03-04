@@ -1,4 +1,5 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,5 +27,30 @@ class StringTest {
         
         // then
         assertThat(substring).isEqualTo("1,2");
+    }
+    
+    @Test
+    void 문자열에서_특정_위치의_문자_가져오기_테스트() {
+        // given
+        final String str = "abc";
+        
+        // when
+        final char charAt = str.charAt(1);
+        
+        // then
+        assertThat(charAt).isEqualTo('b');
+    }
+    
+    @Test
+    void 문자열에서_위치_값이_벗어나면_예외_발생() {
+        // given
+        final String str = "abc";
+        
+        // when
+        
+        // then
+        assertThatThrownBy(() -> str.charAt(3))
+            .isInstanceOf(IndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range: 3");
     }
 }
