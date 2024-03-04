@@ -2,8 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class StringTest {
 
@@ -39,17 +38,18 @@ class StringTest {
 
         @Test
         @DisplayName("특정 문자를 가져온다.")
-        void throw_IndexOutOfBoundsException_chatAt() {
+        void do_chatAt() {
             String target = "abc";
-            assertThatThrownBy(() -> target.charAt(4)).isInstanceOf(IndexOutOfBoundsException.class);
+            char charactor = target.charAt(1);
+            assertThatCode(() -> target.charAt(1)).doesNotThrowAnyException();
+            assertThat(charactor).isEqualTo('b');
         }
 
         @Test
         @DisplayName("위치가 범위를 벗어나 예외를 반환한다.")
-        void do_chatAt() {
+        void throw_IndexOutOfBoundsException_chatAt() {
             String target = "abc";
-            char charactor = target.charAt(1);
-            assertThat(charactor).isEqualTo('b');
+            assertThatThrownBy(() -> target.charAt(4)).isInstanceOf(IndexOutOfBoundsException.class);
         }
     }
 }
