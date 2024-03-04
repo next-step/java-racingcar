@@ -10,7 +10,7 @@ class StringUtilsTest {
 
 
     @Test
-    void step2_mission_test() {
+    void step1_requirement2_mission_test() {
         // Given
         String test = "(1,2)";
         String expected = "1,2";
