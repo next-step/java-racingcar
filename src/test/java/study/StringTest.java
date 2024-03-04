@@ -7,13 +7,25 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
-    @Test
-    void testSplit() {
-        String input = "1,2";
-        String[] result =  input.split(",");
+    @Nested
+    class SplitTest {
+        @Test
+        void testSplit() {
+            String input = "1,2";
+            String[] result =  input.split(",");
 
-        assertThat(result).contains("1", "2");
-        assertThat(result).containsExactly("1", "2");
+            assertThat(result).contains("1", "2");
+            assertThat(result).containsExactly("1", "2");
+        }
+
+        @Test
+        void testSplitSingle() {
+            String input = "1";
+            String[] result =  input.split(",");
+
+            assertThat(result).contains("1");
+            assertThat(result).containsExactly("1");
+        }
     }
 
     @Test
