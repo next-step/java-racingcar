@@ -8,6 +8,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
 
@@ -33,4 +35,12 @@ public class SetTest {
         // When & Then
         assertThat(expected).isEqualTo(sizeOfSet);
     }
+
+    @ParameterizedTest(name = "set 의 요소를 검사한다.")
+    @ValueSource(ints = {1, 2, 3})
+    void set_requirement2(int argument) {
+        assertThat(numbers.contains(argument)).isTrue();
+    }
+
+
 }
