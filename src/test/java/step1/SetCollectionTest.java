@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -39,5 +40,14 @@ public class SetCollectionTest {
         final boolean result = numbers.contains(input);
 
         assertTrue(result);
+    }
+
+    @DisplayName("contains 메서드는 element를 포함하고 있는지 여부를 반환한다.")
+    @ParameterizedTest(name = "{index} => 'numbers' set contains {0} is {1}")
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
+    void containsElements(int input, boolean expectResult) {
+        final boolean result = numbers.contains(input);
+
+        assertEquals(expectResult, result);
     }
 }
