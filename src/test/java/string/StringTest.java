@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
     @Test
-    void step1_mission() {
+    void step1_requirement1() {
         // Given
         String existComma = "1,2";
         String nonExistComma = "1";
