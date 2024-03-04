@@ -18,4 +18,12 @@ public class StringTest {
         assertThat(testData).containsExactly("1");
     }
 
+    @Test
+    void testRemoveBracketInManyNumber() {
+        String testData = "(1,2)";
+        String resultData = testData.substring(1, testData.length()-1);
+
+        assertThat(resultData).isEqualTo("1,2");
+    }
+
 }
