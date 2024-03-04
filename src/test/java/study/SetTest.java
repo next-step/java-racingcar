@@ -7,6 +7,8 @@ import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class SetTest {
 
@@ -24,5 +26,11 @@ class SetTest {
     @Test
     void checkSetSize() {
         assertThat(numbers).hasSize(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void containsNumber(int number) {
+        assertThat(numbers).contains(number);
     }
 }
