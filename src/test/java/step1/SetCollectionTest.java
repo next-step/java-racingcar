@@ -3,11 +3,14 @@ package step1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetCollectionTest {
     private Set<Integer> numbers;
@@ -29,4 +32,12 @@ public class SetCollectionTest {
         assertEquals(3, size);
     }
 
+    @DisplayName("contains 메서드는 element를 포함하고 있을 경우 true를 반환한다")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void containsElementsThenReturnTrue(int input) {
+        final boolean result = numbers.contains(input);
+
+        assertTrue(result);
+    }
 }
