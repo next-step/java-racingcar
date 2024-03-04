@@ -15,4 +15,16 @@ class StringTest {
         // then
         assertThat(split).containsExactly("1", "2");
     }
+    
+    @Test
+    void 문자열_자르기_테스트() {
+        // given
+        final String str = "(1,2)";
+        
+        // when
+        final String substring = str.substring(1, str.length() - 1);
+        
+        // then
+        assertThat(substring).isEqualTo("1,2");
+    }
 }
