@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTest {
 
@@ -42,6 +43,26 @@ public class StringTest {
                 assertThat(splitString).containsExactly("1");
             }
 
+        }
+    }
+
+    @DisplayName("String의 substring 메서드는")
+    @Nested
+    class Describe_substring {
+
+        @DisplayName("시작 인덱스와 종료 인덱스를 받을 경우")
+        @Nested
+        class Context_with_proper_index {
+
+            @DisplayName("시작 인덱스를 포함하여 (종료 위치 - 1) 인덱스 까지의 문자열을 반환한다.")
+            @Test
+            void it_returns_substring() {
+                final String input = "(1,2)";
+
+                final String result = input.substring(1, 4);
+
+                assertEquals("1,2", result);
+            }
         }
     }
 
