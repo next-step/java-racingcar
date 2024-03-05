@@ -5,7 +5,13 @@ public class StringAddCalculator {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-        return convertStringToInt(s);
+        final String[] strings = s.split(",");
+
+        int sum = 0;
+        for (final String value : strings) {
+            sum += convertStringToInt(value);
+        }
+        return sum;
     }
 
     private static int convertStringToInt(final String value) {
