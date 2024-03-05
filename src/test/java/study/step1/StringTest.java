@@ -3,13 +3,26 @@ package study.step1;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 public class StringTest {
 
-    @Test
-    void split() {
-        String str = "1,2";
-        String[] splitResult = str.split(",");
-        Assertions.assertThat(splitResult).containsExactly("1","2");
+    @ParameterizedTest
+    @MethodSource("splitParameter")
+    void split(String input, String[] result) {
+        String[] splitResult = input.split(",");
+        Assertions.assertThat(splitResult).containsExactly(result);
     }
+
+    public static Stream<Arguments> splitParameter() {
+        return Stream.of(
+                Arguments.of("1,2", new String[]{"1", "2"}),
+                Arguments.of("1", new String[]{"1"}));
+    }
+
+
 }
