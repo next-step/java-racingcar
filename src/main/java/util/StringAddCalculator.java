@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +24,9 @@ public class StringAddCalculator {
             return 0;
         }
 
-        throw new RuntimeException();
+        final String[] splitValue = split(value);
+
+        return mapToIntArrayAndSum(splitValue);
     }
 
     private static boolean isBlank(String value) {
@@ -43,6 +46,12 @@ public class StringAddCalculator {
     private static Matcher customDelimiterMatcher(String value) {
         return Pattern.compile(CUSTOM_DELIMITER_PATTERN_REGEXP)
                 .matcher(value);
+    }
+
+    private static int mapToIntArrayAndSum(String[] splitValue) {
+        return Arrays.stream(splitValue)
+                .mapToInt(StringAddCalculator::mapToInt)
+                .sum();
     }
 
     private static int mapToInt(String value) {
