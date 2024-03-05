@@ -24,5 +24,9 @@ public class StringTest {
                 Arguments.of("1", new String[]{"1"}));
     }
 
-
+    @Test
+    void subString() {
+        String input = "(1,2)";
+        Assertions.assertThat(input.substring(1,4)).isEqualTo("1,2");
+    }
 }
