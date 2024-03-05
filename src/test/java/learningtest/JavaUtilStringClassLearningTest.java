@@ -43,4 +43,22 @@ public class JavaUtilStringClassLearningTest {
 
     }
 
+
+    // 요구사항 2
+    // "(1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현한다.
+
+    @Nested
+    @DisplayName("String.substring() 메서드 학습 테스트")
+    class Substring {
+
+        @Test
+        @DisplayName("문자열 '(1,2)' 소괄호 제거")
+        void removeParentheses() {
+            String testString = "(1,2)";
+
+            String actual = testString.substring(1, testString.length()-1);
+            Assertions.assertThat(actual).isEqualTo("1,2");
+        }
+    }
+
 }
