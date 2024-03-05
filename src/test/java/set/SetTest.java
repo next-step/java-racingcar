@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
@@ -42,5 +43,10 @@ public class SetTest {
         assertThat(numbers.contains(argument)).isTrue();
     }
 
-
+    @ParameterizedTest(name = "집합의 요소가 담겨 있는지 안담겨 있는지 테스트한다.")
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "4:false"}, delimiter = ':')
+    void set_requirement3(String input, String expected) {
+        Integer number = Integer.valueOf(input);
+        assertThat(numbers.contains(number)).isEqualTo(Boolean.valueOf(expected));
+    }
 }
