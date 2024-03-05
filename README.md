@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현할 기능 목록
+* 랜덤 숫자에 따라 자동차 이동 여부를 결정하는 메서드
+* 자동차의 위치(Position)에 따라 이동을 출력하는 메서드
+* 자동차수와 횟수를 입력받고, 레이싱하는 메인 메서드
