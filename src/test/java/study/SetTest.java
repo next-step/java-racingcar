@@ -29,4 +29,10 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("요구사항2: set에 특정 값이 존재하는지 확인할 수 있다")
+    void set_contains(int value) {
+        assertThat(numbers.contains(value)).isTrue();
+    }
 }
