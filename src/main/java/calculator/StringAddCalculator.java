@@ -9,15 +9,17 @@ public class StringAddCalculator {
             return 0;
         }
 
+        final String[] tokens = split(line);
+        return calculateSum(tokens);
+    }
+
+    private static String[] split(final String line) {
         final Matcher m = Pattern.compile("//(.)\n(.*)").matcher(line);
         if (m.find()) {
             final String customDelimiter = m.group(1);
-            final String[] tokens = m.group(2).split(customDelimiter);
-            return calculateSum(tokens);
+            return m.group(2).split(customDelimiter);
         }
-
-        final String[] tokens = line.split(",|:");
-        return calculateSum(tokens);
+        return line.split(",|:");
     }
 
     private static int calculateSum(final String[] tokens) {
