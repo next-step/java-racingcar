@@ -5,7 +5,7 @@ public class StringAddCalculator {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-        final String[] strings = s.split(",");
+        final String[] strings = s.split(",|:");
 
         return calculateSum(strings);
     }
