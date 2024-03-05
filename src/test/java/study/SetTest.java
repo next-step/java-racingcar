@@ -27,7 +27,7 @@ public class SetTest {
     @DisplayName("Set의 size()를 활용해 Set의 크기를 확인하는 Test")
     void size() {
         int setSize = numbers.size();
-        assertThat(setSize).isEqualTo(3);
+        assertThat(numbers).hasSize(setSize);
     }
 
     @DisplayName("Set의 contains()를 이용해 값이 존재하는지 확인하는 Test")
