@@ -16,6 +16,13 @@ public class StringTest {
   }
 
   @Test
+  @DisplayName(",가 없는 문자열에서 ,를 기준으로 split시 문자열 정상 반환 테스트")
+  void split2() {
+    String[] result = "1".split (",");
+    assertThat(result).containsExactly("1");
+  }
+
+  @Test
   @DisplayName("substring 테스트")
   void substring() {
     String data = "(1,2)";
