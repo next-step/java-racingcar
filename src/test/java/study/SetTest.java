@@ -27,11 +27,8 @@ public class SetTest {
     @DisplayName("size() 메서드를 사용해 Set의 크기를 구한다.")
     @Test
     void getSizeOfSetBySize() {
-        // when
-        int sizeOfNumbers = numbers.size();
-
         // then
-        assertThat(sizeOfNumbers).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("@ParameterizedTest, @ValueSource를 사용해 Set의 요소를 검사한다.")
@@ -39,7 +36,7 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     void checkSetElementsWithParameters(int input) {
         // then
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @DisplayName("@ParameterizedTest, @CsvSource를 사용해 Set의 요소를 검사한다.")
