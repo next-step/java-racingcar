@@ -5,6 +5,14 @@ public class StringAddCalculator {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(s);
+        return convertStringToInt(s);
+    }
+
+    private static int convertStringToInt(final String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (final NumberFormatException e) {
+            throw new RuntimeException();
+        }
     }
 }
