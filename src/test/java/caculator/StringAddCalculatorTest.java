@@ -30,9 +30,9 @@ class StringAddCalculatorTest {
     class DelimiterTest {
         @Test
         @DisplayName("숫자들을 컴마(,) 구분자로 입력할 경우 모든 숫자들의 합을 반환한다.")
-        public void testCommaDelimiter(String input, int expected) {
-            int result = StringAddCalculator.splitAndSum(input);
-            assertThat(result).isEqualTo(expected);
+        public void testCommaDelimiter() {
+            int result = StringAddCalculator.splitAndSum("1,2");
+            assertThat(result).isEqualTo(3);
         }
 
         @Test
