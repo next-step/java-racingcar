@@ -7,7 +7,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 public class StringTest {
 
-	@DisplayName("split 메서드를 활용한 문자열 분리")
+	@DisplayName("요구사항 1 - split 메서드를 활용한 문자열 분리")
 	@Test
 	void split() {
 		// given
@@ -20,7 +20,7 @@ public class StringTest {
 		assertThat(split).containsExactly("1", "2");
 	}
 
-	@DisplayName("substring 메서드를 활용한 문자열 추출")
+	@DisplayName("요구사항 2 - substring 메서드를 활용한 문자열 추출")
 	@Test
 	void removeParentheses() {
 		// given
@@ -33,7 +33,7 @@ public class StringTest {
 		assertThat(actual).isEqualTo("1,2");
 	}
 
-	@DisplayName("charAt 메서드를 활용한 문자 추출 예외 처리")
+	@DisplayName("요구사항 3 - charAt 메서드를 활용한 문자 추출 예외 처리")
 	@Test
 	void getSpecificCharacters() {
 		// given
