@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * @author jeongheekim
@@ -33,5 +34,21 @@ public class StringTest {
         String str = "(1,2)";
         String[] split = str.replaceAll("[\\(\\)]","").split(",");
         assertThat(split).containsExactly("1","2");
+    }
+
+    @Test
+    @DisplayName("charAt메서드는 특정 위치의 문자를 리턴한다.")
+    void charAtMethodReturnCharSuccessTest() {
+        String testStr = "abc";
+        char c = testStr.charAt(0);
+        assertThat(c).isEqualTo('a');
+    }
+
+    @Test
+    @DisplayName("charAt메서드는 문자 길이 이상의 위치의 문자를 입력하면 exception을 던진다.")
+    void charAtMethodThrowExceptionTest() {
+        String testStr = "abc";
+        assertThatThrownBy(() ->  testStr.charAt(7)).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 7");
     }
 }
