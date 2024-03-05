@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTest {
 
@@ -62,7 +61,7 @@ public class StringTest {
 
                 final String result = input.substring(1, 4);
 
-                assertEquals("1,2", result);
+                assertThat(result).isEqualTo("1,2");
             }
         }
     }
@@ -83,7 +82,7 @@ public class StringTest {
 
                 final char result = targetString.charAt(input);
 
-                assertEquals('b', result);
+                assertThat(result).isEqualTo('b');
             }
         }
 
