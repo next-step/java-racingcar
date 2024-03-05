@@ -23,7 +23,9 @@ public class StringAddCalculator {
     private static int calculateSum(final String[] strings) {
         int sum = 0;
         for (final String value : strings) {
-            sum += convertStringToInt(value);
+            final int number = convertStringToInt(value);
+            validatePositive(number);
+            sum += number;
         }
         return sum;
     }
@@ -32,6 +34,12 @@ public class StringAddCalculator {
         try {
             return Integer.parseInt(value);
         } catch (final NumberFormatException e) {
+            throw new RuntimeException();
+        }
+    }
+
+    private static void validatePositive(final int value) {
+        if (value < 0) {
             throw new RuntimeException();
         }
     }
