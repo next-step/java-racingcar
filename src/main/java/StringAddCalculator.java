@@ -5,15 +5,10 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     public static int splitAndSum(String text){
 
-        if(checkEmptyOrNull(text))
-            return 0;
+        if(checkEmptyOrNull(text)) return 0;
 
         String[] tokens= stringSplit(text);
-
         checkNegativeNum(tokens);
-
-        if(checkSingleNum(tokens))
-            return Integer.parseInt(text);
 
         return sum(tokens);
     }
@@ -33,22 +28,13 @@ public class StringAddCalculator {
     }
 
     private static void checkNegativeNum(String[] text){
-        boolean flag = Arrays.stream(text).mapToInt(Integer::parseInt).anyMatch(n-> n<0);
+        boolean flag = Arrays.stream(text).mapToInt(Integer::parseInt).anyMatch(n -> n < 0);
         if(flag)
-            throw new RuntimeException();
-    }
-
-    private static boolean checkSingleNum(String[] text){
-        return text.length == 1;
+            throw new RuntimeException("Negative Number is not allowed");
     }
 
     private static int sum(String[] tokens){
-        int sum = 0;
-
-        for(String token : tokens){
-            sum += Integer.parseInt(token);
-        }
-        return sum;
+        return Arrays.stream(tokens).mapToInt(Integer::parseInt).sum();
     }
 
 }
