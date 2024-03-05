@@ -2,6 +2,7 @@ package study.step1;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -28,5 +29,20 @@ public class StringTest {
     void subString() {
         String input = "(1,2)";
         Assertions.assertThat(input.substring(1,4)).isEqualTo("1,2");
+    }
+
+    @DisplayName("charAt 성공테스트")
+    @Test
+    void charAt() {
+        String input = "abc";
+        Assertions.assertThat(input.charAt(0)).isEqualTo('a');
+    }
+
+    @DisplayName("초과된 인덱스범위를 요청할 경우 IndexOutOfBoundsException 예외를 던진다.")
+    @Test
+    void charAtWithExceededIndexThenThrowIndexOutOfBoundsException() {
+        String input = "abc";
+        Assertions.assertThatThrownBy(() -> input.charAt(4))
+                .isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
