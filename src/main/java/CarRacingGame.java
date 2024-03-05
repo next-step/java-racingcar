@@ -4,6 +4,9 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class CarRacingGame {
+    private static final int RANDOM_RANGE = 10;
+    private static final int MOVE_THRESHOLD = 4;
+
     public static void carRacing(/*int carCount, int trialCount*/) {
 
         Scanner scanner = new Scanner(System.in);
@@ -28,7 +31,7 @@ public class CarRacingGame {
 
     private static boolean decideToMove(){
         Random random = new Random();
-        return (random.nextInt(10)>= 4);
+        return (random.nextInt(RANDOM_RANGE) >= MOVE_THRESHOLD);
     }
 
     private static void printMovement(int[] carPositions){
