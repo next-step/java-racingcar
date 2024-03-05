@@ -20,4 +20,11 @@ public class StringTest {
         String[] result = "1".split(",");
         assertThat(result).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("요구사항2: () 제거하고 1, 2 반환")
+    void substring() {
+        String result = "(1,2)".substring(1,4);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
