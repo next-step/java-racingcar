@@ -3,6 +3,10 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
+import util.StringAddCalculator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,6 +48,25 @@ public class StringAddCalculatorTest {
             matcher.find();
 
             assertThat(matcher.group(1)).isEqualTo(";");
+        }
+    }
+
+    @DisplayName("문자열 덧셈 계산기는")
+    @Nested
+    class Describe_StringAddCalculator {
+
+        @DisplayName("빈 문자열이나 null 값을 입력할 경우")
+        @Nested
+        class Context_with_blank_string {
+
+            @DisplayName("0을 반환한다")
+            @ParameterizedTest
+            @NullAndEmptySource
+            void it_returns_zero(String input) {
+                final int result = StringAddCalculator.splitAndSum(input);
+
+                assertThat(result).isEqualTo(0);
+            }
         }
 
     }
