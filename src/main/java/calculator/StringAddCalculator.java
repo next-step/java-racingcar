@@ -7,6 +7,10 @@ public class StringAddCalculator {
         }
         final String[] strings = s.split(",");
 
+        return calculateSum(strings);
+    }
+
+    private static int calculateSum(final String[] strings) {
         int sum = 0;
         for (final String value : strings) {
             sum += convertStringToInt(value);
