@@ -21,4 +21,27 @@ public class StringTest {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("charAt 메소드 out of index exception 발생하는지 테스트")
+    void testCharAtFail() {
+        // given
+        String stringValue = "abc";
+
+        // when
+        Throwable thrown = catchThrowable(() -> stringValue.charAt(stringValue.length()));
+
+        // then
+        assertThat(thrown)
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining(String.valueOf(stringValue.length()));
+    }
+
+    @Test
+    @DisplayName("charAt 메소드 정상 작동 테스트")
+    void testCharAtSuccess() {
+        String stringValue = "abc";
+        char result = stringValue.charAt(stringValue.length() - 1);
+        assertThat(result).isEqualTo('c');
+    }
 }
