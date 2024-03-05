@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import util.StringAddCalculator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
@@ -69,5 +70,69 @@ public class StringAddCalculatorTest {
             }
         }
 
+        @DisplayName("문자열 계산기 조건에 부합하는 문자열인 경우")
+        @Nested
+        class Context_with_calculator_string_value_rules {
+
+            @DisplayName("단일 숫자라면, 해당 숫자를 반환한다")
+            @Test
+            void it_returns_when_single_number_then_value_as_int() {
+                final int result = StringAddCalculator.splitAndSum("1");
+
+                assertThat(result).isEqualTo(1);
+            }
+
+            @DisplayName("쉼표 구분자라면, 구분자로 분리된 숫자들의 합을 반환한다")
+            @Test
+            void it_returns_when_string_with_comma_then_split_int_sum() {
+                final int result = StringAddCalculator.splitAndSum("1,2");
+
+                assertThat(result).isEqualTo(3);
+            }
+
+            @DisplayName("쉼표와 콜론이 섞인 구분자라면, 구분자들로 분리된 숫자들의 합을 반환한다")
+            @Test
+            void it_returns_when_string_with_comma_and_colons_then_split_int_sum() {
+                final int result = StringAddCalculator.splitAndSum("1,2:3");
+
+                assertThat(result).isEqualTo(6);
+            }
+
+            @DisplayName("커스텀 구분자 ;를 조건에 맞게 입력한 경우, 구분자들로 분리된 숫자들의 합을 반환한다")
+            @Test
+            void it_returns_when_string_with_custom_delimiter_then_split_int_sum() {
+                final int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+
+                assertThat(result).isEqualTo(6);
+            }
+        }
+
+        @DisplayName("구분된 문자열이 숫자 형식이 아닌 경우")
+        @Nested
+        class Context_with_string_split_value {
+
+            @DisplayName("NumberFormatException을 반환한다")
+            @ParameterizedTest
+            @ValueSource(strings = {"+", "1,2:가", "//;\n", "//;\n1;가"})
+            void it_throws_number_format_exception(String value) {
+                assertThatThrownBy(() -> StringAddCalculator.splitAndSum(value))
+                        .isInstanceOf(NumberFormatException.class);
+            }
+        }
+
+        @DisplayName("구분된 문자열이 음수를 포함하고 있는 경우")
+        @Nested
+        class Context_with_negative_value {
+
+            @DisplayName("IllegalArgumentsException을 반환한다")
+            @ParameterizedTest
+            @ValueSource(strings = {"-1", "1,2:-1", "//;\n-1", "//;\n1;-1"})
+            void it_throws_illegalArgumentException(String value) {
+                assertThatThrownBy(() -> StringAddCalculator.splitAndSum(value))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("문자열 덧셈 계산기는 음수를 지원하지 않습니다.");
+            }
+        }
     }
+
 }
