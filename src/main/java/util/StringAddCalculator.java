@@ -1,9 +1,14 @@
 package util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * 문자열 덧셈 계산기
  */
 public class StringAddCalculator {
+    private static final String DEFAULT_DELIMITER_REGEXP = ",|:";
+    private static final String CUSTOM_DELIMITER_PATTERN_REGEXP = "//(.)\n(.*)";
 
     /**
      * 문자열을 구분자를 기준으로 분리한 각 숫자의 합을 반환한다.
@@ -24,4 +29,17 @@ public class StringAddCalculator {
                 || value.isEmpty();
     }
 
+    private static String[] split(String value) {
+        final Matcher matcher = customDelimiterMatcher(value);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(customDelimiter);
+        }
+        return value.split(DEFAULT_DELIMITER_REGEXP);
+    }
+
+    private static Matcher customDelimiterMatcher(String value) {
+        return Pattern.compile(CUSTOM_DELIMITER_PATTERN_REGEXP)
+                .matcher(value);
+    }
 }
