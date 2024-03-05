@@ -42,13 +42,4 @@ public class StringTest {
             // todo : 입력 받은 index는 무엇이며 "abc"의 인덱스는 몇이다 라고 알려주고 싶음
         }).isInstanceOf(IndexOutOfBoundsException.class);
     }
-
-
-    // Set Collection에 대한 학습 테스트
-
-    // 요구사항 1
-
-    // 요구사항 2
-
-    // 요구사항 3
 }
