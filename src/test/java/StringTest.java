@@ -27,4 +27,11 @@ public class StringTest {
 
     }
 
+    @Test
+    @DisplayName("괄호가 있는 문자열은 괄호를 제거하여 해당 원소를 포함한다.")
+    void bracketStringSplitElementContainsTest() {
+        String str = "(1,2)";
+        String[] split = str.replaceAll("[\\(\\)]","").split(",");
+        assertThat(split).containsExactly("1","2");
+    }
 }
