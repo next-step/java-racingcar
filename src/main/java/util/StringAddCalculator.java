@@ -1,47 +1,57 @@
 package util;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 public class StringAddCalculator {
 
     private static final String DEFAULT_DELIMITER = ",|:";
-    private static final String PATTERN_REGEXP = "//(.)\n(.*)";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
         if(text == null || text.isEmpty()) {
             return 0;
         }
 
+        int[] numbers = toIntArray(text);
+        return sum(numbers);
+    }
+
+    private static int sum(int[] numbers) {
+        return IntStream.of(numbers).sum();
+    }
+
+    private static int[] toIntArray(String text) {
         String[] tokens = splitByCustomOrDefaultDelimiter(text);
-        return sum(tokens);
+        return Arrays.stream(tokens)
+                .mapToInt(StringAddCalculator::toInt)
+                .toArray();
     }
 
     private static String[] splitByCustomOrDefaultDelimiter(String text) {
-        Matcher matcher = Pattern.compile(PATTERN_REGEXP).matcher(text);
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(text);
         if(matcher.find()) {
             String customDelimiter = matcher.group(1);
-            return matcher.group(2).split(customDelimiter);
+            String source = matcher.group(2);
+            return source.split(customDelimiter);
         }
 
         return text.split(DEFAULT_DELIMITER);
     }
 
-    private static int sum(String[] tokens) {
-        int result = 0;
-        for(String token : tokens){
-            result += convertToInt(token);
-        }
+    private static int toInt(String value) {
+        int number = Integer.parseInt(value);
 
-        return result;
+        assertPositive(number);
+
+        return number;
     }
 
-    private static int convertToInt(String value) {
-        int result = Integer.parseInt(value);
-        if(result < 0) {
+    private static void assertPositive(int value) {
+        if(value < 0) {
             throw new IllegalArgumentException();
         }
-
-        return result;
     }
 }
