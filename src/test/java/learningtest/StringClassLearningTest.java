@@ -82,7 +82,7 @@ public class StringClassLearningTest {
             String testString = "a,b,c";
             int index = testString.length();
 
-            assertStringIndexOutOfBoundsException(testString, index);
+            assertThatStringIndexOutOfBoundsException(testString, index);
         }
 
         @Test
@@ -91,11 +91,11 @@ public class StringClassLearningTest {
             String testString = "a,b,c";
             int index = -1;
 
-            assertStringIndexOutOfBoundsException(testString, index);
+            assertThatStringIndexOutOfBoundsException(testString, index);
         }
     }
 
-    private void assertStringIndexOutOfBoundsException(String testString, int index) {
+    private void assertThatStringIndexOutOfBoundsException(String testString, int index) {
         assertThatThrownBy(() -> {
             testString.charAt(index);
         })
