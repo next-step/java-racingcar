@@ -1,47 +1,45 @@
 package util;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
 
-    @Test
-    void nullOrEmpty() {
-        int result = StringAddCalculator.splitAndSum(null);
+    @ParameterizedTest
+    @NullSource
+    @EmptySource
+    void nullOrEmpty(String source) {
+        int result = StringAddCalculator.splitAndSum(source);
         assertThat(result).isEqualTo(0);
+    }
 
-        result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+    private static Stream<Arguments> sourceAndExpectedResultProvider() {
+        return Stream.of(
+                Arguments.arguments("1", 1),
+                Arguments.arguments("1,2", 3),
+                Arguments.arguments("1,2:3", 6),
+                Arguments.arguments("//;\n1;2;3", 6)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("sourceAndExpectedResultProvider")
+    void splitAndSum(String source, int expected) {
+        int result = StringAddCalculator.splitAndSum(source);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
-    void splitAndSum() {
-        int result = StringAddCalculator.splitAndSum("1");
-        assertThat(result).isEqualTo(1);
-    }
-
-    @Test
-    void splitAndSumByCommaDelimiter() {
-        int result = StringAddCalculator.splitAndSum("1,2");
-        assertThat(result).isEqualTo(3);
-    }
-
-    @Test
-    void splitAndSumByCommaOrColonDelimiter() {
-        int result = StringAddCalculator.splitAndSum("1,2:3");
-        assertThat(result).isEqualTo(6);
-    }
-
-    @Test
-    void splitAndSumByCustomDelimiter() {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
-        assertThat(result).isEqualTo(6);
-    }
-
-    @Test
-    void splitAndSumThrowExceptionWhenNegativeValue() {
+    void negativeValueThrowIllegalArgumentException() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
