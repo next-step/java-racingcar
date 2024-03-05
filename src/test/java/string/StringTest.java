@@ -21,7 +21,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("문자열에서 존재하지 index 에 접근하면 예외가 발생한다.")
+    @DisplayName("문자열에서 존재하지 않는 index 에 접근하면 예외가 발생한다.")
     void step1_requirement3() {
         // Given
         String target = "abc";
@@ -30,6 +30,4 @@ public class StringTest {
         assertThatThrownBy(() -> target.charAt(target.length()))
                 .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
-
-
 }
