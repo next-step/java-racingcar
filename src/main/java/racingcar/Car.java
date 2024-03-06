@@ -18,4 +18,8 @@ public class Car {
     public int drivingDistance() {
         return drivingDistance;
     }
+
+    public String getResult() {
+        return "-".repeat(drivingDistance);
+    }
 }
