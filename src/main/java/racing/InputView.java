@@ -9,14 +9,8 @@ public class InputView {
 
         System.out.println("자동차 대수는 몇 대 인가요?");
         while (true) {
-            try {
-                int result = scanner.nextInt();
-                scanner.nextLine();     // 버퍼 제거
-                return result;
-            } catch (InputMismatchException e) {
-                System.out.println("숫자를 입력해주세요");
-                scanner.nextLine();     // 버퍼 제거
-            }
+            Integer result = getInputtedNumber(scanner);
+            if (result != null) return result;
         }
     }
 
@@ -24,14 +18,20 @@ public class InputView {
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         while (true) {
-            try {
-                int result = scanner.nextInt();
-                scanner.nextLine();     // 버퍼 제거
-                return result;
-            } catch (InputMismatchException e) {
-                System.out.println("숫자를 입력해주세요");
-                scanner.nextLine();     // 버퍼 제거
-            }
+            Integer result = getInputtedNumber(scanner);
+            if (result != null) return result;
         }
+    }
+
+    private static Integer getInputtedNumber(Scanner scanner) {
+        try {
+            int result = scanner.nextInt();
+            scanner.nextLine();     // 버퍼 제거
+            return result;
+        } catch (InputMismatchException e) {
+            System.out.println("숫자를 입력해주세요");
+            scanner.nextLine();     // 버퍼 제거
+        }
+        return null;
     }
 }
