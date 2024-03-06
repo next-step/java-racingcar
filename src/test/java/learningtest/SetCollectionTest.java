@@ -34,14 +34,6 @@ public class SetCollectionTest {
         assertThat(numbers).hasSize(3);
     }
 
-    /*
-    @Test
-    void contains() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
-    }
-    */
     @Nested
     @DisplayName("contains() 테스트")
     class ContainsTest {
