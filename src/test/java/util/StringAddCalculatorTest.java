@@ -3,9 +3,8 @@ package util;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.stream.Stream;
 
@@ -15,8 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class StringAddCalculatorTest {
 
     @ParameterizedTest
-    @NullSource
-    @EmptySource
+    @NullAndEmptySource
     void nullOrEmpty(String source) {
         int result = StringAddCalculator.splitAndSum(source);
         assertThat(result).isEqualTo(0);
