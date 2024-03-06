@@ -8,14 +8,17 @@ import org.junit.jupiter.api.Test;
 
 public class StringTest {
 
+  @DisplayName("split으로 문자열 분리")
   @Test
-  void split(){
+  void split() {
     String[] result = "1,2".split(",");
     assertThat(result).contains("1");
+    assertThat(result).containsExactly("1","2");
   }
 
+  @DisplayName("substring으로 문자열 분리")
   @Test
-  void substring(){
+  void substring() {
     String data = "(1,2)";
     String result = data.substring(1, data.length()-1);
     assertThat(result).isEqualTo("1,2");
@@ -26,14 +29,14 @@ public class StringTest {
 
   @DisplayName("charAt() test")
   @Test
-  void charAt(){
+  void charAt() {
     String data = "abc";
     assertThat(data.charAt(1)).isEqualTo('b');
   }
 
   @DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException 발생 test")
   @Test
-  void charAtWithException(){
+  void charAtWithException() {
     String data = "abc";
     assertThatThrownBy(() -> data.charAt(4)).isInstanceOf(StringIndexOutOfBoundsException.class);
   }
