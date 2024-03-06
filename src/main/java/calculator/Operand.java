@@ -5,6 +5,10 @@ public class Operand {
     private final int value;
 
     private Operand(final int value) {
+        if (value < 0) {
+            throw new RuntimeException("피연산자는 반드시 0 이상이어야 합니다.");
+        }
+
         this.value = value;
     }
 

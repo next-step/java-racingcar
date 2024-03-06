@@ -86,4 +86,26 @@ class StringAddCalculatorTest {
                 Arguments.of("//;\na;b;c")
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("expressionWithNegativeOperands")
+    @DisplayName("splitAndSum 메서드에 음수 피연산자가 들어간 수식을 넣으면 RuntimeException을 던진다.")
+    void splitAndSum_NegativeOperands_RuntimeException(final String expression) {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(expression))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("피연산자는 반드시 0 이상이어야 합니다.");
+    }
+
+    private static Stream<Arguments> expressionWithNegativeOperands() {
+        return Stream.of(
+                Arguments.of("-1"),
+                Arguments.of("-1,2"),
+                Arguments.of("2,-1"),
+                Arguments.of("1:-2,3"),
+                Arguments.of("//;\n-1"),
+                Arguments.of("//;\n-1;2"),
+                Arguments.of("//;\n2;-1"),
+                Arguments.of("//;\n1;-2;3")
+        );
+    }
 }
