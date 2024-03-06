@@ -32,7 +32,7 @@ public class StringTest {
         String given = "abc";
 
         assertThatThrownBy(() -> given.charAt(-1))
-                .isInstanceOfAny(StringIndexOutOfBoundsException.class);
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 
 }
