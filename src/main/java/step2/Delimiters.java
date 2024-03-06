@@ -11,9 +11,10 @@ public class Delimiters {
   }
 
   public void add(String delimiter) {
-    if (delimiter != null) {
-      this.delimiters.add(delimiter);
+    if ("".equals(delimiter)) {
+      return;
     }
+    this.delimiters.add(delimiter);
   }
 
   public String getCombinedDelimiter() {
