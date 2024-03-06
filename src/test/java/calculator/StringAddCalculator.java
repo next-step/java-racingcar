@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final String CUSTOM_PATTERN = "//(.)\n(.*)";
-    private static final String EXCEPTION_MSG = "음수는 입력이 불가합니다.";
+    private static final String EXCEPTION_MSG = "음수는 입력이 불가합니다!!";
 
     public static int splitAndSum(String inData) {
         // 1. 빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.(예 : “” => 0, null => 0)
