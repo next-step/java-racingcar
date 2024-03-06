@@ -1,13 +1,15 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public final class StringAddCalculator {
 
-    private static final String SPECIFIED_DELIMITER_REGEX = ",|:";
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+    private static final String STANDARD_DELIMITER = ",|:";
 
     private StringAddCalculator() {
     }
@@ -17,24 +19,32 @@ public final class StringAddCalculator {
             return 0;
         }
 
-        final String[] operands = getOperands(text);
+        final String[] tokens = split(text);
 
-        return Arrays.stream(operands)
-                .mapToInt(Integer::parseInt)
-                .sum();
+        final List<Operand> operands = Arrays.stream(tokens)
+                .map(Operand::from)
+                .collect(Collectors.toList());
+
+        return sum(operands);
     }
 
-    private static String[] getOperands(final String text) {
+    private static String[] split(String expression) {
         final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEX);
-        final Matcher matcher = pattern.matcher(text);
+        final Matcher matcher = pattern.matcher(expression);
 
-        if (!matcher.find()) {
-            return text.split(SPECIFIED_DELIMITER_REGEX);
+        if (matcher.find()) {
+            final String customDelimiter = matcher.group(1);
+            expression = matcher.group(2);
+
+            return expression.split(customDelimiter);
         }
 
-        final String customDelimiter = matcher.group(1);
-        final String expression = matcher.group(2);
+        return expression.split(STANDARD_DELIMITER);
+    }
 
-        return expression.split(customDelimiter);
+    private static int sum(final List<Operand> operands) {
+        return operands.stream()
+                .mapToInt(Operand::value)
+                .sum();
     }
 }

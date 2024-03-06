@@ -42,7 +42,7 @@ class StringAddCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1,2@3", "5:10@15", "1,2:3@6", "1:2,3@6", "1:2:3@6", "1,2,3@6"}, delimiter = '@')
     @DisplayName("splitAndSum 메서드에 지정된 구분자(쉼표, 콜론)를 포함한 수식을 넣으면 피연산자들의 합을 반환한다.")
-    void splitAndSum_SpecifiedDelimiter_SumOfOperands(final String expression, final int expectedResult) {
+    void splitAndSum_StandardDelimiter_SumOfOperands(final String expression, final int expectedResult) {
         final int actualResult = StringAddCalculator.splitAndSum(expression);
 
         assertThat(actualResult).isEqualTo(expectedResult);
@@ -62,6 +62,28 @@ class StringAddCalculatorTest {
                 Arguments.of("//;\n1;2;3", 6),
                 Arguments.of("//#\n3#10#5", 18),
                 Arguments.of("//a\n11a0a3", 14)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("expressionWithNonNumericOperands")
+    @DisplayName("splitAndSum 메서드에 숫자가 아닌 피연산자가 들어간 수식을 넣으면 RuntimeException을 던진다.")
+    void splitAndSum_NonNumericOperands_RuntimeException(final String expression) {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(expression))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("수식을 이루는 피연산자는 반드시 숫자이어야 합니다.");
+    }
+
+    private static Stream<Arguments> expressionWithNonNumericOperands() {
+        return Stream.of(
+                Arguments.of("a"),
+                Arguments.of("1,a"),
+                Arguments.of("a,1"),
+                Arguments.of("a:b,c"),
+                Arguments.of("//;\na"),
+                Arguments.of("//;\n1;a"),
+                Arguments.of("//;\na;1"),
+                Arguments.of("//;\na;b;c")
         );
     }
 }
