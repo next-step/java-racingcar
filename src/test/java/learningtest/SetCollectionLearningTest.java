@@ -1,14 +1,15 @@
 package learningtest;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Set Collection 학습 테스트")
 public class SetCollectionLearningTest {
@@ -41,5 +42,37 @@ public class SetCollectionLearningTest {
         }
     }
 
+    @Nested
+    @DisplayName("contains() 메서드 학습 테스트")
+    class Contains {
 
+        @Test
+        @DisplayName("Set 원소 확인 - Set contains() 메서드 활용")
+        void assertSetElementThroughSetContains() {
+            assertThat(numbers.contains(1)).isTrue();
+            assertThat(numbers.contains(2)).isTrue();
+            assertThat(numbers.contains(3)).isTrue();
+        }
+
+        // 하나의 검증 대상에 대해 반복적인 패턴으로 여러 값들을 넣어서 검증해야 한다면
+        // @ParameterizedTest 를 통해 테스트 코드 가독성을 높일 수 있다.
+        @Nested
+        @DisplayName("Set 원소 확인 - @ParameterizedTest 활용")
+        class ParameterizedTestCase {
+
+            @ParameterizedTest
+            @ValueSource(ints = {1, 2, 3})
+            void assertSetElementThroughParameterizedTest(Integer number) {
+                assertThat(numbers.contains(number)).isTrue();
+            }
+
+        }
+
+        @Test
+        @DisplayName("Set 원소 확인 - AssertJ containsExactlyInAnyOrder() 메서드 활용")
+        void assertSetElementThroughAssertJContains() {
+            assertThat(numbers).containsExactlyInAnyOrder(1, 2, 3);
+        }
+
+    }
 }
