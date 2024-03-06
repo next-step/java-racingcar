@@ -34,9 +34,6 @@ public class StringAddCalculator {
         String delimiter = extractDelimiter(expression);
         String cleanExpression = removeDelimiter(expression);
 
-        System.out.println("@@" + delimiter);
-        System.out.println("@@" + cleanExpression);
-
         return cleanExpression.split(delimiter);
     }
 
@@ -48,7 +45,6 @@ public class StringAddCalculator {
     }
 
     private static String extractDelimiter(String expression) {
-        System.out.println("@@@" + expression.indexOf(SUFFIX_CUSTOM_DELIMITER));
         if (hasCustomDelimiter(expression)) {
             return expression.substring(
                 PREFIX_CUSTOM_DELIMITER.length(),
