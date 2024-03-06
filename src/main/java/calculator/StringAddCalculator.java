@@ -10,10 +10,11 @@ public class StringAddCalculator {
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER_GROUP);
     private static final int CUSTOM_DELIMITER_GROUP_INDEX = 1;
     private static final int TOKENS_GROUP_INDEX = 2;
+    private static final int DEFAULT_SUM = 0;
 
     public static int splitAndSum(final String line) {
         if (line == null || line.isBlank()) {
-            return 0;
+            return DEFAULT_SUM;
         }
 
         final String[] tokens = split(line);
@@ -30,7 +31,7 @@ public class StringAddCalculator {
     }
 
     private static int calculateSum(final String[] tokens) {
-        int sum = 0;
+        int sum = DEFAULT_SUM;
         for (final String value : tokens) {
             final int number = convertStringToInt(value);
             validatePositive(number);
@@ -48,7 +49,7 @@ public class StringAddCalculator {
     }
 
     private static void validatePositive(final int value) {
-        if (value < 0) {
+        if (value < DEFAULT_SUM) {
             throw new RuntimeException("음수를 입력할 수 없습니다.");
         }
     }
