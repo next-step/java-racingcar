@@ -43,13 +43,13 @@ public class StringAddCalculator {
         try {
             return Integer.parseInt(value);
         } catch (final NumberFormatException e) {
-            throw new RuntimeException();
+            throw new RuntimeException("숫자를 입력하세요.");
         }
     }
 
     private static void validatePositive(final int value) {
         if (value < 0) {
-            throw new RuntimeException();
+            throw new RuntimeException("음수를 입력할 수 없습니다.");
         }
     }
 }
