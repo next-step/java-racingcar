@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static int splitAndSum(final String line) {
-        if (line == null || line.isEmpty()) {
+        if (line == null || line.isBlank()) {
             return 0;
         }
 
