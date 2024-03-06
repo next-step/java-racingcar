@@ -10,4 +10,16 @@ public class Position {
     public void add(int addend) {
         position += addend;
     }
+
+    public boolean hasPosition(Position position) {
+        return this.position == position.position;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Position) {
+            return position == ((Position) obj).position;
+        }
+        return false;
+    }
 }

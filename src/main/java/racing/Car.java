@@ -15,9 +15,13 @@ public class Car {
         position.add(1);
     }
 
-    public List<Position> carPositions(List<Car> cars) {
+    public static List<Position> carPositions(List<Car> cars) {
         return cars.stream()
                 .map(car -> car.position)
                 .collect(Collectors.toList());
+    }
+
+    public boolean hasPosition(int value) {
+        return position.hasPosition(new Position(value));
     }
 }
