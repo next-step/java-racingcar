@@ -18,31 +18,16 @@ public class StringAddCalculator {
       return 0;
     }
 
-    // deriveAdditionalDelimiter 안에서 expression 까지 잘라서 주는건 좀 위험?
     String additionalDelimiter = deriveAdditionalDelimiter(expression);
     this.delimiters.add(additionalDelimiter);
-    // 없앨 수 없을까...
-    if (additionalDelimiter != null) {
-      expression = expression.substring(4);
-    }
+    expression = trimAdditionalDelimiter(expression, additionalDelimiter);
 
     return this.delimit(expression).stream().reduce(0, Integer::sum);
   }
 
   private List<Integer> delimit(String expression) {
-    List<String> tokens = List.of(expression);
-
-    for (String delimiter : this.delimiters) {
-      List<String> temp = new LinkedList<>();
-
-      for (String token : tokens) {
-        temp.addAll(List.of(token.split(delimiter)));
-      }
-
-      tokens = temp;
-    }
-
-    return tokens.stream().map(Integer::parseUnsignedInt).collect(Collectors.toList());
+    String[] tokenized = expression.split(this.delimiters.getCombinedDelimiter());
+    return Arrays.stream(tokenized).map(Integer::parseUnsignedInt).collect(Collectors.toList());
   }
 
   private String deriveAdditionalDelimiter(String expression) {
@@ -55,5 +40,12 @@ public class StringAddCalculator {
     }
 
     return null;
+  }
+
+  private String trimAdditionalDelimiter(String origin, String additionalDelimiter) {
+    if (additionalDelimiter != null) {
+      return origin.substring(4);
+    }
+    return origin;
   }
 }

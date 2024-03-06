@@ -3,10 +3,8 @@ package step2;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class Delimiters implements Iterable<String> {
+public class Delimiters {
   private final Collection<String> delimiters;
-
-  private int cursor;
 
   public Delimiters(Collection<String> delimiters) {
     this.delimiters = delimiters;
@@ -18,8 +16,9 @@ public class Delimiters implements Iterable<String> {
     }
   }
 
-  @Override
-  public Iterator<String> iterator() {
-    return this.delimiters.iterator();
+  public String getCombinedDelimiter() {
+    StringBuilder sb = new StringBuilder();
+    this.delimiters.forEach(delimiter -> sb.append(delimiter.concat("|")));
+    return sb.substring(0, sb.length() - 1);
   }
 }
