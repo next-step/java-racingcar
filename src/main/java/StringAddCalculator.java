@@ -20,11 +20,12 @@ public class StringAddCalculator {
     }
 
     private static String customSeparator(String input) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
+        Matcher matcher = Pattern.compile("//(?<key>;)\n.*"
+        ).matcher(input);
         if (!matcher.find()) {
             throw new RuntimeException("정규식 패턴에 일치하는 구분자가 없습니다.");
         }
-        return matcher.group(1);
+        return matcher.group("key");
     }
 
     private static int sum(String[] inputs) {
