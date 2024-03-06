@@ -27,7 +27,7 @@ public class SetCollectionLearningTest {
 
     @Nested
     @DisplayName("size() 메서드 학습 테스트")
-    class Size {
+    class SizeTest {
 
         @Test
         @DisplayName("Set 크기 확인 - Set size() 메서드 활용")
@@ -44,7 +44,7 @@ public class SetCollectionLearningTest {
 
     @Nested
     @DisplayName("contains() 메서드 학습 테스트")
-    class Contains {
+    class ContainsTest {
 
         @Test
         @DisplayName("Set 원소 확인 - Set contains() 메서드 활용")
