@@ -22,4 +22,12 @@ public class Position {
         }
         return false;
     }
+
+    public String dashOfPosition() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
+    }
 }

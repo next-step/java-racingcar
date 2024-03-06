@@ -31,4 +31,11 @@ class PositionTest {
     void testEquals(int input) {
         assertThat(new Position(input)).isEqualTo(new Position(input));
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:-","2:--","3:---","4:----","5:-----"}, delimiter = ':')
+    void dashOfPosition(int input, String dash) {
+        Position position = new Position(input);
+        assertThat(position.dashOfPosition()).isEqualTo(dash);
+    }
 }
