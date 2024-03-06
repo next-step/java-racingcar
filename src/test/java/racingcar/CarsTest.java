@@ -24,4 +24,15 @@ public class CarsTest {
 
         assertThat(drivingDistances).containsExactly(0, 0, 0);
     }
+
+    @Test
+    void getResult() throws Exception {
+        Cars cars = new Cars(() -> true, 3);
+
+        cars.drive();
+        assertThat(cars.getResult()).isEqualTo("-\n-\n-");
+
+        cars.drive();
+        assertThat(cars.getResult()).isEqualTo("--\n--\n--");
+    }
 }

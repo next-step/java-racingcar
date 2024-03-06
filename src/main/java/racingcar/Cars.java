@@ -28,4 +28,10 @@ public class Cars {
             .map(Car::drivingDistance)
             .collect(Collectors.toList());
     }
+
+    public String getResult() {
+        return cars.stream()
+            .map(Car::getResult)
+            .collect(Collectors.joining("\n"));
+    }
 }
