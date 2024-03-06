@@ -14,19 +14,31 @@ public class StringAddCalculator {
   }
 
   public Integer calculate(String expression) {
-    if (expression == null || expression.trim().equals("")) {
+    if (expression == null || expression.trim().isEmpty()) {
       return 0;
     }
 
     Map<String, String> derivedMap = deriveAdditionalDelimiter(expression);
     this.delimiters.add(derivedMap.get("delimiter"));
 
-    return this.delimit(derivedMap.get("expression")).stream().reduce(0, Integer::sum);
+    /* #1
+    return this.delimit(derivedMap.get("expression")).stream()
+            .reduce(0, (a, b) -> b.sumInt(a), Integer::sum);
+
+    /* #2
+    return this.delimit(derivedMap.get("expression")).stream()
+            .reduce(new PositiveInteger(0), PositiveInteger::sum).getValue();
+
+     */
+
+    // #3
+    return this.delimit(derivedMap.get("expression")).stream()
+            .reduce(new PositiveInteger(0), PositiveInteger::add).getValue();
   }
 
-  private List<Integer> delimit(String expression) {
+  private List<PositiveInteger> delimit(String expression) {
     String[] tokenized = expression.split(this.delimiters.getCombinedDelimiter());
-    return Arrays.stream(tokenized).map(Integer::parseUnsignedInt).collect(Collectors.toList());
+    return Arrays.stream(tokenized).map(PositiveInteger::new).collect(Collectors.toList());
   }
 
   private Map<String, String> deriveAdditionalDelimiter(String expression) {
@@ -42,4 +54,6 @@ public class StringAddCalculator {
     }
     return origin;
   }
+
+
 }

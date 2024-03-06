@@ -25,7 +25,7 @@ public class StringAddCalculatorTest {
   }
 
   @Test
-  void 숫자_두_개_커마() {
+  void 숫자_두_개_컴마() {
     assertThat(stringAddCalculator.calculate("1,2")).isEqualTo(3);
   }
 
@@ -41,16 +41,16 @@ public class StringAddCalculatorTest {
 
   @ParameterizedTest
   @ValueSource(strings = { "-1:2", "3,-4", "-1,2:-3" })
-  void 음수_포함된_경우_RuntimeException(String input) {
+  void 음수_포함된_경우_IllegalArgumentException(String input) {
     assertThatThrownBy(() -> stringAddCalculator.calculate(input))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(IllegalArgumentException.class);
   }
 
   @ParameterizedTest()
   @ValueSource(strings = {"abc:2", "!@#:3", "4,$!@dd:5"})
   void 숫자_이외의_값_포함된_경우_RuntimeException(String input) {
     assertThatThrownBy(() -> stringAddCalculator.calculate(input))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(IllegalArgumentException.class);
   }
   
   @Test
