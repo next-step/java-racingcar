@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetCollectionTest {
 
@@ -28,14 +28,14 @@ public class SetCollectionTest {
     @Test
     @DisplayName("Set Collection의 크기 확인")
     void testSetSize() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     @DisplayName("Set에 1,2,3이 존재하는 지 테스트")
     void testSetContainsNumber(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
