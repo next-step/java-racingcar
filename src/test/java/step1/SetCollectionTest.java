@@ -10,8 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class SetCollectionTest {
     private Set<Integer> numbers;
@@ -30,7 +29,7 @@ public class SetCollectionTest {
     void sizeOfSet() {
         final int size = numbers.size();
 
-        assertEquals(3, size);
+        assertThat(size).isEqualTo(3);
     }
 
     @DisplayName("contains 메서드는 element를 포함하고 있을 경우 true를 반환한다")
@@ -39,7 +38,7 @@ public class SetCollectionTest {
     void containsElementsThenReturnTrue(int input) {
         final boolean result = numbers.contains(input);
 
-        assertTrue(result);
+        assertThat(result).isTrue();
     }
 
     @DisplayName("contains 메서드는 element를 포함하고 있는지 여부를 반환한다.")
@@ -48,6 +47,6 @@ public class SetCollectionTest {
     void containsElements(int input, boolean expectResult) {
         final boolean result = numbers.contains(input);
 
-        assertEquals(expectResult, result);
+        assertThat(result).isEqualTo(expectResult);
     }
 }
