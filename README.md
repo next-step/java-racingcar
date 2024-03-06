@@ -7,3 +7,18 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+- [ ] InputView 클래스 작성
+  - [ ] 자동차 대수를 입력 받고 입력 값을 반환
+    - [ ] 숫자인 지 체크 후 NumberFormatException 발생 시 예외처리
+  - [ ] 시도할 회수를 입력 받고 입력 값을 반환
+    - [ ] 숫자인 지 체크 후 NumberFormatException 발생 시 예외처리
+- [ ] RandomUtil 클래스 작성
+  - [ ] 0 ~ 9 사이의 숫자를 반환
+- [ ] Judgement 클래스 작성
+  - [ ] 파라미터로 넘어오는 숫자가 4 이상이면 true를 반환
+- [ ] Car 클래스 작성
+  - [ ] 자동차가 한 칸 전진하는 forward()
+  - [ ] 모든 자동차의 위치를 반환하는 carPositions()
+- [ ] 경기 전체를 진행하는 Race 클래스 작성
