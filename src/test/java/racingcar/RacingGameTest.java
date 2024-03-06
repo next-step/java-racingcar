@@ -24,4 +24,17 @@ public class RacingGameTest {
         List<Integer> drivingDistances = racingGame.drivingDistances();
         assertThat(drivingDistances).containsExactly(0, 0, 0);
     }
+
+    @Test
+    void getResult() throws Exception {
+        RacingGame racingGame = new RacingGame(() -> true, 3);
+        racingGame.drive(5);
+
+        assertThat(racingGame.getResult())
+            .isEqualTo("-\n-\n-\n\n"
+                + "--\n--\n--\n\n"
+                + "---\n---\n---\n\n"
+                + "----\n----\n----\n\n"
+                + "-----\n-----\n-----\n\n");
+    }
 }
