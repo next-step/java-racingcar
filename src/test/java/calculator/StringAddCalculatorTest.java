@@ -2,10 +2,14 @@ package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class StringAddCalculatorTest {
@@ -42,5 +46,22 @@ class StringAddCalculatorTest {
         final int actualResult = StringAddCalculator.splitAndSum(expression);
 
         assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @ParameterizedTest
+    @MethodSource("customDelimiterExpressionAndResult")
+    @DisplayName("splitAndSum 메서드에 커스텀 구분자를 포함한 수식을 넣으면 피연산자들의 합을 반환한다.")
+    void splitAndSum_CustomDelimiter_SumOfOperands(final String expression, final int expectedResult) {
+        final int actualResult = StringAddCalculator.splitAndSum(expression);
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    private static Stream<Arguments> customDelimiterExpressionAndResult() {
+        return Stream.of(
+                Arguments.of("//;\n1;2;3", 6),
+                Arguments.of("//#\n3#10#5", 18),
+                Arguments.of("//a\n11a0a3", 14)
+        );
     }
 }
