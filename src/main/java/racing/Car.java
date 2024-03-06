@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Car {
+    private static final int START_POSITION = 0;
 
     private final Position position;
 
     public Car() {
-        this.position = new Position(0);
+        this.position = new Position(START_POSITION);
     }
 
     public void forward() {
