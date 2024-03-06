@@ -18,16 +18,16 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("Car 객체 생성 시 position은 1 && 파라미터와 Car의 위치가 일치하면 true")
+    @DisplayName("Car 객체 생성 시 position은 0 && 파라미터와 Car의 위치가 일치하면 true")
     void Car_constructor() {
-        assertThat(car.hasPosition(1)).isTrue();
-        assertThat(car.hasPosition(2)).isFalse();
+        assertThat(car.hasPosition(0)).isTrue();
+        assertThat(car.hasPosition(1)).isFalse();
     }
 
     @Test
     @DisplayName("forward() 호출 시 position 1 증가")
     void forward() {
-        int startPosition = 1;
+        int startPosition = 0;
         assertThat(car.hasPosition(startPosition)).isTrue();
         car.forward();
         assertThat(car.hasPosition(startPosition + 1)).isTrue();
@@ -48,7 +48,7 @@ class CarTest {
 
         List<Position> positions = Car.carPositions(carList);
 
-        assertThat(positions).containsSubsequence(new Position(3), new Position(2), new Position(1));
+        assertThat(positions).containsSubsequence(new Position(2), new Position(1), new Position(0));
 
     }
 
