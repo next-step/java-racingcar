@@ -28,7 +28,6 @@ public class SetCollectionTest {
         numbers.add(3);
     }
 
-    // Test Case 구현
     @Test
     @DisplayName("size() 메소드를 활용해 Set의 크기를 확인한다")
     void testSetSize() {
