@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class StringAddCalculatorTest {
@@ -32,5 +33,14 @@ class StringAddCalculatorTest {
         final int result = StringAddCalculator.splitAndSum("10");
 
         assertThat(result).isEqualTo(10);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2@3", "5:10@15", "1,2:3@6", "1:2,3@6", "1:2:3@6", "1,2,3@6"}, delimiter = '@')
+    @DisplayName("splitAndSum 메서드에 지정된 구분자(쉼표, 콜론)를 포함한 수식을 넣으면 피연산자들의 합을 반환한다.")
+    void splitAndSum_SpecifiedDelimiter_SumOfOperands(final String expression, final int expectedResult) {
+        final int actualResult = StringAddCalculator.splitAndSum(expression);
+
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 }

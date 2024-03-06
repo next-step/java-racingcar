@@ -1,6 +1,10 @@
 package calculator;
 
+import java.util.Arrays;
+
 public final class StringAddCalculator {
+
+    private static final String SPECIFIED_DELIMITER_REGEX = ",|:";
 
     private StringAddCalculator() {
     }
@@ -10,6 +14,10 @@ public final class StringAddCalculator {
             return 0;
         }
 
-        return Integer.parseInt(expression);
+        final String[] operands = expression.split(SPECIFIED_DELIMITER_REGEX);
+
+        return Arrays.stream(operands)
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 }
