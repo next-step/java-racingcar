@@ -38,11 +38,17 @@ public class SetTest {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @DisplayName("JUnit CsvSource를 이용한 Test")
+    @DisplayName("JUnit CsvSource를 이용한 Contain(true) Test")
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void csvSource(int input, boolean expected) {
+    @CsvSource(value = {"1:true", "2:true", "3:true"}, delimiter = ':')
+    void csvSource1(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
+    @DisplayName("JUnit CsvSource를 이용한 Contain(false) Test")
+    @ParameterizedTest
+    @CsvSource(value = {"4:false", "5:false"}, delimiter = ':')
+    void csvSource2(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
+    }
 }
