@@ -57,32 +57,22 @@ public class SetCollectionLearningTest {
 
         // 하나의 검증 대상에 대해 반복적인 패턴으로 여러 값들을 넣어서 검증해야 한다면
         // @ParameterizedTest 를 통해 테스트 코드 가독성을 높일 수 있다.
-        @Nested
-        @DisplayName("Set 원소 확인 - (only 'true' case test) @ParameterizedTest + @ValueSource 활용 ")
-        class ParameterizedTestWitValueSourceCase {
-
-            @ParameterizedTest
-            @ValueSource(ints = {1, 2, 3})
-            void assertSetElementThroughParameterizedTest(Integer number) {
-                assertThat(numbers.contains(number)).isTrue();
-            }
-
+        @ParameterizedTest(name = "{index} ==> Set contains {0} is true.")
+        @ValueSource(ints = {1, 2, 3})
+        @DisplayName("@ParameterizedTest + @ValueSource 활용, (only 'true' case test) ")
+        void assertSetElementThroughParameterizedTest(Integer number) {
+            assertThat(numbers.contains(number)).isTrue();
         }
 
-        @Nested
-        @DisplayName("Set 원소 확인 - ('true/false' case test) @ParameterizedTest + @CsvSource 활용 ")
-        class ParameterizedTestWithCase {
-
-            @ParameterizedTest
-            @CsvSource(value = {"1:true", "2:true", "-9999:false", "3:true"}, delimiter = ':')
-            void assertSetElementThroughParameterizedTest(Integer number, Boolean expected) {
-                assertThat(numbers.contains(number)).isEqualTo(expected);
-            }
-
+        @ParameterizedTest(name = "{index} ==> Set contains {0} is {1}.")
+        @CsvSource(value = {"1:true", "2:true", "-9999:false", "3:true"}, delimiter = ':')
+        @DisplayName("@ParameterizedTest + @CsvSource 활용, ('true/false' case test)")
+        void assertSetElementThroughParameterizedTest(Integer number, Boolean expected) {
+            assertThat(numbers.contains(number)).isEqualTo(expected);
         }
 
         @Test
-        @DisplayName("Set 원소 확인 - AssertJ containsExactlyInAnyOrder() 메서드 활용")
+        @DisplayName("AssertJ containsExactlyInAnyOrder() 메서드 활용")
         void assertSetElementThroughAssertJContains() {
             assertThat(numbers).containsExactlyInAnyOrder(1, 2, 3);
         }
