@@ -22,6 +22,6 @@ public class Car {
     }
 
     public boolean hasPosition(int value) {
-        return position.hasPosition(new Position(value));
+        return position.equals(new Position(value));
     }
 }

@@ -12,8 +12,7 @@ class PositionTest {
     @ParameterizedTest(name = "Position이 {arguments}인 경우 동치비교 ")
     @ValueSource(ints = {1, 2, 3, 4, 5})
     void hasPosition(int input) {
-        Position position = new Position(input);
-        assertThat(position.hasPosition(new Position(input))).isTrue();
+        assertThat(new Position(input)).isEqualTo((new Position(input)));
     }
 
     @ParameterizedTest(name = "[{index}] position이 {0}일 때, add({1})")
@@ -22,7 +21,7 @@ class PositionTest {
     void add(int augend, int addend) {
         Position position = new Position(augend);
         position.add(addend);
-        assertThat(position.hasPosition(new Position(augend + addend))).isTrue();
+        assertThat(position).isEqualTo(new Position(augend + addend));
     }
 
     @ParameterizedTest
