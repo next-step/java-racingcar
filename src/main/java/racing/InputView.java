@@ -5,25 +5,35 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static int inputtedCarCount(Scanner scanner) {
+    private final Scanner scanner;
+
+    public InputView(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public int inputtedCarCount() {
 
         System.out.println("자동차 대수는 몇 대 인가요?");
         while (true) {
-            Integer result = getInputtedNumber(scanner);
+            Integer result = getInputtedNumber();
             if (result != null) return result;
         }
     }
 
-    public static int inputtedTryCount(Scanner scanner) {
+    public int inputtedTryCount() {
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         while (true) {
-            Integer result = getInputtedNumber(scanner);
+            Integer result = getInputtedNumber();
             if (result != null) return result;
         }
     }
 
-    private static Integer getInputtedNumber(Scanner scanner) {
+    public void closeScanner() {
+        scanner.close();
+    }
+
+    private Integer getInputtedNumber() {
         try {
             int result = scanner.nextInt();
             scanner.nextLine();     // 버퍼 제거
