@@ -1,11 +1,12 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
     private final Cars cars;
-    private StringBuilder result = new StringBuilder();
+    private final List<String> roundResults = new ArrayList<>();
 
     public RacingGame(DrivingStrategy drivingStrategy, int carAmount) {
         this.cars = new Cars(drivingStrategy, carAmount);
@@ -14,7 +15,7 @@ public class RacingGame {
     public void drive(int round) {
         for (int i = 0; i < round; i++) {
             cars.drive();
-            result.append(cars.getResult()).append("\n\n");
+            roundResults.add(cars.getResult());
         }
     }
 
@@ -23,6 +24,6 @@ public class RacingGame {
     }
 
     public String getResult() {
-        return result.toString();
+        return String.join("\n\n", roundResults);
     }
 }
