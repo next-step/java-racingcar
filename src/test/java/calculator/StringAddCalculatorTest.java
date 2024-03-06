@@ -25,4 +25,12 @@ class StringAddCalculatorTest {
 
         assertThat(result).isZero();
     }
+
+    @Test
+    @DisplayName("splitAndSum 메서드에 숫자 하나만 넣으면 그대로 해당 숫자를 반환한다.")
+    void splitAndSum_SingleNumber() {
+        final int result = StringAddCalculator.splitAndSum("10");
+
+        assertThat(result).isEqualTo(10);
+    }
 }
