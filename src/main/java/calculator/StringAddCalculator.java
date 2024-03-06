@@ -5,8 +5,9 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private static String CUSTOM_PATTERN = "//(.)\n(.*)";
-    private static String DEFAULT_PATTERN = ",|:";
+    private static final String CUSTOM_PATTERN = "//(.)\n(.*)";
+    private static final String DEFAULT_PATTERN = ",|:";
+    private static final String CAN_NOT_ENTER_NEGATIVE_NUMBER = "음수를 입력 할 수 없습니다. 입력값을 확인해주세요.";
 
     public static int splitAndSum(String input){
          if(input == null || input.isEmpty()) {
@@ -33,11 +34,12 @@ public class StringAddCalculator {
         }
         return input.split(DEFAULT_PATTERN);
     }
+    // 형변환 & 음수 RuntimeException 처리
     public static int parseNumber(String input) {
-        int number = Integer.parseInt(input);
-        if(number < 0) {
-            throw new RuntimeException("음수를 입력 할 수 없습니다. 입력값을 확인해주세요.");
+        int singleNumber = Integer.parseInt(input);
+        if(singleNumber < 0) {
+            throw new RuntimeException(CAN_NOT_ENTER_NEGATIVE_NUMBER);
         }
-        return number;
+        return singleNumber;
     }
 }
