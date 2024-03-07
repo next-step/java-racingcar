@@ -2,20 +2,25 @@ package step2;
 
 public class StringAddCalculator {
 
-
-    public static int cal(String text) {
-        int number = 0;
+    public static int calculate(String text) {
         if (text == null || text.isBlank()) {
-            number = 0;
-        } else if (text.length() == 1) {
-            number = Integer.parseInt(text);
-        } else {
-            String[] numbers = text.split(",|:");
-            for (String s : numbers) {
-                number += Integer.parseInt(s);
-            }
+            return 0;
+        }
+
+        if (text.length() == 1) {
+           return Integer.parseInt(text);
+        }
+
+        return sum(text);
+    }
+
+    private static int sum(String text) {
+        String[] numbers = text.split("[,≠:]");
+        int number = 0;
+        for (String s : numbers) {
+            number += Integer.parseInt(s);
         }
         return number;
     }
-    
+
 }
