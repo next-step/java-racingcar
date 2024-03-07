@@ -8,22 +8,25 @@ public class StringAddCalculator {
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\\n(.*)";
     private static final String CHECK_DIGIT_REGEX = "\\d+";
 
-    public static int splitAndSum(String input){
-        if(isEmpty(input))
+    public static int splitAndSum(String input) {
+        if (isEmpty(input)) {
             return 0;
+        }
 
-        if(isDigit(input))
+        if (isDigit(input)) {
             return Integer.parseInt(input);
+        }
 
         String[] Tokens = splitTokens(input);
 
-        if(!isInValid(Tokens))
+        if (!isInValid(Tokens)) {
             throw new RuntimeException();
+        }
 
         return sumTokens(Tokens);
     }
 
-    private static boolean isEmpty(String input){
+    private static boolean isEmpty(String input) {
         return input == null || input.isEmpty();
     }
 
@@ -32,8 +35,8 @@ public class StringAddCalculator {
     }
 
     private static boolean isInValid(String[] tokens) {
-        for(String token : tokens){
-            if(!isDigit(token) || token.startsWith("-")){
+        for (String token : tokens) {
+            if (!isDigit(token) || token.startsWith("-")) {
                 return false;
             }
         }
@@ -41,17 +44,17 @@ public class StringAddCalculator {
         return true;
     }
 
-    private static int sumTokens(String[] tokens){
+    private static int sumTokens(String[] tokens) {
         int sum = 0;
 
-        for(String token : tokens){
+        for (String token : tokens) {
             sum += Integer.parseInt(token);
         }
 
         return sum;
     }
 
-    private static String[] splitTokens(String input){
+    private static String[] splitTokens(String input) {
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
         if (matcher.find()) {
             return matcher.group(2).split(matcher.group(1));
