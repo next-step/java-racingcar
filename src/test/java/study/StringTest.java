@@ -39,4 +39,14 @@ public class StringTest {
 		assertThat(result).containsExactly(expect); // fail
 	}
 
+	@Test
+	void test_subString() {
+		String aspect = "(1,2)";
+		String expect = "1,2";
+
+		String result = aspect.substring(1, 4);
+
+		assertThat(result).isEqualTo(expect);
+	}
+	
 }
