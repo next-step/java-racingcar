@@ -13,12 +13,21 @@ public class StringAddCalculator {
         // 1) 검증
         // 1-1) 빈 문자열 또는 null 값을 입력할 경우 0을 반환
         // 1-2) 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환
-        int valRslt = validate(text);
-        if (-1 != valRslt)
+        int valRslt;
+        valRslt = validate(text);
+        if (-1 != valRslt) {
             return valRslt;
+        }
 
+        validateNegativeNumberAndThrow(text);
 
         return 0;
+    }
+
+    private static void validateNegativeNumberAndThrow(String text) {
+        if (text.contains("-")) {
+            throw new IllegalArgumentException("Contains a negative number.");
+        }
     }
 
     private static int validate(String text) {
