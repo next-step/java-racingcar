@@ -12,6 +12,10 @@ public class Main {
     resultView.print("시도할 회수는 몇 회 인가요?");
     int gameTryNum = inputView.inputInteger();
 
+    RacingCarGame racingCarGame = new RacingCarGame();
+    racingCarGame.initiateGame(carNum);
+
+
   }
 
 }
