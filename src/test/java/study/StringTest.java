@@ -59,4 +59,21 @@ public class StringTest {
 		assertThat(result).isEqualTo(expect);
 	}
 
+	@Test
+	@DisplayName("chatAt은 인자로 대상 문자열 보다 큰 인덱스를 넘기면, IndexOutOfBoundsException을 던진다.")
+	void test_chatAt_IndexOutOfBoundsException() {
+		String aspect = "abc";
+		int overSizeIndex = aspect.length() + 100;
+
+		assertThatThrownBy(() -> {
+			aspect.charAt(overSizeIndex);
+		}).isInstanceOf(IndexOutOfBoundsException.class)
+			.hasMessageContaining("String index out of range: 103");
+
+		assertThatExceptionOfType(IndexOutOfBoundsException.class)
+			.isThrownBy(() -> {
+				aspect.charAt(overSizeIndex);
+			});
+	}
+
 }
