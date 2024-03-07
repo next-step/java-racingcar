@@ -2,6 +2,7 @@ package study;
 
 import StringCalculator.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -59,4 +60,13 @@ public class StringCalculatorTest {
         boolean isNumeric = stringCalculator.isNumeric(input);
         assertThat(isNumeric).isFalse();
     }
+
+    @ParameterizedTest
+    @DisplayName("음수 split 확인 Test")
+    @ValueSource(strings = {"-1:1:1", "-1,2", "1:-1", "2:1:-1"})
+    void minusNumberSplitTest(String input) {
+        String[] arrays = input.split(",|:");
+        assertThat(arrays).contains("-1");
+    }
+
 }
