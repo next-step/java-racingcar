@@ -7,6 +7,9 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER_REGEX = ",|:";
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\\n(.*)";
     private static final String CHECK_DIGIT_REGEX = "\\d+";
+    private static final int MATCHER_PATTERN_LOC = 1;
+    private static final int MATCHER_INPUT_LOC = 2;
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX);
 
     private StringAddCalculator() {
         throw new AssertionError("유틸리티 클래스로 인스턴스 생성 불필요");
@@ -59,9 +62,9 @@ public class StringAddCalculator {
     }
 
     private static String[] splitTokens(String input) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
+        Matcher matcher = CUSTOM_PATTERN.matcher(input);
         if (matcher.find()) {
-            return matcher.group(2).split(matcher.group(1));
+            return matcher.group(MATCHER_INPUT_LOC).split(matcher.group(MATCHER_PATTERN_LOC));
         }
 
         return input.split(DEFAULT_DELIMITER_REGEX);
