@@ -16,7 +16,7 @@ public class StringTest {
     @Test
     @DisplayName("split메서드는 주어진 regex를 기준으로 문자열을 나눈 다음 그 배열을 반환한다(containsExactly로 테스트해라)")
     void split() {
-        String[] result = "1".split(",");
+        String[] result = "1,".split(",");
         assertThat(result).containsExactly("1");
     }
 
