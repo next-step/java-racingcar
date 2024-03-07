@@ -18,12 +18,18 @@ public class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @DisplayName("들어온 문자열이 없거나 비어있을 때 처리 관련 Test")
-    @ValueSource(strings = {"", " ", "   "})
+    @DisplayName("들어온 문자열이 null일 때 처리 관련 Test")
     @NullAndEmptySource
     void inputNullTest(String input) {
-//        String trimInput = input.trim();
-        assertThat(input == null || input.isBlank()).isTrue();
+        assertThat(input == null || input.isEmpty()).isTrue();
+    }
+
+    @ParameterizedTest
+    @DisplayName("들어온 문자열 내부에 blank가 존재할 때 처리 관련 Test")
+    @ValueSource(strings = {"", " ", "   "})
+    void inputBlankTest(String input) {
+        String trimInput = input.trim();
+        assertThat(trimInput.isBlank()).isTrue();
     }
 
 
