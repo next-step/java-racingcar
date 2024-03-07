@@ -11,30 +11,30 @@ public class RacingCarGame {
     this.cars = new ArrayList<>();
   }
 
-  public void initiateGame(int carNum){
-    for(int i = 0; i < carNum; i++){
+  public void initiateGame(int carNum) {
+    for (int i = 0; i < carNum; i++) {
       cars.add(new Car());
     }
   }
 
-  public List<String> playGames(int round){
+  public List<String> playGames(int round) {
     List<String> results = new ArrayList<>();
-    for(int i = 0; i < round; i++){
+    for (int i = 0; i < round; i++) {
       playGame();
       results.add(getGameResult());
     }
     return results;
   }
 
-  private void playGame(){
-    for(Car car : cars){
+  private void playGame() {
+    for (Car car : cars) {
       car.move();
     }
   }
 
-  private String getGameResult(){
+  private String getGameResult() {
     StringBuilder sb = new StringBuilder();
-    for(Car car : cars){
+    for (Car car : cars) {
       sb.append(car.getMovedPath()).append("\n");
     }
     return sb.toString();

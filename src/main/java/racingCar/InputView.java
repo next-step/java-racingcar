@@ -6,10 +6,11 @@ public class InputView {
 
   Scanner scanner;
 
-  public InputView(){
+  public InputView() {
     this.scanner = new Scanner(System.in);
   }
-  public int inputInteger(){
+
+  public int inputInteger() {
     return scanner.nextInt();
   }
 }

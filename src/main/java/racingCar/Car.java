@@ -23,7 +23,7 @@ public class Car {
   public void move() {
     int randomNumber = random.nextInt(10);
     if (randomNumber >= 4) {
-      position ++;
+      position++;
     }
   }
 
