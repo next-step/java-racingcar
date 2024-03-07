@@ -1,18 +1,13 @@
 package calculator;
 
 public class StringAddCalculator {
-
-    String text;
-    private static String division = ",:";
-
-
+    private static String division = "[,:]";
 
     static int splitAndSum(String text) {
         if (isEmpty(text))
             return 0;
         CustomDivisionCheck(text);
-
-        return 0;
+        return StringDivision(text);
     }
 
     private static boolean isEmpty(String text) {
@@ -23,12 +18,21 @@ public class StringAddCalculator {
         if (text.contains("//") && text.contains("\n")) {
             int start = text.indexOf("//");
             int end = text.indexOf("\n");
-            division = text.substring(start + 1, end);
+            division = text.substring(start + 2, end);
         }
     }
 
-    private int StringDivision(String text) {
-        String[] numbers = text.split(division);
+    private static int StringDivision(String text) {
+        String[] texts = text.split(division);
+        return StringToInt(texts);
+    }
+
+    private static int StringToInt(String[] texts) {
+        int sum = 0;
+        for (String text : texts) {
+            sum += Integer.parseInt(text);
+        }
+        return sum;
     }
 
     /* 의문사항 메서드 안에서 다른 메서드를 호출하는것이 좋은가?
