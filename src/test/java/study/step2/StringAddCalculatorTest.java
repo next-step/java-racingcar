@@ -50,6 +50,13 @@ public class StringAddCalculatorTest {
     }
 
     @Test
+    @DisplayName("하이픈 구분자 입력 테스트")
+    public void splitAndSum_Hyphen_구분자() throws Exception {
+        int result = StringAddCalculator.splitAndSum("//-\n1-2-3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
     @DisplayName("음수나 문자 입력시 예외 발생 테스트")
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
