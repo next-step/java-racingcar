@@ -8,6 +8,8 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
 
@@ -30,6 +32,21 @@ public class SetTest {
 		int result = numbers.size();
 
 		assertThat(result).isEqualTo(expect);
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {1,2,3})
+	@DisplayName("contains 메서드는 컬랙션 안에 인자의 포함여부를 반환한다.")
+	void test_contains(int input) {
+		assertThat(numbers.contains(input)).isTrue();
+	}
+
+	@Test
+	@DisplayName("contains 메서드는 인자로 컬랙션 안에 없는 값을 넘길 경우, 실패한다.)")
+	void test_contains_fail() {
+		int noContainedValue = 1000;
+
+		assertThat(numbers.contains(noContainedValue)).isFalse();
 	}
 
 }
