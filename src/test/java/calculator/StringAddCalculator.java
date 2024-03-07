@@ -6,7 +6,10 @@ public class StringAddCalculator {
     static int splitAndSum(String text) {
         if (isEmpty(text))
             return 0;
-        CustomDivisionCheck(text);
+        text = CustomDivisionCheck(text);
+
+        // System.out.println(text);
+        // 테스트를 통해서는 결과를 틀렸다는것과 에러메시지만 보여서 그런지 자꾸 System.out.을 통해서 값을 찍어보는데 괜찮을까요?
         return StringDivision(text);
     }
 
@@ -14,12 +17,14 @@ public class StringAddCalculator {
         return text == null || text.isEmpty();
     }
 
-    private static void CustomDivisionCheck(String text) {
+    private static String CustomDivisionCheck(String text) {
         if (text.contains("//") && text.contains("\n")) {
             int start = text.indexOf("//");
             int end = text.indexOf("\n");
             division = text.substring(start + 2, end);
+            return text.substring(end + 1);
         }
+        return text;
     }
 
     private static int StringDivision(String text) {
@@ -30,9 +35,16 @@ public class StringAddCalculator {
     private static int StringToInt(String[] texts) {
         int sum = 0;
         for (String text : texts) {
-            sum += Integer.parseInt(text);
+            int num = Integer.parseInt(text);
+            NumberMinusCheck(num);
+            sum += num;
         }
         return sum;
+    }
+
+    private static void NumberMinusCheck(int num) {
+        if (num < 0)
+            throw new RuntimeException("음수입니다");
     }
 
     /* 의문사항 메서드 안에서 다른 메서드를 호출하는것이 좋은가?
