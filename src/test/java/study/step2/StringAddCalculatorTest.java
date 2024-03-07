@@ -4,18 +4,21 @@ package study.step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import step2.StringAddCalculator;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.InstanceOfAssertFactories.ARRAY;
 
 public class StringAddCalculatorTest {
     @ParameterizedTest
     @DisplayName("null 또는 빈문자 입력 테스트")
-    @ValueSource(strings = {""})
-    @NullSource
+    @NullAndEmptySource
     public void splitAndSum_null_또는_빈문자(String input) {
         int result = StringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(0);
@@ -62,4 +65,12 @@ public class StringAddCalculatorTest {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    @DisplayName("하이픈 구분자와 함께 음수나 문자 입력시 예외 발생 테스트")
+    public void splitAndSum_negative_Hyphen() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("//-\n3--5-7-8"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
 }
