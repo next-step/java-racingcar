@@ -20,6 +20,17 @@ public class StringTest {
         String input = "(1,2)";
         String result = input.substring(1, input.length() - 1);
         Assertions.assertThat(result).isEqualTo("1,2");
+    }
 
+    @Test
+    @DisplayName("요구사항 3")
+    public void charAt() throws Exception {
+        String input = "abc";
+
+        Assertions.assertThatThrownBy( () -> {
+            input.charAt(input.length());
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: ")
+                .hasMessageContaining(String.valueOf(input.length()));
     }
 }
