@@ -1,6 +1,8 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -31,4 +33,15 @@ class CalculatorTest {
     assertThat(result).isEqualTo(3);
   }
 
+  @Test
+  void 커스텀_구분자(){
+    int result = Calculator.calculate("//;\n1;2;3");
+    assertThat(result).isEqualTo(6);
+  }
+
+  @Test
+  void 음수_입력의_경우_RuntimeException(){
+    assertThatThrownBy( () -> Calculator.calculate("-1,2,3"))
+        .isInstanceOf(RuntimeException.class);
+  }
 }
