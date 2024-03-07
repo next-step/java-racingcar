@@ -1,7 +1,6 @@
 package study;
 
 import StringCalculator.StringCalculator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -11,11 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
 
-    private StringCalculator stringCalculator;
-    @BeforeEach
-    void setUp() {
-        stringCalculator = new StringCalculator();
-    }
+    private StringCalculator stringCalculator = StringCalculator.getInstance();
 
     @ParameterizedTest
     @DisplayName("들어온 문자열이 null일 때 Valid Test")
@@ -49,5 +44,19 @@ public class StringCalculatorTest {
         assertThat(trimInput.contains(" ")).isFalse();
     }
 
+    @ParameterizedTest
+    @DisplayName("들어온 문자열이 한자리 숫자일 때 확인 Test")
+    @ValueSource(strings = {"1", "2"})
+    void inputNumericProcessTest(String input) {
+        boolean isNumeric = stringCalculator.isNumeric(input);
+        assertThat(isNumeric).isTrue();
+    }
 
+    @ParameterizedTest
+    @DisplayName("들어온 문자열이 한자리 숫자가 아닐 때 확인 Test")
+    @ValueSource(strings = {"22", "a", "a2"})
+    void inputNotNumericProcessTest(String input) {
+        boolean isNumeric = stringCalculator.isNumeric(input);
+        assertThat(isNumeric).isFalse();
+    }
 }

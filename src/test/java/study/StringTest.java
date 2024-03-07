@@ -32,7 +32,7 @@ public class StringTest {
     @DisplayName("String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 Test")
     void charAt1() {
         char charAt = "abc".charAt(0);
-        assertThat(charAt).isEqualTo("a");
+        assertThat(charAt).isEqualTo('a');
     }
 
     @Test
