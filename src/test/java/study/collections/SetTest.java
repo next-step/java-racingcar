@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
@@ -47,6 +48,14 @@ public class SetTest {
 		int noContainedValue = 1000;
 
 		assertThat(numbers.contains(noContainedValue)).isFalse();
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"1:true", "2:true", "3:true"}, delimiter = ':')
+	@DisplayName("contains 메서드는 컬랙션 안에 인자의 포함여부를 반환한다.")
+	void test_contains_all_case(int input, boolean expected) {
+
+		assertThat(numbers.contains(input)).isEqualTo(expected);
 	}
 
 }
