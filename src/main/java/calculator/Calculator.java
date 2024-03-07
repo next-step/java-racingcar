@@ -12,7 +12,7 @@ public class Calculator {
         if (isBlank(text)) {
             return 0;
         }
-        return sum(toInts(split(text)));
+        return sum(toUnsignedInts(split(text)));
     }
 
     private static boolean isBlank(String text) {
@@ -47,10 +47,10 @@ public class Calculator {
         return result;
     }
 
-    private static int[] toInts(String[] values) {
+    private static int[] toUnsignedInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers[i] = Integer.parseUnsignedInt(values[i]);
         }
         return numbers;
     }
