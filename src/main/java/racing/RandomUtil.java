@@ -6,7 +6,9 @@ public class RandomUtil {
 
     public static final int BOUND = 10;
 
+    private static final Random random = new Random();
+
     public static int randomNumberZeroToNine() {
-        return new Random().nextInt(BOUND);
+        return random.nextInt(BOUND);
     }
 }
