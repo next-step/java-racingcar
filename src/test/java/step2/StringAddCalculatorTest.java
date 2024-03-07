@@ -8,6 +8,12 @@ import static step2.StringAddCalculator.calculate;
 public class StringAddCalculatorTest {
 
     @Test
+    void customTest() {
+        int number = calculate("//;\n1;2;3");
+        assertThat(number).isEqualTo(6);
+    }
+
+    @Test
     void colonAndCommaTest() {
         int number = calculate("1:2,3");
         assertThat(number).isEqualTo(6);
