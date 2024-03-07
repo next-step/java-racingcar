@@ -18,18 +18,36 @@ public class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @DisplayName("들어온 문자열이 null일 때 처리 관련 Test")
+    @DisplayName("들어온 문자열이 null일 때 Valid Test")
     @NullAndEmptySource
     void inputNullTest(String input) {
         assertThat(input == null || input.isEmpty()).isTrue();
     }
 
     @ParameterizedTest
-    @DisplayName("들어온 문자열 내부에 blank가 존재할 때 처리 관련 Test")
+    @DisplayName("들어온 문자열 내부에 blank가 존재할 때 Valid Test")
     @ValueSource(strings = {"", " ", "   "})
     void inputBlankTest(String input) {
         String trimInput = input.trim();
         assertThat(trimInput.isBlank()).isTrue();
+    }
+
+    @ParameterizedTest
+    @DisplayName("들어온 문자열이 null일 때 변환 Test")
+    @NullAndEmptySource
+    void inputNullProcessTest(String input) {
+        if (input == null || input.isEmpty()) {
+            input = "0";
+        }
+        assertThat(input).isEqualTo("0");
+    }
+
+    @ParameterizedTest
+    @DisplayName("들어온 문자열 내부에 blank가 존재할 때 변환 Test")
+    @ValueSource(strings = {" ", "   ", "a    a"})
+    void inputBlankProcessTest(String input) {
+        String trimInput = input.replace(" ", "");
+        assertThat(trimInput.contains(" ")).isFalse();
     }
 
 
