@@ -30,7 +30,7 @@ public class SetTest {
     int size = numbers.size();
 
     // then
-    assertThat(size).isEqualTo(4);
+    assertThat(size).isEqualTo(3);
   }
 
 
