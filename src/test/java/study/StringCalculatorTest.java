@@ -37,7 +37,7 @@ public class StringCalculatorTest {
     @NullAndEmptySource
     @ValueSource(strings = {" ", "   ", "        "})
     void inputNullProcessTest(String input) {
-        String checkInput = stringCalculator.nullCheck(input);
+        String checkInput = stringCalculator.nullCheck(input) ? "0" : input ;
         assertThat(checkInput).isEqualTo("0");
     }
 
