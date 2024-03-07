@@ -45,6 +45,12 @@ public class StringAddCalculatorTest {
     }
 
     @Test
+    void oneNumberTest2() {
+        int number = calculate("111");
+        assertThat(number).isEqualTo(111);
+    }
+
+    @Test
     void oneNumberTest() {
         int number = calculate("1");
         assertThat(number).isEqualTo(1);

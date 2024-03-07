@@ -6,9 +6,10 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     private static final int ZERO = 0;
-    private static final int CUSTOM_SEPERATOR = 1;
+    private static final int CUSTOM_SEPARATOR = 1;
     private static final int INPUT_STRING = 2;
     private static final String NEGATIVE = "-";
+    private static final String ONE_NUMBER_REGEX = "\\d+";
 
     public static int calculate(String text) {
         if (text == null || text.isBlank()) {
@@ -19,7 +20,7 @@ public class StringAddCalculator {
             throw new RuntimeException();
         }
 
-        if (text.contains(",") || text.contains(":") || text.length() == 1) {
+        if (text.contains(",") || text.contains(":") || text.matches(ONE_NUMBER_REGEX)) {
             return sum(parse(text));
         }
         return sum(customParse(match(text)));
@@ -40,7 +41,7 @@ public class StringAddCalculator {
     private static String[] customParse(Matcher matcher) {
         String[] tokens = null;
         if (matcher.find()) {
-            String customDelimiter = matcher.group(CUSTOM_SEPERATOR);
+            String customDelimiter = matcher.group(CUSTOM_SEPARATOR);
             tokens = matcher.group(INPUT_STRING).split(customDelimiter);
         }
         return tokens;
