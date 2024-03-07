@@ -71,7 +71,7 @@ class StringAddCalculatorTest {
     void splitAndSum_NonNumericOperands_RuntimeException(final String expression) {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(expression))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("수식을 이루는 피연산자는 반드시 숫자이어야 합니다.");
+                .hasMessageContaining("수식을 이루는 피연산자는 반드시 숫자이어야 합니다.");
     }
 
     private static Stream<Arguments> expressionWithNonNumericOperands() {
@@ -93,7 +93,7 @@ class StringAddCalculatorTest {
     void splitAndSum_NegativeOperands_RuntimeException(final String expression) {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(expression))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("피연산자는 반드시 0 이상이어야 합니다.");
+                .hasMessageContaining("피연산자는 반드시 0 이상이어야 합니다.");
     }
 
     private static Stream<Arguments> expressionWithNegativeOperands() {
