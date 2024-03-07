@@ -10,7 +10,7 @@ public class StringAddCalculator {
         } else if (text.length() == 1) {
             number = Integer.parseInt(text);
         } else {
-            String[] numbers = text.split(",");
+            String[] numbers = text.split(",|:");
             for (String s : numbers) {
                 number += Integer.parseInt(s);
             }

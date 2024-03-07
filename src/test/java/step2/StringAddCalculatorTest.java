@@ -7,6 +7,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringAddCalculatorTest {
 
     @Test
+    void colonTest() {
+        int number = StringAddCalculator.cal("1:2");
+        assertThat(number).isEqualTo(3);
+    }
+
+    @Test
     void commaTest() {
         int number = StringAddCalculator.cal("1,2");
         assertThat(number).isEqualTo(3);
