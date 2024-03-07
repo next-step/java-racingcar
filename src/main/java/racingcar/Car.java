@@ -2,6 +2,7 @@ package racingcar;
 
 public class Car {
 
+    public static final String DISTANCE_SYMBOL = "-";
     private final DrivingStrategy drivingStrategy;
     private int drivingDistance = 0;
 
@@ -20,6 +21,6 @@ public class Car {
     }
 
     public String getResult() {
-        return "-".repeat(drivingDistance);
+        return DISTANCE_SYMBOL.repeat(drivingDistance);
     }
 }
