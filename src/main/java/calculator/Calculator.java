@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Calculator {
 
   public static int calculate(String text) {
@@ -12,7 +15,10 @@ public class Calculator {
     if (isBlank(text)) {
       return 0;
     }
-    return sum(toInts(split(text)));
+
+    int[] numbers = toInts(split(text));
+    verifyPositive(numbers);
+    return sum(numbers);
   }
 
   private static boolean isBlank(String text) {
@@ -20,6 +26,11 @@ public class Calculator {
   }
 
   private static String[] split(String text) {
+    Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+    if (m.find()) {
+      String customDelimiter = m.group(1);
+      return m.group(2).split(customDelimiter);
+    }
     return text.split(",|:");
   }
 
@@ -34,9 +45,17 @@ public class Calculator {
   private static int[] toInts(String[] values) {
     int[] numbers = new int[values.length];
     for (int i = 0; i < values.length; i++) {
-      numbers[i] = Integer.parseInt(values[i]);
+     numbers[i] = Integer.parseInt(values[i]);
     }
     return numbers;
+  }
+
+  private static void verifyPositive(int[] numbers) {
+    for (int number : numbers) {
+      if (number < 0) {
+        throw new RuntimeException("음수는 입력으로 올 수 없습니다.");
+      }
+    }
   }
 
 }
