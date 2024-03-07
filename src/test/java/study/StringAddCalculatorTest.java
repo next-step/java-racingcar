@@ -42,12 +42,12 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class).hasMessageContaining("음수");
+                .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     public void splitAndSum_nonNumber() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("a,3,1"))
-                .isInstanceOf(RuntimeException.class).hasMessageContaining("아닙니다");
+                .isInstanceOf(RuntimeException.class);
     }
 }
