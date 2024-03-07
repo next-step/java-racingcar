@@ -11,12 +11,12 @@ public class StringAddCalculator {
     private static final String NEGATIVE = "-";
 
     public static int calculate(String text) {
-        if (text.contains(NEGATIVE)) {
-            throw new RuntimeException();
-        }
-
         if (text == null || text.isBlank()) {
             return ZERO;
+        }
+
+        if (text.contains(NEGATIVE)) {
+            throw new RuntimeException();
         }
 
         if (text.contains(",") || text.contains(":") || text.length() == 1) {
