@@ -7,6 +7,7 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER_REGEX = ",|:";
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\\n(.*)";
     private static final String CHECK_DIGIT_REGEX = "\\d+";
+
     public static int splitAndSum(String input){
         if(isEmpty(input))
             return 0;
@@ -51,13 +52,11 @@ public class StringAddCalculator {
     }
 
     private static String[] splitTokens(String input){
-        // custom split
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
         if (matcher.find()) {
             return matcher.group(2).split(matcher.group(1));
         }
 
-        // default split
         return input.split(DEFAULT_DELIMITER_REGEX);
     }
 }
