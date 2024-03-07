@@ -1,21 +1,20 @@
 package step2;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringAddCalculatorTest {
 
     private final StringAddCalculator stringAddCalculator = new StringAddCalculator();
 
-    @Test
-    public void splitAndSum_null_또는_빈문자() {
-        int result = stringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = stringAddCalculator.splitAndSum("");
+    @ParameterizedTest(name = "전달되는 값이 {arguments}이면 0을 반환한다.")
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자(String value) {
+        int result = stringAddCalculator.splitAndSum(value);
         assertThat(result).isEqualTo(0);
     }
 

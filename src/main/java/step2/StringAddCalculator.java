@@ -6,9 +6,10 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private final String SEPARATION_TOKEN = "[,:]";
 
     public int splitAndSum(String value) {
-        if (value == null || value.isEmpty()) {
+        if (isNullOrEmpty(value)) {
             return 0;
         }
 
@@ -28,6 +29,10 @@ public class StringAddCalculator {
 
     }
 
+    private boolean isNullOrEmpty(String value) {
+        return value == null || value.isEmpty();
+    }
+
     private String[] splitNumbers(String value) {
         Matcher m = CUSTOM_PATTERN.matcher(value);
 
@@ -36,7 +41,7 @@ public class StringAddCalculator {
             return m.group(2).split(customDelimiter);
         }
 
-        return value.split("[,:]");
+        return value.split(SEPARATION_TOKEN);
     }
 
     private void validatePositiveIntegers(String[] numbers) throws IllegalArgumentException {
