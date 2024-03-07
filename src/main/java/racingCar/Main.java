@@ -1,5 +1,7 @@
 package racingCar;
 
+import java.util.List;
+
 public class Main {
 
   public static void main(String[] args) {
@@ -15,6 +17,12 @@ public class Main {
     RacingCarGame racingCarGame = new RacingCarGame();
     racingCarGame.initiateGame(carNum);
 
+    List<String> gameResult = racingCarGame.playGames(gameTryNum);
+
+    resultView.print("실행 결과");
+    for (String result : gameResult) {
+      resultView.print(result);
+    }
 
   }
 

@@ -17,4 +17,28 @@ public class RacingCarGame {
     }
   }
 
+  public List<String> playGames(int round){
+    List<String> results = new ArrayList<>();
+    for(int i = 0; i < round; i++){
+      playGame();
+      String result = getGameResult();
+      results.add(result);
+    }
+    return results;
+  }
+
+  private void playGame(){
+    for(Car car : cars){
+      car.move();
+    }
+  }
+
+  private String getGameResult(){
+    StringBuilder sb = new StringBuilder();
+    for(Car car : cars){
+      sb.append(car.getMovedPath()).append("\n");
+    }
+    return sb.toString();
+  }
+
 }
