@@ -37,17 +37,15 @@ public class StringCalculatorTest {
     @NullAndEmptySource
     @ValueSource(strings = {" ", "   ", "        "})
     void inputNullProcessTest(String input) {
-        if (input == null || input.isBlank()) {
-            input = "0";
-        }
-        assertThat(input).isEqualTo("0");
+        String checkInput = stringCalculator.nullCheck(input);
+        assertThat(checkInput).isEqualTo("0");
     }
 
     @ParameterizedTest
     @DisplayName("들어온 문자열 내부에 blank가 존재할 때 변환 Test")
     @ValueSource(strings = {"a    a", "b c", " a b "})
     void inputBlankProcessTest(String input) {
-        String trimInput = input.replace(" ", "");
+        String trimInput = stringCalculator.deleteBlank(input);
         assertThat(trimInput.contains(" ")).isFalse();
     }
 
