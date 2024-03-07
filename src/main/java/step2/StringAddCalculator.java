@@ -4,6 +4,12 @@ public class StringAddCalculator {
 
 
     public static int cal(String text) {
-        return 0;
+        int number = 0;
+        if (text == null || text.isBlank()) {
+            number = 0;
+        } else {
+            number = Integer.parseInt(text);
+        }
+        return number;
     }
 }
