@@ -34,7 +34,7 @@ public class StringTest {
     @ValueSource(strings = {"abc"})
     void charAtTest(String text) {
         IntStream.range(0, text.length()).forEach(index -> {
-            if (text.charAt(index) == 0) {
+            if (index > text.length()) {
                 assertThatThrownBy(() -> {
                     throw new StringIndexOutOfBoundsException();
                 }).isInstanceOf(IndexOutOfBoundsException.class)
