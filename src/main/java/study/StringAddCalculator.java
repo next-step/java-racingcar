@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     private static final Pattern splitRegex = Pattern.compile("//(.)\\n(.*)");
+    private static final String NEGATIVE_ERROR_MESSAGE = "음수가 입력되었습니다.";
+    private static final String NOT_NUMBER_ERROR_MESSAGE = "숫자가 아닙니다.";
+
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
@@ -33,10 +36,16 @@ public class StringAddCalculator {
         int total = 0;
 
         for (String number : numbers) {
-            int parseNumber = Integer.parseInt(number);
+            int parseNumber = 0;
+
+            try {
+                parseNumber = Integer.parseInt(number);
+            } catch (NumberFormatException exception) {
+                throw new RuntimeException(NOT_NUMBER_ERROR_MESSAGE);
+            }
 
             if (parseNumber < 0) {
-                throw new RuntimeException("음수가 입력되었습니다.");
+                throw new RuntimeException(NEGATIVE_ERROR_MESSAGE);
             }
 
             total += parseNumber;
@@ -44,7 +53,5 @@ public class StringAddCalculator {
 
         return total;
     }
-
-
 
 }
