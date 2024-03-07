@@ -35,6 +35,7 @@ public class StringTest {
 
     @Test
     @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오도록 구현")
+    // [참고] https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#exception-assertion
     void charAt() {
         String input = "abc";
         char result = input.charAt(input.length() - 1);
