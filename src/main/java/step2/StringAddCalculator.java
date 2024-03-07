@@ -8,6 +8,10 @@ public class StringAddCalculator {
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\\n(.*)";
     private static final String CHECK_DIGIT_REGEX = "\\d+";
 
+    private StringAddCalculator() {
+        throw new AssertionError("유틸리티 클래스로 인스턴스 생성 불필요");
+    }
+
     public static int splitAndSum(String input) {
         if (isEmpty(input)) {
             return 0;
