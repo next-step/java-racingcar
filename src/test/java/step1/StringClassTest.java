@@ -2,6 +2,8 @@ package step1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 public class StringClassTest {
@@ -14,10 +16,8 @@ public class StringClassTest {
         String[] actual = value.split(",");
 
         String expectedComponent1 = "1";
-        assertThat(actual).contains(expectedComponent1);
-
         String expectedComponent2 = "2";
-        assertThat(actual).contains(expectedComponent2);
+        assertThat(actual).contains(expectedComponent1, expectedComponent2);
     }
 
     @Test
@@ -40,22 +40,13 @@ public class StringClassTest {
     }
 
 //  요구사항 3
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"a,0", "b,1", "c,2"}, delimiter = ',')
     @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현.")
-    void charAtTest(){
+    void charAtTest(char expected, int index){
         String value = "abc";
-
-        char expectedChar1 = 'a';
-        char actualChar1 = value.charAt(0);
-        assertThat(actualChar1).isEqualTo(expectedChar1);
-
-        char expectedChar2 = 'b';
-        char actualChar2 = value.charAt(1);
-        assertThat(actualChar2).isEqualTo(expectedChar2);
-
-        char expectedChar3 = 'c';
-        char actualChar3 = value.charAt(2);
-        assertThat(actualChar3).isEqualTo(expectedChar3);
+        char actual = value.charAt(index);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
