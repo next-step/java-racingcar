@@ -9,6 +9,7 @@ public class StringAddCalculator {
     public static final String SUFFIX_CUSTOM_DELIMITER = "\n";
 
     private StringAddCalculator() {
+        throw new AssertionError("인스턴스화 할 필요 없는 클래스입니다");
     }
 
     public static int splitAndSum(String expression) {
