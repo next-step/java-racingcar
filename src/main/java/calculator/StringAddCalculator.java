@@ -1,5 +1,8 @@
 package calculator;
 
+import static java.math.BigInteger.*;
+
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -14,9 +17,9 @@ public final class StringAddCalculator {
     private StringAddCalculator() {
     }
 
-    public static int splitAndSum(final String text) {
+    public static BigInteger splitAndSum(final String text) {
         if (isNullOrBlank(text)) {
-            return 0;
+            return ZERO;
         }
 
         final String[] tokens = split(text);
@@ -46,9 +49,9 @@ public final class StringAddCalculator {
         return expression.split(STANDARD_DELIMITER);
     }
 
-    private static int sum(final List<Operand> operands) {
+    private static BigInteger sum(final List<Operand> operands) {
         return operands.stream()
-                .mapToInt(Operand::value)
-                .sum();
+                .map(Operand::value)
+                .reduce(ZERO, BigInteger::add);
     }
 }

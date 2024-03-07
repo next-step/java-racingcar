@@ -2,6 +2,7 @@ package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.math.BigInteger;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,7 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("splitAndSum 메서드에 null을 넣으면 0을 반환한다.")
     void splitAndSum_Null_Zero() {
-        final int result = StringAddCalculator.splitAndSum(null);
+        final BigInteger result = StringAddCalculator.splitAndSum(null);
 
         assertThat(result).isZero();
     }
@@ -26,7 +27,7 @@ class StringAddCalculatorTest {
     @ValueSource(strings = {"", " ", "\n"})
     @DisplayName("splitAndSum 메서드에 빈 문자열, 공백, 개행을 넣으면 0을 반환한다.")
     void splitAndSum_Blank_Zero(final String blank) {
-        final int result = StringAddCalculator.splitAndSum(blank);
+        final BigInteger result = StringAddCalculator.splitAndSum(blank);
 
         assertThat(result).isZero();
     }
@@ -34,7 +35,7 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("splitAndSum 메서드에 숫자 하나만 넣으면 그대로 해당 숫자를 반환한다.")
     void splitAndSum_SingleNumber() {
-        final int result = StringAddCalculator.splitAndSum("10");
+        final BigInteger result = StringAddCalculator.splitAndSum("10");
 
         assertThat(result).isEqualTo(10);
     }
@@ -43,7 +44,7 @@ class StringAddCalculatorTest {
     @CsvSource(value = {"1,2@3", "5:10@15", "1,2:3@6", "1:2,3@6", "1:2:3@6", "1,2,3@6"}, delimiter = '@')
     @DisplayName("splitAndSum 메서드에 지정된 구분자(쉼표, 콜론)를 포함한 수식을 넣으면 피연산자들의 합을 반환한다.")
     void splitAndSum_StandardDelimiter_SumOfOperands(final String expression, final int expectedResult) {
-        final int actualResult = StringAddCalculator.splitAndSum(expression);
+        final BigInteger actualResult = StringAddCalculator.splitAndSum(expression);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
@@ -52,7 +53,7 @@ class StringAddCalculatorTest {
     @MethodSource("customDelimiterExpressionAndResult")
     @DisplayName("splitAndSum 메서드에 커스텀 구분자를 포함한 수식을 넣으면 피연산자들의 합을 반환한다.")
     void splitAndSum_CustomDelimiter_SumOfOperands(final String expression, final int expectedResult) {
-        final int actualResult = StringAddCalculator.splitAndSum(expression);
+        final BigInteger actualResult = StringAddCalculator.splitAndSum(expression);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
@@ -106,6 +107,26 @@ class StringAddCalculatorTest {
                 Arguments.of("//;\n-1;2"),
                 Arguments.of("//;\n2;-1"),
                 Arguments.of("//;\n1;-2;3")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("expressionWithBigIntegers")
+    @DisplayName("splitAndSum 메서드에 매우 큰 정수가 포함된 수식을 넣어도 정상적으로 피연산자들의 합을 반환한다.")
+    void splitAndSum_BigInteger(final String expression, final BigInteger expectedResult) {
+        final BigInteger actualResult = StringAddCalculator.splitAndSum(expression);
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    private static Stream<Arguments> expressionWithBigIntegers() {
+        final String token = Long.MAX_VALUE + "0";
+        final BigInteger bigInteger = new BigInteger(token);
+        final BigInteger expectedResult = bigInteger.add(bigInteger);
+
+        return Stream.of(
+                Arguments.of(token + "," + token, expectedResult),
+                Arguments.of("//;\n" + token + ";" + token, expectedResult)
         );
     }
 }
