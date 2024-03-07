@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static calculator.Calculator.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("문자열 계산기 동작 테스트")
 public class CalculatorTest {
 
     @Test
     void 커스텀_구분자() {
-        assertThat(calculate("//$\n1$2")).isEqualTo(3);
+        assertThat(calculate("//;\n1;2")).isEqualTo(3);
     }
 
     @Test
@@ -38,6 +39,12 @@ public class CalculatorTest {
     void null_값_빈문자() {
         assertThat(calculate(null)).isEqualTo(0);
         assertThat(calculate("")).isEqualTo(0);
+    }
+
+    @Test
+    void 음수_입력_예외() {
+        assertThatThrownBy(() -> calculate("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 
 }
