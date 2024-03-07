@@ -8,6 +8,10 @@ public class StringAddCalculator {
     public static final String PREFIX_CUSTOM_DELIMITER = "//";
     public static final String SUFFIX_CUSTOM_DELIMITER = "\n";
 
+    private StringAddCalculator() {
+        throw new AssertionError("인스턴스화 할 필요 없는 클래스입니다");
+    }
+
     public static int splitAndSum(String expression) {
         if (expression == null || expression.isEmpty()) {
             return 0;
@@ -36,7 +40,7 @@ public class StringAddCalculator {
 
     private static String removeDelimiter(String expression) {
         if (hasCustomDelimiter(expression)) {
-            return expression.substring(expression.indexOf(SUFFIX_CUSTOM_DELIMITER) + 1);
+            return expression.substring(expression.indexOf(SUFFIX_CUSTOM_DELIMITER) + SUFFIX_CUSTOM_DELIMITER.length());
         }
         return expression;
     }
@@ -58,18 +62,14 @@ public class StringAddCalculator {
 
     private static int tryParseInt(String strNumber) {
         int number;
-        try {
-            number = Integer.parseInt(strNumber);
-            assertPositive(number);
-            return number;
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자 형식이 올바르지 않습니다");
-        }
+        number = Integer.parseInt(strNumber);
+        assertPositive(number);
+        return number;
     }
 
     private static void assertPositive(int number) {
         if (number < 0) {
-            throw new RuntimeException("음수는 허용되지 않습니다");
+            throw new IllegalArgumentException("음수는 허용되지 않습니다");
         }
     }
 }

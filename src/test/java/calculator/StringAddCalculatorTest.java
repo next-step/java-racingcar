@@ -5,16 +5,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringAddCalculatorTest {
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환한다")
-    public void splitAndSum_null_또는_빈문자() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
+    public void splitAndSum_null_또는_빈문자(String input) {
+        int result = StringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(0);
     }
 
@@ -39,10 +42,11 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = { "//;\n1;2;3", "//!\n1!2!3" })
     @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. ")
-    public void splitAndSum_custom_구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+    public void splitAndSum_custom_구분자(String input) throws Exception {
+        int result = StringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(6);
     }
 
@@ -50,6 +54,6 @@ public class StringAddCalculatorTest {
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다")
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
