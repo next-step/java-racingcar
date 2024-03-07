@@ -11,7 +11,7 @@ public class StringAddCalculator {
     private static final String NEGATIVE = "-";
     private static final String ONE_NUMBER_REGEX = "\\d+";
 
-    public static int calculate(String text) {
+    public int calculate(String text) {
         if (text == null || text.isBlank()) {
             return ZERO;
         }
