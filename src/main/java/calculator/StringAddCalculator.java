@@ -15,7 +15,7 @@ public final class StringAddCalculator {
     }
 
     public static int splitAndSum(final String text) {
-        if (text == null || text.isBlank()) {
+        if (isNullOrBlank(text)) {
             return 0;
         }
 
@@ -26,6 +26,10 @@ public final class StringAddCalculator {
                 .collect(Collectors.toList());
 
         return sum(operands);
+    }
+
+    private static boolean isNullOrBlank(final String text) {
+        return text == null || text.isBlank();
     }
 
     private static String[] split(String expression) {
