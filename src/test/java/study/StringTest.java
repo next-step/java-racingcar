@@ -48,5 +48,15 @@ public class StringTest {
 
 		assertThat(result).isEqualTo(expect);
 	}
-	
+
+	@Test
+	void test_chatAt() {
+		String aspect = "abc";
+		char expect = 'b';
+
+		char result = aspect.charAt(1);
+
+		assertThat(result).isEqualTo(expect);
+	}
+
 }
