@@ -21,8 +21,7 @@ public class RacingCarGame {
     List<String> results = new ArrayList<>();
     for(int i = 0; i < round; i++){
       playGame();
-      String result = getGameResult();
-      results.add(result);
+      results.add(getGameResult());
     }
     return results;
   }
