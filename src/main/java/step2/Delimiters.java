@@ -6,6 +6,7 @@ import java.util.Iterator;
 public class Delimiters {
   private final Collection<String> delimiters;
   private final int LENGTH_OF_EXTRA_DIVIDER = 1;
+  private final int START_OF_COMBINED_DELIMITERS = 0;
 
   public Delimiters(Collection<String> delimiters) {
     this.delimiters = delimiters;
@@ -25,6 +26,6 @@ public class Delimiters {
   }
 
   private String removeExtraDivider(StringBuilder sb) {
-    return sb.substring(0, sb.length() - LENGTH_OF_EXTRA_DIVIDER);
+    return sb.substring(START_OF_COMBINED_DELIMITERS, sb.length() - LENGTH_OF_EXTRA_DIVIDER);
   }
 }

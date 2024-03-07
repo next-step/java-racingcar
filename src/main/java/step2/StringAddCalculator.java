@@ -33,12 +33,12 @@ public class StringAddCalculator {
 
     // #3
     return this.delimit(derivedMap.get("expression")).stream()
-            .reduce(new PositiveInteger(0), PositiveInteger::add).getValue();
+            .reduce(new PositiveNumber(0), PositiveNumber::add).getValue();
   }
 
-  private List<PositiveInteger> delimit(String expression) {
+  private List<PositiveNumber> delimit(String expression) {
     String[] tokenized = expression.split(this.delimiters.getCombinedDelimiter());
-    return Arrays.stream(tokenized).map(PositiveInteger::new).collect(Collectors.toList());
+    return Arrays.stream(tokenized).map(PositiveNumber::new).collect(Collectors.toList());
   }
 
   private Map<String, String> deriveAdditionalDelimiter(String expression) {
