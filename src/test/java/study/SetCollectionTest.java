@@ -10,8 +10,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
+
+@DisplayName("Set Collection 테스트")
 class SetCollectionTest {
     private Set<Integer> numbers;
 
@@ -27,27 +29,18 @@ class SetCollectionTest {
     @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인하는 학습테스트를 구현한다.")
     @Test
     void checkSizeOfSet() {
-        // given
-        final int expected = 3;
-
-        // when
-        final int actual = this.numbers.size();
-
-        // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(this.numbers).hasSize(3);
     }
 
-    @ParameterizedTest(name = "- numbers Set은 {0} 를 포함한다")
+    @DisplayName("주어진 숫자가 Set 내에 포함되는지 확인한다")
+    @ParameterizedTest(name = "numbers Set은 {0} 를 포함한다")
     @ValueSource(ints = {1, 2, 3})
     void checkIfSetContains(final int input) {
-        // given & when
-        final boolean actual = this.numbers.contains(input);
-
-        // then
-        assertThat(actual).isTrue();
+        assertThat(this.numbers).contains(input);
     }
 
-    @ParameterizedTest(name = "- numbers Set의 {0} 포함 여부는 {1} 이다")
+    @DisplayName("주어진 숫자가 Set 내에 포함되는지 아닌지 확인한다")
+    @ParameterizedTest(name = "numbers Set의 {0} 포함 여부는 {1} 이다")
     @CsvSource(value = {"0:false", "1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
     void checkIfSetContainsWithExpected(final int input, final boolean expected) {
         // given & when
