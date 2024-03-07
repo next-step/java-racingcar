@@ -10,6 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CalculatorTest {
 
     @Test
+    void 커스텀_구분자() {
+        assertThat(calculate("//$\n1$2")).isEqualTo(3);
+    }
+
+    @Test
     void 콜론_컴마_구분자_혼합() {
         assertThat(calculate("1:2,3")).isEqualTo(6);
     }
