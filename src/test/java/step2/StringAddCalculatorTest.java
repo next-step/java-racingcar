@@ -3,9 +3,16 @@ package step2;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static step2.StringAddCalculator.calculate;
 
 public class StringAddCalculatorTest {
+
+    @Test
+    void negativeTest() {
+        assertThatThrownBy(() ->
+                calculate("-1,3,2")).isInstanceOf(RuntimeException.class);
+    }
 
     @Test
     void customTest() {

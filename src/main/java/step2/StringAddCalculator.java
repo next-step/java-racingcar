@@ -6,6 +6,10 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     public static int calculate(String text) {
+        if (text.contains("-")) {
+            throw new RuntimeException();
+        }
+
         if (text == null || text.isBlank()) {
             return 0;
         }
