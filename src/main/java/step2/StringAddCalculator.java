@@ -5,13 +5,18 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final int ZERO = 0;
+    private static final int CUSTOM_SEPERATOR = 1;
+    private static final int INPUT_STRING = 2;
+    private static final String NEGATIVE = "-";
+
     public static int calculate(String text) {
-        if (text.contains("-")) {
+        if (text.contains(NEGATIVE)) {
             throw new RuntimeException();
         }
 
         if (text == null || text.isBlank()) {
-            return 0;
+            return ZERO;
         }
 
         if (text.contains(",") || text.contains(":") || text.length() == 1) {
@@ -35,8 +40,8 @@ public class StringAddCalculator {
     private static String[] customParse(Matcher matcher) {
         String[] tokens = null;
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            tokens = matcher.group(2).split(customDelimiter);
+            String customDelimiter = matcher.group(CUSTOM_SEPERATOR);
+            tokens = matcher.group(INPUT_STRING).split(customDelimiter);
         }
         return tokens;
     }
