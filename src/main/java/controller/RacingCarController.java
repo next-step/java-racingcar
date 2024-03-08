@@ -1,9 +1,7 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import model.RacingCar;
+import model.RacingCars;
 import model.RandomNumberGenerator;
 import view.InputView;
 import view.OutputView;
@@ -25,18 +23,14 @@ public class RacingCarController {
         final int racingCarNumber = inputView.inputRacingCarNumber();
         final int tryNumber = inputView.inputTryNumber();
 
-        final List<RacingCar> racingCars = new ArrayList<>();
-
-        for (int i = 0; i < racingCarNumber; i++) {
-            racingCars.add(new RacingCar());
-        }
+        final RacingCars racingCars = RacingCars.of(racingCarNumber);
 
         for (int i = 0; i < tryNumber; i++) {
-            for (final RacingCar racingCar : racingCars) {
+            for (final RacingCar racingCar : racingCars.getRacingCars()) {
                 final int randomNumber = randomNumberGenerator.generate();
                 racingCar.move(randomNumber);
             }
-            outputView.printResult(racingCars);
+            outputView.printResult(racingCars.getRacingCars());
         }
     }
 }
