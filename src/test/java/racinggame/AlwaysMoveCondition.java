@@ -1,6 +1,8 @@
 package racinggame;
 
-public class AlwaysMoveCondition extends MoveCondition{
+import racinggame.domain.MoveCondition;
+
+public class AlwaysMoveCondition extends MoveCondition {
 
     @Override
     public boolean isMovable() {
