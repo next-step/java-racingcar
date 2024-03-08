@@ -2,7 +2,7 @@ package racingcar;
 
 public class DrivingDistance {
 
-    public static final int INIT_DISTANCE = 0;
+    public static final int INIT_VALUE = 0;
     private int drivingDistance;
 
     public DrivingDistance(int drivingDistance) {
@@ -10,7 +10,7 @@ public class DrivingDistance {
     }
 
     public DrivingDistance() {
-        this(INIT_DISTANCE);
+        this(INIT_VALUE);
     }
 
     public int getDrivingDistance() {

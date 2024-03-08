@@ -9,12 +9,12 @@ public class RacingGame {
     private final Cars cars;
     private final List<String> roundResults = new ArrayList<>();
 
-    public RacingGame(String[] carNames) {
-        this.cars = new Cars(carNames);
-    }
-
     public RacingGame(Cars cars) {
         this.cars = cars;
+    }
+
+    public RacingGame(String[] carNames) {
+        this(new Cars(carNames));
     }
 
     public void drive(int round, DrivingStrategy drivingStrategy) {
