@@ -7,7 +7,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CalculatorTest {
 
-	@DisplayName("커스텀 문자열이 들어갈 때 덧셈 계산")
+	@DisplayName("덧셈 계산")
 	@Test
 	void additionCalculate() {
 		// given
