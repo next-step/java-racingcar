@@ -12,7 +12,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
-    void drive() throws Exception {
+    void drive() {
         RacingGame racingGame = new RacingGame(() -> true, CAR_NAMES);
         racingGame.drive(5);
 
@@ -22,7 +22,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
-    void notDrive() throws Exception {
+    void notDrive() {
         RacingGame racingGame = new RacingGame(() -> false, CAR_NAMES);
         racingGame.drive(5);
 
@@ -32,7 +32,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void getResult() throws Exception {
+    void getResult() {
         RacingGame racingGame = new RacingGame(() -> true, CAR_NAMES);
         racingGame.drive(5);
 

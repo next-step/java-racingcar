@@ -12,7 +12,7 @@ public class CarTest {
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
-    void drive() throws Exception {
+    void drive() {
         Car car = new Car(() -> true, NAME);
         car.drive();
         assertThat(car.drivingDistance()).isEqualTo(1);
@@ -20,7 +20,7 @@ public class CarTest {
 
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
-    void notDrive() throws Exception {
+    void notDrive() {
         Car car = new Car(() -> false, NAME);
         car.drive();
         assertThat(car.drivingDistance()).isEqualTo(0);
@@ -28,7 +28,7 @@ public class CarTest {
 
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void getResult() throws Exception {
+    void getResult() {
         Car car = new Car(() -> true, NAME);
         car.drive();
         assertThat(car.getResult()).isEqualTo(NAME + " : -");
