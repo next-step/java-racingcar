@@ -60,6 +60,15 @@ public class CalculatorTest {
 			//when & then
 			assertThat(Calculator.calculate(text)).isEqualTo(6);
 		}
+
+		@Test
+		@DisplayName("커스텀 문자가 역슬래시 일 경우")
+		void customDelimiterBackSlash() {
+			//given
+			String text = "//\\n1\\2\\3";
+			//when & then
+			assertThat(Calculator.calculate(text)).isEqualTo(6);
+		}
 	}
 
 	@ParameterizedTest

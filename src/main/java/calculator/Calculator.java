@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,6 +9,7 @@ import java.util.regex.Pattern;
 public class Calculator {
 	private static String DEFAULT_DELIMITER = ",|:";
 	private static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+	private static final List<String> RESTRICTED_DELIMITERS = List.of("|", "\\");
 	private static Pattern compile = Pattern.compile(CUSTOM_DELIMITER_PATTERN);
 	public static Integer calculate(String text) {
 		if (isBlank(text)) {
@@ -28,8 +30,7 @@ public class Calculator {
 		if (matcher.find()) {
 			return matcher.group(2).split(getDelimiter(matcher.group(1)));
 		} else if (text.startsWith("//")) {
-			String delimiter = String.format("\\%s", text.charAt(3));
-			return text.substring(5).split(delimiter);
+			return text.substring(4).split(getDelimiter(Character.toString(text.charAt(2))));
 		}
 		return text.split(DEFAULT_DELIMITER);
 	}
@@ -41,7 +42,7 @@ public class Calculator {
 	}
 
 	private static String getDelimiter(String delimiter) {
-		return delimiter.equals("|") ? String.format("\\%s", delimiter) : delimiter;
+		return RESTRICTED_DELIMITERS.contains(delimiter) ? String.format("\\%s", delimiter) : delimiter;
 	}
 
 	private static void validate(String[] values) {
