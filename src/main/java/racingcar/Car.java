@@ -3,6 +3,7 @@ package racingcar;
 public class Car {
 
     private static final String DISTANCE_SYMBOL = "-";
+    private static final String RESULT_DIVIDER = " : ";
 
     private final DrivingStrategy drivingStrategy;
     private final Name name;
@@ -24,7 +25,7 @@ public class Car {
     }
 
     public String getResult() {
-        return name + " : " + DISTANCE_SYMBOL.repeat(drivingDistance);
+        return name + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance);
     }
 
     public boolean matchDistance(int distance) {
