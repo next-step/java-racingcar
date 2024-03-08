@@ -8,10 +8,6 @@ public class Car {
         this.position = new Position();
     }
 
-    public boolean hasPosition(int value) {
-        return position.equals(new Position(value));
-    }
-
     public String carPosition() {
         return position.dashOfPosition();
     }
@@ -22,4 +18,12 @@ public class Car {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Car) {
+            Car target = (Car) obj;
+            return position.equals(target.position);
+        }
+        return false;
+    }
 }

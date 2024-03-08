@@ -1,46 +1,51 @@
 package racing;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    Car car;
-
-    @BeforeEach
-    void before() {
-        car = new Car();
-    }
-
     @Test
-    @DisplayName("Car 객체 생성 시 position은 0")
-    void Car_constructor() {
-        assertThat(car.hasPosition(0)).isTrue();
+    void play() {
+        MoveStrategy moveStrategy = () -> true;
+
+        Car car1 = new Car();
+        car1.play(moveStrategy);
+        car1.play(moveStrategy);
+
+        Car car2 = new Car();
+        car2.play(moveStrategy);
+        car2.play(moveStrategy);
+
+        Car car3 = new Car();
+        car3.play(moveStrategy);
+
+        assertThat(car1).isEqualTo(car2);
+        assertThat(car1).isNotEqualTo(car3);
+
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5})
-    @DisplayName("파라미터와 position 동치 비교")
-    void hasPosition(int input) {
-        for (int i = 0; i < input; i++) {
-            car.forward();
-        }
-        assertThat(car.hasPosition(input)).isTrue();
-        assertThat(car.hasPosition(input+1)).isFalse();
+    @CsvSource(value = {"1:-", "2:--", "3:---", "4:----", "5:-----"}, delimiter = ':')
+    void carPosition(int input, String dash) {
+        Car car = getMovedCar(input);
+
+        assertThat(car.carPosition()).isEqualTo(dash);
     }
 
-    @Test
-    @DisplayName("forward() 호출 시 position 1 증가")
-    void forward() {
-        int startPosition = 0;
-        assertThat(car.hasPosition(startPosition)).isTrue();
-        car.forward();
-        assertThat(car.hasPosition(startPosition + 1)).isTrue();
+    private Car getMovedCar(int moveCount) {
+        MoveStrategy moveStrategy = () -> true;
+
+        Car car = new Car();
+        for (int i = 0; i < moveCount; i++) {
+            car.play(moveStrategy);
+        }
+
+        return car;
     }
 
 }
