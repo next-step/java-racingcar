@@ -9,16 +9,6 @@ public class RacingGameConsole {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    private static void printResult(RacingGame racingGame) {
-        System.out.println("\n실행 결과");
-        System.out.println(racingGame.getResult());
-    }
-
-    private static void printWinners(RacingGame racingGame) {
-        System.out.printf("\n%s가 최종 우승했습니다.",
-            String.join(WINNER_DELIMITER, racingGame.getWinnerNames()));
-    }
-
     public void start() {
         String[] carNames = inputCarNames();
         int round = inputRound();
@@ -28,6 +18,16 @@ public class RacingGameConsole {
 
         printResult(racingGame);
         printWinners(racingGame);
+    }
+
+    private void printResult(RacingGame racingGame) {
+        System.out.println("\n실행 결과");
+        System.out.println(racingGame.getResult());
+    }
+
+    private void printWinners(RacingGame racingGame) {
+        System.out.printf("\n%s가 최종 우승했습니다.",
+            String.join(WINNER_DELIMITER, racingGame.getWinnerNames()));
     }
 
     private String[] inputCarNames() {
