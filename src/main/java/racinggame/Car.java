@@ -1,11 +1,24 @@
 package racinggame;
 
 public class Car {
-    public boolean run(MoveCondition condition) {
-        if(condition.isMovable()) {
-            return true;
-        }
-        return false;
+
+    private Position position;
+
+    public Car() {
+        this(new Position(0));
     }
 
+    public Car(Position position) {
+        this.position = position;
+    }
+
+    public void run(MoveCondition condition) {
+        if(condition.isMovable()) {
+            position = position.add();
+        }
+    }
+
+    public Position position() {
+        return position;
+    }
 }
