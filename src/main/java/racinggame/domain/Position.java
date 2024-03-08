@@ -14,6 +14,10 @@ public class Position {
         return position;
     }
 
+    public Position add() {
+        return new Position(position + 1);
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) return true;
@@ -21,13 +25,9 @@ public class Position {
         Position position1 = (Position) that;
         return position == position1.position;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(position);
     }
 
-    public Position add() {
-        return new Position(position + 1);
-    }
 }

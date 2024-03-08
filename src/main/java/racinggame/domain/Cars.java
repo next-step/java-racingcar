@@ -28,8 +28,8 @@ public class Cars {
     }
 
     private void runCars() {
-        for (int j = 0; j < cars.size(); j++) {
-            cars.get(j).run(new MoveCondition());
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).run(new MoveCondition());
         }
     }
 
