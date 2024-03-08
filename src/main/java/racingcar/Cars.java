@@ -9,10 +9,17 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(DrivingStrategy drivingStrategy, String[] carNames) {
+        if (carNames.length == 0) {
+            throw new IllegalArgumentException("차는 1대 이상이어야 합니다");
+        }
         for (String carName : carNames) {
             Car car = new Car(drivingStrategy, carName);
             cars.add(car);
         }
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars.addAll(cars);
     }
 
     public void drive() {
@@ -31,5 +38,20 @@ public class Cars {
         return cars.stream()
             .map(Car::getResult)
             .collect(Collectors.joining("\n"));
+    }
+
+    public List<Car> getWinners() {
+        int maxDistance = getMaxDistance();
+        return cars.stream()
+            .filter(car -> car.matchDistance(maxDistance))
+            .collect(Collectors.toList());
+
+    }
+
+    private int getMaxDistance() {
+        return cars.stream()
+            .mapToInt(Car::drivingDistance)
+            .max()
+            .orElseThrow(IllegalStateException::new);
     }
 }

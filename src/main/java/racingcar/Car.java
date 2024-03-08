@@ -30,4 +30,12 @@ public class Car {
     public String getResult() {
         return name + " : " + DISTANCE_SYMBOL.repeat(drivingDistance);
     }
+
+    public boolean matchDistance(int distance) {
+        return drivingDistance == distance;
+    }
+
+    public String name() {
+        return name.name();
+    }
 }

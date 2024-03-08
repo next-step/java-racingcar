@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
@@ -10,6 +11,10 @@ public class RacingGame {
 
     public RacingGame(DrivingStrategy drivingStrategy, String[] carNames) {
         this.cars = new Cars(drivingStrategy, carNames);
+    }
+
+    public RacingGame(Cars cars) {
+        this.cars = cars;
     }
 
     public void drive(int round) {
@@ -25,5 +30,11 @@ public class RacingGame {
 
     public String getResult() {
         return String.join("\n\n", roundResults);
+    }
+
+    public String[] getWinnerNames() {
+        return cars.getWinners().stream()
+            .map(Car::name)
+            .toArray(String[]::new);
     }
 }

@@ -41,4 +41,26 @@ public class CarsTest {
         cars.drive();
         assertThat(cars.getResult()).isEqualTo(String.format("%s : --\n%s : --\n%s : --", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
     }
+
+    @Test
+    @DisplayName("우승자 목록을 가져온다 (단일 우승자)")
+    void getWinners_single() {
+        List<Car> listCars = List.of(new Car(() -> true, "a"), new Car(() -> false, "b"));
+        Cars cars = new Cars(listCars);
+        cars.drive();
+
+        List<Car> winners = cars.getWinners();
+        assertThat(winners).containsExactly(listCars.get(0));
+    }
+
+    @Test
+    @DisplayName("우승자 목록을 가져온다 (복수 우승자)")
+    void getWinners_multi() {
+        List<Car> listCars = List.of(new Car(() -> true, "a"), new Car(() -> true, "b"), new Car(() -> false, "c"));
+        Cars cars = new Cars(listCars);
+        cars.drive();
+
+        List<Car> winners = cars.getWinners();
+        assertThat(winners).containsExactly(listCars.get(0), listCars.get(1));
+    }
 }

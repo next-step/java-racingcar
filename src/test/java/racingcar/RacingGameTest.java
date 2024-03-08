@@ -53,4 +53,17 @@ public class RacingGameTest {
         expected.deleteCharAt(expected.length()-1);
         return expected.toString();
     }
+
+    @Test
+    @DisplayName("우승자 이름 목록을 가져온다")
+    void getWinnerNames() {
+        List<Car> listCars = List.of(new Car(() -> true, "a"), new Car(() -> true, "b"), new Car(() -> false, "c"));
+        Cars cars = new Cars(listCars);
+        cars.drive();
+
+        RacingGame racingGame = new RacingGame(cars);
+        String[] winnerNames = racingGame.getWinnerNames();
+
+        assertThat(winnerNames).containsExactly("a", "b");
+    }
 }
