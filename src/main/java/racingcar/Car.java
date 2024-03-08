@@ -13,10 +13,6 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public Car(DrivingStrategy drivingStrategy) {
-        this(drivingStrategy, "temp");
-    }
-
     public void drive() {
         if (drivingStrategy.canDrive()) {
             drivingDistance++;
