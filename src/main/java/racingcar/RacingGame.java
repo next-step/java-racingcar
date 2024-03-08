@@ -8,8 +8,8 @@ public class RacingGame {
     private final Cars cars;
     private final List<String> roundResults = new ArrayList<>();
 
-    public RacingGame(DrivingStrategy drivingStrategy, int carAmount) {
-        this.cars = new Cars(drivingStrategy, carAmount);
+    public RacingGame(DrivingStrategy drivingStrategy, String[] carNames) {
+        this.cars = new Cars(drivingStrategy, carNames);
     }
 
     public void drive(int round) {
