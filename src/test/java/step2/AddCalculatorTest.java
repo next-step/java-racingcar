@@ -1,3 +1,5 @@
+package step2;
+
 import error.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
