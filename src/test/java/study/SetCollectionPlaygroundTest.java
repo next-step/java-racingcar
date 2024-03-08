@@ -1,3 +1,5 @@
+package study;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,7 +33,8 @@ public class SetCollectionPlaygroundTest {
     @DisplayName("요구사항1 - size() 메소드를 활용 Set 크기 테스트")
     @Test
     public void setSize_TestSetSize() {
-        assertThat(numbers.size()).isEqualTo(3);
+//        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     private static Stream<Arguments> paramsForContainsTest() {
@@ -58,7 +61,7 @@ public class SetCollectionPlaygroundTest {
 
     @DisplayName("요구사항3 - contains() 메소드를 활용하여 입력값에 따라 결과값이 다른 경우 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"}, delimiter = ',')
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"}) // default delimiter is comma(,)
     public void setContains_ReturnTrueIfValueIsPresentInNumbers(int value, boolean expected) {
         assertEquals(expected, numbers.contains(value));
     }

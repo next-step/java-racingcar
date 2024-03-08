@@ -1,3 +1,5 @@
+package study;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,10 +14,10 @@ public class StringPlaygroundTest {
     public void splitString_toArray() {
         String givenString = "1,2";
         String[] result = givenString.split(",");
-        assertThat(result).hasSize(2);
-        assertThat(result).contains("1");
-        assertThat(result).contains("2");
-        assertThat(result).containsExactly("1", "2");
+//        assertThat(result).hasSize(2);
+//        assertThat(result).contains("1");
+//        assertThat(result).contains("2");
+        assertThat(result).containsExactly("1", "2"); // containsExactly is same as hasSize() and contains()
     }
 
     @DisplayName("요구사항2 - substring 테스트")
