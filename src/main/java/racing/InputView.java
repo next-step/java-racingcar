@@ -1,40 +1,31 @@
 package racing;
 
 import java.util.InputMismatchException;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class InputView {
 
     private final Scanner scanner;
 
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요";
+
     public InputView(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public int inputtedNumber(String question) {
-        System.out.println(question);
-        while (true) {
-            Optional<Integer> inputtedNumber = scanNextInt();
-            if (inputtedNumber.isPresent()) {
-                return inputtedNumber.get();
-            }
-        }
-    }
-
-    private Optional<Integer> scanNextInt() {
+    public int inputtedNumber(String message) {
+        System.out.println(message);
 
         try {
-            int result = scanner.nextInt();
-            scanner.nextLine();     // 버퍼 제거
-
-            return Optional.of(result);
+            return scanNextInt();
         } catch (InputMismatchException e) {
-            System.out.println("숫자를 입력해주세요");
-            scanner.nextLine();     // 버퍼 제거
-
-            return Optional.empty();
+            return inputtedNumber(INPUT_NUMBER_MESSAGE);
         }
+
+    }
+
+    private int scanNextInt() {
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public void closeScanner() {
