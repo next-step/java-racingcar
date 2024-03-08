@@ -13,7 +13,7 @@ class ValidationTest {
     @NullAndEmptySource
     @DisplayName("null 또는 빈 문자열을 입력하는 경우 false를 반환한다.")
     void testBlankValidation(String input) {
-        assertThat(Validation.isBlank(input)).isFalse();
+        assertThat(Validation.isNonBlank(input)).isFalse();
     }
 
     @ParameterizedTest
