@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    public static final String DISTANCE_SYMBOL = "-";
+    private static final String DISTANCE_SYMBOL = "-";
 
     private final DrivingStrategy drivingStrategy;
     private int drivingDistance = 0;
