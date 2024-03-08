@@ -19,4 +19,17 @@ class RacingCarTest {
         // then
         assertThat(racingCar.getLocation()).isEqualTo(1);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void 랜덤_값이_4미만이면_정지한다(final int randomNumber) {
+        // given
+        final RacingCar racingCar = new RacingCar();
+
+        // when
+        racingCar.move(randomNumber);
+
+        // then
+        assertThat(racingCar.getLocation()).isEqualTo(0);
+    }
 }
