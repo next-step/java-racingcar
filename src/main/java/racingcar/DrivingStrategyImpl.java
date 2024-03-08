@@ -7,7 +7,7 @@ public class DrivingStrategyImpl implements DrivingStrategy {
     private static final int RANGE_UPPER_BOUND = 10;
     private static final int THRESHOLD = 4;
 
-    private final Random random = new Random();
+    private static final Random random = new Random();
 
     @Override
     public boolean canDrive() {
