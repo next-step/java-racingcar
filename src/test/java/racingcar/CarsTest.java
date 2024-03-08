@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +10,13 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
     private static final String[] CAR_NAMES = {"a", "b", "c"};
+
+    @Test
+    @DisplayName("차 이름이 0개라면 예외가 발생한다")
+    void new_cars_length_less_than_1() {
+        assertThatThrownBy(() -> new Cars(new String[0]))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
