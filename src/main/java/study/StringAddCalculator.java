@@ -49,11 +49,11 @@ public class StringAddCalculator {
     private static int parsePositiveSingleNumber(final String input) {
         final int singleNumber = parseSingleNumber(input);
 
-        if (singleNumber >= 0) {
-            return singleNumber;
+        if (singleNumber < 0) {
+            throw new RuntimeException(MESSAGE_NEGATIVE_NOT_ALLOWED);
         }
 
-        throw new RuntimeException(MESSAGE_NEGATIVE_NOT_ALLOWED);
+        return singleNumber;
     }
 
     private static int parseSingleNumber(final String input) {
