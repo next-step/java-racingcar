@@ -1,8 +1,5 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Race {
 
     private final InputView inputView;
@@ -19,31 +16,20 @@ public class Race {
         int tryCount = inputView.inputtedNumber(TRY_COUNT_MESSAGE);
         inputView.closeScanner();
 
-        List<Car> carList = new ArrayList<>();
+        Cars cars = new Cars();
 
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            cars.addCar(new Car());
         }
 
         ResultView resultView = new ResultView();
 
         int currentTryCount = 0;
+
         while (currentTryCount < tryCount) {
-            playRound(carList);
-            resultView.printRaceResult(carList);
+            cars.playRound();
+            resultView.printRaceResult(cars);
             currentTryCount++;
-        }
-    }
-
-    private void playRound(List<Car> carList) {
-        for (Car car : carList) {
-            randomAndForward(car);
-        }
-    }
-
-    private void randomAndForward(Car car) {
-        if (Judgement.isNumberGreaterThanFour(RandomUtil.randomNumberZeroToNine())) {
-            car.forward();
         }
     }
 }

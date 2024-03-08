@@ -1,7 +1,7 @@
 package racing;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import static racing.Judgement.isNumberGreaterThanFour;
+import static racing.RandomUtil.randomNumberZeroToNine;
 
 public class Car {
 
@@ -15,13 +15,17 @@ public class Car {
         position.add(1);
     }
 
-    public static List<Position> carPositions(List<Car> cars) {
-        return cars.stream()
-                .map(car -> car.position)
-                .collect(Collectors.toList());
-    }
-
     public boolean hasPosition(int value) {
         return position.equals(new Position(value));
+    }
+
+    public String carPosition() {
+        return position.dashOfPosition();
+    }
+
+    public void play() {
+        if (isNumberGreaterThanFour(randomNumberZeroToNine())) {
+            forward();
+        }
     }
 }

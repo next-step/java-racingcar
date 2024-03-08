@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
@@ -31,25 +29,6 @@ class CarTest {
         assertThat(car.hasPosition(startPosition)).isTrue();
         car.forward();
         assertThat(car.hasPosition(startPosition + 1)).isTrue();
-    }
-
-    @Test
-    @DisplayName("carPositions() 호출 시 List<Car>를 List<Position>으로 변환")
-    void carPositions() {
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Car car3 = new Car();
-
-        car1.forward();
-        car1.forward();
-        car2.forward();
-
-        List<Car> carList = List.of(car1, car2, car3);
-
-        List<Position> positions = Car.carPositions(carList);
-
-        assertThat(positions).containsSubsequence(new Position(2), new Position(1), new Position(0));
-
     }
 
 }
