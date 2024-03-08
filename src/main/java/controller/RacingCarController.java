@@ -16,11 +16,10 @@ public class RacingCarController {
     }
 
     public void start() {
-        final int racingCarNumber = inputView.inputRacingCarNumber();
+        final RacingCars racingCars = RacingCars.of(inputView.inputRacingCarNumber());
         final int tryNumber = inputView.inputTryNumber();
 
-        final RacingCars racingCars = RacingCars.of(racingCarNumber);
-
+        outputView.printResultMessage();
         for (int i = 0; i < tryNumber; i++) {
             racingCars.move(new RandomNumberGenerator());
             outputView.printResult(racingCars.getRacingCars());
