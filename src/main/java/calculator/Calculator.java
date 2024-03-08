@@ -12,16 +12,16 @@ public class Calculator {
 		Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
 
 		if (matcher.find()) {
-			String customDelimiter = matcher.group(1);
-			String[] numbers = matcher.group(2).split(customDelimiter);
-			return calculateAddition(numbers);
+			return calculateAdditionWithCustomSign(matcher);
 		}
 
-		String[] numbers = input.split(",|:");
+		return calculateAddition(input.split(",|:"));
+	}
 
-		int result = calculateAddition(numbers);
-
-		return result;
+	private static int calculateAdditionWithCustomSign(final Matcher matcher) {
+		String customDelimiter = matcher.group(1);
+		String[] numbers = matcher.group(2).split(customDelimiter);
+		return calculateAddition(numbers);
 	}
 
 	private static int calculateAddition(final String[] number) {
