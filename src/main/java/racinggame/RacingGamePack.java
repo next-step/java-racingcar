@@ -11,7 +11,7 @@ public class RacingGamePack {
     public void startGame() {
         initializeGame();
         cars.raceStart();
-        ResultView.display(cars);
+        ResultView.display(cars.getCarsPositions());
     }
 
     private void initializeGame() {
