@@ -3,7 +3,7 @@ package view;
 import java.util.Scanner;
 
 public class InputView {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
     private static final String ASK_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
     private static final String ASK_RACING_TURN = "시도할 회수는 몇 회 인가요?";
     private static final String INVALID_INPUT = "1이상의 수를 입력하세요";
@@ -14,7 +14,7 @@ public class InputView {
 
         int result = 0;
         try {
-            result = toInt(scanner.nextLine());
+            result = toInt(SCANNER.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             askNumberOfCars();
@@ -28,7 +28,7 @@ public class InputView {
 
         int result = 0;
         try {
-            result = toInt(scanner.nextLine());
+            result = toInt(SCANNER.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             askRacingTurn();
