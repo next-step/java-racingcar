@@ -13,8 +13,8 @@ public class Position {
         this.position = position;
     }
 
-    public void add(int addend) {
-        position += addend;
+    public void addOne() {
+        position++;
     }
 
     @Override

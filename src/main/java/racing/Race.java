@@ -19,7 +19,7 @@ public class Race {
         Cars cars = new Cars();
 
         for (int i = 0; i < carCount; i++) {
-            cars.addCar(new Car());
+            cars.addCar(new Car(new RandomNumberStrategy()));
         }
 
         ResultView resultView = new ResultView();

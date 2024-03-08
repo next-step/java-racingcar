@@ -1,18 +1,17 @@
 package racing;
 
-import static racing.Judgement.isNumberGreaterThanFour;
-import static racing.RandomUtil.randomNumberZeroToNine;
-
 public class Car {
 
     private final Position position;
+    private final MoveStrategy strategy;
 
-    public Car() {
+    public Car(MoveStrategy strategy) {
         this.position = new Position();
+        this.strategy = strategy;
     }
 
     public void forward() {
-        position.add(1);
+        position.addOne();
     }
 
     public boolean hasPosition(int value) {
@@ -24,7 +23,7 @@ public class Car {
     }
 
     public void play() {
-        if (isNumberGreaterThanFour(randomNumberZeroToNine())) {
+        if (strategy.movable()) {
             forward();
         }
     }
