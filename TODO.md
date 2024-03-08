@@ -6,9 +6,11 @@
 - 랜덤값
     - [x] 0 ~ 9 사이 값을 반환한다
 - 자동차
-    - [ ] position 값을 가진다
-    - [ ] random 값이 4이상일 경우 position 을 1 증가 시킨다 (=전진시킨다)
-    - [ ] random 값이 4미만일 경우 현재 position 유지한다
+    - [x] position 값을 가진다
+    - [x] random 값이 4이상일 경우 position 을 1 증가 시킨다 (=전진시킨다)
+    - [x] random 값이 4미만일 경우 현재 position 유지한다
+    - [x] position 값을 책임지는 Position 클래스를 생성한다
+    - [x] random 값이 4이상일 경우 Postion의 move() 호출하여 position 값을 증가시킨다
 - 결과 출력
     - [ ] 자동차의 position 따라 '-'(hyphen)으로 위치를 표현한다
     - [ ] 결과를 기록 후 출력한다
