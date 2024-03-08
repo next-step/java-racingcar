@@ -5,7 +5,7 @@ public class Car {
     private static final String DISTANCE_SYMBOL = "-";
 
     private final DrivingStrategy drivingStrategy;
-    private Name name;
+    private final Name name;
     private int drivingDistance = 0;
 
     public Car(DrivingStrategy drivingStrategy, String name) {
@@ -28,6 +28,6 @@ public class Car {
     }
 
     public String getResult() {
-        return DISTANCE_SYMBOL.repeat(drivingDistance);
+        return name + " : " + DISTANCE_SYMBOL.repeat(drivingDistance);
     }
 }

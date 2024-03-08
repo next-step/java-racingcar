@@ -36,9 +36,9 @@ public class CarsTest {
         Cars cars = new Cars(() -> true, CAR_NAMES);
 
         cars.drive();
-        assertThat(cars.getResult()).isEqualTo("-\n-\n-");
+        assertThat(cars.getResult()).isEqualTo(String.format("%s : -\n%s : -\n%s : -", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
 
         cars.drive();
-        assertThat(cars.getResult()).isEqualTo("--\n--\n--");
+        assertThat(cars.getResult()).isEqualTo(String.format("%s : --\n%s : --\n%s : --", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
     }
 }

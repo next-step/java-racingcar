@@ -36,11 +36,21 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(() -> true, CAR_NAMES);
         racingGame.drive(5);
 
+        String expectedResult = expectedResult();
         assertThat(racingGame.getResult())
-            .isEqualTo("-\n-\n-\n\n"
-                + "--\n--\n--\n\n"
-                + "---\n---\n---\n\n"
-                + "----\n----\n----\n\n"
-                + "-----\n-----\n-----");
+            .isEqualTo(expectedResult);
+    }
+
+    private String expectedResult() {
+        StringBuilder expected = new StringBuilder();
+        for (int i = 1; i <= 5; i++) {
+            for (String carName : CAR_NAMES) {
+                expected.append(carName).append(" : ").append("-".repeat(i)).append('\n');
+            }
+            expected.append('\n');
+        }
+        expected.deleteCharAt(expected.length()-1);
+        expected.deleteCharAt(expected.length()-1);
+        return expected.toString();
     }
 }
