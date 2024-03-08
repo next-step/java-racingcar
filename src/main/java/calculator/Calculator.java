@@ -31,8 +31,15 @@ public class Calculator {
 		int result = 0;
 
 		for (int i = 0; i < number.length; i++) {
+			checkNegativeNumber(number, i);
 			result += Integer.parseInt(number[i]);
 		}
 		return result;
+	}
+
+	private static void checkNegativeNumber(final String[] number, final int i) {
+		if (Integer.parseInt(number[i]) < 0) {
+			throw new RuntimeException();
+		}
 	}
 }
