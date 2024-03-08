@@ -7,29 +7,30 @@ public class Car {
 
     private final DrivingStrategy drivingStrategy;
     private final Name name;
-    private int drivingDistance = 0;
+    private final DrivingDistance drivingDistance;
 
     public Car(DrivingStrategy drivingStrategy, String name) {
         this.drivingStrategy = drivingStrategy;
+        this.drivingDistance = new DrivingDistance();
         this.name = new Name(name);
     }
 
     public void drive() {
         if (drivingStrategy.canDrive()) {
-            drivingDistance++;
+            drivingDistance.moveForward();
         }
     }
 
     public int drivingDistance() {
-        return drivingDistance;
+        return drivingDistance.getDrivingDistance();
     }
 
     public String getResult() {
-        return name + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance);
+        return name + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.getDrivingDistance());
     }
 
     public boolean matchDistance(int distance) {
-        return drivingDistance == distance;
+        return drivingDistance.matchDistance(distance);
     }
 
     public String name() {
