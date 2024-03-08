@@ -9,13 +9,17 @@ public class StringAddCalculator {
     }
 
     public static Integer splitAndSum(String stringNumber) {
-        if (stringNumber == null || stringNumber.isBlank()) {
+        if (verifyStringNumberEmpty(stringNumber)) {
             return 0;
         }
         String[] split = createSplitNumbersByStringNumber(stringNumber);
         if (isEmptyNumberArray(split)) return 0;
 
         return sum(split);
+    }
+
+    private static boolean verifyStringNumberEmpty(String stringNumber) {
+        return stringNumber == null || stringNumber.isBlank();
     }
 
     private static boolean isEmptyNumberArray(String[] split) {

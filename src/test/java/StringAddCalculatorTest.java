@@ -23,4 +23,12 @@ class StringAddCalculatorTest {
     void splitAndSum(String input, Integer result) {
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(result);
     }
+
+
+    @DisplayName("앞의 기본 구분자(쉼표, 콜론)외에 커스텀 구분자를 지정할 수 있다.")
+    @Test
+    void splitAndSumWithCustomDelimiter() {
+        String input = "//;\n1;2;3";
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(6);
+    }
 }
