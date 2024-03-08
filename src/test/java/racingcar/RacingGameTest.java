@@ -43,15 +43,21 @@ public class RacingGameTest {
 
     private String expectedResult() {
         StringBuilder expected = new StringBuilder();
-        for (int i = 1; i <= 5; i++) {
-            for (String carName : CAR_NAMES) {
-                expected.append(carName).append(" : ").append("-".repeat(i)).append('\n');
-            }
+        for (int round = 1; round <= 5; round++) {
+            expected.append(expectedRoundResult(round));
             expected.append('\n');
         }
         expected.deleteCharAt(expected.length() - 1);
         expected.deleteCharAt(expected.length() - 1);
         return expected.toString();
+    }
+
+    private String expectedRoundResult(int round) {
+        StringBuilder sb = new StringBuilder();
+        for (String carName : CAR_NAMES) {
+            sb.append(carName).append(" : ").append("-".repeat(round)).append('\n');
+        }
+        return sb.toString();
     }
 
     @Test
