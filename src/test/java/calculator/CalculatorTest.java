@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -19,5 +21,19 @@ public class CalculatorTest {
 
 		// then
 		assertThat(result).isEqualTo(6);
+	}
+
+	@DisplayName("빈값이나 null값으로 덧셈 계산을 하면 0을 반환한다.")
+	@ParameterizedTest
+	@NullAndEmptySource
+	void additionCalculateWithNullOrEmptyInputValue(String input) {
+		// given
+		Calculator calculator = new Calculator();
+
+		// when
+		int result = calculator.additionCalculate(input);
+
+		// then
+		assertThat(result).isEqualTo(0);
 	}
 }
