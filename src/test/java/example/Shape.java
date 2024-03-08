@@ -1,4 +1,4 @@
-package Example;
+package example;
 public class Shape {
     private final int numberOfSides;
 
