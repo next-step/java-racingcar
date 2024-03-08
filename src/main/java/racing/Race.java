@@ -1,5 +1,8 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Race {
 
     private final InputView inputView;
@@ -18,11 +21,12 @@ public class Race {
         int tryCount = inputView.inputtedNumber(TRY_COUNT_MESSAGE);
         inputView.closeScanner();
 
-        Cars cars = new Cars();
-
+        List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.addCar(new Car());
+            carList.add(new Car());
         }
+
+        Cars cars = new Cars(carList);
 
         ResultView resultView = new ResultView();
 

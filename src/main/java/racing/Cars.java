@@ -1,16 +1,14 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-
-    public void addCar(Car... car) {
-        cars.addAll(List.of(car));
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public int size() {
