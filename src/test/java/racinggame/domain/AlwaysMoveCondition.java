@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import racinggame.domain.MoveCondition;
 
