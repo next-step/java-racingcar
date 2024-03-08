@@ -15,6 +15,6 @@ class RacingCarsTest {
         final RacingCars racingCars = RacingCars.of(racingCarNumber);
 
         // then
-        assertThat(racingCars.getCarNumber()).isEqualTo(3);
+        assertThat(racingCars.getRacingCars()).hasSize(3);
     }
 }

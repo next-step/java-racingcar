@@ -24,10 +24,6 @@ public class RacingCars {
         racingCars.forEach(car -> car.move(randomNumberGenerator.generate()));
     }
 
-    public int getCarNumber() {
-        return racingCars.size();
-    }
-
     public List<RacingCar> getRacingCars() {
         return Collections.unmodifiableList(racingCars);
     }
