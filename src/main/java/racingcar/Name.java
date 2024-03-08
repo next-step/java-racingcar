@@ -7,7 +7,9 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        Objects.requireNonNull(name);
+        if (name == null) {
+            throw new IllegalArgumentException("자동차 이름에 null이 들어옴");
+        }
         this.name = name.trim();
 
         assertValidName(this.name);
