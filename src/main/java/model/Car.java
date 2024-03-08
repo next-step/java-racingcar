@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Car {
+    private static final int BOUNDARY_VALUE = 4;
     private final Position position;
 
     public Car() {
@@ -14,7 +15,7 @@ public class Car {
     }
 
     public void move(int random) {
-        if (random >= 4) {
+        if (random >= BOUNDARY_VALUE) {
             this.position.move();
         }
     }
