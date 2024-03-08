@@ -8,12 +8,17 @@ public class Calculator {
 
 		String[] number = input.split(",|:");
 
+		int result = calculateAddition(number);
+
+		return result;
+	}
+
+	private static int calculateAddition(final String[] number) {
 		int result = 0;
 
 		for (int i = 0; i < number.length; i++) {
 			result += Integer.parseInt(number[i]);
 		}
-
 		return result;
 	}
 }
