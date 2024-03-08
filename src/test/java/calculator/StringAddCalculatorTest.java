@@ -11,14 +11,14 @@ public class StringAddCalculatorTest {
     @Test
     @DisplayName("빈 문자열을 입력할 경우 0을 반환")
     void return0WhenEmptyString() {
-        int result = StringAddCalculator.sum("");
-        assertThat(result).isZero();
+        int actual = StringAddCalculator.sum("");
+        assertThat(actual).isZero();
     }
 
     @Test
     @DisplayName("null 값을 입력할 경우 0을 반환")
     void return0WhenNull() {
-        int result = StringAddCalculator.sum(null);
-        assertThat(result).isZero();
+        int actual = StringAddCalculator.sum(null);
+        assertThat(actual).isZero();
     }
 }
