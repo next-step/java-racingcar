@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class RacingGameConsole {
 
+    private static final DrivingStrategyImpl DRIVING_STRATEGY = new DrivingStrategyImpl();
     private static final String WINNER_DELIMITER = ", ";
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -12,8 +13,8 @@ public class RacingGameConsole {
         String[] carNames = inputCarNames();
         int round = inputRound();
 
-        RacingGame racingGame = new RacingGame(new DrivingStrategyImpl(), carNames);
-        racingGame.drive(round);
+        RacingGame racingGame = new RacingGame(carNames);
+        racingGame.drive(round, DRIVING_STRATEGY);
 
         printResult(racingGame);
         printWinners(racingGame);

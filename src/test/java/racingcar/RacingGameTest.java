@@ -13,8 +13,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
     void drive() {
-        RacingGame racingGame = new RacingGame(() -> true, CAR_NAMES);
-        racingGame.drive(5);
+        RacingGame racingGame = new RacingGame(CAR_NAMES);
+        racingGame.drive(5, () -> true);
 
         List<Integer> drivingDistances = racingGame.drivingDistances();
         assertThat(drivingDistances).containsExactly(5, 5, 5);
@@ -23,8 +23,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
     void notDrive() {
-        RacingGame racingGame = new RacingGame(() -> false, CAR_NAMES);
-        racingGame.drive(5);
+        RacingGame racingGame = new RacingGame(CAR_NAMES);
+        racingGame.drive(5, () -> false);
 
         List<Integer> drivingDistances = racingGame.drivingDistances();
         assertThat(drivingDistances).containsExactly(0, 0, 0);
@@ -33,8 +33,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
     void getResult() {
-        RacingGame racingGame = new RacingGame(() -> true, CAR_NAMES);
-        racingGame.drive(5);
+        RacingGame racingGame = new RacingGame(CAR_NAMES);
+        racingGame.drive(5, () -> true);
 
         String expectedResult = expectedResult();
         assertThat(racingGame.getResult())
@@ -57,9 +57,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("우승자 이름 목록을 가져온다")
     void getWinnerNames() {
-        List<Car> listCars = List.of(new Car(() -> true, "a"), new Car(() -> true, "b"), new Car(() -> false, "c"));
+        List<Car> listCars = List.of(new Car("a", 2), new Car("b", 2), new Car("c", 1));
         Cars cars = new Cars(listCars);
-        cars.drive();
 
         RacingGame racingGame = new RacingGame(cars);
         String[] winnerNames = racingGame.getWinnerNames();

@@ -8,12 +8,12 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(DrivingStrategy drivingStrategy, String[] carNames) {
+    public Cars(String[] carNames) {
         if (carNames.length == 0) {
             throw new IllegalArgumentException("차는 1대 이상이어야 합니다");
         }
         for (String carName : carNames) {
-            Car car = new Car(drivingStrategy, carName);
+            Car car = new Car(carName);
             cars.add(car);
         }
     }
@@ -22,9 +22,9 @@ public class Cars {
         this.cars.addAll(cars);
     }
 
-    public void drive() {
+    public void drive(DrivingStrategy drivingStrategy) {
         for (Car car : cars) {
-            car.drive();
+            car.drive(drivingStrategy);
         }
     }
 

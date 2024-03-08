@@ -9,17 +9,17 @@ public class RacingGame {
     private final Cars cars;
     private final List<String> roundResults = new ArrayList<>();
 
-    public RacingGame(DrivingStrategy drivingStrategy, String[] carNames) {
-        this.cars = new Cars(drivingStrategy, carNames);
+    public RacingGame(String[] carNames) {
+        this.cars = new Cars(carNames);
     }
 
     public RacingGame(Cars cars) {
         this.cars = cars;
     }
 
-    public void drive(int round) {
+    public void drive(int round, DrivingStrategy drivingStrategy) {
         for (int i = 0; i < round; i++) {
-            cars.drive();
+            cars.drive(drivingStrategy);
             roundResults.add(cars.getResult());
         }
     }
