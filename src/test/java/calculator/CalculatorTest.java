@@ -50,4 +50,18 @@ public class CalculatorTest {
 		// then
 		assertThat(result).isEqualTo(3);
 	}
+
+	@DisplayName("'//'와 '\n' 사이에 위치하는 문자를 덧셈기호로 사용할수 있다.")
+	@Test
+	void additionCalculateWithCustomSign() {
+		// given
+		String input = "//;\\n1;2;3";
+		Calculator calculator = new Calculator();
+
+		// when
+		int result = calculator.additionCalculate(input);
+
+		// then
+		assertThat(result).isEqualTo(6);
+	}
 }
