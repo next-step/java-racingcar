@@ -60,7 +60,7 @@ public class StringAddCalculator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new RuntimeException(MESSAGE_INVALID_NUMBER_FORMAT);
+            throw new RuntimeException(MESSAGE_INVALID_NUMBER_FORMAT, e);
         }
     }
 
