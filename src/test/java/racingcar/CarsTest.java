@@ -59,7 +59,9 @@ public class CarsTest {
         Cars cars = new Cars(listCars);
 
         List<Car> winners = cars.getWinners();
-        assertThat(winners).containsExactly(listCars.get(0));
+        assertThat(winners)
+            .extracting("name.name")
+            .containsExactly("a");
     }
 
     @Test
@@ -69,6 +71,8 @@ public class CarsTest {
         Cars cars = new Cars(listCars);
 
         List<Car> winners = cars.getWinners();
-        assertThat(winners).containsExactly(listCars.get(0), listCars.get(1));
+        assertThat(winners)
+            .extracting("name.name")
+            .containsExactly("a", "b");
     }
 }
