@@ -33,9 +33,15 @@ public class Race {
         int currentTryCount = 0;
 
         while (currentTryCount < tryCount) {
-            cars.playRound(moveStrategy);
+            playRound(cars);
             resultView.printRaceResult(cars);
             currentTryCount++;
+        }
+    }
+
+    private void playRound(Cars cars) {
+        for (Car car : cars) {
+            car.play(moveStrategy);
         }
     }
 }

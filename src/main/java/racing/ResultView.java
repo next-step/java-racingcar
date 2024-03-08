@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.Iterator;
+
 public class ResultView {
 
     public ResultView() {
@@ -7,7 +9,9 @@ public class ResultView {
     }
 
     public void printRaceResult(Cars cars) {
-        cars.dashOfCarPositions().forEach(System.out::println);
+        Iterator<Car> iter = cars.iterator();
+        iter.forEachRemaining(car-> System.out.println(car.carPosition()));
+
         System.out.println();
     }
 }

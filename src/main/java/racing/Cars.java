@@ -1,9 +1,9 @@
 package racing;
 
+import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
 
     private final List<Car> cars;
 
@@ -15,16 +15,8 @@ public class Cars {
         return cars.size();
     }
 
-    public List<String> dashOfCarPositions() {
-        return cars.stream()
-                .map(Car::carPosition)
-                .collect(Collectors.toList());
+    @Override
+    public Iterator<Car> iterator() {
+        return cars.iterator();
     }
-
-    public void playRound(MoveStrategy moveStrategy) {
-        for (Car car : cars) {
-            car.play(moveStrategy);
-        }
-    }
-
 }
