@@ -63,9 +63,15 @@ public class RacingGameTest {
     @Test
     @DisplayName("우승자 이름 목록을 가져온다")
     void getWinnerNames() {
-        List<Car> listCars = List.of(new Car("a", 2), new Car("b", 2), new Car("c", 1));
-        Cars cars = new Cars(listCars);
-
+        Cars cars = new Cars() {
+            @Override
+            public List<Car> getWinners() {
+                return List.of(
+                    new Car("a"),
+                    new Car("b")
+                );
+            }
+        };
         RacingGame racingGame = new RacingGame(cars);
         List<String> winnerNames = racingGame.getWinnerNames();
 
