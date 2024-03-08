@@ -14,4 +14,11 @@ public class StringAddCalculatorTest {
         int result = StringAddCalculator.sum("");
         assertThat(result).isZero();
     }
+
+    @Test
+    @DisplayName("null 값을 입력할 경우 0을 반환")
+    void return0WhenNull() {
+        int result = StringAddCalculator.sum(null);
+        assertThat(result).isZero();
+    }
 }
