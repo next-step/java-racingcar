@@ -1,5 +1,7 @@
 package racing;
 
+import racing.strategy.RandomNumberStrategy;
+
 import java.util.Scanner;
 
 public class Main {

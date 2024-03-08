@@ -1,5 +1,7 @@
 package racing;
 
+import racing.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
