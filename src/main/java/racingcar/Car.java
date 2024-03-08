@@ -36,6 +36,6 @@ public class Car {
     }
 
     public String name() {
-        return name.name();
+        return name.toString();
     }
 }
