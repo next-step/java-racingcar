@@ -55,7 +55,7 @@ public class CalculatorTest {
 	@Test
 	void additionCalculateWithCustomSign() {
 		// given
-		String input = "//;\\n1;2;3";
+		String input = "//;\n1;2;3";
 		Calculator calculator = new Calculator();
 
 		// when
