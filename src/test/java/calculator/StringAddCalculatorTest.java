@@ -43,4 +43,24 @@ public class StringAddCalculatorTest {
 
     }
 
+    @Nested
+    @DisplayName("숫자 두 개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환")
+    class TwoNumberStringWithCommaCase {
+
+        @Test
+        @DisplayName("문자열 '1,2'를 입력하면 숫자 3을 반환")
+        void return3When1And2ConcatWithComma() {
+            int actual = StringAddCalculator.sum("1,2");
+            assertThat(actual).isEqualTo(3);
+        }
+
+        @Test
+        @DisplayName("문자열 '9,10'를 입력하면 숫자 3을 반환")
+        void return19When9And10ConcatWithComma() {
+            int actual = StringAddCalculator.sum("9,10");
+            assertThat(actual).isEqualTo(19);
+        }
+    }
+
+
 }
