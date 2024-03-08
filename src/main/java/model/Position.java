@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Position {
+    private static final String HYPHEN = "-";
     private int position;
 
     public Position(int position) {
@@ -11,6 +12,16 @@ public class Position {
 
     public void move() {
         this.position += 1;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            sb.append(HYPHEN);
+        }
+
+        return sb.toString();
     }
 
     @Override
@@ -25,4 +36,5 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }
