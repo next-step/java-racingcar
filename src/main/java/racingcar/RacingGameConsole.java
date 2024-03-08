@@ -19,5 +19,7 @@ public class RacingGameConsole {
 
         System.out.println("\n실행 결과");
         System.out.println(racingGame.getResult());
+
+        System.out.printf("\n%s가 최종 우승했습니다.", String.join(", ", racingGame.getWinnerNames()));
     }
 }
