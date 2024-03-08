@@ -4,8 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class CalculatorTest {
 
@@ -63,5 +65,17 @@ public class CalculatorTest {
 
 		// then
 		assertThat(result).isEqualTo(6);
+	}
+
+	@DisplayName("숫자 이외의 값이나 음수를 입력시에 RuntimeException")
+	@ParameterizedTest
+	@ValueSource(strings = {"wege", "32g:23g", "-1:3"})
+	void additionCalculateRuntimeException(String input) {
+		// given
+		Calculator calculator = new Calculator();
+
+		// when&then
+		assertThatThrownBy(() -> calculator.additionCalculate(input))
+				.isInstanceOf(RuntimeException.class);
 	}
 }
