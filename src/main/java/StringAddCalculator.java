@@ -2,7 +2,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(?<key>;)\n.*");
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
@@ -20,8 +20,7 @@ public class StringAddCalculator {
     }
 
     private static String customSeparator(String input) {
-        Matcher matcher = Pattern.compile("//(?<key>;)\n.*"
-        ).matcher(input);
+        Matcher matcher = CUSTOM_PATTERN.matcher(input);
         if (!matcher.find()) {
             throw new RuntimeException("정규식 패턴에 일치하는 구분자가 없습니다.");
         }
