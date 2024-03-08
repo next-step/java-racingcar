@@ -16,12 +16,7 @@ public class Position {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            sb.append(HYPHEN);
-        }
-
-        return sb.toString();
+        return HYPHEN.repeat(this.position);
     }
 
     @Override
