@@ -15,19 +15,29 @@ public class Cars {
 
     private static List<Car> initialCars(int carCount) {
         List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carCount; i++) {
+        for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
         return cars;
     }
 
     public void raceStart() {
-        for(int i = 0; i < raceCount; i++) {
-            cars.get(i).run(new MoveCondition());
+        for (int i = 0; i < raceCount; i++) {
+            runCars();
         }
     }
 
-    public List<Car> getRaceResult() {
-        return cars;
+    private void runCars() {
+        for (int j = 0; j < cars.size(); j++) {
+            cars.get(j).run(new MoveCondition());
+        }
+    }
+
+    public List<Position> getCarsPositions() {
+        List<Position> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.position());
+        }
+        return positions;
     }
 }
