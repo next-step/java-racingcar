@@ -1,6 +1,5 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -27,7 +26,7 @@ class NameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "a", "ab", "abc", "abcd", "abcde" })
+    @ValueSource(strings = {"a", "ab", "abc", "abcd", "abcde"})
     @DisplayName("1~5자라면 문제없이 생성된다")
     void success_for_1_to_5_length(String input) {
         assertThatNoException()

@@ -49,8 +49,8 @@ public class RacingGameTest {
             }
             expected.append('\n');
         }
-        expected.deleteCharAt(expected.length()-1);
-        expected.deleteCharAt(expected.length()-1);
+        expected.deleteCharAt(expected.length() - 1);
+        expected.deleteCharAt(expected.length() - 1);
         return expected.toString();
     }
 

@@ -6,8 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -43,7 +41,7 @@ public class StringAddCalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "//;\n1;2;3", "//!\n1!2!3" })
+    @ValueSource(strings = {"//;\n1;2;3", "//!\n1!2!3"})
     @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. ")
     public void splitAndSum_custom_구분자(String input) {
         int result = StringAddCalculator.splitAndSum(input);

@@ -9,6 +9,16 @@ public class RacingGameConsole {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    private static void printResult(RacingGame racingGame) {
+        System.out.println("\n실행 결과");
+        System.out.println(racingGame.getResult());
+    }
+
+    private static void printWinners(RacingGame racingGame) {
+        System.out.printf("\n%s가 최종 우승했습니다.",
+            String.join(WINNER_DELIMITER, racingGame.getWinnerNames()));
+    }
+
     public void start() {
         String[] carNames = inputCarNames();
         int round = inputRound();
@@ -28,14 +38,5 @@ public class RacingGameConsole {
     private int inputRound() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         return scanner.nextInt();
-    }
-
-    private static void printResult(RacingGame racingGame) {
-        System.out.println("\n실행 결과");
-        System.out.println(racingGame.getResult());
-    }
-
-    private static void printWinners(RacingGame racingGame) {
-        System.out.printf("\n%s가 최종 우승했습니다.", String.join(WINNER_DELIMITER, racingGame.getWinnerNames()));
     }
 }

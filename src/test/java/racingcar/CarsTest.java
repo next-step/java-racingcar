@@ -44,10 +44,12 @@ public class CarsTest {
         Cars cars = new Cars(CAR_NAMES);
 
         cars.drive(() -> true);
-        assertThat(cars.getResult()).isEqualTo(String.format("%s : -\n%s : -\n%s : -", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
+        assertThat(cars.getResult()).isEqualTo(
+            String.format("%s : -\n%s : -\n%s : -", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
 
         cars.drive(() -> true);
-        assertThat(cars.getResult()).isEqualTo(String.format("%s : --\n%s : --\n%s : --", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
+        assertThat(cars.getResult()).isEqualTo(
+            String.format("%s : --\n%s : --\n%s : --", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
     }
 
     @Test
