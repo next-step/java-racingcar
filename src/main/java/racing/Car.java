@@ -3,15 +3,9 @@ package racing;
 public class Car {
 
     private final Position position;
-    private final MoveStrategy strategy;
 
-    public Car(MoveStrategy strategy) {
+    public Car() {
         this.position = new Position();
-        this.strategy = strategy;
-    }
-
-    public void forward() {
-        position.addOne();
     }
 
     public boolean hasPosition(int value) {
@@ -22,9 +16,10 @@ public class Car {
         return position.dashOfPosition();
     }
 
-    public void play() {
-        if (strategy.movable()) {
-            forward();
+    public void play(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
+            position.addOne();
         }
     }
+
 }

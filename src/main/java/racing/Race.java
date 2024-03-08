@@ -3,12 +3,14 @@ package racing;
 public class Race {
 
     private final InputView inputView;
+    private final MoveStrategy moveStrategy;
 
     private static final String CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String TRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
-    public Race(InputView inputView) {
+    public Race(InputView inputView, MoveStrategy moveStrategy) {
         this.inputView = inputView;
+        this.moveStrategy = moveStrategy;
     }
 
     public void start() {
@@ -19,7 +21,7 @@ public class Race {
         Cars cars = new Cars();
 
         for (int i = 0; i < carCount; i++) {
-            cars.addCar(new Car(new RandomNumberStrategy()));
+            cars.addCar(new Car());
         }
 
         ResultView resultView = new ResultView();
@@ -27,7 +29,7 @@ public class Race {
         int currentTryCount = 0;
 
         while (currentTryCount < tryCount) {
-            cars.playRound();
+            cars.playRound(moveStrategy);
             resultView.printRaceResult(cars);
             currentTryCount++;
         }

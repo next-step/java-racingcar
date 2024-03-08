@@ -8,6 +8,7 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
+
     public void addCar(Car... car) {
         cars.addAll(List.of(car));
     }
@@ -22,9 +23,9 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void playRound() {
+    public void playRound(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.play();
+            car.play(moveStrategy);
         }
     }
 
