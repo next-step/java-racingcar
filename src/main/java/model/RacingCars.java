@@ -20,6 +20,10 @@ public class RacingCars {
         return new RacingCars(racingCars);
     }
 
+    public void move(final RandomNumberGenerator randomNumberGenerator) {
+        racingCars.forEach(car -> car.move(randomNumberGenerator.generate()));
+    }
+
     public int getCarNumber() {
         return racingCars.size();
     }
