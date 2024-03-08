@@ -61,7 +61,7 @@ public class RacingGameTest {
         Cars cars = new Cars(listCars);
 
         RacingGame racingGame = new RacingGame(cars);
-        String[] winnerNames = racingGame.getWinnerNames();
+        List<String> winnerNames = racingGame.getWinnerNames();
 
         assertThat(winnerNames).containsExactly("a", "b");
     }

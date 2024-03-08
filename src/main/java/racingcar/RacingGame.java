@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -32,9 +33,9 @@ public class RacingGame {
         return String.join("\n\n", roundResults);
     }
 
-    public String[] getWinnerNames() {
+    public List<String> getWinnerNames() {
         return cars.getWinners().stream()
             .map(Car::name)
-            .toArray(String[]::new);
+            .collect(Collectors.toList());
     }
 }
