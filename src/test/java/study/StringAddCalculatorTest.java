@@ -20,6 +20,8 @@ public class StringAddCalculatorTest {
     void convert_string_to_number() {
         assertThat(StringAddCalculator.calculate("1")).isEqualTo(1);
         assertThat(StringAddCalculator.calculate("123")).isEqualTo(123);
+        assertThatThrownBy(() -> StringAddCalculator.calculate("-10"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
