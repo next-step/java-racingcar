@@ -31,7 +31,7 @@ public class StringAddCalculator {
     private static int validateNumber(String value) {
         int number = Integer.parseInt(value);
         if (number < 0) {
-            throw new IllegalArgumentException("양수만 입력 가능합니다");
+            throw new IllegalArgumentException("음수는 입력 가능하지 않습니다");
         }
         return number;
     }
