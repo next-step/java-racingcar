@@ -6,7 +6,7 @@ public class Car {
     private final Position position;
 
     public Car() {
-        this(1);
+        this(0);
     }
 
     public Car(int position) {
@@ -17,6 +17,10 @@ public class Car {
         if (random >= 4) {
             this.position.move();
         }
+    }
+
+    public String hyphenatePosition() {
+        return this.position.toString();
     }
 
     @Override
@@ -31,4 +35,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }
