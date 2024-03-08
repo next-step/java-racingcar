@@ -12,8 +12,7 @@ public class StringAddCalculator {
         if (isEmptyString(text)) {
             return 0;
         }
-
-        return sum(splitDelimiter(text));
+        return sum(splitByPattern(text));
     }
 
     private static boolean isEmptyString(String text) {
@@ -30,17 +29,25 @@ public class StringAddCalculator {
     }
 
     private static int validateNumber(String value) {
-        if (Integer.parseInt(value) < 0) {
+        int number = Integer.parseInt(value);
+        if (number < 0) {
             throw new IllegalArgumentException("양수만 입력 가능합니다");
         }
-        return Integer.parseInt(value);
+        return number;
     }
 
-    private static String[] splitDelimiter(String text) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+    private static String[] splitByPattern(String text) {
+        final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
+        Matcher matcher = pattern.matcher(text);
+        return getStrings(text, matcher);
+    }
+
+    private static String[] getStrings(String text, Matcher matcher) {
         if (matcher.find()) {
-            return matcher.group(2).split(matcher.group(1));
+            String delimiter = matcher.group(1);
+            return matcher.group(2).split(delimiter);
         }
         return text.split(DEFAULT_DELIMITER);
     }
+
 }
