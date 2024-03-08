@@ -11,7 +11,7 @@ public class CalculatorTest {
 	@Test
 	void additionCalculate() {
 		// given
-		String input = "1,2;3";
+		String input = "1,2:3";
 		Calculator calculator = new Calculator();
 
 		// when
