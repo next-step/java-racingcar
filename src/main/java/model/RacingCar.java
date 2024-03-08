@@ -1,6 +1,6 @@
 package model;
 
-public class Car {
+public class RacingCar {
 
     private int location;
 
