@@ -13,8 +13,16 @@ public class StringAddCalculator {
             return 0;
         }
         String[] split = createSplitNumbersByStringNumber(stringNumber);
-        if (split == null) return 0;
+        if (isEmptyNumberArray(split)) return 0;
 
+        return sum(split);
+    }
+
+    private static boolean isEmptyNumberArray(String[] split) {
+        return split == null || split.length == 0;
+    }
+
+    private static Integer sum(String[] split) {
         Integer sum = 0;
         for (String number : split) {
             sum += Integer.parseInt(number);
