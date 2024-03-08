@@ -61,4 +61,13 @@ public class CalculatorTest {
 			assertThat(Calculator.calculate(text)).isEqualTo(6);
 		}
 	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"-1:2:3", "//|\n1|-2|3"})
+	@DisplayName("음수를 전달 할 경우 RuntimeException 예외가 발생한다.")
+	void negative(String text) {
+		//when & then
+		assertThatExceptionOfType(RuntimeException.class)
+			.isThrownBy(() -> Calculator.calculate(text));
+	}
 }

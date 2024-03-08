@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,10 @@ public class Calculator {
 		if (isBlank(text)) {
 			return 0;
 		}
-		return sum(split(text));
+
+		String[] splitText = split(text);
+		validate(splitText);
+		return sum(splitText);
 	}
 
 	private static boolean isBlank(String text) {
@@ -38,5 +42,15 @@ public class Calculator {
 
 	private static String getDelimiter(String delimiter) {
 		return delimiter.equals("|") ? String.format("\\%s", delimiter) : delimiter;
+	}
+
+	private static void validate(String[] values) {
+		Optional<String> negative = Arrays.stream(values)
+			.filter(s -> Integer.parseInt(s) < 0)
+			.findFirst();
+
+		if (negative.isPresent()) {
+			throw new RuntimeException();
+		}
 	}
 }
