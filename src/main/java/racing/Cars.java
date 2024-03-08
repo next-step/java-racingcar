@@ -11,10 +11,6 @@ public class Cars implements Iterable<Car> {
         this.cars = cars;
     }
 
-    public int size() {
-        return cars.size();
-    }
-
     @Override
     public Iterator<Car> iterator() {
         return cars.iterator();
