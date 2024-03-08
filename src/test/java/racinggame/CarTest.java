@@ -2,6 +2,7 @@ package racinggame;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -17,19 +18,24 @@ public class CarTest {
         car = new Car();
     }
 
+    @Test
+    public void 생성자_초기위치_0() {
+        assertThat(car.position()).isEqualTo(new Position(0));
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     public void 주행(int condition) {
-        boolean result = car.run(new MoveCondition(condition));
+        car.run(new MoveCondition(condition));
 
-        assertThat(result).isTrue();
+        assertThat(car.position()).isEqualTo(new Position(1));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
     public void 정지(int condition) {
-        boolean result = car.run(new MoveCondition(condition));
+        car.run(new MoveCondition(condition));
 
-        assertThat(result).isFalse();
+        assertThat(car.position()).isEqualTo(new Position(0));
     }
 }
