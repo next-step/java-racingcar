@@ -17,6 +17,9 @@ public class StringAddCalculator {
     private static final String CUSTOM_DELIMITER_INPUT_GROUP_NAME = "input";
     private static final String MESSAGE_INVALID_CUSTOM_DELIMITER_FORMAT = "커스텀 구분자 입력 양식을 확인해주세요";
 
+    private StringAddCalculator() {
+    }
+
     public static int splitAndSum(String input) {
         if (isNullOrEmpty(input)) {
             return DEFAULT_VALUE_FOR_EMPTY_INPUT;
