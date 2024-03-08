@@ -36,4 +36,18 @@ public class CalculatorTest {
 		// then
 		assertThat(result).isEqualTo(0);
 	}
+
+	@DisplayName("숫자 하나 입력시에 그 숫자를 그대로 반환한다.")
+	@Test
+	void additionCalculateWithSingleNumber() {
+		// given
+		String input = "3";
+		Calculator calculator = new Calculator();
+
+		// when
+		int result = calculator.additionCalculate(input);
+
+		// then
+		assertThat(result).isEqualTo(3);
+	}
 }
