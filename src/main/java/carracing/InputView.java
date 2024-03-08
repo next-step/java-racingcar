@@ -2,9 +2,13 @@ package carracing;
 
 import java.util.Scanner;
 
+import static carracing.Validation.*;
+
 public class InputView {
     public static String NUMBER_OF_CARS_INPUT_GUIDE_MESSAGE = "자동차 대수는 몇 대 인가요?";
     public static String NUMBER_OF_ATTEMPTS_INPUT_GUIDE_MESSAGE = "시도할 회수는 몇 회 인가요?";
+
+    private static String INPUT_ERROR_MESSAGE = "잘못된 입력으로 게임을 종료합니다.";
 
     private InputView() {
     }
@@ -15,12 +19,10 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        // 검증 필요 - null, blank, 문자 포함 여부 확인
+        if(!isPositiveInteger(input)) {
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
 
-        int numberOfAttempts = Integer.parseInt(input);
-
-        // 검증 필요 - 음수, 0 검증
-
-        return numberOfAttempts;
+        return Integer.parseInt(input);
     }
 }
