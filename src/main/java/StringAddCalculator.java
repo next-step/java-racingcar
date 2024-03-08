@@ -3,6 +3,7 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(?<key>;)\n.*");
+    private static final String COMMON_SEPARATOR = ",|:";
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
@@ -15,7 +16,7 @@ public class StringAddCalculator {
             return sum(inputs);
         }
 
-        String[] inputs = input.split(",|:");
+        String[] inputs = input.split(COMMON_SEPARATOR);
         return sum(inputs);
     }
 
