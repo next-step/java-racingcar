@@ -6,7 +6,13 @@ public class StringAddCalculator {
         if (str == null || str.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(str);
+
+        String[] strArray = str.split(",");
+        int sum = 0;
+        for (String s : strArray) {
+            sum += Integer.parseInt(s);
+        }
+        return sum;
     }
 
 }
