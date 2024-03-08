@@ -8,4 +8,9 @@ public class InputView {
         final Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
+
+    public int inputTryNumber() {
+        final Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
 }
