@@ -4,24 +4,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
+
+	public static final String CUSTOM_SEPARATOR = "//(.)\n(.*)";
+
 	public int additionCalculate(final String input) {
 		if (input == null || input.equals("")) {
 			return 0;
 		}
 
-		Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
+		Matcher matcher = Pattern.compile(CUSTOM_SEPARATOR).matcher(input);
 
 		if (matcher.find()) {
-			String customDelimiter = matcher.group(1);
-			String[] numbers = matcher.group(2).split(customDelimiter);
-			return calculateAddition(numbers);
+			return calculateAdditionWithCustomSign(matcher);
 		}
 
-		String[] numbers = input.split(",|:");
+		return calculateAddition(input.split(",|:"));
+	}
 
-		int result = calculateAddition(numbers);
-
-		return result;
+	private static int calculateAdditionWithCustomSign(final Matcher matcher) {
+		String customDelimiter = matcher.group(1);
+		String[] numbers = matcher.group(2).split(customDelimiter);
+		return calculateAddition(numbers);
 	}
 
 	private static int calculateAddition(final String[] number) {
