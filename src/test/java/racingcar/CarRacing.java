@@ -22,10 +22,10 @@ public class CarRacing {
     private static int Count() {
         Scanner sc = new Scanner(System.in);
         int cnt = sc.nextInt();
-        if (cnt <= 0)
-            throw new IllegalArgumentException("잘못된 입력값 입니다");
+        if (cnt <= 0) throw new IllegalArgumentException("잘못된 입력값 입니다");
         return cnt;
     }
+
     private static int CarCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         return Count();
@@ -38,8 +38,7 @@ public class CarRacing {
 
     private static void MoveCar(List<Character>[] cars) {
         for (List<Character> car : cars) {
-            if (StopOrGo())
-                car.add('-');
+            if (StopOrGo()) car.add('-');
             CarLocation(car);
         }
     }
