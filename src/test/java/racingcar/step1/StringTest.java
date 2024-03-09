@@ -9,8 +9,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("String 클래스에 대한 학습 테스트")
 class StringTest {
 
-
-
     @DisplayName("문자열 숫자 분리")
     @Test
     void splitByComma() {
