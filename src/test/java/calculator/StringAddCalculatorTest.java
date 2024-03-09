@@ -12,14 +12,14 @@ public class StringAddCalculatorTest {
 
     @Test
     @DisplayName("빈 문자열을 입력할 경우 0을 반환")
-    void return0WhenEmptyString() {
+    void 빈문자열() {
         int actual = StringAddCalculator.calculate("");
         assertThat(actual).isZero();
     }
 
     @Test
     @DisplayName("null 값을 입력할 경우 0을 반환")
-    void return0WhenNull() {
+    void null문자열() {
         int actual = StringAddCalculator.calculate(null);
         assertThat(actual).isZero();
     }
@@ -30,14 +30,14 @@ public class StringAddCalculatorTest {
 
         @Test
         @DisplayName("문자열 '1'를 입력하면 숫자 1를 반환")
-        void returnInt1WhenInputStr1() {
+        void 문자열1() {
             int actual = StringAddCalculator.calculate("1");
             assertThat(actual).isEqualTo(1);
         }
 
         @Test
         @DisplayName("문자열 '9'를 입력하면 숫자 9를 반환")
-        void returnInt9WhenInputStr9() {
+        void 문자열9() {
             int actual = StringAddCalculator.calculate("9");
             assertThat(actual).isEqualTo(9);
         }
@@ -50,14 +50,14 @@ public class StringAddCalculatorTest {
 
         @Test
         @DisplayName("문자열 '1,2'를 입력하면 숫자 3을 반환")
-        void return3When1And2ConcatWithComma() {
+        void 콤마로_구분된_문자열_1_2() {
             int actual = StringAddCalculator.calculate("1,2");
             assertThat(actual).isEqualTo(3);
         }
 
         @Test
         @DisplayName("문자열 '9,10'를 입력하면 숫자 3을 반환")
-        void return19When9And10ConcatWithComma() {
+        void 콤마로_구분된_문자열_9_10() {
             int actual = StringAddCalculator.calculate("9,10");
             assertThat(actual).isEqualTo(19);
         }
@@ -65,7 +65,7 @@ public class StringAddCalculatorTest {
 
     @Test
     @DisplayName("문자열 '1,2:3'을 입력하면 숫자 6을 반환 (구분자 ,:)")
-    void return6WhenInputString1CommaTowColonThree() {
+    void 구분자_콤마_콜론() {
         assertThat(StringAddCalculator.calculate("1,2:3")).isEqualTo(6);
     }
 
