@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class RacingGameConsole {
 
-    private static final DrivingStrategyImpl DRIVING_STRATEGY = new DrivingStrategyImpl();
+    private static final DrivingStrategy DRIVING_STRATEGY = new DrivingStrategyImpl();
     private static final String WINNER_DELIMITER = ", ";
 
     private static final Scanner scanner = new Scanner(System.in);
