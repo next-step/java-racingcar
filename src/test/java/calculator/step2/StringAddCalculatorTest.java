@@ -3,6 +3,8 @@ package calculator.step2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -42,15 +44,11 @@ public class StringAddCalculatorTest {
         assertThat(number).isEqualTo(1);
     }
 
-    @Test
-    void blankTest() {
-        int number = stringAddCalculator.calculate("");
-        assertThat(number).isEqualTo(0);
-    }
-
-    @Test
-    void nullTest() {
-        int number = stringAddCalculator.calculate(null);
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {" ", ""})
+    void isNullAndBlankTest(String input) {
+        int number = stringAddCalculator.calculate(input);
         assertThat(number).isEqualTo(0);
     }
 
