@@ -1,5 +1,6 @@
 package model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -35,4 +36,13 @@ class RacingGameTest {
                 .containsExactly(new Record("test1", 1), new Record("test2", 2), new Record("test3", 3));
     }
 
+    @Test
+    void winnerNames() {
+        List<Car> cars = Arrays.asList(new Car("test1", 1), new Car("test2", 2), new Car("test3", 2));
+        RacingGame racingGame = new RacingGame(cars);
+
+        List<String> winnerNames = racingGame.winnerNames();
+        assertThat(winnerNames).hasSize(2)
+                .containsExactly("test2", "test3");
+    }
 }
