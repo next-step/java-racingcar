@@ -31,7 +31,7 @@ public class Car {
         return drivingDistance.value();
     }
 
-    public String getResult() {
+    public String result() {
         return name.value() + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.value());
     }
 

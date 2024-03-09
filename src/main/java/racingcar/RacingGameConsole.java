@@ -22,12 +22,12 @@ public class RacingGameConsole {
 
     private void printResult(RacingGame racingGame) {
         System.out.println("\n실행 결과");
-        System.out.println(racingGame.getResult());
+        System.out.println(racingGame.result());
     }
 
     private void printWinners(RacingGame racingGame) {
         System.out.printf("\n%s가 최종 우승했습니다.",
-            String.join(WINNER_DELIMITER, racingGame.getWinnerNames()));
+            String.join(WINNER_DELIMITER, racingGame.winners()));
     }
 
     private String[] inputCarNames() {

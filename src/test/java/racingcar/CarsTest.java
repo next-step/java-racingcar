@@ -40,25 +40,25 @@ public class CarsTest {
 
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void getResult() {
+    void result() {
         Cars cars = new Cars(CAR_NAMES);
 
         cars.drive(() -> true);
-        assertThat(cars.getResult()).isEqualTo(
+        assertThat(cars.result()).isEqualTo(
             String.format("%s : -\n%s : -\n%s : -", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
 
         cars.drive(() -> true);
-        assertThat(cars.getResult()).isEqualTo(
+        assertThat(cars.result()).isEqualTo(
             String.format("%s : --\n%s : --\n%s : --", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
     }
 
     @Test
     @DisplayName("우승자 목록을 가져온다 (단일 우승자)")
-    void getWinners_single() {
+    void winners_single() {
         List<Car> listCars = List.of(new Car("a", 1), new Car("b", 0));
         Cars cars = new Cars(listCars);
 
-        List<Car> winners = cars.getWinners();
+        List<Car> winners = cars.winners();
         assertThat(winners)
             .extracting("name.name")
             .containsExactly("a");
@@ -66,11 +66,11 @@ public class CarsTest {
 
     @Test
     @DisplayName("우승자 목록을 가져온다 (복수 우승자)")
-    void getWinners_multi() {
+    void winners_multi() {
         List<Car> listCars = List.of(new Car("a", 1), new Car("b", 1), new Car("c", 0));
         Cars cars = new Cars(listCars);
 
-        List<Car> winners = cars.getWinners();
+        List<Car> winners = cars.winners();
         assertThat(winners)
             .extracting("name.name")
             .containsExactly("a", "b");

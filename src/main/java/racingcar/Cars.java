@@ -40,21 +40,21 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    public String getResult() {
+    public String result() {
         return cars.stream()
-            .map(Car::getResult)
+            .map(Car::result)
             .collect(Collectors.joining("\n"));
     }
 
-    public List<Car> getWinners() {
-        int maxDistance = getMaxDistance();
+    public List<Car> winners() {
+        int maxDistance = maxDistance();
         return cars.stream()
             .filter(car -> car.matchDistance(maxDistance))
             .collect(Collectors.toList());
 
     }
 
-    private int getMaxDistance() {
+    private int maxDistance() {
         return cars.stream()
             .mapToInt(Car::drivingDistance)
             .max()

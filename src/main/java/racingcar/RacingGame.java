@@ -20,7 +20,7 @@ public class RacingGame {
     public void drive(int round, DrivingStrategy drivingStrategy) {
         for (int i = 0; i < round; i++) {
             cars.drive(drivingStrategy);
-            roundResults.add(cars.getResult());
+            roundResults.add(cars.result());
         }
     }
 
@@ -28,12 +28,12 @@ public class RacingGame {
         return cars.drivingDistances();
     }
 
-    public String getResult() {
+    public String result() {
         return String.join("\n\n", roundResults);
     }
 
-    public List<String> getWinnerNames() {
-        return cars.getWinners().stream()
+    public List<String> winners() {
+        return cars.winners().stream()
             .map(Car::name)
             .collect(Collectors.toList());
     }

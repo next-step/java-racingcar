@@ -32,12 +32,12 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void getResult() {
+    void result() {
         RacingGame racingGame = new RacingGame(CAR_NAMES);
         racingGame.drive(5, () -> true);
 
         String expectedResult = expectedResult();
-        assertThat(racingGame.getResult())
+        assertThat(racingGame.result())
             .isEqualTo(expectedResult);
     }
 
@@ -62,10 +62,10 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("우승자 이름 목록을 가져온다")
-    void getWinnerNames() {
+    void winners() {
         Cars cars = new Cars() {
             @Override
-            public List<Car> getWinners() {
+            public List<Car> winners() {
                 return List.of(
                     new Car("a"),
                     new Car("b")
@@ -73,7 +73,7 @@ public class RacingGameTest {
             }
         };
         RacingGame racingGame = new RacingGame(cars);
-        List<String> winnerNames = racingGame.getWinnerNames();
+        List<String> winnerNames = racingGame.winners();
 
         assertThat(winnerNames).containsExactly("a", "b");
     }

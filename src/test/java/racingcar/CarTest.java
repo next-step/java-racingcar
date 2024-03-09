@@ -27,11 +27,11 @@ public class CarTest {
 
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void getResult() {
+    void result() {
         Car car = new Car(NAME);
         car.drive(() -> true);
-        assertThat(car.getResult()).isEqualTo(NAME + " : -");
+        assertThat(car.result()).isEqualTo(NAME + " : -");
         car.drive(() -> true);
-        assertThat(car.getResult()).isEqualTo(NAME + " : --");
+        assertThat(car.result()).isEqualTo(NAME + " : --");
     }
 }
