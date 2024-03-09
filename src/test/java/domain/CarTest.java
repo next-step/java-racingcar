@@ -12,9 +12,8 @@ public class CarTest {
     @Test
     void test01() {
         // given
-        int moveCount = 1;
         MoveStrategy moveStrategy = () -> true;
-        Car car = new Car(moveCount, moveStrategy);
+        Car car = new Car(moveStrategy);
 
         // when
         Position position = car.move();
@@ -27,9 +26,8 @@ public class CarTest {
     @Test
     void test02() {
         // given
-        int moveCount = 1;
         MoveStrategy moveStrategy = () -> false;
-        Car car = new Car(moveCount, moveStrategy);
+        Car car = new Car(moveStrategy);
 
         // when
         Position position = car.move();

@@ -18,10 +18,11 @@ public class RacingGameTest {
     @MethodSource("strategies")
     void test01(List<Car> cars, List<Position> positions) {
         // given
-        RacingGame racingGame = new RacingGame(cars);
+        int moveCount = 3;
+        RacingGame racingGame = new RacingGame(cars, moveCount);
 
         // when
-        racingGame.move();
+        racingGame.play();
 
         // then
         assertThat(cars.get(0).position()).isEqualTo(positions.get(0));
@@ -30,9 +31,9 @@ public class RacingGameTest {
 
     public static Stream<Arguments> strategies() {
         return Stream.of(
-                Arguments.of(List.of(new Car(3, () -> true), new Car(3, () -> true)), List.of(new Position(3), new Position(3))),
-                Arguments.of(List.of(new Car(3, () -> false), new Car(3, () -> false)), List.of(new Position(0), new Position(0))),
-                Arguments.of(List.of(new Car(3, () -> true), new Car(3, () -> false)), List.of(new Position(3), new Position(0)))
+                Arguments.of(List.of(new Car(() -> true), new Car(() -> true)), List.of(new Position(3), new Position(3))),
+                Arguments.of(List.of(new Car(() -> false), new Car(() -> false)), List.of(new Position(0), new Position(0))),
+                Arguments.of(List.of(new Car(() -> true), new Car(() -> false)), List.of(new Position(3), new Position(0)))
         );
     }
 }

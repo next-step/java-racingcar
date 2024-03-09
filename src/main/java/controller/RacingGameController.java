@@ -21,9 +21,9 @@ public class RacingGameController {
 
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(moveCount, new RandomMoveStrategy()));
+            cars.add(new Car(new RandomMoveStrategy()));
         }
-        RacingGame racingGame = new RacingGame(cars);
-        racingGame.move();
+        RacingGame racingGame = new RacingGame(cars, moveCount);
+        racingGame.play();
     }
 }
