@@ -1,6 +1,3 @@
-import java.util.HashSet;
-import java.util.Set;
-
 public class StringAddCalculator {
     private static final String EMPTY_STRING = "";
 
@@ -26,17 +23,21 @@ public class StringAddCalculator {
     private static Integer sum(String[] split) {
         Integer sum = 0;
         for (String number : split) {
-            try {
-                int parseInt = Integer.parseInt(number);
-                if (parseInt < 0) {
-                    throw new NumberFormatException();
-                }
-                sum += parseInt;
-            } catch (Exception e) {
-                throw new NumberFormatException("양수의 숫자만 입력해주세요");
-            }
+            sum += formatNumber(number);
         }
         return sum;
+    }
+
+    private static Integer formatNumber(String number) {
+        try {
+            int parseInt = Integer.parseInt(number);
+            if (parseInt < 0) {
+                throw new NumberFormatException();
+            }
+            return parseInt;
+        } catch (Exception e) {
+            throw new NumberFormatException("양수의 숫자만 입력해주세요");
+        }
     }
 
     private static String[] createSplitNumbersByStringNumber(String str) {
