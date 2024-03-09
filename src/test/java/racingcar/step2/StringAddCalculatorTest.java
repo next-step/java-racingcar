@@ -5,8 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -40,10 +43,15 @@ public class StringAddCalculatorTest {
     }
 
     @DisplayName("사용자 정의 구분자로 합계를 구한다.")
-    @Test
-    public void splitAndSum_custom_구분자() throws Exception {
-        int result = stringAddCalculator.splitAndSum("//;\n1;2;3");
+    @ParameterizedTest
+    @MethodSource(value = "customDelimiterParameter")
+    public void splitAndSum_custom_구분자(String input) throws Exception {
+        int result = stringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(6);
+    }
+
+    static Stream<String> customDelimiterParameter() {
+        return Stream.of("//;\n1;2;3");
     }
 
     @DisplayName("숫자 요소에 음수가 존재할 경우 IllegalArgumentException을 던진다.")
