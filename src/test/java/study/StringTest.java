@@ -54,4 +54,16 @@ public class StringTest {
         assertThat(data.charAt(1)).isEqualTo('b');
         assertThat(data.charAt(2)).isEqualTo('c');
     }
+
+    @Test
+    void split_reg_test() {
+        String str1 = "a,b";
+        String str2 = "a:b";
+
+        String[] strArr1 = str1.split(",");
+        String[] strArr2 = str2.split(",|:");
+
+        assertThat(strArr1).containsExactly("a", "b");
+        assertThat(strArr2).containsExactly("a", "b");
+    }
 }
