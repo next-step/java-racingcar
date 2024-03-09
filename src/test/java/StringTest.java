@@ -45,7 +45,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("charAt메서드는 문자 길이 이상의 위치의 문자를 입력하면 exception을 던진다.")
+    @DisplayName("charAt메서드는 문자 길이 이상의 위치의 문자 idx를 입력하면 exception을 던진다.")
     void charAtMethodThrowExceptionTest() {
         String testStr = "abc";
         assertThatThrownBy(() ->  testStr.charAt(7)).isInstanceOf(StringIndexOutOfBoundsException.class)
