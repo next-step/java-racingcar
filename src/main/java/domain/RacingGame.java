@@ -1,5 +1,7 @@
 package domain;
 
+import view.ResultView;
+
 import java.util.List;
 
 public class RacingGame {
@@ -20,5 +22,6 @@ public class RacingGame {
         while (car.moveable()) {
             car.move();
         }
+        ResultView.print(car);
     }
 }
