@@ -1,6 +1,10 @@
 package model;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,6 +26,19 @@ class CarTest {
         car.move();
 
         assertThat(car).isEqualTo(new Car("test1", falseMoveStrategy));
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void nullAndEmptyName(String name) {
+        Assertions.assertThatThrownBy(() -> new Car(name, () -> false))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void exceedNameLength() {
+        Assertions.assertThatThrownBy(() -> new Car("여섯자리이름", () -> false))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
