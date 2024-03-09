@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -17,8 +16,9 @@ public class RacingGame {
         this(Cars.fromCarNames(carNames));
     }
 
-    public void drive(int round, DrivingStrategy drivingStrategy) {
-        for (int i = 0; i < round; i++) {
+    public void drive(int roundAmount, DrivingStrategy drivingStrategy) {
+        Round round = new Round(roundAmount);
+        for (int i = 0; i < round.value(); i++) {
             cars.drive(drivingStrategy);
             roundResults.add(cars.result());
         }
