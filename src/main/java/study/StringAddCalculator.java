@@ -25,9 +25,7 @@ public class StringAddCalculator {
 
         final String[] splitInput = splitByDelimiter(input);
 
-        return Arrays.stream(splitInput)
-                .mapToInt(StringAddCalculator::parsePositiveSingleNumber)
-                .sum();
+        return parseIntAndSum(splitInput);
     }
 
     private static String[] splitByDelimiter(final String input) {
@@ -48,6 +46,12 @@ public class StringAddCalculator {
         final String inputToSplit = matcher.group(CUSTOM_DELIMITER_INPUT_GROUP_NAME);
 
         return inputToSplit.split(customDelimiter);
+    }
+
+    private static int parseIntAndSum(final String[] splitInput) {
+        return Arrays.stream(splitInput)
+                .mapToInt(StringAddCalculator::parsePositiveSingleNumber)
+                .sum();
     }
 
     private static int parsePositiveSingleNumber(final String input) {
