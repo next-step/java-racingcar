@@ -56,9 +56,10 @@
 
 ---
 
-# 2단계
+# 2단계 - 문자열 덧셈 계산기를 통한 TDD 실습
 
-## 문자열 덧셈 계산기를 통한 TDD 실습
+<details>
+  <summary>요구사항 보기</summary>
 
 ### 기능 요구사항
 
@@ -89,6 +90,7 @@
 ### 리팩터링
 
 ```java
+// as-is
 public static int splitAndSum(String input) {
     if (isNullOrEmpty(input)) {
         return DEFAULT_VALUE_FOR_EMPTY_INPUT;
@@ -110,9 +112,28 @@ public static int splitAndSum(String input) {
 - null 또는 빈 문자열 체크 -> 구분자 획득 -> split -> sum
     - public으로 열린 splitAndSum 메서드에서는 위 동작 흐름만 나타날 수 있게 리팩터링 해보자
 
-- [ ] 구분자 획득
-    - [ ] 커스텀 구분자 정규식에
-        - [ ] 일치하면 커스텀 구분자를 반환
-        - [ ] 일치하지 않으면 기본 구분자를 반환
-- [ ] split and sum
-    - [ ] 전달 받은 구분자로 split, parse, sum
+- [x] split
+    - [x] 커스텀 구분자 정규식에
+        - [x] 일치하면 커스텀 구분자로 split한 문자열 배열을 반환
+        - [x] 일치하지 않으면 기본 구분자로 split한 문자열 배열을 반환
+- [x] parseInt and sum
+    - [x] 문자열 배열을 전달받아 Stream API로 아래 메서드를 활용하여 mapToInt한 결과를 sum하여 반환
+        - [x] `StringAddCalculator#parsePositiveSingleNumber`: 파싱한 결과가 음수이면 예외 반환, 0 또는 양수이면 숫자 반환
+        - [x] `StringAddCalculator#parseSingleNumber`: 파싱한 결과가 숫자면 반환, 아닐 경우 RuntimeException 던지기
+
+```java
+// to-be
+public static int splitAndSum(final String input) {
+    if (isNullOrEmpty(input)) {
+        return DEFAULT_VALUE_FOR_EMPTY_INPUT;
+    }
+
+    final String[] splitInput = splitByDelimiter(input);
+
+    return parseIntAndSum(splitInput);
+}
+```
+
+</details>
+
+---
