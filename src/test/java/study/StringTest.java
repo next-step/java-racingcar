@@ -8,15 +8,15 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
-    void split(){
+    void split() {
         String data = "1,2";
         String[] result = data.split(",");
 
-        assertThat(result).containsExactly("1","2");
+        assertThat(result).containsExactly("1", "2");
     }
 
     @Test
-    void split_char(){
+    void split_char() {
         String data = "1";
         String[] result = data.split(",");
 
@@ -24,7 +24,7 @@ public class StringTest {
     }
 
     @Test
-    void substring(){
+    void substring() {
         String data = "(1,2)";
         String result = data.substring(data.indexOf('('), data.indexOf(')'));
 
@@ -33,7 +33,7 @@ public class StringTest {
 
     @Test
     @DisplayName("StringIndexOutOfBoundsException 테스트")
-    void exception_test(){
+    void exception_test() {
         String data = "abc";
 
         assertThatThrownBy(() -> {
