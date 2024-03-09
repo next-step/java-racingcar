@@ -109,3 +109,10 @@ public static int splitAndSum(String input) {
 - 하나의 메서드인데 분기마다 다른 메서드를 호출한 결과를 반환 -> 가독성이 떨어진다
 - null 또는 빈 문자열 체크 -> 구분자 획득 -> split -> sum
     - public으로 열린 splitAndSum 메서드에서는 위 동작 흐름만 나타날 수 있게 리팩터링 해보자
+
+- [ ] 구분자 획득
+    - [ ] 커스텀 구분자 정규식에
+        - [ ] 일치하면 커스텀 구분자를 반환
+        - [ ] 일치하지 않으면 기본 구분자를 반환
+- [ ] split and sum
+    - [ ] 전달 받은 구분자로 split, parse, sum

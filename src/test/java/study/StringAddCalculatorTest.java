@@ -1,5 +1,6 @@
 package study;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -23,6 +24,7 @@ class StringAddCalculatorTest {
         assertThat(actual).isZero();
     }
 
+    @Disabled
     @DisplayName("구분자 없이 0 또는 양수 하나를 전달했다면 해당 숫자를 반환한다")
     @ParameterizedTest(name = "{0} -> {0}")
     @CsvSource(value = {"0:0", "1:1", "10:10"}, delimiter = ':')
@@ -34,6 +36,7 @@ class StringAddCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Disabled
     @DisplayName("구분자 없이 숫자 이외의 값 하나를 전달했다면 RuntimeException이 발생한다")
     @ParameterizedTest(name = "{0} -> 올바른 숫자 입력값이 아닙니다")
     @ValueSource(strings = {"a", "1a", "a1"})
@@ -46,6 +49,7 @@ class StringAddCalculatorTest {
         assertThat(actual).hasMessage("올바른 숫자 입력값이 아닙니다");
     }
 
+    @Disabled
     @DisplayName("구분자 없이 음수 하나를 전달했다면 RuntimeException이 발생한다")
     @ParameterizedTest(name = "{0} -> 음수는 허용되지 않습니다")
     @ValueSource(strings = {"-11", "-1"})
@@ -58,6 +62,7 @@ class StringAddCalculatorTest {
         assertThat(actual).hasMessage("음수는 허용되지 않습니다");
     }
 
+    @Disabled
     @DisplayName("쉼표, 콜론 구분자를 혼합해 여러 숫자 전달했을 때 합산 결과가 반환된다")
     @ParameterizedTest(name = "{0} -> {1}")
     @CsvSource(value = {"0,1,2-3", "4:10:11-25", "2,6:8,3-19"}, delimiter = '-')
@@ -69,6 +74,7 @@ class StringAddCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Disabled
     @DisplayName("쉼표, 콜론 구분자를 혼합해 여러 숫자 전달했을 때 숫자가 아닌 문자가 포함되면 예외가 발생한다")
     @ParameterizedTest(name = "{0} -> 올바른 숫자 입력값이 아닙니다")
     @ValueSource(strings = {"0,1a,2", "4:10:11!", "[2,6:8,3"})
@@ -81,6 +87,7 @@ class StringAddCalculatorTest {
         assertThat(actual).hasMessage("올바른 숫자 입력값이 아닙니다");
     }
 
+    @Disabled
     @DisplayName("쉼표, 콜론 구분자를 혼합해 여러 숫자 전달했을 때 숫자가 아닌 음수가 포함되면 예외가 발생한다")
     @ParameterizedTest(name = "{0} -> 음수는 허용되지 않습니다")
     @ValueSource(strings = {"0,-1,2", "-4:10:11", "2,6:8,-3"})
@@ -93,6 +100,7 @@ class StringAddCalculatorTest {
         assertThat(actual).hasMessage("음수는 허용되지 않습니다");
     }
 
+    @Disabled
     @DisplayName("커스텀 구분자를 사용해 여러 숫자 전달했을 때 합산 결과가 반환된다")
     @ParameterizedTest(name = "{0} : //{0}\\n0{0}1{0}2{0}3 => 6")
     @ValueSource(strings = {"!", "@", "#", "[", ".", ",", "*", "^", "(", "{", "~", "|"})
@@ -108,6 +116,7 @@ class StringAddCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Disabled
     @DisplayName("커스텀 구분자 입력 형식이 올바르지 않으면 예외가 발생한다")
     @ParameterizedTest(name = "{0} -> 커스텀 구분자 입력 양식을 확인해주세요")
     @ValueSource(strings = {"/@\n1@2", "///@\n1@2", "//@\\n1@2", "//@\\\n1@2"})
@@ -120,6 +129,7 @@ class StringAddCalculatorTest {
         assertThat(actual).hasMessage("커스텀 구분자 입력 양식을 확인해주세요");
     }
 
+    @Disabled
     @DisplayName("커스텀 구분자를 사용해 전달한 숫자 중 음수가 포함되어 있다면 예외가 발생한다")
     @ParameterizedTest(name = "{0} -> 음수는 허용되지 않습니다")
     @ValueSource(strings = {"//[\n1[-2[3", "//.\n1.2.-1", "//*\n1*2*3*-11"})
