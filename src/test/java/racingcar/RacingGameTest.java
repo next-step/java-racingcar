@@ -65,15 +65,14 @@ public class RacingGameTest {
     void winners() {
         Cars cars = new Cars() {
             @Override
-            public List<Car> winners() {
-                return List.of(
-                    new Car("a"),
-                    new Car("b")
+            public Winners winners() {
+                return Winners.from(
+                    List.of(new Car("a"), new Car("b"))
                 );
             }
         };
         RacingGame racingGame = new RacingGame(cars);
-        List<String> winnerNames = racingGame.winners();
+        List<String> winnerNames = racingGame.winnerNames();
 
         assertThat(winnerNames).containsExactly("a", "b");
     }

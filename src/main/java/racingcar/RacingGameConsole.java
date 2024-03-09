@@ -27,7 +27,7 @@ public class RacingGameConsole {
 
     private void printWinners(RacingGame racingGame) {
         System.out.printf("\n%s가 최종 우승했습니다.",
-            String.join(WINNER_DELIMITER, racingGame.winners()));
+            String.join(WINNER_DELIMITER, racingGame.winnerNames()));
     }
 
     private String[] inputCarNames() {

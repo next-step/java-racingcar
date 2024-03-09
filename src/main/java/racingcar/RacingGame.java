@@ -32,9 +32,7 @@ public class RacingGame {
         return String.join("\n\n", roundResults);
     }
 
-    public List<String> winners() {
-        return cars.winners().stream()
-            .map(Car::name)
-            .collect(Collectors.toList());
+    public List<String> winnerNames() {
+        return cars.winners().names();
     }
 }

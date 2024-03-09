@@ -46,18 +46,7 @@ public class Cars {
             .collect(Collectors.joining("\n"));
     }
 
-    public List<Car> winners() {
-        int maxDistance = maxDistance();
-        return cars.stream()
-            .filter(car -> car.matchDistance(maxDistance))
-            .collect(Collectors.toList());
-
-    }
-
-    private int maxDistance() {
-        return cars.stream()
-            .mapToInt(Car::drivingDistance)
-            .max()
-            .orElseThrow(IllegalStateException::new);
+    public Winners winners() {
+        return Winners.from(cars);
     }
 }

@@ -58,9 +58,8 @@ public class CarsTest {
         List<Car> listCars = List.of(new Car("a", 1), new Car("b", 0));
         Cars cars = new Cars(listCars);
 
-        List<Car> winners = cars.winners();
-        assertThat(winners)
-            .extracting("name.name")
+        Winners winners = cars.winners();
+        assertThat(winners.names())
             .containsExactly("a");
     }
 
@@ -70,9 +69,8 @@ public class CarsTest {
         List<Car> listCars = List.of(new Car("a", 1), new Car("b", 1), new Car("c", 0));
         Cars cars = new Cars(listCars);
 
-        List<Car> winners = cars.winners();
-        assertThat(winners)
-            .extracting("name.name")
+        Winners winners = cars.winners();
+        assertThat(winners.names())
             .containsExactly("a", "b");
     }
 }
