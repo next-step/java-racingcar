@@ -1,0 +1,27 @@
+## TODO
+
+- 사용자 입력(InputView)
+    - [x] 자동차 대수를 입력한다 ("자동차 대수는 몇 대 인가요?")
+    - [x] 몇번의 이동할 것인지 입력한다 ("시도할 회수는 몇 회인가요?")
+    - [x] 입력 값이 1미만인 경우 IllegalArgumentException(Unchecked) 던진다
+    - [x] 예외 발생한 경우 재입력 요청한다
+- 랜덤값 (RandomUtil)
+    - [x] 0 ~ 9 사이 값을 반환한다
+- 자동차 (Car)
+    - [x] <s>position 값을 가진다</s>
+    - [x] <s>random 값이 4이상일 경우 position 을 1 증가 시킨다 (=전진시킨다)</s>
+    - [x] position 값을 책임지는 Position 클래스를 생성한다
+    - [x] random 값이 4미만일 경우 현재 position 유지한다
+    - [x] random 값이 4이상일 경우 Postion의 move() 호출하여 position 값을 증가시킨다
+    - [x] 현재 위치를 hyphen으로 변환한 문자열을 반환한다 --hyphenatePosition()
+- 위치 (Position)
+    - [x] position 상태값을 가진다
+    - [x] move() 호출시 position 값을 1 증가 시킨다
+    - [x] 현재 position 값을 hyphen으로 연결한 문자열을 변환한다 -- toString()
+- RacingGame
+    - [x] 참가하는 자동차 대수만큼 컬렉션에 Car 인스턴스를 추가한다 -- participate(..)
+    - [x] 매턴 Car의 move() 호출한다 -- run()
+- RacingRecord
+    - [x] 매턴 자동차의 현재 위치(HYPHEN으로 연견될 문자열)를 기록한다
+- 결과 출력 (ResultView)
+    - [x] 실행 결과를 전달받아 출력한다
