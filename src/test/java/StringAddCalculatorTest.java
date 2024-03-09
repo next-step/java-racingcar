@@ -21,11 +21,10 @@ class StringAddCalculatorTest {
 
     @DisplayName("쉼표 또는 콜론 구분자 가지는 문자열이 전달될 경우 숫자를 합한다.")
     @ParameterizedTest
-    @CsvSource(value = {"1,2,3-6", "1:2:3-6"}, delimiter = '-')
+    @CsvSource(value = {"1,2,3-6", "1:2:3-6","1,2:3-6"}, delimiter = '-')
     void splitAndSum(String input, Integer result) {
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(result);
     }
-
 
     @DisplayName("앞의 기본 구분자(쉼표, 콜론)외에 커스텀 구분자를 지정할 수 있다.")
     @Test

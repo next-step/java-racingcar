@@ -4,13 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class StringNumberDelimiter {
-    private static Set<String> delimiterSet = new HashSet<>();
     private static Pattern pattern = Pattern.compile("^//.\n.*");
-
-    static {
-        delimiterSet.add(",");
-        delimiterSet.add(":");
-    }
 
     public static StringDelimiter getDelimiter(String input) {
         if (input == null || input.isBlank()) {
@@ -21,7 +15,7 @@ class StringNumberDelimiter {
             return new StringDelimiter(String.valueOf(input.charAt(2)), true);
         }
 
-        return new StringDelimiter(createDelimiter(input), false);
+        return new StringDelimiter(",|:", false);
     }
 
     private static boolean containCustomDelimiter(String input) {
@@ -31,14 +25,6 @@ class StringNumberDelimiter {
 
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
-    }
-
-    private static String createDelimiter(String input) {
-        String filterDelimiter = delimiterSet.stream()
-                .filter(delimiter -> input.contains(delimiter))
-                .findFirst()
-                .get();
-        return filterDelimiter;
     }
 
     static class StringDelimiter {
