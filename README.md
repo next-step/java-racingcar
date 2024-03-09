@@ -1,9 +1,42 @@
-# 자동차 경주 게임
-## 진행 방법
-* 자동차 경주 게임 요구사항을 파악한다.
-* 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-* 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-* 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
+# 자동차 경주 🚗 🏁
 
-## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+## ✅ 구현 목록 : 체크 리스트
+
+---
+
+### 자동차 컨트롤러
+
+- [x] `RacingController.class`
+
+### 자동차 서비스
+
+- [x] `RacingService.class`
+
+### 입출력 클래스
+
+- [x] 입력 클래스 (`InputView.class`)
+- [x] 출력 클래스 (`ResultView.class`)
+
+### 자동차 객체
+
+- [x] `Car.class`
+
+### 테스트 코드
+
+- [x] `RacingServiceTest.class`
+- [x] `CarTest.class`
+
+### 컨벤션
+
+- [x] Java : Intellij idea Code Style java 적용
+- [x] Commit : AngularJS Commit Message 사용
+
+### 코드 규칙
+
+- [x] else 예약어 사용 X
+- [x] switch / case 사용 X
+
+### 개인적으로 추가한 코드
+
+- [x] 입력 메서드의 공통화를 위한 질문 키워드 enum class (`RacingQuestionEnum.class`)
+- [x] Custom Exception (`RacingQuestionKeywordException.class`)
