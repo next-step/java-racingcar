@@ -9,22 +9,25 @@ import org.junit.jupiter.api.Test;
 public class RacingGameTest {
 
     private static final List<String> CAR_NAMES = List.of("a", "b", "c");
+    private static final DrivingStrategy ALWAYS_MOVE = () -> true;
+    private static final DrivingStrategy NEVER_MOVE = () -> false;
+    private static final int FIVE_TIMES = 5;
 
     private final RacingGame racingGame = new RacingGame(CAR_NAMES);
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
     void drive() {
-        racingGame.drive(5, () -> true);
+        racingGame.drive(FIVE_TIMES, ALWAYS_MOVE);
 
         List<Integer> drivingDistances = racingGame.drivingDistances();
-        assertThat(drivingDistances).containsExactly(5, 5, 5);
+        assertThat(drivingDistances).containsExactly(FIVE_TIMES, FIVE_TIMES, FIVE_TIMES);
     }
 
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
     void notDrive() {
-        racingGame.drive(5, () -> false);
+        racingGame.drive(FIVE_TIMES, NEVER_MOVE);
 
         List<Integer> drivingDistances = racingGame.drivingDistances();
         assertThat(drivingDistances).containsExactly(0, 0, 0);
@@ -33,7 +36,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
     void result() {
-        racingGame.drive(5, () -> true);
+        racingGame.drive(FIVE_TIMES, ALWAYS_MOVE);
 
         String expectedResult = expectedResult();
         assertThat(racingGame.result())
@@ -42,7 +45,7 @@ public class RacingGameTest {
 
     private String expectedResult() {
         StringBuilder expected = new StringBuilder();
-        for (int round = 1; round <= 5; round++) {
+        for (int round = 1; round <= FIVE_TIMES; round++) {
             expected.append(expectedRoundResult(round));
             expected.append('\n');
         }

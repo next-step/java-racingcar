@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
     private static final List<String> CAR_NAMES = List.of("a", "b", "c");
+    private static final DrivingStrategy ALWAYS_MOVE = () -> true;
+    public static final DrivingStrategy NEVER_MOVE = () -> false;
 
     private final Cars cars = Cars.fromCarNames(CAR_NAMES);
 
@@ -23,7 +25,7 @@ public class CarsTest {
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
     void drive() {
-        cars.drive(() -> true);
+        cars.drive(ALWAYS_MOVE);
         List<Integer> drivingDistances = cars.drivingDistances();
 
         assertThat(drivingDistances).containsExactly(1, 1, 1);
@@ -32,7 +34,7 @@ public class CarsTest {
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
     void notDrive() {
-        cars.drive(() -> false);
+        cars.drive(NEVER_MOVE);
         List<Integer> drivingDistances = cars.drivingDistances();
 
         assertThat(drivingDistances).containsExactly(0, 0, 0);
@@ -41,11 +43,11 @@ public class CarsTest {
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
     void result() {
-        cars.drive(() -> true);
+        cars.drive(ALWAYS_MOVE);
         assertThat(cars.result()).isEqualTo(
             String.format("%s : -\n%s : -\n%s : -", CAR_NAMES.get(0), CAR_NAMES.get(1), CAR_NAMES.get(2)));
 
-        cars.drive(() -> true);
+        cars.drive(ALWAYS_MOVE);
         assertThat(cars.result()).isEqualTo(
             String.format("%s : --\n%s : --\n%s : --", CAR_NAMES.get(0), CAR_NAMES.get(1), CAR_NAMES.get(2)));
     }
