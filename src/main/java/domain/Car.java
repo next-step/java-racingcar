@@ -19,14 +19,19 @@ public class Car {
         if (moveStrategy.moveable()) {
             position.move();
         }
+        reduceMoveCount();
         return position;
     }
 
-    private boolean moveable() {
-        if (moveCount < 1) {
-            return false;
-        }
-        moveCount--;
-        return true;
+    private void reduceMoveCount() {
+        this.moveCount--;
+    }
+
+    public boolean moveable() {
+        return moveCount >= 1;
+    }
+
+    public Position position() {
+        return this.position;
     }
 }

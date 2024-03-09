@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class CarTest {
 
     @DisplayName("이동 시 랜덤한 값이 4 이상인 경우 전진한다.")
@@ -11,13 +13,14 @@ public class CarTest {
     void test01() {
         // given
         int moveCount = 1;
-        Car car = new Car(moveCount, () -> true);
+        MoveStrategy moveStrategy = () -> true;
+        Car car = new Car(moveCount, moveStrategy);
 
         // when
         Position position = car.move();
 
         // then
-        Assertions.assertThat(position.getPosition()).isEqualTo(1);
+        assertThat(position).isEqualTo(new Position(1));
     }
 
     @DisplayName("이동 시 랜덤한 값이 4 미만인 경우 멈춘다.")
@@ -25,12 +28,13 @@ public class CarTest {
     void test02() {
         // given
         int moveCount = 1;
-        Car car = new Car(moveCount, () -> false);
+        MoveStrategy moveStrategy = () -> false;
+        Car car = new Car(moveCount, moveStrategy);
 
         // when
         Position position = car.move();
 
         // then
-        Assertions.assertThat(position.getPosition()).isEqualTo(0);
+        assertThat(position).isEqualTo(new Position(0));
     }
 }
