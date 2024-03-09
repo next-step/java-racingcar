@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Random;
 
-public class DrivingStrategyImpl implements DrivingStrategy {
+public class SixtyPercentRandomDrivingStrategy implements DrivingStrategy {
 
     private static final int RANGE_UPPER_BOUND = 10;
     private static final int THRESHOLD = 4;
