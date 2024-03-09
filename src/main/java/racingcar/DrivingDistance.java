@@ -5,10 +5,6 @@ public class DrivingDistance {
     public static final int INIT_VALUE = 0;
     private final int drivingDistance;
 
-    public DrivingDistance() {
-        this(INIT_VALUE);
-    }
-
     public DrivingDistance(int drivingDistance) {
         this.drivingDistance = drivingDistance;
     }
