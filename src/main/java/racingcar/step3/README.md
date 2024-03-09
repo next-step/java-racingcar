@@ -27,10 +27,9 @@
 ![기능](../images/image001.png)
 
 ### class Car
-- [ ] `PROPERTY` `location` : 자동차의 현재 위치
-- [ ] `METHOD` `decideAction()` : 파라미터를 받아 움직일지 결정한다.
-- [ ] `METHOD` `move()` : 이동한다.
-- [ ] `method` `getCurrentLocation` : 현재 위치를 반환한다.
+- [x] `PROPERTY` `location` : 자동차의 현재 위치
+- [x] `METHOD` `decideAction()` : 파라미터를 받아 움직일지 결정한다.
+- [x] `METHOD` `getCurrentLocation` : 현재 위치를 반환한다.
 
 ### class Round
 - [ ] `PROPERTY` `cars` : 경주에 참여하는 자동차 리스트
