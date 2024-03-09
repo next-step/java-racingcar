@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,11 +12,19 @@ public class CarRacing {
     static void Racing() {
         List<Character>[] cars = new List[CarCount()];
         int tryCount = MoveCount();
+        while (tryCount > 0) {
+            MoveCar(cars);
+            tryCount--;
+            System.out.println();
+        }
     }
 
     private static int Count() {
-        Scanner cnt = new Scanner(System.in);
-        return cnt.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int cnt = sc.nextInt();
+        if (cnt <= 0)
+            throw new IllegalArgumentException("잘못된 입력값 입니다");
+        return cnt;
     }
     private static int CarCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
