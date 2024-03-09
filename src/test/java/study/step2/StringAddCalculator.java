@@ -10,6 +10,14 @@ public class StringAddCalculator {
   private static final String DEFAULT_SEPARATOR = ",|:";
   private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile("//(.)\\n(.*)"); // '//'와 '\n' 사이의 문자를 의미
 
+  private static final String IS_NOT_NUMBER_FORMAT = "숫자 형식이 올바르지 않습니다. input: %s, errorMessage: %s";
+  private static final String UNEXPECTED_ERROR = "예기치 못한 에러가 발생했습니다. input: %s, errorMessage: %s";
+  private static final String NEGATIVE_NUMBER_IS_NOT_ALLOWED = "음수는 허용되지 않습니다. input: %s";
+
+  private StringAddCalculator() {
+    throw new AssertionError();
+  }
+
   public static int splitAndSum(String given) {
 
     if (isNullOrEmpty(given)) {
@@ -17,8 +25,8 @@ public class StringAddCalculator {
     }
 
     String[] stringArrays = split(given);
-    validate(stringArrays);
-    return getSum(stringArrays);
+    int[] intArrays = toInts(stringArrays);
+    return getSum(intArrays);
   }
 
   public static int getDefaultResult() {
@@ -29,37 +37,45 @@ public class StringAddCalculator {
     return str == null || str.length() == 0;
   }
 
-  private static int getSum(String[] stringArrays) {
-    return Arrays.stream(stringArrays)
-        .mapToInt(Integer::parseInt)
-        .sum();
+  private static int getSum(int[] arrays) {
+    return Arrays.stream(arrays).sum();
   }
 
-  private static void validate(String[] stringArrays) {
+  private static int[] toInts(String[] arrays) {
+    int[] results = new int[arrays.length];
 
-    int number = 0;
-    for (String str : stringArrays) {
+    for (int i = 0; i < arrays.length; i++) {
+      toInt(arrays, results, i); // 변환 작업
+      checkIsNegativeNumber(results[i]); // 음수 예외
+    }
 
-      // 숫자 형식인가?
-      try {
-        number = Integer.parseInt(str);
-      } catch (Exception e) {
-        throw new NumberFormatException();
-      }
+    return results;
+  }
 
-      // 음수가 아닌가?
-      if (number < 0) {
-        throw new RuntimeException();
-      }
+  private static void toInt(String[] arrays, int[] results, int index) {
+    try {
+      results[index] = Integer.parseInt(arrays[index]);
+    } catch (NumberFormatException nx) {
+      throw new NumberFormatException(String.format(IS_NOT_NUMBER_FORMAT, arrays[index], nx.getMessage()));
+    } catch (Exception e) {
+      throw new RuntimeException(String.format(UNEXPECTED_ERROR, arrays[index], e.getMessage()), e);
+    }
+  }
+
+  private static void checkIsNegativeNumber(int number) {
+    if (number < 0) {
+      throw new IllegalArgumentException(String.format(NEGATIVE_NUMBER_IS_NOT_ALLOWED, number));
     }
   }
 
   private static String[] split(String text) {
     Matcher matcher = CUSTOM_SEPARATOR_PATTERN.matcher(text);
+
     if (matcher.find()) {
       String customDelimiter = matcher.group(1);
       return matcher.group(2).split(customDelimiter);
     }
+
     return text.split(DEFAULT_SEPARATOR);
   }
 }
