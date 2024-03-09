@@ -3,10 +3,13 @@ package model;
 import java.util.Objects;
 
 public class Position {
-    private static final String HYPHEN = "-";
     private int position;
 
     public Position(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("음수 값은 불가합니다");
+        }
+
         this.position = position;
     }
 
@@ -14,9 +17,8 @@ public class Position {
         this.position += 1;
     }
 
-    @Override
-    public String toString() {
-        return HYPHEN.repeat(this.position);
+    public int getPosition() {
+        return this.position;
     }
 
     @Override
@@ -31,5 +33,6 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 
 }
