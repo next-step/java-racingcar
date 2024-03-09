@@ -12,6 +12,7 @@ class RacingCarTest {
     void 랜덤_값이_4이상이면_전진한다(final int randomNumber) {
         // given
         final RacingCar racingCar = new RacingCar();
+        assertThat(racingCar.getLocation()).isEqualTo(0);
 
         // when
         racingCar.move(randomNumber);
@@ -25,6 +26,7 @@ class RacingCarTest {
     void 랜덤_값이_4미만이면_정지한다(final int randomNumber) {
         // given
         final RacingCar racingCar = new RacingCar();
+        assertThat(racingCar.getLocation()).isEqualTo(0);
 
         // when
         racingCar.move(randomNumber);
