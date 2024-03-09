@@ -1,24 +1,25 @@
 package model;
 
-import view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class RacingGame {
-    private final List<Car> carList;
+    private final List<Car> cars;
 
     public RacingGame(int numOfCars) {
         this(numOfCars, new RandomMove());
     }
 
     public RacingGame(int numOfCars, MoveStrategy moveStrategy) {
-        this.carList = participate(numOfCars, moveStrategy);
+        this.cars = participate(numOfCars, moveStrategy);
     }
 
     public RacingGame(List<Car> cars) {
-        this.carList = cars;
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        this.cars = cars;
     }
 
     private List<Car> participate(int numOfCars, MoveStrategy moveStrategy) {
@@ -30,40 +31,25 @@ public class RacingGame {
         return result;
     }
 
-    public ResultView run(int turn) {
-        ResultView resultView = new ResultView();
+    public RacingRecord run(int turn) {
+        RacingRecord racingRecord = new RacingRecord(turn);
         for (int t = 1; t <= turn; t++) {
             move();
-            record(resultView);
+            record(t, racingRecord);
         }
 
-        return resultView;
+        return racingRecord;
     }
 
     public void move() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             car.move();
         }
     }
 
-    private void record(ResultView resultView) {
-        for (Car car : carList) {
-            resultView.record(car);
+    private void record(int turn, RacingRecord racingRecord) {
+        for (Car car : cars) {
+            racingRecord.record(turn, car);
         }
-
-        resultView.appendNewLine();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingGame that = (RacingGame) o;
-        return Objects.equals(carList, that.carList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carList);
     }
 }
