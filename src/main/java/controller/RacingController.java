@@ -11,15 +11,8 @@ public class RacingController {
         int numberOfCars = inputView.askNumberOfCars();
         int racingTurn = inputView.askRacingTurn();
 
-        RacingGame racingGame = new RacingGame();
-        racingGame.participate(numberOfCars);
-
-        for (int i = 1; i <= racingTurn; i++) {
-            racingGame.run();
-        }
-
-
-        ResultView resultView = new ResultView();
-        resultView.print(racingGame.racingResult());
+        RacingGame racingGame = new RacingGame(numberOfCars);
+        ResultView resultView = racingGame.run(racingTurn);
+        resultView.print();
     }
 }
