@@ -36,7 +36,13 @@ public class ResultView {
         sb.append(NEW_LINE);
     }
 
+    public void appendWinners(List<String> winners) {
+        sb.append(String.join(", ", winners)).append("가 최종 우승 했습니다");
+    }
+    
     public void print() {
         System.out.println(sb.toString());
     }
+
+
 }
