@@ -1,6 +1,9 @@
 package view;
 
-import model.Car;
+import model.RacingRecord;
+import model.Record;
+
+import java.util.List;
 
 public class ResultView {
 
@@ -15,9 +18,18 @@ public class ResultView {
         appendNewLine();
     }
 
-    public void record(Car car) {
-        sb.append(HYPHEN.repeat(car.getPosition()));
-        appendNewLine();
+    public void draw(int turn, RacingRecord racingRecord) {
+        for (int t = 1; t <= turn; t++) {
+            hyphenate(racingRecord.racingRecord(t));
+            appendNewLine();
+        }
+    }
+
+    public void hyphenate(List<Record> records) {
+        for (Record record : records) {
+            sb.append(HYPHEN.repeat(record.getPosition()));
+            appendNewLine();
+        }
     }
 
     public void appendNewLine() {
@@ -27,5 +39,4 @@ public class ResultView {
     public void print() {
         System.out.println(sb.toString());
     }
-
 }
