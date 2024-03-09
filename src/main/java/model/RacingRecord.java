@@ -20,8 +20,8 @@ public class RacingRecord {
         return result;
     }
 
-    public void record(int turn, Car car) {
-        this.records[turn].add(new Record(car));
+    public void save(int turn, Record record) {
+        this.records[turn].add(record);
     }
 
     public List<Record> racingRecord(int turn) {
