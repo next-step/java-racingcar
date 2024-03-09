@@ -64,13 +64,13 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("문자열 '1,2:3'을 입력하면 숫자 6을 반환 (구분자 ,:)")
-    void 구분자_콤마_콜론() {
+    @DisplayName("구분자 컴마(,) 외에 콜론(:) 사용 가능")
+    void 구분자_콤마_콜() {
         assertThat(StringAddCalculator.calculate("1,2:3")).isEqualTo(6);
     }
 
     @Test
-    @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정")
+    @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정 가능")
     void 커스텀_구분자_세미콜론_지정() {
         assertThat(StringAddCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
     }
