@@ -2,21 +2,21 @@ package domain;
 
 public class Position {
 
-    private int x;
+    private int position;
 
     public Position() {
         this(0);
     }
 
-    public Position(int x) {
-        this.x = x;
+    public Position(int position) {
+        this.position = position;
     }
 
-    public int getX() {
-        return this.x;
+    public int getPosition() {
+        return this.position;
     }
 
-    public void forward() {
-        this.x++;
+    public void move() {
+        this.position++;
     }
 }

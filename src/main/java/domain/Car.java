@@ -4,26 +4,29 @@ public class Car {
 
     private int moveCount;
     private final Position position;
+    private final MoveStrategy moveStrategy;
 
-    public Car(int moveCount) {
+    public Car(int moveCount, MoveStrategy moveStrategy) {
         this.moveCount = moveCount;
         this.position = new Position();
+        this.moveStrategy = moveStrategy;
     }
 
-    public Position move(int random) {
-        reduceMoveCount();
-        if (random < 4) {
+    public Position move() {
+        if (!moveable()) {
             return position;
         }
-
-        position.forward();
+        if (moveStrategy.moveable()) {
+            position.move();
+        }
         return position;
     }
 
-    private void reduceMoveCount() {
+    private boolean moveable() {
         if (moveCount < 1) {
-            throw new IllegalStateException("이동 횟수가 모두 소진되었습니다.");
+            return false;
         }
         moveCount--;
+        return true;
     }
 }
