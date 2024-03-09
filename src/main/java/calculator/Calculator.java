@@ -57,8 +57,20 @@ public class Calculator {
     private static int[] toInts(String[] strings) {
         int[] numbers = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
+            isValidNumber(strings[i]);
             numbers[i] = Integer.parseInt(strings[i]);
         }
         return numbers;
+    }
+
+    private static void isValidNumber(String text) {
+        try {
+            int number = Integer.parseInt(text);
+            if (number < 0) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException();
+        }
     }
 }
