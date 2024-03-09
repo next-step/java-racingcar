@@ -51,7 +51,7 @@ public class InputViewTest {
         System.setIn(new ByteArrayInputStream(String.valueOf(carCount).getBytes()));
 
         // when
-        int result = InputView.promptForCarCount();
+        int result = InputView.promptForMoveCount();
 
         // then
         assertThat(result).isEqualTo(carCount);
@@ -70,7 +70,7 @@ public class InputViewTest {
 
         // when / then
         assertThatIllegalArgumentException()
-                .isThrownBy(InputView::promptForCarCount)
+                .isThrownBy(InputView::promptForMoveCount)
                 .withMessage(errorMessage);
     }
 }
