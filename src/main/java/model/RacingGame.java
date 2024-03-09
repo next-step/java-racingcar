@@ -2,6 +2,8 @@ package model;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public class RacingGame {
     private final List<Car> cars;
 
@@ -33,5 +35,19 @@ public class RacingGame {
         for (Car car : cars) {
             racingRecord.save(turn, car.toRecord());
         }
+    }
+
+    public List<String> winnerNames() {
+        int maxPosition = maxPosition();
+        return this.cars.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .map(Car::getName)
+                .collect(toList());
+    }
+
+    private int maxPosition() {
+        return this.cars.stream()
+                .map(Car::getPosition)
+                .reduce(0, Math::max);
     }
 }
