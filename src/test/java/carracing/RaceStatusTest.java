@@ -1,5 +1,6 @@
 package carracing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RaceStatusTest {
     @ParameterizedTest
     @MethodSource("hyphenExpressionParameter")
+    @DisplayName("전달된 position 값들을을 \"-\"으로 표현한다.")
     void testHyphenExpression(List<Integer> positionOfCarList, String expectedHyphenExpression) {
         RaceStatus raceStatus = new RaceStatus(positionOfCarList);
         assertThat(raceStatus.hyphenExpression()).isEqualTo(expectedHyphenExpression);
