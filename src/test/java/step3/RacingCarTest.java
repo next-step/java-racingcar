@@ -9,10 +9,11 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingCarTest {
 
     Car car;
+    AlwaysMoveStrategy alwaysMoveStrategy;
 
     @BeforeEach
     void beforeEach() {
-        AlwaysMoveStrategy alwaysMoveStrategy = new AlwaysMoveStrategy();
+        alwaysMoveStrategy = new AlwaysMoveStrategy();
         car = new Car(alwaysMoveStrategy);
     }
 
@@ -29,10 +30,18 @@ public class RacingCarTest {
 
     @Test
     public void 입력받은_수_만큼_자동차가_생성된다() {
-        AlwaysMoveStrategy alwaysMoveStrategy = new AlwaysMoveStrategy();
         CarRacing carRacing = new CarRacing(3, alwaysMoveStrategy);
-        assertThat(carRacing.getCars().size()).isEqualTo(3);
+        int carCount = carRacing.getCars().size();
+
+        assertThat(carCount).isEqualTo(3);
     }
 
+    @Test
+    public void 입력받은_수_만큼_이동을_시도한다() {
+        CarRacing carRacing = new CarRacing(3, alwaysMoveStrategy);
+        carRacing.racingStart(3);
+        int lastLocation = carRacing.getCars().get(0).getCurrentLocation();
 
+        assertThat(lastLocation).isEqualTo(3);
+    }
 }
