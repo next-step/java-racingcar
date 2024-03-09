@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PrintStrategy {
 
-    public void printRoundResult(List<Car> cars);
+    void printRoundResult(List<Car> cars);
 }

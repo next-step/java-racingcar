@@ -3,8 +3,6 @@ package racingcar.step3;
 import racingcar.step3.move.MoveStrategy;
 import racingcar.step3.print.PrintStrategy;
 
-import java.util.Random;
-
 public class RacingCarContest {
 
     private final Round round;
