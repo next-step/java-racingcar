@@ -17,7 +17,7 @@ public class Name {
     }
 
     private void assertValidName(String name) {
-        if (name == null || name.isEmpty()) {
+        if (name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상이어야 합니다");
         }
         if (name.length() > 5) {
