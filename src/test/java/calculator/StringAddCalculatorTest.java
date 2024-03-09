@@ -68,4 +68,10 @@ public class StringAddCalculatorTest {
         assertThat(StringAddCalculator.sum("1,2:3")).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정")
+    void 커스텀_구분자_세미콜론_지정() {
+        assertThat(StringAddCalculator.sum("//;\n1;2;3")).isEqualTo(6);
+    }
+
 }
