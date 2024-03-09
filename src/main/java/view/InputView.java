@@ -1,20 +1,35 @@
 package view;
 
+import model.Car;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public int askNumberOfCars() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public List<Car> askCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
         try {
-            return toInt(SCANNER.nextLine());
+            return toCars(SCANNER.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
-        return askNumberOfCars();
+        return askCarNames();
+    }
+
+    private List<Car> toCars(String input) {
+        String[] names = input.split(",");
+
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+
+        return cars;
     }
 
     public int askRacingTurn() {
