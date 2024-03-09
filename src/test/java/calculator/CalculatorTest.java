@@ -59,4 +59,13 @@ public class CalculatorTest {
         // When & Then
         assertThat(Calculator.splitAndSum(text)).isEqualTo(expected);
     }
+
+    @Test
+    public void splitAndSum_custom() {
+        // Given
+        int expected = 6;
+        String text = "//a\n1a2a3a";
+        // When & Then
+        assertThat(Calculator.splitAndSum(text)).isEqualTo(expected);
+    }
 }
