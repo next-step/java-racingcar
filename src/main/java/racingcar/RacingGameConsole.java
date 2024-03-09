@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameConsole {
@@ -10,7 +11,7 @@ public class RacingGameConsole {
     private static final Scanner scanner = new Scanner(System.in);
 
     public void start() {
-        String[] carNames = inputCarNames();
+        List<String> carNames = inputCarNames();
         int round = inputRound();
 
         RacingGame racingGame = new RacingGame(carNames);
@@ -30,9 +31,11 @@ public class RacingGameConsole {
             String.join(WINNER_DELIMITER, racingGame.winnerNames()));
     }
 
-    private String[] inputCarNames() {
+    private List<String> inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return scanner.nextLine().split(",");
+        return List.of(
+            scanner.nextLine().split(",")
+        );
     }
 
     private int inputRound() {

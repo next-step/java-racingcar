@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class RacingGameTest {
 
-    private static final String[] CAR_NAMES = {"a", "b", "c"};
+    private static final List<String> CAR_NAMES = List.of("a", "b", "c");
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")

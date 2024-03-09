@@ -13,8 +13,8 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public RacingGame(String[] carNames) {
-        this(new Cars(carNames));
+    public RacingGame(List<String> carNames) {
+        this(Cars.fromCarNames(carNames));
     }
 
     public void drive(int round, DrivingStrategy drivingStrategy) {

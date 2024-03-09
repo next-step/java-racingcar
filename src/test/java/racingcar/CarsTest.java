@@ -9,19 +9,19 @@ import org.junit.jupiter.api.Test;
 
 public class CarsTest {
 
-    private static final String[] CAR_NAMES = {"a", "b", "c"};
+    private static final List<String> CAR_NAMES = List.of("a", "b", "c");
 
     @Test
     @DisplayName("차 이름이 0개라면 예외가 발생한다")
     void new_cars_length_less_than_1() {
-        assertThatThrownBy(() -> new Cars(new String[0]))
+        assertThatThrownBy(() -> new Cars(List.of()))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
     void drive() {
-        Cars cars = new Cars(CAR_NAMES);
+        Cars cars = Cars.fromCarNames(CAR_NAMES);
         cars.drive(() -> true);
         List<Integer> drivingDistances = cars.drivingDistances();
 
@@ -31,7 +31,7 @@ public class CarsTest {
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
     void notDrive() {
-        Cars cars = new Cars(CAR_NAMES);
+        Cars cars = Cars.fromCarNames(CAR_NAMES);
         cars.drive(() -> false);
         List<Integer> drivingDistances = cars.drivingDistances();
 
@@ -41,15 +41,15 @@ public class CarsTest {
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
     void result() {
-        Cars cars = new Cars(CAR_NAMES);
+        Cars cars = Cars.fromCarNames(CAR_NAMES);
 
         cars.drive(() -> true);
         assertThat(cars.result()).isEqualTo(
-            String.format("%s : -\n%s : -\n%s : -", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
+            String.format("%s : -\n%s : -\n%s : -", CAR_NAMES.get(0), CAR_NAMES.get(1), CAR_NAMES.get(2)));
 
         cars.drive(() -> true);
         assertThat(cars.result()).isEqualTo(
-            String.format("%s : --\n%s : --\n%s : --", CAR_NAMES[0], CAR_NAMES[1], CAR_NAMES[2]));
+            String.format("%s : --\n%s : --\n%s : --", CAR_NAMES.get(0), CAR_NAMES.get(1), CAR_NAMES.get(2)));
     }
 
     @Test
