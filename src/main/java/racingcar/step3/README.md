@@ -28,19 +28,22 @@
 
 ### class Car
 - [x] `PROPERTY` `location` : 자동차의 현재 위치
-- [x] `METHOD` `decideAction()` : 파라미터를 받아 움직일지 결정한다.
+- [x] `METHOD` `move()` : 움직임을 시도한다.
 - [x] `METHOD` `getCurrentLocation` : 현재 위치를 반환한다.
 
 ### class Round
 - [x] `PROPERTY` `cars` : 경주에 참여하는 자동차 리스트
+- [x] `PROPERTY` `moveStrategy` : 이동 전략
+- [x] `PROPERTY` `printStrategy` : 출력 전략
 - [x] `METHOD` `startRound()` : 한 라운드를 시작한다.
 - [x] `METHOD` `printRoundResult()` : 라운드의 결과를 출력한다.
 
 ### class RacingCarContest
 - [x] `PROPERTY` `round` : round 객체
+- [x] `PROPERTY` `roudNumber` : round 횟수
 - [x] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
 
-### InputView
+### class InputView
 - [x] `method` `getCarsNumberInput()` : 
   - "자동차 대수는 몇 대 인가요?"를 출력한다.
   - 입력값을 받는다.

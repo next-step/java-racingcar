@@ -1,30 +1,36 @@
 package racingcar.step3;
 
+import racingcar.step3.move.MoveStrategy;
+import racingcar.step3.print.PrintStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Round {
 
     private final List<Car> cars;
+    private final MoveStrategy moveStrategy;
+    private final PrintStrategy printStrategy;
 
-    public Round(int carsNumber) {
-        cars = createCarsList(carsNumber);
+    public Round(MoveStrategy moveStrategy, int carsNumber, PrintStrategy printStrategy) {
+        this.moveStrategy = moveStrategy;
+        this.cars = createCarsList(carsNumber);
+        this.printStrategy = printStrategy;
     }
 
-    public void startRound(Random random) {
-        cars.forEach(car -> car.decideAction(random.nextInt(10)));
+    public void startRound() {
+        cars.forEach(Car::move);
     }
 
     public void printRoundResult() {
-        cars.stream().map(Car::getCurrentLocation).forEach(System.out::println);
+        printStrategy.printRoundResult(cars);
     }
 
     private List<Car> createCarsList(int carNumbers) {
         List<Car> cars = new ArrayList<Car>();
 
         for (int i = 0; i < carNumbers; i++) {
-            cars.add(new Car());
+            cars.add(new Car(moveStrategy));
         }
 
         return cars;

@@ -1,6 +1,7 @@
 package racingcar.step3;
 
-import java.util.Random;
+import racingcar.step3.move.RandomMoveStrategy;
+import racingcar.step3.print.DashVisualizePrintStrategy;
 
 public class RacingCar {
 
@@ -10,7 +11,9 @@ public class RacingCar {
         int carsNumber = inputView.getCarsNumbersInput();
         int roundsNumber = inputView.getRoundsNumberInput();
 
-        RacingCarContest racingCarContest = new RacingCarContest(carsNumber, roundsNumber, new Random());
+        RacingCarContest racingCarContest = new RacingCarContest(
+                carsNumber, roundsNumber, new RandomMoveStrategy(), new DashVisualizePrintStrategy()
+        );
 
         racingCarContest.startRacingContest();
     }

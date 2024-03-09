@@ -1,22 +1,23 @@
 package racingcar.step3;
 
+import racingcar.step3.move.MoveStrategy;
+import racingcar.step3.print.PrintStrategy;
+
 import java.util.Random;
 
 public class RacingCarContest {
 
     private final Round round;
     private final int roundsNumber;
-    private final Random random;
 
-    public RacingCarContest(int carsNumber, int roundsNumber, Random random) {
-        this.round = new Round(carsNumber);
+    public RacingCarContest(int carsNumber, int roundsNumber, MoveStrategy moveStrategy, PrintStrategy printStrategy) {
+        this.round = new Round(moveStrategy, carsNumber, printStrategy);
         this.roundsNumber = roundsNumber;
-        this.random = random;
     }
 
     public void startRacingContest() {
         for (int i = 0; i < roundsNumber; i++) {
-            round.startRound(random);
+            round.startRound();
             round.printRoundResult();
             System.out.println();
         }
