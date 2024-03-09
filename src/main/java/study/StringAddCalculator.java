@@ -20,20 +20,27 @@ public class StringAddCalculator {
     private StringAddCalculator() {
     }
 
-    public static int splitAndSum(String input) {
+    public static int splitAndSum(final String input) {
         if (isNullOrEmpty(input)) {
             return DEFAULT_VALUE_FOR_EMPTY_INPUT;
         }
 
-        if (doesNotContainAnyDelimiter(input)) {
-            return parsePositiveSingleNumber(input);
+        final String[] splitInput = splitByDelimiter(input);
+
+        return Arrays.stream(splitInput)
+                .mapToInt(StringAddCalculator::parsePositiveSingleNumber)
+                .sum();
+    }
+
+    private static String[] splitByDelimiter(final String input) {
+        final Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
+        if (matcher.find()) {
+            final String customDelimiter = String.format("\\%s", matcher.group(CUSTOM_DELIMITER_CHARACTER_GROUP_NAME));
+            final String inputToSplit = matcher.group(CUSTOM_DELIMITER_INPUT_GROUP_NAME);
+            return inputToSplit.split(customDelimiter);
         }
 
-        if (defaultDelimiterIsUsed(input)) {
-            return sumAfterSplitByDelimiter(input, COMMA_OR_COLON_DELIMITER);
-        }
-
-        return sumAfterSplitByCustomDelimiter(input);
+        return input.split(COMMA_OR_COLON_DELIMITER);
     }
 
     private static boolean isNullOrEmpty(final String input) {

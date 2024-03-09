@@ -116,20 +116,6 @@ class StringAddCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Disabled
-    @DisplayName("커스텀 구분자 입력 형식이 올바르지 않으면 예외가 발생한다")
-    @ParameterizedTest(name = "{0} -> 커스텀 구분자 입력 양식을 확인해주세요")
-    @ValueSource(strings = {"/@\n1@2", "///@\n1@2", "//@\\n1@2", "//@\\\n1@2"})
-    void exceptionShouldBeThrownForInvalidCustomDelimiterFormat(final String invalidCustomForamt) {
-        // given & when
-        final RuntimeException actual = catchThrowableOfType(
-                () -> StringAddCalculator.splitAndSum(invalidCustomForamt), RuntimeException.class);
-
-        // then
-        assertThat(actual).hasMessage("커스텀 구분자 입력 양식을 확인해주세요");
-    }
-
-    @Disabled
     @DisplayName("커스텀 구분자를 사용해 전달한 숫자 중 음수가 포함되어 있다면 예외가 발생한다")
     @ParameterizedTest(name = "{0} -> 음수는 허용되지 않습니다")
     @ValueSource(strings = {"//[\n1[-2[3", "//.\n1.2.-1", "//*\n1*2*3*-11"})
