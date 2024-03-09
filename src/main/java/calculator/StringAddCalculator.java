@@ -10,7 +10,10 @@ public class StringAddCalculator {
             return 0;
         }
 
-        return sum(split(str));
+        String[] strings = split(str);
+        int[] numbers = parseStringToInt(strings);
+
+        return sum(numbers);
     }
 
     private static String[] split(String str) {
@@ -23,10 +26,18 @@ public class StringAddCalculator {
         return str.split("[,:]");
     }
 
-    private static int sum(String[] tokens) {
+    private static int[] parseStringToInt(String[] strings) {
+        int[] numbers = new int[strings.length];
+        for (int i = 0; i < strings.length; i++) {
+            numbers[i] = Integer.parseInt(strings[i]);
+        }
+        return numbers;
+    }
+
+    private static int sum(int[] numbers) {
         int sum = 0;
-        for (String s : tokens) {
-            sum += Integer.parseInt(s);
+        for (int num : numbers) {
+            sum += num;
         }
         return sum;
     }
