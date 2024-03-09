@@ -10,8 +10,7 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] strings = split(str);
-        int[] numbers = parseStringToInt(strings);
+        int[] numbers = parseStringToInt(splitString(str));
 
         return sum(numbers);
     }
@@ -20,7 +19,7 @@ public class StringAddCalculator {
         return str == null || str.isEmpty();
     }
 
-    private static String[] split(String str) {
+    private static String[] splitString(String str) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
         if (m.find()) {
             String customDelimiter = m.group(1);
