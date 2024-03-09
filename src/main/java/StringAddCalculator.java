@@ -31,9 +31,10 @@ public class StringAddCalculator {
     }
 
     private static String[] createSplitNumbersByStringNumber(String str) {
-        String delimiter = StringNumberDelimiter.getDelimiter(str);
+        StringNumberDelimiter.StringDelimiter stringDelimiter = StringNumberDelimiter.getDelimiter(str);
+        String delimiter = stringDelimiter.getDelimiter();
 
-        if (StringNumberDelimiter.checkCustomDelimiter(str)) {
+        if (stringDelimiter.isCustomDelimiter()) {
             return str.substring(4).split(delimiter);
         }
 

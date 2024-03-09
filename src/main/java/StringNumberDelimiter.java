@@ -12,25 +12,54 @@ class StringNumberDelimiter {
         delimiterSet.add(":");
     }
 
-    public static String getDelimiter(String input) {
+    public static StringDelimiter getDelimiter(String input) {
         if (input == null || input.isBlank()) {
-            return "";
+            return StringDelimiter.empty();
+        }
+
+        if (containCustomDelimiter(input)) {
+            return new StringDelimiter(String.valueOf(input.charAt(2)), true);
+        }
+
+        return new StringDelimiter(createDelimiter(input), false);
+    }
+
+    private static boolean containCustomDelimiter(String input) {
+        if (input == null) {
+            return false;
         }
 
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-            return String.valueOf(input.charAt(2));
-        }
+        return matcher.matches();
+    }
 
-        return delimiterSet.stream()
+    private static String createDelimiter(String input) {
+        String filterDelimiter = delimiterSet.stream()
                 .filter(delimiter -> input.contains(delimiter))
                 .findFirst()
                 .get();
-
+        return filterDelimiter;
     }
 
-    public static boolean checkCustomDelimiter(String str) {
-        Matcher matcher = pattern.matcher(str);
-        return matcher.matches();
+    static class StringDelimiter {
+        private final String delimiter;
+        private final boolean isCustomDelimiter;
+
+        public StringDelimiter(String delimiter, boolean isCustomDelimiter) {
+            this.delimiter = delimiter;
+            this.isCustomDelimiter = isCustomDelimiter;
+        }
+
+        public String getDelimiter() {
+            return delimiter;
+        }
+
+        public static StringDelimiter empty() {
+            return new StringDelimiter("", false);
+        }
+
+        public boolean isCustomDelimiter() {
+            return this.isCustomDelimiter;
+        }
     }
 }
