@@ -44,4 +44,14 @@ public class StringTest {
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
 
     }
+
+    @Test
+    @DisplayName("String charAt 테스트")
+    void charAt_test() {
+        String data = "abc";
+
+        assertThat(data.charAt(0)).isEqualTo('a');
+        assertThat(data.charAt(1)).isEqualTo('b');
+        assertThat(data.charAt(2)).isEqualTo('c');
+    }
 }
