@@ -7,17 +7,23 @@ public class RacingCarContest {
 
     private final Round round;
     private final int roundsNumber;
+    private final PrintStrategy printStrategy;
 
     public RacingCarContest(int carsNumber, int roundsNumber, MoveStrategy moveStrategy, PrintStrategy printStrategy) {
-        this.round = new Round(moveStrategy, carsNumber, printStrategy);
+        this.round = new Round(moveStrategy, carsNumber);
         this.roundsNumber = roundsNumber;
+        this.printStrategy = printStrategy;
     }
 
     public void startRacingContest() {
         for (int i = 0; i < roundsNumber; i++) {
             round.startRound();
-            round.printRoundResult();
+            printCarsCurrentLocation();
             System.out.println();
         }
+    }
+
+    private void printCarsCurrentLocation() {
+        printStrategy.printRoundResult(round.getCarsCurrentDistance());
     }
 }

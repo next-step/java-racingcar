@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.step3.Car;
+import racingcar.step3.Round;
 import racingcar.step3.move.IncrementMoveStrategy;
 
 import java.io.ByteArrayOutputStream;
@@ -34,15 +35,13 @@ class DashVisualizePrintStrategyTest {
     void printCarLocationWithDash() {
         // given
         DashVisualizePrintStrategy printStrategy = new DashVisualizePrintStrategy();
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(new IncrementMoveStrategy()));
+        Round round = new Round(new IncrementMoveStrategy(), 3);
 
         // when
-        cars.get(0).move();
-        cars.get(0).move();
-        printStrategy.printRoundResult(cars);
+        round.startRound();
+        round.startRound();
 
         // then
-        assertThat(output.toString().trim()).isEqualTo("--");
+        assertThat(round.getCarsCurrentDistance()).containsExactly(2, 2, 2);
     }
 }
