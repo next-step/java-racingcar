@@ -1,7 +1,8 @@
 package calculator.step2;
 
-import calculator.step2.StringAddCalculator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -22,28 +23,11 @@ public class StringAddCalculatorTest {
         assertThat(number).isEqualTo(6);
     }
 
-    @Test
-    void colonAndCommaTest() {
-        int number = stringAddCalculator.calculate("1:2,3");
-        assertThat(number).isEqualTo(6);
-    }
-
-    @Test
-    void colonTest() {
-        int number = stringAddCalculator.calculate("1:2");
-        assertThat(number).isEqualTo(3);
-    }
-
-    @Test
-    void commaTest() {
-        int number = stringAddCalculator.calculate("1,2");
-        assertThat(number).isEqualTo(3);
-    }
-
-    @Test
-    void commaEndTest() {
-        int number = stringAddCalculator.calculate("1,");
-        assertThat(number).isEqualTo(1);
+    @ParameterizedTest
+    @CsvSource(value = {"1,2=3", "1:2=3", "1:2,3=6", "1:2,3:9=15"}, delimiter = '=')
+    void colonAndCommaTest(String input, int expected) {
+        int number = stringAddCalculator.calculate(input);
+        assertThat(number).isEqualTo(expected);
     }
 
     @Test
