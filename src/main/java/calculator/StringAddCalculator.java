@@ -14,17 +14,15 @@ public class StringAddCalculator {
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens= m.group(2).split(customDelimiter);
-
-            int sum = 0;
-            for (String s : tokens) {
-                sum += Integer.parseInt(s);
-            }
-            return sum;
+            return sum(tokens);
         }
 
-        String[] strArray = str.split("[,:]");
+        return sum(str.split("[,:]"));
+    }
+
+    private static int sum(String[] tokens) {
         int sum = 0;
-        for (String s : strArray) {
+        for (String s : tokens) {
             sum += Integer.parseInt(s);
         }
         return sum;
