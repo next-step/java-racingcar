@@ -3,8 +3,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringAddCalculatorTest {
@@ -30,5 +32,12 @@ class StringAddCalculatorTest {
     void splitAndSumWithCustomDelimiter() {
         String input = "//;\n1;2;3";
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(6);
+    }
+
+    @DisplayName("문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"asdfadsd,-1,\\,\n1,a,-1"})
+    void splitAndSumHasStringInsteadNumberOrNegativeThenThrowException(String input) {
+        assertThatThrownBy(()-> StringAddCalculator.splitAndSum(input));
     }
 }

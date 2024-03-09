@@ -8,10 +8,11 @@ public class StringAddCalculator {
         if (verifyStringNumberEmpty(stringNumber)) {
             return 0;
         }
-        String[] split = createSplitNumbersByStringNumber(stringNumber);
-        if (isEmptyNumberArray(split)) return 0;
 
-        return sum(split);
+        String[] stringNumbers = createSplitNumbersByStringNumber(stringNumber);
+        if (isEmptyNumberArray(stringNumbers)) return 0;
+
+        return sum(stringNumbers);
     }
 
     private static boolean verifyStringNumberEmpty(String stringNumber) {
@@ -25,7 +26,15 @@ public class StringAddCalculator {
     private static Integer sum(String[] split) {
         Integer sum = 0;
         for (String number : split) {
-            sum += Integer.parseInt(number);
+            try {
+                int parseInt = Integer.parseInt(number);
+                if (parseInt < 0) {
+                    throw new NumberFormatException();
+                }
+                sum += parseInt;
+            } catch (Exception e) {
+                throw new NumberFormatException("양수의 숫자만 입력해주세요");
+            }
         }
         return sum;
     }
