@@ -1,8 +1,13 @@
 package caculator;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import util.PositiveNumber;
+
 public class Calculator {
 
-  public static int calculate(String text) {
+  public int calculate(String text) {
     if (isBlank(text)) {
       return  0;
     }
@@ -10,11 +15,11 @@ public class Calculator {
     return sum(toInts(split(text)));
   }
 
-  private static boolean isBlank(String text) {
+  private boolean isBlank(String text) {
     return text == null || text.isBlank();
   }
 
-  private static String[] split(String text) {
+  private String[] split(String text) {
     if (text.startsWith("//")) {
       String delimiter = text.substring(2, 3);
       return customSplit(text.substring(4), delimiter);
@@ -22,30 +27,20 @@ public class Calculator {
     return text.split(",|:");
   }
 
-  private static String[] customSplit(String text, String delimiter) {
+  private String[] customSplit(String text, String delimiter) {
     return text.split(delimiter);
   }
 
-  private static int sum(int[] values) {
-    int result = 0;
-    for (int value : values) {
-      if (isNegative(value)) {
-        throw new RuntimeException("please set number greater than 0");
-      }
-      result += value;
-    }
-    return result;
+  private int sum(List<Integer> values) {
+    return values.stream()
+        .map(PositiveNumber::fromInt)
+        .mapToInt(PositiveNumber::getValue)
+        .sum();
   }
 
-  private static int[] toInts(String[] values) {
-    int[] numbers = new int[values.length];
-    for (int i = 0; i < values.length; i++) {
-      numbers[i] = Integer.parseInt(values[i]);
-    }
-    return numbers;
-  }
-
-  private static boolean isNegative(int number) {
-    return number < 0;
+  private List<Integer> toInts(String[] values) {
+    return Arrays.stream(values)
+        .map(Integer::parseInt)
+        .collect(Collectors.toList());
   }
 }
