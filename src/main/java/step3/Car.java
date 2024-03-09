@@ -9,14 +9,29 @@ public class Car {
   public Car(int location) {
     this.location = location;
   }
-  public void moveConditionally(int condition) {
-    final int CRITERIA = 4;
-    if (condition >= CRITERIA) {
+  public void moveConditionally(final int condition) {
+    if (meetMoveCondition(condition)) {
       this.location++;
     }
   }
 
-  public int getLocation() {
-    return this.location;
+  private boolean meetMoveCondition(final int condition) {
+    final int CRITERIA = 4;
+    return condition >= CRITERIA;
+  }
+
+  public boolean isLocationValueOf(final int location) {
+    return this.location == location;
+  }
+
+  public String createLocationGraphic() {
+    final String UNIT_GRAPHIC = "-";
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i < this.location; i++) {
+      sb.append(UNIT_GRAPHIC);
+    }
+
+    return sb.toString();
   }
 }
