@@ -10,6 +10,7 @@ public class StringAddCalculator {
     private static final int INPUT_STRING = 2;
     private static final String NEGATIVE = "-";
     private static final String ONE_NUMBER_REGEX = "\\d+";
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public int calculate(String text) {
         if (text == null || text.isBlank()) {
@@ -35,7 +36,7 @@ public class StringAddCalculator {
     }
 
     private static String[] parse(String text) {
-        return text.split("[,≠:]");
+        return text.split(",|:");
     }
 
     private static String[] customParse(Matcher matcher) {
@@ -48,7 +49,7 @@ public class StringAddCalculator {
     }
 
     private static Matcher match(String text) {
-        return Pattern.compile("//(.)\n(.*)").matcher(text);
+        return CUSTOM_PATTERN.matcher(text);
     }
 
 }
