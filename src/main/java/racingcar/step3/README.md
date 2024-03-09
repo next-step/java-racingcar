@@ -32,9 +32,9 @@
 - [x] `METHOD` `getCurrentLocation` : 현재 위치를 반환한다.
 
 ### class Round
-- [ ] `PROPERTY` `cars` : 경주에 참여하는 자동차 리스트
-- [ ] `METHOD` `startRound()` : 한 라운드를 시작한다.
-- [ ] `METHOD` `printRoundResult()` : 라운드의 결과를 출력한다.
+- [x] `PROPERTY` `cars` : 경주에 참여하는 자동차 리스트
+- [x] `METHOD` `startRound()` : 한 라운드를 시작한다.
+- [x] `METHOD` `printRoundResult()` : 라운드의 결과를 출력한다.
 
 ### class RacingCarContest
 - [ ] `PROPERTY` `round` : round 객체
