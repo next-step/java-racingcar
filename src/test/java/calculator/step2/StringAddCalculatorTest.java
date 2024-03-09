@@ -1,5 +1,6 @@
-package step2;
+package calculator.step2;
 
+import calculator.step2.StringAddCalculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
