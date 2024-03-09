@@ -13,19 +13,19 @@ public class Cars {
 
     }
 
-    public Cars(List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException("차는 1대 이상이어야 합니다");
-        }
-        this.cars.addAll(cars);
-    }
-
     public Cars(String[] carNames) {
         this(
             Arrays.stream(carNames)
                 .map(Car::new)
                 .collect(Collectors.toList())
         );
+    }
+
+    public Cars(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("차는 1대 이상이어야 합니다");
+        }
+        this.cars.addAll(cars);
     }
 
     public void drive(DrivingStrategy drivingStrategy) {

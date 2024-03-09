@@ -8,13 +8,13 @@ public class Car {
     private final Name name;
     private DrivingDistance drivingDistance;
 
+    public Car(String name) {
+        this(name, DrivingDistance.INIT_VALUE);
+    }
+
     public Car(String name, int drivingDistance) {
         this.name = new Name(name);
         this.drivingDistance = new DrivingDistance(drivingDistance);
-    }
-
-    public Car(String name) {
-        this(name, DrivingDistance.INIT_VALUE);
     }
 
     public void drive(DrivingStrategy drivingStrategy) {
