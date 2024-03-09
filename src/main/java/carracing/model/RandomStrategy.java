@@ -1,4 +1,4 @@
-package carracing;
+package carracing.model;
 
 import java.util.Random;
 
@@ -7,6 +7,6 @@ public class RandomStrategy implements MovingStrategy {
 
     @Override
     public int move() {
-        return random.nextInt(10)  >= 4 ? 1 : 0;
+        return random.nextInt(10) >= 4 ? 1 : 0;
     }
 }

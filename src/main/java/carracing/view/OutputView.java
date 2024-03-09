@@ -1,10 +1,13 @@
-package carracing;
+package carracing.view;
+
+import carracing.model.RaceStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String NEXT_LINE = "\n";
+    private static final String PRINT_GUIDE_MESSAGE = "실행 결과";
 
     private OutputView() {
 
@@ -17,7 +20,7 @@ public class OutputView {
                 .map(RaceStatus::hyphenExpression)
                 .collect(Collectors.joining(NEXT_LINE));
 
-        raceResultBuilder.append("실행 결과")
+        raceResultBuilder.append(PRINT_GUIDE_MESSAGE)
                 .append(NEXT_LINE)
                 .append(raceResult);
 

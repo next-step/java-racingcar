@@ -1,4 +1,4 @@
-package carracing;
+package carracing.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +24,7 @@ public class RaceStatus {
 
         hyphenExpressionBuilder.append(defaultHyphenExpression);
 
-        if(!isLastAttempt) {
+        if (!isLastAttempt) {
             hyphenExpressionBuilder.append(NEXT_LINE);
         }
 

@@ -1,4 +1,4 @@
-package carracing;
+package carracing.model;
 
 public class Car {
     private int position;

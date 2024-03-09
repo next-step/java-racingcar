@@ -1,4 +1,4 @@
-package carracing;
+package carracing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +13,7 @@ class CarTest {
     void testMove(int strategyReturn, int moveCount, int expected) {
         Car car = new Car(() -> strategyReturn);
 
-        for(int i = 0; i < moveCount; i++) {
+        for (int i = 0; i < moveCount; i++) {
             car.move();
         }
 

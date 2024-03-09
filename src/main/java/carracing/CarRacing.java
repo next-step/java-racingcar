@@ -1,9 +1,12 @@
 package carracing;
 
+import carracing.model.Race;
+import carracing.model.RaceStatus;
+
 import java.util.List;
 
-import static carracing.InputView.*;
-import static carracing.OutputView.printRaceResult;
+import static carracing.view.InputView.*;
+import static carracing.view.OutputView.printRaceResult;
 
 public class CarRacing {
     public static void main(String[] args) {
@@ -15,7 +18,7 @@ public class CarRacing {
             List<RaceStatus> raceStatusList = race.start();
 
             printRaceResult(raceStatusList);
-        }catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
