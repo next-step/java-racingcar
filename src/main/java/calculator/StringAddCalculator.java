@@ -10,14 +10,17 @@ public class StringAddCalculator {
             return 0;
         }
 
+        return sum(split(str));
+    }
+
+    private static String[] split(String str) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
         if (m.find()) {
             String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
-            return sum(tokens);
+            return m.group(2).split(customDelimiter);
         }
 
-        return sum(str.split("[,:]"));
+        return str.split("[,:]");
     }
 
     private static int sum(String[] tokens) {
