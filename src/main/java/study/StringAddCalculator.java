@@ -7,6 +7,7 @@ public class StringAddCalculator {
 
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
 
     static int calculate(String text) {
         if (isEmptyString(text)) {
@@ -37,7 +38,6 @@ public class StringAddCalculator {
     }
 
     private static String[] splitByPattern(String text) {
-        final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
         Matcher matcher = pattern.matcher(text);
         return getStrings(text, matcher);
     }
