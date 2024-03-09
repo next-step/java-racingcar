@@ -49,4 +49,14 @@ public class CalculatorTest {
         // When & Then
         assertThat(Calculator.splitAndSum(text)).isEqualTo(expected);
     }
+
+    @Test
+    public void splitAndSum_custom_구분자() {
+        // Given
+        int expected = 6;
+        String text = "1,2:3";
+
+        // When & Then
+        assertThat(Calculator.splitAndSum(text)).isEqualTo(expected);
+    }
 }
