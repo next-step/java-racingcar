@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final int ONE = 1;
 
     public int askNumberOfCars() {
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -39,8 +38,8 @@ public class InputView {
     }
 
     private void assertOneOrMore(int value) {
-        if (value < ONE) {
-            throw new IllegalArgumentException(ONE + "이상의 수를 입력하세요");
+        if (value < 1) {
+            throw new IllegalArgumentException("1 이상의 수를 입력하세요");
         }
     }
 }
