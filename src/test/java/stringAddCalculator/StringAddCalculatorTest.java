@@ -18,4 +18,12 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("숫자 하나 문자열 입력하면 숫자 반환")
+    public void splitAndSum_숫자하나() throws Exception {
+        int result = StringAddCalculator.splitAndSum("1");
+        assertThat(result).isEqualTo(1);
+    }
+
+
 }
