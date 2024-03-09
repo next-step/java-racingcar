@@ -4,10 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.step3.common.RandomToSpecificInt;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -64,21 +64,5 @@ class RoundTest {
 
         // then
         assertThat(output.toString().trim()).isEqualTo("--\n" + "--\n" + "--");
-    }
-
-
-    static class RandomToSpecificInt extends Random {
-
-        private final int specificValue;
-
-        public RandomToSpecificInt(int specificValue) {
-            super(0L);
-            this.specificValue = specificValue;
-        }
-
-        @Override
-        public int nextInt() {
-            return specificValue;
-        }
     }
 }

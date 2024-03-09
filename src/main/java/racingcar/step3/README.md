@@ -37,8 +37,8 @@
 - [x] `METHOD` `printRoundResult()` : 라운드의 결과를 출력한다.
 
 ### class RacingCarContest
-- [ ] `PROPERTY` `round` : round 객체
-- [ ] `METHOD` `startRacingContest(roundsNumber)` : 자동차 경주를 시작한다.
+- [x] `PROPERTY` `round` : round 객체
+- [x] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
 
 ### InputView
 - [ ] `method` `getCarsNumberInput()` : 
