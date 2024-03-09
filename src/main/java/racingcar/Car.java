@@ -24,11 +24,11 @@ public class Car {
     }
 
     public int drivingDistance() {
-        return drivingDistance.getDrivingDistance();
+        return drivingDistance.value();
     }
 
     public String getResult() {
-        return name + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.getDrivingDistance());
+        return name.value() + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.value());
     }
 
     public boolean matchDistance(int distance) {
@@ -36,6 +36,6 @@ public class Car {
     }
 
     public String name() {
-        return name.toString();
+        return name.value();
     }
 }

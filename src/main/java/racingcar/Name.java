@@ -25,8 +25,7 @@ public class Name {
         }
     }
 
-    @Override
-    public String toString() {
+    public String value() {
         return name;
     }
 }

@@ -13,7 +13,7 @@ public class DrivingDistance {
         this(INIT_VALUE);
     }
 
-    public int getDrivingDistance() {
+    public int value() {
         return drivingDistance;
     }
 
