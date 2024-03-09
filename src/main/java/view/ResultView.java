@@ -18,7 +18,7 @@ public class ResultView {
     }
 
     private static void print(Car car) {
-        for (int i = 0; i < car.position().getPosition(); i++) {
+        for (int i = 0; i <= car.position().getPosition(); i++) {
             System.out.print("-");
         }
     }
