@@ -27,7 +27,7 @@ public class ResultView {
 
     public void hyphenate(List<Record> records) {
         for (Record record : records) {
-            sb.append(HYPHEN.repeat(record.getPosition()));
+            sb.append(String.format("%s : %s", record.getName(), HYPHEN.repeat(record.getPosition())));
             appendNewLine();
         }
     }
