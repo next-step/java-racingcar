@@ -47,7 +47,7 @@ class RoundTest {
 
     @DisplayName("랜덤값이 4~9이면 움직이고, 0~3이면 움직이지 않는다.")
     @Test
-    void test() {
+    void moveCarDependOnRandomValue() {
         // given
         round = new Round(3);
         random = new RandomToSpecificInt(4);
@@ -60,7 +60,6 @@ class RoundTest {
         round.startRound(random);
         round.startRound(random);
         round.printRoundResult();
-
 
         // then
         assertThat(output.toString().trim()).isEqualTo("--\n" + "--\n" + "--");

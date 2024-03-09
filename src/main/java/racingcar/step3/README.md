@@ -41,11 +41,11 @@
 - [x] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
 
 ### InputView
-- [ ] `method` `getCarsNumberInput()` : 
+- [x] `method` `getCarsNumberInput()` : 
   - "자동차 대수는 몇 대 인가요?"를 출력한다.
   - 입력값을 받는다.
   - 받은 입력값을 `int`로 반환한다.
-- [ ] `method` `getRoundsNumberInput()` :
+- [x] `method` `getRoundsNumberInput()` :
   - "시도할 회수는 몇 회 인가요?"를 출력한다.
   - 입력값을 받는다.
   - 받은 입력값을 `int`로 반환한다.

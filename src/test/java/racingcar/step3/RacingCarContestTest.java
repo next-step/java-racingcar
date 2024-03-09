@@ -26,7 +26,7 @@ class RacingCarContestTest {
         output.reset();
     }
 
-    @DisplayName("~~")
+    @DisplayName("정해진 값으로 레이싱을 돌리면, 정해진 값이 출력된다.")
     @Test
     void printRacingResult() {
         // given

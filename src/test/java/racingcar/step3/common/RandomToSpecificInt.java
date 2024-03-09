@@ -12,7 +12,7 @@ public class RandomToSpecificInt extends Random {
     }
 
     @Override
-    public int nextInt() {
+    public int nextInt(int bound) {
         return specificValue;
     }
 }

@@ -13,7 +13,7 @@ public class Round {
     }
 
     public void startRound(Random random) {
-        cars.forEach(car -> car.decideAction(random.nextInt()));
+        cars.forEach(car -> car.decideAction(random.nextInt(10)));
     }
 
     public void printRoundResult() {
