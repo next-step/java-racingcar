@@ -1,13 +1,13 @@
 package step3;
 
-import java.util.Random;
-
 public class Car {
 
     int location;
+    MoveStrategy moveStrategy;
 
-    Car() {
+    Car(MoveStrategy moveStrategy) {
         this.location = 0;
+        this.moveStrategy = moveStrategy;
     }
 
     public int getCurrentLocation() {
@@ -15,17 +15,8 @@ public class Car {
     }
 
     public void moveForwardOnChance() {
-        move(getRandomValue());
-    }
-
-    public void move(int value) {
-        if (value > 3) {
+        if (moveStrategy.move()) {
             this.location += 1;
         }
-    }
-
-    private int getRandomValue() {
-        Random random = new Random();
-        return random.nextInt(10);
     }
 }
