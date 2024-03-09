@@ -4,13 +4,19 @@ import java.util.Objects;
 
 public class Car {
     private final Position position;
+    private final Name name;
     private final MoveStrategy moveStrategy;
 
-    public Car(MoveStrategy moveStrategy) {
-        this(0, moveStrategy);
+    public Car(String name) {
+        this(name, new RandomMove());
     }
 
-    public Car(int position, MoveStrategy strategy) {
+    public Car(String name, MoveStrategy moveStrategy) {
+        this(name, 0, moveStrategy);
+    }
+
+    public Car(String name, int position, MoveStrategy strategy) {
+        this.name = new Name(name);
         this.position = new Position(position);
         this.moveStrategy = strategy;
     }
@@ -21,8 +27,8 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return this.position.getPosition();
+    public Record toRecord() {
+        return new Record(this.name.getName(), this.position.getPosition());
     }
 
     @Override
@@ -30,11 +36,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position) && Objects.equals(moveStrategy, car.moveStrategy);
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name) && Objects.equals(moveStrategy, car.moveStrategy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, moveStrategy);
+        return Objects.hash(position, name, moveStrategy);
     }
 }
