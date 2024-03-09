@@ -11,11 +11,16 @@ public class OutputView {
     }
 
     public static void printRaceResult(List<RaceStatus> raceStatusList) {
-        System.out.println("실행 결과");
+        StringBuilder raceResultBuilder = new StringBuilder();
 
         String raceResult = raceStatusList.stream()
                 .map(RaceStatus::hyphenExpression)
                 .collect(Collectors.joining(NEXT_LINE));
-        System.out.print(raceResult);
+
+        raceResultBuilder.append("실행 결과")
+                .append(NEXT_LINE)
+                .append(raceResult);
+
+        System.out.print(raceResultBuilder);
     }
 }

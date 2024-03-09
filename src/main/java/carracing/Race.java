@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private int numberOfCars;
-    private int numberOfAttempts;
+    private final int numberOfCars;
+    private final int numberOfAttempts;
 
     public Race(int numberOfCars, int numberOfAttempts) {
         this.numberOfCars = numberOfCars;
