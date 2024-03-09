@@ -37,7 +37,7 @@ public class StringAddCalculator {
     }
 
     private static boolean isNullOrEmpty(final String input) {
-        return input == null || input.trim().isEmpty();
+        return input == null || input.isBlank();
     }
 
     private static boolean doesNotContainAnyDelimiter(final String input) {
