@@ -13,8 +13,12 @@ public class Car {
     }
 
     public Car(String name, int drivingDistance) {
-        this.name = new Name(name);
-        this.drivingDistance = new DrivingDistance(drivingDistance);
+        this(new Name(name), new DrivingDistance(drivingDistance));
+    }
+
+    public Car(Name name, DrivingDistance drivingDistance) {
+        this.name = name;
+        this.drivingDistance = drivingDistance;
     }
 
     public void drive(DrivingStrategy drivingStrategy) {
