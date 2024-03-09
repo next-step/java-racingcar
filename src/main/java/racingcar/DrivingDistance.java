@@ -3,7 +3,7 @@ package racingcar;
 public class DrivingDistance {
 
     public static final int INIT_VALUE = 0;
-    private int drivingDistance;
+    private final int drivingDistance;
 
     public DrivingDistance(int drivingDistance) {
         this.drivingDistance = drivingDistance;
@@ -17,8 +17,8 @@ public class DrivingDistance {
         return drivingDistance;
     }
 
-    public void moveForward() {
-        drivingDistance++;
+    public DrivingDistance moveForward() {
+        return new DrivingDistance(drivingDistance + 1);
     }
 
     public boolean matchDistance(int distance) {

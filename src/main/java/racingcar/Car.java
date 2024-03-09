@@ -6,7 +6,7 @@ public class Car {
     private static final String RESULT_DIVIDER = " : ";
 
     private final Name name;
-    private final DrivingDistance drivingDistance;
+    private DrivingDistance drivingDistance;
 
     public Car(String name, int drivingDistance) {
         this.name = new Name(name);
@@ -19,7 +19,7 @@ public class Car {
 
     public void drive(DrivingStrategy drivingStrategy) {
         if (drivingStrategy.canDrive()) {
-            drivingDistance.moveForward();
+            this.drivingDistance = drivingDistance.moveForward();
         }
     }
 
