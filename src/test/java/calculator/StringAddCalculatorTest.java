@@ -1,6 +1,7 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -72,6 +73,14 @@ public class StringAddCalculatorTest {
     @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정")
     void 커스텀_구분자_세미콜론_지정() {
         assertThat(StringAddCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외 발생")
+    void 음수를_전달하면_예외발생() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.calculate("-1,2,3");
+        }).isInstanceOf(RuntimeException.class);
     }
 
 }
