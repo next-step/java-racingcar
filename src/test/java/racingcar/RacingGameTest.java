@@ -65,17 +65,24 @@ public class RacingGameTest {
     @Test
     @DisplayName("우승자 이름 목록을 가져온다")
     void winners() {
-        Cars cars = new Cars() {
-            @Override
-            public Winners winners() {
-                return Winners.from(
-                    List.of(new Car("a"), new Car("b"))
-                );
-            }
-        };
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(new FakeCars());
         List<String> winnerNames = racingGame.winnerNames();
 
         assertThat(winnerNames).containsExactly("a", "b");
+    }
+}
+
+class FakeCars extends Cars {
+
+    public static final List<Car> FAKE_CAR_LIST = List.of(new Car("a"), new Car("b"));
+
+    @SuppressWarnings("all")
+    public FakeCars() {
+        super(FAKE_CAR_LIST);
+    }
+
+    @Override
+    public Winners winners() {
+        return new Winners(FAKE_CAR_LIST);
     }
 }

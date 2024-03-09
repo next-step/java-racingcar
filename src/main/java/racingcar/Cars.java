@@ -9,10 +9,6 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    protected Cars() {
-
-    }
-
     public Cars(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException("차는 1대 이상이어야 합니다");
