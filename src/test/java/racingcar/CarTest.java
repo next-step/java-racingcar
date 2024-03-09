@@ -2,17 +2,19 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
-    public static final String NAME = "name";
+    private static final String CAR_NAME = "name";
+
+    private final Car car = new Car(CAR_NAME);
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
     void drive() {
-        Car car = new Car(NAME);
         car.drive(() -> true);
         assertThat(car.drivingDistance()).isEqualTo(1);
     }
@@ -20,7 +22,6 @@ public class CarTest {
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
     void notDrive() {
-        Car car = new Car(NAME);
         car.drive(() -> false);
         assertThat(car.drivingDistance()).isEqualTo(0);
     }
@@ -28,10 +29,9 @@ public class CarTest {
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
     void result() {
-        Car car = new Car(NAME);
         car.drive(() -> true);
-        assertThat(car.result()).isEqualTo(NAME + " : -");
+        assertThat(car.result()).isEqualTo(CAR_NAME + " : -");
         car.drive(() -> true);
-        assertThat(car.result()).isEqualTo(NAME + " : --");
+        assertThat(car.result()).isEqualTo(CAR_NAME + " : --");
     }
 }

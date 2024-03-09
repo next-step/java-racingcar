@@ -10,10 +10,11 @@ public class RacingGameTest {
 
     private static final List<String> CAR_NAMES = List.of("a", "b", "c");
 
+    private final RacingGame racingGame = new RacingGame(CAR_NAMES);
+
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
     void drive() {
-        RacingGame racingGame = new RacingGame(CAR_NAMES);
         racingGame.drive(5, () -> true);
 
         List<Integer> drivingDistances = racingGame.drivingDistances();
@@ -23,7 +24,6 @@ public class RacingGameTest {
     @Test
     @DisplayName("canDrive 반환값이 false라면 전진하지 않는다")
     void notDrive() {
-        RacingGame racingGame = new RacingGame(CAR_NAMES);
         racingGame.drive(5, () -> false);
 
         List<Integer> drivingDistances = racingGame.drivingDistances();
@@ -33,7 +33,6 @@ public class RacingGameTest {
     @Test
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
     void result() {
-        RacingGame racingGame = new RacingGame(CAR_NAMES);
         racingGame.drive(5, () -> true);
 
         String expectedResult = expectedResult();
