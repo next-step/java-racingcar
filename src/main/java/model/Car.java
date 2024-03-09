@@ -11,6 +11,10 @@ public class Car {
         this(name, new RandomMove());
     }
 
+    public Car(String name, int position) {
+        this(name, position, new RandomMove());
+    }
+
     public Car(String name, MoveStrategy moveStrategy) {
         this(name, 0, moveStrategy);
     }
@@ -31,6 +35,18 @@ public class Car {
         return new Record(this.name.getName(), this.position.getPosition());
     }
 
+    public boolean isSamePosition(int maxPosition) {
+        return this.position.isSame(maxPosition);
+    }
+
+    public String getName() {
+        return this.name.getName();
+    }
+
+    public int getPosition() {
+        return this.position.getPosition();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,4 +59,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(position, name, moveStrategy);
     }
+
 }
