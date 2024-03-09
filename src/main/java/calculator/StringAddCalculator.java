@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     public static int calculate(String str) {
-        if (str == null || str.isEmpty()) {
+        if (isEmptyString(str)) {
             return 0;
         }
 
@@ -14,6 +14,10 @@ public class StringAddCalculator {
         int[] numbers = parseStringToInt(strings);
 
         return sum(numbers);
+    }
+
+    private static boolean isEmptyString(String str) {
+        return str == null || str.isEmpty();
     }
 
     private static String[] split(String str) {
