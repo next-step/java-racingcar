@@ -2,11 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class StringAddCalculator {
-    StringNumberDelimiter delimiter;
-
-    public StringAddCalculator(StringNumberDelimiter delimiter) {
-        this.delimiter = delimiter;
-    }
+    private static final String EMPTY_STRING = "";
 
     public static Integer splitAndSum(String stringNumber) {
         if (verifyStringNumberEmpty(stringNumber)) {
@@ -36,9 +32,15 @@ public class StringAddCalculator {
 
     private static String[] createSplitNumbersByStringNumber(String str) {
         String delimiter = StringNumberDelimiter.getDelimiter(str);
-        if (delimiter.equals("")) {
+
+        if (StringNumberDelimiter.checkCustomDelimiter(str)) {
+            return str.substring(4).split(delimiter);
+        }
+
+        if (EMPTY_STRING.equals(delimiter)) {
             return null;
         }
+
         return str.split(delimiter);
     }
 }

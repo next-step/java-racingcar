@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 class StringNumberDelimiter {
     private static Set<String> delimiterSet = new HashSet<>();
+    private static Pattern pattern = Pattern.compile("^//.\n.*");
 
     static {
         delimiterSet.add(",");
@@ -16,10 +17,20 @@ class StringNumberDelimiter {
             return "";
         }
 
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            return String.valueOf(input.charAt(2));
+        }
+
         return delimiterSet.stream()
                 .filter(delimiter -> input.contains(delimiter))
                 .findFirst()
                 .get();
 
+    }
+
+    public static boolean checkCustomDelimiter(String str) {
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
     }
 }
