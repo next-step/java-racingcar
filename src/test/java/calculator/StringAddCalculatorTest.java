@@ -1,5 +1,6 @@
 package calculator;
 
+import static calculator.StringAddCalculator.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -13,14 +14,14 @@ public class StringAddCalculatorTest {
     @Test
     @DisplayName("빈 문자열을 입력할 경우 0을 반환")
     void 빈문자열() {
-        int actual = StringAddCalculator.splitAndSum("");
+        int actual = splitAndSum("");
         assertThat(actual).isZero();
     }
 
     @Test
     @DisplayName("null 값을 입력할 경우 0을 반환")
     void null문자열() {
-        int actual = StringAddCalculator.splitAndSum(null);
+        int actual = splitAndSum(null);
         assertThat(actual).isZero();
     }
 
@@ -31,14 +32,14 @@ public class StringAddCalculatorTest {
         @Test
         @DisplayName("문자열 '1'를 입력하면 숫자 1를 반환")
         void 문자열1() {
-            int actual = StringAddCalculator.splitAndSum("1");
+            int actual = splitAndSum("1");
             assertThat(actual).isEqualTo(1);
         }
 
         @Test
         @DisplayName("문자열 '9'를 입력하면 숫자 9를 반환")
         void 문자열9() {
-            int actual = StringAddCalculator.splitAndSum("9");
+            int actual = splitAndSum("9");
             assertThat(actual).isEqualTo(9);
         }
 
@@ -51,14 +52,14 @@ public class StringAddCalculatorTest {
         @Test
         @DisplayName("문자열 '1,2'를 입력하면 숫자 3을 반환")
         void 콤마로_구분된_문자열_1_2() {
-            int actual = StringAddCalculator.splitAndSum("1,2");
+            int actual = splitAndSum("1,2");
             assertThat(actual).isEqualTo(3);
         }
 
         @Test
         @DisplayName("문자열 '9,10'를 입력하면 숫자 3을 반환")
         void 콤마로_구분된_문자열_9_10() {
-            int actual = StringAddCalculator.splitAndSum("9,10");
+            int actual = splitAndSum("9,10");
             assertThat(actual).isEqualTo(19);
         }
     }
@@ -66,20 +67,20 @@ public class StringAddCalculatorTest {
     @Test
     @DisplayName("구분자 컴마(,) 외에 콜론(:) 사용 가능")
     void 구분자_콤마_콜() {
-        assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
+        assertThat(splitAndSum("1,2:3")).isEqualTo(6);
     }
 
     @Test
     @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정 가능")
     void 커스텀_구분자_세미콜론_지정() {
-        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+        assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
 
     @Test
     @DisplayName("음수를 전달할 경우 RuntimeException 예외 발생")
     void 음수를_전달하면_예외발생() {
         assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum("-1,2,3");
+            splitAndSum("-1,2,3");
         }).isInstanceOf(RuntimeException.class);
     }
 
