@@ -62,5 +62,10 @@ public class StringAddCalculatorTest {
         }
     }
 
+    @Test
+    @DisplayName("문자열 '1,2:3'을 입력하면 숫자 6을 반환 (구분자 ,:)")
+    void return6WhenInputString1CommaTowColonThree() {
+        assertThat(StringAddCalculator.sum("1,2:3")).isEqualTo(6);
+    }
 
 }
