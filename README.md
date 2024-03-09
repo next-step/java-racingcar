@@ -85,3 +85,27 @@
 - 커스텀 구분자로 여러 개의 수들을 전달했을 때
     - [x] 양의 숫자로만 이루어졌다면 해당 값들을 합산한 결과를 반환한다
     - [x] 숫자 이외의 값 또는 음수가 하나라도 포함된다면 RuntimeException이 발생한다
+
+### 리팩터링
+
+```java
+public static int splitAndSum(String input) {
+    if (isNullOrEmpty(input)) {
+        return DEFAULT_VALUE_FOR_EMPTY_INPUT;
+    }
+
+    if (doesNotContainAnyDelimiter(input)) {
+        return parsePositiveSingleNumber(input);
+    }
+
+    if (defaultDelimiterIsUsed(input)) {
+        return sumAfterSplitByDelimiter(input, COMMA_OR_COLON_DELIMITER);
+    }
+
+    return sumAfterSplitByCustomDelimiter(input);
+}
+```
+
+- 하나의 메서드인데 분기마다 다른 메서드를 호출한 결과를 반환 -> 가독성이 떨어진다
+- null 또는 빈 문자열 체크 -> 구분자 획득 -> split -> sum
+    - public으로 열린 splitAndSum 메서드에서는 위 동작 흐름만 나타날 수 있게 리팩터링 해보자
