@@ -10,13 +10,24 @@ public class StringAddCalculator {
             return 0;
         }
 
-        int[] numbers = parseStringToInt(splitString(str));
+        String[] strings = splitString(str);
+        int[] numbers = parseStringToInt(strings);
+        if (hasNegative(numbers)) {
+            throw new RuntimeException();
+        }
 
         return sum(numbers);
     }
 
     private static boolean isEmptyString(String str) {
         return str == null || str.isEmpty();
+    }
+
+    private static boolean hasNegative(int[] numbers) {
+        for (int num : numbers) {
+            if (num < 0) { return true; }
+        }
+        return false;
     }
 
     private static String[] splitString(String str) {
