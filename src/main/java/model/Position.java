@@ -21,6 +21,10 @@ public class Position {
         return this.position;
     }
 
+    public boolean isSame(int other) {
+        return this.position == other;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,6 +37,5 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
-
 
 }
