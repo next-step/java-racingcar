@@ -37,4 +37,10 @@ public class RacingCarTest {
         assertThat(moveCondition.isMovable(4)).isTrue();
     }
 
+    @Test
+    @DisplayName("[성공] 0~9 사이의 랜덤한 값을 생성한다.")
+    void 랜덤값_생성() {
+        assertThat(RandomValueGenerator.generate()).isBetween(0, 9);
+    }
+
 }
