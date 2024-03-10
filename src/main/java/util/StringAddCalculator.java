@@ -11,6 +11,11 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER_REGEXP = ",|:";
     private static final String CUSTOM_DELIMITER_PATTERN_REGEXP = "//(.)\n(.*)";
 
+    private static final int CUSTOM_SPLIT_DELIMITER_GROUP = 1;
+    private static final int CUSTOM_SPLIT_TARGET_STRING_GROUP = 2;
+
+    private static final Pattern customPattern = Pattern.compile(CUSTOM_DELIMITER_PATTERN_REGEXP);
+
     private StringAddCalculator() {
     }
 
@@ -40,15 +45,14 @@ public class StringAddCalculator {
     private static String[] split(String value) {
         final Matcher matcher = customDelimiterMatcher(value);
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            return matcher.group(2).split(customDelimiter);
+            String customDelimiter = matcher.group(CUSTOM_SPLIT_DELIMITER_GROUP);
+            return matcher.group(CUSTOM_SPLIT_TARGET_STRING_GROUP).split(customDelimiter);
         }
         return value.split(DEFAULT_DELIMITER_REGEXP);
     }
 
     private static Matcher customDelimiterMatcher(String value) {
-        return Pattern.compile(CUSTOM_DELIMITER_PATTERN_REGEXP)
-                .matcher(value);
+        return customPattern.matcher(value);
     }
 
     private static int mapToIntArrayAndSum(String[] splitValue) {
