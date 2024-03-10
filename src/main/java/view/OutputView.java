@@ -1,8 +1,7 @@
 package view;
 
-import java.util.List;
-
 import model.RacingCar;
+import model.RacingCars;
 import model.Winners;
 
 public class OutputView {
@@ -11,8 +10,8 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public void printResult(final List<RacingCar> racingCars) {
-        for (final RacingCar racingCar : racingCars) {
+    public void printResult(final RacingCars racingCars) {
+        for (final RacingCar racingCar : racingCars.getRacingCars()) {
             System.out.println(racingCar.generateStatus());
         }
         System.out.println();
