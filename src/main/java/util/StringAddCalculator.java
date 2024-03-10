@@ -11,6 +11,9 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER_REGEXP = ",|:";
     private static final String CUSTOM_DELIMITER_PATTERN_REGEXP = "//(.)\n(.*)";
 
+    private StringAddCalculator() {
+    }
+
     /**
      * 문자열을 구분자를 기준으로 분리한 각 숫자의 합을 반환한다.
      *
