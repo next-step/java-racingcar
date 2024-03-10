@@ -12,10 +12,10 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    public static RacingCars of(final int racingCarNumber) {
+    public static RacingCars of(final List<String> racingCarNames) {
         final List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < racingCarNumber; i++) {
-            racingCars.add(new RacingCar());
+        for (final String racingCarName : racingCarNames) {
+            racingCars.add(new RacingCar(new Name(racingCarName)));
         }
         return new RacingCars(racingCars);
     }

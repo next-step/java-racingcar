@@ -17,7 +17,7 @@ public class RacingCarController {
     }
 
     public void start() {
-        final RacingCars racingCars = RacingCars.of(inputView.inputRacingCarNumber());
+        final RacingCars racingCars = RacingCars.of(inputView.inputRacingCarName());
         final TryNumber tryNumber = new TryNumber(inputView.inputTryNumber());
         final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
