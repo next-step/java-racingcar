@@ -5,6 +5,10 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private StringAddCalculator() {
+
+    }
+
     public static int splitAndSum(String str) {
         if (isEmptyString(str)) {
             return 0;
