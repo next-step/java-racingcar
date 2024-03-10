@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private final int numberOfCars;
-    private final int numberOfAttempts;
+    private final NumberOfCars numberOfCars;
+    private final NumberOfAttempts numberOfAttempts;
 
-    public Race(int numberOfCars, int numberOfAttempts) {
+
+    public Race(NumberOfCars numberOfCars, NumberOfAttempts numberOfAttempts) {
         this.numberOfCars = numberOfCars;
         this.numberOfAttempts = numberOfAttempts;
     }
@@ -20,7 +21,7 @@ public class Race {
     private List<Car> participatedCarList() {
         List<Car> participatedCarList = new ArrayList<>();
 
-        for (int i = 0; i < numberOfCars; i++) {
+        for (int i = 0; i < numberOfCars.numberOfCars(); i++) {
             participatedCarList.add(new Car(new RandomStrategy()));
         }
 
@@ -30,8 +31,8 @@ public class Race {
     private List<RaceStatus> doRace(List<Car> carList) {
         List<RaceStatus> raceStatusList = new ArrayList<>();
 
-        for (int i = 0; i < numberOfAttempts; i++) {
-            boolean isLastAttempt = i == (numberOfAttempts - 1);
+        for (int i = 0; i < numberOfAttempts.numberOfAttempts(); i++) {
+            boolean isLastAttempt = numberOfAttempts.isSame(i + 1);
             carList.forEach(Car::move);
             raceStatusList.add(raceStatus(carList, isLastAttempt));
         }

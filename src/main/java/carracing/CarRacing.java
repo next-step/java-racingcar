@@ -1,5 +1,7 @@
 package carracing;
 
+import carracing.model.NumberOfAttempts;
+import carracing.model.NumberOfCars;
 import carracing.model.Race;
 import carracing.model.RaceStatus;
 
@@ -11,10 +13,10 @@ import static carracing.view.OutputView.printRaceResult;
 public class CarRacing {
     public static void main(String[] args) {
         try {
-            int enteredNumberOfCars = enteredNumber(NUMBER_OF_CARS_INPUT_GUIDE_MESSAGE);
-            int enteredNumberOfAttempts = enteredNumber(NUMBER_OF_ATTEMPTS_INPUT_GUIDE_MESSAGE);
+            NumberOfCars numberOfCars = new NumberOfCars(enteredNumber(NUMBER_OF_CARS_INPUT_GUIDE_MESSAGE));
+            NumberOfAttempts numberOfAttempts = new NumberOfAttempts(enteredNumber(NUMBER_OF_ATTEMPTS_INPUT_GUIDE_MESSAGE));
 
-            Race race = new Race(enteredNumberOfCars, enteredNumberOfAttempts);
+            Race race = new Race(numberOfCars, numberOfAttempts);
             List<RaceStatus> raceStatusList = race.start();
 
             printRaceResult(raceStatusList);
