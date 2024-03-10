@@ -20,12 +20,16 @@ public final class StringAddCalculator {
 
     private static String[] toPositiveInts(String[] texts) {
         for (String text : texts) {
-            if (Integer.parseInt(text) < 0) {
-                throw new IllegalArgumentException(String
-                        .format("text(%s)는 음수입니다.", text));
-            }
+            isNegative(text);
         }
         return texts;
+    }
+
+    private static void isNegative(String text) {
+        if (Integer.parseInt(text) < 0) {
+            throw new IllegalArgumentException(String
+                    .format("text(%s)는 음수입니다.", text));
+        }
     }
 
     private static int sum(String[] numbers) {
