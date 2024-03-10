@@ -3,11 +3,6 @@ package racinggame.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.domain.Car;
-import racinggame.domain.MoveCondition;
-import racinggame.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,22 +18,20 @@ public class CarTest {
 
     @Test
     public void 생성자_초기위치_0() {
-        assertThat(car.position()).isEqualTo(new Position(0));
+        assertThat(car.position()).isEqualTo(new Position());
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 9})
-    public void 주행(int condition) {
-        car.run(new MoveCondition(condition));
+    @Test
+    public void 주행() {
+        car.run(new AlwaysMoveCondition());
 
         assertThat(car.position()).isEqualTo(new Position(1));
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
-    public void 정지(int condition) {
-        car.run(new MoveCondition(condition));
+    @Test
+    public void 정지() {
+        car.run(new NeverMoveCondition());
 
-        assertThat(car.position()).isEqualTo(new Position(0));
+        assertThat(car.position()).isEqualTo(new Position());
     }
 }
