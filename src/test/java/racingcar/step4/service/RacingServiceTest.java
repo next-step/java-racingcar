@@ -16,12 +16,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingServiceTest {
 
+    private final List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
+    private final int roundCount = 3;
+
     @DisplayName("주어진 라운드만큼 경기를 수행하고, 각 참가자들은 이동한다.")
     @Test
     void startContestWithRoundCount() {
         // given
-        List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
-        int roundCount = 3;
         RacingService racingService = new RacingService(
                 new IncrementMoveStrategy(),
                 roundCount,
@@ -40,8 +41,6 @@ class RacingServiceTest {
     @Test
     void getWinnersOfRacing() {
         // given
-        List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
-        int roundCount = 3;
         RacingService racingService = new RacingService(
                 new IncrementMoveStrategy(),
                 roundCount,
@@ -53,7 +52,7 @@ class RacingServiceTest {
         List<String> winners = result.getWinners();
 
         // then
-        assertThat(winners).isEqualTo(Arrays.asList("Luffy", "Naruto", "Ichigo"));
+        assertThat(winners).isEqualTo(names);
     }
 
     private static List<Integer> getFinalRoundParticipantsLocation(RacingService racingService) {

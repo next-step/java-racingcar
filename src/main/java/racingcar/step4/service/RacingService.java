@@ -34,14 +34,21 @@ public class RacingService {
             return new ArrayList<>();
         }
 
-        RoundResultDto finalRound = getFinalRound(roundResults);
-        int winnerLocation = getWinnerLocation(finalRound);
-
-        return getWinners(finalRound, winnerLocation);
+        return getWinners(roundResults);
     }
 
     private static boolean isRoundResultNullOrEmpty(List<RoundResultDto> roundResults) {
         return roundResults == null || roundResults.isEmpty();
+    }
+
+    private static List<String> getWinners(List<RoundResultDto> roundResults) {
+        RoundResultDto finalRound = getFinalRound(roundResults);
+        int winnerLocation = getWinnerLocation(finalRound);
+
+        return finalRound.getParticipantResults().stream()
+                .filter(x -> x.getLocation() == winnerLocation)
+                .map(ParticipantResultDto::getName)
+                .collect(Collectors.toList());
     }
 
     private static RoundResultDto getFinalRound(List<RoundResultDto> roundResults) {
@@ -53,12 +60,5 @@ public class RacingService {
                 .map(ParticipantResultDto::getLocation)
                 .max(Integer::compareTo)
                 .get();
-    }
-
-    private static List<String> getWinners(RoundResultDto finalRound, int winnerLocation) {
-        return finalRound.getParticipantResults().stream()
-                .filter(x -> x.getLocation() == winnerLocation)
-                .map(ParticipantResultDto::getName)
-                .collect(Collectors.toList());
     }
 }

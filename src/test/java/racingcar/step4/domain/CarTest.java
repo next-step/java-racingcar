@@ -7,8 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.move.IncrementMoveStrategy;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CarTest {
 
     @DisplayName("전략에 따라 거리를 이동한다.")

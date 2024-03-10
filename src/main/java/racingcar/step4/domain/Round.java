@@ -29,8 +29,8 @@ public class Round {
     private List<Car> createParticipantsCar(List<String> names) {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < names.size(); i++) {
-            cars.add(new Car(names.get(i), moveStrategy));
+        for (String name : names) {
+            cars.add(new Car(name, moveStrategy));
         }
 
         return cars;

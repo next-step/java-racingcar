@@ -39,25 +39,21 @@
 - [x] `METHOD(private)` `getWinners` : 우승자를 구한다.
 
 ### class RacingController
-- [ ] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
+- [x] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
 
 ### class InputUI
-- [ ] `method` `getCarsNumberInput()` :
+- [x] `method` `getParticipantsNameInput()` :
   - "자동차 대수는 몇 대 인가요?"를 출력한다.
   - 입력값을 받는다.
   - 받은 입력값을 `int`로 반환한다.
-- [ ] `method` `getRoundsNumberInput()` :
+- [x] `method` `getRoundCountInput()` :
   - "시도할 회수는 몇 회 인가요?"를 출력한다.
   - 입력값을 받는다.
   - 받은 입력값을 `int`로 반환한다.
 
-### class PrintUI
-- [ ] `METHOD` `printRoundResult` : 라운드의 결과를 출력한다.
-- [ ] `METHOD` `printWinners` : 우승자를 출력한다.
-
 ### interface MoveStrategy
 - [x] `METHOD` `move()` : 이동 전략을 결정한다.
 
-### interface PrintStrategy
-- [ ] `METHOD` `printRoundResult` : 라운드 출력 전략을 결정한다.
-- [ ] `METHOD(default)` `printWinners` : 우승자 출력한다.
+### interface VisualizeRacePrintView
+- [x] `METHOD` `printRoundResult` : 라운드 출력 전략을 결정한다.
+- [x] `METHOD(default)` `printWinners` : 우승자 출력한다.

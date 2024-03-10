@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DashVisualizePrintStrategyTest {
+class VisualizeRacePrintViewTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
