@@ -8,14 +8,25 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static calculator.step2.StringAddCalculator.calculate;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringAddCalculatorTest {
 
     @Test
     void negativeTest() {
-        assertThatThrownBy(() ->
-                calculate("-1,3,2")).isInstanceOf(RuntimeException.class);
+        //given
+        String input = "-1,3,2";
+
+        //when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculate(input);
+        });
+        String expectedMessage = String.format("(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", input);
+        String actualMessage = exception.getMessage();
+
+        //then
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test

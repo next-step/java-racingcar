@@ -18,7 +18,8 @@ public final class StringAddCalculator {
         }
 
         if (text.contains(NEGATIVE)) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException(String
+                    .format("text(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", text));
         }
 
         if (text.contains(",") || text.contains(":") || text.matches(ONE_NUMBER_REGEX)) {
