@@ -17,6 +17,12 @@ public class Name {
         return name;
     }
 
+    private void validateNameLength(final String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
@@ -39,11 +45,5 @@ public class Name {
         return "Name{" +
                 "name='" + name + '\'' +
                 '}';
-    }
-
-    private void validateNameLength(final String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
     }
 }
