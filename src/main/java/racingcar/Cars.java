@@ -17,24 +17,31 @@ public class Cars implements Iterable<Car> {
         }
     }
 
-    public int size() {
-        return this.cars.size();
-    }
-
     @Override
     public Iterator<Car> iterator() {
         return cars.iterator();
     }
 
-    public void tryMove(int input, MoveStrategy moveStrategy) {
-        for (int i=0; i < input; i++) {
+    public RaceResult tryMove(int tryNumber, MoveStrategy moveStrategy) {
+        RaceResult raceResult = new RaceResult();
+        for (int i=0; i < tryNumber; i++) {
             orderMoveOneCycle(moveStrategy);
+            raceResult.recordRaceResult(i, makeDistanceSnapShot());
         }
+        return raceResult;
     }
 
     public void orderMoveOneCycle(MoveStrategy moveStrategy) {
         for (Car car : cars) {
             car.move(moveStrategy.getMoveNumber());
         }
+    }
+
+    private List<Integer> makeDistanceSnapShot() {
+        List<Integer> distanceRecord = new ArrayList<>();
+        for (Car car : cars) {
+            distanceRecord.add(car.getDistance());
+        }
+        return distanceRecord;
     }
 }
