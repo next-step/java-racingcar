@@ -3,7 +3,7 @@ package calculator.step2;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringAddCalculator {
+public final class StringAddCalculator {
 
     private static final int ZERO = 0;
     private static final int CUSTOM_SEPARATOR = 1;
@@ -12,7 +12,7 @@ public class StringAddCalculator {
     private static final String ONE_NUMBER_REGEX = "\\d+";
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    public int calculate(String text) {
+    public static int calculate(String text) {
         if (text == null || text.isBlank()) {
             return ZERO;
         }
