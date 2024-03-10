@@ -11,14 +11,21 @@ public class Position {
     }
 
     public Position(int value) {
+        assertionPositiveNumber(value);
         this.value = value;
+    }
+
+    private void assertionPositiveNumber(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("위치는 음수를 가질 수 없습니다.");
+        }
     }
 
     public int getValue() {
         return this.value;
     }
 
-    public void move() {
+    public void moveForward() {
         this.value++;
     }
 

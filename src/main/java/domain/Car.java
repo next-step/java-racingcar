@@ -12,7 +12,7 @@ public class Car {
 
     public Position move() {
         if (moveStrategy.moveable()) {
-            position.move();
+            position.moveForward();
         }
         return position;
     }
