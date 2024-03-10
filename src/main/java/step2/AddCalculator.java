@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 
 public class AddCalculator {
 
+    public static final Pattern PATTERN_DELIMITER = Pattern.compile("//([^\n]+)");
+    public static final Pattern PATTERN_REMOVE = Pattern.compile("//(.)\n");
+
     public int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
@@ -29,8 +32,7 @@ public class AddCalculator {
     }
 
     private String extractDelimiter(String target) {
-        Pattern pattern = Pattern.compile("//([^\n]+)");
-        Matcher matcher = pattern.matcher(target);
+        Matcher matcher = PATTERN_DELIMITER.matcher(target);
 
         if (!matcher.find()) {
             return ",|:";
@@ -46,8 +48,7 @@ public class AddCalculator {
     }
 
     private List<String> removeCustomDelimiter(String expression) {
-        Pattern pattern = Pattern.compile("//(.)\n");
-        String[] splitLetters = pattern.split(expression);
+        String[] splitLetters = PATTERN_REMOVE.split(expression);
 
         return Arrays.stream(splitLetters)
                 .filter(letter -> !letter.isBlank())
