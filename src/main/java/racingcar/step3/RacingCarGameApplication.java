@@ -19,7 +19,6 @@ public class RacingCarGameApplication {
   public void run(String[] args) {
     InputValue input = InputView.receive();
 
-
     List<Car> cars = new ArrayList<>();
     for (int i = 1; i <= input.getNumberOfCars(); i++) {
       String carName = "car" + i;

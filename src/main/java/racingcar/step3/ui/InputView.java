@@ -7,7 +7,6 @@ public class InputView {
   private static final String UNEXPECTED_ERROR = "예기치 못한 에러가 발생했습니다. input: %s, errorMessage: %s";
   private static final String NEGATIVE_NUMBER_OR_ZERO_IS_NOT_ALLOWED = "입력 값이 잘못되었습니다. 0이나 음수는 허용되지 않습니다. input: %s";
 
-
   private InputView() {
     throw new AssertionError();
   }
