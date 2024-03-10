@@ -5,7 +5,7 @@ public class Car {
     private Position position;
 
     public Car() {
-        this(new Position(0));
+        this(new Position());
     }
 
     public Car(Position position) {
