@@ -29,7 +29,7 @@
 - [x] `METHOD` `move()` : 움직임을 시도한다.
 
 ### class Round
-- [ ] `METHOD` `move()` : 각 자동차들의 움직임을 시도한다.
+- [x] `METHOD` `move()` : 각 자동차들의 움직임을 시도한다.
 
 ### class RoundService
 - [ ] `METHOD` `startRound()` : 한 라운드를 시작한다.
