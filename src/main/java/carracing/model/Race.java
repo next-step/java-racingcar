@@ -14,7 +14,7 @@ public class Race {
         this.numberOfAttempts = numberOfAttempts;
     }
 
-    public List<RaceStatus> start() {
+    public List<RaceRecord> start() {
         return doRace(participatedCarList());
     }
 
@@ -28,23 +28,23 @@ public class Race {
         return participatedCarList;
     }
 
-    private List<RaceStatus> doRace(List<Car> carList) {
-        List<RaceStatus> raceStatusList = new ArrayList<>();
+    private List<RaceRecord> doRace(List<Car> carList) {
+        List<RaceRecord> raceRecordList = new ArrayList<>();
 
         for (int i = 0; i < numberOfAttempts.numberOfAttempts(); i++) {
             boolean isLastAttempt = numberOfAttempts.isSame(i + 1);
             carList.forEach(car -> car.move(new RandomStrategy()));
-            raceStatusList.add(raceStatus(carList, isLastAttempt));
+            raceRecordList.add(raceStatus(carList, isLastAttempt));
         }
 
-        return raceStatusList;
+        return raceRecordList;
     }
 
-    private RaceStatus raceStatus(List<Car> carList, boolean isLastAttempt) {
+    private RaceRecord raceStatus(List<Car> carList, boolean isLastAttempt) {
         List<Integer> positionOfCarList = carList.stream()
                 .map(Car::position)
                 .collect(Collectors.toList());
 
-        return new RaceStatus(positionOfCarList, isLastAttempt);
+        return new RaceRecord(positionOfCarList, isLastAttempt);
     }
 }
