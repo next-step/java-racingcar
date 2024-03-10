@@ -8,6 +8,6 @@ public class RandomNumber implements Number {
 
     @Override
     public int generate() {
-        return random.nextInt(10)-1;
+        return random.nextInt(10);
     }
 }
