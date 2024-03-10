@@ -25,6 +25,7 @@
 ### `Car.class`
 
 - [x] 점수를 가짐 (= 자동차의 위치)
+- [x] `Position.class`로 자동차의 위치를 저장
 - [x] move()를 호출하여 자동차의 움직임 여부를 결정
     - 이때 움직임을 결정하는 핵심 로직은 `전략 패턴` 사용 (`CarMovementStrategy.class`)
 
