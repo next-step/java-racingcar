@@ -1,23 +1,27 @@
 package racinggame;
 
 import racinggame.domain.Cars;
+import racinggame.domain.RaceRecorder;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
 public class RacingGamePack {
 
     private Cars cars;
+    private RaceRecorder recorder;
 
-    public void startGame() {
-        initializeGame();
-        cars.raceStart();
-        ResultView.display(cars.getCarsPositions());
+    public RacingGamePack() {
+        this.cars = initializeCars();
+        this.recorder = new RaceRecorder();
     }
 
-    private void initializeGame() {
-        int carCount = InputView.inputCarsCount();
-        int raceCount = InputView.inputRaceCount();
-        cars = new Cars(carCount, raceCount);
+    private Cars initializeCars() {
+        return new Cars(InputView.inputCarsCount());
+    }
+
+    public void startGame() {
+        cars.raceStart(InputView.inputRaceCount(), recorder);
+        ResultView.display(recorder.getRecords());
     }
 
 

@@ -1,14 +1,16 @@
 package racinggame.view;
 
-import racinggame.domain.Position;
+import racinggame.domain.RaceRecord;
 
 import java.util.List;
 
 public class ResultView {
 
-    public static void display(List<Position> carPositions) {
-        for (Position position : carPositions) {
-            System.out.println("-".repeat(position.getPosition()));
+    private ResultView() {}
+
+    public static void display(List<RaceRecord> raceRecord) {
+        for (RaceRecord record : raceRecord) {
+            System.out.println(record.display());
         }
     }
 }

@@ -6,14 +6,12 @@ import java.util.List;
 public class Cars {
 
     private final List<Car> cars;
-    private final int raceCount;
 
-    public Cars(int carCount, int raceCount) {
+    public Cars(int carCount) {
         this.cars = initialCars(carCount);
-        this.raceCount = raceCount;
     }
 
-    private static List<Car> initialCars(int carCount) {
+    private List<Car> initialCars(int carCount) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
@@ -21,15 +19,16 @@ public class Cars {
         return cars;
     }
 
-    public void raceStart() {
+    public void raceStart(int raceCount, RaceRecorder recorder) {
         for (int i = 0; i < raceCount; i++) {
             runCars();
+            recorder.record(getCarsPositions());
         }
     }
 
     private void runCars() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).run(new MoveCondition());
+        for (Car car : cars) {
+            car.run(new MoveCondition());
         }
     }
 
