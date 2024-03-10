@@ -22,4 +22,12 @@ public class RacingCarTest {
         int distance = car.move(3);
         assertThat(distance).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("[성공] 4 이상의 값을 전달받는 경우 전진 가능하다 판단한다.")
+    void 자동차_전진_판단() {
+        CarMoveCondition moveCondition = new CarMoveCondition();
+        assertThat(moveCondition.isMovable(5)).isTrue();
+    }
+
 }
