@@ -26,8 +26,9 @@ public class RacingCars {
     }
 
     public Winners findWinners() {
+        final int maxLocation = getMaxLocation();
         final List<Name> names = racingCars.stream()
-                .filter(car -> car.getLocation().getValue() == getMaxLocation())
+                .filter(car -> car.getLocation().getValue() == maxLocation)
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
         return new Winners(names);
