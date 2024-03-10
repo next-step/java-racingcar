@@ -17,7 +17,7 @@ class RacingCarTest {
         racingCar.move(randomNumber);
 
         // then
-        assertThat(racingCar.getLocation()).isEqualTo(new Location(1));
+        assertThat(racingCar.getLocationValue()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -30,6 +30,6 @@ class RacingCarTest {
         racingCar.move(randomNumber);
 
         // then
-        assertThat(racingCar.getLocation()).isEqualTo(new Location(0));
+        assertThat(racingCar.getLocationValue()).isEqualTo(0);
     }
 }

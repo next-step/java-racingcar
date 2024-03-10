@@ -29,8 +29,8 @@ public class RacingCar {
         return String.join(STATUS_DELIMITER, name.getName(), MOVEMENT_INDICATOR.repeat(location.getValue()));
     }
 
-    public Location getLocation() {
-        return location;
+    public int getLocationValue() {
+        return location.getValue();
     }
 
     public Name getName() {
