@@ -38,7 +38,7 @@ public class AddCalculator {
             return ",|:";
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(matcher.group(1));
         while (matcher.find()) {
             sb.append("|");
