@@ -33,8 +33,9 @@ public class CarTest {
 
   @Test
   void 위치_나타내는_문자열_생성() {
+    final String DISTANCE_UNIT = "-";
     car.moveConditionally(8);
     car.moveConditionally(9);
-    assertThat(car.trace()).isEqualTo("--");
+    assertThat(car.trace(DISTANCE_UNIT)).isEqualTo("--");
   }
 }

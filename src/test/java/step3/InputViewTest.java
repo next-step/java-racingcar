@@ -1,25 +1,32 @@
 package step3;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import testutils.IOTest;
 
+import java.io.ByteArrayOutputStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest extends IOTest {
-  @ParameterizedTest
-  @CsvSource(value = { "1:1", "5:5" }, delimiter = ':')
-  void 자동차_대수_입력(String numberOfCars, int expected) {
-    setInputStream(numberOfCars.getBytes());
 
-    assertThat(InputView.getInputNumberOfCars()).isEqualTo(expected);
+  @Test
+  void 메세지_출력() {
+    final String INPUT_GUIDE_MESSAGE = "TEST";
+    final String DUMMY_INPUT = "TEST";
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    setOutputStream(outputStream);
+    setInputStream(DUMMY_INPUT.getBytes());
+
+    InputView.getInput(INPUT_GUIDE_MESSAGE);
+    assertThat(outputStream.toString()).isEqualTo(INPUT_GUIDE_MESSAGE.concat("\r\n"));
   }
 
   @ParameterizedTest
-  @CsvSource(value = { "1:1", "5:5" }, delimiter = ':')
-  void 이동_횟수_입력(String numberOfReps, int expected) {
-    setInputStream(numberOfReps.getBytes());
-
-    assertThat(InputView.getInputNumberOfReps()).isEqualTo(expected);
+  @CsvSource(value = { "test:test", "test1,test2,test3:test1,test2,test3"}, delimiter = ':')
+  void 값_입력(String input, String expected) {
+    setInputStream(input.getBytes());
+    assertThat(InputView.getInput("TEST")).isEqualTo(expected);
   }
 }

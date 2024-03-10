@@ -1,12 +1,11 @@
 package step3;
 
-public class main {
+public class Main {
   public static void main(String[] args) {
     RacingCarGame game = new RacingCarGame();
 
-    game.setNumberOfCars();
-    game.setNumberOfReps();
-    game.setCarsReady();
+    game.getCarsReady();
+    game.getRepetitionReady();
 
     game.startRacing();
   }

@@ -3,8 +3,6 @@ package step3;
 import java.util.Scanner;
 
 public class RacingCarGame {
-  private int numberOfCars;
-
   private CarRepository carRepository;
   private int numberOfReps;
 
@@ -20,23 +18,15 @@ public class RacingCarGame {
     }
   }
 
-  public void setNumberOfCars() {
-    this.numberOfCars = InputView.getInputNumberOfCars();
+  public void getRepetitionReady() {
+    final String MESSAGE_ASKING_REPS = "시도할 횟수는 몇 회 인가요?";
+    this.numberOfReps = Integer.parseInt(InputView.getInput(MESSAGE_ASKING_REPS));
   }
 
-  public void setNumberOfReps() {
-    this.numberOfReps = InputView.getInputNumberOfReps();
-  }
-
-  public int getNumberOfCars() {
-    return this.numberOfCars;
-  }
-
-  public int getNumberOfReps() {
-    return this.numberOfReps;
-  }
-
-  public void setCarsReady() {
-    carRepository.addCars(this.numberOfCars);
+  public void getCarsReady() {
+    final String MESSAGE_ASKING_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    for (String name : InputView.getInput(MESSAGE_ASKING_CARS).split(",")) {
+      this.carRepository.addCar(new Car(name));
+    }
   }
 }
