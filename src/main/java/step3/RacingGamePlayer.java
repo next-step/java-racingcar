@@ -1,6 +1,6 @@
 package step3;
 
-public class Main {
+public class RacingGamePlayer {
 
     public void playRacingGame() {
         final int carCount = RacingInputView.carCount();
@@ -8,9 +8,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        final Main main = new Main();
+        final RacingGamePlayer racingGamePlayer = new RacingGamePlayer();
 
-        main.playRacingGame();
+        racingGamePlayer.playRacingGame();
     }
 
 }
