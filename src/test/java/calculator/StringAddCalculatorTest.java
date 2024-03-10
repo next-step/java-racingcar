@@ -13,11 +13,11 @@ import static org.assertj.core.api.Assertions.*;
 public class StringAddCalculatorTest {
 
     @Test
-    void negativeTes1t() {
+    void negativeTest() {
         assertThatThrownBy(() -> {
             calculate("-1,3,2");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(String.format("(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", "-1,3,2"));
+                .hasMessageContaining(String.format("text(%s)는 음수입니다.", "-1"));
     }
 
     @Test

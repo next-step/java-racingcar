@@ -15,27 +15,17 @@ public final class StringAddCalculator {
         if (text == null || text.isBlank()) {
             return ZERO;
         }
+        return sum(toPositiveInts(parse(text)));
+    }
 
-        if (hasContainNegativeNumber(text)) {
-            throw new IllegalArgumentException(String
-                    .format("text(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", text));
+    private static String[] toPositiveInts(String[] texts) {
+        for (String text : texts) {
+            if (Integer.parseInt(text) < 0) {
+                throw new IllegalArgumentException(String
+                        .format("text(%s)는 음수입니다.", text));
+            }
         }
-        return sum(parse(text));
-    }
-
-    private static boolean hasContainNegativeNumber(String text) {
-        return hasContainNegativeCharacter(parse(text));
-    }
-
-    private static boolean hasContainNegativeCharacter(String[] texts) {
-        for (String stringNumber : texts) {
-            return isNegative(stringNumber);
-        }
-        return false;
-    }
-
-    private static boolean isNegative(String stringNumber) {
-        return Integer.parseInt(stringNumber) < 0;
+        return texts;
     }
 
     private static int sum(String[] numbers) {
