@@ -35,8 +35,8 @@
 - [x] `METHOD` `startRound()` : 한 라운드를 시작한다.
 
 ### class RacingService
-- [ ] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
-- [ ] `METHOD(private)` `getWinners` : 우승자를 구한다.
+- [x] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
+- [x] `METHOD(private)` `getWinners` : 우승자를 구한다.
 
 ### class RacingController
 - [ ] `METHOD` `startRacingContest()` : 자동차 경주를 시작한다.
