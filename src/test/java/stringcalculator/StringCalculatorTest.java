@@ -1,6 +1,6 @@
-package study;
+package stringcalculator;
 
-import StringCalculator.StringCalculator;
+import stringcalculator.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
