@@ -22,7 +22,7 @@ public class Race {
         List<Car> participatedCarList = new ArrayList<>();
 
         for (int i = 0; i < numberOfCars.numberOfCars(); i++) {
-            participatedCarList.add(new Car(new RandomStrategy()));
+            participatedCarList.add(new Car());
         }
 
         return participatedCarList;
@@ -33,7 +33,7 @@ public class Race {
 
         for (int i = 0; i < numberOfAttempts.numberOfAttempts(); i++) {
             boolean isLastAttempt = numberOfAttempts.isSame(i + 1);
-            carList.forEach(Car::move);
+            carList.forEach(car -> car.move(new RandomStrategy()));
             raceStatusList.add(raceStatus(carList, isLastAttempt));
         }
 
