@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
-
+    private static final int MINIMUM_NUMBER = 0;
 
     public static Racing createRacing() {
         Scanner scanner = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class InputView {
     private static int createIntNumber(Scanner scanner) {
         try {
             int carNumber = scanner.nextInt();
-            if (carNumber < 0) {
+            if (carNumber < MINIMUM_NUMBER) {
                 throw new InputMismatchException();
             }
             return carNumber;

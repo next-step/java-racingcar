@@ -7,6 +7,7 @@ public class Racing {
     private final int carNumber;
     private final int tryNumber;
     private final CarList carList;
+    private static final RandomCreator randomCreator = new RandomCreator();
 
     public static Racing createRacing(int carNumber, int tryNumber) {
         return new Racing(carNumber, tryNumber);
@@ -23,7 +24,7 @@ public class Racing {
         for (int i = 0; i < carNumber; i++) {
             cars.add(new Car());
         }
-        return CarList.from(cars, new RandomCreator());
+        return CarList.from(cars, randomCreator);
     }
 
 
