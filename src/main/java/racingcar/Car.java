@@ -11,7 +11,15 @@ public class Car {
     }
 
     public int move(int value) {
-        return moveCondition.isMovable(value) ? ++distance : distance;
+        return moveCondition.isMovable(value) ? move() : stop();
+    }
+
+    private int move() {
+        return ++distance;
+    }
+
+    private int stop() {
+        return distance;
     }
 
 }
