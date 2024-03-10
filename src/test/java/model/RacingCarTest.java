@@ -11,27 +11,25 @@ class RacingCarTest {
     @ValueSource(ints = {4, 5, 7})
     void 랜덤_값이_4이상이면_전진한다(final int randomNumber) {
         // given
-        final RacingCar racingCar = new RacingCar(new Name("pobi"));
-        assertThat(racingCar.getLocation()).isEqualTo(0);
+        final RacingCar racingCar = new RacingCar(new Location(0), new Name("pobi"));
 
         // when
         racingCar.move(randomNumber);
 
         // then
-        assertThat(racingCar.getLocation()).isEqualTo(1);
+        assertThat(racingCar.getLocation()).isEqualTo(new Location(1));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void 랜덤_값이_4미만이면_정지한다(final int randomNumber) {
         // given
-        final RacingCar racingCar = new RacingCar(new Name("pobi"));
-        assertThat(racingCar.getLocation()).isEqualTo(0);
+        final RacingCar racingCar = new RacingCar(new Location(0), new Name("pobi"));
 
         // when
         racingCar.move(randomNumber);
 
         // then
-        assertThat(racingCar.getLocation()).isEqualTo(0);
+        assertThat(racingCar.getLocation()).isEqualTo(new Location(0));
     }
 }
