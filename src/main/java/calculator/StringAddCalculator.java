@@ -15,23 +15,12 @@ public class StringAddCalculator {
         }
 
         String[] strings = splitString(str);
-        int[] numbers = parseStringToInt(strings);
-        if (hasNegative(numbers)) {
-            throw new RuntimeException("음수가 포함되어 있습니다.");
-        }
-
+        int[] numbers = parseStringToInts(strings);
         return sum(numbers);
     }
 
     private static boolean isEmptyString(String str) {
         return str == null || str.isEmpty();
-    }
-
-    private static boolean hasNegative(int[] numbers) {
-        for (int num : numbers) {
-            if (num < 0) { return true; }
-        }
-        return false;
     }
 
     private static String[] splitString(String str) {
@@ -44,12 +33,29 @@ public class StringAddCalculator {
         return str.split("[,:]");
     }
 
-    private static int[] parseStringToInt(String[] strings) {
+    private static int[] parseStringToInts(String[] strings) {
         int[] numbers = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
-            numbers[i] = Integer.parseInt(strings[i]);
+            numbers[i] = parseInt(strings[i]);
         }
         return numbers;
+    }
+
+    private static int parseInt(String str) {
+        int num = Integer.parseInt(str);
+        validateNegative(num);
+
+        return num;
+    }
+
+    private static void validateNegative(int num) {
+        if (isNegative(num)) {
+            throw new RuntimeException("음수가 포함되어 있습니다.");
+        }
+    }
+
+    private static boolean isNegative(int num) {
+        return num < 0;
     }
 
     private static int sum(int[] numbers) {
