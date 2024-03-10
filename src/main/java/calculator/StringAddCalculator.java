@@ -17,7 +17,7 @@ public class StringAddCalculator {
         String[] strings = splitString(str);
         int[] numbers = parseStringToInt(strings);
         if (hasNegative(numbers)) {
-            throw new RuntimeException();
+            throw new RuntimeException("음수가 포함되어 있습니다.");
         }
 
         return sum(numbers);

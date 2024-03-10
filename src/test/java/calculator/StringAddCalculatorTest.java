@@ -75,7 +75,9 @@ public class StringAddCalculatorTest {
     void 음수를_전달하면_예외발생() {
         assertThatThrownBy(() -> {
             splitAndSum("-1,2,3");
-        }).isInstanceOf(RuntimeException.class);
+        })
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("음수가 포함되어 있습니다.");
     }
 
 }
