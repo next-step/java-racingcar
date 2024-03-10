@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private final static int CUSTOM_DELIMITER_INDEX = 1;
+    private final static int CUSTOM_STRING_INDEX = 2;
+    private final static String DEFAULT_DELIMITER_PATTERN = "[,:]";
 
     private StringAddCalculator() {
 
@@ -26,13 +29,13 @@ public class StringAddCalculator {
     }
 
     private static String[] splitString(String str) {
-        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(str);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(str);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(CUSTOM_DELIMITER_INDEX);
+            return matcher.group(CUSTOM_STRING_INDEX).split(customDelimiter);
         }
 
-        return str.split("[,:]");
+        return str.split(DEFAULT_DELIMITER_PATTERN);
     }
 
     private static int[] parseStringToInts(String[] strings) {
