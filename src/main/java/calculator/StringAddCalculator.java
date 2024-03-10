@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+
     private StringAddCalculator() {
 
     }
@@ -24,7 +26,7 @@ public class StringAddCalculator {
     }
 
     private static String[] splitString(String str) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(str);
         if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
