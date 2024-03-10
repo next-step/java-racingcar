@@ -2,15 +2,19 @@ package model;
 
 public class TryNumber {
 
-    private final int value;
+    private int value;
 
     public TryNumber(final int value) {
         validatePositive(value);
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
+    public boolean hasRemainingTries() {
+        return value > 0;
+    }
+
+    public void decrease() {
+        value--;
     }
 
     private void validatePositive(final int value) {

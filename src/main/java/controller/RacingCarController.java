@@ -22,9 +22,11 @@ public class RacingCarController {
         final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
         outputView.printResultMessage();
-        for (int i = 0; i < tryNumber.getValue(); i++) {
+
+        while (tryNumber.hasRemainingTries()) {
             racingCars.move(randomNumberGenerator);
             outputView.printResult(racingCars);
+            tryNumber.decrease();
         }
         outputView.printWinners(racingCars.findWinners());
     }
