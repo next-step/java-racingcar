@@ -22,14 +22,12 @@ public class InputView {
     private List<String> getParticipantsNameUserInput(String helpMessage) {
         System.out.println(helpMessage);
 
-        try {
-            String input = scanner.nextLine();
-            return Arrays.stream(input.split(ConstUtils.NAME_SEPARATE_DELIMITER))
-                    .map(String::trim)
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-            throw new IllegalArgumentException("이름 입력에 실패했습니다.");
-        }
+        String input = scanner.nextLine();
+        List<String> names = Arrays.stream(input.split(ConstUtils.NAME_SEPARATE_DELIMITER))
+                .map(String::trim)
+                .collect(Collectors.toList());
+        validateNames(names);
+        return names;
     }
 
     private int getRoundCountUserInput(String helpMessage) {
@@ -39,6 +37,16 @@ public class InputView {
             return Integer.parseInt(scanner.nextLine());
         } catch (Exception e) {
             throw new NumberFormatException("값은 숫자만 입력할 수 있습니다.");
+        }
+    }
+
+    private void validateNames(List<String> names) {
+        names.forEach(this::validNameLength);
+    }
+
+    private void validNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름의 글자는 5자를 초과할 수 없습니다.");
         }
     }
 }
