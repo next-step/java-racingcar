@@ -56,9 +56,10 @@
 
 ---
 
-# 2단계
+# 2단계 - 문자열 덧셈 계산기를 통한 TDD 실습
 
-## 문자열 덧셈 계산기를 통한 TDD 실습
+<details>
+  <summary>요구사항 보기</summary>
 
 ### 기능 요구사항
 
@@ -89,6 +90,7 @@
 ### 리팩터링
 
 ```java
+// as-is
 public static int splitAndSum(String input) {
     if (isNullOrEmpty(input)) {
         return DEFAULT_VALUE_FOR_EMPTY_INPUT;
@@ -110,9 +112,51 @@ public static int splitAndSum(String input) {
 - null 또는 빈 문자열 체크 -> 구분자 획득 -> split -> sum
     - public으로 열린 splitAndSum 메서드에서는 위 동작 흐름만 나타날 수 있게 리팩터링 해보자
 
-- [ ] 구분자 획득
-    - [ ] 커스텀 구분자 정규식에
-        - [ ] 일치하면 커스텀 구분자를 반환
-        - [ ] 일치하지 않으면 기본 구분자를 반환
-- [ ] split and sum
-    - [ ] 전달 받은 구분자로 split, parse, sum
+- [x] split
+    - [x] 커스텀 구분자 정규식에
+        - [x] 일치하면 커스텀 구분자로 split한 문자열 배열을 반환
+        - [x] 일치하지 않으면 기본 구분자로 split한 문자열 배열을 반환
+- [x] parseInt and sum
+    - [x] 문자열 배열을 전달받아 Stream API로 아래 메서드를 활용하여 mapToInt한 결과를 sum하여 반환
+        - [x] `StringAddCalculator#parsePositiveSingleNumber`: 파싱한 결과가 음수이면 예외 반환, 0 또는 양수이면 숫자 반환
+        - [x] `StringAddCalculator#parseSingleNumber`: 파싱한 결과가 숫자면 반환, 아닐 경우 RuntimeException 던지기
+
+```java
+// to-be
+public static int splitAndSum(final String input) {
+    if (isNullOrEmpty(input)) {
+        return DEFAULT_VALUE_FOR_EMPTY_INPUT;
+    }
+
+    final String[] splitInput = splitByDelimiter(input);
+
+    return parseIntAndSum(splitInput);
+}
+```
+
+</details>
+
+---
+
+# 3단계 - 자동차 경주
+
+## 기능 요구사항
+
+- 초간단 자동차 경주 게임을 구현한다.
+- 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+- 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+- 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
+- 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
+
+## 힌트
+
+- 값을 입력 받는 API는 Scanner를 이용한다.
+- 랜덤 값은 자바 java.util.Random 클래스의 nextInt(10) 메소드를 활용한다.
+
+## 요구사항 분리
+
+- [x] `자동차 대수는 몇 대 인가요?` -> 양의 정수 하나를 입력 받음
+- [x] `시도할 회수는 몇 회 인가요?` -> 양의 정수 하나를 입력 받음
+- [x] 개행 및 `실행 결과` 출력
+- [x] 0-9사이 Random 값이 4이상인 경우 전진하는 메서드 구현
+- [x] 입력 받은 시도 횟수 만큼 개행으로 구분하며 각 자동차의 경과를 출력
