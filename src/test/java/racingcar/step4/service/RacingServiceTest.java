@@ -55,7 +55,7 @@ class RacingServiceTest {
         assertThat(winners).isEqualTo(names);
     }
 
-    private static List<Integer> getFinalRoundParticipantsLocation(RacingService racingService) {
+    private List<Integer> getFinalRoundParticipantsLocation(RacingService racingService) {
         RacingResultDto result = racingService.startRacingContest();
         List<RoundResultDto> roundResults = result.getRoundResults();
         int finalRoundIndex = roundResults.size() - 1;

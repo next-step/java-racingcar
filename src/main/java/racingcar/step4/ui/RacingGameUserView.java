@@ -1,6 +1,7 @@
 package racingcar.step4.ui;
 
-import racingcar.step4.controller.RacingController;
+import racingcar.step4.domain.move.RandomMoveStrategy;
+import racingcar.step4.service.RacingService;
 import racingcar.step4.service.dto.RacingResultDto;
 import racingcar.step4.ui.input.InputView;
 import racingcar.step4.ui.print.VisualizeRacePrintView;
@@ -15,8 +16,8 @@ public class RacingGameUserView {
         List<String> participantsName = inputView.getParticipantsNameInput();
         int roundCount = inputView.getRoundCountInput();
 
-        RacingController racingController = new RacingController(roundCount, participantsName);
-        RacingResultDto racingResult = racingController.startRacingContest();
+        RacingService racingService = new RacingService(new RandomMoveStrategy(), roundCount, participantsName);
+        RacingResultDto racingResult = racingService.startRacingContest();
 
         VisualizeRacePrintView printStrategy = new VisualizeRacePrintView(ConstUtils.DASH_DELIMITER);
         printStrategy.printRacingResult(racingResult);

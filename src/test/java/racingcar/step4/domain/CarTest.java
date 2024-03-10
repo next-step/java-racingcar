@@ -19,8 +19,9 @@ class CarTest {
 
         // when
         for (int i = 0; i < round; i++) {
-            participantResultDto = car.move();
+            car.move();
         }
+        participantResultDto = car.getParticipantResult();
 
         // then
         Assertions.assertThat(participantResultDto.getLocation()).isEqualTo(currentLocation);

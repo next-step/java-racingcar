@@ -11,24 +11,21 @@ public class Car {
     private int location;
 
     public Car(String name, MoveStrategy moveStrategy) {
+        if (moveStrategy == null) {
+            throw new IllegalArgumentException("이동 전략을 넣어주세요.");
+        }
+
         this.name = name;
         this.moveStrategy = moveStrategy;
     }
 
-    public ParticipantResultDto move() {
-        location += getMoveDistance();
-        return new ParticipantResultDto(name, location);
-    }
-
-    private int getMoveDistance() {
-        if (isMove()) {
-            return ConstUtils.MOVE;
+    public void move() {
+        if (moveStrategy.isMove()) {
+            location += ConstUtils.MOVE;
         }
-
-        return ConstUtils.STOP;
     }
 
-    private boolean isMove() {
-        return moveStrategy.move();
+    public ParticipantResultDto getParticipantResult() {
+        return new ParticipantResultDto(name, location);
     }
 }

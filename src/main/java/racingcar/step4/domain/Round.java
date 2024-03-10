@@ -19,8 +19,10 @@ public class Round {
     }
 
     public RoundResultDto move() {
+        cars.forEach(Car::move);
+
         List<ParticipantResultDto> participantResult = cars.stream()
-                .map(Car::move)
+                .map(Car::getParticipantResult)
                 .collect(Collectors.toList());
 
         return new RoundResultDto(participantResult);
