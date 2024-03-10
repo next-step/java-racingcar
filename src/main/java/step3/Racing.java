@@ -34,4 +34,12 @@ public class Racing {
     public int getTryNumber() {
         return this.tryNumber;
     }
+
+    public int[] createMoveResult() {
+        return carList.createMoveResult();
+    }
+
+    public void tryMove() {
+        carList.moveWithRandomNumber();
+    }
 }

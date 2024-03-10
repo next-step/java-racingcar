@@ -15,7 +15,7 @@ class CarListTest {
 
     @DisplayName("자동차에게 랜덤숫자를 넣어 이동하라고 요청할 수 있다. ")
     @ParameterizedTest
-    @CsvSource(value = {"1,0", "4,1","9,1"})
+    @CsvSource(value = {"1,0", "4,1", "9,1"})
     void moveCars(int randomNumber, int result) {
         RandomNumberCreator randomNumberCreator = () -> randomNumber;
 
@@ -25,5 +25,18 @@ class CarListTest {
 
         List<Car> listCars = carList.getCars();
         listCars.forEach(item -> Assertions.assertThat(item.getMoveNumber()).isEqualTo(result));
+    }
+
+    @DisplayName("자동차 이동 결과를 반환한다.")
+    @Test
+    void createMoveResult() {
+        RandomNumberCreator randomNumberCreator = () -> 4;
+
+        List<Car> cars = List.of(new Car(), new Car(), new Car(), new Car());
+        CarList carList = CarList.from(cars, randomNumberCreator);
+        carList.moveWithRandomNumber();
+
+        int[] moveResult = carList.createMoveResult();
+        Assertions.assertThat(moveResult).containsExactly(1, 1, 1, 1);
     }
 }

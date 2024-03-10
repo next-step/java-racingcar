@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.Scanner;
-
 /**
  * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
  * 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
@@ -10,6 +8,8 @@ import java.util.Scanner;
  */
 public class RacingCar {
     public static void main(String[] args) {
-        InputView.createInputView();
+        Racing racing = InputView.createRacing();
+        ResultView resultView = new ResultView(racing);
+        resultView.startGame();
     }
 }

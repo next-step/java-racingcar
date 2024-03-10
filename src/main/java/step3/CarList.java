@@ -22,4 +22,10 @@ public class CarList {
     public List<Car> getCars() {
         return cars;
     }
+
+    public int[] createMoveResult() {
+        return cars.stream()
+                .mapToInt(Car::getMoveNumber)
+                .toArray();
+    }
 }
