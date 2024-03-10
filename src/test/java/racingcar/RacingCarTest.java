@@ -71,4 +71,11 @@ public class RacingCarTest {
         assertThat(cars.size()).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("[성공] 자동차 3개를 가진 자동차 리스트의 자동차를 전진시킨다.")
+    void 자동차_리스트_전진() {
+        Cars cars = new Cars(3);
+        // cars.move();
+    }
+
 }
