@@ -2,7 +2,8 @@ package racing;
 
 public class Car {
 
-    private int level = 0;
+    private static final int MAX_VALUE = 4;
+    private int level;
 
     public int run(int value) {
         if (canRun(value))
@@ -11,6 +12,6 @@ public class Car {
     }
 
     public boolean canRun(int value) {
-        return value <= 4;
+        return value <= MAX_VALUE;
     }
 }
