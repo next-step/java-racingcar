@@ -8,7 +8,7 @@ import racingcar.view.ResultView;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        Race race = new Race(new InputView(), new ResultView(), new Validator());
+        Race race = new Race(new InputView(new Validator()), new ResultView());
         race.start();
     }
 }

@@ -1,6 +1,8 @@
 package racingcar.model;
 
 public class Car {
+    public static final int MOVE_STANDARD = 4;
+    public static final int MOVE_DISTANCE = 1;
     private int distance = 0;
 
     public int getDistance() {
@@ -8,8 +10,8 @@ public class Car {
     }
 
     public void move(int data) {
-        if (data >= 4) {
-            distance += 1;
+        if (data >= MOVE_STANDARD) {
+            distance += MOVE_DISTANCE;
         }
     }
 }
