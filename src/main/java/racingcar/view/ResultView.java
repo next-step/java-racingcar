@@ -12,10 +12,18 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
+    public void printCarAmount() {
+        System.out.println("자동차 대수는 몇 대 인가요?");
+    }
+
+    public void printTryNumber() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+    }
+
     public void printTryResult(RaceResult raceResult) {
         for (List<Integer> carRecords : raceResult) {
             printCarRaceResult(carRecords);
-            System.out.println("\n");
+            System.out.println();
         }
     }
 
