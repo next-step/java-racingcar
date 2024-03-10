@@ -32,4 +32,8 @@ public class RacingCar {
     public Location getLocation() {
         return location;
     }
+
+    public Name getName() {
+        return name;
+    }
 }

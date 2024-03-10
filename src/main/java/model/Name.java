@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Name {
 
     private static final int MAX_NAME_LENGTH = 5;
@@ -13,6 +15,30 @@ public class Name {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final Name name1 = (Name) o;
+        return Objects.equals(getName(), name1.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
+
+    @Override
+    public String toString() {
+        return "Name{" +
+                "name='" + name + '\'' +
+                '}';
     }
 
     private void validateNameLength(final String name) {
