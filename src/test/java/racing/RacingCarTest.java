@@ -20,15 +20,15 @@ class RacingCarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 9})
-    void 랜덤숫자가_4이상이면_전진한다(int randomNumber) {
-        racingCar.attempToMove(randomNumber);
+    void 전진유무판단숫자가_4이상이면_전진한다(int conditionNumber) {
+        racingCar.attemptToMove(conditionNumber);
         assertThat(racingCar.getPosition()).isEqualTo(MOVE_POSITION);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 2, 3})
-    void 랜덤숫자가_4미만이면_전진하지_않는다(int randomNumber) {
-        racingCar.attempToMove(randomNumber);
+    void 전진유무판단숫자가_4미만이면_전진하지_않는다(int conditionNumber) {
+        racingCar.attemptToMove(conditionNumber);
         assertThat(racingCar.getPosition()).isEqualTo(STOP_POSITION);
     }
 }
