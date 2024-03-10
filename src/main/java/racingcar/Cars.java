@@ -20,6 +20,10 @@ public class Cars {
         }
     }
 
+    public void move() {
+        moveAllCar();
+    }
+
     private void moveAllCar() {
         for (Car car : this.carList) {
             car.move(RandomValueGenerator.generate());

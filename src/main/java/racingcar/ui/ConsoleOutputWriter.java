@@ -6,7 +6,7 @@ public class ConsoleOutputWriter {
 
     }
 
-    public static void write(ConsoleOutputMessage outputMessage) {
+    public static void write(ConsoleOutputMessageType outputMessage) {
         System.out.println(outputMessage);
     }
 
