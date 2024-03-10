@@ -11,7 +11,7 @@ class RacingCarTest {
     @ValueSource(ints = {4, 5, 7})
     void 랜덤_값이_4이상이면_전진한다(final int randomNumber) {
         // given
-        final RacingCar racingCar = new RacingCar();
+        final RacingCar racingCar = new RacingCar(new Name("pobi"));
         assertThat(racingCar.getLocation()).isEqualTo(0);
 
         // when
@@ -25,7 +25,7 @@ class RacingCarTest {
     @ValueSource(ints = {1, 2, 3})
     void 랜덤_값이_4미만이면_정지한다(final int randomNumber) {
         // given
-        final RacingCar racingCar = new RacingCar();
+        final RacingCar racingCar = new RacingCar(new Name("pobi"));
         assertThat(racingCar.getLocation()).isEqualTo(0);
 
         // when
