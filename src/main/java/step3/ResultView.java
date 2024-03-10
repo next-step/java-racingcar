@@ -10,7 +10,7 @@ public class ResultView {
   }
 
   private static void printCarDistance(final Car car) {
-    System.out.println(car.createLocationGraphic());
+    System.out.println(car.trace());
   }
 
   public static void printExecutionComment() {

@@ -35,7 +35,6 @@ public class CarTest {
   void 위치_나타내는_문자열_생성() {
     car.moveConditionally(8);
     car.moveConditionally(9);
-    String locationGraphic = car.createLocationGraphic();
-    assertThat(locationGraphic).isEqualTo("--");
+    assertThat(car.trace()).isEqualTo("--");
   }
 }

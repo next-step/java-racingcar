@@ -24,7 +24,7 @@ public class Car {
     return this.location == location;
   }
 
-  public String createLocationGraphic() {
+  public String trace() {
     final String UNIT_GRAPHIC = "-";
     StringBuilder sb = new StringBuilder();
 
