@@ -26,7 +26,7 @@
 ## 기능 목록
 ![기능도](../images/image002.png)
 ### class Car
-- [ ] `METHOD` `move()` : 움직임을 시도한다.
+- [x] `METHOD` `move()` : 움직임을 시도한다.
 
 ### class Round
 - [ ] `METHOD` `move()` : 각 자동차들의 움직임을 시도한다.
@@ -56,7 +56,7 @@
 - [ ] `METHOD` `printWinners` : 우승자를 출력한다.
 
 ### interface MoveStrategy
-- [ ] `METHOD` `move()` : 이동 전략을 결정한다.
+- [x] `METHOD` `move()` : 이동 전략을 결정한다.
 
 ### interface PrintStrategy
 - [ ] `METHOD` `printRoundResult` : 라운드 출력 전략을 결정한다.
