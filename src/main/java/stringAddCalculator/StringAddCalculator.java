@@ -1,12 +1,15 @@
+package stringAddCalculator;
+
 public class StringAddCalculator {
     private static final String EMPTY_STRING = "";
+    private static final int START_INDEX = 4;
 
     public static Integer splitAndSum(String stringNumber) {
         if (verifyStringNumberEmpty(stringNumber)) {
             return 0;
         }
 
-        String[] stringNumbers = createSplitNumbersByStringNumber(stringNumber);
+        String[] stringNumbers = createSplittedNumbers(stringNumber);
         if (isEmptyNumberArray(stringNumbers)) return 0;
 
         return sum(stringNumbers);
@@ -40,12 +43,12 @@ public class StringAddCalculator {
         }
     }
 
-    private static String[] createSplitNumbersByStringNumber(String str) {
+    private static String[] createSplittedNumbers(String str) {
         StringNumberDelimiter.StringDelimiter stringDelimiter = StringNumberDelimiter.getDelimiter(str);
         String delimiter = stringDelimiter.getDelimiter();
 
         if (stringDelimiter.isCustomDelimiter()) {
-            return str.substring(4).split(delimiter);
+            return str.substring(START_INDEX).split(delimiter);
         }
 
         if (EMPTY_STRING.equals(delimiter)) {
