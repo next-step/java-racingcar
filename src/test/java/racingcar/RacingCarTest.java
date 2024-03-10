@@ -30,4 +30,11 @@ public class RacingCarTest {
         assertThat(moveCondition.isMovable(5)).isTrue();
     }
 
+    @Test
+    @DisplayName("[성공][경계값 테스트] 4를 전달받는 경우 전진 가능하다 판단한다.")
+    void 자동차_전진_판단_4입력() {
+        CarMoveCondition moveCondition = new CarMoveCondition();
+        assertThat(moveCondition.isMovable(4)).isTrue();
+    }
+
 }
