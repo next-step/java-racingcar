@@ -4,10 +4,10 @@ import java.util.regex.Pattern;
 
 import static java.util.Objects.*;
 
-public class Validation {
+public class RacingGameSetupValidator {
     private static final Pattern PATTERN_FOR_POSITIVE_INTEGER = Pattern.compile("^(0*[1-9][0-9]*)$");
 
-    private Validation() {
+    private RacingGameSetupValidator() {
 
     }
 

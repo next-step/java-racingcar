@@ -2,7 +2,7 @@ package carracing.view;
 
 import java.util.Scanner;
 
-import static carracing.Validation.*;
+import static carracing.RacingGameSetupValidator.*;
 
 public class InputView {
     public static final String NUMBER_OF_CARS_INPUT_GUIDE_MESSAGE = "자동차 대수는 몇 대 인가요?";
