@@ -26,5 +26,6 @@ public class RacingCarController {
             racingCars.move(randomNumberGenerator);
             outputView.printResult(racingCars.getRacingCars());
         }
+        outputView.printWinners(racingCars.findWinners());
     }
 }

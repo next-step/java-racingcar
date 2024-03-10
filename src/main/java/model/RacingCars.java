@@ -25,11 +25,12 @@ public class RacingCars {
         racingCars.forEach(car -> car.move(randomNumberGenerator.generate()));
     }
 
-    public List<Name> findWinners() {
-        return racingCars.stream()
+    public Winners findWinners() {
+        final List<Name> names = racingCars.stream()
                 .filter(car -> car.getLocation().getValue() == getMaxLocation())
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
+        return new Winners(names);
     }
 
     public List<RacingCar> getRacingCars() {

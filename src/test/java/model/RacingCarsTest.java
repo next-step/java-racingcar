@@ -29,10 +29,10 @@ class RacingCarsTest {
         final RacingCars racingCars = new RacingCars(List.of(pobi, crong, honux));
 
         // when
-        final List<Name> winners = racingCars.findWinners();
+        final Winners winners = racingCars.findWinners();
 
         // then
-        assertThat(winners).containsExactly(new Name("crong"));
+        assertThat(winners.getNames()).containsExactly(new Name("crong"));
     }
 
     @Test
@@ -43,9 +43,9 @@ class RacingCarsTest {
         final RacingCars racingCars = new RacingCars(List.of(pobi, crong, honux));
 
         // when
-        final List<Name> winners = racingCars.findWinners();
+        final Winners winners = racingCars.findWinners();
 
         // then
-        assertThat(winners).containsExactly(new Name("crong"), new Name("honux"));
+        assertThat(winners.getNames()).containsExactly(new Name("crong"), new Name("honux"));
     }
 }
