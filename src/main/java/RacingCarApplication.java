@@ -13,11 +13,24 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         List<Integer> input = InputView.requestInput();
         generateCars(input.get(NUMBER_OR_CAR_INDEX));
+        racing(input.get(COUNT_OF_TRIAL));
     }
 
     private static void generateCars(int numberOfCar) {
         for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
+        }
+    }
+
+    private static void racing(int countOfTrial) {
+        for (int i = 0; i < countOfTrial; i++) {
+            moveCars();
+        }
+    }
+
+    private static void moveCars() {
+        for (Car car : cars) {
+            car.move();
         }
     }
 }
