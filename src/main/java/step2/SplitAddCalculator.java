@@ -51,13 +51,13 @@ public class SplitAddCalculator {
     private static void validateNumber(String text) {
         Matcher matcher = Pattern.compile("[^0-9-]").matcher(text);
         if (matcher.find()) {
-            throw new RuntimeException(ErrorMessage.ERR_NUMBER_FORMAT_MESSAGE.print());
+            throw new IllegalArgumentException(ErrorMessage.ERR_NUMBER_FORMAT_MESSAGE.print());
         }
     }
 
     private static void validateNumberRange(int num) {
         if (num < 0) {
-            throw new RuntimeException(ErrorMessage.ERR_NUMBER_RANGE_MESSAGE.print());
+            throw new IndexOutOfBoundsException(ErrorMessage.ERR_NUMBER_RANGE_MESSAGE.print());
         }
     }
 
