@@ -2,25 +2,44 @@ package racingcar;
 
 public class Car {
 
-    public static final String DISTANCE_SYMBOL = "-";
-    private final DrivingStrategy drivingStrategy;
-    private int drivingDistance = 0;
+    private static final String DISTANCE_SYMBOL = "-";
+    private static final String RESULT_DIVIDER = " : ";
 
-    public Car(DrivingStrategy drivingStrategy) {
-        this.drivingStrategy = drivingStrategy;
+    private final Name name;
+    private DrivingDistance drivingDistance;
+
+    public Car(String name) {
+        this(name, DrivingDistance.INIT_VALUE);
     }
 
-    public void drive() {
+    public Car(String name, int drivingDistance) {
+        this(new Name(name), new DrivingDistance(drivingDistance));
+    }
+
+    public Car(Name name, DrivingDistance drivingDistance) {
+        this.name = name;
+        this.drivingDistance = drivingDistance;
+    }
+
+    public void drive(DrivingStrategy drivingStrategy) {
         if (drivingStrategy.canDrive()) {
-            drivingDistance++;
+            this.drivingDistance = drivingDistance.moveForward();
         }
     }
 
     public int drivingDistance() {
-        return drivingDistance;
+        return drivingDistance.value();
     }
 
-    public String getResult() {
-        return DISTANCE_SYMBOL.repeat(drivingDistance);
+    public String result() {
+        return name.value() + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.value());
+    }
+
+    public boolean matchDistance(int distance) {
+        return drivingDistance.matchDistance(distance);
+    }
+
+    public String name() {
+        return name.value();
     }
 }

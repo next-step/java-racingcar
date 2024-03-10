@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,16 +9,23 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(DrivingStrategy drivingStrategy, int amount) {
-        for (int i = 0; i < amount; i++) {
-            Car car = new Car(drivingStrategy);
-            cars.add(car);
+    public Cars(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("차는 1대 이상이어야 합니다");
         }
+        this.cars.addAll(cars);
     }
 
-    public void drive() {
+    public static Cars fromCarNames(List<String> carNames) {
+        List<Car> cars = carNames.stream()
+            .map(Car::new)
+            .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+
+    public void drive(DrivingStrategy drivingStrategy) {
         for (Car car : cars) {
-            car.drive();
+            car.drive(drivingStrategy);
         }
     }
 
@@ -27,9 +35,13 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    public String getResult() {
+    public String result() {
         return cars.stream()
-            .map(Car::getResult)
+            .map(Car::result)
             .collect(Collectors.joining("\n"));
+    }
+
+    public Winners winners() {
+        return Winners.from(cars);
     }
 }

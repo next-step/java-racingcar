@@ -40,7 +40,8 @@ public class StringAddCalculator {
 
     private static String removeDelimiter(String expression) {
         if (hasCustomDelimiter(expression)) {
-            return expression.substring(expression.indexOf(SUFFIX_CUSTOM_DELIMITER) + SUFFIX_CUSTOM_DELIMITER.length());
+            return expression.substring(
+                expression.indexOf(SUFFIX_CUSTOM_DELIMITER) + SUFFIX_CUSTOM_DELIMITER.length());
         }
         return expression;
     }
