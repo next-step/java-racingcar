@@ -10,4 +10,8 @@ public class ConsoleOutputWriter {
         System.out.println(outputMessage);
     }
 
+    public static void write(String str) {
+        System.out.println(str);
+    }
+
 }

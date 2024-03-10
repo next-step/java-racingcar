@@ -7,7 +7,7 @@ import racingcar.ui.ConsoleOutputWriter;
 
 public class CarRaceApp {
 
-    public void race() {
+    public static void main(String[] args) {
         ConsoleOutputWriter.write(ConsoleOutputMessage.HOW_MANY_CARS);
         int carCount = ConsoleInputReader.readInt();
 
@@ -16,6 +16,8 @@ public class CarRaceApp {
 
         Cars cars = new Cars(carCount);
         cars.move(tryCount);
+
+        ConsoleOutputWriter.write(cars.toString());
     }
 
 }
