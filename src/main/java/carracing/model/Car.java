@@ -8,6 +8,8 @@ public class Car {
     }
 
     public void move(MovingStrategy movingStrategy) {
-        position += movingStrategy.move();
+        if (movingStrategy.isMovable()) {
+            position += 1;
+        }
     }
 }

@@ -9,8 +9,8 @@ class RandomStrategyTest {
     private final RandomStrategy randomStrategy = new RandomStrategy();
 
     @Test
-    @DisplayName("0(전진 X) 또는 1(전진 O)을 반환합니다.")
-    void testMove() {
-        assertThat(randomStrategy.move()).isIn(0, 1);
+    @DisplayName("랜덤 값에 따라 true 또는 false를 반환합니다.")
+    void testIsMovable() {
+        assertThat(randomStrategy.isMovable()).isIn(true, false);
     }
 }

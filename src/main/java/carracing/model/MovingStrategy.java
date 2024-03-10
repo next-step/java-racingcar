@@ -1,5 +1,6 @@
 package carracing.model;
 
+@FunctionalInterface
 public interface MovingStrategy {
-    int move();
+    boolean isMovable();
 }
