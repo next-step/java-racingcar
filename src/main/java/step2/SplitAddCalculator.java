@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 public class SplitAddCalculator {
 
-
-
     public static int calculate(String text) {
         if (isBlank(text)) {
             return 0;
