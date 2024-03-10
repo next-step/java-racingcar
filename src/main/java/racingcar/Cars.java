@@ -14,6 +14,20 @@ public class Cars {
         }
     }
 
+    public void move() {
+        for (Car car : this.carList) {
+            car.move(RandomValueGenerator.generate());
+        }
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : this.carList) {
+            stringBuilder.append(car.toString()).append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
     public int size() {
         return carList.size();
     }

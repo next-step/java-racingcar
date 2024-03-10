@@ -20,4 +20,8 @@ public class Car {
         return distance;
     }
 
+    public String toString() {
+        return "-".repeat(distance);
+    }
+
 }
