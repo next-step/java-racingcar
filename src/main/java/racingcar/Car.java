@@ -5,8 +5,8 @@ public class Car {
 
     private int position = 1;
 
-    public void move(int random) {
-        if (random >= ADVANCE_CONDITION_NUMBER) {
+    public void move(int number) {
+        if (number >= ADVANCE_CONDITION_NUMBER) {
             position++;
         }
     }
