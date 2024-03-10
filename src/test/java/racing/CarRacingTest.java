@@ -23,18 +23,16 @@ public class CarRacingTest {
     @Test
     @DisplayName("racing을 3번했을경우,결과값의 size는 3이어야한다.")
     void racingSizeTest() {
-        List<List<String>> results = carRacing.startRacing();
-        assertEquals(3, results.size());
+        List<String> results = carRacing.step();
+        assertEquals(5, results.size());
     }
 
     @Test
-    @DisplayName("input값이 4이하이므로 마지막 모든 결과값은 ---이어야한다.")
+    @DisplayName("input값이 4이하이므로 마지막 모든 결과값은 -이어야한다.")
     void racingContentTest() {
-        List<List<String>> results = carRacing.startRacing();
-        List<String> raceTexts = results.get(results.size() - 1);
-        for (String raceText : raceTexts) {
-            assertEquals(raceText,"---");
+        List<String> results = carRacing.step();
+        for (String raceText : results) {
+            assertEquals(raceText,"-");
         }
     }
-
 }

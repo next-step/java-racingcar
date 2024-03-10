@@ -1,5 +1,6 @@
 package racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,26 +11,29 @@ class CarTest {
 
     @ParameterizedTest()
     @ValueSource(ints = {1, 2, 3, 4})
-    void 값4이하로_run을_했을경우_1을_반환한다(int number) {
+    @DisplayName("number 4일 경우 - 을반환한다")
+    void testRunMethodReturnsDash(int number) {
         Car car = new Car();
-        int advance = car.run(number);
-        assertThat(advance).isEqualTo(1);
+        String text = car.run(number);
+        assertThat(text).isEqualTo("-");
     }
 
     @ParameterizedTest()
     @ValueSource(ints = {5, 6, 7})
-    void 값5이상으로_run을_했을경우_0을_반환한다(int number) {
+    @DisplayName("number가 5일 경우 빈 문자열을 반환한다. ")
+    void testRunMethodReturnsEmpty(int number) {
         Car car = new Car();
-        int advance = car.run(number);
-        assertThat(advance).isEqualTo(0);
+        String text = car.run(number);
+        assertThat(text).isEqualTo("");
     }
 
     @Test
-    void 값1_4_5으로_run을_했을경우_2를_반환한다() {
+    @DisplayName("1,4,5 값을 줄경우 --를 반환한다.")
+    void testRunMethodReturnsDoubleDash() {
         Car car = new Car();
         car.run(1);
         car.run(4);
-        int advance = car.run(5);
-        assertThat(advance).isEqualTo(2);
+        String text = car.run(5);
+        assertThat(text).isEqualTo("--");
     }
 }
