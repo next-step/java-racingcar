@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceTest {
     @Test
-    @DisplayName("주어진 시도 횟수 크기의 List<RaceStatus>를 반환한다.")
+    @DisplayName("start(): 주어진 시도 횟수 크기의 List<RaceRecord>를 반환한다.")
     void testStart() {
         NumberOfCars numberOfCars = new NumberOfCars("3");
         NumberOfAttempts numberOfAttempts = new NumberOfAttempts("5");

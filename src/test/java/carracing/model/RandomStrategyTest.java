@@ -9,7 +9,7 @@ class RandomStrategyTest {
     private final RandomStrategy randomStrategy = new RandomStrategy();
 
     @Test
-    @DisplayName("랜덤 값에 따라 true 또는 false를 반환합니다.")
+    @DisplayName("isMovable(): 랜덤 값에 따라 true 또는 false를 반환합니다.")
     void testIsMovable() {
         assertThat(randomStrategy.isMovable()).isIn(true, false);
     }
