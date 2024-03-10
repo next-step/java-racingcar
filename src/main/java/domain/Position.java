@@ -4,22 +4,22 @@ import java.util.Objects;
 
 public class Position {
 
-    private int position;
+    private int value;
 
     public Position() {
         this(0);
     }
 
-    public Position(int position) {
-        this.position = position;
+    public Position(int value) {
+        this.value = value;
     }
 
-    public int getPosition() {
-        return this.position;
+    public int getValue() {
+        return this.value;
     }
 
     public void move() {
-        this.position++;
+        this.value++;
     }
 
     @Override
@@ -27,11 +27,11 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
-        return position == position1.position;
+        return value == position1.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(value);
     }
 }
