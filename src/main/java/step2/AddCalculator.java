@@ -55,8 +55,8 @@ public class AddCalculator {
                 .collect(Collectors.toList());
     }
 
-    private List<String> split(List<String> expression, String delimiter) {
-        List<String> result = expression.stream()
+    private List<String> split(List<String> expressions, String delimiter) {
+        List<String> result = expressions.stream()
                 .flatMap(
                         e -> Arrays.stream(e.split(delimiter))
                 ).collect(Collectors.toList());
