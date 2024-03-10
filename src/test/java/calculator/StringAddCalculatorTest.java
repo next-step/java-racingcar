@@ -1,32 +1,23 @@
-package calculator.step2;
+package calculator;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static calculator.step2.StringAddCalculator.calculate;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static calculator.StringAddCalculator.calculate;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringAddCalculatorTest {
 
     @Test
-    void negativeTest() {
-        //given
-        String input = "-1,3,2";
-
-        //when
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            calculate(input);
-        });
-        String expectedMessage = String.format("(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", input);
-        String actualMessage = exception.getMessage();
-
-        //then
-        assertTrue(actualMessage.contains(expectedMessage));
+    void negativeTes1t() {
+        assertThatThrownBy(() -> {
+            calculate("-1,3,2");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(String.format("(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", "-1,3,2"));
     }
 
     @Test
