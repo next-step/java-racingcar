@@ -10,7 +10,7 @@ public class Cars {
     public Cars(int size) {
         this.carList = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            this.carList.add(new Car(new CarMoveCondition()));
+            this.carList.add(new Car());
         }
     }
 

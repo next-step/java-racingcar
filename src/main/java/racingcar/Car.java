@@ -3,15 +3,13 @@ package racingcar;
 public class Car {
 
     private int distance;
-    private final CarMoveCondition moveCondition;
 
-    public Car(CarMoveCondition moveCondition) {
+    public Car() {
         this.distance = 0;
-        this.moveCondition = moveCondition;
     }
 
     public int move(int value) {
-        return moveCondition.isMovable(value) ? move() : stop();
+        return CarMoveCondition.isMovable(value) ? move() : stop();
     }
 
     private int move() {
