@@ -9,7 +9,7 @@ public class CarRepository {
 
   private static final Random random = new Random();
 
-  public void addCar() {
+  public void addEmptyCar() {
     this.cars.add(new Car());
   }
 
@@ -19,7 +19,7 @@ public class CarRepository {
 
   public void addCars(final int numberOfCars) {
     for (int i = 0; i < numberOfCars; i++) {
-      this.addCar();
+      this.addEmptyCar();
     }
   }
 
@@ -35,5 +35,17 @@ public class CarRepository {
 
   public List<Car> getCars() {
     return this.cars;
+  }
+
+  public boolean containsCarWithLocationOf(final int location) {
+    return this.cars.stream().anyMatch(car -> car.isLocationValueOf(location));
+  }
+
+  public int size() {
+    return this.cars.size();
+  }
+
+  public long sizeOfCarsWithLocationOf(final int location) {
+    return this.cars.stream().filter(car -> car.isLocationValueOf(location)).count();
   }
 }
