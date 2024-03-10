@@ -32,7 +32,7 @@ public class CarsTest {
         cars.tryMove(tryNumber, () -> moveNumber);
 
         // then
-        assertThat(cars).extracting("distance").containsExactly(1,1,1,1,1);
+        assertThat(cars).extracting("distance").containsExactly(0,0,0,0,0);
     }
 
     @ParameterizedTest
@@ -46,7 +46,7 @@ public class CarsTest {
         cars.tryMove(tryNumber, () -> moveNumber);
 
         // then
-        assertThat(cars).extracting("distance").containsExactly(2,2,2,2,2);
+        assertThat(cars).extracting("distance").containsExactly(1,1,1,1,1);
     }
 
     static class TestMoveStrategy implements MoveStrategy {

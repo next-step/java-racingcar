@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car {
-    private int distance = 1;
+    private int distance = 0;
 
     public int getDistance() {
         return this.distance;
