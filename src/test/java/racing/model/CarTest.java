@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    @DisplayName("랜덤값이 4 미만인 경우, 자동차는 움직이지 않음")
-    void move_under_four__ShouldNotMove() {
+    @DisplayName("RandomMovementStrategy의 movable이 false인 경우, 자동차는 움직이지 않음")
+    void RandomMovementStrategy__ShouldNotMove() {
         // given
         CarMovementStrategy carMovementStrategy = () -> false;
         Car car = new Car(carMovementStrategy);
@@ -22,8 +22,8 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("랜던값이 4이상인 경우, 자동차는 움직임")
-    void move_above_four__ShouldMove() {
+    @DisplayName("RandomMovementStrategy의 movable이 true인 경우, 자동차는 움직임")
+    void RandomMovementStrategy__ShouldMove() {
         // given
         CarMovementStrategy carMovementStrategy = () -> true;
         Car car = new Car(carMovementStrategy);

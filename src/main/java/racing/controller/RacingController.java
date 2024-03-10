@@ -1,11 +1,13 @@
 package racing.controller;
 
+import racing.model.Car;
 import racing.model.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
+import java.util.List;
+
 public class RacingController {
-    private RacingGame racingGame;
     private int cars;
     private int attempts;
     private InputView inputView;
@@ -15,12 +17,14 @@ public class RacingController {
         init();
         setValues();
         RacingGame racingGame = new RacingGame(cars);
-        ResultView resultView = racingGame.getResult(attempts);
-        System.out.println(resultView.getResult());
+        List<Car> raceDoneCars = racingGame.getResult(attempts);
+        String result = resultView.getResultView(raceDoneCars, attempts);
+        System.out.println(result);
     }
 
     private void init() {
         inputView = new InputView();
+        resultView = new ResultView();
     }
 
     private void setValues() {
