@@ -23,7 +23,10 @@ public class RacingCarServiceTest {
 
         RacingCarService racingCarService = new RacingCarService(new MoveCommandImpl(new TestNumber(number)));
         racingCarService.initCars(countCar);
-        racingCarService.repeatMoveCar(repeatCount);
+
+        for (int i = 0; i < repeatCount; i++) {
+            racingCarService.moveCar();
+        }
 
         assertThat(racingCarService.cars()).hasSize(countCar);
         for (Car car : racingCarService.cars()) {
@@ -34,8 +37,7 @@ public class RacingCarServiceTest {
     @Test
     @DisplayName("N 대의 차량을 만들기 전에, 이동하면 예외 발생")
     void testMoveCarBeforeMakeCars() {
-        int repeatCount = 2;
         RacingCarService racingCarService = new RacingCarService(new MoveCommandImpl(new TestNumber(0)));
-        assertThatThrownBy(() -> racingCarService.repeatMoveCar(repeatCount)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(racingCarService::moveCar).isInstanceOf(RuntimeException.class);
     }
 }

@@ -21,16 +21,6 @@ public class RacingCarService {
         }
     }
 
-    public void repeatMoveCar(int number) {
-        if (cars.isEmpty()) {
-            throw new IllegalStateException("차량이 없습니다.");
-        }
-
-        for (int i = 0; i < number; i++) {
-            moveCar();
-        }
-    }
-
     public List<Car> cars() {
         List<Car> copyCars = new ArrayList<>();
         for (Car car : cars) {
@@ -40,7 +30,10 @@ public class RacingCarService {
         return copyCars;
     }
 
-    private void moveCar() {
+    public void moveCar() {
+        if (cars.isEmpty()) {
+            throw new IllegalStateException("차량이 없습니다. 먼저 차량을 만들어주세요.");
+        }
         for (Car car : cars) {
             car.move(moveCommand.command());
         }
