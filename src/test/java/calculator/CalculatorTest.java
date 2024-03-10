@@ -46,7 +46,7 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @DisplayName("(7) 문자열 계산기에 숫자 이외의 값을 전달하는 경우 RuntimeException 예외를 throw")
-    @ValueSource(strings = {"a", "//;\\n"})
+    @ValueSource(strings = {"a", "//;\\n", "///;\\n"})
     public void noNumber(String str){
         Assertions.assertThatThrownBy(() -> {Calculator.sum(str); }).isEqualTo(RuntimeException.class);
     }
