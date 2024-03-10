@@ -1,14 +1,14 @@
 package racing.domain;
 
-public class CarCount {
-    private final int numberOfRacingCar;
+public class Count {
+    private final int value;
 
-    public CarCount(String input) {
-        this.numberOfRacingCar = toInt(input);
+    public Count(String value) {
+        this.value = toInt(value);
     }
 
-    public int getNumberOfRacingCar() {
-        return numberOfRacingCar;
+    public int getValue() {
+        return value;
     }
 
     private int toInt(String input) {

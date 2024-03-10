@@ -12,15 +12,15 @@ public class RacingGameManager {
     private static final int RANDOM_MAX_NUMBER = 10;
 
     public void play() {
-        CarCount carCount = new CarCount(InputView.askNumberOfCarParticipants());
-        AttemptCount attemptCount = new AttemptCount(InputView.askNumberOfAttempt());
+        Count carCount = new Count(InputView.askNumberOfCarParticipants());
+        Count attemptCount = new Count(InputView.askNumberOfAttempt());
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < carCount.getNumberOfRacingCar(); i++) {
+        for (int i = 0; i < carCount.getValue(); i++) {
             racingCars.add(new RacingCar());
         }
 
         ResultView.printGameResultTitle();
-        for (int i = 0; i < attemptCount.getNumberOfAttempt(); i++) {
+        for (int i = 0; i < attemptCount.getValue(); i++) {
             playRound(racingCars);
         }
 
@@ -32,6 +32,6 @@ public class RacingGameManager {
     }
 
     private void playCar(RacingCar racingCar) {
-        racingCar.attempToMove(random.nextInt(RANDOM_MAX_NUMBER));
+        racingCar.attemptToMove(random.nextInt(RANDOM_MAX_NUMBER));
     }
 }
