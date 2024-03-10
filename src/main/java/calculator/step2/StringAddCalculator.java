@@ -17,7 +17,7 @@ public final class StringAddCalculator {
             return ZERO;
         }
 
-        if (hasContainNegative(text)) {
+        if (hasContainNegativeNumber(text)) {
             throw new IllegalArgumentException(String
                     .format("text(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", text));
         }
@@ -28,15 +28,19 @@ public final class StringAddCalculator {
         return sum(customParse(match(text)));
     }
 
-    private static boolean hasContainNegative(String text) {
-        String[] stringNumbers = parse(text);
-        for (String stringNumber : stringNumbers) {
-            int number = Integer.parseInt(stringNumber);
-            if (number < 0) {
-                return true;
-            }
+    private static boolean hasContainNegativeNumber(String text) {
+        return hasContainNegativeCharacter(parse(text));
+    }
+
+    private static boolean hasContainNegativeCharacter(String[] texts) {
+        for (String stringNumber : texts) {
+            return isNegative(stringNumber);
         }
         return false;
+    }
+
+    private static boolean isNegative(String stringNumber) {
+        return Integer.parseInt(stringNumber) < 0;
     }
 
     private static int sum(String[] numbers) {
