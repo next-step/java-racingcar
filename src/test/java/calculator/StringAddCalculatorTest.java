@@ -7,20 +7,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 @DisplayName("문자열 덧셈 계산기 테스트")
 public class StringAddCalculatorTest {
 
-    @Test
-    @DisplayName("빈 문자열을 입력할 경우 0을 반환")
-    void 빈문자열() {
-        assertThat(splitAndSum("")).isZero();
-    }
-
-    @Test
-    @DisplayName("null 값을 입력할 경우 0을 반환")
-    void null문자열() {
-        assertThat(splitAndSum(null)).isZero();
+    @DisplayName("빈 문자열 또는 null 입력할 경우 0을 반환")
+    @ParameterizedTest(name = "{index} ==> splitAndSum({0}) return 0.")
+    @NullAndEmptySource
+    void 빈문자열_null(String testParameter) {
+        assertThat(splitAndSum(testParameter)).isZero();
     }
 
     @Nested
