@@ -9,7 +9,7 @@ public class InputLayer {
     public static void inputData(){
         int carCount = convertToInt(inputCarCount());
         int racingCount = convertToInt(inputRacingCount());
-        ResultView resultView = new ResultView(new CarRacing(carCount, racingCount, new RandomFactoryLimit10()));
+        ResultView resultView = new ResultView(new CarRacing(carCount, racingCount, new RandomFactory()));
         resultView.showView();
     }
 

@@ -1,6 +1,13 @@
 package racing;
 
-public interface RandomFactory {
+import java.util.Random;
 
-    int getNextInt();
+public class RandomFactory {
+
+    private static final int MAX_LIMIT = 10;
+
+    public int getNextInt() {
+        Random random = new Random();
+        return random.nextInt(MAX_LIMIT);
+    }
 }
