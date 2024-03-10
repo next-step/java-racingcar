@@ -20,4 +20,9 @@ public class Car {
     public Position position() {
         return this.position;
     }
+
+    @Override
+    public String toString() {
+        return "-".repeat(position.getValue() + 1);
+    }
 }
