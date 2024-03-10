@@ -12,12 +12,12 @@ public class ResultViewTest extends IOTest {
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     setOutputStream(outputStream);
     CarRepository carRepository = new CarRepository();
-    carRepository.addCar(new Car());
-    carRepository.addCar(new Car(1));
-    carRepository.addCar(new Car(3));
+    carRepository.addCar(new Car("test1", 3));
+    carRepository.addCar(new Car("test2", 2));
+    carRepository.addCar(new Car("test3",5));
 
     ResultView.printCurrentStatus(carRepository);
 
-    Assertions.assertThat(outputStream.toString()).isEqualTo("\r\n-\r\n---\r\n\r\n");
+    Assertions.assertThat(outputStream.toString()).isEqualTo("test1 : ---\r\ntest2 : --\r\ntest3 : -----\r\n\r\n");
   }
 }
