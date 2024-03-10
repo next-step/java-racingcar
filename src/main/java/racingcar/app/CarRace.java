@@ -1,8 +1,6 @@
 package racingcar.app;
 
-import racingcar.Car;
 import racingcar.Cars;
-import racingcar.RandomValueGenerator;
 import racingcar.ui.ConsoleInputReader;
 import racingcar.ui.ConsoleOutputMessage;
 import racingcar.ui.ConsoleOutputWriter;
@@ -17,6 +15,7 @@ public class CarRace {
         int tryCount = ConsoleInputReader.readInt();
 
         Cars cars = new Cars(carCount);
+        cars.move(tryCount);
     }
 
 }

@@ -14,7 +14,13 @@ public class Cars {
         }
     }
 
-    public void move() {
+    public void move(int count) {
+        while (count-- > 0) {
+            moveAllCar();
+        }
+    }
+
+    private void moveAllCar() {
         for (Car car : this.carList) {
             car.move(RandomValueGenerator.generate());
         }
