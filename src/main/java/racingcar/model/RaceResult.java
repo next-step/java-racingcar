@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.HashMap;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 public class Car {
     private int distance = 0;
