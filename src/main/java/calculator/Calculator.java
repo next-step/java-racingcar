@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public class Calculator {
 
 	private static final String CUSTOM_SEPARATOR = "//(.)\n(.*)";
-	public static final int CUSTOM_DELIMITER_INDEX = 1;
-	public static final int NUBERS_INDEX = 2;
+	private static final int CUSTOM_DELIMITER_INDEX = 1;
+	private static final int NUMBERS_INDEX = 2;
 
 	public int additionCalculate(final String input) {
 		if (input == null || input.equals("")) {
@@ -24,12 +24,16 @@ public class Calculator {
 	}
 
 	private static Matcher getMatcher(String input) {
-		return Pattern.compile(CUSTOM_SEPARATOR).matcher(input);
+		return patternCompile().matcher(input);
+	}
+
+	private static Pattern patternCompile() {
+		return Pattern.compile(CUSTOM_SEPARATOR);
 	}
 
 	private static int calculateAdditionWithCustomSign(final Matcher matcher) {
 		String customDelimiter = matcher.group(CUSTOM_DELIMITER_INDEX);
-		String[] numbers = matcher.group(NUBERS_INDEX).split(customDelimiter);
+		String[] numbers = matcher.group(NUMBERS_INDEX).split(customDelimiter);
 		return calculateAddition(numbers);
 	}
 
