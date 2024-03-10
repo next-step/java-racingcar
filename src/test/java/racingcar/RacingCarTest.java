@@ -15,4 +15,11 @@ public class RacingCarTest {
         assertThat(distance).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("[성공] 자동차가 4 미만의 값을 전달받는 경우 전진하지 않는다.")
+    void 자동차_정지() {
+        Car car = new Car();
+        int distance = car.move(3);
+        assertThat(distance).isEqualTo(0);
+    }
 }
