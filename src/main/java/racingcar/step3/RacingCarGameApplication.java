@@ -22,6 +22,7 @@ public class RacingCarGameApplication {
     List<Car> cars = CarFactory.of(input.getNumberOfCars());
     RacingCarGame racingCarGame = new RacingCarGame(input.getTryCount(), cars);
     List<RacingCarGameResult> results = racingCarGame.start();
+
     ResultView.printResult(results);
   }
 }
