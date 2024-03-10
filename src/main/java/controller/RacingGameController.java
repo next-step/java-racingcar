@@ -17,7 +17,9 @@ public class RacingGameController {
 
     public void play() {
         int carCount = InputView.promptForCarCount();
+        assertionPositiveNumber(carCount);
         int moveCount = InputView.promptForMoveCount();
+        assertionPositiveNumber(moveCount);
 
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
@@ -25,5 +27,11 @@ public class RacingGameController {
         }
         RacingGame racingGame = new RacingGame(cars, moveCount);
         racingGame.play();
+    }
+
+    private void assertionPositiveNumber(int input) {
+        if (input < 1) {
+            throw new IllegalArgumentException("1 이상의 양수만 입력할 수 있습니다.");
+        }
     }
 }

@@ -19,11 +19,7 @@ public class InputView {
         System.out.println(showMessage);
         try {
             Scanner scanner = new Scanner(System.in);
-            int input = scanner.nextInt();
-            if (input < 1) {
-                throw new IllegalArgumentException("1 이상의 양수만 입력할 수 있습니다.");
-            }
-            return input;
+            return scanner.nextInt();
         } catch (Exception e) {
             String message = e.getMessage();
             throw new IllegalArgumentException(message == null ? "잘못된 입력 값입니다." : message, e);
