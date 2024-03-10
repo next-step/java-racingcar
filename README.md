@@ -9,7 +9,10 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## Todo정
-
+- 결과 경주별로 출력
+- 자바 컨벤션 준수
+- 일급 컬렉션 불필요 변수 분리
+- 
 ## Done
 - 자동차의 상태를 화면에 출력한다.
 - UI 로직 분리.
