@@ -9,7 +9,7 @@ public class Car {
     }
 
     public int move(int value) {
-        return ++distance;
+        return (value < 4) ? distance : ++distance;
     }
 
 }
