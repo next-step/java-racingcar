@@ -1,21 +1,14 @@
 package racing.view;
 
-import racing.enums.RacingQuestionEnum;
-
 import java.util.Scanner;
 
 public class InputView {
     private Scanner scanner = new Scanner(System.in);
 
-    public int inputNumber(String keyword) {
-        printQuestion(keyword);
+    public int inputNumber(String question) {
+        System.out.println(question);
         int number = getPositiveNumberInput();
         return number;
-    }
-
-    private void printQuestion(String keyword) {
-        String question = RacingQuestionEnum.getQuestionByKeyword(keyword);
-        System.out.println(question);
     }
 
     private int getPositiveNumberInput() {

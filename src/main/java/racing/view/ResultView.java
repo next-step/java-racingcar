@@ -3,6 +3,7 @@ package racing.view;
 import racing.model.Car;
 
 public class ResultView {
+    private static final String HYPHEN = "-";
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuilder result;
 
@@ -21,12 +22,9 @@ public class ResultView {
     }
 
     public void record(Car car) {
-        result.append(car.getPosition());
+        String carPosition = HYPHEN.repeat(car.getScore());
+        result.append(carPosition);
         appendNewLine();
-    }
-
-    public void showResult() {
-        System.out.println(result.toString());
     }
 
     /**
