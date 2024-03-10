@@ -8,7 +8,6 @@ import java.util.stream.IntStream;
 
 public class CarRacing {
 
-    private static final String LOCATION_TOKEN = "-";
     private final List<Car> cars;
     private final int racingCount;
 
@@ -24,21 +23,13 @@ public class CarRacing {
         return IntStream.range(0, carCounts).mapToObj(x -> new Car()).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<List<String>> startRacing() {
-        List<List<String>> result = new ArrayList<>();
-        for (int i = 0; i < racingCount; i++) {
-            result.add(step());
-        }
-        return result;
+    public int getRacingCount(){
+        return racingCount;
     }
 
-    private List<String> step() {
+    public List<String> step() {
         return cars.stream()
-                .map(car -> convertText(car.run(randomFactory.getNextInt())))
+                .map(car -> car.run(randomFactory.getNextInt()))
                 .collect(Collectors.toList());
-    }
-
-    private String convertText(int level) {
-        return LOCATION_TOKEN.repeat(level);
     }
 }

@@ -1,6 +1,5 @@
 package racing;
 
-import java.util.List;
 
 public class ResultView {
 
@@ -11,13 +10,10 @@ public class ResultView {
     }
 
     public void showView(){
-        List<List<String>> racing = carRacing.startRacing();
         System.out.println("실행결과");
-        for (List<String> steps : racing) {
-            for (String carLevel : steps) {
-                System.out.println(carLevel);
-            }
-            System.out.println();
+        for (int i = 0; i < carRacing.getRacingCount(); i++) {
+             carRacing.step().forEach(System.out::println);
         }
+        System.out.println();
     }
 }
