@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DELIMITER_PATTERN =  "[,:]";
     private static final int DEFAULT_VALUE = 0;
     private static final int CUSTOM_DELIMITER_GROUP = 1;
     private static final int NUMBERS_GROUP = 2;
@@ -33,21 +34,19 @@ public class StringAddCalculator {
         if (matcher.find()) {
             return splitUsingCustomDelimiter(matcher);
         }
-        return Arrays.asList(text.split(",|:"));
+        return Arrays.asList(text.split(DELIMITER_PATTERN));
     }
 
     private static List<String> splitUsingCustomDelimiter(Matcher matcher) {
         String customDelimiter = matcher.group(CUSTOM_DELIMITER_GROUP);
-        return Arrays.asList(matcher.group(NUMBERS_GROUP).split(Pattern.quote(customDelimiter)));
+        return Arrays.asList(matcher.group(NUMBERS_GROUP)
+                .split(Pattern.quote(customDelimiter)));
     }
 
     private static int calculateSum(List<String> tokens) {
-        int sum = 0;
-        for (String token : tokens) {
-            int number = toPositiveInt(token);
-            sum += number;
-        }
-        return sum;
+        return tokens.stream()
+                .mapToInt(StringAddCalculator::toPositiveInt)
+                .sum();
     }
 
     private static int toPositiveInt(String token) {
