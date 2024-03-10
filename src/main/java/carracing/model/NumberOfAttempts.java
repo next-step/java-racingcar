@@ -18,7 +18,7 @@ public class NumberOfAttempts {
         return numberOfAttempts;
     }
 
-    public boolean isSame(int num) {
-        return numberOfAttempts == num;
+    public boolean isSame(int number) {
+        return numberOfAttempts == number;
     }
 }
