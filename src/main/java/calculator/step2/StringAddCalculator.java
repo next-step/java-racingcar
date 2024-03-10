@@ -8,7 +8,6 @@ public final class StringAddCalculator {
     private static final int ZERO = 0;
     private static final int CUSTOM_SEPARATOR = 1;
     private static final int INPUT_STRING = 2;
-//    private static final String NEGATIVE = "-";
     private static final String ONE_NUMBER_REGEX = "\\d+";
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
@@ -21,11 +20,7 @@ public final class StringAddCalculator {
             throw new IllegalArgumentException(String
                     .format("text(%s)엔 음수가 포함되어 있습니다. 음수는 허용되지 않습니다.", text));
         }
-
-        if (text.contains(",") || text.contains(":") || text.matches(ONE_NUMBER_REGEX)) {
-            return sum(parse(text));
-        }
-        return sum(customParse(match(text)));
+        return sum(parse(text));
     }
 
     private static boolean hasContainNegativeNumber(String text) {
@@ -52,16 +47,18 @@ public final class StringAddCalculator {
     }
 
     private static String[] parse(String text) {
+        if (!(text.contains(",") || text.contains(":") || text.matches(ONE_NUMBER_REGEX))) {
+            return customParse(match(text));
+        }
         return text.split(",|:");
     }
 
     private static String[] customParse(Matcher matcher) {
-        String[] tokens = null;
-        if (matcher.find()) {
-            String customDelimiter = matcher.group(CUSTOM_SEPARATOR);
-            tokens = matcher.group(INPUT_STRING).split(customDelimiter);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("주어진 문자열은 CUSTOM_PATTERN의 형태와 일치하지 않습니다.");
         }
-        return tokens;
+
+        return matcher.group(INPUT_STRING).split(matcher.group(CUSTOM_SEPARATOR));
     }
 
     private static Matcher match(String text) {
