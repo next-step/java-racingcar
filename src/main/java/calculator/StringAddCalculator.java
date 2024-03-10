@@ -1,6 +1,6 @@
 package calculator;
 
-import static java.math.BigInteger.*;
+import static java.math.BigInteger.ZERO;
 
 import java.math.BigInteger;
 import java.util.Arrays;
