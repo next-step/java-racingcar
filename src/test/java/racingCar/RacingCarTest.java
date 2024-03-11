@@ -2,6 +2,7 @@ package racingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -57,5 +58,12 @@ public class RacingCarTest {
             car.move(input);
             assertThat(car.findCurrentLocation()).isEqualTo(0);
         });
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -2, -3, 10, 11, 12})
+    void 입력값이_0미만10이상일때_Error(int input){
+        assertThatThrownBy(() -> car.move(input))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
