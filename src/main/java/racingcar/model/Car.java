@@ -10,8 +10,8 @@ public class Car {
         return this.distance;
     }
 
-    public void move(int data) {
-        if (data >= MOVE_STANDARD) {
+    public void move(int movableNumber) {
+        if (movableNumber >= MOVE_STANDARD) {
             distance += MOVE_DISTANCE;
         }
     }
