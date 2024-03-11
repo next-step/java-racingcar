@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.util;
+
+import racingcar.Car;
 
 public class CarStatusSetterForTest {
 
