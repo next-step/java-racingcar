@@ -20,7 +20,7 @@ public class InputView {
         try {
             System.out.println("시도할 회수는 몇 회 인가요?");
             countOfTrial = inputNumber();
-        } catch (RuntimeException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             requestCountOfTrial();
         }
@@ -30,27 +30,23 @@ public class InputView {
         try {
             System.out.println("자동차 대수는 몇 대 인가요?");
             numberOfCar = inputNumber();
-        } catch (RuntimeException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             requestCars();
         }
     }
 
     private static int inputNumber() {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            String value = scanner.nextLine();
-            isValidNumber(value);
-            return Integer.parseInt(value);
-        } catch (RuntimeException e) {
-            throw e;
-        }
+        Scanner scanner = new Scanner(System.in);
+        String value = scanner.nextLine();
+        isValidNumber(value);
+        return Integer.parseInt(value);
     }
     private static void isValidNumber(String value) {
         try {
             Integer.parseInt(value);
         } catch (IllegalArgumentException e) {
-            throw new IllegalStateException(String.format(INVALID_INPUT_MESSAGE_FORMAT, value));
+            throw new IllegalArgumentException(String.format(INVALID_INPUT_MESSAGE_FORMAT, value));
         }
     }
 }
