@@ -1,30 +1,17 @@
 package race;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
-    @Test
-    void three_cars() {
-        Cars cars = new Cars(3);
-        String mileage1 = cars.forward(1, 1);
-        String mileage2 = cars.forward(2, 1);
-        String mileage3 = cars.forward(3, 1);
-
-        assertThat(mileage1).isEqualTo("-");
-        assertThat(mileage2).isEqualTo("-");
-        assertThat(mileage2).isEqualTo("-");
+    @ParameterizedTest
+    @CsvSource(value = {"1,1,-", "2,1,-", "3,1,-", "1,2,--","2,2,--"})
+    void three_cars(int numberOfCar, int count, String expected) {
+        Cars cars = new Cars(numberOfCar);
+        assertThat(cars.forward(numberOfCar, count)).isEqualTo(expected);
     }
 
-    @Test
-    void two_cars() {
-        Cars cars = new Cars(2);
-        String mileage1 = cars.forward(1, 1);
-        String mileage2 = cars.forward(2, 1);
-
-        assertThat(mileage1).isEqualTo("-");
-        assertThat(mileage2).isEqualTo("-");
-    }
 }
