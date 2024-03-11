@@ -4,16 +4,15 @@ import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
+    private final Random random = new Random();
+    private final int MOVE_THRESHOLD = 3;
+
     @Override
     public boolean move() {
-        if (getRandomValue() > 3) {
-            return true;
-        }
-        return false;
+        return getRandomValue() > MOVE_THRESHOLD;
     }
 
     private int getRandomValue() {
-        Random random = new Random();
         return random.nextInt(10);
     }
 }

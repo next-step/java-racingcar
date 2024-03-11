@@ -3,6 +3,7 @@ package step3;
 import step3.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CarRacing {
@@ -15,21 +16,13 @@ public class CarRacing {
         }
     }
 
-    public void racingStart(int attemptCount) {
-        System.out.println("실행 결과");
-        for (int i = 0; i < attemptCount; i++) {
-            moveCars();
-            ResultView.displayCurrentCarsLocation(cars);
-        }
-    }
-
-    private void moveCars() {
+    public void moveCars() {
         for (Car car : cars) {
             car.moveForwardOnChance();
         }
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }
