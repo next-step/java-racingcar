@@ -28,6 +28,4 @@ public class Race {
         resultView.printResultNotice();
         resultView.printTryResult(raceResult);
     }
-
-
 }
