@@ -10,7 +10,7 @@ import carRacing.race.RacingGameUI;
 import java.util.ArrayList;
 
 public class RacingGameApplication {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         RandomGenerator randomGenerator = MovementRandomGenerator.of();
         Cars cars = Cars.of(new ArrayList<>());
