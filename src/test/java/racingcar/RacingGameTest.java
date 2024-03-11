@@ -7,6 +7,7 @@ import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.fake.FakeCars;
 
 public class RacingGameTest {
 
@@ -69,20 +70,5 @@ public class RacingGameTest {
         List<String> winnerNames = racingGame.winnerNames();
 
         assertThat(winnerNames).containsExactly("a", "b");
-    }
-}
-
-class FakeCars extends Cars {
-
-    public static final List<Car> FAKE_CAR_LIST = List.of(new Car("a"), new Car("b"));
-
-    @SuppressWarnings("all")
-    public FakeCars() {
-        super(FAKE_CAR_LIST);
-    }
-
-    @Override
-    public Winners winners() {
-        return new Winners(FAKE_CAR_LIST);
     }
 }
