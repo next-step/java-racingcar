@@ -38,4 +38,15 @@ public class CarTest {
     car.moveConditionally(9);
     assertThat(car.trace(DISTANCE_UNIT)).isEqualTo("--");
   }
+
+  @Test
+  void 더_앞에_있다() {
+    car.moveConditionally(9);
+    assertThat(car.isAheadOf(new Car())).isTrue();
+  }
+
+  @Test
+  void 더_뒤에_있다() {
+    assertThat(car.isBehind(new Car(3))).isTrue();
+  }
 }

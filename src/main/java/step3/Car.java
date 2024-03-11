@@ -48,6 +48,30 @@ public class Car {
     return this.name.toString();
   }
 
+  public boolean isAheadOf(final Car car) {
+    return this.isAheadOf(car.location);
+  }
+
+  private boolean isAheadOf(final int location) {
+    return this.location > location;
+  }
+
+  public boolean isBehind(final Car car) {
+    return this.isBehind(car.location);
+  }
+
+  private boolean isBehind(int location) {
+    return this.location < location;
+  }
+
+  public boolean atTheSameLocationWith(final Car car) {
+    return this.location == car.location;
+  }
+  @Override
+  public String toString() {
+    return String.format("name: %s, location: %d", this.name, this.location);
+  }
+
   static class CarName {
     private String name;
     private static final int LENGTH_LIMIT = 5;

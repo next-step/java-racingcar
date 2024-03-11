@@ -1,21 +1,11 @@
 package step3;
 
-import java.util.Scanner;
-
 public class RacingCarGame {
-  private CarRepository carRepository;
+  private Cars cars;
   private int numberOfReps;
 
   public RacingCarGame() {
-    this.carRepository = new CarRepository();
-  }
-
-  public void startRacing() {
-    ResultView.printExecutionComment();
-    for (int i = 0; i < this.numberOfReps; i++) {
-      carRepository.moveAllCars();
-      ResultView.printCurrentStatus(this.carRepository);
-    }
+    this.cars = new Cars();
   }
 
   public void getRepetitionReady() {
@@ -26,7 +16,19 @@ public class RacingCarGame {
   public void getCarsReady() {
     final String MESSAGE_ASKING_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     for (String name : InputView.getInput(MESSAGE_ASKING_CARS).split(",")) {
-      this.carRepository.addCar(new Car(name));
+      this.cars.addCar(new Car(name));
     }
+  }
+
+  public void startRacing() {
+    ResultView.printExecutionComment();
+    for (int i = 0; i < this.numberOfReps; i++) {
+      cars.moveAllCars();
+      ResultView.printCurrentStatus(this.cars);
+    }
+  }
+
+  public void displayResult() {
+    ResultView.printWinners(this.cars.leadingCars());
   }
 }

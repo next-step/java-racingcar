@@ -8,5 +8,7 @@ public class Main {
     game.getRepetitionReady();
 
     game.startRacing();
+
+    game.displayResult();
   }
 }
