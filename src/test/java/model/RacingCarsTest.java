@@ -1,6 +1,7 @@
 package model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
 
@@ -47,5 +48,16 @@ class RacingCarsTest {
 
         // then
         assertThat(winners.getNames()).containsExactly(new Name("crong"), new Name("honux"));
+    }
+
+    @Test
+    void 자동차_이름이_중복되면_예외가_발생한다() {
+        // given
+        final List<RacingCar> racingCars = List.of(new RacingCar(new Name("pobi")), new RacingCar(new Name("pobi")));
+
+        // when
+
+        // then
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingCars(racingCars));
     }
 }
