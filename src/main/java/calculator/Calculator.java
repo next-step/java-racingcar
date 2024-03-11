@@ -1,6 +1,8 @@
 package calculator;
 
 public class Calculator {
+
+    public static String[] strings;
     public static void ThrowRuntimeExceptionIfNegativeValue(int number) throws RuntimeException
     {
         if (number < 0)
@@ -8,27 +10,30 @@ public class Calculator {
             throw new RuntimeException("RuntimeException");
         }
     }
+
+    public static void stringsSplitByDelimiter(String str) {
+        if (str.startsWith("//"))    // 요구사항 6
+        {
+            str = str.replace("//", "");
+            str = str.replace("\\n", "");
+            String customDelimiter = String.valueOf(str.charAt(0));
+            strings = str.split(customDelimiter);
+            strings[0] = "0";
+        }
+        strings = str.split(",|:"); // 요구사항 2, 3, 4, 5
+    }
+
     public static int sum(String str) throws RuntimeException{
         int result = 0;
-        String[] strings;
 
         if ( (str == null) || (str.isBlank()) ) {  // 요구사항 1
             return 0;
         }
 
         try {
-            if (str.startsWith("//"))    // 요구사항 6
-            {
-                str = str.replace("//", "");
-                str = str.replace("\\n", "");
-                String customDelimiter = String.valueOf(str.charAt(0));
-                strings = str.split(customDelimiter);
-                strings[0] = "0";
-            } else {    // 요구사항 2, 3, 4, 5
-                strings = str.split(",|:");
-            }
+            stringsSplitByDelimiter(str);
         } catch (Exception exception) {
-            throw new RuntimeException("RuntimeException");
+            throw new RuntimeException("RuntimeException"); // 요구사항 7
         }
 
         int[] ints = new int[strings.length];
