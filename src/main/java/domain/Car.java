@@ -20,11 +20,10 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public Position move() {
+    public void move() {
         if (moveStrategy.moveable()) {
             position.moveForward();
         }
-        return position;
     }
 
     public Position position() {

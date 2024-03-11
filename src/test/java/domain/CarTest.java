@@ -16,10 +16,10 @@ public class CarTest {
         Car car = new Car(moveStrategy);
 
         // when
-        Position position = car.move();
+        car.move();
 
         // then
-        assertThat(position).isEqualTo(new Position(1));
+        assertThat(car.position()).isEqualTo(new Position(1));
     }
 
     @DisplayName("이동 시 랜덤한 값이 4 미만인 경우 멈춘다.")
@@ -30,10 +30,10 @@ public class CarTest {
         Car car = new Car(moveStrategy);
 
         // when
-        Position position = car.move();
+        car.move();
 
         // then
-        assertThat(position).isEqualTo(new Position(0));
+        assertThat(car.position()).isEqualTo(new Position(0));
     }
 
     @DisplayName("자동차에 5자 이하의 길이를 가진 이름을 부여할 수 있다.")
