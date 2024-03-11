@@ -25,3 +25,11 @@
   - [X] 모든 자동차의 위치를 반환하는 carPositions()
 - [X] 경기를 출력하는 ResultView 작성
 - [X] 경기 전체를 진행하는 Race 클래스 작성
+
+## 4단계 기능목록
+- [ ] 쉼표(,)로 구분하여 자동차 이름을 입력받음 (InputView)
+  - 5자 초과하는 경우 재 입력
+  - Car 생성자를 통해 name을 부여한 Car 생성
+- [ ] Car의 `carPosition()`에서 이름도 반환하도록 수정
+- [ ] 가장 position 값이 높은 자동차를 리스트로 반환하는 winner() 메서드를 Cars에 구현
+- [ ] 우승자 출력 기능 구현 (ResultView)
