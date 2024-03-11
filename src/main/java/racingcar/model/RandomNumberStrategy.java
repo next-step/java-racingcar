@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.interfaces.MoveStrategy;
-
 import java.util.Random;
 
 public class RandomNumberStrategy implements MoveStrategy {
