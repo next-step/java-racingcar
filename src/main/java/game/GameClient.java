@@ -1,19 +1,40 @@
 package game;
 
-import game.domain.GameInput;
-import game.domain.GameOutput;
-import game.domain.Validation;
+import game.domain.*;
+import game.util.ResultView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static game.domain.Constant.BOUND;
+import static game.domain.Constant.EXECUTION_RESULT;
 
 public class GameClient {
 
     public static void main(String[] args) {
-        GameInput input = GameInput.process();
-        Validation.checkIfPositiveNumber(input.getGameCount());
-        Validation.checkIfPositiveNumber(input.getCarCount());
+        GameInput input = new GameInput();
+        int gameCount = input.insertGameCount();
+        int carCount = input.insertCarCount();
+        ResultView.printPlainMessage(EXECUTION_RESULT);
+        NumberGenerator generator = new RandomNumberGenerator(BOUND);
+        List<Car> cars = generateCars(carCount);
+        playGamesAndPrintResult(gameCount, generator, cars);
+    }
 
-        int carCount = Integer.parseInt(input.getCarCount());
-        int gameCount = Integer.parseInt(input.getGameCount());
+    private static void playGamesAndPrintResult(int gameCount, NumberGenerator generator, List<Car> cars) {
+        Game game = new Game(generator, cars);
+        game.printResult();
+        for(int i = 1; i < gameCount; i++){
+            game.play();
+            game.printResult();
+        }
+    }
 
-        GameOutput.process();
+    private static List<Car> generateCars(int carCount) {
+        List<Car> cars = new ArrayList<>();
+        for(int i = 0; i < carCount; i++){
+            cars.add(new Car());
+        }
+        return cars;
     }
 }
