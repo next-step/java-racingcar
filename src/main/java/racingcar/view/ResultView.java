@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.DistanceRecord;
 import racingcar.model.RaceResult;
 
 import java.util.List;
@@ -21,13 +22,13 @@ public class ResultView {
     }
 
     public void printTryResult(RaceResult raceResult) {
-        for (List<Integer> carRecords : raceResult) {
+        for (DistanceRecord carRecords : raceResult) {
             printCarRaceResult(carRecords);
             System.out.println();
         }
     }
 
-    private void printCarRaceResult(List<Integer> carRecords) {
+    private void printCarRaceResult(DistanceRecord carRecords) {
         for (Integer carRecord : carRecords) {
             System.out.println(makeDistanceResult(carRecord));
         }

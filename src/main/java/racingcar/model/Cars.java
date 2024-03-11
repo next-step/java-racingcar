@@ -22,6 +22,7 @@ public class Cars implements Iterable<Car> {
 
     public RaceResult tryMove(int tryNumber, MoveStrategy moveStrategy) {
         RaceResult raceResult = new RaceResult();
+
         for (int i=0; i < tryNumber; i++) {
             orderMoveOneCycle(moveStrategy);
             raceResult.recordRaceResult(i, makeDistanceSnapShot());
@@ -35,8 +36,8 @@ public class Cars implements Iterable<Car> {
         }
     }
 
-    private List<Integer> makeDistanceSnapShot() {
-        List<Integer> distanceRecord = new ArrayList<>();
+    private DistanceRecord makeDistanceSnapShot() {
+        DistanceRecord distanceRecord = new DistanceRecord();
         for (Car car : cars) {
             distanceRecord.add(car.getDistance());
         }
