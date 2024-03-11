@@ -22,10 +22,6 @@ public class Car {
         return position.getPosition();
     }
 
-    public String carPosition() {
-        return position.dashOfPosition();
-    }
-
     public void play(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
             position.addOne();

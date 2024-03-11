@@ -2,7 +2,6 @@ package racing;
 
 public class Position {
     private static final int START_POSITION = 0;
-    private static final String DASH = "-";
 
     private int position;
 
@@ -12,10 +11,6 @@ public class Position {
 
     public void addOne() {
         position++;
-    }
-
-    public String dashOfPosition() {
-        return DASH.repeat(position);
     }
 
     public int getPosition() {

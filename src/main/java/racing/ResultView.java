@@ -8,6 +8,7 @@ public class ResultView {
 
     public static final String RESULT_DELIMITER = " : ";
     public static final String WINNER_DELIMITER = ",";
+    private static final String DASH = "-";
 
     public ResultView() {
         System.out.println("\n실행 결과\n");
@@ -15,7 +16,7 @@ public class ResultView {
 
     public void printRaceResult(Cars cars) {
         Iterator<Car> iter = cars.iterator();
-        iter.forEachRemaining(car-> System.out.println(car.getName() + RESULT_DELIMITER + car.carPosition()));
+        iter.forEachRemaining(car-> System.out.println(car.getName() + RESULT_DELIMITER + DASH.repeat(car.getPosition())));
 
         System.out.println();
     }
