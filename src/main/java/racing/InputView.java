@@ -1,11 +1,12 @@
 package racing;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
+    public static final String CAR_NAME_DELIMITER = ",";
     private final Scanner scanner;
 
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요";
@@ -27,11 +28,11 @@ public class InputView {
 
     }
 
-    public String[] inputtedCarNameList(String message) {
+    public List<String> inputtedCarNameList(String message) {
         System.out.println(message);
         String inputtedCarNames = scanNextLine();
 
-        String[] carNameList = inputtedCarNames.split(",");
+        List<String> carNameList = StringUtils.splitStringToList(inputtedCarNames, CAR_NAME_DELIMITER);
 
         if (isCarNameLengthOverStandard(carNameList)) {
             return inputtedCarNameList(CAR_NAME_LENGTH_OVER);
@@ -40,8 +41,10 @@ public class InputView {
         return carNameList;
     }
 
-    private boolean isCarNameLengthOverStandard(String[] carNameList) {
-        return Arrays.stream(carNameList)
+
+
+    private boolean isCarNameLengthOverStandard(List<String> carNameList) {
+        return carNameList.stream()
                 .anyMatch(carName -> carName.length() > CAR_NAME_LENGTH_STANDARD);
     }
 

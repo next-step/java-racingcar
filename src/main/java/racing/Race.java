@@ -19,13 +19,13 @@ public class Race {
     }
 
     public void start() {
-        String[] carArr = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
+        List<String> carNameArr = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
         int tryCount = inputView.inputtedNumber(TRY_COUNT_MESSAGE);
         inputView.closeScanner();
 
         List<Car> carList = new ArrayList<>();
 
-        for (String carName : carArr) {
+        for (String carName : carNameArr) {
             carList.add(new Car(carName));
         }
 
@@ -40,6 +40,8 @@ public class Race {
             resultView.printRaceResult(cars);
             currentTryCount++;
         }
+
+        resultView.printRaceWinner(cars);
     }
 
     private void playRound(Cars cars) {

@@ -19,13 +19,16 @@ public class Cars implements Iterable<Car> {
     }
 
     public List<Car> getWinnerList() {
-        int maxPosition = cars.stream()
+        return  cars.stream()
+                .filter(car -> car.getPosition() == maxPosition())
+                .collect(Collectors.toList());
+    }
+
+    private int maxPosition() {
+        return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(NoSuchElementException::new);
-
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
     }
+
 }
