@@ -7,6 +7,12 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
 
+    @DisplayName("커스텀 구분자-//와 \n 사이의 문자가 구분자인 경우-를 전달하여 확인하기")
+    @Test
+    void 커스텀_구분자_전달() {
+        assertThat(Calculator.calculate("//;\n3;6;9")).isEqualTo(18);
+    }
+
     @DisplayName("문자열 계산기에 음수 전달시 예외")
     @Test
     void 음수_전달() {
