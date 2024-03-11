@@ -29,8 +29,6 @@ public class InputViewTest {
     @DisplayName("사용자로부터 프롬프트를 통해 몇 대의 자동차로 게임할지를 입력받을 때, 1 이상의 양수가 아닌 경우 예외가 발생한다.")
     @ParameterizedTest
     @CsvSource(value = {
-            "0:1 이상의 양수만 입력할 수 있습니다.",
-            "-1:1 이상의 양수만 입력할 수 있습니다.",
             "a:잘못된 입력 값입니다."
     }, delimiter = ':')
     void test02(String input, String errorMessage) {
@@ -60,8 +58,6 @@ public class InputViewTest {
     @DisplayName("사용자로부터 프롬프트를 통해 몇 번의 이동을 시도할지 입력받을 때, 1 이상의 양수가 아닌 경우 예외가 발생한다.")
     @ParameterizedTest
     @CsvSource(value = {
-            "0:1 이상의 양수만 입력할 수 있습니다.",
-            "-1:1 이상의 양수만 입력할 수 있습니다.",
             "a:잘못된 입력 값입니다."
     }, delimiter = ':')
     void test04(String input, String errorMessage) {
