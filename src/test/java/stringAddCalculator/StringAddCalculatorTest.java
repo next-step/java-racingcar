@@ -46,4 +46,14 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("음수 또는 숫자이외의 값 전달할 경우 RuntimeException 예외가 발생")
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("?,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
 }

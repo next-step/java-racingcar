@@ -20,9 +20,19 @@ public class StringAddCalculator {
         int result = 0;
 
         for (String number : numbers) {
-            result += Integer.parseInt(number);
+            result += parseIntAndCheckNegativeNumber(number);
         }
         return result;
+    }
+
+    private static int parseIntAndCheckNegativeNumber(String number) {
+        int num = Integer.parseInt(number);
+
+        if (num < 0) {
+            throw new RuntimeException();
+        }
+
+        return num;
     }
 
     private static boolean isNullOrEmpty(String text) {
