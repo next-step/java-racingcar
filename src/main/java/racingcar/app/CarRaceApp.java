@@ -17,7 +17,7 @@ public class CarRaceApp {
         ResultView.printExecuteResultString();
         while (tryCount-- > 0) {
             cars.move();
-            ResultView.write(cars.toString());
+            ResultView.print(cars);
         }
     }
 

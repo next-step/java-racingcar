@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -14,6 +15,14 @@ public class Cars {
         }
     }
 
+    public List<Car> get() {
+        return Collections.unmodifiableList(cars);
+    }
+
+    public int size() {
+        return cars.size();
+    }
+
     public void move() {
         moveAllCar();
     }
@@ -24,15 +33,4 @@ public class Cars {
         }
     }
 
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : this.cars) {
-            stringBuilder.append(car.toString()).append("\n");
-        }
-        return stringBuilder.toString();
-    }
-
-    public int size() {
-        return cars.size();
-    }
 }

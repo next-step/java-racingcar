@@ -1,6 +1,11 @@
 package racingcar.ui;
 
+import racingcar.Car;
+import racingcar.Cars;
+
 public class ResultView {
+
+    private static final String CAR_POSITION_STRING = "-";
 
     private ResultView() {
 
@@ -18,8 +23,14 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void write(String str) {
-        System.out.println(str);
+    public static void print(Cars cars) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : cars.get()) {
+            String carPosition = CAR_POSITION_STRING.repeat(car.getDistance());
+            stringBuilder.append(carPosition).append("\n");
+        }
+
+        System.out.println(stringBuilder);
     }
 
 }
