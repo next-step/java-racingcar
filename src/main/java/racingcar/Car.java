@@ -11,7 +11,10 @@ public class Car {
     }
 
     public int move(int value) {
-        return CarMoveCondition.isMovable(value) ? move() : stop();
+        if (CarMoveCondition.isMovable(value)) {
+            return move();
+        }
+        return stop();
     }
 
     private int move() {
