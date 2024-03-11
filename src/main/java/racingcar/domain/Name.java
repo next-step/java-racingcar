@@ -10,7 +10,7 @@ public class Name {
         if (value == null) {
             throw new IllegalArgumentException("자동차 이름에 null이 들어옴");
         }
-        final String trimmedName = value.trim();
+        String trimmedName = value.trim();
         assertValidName(trimmedName);
 
         this.value = trimmedName;
