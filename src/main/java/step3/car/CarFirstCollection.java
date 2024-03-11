@@ -1,18 +1,15 @@
 package step3.car;
 
-import step3.RandomNumberCreator;
-import step3.car.move.MoveStrategy;
-
 import java.util.List;
 
-public class CarList {
+public class CarFirstCollection {
     private final List<Car> cars;
 
-    public static CarList from(List<Car> cars) {
-        return new CarList(cars);
+    public static CarFirstCollection from(List<Car> cars) {
+        return new CarFirstCollection(cars);
     }
 
-    public CarList(List<Car> cars) {
+    public CarFirstCollection(List<Car> cars) {
         this.cars = cars;
     }
 

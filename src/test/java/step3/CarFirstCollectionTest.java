@@ -4,15 +4,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import step3.car.Car;
-import step3.car.CarList;
+import step3.car.CarFirstCollection;
 import step3.car.move.MoveStrategy;
 
 import java.util.List;
 
-class CarListTest {
+class CarFirstCollectionTest {
     MoveStrategy moveStrategy;
 
     @BeforeEach
@@ -36,10 +34,10 @@ class CarListTest {
     void moveCars() {
 
         List<Car> cars = List.of(new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy));
-        CarList carList = CarList.from(cars);
-        carList.moveCars();
+        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
+        carFirstCollection.moveCars();
 
-        List<Car> listCars = carList.getCars();
+        List<Car> listCars = carFirstCollection.getCars();
         listCars.forEach(item -> Assertions.assertThat(item.getPosition()).isEqualTo(1));
     }
 
@@ -47,10 +45,10 @@ class CarListTest {
     @Test
     void createMoveResult() {
         List<Car> cars = List.of(new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy));
-        CarList carList = CarList.from(cars);
-        carList.moveCars();
+        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
+        carFirstCollection.moveCars();
 
-        int[] moveResult = carList.createMoveResult();
+        int[] moveResult = carFirstCollection.createMoveResult();
         Assertions.assertThat(moveResult).containsExactly(1, 1, 1, 1);
     }
 }
