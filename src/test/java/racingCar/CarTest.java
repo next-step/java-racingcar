@@ -15,7 +15,7 @@ public class CarTest {
   @BeforeEach
   void setUp() {
     IntGenerator intGenerator = new RandomGenerator();
-    car = new Car(intGenerator);
+    car = new Car("hoi", intGenerator);
   }
 
   @Test
@@ -34,6 +34,6 @@ public class CarTest {
   @Test
   @DisplayName("차 인스턴스를 생성하면 이름이 있다")
   void getCarName(){
-    assertThat(car.getCarName()).isNotEmpty();
+    assertThat(car.getName()).isNotEmpty();
   }
 }

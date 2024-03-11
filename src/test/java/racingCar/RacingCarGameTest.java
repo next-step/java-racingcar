@@ -4,44 +4,48 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingCar.game.GameResult;
 import racingCar.game.RacingCarGame;
 
 public class RacingCarGameTest {
 
+  RacingCarGame racingCarGame;
+  @BeforeEach
+  void setUp() {
+    racingCarGame = new RacingCarGame();
+  }
   @Test
   @DisplayName("자동차 경주 게임판을 만들었을 때 예외가 발생하지 않는다")
   void 자동차_경주_게임판_초기화(){
-    RacingCarGame racingCarGame = new RacingCarGame();
-
-    assertThatNoException().isThrownBy(() -> racingCarGame.initiateGame(3));
+    List<String> carNames = List.of("pobi", "crong", "honux");
+    assertThatNoException().isThrownBy(() -> racingCarGame.initiateGame(carNames));
   }
 
   @Test
   @DisplayName("자동차 경주 게임을 시작하면 경기 라운드 수 만큼의 결과를 전달받는다")
   void 자동차_경주_게임판_시작(){
-    int carNum = 3;
+    List<String> carNames = List.of("pobi", "crong", "honux", "hoi");
     int gameTryNum = 5;
-    RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.initiateGame(carNum);
+    racingCarGame.initiateGame(carNames);
 
-    List<String> results = racingCarGame.playGames(gameTryNum);
+    GameResult results = racingCarGame.playGames(gameTryNum);
 
-    assertThat(results.size()).isEqualTo(gameTryNum);
+    assertThat(results.getRoundResults().size()).isEqualTo(gameTryNum);
   }
 
   @Test
   @DisplayName("자동차 경주 게임은 최소 한명의 우승자가 있다")
   void checkWinnerAtleastOne(){
-    int carNum = 3;
+    List<String> carNames = List.of("pobi", "crong", "honux", "hoi", "mizu");
     int gameTryNum = 5;
-    RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.initiateGame(carNum);
+    racingCarGame.initiateGame(carNames);
 
-    GameResult results = racingCarGame.playGames(gameTryNum);
+    GameResult gameResult = racingCarGame.playGames(gameTryNum);
 
-    assertThat(results.getWinners()).isNotEmpty();
-    assertThat(results.getWinners().size()).isGreaterThan(0);
+    assertThat(gameResult.getWinners()).isNotEmpty();
+    assertThat(gameResult.getWinners().size()).isGreaterThan(0);
   }
 }
