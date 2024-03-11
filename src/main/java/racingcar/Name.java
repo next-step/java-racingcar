@@ -2,16 +2,16 @@ package racingcar;
 
 public class Name {
 
-    private final String name;
+    private final String value;
 
-    public Name(String name) {
-        if (name == null) {
+    public Name(String value) {
+        if (value == null) {
             throw new IllegalArgumentException("자동차 이름에 null이 들어옴");
         }
-        final String trimmedName = name.trim();
+        final String trimmedName = value.trim();
         assertValidName(trimmedName);
 
-        this.name = trimmedName;
+        this.value = trimmedName;
     }
 
     private void assertValidName(String name) {
@@ -24,6 +24,6 @@ public class Name {
     }
 
     public String value() {
-        return name;
+        return value;
     }
 }
