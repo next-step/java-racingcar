@@ -50,7 +50,7 @@ public class RacingCars {
     }
 
     private Location getMaxLocation() {
-        Location maxLocation = new Location(0);
+        Location maxLocation = Location.getInitLocation();
         for (final RacingCar racingCar : racingCars) {
             maxLocation = racingCar.getGreaterLocation(maxLocation);
         }

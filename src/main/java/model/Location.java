@@ -10,6 +10,10 @@ public class Location {
         this.value = value;
     }
 
+    public static Location getInitLocation() {
+        return new Location(0);
+    }
+
     public void increase() {
         value++;
     }

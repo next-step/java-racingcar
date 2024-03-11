@@ -10,7 +10,7 @@ public class RacingCar {
     private final Name name;
 
     public RacingCar(final Name name) {
-        this(new Location(0), name);
+        this(Location.getInitLocation(), name);
     }
 
     public RacingCar(final Location location, final Name name) {
