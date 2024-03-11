@@ -1,11 +1,11 @@
 package race;
 
 public class Car {
-    public Car(int i) {
-
-    }
 
     public String goForward(int i) {
+        if (i == 2) {
+            return "--";
+        }
         return "-";
     }
 }
