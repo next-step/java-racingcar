@@ -1,7 +1,10 @@
 package racingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,5 +37,25 @@ public class RacingCarTest {
     void 한대의_RacingCar_이동_실패(int input) {
         car.move(input);
         assertThat(car.findCurrentLocation()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void 여러대의_RacingCar_이동_성공(int input) {
+        List<RacingCar> cars = Arrays.asList(new RacingCar(strategy), new RacingCar(strategy));
+        cars.forEach(car -> {
+            car.move(input);
+            assertThat(car.findCurrentLocation()).isEqualTo(1);
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void 여러대의_RacingCar_이동_실패(int input) {
+        List<RacingCar> cars = Arrays.asList(new RacingCar(strategy), new RacingCar(strategy));
+        cars.forEach(car -> {
+            car.move(input);
+            assertThat(car.findCurrentLocation()).isEqualTo(0);
+        });
     }
 }
