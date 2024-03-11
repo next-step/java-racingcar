@@ -2,11 +2,11 @@ package racingcar.ui;
 
 import java.util.Scanner;
 
-public class ConsoleInputReader {
+public class InputView {
 
     private final static Scanner SCANNER = new Scanner(System.in);
 
-    private ConsoleInputReader() {
+    private InputView() {
 
     }
 

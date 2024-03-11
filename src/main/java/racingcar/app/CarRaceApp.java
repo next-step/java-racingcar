@@ -1,24 +1,23 @@
 package racingcar.app;
 
 import racingcar.Cars;
-import racingcar.ui.ConsoleInputReader;
-import racingcar.ui.ConsoleOutputMessageType;
-import racingcar.ui.ConsoleOutputWriter;
+import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
 
 public class CarRaceApp {
 
     public static void main(String[] args) {
-        ConsoleOutputWriter.write(ConsoleOutputMessageType.HOW_MANY_CARS);
-        int carCount = ConsoleInputReader.readInt();
+        ResultView.printAnswerHowManyCars();
+        int carCount = InputView.readInt();
 
-        ConsoleOutputWriter.write(ConsoleOutputMessageType.HOW_MANY_TRYS);
-        int tryCount = ConsoleInputReader.readInt();
+        ResultView.printAnswerHowManyTrys();
+        int tryCount = InputView.readInt();
 
         Cars cars = new Cars(carCount);
-        ConsoleOutputWriter.write(ConsoleOutputMessageType.EXECUTE_RESULT);
+        ResultView.printExecuteResultString();
         while (tryCount-- > 0) {
             cars.move();
-            ConsoleOutputWriter.write(cars.toString());
+            ResultView.write(cars.toString());
         }
     }
 
