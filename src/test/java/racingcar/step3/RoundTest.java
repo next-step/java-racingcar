@@ -14,33 +14,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RoundTest {
 
-    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     private Round round;
 
-    @BeforeEach
-    void setUp() {
-        System.setOut(new PrintStream(output));
-    }
-
-    @AfterEach
-    void tearDown() {
-        System.setOut(System.out);
-        output.reset();
-    }
-
-    @DisplayName("각 자동차의 현재 위치만큼 '-'를 출력한다.")
+    @DisplayName("각 자동차의 현재 위치만큼 값을 리턴한다.")
     @Test
     void printEachCarLocation() {
         // given
-        round = new Round(new IncrementMoveStrategy(), 3, new DashVisualizePrintStrategy());
+        round = new Round(new IncrementMoveStrategy(), 3);
 
         // when
         round.startRound();
         round.startRound();
         round.startRound();
-        round.printRoundResult();
 
         // then
-        assertThat(output.toString().trim()).isEqualTo("---\n" + "---\n" + "---");
+        assertThat(round.getCarsCurrentDistance()).containsExactly(3, 3, 3);
     }
 }

@@ -1,29 +1,29 @@
 package racingcar.step3;
 
 import racingcar.step3.move.MoveStrategy;
-import racingcar.step3.print.PrintStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Round {
 
-    private final List<Car> cars;
     private final MoveStrategy moveStrategy;
-    private final PrintStrategy printStrategy;
+    private final List<Car> cars;
 
-    public Round(MoveStrategy moveStrategy, int carsNumber, PrintStrategy printStrategy) {
+    public Round(MoveStrategy moveStrategy, int carsNumber) {
         this.moveStrategy = moveStrategy;
         this.cars = createCarsList(carsNumber);
-        this.printStrategy = printStrategy;
     }
 
     public void startRound() {
         cars.forEach(Car::move);
     }
 
-    public void printRoundResult() {
-        printStrategy.printRoundResult(cars);
+    public List<Integer> getCarsCurrentDistance() {
+        return cars.stream()
+                .map(Car::getCurrentLocation)
+                .collect(Collectors.toList());
     }
 
     private List<Car> createCarsList(int carNumbers) {

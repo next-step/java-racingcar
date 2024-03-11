@@ -4,6 +4,9 @@ import racingcar.step3.move.MoveStrategy;
 
 public class Car {
 
+    private final int MOVE = 1;
+    private final int STOP = 0;
+
     private final MoveStrategy moveStrategy;
     private int location;
 
@@ -16,6 +19,17 @@ public class Car {
     }
 
     public void move() {
-        location += moveStrategy.move();
+        location += moveDistance();
+    }
+
+    private int moveDistance() {
+        if (isMove()) {
+            return MOVE;
+        }
+        return STOP;
+    }
+
+    private boolean isMove() {
+        return moveStrategy.move();
     }
 }

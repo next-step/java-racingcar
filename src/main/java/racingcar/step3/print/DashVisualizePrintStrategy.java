@@ -9,11 +9,9 @@ public class DashVisualizePrintStrategy implements PrintStrategy {
     private final String DASH = "-";
 
     @Override
-    public void printRoundResult(List<Car> cars) {
-        cars.stream()
-                .map(Car::getCurrentLocation)
-                .forEach(location -> {
-                    System.out.println(DASH.repeat(location));
-                });
+    public void printRoundResult(List<Integer> carsCurrentLocation) {
+        carsCurrentLocation.forEach(
+                location -> System.out.println(DASH.repeat(location))
+        );
     }
 }

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PrintStrategy {
 
-    void printRoundResult(List<Car> cars);
+    void printRoundResult(List<Integer> carsCurrentLocation);
 }
