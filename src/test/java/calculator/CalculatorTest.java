@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -46,4 +47,10 @@ class CalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("음수 예외처리 테스트")
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> Calculator.calculate("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }

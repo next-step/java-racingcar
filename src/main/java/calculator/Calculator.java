@@ -46,6 +46,10 @@ public class Calculator {
     }
 
     private static int toInt(String input) {
-        return Integer.parseInt(input);
+        int number = Integer.parseInt(input);
+        if (number < ZERO){
+            throw new NumberFormatException("양수를 입력해주세요.");
+        }
+        return number;
     }
 }
