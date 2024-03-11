@@ -1,10 +1,12 @@
 package racinggame.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("도메인 객체 Position 테스트")
 class PositionTest {
 
     @ParameterizedTest

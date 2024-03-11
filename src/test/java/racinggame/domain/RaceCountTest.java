@@ -1,10 +1,12 @@
 package racinggame.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("도메인 객체 RaceCount 테스트")
 class RaceCountTest {
 
     @Test
