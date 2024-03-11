@@ -20,8 +20,22 @@ class CalculatorTest {
 
     @Test
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환 테스트")
-    void 숫자하나(){
+    void 숫자하나() {
         int result = Calculator.calculate("1");
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("숫자 합 구하는 기능 테스트")
+    void 더하기_기능_테스트() {
+        int result = Calculator.calculate("1,2");
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("구분자 콜론 테스트")
+    void 구분자_콜론_테스트() {
+        int result = Calculator.calculate("1:2");
+        assertThat(result).isEqualTo(3);
     }
 }
