@@ -31,9 +31,7 @@ public class Cars implements Iterable<Car> {
     }
 
     private void orderMoveOneCycle(MoveStrategy moveStrategy) {
-        for (Car car : cars) {
-            car.move(moveStrategy.getMoveNumber());
-        }
+        cars.stream().forEach(car -> car.move(moveStrategy.getMoveNumber()));
     }
 
     private DistanceRecord makeDistanceSnapShot() {
