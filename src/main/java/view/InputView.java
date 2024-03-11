@@ -39,14 +39,18 @@ public class InputView {
     private static int inputNumber() {
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
-        isValidNumber(value);
-        return Integer.parseInt(value);
+        return toPositiveInt(value);
     }
-    private static void isValidNumber(String value) {
+
+    private static int toPositiveInt(String text) {
         try {
-            Integer.parseInt(value);
+            int number = Integer.parseInt(text);
+            if (number < 0) {
+                throw new IllegalArgumentException(String.format(INVALID_INPUT_MESSAGE_FORMAT, text));
+            }
+            return number;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(String.format(INVALID_INPUT_MESSAGE_FORMAT, value));
+            throw new IllegalArgumentException(String.format(INVALID_INPUT_MESSAGE_FORMAT, text));
         }
     }
 }
