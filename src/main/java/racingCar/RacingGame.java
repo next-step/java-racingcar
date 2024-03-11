@@ -3,6 +3,7 @@ package racingCar;
 
 import static view.InputView.inputNumberOfCars;
 import static view.InputView.inputNumberOfTry;
+import static view.ResultView.printResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class RacingGame {
     private void tryMove(List<RacingCar> cars, int numberOfTries) {
         for (int i = 0; i < numberOfTries; i++) {
             moveCars(cars);
+            printResult(cars);
         }
     }
 
