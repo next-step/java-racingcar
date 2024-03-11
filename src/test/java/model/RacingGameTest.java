@@ -12,27 +12,39 @@ class RacingGameTest {
     @Test
     void runByTrueStrategy() {
         MoveStrategy trueMoveStrategy = () -> true;
-        List<Car> cars = Arrays.asList(new Car("test1", 1, trueMoveStrategy), new Car("test2", 2, trueMoveStrategy), new Car("test3", 3, trueMoveStrategy));
+        List<Car> cars = Arrays.asList(new Car("test1", 1, trueMoveStrategy),
+                new Car("test2", 2, trueMoveStrategy),
+                new Car("test3", 3, trueMoveStrategy));
 
         int turn = 1;
         RacingGame racingGame = new RacingGame(cars);
         RacingRecord result = racingGame.run(turn);
 
-        assertThat(result.racingRecord(turn))
-                .containsExactly(new Record("test1", 2), new Record("test2", 3), new Record("test3", 4));
+        Cars expected = new Cars(Arrays.asList(new Car("test1", 2, trueMoveStrategy),
+                new Car("test2", 3, trueMoveStrategy),
+                new Car("test3", 4, trueMoveStrategy)));
+
+        assertThat(result.getRecords())
+                .containsExactly(expected);
     }
 
     @Test
     void runByFalseStrategy() {
         MoveStrategy falseMoveStrategy = () -> false;
-        List<Car> cars = Arrays.asList(new Car("test1", 1, falseMoveStrategy), new Car("test2", 2, falseMoveStrategy), new Car("test3", 3, falseMoveStrategy));
+        List<Car> cars = Arrays.asList(new Car("test1", 1, falseMoveStrategy),
+                new Car("test2", 2, falseMoveStrategy),
+                new Car("test3", 3, falseMoveStrategy));
 
         int turn = 1;
         RacingGame racingGame = new RacingGame(cars);
         RacingRecord result = racingGame.run(turn);
 
-        assertThat(result.racingRecord(turn))
-                .containsExactly(new Record("test1", 1), new Record("test2", 2), new Record("test3", 3));
+        Cars expected = new Cars(Arrays.asList(new Car("test1", 1, falseMoveStrategy),
+                new Car("test2", 2, falseMoveStrategy),
+                new Car("test3", 3, falseMoveStrategy)));
+
+        assertThat(result.getRecords())
+                .containsExactly(expected);
     }
 
     @Test
