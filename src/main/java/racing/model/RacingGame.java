@@ -6,19 +6,19 @@ import java.util.List;
 public class RacingGame {
     private List<Car> cars = new ArrayList<>();
 
-    public RacingGame(int numberOfCars) {
-        this(numberOfCars, new RandomMovementStrategy());
+    public RacingGame(String[] names) {
+        this(names, new RandomMovementStrategy());
     }
 
-    public RacingGame(int numberOfCars, CarMovementStrategy carMovementStrategy) {
-        this.cars = joinCars(numberOfCars, carMovementStrategy);
+    public RacingGame(String[] names, CarMovementStrategy carMovementStrategy) {
+        this.cars = joinCars(names, carMovementStrategy);
     }
 
-    private List<Car> joinCars(int numberOfCars, CarMovementStrategy carMovementStrategy) {
+    private List<Car> joinCars(String[] names, CarMovementStrategy carMovementStrategy) {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(carMovementStrategy));
+        for (String name : names) {
+            cars.add(new Car(name, carMovementStrategy));
         }
 
         return cars;

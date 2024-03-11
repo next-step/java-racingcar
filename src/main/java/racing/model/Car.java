@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
+    private String name;
     private int score;
     private List<Position> position;
     private CarMovementStrategy carMovementStrategy;
 
-    public Car(CarMovementStrategy carMovementStrategy) {
-        this(0, carMovementStrategy);
+    public Car(String name, CarMovementStrategy carMovementStrategy) {
+        this(name, 0, carMovementStrategy);
     }
 
-    private Car(int position, CarMovementStrategy carMovementStrategy) {
-        this.score = position;
+    private Car(String name, int score, CarMovementStrategy carMovementStrategy) {
+        this.name = name;
+        this.score = score;
         this.position = new ArrayList<>();
         this.carMovementStrategy = carMovementStrategy;
     }
@@ -23,6 +25,10 @@ public class Car {
             score++;
         }
         position.add(new Position(score));
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public int getScore() {
