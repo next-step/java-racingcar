@@ -21,7 +21,7 @@ public class RoundResult {
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(format(ROUND_TITLE, round)).append(LINE_BREAK);
-        carResults.forEach(carPosition -> stringBuilder.append(carPosition).append(LINE_BREAK));
+        carResults.forEach(carResult -> stringBuilder.append(carResult).append(LINE_BREAK));
 
         return stringBuilder.toString();
     }
