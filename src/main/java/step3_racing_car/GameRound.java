@@ -10,7 +10,7 @@ public class GameRound {
     void progressAllRound(int roundCount, MovingStrategy movingStrategy) {
         for (int i = 0; i < roundCount; i++) {
             racingCars.movePosition(movingStrategy);
-            InputOutputView.printRoundResult(racingCars);
+            OutputView.printRoundResult(racingCars);
         }
     }
 }
