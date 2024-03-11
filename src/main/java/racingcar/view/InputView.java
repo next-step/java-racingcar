@@ -8,12 +8,13 @@ public class InputView {
 
     private final Validator validator;
 
+    Scanner scanner = new Scanner(System.in);
+
     public InputView(Validator validator) {
         this.validator = validator;
     }
 
     public String input() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
