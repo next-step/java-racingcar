@@ -8,9 +8,9 @@ public class Cars implements Iterable<Car> {
 
     private final List<Car> cars;
 
-    public Cars(int input) {
+    public Cars(int tryNumber) {
         cars = new ArrayList<>();
-        for (int i=0; i < input; i++) {
+        for (int i=0; i < tryNumber; i++) {
             cars.add(new Car());
         }
     }
