@@ -32,4 +32,4 @@
   - Car 생성자를 통해 name을 부여한 Car 생성
 - [X] Cars를 받아 이름 : 위치를 출력해주는 기능 구현 (ResultView)
 - [X] 가장 position 값이 높은 자동차를 리스트로 반환하는 winner() 메서드를 Cars에 구현
-- [ ] 우승자 출력 기능 구현 (ResultView)
+- [X] 우승자 출력 기능 구현 (ResultView)
