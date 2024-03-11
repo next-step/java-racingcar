@@ -11,7 +11,11 @@ public class RacingGameSetupValidator {
 
     }
 
+    public static boolean isNonBlank(String input) {
+        return !isNull(input) && !input.isBlank();
+    }
+
     public static boolean isPositiveInteger(String input) {
-        return !isNull(input) && !input.isBlank() && PATTERN_FOR_POSITIVE_INTEGER.matcher(input).find();
+        return isNonBlank(input) && PATTERN_FOR_POSITIVE_INTEGER.matcher(input).find();
     }
 }
