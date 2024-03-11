@@ -11,10 +11,4 @@ public class RandomNumber {
         return random.nextInt(10);
     }
 
-    public static boolean canForword(int randomNumber) {
-        if(FORWARDING_CONDITION <= randomNumber) {
-            return true;
-        }
-        return false;
-    }
 }

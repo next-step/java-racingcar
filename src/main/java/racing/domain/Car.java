@@ -1,8 +1,5 @@
 package racing.domain;
 
-import static racing.domain.RandomNumber.canForword;
-import static racing.domain.RandomNumber.makeRandomNumber;
-
 public class Car {
 
     private static final int ZERO = 0;
@@ -12,10 +9,17 @@ public class Car {
         this.position = ZERO;
     }
 
-    public void forward() {
-        if(canForword(makeRandomNumber())) {
+    public int forward(MoveStrategy moveStrategy) {
+        //position ++
+
+        if(moveStrategy.isMovable()){
             position ++;
         }
+        return position;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
