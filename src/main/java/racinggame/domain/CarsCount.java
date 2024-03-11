@@ -1,4 +1,4 @@
-package racinggame.view;
+package racinggame.domain;
 
 public class CarsCount {
 
@@ -11,7 +11,7 @@ public class CarsCount {
 
     private void validationCarsCount(int carsCount) {
         if (isNegativeValue(carsCount)) {
-            throw new IllegalStateException("자동차 대수가 음수 입력입니다.");
+            throw new IllegalArgumentException("자동차 대수가 음수 입력입니다: " + carsCount);
         }
     }
 

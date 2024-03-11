@@ -1,5 +1,8 @@
 package racinggame.view;
 
+import racinggame.domain.CarsCount;
+import racinggame.domain.RaceCount;
+
 import java.util.Scanner;
 import java.util.function.Supplier;
 
@@ -13,7 +16,7 @@ public class InputView {
     public static Object retryableInput(Supplier<?> supplier) {
         try {
             return supplier.get();
-        } catch (IllegalStateException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage() + " 다시 입력해주세요.");
             return supplier.get();
         }

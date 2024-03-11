@@ -1,8 +1,5 @@
 package racinggame.domain;
 
-import racinggame.view.CarsCount;
-import racinggame.view.RaceCount;
-
 import java.util.ArrayList;
 import java.util.List;
 

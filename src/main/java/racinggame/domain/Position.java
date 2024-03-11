@@ -29,6 +29,7 @@ public class Position {
         Position position1 = (Position) that;
         return position == position1.position;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(position);

@@ -10,11 +10,7 @@ public class RaceRecord {
         this.carsPositions = carsPositions;
     }
 
-    public String display() {
-        StringBuilder result = new StringBuilder();
-        for (Position position : carsPositions) {
-            result.append("-".repeat(position.getPosition())).append("\n");
-        }
-        return result.toString();
+    public List<Position> getCarsPositions() {
+        return carsPositions;
     }
 }
