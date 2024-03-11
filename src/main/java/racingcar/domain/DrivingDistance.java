@@ -13,6 +13,9 @@ public class DrivingDistance {
     }
 
     public DrivingDistance(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("주행거리는 양수만 올 수 있습니다");
+        }
         this.value = value;
     }
 
