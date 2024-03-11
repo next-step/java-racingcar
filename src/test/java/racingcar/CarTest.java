@@ -40,7 +40,7 @@ public class CarTest {
         car.move(data);
         int distance = car.getDistance();
         // then
-        assertThat(distance).isEqualTo(1);
+        assertThat(distance).isEqualTo(0);
     }
 
     @ParameterizedTest
@@ -53,6 +53,6 @@ public class CarTest {
         car.move(data);
         int distance = car.getDistance();
         // then
-        assertThat(distance).isEqualTo(2);
+        assertThat(distance).isEqualTo(1);
     }
 }
