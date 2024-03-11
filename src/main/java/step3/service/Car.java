@@ -1,5 +1,7 @@
 package step3.service;
 
+import step3.view.CarMovementResult;
+
 public class Car {
     private final Moving movingStrategy;
     private int moveCount = 0;
@@ -17,4 +19,9 @@ public class Car {
             moveCount++;
         }
     }
+
+    public CarMovementResult movementResult() {
+        return CarMovementResult.from(moveCount);
+    }
+
 }

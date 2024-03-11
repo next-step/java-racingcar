@@ -1,5 +1,7 @@
 package step3.service;
 
+import step3.view.CarMovementResult;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,5 +26,11 @@ public class CarsDto {
 
     public boolean isEmpty() {
         return cars.isEmpty();
+    }
+
+    public List<CarMovementResult> movementResults() {
+        return cars.stream()
+                .map(Car::movementResult)
+                .collect(Collectors.toList());
     }
 }
