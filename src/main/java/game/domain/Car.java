@@ -7,7 +7,7 @@ public class Car {
     private static final int MAX_NUMBER = 9;
     private static final int MIN_NUMBER = 0;
     private static final int MINIMUM_MOVEMENT_NUMBER = 4;
-    private int distance = 0;
+    private int distance = 1;
 
     public int getDistance() {
         return distance;
