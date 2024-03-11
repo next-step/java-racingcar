@@ -3,8 +3,6 @@ package model;
 public class RacingCar {
 
     private static final int MOVE_THRESHOLD = 4;
-    private static final String MOVEMENT_INDICATOR = "-";
-    private static final String STATUS_DELIMITER = " : ";
 
     private final Location location;
     private final Name name;
@@ -25,15 +23,15 @@ public class RacingCar {
         }
     }
 
-    public String generateStatus() {
-        return String.join(STATUS_DELIMITER, name.getName(), MOVEMENT_INDICATOR.repeat(location.getValue()));
-    }
-
     public int getLocationValue() {
         return location.getValue();
     }
 
     public Name getName() {
         return name;
+    }
+
+    public String getNameValue() {
+        return name.getName();
     }
 }
