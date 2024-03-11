@@ -8,19 +8,14 @@ public class Car {
         this.distance = 0;
     }
 
-    public int move(int value) {
+    public void move(int value) {
         if (CarMoveCondition.isMovable(value)) {
-            return move();
+            move();
         }
-        return stop();
     }
 
-    private int move() {
-        return ++distance;
-    }
-
-    private int stop() {
-        return distance;
+    private void move() {
+        this.distance++;
     }
 
     public int getDistance() {
