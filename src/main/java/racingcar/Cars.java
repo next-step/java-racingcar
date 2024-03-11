@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 public class Cars {
+	public static final Random RANDOM = new Random();
 	private List<Car> cars = new ArrayList<>();
 
-	public void moveCars() {
-		for (Car car : cars) {
-			car.move(new Random().nextInt(10));
-		}
+	public List<Car> getCars() {
+		return cars;
 	}
 
 	public void setCars(int carNumber) {
@@ -19,9 +18,9 @@ public class Cars {
 		}
 	}
 
-	public void viewPositionWithHyphen(int carNumber) {
-		for (int i = 0; i < carNumber; i++) {
-			System.out.println(cars.get(i).getPositionWithHyphen());
+	public void moveCars() {
+		for (Car car : cars) {
+			car.move(RANDOM.nextInt(10));
 		}
 	}
 }
