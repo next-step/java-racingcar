@@ -29,18 +29,4 @@ public class CarsTest {
         // cars.move();
     }
 
-    @Test
-    @DisplayName("[성공] 자동차의 전진 횟수만큼 '-' 문자열을 반환한다.")
-    void 자동차_전진문자_출력() {
-        // Given
-        Car car = new Car();
-
-        // When
-        // 3회 전진
-        CarStatusSetterForTest.repeatMove(car, 3);
-
-        // Then
-        assertThat(car.toString()).isEqualTo("---");
-    }
-
 }

@@ -28,8 +28,8 @@ public class CarTest {
 
 
     @Test
-    @DisplayName("[성공] 자동차의 전진거리 만큼 '-'를 반복해서 출력한다.")
-    void 자동차_toString() {
+    @DisplayName("[성공] 자동차가 5번 전진하면 자동차의 위치가 5로 변경된다.")
+    void 자동차_5회_전진() {
         // Given
         Car car = new Car();
 
@@ -37,7 +37,7 @@ public class CarTest {
         CarStatusSetterForTest.repeatMove(car, 5);
 
         // Then
-        assertThat(car.toString()).isEqualTo("-----");
+        assertThat(car.getDistance()).isEqualTo(5);
     }
 
     @Nested
