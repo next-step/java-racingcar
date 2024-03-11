@@ -24,8 +24,17 @@ public class RacingCar {
             this.location++;
         }
     }
-    private void validDistance(int distance){
-        if(distance > MAX_DISTANCE  || MIN_DISTANCE > distance){
+
+    public String toResult() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < location; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
+
+    private void validDistance(int distance) {
+        if (distance > MAX_DISTANCE || MIN_DISTANCE > distance) {
             throw new IllegalArgumentException("입력범위를 벗어났습니다.");
         }
     }

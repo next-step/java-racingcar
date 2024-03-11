@@ -62,8 +62,16 @@ public class RacingCarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, -2, -3, 10, 11, 12})
-    void 입력값이_0미만10이상일때_Error(int input){
+    void 입력값이_0미만10이상일때_Error(int input) {
         assertThatThrownBy(() -> car.move(input))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 현재Location_만큼_hyphen_Return() {
+        car.move(7);
+        car.move(8);
+        car.move(9);
+        assertThat(car.toResult()).isEqualTo("---");
     }
 }
