@@ -7,11 +7,15 @@ public class NumberOfCars {
 
     private final int numberOfCars;
 
-    public NumberOfCars(String numberOfCars) {
-        if(!isPositiveInteger(numberOfCars)) {
-           throw new IllegalArgumentException(WRONG_NUMBER_OF_CARS_MESSAGE);
+    private NumberOfCars(final String numberOfCars) {
+        if (!isPositiveInteger(numberOfCars)) {
+            throw new IllegalArgumentException(WRONG_NUMBER_OF_CARS_MESSAGE);
         }
         this.numberOfCars = Integer.parseInt(numberOfCars);
+    }
+
+    public static NumberOfCars newNumber(final String numberOfCars) {
+        return new NumberOfCars(numberOfCars);
     }
 
     public int numberOfCars() {
