@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,18 +15,23 @@ public class RandomValueGeneratorTest {
         assertThat(RandomValueGenerator.generate()).isBetween(0, 9);
     }
 
-    @Test
-    @DisplayName("[학습 테스트] AssertJ.isBetween() 경계값")
-    void isBetween_메서드_경계값() {
-        assertThat(0).isBetween(0, 9);
-        assertThat(9).isBetween(0, 9);
+    @Nested
+    @DisplayName("[학습 테스트]")
+    class LearningTest {
 
-        assertThatThrownBy(() -> {
-            assertThat(-1).isBetween(0, 9);
-        }).isInstanceOf(AssertionError.class);
-        assertThatThrownBy(() -> {
-            assertThat(10).isBetween(0, 9);
-        }).isInstanceOf(AssertionError.class);
+        @Test
+        @DisplayName("[학습 테스트] AssertJ.isBetween() 경계값")
+        void isBetween_메서드_경계값() {
+            assertThat(0).isBetween(0, 9);
+            assertThat(9).isBetween(0, 9);
+
+            assertThatThrownBy(() -> {
+                assertThat(-1).isBetween(0, 9);
+            }).isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> {
+                assertThat(10).isBetween(0, 9);
+            }).isInstanceOf(AssertionError.class);
+        }
+
     }
-
 }
