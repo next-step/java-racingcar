@@ -54,7 +54,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("(8) 문자열 계산기에 음수를 전달하는 경우 RuntimeException 예외를 throw")
     public void negativeNumber(){
-        Assertions.assertThatThrownBy(() -> {Calculator.sum("-1"); }).isEqualTo(RuntimeException.class);
-        Assertions.assertThatThrownBy(() -> {Calculator.sum("-1,2:3"); }).isEqualTo(RuntimeException.class);
+        Assertions.assertThatThrownBy(() -> {Calculator.sum("-1"); }).hasMessage("RuntimeException");
+        Assertions.assertThatThrownBy(() -> {Calculator.sum("-1,2:3"); }).hasMessage("RuntimeException");
     }
 }
