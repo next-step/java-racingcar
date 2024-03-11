@@ -1,15 +1,25 @@
+package calculator;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
+    private static final String COMMA = ",";
+    private static final String COLON = ":";
+    private static final String SLASH = "//";
+    private static final String LINECHANGE = "\n";
+    private static final Pattern COMPILTEDPATTERN = Pattern.compile(SLASH+"(.)"+LINECHANGE+"(.*)");
+    private static final int FIRST = 1;
+    private static final int SECOND = 2;
+
     public static int calculate(String text) {
         if (isTextEmpty(text)) {
             return 0;
         }
-        if (isContainsSlash(text)) {
+        if (isContainsCustom(text)) {
             return addText(splitTextByCustomByDelimiter(text));
         }
-        if (isContainsCommaOrColon(text)) {
+        if (isContainsDelimiter(text)) {
             return addText(splitText(text));
         }
         return stringToInt(text);
@@ -20,36 +30,36 @@ public class Calculator {
         return text.isEmpty();
     }
 
-    private static boolean isContainsCommaOrColon(String text) {
-        return text.contains(",") || text.contains(":");
+    private static boolean isContainsDelimiter(String text) {
+        return text.contains(COMMA) || text.contains(COLON);
     }
 
-    private static boolean isContainsSlash(String text) {
-        return text.contains("/") && text.contains("\n");
+    private static boolean isContainsCustom(String text) {
+        return text.contains(SLASH) && text.contains(LINECHANGE);
     }
 
     private static String[] splitText(String text) {
-        return text.split(",|:");
+        return text.split(COMMA+"|"+COLON);
     }
 
     private static String[] splitTextByCustomByDelimiter(String text) {
-        Matcher m = findPattern(text);
-        if (canFindPattern(m)) {
-            return findNumbers(m).split(findDelimiter(m));
+        Matcher matcher = findPattern(text);
+        if (canFindPattern(matcher)) {
+            return findNumbers(matcher).split(findDelimiter(matcher));
         }
         return null;
     }
 
     private static Matcher findPattern(String text) {
-        return Pattern.compile("//(.)\n(.*)").matcher(text);
+        return COMPILTEDPATTERN.matcher(text);
     }
 
     private static String findNumbers(Matcher matcher) {
-        return matcher.group(2);
+        return matcher.group(SECOND);
     }
 
     private static String findDelimiter(Matcher matcher) {
-        return matcher.group(1);
+        return matcher.group(FIRST);
     }
 
     private static boolean canFindPattern(Matcher matcher) {
@@ -57,7 +67,11 @@ public class Calculator {
     }
 
     private static int stringToInt(String text) {
-        return Integer.parseInt(text);
+        int value = Integer.parseInt(text);
+        if (value < 0) {
+            throw new RuntimeException();
+        }
+        return value;
     }
 
     private static int addText(String[] splitted) {

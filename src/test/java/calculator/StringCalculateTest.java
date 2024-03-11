@@ -1,3 +1,5 @@
+package calculator;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,9 +38,7 @@ public class StringCalculateTest {
 
     @Test
     void 음수_값() {
-        int value = Calculator.calculate("-1");
-        assertThatThrownBy(() -> {
-           throw new RuntimeException();
-        });
+        assertThatThrownBy(() -> Calculator.calculate("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 }
