@@ -23,9 +23,9 @@ public class Cars implements Iterable<Car> {
     public RaceResult tryMove(int tryNumber, MoveStrategy moveStrategy) {
         RaceResult raceResult = new RaceResult();
 
-        for (int i=0; i < tryNumber; i++) {
+        for (int tryCount = 0; tryCount < tryNumber; tryCount++) {
             orderMoveOneCycle(moveStrategy);
-            raceResult.recordRaceResult(i, makeDistanceSnapShot());
+            raceResult.recordRaceResult(tryCount, makeDistanceSnapShot());
         }
         return raceResult;
     }
