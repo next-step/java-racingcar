@@ -2,11 +2,11 @@ package racingcar.domain;
 
 public class Car {
 
-    private static final String DISTANCE_SYMBOL = "-";
-    private static final String RESULT_DIVIDER = " : ";
-
     private final Name name;
     private DrivingDistance drivingDistance;
+
+    private static final String DISTANCE_SYMBOL = "-";
+    private static final String RESULT_DIVIDER = " : ";
 
     public Car(String name) {
         this(new Name(name), new DrivingDistance());

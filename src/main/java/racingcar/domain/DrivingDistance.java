@@ -2,8 +2,9 @@ package racingcar.domain;
 
 public class DrivingDistance {
 
-    public static final int INIT_VALUE = 0;
     private final int value;
+
+    private static final int INIT_VALUE = 0;
 
     public DrivingDistance() {
         this(INIT_VALUE);
