@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class DrivingDistance {
 
     private final int value;
@@ -24,5 +26,22 @@ public class DrivingDistance {
 
     public boolean matchDistance(int distance) {
         return value == distance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DrivingDistance that = (DrivingDistance) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
