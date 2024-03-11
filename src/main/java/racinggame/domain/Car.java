@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.Objects;
-
 public class Car {
 
     private Position position;
