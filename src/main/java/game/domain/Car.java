@@ -13,19 +13,19 @@ public class Car {
         return distance;
     }
 
-    public void printDistance(){
+    public void printDistance() {
         ResultView.printPlainMessage("-".repeat(Math.max(0, distance)));
     }
 
     public void move(int number) {
         validateNumber(number);
-        if(canMove(number)){
+        if (canMove(number)) {
             distance += 1;
         }
     }
 
     private void validateNumber(int number) {
-        if(number < MIN_NUMBER || number > MAX_NUMBER){
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new RuntimeException();
         }
     }

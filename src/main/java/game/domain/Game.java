@@ -13,15 +13,15 @@ public class Game {
         this.cars = cars;
     }
 
-    public void play(){
+    public void play() {
         for (Car car : cars) {
             int number = generator.getNumber();
             car.move(number);
         }
     }
 
-    public void printResult(){
-        for(Car car : cars){
+    public void printResult() {
+        for (Car car : cars) {
             car.printDistance();
         }
         ResultView.printPlainMessage("");

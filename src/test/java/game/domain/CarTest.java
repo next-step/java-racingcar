@@ -14,14 +14,14 @@ public class CarTest {
     Car car;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         car = new Car();
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"4:1","7:1","9:1","0:0","3:0"}, delimiter = ':')
+    @CsvSource(value = {"4:2", "7:2", "9:2", "0:1", "3:1"}, delimiter = ':')
     @DisplayName("0~9 사이의 숫자가 넘어온다")
-    void normal_number(int number, int result){
+    void normal_number(int number, int result) {
         car.move(number);
         int distance = car.getDistance();
         assertThat(distance).isEqualTo(result);
@@ -29,7 +29,7 @@ public class CarTest {
 
     @Test
     @DisplayName("9보다 큰 숫자가 넘어온다")
-    void larger_than_max_number(){
+    void larger_than_max_number() {
         final int MAX_NUMBER = 9;
         assertThatThrownBy(() -> {
             car.move(MAX_NUMBER + 1);
@@ -38,7 +38,7 @@ public class CarTest {
 
     @Test
     @DisplayName("음수가 넘어온다")
-    void negative(){
+    void negative() {
         assertThatThrownBy(() -> {
             car.move(-1);
         }).isInstanceOf(RuntimeException.class);

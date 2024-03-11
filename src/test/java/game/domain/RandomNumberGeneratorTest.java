@@ -12,7 +12,7 @@ class RandomNumberGeneratorTest {
 
     @RepeatedTest(10)
     @DisplayName("0 ~ BOUND 사이의 숫자가 출력되는지 확인")
-    void check_if_in_bound(){
+    void check_if_in_bound() {
         int number = generator.getNumber();
         assertThat(number).isBetween(0, BOUND);
     }

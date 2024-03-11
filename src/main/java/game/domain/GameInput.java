@@ -9,14 +9,15 @@ import static game.util.NumberUtil.toNaturalNumber;
 
 public class GameInput {
 
-    public GameInput() {}
+    public GameInput() {
+    }
 
-    public int insertCarCount(){
+    public int insertCarCount() {
         ResultView.printPlainMessage(ASK_CAR_COUNT_MESSAGE);
         return toNaturalNumber(InputView.insertValue());
     }
 
-    public int insertGameCount(){
+    public int insertGameCount() {
         ResultView.printPlainMessage(ASK_GAME_COUNT_MESSAGE);
         return toNaturalNumber(InputView.insertValue());
     }

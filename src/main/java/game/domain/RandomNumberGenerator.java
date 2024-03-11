@@ -2,7 +2,7 @@ package game.domain;
 
 import java.util.Random;
 
-public class RandomNumberGenerator implements NumberGenerator{
+public class RandomNumberGenerator implements NumberGenerator {
 
     private static final Random random = new Random();
     private final int bound;

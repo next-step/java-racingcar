@@ -24,7 +24,7 @@ public class GameClient {
     private static void playGamesAndPrintResult(int gameCount, NumberGenerator generator, List<Car> cars) {
         Game game = new Game(generator, cars);
         game.printResult();
-        for(int i = 1; i < gameCount; i++){
+        for (int i = 1; i < gameCount; i++) {
             game.play();
             game.printResult();
         }
@@ -32,7 +32,7 @@ public class GameClient {
 
     private static List<Car> generateCars(int carCount) {
         List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carCount; i++){
+        for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
         return cars;
