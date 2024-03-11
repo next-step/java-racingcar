@@ -36,8 +36,14 @@ public class Car {
         return this.position;
     }
 
-    public void move() {
-        this.position += ONE;
+    public void moveOrStopByCondition(final int condition) {
+        if (canMove(condition)) {
+            this.position += ONE;
+        }
+    }
+
+    private boolean canMove(final int condition) {
+        return condition >= 4;
     }
 
     public static Car from(final int number) {
