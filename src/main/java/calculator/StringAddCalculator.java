@@ -61,7 +61,7 @@ public class StringAddCalculator {
 
     private static void validateNegativeNumberAndThrow(String text) throws IllegalArgumentException {
         if (text.contains(TOKEN_ILLEGAL)) {
-            throw new IllegalArgumentException(MESSAGE_NEGATIVE_NUMBER);
+            throw new IllegalArgumentException(text + " : "+ MESSAGE_NEGATIVE_NUMBER);
         }
     }
 
