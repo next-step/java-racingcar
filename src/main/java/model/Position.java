@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private int position;
 
     public Position(int position) {
@@ -21,8 +21,9 @@ public class Position {
         return this.position;
     }
 
-    public boolean isSame(int other) {
-        return this.position == other;
+    @Override
+    public int compareTo(Position o) {
+        return o.position - this.position;
     }
 
     @Override

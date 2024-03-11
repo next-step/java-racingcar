@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final Position position;
     private final Name name;
     private final MoveStrategy moveStrategy;
@@ -25,18 +25,16 @@ public class Car {
         this.moveStrategy = strategy;
     }
 
-    public void move() {
+    public Car move() {
         if (moveStrategy.movable()) {
             this.position.move();
         }
+
+        return new Car(getName(), getPosition(), this.moveStrategy);
     }
 
-    public Record toRecord() {
-        return new Record(this.name.getName(), this.position.getPosition());
-    }
-
-    public boolean isSamePosition(int maxPosition) {
-        return this.position.isSame(maxPosition);
+    public boolean isSamePosition(Position other) {
+        return this.position.equals(other);
     }
 
     public String getName() {
@@ -45,6 +43,11 @@ public class Car {
 
     public int getPosition() {
         return this.position.getPosition();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return o.position.compareTo(this.position);
     }
 
     @Override
