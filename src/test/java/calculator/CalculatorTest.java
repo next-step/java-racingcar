@@ -30,8 +30,16 @@ public class CalculatorTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {"1,2:3", "1,2,3:6", "11,2,3,4:20"}, delimiter = ':')
+	@CsvSource(value = {"1,2/3", "1,2,3/6", "11,2,3,4/20"}, delimiter = '/')
 	void test_calculate_숫자_두개_컴마구분_입력(String input, String expected) {
+		String actual = sut.calculate(input);
+
+		assertThat(actual).isEqualTo(expected);
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"1:2/3", "1:2:3/6", "11:2:3:4/20"}, delimiter = '/')
+	void test_calculate_숫자_두개_콜론_구분_입력(String input, String expected) {
 		String actual = sut.calculate(input);
 
 		assertThat(actual).isEqualTo(expected);
