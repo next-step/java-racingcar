@@ -5,11 +5,11 @@ import java.util.Random;
 public class Car {
 
   private int position;
-  private final Random random;
+  private final IntGenerator intGenerator;
 
-  public Car() {
+  public Car(IntGenerator intGenerator) {
     this.position = 0;
-    this.random = new Random();
+    this.intGenerator = intGenerator;
   }
 
   public int getPosition() {
@@ -21,7 +21,7 @@ public class Car {
   }
 
   public void move() {
-    int randomNumber = random.nextInt(10);
+    int randomNumber = intGenerator.nextInt(10);
     if (randomNumber >= 4) {
       position++;
     }

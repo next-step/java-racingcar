@@ -12,8 +12,9 @@ public class RacingCarGame {
   }
 
   public void initiateGame(int carNum) {
+    IntGenerator intGenerator = new RandomGenerator();
     for (int i = 0; i < carNum; i++) {
-      cars.add(new Car());
+      cars.add(new Car(intGenerator));
     }
   }
 

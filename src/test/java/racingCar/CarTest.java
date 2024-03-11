@@ -11,7 +11,8 @@ public class CarTest {
   Car car;
   @BeforeEach
   void setUp() {
-    car = new Car();
+    IntGenerator intGenerator = new RandomGenerator();
+    car = new Car(intGenerator);
   }
 
   @Test
