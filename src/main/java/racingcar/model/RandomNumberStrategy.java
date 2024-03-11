@@ -6,9 +6,10 @@ public class RandomNumberStrategy implements MoveStrategy {
 
     private static final int MAX_NUMBER = 10;
 
+    private Random random = new Random();
+
     @Override
     public int getMoveNumber() {
-        Random random = new Random();
-        return new Random().nextInt(MAX_NUMBER);
+        return random.nextInt(MAX_NUMBER);
     }
 }
