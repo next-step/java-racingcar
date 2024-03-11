@@ -23,6 +23,7 @@ public class RacingGame {
     }
 
     public void startRacing(String names, int trialCount) throws IllegalAccessException {
+
         createCarList(names);
         runRacingRounds(trialCount);
         ui.printWinners(cars.getWinners().toString());
