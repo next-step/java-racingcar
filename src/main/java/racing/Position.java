@@ -15,11 +15,7 @@ public class Position {
     }
 
     public String dashOfPosition() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append(DASH);
-        }
-        return stringBuilder.toString();
+        return DASH.repeat(position);
     }
 
     @Override
