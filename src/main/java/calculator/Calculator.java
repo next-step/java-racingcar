@@ -12,10 +12,12 @@ public class Calculator {
         int result = 0;
         String[] strings;
 
+        if ( (str == null) || (str.isBlank()) ) {  // 요구사항 1
+            return 0;
+        }
+
         try {
-            if ((str.equals("")) | (str.equals(null))) {  // 요구사항 1
-                return 0;
-            } else if (str.startsWith("//"))    // 요구사항 6
+            if (str.startsWith("//"))    // 요구사항 6
             {
                 str = str.replace("//", "");
                 str = str.replace("\\n", "");
