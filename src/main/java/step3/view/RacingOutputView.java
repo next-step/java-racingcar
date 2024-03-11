@@ -16,6 +16,7 @@ public class RacingOutputView {
 
     public static void printRacingResult(List<CarMovementResult> results) {
         results.forEach(RacingOutputView::printRacingResult);
+        lineChange();
     }
 
     private static void printRacingResult(CarMovementResult result) {

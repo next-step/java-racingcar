@@ -11,8 +11,7 @@ public class RacingGamePlayer {
         final int tryCount = RacingInputView.tryCount();
 
         final Racing racing = randomMovementRacing(carCount, tryCount);
-
-
+        racing.play();
     }
 
     private Racing randomMovementRacing(int carCount, int tryCount) {

@@ -28,6 +28,10 @@ public class CarsDto {
         return cars.isEmpty();
     }
 
+    public void moveAll() {
+        cars.forEach(Car::move);
+    }
+
     public List<CarMovementResult> movementResults() {
         return cars.stream()
                 .map(Car::movementResult)
