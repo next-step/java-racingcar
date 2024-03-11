@@ -5,7 +5,7 @@ import static java.text.MessageFormat.format;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.domain.Car;
+import racingcar.Car;
 
 public class CarResult {
 
