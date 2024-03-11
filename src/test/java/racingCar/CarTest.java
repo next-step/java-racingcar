@@ -27,4 +27,10 @@ public class CarTest {
     car.move();
     assertThat(car.getPosition()).isIn(0, 1);
   }
+
+  @Test
+  @DisplayName("차 인스턴스를 생성하면 이름이 있다")
+  void getCarName(){
+    assertThat(car.getCarName()).isNotEmpty();
+  }
 }

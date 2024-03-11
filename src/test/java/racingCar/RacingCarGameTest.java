@@ -29,4 +29,18 @@ public class RacingCarGameTest {
 
     assertThat(results.size()).isEqualTo(gameTryNum);
   }
+
+  @Test
+  @DisplayName("자동차 경주 게임은 최소 한명의 우승자가 있다")
+  void checkWinnerAtleastOne(){
+    int carNum = 3;
+    int gameTryNum = 5;
+    RacingCarGame racingCarGame = new RacingCarGame();
+    racingCarGame.initiateGame(carNum);
+
+    GameResult results = racingCarGame.playGames(gameTryNum);
+
+    assertThat(results.getWinners()).isNotEmpty();
+    assertThat(results.getWinners().size()).isGreaterThan(0);
+  }
 }
