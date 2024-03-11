@@ -12,7 +12,7 @@ class CarTest {
     void RandomMovementStrategy__ShouldNotMove() {
         // given
         CarMovementStrategy carMovementStrategy = () -> false;
-        Car car = new Car(carMovementStrategy);
+        Car car = new Car("Kim", carMovementStrategy);
 
         // when
         car.move();
@@ -26,7 +26,7 @@ class CarTest {
     void RandomMovementStrategy__ShouldMove() {
         // given
         CarMovementStrategy carMovementStrategy = () -> true;
-        Car car = new Car(carMovementStrategy);
+        Car car = new Car("Kim", carMovementStrategy);
 
         // when
         car.move();
