@@ -24,11 +24,6 @@ class RaceRecordTest {
     }
 
     @Test
-    void getCars() {
-
-    }
-
-    @Test
     void getWinners() {
         RaceRecord givenRecord = new RaceRecord(cars);
 
