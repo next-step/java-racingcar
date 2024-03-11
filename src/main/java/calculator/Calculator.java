@@ -7,10 +7,14 @@ public class Calculator {
         if (isBlank(input)) {
             return ZERO;
         }
-        return ZERO;
+        return toInt(input);
     }
 
     private static boolean isBlank(String input) {
         return input == null || input.isBlank();
+    }
+
+    private static int toInt(String input) {
+        return Integer.parseInt(input);
     }
 }
