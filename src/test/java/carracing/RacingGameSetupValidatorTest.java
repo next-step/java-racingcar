@@ -21,4 +21,11 @@ class RacingGameSetupValidatorTest {
     void testIsPositiveInteger(String input, boolean expected) {
         assertThat(RacingGameSetupValidator.isPositiveInteger(input)).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"null:1:false", "'':1:false", "'   ':10:false", "abc:3:true", "abcde:3:false", "1:4:true"}, delimiter = ':')
+    @DisplayName("isValidLengthString(): 문자열이 null 또는 공백 또는 maxLength를 초과하는 경우 false를 그렇지 않은 경우 true를 반환한다.")
+    void testIsValidLengthString(String input, int maxLength, boolean expected) {
+        assertThat(RacingGameSetupValidator.isValidLengthString(input, maxLength)).isEqualTo(expected);
+    }
 }
