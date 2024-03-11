@@ -1,6 +1,6 @@
 package racingcar.util;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 
 public class CarStatusSetterForTest {
 
