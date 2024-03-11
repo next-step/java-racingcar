@@ -1,10 +1,10 @@
 package domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -56,7 +56,7 @@ public class CarTest {
         String name = "pobicon";
 
         // when / then
-        Assertions.assertThatThrownBy(() -> new Car(name, () -> true))
+        assertThatThrownBy(() -> new Car(name, () -> true))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 5자를 초과할 수 없습니다.");
     }
