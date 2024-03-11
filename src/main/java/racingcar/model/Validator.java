@@ -7,8 +7,8 @@ public class Validator {
 
     private static final String NUMERIC_REGEXP = "\\d";
     private static final Pattern NUMERIC_PATTERN = Pattern.compile(NUMERIC_REGEXP);
-    public static final int MAX = 9;
-    public static final int MIN = 0;
+    private static final int MAX = 9;
+    private static final int MIN = 0;
 
     public void nullCheck(String input) {
         if (input == null || input.isBlank()) {
