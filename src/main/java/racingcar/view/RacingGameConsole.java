@@ -22,6 +22,10 @@ public class RacingGameConsole {
         List<String> carNames = inputCarNames();
         int round = inputRound();
 
+        startGame(carNames, round);
+    }
+
+    private void startGame(List<String> carNames, int round) {
         RacingGame racingGame = new RacingGame(carNames);
         racingGame.drive(round, DRIVING_STRATEGY);
 
