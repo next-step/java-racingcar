@@ -46,11 +46,13 @@ public class CarsTest {
     void result() {
         cars.drive(ALWAYS_MOVE);
         assertThat(cars.result()).isEqualTo(
-            String.format("%s : -\n%s : -\n%s : -", CAR_NAMES.get(0), CAR_NAMES.get(1), CAR_NAMES.get(2)));
+            String.format("%s : -\n%s : -\n%s : -", CAR_NAMES.get(0), CAR_NAMES.get(1),
+                CAR_NAMES.get(2)));
 
         cars.drive(ALWAYS_MOVE);
         assertThat(cars.result()).isEqualTo(
-            String.format("%s : --\n%s : --\n%s : --", CAR_NAMES.get(0), CAR_NAMES.get(1), CAR_NAMES.get(2)));
+            String.format("%s : --\n%s : --\n%s : --", CAR_NAMES.get(0), CAR_NAMES.get(1),
+                CAR_NAMES.get(2)));
     }
 
     @Test
