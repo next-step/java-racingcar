@@ -10,10 +10,11 @@
 
 - [x] 유저의 입력값을 받아 메인 서비스(`RacingGame`)를 호출하여 결과값을 전달받아 출력해주는 매개체
 
-### `RacingService.class`
+### `Cars.class`
 
 - [x] 경주에 참가하는 자동차의 대수 만큼 Car 인스턴스 추가 (`joinCars()`)
-- [x] 자동차의 움직임 메서드와 위치 기록 메서드를 호출 (`move()`, `record()`)
+- [x] 자동차의 움직이는 메서드(`move()`)
+- [x] 가장 높은 점수의 자동차 유저를 찾는 메서드 (`getWinnerNames()`) (**<span style="color:red">New</span>**)
 
 ### 입출력 클래스
 
@@ -30,13 +31,12 @@
 ### `Car.class`
 
 - [x] 점수를 가짐 (= 자동차의 위치) (**<span style="color:red">New</span>**)
-- [x] `Position.class`로 자동차의 위치를 저장
 - [x] move()를 호출하여 자동차의 움직임 여부를 결정
     - 이때 움직임을 결정하는 핵심 로직은 `전략 패턴` 사용 (`CarMovementStrategy.class`)
 
 ### 테스트 코드
 
-- [x] `RacingGameTest.class`
+- [x] `CarsTest.class`
 - [x] `CarTest.class`
 
 ### 컨벤션
