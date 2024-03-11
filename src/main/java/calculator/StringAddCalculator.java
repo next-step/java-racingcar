@@ -9,6 +9,10 @@ public class StringAddCalculator {
     private static final int DELIMITER_INDEX = 1;
     private static final int TOKEN_INDEX = 2;
 
+    private StringAddCalculator() {
+        throw new AssertionError();
+    }
+
     public static int splitAndSum(String text) {
         int validateRsltFlag;
         int totalSum = 0;
