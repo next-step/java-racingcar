@@ -2,6 +2,7 @@ package controller;
 
 import model.RacingCars;
 import model.RandomNumberGenerator;
+import model.TryNumber;
 import view.InputView;
 import view.OutputView;
 
@@ -16,14 +17,17 @@ public class RacingCarController {
     }
 
     public void start() {
-        final RacingCars racingCars = RacingCars.of(inputView.inputRacingCarNumber());
-        final int tryNumber = inputView.inputTryNumber();
+        final RacingCars racingCars = RacingCars.of(inputView.inputRacingCarName());
+        final TryNumber tryNumber = new TryNumber(inputView.inputTryNumber());
         final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
         outputView.printResultMessage();
-        for (int i = 0; i < tryNumber; i++) {
+
+        while (tryNumber.hasRemainingTries()) {
             racingCars.move(randomNumberGenerator);
-            outputView.printResult(racingCars.getRacingCars());
+            outputView.printResult(racingCars);
+            tryNumber.decrease();
         }
+        outputView.printWinners(racingCars.findWinners());
     }
 }
