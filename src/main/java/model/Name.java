@@ -10,6 +10,7 @@ public class Name {
 
     public Name(final String name) {
         validateNameLength(name);
+        validateEmptyName(name);
         this.name = name;
     }
 
@@ -20,6 +21,12 @@ public class Name {
     private void validateNameLength(final String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+    }
+
+    private void validateEmptyName(final String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
         }
     }
 
