@@ -1,69 +1,26 @@
 package model;
 
-import view.ResultView;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class RacingGame {
-    private final List<Car> carList;
-
-    public RacingGame(int numOfCars) {
-        this(numOfCars, new RandomMove());
-    }
-
-    public RacingGame(int numOfCars, MoveStrategy moveStrategy) {
-        this.carList = participate(numOfCars, moveStrategy);
-    }
+    private final Cars cars;
 
     public RacingGame(List<Car> cars) {
-        this.carList = cars;
+        this.cars = new Cars(cars);
     }
 
-    private List<Car> participate(int numOfCars, MoveStrategy moveStrategy) {
-        List<Car> result = new ArrayList<>();
-        for (int i = 1; i <= numOfCars; i++) {
-            result.add(new Car(moveStrategy));
-        }
-
-        return result;
-    }
-
-    public ResultView run(int turn) {
-        ResultView resultView = new ResultView();
+    public RacingRecord run(int turn) {
+        RacingRecord racingRecord = new RacingRecord(turn);
         for (int t = 1; t <= turn; t++) {
-            move();
-            record(resultView);
+            Cars movedCars = cars.move();
+            racingRecord.save(movedCars);
         }
 
-        return resultView;
+        return racingRecord;
     }
 
-    public void move() {
-        for (Car car : carList) {
-            car.move();
-        }
+    public List<String> winnerNames() {
+        return this.cars.winnerNames();
     }
 
-    private void record(ResultView resultView) {
-        for (Car car : carList) {
-            resultView.record(car);
-        }
-
-        resultView.appendNewLine();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingGame that = (RacingGame) o;
-        return Objects.equals(carList, that.carList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carList);
-    }
 }

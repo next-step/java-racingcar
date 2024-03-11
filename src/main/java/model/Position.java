@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private int position;
 
     public Position(int position) {
@@ -22,6 +22,11 @@ public class Position {
     }
 
     @Override
+    public int compareTo(Position o) {
+        return o.position - this.position;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -33,6 +38,5 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
-
 
 }
