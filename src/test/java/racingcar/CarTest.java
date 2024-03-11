@@ -28,4 +28,16 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차의 번호는 자연수만 가능합니다.");
     }
+
+    @Test
+    @DisplayName("move 메서드 호출 시, 자동차가 한 칸 전진한다.")
+    void move_PositionForward() {
+        final Car car = Car.from(1);
+        final int previousPosition = car.position();
+
+        car.move();
+
+        assertThat(car.position())
+                .isEqualTo(previousPosition + 1);
+    }
 }
