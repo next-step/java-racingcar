@@ -13,6 +13,19 @@ class CarTest {
     private final MoveStrategy alwaysTrueStrategy = () -> true;
 
     @Test
+    void getPosition() {
+        Car car = new Car("test");
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void getName() {
+        String name = "test";
+        Car car = new Car(name);
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
+    @Test
     void play() {
         Car car1 = new Car("test");
         car1.play(alwaysTrueStrategy);
