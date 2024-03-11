@@ -2,16 +2,20 @@ package racingcar;
 
 public class Round {
 
-    private final int value;
+    private int round;
 
-    public Round(int value) {
-        if (value <= 0) {
+    public Round(int round) {
+        if (round <= 0) {
             throw new IllegalArgumentException("라운드 수는 자연수만 가능합니다");
         }
-        this.value = value;
+        this.round = round;
     }
 
-    public int value() {
-        return value;
+    public void progress() {
+        round--;
+    }
+
+    public boolean isEnd() {
+        return round == 0;
     }
 }
