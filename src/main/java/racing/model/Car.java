@@ -1,41 +1,44 @@
 package racing.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
     private String name;
     private int score;
-    private List<Position> position;
-    private CarMovementStrategy carMovementStrategy;
 
-    public Car(String name, CarMovementStrategy carMovementStrategy) {
-        this(name, 0, carMovementStrategy);
+    public Car(String name) {
+        this(name, 0);
     }
 
-    private Car(String name, int score, CarMovementStrategy carMovementStrategy) {
+    private Car(String name, int score) {
+        if (!isValidCarName(name)) {
+            throw new IllegalArgumentException("Invalid Name : " + name);
+        }
         this.name = name;
         this.score = score;
-        this.position = new ArrayList<>();
-        this.carMovementStrategy = carMovementStrategy;
     }
 
-    public void move() {
+    private boolean isValidCarName(String name) {
+        return !name.isBlank() && name.length() <= 5;
+    }
+
+    public void move(CarMovementStrategy carMovementStrategy) {
         if (carMovementStrategy.movable()) {
             score++;
         }
-        position.add(new Position(score));
     }
 
     public String getName() {
         return this.name;
     }
 
-    public int getScore() {
-        return this.score;
+    public String getPosition(String mark) {
+        return mark.repeat(this.score);
     }
 
-    public String getPosition(int index) {
-        return this.position.get(index).getResult();
+    public boolean isWinner(int maxScore) {
+        return this.score == maxScore;
+    }
+
+    public int getScoreGreaterThan(int maxScore) {
+        return score >= maxScore ? score : maxScore;
     }
 }
