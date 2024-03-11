@@ -17,7 +17,8 @@ public class Cars {
     }
 
     public void addCar(Car car) throws IllegalAccessException {
-        if(isNameDuplicated(car.getName())){
+        if(cars.stream()
+                .anyMatch(c -> c.getName().equals(car.getName()))){
             throw new IllegalAccessException("이미 존재하는 이름입니다.");
         }
         cars.add(car);
@@ -39,11 +40,6 @@ public class Cars {
 
     public void forEach(Consumer<Car> action) {
         cars.forEach(action);
-    }
-
-    private boolean isNameDuplicated(String name){
-        return cars.stream()
-                .anyMatch(car -> car.getName().equals(name));
     }
 
 }
