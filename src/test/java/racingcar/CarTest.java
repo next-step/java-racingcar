@@ -7,12 +7,11 @@ import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.fixture.CarFixture;
 
 public class CarTest {
 
-    private static final String CAR_NAME = "name";
-
-    private final Car car = new Car(CAR_NAME);
+    private final Car car = CarFixture.car();
 
     @Test
     @DisplayName("canDrive 반환값이 true라면 전진한다")
@@ -32,8 +31,8 @@ public class CarTest {
     @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
     void result() {
         car.drive(ALWAYS_MOVE);
-        assertThat(car.result()).isEqualTo(CAR_NAME + " : -");
+        assertThat(car.result()).isEqualTo(car.name() + " : -");
         car.drive(ALWAYS_MOVE);
-        assertThat(car.result()).isEqualTo(CAR_NAME + " : --");
+        assertThat(car.result()).isEqualTo(car.name() + " : --");
     }
 }

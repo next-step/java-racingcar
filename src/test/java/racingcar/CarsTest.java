@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.fixture.CarsFixture.CAR_NAMES;
 import static racingcar.fixture.DrivingStrategyFixture.ALWAYS_MOVE;
 import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 
@@ -12,12 +13,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Winners;
+import racingcar.fixture.CarsFixture;
 
 public class CarsTest {
 
-    private static final List<String> CAR_NAMES = List.of("a", "b", "c");
-
-    private final Cars cars = Cars.fromCarNames(CAR_NAMES);
+    private final Cars cars = CarsFixture.cars();
 
     @Test
     @DisplayName("차 이름이 0개라면 예외가 발생한다")
