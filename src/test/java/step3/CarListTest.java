@@ -1,40 +1,54 @@
 package step3;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.car.Car;
+import step3.car.CarList;
+import step3.car.move.MoveStrategy;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CarListTest {
+    MoveStrategy moveStrategy;
 
+    @BeforeEach
+    void setUp() {
+        moveStrategy = new MoveStrategy() {
+            @Override
+            public int move() {
+                return 1;
+            }
 
-    @DisplayName("자동차에게 랜덤숫자를 넣어 이동하라고 요청할 수 있다. ")
-    @ParameterizedTest
-    @CsvSource(value = {"1,0", "4,1", "9,1"})
-    void moveCars(int randomNumber, int result) {
-        RandomNumberCreator randomNumberCreator = () -> randomNumber;
+            @Override
+            public boolean canMove() {
+                return true;
+            }
+        };
 
-        List<Car> cars = List.of(new Car(), new Car(), new Car(), new Car());
-        CarList carList = CarList.from(cars, randomNumberCreator);
-        carList.moveWithRandomNumber();
+    }
+
+    @DisplayName("자동차들은 이동 전략에 맞게 이동할 수 있다.")
+    @Test
+    void moveCars() {
+
+        List<Car> cars = List.of(new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy));
+        CarList carList = CarList.from(cars);
+        carList.moveCars();
 
         List<Car> listCars = carList.getCars();
-        listCars.forEach(item -> Assertions.assertThat(item.getMoveNumber()).isEqualTo(result));
+        listCars.forEach(item -> Assertions.assertThat(item.getPosition()).isEqualTo(1));
     }
 
     @DisplayName("자동차 이동 결과를 반환한다.")
     @Test
     void createMoveResult() {
-        RandomNumberCreator randomNumberCreator = () -> 4;
-
-        List<Car> cars = List.of(new Car(), new Car(), new Car(), new Car());
-        CarList carList = CarList.from(cars, randomNumberCreator);
-        carList.moveWithRandomNumber();
+        List<Car> cars = List.of(new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy));
+        CarList carList = CarList.from(cars);
+        carList.moveCars();
 
         int[] moveResult = carList.createMoveResult();
         Assertions.assertThat(moveResult).containsExactly(1, 1, 1, 1);

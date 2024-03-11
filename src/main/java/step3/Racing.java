@@ -1,5 +1,9 @@
 package step3;
 
+import step3.car.Car;
+import step3.car.CarList;
+import step3.car.move.RandomMoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +24,13 @@ public class Racing {
     }
 
     private CarList createCarList(int carNumber) {
+        RandomCreator randomCreator = new RandomCreator();
+        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(randomCreator);
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
+            cars.add(new Car(randomMoveStrategy));
         }
-        return CarList.from(cars, randomCreator);
+        return CarList.from(cars);
     }
 
 
@@ -41,6 +47,6 @@ public class Racing {
     }
 
     public void tryMove() {
-        carList.moveWithRandomNumber();
+        carList.moveCars();
     }
 }

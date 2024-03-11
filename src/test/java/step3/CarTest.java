@@ -2,20 +2,35 @@ package step3;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.car.Car;
+import step3.car.move.MoveStrategy;
+import step3.car.move.RandomMoveStrategy;
 
 
 class CarTest {
 
-    @DisplayName("입력받은수가 4이상이고 9이하이면 전진한다.")
-    @ParameterizedTest
-    @CsvSource(value ={"1,0","2,0","4,1","9,1","10,0"})
-    void name(int moveNumber, int actualResult) {
-        Car car = new Car();
-        car.move(moveNumber);
-        int result = car.getMoveNumber();
 
-        Assertions.assertThat(result).isEqualTo(actualResult);
+    @DisplayName("자동차는 외부의 조건에 따라 움직일 수 있다.")
+    @Test
+    void move() {
+        MoveStrategy moveStrategy = new MoveStrategy() {
+            @Override
+            public int move() {
+                return 1;
+            }
+
+            @Override
+            public boolean canMove() {
+                return true;
+            }
+        };
+
+        Car car = new Car(moveStrategy);
+        car.move();
+
+        Assertions.assertThat(car.getPosition()).isEqualTo(1);
     }
 }
