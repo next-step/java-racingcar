@@ -6,15 +6,13 @@ public class CarRacingGame {
     private RandomUtil randomUtil = new RandomUtil();
     private List<Car> cars = new ArrayList<>();
 
-    public  void start() {
-        int carNumber = InputView.carInput();
-        int tryNumber = InputView.tryInput();
+    public  void start(InputVO input) {
 
-        for(int i=0; i<carNumber; i++) {
+        for(int i=0; i<input.getCarNumber(); i++) {
             cars.add(new Car());
         }
         ResultView.printResultStartMessage();
-        for (int i=0; i<tryNumber; i++) {
+        for (int i=0; i< input.getTryNumber(); i++) {
             forward();
             System.out.println();
         }
@@ -22,7 +20,7 @@ public class CarRacingGame {
     }
     public void forward() {
         for(Car car : cars) {
-            car.addPosition(this.randomUtil.randomCount(RANDOM_NUMBER));
+            car.move(this.randomUtil.randomCount(RANDOM_NUMBER));
         }
         ResultView.printResult(cars);
     }

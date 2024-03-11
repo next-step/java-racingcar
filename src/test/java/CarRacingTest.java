@@ -1,8 +1,8 @@
-import static org.assertj.core.api.Assertions.assertThat;
-
+import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarRacingTest {
@@ -19,7 +19,7 @@ class CarRacingTest {
     void carMoveForward(int number) {
         Car car = new Car();
         assertThat(car.getPosition()).isEqualTo(0);
-        car.addPosition(number);
+        car.move(number);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
@@ -29,8 +29,17 @@ class CarRacingTest {
     void carNotMoveForward(int number) {
         Car car = new Car();
         assertThat(car.getPosition()).isEqualTo(0);
-        car.addPosition(number);
+        car.move(number);
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @DisplayName("InputVO는 0이상의 정수만 입력받을 수 있다")
+    @CsvSource(value = {"-1: 3"}, delimiter = ':')
+    void inputVONotValid(int carNumber, int tryNumber) {
+        assertThatThrownBy(() -> {
+            InputVO inputVO = new InputVO(carNumber, tryNumber);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("0이상의 정수만 입력 가능합니다.");
     }
 
 }
