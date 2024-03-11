@@ -34,7 +34,7 @@ public final class Racing {
 
             for (Car car : cars) {
                 final int carMovingCondition = generateRandomNumberBetweenZeroAndNine();
-                car.moveOrStopByCondition(carMovingCondition);
+                car.moveForwardOrStopByCondition(carMovingCondition);
 
                 System.out.print("[" + car.number() + "] ");
                 for (int j = 0; j < car.position(); j++) {

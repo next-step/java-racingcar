@@ -36,7 +36,7 @@ class CarTest {
         final int previousPosition = car.position();
         final int forwardMovingCondition = 4;
 
-        car.moveOrStopByCondition(forwardMovingCondition);
+        car.moveForwardOrStopByCondition(forwardMovingCondition);
 
         assertThat(car.position())
                 .isEqualTo(previousPosition + 1);
@@ -49,9 +49,20 @@ class CarTest {
         final int previousPosition = car.position();
         final int stopMovingCondition = 3;
 
-        car.moveOrStopByCondition(stopMovingCondition);
+        car.moveForwardOrStopByCondition(stopMovingCondition);
 
         assertThat(car.position())
                 .isEqualTo(previousPosition);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 10})
+    @DisplayName("move 메서드에 전진/정지 조건에 해당하지 않는 숫자를 전달하면, IllegalArgumentException을 던진다.")
+    void move_ConditionOutOfRange_IllegalArgumentException(final int movingConditionOutOfRange) {
+        final Car car = Car.from(1);
+
+        assertThatThrownBy(() -> car.moveForwardOrStopByCondition(movingConditionOutOfRange))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차의 전진/정지 조건은 0이상 9이하의 자연수만 가능합니다.");
     }
 }
