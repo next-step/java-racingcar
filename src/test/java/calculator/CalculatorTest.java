@@ -44,4 +44,14 @@ public class CalculatorTest {
 
 		assertThat(actual).isEqualTo(expected);
 	}
+
+	@Test
+	void test_calculate_커스텀_구분자_지정() {
+		String input = "//;\n1;2;3";
+		String expected = "6";
+		String actual = sut.calculate(input);
+
+		assertThat(actual).isEqualTo(expected);
+	}
+	
 }
