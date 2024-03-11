@@ -38,12 +38,15 @@ public class RacingGame {
         }
     }
 
-    //try-catch? 예외 전파 무엇이 좋을까요?
-    private void createCarList(String names) throws IllegalAccessException {
+    private void createCarList(String names) {
         String[] nameList = Arrays.stream(names.split(COMMA_SEPARATOR))
                 .map(String::trim).toArray(String[]::new);
-        for (int i = 0; i < nameList.length; i++) {
-            cars.addCar(Car.of(nameList[i]));
+        for (String s : nameList) {
+            try {
+                cars.addCar(Car.of(s));
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
