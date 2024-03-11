@@ -25,9 +25,7 @@ public class Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < countOfMove; i++) {
-            sb.append(DASH);
-        }
+        sb.append(DASH.repeat(Math.max(0, countOfMove)));
         return sb.toString();
     }
 }
