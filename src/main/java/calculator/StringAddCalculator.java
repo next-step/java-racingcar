@@ -19,7 +19,7 @@ public class StringAddCalculator {
     }
 
     public static int splitAndSum(String text) {
-        // 인자 유효성 검증
+        // 1. 인자 유효성 검증
         if (isNullOrBlank(text)) {
             // throw
         }
@@ -30,10 +30,10 @@ public class StringAddCalculator {
             return Integer.parseInt(text);
         }
 
-        // 인자 분리
+        // 2. 인자 분리
         List<String> splitTextList = splitBySeparator(text);
 
-        // 분리된 인자 총합 계산
+        // 3. 분리된 인자 총합 계산
         return totalSum(splitTextList);
     }
 
@@ -60,20 +60,6 @@ public class StringAddCalculator {
         if (text.contains("-")) {
             throw new IllegalArgumentException("Contains a negative number.");
         }
-    }
-
-    private static int validate(String text) {
-        if (isNullOrBlank(text)) {
-            return 0;
-        }
-
-        validateNegativeNumberAndThrow(text);
-
-        if (isSingleNumeric(text)) {
-            return Integer.parseInt(text);
-        }
-
-        return -1;
     }
 
     private static boolean isSingleNumeric(String text) {
