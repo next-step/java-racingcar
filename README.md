@@ -30,6 +30,6 @@
 - [X] 쉼표(,)로 구분하여 자동차 이름을 입력받음 (InputView)
   - 5자 초과하는 경우 재 입력
   - Car 생성자를 통해 name을 부여한 Car 생성
-- [ ] Car의 `carPosition()`에서 이름도 반환하도록 수정
+- [X] Cars를 받아 이름 : 위치를 출력해주는 기능 구현 (ResultView)
 - [ ] 가장 position 값이 높은 자동차를 리스트로 반환하는 winner() 메서드를 Cars에 구현
 - [ ] 우승자 출력 기능 구현 (ResultView)

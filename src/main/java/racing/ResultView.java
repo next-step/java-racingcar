@@ -4,13 +4,16 @@ import java.util.Iterator;
 
 public class ResultView {
 
+
+    public static final String RESULT_DELIMITER = " : ";
+
     public ResultView() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과\n");
     }
 
     public void printRaceResult(Cars cars) {
         Iterator<Car> iter = cars.iterator();
-        iter.forEachRemaining(car-> System.out.println(car.carPosition()));
+        iter.forEachRemaining(car-> System.out.println(car.carName() + RESULT_DELIMITER + car.carPosition()));
 
         System.out.println();
     }

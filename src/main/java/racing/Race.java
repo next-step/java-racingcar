@@ -25,8 +25,8 @@ public class Race {
 
         List<Car> carList = new ArrayList<>();
 
-        for (String s : carArr) {
-            carList.add(new Car(s));
+        for (String carName : carArr) {
+            carList.add(new Car(carName));
         }
 
         Cars cars = new Cars(carList);

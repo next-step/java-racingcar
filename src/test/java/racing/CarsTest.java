@@ -9,7 +9,7 @@ class CarsTest {
 
     @Test
     void constructor() {
-        List<Car> carList = List.of(new Car(), new Car());
+        List<Car> carList = List.of(new Car("test"), new Car("nimoh"));
         Cars cars = new Cars(carList);
 
         Assertions.assertThat(cars).hasSize(2);
