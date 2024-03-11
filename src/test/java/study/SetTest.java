@@ -54,4 +54,16 @@ public class SetTest {
   void csvTestWithInputType(int input, boolean expected) {
     assertThat(numbers.contains(input)).isEqualTo(expected);
   }
+
+
+
+
+  /**
+   * 피트백
+   */
+  @DisplayName("사이즈 확인-feedback")
+  @Test
+  void getSizeFeedBackTest() {
+    assertThat(numbers).hasSize(3);
+  }
 }
