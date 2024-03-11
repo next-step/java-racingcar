@@ -2,6 +2,8 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.fixture.DrivingStrategyFixture.ALWAYS_MOVE;
+import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,8 +13,6 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
     private static final List<String> CAR_NAMES = List.of("a", "b", "c");
-    private static final DrivingStrategy ALWAYS_MOVE = () -> true;
-    public static final DrivingStrategy NEVER_MOVE = () -> false;
 
     private final Cars cars = Cars.fromCarNames(CAR_NAMES);
 

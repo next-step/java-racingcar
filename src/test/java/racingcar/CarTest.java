@@ -1,6 +1,8 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.fixture.DrivingStrategyFixture.ALWAYS_MOVE;
+import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,8 +10,6 @@ import org.junit.jupiter.api.Test;
 public class CarTest {
 
     private static final String CAR_NAME = "name";
-    private static final DrivingStrategy ALWAYS_MOVE = () -> true;
-    private static final DrivingStrategy NEVER_MOVE = () -> false;
 
     private final Car car = new Car(CAR_NAME);
 
