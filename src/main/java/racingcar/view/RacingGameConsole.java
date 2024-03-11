@@ -1,7 +1,10 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.List;
 import java.util.Scanner;
+import racingcar.domain.DrivingStrategy;
+import racingcar.domain.RacingGame;
+import racingcar.domain.SixtyPercentRandomDrivingStrategy;
 
 public class RacingGameConsole {
 

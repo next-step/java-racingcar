@@ -7,6 +7,7 @@ import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingGame;
 import racingcar.fake.FakeCars;
 
 public class RacingGameTest {

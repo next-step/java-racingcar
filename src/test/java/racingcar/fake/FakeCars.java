@@ -1,9 +1,9 @@
 package racingcar.fake;
 
 import java.util.List;
-import racingcar.Car;
-import racingcar.Cars;
-import racingcar.Winners;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 
 public class FakeCars extends Cars {
 

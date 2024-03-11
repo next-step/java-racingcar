@@ -1,6 +1,6 @@
 package racingcar.fixture;
 
-import racingcar.DrivingStrategy;
+import racingcar.domain.DrivingStrategy;
 
 public class DrivingStrategyFixture {
 
