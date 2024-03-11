@@ -12,14 +12,14 @@ public class Validator {
 
     public void nullCheck(String input) {
         if (input == null || input.isBlank()) {
-            throw new RuntimeException("입력이 되지 않았습니다");
+            throw new NullPointerException("입력이 되지 않았습니다");
         }
     }
 
     public void numericCheck(String input) {
         Matcher matcher = NUMERIC_PATTERN.matcher(input);
         if (!matcher.find()) {
-            throw new RuntimeException("숫자를 입력해주세요");
+            throw new IllegalArgumentException("숫자를 입력해주세요");
         }
         numberRangeCheck(input);
     }
@@ -27,7 +27,7 @@ public class Validator {
     private void numberRangeCheck(String input) {
         Integer number = Integer.parseInt(input);
         if (number > MAX || number < MIN) {
-            throw new RuntimeException("숫자의 입력 범위가 잘 못 되었습니다");
+            throw new IllegalArgumentException("숫자의 입력 범위가 잘 못 되었습니다");
         }
     }
 
