@@ -39,4 +39,11 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정")
+    public void splitAndSum_custom_구분자() throws Exception {
+        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
+
 }
