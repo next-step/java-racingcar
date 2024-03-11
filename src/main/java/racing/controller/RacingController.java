@@ -8,7 +8,7 @@ import racing.view.ResultView;
 import java.util.List;
 
 public class RacingController {
-    private int cars;
+    private String[] names;
     private int attempts;
     private InputView inputView;
     private ResultView resultView;
@@ -16,7 +16,7 @@ public class RacingController {
     public void run() {
         init();
         setValues();
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(names);
         List<Car> raceDoneCars = racingGame.getResult(attempts);
         String result = resultView.getResultView(raceDoneCars, attempts);
         System.out.println(result);
@@ -28,7 +28,7 @@ public class RacingController {
     }
 
     private void setValues() {
-        cars = inputView.inputNumber("자동차 대수는 몇 대 인가요?");
+        names = inputView.inputStrings("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,)를 기준으로 구분)");
         attempts = inputView.inputNumber("시도할 회수는 몇 회 인가요?");
     }
 
