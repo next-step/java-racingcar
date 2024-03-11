@@ -10,6 +10,7 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"1:-","2:--","3:---"}, delimiter = ':')
     void go(int input, String expected) {
-        assertThat(new Car(1).go(input)).isEqualTo(expected);
+        assertThat(new Car().go(input)).isEqualTo(expected);
     }
+
 }

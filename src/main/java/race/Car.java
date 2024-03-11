@@ -1,8 +1,6 @@
 package race;
 
 public class Car {
-    public Car(int numberOfCars) {
-    }
 
     public String go(int count) {
         String mileage = "-";
