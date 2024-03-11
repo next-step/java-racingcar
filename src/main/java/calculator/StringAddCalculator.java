@@ -12,7 +12,8 @@ public class StringAddCalculator {
     private static Pattern CUSTOM_MATCHER = Pattern.compile(CUSTOM_SEPARATOR);
     private static final int DELIMITER_INDEX = 1;
     private static final int TOKEN_INDEX = 2;
-    private static final String MESSAGE_INVALID_NUMBER_FORMAT = "올바른 숫자 입력값이 아닙니다(NULL/공백)";
+    private static final String TOKEN_ILLEGAL = "-";
+    private static final String MESSAGE_NEGATIVE_NUMBER = "음수는 올바른 숫자 입력값이 아닙니다";
 
     private StringAddCalculator() {
         throw new AssertionError();
@@ -21,7 +22,7 @@ public class StringAddCalculator {
     public static int splitAndSum(String text) {
         // 1. 인자 유효성 검증
         if (isNullOrBlank(text)) {
-            // throw
+            return 0;
         }
 
         validateNegativeNumberAndThrow(text);
@@ -46,9 +47,11 @@ public class StringAddCalculator {
     private static List<String> splitBySeparator(String text) {
         List<String> splitTextList;
         Matcher customMatcher = CUSTOM_MATCHER.matcher(text);
+
         if (customMatcher.find()) {
             splitTextList = Arrays.asList(customMatcher.group(TOKEN_INDEX)
                     .split(customMatcher.group(DELIMITER_INDEX)));
+            return splitTextList;
         }
 
         splitTextList =  Arrays.asList(text.split(DEFAULT_SEPARATOR));
@@ -56,9 +59,9 @@ public class StringAddCalculator {
         return splitTextList;
     }
 
-    private static void validateNegativeNumberAndThrow(String text) {
-        if (text.contains("-")) {
-            throw new IllegalArgumentException("Contains a negative number.");
+    private static void validateNegativeNumberAndThrow(String text) throws IllegalArgumentException {
+        if (text.contains(TOKEN_ILLEGAL)) {
+            throw new IllegalArgumentException(MESSAGE_NEGATIVE_NUMBER);
         }
     }
 
