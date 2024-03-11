@@ -32,7 +32,7 @@ public class InputView {
         System.out.println(message);
         String inputtedCarNames = scanNextLine();
 
-        List<String> carNameList = StringUtils.splitStringToList(inputtedCarNames, CAR_NAME_DELIMITER);
+        List<String> carNameList = StringUtil.splitStringToList(inputtedCarNames, CAR_NAME_DELIMITER);
 
         if (isCarNameLengthOverStandard(carNameList)) {
             return inputtedCarNameList(CAR_NAME_LENGTH_OVER);
