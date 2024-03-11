@@ -14,12 +14,6 @@ public class Cars {
         }
     }
 
-    public void move(int count) {
-        while (count-- > 0) {
-            moveAllCar();
-        }
-    }
-
     public void move() {
         moveAllCar();
     }
