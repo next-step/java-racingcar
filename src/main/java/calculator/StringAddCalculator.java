@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,38 +12,48 @@ public class StringAddCalculator {
     private static Pattern CUSTOM_MATCHER = Pattern.compile(CUSTOM_SEPARATOR);
     private static final int DELIMITER_INDEX = 1;
     private static final int TOKEN_INDEX = 2;
+    private static final String MESSAGE_INVALID_NUMBER_FORMAT = "올바른 숫자 입력값이 아닙니다(NULL/공백)";
 
     private StringAddCalculator() {
         throw new AssertionError();
     }
 
     public static int splitAndSum(String text) {
-        int validateRsltFlag;
-        int totalSum = 0;
-
-        validateRsltFlag = validate(text);
-        if (validateRsltFlag >= 0) {
-            return validateRsltFlag;
+        // 인자 유효성 검증
+        if (isNullOrBlank(text)) {
+            // throw
         }
 
         validateNegativeNumberAndThrow(text);
-        
-        String[] numbers = splitBySeparator(text);
-        for (String num : numbers) {
-            totalSum += Integer.parseInt(num);
+
+        if (isSingleNumeric(text)) {
+            return Integer.parseInt(text);
         }
 
-        return totalSum;
+        // 인자 분리
+        List<String> splitTextList = splitBySeparator(text);
+
+        // 분리된 인자 총합 계산
+        return totalSum(splitTextList);
     }
 
-    private static String[] splitBySeparator(String text) {
+    private static int totalSum(List<String> splitTextList) {
+        return splitTextList.stream()
+                .mapToInt(Integer::parseInt)
+                .sum();
+    }
+
+    private static List<String> splitBySeparator(String text) {
+        List<String> splitTextList;
         Matcher customMatcher = CUSTOM_MATCHER.matcher(text);
         if (customMatcher.find()) {
-            return customMatcher.group(TOKEN_INDEX)
-                    .split(customMatcher.group(DELIMITER_INDEX));
+            splitTextList = Arrays.asList(customMatcher.group(TOKEN_INDEX)
+                    .split(customMatcher.group(DELIMITER_INDEX)));
         }
 
-        return text.split(DEFAULT_SEPARATOR);
+        splitTextList =  Arrays.asList(text.split(DEFAULT_SEPARATOR));
+
+        return splitTextList;
     }
 
     private static void validateNegativeNumberAndThrow(String text) {
