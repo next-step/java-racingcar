@@ -3,31 +3,21 @@ package game.domain;
 import game.util.InputView;
 import game.util.ResultView;
 
+import static game.domain.Constant.ASK_CAR_COUNT_MESSAGE;
+import static game.domain.Constant.ASK_GAME_COUNT_MESSAGE;
+import static game.util.NumberUtil.toNaturalNumber;
+
 public class GameInput {
 
-    private static final String ASK_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
-    private static final String ASK_GAME_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
-    private final String carCount;
-    private final String gameCount;
+    public GameInput() {}
 
-    private GameInput(String carCount, String gameCount) {
-        this.carCount = carCount;
-        this.gameCount = gameCount;
-    }
-
-    public static GameInput process(){
+    public int insertCarCount(){
         ResultView.printPlainMessage(ASK_CAR_COUNT_MESSAGE);
-        String num1 = InputView.insertValue();
+        return toNaturalNumber(InputView.insertValue());
+    }
+
+    public int insertGameCount(){
         ResultView.printPlainMessage(ASK_GAME_COUNT_MESSAGE);
-        String num2 = InputView.insertValue();
-        return new GameInput(num1, num2);
-    }
-
-    public String getCarCount() {
-        return carCount;
-    }
-
-    public String getGameCount() {
-        return gameCount;
+        return toNaturalNumber(InputView.insertValue());
     }
 }
