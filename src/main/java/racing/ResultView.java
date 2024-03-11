@@ -5,9 +5,8 @@ import java.util.List;
 
 public class ResultView {
 
-
-    public static final String RESULT_DELIMITER = " : ";
-    public static final String WINNER_DELIMITER = ",";
+    private static final String RESULT_DELIMITER = " : ";
+    private static final String WINNER_DELIMITER = ",";
     private static final String DASH = "-";
 
     public ResultView() {
