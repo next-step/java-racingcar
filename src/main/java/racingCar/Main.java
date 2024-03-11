@@ -29,6 +29,7 @@ public class Main {
       resultView.print(result);
     }
 
+    resultView.print(makeWinnerMessage(gameResult.getWinners()));
   }
 
 
@@ -37,6 +38,10 @@ public class Main {
     for (String carName : carNames) {
       StringUtil.checkLength(carName, maxCarNameLength);
     }
+  }
+
+  private static String makeWinnerMessage(List<String> winners) {
+    return String.join(", ", winners) + "가 최종 우승했습니다.";
   }
 
 }
