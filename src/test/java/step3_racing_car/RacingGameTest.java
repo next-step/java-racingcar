@@ -64,5 +64,9 @@ public class RacingGameTest {
         for (int i = 0; i < cars.racingCars.length; i++) {
             assertThat(cars.racingCars[i].getPosition()).isEqualTo(5);
         }
+
+        // list / array 검증방법 2, 3
+        assertThat(cars.racingCars).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(1));
+        assertThat(cars.racingCars).extracting("position").contains(1);
     }
 }

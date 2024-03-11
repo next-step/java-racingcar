@@ -7,7 +7,7 @@ public class RandomStrategy implements MovingStrategy {
     public static final int MOVING_THRESHOLD = 4;
 
     @Override
-    public int getMovingDistance() {
+    public int move() {
         int randomNumber = new Random().nextInt(RANDOM_RANGE);
         if (randomNumber >= MOVING_THRESHOLD) {
             return 1;

@@ -1,5 +1,6 @@
 package step3_racing_car;
 
+@FunctionalInterface
 interface MovingStrategy {
-    int getMovingDistance();
+    int move();
 }
