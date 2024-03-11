@@ -49,9 +49,15 @@ public class StringAddCalculator {
     }
 
     private static int validate(String text) {
-        if (isNullOrBlank(text)) return 0;
+        if (isNullOrBlank(text)) {
+            return 0;
+        }
+
         validateNegativeNumberAndThrow(text);
-        if (isSingleNumeric(text)) return Integer.parseInt(text);
+
+        if (isSingleNumeric(text)) {
+            return Integer.parseInt(text);
+        }
 
         return -1;
     }
