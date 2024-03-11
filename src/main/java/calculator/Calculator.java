@@ -32,7 +32,7 @@ public class Calculator {
         }
 
         int[] ints = new int[strings.length];
-        try {
+        try {   // 요구사항 7
             for (int i = 0; i < strings.length; i++) {
                 ints[i] = Integer.valueOf(strings[i]);
             }
@@ -41,7 +41,7 @@ public class Calculator {
             throw new RuntimeException("RuntimeException");
         }
         for (int i = 0; i < ints.length; i++ ) {
-            ThrowRuntimeExceptionIfNegativeValue(ints[i]);
+            ThrowRuntimeExceptionIfNegativeValue(ints[i]); // 요구사항 8
             result += ints[i];
         }
 
