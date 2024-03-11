@@ -33,7 +33,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "-".repeat(position.getValue() + 1);
+        return String.format("%s: %s", name, "-".repeat(position.getValue() + 1));
     }
 
     public String getName() {
