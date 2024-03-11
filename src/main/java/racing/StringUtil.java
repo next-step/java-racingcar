@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StringUtils {
+public class StringUtil {
 
     public static List<String> splitStringToList(String str, String regex) {
         return Arrays.stream(str.split(regex))
