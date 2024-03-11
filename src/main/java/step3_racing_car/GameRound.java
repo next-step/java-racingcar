@@ -1,7 +1,7 @@
 package step3_racing_car;
 
 public class GameRound {
-    RacingCars racingCars;
+    private RacingCars racingCars;
     public GameRound(RacingCars racingCars) {
         this.racingCars = racingCars;
     }
