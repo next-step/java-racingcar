@@ -1,13 +1,14 @@
 package race;
 
 public class Car {
+    public Car(int numberOfCars) {
+    }
 
-    private String mileage = "-";
-
-    public String goForward(int no) {
-        for (int i = 2; i <= no; i++) {
-            this.mileage += "-";
+    public String go(int count) {
+        String mileage = "-";
+        for (int i = 1; i < count; i++) {
+            mileage += "-";
         }
-        return this.mileage;
+        return mileage;
     }
 }

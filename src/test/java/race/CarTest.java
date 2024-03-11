@@ -8,10 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"1:-", "2:--", "3:---"}, delimiter = ':')
-    void car__forward(int input, String expected) {
-        Car car = new Car();
-        assertThat(car.goForward(input)).isEqualTo(expected);
+    @CsvSource(value = {"1:-","2:--","3:---"}, delimiter = ':')
+    void go(int input, String expected) {
+        assertThat(new Car(1).go(input)).isEqualTo(expected);
     }
-
 }
