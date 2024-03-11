@@ -14,8 +14,12 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public String carName() {
+    public String getName() {
         return name.getName();
+    }
+
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public String carPosition() {

@@ -13,7 +13,7 @@ public class ResultView {
 
     public void printRaceResult(Cars cars) {
         Iterator<Car> iter = cars.iterator();
-        iter.forEachRemaining(car-> System.out.println(car.carName() + RESULT_DELIMITER + car.carPosition()));
+        iter.forEachRemaining(car-> System.out.println(car.getName() + RESULT_DELIMITER + car.carPosition()));
 
         System.out.println();
     }

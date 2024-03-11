@@ -2,6 +2,8 @@ package racing;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car> {
 
@@ -14,5 +16,16 @@ public class Cars implements Iterable<Car> {
     @Override
     public Iterator<Car> iterator() {
         return cars.iterator();
+    }
+
+    public List<Car> getWinnerList() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
