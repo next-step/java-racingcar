@@ -20,13 +20,14 @@ public class RacingCarGame {
     }
   }
 
-  public List<String> playGames(int round) {
-    List<String> results = new ArrayList<>();
+  public GameResult playGames(int round) {
+    GameResult gameResult = new GameResult();
     for (int i = 0; i < round; i++) {
       playGame();
-      results.add(getGameResult());
+      gameResult.addRoundResult(getGameResult());
     }
-    return results;
+    gameResult.setWinners(findWinners());
+    return gameResult;
   }
 
   private void playGame() {
@@ -38,9 +39,21 @@ public class RacingCarGame {
   private String getGameResult() {
     StringBuilder sb = new StringBuilder();
     for (Car car : cars) {
-      sb.append(car.getMovedPath()).append("\n");
+      sb.append(car.getName()).append(" : ").append(car.getMovedPath()).append("\n");
     }
     return sb.toString();
+  }
+
+  private List<String> findWinners() {
+    List<String> winners = new ArrayList<>();
+    cars.sort((car1, car2) -> car2.getPosition() - car1.getPosition());
+    int maxPosition = cars.get(0).getPosition();
+    for (Car car : cars) {
+      if (car.getPosition() == maxPosition) {
+        winners.add(car.getName());
+      }
+    }
+    return winners;
   }
 
 }

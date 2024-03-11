@@ -1,6 +1,7 @@
 package racingCar;
 
 import java.util.List;
+import racingCar.game.GameResult;
 import racingCar.game.RacingCarGame;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
@@ -21,10 +22,10 @@ public class Main {
     RacingCarGame racingCarGame = new RacingCarGame();
     racingCarGame.initiateGame(carNames);
 
-    List<String> gameResult = racingCarGame.playGames(gameTryNum);
+    GameResult gameResult = racingCarGame.playGames(gameTryNum);
 
     resultView.print("실행 결과");
-    for (String result : gameResult) {
+    for (String result : gameResult.getRoundResults()) {
       resultView.print(result);
     }
 
