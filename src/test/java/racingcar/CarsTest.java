@@ -36,9 +36,7 @@ public class CarsTest {
 
         // When
         // 3회 전진
-        car.move(4);
-        car.move(4);
-        car.move(4);
+        CarStatusSetterForTest.repeatMove(car, 3);
 
         // Then
         assertThat(car.toString()).isEqualTo("---");
