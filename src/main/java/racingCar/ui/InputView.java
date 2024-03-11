@@ -13,4 +13,8 @@ public class InputView {
   public int inputInteger() {
     return scanner.nextInt();
   }
+
+  public String inputString() {
+    return scanner.next();
+  }
 }

@@ -11,14 +11,15 @@ public class Main {
     InputView inputView = new InputView();
     ResultView resultView = new ResultView();
 
-    resultView.print("자동차 대수는 몇 대 인가요?");
-    int carNum = inputView.inputInteger();
+    resultView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    List<String> carNames = StringUtil.splitComma(inputView.inputString());
+    verifyCarNames(carNames);
 
     resultView.print("시도할 회수는 몇 회 인가요?");
     int gameTryNum = inputView.inputInteger();
 
     RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.initiateGame(carNum);
+    racingCarGame.initiateGame(carNames);
 
     List<String> gameResult = racingCarGame.playGames(gameTryNum);
 
@@ -27,6 +28,14 @@ public class Main {
       resultView.print(result);
     }
 
+  }
+
+
+  private static void verifyCarNames(List<String> carNames) {
+    int maxCarNameLength = 5;
+    for (String carName : carNames) {
+      StringUtil.checkLength(carName, maxCarNameLength);
+    }
   }
 
 }

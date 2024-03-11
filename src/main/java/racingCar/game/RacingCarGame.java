@@ -7,16 +7,16 @@ import racingCar.game.generator.RandomGenerator;
 
 public class RacingCarGame {
 
-  private List<Car> cars;
+  private final List<Car> cars;
 
   public RacingCarGame() {
     this.cars = new ArrayList<>();
   }
 
-  public void initiateGame(int carNum) {
+  public void initiateGame(List<String> carNames) {
     IntGenerator intGenerator = new RandomGenerator();
-    for (int i = 0; i < carNum; i++) {
-      cars.add(new Car(intGenerator));
+    for (String carName : carNames) {
+      cars.add(new Car(carName, intGenerator));
     }
   }
 
