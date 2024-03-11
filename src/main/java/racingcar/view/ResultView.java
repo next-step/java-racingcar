@@ -3,8 +3,6 @@ package racingcar.view;
 import racingcar.model.DistanceRecord;
 import racingcar.model.RaceResult;
 
-import java.util.List;
-
 public class ResultView {
 
     public static final String CAR_DISTANCE = "-";
