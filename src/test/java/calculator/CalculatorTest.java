@@ -53,5 +53,13 @@ public class CalculatorTest {
 
 		assertThat(actual).isEqualTo(expected);
 	}
-	
+
+	@Test
+	void test_calculate_음수_입력_RuntimeException() {
+		String input = "-1,2,3";
+
+		assertThatThrownBy(() -> sut.calculate(input))
+			.isInstanceOf(RuntimeException.class);
+	}
+
 }

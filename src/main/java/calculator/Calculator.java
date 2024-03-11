@@ -15,11 +15,25 @@ public class Calculator {
 
 		String[] numbers = separateNumbers(input);
 
+		checkInvalidInput(numbers);
+
 		if (numbers.length == 1 && isNumber(numbers[0])) {
 			return input;
 		}
 
 		return sum(numbers).toString();
+	}
+
+	private void checkInvalidInput(String[] numbers) {
+		for (String number : numbers) {
+			validateInputNumber(number);
+		}
+	}
+
+	private void validateInputNumber(String number) {
+		if (isNumber(number) || Integer.valueOf(number) < 0) {
+			throw new RuntimeException("음수 or 숫자 이외의 값을 입력하셨습니다.");
+		}
 	}
 
 	private static String[] separateNumbers(String input) {
