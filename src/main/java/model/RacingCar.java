@@ -25,6 +25,17 @@ public class RacingCar {
         }
     }
 
+    public Location getGreaterLocation(final Location maxLocation) {
+        if (location.isGreaterThan(maxLocation)) {
+            return location;
+        }
+        return maxLocation;
+    }
+
+    public boolean isSameLocation(final Location maxLocation) {
+        return location.equals(maxLocation);
+    }
+
     public int getLocationValue() {
         return location.getValue();
     }

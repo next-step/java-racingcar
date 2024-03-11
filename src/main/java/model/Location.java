@@ -14,6 +14,10 @@ public class Location {
         value++;
     }
 
+    public boolean isGreaterThan(final Location maxLocation) {
+        return value > maxLocation.getValue();
+    }
+
     public int getValue() {
         return value;
     }
