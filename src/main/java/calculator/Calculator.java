@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-	private static final String CUSTOM_SEPARATOR = "//(.)\n(.*)";
+	private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile("//(.)\n(.*)");
 	private static final int CUSTOM_DELIMITER_INDEX = 1;
 	private static final int NUMBERS_INDEX = 2;
 
@@ -24,11 +24,7 @@ public class Calculator {
 	}
 
 	private static Matcher getMatcher(String input) {
-		return patternCompile().matcher(input);
-	}
-
-	private static Pattern patternCompile() {
-		return Pattern.compile(CUSTOM_SEPARATOR);
+		return CUSTOM_SEPARATOR_PATTERN.matcher(input);
 	}
 
 	private static int calculateAdditionWithCustomSign(final Matcher matcher) {
