@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static java.text.MessageFormat.format;
 

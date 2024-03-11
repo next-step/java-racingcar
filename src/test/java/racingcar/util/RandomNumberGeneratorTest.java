@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.RandomNumberGenerator.generateRandomNumberBetweenZeroAndNine;
+import static racingcar.util.RandomNumberGenerator.generateRandomNumberBetweenZeroAndNine;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

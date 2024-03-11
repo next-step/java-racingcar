@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import static java.text.MessageFormat.format;
-import static racingcar.RandomNumberGenerator.generateRandomNumberBetweenZeroAndNine;
+import static racingcar.util.RandomNumberGenerator.generateRandomNumberBetweenZeroAndNine;
 
 import java.util.ArrayList;
 import java.util.List;
