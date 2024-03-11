@@ -11,14 +11,14 @@ public class RacingGameTest {
     @Test
     void countRacingCar(){
         RacingCars cars = new RacingCars(3);
-        assertThat(cars.racingCars.length).isEqualTo(3);
+        assertThat(cars.getRacingCars().size()).isEqualTo(3);
     }
     @DisplayName("초기 생성된 레이싱카의 위치는 0이다")
     @Test
     void racingCarDefaultPosition(){
         RacingCars cars = new RacingCars(3);
-        for (int i = 0; i < cars.racingCars.length; i++) {
-            assertThat(cars.racingCars[i].getPosition()).isEqualTo(0);
+        for (int i = 0; i < cars.getRacingCars().size(); i++) {
+            assertThat(cars.getRacingCars().get(i).getPosition()).isEqualTo(0);
         }
     }
 
@@ -35,8 +35,8 @@ public class RacingGameTest {
     void movingRacingCars(){
         RacingCars cars = new RacingCars(3);
         cars.movePosition(1);
-        for (int i = 0; i < cars.racingCars.length; i++) {
-            assertThat(cars.racingCars[i].getPosition()).isEqualTo(1);
+        for (int i = 0; i < cars.getRacingCars().size(); i++) {
+            assertThat(cars.getRacingCars().get(i).getPosition()).isEqualTo(1);
         }
     }
 
@@ -48,8 +48,8 @@ public class RacingGameTest {
         GameRound round = new GameRound(cars);
         round.progressAllRound(1, new ForwardStrategy());
 
-        for (int i = 0; i < cars.racingCars.length; i++) {
-            assertThat(cars.racingCars[i].getPosition()).isEqualTo(1);
+        for (int i = 0; i < cars.getRacingCars().size(); i++) {
+            assertThat(cars.getRacingCars().get(i).getPosition()).isEqualTo(1);
         }
     }
 
@@ -61,12 +61,12 @@ public class RacingGameTest {
         GameRound round = new GameRound(cars);
         round.progressAllRound(5, new ForwardStrategy());
 
-        for (int i = 0; i < cars.racingCars.length; i++) {
-            assertThat(cars.racingCars[i].getPosition()).isEqualTo(5);
+        for (int i = 0; i < cars.getRacingCars().size(); i++) {
+            assertThat(cars.getRacingCars().get(i).getPosition()).isEqualTo(5);
         }
 
         // list / array 검증방법 2, 3
-        assertThat(cars.racingCars).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(1));
-        assertThat(cars.racingCars).extracting("position").contains(1);
+        assertThat(cars.getRacingCars()).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(5));
+        assertThat(cars.getRacingCars()).extracting("position").contains(5);
     }
 }

@@ -7,7 +7,7 @@ public class InputOutputView {
     public static void printGameResult(int participantCarCount, RacingCars racingCars) {
         System.out.println("실행결과");
         for (int i = 0; i < participantCarCount; i++) {
-            int position = racingCars.racingCars[i].getPosition();
+            int position = racingCars.getRacingCars().get(i).getPosition();
             System.out.println("-".repeat(position));
         }
     }
