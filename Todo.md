@@ -1,0 +1,11 @@
+## Car Racing 
+- mock 라이브러리 추가
+- 사용자의 입력값을 받는 기능
+- Car 기능
+    - input값에 따라서 전진 혹은 대기
+- 정수 10이내의 Random 값을 반환하는 factory
+- CarRacing 기능
+  - 경기쵯수, 차의 개수, RandomFactory로 생성
+  - 한번의 경기마다, 결과 문자열을 반환
+  - 모든 경기의 결과를 , List로 반환
+- Racing 결과 출력기능
