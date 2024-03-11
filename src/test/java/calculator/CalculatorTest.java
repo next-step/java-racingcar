@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static calculator.Calculator.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,10 +37,10 @@ public class CalculatorTest {
         assertThat(calculate("1")).isEqualTo(1);
     }
 
-    @Test
-    void null_값_빈문자() {
-        assertThat(calculate(null)).isEqualTo(0);
-        assertThat(calculate("")).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    void null_값_빈문자(String text) {
+        assertThat(calculate(text)).isEqualTo(0);
     }
 
     @Test

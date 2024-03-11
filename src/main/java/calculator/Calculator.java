@@ -7,6 +7,10 @@ public class Calculator {
 
     private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final String DEFAULT_SEPARATOR = ",|:";
+    private static final int SEPARATOR_GROUP = 1;
+    private static final int EXPRESSION_GROUP = 2;
+
+    private Calculator() {}
 
     public static int calculate(String text) {
         if (isBlank(text)) {
@@ -26,7 +30,7 @@ public class Calculator {
     private static String extractExpression(String text) {
         Matcher matcher = PATTERN.matcher(text);
         if (matcher.find()) {
-            return matcher.group(2);
+            return matcher.group(EXPRESSION_GROUP);
         }
         return text;
     }
@@ -34,15 +38,15 @@ public class Calculator {
     private static String extractSeparator(String text) {
         Matcher matcher = PATTERN.matcher(text);
         if (matcher.find()) {
-            return matcher.group(1);
+            return matcher.group(SEPARATOR_GROUP);
         }
         return DEFAULT_SEPARATOR;
     }
 
     private static int sum(int[] numbers) {
         int result = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            result += numbers[i];
+        for (int number :numbers) {
+            result += number;
         }
         return result;
     }
