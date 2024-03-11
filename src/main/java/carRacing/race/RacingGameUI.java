@@ -2,7 +2,7 @@ package carRacing.race;
 
 import carRacing.car.Cars;
 
-import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class RacingGameUI {
     private static final String TRACK_SYMBOL = "-";
@@ -11,9 +11,8 @@ public class RacingGameUI {
         System.out.println((trialCount + 1) + "회차 이동");
         cars.forEach(car -> {
             System.out.print(car.getName()+" : ");
-            for (int track = 0; track < car.getPosition(); track++) {
-                System.out.print(TRACK_SYMBOL);
-            }
+            IntStream.range(0, car.getPosition())
+                    .forEach(i-> System.out.print(TRACK_SYMBOL));
             System.out.println();
         });
         System.out.println();
