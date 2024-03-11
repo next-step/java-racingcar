@@ -8,12 +8,12 @@ public class RacingGame {
     private final Cars cars;
     private final List<String> roundResults = new ArrayList<>();
 
-    public RacingGame(Cars cars) {
-        this.cars = cars;
-    }
-
     public RacingGame(List<String> carNames) {
         this(Cars.fromCarNames(carNames));
+    }
+
+    public RacingGame(Cars cars) {
+        this.cars = cars;
     }
 
     public void drive(int roundAmount, DrivingStrategy drivingStrategy) {

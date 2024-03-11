@@ -9,7 +9,7 @@ public class Car {
     private DrivingDistance drivingDistance;
 
     public Car(String name) {
-        this(name, DrivingDistance.INIT_VALUE);
+        this(new Name(name), new DrivingDistance());
     }
 
     public Car(String name, int drivingDistance) {
