@@ -1,19 +1,18 @@
 package model;
 
-import util.RandomUtil;
+import java.util.Random;
 
 
 public class RandomMove implements MoveStrategy {
     private static final int BOUNDARY_VALUE = 4;
-
-    private final RandomUtil randomUtil;
+    private static final int BOUND = 10;
+    private static final Random RANDOM = new Random();
 
     public RandomMove() {
-        this.randomUtil = new RandomUtil();
     }
 
     @Override
     public boolean movable() {
-        return randomUtil.randomNumber() >= BOUNDARY_VALUE;
+        return RANDOM.nextInt(BOUND) >= BOUNDARY_VALUE;
     }
 }
