@@ -30,14 +30,28 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("move 메서드 호출 시, 자동차가 한 칸 전진한다.")
-    void move_PositionForward() {
+    @DisplayName("move 메서드에 전진 조건에 해당하는 숫자를 전달하면, 자동차가 한 칸 전진한다.")
+    void move_ForwardCondition_MovePositionForward() {
         final Car car = Car.from(1);
         final int previousPosition = car.position();
+        final int forwardMovingCondition = 4;
 
-        car.move();
+        car.moveOrStopByCondition(forwardMovingCondition);
 
         assertThat(car.position())
                 .isEqualTo(previousPosition + 1);
+    }
+
+    @Test
+    @DisplayName("move 메서드에 정지 조건에 해당하는 숫자를 전달하면, 자동차는 현재 위치를 유지한다.")
+    void move_StopCondition_KeepPreviousPosition() {
+        final Car car = Car.from(1);
+        final int previousPosition = car.position();
+        final int stopMovingCondition = 3;
+
+        car.moveOrStopByCondition(stopMovingCondition);
+
+        assertThat(car.position())
+                .isEqualTo(previousPosition);
     }
 }
