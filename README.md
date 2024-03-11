@@ -7,3 +7,13 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## To-Do
+* Scanner를 이용하여 자동차 대수 입력
+* Scanner를 이용하여 시도 횟수 입력
+* Random 클래스의 nextInt(10)을 이용하여 랜덤값 추출
+* 랜덤값을 기준으로 전진/정지 결정
+* 자동차마다 전진 횟수 기록
+* 경주 결과 출력
+
+## Done
