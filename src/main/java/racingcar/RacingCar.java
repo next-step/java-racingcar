@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.Scanner;
-
-public class Racing {
+public class RacingCar {
 
     public static String racingCar(int num){
         if (num == 0)
