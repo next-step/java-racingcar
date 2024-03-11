@@ -1,7 +1,9 @@
-package racingCar;
+package racingCar.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingCar.game.generator.IntGenerator;
+import racingCar.game.generator.RandomGenerator;
 
 public class RacingCarGame {
 

@@ -1,6 +1,6 @@
-package racingCar;
+package racingCar.game;
 
-import java.util.Random;
+import racingCar.game.generator.IntGenerator;
 
 public class Car {
 

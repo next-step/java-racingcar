@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.game.generator;
 
 public interface IntGenerator {
 
