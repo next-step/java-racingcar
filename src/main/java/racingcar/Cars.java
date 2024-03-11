@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Cars {
 
-    private final List<Car> carList;
+    private final List<Car> cars;
 
     public Cars(int size) {
-        this.carList = new ArrayList<>();
+        this.cars = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            this.carList.add(new Car());
+            this.cars.add(new Car());
         }
     }
 
@@ -19,20 +19,20 @@ public class Cars {
     }
 
     private void moveAllCar() {
-        for (Car car : this.carList) {
+        for (Car car : this.cars) {
             car.move(RandomValueGenerator.generate());
         }
     }
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : this.carList) {
+        for (Car car : this.cars) {
             stringBuilder.append(car.toString()).append("\n");
         }
         return stringBuilder.toString();
     }
 
     public int size() {
-        return carList.size();
+        return cars.size();
     }
 }
