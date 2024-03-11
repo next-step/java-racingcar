@@ -1,14 +1,16 @@
 package racingcar;
 
-public final class RacingCarApplication {
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.view.console.ConsoleInputView;
+import racingcar.view.console.ConsoleOutputView;
 
-    private RacingCarApplication() {
-    }
+public class RacingCarApplication {
 
     public static void main(String[] args) {
-        final int carCount = 5;
-        final int playingCount = 3;
+        final InputView inputView = new ConsoleInputView();
+        final OutputView outputView = new ConsoleOutputView();
 
-        Racing.race(carCount, playingCount);
+        new RacingGame(inputView, outputView).play();
     }
 }
