@@ -1,13 +1,7 @@
 package racingcar.domain;
 
-public class CarMoveCondition {
+public interface CarMoveCondition {
 
-    private CarMoveCondition() {
-
-    }
-
-    public static boolean isMovable(int value) {
-        return value >= 4;
-    }
+    boolean movable();
 
 }

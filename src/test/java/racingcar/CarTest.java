@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.util.CarStatusSetterForTest;
+import racingcar.domain.CustomCarMoveCondition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,26 +12,26 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     @Test
-    @DisplayName("[성공] 자동차가 4 이상의 값을 전달받는 경우 전진한다.")
+    @DisplayName("[성공] 자동차가 전진하면 전진 거리가 증가한다.")
     void 자동차_전진() {
         // Given
-        Car car = new Car();
+        Car car = new Car(new CustomCarMoveCondition("MOVE"));
 
         // When
-        car.move(4);
+        car.move();
 
         // Then
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("[성공] 자동차가 4 미만의 값을 전달받는 경우 전진하지 않는다.")
+    @DisplayName("[성공] 자동차가 전진하지 않으면 전진 거리가 변하지 않는다.")
     void 자동차_정지() {
         // Given
-        Car car = new Car();
+        Car car = new Car(new CustomCarMoveCondition(""));
 
         // When
-        car.move(3);
+        car.move();
 
         // Then
         assertThat(car.getDistance()).isEqualTo(0);
@@ -42,10 +42,13 @@ public class CarTest {
     @DisplayName("[성공] 자동차가 5번 전진하면 자동차의 위치가 5로 변경된다.")
     void 자동차_5회_전진() {
         // Given
-        Car car = new Car();
+        Car car = new Car(new CustomCarMoveCondition("MOVE"));
 
         // When
-        CarStatusSetterForTest.repeatMove(car, 5);
+        int count = 5;
+        while (count-- > 0) {
+            car.move();
+        }
 
         // Then
         assertThat(car.getDistance()).isEqualTo(5);

@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.domain.RandomCarMoveCondition;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
@@ -13,7 +14,7 @@ public class CarRaceApp {
         ResultView.printAnswerHowManyTrys();
         int tryCount = InputView.readInt();
 
-        Cars cars = new Cars(carCount);
+        Cars cars = new Cars(carCount, new RandomCarMoveCondition());
         ResultView.printExecuteResultString();
         while (tryCount-- > 0) {
             cars.move();

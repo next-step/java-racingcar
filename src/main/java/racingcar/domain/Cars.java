@@ -8,10 +8,10 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int size) {
+    public Cars(int size, CarMoveCondition moveCondition) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            this.cars.add(new Car());
+            this.cars.add(new Car(moveCondition));
         }
     }
 
@@ -29,7 +29,7 @@ public class Cars {
 
     private void moveAllCar() {
         for (Car car : this.cars) {
-            car.move(RandomValueGenerator.generate());
+            car.move();
         }
     }
 
