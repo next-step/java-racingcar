@@ -19,12 +19,8 @@ public class Car {
     }
 
     public void updatePosition(int randomNum){
-        if(isMovable(randomNum))
+        if(randomNum >= MOVE_THRESHOLD)
             position++;
-    }
-
-    private boolean isMovable(int randomNum){
-        return randomNum >= MOVE_THRESHOLD;
     }
 
     public int getPosition(){
