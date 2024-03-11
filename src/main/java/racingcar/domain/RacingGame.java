@@ -9,7 +9,7 @@ public class RacingGame {
     private final List<String> roundResults = new ArrayList<>();
 
     public RacingGame(List<String> carNames) {
-        this(Cars.fromCarNames(carNames));
+        this(Cars.from(carNames));
     }
 
     public RacingGame(Cars cars) {

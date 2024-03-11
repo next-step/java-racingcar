@@ -15,7 +15,7 @@ public class Cars {
         this.cars.addAll(cars);
     }
 
-    public static Cars fromCarNames(List<String> carNames) {
+    public static Cars from(List<String> carNames) {
         return carNames.stream()
             .map(Car::new)
             .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::new));
