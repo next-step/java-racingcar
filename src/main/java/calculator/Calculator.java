@@ -23,18 +23,14 @@ public class Calculator {
 	}
 
 	private static String[] separateNumbers(String input) {
-		String[] numbers;
-
 		// 구분자 검사
 		Matcher m = Pattern.compile(CUSTOM_DELIMITER_CHECK_REGEX).matcher(input);
 		if (m.find()) {
 			String customDelimiter = m.group(1);
-			numbers = m.group(2).split(customDelimiter);
-		} else {
-			numbers = input.split(DEFAULT_DELIMITER_CHECK_REGEX);
+			return m.group(2).split(customDelimiter);
 		}
 
-		return numbers;
+		return input.split(DEFAULT_DELIMITER_CHECK_REGEX);
 	}
 
 	private Integer sum(String[] numbers) {
