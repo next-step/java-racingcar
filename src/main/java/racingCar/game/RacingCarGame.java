@@ -2,6 +2,7 @@ package racingCar.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingCar.game.generator.IntGenerator;
 import racingCar.game.generator.RandomGenerator;
 
@@ -45,15 +46,11 @@ public class RacingCarGame {
   }
 
   private List<String> findWinners() {
-    List<String> winners = new ArrayList<>();
     cars.sort((car1, car2) -> car2.getPosition() - car1.getPosition());
     int maxPosition = cars.get(0).getPosition();
-    for (Car car : cars) {
-      if (car.getPosition() == maxPosition) {
-        winners.add(car.getName());
-      }
-    }
-    return winners;
+    return cars.stream()
+        .filter(car -> car.getPosition() == maxPosition)
+        .map(Car::getName).collect(Collectors.toList());
   }
 
 }
