@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.util.CarStatusSetterForTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -36,5 +37,18 @@ public class CarTest {
 
         // Then
         assertThat(car.toString()).isEqualTo("-----");
+    }
+
+    @Test
+    @DisplayName("[학습 테스트] String.repeat()")
+    void string_repeat() {
+        assertThat("-".repeat(3)).isEqualTo("---");
+
+        // repeat 인자로 음수를 전달하는 경우
+        assertThatThrownBy(() -> {
+            "-".repeat(-1);
+        })
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("count is negative: -1");
     }
 }
