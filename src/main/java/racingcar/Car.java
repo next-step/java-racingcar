@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.exception.CarNegativeDistanceException;
+
 public class Car {
 
     private int distance;
@@ -22,6 +24,12 @@ public class Car {
 
     public String toString() {
         return "-".repeat(distance);
+    }
+
+    private void validateNegativeDistance() {
+        if (distance < 0) {
+            throw new CarNegativeDistanceException();
+        }
     }
 
 }
