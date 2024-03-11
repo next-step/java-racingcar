@@ -1,30 +1,31 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingRecord {
-    private final List<Record>[] records;
+    private final List<Cars> records;
+    private final List<String> winners;
 
-    public RacingRecord(int turn) {
-        this.records = init(turn);
+    public RacingRecord(int capacity) {
+        this.records = new ArrayList<>(capacity);
+        this.winners = new ArrayList<>();
     }
 
-    @SuppressWarnings("unchecked")
-    private List<Record>[] init(int turn) {
-        List<Record>[] result = new ArrayList[turn + 1];
-        for (int i = 1; i <= turn; i++) {
-            result[i] = new ArrayList<>();
-        }
-
-        return result;
+    public void save(Cars cars) {
+        this.records.add(cars);
     }
 
-    public void save(int turn, Record record) {
-        this.records[turn].add(record);
+    public List<Cars> getRecords() {
+        return Collections.unmodifiableList(this.records);
     }
 
-    public List<Record> racingRecord(int turn) {
-        return this.records[turn];
+    public List<String> getWinners() {
+        return Collections.unmodifiableList(this.winners);
+    }
+
+    public void saveWinners(List<String> winners) {
+        this.winners.addAll(winners);
     }
 }

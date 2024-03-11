@@ -1,7 +1,8 @@
 package view;
 
+import model.Car;
+import model.Cars;
 import model.RacingRecord;
-import model.Record;
 
 import java.util.List;
 
@@ -9,40 +10,56 @@ public class ResultView {
 
     private static final String HYPHEN = "-";
     private static final String NEW_LINE = System.lineSeparator();
-    private StringBuilder sb;
 
-    public ResultView() {
+    private final List<Cars> records;
+    private final List<String> winners;
+    private final StringBuilder sb;
+
+    public ResultView(RacingRecord racingRecord) {
+        this.records = racingRecord.getRecords();
+        this.winners = racingRecord.getWinners();
         this.sb = new StringBuilder();
+    }
 
-        this.sb.append("실행결과");
+    public void draw() {
+        appendPrefix();
+        render();
+        appendWinners();
+    }
+
+    private void appendPrefix() {
+        sb.append("실행결과");
         appendNewLine();
     }
 
-    public void draw(int turn, RacingRecord racingRecord) {
-        for (int t = 1; t <= turn; t++) {
-            hyphenate(racingRecord.racingRecord(t));
+    private void render() {
+        for (Cars cars : records) {
+            template(cars);
             appendNewLine();
         }
     }
 
-    public void hyphenate(List<Record> records) {
-        for (Record record : records) {
-            sb.append(String.format("%s : %s", record.getName(), HYPHEN.repeat(record.getPosition())));
+    private void template(Cars cars) {
+        for (Car car : cars.getCars()) {
+            sb.append(rendering(car));
             appendNewLine();
         }
     }
 
-    public void appendNewLine() {
+    private String rendering(Car car) {
+        return String.format("%s : %s", car.getName(), HYPHEN.repeat(car.getPosition()));
+    }
+
+    private void appendWinners() {
+        sb.append(String.join(", ", this.winners)).append("가 최종 우승 했습니다");
+    }
+
+    private void appendNewLine() {
         sb.append(NEW_LINE);
     }
 
-    public void appendWinners(List<String> winners) {
-        sb.append(String.join(", ", winners)).append("가 최종 우승 했습니다");
-    }
-    
     public void print() {
         System.out.println(sb.toString());
     }
-
 
 }
