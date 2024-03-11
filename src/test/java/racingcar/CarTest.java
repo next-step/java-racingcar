@@ -30,26 +30,26 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("move 메서드에 전진 조건에 해당하는 숫자를 전달하면, 자동차가 한 칸 전진한다.")
-    void move_ForwardCondition_MovePositionForward() {
+    @DisplayName("moveForwardOrStop 메서드에 전진 조건에 해당하는 숫자를 전달하면, 자동차가 한 칸 전진한다.")
+    void moveForwardOrStop_ForwardCondition_MovePositionForward() {
         final Car car = Car.from(1);
         final int previousPosition = car.position();
         final int forwardMovingCondition = 4;
 
-        car.moveForwardOrStopByCondition(forwardMovingCondition);
+        car.moveForwardOrStop(forwardMovingCondition);
 
         assertThat(car.position())
                 .isEqualTo(previousPosition + 1);
     }
 
     @Test
-    @DisplayName("move 메서드에 정지 조건에 해당하는 숫자를 전달하면, 자동차는 현재 위치를 유지한다.")
-    void move_StopCondition_KeepPreviousPosition() {
+    @DisplayName("moveForwardOrStop 메서드에 정지 조건에 해당하는 숫자를 전달하면, 자동차는 현재 위치를 유지한다.")
+    void moveForwardOrStop_StopCondition_KeepPreviousPosition() {
         final Car car = Car.from(1);
         final int previousPosition = car.position();
         final int stopMovingCondition = 3;
 
-        car.moveForwardOrStopByCondition(stopMovingCondition);
+        car.moveForwardOrStop(stopMovingCondition);
 
         assertThat(car.position())
                 .isEqualTo(previousPosition);
@@ -57,11 +57,11 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 10})
-    @DisplayName("move 메서드에 전진/정지 조건에 해당하지 않는 숫자를 전달하면, IllegalArgumentException을 던진다.")
-    void move_ConditionOutOfRange_IllegalArgumentException(final int movingConditionOutOfRange) {
+    @DisplayName("moveForwardOrStop 메서드에 이동 조건 범위에서 벗어난 숫자를 전달하면, IllegalArgumentException을 던진다.")
+    void moveForwardOrStop_ConditionOutOfRange_IllegalArgumentException(final int movingConditionOutOfRange) {
         final Car car = Car.from(1);
 
-        assertThatThrownBy(() -> car.moveForwardOrStopByCondition(movingConditionOutOfRange))
+        assertThatThrownBy(() -> car.moveForwardOrStop(movingConditionOutOfRange))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차의 전진/정지 조건은 0이상 9이하의 자연수만 가능합니다.");
     }
