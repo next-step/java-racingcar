@@ -31,7 +31,7 @@ public class Cars implements Iterable<Car> {
         return raceResult;
     }
 
-    public void orderMoveOneCycle(MoveStrategy moveStrategy) {
+    private void orderMoveOneCycle(MoveStrategy moveStrategy) {
         for (Car car : cars) {
             car.move(moveStrategy.getMoveNumber());
         }
