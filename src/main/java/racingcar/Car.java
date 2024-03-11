@@ -6,6 +6,7 @@ public class Car {
 
     private static final String INVALID_CAR_NUMBER_MESSAGE = "자동차의 번호는 자연수만 가능합니다. [number : {0}]";
     private static final String MOVING_CONDITION_OUT_OF_RANGE_MESSAGE = "자동차의 전진/정지 조건은 0이상 9이하의 자연수만 가능합니다. [condition : {0}]";
+
     private static final int START_POSITION = 0;
     private static final int ZERO = 0;
     private static final int FORWARD = 1;
@@ -41,7 +42,7 @@ public class Car {
         return this.position;
     }
 
-    public void moveForwardOrStopByCondition(final int condition) {
+    public void moveForwardOrStop(final int condition) {
         validateConditionIsInRange(condition);
 
         if (canMoveForward(condition)) {
