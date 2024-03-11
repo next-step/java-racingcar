@@ -13,13 +13,14 @@ public class Calculator {
 			return "0";
 		}
 
+		// 숫자 한개만 입력 시 입력값 그대로 반환
+		if (isNumber(input)) {
+			return input;
+		}
+
 		String[] numbers = separateNumbers(input);
 
 		checkInvalidInput(numbers);
-
-		if (numbers.length == 1 && isNumber(numbers[0])) {
-			return input;
-		}
 
 		return sum(numbers).toString();
 	}
@@ -50,7 +51,7 @@ public class Calculator {
 	private Integer sum(String[] numbers) {
 		int result = 0;
 		for (String number : numbers) {
-			result += Integer.valueOf(number);
+			result += Integer.parseInt(number);
 		}
 
 		return result;
