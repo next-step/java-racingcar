@@ -17,10 +17,9 @@ public class Cars {
     }
 
     public static Cars fromCarNames(List<String> carNames) {
-        List<Car> cars = carNames.stream()
+        return carNames.stream()
             .map(Car::new)
-            .collect(Collectors.toList());
-        return new Cars(cars);
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::new));
     }
 
     public void drive(DrivingStrategy drivingStrategy) {
