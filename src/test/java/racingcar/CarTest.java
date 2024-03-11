@@ -23,4 +23,17 @@ public class CarTest {
         assertThat(distance).isEqualTo(0);
     }
 
+
+    @Test
+    @DisplayName("[성공] 자동차의 전진거리 만큼 '-'를 반복해서 출력한다.")
+    void 자동차_toString() {
+        // Given
+        Car car = new Car();
+
+        // When
+        CarStatusSetterForTest.repeatMove(car, 5);
+
+        // Then
+        assertThat(car.toString()).isEqualTo("-----");
+    }
 }
