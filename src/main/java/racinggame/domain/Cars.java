@@ -7,14 +7,14 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(CarsCount carCount) {
-        this.cars = initialCars(carCount);
+    public Cars(CarsNames carsNames) {
+        this.cars = initialCars(carsNames);
     }
 
-    private List<Car> initialCars(CarsCount carCount) {
+    private List<Car> initialCars(CarsNames carsNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount.value(); i++) {
-            cars.add(new Car());
+        for (int i = 0; i < carsNames.length(); i++) {
+            cars.add(new Car(carsNames.getName(i)));
         }
         return cars;
     }
@@ -22,7 +22,7 @@ public class Cars {
     public void raceStart(RaceCount raceCount, RaceRecorder recorder) {
         for (int i = 0; i < raceCount.value(); i++) {
             runCars();
-            recorder.record(getCarsPositions());
+            recorder.record(cars);
         }
     }
 
@@ -30,13 +30,5 @@ public class Cars {
         for (Car car : cars) {
             car.run(new MoveCondition());
         }
-    }
-
-    public List<Position> getCarsPositions() {
-        List<Position> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.position());
-        }
-        return positions;
     }
 }
