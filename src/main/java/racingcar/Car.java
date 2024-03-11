@@ -23,6 +23,7 @@ public class Car {
     }
 
     public String toString() {
+        validateNegativeDistance();
         return "-".repeat(distance);
     }
 
