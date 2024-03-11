@@ -12,10 +12,14 @@ public class StringAddCalculator {
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public int calculate(String text) {
-        if (text == null || text.isBlank()) {
+        if (isBlank(text)) {
             return ZERO;
         }
         return sum(toPositiveInts(parse(text)));
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 
     private String[] toPositiveInts(String[] texts) {
