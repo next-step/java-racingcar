@@ -1,10 +1,11 @@
-import java.util.HashSet;
-import java.util.Set;
+package stringAddCalculator;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class StringNumberDelimiter {
-    private static Pattern pattern = Pattern.compile("^//.\n.*");
+    private static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("^//.\n.*");
+    private static int CUSTOM_DELIMITER_INDEX = 2;
 
     public static StringDelimiter getDelimiter(String input) {
         if (input == null || input.isBlank()) {
@@ -12,7 +13,7 @@ class StringNumberDelimiter {
         }
 
         if (containCustomDelimiter(input)) {
-            return new StringDelimiter(String.valueOf(input.charAt(2)), true);
+            return new StringDelimiter(String.valueOf(input.charAt(CUSTOM_DELIMITER_INDEX)), true);
         }
 
         return new StringDelimiter(",|:", false);
@@ -23,7 +24,7 @@ class StringNumberDelimiter {
             return false;
         }
 
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
         return matcher.matches();
     }
 
