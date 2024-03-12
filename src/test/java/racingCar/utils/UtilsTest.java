@@ -23,4 +23,13 @@ public class UtilsTest {
         });
     }
 
+    @Test
+    @DisplayName("너무 긴 이름은 에러")
+    void too_long_name() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Utils.checkUsableName("imWinner");
+        });
+    }
+
+
 }
