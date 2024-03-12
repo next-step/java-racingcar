@@ -14,6 +14,10 @@ public class CarNames {
         return this.carNames;
     }
 
+    public String getCarName(int index) {
+        return this.carNames.get(index);
+    }
+
     public int getCarNameCount() {
         return this.carNames.size();
     }

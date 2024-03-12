@@ -11,7 +11,7 @@ public class Cars implements Iterable<Car> {
     public Cars(CarNames carNames) {
         cars = new ArrayList<>();
         for (int carCount=0; carCount < carNames.getCarNameCount(); carCount++) {
-            cars.add(new Car());
+            cars.add(new Car(carNames.getCarName(carCount)));
         }
     }
 
