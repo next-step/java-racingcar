@@ -19,10 +19,14 @@ public class RacingGame {
         Round round = Round.of(roundAmount);
         while (!round.isEnd()) {
             round.progress();
-            cars.drive(drivingStrategy);
-            RoundResult roundResult = cars.result();
-            gameResult.report(roundResult);
+            play();
         }
+    }
+
+    private void play() {
+        cars.drive(drivingStrategy);
+        RoundResult roundResult = cars.result();
+        gameResult.report(roundResult);
     }
 
     public GameResult result() {
