@@ -30,8 +30,6 @@
 # Step4
 
 ## Todo
-- 가장 많이 이동한 자동차들이 우승자로 선정("one -> 3, two -> 5" => two)
-- 우승자는 한 명 이상일 수 있다("one -> 3, two -> 3" => one,two)
 - 우승자 출력("pobi, honux가 최종 우승했습니다.")
 
 ## Done
@@ -46,3 +44,5 @@
 - 자동차 이름은 ","를 기준으로 구분("one,two,three" => one,two, "onetwo,three" => onetwo,three)
 - 자동차 이름은 5글자를 초과할 수 없음("hihih" => "hihih", "hihihi" => RuntimeException)
 - 거리 출력 시에 앞에 이름도 같이 출력("pobi : ---")
+- 가장 많이 이동한 자동차들이 우승자로 선정("one -> 3, two -> 5" => two)
+- 우승자는 한 명 이상일 수 있다("one -> 3, two -> 3" => one,two)

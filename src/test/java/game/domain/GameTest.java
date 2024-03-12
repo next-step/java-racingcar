@@ -25,6 +25,26 @@ class GameTest {
         }
     }
 
+    static class SingleWinnerGenerator implements NumberGenerator{
+        private int count = 0;
+
+        @Override
+        public int getNumber() {
+            if(count++ % 5 == 2) return 4;
+            return 0;
+        }
+    }
+
+    static class MultipleWinnerGenerator implements NumberGenerator{
+        private int count = 0;
+        @Override
+        public int getNumber() {
+            count++;
+            if(count % 5 == 2 || count % 5 == 3) return 4;
+            return 0;
+        }
+    }
+
     final List<Car> cars = new ArrayList<>();
     final NumberGenerator zeroGenerator = new ZeroGenerator();
     final NumberGenerator fourGenerator = new FourGenerator();
@@ -32,7 +52,7 @@ class GameTest {
     @BeforeEach
     public void setUpCars(){
         for(int i =0; i < 5; i++){
-            cars.add(new Car("test"));
+            cars.add(new Car("test" + i));
         }
     }
 
@@ -50,5 +70,28 @@ class GameTest {
         Game game = new Game(zeroGenerator, cars);
         game.play();
         assertThat(game.getDistances()).containsExactly(1,1,1,1,1);
+    }
+
+    @Test
+    @DisplayName("우승자 한 명")
+    void single_winner(){
+        NumberGenerator generator = new SingleWinnerGenerator();
+        Game game = new Game(generator, cars);
+        game.play();
+        List<Car> winners = game.getWinner();
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.get(0).getName()).isEqualTo("test2");
+    }
+
+    @Test
+    @DisplayName("우승자가 여러 명이 나온다")
+    void multiple_winner(){
+        NumberGenerator generator = new MultipleWinnerGenerator();
+        Game game = new Game(generator, cars);
+        game.play();
+        List<Car> winners = game.getWinner();
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners.get(0).getName()).contains("test1");
+        assertThat(winners.get(1).getName()).contains("test2");
     }
 }
