@@ -13,7 +13,7 @@ public class ResultViewTest {
 		Car audi = Car.createCar("audi");
 
 		// when
-		String result = ResultView.carPositionWithChar(audi, '-');
+		String result = ResultView.carNameAndPositionWithChar(audi, '-');
 
 		// then
 		assertThat(result).contains("audi");

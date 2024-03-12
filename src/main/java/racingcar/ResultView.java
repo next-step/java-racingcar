@@ -23,7 +23,7 @@ public class ResultView {
 
 	private static void printPositions(final Cars cars, final char positionChar) {
 		for (int j = 0; j < cars.getSize(); j++) {
-			System.out.println(carPositionWithChar(cars.getCars().get(j), positionChar));
+			System.out.println(carNameAndPositionWithChar(cars.getCars().get(j), positionChar));
 		}
 	}
 
@@ -37,11 +37,11 @@ public class ResultView {
 		System.out.println("");
 	}
 
-	public static String carPositionWithChar(final Car car, final char positionChar) {
+	public static String carNameAndPositionWithChar(final Car car, final char positionChar) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < car.getPosition(); i++) {
 			sb.append(positionChar);
 		}
-		return sb.toString();
+		return car.getName() + " : " + sb.toString();
 	}
 }
