@@ -14,11 +14,7 @@ public class Car {
     }
 
     private Boolean canMove() {
-        int randomNumber = RandomNumber.generate();
-        if (randomNumber < CONDITION_OF_MOVE) {
-            return false;
-        }
-        return true;
+        return RandomNumber.generate() >= CONDITION_OF_MOVE;
     }
 
     public int getCountOfMove() {
