@@ -12,6 +12,7 @@ import java.util.List;
 
 class CarFirstCollectionTest {
     MoveStrategy moveStrategy;
+    MoveStrategy onlyStopStrategy;
 
     @BeforeEach
     void setUp() {
@@ -24,6 +25,18 @@ class CarFirstCollectionTest {
             @Override
             public boolean canMove() {
                 return true;
+            }
+        };
+
+        onlyStopStrategy = new MoveStrategy() {
+            @Override
+            public int move() {
+                return 0;
+            }
+
+            @Override
+            public boolean canMove() {
+                return false;
             }
         };
 
@@ -50,5 +63,24 @@ class CarFirstCollectionTest {
 
         int[] moveResult = carFirstCollection.createMoveResult();
         Assertions.assertThat(moveResult).containsExactly(1, 1, 1, 1);
+    }
+
+    @DisplayName("자동차 이름들을 반환한다. ")
+    @Test
+    void getNames() {
+        List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
+        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
+        String[] carNames = carFirstCollection.getCarNames();
+        Assertions.assertThat(carNames).containsExactly("pobi","temp", "stop","go!");
+    }
+
+    @DisplayName("자동차 경주 우승자를 반환한다.")
+    @Test
+    void getWins() {
+        List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", onlyStopStrategy), new Car("stop", onlyStopStrategy), new Car("go!", onlyStopStrategy));
+        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
+        carFirstCollection.moveCars();
+        String[] winCars = carFirstCollection.getWinCars();
+        Assertions.assertThat(winCars).containsExactly("pobi");
     }
 }

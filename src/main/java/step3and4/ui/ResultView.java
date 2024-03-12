@@ -16,18 +16,35 @@ public class ResultView {
         System.out.println("실행 결과");
         for (int i = 0; i < racing.getTryNumber(); i++) {
             racing.tryMove();
+            String[] carNames = racing.getNames();
             int[] moveResult = racing.createMoveResult();
-            createHyphen(moveResult);
-            System.out.println();
+            createResult(carNames, moveResult);
         }
+        createWinCars(racing.getWinCars());
     }
 
-    private static void createHyphen(int[] moveResult) {
-        Arrays.stream(moveResult).forEach(item -> {
-            for (int j = 0; j < item; j++) {
-                System.out.printf("-");
-            }
-            System.out.println();
-        });
+    private void createWinCars(String[] winCars) {
+        System.out.println(String.join(",", winCars) + "최종 우승했습니다.");
+    }
+
+    private static void createResult(String[] carNames, int[] moveResult) {
+        int length = carNames.length;
+        for (int i = 0; i < length; i++) {
+            createCarName(carNames[i]);
+            createHyphen(moveResult[i]);
+        }
+        System.out.println();
+
+    }
+
+    private static void createCarName(String carNames) {
+        System.out.print(carNames + ":");
+    }
+
+    private static void createHyphen(int moveResult) {
+        for (int j = 0; j < moveResult; j++) {
+            System.out.printf("-");
+        }
+        System.out.println();
     }
 }

@@ -14,7 +14,7 @@ public class RacingCar {
     public static void main(String[] args) {
         InputRequest inputRequest = InputView.createInputRequest();
         Racing racing = Racing.createRacing(inputRequest.getCarNames(), inputRequest.getTryNumber());
-//        ResultView resultView = new ResultView(racing);
-//        resultView.startGame();
+        ResultView resultView = new ResultView(racing);
+        resultView.startGame();
     }
 }

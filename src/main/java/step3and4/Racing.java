@@ -57,4 +57,12 @@ public class Racing {
     public void tryMove() {
         carFirstCollection.moveCars();
     }
+
+    public String[] getNames() {
+        return carFirstCollection.getCarNames();
+    }
+
+    public String[] getWinCars() {
+        return carFirstCollection.getWinCars();
+    }
 }
