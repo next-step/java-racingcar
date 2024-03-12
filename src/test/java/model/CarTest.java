@@ -10,33 +10,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    void move_랜덤값4이상인경우_자동차는_전진한다() {
-        MoveStrategy trueMoveStrategy = () -> true;
-        Car car = new Car("test1", trueMoveStrategy);
-        car.move();
+    void move_이동전략이true인경우_자동차는_전진한다() {
+        Car car = new Car("test1");
+        car.move(() -> true);
 
-        assertThat(car).isEqualTo(new Car("test1", 1, trueMoveStrategy));
+        assertThat(car).isEqualTo(new Car("test1", 1));
     }
 
     @Test
-    void move_랜덤값4미만인경우_자동차는_현위치를유지한다() {
-        MoveStrategy falseMoveStrategy = () -> false;
-        Car car = new Car("test1", falseMoveStrategy);
-        car.move();
+    void move_이동전략이false인경우_자동차는_현위치를유지한다() {
+        Car car = new Car("test1");
+        car.move(() -> false);
 
-        assertThat(car).isEqualTo(new Car("test1", falseMoveStrategy));
+        assertThat(car).isEqualTo(new Car("test1"));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void nullAndEmptyName(String name) {
-        Assertions.assertThatThrownBy(() -> new Car(name, () -> false))
+        Assertions.assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void exceedNameLength() {
-        Assertions.assertThatThrownBy(() -> new Car("여섯자리이름", () -> false))
+        Assertions.assertThatThrownBy(() -> new Car("여섯자리이름"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

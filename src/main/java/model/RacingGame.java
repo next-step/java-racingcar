@@ -4,9 +4,11 @@ import java.util.List;
 
 public class RacingGame {
     private final Cars cars;
+    private final MoveStrategy moveStrategy;
 
-    public RacingGame(List<Car> cars) {
+    public RacingGame(List<Car> cars, MoveStrategy moveStrategy) {
         this.cars = new Cars(cars);
+        this.moveStrategy = moveStrategy;
     }
 
     public RacingRecord run(int turn) {
@@ -16,7 +18,7 @@ public class RacingGame {
 
         RacingRecord racingRecord = new RacingRecord(turn);
         for (int i = 1; i <= turn; i++) {
-            Cars movedCars = cars.move();
+            Cars movedCars = this.cars.move(this.moveStrategy);
             racingRecord.save(movedCars);
         }
 

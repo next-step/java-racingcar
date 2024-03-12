@@ -11,18 +11,17 @@ class RacingGameTest {
 
     @Test
     void runByTrueStrategy() {
-        MoveStrategy trueMoveStrategy = () -> true;
-        List<Car> cars = Arrays.asList(new Car("test1", 1, trueMoveStrategy),
-                new Car("test2", 2, trueMoveStrategy),
-                new Car("test3", 3, trueMoveStrategy));
+        List<Car> cars = Arrays.asList(new Car("test1", 1),
+                new Car("test2", 2),
+                new Car("test3", 3));
 
         int turn = 1;
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(cars, () -> true);
         RacingRecord result = racingGame.run(turn);
 
-        Cars expected = new Cars(Arrays.asList(new Car("test1", 2, trueMoveStrategy),
-                new Car("test2", 3, trueMoveStrategy),
-                new Car("test3", 4, trueMoveStrategy)));
+        Cars expected = new Cars(Arrays.asList(new Car("test1", 2),
+                new Car("test2", 3),
+                new Car("test3", 4)));
 
         assertThat(result.getRecords())
                 .containsExactly(expected);
@@ -30,30 +29,34 @@ class RacingGameTest {
 
     @Test
     void runByFalseStrategy() {
-        MoveStrategy falseMoveStrategy = () -> false;
-        List<Car> cars = Arrays.asList(new Car("test1", 1, falseMoveStrategy),
-                new Car("test2", 2, falseMoveStrategy),
-                new Car("test3", 3, falseMoveStrategy));
+        List<Car> cars = Arrays.asList(new Car("test1", 1),
+                new Car("test2", 2),
+                new Car("test3", 3));
 
         int turn = 1;
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(cars, () -> false);
         RacingRecord result = racingGame.run(turn);
 
-        Cars expected = new Cars(Arrays.asList(new Car("test1", 1, falseMoveStrategy),
-                new Car("test2", 2, falseMoveStrategy),
-                new Car("test3", 3, falseMoveStrategy)));
+        Cars expected = new Cars(Arrays.asList(new Car("test1", 1),
+                new Car("test2", 2),
+                new Car("test3", 3)));
 
         assertThat(result.getRecords())
                 .containsExactly(expected);
     }
 
     @Test
-    void winnerNames() {
-        List<Car> cars = Arrays.asList(new Car("test1", 1), new Car("test2", 2), new Car("test3", 2));
-        RacingGame racingGame = new RacingGame(cars);
+    void winners() {
+        Car car1 = new Car("test1", 1);
+        Car car2 = new Car("test2", 2);
+        Car car3 = new Car("test3", 2);
 
-        List<String> winnerNames = racingGame.winnerNames();
-        assertThat(winnerNames).hasSize(2)
-                .containsExactly("test2", "test3");
+        int turn = 1;
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+        RacingGame racingGame = new RacingGame(cars, () -> false);
+        RacingRecord result = racingGame.run(turn);
+
+        assertThat(result.getWinners()).hasSize(2)
+                .containsExactly(car2, car3);
     }
 }

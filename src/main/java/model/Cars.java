@@ -18,10 +18,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars move() {
+    public Cars move(MoveStrategy moveStrategy) {
         List<Car> records = new ArrayList<>();
         for (Car car : cars) {
-            Car moved = car.move();
+            Car moved = car.move(moveStrategy);
             records.add(moved);
         }
 
