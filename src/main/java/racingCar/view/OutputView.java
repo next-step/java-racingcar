@@ -22,7 +22,7 @@ public class OutputView {
 
     private static void printOneCar(RacingCar car){
         String result = "";
-        for(int i=0; i<car.positionOfRacingCar(); i++) {
+        for (int i = 0; i < car.positionOfRacingCar(); i++) {
             result += HYPHEN;
         }
         System.out.println(result);

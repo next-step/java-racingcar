@@ -12,7 +12,7 @@ public class RacingCar {
     }
 
     public void move(MovingStrategy movingStrategy){
-        if(movingStrategy.isMove()){
+        if (movingStrategy.isMove()){
             this.position++;
         }
     }
