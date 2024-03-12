@@ -37,4 +37,17 @@ public class RacingCarTest {
 		//then
 		assertThat(car.getPosition()).isEqualTo(1);
 	}
+
+	@DisplayName("자동차 이름을 입력받아 이름이 잘 저장되는지 확인한다.")
+	@Test
+	void nameToCar () {
+		// given
+		Car car = Car.createCar("audi");
+
+		// when
+		String carName = car.getName();
+
+		// then
+		assertThat(carName).isEqualTo("audi");
+	}
 }
