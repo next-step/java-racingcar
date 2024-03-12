@@ -1,7 +1,6 @@
 package racingcar.step3.ui;
 
-import racingcar.step3.domain.Car;
-import racingcar.step3.domain.RacingCarGameResult;
+import racingcar.step3.dto.RacingCarGameResultDto;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class ResultView {
     throw new AssertionError();
   }
 
-  public static void printResult(List<RacingCarGameResult> results) {
+  public static void printResult(List<RacingCarGameResultDto> results) {
     System.out.println();
     System.out.println("실행 결과");
 
@@ -23,13 +22,13 @@ public class ResultView {
     });
   }
 
-  private static void printRaceRecords(List<RacingCarGameResult.RaceRecord> raceRecords) {
-    raceRecords.forEach(raceRecord -> printRaceRecord(raceRecord.getCar(), raceRecord.getMoveCount()));
+  private static void printRaceRecords(List<RacingCarGameResultDto.RaceRecord> raceRecords) {
+    raceRecords.forEach(raceRecord -> printRaceRecord(raceRecord.getCarName(), raceRecord.getCarPosition()));
     System.out.println();
   }
 
-  private static void printRaceRecord(Car car, int moveCount) {
+  private static void printRaceRecord(String carName, int moveCount) {
     String result = MOVE_MARK.repeat(Math.max(0, moveCount));
-    System.out.println(car.getCarName() + ": " + result);
+    System.out.println(carName + ": " + result);
   }
 }
