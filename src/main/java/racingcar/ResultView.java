@@ -7,7 +7,6 @@ public class ResultView {
 	private static final char POSITION_CHAR_CODE = '-';
 
 	public static void result(final String[] carNames, final int count) {
-
 		lineBreaking();
 		System.out.println("실행 결과");
 
@@ -51,6 +50,7 @@ public class ResultView {
 	}
 
 	public static String carNameAndPositionWithChar(final Car car, final char positionChar) {
+
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < car.getPosition(); i++) {
 			sb.append(positionChar);
