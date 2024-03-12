@@ -1,6 +1,6 @@
 package step3and4;
 
-import step3and4.ui.InputRequestByStep3;
+import step3and4.ui.InputRequest;
 import step3and4.ui.InputView;
 import step3and4.ui.ResultView;
 
@@ -12,9 +12,9 @@ import step3and4.ui.ResultView;
  */
 public class RacingCar {
     public static void main(String[] args) {
-        InputRequestByStep3 inputRequestByStep3 = InputView.createInputRequest();
-        Racing racing = Racing.createRacing(inputRequestByStep3.getCarNumber(), inputRequestByStep3.getTryNumber());
-        ResultView resultView = new ResultView(racing);
-        resultView.startGame();
+        InputRequest inputRequest = InputView.createInputRequest();
+//        Racing racing = Racing.createRacing(inputRequest.getCarNumber(), inputRequest.getTryNumber());
+//        ResultView resultView = new ResultView(racing);
+//        resultView.startGame();
     }
 }
