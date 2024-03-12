@@ -23,31 +23,31 @@ public class ResultViewTest {
 	@Test
 	void printWinners() {
 		// given
-		Car hyundaiCar = Car.createCar("hyundai");
-		Car samsungCar = Car.createCar("samsung");
+		Car audiCar = Car.createCar("audi");
+		Car jeepCar = Car.createCar("jeep");
 		Car kiaCar = Car.createCar("kia");
 
-		hyundaiCar.move(5);
-		hyundaiCar.move(6);
-		hyundaiCar.move(7);
+		audiCar.move(5);
+		audiCar.move(6);
+		audiCar.move(7);
 
-		samsungCar.move(4);
-		samsungCar.move(5);
-		samsungCar.move(6);
+		jeepCar.move(4);
+		jeepCar.move(5);
+		jeepCar.move(6);
 
 		kiaCar.move(3);
 		kiaCar.move(2);
 		kiaCar.move(7);
 
 		Cars cars = new Cars();
-		cars.add(hyundaiCar);
-		cars.add(samsungCar);
+		cars.add(audiCar);
+		cars.add(jeepCar);
 		cars.add(kiaCar);
 
 		// when
 		String viewWinner = ResultView.viewWinner(cars);
 
 		// then
-		assertThat(viewWinner).isEqualTo("hyundai, samsung가 최종 우승했습니다.");
+		assertThat(viewWinner).isEqualTo("audi, jeep가 최종 우승했습니다.");
 	}
 }

@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ResultView {
 	private static final char POSITION_CHAR_CODE = '-';
 
@@ -11,6 +14,16 @@ public class ResultView {
 		Cars cars = Cars.createCars(carNames);
 
 		viewCarPositions(cars, count, POSITION_CHAR_CODE);
+
+		lineBreaking();
+
+		System.out.println(viewWinner(cars));
+	}
+
+	public static String viewWinner(final Cars cars) {
+		List<String> winnerCarNames = cars.getWinnerCarNames();
+		String viewCarNames = winnerCarNames.stream().collect(Collectors.joining(", "));
+		return viewCarNames + "가 최종 우승했습니다.";
 	}
 
 	private static void viewCarPositions(final Cars cars, final int count, final char positionChar) {
