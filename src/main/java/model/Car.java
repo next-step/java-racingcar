@@ -20,17 +20,21 @@ public class Car implements Comparable<Car> {
     }
 
     public Car(String name, int position, MoveStrategy strategy) {
-        this.name = new Name(name);
-        this.position = new Position(position);
+        this(new Name(name), new Position(position), strategy);
+    }
+
+    public Car(Name name, Position position, MoveStrategy strategy) {
+        this.name = name;
+        this.position = position;
         this.moveStrategy = strategy;
     }
 
     public Car move() {
         if (moveStrategy.movable()) {
-            this.position.move();
+            return new Car(name, position.move(), moveStrategy);
         }
 
-        return new Car(getName(), getPosition(), this.moveStrategy);
+        return new Car(name, new Position(getPosition()), moveStrategy);
     }
 
     public boolean isSamePosition(Position other) {
@@ -46,15 +50,15 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo(Car o) {
-        return o.position.compareTo(this.position);
+    public int compareTo(Car other) {
+        return other.position.compareTo(this.position);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Car car = (Car) other;
         return Objects.equals(position, car.position) && Objects.equals(name, car.name) && Objects.equals(moveStrategy, car.moveStrategy);
     }
 
