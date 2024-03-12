@@ -1,24 +1,27 @@
 package racing;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
 class StringUtilTest {
 
-    @Test
-    void splitStringToList() {
-        String str1 = "nimoh";
-        String delimiter1 = ",";
+    @ParameterizedTest
+    @MethodSource("provideStringsForSplit")
+    void splitStringToList(String str, String delimiter, List<String> names) {
+        assertThat(StringUtil.splitStringToList(str, delimiter)).containsExactlyElementsOf(names);
+    }
 
-        String str2 = "nimoh: pobi";
-        String delimiter2 = ":";
-
-        String str3 = "nimoh   ;   pobi;   speed";
-        String delimiter3 = ";";
-
-        assertThat(StringUtil.splitStringToList(str1, delimiter1)).containsExactly("nimoh");
-        assertThat(StringUtil.splitStringToList(str2, delimiter2)).containsExactly("nimoh", "pobi");
-        assertThat(StringUtil.splitStringToList(str3, delimiter3)).containsExactly("nimoh", "pobi", "speed");
+    private static Stream<Arguments> provideStringsForSplit() {
+        return Stream.of(
+                Arguments.of("nimoh", ",", List.of("nimoh")),
+                Arguments.of("nimoh: pobi", ":", List.of("nimoh","pobi")),
+                Arguments.of("nimoh   ;   pobi;   speed", ";", List.of("nimoh", "pobi", "speed"))
+        );
     }
 }
