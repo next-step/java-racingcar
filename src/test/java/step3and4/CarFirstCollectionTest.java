@@ -1,12 +1,12 @@
-package step3;
+package step3and4;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.car.Car;
-import step3.car.CarFirstCollection;
-import step3.car.move.MoveStrategy;
+import step3and4.car.Car;
+import step3and4.car.CarFirstCollection;
+import step3and4.car.move.MoveStrategy;
 
 import java.util.List;
 

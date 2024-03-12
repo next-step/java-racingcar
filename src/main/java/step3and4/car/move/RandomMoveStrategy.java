@@ -1,6 +1,6 @@
-package step3.car.move;
+package step3and4.car.move;
 
-import step3.RandomNumberCreator;
+import step3and4.RandomNumberCreator;
 
 public class RandomMoveStrategy implements MoveStrategy {
     private static final int VERIFY_START_MOVE_NUMBER = 4;

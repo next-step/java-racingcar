@@ -1,4 +1,4 @@
-package step3;
+package step3and4;
 
 public interface RandomNumberCreator {
     /**

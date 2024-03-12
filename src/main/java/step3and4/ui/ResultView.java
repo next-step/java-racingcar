@@ -1,6 +1,6 @@
-package step3.ui;
+package step3and4.ui;
 
-import step3.Racing;
+import step3and4.Racing;
 
 import java.util.Arrays;
 

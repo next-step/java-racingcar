@@ -1,6 +1,6 @@
-package step3.car;
+package step3and4.car;
 
-import step3.car.move.MoveStrategy;
+import step3and4.car.move.MoveStrategy;
 
 public class Car {
     private int position = 0;

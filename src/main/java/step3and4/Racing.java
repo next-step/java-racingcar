@@ -1,8 +1,8 @@
-package step3;
+package step3and4;
 
-import step3.car.Car;
-import step3.car.CarFirstCollection;
-import step3.car.move.RandomMoveStrategy;
+import step3and4.car.Car;
+import step3and4.car.CarFirstCollection;
+import step3and4.car.move.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
