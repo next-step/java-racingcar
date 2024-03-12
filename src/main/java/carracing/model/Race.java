@@ -7,9 +7,13 @@ public class Race {
     private final List<NameOfCar> nameOfCarList;
     private final NumberOfAttempts numberOfAttempts;
 
-    public Race(List<NameOfCar> nameOfCarList, NumberOfAttempts numberOfAttempts) {
+    private Race(List<NameOfCar> nameOfCarList, NumberOfAttempts numberOfAttempts) {
         this.nameOfCarList = nameOfCarList;
         this.numberOfAttempts = numberOfAttempts;
+    }
+
+    public static Race newRace(final List<NameOfCar> nameOfCarList, final NumberOfAttempts numberOfAttempts) {
+        return new Race(nameOfCarList, numberOfAttempts);
     }
 
     public List<RaceRecordOfCar> start() {
@@ -22,7 +26,7 @@ public class Race {
                 .collect(Collectors.toList());
     }
 
-    private List<RaceRecordOfCar> doRace(List<Car> carList) {
+    private List<RaceRecordOfCar> doRace(final List<Car> carList) {
         for (int i = 0; i < numberOfAttempts.numberOfAttempts(); i++) {
             carList.forEach(car -> car.move(new RandomStrategy()));
         }

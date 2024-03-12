@@ -15,7 +15,7 @@ class RaceTest {
         List<NameOfCar> nameOfCarList = Arrays.asList(NameOfCar.newName("a"), NameOfCar.newName("b"));
         NumberOfAttempts numberOfAttempts = NumberOfAttempts.newNumber("5");
 
-        Race race = new Race(nameOfCarList, numberOfAttempts);
+        Race race = Race.newRace(nameOfCarList, numberOfAttempts);
         List<RaceRecordOfCar> raceRecordOfCarList = race.start();
 
         assertThat(raceRecordOfCarList.size()).isEqualTo(nameOfCarList.size());
