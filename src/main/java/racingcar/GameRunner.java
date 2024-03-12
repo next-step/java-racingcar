@@ -4,7 +4,8 @@ import java.util.List;
 
 public class GameRunner implements Game {
 
-    private Game game;
+    private final Game game;
+
     public GameRunner(Game game) {
         this.game = game;
     }
@@ -22,9 +23,7 @@ public class GameRunner implements Game {
 
     private void displayResult() {
         List<Vehicle> vehicles = getVehicles();
-        vehicles.forEach(vehicle -> {
-            System.out.println("-".repeat(vehicle.getMoveCount() + 1));
-        });
+        vehicles.forEach(vehicle -> System.out.println("-".repeat(vehicle.getMoveCount() + 1)));
         System.out.println();
     }
 }

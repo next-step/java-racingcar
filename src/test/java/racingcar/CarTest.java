@@ -20,7 +20,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6})
+    @ValueSource(ints = {4, 5, 6})
     @DisplayName("4이상의 수 를 넘겨주면 자동차를 한칸 움직인다.")
     void moveCar(int number) {
         //given
@@ -34,7 +34,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     @DisplayName("4이하의 수 를 넘겨주면 자동차를 움직이지 않는다.")
     void dontMoveCar(int number) {
         //given

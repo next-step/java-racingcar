@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car implements Vehicle {
-    private static int MOVABLE_NUMBER = 4;
+    private final int MOVABLE_NUMBER = 4;
 
     private Integer moveCount = 0;
 
@@ -12,7 +12,7 @@ public class Car implements Vehicle {
 
     @Override
     public void move(int number) {
-        if (isMovable(number)){
+        if (isMovable(number)) {
             moveCount++;
         }
     }
