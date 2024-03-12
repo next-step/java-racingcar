@@ -7,22 +7,25 @@ public class ResultView {
 
     private final static String CAR_POSITION_STRING = "-";
 
-    private ResultView() {
+    private final StringBuilder snapshot = new StringBuilder();
 
+    public void appendSnapshot(Cars cars) {
+        append(cars);
     }
 
-    public static void printExecuteResultString() {
+    public void printCarRaceResult() {
         System.out.println("실행 결과");
+        System.out.println(this.snapshot);
     }
 
-    public static void print(Cars cars) {
+    private void append(Cars cars) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars.get()) {
             String carPosition = CAR_POSITION_STRING.repeat(car.getDistance().get());
             stringBuilder.append(carPosition).append("\n");
         }
 
-        System.out.println(stringBuilder);
+        this.snapshot.append(stringBuilder).append("\n");
     }
 
 }

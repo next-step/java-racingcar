@@ -5,6 +5,7 @@ import racingcar.Name;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -15,6 +16,10 @@ public class Cars {
         for (String name : names) {
             this.cars.add(new Car(new Name(name)));
         }
+    }
+
+    public Cars(Cars cars) {
+        this.cars = new ArrayList<>(cars.cars);
     }
 
     public List<Car> get() {
