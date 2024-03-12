@@ -4,8 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.mock.CustomCarMoveStrategy;
+import racingcar.mock.AlwaysMoveStrategy;
 import racingcar.domain.Distance;
+import racingcar.mock.AlwaysStopStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,7 +20,7 @@ public class CarTest {
         Car car = new Car();
 
         // When
-        car.move(new CustomCarMoveStrategy("MOVE"));
+        car.move(new AlwaysMoveStrategy());
 
         // Then
         assertThat(car.getDistance()).isEqualTo(new Distance(1));
@@ -32,7 +33,7 @@ public class CarTest {
         Car car = new Car();
 
         // When
-        car.move(new CustomCarMoveStrategy(""));
+        car.move(new AlwaysStopStrategy());
 
         // Then
         assertThat(car.getDistance()).isEqualTo(new Distance(0));
@@ -48,7 +49,7 @@ public class CarTest {
         // When
         int count = 5;
         while (count-- > 0) {
-            car.move(new CustomCarMoveStrategy("MOVE"));
+            car.move(new AlwaysMoveStrategy());
         }
 
         // Then

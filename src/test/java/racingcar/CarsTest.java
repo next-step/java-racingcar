@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.mock.CustomCarMoveStrategy;
+import racingcar.mock.AlwaysMoveStrategy;
 import racingcar.domain.Distance;
 
 import java.util.List;
@@ -40,7 +40,7 @@ public class CarsTest {
         // 모든 자동차 3회 전진
         int count = 3;
         while (count-- > 0) {
-            cars.move(new CustomCarMoveStrategy("MOVE"));
+            cars.move(new AlwaysMoveStrategy());
         }
 
         // Then
