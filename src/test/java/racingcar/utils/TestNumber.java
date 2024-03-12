@@ -1,6 +1,6 @@
 package racingcar.utils;
 
-import racingcar.infra.Number;
+import racingcar.domain.Number;
 
 public class TestNumber implements Number {
 

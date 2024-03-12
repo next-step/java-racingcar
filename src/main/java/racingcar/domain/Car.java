@@ -11,10 +11,10 @@ public class Car {
     }
 
     public void move(MoveType moveType) {
-        position += moveType.movePosition();
+        position += moveType.getMovePosition();
     }
 
-    public int position() {
+    public int getPosition() {
         return position;
     }
 }

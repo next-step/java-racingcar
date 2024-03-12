@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.application.RacingCarService;
 import racingcar.domain.Car;
-import racingcar.infra.MoveCommandImpl;
+import racingcar.domain.MoveCommand;
 import racingcar.utils.TestNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +21,7 @@ public class RacingCarServiceTest {
         int countCar = 2;
         int repeatCount = 2;
 
-        RacingCarService racingCarService = new RacingCarService(new MoveCommandImpl(new TestNumber(number)));
+        RacingCarService racingCarService = new RacingCarService(new MoveCommand(new TestNumber(number)));
         racingCarService.initCars(countCar);
 
         for (int i = 0; i < repeatCount; i++) {
@@ -30,14 +30,14 @@ public class RacingCarServiceTest {
 
         assertThat(racingCarService.cars()).hasSize(countCar);
         for (Car car : racingCarService.cars()) {
-            assertThat(car.position()).isEqualTo(expectedPosition);
+            assertThat(car.getPosition()).isEqualTo(expectedPosition);
         }
     }
 
     @Test
     @DisplayName("N 대의 차량을 만들기 전에, 이동하면 예외 발생")
     void testMoveCarBeforeMakeCars() {
-        RacingCarService racingCarService = new RacingCarService(new MoveCommandImpl(new TestNumber(0)));
+        RacingCarService racingCarService = new RacingCarService(new MoveCommand(new TestNumber(0)));
         assertThatThrownBy(racingCarService::moveCar).isInstanceOf(RuntimeException.class);
     }
 }

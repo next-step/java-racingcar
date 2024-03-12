@@ -2,7 +2,6 @@ package racingcar;
 
 import racingcar.application.RacingCarService;
 import racingcar.domain.MoveCommand;
-import racingcar.infra.MoveCommandImpl;
 import racingcar.infra.RandomNumber;
 import racingcar.presentation.InputView;
 import racingcar.presentation.RacingCarController;
@@ -23,7 +22,7 @@ public class RacingCarApplication {
     }
 
     private static MoveCommand moveCommand() {
-        return new MoveCommandImpl(new RandomNumber());
+        return new MoveCommand(new RandomNumber());
     }
 
     private static RacingCarController racingCarController(RacingCarService racingCarService) {

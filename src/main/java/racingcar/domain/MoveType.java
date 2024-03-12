@@ -10,7 +10,7 @@ public enum MoveType {
         this.movePosition = movePosition;
     }
 
-    public int movePosition() {
+    public int getMovePosition() {
         return this.movePosition;
     }
 }

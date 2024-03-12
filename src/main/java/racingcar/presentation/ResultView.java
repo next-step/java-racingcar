@@ -16,6 +16,6 @@ public class ResultView {
     }
 
     private String carPosition(Car car) {
-        return CAR_POSITION_PRINT_UNIT.repeat(car.position()+1);
+        return CAR_POSITION_PRINT_UNIT.repeat(car.getPosition()+1);
     }
 }

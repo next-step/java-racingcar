@@ -1,5 +1,7 @@
 package racingcar.infra;
 
+import racingcar.domain.Number;
+
 import java.util.Random;
 
 public class RandomNumber implements Number {
