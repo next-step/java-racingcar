@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    int mPosition;
+    private int mPosition;
 
     public Car()
     {
