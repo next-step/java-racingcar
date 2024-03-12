@@ -1,6 +1,7 @@
 package racing.controller;
 
 import racing.model.Cars;
+import racing.model.RandomMovementStrategy;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -21,13 +22,12 @@ public class RacingController {
         resultView.appendResultHeader();
 
         for (int i = 0; i < attempts; i++) {
-            resultView.appendCurrentSituation(cars.getCurrentSituation());
+            resultView.appendCurrentSituation(cars.moveOrNot(new RandomMovementStrategy()));
         }
     }
 
     private void endRace(Cars cars) {
-        String result = resultView.getResultView(cars);
-        System.out.println(result);
+        resultView.getResultView(cars);
     }
-    
+
 }
