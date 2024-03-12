@@ -11,4 +11,10 @@ public class StringUtil {
                 .map(String::trim)
                 .collect(Collectors.toList());
     }
+
+    public static void addDelimiterToStringBuilder(StringBuilder stringBuilder, String delimiter) {
+        if (stringBuilder.length() > 0) {
+            stringBuilder.append(delimiter);
+        }
+    }
 }

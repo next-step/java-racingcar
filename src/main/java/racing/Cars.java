@@ -18,11 +18,12 @@ public class Cars implements Iterable<Car> {
         return cars.iterator();
     }
 
-    public List<Car> getWinnerList() {
+    public Winners getWinnerList() {
         int maxPosition = maxPosition();
-        return cars.stream()
+        List<Car> winners = cars.stream()
                 .filter(car -> car.samePosition(maxPosition))
                 .collect(Collectors.toList());
+        return new Winners(winners);
     }
 
     private int maxPosition() {

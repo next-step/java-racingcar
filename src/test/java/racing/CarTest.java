@@ -1,5 +1,6 @@
 package racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,18 +16,21 @@ class CarTest {
     private final Name testName = new Name("test");
 
     @Test
+    @DisplayName("getPosition() - Car의 위치를 int로 반환")
     void getPosition() {
         Car car = new Car(testName);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
+    @DisplayName("getName() - Car의 이름을 문자열로 반환")
     void getName() {
         Car car = new Car(testName);
         assertThat(car.getName()).isEqualTo(testName.getName());
     }
 
     @Test
+    @DisplayName("play() - MoveStrategy의 movable()이 true이면 전진")
     void play() {
         Car car1 = new Car(testName);
         car1.play(alwaysTrueStrategy);
@@ -46,10 +50,20 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
-    void samePosition(int input) {
+    @DisplayName("samePosition() - Car의 위치가 동일한 경우 true 반환")
+    void samePosition_same(int input) {
         Car car = movedCar(input);
 
         assertThat(car.samePosition(input)).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    @DisplayName("samePosition() - Car의 위치가 다른 경우 false 반환")
+    void samePosition_diff(int input) {
+        Car car = movedCar(input);
+
+        assertThat(car.samePosition(input + 1)).isFalse();
     }
 
     private Car movedCar(int moveCount) {
