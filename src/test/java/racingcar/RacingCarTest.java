@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class RacingCarTest {
 	@DisplayName("값이 4 이상일 경우 전진한다.")
@@ -49,5 +50,15 @@ public class RacingCarTest {
 
 		// then
 		assertThat(carName).isEqualTo("audi");
+	}
+
+	@DisplayName("자동차 이름이 5글자가 초과될 경우 예외를 던진다.")
+	@Test
+	void nameToCarOverFiveNumberOfCharacters () {
+		// given & when & then
+		assertThatExceptionOfType(RuntimeException.class)
+				.isThrownBy(() -> {
+					Car.createCar("mercedes");
+				}).withMessageMatching("글자수가 5를 초과했습니다. 다시 입력해주세요.");
 	}
 }
