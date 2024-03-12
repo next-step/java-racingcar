@@ -3,13 +3,12 @@ package racingcar;
 public class ResultView {
 	private static final char POSITION_CHAR_CODE = '-';
 
-	public static void result(final int carNumber, final int count) {
+	public static void result(final String[] carNames, final int count) {
 
 		lineBreaking();
 		System.out.println("실행 결과");
 
-		Cars cars = new Cars();
-		cars.setCars(carNumber);
+		Cars cars = Cars.createCars(carNames);
 
 		viewCarPositions(cars, POSITION_CHAR_CODE);
 
