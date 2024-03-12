@@ -1,18 +1,21 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    protected Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars of(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException("차는 1대 이상이어야 합니다");
         }
-        this.cars.addAll(cars);
+        return new Cars(cars);
     }
 
     public static Cars from(List<String> carNames) {

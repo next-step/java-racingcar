@@ -6,17 +6,21 @@ public class Name {
 
     private final String value;
 
-    public Name(String value) {
+    private Name(String value) {
+        this.value = value;
+    }
+
+    public static Name of(String value) {
         if (value == null) {
             throw new IllegalArgumentException("자동차 이름에 null이 들어옴");
         }
         String trimmedName = value.trim();
         assertValidName(trimmedName);
 
-        this.value = trimmedName;
+        return new Name(trimmedName);
     }
 
-    private void assertValidName(String name) {
+    private static void assertValidName(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상이어야 합니다");
         }

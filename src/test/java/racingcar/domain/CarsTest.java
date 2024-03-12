@@ -19,7 +19,7 @@ public class CarsTest {
     @Test
     @DisplayName("차 이름이 0개라면 예외가 발생한다")
     void new_cars_length_less_than_1() {
-        assertThatThrownBy(() -> new Cars(Collections.emptyList()))
+        assertThatThrownBy(() -> Cars.of(Collections.emptyList()))
             .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -4,11 +4,15 @@ public class Round {
 
     private int round;
 
-    public Round(int round) {
+    private Round(int round) {
+        this.round = round;
+    }
+
+    public static Round of(int round) {
         if (round <= 0) {
             throw new IllegalArgumentException("라운드 수는 자연수만 가능합니다");
         }
-        this.round = round;
+        return new Round(round);
     }
 
     public void progress() {

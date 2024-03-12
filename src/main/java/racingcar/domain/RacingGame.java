@@ -17,7 +17,7 @@ public class RacingGame {
     }
 
     public void drive(int roundAmount, DrivingStrategy drivingStrategy) {
-        Round round = new Round(roundAmount);
+        Round round = Round.of(roundAmount);
         while (!round.isEnd()) {
             round.progress();
             cars.drive(drivingStrategy);

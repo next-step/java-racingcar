@@ -15,13 +15,13 @@ class DrivingDistanceTest {
     @DisplayName("양수나 0이라면 성공적으로 생성된다")
     void success_for_0_or_positive(int input) {
         assertThatNoException()
-            .isThrownBy(() -> new DrivingDistance(input));
+            .isThrownBy(() -> DrivingDistance.of(input));
     }
 
     @Test
     @DisplayName("음수로 생성하려하면 예외가 발생한다")
     void fail_for_negative() {
-        assertThatThrownBy(() -> new DrivingDistance(-1))
+        assertThatThrownBy(() -> DrivingDistance.of(-1))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -9,11 +9,11 @@ public class Car {
     private DrivingDistance drivingDistance;
 
     public Car(String name) {
-        this(new Name(name), new DrivingDistance());
+        this(Name.of(name), new DrivingDistance());
     }
 
     public Car(String name, int drivingDistance) {
-        this(new Name(name), new DrivingDistance(drivingDistance));
+        this(Name.of(name), DrivingDistance.of(drivingDistance));
     }
 
     public Car(Name name, DrivingDistance drivingDistance) {

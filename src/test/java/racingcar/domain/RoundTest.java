@@ -14,14 +14,14 @@ class RoundTest {
     @DisplayName("자연수의 라운드는 정상 생성된다")
     void success_for_positive_round() {
         assertThatNoException()
-            .isThrownBy(() -> new Round(1));
+            .isThrownBy(() -> Round.of(1));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, -1})
     @DisplayName("자연수가 아닌 라운드를 생성하려하면 예외가 발생한다")
     void success_for_positive_round(int input) {
-        assertThatThrownBy(() -> new Round(input))
+        assertThatThrownBy(() -> Round.of(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
