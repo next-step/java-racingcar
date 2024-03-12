@@ -9,6 +9,7 @@ public class Validator {
     private static final Pattern NUMERIC_PATTERN = Pattern.compile(NUMERIC_REGEXP);
     private static final int MAX = 9;
     private static final int MIN = 0;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public void nullCheck(String input) {
         if (input == null || input.isBlank()) {
@@ -28,6 +29,12 @@ public class Validator {
         Integer number = Integer.parseInt(input);
         if (number > MAX || number < MIN) {
             throw new IllegalArgumentException("숫자의 입력 범위가 잘 못 되었습니다");
+        }
+    }
+
+    public void stringRangeCheck(String input) {
+        if (input.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
 

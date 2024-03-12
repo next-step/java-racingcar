@@ -29,6 +29,7 @@ public class InputView {
     public CarNames inputCarName() {
         String carNames = input();
         validator.nullCheck(carNames);
+        validator.stringRangeCheck(carNames);
         return new CarNames(carNames);
     }
 }
