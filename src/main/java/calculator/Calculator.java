@@ -26,7 +26,7 @@ public class Calculator {
 	}
 
 	private void validateInputNumber(String number) {
-		if (isNumber(number) || Integer.valueOf(number) < 0) {
+		if (!isNumber(number) || Integer.valueOf(number) < 0) {
 			throw new RuntimeException("음수 or 숫자 이외의 값을 입력하셨습니다.");
 		}
 	}
