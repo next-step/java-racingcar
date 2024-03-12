@@ -8,9 +8,13 @@ public class PositionOfCar {
     private int position;
     private final List<Integer> positionHistory;
 
-    public PositionOfCar() {
+    private PositionOfCar() {
         this.position = 0;
         this.positionHistory = new ArrayList<>();
+    }
+
+    public static PositionOfCar startPositionOfCar() {
+        return new PositionOfCar();
     }
 
     public int position() {

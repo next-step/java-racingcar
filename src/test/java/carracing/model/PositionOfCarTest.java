@@ -11,7 +11,7 @@ class PositionOfCarTest {
     @CsvSource(value = {"0:10:0", "1:1:1", "1:2:2", "3:1:3", "2:5:10"}, delimiter = ':')
     @DisplayName("increase(): increaseAmount 만큼 position을 증가시키고 증가된 결과를 postionHistory에 추가한다.")
     void testPositionIncrease(int numberOfIncrease, int increaseAmount, int expectedPosition) {
-        PositionOfCar positionOfCar = new PositionOfCar();
+        PositionOfCar positionOfCar = PositionOfCar.startPositionOfCar();
 
         for (int i = 0; i < numberOfIncrease; i++) {
             positionOfCar.increase(increaseAmount);
