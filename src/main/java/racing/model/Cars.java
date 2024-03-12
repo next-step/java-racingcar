@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
-    private static final CarMovementStrategy carMovementStrategy = new RandomMovementStrategy();
 
     public Cars(String[] names) {
         this.cars = joinCars(names);
@@ -22,38 +21,19 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getCurrentSituation() {
-        return move();
-    }
-
-    private List<Car> move() {
+    public List<Car> moveOrNot(CarMovementStrategy carMovementStrategy) {
         for (Car car : cars) {
             car.move(carMovementStrategy);
         }
         return cars;
     }
 
-    public String getWinnerNames() {
-        List<Car> topScores = getTheHighestScoreDrivers(cars);
-
-        String winnerNames = topScores.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-
-        return winnerNames;
+    public List<Car> getTheHighestScoreDrivers() {
+        int maxScore = getTheHighestScore();
+        return getDriversWithTopScore(maxScore);
     }
 
-    private List<Car> getTheHighestScoreDrivers(List<Car> cars) {
-        int maxScore = getTheHighestScore(cars);
-
-        List<Car> topScores = cars.stream()
-                .filter(car -> car.isWinner(maxScore))
-                .collect(Collectors.toList());
-
-        return topScores;
-    }
-
-    private int getTheHighestScore(List<Car> cars) {
+    private int getTheHighestScore() {
         int maxScore = 0;
 
         for (Car car : cars) {
@@ -61,6 +41,14 @@ public class Cars {
         }
 
         return maxScore;
+    }
+
+    private List<Car> getDriversWithTopScore(int maxScore) {
+        List<Car> topScores = cars.stream()
+                .filter(car -> car.isWinner(maxScore))
+                .collect(Collectors.toList());
+
+        return topScores;
     }
 
 }
