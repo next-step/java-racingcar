@@ -8,6 +8,7 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
+<<<<<<< HEAD
 ---
 # Step3
 ## ToDo
@@ -47,6 +48,8 @@
 ---
 
 # Step 2
+=======
+>>>>>>> raundev
 ## ToDo
 1. README.md 정리해보기
 2. 프로덕션 코드 패키지 위치 변경
