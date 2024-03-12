@@ -6,12 +6,12 @@ public class Car {
 
     private final int id;
     private int location;
-    public static final int INIT_POSITION = 0;
+    public static final int INIT_LOCATION = 0;
 
     public Car(int id) {
         validateId(id);
         this.id = id;
-        this.location = INIT_POSITION;
+        this.location = INIT_LOCATION;
     }
 
     public int verifyLocation() {
