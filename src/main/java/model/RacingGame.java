@@ -10,17 +10,17 @@ public class RacingGame {
     }
 
     public RacingRecord run(int turn) {
+        if (turn < 1) {
+            throw new IllegalArgumentException("1이상 입력해주세요");
+        }
+
         RacingRecord racingRecord = new RacingRecord(turn);
-        for (int t = 1; t <= turn; t++) {
+        for (int i = 1; i <= turn; i++) {
             Cars movedCars = cars.move();
             racingRecord.save(movedCars);
         }
 
+        racingRecord.saveWinners(this.cars.winners());
         return racingRecord;
     }
-
-    public List<String> winnerNames() {
-        return this.cars.winnerNames();
-    }
-
 }

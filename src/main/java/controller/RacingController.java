@@ -17,10 +17,9 @@ public class RacingController {
 
         RacingGame racingGame = new RacingGame(cars);
         RacingRecord racingRecord = racingGame.run(racingTurn);
-        racingRecord.saveWinners(racingGame.winnerNames());
 
-        ResultView resultView = new ResultView(racingRecord);
-        resultView.draw();
+        ResultView resultView = new ResultView();
+        resultView.draw(racingRecord);
         resultView.print();
     }
 }
