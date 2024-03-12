@@ -1,13 +1,20 @@
 package racingcar;
 
-public class Car {
-    private int distinct = 0;
+import java.util.ArrayList;
+import java.util.List;
 
-    public int getDistinct() {
-        return distinct;
+public class Car {
+    List<Boolean> moveHistory = new ArrayList<>();
+
+    public List<Boolean> getMoveHistory() {
+        return moveHistory;
     }
 
-    public void move() {
-        distinct +=1;
+    public boolean getIsMoveByIndex(int index) {
+        return moveHistory.get(index);
+    }
+
+    public void addMoveHistory(boolean isMove) {
+        moveHistory.add(isMove);
     }
 }

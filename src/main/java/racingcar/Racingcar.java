@@ -19,7 +19,7 @@ public class Racingcar {
     public static void gameLogic(int numberOfCar, int numberOfAttempt) {
         List<Car> carList = initCarList(numberOfCar);
 
-        carList.stream().forEach(car -> IntStream.range(0, numberOfAttempt).forEach(i -> moveCar(car)));
+        carList.stream().forEach(car -> IntStream.range(0, numberOfAttempt).forEach(i -> car.addMoveHistory(isMovingForward(getRandomValue()))));
     }
 
     private static void moveCar(Car car) {
@@ -29,7 +29,9 @@ public class Racingcar {
     }
 
     private static List<Car> initCarList(int numberOfCar) {
-        return new ArrayList<>(numberOfCar);
+        List<Car> carList = new ArrayList<>(numberOfCar);
+        IntStream.range(0,numberOfCar).forEach(i -> carList.add(new Car()));
+        return carList;
     }
 
     public static boolean isMovingForward(int value) {
