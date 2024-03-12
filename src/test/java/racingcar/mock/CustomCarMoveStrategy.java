@@ -11,7 +11,7 @@ public class CustomCarMoveStrategy implements CarMoveStrategy {
     }
 
     @Override
-    public boolean move() {
+    public boolean isMovable() {
         return this.status.equals("MOVE");
     }
 }

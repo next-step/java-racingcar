@@ -9,7 +9,7 @@ public class Car {
     }
 
     public void move(CarMoveStrategy moveStrategy) {
-        if (moveStrategy.move()) {
+        if (moveStrategy.isMovable()) {
             distance.increase();
         }
     }

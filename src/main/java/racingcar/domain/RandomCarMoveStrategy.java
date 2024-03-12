@@ -9,7 +9,7 @@ public class RandomCarMoveStrategy implements CarMoveStrategy {
     private final static int MOVE_BOUND = 4;
 
     @Override
-    public boolean move() {
+    public boolean isMovable() {
         return RANDOM.nextInt(RANDOM_BOUND) >= MOVE_BOUND;
     }
 
