@@ -29,8 +29,8 @@ public class CarsTest {
         assertThat(cars.size()).isEqualTo(1);
     }
 
-    @DisplayName("[성공] 자동차 3개를 가진 자동차 리스트의 자동차를 전진시킨다.")
-    @ParameterizedTest(name = "{index} ==> Cars.get({0}) is 3.")
+    @DisplayName("[성공] 자동차 3개를 가진 자동차 리스트의 자동차를 모두 3번씩 전진시킨다.")
+    @ParameterizedTest(name = "[{index}] Cars.get({0}) is 3.")
     @ValueSource(ints = {0, 1, 2})
     void 자동차_리스트_전진(int index) {
         // Given

@@ -56,22 +56,4 @@ public class CarTest {
         assertThat(car.getDistance()).isEqualTo(new Distance(5));
     }
 
-    @Nested
-    @DisplayName("[학습 테스트]")
-    class LearningTest {
-
-        @Test
-        @DisplayName("[학습 테스트] String.repeat()")
-        void string_repeat() {
-            assertThat("-".repeat(3)).isEqualTo("---");
-
-            // repeat 인자로 음수를 전달하는 경우
-            assertThatThrownBy(() -> {
-                "-".repeat(-1);
-            })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("count is negative: -1");
-        }
-
-    }
 }

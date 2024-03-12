@@ -8,11 +8,9 @@ import racingcar.mock.AlwaysMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("자동차 이동 전략 테스트")
 public class CarMoveStrategyTest {
 
     @Nested
-    @DisplayName("항상 이동하는 전략 테스트")
     class AlwaysMoveStrategyTest {
 
         private final int REPEAT_COUNT = 10;
@@ -27,7 +25,6 @@ public class CarMoveStrategyTest {
     }
 
     @Nested
-    @DisplayName("항상 정지하는 전략 테스트")
     class AlwaysStopStrategyTest {
 
         private final int REPEAT_COUNT = 5;
