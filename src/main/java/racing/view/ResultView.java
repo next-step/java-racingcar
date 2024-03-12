@@ -4,17 +4,13 @@ import racing.model.Car;
 import racing.model.Cars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
+    private static final String DELIMITER = ", ";
     private static final String HYPHEN = "-";
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuilder result;
-
-    public String getResultView(Cars cars) {
-        record(cars.getWinnerNames() + "(이)가 최종 우승했습니다.");
-
-        return getResult();
-    }
 
     public ResultView() {
         result = new StringBuilder();
@@ -42,11 +38,25 @@ public class ResultView {
         appendNewLine();
     }
 
+    public void getResultView(Cars cars) {
+        record(getWinnerNames(cars) + "(이)가 최종 우승했습니다.");
+        System.out.println(getResult());
+    }
 
-    /**
-     * Test Code 작성을 위한 pulbic getter() 메서드
-     */
-    public String getResult() {
+    private String getWinnerNames(Cars cars) {
+        List<Car> topScores = cars.getTheHighestScoreDrivers();
+        return splitWinnerNames(topScores);
+    }
+
+    private String splitWinnerNames(List<Car> cars) {
+        String winnerNames = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(DELIMITER));
+
+        return winnerNames;
+    }
+
+    private String getResult() {
         return result.toString();
     }
 }
