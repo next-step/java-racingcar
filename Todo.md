@@ -26,3 +26,26 @@
 - 생성된 랜덤값이 4 이상이라면 자동차 움직임를 더해줌(랜덤값 : 1 => 자동차 움직임, 4 => 자동차 움직임+1)
 - 각 자동차의 움직임 출력(1 => "-", 3 => "---")
 - 위의 4단계를 횟수만큼 반복
+
+# Step4
+
+## Todo
+- Step3 개선 사항 : mvc(model, view, controller) 구조로 변경 (view <- controller -> model)
+- Step3 개선 사항 : domain 내부에 view에 의존하는 로직 분리 (Car, Game)
+- Step3 개선 사항 : Constant interface 제거 및 상수값들을 사용하는 클래스에서 직접 명시하도록 변경
+- Step3 개선 사항 : GameInput에서도 view에 의존하는 로직 분리
+- Step3 개선 사항 : NumberUtil 제거 이후에 GameClient 혹은 Game에 validation 옮기기
+- Step3 개선 사항 : Game의 play도 테스트 코드 추가
+- 문자열 출력("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
+- 문자열 입력("pobi,crong,honux")
+- 자동차 이름은 ","를 기준으로 구분("one,two,three" => one,two, "onetwo,three" => onetwo,three)
+- 자동차 이름은 5글자를 초과할 수 없음("hihih" => "hihih", "hihihi" => RuntimeException) 
+- 문자열 출력("시도할 회수는 몇회인가요?")
+- 횟수가 0보다 작을 수 없음("0" => RuntimeException)
+- 숫자 입력(5)
+- 거리 출력 시에 앞에 이름도 같이 출력("pobi : ---")
+- 가장 많이 이동한 자동차들이 우승자로 선정("one -> 3, two -> 5" => two)
+- 우승자는 한 명 이상일 수 있다("one -> 3, two -> 3" => one,two)
+- 우승자 출력("pobi, honux가 최종 우승했습니다.")
+
+## Done
