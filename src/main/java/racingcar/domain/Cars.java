@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +14,12 @@ public class Cars {
         for (String name : names) {
             this.cars.add(new Car(new Name(name)));
         }
+    }
+
+    // Constructor for UnitTest
+    public Cars(Car... cars) {
+        this.cars = new ArrayList<>();
+        this.cars.addAll(Arrays.asList(cars));
     }
 
     public List<Car> get() {
