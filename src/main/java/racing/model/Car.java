@@ -1,6 +1,7 @@
 package racing.model;
 
 public class Car {
+    private static final int VALID_NAME_LENGTH = 5;
     private String name;
     private int score;
 
@@ -17,7 +18,7 @@ public class Car {
     }
 
     private boolean isValidCarName(String name) {
-        return !name.isBlank() && name.length() <= 5;
+        return !name.isBlank() && name.length() <= VALID_NAME_LENGTH;
     }
 
     public void move(CarMovementStrategy carMovementStrategy) {
