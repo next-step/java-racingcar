@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.mock;
+
+import racingcar.domain.CarMoveStrategy;
 
 public class CustomCarMoveStrategy implements CarMoveStrategy {
 

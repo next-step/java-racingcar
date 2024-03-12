@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.CustomCarMoveStrategy;
+import racingcar.mock.CustomCarMoveStrategy;
 import racingcar.domain.Distance;
 
 import java.util.List;

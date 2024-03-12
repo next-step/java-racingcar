@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.CustomCarMoveStrategy;
+import racingcar.mock.CustomCarMoveStrategy;
 import racingcar.domain.Distance;
 
 import static org.assertj.core.api.Assertions.assertThat;
