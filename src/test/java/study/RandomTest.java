@@ -23,10 +23,9 @@ public class RandomTest {
     @DisplayName("난수를 반환한다")
     @Test
     void randomIs() {
-        RaceRule raceRule = new RaceRule(() -> {
-            Random random = new Random();
-            return random.nextInt(10);
-        });
+        RaceRule raceRule = new RaceRule(() ->
+            new Random().nextInt(10)
+        );
         assertThat(raceRule.generate()).isBetween(0, 10);
     }
 }

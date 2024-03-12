@@ -1,6 +1,6 @@
 package race;
 
-public class RaceRule {
+public class RaceRule implements RandomUtil {
 
     RandomUtil randomUtil;
 

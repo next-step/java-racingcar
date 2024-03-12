@@ -16,22 +16,22 @@ public class CarTest {
 
     @Test
     void go_three_times() {
-        car1.go(1);
-        car1.go(2);
-        car1.go(3);
+        car1.go(1, 4);
+        car1.go(2, 4);
+        car1.go(3, 4);
         assertThat(car1.getMileage()).isEqualTo("---");
     }
 
     @Test
     void go_twice() {
-        car1.go(1);
-        car1.go(2);
+        car1.go(1, 4);
+        car1.go(2, 4);
         assertThat(car1.getMileage()).isEqualTo("--");
     }
 
     @Test
     void go() {
-        car1.go(1);
+        car1.go(1, 4);
         assertThat(car1.getMileage()).isEqualTo("-");
     }
 
