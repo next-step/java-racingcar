@@ -3,6 +3,8 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +22,7 @@ public class StringSumCalculatorTest {
     @DisplayName("쉼표(,) 또는 콜론(:)으로 구분하는 테스트")
     @ValueSource(strings = {"1,2,3", "1:2,3", "1:2:3"})
     void splitWithBothCommaAndColonTest(String value){
-        String[] actual = splitWithCommmaAndColon(value);
+        String[] actual = splitWithCommaAndColon(value);
         String expectedComponent1 = "1";
         String expectedComponent2 = "2";
         String expectedComponent3 = "3";
@@ -28,39 +30,57 @@ public class StringSumCalculatorTest {
     }
 
     @Test
-    @DisplayName("문자열 수자 변환 테스트")
-    void parseStringToIntTest(){
-        String value = "2";
-        int actual = parseStringToInt(value);
-        int expected = 2;
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
     @DisplayName("문자열이 \"\"일때 0 반환 테스트")
-    @ValueSource(strings = {"", "  "})
-    void emptyReturnZeroTest(String value){
-        int actual = emptyReturnZero(value);
-        assertThat(actual).isZero();
+    void emptyReturnZeroTest(){
+        String value = "";
+        String actual = emptyReturnZeroString(value);
+        assertThat(actual).isEqualTo("0");
     }
 
     @Test
     @DisplayName("합산 테스트")
     void sumTest(){
-        int[] valueArray = {1,2,3};
+        String[] valueArray = {"1", "2", "3"};
         int actual = sum(valueArray);
         int expected = 6;
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("커스텀 구분자 테스트")
-    void customDelimiterTest(){
-        String value = "//;\n1;2;3";
+    @DisplayName("커스텀 구분자 유무 테스트")
+    void hasCustomDelimiterTest(){
+        String value = "//;\\n1;2;3";
+        Boolean actual = StringSumCalculator.hasCustomDelimiter(value);
+        assertThat(actual).isTrue();
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자 추출 테스트")
+    void getCustomDelimiterTest(){
+        String value = "//;\\n1;2;3";
         String actual = getCustomDelimiter(value);
         String expected = ";";
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자 제외 후 문자열 반환 테스트")
+    void getStringWithoutCustomDelimiterTest(){
+        String value = "//;\\n1;2;3";
+        String actual = StringSumCalculator.getStringWithoutCustomDelimiter(value);
+        String expected = "1;2;3";
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("구분자를 통한 숫자 반환 테스트")
+    @CsvSource(value = {";,1;2;3", "=,1=2=3"}, delimiter = ',')
+    void splitValuesByCustomDelimiterTest(String delimiter, String value){
+        String[] actual = StringSumCalculator.splitValuesByCustomDelimiter(delimiter, value);
+        String[] expected = {"1", "2", "3"};
+        assertThat(actual).containsExactly(expected);
+    }
+
 
     @ParameterizedTest
     @DisplayName("숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 테스트")
