@@ -5,7 +5,7 @@ import racingcar.domain.Cars;
 
 public class ResultView {
 
-    private static final String CAR_POSITION_STRING = "-";
+    private final static String CAR_POSITION_STRING = "-";
 
     private ResultView() {
 
