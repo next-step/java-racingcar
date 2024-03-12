@@ -19,7 +19,7 @@ class RoundServiceTest {
     @Test
     void moveParticipantsWhenStartRound() {
         // given
-        List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
+        List<String> names = Arrays.asList("Luffy", "Narut", "Ichig");
         RoundService roundService = new RoundService(names, new IncrementMoveStrategy());
 
         // when

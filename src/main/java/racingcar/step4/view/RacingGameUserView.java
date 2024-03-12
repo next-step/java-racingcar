@@ -1,10 +1,10 @@
-package racingcar.step4.ui;
+package racingcar.step4.view;
 
 import racingcar.step4.domain.move.RandomMoveStrategy;
 import racingcar.step4.service.RacingService;
 import racingcar.step4.service.dto.RacingResultDto;
-import racingcar.step4.ui.input.InputView;
-import racingcar.step4.ui.print.VisualizeRacePrintView;
+import racingcar.step4.view.input.InputView;
+import racingcar.step4.view.print.VisualizeRacePrintView;
 import racingcar.step4.utils.ConstUtils;
 
 import java.util.List;

@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingServiceTest {
 
-    private final List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
+    private final List<String> names = Arrays.asList("Luffy", "Narut", "Ichig");
     private final int roundCount = 3;
 
     @DisplayName("주어진 라운드만큼 경기를 수행하고, 각 참가자들은 이동한다.")

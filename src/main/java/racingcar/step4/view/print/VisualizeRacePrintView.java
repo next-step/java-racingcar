@@ -1,4 +1,4 @@
-package racingcar.step4.ui.print;
+package racingcar.step4.view.print;
 
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.dto.RoundResultDto;

@@ -11,9 +11,8 @@ public class Car {
     private int location;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        if (moveStrategy == null) {
-            throw new IllegalArgumentException("이동 전략을 넣어주세요.");
-        }
+        validateMoveStrategy(moveStrategy);
+        validateName(name);
 
         this.name = name;
         this.moveStrategy = moveStrategy;
@@ -27,5 +26,17 @@ public class Car {
 
     public ParticipantResultDto getParticipantResult() {
         return new ParticipantResultDto(name, location);
+    }
+
+    private static void validateMoveStrategy(MoveStrategy moveStrategy) {
+        if (moveStrategy == null) {
+            throw new IllegalArgumentException("이동 전략을 넣어주세요.");
+        }
+    }
+
+    private static void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름의 글자는 5자를 초과할 수 없습니다.");
+        }
     }
 }

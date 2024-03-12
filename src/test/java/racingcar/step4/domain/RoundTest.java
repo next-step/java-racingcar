@@ -20,7 +20,7 @@ class RoundTest {
     @Test
     void orderToMoveWithMove() {
         // given
-        List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
+        List<String> names = Arrays.asList("Luffy", "Narut", "Ichig");
         Round round = new Round(new IncrementMoveStrategy(), names);
 
         // when
