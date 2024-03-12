@@ -34,16 +34,6 @@ public class RacingGameTest {
         assertThat(drivingDistances).containsExactly(0, 0, 0);
     }
 
-    @Test
-    @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void result() {
-        racingGame.drive(FIVE_TIMES, ALWAYS_MOVE);
-
-        String expectedResult = expectedResult();
-        assertThat(racingGame.result())
-            .isEqualTo(expectedResult);
-    }
-
     private String expectedResult() {
         StringBuilder expected = new StringBuilder();
         for (int round = 1; round <= FIVE_TIMES; round++) {

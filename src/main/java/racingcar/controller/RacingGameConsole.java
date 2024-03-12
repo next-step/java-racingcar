@@ -31,7 +31,7 @@ public class RacingGameConsole {
         RacingGame racingGame = new RacingGame(carNames);
         racingGame.drive(round, drivingStrategy);
 
-        outputView.printResult(racingGame);
-        outputView.printWinners(racingGame);
+        outputView.printResult(racingGame.result());
+        outputView.printWinners(racingGame.winnerNames());
     }
 }

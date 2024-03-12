@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.fixture.CarsFixture.CAR_NAMES;
 import static racingcar.fixture.DrivingStrategyFixture.ALWAYS_MOVE;
 import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 
@@ -10,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.fixture.CarNameFixture;
 import racingcar.fixture.CarsFixture;
 
 public class CarsTest {
@@ -42,25 +40,6 @@ public class CarsTest {
         assertThat(drivingDistances).containsExactly(0, 0, 0);
     }
 
-    @Test
-    @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void result() {
-        cars.drive(ALWAYS_MOVE);
-        assertThat(cars.result()).isEqualTo(
-            String.format(
-                "%s : -\n%s : -\n%s : -",
-                CarNameFixture.K3, CarNameFixture.K5, CarNameFixture.K7
-            )
-        );
-
-        cars.drive(ALWAYS_MOVE);
-        assertThat(cars.result()).isEqualTo(
-            String.format(
-                "%s : --\n%s : --\n%s : --",
-                CarNameFixture.K3, CarNameFixture.K5, CarNameFixture.K7
-            )
-        );
-    }
 
     @Test
     @DisplayName("우승자 목록을 가져온다 (단일 우승자)")

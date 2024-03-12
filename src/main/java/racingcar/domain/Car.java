@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.dto.DriveResult;
+
 public class Car {
 
     private static final String DISTANCE_SYMBOL = "-";
@@ -31,8 +33,8 @@ public class Car {
         return drivingDistance.matchDistance(distance);
     }
 
-    public String result() {
-        return name.value() + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.value());
+    public DriveResult driveResult() {
+        return new DriveResult(name, drivingDistance);
     }
 
     public int drivingDistance() {

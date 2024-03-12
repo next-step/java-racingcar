@@ -25,13 +25,4 @@ public class CarTest {
         car.drive(NEVER_MOVE);
         assertThat(car.drivingDistance()).isEqualTo(0);
     }
-
-    @Test
-    @DisplayName("-의 개수를 이용해 주행 거리를 표현한다")
-    void result() {
-        car.drive(ALWAYS_MOVE);
-        assertThat(car.result()).isEqualTo(car.name() + " : -");
-        car.drive(ALWAYS_MOVE);
-        assertThat(car.result()).isEqualTo(car.name() + " : --");
-    }
 }

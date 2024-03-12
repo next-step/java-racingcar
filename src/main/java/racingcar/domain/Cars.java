@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.dto.DriveResult;
+import racingcar.domain.dto.RoundResult;
 
 public class Cars {
 
@@ -36,10 +38,11 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    public String result() {
-        return cars.stream()
-            .map(Car::result)
-            .collect(Collectors.joining("\n"));
+    public RoundResult result() {
+        List<DriveResult> driveResults = cars.stream()
+            .map(Car::driveResult)
+            .collect(Collectors.toList());
+        return new RoundResult(driveResults);
     }
 
     public Winners winners() {

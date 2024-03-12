@@ -2,11 +2,12 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.dto.RoundResult;
 
 public class RacingGame {
 
     private final Cars cars;
-    private final List<String> roundResults = new ArrayList<>();
+    private final List<RoundResult> roundResults = new ArrayList<>();
 
     public RacingGame(List<String> carNames) {
         this(Cars.from(carNames));
@@ -29,8 +30,8 @@ public class RacingGame {
         return cars.drivingDistances();
     }
 
-    public String result() {
-        return String.join("\n\n", roundResults);
+    public List<RoundResult> result() {
+        return roundResults;
     }
 
     public List<String> winnerNames() {

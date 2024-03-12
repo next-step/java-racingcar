@@ -1,9 +1,9 @@
 package racingcar;
 
+import racingcar.controller.RacingGameConsole;
 import racingcar.domain.SixtyPercentRandomDrivingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.controller.RacingGameConsole;
 
 public class Main {
 
