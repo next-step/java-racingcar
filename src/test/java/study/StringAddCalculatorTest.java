@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import util.StringAddCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,34 +11,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 	StringAddCalculator calculator = new StringAddCalculator();
-	@Test
-	@DisplayName("빈 문자열 입력할 경우 0을 반환한다.")
-	public void calculateEmptyStringThenReturn0() {
-		assertThat(calculator.calculate("")).isEqualTo(0);
-	}
 
-	@Test
-	@DisplayName("null 값을 입력할 경우 0을 반환한다.")
-	public void calculateNullThenReturn0() {
-		assertThat(calculator.calculate(null)).isEqualTo(0);
+	@DisplayName("빈 문자열이나 null을 입력할 경우 0을 반환한다.")
+	@ParameterizedTest
+	@NullAndEmptySource
+	public void calculateEmptyStringThenReturn0(String input) {
+		assertThat(calculator.calculate(input)).isEqualTo(0);
 	}
 
 	@Test
 	@DisplayName("숫자 하나를 입력할 경우 해당 숫자를 반환한다.")
 	public void calculateOneNumberThenReturnOneNumber() {
 		assertThat(calculator.calculate("1")).isEqualTo(1);
-	}
-
-	@Test
-	@DisplayName("컴마와 콜론으로 문자열을 나눌 수 있다.")
-	public void splitByCommaAndColon() {
-		assertThat(calculator.splitByCustomDelimiter("1,2:3")).isEqualTo(new String[]{"1", "2", "3"});
-	}
-
-	@Test
-	@DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정하여 문자열을 나눌 수 있다.")
-	public void splitByCustomDelimiter() {
-		assertThat(calculator.splitByCustomDelimiter("//;\n1:2;3,")).isEqualTo(new String[]{"1", "2", "3"});
 	}
 
 	@Test

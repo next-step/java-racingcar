@@ -1,46 +1,41 @@
 package util;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-	private static final String DELIMITER_PATTERN = ",|:";
-	private static final String CUSTOM_DELIMITER_PATTERN = "//(.*)\n(.*)";
+	private static final String DELIMITER_PATTERN_STRING = ",|:";
+	private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.*)\n(.*)");
 
 	public StringAddCalculator() {
 	}
 
 	public int calculate(String input) {
-		if(isNotValidInput(input)) {
+		if(isNotValid(input)) {
 			return 0;
 		}
 
 		String[] numbers = splitByCustomDelimiter(input);
 
-		if(isNotValidNumbers(numbers)) {
+		if(isNotValid(numbers)) {
 			return Integer.parseInt(input);
 		}
 
 		return getSum(numbers);
 	}
 
-	public String[] splitByCustomDelimiter(String input) {
-		Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(input);
+	private String[] splitByCustomDelimiter(String input) {
+		Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
 
 		if(matcher.find()) {
-			return matcher.group(2).split(DELIMITER_PATTERN + "|" + matcher.group(1));
+			return matcher.group(2).split(DELIMITER_PATTERN_STRING + "|" + matcher.group(1));
 		}
 
-		return input.split(DELIMITER_PATTERN);
+		return input.split(DELIMITER_PATTERN_STRING);
 	}
 
-	private boolean isNotValidInput(String input) {
-		if(input == null) {
-			return true;
-		}
-
-		if(input.trim().isEmpty()) {
+	private boolean isNotValid(String input) {
+		if(input == null || input.isBlank()) {
 			return true;
 		}
 
@@ -48,7 +43,7 @@ public class StringAddCalculator {
 	}
 
 
-	private boolean isNotValidNumbers(String[] numbers) {
+	private boolean isNotValid(String[] numbers) {
 		if(numbers.length <= 1) {
 			return true;
 		}
@@ -56,16 +51,21 @@ public class StringAddCalculator {
 		return false;
 	}
 
-	private void isNotValidNumber(int number) {
+	private void checkPositive(int number) {
 		if(number < 0) {
 			throw new RuntimeException("음수가 포함되어 있습니다.");
 		}
 	}
 
 	private int getSum(String[] numbers) {
-		return Arrays.stream(numbers)
-				.mapToInt(Integer::parseInt)
-				.peek(this::isNotValidNumber)
-				.sum();
+		int sum = 0;
+
+		for(String number : numbers) {
+			int num = Integer.parseInt(number);
+			checkPositive(num);
+			sum += num;
+		}
+
+		return sum;
 	}
 }
