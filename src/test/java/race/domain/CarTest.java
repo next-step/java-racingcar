@@ -1,6 +1,4 @@
-package domain;
-
-import static org.junit.jupiter.api.Assertions.*;
+package race.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +11,6 @@ class CarTest {
         for (int i = 0; i < count; i++) {
             car.move();
         }
-        System.out.println(car);
+        System.out.println(car.getCountOfMove());
     }
 }
