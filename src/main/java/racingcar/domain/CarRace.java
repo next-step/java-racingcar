@@ -1,8 +1,5 @@
-package racingcar.controller;
+package racingcar.domain;
 
-import racingcar.domain.Cars;
-import racingcar.domain.NameSeparator;
-import racingcar.domain.RandomCarMoveStrategy;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 

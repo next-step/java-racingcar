@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.Name;
-
 public class Car {
 
     private final Name name;
