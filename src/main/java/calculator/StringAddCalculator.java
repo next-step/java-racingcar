@@ -5,17 +5,22 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private final static int DELIMITER_GROUP = 1;
+    private final static int STRING_GROUP = 2;
+    private final static String DEFAULT_DELIMITER_PATTERN = "[,:]";
+
+    private StringAddCalculator() {
+
+    }
+
     public static int splitAndSum(String str) {
         if (isEmptyString(str)) {
             return 0;
         }
 
         String[] strings = splitString(str);
-        int[] numbers = parseStringToInt(strings);
-        if (hasNegative(numbers)) {
-            throw new RuntimeException();
-        }
-
+        int[] numbers = parseStringToInts(strings);
         return sum(numbers);
     }
 
@@ -23,29 +28,39 @@ public class StringAddCalculator {
         return str == null || str.isEmpty();
     }
 
-    private static boolean hasNegative(int[] numbers) {
-        for (int num : numbers) {
-            if (num < 0) { return true; }
-        }
-        return false;
-    }
-
     private static String[] splitString(String str) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(str);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(DELIMITER_GROUP);
+            return matcher.group(STRING_GROUP).split(customDelimiter);
         }
 
-        return str.split("[,:]");
+        return str.split(DEFAULT_DELIMITER_PATTERN);
     }
 
-    private static int[] parseStringToInt(String[] strings) {
+    private static int[] parseStringToInts(String[] strings) {
         int[] numbers = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
-            numbers[i] = Integer.parseInt(strings[i]);
+            numbers[i] = parseInt(strings[i]);
         }
         return numbers;
+    }
+
+    private static int parseInt(String str) {
+        int num = Integer.parseInt(str);
+        validateNegative(num);
+
+        return num;
+    }
+
+    private static void validateNegative(int num) {
+        if (isNegative(num)) {
+            throw new RuntimeException("음수가 포함되어 있습니다.");
+        }
+    }
+
+    private static boolean isNegative(int num) {
+        return num < 0;
     }
 
     private static int sum(int[] numbers) {
