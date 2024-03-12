@@ -13,7 +13,7 @@ public class CarsDtoTest {
     @DisplayName("랜덤 움직임 차량 목록 생성자에 양수를 선언할 경우 일급 컬렉션의 리스트는 비어 있지 않다.")
     @Test
     void randomStrategyCars() {
-        final CarsDto cars = CarsDto.randomStrategyCars(3);
+        final CarsDto cars = CarsDto.from(3);
 
         assertThat(cars.isEmpty()).isFalse();
     }
@@ -22,7 +22,7 @@ public class CarsDtoTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void randomStrategyCars(int carCount) {
-        final CarsDto cars = CarsDto.randomStrategyCars(carCount);
+        final CarsDto cars = CarsDto.from(carCount);
 
         assertThat(cars.isEmpty()).isTrue();
     }

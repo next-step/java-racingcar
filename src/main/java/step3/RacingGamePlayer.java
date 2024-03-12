@@ -15,9 +15,7 @@ public class RacingGamePlayer {
     }
 
     private Racing randomMovementRacing(int carCount, int tryCount) {
-        final CarsDto cars = CarsDto.randomStrategyCars(carCount);
-
-        return Racing.of(cars, tryCount);
+        return Racing.randomMoving(CarsDto.from(carCount), tryCount);
     }
 
     public static void main(String[] args) {

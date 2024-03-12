@@ -3,18 +3,12 @@ package step3.service;
 import step3.view.CarMovementResult;
 
 public class Car {
-    private final Moving movingStrategy;
     private int moveCount;
 
-    public static Car randomMovingCar() {
-        return new Car(new RandomMoving());
+    public Car() {
     }
 
-    private Car(Moving movingStrategy) {
-        this.movingStrategy = movingStrategy;
-    }
-
-    public void move() {
+    public void move(Moving movingStrategy) {
         if (movingStrategy.movable()) {
             moveCount++;
         }

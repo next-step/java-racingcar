@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
 public class CarsDto {
     private final List<Car> cars = new ArrayList<>();
 
-    public static CarsDto randomStrategyCars(int carCount) {
+    public static CarsDto from(int carCount) {
         return new CarsDto(
                 IntStream.range(0, carCount)
-                        .mapToObj(idx -> Car.randomMovingCar())
+                        .mapToObj(idx -> new Car())
                         .collect(Collectors.toList())
         );
     }
@@ -28,8 +28,8 @@ public class CarsDto {
         return cars.isEmpty();
     }
 
-    public void moveAll() {
-        cars.forEach(Car::move);
+    public void moveAll(Moving movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 
     public List<CarMovementResult> movementResults() {
