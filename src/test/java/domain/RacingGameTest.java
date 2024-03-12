@@ -36,4 +36,22 @@ public class RacingGameTest {
                 Arguments.of(List.of(new Car(() -> true), new Car(() -> false)), List.of(new Position(3), new Position(0)))
         );
     }
+
+    @DisplayName("자동차 경주 게임을 완료한 후 우승자를 확인할 수 있다.")
+    @Test
+    void test02() {
+        // given
+        Car car1 = new Car(() -> true);
+        Car car2 = new Car(() -> false);
+        Car car3 = new Car(() -> true);
+        RacingGame racingGame = new RacingGame(List.of(car1, car2, car3), 3);
+
+        // when
+        racingGame.play();
+        List<Car> winners = racingGame.winner();
+
+        // then
+        assertThat(winners).hasSize(2)
+                .containsExactlyInAnyOrder(car1, car3);
+    }
 }

@@ -2,6 +2,7 @@ package view;
 
 import domain.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
@@ -11,15 +12,21 @@ public class ResultView {
 
     public static void print(List<Car> cars) {
         for (Car car : cars) {
-            print(car);
-            System.out.println();
+            System.out.println(car);
         }
         System.out.println();
     }
 
-    private static void print(Car car) {
-        for (int i = 0; i <= car.position().getPosition(); i++) {
-            System.out.print("-");
+    public static void printWinner(List<Car> winners) {
+        List<String> names = getNames(winners);
+        System.out.printf("%s가 최종 우승했습니다.%n", String.join(", ", names));
+    }
+
+    private static List<String> getNames(List<Car> cars) {
+        List<String> names = new ArrayList<>();
+        for (Car car : cars) {
+            names.add(car.getName());
         }
+        return names;
     }
 }
