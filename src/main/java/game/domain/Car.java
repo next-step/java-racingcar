@@ -1,7 +1,5 @@
 package game.domain;
 
-import game.util.ResultView;
-
 public class Car {
 
     private static final int MAX_NUMBER = 9;
@@ -11,10 +9,6 @@ public class Car {
 
     public int getDistance() {
         return distance;
-    }
-
-    public void printDistance() {
-        ResultView.printPlainMessage("-".repeat(Math.max(0, distance)));
     }
 
     public void move(int number) {

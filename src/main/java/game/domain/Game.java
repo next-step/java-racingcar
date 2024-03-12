@@ -1,8 +1,7 @@
 package game.domain;
 
-import game.util.ResultView;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     private final NumberGenerator generator;
@@ -20,10 +19,7 @@ public class Game {
         }
     }
 
-    public void printResult() {
-        for (Car car : cars) {
-            car.printDistance();
-        }
-        ResultView.printPlainMessage("");
+    public List<Integer> getDistances(){
+        return cars.stream().map(Car::getDistance).collect(Collectors.toList());
     }
 }
