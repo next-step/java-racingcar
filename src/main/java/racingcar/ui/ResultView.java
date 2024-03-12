@@ -2,6 +2,8 @@ package racingcar.ui;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Names;
+import racingcar.domain.Winner;
 
 import java.text.MessageFormat;
 
@@ -32,5 +34,9 @@ public class ResultView {
     private String getPrintFormat(Car car) {
         return MessageFormat.format("{0} : {1}"
             , car.getName().get(), CAR_POSITION_STRING.repeat(car.getDistance().get()));
+    }
+
+    public void printWinnerNames(Names names) {
+        System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", names));
     }
 }

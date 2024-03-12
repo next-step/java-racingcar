@@ -27,6 +27,8 @@ public class CarRace {
         }
 
         resultView.printCarRaceResult();
+        Winner winner = new Winner();
+        resultView.printWinnerNames(winner.who(cars));
     }
 
     private String[] separateNameString(String nameString) {

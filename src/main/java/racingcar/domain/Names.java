@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.Name;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,4 +20,16 @@ public class Names {
         return Collections.unmodifiableList(this.names);
     }
 
+    @Override
+    public String toString() {
+        return String.join(",", toStringArray());
+    }
+
+    private String[] toStringArray() {
+        String[] stringArray = new String[names.size()];
+        for (int i = 0; i < stringArray.length; i++) {
+            stringArray[i] = names.get(i).get();
+        }
+        return stringArray;
+    }
 }
