@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Distance {
 
-    int distance;
+    private int distance;
 
     public Distance() {
         this.distance = 0;
