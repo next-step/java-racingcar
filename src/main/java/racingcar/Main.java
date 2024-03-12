@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.domain.SixtyPercentRandomDrivingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.view.RacingGameConsole;
+import racingcar.controller.RacingGameConsole;
 
 public class Main {
 

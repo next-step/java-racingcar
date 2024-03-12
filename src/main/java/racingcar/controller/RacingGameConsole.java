@@ -1,8 +1,10 @@
-package racingcar.view;
+package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.DrivingStrategy;
 import racingcar.domain.RacingGame;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGameConsole {
 
