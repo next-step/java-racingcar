@@ -10,29 +10,31 @@ public class ResultView {
 
 		Cars cars = Cars.createCars(carNames);
 
-		viewCarPositions(cars, POSITION_CHAR_CODE);
-
-		lineBreaking();
-
-		viewPositionAfter2nd(count, cars);
+		viewCarPositions(cars, count, POSITION_CHAR_CODE);
 	}
 
-	private static void viewPositionAfter2nd(final int count, final Cars cars) {
-		for (int i = 0; i < count - 1; i++) {
-			cars.moveCars();
-			viewCarPositions(cars, POSITION_CHAR_CODE);
+	private static void viewCarPositions(final Cars cars, final int count, final char positionChar) {
+		for (int i = 0; i < count; i++) {
+			moveCars(cars, count);
+			printPositions(cars, positionChar);
 			lineBreaking();
+		}
+	}
+
+	private static void printPositions(final Cars cars, final char positionChar) {
+		for (int j = 0; j < cars.getSize(); j++) {
+			System.out.println(carPositionWithChar(cars.getCars().get(j), positionChar));
+		}
+	}
+
+	private static void moveCars(final Cars cars, final int count) {
+		if (count != 0) {
+			cars.moveCars();
 		}
 	}
 
 	private static void lineBreaking() {
 		System.out.println("");
-	}
-
-	private static void viewCarPositions(final Cars cars, final char positionChar) {
-		for (int i = 0; i < cars.getCars().size(); i++) {
-			System.out.println(carPositionWithChar(cars.getCars().get(i),positionChar));
-		}
 	}
 
 	private static String carPositionWithChar(final Car car, final char positionChar) {

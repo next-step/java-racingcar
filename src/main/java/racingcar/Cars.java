@@ -29,4 +29,8 @@ public class Cars {
 	public List<Car> getCars() {
 		return cars;
 	}
+
+	public Integer getSize() {
+		return cars.size();
+	}
 }
