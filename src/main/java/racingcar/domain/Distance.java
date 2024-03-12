@@ -10,6 +10,7 @@ public class Distance {
         this.distance = 0;
     }
 
+    // Constructor for UnitTest
     public Distance(int initValue) {
         this.distance = initValue;
     }
