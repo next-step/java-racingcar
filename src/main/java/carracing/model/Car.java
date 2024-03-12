@@ -25,7 +25,7 @@ public class Car {
         positionOfCar.increase(increaseAmount);
     }
 
-    public RaceResultOfCar raceResult() {
-        return RaceResultOfCar.newRaceResult(nameOfCar.carName(), positionOfCar.position(), positionOfCar.positionHistory());
+    public RaceRecordOfCar raceRecord() {
+        return RaceRecordOfCar.newRaceResult(nameOfCar.carName(), positionOfCar.position(), positionOfCar.positionHistory());
     }
 }
