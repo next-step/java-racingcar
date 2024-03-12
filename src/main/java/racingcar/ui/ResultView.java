@@ -26,7 +26,7 @@ public class ResultView {
     public static void print(Cars cars) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars.get()) {
-            String carPosition = CAR_POSITION_STRING.repeat(car.getDistance());
+            String carPosition = CAR_POSITION_STRING.repeat(car.getDistance().get());
             stringBuilder.append(carPosition).append("\n");
         }
 

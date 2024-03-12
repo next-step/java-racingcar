@@ -2,19 +2,19 @@ package racingcar.domain;
 
 public class Car {
 
-    private int distance;
+    private final Distance distance;
 
     public Car() {
-        this.distance = 0;
+        this.distance = new Distance();
     }
 
     public void move(CarMoveStrategy moveStrategy) {
         if (moveStrategy.move()) {
-            distance++;
+            distance.increase();
         }
     }
 
-    public int getDistance() {
+    public Distance getDistance() {
         return this.distance;
     }
 

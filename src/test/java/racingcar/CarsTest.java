@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.CustomCarMoveStrategy;
+import racingcar.domain.Distance;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class CarsTest {
 
         // Then
         List<Car> actualCars = cars.get();
-        assertThat(actualCars.get(index).getDistance()).isEqualTo(3);
+        assertThat(actualCars.get(index).getDistance()).isEqualTo(new Distance(3));
     }
 
 }

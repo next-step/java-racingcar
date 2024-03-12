@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.CustomCarMoveStrategy;
+import racingcar.domain.Distance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -21,7 +22,7 @@ public class CarTest {
         car.move(new CustomCarMoveStrategy("MOVE"));
 
         // Then
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.getDistance()).isEqualTo(new Distance(1));
     }
 
     @Test
@@ -34,7 +35,7 @@ public class CarTest {
         car.move(new CustomCarMoveStrategy(""));
 
         // Then
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getDistance()).isEqualTo(new Distance(0));
     }
 
 
@@ -51,7 +52,7 @@ public class CarTest {
         }
 
         // Then
-        assertThat(car.getDistance()).isEqualTo(5);
+        assertThat(car.getDistance()).isEqualTo(new Distance(5));
     }
 
     @Nested
