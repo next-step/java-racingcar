@@ -41,30 +41,32 @@ public class RacingCar {
 
     public void start() {
         System.out.println("실행 결과");
-        int[] moveBoard = new int[carCount];
+        int[] result = new int[carCount];
 
         for (int i = 0; i < moveCount; i++) {
             for (int j = 0; j < carCount; j++) {
-                int randomValue = createRandomValue();
-                if (isAbleToMove(randomValue)) {
-                    moveBoard[j] += 1;
+                if (isAbleToMove()) {
+                    result[j] += 1;
                 }
             }
+        }
+
+        printResult(result);
+    }
+
+    private boolean isAbleToMove() {
+        return random.nextInt(rangeRandom) >= cutMove;
+    }
+
+    private void printResult(int[] result) {
+        for (int i = 0; i < moveCount; i++) {
             for (int k = 0; k < carCount; k++) {
-                for (int x = 0; x < moveBoard[k]; x++) {
+                for (int x = 0; x < result[k]; x++) {
                     System.out.print("-");
                 }
                 System.out.println();
             }
             System.out.println();
         }
-    }
-
-    private boolean isAbleToMove(int randomValue) {
-        return randomValue >= cutMove;
-    }
-
-    private int createRandomValue() {
-        return random.nextInt(rangeRandom);
     }
 }
