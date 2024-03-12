@@ -29,14 +29,21 @@ public class racingCarTest {
     @DisplayName("자동차가 전진 기록 남기고 있는지 확인하는 테스트")
     public void testIsMovingCar() {
         Car car = new Car();
-        car.addMoveHistory(true);
-        assertThat(car.getIsMoveByIndex(0)).isEqualTo(true);
+        car.move(true);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("게임")
+    @DisplayName("게임 로직 정상실행 통합 테스트")
     public void testGameLogic() {
         Racingcar.gameLogic(3,5);
+    }
+
+    @Test
+    @DisplayName("최대 입력값 초과 테스트")
+    public void testMaxInput() {
+        boolean isMaxInput = Racingcar.isMaximumInput(10001,10001);
+        assertThat(isMaxInput).isTrue();
     }
 
 }

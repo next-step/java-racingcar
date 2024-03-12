@@ -1,20 +1,15 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
-    List<Boolean> moveHistory = new ArrayList<>();
+    private int distance = 0;
 
-    public List<Boolean> getMoveHistory() {
-        return moveHistory;
+    public int getDistance() {
+        return distance;
     }
 
-    public boolean getIsMoveByIndex(int index) {
-        return moveHistory.get(index);
-    }
-
-    public void addMoveHistory(boolean isMove) {
-        moveHistory.add(isMove);
+    public void move(boolean isMove) {
+        if(isMove) {
+            distance += 1;
+        }
     }
 }
