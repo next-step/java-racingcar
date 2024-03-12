@@ -2,24 +2,30 @@ package racingcar.step4.domain;
 
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.move.MoveStrategy;
-import racingcar.step4.utils.ConstUtils;
 
 public class Car {
 
     private final String name;
     private final MoveStrategy moveStrategy;
-    private int location;
+    private Location location;
 
     public Car(String name, MoveStrategy moveStrategy) {
+        this.name = name;
+        this.moveStrategy = moveStrategy;
+        this.location = new Location(0);
+    }
+
+    public Car(String name, MoveStrategy moveStrategy, int location) {
         validateMoveStrategy(moveStrategy);
 
         this.name = name;
         this.moveStrategy = moveStrategy;
+        this.location = new Location(location);
     }
 
     public void move() {
         if (moveStrategy.isMove()) {
-            location += ConstUtils.MOVE;
+            location = location.move();
         }
     }
 

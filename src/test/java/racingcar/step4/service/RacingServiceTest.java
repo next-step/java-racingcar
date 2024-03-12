@@ -63,7 +63,7 @@ class RacingServiceTest {
 
         RoundResultDto finalRound = roundResults.get(finalRoundIndex);
         return finalRound.getParticipantResults().stream()
-                .map(ParticipantResultDto::getLocation)
+                .map(ParticipantResultDto::getCurrentLocation)
                 .collect(Collectors.toList());
     }
 }

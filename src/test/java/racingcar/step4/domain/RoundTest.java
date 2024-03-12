@@ -1,6 +1,5 @@
 package racingcar.step4.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.step4.domain.dto.ParticipantResultDto;
@@ -29,7 +28,7 @@ class RoundTest {
 
         // then
         assertThat(result.getParticipantResults().stream()
-                .map(ParticipantResultDto::getLocation).collect(Collectors.toList())
+                .map(ParticipantResultDto::getCurrentLocation).collect(Collectors.toList())
         ).isEqualTo(new ArrayList<>(List.of(2, 2, 2)));
     }
 }

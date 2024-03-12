@@ -8,8 +8,6 @@ import racingcar.step4.view.input.InputView;
 import racingcar.step4.view.print.VisualizeRacePrintView;
 import racingcar.step4.utils.ConstUtils;
 
-import java.util.List;
-
 public class RacingGameUserView {
 
     public static void main(String[] args) {

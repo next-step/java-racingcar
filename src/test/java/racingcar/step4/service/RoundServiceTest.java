@@ -29,7 +29,7 @@ class RoundServiceTest {
 
         // then
         assertThat(result.getParticipantResults().stream()
-                .map(ParticipantResultDto::getLocation).collect(Collectors.toList())
+                .map(ParticipantResultDto::getCurrentLocation).collect(Collectors.toList())
         ).isEqualTo(new ArrayList<>(List.of(2, 2, 2)));
     }
 }

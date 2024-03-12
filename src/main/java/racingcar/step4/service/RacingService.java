@@ -47,7 +47,7 @@ public class RacingService {
         int winnerLocation = getWinnerLocation(finalRound);
 
         return finalRound.getParticipantResults().stream()
-                .filter(x -> x.getLocation() == winnerLocation)
+                .filter(x -> x.getCurrentLocation() == winnerLocation)
                 .map(ParticipantResultDto::getName)
                 .collect(Collectors.toList());
     }
@@ -58,7 +58,7 @@ public class RacingService {
 
     private Integer getWinnerLocation(RoundResultDto finalRound) {
         return finalRound.getParticipantResults() .stream()
-                .map(ParticipantResultDto::getLocation)
+                .map(ParticipantResultDto::getCurrentLocation)
                 .max(Integer::compareTo)
                 .get();
     }

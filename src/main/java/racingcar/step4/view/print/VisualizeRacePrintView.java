@@ -1,5 +1,6 @@
 package racingcar.step4.view.print;
 
+import racingcar.step4.domain.Location;
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.dto.RoundResultDto;
 import racingcar.step4.service.dto.RacingResultDto;
@@ -24,7 +25,7 @@ public class VisualizeRacePrintView {
 
     private void printRoundResult(RoundResultDto roundResult) {
         for (ParticipantResultDto participantResult : roundResult.getParticipantResults()) {
-            System.out.println(participantResult.getName() + " : " + printDelimiter.repeat(participantResult.getLocation()));
+            System.out.println(participantResult.getName() + " : " + printDelimiter.repeat(participantResult.getCurrentLocation()));
         }
     }
 
