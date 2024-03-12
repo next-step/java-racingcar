@@ -1,6 +1,8 @@
 package racingcar.ui;
 
-import racingcar.Car;
+import racingcar.model.Car;
+
+import java.util.List;
 
 public class ResultView {
     private static ResultView instance = new ResultView();
@@ -13,7 +15,11 @@ public class ResultView {
         return instance;
     }
 
-    public void printMove(Car car) {
+    public void printMove(List<Car> carList) {
+        carList.forEach(car -> printCarDistance(car));
+    }
+
+    private static void printCarDistance(Car car) {
         for (int i = 0; i < car.getDistance(); i++) {
             System.out.print("-");
         }

@@ -10,7 +10,7 @@ public class StringAddCalculator {
     private static final int DELIMITER_SECOND_VALUE = 2;
 
     public static int calculateSum(String strValue) {
-        if (isNullOrEmpty(strValue)) {
+        if(isNullOrEmpty(strValue)) {
             return EMPTY_NULL_RETURN_VALUE;
         }
 
@@ -25,7 +25,7 @@ public class StringAddCalculator {
 
     private static String[] getStringValues(String strValue) {
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(strValue);
-        if (matcher.find()) {
+        if(matcher.find()) {
             String delimiter = BASIC_DELIMITER + OR_DELIMITER + matcher.group(DELIMITER_FIRST_VALUE);
             return matcher.group(DELIMITER_SECOND_VALUE).split(delimiter);
         }
@@ -44,13 +44,13 @@ public class StringAddCalculator {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
             numbers[i] = Integer.parseInt(values[i]);
-            isNegative(numbers[i]);
+            checkNegative(numbers[i]);
         }
         return numbers;
     }
 
-    private static void isNegative(int number) {
-        if (number < 0) {
+    private static void checkNegative(int number) {
+        if(number < 0) {
             throw new IllegalArgumentException("양수만 입력해주세요.");
         }
     }
