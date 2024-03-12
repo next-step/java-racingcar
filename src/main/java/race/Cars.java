@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Cars {
 
-    private final List<Car> carList;
+    private final List<Car> cars;
 
     public Cars(int numberOfCars) {
-        this.carList = new ArrayList<>();
+        this.cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            this.carList.add(new Car());
+            this.cars.add(new Car());
         }
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 
 }
