@@ -6,7 +6,7 @@ public class RandomBounded {
 
     private static final int FORWARD_STANDARD = 4;
 
-    private int random;
+    private final int random;
 
     public RandomBounded() {
         random = new Random().nextInt(10);
