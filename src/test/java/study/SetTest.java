@@ -25,23 +25,22 @@ public class SetTest {
     }
 
     @Test
-    void size(){
+    void size() {
         int size = numbers.size();
         assertThat(size).isEqualTo(3);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void contains(Integer num){
+    @ValueSource(ints = {1, 2, 3})
+    void contains(Integer num) {
         assertThat(numbers.contains(num)).isTrue();
     }
 
     @ParameterizedTest
-    @CsvSource({"1,true","2,true","3,true","4,false","5,false"})
-    void checkvalue(Integer number, boolean expected){
+    @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void checkValue(Integer number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
-
 
 
 }
