@@ -13,7 +13,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static int inputCarMoveCOunt() {
+    public static int inputTrialCount() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         return scanner.nextInt();
     }
