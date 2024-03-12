@@ -5,12 +5,12 @@ public class CarStatusDto {
     private String name;
     private int position;
 
-    public CarStatusDto (String name, int position) {
+    public CarStatusDto(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    public CarStatusDto (int position) {
+    public CarStatusDto(int position) {
         this.position = position;
     }
 

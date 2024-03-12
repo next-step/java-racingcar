@@ -20,5 +20,7 @@ public class CarRacingController {
         for (List<CarStatusDto> attemptResult : resultDto.getAttempts()) {
             ResultView.displayCurrentCarsLocation(attemptResult);
         }
+
+        ResultView.displayWinners(resultDto);
     }
 }
