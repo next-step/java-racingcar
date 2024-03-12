@@ -12,22 +12,29 @@ import static game.view.ResultView.printPlainMessage;
 public class GameClient {
 
     private static final String EXECUTION_RESULT = "\n실행 결과";
-    private static final String ASK_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    private static final String ASK_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String ASK_GAME_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
     public static void main(String[] args) {
         final int bound = 10;
-        int gameCount = insertValue(ASK_GAME_COUNT_MESSAGE);
-        int carCount = insertValue(ASK_CAR_COUNT_MESSAGE);
+        String[] names = insertNames();
+        int carCount = names.length;
+        int gameCount = insertCount();
         printPlainMessage(EXECUTION_RESULT);
         NumberGenerator generator = new RandomNumberGenerator(bound);
         List<Car> cars = generateCars(carCount);
         playGamesAndPrintResult(gameCount, generator, cars);
     }
 
-    private static int insertValue(String message) {
-        printPlainMessage(message);
+    private static int insertCount() {
+        printPlainMessage(GameClient.ASK_GAME_COUNT_MESSAGE);
         return InputView.insertInt();
+    }
+
+    private static String[] insertNames(){
+        printPlainMessage(GameClient.ASK_CAR_NAME_MESSAGE);
+        String names = InputView.insertValue();
+        return names.split(",");
     }
 
     private static void playGamesAndPrintResult(int gameCount, NumberGenerator generator, List<Car> cars) {

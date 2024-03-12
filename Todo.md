@@ -30,9 +30,6 @@
 # Step4
 
 ## Todo
-- 문자열 출력("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
-- 문자열 입력("pobi,crong,honux")
-- 자동차 이름은 ","를 기준으로 구분("one,two,three" => one,two, "onetwo,three" => onetwo,three)
 - 자동차 이름은 5글자를 초과할 수 없음("hihih" => "hihih", "hihihi" => RuntimeException) 
 - 문자열 출력("시도할 회수는 몇회인가요?")
 - 횟수가 0보다 작을 수 없음("0" => RuntimeException)
@@ -49,3 +46,6 @@
 - Step3 개선 사항 : Constant interface 제거 및 상수값들을 사용하는 클래스에서 직접 명시하도록 변경
 - Step3 개선 사항 : NumberUtil 제거 이후에 GameClient 혹은 Game에 validation 옮기기
 - Step3 개선 사항 : Game의 play도 테스트 코드 추가
+- 문자열 출력("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
+- 문자열 입력("pobi,crong,honux")
+- 자동차 이름은 ","를 기준으로 구분("one,two,three" => one,two, "onetwo,three" => onetwo,three)
