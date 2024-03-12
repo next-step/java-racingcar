@@ -22,4 +22,8 @@ public class Game {
     public List<Integer> getDistances(){
         return cars.stream().map(Car::getDistance).collect(Collectors.toList());
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

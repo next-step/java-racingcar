@@ -17,6 +17,10 @@ public class Car {
         return distance;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void move(int number) {
         validateNumber(number);
         if (canMove(number)) {

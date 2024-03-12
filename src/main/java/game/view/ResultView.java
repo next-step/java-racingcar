@@ -1,5 +1,7 @@
 package game.view;
 
+import game.domain.Car;
+
 import java.util.List;
 
 public class ResultView {
@@ -8,11 +10,10 @@ public class ResultView {
         System.out.println(message);
     }
 
-    public static void printDistance(final int distance){
-        printPlainMessage("-".repeat(Math.max(0, distance)));
-    }
-
-    public static void printDistance(final List<Integer> distances){
-        distances.forEach(ResultView::printDistance);
+    public static void printCars(final List<Car> cars){
+        cars.forEach(car -> {
+            String distance = "-".repeat(Math.max(0, car.getDistance()));
+            ResultView.printPlainMessage(car.getName() + " : " + distance);
+        });
     }
 }

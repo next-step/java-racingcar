@@ -6,8 +6,7 @@ import game.view.InputView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static game.view.ResultView.printDistance;
-import static game.view.ResultView.printPlainMessage;
+import static game.view.ResultView.*;
 
 public class GameClient {
 
@@ -48,7 +47,7 @@ public class GameClient {
     }
 
     private static void printDistances(Game game){
-        printDistance(game.getDistances());
+        printCars(game.getCars());
         printPlainMessage("");
     }
 
