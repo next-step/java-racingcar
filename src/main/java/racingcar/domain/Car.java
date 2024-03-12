@@ -22,4 +22,6 @@ public class Car {
         return this.distance;
     }
 
+    public Name getName() { return this.name; }
+
 }

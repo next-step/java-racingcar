@@ -6,8 +6,6 @@ import racingcar.domain.RandomCarMoveStrategy;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CarRace {
 

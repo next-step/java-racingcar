@@ -16,4 +16,8 @@ public class Name {
             throw new NameLengthExceededException();
         }
     }
+
+    public String get() {
+        return this.name;
+    }
 }
