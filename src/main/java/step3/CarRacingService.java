@@ -21,7 +21,7 @@ public class CarRacingService {
         for (int i = 0; i < attemptCount; i++) {
             carRacing.moveCars();
             List<CarStatusDto> currentAttemptStatus = carRacing.getCars().stream()
-                    .map(car -> new CarStatusDto(car.getCurrentLocation()))
+                    .map(car -> new CarStatusDto(car.getName(), car.getCurrentLocation()))
                     .collect(Collectors.toList());
             racingResults.add(currentAttemptStatus);
         }

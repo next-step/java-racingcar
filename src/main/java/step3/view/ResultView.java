@@ -15,6 +15,7 @@ public class ResultView {
     }
 
     private static void displayCarLocation(CarStatusDto carStatus) {
+        System.out.print(carStatus.getName()+" : ");
         for (int i = 0; i < carStatus.getPosition(); i++) {
             System.out.print("-");
         }
