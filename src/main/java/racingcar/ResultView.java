@@ -37,7 +37,7 @@ public class ResultView {
 		System.out.println("");
 	}
 
-	private static String carPositionWithChar(final Car car, final char positionChar) {
+	public static String carPositionWithChar(final Car car, final char positionChar) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < car.getPosition(); i++) {
 			sb.append(positionChar);
