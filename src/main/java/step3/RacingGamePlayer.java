@@ -1,6 +1,6 @@
 package step3;
 
-import step3.service.CarsDto;
+import step3.service.Cars;
 import step3.service.Racing;
 import step3.view.RacingInputView;
 
@@ -15,7 +15,7 @@ public class RacingGamePlayer {
     }
 
     private Racing randomMovementRacing(int carCount, int tryCount) {
-        return Racing.randomMoving(CarsDto.from(carCount), tryCount);
+        return Racing.randomMoving(Cars.from(carCount), tryCount);
     }
 
     public static void main(String[] args) {

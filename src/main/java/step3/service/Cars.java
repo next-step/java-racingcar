@@ -1,24 +1,25 @@
 package step3.service;
 
-import step3.view.CarMovementResult;
+import step3.view.result.CarMovementResult;
+import step3.view.result.CarMovementRoundResult;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class CarsDto {
+public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public static CarsDto from(int carCount) {
-        return new CarsDto(
+    public static Cars from(int carCount) {
+        return new Cars(
                 IntStream.range(0, carCount)
                         .mapToObj(idx -> new Car())
                         .collect(Collectors.toList())
         );
     }
 
-    private CarsDto(List<Car> cars) {
+    private Cars(List<Car> cars) {
         if (cars != null && !cars.isEmpty()) {
             this.cars.addAll(cars);
         }
@@ -32,7 +33,11 @@ public class CarsDto {
         cars.forEach(car -> car.move(movingStrategy));
     }
 
-    public List<CarMovementResult> movementResults() {
+    public CarMovementRoundResult roundResult() {
+        return CarMovementRoundResult.from(movementResults());
+    }
+
+    private List<CarMovementResult> movementResults() {
         return cars.stream()
                 .map(Car::movementResult)
                 .collect(Collectors.toList());

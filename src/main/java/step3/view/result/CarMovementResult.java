@@ -1,4 +1,4 @@
-package step3.view;
+package step3.view.result;
 
 public class CarMovementResult {
     private final int moveCount;

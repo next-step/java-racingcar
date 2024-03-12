@@ -1,6 +1,6 @@
 package step3.service;
 
-import step3.view.CarMovementResult;
+import step3.view.result.CarMovementResult;
 
 public class Car {
     private int moveCount;

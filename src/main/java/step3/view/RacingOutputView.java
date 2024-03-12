@@ -1,5 +1,7 @@
 package step3.view;
 
+import step3.view.result.CarMovementResult;
+
 import java.util.List;
 
 public class RacingOutputView {
