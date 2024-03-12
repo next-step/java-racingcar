@@ -20,7 +20,6 @@ public class RacingController {
         RacingRecord racingRecord = racingGame.run(racingTurn);
 
         ResultView resultView = new ResultView();
-        resultView.draw(racingRecord);
-        resultView.print();
+        resultView.print(racingRecord);
     }
 }

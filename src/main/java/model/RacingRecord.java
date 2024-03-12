@@ -6,7 +6,6 @@ import java.util.List;
 
 public class RacingRecord {
     private final List<Cars> records;
-    private final List<Car> winners;
 
     public RacingRecord(int capacity) {
         if (capacity < 1) {
@@ -14,22 +13,18 @@ public class RacingRecord {
         }
 
         this.records = new ArrayList<>(capacity);
-        this.winners = new ArrayList<>();
     }
 
     public void save(Cars cars) {
         this.records.add(cars);
     }
 
-    public void saveWinners(List<Car> winners) {
-        this.winners.addAll(winners);
-    }
-
     public List<Cars> getRecords() {
         return Collections.unmodifiableList(this.records);
     }
 
-    public List<Car> getWinners() {
-        return Collections.unmodifiableList(this.winners);
+    public List<Car> winners() {
+        Cars last = this.records.get(records.size() - 1);
+        return last.winners();
     }
 }

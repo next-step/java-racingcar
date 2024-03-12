@@ -22,7 +22,6 @@ public class RacingGame {
             racingRecord.save(movedCars);
         }
 
-        racingRecord.saveWinners(this.cars.winners());
         return racingRecord;
     }
 }
