@@ -24,4 +24,8 @@ public class Car {
         int increaseAmount = movingStrategy.isMovable() ? DEFAULT_INCREASE_AMOUNT : NO_INCREASE_AMOUNT;
         positionOfCar.increase(increaseAmount);
     }
+
+    public RaceResultOfCar raceResult() {
+        return RaceResultOfCar.newRaceResult(nameOfCar.carName(), positionOfCar.position(), positionOfCar.positionHistory());
+    }
 }
