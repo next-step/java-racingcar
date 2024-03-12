@@ -2,16 +2,14 @@ package racingcar.domain;
 
 public class Car {
 
-    private final CarMoveCondition moveCondition;
     private int distance;
 
-    public Car(CarMoveCondition moveStrategy) {
-        this.moveCondition = moveStrategy;
+    public Car() {
         this.distance = 0;
     }
 
-    public void move() {
-        if (moveCondition.movable()) {
+    public void move(CarMoveStrategy moveStrategy) {
+        if (moveStrategy.move()) {
             distance++;
         }
     }

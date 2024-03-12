@@ -1,15 +1,15 @@
 package racingcar.domain;
 
-public class CustomCarMoveCondition implements CarMoveCondition {
+public class CustomCarMoveStrategy implements CarMoveStrategy {
 
     private final String status;
 
-    public CustomCarMoveCondition(String status) {
+    public CustomCarMoveStrategy(String status) {
         this.status = status;
     }
 
     @Override
-    public boolean movable() {
+    public boolean move() {
         return this.status.equals("MOVE");
     }
 }
