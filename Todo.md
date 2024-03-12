@@ -30,7 +30,6 @@
 # Step4
 
 ## Todo
-- Step3 개선 사항 : Constant interface 제거 및 상수값들을 사용하는 클래스에서 직접 명시하도록 변경
 - Step3 개선 사항 : NumberUtil 제거 이후에 GameClient 혹은 Game에 validation 옮기기
 - Step3 개선 사항 : Game의 play도 테스트 코드 추가
 - 문자열 출력("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
@@ -49,3 +48,4 @@
 - Step3 개선 사항 : mvc(model, view, controller) 구조로 변경 (view <- controller -> model)
 - Step3 개선 사항 : domain 내부에 view에 의존하는 로직 분리 (Car, Game)
 - Step3 개선 사항 : GameInput에서도 view에 의존하는 로직 분리
+- Step3 개선 사항 : Constant interface 제거 및 상수값들을 사용하는 클래스에서 직접 명시하도록 변경

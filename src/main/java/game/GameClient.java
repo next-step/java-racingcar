@@ -2,22 +2,25 @@ package game;
 
 import game.domain.*;
 import game.view.InputView;
-import game.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static game.domain.Constant.*;
 import static game.view.ResultView.printDistance;
 import static game.view.ResultView.printPlainMessage;
 
 public class GameClient {
 
+    private static final String EXECUTION_RESULT = "\n실행 결과";
+    private static final String ASK_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    private static final String ASK_GAME_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
+
     public static void main(String[] args) {
+        final int bound = 10;
         int gameCount = insertValue(ASK_GAME_COUNT_MESSAGE);
         int carCount = insertValue(ASK_CAR_COUNT_MESSAGE);
         printPlainMessage(EXECUTION_RESULT);
-        NumberGenerator generator = new RandomNumberGenerator(BOUND);
+        NumberGenerator generator = new RandomNumberGenerator(bound);
         List<Car> cars = generateCars(carCount);
         playGamesAndPrintResult(gameCount, generator, cars);
     }
