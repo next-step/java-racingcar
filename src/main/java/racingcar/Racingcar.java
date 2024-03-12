@@ -29,7 +29,9 @@ public class Racingcar {
     }
 
     private static List<Car> initCarList(int numberOfCar) {
-        return new ArrayList<>(numberOfCar);
+        List<Car> carList = new ArrayList<>(numberOfCar);
+        IntStream.range(0,numberOfCar).forEach(i -> carList.add(new Car()));
+        return carList;
     }
 
     public static boolean isMovingForward(int value) {
