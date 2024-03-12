@@ -13,6 +13,10 @@ public class CarRacing {
         cars = new Cars(carNumbers, moveStrategy);
     }
 
+    public CarRacing(int carNumbers, String[] carNames, MoveStrategy moveStrategy) {
+        cars = new Cars(carNumbers, carNames, moveStrategy);
+    }
+
     public void moveCars() {
         cars.moveCars();
     }

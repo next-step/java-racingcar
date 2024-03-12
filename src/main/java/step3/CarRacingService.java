@@ -11,8 +11,8 @@ public class CarRacingService {
 
     private CarRacing carRacing;
 
-    public CarRacingService(int carNumbers, MoveStrategy moveStrategy) {
-        this.carRacing = new CarRacing(carNumbers, moveStrategy);
+    public CarRacingService(int carNumbers, String[] carNames, MoveStrategy moveStrategy) {
+        this.carRacing = new CarRacing(carNumbers, carNames, moveStrategy);
     }
 
     public RacingResultDto executeRacing(int attemptCount) {

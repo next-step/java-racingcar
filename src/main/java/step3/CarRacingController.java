@@ -10,8 +10,8 @@ public class CarRacingController {
 
     private CarRacingService carRacingService;
 
-    public CarRacingController(int carNumbers, MoveStrategy moveStrategy) {
-        this.carRacingService = new CarRacingService(carNumbers, moveStrategy);
+    public CarRacingController(int carNumbers, String[] carNames, MoveStrategy moveStrategy) {
+        this.carRacingService = new CarRacingService(carNumbers, carNames, moveStrategy);
     }
 
     public void racingStart(int attemptCount) {

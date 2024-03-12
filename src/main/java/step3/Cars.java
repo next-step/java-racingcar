@@ -16,6 +16,14 @@ public class Cars {
         }
     }
 
+    public Cars(int carNumbers, String[] carNames, MoveStrategy moveStrategy) {
+        this.cars = new ArrayList<>();
+
+        for (int i = 0; i < carNumbers; i++) {
+            cars.add(new Car(carNames[i], moveStrategy));
+        }
+    }
+
     public void moveCars() {
         for (Car car : cars) {
             car.moveForwardOnChance();
