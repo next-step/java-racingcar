@@ -2,19 +2,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final String BASIC_DELIMITER = ",|:";
+    private static final int EMPTY_NULL_RETURN_VALUE = 0;
+
 
     public static int calculateSum(String strValue) {
         if (isEmptyOrNull(strValue))
-            return 0;
+            return EMPTY_NULL_RETURN_VALUE;
 
         return split(StringsToInts(getStringValues(strValue, getMatcher(strValue))));
     }
 
     private static String getDelimiter(Matcher m) {
         if (m.find()) {
-            return m.group(1);
+            return BASIC_DELIMITER + "|" + m.group(1);
         }
-        return ",|:";
+        return BASIC_DELIMITER;
     }
 
     private static String[] getStringValues(String strValue, Matcher m) {
@@ -47,7 +50,7 @@ public class StringAddCalculator {
     }
 
     private static void isNegative(int number) {
-        if(number < 0) {
+        if (number < 0) {
             throw new RuntimeException();
         }
     }

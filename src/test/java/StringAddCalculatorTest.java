@@ -33,9 +33,25 @@ class StringAddCalculatorTest {
     @ParameterizedTest
     @DisplayName("숫자 2개를 ,(컴마)와 :(콜론) 입력할 경우 두 숫자의 합을 반환하는 테스트")
     @ValueSource(strings = {"5,6","5:6"})
-    void testSplit(String input) {
+    void testTwoNumSplit(String input) {
         int result = StringAddCalculator.calculateSum(input);
         assertThat(result).isEqualTo(11);
+    }
+
+    @ParameterizedTest
+    @DisplayName(",(컴마)와 :(콜론) 입력할 경우 합을 반환하는 테스트")
+    @ValueSource(strings = {"5,6:7","5:6,7"})
+    void testDelimiter(String input) {
+        int result = StringAddCalculator.calculateSum(input);
+        assertThat(result).isEqualTo(18);
+    }
+
+    @ParameterizedTest
+    @DisplayName(",(컴마)와 :(콜론)과 커스텀 구분자를 입력할 경우 합을 반환하는 테스트")
+    @ValueSource(strings = {"5,6:7,8","5:6,7:8","//;\n5;6:7,8"})
+    void testNumCustomDelimiter(String input) {
+        int result = StringAddCalculator.calculateSum(input);
+        assertThat(result).isEqualTo(26);
     }
 
     @Test
