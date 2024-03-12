@@ -11,10 +11,11 @@ import race.view.ResultView;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        Map<String, Integer> input = InputView.requestInput();
+        int numberOfCar = InputView.requestCars();
+        int countOfTrial = InputView.requestCountOfTrial();
         ResultView.start();
-        Cars cars = Cars.createInstance(input.get("numberOfCar"));
-        racing(cars, input.get("countOfTrial"));
+        Cars cars = Cars.createInstance(numberOfCar);
+        racing(cars, countOfTrial);
     }
 
     private static void racing(Cars cars, int countOfTrial) {

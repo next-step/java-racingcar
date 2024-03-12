@@ -9,35 +9,23 @@ public class InputView {
 
     private static final String INVALID_INPUT_MESSAGE_FORMAT = "잘못된 입력값입니다. 다시 입력해주세요. %s";
 
-    private static int numberOfCar;
-    private static int countOfTrial;
-
-    public static Map<String, Integer> requestInput() {
-        Map<String, Integer> map = new HashMap<>();
-        requestCars();
-        requestCountOfTrial();
-        map.put("numberOfCar", numberOfCar);
-        map.put("countOfTrial", countOfTrial);
-        return map;
-    }
-
-    private static void requestCountOfTrial() {
+    public static int requestCountOfTrial() {
         try {
             System.out.println("시도할 회수는 몇 회 인가요?");
-            countOfTrial = inputNumber();
+            return inputNumber();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            requestCountOfTrial();
+            return requestCountOfTrial();
         }
     }
 
-    private static void requestCars() {
+    public static int requestCars() {
         try {
             System.out.println("자동차 대수는 몇 대 인가요?");
-            numberOfCar = inputNumber();
+            return inputNumber();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            requestCars();
+            return requestCars();
         }
     }
 
