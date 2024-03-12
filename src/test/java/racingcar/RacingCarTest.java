@@ -1,39 +1,27 @@
 package racingcar;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class RacingCarTest {
     @Nested
-    @DisplayName("InputView")
-    class inputViewTest {
-        @Test
-        @DisplayName("(1)사용자에게 자동차 갯수를 입력 받음")
-        public void 갯수() {
-
-        }
-
-        @Test
-        @DisplayName("(2)사용자에게 자동차 횟수를 입력 받음")
-        public void 횟수() {
-
-        }
-    }
-
-    @Nested
     @DisplayName("Car")
     class CarTest {
+        Car car = new Car();
         @Test
         @DisplayName("(1)자동차의 위치를 전달")
-        public void 위치() {
-
+        public void position() {
+            int actual = car.position();
+            Assertions.assertThat(actual).isEqualTo(0);
         }
 
         @Test
         @DisplayName("(2)자동차의 위치를 업데이트")
-        public void 위치업뎃() {
-
+        public void updatePosition() {
+            car.updatePosition();
+            Assertions.assertThat(car.position()).isEqualTo(1);
         }
     }
 
@@ -64,27 +52,4 @@ public class RacingCarTest {
     public void 경주() {
 
     }
-
-
-
-    @Nested
-    @DisplayName("OutputView")
-    class OutputView {
-        @Test
-        @DisplayName("(1)자동차 하나의 위치를 출력 ")
-        public void 자동차하나의위치를출력()
-        {
-
-        }
-
-        @Test
-        @DisplayName("(2)모든 자동차의 위치를 출력")
-        public void 모든자동차위치를출력()
-        {
-
-        }
-
-    }
-
-
 }
