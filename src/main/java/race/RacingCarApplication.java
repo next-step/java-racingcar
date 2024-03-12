@@ -1,10 +1,10 @@
 package race;
 
-import domain.Car;
 import java.util.ArrayList;
 import java.util.List;
-import view.InputView;
-import view.ResultView;
+import race.domain.Car;
+import race.view.InputView;
+import race.view.ResultView;
 
 public class RacingCarApplication {
 

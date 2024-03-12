@@ -1,7 +1,8 @@
 package race.view;
 
-import domain.Car;
+
 import java.util.List;
+import race.domain.Car;
 
 public class ResultView {
 
