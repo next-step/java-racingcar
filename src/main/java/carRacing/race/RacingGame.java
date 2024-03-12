@@ -5,6 +5,8 @@ import carRacing.common.RandomGenerator;
 import carRacing.car.Car;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingGame {
     private final RandomGenerator generator;
@@ -30,17 +32,16 @@ public class RacingGame {
     }
 
     private void runRacingRounds(int trialCount) {
-        for (int trial = 0; trial < trialCount; trial++) {
-            cars.forEach(car -> {
-                car.updatePosition(generator.generate());
-            });
+        IntStream.range(0, trialCount).forEach(trial -> {
+            cars.forEach(car -> car.updatePosition(generator.generate()));
             ui.printTrack(cars, trial);
-        }
+        });
     }
 
     private void createCarList(String names) {
-        String[] nameList = Arrays.stream(names.split(COMMA_SEPARATOR))
-                .map(String::trim).toArray(String[]::new);
+        List<String> nameList = Arrays.stream(names.split(COMMA_SEPARATOR))
+                .map(String::trim).collect(Collectors.toList());
+
         for (String s : nameList) {
             try {
                 cars.addCar(Car.of(s));
