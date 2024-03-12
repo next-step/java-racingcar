@@ -3,6 +3,7 @@ package race.view;
 
 import java.util.List;
 import race.domain.Car;
+import race.domain.Cars;
 
 public class ResultView {
 
@@ -13,9 +14,9 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void showProcess(List<Car> cars) {
+    public static void showProcess(Cars cars) {
         StringBuilder sb = new StringBuilder();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             sb.append(drawProgressBar(car.getCountOfMove())).append(END_OF_LINE);
         }
         System.out.println(sb);
