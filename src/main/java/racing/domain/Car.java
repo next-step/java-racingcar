@@ -12,8 +12,8 @@ public class Car {
     public int forward(MoveStrategy moveStrategy) {
         //position ++
 
-        if(moveStrategy.isMovable()){
-            position ++;
+        if (moveStrategy.isMovable()) {
+            position++;
         }
         return position;
     }

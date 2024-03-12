@@ -7,6 +7,7 @@ import java.util.List;
 public class ResultView {
 
     private static final String GAME_RESULT = "실행 결과";
+
     public static void showResult(List<RoundRecord> records) {
         StringBuilder printResult = new StringBuilder();
         printResult.append(GAME_RESULT);
@@ -14,6 +15,7 @@ public class ResultView {
             System.out.println(print(roundRecord));
         }
     }
+
     private static String print(RoundRecord roundRecord) {
         StringBuilder result = new StringBuilder();
         for (Integer position : roundRecord.getPositions()) {

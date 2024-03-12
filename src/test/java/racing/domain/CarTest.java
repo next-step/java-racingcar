@@ -12,6 +12,7 @@ class CarTest {
         car.forward(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
     @Test
     void 정지() {
         Car car = new Car();
