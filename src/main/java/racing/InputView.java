@@ -11,7 +11,6 @@ public class InputView {
     private static final String CAR_NAME_DELIMITER = ",";
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요";
     public static final String NUMBER_UNDER_ZERO_EXCEPTION_MESSAGE = "0 이상의 정수만 입력할 수 있습니다. 다시 입력해주세요.";
-    private static final String CAR_NAME_LENGTH_OVER = "자동차 이름은 " + Name.MAX_CAR_NAME_LENGTH + "자를 초과할 수 없습니다. 다시 입력해주세요.";
 
     public InputView(Scanner scanner) {
         this.scanner = scanner;
@@ -39,7 +38,7 @@ public class InputView {
         try {
             return strNamesToNames(strCarNames);
         } catch (IllegalArgumentException e) {
-            return inputtedCarNameList(CAR_NAME_LENGTH_OVER);
+            return inputtedCarNameList(e.getMessage());
         }
     }
 
