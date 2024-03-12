@@ -30,7 +30,6 @@
 # Step4
 
 ## Todo
-- 우승자 출력("pobi, honux가 최종 우승했습니다.")
 
 ## Done
 - Step3 개선 사항 : mvc(model, view, controller) 구조로 변경 (view <- controller -> model)
@@ -46,3 +45,4 @@
 - 거리 출력 시에 앞에 이름도 같이 출력("pobi : ---")
 - 가장 많이 이동한 자동차들이 우승자로 선정("one -> 3, two -> 5" => two)
 - 우승자는 한 명 이상일 수 있다("one -> 3, two -> 3" => one,two)
+- 우승자 출력("pobi, honux가 최종 우승했습니다.")

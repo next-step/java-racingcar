@@ -3,8 +3,10 @@ package game;
 import game.domain.*;
 import game.view.InputView;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static game.view.ResultView.*;
 
@@ -44,11 +46,18 @@ public class GameClient {
             game.play();
             printDistances(game);
         }
+        printWinners(game);
     }
 
     private static void printDistances(Game game){
         printCars(game.getCars());
         printPlainMessage("");
+    }
+
+    private static void printWinners(Game game){
+        List<String> names = game.getWinner().stream().map(Car::getName).collect(Collectors.toList());
+        String winners = String.join(", ", names);
+        printPlainMessage(winners + "가 최종 우승했습니다.");
     }
 
     private static List<Car> generateCars(int carCount, String[] names) {
