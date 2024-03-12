@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.fixture.CarNameFixture;
 import racingcar.fixture.CarsFixture;
 
 public class CarsTest {
@@ -46,13 +47,19 @@ public class CarsTest {
     void result() {
         cars.drive(ALWAYS_MOVE);
         assertThat(cars.result()).isEqualTo(
-            String.format("%s : -\n%s : -\n%s : -", CAR_NAMES.get(0), CAR_NAMES.get(1),
-                CAR_NAMES.get(2)));
+            String.format(
+                "%s : -\n%s : -\n%s : -",
+                CarNameFixture.K3, CarNameFixture.K5, CarNameFixture.K7
+            )
+        );
 
         cars.drive(ALWAYS_MOVE);
         assertThat(cars.result()).isEqualTo(
-            String.format("%s : --\n%s : --\n%s : --", CAR_NAMES.get(0), CAR_NAMES.get(1),
-                CAR_NAMES.get(2)));
+            String.format(
+                "%s : --\n%s : --\n%s : --",
+                CarNameFixture.K3, CarNameFixture.K5, CarNameFixture.K7
+            )
+        );
     }
 
     @Test
