@@ -14,6 +14,10 @@ public class Car {
         this.location = INIT_POSITION;
     }
 
+    public int verifyLocation() {
+        return location;
+    }
+
     private void validateId(int id) {
         if (id < 0) {
             throw new IllegalArgumentException(ErrorMessage.ERR_INVALID_NUMBER.print());
