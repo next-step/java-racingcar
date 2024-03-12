@@ -1,6 +1,8 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.strategy.MoveStrategy;
 
 
@@ -39,6 +41,22 @@ class CarTest {
         assertThat(car1).isEqualTo(car2);
         assertThat(car1).isNotEqualTo(car3);
 
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void samePosition(int input) {
+        Car car = movedCar(input);
+
+        assertThat(car.samePosition(input)).isTrue();
+    }
+
+    private Car movedCar(int moveCount) {
+        Car car = new Car("test");
+        for (int i = 0; i < moveCount; i++) {
+            car.play(alwaysTrueStrategy);
+        }
+        return car;
     }
 
 }

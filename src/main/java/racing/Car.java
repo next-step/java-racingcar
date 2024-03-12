@@ -22,6 +22,10 @@ public class Car {
         return position.getPosition();
     }
 
+    public boolean samePosition(int targetPosition) {
+        return targetPosition == this.position.getPosition();
+    }
+
     public void play(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
             position.addOne();
