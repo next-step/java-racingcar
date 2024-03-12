@@ -13,8 +13,9 @@ public class Position implements Comparable<Position> {
         this.position = position;
     }
 
-    public void move() {
+    public Position move() {
         this.position += 1;
+        return new Position(this.position);
     }
 
     public int getPosition() {
@@ -22,15 +23,15 @@ public class Position implements Comparable<Position> {
     }
 
     @Override
-    public int compareTo(Position o) {
-        return o.position - this.position;
+    public int compareTo(Position other) {
+        return other.position - this.position;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Position position1 = (Position) o;
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Position position1 = (Position) other;
         return position == position1.position;
     }
 
