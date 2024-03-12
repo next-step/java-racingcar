@@ -17,15 +17,20 @@ public class RacingCarGameLogic {
         return instance;
     }
 
-    public void gameLogic(int numberOfCar, int numberOfAttempt) {
-        List<Car> cars = initCars(numberOfCar);
+    public void gameLogic(String nameOfCars, int numberOfAttempt) {
+        List<Car> cars = initCars(nameOfCars);
         IntStream.range(0, numberOfAttempt).forEach(i -> RacingCarGameRule.getInstance().moveCars(cars));
     }
 
-    private List<Car> initCars(int numberOfCar) {
-        List<Car> cars = new ArrayList<>(numberOfCar);
-        IntStream.range(0, numberOfCar).forEach(i -> cars.add(new Car()));
+    public List<Car> initCars(String nameOfCars) {
+        String[] names = getCarNamesSplit(nameOfCars);
+        List<Car> cars = new ArrayList<>(names.length);
+        IntStream.range(0, names.length).forEach(i -> cars.add(new Car(names[i])));
         return cars;
+    }
+
+    private static String[] getCarNamesSplit(String nameOfCars) {
+        return nameOfCars.split(",");
     }
 
 }

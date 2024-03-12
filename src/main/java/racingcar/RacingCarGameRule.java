@@ -17,7 +17,7 @@ public class RacingCarGameRule {
     }
 
     public void moveCars(List<Car> cars) {
-        cars.stream().forEach(car -> car.move(isMovingForward(RandomManaager.getInstance().getRandomValue())));
+        cars.stream().forEach(car -> car.move(isMovingForward(RandomManager.getInstance().getRandomValue())));
         ResultView.getInstance().printMove(cars);
         ResultView.getInstance().printLineBreak();
     }
@@ -25,4 +25,5 @@ public class RacingCarGameRule {
     public boolean isMovingForward(int value) {
         return value > MOVE_CONDITION;
     }
+
 }
