@@ -1,8 +1,9 @@
 package race;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,23 +16,22 @@ class CarsTest {
         cars = new Cars(3);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"0:---", "1:---", "2:---"}, delimiter = ':')
-    void three_cars_three_times_go(int input, String expected) {
-        cars.getCars().get(input).go();
-        cars.getCars().get(input).go();
-        cars.getCars().get(input).go();
+    @Test
+    void goForward_test() {
+        List<String> firstMileages = cars.goForward(3);
+        assertThat(firstMileages.get(0)).isEqualTo("-");
+        assertThat(firstMileages.get(1)).isEqualTo("-");
+        assertThat(firstMileages.get(2)).isEqualTo("-");
 
-        assertThat(cars.getCars().get(input).getMileage()).isEqualTo(expected);
-    }
+        List<String> secondMileages = cars.goForward(3);
+        assertThat(secondMileages.get(0)).isEqualTo("--");
+        assertThat(secondMileages.get(1)).isEqualTo("--");
+        assertThat(secondMileages.get(2)).isEqualTo("--");
 
-
-    @ParameterizedTest
-    @CsvSource(value = {"0:-", "1:-", "2:-"}, delimiter = ':')
-    void three_cars_go(int input, String expected) {
-        cars.getCars().get(input).go();
-
-        assertThat(cars.getCars().get(input).getMileage()).isEqualTo(expected);
+        List<String> thirdMileages = cars.goForward(3);
+        assertThat(thirdMileages.get(0)).isEqualTo("---");
+        assertThat(thirdMileages.get(1)).isEqualTo("---");
+        assertThat(thirdMileages.get(2)).isEqualTo("---");
     }
 
 }

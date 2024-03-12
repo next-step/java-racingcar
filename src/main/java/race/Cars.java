@@ -14,8 +14,13 @@ public class Cars {
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<String> goForward(int numberOfCars) {
+        List<String> mileages = new ArrayList<>();
+        for (int i = 0; i < numberOfCars; i++) {
+            this.cars.get(i).go();
+            mileages.add(this.cars.get(i).getMileage());
+        }
+        return mileages;
     }
 
 }
