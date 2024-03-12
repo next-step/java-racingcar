@@ -19,29 +19,29 @@ public class Race {
     }
 
     public void start() {
-        List<String> carNameArr = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
+        List<Name> carNames = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
         int tryCount = inputView.inputtedNumber(TRY_COUNT_MESSAGE);
         inputView.closeScanner();
 
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
 
-        for (String carName : carNameArr) {
-            carList.add(new Car(carName));
+        for (Name carName : carNames) {
+            cars.add(new Car(carName));
         }
 
-        Cars cars = new Cars(carList);
+        Cars racingCars = new Cars(cars);
 
         ResultView resultView = new ResultView();
 
         int currentTryCount = 0;
 
         while (currentTryCount < tryCount) {
-            playRound(cars);
-            resultView.printRaceResult(cars);
+            playRound(racingCars);
+            resultView.printRaceResult(racingCars);
             currentTryCount++;
         }
 
-        resultView.printRaceWinner(cars);
+        resultView.printRaceWinner(racingCars);
     }
 
     private void playRound(Cars cars) {

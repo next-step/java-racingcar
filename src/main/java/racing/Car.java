@@ -9,9 +9,9 @@ public class Car {
     private final Position position;
     private final Name name;
 
-    public Car(String name) {
+    public Car(Name name) {
         this.position = new Position();
-        this.name = new Name(name);
+        this.name = name;
     }
 
     public String getName() {

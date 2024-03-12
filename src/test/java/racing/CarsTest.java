@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.*;
 class CarsTest {
 
     private final MoveStrategy alwaysMoveStrategy = () -> true;
-    private final Car carA = new Car("testA");
-    private final Car carB = new Car("testB");
+    private final Car carA = new Car(new Name("testA"));
+    private final Car carB = new Car(new Name("testB"));
 
     @Test
     void constructor() {
