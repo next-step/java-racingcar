@@ -8,8 +8,20 @@ public class Car implements Comparable {
     private MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
+        verifyNameNullOrOverFiveLength(name);
+
         this.name = name;
         this.moveStrategy = moveStrategy;
+    }
+
+    private static void verifyNameNullOrOverFiveLength(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("이름이 없습니다.");
+        }
+
+        if (name.length() >= 5) {
+            throw new IllegalArgumentException("이름이 5글자 이상입니다.");
+        }
     }
 
     public void move() {
