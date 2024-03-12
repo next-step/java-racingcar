@@ -38,6 +38,7 @@ public class GameClient {
     }
 
     private static void playGamesAndPrintResult(int gameCount, NumberGenerator generator, List<Car> cars) {
+        if(gameCount <= 0) return;
         Game game = new Game(generator, cars);
         printDistances(game);
         for (int i = 1; i < gameCount; i++) {
