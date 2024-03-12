@@ -10,27 +10,16 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(int numberOfCar) {
-        cars = generateCar(numberOfCar);
+    private Cars(int countOfCar) {
+        cars = generateCar(countOfCar);
     }
 
-    public static Cars createInstance(int numberOfCar) {
-        return new Cars(numberOfCar);
+    public static Cars createInstance(int countOfCar) {
+        return new Cars(countOfCar);
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    public List<Car> generateCar(int numberOfCar) {
-        List<Car> cars = new ArrayList<>();
-
-        while(numberOfCar > 0) {
-            cars.add(Car.createInstance());
-            numberOfCar--;
-        }
-
-        return cars;
     }
 
     public int getSize() {
@@ -41,5 +30,16 @@ public class Cars {
         for (Car car : cars) {
             car.move(generator.generate());
         }
+    }
+
+    private List<Car> generateCar(int numberOfCar) {
+        List<Car> cars = new ArrayList<>();
+
+        while(numberOfCar > 0) {
+            cars.add(Car.createInstance());
+            numberOfCar--;
+        }
+
+        return cars;
     }
 }

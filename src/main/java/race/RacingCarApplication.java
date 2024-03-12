@@ -13,10 +13,10 @@ import utils.number.RandomNumberGenerator;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        int numberOfCar = InputView.requestCars();
+        int countOrCar = InputView.requestCars();
         int countOfTrial = InputView.requestCountOfTrial();
         ResultView.start();
-        Cars cars = Cars.createInstance(numberOfCar);
+        Cars cars = Cars.createInstance(countOrCar);
 
         NumberGenerator randomGenerator = new RandomNumberGenerator();
         racing(cars, randomGenerator, countOfTrial);
