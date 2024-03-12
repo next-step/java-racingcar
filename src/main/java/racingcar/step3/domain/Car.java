@@ -1,40 +1,39 @@
 package racingcar.step3.domain;
 
+import racingcar.step3.domain.strategy.CarMoveStrategy;
+
 import java.util.UUID;
 
 public class Car {
 
-  public static final int DEFAULT_MOVE_COUNT = 0;
-  public static final int MEET_CONDITION_FOR_MOVEMENT = 4;
+  public static final int DEFAULT_START_POSITION = 0;
 
   private final UUID id = UUID.randomUUID();
   private final String carName;
-  private int moveCount;
+  private int position;
+  private final CarMoveStrategy moveStrategy;
 
-  public Car(String carName) {
+  public Car(String carName, CarMoveStrategy carMoveStrategy) {
     this.carName = carName;
-    this.moveCount = DEFAULT_MOVE_COUNT;
+    this.position = DEFAULT_START_POSITION;
+    this.moveStrategy = carMoveStrategy;
   }
 
   public String getCarName() {
     return carName;
   }
 
-  public int getMoveCount() {
-    return moveCount;
+  public int getPosition() {
+    return position;
   }
 
-  public void move(int randomNumber) {
-    if (isSatisfied(randomNumber)) {
-      this.moveCount += 1;
-    }
+  public void moveTo(int position) {
+    this.position = position;
   }
 
-  private boolean isSatisfied(int randomNumber) {
-    if (randomNumber >= MEET_CONDITION_FOR_MOVEMENT) {
-      return Boolean.TRUE;
+  public void move() {
+    if (this.moveStrategy.isMovable()) {
+      this.position += 1;
     }
-
-    return Boolean.FALSE;
   }
 }

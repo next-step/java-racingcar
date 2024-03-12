@@ -1,5 +1,7 @@
 package racingcar.step3.domain;
 
+import racingcar.step3.domain.strategy.RandomCarMoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class CarFactory {
     List<Car> cars = new ArrayList<>();
     for (int i = 1; i <= numberOfCars; i++) {
       String carName = "car" + i;
-      cars.add(new Car(carName));
+      cars.add(new Car(carName, new RandomCarMoveStrategy()));
     }
     return cars;
   }
