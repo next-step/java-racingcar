@@ -7,6 +7,8 @@ public class Calculator {
 
 	public static final String DEFAULT_DELIMITER_CHECK_REGEX = ",|:";
 	public static final String CUSTOM_DELIMITER_CHECK_REGEX = "//(.)\n(.*)";
+	public static final Pattern CUSTOM_DELIMITER_CHECK_PATTERN = Pattern.compile(CUSTOM_DELIMITER_CHECK_REGEX);
+
 
 	public String calculate(String input) {
 		if ( (input == null) || (input.isEmpty()) ) {
@@ -39,7 +41,7 @@ public class Calculator {
 
 	private static String[] separateNumbers(String input) {
 		// 구분자 검사
-		Matcher m = Pattern.compile(CUSTOM_DELIMITER_CHECK_REGEX).matcher(input);
+		Matcher m = CUSTOM_DELIMITER_CHECK_PATTERN.matcher(input);
 		if (m.find()) {
 			String customDelimiter = m.group(1);
 			return m.group(2).split(customDelimiter);
