@@ -4,7 +4,7 @@ import step3.view.CarMovementResult;
 
 public class Car {
     private final Moving movingStrategy;
-    private int moveCount = 0;
+    private int moveCount;
 
     public static Car randomMovingCar() {
         return new Car(new RandomMoving());
