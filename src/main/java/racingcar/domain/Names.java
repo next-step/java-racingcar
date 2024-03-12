@@ -22,4 +22,7 @@ public class Names {
     public List<Name> get() {
         return Collections.unmodifiableList(this.names);
     }
+
+    public int size() { return names.size(); }
+
 }
