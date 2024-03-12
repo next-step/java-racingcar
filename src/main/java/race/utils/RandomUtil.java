@@ -1,4 +1,4 @@
-package race;
+package race.utils;
 
 @FunctionalInterface
 public interface RandomUtil {

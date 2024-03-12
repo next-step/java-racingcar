@@ -1,4 +1,6 @@
-package race;
+package race.domain;
+
+import race.RaceRule;
 
 import java.util.Random;
 
@@ -16,15 +18,14 @@ public class Car {
                 this.mileage += "-";
             }
         } else {
-            this.mileage += "-";
+            this.mileage = "-";
         }
     }
 
     private static boolean isFitRaceRule(int randomNumber) {
-        RaceRule raceRule = new RaceRule(() ->
-            randomNumber
-        );
-        return raceRule.generate() >= 4;
+        return new RaceRule(new RaceRule(() ->
+                randomNumber
+        )).generate() >= 4;
     }
 
 }

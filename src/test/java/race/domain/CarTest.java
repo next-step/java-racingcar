@@ -1,7 +1,9 @@
-package race;
+package race.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import race.RaceRule;
+import race.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
