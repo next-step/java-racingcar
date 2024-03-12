@@ -1,6 +1,8 @@
 package race.view;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class InputView {
@@ -10,10 +12,13 @@ public class InputView {
     private static int numberOfCar;
     private static int countOfTrial;
 
-    public static List<Integer> requestInput() {
+    public static Map<String, Integer> requestInput() {
+        Map<String, Integer> map = new HashMap<>();
         requestCars();
         requestCountOfTrial();
-        return List.of(numberOfCar, countOfTrial);
+        map.put("numberOfCar", numberOfCar);
+        map.put("countOfTrial", countOfTrial);
+        return map;
     }
 
     private static void requestCountOfTrial() {
