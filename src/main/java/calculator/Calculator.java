@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculator {
 
 	public String calculate(String input) {
@@ -14,27 +17,29 @@ public class Calculator {
 
 		String[] numbers = CustomSeparator.separateNumbers(input);
 
-		checkInvalidInput(numbers);
-
-		return sum(numbers).toString();
+		return sum(toInts(numbers)).toString();
 	}
 
-	private void checkInvalidInput(String[] numbers) {
+	private List<Integer> toInts(String[] numbers) {
+		List<Integer> result = new ArrayList<>();
 		for (String number : numbers) {
 			validateInputNumber(number);
+			result.add(Integer.parseInt(number));
 		}
+
+		return result;
 	}
 
 	private void validateInputNumber(String number) {
-		if (!isNumber(number) || Integer.valueOf(number) < 0) {
+		if (!isNumber(number) || Integer.parseInt(number) < 0) {
 			throw new RuntimeException("음수 or 숫자 이외의 값을 입력하셨습니다.");
 		}
 	}
 
-	private Integer sum(String[] numbers) {
+	private Integer sum(List<Integer> numbers) {
 		int result = 0;
-		for (String number : numbers) {
-			result += Integer.parseInt(number);
+		for (int number : numbers) {
+			result +=number;
 		}
 
 		return result;
