@@ -3,7 +3,7 @@ package step3;
 import java.util.List;
 import java.util.Scanner;
 
-public class RacingGameMain {
+public class RacingGameApplication {
 
     private static final Scanner scanner = new Scanner(System.in);
 

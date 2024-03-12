@@ -19,12 +19,11 @@ public class Race {
         this.finalResult = new ArrayList<>();
     }
 
-    private List<Car> initializeCars(int numberOfCars) {
+    public List<Car> initializeCars(int numberOfCars) {
         return IntStream.range(0, numberOfCars)
                 .mapToObj(Car::new)
                 .collect(Collectors.toList());
     }
-
 
     public List<RoundResultMap> start() {
         IntStream.range(0, numberOfAttempts).forEach(attempt -> {

@@ -13,4 +13,8 @@ public class RaceResultMap {
     public String toString() {
         return "-".repeat(position + 1);
     }
+
+    public RaceResultMap withResult() {
+        return new RaceResultMap(name, position);
+    }
 }
