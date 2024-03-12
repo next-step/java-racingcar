@@ -19,7 +19,7 @@ public class CarsDto {
     }
 
     private CarsDto(List<Car> cars) {
-        if (cars != null && cars.size() > 0) {
+        if (cars != null && !cars.isEmpty()) {
             this.cars.addAll(cars);
         }
     }
