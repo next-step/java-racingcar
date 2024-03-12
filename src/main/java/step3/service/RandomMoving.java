@@ -8,11 +8,6 @@ public class RandomMoving implements Moving {
     private final Random random = new Random();
 
     @Override
-    public int movingDistance() {
-        return MOVING_DISTANCE;
-    }
-
-    @Override
     public boolean movable() {
         return randomNumber() >= MOVABLE_CRITERIA_LOWER_BOUND;
     }
