@@ -1,15 +1,27 @@
 package carracing.model;
 
 public class Car {
-    private int position;
+    private static final int DEFAULT_INCREASE_AMOUNT = 1;
+    private static final int NO_INCREASE_AMOUNT = 0;
 
-    public int position() {
-        return this.position;
+    private final NameOfCar nameOfCar;
+    private final PositionOfCar positionOfCar;
+
+    private Car(final NameOfCar nameOfCar) {
+        this.nameOfCar = nameOfCar;
+        this.positionOfCar = PositionOfCar.startPositionOfCar();
     }
 
-    public void move(MovingStrategy movingStrategy) {
-        if (movingStrategy.isMovable()) {
-            position += 1;
-        }
+    public static Car newCar(final NameOfCar nameOfCar) {
+        return new Car(nameOfCar);
+    }
+
+    public int position() {
+        return positionOfCar.position();
+    }
+
+    public void move(final MovingStrategy movingStrategy) {
+        int increaseAmount = movingStrategy.isMovable() ? DEFAULT_INCREASE_AMOUNT : NO_INCREASE_AMOUNT;
+        positionOfCar.increase(increaseAmount);
     }
 }

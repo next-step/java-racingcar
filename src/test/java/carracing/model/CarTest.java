@@ -14,31 +14,28 @@ class CarTest {
     class MoveTest {
         MovingStrategy alwaysReturnTrueStub = () -> true;
         MovingStrategy alwaysReturnFalseStub = () -> false;
+        Car testCart = Car.newCar(NameOfCar.newName("차"));
 
         @ParameterizedTest
         @CsvSource(value = {"0:0", "1:1", "5:5", "3:3"}, delimiter = ':')
         @DisplayName("isMovable()이 true를 반환하는 경우 Car의 position이 1 증가한다.")
         void testMoveIsMovableTrueCase(int moveCount, int expected) {
-            Car car = new Car();
-
             for (int i = 0; i < moveCount; i++) {
-                car.move(alwaysReturnTrueStub);
+                testCart.move(alwaysReturnTrueStub);
             }
 
-            assertThat(car.position()).isEqualTo(expected);
+            assertThat(testCart.position()).isEqualTo(expected);
         }
 
         @ParameterizedTest
         @ValueSource(ints = {0, 1, 10, 20})
         @DisplayName("isMovable()이 false를 반환하는 경우 Car의 position을 증가하지 않는다.")
         void testMoveIsMovableFalseCase(int moveCount) {
-            Car car = new Car();
-
             for (int i = 0; i < moveCount; i++) {
-                car.move(alwaysReturnFalseStub);
+                testCart.move(alwaysReturnFalseStub);
             }
 
-            assertThat(car.position()).isEqualTo(0);
+            assertThat(testCart.position()).isEqualTo(0);
         }
     }
 }
