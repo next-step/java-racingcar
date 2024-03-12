@@ -1,14 +1,11 @@
 package racingcar;
 
 public class Car {
-  private int location = 0;
-  private CarName name = new CarName("");
+  private int location;
+  private CarName name;
 
   public Car() {
-  }
-
-  public Car(String name) {
-    this.name = new CarName(name);
+    this("", 0);
   }
 
   public Car(String name, int location) {
@@ -17,8 +14,13 @@ public class Car {
   }
 
   public Car(int location) {
-    this.location = location;
+    this("", location);
   }
+
+  public Car(String name) {
+    this(name, 0);
+  }
+
   public void moveConditionally(final int condition) {
     if (meetMoveCondition(condition)) {
       this.location++;
@@ -48,19 +50,19 @@ public class Car {
     return this.name.toString();
   }
 
-  public boolean isAheadOf(final Car car) {
-    return this.isAheadOf(car.location);
+  public boolean furtherThan(final Car car) {
+    return this.furtherThan(car.location);
   }
 
-  private boolean isAheadOf(final int location) {
+  private boolean furtherThan(final int location) {
     return this.location > location;
   }
 
-  public boolean isBehind(final Car car) {
-    return this.isBehind(car.location);
+  public boolean closerThan(final Car car) {
+    return this.closerThan(car.location);
   }
 
-  private boolean isBehind(int location) {
+  private boolean closerThan(int location) {
     return this.location < location;
   }
 
@@ -72,27 +74,15 @@ public class Car {
     return String.format("name: %s, location: %d", this.name, this.location);
   }
 
-  static class CarName {
-    private String name;
-    private static final int LENGTH_LIMIT = 5;
-
-    public CarName(String name) {
-      if (isValid(name)) {
-        this.name = name;
-      }
+  public Car furtherCar(final Car car) {
+    if (this.furtherThan(car)) {
+      return this;
     }
 
-    private boolean isValid(String name) {
-      if (name.length() > LENGTH_LIMIT) {
-        System.out.println("car name: " + name);
-        throw new IllegalArgumentException("Car name longer than 5 not allowed.");
-      }
-      return true;
+    if (this.closerThan(car)) {
+      return car;
     }
 
-    @Override
-    public String toString() {
-      return this.name;
-    }
+    return this;
   }
 }

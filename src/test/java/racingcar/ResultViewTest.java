@@ -24,13 +24,27 @@ public class ResultViewTest extends IOTest {
   }
 
   @Test
-  void 우승자_출력() {
+  void 우승자_출력_Car_List() {
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     setOutputStream(outputStream);
 
     List<Car> cars = new ArrayList<>();
     cars.add(new Car("test1"));
     cars.add(new Car("test2"));
+
+    ResultView.printWinners(cars);
+
+    Assertions.assertThat(outputStream.toString()).isEqualTo("test1, test2가 최종 우승했습니다.\r\n");
+  }
+
+  @Test
+  void 우승자_출력_Cars() {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    setOutputStream(outputStream);
+
+    Cars cars = new Cars();
+    cars.addCar(new Car("test1"));
+    cars.addCar(new Car("test2"));
 
     ResultView.printWinners(cars);
 

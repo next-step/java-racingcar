@@ -9,7 +9,7 @@ public class CarNameTest {
   @ParameterizedTest
   @ValueSource(strings = { "javajigi", "oht1221" })
   void 길이가_5_초과인_이름의_객체_생성_불가(String input) {
-    assertThatThrownBy(() -> new Car.CarName(input))
+    assertThatThrownBy(() -> new CarName(input))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("Car name longer than 5 not allowed.");
   }
@@ -17,6 +17,6 @@ public class CarNameTest {
   @ParameterizedTest
   @ValueSource(strings = { "Jenny", "Dan" })
   void 길이가_5_이하인_이름의_객체_생성_가능(String input) {
-    assertThat(new Car.CarName(input)).isInstanceOf(Car.CarName.class);
+    assertThat(new CarName(input)).isInstanceOf(CarName.class);
   }
 }

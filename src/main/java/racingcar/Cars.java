@@ -1,13 +1,22 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
   private final List<Car> cars = new ArrayList<>();
 
   private static final Random random = new Random();
+
+  public Cars() {
+  }
+
+  public Cars(List<Car> cars) {
+    this.cars.addAll(cars);
+  }
+
+  public List<Car> cars() {
+    return this.cars;
+  }
 
   public void addEmptyCar() {
     this.cars.add(new Car());
@@ -17,7 +26,7 @@ public class Cars {
     this.cars.add(car);
   }
 
-  public void addCars(final int numberOfCars) {
+  public void addEmptyCars(final int numberOfCars) {
     for (int i = 0; i < numberOfCars; i++) {
       this.addEmptyCar();
     }
@@ -33,70 +42,79 @@ public class Cars {
     return this.cars.size();
   }
 
-  public List<Car> getCars() {
-    return this.cars;
+  public int size() {
+    return this.cars.size();
+  }
+
+  public long numberOfCarsWithLocationOf(final int location) {
+    return this.cars.stream().filter(car -> car.isLocationValueOf(location)).count();
   }
 
   public boolean containsCarWithLocationOf(final int location) {
     return this.cars.stream().anyMatch(car -> car.isLocationValueOf(location));
   }
 
-  public int size() {
-    return this.cars.size();
-  }
-
-  public long sizeOfCarsWithLocationOf(final int location) {
-    return this.cars.stream().filter(car -> car.isLocationValueOf(location)).count();
-  }
-
-  public List<Car> leadingCars() {
+  public Cars leadingCars() {
     if (this.cars.isEmpty()) {
-      return List.of();
+      return new Cars();
     }
 
-    List<Car> leadingCars = new ArrayList<>();
     Car leadingCar = leadingCar();
-
+    Cars leadingCars = new Cars();
     for (Car car : this.cars) {
-      leadingCars = addCarConditionally(leadingCars, leadingCar, car);
+      leadingCars.addIfEqualLocation(car, leadingCar);
     }
 
     return leadingCars;
   }
 
+  private void addIfEqualLocation(final Car target, final Car leadingCar) {
+    if (target.atTheSameLocationWith(leadingCar)) {
+      this.cars.add(target);
+    }
+  }
+
   private Car leadingCar() {
-    Car leadingCar = this.cars.get(0);
+    if (this.cars.isEmpty()) {
+      throw new IllegalStateException("There is no car.");
+    }
 
+    Car furthest = this.cars.get(0);
     for (Car car : this.cars) {
-      leadingCar = leader(car, leadingCar);
+      furthest = furthest.furtherCar(car);
     }
-
-    return leadingCar;
+    return furthest;
   }
 
-  private Car leader(Car car1, Car car2) {
-    if (car1.isAheadOf(car2)) {
-      return car1;
+  private List<Car> addCarConditionally(final List<Car> furthestCars, final Car furthest, final Car target) {
+    if (target.furtherThan(furthest)) {
+      List<Car> newFurthestCars = new ArrayList<>();
+      newFurthestCars.add(target);
+      return newFurthestCars;
     }
 
-    if (car1.isBehind(car2)) {
-      return car2;
+    if (target.atTheSameLocationWith(furthest)) {
+      furthestCars.add(target);
     }
 
-    return car1;
+    return furthestCars;
   }
 
-  List<Car> addCarConditionally(List<Car> cars, Car comparison, Car target) {
-    if (target.isAheadOf(comparison)) {
-      List<Car> leadingCars = new ArrayList<>();
-      leadingCars.add(target);
-      return leadingCars;
+  @Override
+  public Iterator<Car> iterator() {
+    return new CarIterator();
+  }
+
+  private class CarIterator implements Iterator<Car> {
+    private int cursor = 0;
+    @Override
+    public boolean hasNext() {
+      return cursor < cars.size();
     }
 
-    if (target.atTheSameLocationWith(comparison)) {
-      cars.add(target);
+    @Override
+    public Car next() {;
+      return cars.get(cursor++);
     }
-
-    return cars;
   }
 }

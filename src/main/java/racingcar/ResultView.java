@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ResultView {
   public static void printCurrentStatus(final Cars cars) {
-    for (Car car : cars.getCars()) {
+    for (Car car : cars) {
       printResultLine(car);
     }
     printRepSeparator();
@@ -24,7 +24,7 @@ public class ResultView {
     System.out.println();
   }
 
-  public static void printWinners(List<Car> winners) {
+  public static void printWinners(Cars winners) {
     StringBuilder resultMessage = new StringBuilder();
     final String CONNECTOR_TEXT = ", ";
 
@@ -34,5 +34,9 @@ public class ResultView {
 
     final int MESSAGE_START = 0;
     System.out.println(resultMessage.substring(MESSAGE_START, resultMessage.length() - CONNECTOR_TEXT.length()).concat("가 최종 우승했습니다."));
+  }
+
+  public static void printWinners(List<Car> winners) {
+    printWinners(new Cars(winners));
   }
 }
