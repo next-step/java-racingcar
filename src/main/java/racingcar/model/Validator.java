@@ -7,8 +7,8 @@ public class Validator {
 
     private static final String NUMERIC_REGEXP = "\\d";
     private static final Pattern NUMERIC_PATTERN = Pattern.compile(NUMERIC_REGEXP);
-    private static final int MAX = 9;
-    private static final int MIN = 0;
+    private static final int MAX_NUMBER_RANGE = 9;
+    private static final int MIN_NUMBER_RANGE = 0;
     private static final int MAX_NAME_LENGTH = 5;
 
     public void nullCheck(String input) {
@@ -27,7 +27,7 @@ public class Validator {
 
     private void numberRangeCheck(String input) {
         Integer number = Integer.parseInt(input);
-        if (number > MAX || number < MIN) {
+        if (number > MAX_NUMBER_RANGE || number < MIN_NUMBER_RANGE) {
             throw new IllegalArgumentException("숫자의 입력 범위가 잘 못 되었습니다");
         }
     }
