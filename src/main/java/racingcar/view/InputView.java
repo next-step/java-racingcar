@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.CarNames;
 import racingcar.model.Validator;
 
 import java.util.Scanner;
@@ -23,5 +24,11 @@ public class InputView {
         validator.numericCheck(tryNumber);
         validator.nullCheck(tryNumber);
         return Integer.parseInt(tryNumber);
+    }
+
+    public CarNames inputCarName() {
+        String carNames = input();
+        validator.nullCheck(carNames);
+        return new CarNames(carNames);
     }
 }
