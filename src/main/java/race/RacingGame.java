@@ -10,8 +10,8 @@ import java.util.Random;
 public class RacingGame {
 
     private List<String> mileages = new ArrayList<>();
-    private int randomNumber =  new Random().nextInt(10);
-    private Cars cars;
+    private final int randomNumber = new Random().nextInt(10);
+    private final Cars cars;
 
     public RacingGame(Cars cars) {
         this.cars = cars;

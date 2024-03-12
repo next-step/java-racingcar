@@ -1,11 +1,7 @@
 package race.domain;
 
-import race.RaceRule;
-import race.domain.Car;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Cars {
 

@@ -2,8 +2,6 @@ package race.domain;
 
 import race.RaceRule;
 
-import java.util.Random;
-
 public class Car {
 
     private String mileage = "";
