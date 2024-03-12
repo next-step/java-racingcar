@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public class RacingGame {
-    private final Cars cars;
+    private Cars cars;
     private final MoveStrategy moveStrategy;
 
     public RacingGame(List<Car> cars, MoveStrategy moveStrategy) {
@@ -18,8 +18,8 @@ public class RacingGame {
 
         RacingRecord racingRecord = new RacingRecord(turn);
         for (int i = 1; i <= turn; i++) {
-            Cars movedCars = this.cars.move(this.moveStrategy);
-            racingRecord.save(movedCars);
+            this.cars = this.cars.move(this.moveStrategy);
+            racingRecord.save(this.cars);
         }
 
         return racingRecord;

@@ -50,20 +50,23 @@ class CarsTest {
         assertThat(cars).isEqualTo(moved);
     }
 
-    @DisplayName("이동시 스냅샵을 생성할 경우 Cars 참조 주소는 모두 다르다")
+    @DisplayName("이동할 경우 신규 인스턴스 반환하고, 이동하지 않는 경우 이전 인스턴스와 동일하다")
     @Test
-    void moved() {
+    void move() {
         Car car1 = new Car("test1", 1);
 
         List<Car> given = Collections.singletonList(car1);
 
         Cars cars = new Cars(given);
         Cars moved1 = cars.move(() -> false);// 1
-        cars.move(() -> true); // 2
-        cars.move(() -> true); // 3
-        Cars moved2 = cars.move(() -> false); // 3
+        Cars moved2 = moved1.move(() -> true);// 2
+        Cars moved3 = moved2.move(() -> true); // 3
+        Cars moved4 = moved3.move(() -> false); // 3
 
         assertThat(moved1).isNotEqualTo(moved2);
+        assertThat(moved2).isNotEqualTo(moved3);
+        assertThat(moved3).isEqualTo(moved4);
+        assertThat(moved1).isNotEqualTo(moved4);
     }
 
     @Test

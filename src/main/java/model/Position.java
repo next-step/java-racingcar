@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Position implements Comparable<Position> {
-    private int position;
+    private final int position;
 
     public Position(int position) {
         if (position < 0) {
@@ -14,8 +14,7 @@ public class Position implements Comparable<Position> {
     }
 
     public Position move() {
-        this.position += 1;
-        return new Position(this.position);
+        return new Position(this.position + 1);
     }
 
     public int getPosition() {

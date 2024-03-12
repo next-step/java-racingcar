@@ -12,17 +12,17 @@ class CarTest {
     @Test
     void move_이동전략이true인경우_자동차는_전진한다() {
         Car car = new Car("test1");
-        car.move(() -> true);
+        Car moved = car.move(() -> true);
 
-        assertThat(car).isEqualTo(new Car("test1", 1));
+        assertThat(moved).isEqualTo(new Car("test1", 1));
     }
 
     @Test
     void move_이동전략이false인경우_자동차는_현위치를유지한다() {
         Car car = new Car("test1");
-        car.move(() -> false);
+        Car moved = car.move(() -> false);
 
-        assertThat(car).isEqualTo(new Car("test1"));
+        assertThat(moved).isEqualTo(new Car("test1"));
     }
 
     @ParameterizedTest
