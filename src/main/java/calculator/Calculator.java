@@ -36,7 +36,7 @@ public class Calculator {
 
     private static String getDelimiter(String text) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if( m.find() ){
+        if (m.find()) {
             return m.group(1);
         }
         return ",|:";
@@ -44,8 +44,8 @@ public class Calculator {
 
     private static String getText(String text) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if( m.find() ){
-            return text.replace("//"+m.group(1)+"\n" , "" );
+        if (m.find()) {
+            return text.replace("//" + m.group(1) + "\n", "");
         }
         return text;
     }
