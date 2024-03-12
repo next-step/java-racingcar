@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static calculator.Calculator.calculate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
 
@@ -16,7 +18,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"-1", "1#2#3"})
     void exception_test(String elements) {
-        Assertions.assertThrows(RuntimeException.class, () -> {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             calculate("-1");
         });
     }
@@ -48,7 +50,9 @@ public class CalculatorTest {
     @Test
     @DisplayName("Null 값 빈문자")
     void null_value() {
-        assertThat(calculate(null)).isEqualTo(0);
-        assertThat(calculate("")).isEqualTo(0);
+        assertAll(
+                ()->assertEquals(calculate(null),0),
+                ()->assertEquals(calculate(""),0)
+        );
     }
 }

@@ -5,14 +5,15 @@ import java.util.regex.Pattern;
 
 public class Calculator {
     private static final String ADDITOR = ",|:";
+    private static final String NEW_OPERATOR = "//(.)\n(.*)";
 
     public static int calculate(String text){
-        if(isBlank(text)){
+        if (isBlank(text)){
             return 0;
         }
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if(m.find()){
+        Matcher m = Pattern.compile(NEW_OPERATOR).matcher(text);
+        if (m.find()){
             return sumWithCustomizingAdditor(m);
         }
 
@@ -27,9 +28,12 @@ public class Calculator {
         return text.split(ADDITOR);
     }
 
+    private static final int NEW_ADDITOR = 1;
+    private static final int SPLIT_TEXT = 2;
+
     private static int sumWithCustomizingAdditor(Matcher m){
-        String customDelimiter = m.group(1);
-        String[] tokens = m.group(2).split(customDelimiter);
+        String customDelimiter = m.group(NEW_ADDITOR);
+        String[] tokens = m.group(SPLIT_TEXT).split(customDelimiter);
 
         return sum(toInts(tokens));
     }
@@ -38,7 +42,7 @@ public class Calculator {
     private static int sum(int[] numbers) {
         int result = 0;
 
-        for(int number : numbers){
+        for (int number : numbers){
             result += number;
         }
         return result;
@@ -46,7 +50,7 @@ public class Calculator {
 
     private static int[] toInts(String[] values){
         int[] numbers = new int[values.length];
-        for(int i=0; i<values.length ; i++){
+        for (int i=0; i<values.length ; i++){
             numbers[i] = checkPositive(values[i]);;
         }
         return numbers;
@@ -55,8 +59,8 @@ public class Calculator {
 
     private static int checkPositive(String value){
         int result = Integer.parseInt(value);
-        if(result < 0){
-            throw new RuntimeException();
+        if (result < 0){
+            throw new IllegalArgumentException();
         }
         return result;
     }
