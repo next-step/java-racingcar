@@ -1,7 +1,5 @@
 package race.domain;
 
-import utils.RandomNumber;
-
 public class Car {
     private final int CONDITION_OF_MOVE = 4;
     private int countOfMove;
@@ -14,15 +12,15 @@ public class Car {
         return new Car();
     }
 
-    public void move() {
-        if(!canMove()) {
+    public void move(int number) {
+        if(!canMove(number)) {
             return;
         }
         countOfMove++;
     }
 
-    private boolean canMove() {
-        return RandomNumber.generate() >= CONDITION_OF_MOVE;
+    private boolean canMove(int number) {
+        return number >= CONDITION_OF_MOVE;
     }
 
     public int getCountOfMove() {

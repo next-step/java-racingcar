@@ -1,16 +1,24 @@
 package race.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class CarTest {
 
-    @Test
-    void move() {
-        int count = 100;
+    @ParameterizedTest(name = "4이상이면_움직이고_3이하이면_움직이지못한다.")
+    @CsvSource(value = {"4:1", "5:1", "1:0", "2:0", "3:0"}, delimiter = ':')
+    void move(int number, int count) {
+        // Given
         Car car = Car.createInstance();
-        for (int i = 0; i < count; i++) {
-            car.move();
-        }
-        System.out.println(car.getCountOfMove());
+
+        // When
+        car.move(number);
+
+        // Then
+        assertThat(car.getCountOfMove()).isEqualTo(count);
     }
 }

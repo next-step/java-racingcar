@@ -1,9 +1,10 @@
 package race.domain;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import race.view.ResultView;
+import utils.number.NumberGenerator;
 
 public class Cars {
 
@@ -32,13 +33,13 @@ public class Cars {
         return cars;
     }
 
-    public void moveCars() {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-
     public int getSize() {
         return cars.size();
+    }
+
+    public void moveCars(NumberGenerator generator) {
+        for (Car car : cars) {
+            car.move(generator.generate());
+        }
     }
 }

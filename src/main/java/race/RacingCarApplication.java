@@ -7,6 +7,8 @@ import race.domain.Car;
 import race.domain.Cars;
 import race.view.InputView;
 import race.view.ResultView;
+import utils.number.NumberGenerator;
+import utils.number.RandomNumberGenerator;
 
 public class RacingCarApplication {
 
@@ -15,13 +17,16 @@ public class RacingCarApplication {
         int countOfTrial = InputView.requestCountOfTrial();
         ResultView.start();
         Cars cars = Cars.createInstance(numberOfCar);
-        racing(cars, countOfTrial);
+
+        NumberGenerator randomGenerator = new RandomNumberGenerator();
+        racing(cars, randomGenerator, countOfTrial);
     }
 
-    private static void racing(Cars cars, int countOfTrial) {
-        for (int i = 0; i < countOfTrial; i++) {
-            cars.moveCars();
+    private static void racing(Cars cars, NumberGenerator numberGenerator, int countOfTrial) {
+        while (countOfTrial > 0) {
+            cars.moveCars(numberGenerator);
             ResultView.showProcess(cars);
+            countOfTrial--;
         }
     }
 }
