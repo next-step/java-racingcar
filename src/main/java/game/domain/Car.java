@@ -5,8 +5,8 @@ public class Car {
     private static final int MAX_NUMBER = 9;
     private static final int MIN_NUMBER = 0;
     private static final int MINIMUM_MOVEMENT_NUMBER = 4;
-    private int distance = 1;
     private final String name;
+    private int distance = 1;
 
     public Car(String name) {
         this.name = name;
@@ -28,8 +28,8 @@ public class Car {
         }
     }
 
-    private void validateName(){
-        if(this.name == null || "".equals(this.name) || this.name.length() > 5) {
+    private void validateName() {
+        if (this.name == null || "".equals(this.name) || this.name.length() > 5) {
             throw new RuntimeException();
         }
     }

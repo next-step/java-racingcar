@@ -19,7 +19,7 @@ public class Game {
         }
     }
 
-    public List<Integer> getDistances(){
+    public List<Integer> getDistances() {
         return cars.stream().map(Car::getDistance).collect(Collectors.toList());
     }
 
@@ -34,7 +34,7 @@ public class Game {
 
     private int calcMaxDistance() {
         int maxDistance = 0;
-        for(Car car : cars){
+        for (Car car : cars) {
             maxDistance = Math.max(car.getDistance(), maxDistance);
         }
         return maxDistance;

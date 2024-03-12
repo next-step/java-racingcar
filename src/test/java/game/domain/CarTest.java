@@ -46,7 +46,7 @@ public class CarTest {
 
     @Test
     @DisplayName("이름이 null 또는 empty")
-    void name_is_null_or_empty(){
+    void name_is_null_or_empty() {
         assertThatThrownBy(() -> {
             new Car(null);
         }).isInstanceOf(RuntimeException.class);
@@ -58,7 +58,7 @@ public class CarTest {
 
     @Test
     @DisplayName("이름이 5글자를 초과")
-    void name_is_larger_than_5(){
+    void name_is_larger_than_5() {
         assertThatThrownBy(() -> {
             new Car("123456");
         }).isInstanceOf(RuntimeException.class);

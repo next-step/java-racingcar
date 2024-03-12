@@ -1,14 +1,17 @@
 package game;
 
-import game.domain.*;
+import game.domain.Car;
+import game.domain.Game;
+import game.domain.NumberGenerator;
+import game.domain.RandomNumberGenerator;
 import game.view.InputView;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static game.view.ResultView.*;
+import static game.view.ResultView.printCars;
+import static game.view.ResultView.printPlainMessage;
 
 public class GameClient {
 
@@ -32,14 +35,14 @@ public class GameClient {
         return InputView.insertInt();
     }
 
-    private static String[] insertNames(){
+    private static String[] insertNames() {
         printPlainMessage(GameClient.ASK_CAR_NAME_MESSAGE);
         String names = InputView.insertValue();
         return names.split(",");
     }
 
     private static void playGamesAndPrintResult(int gameCount, NumberGenerator generator, List<Car> cars) {
-        if(gameCount <= 0) return;
+        if (gameCount <= 0) return;
         Game game = new Game(generator, cars);
         printDistances(game);
         for (int i = 1; i < gameCount; i++) {
@@ -49,12 +52,12 @@ public class GameClient {
         printWinners(game);
     }
 
-    private static void printDistances(Game game){
+    private static void printDistances(Game game) {
         printCars(game.getCars());
         printPlainMessage("");
     }
 
-    private static void printWinners(Game game){
+    private static void printWinners(Game game) {
         List<String> names = game.getWinner().stream().map(Car::getName).collect(Collectors.toList());
         String winners = String.join(", ", names);
         printPlainMessage(winners + "가 최종 우승했습니다.");

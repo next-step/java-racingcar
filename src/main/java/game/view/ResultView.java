@@ -10,7 +10,7 @@ public class ResultView {
         System.out.println(message);
     }
 
-    public static void printCars(final List<Car> cars){
+    public static void printCars(final List<Car> cars) {
         cars.forEach(car -> {
             String distance = "-".repeat(Math.max(0, car.getDistance()));
             ResultView.printPlainMessage(car.getName() + " : " + distance);
