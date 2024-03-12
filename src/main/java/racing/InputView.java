@@ -41,8 +41,6 @@ public class InputView {
         return carNameList;
     }
 
-
-
     private boolean isCarNameLengthOverStandard(List<String> carNameList) {
         return carNameList.stream()
                 .anyMatch(carName -> carName.length() > CAR_NAME_LENGTH_STANDARD);
@@ -51,6 +49,7 @@ public class InputView {
     private int scanNextInt() {
         return Integer.parseInt(scanner.nextLine());
     }
+
     private String scanNextLine() {
         return scanner.nextLine();
     }
