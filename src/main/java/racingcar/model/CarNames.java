@@ -9,4 +9,8 @@ public class CarNames {
     public CarNames(String carNames) {
         this.carNames = Arrays.asList(carNames.split(","));
     }
+
+    public List<String> getCarNames() {
+        return this.carNames;
+    }
 }

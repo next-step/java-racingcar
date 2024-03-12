@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.CarNames;
 import racingcar.model.Cars;
 import racingcar.model.RaceResult;
 import racingcar.model.RandomNumberStrategy;
@@ -18,7 +19,7 @@ public class Race {
 
     public void start() {
         resultView.printCarAmount();
-        int carAmount = inputView.inputNumber();
+        CarNames carNames = inputView.inputCarName();
         resultView.printTryNumber();
         int tryNumber = inputView.inputNumber();
 
