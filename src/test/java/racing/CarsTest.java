@@ -1,5 +1,6 @@
 package racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.strategy.MoveStrategy;
 
@@ -21,6 +22,7 @@ class CarsTest {
     }
 
     @Test
+    @DisplayName("우승자가 한 명인 경우 우승자 목록 조회")
     void getWinnerList_one_winner() {
         // given
         Cars cars = getCars(carA, carB);
@@ -34,6 +36,7 @@ class CarsTest {
     }
 
     @Test
+    @DisplayName("우승자가 여러 명인 경우 우승자 목록 조회")
     void getWinnerList_over_one_winner() {
         // given
         carA.play(alwaysMoveStrategy);

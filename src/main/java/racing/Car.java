@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Car {
 
-    private final Position position;
+    private Position position;
     private final Name name;
 
     public Car(Name name) {
@@ -28,7 +28,7 @@ public class Car {
 
     public void play(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
-            position.addOne();
+            position = position.add(1);
         }
     }
 
