@@ -7,22 +7,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class CarRacing {
-    private List<Car> cars;
+    private Cars cars;
 
     public CarRacing(int carNumbers, MoveStrategy moveStrategy) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carNumbers; i++) {
-            cars.add(new Car(moveStrategy));
-        }
+        cars = new Cars(carNumbers, moveStrategy);
     }
 
     public void moveCars() {
-        for (Car car : cars) {
-            car.moveForwardOnChance();
-        }
+        cars.moveCars();
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return cars.getCars();
     }
 }
