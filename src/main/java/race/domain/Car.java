@@ -13,7 +13,7 @@ public class Car {
         countOfMove++;
     }
 
-    private Boolean canMove() {
+    private boolean canMove() {
         return RandomNumber.generate() >= CONDITION_OF_MOVE;
     }
 
