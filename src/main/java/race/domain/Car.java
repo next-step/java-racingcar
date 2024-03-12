@@ -1,4 +1,4 @@
-package domain;
+package race.domain;
 
 import utils.RandomNumber;
 

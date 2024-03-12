@@ -1,4 +1,4 @@
-package view;
+package race.view;
 
 import domain.Car;
 import java.util.List;
