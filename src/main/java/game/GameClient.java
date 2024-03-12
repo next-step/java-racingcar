@@ -22,7 +22,7 @@ public class GameClient {
         int gameCount = insertCount();
         printPlainMessage(EXECUTION_RESULT);
         NumberGenerator generator = new RandomNumberGenerator(bound);
-        List<Car> cars = generateCars(carCount);
+        List<Car> cars = generateCars(carCount, names);
         playGamesAndPrintResult(gameCount, generator, cars);
     }
 
@@ -51,10 +51,10 @@ public class GameClient {
         printPlainMessage("");
     }
 
-    private static List<Car> generateCars(int carCount) {
+    private static List<Car> generateCars(int carCount, String[] names) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            cars.add(new Car(names[i]));
         }
         return cars;
     }

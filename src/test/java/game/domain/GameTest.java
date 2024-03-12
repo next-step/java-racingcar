@@ -32,7 +32,7 @@ class GameTest {
     @BeforeEach
     public void setUpCars(){
         for(int i =0; i < 5; i++){
-            cars.add(new Car());
+            cars.add(new Car("test"));
         }
     }
 
