@@ -29,14 +29,14 @@ public class SetTest {
 	@Test
 	@DisplayName("size() 메소드를 통해 크기를 확인할 수 있다.")
 	void getSize() {
-		assertThat(numbers.size()).isEqualTo(3);
+		assertThat(numbers).hasSize(3);
 	}
 
 	@ParameterizedTest
 	@DisplayName("주어진 값을 모두 담고 있다.")
 	@ValueSource(ints = {1, 2, 3})
 	void containsElement(int element) {
-		assertThat(numbers.contains(element)).isTrue();
+		assertThat(numbers).contains(element);
 	}
 
 	@DisplayName("주어진 값을 담고 있지 않다.")
