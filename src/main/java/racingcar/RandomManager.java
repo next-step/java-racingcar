@@ -2,16 +2,16 @@ package racingcar;
 
 import java.util.Random;
 
-public class RandomManaager {
+public class RandomManager {
     private static final int RANDOM_VALUE = 10;
     private static final Random random = new Random();
-    private static RandomManaager instance = new RandomManaager();
+    private static RandomManager instance = new RandomManager();
 
-    private RandomManaager() {
+    private RandomManager() {
 
     }
 
-    public static RandomManaager getInstance() {
+    public static RandomManager getInstance() {
         return instance;
     }
 
