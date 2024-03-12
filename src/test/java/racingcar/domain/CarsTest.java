@@ -10,9 +10,6 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.Winners;
 import racingcar.fixture.CarsFixture;
 
 public class CarsTest {

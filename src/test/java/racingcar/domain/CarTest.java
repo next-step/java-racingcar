@@ -6,7 +6,6 @@ import static racingcar.fixture.DrivingStrategyFixture.NEVER_MOVE;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
 import racingcar.fixture.CarFixture;
 
 public class CarTest {

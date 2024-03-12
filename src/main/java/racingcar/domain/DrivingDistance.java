@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class DrivingDistance {
 
-    private final int value;
-
     private static final int INIT_VALUE = 0;
+
+    private final int value;
 
     public DrivingDistance() {
         this(INIT_VALUE);
@@ -19,16 +19,16 @@ public class DrivingDistance {
         this.value = value;
     }
 
-    public int value() {
-        return value;
-    }
-
     public DrivingDistance moveForward() {
         return new DrivingDistance(value + 1);
     }
 
     public boolean matchDistance(int distance) {
         return value == distance;
+    }
+
+    public int value() {
+        return value;
     }
 
     @Override

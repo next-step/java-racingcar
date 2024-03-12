@@ -2,11 +2,11 @@ package racingcar.domain;
 
 public class Car {
 
-    private final Name name;
-    private DrivingDistance drivingDistance;
-
     private static final String DISTANCE_SYMBOL = "-";
     private static final String RESULT_DIVIDER = " : ";
+
+    private final Name name;
+    private DrivingDistance drivingDistance;
 
     public Car(String name) {
         this(new Name(name), new DrivingDistance());
@@ -27,16 +27,16 @@ public class Car {
         }
     }
 
-    public int drivingDistance() {
-        return drivingDistance.value();
+    public boolean matchDistance(int distance) {
+        return drivingDistance.matchDistance(distance);
     }
 
     public String result() {
         return name.value() + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.value());
     }
 
-    public boolean matchDistance(int distance) {
-        return drivingDistance.matchDistance(distance);
+    public int drivingDistance() {
+        return drivingDistance.value();
     }
 
     public String name() {

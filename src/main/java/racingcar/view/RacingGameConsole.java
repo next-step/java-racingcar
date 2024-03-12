@@ -8,7 +8,6 @@ import racingcar.domain.SixtyPercentRandomDrivingStrategy;
 
 public class RacingGameConsole {
 
-    private static final DrivingStrategy DRIVING_STRATEGY = new SixtyPercentRandomDrivingStrategy();
     private static final String WINNER_DELIMITER = ", ";
     private static final String CAR_NAMES_DELIMITER = ",";
     private static final String RESULT_MESSAGE = "실행 결과";
@@ -16,6 +15,7 @@ public class RacingGameConsole {
     private static final String WINNER_ANNOUNCEMENT_MESSAGE = "%s가 최종 우승했습니다.";
     private static final String INPUT_ROUND_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
+    private static final DrivingStrategy DRIVING_STRATEGY = new SixtyPercentRandomDrivingStrategy();
     private static final Scanner scanner = new Scanner(System.in);
 
     public void start() {

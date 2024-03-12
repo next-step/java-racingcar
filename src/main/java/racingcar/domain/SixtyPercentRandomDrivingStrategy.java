@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.Random;
-import racingcar.domain.DrivingStrategy;
 
 public class SixtyPercentRandomDrivingStrategy implements DrivingStrategy {
 
