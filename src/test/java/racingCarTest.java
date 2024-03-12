@@ -2,11 +2,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Car;
 import racingcar.Racingcar;
 
-import java.util.Random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -28,10 +26,17 @@ public class racingCarTest {
     }
 
     @Test
-    @DisplayName("자동차가 움직이는지 테스트")
+    @DisplayName("자동차가 전진 기록 남기고 있는지 확인하는 테스트")
     public void testIsMovingCar() {
         Car car = new Car();
-        car.move();
-        assertThat(car.getDistinct()).isEqualTo(1);
+        car.addMoveHistory(true);
+        assertThat(car.getIsMoveByIndex(0)).isEqualTo(true);
     }
+
+    @Test
+    @DisplayName("게임")
+    public void testGameLogic() {
+        Racingcar.gameLogic(3,5);
+    }
+
 }
