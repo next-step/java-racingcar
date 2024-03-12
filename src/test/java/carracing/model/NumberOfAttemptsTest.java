@@ -11,12 +11,12 @@ import static org.assertj.core.api.Assertions.*;
 
 class NumberOfAttemptsTest {
     @Nested
-    @DisplayName("NumberOfAttempts 생성자 테스트")
-    class ConstructorTest {
+    @DisplayName("NumberOfAttempts 인스턴스 생성 테스트")
+    class InstanceCreationTest {
         @ParameterizedTest
         @NullAndEmptySource
         @ValueSource(strings = {"abcd", "-1", "0", "1.123", "1,a12"})
-        @DisplayName("생성자의 파라미터로 양의 정수를 전달하지 않는 경우 IllegalArgumentException을 발생시킨다.")
+        @DisplayName("양의 정수인 문자열을 전달하지 않는 경우 IllegalArgumentException을 발생시킨다.")
         void testFailCase(String input) {
             assertThatThrownBy(() -> NumberOfAttempts.newNumber(input))
                     .isExactlyInstanceOf(IllegalArgumentException.class);
@@ -24,7 +24,7 @@ class NumberOfAttemptsTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"1", "2", "10", "111"})
-        @DisplayName("생성자의 파라미터로 양의 정수를 전달하지 하는 경우 정상적으로 NumberOfAttempts의 인스턴스를 생성한다.")
+        @DisplayName("양의 정수인 문자열을 전달하는 경우 정상적으로 NumberOfAttempts의 인스턴스를 생성한다.")
         void testSuccessCase(String input) {
             assertThatObject(NumberOfAttempts.newNumber(input))
                     .isExactlyInstanceOf(NumberOfAttempts.class);
