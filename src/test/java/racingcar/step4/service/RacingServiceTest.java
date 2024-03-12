@@ -2,6 +2,7 @@ package racingcar.step4.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.step4.domain.Names;
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.dto.RoundResultDto;
 import racingcar.step4.domain.move.IncrementMoveStrategy;
@@ -26,7 +27,7 @@ class RacingServiceTest {
         RacingService racingService = new RacingService(
                 new IncrementMoveStrategy(),
                 roundCount,
-                names
+                new Names(names)
         );
 
         // when
@@ -44,7 +45,7 @@ class RacingServiceTest {
         RacingService racingService = new RacingService(
                 new IncrementMoveStrategy(),
                 roundCount,
-                names
+                new Names(names)
         );
 
         // when

@@ -2,6 +2,7 @@ package racingcar.step4.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.step4.domain.Names;
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.dto.RoundResultDto;
 import racingcar.step4.domain.move.IncrementMoveStrategy;
@@ -20,7 +21,7 @@ class RoundServiceTest {
     void moveParticipantsWhenStartRound() {
         // given
         List<String> names = Arrays.asList("Luffy", "Narut", "Ichig");
-        RoundService roundService = new RoundService(names, new IncrementMoveStrategy());
+        RoundService roundService = new RoundService(new Names(names), new IncrementMoveStrategy());
 
         // when
         roundService.startRound();

@@ -13,7 +13,7 @@ public class Round {
     private final List<Car> cars;
     private final MoveStrategy moveStrategy;
 
-    public Round(MoveStrategy moveStrategy, List<String> names) {
+    public Round(MoveStrategy moveStrategy, Names names) {
         this.moveStrategy = moveStrategy;
         this.cars = createParticipantsCar(names);
     }
@@ -28,10 +28,10 @@ public class Round {
         return new RoundResultDto(participantResult);
     }
 
-    private List<Car> createParticipantsCar(List<String> names) {
+    private List<Car> createParticipantsCar(Names names) {
         List<Car> cars = new ArrayList<>();
 
-        for (String name : names) {
+        for (String name : names.copyNames()) {
             cars.add(new Car(name, moveStrategy));
         }
 

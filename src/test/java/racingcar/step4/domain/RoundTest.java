@@ -21,7 +21,7 @@ class RoundTest {
     void orderToMoveWithMove() {
         // given
         List<String> names = Arrays.asList("Luffy", "Narut", "Ichig");
-        Round round = new Round(new IncrementMoveStrategy(), names);
+        Round round = new Round(new IncrementMoveStrategy(), new Names(names));
 
         // when
         round.move();

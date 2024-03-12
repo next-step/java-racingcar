@@ -1,5 +1,6 @@
 package racingcar.step4.service;
 
+import racingcar.step4.domain.Names;
 import racingcar.step4.domain.Round;
 import racingcar.step4.domain.dto.RoundResultDto;
 import racingcar.step4.domain.move.MoveStrategy;
@@ -10,7 +11,7 @@ public class RoundService {
 
     private final Round round;
 
-    public RoundService(List<String> names, MoveStrategy moveStrategy) {
+    public RoundService(Names names, MoveStrategy moveStrategy) {
         this.round = new Round(moveStrategy, names);
     }
 

@@ -1,5 +1,6 @@
 package racingcar.step4.view;
 
+import racingcar.step4.domain.Names;
 import racingcar.step4.domain.move.RandomMoveStrategy;
 import racingcar.step4.service.RacingService;
 import racingcar.step4.service.dto.RacingResultDto;
@@ -13,7 +14,7 @@ public class RacingGameUserView {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        List<String> participantsName = inputView.getParticipantsNameInput();
+        Names participantsName = new Names(inputView.getParticipantsNameInput());
         int roundCount = inputView.getRoundCountInput();
 
         RacingService racingService = new RacingService(new RandomMoveStrategy(), roundCount, participantsName);
