@@ -1,6 +1,6 @@
 package liveLesson;
 
-public class lessonCalculator {
+public class LessonCalculator {
 
     public static int calculate(String text) {
         if (isBlank(text)) {

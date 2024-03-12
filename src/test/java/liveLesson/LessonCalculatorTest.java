@@ -3,10 +3,10 @@ package liveLesson;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static liveLesson.lessonCalculator.calculate;
+import static liveLesson.LessonCalculator.calculate;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class lessonCalculatorTest {
+public class LessonCalculatorTest {
 
     @Test
     @DisplayName("null값")
