@@ -56,7 +56,7 @@ public class RacingCarTest {
 	@Test
 	void nameToCarOverFiveNumberOfCharacters () {
 		// given & when & then
-		assertThatExceptionOfType(RuntimeException.class)
+		assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> {
 					Car.createCar("mercedes");
 				}).withMessageMatching("글자수가 5를 초과했습니다. 다시 입력해주세요.");
