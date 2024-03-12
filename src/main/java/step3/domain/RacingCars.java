@@ -9,9 +9,8 @@ public class RacingCars {
 
     public RacingCars(int numberOfCars) {
         racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            racingCars.add(new RacingCar(i));
-        }
+        for (int i = 0; i < numberOfCars; i++) racingCars.add(new RacingCar(i));
+
     }
 
     public List<RacingCar> list() {
@@ -19,8 +18,6 @@ public class RacingCars {
     }
 
     public void raceCars(RacingCars racingCars) {
-        for (RacingCar racingCar : racingCars.list()) {
-            racingCar.raceCar();
-        }
+        for (RacingCar racingCar : racingCars.list()) racingCar.raceCar();
     }
 }

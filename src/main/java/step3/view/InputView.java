@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public Scanner scanner() {
         return this.scanner;
@@ -24,7 +24,7 @@ public class InputView {
         return inputInteger(scanner);
     }
 
-    public int inputInteger(Scanner scanner){
+    private int inputInteger(Scanner scanner){
         return scanner.nextInt();
     }
 

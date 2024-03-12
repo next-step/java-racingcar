@@ -26,10 +26,7 @@ public class Positive {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Positive && this.positive() == ((Positive) o).positive()) {
-            return true;
-        }
-        return false;
+        return o instanceof Positive && this.positive() == ((Positive) o).positive();
     }
 
     @Override

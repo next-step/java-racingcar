@@ -12,8 +12,8 @@ public class RacingCar {
     private static final int INITIAL_NUMBER = 0;
 
     private static final int INITIAL_POSITION = 0;
-    
-    private CarNumber carNumber;
+
+    private final CarNumber carNumber;
 
     private Position position;
 
@@ -30,11 +30,18 @@ public class RacingCar {
         this.position = new Position(position);
     }
 
+    public void raceCar() {
+        MovableStrategy movableStrategy = new RandomMovableStrategy();
+        move(movableStrategy);
+    }
+
+    private void setForwardPosition() {
+        Positive p = position.plusOne();
+        this.position = new Position(p.positive());
+    }
+
     public void move(MovableStrategy movableStrategy) {
-        if (movableStrategy.isMovable()) {
-            Positive p = position.plusOne();
-            this.position = new Position(p.positive());
-        }
+        if (movableStrategy.isMovable()) setForwardPosition();
     }
 
     public int carNumber() {
@@ -45,17 +52,10 @@ public class RacingCar {
         return position.positive();
     }
 
-    public void raceCar() {
-        MovableStrategy movableStrategy = new RandomMovableStrategy();
-        move(movableStrategy);
-    }
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof RacingCar && this.carNumber() == ((RacingCar) o).carNumber()) {
-            return true;
-        }
-        return false;
+        return o instanceof RacingCar && this.carNumber() == ((RacingCar) o).carNumber();
     }
 
     @Override
