@@ -23,7 +23,7 @@ public class Race {
         resultView.printTryNumber();
         int tryNumber = inputView.inputNumber();
 
-        Cars cars = new Cars(carAmount);
+        Cars cars = new Cars(carNames);
 
         RaceResult raceResult = cars.tryMove(tryNumber, new RandomNumberStrategy());
         resultView.printResultNotice();

@@ -13,4 +13,8 @@ public class CarNames {
     public List<String> getCarNames() {
         return this.carNames;
     }
+
+    public int getCarNameCount() {
+        return this.carNames.size();
+    }
 }
