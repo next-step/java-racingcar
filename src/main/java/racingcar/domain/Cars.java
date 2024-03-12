@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.Name;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,10 +10,10 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int size) {
+    public Cars(Names names) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            this.cars.add(new Car(null));
+        for (Name name : names.get()) {
+            this.cars.add(new Car(name));
         }
     }
 
