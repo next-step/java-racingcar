@@ -1,10 +1,14 @@
 package racingcar.domain;
 
+import racingcar.Name;
+
 public class Car {
 
+    private final Name name;
     private final Distance distance;
 
-    public Car() {
+    public Car(Name name) {
+        this.name = name;
         this.distance = new Distance();
     }
 

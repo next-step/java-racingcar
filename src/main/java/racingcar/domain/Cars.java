@@ -11,7 +11,7 @@ public class Cars {
     public Cars(int size) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            this.cars.add(new Car());
+            this.cars.add(new Car(null));
         }
     }
 
