@@ -9,7 +9,7 @@ public class Car {
     }
 
     public void go() {
-            this.mileage += "-";
+        this.mileage += "-";
     }
 
 }
