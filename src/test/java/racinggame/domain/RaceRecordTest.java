@@ -15,11 +15,11 @@ class RaceRecordTest {
 
     @BeforeEach
     void init() {
-        cars.add(new Car(new Position(1),"one"));
-        cars.add(new Car(new Position(2),"two"));
-        cars.add(new Car(new Position(3),"three"));
-        cars.add(new Car(new Position(4),"winner1"));
-        cars.add(new Car(new Position(4),"winner2"));
+        cars.add(new Car(new Position(1), new CarName("one")));
+        cars.add(new Car(new Position(2), new CarName("two")));
+        cars.add(new Car(new Position(3), new CarName("three")));
+        cars.add(new Car(new Position(4), new CarName("winner1")));
+        cars.add(new Car(new Position(4), new CarName("winner2")));
 
     }
 

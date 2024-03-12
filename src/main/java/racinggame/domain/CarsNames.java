@@ -1,21 +1,23 @@
 package racinggame.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarsNames {
 
-    private static final int MAXIMUM_NAME_SIZE = 5;
-
-    private String[] carNames;
+    private List<CarName> carsNames;
 
     public CarsNames(String... carsNames) {
-        validationCarsNames(carsNames);
-        this.carNames = carsNames;
+        validEmpty(carsNames);
+        this.carsNames = createCarName(carsNames);
     }
 
-    private void validationCarsNames(String... carsNames) {
-        validEmpty(carsNames);
+    private List<CarName> createCarName(String... carsNames) {
+        List<CarName> carsNameList = new ArrayList<>();
         for (String carName : carsNames) {
-            validNameSize(carName);
+            carsNameList.add(new CarName(carName));
         }
+        return carsNameList;
     }
 
     private void validEmpty(String... carsNames) {
@@ -24,17 +26,11 @@ public class CarsNames {
         }
     }
 
-    private void validNameSize(String carName) {
-        if (carName.length() > MAXIMUM_NAME_SIZE) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다: " + carName.length());
-        }
+    public int size() {
+        return carsNames.size();
     }
 
-    public int length() {
-        return carNames.length;
-    }
-
-    public String getName(int index) {
-        return carNames[index];
+    public CarName getName(int index) {
+        return carsNames.get(index);
     }
 }

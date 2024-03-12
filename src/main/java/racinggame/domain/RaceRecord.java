@@ -30,7 +30,7 @@ public class RaceRecord {
     }
 
     private Position comparePosition(Position winnerPosition, Car car) {
-        if (winnerPosition.compareTo(car.position()) < 0) {
+        if (car.isPassed(winnerPosition)) {
             return car.position();
         }
         return winnerPosition;
@@ -40,10 +40,14 @@ public class RaceRecord {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            if (car.position().compareTo(winnerPosition) == 0) {
-                winners.add(car);
-            }
+            addWinner(car, winnerPosition, winners);
         }
         return winners;
+    }
+
+    private void addWinner(Car car, Position winnerPosition, List<Car> winners) {
+        if (car.isPassed(winnerPosition)) {
+            winners.add(car);
+        }
     }
 }

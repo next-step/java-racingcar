@@ -5,13 +5,13 @@ import java.util.Objects;
 public class Car {
 
     private Position position;
-    private String name;
+    private CarName name;
 
-    public Car(String name) {
+    public Car(CarName name) {
         this(new Position(), name);
     }
 
-    public Car(Position position, String name) {
+    public Car(Position position, CarName name) {
         this.position = position;
         this.name = name;
     }
@@ -27,7 +27,7 @@ public class Car {
     }
 
     public String name() {
-        return name;
+        return name.value();
     }
 
     public Car copy() {
@@ -45,5 +45,9 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position, name);
+    }
+
+    public boolean isPassed(Position winnerPosition) {
+        return position.compareTo(winnerPosition) >= 0;
     }
 }
