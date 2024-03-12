@@ -23,6 +23,10 @@ public class Distance {
         return this.distance;
     }
 
+    public boolean greaterThan(Distance distance) {
+        return this.distance >= distance.distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -36,4 +36,20 @@ public class Cars {
         }
     }
 
+    public Distance findMaxDistance() {
+        Distance maxDistance = new Distance();
+        for (Car car : cars) {
+            maxDistance = returnMaxDistance(maxDistance, car);
+        }
+        return maxDistance;
+    }
+
+    private Distance returnMaxDistance(Distance maxDistance, Car car) {
+        Distance carDistance = car.getDistance();
+        if (carDistance.greaterThan(maxDistance)) {
+            maxDistance = carDistance;
+        }
+        return maxDistance;
+    }
+
 }
