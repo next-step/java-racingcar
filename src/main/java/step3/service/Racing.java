@@ -1,6 +1,5 @@
 package step3.service;
 
-import step3.view.RacingOutputView;
 import step3.view.result.CarMovementRoundResults;
 
 public class Racing {

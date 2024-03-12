@@ -1,6 +1,8 @@
 package step3.view;
 
 import step3.view.result.CarMovementResult;
+import step3.view.result.CarMovementRoundResult;
+import step3.view.result.CarMovementRoundResults;
 
 import java.util.List;
 
@@ -12,12 +14,17 @@ public class RacingOutputView {
 
     }
 
+    public static void printRacingResult(CarMovementRoundResults roundResults) {
+        printResultTitle();
+        roundResults.forEach(RacingOutputView::printRacingRoundResult);
+    }
+
     public static void printResultTitle() {
         printLine(RESULT_TITLE);
     }
 
-    public static void printRacingResult(List<CarMovementResult> results) {
-        results.forEach(RacingOutputView::printRacingResult);
+    private static void printRacingRoundResult(CarMovementRoundResult roundResult) {
+        roundResult.forEach(RacingOutputView::printRacingResult);
         lineChange();
     }
 
