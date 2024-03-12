@@ -10,10 +10,10 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(Names names) {
+    public Cars(String[] names) {
         this.cars = new ArrayList<>();
-        for (Name name : names.get()) {
-            this.cars.add(new Car(name));
+        for (String name : names) {
+            this.cars.add(new Car(new Name(name)));
         }
     }
 

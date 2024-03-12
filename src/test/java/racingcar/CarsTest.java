@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
-    private final static Names NAMES = new Names(new NameSeparator("pobi,crong,honux"));
+    private final static String[] NAMES = { "pobi", "crong", "honux" };
 
     @Test
     @DisplayName("[성공] 자동차 3개를 가진 자동차 리스트를 생성한다.")
