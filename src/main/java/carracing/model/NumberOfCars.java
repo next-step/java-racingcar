@@ -14,7 +14,18 @@ public class NumberOfCars {
         this.numberOfCars = Integer.parseInt(numberOfCars);
     }
 
+    private NumberOfCars(final int numberOfCars) {
+        if (numberOfCars <= 0) {
+            throw new IllegalArgumentException(WRONG_NUMBER_OF_CARS_MESSAGE);
+        }
+        this.numberOfCars = numberOfCars;
+    }
+
     public static NumberOfCars newNumber(final String numberOfCars) {
+        return new NumberOfCars(numberOfCars);
+    }
+
+    public static NumberOfCars newNumber(final int numberOfCars) {
         return new NumberOfCars(numberOfCars);
     }
 
