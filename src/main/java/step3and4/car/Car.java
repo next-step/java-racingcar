@@ -4,9 +4,10 @@ import step3and4.car.move.MoveStrategy;
 
 public class Car {
     private int position = 0;
+    private String carName;
     private MoveStrategy moveStrategy;
 
-    public Car(MoveStrategy moveStrategy) {
+    public Car(String carName, MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
     }
 

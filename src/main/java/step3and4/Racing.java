@@ -8,34 +8,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    private final int carNumber;
     private final int tryNumber;
     private final CarFirstCollection carFirstCollection;
 
-    public static Racing createRacing(int carNumber, int tryNumber) {
-        return new Racing(carNumber, tryNumber);
+    public static Racing createRacing(String[] carNames, int tryNumber) {
+        return new Racing(tryNumber, carNames);
     }
 
-    public Racing(int carNumber, int tryNumber) {
-        this.carNumber = carNumber;
+    public Racing(int tryNumber, String[] carNames) {
         this.tryNumber = tryNumber;
-        this.carFirstCollection = createCarList(carNumber);
+        this.carFirstCollection = createCarList(carNames);
     }
 
-    private CarFirstCollection createCarList(int carNumber) {
+    private CarFirstCollection createCarList(String[] carNames) {
+        return CarFirstCollection.from(createCarList(carNames, createCarRandomMoveStrategy()));
+    }
+
+    private static RandomMoveStrategy createCarRandomMoveStrategy() {
         RandomCreator randomCreator = new RandomCreator();
         RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(randomCreator);
-
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car(randomMoveStrategy));
-        }
-        return CarFirstCollection.from(cars);
+        return randomMoveStrategy;
     }
 
+    private static List<Car> createCarList(String[] carNames, RandomMoveStrategy randomMoveStrategy) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(createCar(randomMoveStrategy, carNames[i]));
+        }
+        return cars;
+    }
+
+    private static Car createCar(RandomMoveStrategy randomMoveStrategy, String carNames) {
+        return new Car(carNames, randomMoveStrategy);
+    }
 
     public int getCarNumberOfParticipants() {
-        return this.carNumber;
+        return this.carFirstCollection.size();
     }
 
     public int getTryNumber() {

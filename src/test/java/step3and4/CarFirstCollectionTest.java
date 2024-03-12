@@ -33,7 +33,7 @@ class CarFirstCollectionTest {
     @Test
     void moveCars() {
 
-        List<Car> cars = List.of(new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy));
+        List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
         CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
         carFirstCollection.moveCars();
 
@@ -44,7 +44,7 @@ class CarFirstCollectionTest {
     @DisplayName("자동차 이동 결과를 반환한다.")
     @Test
     void createMoveResult() {
-        List<Car> cars = List.of(new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy), new Car(moveStrategy));
+        List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
         CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
         carFirstCollection.moveCars();
 

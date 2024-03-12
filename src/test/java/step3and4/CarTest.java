@@ -25,7 +25,7 @@ class CarTest {
             }
         };
 
-        Car car = new Car(moveStrategy);
+        Car car = new Car("pobi",moveStrategy);
         car.move();
 
         Assertions.assertThat(car.getPosition()).isEqualTo(1);

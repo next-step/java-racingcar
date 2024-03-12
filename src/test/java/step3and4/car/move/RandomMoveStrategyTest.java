@@ -15,7 +15,7 @@ class RandomMoveStrategyTest {
     void randomMove(int moveNumber, int actualResult) {
         RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(() -> moveNumber);
 
-        Car car = new Car(randomMoveStrategy);
+        Car car = new Car("pobi",randomMoveStrategy);
         car.move();
         int result = car.getPosition();
 
