@@ -2,6 +2,7 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -80,6 +81,18 @@ public class StringTest {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()){
             assertThat(m.group(1)).isEqualTo(";");
+        }
+    }
+    @Test
+    void contains() {
+        String customStr1 = "//";
+        String customStr2 = "\n";
+        String input = "//;\n1;2;3";
+        if (input.contains(customStr1) && input.contains(customStr2)){
+            input = input.substring(4);
+            assertThat(input).isEqualTo("1;2;3");
+        } else{
+            assertThat(input).isEqualTo(input);
         }
     }
 }

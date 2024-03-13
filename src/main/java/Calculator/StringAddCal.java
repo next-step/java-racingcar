@@ -19,19 +19,21 @@ public class StringAddCal {
         int[] numbers = new int[values.length];
         for (int i=0; i<values.length; i++){
             numbers[i] = Integer.parseInt(values[i]); // 숫자가 아닌 문자의 경우 NumberFormatException 발생
-            if(isNegative(numbers[i]) ==true) throw new RuntimeException("Negative Number Included");
+            if(isNegative(numbers[i])) throw new RuntimeException("Negative Number Included");
         }
         return numbers;
     }
 
     private static boolean isNegative(int number) {
-        if(number < 0) return true;
-        else return false;
+        return number < 0;
     }
 
     private static String[] getValues(String text) {
-        if(text.contains("//")) {
+        String customStr1 = "//";
+        String customStr2 = "\n";
+        if(text.contains(customStr1) && text.contains(customStr2)) {
             String delim = getCustomDelim(text);
+            if (delim==null) throw new RuntimeException("Custom Delimeter is NULL");
             text = text.substring(4);
             return text.split(delim);
         }

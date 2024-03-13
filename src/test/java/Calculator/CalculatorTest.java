@@ -32,6 +32,9 @@ public class CalculatorTest {
     void IsCutom구분자(){
         assertThat(StringAddCal.AddNumbers("//;\n1;2;3")).isEqualTo(6);
         assertThat(StringAddCal.AddNumbers("//-\n1-2-3")).isEqualTo(6);
+        assertThatThrownBy(() -> StringAddCal.AddNumbers("//\n1;2;3")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAddCal.AddNumbers("//,1;2;3")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAddCal.AddNumbers(",\n1;2;3")).isInstanceOf(RuntimeException.class);
     }
     @Test
     void Is음수_포함_문자열(){
