@@ -1,5 +1,6 @@
 package racingcar.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.Vehicle;
@@ -20,4 +21,40 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public void printWinners() {
+        int maxMoveScore = getMaxMoveScore();
+        System.out.println(String.format("%s가 최종 우승했습니다.", getWinnerNames(maxMoveScore)));
+    }
+
+    private int getMaxMoveScore() {
+        int maxMove = 0;
+        for (Vehicle vehicle : vehicles) {
+            maxMove = compareMaxMoveScore(maxMove, vehicle.getMoveCount());
+        }
+
+        return maxMove;
+    }
+
+    private int compareMaxMoveScore(int maxMove, int vehicleMove) {
+        if (maxMove < vehicleMove) {
+            return vehicleMove;
+        }
+        return maxMove;
+    }
+
+    private String getWinnerNames(int maxMoveScore) {
+        List<String> winners = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            addWinnerList(maxMoveScore, vehicle, winners);
+        }
+        return String.join(", ", winners);
+    }
+
+    private void addWinnerList(int maxMoveScore, Vehicle vehicle, List<String> winner) {
+        if (maxMoveScore == vehicle.getMoveCount()) {
+            winner.add(vehicle.getName());
+        }
+    }
+
 }

@@ -25,6 +25,7 @@ public class RacingApplication {
         for (int i = 0; i < round; i++) {
             gameRunner.start();
             resultView.printResult();
+            resultView.printWinners();
         }
     }
 
