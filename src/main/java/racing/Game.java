@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    final static int DEFAULT_START_LOCATION = 1;
+    private static final int DEFAULT_START_LOCATION = 0;
     private final List<Car> attendedCars;
 
-    Game() {
+    public Game() {
         this.attendedCars = new ArrayList<>();
     }
 
