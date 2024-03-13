@@ -16,7 +16,7 @@ public class RacingCarGame {
 
   public List<Car> createCars(int carCount) {
     if (carCount <= 0) {
-      throw new IllegalArgumentException("please set carCount and tryCount greater than 0");
+      throw new IllegalArgumentException("method createCars: please set carCount and tryCount greater than 0");
     }
 
     cars = Stream.generate(Car::new)
@@ -29,7 +29,7 @@ public class RacingCarGame {
   public List<Car> racing(int tryCount, MoveCondition moveCondition) {
 
     if (tryCount <= 0) {
-      throw new IllegalArgumentException("please set carCount and tryCount greater than 0");
+      throw new IllegalArgumentException("method racing: please set carCount and tryCount greater than 0");
     }
 
     cars.stream()
