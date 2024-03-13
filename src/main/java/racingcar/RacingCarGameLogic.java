@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.model.Car;
+import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ public class RacingCarGameLogic {
     public void gameLogic(String nameOfCars, int numberOfAttempt) {
         List<Car> cars = initCars(nameOfCars);
         IntStream.range(0, numberOfAttempt).forEach(i -> RacingCarGameRule.getInstance().moveCars(cars));
+        List<Car> winners = RacingCarGameRule.getInstance().getWinnerCars(cars);
+        ResultView.getInstance().printRacingcarWinners(winners);
     }
 
     public List<Car> initCars(String nameOfCars) {
