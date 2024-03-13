@@ -10,6 +10,11 @@ public class Name {
 
     private final String name;
 
+    // Constructor for UnitTest
+    public Name() {
+        this.name = "";
+    }
+
     public Name(String name) {
         validateNameLength(name);
         this.name = name;
