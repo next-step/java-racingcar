@@ -4,6 +4,8 @@ import step4.view.result.CarMovementResult;
 import step4.view.result.CarMovementRoundResult;
 import step4.view.result.CarMovementRoundResults;
 
+import static step4.util.MyPrinter.*;
+
 public class RacingOutputView {
     private static final String RESULT_TITLE = "실행결과";
     private static final char MOVE_RECORD_UNIT = '-';
@@ -33,15 +35,4 @@ public class RacingOutputView {
         lineChange();
     }
 
-    private static void printLine(String text) {
-        System.out.println(text);
-    }
-
-    private static void print(char character) {
-        System.out.print(character);
-    }
-
-    private static void lineChange() {
-        System.out.println();
-    }
 }
