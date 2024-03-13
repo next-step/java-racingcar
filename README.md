@@ -10,27 +10,25 @@
 
 ## 3단계 - 자동차 경주
 
-- [ ] 자동차 객체 구현
-    - [ ] Property
-      - [ ] 이름
-      - [ ] 현재 위치
-    - [ ] Method
-      - [ ] move
-- [ ] 게임 객체 구현
-  - [ ] Property
-    - [ ] 자동차 대수
-    - [ ] 시도 횟수
-    - [ ] 참여 자동차
-  - [ ] Method
-    - [ ] 참여 자동차 생성
-    - [ ] 게임 진행
-- [ ] Input Class 구현
-  - [ ] Property
-    - [ ] Scanner 객체
-  - [ ] Method
-    - [ ] 자동차 대수 입력
-    - [ ] 시도 횟수 입력
-- [ ] Output Class 구현
-  - [ ] Method
-    - [ ] 세션 결과 출력
-    - [ ] 개별 자동차 위치 출력
+- [X] 자동차 객체 구현
+    - [X] Property
+      - [X] 이름
+      - [X] 현재 위치
+    - [X] Method
+      - [X] move
+- [X] 게임 객체 구현
+  - [X] Property
+    - [X] 참여 자동차
+  - [X] Method
+    - [X] 참여 자동차 생성
+    - [X] 게임 진행
+- [X] Input Class 구현
+  - [X] Property
+    - [X] Scanner 객체
+  - [X] Method
+    - [X] 자동차 대수 입력
+    - [X] 시도 횟수 입력
+- [X] Output Class 구현
+  - [X] Method
+    - [X] 세션 결과 출력
+    - [X] 개별 자동차 위치 출력
