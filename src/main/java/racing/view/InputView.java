@@ -8,8 +8,8 @@ public class InputView {
 
     private final Scanner scanner;
 
-    public InputView() {
-        this.scanner = new Scanner(System.in);
+    public InputView(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public int getNumberOfCars() {
@@ -20,9 +20,5 @@ public class InputView {
     public int getNumberOfChances() {
         System.out.println(Constant.CMD_HOW_MANY_CHANCE);
         return scanner.nextInt();
-    }
-
-    public void closeScanner() {
-        scanner.close();
     }
 }
