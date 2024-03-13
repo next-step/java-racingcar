@@ -1,4 +1,4 @@
-package stiudy;
+package race_stiudy;
 
 import java.util.Random;
 import java.util.Scanner;
