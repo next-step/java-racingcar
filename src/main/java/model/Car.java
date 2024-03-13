@@ -5,32 +5,26 @@ import java.util.Objects;
 public class Car implements Comparable<Car> {
     private final Position position;
     private final Name name;
-    private final MoveStrategy moveStrategy;
 
     public Car(String name) {
-        this(name, new RandomMove());
+        this(name, 0);
     }
 
     public Car(String name, int position) {
-        this(name, position, new RandomMove());
+        this(new Name(name), new Position(position));
     }
 
-    public Car(String name, MoveStrategy moveStrategy) {
-        this(name, 0, moveStrategy);
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
-    public Car(String name, int position, MoveStrategy strategy) {
-        this.name = new Name(name);
-        this.position = new Position(position);
-        this.moveStrategy = strategy;
-    }
-
-    public Car move() {
+    public Car move(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
-            this.position.move();
+            return new Car(name, position.move());
         }
 
-        return new Car(getName(), getPosition(), this.moveStrategy);
+        return this;
     }
 
     public boolean isSamePosition(Position other) {
@@ -46,21 +40,20 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo(Car o) {
-        return o.position.compareTo(this.position);
+    public int compareTo(Car other) {
+        return other.position.compareTo(this.position);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(position, car.position) && Objects.equals(name, car.name) && Objects.equals(moveStrategy, car.moveStrategy);
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Car car = (Car) other;
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, name, moveStrategy);
+        return Objects.hash(position, name);
     }
-
 }

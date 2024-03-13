@@ -6,11 +6,13 @@ import java.util.List;
 
 public class RacingRecord {
     private final List<Cars> records;
-    private final List<String> winners;
 
     public RacingRecord(int capacity) {
+        if (capacity < 1) {
+            throw new IllegalArgumentException("1이상 입력해주세요");
+        }
+
         this.records = new ArrayList<>(capacity);
-        this.winners = new ArrayList<>();
     }
 
     public void save(Cars cars) {
@@ -21,11 +23,8 @@ public class RacingRecord {
         return Collections.unmodifiableList(this.records);
     }
 
-    public List<String> getWinners() {
-        return Collections.unmodifiableList(this.winners);
-    }
-
-    public void saveWinners(List<String> winners) {
-        this.winners.addAll(winners);
+    public List<Car> winners() {
+        Cars last = this.records.get(records.size() - 1);
+        return last.winners();
     }
 }

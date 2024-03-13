@@ -3,6 +3,7 @@ package controller;
 import model.Car;
 import model.RacingGame;
 import model.RacingRecord;
+import model.RandomMove;
 import view.InputView;
 import view.ResultView;
 
@@ -15,12 +16,10 @@ public class RacingController {
         List<Car> cars = inputView.askCarNames();
         int racingTurn = inputView.askRacingTurn();
 
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(cars, new RandomMove());
         RacingRecord racingRecord = racingGame.run(racingTurn);
-        racingRecord.saveWinners(racingGame.winnerNames());
 
-        ResultView resultView = new ResultView(racingRecord);
-        resultView.draw();
-        resultView.print();
+        ResultView resultView = new ResultView();
+        resultView.print(racingRecord);
     }
 }

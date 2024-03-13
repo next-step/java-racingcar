@@ -25,3 +25,41 @@
     - [x] 매턴 자동차의 현재 위치(HYPHEN으로 연견될 문자열)를 기록한다
 - 결과 출력 (ResultView)
     - [x] 실행 결과를 전달받아 출력한다
+
+---
+
+### 3단계 피드백 반영
+
+- [x] 사용자 입력 유효성 검사 조건에 ONE 상수 제거
+- [x] run() 실행시 RacingRecord 인스턴스 반환하여 View 전달하도록 변경
+    - [x] Record 클래스(DTO) 추가
+- [x] RacingGame 테스트 케이스 분리, 반환된 RacingRecord 결과로 처리하도록 변경
+- [x] @FunctionalInterface 어노테이션 추가
+- [x] carList -> cars 로 renaming
+
+### 4단계 피드백 반영
+
+- [x] RandomUtil 제거, RandomMove 기능 이동
+- [x] Cars (일급 컬렉션) 추가
+- [x] RacingGame에 Cars (일급 컬렉션) 적용
+- [x] ResultView 상태값 추가
+
+### 5단계 피드백 반영
+
+Car 클래스
+
+- [x] Car 멤버 필드 타입 생성자 추가
+- [x] Position move() 호출시 불변 처리
+- [x] 이동하지 않을 경우 참조 주소로 인한 이슈 해결
+
+Name 클래스
+
+- [x] 매직넘버 처리 -- MAX_LENGTH
+
+RacingGame, RacingRecord, ResultView
+
+- [x] View 영역 출력 형식 변경 고려하여 List\<Car\> winners 전달하도록 수정
+- [x] ResultView는 List\<Car\> winners 상태값 가져와 처리하도록 수정
+
+
+

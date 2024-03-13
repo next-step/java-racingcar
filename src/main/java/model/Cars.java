@@ -18,21 +18,20 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars move() {
+    public Cars move(MoveStrategy moveStrategy) {
         List<Car> records = new ArrayList<>();
         for (Car car : cars) {
-            Car moved = car.move();
+            Car moved = car.move(moveStrategy);
             records.add(moved);
         }
 
         return new Cars(records);
     }
 
-    public List<String> winnerNames() {
+    public List<Car> winners() {
         Position position = new Position(maxPosition());
         return this.cars.stream()
                 .filter(car -> car.isSamePosition(position))
-                .map(Car::getName)
                 .collect(toList());
     }
 
@@ -48,10 +47,10 @@ public class Cars {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cars cars1 = (Cars) o;
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Cars cars1 = (Cars) other;
         return Objects.equals(cars, cars1.cars);
     }
 
