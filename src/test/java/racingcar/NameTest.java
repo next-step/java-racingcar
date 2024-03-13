@@ -27,7 +27,7 @@ public class NameTest {
         assertThatThrownBy(() -> {
             new Name(name);
         }).isInstanceOf(NameLengthExceededException.class)
-            .hasMessage(MessageFormat.format("자동차 이름은 5자를 초과할 수 없습니다. (적합하지 않은 자동차 이름: {0})", name));
+                .hasMessage(MessageFormat.format("자동차 이름은 5자를 초과할 수 없습니다. (적합하지 않은 자동차 이름: {0})", name));
     }
 
 }

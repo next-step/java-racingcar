@@ -12,7 +12,7 @@ public class Winner {
     private Names findNames(Cars cars, Distance maxDistance) {
         Map<Distance, Names> distanceNamesMap = new HashMap<>();
         for (Car car : cars.get()) {
-             putToMap(distanceNamesMap, car);
+            putToMap(distanceNamesMap, car);
         }
 
         return distanceNamesMap.get(maxDistance);

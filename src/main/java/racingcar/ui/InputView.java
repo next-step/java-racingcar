@@ -16,7 +16,9 @@ public class InputView {
         return readInt();
     }
 
-    private String readString() { return SCANNER.nextLine(); }
+    private String readString() {
+        return SCANNER.nextLine();
+    }
 
     private int readInt() {
         return SCANNER.nextInt();
