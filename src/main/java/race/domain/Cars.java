@@ -32,12 +32,12 @@ public class Cars {
         }
     }
 
-    private List<Car> generateCar(int numberOfCar) {
+    private List<Car> generateCar(int countOfCar) {
         List<Car> cars = new ArrayList<>();
 
-        while(numberOfCar > 0) {
+        while(countOfCar > 0) {
             cars.add(Car.createInstance());
-            numberOfCar--;
+            countOfCar--;
         }
 
         return cars;
