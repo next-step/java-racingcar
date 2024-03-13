@@ -1,8 +1,6 @@
 package racingCar.utils;
 
 public class Utils {
-    private static final int MAX_NAME_LEN = 5;
-
     public static int toInt(String values){
         return checkPositive(values);
     }
@@ -20,9 +18,5 @@ public class Utils {
         return result;
     }
 
-    public static void checkUsableName(String value){
-        if (value.length() > MAX_NAME_LEN){
-            throw new IllegalArgumentException("너무 긴 길이의 이름" + value);
-        }
-    }
+
 }
