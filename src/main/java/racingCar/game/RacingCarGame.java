@@ -15,7 +15,8 @@ public class RacingCarGame {
   }
 
   public void initiateGame(List<String> carNames) {
-    IntGenerator intGenerator = new RandomGenerator();
+    int randomUpperBound = 10;
+    IntGenerator intGenerator = new RandomGenerator(randomUpperBound);
     for (String carName : carNames) {
       cars.add(new Car(carName, intGenerator));
     }
