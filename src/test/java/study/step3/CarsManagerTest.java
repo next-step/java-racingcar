@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsManagerTest {
     @ParameterizedTest(name = "차량 위치 : {1}")
     @MethodSource("initCar")
-    @DisplayName("초기 차량 위치에 대해 반환한다.")
+    @DisplayName("초기 입력한 차량 위치에 대한 반환 확인")
     void getCarsDistanceTest(List<Car> cars, List<Integer> positions) {
         //given
         CarsManager carsManager = new CarsManager(cars);
