@@ -25,14 +25,14 @@ class CarsTest {
     @DisplayName("우승자가 한 명인 경우 우승자 목록 조회")
     void getWinnerList_one_winner() {
         // given
-        Cars cars = getCars(carA, carB);
         carA.play(alwaysMoveStrategy);
+        Cars cars = getCars(carA, carB);
 
         // when
-        List<Car> winnerList = cars.getWinnerList();
+        Winners winners = cars.getWinners();
 
         // then
-        assertThat(winnerList).containsExactly(carA);
+        assertThat(winners).isEqualTo(new Winners(List.of(carA)));
     }
 
     @Test
@@ -45,10 +45,10 @@ class CarsTest {
         Cars cars = getCars(carA, carB);
 
         // when
-        List<Car> winnerList = cars.getWinnerList();
+        Winners winnerList = cars.getWinners();
 
         // then
-        assertThat(winnerList).containsExactly(carA, carB);
+        assertThat(winnerList).isEqualTo(new Winners(List.of(carA, carB)));
     }
 
     private Cars getCars(Car... cars) {

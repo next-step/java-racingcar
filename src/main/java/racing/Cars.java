@@ -18,7 +18,7 @@ public class Cars implements Iterable<Car> {
         return cars.iterator();
     }
 
-    public Winners getWinnerList() {
+    public Winners getWinners() {
         int maxPosition = maxPosition();
         List<Car> winners = cars.stream()
                 .filter(car -> car.samePosition(maxPosition))
