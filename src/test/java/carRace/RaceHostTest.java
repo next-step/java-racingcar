@@ -2,6 +2,8 @@ package carRace;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import carRace.domain.Car;
+import carRace.domain.RaceHost;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +18,7 @@ class RaceHostTest {
         int raceTryNumber = 1000;
 
         RaceHost raceHost = new RaceHost(carMount, raceTryNumber);
-        List<Car> cars = Car.createCar(carMount);
+        List<Car> cars = Car.createCars(carMount);
         //when
         raceHost.playGame(cars);
 
@@ -25,7 +27,7 @@ class RaceHostTest {
             long historyLength = car.randomNumberHistory()
                 .stream()
                 .filter(randomNumber -> randomNumber >= 4).count();
-            int raceResultLength = car.raceResult().length();
+            int raceResultLength = car.moveCount();
             return historyLength == raceResultLength;
         });
 
