@@ -16,32 +16,32 @@ public class CarTest {
   @Test
   void 초기_위치_값으로_생성() {
     Car car = new Car(10);
-    assertThat(car.isLocationValueOf(10)).isTrue();
+    assertThat(car.isLocatedAt(10)).isTrue();
   }
 
   @Test
   void 입력이_4보다_크거나_같으면_전진() {
-    car.moveConditionally(4);
-    assertThat(car.isLocationValueOf(1)).isTrue();
+    car.moveConditionally(new Condition(4));
+    assertThat(car.isLocatedAt(1)).isTrue();
   }
 
   @Test
   void 입력이_4보다_작으면_정지() {
-    car.moveConditionally(3);
-    assertThat(car.isLocationValueOf(0)).isTrue();
+    car.moveConditionally(new Condition(3));
+    assertThat(car.isLocatedAt(0)).isTrue();
   }
 
   @Test
   void 위치_나타내는_문자열_생성() {
     final String DISTANCE_UNIT = "-";
-    car.moveConditionally(8);
-    car.moveConditionally(9);
+    car.moveConditionally(new Condition(8));
+    car.moveConditionally(new Condition(9));
     assertThat(car.trace(DISTANCE_UNIT)).isEqualTo("--");
   }
 
   @Test
   void 더_멀리_있다() {
-    car.moveConditionally(9);
+    car.moveConditionally(new Condition(9));
     assertThat(car.furtherThan(new Car())).isTrue();
   }
 

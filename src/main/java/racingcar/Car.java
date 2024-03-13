@@ -1,8 +1,10 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class Car {
-  private int location;
-  private CarName name;
+  private final Location location;
+  private final CarName name;
 
   public Car() {
     this("", 0);
@@ -10,40 +12,33 @@ public class Car {
 
   public Car(String name, int location) {
     this.name = new CarName(name);
-    this.location = location;
+    this.location = new Location(location);
   }
 
-  public Car(int location) {
+  public Car(final int location) {
     this("", location);
   }
 
-  public Car(String name) {
+  public Car(final String name) {
     this(name, 0);
   }
 
-  public void moveConditionally(final int condition) {
-    if (meetMoveCondition(condition)) {
-      this.location++;
-    }
+  public void moveConditionally(final Condition condition) {
+    this.location.forwardConditionally(meetMoveCondition(condition));
   }
 
-  private boolean meetMoveCondition(final int condition) {
-    final int CRITERIA = 4;
-    return condition >= CRITERIA;
+  private boolean meetMoveCondition(final Condition condition) {
+    final int NUMBER_CRITERION = 4;
+    final Criteria criteria = new Criteria(NUMBER_CRITERION);
+    return criteria.accepts(condition);
   }
 
-  public boolean isLocationValueOf(final int location) {
-    return this.location == location;
+  public boolean isLocatedAt(final int location) {
+    return this.location.equals(location);
   }
 
   public String trace(final String distanceUnit) {
-    StringBuilder sb = new StringBuilder();
-
-    for (int i = 0; i < this.location; i++) {
-      sb.append(distanceUnit);
-    }
-
-    return sb.toString();
+    return this.location.multiply(distanceUnit);
   }
 
   public String name() {
@@ -51,38 +46,41 @@ public class Car {
   }
 
   public boolean furtherThan(final Car car) {
-    return this.furtherThan(car.location);
-  }
-
-  private boolean furtherThan(final int location) {
-    return this.location > location;
+    return this.location.furtherThan(car.location);
   }
 
   public boolean closerThan(final Car car) {
-    return this.closerThan(car.location);
-  }
-
-  private boolean closerThan(int location) {
-    return this.location < location;
+    return this.location.closerThan(car.location);
   }
 
   public boolean atTheSameLocationWith(final Car car) {
-    return this.location == car.location;
+    return this.location.equals(car.location);
   }
   @Override
   public String toString() {
-    return String.format("name: %s, location: %d", this.name, this.location);
+    return String.format("name: %s, location: %s", this.name, this.location);
   }
 
   public Car furtherCar(final Car car) {
-    if (this.furtherThan(car)) {
+    if (!this.closerThan(car)) {
       return this;
     }
 
-    if (this.closerThan(car)) {
-      return car;
+    return car;
+  }
+
+  @Override
+  public boolean equals(Object target) {
+    if (target instanceof Car) {
+      return ((Car) target).name.equals(this.name)
+              && ((Car) target).location.equals(this.location);
     }
 
-    return this;
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.name, this.location);
   }
 }

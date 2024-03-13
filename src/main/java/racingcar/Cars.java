@@ -34,12 +34,8 @@ public class Cars implements Iterable<Car> {
 
   public void moveAllCars() {
     for (Car car : this.cars) {
-      car.moveConditionally(random.nextInt(10));
+      car.moveConditionally(new Condition(random.nextInt(10)));
     }
-  }
-
-  public int getNumberOfCars() {
-    return this.cars.size();
   }
 
   public int size() {
@@ -47,11 +43,9 @@ public class Cars implements Iterable<Car> {
   }
 
   public long numberOfCarsWithLocationOf(final int location) {
-    return this.cars.stream().filter(car -> car.isLocationValueOf(location)).count();
-  }
-
-  public boolean containsCarWithLocationOf(final int location) {
-    return this.cars.stream().anyMatch(car -> car.isLocationValueOf(location));
+    return this.cars.stream()
+            .filter(car -> car.isLocatedAt(location))
+            .count();
   }
 
   public Cars leadingCars() {

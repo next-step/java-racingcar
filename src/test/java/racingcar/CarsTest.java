@@ -19,13 +19,16 @@ public class CarsTest {
   void 자동차_추가_기본(int numberOfCars, int expected) {
     cars.addEmptyCars(numberOfCars);
     // 위치가 0인 Car 가 expected 개 있는지 검사
-    assertThat(cars.cars()).extracting("location").isEqualTo(listOfZeros(expected));
+    for (Car car : cars) {
+      System.out.println("car: " + car);
+    }
+    assertThat(cars).containsAll(listOfZeros(expected));
   }
 
-  private List<Integer> listOfZeros(final int numberOfZeros) {
-    final List<Integer> result = new ArrayList<>();
+  private List<Car> listOfZeros(final int numberOfZeros) {
+    final List<Car> result = new ArrayList<>();
     for (int i = 0; i < numberOfZeros; i++) {
-      result.add(0);
+      result.add(new Car(0));
     }
     return result;
   }
@@ -35,14 +38,14 @@ public class CarsTest {
     cars.addCar(new Car());
     cars.addCar(new Car(10));
 
-    assertThat(cars.getNumberOfCars()).isEqualTo(2);
+    assertThat(cars.size()).isEqualTo(2);
   }
 
   @Test
   void 자동차_추가_자동차_개수() {
     cars.addEmptyCars(5);
 
-    assertThat(cars.getNumberOfCars()).isEqualTo(5);
+    assertThat(cars.size()).isEqualTo(5);
   }
 
   @Test
@@ -63,9 +66,11 @@ public class CarsTest {
     cars.addCar(new Car("test3", 3));
     cars.addCar(new Car("test4", 5));
 
+    for (Car car : cars.leadingCars()) {
+      System.out.println("car: " + car);
+    }
+
     assertThat(cars.leadingCars())
-            .extracting("name")
-            .extracting("name")
-            .containsExactly("test2", "test4");
+            .containsExactly(new Car("test2", 5), new Car("test4", 5));
   }
 }
