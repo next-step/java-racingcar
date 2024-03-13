@@ -17,7 +17,7 @@ public class RacingCarService {
 
     public void initCars(int carNumber) {
         for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
+            cars.add(new Car("asd"));
         }
     }
 
