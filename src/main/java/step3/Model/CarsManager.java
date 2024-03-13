@@ -1,4 +1,4 @@
-package step3.model;
+package step3.Model;
 
 import step3.common.RandomUtil;
 

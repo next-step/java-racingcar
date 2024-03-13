@@ -1,24 +1,22 @@
-package step3.model;
+package step3.Service;
 
-import step3.ui.InputView;
-import step3.ui.ResultView;
+import step3.Model.CarsManager;
 
 import java.util.List;
 
-public class RacingGame {
+public class RacingGameService {
     private CarsManager carsManager = null;
 
-    public RacingGame(int carCount) {
+    public RacingGameService setCarCount(int carCount) {
         this.carsManager = new CarsManager(carCount);
+        return this;
     }
 
     public void progressStage() {
         carsManager.tryMoveCars();
     }
 
-    public List<Integer> getResult(){
+    public List<Integer> getResult() {
         return carsManager.getCarsPosition();
     }
-
-
 }

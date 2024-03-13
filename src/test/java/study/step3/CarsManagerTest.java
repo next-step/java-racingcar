@@ -2,8 +2,8 @@ package study.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.model.Car;
-import step3.model.CarsManager;
+import step3.Model.Car;
+import step3.Model.CarsManager;
 
 import java.util.Arrays;
 import java.util.List;

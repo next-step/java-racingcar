@@ -1,4 +1,4 @@
-package step3.ui;
+package step3.View;
 
 import step3.common.CommonConstants;
 

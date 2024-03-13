@@ -1,4 +1,4 @@
-package step3.model;
+package step3.Model;
 
 public class Car {
     private static final int MOVE_CONDITION = 4;
