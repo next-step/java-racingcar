@@ -29,7 +29,7 @@ public class Race {
             cars.add(new Car(carName));
         }
 
-        Cars racingCars = new Cars(cars);
+        Cars racingCars = Cars.from(cars);
 
         ResultView resultView = new ResultView();
 

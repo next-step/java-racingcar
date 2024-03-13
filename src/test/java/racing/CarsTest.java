@@ -52,7 +52,7 @@ class CarsTest {
     }
 
     private Cars getCars(Car... cars) {
-        return new Cars(List.of(cars));
+        return Cars.from(List.of(cars));
     }
 
 }

@@ -1,5 +1,6 @@
 package racing;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -9,8 +10,12 @@ public class Cars implements Iterable<Car> {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public static Cars from(List<Car> cars) {
+        return new Cars(new ArrayList<>(cars));
     }
 
     @Override
