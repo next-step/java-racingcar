@@ -8,6 +8,11 @@ public class OutputView {
 
     public void printMileages(List<Integer> positions) {
         for (Integer position : positions) {
+            if (position == 0) { // 일단 억지로라도 이렇게 했습니다. 더 생각해보겠습니다
+                position = 1;
+                System.out.println(UNIT_MILEAGE);
+                continue;
+            }
             System.out.println(UNIT_MILEAGE.repeat(position));
         }
     }
