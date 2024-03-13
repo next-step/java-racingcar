@@ -13,8 +13,7 @@ public class NameSeparatorTest {
     @DisplayName("[성공] 쉼표로 구분된 이름 문자열을 분리한다.")
     void 쉼표_문자열_구분() {
         // When
-        NameSeparator nameSeparator = new NameSeparator("pobi,crong,honux");
-        String[] actual = nameSeparator.separate();
+        String[] actual = NameSeparator.separate("pobi,crong,honux");
 
         // Then
         assertThat(actual).containsExactlyInAnyOrder("pobi", "crong", "honux");

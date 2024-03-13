@@ -18,7 +18,7 @@ public class CarRace {
         String nameString = inputView.readCarNameString();
         int tryCount = inputView.readHowManyTrys();
 
-        String[] names = separateNameString(nameString);
+        String[] names = NameSeparator.separate(nameString);
         Cars cars = createCars(names);
 
         while (tryCount-- > 0) {
@@ -29,11 +29,6 @@ public class CarRace {
         resultView.printCarRaceResult();
         Winner winner = new Winner();
         resultView.printWinnerNames(winner.who(cars));
-    }
-
-    private String[] separateNameString(String nameString) {
-        NameSeparator nameSeparator = new NameSeparator(nameString);
-        return nameSeparator.separate();
     }
 
     private Cars createCars(String[] names) {

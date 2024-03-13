@@ -4,14 +4,9 @@ package racingcar.domain;
 public class NameSeparator {
 
     private static final String NAME_SEPARATE_REGEX = ",";
-    private final String nameString;
 
-    public NameSeparator(String nameString) {
-        this.nameString = nameString;
-    }
-
-    public String[] separate() {
-        return this.nameString.split(NAME_SEPARATE_REGEX);
+    public static String[] separate(String name) {
+        return name.split(NAME_SEPARATE_REGEX);
     }
 
 }
