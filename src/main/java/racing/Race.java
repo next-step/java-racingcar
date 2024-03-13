@@ -20,7 +20,7 @@ public class Race {
 
     public void start() {
         List<Name> carNames = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
-        int tryCount = inputView.inputtedNumber(TRY_COUNT_MESSAGE);
+        TryCount tryCount = TryCount.from(inputView.inputtedNumber(TRY_COUNT_MESSAGE));
         inputView.closeScanner();
 
         List<Car> cars = new ArrayList<>();
@@ -33,12 +33,10 @@ public class Race {
 
         ResultView resultView = new ResultView();
 
-        int currentTryCount = 0;
-
-        while (currentTryCount < tryCount) {
+        while (tryCount.hasLeft()) {
+            tryCount.decrement();
             playRound(racingCars);
             resultView.printRaceResult(racingCars);
-            currentTryCount++;
         }
 
         resultView.printRaceWinner(racingCars);
