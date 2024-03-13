@@ -1,35 +1,45 @@
 package racing.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
+    private static final int VALID_NAME_LENGTH = 5;
+    private String name;
     private int score;
-    private List<Position> position;
-    private CarMovementStrategy carMovementStrategy;
 
-    public Car(CarMovementStrategy carMovementStrategy) {
-        this(0, carMovementStrategy);
+    public Car(String name) {
+        this(name, 0);
     }
 
-    private Car(int position, CarMovementStrategy carMovementStrategy) {
-        this.score = position;
-        this.position = new ArrayList<>();
-        this.carMovementStrategy = carMovementStrategy;
+    private Car(String name, int score) {
+        if (!isValidCarName(name)) {
+            throw new IllegalArgumentException("Invalid Name : " + name);
+        }
+        this.name = name;
+        this.score = score;
     }
 
-    public void move() {
+    private boolean isValidCarName(String name) {
+        return !name.isBlank() && name.length() <= VALID_NAME_LENGTH;
+    }
+
+    public void move(CarMovementStrategy carMovementStrategy) {
         if (carMovementStrategy.movable()) {
             score++;
         }
-        position.add(new Position(score));
     }
 
-    public int getScore() {
-        return this.score;
+    public String getName() {
+        return this.name;
     }
 
-    public String getPosition(int index) {
-        return this.position.get(index).getResult();
+    public String getPosition(String mark) {
+        return mark.repeat(this.score);
+    }
+
+    public boolean isWinner(int maxScore) {
+        return this.score == maxScore;
+    }
+
+    public int getScoreGreaterThan(int maxScore) {
+        return score >= maxScore ? score : maxScore;
     }
 }
