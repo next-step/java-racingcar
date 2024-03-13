@@ -1,39 +1,72 @@
 package game;
 
-import game.domain.*;
-import game.util.ResultView;
+import game.domain.Car;
+import game.domain.Game;
+import game.domain.NumberGenerator;
+import game.domain.RandomNumberGenerator;
+import game.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static game.domain.Constant.BOUND;
-import static game.domain.Constant.EXECUTION_RESULT;
+import static game.view.ResultView.printCars;
+import static game.view.ResultView.printPlainMessage;
 
 public class GameClient {
 
+    private static final String EXECUTION_RESULT = "\n실행 결과";
+    private static final String ASK_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String ASK_GAME_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
+
     public static void main(String[] args) {
-        GameInput input = new GameInput();
-        int gameCount = input.insertGameCount();
-        int carCount = input.insertCarCount();
-        ResultView.printPlainMessage(EXECUTION_RESULT);
-        NumberGenerator generator = new RandomNumberGenerator(BOUND);
-        List<Car> cars = generateCars(carCount);
+        final int bound = 10;
+        String[] names = insertNames();
+        int carCount = names.length;
+        int gameCount = insertCount();
+        printPlainMessage(EXECUTION_RESULT);
+        NumberGenerator generator = new RandomNumberGenerator(bound);
+        List<Car> cars = generateCars(carCount, names);
         playGamesAndPrintResult(gameCount, generator, cars);
     }
 
-    private static void playGamesAndPrintResult(int gameCount, NumberGenerator generator, List<Car> cars) {
-        Game game = new Game(generator, cars);
-        game.printResult();
-        for (int i = 1; i < gameCount; i++) {
-            game.play();
-            game.printResult();
-        }
+    private static int insertCount() {
+        printPlainMessage(GameClient.ASK_GAME_COUNT_MESSAGE);
+        return InputView.insertInt();
     }
 
-    private static List<Car> generateCars(int carCount) {
+    private static String[] insertNames() {
+        printPlainMessage(GameClient.ASK_CAR_NAME_MESSAGE);
+        String names = InputView.insertValue();
+        return names.split(",");
+    }
+
+    private static void playGamesAndPrintResult(int gameCount, NumberGenerator generator, List<Car> cars) {
+        if (gameCount <= 0) return;
+        Game game = new Game(generator, cars);
+        printDistances(game);
+        for (int i = 1; i < gameCount; i++) {
+            game.play();
+            printDistances(game);
+        }
+        printWinners(game);
+    }
+
+    private static void printDistances(Game game) {
+        printCars(game.getCars());
+        printPlainMessage("");
+    }
+
+    private static void printWinners(Game game) {
+        List<String> names = game.getWinner().stream().map(Car::getName).collect(Collectors.toList());
+        String winners = String.join(", ", names);
+        printPlainMessage(winners + "가 최종 우승했습니다.");
+    }
+
+    private static List<Car> generateCars(int carCount, String[] names) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            cars.add(new Car(names[i]));
         }
         return cars;
     }

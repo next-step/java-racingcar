@@ -15,7 +15,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("test");
     }
 
     @ParameterizedTest
@@ -41,6 +41,26 @@ public class CarTest {
     void negative() {
         assertThatThrownBy(() -> {
             car.move(-1);
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("이름이 null 또는 empty")
+    void name_is_null_or_empty() {
+        assertThatThrownBy(() -> {
+            new Car(null);
+        }).isInstanceOf(RuntimeException.class);
+
+        assertThatThrownBy(() -> {
+            new Car("");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("이름이 5글자를 초과")
+    void name_is_larger_than_5() {
+        assertThatThrownBy(() -> {
+            new Car("123456");
         }).isInstanceOf(RuntimeException.class);
     }
 }
