@@ -1,32 +1,27 @@
 package racing;
 
 
-import racing.domain.Car;
+import racing.domain.Cars;
 import racing.domain.RacingGame;
 import racing.view.InputView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Scanner;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
+        Scanner scanner = new Scanner(System.in);
+
+        InputView inputView = new InputView(scanner);
         int carNo = inputView.getNumberOfCars();
-        int chanceNo = inputView.getNumberOfChances();
-        inputView.closeScanner();
+        int roundNo = inputView.getNumberOfChances();
 
-        RacingGame racingGame = new RacingGame(createCars(carNo), chanceNo);
-        racingGame.validateInput(carNo, chanceNo);
+        Cars cars = Cars.create(carNo);
+
+        RacingGame racingGame = new RacingGame(cars, roundNo);
+        racingGame.validateInput(carNo, roundNo);
         racingGame.play();
-    }
 
-    private static List<Car> createCars(int carNo) {
-        List<Car> cars = new ArrayList<>();
-
-        IntStream.range(0, carNo)
-                .forEach(i -> cars.add(new Car()));
-        return cars;
+        scanner.close();
     }
 }
