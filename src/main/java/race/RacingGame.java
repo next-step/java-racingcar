@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    private List<String> mileages = new ArrayList<>();
+    private List<Integer> points = new ArrayList<>();
     private final Cars cars;
 
     public RacingGame(Cars cars) {
@@ -18,13 +18,13 @@ public class RacingGame {
     public void start(int numberOfCars, int numberOfAttempts) {
         for (int attempt = 0; attempt < numberOfAttempts; attempt++) {
             saveMileages(cars, numberOfCars, attempt);
-            OutputView.printMileages(numberOfCars, mileages);
-            OutputView.printNextLine();
+            OutputView.printMileages(points);
+            OutputView.printResultStatement();
         }
     }
 
     private void saveMileages(Cars cars, int numberOfCars, int attempt) {
-        mileages = cars.goForward(numberOfCars, attempt);
+        points = cars.goForward(numberOfCars, attempt);
     }
 
 }

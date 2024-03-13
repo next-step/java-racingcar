@@ -4,13 +4,15 @@ import java.util.List;
 
 public class OutputView {
 
-    public static void printMileages(int numberOfCars, List<String> mileages) {
-        for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
-            System.out.println(mileages.get(carNumber));
+    private static final String UNIT_MILEAGE = "-";
+
+    public static void printMileages(List<Integer> positions) {
+        for (Integer position : positions) {
+            System.out.println(UNIT_MILEAGE.repeat(position + 1));
         }
     }
 
-    public static void printNextLine() {
+    public static void printResultStatement() {
         System.out.println("\n");
     }
 }

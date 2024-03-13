@@ -9,15 +9,15 @@ public class Car {
     private static final Random RANDOM = new Random();
     private static final int STANDARD_BOUND = 4;
     private static final int END_BOUND = 10;
-    private String mileage = "-";
+    private int position;
 
-    public String getMileage() {
-        return this.mileage;
+    public int getPosition() {
+        return this.position;
     }
 
     public void go(int numberOfAttempts) {
             if (numberOfAttempts > 0 && isFitRaceRule(RANDOM.nextInt(END_BOUND))) {
-                this.mileage += "-";
+                this.position += 1;
             }
     }
 

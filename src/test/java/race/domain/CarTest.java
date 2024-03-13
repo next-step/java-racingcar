@@ -2,8 +2,6 @@ package race.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import race.RaceRule;
-import race.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,20 +19,20 @@ public class CarTest {
         car1.go(1);
         car1.go(2);
         car1.go(3);
-        assertThat(car1.getMileage()).isEqualTo("---");
+        assertThat(car1.getPosition()).isEqualTo("---");
     }
 
     @Test
     void go_twice() {
         car1.go(1);
         car1.go(2);
-        assertThat(car1.getMileage()).isEqualTo("--");
+        assertThat(car1.getPosition()).isEqualTo("--");
     }
 
     @Test
     void go() {
         car1.go(1);
-        assertThat(car1.getMileage()).isEqualTo("-");
+        assertThat(car1.getPosition()).isEqualTo("-");
     }
 
 }
