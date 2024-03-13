@@ -39,7 +39,7 @@ public class Race {
         }
     }
 
-    public static int getRandomSingleDigitNumber() {
+    private static int getRandomSingleDigitNumber() {
         Random random = new Random();
         return random.nextInt(10);
     }

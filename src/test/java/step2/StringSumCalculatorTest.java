@@ -31,7 +31,6 @@ public class StringSumCalculatorTest {
         Method method = stringSumCalculator.getClass().getDeclaredMethod("splitWithCommaAndColon", String.class);
         method.setAccessible(true);
         String[] actual = (String[]) method.invoke(null, value);
-//        String[] actual = stringSumCalculator.splitWithCommaAndColon(value);
         String expectedComponent1 = "1";
         String expectedComponent2 = "2";
         String expectedComponent3 = "3";
@@ -45,7 +44,6 @@ public class StringSumCalculatorTest {
         method.setAccessible(true);
         String value = "";
         String actual = (String) method.invoke(null, value);
-//        String actual = stringSumCalculator.emptyReturnZeroString(value);
         assertThat(actual).isEqualTo("0");
     }
 
@@ -67,7 +65,6 @@ public class StringSumCalculatorTest {
         Method method = stringSumCalculator.getClass().getDeclaredMethod("hasCustomDelimiter", String.class);
         method.setAccessible(true);
         Boolean actual = (Boolean) method.invoke(null, value);
-//        Boolean actual = StringSumCalculator.hasCustomDelimiter(value);
         assertThat(actual).isTrue();
     }
 
@@ -78,7 +75,6 @@ public class StringSumCalculatorTest {
         method.setAccessible(true);
         String value = "//;\\n1;2;3";
         String actual = (String) method.invoke(stringSumCalculator, value);
-//        String actual = getCustomDelimiter(value);
         String expected = ";";
         assertThat(actual).isEqualTo(expected);
     }
@@ -90,7 +86,6 @@ public class StringSumCalculatorTest {
         Method method = stringSumCalculator.getClass().getDeclaredMethod("getStringWithoutCustomDelimiter", String.class);
         method.setAccessible(true);
         String actual = (String) method.invoke(null, value);
-//        String actual = StringSumCalculator.getStringWithoutCustomDelimiter(value);
         String expected = "1;2;3";
         assertThat(actual).isEqualTo(expected);
     }
@@ -102,7 +97,6 @@ public class StringSumCalculatorTest {
         Method method = stringSumCalculator.getClass().getDeclaredMethod("splitValuesByCustomDelimiter", String.class, String.class);
         method.setAccessible(true);
         String[] actual = (String[]) method.invoke(null, delimiter, value);
-//        String[] actual = StringSumCalculator.splitValuesByCustomDelimiter(delimiter, value);
         String[] expected = {"1", "2", "3"};
         assertThat(actual).containsExactly(expected);
     }

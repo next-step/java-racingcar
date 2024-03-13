@@ -6,6 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static step3.Race.generateCarArray;
 
@@ -20,8 +23,11 @@ public class RaceTest {
     @ParameterizedTest
     @DisplayName("0~9 사이의 랜덤 값 반환 테스트")
     @ValueSource(ints = {1, 2, 10})
-    void getRandomSingleDigitNumberTest(){
-        int actual = Race.getRandomSingleDigitNumber();
+    void getRandomSingleDigitNumberTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Race race = new Race();
+        Method method = race.getClass().getDeclaredMethod("getRandomSingleDigitNumber");
+        method.setAccessible(true);
+        int actual = (int) method.invoke(null);
         assertThat(actual).isBetween(0, 9);
     }
 

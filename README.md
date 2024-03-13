@@ -22,3 +22,7 @@ step 3
     * modified the Boolean method
     * modified public methods to private should not be public
       * modified the test codes as well with using reflection
+* refactor/step3
+  * modified public methods to private should not be public (**modified like the step2 modified**)
+    * modified the test codes as well with using reflection
+    * delete the useless code in step2 test code
