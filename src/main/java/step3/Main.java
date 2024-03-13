@@ -1,5 +1,6 @@
 package step3;
 
+import step3.Common.RandomNumberGenerator;
 import step3.Controller.RacingGameController;
 import step3.Service.RacingGameService;
 import step3.View.InputView;
@@ -10,7 +11,9 @@ public class Main {
         int carCount = InputView.InputCarCount();
         int StageCount = InputView.InputStageCount();
 
-        RacingGameService racingGameService = new RacingGameService().setCarCount(carCount);
+        RacingGameService racingGameService = new RacingGameService(new RandomNumberGenerator());
+        racingGameService.setCarCount(carCount);
+
         RacingGameController racingGameController = new RacingGameController(racingGameService);
 
         ResultView.viewResultPhrase();

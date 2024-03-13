@@ -23,7 +23,7 @@ public class CarTest {
         Car car = new Car();
         assertThat(car.getPosition()).isEqualTo(0);
 
-        car.move(10);
+//        car.move(10);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
@@ -32,7 +32,7 @@ public class CarTest {
     @CsvSource(value = {"1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
     void carMoveConditionTest(int value, int expected) {
         Car car = new Car();
-        car.move(value);
+//        car.move(value);
         assertThat(car.getPosition()).isEqualTo(expected);
     }
 

@@ -1,7 +1,5 @@
 package step3.Model;
 
-import step3.common.RandomUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +17,9 @@ public class CarsManager {
         this.cars = cars;
     }
 
-    public void tryMoveCars() {
+    public void tryMoveCars(MovableStrategy movableStrategy) {
         for (Car car : cars) {
-            tryMoveCar(car);
+            car.move(movableStrategy);
         }
     }
 
@@ -34,10 +32,4 @@ public class CarsManager {
 
         return list;
     }
-
-    private static void tryMoveCar(Car car) {
-        car.move(RandomUtil.makeRandomNumber());
-    }
-
-
 }

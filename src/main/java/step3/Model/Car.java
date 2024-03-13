@@ -1,7 +1,8 @@
 package step3.Model;
 
+import step3.Common.NumberGenerator;
+
 public class Car {
-    private static final int MOVE_CONDITION = 4;
     private static final int DEFAULT_MOVE_DISTANCE = 1;
     private int position;
 
@@ -16,15 +17,15 @@ public class Car {
         return position;
     }
 
-    public void move(int number) {
-        if(isMoveCar(number)){
+    public void move(MovableStrategy strategy) {
+        if(isMoveCar(strategy)){
             move();
         }
     }
     private void move() {
         position += DEFAULT_MOVE_DISTANCE;
     }
-    private static boolean isMoveCar(int number) {
-        return number >= MOVE_CONDITION;
+    private static boolean isMoveCar(MovableStrategy strategy) {
+        return strategy.movable();
     }
 }
