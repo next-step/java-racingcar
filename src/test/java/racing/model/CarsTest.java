@@ -21,11 +21,11 @@ class CarsTest {
 
         // when
         Cars cars = new Cars(names);
-        cars.moveOrNot(carMovementStrategy);
-        List<Car> winners = cars.getTheHighestScoreDrivers();
+        cars.move(carMovementStrategy);
+        List<String> winners = cars.getTheHighestScoreDrivers();
 
         // then
-        assertThat(winners.get(index).getName()).isEqualTo(name);
+        assertThat(winners.get(index)).isEqualTo(name);
     }
 
     @Test
@@ -37,8 +37,8 @@ class CarsTest {
 
         // when
         Cars cars = new Cars(names);
-        cars.moveOrNot(carMovementStrategy);
-        List<Car> winners = cars.getTheHighestScoreDrivers();
+        cars.move(carMovementStrategy);
+        List<String> winners = cars.getTheHighestScoreDrivers();
 
         // then
         assertThat(winners.size()).isGreaterThan(0);

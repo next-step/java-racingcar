@@ -21,14 +21,17 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> moveOrNot(CarMovementStrategy carMovementStrategy) {
-        for (Car car : cars) {
+    public List<Car> move(CarMovementStrategy carMovementStrategy) {
+        List<Car> copiedCars = new ArrayList<>(cars);
+
+        for (Car car : copiedCars) {
             car.move(carMovementStrategy);
         }
-        return cars;
+
+        return copiedCars;
     }
 
-    public List<Car> getTheHighestScoreDrivers() {
+    public List<String> getTheHighestScoreDrivers() {
         int maxScore = getTheHighestScore();
         return getDriversWithTopScore(maxScore);
     }
@@ -43,12 +46,13 @@ public class Cars {
         return maxScore;
     }
 
-    private List<Car> getDriversWithTopScore(int maxScore) {
-        List<Car> topScores = cars.stream()
+    private List<String> getDriversWithTopScore(int maxScore) {
+        List<String> topScoreDrivers = cars.stream()
                 .filter(car -> car.isWinner(maxScore))
+                .map(Car::getName)
                 .collect(Collectors.toList());
 
-        return topScores;
+        return topScoreDrivers;
     }
 
 }

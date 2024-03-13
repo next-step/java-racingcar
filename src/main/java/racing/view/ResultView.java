@@ -4,7 +4,6 @@ import racing.model.Car;
 import racing.model.Cars;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String DELIMITER = ", ";
@@ -44,14 +43,12 @@ public class ResultView {
     }
 
     private String getWinnerNames(Cars cars) {
-        List<Car> topScores = cars.getTheHighestScoreDrivers();
-        return splitWinnerNames(topScores);
+        List<String> topScoreDrivers = cars.getTheHighestScoreDrivers();
+        return splitWinnerNames(topScoreDrivers);
     }
 
-    private String splitWinnerNames(List<Car> cars) {
-        String winnerNames = cars.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(DELIMITER));
+    private String splitWinnerNames(List<String> topScoreDrivers) {
+        String winnerNames = String.join(DELIMITER, topScoreDrivers);
 
         return winnerNames;
     }
