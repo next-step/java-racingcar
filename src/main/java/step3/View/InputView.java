@@ -1,6 +1,6 @@
 package step3.View;
 
-import step3.common.ErrorMessageConstants;
+import step3.Common.ErrorMessageConstants;
 
 import java.util.Scanner;
 
