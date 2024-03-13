@@ -6,22 +6,22 @@ import java.util.Objects;
 
 public class MoveResult {
 
-    private final List<Boolean> moveLog;
+    private final List<Boolean> moveLogs;
 
     public MoveResult() {
-        this.moveLog = new ArrayList<>();
+        this.moveLogs = new ArrayList<>();
     }
 
-    public MoveResult(List<Boolean> moveLog) {
-        this.moveLog = moveLog;
+    public MoveResult(List<Boolean> moveLogs) {
+        this.moveLogs = moveLogs;
     }
 
-    public List<Boolean> getMoveLog() {
-        return moveLog;
+    public List<Boolean> getMoveLogs() {
+        return moveLogs;
     }
 
     public void addMoveLog(boolean movedFlag) {
-        moveLog.add(movedFlag);
+        moveLogs.add(movedFlag);
     }
 
     @Override
@@ -33,12 +33,12 @@ public class MoveResult {
             return false;
         }
         MoveResult that = (MoveResult) o;
-        return Objects.equals(moveLog, that.moveLog);
+        return Objects.equals(moveLogs, that.moveLogs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(moveLog);
+        return Objects.hash(moveLogs);
     }
 
 }

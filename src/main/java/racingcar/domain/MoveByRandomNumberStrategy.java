@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.util.AbstractRandomNumber;
 import racingcar.util.AbstractRandomNumberFactory;
+import racingcar.util.RangeableRandomNumberFactory;
 
 public class MoveByRandomNumberStrategy implements MoveStrategy {
 
@@ -11,6 +12,10 @@ public class MoveByRandomNumberStrategy implements MoveStrategy {
 
     public MoveByRandomNumberStrategy(AbstractRandomNumberFactory factory) {
         this.factory = factory;
+    }
+
+    public MoveByRandomNumberStrategy() {
+        this.factory = new RangeableRandomNumberFactory();
     }
 
     @Override
