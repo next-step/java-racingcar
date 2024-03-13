@@ -14,7 +14,7 @@ class CarsTest {
 
     @BeforeEach
     void init() {
-        cars = new Cars(3);
+        cars = new Cars(3, new String[]{"임형준", "임횽준", "임항준"});
     }
 
     @Test
