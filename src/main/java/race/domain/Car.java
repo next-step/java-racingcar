@@ -12,7 +12,7 @@ public class Car {
     }
 
     public static Car createInstance() {
-        return new Car("default");
+        return new Car("name");
     }
 
     public static Car createInstance(String name) {

@@ -1,6 +1,7 @@
 package race.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -21,6 +22,29 @@ class CarsTest {
         // when && then
         int expected = 5;
         assertThat(cars.getSize()).isEqualTo(expected);
+    }
+
+    @Test
+    void 요청한이름으로_자동차가_만들어진다() {
+        // Given
+        String names = "pobi,crong,honux";
+
+        // When
+        Cars cars = Cars.createInstance(names);
+
+        // Then
+        int expected = 3;
+        assertThat(cars.getSize()).isEqualTo(expected);
+    }
+
+    @Test
+    void 이름이5글자가_초과하면_예외발생() {
+        // Given
+        String names = "default,pobi,crong";
+        // When & Then
+        assertThatThrownBy(() ->Car.createInstance(names))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
 
     @Test()
