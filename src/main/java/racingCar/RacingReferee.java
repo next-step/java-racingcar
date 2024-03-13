@@ -5,11 +5,12 @@ import java.util.stream.Collectors;
 
 public class RacingReferee {
 
-    public static List<CarName> pickWinners(RacingCars cars) {
+    public static List<String> pickWinners(RacingCars cars) {
         int farthestLocation = cars.findFarthestLocation();
         return cars.findCars().stream()
             .filter((car)->car.findCurrentLocation() == farthestLocation)
             .map(RacingCar::findCarName)
+            .map(CarName::findName)
             .collect(Collectors.toList());
     }
 
