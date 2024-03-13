@@ -6,7 +6,8 @@ import race.view.OutputView;
 public class Main {
 
     public static void main(String[] args) {
-        new RacingGame(new OutputView(), new InputView()).start();
+        RacingGame game = new RacingGame(new OutputView(), new InputView());
+        game.start();
     }
 
 }

@@ -18,12 +18,14 @@ public class RacingGame {
     }
 
     public void start() {
+        int carNumbers = inputView.askNumberOfCars();
         int attempts = inputView.askNumberOfAttempts();
-        Cars cars = new Cars(inputView.askNumberOfCars());
+        Cars cars = new Cars(carNumbers);
+        outputView.printResultStatement();
         for (int attempt = 0; attempt < attempts; attempt++) {
             List<Integer> points = cars.goForward(new RaceRule());
             outputView.printMileages(points);
-            outputView.printResultStatement();
+            outputView.printNewLine();
         }
     }
 
