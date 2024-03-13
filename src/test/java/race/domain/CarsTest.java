@@ -2,7 +2,6 @@ package race.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import race.domain.Cars;
 
 import java.util.List;
 

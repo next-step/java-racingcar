@@ -5,7 +5,6 @@ import race.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
@@ -25,7 +24,7 @@ public class RacingGame {
     }
 
     private void saveMileages(Cars cars, int numberOfCars, int attempt) {
-            mileages = cars.goForward(numberOfCars, attempt);
+        mileages = cars.goForward(numberOfCars, attempt);
     }
 
 }
