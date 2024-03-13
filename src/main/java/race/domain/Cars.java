@@ -3,7 +3,8 @@ package race.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import race.view.ResultView;
+import java.util.Set;
+import java.util.TreeSet;
 import utils.number.NumberGenerator;
 
 public class Cars {
@@ -39,6 +40,23 @@ public class Cars {
         for (Car car : cars) {
             car.move(generator.generate());
         }
+    }
+
+    public List<Car> chooseWinners() {
+        List<Car> winners = new ArrayList<>();
+        Car winner = chooseWinner();
+        for (Car car : this.cars) {
+            if (car.getCountOfMove() < winner.getCountOfMove()) {
+                continue;
+            }
+            winners.add(car);
+        }
+        return winners;
+    }
+
+    private Car chooseWinner() {
+        TreeSet<Car> cars = new TreeSet<>(this.cars);
+        return cars.last();
     }
 
     private List<Car> generateCar(int countOfCar) {

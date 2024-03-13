@@ -2,12 +2,11 @@ package race.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
+import java.util.Set;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import utils.number.DefaultNumberGenerator;
 import utils.number.NumberGenerator;
 
@@ -45,6 +44,66 @@ class CarsTest {
         assertThatThrownBy(() ->Car.createInstance(names))
                 .isInstanceOf(IllegalArgumentException.class);
 
+    }
+
+    @Test
+    void 우승자를_선정() {
+        // Given
+        int stop = 0;
+        int move = 4;
+        Cars cars = Cars.createInstance("pobi,crong,honux");
+        Car pobi = cars.getCars().get(0);
+        Car crong = cars.getCars().get(1);
+        Car honux = cars.getCars().get(2);
+
+        // When
+        pobi.move(stop);
+        pobi.move(stop);
+        pobi.move(move);
+
+        crong.move(move);
+        crong.move(move);
+        crong.move(move);
+
+        honux.move(stop);
+        honux.move(stop);
+        honux.move(stop);
+
+        // Then
+        List<Car> winners = cars.chooseWinners();
+        int expected = 1;
+        assertThat(winners.size()).isEqualTo(expected);
+        assertThat(winners.get(0)).isEqualTo(crong);
+    }
+
+    @Test
+    void 우승자는_여러명일수가_있다() {
+        // Given
+        int stop = 0;
+        int move = 4;
+        Cars cars = Cars.createInstance("pobi,crong,honux");
+        Car pobi = cars.getCars().get(0);
+        Car crong = cars.getCars().get(1);
+        Car honux = cars.getCars().get(2);
+
+        // When
+        pobi.move(move);
+        pobi.move(move);
+        pobi.move(stop);
+
+        crong.move(move);
+        crong.move(move);
+        crong.move(stop);
+
+        honux.move(stop);
+        honux.move(stop);
+        honux.move(stop);
+
+        // Then
+        List<Car> winners = cars.chooseWinners();
+        int expected = 2;
+        assertThat(winners.size()).isEqualTo(expected);
+        assertThat(winners).contains(pobi, crong);
     }
 
     @Test()
