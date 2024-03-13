@@ -4,12 +4,16 @@ import step4.view.result.CarMovementResult;
 import step4.view.result.CarMovementRoundResult;
 import step4.view.result.CarMovementRoundResults;
 
+import java.util.List;
+
 import static step4.util.MyPrinter.*;
 
 public class RacingOutputView {
     private static final String RESULT_TITLE = "실행결과";
     private static final String MOVE_RECORD_UNIT = "-";
     private static final String MOVE_RECORD_FORMAT = "%s : %s";
+    private static final String WINNER_NAME_SEPARATOR = ", ";
+    private static final String WINNER_MESSAGE_FORMAT = "%s가 최종 우승했습니다.";
 
     private RacingOutputView() {
     }
@@ -41,6 +45,10 @@ public class RacingOutputView {
     }
 
     private static void printRacingWinner(CarMovementRoundResult result) {
+        printLine(String.format(WINNER_MESSAGE_FORMAT, joinWinnerNames(result.winnerNames())));
+    }
 
+    private static String joinWinnerNames(List<String> winnerNames) {
+        return String.join(WINNER_NAME_SEPARATOR, winnerNames);
     }
 }
