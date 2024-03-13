@@ -2,7 +2,6 @@ package racing.domain;
 
 import racing.util.RandomNumberGenerator;
 
-
 public class Car {
 
     private static final int RUNABLE_CONDITION = 4;

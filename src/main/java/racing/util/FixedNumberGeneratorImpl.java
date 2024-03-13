@@ -12,5 +12,4 @@ public class FixedNumberGeneratorImpl implements RandomNumberGenerator {
     public int getRandomNumber(int bound) {
         return fixedNumber;
     }
-
 }

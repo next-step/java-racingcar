@@ -8,5 +8,4 @@ public class RandomNumberGeneratorImpl implements RandomNumberGenerator {
     public int getRandomNumber(int bound) {
         return new Random().nextInt(bound);
     }
-
 }
