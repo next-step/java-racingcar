@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.domain.dto.DriveResult;
 
 public class Car {
 
@@ -9,11 +11,11 @@ public class Car {
     private DrivingDistance drivingDistance;
 
     public Car(String name) {
-        this(name, DrivingDistance.INIT_VALUE);
+        this(Name.of(name), new DrivingDistance());
     }
 
     public Car(String name, int drivingDistance) {
-        this(new Name(name), new DrivingDistance(drivingDistance));
+        this(Name.of(name), DrivingDistance.of(drivingDistance));
     }
 
     public Car(Name name, DrivingDistance drivingDistance) {
@@ -27,16 +29,16 @@ public class Car {
         }
     }
 
-    public int drivingDistance() {
-        return drivingDistance.value();
-    }
-
-    public String result() {
-        return name.value() + RESULT_DIVIDER + DISTANCE_SYMBOL.repeat(drivingDistance.value());
-    }
-
     public boolean matchDistance(int distance) {
         return drivingDistance.matchDistance(distance);
+    }
+
+    public DriveResult driveResult() {
+        return new DriveResult(name, drivingDistance);
+    }
+
+    public int drivingDistance() {
+        return drivingDistance.value();
     }
 
     public String name() {
