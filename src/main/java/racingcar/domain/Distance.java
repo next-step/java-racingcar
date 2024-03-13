@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.NegativeInitialDistanceException;
+
 import java.util.Objects;
 
 public class Distance {
@@ -12,7 +14,14 @@ public class Distance {
 
     // Constructor for UnitTest
     public Distance(int initValue) {
+        if (isNegative(initValue)) {
+            throw new NegativeInitialDistanceException(initValue);
+        }
         this.distance = initValue;
+    }
+
+    private boolean isNegative(int initValue) {
+        return initValue < 0;
     }
 
     public void increase() {
