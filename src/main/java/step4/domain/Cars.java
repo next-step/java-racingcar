@@ -11,18 +11,23 @@ import java.util.stream.IntStream;
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public static Cars from(int carCount) {
-        return new Cars(
-                IntStream.range(0, carCount)
-                        .mapToObj(idx -> new Car())
-                        .collect(Collectors.toList())
-        );
+    public static Cars from(List<String> carNames) {
+        return new Cars(carNames);
     }
 
-    private Cars(List<Car> cars) {
-        if (cars != null && !cars.isEmpty()) {
-            this.cars.addAll(cars);
+    private Cars(List<String> carNames) {
+        if (carNames == null || carNames.isEmpty()) {
+            return;
         }
+
+        this.cars.addAll(
+                convertCarNamesToCarList(carNames));
+    }
+
+    private List<Car> convertCarNamesToCarList(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::withName)
+                .collect(Collectors.toList());
     }
 
     public boolean isEmpty() {

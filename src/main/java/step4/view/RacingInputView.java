@@ -1,26 +1,37 @@
 package step4.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static step4.util.MyPrinter.printLine;
 
 public class RacingInputView {
-    private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
     private static final String CAR_NAMES_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String TRY_COUNT_QUESTION = "시도할 횟수는 몇 회 인가요?";
+    private static final String CAR_NAMES_DELIMITER = ",";
+    private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private RacingInputView() {
     }
 
-    public static int carCount() {
-        printLine(CAR_COUNT_QUESTION);
-        return parseAnswerAndValidate();
+    public static List<String> carNames() {
+        printLine(CAR_NAMES_QUESTION);
+        return splitCarNames(SCANNER.nextLine());
     }
 
-    public static String carNames() {
-        printLine(CAR_NAMES_QUESTION);
-        return SCANNER.nextLine();
+    private static List<String> splitCarNames(String input) {
+        return Arrays.stream(input.split(CAR_NAMES_DELIMITER))
+                .peek(RacingInputView::assertCarNameLengthUnderFive)
+                .collect(Collectors.toList());
+    }
+
+    private static void assertCarNameLengthUnderFive(String carName) {
+        if (CAR_NAME_MAX_LENGTH < carName.length()) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 
     public static int tryCount() {

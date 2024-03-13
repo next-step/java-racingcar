@@ -5,19 +5,21 @@ import step4.domain.Racing;
 import step4.view.RacingInputView;
 import step4.view.RacingOutputView;
 
+import java.util.List;
+
 public class RacingGamePlayer {
 
     public void playRacingGame() {
-        final int carCount = RacingInputView.carCount();
+        final List<String> carNames = RacingInputView.carNames();
         final int tryCount = RacingInputView.tryCount();
 
-        final Racing racing = randomMovementRacing(carCount, tryCount);
+        final Racing racing = randomMovementRacing(carNames, tryCount);
 
         RacingOutputView.printRacingResult(racing.playAndGenerateResults());
     }
 
-    private Racing randomMovementRacing(int carCount, int tryCount) {
-        return Racing.randomMoving(Cars.from(carCount), tryCount);
+    private Racing randomMovementRacing(List<String> carNames, int tryCount) {
+        return Racing.randomMoving(Cars.from(carNames), tryCount);
     }
 
     public static void main(String[] args) {
