@@ -11,6 +11,6 @@ public class MovableStrategy {
     }
 
     public boolean movable() {
-        return numberGenerator.generate() > MOVE_CONDITION;
+        return numberGenerator.generate() >= MOVE_CONDITION;
     }
 }
