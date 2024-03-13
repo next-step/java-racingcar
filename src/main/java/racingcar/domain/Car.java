@@ -4,7 +4,7 @@ public class Car implements Vehicle {
     private final int MOVABLE_NUMBER = 4;
     private final int MAX_NAME_SIZE = 5;
 
-    private String name;
+    private final String name;
     private Integer moveCount = 0;
 
     public Car(String name) {

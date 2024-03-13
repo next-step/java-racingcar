@@ -8,7 +8,7 @@ import racingcar.domain.Vehicle;
 public class ResultView {
 
     private final String DISPLAY_STRING = "-";
-    private List<Vehicle> vehicles;
+    private final List<Vehicle> vehicles;
 
     public ResultView(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
