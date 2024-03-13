@@ -19,14 +19,14 @@ public class Race {
     }
 
     public void start() {
-        List<Name> carNames = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
+        List<String> carNames = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
         TryCount tryCount = TryCount.from(inputView.inputtedNumber(TRY_COUNT_MESSAGE));
         inputView.closeScanner();
 
         List<Car> cars = new ArrayList<>();
 
-        for (Name carName : carNames) {
-            cars.add(new Car(carName));
+        for (String carName : carNames) {
+            cars.add(Car.from(carName));
         }
 
         Cars racingCars = Cars.from(cars);

@@ -13,34 +13,34 @@ class CarTest {
 
     private final MoveStrategy alwaysTrueStrategy = () -> true;
 
-    private final Name testName = Name.from("test");
+    private final String testName = "test";
 
     @Test
     @DisplayName("getPosition() - Car의 위치를 int로 반환")
     void getPosition() {
-        Car car = new Car(testName);
+        Car car = Car.from(testName);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("getName() - Car의 이름을 문자열로 반환")
     void getName() {
-        Car car = new Car(testName);
-        assertThat(car.getName()).isEqualTo(testName.getName());
+        Car car = Car.from(testName);
+        assertThat(car.getName()).isEqualTo(testName);
     }
 
     @Test
     @DisplayName("play() - MoveStrategy의 movable()이 true이면 전진")
     void play() {
-        Car car1 = new Car(testName);
+        Car car1 = Car.from(testName);
         car1.play(alwaysTrueStrategy);
         car1.play(alwaysTrueStrategy);
 
-        Car car2 = new Car(Name.from("nimoh"));
+        Car car2 = Car.from("nimoh");
         car2.play(alwaysTrueStrategy);
         car2.play(alwaysTrueStrategy);
 
-        Car car3 = new Car(Name.from("pobi"));
+        Car car3 = Car.from("pobi");
         car3.play(alwaysTrueStrategy);
 
         assertThat(car1).isEqualTo(car2);
@@ -67,7 +67,7 @@ class CarTest {
     }
 
     private Car movedCar(int moveCount) {
-        Car car = new Car(testName);
+        Car car = Car.from(testName);
         for (int i = 0; i < moveCount; i++) {
             car.play(alwaysTrueStrategy);
         }

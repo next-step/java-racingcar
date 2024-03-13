@@ -9,9 +9,13 @@ public class Car {
     private Position position;
     private final Name name;
 
-    public Car(Name name) {
+    private Car(String name) {
         this.position = Position.startPosition();
-        this.name = name;
+        this.name = Name.from(name);
+    }
+
+    public static Car from(final String name) {
+        return new Car(name);
     }
 
     public String getName() {

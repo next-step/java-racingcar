@@ -2,7 +2,6 @@ package racing;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -29,23 +28,17 @@ public class InputView {
 
     }
 
-    public List<Name> inputtedCarNameList(String message) {
+    public List<String> inputtedCarNameList(String message) {
         System.out.println(message);
         String inputtedCarNames = scanNextLine();
 
         List<String> strCarNames = StringUtil.splitStringToList(inputtedCarNames, CAR_NAME_DELIMITER);
 
         try {
-            return strNamesToNames(strCarNames);
+            return strCarNames;
         } catch (IllegalArgumentException e) {
             return inputtedCarNameList(e.getMessage());
         }
-    }
-
-    private List<Name> strNamesToNames(List<String> strCarNames) {
-        return strCarNames.stream()
-                .map(Name::from)
-                .collect(Collectors.toList());
     }
 
     private int scanNextInt() {
