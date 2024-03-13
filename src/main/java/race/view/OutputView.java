@@ -5,8 +5,8 @@ import java.util.List;
 public class OutputView {
 
     public static void printMileages(int numberOfCars, List<String> mileages) {
-        for (int j = 0; j < numberOfCars; j++) {
-            System.out.println(mileages.get(j));
+        for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
+            System.out.println(mileages.get(carNumber));
         }
     }
 

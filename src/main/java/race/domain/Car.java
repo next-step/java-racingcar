@@ -4,7 +4,7 @@ import race.RaceRule;
 
 public class Car {
 
-    private String mileage = "";
+    private String mileage = "-";
 
     public String getMileage() {
         return this.mileage;
@@ -15,12 +15,10 @@ public class Car {
             if (isFitRaceRule(randomNumber)) {
                 this.mileage += "-";
             }
-        } else {
-            this.mileage = "-";
         }
     }
 
-    private static boolean isFitRaceRule(int randomNumber) {
+    private boolean isFitRaceRule(int randomNumber) {
         return new RaceRule(new RaceRule(() ->
                 randomNumber
         )).generate() >= 4;

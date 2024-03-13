@@ -24,3 +24,14 @@
 - [x] random값이 4이상일 때 전진한다 
 - [ ] UI 단을 구현한다
 
+---
+
+- [ ] UI로직을 구현한다.
+  - [ ] InputView
+  - [ ] OutputView
+  - [ ] InputValidation
+    - [ ] 숫자형태가 아닐 때 - NumberFormatException
+    - [ ] 음수일 때 - IllegalArgumentException
+- [ ] random값을 테스트한다.
+- [ ] random값을 4이상으로 고정했을 때 자동차는 계속 전진한다는 것을 테스트한다.
+- [ ] random값을 4미만으로 고정했을 때 자동차는 계속 정지한다는 것을 테스트한다.(가장 처음만 전진)

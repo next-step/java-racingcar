@@ -20,9 +20,9 @@ public class Cars {
 
     private List<String> goRandomForward(int numberOfCars, int numberOfAttempts, int randomNumber) {
         List<String> mileages = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            this.cars.get(i).go(numberOfAttempts, randomNumber);
-            mileages.add(this.cars.get(i).getMileage());
+        for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
+            this.cars.get(carNumber).go(numberOfAttempts, randomNumber);
+            mileages.add(this.cars.get(carNumber).getMileage());
         }
         return mileages;
     }

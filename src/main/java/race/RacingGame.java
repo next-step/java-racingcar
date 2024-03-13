@@ -10,7 +10,7 @@ import java.util.Random;
 public class RacingGame {
 
     private List<String> mileages = new ArrayList<>();
-    private final int randomNumber = new Random().nextInt(10);
+    private static final Random randomNumber = new Random();
     private final Cars cars;
 
     public RacingGame(Cars cars) {
@@ -18,16 +18,16 @@ public class RacingGame {
     }
 
     public void start(int numberOfCars, int numberOfAttempts) {
-        for (int i = 0; i < numberOfAttempts; i++) {
-            saveMileages(cars, numberOfCars, i);
+        for (int attempt = 0; attempt < numberOfAttempts; attempt++) {
+            saveMileages(cars, numberOfCars, attempt);
             OutputView.printMileages(numberOfCars, mileages);
             OutputView.printNextLine();
         }
     }
 
-    private void saveMileages(Cars cars, int numberOfCars, int i) {
-        for (int j = 0; j < numberOfCars; j++) {
-            mileages = cars.goForward(numberOfCars, i, randomNumber);
+    private void saveMileages(Cars cars, int numberOfCars, int attempt) {
+        for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
+            mileages = cars.goForward(numberOfCars, attempt, randomNumber.nextInt(10));
         }
     }
 
