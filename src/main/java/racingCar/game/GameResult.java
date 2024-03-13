@@ -1,15 +1,14 @@
 package racingCar.game;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
-  List<String> winners;
-  List<String> roundResults;
+  private List<String> winners;
+  private List<String> roundResults;
 
-  public GameResult(){
-    this.winners = new ArrayList<>();
-    this.roundResults = new ArrayList<>();
+  public GameResult(List<String> winners, List<String> roundResults){
+    this.winners = winners;
+    this.roundResults = roundResults;
   }
 
   public List<String> getWinners() {
@@ -20,11 +19,4 @@ public class GameResult {
     return roundResults;
   }
 
-  public void addRoundResult(String result){
-    roundResults.add(result);
-  }
-
-  public void setWinners(List<String> winners) {
-    this.winners = winners;
-  }
 }
