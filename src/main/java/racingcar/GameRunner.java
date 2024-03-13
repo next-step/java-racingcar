@@ -23,7 +23,9 @@ public class GameRunner implements Game {
 
     private void displayResult() {
         List<Vehicle> vehicles = getVehicles();
-        vehicles.forEach(vehicle -> System.out.println(vehicle.toString()));
+        vehicles.forEach(vehicle -> {
+            System.out.println(String.format("%s : %s", vehicle.getName(), vehicle.toString()));
+        });
         System.out.println();
     }
 }
