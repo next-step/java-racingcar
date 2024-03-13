@@ -48,7 +48,7 @@ public class StringAddCalculator {
         }
         return numbers;
     }
-
+  
     private static void checkNegative(int number) {
         if(number < 0) {
             throw new IllegalArgumentException("양수만 입력해주세요.");
