@@ -17,7 +17,7 @@ public class Name {
 
     private void validateNameLength(String name) {
         if (name.length() > NAME_LENGTH_LIMIT) {
-            throw new NameLengthExceededException();
+            throw new NameLengthExceededException(name);
         }
     }
 
