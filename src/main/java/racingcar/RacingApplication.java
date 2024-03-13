@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import common.NumberGenerator;
+import common.RandomNumberGenerator;
+
 public class RacingApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -12,7 +15,8 @@ public class RacingApplication {
         int n = scanner.nextInt();
 
         List<Vehicle> participateCar = getParticipateCar(n);
-        Game game = new RacingGame(participateCar);
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        Game game = new RacingGame(participateCar, numberGenerator);
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         int round = scanner.nextInt();

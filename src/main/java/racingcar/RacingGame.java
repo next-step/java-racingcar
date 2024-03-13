@@ -1,21 +1,22 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import common.RandomUtil;
+import common.NumberGenerator;
 
 public class RacingGame implements Game {
-    List<Vehicle> vehicles = new ArrayList<>();
+    List<Vehicle> vehicles;
+    NumberGenerator numberGenerator;
 
-    public RacingGame(List<Vehicle> vehicles) {
+    public RacingGame(List<Vehicle> vehicles, NumberGenerator numberGenerator) {
         this.vehicles = vehicles;
+        this.numberGenerator = numberGenerator;
     }
 
     @Override
     public void start() {
         for (Vehicle vehicle : vehicles) {
-            vehicle.move(RandomUtil.getRandomNumber());
+            vehicle.move(numberGenerator.getNumber());
         }
     }
 
