@@ -20,8 +20,10 @@ public class RacingGame {
     public void start() {
         int carNumbers = inputView.askNumberOfCars();
         int attempts = inputView.askNumberOfAttempts();
-        Cars cars = new Cars(carNumbers);
+
         outputView.printResultStatement();
+
+        Cars cars = new Cars(carNumbers);
         for (int attempt = 0; attempt < attempts; attempt++) {
             List<Integer> points = cars.goForward(new RaceRule());
             outputView.printMileages(points);
