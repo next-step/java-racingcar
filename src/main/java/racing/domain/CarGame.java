@@ -27,12 +27,18 @@ public class CarGame {
         List<RoundRecord> records = new ArrayList<>();
 
         for (int i = 0; i < rounds; i++) {
-            RoundRecord record = new RoundRecord();
-            for (Car car : cars) {
-                record.add(car.forward(moveStrategy));
-            }
+            RoundRecord record = playRound();
             records.add(record);
         }
         return records;
+    }
+
+    private RoundRecord playRound() {
+        RoundRecord record = new RoundRecord();
+        for (Car car : cars) {
+            car.forward(moveStrategy);
+            record.addHistory(car);
+        }
+        return record;
     }
 }

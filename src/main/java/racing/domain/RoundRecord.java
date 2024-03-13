@@ -1,22 +1,22 @@
 package racing.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RoundRecord {
 
-    private final List<Integer> positions;
+    private Map<String, Integer> positions;
 
     public RoundRecord() {
-        this.positions = new ArrayList<>();
+        this.positions = new HashMap<>();
     }
 
-    public void add(int position) {
-        positions.add(position);
+    public void addHistory(Car car) {
+        this.positions.put(car.getName(), car.getPosition());
     }
 
-    public List<Integer> getPositions() {
-        return Collections.unmodifiableList(positions);
+    public Map<String, Integer> getPositions() {
+        return Collections.unmodifiableMap(positions);
     }
 }
