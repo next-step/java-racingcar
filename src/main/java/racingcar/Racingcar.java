@@ -1,7 +1,6 @@
 package racingcar;
 
 import racingcar.ui.InputView;
-
 import java.util.*;
 
 public class Racingcar {
