@@ -1,6 +1,6 @@
 package step3.View;
 
-import step3.common.CommonConstants;
+import step3.common.ErrorMessageConstants;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     private InputView() {
-        throw new AssertionError(CommonConstants.CONSTRUCTOR_ERROR_MESSAGE);
+        throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE);
     }
 
     public static int InputCarCount(){

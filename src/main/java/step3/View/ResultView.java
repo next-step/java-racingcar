@@ -1,6 +1,6 @@
 package step3.View;
 
-import step3.common.CommonConstants;
+import step3.common.ErrorMessageConstants;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class ResultView {
     private static final String CAR_POSITION_UNIT = "-";
 
     private ResultView() {
-        throw new AssertionError(CommonConstants.CONSTRUCTOR_ERROR_MESSAGE);
+        throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE);
     }
 
     public static void viewResultPhrase() {
