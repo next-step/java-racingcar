@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCal {
+    private static Pattern ptn = Pattern.compile("//(.)\n(.*)");
     private StringAddCal(){
         // 생성자 접근을 private 으로 제한하여 객체 생성 방지
         // static 메소드로만 이루어져 있기 때문에 객체 호출이 필요 없음
@@ -38,7 +39,7 @@ public class StringAddCal {
     }
 
     private static String getCustomDelim(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = ptn.matcher(text);
         if (m.find()) {
             return m.group(1);
         }
