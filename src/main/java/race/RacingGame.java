@@ -15,16 +15,16 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public void start(int numberOfCars, int numberOfAttempts) {
+    public void start(int numberOfAttempts) {
         for (int attempt = 0; attempt < numberOfAttempts; attempt++) {
-            saveMileages(cars, numberOfCars, attempt);
+            saveMileages(cars);
             OutputView.printMileages(points);
             OutputView.printResultStatement();
         }
     }
 
-    private void saveMileages(Cars cars, int numberOfCars, int attempt) {
-        points = cars.goForward(numberOfCars, attempt);
+    private void saveMileages(Cars cars) {
+        points = cars.goForward();
     }
 
 }

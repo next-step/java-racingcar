@@ -8,7 +8,7 @@ public class OutputView {
 
     public static void printMileages(List<Integer> positions) {
         for (Integer position : positions) {
-            System.out.println(UNIT_MILEAGE.repeat(position + 1));
+            System.out.println(UNIT_MILEAGE.repeat(position));
         }
     }
 

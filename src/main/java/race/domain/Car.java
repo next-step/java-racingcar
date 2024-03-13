@@ -15,10 +15,10 @@ public class Car {
         return this.position;
     }
 
-    public void go(int numberOfAttempts) {
-            if (numberOfAttempts > 0 && isFitRaceRule(RANDOM.nextInt(END_BOUND))) {
-                this.position += 1;
-            }
+    public void go() {
+        if (isFitRaceRule(RANDOM.nextInt(END_BOUND))) {
+            this.position += 1;
+        }
     }
 
     private boolean isFitRaceRule(int randomNumber) {

@@ -9,7 +9,7 @@ public class RacingGameMain {
         int numbers = InputView.askNumberOfCars();
         int attempts = InputView.askNumberOfAttempts();
         RacingGame game = new RacingGame(new Cars(numbers));
-        game.start(numbers, attempts);
+        game.start(attempts);
     }
 
 }

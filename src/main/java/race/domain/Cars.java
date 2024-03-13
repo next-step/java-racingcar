@@ -10,15 +10,15 @@ public class Cars {
     public Cars(int numberOfCars) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            this.cars.add(new Car());
+            cars.add(new Car());
         }
     }
 
-    public List<Integer> goForward(int numberOfCars, int numberOfAttempts) {
+    public List<Integer> goForward() {
         List<Integer> mileages = new ArrayList<>();
-        for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
-            this.cars.get(carNumber).go(numberOfAttempts);
-            mileages.add(this.cars.get(carNumber).getPosition());
+        for (Car car : cars) {
+            car.go();
+            mileages.add(car.getPosition());
         }
         return mileages;
     }
