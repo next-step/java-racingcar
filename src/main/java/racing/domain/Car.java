@@ -3,11 +3,9 @@ package racing.domain;
 import racing.Constant;
 
 public class Car {
-    private final int index;
     private int position;
 
-    public Car(int index) {
-        this.index = index;
+    public Car() {
         this.position = Constant.START_POSITION;
     }
 

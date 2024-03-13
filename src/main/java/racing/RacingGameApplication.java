@@ -7,6 +7,7 @@ import racing.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
@@ -23,9 +24,9 @@ public class RacingGameApplication {
 
     private static List<Car> createCars(int carNo) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNo; i++) {
-            cars.add(new Car(i));
-        }
+
+        IntStream.range(0, carNo)
+                .forEach(i -> cars.add(new Car()));
         return cars;
     }
 }

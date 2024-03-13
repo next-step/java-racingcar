@@ -26,8 +26,8 @@ class RacingGameTest {
     @DisplayName("음수 또는 0을 전달할 경우 RuntimeException 예외가 발생해야 한다")
     void validate_chanceNo() {
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(0));
-        cars.add(new Car(1));
+        cars.add(new Car());
+        cars.add(new Car());
         RacingGame racingGame = new RacingGame(cars, 0);
         assertThatThrownBy(() -> racingGame.validateInput(10, 0))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -38,8 +38,8 @@ class RacingGameTest {
     @DisplayName("자동차 게임을 진행하면 자동차가 위치가 이동된다")
     void play() {
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(0));
-        cars.add(new Car(1));
+        cars.add(new Car());
+        cars.add(new Car());
 
         RacingGame racingGame = new RacingGame(cars, 5);
         racingGame.play();
