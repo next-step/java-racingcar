@@ -16,13 +16,13 @@ public class CarTest {
 
   @Test
   public void initTest() {
-    assertThat(car.getResult()).isEqualTo("");
+    assertThat(car.getPosition()).isEqualTo(0);
   }
 
   @Test
   public void moveTest() {
     car.move();
-    assertThat(car.getResult()).isEqualTo("-");
+    assertThat(car.getPosition()).isEqualTo(1);
   }
 
 }
