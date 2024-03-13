@@ -2,6 +2,7 @@ package step4.view.result;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public class CarMovementRoundResults {
@@ -13,5 +14,11 @@ public class CarMovementRoundResults {
 
     public void forEach(Consumer<CarMovementRoundResult> action) {
         results.forEach(action);
+    }
+
+    public Optional<CarMovementRoundResult> lastRoundResult() {
+        return results.isEmpty()
+                ? Optional.empty()
+                : Optional.of(results.get(results.size() - 1));
     }
 }

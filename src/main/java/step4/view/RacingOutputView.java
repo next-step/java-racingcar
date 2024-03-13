@@ -16,7 +16,11 @@ public class RacingOutputView {
 
     public static void printRacingResult(CarMovementRoundResults roundResults) {
         printResultTitle();
+
         roundResults.forEach(RacingOutputView::printRacingRoundResult);
+
+        roundResults.lastRoundResult()
+                .ifPresent(RacingOutputView::printRacingWinner);
     }
 
     public static void printResultTitle() {
@@ -34,5 +38,9 @@ public class RacingOutputView {
 
     private static String moveRecord(int moveCount) {
         return MOVE_RECORD_UNIT.repeat(Math.max(0, moveCount));
+    }
+
+    private static void printRacingWinner(CarMovementRoundResult result) {
+
     }
 }
