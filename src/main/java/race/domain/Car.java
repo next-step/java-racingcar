@@ -34,6 +34,10 @@ public class Car {
         return countOfMove;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void validateName(String name) {
         int lengthOfName = name.length();
         if (lengthOfName > MAX_LENGTH_OF_NAME) {
