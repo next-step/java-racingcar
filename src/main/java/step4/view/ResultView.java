@@ -5,6 +5,10 @@ import step4.domain.RacingCars;
 
 public class ResultView {
 
+    public void printResultTitle() {
+        System.out.print("\n실행 결과\n");
+    }
+
     public void printRacingCars(RacingCars racingCars) {
         for (RacingCar racingCar : racingCars.list()) printRacingCar(racingCar);
         System.out.println();

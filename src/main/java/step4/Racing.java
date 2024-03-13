@@ -18,6 +18,7 @@ public class Racing {
 
         ResultView resultView = new ResultView();
 
+        resultView.printResultTitle();
         for (int i = 0; i < countRound; i++) {
             racingCars.raceCars(racingCars);
             resultView.printRacingCars(racingCars);
