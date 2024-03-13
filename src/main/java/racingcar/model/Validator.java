@@ -32,9 +32,11 @@ public class Validator {
         }
     }
 
-    public void stringRangeCheck(String input) {
-        if (input.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+    public void stringRangeCheck(String[] stringArray) {
+        for (String name : stringArray) {
+            if (name.length() > MAX_NAME_LENGTH) {
+                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            }
         }
     }
 

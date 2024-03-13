@@ -15,6 +15,10 @@ public class RaceResult implements Iterable<DistanceRecord> {
         resultMap.put(tryNumber, distanceRecord);
     }
 
+    public int size() {
+        return this.resultMap.size();
+    }
+
     @Override
     public Iterator<DistanceRecord> iterator() {
         return resultMap.values().iterator();

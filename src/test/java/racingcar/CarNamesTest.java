@@ -15,7 +15,13 @@ public class CarNamesTest {
     @DisplayName("입력 받은 문자열로 CarNames를 만드는 지에 대한 Test")
     @ValueSource(strings = {"car1", "car1,car2,car3"})
     void makeCarNamesTest(String carName) {
-        CarNames carNames = new CarNames(carName);
+        // given
+        String[] stringArray = carName.split(",");
+
+        // when
+        CarNames carNames = new CarNames(stringArray);
+
+        // then
         assertThat(carNames).isInstanceOf(CarNames.class);
     }
 
@@ -23,8 +29,11 @@ public class CarNamesTest {
     @DisplayName("CarNames이 제대로 들어갔는지에 대한 Test")
     @ValueSource(strings = {"car1", "car1,car2,car3"})
     void checkCarNamesTest(String carName) {
-        //when
-        CarNames carNames = new CarNames(carName);
+        // given
+        String[] stringArray = carName.split(",");
+
+        // when
+        CarNames carNames = new CarNames(stringArray);
 
         //then
         List<String> carNameList = carNames.getCarNames();

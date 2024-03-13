@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class InputView {
 
     private final Validator validator;
+    private static final String SEPARATOR = ",";
+
 
     Scanner scanner = new Scanner(System.in);
 
@@ -29,7 +31,10 @@ public class InputView {
     public CarNames inputCarName() {
         String carNames = input();
         validator.nullCheck(carNames);
-        validator.stringRangeCheck(carNames);
-        return new CarNames(carNames);
+
+        String[] carNameArray = carNames.split(SEPARATOR);
+        validator.stringRangeCheck(carNameArray);
+
+        return new CarNames(carNameArray);
     }
 }

@@ -16,7 +16,8 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        carNames = new CarNames("car1,car2,car3");
+        String inputCarNames = "car1,car2,car3";
+        carNames = new CarNames(inputCarNames.split(","));
     }
 
     @ParameterizedTest

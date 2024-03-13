@@ -18,7 +18,7 @@ public class Race {
     }
 
     public void start() {
-        resultView.printCarAmount();
+        resultView.printCarName();
         CarNames carNames = inputView.inputCarName();
         resultView.printTryNumber();
         int tryNumber = inputView.inputNumber();
@@ -27,6 +27,6 @@ public class Race {
 
         RaceResult raceResult = cars.tryMove(tryNumber, new RandomNumberStrategy());
         resultView.printResultNotice();
-        resultView.printTryResult(raceResult);
+        resultView.printTryResult(carNames, raceResult);
     }
 }

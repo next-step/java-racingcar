@@ -12,11 +12,19 @@ public class DistanceRecord implements Iterable<Integer>{
     }
 
     public void add(Integer distance) {
-        distanceRecord.add(distance);
+        this.distanceRecord.add(distance);
+    }
+
+    public Integer getDistance(int index) {
+        return this.distanceRecord.get(index);
+    }
+
+    public int size() {
+        return this.distanceRecord.size();
     }
 
     @Override
     public Iterator iterator() {
-        return distanceRecord.iterator();
+        return this.distanceRecord.iterator();
     }
 }
