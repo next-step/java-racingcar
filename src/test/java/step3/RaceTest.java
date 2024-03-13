@@ -1,11 +1,13 @@
 package step3;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static step3.Race.generateCarArray;
 
 public class RaceTest {
 
@@ -25,10 +27,20 @@ public class RaceTest {
 
     @ParameterizedTest
     @DisplayName("자동차 움직임 테스트 (4 이상만 전진)")
-    @CsvSource(value = {"-,0,-", "--,7,---", "-,9,--"}, delimiter = ',')
-    void moveTest(String value, int chance, String expected){
-        String actual = Race.move(value, chance);
+    @CsvSource(value = {"0,-", "7,--", "9,--"}, delimiter = ',')
+    void moveTest(int chance, String expected){
+        Car car = new Car();
+        car.move(chance);
+        String actual = car.getPosition();
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("자동차 생성 테스트")
+    @ValueSource(ints = {1, 4, 10})
+    void generateCarArrayTest(int carCount){
+        Car[] actual = Race.generateCarArray(carCount);
+        assertThat(actual).hasSize(carCount);
     }
 
 }
