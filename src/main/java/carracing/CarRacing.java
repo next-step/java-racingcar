@@ -1,6 +1,8 @@
 package carracing;
 
 import carracing.model.*;
+import carracing.model.race.Race;
+import carracing.model.race.RaceResult;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class CarRacing {
 
             Race race = Race.newRace(nameOfCarList, numberOfAttempts);
             RaceResult raceResult = race.start();
+
             printRaceResult(numberOfAttempts, raceResult);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

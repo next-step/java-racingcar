@@ -1,6 +1,5 @@
-package carracing.model;
+package carracing.model.car;
 
-import java.util.Collections;
 import java.util.List;
 
 public class RaceRecordOfCar {

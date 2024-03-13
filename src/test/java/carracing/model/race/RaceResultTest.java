@@ -1,5 +1,6 @@
-package carracing.model;
+package carracing.model.race;
 
+import carracing.model.car.RaceRecordOfCar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,7 @@
-package carracing.model;
+package carracing.model.car;
 
+import carracing.model.NameOfCar;
+import carracing.model.car.strategy.MovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;

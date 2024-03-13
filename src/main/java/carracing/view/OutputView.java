@@ -1,8 +1,8 @@
 package carracing.view;
 
 import carracing.model.NumberOfAttempts;
-import carracing.model.RaceRecordOfCar;
-import carracing.model.RaceResult;
+import carracing.model.car.RaceRecordOfCar;
+import carracing.model.race.RaceResult;
 
 import java.util.List;
 
@@ -58,5 +58,4 @@ public class OutputView {
                 .append(RACE_WINNER_MESSAGE)
                 .toString();
     }
-
 }

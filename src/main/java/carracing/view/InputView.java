@@ -25,7 +25,7 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         String names = scanner.nextLine();
 
-        if(!isNonBlank(names)) {
+        if (!isNonBlank(names)) {
             throw new IllegalArgumentException(WRONG_INPUT_MESSAGE);
         }
 
