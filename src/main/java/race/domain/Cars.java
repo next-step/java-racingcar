@@ -62,7 +62,7 @@ public class Cars {
     private List<Car> generateCar(int countOfCar) {
         List<Car> cars = new ArrayList<>();
 
-        while(countOfCar > 0) {
+        while (countOfCar > 0) {
             cars.add(Car.createInstance());
             countOfCar--;
         }

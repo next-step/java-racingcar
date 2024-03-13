@@ -12,10 +12,10 @@ public class StringUtils {
                 !target.endsWith(PARENTHESIS_OF_CLOSING)) {
             throw new IllegalArgumentException(target);
         }
-        return target.substring(target.indexOf(PARENTHESIS_OF_OPENING) + 1, target.length() -1);
+        return target.substring(target.indexOf(PARENTHESIS_OF_OPENING) + 1, target.length() - 1);
     }
 
-    public static String join(String delimiter,List<?> list) {
+    public static String join(String delimiter, List<?> list) {
         if (list.isEmpty()) {
             return "";
         }

@@ -1,6 +1,7 @@
 package race.domain;
 
 public class Car implements Comparable<Car> {
+
     private final int CONDITION_OF_MOVE = 4;
     private final static int MAX_LENGTH_OF_NAME = 5;
     private int countOfMove;
@@ -20,7 +21,7 @@ public class Car implements Comparable<Car> {
     }
 
     public void move(int number) {
-        if(!canMove(number)) {
+        if (!canMove(number)) {
             return;
         }
         countOfMove++;
@@ -41,7 +42,8 @@ public class Car implements Comparable<Car> {
     private void validateName(String name) {
         int lengthOfName = name.length();
         if (lengthOfName > MAX_LENGTH_OF_NAME) {
-            throw new IllegalArgumentException(String.format("이름을 5자를 초과 할수 없습니다. 해당 이름은 %s 는 %d ", name, lengthOfName));
+            throw new IllegalArgumentException(
+                    String.format("이름을 5자를 초과 할수 없습니다. 해당 이름은 %s 는 %d ", name, lengthOfName));
         }
     }
 

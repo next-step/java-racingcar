@@ -41,7 +41,7 @@ class CarsTest {
         // Given
         String names = "default,pobi,crong";
         // When & Then
-        assertThatThrownBy(() ->Car.createInstance(names))
+        assertThatThrownBy(() -> Car.createInstance(names))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
