@@ -1,7 +1,8 @@
 package step3.application.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Racing {
 
@@ -13,11 +14,9 @@ public class Racing {
     }
 
     private List<Car> createRacingGroup(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(i));
-        }
-        return cars;
+        return IntStream.rangeClosed(1, carCount)
+                .mapToObj(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void startRace(int moveCount) {
