@@ -1,7 +1,5 @@
 package race.utils;
 
-import race.utils.RandomUtil;
-
 public class RaceTestRule implements RandomUtil {
 
     RandomUtil randomUtil;

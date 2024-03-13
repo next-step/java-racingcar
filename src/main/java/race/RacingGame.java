@@ -2,30 +2,28 @@ package race;
 
 import race.domain.Cars;
 import race.utils.RaceRule;
+import race.view.InputView;
 import race.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    private List<Integer> points = new ArrayList<>();
-    private final Cars cars;
+    private final OutputView outputView;
+    private final InputView inputView;
 
-    public RacingGame(Cars cars) {
-        this.cars = cars;
+    public RacingGame(OutputView outputView, InputView inputView) {
+        this.outputView = outputView;
+        this.inputView = inputView;
     }
 
-    public void start(int numberOfAttempts) {
-        for (int attempt = 0; attempt < numberOfAttempts; attempt++) {
-            saveMileages(cars);
-            OutputView.printMileages(points);
-            OutputView.printResultStatement();
+    public void start() {
+        Cars cars = new Cars(inputView.askNumberOfCars());
+        for (int attempt = 0; attempt < inputView.askNumberOfAttempts(); attempt++) {
+            List<Integer> points = cars.goForward(new RaceRule());
+            outputView.printMileages(points);
+            outputView.printResultStatement();
         }
-    }
-
-    private void saveMileages(Cars cars) {
-        points = cars.goForward(new RaceRule());
     }
 
 }
