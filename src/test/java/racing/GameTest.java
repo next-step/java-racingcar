@@ -1,10 +1,12 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameTest {
     @ParameterizedTest
@@ -27,4 +29,27 @@ class GameTest {
         game.playGame(5);
         assertThat(game.getAttendedCars().get(input).getCurrentLocation()).isBetween(0, 5);
     }
+
+    @Test
+    @DisplayName("자동차 대수에 음수 입력했을 경우, IllegalArgumentException 발생")
+    public void negativeNumberInCarNumber() {
+        Game game = new Game();
+
+        assertThatThrownBy(() -> {
+            game.createAttendedCars(-1);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 대수는 음수가 될 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("자동차 대수에 음수 입력했을 경우, IllegalArgumentException 발생")
+    public void negativeNumberInAttempts() {
+        Game game = new Game();
+
+        assertThatThrownBy(() -> {
+            game.playGame(-1);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도할 횟수는 음수가 될 수 없습니다.");
+    }
+
 }
