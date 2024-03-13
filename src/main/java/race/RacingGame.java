@@ -9,6 +9,7 @@ import java.util.List;
 
 public class RacingGame {
 
+    private static final String STANDARD_REGEX = ",";
     private final OutputView outputView;
     private final InputView inputView;
 
@@ -19,7 +20,7 @@ public class RacingGame {
 
     public void start() {
         String nameOfCar = inputView.askNameOfCar();
-        String[] names = nameOfCar.split(",");
+        String[] names = nameOfCar.split(STANDARD_REGEX);
         int carNumbers = names.length;
         int attempts = inputView.askNumberOfAttempts();
 
