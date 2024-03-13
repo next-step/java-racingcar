@@ -17,7 +17,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public int getNumberOfChances() {
+    public int getNumberOfRounds() {
         System.out.println(Constant.CMD_HOW_MANY_CHANCE);
         return scanner.nextInt();
     }

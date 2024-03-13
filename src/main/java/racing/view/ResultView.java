@@ -4,6 +4,7 @@ import racing.Constant;
 import racing.domain.Car;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
@@ -16,9 +17,7 @@ public class ResultView {
 
     public static void printCarPosition(Car car){
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < car.getPosition(); i++) {
-            sb.append(Constant.MARK);
-        }
+        IntStream.range(0, car.getPosition()).forEach(i -> sb.append(Constant.MARK));
         System.out.println(sb);
     }
 }
