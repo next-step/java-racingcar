@@ -5,12 +5,16 @@ public class Position {
 
     private final int position;
 
-    public Position() {
-        this.position = START_POSITION;
+    private Position(int position) {
+        this.position = position;
     }
 
-    public Position(int position) {
-        this.position = position;
+    public static Position startPosition() {
+        return new Position(START_POSITION);
+    }
+
+    public static Position valueOf(int position) {
+        return new Position(position);
     }
 
     public Position add(int addPosition) {

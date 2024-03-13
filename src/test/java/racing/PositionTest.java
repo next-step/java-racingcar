@@ -10,8 +10,8 @@ class PositionTest {
     @ParameterizedTest
     @CsvSource(value = {"1:2", "1:3", "2:3", "2:4", "3:5"}, delimiter = ':')
     void add(int startPosition, int addPosition) {
-        Position position = new Position(startPosition);
-        assertThat(position.add(addPosition)).isEqualTo(new Position(startPosition + addPosition));
+        Position position = Position.valueOf(startPosition);
+        assertThat(position.add(addPosition)).isEqualTo(Position.valueOf(startPosition + addPosition));
     }
 
 }

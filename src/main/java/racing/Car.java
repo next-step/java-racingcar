@@ -10,7 +10,7 @@ public class Car {
     private final Name name;
 
     public Car(Name name) {
-        this.position = new Position();
+        this.position = Position.startPosition();
         this.name = name;
     }
 
