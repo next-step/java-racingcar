@@ -6,21 +6,35 @@ public class Car {
 
     private Position position;
 
-    public Car(Position position) {
+    private final MoveStrategy strategy;
+
+    public Car(Position position, MoveStrategy strategy) {
+        validateMoveStrategy(strategy);
         this.position = position;
+        this.strategy = strategy;
     }
 
-    public Car() {
-        this(new Position());
+    public Car(MoveStrategy strategy) {
+        validateMoveStrategy(strategy);
+        this.position = new Position();
+        this.strategy = strategy;
     }
 
-    public Car(int step) {
-        this(new Position(step));
+    public Car(int step, MoveStrategy strategy) {
+        validateMoveStrategy(strategy);
+        this.position = new Position(step);
+        this.strategy = strategy;
+    }
+
+    private void validateMoveStrategy(MoveStrategy strategy) {
+        if (Objects.isNull(strategy)) {
+            throw new IllegalArgumentException("MoveStrategy must be not null");
+        }
     }
 
     public Car move() {
-        Position movedPosition = this.position.moveOneStep();
-        return new Car(movedPosition);
+        Position movedPosition = strategy.move(this.position);
+        return new Car(movedPosition, strategy);
     }
 
     @Override
