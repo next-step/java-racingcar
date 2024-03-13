@@ -2,7 +2,7 @@ package race.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import race.RaceRule;
+import race.utils.RaceTestRule;
 
 import java.util.List;
 
@@ -19,20 +19,20 @@ class CarsTest {
 
     @Test
     void goForward_test() {
-        List<Integer> firstMileages = cars.goForward(new RaceRule());
+        List<Integer> firstMileages = cars.goForward(new RaceTestRule(() -> 4));
         assertThat(firstMileages.get(0)).isEqualTo(1);
         assertThat(firstMileages.get(1)).isEqualTo(1);
         assertThat(firstMileages.get(2)).isEqualTo(1);
 
-        List<Integer> secondMileages = cars.goForward(new RaceRule());
-        assertThat(secondMileages.get(0)).isEqualTo(1);
-        assertThat(secondMileages.get(1)).isEqualTo(1);
-        assertThat(secondMileages.get(2)).isEqualTo(1);
+        List<Integer> secondMileages = cars.goForward(new RaceTestRule(() -> 4));
+        assertThat(secondMileages.get(0)).isEqualTo(2);
+        assertThat(secondMileages.get(1)).isEqualTo(2);
+        assertThat(secondMileages.get(2)).isEqualTo(2);
 
-        List<Integer> thirdMileages = cars.goForward(new RaceRule());
-        assertThat(thirdMileages.get(0)).isEqualTo(1);
-        assertThat(thirdMileages.get(1)).isEqualTo(1);
-        assertThat(thirdMileages.get(2)).isEqualTo(1);
+        List<Integer> thirdMileages = cars.goForward(new RaceTestRule(() -> 4));
+        assertThat(thirdMileages.get(0)).isEqualTo(3);
+        assertThat(thirdMileages.get(1)).isEqualTo(3);
+        assertThat(thirdMileages.get(2)).isEqualTo(3);
     }
 
 }

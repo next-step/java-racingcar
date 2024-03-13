@@ -1,6 +1,7 @@
 package race;
 
 import race.domain.Cars;
+import race.utils.RaceRule;
 import race.view.OutputView;
 
 import java.util.ArrayList;
