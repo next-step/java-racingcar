@@ -2,18 +2,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCar {
-    public static void main(String[] args) {
-        RacingCar racingCar = new RacingCar();
-        racingCar.inputCarAndMoveCount();
-        racingCar.start();
-    }
-
-    private int carCount;
-    private int moveCount;
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final Random random = new Random();
     private static final int rangeRandom = 10;
     private static final int cutMove = 4;
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final Random random = new Random();
+    private int carCount;
+    private int moveCount;
 
     public void inputCarAndMoveCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -21,22 +15,6 @@ public class RacingCar {
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         this.moveCount = scanner.nextInt();
-    }
-
-    public int getCarCount() {
-        return this.carCount;
-    }
-
-    public int getMoveCount() {
-        return this.moveCount;
-    }
-
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
-    }
-
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
     }
 
     public void start() {
@@ -68,5 +46,21 @@ public class RacingCar {
             }
             System.out.println();
         }
+    }
+
+    public int getCarCount() {
+        return this.carCount;
+    }
+
+    public int getMoveCount() {
+        return this.moveCount;
+    }
+
+    public void setCarCount(int carCount) {
+        this.carCount = carCount;
+    }
+
+    public void setMoveCount(int moveCount) {
+        this.moveCount = moveCount;
     }
 }
