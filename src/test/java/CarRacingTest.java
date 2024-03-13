@@ -46,5 +46,14 @@ class CarRacingTest {
             TryNumber carNumber = new TryNumber(-2);
         }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("1 이상의 정수만 입력 가능합니다.");
     }
+    @ParameterizedTest
+    @DisplayName("자동차 객체 생성 시 이름을 부여할 수 있다")
+    @ValueSource(strings = "차차차")
+    void carObjectHaveName(String name) {
+        Car car = new Car(name);
+        assertThat(car.getName()).isEqualTo(name);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
 
 }
