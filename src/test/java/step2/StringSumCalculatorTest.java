@@ -6,10 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static step2.StringSumCalculator.calculateStringWithSumOnly;
 
 
 public class StringSumCalculatorTest {
@@ -19,98 +18,37 @@ public class StringSumCalculatorTest {
 //    문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
 //    private StringSumCalculator stringSumCalculator = new StringSumCalculator();
 
-    private StringSumCalculator stringSumCalculator = new StringSumCalculator();
     @ParameterizedTest
-    @DisplayName("쉼표(,) 또는 콜론(:)으로 구분하는 테스트")
-    @ValueSource(strings = {"1,2,3", "1:2,3", "1:2:3"})
-    void splitWithBothCommaAndColonTest(String value) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("splitWithCommaAndColon", String.class);
-        method.setAccessible(true);
-        String[] actual = (String[]) method.invoke(null, value);
-        String expectedComponent1 = "1";
-        String expectedComponent2 = "2";
-        String expectedComponent3 = "3";
-        assertThat(actual).contains(expectedComponent1, expectedComponent2, expectedComponent3);
+    @DisplayName("쉼표(,) 또는 콜론(:)으로 계산 테스트")
+    @CsvSource(value = {"1,2,3=6", "1:2,4=7", "1:2:3=6"}, delimiter = '=')
+    void calculateSumWithCommaAndColonTest(String value, int expected){
+        int actual = calculateStringWithSumOnly(value);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("문자열이 \"\"일때 0 반환 테스트")
-    void emptyReturnZeroTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("emptyReturnZeroString", String.class);
-        method.setAccessible(true);
+    void emptyReturnZeroTest(){
         String value = "";
-        String actual = (String) method.invoke(null, value);
-        assertThat(actual).isEqualTo("0");
-    }
-
-    @Test
-    @DisplayName("합산 테스트")
-    void sumTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        String[] valueArray = {"1", "2", "3"};
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("sum", String[].class);
-        method.setAccessible(true);
-        int actual = (int) method.invoke(null, (Object) valueArray);
-        int expected = 6;
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("커스텀 구분자 유무 테스트")
-    void hasCustomDelimiterTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        String value = "//;\\n1;2;3";
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("hasCustomDelimiter", String.class);
-        method.setAccessible(true);
-        Boolean actual = (Boolean) method.invoke(null, value);
-        assertThat(actual).isTrue();
-    }
-
-    @Test
-    @DisplayName("커스텀 구분자 추출 테스트")
-    void getCustomDelimiterTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("getCustomDelimiter", String.class);
-        method.setAccessible(true);
-        String value = "//;\\n1;2;3";
-        String actual = (String) method.invoke(stringSumCalculator, value);
-        String expected = ";";
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("커스텀 구분자 제외 후 문자열 반환 테스트")
-    void getStringWithoutCustomDelimiterTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        String value = "//;\\n1;2;3";
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("getStringWithoutCustomDelimiter", String.class);
-        method.setAccessible(true);
-        String actual = (String) method.invoke(null, value);
-        String expected = "1;2;3";
-        assertThat(actual).isEqualTo(expected);
+        int actual = calculateStringWithSumOnly(value);
+        assertThat(actual).isZero();
     }
 
     @ParameterizedTest
-    @DisplayName("구분자를 통한 숫자 반환 테스트")
-    @CsvSource(value = {";,1;2;3", "=,1=2=3"}, delimiter = ',')
-    void splitValuesByCustomDelimiterTest(String delimiter, String value) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("splitValuesByCustomDelimiter", String.class, String.class);
-        method.setAccessible(true);
-        String[] actual = (String[]) method.invoke(null, delimiter, value);
-        String[] expected = {"1", "2", "3"};
-        assertThat(actual).containsExactly(expected);
+    @DisplayName("커스텀 구분자로 계산 테스트")
+    @CsvSource(value = {"//;\\n1;2;3=6", "//@\\n1@2@4=7"}, delimiter = '=')
+    void calculateSumWithCustomDelimiterTest(String value, int expected){
+        int actual = calculateStringWithSumOnly(value);
+        assertThat(actual).isEqualTo(expected);
     }
 
 
     @ParameterizedTest
     @DisplayName("숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 테스트")
     @ValueSource(strings = {"-1", "안", "hi"})
-    void unavailableInputFailTest(String value) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = stringSumCalculator.getClass().getDeclaredMethod("checkInputAvailable", String.class);
-        method.setAccessible(true);
-
-        try {
-            method.invoke(null, value);
-        } catch (InvocationTargetException e) {
-            Throwable cause = e.getCause();
-            assertThat(cause).isInstanceOf(RuntimeException.class);
-        }
+    void unavailableInputFailTest(String value){
+        assertThatThrownBy(()->{
+                calculateStringWithSumOnly(value);
+        }).isInstanceOf(RuntimeException.class);
     }
 }

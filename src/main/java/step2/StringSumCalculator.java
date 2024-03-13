@@ -19,7 +19,9 @@ public class StringSumCalculator {
     }
 
     public static int calculateStringWithSumOnly(String input){
-        emptyReturnZeroString(input);
+
+        if(input.isEmpty())
+            return 0;
 
         if(hasCustomDelimiter(input)){
             String customDelimiter = getCustomDelimiter(input);
@@ -27,6 +29,7 @@ public class StringSumCalculator {
             String[] stringArray = splitValuesByCustomDelimiter(customDelimiter, stringExpression);
             return sum(stringArray);
         }
+
         String[] stringArray = splitWithCommaAndColon(input);
         return sum(stringArray);
     }
@@ -34,13 +37,6 @@ public class StringSumCalculator {
 
     private static String[] splitWithCommaAndColon(String value) {
         return value.split("[,|:]");
-    }
-
-    private static String emptyReturnZeroString(String value) {
-        if(value.isEmpty()){
-            return "0";
-        }
-        return value;
     }
 
     private static int sum(String[] valueArray) {
