@@ -15,6 +15,10 @@ public class RaceResult implements Iterable<CarRecord> {
         resultMap.put(tryNumber, carRecord);
     }
 
+    public CarRecord getFinalRaceResult() {
+        return this.resultMap.get(this.resultMap.size()-1);
+    }
+
     @Override
     public Iterator<CarRecord> iterator() {
         return resultMap.values().iterator();
