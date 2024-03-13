@@ -11,8 +11,7 @@ public class RacingGameController {
         int StageCount = InputView.InputStageCount();
 
         RacingGame racingGame = new RacingGame(carCount);
-
-
+        
         ResultView.viewResultPhrase();
 
         for (int i = 0; i < StageCount; i++) {
