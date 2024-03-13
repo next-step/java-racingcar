@@ -30,11 +30,7 @@ public class RaceRecordOfCar {
         return position == givenPosition;
     }
 
-    public List<Integer> positionHistory() {
-        return Collections.unmodifiableList(positionHistory);
-    }
-
-    public int positionOfRound(int round) {
-        return positionHistory.get(round);
+    public int positionByAttempt(int attempt) {
+        return positionHistory.get(attempt);
     }
 }
