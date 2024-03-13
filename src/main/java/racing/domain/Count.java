@@ -7,7 +7,7 @@ public class Count {
         this.value = toInt(value);
     }
 
-    public int getValue() {
+    public int value() {
         return value;
     }
 

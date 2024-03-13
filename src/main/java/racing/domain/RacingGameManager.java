@@ -15,12 +15,12 @@ public class RacingGameManager {
         Count carCount = new Count(InputView.askNumberOfCarParticipants());
         Count attemptCount = new Count(InputView.askNumberOfAttempt());
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < carCount.getValue(); i++) {
+        for (int i = 0; i < carCount.value(); i++) {
             racingCars.add(new RacingCar());
         }
 
         ResultView.printGameResultTitle();
-        for (int i = 0; i < attemptCount.getValue(); i++) {
+        for (int i = 0; i < attemptCount.value(); i++) {
             playRound(racingCars);
         }
 

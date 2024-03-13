@@ -1,9 +1,9 @@
 package racing.domain;
 
 public class RacingCar {
-    private int position;
-
     private static final int MOVE_BORDER_NUMBER = 4;
+
+    private int position;
 
     public RacingCar() {
         this.position = 0;
