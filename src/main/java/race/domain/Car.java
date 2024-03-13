@@ -4,7 +4,7 @@ public class Car implements Comparable<Car> {
 
     private final int CONDITION_OF_MOVE = 4;
     private final static int MAX_LENGTH_OF_NAME = 5;
-    private int countOfMove;
+    private int position;
     private final String name;
 
     private Car(String name) {
@@ -24,23 +24,23 @@ public class Car implements Comparable<Car> {
         if (!canMove(number)) {
             return;
         }
-        countOfMove++;
+        position++;
     }
 
     private boolean canMove(int number) {
         return number >= CONDITION_OF_MOVE;
     }
 
-    public int getCountOfMove() {
-        return countOfMove;
+    public int getPosition() {
+        return position;
     }
 
     public String getName() {
         return name;
     }
 
-    public Car findSameMoveOfCar(Car car) {
-        if (countOfMove == car.getCountOfMove()) {
+    public Car findSamePosition(Car car) {
+        if (position == car.getPosition()) {
             return car;
         }
         return null;
@@ -56,7 +56,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return countOfMove - o.getCountOfMove();
+        return position - o.getPosition();
     }
 
     @Override

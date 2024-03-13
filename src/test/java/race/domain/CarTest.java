@@ -2,8 +2,6 @@ package race.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -19,6 +17,6 @@ class CarTest {
         car.move(number);
 
         // Then
-        assertThat(car.getCountOfMove()).isEqualTo(count);
+        assertThat(car.getPosition()).isEqualTo(count);
     }
 }

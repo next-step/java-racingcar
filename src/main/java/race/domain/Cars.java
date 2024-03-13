@@ -2,9 +2,7 @@ package race.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeSet;
 import utils.number.NumberGenerator;
 
@@ -47,7 +45,7 @@ public class Cars {
         List<Car> winners = new ArrayList<>();
         Car winner = chooseWinner();
         for (Car car : this.cars) {
-            Car findCar = winner.findSameMoveOfCar(car);
+            Car findCar = winner.findSamePosition(car);
             winners.add(findCar);
         }
         this.removeNull(winners);

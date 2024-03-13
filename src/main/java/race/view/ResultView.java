@@ -1,7 +1,6 @@
 package race.view;
 
 
-import java.util.List;
 import race.domain.Car;
 import race.domain.Cars;
 
@@ -29,7 +28,7 @@ public class ResultView {
     }
 
     private static String showCar(Car car) {
-        return String.format(CAR_FORMAT, car.getName(), drawProgressBar(car.getCountOfMove()));
+        return String.format(CAR_FORMAT, car.getName(), drawProgressBar(car.getPosition()));
     }
 
     private static String drawProgressBar(int count) {
