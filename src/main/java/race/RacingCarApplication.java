@@ -7,6 +7,7 @@ import race.domain.Car;
 import race.domain.Cars;
 import race.view.InputView;
 import race.view.ResultView;
+import utils.StringUtils;
 import utils.number.NumberGenerator;
 import utils.number.RandomNumberGenerator;
 
@@ -21,6 +22,8 @@ public class RacingCarApplication {
 
         NumberGenerator randomGenerator = new RandomNumberGenerator();
         racing(cars, randomGenerator, countOfTrial);
+
+        ResultView.showWinners(StringUtils.join(",", cars.chooseWinners()));
     }
 
     private static void racing(Cars cars, NumberGenerator numberGenerator, int countOfTrial) {

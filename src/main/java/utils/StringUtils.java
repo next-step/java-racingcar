@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.List;
+
 public class StringUtils {
 
     private static final String PARENTHESIS_OF_OPENING = "(";
@@ -11,5 +13,18 @@ public class StringUtils {
             throw new IllegalArgumentException(target);
         }
         return target.substring(target.indexOf(PARENTHESIS_OF_OPENING) + 1, target.length() -1);
+    }
+
+    public static String join(String delimiter,List<?> list) {
+        if (list.isEmpty()) {
+            return "";
+        }
+        String[] names = new String[list.size()];
+
+        for (int i = 0; i < list.size(); i++) {
+            names[i] = list.get(i).toString();
+        }
+
+        return String.join(delimiter, names);
     }
 }
