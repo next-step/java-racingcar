@@ -6,7 +6,7 @@ public class RacingCar {
     private static final int MIN_MOVE_COUNT = 4;
     private int position;
 
-    private RacingCar() {
+    public RacingCar() {
         this.position = 0;
     }
 
