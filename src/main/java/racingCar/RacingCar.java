@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 public class RacingCar {
 
     private static final int START_LOCATION = 0;
-    private static final int MOVABLE_STANDARD = 4;
     private int location;
 
     public RacingCar() {
