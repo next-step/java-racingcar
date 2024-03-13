@@ -37,6 +37,10 @@ public class Car {
         return new Car(movedPosition, strategy);
     }
 
+    public boolean isMoved(Car beforeCar) {
+        return !this.equals(beforeCar);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
