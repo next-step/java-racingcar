@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-    private final static int DELIMITER_GROUP = 1;
-    private final static int STRING_GROUP = 2;
-    private final static String DEFAULT_DELIMITER_PATTERN = "[,:]";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final int DELIMITER_GROUP = 1;
+    private static final int STRING_GROUP = 2;
+    private static final String DEFAULT_DELIMITER_PATTERN = "[,:]";
 
     private StringAddCalculator() {
 

@@ -3,7 +3,7 @@ package racingcar.domain;
 
 public class NameSeparator {
 
-    private final static String NAME_SEPARATE_REGEX = ",";
+    private static final String NAME_SEPARATE_REGEX = ",";
     private final String nameString;
 
     public NameSeparator(String nameString) {

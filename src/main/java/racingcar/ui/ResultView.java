@@ -9,7 +9,7 @@ import java.text.MessageFormat;
 
 public class ResultView {
 
-    private final static String CAR_POSITION_STRING = "-";
+    private static final String CAR_POSITION_STRING = "-";
 
     private final StringBuilder snapshot = new StringBuilder();
 

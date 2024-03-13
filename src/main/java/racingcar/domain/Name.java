@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Name {
 
-    private final static int NAME_LENGTH_LIMIT = 5;
+    private static final int NAME_LENGTH_LIMIT = 5;
 
     private final String name;
 
