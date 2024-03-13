@@ -3,6 +3,9 @@ package stiudy;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * 도메인 파악을 위해 만들었던 클래스입니다
+ */
 public class RacingGameStudy {
 
     public static void main(String[] args) {

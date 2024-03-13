@@ -6,21 +6,19 @@ import java.util.Random;
 
 public class Car {
 
-    private String mileage = "-";
-    private static final int END_BOUND = 10;
-    private static final int STANDARD_BOUND = 4;
     private static final Random RANDOM = new Random();
+    private static final int STANDARD_BOUND = 4;
+    private static final int END_BOUND = 10;
+    private String mileage = "-";
 
     public String getMileage() {
         return this.mileage;
     }
 
     public void go(int numberOfAttempts) {
-        if (numberOfAttempts > 0) {
-            if (isFitRaceRule(RANDOM.nextInt(END_BOUND))) {
+            if (numberOfAttempts > 0 && isFitRaceRule(RANDOM.nextInt(END_BOUND))) {
                 this.mileage += "-";
             }
-        }
     }
 
     private boolean isFitRaceRule(int randomNumber) {
