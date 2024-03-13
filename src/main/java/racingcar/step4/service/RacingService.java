@@ -1,5 +1,6 @@
 package racingcar.step4.service;
 
+import racingcar.step4.domain.Names;
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.dto.RoundResultDto;
 import racingcar.step4.domain.move.MoveStrategy;
@@ -14,7 +15,7 @@ public class RacingService {
     private final RoundService roundService;
     private final int roundCount;
 
-    public RacingService(MoveStrategy moveStrategy, int roundCount, List<String> names) {
+    public RacingService(MoveStrategy moveStrategy, int roundCount, Names names) {
         this.roundService = new RoundService(names, moveStrategy);
         this.roundCount = roundCount;
     }
@@ -46,7 +47,7 @@ public class RacingService {
         int winnerLocation = getWinnerLocation(finalRound);
 
         return finalRound.getParticipantResults().stream()
-                .filter(x -> x.getLocation() == winnerLocation)
+                .filter(x -> x.getCurrentLocation() == winnerLocation)
                 .map(ParticipantResultDto::getName)
                 .collect(Collectors.toList());
     }
@@ -57,7 +58,7 @@ public class RacingService {
 
     private Integer getWinnerLocation(RoundResultDto finalRound) {
         return finalRound.getParticipantResults() .stream()
-                .map(ParticipantResultDto::getLocation)
+                .map(ParticipantResultDto::getCurrentLocation)
                 .max(Integer::compareTo)
                 .get();
     }

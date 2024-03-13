@@ -1,10 +1,12 @@
 package racingcar.step4.domain.dto;
 
+import racingcar.step4.domain.Location;
+
 public class ParticipantResultDto {
     private final String name;
-    private final int location;
+    private final Location location;
 
-    public ParticipantResultDto(String name, int location) {
+    public ParticipantResultDto(String name, Location location) {
         this.name = name;
         this.location = location;
     }
@@ -13,7 +15,7 @@ public class ParticipantResultDto {
         return name;
     }
 
-    public int getLocation() {
-        return location;
+    public int getCurrentLocation() {
+        return location.currentLocation();
     }
 }

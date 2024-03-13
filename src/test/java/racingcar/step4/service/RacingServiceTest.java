@@ -2,6 +2,7 @@ package racingcar.step4.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.step4.domain.Names;
 import racingcar.step4.domain.dto.ParticipantResultDto;
 import racingcar.step4.domain.dto.RoundResultDto;
 import racingcar.step4.domain.move.IncrementMoveStrategy;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingServiceTest {
 
-    private final List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
+    private final List<String> names = Arrays.asList("Luffy", "Narut", "Ichig");
     private final int roundCount = 3;
 
     @DisplayName("주어진 라운드만큼 경기를 수행하고, 각 참가자들은 이동한다.")
@@ -26,7 +27,7 @@ class RacingServiceTest {
         RacingService racingService = new RacingService(
                 new IncrementMoveStrategy(),
                 roundCount,
-                names
+                new Names(names)
         );
 
         // when
@@ -44,7 +45,7 @@ class RacingServiceTest {
         RacingService racingService = new RacingService(
                 new IncrementMoveStrategy(),
                 roundCount,
-                names
+                new Names(names)
         );
 
         // when
@@ -62,7 +63,7 @@ class RacingServiceTest {
 
         RoundResultDto finalRound = roundResults.get(finalRoundIndex);
         return finalRound.getParticipantResults().stream()
-                .map(ParticipantResultDto::getLocation)
+                .map(ParticipantResultDto::getCurrentLocation)
                 .collect(Collectors.toList());
     }
 }

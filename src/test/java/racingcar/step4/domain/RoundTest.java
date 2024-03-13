@@ -1,6 +1,5 @@
 package racingcar.step4.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.step4.domain.dto.ParticipantResultDto;
@@ -20,8 +19,8 @@ class RoundTest {
     @Test
     void orderToMoveWithMove() {
         // given
-        List<String> names = Arrays.asList("Luffy", "Naruto", "Ichigo");
-        Round round = new Round(new IncrementMoveStrategy(), names);
+        List<String> names = Arrays.asList("Luffy", "Narut", "Ichig");
+        Round round = new Round(new IncrementMoveStrategy(), new Names(names));
 
         // when
         round.move();
@@ -29,7 +28,7 @@ class RoundTest {
 
         // then
         assertThat(result.getParticipantResults().stream()
-                .map(ParticipantResultDto::getLocation).collect(Collectors.toList())
+                .map(ParticipantResultDto::getCurrentLocation).collect(Collectors.toList())
         ).isEqualTo(new ArrayList<>(List.of(2, 2, 2)));
     }
 }

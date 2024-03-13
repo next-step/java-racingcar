@@ -24,6 +24,6 @@ class CarTest {
         participantResultDto = car.getParticipantResult();
 
         // then
-        Assertions.assertThat(participantResultDto.getLocation()).isEqualTo(currentLocation);
+        Assertions.assertThat(participantResultDto.getCurrentLocation()).isEqualTo(currentLocation);
     }
 }

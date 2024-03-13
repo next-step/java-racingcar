@@ -10,31 +10,31 @@ import java.util.stream.Collectors;
 
 public class Round {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final MoveStrategy moveStrategy;
 
-    public Round(MoveStrategy moveStrategy, List<String> names) {
+    public Round(MoveStrategy moveStrategy, Names names) {
         this.moveStrategy = moveStrategy;
         this.cars = createParticipantsCar(names);
     }
 
     public RoundResultDto move() {
-        cars.forEach(Car::move);
+        cars.copyCars().forEach(Car::move);
 
-        List<ParticipantResultDto> participantResult = cars.stream()
+        List<ParticipantResultDto> participantResult = cars.copyCars().stream()
                 .map(Car::getParticipantResult)
                 .collect(Collectors.toList());
 
         return new RoundResultDto(participantResult);
     }
 
-    private List<Car> createParticipantsCar(List<String> names) {
+    private Cars createParticipantsCar(Names names) {
         List<Car> cars = new ArrayList<>();
 
-        for (String name : names) {
+        for (String name : names.copyNames()) {
             cars.add(new Car(name, moveStrategy));
         }
 
-        return cars;
+        return new Cars(cars);
     }
 }
