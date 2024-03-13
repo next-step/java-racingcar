@@ -14,7 +14,7 @@ public class RaceRecordOfCar {
         this.positionHistory = positionHistory;
     }
 
-    public static RaceRecordOfCar newRaceResult(final String carName, final int position, final List<Integer> positionHistory) {
+    public static RaceRecordOfCar newRaceRecord(final String carName, final int position, final List<Integer> positionHistory) {
         return new RaceRecordOfCar(carName, position, positionHistory);
     }
 
@@ -24,6 +24,10 @@ public class RaceRecordOfCar {
 
     public int position() {
         return position;
+    }
+
+    public boolean samePosition(int givenPosition) {
+        return position == givenPosition;
     }
 
     public List<Integer> positionHistory() {
