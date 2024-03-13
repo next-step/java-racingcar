@@ -13,4 +13,5 @@ public class Racingcar {
 
         RacingCarGameLogic.getInstance().gameLogic(nameOfCars, numberOfAttempt);
     }
+
 }
