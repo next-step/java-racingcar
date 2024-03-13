@@ -2,6 +2,7 @@ package racing.domain;
 
 import racing.Constant;
 import racing.utils.RandomUtil;
+import racing.view.ResultView;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -25,10 +26,12 @@ public class RacingGame {
         }
     }
 
-    public List<Car> play() {
+    public void play() {
         IntStream.range(0, chance)
-                .forEach(i -> cars.forEach(car -> car.move(RandomUtil.generateRandomNumber())));
-        return cars;
+                .forEach(i -> {
+                    cars.forEach(car -> car.move(RandomUtil.generateRandomNumber()));
+                    ResultView.printRaceResult(cars);
+                });
     }
 
 }

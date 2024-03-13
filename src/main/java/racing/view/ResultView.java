@@ -8,16 +8,17 @@ import java.util.List;
 public class ResultView {
 
     public static void printRaceResult(List<Car> cars) {
-        System.out.println("실행 결과");
         for (Car car : cars) {
             printCarPosition(car);
-            System.out.println();
         }
+        System.out.println();
     }
 
     public static void printCarPosition(Car car){
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < car.getPosition(); i++) {
-            System.out.print(Constant.MARK);
+            sb.append(Constant.MARK);
         }
+        System.out.println(sb);
     }
 }

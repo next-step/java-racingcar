@@ -4,7 +4,6 @@ package racing;
 import racing.domain.Car;
 import racing.domain.RacingGame;
 import racing.view.InputView;
-import racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +18,7 @@ public class RacingGameApplication {
 
         RacingGame racingGame = new RacingGame(createCars(carNo), chanceNo);
         racingGame.validateInput(carNo, chanceNo);
-        List<Car> cars = racingGame.play();
-
-        ResultView.printRaceResult(cars);
+        racingGame.play();
     }
 
     private static List<Car> createCars(int carNo) {
