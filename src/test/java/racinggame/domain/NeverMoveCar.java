@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-public class NeverMoveCar extends Car{
+public class NeverMoveCar extends Car {
 
     public NeverMoveCar(CarName name) {
         super(name);

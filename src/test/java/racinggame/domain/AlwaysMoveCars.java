@@ -3,7 +3,7 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlwaysMoveCars extends Cars{
+public class AlwaysMoveCars extends Cars {
 
     public AlwaysMoveCars(CarsNames carsNames) {
         super(initialCars(carsNames));

@@ -20,7 +20,6 @@ class RaceRecordTest {
         cars.add(new Car(new Position(3), new CarName("three")));
         cars.add(new Car(new Position(4), new CarName("win1")));
         cars.add(new Car(new Position(4), new CarName("win2")));
-
     }
 
     @Test

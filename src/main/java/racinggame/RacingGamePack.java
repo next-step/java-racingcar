@@ -23,6 +23,4 @@ public class RacingGamePack {
         cars.raceStart(InputView.retryableInputRaceCount(), recorder);
         ResultView.display(recorder.getRecords());
     }
-
-
 }

@@ -28,7 +28,7 @@ public class CarsNames {
     }
 
     private void validBlank(String... carsNames) {
-        for(String carName : carsNames) {
+        for (String carName : carsNames) {
             validBlank(carName);
         }
     }
