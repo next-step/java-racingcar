@@ -5,16 +5,19 @@ import java.util.List;
 
 public class CarsManager {
 
-    private List<Car> cars = new ArrayList();
-
-    public CarsManager(int count) {
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car());
-        }
-    }
+    private List<Car> cars;
 
     public CarsManager(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public static CarsManager withCarCount(int carCount) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
+        }
+
+        return new CarsManager(cars);
     }
 
     public void tryMoveCars(MovableStrategy movableStrategy) {

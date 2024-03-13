@@ -10,12 +10,12 @@ public class RacingGameService {
     private MovableStrategy movableStrategy;
     private CarsManager carsManager = null;
 
-    public RacingGameService(NumberGenerator numberGenerator){
+    public RacingGameService(NumberGenerator numberGenerator) {
         movableStrategy = new MovableStrategy(numberGenerator);
     }
 
     public void setCarCount(int carCount) {
-        this.carsManager = new CarsManager(carCount);
+        this.carsManager = CarsManager.withCarCount(carCount);
     }
 
     public void progressStage() {
