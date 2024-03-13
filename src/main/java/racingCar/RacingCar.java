@@ -27,9 +27,9 @@ public class RacingCar {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < location; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
+        return sb.append(name.findName())
+            .append(" : ")
+            .append("-".repeat(Math.max(0, location)))
+            .toString();
     }
 }
