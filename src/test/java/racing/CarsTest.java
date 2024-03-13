@@ -11,8 +11,8 @@ import static org.assertj.core.api.Assertions.*;
 class CarsTest {
 
     private final MoveStrategy alwaysMoveStrategy = () -> true;
-    private final Car carA = new Car(new Name("testA"));
-    private final Car carB = new Car(new Name("testB"));
+    private final Car carA = new Car(Name.from("testA"));
+    private final Car carB = new Car(Name.from("testB"));
 
     @Test
     void constructor() {

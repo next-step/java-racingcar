@@ -16,9 +16,9 @@ class NameTest {
 
         String exceptionName = "a".repeat(MAX_CAR_NAME_LENGTH + 1);
 
-        Name success = new Name(successName);
+        Name success = Name.from(successName);
 
-        assertThatThrownBy(() -> new Name(exceptionName))
+        assertThatThrownBy(() -> Name.from(exceptionName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -28,7 +28,7 @@ class NameTest {
 
         String exceptionName = "";
 
-        assertThatThrownBy(() -> new Name(exceptionName))
+        assertThatThrownBy(() -> Name.from(exceptionName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

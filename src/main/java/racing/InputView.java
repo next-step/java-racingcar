@@ -44,7 +44,7 @@ public class InputView {
 
     private List<Name> strNamesToNames(List<String> strCarNames) {
         return strCarNames.stream()
-                .map(Name::new)
+                .map(Name::from)
                 .collect(Collectors.toList());
     }
 

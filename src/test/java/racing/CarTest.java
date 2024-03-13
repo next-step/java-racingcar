@@ -13,7 +13,7 @@ class CarTest {
 
     private final MoveStrategy alwaysTrueStrategy = () -> true;
 
-    private final Name testName = new Name("test");
+    private final Name testName = Name.from("test");
 
     @Test
     @DisplayName("getPosition() - Car의 위치를 int로 반환")
@@ -36,11 +36,11 @@ class CarTest {
         car1.play(alwaysTrueStrategy);
         car1.play(alwaysTrueStrategy);
 
-        Car car2 = new Car(new Name("nimoh"));
+        Car car2 = new Car(Name.from("nimoh"));
         car2.play(alwaysTrueStrategy);
         car2.play(alwaysTrueStrategy);
 
-        Car car3 = new Car(new Name("pobi"));
+        Car car3 = new Car(Name.from("pobi"));
         car3.play(alwaysTrueStrategy);
 
         assertThat(car1).isEqualTo(car2);
