@@ -1,5 +1,6 @@
 package racing;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,8 +9,12 @@ public class Winners {
 
     private final List<Car> winners;
 
-    public Winners(List<Car> winners) {
+    private Winners(List<Car> winners) {
         this.winners = winners;
+    }
+
+    public static Winners from(List<Car> winners) {
+        return new Winners(new ArrayList<>(winners));
     }
 
     @Override

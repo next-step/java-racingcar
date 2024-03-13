@@ -32,7 +32,7 @@ class CarsTest {
         Winners winners = cars.getWinners();
 
         // then
-        assertThat(winners).isEqualTo(new Winners(List.of(carA)));
+        assertThat(winners).isEqualTo(Winners.from(List.of(carA)));
     }
 
     @Test
@@ -48,7 +48,7 @@ class CarsTest {
         Winners winnerList = cars.getWinners();
 
         // then
-        assertThat(winnerList).isEqualTo(new Winners(List.of(carA, carB)));
+        assertThat(winnerList).isEqualTo(Winners.from(List.of(carA, carB)));
     }
 
     private Cars getCars(Car... cars) {
