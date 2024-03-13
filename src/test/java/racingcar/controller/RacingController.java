@@ -18,29 +18,13 @@ public class RacingController {
     public void racing() {
 
 //        makeCars(count());
-        racingService.makeCars(count());
+        racingService.makeCars();
 
-        int tryCount = racingService.moveCount(count());
+        int tryCount = racingService.moveCount();
         while (tryCount > 0) {
             racingService.moveCar();
             tryCount--;
             System.out.println();
         }
     }
-
-    private int count() {
-        Scanner sc = new Scanner(System.in);
-        int cnt = sc.nextInt();
-        if (cnt <= 0) throw new IllegalArgumentException("잘못된 입력값 입니다");
-        return cnt;
-    }
-
-
-
-
-
-
-
-
-
 }

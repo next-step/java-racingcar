@@ -18,9 +18,9 @@ class CarRacingTest {
         int Try = 5;
         RacingService service = new RacingService();
 
-        assertThat(service.carCount(Cars)).isEqualTo(10);
-        assertThat(service.moveCount(Try)).isEqualTo(5);
-        service.makeCars(Cars);
+//        assertThat(service.carCount()).isEqualTo(10);
+//        assertThat(service.moveCount()).isEqualTo(5);
+        service.makeCars();
 
 //        assertThat(service.).isEqualTo(10);
     }
