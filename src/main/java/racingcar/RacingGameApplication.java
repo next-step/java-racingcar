@@ -4,12 +4,14 @@ import racingcar.controller.Race;
 import racingcar.domain.MoveByRandomNumberStrategy;
 import racingcar.domain.MoveStrategy;
 import racingcar.dto.RaceResult;
+import racingcar.view.Input;
 import racingcar.view.Output;
 
 public class RacingGameApplication {
 
     public static void main(String[] args) {
 
+        Input input = new Input();
         Output output = new Output();
 
         System.out.println("자동차 대수는 몇 대 인가요?");
