@@ -12,6 +12,7 @@ public class RacingInputView {
     private static final String TRY_COUNT_QUESTION = "시도할 횟수는 몇 회 인가요?";
     private static final String CAR_NAMES_DELIMITER = ",";
     private static final int CAR_NAME_MAX_LENGTH = 5;
+    private static final String EMPTY_STRING = "";
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private RacingInputView() {
@@ -24,8 +25,15 @@ public class RacingInputView {
 
     private static List<String> splitCarNames(String input) {
         return Arrays.stream(input.split(CAR_NAMES_DELIMITER))
+                .peek(RacingInputView::assertCarNameNotEmptyString)
                 .peek(RacingInputView::assertCarNameLengthUnderFive)
                 .collect(Collectors.toList());
+    }
+
+    private static void assertCarNameNotEmptyString(String carName) {
+        if (carName == null || carName.equals(EMPTY_STRING)) {
+            throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+        }
     }
 
     private static void assertCarNameLengthUnderFive(String carName) {
