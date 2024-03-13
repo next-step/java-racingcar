@@ -25,7 +25,7 @@ public class Cars implements Iterable<Car> {
 
         for (int tryCount = 0; tryCount < tryNumber; tryCount++) {
             orderMoveOneCycle(moveStrategy);
-            raceResult.recordRaceResult(tryCount, makeDistanceSnapShot());
+            raceResult.recordRaceResult(tryCount, makeCarRecordSnapShot());
         }
         return raceResult;
     }
@@ -34,11 +34,11 @@ public class Cars implements Iterable<Car> {
         cars.stream().forEach(car -> car.move(moveStrategy.getMoveNumber()));
     }
 
-    private DistanceRecord makeDistanceSnapShot() {
-        DistanceRecord distanceRecord = new DistanceRecord();
+    private CarRecord makeCarRecordSnapShot() {
+        CarRecord carRecord = new CarRecord();
         for (Car car : cars) {
-            distanceRecord.add(car.getDistance());
+            carRecord.put(car.getCarName(), car.getDistance());
         }
-        return distanceRecord;
+        return carRecord;
     }
 }

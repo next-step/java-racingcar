@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import racingcar.model.CarNames;
-import racingcar.model.DistanceRecord;
+import racingcar.model.CarRecord;
 import racingcar.model.RaceResult;
 
 public class ResultView {
@@ -21,16 +21,17 @@ public class ResultView {
     }
 
     public void printTryResult(CarNames carNames, RaceResult raceResult) {
-        for (DistanceRecord carRecords : raceResult) {
+        for (CarRecord carRecords : raceResult) {
             printCarRaceResult(carNames, carRecords);
             System.out.println();
         }
     }
 
-    private void printCarRaceResult(CarNames carNames, DistanceRecord carRecords) {
+    private void printCarRaceResult(CarNames carNames, CarRecord carRecords) {
         for (int carIndex = 0; carIndex < carRecords.size(); carIndex++) {
-            int carRecord = carRecords.getDistance(carIndex);
             String carName = carNames.getCarName(carIndex);
+            int carRecord = carRecords.getDistance(carName);
+
             System.out.println(carName + ":" + makeDistanceResult(carRecord));
         }
     }
@@ -38,5 +39,9 @@ public class ResultView {
     private String makeDistanceResult(Integer carRecord) {
         String carDistance = CAR_DISTANCE;
         return carDistance.repeat(carRecord);
+    }
+
+    public void printWinnerResult() {
+//        System.out.println(+"가 최종 우승했습니다.");
     }
 }
