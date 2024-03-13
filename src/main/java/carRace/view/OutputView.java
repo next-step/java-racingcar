@@ -14,7 +14,8 @@ public class OutputView {
     public static void printRaceResult(List<Car> cars) {
         cars.stream().forEach(car -> {
             IntStream.range(0, car.moveCount())
-                .forEach(count -> System.out.println(RACE_MARK));
+                .forEach(count -> System.out.print(RACE_MARK));
+            System.out.println();
         });
         System.out.println();
     }
