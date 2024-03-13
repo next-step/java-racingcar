@@ -1,22 +1,27 @@
 package step2;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringSumCalculator {
 
+    public static final Scanner SCANNER = new Scanner(System.in);
+
     public static void main(String[] args){
-        Scanner scan = new Scanner(System.in);
         System.out.println("String Sum Calculator");
         System.out.println("Basic Delimiters are \",\" and \";\"");
         System.out.println("Enter \"//\" and \"\\n\" followed by your custom delimiter, if wanted (ex. \"//;\\n1;2;3\")");
         System.out.println("Enter the String below (ex. \"1,2,3\")");
-        String input = scan.nextLine();
+        String input = SCANNER.nextLine();
         int result = calculateStringWithSumOnly(input);
         System.out.println("result : " + result);
     }
 
     public static int calculateStringWithSumOnly(String input){
-        emptyReturnZeroString(input);
+
+        if(input.isEmpty())
+            return 0;
 
         if(hasCustomDelimiter(input)){
             String customDelimiter = getCustomDelimiter(input);
@@ -24,54 +29,52 @@ public class StringSumCalculator {
             String[] stringArray = splitValuesByCustomDelimiter(customDelimiter, stringExpression);
             return sum(stringArray);
         }
+
         String[] stringArray = splitWithCommaAndColon(input);
         return sum(stringArray);
     }
 
 
-    public static String[] splitWithCommaAndColon(String value) {
+    private static String[] splitWithCommaAndColon(String value) {
         return value.split("[,|:]");
     }
 
-    public static String emptyReturnZeroString(String value) {
-        if(value.isEmpty()){
-            return "0";
-        }
-        return value;
-    }
-
-    public static int sum(String[] valueArray) {
+    private static int sum(String[] valueArray) {
         int result = 0;
         for (String value : valueArray) {
+            checkInputAvailable(value);
             result += Integer.parseInt(value);
         }
         return result;
     }
 
-    public static String getCustomDelimiter(String value) {
-        int start = value.indexOf("//") + 2;
-        int end = value.indexOf("\\n", start);
-        return value.substring(start, end);
+    private static String getCustomDelimiter(String value) {
+        Pattern pattern = Pattern.compile("//(.)\\n*");
+        Matcher matcher = pattern.matcher(value);
+        if (matcher.find()) {
+            System.out.println("==============");
+            System.out.println(matcher.group(1));
+            return matcher.group(1);
+        }
+        return null;
     }
 
-    public static void checkInputAvailable(String value) {
+    private static void checkInputAvailable(String value) {
         if (!value.matches("\\d+")) {
             throw new RuntimeException();
         }
     }
 
-    public static Boolean hasCustomDelimiter(String value) {
-        if(Character.isDigit(value.charAt(0)))
-            return Boolean.FALSE;
-        return Boolean.TRUE;
+    private static Boolean hasCustomDelimiter(String value) {
+        return !Character.isDigit(value.charAt(0));
     }
 
-    public static String getStringWithoutCustomDelimiter(String value) {
+    private static String getStringWithoutCustomDelimiter(String value) {
         return value.substring(5);
     }
 
-    public static String[] splitValuesByCustomDelimiter(String delimiter,
-                                                        String value) {
+    private static String[] splitValuesByCustomDelimiter(String delimiter,
+                                                         String value) {
         return value.split(delimiter);
     }
 }

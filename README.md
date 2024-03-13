@@ -7,3 +7,26 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+step 3
+* feature/race-unit-test
+  * generate unit test of requirements
+* feature/car-racing
+  * generate Car as object
+  * complete the car racing application
+  * refactored and modified the unit test code
+* refactor/step2
+  * put checkInputAvailable() inside the main logic (b/c never used except test code)
+  * refactored codes
+    * put Scanner SCAN as a Constant
+    * modified the Boolean method
+    * modified public methods to private should not be public
+      * modified the test codes as well with using reflection
+* refactor/step3
+  * modified public methods to private should not be public (**modified like the step2 modified**)
+    * modified the test codes as well with using reflection
+    * delete the useless code in step2 test code
+* refactor/optimize-imports
+  * unused imports removed
+* refactor/remove-reflection
+  * ensure not to test private method -> do not test with reflection
