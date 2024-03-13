@@ -17,8 +17,8 @@ class RacingGameTest {
     @DisplayName("레이싱 게임에 참여할 자동차들을 입력한다.")
     void racingGame() {
         //given
-        Car car1 = new Car();
-        Car car2 = new Car();
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("pobi");
         List<Vehicle> cars = List.of(car1, car2);
         NumberGenerator numberGenerator = new RandomNumberGenerator();
 
