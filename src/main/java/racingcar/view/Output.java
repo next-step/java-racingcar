@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Output {
-    public void showResult(RaceResult result) {
+    public void showResult(int carCount, RaceResult result) {
 
         List<String> messages = new ArrayList<>();
 
-        for (int i = 0; i < result.getMoveLogs().size(); i++) {
+        for (int i = 0; i < carCount; i++) {
             messages.add("");
         }
 

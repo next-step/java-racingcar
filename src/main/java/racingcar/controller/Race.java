@@ -17,7 +17,7 @@ public class Race {
 
     private final Cars cars;
 
-    public Race(Integer tryCount, int carCount, MoveStrategy moveStrategy) {
+    public Race(int tryCount, int carCount, MoveStrategy moveStrategy) {
         this.tryCount = new TryCount(tryCount);
         this.carCount = carCount;
         this.cars = new Cars(carCount, moveStrategy);
