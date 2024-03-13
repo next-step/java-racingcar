@@ -46,4 +46,18 @@ public class CarTest {
         //then
         assertThat(car.getMoveCount()).isEqualTo(0);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("움직인 횟수 + 1 만큼 - 문자열을 반환한다.")
+    void moveDisplay(int number) {
+        //given
+        Car car = new Car();
+        for (int i = 0; i < number; i++) {
+            car.move(9);
+        }
+
+        //when && then
+        assertThat("-".repeat(number + 1)).isEqualTo(car.toString());
+    }
 }

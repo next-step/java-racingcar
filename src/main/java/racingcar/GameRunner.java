@@ -23,7 +23,7 @@ public class GameRunner implements Game {
 
     private void displayResult() {
         List<Vehicle> vehicles = getVehicles();
-        vehicles.forEach(vehicle -> System.out.println("-".repeat(vehicle.getMoveCount() + 1)));
+        vehicles.forEach(vehicle -> System.out.println(vehicle.toString()));
         System.out.println();
     }
 }

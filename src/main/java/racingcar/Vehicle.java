@@ -5,4 +5,6 @@ public interface Vehicle {
     Integer getMoveCount();
 
     void move(int number);
+    
+    String toString();
 }

@@ -17,6 +17,11 @@ public class Car implements Vehicle {
         }
     }
 
+    @Override
+    public String toString() {
+        return "-".repeat(moveCount + 1);
+    }
+
     private boolean isMovable(int number) {
         return number >= MOVABLE_NUMBER;
     }
