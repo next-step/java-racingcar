@@ -13,8 +13,8 @@ public class Car {
         return position;
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber >= Constant.GO_FORWARD_MIN_VALUE) {
+    public void move(int number) {
+        if (number >= Constant.GO_FORWARD_MIN_VALUE) {
             position++;
         }
     }
