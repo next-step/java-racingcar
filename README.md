@@ -9,5 +9,9 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 step 3
-feature/race-unit-test
-- generate unit test of requirements
+* feature/race-unit-test
+  * generate unit test of requirements
+* feature/car-racing
+  * generate Car as object
+  * complete the car racing application
+  * refactored and modified the unit test code
