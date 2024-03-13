@@ -1,30 +1,20 @@
 package race.domain;
 
-import race.RaceRule;
-
-import java.util.Random;
-
 public class Car {
 
-    private static final Random RANDOM = new Random();
+
     private static final int STANDARD_BOUND = 4;
-    private static final int END_BOUND = 10;
+
     private int position;
 
     public int getPosition() {
         return this.position;
     }
 
-    public void go() {
-        if (isFitRaceRule(RANDOM.nextInt(END_BOUND))) {
-            this.position += 1;
+    public void go(int randomNumber) {
+        if (randomNumber >= STANDARD_BOUND) {
+            this.position++;
         }
-    }
-
-    private boolean isFitRaceRule(int randomNumber) {
-        return new RaceRule(new RaceRule(() ->
-                randomNumber
-        )).generate() >= STANDARD_BOUND;
     }
 
 }

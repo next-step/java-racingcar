@@ -1,5 +1,7 @@
 package race.domain;
 
+import race.RaceRule;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +16,10 @@ public class Cars {
         }
     }
 
-    public List<Integer> goForward() {
+    public List<Integer> goForward(RaceRule rule) {
         List<Integer> mileages = new ArrayList<>();
         for (Car car : cars) {
-            car.go();
+            car.go(rule.generate());
             mileages.add(car.getPosition());
         }
         return mileages;

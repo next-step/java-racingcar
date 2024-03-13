@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     private void saveMileages(Cars cars) {
-        points = cars.goForward();
+        points = cars.goForward(new RaceRule());
     }
 
 }

@@ -16,16 +16,14 @@ public class RandomTest {
     @ParameterizedTest
     @CsvSource(value = {"1:1","4:4","9:9"},delimiter = ':')
     void randomIsDefaultValue(int input, int expected) {
-        RaceRule raceRule = new RaceRule(() -> input);
+        RaceRule raceRule = new RaceRule();
         assertThat(raceRule.generate()).isEqualTo(expected);
     }
 
     @DisplayName("난수를 반환한다")
     @Test
     void randomIs() {
-        RaceRule raceRule = new RaceRule(() ->
-            new Random().nextInt(10)
-        );
+        RaceRule raceRule = new RaceRule();
         assertThat(raceRule.generate()).isBetween(0, 10);
     }
 }

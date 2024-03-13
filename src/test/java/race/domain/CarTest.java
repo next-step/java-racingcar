@@ -1,38 +1,42 @@
 package race.domain;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    private Car car1;
+    private Car car;
 
     @BeforeEach
     void init() {
-        car1 = new Car();
+        car = new Car();
     }
 
-    @Test
-    void go_three_times() {
-        car1.go(1);
-        car1.go(2);
-        car1.go(3);
-        assertThat(car1.getPosition()).isEqualTo("---");
+    @ParameterizedTest
+    @CsvSource(value = {"4:3", "3:0"}, delimiter = ':')
+    void go_three_times(int randomNumber, int expected) {
+        car.go(randomNumber);
+        car.go(randomNumber);
+        car.go(randomNumber);
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
-    @Test
-    void go_twice() {
-        car1.go(1);
-        car1.go(2);
-        assertThat(car1.getPosition()).isEqualTo("--");
+    @ParameterizedTest
+    @CsvSource(value = {"4:2", "3:0"}, delimiter = ':')
+    void go_twice(int randomNumber, int expected) {
+        car.go(randomNumber);
+        car.go(randomNumber);
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
-    @Test
-    void go() {
-        car1.go(1);
-        assertThat(car1.getPosition()).isEqualTo("-");
+    @ParameterizedTest
+    @CsvSource(value = {"4:1", "3:0"}, delimiter = ':')
+    void go(int randomNumber, int expected) {
+        car.go(randomNumber);
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
 }
