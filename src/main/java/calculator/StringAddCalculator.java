@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,11 +23,13 @@ public class StringAddCalculator {
         return text == null || text.isBlank();
     }
 
-    private String[] toPositiveInts(String[] texts) {
-        for (String text : texts) {
-            isNegative(text);
+    private int[] toPositiveInts(String[] texts) {
+        int[] numbers = new int[texts.length];
+        for (int i = 0; i < texts.length; i++) {
+            isNegative(texts[i]);
+            numbers[i] = Integer.parseInt(texts[i]);
         }
-        return texts;
+        return numbers;
     }
 
     private void isNegative(String text) {
@@ -36,10 +39,10 @@ public class StringAddCalculator {
         }
     }
 
-    private int sum(String[] numbers) {
+    private int sum(int[] numbers) {
         int number = 0;
-        for (String s : numbers) {
-            number += Integer.parseInt(s);
+        for (int n : numbers) {
+            number += n;
         }
         return number;
     }
