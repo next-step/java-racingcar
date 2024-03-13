@@ -18,8 +18,7 @@ public class Cars {
 
     // Constructor for UnitTest
     public Cars(Car... cars) {
-        this.cars = new ArrayList<>();
-        this.cars.addAll(Arrays.asList(cars));
+        this.cars = Arrays.asList(cars);
     }
 
     public List<Car> get() {
