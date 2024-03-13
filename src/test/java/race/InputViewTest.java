@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UtilTest {
+public class InputViewTest {
 
     private static final StringBuilder stringBuilder = new StringBuilder();
     void 자동차_수_입력() throws Exception {
@@ -30,9 +30,4 @@ public class UtilTest {
         assertThat(stringBuilder).hasToString(value);
     }
 
-    @Test
-    void 랜덤값_추출() {
-        int value = Util.getRandomNumber();
-        assertThat(value).isBetween(0,9);
-    }
 }
