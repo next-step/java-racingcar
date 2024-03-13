@@ -14,7 +14,6 @@ public class Main {
 
     resultView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     List<String> carNames = StringUtil.splitComma(inputView.inputString());
-    verifyCarNames(carNames);
 
     resultView.print("시도할 회수는 몇 회 인가요?");
     int gameTryNum = inputView.inputInteger();
@@ -23,21 +22,15 @@ public class Main {
     racingCarGame.initiateGame(carNames);
 
     GameResult gameResult = racingCarGame.playGames(gameTryNum);
+    showGameResult(resultView, gameResult);
+  }
 
+  private static void showGameResult(ResultView resultView, GameResult gameResult){
     resultView.print("실행 결과");
     for (String result : gameResult.getRoundResults()) {
       resultView.print(result);
     }
-
     resultView.print(makeWinnerMessage(gameResult.getWinners()));
-  }
-
-
-  private static void verifyCarNames(List<String> carNames) {
-    int maxCarNameLength = 5;
-    for (String carName : carNames) {
-      StringUtil.checkLength(carName, maxCarNameLength);
-    }
   }
 
   private static String makeWinnerMessage(List<String> winners) {

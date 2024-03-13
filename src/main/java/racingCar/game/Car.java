@@ -9,6 +9,7 @@ public class Car {
   private final IntGenerator intGenerator;
 
   public Car(String name, IntGenerator intGenerator) {
+    verifyCarName(name);
     this.name = name;
     this.position = 0;
     this.intGenerator = intGenerator;
@@ -33,4 +34,10 @@ public class Car {
     }
   }
 
+  private void verifyCarName(String carName) {
+    int maxCarNameLength = 5;
+    if (carName != null && carName.length() > maxCarNameLength) {
+      throw new RuntimeException(String.format("차의 이름은 %d자를 초과할 수 없습니다.", maxCarNameLength));
+    }
+  }
 }

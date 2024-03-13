@@ -10,10 +10,6 @@ public class StringUtil {
     return Arrays.stream(input.split(",")).collect(Collectors.toList());
   }
 
-  public static void checkLength(String input, int allowedLength) {
-    if (input != null && input.length() > allowedLength) {
-      throw new RuntimeException(String.format("입력은 %d 이하여야 합니다.", allowedLength));
-    }
-  }
+
 
 }

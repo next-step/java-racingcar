@@ -32,8 +32,11 @@ public class CarTest {
   }
 
   @Test
-  @DisplayName("차 인스턴스를 생성하면 이름이 있다")
+  @DisplayName("차 인스턴스를 생성할 때 이름을 지정한다")
   void getCarName(){
-    assertThat(car.getName()).isNotEmpty();
+    String carName = "hadi";
+    Car hadiCar = new Car(carName, new RandomGenerator());
+
+    assertThat(hadiCar.getName()).isEqualTo(carName);
   }
 }
