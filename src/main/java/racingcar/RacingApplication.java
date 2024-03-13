@@ -2,33 +2,39 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import common.NumberGenerator;
+import common.RandomNumberGenerator;
+import racingcar.domain.Car;
+import racingcar.domain.Game;
+import racingcar.domain.RacingGame;
+import racingcar.domain.Vehicle;
+import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
 
 public class RacingApplication {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int n = scanner.nextInt();
+        String[] carNames = inputView.getCarNames();
+        List<Vehicle> participateCar = getParticipateCar(carNames);
+        int round = inputView.getRound();
 
-        List<Vehicle> participateCar = getParticipateCar(n);
-        Game game = new RacingGame(participateCar);
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        Game game = new RacingGame(participateCar, numberGenerator);
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int round = scanner.nextInt();
-
-        Game gameRunner = new GameRunner(game);
-        System.out.println("실행 결과");
+        ResultView resultView = new ResultView(participateCar);
         for (int i = 0; i < round; i++) {
-            gameRunner.start();
+            game.start();
+            resultView.printResult();
         }
-
+        resultView.printWinners();
     }
 
-    private static List<Vehicle> getParticipateCar(int n) {
+    private static List<Vehicle> getParticipateCar(String[] carNames) {
         List<Vehicle> vehicles = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            vehicles.add(new Car());
+        for (String name : carNames) {
+            vehicles.add(new Car(name));
         }
         return vehicles;
     }
