@@ -19,6 +19,10 @@ public class RacingCar {
         return this.location;
     }
 
+    public CarName findCarName(){
+        return this.name;
+    }
+
     public void move(boolean isMovable) {
         if (isMovable) {
             this.location++;
