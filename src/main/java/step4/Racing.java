@@ -1,6 +1,6 @@
 package step4;
 
-import step3.domain.RacingCars;
+import step4.domain.RacingCars;
 import step4.view.InputView;
 import step4.view.ResultView;
 
@@ -9,12 +9,12 @@ public class Racing {
 
         InputView inputView = new InputView();
 
-        int numberOfCars = inputView.inputNumberOfCars();
+        String[] cars = inputView.inputNamesSplittedByComma();
         int countRound = inputView.inputCountRound();
 
         inputView.close();
 
-        RacingCars racingCars = new RacingCars(numberOfCars);
+        RacingCars racingCars = new RacingCars(cars);
 
         ResultView resultView = new ResultView();
 
@@ -22,5 +22,6 @@ public class Racing {
             racingCars.raceCars(racingCars);
             resultView.printRacingCars(racingCars);
         }
+        resultView.printWinner(racingCars);
     }
 }

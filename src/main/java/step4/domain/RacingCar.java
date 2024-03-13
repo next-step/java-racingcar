@@ -1,18 +1,23 @@
 package step4.domain;
 
+import step4.common.CarName;
 import step4.common.CarNumber;
 import step4.common.Position;
 import step4.common.Positive;
 import step4.strategy.MovableStrategy;
 import step4.strategy.RandomMovableStrategy;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
     private static final int INITIAL_NUMBER = 0;
 
     private static final int INITIAL_POSITION = 0;
 
-    private final CarNumber carNumber;
+    private static final String INITIAL_NAME = "UNNAMED";
+
+    private final CarNumber number;
+
+    private final CarName name;
 
     private Position position;
 
@@ -20,12 +25,17 @@ public class RacingCar {
         this(INITIAL_NUMBER);
     }
 
-    public RacingCar(int carNumber) {
-        this(carNumber, INITIAL_POSITION);
+    public RacingCar(int number) {
+        this(number, INITIAL_NAME);
     }
 
-    public RacingCar(int carNumber, int position) {
-        this.carNumber = new CarNumber(carNumber);
+    public RacingCar(int number, String name) {
+        this (number, name, INITIAL_POSITION);
+    }
+
+    public RacingCar(int number, String name, int position) {
+        this.number = new CarNumber(number);
+        this.name = new CarName(name);
         this.position = new Position(position);
     }
 
@@ -43,8 +53,12 @@ public class RacingCar {
         if (movableStrategy.isMovable()) setForwardPosition();
     }
 
-    public int carNumber() {
-        return carNumber.positive();
+    public int number() {
+        return number.positive();
+    }
+
+    public String name() {
+        return name.name();
     }
 
     public int position() {
@@ -54,11 +68,16 @@ public class RacingCar {
 
     @Override
     public boolean equals(Object o) {
-        return o instanceof RacingCar && this.carNumber() == ((RacingCar) o).carNumber();
+        return o instanceof RacingCar && this.number() == ((RacingCar) o).number();
     }
 
     @Override
     public int hashCode() {
-        return carNumber() * 13;
+        return number() * 13;
+    }
+
+    @Override
+    public int compareTo(RacingCar o) {
+        return position() - o.position();
     }
 }
