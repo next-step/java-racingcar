@@ -28,3 +28,5 @@ step 3
     * delete the useless code in step2 test code
 * refactor/optimize-imports
   * unused imports removed
+* refactor/remove-reflection
+  * ensure not to test private method -> do not test with reflection

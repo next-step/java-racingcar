@@ -19,7 +19,6 @@ public class Race {
         // 게임 진행
         for (int turn = 0; turn < trials; turn++) {
             startMoving(carArray);
-            System.out.println();
         }
     }
 
@@ -37,6 +36,7 @@ public class Race {
             int chance = getRandomSingleDigitNumber();
             carArray[i].move(chance);
         }
+        System.out.println();
     }
 
     private static int getRandomSingleDigitNumber() {
