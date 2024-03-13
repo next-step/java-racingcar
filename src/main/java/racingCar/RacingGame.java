@@ -1,18 +1,14 @@
 package racingCar;
 
 
-import static view.InputView.inputNumberOfCars;
+import static view.InputView.inputNamesOfCars;
 import static view.InputView.inputNumberOfTry;
 import static view.ResultView.printResult;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
     public void run() {
-        RacingCars cars = new RacingCars(CarFactory.createCars(inputNumberOfCars()));
+        RacingCars cars = new RacingCars(CarFactory.createCars(inputNamesOfCars()));
         tryMove(cars, inputNumberOfTry());
     }
 

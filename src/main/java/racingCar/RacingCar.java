@@ -1,18 +1,17 @@
 package racingCar;
 
-import static racingCar.MoveStrategy.MAX_DISTANCE;
-import static racingCar.MoveStrategy.MIN_DISTANCE;
-
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 public class RacingCar {
 
     private static final int START_LOCATION = 0;
+    private CarName name;
     private int location;
 
     public RacingCar() {
+        this.location = START_LOCATION;
+    }
+
+    public RacingCar(CarName name) {
+        this.name = name;
         this.location = START_LOCATION;
     }
 
