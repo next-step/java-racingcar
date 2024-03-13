@@ -39,6 +39,13 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
+    public Car findSameMoveOfCar(Car car) {
+        if (countOfMove == car.getCountOfMove()) {
+            return car;
+        }
+        return null;
+    }
+
     private void validateName(String name) {
         int lengthOfName = name.length();
         if (lengthOfName > MAX_LENGTH_OF_NAME) {
