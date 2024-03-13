@@ -32,7 +32,7 @@ public class Cars {
         }
     }
 
-    private void runCars() {
+    public void runCars() {
         for (Car car : cars) {
             car.run(new MoveCondition());
         }

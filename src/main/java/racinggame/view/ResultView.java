@@ -1,7 +1,6 @@
 package racinggame.view;
 
 import racinggame.domain.Car;
-import racinggame.domain.CarName;
 import racinggame.domain.RaceRecord;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class ResultView {
     }
 
     private static String showWinner(RaceRecord lastRecord) {
-        return joinWithSeparator(getWinnerNames(lastRecord.getWinners())) + "가 최종 우승했습니다.";
+        return String.join(WINNER_SEPARATOR, getWinnerNames(lastRecord.getWinners())) + "가 최종 우승했습니다.";
     }
 
     private static List<String> getWinnerNames(List<Car> winners) {
@@ -42,13 +41,5 @@ public class ResultView {
             winnerNames.add(car.name());
         }
         return winnerNames;
-    }
-
-    private static String joinWithSeparator(List<String> winnerNames) {
-        String result = "";
-        for (String winnerName : winnerNames) {
-            String.join(WINNER_SEPARATOR, result, winnerName);
-        }
-        return result;
     }
 }

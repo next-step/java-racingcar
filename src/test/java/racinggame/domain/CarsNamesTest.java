@@ -11,7 +11,7 @@ class CarsNamesTest {
 
     @Test
     void 생성자_빈값_유효성() {
-        String carsNames = null;
+        String carsNames = "";
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new CarsNames(carsNames.split(",")))

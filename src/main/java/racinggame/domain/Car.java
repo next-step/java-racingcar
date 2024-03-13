@@ -39,12 +39,13 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
+        return Objects.equals(position.getPosition(), car.position.getPosition())
+                && Objects.equals(name.value(), car.name.value());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, name);
+        return Objects.hash(position.getPosition(), name.value());
     }
 
     public boolean isPassed(Position winnerPosition) {

@@ -9,6 +9,7 @@ public class CarsNames {
 
     public CarsNames(String... carsNames) {
         validEmpty(carsNames);
+        validBlank(carsNames);
         this.carsNames = createCarName(carsNames);
     }
 
@@ -22,6 +23,18 @@ public class CarsNames {
 
     private void validEmpty(String... carsNames) {
         if (carsNames.length == 0) {
+            throw new IllegalArgumentException("자동차 이름을 입력하지 않았습니다.");
+        }
+    }
+
+    private void validBlank(String... carsNames) {
+        for(String carName : carsNames) {
+            validBlank(carName);
+        }
+    }
+
+    private void validBlank(String carName) {
+        if (carName.isBlank()) {
             throw new IllegalArgumentException("자동차 이름을 입력하지 않았습니다.");
         }
     }
