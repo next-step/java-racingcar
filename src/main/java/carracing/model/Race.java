@@ -16,7 +16,7 @@ public class Race {
         return new Race(nameOfCarList, numberOfAttempts);
     }
 
-    public List<RaceRecordOfCar> start() {
+    public RaceResult start() {
         return doRace(participatedCarList());
     }
 
@@ -26,13 +26,15 @@ public class Race {
                 .collect(Collectors.toList());
     }
 
-    private List<RaceRecordOfCar> doRace(final List<Car> carList) {
+    private RaceResult doRace(final List<Car> carList) {
         for (int i = 0; i < numberOfAttempts.numberOfAttempts(); i++) {
             carList.forEach(car -> car.move(new RandomStrategy()));
         }
 
-        return carList.stream()
+        List<RaceRecordOfCar> recordOfCarList = carList.stream()
                 .map(Car::raceRecord)
                 .collect(Collectors.toList());
+
+        return RaceResult.newResult(recordOfCarList);
     }
 }

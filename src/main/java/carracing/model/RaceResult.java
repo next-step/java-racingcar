@@ -1,5 +1,6 @@
 package carracing.model;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -15,6 +16,10 @@ public class RaceResult {
 
     public static RaceResult newResult(final List<RaceRecordOfCar> recordOfCarList) {
         return new RaceResult(recordOfCarList);
+    }
+
+    public List<RaceRecordOfCar> recordOfCarList() {
+        return Collections.unmodifiableList(recordOfCarList);
     }
 
     public String winner() {

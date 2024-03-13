@@ -10,14 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceTest {
     @Test
-    @DisplayName("start(): 자동차 대수 크기의 List<RaceResultOfCar>를 반환한다.")
+    @DisplayName("start(): 자동차 대수 크기의 List<RaceResultOfCar>를 멤버 변수로 가지고 있는 RaceResult를 반환한다.")
     void testStart() {
         List<NameOfCar> nameOfCarList = Arrays.asList(NameOfCar.newName("a"), NameOfCar.newName("b"));
         NumberOfAttempts numberOfAttempts = NumberOfAttempts.newNumber("5");
 
         Race race = Race.newRace(nameOfCarList, numberOfAttempts);
-        List<RaceRecordOfCar> raceRecordOfCarList = race.start();
+        RaceResult raceResult = race.start();
 
-        assertThat(raceRecordOfCarList.size()).isEqualTo(nameOfCarList.size());
+        assertThat(raceResult.recordOfCarList().size()).isEqualTo(nameOfCarList.size());
     }
 }
