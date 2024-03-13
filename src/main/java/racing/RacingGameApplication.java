@@ -3,6 +3,7 @@ package racing;
 
 import racing.domain.Cars;
 import racing.domain.RacingGame;
+import racing.dto.GameVO;
 import racing.view.InputView;
 
 import java.util.Scanner;
@@ -13,13 +14,12 @@ public class RacingGameApplication {
         Scanner scanner = new Scanner(System.in);
 
         InputView inputView = new InputView(scanner);
-        int carNo = inputView.getNumberOfCars();
-        int roundNo = inputView.getNumberOfChances();
+        GameVO gameVO = new GameVO(inputView.getNumberOfCars(), inputView.getNumberOfRounds());
 
-        Cars cars = Cars.create(carNo);
+        Cars cars = Cars.create(gameVO.getCarNo());
 
-        RacingGame racingGame = new RacingGame(cars, roundNo);
-        racingGame.validateInput(carNo, roundNo);
+        RacingGame racingGame = new RacingGame(cars, gameVO.getRoundNo());
+        racingGame.validateInput(gameVO);
         racingGame.play();
 
         scanner.close();

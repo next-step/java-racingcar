@@ -3,6 +3,7 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.Constant;
+import racing.dto.GameVO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,7 +15,8 @@ class RacingGameTest {
     void validate_carNo() {
         Cars cars = Cars.create(0);
         RacingGame racingGame = new RacingGame(cars, 5);
-        assertThatThrownBy(() -> racingGame.validateInput(0, 5))
+        GameVO gameVO = new GameVO(0, 5);
+        assertThatThrownBy(() -> racingGame.validateInput(gameVO))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constant.CAR_NUMBER_VALIDATION_ERROR);
     }
@@ -24,7 +26,8 @@ class RacingGameTest {
     void validate_chanceNo() {
         Cars cars = Cars.create(2);
         RacingGame racingGame = new RacingGame(cars, 0);
-        assertThatThrownBy(() -> racingGame.validateInput(10, 0))
+        GameVO gameVO = new GameVO(2, 0);
+        assertThatThrownBy(() -> racingGame.validateInput(gameVO))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constant.ROUND_NUMBER_VALIDATION_ERROR);
     }
