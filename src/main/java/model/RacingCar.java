@@ -10,8 +10,7 @@ public class RacingCar {
     private final Name name;
 
     public RacingCar(final Name name) {
-        location = new Location(0);
-        this.name = name;
+        this(Location.getInitLocation(), name);
     }
 
     public RacingCar(final Location location, final Name name) {
@@ -23,6 +22,17 @@ public class RacingCar {
         if (randomNumber >= MOVE_THRESHOLD) {
             location.increase();
         }
+    }
+
+    public Location getGreaterLocation(final Location maxLocation) {
+        if (location.isGreaterThan(maxLocation)) {
+            return location;
+        }
+        return maxLocation;
+    }
+
+    public boolean isSameLocation(final Location maxLocation) {
+        return location.equals(maxLocation);
     }
 
     public int getLocationValue() {

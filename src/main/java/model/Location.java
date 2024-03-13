@@ -10,8 +10,16 @@ public class Location {
         this.value = value;
     }
 
+    public static Location getInitLocation() {
+        return new Location(0);
+    }
+
     public void increase() {
         value++;
+    }
+
+    public boolean isGreaterThan(final Location maxLocation) {
+        return value > maxLocation.getValue();
     }
 
     public int getValue() {

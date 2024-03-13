@@ -29,9 +29,9 @@ public class RacingCars {
     }
 
     public Winners findWinners() {
-        final int maxLocation = getMaxLocation();
+        final Location maxLocation = getMaxLocation();
         final List<Name> names = racingCars.stream()
-                .filter(car -> car.getLocationValue() == maxLocation)
+                .filter(car -> car.isSameLocation(maxLocation))
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
         return new Winners(names);
@@ -49,10 +49,11 @@ public class RacingCars {
         }
     }
 
-    private int getMaxLocation() {
-        return racingCars.stream()
-                .mapToInt(RacingCar::getLocationValue)
-                .max()
-                .orElse(0);
+    private Location getMaxLocation() {
+        Location maxLocation = Location.getInitLocation();
+        for (final RacingCar racingCar : racingCars) {
+            maxLocation = racingCar.getGreaterLocation(maxLocation);
+        }
+        return maxLocation;
     }
 }
