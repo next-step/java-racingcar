@@ -15,3 +15,10 @@ step 3
   * generate Car as object
   * complete the car racing application
   * refactored and modified the unit test code
+* refactor/step2
+  * put checkInputAvailable() inside the main logic (b/c never used except test code)
+  * refactored codes
+    * put Scanner SCAN as a Constant
+    * modified the Boolean method
+    * modified public methods to private should not be public
+      * modified the test codes as well with using reflection
