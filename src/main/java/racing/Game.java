@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private static final int DEFAULT_START_LOCATION = 0;
     private final List<Car> attendedCars;
+    private final RandomGenerator randomGenerator;
 
     public Game() {
         this.attendedCars = new ArrayList<>();
+        this.randomGenerator = new RandomGenerator();
     }
 
     public List<Car> getAttendedCars() {
@@ -17,7 +18,7 @@ public class Game {
 
     public void createAttendedCars(int numberOfCar) {
         for (int i = 0; i < numberOfCar; i++) {
-            attendedCars.add(new Car(i + 1 + "번 자동차", DEFAULT_START_LOCATION));
+            attendedCars.add(new Car(i + 1 + "번 자동차"));
         }
     }
 
@@ -31,7 +32,7 @@ public class Game {
 
     private void playSession() {
         for (Car car : attendedCars) {
-            car.drive();
+            car.move(randomGenerator.getRandomMovePoint());
         }
     }
 }
