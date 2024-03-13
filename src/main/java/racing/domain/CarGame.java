@@ -17,8 +17,8 @@ public class CarGame {
     }
 
     private List<Car> createCar(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            this.cars.add(new Car(names[i]));
+        for (String name : names) {
+            this.cars.add(new Car(name));
         }
         return cars;
     }
