@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.strategyPattern.MoveStrategy;
 import racingcar.util.RandomNumberGenerator;
 
 public class RacingCar {
@@ -14,9 +15,8 @@ public class RacingCar {
         return position;
     }
 
-    public void moveForward() {
-        int moveCount = RandomNumberGenerator.generateRandomNumber();
-        if (moveCount >= MIN_MOVE_COUNT) {
+    public void moveForward(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             this.position++;
         }
     }
