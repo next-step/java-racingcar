@@ -3,7 +3,7 @@ package racingcar.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import racingcar.Vehicle;
+import racingcar.domain.Vehicle;
 
 public class ResultView {
 

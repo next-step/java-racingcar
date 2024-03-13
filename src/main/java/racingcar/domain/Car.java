@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car implements Vehicle {
     private final int MOVABLE_NUMBER = 4;

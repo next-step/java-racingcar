@@ -2,10 +2,13 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import common.NumberGenerator;
 import common.RandomNumberGenerator;
+import racingcar.domain.Car;
+import racingcar.domain.Game;
+import racingcar.domain.RacingGame;
+import racingcar.domain.Vehicle;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
