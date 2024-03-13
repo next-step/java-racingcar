@@ -9,14 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingRecords {
-
-    Utils utils = new Utils();
     public void runRace(){
 
         List<RacingCar> records = new ArrayList<>();
 
-        int carNum = utils.toInt(InputView.numberOfCar());
-        int roundNum = utils.toInt(InputView.numberOfRound());
+        int carNum = Utils.toInt(InputView.numberOfCar());
+        int roundNum = Utils.toInt(InputView.numberOfRound());
 
         for(int i = 0 ; i < carNum ; i++){
             records.add(new RacingCar());

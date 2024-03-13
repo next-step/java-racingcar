@@ -1,8 +1,7 @@
 package racingCar.utils;
 
 public class Utils {
-
-    public int toInt(String values){
+    public static int toInt(String values){
         return checkPositive(values);
     }
 
@@ -11,11 +10,13 @@ public class Utils {
         try {
             result = Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자가 아닌 입력");
         }
-        if(result < 0){
-            throw new IllegalArgumentException();
+        if (result < 0){
+            throw new IllegalArgumentException("음수 입력");
         }
         return result;
     }
+
+
 }
