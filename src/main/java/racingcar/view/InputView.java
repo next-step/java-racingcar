@@ -6,6 +6,7 @@ public class InputView {
     public static Scanner scanner = new Scanner(System.in);
 
     private InputView() {
+        throw new AssertionError();
     }
 
     public static int inputCarCount() {

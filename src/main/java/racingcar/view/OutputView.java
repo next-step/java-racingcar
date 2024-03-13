@@ -7,6 +7,10 @@ import java.util.List;
 public class OutputView {
     private static final String POSITION_DELIMITOR = "-";
 
+    private OutputView() {
+        throw new AssertionError();
+    }
+
     public static void printCarPositionByPeriod(List<RacingCar> cars) {
         for (RacingCar car : cars) {
             printCarPosition(car.getPosition());
