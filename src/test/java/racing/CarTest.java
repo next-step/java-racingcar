@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
     @Test
     @DisplayName("자동차 이름과 위치를 입력 받아서 객체 생성")
-    public void CarInitializeTest() {
+    public void carInitializeTest() {
         Car car = new Car("test", 1);
         assertThat(car.getName()).isEqualTo("test");
         assertThat(car.getCurrentLocation()).isEqualTo(1);
@@ -16,7 +16,7 @@ class CarTest {
 
     @Test
     @DisplayName("movePoint가 4 이상일 때만 이동")
-    public void CarMoveTest() {
+    public void carMoveTest() {
         Car car = new Car("test", 0);
         car.move(4);
 
