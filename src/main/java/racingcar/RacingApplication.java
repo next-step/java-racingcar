@@ -19,14 +19,13 @@ public class RacingApplication {
 
         NumberGenerator numberGenerator = new RandomNumberGenerator();
         Game game = new RacingGame(participateCar, numberGenerator);
-        Game gameRunner = new GameRunner(game);
 
         ResultView resultView = new ResultView(participateCar);
         for (int i = 0; i < round; i++) {
-            gameRunner.start();
+            game.start();
             resultView.printResult();
-            resultView.printWinners();
         }
+        resultView.printWinners();
     }
 
     private static List<Vehicle> getParticipateCar(String[] carNames) {

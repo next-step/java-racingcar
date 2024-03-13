@@ -17,7 +17,7 @@ public class ResultView {
 
     public void printResult() {
         for (Vehicle vehicle : vehicles) {
-            System.out.println(String.format("%s : %s", vehicle.getName(), DISPLAY_STRING.repeat(vehicle.getMoveCount())));
+            System.out.println(String.format("%s : %s", vehicle.getName(), DISPLAY_STRING.repeat(vehicle.getMoveCount() + 1)));
         }
         System.out.println();
     }
