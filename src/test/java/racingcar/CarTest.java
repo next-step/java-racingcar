@@ -21,6 +21,18 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("자동차의 이름이 5글자 초과하면 RuntimeException 발생한다.")
+    void validateName() {
+        //given
+        String name = "nextstep";
+
+        //when & then
+        assertThatExceptionOfType(RuntimeException.class)
+            .isThrownBy(() -> new Car(name)
+            );
+    }
+
+    @Test
     @DisplayName("움직임이 0인 자동차를 생성한다.")
     void createCar() {
         //given
