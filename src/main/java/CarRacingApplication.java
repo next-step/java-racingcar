@@ -12,10 +12,10 @@ public class CarRacingApplication {
   private static RandomNumberGeneratorImpl randomNumberGenerator = new RandomNumberGeneratorImpl();
 
   public static void main(String[] args) {
-    int numberOfCar = InputView.requestNumberOfCar();
+    String[] numberOfCar = InputView.requestCarWithName();
     int numberOfRound = InputView.requestNumberOfRound();
 
-    generateCar(numberOfCar);
+    generateCarWithName(numberOfCar);
 
     ResultView.start();
     racing.race(cars, numberOfRound);
@@ -24,7 +24,12 @@ public class CarRacingApplication {
 
   private static void generateCar(int numberOfCar){
     for (int i=0; i<numberOfCar; i++){
-      cars.add(new Car(randomNumberGenerator));
+      cars.add(new Car(randomNumberGenerator, String.valueOf(i)));
+    }
+  }
+  private static void generateCarWithName(String[] names){
+    for (int i=0; i<names.length; i++){
+      cars.add(new Car(randomNumberGenerator, names[i]));
     }
   }
 }

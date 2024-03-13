@@ -6,11 +6,15 @@ import racing.view.ResultView;
 
 public class Car {
   private static final int RUNABLE_CONDITION = 4;
+  private static final int MAX_NAME_LENGTH = 5;
+
   private static RandomNumberGenerator randomNumberGenerator;
+  private String name;
   private int runCount=0;
 
-  public Car(RandomNumberGenerator randomNumberGenerator) {
+  public Car(RandomNumberGenerator randomNumberGenerator, String name) {
     this.randomNumberGenerator = randomNumberGenerator;
+    setName(name);
   }
 
   public void run(){
@@ -32,6 +36,21 @@ public class Car {
   }
 
   public void showStatus(){
+    StringBuilder statusBuilder = new StringBuilder();
+    statusBuilder.append(name).append(" : ");
+    System.out.print(statusBuilder);
     ResultView.raceProgress(this.runCount);
+  }
+
+  public void setName(String name) {
+    if (name.length() > MAX_NAME_LENGTH) {
+      throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다.");
+    }
+
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
   }
 }

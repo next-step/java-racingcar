@@ -20,7 +20,7 @@ class RacingTest {
   @ParameterizedTest
   @CsvSource(value = {"4,1", "9,1", "3,0", "2,0"}, delimiter = ',')
   void 전진_가능(int input, int expect){
-    Car car = new Car(new FixedNumberGeneratorImpl(input));
+    Car car = new Car(new FixedNumberGeneratorImpl(input),"pobi");
     car.run();
     assertThat(car.getRunCount()).isEqualTo(expect);
   }
@@ -38,14 +38,14 @@ class RacingTest {
   @Test
   void car_이름_max_len(){
     assertThatThrownBy(() -> new Car(new FixedNumberGeneratorImpl(4), "pobi_zzang")).isInstanceOf(
-        IllegalAccessError.class);
+        IllegalArgumentException.class).hasMessageContaining("5자를 초과할 수 없습니다");;
   }
 
 
   @DisplayName("이름 입력받을시 ,를 기준으로 구분한다.")
   @Test
   void car_이름_split(){
-    assertThat(InputView.requestCarWithName("pobi,crong,honux")).hasSize(3);
+    assertThat(InputView.split("pobi,crong,honux")).hasSize(3);
   }
 
   @DisplayName("최종 우승자 출력")
@@ -60,6 +60,6 @@ class RacingTest {
       cars.add(car);
     }
 
-    assertThat(ResultView.showWinner(cars)).isEqualTo("honux");
+    assertThat(ResultView.getWinner(cars)).isEqualTo("honux");
   }
 }
