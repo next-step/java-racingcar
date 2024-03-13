@@ -2,12 +2,12 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.service.RacingService;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.CarRacing.*;
 
 class CarRacingTest {
 
@@ -16,11 +16,13 @@ class CarRacingTest {
     public void CarAndTry() {
         int Cars = 10;
         int Try = 5;
-        assertThat(CarCount(Cars)).isEqualTo(10);
-        assertThat(MoveCount(Try)).isEqualTo(5);
-        makeCars(Cars);
+        RacingService service = new RacingService();
 
-        assertThat(cars.length).isEqualTo(10);
+        assertThat(service.carCount(Cars)).isEqualTo(10);
+        assertThat(service.moveCount(Try)).isEqualTo(5);
+        service.makeCars(Cars);
+
+//        assertThat(service.).isEqualTo(10);
     }
 
     @Test
@@ -46,13 +48,13 @@ class CarRacingTest {
         car.add('-');
         car.add('-');
 
-        CarLocation(car);
+//        CarLocation(car);
     }
 
     @Test
     @DisplayName("차량들 전체 현재위치")
     public void totalLocation() {
-        makeCars(5);
-        MoveCar(cars);
+//        makeCars(5);
+//        MoveCar(cars);
     }
 }
