@@ -19,4 +19,11 @@ public class RacingCars {
             car.move(RacingRule.isMovable(RacingRule.generateRandomDistance()));
         }
     }
+
+    public int findFarthestLocation() {
+        return cars.stream()
+            .mapToInt(RacingCar::findCurrentLocation)
+            .max()
+            .getAsInt();
+    }
 }
