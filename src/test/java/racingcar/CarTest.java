@@ -9,11 +9,22 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
 
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    @DisplayName("주어진 이름을 가진 자동차를 생성한다.")
+    void createNamedCar(String name) {
+        //given
+        Vehicle car = new Car(name);
+
+        //when & then
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
     @Test
-    @DisplayName("자동차를 생성한다.")
+    @DisplayName("움직임이 0인 자동차를 생성한다.")
     void createCar() {
         //given
-        Vehicle car = new Car();
+        Vehicle car = new Car("pobi");
 
         //when & then
         assertThat(car.getMoveCount()).isEqualTo(0);
@@ -24,7 +35,7 @@ public class CarTest {
     @DisplayName("4이상의 수 를 넘겨주면 자동차를 한칸 움직인다.")
     void moveCar(int number) {
         //given
-        Car car = new Car();
+        Car car = new Car("pobi");
 
         //when
         car.move(number);
@@ -38,7 +49,7 @@ public class CarTest {
     @DisplayName("4이하의 수 를 넘겨주면 자동차를 움직이지 않는다.")
     void dontMoveCar(int number) {
         //given
-        Car car = new Car();
+        Car car = new Car("pobi");
 
         //when
         car.move(number);
@@ -52,7 +63,7 @@ public class CarTest {
     @DisplayName("움직인 횟수 + 1 만큼 - 문자열을 반환한다.")
     void moveDisplay(int number) {
         //given
-        Car car = new Car();
+        Car car = new Car("pobi");
         for (int i = 0; i < number; i++) {
             car.move(9);
         }

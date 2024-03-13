@@ -3,7 +3,17 @@ package racingcar;
 public class Car implements Vehicle {
     private final int MOVABLE_NUMBER = 4;
 
+    private String name;
     private Integer moveCount = 0;
+
+    public Car(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 
     @Override
     public Integer getMoveCount() {
