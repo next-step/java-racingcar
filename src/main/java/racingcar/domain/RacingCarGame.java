@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 public class RacingCarGame {
     private List<RacingCar> carList;
+    
     public RacingCarGame(int carCount) {
         this.carList = createCarList(carCount);
     }
