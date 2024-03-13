@@ -6,7 +6,7 @@ import racingcar.domain.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WinnerTest {
+public class WinnersTest {
 
     @Test
     @DisplayName("[성공] 자동차 경주의 최종 우승자가 한명인 경우 한명의 이름만 반환한다.")
@@ -19,8 +19,8 @@ public class WinnerTest {
         );
 
         // When
-        Winner winner = new Winner();
-        Names winnerNames = winner.who(cars);
+        Winners winners = new Winners();
+        Names winnerNames = winners.who(cars);
 
         assertThat(winnerNames.get()).containsExactlyInAnyOrder(new Name("pobi"));
     }
@@ -36,8 +36,8 @@ public class WinnerTest {
         );
 
         // When
-        Winner winner = new Winner();
-        Names winnerNames = winner.who(cars);
+        Winners winners = new Winners();
+        Names winnerNames = winners.who(cars);
 
         assertThat(winnerNames.get()).containsExactlyInAnyOrder(new Name("pobi"), new Name("crong"));
     }

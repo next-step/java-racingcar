@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.*;
 
-public class Winner {
+public class Winners {
 
     public Names who(Cars cars) {
         Distance maxDistance = cars.findMaxDistance();
