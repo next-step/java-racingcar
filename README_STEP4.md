@@ -1,0 +1,11 @@
+# 자동차 우승
+- inputConsole.class(콘솔로부터 값 입력) 
+- inputLayer.class (문자열 검증)
+- Car.class 
+    - 상태값을 반환하는 기능
+- CarRacing.class
+    - 경기를 진행하는 기능
+- CarRacingPrinter.class
+  - 경기의 결과를 출력하는 기능
+- Test
+  - inputLayer로부터 값을 받고, CarRacig을 실행 
