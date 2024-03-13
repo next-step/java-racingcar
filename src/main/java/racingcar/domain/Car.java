@@ -22,6 +22,11 @@ public class Car {
         this.distance = distance;
     }
 
+    public Car(Car car) {
+        this.name = new Name(car.getName().get());
+        this.distance = new Distance(car.getDistance().get());
+    }
+
     public void move(CarMoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             distance.increase();

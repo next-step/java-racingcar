@@ -1,33 +1,18 @@
 package racingcar.domain;
 
-import racingcar.ui.InputView;
-import racingcar.ui.ResultView;
-
-
 public class CarRace {
 
-    private final InputView inputView;
-    private final ResultView resultView;
-
-    public CarRace(InputView inputView, ResultView resultView) {
-        this.inputView = inputView;
-        this.resultView = resultView;
-    }
-
-    public void race() {
-        String nameString = inputView.readCarNameString();
-        int tryCount = inputView.readHowManyTrys();
-
+    public CarRaceResult race(String nameString, int tryCount) {
         String[] names = NameSeparator.separate(nameString);
         Cars cars = createCars(names);
 
+        CarRaceResult carRaceResult = new CarRaceResult();
         while (tryCount-- > 0) {
             cars.move(new RandomCarMoveStrategy());
-            resultView.appendSnapshot(cars);
+            carRaceResult.add(cars);
         }
 
-        resultView.printCarRaceResult();
-        resultView.printWinnerNames(cars.getWinners().get());
+        return carRaceResult;
     }
 
     private Cars createCars(String[] names) {

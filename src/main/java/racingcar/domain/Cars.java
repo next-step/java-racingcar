@@ -18,6 +18,18 @@ public class Cars {
         this.cars = Arrays.asList(cars);
     }
 
+    public Cars deepCopy() {
+        List<Car> copyCars = new ArrayList<>();
+        for (Car car : cars) {
+            copyCars.add(new Car(car));
+        }
+        return new Cars(copyCars);
+    }
+
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public List<Car> get() {
         return Collections.unmodifiableList(cars);
     }
