@@ -1,4 +1,4 @@
-package step3.service;
+package step3.domain;
 
 /**
  * 자동차의 움직이는 방법

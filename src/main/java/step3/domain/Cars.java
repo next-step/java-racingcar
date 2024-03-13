@@ -1,4 +1,4 @@
-package step3.service;
+package step3.domain;
 
 import step3.view.result.CarMovementResult;
 import step3.view.result.CarMovementRoundResult;

@@ -1,7 +1,7 @@
 package step3;
 
-import step3.service.Cars;
-import step3.service.Racing;
+import step3.domain.Cars;
+import step3.domain.Racing;
 import step3.view.RacingInputView;
 import step3.view.RacingOutputView;
 
