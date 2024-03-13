@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class ResultView {
 
     private static final String GAME_RESULT = "실행 결과";
+    private static final String WINNER_ANNOUNCEMENT = "가 최종 우승했습니다.";
     private static final String NEW_LINE = System.lineSeparator();
     private static final String POSITION_MARK = "_";
     private static final String PRINT_FORMAT = "{0} : {1}";
@@ -22,6 +23,7 @@ public class ResultView {
             printResult.append(NEW_LINE);
             printResult.append(NEW_LINE);
         }
+        printResult.append(findWinner(records)).append(WINNER_ANNOUNCEMENT);
         System.out.println(printResult.toString());
     }
 
@@ -35,9 +37,16 @@ public class ResultView {
 //  }
         return roundRecord.getPositions().entrySet()
                 .stream()
-                //.map(i -> i.getKey() + " : " + POSITION_MARK.repeat(Math.max(0, i.getValue())))
-                .map(i -> MessageFormat.format(PRINT_FORMAT, i.getKey(), POSITION_MARK.repeat(Math.max(0, i.getValue()))))
-                //.map(i -> String.format("%s : %s", i.getKey(), POSITION_MARK.repeat(Math.max(0, i.getValue()))))
+                .map(position -> MessageFormat.format(PRINT_FORMAT, position.getKey(), POSITION_MARK.repeat(Math.max(0, position.getValue()))))
+                //.map(position -> String.format("%s : %s", position.getKey(), POSITION_MARK.repeat(Math.max(0, position.getValue()))))
+                //.map(position -> position.getKey() + " : " + POSITION_MARK.repeat(Math.max(0, position.getValue())))
                 .collect(Collectors.joining(NEW_LINE));
+    }
+
+    private static String findWinner(List<RoundRecord> roundRecords) {
+        RoundRecord lastRoundRecord = roundRecords.get(roundRecords.size() - 1);
+        //return lastRoundRecord.findMax().stream().collect(Collectors.joining(","));
+        return String.join(", ", lastRoundRecord.findMaxPosition());
+
     }
 }
