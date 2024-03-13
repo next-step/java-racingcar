@@ -61,4 +61,5 @@ class StringAddCalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수만 입력해주세요.");
     }
+  
 }
