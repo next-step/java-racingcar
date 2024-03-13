@@ -21,7 +21,7 @@ public class Car {
     }
 
     public CarMovementResult movementResult() {
-        return CarMovementResult.from(moveCount);
+        return CarMovementResult.of(name, moveCount);
     }
 
 }
