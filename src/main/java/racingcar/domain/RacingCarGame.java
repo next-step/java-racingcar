@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.strategyPattern.MoveStrategy;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,7 +19,12 @@ public class RacingCarGame {
                 .collect(Collectors.toList());
     }
 
-    public List<RacingCar> playRoundsAndReturnCarList() {
-        return null;
+    public List<RacingCar> playRoundsAndReturnCarList(MoveStrategy moveStrategy) {
+        for (RacingCar car : carList) {
+            if (moveStrategy.isMovable()) {
+                car.moveForward(moveStrategy);
+            }
+        }
+        return carList;
     }
 }
