@@ -14,8 +14,17 @@ public class Cars {
         cars = generateCar(countOfCar);
     }
 
+    private Cars(String[] names) {
+        cars = generateCar(names);
+    }
+
     public static Cars createInstance(int countOfCar) {
         return new Cars(countOfCar);
+    }
+
+    public static Cars createInstance(String names) {
+        String[] splitNames = names.split(",");
+        return new Cars(splitNames);
     }
 
     public List<Car> getCars() {
@@ -38,6 +47,16 @@ public class Cars {
         while(countOfCar > 0) {
             cars.add(Car.createInstance());
             countOfCar--;
+        }
+
+        return cars;
+    }
+
+    private List<Car> generateCar(String[] names) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : names) {
+            cars.add(Car.createInstance(name));
         }
 
         return cars;
