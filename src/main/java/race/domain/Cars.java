@@ -15,10 +15,6 @@ public class Cars {
     }
 
     public List<String> goForward(int numberOfCars, int numberOfAttempts) {
-        return goRandomForward(numberOfCars, numberOfAttempts);
-    }
-
-    private List<String> goRandomForward(int numberOfCars, int numberOfAttempts) {
         List<String> mileages = new ArrayList<>();
         for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
             this.cars.get(carNumber).go(numberOfAttempts);
