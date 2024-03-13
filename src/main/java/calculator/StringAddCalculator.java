@@ -1,11 +1,14 @@
-package StringAddCalculator;
+package calculator;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    static int splitAndSum(String input) {
+    private StringAddCalculator() {
+    }
+
+    public static int splitAndSum(String input) {
         if (isNullOrEmpty(input)) {
             return 0;
         }
