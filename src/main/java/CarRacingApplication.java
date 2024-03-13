@@ -20,14 +20,17 @@ public class CarRacingApplication {
     ResultView.start();
     racing.race(cars, numberOfRound);
     ResultView.end();
+
+    ResultView.showWinner(cars);
   }
 
-  private static void generateCar(int numberOfCar){
+  private static void generateCar(int numberOfCar) {
     for (int i=0; i<numberOfCar; i++){
       cars.add(new Car(randomNumberGenerator, String.valueOf(i)));
     }
   }
-  private static void generateCarWithName(String[] names){
+
+  private static void generateCarWithName(String[] names) {
     for (int i=0; i<names.length; i++){
       cars.add(new Car(randomNumberGenerator, names[i]));
     }
