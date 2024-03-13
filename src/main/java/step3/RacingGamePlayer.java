@@ -13,9 +13,7 @@ public class RacingGamePlayer {
 
         final Racing racing = randomMovementRacing(carCount, tryCount);
 
-        racing.play();
-
-        RacingOutputView.printRacingResult(racing.results());
+        RacingOutputView.printRacingResult(racing.playAndGenerateResults());
     }
 
     private Racing randomMovementRacing(int carCount, int tryCount) {
