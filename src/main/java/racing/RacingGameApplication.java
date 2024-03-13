@@ -14,12 +14,12 @@ public class RacingGameApplication {
         Scanner scanner = new Scanner(System.in);
 
         InputView inputView = new InputView(scanner);
-        GameVO gameVO = new GameVO(inputView.getNumberOfCars(), inputView.getNumberOfRounds());
+
+        GameVO gameVO = GameVO.validateInput(inputView.getNumberOfCars(), inputView.getNumberOfRounds());
 
         Cars cars = Cars.create(gameVO.getCarNo());
 
         RacingGame racingGame = new RacingGame(cars, gameVO.getRoundNo());
-        racingGame.validateInput(gameVO);
         racingGame.play();
 
         scanner.close();
