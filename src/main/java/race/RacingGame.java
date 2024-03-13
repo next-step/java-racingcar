@@ -10,7 +10,6 @@ import java.util.Random;
 public class RacingGame {
 
     private List<String> mileages = new ArrayList<>();
-    private static final Random randomNumber = new Random();
     private final Cars cars;
 
     public RacingGame(Cars cars) {
@@ -26,9 +25,7 @@ public class RacingGame {
     }
 
     private void saveMileages(Cars cars, int numberOfCars, int attempt) {
-        for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
-            mileages = cars.goForward(numberOfCars, attempt, randomNumber.nextInt(10));
-        }
+            mileages = cars.goForward(numberOfCars, attempt);
     }
 
 }

@@ -2,6 +2,7 @@ package race.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
 
@@ -14,14 +15,14 @@ public class Cars {
         }
     }
 
-    public List<String> goForward(int numberOfCars, int numberOfAttempts, int randomNumber) {
-        return goRandomForward(numberOfCars, numberOfAttempts, randomNumber);
+    public List<String> goForward(int numberOfCars, int numberOfAttempts) {
+        return goRandomForward(numberOfCars, numberOfAttempts);
     }
 
-    private List<String> goRandomForward(int numberOfCars, int numberOfAttempts, int randomNumber) {
+    private List<String> goRandomForward(int numberOfCars, int numberOfAttempts) {
         List<String> mileages = new ArrayList<>();
         for (int carNumber = 0; carNumber < numberOfCars; carNumber++) {
-            this.cars.get(carNumber).go(numberOfAttempts, randomNumber);
+            this.cars.get(carNumber).go(numberOfAttempts);
             mileages.add(this.cars.get(carNumber).getMileage());
         }
         return mileages;
