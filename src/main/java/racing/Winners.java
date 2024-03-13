@@ -3,9 +3,9 @@ package racing;
 import java.util.List;
 
 public class Winners {
-    private final List<Car> winners;
-
     private static final String WINNER_DELIMITER = ",";
+
+    private final List<Car> winners;
 
     public Winners(List<Car> winners) {
         this.winners = winners;
