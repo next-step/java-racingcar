@@ -13,7 +13,6 @@ public class GameRunner implements Game {
     @Override
     public void start() {
         game.start();
-        displayResult();
     }
 
     @Override

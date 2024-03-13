@@ -7,6 +7,7 @@ import java.util.Scanner;
 import common.NumberGenerator;
 import common.RandomNumberGenerator;
 import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
 
 public class RacingApplication {
     public static void main(String[] args) {
@@ -20,9 +21,10 @@ public class RacingApplication {
         Game game = new RacingGame(participateCar, numberGenerator);
         Game gameRunner = new GameRunner(game);
 
-        System.out.println("실행 결과");
+        ResultView resultView = new ResultView(participateCar);
         for (int i = 0; i < round; i++) {
             gameRunner.start();
+            resultView.printResult();
         }
     }
 
