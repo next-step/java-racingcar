@@ -17,12 +17,20 @@ public class Game {
     }
 
     public void createAttendedCars(int numberOfCar) {
+        if (numberOfCar < 0) {
+            throw new IllegalArgumentException("자동차 대수는 음수가 될 수 없습니다.");
+        }
+
         for (int i = 0; i < numberOfCar; i++) {
             attendedCars.add(new Car(i + 1 + "번 자동차"));
         }
     }
 
     public void playGame(int numberOfAttempts) {
+        if (numberOfAttempts < 0) {
+            throw new IllegalArgumentException("시도할 횟수는 음수가 될 수 없습니다.");
+        }
+
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttempts; i++) {
             this.playSession();
