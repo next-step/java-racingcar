@@ -9,16 +9,16 @@ public class CarGame {
     private final int rounds;
     private final MoveStrategy moveStrategy;
 
-    public CarGame(int carCount, int rounds, MoveStrategy moveStrategy) {
+    public CarGame(int rounds, MoveStrategy moveStrategy, String[] names) {
         this.cars = new ArrayList<>();
-        createCar(carCount);
+        createCar(names);
         this.rounds = rounds;
         this.moveStrategy = moveStrategy;
     }
 
-    private List<Car> createCar(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+    private List<Car> createCar(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            this.cars.add(new Car(names[i]));
         }
         return cars;
     }

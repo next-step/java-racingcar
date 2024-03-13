@@ -8,14 +8,14 @@ class CarTest {
 
     @Test
     void 앞으로_전진() {
-        Car car = new Car();
+        Car car = new Car("park");
         car.forward(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     void 정지() {
-        Car car = new Car();
+        Car car = new Car("park");
         car.forward(() -> false);
         assertThat(car.getPosition()).isZero();
     }
