@@ -8,6 +8,7 @@ public class Car {
 
     private String mileage = "-";
     private static final int END_BOUND = 10;
+    private static final int STANDARD_BOUND = 4;
     private static final Random RANDOM = new Random();
 
     public String getMileage() {
@@ -25,7 +26,7 @@ public class Car {
     private boolean isFitRaceRule(int randomNumber) {
         return new RaceRule(new RaceRule(() ->
                 randomNumber
-        )).generate() >= 4;
+        )).generate() >= STANDARD_BOUND;
     }
 
 }
