@@ -10,7 +10,7 @@ public class Position {
     private int position;
 
     public Position() {
-        this.position = 0;
+        this.position = MIN_POSITION_VALUE;
     }
 
     public Position(int position) {
@@ -26,6 +26,10 @@ public class Position {
 
     public Position move() {
         return new Position(position + FORWARD_COUNT);
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
