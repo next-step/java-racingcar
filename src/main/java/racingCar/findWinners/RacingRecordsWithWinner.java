@@ -13,11 +13,10 @@ public class RacingRecordsWithWinner {
 
         int roundNum = Utils.toInt(InputView.numberOfRound());
         OutputView.printRacingResult();
-        for (int i = 0; i < roundNum ; i++){
+        for (int i = 0; i < roundNum ; i++) {
             records.runOneRound();
             OutputView.printRacingWithName(records.recordsOfCars());
         }
-
         OutputView.WinnerOfRacing(nameOfWinner.findWinner(records.recordsOfCars()));
     }
 
@@ -25,8 +24,4 @@ public class RacingRecordsWithWinner {
         String carNameString = InputView.nameOfCar();
         return carNameString.split(",");
     }
-
-
-
-
 }

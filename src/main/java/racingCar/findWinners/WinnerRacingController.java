@@ -5,6 +5,5 @@ public class WinnerRacingController {
         RacingRecordsWithWinner racingRecords = new RacingRecordsWithWinner();
 
         racingRecords.runRaceWithWinner();
-
     }
 }

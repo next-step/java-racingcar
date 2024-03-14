@@ -18,12 +18,12 @@ public class RacingRecords {
         int carNum = Utils.toInt(InputView.numberOfCar());
         int roundNum = Utils.toInt(InputView.numberOfRound());
 
-        for(int i = 0 ; i < carNum ; i++){
+        for (int i = 0 ; i < carNum ; i++) {
             records.add(new RacingCar());
         }
 
         OutputView.printRacingResult();
-        for(int i = 0; i < roundNum ; i++){
+        for (int i = 0; i < roundNum ; i++) {
             runOneRound(records);
             OutputView.printRacing(records);
         }
@@ -39,7 +39,4 @@ public class RacingRecords {
         RandomGenerator randomGenerator = new RandomGenerator();
         return new RandomMovingStrategy(randomGenerator);
     }
-
-
-
 }

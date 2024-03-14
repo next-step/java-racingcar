@@ -10,6 +10,11 @@ public class RacingCar {
         this.position = 0;
     }
 
+    public RacingCar(String name, int position){
+        this.position = position;
+        this.name = new RacingCarName(name);
+    }
+
     public RacingCar(String name){
         this.position = 0;
         this.name = new RacingCarName(name);
@@ -21,7 +26,7 @@ public class RacingCar {
     }
 
     public void move(MovingStrategy movingStrategy){
-        if (movingStrategy.isMove()){
+        if (movingStrategy.isMove()) {
             this.position++;
         }
     }

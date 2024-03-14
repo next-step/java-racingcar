@@ -10,11 +10,11 @@ public class RacingCarName {
     }
 
     private static void checkUsableName(String value){
-        if(value.isBlank()){
+        if (value.isBlank()) {
             throw new IllegalArgumentException("이름이 비어있습니다.");
         }
 
-        if (value.length() > MAX_NAME_LEN){
+        if (value.length() > MAX_NAME_LEN) {
             throw new IllegalArgumentException("너무 긴 길이의 이름" + value);
         }
     }

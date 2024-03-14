@@ -12,7 +12,7 @@ public class RecordOfFindWinnerRacing {
     List<RacingCar> records = new ArrayList<>();
 
     public void enrollCar(String[] carNames){
-        for (String name : carNames){
+        for (String name : carNames) {
             this.records.add(new RacingCar(name));
         }
     }
