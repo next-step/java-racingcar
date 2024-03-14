@@ -10,11 +10,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RacingController {
 
 
+
     private final RacingService racingService;
 
 
     public RacingController(RacingService racingService) {
         this.racingService = racingService;
+
     }
 
     public void racing() {
@@ -40,5 +42,6 @@ public class RacingController {
     public int moveCount() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         return count();
+
     }
 }

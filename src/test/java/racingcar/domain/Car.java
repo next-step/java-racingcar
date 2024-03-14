@@ -9,5 +9,6 @@ public class Car {
 
     public int location() {
         return location;
+
     }
 }
