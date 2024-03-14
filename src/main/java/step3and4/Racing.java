@@ -47,7 +47,7 @@ public class Racing {
         carEntry.moveCars();
     }
 
-    public String[] getNames() {
+    public List<String> getNames() {
         return carEntry.getCarNames();
     }
 

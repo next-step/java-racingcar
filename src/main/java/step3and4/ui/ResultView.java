@@ -3,6 +3,7 @@ package step3and4.ui;
 import step3and4.Racing;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class ResultView {
 
@@ -16,7 +17,7 @@ public class ResultView {
         System.out.println("실행 결과");
         for (int i = 0; i < racing.getTryNumber(); i++) {
             racing.tryMove();
-            String[] carNames = racing.getNames();
+            List<String> carNames = racing.getNames();
             int[] moveResult = racing.createMoveResult();
             createResult(carNames, moveResult);
         }
@@ -27,10 +28,10 @@ public class ResultView {
         System.out.println(String.join(",", winCars) + "최종 우승했습니다.");
     }
 
-    private static void createResult(String[] carNames, int[] moveResult) {
-        int length = carNames.length;
+    private static void createResult(List<String> carNames, int[] moveResult) {
+        int length = carNames.size();
         for (int i = 0; i < length; i++) {
-            createCarName(carNames[i]);
+            createCarName(carNames.get(i));
             createHyphen(moveResult[i]);
         }
         System.out.println();

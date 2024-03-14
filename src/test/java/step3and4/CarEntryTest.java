@@ -70,7 +70,7 @@ class CarEntryTest {
     void getNames() {
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
         CarEntry carEntry = CarEntry.from(cars);
-        String[] carNames = carEntry.getCarNames();
+        List<String> carNames = carEntry.getCarNames();
         Assertions.assertThat(carNames).containsExactly("pobi","temp", "stop","go!");
     }
 

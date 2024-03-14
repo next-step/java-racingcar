@@ -50,27 +50,25 @@ public class CarEntry {
         return this.getCars().size();
     }
 
-    public String[] getCarNames() {
+    public List<String> getCarNames() {
         return this.cars.stream()
                 .map(Car::getName)
-                .collect(Collectors.toList())
-                .toArray(new String[0]);
+                .collect(Collectors.toList());
     }
 
     public String[] getWinCars() {
         int winPosition = createWinPosition();
 
         return this.cars.stream()
-                .filter(car -> !car.comparePosition(winPosition))
+                .filter(car -> car.equalsPosition(winPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList()).toArray(new String[0]);
     }
 
     private int createWinPosition() {
         int winPosition = this.cars.stream()
-                .sorted()
                 .mapToInt(Car::getPosition)
-                .findFirst()
+                .max()
                 .orElse(0);
         return winPosition;
     }
