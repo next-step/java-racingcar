@@ -5,21 +5,15 @@ public class Car {
     private final Name name;
     private final Distance distance;
 
-    // Constructor for UnitTest
-    public Car() {
-        this.name = new Name();
-        this.distance = new Distance();
-    }
-
     public Car(Name name) {
         this.name = name;
         this.distance = new Distance();
     }
 
     // Constructor for UnitTest
-    public Car(Distance distance, Name name) {
-        this.name = name;
-        this.distance = distance;
+    public Car(int distance, String name) {
+        this.distance = new Distance(distance);
+        this.name = new Name(name);
     }
 
     public Car(Car car) {

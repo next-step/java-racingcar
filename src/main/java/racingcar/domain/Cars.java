@@ -15,7 +15,7 @@ public class Cars {
 
     // Constructor for UnitTest
     public Cars(Car... cars) {
-        this.cars = Arrays.asList(cars);
+        this(Arrays.asList(cars));
     }
 
     public Cars deepCopy() {

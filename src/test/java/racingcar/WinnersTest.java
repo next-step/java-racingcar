@@ -13,9 +13,9 @@ public class WinnersTest {
     void 자동차_경주_우승자() {
         // Given
         Cars cars = new Cars(
-                new Car(new Distance(3), new Name("pobi")),
-                new Car(new Distance(2), new Name("crong")),
-                new Car(new Distance(1), new Name("honux"))
+                new Car(3, "pobi"),
+                new Car(2, "crong"),
+                new Car(1, "honux")
         );
 
         // When
@@ -28,9 +28,9 @@ public class WinnersTest {
     void 자동차_경주_다수_우승자() {
         // Given
         Cars cars = new Cars(
-                new Car(new Distance(3), new Name("pobi")),
-                new Car(new Distance(3), new Name("crong")),
-                new Car(new Distance(1), new Name("honux"))
+                new Car(3, "pobi"),
+                new Car(3, "crong"),
+                new Car(1, "honux")
         );
 
         // When
