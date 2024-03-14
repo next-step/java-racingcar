@@ -7,11 +7,11 @@ public class CarName {
 
     public CarName(String name) {
         if (isNullOrBlank(name)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Null 또는 공백 입력");
         }
         
         if (isMoreThanMaxLength(name)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("자동차이름은 5자를 초과할 수 없습니다.");
         }
         
         this.value = name;
