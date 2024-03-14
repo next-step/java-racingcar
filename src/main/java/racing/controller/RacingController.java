@@ -12,8 +12,8 @@ public class RacingController {
     public void run() {
         String[] names = inputView.inputStrings();
         int attempts = inputView.inputNumber();
-        Cars cars = new Cars(names);
 
+        Cars cars = new Cars(names);
         startRace(cars, attempts);
         endRace(cars);
     }
@@ -22,7 +22,7 @@ public class RacingController {
         resultView.appendResultHeader();
 
         for (int i = 0; i < attempts; i++) {
-            resultView.appendCurrentSituation(cars.moveOrNot(new RandomMovementStrategy()));
+            resultView.appendCurrentSituation(cars.move(new RandomMovementStrategy()));
         }
     }
 
