@@ -14,4 +14,8 @@ public class RandomCarMoveStrategy implements CarMoveStrategy {
   public boolean isMovable() {
     return randomNumberGenerator.generate(BOUND) >= MEET_CONDITION_FOR_MOVEMENT;
   }
+
+  public boolean isMovableTest(int randomNum) {
+    return randomNum >= MEET_CONDITION_FOR_MOVEMENT;
+  }
 }
