@@ -1,7 +1,7 @@
 package step3and4;
 
 import step3and4.car.Car;
-import step3and4.car.CarFirstCollection;
+import step3and4.car.CarEntry;
 import step3and4.car.move.RandomMoveStrategy;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Racing {
     private final int tryNumber;
-    private final CarFirstCollection carFirstCollection;
+    private final CarEntry carEntry;
 
     public static Racing createRacing(String[] carNames, int tryNumber) {
         return new Racing(tryNumber, carNames);
@@ -17,11 +17,11 @@ public class Racing {
 
     public Racing(int tryNumber, String[] carNames) {
         this.tryNumber = tryNumber;
-        this.carFirstCollection = createCarList(carNames);
+        this.carEntry = createCarList(carNames);
     }
 
-    private CarFirstCollection createCarList(String[] carNames) {
-        return CarFirstCollection.from(createCarList(carNames, createCarRandomMoveStrategy()));
+    private CarEntry createCarList(String[] carNames) {
+        return CarEntry.create(carNames, createCarRandomMoveStrategy());
     }
 
     private static RandomMoveStrategy createCarRandomMoveStrategy() {
@@ -30,20 +30,9 @@ public class Racing {
         return randomMoveStrategy;
     }
 
-    private static List<Car> createCarList(String[] carNames, RandomMoveStrategy randomMoveStrategy) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(createCar(randomMoveStrategy, carNames[i]));
-        }
-        return cars;
-    }
-
-    private static Car createCar(RandomMoveStrategy randomMoveStrategy, String carNames) {
-        return new Car(carNames, randomMoveStrategy);
-    }
 
     public int getCarNumberOfParticipants() {
-        return this.carFirstCollection.size();
+        return this.carEntry.size();
     }
 
     public int getTryNumber() {
@@ -51,18 +40,18 @@ public class Racing {
     }
 
     public int[] createMoveResult() {
-        return carFirstCollection.createMoveResult();
+        return carEntry.createMoveResult();
     }
 
     public void tryMove() {
-        carFirstCollection.moveCars();
+        carEntry.moveCars();
     }
 
     public String[] getNames() {
-        return carFirstCollection.getCarNames();
+        return carEntry.getCarNames();
     }
 
     public String[] getWinCars() {
-        return carFirstCollection.getWinCars();
+        return carEntry.getWinCars();
     }
 }

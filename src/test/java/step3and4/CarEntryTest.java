@@ -5,12 +5,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3and4.car.Car;
-import step3and4.car.CarFirstCollection;
+import step3and4.car.CarEntry;
 import step3and4.car.move.MoveStrategy;
 
 import java.util.List;
 
-class CarFirstCollectionTest {
+class CarEntryTest {
     MoveStrategy moveStrategy;
     MoveStrategy onlyStopStrategy;
 
@@ -47,10 +47,10 @@ class CarFirstCollectionTest {
     void moveCars() {
 
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
-        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
-        carFirstCollection.moveCars();
+        CarEntry carEntry = CarEntry.from(cars);
+        carEntry.moveCars();
 
-        List<Car> listCars = carFirstCollection.getCars();
+        List<Car> listCars = carEntry.getCars();
         listCars.forEach(item -> Assertions.assertThat(item.getPosition()).isEqualTo(1));
     }
 
@@ -58,10 +58,10 @@ class CarFirstCollectionTest {
     @Test
     void createMoveResult() {
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
-        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
-        carFirstCollection.moveCars();
+        CarEntry carEntry = CarEntry.from(cars);
+        carEntry.moveCars();
 
-        int[] moveResult = carFirstCollection.createMoveResult();
+        int[] moveResult = carEntry.createMoveResult();
         Assertions.assertThat(moveResult).containsExactly(1, 1, 1, 1);
     }
 
@@ -69,8 +69,8 @@ class CarFirstCollectionTest {
     @Test
     void getNames() {
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
-        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
-        String[] carNames = carFirstCollection.getCarNames();
+        CarEntry carEntry = CarEntry.from(cars);
+        String[] carNames = carEntry.getCarNames();
         Assertions.assertThat(carNames).containsExactly("pobi","temp", "stop","go!");
     }
 
@@ -78,9 +78,9 @@ class CarFirstCollectionTest {
     @Test
     void getWins() {
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", onlyStopStrategy), new Car("stop", onlyStopStrategy), new Car("go!", onlyStopStrategy));
-        CarFirstCollection carFirstCollection = CarFirstCollection.from(cars);
-        carFirstCollection.moveCars();
-        String[] winCars = carFirstCollection.getWinCars();
+        CarEntry carEntry = CarEntry.from(cars);
+        carEntry.moveCars();
+        String[] winCars = carEntry.getWinCars();
         Assertions.assertThat(winCars).containsExactly("pobi");
     }
 }

@@ -1,22 +1,35 @@
 package step3and4.car;
 
+import step3and4.car.move.RandomMoveStrategy;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarFirstCollection {
+public class CarEntry {
     private final List<Car> cars;
 
-    public static CarFirstCollection from(List<Car> cars) {
+    public static CarEntry from(List<Car> cars) {
         if (cars == null) {
-            return new CarFirstCollection(new ArrayList<>());
+            return new CarEntry(new ArrayList<>());
         }
-        return new CarFirstCollection(cars);
+        return new CarEntry(cars);
     }
 
-    public CarFirstCollection(List<Car> cars) {
+    public CarEntry(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public static CarEntry create(String[] carNames, RandomMoveStrategy randomMoveStrategy) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(createCar(carNames[i], randomMoveStrategy));
+        }
+        return from(cars);
+    }
+
+    public static Car createCar(String carNames, RandomMoveStrategy randomMoveStrategy) {
+        return new Car(carNames, randomMoveStrategy);
     }
 
     public void moveCars() {
