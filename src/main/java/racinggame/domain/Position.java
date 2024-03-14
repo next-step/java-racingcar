@@ -19,6 +19,10 @@ public class Position {
         return new Position(position + FORWARD_COUNT);
     }
 
+    public int compareTo(Position OtherPosition) {
+        return this.position - OtherPosition.getPosition();
+    }
+
     public int getPosition() {
         return position;
     }

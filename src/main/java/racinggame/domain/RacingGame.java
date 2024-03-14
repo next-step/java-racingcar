@@ -1,24 +1,18 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    public static final String DELIMITER_COMMA = ",";
-    private final List<Car> cars;
+    private Cars cars;
     private int tryCount;
 
     public RacingGame(int tryCount) {
-        this.cars = new ArrayList<>();
+        this.cars = new Cars();
         this.tryCount = tryCount;
     }
 
-    public List<Car> initcars(String inputName) {
-        String[] names = inputName.split(DELIMITER_COMMA);
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
+    public void initCars(String inputName) {
+        cars.initCars(inputName);
     }
 
     public void start(MovingStrategy movingStrategy) {
@@ -27,13 +21,18 @@ public class RacingGame {
     }
 
     private void moveCars(MovingStrategy movingStrategy) {
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             car.move(movingStrategy);
         }
     }
 
+    public List<Name> resultWinnerName() {
+        WinnerCar winnerCar = new WinnerCar(cars.getCars());
+        return winnerCar.getWinnerName(cars.maxPosition());
+    }
+
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
     public int getTryCount() {

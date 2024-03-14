@@ -1,8 +1,6 @@
 package racinggame.domain;
 
-import java.util.Objects;
-
-public class Car {
+public class Car implements Comparable<Car>{
     private Position position;
     private Name name;
 
@@ -15,6 +13,11 @@ public class Car {
         if (movingStrategy.isMoving()) {
             position = position.move();
         }
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        return this.position.compareTo(otherCar.position);
     }
 
     public Position getPosition() {
