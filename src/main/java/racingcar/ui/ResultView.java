@@ -16,12 +16,12 @@ public class ResultView {
     private static StringBuilder getCarsPrintFormat(CarRaceResult carRaceResult) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Cars cars : carRaceResult.get()) {
-            appendCars(stringBuilder, cars);
+            appendCarsFormat(stringBuilder, cars);
         }
         return stringBuilder;
     }
 
-    private static void appendCars(StringBuilder stringBuilder, Cars cars) {
+    private static void appendCarsFormat(StringBuilder stringBuilder, Cars cars) {
         for (Car car : cars.get()) {
             stringBuilder.append(formatCar(car)).append(System.lineSeparator());
         }
