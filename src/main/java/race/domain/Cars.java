@@ -22,12 +22,16 @@ public class Cars {
     public List<Car> goForward(PlayStrategy rule) {
         List<Car> carList = new ArrayList<>();
         for (Car car : this.cars) {
-            if (rule.isValidForGoForward()) {
-                car.go();
-            }
+            goForwardWith(rule, car);
             carList.add(new Car(car.getPosition(), car.getName()));
         }
         return Collections.unmodifiableList(carList);
+    }
+
+    private void goForwardWith(PlayStrategy rule, Car car) {
+        if (rule.isValidForGoForward()) {
+            car.go();
+        }
     }
 
     public String showWinnerNames() {
