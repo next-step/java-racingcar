@@ -1,5 +1,6 @@
-package carRace;
+package carRace.domain;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
 import carRace.domain.Car;
@@ -16,9 +17,9 @@ class RaceHostTest {
         //given
         int carMount = 100;
         int raceTryNumber = 1000;
+        RaceHost raceHost = new RaceHost(raceTryNumber);
+        List<Car> cars = Car.createCars(asList("namhyeop", "jihwan"));
 
-        RaceHost raceHost = new RaceHost(carMount, raceTryNumber);
-        List<Car> cars = Car.createCars(carMount);
         //when
         raceHost.playGame(cars);
 
