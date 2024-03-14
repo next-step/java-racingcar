@@ -2,8 +2,8 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Car {
-    private int position = 0;
+public class Car implements Comparable {
+    private Integer position = 0;
     private final String name;
 
     public Car(Car car) {
@@ -51,5 +51,18 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            throw new IllegalArgumentException();
+        }
+        if (this == o) {
+            return 0;
+        }
+
+        return this.position.compareTo(((Car) o).position);
     }
 }
