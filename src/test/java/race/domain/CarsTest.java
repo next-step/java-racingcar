@@ -14,7 +14,14 @@ class CarsTest {
 
     @BeforeEach
     void init() {
-        cars = new Cars(3, new String[]{"임형준", "임횽준", "임항준"});
+        cars = new Cars(3, new String[]{"임형준", "박재성", "최승훈"});
+    }
+
+    @DisplayName("세 자동차 전부 똑같은 거리일 때 우승자는 세 명 전부임을 보여준다")
+    @Test
+    void name() {
+        cars.goForward(() -> true);
+        assertThat(cars.showWinnerNames()).isEqualTo("임형준, 박재성, 최승훈");
     }
 
     @DisplayName("세 번 전부 차의 전진 조건을 만족시키지 못하면 거리가 증가하지 않는 것을 보여준다")
