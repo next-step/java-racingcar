@@ -1,13 +1,13 @@
-package step3.application.domain;
+package step3.application.generator;
 
 import java.util.Random;
 
-public class RandomFactory {
+public class NumberRandomGenerator implements NumberGenerator{
 
     private final Random random;
     public static final int MAX_BOUND = 10;
 
-    public RandomFactory() {
+    public NumberRandomGenerator() {
         this.random = new Random();
     }
 
