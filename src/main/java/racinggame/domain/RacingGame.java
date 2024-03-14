@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+    public static final String DELIMITER = ",";
     private final List<Car> cars;
     private int tryCount;
 
@@ -12,9 +13,10 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
-    public List<Car> initcars(int numberOfCar) {
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+    public List<Car> initcars(String inputName) {
+        String[] names = inputName.split(DELIMITER);
+        for (String name : names) {
+            cars.add(new Car(name));
         }
         return cars;
     }

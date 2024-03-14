@@ -4,8 +4,10 @@ import java.util.Objects;
 
 public class Car {
     private Position position;
+    private Name name;
 
-    public Car() {
+    public Car(String name) {
+        this.name = Name.create(name);
         this.position = Position.create();
     }
 

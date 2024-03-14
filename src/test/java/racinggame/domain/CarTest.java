@@ -10,7 +10,7 @@ class CarTest {
     @Test
     @DisplayName("이동 기능 - 전진 테스트")
     void mvoe(){
-        Car car = new Car();
+        Car car = new Car("test");
         car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(Position.create().move());
     }
@@ -18,7 +18,7 @@ class CarTest {
     @Test
     @DisplayName("이동 기능 - 멈춤 테스트")
     void stop(){
-        Car car = new Car();
+        Car car = new Car("test");
         car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(Position.create());
     }

@@ -15,8 +15,9 @@ public class Main {
         ResultView resultView = new ResultView();
         RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
 
+        String cars = inputView.inputCarsName();
         RacingGame racingGame = new RacingGame(inputView.inputTryCount());
-        racingGame.initcars(inputView.inputCarCount());
+        racingGame.initcars(cars);
         resultView.printResultMessage();
         while (racingGame.getTryCount() > 0) {
             resultView.printResul(racingGame, randomMovingStrategy);
