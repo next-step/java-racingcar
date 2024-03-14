@@ -14,8 +14,7 @@ public class CarTest {
   Car car;
   @BeforeEach
   void setUp() {
-    IntGenerator intGenerator = new RandomGenerator();
-    car = new Car("hoi", intGenerator);
+    car = new Car("hoi");
   }
 
   @Test
@@ -25,17 +24,17 @@ public class CarTest {
   }
 
   @Test
-  @DisplayName("경기를 1회 진행하면 차는 0 또는 1만큼 움직이는지 확인한다")
+  @DisplayName("차는 한번에 한칸 움직이는지 확인한다")
   void 차가_움직이는지_확인(){
     car.move();
-    assertThat(car.getPosition()).isIn(0, 1);
+    assertThat(car.getPosition()).isEqualTo(1);
   }
 
   @Test
   @DisplayName("차 인스턴스를 생성할 때 이름을 지정한다")
   void getCarName(){
     String carName = "hadi";
-    Car hadiCar = new Car(carName, new RandomGenerator());
+    Car hadiCar = new Car(carName);
 
     assertThat(hadiCar.getName()).isEqualTo(carName);
   }
