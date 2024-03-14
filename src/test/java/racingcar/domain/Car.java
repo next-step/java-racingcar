@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private final char display = '-';
+    private static final String display = "-";
     int location;
 
     public void move() {
