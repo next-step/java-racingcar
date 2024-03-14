@@ -1,60 +1,49 @@
-package racingcar;
+package racingcar.test;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.repository.RacingRepository;
 import racingcar.service.RacingService;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingTest {
 
+    private static RacingRepository racingRepository;
+    private static RacingService racingService;
+
+    @BeforeAll
+    public static void setting() {
+        racingRepository = new RacingRepository();
+        racingService = new RacingService(racingRepository);
+    }
+
+
     @Test
-    @DisplayName("차량수 반복수 확인")
-    public void CarAndTry() {
-        int Cars = 10;
-        int Try = 5;
-        RacingService service = new RacingService();
+    @DisplayName("전체 시도횟수")
+    public void totalTry() {
+        int cnt = 10;
 
-//        assertThat(service.carCount()).isEqualTo(10);
-//        assertThat(service.moveCount()).isEqualTo(5);
-        service.makeCars();
-
-//        assertThat(service.).isEqualTo(10);
+        racingService.totalTry(cnt);
+        assertThat(racingRepository.getTotalTry()).isEqualTo(10);
     }
 
     @Test
-    @DisplayName("차량 움직임 랜덤수")
-    public void GoStop() {
+    @DisplayName("전체 차량 수")
+    public void Cars() {
+        List<Car> equals = new ArrayList<>();
+        equals.add(new Car());
+        equals.add(new Car());
+        equals.add(new Car());
 
-        int[] value = {1, 0, -1, 10, 3, 2, 7, 3, 4};
-        int condition = 5;
-        int cnt = 0;
+        racingService.makeCars(3);
 
-        for (int i : value) {
-            if (i >= condition)
-                cnt++;
-        }
-        assertThat(cnt).isEqualTo(2);
+        assertThat(racingRepository.cars.size()).isEqualTo(equals.size());
     }
 
-    @Test
-    @DisplayName("차량 위치 출력")
-    public void location() {
-        List<Character> car = new LinkedList<>();
-        car.add('-');
-        car.add('-');
-        car.add('-');
-
-//        CarLocation(car);
-    }
-
-    @Test
-    @DisplayName("차량들 전체 현재위치")
-    public void totalLocation() {
-//        makeCars(5);
-//        MoveCar(cars);
-    }
 }
