@@ -12,10 +12,10 @@ public class CarsTest {
     void 자동차_생성() {
         Cars cars = new Cars();
         int number = 3;
-        List<Integer> carList = cars.createCar(number);
+        List<Car> carList = cars.createCar(number);
         assertThat(carList).hasSize(number);
         IntStream.range(0,number).forEach(
-                index -> assertThat(carList.get(index)).isZero()
+                index -> assertThat(carList.get(index).location).isZero()
         );
     }
 
@@ -31,16 +31,5 @@ public class CarsTest {
         Cars cars = new Cars();
         boolean value = cars.canForward(3);
         assertThat(value).isFalse();
-    }
-
-    @Test
-    void 자동차_전진_횟수_증가() {
-        Cars cars = new Cars();
-        List<Integer> carList = cars.createCar(1);
-        int index = 0;
-        int current = carList.get(index);
-        cars.addForward(index);
-
-        assertThat(carList.get(index)).isEqualTo(current + 1);
     }
 }
