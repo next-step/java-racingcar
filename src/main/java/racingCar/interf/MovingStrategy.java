@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.interf;
 
 public interface MovingStrategy{
     boolean isMove();

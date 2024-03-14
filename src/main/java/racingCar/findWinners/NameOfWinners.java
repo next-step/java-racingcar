@@ -1,4 +1,6 @@
-package racingCar;
+package racingCar.findWinners;
+
+import racingCar.RacingCar;
 
 import java.util.ArrayList;
 import java.util.Collections;

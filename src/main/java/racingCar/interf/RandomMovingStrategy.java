@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.interf;
 
 import racingCar.utils.RandomGenerator;
 

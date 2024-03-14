@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.findWinners;
 
 import racingCar.utils.Utils;
 import racingCar.view.InputView;
@@ -9,11 +9,9 @@ public class RacingRecordsWithWinner {
         RecordOfFindWinnerRacing records = new RecordOfFindWinnerRacing();
         NameOfWinners nameOfWinner = new NameOfWinners();
 
-        String[] carNames = findCarNames();
+        records.enrollCar(findCarNames());
+
         int roundNum = Utils.toInt(InputView.numberOfRound());
-
-        records.enrollCar(carNames);
-
         OutputView.printRacingResult();
         for (int i = 0; i < roundNum ; i++){
             records.runOneRound();

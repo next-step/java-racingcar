@@ -1,5 +1,7 @@
 package racingCar;
 
+import racingCar.interf.MovingStrategy;
+
 public class RacingCar {
     private int position;
     private RacingCarName name;

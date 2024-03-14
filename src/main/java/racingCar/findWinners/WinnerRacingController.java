@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.findWinners;
 
 public class WinnerRacingController {
     public static void main(String[] args) {

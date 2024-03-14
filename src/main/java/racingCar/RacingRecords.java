@@ -1,5 +1,7 @@
 package racingCar;
 
+import racingCar.interf.MovingStrategy;
+import racingCar.interf.RandomMovingStrategy;
 import racingCar.utils.RandomGenerator;
 import racingCar.utils.Utils;
 import racingCar.view.InputView;

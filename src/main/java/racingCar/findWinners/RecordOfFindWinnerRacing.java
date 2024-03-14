@@ -1,5 +1,8 @@
-package racingCar;
+package racingCar.findWinners;
 
+import racingCar.interf.MovingStrategy;
+import racingCar.RacingCar;
+import racingCar.interf.RandomMovingStrategy;
 import racingCar.utils.RandomGenerator;
 
 import java.util.ArrayList;
