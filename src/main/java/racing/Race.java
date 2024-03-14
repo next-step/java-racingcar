@@ -10,7 +10,7 @@ public class Race {
     private final InputView inputView;
     private final MoveStrategy moveStrategy;
 
-    private static final String CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    private static final String CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n";
     private static final String TRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
     public Race(InputView inputView, MoveStrategy moveStrategy) {
@@ -19,26 +19,27 @@ public class Race {
     }
 
     public void start() {
-        int carCount = inputView.inputtedNumber(CAR_COUNT_MESSAGE);
-        int tryCount = inputView.inputtedNumber(TRY_COUNT_MESSAGE);
+        List<String> carNames = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
+        TryCount tryCount = TryCount.from(inputView.inputtedNumber(TRY_COUNT_MESSAGE));
         inputView.closeScanner();
 
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            cars.add(Car.from(carName));
         }
 
-        Cars cars = new Cars(carList);
+        Cars racingCars = Cars.from(cars);
 
         ResultView resultView = new ResultView();
 
-        int currentTryCount = 0;
-
-        while (currentTryCount < tryCount) {
-            playRound(cars);
-            resultView.printRaceResult(cars);
-            currentTryCount++;
+        while (tryCount.hasLeft()) {
+            tryCount.decrement();
+            playRound(racingCars);
+            resultView.printRaceResult(racingCars);
         }
+
+        resultView.printRaceWinner(racingCars);
     }
 
     private void playRound(Cars cars) {

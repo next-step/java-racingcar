@@ -2,24 +2,27 @@ package racing;
 
 public class Position {
     private static final int START_POSITION = 0;
-    private static final String DASH = "-";
 
-    private int position;
+    private final int position;
 
-    public Position() {
-        this.position = START_POSITION;
+    private Position(int position) {
+        this.position = position;
     }
 
-    public void addOne() {
-        position++;
+    public static Position startPosition() {
+        return new Position(START_POSITION);
     }
 
-    public String dashOfPosition() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append(DASH);
-        }
-        return stringBuilder.toString();
+    public static Position valueOf(int position) {
+        return new Position(position);
+    }
+
+    public Position add(int addPosition) {
+        return new Position(position + addPosition);
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override

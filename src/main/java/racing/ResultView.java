@@ -4,14 +4,21 @@ import java.util.Iterator;
 
 public class ResultView {
 
+    private static final String RESULT_DELIMITER = " : ";
+    private static final String DASH = "-";
+
     public ResultView() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과\n");
     }
 
     public void printRaceResult(Cars cars) {
         Iterator<Car> iter = cars.iterator();
-        iter.forEachRemaining(car-> System.out.println(car.carPosition()));
+        iter.forEachRemaining(car -> System.out.println(car.getName() + RESULT_DELIMITER + DASH.repeat(car.getPosition())));
 
         System.out.println();
+    }
+
+    public void printRaceWinner(Cars cars) {
+        System.out.println(cars.getWinners() + "가 최종 우승했습니다.");
     }
 }

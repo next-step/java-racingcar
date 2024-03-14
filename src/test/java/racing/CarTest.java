@@ -1,8 +1,9 @@
 package racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.strategy.MoveStrategy;
 
 
@@ -10,20 +11,37 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    private final MoveStrategy alwaysTrueStrategy = () -> true;
+
+    private final String testName = "test";
+
     @Test
+    @DisplayName("getPosition() - Car의 위치를 int로 반환")
+    void getPosition() {
+        Car car = Car.from(testName);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("getName() - Car의 이름을 문자열로 반환")
+    void getName() {
+        Car car = Car.from(testName);
+        assertThat(car.getName()).isEqualTo(testName);
+    }
+
+    @Test
+    @DisplayName("play() - MoveStrategy의 movable()이 true이면 전진")
     void play() {
-        MoveStrategy moveStrategy = () -> true;
+        Car car1 = Car.from(testName);
+        car1.play(alwaysTrueStrategy);
+        car1.play(alwaysTrueStrategy);
 
-        Car car1 = new Car();
-        car1.play(moveStrategy);
-        car1.play(moveStrategy);
+        Car car2 = Car.from("nimoh");
+        car2.play(alwaysTrueStrategy);
+        car2.play(alwaysTrueStrategy);
 
-        Car car2 = new Car();
-        car2.play(moveStrategy);
-        car2.play(moveStrategy);
-
-        Car car3 = new Car();
-        car3.play(moveStrategy);
+        Car car3 = Car.from("pobi");
+        car3.play(alwaysTrueStrategy);
 
         assertThat(car1).isEqualTo(car2);
         assertThat(car1).isNotEqualTo(car3);
@@ -31,21 +49,28 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:-", "2:--", "3:---", "4:----", "5:-----"}, delimiter = ':')
-    void carPosition(int input, String dash) {
-        Car car = getMovedCar(input);
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    @DisplayName("samePosition() - Car의 위치가 동일한 경우 true 반환")
+    void samePosition_same(int input) {
+        Car car = movedCar(input);
 
-        assertThat(car.carPosition()).isEqualTo(dash);
+        assertThat(car.samePosition(input)).isTrue();
     }
 
-    private Car getMovedCar(int moveCount) {
-        MoveStrategy moveStrategy = () -> true;
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    @DisplayName("samePosition() - Car의 위치가 다른 경우 false 반환")
+    void samePosition_diff(int input) {
+        Car car = movedCar(input);
 
-        Car car = new Car();
+        assertThat(car.samePosition(input + 1)).isFalse();
+    }
+
+    private Car movedCar(int moveCount) {
+        Car car = Car.from(testName);
         for (int i = 0; i < moveCount; i++) {
-            car.play(moveStrategy);
+            car.play(alwaysTrueStrategy);
         }
-
         return car;
     }
 
