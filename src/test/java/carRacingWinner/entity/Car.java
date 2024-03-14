@@ -5,11 +5,11 @@ public class Car {
     String name;
     int location;
 
-    public void move() {
-        location++;
+    public Car(String word) {
+        this.name = word;
     }
 
-    public void name(String name) {
-        this.name = name;
+    public void move() {
+        location++;
     }
 }
