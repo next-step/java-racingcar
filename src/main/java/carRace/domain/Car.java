@@ -15,10 +15,18 @@ public class Car {
 
     private int moveCount;
 
-    public static List<Car> createCars(int carMount) {
-        return IntStream.range(0, carMount)
-            .mapToObj(i -> new Car())
-            .collect(Collectors.toList());
+    public Car(final String carName) {
+        this(carName, 0);
+    }
+
+    public Car(final String carName, int moveCount) {
+        this.carName = carName;
+        this.moveCount = moveCount;
+    }
+
+    public static List<Car> createCars(final List<String> carNames) {
+        return IntStream.range(0, carNames.size())
+            .mapToObj(carNumber -> new Car(carNames.get(carNumber))).collect(Collectors.toList());
     }
 
     public List<Integer> randomNumberHistory() {
@@ -29,12 +37,14 @@ public class Car {
         return moveCount;
     }
 
-    public boolean move(int randomNumber) {
+    public String carName() {
+        return carName;
+    }
+
+    public void move(int randomNumber) {
         randomNumberHistory.add(randomNumber);
         if (randomNumber >= RECORD_STANDARD_NUMBER) {
             moveCount += 1;
-            return true;
         }
-        return false;
     }
 }
