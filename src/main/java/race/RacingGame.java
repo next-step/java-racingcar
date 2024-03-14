@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private static final String STANDARD_SPLIT_REGEX = ",";
     private final OutputView outputView;
     private final InputView inputView;
     private int winnerPosition;
@@ -25,7 +24,7 @@ public class RacingGame {
     }
 
     public void start() {
-        String[] names = inputView.askNameOfCar().split(STANDARD_SPLIT_REGEX);
+        String[] names = inputView.askNameOfCar();
         int carNumbers = names.length;
         int attempts = inputView.askNumberOfAttempts();
 
