@@ -6,9 +6,6 @@ import racingcar.view.OutputView;
 
 public class RacingGame {
 
-    private static final String CAR_COUNT_INPUT_MESSAGE = "자동차 대수는 몇 대 인가요?";
-    private static final String PLAYING_COUNT_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
-
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -19,10 +16,10 @@ public class RacingGame {
 
     public void play() {
         try {
-            outputView.printOneLine(CAR_COUNT_INPUT_MESSAGE);
+            outputView.printCarCountInputMessage();
             final int carCount = inputView.readIntNumber();
 
-            outputView.printOneLine(PLAYING_COUNT_INPUT_MESSAGE);
+            outputView.printPlayingCountInputMessage();
             final int playingCount = inputView.readIntNumber();
 
             final Race race = Race.setUp(carCount, playingCount);
