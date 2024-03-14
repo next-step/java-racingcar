@@ -20,16 +20,8 @@ public class Names {
         return Collections.unmodifiableList(this.names);
     }
 
-    @Override
-    public String toString() {
-        return String.join(",", toStringArray());
+    public int size() {
+        return this.names.size();
     }
 
-    private String[] toStringArray() {
-        String[] stringArray = new String[names.size()];
-        for (int i = 0; i < stringArray.length; i++) {
-            stringArray[i] = names.get(i).get();
-        }
-        return stringArray;
-    }
 }

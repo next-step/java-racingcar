@@ -23,17 +23,25 @@ public class ResultView {
 
     private static void appendCars(StringBuilder stringBuilder, Cars cars) {
         for (Car car : cars.get()) {
-            stringBuilder.append(getCarPrintFormat(car)).append("\n");
+            stringBuilder.append(formatCar(car)).append("\n");
         }
         stringBuilder.append("\n");
     }
 
-    private static String getCarPrintFormat(Car car) {
+    private static String formatCar(Car car) {
         return MessageFormat.format("{0} : {1}"
                 , car.getName().get(), CAR_POSITION_STRING.repeat(car.getDistance().get()));
     }
 
     public static void printWinnerNames(Winners winners) {
-        System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", winners.get()));
+        System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", formatNames(winners.get())));
+    }
+
+    private static String formatNames(Names names) {
+        String[] stringArray = new String[names.size()];
+        for (int i = 0; i < stringArray.length; i++) {
+            stringArray[i] = names.get().get(i).get();
+        }
+        return String.join(",", stringArray);
     }
 }
