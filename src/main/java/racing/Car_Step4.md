@@ -1,8 +1,8 @@
 ## REVIEW
 
-이름 입력 받는 부분 validation check 필요!!! ->
+이름 입력 받는 부분 validation check 필요!!! -> ok
 매직넘버 추출! -> good
-RoundRecord stream 사용시 map<String, Integer> -> List<Car> -> 참고
+RoundRecord stream 사용시 map<String, Integer> -> List<Car> -> 참
 ResultView에서 MessageFormat 메서드화 -> ok
 
 ## Todo
