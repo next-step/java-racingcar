@@ -1,3 +1,10 @@
+## REVIEW
+
+이름 입력 받는 부분 validation check 필요!!! ->
+매직넘버 추출! -> good
+RoundRecord stream 사용시 map<String, Integer> -> List<Car> -> 참고
+ResultView에서 MessageFormat 메서드화 -> ok
+
 ## Todo
 
 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
@@ -7,6 +14,7 @@
 
 ## Feat
 
+- 이름 입력 받는 부분 validation check 필요!!! ->
 - 자동차 이름 입력 받는 부분 필요 -> InputView String[] ok
 - 몇대가 시작할 것인지 받는대신 이름으로 파악 ok
 - String[] -> CarGame() -> split(",") -> ok

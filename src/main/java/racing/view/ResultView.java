@@ -4,6 +4,7 @@ import racing.domain.RoundRecord;
 
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -37,10 +38,15 @@ public class ResultView {
 //  }
         return roundRecord.getPositions().entrySet()
                 .stream()
-                .map(position -> MessageFormat.format(PRINT_FORMAT, position.getKey(), POSITION_MARK.repeat(Math.max(0, position.getValue()))))
+                //.map(position -> makeMessageFormat(position))
+                .map(ResultView::makeMessageFormat)
                 //.map(position -> String.format("%s : %s", position.getKey(), POSITION_MARK.repeat(Math.max(0, position.getValue()))))
                 //.map(position -> position.getKey() + " : " + POSITION_MARK.repeat(Math.max(0, position.getValue())))
                 .collect(Collectors.joining(NEW_LINE));
+    }
+
+    private static String makeMessageFormat(Map.Entry<String, Integer> position) {
+        return MessageFormat.format(PRINT_FORMAT, position.getKey(), POSITION_MARK.repeat(Math.max(0, position.getValue())));
     }
 
     private static String findWinner(List<RoundRecord> roundRecords) {
