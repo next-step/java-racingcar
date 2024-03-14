@@ -23,9 +23,9 @@ public class ResultView {
 
     private static void appendCars(StringBuilder stringBuilder, Cars cars) {
         for (Car car : cars.get()) {
-            stringBuilder.append(formatCar(car)).append("\n");
+            stringBuilder.append(formatCar(car)).append(System.lineSeparator());
         }
-        stringBuilder.append("\n");
+        stringBuilder.append(System.lineSeparator());
     }
 
     private static String formatCar(Car car) {
