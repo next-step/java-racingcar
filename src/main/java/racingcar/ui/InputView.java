@@ -4,14 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
-    private static InputView instance = new InputView();
+    private static final Scanner scanner = new Scanner(System.in);
 
-    private InputView() {
+    public InputView() {
 
-    }
-
-    public static InputView getInstance() {
-        return instance;
     }
 
     public void printNamesOfCar() {
@@ -22,18 +18,17 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public static String inputNamesOfCar(Scanner scanner) {
-        InputView.getInstance().printNamesOfCar();
+    public String inputNamesOfCar() {
+        printNamesOfCar();
         return scanner.next();
     }
 
-    public static int inputNumberOfAttempt(Scanner scanner) {
-        InputView.getInstance().printNumberOfAttempt();
+    public int inputNumberOfAttempt() {
+        printNumberOfAttempt();
         try {
             return scanner.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("정수 타입이 아닙니다!" + e);
-            throw new RuntimeException();
+            throw new IllegalArgumentException("정수 타입이 아닙니다!" + e);
         }
     }
 
