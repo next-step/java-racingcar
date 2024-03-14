@@ -13,8 +13,8 @@
 <br />
 
 #### 주어진 횟수 동안 자동차는 전진 또는 멈출 수 있다.
-- [ ] isMovable()이 true인 경우, 자동차 전진 테스트
-- [ ] isMovable()이 false 경우, 자동차가 전진하지 않는 경우 테스트
+- [X] isMovable()이 true인 경우, 자동차 전진 테스트
+- [X] isMovable()이 false 경우, 자동차가 전진하지 않는 경우 테스트
 
 <br />
 
