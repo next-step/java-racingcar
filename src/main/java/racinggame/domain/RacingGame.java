@@ -5,9 +5,13 @@ import racinggame.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
+    private static final int MAX_BOUND = 10;
+
     private final List<Car> cars;
+
     private int tryNo;
 
     public RacingGame(String carNames, int tryNo) {
@@ -33,8 +37,9 @@ public class RacingGame {
     }
 
     private void moveCars() {
+        Random random = new Random();
         for (Car car : cars) {
-            car.move();
+            car.move(random.nextInt(MAX_BOUND));
         }
     }
 
