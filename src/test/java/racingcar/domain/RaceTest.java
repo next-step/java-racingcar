@@ -8,12 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racingcar.util.NumberGenerator;
-import racingcar.util.RandomNumberGenerator;
-
 class RaceTest {
-
-    private static final NumberGenerator numberGenerator = new RandomNumberGenerator();
 
     @Test
     @DisplayName("양의 정수의 자동차 대수와 레이싱 시도 횟수를 전달하면 정상적으로 Race 객체를 생성한다.")
