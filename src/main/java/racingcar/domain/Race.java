@@ -48,7 +48,7 @@ public class Race {
         return GameResult.from(this.roundResults);
     }
 
-    public static Race setUp(final int carCount, final int playingCount) {
+    public static Race of(final int carCount, final int playingCount) {
         validateCarCountIsPositive(carCount);
         validatePlayingCountIsPositive(playingCount);
 

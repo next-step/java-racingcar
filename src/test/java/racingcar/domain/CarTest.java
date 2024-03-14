@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racingcar.domain.Car;
-
 class CarTest {
 
     @Test
@@ -24,8 +22,8 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
-    @DisplayName("from 메서드에 0 혹은 음의 정수를 전달하면, IllegalArgumentException을 던진다.")
-    void from_NegativeOrZeroNumber_IllegalArgumentException(final int negativeOrZeroNumber) {
+    @DisplayName("from 메서드에 0 혹은 음의 정수를 전달하면, 예외를 던진다.")
+    void from_NegativeOrZeroNumber_Exception(final int negativeOrZeroNumber) {
         assertThatThrownBy(() -> Car.from(negativeOrZeroNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차의 번호는 자연수만 가능합니다.");
@@ -59,8 +57,8 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 10})
-    @DisplayName("moveForwardOrStop 메서드에 이동 조건 범위에서 벗어난 숫자를 전달하면, IllegalArgumentException을 던진다.")
-    void moveForwardOrStop_ConditionOutOfRange_IllegalArgumentException(final int movingConditionOutOfRange) {
+    @DisplayName("moveForwardOrStop 메서드에 이동 조건 범위에서 벗어난 숫자를 전달하면, 예외를 던진다.")
+    void moveForwardOrStop_ConditionOutOfRange_Exception(final int movingConditionOutOfRange) {
         final Car car = Car.from(1);
 
         assertThatThrownBy(() -> car.moveForwardOrStop(movingConditionOutOfRange))
