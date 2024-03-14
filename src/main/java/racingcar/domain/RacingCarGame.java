@@ -21,14 +21,8 @@ public class RacingCarGame {
 
     public List<Car> playRoundsAndReturnCarList(MoveStrategy moveStrategy) {
         for (Car car : carList) {
-            moveCarByStrategy(car, moveStrategy);
-        }
-        return carList;
-    }
-
-    public void moveCarByStrategy(Car car, MoveStrategy moveStrategy) {
-        if (moveStrategy.isMovable()) {
             car.moveForward(moveStrategy);
         }
+        return carList;
     }
 }
