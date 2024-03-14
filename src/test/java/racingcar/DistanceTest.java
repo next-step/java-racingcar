@@ -32,4 +32,18 @@ public class DistanceTest {
         }).isInstanceOf(NegativeInitialDistanceException.class)
                 .hasMessage(MessageFormat.format("거리의 초기값으로 음수는 설정할 수 없습니다. (입력된 값: {0})", initValue));
     }
+
+    @Test
+    @DisplayName("[성공] 초기값 0에서 거리를 증가시키면 거리가 1이다.")
+    void 거리_증가() {
+        // Given
+        Distance distance = new Distance();
+
+        // When
+        distance.increase();
+
+        // Then
+        assertThat(distance.get()).isEqualTo(1);
+    }
+
 }
