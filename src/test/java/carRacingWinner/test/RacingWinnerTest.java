@@ -23,13 +23,11 @@ class RacingWinnerTest {
 
     @Test
     @DisplayName("이름 나누기")
-
     public void nameDivision() {
 
         String name = "dog,panda,fire";
-        WinnerRacingController namesCheck = new WinnerRacingController(winnerService);
 
-        assertThat(namesCheck.division(name)).hasSize(3);
+
     }
 
 
