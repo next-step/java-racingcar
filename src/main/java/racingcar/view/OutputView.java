@@ -11,7 +11,14 @@ public class OutputView {
         throw new AssertionError();
     }
 
-    public static void printCarPositionByPeriod(List<Car> cars) {
+    public static void printCarsPositionByRounds(List<List<Car>> rounds) {
+        for (List<Car> cars : rounds) {
+            printCarsPositionByOneRound(cars);
+        }
+        System.out.println();
+    }
+
+    public static void printCarsPositionByOneRound(List<Car> cars) {
         for (Car car : cars) {
             printCarPosition(car.getPosition());
         }
