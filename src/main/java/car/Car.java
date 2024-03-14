@@ -1,29 +1,33 @@
 package car;
 
-import java.util.Random;
+import car.randomNumer.RandomNumber;
+import car.randomNumer.impl.RadomNumberByRandom;
 
 public class Car {
 
-    private String location;
+    private int location;
+    private final int flagNumberForCarMove = 4;
+    private final RandomNumber randomNumber;
 
     public Car() {
-        this.location = "";
+        randomNumber = new RadomNumberByRandom(10);
     }
 
-    public void move(int i) {
-        for (; i > 0; i--) {
-            move();
+    public Car(RandomNumber randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+
+    public void move() {
+        if (getRandomNumber()>= flagNumberForCarMove) {
+            this.location++;
         }
     }
 
-    private void move() {
-        Random random = new Random();
-        if (random.nextInt(10) >= 4) {
-            this.location += "-";
-        }
+    public int getLocation(){
+        return this.location;
     }
 
-    public String getLocation() {
-        return location;
+    private int getRandomNumber(){
+        return randomNumber.getRandomNumber();
     }
 }
