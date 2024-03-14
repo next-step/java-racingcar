@@ -1,13 +1,13 @@
-package racingCar;
+package racingCar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingCar.game.Car;
-import racingCar.game.generator.IntGenerator;
-import racingCar.game.generator.RandomGenerator;
+import racingCar.domain.Car;
+import racingCar.domain.generator.IntGenerator;
+import racingCar.domain.generator.RandomGenerator;
 
 public class CarTest {
 

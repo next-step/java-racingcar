@@ -1,6 +1,6 @@
-package racingCar.game;
+package racingCar.domain;
 
-import racingCar.game.generator.IntGenerator;
+import racingCar.domain.generator.IntGenerator;
 
 public class Car {
 

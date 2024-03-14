@@ -1,10 +1,11 @@
-package racingCar;
+package racingCar.controller;
 
 import java.util.List;
-import racingCar.game.GameResult;
-import racingCar.game.RacingCarGame;
-import racingCar.ui.InputView;
-import racingCar.ui.ResultView;
+import racingCar.domain.GameResult;
+import racingCar.domain.RacingCarGame;
+import racingCar.domain.StringUtil;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 public class Main {
 
