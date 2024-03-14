@@ -1,5 +1,9 @@
 package step3.application.domain;
 
+import step3.application.domain.model.OneMoveRecord;
+import step3.application.domain.model.RacingHistory;
+import step3.application.generator.NumberRandomGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -10,7 +14,7 @@ public class Racing {
 
     public Racing(int carCount) {
         validateCount(carCount);
-        this.racingCars = new RacingCars(createRacingGroup(carCount));
+        this.racingCars = new RacingCars(createRacingGroup(carCount), new NumberRandomGenerator());
     }
 
     private List<Car> createRacingGroup(int carCount) {
@@ -19,16 +23,15 @@ public class Racing {
                 .collect(Collectors.toList());
     }
 
-    public void startRace(int moveCount) {
+    public RacingHistory startRace(int moveCount) {
         validateCount(moveCount);
-        doRace(moveCount);
+        return new RacingHistory(doRace(moveCount));
     }
 
-    private void doRace(int count) {
-        for (int i = 0; i < count; i++) {
-            racingCars.moveCars();
-            System.out.println();
-        }
+    private List<OneMoveRecord> doRace(int count) {
+        return IntStream.rangeClosed(1, count)
+                .mapToObj(i -> racingCars.moveCars())
+                .collect(Collectors.toList());
     }
 
     private static void validateCount(int count) {
