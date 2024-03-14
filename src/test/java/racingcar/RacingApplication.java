@@ -9,6 +9,6 @@ public class RacingApplication {
 
         RacingRepository repository = new RacingRepository();
         RacingService racingService = new RacingService(repository);
-        new RacingController(racingService);
+        new RacingController(racingService).racing();
     }
 }

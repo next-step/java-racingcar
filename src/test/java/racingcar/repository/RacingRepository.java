@@ -30,7 +30,9 @@ public class RacingRepository {
 
     public void moveCar() {
         for (Car car : cars) {
-            if (stopOrGo()) car.move();
+            if (stopOrGo()) {
+                car.move();
+            }
         }
     }
 
@@ -44,11 +46,10 @@ public class RacingRepository {
 
     public void position() {
         for (Car car : cars) {
-            for (int i = 0; i <= car.location(); i++) {
+            for (int i = 0; i < car.location(); i++) {
                 System.out.print(display);
             }
             System.out.println();
         }
-
     }
 }
