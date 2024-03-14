@@ -4,6 +4,7 @@ import racingcar.domain.strategyPattern.MoveStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class RacingCarGame {
@@ -14,8 +15,8 @@ public class RacingCarGame {
     }
 
     public static List<RacingCar> createCarList(int carCount) {
-        return Stream.generate(RacingCar::new)
-                .limit(carCount)
+        return IntStream.range(0, carCount)
+                .mapToObj(i -> new RacingCar())
                 .collect(Collectors.toList());
     }
 
