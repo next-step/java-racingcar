@@ -21,15 +21,15 @@ public class ResultView {
     }
 
     public void printMove(List<Car> carList) {
-        carList.forEach(car -> printCarDistance(car));
+        carList.forEach(ResultView::printCarDistance);
     }
 
     private static void printCarDistance(Car car) {
-        System.out.print(getCarName(car));
+        String distanceView = getCarName(car);
         for (int i = 0; i < car.getDistance(); i++) {
-            System.out.print(PRINT_DISTANCE);
+            distanceView += PRINT_DISTANCE;
         }
-        System.out.println();
+        System.out.println(distanceView);
     }
 
     private static String getCarName(Car car) {
