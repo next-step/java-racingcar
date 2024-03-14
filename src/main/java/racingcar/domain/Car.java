@@ -17,7 +17,7 @@ public class Car {
     private final int number;
     private int position;
 
-    private Car(final int number) {
+    public Car(final int number) {
         validateNumberIsPositive(number);
 
         this.number = number;
@@ -62,9 +62,5 @@ public class Car {
 
     private boolean canMoveForward(final int condition) {
         return condition >= FORWARD_CONDITION_RANGE_START;
-    }
-
-    public static Car from(final int number) {
-        return new Car(number);
     }
 }

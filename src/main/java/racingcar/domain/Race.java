@@ -53,7 +53,7 @@ public class Race {
         validatePlayingCountIsPositive(playingCount);
 
         final List<Car> cars = IntStream.range(1, carCount + 1)
-                .mapToObj(Car::from)
+                .mapToObj(Car::new)
                 .collect(Collectors.toList());
 
         return new Race(cars, playingCount);

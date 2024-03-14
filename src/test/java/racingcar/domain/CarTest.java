@@ -14,7 +14,7 @@ class CarTest {
     @DisplayName("from 메서드에 자연수를 전달하면, 정상적으로 Car 객체가 생성된다.")
     void from_PositiveNumber_NewCar() {
         final int number = 1;
-        final Car newCar = Car.from(number);
+        final Car newCar = new Car(number);
 
         assertThat(newCar.number())
                 .isEqualTo(number);
@@ -24,7 +24,7 @@ class CarTest {
     @ValueSource(ints = {-1, 0})
     @DisplayName("from 메서드에 0 혹은 음의 정수를 전달하면, 예외를 던진다.")
     void from_NegativeOrZeroNumber_Exception(final int negativeOrZeroNumber) {
-        assertThatThrownBy(() -> Car.from(negativeOrZeroNumber))
+        assertThatThrownBy(() -> new Car(negativeOrZeroNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차의 번호는 자연수만 가능합니다.");
     }
@@ -32,7 +32,7 @@ class CarTest {
     @Test
     @DisplayName("moveForwardOrStop 메서드에 전진 조건에 해당하는 숫자를 전달하면, 자동차가 한 칸 전진한다.")
     void moveForwardOrStop_ForwardCondition_MovePositionForward() {
-        final Car car = Car.from(1);
+        final Car car = new Car(1);
         final int previousPosition = car.position();
         final int forwardMovingCondition = 4;
 
@@ -45,7 +45,7 @@ class CarTest {
     @Test
     @DisplayName("moveForwardOrStop 메서드에 정지 조건에 해당하는 숫자를 전달하면, 자동차는 현재 위치를 유지한다.")
     void moveForwardOrStop_StopCondition_KeepPreviousPosition() {
-        final Car car = Car.from(1);
+        final Car car = new Car(1);
         final int previousPosition = car.position();
         final int stopMovingCondition = 3;
 
@@ -59,7 +59,7 @@ class CarTest {
     @ValueSource(ints = {-1, 10})
     @DisplayName("moveForwardOrStop 메서드에 이동 조건 범위에서 벗어난 숫자를 전달하면, 예외를 던진다.")
     void moveForwardOrStop_ConditionOutOfRange_Exception(final int movingConditionOutOfRange) {
-        final Car car = Car.from(1);
+        final Car car = new Car(1);
 
         assertThatThrownBy(() -> car.moveForwardOrStop(movingConditionOutOfRange))
                 .isInstanceOf(IllegalArgumentException.class)
