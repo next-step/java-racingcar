@@ -41,4 +41,14 @@ public class RacingCarTest {
         assertThat(carList.get(1).GetMoveInfo()).isEqualTo(4);
         assertThat(carList.get(2).GetMoveInfo()).isEqualTo(4);
     }
+
+    @Test
+    void GetMoveInfo() {
+        Car car = new Car();
+        assertThat(car.GetMoveInfo()).isEqualTo(0);
+        car.MoveForward(5);
+        assertThat(car.GetMoveInfo()).isEqualTo(1);
+        car.MoveForward(3);
+        assertThat(car.GetMoveInfo()).isEqualTo(1);
+    }
 }
