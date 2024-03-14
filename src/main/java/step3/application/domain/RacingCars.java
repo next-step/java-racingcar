@@ -1,32 +1,31 @@
 package step3.application.domain;
 
+import step3.application.domain.model.OneMoveRecord;
+import step3.application.generator.NumberGenerator;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
     private final List<Car> cars;
-    private final RandomFactory randomFactory;
+    private final NumberGenerator numberGenerator;
     public static final int MOVE_THRESHOLD = 4;
-    public static final String LOCATION_MARK = "-";
 
-    public RacingCars(List<Car> cars) {
+    public RacingCars(List<Car> cars, NumberGenerator numberGenerator) {
         this.cars = cars;
-        this.randomFactory = new RandomFactory();
+        this.numberGenerator = numberGenerator;
     }
 
-    public void moveCars() {
-        for (Car car : this.cars) {
-            int location = car.move(canMove());
-            printLocation(location);
-        }
+    public OneMoveRecord moveCars() {
+
+        List<Integer> oneMoveResult = this.cars.stream()
+                .map(car -> car.move(canMove()))
+                .collect(Collectors.toList());
+        return new OneMoveRecord(oneMoveResult);
     }
 
     private boolean canMove() {
-        return randomFactory.drawNumber() >= MOVE_THRESHOLD;
-    }
-
-    private void printLocation(int location) {
-        String currentLocation = LOCATION_MARK.repeat(Math.max(0, location));
-        System.out.println(currentLocation);
+        return numberGenerator.drawNumber() >= MOVE_THRESHOLD;
     }
 }
