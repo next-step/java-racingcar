@@ -1,17 +1,14 @@
 package racingcar.controller;
 
 import racingcar.domain.Race;
-import racingcar.util.NumberGenerator;
 import racingcar.vo.GameResult;
 
 public class RacingGame {
 
     private final RacingScreen racingScreen;
-    private final NumberGenerator numberGenerator;
 
-    public RacingGame(final RacingScreen racingScreen, final NumberGenerator numberGenerator) {
+    public RacingGame(final RacingScreen racingScreen) {
         this.racingScreen = racingScreen;
-        this.numberGenerator = numberGenerator;
     }
 
     public void play() {
