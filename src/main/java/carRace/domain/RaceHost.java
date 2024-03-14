@@ -40,4 +40,10 @@ public class RaceHost {
     private void ranAllCars(final CompletableFuture<Void> waitCars) {
         waitCars.join();
     }
+
+    public void progressAwardsCeremony(final List<Car> cars){
+        Referee referee = new Referee();
+        List<String> winners = referee.findWinners(cars);
+        OutputView.printWinnersResult(winners);
+    }
 }
