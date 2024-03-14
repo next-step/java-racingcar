@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Distance;
 import racingcar.exception.NegativeInitialDistanceException;
 
@@ -47,7 +49,7 @@ public class DistanceTest {
     }
 
     @Test
-    @DisplayName("[성공] 두 거리를 비교해서 최대 거리를 리턴한다.")
+    @DisplayName("[성공] 두 거리를 비교해서 최대 거리를 반환한다.")
     void 최대_거리() {
         // Given
         Distance distance1 = new Distance(1);
