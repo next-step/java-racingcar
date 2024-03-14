@@ -2,11 +2,11 @@ package racingcar.domain;
 
 import racingcar.domain.strategyPattern.MoveStrategy;
 
-public class RacingCar {
+public class Car {
     private static final int MIN_MOVE_COUNT = 4;
     private int position;
 
-    public RacingCar() {
+    public Car() {
         this.position = 0;
     }
 

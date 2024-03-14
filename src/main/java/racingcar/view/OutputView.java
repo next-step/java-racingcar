@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.RacingCar;
+import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ public class OutputView {
         throw new AssertionError();
     }
 
-    public static void printCarPositionByPeriod(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
+    public static void printCarPositionByPeriod(List<Car> cars) {
+        for (Car car : cars) {
             printCarPosition(car.getPosition());
         }
         System.out.println();

@@ -5,29 +5,28 @@ import racingcar.domain.strategyPattern.MoveStrategy;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class RacingCarGame {
-    private List<RacingCar> carList;
+    private List<Car> carList;
 
     public RacingCarGame(int carCount) {
         this.carList = createCarList(carCount);
     }
 
-    public static List<RacingCar> createCarList(int carCount) {
+    public static List<Car> createCarList(int carCount) {
         return IntStream.range(0, carCount)
-                .mapToObj(i -> new RacingCar())
+                .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
 
-    public List<RacingCar> playRoundsAndReturnCarList(MoveStrategy moveStrategy) {
-        for (RacingCar car : carList) {
+    public List<Car> playRoundsAndReturnCarList(MoveStrategy moveStrategy) {
+        for (Car car : carList) {
             moveCarByStrategy(car, moveStrategy);
         }
         return carList;
     }
 
-    public void moveCarByStrategy(RacingCar car, MoveStrategy moveStrategy) {
+    public void moveCarByStrategy(Car car, MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             car.moveForward(moveStrategy);
         }
