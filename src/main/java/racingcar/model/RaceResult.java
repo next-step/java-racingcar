@@ -4,23 +4,19 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class RaceResult implements Iterable<CarRecord> {
-    private final Map<Integer, CarRecord> resultMap;
+public class RaceResult implements Iterable<CarRecords> {
+    private final Map<Integer, CarRecords> resultMap;
 
     public RaceResult() {
         this.resultMap = new HashMap<>();
     }
 
-    public void recordRaceResult(int tryNumber, CarRecord carRecord) {
-        resultMap.put(tryNumber, carRecord);
-    }
-
-    public CarRecord getFinalRaceResult() {
-        return this.resultMap.get(this.resultMap.size()-1);
+    public void recordRaceResult(int tryNumber, CarRecords carRecords) {
+        resultMap.put(tryNumber, carRecords);
     }
 
     @Override
-    public Iterator<CarRecord> iterator() {
+    public Iterator<CarRecords> iterator() {
         return resultMap.values().iterator();
     }
 }

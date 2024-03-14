@@ -29,10 +29,10 @@ public class CarTest {
     void compareDistanceTest() {
         // given
         // when
-        int carDistance = car.getDistance();
+        CarDistance carDistance = car.getDistance();
 
         //then
-        assertThat(carDistance).isEqualTo(0);
+        assertThat(carDistance).isEqualTo(new CarDistance(0));
     }
 
     @ParameterizedTest
@@ -41,9 +41,9 @@ public class CarTest {
     void stopCarTest(int data) {
         // when
         car.move(data);
-        int distance = car.getDistance();
+        CarDistance carDistance = car.getDistance();
         // then
-        assertThat(distance).isEqualTo(0);
+        assertThat(carDistance).isEqualTo(new CarDistance(0));
     }
 
     @ParameterizedTest
@@ -52,8 +52,8 @@ public class CarTest {
     void moveCarTest(int data) {
         // when
         car.move(data);
-        int distance = car.getDistance();
+        CarDistance carDistance = car.getDistance();
         // then
-        assertThat(distance).isEqualTo(1);
+        assertThat(carDistance).isEqualTo(new CarDistance(1));
     }
 }

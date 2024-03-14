@@ -34,11 +34,11 @@ public class Cars implements Iterable<Car> {
         cars.stream().forEach(car -> car.move(moveStrategy.getMoveNumber()));
     }
 
-    private CarRecord makeCarRecordSnapShot() {
-        CarRecord carRecord = new CarRecord();
+    private CarRecords makeCarRecordSnapShot() {
+        CarRecords carRecords = new CarRecords();
         for (Car car : cars) {
-            carRecord.put(car.getCarName(), car.getDistance());
+            carRecords.add(new CarRecord(car.getCarName(), car.getDistance()));
         }
-        return carRecord;
+        return carRecords;
     }
 }

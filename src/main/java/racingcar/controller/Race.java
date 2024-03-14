@@ -24,10 +24,9 @@ public class Race {
 
         RaceResult raceResult = cars.tryMove(tryNumber, new RandomNumberStrategy());
         resultView.printResultNotice();
-        resultView.printTryResult(carNames, raceResult);
+        resultView.printTryResult(raceResult);
 
-        WinnerMaker winnerMaker = new WinnerMaker();
-        winnerMaker.choiceWinner(raceResult);
-        resultView.printWinnerResult();
+        Winner winner = new Winner(cars);
+        resultView.printWinnerResult(winner);
     }
 }

@@ -1,8 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.CarNames;
-import racingcar.model.CarRecord;
-import racingcar.model.RaceResult;
+import racingcar.model.*;
 
 public class ResultView {
 
@@ -20,28 +18,28 @@ public class ResultView {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public void printTryResult(CarNames carNames, RaceResult raceResult) {
-        for (CarRecord carRecords : raceResult) {
-            printCarRaceResult(carNames, carRecords);
+    public void printTryResult(RaceResult raceResult) {
+        for (CarRecords carRecords : raceResult) {
+            printCarRaceResult(carRecords);
             System.out.println();
         }
     }
 
-    private void printCarRaceResult(CarNames carNames, CarRecord carRecords) {
-        for (int carIndex = 0; carIndex < carRecords.size(); carIndex++) {
-            String carName = carNames.getCarName(carIndex);
-            int carRecord = carRecords.getDistance(carName);
+    private void printCarRaceResult(CarRecords carRecords) {
+        for (CarRecord carRecord : carRecords) {
+            String carName = carRecord.getCarName();
+            int carDistance = carRecord.getDistance();
 
-            System.out.println(carName + ":" + makeDistanceResult(carRecord));
+            System.out.println(carName + ":" + makeDistanceResult(carDistance));
         }
     }
 
-    private String makeDistanceResult(Integer carRecord) {
+    private String makeDistanceResult(int distance) {
         String carDistance = CAR_DISTANCE;
-        return carDistance.repeat(carRecord);
+        return carDistance.repeat(distance);
     }
 
-    public void printWinnerResult() {
-//        System.out.println(+"가 최종 우승했습니다.");
+    public void printWinnerResult(Winner winner) {
+        System.out.println(winner.getWinnerNames()+"이(가) 최종 우승했습니다.");
     }
 }

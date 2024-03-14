@@ -1,24 +1,19 @@
 package racingcar.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CarRecord{
-    private final Map<String, Integer> carRecord;
+    private final String carName;
+    private final int carDistance;
 
-    public CarRecord() {
-        this.carRecord = new HashMap<>();
+    public CarRecord(String carName, int carDistance) {
+        this.carName = carName;
+        this.carDistance = carDistance;
     }
 
-    public void put(String carName, Integer distance) {
-        this.carRecord.put(carName, distance);
+    public String getCarName() {
+        return this.carName;
     }
 
-    public Integer getDistance(String carName) {
-        return this.carRecord.get(carName);
-    }
-
-    public int size() {
-        return this.carRecord.size();
+    public int getDistance() {
+        return this.carDistance;
     }
 }
