@@ -2,6 +2,7 @@ package race.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -13,16 +14,16 @@ public class CarTest {
 
     @BeforeEach
     void init() {
-        car = new Car(1, "임형준");
+        car = new Car(0, "임형준");
     }
 
-    @DisplayName("go메서드의 인자(randomNumber)를 고정해 움직인 거리를 반환한다")
+    @DisplayName("차가 한번 전진할 때 1만큼 움직인다는 것을 테스트한다")
     @ParameterizedTest
-    @CsvSource(value = {"4:4", "3:1"}, delimiter = ':')
-    void go_three_times(int randomNumber, int expected) {
-        car.go(randomNumber);
-        car.go(randomNumber);
-        car.go(randomNumber);
+    @CsvSource(value = {"1:1", "2:2","3:3"}, delimiter = ':')
+    void go_three_times(int times, int expected) {
+        for (int i = 0; i < times; i++) {
+            car.go();
+        }
         assertThat(car.getPosition()).isEqualTo(expected);
     }
 

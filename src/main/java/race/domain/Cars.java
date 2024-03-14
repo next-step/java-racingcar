@@ -1,6 +1,6 @@
 package race.domain;
 
-import race.utils.RandomUtil;
+import race.utils.PlayStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,12 @@ public class Cars {
         }
     }
 
-    public List<Integer> goForward(RandomUtil rule) {
+    public List<Integer> goForward(PlayStrategy rule) {
         List<Integer> mileages = new ArrayList<>();
         for (Car car : cars) {
-            car.go(rule.generate());
+            if (rule.isValidForGoForward()) {
+                car.go();
+            }
             mileages.add(car.getPosition());
         }
         return mileages;

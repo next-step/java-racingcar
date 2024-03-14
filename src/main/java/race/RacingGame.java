@@ -1,7 +1,7 @@
 package race;
 
 import race.domain.Cars;
-import race.utils.RaceRule;
+import race.utils.RandomStrategy;
 import race.view.InputView;
 import race.view.OutputView;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    private static final String STANDARD_REGEX = ",";
+    private static final String STANDARD_SPLIT_REGEX = ",";
     private final OutputView outputView;
     private final InputView inputView;
 
@@ -20,7 +20,7 @@ public class RacingGame {
 
     public void start() {
         String nameOfCar = inputView.askNameOfCar();
-        String[] names = nameOfCar.split(STANDARD_REGEX);
+        String[] names = nameOfCar.split(STANDARD_SPLIT_REGEX);
         int carNumbers = names.length;
         int attempts = inputView.askNumberOfAttempts();
 
@@ -28,7 +28,7 @@ public class RacingGame {
 
         Cars cars = new Cars(carNumbers, names);
         for (int attempt = 0; attempt < attempts; attempt++) {
-            List<Integer> points = cars.goForward(new RaceRule());
+            List<Integer> points = cars.goForward(new RandomStrategy());
             outputView.printMileages(points);
             outputView.printNewLine();
         }
