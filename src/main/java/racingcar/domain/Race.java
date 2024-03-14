@@ -1,13 +1,13 @@
 package racingcar.domain;
 
 import static java.text.MessageFormat.format;
-import static racingcar.util.RandomNumberGenerator.generateRandomNumberBetweenZeroAndNine;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import racingcar.util.NumberGenerator;
 import racingcar.vo.CarResult;
 import racingcar.vo.GameResult;
 import racingcar.vo.RoundResult;
@@ -21,11 +21,13 @@ public class Race {
     private final List<Car> cars;
     private final int playingCount;
     private final List<RoundResult> roundResults;
+    private final NumberGenerator numberGenerator;
 
-    private Race(final List<Car> cars, final int playingCount) {
+    private Race(final List<Car> cars, final int playingCount, final NumberGenerator numberGenerator) {
         this.cars = cars;
         this.playingCount = playingCount;
         this.roundResults = new ArrayList<>();
+        this.numberGenerator = numberGenerator;
     }
 
     public void run() {
@@ -39,8 +41,8 @@ public class Race {
 
     private void moveCars() {
         this.cars.forEach(car -> {
-            final int randomNumber = generateRandomNumberBetweenZeroAndNine();
-            car.moveForwardOrStop(randomNumber);
+            final int movingCondition = numberGenerator.generate();
+            car.moveForwardOrStop(movingCondition);
         });
     }
 
@@ -48,7 +50,7 @@ public class Race {
         return GameResult.from(this.roundResults);
     }
 
-    public static Race of(final int carCount, final int playingCount) {
+    public static Race of(final int carCount, final int playingCount, final NumberGenerator numberGenerator) {
         validateCarCountIsPositive(carCount);
         validatePlayingCountIsPositive(playingCount);
 
@@ -56,7 +58,7 @@ public class Race {
                 .mapToObj(Car::new)
                 .collect(Collectors.toList());
 
-        return new Race(cars, playingCount);
+        return new Race(cars, playingCount, numberGenerator);
     }
 
     private static void validateCarCountIsPositive(final int carCount) {

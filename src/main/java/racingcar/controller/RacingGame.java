@@ -1,21 +1,24 @@
 package racingcar.controller;
 
 import racingcar.domain.Race;
+import racingcar.util.NumberGenerator;
 import racingcar.vo.GameResult;
 
 public class RacingGame {
 
     private final RacingScreen racingScreen;
+    private final NumberGenerator numberGenerator;
 
-    public RacingGame(final RacingScreen racingScreen) {
+    public RacingGame(final RacingScreen racingScreen, final NumberGenerator numberGenerator) {
         this.racingScreen = racingScreen;
+        this.numberGenerator = numberGenerator;
     }
 
     public void play() {
         try {
             final int carCount = racingScreen.readCarCount();
             final int playingCount = racingScreen.readPlayingCount();
-            final Race race = Race.of(carCount, playingCount);
+            final Race race = Race.of(carCount, playingCount, numberGenerator);
 
             race.run();
 

@@ -2,15 +2,13 @@ package racingcar.util;
 
 import java.util.Random;
 
-public final class RandomNumberGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
 
     private static final Random random = new Random();
-    private static final int TEN = 10;
+    private static final int RANDOM_NUMBER_MAX_LIMIT = 10;
 
-    private RandomNumberGenerator() {
-    }
-
-    public static int generateRandomNumberBetweenZeroAndNine() {
-        return random.nextInt(TEN);
+    @Override
+    public int generate() {
+        return random.nextInt(RANDOM_NUMBER_MAX_LIMIT);
     }
 }
