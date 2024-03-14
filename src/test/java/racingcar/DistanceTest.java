@@ -46,4 +46,17 @@ public class DistanceTest {
         assertThat(distance.get()).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("[성공] 두 거리를 비교해서 최대 거리를 리턴한다.")
+    void 최대_거리() {
+        // Given
+        Distance distance1 = new Distance(1);
+        Distance distance2 = new Distance(2);
+
+        // When
+        Distance max = distance1.max(distance2);
+
+        // Then
+        assertThat(max).isEqualTo(distance2);
+    }
 }

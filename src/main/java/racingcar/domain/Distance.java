@@ -36,8 +36,12 @@ public class Distance {
         return this.distance;
     }
 
-    public boolean greaterThan(Distance distance) {
-        return this.distance >= distance.distance;
+
+    public Distance max(Distance distance) {
+        if (this.distance > distance.distance) {
+            return this;
+        }
+        return distance;
     }
 
     @Override
