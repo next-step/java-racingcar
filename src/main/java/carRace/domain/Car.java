@@ -11,7 +11,9 @@ public class Car {
 
     private final List<Integer> randomNumberHistory = new ArrayList<>();
 
-    private int moveCount = 0;
+    private final String carName;
+
+    private int moveCount;
 
     public static List<Car> createCars(int carMount) {
         return IntStream.range(0, carMount)
