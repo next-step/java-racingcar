@@ -24,26 +24,12 @@ public class CarRacingService {
             racingResults.add(currentAttemptStatus);
         }
 
-        return new RacingResultDto(racingResults, searchWinners());
+        return new RacingResultDto(racingResults, carRacing.getWinners());
     }
 
     private List<CarStatusDto> makeCurrentAttemptStatus() {
         return carRacing.getCars().stream()
                 .map(car -> new CarStatusDto(car.getName(), car.getCurrentLocation()))
-                .collect(Collectors.toList());
-    }
-
-    private List<String> searchWinners() {
-        List<Car> cars = carRacing.getCars();
-
-        int maxDistance = cars.stream()
-                .mapToInt(Car::getCurrentLocation)
-                .max()
-                .orElse(0);
-
-        return cars.stream()
-                .filter(car -> car.getCurrentLocation() == maxDistance)
-                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }

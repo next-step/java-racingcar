@@ -3,6 +3,7 @@ package step3;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -32,5 +33,18 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public List<String> searchWinners() {
+
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getCurrentLocation)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getCurrentLocation() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

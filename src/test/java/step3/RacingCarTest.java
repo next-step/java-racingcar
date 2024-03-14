@@ -82,4 +82,28 @@ public class RacingCarTest {
         assertTrue(actualNames.containsAll(Arrays.asList(TEST_CAR_NAMES)));
 
     }
+
+    @Test
+    public void 이름은_5자를_초과할_수_없다() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CarName("123456");
+        }, "네이밍 오류");
+    }
+
+    @Test
+    public void 자동차_경기의_우승자는_여러대도_가능하다() {
+        String[] testCarNames = {"1", "2", "3"};
+        CarRacing carRacing = new CarRacing(3, testCarNames, alwaysMoveStrategy);
+        assertThat(carRacing.getWinners()).isEqualTo(Arrays.asList(testCarNames));
+    }
+
+    @Test
+    public void 자동차_경기의_우승자는_한대도_가능하다() {
+        String[] testCarNames = {"1", "2", "3"};
+        String[] winnerCarName = {"1"};
+        CarRacing carRacing = new CarRacing(3, testCarNames, alwaysMoveStrategy);
+        carRacing.getCars().get(0).moveForwardOnChance();
+
+        assertThat(carRacing.getWinners()).isEqualTo(Arrays.asList(winnerCarName));
+    }
 }

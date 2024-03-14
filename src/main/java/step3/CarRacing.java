@@ -20,4 +20,8 @@ public class CarRacing {
     public List<Car> getCars() {
         return cars.getCars();
     }
+
+    public List<String> getWinners() {
+        return cars.searchWinners();
+    }
 }
