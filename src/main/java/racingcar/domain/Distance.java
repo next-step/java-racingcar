@@ -14,10 +14,14 @@ public class Distance {
 
     // Constructor for UnitTest
     public Distance(int initValue) {
+        validateDistance(initValue);
+        this.distance = initValue;
+    }
+
+    private void validateDistance(int initValue) {
         if (isNegative(initValue)) {
             throw new NegativeInitialDistanceException(initValue);
         }
-        this.distance = initValue;
     }
 
     private boolean isNegative(int initValue) {

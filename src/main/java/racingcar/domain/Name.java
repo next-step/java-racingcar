@@ -10,17 +10,12 @@ public class Name {
 
     private final String name;
 
-    // Constructor for UnitTest
-    public Name() {
-        this.name = "";
-    }
-
     public Name(String name) {
-        validateNameLength(name);
+        validateName(name);
         this.name = name;
     }
 
-    private void validateNameLength(String name) {
+    private void validateName(String name) {
         if (name.length() > NAME_LENGTH_LIMIT) {
             throw new NameLengthExceededException(name);
         }
