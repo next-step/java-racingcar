@@ -21,7 +21,7 @@ public class NameTest {
     }
 
     @Test
-    @DisplayName("[실패] 5자 이상의 자동차 이름이 부여된 경우 NameLengthExceededException 이 발생한다.")
+    @DisplayName("[실패] 5자가 초과된 자동차 이름이 부여된 경우 NameLengthExceededException 이 발생한다.")
     void 자동차_이름_실패() {
         String name = "nayeon";
         assertThatThrownBy(() -> {
