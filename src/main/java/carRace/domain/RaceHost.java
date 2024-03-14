@@ -10,8 +10,6 @@ public class RaceHost {
 
     private static final int ZERO = 0;
 
-    private final int carCount;
-
     private final int raceTryCount;
 
     public RaceHost(final int raceTryCount) {
