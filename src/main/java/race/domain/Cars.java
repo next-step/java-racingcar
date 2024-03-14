@@ -5,6 +5,8 @@ import race.utils.PlayStrategy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -27,5 +29,21 @@ public class Cars {
         }
         return Collections.unmodifiableList(carList);
     }
+
+    public String showWinnerNames() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition())
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    private int winnerPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+
 
 }
