@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 public class NameTest {
 
     @Test
-    @DisplayName("[성공] 자동차는 5자 이하의 이름을 부여해야 한다.")
+    @DisplayName("[성공] 3글자 자동차 이름을 부여한다.")
     void 자동차_이름_성공() {
         assertDoesNotThrow(() -> {
             new Name("pobi");
@@ -21,8 +21,16 @@ public class NameTest {
     }
 
     @Test
-    @DisplayName("[실패] 5자가 초과된 자동차 이름이 부여된 경우 NameLengthExceededException 이 발생한다.")
-    void 자동차_이름_실패() {
+    @DisplayName("[성공][경계값] 5글자 자동차 이름을 부여한다.")
+    void 자동차_이름_경계값_기준미만() {
+        assertDoesNotThrow(() -> {
+            new Name("crong");
+        });
+    }
+
+    @Test
+    @DisplayName("[실패][경계값] 6자의 자동차 이름을 부여한 경우 NameLengthExceededException 이 발생한다.")
+    void 자동차_이름_실패_경계값_기준초과() {
         String name = "nayeon";
         assertThatThrownBy(() -> {
             new Name(name);
