@@ -3,6 +3,7 @@ package racing.domain;
 import racing.domain.RacingCar;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,22 @@ public class RacingCars {
 
     public int size() {
         return racingCarList.size();
+    }
+
+    public int getMaxPosition() {
+        return Collections.max(
+                racingCarList.stream()
+                        .map(RacingCar::getPosition)
+                        .collect(Collectors.toList()));
+    }
+
+    public List<String> getWinnerNames() {
+        int highScore = getMaxPosition();
+
+        return racingCarList.stream()
+                .filter(car -> car.isWinner(highScore))
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
     }
 
     private boolean isNullOrBlank(String name) {

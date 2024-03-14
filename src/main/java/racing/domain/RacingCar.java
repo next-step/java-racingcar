@@ -4,15 +4,18 @@ public class RacingCar {
     private static final int MOVE_BORDER_NUMBER = 4;
 
     private final CarName name;
-    private int position;
+    private final Position position;
 
     public RacingCar(String name) {
-        this.name = new CarName(name);
-        this.position = 0;
+        this(name, 0);
     }
 
     public RacingCar(String name, int position) {
-        this.name = new CarName(name);
+        this(new CarName(name), new Position(position));
+    }
+
+    public RacingCar(CarName carName, Position position) {
+        this.name = carName;
         this.position = position;
     }
 
@@ -21,7 +24,7 @@ public class RacingCar {
     }
 
     public int getPosition() {
-        return position;
+        return position.value();
     }
 
     public void attemptToMove(int conditionNumber) {
@@ -30,7 +33,11 @@ public class RacingCar {
         }
     }
 
+    public boolean isWinner(int highScore) {
+        return this.position.isHighScore(highScore);
+    }
+
     private void move() {
-        this.position++;
+        this.position.increase();
     }
 }

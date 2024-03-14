@@ -1,6 +1,7 @@
 package racing;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.RacingCar;
@@ -30,5 +31,11 @@ class RacingCarTest {
     void 전진유무판단숫자가_4미만이면_전진하지_않는다(int conditionNumber) {
         racingCar.attemptToMove(conditionNumber);
         assertThat(racingCar.getPosition()).isEqualTo(STOP_POSITION);
+    }
+
+    @Test
+    void 우승자인지() {
+        RacingCar car = new RacingCar("bmw", 3);
+        assertThat(car.isWinner(3)).isTrue();
     }
 }

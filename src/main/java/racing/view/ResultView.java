@@ -1,6 +1,5 @@
 package racing.view;
 
-import racing.domain.Judge;
 import racing.domain.RacingCars;
 import racing.domain.RacingCar;
 
@@ -26,7 +25,7 @@ public class ResultView {
     }
 
     private static String joinWinnerNames(RacingCars racingCars) {
-        return String.join(COMMA, Judge.selectWinners(racingCars));
+        return String.join(COMMA, racingCars.getWinnerNames());
     }
 
     private static String toCurrentPositionString(RacingCar racingCar) {
