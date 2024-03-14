@@ -31,7 +31,7 @@ public class Racing {
 
         for (int index = 0; index < tryCount; index++) {
             cars.decideForward(carList.size());
-            resultView.showResult(carList);
+            resultView.showRacing(carList);
             System.out.println();
         }
     }
