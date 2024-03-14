@@ -7,8 +7,8 @@ public class RaceRecorder {
 
     private List<RaceRecord> records = new ArrayList<>();
 
-    public void record(List<Position> carsPositions) {
-        records.add(new RaceRecord(carsPositions));
+    public void record(List<Car> cars) {
+        records.add(new RaceRecord(cars));
     }
 
     public List<RaceRecord> getRecords() {

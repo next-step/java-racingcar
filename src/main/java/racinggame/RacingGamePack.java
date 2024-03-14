@@ -16,13 +16,11 @@ public class RacingGamePack {
     }
 
     private Cars initializeCars() {
-        return new Cars(InputView.retryableInputCarsCount());
+        return new Cars(InputView.retryableInputCarsNames());
     }
 
     public void startGame() {
         cars.raceStart(InputView.retryableInputRaceCount(), recorder);
         ResultView.display(recorder.getRecords());
     }
-
-
 }

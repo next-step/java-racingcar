@@ -1,23 +1,26 @@
 package racinggame.domain;
 
-import racinggame.view.CarsCount;
-import racinggame.view.RaceCount;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(CarsCount carCount) {
-        this.cars = initialCars(carCount);
+    public Cars(CarsNames carsNames) {
+        this(initialCars(carsNames));
     }
 
-    private List<Car> initialCars(CarsCount carCount) {
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    private static List<Car> initialCars(CarsNames carsNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount.value(); i++) {
-            cars.add(new Car());
+        for (int i = 0; i < carsNames.size(); i++) {
+            cars.add(new Car(carsNames.getName(i)));
         }
         return cars;
     }
@@ -25,21 +28,13 @@ public class Cars {
     public void raceStart(RaceCount raceCount, RaceRecorder recorder) {
         for (int i = 0; i < raceCount.value(); i++) {
             runCars();
-            recorder.record(getCarsPositions());
+            recorder.record(cars);
         }
     }
 
-    private void runCars() {
+    public void runCars() {
         for (Car car : cars) {
             car.run(new MoveCondition());
         }
-    }
-
-    public List<Position> getCarsPositions() {
-        List<Position> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.position());
-        }
-        return positions;
     }
 }
