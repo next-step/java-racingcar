@@ -20,7 +20,7 @@ public class WinnersTest {
 
         // When
         Winners winners = cars.getWinners();
-        assertThat(winners.getNames()).containsExactlyInAnyOrder(new Name("pobi"));
+        assertThat(winners.get().getNameStrings()).containsExactlyInAnyOrder("pobi");
     }
 
     @Test
@@ -35,6 +35,6 @@ public class WinnersTest {
 
         // When
         Winners winners = cars.getWinners();
-        assertThat(winners.getNames()).containsExactlyInAnyOrder(new Name("pobi"), new Name("crong"));
+        assertThat(winners.get().getNameStrings()).containsExactlyInAnyOrder("pobi", "crong");
     }
 }
