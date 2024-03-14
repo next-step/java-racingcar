@@ -10,9 +10,15 @@ public class RacingCars {
     this.cars = cars;
   }
 
-  public void move(){
-    for(Car car : cars){
-      car.move();
+  public int getCarCount(){
+    return cars.size();
+  }
+
+  public void move(List<Boolean> isMovingCars){
+    for(int i = 0 ; i < cars.size() ; i  ++){
+      if(isMovingCars.get(i)){
+        cars.get(i).move();
+      }
     }
   }
 

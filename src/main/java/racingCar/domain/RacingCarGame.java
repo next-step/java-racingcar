@@ -8,12 +8,13 @@ import racingCar.domain.generator.RandomGenerator;
 
 public class RacingCarGame {
 
+  IntGenerator intGenerator;
   private final RacingCars cars;
 
   public RacingCarGame(List<String> carNames) {
     int randomUpperBound = 10;
-    IntGenerator intGenerator = new RandomGenerator(randomUpperBound);
-    List<Car> racingCars = carNames.stream().map(carName -> new Car(carName, intGenerator)).collect(Collectors.toList());
+    intGenerator = new RandomGenerator(randomUpperBound);
+    List<Car> racingCars = carNames.stream().map(Car::new).collect(Collectors.toList());
     this.cars = new RacingCars(racingCars);
   }
 
@@ -27,7 +28,23 @@ public class RacingCarGame {
   }
 
   private void playGame() {
-    cars.move();
+    cars.move(decideMovingCars());
+  }
+
+  private List<Boolean> decideMovingCars() {
+    List<Boolean> isMovingCars = new ArrayList<>();
+    for(int i = 0 ; i < cars.getCarCount() ; i  ++){
+      isMovingCars.add(isMovingCar());
+    }
+    return isMovingCars;
+  }
+
+  private boolean isMovingCar() {
+    int randomNumber = intGenerator.nextInt();
+    if (randomNumber >= 4) {
+      return true;
+    }
+    return false;
   }
 
   private String getGameResult() {

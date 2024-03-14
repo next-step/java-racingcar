@@ -1,18 +1,15 @@
 package racingCar.domain;
 
-import racingCar.domain.generator.IntGenerator;
 
 public class Car {
 
   private final String name;
   private int position;
-  private final IntGenerator intGenerator;
 
-  public Car(String name, IntGenerator intGenerator) {
+  public Car(String name) {
     verifyCarName(name);
     this.name = name;
     this.position = 0;
-    this.intGenerator = intGenerator;
   }
 
   public String getName() {
@@ -28,10 +25,7 @@ public class Car {
   }
 
   public void move() {
-    int randomNumber = intGenerator.nextInt();
-    if (randomNumber >= 4) {
-      position++;
-    }
+    position++;
   }
 
   private void verifyCarName(String carName) {
