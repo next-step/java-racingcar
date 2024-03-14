@@ -40,28 +40,18 @@ public class CalculatorTest {
     public void twoNumberAddTest() {
         Calculator sut = new Calculator();
 
-        int actual = sut.calculate("1+2");
+        int actual = sut.calculate("1 + 2");
 
         assertThat(actual).isEqualTo(3);
     }
 
-    @Test
-    @DisplayName("+연산자가 여러번 등장하는 문자열을 입력하면 숫자의 합을 반환한다")
-    public void multipleNumberInputCalculateTest() {
-        Calculator sut = new Calculator();
-
-        int actual = sut.calculate("1+2+3");
-
-        assertThat(actual).isEqualTo(6);
-    }
-
 
     @Test
-    @DisplayName("1+2-1=2")
+    @DisplayName("1 + 2 - 1")
     public void sumMinusTest() {
         Calculator sut = new Calculator();
 
-        int actual = sut.calculate("1+2-1");
+        int actual = sut.calculate("1 + 2 - 1");
 
         assertThat(actual).isEqualTo(2);
     }
@@ -72,8 +62,18 @@ public class CalculatorTest {
     public void negativeShouldFailTest() {
         Calculator sut = new Calculator();
 
-        Assertions.assertThrows(IllegalStateException.class, () -> sut.calculate("-2+1"));
+        Assertions.assertThrows(IllegalStateException.class, () -> sut.calculate("-2 + 1"));
     }
+
+
+    @Test
+    @DisplayName("input이 숫자 1개면 숫자를 반환한다")
+    public void inputIsOnlyOneNumberShouldReturnNumber() {
+        Calculator sut = new Calculator();
+
+        assertThat(sut.calculate("1")).isEqualTo(1);
+    }
+
 
 
 
