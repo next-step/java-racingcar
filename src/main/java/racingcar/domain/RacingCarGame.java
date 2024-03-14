@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
-    private int trialCount;
+    private final int trialCount;
     private List<Car> carList;
     private List<List<Car>> roundResults;
 
@@ -29,7 +29,7 @@ public class RacingCarGame {
             play(moveStrategy);
             this.roundResults.add(new ArrayList<>(carList));
         }
-        return roundResults;
+        return this.roundResults;
     }
 
     public void play(MoveStrategy moveStrategy) {
