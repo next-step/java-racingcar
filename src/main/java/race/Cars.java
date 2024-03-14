@@ -21,5 +21,4 @@ public class Cars {
     public void addForward(int index) {
         carList.set(index, carList.get(index) + 1);
     }
-
 }

@@ -10,11 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest {
 
-    private static final StringBuilder stringBuilder = new StringBuilder();
     void 자동차_수_입력() throws Exception {
         String value = "3";
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(value.getBytes())));
+        final StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(bufferedReader.readLine());
 
         assertThat(stringBuilder).hasToString(value);
@@ -25,6 +25,7 @@ public class InputViewTest {
         String value = "5";
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(value.getBytes())));
+        final StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(bufferedReader.readLine());
 
         assertThat(stringBuilder).hasToString(value);
