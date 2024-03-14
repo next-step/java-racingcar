@@ -18,7 +18,6 @@ public class RacingCars {
     }
 
     public OneMoveRecord moveCars() {
-
         List<Integer> oneMoveResult = this.cars.stream()
                 .map(car -> car.move(canMove()))
                 .collect(Collectors.toList());
