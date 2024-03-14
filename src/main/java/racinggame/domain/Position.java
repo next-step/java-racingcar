@@ -3,25 +3,16 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class Position {
-    public static final String NEGATIVE_LOCATION_MESSAGE = "위치가 음수가 될 수 없습니다.";
-    public static final int MIN_POSITION_VALUE = 0;
     public static final int FORWARD_COUNT = 1;
-
+    public static final int INIT_POSITION_VALUE = 0;
     private int position;
 
-    public Position() {
-        this.position = MIN_POSITION_VALUE;
-    }
-
-    public Position(int position) {
-        validateHandleNegative(position);
+    private Position(int position) {
         this.position = position;
     }
 
-    private void validateHandleNegative(int position) {
-        if (position < MIN_POSITION_VALUE) {
-            throw new IllegalArgumentException(NEGATIVE_LOCATION_MESSAGE);
-        }
+    public static Position create() {
+        return new Position(INIT_POSITION_VALUE);
     }
 
     public Position move() {

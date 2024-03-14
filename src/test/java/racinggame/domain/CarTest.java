@@ -12,7 +12,7 @@ class CarTest {
     void mvoe(){
         Car car = new Car();
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(new Position(1));
+        assertThat(car.getPosition()).isEqualTo(Position.create().move());
     }
 
     @Test
@@ -20,6 +20,6 @@ class CarTest {
     void stop(){
         Car car = new Car();
         car.move(() -> false);
-        assertThat(car.getPosition()).isEqualTo(new Position());
+        assertThat(car.getPosition()).isEqualTo(Position.create());
     }
 }
