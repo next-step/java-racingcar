@@ -1,10 +1,10 @@
-package racingCar;
+package racingCar.ui;
 
 import java.util.Scanner;
 
 public class InputView {
 
-  Scanner scanner;
+  private final Scanner scanner;
 
   public InputView() {
     this.scanner = new Scanner(System.in);
@@ -12,5 +12,9 @@ public class InputView {
 
   public int inputInteger() {
     return scanner.nextInt();
+  }
+
+  public String inputString() {
+    return scanner.next();
   }
 }

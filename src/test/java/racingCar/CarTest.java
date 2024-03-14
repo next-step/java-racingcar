@@ -5,13 +5,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingCar.game.Car;
+import racingCar.game.generator.IntGenerator;
+import racingCar.game.generator.RandomGenerator;
 
 public class CarTest {
 
   Car car;
   @BeforeEach
   void setUp() {
-    car = new Car();
+    IntGenerator intGenerator = new RandomGenerator();
+    car = new Car("hoi", intGenerator);
   }
 
   @Test
@@ -25,5 +29,14 @@ public class CarTest {
   void 차가_움직이는지_확인(){
     car.move();
     assertThat(car.getPosition()).isIn(0, 1);
+  }
+
+  @Test
+  @DisplayName("차 인스턴스를 생성할 때 이름을 지정한다")
+  void getCarName(){
+    String carName = "hadi";
+    Car hadiCar = new Car(carName, new RandomGenerator());
+
+    assertThat(hadiCar.getName()).isEqualTo(carName);
   }
 }
