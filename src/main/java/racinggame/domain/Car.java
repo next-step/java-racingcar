@@ -20,4 +20,8 @@ public class Car {
     public Position getPosition() {
         return this.position;
     }
+
+    public Name getName() {
+        return name;
+    }
 }

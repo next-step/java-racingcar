@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position {
     public static final int FORWARD_COUNT = 1;
-    public static final int INIT_POSITION_VALUE = 0;
+    public static final int INIT_POSITION_VALUE = 1;
     private int position;
 
     private Position(int position) {

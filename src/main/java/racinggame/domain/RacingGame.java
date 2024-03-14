@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    public static final String DELIMITER = ",";
+    public static final String DELIMITER_COMMA = ",";
     private final List<Car> cars;
     private int tryCount;
 
@@ -14,7 +14,7 @@ public class RacingGame {
     }
 
     public List<Car> initcars(String inputName) {
-        String[] names = inputName.split(DELIMITER);
+        String[] names = inputName.split(DELIMITER_COMMA);
         for (String name : names) {
             cars.add(new Car(name));
         }

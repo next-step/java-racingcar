@@ -11,7 +11,7 @@ public class Name {
     }
 
     private static void validateLengh(String name) {
-        if (name.length() > MAX_NAME_LENGTH){
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR_MESSAGE);
         }
     }
@@ -20,4 +20,7 @@ public class Name {
         return new Name(name);
     }
 
+    public String getName() {
+        return name;
+    }
 }
