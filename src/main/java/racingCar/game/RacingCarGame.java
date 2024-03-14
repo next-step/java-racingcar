@@ -8,18 +8,13 @@ import racingCar.game.generator.RandomGenerator;
 
 public class RacingCarGame {
 
-  private final List<Car> cars;
+  private final RacingCars cars;
 
-  public RacingCarGame() {
-    this.cars = new ArrayList<>();
-  }
-
-  public void initiateGame(List<String> carNames) {
+  public RacingCarGame(List<String> carNames) {
     int randomUpperBound = 10;
     IntGenerator intGenerator = new RandomGenerator(randomUpperBound);
-    for (String carName : carNames) {
-      cars.add(new Car(carName, intGenerator));
-    }
+    List<Car> racingCars = carNames.stream().map(carName -> new Car(carName, intGenerator)).collect(Collectors.toList());
+    this.cars = new RacingCars(racingCars);
   }
 
   public GameResult playGames(int round) {
@@ -32,25 +27,15 @@ public class RacingCarGame {
   }
 
   private void playGame() {
-    for (Car car : cars) {
-      car.move();
-    }
+    cars.move();
   }
 
   private String getGameResult() {
-    StringBuilder sb = new StringBuilder();
-    for (Car car : cars) {
-      sb.append(String.format("%s : %s\n", car.getName(), car.getMovedPath()));
-    }
-    return sb.toString();
+    return cars.getMovedPath();
   }
 
   private List<String> findWinners() {
-    cars.sort((car1, car2) -> car2.getPosition() - car1.getPosition());
-    int maxPosition = cars.get(0).getPosition();
-    return cars.stream()
-        .filter(car -> car.getPosition() == maxPosition)
-        .map(Car::getName).collect(Collectors.toList());
+    return cars.findWinners();
   }
 
 }
