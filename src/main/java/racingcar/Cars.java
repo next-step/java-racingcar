@@ -1,26 +1,53 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
-	public static final Random RANDOM = new Random();
+	private static final Random RANDOM = new Random();
 	private List<Car> cars = new ArrayList<>();
 
-	public List<Car> getCars() {
+	public static Cars createCars(final String[] carNames) {
+		Cars cars = new Cars();
+		for (String carName : carNames) {
+			cars.addCar(Car.createCar(carName));
+		}
 		return cars;
 	}
 
-	public void setCars(int carNumber) {
-		for (int i = 0; i < carNumber; i++) {
-			cars.add(new Car());
-		}
+	private void addCar(final Car car) {
+		cars.add(car);
 	}
 
 	public void moveCars() {
 		for (Car car : cars) {
 			car.move(RANDOM.nextInt(10));
 		}
+	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public Integer getSize() {
+		return cars.size();
+	}
+
+	public void add(final Car car) {
+		cars.add(car);
+	}
+
+	public List<String> getWinnerCarNames() {
+		int maxPosition = cars.stream()
+				.max(Comparator.comparing(Car::getPosition))
+				.orElseThrow(IllegalArgumentException::new)
+				.getPosition();
+		return cars.stream()
+				.filter(car -> car.getPosition() == maxPosition)
+				.map(Car::getName)
+				.collect(Collectors.toList());
 	}
 }
