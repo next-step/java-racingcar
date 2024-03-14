@@ -7,11 +7,15 @@ public class NumberOfAttempts {
 
     private final int numberOfAttempts;
 
-    public NumberOfAttempts(String numberOfAttempts) {
-        if(!isPositiveInteger(numberOfAttempts)) {
-           throw new IllegalArgumentException(WRONG_NUMBER_OF_ATTEMPTS_MESSAGE);
+    private NumberOfAttempts(final String numberOfAttempts) {
+        if (!isPositiveInteger(numberOfAttempts)) {
+            throw new IllegalArgumentException(WRONG_NUMBER_OF_ATTEMPTS_MESSAGE);
         }
         this.numberOfAttempts = Integer.parseInt(numberOfAttempts);
+    }
+
+    public static NumberOfAttempts newNumber(final String numberOfAttempts) {
+        return new NumberOfAttempts(numberOfAttempts);
     }
 
     public int numberOfAttempts() {

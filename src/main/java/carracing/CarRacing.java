@@ -1,9 +1,8 @@
 package carracing;
 
-import carracing.model.NumberOfAttempts;
-import carracing.model.NumberOfCars;
-import carracing.model.Race;
-import carracing.model.RaceRecord;
+import carracing.model.*;
+import carracing.model.race.Race;
+import carracing.model.race.RaceResult;
 
 import java.util.List;
 
@@ -13,13 +12,13 @@ import static carracing.view.OutputView.printRaceResult;
 public class CarRacing {
     public static void main(String[] args) {
         try {
-            NumberOfCars numberOfCars = new NumberOfCars(enteredNumber(NUMBER_OF_CARS_INPUT_GUIDE_MESSAGE));
-            NumberOfAttempts numberOfAttempts = new NumberOfAttempts(enteredNumber(NUMBER_OF_ATTEMPTS_INPUT_GUIDE_MESSAGE));
+            List<NameOfCar> nameOfCarList = enteredNameOfCars();
+            NumberOfAttempts numberOfAttempts = enteredNumberOfAttempts();
 
-            Race race = new Race(numberOfCars, numberOfAttempts);
-            List<RaceRecord> raceRecordList = race.start();
+            Race race = Race.newRace(nameOfCarList, numberOfAttempts);
+            RaceResult raceResult = race.start();
 
-            printRaceResult(raceRecordList);
+            printRaceResult(numberOfAttempts, raceResult);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
