@@ -1,10 +1,10 @@
-package carracing.model.race;
+package carracing.domain.race;
 
-import carracing.model.NameOfCar;
-import carracing.model.NumberOfAttempts;
-import carracing.model.car.Car;
-import carracing.model.car.RaceRecordOfCar;
-import carracing.model.car.strategy.RandomStrategy;
+import carracing.domain.NameOfCar;
+import carracing.domain.NumberOfAttempts;
+import carracing.domain.car.Car;
+import carracing.domain.car.RaceRecordOfCar;
+import carracing.domain.car.strategy.RandomStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;

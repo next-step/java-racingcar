@@ -1,4 +1,4 @@
-package carracing.model.car.strategy;
+package carracing.domain.car.strategy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
