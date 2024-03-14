@@ -25,7 +25,7 @@ public class CarMoveStrategyTest {
     }
 
     @Nested
-    class AlwaysStopStrategyTest {
+    class NeverMoveStrategyTest {
 
         private final int REPEAT_COUNT = 5;
 

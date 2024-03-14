@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Distance;
 import racingcar.mock.AlwaysMoveStrategy;
-import racingcar.mock.AlwaysStopStrategy;
+import racingcar.mock.NeverMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +31,7 @@ public class CarTest {
         Car car = new Car(0, "yeon");
 
         // When
-        car.move(new AlwaysStopStrategy());
+        car.move(new NeverMoveStrategy());
 
         // Then
         assertThat(car.getDistance()).isEqualTo(new Distance(0));

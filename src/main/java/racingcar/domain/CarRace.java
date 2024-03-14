@@ -8,7 +8,7 @@ public class CarRace {
 
         CarRaceResult carRaceResult = new CarRaceResult();
         while (tryCount-- > 0) {
-            cars.move(new RandomCarMoveStrategy());
+            cars.move(new RandomMoveStrategy());
             carRaceResult.add(cars);
         }
 

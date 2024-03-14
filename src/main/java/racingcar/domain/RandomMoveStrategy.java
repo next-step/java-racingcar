@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomCarMoveStrategy implements CarMoveStrategy {
+public class RandomMoveStrategy implements CarMoveStrategy {
 
     private static final Random RANDOM = new Random();
     private static final int RANDOM_BOUND = 10;
