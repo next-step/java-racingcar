@@ -1,5 +1,6 @@
 package carRacingWinner.test;
 
+import carRacingWinner.controller.WinnerRacingController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,14 +9,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class RacingWinnerTest {
 
     @Test
-    @DisplayName("이름 글자수")
-    public void nameLength() {
+    @DisplayName("이름 나누기")
+    public void nameDivision() {
 
-        String name = "dongwon";
-        assertThat(nameLength(name)).isEqualTo(false);
+        String name = "dog,panda,fire";
+        WinnerRacingController namesCheck = new WinnerRacingController();
+
+        assertThat(namesCheck.division(name)).hasSize(3);
     }
 
-    private boolean nameLength(String name) {
-        return name.length() <= 5;
-    }
 }
