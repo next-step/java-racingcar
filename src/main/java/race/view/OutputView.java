@@ -1,19 +1,23 @@
 package race.view;
 
+import race.domain.Car;
+
 import java.util.List;
 
 public class OutputView {
 
     private static final String UNIT_MILEAGE = "-";
+    private static final String COLON = " : ";
 
-    public void printMileages(List<Integer> positions) {
-        for (Integer position : positions) {
-            if (position == 0) { // 일단 억지로라도 이렇게 했습니다. 더 생각해보겠습니다
-                position = 1;
+    public void printMileages(List<Car> racingCars) {
+        for (Car racingCar : racingCars) {
+            if (racingCar.getPosition() == 0) {
+                System.out.print(racingCar.getName() + COLON);
                 System.out.println(UNIT_MILEAGE);
                 continue;
             }
-            System.out.println(UNIT_MILEAGE.repeat(position));
+            System.out.print(racingCar.getName() + COLON);
+            System.out.println(UNIT_MILEAGE.repeat(racingCar.getPosition()));
         }
     }
 

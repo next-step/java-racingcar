@@ -20,39 +20,39 @@ class CarsTest {
     @DisplayName("세 번 전부 차의 전진 조건을 만족시키지 못하면 거리가 증가하지 않는 것을 보여준다")
     @Test
     void stop_test() {
-        List<Integer> firstMileages = cars.goForward(() -> false);
-        assertThat(firstMileages.get(0)).isEqualTo(0);
-        assertThat(firstMileages.get(1)).isEqualTo(0);
-        assertThat(firstMileages.get(2)).isEqualTo(0);
+        List<Car> firstRacingCars = cars.goForward(() -> false);
+        assertThat(firstRacingCars.get(0).getPosition()).isEqualTo(0);
+        assertThat(firstRacingCars.get(1).getPosition()).isEqualTo(0);
+        assertThat(firstRacingCars.get(2).getPosition()).isEqualTo(0);
 
-        List<Integer> secondMileages = cars.goForward(() -> false);
-        assertThat(secondMileages.get(0)).isEqualTo(0);
-        assertThat(secondMileages.get(1)).isEqualTo(0);
-        assertThat(secondMileages.get(2)).isEqualTo(0);
+        List<Car> twoTimesRacingCars = cars.goForward(() -> false);
+        assertThat(twoTimesRacingCars.get(0).getPosition()).isEqualTo(0);
+        assertThat(twoTimesRacingCars.get(1).getPosition()).isEqualTo(0);
+        assertThat(twoTimesRacingCars.get(2).getPosition()).isEqualTo(0);
 
-        List<Integer> thirdMileages = cars.goForward(() -> false);
-        assertThat(thirdMileages.get(0)).isEqualTo(0);
-        assertThat(thirdMileages.get(1)).isEqualTo(0);
-        assertThat(thirdMileages.get(2)).isEqualTo(0);
+        List<Car> threeTimesRacingCars = cars.goForward(() -> false);
+        assertThat(threeTimesRacingCars.get(0).getPosition()).isEqualTo(0);
+        assertThat(threeTimesRacingCars.get(1).getPosition()).isEqualTo(0);
+        assertThat(threeTimesRacingCars.get(2).getPosition()).isEqualTo(0);
     }
 
     @DisplayName("세 번 전부 차의 전진 조건을 만족시키면 거리가 1씩 증가하는 것을 보여준다")
     @Test
     void goForward_test() {
-        List<Integer> firstMileages = cars.goForward(() -> true);
-        assertThat(firstMileages.get(0)).isEqualTo(1);
-        assertThat(firstMileages.get(1)).isEqualTo(1);
-        assertThat(firstMileages.get(2)).isEqualTo(1);
+        List<Car> firstRacingCars = cars.goForward(() -> true);
+        assertThat(firstRacingCars.get(0).getPosition()).isEqualTo(1);
+        assertThat(firstRacingCars.get(1).getPosition()).isEqualTo(1);
+        assertThat(firstRacingCars.get(2).getPosition()).isEqualTo(1);
 
-        List<Integer> secondMileages = cars.goForward(() -> true);
-        assertThat(secondMileages.get(0)).isEqualTo(2);
-        assertThat(secondMileages.get(1)).isEqualTo(2);
-        assertThat(secondMileages.get(2)).isEqualTo(2);
+        List<Car> twoTimesRacingCars = cars.goForward(() -> true);
+        assertThat(twoTimesRacingCars.get(0).getPosition()).isEqualTo(2);
+        assertThat(twoTimesRacingCars.get(1).getPosition()).isEqualTo(2);
+        assertThat(twoTimesRacingCars.get(2).getPosition()).isEqualTo(2);
 
-        List<Integer> thirdMileages = cars.goForward(() -> true);
-        assertThat(thirdMileages.get(0)).isEqualTo(3);
-        assertThat(thirdMileages.get(1)).isEqualTo(3);
-        assertThat(thirdMileages.get(2)).isEqualTo(3);
+        List<Car> threeTimesRacingCars = cars.goForward(() -> true);
+        assertThat(threeTimesRacingCars.get(0).getPosition()).isEqualTo(3);
+        assertThat(threeTimesRacingCars.get(1).getPosition()).isEqualTo(3);
+        assertThat(threeTimesRacingCars.get(2).getPosition()).isEqualTo(3);
     }
 
 }

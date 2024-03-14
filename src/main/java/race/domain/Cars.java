@@ -3,6 +3,7 @@ package race.domain;
 import race.utils.PlayStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -16,15 +17,15 @@ public class Cars {
         }
     }
 
-    public List<Integer> goForward(PlayStrategy rule) {
-        List<Integer> mileages = new ArrayList<>();
-        for (Car car : cars) {
+    public List<Car> goForward(PlayStrategy rule) {
+        List<Car> carList = new ArrayList<>();
+        for (Car car : this.cars) {
             if (rule.isValidForGoForward()) {
                 car.go();
             }
-            mileages.add(car.getPosition());
+            carList.add(new Car(car.getPosition(), car.getName()));
         }
-        return mileages;
+        return Collections.unmodifiableList(carList);
     }
 
 }
