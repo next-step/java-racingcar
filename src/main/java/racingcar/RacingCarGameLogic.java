@@ -38,5 +38,5 @@ public class RacingCarGameLogic {
     private static String[] getCarNamesSplit(String nameOfCars) {
         return nameOfCars.split(CAR_NAME_DELIMITER);
     }
-
+    
 }

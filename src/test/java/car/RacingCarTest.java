@@ -63,4 +63,5 @@ public class RacingCarTest {
     public void testGameLogic() {
         RacingCarGameLogic.getInstance().gameLogic(TEST_CAR_NAMES, 5);
     }
+
 }

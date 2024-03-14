@@ -54,5 +54,5 @@ public class StringAddCalculator {
             throw new IllegalArgumentException("양수만 입력해주세요.");
         }
     }
-  
+
 }

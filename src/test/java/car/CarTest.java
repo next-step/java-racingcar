@@ -23,4 +23,5 @@ public class CarTest {
         Car car = new Car(TEST_CAR_NAME,TEST_CAR_DISTANCE);
         assertThat(car.getName()).isEqualTo(TEST_CAR_NAME);
     }
+
 }
