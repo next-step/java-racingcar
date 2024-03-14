@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private RandomUtil randomUtil = new RandomUtil();
     private List<Car> cars = new ArrayList<>();
 
     public void start(InputValue input) {
@@ -20,7 +19,7 @@ public class RacingGame {
 
     public void forward() {
         for (Car car : cars) {
-            car.move(this.randomUtil.randomCount(10));
+            car.move(RandomUtil.randomCount(10));
         }
         ResultView.printResult(cars);
     }

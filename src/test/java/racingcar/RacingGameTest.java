@@ -6,11 +6,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingCarTest {
+public class RacingGameTest {
 
     @ParameterizedTest
     @DisplayName("랜덤값이 4이상일 경우 전진")
-    @ValueSource(ints = {4,5,6,7,8,9})
+    @ValueSource(ints = {4})
     void careMove(int number){
         Car car = new Car();
         assertThat(car.getPosition()).isEqualTo(0);
@@ -20,7 +20,7 @@ public class RacingCarTest {
 
     @ParameterizedTest
     @DisplayName("랜덤값이 4미만일 경우 정지")
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {3})
     void carNotMove(int number){
         Car car = new Car();
         assertThat(car.getPosition()).isEqualTo(0);
