@@ -20,6 +20,14 @@ public class Names {
         return Collections.unmodifiableList(this.names);
     }
 
+    public List<String> getNameStrings() {
+        List<String> nameStrings = new ArrayList<>();
+        for (Name name : names) {
+            nameStrings.add(name.get());
+        }
+        return nameStrings;
+    }
+
     public int size() {
         return this.names.size();
     }

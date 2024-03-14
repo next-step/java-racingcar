@@ -38,10 +38,6 @@ public class ResultView {
     }
 
     private static String formatNames(Names names) {
-        String[] stringArray = new String[names.size()];
-        for (int i = 0; i < stringArray.length; i++) {
-            stringArray[i] = names.get().get(i).get();
-        }
-        return String.join(",", stringArray);
+        return String.join(",", names.getNameStrings());
     }
 }
