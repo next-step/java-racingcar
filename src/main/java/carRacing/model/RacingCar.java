@@ -3,14 +3,18 @@ package carRacing.model;
 public class RacingCar {
 
     private int position;
+    private String name;
 
     public RacingCar() {
-
         this.position = 0;
     }
 
-    public int positionOfRacingCar() {
+    public RacingCar(String name){
+        this.position = 0;
+        this.name = name;
+    }
 
+    public int positionOfRacingCar() {
         return this.position;
     }
 
@@ -18,5 +22,8 @@ public class RacingCar {
         if(moveStrategy.isMove()){
             this.position++;
         }
+    }
+    public String NameOfCar(){
+        return this.name;
     }
 }

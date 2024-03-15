@@ -18,11 +18,26 @@ public class ResultView {
     }
 
     private static void printPlayCar(RacingCar car){
-        StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < car.positionOfRacingCar(); i++) {
-            result.append("-");
+        System.out.println("-".repeat(Math.max(0, car.positionOfRacingCar())));
+    }
+
+    public static void printRacingCarName(List<RacingCar> records){
+        for (RacingCar racingCar: records) {
+            printPlayCarName(racingCar);
         }
-        System.out.println(result);
+        System.out.println();
+    }
+
+    private static void printPlayCarName(RacingCar car){
+
+        System.out.println(car.NameOfCar() + " : " + "-"
+                .repeat(Math.max(0, car.positionOfRacingCar())));
+    }
+
+    public static void WinnerOfRacing(List<String> name){
+        String result = String.join(",", name);
+
+        System.out.println(result + " 이/가 최종 우승했습니다.");
     }
 }

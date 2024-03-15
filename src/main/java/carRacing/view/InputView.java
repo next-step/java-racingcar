@@ -18,15 +18,29 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public int inputNumber(String values){
+    public static String nameOfCar() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine();
+    }
+
+    public static int inputNumber(String values){
         return numberCheck(values);
     }
 
-    Validator validator = new Validator();
+    public static String inputName(String values) {
+        return nameCheck(values);
+    }
 
-    public Integer numberCheck(String inNumber) {
+    static Validator validator = new Validator();
+
+    public static Integer numberCheck(String inNumber) {
         validator.numericCheck(inNumber);
         validator.nullCheck(inNumber);
         return Integer.parseInt(inNumber);
+    }
+
+    public static String nameCheck(String inName) {
+        validator.nameCheck(inName);
+        return inName;
     }
 }
