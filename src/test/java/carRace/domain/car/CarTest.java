@@ -1,8 +1,9 @@
-package carRace.domain;
+package carRace.domain.car;
 
-import static carRace.domain.Car.createCars;
+import static carRace.domain.car.Car.createCars;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import carRace.domain.randomNumber.RandomNumber;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,9 +21,9 @@ class CarTest {
         //given
         Car sutCar = new Car("namhyeopCar");
         //when
-        sutCar.move(input);
+        sutCar.move(new RandomNumber(input));
         //then
-        assertThat(sutCar.moveCount()).isEqualTo(expected);
+        assertThat(sutCar.getMoveDistance().getMoveDistance()).isEqualTo(expected);
     }
 
     @ParameterizedTest

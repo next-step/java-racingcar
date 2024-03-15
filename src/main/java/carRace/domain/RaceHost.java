@@ -41,7 +41,7 @@ public class RaceHost {
         waitCars.join();
     }
 
-    public void progressAwardsCeremony(final List<Car> cars){
+    public void progressAwardsCeremony(final List<Car> cars) {
         Referee referee = new Referee();
         List<String> winners = referee.findWinners(cars);
         OutputView.printWinnersResult(winners);

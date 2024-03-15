@@ -1,6 +1,6 @@
 package carRace.view;
 
-import carRace.domain.Car;
+import carRace.domain.car.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,7 +17,7 @@ public class OutputView {
     public static void printRaceResult(List<Car> cars) {
         cars.stream().forEach(car -> {
             System.out.print(car.carName() + COLON);
-            IntStream.range(0, car.moveCount())
+            IntStream.range(0, car.getMoveDistance().getMoveDistance())
                 .forEach(count -> System.out.print(RACE_MARK));
             System.out.println();
         });
