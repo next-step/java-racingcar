@@ -2,8 +2,6 @@
 
 ## Todo
 ### 리뷰 반영 사항
-
-- Cars 클래스에서 Cars 생성자에 numberOfCars를 지니어야 하는지 고민해보고 개선하라
 - 프로덕션 코드에서 반드시 0으로 position 을 생성한다면 name 만 전달받는 생성자를 추가해보는것 고려하고 개선하라
 - unmodifiable collection의 정의를 제대호 확인하고 goForward 리턴값을 개선하라
 - car에게 전략을 전달할지 고민해보고 개선히리
@@ -17,3 +15,4 @@
 
 ## Done
 - Car 에서 이름에 대한 검증 책임을 갖게 하라
+- Cars 클래스에서 Cars 생성자에 numberOfCars를 지니어야 하는지 고민해보고 개선하라

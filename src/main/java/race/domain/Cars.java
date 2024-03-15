@@ -15,7 +15,7 @@ public class Cars {
     public Cars(int numberOfCars, String[] names) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(0, names[i]));
+            cars.add(new Car(names[i]));
         }
     }
 

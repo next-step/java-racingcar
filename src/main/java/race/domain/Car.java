@@ -5,6 +5,10 @@ public class Car {
     private int position;
     private final String name;
 
+    public Car(String name) {
+        this(0, name);
+    }
+
     public Car(int position, String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("공백없이 정확한 이름을 입력해주세요.");
