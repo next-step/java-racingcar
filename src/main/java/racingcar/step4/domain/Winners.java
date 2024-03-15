@@ -15,7 +15,7 @@ public class Winners {
   }
 
   public static Winners pickWinners(List<Car> candidates) {
-    Car winnerCandidate = Collections.max(candidates, Comparator.comparing(it -> it.getPosition().get()));
+    Car winnerCandidate = Collections.max(candidates);
     List<Car> winner = candidates.stream()
         .filter(car -> Objects.equals(car.getPosition().get(), winnerCandidate.getPosition().get()))
         .collect(Collectors.toList());

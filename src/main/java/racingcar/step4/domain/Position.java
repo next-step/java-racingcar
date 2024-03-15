@@ -1,6 +1,6 @@
 package racingcar.step4.domain;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
   public static final int DEFAULT_START_POSITION = 0;
   private int position;
@@ -23,5 +23,10 @@ public class Position {
 
   public int get() {
     return position;
+  }
+
+  @Override
+  public int compareTo(Position o) {
+    return this.position - o.position;
   }
 }

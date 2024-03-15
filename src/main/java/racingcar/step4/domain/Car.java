@@ -5,7 +5,7 @@ import racingcar.step4.domain.strategy.RandomCarMoveStrategy;
 
 import java.util.UUID;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
   private final UUID id = UUID.randomUUID();
   private final CarName carName;
@@ -47,5 +47,10 @@ public class Car {
 
   public CarMoveStrategy getMoveStrategy() {
     return moveStrategy;
+  }
+
+  @Override
+  public int compareTo(Car o) {
+    return this.position.compareTo(o.position);
   }
 }

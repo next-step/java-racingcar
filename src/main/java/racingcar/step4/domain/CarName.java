@@ -26,7 +26,7 @@ public class CarName {
 
   private static void validate(String name) {
 
-    if (Objects.isNull(name) || name.length() < NAME_MINIMUM_LENGTH) {
+    if (Objects.isNull(name) || name.isBlank()) {
       throw new IllegalArgumentException(String.format(MUST_EXCEED_CERTAIN_LENGTH, NAME_MINIMUM_LENGTH, name));
     }
 
