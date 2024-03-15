@@ -1,4 +1,4 @@
-package carracing.model;
+package carracing.domain;
 
 import static carracing.RacingGameSetupValidator.isValidLengthString;
 

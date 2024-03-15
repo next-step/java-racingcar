@@ -1,8 +1,8 @@
 package carracing.view;
 
-import carracing.model.NumberOfAttempts;
-import carracing.model.car.RaceRecordOfCar;
-import carracing.model.race.RaceResult;
+import carracing.domain.NumberOfAttempts;
+import carracing.domain.car.RaceRecordOfCar;
+import carracing.domain.race.RaceResult;
 
 import java.util.List;
 

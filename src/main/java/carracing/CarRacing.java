@@ -1,8 +1,8 @@
 package carracing;
 
-import carracing.model.*;
-import carracing.model.race.Race;
-import carracing.model.race.RaceResult;
+import carracing.domain.*;
+import carracing.domain.race.Race;
+import carracing.domain.race.RaceResult;
 
 import java.util.List;
 

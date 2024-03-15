@@ -1,4 +1,4 @@
-package carracing.model.car;
+package carracing.domain.car;
 
 import java.util.List;
 

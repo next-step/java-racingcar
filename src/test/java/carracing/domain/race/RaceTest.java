@@ -1,7 +1,7 @@
-package carracing.model.race;
+package carracing.domain.race;
 
-import carracing.model.NameOfCar;
-import carracing.model.NumberOfAttempts;
+import carracing.domain.NameOfCar;
+import carracing.domain.NumberOfAttempts;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

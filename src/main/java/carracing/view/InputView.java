@@ -1,7 +1,7 @@
 package carracing.view;
 
-import carracing.model.NameOfCar;
-import carracing.model.NumberOfAttempts;
+import carracing.domain.NameOfCar;
+import carracing.domain.NumberOfAttempts;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package carracing.model.car.strategy;
+package carracing.domain.car.strategy;
 
 import java.util.Random;
 

@@ -1,8 +1,7 @@
-package carracing.model.car;
+package carracing.domain.car;
 
-import carracing.model.car.strategy.MovingStrategy;
-import carracing.model.NameOfCar;
-import carracing.model.PositionOfCar;
+import carracing.domain.car.strategy.MovingStrategy;
+import carracing.domain.NameOfCar;
 
 public class Car {
     private static final int DEFAULT_INCREASE_AMOUNT = 1;

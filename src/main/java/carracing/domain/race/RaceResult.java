@@ -1,6 +1,6 @@
-package carracing.model.race;
+package carracing.domain.race;
 
-import carracing.model.car.RaceRecordOfCar;
+import carracing.domain.car.RaceRecordOfCar;
 
 import java.util.Collections;
 import java.util.List;
