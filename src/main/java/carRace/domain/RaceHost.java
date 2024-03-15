@@ -1,5 +1,7 @@
 package carRace.domain;
 
+import carRace.domain.car.Car;
+import carRace.domain.randomNumber.RandomNumber;
 import carRace.util.RandomNumberGenerator;
 import carRace.view.OutputView;
 import java.util.List;
@@ -25,7 +27,8 @@ public class RaceHost {
 
     private void moveCar(final List<Car> cars) {
         List<CompletableFuture<Void>> runningCars = cars.stream()
-            .map(car -> CompletableFuture.runAsync(() -> car.move(RandomNumberGenerator.createRandomNumber())))
+            .map(car -> CompletableFuture.runAsync(
+                () -> car.move(new RandomNumber(RandomNumberGenerator.createRandomNumber()))))
             .collect(Collectors.toList());
 
         waitCars(runningCars);
