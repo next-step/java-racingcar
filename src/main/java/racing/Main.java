@@ -7,9 +7,9 @@ public class Main {
         Game game = new Game();
         Input input = new Input();
 
-        game.createAttendedCars(input.askInput(InputAsk.CarNumber));
-        game.playGame(input.askInput(InputAsk.Attempts));
-
+        game.createAttendedCarsWithName(input.askStringInput(InputAsk.CarName));
+        game.playGame(input.askIntInput(InputAsk.Attempts));
         input.close();
+        Output.showWinner(game.getWinners());
     }
 }
