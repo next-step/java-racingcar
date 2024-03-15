@@ -36,15 +36,14 @@ public class Cars {
     }
 
     public List<String> searchWinners() {
-
         int maxDistance = cars.stream()
                 .mapToInt(Car::getCurrentLocation)
                 .max()
                 .orElse(0);
 
         return cars.stream()
-                .filter(car -> car.getCurrentLocation() == maxDistance)
+                .filter(car -> car.isAtMaxDistance(maxDistance))
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 }

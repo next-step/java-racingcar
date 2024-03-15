@@ -30,4 +30,8 @@ public class Car {
             this.location += 1;
         }
     }
+
+    public boolean isAtMaxDistance(int maxDistance) {
+        return location == maxDistance;
+    }
 }
