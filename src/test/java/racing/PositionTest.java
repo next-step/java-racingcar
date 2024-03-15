@@ -2,6 +2,7 @@ package racing;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.domain.Position;
 
 import static org.assertj.core.api.Assertions.*;
 

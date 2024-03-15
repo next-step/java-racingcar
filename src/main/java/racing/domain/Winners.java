@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;

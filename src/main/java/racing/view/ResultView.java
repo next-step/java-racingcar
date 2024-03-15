@@ -1,4 +1,7 @@
-package racing;
+package racing.view;
+
+import racing.domain.Car;
+import racing.domain.Cars;
 
 import java.util.Iterator;
 

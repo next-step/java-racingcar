@@ -4,7 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.strategy.MoveStrategy;
+import racing.domain.Car;
+import racing.domain.strategy.MoveStrategy;
 
 
 import static org.assertj.core.api.Assertions.assertThat;

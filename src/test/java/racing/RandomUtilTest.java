@@ -1,10 +1,9 @@
 package racing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racing.util.RandomUtil;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RandomUtilTest {
 
