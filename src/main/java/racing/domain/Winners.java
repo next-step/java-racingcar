@@ -2,11 +2,9 @@ package racing.domain;
 
 import racing.util.StringUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-public class Winners {
+public class Winners implements Iterable<Car> {
     private static final String WINNER_DELIMITER = ",";
 
     private final List<Car> winners;
@@ -15,8 +13,26 @@ public class Winners {
         this.winners = winners;
     }
 
-    public static Winners from(List<Car> winners) {
-        return new Winners(new ArrayList<>(winners));
+    public static Winners from(Cars cars) {
+        return getWinners(cars);
+    }
+
+    private static Winners getWinners(Cars cars) {
+        int maxPosition = cars.maxPosition();
+        List<Car> winners = new ArrayList<>();
+
+        cars.forEach(car -> {
+            if (car.samePosition(maxPosition)) {
+                winners.add(car);
+            }
+        });
+
+        return new Winners(winners);
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return winners.iterator();
     }
 
     @Override

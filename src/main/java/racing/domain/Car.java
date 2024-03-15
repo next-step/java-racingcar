@@ -26,8 +26,12 @@ public class Car {
         return position.getPosition();
     }
 
+    public int maxPosition(int targetNumber) {
+        return position.max(targetNumber);
+    }
+
     public boolean samePosition(int targetPosition) {
-        return targetPosition == this.position.getPosition();
+        return position.equals(Position.valueOf(targetPosition));
     }
 
     public void play(MoveStrategy moveStrategy) {

@@ -25,6 +25,10 @@ public class Position {
         return position;
     }
 
+    public int max(int targetNumber) {
+        return Math.max(position, targetNumber);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Position) {

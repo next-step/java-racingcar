@@ -3,8 +3,6 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car> {
 
@@ -18,24 +16,17 @@ public class Cars implements Iterable<Car> {
         return new Cars(new ArrayList<>(cars));
     }
 
+    public int maxPosition() {
+        int maxPosition = Integer.MIN_VALUE;
+        for (Car car : cars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
     @Override
     public Iterator<Car> iterator() {
         return cars.iterator();
-    }
-
-    public Winners getWinners() {
-        int maxPosition = maxPosition();
-        List<Car> winners = cars.stream()
-                .filter(car -> car.samePosition(maxPosition))
-                .collect(Collectors.toList());
-        return Winners.from(winners);
-    }
-
-    private int maxPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
     }
 
 }
