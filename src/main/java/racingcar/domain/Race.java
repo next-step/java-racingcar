@@ -17,7 +17,7 @@ public class Race {
 
     private static final String DUPLICATED_CAR_NAME_MESSAGE = "자동차 이름은 중복될 수 없습니다. [carNames: {0}]";
     private static final String PLAYING_COUNT_OUT_OF_RANGE_MESSAGE = "레이싱 시도 횟수는 자연수만 가능합니다. [playingCount : {0}]";
-    private static final int MINIMUM_COUNT = 0;
+    private static final int MINIMUM_PLAYING_COUNT = 1;
 
     private final List<Car> cars;
     private final int playingCount;
@@ -33,19 +33,29 @@ public class Race {
     }
 
     private void validateCarNamesAreNotDuplicated(String[] carNames) {
-        final long carCount = Arrays.stream(carNames)
-                .distinct()
-                .count();
-
-        if (carNames.length != carCount) {
+        if (areCarNamesDuplicated(carNames)) {
             throw new IllegalArgumentException(format(DUPLICATED_CAR_NAME_MESSAGE, Arrays.toString(carNames)));
         }
     }
 
+    private boolean areCarNamesDuplicated(final String[] carNames) {
+        return distinctCarNamesCount(carNames) != carNames.length;
+    }
+
+    private long distinctCarNamesCount(final String[] carNames) {
+        return Arrays.stream(carNames)
+                .distinct()
+                .count();
+    }
+
     private static void validatePlayingCountIsInRange(final int playingCount) {
-        if (playingCount <= MINIMUM_COUNT) {
+        if (isPlayingCountOutOfRange(playingCount)) {
             throw new IllegalArgumentException(format(PLAYING_COUNT_OUT_OF_RANGE_MESSAGE, playingCount));
         }
+    }
+
+    private static boolean isPlayingCountOutOfRange(int playingCount) {
+        return playingCount < MINIMUM_PLAYING_COUNT;
     }
 
     private static List<Car> readyCars(final String[] carNames) {
@@ -55,18 +65,25 @@ public class Race {
     }
 
     public void run() {
-        final CarMovement carMovement = new CarMovement(new BasicMovingStrategy(), new RandomNumberGenerator());
+        final CarMovement carMovement = setCarMovementOption();
 
         for (int round = 1; round <= this.playingCount; round++) {
             moveCars(carMovement);
-
-            final RoundResult roundResult = RoundResult.of(round, CarResult.fromCars(this.cars));
-            this.roundResults.add(roundResult);
+            addRoundResult(round);
         }
+    }
+
+    private CarMovement setCarMovementOption() {
+        return new CarMovement(new BasicMovingStrategy(), new RandomNumberGenerator());
     }
 
     private void moveCars(final CarMovement carMovement) {
         this.cars.forEach(car -> car.moveForwardOrStop(carMovement));
+    }
+
+    private void addRoundResult(final int round) {
+        final RoundResult roundResult = RoundResult.of(round, CarResult.fromCars(this.cars));
+        this.roundResults.add(roundResult);
     }
 
     public GameResult result() {
