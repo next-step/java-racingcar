@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.*;
 
 import carRace.domain.Referee.Referee;
 import carRace.domain.car.Car;
+import carRace.domain.car.CarGroups;
+import carRace.domain.car.CarName;
+import carRace.domain.car.CarNames;
 import carRace.domain.car.MoveDistance;
 import java.util.Arrays;
 import java.util.List;
@@ -17,18 +20,18 @@ class RefereeTest {
     public void Referee_Should_Find_Name_Of_Car_Move_Furthest_Among_Cars() throws Exception{
         //given
         Referee sutReferee = new Referee();
-        Car namhyoepCar = new Car("namhyoepCar", new MoveDistance(3));
-        Car momoCar = new Car("momoCar", new MoveDistance(4));
-        Car nanaCar = new Car("nanaCar", new MoveDistance(5));
-        List<Car> cars = Arrays.asList(namhyoepCar, momoCar, nanaCar);
+        Car namhyoepCar = new Car(new CarName("namhyoepCar"), new MoveDistance(3));
+        Car momoCar = new Car(new CarName("momoCar"), new MoveDistance(4));
+        Car nanaCar = new Car(new CarName("nanaCar"), new MoveDistance(5));
+        CarGroups cars = new CarGroups(Arrays.asList(namhyoepCar, momoCar, nanaCar));
 
         //when
-        List<String> winners = sutReferee.findWinners(cars);
+        CarNames winnerNames = sutReferee.findWinners(cars);
 
         //then
-        assertThat(winners).doesNotContain(namhyoepCar.carName());
-        assertThat(winners).doesNotContain(momoCar.carName());
-        assertThat(winners).contains(nanaCar.carName());
+        assertThat(winnerNames.hasCarName(namhyoepCar.getCarName())).isFalse();
+        assertThat(winnerNames.hasCarName(namhyoepCar.getCarName())).isFalse();
+        assertThat(winnerNames.hasCarName(nanaCar.getCarName())).isTrue();
     }
 
     @Test
@@ -36,17 +39,17 @@ class RefereeTest {
     public void Referee_Should_Declare_Multiple_Winners_If_Scores_Equal() throws Exception{
         //given
         Referee sutReferee = new Referee();
-        Car namhyoepCar = new Car("namhyoepCar", new MoveDistance(3));
-        Car momoCar = new Car("momoCar", new MoveDistance(5));
-        Car nanaCar = new Car("nanaCar", new MoveDistance(5));
-        List<Car> cars = Arrays.asList(namhyoepCar, momoCar, nanaCar);
+        Car namhyoepCar = new Car(new CarName("namhyoepCar"), new MoveDistance(3));
+        Car momoCar = new Car(new CarName("momoCar"), new MoveDistance(5));
+        Car nanaCar = new Car(new CarName("nanaCar"), new MoveDistance(5));
+        CarGroups cars = new CarGroups(Arrays.asList(namhyoepCar, momoCar, nanaCar));
 
         //when
-        List<String> winners = sutReferee.findWinners(cars);
+        CarNames winnerNames = sutReferee.findWinners(cars);
 
         //then
-        assertThat(winners).doesNotContain(namhyoepCar.carName());
-        assertThat(winners).contains(momoCar.carName());
-        assertThat(winners).contains(nanaCar.carName());
+        assertThat(winnerNames.hasCarName(namhyoepCar.getCarName())).isFalse();
+        assertThat(winnerNames.hasCarName(momoCar.getCarName())).isTrue();
+        assertThat(winnerNames.hasCarName(nanaCar.getCarName())).isTrue();
     }
 }
