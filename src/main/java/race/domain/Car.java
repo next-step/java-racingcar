@@ -51,9 +51,4 @@ public class Car implements Comparable<Car> {
     public int compareTo(Car o) {
         return Integer.compare(position, o.getPosition());
     }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }
