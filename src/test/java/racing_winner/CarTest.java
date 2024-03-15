@@ -4,8 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import racing_winner.domain.Car;
 
 class CarTest {
 
@@ -20,7 +19,7 @@ class CarTest {
     @Test
     @DisplayName("tryMove가 성공했을경우, level값이 증가한다.")
     void tryMove() {
-        Assertions.assertThat(car.getLevel()).isEqualTo(1);
+        Assertions.assertThat(car).isEqualTo(new Car("grandeur",1));
     }
 
     @Test
