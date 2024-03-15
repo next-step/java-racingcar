@@ -22,9 +22,8 @@ public class Cars {
         return new Cars(countOfCar);
     }
 
-    public static Cars createInstance(String names) {
-        String[] splitNames = names.split(",");
-        return new Cars(splitNames);
+    public static Cars createInstance(String[] names) {
+        return new Cars(names);
     }
 
     public List<Car> getCars() {

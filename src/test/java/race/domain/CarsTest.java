@@ -24,7 +24,7 @@ class CarsTest {
     @Test
     void 요청한이름으로_자동차가_만들어진다() {
         // Given
-        String names = "pobi,crong,honux";
+        String[] names = new String[]{"pobi","crong","honux"};
 
         // When
         Cars cars = Cars.createInstance(names);
@@ -37,11 +37,10 @@ class CarsTest {
     @Test
     void 이름이5글자가_초과하면_예외발생() {
         // Given
-        String names = "default,pobi,crong";
+        String[] names =  new String[]{"default", "pobi", "crong"};
         // When & Then
-        assertThatThrownBy(() -> Car.createInstance(names))
+        assertThatThrownBy(() -> Cars.createInstance(names))
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
 
     @Test
@@ -49,7 +48,8 @@ class CarsTest {
         // Given
         int stop = 0;
         int move = 4;
-        Cars cars = Cars.createInstance("pobi,crong,honux");
+        String[] names = new String[]{"pobi","crong","honux"};
+        Cars cars = Cars.createInstance(names);
         Car pobi = cars.getCars().get(0);
         Car crong = cars.getCars().get(1);
         Car honux = cars.getCars().get(2);
@@ -79,7 +79,8 @@ class CarsTest {
         // Given
         int stop = 0;
         int move = 4;
-        Cars cars = Cars.createInstance("pobi,crong,honux");
+        String[] names = new String[]{"pobi","crong","honux"};
+        Cars cars = Cars.createInstance(names);
         Car pobi = cars.getCars().get(0);
         Car crong = cars.getCars().get(1);
         Car honux = cars.getCars().get(2);
