@@ -21,12 +21,27 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(expected);
     }
 
+    @DisplayName("car의 이름에 대한 검증 책임 테스트")
     @Test
-    void exception_test() {
+    void exception_name_test() {
         assertThatThrownBy(() -> {
             new Car(0, "");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("공백없이 정확한 이름을 입력해주세요.");
+    }
+
+    @DisplayName("car의 position에 대한 검증 책임 테스트")
+    @Test
+    void exception_position_test() {
+        //given
+        int negativePosition = -1;
+
+        assertThatThrownBy(() -> {
+            new Car(negativePosition, "임형준");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(String.format(
+                        "(%s)은 음수입니다. 차의 위치(position)는 0이상의 양의 정수만 허용됩니다.",
+                        negativePosition));
     }
 
 }
