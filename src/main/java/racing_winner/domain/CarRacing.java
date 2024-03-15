@@ -28,19 +28,11 @@ public class CarRacing {
             step();
             printer.printRaceStatus(cars);
         }
-        printer.printWinners(getWinner());
+        printer.printWinners(Winners.getWinners(cars));
     }
 
     private void step() {
         cars.forEach(car -> car.tryMove(randomFactory.getNextInt()));
     }
 
-    private List<Car> getWinner() {
-        int topScore = getTopScore();
-        return cars.stream().filter(car -> car.getLevel() == topScore).collect(Collectors.toUnmodifiableList());
-    }
-
-    private int getTopScore() {
-        return cars.stream().mapToInt(Car::getLevel).max().orElseThrow(()-> new RuntimeException("차의 개수는 필수입니다."));
-    }
 }
