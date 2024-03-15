@@ -25,7 +25,7 @@ public class Game {
         }
 
         for (int i = 0; i < numberOfCar; i++) {
-            attendedCars.add(new Car(i + 1 + "번 자동차"));
+            attendedCars.add(new Car(i + 1 + "번"));
         }
     }
 
