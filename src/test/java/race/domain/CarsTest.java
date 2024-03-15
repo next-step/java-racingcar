@@ -35,15 +35,6 @@ class CarsTest {
     }
 
     @Test
-    void 이름이5글자가_초과하면_예외발생() {
-        // Given
-        String[] names =  new String[]{"default", "pobi", "crong"};
-        // When & Then
-        assertThatThrownBy(() -> Cars.createInstance(names))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     void 우승자를_선정() {
         // Given
         int stop = 0;

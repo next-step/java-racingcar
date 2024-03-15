@@ -1,7 +1,10 @@
 package race.domain;
 
+import static java.beans.Beans.isInstanceOf;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -18,5 +21,14 @@ class CarTest {
 
         // Then
         assertThat(car.getPosition()).isEqualTo(count);
+    }
+
+    @Test
+    void 이름이5글자가_초과하면_예외발생() {
+        // Given
+        String name = "default";
+        // When & Then
+        assertThatThrownBy(() -> Car.createInstance(name))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
