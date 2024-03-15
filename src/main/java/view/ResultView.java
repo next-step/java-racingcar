@@ -25,7 +25,7 @@ public class ResultView {
     private static List<String> getNames(List<Car> cars) {
         List<String> names = new ArrayList<>();
         for (Car car : cars) {
-            names.add(car.getName());
+            names.add(car.name().value());
         }
         return names;
     }

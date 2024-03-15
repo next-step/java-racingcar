@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Car;
+import domain.Name;
 import domain.RacingGame;
 import domain.RandomMoveStrategy;
 import view.InputView;
@@ -29,7 +30,7 @@ public class RacingGameController {
 
         List<Car> cars = new ArrayList<>();
         for (String name : carNames.split(",")) {
-            cars.add(new Car(name, new RandomMoveStrategy()));
+            cars.add(new Car(new Name(name), new RandomMoveStrategy()));
         }
         RacingGame racingGame = new RacingGame(cars, moveCount);
         racingGame.play();
