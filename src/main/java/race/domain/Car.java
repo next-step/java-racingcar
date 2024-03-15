@@ -52,7 +52,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return position - o.getPosition();
+        return Integer.compare(position, o.getPosition());
     }
 
     @Override
