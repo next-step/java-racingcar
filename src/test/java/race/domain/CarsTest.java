@@ -90,8 +90,7 @@ class CarsTest {
         // Then
         List<Car> winners = cars.chooseWinners();
         int expected = 2;
-        assertThat(winners.size()).isEqualTo(expected);
-        assertThat(winners).contains(pobi, crong);
+        assertThat(winners).containsExactlyInAnyOrder(pobi, crong);
     }
 
     @Test()
