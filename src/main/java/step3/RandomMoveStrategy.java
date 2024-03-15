@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
-    private final Random random = new Random();
-    private final int MOVE_THRESHOLD = 3;
+    private static final Random random = new Random();
+    private static final int MOVE_THRESHOLD = 3;
 
     @Override
     public boolean move() {

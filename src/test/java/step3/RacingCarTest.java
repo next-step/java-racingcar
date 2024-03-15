@@ -4,21 +4,26 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class RacingCarTest {
 
     Car car;
     AlwaysMoveStrategy alwaysMoveStrategy;
+    private final String TEST_NAME = "test";
+    private final String[] TEST_CAR_NAMES = {"pobi", "crong", "honux"};
 
     @BeforeEach
     void beforeEach() {
         alwaysMoveStrategy = new AlwaysMoveStrategy();
-        car = new Car(alwaysMoveStrategy);
+        car = new Car(TEST_NAME, alwaysMoveStrategy);
     }
 
     @Test
@@ -58,5 +63,47 @@ public class RacingCarTest {
         List<Car> cars = carRacing.getCars();
 
         assertThrows(UnsupportedOperationException.class, () -> cars.add(new Car(alwaysMoveStrategy)));
+    }
+
+    @Test
+    public void 자동차의_이름을_조회할_수_있다() {
+        assertThat(car.getName()).isEqualTo(TEST_NAME);
+    }
+
+    @Test
+    public void 자동차_경주에는_각_자동차들의_이름이_있다() {
+        CarRacing carRacing = new CarRacing(3, TEST_CAR_NAMES, alwaysMoveStrategy);
+        List<Car> cars = carRacing.getCars();
+
+        List<String> actualNames = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        assertTrue(actualNames.containsAll(Arrays.asList(TEST_CAR_NAMES)));
+
+    }
+
+    @Test
+    public void 이름은_5자를_초과할_수_없다() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CarName("123456");
+        }, "네이밍 오류");
+    }
+
+    @Test
+    public void 자동차_경기의_우승자는_여러대도_가능하다() {
+        String[] testCarNames = {"1", "2", "3"};
+        CarRacing carRacing = new CarRacing(3, testCarNames, alwaysMoveStrategy);
+        assertThat(carRacing.getWinners()).isEqualTo(Arrays.asList(testCarNames));
+    }
+
+    @Test
+    public void 자동차_경기의_우승자는_한대도_가능하다() {
+        String[] testCarNames = {"1", "2", "3"};
+        String[] winnerCarName = {"1"};
+        CarRacing carRacing = new CarRacing(3, testCarNames, alwaysMoveStrategy);
+        carRacing.getCars().get(0).moveForwardOnChance();
+
+        assertThat(carRacing.getWinners()).isEqualTo(Arrays.asList(winnerCarName));
     }
 }

@@ -2,12 +2,23 @@ package step3;
 
 public class Car {
 
-    int location;
-    MoveStrategy moveStrategy;
+    private CarName name;
+    private int location;
+    private MoveStrategy moveStrategy;
 
     Car(MoveStrategy moveStrategy) {
         this.location = 0;
         this.moveStrategy = moveStrategy;
+    }
+
+    Car(String name, MoveStrategy moveStrategy) {
+        this.name = new CarName(name);
+        this.location = 0;
+        this.moveStrategy = moveStrategy;
+    }
+
+    public String getName() {
+        return this.name.getName();
     }
 
     public int getCurrentLocation() {
