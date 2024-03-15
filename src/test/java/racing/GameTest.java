@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -52,4 +55,28 @@ class GameTest {
                 .hasMessageContaining("시도할 횟수는 음수가 될 수 없습니다.");
     }
 
+    @Test
+    @DisplayName("이름을 입력하여 자동차를 생성")
+    public void enterCarNameToCreateCars() {
+        Game game = new Game();
+
+        game.createAttendedCarsWithName("전공,지식,노트");
+
+        assertThat(game.getAttendedCars().size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("게임에 참가한 자동차에서 가장 먼 거리를 간 자동차들을 반환")
+    public void getWinners() {
+        Car pobi = new Car("pobi", 4);
+        Car jason = new Car("jason", 2);
+        Car woni = new Car("woni", 4);
+        List<Car> cars = Arrays.asList(pobi, jason, woni);
+
+        Game game = new Game(cars);
+
+        List<Car> winners = game.getWinners();
+
+        assertThat(winners).contains(pobi, woni);
+    }
 }
