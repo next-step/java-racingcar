@@ -9,16 +9,16 @@ public class CarGame {
     private final int rounds;
     private final MoveStrategy moveStrategy;
 
-    public CarGame(int carCount, int rounds, MoveStrategy moveStrategy) {
+    public CarGame(int rounds, MoveStrategy moveStrategy, String[] names) {
         this.cars = new ArrayList<>();
-        createCar(carCount);
+        createCar(names);
         this.rounds = rounds;
         this.moveStrategy = moveStrategy;
     }
 
-    private List<Car> createCar(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+    private List<Car> createCar(String[] names) {
+        for (String name : names) {
+            this.cars.add(new Car(name));
         }
         return cars;
     }
@@ -27,12 +27,18 @@ public class CarGame {
         List<RoundRecord> records = new ArrayList<>();
 
         for (int i = 0; i < rounds; i++) {
-            RoundRecord record = new RoundRecord();
-            for (Car car : cars) {
-                record.add(car.forward(moveStrategy));
-            }
+            RoundRecord record = playRound();
             records.add(record);
         }
         return records;
+    }
+
+    private RoundRecord playRound() {
+        RoundRecord record = new RoundRecord();
+        for (Car car : cars) {
+            car.forward(moveStrategy);
+            record.addHistory(car);
+        }
+        return record;
     }
 }

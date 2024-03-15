@@ -4,14 +4,14 @@ public class Car {
 
     private static final int ZERO = 0;
     private int position;
+    private final String name;
 
-    public Car() {
+    public Car(String name) {
         this.position = ZERO;
+        this.name = name;
     }
 
     public int forward(MoveStrategy moveStrategy) {
-        //position ++
-
         if (moveStrategy.isMovable()) {
             position++;
         }
@@ -20,6 +20,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
