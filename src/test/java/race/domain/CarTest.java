@@ -1,12 +1,14 @@
 package race.domain;
 
-import static java.beans.Beans.isInstanceOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class CarTest {
 
@@ -30,5 +32,49 @@ class CarTest {
         // When & Then
         assertThatThrownBy(() -> Car.createInstance(name))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @MethodSource("providePositionsAndBoolean")
+    void isSamePosition_테스트(int position1, int position2, boolean expected) {
+        // Given
+        Car test1 = Car.createInstance("test1");
+        Car test2 = Car.createInstance("test2");
+
+        // When
+        test1.move(position1);
+        test2.move(position2);
+
+        // Then
+        assertThat(test1.isSamePosition(test2)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("providePositionsAndInt")
+    void compareTo_테스트(int position1, int position2, int expected) {
+        // Given
+        Car test1 = Car.createInstance("test1");
+        Car test2 = Car.createInstance("test2");
+
+        // When
+        test1.move(position1);
+        test2.move(position2);
+
+        // Then
+        assertThat(test1.compareTo(test2)).isEqualTo(expected);
+    }
+    private static Stream<Arguments> providePositionsAndBoolean() {
+        return Stream.of(
+                Arguments.of(4,3, false),
+                Arguments.of(4,4, true)
+        );
+    }
+
+    private static Stream<Arguments> providePositionsAndInt() {
+        return Stream.of(
+                Arguments.of(4,3, 1),
+                Arguments.of(4,4, 0),
+                Arguments.of(3,4, -1)
+        );
     }
 }

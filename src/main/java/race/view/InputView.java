@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InputView {
 
     private static final String INVALID_INPUT_MESSAGE_FORMAT = "잘못된 입력값입니다. 다시 입력해주세요. %s";
+    private static final String CAR_NAME_DELIMITER = ",";
 
     public static int requestCountOfTrial() {
         try {
@@ -16,9 +17,9 @@ public class InputView {
         }
     }
 
-    public static String requestCarNames() {
+    public static String[] requestCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return inputCarNames();
+        return inputCarNames().split(CAR_NAME_DELIMITER);
     }
 
     public static int requestCars() {

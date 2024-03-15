@@ -14,18 +14,17 @@ import utils.number.RandomNumberGenerator;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        String carNames = InputView.requestCarNames();
+        String[] carNames = InputView.requestCarNames();
         int countOfTrial = InputView.requestCountOfTrial();
 
         ResultView.start();
-
-        String[] names = carNames.split(",");
-        Cars cars = Cars.createInstance(names);
+        Cars cars = Cars.createInstance(carNames);
 
         NumberGenerator randomGenerator = new RandomNumberGenerator();
         racing(cars, randomGenerator, countOfTrial);
 
-        ResultView.showWinners(StringUtils.join(",", cars.chooseWinners()));
+
+        ResultView.showWinners(cars.chooseWinners());
     }
 
     private static void racing(Cars cars, NumberGenerator numberGenerator, int countOfTrial) {
