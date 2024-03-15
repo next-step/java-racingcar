@@ -13,7 +13,7 @@ public class Cars {
 	public static Cars createCars(final String[] carNames) {
 		Cars cars = new Cars();
 		for (String carName : carNames) {
-			cars.addCar(Car.createCar(carName));
+			cars.addCar(Car.createCar(new Name(carName)));
 		}
 		return cars;
 	}
@@ -47,7 +47,7 @@ public class Cars {
 				.getPosition();
 		return cars.stream()
 				.filter(car -> car.getPosition() == maxPosition)
-				.map(Car::getName)
+				.map(car -> car.getName().getName())
 				.collect(Collectors.toList());
 	}
 }

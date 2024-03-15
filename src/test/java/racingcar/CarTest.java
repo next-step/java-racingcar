@@ -1,13 +1,13 @@
 package racingcar;
 
 import domain.Car;
+import domain.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class CarTest {
 	@DisplayName("값이 4 이상일 경우 전진한다.")
@@ -42,22 +42,12 @@ public class CarTest {
 	@Test
 	void nameToCar () {
 		// given
-		Car car = Car.createCar("audi");
+		Car car = Car.createCar(new Name("audi"));
 
 		// when
-		String carName = car.getName();
+		String carName = car.getName().getName();
 
 		// then
 		assertThat(carName).isEqualTo("audi");
-	}
-
-	@DisplayName("자동차 이름이 5글자가 초과될 경우 예외를 던진다.")
-	@Test
-	void nameToCarOverFiveNumberOfCharacters () {
-		// given & when & then
-		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> {
-					Car.createCar("mercedes");
-				}).withMessageMatching("글자수가 5를 초과했습니다. 다시 입력해주세요.");
 	}
 }

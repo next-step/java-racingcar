@@ -2,6 +2,7 @@ package racingcar;
 
 import domain.Car;
 import domain.Cars;
+import domain.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import view.ResultView;
@@ -13,7 +14,7 @@ public class ResultViewTest {
 	@Test
 	void printWithCarName() {
 		// given
-		Car audi = Car.createCar("audi");
+		Car audi = Car.createCar(new Name("audi"));
 
 		// when
 		String result = ResultView.carNameAndPositionWithChar(audi, '-');
@@ -26,9 +27,9 @@ public class ResultViewTest {
 	@Test
 	void printWinners() {
 		// given
-		Car audiCar = Car.createCar("audi");
-		Car jeepCar = Car.createCar("jeep");
-		Car kiaCar = Car.createCar("kia");
+		Car audiCar = Car.createCar(new Name("audi"));
+		Car jeepCar = Car.createCar(new Name("jeep"));
+		Car kiaCar = Car.createCar(new Name("kia"));
 
 		audiCar.move(5);
 		audiCar.move(6);

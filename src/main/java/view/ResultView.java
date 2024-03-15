@@ -58,6 +58,6 @@ public class ResultView {
 		for (int i = 0; i < car.getPosition(); i++) {
 			sb.append(positionChar);
 		}
-		return car.getName() + " : " + sb.toString();
+		return car.getName().getName() + " : " + sb.toString();
 	}
 }
