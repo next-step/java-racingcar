@@ -2,10 +2,11 @@ package domain;
 
 public class Car {
 
+    private static final String DEFAULT_NAME = "noop";
+
     private final Position position;
     private final MoveStrategy moveStrategy;
     private final String name;
-    private static final String DEFAULT_NAME = "noop";
 
     public Car(MoveStrategy moveStrategy) {
         this(DEFAULT_NAME, moveStrategy);
