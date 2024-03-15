@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 public class CarGroups {
 
-    private List<Car> carGroups = new ArrayList<>();
+    private List<Car> carGroups;
 
     public CarGroups(List<Car> carGroups) {
         this.carGroups = carGroups;
