@@ -1,7 +1,7 @@
 package calculator;
 
-import static java.math.BigInteger.*;
-import static java.text.MessageFormat.*;
+import static java.math.BigInteger.ZERO;
+import static java.text.MessageFormat.format;
 
 import java.math.BigInteger;
 
