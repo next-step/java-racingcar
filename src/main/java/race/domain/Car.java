@@ -12,10 +12,6 @@ public class Car implements Comparable<Car> {
         this.name = name;
     }
 
-    public static Car createInstance() {
-        return new Car("name");
-    }
-
     public static Car createInstance(String name) {
         return new Car(name);
     }

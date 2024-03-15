@@ -11,7 +11,7 @@ class CarTest {
     @CsvSource(value = {"4:1", "5:1", "1:0", "2:0", "3:0"}, delimiter = ':')
     void move(int number, int count) {
         // Given
-        Car car = Car.createInstance();
+        Car car = Car.createInstance("test");
 
         // When
         car.move(number);

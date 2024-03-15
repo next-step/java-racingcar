@@ -65,7 +65,7 @@ public class Cars {
         List<Car> cars = new ArrayList<>();
 
         while (countOfCar > 0) {
-            cars.add(Car.createInstance());
+            cars.add(Car.createInstance("test"));
             countOfCar--;
         }
 
