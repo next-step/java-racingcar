@@ -3,8 +3,6 @@ package racing.domain;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RacingGameManager {
@@ -12,23 +10,20 @@ public class RacingGameManager {
     private static final int RANDOM_MAX_NUMBER = 10;
 
     public void play() {
-        Count carCount = new Count(InputView.askNumberOfCarParticipants());
+        RacingCars racingCars = new RacingCars(InputView.askNumberOfCarParticipants());
         Count attemptCount = new Count(InputView.askNumberOfAttempt());
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < carCount.getValue(); i++) {
-            racingCars.add(new RacingCar());
-        }
 
         ResultView.printGameResultTitle();
-        for (int i = 0; i < attemptCount.getValue(); i++) {
+        for (int i = 0; i < attemptCount.value(); i++) {
             playRound(racingCars);
         }
 
+        ResultView.printWinners(racingCars);
     }
 
-    private void playRound(List<RacingCar> racingCars) {
-        racingCars.forEach(this::playCar);
-        ResultView.printCarCurrentPosition(racingCars);
+    private void playRound(RacingCars racingCars) {
+        racingCars.getRacingCarList().forEach(this::playCar);
+        ResultView.printCarsCurrentPosition(racingCars);
     }
 
     private void playCar(RacingCar racingCar) {

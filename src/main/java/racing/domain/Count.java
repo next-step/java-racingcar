@@ -7,26 +7,25 @@ public class Count {
         this.value = toInt(value);
     }
 
-    public int getValue() {
+    public int value() {
         return value;
     }
 
     private int toInt(String input) {
         if (isNullOrBlank(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Null 또는 공백 입력");
         }
 
         int number;
         try {
             number = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
 
         if (isZeroOrNegativeNumber(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("양의 정수만 입력할 수 있습니다.");
         }
-
         return number;
     }
 

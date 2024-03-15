@@ -14,7 +14,7 @@ class CountTest {
     @Test
     void 숫자_입력() {
         Count carCount = new Count("3");
-        assertThat(carCount.getValue()).isEqualTo(3);
+        assertThat(carCount.value()).isEqualTo(3);
     }
 
     @DisplayName("숫자가 아닌 값, 0 이하의 숫자, 공백, Null 값 입력했을 경우")
