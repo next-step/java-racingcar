@@ -55,9 +55,9 @@ public class ResultView {
 	public static String carNameAndPositionWithChar(final Car car, final char positionChar) {
 
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < car.getPosition(); i++) {
+		for (int i = 0; i < car.getPositionNumber(); i++) {
 			sb.append(positionChar);
 		}
-		return car.getName().getName() + " : " + sb.toString();
+		return car.getName() + " : " + sb.toString();
 	}
 }

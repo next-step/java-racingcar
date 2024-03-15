@@ -45,7 +45,7 @@ public class CarTest {
 		Car car = Car.createCar(new Name("audi"));
 
 		// when
-		String carName = car.getName().getName();
+		String carName = car.getName();
 
 		// then
 		assertThat(carName).isEqualTo("audi");
