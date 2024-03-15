@@ -1,12 +1,10 @@
 package carRace;
 
-import static carRace.domain.Car.createCars;
+import static carRace.domain.car.Car.createCars;
 
-import carRace.domain.Referee;
-import carRace.view.InputView;
-import carRace.domain.Car;
+import carRace.domain.car.Car;
 import carRace.domain.RaceHost;
-import carRace.view.OutputView;
+import carRace.view.InputView;
 import java.util.Arrays;
 import java.util.List;
 
