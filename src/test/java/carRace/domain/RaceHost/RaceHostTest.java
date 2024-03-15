@@ -1,4 +1,4 @@
-package carRace.domain;
+package carRace.domain.RaceHost;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;

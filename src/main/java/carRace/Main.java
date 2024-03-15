@@ -3,7 +3,7 @@ package carRace;
 import static carRace.domain.car.Car.createCars;
 
 import carRace.domain.car.Car;
-import carRace.domain.RaceHost;
+import carRace.domain.RaceHost.RaceHost;
 import carRace.view.InputView;
 import java.util.Arrays;
 import java.util.List;

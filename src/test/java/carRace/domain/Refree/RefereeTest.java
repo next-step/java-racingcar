@@ -1,7 +1,8 @@
-package carRace.domain;
+package carRace.domain.Refree;
 
 import static org.assertj.core.api.Assertions.*;
 
+import carRace.domain.Referee.Referee;
 import carRace.domain.car.Car;
 import carRace.domain.car.MoveDistance;
 import java.util.Arrays;

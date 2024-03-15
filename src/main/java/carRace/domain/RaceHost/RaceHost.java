@@ -1,5 +1,6 @@
-package carRace.domain;
+package carRace.domain.RaceHost;
 
+import carRace.domain.Referee.Referee;
 import carRace.domain.car.Car;
 import carRace.domain.randomNumber.RandomNumber;
 import carRace.util.RandomNumberGenerator;

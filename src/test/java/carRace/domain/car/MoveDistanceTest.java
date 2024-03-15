@@ -1,9 +1,9 @@
-package carRace.domain;
+package carRace.domain.car;
 
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowableOfType;
 
-import carRace.domain.car.MoveDistance;
 import carRace.error.ErrorMessage;
 import carRace.error.exception.NotPositiveNumberException;
 import java.util.Arrays;
