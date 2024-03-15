@@ -42,7 +42,7 @@ public class Race {
         final CarMovement carMovement = setCarMovementOption();
 
         for (int round = 1; round <= this.playingCount; round++) {
-            moveCars(carMovement);
+            cars.moveForwardOrStop(carMovement);
             addRoundResult(round);
         }
     }
@@ -51,16 +51,15 @@ public class Race {
         return new CarMovement(new BasicMovingStrategy(), new RandomNumberGenerator());
     }
 
-    private void moveCars(final CarMovement carMovement) {
-        this.cars.forEach(car -> car.moveForwardOrStop(carMovement));
-    }
-
     private void addRoundResult(final int round) {
-        final RoundResult roundResult = RoundResult.of(round, CarResult.fromCars(this.cars));
-        this.roundResults.add(roundResult);
+        final RoundResult roundResult = new RoundResult(round, CarResult.fromCars(this.cars));
+        this.result.addRoundResult(roundResult);
     }
 
     public GameResult result() {
-        return GameResult.from(this.roundResults);
+        final List<String> winnerNames = this.cars.winnerNames();
+        this.result.updateWinnerNames(winnerNames);
+
+        return this.result;
     }
 }
