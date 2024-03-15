@@ -12,7 +12,10 @@ public enum ErrorMessage {
 
     ILLEGAL_STATE("비정상 경로로 접근하였습니다. 다시 실행해주세요. "),
 
-    UNEXPECTED_ERROR("예기치 못한 예외가 발생되었습니다. 다시 실행해주세요. ");
+    UNEXPECTED_ERROR("예기치 못한 예외가 발생되었습니다. 다시 실행해주세요. "),
+
+    MOVE_DISTANCE_NOT_POSITIVE_NUMBER("이동거리는 0보다 크거나 같아야 합니다.");
+
     private final String message;
 
     ErrorMessage(String message) {
