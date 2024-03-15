@@ -47,4 +47,9 @@ public class Distance {
     public int getDistance() {
         return this.distance;
     }
+
+    @Override
+    public String toString() {
+        return "-".repeat(Math.max(0, this.distance));
+    }
 }

@@ -11,13 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GameTest {
 
-    final List<Car> cars = new ArrayList<>();
+    final List<Name> names = new ArrayList<>();
     final FakeNumberGenerator generator = new FakeNumberGenerator();
 
     @BeforeEach
     public void setUpCars() {
         for (int i = 0; i < 5; i++) {
-            cars.add(new Car("test" + i));
+            names.add(new Name("test" + i));
         }
     }
 
@@ -25,7 +25,7 @@ class GameTest {
     @DisplayName("모든 자동차들이 전진한다")
     void all_cars_forward() {
         generator.number = 4;
-        Game game = new Game(generator, cars);
+        Game game = new Game(generator, names);
         game.play();
         assertThat(game.getDistances()).containsExactly(2, 2, 2, 2, 2);
     }
@@ -34,7 +34,7 @@ class GameTest {
     @DisplayName("모든 자동차들이 제자리에 있는다")
     void all_cars_stay() {
         generator.number = 3;
-        Game game = new Game(generator, cars);
+        Game game = new Game(generator, names);
         game.play();
         assertThat(game.getDistances()).containsExactly(1, 1, 1, 1, 1);
     }

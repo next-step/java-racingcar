@@ -10,10 +10,10 @@ public class ResultView {
         System.out.println(message);
     }
 
-    public static void printCars(final List<Car> cars) {
-        cars.forEach(car -> {
-            String distance = "-".repeat(Math.max(0, car.getDistance()));
-            ResultView.printPlainMessage(car.getName() + " : " + distance);
-        });
+    public static void printPlainMessages(final List<String> messages){
+        for(String message : messages){
+            printPlainMessage(message);
+        }
+        printPlainMessage("");
     }
 }

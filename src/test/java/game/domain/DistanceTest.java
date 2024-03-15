@@ -41,4 +41,11 @@ class DistanceTest {
             distance.move(-1);
         }).isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    @DisplayName("toString 테스트")
+    void to_string_test(){
+        String test = new Distance(5).toString();
+        assertThat(test).isEqualTo("-----");
+    }
 }
