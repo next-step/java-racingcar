@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 import utils.number.NumberGenerator;
 
 public class Cars {
@@ -41,18 +42,10 @@ public class Cars {
     }
 
     public List<Car> chooseWinners() {
-        List<Car> winners = new ArrayList<>();
         Car winner = chooseWinner();
-        for (Car car : this.cars) {
-            Car findCar = winner.findSamePosition(car);
-            winners.add(findCar);
-        }
-        this.removeNull(winners);
-        return winners;
-    }
-
-    private void removeNull(List<Car> cars) {
-        cars.removeAll(Collections.singletonList(null));
+        return this.cars.stream()
+                .filter(winner::isSamePosition)
+                .collect(Collectors.toList());
     }
 
     private Car chooseWinner() {

@@ -35,11 +35,8 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public Car findSamePosition(Car car) {
-        if (position == car.getPosition()) {
-            return car;
-        }
-        return null;
+    public Boolean isSamePosition(Car car) {
+        return position == car.getPosition();
     }
 
     private void validateName(String name) {
