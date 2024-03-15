@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.Test;
 import racing.util.RandomUtil;

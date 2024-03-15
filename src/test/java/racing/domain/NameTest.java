@@ -1,8 +1,7 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.Name;
 
 import static org.assertj.core.api.Assertions.*;
 import static racing.domain.Name.MAX_CAR_NAME_LENGTH;
