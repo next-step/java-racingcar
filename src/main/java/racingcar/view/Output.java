@@ -7,6 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Output {
+
+    public void showCarCountInputRequestMessage() {
+        System.out.println("자동차 대수는 몇 대 인가요?");
+    }
+
+    public void showTryCountInputRequestMessage() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+    }
+
     public void showResult(int carCount, RaceResult result) {
 
         List<String> messages = new ArrayList<>();

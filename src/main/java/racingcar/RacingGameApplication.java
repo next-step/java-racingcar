@@ -14,10 +14,10 @@ public class RacingGameApplication {
         Input input = new Input();
         Output output = new Output();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
+        output.showCarCountInputRequestMessage();
         int carCount = input.inputNumber();
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
+        output.showTryCountInputRequestMessage();
         int tryCount = input.inputNumber();
 
         MoveStrategy moveStrategy = new MoveByRandomNumberStrategy();
