@@ -36,6 +36,6 @@ class StringSplitterTest {
     void split_Blank_Exception(final String blankText) {
         Assertions.assertThatThrownBy(() -> StringSplitter.split(blankText))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("공백 문자는 구분자를 이용해 자를 수 없습니다.");
+                .hasMessage("공백 문자는 구분자를 이용해 자를 수 없습니다.");
     }
 }
