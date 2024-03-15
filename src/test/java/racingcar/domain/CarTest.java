@@ -12,7 +12,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"a", "1", "kyle", "123", "ky123"})
-    @DisplayName("영어 소문자와 숫자로 이루어진 자동차 이름을 전달하면, 정상적으로 Car 객체가 생성된다.")
+    @DisplayName("한 글자 이상의 공백이 없는 영어 소문자와 숫자로 이루어진 이름으로 자동차를 생성한다.")
     void new_CarNameWithLowercaseAndNumber_Car(final String carName) {
         assertThat(new Car(carName).name())
                 .isEqualTo(carName);
@@ -20,7 +20,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {" a", "a ", " a ", "a\n", "\na", "\na\n", "a\n ", "\n a", " a\n"})
-    @DisplayName("자동차 이름의 양쪽 끝에 공백, 개행 문자에 대해서는 무시하고 조건을 판단하여, Car 객체를 생성한다.")
+    @DisplayName("자동차 이름의 양쪽 끝에 존재하는 공백을 제거한 후 자동차를 생성한다.")
     void new_SpacePaddedCarName_Car(final String carName) {
         assertThat(new Car(carName).name())
                 .isEqualTo(carName.trim());
@@ -28,7 +28,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"#", "ky le", "$1k", "k 123"})
-    @DisplayName("특수 문자나 공백이 들어간 자동차 이름을 전달하면, 예외를 던진다.")
+    @DisplayName("영어 소문자나 숫자 이외의 문자가 포함된 이름으로 자동차를 생성하는 경우 예외를 던진다.")
     void new_CarNameWithSpaceOrSpecialCharacter_Exception(final String invalidCarName) {
         assertThatThrownBy(() -> new Car(invalidCarName))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -37,7 +37,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "     ", "\n"})
-    @DisplayName("자동차 이름에 빈 문자열, 공백, 개행을 전달하면, 예외를 던진다.")
+    @DisplayName("빈 문자열, 공백, 개행으로 자동차를 생성하는 경우 예외를 던진다.")
     void new_BlankCarName_Exception(final String blankCarName) {
         assertThatThrownBy(() -> new Car(blankCarName))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -45,7 +45,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("최대 길이 초과의 자동차 이름을 전달하면, 예외를 던진다.")
+    @DisplayName("최대 길이를 초과한 이름으로 자동차를 생성하는 경우 예외를 던진다.")
     void new_CarNameLongerThanMaximumLength_Exception() {
         final String longCarName = "kyle12";
 
