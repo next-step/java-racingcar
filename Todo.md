@@ -46,3 +46,14 @@
 - 가장 많이 이동한 자동차들이 우승자로 선정("one -> 3, two -> 5" => two)
 - 우승자는 한 명 이상일 수 있다("one -> 3, two -> 3" => one,two)
 - 우승자 출력("pobi, honux가 최종 우승했습니다.")
+
+# Step5
+
+## Todo
+- Step4 개선 사항 : NumberGenerator 구현체를 줄이는 방향으로 GameTest 개선하기
+- Step4 개선 사항 : GameClient에서 결과 조회나 자동차 생성과 같은 책임을 일급 컬렉션인 Game 내부로 옮긴다
+- Step4 개선 사항 : 승자의 책임을 가지는 Winner 분리
+- Step4 개선 사항 : Car를 출력하는 형식도 최대한 Car 내부에서 이뤄지도록 수정
+- Car 내부의 name, distance과 같은 원시값을 포장하는 책임을 분리 
+
+## Done
