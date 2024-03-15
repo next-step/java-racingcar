@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 public class Car {
     private static final int ADVANCE_CONDITION_NUMBER = 4;
