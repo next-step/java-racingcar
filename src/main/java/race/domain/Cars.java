@@ -3,7 +3,8 @@ package race.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import race.view.ResultView;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import utils.number.NumberGenerator;
 
 public class Cars {
@@ -14,8 +15,16 @@ public class Cars {
         cars = generateCar(countOfCar);
     }
 
+    private Cars(String[] names) {
+        cars = generateCar(names);
+    }
+
     public static Cars createInstance(int countOfCar) {
         return new Cars(countOfCar);
+    }
+
+    public static Cars createInstance(String[] names) {
+        return new Cars(names);
     }
 
     public List<Car> getCars() {
@@ -32,12 +41,34 @@ public class Cars {
         }
     }
 
+    public List<Car> chooseWinners() {
+        Car winner = chooseWinner();
+        return this.cars.stream()
+                .filter(winner::isSamePosition)
+                .collect(Collectors.toList());
+    }
+
+    private Car chooseWinner() {
+        TreeSet<Car> cars = new TreeSet<>(this.cars);
+        return cars.last();
+    }
+
     private List<Car> generateCar(int countOfCar) {
         List<Car> cars = new ArrayList<>();
 
-        while(countOfCar > 0) {
-            cars.add(Car.createInstance());
+        while (countOfCar > 0) {
+            cars.add(Car.createInstance("test"));
             countOfCar--;
+        }
+
+        return cars;
+    }
+
+    private List<Car> generateCar(String[] names) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : names) {
+            cars.add(Car.createInstance(name));
         }
 
         return cars;

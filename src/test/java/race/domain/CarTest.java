@@ -1,8 +1,9 @@
 package race.domain;
 
+import static java.beans.Beans.isInstanceOf;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -13,12 +14,21 @@ class CarTest {
     @CsvSource(value = {"4:1", "5:1", "1:0", "2:0", "3:0"}, delimiter = ':')
     void move(int number, int count) {
         // Given
-        Car car = Car.createInstance();
+        Car car = Car.createInstance("test");
 
         // When
         car.move(number);
 
         // Then
-        assertThat(car.getCountOfMove()).isEqualTo(count);
+        assertThat(car.getPosition()).isEqualTo(count);
+    }
+
+    @Test
+    void 이름이5글자가_초과하면_예외발생() {
+        // Given
+        String name = "default";
+        // When & Then
+        assertThatThrownBy(() -> Car.createInstance(name))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

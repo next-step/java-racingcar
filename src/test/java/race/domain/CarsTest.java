@@ -1,12 +1,10 @@
 package race.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import utils.number.DefaultNumberGenerator;
 import utils.number.NumberGenerator;
 
@@ -23,6 +21,78 @@ class CarsTest {
         assertThat(cars.getSize()).isEqualTo(expected);
     }
 
+    @Test
+    void 요청한이름으로_자동차가_만들어진다() {
+        // Given
+        String[] names = new String[]{"pobi","crong","honux"};
+
+        // When
+        Cars cars = Cars.createInstance(names);
+
+        // Then
+        int expected = 3;
+        assertThat(cars.getSize()).isEqualTo(expected);
+    }
+
+    @Test
+    void 우승자를_선정() {
+        // Given
+        int stop = 0;
+        int move = 4;
+        String[] names = new String[]{"pobi","crong","honux"};
+        Cars cars = Cars.createInstance(names);
+        Car pobi = cars.getCars().get(0);
+        Car crong = cars.getCars().get(1);
+        Car honux = cars.getCars().get(2);
+
+        // When
+        pobi.move(stop);
+        pobi.move(stop);
+        pobi.move(move);
+
+        crong.move(move);
+        crong.move(move);
+        crong.move(move);
+
+        honux.move(stop);
+        honux.move(stop);
+        honux.move(stop);
+
+        // Then
+        List<Car> winners = cars.chooseWinners();
+        assertThat(winners).containsExactly(crong);
+    }
+
+    @Test
+    void 우승자는_여러명일수가_있다() {
+        // Given
+        int stop = 0;
+        int move = 4;
+        String[] names = new String[]{"pobi","crong","honux"};
+        Cars cars = Cars.createInstance(names);
+        Car pobi = cars.getCars().get(0);
+        Car crong = cars.getCars().get(1);
+        Car honux = cars.getCars().get(2);
+
+        // When
+        pobi.move(move);
+        pobi.move(move);
+        pobi.move(stop);
+
+        crong.move(move);
+        crong.move(move);
+        crong.move(stop);
+
+        honux.move(stop);
+        honux.move(stop);
+        honux.move(stop);
+
+        // Then
+        List<Car> winners = cars.chooseWinners();
+        int expected = 2;
+        assertThat(winners).containsExactlyInAnyOrder(pobi, crong);
+    }
+
     @Test()
     void 자동차들은_사이상받으면_움직인다() {
         // Given
@@ -35,7 +105,7 @@ class CarsTest {
 
         // Then
         for (Car car : cars.getCars()) {
-            assertThat(car.getCountOfMove()).isEqualTo(1);
+            assertThat(car.getPosition()).isEqualTo(1);
         }
     }
 
@@ -52,7 +122,7 @@ class CarsTest {
 
         // Then
         for (Car car : cars.getCars()) {
-            assertThat(car.getCountOfMove()).isEqualTo(expected);
+            assertThat(car.getPosition()).isEqualTo(expected);
         }
     }
 }
