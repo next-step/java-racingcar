@@ -1,8 +1,9 @@
 package carRace.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
+import carRace.domain.car.Car;
+import carRace.domain.car.MoveDistance;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -15,9 +16,9 @@ class RefereeTest {
     public void Referee_Should_Find_Name_Of_Car_Move_Furthest_Among_Cars() throws Exception{
         //given
         Referee sutReferee = new Referee();
-        Car namhyoepCar = new Car("namhyoepCar", 3);
-        Car momoCar = new Car("momoCar", 4);
-        Car nanaCar = new Car("nanaCar", 5);
+        Car namhyoepCar = new Car("namhyoepCar", new MoveDistance(3));
+        Car momoCar = new Car("momoCar", new MoveDistance(4));
+        Car nanaCar = new Car("nanaCar", new MoveDistance(5));
         List<Car> cars = Arrays.asList(namhyoepCar, momoCar, nanaCar);
 
         //when
@@ -34,9 +35,9 @@ class RefereeTest {
     public void Referee_Should_Declare_Multiple_Winners_If_Scores_Equal() throws Exception{
         //given
         Referee sutReferee = new Referee();
-        Car namhyoepCar = new Car("namhyoepCar", 3);
-        Car momoCar = new Car("momoCar", 5);
-        Car nanaCar = new Car("nanaCar", 5);
+        Car namhyoepCar = new Car("namhyoepCar", new MoveDistance(3));
+        Car momoCar = new Car("momoCar", new MoveDistance(5));
+        Car nanaCar = new Car("nanaCar", new MoveDistance(5));
         List<Car> cars = Arrays.asList(namhyoepCar, momoCar, nanaCar);
 
         //when
