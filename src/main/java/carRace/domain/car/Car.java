@@ -34,7 +34,7 @@ public class Car {
         return randomNumberHistory;
     }
 
-    public void move(RandomNumber randomNumber) {
+    public void move(final RandomNumber randomNumber) {
         randomNumberHistory.addRandomNumber(randomNumber);
         if (randomNumber.getRandomNumber() >= RECORD_STANDARD_NUMBER) {
             moveDistance.plusMoveDistance();
