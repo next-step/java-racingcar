@@ -1,6 +1,6 @@
 package calculator;
 
-import domain.Calculator;
+import util.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
