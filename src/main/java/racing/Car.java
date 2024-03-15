@@ -16,13 +16,16 @@ public class Car {
     }
 
     public Car(String name, int currentLocation) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차의 이름은 다섯 글자를 초과할 수 없습니다.");
+        }
+
         this.name = name;
         this.currentLocation = currentLocation;
     }
 
     public Car(String name) {
-        this.name = name;
-        this.currentLocation = DEFAULT_START_LOCATION;
+        this(name, DEFAULT_START_LOCATION);
     }
 
     public void move(int movePoint) {
