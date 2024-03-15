@@ -13,7 +13,7 @@ public class ResultView {
 		lineBreaking();
 		System.out.println("실행 결과");
 
-		Cars cars = Cars.createCars(carNames);
+		Cars cars = Cars.createCarsByCarNames(carNames);
 
 		viewCarPositions(cars, count, POSITION_CHAR_CODE);
 

@@ -15,7 +15,7 @@ public class CarTest {
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
 	public void advancePositionFourOver(int number) {
 		//given
-		Car car = new Car();
+		Car car = Car.createCar(new Name("audi"));
 
 		//when
 		car.move(number);
@@ -29,7 +29,7 @@ public class CarTest {
 	@ValueSource(ints = {1, 2, 3})
 	public void noAdvancePositionFourUnder(int number) {
 		//given
-		Car car = new Car();
+		Car car = Car.createCar(new Name("audi"));
 
 		//when
 		car.move(number);

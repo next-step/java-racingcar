@@ -6,15 +6,16 @@ public class Car {
     private Position position;
     private Name name;
 
-    public Car() {
+    private Car() {
     }
 
-    public Car(final Name name) {
+    public Car(final Name name, final Position position) {
+        this.position = position;
         this.name = name;
     }
 
     public static Car createCar(final Name carName) {
-        return new Car(carName);
+        return new Car(carName, new Position(1));
     }
 
     public String getName() {

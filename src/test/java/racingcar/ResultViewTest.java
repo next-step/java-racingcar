@@ -3,9 +3,13 @@ package racingcar;
 import domain.Car;
 import domain.Cars;
 import domain.Name;
+import domain.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import view.ResultView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -27,26 +31,16 @@ public class ResultViewTest {
 	@Test
 	void printWinners() {
 		// given
-		Car audiCar = Car.createCar(new Name("audi"));
-		Car jeepCar = Car.createCar(new Name("jeep"));
-		Car kiaCar = Car.createCar(new Name("kia"));
+		Car audiCar = new Car(new Name("audi"), new Position(5));
+		Car jeepCar = new Car(new Name("jeep"), new Position(5));
+		Car kiaCar = new Car(new Name("kia"), new Position(4));
 
-		audiCar.move(5);
-		audiCar.move(6);
-		audiCar.move(7);
+		List<Car> carList = new ArrayList<>();
+		carList.add(audiCar);
+		carList.add(jeepCar);
+		carList.add(kiaCar);
+		Cars cars = Cars.createCars(carList);
 
-		jeepCar.move(4);
-		jeepCar.move(5);
-		jeepCar.move(6);
-
-		kiaCar.move(3);
-		kiaCar.move(2);
-		kiaCar.move(7);
-
-		Cars cars = new Cars();
-		cars.add(audiCar);
-		cars.add(jeepCar);
-		cars.add(kiaCar);
 
 		// when
 		String viewWinner = ResultView.viewWinner(cars);

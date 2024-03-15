@@ -10,10 +10,21 @@ public class Cars {
 	private static final Random RANDOM = new Random();
 	private List<Car> cars = new ArrayList<>();
 
-	public static Cars createCars(final String[] carNames) {
+	private Cars() {
+	}
+
+	public static Cars createCarsByCarNames(final String[] carNames) {
 		Cars cars = new Cars();
 		for (String carName : carNames) {
 			cars.addCar(Car.createCar(new Name(carName)));
+		}
+		return cars;
+	}
+
+	public static Cars createCars(final List<Car> carList) {
+		Cars cars = new Cars();
+		for (Car car : carList) {
+			cars.addCar(car);
 		}
 		return cars;
 	}

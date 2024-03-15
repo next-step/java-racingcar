@@ -1,6 +1,7 @@
 package racingcar;
 
 import domain.Car;
+import domain.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,8 +14,7 @@ public class RacingCarTest {
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
 	public void advancePositionFourOver(int number) {
 		//given
-		Car car = new Car();
-
+		Car car = Car.createCar(new Name("audi"));
 		//when
 		car.move(number);
 
@@ -27,7 +27,7 @@ public class RacingCarTest {
 	@ValueSource(ints = {1, 2, 3})
 	public void noAdvancePositionFourUnder(int number) {
 		//given
-		Car car = new Car();
+		Car car = Car.createCar(new Name("audi"));
 
 		//when
 		car.move(number);

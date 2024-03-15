@@ -3,6 +3,9 @@ package domain;
 public class Name {
 	private String name;
 
+	private Name() {
+	}
+
 	public Name(String name) {
 		this.name = name;
 		validateCarName();
