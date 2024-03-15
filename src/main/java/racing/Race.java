@@ -20,7 +20,7 @@ public class Race {
 
     public void start() {
         List<String> carNames = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
-        TryCount tryCount = TryCount.from(inputView.inputtedNumber(TRY_COUNT_MESSAGE));
+        TryCount tryCount = TryCount.valueOf(inputView.inputtedNumber(TRY_COUNT_MESSAGE));
         inputView.closeScanner();
 
         List<Car> cars = new ArrayList<>();
