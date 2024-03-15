@@ -21,7 +21,7 @@ public class CarTest {
 		car.move(number);
 
 		//then
-		assertThat(car.getPosition()).isEqualTo(2);
+		assertThat(car.getPositionNumber()).isEqualTo(2);
 	}
 
 	@DisplayName("값이 4 미만일때는 움직이지 않는다.")
@@ -35,7 +35,7 @@ public class CarTest {
 		car.move(number);
 
 		//then
-		assertThat(car.getPosition()).isEqualTo(1);
+		assertThat(car.getPositionNumber()).isEqualTo(1);
 	}
 
 	@DisplayName("자동차 이름을 입력받아 이름이 잘 저장되는지 확인한다.")

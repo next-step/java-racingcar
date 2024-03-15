@@ -3,7 +3,7 @@ package domain;
 public class Car {
     private static final int ADVANCE_CONDITION_NUMBER = 4;
 
-    private int position = 1;
+    private Position position;
     private Name name;
 
     public Car() {
@@ -17,17 +17,17 @@ public class Car {
         return new Car(carName);
     }
 
+    public Name getName() {
+        return name;
+    }
+
     public void move(int number) {
         if (number >= ADVANCE_CONDITION_NUMBER) {
-            position++;
+            position.increment();
         }
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public Name getName() {
-        return name;
+    public Integer getPositionNumber() {
+        return position.getPosition();
     }
 }
