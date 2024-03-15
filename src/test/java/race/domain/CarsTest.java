@@ -14,7 +14,7 @@ class CarsTest {
 
     @BeforeEach
     void init() {
-        cars = new Cars(3, new String[]{"임형준", "박재성", "최승훈"});
+        cars = new Cars(new String[]{"임형준", "박재성", "최승훈"});
     }
 
     @DisplayName("세 자동차 전부 똑같은 거리일 때 우승자는 세 명 전부임을 보여준다")

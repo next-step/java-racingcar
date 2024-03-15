@@ -14,18 +14,16 @@ public class Cars {
 
     public Cars(String[] names) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 
     public List<Car> goForward(PlayStrategy rule) {
-        List<Car> carList = new ArrayList<>();
         for (Car car : this.cars) {
             goForwardWith(rule, car);
-            carList.add(new Car(car.getPosition(), car.getName()));
         }
-        return Collections.unmodifiableList(carList);
+        return Collections.unmodifiableList(this.cars);
     }
 
     private void goForwardWith(PlayStrategy rule, Car car) {
