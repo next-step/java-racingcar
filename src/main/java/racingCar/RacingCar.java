@@ -1,11 +1,18 @@
 package racingCar;
 
+import racingCar.interf.MovingStrategy;
+
 public class RacingCar {
     private int position;
     private RacingCarName name;
 
     public RacingCar(){
         this.position = 0;
+    }
+
+    public RacingCar(String name, int position){
+        this.position = position;
+        this.name = new RacingCarName(name);
     }
 
     public RacingCar(String name){
@@ -19,7 +26,7 @@ public class RacingCar {
     }
 
     public void move(MovingStrategy movingStrategy){
-        if (movingStrategy.isMove()){
+        if (movingStrategy.isMove()) {
             this.position++;
         }
     }

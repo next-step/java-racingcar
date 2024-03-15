@@ -1,5 +1,8 @@
-package racingCar;
+package racingCar.findWinners;
 
+import racingCar.interf.MovingStrategy;
+import racingCar.RacingCar;
+import racingCar.interf.RandomMovingStrategy;
 import racingCar.utils.RandomGenerator;
 
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ public class RecordOfFindWinnerRacing {
     List<RacingCar> records = new ArrayList<>();
 
     public void enrollCar(String[] carNames){
-        for (String name : carNames){
+        for (String name : carNames) {
             this.records.add(new RacingCar(name));
         }
     }
