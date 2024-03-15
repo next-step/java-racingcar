@@ -38,7 +38,7 @@ public class Race {
         validateCarNamesAreNotDuplicated(carNames);
         validatePlayingCountIsInRange(playingCount);
 
-        this.cars = new ArrayList<>();
+        this.cars = readyCars(carNames);
         this.playingCount = playingCount;
         this.roundResults = new ArrayList<>();
     }
@@ -53,6 +53,12 @@ public class Race {
         if (carCount <= MINIMUM_COUNT) {
             throw new IllegalArgumentException(format(CAR_COUNT_OUT_OF_RANGE_MESSAGE, carCount));
         }
+    }
+
+    private static List<Car> readyCars(final String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private void validateCarNamesAreNotDuplicated(String[] carNames) {

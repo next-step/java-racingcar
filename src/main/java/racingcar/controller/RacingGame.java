@@ -13,9 +13,9 @@ public class RacingGame {
 
     public void play() {
         try {
-            final int carCount = racingScreen.readCarCount();
+            final String[] carNames = racingScreen.readCarNames();
             final int playingCount = racingScreen.readPlayingCount();
-            final Race race = new Race(carCount, playingCount);
+            final Race race = new Race(carNames, playingCount);
 
             race.run();
 

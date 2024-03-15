@@ -9,14 +9,14 @@ import racingcar.domain.Car;
 
 public class CarResult {
 
-    private static final String CAR_RESULT_FORMAT = "[{0}] {1}";
+    private static final String CAR_RESULT_FORMAT = "{0} {1}";
     private static final String POSITION_ICON = "-";
 
-    private final int number;
+    private final String name;
     private final int position;
 
-    private CarResult(final int number, final int position) {
-        this.number = number;
+    private CarResult(final String name, final int position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -24,12 +24,12 @@ public class CarResult {
     public String toString() {
         final String positionIcons = POSITION_ICON.repeat(this.position);
 
-        return format(CAR_RESULT_FORMAT, this.number, positionIcons);
+        return format(CAR_RESULT_FORMAT, this.name, positionIcons);
     }
 
     public static List<CarResult> fromCars(final List<Car> cars) {
         return cars.stream()
-                .map(car -> new CarResult(car.number(), car.position()))
+                .map(car -> new CarResult(car.name(), car.position()))
                 .collect(Collectors.toList());
     }
 }

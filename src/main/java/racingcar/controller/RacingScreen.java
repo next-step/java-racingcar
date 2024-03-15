@@ -2,12 +2,14 @@ package racingcar.controller;
 
 import static java.text.MessageFormat.format;
 
+import racingcar.util.StringSplitter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.vo.GameResult;
 
 public class RacingScreen {
 
+    private static final String CAR_NAMES_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String CAR_COUNT_INPUT_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String PLAYING_COUNT_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private static final String INVALID_INT_FORMAT_MESSAGE = "정수 형태의 숫자만 입력해주세요. [userInput : {0}]";
@@ -23,6 +25,13 @@ public class RacingScreen {
 
     public int readCarCount() {
         return readIntInputWithMessage(CAR_COUNT_INPUT_MESSAGE);
+    }
+
+    public String[] readCarNames() {
+        outputView.printOneLine(CAR_NAMES_INPUT_MESSAGE);
+        final String userInput = inputView.readOneLine();
+
+        return StringSplitter.split(userInput);
     }
 
     public int readPlayingCount() {
