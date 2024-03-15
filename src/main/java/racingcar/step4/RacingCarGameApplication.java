@@ -18,8 +18,11 @@ public class RacingCarGameApplication {
 
   public void run(String[] args) {
     InputValue input = InputView.receive();
+
     List<Car> cars = CarFactory.of(input.getInputName());
     List<RacingCarGame> racingCarGames = RacingCarGameFactory.of(input.getTryCount(), cars);
+    racingCarGames.forEach(RacingCarGame::start);
+
     ResultView.printResult(racingCarGames);
     ResultView.printFinalWinners(racingCarGames);
   }

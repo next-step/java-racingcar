@@ -14,7 +14,12 @@ public class RacingCarGameFactory {
   public static List<RacingCarGame> of(int rounds, List<Car> cars) {
     validateNumberOfRounds(rounds);
     validateNumberOfCars(cars.size());
-    return organize(rounds, cars);
+
+    List<RacingCarGame> racingCarGames = new ArrayList<>();
+    for (int round = 1; round <= rounds; round++) {
+      racingCarGames.add(RacingCarGame.generate(round, cars));
+    }
+    return racingCarGames;
   }
 
   private static void validateNumberOfRounds(int rounds) {
@@ -27,13 +32,5 @@ public class RacingCarGameFactory {
     if (cars <= 0) {
       throw new IllegalArgumentException(String.format(NUMBER_OR_CARS_IS_INCORRECT, cars));
     }
-  }
-
-  private static List<RacingCarGame> organize(int rounds, List<Car> cars) {
-    List<RacingCarGame> racingCarGames = new ArrayList<>();
-    for (int round = 1; round <= rounds; round++) {
-      racingCarGames.add(RacingCarGame.start(round, cars));
-    }
-    return racingCarGames;
   }
 }
