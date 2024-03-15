@@ -10,25 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
-    @Test
-    @DisplayName("생성자에 자연수를 전달하면, 정상적으로 Car 객체가 생성된다.")
-    void new_PositiveNumber_NewCar() {
-        final int number = 1;
-        final Car newCar = new Car(number);
-
-        assertThat(newCar.number())
-                .isEqualTo(number);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 0})
-    @DisplayName("생성자에 0 혹은 음의 정수를 전달하면, 예외를 던진다.")
-    void new_NegativeOrZeroNumber_Exception(final int negativeOrZeroNumber) {
-        assertThatThrownBy(() -> new Car(negativeOrZeroNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차의 번호는 자연수만 가능합니다.");
-    }
-
     @ParameterizedTest
     @ValueSource(strings = {"a", "1", "kyle", "123", "ky123"})
     @DisplayName("영어 소문자와 숫자로 이루어진 자동차 이름을 전달하면, 정상적으로 Car 객체가 생성된다.")

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import racingcar.domain.movement.BasicMovingStrategy;
 import racingcar.domain.movement.RandomNumberGenerator;
@@ -17,22 +16,12 @@ import racingcar.vo.RoundResult;
 public class Race {
 
     private static final String DUPLICATED_CAR_NAME_MESSAGE = "자동차 이름은 중복될 수 없습니다. [carNames: {0}]";
-    private static final String CAR_COUNT_OUT_OF_RANGE_MESSAGE = "자동차의 대수는 자연수만 가능합니다. [carCount : {0}]";
     private static final String PLAYING_COUNT_OUT_OF_RANGE_MESSAGE = "레이싱 시도 횟수는 자연수만 가능합니다. [playingCount : {0}]";
     private static final int MINIMUM_COUNT = 0;
 
     private final List<Car> cars;
     private final int playingCount;
     private final List<RoundResult> roundResults;
-
-    public Race(final int carCount, final int playingCount) {
-        validateCarCountIsInRange(carCount);
-        validatePlayingCountIsInRange(playingCount);
-
-        this.cars = readyCars(carCount);
-        this.playingCount = playingCount;
-        this.roundResults = new ArrayList<>();
-    }
 
     public Race(final String[] carNames, final int playingCount) {
         validateCarNamesAreNotDuplicated(carNames);
@@ -41,24 +30,6 @@ public class Race {
         this.cars = readyCars(carNames);
         this.playingCount = playingCount;
         this.roundResults = new ArrayList<>();
-    }
-
-    private static List<Car> readyCars(final int carCount) {
-        return IntStream.range(1, carCount + 1)
-                .mapToObj(Car::new)
-                .collect(Collectors.toList());
-    }
-
-    private static void validateCarCountIsInRange(final int carCount) {
-        if (carCount <= MINIMUM_COUNT) {
-            throw new IllegalArgumentException(format(CAR_COUNT_OUT_OF_RANGE_MESSAGE, carCount));
-        }
-    }
-
-    private static List<Car> readyCars(final String[] carNames) {
-        return Arrays.stream(carNames)
-                .map(Car::new)
-                .collect(Collectors.toList());
     }
 
     private void validateCarNamesAreNotDuplicated(String[] carNames) {
@@ -75,6 +46,12 @@ public class Race {
         if (playingCount <= MINIMUM_COUNT) {
             throw new IllegalArgumentException(format(PLAYING_COUNT_OUT_OF_RANGE_MESSAGE, playingCount));
         }
+    }
+
+    private static List<Car> readyCars(final String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void run() {
