@@ -5,7 +5,7 @@ import static java.text.MessageFormat.format;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.domain.Car;
+import racingcar.domain.RacingCars;
 
 public class CarResult {
 
@@ -27,8 +27,9 @@ public class CarResult {
         return format(CAR_RESULT_FORMAT, this.name, positionIcons);
     }
 
-    public static List<CarResult> fromCars(final List<Car> cars) {
-        return cars.stream()
+    public static List<CarResult> fromCars(final RacingCars cars) {
+        return cars.cars()
+                .stream()
                 .map(car -> new CarResult(car.name(), car.position()))
                 .collect(Collectors.toList());
     }

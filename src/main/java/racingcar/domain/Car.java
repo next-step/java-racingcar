@@ -16,12 +16,16 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(final String name) {
+    private Car(final String name, final int position) {
         final String carName = name.trim();
         validateCarNameIsValid(carName);
 
         this.name = carName;
-        this.position = START_POSITION;
+        this.position = position;
+    }
+
+    public Car(final String name) {
+        this(name, START_POSITION);
     }
 
     private void validateCarNameIsValid(final String name) {
@@ -56,6 +60,14 @@ public class Car {
 
     public int position() {
         return this.position;
+    }
+
+    public boolean isWinner(final int maxPosition) {
+        return this.position == maxPosition;
+    }
+
+    public Car copyOf() {
+        return new Car(this.name, this.position);
     }
 
     public void moveForwardOrStop(final CarMovement carMovement) {

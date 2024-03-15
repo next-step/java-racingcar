@@ -12,7 +12,7 @@ public class RoundResult {
     private final int round;
     private final List<CarResult> carResults;
 
-    private RoundResult(final int round, final List<CarResult> carResults) {
+    public RoundResult(final int round, final List<CarResult> carResults) {
         this.round = round;
         this.carResults = carResults;
     }
@@ -24,9 +24,5 @@ public class RoundResult {
         carResults.forEach(carResult -> stringBuilder.append(carResult).append(LINE_BREAK));
 
         return stringBuilder.toString();
-    }
-
-    public static RoundResult of(final int round, final List<CarResult> carResults) {
-        return new RoundResult(round, carResults);
     }
 }

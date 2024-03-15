@@ -2,10 +2,7 @@ package racingcar.domain;
 
 import static java.text.MessageFormat.format;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import racingcar.domain.movement.BasicMovingStrategy;
 import racingcar.domain.movement.RandomNumberGenerator;
@@ -15,37 +12,20 @@ import racingcar.vo.RoundResult;
 
 public class Race {
 
-    private static final String DUPLICATED_CAR_NAME_MESSAGE = "자동차 이름은 중복될 수 없습니다. [carNames: {0}]";
     private static final String PLAYING_COUNT_OUT_OF_RANGE_MESSAGE = "레이싱 시도 횟수는 자연수만 가능합니다. [playingCount : {0}]";
     private static final int MINIMUM_PLAYING_COUNT = 1;
 
-    private final List<Car> cars;
+    private final RacingCars cars;
     private final int playingCount;
-    private final List<RoundResult> roundResults;
+    private final GameResult result;
 
     public Race(final String[] carNames, final int playingCount) {
-        validateCarNamesAreNotDuplicated(carNames);
+        this.cars = new RacingCars(carNames);
+
         validatePlayingCountIsInRange(playingCount);
-
-        this.cars = readyCars(carNames);
         this.playingCount = playingCount;
-        this.roundResults = new ArrayList<>();
-    }
 
-    private void validateCarNamesAreNotDuplicated(String[] carNames) {
-        if (areCarNamesDuplicated(carNames)) {
-            throw new IllegalArgumentException(format(DUPLICATED_CAR_NAME_MESSAGE, Arrays.toString(carNames)));
-        }
-    }
-
-    private boolean areCarNamesDuplicated(final String[] carNames) {
-        return distinctCarNamesCount(carNames) != carNames.length;
-    }
-
-    private long distinctCarNamesCount(final String[] carNames) {
-        return Arrays.stream(carNames)
-                .distinct()
-                .count();
+        this.result = new GameResult();
     }
 
     private static void validatePlayingCountIsInRange(final int playingCount) {
@@ -56,12 +36,6 @@ public class Race {
 
     private static boolean isPlayingCountOutOfRange(int playingCount) {
         return playingCount < MINIMUM_PLAYING_COUNT;
-    }
-
-    private static List<Car> readyCars(final String[] carNames) {
-        return Arrays.stream(carNames)
-                .map(Car::new)
-                .collect(Collectors.toList());
     }
 
     public void run() {
