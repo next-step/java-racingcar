@@ -1,7 +1,5 @@
 package game.view;
 
-import game.domain.Car;
-
 import java.util.List;
 
 public class ResultView {
@@ -10,8 +8,8 @@ public class ResultView {
         System.out.println(message);
     }
 
-    public static void printPlainMessages(final List<String> messages){
-        for(String message : messages){
+    public static void printPlainMessages(final List<String> messages) {
+        for (String message : messages) {
             printPlainMessage(message);
         }
         printPlainMessage("");

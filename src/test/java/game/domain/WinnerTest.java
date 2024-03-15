@@ -16,7 +16,7 @@ class WinnerTest {
     Car car4;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         car1 = new Car("test1", 1);
         car2 = new Car("test2", 4);
         car3 = new Car("test3", 1);

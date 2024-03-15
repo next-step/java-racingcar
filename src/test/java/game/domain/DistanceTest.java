@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class DistanceTest {
 
@@ -44,7 +45,7 @@ class DistanceTest {
 
     @Test
     @DisplayName("toString 테스트")
-    void to_string_test(){
+    void to_string_test() {
         String test = new Distance(5).toString();
         assertThat(test).isEqualTo("-----");
     }

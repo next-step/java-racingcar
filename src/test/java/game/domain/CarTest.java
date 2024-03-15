@@ -9,7 +9,7 @@ public class CarTest {
 
     @Test
     @DisplayName("toString 테스트")
-    void to_string_test(){
+    void to_string_test() {
         String result = new Car("test", 5).toString();
         assertThat(result).isEqualTo("test : -----");
     }

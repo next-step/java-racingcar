@@ -12,7 +12,7 @@ public class Name {
         this.name = name;
     }
 
-    public static List<Name> fromNames(String names){
+    public static List<Name> fromNames(String names) {
         String[] splitNames = names.split(",");
         return Arrays.stream(splitNames).map(Name::new).collect(Collectors.toList());
     }

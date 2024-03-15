@@ -10,7 +10,7 @@ public class TryNo {
     }
 
     private static void validate(int number) {
-        if(number <=0){
+        if (number <= 0) {
             throw new RuntimeException();
         }
     }

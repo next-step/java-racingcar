@@ -5,7 +5,8 @@ import game.view.InputView;
 
 import java.util.List;
 
-import static game.view.ResultView.*;
+import static game.view.ResultView.printPlainMessage;
+import static game.view.ResultView.printPlainMessages;
 
 public class GameClient {
 
@@ -24,7 +25,7 @@ public class GameClient {
         selectWinnersAndPrint(game.getCars());
     }
 
-    private static String inputNames(){
+    private static String inputNames() {
         printPlainMessage(GameClient.ASK_CAR_NAME_MESSAGE);
         return InputView.insertValue();
     }

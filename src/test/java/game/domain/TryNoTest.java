@@ -9,7 +9,7 @@ class TryNoTest {
 
     @Test
     @DisplayName("자연수가 아니라면")
-    void not_natural_number(){
+    void not_natural_number() {
         assertThatThrownBy(() -> {
             new TryNo(0);
         }).isInstanceOf(RuntimeException.class);

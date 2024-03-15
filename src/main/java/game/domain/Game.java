@@ -1,6 +1,5 @@
 package game.domain;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +12,7 @@ public class Game {
         this.cars = generateCars(names);
     }
 
-    private List<Car> generateCars(List<Name> names){
+    private List<Car> generateCars(List<Name> names) {
         return names.stream().map(Car::new).collect(Collectors.toList());
     }
 
@@ -32,7 +31,7 @@ public class Game {
         return cars;
     }
 
-    public List<String> toStrings(){
+    public List<String> toStrings() {
         return this.cars.stream().map(Car::toString).collect(Collectors.toList());
     }
 }

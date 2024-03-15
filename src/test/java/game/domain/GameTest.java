@@ -39,8 +39,9 @@ class GameTest {
         assertThat(game.getDistances()).containsExactly(1, 1, 1, 1, 1);
     }
 
-    static class FakeNumberGenerator implements NumberGenerator{
+    static class FakeNumberGenerator implements NumberGenerator {
         public int number;
+
         @Override
         public int getNumber() {
             return number;
