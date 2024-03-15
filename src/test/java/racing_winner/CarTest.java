@@ -19,7 +19,7 @@ class CarTest {
     @Test
     @DisplayName("tryMove가 성공했을경우, level값이 증가한다.")
     void tryMove() {
-        Assertions.assertThat(car.getLevel()).isEqualTo(1);
+        Assertions.assertThat(car).isEqualTo(new Car("grandeur",1));
     }
 
     @Test
