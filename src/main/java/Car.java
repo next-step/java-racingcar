@@ -1,8 +1,5 @@
-import java.util.Random;
-
 public class Car {
     private int position;
-    private RandomMaker randomMaker = new RandomMaker();
 
     public Car(int position) {
         this.position = position;
