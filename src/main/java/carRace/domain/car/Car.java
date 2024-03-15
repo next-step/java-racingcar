@@ -2,45 +2,36 @@ package carRace.domain.car;
 
 import carRace.domain.randomNumber.RandomNumber;
 import carRace.domain.randomNumber.RandomNumberHistory;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Car {
 
+    private final CarName carName;
+
+    private final MoveDistance moveDistance;
+
     private final RandomNumberHistory randomNumberHistory = new RandomNumberHistory();
-
-    private MoveDistance moveDistance;
-
-    private final String carName;
 
     private static final int RECORD_STANDARD_NUMBER = 4;
 
-    public Car(final String carName) {
+    public Car(final CarName carName) {
         this(carName, new MoveDistance(0));
     }
 
-    public Car(final String carName, MoveDistance moveDistance) {
+    public Car(final CarName carName, MoveDistance moveDistance) {
         this.carName = carName;
         this.moveDistance = moveDistance;
+    }
+
+    public CarName getCarName() {
+        return carName;
     }
 
     public MoveDistance getMoveDistance() {
         return moveDistance;
     }
 
-    public static List<Car> createCars(final List<String> carNames) {
-        return IntStream.range(0, carNames.size())
-            .mapToObj(carNumber -> new Car(carNames.get(carNumber)))
-            .collect(Collectors.toList());
-    }
-
     public RandomNumberHistory getRandomNumberHistory() {
         return randomNumberHistory;
-    }
-
-    public String carName() {
-        return carName;
     }
 
     public void move(RandomNumber randomNumber) {
