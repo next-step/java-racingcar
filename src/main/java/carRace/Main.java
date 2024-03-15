@@ -1,12 +1,9 @@
 package carRace;
 
-import static carRace.domain.car.Car.createCars;
-
-import carRace.domain.car.Car;
 import carRace.domain.RaceHost.RaceHost;
+import carRace.domain.car.CarGroups;
+import carRace.domain.car.CarNames;
 import carRace.view.InputView;
-import java.util.Arrays;
-import java.util.List;
 
 public class Main {
 
@@ -14,8 +11,8 @@ public class Main {
         String input = InputView.inputCarsName();
         RaceHost raceHost = new RaceHost(InputView.inputRaceTryCount());
 
-        List<Car> cars = createCars(Arrays.asList(input.split(",")));
-        raceHost.playGame(cars);
-        raceHost.progressAwardsCeremony(cars);
+        CarGroups carGroups = new CarGroups(new CarNames(input.split(",")));
+        raceHost.playGame(carGroups);
+        raceHost.progressAwardsCeremony(carGroups);
     }
 }
