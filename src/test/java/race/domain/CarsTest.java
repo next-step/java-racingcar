@@ -60,9 +60,7 @@ class CarsTest {
 
         // Then
         List<Car> winners = cars.chooseWinners();
-        int expected = 1;
-        assertThat(winners.size()).isEqualTo(expected);
-        assertThat(winners.get(0)).isEqualTo(crong);
+        assertThat(winners).containsExactly(crong);
     }
 
     @Test
