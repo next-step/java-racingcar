@@ -19,7 +19,6 @@ public class RacingCarController {
         RacingCarGame racingCarGame = new RacingCarGame(carCount, trialCount);
         List<List<Car>> result = racingCarGame.playRounds(trialCount, strategyRandomMove);
 
-        System.out.println("실행 결과");
         OutputView.printCarsPositionByRounds(result);
     }
 }

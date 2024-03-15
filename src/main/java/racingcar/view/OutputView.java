@@ -12,6 +12,8 @@ public class OutputView {
     }
 
     public static void printCarsPositionByRounds(List<List<Car>> rounds) {
+        System.out.println("실행 결과");
+
         for (List<Car> cars : rounds) {
             printCarsPositionByOneRound(cars);
         }
