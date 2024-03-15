@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.domain.MoveStrategy;
-import racingcar.domain.TryCount;
+import racingcar.domain.vo.NaturalNumber;
 import racingcar.dto.MoveResult;
 import racingcar.dto.RaceResult;
 
@@ -11,24 +11,24 @@ import java.util.List;
 
 public class Race {
 
-    private TryCount tryCount;
+    private NaturalNumber tryCount;
 
-    private final int carCount;
+    private final NaturalNumber carCount;
 
     private final Cars cars;
 
     public Race(int tryCount, int carCount, MoveStrategy moveStrategy) {
-        this.tryCount = new TryCount(tryCount);
-        this.carCount = carCount;
-        this.cars = new Cars(carCount, moveStrategy);
+        this.tryCount = new NaturalNumber(tryCount);
+        this.carCount = new NaturalNumber(carCount);
+        this.cars = new Cars(this.carCount.getValue(), moveStrategy);
     }
 
     public RaceResult start() {
         List<MoveResult> moveLogs = new ArrayList<>();
-        while (!this.tryCount.isComplete()) {
+
+        for (int i = 0; i < tryCount.getValue(); i++) {
             MoveResult moveResult = cars.move();
             moveLogs.add(moveResult);
-            this.tryCount = tryCount.getNextTryCount();
         }
 
         return new RaceResult(moveLogs);
