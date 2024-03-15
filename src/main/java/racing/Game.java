@@ -1,14 +1,17 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Game {
     private final List<Car> attendedCars;
     private final RandomGenerator randomGenerator;
 
     public Game() {
-        this.attendedCars = new ArrayList<>();
+        this(new ArrayList<>());
+    }
+
+    public Game(List<Car> attendedCars) {
+        this.attendedCars = attendedCars;
         this.randomGenerator = new RandomGenerator();
     }
 
@@ -26,6 +29,14 @@ public class Game {
         }
     }
 
+    public void createAttendedCarsWithName(String nameOfCar) {
+        String[] splittedName = nameOfCar.split(",");
+
+        for (String name: splittedName) {
+            attendedCars.add(new Car(name));
+        }
+    }
+
     public void playGame(int numberOfAttempts) {
         if (numberOfAttempts < 0) {
             throw new IllegalArgumentException("시도할 횟수는 음수가 될 수 없습니다.");
@@ -36,6 +47,25 @@ public class Game {
             this.playSession();
             Output.showSessionStatus(this);
         }
+    }
+
+    public List<Car> getWinners() {
+        int maxNum = this.getWinnerLocation();
+        List<Car> winner = new ArrayList<>();
+
+        for (Car car: this.attendedCars) {
+            if (car.getCurrentLocation() == maxNum) {
+                winner.add(car);
+            }
+        }
+
+        return winner;
+    }
+
+    private int getWinnerLocation() {
+        return attendedCars.stream()
+                .max(Comparator.comparing(Car::getCurrentLocation)).get()
+                .getCurrentLocation();
     }
 
     private void playSession() {
