@@ -1,13 +1,12 @@
-package racing_winner;
+package racing_winner.domain;
 
 import racing.RandomFactory;
+import racing_winner.view.CarRacingPrinter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRacing {
-
-    private static final int DEFAULT_VALE = 0;
     private final List<Car> cars;
     private final int racingCount;
     private final RandomFactory randomFactory;

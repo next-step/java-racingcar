@@ -3,8 +3,10 @@ package racing_winner;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import racing.RandomFactory;
+import racing_winner.domain.Car;
+import racing_winner.domain.CarRacing;
+import racing_winner.view.CarRacingPrinter;
 
 import java.util.List;
 import java.util.stream.Collectors;
