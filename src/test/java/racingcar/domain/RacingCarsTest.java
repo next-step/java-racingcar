@@ -3,6 +3,8 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,5 +27,15 @@ class RacingCarsTest {
         assertThatThrownBy(() -> new RacingCars(duplicatedCarNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("자동차 객체 목록을 반환하는 메서드를 호출하면, 그에 대한 복사본 목록이 반환된다.")
+    void cars_CopyCarList() {
+        final String[] carNames = {"kyle", "alex"};
+        final RacingCars racingCars = new RacingCars(carNames);
+        final List<Car> cars = racingCars.cars();
+
+        assertThat(cars).hasSize(carNames.length);
     }
 }
