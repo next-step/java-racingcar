@@ -2,5 +2,5 @@ package racingcar.step4.domain.strategy;
 
 @FunctionalInterface
 public interface CarMoveStrategy {
-  boolean isMovable();
+  boolean isMovable(MoveNumberGenerator moveNumberGenerator);
 }

@@ -1,6 +1,7 @@
 package racingcar.step4.domain;
 
 import racingcar.step4.domain.strategy.CarMoveStrategy;
+import racingcar.step4.domain.strategy.MoveNumberGenerator;
 import racingcar.step4.domain.strategy.RandomCarMoveStrategy;
 
 import java.util.UUID;
@@ -31,8 +32,8 @@ public class Car implements Comparable<Car> {
     return new Car(carName, position, strategy);
   }
 
-  public void move() {
-    if (this.moveStrategy.isMovable()) {
+  public void move(MoveNumberGenerator moveNumberGenerator) {
+    if (this.moveStrategy.isMovable(moveNumberGenerator)) {
       this.position.forward();
     }
   }
