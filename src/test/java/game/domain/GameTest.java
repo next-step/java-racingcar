@@ -39,45 +39,11 @@ class GameTest {
         assertThat(game.getDistances()).containsExactly(1, 1, 1, 1, 1);
     }
 
-    @Test
-    @DisplayName("우승자 한 명")
-    void single_winner() {
-        FakeNumbersGenerator numbersGenerator = new FakeNumbersGenerator();
-        numbersGenerator.numbers = new int[] {1,1,4,1,1};
-        Game game = new Game(numbersGenerator, cars);
-        game.play();
-        List<Car> winners = game.getWinner();
-        assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners.get(0).getName()).isEqualTo("test2");
-    }
-
-    @Test
-    @DisplayName("우승자가 여러 명이 나온다")
-    void multiple_winner() {
-        FakeNumbersGenerator numbersGenerator = new FakeNumbersGenerator();
-        numbersGenerator.numbers = new int[] {1,4,4,1,1};
-        Game game = new Game(numbersGenerator, cars);
-        game.play();
-        List<Car> winners = game.getWinner();
-        assertThat(winners.size()).isEqualTo(2);
-        assertThat(winners.get(0).getName()).contains("test1");
-        assertThat(winners.get(1).getName()).contains("test2");
-    }
-
     static class FakeNumberGenerator implements NumberGenerator{
         public int number;
         @Override
         public int getNumber() {
             return number;
-        }
-    }
-
-    static class FakeNumbersGenerator implements NumberGenerator{
-        public int[] numbers;
-        private int index=0;
-        @Override
-        public int getNumber() {
-            return numbers[index++];
         }
     }
 }

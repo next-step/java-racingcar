@@ -26,23 +26,4 @@ public class Game {
     public List<Car> getCars() {
         return cars;
     }
-
-    public List<Car> getWinner() {
-        int maxDistance = calcMaxDistance();
-        return getWinner(maxDistance);
-    }
-
-    private int calcMaxDistance() {
-        int maxDistance = 0;
-        for (Car car : cars) {
-            maxDistance = Math.max(car.getDistance(), maxDistance);
-        }
-        return maxDistance;
-    }
-
-    private List<Car> getWinner(int maxDistance) {
-        return cars.stream().filter(car -> {
-            return car.getDistance() == maxDistance;
-        }).collect(Collectors.toList());
-    }
 }

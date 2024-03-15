@@ -1,10 +1,8 @@
 package game;
 
-import game.domain.Car;
-import game.domain.Game;
-import game.domain.NumberGenerator;
-import game.domain.RandomNumberGenerator;
+import game.domain.*;
 import game.view.InputView;
+import game.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,18 +47,17 @@ public class GameClient {
             game.play();
             printDistances(game);
         }
-        printWinners(game);
+        String names = new Winner(cars).getName();
+        printWinners(names);
+    }
+
+    private static void printWinners(String names) {
+        ResultView.printPlainMessage(names + "가 최종 우승했습니다.");
     }
 
     private static void printDistances(Game game) {
         printCars(game.getCars());
         printPlainMessage("");
-    }
-
-    private static void printWinners(Game game) {
-        List<String> names = game.getWinner().stream().map(Car::getName).collect(Collectors.toList());
-        String winners = String.join(", ", names);
-        printPlainMessage(winners + "가 최종 우승했습니다.");
     }
 
     private static List<Car> generateCars(int carCount, String[] names) {

@@ -10,12 +10,17 @@ public class Car {
         this.distance = new Distance(1);
     }
 
+    public Car(String name, int distance) {
+        this.name = new Name(name);
+        this.distance = new Distance(distance);
+    }
+
     public void move(int number) {
         this.distance.move(number);
     }
 
     public String getName() {
-        return this.name.getName();
+        return this.name.toString();
     }
 
     public int getDistance() {
