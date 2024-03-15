@@ -31,6 +31,16 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("maxPosition 호출 시 넘어오는 정수와 자동차의 Positon을 비교하여 높은 정수 반환")
+    void maxPosition() {
+        Car car = movedCar(2);
+
+        assertThat(car.maxPosition(3)).isEqualTo(3);
+        assertThat(car.maxPosition(2)).isEqualTo(2);
+        assertThat(car.maxPosition(1)).isEqualTo(2);
+    }
+
+    @Test
     @DisplayName("play() - MoveStrategy의 movable()이 true이면 전진")
     void play() {
         Car car1 = Car.from(testName);
