@@ -1,13 +1,12 @@
 package carRace.domain.car;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarGroups {
 
-    private List<Car> carGroups;
+    private final List<Car> carGroups;
 
     public CarGroups(List<Car> carGroups) {
         this.carGroups = carGroups;
