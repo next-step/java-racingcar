@@ -17,12 +17,11 @@ public class RacingGame {
 
     public void start() {
         String[] names = inputView.askNameOfCar();
-        int carNumbers = names.length;
         int attempts = inputView.askNumberOfAttempts();
 
         outputView.printResultStatement();
 
-        Cars cars = new Cars(carNumbers, names);
+        Cars cars = new Cars(names);
         for (int attempt = 0; attempt < attempts; attempt++) {
             outputView.printMileages(cars.goForward(new RandomStrategy()));
             outputView.printNewLine();

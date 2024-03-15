@@ -12,9 +12,9 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int numberOfCars, String[] names) {
+    public Cars(String[] names) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
+        for (int i = 0; i < names.length; i++) {
             cars.add(new Car(names[i]));
         }
     }
