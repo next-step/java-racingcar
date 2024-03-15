@@ -1,7 +1,8 @@
-package racing_winner;
+package racing_winner.view;
+
+import racing_winner.view.InputConsole;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class InputLayer {
