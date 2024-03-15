@@ -11,9 +11,13 @@ public class PrintView {
 		System.out.println("\n" + RESULT_MESSAGE);
 	}
 
-	public static void printCarMoving() {
-		System.out.print("-");
+	public static void printCarMoving(boolean[] moving, int trial) {
+		for(int i = 0; i <= trial; i++) {
+			if(moving[i]) {
+				System.out.print("-");
+			}
+		}
 
-		System.out.println("");
+		printEmptyLine();
 	}
 }
