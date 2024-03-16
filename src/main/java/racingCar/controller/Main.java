@@ -1,10 +1,11 @@
-package racingCar;
+package racingCar.controller;
 
 import java.util.List;
-import racingCar.game.GameResult;
-import racingCar.game.RacingCarGame;
-import racingCar.ui.InputView;
-import racingCar.ui.ResultView;
+import racingCar.domain.GameResult;
+import racingCar.domain.RacingCarGame;
+import racingCar.domain.StringUtil;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 public class Main {
 
@@ -18,8 +19,7 @@ public class Main {
     resultView.print("시도할 회수는 몇 회 인가요?");
     int gameTryNum = inputView.inputInteger();
 
-    RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.initiateGame(carNames);
+    RacingCarGame racingCarGame = new RacingCarGame(carNames);
 
     GameResult gameResult = racingCarGame.playGames(gameTryNum);
     showGameResult(resultView, gameResult);
@@ -30,11 +30,8 @@ public class Main {
     for (String result : gameResult.getRoundResults()) {
       resultView.print(result);
     }
-    resultView.print(makeWinnerMessage(gameResult.getWinners()));
+    resultView.printWinnerMessage(gameResult.getWinners());
   }
 
-  private static String makeWinnerMessage(List<String> winners) {
-    return String.join(", ", winners) + "가 최종 우승했습니다.";
-  }
 
 }
