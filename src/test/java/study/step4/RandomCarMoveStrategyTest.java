@@ -13,12 +13,6 @@ public class RandomCarMoveStrategyTest {
 
   private final RandomCarMoveStrategy randomCarMoveStrategy = new RandomCarMoveStrategy();
 
-  @Test
-  @DisplayName("isMovable(): 랜덤 값에 따라 true 또는 false를 반환합니다.")
-  void isMovableTest() {
-    assertThat(randomCarMoveStrategy.isMovable(new RandomNumberGenerator())).isIn(true, false);
-  }
-
   @ParameterizedTest
   @CsvSource(value = {"0:false", "1:false", "2:false", "3:false"}, delimiter = ':')
   @DisplayName("0 ~ 3의 경우 전진하지 않는지 테스트")
