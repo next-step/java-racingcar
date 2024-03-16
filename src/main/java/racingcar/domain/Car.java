@@ -3,10 +3,11 @@ package racingcar.domain;
 public class Car implements Vehicle {
     private final int MOVABLE_NUMBER = 4;
     private final Name name;
-    private Integer moveCount = 0;
+    private Position position;
 
     public Car(String name) {
         this.name = new Name(name);
+        this.position = new Position(0);
     }
 
     @Override
@@ -15,16 +16,28 @@ public class Car implements Vehicle {
     }
 
     @Override
-    public Integer getMoveCount() {
-        return moveCount;
+    public Integer getPosition() {
+        return this.position.getPosition();
     }
 
     @Override
     public void move(int number) {
         if (isMovable(number)) {
-            moveCount++;
+            this.position.increase();
         }
     }
+
+    @Override
+    public Integer max(int other) {
+        return this.position.max(other);
+    }
+
+    @Override
+    public boolean isMatch(int position) {
+
+        return this.position.isMatch(position);
+    }
+
 
     private boolean isMovable(int number) {
         return number >= MOVABLE_NUMBER;

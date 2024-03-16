@@ -27,7 +27,7 @@ public class CarTest {
         Vehicle car = new Car("pobi");
 
         //when & then
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest
@@ -41,7 +41,7 @@ public class CarTest {
         car.move(number);
 
         //then
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -55,6 +55,6 @@ public class CarTest {
         car.move(number);
 
         //then
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
