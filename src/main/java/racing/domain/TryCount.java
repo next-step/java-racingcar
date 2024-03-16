@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class TryCount {
     private int tryCount;
@@ -11,7 +11,7 @@ public class TryCount {
         this.tryCount = tryCount;
     }
 
-    public static TryCount from(int tryCount) {
+    public static TryCount valueOf(int tryCount) {
         return new TryCount(tryCount);
     }
 

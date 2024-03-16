@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.util.StringUtil;
 
 import java.util.List;
 import java.util.Scanner;

@@ -1,10 +1,10 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.strategy.MoveStrategy;
+import racing.domain.strategy.MoveStrategy;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +27,16 @@ class CarTest {
     void getName() {
         Car car = Car.from(testName);
         assertThat(car.getName()).isEqualTo(testName);
+    }
+
+    @Test
+    @DisplayName("maxPosition 호출 시 넘어오는 정수와 자동차의 Positon을 비교하여 높은 정수 반환")
+    void maxPosition() {
+        Car car = movedCar(2);
+
+        assertThat(car.maxPosition(3)).isEqualTo(3);
+        assertThat(car.maxPosition(2)).isEqualTo(2);
+        assertThat(car.maxPosition(1)).isEqualTo(2);
     }
 
     @Test

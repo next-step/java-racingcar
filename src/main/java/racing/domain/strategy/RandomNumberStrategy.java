@@ -1,6 +1,6 @@
-package racing.strategy;
+package racing.domain.strategy;
 
-import racing.RandomUtil;
+import racing.util.RandomUtil;
 
 public class RandomNumberStrategy implements MoveStrategy {
 

@@ -1,6 +1,7 @@
 package racing;
 
-import racing.strategy.RandomNumberStrategy;
+import racing.domain.strategy.RandomNumberStrategy;
+import racing.view.InputView;
 
 import java.util.Scanner;
 

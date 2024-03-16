@@ -1,6 +1,11 @@
 package racing;
 
-import racing.strategy.MoveStrategy;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.TryCount;
+import racing.view.InputView;
+import racing.view.ResultView;
+import racing.domain.strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +25,7 @@ public class Race {
 
     public void start() {
         List<String> carNames = inputView.inputtedCarNameList(CAR_NAME_MESSAGE);
-        TryCount tryCount = TryCount.from(inputView.inputtedNumber(TRY_COUNT_MESSAGE));
+        TryCount tryCount = TryCount.valueOf(inputView.inputtedNumber(TRY_COUNT_MESSAGE));
         inputView.closeScanner();
 
         List<Car> cars = new ArrayList<>();

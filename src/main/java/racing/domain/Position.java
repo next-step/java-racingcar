@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class Position {
     private static final int START_POSITION = 0;
@@ -23,6 +23,10 @@ public class Position {
 
     public int getPosition() {
         return position;
+    }
+
+    public int max(int targetNumber) {
+        return Math.max(position, targetNumber);
     }
 
     @Override
