@@ -14,4 +14,6 @@ public class Constant {
     public static final int START_POSITION = 0;
 
     public static final String MARK = "-";
+    public static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
+    public static final String CAR_NAME_DELIMITER = ", ";
 }
