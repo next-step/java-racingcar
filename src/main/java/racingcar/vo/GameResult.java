@@ -2,7 +2,6 @@ package racingcar.vo;
 
 import static java.text.MessageFormat.format;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
@@ -11,14 +10,11 @@ public class GameResult {
     private static final String LINE_BREAK = "\n";
     private static final String WINNER_NAME_DELIMITER = ", ";
 
-    private final List<RoundResult> roundResults = new ArrayList<>();
-    private List<String> winnerNames = new ArrayList<>();
+    private final List<RoundResult> roundResults;
+    private final List<String> winnerNames;
 
-    public void addRoundResult(final RoundResult roundResult) {
-        this.roundResults.add(roundResult);
-    }
-
-    public void updateWinnerNames(final List<String> winnerNames) {
+    public GameResult(final List<RoundResult> roundResults, final List<String> winnerNames) {
+        this.roundResults = roundResults;
         this.winnerNames = winnerNames;
     }
 
