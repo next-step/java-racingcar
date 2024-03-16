@@ -1,60 +1,35 @@
 package domain;
 
-import view.ResultView;
+import view.ConsoleResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private int moveCount;
 
     public RacingGame(List<Car> cars, int moveCount) {
+        this(new Cars(cars), moveCount);
+    }
+
+    public RacingGame(Cars cars, int moveCount) {
         this.cars = cars;
         this.moveCount = moveCount;
     }
 
     public void play() {
+        this.play(new ConsoleResultView());
+    }
+
+    public void play(ResultView resultView) {
         while (moveCount-- > 0) {
-            move();
-            ResultView.print(cars);
+            cars.move();
+            resultView.print(cars);
         }
     }
 
-    private void move() {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-
-    public List<Car> winner() {
-        Position longest = getLongestPosition();
-        List<Car> result = new ArrayList<>();
-        for (Car car : cars) {
-            addIfLongestPosition(car, longest, result);
-        }
-        return result;
-    }
-
-    private void addIfLongestPosition(Car car, Position longest, List<Car> result) {
-        if (longest.compareTo(car.position()) == 0) {
-            result.add(car);
-        }
-    }
-
-    private Position getLongestPosition() {
-        Position position = new Position();
-        for (Car car : cars) {
-            position = getLongestPosition(car, position);
-        }
-        return position;
-    }
-
-    private Position getLongestPosition(Car car, Position position) {
-        if (position.compareTo(car.position()) < 0) {
-            position = new Position(car.position().getValue());
-        }
-        return position;
+    public Cars winner() {
+        return cars.winners();
     }
 }

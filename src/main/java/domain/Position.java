@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Objects;
 
-public class Position implements Comparable<Position> {
+public class Position {
 
     private int value;
 
@@ -29,6 +29,10 @@ public class Position implements Comparable<Position> {
         this.value++;
     }
 
+    public boolean longestThen(Position position) {
+        return this.value >= position.getValue();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,10 +44,5 @@ public class Position implements Comparable<Position> {
     @Override
     public int hashCode() {
         return Objects.hash(value);
-    }
-
-    @Override
-    public int compareTo(Position p) {
-        return Integer.compare(this.value, p.getValue());
     }
 }

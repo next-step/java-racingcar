@@ -1,22 +1,28 @@
 package domain;
 
+import java.util.Objects;
+
 public class Car {
 
+    private final Name name;
     private final Position position;
     private final MoveStrategy moveStrategy;
-    private final String name;
-    private static final String DEFAULT_NAME = "noop";
 
     public Car(MoveStrategy moveStrategy) {
-        this(DEFAULT_NAME, moveStrategy);
+        this(Name.createDefaultInstance(), moveStrategy);
     }
 
-    public Car(String name, MoveStrategy moveStrategy) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
-        }
+    public Car(Name name, MoveStrategy moveStrategy) {
+        this(name, new Position(), moveStrategy);
+    }
+
+    public Car(String name, int position, MoveStrategy moveStrategy) {
+        this(new Name(name), new Position(position), moveStrategy);
+    }
+
+    public Car(Name name, Position position, MoveStrategy moveStrategy) {
         this.name = name;
-        this.position = new Position();
+        this.position = position;
         this.moveStrategy = moveStrategy;
     }
 
@@ -32,10 +38,24 @@ public class Car {
 
     @Override
     public String toString() {
-        return String.format("%s: %s", name, "-".repeat(position.getValue() + 1));
+        return String.format("%s: %s", name.value(), "-".repeat(position.getValue() + 1));
     }
 
-    public String getName() {
+    public Name name() {
         return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position) &&
+                moveStrategy.moveable() == car.moveStrategy.moveable();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position, moveStrategy.moveable());
     }
 }

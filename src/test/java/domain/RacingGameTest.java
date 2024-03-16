@@ -48,7 +48,7 @@ public class RacingGameTest {
 
         // when
         racingGame.play();
-        List<Car> winners = racingGame.winner();
+        Cars winners = racingGame.winner();
 
         // then
         assertThat(winners).hasSize(2)
