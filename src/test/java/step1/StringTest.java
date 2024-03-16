@@ -59,4 +59,5 @@ public class StringTest {
 				input.charAt(index);
 			}).withMessageMatching("String index out of range: " + index);
 	}
+
 }
