@@ -8,7 +8,7 @@ import racingCar.domain.generator.RandomGenerator;
 
 public class RacingCarGame {
 
-  IntGenerator intGenerator;
+  private IntGenerator intGenerator;
   private final RacingCars cars;
 
   public RacingCarGame(List<String> carNames) {
@@ -28,27 +28,11 @@ public class RacingCarGame {
   }
 
   private void playGame() {
-    cars.move(decideMovingCars());
-  }
-
-  private List<Boolean> decideMovingCars() {
-    List<Boolean> isMovingCars = new ArrayList<>();
-    for(int i = 0 ; i < cars.getCarCount() ; i  ++){
-      isMovingCars.add(isMovingCar());
-    }
-    return isMovingCars;
-  }
-
-  private boolean isMovingCar() {
-    int randomNumber = intGenerator.nextInt();
-    if (randomNumber >= 4) {
-      return true;
-    }
-    return false;
+    cars.move(intGenerator);
   }
 
   private String getGameResult() {
-    return cars.getMovedPath();
+    return cars.toString();
   }
 
   private List<String> findWinners() {

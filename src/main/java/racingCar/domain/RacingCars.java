@@ -1,10 +1,12 @@
 package racingCar.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import racingCar.domain.generator.IntGenerator;
 
 public class RacingCars {
 
-  List<Car> cars;
+  private List<Car> cars;
 
   public RacingCars(List<Car> cars){
     this.cars = cars;
@@ -14,15 +16,18 @@ public class RacingCars {
     return cars.size();
   }
 
-  public void move(List<Boolean> isMovingCars){
-    for(int i = 0 ; i < cars.size() ; i  ++){
-      if(isMovingCars.get(i)){
-        cars.get(i).move();
-      }
-    }
+  public void move(IntGenerator intGenerator){
+    cars.stream().filter(car -> isMovingCar(intGenerator))
+        .forEach(Car::move);
   }
 
-  public String getMovedPath(){
+  private boolean isMovingCar(IntGenerator intGenerator) {
+    int randomNumber = intGenerator.nextInt();
+    return randomNumber >= 4;
+  }
+
+  @Override
+  public String toString(){
     StringBuilder sb = new StringBuilder();
     for (Car car : cars) {
       sb.append(String.format("%s : %s\n", car.getName(), car.getMovedPath()));
@@ -34,6 +39,6 @@ public class RacingCars {
     int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
     return cars.stream()
         .filter(car -> car.getPosition() == maxPosition)
-        .map(Car::getName).collect(java.util.stream.Collectors.toList());
+        .map(Car::getName).collect(Collectors.toList());
   }
 }
