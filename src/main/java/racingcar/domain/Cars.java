@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.*;
 
@@ -92,6 +92,11 @@ public class Cars implements Iterable<Car> {
     }
 
     return furthestCars;
+  }
+
+  public boolean hasCarFurtherThan(Car target) {
+    return this.cars.stream()
+            .anyMatch(car -> car.furtherThan(target));
   }
 
   @Override

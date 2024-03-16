@@ -1,7 +1,10 @@
-package racingcar;
+package racingcar.view;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.view.ResultView;
 import testutils.IOTest;
 
 import java.io.ByteArrayOutputStream;

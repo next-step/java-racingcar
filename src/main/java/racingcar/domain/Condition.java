@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Condition {
   private final int value;
@@ -7,7 +7,7 @@ public class Condition {
     this.value = value;
   }
 
-  boolean equalOrLargerThan(int criteria) {
+  public boolean equalOrLargerThan(int criteria) {
     return this.value >= criteria;
   }
 }

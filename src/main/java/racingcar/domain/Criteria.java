@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.domain.Condition;
 
 public class Criteria {
   private final int min;

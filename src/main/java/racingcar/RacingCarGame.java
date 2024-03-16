@@ -1,5 +1,10 @@
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 public class RacingCarGame {
   private Cars cars;
   private int numberOfReps;
