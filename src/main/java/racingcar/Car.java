@@ -3,22 +3,21 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
-    private int mPosition;
-    static Random random = new Random(4);
+    private int position;
+    private static final Random random = new Random(4);
 
-    public Car()
-    {
-        mPosition = 0;
+    public Car() {
+        position = 0;
     }
 
     public int position() {
-        return mPosition;
+        return this.position;
     }
 
     public void updatePosition() {
         int randomValue = random.nextInt(10);
-        if (randomValue >= 4){
-            mPosition++;
+        if (randomValue >= 4) {
+            position++;
         }
     }
 }

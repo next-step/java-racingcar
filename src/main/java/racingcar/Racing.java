@@ -1,32 +1,30 @@
 package racingcar;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 public class Racing {
     InputView inputView;
     OutputView outputView;
-    CarArray carArray;
+    CarGroup carGroup;
 
-    public Racing(CarArray carArray) {
-        this.carArray = carArray;
-        outputView = new OutputView(carArray);
+    public Racing(CarGroup carGroup) {
+        this.carGroup = carGroup;
+        outputView = new OutputView(carGroup);
     }
 
     public void race() {
-        InputStream userInputNumOfCar = new ByteArrayInputStream("2".getBytes());
-        System.setIn(userInputNumOfCar);
-        carArray.resizeCarArray(inputView.numberOfCar());
-
-        InputStream userInputOpportunity = new ByteArrayInputStream("3".getBytes());
-        System.setIn(userInputOpportunity);
+        carGroup.resizeCarArray(inputView.numberOfCar());
         int opportunity = inputView.opportunity();
-
 
         for(int i = 0; i < opportunity; i++)
         {
             outputView.printCarArrayPosition();
-            carArray.updateCarArrayPosition();
+            carGroup.updateCarArrayPosition();
         }
+    }
+
+    public static void main(String[] args) {
+        CarGroup carGroup = new CarGroup();
+
+        Racing racing = new Racing(carGroup);
+        racing.race();
     }
 }
