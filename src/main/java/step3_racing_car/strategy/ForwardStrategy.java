@@ -1,10 +1,8 @@
-package step3_racing_car;
-
-import java.util.Random;
+package step3_racing_car.strategy;
 
 public class ForwardStrategy implements MovingStrategy {
     @Override
-    public int getMovingDistance() {
+    public int move() {
         return 1;
     }
 }
