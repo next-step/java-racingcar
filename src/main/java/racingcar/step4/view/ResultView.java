@@ -1,4 +1,4 @@
-package racingcar.step4.presentaion;
+package racingcar.step4.view;
 
 import racingcar.step4.domain.RacingCarGame;
 import racingcar.step4.domain.Winners;
@@ -9,11 +9,9 @@ public class ResultView {
 
   private static final String MOVE_MARK = "-";
 
-  private ResultView() {
-    throw new AssertionError();
-  }
+  public ResultView() {}
 
-  public static void printResult(List<RacingCarGame> racingCarGames) {
+  public void printResult(List<RacingCarGame> racingCarGames) {
     StringBuilder sb = new StringBuilder();
     sb.append("\n");
     sb.append("실행 결과").append("\n");
@@ -26,7 +24,7 @@ public class ResultView {
     System.out.print(sb);
   }
 
-  public static void printFinalWinners(List<RacingCarGame> racingCarGames) {
+  public void printFinalWinners(List<RacingCarGame> racingCarGames) {
     StringBuilder sb = new StringBuilder();
 
     Winners winners = RacingCarGame.findFinalGame(racingCarGames).getWinners();
@@ -37,14 +35,14 @@ public class ResultView {
     System.out.println(sb);
   }
 
-  private static void printRaceRecords(StringBuilder sb, RacingCarGame game) {
+  private void printRaceRecords(StringBuilder sb, RacingCarGame game) {
     game.getCars().forEach(car ->
         sb.append(printRaceRecord(car.getCarName().get(), car.getPosition().get())).append("\n")
     );
     sb.append("\n");
   }
 
-  private static String printRaceRecord(String carName, int moveCount) {
+  private String printRaceRecord(String carName, int moveCount) {
     String result = MOVE_MARK.repeat(Math.max(0, moveCount));
     return carName + " : " + result;
   }

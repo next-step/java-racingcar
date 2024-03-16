@@ -1,4 +1,4 @@
-package racingcar.step4.presentaion;
+package racingcar.step4.view;
 
 public class InputValue {
   private final String inputName;
