@@ -1,6 +1,7 @@
 package race;
 
 import race.domain.Cars;
+import race.domain.Referee;
 import race.utils.RandomStrategy;
 import race.view.InputView;
 import race.view.OutputView;
@@ -26,7 +27,8 @@ public class RacingGame {
             outputView.printMileages(cars.goForward(new RandomStrategy()));
             outputView.printNewLine();
         }
-        outputView.printWinner(cars.findWinner());
+        Referee referee = new Referee(cars.getCars());
+        outputView.printWinner(referee.findWinner());
     }
 
 }
