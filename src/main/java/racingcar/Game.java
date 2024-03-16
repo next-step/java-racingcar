@@ -1,41 +1,33 @@
 package racingcar;
 
 public class Game {
-	private int numberOfCar;
-	private int numberOfTrial;
-	private Car[] cars;
+	public Game() {
+	}
 
-	private Game() {
-		setGameConditions();
-		setCars();
+	public void play(int numberOfCar, int numberOfTrial) {
+		Car[] cars = setCars(numberOfCar);
 
 		PrintView.printResultMessage();
 
 		for(int i = 0; i < numberOfTrial; i++) {
-			tryGame(i);
+			tryGame(cars);
 		}
 	}
 
-	public static Game play() {
-		return new Game();
-	}
+	private Car[] setCars(int numberOfCar) {
+		Car[] cars = new Car[numberOfCar];
 
-	private void setGameConditions() {
-		numberOfCar = InputView.inputNumberOfCar();
-		numberOfTrial = InputView.inputNumberOfTrial();
-		cars = new Car[numberOfCar];
-	}
-
-	private void setCars() {
 		for(int i = 0; i < numberOfCar; i++) {
-			cars[i] = new Car(numberOfTrial);
+			cars[i] = new Car();
 		}
+
+		return cars;
 	}
 
-	private void tryGame(int trial) {
+	private void tryGame(Car[] cars) {
 		for(Car car : cars) {
-			car.moveOrStop(trial);
-			PrintView.printCarMoving(car.getMoving(), trial);
+			car.move();
+			PrintView.printCarMoving(car);
 		}
 
 		PrintView.printEmptyLine();
