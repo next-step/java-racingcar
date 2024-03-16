@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 	private int position;
 	private final CarMoveStrategy[] carMoveStrategies;
