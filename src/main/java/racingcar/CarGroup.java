@@ -2,15 +2,12 @@ package racingcar;
 
 public class CarGroup {
     Car[] carGroup;
-    int numOfCar;
 
     public CarGroup() {
-        numOfCar = 0;
         carGroup = new Car[0];
     }
 
-    public void resizeCarArray(int NumOfCar) {
-        this.numOfCar = NumOfCar;
+    public void resizeCarArray(int numOfCar) {
         carGroup = new Car[numOfCar];
         for (int i = 0; i < numOfCar; i++) {
             carGroup[i] = new Car();
@@ -18,9 +15,13 @@ public class CarGroup {
     }
 
     public void updateCarArrayPosition() {
-        for (int i = 0; i < numOfCar; i++) {
+        for (int i = 0; i < carGroup.length; i++) {
             carGroup[i].updatePosition();
         }
+    }
+
+    public int carGroupLength() {
+        return carGroup.length;
     }
 
     public int position(int carIndex) {
