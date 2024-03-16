@@ -29,7 +29,7 @@ public class Cars implements Iterable<Car> {
     }
 
     private void addIfLongestPosition(Car car, Position longest, List<Car> result) {
-        if (longest.compareTo(car.position()) == 0) {
+        if (longest.equals(car.position())) {
             result.add(car);
         }
     }
@@ -43,10 +43,10 @@ public class Cars implements Iterable<Car> {
     }
 
     private Position getLongestPosition(Car car, Position position) {
-        if (position.compareTo(car.position()) < 0) {
-            position = new Position(car.position().getValue());
+        if (position.longestThen(car.position())) {
+            return position;
         }
-        return position;
+        return new Position(car.position().getValue());
     }
 
     @Override
