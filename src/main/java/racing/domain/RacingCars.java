@@ -1,7 +1,5 @@
 package racing.domain;
 
-import racing.domain.RacingCar;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -12,8 +10,8 @@ public class RacingCars {
     private final List<RacingCar> racingCarList;
 
     public RacingCars(String names) {
-        if (isNullOrBlank(names)) {
-            throw new IllegalArgumentException();
+        if (hasNoInput(names)) {
+            throw new IllegalArgumentException("Null 또는 공백 입력");
         }
 
         this.racingCarList = Arrays.stream(toNameArray(names))
@@ -42,7 +40,7 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
-    private boolean isNullOrBlank(String name) {
+    private boolean hasNoInput(String name) {
         return name == null || name.isBlank();
     }
 

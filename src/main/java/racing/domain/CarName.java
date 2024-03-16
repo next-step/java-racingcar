@@ -6,7 +6,7 @@ public class CarName {
     private final String value;
 
     public CarName(String name) {
-        if (isNullOrBlank(name)) {
+        if (hasNoInput(name)) {
             throw new IllegalArgumentException("Null 또는 공백 입력");
         }
         
@@ -25,7 +25,7 @@ public class CarName {
         return name.length() > NAME_LENGTH_MAX;
     }
 
-    private boolean isNullOrBlank(String name) {
+    private boolean hasNoInput(String name) {
         return name == null || name.isBlank();
     }
 }
