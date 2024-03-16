@@ -12,8 +12,6 @@ public class RacingGame {
         this.round = round;
     }
 
-
-
     public void play() {
         for (int i = 0; i < round; i++) {
             cars.getCars().forEach(car -> car.move(RandomUtil.generateRandomNumber()));

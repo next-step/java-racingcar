@@ -44,7 +44,7 @@ class ValidationUtilTest {
     @Test
     @DisplayName("5자 이상의 이름을 입력할 경우 RuntimeException 예외가 발생해야 한다")
     void validate_carName_length() {
-        assertThatThrownBy(() -> validateInput("HarryPorter, SpongeBob", 5))
+        assertThatThrownBy(() -> validateInput("HarryPorter,SpongeBob", 5))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constant.CAR_NAME_LENGTH_VALIDATION_ERROR);
     }
