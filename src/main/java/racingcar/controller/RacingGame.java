@@ -15,11 +15,10 @@ public class RacingGame {
         try {
             final String[] carNames = racingScreen.readCarNames();
             final int playingCount = racingScreen.readPlayingCount();
+
             final Race race = new Race(carNames, playingCount);
+            final GameResult gameResult = race.progress();
 
-            race.run();
-
-            final GameResult gameResult = race.result();
             racingScreen.printGameResult(gameResult);
         } catch (final IllegalArgumentException e) {
             racingScreen.printBusinessExceptionMessage(e.getMessage());

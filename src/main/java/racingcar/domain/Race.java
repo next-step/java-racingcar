@@ -38,13 +38,18 @@ public class Race {
         return playingCount < MINIMUM_PLAYING_COUNT;
     }
 
-    public void run() {
+    public GameResult progress() {
         final CarMovement carMovement = setCarMovementOption();
 
         for (int round = 1; round <= this.playingCount; round++) {
             cars.moveForwardOrStop(carMovement);
             addRoundResult(round);
         }
+
+        final List<String> winnerNames = this.cars.winnerNames();
+        this.result.updateWinnerNames(winnerNames);
+
+        return this.result;
     }
 
     private CarMovement setCarMovementOption() {
@@ -54,12 +59,5 @@ public class Race {
     private void addRoundResult(final int round) {
         final RoundResult roundResult = new RoundResult(round, CarResult.fromCars(this.cars));
         this.result.addRoundResult(roundResult);
-    }
-
-    public GameResult result() {
-        final List<String> winnerNames = this.cars.winnerNames();
-        this.result.updateWinnerNames(winnerNames);
-
-        return this.result;
     }
 }
