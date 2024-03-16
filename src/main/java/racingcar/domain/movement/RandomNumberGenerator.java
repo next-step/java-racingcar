@@ -1,10 +1,10 @@
 package racingcar.domain.movement;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumberGenerator implements NumberGenerator {
 
-    private static final Random random = new Random();
+    private static final ThreadLocalRandom random = ThreadLocalRandom.current();
     private static final int RANDOM_NUMBER_MAX_LIMIT = 10;
 
     @Override
