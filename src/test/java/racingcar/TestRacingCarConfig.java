@@ -18,4 +18,8 @@ public final class TestRacingCarConfig {
     public static NumberGenerator moveForwardNumberGenerator() {
         return () -> FORWARD_CONDITION;
     }
+
+    public static NumberGenerator stopNumberGenerator() {
+        return () -> FORWARD_CONDITION - 1;
+    }
 }

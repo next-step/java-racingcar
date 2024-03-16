@@ -2,8 +2,12 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.TestRacingCarConfig.basicRule;
+import static racingcar.TestRacingCarConfig.moveForwardNumberGenerator;
+import static racingcar.TestRacingCarConfig.stopNumberGenerator;
 import static racingcar.config.RacingCarException.CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH;
 import static racingcar.config.RacingCarException.CAR_NAME_NOT_MATCHES_PATTERN;
+import static racingcar.domain.Car.SPEED;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +15,64 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
+
+    @Test
+    @DisplayName("isSamePosition 메서드에 동일한 위치 값을 넣으면 true를 반환한다.")
+    void isSamePosition_SamePosition_True() {
+        final Car car = Car.from("kyle");
+        final int position = car.position();
+
+        assertThat(car.isSamePosition(position))
+                .isTrue();
+    }
+
+    @Test
+    @DisplayName("isSamePosition 메서드에 동일하지 않은 위치 값을 넣으면 false를 반환한다.")
+    void isSamePosition_DifferentPosition_False() {
+        final Car car = Car.from("kyle");
+        final int position = car.position() + 1;
+
+        assertThat(car.isSamePosition(position))
+                .isFalse();
+    }
+
+    @Test
+    @DisplayName("copyOf 메서드는 내부 필드 값은 같으나, 다른 참조를 가진 복사본을 반환한다.")
+    void copyOf() {
+        final Car originCar = Car.from("kyle");
+        final Car copiedCar = originCar.copyOf();
+
+        assertThat(originCar).isNotSameAs(copiedCar);
+
+        assertThat(originCar.name())
+                .isEqualTo(copiedCar.name());
+        assertThat(originCar.position())
+                .isEqualTo(copiedCar.position());
+    }
+
+    @Test
+    @DisplayName("자동차는 전진 조건에 해당하면 자동차의 속도만큼 위치를 이동한다.")
+    void moveForwardOrStop_MoveForwardCondition_PositionIncrement() {
+        final Car car = Car.from("kyle");
+        final int expectedPosition = car.position() + SPEED;
+
+        car.moveForwardOrStop(new MovementStrategy(basicRule(), moveForwardNumberGenerator()));
+
+        assertThat(car.position())
+                .isEqualTo(expectedPosition);
+    }
+
+    @Test
+    @DisplayName("자동차는 정지 조건에 해당하면 현재 위치를 유지한다.")
+    void moveForwardOrStop_StopCondition_PositionMaintain() {
+        final Car car = Car.from("kyle");
+        final int expectedPosition = car.position();
+
+        car.moveForwardOrStop(new MovementStrategy(basicRule(), stopNumberGenerator()));
+
+        assertThat(car.position())
+                .isEqualTo(expectedPosition);
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"a", "1", "kyle", "123", "ky123"})

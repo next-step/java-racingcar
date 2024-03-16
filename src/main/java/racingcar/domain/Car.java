@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 
 public class Car {
 
+    public static final int SPEED = 1;
     private static final Pattern carNamePattern = Pattern.compile("^[a-z0-9]+$");
     private static final int CAR_NAME_MAXIMUM_LENGTH = 5;
     private static final int START_POSITION = 0;
-    private static final int SPEED = 1;
 
     private final String name;
     private int position;
