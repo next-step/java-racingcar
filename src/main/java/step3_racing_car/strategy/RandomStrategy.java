@@ -1,11 +1,13 @@
-package step3_racing_car;
+package step3_racing_car.strategy;
+
+import step3_racing_car.strategy.MovingStrategy;
 
 import java.util.Random;
 
 public class RandomStrategy implements MovingStrategy {
     private static final Random random = new Random();
-    public static final int RANDOM_RANGE = 10;
-    public static final int MOVING_THRESHOLD = 4;
+    private static final int RANDOM_RANGE = 10;
+    private static final int MOVING_THRESHOLD = 4;
 
     @Override
     public int move() {
