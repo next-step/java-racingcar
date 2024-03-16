@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.domain.movement.BasicRule.FORWARD_CONDITION;
+
 import racingcar.domain.movement.BasicRule;
 import racingcar.domain.movement.NumberGenerator;
 import racingcar.domain.movement.Rule;
@@ -14,6 +16,6 @@ public final class TestRacingCarConfig {
     }
 
     public static NumberGenerator moveForwardNumberGenerator() {
-        return () -> 4;
+        return () -> FORWARD_CONDITION;
     }
 }
