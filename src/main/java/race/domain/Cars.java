@@ -25,26 +25,28 @@ public class Cars {
         return Collections.unmodifiableList(this.cars);
     }
 
+    public List<Car> findWinner() {
+        return findWinnerHaving(max());
+    }
+
     private void goForwardWith(PlayStrategy rule, Car car) {
         if (rule.isValidForGoForward()) {
             car.go();
         }
     }
 
-    //todo: 자동차 우승자 찾기
-    public List<Car> findWinner() {
+    private List<Car> findWinnerHaving(int max) {
+        return cars.stream()
+                .filter(car -> car.isWinner(max))
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    private int max() {
         int max = 0;
         for (Car car : cars) {
             max = car.maxComparedTo(max);
         }
-
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.isWinner(max)) {
-                winners.add(car);
-            }
-        }
-        return winners;
+        return max;
     }
 
 }
