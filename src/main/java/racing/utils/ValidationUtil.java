@@ -2,16 +2,9 @@ package racing.utils;
 
 import racing.Constant;
 
-import java.util.Arrays;
-
 public class ValidationUtil {
 
     public static void validateInput(String names, int round) {
-        validateLength(names, round);
-        validateCarNameLength(names);
-    }
-
-    private static void validateLength(String names, int round) {
         if (names == null || names.isBlank() || !names.contains(",")) {
             throw new IllegalArgumentException(Constant.CAR_NUMBER_VALIDATION_ERROR);
         }
@@ -25,11 +18,13 @@ public class ValidationUtil {
         }
     }
 
-    private static void validateCarNameLength(String names) {
-        Boolean isLengthOverFive = Arrays.stream(names.split(",")).anyMatch(name -> name.length() > 5);
-        if (isLengthOverFive) {
+    public static void validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(Constant.CAR_NAME_BLANK_VALIDATION_ERROR);
+        }
+
+        if (name.length() > 5) {
             throw new IllegalArgumentException(Constant.CAR_NAME_LENGTH_VALIDATION_ERROR);
         }
     }
-
 }

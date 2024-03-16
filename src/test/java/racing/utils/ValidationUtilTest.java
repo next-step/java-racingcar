@@ -6,6 +6,7 @@ import racing.Constant;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racing.utils.ValidationUtil.validateInput;
+import static racing.utils.ValidationUtil.validateName;
 
 class ValidationUtilTest {
 
@@ -36,15 +37,15 @@ class ValidationUtilTest {
     @Test
     @DisplayName("차 이름을 입력하지 않을 경우 RuntimeException 예외가 발생해야 한다")
     void validate_carName_null() {
-        assertThatThrownBy(() -> validateInput(null, 5))
+        assertThatThrownBy(() -> validateName(null))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Constant.CAR_NUMBER_VALIDATION_ERROR);
+                .hasMessageContaining(Constant.CAR_NAME_BLANK_VALIDATION_ERROR);
     }
 
     @Test
     @DisplayName("5자 이상의 이름을 입력할 경우 RuntimeException 예외가 발생해야 한다")
     void validate_carName_length() {
-        assertThatThrownBy(() -> validateInput("HarryPorter,SpongeBob", 5))
+        assertThatThrownBy(() -> validateName("HarryPorter"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constant.CAR_NAME_LENGTH_VALIDATION_ERROR);
     }

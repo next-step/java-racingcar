@@ -1,12 +1,14 @@
 package racing.domain;
 
 import racing.Constant;
+import racing.utils.ValidationUtil;
 
 public class Car {
     private String name;
     private int position;
 
     public Car(String name) {
+        ValidationUtil.validateName(name);
         this.name = name;
         this.position = Constant.START_POSITION;
     }

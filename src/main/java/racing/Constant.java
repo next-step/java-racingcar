@@ -8,6 +8,7 @@ public class Constant {
     public static final String CAR_NUMBER_VALIDATION_ERROR = "최소 2대 이상의 자동차 이름를 입력해주세요";
     public static final String ROUND_NUMBER_VALIDATION_ERROR = "최소 1회 이상의 횟수를 입력해주세요";
     public static final String CAR_NAME_LENGTH_VALIDATION_ERROR = "자동차 이름은 5자를 초과할 수 없습니다.";
+    public static final String CAR_NAME_BLANK_VALIDATION_ERROR = "자동차 이름은 값이 존재하여야 합니다.";
 
     public static final int RANDOM_NUMBER_RANGE_MAX = 10;
     public static final int GO_FORWARD_MIN_VALUE = 4;
