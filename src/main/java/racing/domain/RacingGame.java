@@ -26,7 +26,7 @@ public class RacingGame {
     public Winners findWinner() {
         final int max = getMaxPosition();
         List<Car> winners = cars.getCars().stream()
-                .filter(car -> car.getPosition() == max)
+                .filter(car -> car.isMatch(max))
                 .collect(Collectors.toList());
         return new Winners(winners);
     }
@@ -34,7 +34,7 @@ public class RacingGame {
     private int getMaxPosition() {
         int maxPosition = Constant.START_POSITION;
         for (Car car : cars.getCars()) {
-            maxPosition = maxPosition < car.getPosition() ? car.getPosition() : maxPosition;
+            maxPosition = car.max(car.getPosition());
         }
         return maxPosition;
     }

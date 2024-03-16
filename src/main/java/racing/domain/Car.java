@@ -23,13 +23,24 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void move(int number) {
         if (number >= Constant.GO_FORWARD_MIN_VALUE) {
             position++;
         }
     }
 
-    public String getName() {
-        return this.name;
+    public int max(int other) {
+        if (this.position > other) {
+            return this.position;
+        }
+        return other;
+    }
+
+    public boolean isMatch(int maxPosition) {
+        return this.position == maxPosition;
     }
 }
