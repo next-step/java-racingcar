@@ -10,7 +10,7 @@ public class Game {
         playRound(countCar, countTry);
     }
 
-    public void playRound(int countCar, int countTry) {
+    private void playRound(int countCar, int countTry) {
         Car[] cars = new Car[countCar];
         for (int i = 0; i < countCar; i++) {
             cars[i] = new Car(0);
@@ -23,7 +23,7 @@ public class Game {
         }
     }
 
-    public void playMove(Car[] cars) {
+    private void playMove(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
             cars[i].decideMove(randomMaker.generateRandom());
             view.gameResultView(resultStr(cars[i]));
