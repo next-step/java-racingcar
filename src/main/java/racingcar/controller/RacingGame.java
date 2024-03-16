@@ -1,29 +1,34 @@
 package racingcar.controller;
 
+import static racingcar.RacingCarConfig.movingStrategy;
+import static racingcar.RacingCarConfig.numberGenerator;
+import static racingcar.RacingCarConfig.racingView;
+
+import racingcar.domain.CarMovement;
 import racingcar.domain.Race;
+import racingcar.view.RacingView;
 import racingcar.vo.GameResult;
 
 public class RacingGame {
 
-    private final RacingScreen racingScreen;
-
-    public RacingGame(final RacingScreen racingScreen) {
-        this.racingScreen = racingScreen;
-    }
-
     public void play() {
-        try {
-            final String[] carNames = racingScreen.readCarNames();
-            final int playingCount = racingScreen.readPlayingCount();
+        final RacingView racingView = racingView();
+        final CarMovement carMovement = new CarMovement(movingStrategy(), numberGenerator());
 
-            final Race race = new Race(carNames, playingCount);
+        try {
+            final String[] carNames = racingView.readCarNames();
+            final int playingCount = racingView.readPlayingCount();
+
+            final Race race = Race.of(carNames, playingCount, carMovement);
             final GameResult gameResult = race.progress();
 
-            racingScreen.printGameResult(gameResult);
+            racingView.printGameResult(gameResult);
+
         } catch (final IllegalArgumentException e) {
-            racingScreen.printBusinessExceptionMessage(e.getMessage());
+            racingView.printBusinessExceptionMessage(e.getMessage());
+
         } catch (final Exception e) {
-            racingScreen.printUnexpectedExceptionMessage();
+            racingView.printUnexpectedExceptionMessage();
         }
     }
 }
