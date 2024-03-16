@@ -4,15 +4,20 @@ import java.util.Random;
 
 public class Car {
 	private int position;
+	private final CarMoveStrategy[] carMoveStrategies;
 
-	public Car() {
+	public Car(CarMoveStrategy... carMoveStrategies) {
 		position = 0;
+		this.carMoveStrategies = carMoveStrategies;
 	}
 
 	public void move() {
-		if(new Random().nextInt(10) >= 4) {
-			position++;
+		for(CarMoveStrategy carMoveStrategy : carMoveStrategies) {
+			if(!carMoveStrategy.isMovable()) {
+				return;
+			}
 		}
+		position++;
 	}
 
 	public int getPosition() {

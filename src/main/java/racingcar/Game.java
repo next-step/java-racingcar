@@ -18,7 +18,7 @@ public class Game {
 		Car[] cars = new Car[numberOfCar];
 
 		for(int i = 0; i < numberOfCar; i++) {
-			cars[i] = new Car();
+			cars[i] = new Car(new RandomCarMoveStrategy());
 		}
 
 		return cars;
