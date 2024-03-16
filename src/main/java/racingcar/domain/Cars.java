@@ -10,7 +10,7 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(final List<Car> cars) {
+    public Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
