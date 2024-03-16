@@ -34,7 +34,7 @@ public class RacingCar {
     }
 
     public boolean isWinner(int highScore) {
-        return this.position.isHighScore(highScore);
+        return this.position.equals(new Position(highScore));
     }
 
     private void move() {
