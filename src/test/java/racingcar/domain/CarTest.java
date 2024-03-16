@@ -57,4 +57,14 @@ public class CarTest {
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("현재 위치의 +1 만큼의 - 문자를 반환한다.")
+    void toStringTest() {
+        //given
+        Car car = new Car("pobi");
+
+        //when & then
+        assertThat(car.toString()).isEqualTo("-");
+    }
 }

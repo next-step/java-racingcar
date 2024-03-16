@@ -10,4 +10,5 @@ public interface Vehicle {
     Integer max(int other);
 
     boolean isMatch(int position);
+    String toString();
 }

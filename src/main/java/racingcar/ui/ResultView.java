@@ -8,7 +8,6 @@ import racingcar.domain.Vehicle;
 
 public class ResultView {
 
-    private final String DISPLAY_STRING = "-";
     private final List<Vehicle> vehicles;
 
     public ResultView(List<Vehicle> vehicles) {
@@ -18,7 +17,7 @@ public class ResultView {
 
     public void printResult() {
         for (Vehicle vehicle : vehicles) {
-            System.out.println(String.format("%s : %s", vehicle.getName(), DISPLAY_STRING.repeat(vehicle.getPosition() + 1)));
+            System.out.println(String.format("%s : %s", vehicle.getName(), vehicle.toString()));
         }
         System.out.println();
     }
@@ -38,11 +37,10 @@ public class ResultView {
     }
 
     private String getWinnerNames(int maxMovePosition) {
-        List<String> winners = vehicles.stream()
+
+        return vehicles.stream()
             .filter(vehicle -> vehicle.isMatch(maxMovePosition))
             .map(Vehicle::getName)
-            .collect(Collectors.toList());
-
-        return String.join(", ", winners);
+            .collect(Collectors.joining());
     }
 }

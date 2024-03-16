@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 public class Car implements Vehicle {
+
+    private final String DISPLAY_STRING = "-";
     private final int MOVABLE_NUMBER = 4;
     private final Name name;
     private Position position;
@@ -36,6 +38,11 @@ public class Car implements Vehicle {
     public boolean isMatch(int position) {
 
         return this.position.isMatch(position);
+    }
+
+    @Override
+    public String toString() {
+        return DISPLAY_STRING.repeat(position.getPosition() + 1);
     }
 
 
