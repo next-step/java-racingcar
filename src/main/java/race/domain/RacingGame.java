@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    public void race(List<Car> carList, int tryCount) {
+    public List<Car> race(List<Car> carList, int tryCount) {
         ResultView resultView = new ResultView();
         resultView.printResult();
 
@@ -15,6 +15,8 @@ public class RacingGame {
             exploreCarList(carList);
             resultView.showResult(carList);
         }
+
+        return carList;
     }
 
     private void exploreCarList(List<Car> carList) {
@@ -22,12 +24,7 @@ public class RacingGame {
 
         for (int i = 0; i < carList.size(); i++) {
             int random = randomUtil.randomNum();
-            makeForward(carList.get(i), random);
+            carList.get(i).makeForward(random);
         }
-    }
-
-    private void makeForward(Car car, int number) {
-        if (car.canForward(number))
-            car.move();
     }
 }
