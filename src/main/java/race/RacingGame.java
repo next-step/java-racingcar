@@ -26,7 +26,7 @@ public class RacingGame {
             outputView.printMileages(cars.goForward(new RandomStrategy()));
             outputView.printNewLine();
         }
-        //System.out.print(cars.showWinnerNames());
+        outputView.printWinner(cars.findWinner());
     }
 
 }
