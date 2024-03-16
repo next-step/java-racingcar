@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Car {
     private int mPosition;
+    static Random random = new Random(4);
 
     public Car()
     {
@@ -15,7 +16,6 @@ public class Car {
     }
 
     public void updatePosition() {
-        Random random = new Random(11);
         int randomValue = random.nextInt(10);
         if (randomValue >= 4){
             mPosition++;

@@ -13,13 +13,22 @@ public class CarArray {
     {
         this.mNumOfCar = mNumOfCar;
         mCarArray = new Car[mNumOfCar];
+        for (int i = 0; i < mNumOfCar; i++)
+        {
+            mCarArray[i] = new Car();
+        }
     }
 
-    public void InputCarArray(int NumOfCar)
+    public void resizeCarArray(int NumOfCar)
     {
-        this.mNumOfCar = mNumOfCar;
+        this.mNumOfCar = NumOfCar;
         mCarArray = new Car[mNumOfCar];
+        for (int i = 0; i < mNumOfCar; i++)
+        {
+            mCarArray[i] = new Car();
+        }
     }
+
 
     public void updateCarArrayPosition()
     {
@@ -29,9 +38,8 @@ public class CarArray {
         }
     }
 
-    public int position(int carPosition)
+    public int position(int carIndex)
     {
-        return mCarArray[carPosition].position();
+        return mCarArray[carIndex].position();
     }
-
 }
