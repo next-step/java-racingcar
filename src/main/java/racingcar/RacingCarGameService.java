@@ -5,19 +5,18 @@ import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
-public class RacingCarGameLogic {
+public class RacingCarGameService {
     private static final String CAR_NAME_DELIMITER = ",";
     private static final int INIT_CAR_DISTANCE = 0;
 
-    private static final RacingCarGameLogic instance = new RacingCarGameLogic();
+    private static final RacingCarGameService instance = new RacingCarGameService();
 
-    private RacingCarGameLogic() {
+    private RacingCarGameService() {
 
     }
 
-    public static RacingCarGameLogic getInstance() {
+    public static RacingCarGameService getInstance() {
         return instance;
     }
 
@@ -27,7 +26,6 @@ public class RacingCarGameLogic {
         for (int i = 0; i < numberOfAttempt; i++) {
             RacingCarGameRule.getInstance().moveCars(cars);
             ResultView.getInstance().printMove(cars);
-            ResultView.getInstance().printLineBreak();
         }
 
         List<Car> winners = RacingCarGameRule.getInstance().getWinnerCars(cars);
@@ -38,8 +36,8 @@ public class RacingCarGameLogic {
         String[] names = getCarNamesSplit(nameOfCars);
         List<Car> cars = new ArrayList<>(names.length);
 
-        for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i],INIT_CAR_DISTANCE));
+        for (String name: names) {
+            cars.add(new Car(name, INIT_CAR_DISTANCE));
         }
 
         return cars;

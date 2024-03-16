@@ -4,16 +4,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.RacingCarGameLogic;
+import racingcar.RacingCarGameService;
 import racingcar.RacingCarGameRule;
 import racingcar.model.Car;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
     private static final String TEST_CAR_NAMES = "pobi,crong,honux";
@@ -30,7 +29,7 @@ public class RacingCarTest {
     @DisplayName("자동차 이름 초기화 확인 테스트")
     public void testSaveCarName() {
         String[] names = TEST_CAR_NAMES.split(",");
-        List<Car> cars = RacingCarGameLogic.getInstance().initCars(TEST_CAR_NAMES);
+        List<Car> cars = RacingCarGameService.getInstance().initCars(TEST_CAR_NAMES);
         IntStream.range(0, names.length).forEach(i -> assertThat(cars.get(i).getName()).isEqualTo(names[i]));
     }
 
@@ -39,15 +38,19 @@ public class RacingCarTest {
     public void testGetZeroDistanceWinner() {
         List<Car> cars = Arrays.asList(new Car("test0", 0), new Car("test1", 0), new Car("test2", 0));
         List<Car> winners = RacingCarGameRule.getInstance().getWinnerCars(cars);
-        assertThat(winners.size()).isEqualTo(3);
+        assertThat(winners).hasSize(3);
     }
 
     @Test
     @DisplayName("3명인 경우 1명의 우승자 구하는 확인 테스트")
     public void testGetWinner() {
-        List<Car> cars = IntStream.range(0, 3).mapToObj(index -> new Car("test" + index, index)).collect(Collectors.toList());
+        List<Car> cars = List.of(
+                new Car("test0", 0),
+                new Car("test1", 1),
+                new Car("test2", 2)
+        );
         List<Car> winners = RacingCarGameRule.getInstance().getWinnerCars(cars);
-        assertThat(winners.get(0).getName()).isEqualTo("test2");
+        assertThat(winners.get(0)).isEqualTo(new Car("test2", 2));
     }
 
     @Test
@@ -61,7 +64,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("게임 로직 정상실행 통합 테스트")
     public void testGameLogic() {
-        RacingCarGameLogic.getInstance().gameLogic(TEST_CAR_NAMES, 5);
+        RacingCarGameService.getInstance().gameLogic(TEST_CAR_NAMES, 5);
     }
 
 }

@@ -8,7 +8,7 @@ public class RacingCar {
         String nameOfCars = inputView.inputNamesOfCar();
         int numberOfAttempt = inputView.inputNumberOfAttempt();
 
-        RacingCarGameLogic.getInstance().gameLogic(nameOfCars, numberOfAttempt);
+        RacingCarGameService.getInstance().gameLogic(nameOfCars, numberOfAttempt);
     }
 
 }

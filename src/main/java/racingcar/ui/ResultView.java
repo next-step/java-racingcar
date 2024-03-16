@@ -22,14 +22,13 @@ public class ResultView {
 
     public void printMove(List<Car> carList) {
         carList.forEach(ResultView::printCarDistance);
+        printLineBreak();
     }
 
     private static void printCarDistance(Car car) {
         String distanceView = getCarName(car);
-        for (int i = 0; i < car.getDistance(); i++) {
-            distanceView += PRINT_DISTANCE;
-        }
-        System.out.println(distanceView);
+        String result = distanceView + PRINT_DISTANCE.repeat(car.getDistance());
+        System.out.println(result);
     }
 
     private static String getCarName(Car car) {
@@ -45,10 +44,9 @@ public class ResultView {
     }
 
     private static String getWinnersName(List<Car> winners) {
-        String winnersName = winners.stream()
+        return winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(WINNER_DELIMITER));
-        return winnersName;
     }
 
 }
