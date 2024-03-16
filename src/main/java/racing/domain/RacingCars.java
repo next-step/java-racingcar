@@ -33,13 +33,6 @@ public class RacingCars {
         return racingCarList.size();
     }
 
-    public int getMaxPosition() {
-        return Collections.max(
-                racingCarList.stream()
-                        .map(RacingCar::getPosition)
-                        .collect(Collectors.toList()));
-    }
-
     public List<String> getWinnerNames() {
         int highScore = getMaxPosition();
 
@@ -51,6 +44,13 @@ public class RacingCars {
 
     private boolean isNullOrBlank(String name) {
         return name == null || name.isBlank();
+    }
+
+    private int getMaxPosition() {
+        return Collections.max(
+                racingCarList.stream()
+                        .map(RacingCar::getPosition)
+                        .collect(Collectors.toList()));
     }
 
     private String[] toNameArray(String names) {
