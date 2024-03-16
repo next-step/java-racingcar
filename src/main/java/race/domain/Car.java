@@ -2,32 +2,28 @@ package race.domain;
 
 public class Car {
 
-    private Position position;
-    private final String name;
+    private final Position position;
+    private final Name name;
 
     public Car(String name) {
         this(0, name);
     }
 
     public Car(int position, String name) {
-        this(new Position(position), name);
+        this(new Position(position), new Name(name));
     }
 
-    public Car(Position position, String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("공백없이 정확한 이름을 입력해주세요.");
-        }
+    public Car(Position position, Name name) {
         this.position = position;
         this.name = name;
     }
-
 
     public int getPosition() {
         return this.position.getNumber();
     }
 
     public String getName() {
-        return name;
+        return this.name.getName();
     }
 
     public void go() {
