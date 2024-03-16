@@ -2,21 +2,18 @@ package step3;
 
 public class Car {
 
-    String name;
     int position = 0;
 
-    public Car(int i) {
-        this.name = String.valueOf(i);
+    public int getPosition() {
+        return position;
     }
 
-    public RaceResultMap move(int attempt, Policy policy) {
-        if (isNotFist(attempt)) {
-            this.position = policy.apply(position);
+    public Car() {
+    }
+    public RaceResultMap move(boolean attemptResult) {
+        if (attemptResult) {
+            position += 1;
         }
-        return new RaceResultMap(name,position);
-    }
-
-    private static boolean isNotFist(int attempt) {
-        return attempt != 0;
+        return new RaceResultMap(position);
     }
 }

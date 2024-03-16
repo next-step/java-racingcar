@@ -1,12 +1,14 @@
 package step3;
 
 public class RaceResultMap {
-    String name;
     int position;
 
-    public RaceResultMap(String name, int position) {
-        this.name = name;
+    public RaceResultMap(int position) {
         this.position = position;
+    }
+
+    public RaceResultMap(Car car) {
+        this(0);
     }
 
     @Override
@@ -15,6 +17,6 @@ public class RaceResultMap {
     }
 
     public RaceResultMap withResult() {
-        return new RaceResultMap(name, position);
+        return new RaceResultMap(position);
     }
 }

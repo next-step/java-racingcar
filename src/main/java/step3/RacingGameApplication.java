@@ -15,7 +15,7 @@ public class RacingGameApplication {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int numberOfAttempts = scanner.nextInt();
 
-        Race race = new Race(new RandomPolicy(),numberOfCar,numberOfAttempts);
+        Race race = new Race(numberOfAttempts,numberOfCar,new RandomRule());
 
         List<RoundResultMap> finalResult = race.start();
 

@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
 
-    private final Policy mockPolicy = new RandomPolicy();
+    private final Rule mockRule = new RandomRule();
     private final int numberOfCars = 5;
     private final int numberOfAttempts = 3;
     private Race race;
@@ -19,7 +19,7 @@ public class RaceTest {
     @BeforeEach
     void setUp() {
         //given
-        race = new Race(mockPolicy, numberOfCars, numberOfAttempts);
+        race = new Race(numberOfCars, numberOfAttempts,mockRule);
     }
 
     @DisplayName("n개의 자동차 객체생성")

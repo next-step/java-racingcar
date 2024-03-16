@@ -7,38 +7,49 @@ import java.util.stream.IntStream;
 
 public class Race {
 
-    int numberOfAttempts;
-    Policy policy;
-    List<Car> cars = new ArrayList<>();
-    List<RoundResultMap> finalResult = new ArrayList<>();
+    final int numberOfAttempts;
+    final Rule rule;
+    final int numberOfCars;
+    final List<Car> cars;
 
-    public Race(Policy policy, int numberOfCars, int numberOfAttempts) {
+    List<RoundResultMap> roundResult;
+
+    public Race(int numberOfAttempts, int numberOfCars, Rule rule) {
         this.numberOfAttempts = numberOfAttempts;
-        this.policy = policy;
+        this.numberOfCars = numberOfCars;
+        this.rule = rule;
         this.cars = initializeCars(numberOfCars);
-        this.finalResult = new ArrayList<>();
+        this.roundResult = new ArrayList<>();
+
+    }
+
+    private static RoundResultMap getRoundResult(List<Car> cars) {
+        return new RoundResultMap(0, cars.stream()
+                .map(RaceResultMap::new)
+                .collect(Collectors.toList()));
     }
 
     public List<Car> initializeCars(int numberOfCars) {
         return IntStream.range(0, numberOfCars)
-                .mapToObj(Car::new)
+                .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
 
     public List<RoundResultMap> start() {
-        IntStream.range(0, numberOfAttempts).forEach(attempt -> {
-            List<RaceResultMap> raceResultMaps = new ArrayList<>();
-            getRaceResult(attempt, raceResultMaps);
-            finalResult.add(new RoundResultMap(attempt, raceResultMaps));
-        });
-        return finalResult;
-    }
+        for (int i = 0; i < numberOfAttempts; i++) {
+            if (i == 0) {
+                roundResult.add(getRoundResult(cars));
+            }
 
-    private void getRaceResult(int attempt, List<RaceResultMap> raceResultMaps) {
-        for (Car car : cars) {
-            RaceResultMap raceResultMap = car.move(attempt, policy);
-            raceResultMaps.add(raceResultMap);
-        }
+            if (i != 0) {
+                List<RaceResultMap> attemptResultMaps = new ArrayList<>();
+                for (Car car : cars) {
+                    attemptResultMaps.add(car.move(rule.apply()));
+                }
+                roundResult.add(new RoundResultMap(i, attemptResultMaps));
+            }
+        };
+        return roundResult;
     }
 
     public void printResult(List<RoundResultMap> roundResultMaps) {
