@@ -1,20 +1,23 @@
 package racing.dto;
 
+import racing.utils.ValidationUtil;
+
 public class GameVO {
 
-    private final String[] carNames;
-    private final int roundNo;
+    private final String carNames;
+    private final int round;
 
-    public GameVO(String[] names, int roundNo) {
+    public GameVO(String names, int round) {
+        ValidationUtil.validateInput(names, round);
         this.carNames = names;
-        this.roundNo = roundNo;
+        this.round = round;
     }
 
     public String[] getCarNames() {
-        return carNames;
+        return carNames.split(",");
     }
 
-    public int getRoundNo() {
-        return roundNo;
+    public int getRound() {
+        return round;
     }
 }

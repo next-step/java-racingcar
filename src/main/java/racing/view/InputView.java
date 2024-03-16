@@ -12,7 +12,7 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public String getNumberOfCars() {
+    public String getNamesOfCars() {
         System.out.println(Constant.CMD_NANE_OF_CARS);
         return scanner.nextLine();
     }
