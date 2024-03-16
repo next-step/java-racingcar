@@ -3,6 +3,8 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
@@ -18,12 +20,16 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("우승자를 알려줄 수 있다")
+    @DisplayName("우승자 이름을 알려줄 수 있다")
     void find_winner() {
-        Cars cars = Cars.create(new String[]{"pobi", "crong", "honux"});
+        Car car1 = new Car("pobi", 3);
+        Car car2 = new Car("crong", 5);
+        Car car3 = new Car("honux", 2);
+        List<Car> carList = List.of(car1, car2, car3);
+        Cars cars = Cars.create(carList);
         RacingGame racingGame = new RacingGame(cars, 5);
-        racingGame.play();
         Winners winner = racingGame.findWinner();
-        assertThat(winner.getWinners().size() > 1);
+        assertThat(winner.getWinners().size()).isEqualTo(1);
+        assertThat(winner.getWinners().get(0).getName()).isEqualTo("crong");
     }
 }

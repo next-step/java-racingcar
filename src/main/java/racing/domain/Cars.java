@@ -18,6 +18,10 @@ public class Cars {
         return new Cars(carList);
     }
 
+    public static Cars create(List<Car> carList) {
+        return new Cars(carList);
+    }
+
     public List<Car> getCars() {
         return cars;
     }
