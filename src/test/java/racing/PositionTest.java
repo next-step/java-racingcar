@@ -13,15 +13,4 @@ class PositionTest {
     void setUp() {
         position = new Position(3);
     }
-
-    @Test
-    void isHighScore() {
-        assertThat(position.isHighScore(3)).isTrue();
-    }
-
-    @Test
-    void increase() {
-        position.increase();
-        assertThat(position.value()).isEqualTo(4);
-    }
 }

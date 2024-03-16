@@ -1,7 +1,9 @@
 package racing.domain;
 
-public class Position {
-    private int value;
+import java.util.Objects;
+
+public final class Position {
+    private final int value;
 
     public Position(int position) {
         this.value = position;
@@ -11,11 +13,20 @@ public class Position {
         return value;
     }
 
-    public boolean isHighScore(int highScore) {
-        return this.value == highScore;
+    public Position nextPosition() {
+        return new Position(value + 1);
     }
 
-    public void increase() {
-        this.value++;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return value == position.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

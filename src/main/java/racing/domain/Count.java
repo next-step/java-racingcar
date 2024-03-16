@@ -12,7 +12,7 @@ public class Count {
     }
 
     private int toInt(String input) {
-        if (isNullOrBlank(input)) {
+        if (hasNoInput(input)) {
             throw new IllegalArgumentException("Null 또는 공백 입력");
         }
 
@@ -29,7 +29,7 @@ public class Count {
         return number;
     }
 
-    private boolean isNullOrBlank(String str) {
+    private boolean hasNoInput(String str) {
         return str == null || str.isBlank();
     }
 

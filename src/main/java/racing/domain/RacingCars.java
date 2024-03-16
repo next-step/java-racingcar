@@ -1,19 +1,17 @@
 package racing.domain;
 
-import racing.domain.RacingCar;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    private static final String NAME_DELIMITER = ",";
+    public static final String NAME_DELIMITER = ",";
     private final List<RacingCar> racingCarList;
 
     public RacingCars(String names) {
-        if (isNullOrBlank(names)) {
-            throw new IllegalArgumentException();
+        if (hasNoInput(names)) {
+            throw new IllegalArgumentException("Null 또는 공백 입력");
         }
 
         this.racingCarList = Arrays.stream(toNameArray(names))
@@ -33,11 +31,10 @@ public class RacingCars {
         return racingCarList.size();
     }
 
-    public int getMaxPosition() {
-        return Collections.max(
-                racingCarList.stream()
-                        .map(RacingCar::getPosition)
-                        .collect(Collectors.toList()));
+    public void moveCars(List<Integer> conditionNumbers) {
+        for (int i = 0; i < racingCarList.size(); i++) {
+            racingCarList.get(i).attemptToMove(conditionNumbers.get(i));
+        }
     }
 
     public List<String> getWinnerNames() {
@@ -49,8 +46,15 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
-    private boolean isNullOrBlank(String name) {
+    private boolean hasNoInput(String name) {
         return name == null || name.isBlank();
+    }
+
+    private int getMaxPosition() {
+        return Collections.max(
+                racingCarList.stream()
+                        .map(RacingCar::getPosition)
+                        .collect(Collectors.toList()));
     }
 
     private String[] toNameArray(String names) {

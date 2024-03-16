@@ -28,15 +28,6 @@ class RacingCarsTest {
     }
 
     @Test
-    void 최대거리() {
-        RacingCars racingCars = new RacingCars(List.of(
-                new RacingCar("audi", 2),
-                new RacingCar("bmw", 3),
-                new RacingCar("benz", 1)));
-        assertThat(racingCars.getMaxPosition()).isEqualTo(3);
-    }
-
-    @Test
     void 단일_우승자() {
         RacingCars racingCars = new RacingCars(List.of(
                 new RacingCar("audi", 2),
