@@ -13,10 +13,4 @@ class PositionTest {
     void setUp() {
         position = new Position(3);
     }
-
-    @Test
-    void increase() {
-        position.increase();
-        assertThat(position.value()).isEqualTo(4);
-    }
 }

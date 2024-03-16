@@ -2,8 +2,8 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class Position {
-    private int value;
+public final class Position {
+    private final int value;
 
     public Position(int position) {
         this.value = position;
@@ -13,8 +13,8 @@ public class Position {
         return value;
     }
 
-    public void increase() {
-        this.value++;
+    public Position nextPosition() {
+        return new Position(value + 1);
     }
 
     @Override

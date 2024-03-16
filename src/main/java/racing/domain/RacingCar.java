@@ -4,7 +4,7 @@ public class RacingCar {
     private static final int MOVE_BORDER_NUMBER = 4;
 
     private final CarName name;
-    private final Position position;
+    private Position position;
 
     public RacingCar(String name) {
         this(name, 0);
@@ -38,6 +38,6 @@ public class RacingCar {
     }
 
     private void move() {
-        this.position.increase();
+        this.position = this.position.nextPosition();
     }
 }
