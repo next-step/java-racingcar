@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 public class Car {
 
     private final Name name;
@@ -11,8 +13,16 @@ public class Car {
     }
 
     public Car(Name name, MoveStrategy moveStrategy) {
+        this(name, new Position(), moveStrategy);
+    }
+
+    public Car(String name, int position, MoveStrategy moveStrategy) {
+        this(new Name(name), new Position(position), moveStrategy);
+    }
+
+    public Car(Name name, Position position, MoveStrategy moveStrategy) {
         this.name = name;
-        this.position = new Position();
+        this.position = position;
         this.moveStrategy = moveStrategy;
     }
 
@@ -33,5 +43,19 @@ public class Car {
 
     public Name name() {
         return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position) &&
+                moveStrategy.moveable() == car.moveStrategy.moveable();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position, moveStrategy.moveable());
     }
 }

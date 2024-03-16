@@ -4,4 +4,6 @@ package domain;
 public interface MoveStrategy {
 
     boolean moveable();
+
+    boolean equals(Object o);
 }
