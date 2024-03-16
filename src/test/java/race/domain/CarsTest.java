@@ -105,7 +105,7 @@ class CarsTest {
 
         // Then
         for (Car car : cars.getCars()) {
-            assertThat(car.getPosition()).isEqualTo(1);
+            assertThat(car.getPosition().getValue()).isEqualTo(1);
         }
     }
 
@@ -122,7 +122,7 @@ class CarsTest {
 
         // Then
         for (Car car : cars.getCars()) {
-            assertThat(car.getPosition()).isEqualTo(expected);
+            assertThat(car.getPosition().getValue()).isEqualTo(expected);
         }
     }
 }

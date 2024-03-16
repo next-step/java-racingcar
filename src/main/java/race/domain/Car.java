@@ -40,8 +40,8 @@ public class Car {
         return name;
     }
 
-    public boolean isEqualPosition(Car car) {
-        return position.isEqual(car.getPosition());
+    public boolean isEqualPosition(int number) {
+        return this.position.isEqual(number);
     }
 
     private void validateName(String name) {

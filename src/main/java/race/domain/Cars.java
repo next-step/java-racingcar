@@ -42,15 +42,19 @@ public class Cars {
     }
 
     public List<Car> chooseWinners() {
-        Car winner = chooseWinner();
+        int max = this.findMax();
+
         return this.cars.stream()
-                .filter(winner::isEqualPosition)
+                .filter((car) -> car.isEqualPosition(max))
                 .collect(Collectors.toList());
     }
 
-    private Car chooseWinner() {
-        TreeSet<Car> cars = new TreeSet<>(this.cars);
-        return cars.last();
+    private int findMax() {
+        int max = 0;
+        for (Car car : this.cars) {
+            max = car.getPosition().max(max);
+        }
+        return max;
     }
 
     private List<Car> generateCar(int countOfCar) {

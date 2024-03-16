@@ -1,6 +1,6 @@
 package race.domain;
 
-public class Position implements Comparable<Position> {
+public class Position {
 
     private int value;
 
@@ -21,12 +21,11 @@ public class Position implements Comparable<Position> {
         return value;
     }
 
-    public boolean isEqual(Position position) {
-        return value == position.getValue();
+    public boolean isEqual(int number) {
+        return value == number;
     }
 
-    @Override
-    public int compareTo(Position o) {
-        return Integer.compare(value, o.getValue());
+    public int max(int number) {
+        return Math.max(value, number);
     }
 }

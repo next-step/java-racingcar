@@ -22,7 +22,7 @@ class CarTest {
         car.move(number);
 
         // Then
-        assertThat(car.getPosition()).isEqualTo(count);
+        assertThat(car.getPosition().getValue()).isEqualTo(count);
     }
 
     @Test
@@ -46,7 +46,7 @@ class CarTest {
         test2.move(position2);
 
         // Then
-        assertThat(test1.isEqualPosition(test2)).isEqualTo(expected);
+        assertThat(test1.isEqualPosition(test2.getPosition().getValue())).isEqualTo(expected);
     }
 
     private static Stream<Arguments> providePositionsAndBoolean() {

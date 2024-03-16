@@ -21,32 +21,32 @@ class PositionTest {
         Position position2 = Position.createInstance(number2);
 
         // When & Then
-        assertThat(position1.isEqual(position2)).isEqualTo(expected);
+        assertThat(position1.isEqual(position2.getValue())).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @MethodSource("providePositionAndNumber")
-    void compareTo_테스트(int number1, int number2, int result) {
+    @MethodSource("providePositionsAndMax")
+    void max_테스트(int number1, int number2, int max) {
         // Given
         Position position1 = Position.createInstance(number1);
         Position position2 = Position.createInstance(number2);
 
         // When & Then
-        assertThat(position1.compareTo(position2)).isEqualTo(result);
+        assertThat(position1.max(position2.getValue())).isEqualTo(max);
+    }
+
+    private static Stream<Arguments> providePositionsAndMax() {
+        return Stream.of(
+                Arguments.of(4,3, 4),
+                Arguments.of(4,4, 4),
+                Arguments.of(1,4, 4)
+        );
     }
 
     private static Stream<Arguments> providePositionsAndBoolean() {
         return Stream.of(
                 Arguments.of(4,3, false),
                 Arguments.of(4,4, true)
-        );
-    }
-
-    private static Stream<Arguments> providePositionAndNumber() {
-        return Stream.of(
-                Arguments.of(4,3, 1),
-                Arguments.of(4,4, 0),
-                Arguments.of(3,4, -1)
         );
     }
 }
