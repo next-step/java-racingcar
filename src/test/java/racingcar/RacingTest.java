@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RacingTest extends IOTest{
+public class RacingTest extends IOTest {
 
     @Test
     @DisplayName("Racing")

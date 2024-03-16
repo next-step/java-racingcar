@@ -14,8 +14,7 @@ public class Racing {
         carGroup.resizeCarArray(inputView.numberOfCar());
         int opportunity = inputView.opportunity();
 
-        for(int i = 0; i < opportunity; i++)
-        {
+        for (int i = 0; i < opportunity; i++) {
             outputView.printCarArrayPosition();
             carGroup.updateCarArrayPosition();
         }
