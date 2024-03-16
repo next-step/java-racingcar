@@ -1,5 +1,6 @@
 package step2;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,7 +8,8 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String input){
         if(isNullOrEmpty(input)) return 0;
-        int result = calculate(input);
+        String[] tokens = tokenize(input);
+        int result = calculate(tokens);
 
         return result;
     }
@@ -19,29 +21,22 @@ public class StringAddCalculator {
         return false;
     }
 
-    private static String[] parseInput(String input){
+    private static String[] tokenize(String input){
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
         if(m.find()){
             String customSeparator = m.group(1);
-            String[] tokens = m.group(2).split(customSeparator);
-            return tokens;
+            return m.group(2).split(customSeparator);
         }
 
-        if(!m.find()){
-            String[] tokens = input.split(",|:");
-            return tokens;
-        }
-
-        return new String[]{};
+        return input.split(",|:");
     }
 
-    private static int calculate(String input){
+    private static int calculate(String[] tokens){
         int result = 0;
-        String[] tokens = parseInput(input);
-        for(String element : tokens ){
-            int number = Integer.parseInt(element);
-            if(number < 0) throw new RuntimeException();
 
+        for(String token : tokens){
+            int number = Integer.parseInt(token);
+            if(number < 0) throw new RuntimeException();
             result += number;
         }
 
