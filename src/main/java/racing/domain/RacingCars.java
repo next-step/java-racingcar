@@ -31,6 +31,12 @@ public class RacingCars {
         return racingCarList.size();
     }
 
+    public void moveCars(List<Integer> conditionNumbers) {
+        for (int i = 0; i < racingCarList.size(); i++) {
+            racingCarList.get(i).attemptToMove(conditionNumbers.get(i));
+        }
+    }
+
     public List<String> getWinnerNames() {
         int highScore = getMaxPosition();
 

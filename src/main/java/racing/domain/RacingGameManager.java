@@ -3,7 +3,10 @@ package racing.domain;
 import racing.view.InputView;
 import racing.view.ResultView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGameManager {
     private static final Random random = new Random();
@@ -22,11 +25,13 @@ public class RacingGameManager {
     }
 
     private void playRound(RacingCars racingCars) {
-        racingCars.getRacingCarList().forEach(this::playCar);
+        List<Integer> randomNumbers = new ArrayList<>();
+        for (int i = 0; i < racingCars.size(); i++) {
+            randomNumbers.add(random.nextInt(RANDOM_MAX_NUMBER));
+        }
+        racingCars.moveCars(randomNumbers);
+
         ResultView.printCarsCurrentPosition(racingCars);
     }
 
-    private void playCar(RacingCar racingCar) {
-        racingCar.attemptToMove(random.nextInt(RANDOM_MAX_NUMBER));
-    }
 }
