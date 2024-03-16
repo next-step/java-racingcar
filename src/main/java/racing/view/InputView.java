@@ -12,9 +12,9 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public int getNumberOfCars() {
-        System.out.println(Constant.CMD_HOW_MANY_CAR);
-        return scanner.nextInt();
+    public String getNumberOfCars() {
+        System.out.println(Constant.CMD_NANE_OF_CARS);
+        return scanner.nextLine();
     }
 
     public int getNumberOfRounds() {

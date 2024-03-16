@@ -10,7 +10,7 @@ class RacingGameTest {
     @Test
     @DisplayName("자동차 게임을 진행하면 자동차가 위치가 이동된다")
     void play() {
-        Cars cars = Cars.create(2);
+        Cars cars = Cars.create(new String[]{"pobi", "crong", "honux"});
 
         RacingGame racingGame = new RacingGame(cars, 5);
         racingGame.play();

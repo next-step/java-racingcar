@@ -6,7 +6,7 @@ import racing.dto.GameVO;
 public class ValidationUtil {
 
     public static void validateInput(GameVO vo) {
-        if (vo.getCarNo() <= 0) {
+        if (vo.getCarNames().length <= 0) {
             throw new IllegalArgumentException(Constant.CAR_NUMBER_VALIDATION_ERROR);
         }
 

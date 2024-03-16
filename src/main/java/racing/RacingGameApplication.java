@@ -12,11 +12,11 @@ public class RacingGameApplication {
 
         InputView inputView = new InputView();
 
-        GameVO gameVO = new GameVO(inputView.getNumberOfCars(), inputView.getNumberOfRounds());
+        GameVO gameVO = new GameVO(inputView.getNumberOfCars().split(","), inputView.getNumberOfRounds());
 
         ValidationUtil.validateInput(gameVO);
 
-        Cars cars = Cars.create(gameVO.getCarNo());
+        Cars cars = Cars.create(gameVO.getCarNames());
 
         RacingGame racingGame = new RacingGame(cars, gameVO.getRoundNo());
         racingGame.play();

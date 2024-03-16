@@ -2,16 +2,16 @@ package racing.dto;
 
 public class GameVO {
 
-    private final int carNo;
+    private final String[] carNames;
     private final int roundNo;
 
-    public GameVO(int carNo, int roundNo) {
-        this.carNo = carNo;
+    public GameVO(String[] names, int roundNo) {
+        this.carNames = names;
         this.roundNo = roundNo;
     }
 
-    public int getCarNo() {
-        return carNo;
+    public String[] getCarNames() {
+        return carNames;
     }
 
     public int getRoundNo() {
