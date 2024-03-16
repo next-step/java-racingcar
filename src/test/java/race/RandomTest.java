@@ -11,7 +11,7 @@ public class RandomTest {
     @DisplayName("차가 전진하는 조건을 항상 참으로 하면 전진한다")
     @Test
     void randomConditionIsAlwaysTrue() {
-        RaceTestStrategy raceRule = new RaceTestStrategy(() -> true);
+        RaceTestStrategy raceRule = new RaceTestStrategy();
         assertThat(raceRule.isValidForGoForward()).isTrue();
     }
 
