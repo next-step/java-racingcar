@@ -2,7 +2,7 @@ package racingcar.domain.movement;
 
 import static java.text.MessageFormat.format;
 
-public class BasicMovingStrategy implements MovingStrategy {
+public class BasicRule implements Rule {
 
     private static final String MOVING_CONDITION_OUT_OF_RANGE_MESSAGE = "자동차의 전진/정지 조건은 0이상 9이하의 자연수만 가능합니다. [condition : {0}]";
     private static final int MINIMUM_CONDITION = 0;

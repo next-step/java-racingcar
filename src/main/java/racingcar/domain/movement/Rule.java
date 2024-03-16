@@ -1,6 +1,6 @@
 package racingcar.domain.movement;
 
-public interface MovingStrategy {
+public interface Rule {
 
     boolean movable(final int condition);
 }

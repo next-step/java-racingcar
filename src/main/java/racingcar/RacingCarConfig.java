@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.domain.movement.BasicMovingStrategy;
-import racingcar.domain.movement.MovingStrategy;
+import racingcar.domain.movement.BasicRule;
 import racingcar.domain.movement.NumberGenerator;
 import racingcar.domain.movement.RandomNumberGenerator;
+import racingcar.domain.movement.Rule;
 import racingcar.view.RacingScreen;
 import racingcar.view.RacingView;
 import racingcar.view.io.Input;
@@ -28,8 +28,8 @@ public final class RacingCarConfig {
         return new ConsoleOutput();
     }
 
-    public static MovingStrategy movingStrategy() {
-        return new BasicMovingStrategy();
+    public static Rule rule() {
+        return new BasicRule();
     }
 
     public static NumberGenerator numberGenerator() {

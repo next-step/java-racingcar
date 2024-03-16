@@ -3,19 +3,17 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RacingCarsTest {
+class CarsTest {
 
     @Test
     @DisplayName("자동차 이름 목록을 통해 자동차들을 생성한다.")
     void new_CarNames_RacingCars() {
         final String[] carNames = {"kyle", "alex", "haley"};
 
-        assertThat(new RacingCars(carNames))
+        assertThat(Cars.from(carNames))
                 .isNotNull();
     }
 
@@ -24,7 +22,7 @@ class RacingCarsTest {
     void new_DuplicatedCarNames_Exception() {
         final String[] duplicatedCarNames = {"kyle", "kyle", "alex"};
 
-        assertThatThrownBy(() -> new RacingCars(duplicatedCarNames))
+        assertThatThrownBy(() -> Cars.from(duplicatedCarNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
     }
@@ -33,9 +31,9 @@ class RacingCarsTest {
     @DisplayName("자동차 객체 목록을 반환하는 메서드를 호출하면, 그에 대한 복사본 목록이 반환된다.")
     void cars_CopyCarList() {
         final String[] carNames = {"kyle", "alex"};
-        final RacingCars racingCars = new RacingCars(carNames);
-        final List<Car> cars = racingCars.cars();
+        final Cars cars = Cars.from(carNames);
 
-        assertThat(cars).hasSize(carNames.length);
+        assertThat(cars.cars())
+                .hasSize(carNames.length);
     }
 }

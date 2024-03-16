@@ -16,42 +16,13 @@ public class Car {
     private final String name;
     private int position;
 
-    private Car(final String name, final int position) {
-        final String carName = name.trim();
-        validateCarNameIsValid(carName);
-
-        this.name = carName;
-        this.position = position;
-    }
-
-    public Car(final String name) {
+    private Car(final String name) {
         this(name, START_POSITION);
     }
 
-    private void validateCarNameIsValid(final String name) {
-        validateCarNameMatchesPattern(name);
-        validateCarNameIsNotLongerThanMaximumLength(name);
-    }
-
-    private void validateCarNameMatchesPattern(final String name) {
-        if (notMatchesPattern(name)) {
-            throw new IllegalArgumentException(format(CAR_NAME_NOT_MATCHES_PATTERN_MESSAGE, name));
-        }
-    }
-
-    private boolean notMatchesPattern(final String name) {
-        return !carNamePattern.matcher(name)
-                .matches();
-    }
-
-    private void validateCarNameIsNotLongerThanMaximumLength(final String name) {
-        if (isLongerThanMaximumLength(name)) {
-            throw new IllegalArgumentException(format(CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH_MESSAGE, name));
-        }
-    }
-
-    private boolean isLongerThanMaximumLength(final String name) {
-        return name.length() > CAR_NAME_MAXIMUM_LENGTH;
+    private Car(final String name, final int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String name() {
@@ -62,21 +33,50 @@ public class Car {
         return this.position;
     }
 
-    public boolean isWinner(final int maxPosition) {
-        return this.position == maxPosition;
+    public boolean isSamePosition(final int position) {
+        return this.position == position;
     }
 
     public Car copyOf() {
         return new Car(this.name, this.position);
     }
 
-    public void moveForwardOrStop(final CarMovement carMovement) {
-        if (carMovement.movable()) {
+    public void moveForwardOrStop(final MovementStrategy movementStrategy) {
+        if (movementStrategy.canMoveForward()) {
             moveForward();
         }
     }
 
     private void moveForward() {
         this.position += SPEED;
+    }
+
+    public static Car from(final String name) {
+        final String carName = name.trim();
+        validateCarNameMatchesPattern(carName);
+        validateCarNameIsNotLongerThanMaximumLength(carName);
+
+        return new Car(carName);
+    }
+
+    private static void validateCarNameMatchesPattern(final String name) {
+        if (notMatchesPattern(name)) {
+            throw new IllegalArgumentException(format(CAR_NAME_NOT_MATCHES_PATTERN_MESSAGE, name));
+        }
+    }
+
+    private static boolean notMatchesPattern(final String name) {
+        return !carNamePattern.matcher(name)
+                .matches();
+    }
+
+    private static void validateCarNameIsNotLongerThanMaximumLength(final String name) {
+        if (isLongerThanMaximumLength(name)) {
+            throw new IllegalArgumentException(format(CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH_MESSAGE, name));
+        }
+    }
+
+    private static boolean isLongerThanMaximumLength(final String name) {
+        return name.length() > CAR_NAME_MAXIMUM_LENGTH;
     }
 }
