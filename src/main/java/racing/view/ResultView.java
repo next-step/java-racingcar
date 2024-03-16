@@ -4,8 +4,8 @@ import racing.domain.RacingCars;
 import racing.domain.RacingCar;
 
 public class ResultView {
-    private static final String HYPHEN = "-";
-    private static final String COMMA = ",";
+    private static final String CAR_POSITION_CHAR = "-";
+    private static final String WINNER_NAME_DELIMITER = ",";
     private static final String LINE_BREAK = "\n";
 
     public static void printGameResultTitle() {
@@ -25,7 +25,7 @@ public class ResultView {
     }
 
     private static String joinWinnerNames(RacingCars racingCars) {
-        return String.join(COMMA, racingCars.getWinnerNames());
+        return String.join(WINNER_NAME_DELIMITER, racingCars.getWinnerNames());
     }
 
     private static String toCurrentPositionString(RacingCar racingCar) {
@@ -33,6 +33,6 @@ public class ResultView {
     }
 
     private static String positionToString(int position) {
-        return HYPHEN.repeat(Math.max(0, position));
+        return CAR_POSITION_CHAR.repeat(Math.max(0, position));
     }
 }
