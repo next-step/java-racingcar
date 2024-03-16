@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import step3.dto.CarStatusDto;
 import step3.dto.RacingResultDto;
