@@ -46,35 +46,13 @@ class CarTest {
         test2.move(position2);
 
         // Then
-        assertThat(test1.isSamePosition(test2)).isEqualTo(expected);
+        assertThat(test1.isEqualPosition(test2)).isEqualTo(expected);
     }
 
-    @ParameterizedTest
-    @MethodSource("providePositionsAndInt")
-    void compareTo_테스트(int position1, int position2, int expected) {
-        // Given
-        Car test1 = Car.createInstance("test1");
-        Car test2 = Car.createInstance("test2");
-
-        // When
-        test1.move(position1);
-        test2.move(position2);
-
-        // Then
-        assertThat(test1.compareTo(test2)).isEqualTo(expected);
-    }
     private static Stream<Arguments> providePositionsAndBoolean() {
         return Stream.of(
                 Arguments.of(4,3, false),
                 Arguments.of(4,4, true)
-        );
-    }
-
-    private static Stream<Arguments> providePositionsAndInt() {
-        return Stream.of(
-                Arguments.of(4,3, 1),
-                Arguments.of(4,4, 0),
-                Arguments.of(3,4, -1)
         );
     }
 }

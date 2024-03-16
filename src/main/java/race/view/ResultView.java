@@ -39,7 +39,10 @@ public class ResultView {
     }
 
     private static String showCar(Car car) {
-        return String.format(CAR_FORMAT, car.getName(), drawProgressBar(car.getPosition()));
+        return String.format(CAR_FORMAT,
+                car.getName(),
+                drawProgressBar(car.getPosition().getValue())
+        );
     }
 
     private static String drawProgressBar(int count) {

@@ -44,7 +44,7 @@ public class Cars {
     public List<Car> chooseWinners() {
         Car winner = chooseWinner();
         return this.cars.stream()
-                .filter(winner::isSamePosition)
+                .filter(winner::isEqualPosition)
                 .collect(Collectors.toList());
     }
 

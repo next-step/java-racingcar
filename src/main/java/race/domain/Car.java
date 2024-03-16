@@ -1,15 +1,20 @@
 package race.domain;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     private final int CONDITION_OF_MOVE = 4;
     private final static int MAX_LENGTH_OF_NAME = 5;
-    private int position;
+    private final Position position;
     private final String name;
 
     private Car(String name) {
+        this(name, Position.createInstance(0));
+    }
+
+    private Car(String name, Position position) {
         validateName(name);
         this.name = name;
+        this.position = position;
     }
 
     public static Car createInstance(String name) {
@@ -20,14 +25,14 @@ public class Car implements Comparable<Car> {
         if (!canMove(number)) {
             return;
         }
-        position++;
+        position.increase();
     }
 
     private boolean canMove(int number) {
         return number >= CONDITION_OF_MOVE;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -35,8 +40,8 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public boolean isSamePosition(Car car) {
-        return position == car.getPosition();
+    public boolean isEqualPosition(Car car) {
+        return position.isEqual(car.getPosition());
     }
 
     private void validateName(String name) {
@@ -45,10 +50,5 @@ public class Car implements Comparable<Car> {
             throw new IllegalArgumentException(
                     String.format("이름을 5자를 초과 할수 없습니다. 해당 이름은 %s 는 %d ", name, lengthOfName));
         }
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return Integer.compare(position, o.getPosition());
     }
 }
