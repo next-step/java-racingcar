@@ -1,6 +1,7 @@
 package racingcar.view;
 
-import static java.text.MessageFormat.format;
+import static racingcar.config.RacingCarException.INTEGER_FORMAT_INVALID;
+import static racingcar.config.RacingCarException.UNEXPECTED_EXCEPTION;
 
 import racingcar.util.StringSplitter;
 import racingcar.view.io.Input;
@@ -11,8 +12,6 @@ public class RacingScreen implements RacingView {
 
     private static final String CAR_NAMES_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String PLAYING_COUNT_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
-    private static final String INVALID_INT_FORMAT_MESSAGE = "정수 형태의 숫자만 입력해주세요. [userInput : {0}]";
-    private static final String UNEXPECTED_EXCEPTION_MESSAGE = "알 수 없는 오류가 발생했습니다.";
     private static final String DELIMITER = ",";
 
     private final Input input;
@@ -37,7 +36,7 @@ public class RacingScreen implements RacingView {
         try {
             return Integer.parseInt(userInput);
         } catch (final NumberFormatException e) {
-            throw new NumberFormatException(format(INVALID_INT_FORMAT_MESSAGE, userInput));
+            throw new NumberFormatException(INTEGER_FORMAT_INVALID.message(userInput));
         }
     }
 
@@ -59,6 +58,6 @@ public class RacingScreen implements RacingView {
 
     @Override
     public void printUnexpectedExceptionMessage() {
-        output.printOneLine(UNEXPECTED_EXCEPTION_MESSAGE);
+        output.printOneLine(UNEXPECTED_EXCEPTION.message());
     }
 }

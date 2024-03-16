@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import static java.text.MessageFormat.format;
+import static racingcar.config.RacingCarException.PLAYING_COUNT_OUT_OF_RANGE;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +14,6 @@ import racingcar.vo.RoundResult;
 
 public class Race {
 
-    private static final String PLAYING_COUNT_OUT_OF_RANGE_MESSAGE = "레이싱 시도 횟수는 자연수만 가능합니다. [playingCount : {0}]";
     private static final int MINIMUM_PLAYING_COUNT = 1;
     private static final int START_ROUND = 1;
 
@@ -34,7 +33,7 @@ public class Race {
 
     private static void validatePlayingCountIsInRange(final int playingCount) {
         if (isPlayingCountOutOfRange(playingCount)) {
-            throw new IllegalArgumentException(format(PLAYING_COUNT_OUT_OF_RANGE_MESSAGE, playingCount));
+            throw new IllegalArgumentException(PLAYING_COUNT_OUT_OF_RANGE.message(playingCount));
         }
     }
 

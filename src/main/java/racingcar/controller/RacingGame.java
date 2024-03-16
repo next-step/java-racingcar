@@ -1,8 +1,8 @@
 package racingcar.controller;
 
-import static racingcar.RacingCarConfig.numberGenerator;
-import static racingcar.RacingCarConfig.racingView;
-import static racingcar.RacingCarConfig.rule;
+import static racingcar.config.RacingCarConfig.numberGenerator;
+import static racingcar.config.RacingCarConfig.racingView;
+import static racingcar.config.RacingCarConfig.rule;
 
 import racingcar.domain.MovementStrategy;
 import racingcar.service.Race;

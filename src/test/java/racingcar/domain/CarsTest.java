@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.config.RacingCarException.CAR_NAME_DUPLICATED;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class CarsTest {
 
         assertThatThrownBy(() -> Cars.from(duplicatedCarNames))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+                .hasMessage(CAR_NAME_DUPLICATED.message(duplicatedCarNames));
     }
 
     @Test

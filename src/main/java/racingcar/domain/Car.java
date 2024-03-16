@@ -1,13 +1,12 @@
 package racingcar.domain;
 
-import static java.text.MessageFormat.format;
+import static racingcar.config.RacingCarException.CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH;
+import static racingcar.config.RacingCarException.CAR_NAME_NOT_MATCHES_PATTERN;
 
 import java.util.regex.Pattern;
 
 public class Car {
 
-    private static final String CAR_NAME_NOT_MATCHES_PATTERN_MESSAGE = "자동차의 이름은 한 글자 이상의 영어 소문자와 숫자만 가능합니다. [name : {0}]";
-    private static final String CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH_MESSAGE = "자동차의 이름은 5글자를 초과할 수 없습니다. [name : {0}]";
     private static final Pattern carNamePattern = Pattern.compile("^[a-z0-9]+$");
     private static final int CAR_NAME_MAXIMUM_LENGTH = 5;
     private static final int START_POSITION = 0;
@@ -61,7 +60,7 @@ public class Car {
 
     private static void validateCarNameMatchesPattern(final String name) {
         if (notMatchesPattern(name)) {
-            throw new IllegalArgumentException(format(CAR_NAME_NOT_MATCHES_PATTERN_MESSAGE, name));
+            throw new IllegalArgumentException(CAR_NAME_NOT_MATCHES_PATTERN.message(name));
         }
     }
 
@@ -72,7 +71,7 @@ public class Car {
 
     private static void validateCarNameIsNotLongerThanMaximumLength(final String name) {
         if (isLongerThanMaximumLength(name)) {
-            throw new IllegalArgumentException(format(CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH_MESSAGE, name));
+            throw new IllegalArgumentException(CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH.message(name));
         }
     }
 

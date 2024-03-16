@@ -1,8 +1,8 @@
 package racingcar.util;
 
-public final class StringSplitter {
+import static racingcar.config.RacingCarException.ARGUMENT_TEXT_BLANK;
 
-    private static final String BLANK_TEXT_MESSAGE = "빈문자열, 공백, 개행은 구분자를 이용해 자를 수 없습니다.";
+public final class StringSplitter {
 
     private StringSplitter() {
     }
@@ -15,7 +15,7 @@ public final class StringSplitter {
 
     private static void validateTextIsNotBlank(final String text) {
         if (text.isBlank()) {
-            throw new IllegalArgumentException(BLANK_TEXT_MESSAGE);
+            throw new IllegalArgumentException(ARGUMENT_TEXT_BLANK.message());
         }
     }
 }

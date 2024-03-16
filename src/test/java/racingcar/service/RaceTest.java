@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.TestRacingCarConfig.basicRule;
 import static racingcar.TestRacingCarConfig.moveForwardNumberGenerator;
+import static racingcar.config.RacingCarException.PLAYING_COUNT_OUT_OF_RANGE;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +13,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.domain.MovementStrategy;
-import racingcar.service.Race;
 
 class RaceTest {
 
@@ -41,6 +41,6 @@ class RaceTest {
 
         assertThatThrownBy(() -> race.progress(negativeOrZeroPlayingCount))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("레이싱 시도 횟수는 자연수만 가능합니다.");
+                .hasMessage(PLAYING_COUNT_OUT_OF_RANGE.message(negativeOrZeroPlayingCount));
     }
 }

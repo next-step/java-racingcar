@@ -1,6 +1,6 @@
 package racingcar.domain.movement;
 
-import static java.text.MessageFormat.format;
+import static racingcar.config.RacingCarException.MOVEMENT_CONDITION_OUT_OF_RANGE;
 
 public class BasicRule implements Rule {
 
@@ -18,7 +18,7 @@ public class BasicRule implements Rule {
 
     private void validateConditionIsInRange(final int condition) {
         if (isConditionOutOfRange(condition)) {
-            throw new IllegalArgumentException(format(MOVING_CONDITION_OUT_OF_RANGE_MESSAGE, condition));
+            throw new IllegalArgumentException(MOVEMENT_CONDITION_OUT_OF_RANGE.message(condition));
         }
     }
 

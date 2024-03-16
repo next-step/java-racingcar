@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.config.RacingCarException.ARGUMENT_TEXT_BLANK;
 
 import java.util.stream.Stream;
 
@@ -37,6 +38,6 @@ class StringSplitterTest {
     void split_Blank_Exception(final String blankText) {
         Assertions.assertThatThrownBy(() -> StringSplitter.split(blankText, ","))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("빈문자열, 공백, 개행은 구분자를 이용해 자를 수 없습니다.");
+                .hasMessage(ARGUMENT_TEXT_BLANK.message());
     }
 }

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.config;
 
 import racingcar.domain.movement.BasicRule;
 import racingcar.domain.movement.NumberGenerator;

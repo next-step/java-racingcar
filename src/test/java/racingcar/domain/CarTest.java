@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.config.RacingCarException.CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH;
+import static racingcar.config.RacingCarException.CAR_NAME_NOT_MATCHES_PATTERN;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,7 +34,7 @@ class CarTest {
     void from_CarNameWithSpaceOrSpecialCharacter_Exception(final String invalidCarName) {
         assertThatThrownBy(() -> Car.from(invalidCarName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차의 이름은 한 글자 이상의 영어 소문자와 숫자만 가능합니다.");
+                .hasMessage(CAR_NAME_NOT_MATCHES_PATTERN.message(invalidCarName));
     }
 
     @ParameterizedTest
@@ -41,7 +43,7 @@ class CarTest {
     void from_BlankCarName_Exception(final String blankCarName) {
         assertThatThrownBy(() -> Car.from(blankCarName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차의 이름은 한 글자 이상의 영어 소문자와 숫자만 가능합니다.");
+                .hasMessage(CAR_NAME_NOT_MATCHES_PATTERN.message(""));
     }
 
     @Test
@@ -51,6 +53,6 @@ class CarTest {
 
         assertThatThrownBy(() -> Car.from(longCarName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차의 이름은 5글자를 초과할 수 없습니다.");
+                .hasMessage(CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH.message(longCarName));
     }
 }

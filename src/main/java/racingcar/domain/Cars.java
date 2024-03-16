@@ -1,14 +1,12 @@
 package racingcar.domain;
 
-import static java.text.MessageFormat.format;
+import static racingcar.config.RacingCarException.CAR_NAME_DUPLICATED;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-
-    private static final String DUPLICATED_CAR_NAME_MESSAGE = "자동차 이름은 중복될 수 없습니다. [carNames: {0}]";
 
     private final List<Car> cars;
 
@@ -50,7 +48,7 @@ public class Cars {
 
     private static void validateCarNamesAreNotDuplicated(String[] carNames) {
         if (areCarNamesDuplicated(carNames)) {
-            throw new IllegalArgumentException(format(DUPLICATED_CAR_NAME_MESSAGE, Arrays.toString(carNames)));
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATED.message(carNames));
         }
     }
 
