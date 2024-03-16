@@ -1,5 +1,8 @@
 package step2;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 
     public static int splitAndSum(String input){
@@ -16,10 +19,28 @@ public class StringAddCalculator {
         return false;
     }
 
+    private static String[] parseInput(String input){
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        if(m.find()){
+            String customSeparator = m.group(1);
+            String[] tokens = m.group(2).split(customSeparator);
+
+            return tokens;
+        }
+
+        if(!m.find()){
+            String[] tokens = input.split(",|:");
+
+            return tokens;
+        }
+
+        return new String[]{};
+    }
+
     private static int calculate(String input){
         int result = 0;
-        String[] numbers = input.split(",|:");
-        for(String element : numbers ){
+        String[] tokens = parseInput(input);
+        for(String element : tokens ){
             result += Integer.parseInt(element);
         }
 
