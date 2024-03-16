@@ -2,7 +2,7 @@ package race.domain;
 
 public class Car {
 
-    private int position;
+    private Position position;
     private final String name;
 
     public Car(String name) {
@@ -10,20 +10,20 @@ public class Car {
     }
 
     public Car(int position, String name) {
+        this(new Position(position), name);
+    }
+
+    public Car(Position position, String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("공백없이 정확한 이름을 입력해주세요.");
         }
-
-        if (position < 0) {
-            throw new IllegalArgumentException(String.format("(%s)은 음수입니다. 차의 위치(position)는 0이상의 양의 정수만 허용됩니다.", position));
-        }
-
         this.position = position;
         this.name = name;
     }
 
+
     public int getPosition() {
-        return this.position;
+        return this.position.getNumber();
     }
 
     public String getName() {
@@ -31,18 +31,15 @@ public class Car {
     }
 
     public void go() {
-        this.position++;
+        this.position.increase();
     }
 
     public int maxComparedTo(int otherNumber) {
-        if (otherNumber > this.position) {
-            return otherNumber;
-        }
-        return this.position;
+        return this.position.maxComparedTo(otherNumber);
     }
 
     public boolean isWinner(int maxNumber) {
-        return this.position == maxNumber;
+        return this.position.isWinner(maxNumber);
     }
 
 }
