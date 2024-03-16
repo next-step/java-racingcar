@@ -1,64 +1,52 @@
 package calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
 
-	public static final String DEFAULT_DELIMITER_CHECK_REGEX = ",|:";
-	public static final String CUSTOM_DELIMITER_CHECK_REGEX = "//(.)\n(.*)";
+    public String calculate(String input) {
+        if ((input == null) || (input.isEmpty())) {
+            return "0";
+        }
 
-	public String calculate(String input) {
-		if ( (input == null) || (input.isEmpty()) ) {
-			return "0";
-		}
+        // 숫자 한개만 입력 시 입력값 그대로 반환
+        if (isNumber(input)) {
+            return input;
+        }
 
-		// 숫자 한개만 입력 시 입력값 그대로 반환
-		if (isNumber(input)) {
-			return input;
-		}
+        String[] numbers = CustomSeparator.separateNumbers(input);
 
-		String[] numbers = separateNumbers(input);
+        return sum(toInts(numbers)).toString();
+    }
 
-		checkInvalidInput(numbers);
+    private List<Integer> toInts(String[] numbers) {
+        List<Integer> result = new ArrayList<>();
+        for (String number : numbers) {
+            validateInputNumber(number);
+            result.add(Integer.parseInt(number));
+        }
 
-		return sum(numbers).toString();
-	}
+        return result;
+    }
 
-	private void checkInvalidInput(String[] numbers) {
-		for (String number : numbers) {
-			validateInputNumber(number);
-		}
-	}
+    private void validateInputNumber(String number) {
+        if (!isNumber(number) || Integer.parseInt(number) < 0) {
+            throw new RuntimeException("음수 or 숫자 이외의 값을 입력하셨습니다.");
+        }
+    }
 
-	private void validateInputNumber(String number) {
-		if (isNumber(number) || Integer.valueOf(number) < 0) {
-			throw new RuntimeException("음수 or 숫자 이외의 값을 입력하셨습니다.");
-		}
-	}
+    private Integer sum(List<Integer> numbers) {
+        int result = 0;
+        for (int number : numbers) {
+            result += number;
+        }
 
-	private static String[] separateNumbers(String input) {
-		// 구분자 검사
-		Matcher m = Pattern.compile(CUSTOM_DELIMITER_CHECK_REGEX).matcher(input);
-		if (m.find()) {
-			String customDelimiter = m.group(1);
-			return m.group(2).split(customDelimiter);
-		}
+        return result;
+    }
 
-		return input.split(DEFAULT_DELIMITER_CHECK_REGEX);
-	}
-
-	private Integer sum(String[] numbers) {
-		int result = 0;
-		for (String number : numbers) {
-			result += Integer.parseInt(number);
-		}
-
-		return result;
-	}
-
-	private boolean isNumber(String input) {
-		return input != null && input.matches("[-+]?\\d*\\.?\\d+");
-	}
+    private boolean isNumber(String input) {
+        return input != null && input.matches("[-+]?\\d*\\.?\\d+");
+    }
 
 }
