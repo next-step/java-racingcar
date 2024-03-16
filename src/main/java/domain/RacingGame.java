@@ -1,6 +1,6 @@
 package domain;
 
-import view.ResultView;
+import view.ConsoleResultView;
 
 import java.util.List;
 
@@ -19,14 +19,14 @@ public class RacingGame {
     }
 
     public void play() {
-        while (moveCount-- > 0) {
-            move();
-            ResultView.print(cars);
-        }
+        this.play(new ConsoleResultView());
     }
 
-    private void move() {
-        cars.move();
+    public void play(ResultView resultView) {
+        while (moveCount-- > 0) {
+            cars.move();
+            resultView.print(cars);
+        }
     }
 
     public Cars winner() {

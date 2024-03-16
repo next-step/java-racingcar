@@ -5,7 +5,7 @@ import domain.Name;
 import domain.RacingGame;
 import domain.RandomMoveStrategy;
 import view.InputView;
-import view.ResultView;
+import view.ConsoleResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +33,9 @@ public class RacingGameController {
             cars.add(new Car(new Name(name), new RandomMoveStrategy()));
         }
         RacingGame racingGame = new RacingGame(cars, moveCount);
-        racingGame.play();
+        racingGame.play(new ConsoleResultView());
 
-        ResultView.printWinner(racingGame.winner());
+        ConsoleResultView.printWinner(racingGame.winner());
     }
 
     private boolean isValidFormat(String carNames) {

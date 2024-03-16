@@ -2,16 +2,15 @@ package view;
 
 import domain.Car;
 import domain.Cars;
+import domain.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultView {
+public class ConsoleResultView implements ResultView {
 
-    private ResultView() {
-    }
-
-    public static void print(Cars cars) {
+    @Override
+    public void print(Cars cars) {
         for (Car car : cars) {
             System.out.println(car);
         }
