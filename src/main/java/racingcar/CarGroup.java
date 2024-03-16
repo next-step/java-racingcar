@@ -24,6 +24,7 @@ public class CarGroup {
     }
 
     public int position(int carIndex) {
+
         return carGroup[carIndex].position();
     }
 }
