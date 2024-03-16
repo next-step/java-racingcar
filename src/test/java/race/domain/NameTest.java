@@ -14,7 +14,7 @@ public class NameTest {
 
     @Test
     void nameLengthGreaterThanFive() {
-        assertThatThrownBy(() ->{
+        assertThatThrownBy(() -> {
             new Name("자바지기박재성");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 5글자를 초과할 수 없습니다.");
