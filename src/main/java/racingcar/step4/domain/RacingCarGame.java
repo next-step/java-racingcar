@@ -19,6 +19,10 @@ public class RacingCarGame {
     this.winners = winners;
   }
 
+  public static RacingCarGame generate(int round, List<Car> cars) {
+    return new RacingCarGame(round, cars, null);
+  }
+
   public int getRound() {
     return round;
   }
@@ -29,10 +33,6 @@ public class RacingCarGame {
 
   public Winners getWinners() {
     return winners;
-  }
-
-  public static RacingCarGame generate(int round, List<Car> cars) {
-    return new RacingCarGame(round, cars, null);
   }
 
   public static RacingCarGame findFinalGame(List<RacingCarGame> racingCarGames) {
