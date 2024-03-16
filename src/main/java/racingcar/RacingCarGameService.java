@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
@@ -21,14 +22,14 @@ public class RacingCarGameService {
     }
 
     public void gameLogic(String nameOfCars, int numberOfAttempt) {
-        List<Car> cars = initCars(nameOfCars);
+        Cars cars = new Cars(initCars(nameOfCars));
 
         for (int i = 0; i < numberOfAttempt; i++) {
-            RacingCarGameRule.getInstance().moveCars(cars);
+            cars.moveCars();
             ResultView.getInstance().printMove(cars);
         }
 
-        List<Car> winners = RacingCarGameRule.getInstance().getWinnerCars(cars);
+        List<Car> winners = cars.getWinnerCars();
         ResultView.getInstance().printRacingcarWinners(winners);
     }
 
@@ -36,7 +37,7 @@ public class RacingCarGameService {
         String[] names = getCarNamesSplit(nameOfCars);
         List<Car> cars = new ArrayList<>(names.length);
 
-        for (String name: names) {
+        for (String name : names) {
             cars.add(new Car(name, INIT_CAR_DISTANCE));
         }
 

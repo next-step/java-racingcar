@@ -1,6 +1,7 @@
 package racingcar.ui;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,8 +21,8 @@ public class ResultView {
         return instance;
     }
 
-    public void printMove(List<Car> carList) {
-        carList.forEach(ResultView::printCarDistance);
+    public void printMove(Cars cars) {
+        cars.getCars().forEach(ResultView::printCarDistance);
         printLineBreak();
     }
 
