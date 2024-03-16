@@ -2,18 +2,22 @@ package racingcar.domain;
 
 import java.util.List;
 
-import common.NumberGenerator;
-
 public class RacingGame implements Game {
 
     private Vehicles vehicles;
 
-    public RacingGame(Vehicles vehicles) {
-        this.vehicles = vehicles;
+    public RacingGame(List<String> carNames) {
+
+        this.vehicles = new Vehicles(carNames);
     }
 
     @Override
     public void start() {
         vehicles.move();
+    }
+
+    @Override
+    public Vehicles getVehicles() {
+        return vehicles;
     }
 }

@@ -12,8 +12,8 @@ public class Vehicles {
     private List<Vehicle> vehicles;
     private NumberGenerator numberGenerator;
 
-    public Vehicles(String[] carNames) {
-        this.vehicles = Arrays.stream(carNames)
+    public Vehicles(List<String> carNames) {
+        this.vehicles = carNames.stream()
             .map(Car::new)
             .collect(Collectors.toList());
         this.numberGenerator = new RandomNumberGenerator();
