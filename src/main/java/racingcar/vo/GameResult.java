@@ -18,6 +18,10 @@ public class GameResult {
         this.winnerNames = winnerNames;
     }
 
+    public List<String> winnerNames() {
+        return this.winnerNames;
+    }
+
     @Override
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder();

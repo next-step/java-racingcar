@@ -39,10 +39,13 @@ class CarsTest {
 
         final Car looserCar = Car.from("haley");
 
-        final MovementStrategy movementStrategy = new MovementStrategy(basicRule(), moveForwardNumberGenerator());
+        final MovementStrategy movementForwardStrategy = new MovementStrategy(
+                basicRule(),
+                moveForwardNumberGenerator()
+        );
 
-        winnerCar1.moveForwardOrStop(movementStrategy);
-        winnerCar2.moveForwardOrStop(movementStrategy);
+        winnerCar1.moveForwardOrStop(movementForwardStrategy);
+        winnerCar2.moveForwardOrStop(movementForwardStrategy);
 
         final Cars cars = new Cars(List.of(winnerCar1, winnerCar2, looserCar));
 

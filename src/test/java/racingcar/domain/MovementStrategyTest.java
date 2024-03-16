@@ -20,18 +20,21 @@ class MovementStrategyTest {
     @Test
     @DisplayName("canMoveForward 메서드는 자동차 이동 전략에 따라 전진 조건에 해당하면, true를 반환한다.")
     void canMoveForward_ForwardCondition_True() {
-        final MovementStrategy movementStrategy = new MovementStrategy(basicRule(), moveForwardNumberGenerator());
+        final MovementStrategy movementForwardStrategy = new MovementStrategy(
+                basicRule(),
+                moveForwardNumberGenerator()
+        );
 
-        assertThat(movementStrategy.canMoveForward())
+        assertThat(movementForwardStrategy.canMoveForward())
                 .isTrue();
     }
 
     @Test
     @DisplayName("canMoveForward 메서드는 자동차 이동 전략에 따라 정지 조건에 해당하면, false를 반환한다.")
     void canMoveForward_StopCondition_False() {
-        final MovementStrategy movementStrategy = new MovementStrategy(basicRule(), stopNumberGenerator());
+        final MovementStrategy movementStopStrategy = new MovementStrategy(basicRule(), stopNumberGenerator());
 
-        assertThat(movementStrategy.canMoveForward())
+        assertThat(movementStopStrategy.canMoveForward())
                 .isFalse();
     }
 }

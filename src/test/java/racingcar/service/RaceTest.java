@@ -13,14 +13,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.domain.MovementStrategy;
+import racingcar.vo.GameResult;
 
 class RaceTest {
 
-    private static MovementStrategy movementStrategy;
+    private static MovementStrategy movementForwardStrategy;
 
     @BeforeAll
     static void setUp() {
-        movementStrategy = new MovementStrategy(basicRule(), moveForwardNumberGenerator());
+        movementForwardStrategy = new MovementStrategy(basicRule(), moveForwardNumberGenerator());
     }
 
     @Test
@@ -28,8 +29,21 @@ class RaceTest {
     void of_CarNames_Race() {
         final String[] carNames = {"kyle", "alex", "haley"};
 
-        assertThat(Race.of(carNames, movementStrategy))
+        assertThat(Race.of(carNames, movementForwardStrategy))
                 .isNotNull();
+    }
+
+    @Test
+    @DisplayName("자동차 경주를 진행하면 그에 따른 경주 결과를 반환한다.")
+    void progress_GameResult_WinnerNames() {
+        final String[] carNames = {"kyle", "alex", "haley"};
+        final int playingCount = 1;
+
+        final Race race = Race.of(carNames, movementForwardStrategy);
+        final GameResult result = race.progress(playingCount);
+
+        assertThat(result.winnerNames())
+                .containsOnly(carNames);
     }
 
     @ParameterizedTest
@@ -37,7 +51,7 @@ class RaceTest {
     @DisplayName("0 이하의 레이싱 시도 횟수만큼 경주를 하려는 경우 예외를 던진다.")
     void progress_NegativeOrZeroPlayingCount_Exception(final int negativeOrZeroPlayingCount) {
         final String[] carNames = {"kyle", "alex", "haley"};
-        final Race race = Race.of(carNames, movementStrategy);
+        final Race race = Race.of(carNames, movementForwardStrategy);
 
         assertThatThrownBy(() -> race.progress(negativeOrZeroPlayingCount))
                 .isInstanceOf(IllegalArgumentException.class)
