@@ -34,4 +34,15 @@ public class Car {
         this.position++;
     }
 
+    public int maxComparedTo(int otherNumber) {
+        if (otherNumber > this.position) {
+            return otherNumber;
+        }
+        return this.position;
+    }
+
+    public boolean isWinner(int maxNumber) {
+        return this.position == maxNumber;
+    }
+
 }

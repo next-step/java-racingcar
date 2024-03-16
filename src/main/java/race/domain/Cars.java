@@ -5,7 +5,6 @@ import race.utils.PlayStrategy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -32,18 +31,20 @@ public class Cars {
         }
     }
 
-    public String showWinnerNames() {
-        return cars.stream()
-                .filter(car -> car.getPosition() == winnerPosition())
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-    }
+    //todo: 자동차 우승자 찾기
+    public List<Car> findWinner() {
+        int max = 0;
+        for (Car car : cars) {
+            max = car.maxComparedTo(max);
+        }
 
-    private int winnerPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.isWinner(max)) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 
 }
