@@ -20,7 +20,7 @@ public class InputView {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static String InputCarNames(){
+    public static String InputCarNames() {
         System.out.println(CAR_NAME_QUESTION);
         return scanner.nextLine();
     }

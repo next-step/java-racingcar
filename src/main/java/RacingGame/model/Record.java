@@ -1,7 +1,6 @@
 package RacingGame.model;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Record {
     private static final String CAR_POSITION_UNIT = "-";
