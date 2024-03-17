@@ -12,7 +12,7 @@ public class CarFactory {
         List<Car> carList = new ArrayList<>();
 
         for (String name : splitName(names)) {
-            carList.add(new Car(name,0));
+            carList.add(new Car(name));
         }
         return carList;
     }
