@@ -13,10 +13,10 @@ public class RacingGameController {
     }
 
     public void play() {
-        int carCount = InputView.InputCarCount();
+        String carNames = InputView.InputCarNames();
         int StageCount = InputView.InputStageCount();
 
         ResultView.viewResultPhrase();
-        ResultView.viewResult(racingGameService.play(carCount, StageCount));
+        ResultView.viewResult(racingGameService.play(carNames, StageCount));
     }
 }

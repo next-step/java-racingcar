@@ -22,7 +22,7 @@ public class RacingGameService {
 
         for (int i = 0; i < stageCount; i++) {
             progressStage(carsManager);
-            record.addStage(getResult(carsManager));
+            record.addStage(carsManager);
         }
 
         return record;
@@ -32,11 +32,21 @@ public class RacingGameService {
         carsManager.tryMoveCars(movableStrategy);
     }
 
-    private List<Integer> getResult(CarsManager carsManager) {
-        return carsManager.getCarsPosition();
-    }
-
     public List<String> splitCarNames(String input) {
         return List.of(input.split(","));
+    }
+
+    public Record play(String carNames, int stageCount) {
+        CarsManager carsManager = CarsManager.withCarNames(splitCarNames(carNames));
+        Record record = new Record();
+
+        for (int i = 0; i < stageCount; i++) {
+            progressStage(carsManager);
+            record.addStage(carsManager);
+        }
+
+        record.addWinners(carsManager.winnerNames());
+
+        return record;
     }
 }

@@ -21,6 +21,16 @@ public class CarsManager {
         return new CarsManager(cars);
     }
 
+    public static CarsManager withCarNames(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+
+        return new CarsManager(cars);
+    }
+
     public void tryMoveCars(MovableStrategy movableStrategy) {
         for (Car car : cars) {
             car.move(movableStrategy);
@@ -28,7 +38,7 @@ public class CarsManager {
     }
 
     public List<Integer> getCarsPosition() {
-        List list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
         for (Car car : cars) {
             list.add(car.getPosition());
@@ -53,5 +63,15 @@ public class CarsManager {
         }
 
         return highestPosition;
+    }
+
+    public List<String> winnerNames() {
+        List<Car> winners = winners();
+        return winners.stream()
+                .map(Car::name).collect(Collectors.toList());
+    }
+
+    public List<Car> cars() {
+        return cars;
     }
 }

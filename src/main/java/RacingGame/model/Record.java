@@ -1,6 +1,7 @@
 package RacingGame.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Record {
     private static final String CAR_POSITION_UNIT = "-";
@@ -12,9 +13,11 @@ public class Record {
     }
 
 
-    public void addStage(List<Integer> positions) {
-        for (Integer position : positions) {
-            record.append(makeHypens(position));
+    public void addStage(CarsManager carsManager) {
+        for (Car car : carsManager.cars()) {
+            record.append(car.name())
+                    .append(" : ")
+                    .append(makeHypens(car.getPosition()));
             addNextLine();
         }
 
@@ -31,5 +34,10 @@ public class Record {
 
     private static String makeHypens(int count) {
         return CAR_POSITION_UNIT.repeat(count);
+    }
+
+    public void addWinners(List<String> winnerNames) {
+        record.append(String.join(",", winnerNames));
+        record.append("가 최종 우승했습니다");
     }
 }

@@ -2,7 +2,7 @@ package RacingGame.model;
 
 public class Car {
     private static final String CARNAME_LENGTH_EXCEED = "차량의 이름은 5글자가 넘어갈 수 없습니다";
-    private static final String DEFAULT_CAR_NAME = "default";
+    private static final String DEFAULT_CAR_NAME = "NULL";
     private static final int DEFAULT_MOVE_DISTANCE = 1;
     private static final int INITAIL_CAR_POSITION = 0;
     private final String name;
