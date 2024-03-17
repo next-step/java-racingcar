@@ -14,6 +14,10 @@ public class RoundRecord {
         this.positions = new HashMap<>();
     }
 
+    public RoundRecord(Map<String, Integer> positions) {
+        this.positions = positions;
+    }
+
     public void addHistory(Car car) {
         this.positions.put(car.getName(), car.getPosition());
     }

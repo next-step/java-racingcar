@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarTest {
 
     @Test
+    @DisplayName("전진 하는 경우")
     void 앞으로_전진() {
         Car car = new Car("park");
         car.forward(() -> true);
@@ -16,6 +17,7 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("전진 하지 못하는 경우")
     void 정지() {
         Car car = new Car("park");
         car.forward(() -> false);
