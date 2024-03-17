@@ -17,18 +17,18 @@ public class RacingCarController {
     }
 
     public void startGame() {
-        int carNumber = inputView.inputCarNumber();
+        List<String> carNames = inputView.inputCarNames();
         int repeatNumber = inputView.inputRepeatNumber();
 
-        racingCarService.initCars(carNumber);
+        racingCarService.initCars(carNames);
 
         System.out.println("실행 결과");
 
         for (int i = 0; i < repeatNumber; i++) {
             racingCarService.moveCar();
             List<Car> cars = racingCarService.cars();
-            resultView.printResult(cars);
+            resultView.printMoveResult(cars);
         }
-
+        resultView.printWinner(racingCarService.winnerCars());
     }
 }

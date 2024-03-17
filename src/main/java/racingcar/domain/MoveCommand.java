@@ -13,13 +13,21 @@ public class MoveCommand {
 
     public MoveType command() {
         int generatedNumber = number.generate();
+        assertValidNumberRange(generatedNumber);
 
         if (generatedNumber >= FORWARD_NUMBER && generatedNumber <= MAX_NUMBER) {
             return MoveType.FORWARD;
-        } if (generatedNumber >= MIN_NUMBER && generatedNumber < FORWARD_NUMBER) {
+        }
+        if (generatedNumber >= MIN_NUMBER && generatedNumber < FORWARD_NUMBER) {
             return MoveType.STOP;
         }
 
-        throw new IllegalArgumentException(String.format("%d~%d 사이의 숫자만 가능합니다.", MIN_NUMBER, MAX_NUMBER));
+        throw new IllegalArgumentException("MoveType을 찾지 못했습니다.");
+    }
+
+    private void assertValidNumberRange(int number) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            throw new IllegalArgumentException(String.format("%d~%d 사이의 숫자만 가능합니다.", MIN_NUMBER, MAX_NUMBER));
+        }
     }
 }
