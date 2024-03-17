@@ -1,9 +1,14 @@
 package step3.common;
 
-public class ErrorMessageConstants {
-    public static final String CONSTRUCTOR_ERROR_MESSAGE = "유틸리티 클래스로 인스턴스 생성 불필요";
+public enum ErrorMessageConstants {
+    CONSTRUCTOR_ERROR_MESSAGE("유틸리티 클래스로 인스턴스 생성 불필요");
+    private final String message;
 
-    private ErrorMessageConstants() {
-        throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE);
+    ErrorMessageConstants(String message){
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

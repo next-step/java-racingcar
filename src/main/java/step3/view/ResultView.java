@@ -9,7 +9,7 @@ public class ResultView {
     private static final String CAR_POSITION_UNIT = "-";
 
     private ResultView() {
-        throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE);
+        throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE.getMessage());
     }
 
     public static void viewResultPhrase() {
