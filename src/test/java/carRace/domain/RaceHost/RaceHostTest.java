@@ -29,12 +29,10 @@ class RaceHostTest {
 
         //자동차에 발급받은 랜덤 번호중에서 4보다 큰 경우의 개수와 경주 기록 길이가 같아야 한다.
         int moveDistance = raceFinishedCar
-            .getMoveDistance()
             .getMoveDistance();
 
         int sumOfNumbersGreaterFour = (int) raceFinishedCar
             .getRandomNumberHistory()
-            .getRandomNumbers()
             .stream()
             .mapToInt(RandomNumber::getRandomNumber)
             .filter(randomNumber -> randomNumber >= 4)

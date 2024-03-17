@@ -21,7 +21,7 @@ class CarTest {
         sutCar.move(new RandomNumber(input));
 
         //then
-        assertThat(sutCar.getMoveDistance().getMoveDistance()).isEqualTo(expected);
+        assertThat(sutCar.getMoveDistance()).isEqualTo(expected);
     }
 
     @ParameterizedTest

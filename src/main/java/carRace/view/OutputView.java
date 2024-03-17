@@ -19,7 +19,7 @@ public class OutputView {
     public static void printRaceResult(CarGroup carGroup) {
         carGroup.getCarGroup().stream().forEach(car -> {
             System.out.print(car.getCarName().getCarName() + COLON);
-            IntStream.range(0, car.getMoveDistance().getMoveDistance())
+            IntStream.range(0, car.getMoveDistance())
                 .forEach(count -> System.out.print(RACE_MARK));
             System.out.println();
         });

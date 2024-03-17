@@ -3,7 +3,7 @@ package carRace.domain.car;
 import carRace.domain.randomNumber.RandomNumber;
 import carRace.domain.randomNumber.RandomNumberHistory;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final CarName carName;
 
@@ -26,12 +26,12 @@ public class Car {
         return carName;
     }
 
-    public MoveDistance getMoveDistance() {
-        return moveDistance;
+    public int getMoveDistance() {
+        return moveDistance.getMoveDistance();
     }
 
-    public RandomNumberHistory getRandomNumberHistory() {
-        return randomNumberHistory;
+    public List<RandomNumber> getRandomNumberHistory() {
+        return randomNumberHistory.getRandomNumbers();
     }
 
     public void move(final RandomNumber randomNumber) {
