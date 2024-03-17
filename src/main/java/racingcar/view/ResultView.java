@@ -27,7 +27,7 @@ public class ResultView {
 
     private void printCarRaceResult(CarRecords carRecords) {
         for (CarRecord carRecord : carRecords) {
-            String carName = carRecord.getCarName();
+            String carName = carRecord.getName();
             int carDistance = carRecord.getDistance();
 
             System.out.println(carName + ":" + makeDistanceResult(carDistance));

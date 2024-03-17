@@ -1,19 +1,19 @@
 package racingcar.model;
 
 public class CarRecord{
-    private final String carName;
-    private final int carDistance;
+    private final String name;
+    private final int distance;
 
-    public CarRecord(String carName, int carDistance) {
-        this.carName = carName;
-        this.carDistance = carDistance;
+    public CarRecord(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
     }
 
-    public String getCarName() {
-        return this.carName;
+    public String getName() {
+        return this.name;
     }
 
     public int getDistance() {
-        return this.carDistance;
+        return this.distance;
     }
 }
