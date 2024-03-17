@@ -37,7 +37,7 @@ public class Cars implements Iterable<Car> {
     private CarRecords makeCarRecordSnapShot() {
         CarRecords carRecords = new CarRecords();
         for (Car car : cars) {
-            carRecords.add(new CarRecord(car.getCarName(), car.getDistance()));
+            carRecords.add(new CarRecord(car.getName(), car.getDistance()));
         }
         return carRecords;
     }

@@ -33,7 +33,7 @@ public class Winner {
     }
 
     private void pickWinners(Car car, int distance) {
-        String carName = car.getCarName();
+        String carName = car.getName();
         if (car.matchDistance(distance)) {
             winners.add(carName);
         }

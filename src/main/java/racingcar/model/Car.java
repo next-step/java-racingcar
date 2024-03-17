@@ -3,13 +3,12 @@ package racingcar.model;
 public class Car {
     private static final int MOVE_STANDARD = 4;
     private static final int MOVE_DISTANCE = 1;
-    private static final int BASE_DISTANCE = 0;
 
-    private final String carName;
+    private final String name;
     private int distance;
 
-    public Car(String carName) {
-        this.carName = carName;
+    public Car(String name) {
+        this.name = name;
         this.distance = 0;
     }
 
@@ -17,7 +16,7 @@ public class Car {
         return this.distance;
     }
 
-    public String getCarName() { return this.carName; }
+    public String getName() { return this.name; }
 
     public void move(int movableNumber) {
         if (movableNumber >= MOVE_STANDARD) {
