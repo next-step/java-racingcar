@@ -1,12 +1,13 @@
 package RacingGame;
 
+import RacingGame.model.Car;
+import RacingGame.model.MovableStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import RacingGame.model.Car;
-import RacingGame.model.MovableStrategy;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
@@ -41,5 +42,12 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("차량에게 부여한 이름으로 생성한 차량의 이름은 부여한 이름과 같다.")
+    void carNameTest() {
+        String name = "황제원";
+        Car car = new Car(name);
 
+        assertThat(car.name()).isEqualTo(name);
+    }
 }
