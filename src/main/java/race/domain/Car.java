@@ -3,18 +3,18 @@ package race.domain;
 public class Car {
 
     private static final int FORWARD_STANDARD = 4;
+    private static final int LENGTH_STANDARD = 5;
     private static final int MOVE = 1;
     private String name;
     private int position = 0;
 
-    public Car() {
-    }
-
     public Car(int position) {
-        this.position = position;
+        this("", position);
     }
 
     public Car(String name, int position) {
+        if (!checkNameLength(name))
+            throw new IllegalArgumentException("자동차 이름 길이는 5 이하여야 합니다.");
         this.name = name;
         this.position = position;
     }
@@ -27,6 +27,10 @@ public class Car {
         return this.position;
     }
 
+    public boolean checkNameLength(String name) {
+        return name.length() <= LENGTH_STANDARD;
+    }
+
     public boolean canForward(int random) {
         return random >= FORWARD_STANDARD;
     }
@@ -35,12 +39,12 @@ public class Car {
         this.position += MOVE;
     }
 
-    public int getMax(Car car, int max) {
-        return Math.max(max, car.getPosition());
+    public int getMax(int max) {
+        return Math.max(max, this.position);
     }
 
-    public boolean isSamePosition(Car car, int max) {
-        return max == car.getPosition();
+    public boolean isSamePosition(int max) {
+        return this.position == max;
     }
 
     public void makeForward(int random) {
