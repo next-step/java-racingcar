@@ -1,7 +1,7 @@
 package racingcar.step4.view;
 
-import racingcar.step4.domain.RacingCarGame;
-import racingcar.step4.domain.Winners;
+import racingcar.step4.controller.dto.RacingCarGameDto;
+import racingcar.step4.controller.dto.RacingCarGameWinnerDto;
 
 import java.util.List;
 
@@ -9,14 +9,15 @@ public class ResultView {
 
   private static final String MOVE_MARK = "-";
 
-  public ResultView() {}
+  public ResultView() {
+  }
 
-  public void printResult(List<RacingCarGame> racingCarGames) {
+  public void printResult(List<RacingCarGameDto> dtos) {
     StringBuilder sb = new StringBuilder();
     sb.append("\n");
     sb.append("실행 결과").append("\n");
 
-    racingCarGames.forEach(it -> {
+    dtos.forEach(it -> {
       sb.append("[ROUND ").append(it.getRound()).append("]").append("\n");
       printRaceRecords(sb, it);
     });
@@ -24,20 +25,19 @@ public class ResultView {
     System.out.print(sb);
   }
 
-  public void printFinalWinners(List<RacingCarGame> racingCarGames) {
+  public void printFinalWinners(RacingCarGameWinnerDto winnerDto) {
     StringBuilder sb = new StringBuilder();
 
-    Winners winners = RacingCarGame.findFinalGame(racingCarGames).getWinners();
-    winners.getWinnerNames().forEach(name -> sb.append(name).append(", "));
+    winnerDto.getWinnerNames().forEach(name -> sb.append(name).append(", "));
     sb.deleteCharAt(sb.length() - 2);
     sb.append("가 최종 우승했습니다.");
 
     System.out.println(sb);
   }
 
-  private void printRaceRecords(StringBuilder sb, RacingCarGame game) {
-    game.getCars().forEach(car ->
-        sb.append(printRaceRecord(car.getCarName().get(), car.getPosition().get())).append("\n")
+  private void printRaceRecords(StringBuilder sb, RacingCarGameDto dto) {
+    dto.getCarDtos().forEach(it ->
+        sb.append(printRaceRecord(it.getCarName(), it.getPosition())).append("\n")
     );
     sb.append("\n");
   }
