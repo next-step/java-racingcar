@@ -1,4 +1,6 @@
-package step3.common;
+package study.step3;
+
+import step3.common.NumberGenerator;
 
 public class FixNumberGenerator implements NumberGenerator {
     private int number;
