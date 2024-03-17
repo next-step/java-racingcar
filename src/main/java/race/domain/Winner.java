@@ -11,7 +11,7 @@ public class Winner {
     public int findMax(List<Car> carList) {
         int max = 0;
         for (Car car : carList) {
-            max = car.getMax(car, max);
+            max = car.getMax(max);
         }
         return max;
     }
@@ -27,7 +27,7 @@ public class Winner {
     }
 
     private List<String> putWinnerNames(List<String> winnerNames, int max, Car car) {
-        if (car.isSamePosition(car, max)) {
+        if (car.isSamePosition(max)) {
             winnerNames.add(car.getName());
         }
         return winnerNames;
