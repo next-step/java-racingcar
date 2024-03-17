@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class RacingHistory {
-    private final List<OneMoveRecord> racingRecords;
+    private final List<OneMovementLog> racingRecords;
 
-    public RacingHistory(List<OneMoveRecord> racingHistory) {
+    public RacingHistory(List<OneMovementLog> racingHistory) {
         this.racingRecords = racingHistory;
     }
 
-    public List<OneMoveRecord> getRacingRecords() {
+    public List<OneMovementLog> getRacingRecords() {
         return racingRecords;
     }
 

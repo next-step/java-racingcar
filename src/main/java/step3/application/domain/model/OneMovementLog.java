@@ -3,10 +3,10 @@ package step3.application.domain.model;
 import java.util.List;
 import java.util.Objects;
 
-public class OneMoveRecord {
+public class OneMovementLog {
     private final List<MovementLog> movementLogs;
 
-    public OneMoveRecord(List<MovementLog> movementLogs) {
+    public OneMovementLog(List<MovementLog> movementLogs) {
         this.movementLogs = movementLogs;
     }
 
@@ -17,8 +17,8 @@ public class OneMoveRecord {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof OneMoveRecord)) return false;
-        OneMoveRecord that = (OneMoveRecord) o;
+        if (!(o instanceof OneMovementLog)) return false;
+        OneMovementLog that = (OneMovementLog) o;
         return Objects.equals(movementLogs, that.movementLogs);
     }
 
