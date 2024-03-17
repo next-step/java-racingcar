@@ -1,5 +1,7 @@
 package racingCar;
 
+import java.util.Objects;
+
 public class RacingCar {
 
     private CarName name;
@@ -39,5 +41,23 @@ public class RacingCar {
             .append(" : ")
             .append("-".repeat(Math.max(0, location.getLocation())))
             .toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(name, racingCar.name) && Objects.equals(location,
+            racingCar.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 }
