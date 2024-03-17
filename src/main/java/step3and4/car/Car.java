@@ -4,12 +4,11 @@ import step3and4.car.move.MoveStrategy;
 
 public class Car {
     private int position = 0;
-    private String name;
+    private Name name;
     private MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        Name nameEntity = new Name(name);
-        this.name = nameEntity.getName();
+        this.name = new Name(name);
         this.moveStrategy = moveStrategy;
     }
 
@@ -24,7 +23,7 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
 
     public boolean equalsPosition(int winPosition) {
