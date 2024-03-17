@@ -1,4 +1,4 @@
-package race;
+package race.controller;
 
 import race.domain.Cars;
 import race.domain.Referee;
