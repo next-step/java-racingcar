@@ -48,7 +48,7 @@ public class RaceHost {
 
     public void progressAwardsCeremony(final CarGroup carGroup) {
         Referee referee = new Referee();
-        CarNames winners = referee.findWinners(carGroup);
+        CarNames winners = referee.findWinnersName(carGroup);
         OutputView.printWinnersResult(winners);
     }
 }

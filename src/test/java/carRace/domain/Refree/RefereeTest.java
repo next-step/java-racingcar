@@ -1,6 +1,6 @@
 package carRace.domain.Refree;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import carRace.domain.Referee.Referee;
 import carRace.domain.car.Car;
@@ -25,7 +25,7 @@ class RefereeTest {
         CarGroup carGroup = new CarGroup(Arrays.asList(namhyoepCar, momoCar, nanaCar));
 
         //when
-        CarNames winnerNames = sutReferee.findWinners(carGroup);
+        CarNames winnerNames = sutReferee.findWinnersName(carGroup);
 
         //then
         assertThat(winnerNames.hasCarName(namhyoepCar.getCarName())).isFalse();
@@ -44,7 +44,7 @@ class RefereeTest {
         CarGroup carGroup = new CarGroup(Arrays.asList(namhyoepCar, momoCar, nanaCar));
 
         //when
-        CarNames winnerNames = sutReferee.findWinners(carGroup);
+        CarNames winnerNames = sutReferee.findWinnersName(carGroup);
 
         //then
         assertThat(winnerNames.hasCarName(namhyoepCar.getCarName())).isFalse();
