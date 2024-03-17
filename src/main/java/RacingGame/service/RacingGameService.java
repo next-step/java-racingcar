@@ -9,6 +9,9 @@ import java.util.List;
 public class RacingGameService {
     private MovableStrategy movableStrategy;
 
+    public RacingGameService() {
+    }
+
     public RacingGameService(MovableStrategy movableStrategy) {
         this.movableStrategy = movableStrategy;
     }
@@ -33,4 +36,7 @@ public class RacingGameService {
         return carsManager.getCarsPosition();
     }
 
+    public List<String> splitCarNames(String input) {
+        return List.of(input.split(","));
+    }
 }
