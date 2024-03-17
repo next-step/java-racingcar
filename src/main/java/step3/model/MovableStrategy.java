@@ -1,6 +1,6 @@
-package step3.Model;
+package step3.model;
 
-import step3.Common.NumberGenerator;
+import step3.common.NumberGenerator;
 
 public class MovableStrategy {
     private static final int MOVE_CONDITION = 4;

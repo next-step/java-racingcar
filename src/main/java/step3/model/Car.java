@@ -1,6 +1,4 @@
-package step3.Model;
-
-import step3.Common.NumberGenerator;
+package step3.model;
 
 public class Car {
     private static final int DEFAULT_MOVE_DISTANCE = 1;

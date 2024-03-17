@@ -1,8 +1,6 @@
-package step3.Controller;
+package step3.controller;
 
-import step3.Service.RacingGameService;
-import step3.View.InputView;
-import step3.View.ResultView;
+import step3.service.RacingGameService;
 
 import java.util.List;
 

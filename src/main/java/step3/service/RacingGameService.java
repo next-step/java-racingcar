@@ -1,8 +1,8 @@
-package step3.Service;
+package step3.service;
 
-import step3.Common.NumberGenerator;
-import step3.Model.CarsManager;
-import step3.Model.MovableStrategy;
+import step3.common.NumberGenerator;
+import step3.model.CarsManager;
+import step3.model.MovableStrategy;
 
 import java.util.List;
 

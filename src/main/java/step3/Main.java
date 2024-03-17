@@ -1,10 +1,10 @@
 package step3;
 
-import step3.Common.RandomNumberGenerator;
-import step3.Controller.RacingGameController;
-import step3.Service.RacingGameService;
-import step3.View.InputView;
-import step3.View.ResultView;
+import step3.common.RandomNumberGenerator;
+import step3.controller.RacingGameController;
+import step3.service.RacingGameService;
+import step3.view.InputView;
+import step3.view.ResultView;
 
 public class Main {
     public static void main(String[] args) {
