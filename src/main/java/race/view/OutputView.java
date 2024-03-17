@@ -12,18 +12,14 @@ public class OutputView {
     private static final String REST = ", ";
 
     public void printMileages(List<Car> racingCars) {
-        racingCars.forEach(racingCar -> {
-            if (racingCar.getPosition() == 0) {
-                printFirstRacingCar(racingCar);
-            }
-
-            if (racingCar.getPosition() != 0) {
-                printAfterFirstRacingCar(racingCar);
-            }
-        });
+        racingCars.forEach(this::printRacingCarMileage);
     }
 
-    private void printAfterFirstRacingCar(Car racingCar) {
+    private void printRacingCarMileage(Car racingCar) {
+        if (racingCar.getPosition() == 0) {
+            printFirstRacingCar(racingCar);
+            return;
+        }
         System.out.print(racingCar.getName() + COLON);
         System.out.println(UNIT_MILEAGE.repeat(racingCar.getPosition()));
     }
