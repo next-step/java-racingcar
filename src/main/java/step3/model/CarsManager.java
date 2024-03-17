@@ -27,7 +27,7 @@ public class CarsManager {
     }
 
     public List<Integer> getCarsPosition() {
-        List list = new ArrayList<Integer>();
+        List list = new ArrayList<>();
 
         for (Car car : cars) {
             list.add(car.getPosition());
