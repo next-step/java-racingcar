@@ -40,7 +40,7 @@ public class ResultView {
 
     public static void printWinnerNames(CarRaceResult carRaceResult) {
         Cars finalResultCars = carRaceResult.getFinalResult();
-        Winners winners = new Winners(finalResultCars.get(), finalResultCars.findWinDistance());
+        Winners winners = finalResultCars.getWinners();
         System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", formatWinners(winners)));
     }
 

@@ -38,10 +38,15 @@ public class Cars {
     }
 
     public Winners getWinners() {
-        return new Winners(cars, findWinDistance());
+        Distance winDistance = findWinDistance();
+        Winners winners = new Winners();
+        for (Car car : cars) {
+            winners.add(car, winDistance);
+        }
+        return winners;
     }
 
-    public Distance findWinDistance() {
+    private Distance findWinDistance() {
         Distance winDistance = new Distance();
         for (Car car : this.cars) {
             winDistance = winDistance.max(car.getDistance());
