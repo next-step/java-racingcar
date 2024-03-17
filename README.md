@@ -15,6 +15,9 @@
 - [X] ...... 자동차 배열 생성 구현
 - [X] ...... 자동차 레이스 구현
 - [X] ...... 자동차 상태 출력
+
+# `리뷰 반영 사항`
 - [X] ...... RacingApplication에서 Scanner 의존성 분리
 - [X] ...... CarLocation 객체 및 exception 추가
 - [X] ...... Car클래스 RacingCars로 맵핑(일급컬렉션)
+- [X] ...... 매직 넘버 수정
