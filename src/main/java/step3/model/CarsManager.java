@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CarsManager {
 
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     public CarsManager(List<Car> cars) {
         this.cars = cars;
