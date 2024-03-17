@@ -12,7 +12,8 @@ public class RacingCars {
     public RacingCars(List<RacingCar> cars) {
         this.cars = cars;
     }
-    public RacingCars(List<RacingCar> cars, RacingRule rule){
+
+    public RacingCars(List<RacingCar> cars, RacingRule rule) {
         this.cars = cars;
         this.rule = rule;
     }
@@ -25,13 +26,6 @@ public class RacingCars {
         for (RacingCar car : cars) {
             car.move(rule.isMovable());
         }
-    }
-
-    public int findFarthestLocation() {
-        return cars.stream()
-            .mapToInt(RacingCar::findCurrentLocation)
-            .max()
-            .getAsInt();
     }
 
     @Override

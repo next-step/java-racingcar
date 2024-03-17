@@ -36,14 +36,6 @@ public class RacingCarsTest {
         Assertions.assertThat(cars).isEqualTo(moveCars);
     }
 
-    @Test
-    @DisplayName("가장 멀리간 위치가 5일 때")
-    void FarthestLocation_Is_Five() {
-        RacingCars cars = new RacingCars(List.of(pobi, crong, honux), moveRule);
-
-        Assertions.assertThat(cars.findFarthestLocation()).isEqualTo(5);
-    }
-
     private static class MoveRule implements RacingRule {
 
         @Override

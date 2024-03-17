@@ -25,6 +25,14 @@ public class RacingCar {
         return this.location.getLocation();
     }
 
+    public boolean isSameLocation(int location) {
+        return findCurrentLocation() == location;
+    }
+
+    public int compareMaxDistance(int distance) {
+        return Math.max(findCurrentLocation(), distance);
+    }
+
     public String findCarName() {
         return this.name.getName();
     }
