@@ -20,13 +20,13 @@ public class WinnersName {
     private int findRecords(List<RacingCar> racingCars){
         List<Integer> score = new LinkedList<>();
         for (RacingCar car: racingCars) {
-            score.add(car.positionOfRacingCar());
+            score.add(car.position());
         }
         return Collections.max(score);
     }
 
     private String findWinnersName(int highScore, RacingCar car){
-        if (highScore == car.positionOfRacingCar()) {
+        if (highScore == car.position()) {
             return car.NameOfCar();
         }
         return "no Winner";

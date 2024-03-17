@@ -19,7 +19,7 @@ public class ResultView {
 
     private static void printPlayCar(RacingCar car){
 
-        System.out.println("-".repeat(Math.max(0, car.positionOfRacingCar())));
+        System.out.println("-".repeat(Math.max(0, car.position())));
     }
 
     public static void printRacingCarName(List<RacingCar> records){
@@ -32,10 +32,10 @@ public class ResultView {
     private static void printPlayCarName(RacingCar car){
 
         System.out.println(car.NameOfCar() + " : " + "-"
-                .repeat(Math.max(0, car.positionOfRacingCar())));
+                .repeat(Math.max(0, car.position())));
     }
 
-    public static void WinnerOfRacing(List<String> name){
+    public static void winnerOfRacing(List<String> name){
         String result = String.join(",", name);
 
         System.out.println(result + " 이/가 최종 우승했습니다.");

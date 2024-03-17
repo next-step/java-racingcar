@@ -3,17 +3,17 @@ package carRacing.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingRecodes {
+public class RacingRecords {
 
     List<RacingCar> records = new ArrayList<>();
 
-    public void registerCar(String[] carNames){
+    public void registerCar(List<String> carNames){
         for (String name : carNames){
             this.records.add(new RacingCar(name));
         }
     }
 
-    public void runOneRound() {
+    public void raceRecord() {
         for (RacingCar racingCar: this.records) {
             racingCar.move(moving());
         }
@@ -27,6 +27,5 @@ public class RacingRecodes {
     public List<RacingCar> recordsOfCars(){
         return this.records;
     }
-
 
 }

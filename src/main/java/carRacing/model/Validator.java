@@ -8,9 +8,8 @@ public class Validator {
     private static final Pattern NUMERIC_PATTERN = Pattern.compile("\\d");
     public static final int MIN_DISTANCE = 0;
     public static final int MAX_DISTANCE = 9;
-    private static final int MAX_LENGTH = 5;
 
-    public void nullCheck(String input) {
+    public void checkNull(String input) {
         if (input == null || input.isBlank()) {
             throw new RuntimeException("입력된 숫자가 없습니다.");
         }
@@ -31,15 +30,4 @@ public class Validator {
         }
     }
 
-    public void nameCheck(String input) {
-        if(input.isBlank()){
-            throw new IllegalArgumentException("입력된 자동차 이름이 없습니다.");
-        }
-
-        String[] inputNames = input.split(",");
-
-        for (String targetName : inputNames)
-            if (targetName.length() > MAX_LENGTH)
-                throw new IllegalArgumentException("자동차 이름은 최대 5자리까지 입력가능합니다. " + targetName);
-    }
 }

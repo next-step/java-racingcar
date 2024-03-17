@@ -3,7 +3,7 @@ package carRacing.model;
 public class RacingCar {
 
     private int position;
-    private String name;
+    private RacingCarName name;
 
     public RacingCar() {
         this.position = 0;
@@ -11,10 +11,10 @@ public class RacingCar {
 
     public RacingCar(String name){
         this.position = 0;
-        this.name = name;
+        this.name = new RacingCarName(name);
     }
 
-    public int positionOfRacingCar() {
+    public int position() {
         return this.position;
     }
 
@@ -24,6 +24,6 @@ public class RacingCar {
         }
     }
     public String NameOfCar(){
-        return this.name;
+        return this.name.theCarName();
     }
 }
