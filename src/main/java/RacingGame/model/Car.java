@@ -12,7 +12,7 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException(CARNAME_LENGTH_EXCEED);
         }
-        
+
         this.name = name;
         this.position = position;
     }
@@ -49,5 +49,9 @@ public class Car {
 
     public String name() {
         return this.name;
+    }
+
+    public boolean isPositionAt(int position) {
+        return this.position == position;
     }
 }

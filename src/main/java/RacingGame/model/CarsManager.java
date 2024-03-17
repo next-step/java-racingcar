@@ -2,6 +2,7 @@ package RacingGame.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarsManager {
 
@@ -37,16 +38,20 @@ public class CarsManager {
     }
 
     public List<Car> winners() {
-        List<Car> winners = new ArrayList<>();
+        int highestPosition = findHighestPosition();
+
+        return this.cars.stream()
+                .filter(car -> car.isPositionAt(highestPosition))
+                .collect(Collectors.toList());
+    }
+
+    private int findHighestPosition() {
+        int highestPosition = Integer.MIN_VALUE;
 
         for (Car car : cars) {
-            if (winners.size() == 0 || car.getPosition() <= winners.get(0).getPosition()) {
-                winners.add(car);
-            } else {
-                winners = List.of(car);
-            }
+            highestPosition = Math.max(highestPosition, car.getPosition());
         }
 
-        return winners;
+        return highestPosition;
     }
 }
