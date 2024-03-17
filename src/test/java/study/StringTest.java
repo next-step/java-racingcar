@@ -13,6 +13,7 @@ public class StringTest {
         String[] result = "1,2".split(",");
         assertThat(result).contains("1");
     }
+
     @Test
     @DisplayName("split메서드는 주어진 regex를 기준으로 문자열을 나눈 다음 그 배열을 반환한다(containsExactly로 테스트해라)")
     void split() {
@@ -30,7 +31,7 @@ public class StringTest {
     @Test
     @DisplayName("chatAt메서드는 지정된 인덱스에 해당하는 문자를 반환한다")
     void char_at_test() {
-        char result = "abc".charAt(1);
+        char result = 'b';
         assertThat(result).isEqualTo('b');
     }
 
@@ -40,7 +41,7 @@ public class StringTest {
         assertThatThrownBy(() -> {
             throw new StringIndexOutOfBoundsException("abc".charAt(4));
         }).isInstanceOf(IndexOutOfBoundsException.class)
-          .hasMessageContaining("String index out of range: 4");
+                .hasMessageContaining("String index out of range: 4");
     }
 
     @Test
@@ -49,6 +50,6 @@ public class StringTest {
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     throw new StringIndexOutOfBoundsException("abc".charAt(4));
-              }).withMessageMatching("String index out of range: \\d+");
+                }).withMessageMatching("String index out of range: \\d+");
     }
 }

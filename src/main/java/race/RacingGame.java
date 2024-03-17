@@ -1,11 +1,10 @@
 package race;
 
 import race.domain.Cars;
-import race.utils.RaceRule;
+import race.domain.Referee;
+import race.utils.RandomStrategy;
 import race.view.InputView;
 import race.view.OutputView;
-
-import java.util.List;
 
 public class RacingGame {
 
@@ -18,17 +17,18 @@ public class RacingGame {
     }
 
     public void start() {
-        int carNumbers = inputView.askNumberOfCars();
+        String[] names = inputView.askNameOfCar();
         int attempts = inputView.askNumberOfAttempts();
 
         outputView.printResultStatement();
 
-        Cars cars = new Cars(carNumbers);
+        Cars cars = new Cars(names);
         for (int attempt = 0; attempt < attempts; attempt++) {
-            List<Integer> points = cars.goForward(new RaceRule());
-            outputView.printMileages(points);
+            outputView.printMileages(cars.goForward(new RandomStrategy()));
             outputView.printNewLine();
         }
+        Referee referee = new Referee(cars.getCars());
+        outputView.printWinner(referee.findWinner());
     }
 
 }
