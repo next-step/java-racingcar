@@ -44,7 +44,7 @@ public class CarMovementRoundResultsTest {
                 final CarMovementRoundResult first = CarMovementRoundResult.from(
                         Collections.emptyList());
 
-                final List<CarMovementResult> lastResult = List.of(CarMovementResult.of("A", 3));
+                final List<CarMovementResult> lastResult = List.of(new CarMovementResult("A", 3));
                 final CarMovementRoundResult second = CarMovementRoundResult.from(lastResult);
 
                 results.add(first);

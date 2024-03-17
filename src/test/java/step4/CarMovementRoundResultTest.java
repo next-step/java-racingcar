@@ -29,25 +29,25 @@ public class CarMovementRoundResultTest {
         return Stream.of(
                 arguments(
                         List.of(
-                                CarMovementResult.of("a", 1),
-                                CarMovementResult.of("b", 2),
-                                CarMovementResult.of("c", 3)
+                                new CarMovementResult("a", 1),
+                                new CarMovementResult("b", 2),
+                                new CarMovementResult("c", 3)
                         ),
                         new String[]{"c"}
                 ),
                 arguments(
                         List.of(
-                                CarMovementResult.of("a", 3),
-                                CarMovementResult.of("b", 3),
-                                CarMovementResult.of("c", 3)
+                                new CarMovementResult("a", 3),
+                                new CarMovementResult("b", 3),
+                                new CarMovementResult("c", 3)
                         ),
                         new String[]{"a", "b", "c"}
                 ),
                 arguments(
                         List.of(
-                                CarMovementResult.of("a", 0),
-                                CarMovementResult.of("b", 0),
-                                CarMovementResult.of("c", 0)
+                                new CarMovementResult("a", 0),
+                                new CarMovementResult("b", 0),
+                                new CarMovementResult("c", 0)
                         ),
                         new String[]{"a", "b", "c"}
                 )

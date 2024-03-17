@@ -30,7 +30,7 @@ public class Car {
     }
 
     public CarMovementResult movementResult() {
-        return CarMovementResult.of(name, moveCount);
+        return new CarMovementResult(name, moveCount);
     }
 
 }
