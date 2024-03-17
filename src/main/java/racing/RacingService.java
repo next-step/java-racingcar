@@ -1,12 +1,29 @@
 package racing;
 
 import util.RacingValidator;
+import util.RandomNumberGenerator;
 
 public class RacingService {
 
 
     public static void race(int carCount, int tryCount) {
         Car[] carArr = getCarArr(carCount);
+        for (int i = 0; i < tryCount; i++) {
+            startRace(carArr);
+        }
+    }
+
+    private static void startRace(Car[] carArr) {
+        for (int i = 0; i < carArr.length; i++) {
+            oneCarRace(carArr, i);
+        }
+    }
+
+    private static void oneCarRace(Car[] carArr, int idx) {
+        Integer randomNumber = RandomNumberGenerator.getRandomNumber();
+        if (RacingValidator.isMovable(randomNumber)) {
+            carArr[idx].moveForward();
+        }
     }
 
     public static Car[] getCarArr(int carCount) {
@@ -15,10 +32,6 @@ public class RacingService {
             carArr[i] = new Car(0);
         }
         return carArr;
-    }
-
-    public boolean checkMovable(int randomNumber) {
-        return RacingValidator.isMovable(randomNumber);
     }
 
     public static void moveForward(Car car) {
