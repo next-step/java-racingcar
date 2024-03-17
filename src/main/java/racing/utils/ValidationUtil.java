@@ -17,14 +17,4 @@ public class ValidationUtil {
             throw new IllegalArgumentException(Constant.ROUND_NUMBER_VALIDATION_ERROR);
         }
     }
-
-    public static void validateName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException(Constant.CAR_NAME_BLANK_VALIDATION_ERROR);
-        }
-
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(Constant.CAR_NAME_LENGTH_VALIDATION_ERROR);
-        }
-    }
 }
