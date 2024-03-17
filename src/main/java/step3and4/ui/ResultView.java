@@ -24,7 +24,7 @@ public class ResultView {
         createWinCars(racing.getWinCars());
     }
 
-    private void createWinCars(String[] winCars) {
+    private void createWinCars(List<String> winCars) {
         System.out.println(String.join(",", winCars) + "최종 우승했습니다.");
     }
 

@@ -51,7 +51,7 @@ public class Racing {
         return carEntry.getCarNames();
     }
 
-    public String[] getWinCars() {
+    public List<String> getWinCars() {
         return carEntry.getWinCars();
     }
 }

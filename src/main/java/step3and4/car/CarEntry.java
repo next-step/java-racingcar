@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class CarEntry {
     private final List<Car> cars;
 
-    public static CarEntry from(List<Car> cars) {
+    public static CarEntry fromCarList(List<Car> cars) {
         if (cars == null) {
             return new CarEntry(new ArrayList<>());
         }
@@ -21,11 +21,15 @@ public class CarEntry {
     }
 
     public static CarEntry create(String[] carNames, RandomMoveStrategy randomMoveStrategy) {
+        return fromCarList(createCarList(carNames, randomMoveStrategy));
+    }
+
+    private static List<Car> createCarList(String[] carNames, RandomMoveStrategy randomMoveStrategy) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNames.length; i++) {
             cars.add(createCar(carNames[i], randomMoveStrategy));
         }
-        return from(cars);
+        return cars;
     }
 
     public static Car createCar(String carNames, RandomMoveStrategy randomMoveStrategy) {
@@ -56,13 +60,15 @@ public class CarEntry {
                 .collect(Collectors.toList());
     }
 
-    public String[] getWinCars() {
-        int winPosition = createWinPosition();
+    public List<String> getWinCars() {
+        return createWinPositionCars(createWinPosition());
+    }
 
+    private List<String> createWinPositionCars(int winPosition) {
         return this.cars.stream()
                 .filter(car -> car.equalsPosition(winPosition))
                 .map(Car::getName)
-                .collect(Collectors.toList()).toArray(new String[0]);
+                .collect(Collectors.toList());
     }
 
     private int createWinPosition() {

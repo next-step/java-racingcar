@@ -60,7 +60,7 @@ class CarEntryTest {
     void moveCars() {
 
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
-        CarEntry carEntry = CarEntry.from(cars);
+        CarEntry carEntry = CarEntry.fromCarList(cars);
         carEntry.moveCars();
 
         List<Car> listCars = carEntry.getCars();
@@ -71,7 +71,7 @@ class CarEntryTest {
     @Test
     void createMoveResult() {
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
-        CarEntry carEntry = CarEntry.from(cars);
+        CarEntry carEntry = CarEntry.fromCarList(cars);
         carEntry.moveCars();
 
         int[] moveResult = carEntry.createMoveResult();
@@ -82,7 +82,7 @@ class CarEntryTest {
     @Test
     void getNames() {
         List<Car> cars = List.of(new Car("pobi", moveStrategy), new Car("temp", moveStrategy), new Car("stop", moveStrategy), new Car("go!", moveStrategy));
-        CarEntry carEntry = CarEntry.from(cars);
+        CarEntry carEntry = CarEntry.fromCarList(cars);
         List<String> carNames = carEntry.getCarNames();
         Assertions.assertThat(carNames).containsExactly("pobi", "temp", "stop", "go!");
     }
@@ -91,9 +91,9 @@ class CarEntryTest {
     @Test
     void getWins() {
         List<Car> cars = List.of(new Car("aaa", winMoveStrategy), new Car("bbb", winMoveStrategy), new Car("ccc", winMoveStrategy), new Car("temp", moveStrategy), new Car("stop", onlyStopStrategy), new Car("go!", onlyStopStrategy));
-        CarEntry carEntry = CarEntry.from(cars);
+        CarEntry carEntry = CarEntry.fromCarList(cars);
         carEntry.moveCars();
-        String[] winCars = carEntry.getWinCars();
-        Assertions.assertThat(winCars).containsOnly("aaa","bbb","ccc");
+        List<String> winCars = carEntry.getWinCars();
+        Assertions.assertThat(winCars).containsOnly("aaa", "bbb", "ccc");
     }
 }
