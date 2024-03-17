@@ -10,6 +10,7 @@ public class RacingApplication {
         int carCount = scanner.nextInt();
         System.out.println("시도할 회수는 몇 회 인가요?");
         int tryCount = scanner.nextInt();
+        RacingService.race(carCount, tryCount);
     }
 
 }
