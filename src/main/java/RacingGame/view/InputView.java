@@ -1,6 +1,6 @@
-package step3.view;
+package RacingGame.view;
 
-import step3.common.ErrorMessageConstants;
+import RacingGame.common.ErrorMessageConstants;
 
 import java.util.Scanner;
 

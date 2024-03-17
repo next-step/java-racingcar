@@ -1,9 +1,9 @@
-package step3.controller;
+package RacingGame.controller;
 
-import step3.model.MovableStrategy;
-import step3.service.RacingGameService;
-import step3.view.InputView;
-import step3.view.ResultView;
+import RacingGame.model.MovableStrategy;
+import RacingGame.service.RacingGameService;
+import RacingGame.view.InputView;
+import RacingGame.view.ResultView;
 
 public class RacingGameController {
     private final RacingGameService racingGameService;

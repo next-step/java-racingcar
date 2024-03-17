@@ -1,7 +1,7 @@
-package step3.view;
+package RacingGame.view;
 
-import step3.common.ErrorMessageConstants;
-import step3.model.Record;
+import RacingGame.common.ErrorMessageConstants;
+import RacingGame.model.Record;
 
 public class ResultView {
     private static final String INIT_RESULT_PHRASE = "실행 결과";

@@ -1,8 +1,8 @@
-package step3.service;
+package RacingGame.service;
 
-import step3.model.CarsManager;
-import step3.model.MovableStrategy;
-import step3.model.Record;
+import RacingGame.model.CarsManager;
+import RacingGame.model.MovableStrategy;
+import RacingGame.model.Record;
 
 import java.util.List;
 

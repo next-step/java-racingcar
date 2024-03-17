@@ -1,4 +1,4 @@
-package step3.common;
+package RacingGame.common;
 
 import java.util.concurrent.ThreadLocalRandom;
 

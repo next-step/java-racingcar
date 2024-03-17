@@ -1,4 +1,4 @@
-package step3.model;
+package RacingGame.model;
 
 public class Car {
     private static final int DEFAULT_MOVE_DISTANCE = 1;

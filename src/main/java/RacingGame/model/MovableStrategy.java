@@ -1,6 +1,6 @@
-package step3.model;
+package RacingGame.model;
 
-import step3.common.NumberGenerator;
+import RacingGame.common.NumberGenerator;
 
 public class MovableStrategy {
     private static final int MOVE_CONDITION = 4;

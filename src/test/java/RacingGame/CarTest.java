@@ -1,11 +1,11 @@
-package study.step3;
+package RacingGame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.model.Car;
-import step3.model.MovableStrategy;
+import RacingGame.model.Car;
+import RacingGame.model.MovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

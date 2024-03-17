@@ -1,8 +1,8 @@
-package step3;
+package RacingGame;
 
-import step3.common.RandomNumberGenerator;
-import step3.controller.RacingGameController;
-import step3.model.MovableStrategy;
+import RacingGame.common.RandomNumberGenerator;
+import RacingGame.controller.RacingGameController;
+import RacingGame.model.MovableStrategy;
 
 public class Main {
     public static void main(String[] args) {

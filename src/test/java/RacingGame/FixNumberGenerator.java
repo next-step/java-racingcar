@@ -1,6 +1,6 @@
-package study.step3;
+package RacingGame;
 
-import step3.common.NumberGenerator;
+import RacingGame.common.NumberGenerator;
 
 public class FixNumberGenerator implements NumberGenerator {
     private final int number;
