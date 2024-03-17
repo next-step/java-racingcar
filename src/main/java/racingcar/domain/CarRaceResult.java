@@ -23,6 +23,10 @@ public class CarRaceResult {
         return cars.get(getLastIndex());
     }
 
+    public Distance getWinDistance() {
+        return getFinalResult().findWinDistance();
+    }
+
     public int getLastIndex() {
         return cars.size() - 1;
     }

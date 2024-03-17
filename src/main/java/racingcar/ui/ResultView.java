@@ -9,6 +9,11 @@ public class ResultView {
     private static final String CAR_POSITION_STRING = "-";
 
     public static void printCarRaceResult(CarRaceResult carRaceResult) {
+        printCarRaceSnapshot(carRaceResult);
+        printWinnerNames(carRaceResult);
+    }
+
+    private static void printCarRaceSnapshot(CarRaceResult carRaceResult) {
         System.out.println("실행 결과");
         System.out.println(getCarsPrintFormat(carRaceResult));
     }
@@ -33,7 +38,9 @@ public class ResultView {
                 , car.getName().get(), CAR_POSITION_STRING.repeat(car.getDistance().get()));
     }
 
-    public static void printWinnerNames(Winners winners) {
+    public static void printWinnerNames(CarRaceResult carRaceResult) {
+        Cars finalResultCars = carRaceResult.getFinalResult();
+        Winners winners = new Winners(finalResultCars.get(), finalResultCars.findWinDistance());
         System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", formatWinners(winners)));
     }
 

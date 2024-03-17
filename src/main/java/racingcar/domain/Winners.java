@@ -7,15 +7,23 @@ public class Winners {
 
     private final List<Car> winners;
 
-    public Winners() {
+    public Winners(List<Car> cars, Distance winDistance) {
         this.winners = new ArrayList<>();
+        setWinners(cars, winDistance);
     }
 
-    public void add(Car car, Distance winDistance) {
+    private void setWinners(List<Car> cars, Distance winDistance) {
+        for (Car car : cars) {
+            addWinner(winDistance, car);
+        }
+    }
+
+    private void addWinner(Distance winDistance, Car car) {
         if (car.isWinner(winDistance)) {
             this.winners.add(car);
         }
     }
+
 
     public List<String> getNameStrings() {
         List<String> names = new ArrayList<>();

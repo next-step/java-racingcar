@@ -16,7 +16,6 @@ public class Main {
         CarRaceResult carRaceResult = carRace.race(nameString, tryCount);
 
         ResultView.printCarRaceResult(carRaceResult);
-        ResultView.printWinnerNames(carRaceResult.getFinalResult().getWinners());
     }
 
 }

@@ -38,8 +38,7 @@ public class Cars {
     }
 
     public Winners getWinners() {
-        Distance winDistance = findWinDistance();
-        return findWinners(winDistance);
+        return new Winners(cars, findWinDistance());
     }
 
     public Distance findWinDistance() {
@@ -48,14 +47,6 @@ public class Cars {
             winDistance = winDistance.max(car.getDistance());
         }
         return winDistance;
-    }
-
-    private Winners findWinners(Distance winDistance) {
-        Winners winners = new Winners();
-        for (Car car : this.cars) {
-            winners.add(car, winDistance);
-        }
-        return winners;
     }
 
 }
