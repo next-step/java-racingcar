@@ -14,7 +14,7 @@ public class ResultView {
     }
 
     private void printOneMoveRecord(OneMoveRecord e) {
-        e.getCarLocation().forEach(this::printLocation);
+        e.getMovementLogs().forEach(this::printLocation);
         System.out.println();
     }
 
