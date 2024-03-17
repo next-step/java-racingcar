@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Cars implements Iterable<Car> {
 
@@ -41,4 +42,9 @@ public class Cars implements Iterable<Car> {
         }
         return carRecords;
     }
+
+    public Stream<Car> stream() {
+        return cars.stream();
+    }
+
 }

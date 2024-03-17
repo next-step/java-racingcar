@@ -26,7 +26,7 @@ public class Race {
         resultView.printResultNotice();
         resultView.printTryResult(raceResult);
 
-        Winner winner = new Winner(cars);
-        resultView.printWinnerResult(winner);
+        Winners winners = new Winners(cars);
+        resultView.printWinnerResult(winners);
     }
 }

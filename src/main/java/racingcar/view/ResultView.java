@@ -39,7 +39,7 @@ public class ResultView {
         return carDistance.repeat(distance);
     }
 
-    public void printWinnerResult(Winner winner) {
-        System.out.println(winner.getWinnerNames()+"이(가) 최종 우승했습니다.");
+    public void printWinnerResult(Winners winners) {
+        System.out.println(winners.getWinnersNames()+"이(가) 최종 우승했습니다.");
     }
 }

@@ -3,22 +3,22 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winner {
+public class Winners {
+    private static final String DELIMITER = ", ";
 
     private final List<String> winners;
 
-    public Winner(Cars cars) {
+    public Winners(Cars cars) {
         this.winners = new ArrayList<>();
         choiceWinner(cars);
     }
 
     private void choiceWinner(Cars cars) {
-        int maxDistance = 0;
 
-        for (Car car : cars) {
-            int distance = car.getDistance();
-            maxDistance = compareDistance(distance, maxDistance);
-        }
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
 
         for (Car car : cars) {
             pickWinners(car, maxDistance);
@@ -39,8 +39,7 @@ public class Winner {
         }
     }
 
-    public String getWinnerNames() {
-        String winnerName = String.join(", ", winners);
-        return winnerName;
+    public String getWinnersNames() {
+        return String.join(DELIMITER, winners);
     }
 }
