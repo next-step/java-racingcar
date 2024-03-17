@@ -17,11 +17,10 @@ public class Car {
         return new Car(name);
     }
 
-    public int forward(MoveStrategy moveStrategy) {
+    public void forward(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             position++;
         }
-        return position;
     }
 
     public int getPosition() {
