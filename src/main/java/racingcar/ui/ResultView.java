@@ -34,10 +34,10 @@ public class ResultView {
     }
 
     public static void printWinnerNames(Winners winners) {
-        System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", formatNames(winners.get())));
+        System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", formatWinners(winners)));
     }
 
-    private static String formatNames(Names names) {
-        return String.join(",", names.getNameStrings());
+    private static String formatWinners(Winners winners) {
+        return String.join(",", winners.getNameStrings());
     }
 }

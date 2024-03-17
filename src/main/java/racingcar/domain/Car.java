@@ -33,4 +33,8 @@ public class Car {
         return this.name;
     }
 
+    public boolean isWinner(Distance winDistance) {
+        return winDistance.equals(this.distance);
+    }
+
 }

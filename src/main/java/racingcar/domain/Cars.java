@@ -37,43 +37,25 @@ public class Cars {
         }
     }
 
-    public Distance findMaxDistance() {
-        Distance maxDistance = new Distance();
-        for (Car car : cars) {
-            maxDistance = maxDistance.max(car.getDistance());
-        }
-        return maxDistance;
-    }
-
     public Winners getWinners() {
-        Distance maxDistance = findMaxDistance();
-        return new Winners(findNames(maxDistance));
+        Distance winDistance = findWinDistance();
+        return findWinners(winDistance);
     }
 
-    private Names findNames(Distance maxDistance) {
-        Map<Distance, Names> namesByDistanceMap = createNamesByDistanceMap();
-        return namesByDistanceMap.get(maxDistance);
-    }
-
-    private Map<Distance, Names> createNamesByDistanceMap() {
-        Map<Distance, Names> distanceNamesMap = new HashMap<>();
+    public Distance findWinDistance() {
+        Distance winDistance = new Distance();
         for (Car car : this.cars) {
-            putToMap(distanceNamesMap, car);
+            winDistance = winDistance.max(car.getDistance());
         }
-        return distanceNamesMap;
+        return winDistance;
     }
 
-    private void putToMap(Map<Distance, Names> namesByDistanceMap, Car car) {
-        Distance distance = car.getDistance();
-        Name carName = car.getName();
-        if (namesByDistanceMap.containsKey(distance)) {
-            namesByDistanceMap.get(distance).add(carName);
-            return;
+    private Winners findWinners(Distance winDistance) {
+        Winners winners = new Winners();
+        for (Car car : this.cars) {
+            winners.add(car, winDistance);
         }
-
-        Names names = new Names();
-        names.add(carName);
-        namesByDistanceMap.put(distance, names);
+        return winners;
     }
 
 }
