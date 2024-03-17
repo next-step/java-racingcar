@@ -2,8 +2,9 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import util.RacingValidator;
-import util.RandomNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,27 +18,18 @@ public class RacingServiceTest {
         assertThat(car.getCarLocationInfo()).isEqualTo(1);
     }
 
-    @Test
-    @DisplayName("0에서 9 사이의 랜덤 숫자를 얻는다.")
-    void 랜덤_숫자_얻기_테스트() {
-        Integer randomNumber = RandomNumberGenerator.getRandomNumber();
-        assertThat(isNumberInRange(randomNumber)).isTrue();
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @DisplayName("4이상의 숫자는 전진할 수 있음을 확인한다.")
+    void 전진_가능_테스트(int input) {
+        assertThat(RacingValidator.isMovable(input)).isTrue();
     }
 
-    @Test
-    @DisplayName("전진할 수 있는지 여부를 확인한다.")
-    void 전진_가능_여부_테스트() {
-        Integer randomNumber = RandomNumberGenerator.getRandomNumber();
-        if (randomNumber >= 4) {
-            assertThat(RacingValidator.isMovable(randomNumber)).isTrue();
-            return;
-        }
-        assertThat(RacingValidator.isMovable(randomNumber)).isFalse();
-    }
-
-
-    private boolean isNumberInRange(int number) {
-        return number >= 0 && number <= 9;
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    @DisplayName("4미만의 숫자는 전진할 수 없음을 확인한다.")
+    void 전진_불가능_테스트(int input) {
+        assertThat(RacingValidator.isMovable(input)).isFalse();
     }
 
 }
