@@ -3,12 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
@@ -61,5 +55,13 @@ public class CarsTest {
 
     assertThat(cars.leadingCars())
             .containsExactly(new Car("test2", 5), new Car("test4", 5));
+  }
+
+  @Test
+  void 입력된_조건값_목록에_따라_자동차_모두_이동() {
+    cars.addEmptyCars(5);
+    cars.moveAllCars(new int[] { 2, 3, 4, 5, 6 });
+
+    assertThat(cars.numberOfCarsWithLocationOf(1)).isEqualTo(3);
   }
 }

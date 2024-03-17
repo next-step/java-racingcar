@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -22,8 +20,8 @@ public class PositiveNumberTest {
   }
 
   @Test
-  void 입력보다_더_멀면_참() {
-    assertThat(new PositiveNumber(5).largerThan(new PositiveNumber(3)));
+  void 입력보다_더_크면_참() {
+    assertThat(new PositiveNumber(5).largerThan(new PositiveNumber(3))).isTrue();
   }
 
   @Test

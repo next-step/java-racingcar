@@ -5,12 +5,17 @@ import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
+import java.util.Random;
+
 public class RacingCarGame {
   private Cars cars;
   private int numberOfReps;
 
-  public RacingCarGame() {
+  private final Random random;
+
+  public RacingCarGame(Random random) {
     this.cars = new Cars();
+    this.random = random;
   }
 
   public void getRepetitionReady() {
@@ -28,9 +33,19 @@ public class RacingCarGame {
   public void startRacing() {
     ResultView.printExecutionComment();
     for (int i = 0; i < this.numberOfReps; i++) {
-      cars.moveAllCars();
+
+      cars.moveAllCars(createMoveConditions());
       ResultView.printCurrentStatus(this.cars);
     }
+  }
+
+  private int[] createMoveConditions() {
+    final int[] moveConditions = new int[this.cars.size()];
+    for (int i = 0; i < moveConditions.length; i++) {
+      moveConditions[i] = random.nextInt(10);
+    }
+
+    return moveConditions;
   }
 
   public void displayResult() {

@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 import java.util.Objects;
-import java.util.stream.IntStream;
-
 public class Car {
   private final PositiveNumber location;
   private final CarName name;
