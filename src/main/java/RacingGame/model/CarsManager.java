@@ -35,4 +35,16 @@ public class CarsManager {
 
         return list;
     }
+
+    public Car winners() {
+        Car winner = null;
+
+        for (Car car : cars) {
+            if (winner == null || car.getPosition() > winner.getPosition()) {
+                winner = car;
+            }
+        }
+
+        return winner;
+    }
 }

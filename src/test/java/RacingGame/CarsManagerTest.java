@@ -3,6 +3,7 @@ package RacingGame;
 import RacingGame.model.Car;
 import RacingGame.model.CarsManager;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -50,5 +51,20 @@ public class CarsManagerTest {
                 Arguments.arguments(givenCars(givenPositions(4, 5, 6)), givenPositions(4, 5, 6)),
                 Arguments.arguments(givenCars(givenPositions(5, 6, 7)), givenPositions(5, 6, 7))
         );
+    }
+
+    @Test
+    @DisplayName("우승한 차량을 반환 테스트")
+    void winnerCarsTest() {
+        List<Car> cars = List.of(
+                new Car("1등", 5),
+                new Car("2등", 4),
+                new Car("3등", 3),
+                new Car("4등", 2)
+        );
+
+        CarsManager carsManager = new CarsManager(cars);
+
+        assertThat(carsManager.winners().name()).isEqualTo("1등");
     }
 }

@@ -13,7 +13,7 @@ public class RacingGameServiceTest {
     @DisplayName("입력값들이 (,) 구분되어야 한다.")
     void sperateInputNames() {
         //given
-        String Input = "황제원,angyu,고다혜";
+        String Input = "java,is,good";
         RacingGameService racingGameService = new RacingGameService();
 
         //when
