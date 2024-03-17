@@ -10,16 +10,8 @@ import step3.view.ResultView;
 
 public class Main {
     public static void main(String[] args) {
-        int carCount = InputView.InputCarCount();
-        int StageCount = InputView.InputStageCount();
-
-        RacingGameService racingGameService = new RacingGameService();
-        CarsManager carsManager = CarsManager.withCarCount(carCount);
-        RacingGameController racingGameController = new RacingGameController(racingGameService);
-
-        ResultView.viewResultPhrase();
-        for (int i = 0; i < StageCount; i++) {
-            ResultView.viewPositions(racingGameController.play(carsManager));
-        }
+        MovableStrategy movableStrategy = new MovableStrategy(new RandomNumberGenerator());
+        RacingGameController racingGameController = new RacingGameController(movableStrategy);
+        racingGameController.play();
     }
 }
