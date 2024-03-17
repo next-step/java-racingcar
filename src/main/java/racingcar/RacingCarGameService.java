@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGameService {
-    private static final String CAR_NAME_DELIMITER = ",";
     private static final int INIT_CAR_DISTANCE = 0;
 
     private static final RacingCarGameService instance = new RacingCarGameService();
@@ -21,7 +20,7 @@ public class RacingCarGameService {
         return instance;
     }
 
-    public void gameLogic(String nameOfCars, int numberOfAttempt) {
+    public void gameLogic(String[] nameOfCars, int numberOfAttempt) {
         Cars cars = new Cars(initCars(nameOfCars));
 
         for (int i = 0; i < numberOfAttempt; i++) {
@@ -33,8 +32,7 @@ public class RacingCarGameService {
         ResultView.getInstance().printRacingcarWinners(winners);
     }
 
-    public List<Car> initCars(String nameOfCars) {
-        String[] names = getCarNamesSplit(nameOfCars);
+    public List<Car> initCars(String[] names) {
         List<Car> cars = new ArrayList<>(names.length);
 
         for (String name : names) {
@@ -42,10 +40,6 @@ public class RacingCarGameService {
         }
 
         return cars;
-    }
-
-    private static String[] getCarNamesSplit(String nameOfCars) {
-        return nameOfCars.split(CAR_NAME_DELIMITER);
     }
 
 }

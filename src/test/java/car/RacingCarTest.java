@@ -17,14 +17,15 @@ public class RacingCarTest {
     @DisplayName("자동차 이름 초기화 확인 테스트")
     public void testSaveCarName() {
         String[] names = TEST_CAR_NAMES.split(",");
-        List<Car> cars = RacingCarGameService.getInstance().initCars(TEST_CAR_NAMES);
+        List<Car> cars = RacingCarGameService.getInstance().initCars(names);
         IntStream.range(0, names.length).forEach(i -> assertThat(cars.get(i).getName()).isEqualTo(names[i]));
     }
 
     @Test
     @DisplayName("게임 로직 정상실행 통합 테스트")
     public void testGameLogic() {
-        RacingCarGameService.getInstance().gameLogic(TEST_CAR_NAMES, 5);
+        String[] names = TEST_CAR_NAMES.split(",");
+        RacingCarGameService.getInstance().gameLogic(names, 5);
     }
 
 }
