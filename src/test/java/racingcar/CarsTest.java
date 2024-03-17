@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.model.CarNames;
@@ -20,7 +21,7 @@ public class CarsTest {
         carNames = new CarNames(inputCarNames.split(","));
     }
 
-    @ParameterizedTest
+    @Test
     @DisplayName("입력받은 차 이름에 따라 자동차들을 생성하는 Cars Test")
     void makeCarsTest() {
         // when
@@ -41,7 +42,7 @@ public class CarsTest {
         cars.tryMove(tryNumber, () -> moveNumber);
 
         // then
-        assertThat(cars).extracting("distance").containsExactly(0,0,0,0,0);
+        assertThat(cars).extracting("distance").containsExactly(0,0,0);
     }
 
     @ParameterizedTest
@@ -55,7 +56,7 @@ public class CarsTest {
         cars.tryMove(tryNumber, () -> moveNumber);
 
         // then
-        assertThat(cars).extracting("distance").containsExactly(1,1,1,1,1);
+        assertThat(cars).extracting("distance").containsExactly(1,1,1);
     }
 
     static class TestMoveStrategy implements MoveStrategy {
