@@ -71,10 +71,17 @@ public class StringAddCalculator {
         int[] ints = new int[tokens.length];
 
         for (int i = 0; i < tokens.length; i++) {
-            ints[i] = Integer.parseInt(tokens[i]);
+            ints[i] = toInt(tokens[i]);
         }
 
         return ints;
+    }
+
+    private static int toInt(String token){
+        if (!isDigit(token)) {
+            throw new RuntimeException(INVALID_EXCEPTION_MESSAGE);
+        }
+        return Integer.parseInt(token);
     }
 
     private static String[] splitTokens(String input) {
