@@ -2,24 +2,32 @@ package step3.application.domain;
 
 import step3.application.domain.model.OneMoveRecord;
 import step3.application.domain.model.RacingHistory;
-import step3.application.generator.NumberRandomGenerator;
+import step3.application.generator.MovableGenerator;
+import step3.application.generator.MovableRandomGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Racing {
+public class RaceGame {
 
     private final RacingCars racingCars;
 
-    public Racing(int carCount) {
-        validateCount(carCount);
-        this.racingCars = new RacingCars(createRacingGroup(carCount), new NumberRandomGenerator());
+    public RaceGame(RacingCars racingCars) {
+        this.racingCars = racingCars;
     }
 
-    private List<Car> createRacingGroup(int carCount) {
-        return IntStream.rangeClosed(1, carCount)
-                .mapToObj(Car::new)
+    public RaceGame(List<String> carNames) {
+        this.racingCars = new RacingCars(createRacingGroup(carNames), new MovableRandomGenerator());
+    }
+
+    public RaceGame(List<Car> cars, MovableGenerator movableGenerator) {
+        this(new RacingCars(cars, movableGenerator));
+    }
+
+    private List<Car> createRacingGroup(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
@@ -34,7 +42,7 @@ public class Racing {
                 .collect(Collectors.toList());
     }
 
-    private static void validateCount(int count) {
+    private void validateCount(int count) {
         if (count <= 0) {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
