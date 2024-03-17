@@ -33,9 +33,11 @@ class MoveDistanceTest {
         //given
         int input = -1;
         String expected = ErrorMessage.MOVE_DISTANCE_NOT_POSITIVE_NUMBER.getMessage();
+
         //then
         NotPositiveNumberException actualException = catchThrowableOfType(
             () -> new MoveDistance(input), NotPositiveNumberException.class);
+
         //then
         assertThat(actualException).hasMessageContaining(expected);
     }
