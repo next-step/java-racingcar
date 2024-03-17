@@ -1,12 +1,6 @@
 package racingcar;
 
 public class OutputView {
-    private CarGroup carArray;
-
-    public OutputView(CarGroup carArray) {
-        this.carArray = carArray;
-    }
-
     public void printCarPosition(int carPosition) {
         for (int i = 0; i <= carPosition; i++) {
             System.out.print('-');
@@ -14,9 +8,9 @@ public class OutputView {
         System.out.print('\n');
     }
 
-    public void printCarArrayPosition() {
-        for (int carIndex = 0; carIndex < carArray.numOfCar; carIndex++) {
-            printCarPosition(carArray.position(carIndex));
+    public void printCarGroupPosition(CarGroup carGroup) {
+        for (int carIndex = 0; carIndex < carGroup.carGroupLength(); carIndex++) {
+            printCarPosition(carGroup.position(carIndex));
         }
         System.out.println("==========");
     }

@@ -3,39 +3,50 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarGroupTest {
-    CarGroup carGroup = new CarGroup();
 
     @Test
-    @DisplayName("(1)자동차 배열에 입력받은 갯수만큼 자동차 생성")
-    public void resizeCarArray() {
-        carGroup.resizeCarArray(3);
-    }
-
-    @Test
-    @DisplayName("(2)자동차 배열의 길이 전달")
+    @DisplayName("(1)자동차 배열의 길이 전달")
     public void carGroupLength() {
-        Assertions.assertThat(carGroup.carGroupLength()).isEqualTo(3);
+        //given
+        int actualCarGroupLength = 3;
+        CarGroup carGroup = new CarGroup(actualCarGroupLength);
+
+        //when
+        int carGroupLength = carGroup.carGroupLength();
+
+        //then
+        Assertions.assertThat(carGroupLength).isEqualTo(actualCarGroupLength);
     }
 
     @Test
-    @DisplayName("(3)자동차 배열 내의 자동차 위치 전달")
+    @DisplayName("(2)자동차 배열 내의 자동차 위치 전달")
     public void position() {
+        //given
+        int carGroupLength = 3;
+        CarGroup carGroup = new CarGroup(carGroupLength);
+
+        //when, then
         for (int i = 0; i < carGroup.carGroupLength(); i++) {
-            Assertions.assertThat(carGroup.carGroup[i].position()).isEqualTo(1);
+            Assertions.assertThat(carGroup.position(i)).isEqualTo(0);
         }
     }
 
-    @ParameterizedTest
-    @DisplayName("(4)자동차 배열 내의 모든 자동차 위치를 업데이트")
-    @ValueSource(ints = {1, 0, 0})
-    public void updateCarArrayPosition(int actual) {
+    @Test
+    @DisplayName("(3)자동차 배열 내의 모든 자동차 위치를 업데이트")
+    public void updateCarArrayPosition() {
+        // given
+        int carGroupLength = 3;
+        CarGroup carGroup = new CarGroup(carGroupLength);
+
+        // when
         carGroup.updateCarArrayPosition();
+
+        //then (Car Class's Random seed: 54321)
+        int[] actual = {1, 0, 0};
         for (int i = 0; i < carGroup.carGroupLength(); i++) {
-            Assertions.assertThat(carGroup.carGroup[i].position()).isEqualTo(actual);
+            Assertions.assertThat(carGroup.position(i)).isEqualTo(actual[i]);
         }
     }
 }

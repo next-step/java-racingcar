@@ -5,25 +5,22 @@ public class Racing {
     OutputView outputView;
     CarGroup carGroup;
 
-    public Racing(CarGroup carGroup) {
-        this.carGroup = carGroup;
-        outputView = new OutputView(carGroup);
+    public Racing() {
+        inputView = new InputView();
+        outputView = new OutputView();
+        carGroup = new CarGroup(inputView.numberOfCar());
     }
 
     public void race() {
-        carGroup.resizeCarArray(inputView.numberOfCar());
         int opportunity = inputView.opportunity();
-
         for (int i = 0; i < opportunity; i++) {
-            outputView.printCarArrayPosition();
+            outputView.printCarGroupPosition(carGroup);
             carGroup.updateCarArrayPosition();
         }
     }
 
     public static void main(String[] args) {
-        CarGroup carGroup = new CarGroup();
-
-        Racing racing = new Racing(carGroup);
+        Racing racing = new Racing();
         racing.race();
     }
 }

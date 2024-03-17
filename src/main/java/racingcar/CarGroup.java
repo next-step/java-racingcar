@@ -1,15 +1,11 @@
 package racingcar;
 
 public class CarGroup {
-    Car[] carGroup;
+    private Car[] carGroup;
 
-    public CarGroup() {
-        carGroup = new Car[0];
-    }
-
-    public void resizeCarArray(int numOfCar) {
-        carGroup = new Car[numOfCar];
-        for (int i = 0; i < numOfCar; i++) {
+    public CarGroup(int number) {
+        carGroup = new Car[number];
+        for (int i = 0; i < carGroup.length; i++) {
             carGroup[i] = new Car();
         }
     }
