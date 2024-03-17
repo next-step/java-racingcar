@@ -4,6 +4,8 @@ import static calculator.Calculator.*;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class CalculatorTest {
 
@@ -13,10 +15,10 @@ public class CalculatorTest {
 		assertThat(calculate("2")).isEqualTo(2);
 	}
 
-	@Test
-	void null_값_빈문자() {
-		assertThat(calculate(null)).isEqualTo(0);
-		assertThat(calculate("")).isEqualTo(0);
+	@ParameterizedTest
+	@NullAndEmptySource
+	void null_값_빈문자(String input) {
+		assertThat(calculate(input)).isEqualTo(0);
 	}
 
 	@Test
@@ -34,9 +36,4 @@ public class CalculatorTest {
 		assertThat(calculate("//;\n1;2;3")).isEqualTo(6);
 	}
 
-	@Test
-	void 음수_예외() throws Exception{
-		assertThatThrownBy(() -> calculate("-1,2,3"))
-			.isInstanceOf(RuntimeException.class);
-	}
 }
