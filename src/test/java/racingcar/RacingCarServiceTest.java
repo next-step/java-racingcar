@@ -6,10 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.application.RacingCarService;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.MoveCommand;
-import racingcar.domain.MoveType;
+import racingcar.domain.*;
 import racingcar.utils.TestNumber;
 
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ public class RacingCarServiceTest {
 
     @ParameterizedTest
     @DisplayName("중복되지 않은 차량(이름)을 M 번 움직였을 경우 테스트")
-    @CsvSource(value = {"0:0","1:0","2:0","3:0","4:2","5:2","6:2","7:2","8:2","9:2"}, delimiter = ':')
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:2", "5:2", "6:2", "7:2", "8:2", "9:2"}, delimiter = ':' )
     void testMoveCar(int number, int expectedPosition) {
         int repeatCount = 2;
 
@@ -39,28 +36,27 @@ public class RacingCarServiceTest {
         List<Car> cars = racingCarService.cars();
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
-            assertThat(car.getPosition()).isEqualTo(expectedPosition);
-            assertThat(car.getName()).isEqualTo(validCarNames.get(i));
+            Name carName = car.getName();
+            Position carPosition = car.getPosition();
+
+            assertThat(carPosition).isEqualTo(new Position(expectedPosition));
+            assertThat(carName).isEqualTo(new Name(validCarNames.get(i)));
         }
     }
 
     @Test
     @DisplayName("우승 차량 반환 테스트")
     public void testWinnerCars() {
-        List<Integer> carPositions = List.of(1,2,2);
+        List<Integer> carPositions = List.of(1, 2, 2);
         List<String> winnerCarNames = List.of("test2", "test3");
         Cars cars = makeCars(validCarNames, carPositions);
-        List<Car> winners = cars.getWinnerCars();
 
-        for (int i = 0; i < winners.size(); i++) {
-            Car winner = winners.get(i);
-            assertThat(winner.getName()).isEqualTo(winnerCarNames.get(i));
-        }
+        assertThat(cars.getWinnerCars()).contains(new Car(winnerCarNames.get(0)), new Car(winnerCarNames.get(1)));
     }
 
     @ParameterizedTest
     @DisplayName("차량 이름 중복된 경우 예외 발생")
-    @ValueSource(ints = {0,1,2,3,4,5,6,7,8,9})
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void testDuplicateCarNames(int number) {
         RacingCarService racingCarService = new RacingCarService(new MoveCommand(new TestNumber(number)));
 

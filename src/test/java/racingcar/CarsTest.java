@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.MoveType;
+import racingcar.domain.Name;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,8 @@ public class CarsTest {
 
         for (int i = 0; i < winnerCars.size(); i++) {
             Car winnerCar = winnerCars.get(i);
-            assertThat(winnerCar.getName()).isEqualTo(winnerNames.get(i));
+            Name winnerName = winnerCar.getName();
+            assertThat(winnerName.getName()).isEqualTo(winnerNames.get(i));
         }
     }
 

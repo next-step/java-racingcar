@@ -2,36 +2,30 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Car implements Comparable {
-    private Integer position = 0;
-    private final String name;
+public class Car implements Comparable<Car> {
+    private final Position position;
+    private final Name name;
 
     public Car(Car car) {
         this.position = car.position;
-        this.name = car.name;
+        this.name = new Name(car.name);
     }
 
     public Car(String name) {
-        asserValidName(name);
-        this.name = name;
+        this.name = new Name(name);
+        this.position = new Position(0);
     }
 
     public void move(MoveType moveType) {
-        position += moveType.getMovePosition();
+        position.move(moveType);
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
-    }
-
-    private void asserValidName(String name) {
-        if (name == null || name.isBlank() || name.length() > 5) {
-            throw new IllegalArgumentException("차량의 이름은 5글자를 초과할 수 없습니다.");
-        }
     }
 
     @Override
@@ -55,7 +49,7 @@ public class Car implements Comparable {
 
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Car o) {
         if (o == null || getClass() != o.getClass()) {
             throw new IllegalArgumentException();
         }
@@ -63,6 +57,6 @@ public class Car implements Comparable {
             return 0;
         }
 
-        return this.position.compareTo(((Car) o).position);
+        return this.position.compareTo(o.position);
     }
 }

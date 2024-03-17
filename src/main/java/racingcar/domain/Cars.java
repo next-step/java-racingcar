@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -13,13 +14,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        List<Car> copyCars = new ArrayList<>();
-
-        for (Car car : cars) {
-            copyCars.add(new Car(car));
-        }
-
-        return copyCars;
+        return cars.stream().map(Car::new).collect(Collectors.toUnmodifiableList());
     }
 
     public void move(MoveCommand moveCommand) {
@@ -30,18 +25,18 @@ public class Cars {
 
     public List<Car> getWinnerCars() {
         Car winnerCar = Collections.max(cars);
-        int winPosition = winnerCar.getPosition();
+        Position winPosition = winnerCar.getPosition();
 
-        List<Car> winnerCars = new ArrayList<>();
-        for (Car car : cars) {
-            isWinnerCar(car, winPosition).ifPresent(winnerCars::add);
-        }
-
-        return winnerCars;
+        return cars.stream().filter(car ->
+                        isWinnerCar(car, winPosition).isPresent()
+                )
+                .map(Car::new)
+                .collect(Collectors.toUnmodifiableList());
     }
 
-    private Optional<Car> isWinnerCar(Car car, int winPosition) {
-        if (car.getPosition() == winPosition) {
+    private Optional<Car> isWinnerCar(Car car, Position winPosition) {
+        Position carPosition = car.getPosition();
+        if (winPosition.equals(carPosition)) {
             return Optional.of(new Car(car));
         }
 
