@@ -1,4 +1,4 @@
-package liveLesson;
+package liveLesson.calculator;
 
 public class LessonCalculator {
 

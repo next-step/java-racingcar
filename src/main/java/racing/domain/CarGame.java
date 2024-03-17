@@ -18,19 +18,19 @@ public class CarGame {
 
     private List<Car> createCar(String[] names) {
         for (String name : names) {
-            this.cars.add(new Car(name));
+            this.cars.add(Car.withName(name));
         }
         return cars;
     }
 
-    public List<RoundRecord> start() {
+    public RoundRecords start() {
         List<RoundRecord> records = new ArrayList<>();
 
         for (int i = 0; i < rounds; i++) {
             RoundRecord record = playRound();
             records.add(record);
         }
-        return records;
+        return new RoundRecords(records);
     }
 
     private RoundRecord playRound() {

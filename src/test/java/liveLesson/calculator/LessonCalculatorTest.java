@@ -1,9 +1,9 @@
-package liveLesson;
+package liveLesson.calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static liveLesson.LessonCalculator.calculate;
+import static liveLesson.calculator.LessonCalculator.calculate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LessonCalculatorTest {

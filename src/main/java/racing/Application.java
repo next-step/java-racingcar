@@ -2,10 +2,8 @@ package racing;
 
 import racing.domain.CarGame;
 import racing.domain.RandomStrategy;
-import racing.domain.RoundRecord;
+import racing.domain.RoundRecords;
 import racing.view.ResultView;
-
-import java.util.List;
 
 import static racing.view.InputView.inputGameCount;
 import static racing.view.InputView.inputPalyersName;
@@ -18,7 +16,7 @@ public class Application {
 
         // 로직 실행부
         CarGame carGame = new CarGame(rounds, new RandomStrategy(), names);
-        List<RoundRecord> roundRecords = carGame.start();
+        RoundRecords roundRecords = carGame.start();
         // 출력부
         ResultView.showResult(roundRecords);
     }
