@@ -1,14 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
@@ -16,21 +10,10 @@ public class CarsTest {
 
   @ParameterizedTest
   @CsvSource(value = { "1:1", "2:2", "5:5" }, delimiter = ':')
-  void 자동차_추가_기본(int numberOfCars, int expected) {
+  void 자동차_추가_기본(int numberOfCars) {
     cars.addEmptyCars(numberOfCars);
-    // 위치가 0인 Car 가 expected 개 있는지 검사
-    for (Car car : cars) {
-      System.out.println("car: " + car);
-    }
-    assertThat(cars).containsAll(listOfZeros(expected));
-  }
-
-  private List<Car> listOfZeros(final int numberOfZeros) {
-    final List<Car> result = new ArrayList<>();
-    for (int i = 0; i < numberOfZeros; i++) {
-      result.add(new Car(0));
-    }
-    return result;
+    // 거리가 0 보다 더 먼 Car는 없다는 것을 테스트
+    assertThat(cars.hasCarFurtherThan(new Car(0))).isFalse();
   }
 
   @Test
@@ -72,5 +55,13 @@ public class CarsTest {
 
     assertThat(cars.leadingCars())
             .containsExactly(new Car("test2", 5), new Car("test4", 5));
+  }
+
+  @Test
+  void 입력된_조건값_목록에_따라_자동차_모두_이동() {
+    cars.addEmptyCars(5);
+    cars.moveAllCars(new int[] { 2, 3, 4, 5, 6 });
+
+    assertThat(cars.numberOfCarsWithLocationOf(1)).isEqualTo(3);
   }
 }

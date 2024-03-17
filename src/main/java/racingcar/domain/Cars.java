@@ -1,11 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.*;
 
 public class Cars implements Iterable<Car> {
   private final List<Car> cars = new ArrayList<>();
-
-  private static final Random random = new Random();
 
   public Cars() {
   }
@@ -32,9 +30,13 @@ public class Cars implements Iterable<Car> {
     }
   }
 
-  public void moveAllCars() {
+  public void moveAllCars(int[] conditions) {
+    final int STARTING_INDEX = 0;
+
+    int index = STARTING_INDEX;
     for (Car car : this.cars) {
-      car.moveConditionally(new Condition(random.nextInt(10)));
+      car.moveConditionally(new Condition(conditions[index]));
+      index++;
     }
   }
 
@@ -92,6 +94,11 @@ public class Cars implements Iterable<Car> {
     }
 
     return furthestCars;
+  }
+
+  public boolean hasCarFurtherThan(Car target) {
+    return this.cars.stream()
+            .anyMatch(car -> car.furtherThan(target));
   }
 
   @Override

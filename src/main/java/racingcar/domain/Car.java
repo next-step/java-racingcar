@@ -1,9 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
-
 public class Car {
-  private final Location location;
+  private final PositiveNumber location;
   private final CarName name;
 
   public Car() {
@@ -12,7 +11,7 @@ public class Car {
 
   public Car(String name, int location) {
     this.name = new CarName(name);
-    this.location = new Location(location);
+    this.location = new PositiveNumber(location);
   }
 
   public Car(final int location) {
@@ -24,7 +23,7 @@ public class Car {
   }
 
   public void moveConditionally(final Condition condition) {
-    this.location.forwardConditionally(meetMoveCondition(condition));
+    this.location.increaseConditionally(meetMoveCondition(condition));
   }
 
   private boolean meetMoveCondition(final Condition condition) {
@@ -38,7 +37,13 @@ public class Car {
   }
 
   public String trace(final String distanceUnit) {
-    return this.location.multiply(distanceUnit);
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; this.location.largerThan(i); i++) {
+      sb.append(distanceUnit);
+    }
+
+    return sb.toString();
   }
 
   public String name() {
@@ -46,11 +51,11 @@ public class Car {
   }
 
   public boolean furtherThan(final Car car) {
-    return this.location.furtherThan(car.location);
+    return this.location.largerThan(car.location);
   }
 
   public boolean closerThan(final Car car) {
-    return this.location.closerThan(car.location);
+    return this.location.smallerThan(car.location);
   }
 
   public boolean atTheSameLocationWith(final Car car) {

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Criteria {
   private final int min;
