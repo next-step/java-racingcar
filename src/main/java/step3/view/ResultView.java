@@ -1,7 +1,7 @@
 package step3.view;
 
 import step3.application.domain.model.MovementLog;
-import step3.application.domain.model.OneMoveRecord;
+import step3.application.domain.model.OneMovementLog;
 import step3.application.domain.model.RacingHistory;
 
 public class ResultView {
@@ -13,7 +13,7 @@ public class ResultView {
         racingHistory.getRacingRecords().forEach(this::printOneMoveRecord);
     }
 
-    private void printOneMoveRecord(OneMoveRecord e) {
+    private void printOneMoveRecord(OneMovementLog e) {
         e.getMovementLogs().forEach(this::printLocation);
         System.out.println();
     }

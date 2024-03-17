@@ -1,7 +1,7 @@
 package step3.application.domain;
 
 import step3.application.domain.model.MovementLog;
-import step3.application.domain.model.OneMoveRecord;
+import step3.application.domain.model.OneMovementLog;
 import step3.application.generator.MovableGenerator;
 
 import java.util.List;
@@ -17,11 +17,11 @@ public class RacingCars {
         this.movableGenerator = movableGenerator;
     }
 
-    public OneMoveRecord moveCars() {
+    public OneMovementLog moveCars() {
         List<MovementLog> oneMoveResult = this.cars.stream()
                 .map(car -> car.move(canMove()))
                 .collect(Collectors.toList());
-        return new OneMoveRecord(oneMoveResult);
+        return new OneMovementLog(oneMoveResult);
     }
 
     private boolean canMove() {

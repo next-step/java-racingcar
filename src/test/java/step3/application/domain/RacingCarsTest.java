@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import step3.application.domain.factory.MovablePredicatedGenerator;
 import step3.application.domain.model.MovementLog;
-import step3.application.domain.model.OneMoveRecord;
+import step3.application.domain.model.OneMovementLog;
 import step3.application.generator.MovableGenerator;
 
 import java.util.List;
@@ -24,7 +24,7 @@ class RacingCarsTest {
                                 new Car("crong", 1),
                                 new Car("honux", 2)
                         ),
-                        new OneMoveRecord(List.of(
+                        new OneMovementLog(List.of(
                                 new MovementLog("pobi", 1),
                                 new MovementLog("crong", 1),
                                 new MovementLog("honux", 2)
@@ -37,9 +37,9 @@ class RacingCarsTest {
 
     @ParameterizedTest
     @MethodSource("move")
-    void test(List<Car> cars, OneMoveRecord result) {
+    void test(List<Car> cars, OneMovementLog result) {
         RacingCars racingCars = new RacingCars(cars, generator);
-        OneMoveRecord oneMoveRecord = racingCars.moveCars();
-        assertThat(oneMoveRecord).isEqualTo(result);
+        OneMovementLog oneMovementLog = racingCars.moveCars();
+        assertThat(oneMovementLog).isEqualTo(result);
     }
 }

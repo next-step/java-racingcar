@@ -1,6 +1,6 @@
 package step3.application.domain;
 
-import step3.application.domain.model.OneMoveRecord;
+import step3.application.domain.model.OneMovementLog;
 import step3.application.domain.model.RacingHistory;
 import step3.application.generator.MovableGenerator;
 import step3.application.generator.MovableRandomGenerator;
@@ -36,7 +36,7 @@ public class RaceGame {
         return new RacingHistory(doRace(moveCount));
     }
 
-    private List<OneMoveRecord> doRace(int count) {
+    private List<OneMovementLog> doRace(int count) {
         return IntStream.rangeClosed(1, count)
                 .mapToObj(i -> racingCars.moveCars())
                 .collect(Collectors.toList());

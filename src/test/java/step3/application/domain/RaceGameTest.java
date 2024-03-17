@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import step3.application.domain.factory.MovablePredicatedGenerator;
 import step3.application.domain.model.MovementLog;
-import step3.application.domain.model.OneMoveRecord;
+import step3.application.domain.model.OneMovementLog;
 import step3.application.domain.model.RacingHistory;
 
 import java.util.List;
@@ -31,9 +31,9 @@ class RaceGameTest {
                         ),
                         new RacingHistory(
                                 List.of(
-                                        new OneMoveRecord(movementLogs),
-                                        new OneMoveRecord(movementLogs),
-                                        new OneMoveRecord(movementLogs)
+                                        new OneMovementLog(movementLogs),
+                                        new OneMovementLog(movementLogs),
+                                        new OneMovementLog(movementLogs)
                                 )
                         )
                 )
