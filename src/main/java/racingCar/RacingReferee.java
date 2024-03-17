@@ -10,7 +10,6 @@ public class RacingReferee {
         return cars.findCars().stream()
             .filter((car)->car.findCurrentLocation() == farthestLocation)
             .map(RacingCar::findCarName)
-            .map(CarName::findName)
             .collect(Collectors.toList());
     }
 

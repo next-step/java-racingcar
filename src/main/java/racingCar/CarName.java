@@ -11,8 +11,8 @@ public class CarName {
         this.name = name;
     }
 
-    public String findName() {
-        return this.name;
+    public String getName() {
+        return name;
     }
 
     private void validName(String name) {

@@ -19,8 +19,8 @@ public class RacingCar {
         return this.location;
     }
 
-    public CarName findCarName(){
-        return this.name;
+    public String findCarName() {
+        return this.name.getName();
     }
 
     public void move(boolean isMovable) {
@@ -31,7 +31,7 @@ public class RacingCar {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        return sb.append(name.findName())
+        return sb.append(findCarName())
             .append(" : ")
             .append("-".repeat(Math.max(0, location)))
             .toString();
