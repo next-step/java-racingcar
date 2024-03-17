@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
@@ -24,5 +25,12 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getMaxPosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Comparator.naturalOrder())
+                .orElse(0);
     }
 }

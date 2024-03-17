@@ -1,6 +1,5 @@
 package racing.domain;
 
-import racing.Constant;
 import racing.utils.RandomUtil;
 import racing.view.ResultView;
 
@@ -24,18 +23,10 @@ public class RacingGame {
     }
 
     public Winners findWinner() {
-        final int max = getMaxPosition();
+        final int max = cars.getMaxPosition();
         List<Car> winners = cars.getCars().stream()
                 .filter(car -> car.isMatch(max))
                 .collect(Collectors.toList());
         return new Winners(winners);
-    }
-
-    private int getMaxPosition() {
-        int maxPosition = Constant.START_POSITION;
-        for (Car car : cars.getCars()) {
-            maxPosition = car.max(car.getPosition());
-        }
-        return maxPosition;
     }
 }
