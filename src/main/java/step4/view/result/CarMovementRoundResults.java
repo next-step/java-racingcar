@@ -17,8 +17,9 @@ public class CarMovementRoundResults {
     }
 
     public Optional<CarMovementRoundResult> lastRoundResult() {
-        return results.isEmpty()
-                ? Optional.empty()
-                : Optional.of(results.get(results.size() - 1));
+        if (results.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(results.get(results.size() - 1));
     }
 }
