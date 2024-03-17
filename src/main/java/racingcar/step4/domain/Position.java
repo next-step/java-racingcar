@@ -1,7 +1,10 @@
 package racingcar.step4.domain;
 
+import java.util.Objects;
+
 public class Position implements Comparable<Position> {
 
+  public static final String CAR_POSITION_CAN_NOT_BE_NEGATIVE = "자동차 위치는 음수가 될 수 없습니다.";
   public static final int DEFAULT_START_POSITION = 0;
   private int position;
 
@@ -14,6 +17,7 @@ public class Position implements Comparable<Position> {
   }
 
   public static Position specificPosition(int position) {
+    validate(position);
     return new Position(position);
   }
 
@@ -23,6 +27,12 @@ public class Position implements Comparable<Position> {
 
   public int get() {
     return position;
+  }
+
+  private static void validate(int position) {
+    if (position < 0) {
+      throw new IllegalArgumentException(CAR_POSITION_CAN_NOT_BE_NEGATIVE);
+    }
   }
 
   @Override
