@@ -36,15 +36,17 @@ public class CarsManager {
         return list;
     }
 
-    public Car winners() {
-        Car winner = null;
+    public List<Car> winners() {
+        List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            if (winner == null || car.getPosition() > winner.getPosition()) {
-                winner = car;
+            if (winners.size() == 0 || car.getPosition() <= winners.get(0).getPosition()) {
+                winners.add(car);
+            } else {
+                winners = List.of(car);
             }
         }
 
-        return winner;
+        return winners;
     }
 }

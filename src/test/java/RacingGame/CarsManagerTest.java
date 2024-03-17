@@ -65,6 +65,21 @@ public class CarsManagerTest {
 
         CarsManager carsManager = new CarsManager(cars);
 
-        assertThat(carsManager.winners().name()).isEqualTo("1등");
+        assertThat(carsManager.winners().get(0)).isEqualTo(cars.get(0));
+    }
+
+    @Test
+    @DisplayName("우승한 차량은 한명 이상 반환 할 수 있다")
+    void winnersCarsTest() {
+        List<Car> cars = List.of(
+                new Car("공동1등1", 5),
+                new Car("공동1등2", 5),
+                new Car("3등", 3),
+                new Car("4등", 2)
+        );
+
+        CarsManager carsManager = new CarsManager(cars);
+
+        assertThat(carsManager.winners()).contains(cars.get(0), cars.get(1));
     }
 }
