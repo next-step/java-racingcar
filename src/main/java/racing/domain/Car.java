@@ -13,12 +13,7 @@ public class Car {
     }
 
     public static Car withName(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("이름을 입력하세요");
-        }
-        if (MAX_NAME_LENGTH < name.length()) {
-            throw new IllegalArgumentException("이름의 길이는 5자를 초과 할 수 없습니다.");
-        }
+        checkNameLength(name);
         return new Car(name);
     }
 
@@ -44,7 +39,7 @@ public class Car {
                 '}';
     }
 
-    public void checkNameLength(String name) {
+    private static void checkNameLength(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("이름을 입력하세요");
         }

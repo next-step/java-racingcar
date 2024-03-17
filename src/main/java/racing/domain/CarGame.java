@@ -16,11 +16,10 @@ public class CarGame {
         this.moveStrategy = moveStrategy;
     }
 
-    private List<Car> createCar(String[] names) {
+    private void createCar(String[] names) {
         for (String name : names) {
             this.cars.add(Car.withName(name));
         }
-        return cars;
     }
 
     public RoundRecords start() {

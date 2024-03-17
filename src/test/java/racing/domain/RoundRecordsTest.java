@@ -20,12 +20,6 @@ public class RoundRecordsTest {
         B.forward(() -> false);
         roundRecord.addHistory(B);
 
-//        List<RoundRecord> roundRecordList = new ArrayList<>();
-//        roundRecordList.add(roundRecord);
-//        roundRecordList.add(roundRecord2);
-//        roundRecordList.add(roundRecord3);
-//        RoundRecords roundRecords = new RoundRecords(roundRecordList);
-
         RoundRecords roundRecords = new RoundRecords(List.of(roundRecord));
         assertThat(roundRecords.findWinner()).contains("A");
     }
@@ -41,12 +35,6 @@ public class RoundRecordsTest {
         Car B = Car.withName("B");
         B.forward(() -> true);
         roundRecord.addHistory(B);
-
-//        List<RoundRecord> roundRecordList = new ArrayList<>();
-//        roundRecordList.add(roundRecord);
-//        roundRecordList.add(roundRecord2);
-//        roundRecordList.add(roundRecord3);
-//        RoundRecords roundRecords = new RoundRecords(roundRecordList);
 
         RoundRecords roundRecords = new RoundRecords(List.of(roundRecord));
         assertThat(roundRecords.findWinner()).contains("A", "B");
