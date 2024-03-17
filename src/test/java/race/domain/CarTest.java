@@ -10,6 +10,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
+    @DisplayName("주어진 차(부가티)의 위치가 우승자의 최대거리와 부합하는지 확인한다")
+    @Test
+    void winnerTest() {
+        int max = 100;
+        Car car = new Car(100, "부가티");
+        assertThat(car.isWinner(max)).isTrue();
+    }
+
+    @DisplayName("주어진 차(BMW)의 거리(4)와 5를 비교해서 더 큰 값을 반환한다")
+    @Test
+    void maxComparedTest() {
+        Car car = new Car(4, "BMW");
+        assertThat(car.maxComparedTo(5)).isEqualTo(5);
+    }
+
     @DisplayName("차가 한번 전진할 때 1만큼 움직인다는 것을 테스트한다")
     @ParameterizedTest
     @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')

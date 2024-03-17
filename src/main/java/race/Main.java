@@ -1,5 +1,6 @@
 package race;
 
+import race.controller.RacingGame;
 import race.view.InputView;
 import race.view.OutputView;
 

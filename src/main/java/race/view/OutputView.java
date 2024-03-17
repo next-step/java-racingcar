@@ -12,15 +12,21 @@ public class OutputView {
     private static final String REST = ", ";
 
     public void printMileages(List<Car> racingCars) {
-        for (Car racingCar : racingCars) {
-            if (racingCar.getPosition() == 0) {
-                System.out.print(racingCar.getName() + COLON);
-                System.out.println(UNIT_MILEAGE);
-                continue;
-            }
-            System.out.print(racingCar.getName() + COLON);
-            System.out.println(UNIT_MILEAGE.repeat(racingCar.getPosition()));
+        racingCars.forEach(this::printRacingCarMileage);
+    }
+
+    private void printRacingCarMileage(Car racingCar) {
+        if (racingCar.getPosition() == 0) {
+            printFirstRacingCar(racingCar);
+            return;
         }
+        System.out.print(racingCar.getName() + COLON);
+        System.out.println(UNIT_MILEAGE.repeat(racingCar.getPosition()));
+    }
+
+    private void printFirstRacingCar(Car racingCar) {
+        System.out.print(racingCar.getName() + COLON);
+        System.out.println(UNIT_MILEAGE);
     }
 
     public void printWinner(List<Car> winner) {
