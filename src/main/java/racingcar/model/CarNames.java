@@ -1,16 +1,14 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CarNames {
     private final List<String> carNames;
 
     public CarNames(String[] inputCarNames) {
-        this.carNames = new ArrayList<>();
-        for (String carName : inputCarNames) {
-            carNames.add(carName);
-        }
+        this.carNames = new ArrayList<>(Arrays.asList(inputCarNames));
     }
 
     public List<String> getCarNames() {
