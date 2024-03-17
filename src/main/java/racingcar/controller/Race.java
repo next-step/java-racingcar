@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.Cars;
-import racingcar.model.RaceResult;
-import racingcar.model.RandomNumberStrategy;
+import racingcar.model.*;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -17,15 +15,18 @@ public class Race {
     }
 
     public void start() {
-        resultView.printCarAmount();
-        int carAmount = inputView.inputNumber();
+        resultView.printCarName();
+        CarNames carNames = inputView.inputCarName();
         resultView.printTryNumber();
         int tryNumber = inputView.inputNumber();
 
-        Cars cars = new Cars(carAmount);
+        Cars cars = new Cars(carNames);
 
         RaceResult raceResult = cars.tryMove(tryNumber, new RandomNumberStrategy());
         resultView.printResultNotice();
         resultView.printTryResult(raceResult);
+
+        Winners winners = new Winners(cars);
+        resultView.printWinnerResult(winners);
     }
 }

@@ -3,15 +3,16 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Cars implements Iterable<Car> {
 
     private final List<Car> cars;
 
-    public Cars(int tryNumber) {
+    public Cars(CarNames carNames) {
         cars = new ArrayList<>();
-        for (int i=0; i < tryNumber; i++) {
-            cars.add(new Car());
+        for (int carCount=0; carCount < carNames.getCarNameCount(); carCount++) {
+            cars.add(new Car(carNames.getCarName(carCount)));
         }
     }
 
@@ -25,7 +26,7 @@ public class Cars implements Iterable<Car> {
 
         for (int tryCount = 0; tryCount < tryNumber; tryCount++) {
             orderMoveOneCycle(moveStrategy);
-            raceResult.recordRaceResult(tryCount, makeDistanceSnapShot());
+            raceResult.recordRaceResult(tryCount, makeCarRecordSnapShot());
         }
         return raceResult;
     }
@@ -34,11 +35,16 @@ public class Cars implements Iterable<Car> {
         cars.stream().forEach(car -> car.move(moveStrategy.getMoveNumber()));
     }
 
-    private DistanceRecord makeDistanceSnapShot() {
-        DistanceRecord distanceRecord = new DistanceRecord();
+    private CarRecords makeCarRecordSnapShot() {
+        CarRecords carRecords = new CarRecords();
         for (Car car : cars) {
-            distanceRecord.add(car.getDistance());
+            carRecords.add(new CarRecord(car.getName(), car.getDistance()));
         }
-        return distanceRecord;
+        return carRecords;
     }
+
+    public Stream<Car> stream() {
+        return cars.stream();
+    }
+
 }

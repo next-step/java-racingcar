@@ -1,25 +1,34 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.MoveStrategy;
+import racingcar.model.CarNames;
 import racingcar.model.Cars;
+import racingcar.model.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
-    @ParameterizedTest
-    @DisplayName("입력받은 횟수만큼 자동차들을 생성하는 Cars Test")
-    @ValueSource(ints = {1, 2})
-    void makeCarsTest(int input) {
+    private CarNames carNames;
+
+    @BeforeEach
+    void setUp() {
+        String inputCarNames = "car1,car2,car3";
+        carNames = new CarNames(inputCarNames.split(","));
+    }
+
+    @Test
+    @DisplayName("입력받은 차 이름에 따라 자동차들을 생성하는 Cars Test")
+    void makeCarsTest() {
         // when
-        Cars cars = new Cars(input);
+        Cars cars = new Cars(carNames);
 
         // then
-        assertThat(cars).hasSize(input);
+        assertThat(cars).hasSize(carNames.getCarNameCount());
     }
 
     @ParameterizedTest
@@ -27,13 +36,13 @@ public class CarsTest {
     @CsvSource(value = {"1:1", "1:2", "1:3"}, delimiter = ':')
     void orderStopCarsTest(int tryNumber, int moveNumber) {
         // given
-        Cars cars = new Cars(5);
+        Cars cars = new Cars(carNames);
 
         // when
         cars.tryMove(tryNumber, () -> moveNumber);
 
         // then
-        assertThat(cars).extracting("distance").containsExactly(0,0,0,0,0);
+        assertThat(cars).extracting("distance").containsExactly(0,0,0);
     }
 
     @ParameterizedTest
@@ -41,13 +50,13 @@ public class CarsTest {
     @CsvSource(value = {"1:4", "1:5", "1:6"}, delimiter = ':')
     void orderMoveCarsTest(int tryNumber, int moveNumber) {
         // given
-        Cars cars = new Cars(5);
+        Cars cars = new Cars(carNames);
 
         // when
         cars.tryMove(tryNumber, () -> moveNumber);
 
         // then
-        assertThat(cars).extracting("distance").containsExactly(1,1,1,1,1);
+        assertThat(cars).extracting("distance").containsExactly(1,1,1);
     }
 
     static class TestMoveStrategy implements MoveStrategy {
