@@ -2,21 +2,25 @@ package racingCar;
 
 public class RacingCar {
 
-    private static final int START_LOCATION = 0;
     private CarName name;
-    private int location;
+    private Location location;
 
     public RacingCar() {
-        this.location = START_LOCATION;
+        this.location = new Location();
     }
 
     public RacingCar(CarName name) {
         this.name = name;
-        this.location = START_LOCATION;
+        this.location = new Location();
+    }
+
+    public RacingCar(CarName name, Location location) {
+        this.name = name;
+        this.location = location;
     }
 
     public int findCurrentLocation() {
-        return this.location;
+        return this.location.getLocation();
     }
 
     public String findCarName() {
@@ -25,7 +29,7 @@ public class RacingCar {
 
     public void move(boolean isMovable) {
         if (isMovable) {
-            this.location++;
+            this.location.increase();
         }
     }
 
@@ -33,7 +37,7 @@ public class RacingCar {
         StringBuilder sb = new StringBuilder();
         return sb.append(findCarName())
             .append(" : ")
-            .append("-".repeat(Math.max(0, location)))
+            .append("-".repeat(Math.max(0, location.getLocation())))
             .toString();
     }
 }

@@ -5,9 +5,17 @@ public class Location {
     private final static int MIN_LIMIT = 0;
     private int location;
 
+    public Location(){
+        this.location = MIN_LIMIT;
+    }
+
     public Location(int location) {
         validLocation(location);
         this.location = location;
+    }
+
+    public void increase(){
+        location++;
     }
 
     private void validLocation(int location) {

@@ -1,8 +1,6 @@
 package racingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,9 +54,7 @@ public class RacingCarTest {
 
     @Test
     void 현재_CarName출력_및_Location_만큼_hyphen_Return() {
-        car.move(true);
-        car.move(true);
-        car.move(true);
-        assertThat(car.toString()).isEqualTo(car.findCarName()+" : ---");
+        RacingCar car = new RacingCar(new CarName("pobi"), new Location(3));
+        assertThat(car.toString()).isEqualTo(car.findCarName() + " : ---");
     }
 }
