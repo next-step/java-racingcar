@@ -1,5 +1,6 @@
 package racing;
 
+import ui.ResultView;
 import util.RacingValidator;
 import util.RandomNumberGenerator;
 
@@ -10,6 +11,7 @@ public class RacingService {
         Car[] carArr = getCarArr(carCount);
         for (int i = 0; i < tryCount; i++) {
             startRace(carArr);
+            ResultView.showRaceResult(carArr, i);
         }
     }
 
