@@ -9,7 +9,7 @@ public class Cars {
     public Cars(String[] names) {
         this.cars = new ArrayList<>();
         for (String name : names) {
-            this.cars.add(new Car(new Name(name)));
+            this.cars.add(new Car(name));
         }
     }
 

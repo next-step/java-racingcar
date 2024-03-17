@@ -5,20 +5,18 @@ public class Car {
     private final Name name;
     private final Distance distance;
 
-    public Car(Name name) {
-        this.name = name;
-        this.distance = new Distance();
-    }
-
-    // Constructor for UnitTest
+    // Primary Constructor, 주생성자
     public Car(int distance, String name) {
         this.distance = new Distance(distance);
         this.name = new Name(name);
     }
 
+    public Car(String name) {
+        this(0, name);
+    }
+
     public Car(Car car) {
-        this.name = new Name(car.getName().get());
-        this.distance = new Distance(car.getDistance().get());
+        this(car.distance.get(), car.name.get());
     }
 
     public void move(CarMoveStrategy moveStrategy) {

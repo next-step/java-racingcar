@@ -8,15 +8,17 @@ public class Distance {
 
     private int distance;
 
-    public Distance() {
-        this.distance = 0;
-    }
-
-    // Constructor for UnitTest
+    // Primary Constructor, 주생성자
     public Distance(int initValue) {
         validateDistance(initValue);
         this.distance = initValue;
     }
+
+    public Distance() {
+        this(0);
+    }
+
+    // Constructor for UnitTest
 
     private void validateDistance(int initValue) {
         if (isNegative(initValue)) {
