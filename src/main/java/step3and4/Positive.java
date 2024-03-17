@@ -15,6 +15,9 @@ public class Positive {
 
     public void move(int number) {
         this.number += number;
+        if (number < 0) {
+            this.number = 0;
+        }
     }
 
     public int number() {
