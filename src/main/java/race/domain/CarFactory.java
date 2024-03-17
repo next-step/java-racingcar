@@ -1,14 +1,23 @@
 package race.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CarFactory {
-    public List<Car> createCars(int carCount) {
+
+    private static final String COMMA = ",";
+
+    public static List<Car> createCars(String names) {
         List<Car> carList = new ArrayList<>();
-        for (int i=0; i<carCount; i++) {
-            carList.add(new Car(0));
+
+        for (String name : splitName(names)) {
+            carList.add(new Car(name,0));
         }
         return carList;
+    }
+
+    public static List<String> splitName(String names) {
+        return new ArrayList<>(Arrays.asList(names.split(COMMA)));
     }
 }

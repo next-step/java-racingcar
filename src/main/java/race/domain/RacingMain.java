@@ -1,10 +1,25 @@
 package race.domain;
 
 import race.view.InputView;
+import race.view.ResultView;
+
+import java.util.List;
 
 public class RacingMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        new RacingGame().race(new CarFactory().createCars(inputView.inputCar()), inputView.inputTry());
+        ResultView resultView = new ResultView();
+        RacingGame racingGame = new RacingGame();
+        List<Car> carList = CarFactory.createCars(inputView.inputCar());
+        int tryCount = inputView.inputTry();
+
+        resultView.printResult();
+
+        for (int i = 0; i < tryCount; i++) {
+            racingGame.race(carList);
+            resultView.showResult(carList);
+        }
+
+        resultView.showWinners(new Winner().findWinner(carList));
     }
 }
