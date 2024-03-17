@@ -1,7 +1,7 @@
 package step3.view;
 
 import step3.application.domain.RaceGame;
-import step3.application.domain.model.RacingHistory;
+import step3.application.domain.model.RaceGameLog;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +16,10 @@ public class RacingMain {
         List<String> names = splitTextAsNames(inputText);
 
         RaceGame raceGame = new RaceGame(names);
-        RacingHistory racingHistory = raceGame.startRace(moveCount);
+        RaceGameLog raceGameLog = raceGame.startRace(moveCount);
 
         ResultView resultView = new ResultView();
-        resultView.printRacingHistory(racingHistory);
+        resultView.printRacingHistory(raceGameLog);
     }
 
     private static List<String> splitTextAsNames(String inputText) {
