@@ -1,5 +1,6 @@
 package racing;
 
+import exception.CarLocationException;
 import ui.ResultView;
 import util.RacingValidator;
 import util.RandomNumberGenerator;
@@ -24,20 +25,24 @@ public class RacingService {
     private static void oneCarRace(Car[] carArr, int idx) {
         Integer randomNumber = RandomNumberGenerator.getRandomNumber();
         if (RacingValidator.isMovable(randomNumber)) {
-            carArr[idx].moveForward();
+            moveForward(carArr[idx]);
         }
     }
 
     public static Car[] getCarArr(int carCount) {
         Car[] carArr = new Car[carCount];
         for (int i = 0; i < carArr.length; i++) {
-            carArr[i] = new Car(0);
+            carArr[i] = new Car(new CarLocation(0));
         }
         return carArr;
     }
 
     public static void moveForward(Car car) {
-        car.moveForward();
+        try {
+            car.getCarLocationInfo().moveForward();
+        } catch (CarLocationException e) {
+            System.err.println("예외 발생:" + e.getMessage());
+        }
     }
 
 }

@@ -16,3 +16,4 @@
 - [X] ...... 자동차 레이스 구현
 - [X] ...... 자동차 상태 출력
 - [X] ...... RacingApplication에서 Scanner 의존성 분리
+- [X] ...... CarLocation 객체 및 exception 추가

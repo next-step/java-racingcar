@@ -2,17 +2,14 @@ package racing;
 
 public class Car {
 
-    private Integer location;
+    private CarLocation carLocation;
 
-    public Car(Integer location) {
-        this.location = location;
+    public Car(CarLocation carLocation) {
+        this.carLocation = carLocation;
     }
 
-    public Integer getLocation() {
-        return this.location;
+    public CarLocation getCarLocationInfo() {
+        return this.carLocation;
     }
 
-    public void moveForward() {
-        this.location += 1;
-    }
 }

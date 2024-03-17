@@ -11,7 +11,7 @@ public class ResultView {
         }
 
         for (int i = 0; i < carArr.length; i++) {
-            showCarLocation(carArr[i].getLocation());
+            showCarLocation(carArr[i].getCarLocationInfo().getLocation());
             System.out.println();
         }
         System.out.println();
