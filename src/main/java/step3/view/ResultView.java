@@ -3,8 +3,6 @@ package step3.view;
 import step3.common.ErrorMessageConstants;
 import step3.model.Record;
 
-import java.util.List;
-
 public class ResultView {
     private static final String INIT_RESULT_PHRASE = "실행 결과";
 

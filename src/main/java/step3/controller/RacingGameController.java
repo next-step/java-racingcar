@@ -1,12 +1,9 @@
 package step3.controller;
 
-import step3.model.CarsManager;
 import step3.model.MovableStrategy;
 import step3.service.RacingGameService;
 import step3.view.InputView;
 import step3.view.ResultView;
-
-import java.util.List;
 
 public class RacingGameController {
     private final RacingGameService racingGameService;

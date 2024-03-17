@@ -1,6 +1,5 @@
 package step3.service;
 
-import step3.common.NumberGenerator;
 import step3.model.CarsManager;
 import step3.model.MovableStrategy;
 import step3.model.Record;
