@@ -14,6 +14,7 @@
 * Scanner를 이용한 시도 횟수 입력 - InputView
 * Car 객체들을 관리하는 List 생성 (InputView에서 입력받은 자동차 이름 split) - CarFactory
 * Car 객체 생성 (field : name(자동차 이름), position(현재 위치이자 전진 횟수)) - Car
+* Car의 position, name 포장 - Position, Name 생성ggi
 * 자동차 이름 길이 5 제한 - Car. 생성자 생성 단계에서 체크
 * Random을 이용한 랜덤값 추출 - RandomUtil
 * 랜덤 값이 4 이상인지를 기준으로 전진/정지 결정 - Car
