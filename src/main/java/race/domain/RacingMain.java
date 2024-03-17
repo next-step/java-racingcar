@@ -9,10 +9,17 @@ public class RacingMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
-
-        List<Car> carList = new CarFactory().createCars(inputView.inputCar());
+        RacingGame racingGame = new RacingGame();
+        List<Car> carList = CarFactory.createCars(inputView.inputCar());
         int tryCount = inputView.inputTry();
 
-        resultView.showWinners(new Winner().findWinner(new RacingGame().race(carList, tryCount)));
+        resultView.printResult();
+
+        for (int i = 0; i < tryCount; i++) {
+            racingGame.race(carList);
+            resultView.showResult(carList);
+        }
+
+        resultView.showWinners(new Winner().findWinner(carList));
     }
 }
