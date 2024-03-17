@@ -1,17 +1,17 @@
 package ui;
 
-import racing.Car;
+import racing.RacingCars;
 
 public class ResultView {
 
-    public static void showRaceResult(Car[] carArr, int tryCount) {
+    public static void showRaceResult(RacingCars racingCars, int tryCount) {
         if (tryCount == 0) {
             System.out.println();
             System.out.println("실행 결과");
         }
 
-        for (int i = 0; i < carArr.length; i++) {
-            showCarLocation(carArr[i].getCarLocationInfo().getLocation());
+        for (int i = 0; i < racingCars.getCarArr().length; i++) {
+            showCarLocation(racingCars.getCarArr()[i].getCarLocationInfo().getLocation());
             System.out.println();
         }
         System.out.println();
