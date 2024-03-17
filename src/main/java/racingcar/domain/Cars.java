@@ -1,33 +1,26 @@
 package racingcar.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String[] names) {
-        this.cars = new ArrayList<>();
-        for (String name : names) {
-            this.cars.add(new Car(name));
-        }
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    // Constructor for UnitTest
-    public Cars(Car... cars) {
-        this(Arrays.asList(cars));
+    public Cars(String[] names) {
+        this(Arrays.stream(names).map(Car::new).collect(Collectors.toList()));
     }
 
     public Cars deepCopy() {
         List<Car> copyCars = new ArrayList<>();
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             copyCars.add(new Car(car));
         }
         return new Cars(copyCars);
-    }
-
-    private Cars(List<Car> cars) {
-        this.cars = cars;
     }
 
     public List<Car> get() {
@@ -35,7 +28,7 @@ public class Cars {
     }
 
     public int size() {
-        return cars.size();
+        return this.cars.size();
     }
 
     public void move(CarMoveStrategy moveStrategy) {
