@@ -1,4 +1,4 @@
-package step3.service;
+package step3.domain;
 
 import step3.view.result.CarMovementRoundResults;
 
@@ -18,18 +18,16 @@ public class Racing {
         this.movingStrategy = movingStrategy;
     }
 
-    public void play() {
+    public CarMovementRoundResults playAndGenerateResults() {
         if (isUnPlayable()) {
-            return;
+            return results;
         }
 
         for (int count = 0; count < tryCount; count++) {
             cars.moveAll(movingStrategy);
             results.add(cars.roundResult());
         }
-    }
 
-    public CarMovementRoundResults results() {
         return results;
     }
 
