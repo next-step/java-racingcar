@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import step3.application.domain.factory.MovablePredicatedGenerator;
 import step3.application.domain.model.MovementLog;
 import step3.application.domain.model.OneMovementLog;
-import step3.application.domain.model.RacingHistory;
+import step3.application.domain.model.RaceGameLog;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -29,7 +29,7 @@ class RaceGameTest {
                                 new Car("crong", 1),
                                 new Car("honux", 2)
                         ),
-                        new RacingHistory(
+                        new RaceGameLog(
                                 List.of(
                                         new OneMovementLog(movementLogs),
                                         new OneMovementLog(movementLogs),
@@ -42,9 +42,9 @@ class RaceGameTest {
 
     @ParameterizedTest
     @MethodSource("move")
-    void moveCars(List<Car> cars, RacingHistory expected) {
+    void moveCars(List<Car> cars, RaceGameLog expected) {
         RaceGame raceGame = new RaceGame(cars, new MovablePredicatedGenerator());
-        RacingHistory result = raceGame.startRace(3);
+        RaceGameLog result = raceGame.startRace(3);
         assertThat(result).isEqualTo(expected);
     }
 }

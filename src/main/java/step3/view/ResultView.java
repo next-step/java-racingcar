@@ -2,15 +2,15 @@ package step3.view;
 
 import step3.application.domain.model.MovementLog;
 import step3.application.domain.model.OneMovementLog;
-import step3.application.domain.model.RacingHistory;
+import step3.application.domain.model.RaceGameLog;
 
 public class ResultView {
 
     public static final String LOCATION_MARK = "-";
 
-    public void printRacingHistory(RacingHistory racingHistory) {
+    public void printRacingHistory(RaceGameLog raceGameLog) {
         System.out.println("\n실행 결과");
-        racingHistory.getRacingRecords().forEach(this::printOneMoveRecord);
+        raceGameLog.getAllMovementLogs().forEach(this::printOneMoveRecord);
     }
 
     private void printOneMoveRecord(OneMovementLog e) {

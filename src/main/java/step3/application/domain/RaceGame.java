@@ -1,7 +1,7 @@
 package step3.application.domain;
 
 import step3.application.domain.model.OneMovementLog;
-import step3.application.domain.model.RacingHistory;
+import step3.application.domain.model.RaceGameLog;
 import step3.application.generator.MovableGenerator;
 import step3.application.generator.MovableRandomGenerator;
 
@@ -31,9 +31,9 @@ public class RaceGame {
                 .collect(Collectors.toList());
     }
 
-    public RacingHistory startRace(int moveCount) {
+    public RaceGameLog startRace(int moveCount) {
         validateCount(moveCount);
-        return new RacingHistory(doRace(moveCount));
+        return new RaceGameLog(doRace(moveCount));
     }
 
     private List<OneMovementLog> doRace(int count) {
