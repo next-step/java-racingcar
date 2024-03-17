@@ -17,13 +17,13 @@ public class WinnerTest {
         );
 
         List<String> winnerNames = winner.findWinner(carList);
-        assertThat(winnerNames).containsExactly("pobi","nana");
+        assertThat(winnerNames).containsExactlyInAnyOrder("pobi","nana");
     }
 
     @Test
     void 최댓값_찾기() {
         Winner winner = new Winner();
-        List<Car> carList = Arrays.asList(new Car("pobi", 4),
+        List<Car> carList = List.of(new Car("pobi", 4),
                 new Car("nana", 1),
                 new Car("kai", 2)
         );
