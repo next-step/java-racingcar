@@ -7,22 +7,15 @@ import step3.model.MovableStrategy;
 import java.util.List;
 
 public class RacingGameService {
-    private MovableStrategy movableStrategy;
-    private CarsManager carsManager = null;
-
-    public RacingGameService(NumberGenerator numberGenerator) {
-        movableStrategy = new MovableStrategy(numberGenerator);
+    MovableStrategy movableStrategy;
+    public RacingGameService() {
     }
 
-    public void setCarCount(int carCount) {
-        this.carsManager = CarsManager.withCarCount(carCount);
-    }
-
-    public void progressStage() {
+    public void progressStage(CarsManager carsManager) {
         carsManager.tryMoveCars(movableStrategy);
     }
 
-    public List<Integer> getResult() {
+    public List<Integer> getResult(CarsManager carsManager) {
         return carsManager.getCarsPosition();
     }
 }
