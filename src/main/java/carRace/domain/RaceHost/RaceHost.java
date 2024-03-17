@@ -1,7 +1,7 @@
 package carRace.domain.RaceHost;
 
 import carRace.domain.Referee.Referee;
-import carRace.domain.car.CarGroups;
+import carRace.domain.car.CarGroup;
 import carRace.domain.car.CarNames;
 import carRace.domain.randomNumber.RandomNumber;
 import carRace.util.RandomNumberGenerator;
@@ -20,35 +20,35 @@ public class RaceHost {
         this.raceTryCount = raceTryCount;
     }
 
-    public void playGame(final CarGroups cars) {
+    public void playGame(final CarGroup carGroup) {
         for (int gameCount = 0; gameCount < raceTryCount; gameCount++) {
-            moveCar(cars);
-            OutputView.printRaceResult(cars);
+            moveCar(carGroup);
+            OutputView.printRaceResult(carGroup);
         }
     }
 
-    private void moveCar(final CarGroups cars) {
-        List<CompletableFuture<Void>> runningCars = cars.getCarGroups().stream()
+    private void moveCar(final CarGroup carGroup) {
+        List<CompletableFuture<Void>> runningCarGroup = carGroup.getCarGroup().stream()
             .map(car -> CompletableFuture.runAsync(
                 () -> car.move(new RandomNumber(RandomNumberGenerator.createRandomNumber()))))
             .collect(Collectors.toList());
 
-        waitCars(runningCars);
+        waitCarGroup(runningCarGroup);
     }
 
-    private void waitCars(final List<CompletableFuture<Void>> runningCars) {
-        CompletableFuture<Void> waitCars = CompletableFuture.allOf(
-            runningCars.toArray(new CompletableFuture[ZERO]));
-        ranAllCars(waitCars);
+    private void waitCarGroup(final List<CompletableFuture<Void>> runningCarGroup) {
+        CompletableFuture<Void> waitCarGroup = CompletableFuture.allOf(
+            runningCarGroup.toArray(new CompletableFuture[ZERO]));
+        ranAllCarGroup(waitCarGroup);
     }
 
-    private void ranAllCars(final CompletableFuture<Void> waitCars) {
-        waitCars.join();
+    private void ranAllCarGroup(final CompletableFuture<Void> waitCarGroup) {
+        waitCarGroup.join();
     }
 
-    public void progressAwardsCeremony(final CarGroups cars) {
+    public void progressAwardsCeremony(final CarGroup carGroup) {
         Referee referee = new Referee();
-        CarNames winners = referee.findWinners(cars);
+        CarNames winners = referee.findWinners(carGroup);
         OutputView.printWinnersResult(winners);
     }
 }
