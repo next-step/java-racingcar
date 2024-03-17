@@ -1,5 +1,6 @@
 package step3.view;
 
+import step3.application.domain.model.MovementLog;
 import step3.application.domain.model.OneMoveRecord;
 import step3.application.domain.model.RacingHistory;
 
@@ -17,8 +18,8 @@ public class ResultView {
         System.out.println();
     }
 
-    private void printLocation(int location) {
-        String currentLocation = LOCATION_MARK.repeat(Math.max(0, location));
-        System.out.println(currentLocation);
+    private void printLocation(MovementLog movementLog) {
+        String currentLocation = LOCATION_MARK.repeat(Math.max(0, movementLog.getPosition()));
+        System.out.println(String.format("%s : %s", movementLog.getName() ,currentLocation));
     }
 }
