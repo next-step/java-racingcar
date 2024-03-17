@@ -14,21 +14,21 @@ public class InputView {
         throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE.getMessage());
     }
 
-    public static int InputCarCount(){
+    public static int InputCarCount() {
         printCarQuestion();
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static int InputStageCount(){
+    public static int InputStageCount() {
         printStageQuestion();
         return Integer.parseInt(scanner.nextLine());
     }
 
-    private static void printCarQuestion(){
+    private static void printCarQuestion() {
         System.out.println(CAR_COUNT_QUESTION);
     }
 
-    private static void printStageQuestion(){
+    private static void printStageQuestion() {
         System.out.println(STAGE_COUNT_QUESTION);
     }
 }

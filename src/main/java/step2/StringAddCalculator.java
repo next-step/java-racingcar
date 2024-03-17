@@ -77,7 +77,7 @@ public class StringAddCalculator {
         return ints;
     }
 
-    private static int toInt(String token){
+    private static int toInt(String token) {
         if (!isDigit(token)) {
             throw new RuntimeException(INVALID_EXCEPTION_MESSAGE);
         }
