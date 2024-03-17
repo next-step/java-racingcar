@@ -52,11 +52,12 @@ public class StringTest {
 		// given
 		String input = "abc";
 		int index = 3;
+
 		// when, then
-		assertThatExceptionOfType(IndexOutOfBoundsException.class)
+		assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
 			.isThrownBy(() -> {
 				input.charAt(index);
-			}).withMessageMatching("Index: " + index + ", Size: " + input.length());
+			}).withMessageMatching("String index out of range: " + index);
 	}
 
 }
