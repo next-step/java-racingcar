@@ -1,13 +1,18 @@
 package carRacingWinner.test;
 
 import carRacingWinner.controller.WinnerRacingController;
+import carRacingWinner.entity.Car;
 import carRacingWinner.repository.WinnerRepository;
 import carRacingWinner.service.WinnerService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 class RacingWinnerTest {
 
@@ -22,12 +27,16 @@ class RacingWinnerTest {
     }
 
     @Test
-    @DisplayName("이름 나누기")
-    public void nameDivision() {
+    @DisplayName("차 확인")
+    public void carCheck() {
 
-        String name = "dog,panda,fire";
+        Car car = new Car("sona");
 
+        assertThat(car.getName()).isEqualTo("sona");
+        car.move();
+        car.move();
+        car.move();
+
+        assertThat(car.getLocation()).isEqualTo(3);
     }
-
-
 }
