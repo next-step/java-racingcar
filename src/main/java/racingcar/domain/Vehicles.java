@@ -28,4 +28,19 @@ public class Vehicles {
             vehicle.move(numberGenerator.getNumber());
         }
     }
+
+    public int getMaxPositionVehicle() {
+        int maxPosition = 0;
+        for (Vehicle vehicle : vehicles) {
+            maxPosition = vehicle.max(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    public String getMatchVehicle(int position) {
+        return vehicles.stream()
+            .filter(vehicle -> vehicle.isMatch(position))
+            .map(Vehicle::getName)
+            .collect(Collectors.joining(","));
+    }
 }

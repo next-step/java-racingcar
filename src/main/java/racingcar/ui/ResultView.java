@@ -21,25 +21,12 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinners(Vehicles vehicles) {
-        int maxMovePosition = getMaxPosition(vehicles.getVehicles());
-        System.out.println(String.format("%s가 최종 우승했습니다.", getWinnerNames(maxMovePosition, vehicles.getVehicles())));
+    public void printWinners(String winners) {
+
+        System.out.println(String.format("%s가 최종 우승했습니다.", winners));
     }
 
-    private int getMaxPosition(List<Vehicle> vehicles) {
-        int maxMove = 0;
-        for (Vehicle vehicle : vehicles) {
-            maxMove = vehicle.max(maxMove);
-        }
 
-        return maxMove;
-    }
 
-    private String getWinnerNames(int maxMovePosition, List<Vehicle> vehicles) {
 
-        return vehicles.stream()
-            .filter(vehicle -> vehicle.isMatch(maxMovePosition))
-            .map(Vehicle::getName)
-            .collect(Collectors.joining(","));
-    }
 }

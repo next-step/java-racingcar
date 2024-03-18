@@ -4,4 +4,5 @@ public interface Game {
 
     void start();
     Vehicles getVehicles();
+    String getWinners();
 }
