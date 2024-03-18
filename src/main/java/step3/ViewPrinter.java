@@ -15,15 +15,30 @@ public class ViewPrinter {
 
     public void printCars() {
         for (Car car : this.carList) {
-            printPosition(car.getPosition());
+            printPositionWithName(car);
             System.out.println();
         }
         System.out.println();
     }
 
-    private void printPosition(int position){
-        for(int count = 0; count < position; count++){
+    private void printPositionWithName(Car car){
+        System.out.print(car.getName() + " : ");
+        for(int count = 0; count < car.getPosition(); count++){
             System.out.print("-");
+        }
+    }
+
+    public void printWinners(List<Car> winnerList) {
+        for (int index = 0; index < winnerList.size(); index++) {
+            System.out.print(winnerList.get(index).getName());
+            printColon(winnerList, index);
+            System.out.println("가 최종 우승했습니다.");
+        }
+    }
+
+    private void printColon(List<?> objectList, int index){
+        if (index < objectList.size() - 2) {
+            System.out.print(", ");
         }
     }
 }
