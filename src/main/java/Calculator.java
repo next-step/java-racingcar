@@ -1,68 +1,48 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calculator {
+    private static final int ZERO = 0;
 
-    public int calculate(String input) {
-        if (isBlank(input)) {
-            return 0;
+    public static int calculate(String input) {
+        if (isBlank(input)){
+            return ZERO;
         }
-
-        return splitAndCalculate(input);
+        return sum(toInts(split(input)));
     }
 
-    private static int splitAndCalculate(String input) {
-        String[] split = split(input);
-        int result = toInts(split[0]);
-        for (int i = 0; i < split.length - 2; i += 2) {
-            result = operate(result, toInts(split[i + 2]), split[i + 1]);
+    private static boolean isBlank(String input) {
+        return input == null || input.isBlank();
+    }
+
+    private static int sum(int[] values) {
+        int result = 0;
+        for (int i = 0; i < values.length; i++) {
+            result += values[i];
         }
         return result;
     }
 
-
-    private static int toInts(String value) {
-        int intValue = Integer.parseInt(value);
-        if (intValue < 0) {
-            throw new IllegalStateException("input should be greater than 0");
+    private static int[] toInts(String[] values) {
+        int[] ints = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            int intValue = Integer.parseInt(values[i]);
+            if (intValue < 0) {
+                throw new RuntimeException("input should greater than 0");
+            }
+            ints[i] = intValue;
         }
-        return intValue;
-    }
-
-    private static boolean isBlank(String input) {
-        return input == null;
-    }
-
-
-    private static int operate(int a, int b, String operation) {
-        switch (operation) {
-            case "+": return sum(new int[]{a, b});
-            case "-": return minus(new int[]{a, b});
-            case "*": return multiply(new int[]{a, b});
-            case "/": return divide(new int[]{a, b});
-        }
-        throw new IllegalStateException("this operation not support : " + operation);
-    }
-
-    private static int sum(int[] values) {
-        return values[0] + values[1];
-    }
-
-
-    private static int minus(int[] values) {
-        return values[0] - values[1];
-    }
-
-
-    private static int multiply(int[] values) {
-        return values[0] * values[1];
-    }
-
-
-    private static int divide(int[] values) {
-        return values[0] / values[1];
+        return ints;
     }
 
 
     private static String[] split(String input) {
-        return StringUtils.split(input, " ");
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        if(!m.find()){
+            return StringUtils.split(input, ",|:");
+        }
+
+        String customDelimiter = m.group(1);
+        return StringUtils.split(m.group(2), customDelimiter);
     }
 }

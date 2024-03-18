@@ -1,80 +1,72 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
-/**
- *
-요구사항
-        사용자가 입력한 문자열 값에 따라 사칙연산을 수행할 수 있는 계산기를 구현해야 한다.
-        문자열 계산기는 사칙연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서가 결정된다. 즉, 수학에서는 곱셈, 나눗셈이 덧셈, 뺄셈 보다 먼저 계산해야 하지만 이를 무시한다.
-        예를 들어 "2 + 3 * 4 / 2"와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
- */
+
 @DisplayName("문자열 계산기")
 public class CalculatorTest {
 
-    @Test
-    @DisplayName("입력한 문자열의 사칙연산 결과를 반환한다")
-    public void operationTest() {
-
-        Calculator sut = new Calculator();
-
-        int actual = sut.calculate("1 + 2 + 3");
-
-        assertThat(actual).isEqualTo(6);
-    }
-
-    @Test
-    @DisplayName("null이 입력되면 0을 반환한다")
-    public void nullTest() {
-        Calculator sut = new Calculator();
-
-        int actual = sut.calculate(null);
-
-        assertThat(actual).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("+를 구분자로한 숫자 두개 문자열 입력하면 두 수의 합을 반환한다")
-    public void twoNumberAddTest() {
-        Calculator sut = new Calculator();
-
-        int actual = sut.calculate("1 + 2");
-
-        assertThat(actual).isEqualTo(3);
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void inputIsNullOrEmptyShouldReturnZero(String value) {
+        int result = Calculator.calculate(value);
+        assertThat(result).isEqualTo(0);
     }
 
 
     @Test
-    @DisplayName("1 + 2 - 1")
-    public void sumMinusTest() {
-        Calculator sut = new Calculator();
+    @DisplayName("입력 문자열이 숫자 하나이면 해당 숫자를 반환한다")
+    public void inputHasOnlyOneNumberShouldReturnTheNumber() {
+        int result = Calculator.calculate("5");
+        assertThat(result).isEqualTo(5);
 
-        int actual = sut.calculate("1 + 2 - 1");
-
-        assertThat(actual).isEqualTo(2);
     }
 
 
     @Test
-    @DisplayName("음수를 입력하면 예외 발생한다")
-    public void negativeShouldFailTest() {
-        Calculator sut = new Calculator();
+    @DisplayName("입력 문자열을 쉼표(,) 구분자로 분리하고 합을 반환한다")
+    public void splitInput_delimiterIsComma() {
+        String input = "1,2,3";
 
-        Assertions.assertThrows(IllegalStateException.class, () -> sut.calculate("-2 + 1"));
+        int result = Calculator.calculate(input);
+
+        assertThat(result).isEqualTo(6);
     }
 
 
     @Test
-    @DisplayName("input이 숫자 1개면 숫자를 반환한다")
-    public void inputIsOnlyOneNumberShouldReturnNumber() {
-        Calculator sut = new Calculator();
+    @DisplayName("입력 문자열을 쉼표(:) 구분자로 분리하고 합을 반환한다")
+    public void splitInput_delimiterIsColon() {
+        String input = "1:2:3";
 
-        assertThat(sut.calculate("1")).isEqualTo(1);
+        int result = Calculator.calculate(input);
+
+        assertThat(result).isEqualTo(6);
     }
 
 
+    @Test
+    @DisplayName("입력 문자열을 문자열 앞부분의 “//”와 “\\n” 사이에 위치하는 문자를 커스텀 구분자로 분리하고 합을 반환한다")
+    public void splitInput_delimiterIsCustom() {
+        String input = "//k\n1k2k3";
+
+        int result = Calculator.calculate(input);
+
+        assertThat(result).isEqualTo(6);
+    }
+
+
+    @Test
+    @DisplayName("음수 문자열이 입력될 경우 RuntimeException 발생한다")
+    public void negativeNumberShouldThrowRuntimeException() {
+        String input = "-1:2:3";
+
+        Assertions.assertThrows(RuntimeException.class, () -> Calculator.calculate(input));
+    }
 
 
 }
