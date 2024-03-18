@@ -19,4 +19,16 @@ class RacingCarsTest {
         assertThat(sut.numberOfParticipants()).isEqualTo(carCount);
     }
 
+    @Test
+    @DisplayName("moveCar 매개변수가 4이상이면 자동차가 전진한다")
+    public void moveCarTest() {
+        RacingCars sut = new RacingCars(5);
+        sut.moveCar(() -> 5);
+
+        for (Car racingCar : sut.getRacingCars()) {
+            assertThat(racingCar.position()).isEqualTo(1);
+        }
+    }
+
+
 }

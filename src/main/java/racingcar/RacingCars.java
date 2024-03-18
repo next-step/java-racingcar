@@ -19,9 +19,9 @@ public class RacingCars {
     }
 
 
-    public void moveCar() {
+    public void moveCar(RandomStrategy strategy) {
         for (Car car : cars) {
-            car.moveForward(RandomStep.step());
+            car.moveForward(strategy.create());
         }
     }
 
