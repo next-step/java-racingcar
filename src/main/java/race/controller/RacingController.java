@@ -9,8 +9,8 @@ import race.view.ResultView;
 
 import java.util.List;
 
-public class RacingMain {
-    public static void main(String[] args) {
+public class RacingController {
+    public void startRace() {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         RacingGame racingGame = new RacingGame();
