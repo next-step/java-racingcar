@@ -1,16 +1,11 @@
 package racingcar.vo;
 
-import static java.text.MessageFormat.format;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 import racingcar.domain.Cars;
 
 public class CarResult {
-
-    private static final String CAR_RESULT_FORMAT = "{0} {1}";
-    private static final String POSITION_ICON = "-";
 
     private final String name;
     private final int position;
@@ -20,11 +15,12 @@ public class CarResult {
         this.position = position;
     }
 
-    @Override
-    public String toString() {
-        final String positionIcons = POSITION_ICON.repeat(this.position);
+    public String name() {
+        return this.name;
+    }
 
-        return format(CAR_RESULT_FORMAT, this.name, positionIcons);
+    public int position() {
+        return this.position;
     }
 
     public static List<CarResult> fromCars(final Cars cars) {

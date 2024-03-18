@@ -11,6 +11,8 @@ import racingcar.view.io.Input;
 import racingcar.view.io.Output;
 import racingcar.view.io.console.ConsoleInput;
 import racingcar.view.io.console.ConsoleOutput;
+import racingcar.view.util.ConsoleResultFormatter;
+import racingcar.view.util.ResultFormatter;
 
 public final class RacingCarConfig {
 
@@ -25,6 +27,10 @@ public final class RacingCarConfig {
 
     public static Output outputView() {
         return (Output)container.computeIfAbsent(Output.class, k -> new ConsoleOutput());
+    }
+
+    public static ResultFormatter resultFormatter() {
+        return (ResultFormatter)container.computeIfAbsent(ResultFormatter.class, k -> new ConsoleResultFormatter());
     }
 
     public static Rule rule() {

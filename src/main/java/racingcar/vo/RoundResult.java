@@ -1,13 +1,8 @@
 package racingcar.vo;
 
-import static java.text.MessageFormat.format;
-
 import java.util.List;
 
 public class RoundResult {
-
-    private static final String ROUND_TITLE = "[Round {0}]";
-    private static final String LINE_BREAK = "\n";
 
     private final int round;
     private final List<CarResult> carResults;
@@ -17,12 +12,11 @@ public class RoundResult {
         this.carResults = carResults;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(format(ROUND_TITLE, round)).append(LINE_BREAK);
-        carResults.forEach(carResult -> stringBuilder.append(carResult).append(LINE_BREAK));
+    public int round() {
+        return this.round;
+    }
 
-        return stringBuilder.toString();
+    public List<CarResult> carResults() {
+        return this.carResults;
     }
 }

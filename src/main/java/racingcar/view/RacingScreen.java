@@ -6,6 +6,7 @@ import static racingcar.config.RacingCarException.UNEXPECTED_EXCEPTION;
 import racingcar.util.StringSplitter;
 import racingcar.view.io.Input;
 import racingcar.view.io.Output;
+import racingcar.view.util.ResultFormatter;
 import racingcar.vo.GameResult;
 
 public class RacingScreen implements RacingView {
@@ -16,10 +17,12 @@ public class RacingScreen implements RacingView {
 
     private final Input input;
     private final Output output;
+    private final ResultFormatter resultFormatter;
 
-    public RacingScreen(final Input input, final Output output) {
+    public RacingScreen(final Input input, final Output output, final ResultFormatter resultFormatter) {
         this.input = input;
         this.output = output;
+        this.resultFormatter = resultFormatter;
     }
 
     @Override
@@ -47,8 +50,10 @@ public class RacingScreen implements RacingView {
     }
 
     @Override
-    public void printGameResult(final GameResult result) {
-        output.printOneLine(result.toString());
+    public void printGameResult(final GameResult gameResult) {
+        final String gameResultView = resultFormatter.formatGameResult(gameResult);
+
+        output.printOneLine(gameResultView);
     }
 
     @Override
