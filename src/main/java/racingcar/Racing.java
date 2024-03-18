@@ -1,6 +1,7 @@
 package racingcar;
 
 public class Racing {
+    /*
     InputView inputView;
     OutputView outputView;
     CarGroup carGroup;
@@ -23,4 +24,6 @@ public class Racing {
         Racing racing = new Racing();
         racing.race();
     }
+
+     */
 }

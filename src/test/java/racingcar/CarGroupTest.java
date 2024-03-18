@@ -1,13 +1,14 @@
 package racingcar;
 
-import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CarGroupTest {
+public class
+
+CarGroupTest {
     //given
-    String carNames = "poby,crong,honux";
+    String[] carNames = {"poby", "crong", "honux"};
     CarGroup carGroup = new CarGroup(carNames);
 
     @Test
@@ -48,15 +49,15 @@ public class CarGroupTest {
 
     @Test
     @DisplayName("(5) 우승자 선정")
-    public void winner(){
+    public void winnerNames(){
         //given
-        String carNamesForWinnerTest = "poby,crong,honux";
-        String[] carNamesForWinnerTestArray = carNamesForWinnerTest.split(",");
+        String[] carNamesForWinnerTest = {"poby", "crong", "honux"};
         CarGroup carGroupForWinnerTest = new CarGroup(carNamesForWinnerTest);
 
         //when, then
-        for (int i = 0; i < CarGroupForWinnerTest.carGroupSize(); i++){
-            Assertions.assertThat(carGroupForWinnerTest.winner()[i]).isEqualTo(carNamesForWinnerTestArray[i]);
+        for (int i = 0; i < carGroupForWinnerTest.carGroupSize(); i++){
+            Assertions.assertThat(carGroupForWinnerTest.winnerNames().get(i)).isEqualTo(carNamesForWinnerTest[i]);
         }
     }
+
 }

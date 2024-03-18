@@ -7,7 +7,8 @@ public class Car {
     private int position;
     private static final Random random = new Random(54321);
 
-    public Car() {
+    public Car(String carName) {
+        this.carName = carName;
         position = 0;
     }
 
