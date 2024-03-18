@@ -1,6 +1,6 @@
 package racingcar.step4.view.dto;
 
-import racingcar.step4.domain.Winners;
+import racingcar.step4.domain.Cars;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class RacingCarGameWinnerDto {
     this.winnerNames = winnerNames;
   }
 
-  public static RacingCarGameWinnerDto covert(Winners winners) {
+  public static RacingCarGameWinnerDto covert(Cars winners) {
     return new RacingCarGameWinnerDto(winners.getWinnerNames());
   }
 

@@ -5,21 +5,20 @@ import racingcar.step4.domain.strategy.RandomNumberGenerator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
   private final int round;
-  private List<Car> cars;
-  private Winners winners;
+  private Cars racingCars;
+  private Cars winners;
 
-  private RacingCarGame(int round, List<Car> cars, Winners winners) {
+  private RacingCarGame(int round, Cars racingCars, Cars winners) {
     this.round = round;
-    this.cars = cars;
+    this.racingCars = racingCars;
     this.winners = winners;
   }
 
-  public static RacingCarGame generate(int round, List<Car> cars) {
+  public static RacingCarGame generate(int round, Cars cars) {
     return new RacingCarGame(round, cars, null);
   }
 
@@ -27,11 +26,11 @@ public class RacingCarGame {
     return round;
   }
 
-  public List<Car> getCars() {
-    return cars;
+  public List<Car> getRacingCars() {
+    return racingCars.getCars();
   }
 
-  public Winners getWinners() {
+  public Cars getWinners() {
     return winners;
   }
 
@@ -40,9 +39,8 @@ public class RacingCarGame {
   }
 
   public void start() {
-    this.cars.forEach(it -> it.move(new RandomNumberGenerator()));
-    List<Car> copyCars = cars.stream().map(Car::copy).collect(Collectors.toList());
-    this.cars = copyCars;
-    this.winners = Winners.pickWinners(copyCars);
+    this.racingCars.move(new RandomNumberGenerator());
+    this.racingCars = racingCars.copyCars();
+    this.winners = Cars.pickWinners(this.racingCars);
   }
 }

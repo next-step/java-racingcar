@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.step4.domain.Car;
+import racingcar.step4.domain.Cars;
 import racingcar.step4.domain.factory.RacingCarGameFactory;
 import racingcar.step4.domain.strategy.RandomCarMoveStrategy;
 
@@ -21,10 +22,11 @@ import static racingcar.step4.domain.factory.RacingCarGameFactory.NUMBER_OR_ROUN
 @DisplayName("자동차 경주 테스트")
 public class RacingCarGameFactoryTest {
 
-  private static final List<Car> CARS = List.of(
-      new Car("car1", new RandomCarMoveStrategy()),
-      new Car("car2", new RandomCarMoveStrategy())
-  );
+  private static final Cars CARS = new Cars(
+      List.of(
+          new Car("car1", new RandomCarMoveStrategy()),
+          new Car("car2", new RandomCarMoveStrategy())
+      ));
 
   @ParameterizedTest
   @MethodSource("getCorrectTestCases")
@@ -45,7 +47,7 @@ public class RacingCarGameFactoryTest {
   @Test
   @DisplayName("경주할 자동차가 없는 경우, 자동차 경주 게임 생성 실패 테스트")
   void racingCarGameCreateTest3() {
-    List<Car> emptyCars = List.of();
+    Cars emptyCars = new Cars(List.of());
     assertThatThrownBy(() -> RacingCarGameFactory.of(1, emptyCars))
         .isInstanceOfAny(IllegalArgumentException.class)
         .hasMessageContaining(String.format(NUMBER_OR_CARS_IS_INCORRECT, emptyCars.size()));

@@ -1,7 +1,5 @@
 package racingcar.step4.domain;
 
-import java.util.Objects;
-
 public class Position implements Comparable<Position> {
 
   public static final String CAR_POSITION_CAN_NOT_BE_NEGATIVE = "자동차 위치는 음수가 될 수 없습니다.";

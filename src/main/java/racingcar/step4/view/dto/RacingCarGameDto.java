@@ -17,7 +17,7 @@ public class RacingCarGameDto {
 
   public static RacingCarGameDto covert(RacingCarGame racingCarGame) {
     int round = racingCarGame.getRound();
-    List<CarDto> carDtos = racingCarGame.getCars().stream()
+    List<CarDto> carDtos = racingCarGame.getRacingCars().stream()
         .map(it -> new CarDto(it.getCarName().get(), it.getPosition().get()))
         .collect(Collectors.toList());
 
