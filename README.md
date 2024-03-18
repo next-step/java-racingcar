@@ -21,3 +21,9 @@
 * 전진일 경우 Car 객체의 location 값을 1 증가 - Car
 * 경주 종료 후 우승자 찾기. Car를 담고 있는 리스트에서 position이 가장 큰 차의 이름 뽑아내기 - Winner
 * 경주 결과 출력 - ResultView
+
+## 5단계 피드백
+* hashCode 오버라이딩 : 꼭 Position을 리턴해야 하는가
+* NameTest에서 assertThatIllegalArgumentException 활용해보기
+* Text Fixture의 개념
+* 도메인에서 컨트롤러 파트 분리
