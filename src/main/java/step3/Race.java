@@ -1,27 +1,29 @@
 package step3;
 
 
+import step3.object.Car;
 import step3.util.NumberGenerator;
 import step3.util.RandomNumberGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Race {
 
     private final NumberGenerator numberGenerator = new RandomNumberGenerator();
 
-    public Car[] generateCarArray(int carCount){
-        Car[] carArray = new Car[carCount];
-        for (int index = 0; index < carCount; index++) {
-            carArray[index] = new Car();
+    public List<Car> generateCarList(int carCount){
+        List<Car> carList = new ArrayList<>();
+        for(int count = 0; count < carCount; count++){
+            carList.add(new Car());
         }
-        return carArray;
+        return carList;
     }
 
-    public void startMoving(Car[] carArray){
-        for (int i = 0; i < carArray.length; i++) {
-            System.out.println(carArray[i].getPosition());
+    public void startMoving(List<Car> carList){
+        for (Car car : carList) {
             int chance = numberGenerator.generate();
-            carArray[i].move(chance);
+            car.move(chance);
         }
-        System.out.println();
     }
 }
