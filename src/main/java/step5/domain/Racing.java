@@ -10,25 +10,18 @@ public class Racing {
     private final int tryNumber;
     private final CarEntry carEntry;
 
-    public static Racing createRacing(String[] carNames, int tryNumber) {
-        return new Racing(tryNumber, carNames);
+    public static Racing createRacing(String[] carNames, int tryNumber, RandomMoveStrategy randomMoveStrategy) {
+        return new Racing(tryNumber, carNames, randomMoveStrategy);
     }
 
-    public Racing(int tryNumber, String[] carNames) {
+    public Racing(int tryNumber, String[] carNames, RandomMoveStrategy randomMoveStrategy) {
         this.tryNumber = tryNumber;
-        this.carEntry = createCarList(carNames);
+        this.carEntry = createCarList(carNames, randomMoveStrategy);
     }
 
-    private CarEntry createCarList(String[] carNames) {
-        return CarEntry.create(carNames, createCarRandomMoveStrategy());
+    private CarEntry createCarList(String[] carNames, RandomMoveStrategy randomMoveStrategy) {
+        return CarEntry.create(carNames, randomMoveStrategy);
     }
-
-    private static RandomMoveStrategy createCarRandomMoveStrategy() {
-        RandomCreator randomCreator = new RandomCreator();
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(randomCreator);
-        return randomMoveStrategy;
-    }
-
 
     public int getCarNumberOfParticipants() {
         return this.carEntry.size();
