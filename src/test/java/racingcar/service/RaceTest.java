@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.domain.CarNames;
 import racingcar.domain.MovementStrategy;
 import racingcar.vo.GameResult;
 
@@ -27,7 +28,8 @@ class RaceTest {
     @Test
     @DisplayName("자동차 이름 목록을 통해 레이스를 생성한다.")
     void of_CarNames_Race() {
-        final String[] carNames = {"kyle", "alex", "haley"};
+        final String[] names = {"kyle", "alex", "haley"};
+        final CarNames carNames = CarNames.from(names);
 
         assertThat(Race.of(carNames, movementForwardStrategy))
                 .isNotNull();
@@ -36,21 +38,23 @@ class RaceTest {
     @Test
     @DisplayName("자동차 경주를 진행하면 그에 따른 경주 결과를 반환한다.")
     void progress_GameResult_WinnerNames() {
-        final String[] carNames = {"kyle", "alex", "haley"};
+        final String[] names = {"kyle", "alex", "haley"};
+        final CarNames carNames = CarNames.from(names);
         final int playingCount = 1;
 
         final Race race = Race.of(carNames, movementForwardStrategy);
         final GameResult result = race.progress(playingCount);
 
         assertThat(result.winnerNames())
-                .containsOnly(carNames);
+                .containsOnly(names);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     @DisplayName("0 이하의 레이싱 시도 횟수만큼 경주를 하려는 경우 예외를 던진다.")
     void progress_NegativeOrZeroPlayingCount_Exception(final int negativeOrZeroPlayingCount) {
-        final String[] carNames = {"kyle", "alex", "haley"};
+        final String[] names = {"kyle", "alex", "haley"};
+        final CarNames carNames = CarNames.from(names);
         final Race race = Race.of(carNames, movementForwardStrategy);
 
         assertThatThrownBy(() -> race.progress(negativeOrZeroPlayingCount))
