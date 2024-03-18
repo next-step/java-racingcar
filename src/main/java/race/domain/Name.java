@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Name {
 
     private static final int LENGTH_STANDARD = 5;
-    private String name;
+    private final String name;
 
     public Name(String name) {
         if (name.isEmpty())
