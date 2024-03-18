@@ -8,9 +8,7 @@ public class PrintView {
 	}
 
 	public static void printCarMoving(Car car) {
-		for(int i = 0; i < car.getPosition(); i++) {
-			System.out.print("-");
-		}
+		System.out.print(car.getName() + " : " + "-".repeat(car.getPosition()));
 
 		printEmptyLine();
 	}
