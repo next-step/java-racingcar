@@ -1,10 +1,10 @@
-package racingcar.view.console;
+package racingcar.view.io.console;
 
 import java.util.Scanner;
 
-import racingcar.view.InputView;
+import racingcar.view.io.Input;
 
-public class ConsoleInputView implements InputView {
+public class ConsoleInput implements Input {
 
     private static final Scanner scanner = new Scanner(System.in);
 

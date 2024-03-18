@@ -4,23 +4,19 @@ import java.util.List;
 
 public class GameResult {
 
-    private static final String LINE_BREAK = "\n";
-
     private final List<RoundResult> roundResults;
+    private final List<String> winnerNames;
 
-    private GameResult(final List<RoundResult> roundResults) {
+    public GameResult(final List<RoundResult> roundResults, final List<String> winnerNames) {
         this.roundResults = roundResults;
+        this.winnerNames = winnerNames;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder stringBuilder = new StringBuilder();
-        this.roundResults.forEach(roundResult -> stringBuilder.append(roundResult).append(LINE_BREAK));
-
-        return stringBuilder.toString();
+    public List<RoundResult> roundResults() {
+        return this.roundResults;
     }
 
-    public static GameResult from(final List<RoundResult> roundResults) {
-        return new GameResult(roundResults);
+    public List<String> winnerNames() {
+        return this.winnerNames;
     }
 }

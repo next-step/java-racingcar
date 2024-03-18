@@ -1,35 +1,32 @@
 package racingcar.vo;
 
-import static java.text.MessageFormat.format;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class CarResult {
 
-    private static final String CAR_RESULT_FORMAT = "[{0}] {1}";
-    private static final String POSITION_ICON = "-";
-
-    private final int number;
+    private final String name;
     private final int position;
 
-    private CarResult(final int number, final int position) {
-        this.number = number;
+    private CarResult(final String name, final int position) {
+        this.name = name;
         this.position = position;
     }
 
-    @Override
-    public String toString() {
-        final String positionIcons = POSITION_ICON.repeat(this.position);
-
-        return format(CAR_RESULT_FORMAT, this.number, positionIcons);
+    public String name() {
+        return this.name;
     }
 
-    public static List<CarResult> fromCars(final List<Car> cars) {
-        return cars.stream()
-                .map(car -> new CarResult(car.number(), car.position()))
+    public int position() {
+        return this.position;
+    }
+
+    public static List<CarResult> fromCars(final Cars cars) {
+        return cars.cars()
+                .stream()
+                .map(car -> new CarResult(car.name(), car.position()))
                 .collect(Collectors.toList());
     }
 }

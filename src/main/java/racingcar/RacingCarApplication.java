@@ -1,19 +1,22 @@
 package racingcar;
 
+import static racingcar.config.RacingCarConfig.inputView;
+import static racingcar.config.RacingCarConfig.numberGenerator;
+import static racingcar.config.RacingCarConfig.outputView;
+import static racingcar.config.RacingCarConfig.resultFormatter;
+import static racingcar.config.RacingCarConfig.rule;
+
 import racingcar.controller.RacingGame;
-import racingcar.controller.RacingScreen;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
-import racingcar.view.console.ConsoleInputView;
-import racingcar.view.console.ConsoleOutputView;
+import racingcar.domain.MovementStrategy;
+import racingcar.view.RacingScreen;
+import racingcar.view.RacingView;
 
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        final InputView inputView = new ConsoleInputView();
-        final OutputView outputView = new ConsoleOutputView();
-        final RacingScreen racingScreen = new RacingScreen(inputView, outputView);
+        final RacingView racingView = new RacingScreen(inputView(), outputView(), resultFormatter());
+        final MovementStrategy movementStrategy = new MovementStrategy(rule(), numberGenerator());
 
-        new RacingGame(racingScreen).play();
+        new RacingGame(racingView, movementStrategy).play();
     }
 }
