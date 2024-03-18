@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.*;
+import racingcar.domain.*;
 
 public class ResultView {
 

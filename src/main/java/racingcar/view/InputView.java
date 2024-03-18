@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.model.CarNames;
-import racingcar.model.Validator;
+import racingcar.domain.CarNames;
+import racingcar.domain.Validator;
 
 import java.util.Scanner;
 

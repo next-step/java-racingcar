@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 public class Car {
     private static final int MOVE_STANDARD = 4;
