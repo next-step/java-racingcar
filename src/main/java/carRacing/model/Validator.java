@@ -9,8 +9,7 @@ public class Validator {
     public static final int MIN_DISTANCE = 0;
     public static final int MAX_DISTANCE = 9;
 
-
-    public void nullCheck(String input) {
+    public void checkNull(String input) {
         if (input == null || input.isBlank()) {
             throw new RuntimeException("입력된 숫자가 없습니다.");
         }

@@ -15,13 +15,13 @@ public class RacingCarTest {
 
     @Test
     void moveCar() {
-        racingCar.move(()->true);
-        assertThat(racingCar.positionOfRacingCar()).isEqualTo(1);
+        racingCar.move(() -> true);
+        assertThat(racingCar.position()).isEqualTo(1);
     }
 
     @Test
     void stopCar() {
-        racingCar.move(()->false);
-        assertThat(racingCar.positionOfRacingCar()).isEqualTo(0);
+        racingCar.move(() -> false);
+        assertThat(racingCar.position()).isEqualTo(0);
     }
 }

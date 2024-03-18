@@ -2,6 +2,7 @@ package carRacing.view;
 
 import carRacing.model.Validator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -18,15 +19,26 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public int inputNumber(String values){
+    public static String nameOfCar() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine();
+    }
+
+    public static int inputNumber(String values){
         return numberCheck(values);
     }
 
-    Validator validator = new Validator();
+    static Validator validator = new Validator();
 
-    public Integer numberCheck(String inNumber) {
+    public static Integer numberCheck(String inNumber) {
         validator.numericCheck(inNumber);
-        validator.nullCheck(inNumber);
+        validator.checkNull(inNumber);
         return Integer.parseInt(inNumber);
     }
+
+    public static List<String> inputCarNames() {;
+        String inCarName = InputView.nameOfCar();
+        return List.of(inCarName.split(","));
+    }
+
 }

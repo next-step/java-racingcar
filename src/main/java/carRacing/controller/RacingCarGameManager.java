@@ -12,12 +12,10 @@ import java.util.List;
 
 public class RacingCarGameManager {
 
-    InputView in = new InputView();
-
     public void run() {
         // 입력
-        int carCount = in.inputNumber(InputView.numberOfCar());
-        int raceCount = in.inputNumber(InputView.numberOfRace());
+        int carCount = InputView.inputNumber(InputView.numberOfCar());
+        int raceCount = InputView.inputNumber(InputView.numberOfRace());
 
         List<RacingCar> records = new ArrayList<>();
 
