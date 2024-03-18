@@ -14,38 +14,26 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class GameTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2})
-    @DisplayName("자동차 경주 게임 초기화 테스트: 각 자동차의 이름 (n번 자동차) 와 초기 위치(0)을 가짐")
+    @DisplayName("자동차 경주 게임 초기화 테스트: 입력한 String에 , 로 구분된 갯수만큼 자동차를 생성 & 초기 위치(0)을 가짐")
     public void createAttendedCars(int input) {
         Game game = new Game();
-        game.createAttendedCars(3);
+        game.createAttendedCarsWithName("전공,지식,노트");
         assertThat(game.getAttendedCars().size()).isEqualTo(3);
-        assertThat(game.getAttendedCars().get(input).getName()).isEqualTo(1 + input + "번 자동차");
         assertThat(game.getAttendedCars().get(input).getCurrentLocation()).isEqualTo(0);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 4})
+    @ValueSource(ints = {0, 1, 2})
     @DisplayName("자동차 경주 게임 테스트: 5번을 실행했을 때, 각 자동차의 위치가 0과 5사이에 있음")
     public void playGame(int input) {
         Game game = new Game();
-        game.createAttendedCars(5);
+        game.createAttendedCarsWithName("전공,지식,노트");
         game.playGame(5);
         assertThat(game.getAttendedCars().get(input).getCurrentLocation()).isBetween(0, 5);
     }
 
     @Test
-    @DisplayName("자동차 대수에 음수 입력했을 경우, IllegalArgumentException 발생")
-    public void negativeNumberInCarNumber() {
-        Game game = new Game();
-
-        assertThatThrownBy(() -> {
-            game.createAttendedCars(-1);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 대수는 음수가 될 수 없습니다.");
-    }
-
-    @Test
-    @DisplayName("자동차 대수에 음수 입력했을 경우, IllegalArgumentException 발생")
+    @DisplayName("시도 횟수에 음수 입력했을 경우, IllegalArgumentException 발생")
     public void negativeNumberInAttempts() {
         Game game = new Game();
 

@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Game {
     private final List<Car> attendedCars;
@@ -17,16 +18,6 @@ public class Game {
 
     public List<Car> getAttendedCars() {
         return attendedCars;
-    }
-
-    public void createAttendedCars(int numberOfCar) {
-        if (numberOfCar < 0) {
-            throw new IllegalArgumentException("자동차 대수는 음수가 될 수 없습니다.");
-        }
-
-        for (int i = 0; i < numberOfCar; i++) {
-            attendedCars.add(new Car(i + 1 + "번"));
-        }
     }
 
     public void createAttendedCarsWithName(String nameOfCar) {
@@ -51,20 +42,13 @@ public class Game {
 
     public List<Car> getWinners() {
         int maxNum = this.getWinnerLocation();
-        List<Car> winner = new ArrayList<>();
 
-        for (Car car: this.attendedCars) {
-            if (car.getCurrentLocation() == maxNum) {
-                winner.add(car);
-            }
-        }
-
-        return winner;
+        return this.attendedCars.stream().filter(car -> car.getCurrentLocation() == maxNum).collect(Collectors.toList());
     }
 
     private int getWinnerLocation() {
         return attendedCars.stream()
-                .max(Comparator.comparing(Car::getCurrentLocation)).get()
+                .max(Comparator.comparing(Car::getCurrentLocation)).orElseGet(() -> new Car("", Integer.MAX_VALUE))
                 .getCurrentLocation();
     }
 

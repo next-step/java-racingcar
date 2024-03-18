@@ -34,7 +34,7 @@ public class Car {
         }
     }
 
-    private static boolean isMove(int movePoint) {
+    private boolean isMove(int movePoint) {
         return movePoint >= MOVABLE_LOWER_BOUND;
     }
 }
