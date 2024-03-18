@@ -1,6 +1,6 @@
-package racingcar;
+package view;
 
-import static racingcar.ResultView.result;
+import static view.ResultView.result;
 
 public class RacingCar {
 

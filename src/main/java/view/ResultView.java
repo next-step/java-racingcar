@@ -1,4 +1,7 @@
-package racingcar;
+package view;
+
+import domain.Car;
+import domain.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +13,7 @@ public class ResultView {
 		lineBreaking();
 		System.out.println("실행 결과");
 
-		Cars cars = Cars.createCars(carNames);
+		Cars cars = Cars.createCarsByCarNames(carNames);
 
 		viewCarPositions(cars, count, POSITION_CHAR_CODE);
 
@@ -52,7 +55,7 @@ public class ResultView {
 	public static String carNameAndPositionWithChar(final Car car, final char positionChar) {
 
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < car.getPosition(); i++) {
+		for (int i = 0; i < car.getPositionNumber(); i++) {
 			sb.append(positionChar);
 		}
 		return car.getName() + " : " + sb.toString();

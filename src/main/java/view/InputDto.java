@@ -1,4 +1,4 @@
-package racingcar;
+package view;
 
 public class InputDto {
 	private Integer count;
