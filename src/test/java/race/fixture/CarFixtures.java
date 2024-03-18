@@ -1,8 +1,8 @@
-package race.constant;
+package race.fixture;
 
 import race.domain.Car;
 
-public class Definition {
+public class CarFixtures {
     public static final Car POBI = new Car("pobi");
     public static final Car NANA = new Car("nana");
     public static final Car ABCDE = new Car("abcde");
