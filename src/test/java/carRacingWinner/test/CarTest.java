@@ -1,6 +1,7 @@
 package carRacingWinner.test;
 
 import carRacingWinner.entity.Car;
+import carRacingWinner.repository.WinnerRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,17 @@ public class CarTest {
         car.move();
         car.move();
         assertThat(car.getLocation()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("차량수 확인")
+    public void carPrint() {
+        WinnerRepository winnerRepository = new WinnerRepository();
+
+        winnerRepository.addCar(new Car("one"));
+        winnerRepository.addCar(new Car("two"));
+        winnerRepository.addCar(new Car("thre"));
+
+        assertThat(winnerRepository.getCars().size()).isEqualTo(3);
     }
 }
