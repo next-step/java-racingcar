@@ -1,27 +1,38 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Game {
-    private static final int DEFAULT_START_LOCATION = 0;
     private final List<Car> attendedCars;
+    private final RandomGenerator randomGenerator;
 
     public Game() {
-        this.attendedCars = new ArrayList<>();
+        this(new ArrayList<>());
+    }
+
+    public Game(List<Car> attendedCars) {
+        this.attendedCars = attendedCars;
+        this.randomGenerator = new RandomGenerator();
     }
 
     public List<Car> getAttendedCars() {
         return attendedCars;
     }
 
-    public void createAttendedCars(int numberOfCar) {
-        for (int i = 0; i < numberOfCar; i++) {
-            attendedCars.add(new Car(i + 1 + "번 자동차", DEFAULT_START_LOCATION));
+    public void createAttendedCarsWithName(String nameOfCar) {
+        String[] splittedName = nameOfCar.split(",");
+
+        for (String name: splittedName) {
+            attendedCars.add(new Car(name));
         }
     }
 
     public void playGame(int numberOfAttempts) {
+        if (numberOfAttempts < 0) {
+            throw new IllegalArgumentException("시도할 횟수는 음수가 될 수 없습니다.");
+        }
+
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttempts; i++) {
             this.playSession();
@@ -29,9 +40,21 @@ public class Game {
         }
     }
 
+    public List<Car> getWinners() {
+        int maxNum = this.getWinnerLocation();
+
+        return this.attendedCars.stream().filter(car -> car.getCurrentLocation() == maxNum).collect(Collectors.toList());
+    }
+
+    private int getWinnerLocation() {
+        return attendedCars.stream()
+                .max(Comparator.comparing(Car::getCurrentLocation)).orElseGet(() -> new Car("", Integer.MAX_VALUE))
+                .getCurrentLocation();
+    }
+
     private void playSession() {
         for (Car car : attendedCars) {
-            car.drive();
+            car.move(randomGenerator.getRandomMovePoint());
         }
     }
 }
