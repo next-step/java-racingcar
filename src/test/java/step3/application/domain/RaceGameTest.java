@@ -24,11 +24,8 @@ class RaceGameTest {
         );
         return Stream.of(
                 arguments(
-                        List.of(
-                                new Car("pobi", 1),
-                                new Car("crong", 1),
-                                new Car("honux", 2)
-                        ),
+                        List.of("pobi", "crong", "honux"),
+                        List.of(1, 1, 2),
                         new RaceGameLog(
                                 List.of(
                                         new OneMovementLog(movementLogs),
@@ -42,9 +39,9 @@ class RaceGameTest {
 
     @ParameterizedTest
     @MethodSource("move")
-    void moveCars(List<Car> cars, RaceGameLog expected) {
-        RaceGame raceGame = new RaceGame(cars, new MovablePredicatedGenerator());
-        RaceGameLog result = raceGame.startRace(3);
+    void moveCars(List<String> names, List<Integer> positions, RaceGameLog expected) {
+        RaceGame raceGame = new RaceGame(names, positions);
+        RaceGameLog result = raceGame.startRace(3, new MovablePredicatedGenerator());
         assertThat(result).isEqualTo(expected);
     }
 }
