@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class WinnerTest {
 
@@ -34,5 +35,16 @@ public class WinnerTest {
         list.get(3).move();
 
         assertThat(winner.location(list)).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("우승자 리스트")
+    public void winnerList() {
+        Winner winner = new Winner();
+        List<Car> cars = new ArrayList<>();
+        Car expectedWinner = new Car("abc");
+        cars.add(expectedWinner);
+
+        assertThat(winner.printWinner(cars)).contains(expectedWinner);
     }
 }
