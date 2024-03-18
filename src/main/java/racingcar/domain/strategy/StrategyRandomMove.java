@@ -1,4 +1,4 @@
-package racingcar.domain.strategyPattern;
+package racingcar.domain.strategy;
 
 import java.util.concurrent.ThreadLocalRandom;
 
