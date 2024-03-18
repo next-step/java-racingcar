@@ -1,6 +1,10 @@
 package racingcar.domain;
 
-import racingcar.domain.strategyPattern.MoveStrategy;
+import racingcar.domain.dto.RacingResult;
+import racingcar.domain.dto.RoundResult;
+import racingcar.domain.dto.RoundScore;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.StrategyRandomMove;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,37 +12,47 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
-    private final int trialCount;
     private List<Car> carList;
-    private List<List<Car>> roundResults;
 
-    public RacingCarGame(int carCount, int trialCount) {
-        this.carList = createCarList(carCount);
-        this.roundResults = new ArrayList<>();
-        this.trialCount = trialCount;
+    public RacingCarGame(List<Car> carList) {
+        this.carList = carList;
     }
 
+    public static RacingCarGame from(int carCount) {
+        return new RacingCarGame(createCarList(carCount));
+    }
     public static List<Car> createCarList(int carCount) {
         return IntStream.range(0, carCount)
                 .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
 
-    public List<List<Car>> playRounds(int trialCount, MoveStrategy moveStrategy) {
+    public RacingResult executeRacing(int trialCount) {
+        List<RoundResult> roundResults = new ArrayList<>();
         while (trialCount-- > 0) {
-            play(moveStrategy);
-            this.roundResults.add(new ArrayList<>(carList));
+            roundResults.add(executeRound());
         }
-        return this.roundResults;
+        return new RacingResult(roundResults);
     }
 
-    public void play(MoveStrategy moveStrategy) {
+    public RoundResult executeRound() {
+        play(new StrategyRandomMove());
+        return new RoundResult(getRoundResults());
+    }
+
+    private List<RoundScore> getRoundResults() {
+        List<RoundScore> roundScores = new ArrayList<>();
         for (Car car : carList) {
-            car.moveForward(moveStrategy);
+            roundScores.add(new RoundScore(car.getPosition()));
         }
+        return roundScores;
     }
 
-    public List<List<Car>> getRoundResults() {
-        return this.roundResults;
+    private void play(MoveStrategy moveStrategy) {
+        List<RoundScore> roundScores = new ArrayList<>();
+        for (Car car : carList) {
+            car.moveForward(new StrategyRandomMove());
+//            roundScores.add(new RoundScore(car.getPosition()));
+        }
     }
 }
