@@ -1,8 +1,8 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-
-import java.util.List;
+import racingcar.domain.dto.RacingResult;
+import racingcar.domain.dto.RoundResult;
+import racingcar.domain.dto.RoundScore;
 
 public class OutputView {
     private static final String POSITION_DELIMITOR = "-";
@@ -11,18 +11,18 @@ public class OutputView {
         throw new AssertionError();
     }
 
-    public static void printCarsPositionByRounds(List<List<Car>> rounds) {
+    public static void printCarsPositionByRounds(RacingResult rounds) {
         System.out.println("실행 결과");
 
-        for (List<Car> cars : rounds) {
-            printCarsPositionByOneRound(cars);
+        for (RoundResult roundResult : rounds.getRoundResults()) {
+            printCarsPositionByOneRound(roundResult);
         }
         System.out.println();
     }
 
-    public static void printCarsPositionByOneRound(List<Car> cars) {
-        for (Car car : cars) {
-            printCarPosition(car.getPosition());
+    public static void printCarsPositionByOneRound(RoundResult roundResult) {
+        for (RoundScore roundScore : roundResult.getRoundScores()) {
+            printCarPosition(roundScore.getPosition());
         }
         System.out.println();
     }
