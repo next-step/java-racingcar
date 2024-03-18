@@ -1,5 +1,7 @@
 package step3;
 
+import step3.domain.MoveStrategy;
+import step3.domain.RandomMoveStrategy;
 import step3.view.InputView;
 
 public class CarRaceApplication {
