@@ -1,33 +1,29 @@
 package step3.application.domain;
 
-import error.ErrorMessage;
+import step3.application.domain.model.Driver;
+import step3.application.domain.model.MovementLog;
+import step3.application.domain.model.Position;
 
 public class Car {
 
-    private final int id;
-    private int location;
+    private final Driver driver;
+    private final Position position;
     public static final int INIT_LOCATION = 0;
 
-    public Car(int id) {
-        validateId(id);
-        this.id = id;
-        this.location = INIT_LOCATION;
+    public Car(String name) {
+        this(name, INIT_LOCATION);
     }
 
-    public int verifyLocation() {
-        return location;
+    public Car(String  name, int position) {
+        this(new Driver(name), new Position(position));
     }
 
-    private void validateId(int id) {
-        if (id < 0) {
-            throw new IllegalArgumentException(ErrorMessage.ERR_INVALID_NUMBER.print());
-        }
+    public Car(Driver driver, Position position) {
+        this.driver = driver;
+        this.position = position;
     }
 
-    public int move(boolean isMovable) {
-        if (isMovable) {
-            this.location += 1;
-        }
-        return this.location;
+    public MovementLog move(boolean canMove) {
+        return this.driver.logNameAndPosition(this.position.add(canMove)) ;
     }
 }
