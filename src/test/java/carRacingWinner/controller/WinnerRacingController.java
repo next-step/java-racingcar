@@ -1,32 +1,39 @@
 package carRacingWinner.controller;
 
+import carRacingWinner.entity.Name;
+import carRacingWinner.repository.WinnerRepository;
 import carRacingWinner.service.WinnerService;
 
 import java.util.Scanner;
 
 public class WinnerRacingController {
 
-
-    private final WinnerService winnerService;
-
-    public WinnerRacingController(WinnerService winnerService) {
-        this.winnerService = winnerService;
-    }
+    private Name input;
+    private WinnerRepository winnerRepository;
 
     public void racingStart() {
         carsNameInput();
-        tryCount();
-        winnerService.play();
+        int cnt = tryCount();
+        winnerRepository.makeCars(input.getName());
+        System.out.println("실행 결과");
+        winnerRepository.presentLocation();
+
+        while (cnt > 0) {
+            cnt--;
+        }
     }
 
     public void carsNameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        winnerService.makeCars(input());
+        input = new Name(input());
     }
 
-    private void tryCount() {
+    private int tryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
-        winnerService.tryCount(input());
+        int cnt = Integer.parseInt(input());
+        if (cnt < 0)
+            throw new IllegalArgumentException("잘못된 시도 횟수 입니다");
+        return cnt;
     }
 
     public String input() {
