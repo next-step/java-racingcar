@@ -44,7 +44,8 @@ public class WinnerTest {
         List<Car> cars = new ArrayList<>();
         Car expectedWinner = new Car("abc");
         cars.add(expectedWinner);
+        winner.printWinner(cars);
 
-        assertThat(winner.printWinner(cars)).contains(expectedWinner);
+        assertThat(winner.getWinner()).contains(expectedWinner);
     }
 }
