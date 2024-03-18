@@ -1,5 +1,7 @@
 package carRacingWinner.entity;
 
+import java.util.Random;
+
 public class Car {
 
     String name;
@@ -12,8 +14,17 @@ public class Car {
         this.name = name;
     }
 
+
+
     public void move() {
-        location++;
+        int randomValue = moveChance();
+        if (randomValue > 4)
+            location++;
+    }
+
+    protected int moveChance() {
+        Random random = new Random();
+        return random.nextInt(9);
     }
 
     public String getName() {
@@ -29,5 +40,6 @@ public class Car {
         for (int i = 0; i < location; i++) {
             System.out.print(display);
         }
+        System.out.println();
     }
 }
