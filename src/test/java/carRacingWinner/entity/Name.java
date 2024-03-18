@@ -1,4 +1,4 @@
-package carRacingWinner.test;
+package carRacingWinner.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ public class Name {
     List<String> name;
     static final String division = ",";
 
-    Name(String input) {
+    public Name(String input) {
         this.name = List.of(input.split(division));
     }
 
