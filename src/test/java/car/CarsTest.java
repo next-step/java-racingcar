@@ -2,8 +2,6 @@ package car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
@@ -12,14 +10,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
-
-    @ParameterizedTest
-    @DisplayName("4이상일 경우 전진하는 조건인지 테스트")
-    @CsvSource({"3,false", "5,true", "8,true"})
-    public void testIsMoving(int input, boolean output) {
-        boolean isMoving = Cars.isMovingForward(input);
-        assertThat(isMoving).isEqualTo(output);
-    }
 
     @Test
     @DisplayName("3명인 경우 우승자 거리가 0인 경우 3명 공동 우승 확인 테스트")

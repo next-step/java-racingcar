@@ -16,10 +16,10 @@ public class Cars {
     }
 
     public void moveCars() {
-        this.cars.forEach(car -> car.move(isMovingForward(RandomManager.getInstance().getRandomValue())));
+        this.cars.forEach(car -> car.move(() -> isMovingForward(RandomManager.getInstance().getRandomValue())));
     }
 
-    public static boolean isMovingForward(int value) {
+    private boolean isMovingForward(int value) {
         return value > MOVE_CONDITION;
     }
 

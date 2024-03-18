@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.MoveStrategy;
+
 import java.util.Objects;
 
 public class Car {
@@ -19,8 +21,8 @@ public class Car {
         return this.distance.getDistance();
     }
 
-    public void move(boolean isMove) {
-        if (isMove) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMove()) {
             distance.forward();
         }
     }
