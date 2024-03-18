@@ -16,18 +16,18 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class RaceGameTest {
 
-    public static Stream<Arguments> move() {
-        List<MovementLog> movementLogs = List.of(
+    public static Stream<Arguments> raceGameTestDataSet() {
+        List<MovementLog> movementLogs = java.util.List.of(
                 new MovementLog("pobi", 1),
                 new MovementLog("crong", 1),
                 new MovementLog("honux", 2)
         );
         return Stream.of(
                 arguments(
-                        List.of("pobi", "crong", "honux"),
-                        List.of(1, 1, 2),
+                        java.util.List.of("pobi", "crong", "honux"),
+                        java.util.List.of(1, 1, 2),
                         new RaceGameLog(
-                                List.of(
+                                java.util.List.of(
                                         new OneMovementLog(movementLogs),
                                         new OneMovementLog(movementLogs),
                                         new OneMovementLog(movementLogs)
@@ -38,16 +38,16 @@ class RaceGameTest {
     }
 
     @ParameterizedTest
-    @MethodSource("move")
-    void moveCars(List<String> names, List<Integer> positions, RaceGameLog expected) {
+    @MethodSource("raceGameTestDataSet")
+    void 차량들을_moveCount만큼_움직이려_시도한다(List<String> names, List<Integer> positions, RaceGameLog expected) {
         RaceGame raceGame = new RaceGame(names, positions);
         RaceGameLog result = raceGame.startRace(3, new MovablePredicatedGenerator());
         assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @MethodSource("move")
-    void 최대값을_추출한다(List<String> names, List<Integer> positions) {
+    @MethodSource("raceGameTestDataSet")
+    void 차량들에_대해_가장_먼_이동거리을_추출한다(List<String> names, List<Integer> positions) {
         RaceGame raceGame = new RaceGame(names, positions);
         raceGame.startRace(3, new MovablePredicatedGenerator());
 
@@ -55,8 +55,8 @@ class RaceGameTest {
     }
 
     @ParameterizedTest
-    @MethodSource("move")
-    void 가장_멀리_움직인_인원을_조회한다(List<String> names, List<Integer> positions) {
+    @MethodSource("raceGameTestDataSet")
+    void 차량들에_대해_가장_멀리_움직인_인원을_조회한다(List<String> names, List<Integer> positions) {
         RaceGame raceGame = new RaceGame(names, positions);
         raceGame.startRace(3, new MovablePredicatedGenerator());
         int max = raceGame.extractMaxPosition();
