@@ -19,11 +19,8 @@ class RacingCarsTest {
     public static Stream<Arguments> move() {
         return Stream.of(
                 arguments(
-                        List.of(
-                                new Car("pobi", 1),
-                                new Car("crong", 1),
-                                new Car("honux", 2)
-                        ),
+                        List.of("pobi", "crong", "honux"),
+                        List.of(1, 1, 2),
                         new OneMovementLog(List.of(
                                 new MovementLog("pobi", 1),
                                 new MovementLog("crong", 1),
@@ -37,9 +34,9 @@ class RacingCarsTest {
 
     @ParameterizedTest
     @MethodSource("move")
-    void test(List<Car> cars, OneMovementLog result) {
-        RacingCars racingCars = new RacingCars(cars, generator);
-        OneMovementLog oneMovementLog = racingCars.moveCars();
+    void test(List<String> names, List<Integer> positions, OneMovementLog result) {
+        RacingCars racingCars = new RacingCars(names, positions);
+        OneMovementLog oneMovementLog = racingCars.doRace(generator);
         assertThat(oneMovementLog).isEqualTo(result);
     }
 }
