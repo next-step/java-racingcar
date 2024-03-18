@@ -27,7 +27,6 @@ class RacingWinnerTest {
 
         String name = "dog,panda,fire";
 
-
     }
 
 
