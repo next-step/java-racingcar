@@ -44,4 +44,23 @@ class RaceGameTest {
         RaceGameLog result = raceGame.startRace(3, new MovablePredicatedGenerator());
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @MethodSource("move")
+    void 최대값을_추출한다(List<String> names, List<Integer> positions) {
+        RaceGame raceGame = new RaceGame(names, positions);
+        raceGame.startRace(3, new MovablePredicatedGenerator());
+
+        assertThat(raceGame.extractMaxPosition()).isEqualTo(2);
+    }
+
+    @ParameterizedTest
+    @MethodSource("move")
+    void 가장_멀리_움직인_인원을_조회한다(List<String> names, List<Integer> positions) {
+        RaceGame raceGame = new RaceGame(names, positions);
+        raceGame.startRace(3, new MovablePredicatedGenerator());
+        int max = raceGame.extractMaxPosition();
+        List<String> best = raceGame.findBest(max, names);
+        assertThat(best).hasSize(1).containsOnly("honux");
+    }
 }

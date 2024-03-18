@@ -29,4 +29,18 @@ public class RacingCars {
                 .collect(Collectors.toList())
         );
     }
+
+    public int extractMaximumPosition() {
+        int max = 0;
+        for (Car car : this.cars) {
+            max = car.passHigher(max);
+        }
+        return max;
+    }
+
+    public List<Car> findBestDriver(int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.isMaxPosition(maxPosition))
+                .collect(Collectors.toList());
+    }
 }

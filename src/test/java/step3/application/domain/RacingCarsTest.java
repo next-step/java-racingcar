@@ -34,9 +34,28 @@ class RacingCarsTest {
 
     @ParameterizedTest
     @MethodSource("move")
-    void test(List<String> names, List<Integer> positions, OneMovementLog result) {
+    void 레이스를_진행한다(List<String> names, List<Integer> positions, OneMovementLog result) {
         RacingCars racingCars = new RacingCars(names, positions);
         OneMovementLog oneMovementLog = racingCars.doRace(generator);
         assertThat(oneMovementLog).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("move")
+    void 최대거리를_비교한다(List<String> names, List<Integer> positions) {
+        RacingCars racingCars = new RacingCars(names, positions);
+        int result = racingCars.extractMaximumPosition();
+        assertThat(result).isEqualTo(2);
+    }
+
+    @ParameterizedTest
+    @MethodSource("move")
+    void 최대거리값을_갖는_차를_조회한다(List<String> names, List<Integer> positions) {
+        RacingCars racingCars = new RacingCars(names, positions);
+        int max = racingCars.extractMaximumPosition();
+        List<Car> bestDriver = racingCars.findBestDriver(max);
+        assertThat(bestDriver)
+                .hasSize(1)
+                .containsOnly(new Car("honux", 2));
     }
 }
