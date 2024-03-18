@@ -1,7 +1,8 @@
 package step3.application.domain;
 
-import step3.application.domain.model.OneMoveRecord;
-import step3.application.generator.NumberGenerator;
+import step3.application.domain.model.MovementLog;
+import step3.application.domain.model.OneMovementLog;
+import step3.application.generator.MovableGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,22 +10,21 @@ import java.util.stream.Collectors;
 public class RacingCars {
 
     private final List<Car> cars;
-    private final NumberGenerator numberGenerator;
-    public static final int MOVE_THRESHOLD = 4;
+    private final MovableGenerator movableGenerator;
 
-    public RacingCars(List<Car> cars, NumberGenerator numberGenerator) {
+    public RacingCars(List<Car> cars, MovableGenerator movableGenerator) {
         this.cars = cars;
-        this.numberGenerator = numberGenerator;
+        this.movableGenerator = movableGenerator;
     }
 
-    public OneMoveRecord moveCars() {
-        List<Integer> oneMoveResult = this.cars.stream()
+    public OneMovementLog moveCars() {
+        List<MovementLog> oneMoveResult = this.cars.stream()
                 .map(car -> car.move(canMove()))
                 .collect(Collectors.toList());
-        return new OneMoveRecord(oneMoveResult);
+        return new OneMovementLog(oneMoveResult);
     }
 
     private boolean canMove() {
-        return numberGenerator.drawNumber() >= MOVE_THRESHOLD;
+        return movableGenerator.drawMovable();
     }
 }
