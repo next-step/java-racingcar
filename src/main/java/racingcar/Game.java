@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Game {
 	public void play() {
-		String[] carNames = InputView.inputNamesOfCar().split(",");
+		String[] carNames = InputView.inputNamesOfCar();
 		int numberOfTrial = InputView.inputNumberOfTrial();
 
 		List<Car> cars = setCars(carNames);
@@ -15,6 +15,9 @@ public class Game {
 		for(int i = 0; i < numberOfTrial; i++) {
 			tryGame(cars);
 		}
+
+		Ranking ranking = new Ranking(cars);
+		PrintView.printWinnerMessage(ranking.getWinners());
 	}
 
 	private List<Car> setCars(String[] carNames) {
