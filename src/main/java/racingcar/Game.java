@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-	public void play(int numberOfCar, int numberOfTrial) {
-		List<Car> cars = setCars(numberOfCar);
+	public void play() {
+		String[] carNames = InputView.inputNamesOfCar().split(",");
+		int numberOfTrial = InputView.inputNumberOfTrial();
+
+		List<Car> cars = setCars(carNames);
 
 		PrintView.printResultMessage();
 
@@ -14,11 +17,11 @@ public class Game {
 		}
 	}
 
-	private List<Car> setCars(int numberOfCar) {
+	private List<Car> setCars(String[] carNames) {
 		List<Car> cars = new ArrayList<>();
 
-		for(int i = 0; i < numberOfCar; i++) {
-			cars.add(new Car(new RandomCarMoveStrategy()));
+		for(String carName : carNames) {
+			cars.add(new Car(carName, new RandomCarMoveStrategy()));
 		}
 
 		return cars;
