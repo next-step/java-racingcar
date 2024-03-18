@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.strategyPattern.MoveStrategy;
-import racingcar.util.RandomNumberGenerator;
+import racingcar.domain.strategy.MoveStrategy;
 
 import java.util.List;
 
