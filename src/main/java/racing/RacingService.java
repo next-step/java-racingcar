@@ -25,16 +25,19 @@ public class RacingService {
     private static void oneCarRace(RacingCars racingCars, int idx) {
         Integer randomNumber = RandomNumberGenerator.getRandomNumber();
         if (RacingValidator.isMovable(randomNumber)) {
-            moveForward(racingCars.getCarArr()[idx]);
+            CarLocation newCarLocation = moveForward(racingCars.getCarArr()[idx]);
+            racingCars.getCarArr()[idx] = new Car(newCarLocation);
         }
     }
 
-    public static void moveForward(Car car) {
+    public static CarLocation moveForward(Car car) {
+        CarLocation newCarLocation = null;
         try {
-            car.getCarLocationInfo().moveForward();
+            newCarLocation = car.getCarLocationInfo().moveForward();
         } catch (CarLocationException e) {
             System.err.println("예외 발생:" + e.getMessage());
         }
+        return newCarLocation;
     }
 
 }

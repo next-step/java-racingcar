@@ -12,4 +12,8 @@ public class Car {
         return this.carLocation;
     }
 
+    public int getCarLocation() {
+        return this.carLocation.getLocation();
+    }
+
 }

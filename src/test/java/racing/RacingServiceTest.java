@@ -15,7 +15,7 @@ public class RacingServiceTest {
     void 자동차_전진_테스트() {
         Car car = new Car(new CarLocation(0));
         RacingService.moveForward(car);
-        assertThat(car.getCarLocationInfo()).isEqualTo(1);
+        assertThat(car.getCarLocation()).isEqualTo(1);
     }
 
     @ParameterizedTest
