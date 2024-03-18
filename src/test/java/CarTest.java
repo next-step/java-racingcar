@@ -7,25 +7,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
-    @DisplayName("입력값 만큼 전진한다")
+    @DisplayName("입력값이 4 이상이면 전진한다")
     public void carMoveForward() {
 
         Car car = new Car();
         car.moveForward(5);
 
-        assertThat(car.position()).isEqualTo(5);
+        assertThat(car.position()).isEqualTo(1);
     }
 
-
-    @Test
-    @DisplayName("입력값이 4 이상이면 전진 가능하다")
-    public void canMoveInputIsGreaterThanEqualsTo_4() {
-
-        Car car = new Car();
-        car.moveForward(4);
-
-        assertThat(car.position()).isEqualTo(4);
-    }
 
 
     @Test
