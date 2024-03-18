@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
-    private List<Car> carList;
+    private final List<Car> carList;
 
     public RacingCarGame(List<Car> carList) {
         this.carList = carList;
