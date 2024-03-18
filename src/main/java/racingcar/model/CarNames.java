@@ -8,6 +8,7 @@ public class CarNames {
     private final List<String> carNames;
 
     public CarNames(String[] inputCarNames) {
+        Validator.stringRangeCheck(inputCarNames);
         this.carNames = new ArrayList<>(Arrays.asList(inputCarNames));
     }
 
