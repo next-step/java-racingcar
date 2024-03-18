@@ -26,12 +26,15 @@ public class Cars {
     public List<Car> getWinnerCars() {
         int maxDistance = getMaxDistance();
         return this.cars.stream()
-                .filter(car -> car.isMaxDistance(maxDistance))
+                .filter(car -> car.isSameDistance(maxDistance))
                 .collect(Collectors.toList());
     }
 
     private int getMaxDistance() {
-        return this.cars.stream().map(Car::getDistance).max(Integer::compareTo).orElseThrow(NoSuchElementException::new);
+        return this.cars.stream()
+                .map(Car::getDistance)
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new NoSuchElementException("값이 없습니다."));
     }
 
     public List<Car> getCars() {

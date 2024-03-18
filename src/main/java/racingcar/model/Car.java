@@ -25,7 +25,7 @@ public class Car {
         }
     }
 
-    public boolean isMaxDistance(int maxDistance) {
+    public boolean isSameDistance(int maxDistance) {
         return this.distance.getDistance() == maxDistance;
     }
 
