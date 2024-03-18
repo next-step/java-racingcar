@@ -4,7 +4,7 @@ import carRacingWinner.repository.WinnerRepository;
 
 public class WinnerService {
     private final WinnerRepository winnerRepository;
-    private final String splitWord = "-";
+    private final String splitWord = ",";
 
 
     public WinnerService(WinnerRepository winnerRepository) {
@@ -36,12 +36,13 @@ public class WinnerService {
     }
 
     public void play() {
-        System.out.println("실행 결과");
+        winnerRepository.startPoint();
         int Try = winnerRepository.getTryCount();
-        while (Try >= 0) {
+        while (Try > 0) {
+            winnerRepository.carMove();
             winnerRepository.currentLocation();
-
             Try--;
         }
+        winnerRepository.finalWinner();
     }
 }
