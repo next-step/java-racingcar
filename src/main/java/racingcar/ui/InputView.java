@@ -4,42 +4,34 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
-    private static InputView instance = new InputView();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final String CAR_NAME_DELIMITER = ",";
 
-    private InputView() {
+    public InputView() {
 
     }
 
-    public static InputView getInstance() {
-        return instance;
-    }
-
-    public void printNumberOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-    }
-
-    public void printNumberOfAttempt() {
+    private void printNumberOfAttempt() {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public static int inputNumberOfCar(Scanner scanner) {
-        InputView.getInstance().printNumberOfCar();
+    public String[] inputNamesOfCar() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String inputString = scanner.next();
+        return getCarNamesSplit(inputString);
+    }
+
+    public int inputNumberOfAttempt() {
+        printNumberOfAttempt();
         try {
             return scanner.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("정수 타입이 아닙니다!" + e);
-            throw new RuntimeException();
+            throw new IllegalArgumentException("정수 타입이 아닙니다!" + e);
         }
     }
 
-    public static int inputNumberOfAttempt(Scanner scanner) {
-        InputView.getInstance().printNumberOfAttempt();
-        try {
-            return scanner.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("정수 타입이 아닙니다!" + e);
-            throw new RuntimeException();
-        }
+    private String[] getCarNamesSplit(String nameOfCars) {
+        return nameOfCars.split(CAR_NAME_DELIMITER);
     }
 
 }

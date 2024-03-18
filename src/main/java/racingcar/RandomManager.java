@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomManager {
     private static final int RANDOM_VALUE = 10;
     private static final Random random = new Random();
-    private static RandomManager instance = new RandomManager();
+    private static final RandomManager instance = new RandomManager();
 
     private RandomManager() {
 
