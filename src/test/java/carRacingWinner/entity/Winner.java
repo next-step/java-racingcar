@@ -15,7 +15,7 @@ public class Winner {
         return max;
     }
 
-    public void saveWinner(Car car) {
+    private void saveWinner(Car car) {
         winner.add(car);
     }
 
@@ -23,7 +23,7 @@ public class Winner {
         this.winner = new ArrayList<>();
     }
 
-    public List<Car> printWinner(List<Car> cars) {
+    public void printWinner(List<Car> cars) {
         if (winner == null)
             createWinner();
         int maxLocation = location(cars);
@@ -31,6 +31,9 @@ public class Winner {
             if (car.getLocation() == maxLocation)
                 saveWinner(car);
         }
+    }
+
+    public List<Car> getWinner() {
         return winner;
     }
 }
