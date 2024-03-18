@@ -1,5 +1,7 @@
 package race.domain;
 
+import java.util.Objects;
+
 public class Car {
 
     private final int CONDITION_OF_MOVE = 4;
@@ -41,7 +43,11 @@ public class Car {
     }
 
     public boolean isEqualPosition(int number) {
-        return this.position.isEqual(number);
+        return this.position.equals(Position.createInstance(number));
+    }
+
+    public boolean isEqualPosition(Position position) {
+        return this.position.equals(position);
     }
 
     private void validateName(String name) {

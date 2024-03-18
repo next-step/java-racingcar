@@ -17,7 +17,7 @@ class PositionTest {
         Position position2 = Position.createInstance(number2);
 
         // When & Then
-        assertThat(position1.isEqual(position2.getValue())).isEqualTo(expected);
+        assertThat(position1.equals(position2)).isEqualTo(expected);
     }
 
     @ParameterizedTest
