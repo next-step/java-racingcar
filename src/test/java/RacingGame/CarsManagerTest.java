@@ -1,15 +1,13 @@
-package study.step3;
+package RacingGame;
 
-import org.assertj.core.internal.bytebuddy.asm.Advice;
+import RacingGame.model.Car;
+import RacingGame.model.CarsManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.Model.Car;
-import step3.Model.CarsManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,5 +51,35 @@ public class CarsManagerTest {
                 Arguments.arguments(givenCars(givenPositions(4, 5, 6)), givenPositions(4, 5, 6)),
                 Arguments.arguments(givenCars(givenPositions(5, 6, 7)), givenPositions(5, 6, 7))
         );
+    }
+
+    @Test
+    @DisplayName("우승한 차량을 반환 테스트")
+    void winnerCarsTest() {
+        List<Car> cars = List.of(
+                new Car("1등", 5),
+                new Car("2등", 4),
+                new Car("3등", 3),
+                new Car("4등", 2)
+        );
+
+        CarsManager carsManager = new CarsManager(cars);
+
+        assertThat(carsManager.winners().get(0)).isEqualTo(cars.get(0));
+    }
+
+    @Test
+    @DisplayName("우승한 차량은 한명 이상 반환 할 수 있다")
+    void winnersCarsTest() {
+        List<Car> cars = List.of(
+                new Car("공동1등1", 5),
+                new Car("공동1등2", 5),
+                new Car("3등", 3),
+                new Car("4등", 2)
+        );
+
+        CarsManager carsManager = new CarsManager(cars);
+
+        assertThat(carsManager.winners()).contains(cars.get(0), cars.get(1));
     }
 }

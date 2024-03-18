@@ -1,4 +1,4 @@
-package step3.Common;
+package RacingGame.common;
 
 public interface NumberGenerator {
     int generate();

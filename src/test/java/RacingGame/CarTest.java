@@ -1,14 +1,14 @@
-package study.step3;
+package RacingGame;
 
+import RacingGame.model.Car;
+import RacingGame.model.MovableStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.Common.FixNumberGenerator;
-import step3.Model.Car;
-import step3.Model.MovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -42,5 +42,21 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("차량에게 부여한 이름으로 생성한 차량의 이름은 부여한 이름과 같다.")
+    void carNameTest() {
+        String name = "황제원";
+        Car car = new Car(name);
 
+        assertThat(car.name()).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("차량에게 부여한 이름이 5글자 초과시 예외 발생 ")
+    void nameRuleTest() {
+        String name = "황제드라몬 파이터 모드";
+        assertThatThrownBy(() -> new Car(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("차량의 이름은 5글자가 넘어갈 수 없습니다");
+    }
 }

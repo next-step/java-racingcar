@@ -1,7 +1,9 @@
-package step3.Common;
+package RacingGame;
+
+import RacingGame.common.NumberGenerator;
 
 public class FixNumberGenerator implements NumberGenerator {
-    private int number;
+    private final int number;
 
     public FixNumberGenerator(int number) {
         this.number = number;

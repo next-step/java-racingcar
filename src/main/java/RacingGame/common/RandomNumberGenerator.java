@@ -1,10 +1,10 @@
-package step3.Common;
+package RacingGame.common;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumberGenerator implements NumberGenerator {
     private static final int RANDOM_NUMBER_UPPER_BOUND = 10;
-    private final Random random = new Random();
+    private static final ThreadLocalRandom random = ThreadLocalRandom.current();
 
     @Override
     public int generate() {
