@@ -1,3 +1,4 @@
+
 package racingcar;
 
 import org.assertj.core.api.Assertions;
@@ -31,4 +32,5 @@ public class CarTest {
         //then (Car Class's Random seed: 54321)
         Assertions.assertThat(car.position()).isEqualTo(1);
     }
+
 }
