@@ -3,6 +3,8 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingCars {
 
@@ -25,11 +27,9 @@ public class RacingCars {
 
 
     private List<Car> createCars(int carCount) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
-        }
-        return carList;
+        return Stream.generate(Car::new)
+                .limit(carCount)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getRacingCars() {
