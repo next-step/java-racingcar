@@ -1,6 +1,6 @@
 package race.domain;
 
-public class Position {
+public final class Position {
 
     private int value;
 
@@ -8,7 +8,7 @@ public class Position {
         return new Position(number);
     }
 
-    private Position(int value) {
+    private Position(final int value) {
         this.value = value;
     }
 
