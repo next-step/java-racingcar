@@ -51,4 +51,8 @@ public class Car {
                     String.format("이름을 5자를 초과 할수 없습니다. 해당 이름은 %s 는 %d ", name, lengthOfName));
         }
     }
+
+    public int max(int max) {
+        return this.position.max(max);
+    }
 }

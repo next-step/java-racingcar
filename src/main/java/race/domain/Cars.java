@@ -51,7 +51,7 @@ public class Cars {
     private int findMax() {
         int max = 0;
         for (Car car : this.cars) {
-            max = car.getPosition().max(max);
+            max = car.max(max);
         }
         return max;
     }
