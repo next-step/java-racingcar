@@ -14,7 +14,7 @@ public class CarGroupTest {
         CarGroup carGroup = new CarGroup(actualCarGroupLength);
 
         //when
-        int carGroupLength = carGroup.carGroupLength();
+        int carGroupLength = carGroup.carGroupSize();
 
         //then
         Assertions.assertThat(carGroupLength).isEqualTo(actualCarGroupLength);
@@ -28,7 +28,7 @@ public class CarGroupTest {
         CarGroup carGroup = new CarGroup(carGroupLength);
 
         //when, then
-        for (int i = 0; i < carGroup.carGroupLength(); i++) {
+        for (int i = 0; i < carGroup.carGroupSize(); i++) {
             Assertions.assertThat(carGroup.position(i)).isEqualTo(0);
         }
     }
@@ -45,7 +45,7 @@ public class CarGroupTest {
 
         //then (Car Class's Random seed: 54321)
         int[] actual = {1, 0, 0};
-        for (int i = 0; i < carGroup.carGroupLength(); i++) {
+        for (int i = 0; i < carGroup.carGroupSize(); i++) {
             Assertions.assertThat(carGroup.position(i)).isEqualTo(actual[i]);
         }
     }

@@ -9,7 +9,7 @@ public class OutputView {
     }
 
     public void printCarGroupPosition(CarGroup carGroup) {
-        for (int carIndex = 0; carIndex < carGroup.carGroupLength(); carIndex++) {
+        for (int carIndex = 0; carIndex < carGroup.carGroupSize(); carIndex++) {
             printCarPosition(carGroup.position(carIndex));
         }
         System.out.println("==========");

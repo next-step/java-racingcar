@@ -1,8 +1,6 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class CarGroup {
     private ArrayList<Car> carGroup;
@@ -20,7 +18,7 @@ public class CarGroup {
         }
     }
 
-    public int carGroupLength() {
+    public int carGroupSize() {
         return carGroup.size();
     }
 
