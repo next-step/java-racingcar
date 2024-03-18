@@ -1,15 +1,19 @@
 package carRacingWinner.controller;
 
+import carRacingWinner.entity.Car;
 import carRacingWinner.entity.Name;
+import carRacingWinner.entity.Winner;
 import carRacingWinner.repository.WinnerRepository;
-import carRacingWinner.service.WinnerService;
 
+
+import java.util.List;
 import java.util.Scanner;
 
 public class WinnerRacingController {
 
     private Name input;
     private WinnerRepository winnerRepository;
+    private Winner winner;
 
     public void racingStart() {
         carsNameInput();
@@ -19,8 +23,12 @@ public class WinnerRacingController {
         winnerRepository.presentLocation();
 
         while (cnt > 0) {
+            winnerRepository.moveCars();
+            winnerRepository.presentLocation();
             cnt--;
         }
+        winner.printWinner(winnerRepository.getCars());
+        printFinalResult(winner.getWinner());
     }
 
     public void carsNameInput() {
@@ -41,4 +49,10 @@ public class WinnerRacingController {
         return sc.nextLine();
     }
 
+    private void printFinalResult(List<Car> winners) {
+        for (int i = 0; i < winners.size() - 1; i++) {
+            System.out.println(winners.get(i).getName() + ", ");
+        }
+        System.out.println(winners.get(winners.size() - 1).getName() + "가 최종 우승했습니다");
+    }
 }
