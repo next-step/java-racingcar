@@ -1,8 +1,9 @@
-package step3and4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step5.domain.Racing;
 
 class RacingTest {
 

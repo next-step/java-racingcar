@@ -1,6 +1,6 @@
-package step3and4.car;
+package step5.domain.car;
 
-import step3and4.car.move.RandomMoveStrategy;
+import step5.domain.car.move.random.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

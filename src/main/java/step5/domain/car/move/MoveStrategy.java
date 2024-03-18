@@ -1,4 +1,4 @@
-package step3and4.car.move;
+package step5.domain.car.move;
 
 public interface MoveStrategy {
     int move();

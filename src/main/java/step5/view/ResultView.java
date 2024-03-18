@@ -1,8 +1,7 @@
-package step3and4.ui;
+package step5.view;
 
-import step3and4.Racing;
+import step5.domain.Racing;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ResultView {

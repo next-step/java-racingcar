@@ -1,10 +1,10 @@
-package step3and4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3and4.car.Car;
-import step3and4.car.move.MoveStrategy;
+import step5.domain.car.Car;
+import step5.domain.car.move.MoveStrategy;
 
 
 class CarTest {

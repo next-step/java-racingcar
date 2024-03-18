@@ -1,10 +1,9 @@
-package step3and4;
+package step5.domain;
 
-import step3and4.car.Car;
-import step3and4.car.CarEntry;
-import step3and4.car.move.RandomMoveStrategy;
+import step5.domain.car.CarEntry;
+import step5.domain.car.move.random.RandomMoveStrategy;
+import step5.domain.car.move.random.RandomCreator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {

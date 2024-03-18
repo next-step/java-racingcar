@@ -1,4 +1,4 @@
-package step3and4;
+package step5.domain.car.move.random;
 
 public interface RandomNumberCreator {
     /**
