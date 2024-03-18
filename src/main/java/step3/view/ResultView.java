@@ -1,8 +1,8 @@
 package step3.view;
 
-import step3.application.domain.model.MovementLog;
-import step3.application.domain.model.OneMovementLog;
-import step3.application.domain.model.RaceGameLog;
+import step3.application.domain.model.dto.MovementLog;
+import step3.application.domain.model.dto.OneMovementLog;
+import step3.application.domain.model.dto.RaceGameLog;
 
 public class ResultView {
 

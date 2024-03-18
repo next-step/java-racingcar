@@ -1,4 +1,4 @@
-package step3.application.domain.model;
+package step3.application.domain.model.vo;
 
 import error.ErrorMessage;
 

@@ -1,7 +1,7 @@
 package step3.view;
 
 import step3.application.domain.RaceGame;
-import step3.application.domain.model.RaceGameLog;
+import step3.application.domain.model.dto.RaceGameLog;
 
 import java.util.Arrays;
 import java.util.List;

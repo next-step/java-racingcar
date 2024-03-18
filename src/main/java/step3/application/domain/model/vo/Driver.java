@@ -1,6 +1,7 @@
-package step3.application.domain.model;
+package step3.application.domain.model.vo;
 
 import error.ErrorMessage;
+import step3.application.domain.model.dto.MovementLog;
 
 import java.util.Objects;
 

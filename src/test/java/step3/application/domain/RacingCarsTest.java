@@ -4,8 +4,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import step3.application.domain.factory.MovablePredicatedGenerator;
-import step3.application.domain.model.MovementLog;
-import step3.application.domain.model.OneMovementLog;
+import step3.application.domain.model.dto.MovementLog;
+import step3.application.domain.model.dto.OneMovementLog;
 import step3.application.generator.MovableGenerator;
 
 import java.util.List;

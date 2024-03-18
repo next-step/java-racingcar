@@ -1,7 +1,7 @@
 package step3.application.domain;
 
-import step3.application.domain.model.OneMovementLog;
-import step3.application.domain.model.RaceGameLog;
+import step3.application.domain.model.dto.OneMovementLog;
+import step3.application.domain.model.dto.RaceGameLog;
 import step3.application.generator.MovableGenerator;
 import step3.application.generator.MovableRandomGenerator;
 

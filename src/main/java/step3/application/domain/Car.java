@@ -1,8 +1,8 @@
 package step3.application.domain;
 
-import step3.application.domain.model.Driver;
-import step3.application.domain.model.MovementLog;
-import step3.application.domain.model.Position;
+import step3.application.domain.model.vo.Driver;
+import step3.application.domain.model.dto.MovementLog;
+import step3.application.domain.model.vo.Position;
 
 public class Car {
 

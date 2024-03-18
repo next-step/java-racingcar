@@ -3,6 +3,7 @@ package step3.application.domain.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.application.domain.model.vo.Position;
 
 class PositionTest {
 
