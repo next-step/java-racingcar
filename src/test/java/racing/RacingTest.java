@@ -11,9 +11,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
+import racing.domain.Cars;
 import racing.util.FixedNumberGeneratorImpl;
 import racing.view.InputView;
-import racing.view.ResultView;
 
 class RacingTest {
 
@@ -31,7 +31,7 @@ class RacingTest {
     @ValueSource(strings = {"pobi", "crong", "honux"})
     void car_이름(String name) {
         Car car = new Car(new FixedNumberGeneratorImpl(4), name);
-        assertThat(car.getName()).isEqualTo(name);
+        assertThat(car.getName().getName()).isEqualTo(name);
     }
 
     @DisplayName("자동차에 이름은 5자를 초과할 수 없다.")
@@ -53,14 +53,15 @@ class RacingTest {
     @Test
     void 최종_우승자_출력() {
         String[] names = "pobi,crong,honux".split(",");
-        List<Car> cars = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < names.length; i++) {
             Car car = new Car(new FixedNumberGeneratorImpl(i + 2), names[i]);
             car.run();
-            cars.add(car);
+            carList.add(car);
         }
 
-        assertThat(ResultView.getWinner(cars)).isEqualTo("honux");
+        Cars cars = new Cars(carList);
+        assertThat(cars.getWinner()).isEqualTo("honux");
     }
 }

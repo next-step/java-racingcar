@@ -1,5 +1,7 @@
 package racing.util;
 
+import racing.util.RandomNumberGenerator;
+
 public class FixedNumberGeneratorImpl implements RandomNumberGenerator {
 
     private final int fixedNumber;

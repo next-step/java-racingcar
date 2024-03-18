@@ -6,30 +6,20 @@ import racing.util.RandomNumberGenerator;
 public class Car {
 
     private static final int RUNABLE_CONDITION = 4;
-    private static final int MAX_NAME_LENGTH = 5;
     private static final String PROGRESS_BAR = "-";
 
     private static RandomNumberGenerator randomNumberGenerator;
-    private String name;
+    private Name name;
     private int runCount = 0;
 
     public Car(RandomNumberGenerator randomNumberGenerator, String name) {
         this.randomNumberGenerator = randomNumberGenerator;
-        setName(name);
+        this.name = new Name(name);
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
-
-    private void setName(String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다.");
-        }
-
-        this.name = name;
-    }
-
     public int getRunCount() {
         return runCount;
     }

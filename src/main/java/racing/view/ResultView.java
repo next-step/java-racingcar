@@ -3,6 +3,7 @@ package racing.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racing.domain.Car;
+import racing.domain.Cars;
 
 public class ResultView {
 
@@ -18,22 +19,8 @@ public class ResultView {
         System.out.println(String.format("===============ROUND [%s]===============", i));
     }
 
-    public static void showWinner(List<Car> cars) {
+    public static void showWinner(Cars cars) {
         System.out.println(
-            String.format("===============최종 우승자 [%s]===============", getWinner(cars)));
-    }
-
-    public static String getWinner(List<Car> cars) {
-        int maxRunCount = cars.stream()
-            .mapToInt(Car::getRunCount)
-            .max()
-            .orElse(0);
-
-        List<String> winners = cars.stream()
-            .filter(car -> car.getRunCount() == maxRunCount)
-            .map(Car::getName)
-            .collect(Collectors.toList());
-
-        return String.join(", ", winners);
+            String.format("===============최종 우승자 [%s]===============", cars.getWinner()));
     }
 }
