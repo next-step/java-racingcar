@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
     @Test
@@ -21,5 +20,16 @@ class CarTest {
         Car car = new Car("test");
         car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(Position.create());
+    }
+
+    @Test
+    @DisplayName("최대_위치_찾기_테스트")
+    void max_position(){
+        Car car = new Car("test");
+        Car car2 = new Car("test2");
+
+        car.move(() -> true);
+
+        assertThat(car.getMaxPosition(car2.getPosition())).isEqualTo(Position.create().move());
     }
 }

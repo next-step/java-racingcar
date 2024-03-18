@@ -34,7 +34,7 @@ public class ResultView {
     }
 
     public void printWinner(RacingGame racingGame) {
-        String winner = racingGame.resultWinnerName()
+        String winner = racingGame.resultWinnerNames()
                 .stream()
                 .map(Name::getName)
                 .collect(Collectors.joining(DELIMITER_COMMA));

@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-public class Car implements Comparable<Car>{
+public class Car {
     private Position position;
     private Name name;
 
@@ -15,9 +15,11 @@ public class Car implements Comparable<Car>{
         }
     }
 
-    @Override
-    public int compareTo(Car otherCar) {
-        return this.position.compareTo(otherCar.position);
+    public Position getMaxPosition(Position otherPosition) {
+        if (this.position.isGreater(otherPosition)) {
+            return this.position;
+        }
+        return otherPosition;
     }
 
     public Position getPosition() {

@@ -6,13 +6,13 @@ public class RacingGame {
     private Cars cars;
     private int tryCount;
 
-    public RacingGame(int tryCount) {
-        this.cars = new Cars();
+    public RacingGame(List<String> carsName, int tryCount) {
+        this.cars = initCars(carsName);
         this.tryCount = tryCount;
     }
 
-    public void initCars(String inputName) {
-        cars.initCars(inputName);
+    private Cars initCars(List<String> inputNames) {
+        return Cars.from(inputNames);
     }
 
     public void start(MovingStrategy movingStrategy) {
@@ -26,9 +26,8 @@ public class RacingGame {
         }
     }
 
-    public List<Name> resultWinnerName() {
-        WinnerCar winnerCar = new WinnerCar(cars.getCars());
-        return winnerCar.getWinnerName(cars.maxPosition());
+    public List<Name> resultWinnerNames() {
+        return cars.getWinnerNames(cars.maxPosition());
     }
 
     public List<Car> getCars() {

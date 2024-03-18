@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position {
     public static final int FORWARD_COUNT = 1;
     public static final int INIT_POSITION_VALUE = 1;
+    public static final int COMPARE_RESULT_EQUAL = 0;
     private int position;
 
     private Position(int position) {
@@ -19,8 +20,8 @@ public class Position {
         return new Position(position + FORWARD_COUNT);
     }
 
-    public int compareTo(Position OtherPosition) {
-        return this.position - OtherPosition.getPosition();
+    public boolean isGreater(Position OtherPosition) {
+        return this.position - OtherPosition.getPosition() > COMPARE_RESULT_EQUAL;
     }
 
     public int getPosition() {

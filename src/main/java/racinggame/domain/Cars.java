@@ -1,36 +1,35 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-    public static final String DELIMITER_COMMA = ",";
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars() {
-        this.cars = new ArrayList<>();
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void initCars(String inputName) {
-        String[] names = splitCarName(inputName);
-        for (String name : names) {
-            addCar(name);
-        }
-    }
-
-    private String[] splitCarName(String inputName) {
-        return inputName.split(DELIMITER_COMMA);
-    }
-
-    private void addCar(String inputName) {
-        cars.add(new Car(inputName));
+    public static Cars from(List<String> names) {
+        List<Car> cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(cars);
     }
 
     public Position maxPosition() {
+        Position maxPosition = Position.create();
+        for (Car car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    public List<Name> getWinnerNames(Position maxPosition) {
         return cars.stream()
-                .max(Car::compareTo)
-                .map(Car::getPosition)
-                .orElse(null);
+                .filter(car -> car.getPosition().equals(maxPosition))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
