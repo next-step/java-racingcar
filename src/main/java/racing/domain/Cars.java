@@ -1,8 +1,8 @@
 package racing.domain;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
@@ -11,14 +11,26 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars create(int carNo) {
-        List<Car> carsList = IntStream.range(0, carNo)
-                .mapToObj(i -> new Car())
-                .collect(Collectors.toList());
-        return new Cars(carsList);
+    public static Cars create(String[] carNames) {
+        List<Car> carList = new ArrayList<>();
+        for (String name : carNames) {
+            carList.add(new Car(name));
+        }
+        return new Cars(carList);
+    }
+
+    public static Cars create(List<Car> carList) {
+        return new Cars(carList);
     }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getMaxPosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Comparator.naturalOrder())
+                .orElse(0);
     }
 }
