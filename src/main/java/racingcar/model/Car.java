@@ -3,44 +3,30 @@ package racingcar.model;
 import java.util.Objects;
 
 public class Car {
-    private String name;
-    private int distance;
+    private CarName name;
+    private Distance distance;
 
     public Car(String name, int distance) {
-        if(isCarName(name)) {
-            throw new IllegalArgumentException("이름이 5자 초과합니다.");
-        }
-        if(isCarDistance(distance)) {
-            throw new IllegalArgumentException("거리가 음수입니다.");
-        }
-        this.name = name;
-        this.distance = distance;
-    }
-
-    public int getDistance() {
-        return distance;
+        this.name = new CarName(name);
+        this.distance = new Distance(distance);
     }
 
     public String getName() {
-        return name;
+        return this.name.getName();
+    }
+
+    public int getDistance() {
+        return this.distance.getDistance();
     }
 
     public void move(boolean isMove) {
-        if(isMove) {
-            distance += 1;
+        if (isMove) {
+            distance.forward();
         }
     }
 
     public boolean isMaxDistance(int maxDistance) {
-        return this.distance == maxDistance;
-    }
-
-    private boolean isCarName(String carName) {
-        return carName.length() > 5;
-    }
-
-    private boolean isCarDistance(int distance) {
-        return distance < 0;
+        return this.distance.getDistance() == maxDistance;
     }
 
     @Override
@@ -48,7 +34,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return distance == car.distance && Objects.equals(name, car.name);
+        return distance.getDistance() == car.distance.getDistance() && Objects.equals(name.getName(), car.name.getName());
     }
 
     @Override
