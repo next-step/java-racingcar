@@ -14,7 +14,6 @@ public class Winners {
     }
 
     private void choiceWinner(Cars cars) {
-
         int maxDistance = cars.stream()
                 .mapToInt(Car::getDistance)
                 .max()
@@ -23,13 +22,6 @@ public class Winners {
         for (Car car : cars) {
             pickWinners(car, maxDistance);
         }
-    }
-
-    private int compareDistance(int carDistance, int distance) {
-        if (carDistance >= distance) {
-            return carDistance;
-        }
-        return distance;
     }
 
     private void pickWinners(Car car, int distance) {
