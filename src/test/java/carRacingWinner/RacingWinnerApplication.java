@@ -8,9 +8,8 @@ public class RacingWinnerApplication {
 
     public static void main(String[] args) {
 
-        WinnerRepository winnerRepository = new WinnerRepository();
-        WinnerService winnerService = new WinnerService(winnerRepository);
+        WinnerRacingController racing = new WinnerRacingController();
+        racing.racingStart();
 
-        new WinnerRacingController(winnerService).racingStart();
     }
 }
