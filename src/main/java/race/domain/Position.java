@@ -1,7 +1,5 @@
 package race.domain;
 
-import java.util.Objects;
-
 public class Position {
 
     private static final int INCREASE = 1;
@@ -25,7 +23,7 @@ public class Position {
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return this.position;
     }
 
     public Position move() {
