@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import step3.object.Car;
 import step3.util.MovableNumberGenerator;
 import step3.util.NonMovableNumberGenerator;
 import step3.util.NumberGenerator;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,11 +25,11 @@ public class RaceTest {
 
     @ParameterizedTest
     @DisplayName("자동차 움직임 테스트 (4 이상만 전진)")
-    @CsvSource(value = {"0,-", "7,--", "9,--"}, delimiter = ',')
-    void moveTest(int chance, String expected){
+    @CsvSource(value = {"0,1", "7,2", "9,2"}, delimiter = ',')
+    void moveTest(int chance, int expected){
         Car car = new Car();
         car.move(chance);
-        String actual = car.getPosition();
+        int actual = car.getPosition();
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -34,8 +37,8 @@ public class RaceTest {
     @DisplayName("자동차 생성 테스트")
     @ValueSource(ints = {1, 4, 10})
     void generateCarArrayTest(int carCount){
-        Race race = new Race();
-        Car[] actual = race.generateCarArray(carCount);
+        step3.Race race = new step3.Race();
+        List<Car> actual = race.generateCarList(carCount);
         assertThat(actual).hasSize(carCount);
     }
 
@@ -45,12 +48,12 @@ public class RaceTest {
         // Given
         final Car car = new Car();
         final NumberGenerator numberGenerator = new NonMovableNumberGenerator();
-
+        int expected = car.getPosition();
         // When
         car.move(numberGenerator.generate());
-
+        int actual = car.getPosition();
         // Then
-        assertThat(car.getPosition()).isEqualTo("-");
+        assertThat(actual).isEqualTo(expected);
     }
 
     @DisplayName("숫자가 4보다 크면 전진")
@@ -59,12 +62,12 @@ public class RaceTest {
         // Given
         final Car car = new Car();
         final NumberGenerator numberGenerator = new MovableNumberGenerator();
-
+        int expected = car.getPosition() + 1;
         // When
         car.move(numberGenerator.generate());
-
+        int actual = car.getPosition();
         // Then
-        assertThat(car.getPosition()).isEqualTo("--");
+        assertThat(actual).isEqualTo(expected);
     }
 
 }
