@@ -11,6 +11,7 @@ public class ResultView {
     }
 
     public static void printCarResult(Car car) {
+
         System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
