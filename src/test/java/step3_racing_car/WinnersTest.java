@@ -22,8 +22,8 @@ public class WinnersTest {
         RacingCars racingCars = new RacingCars(cars);
         Winners winners = new Winners(racingCars);
 
-        assertThat(winners.findWinners().getItems())
+        assertThat(winners.findWinners())
                 .usingRecursiveComparison()
-                .isEqualTo(List.of(new RacingCar("자동차3", 5)));
+                .isEqualTo(List.of(("자동차3")));
     }
 }

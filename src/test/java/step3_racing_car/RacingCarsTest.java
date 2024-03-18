@@ -50,11 +50,11 @@ public class RacingCarsTest {
         cars.add(new RacingCar("자동차2", 5));
         cars.add(new RacingCar("자동차3", 5));
 
-        List<RacingCar> result = new RacingCars(cars).matchPositionList(5);
+        RacingCars result = new RacingCars(cars).matchPositionList(5);
         assertThat(result)
                 .usingRecursiveComparison()
-                .isEqualTo(List.of(
+                .isEqualTo(new RacingCars(List.of(
                         new RacingCar("자동차2", 5),
-                        new RacingCar("자동차3", 5)));
+                        new RacingCar("자동차3", 5))));
     }
 }

@@ -36,7 +36,7 @@ public class RacingGameController {
         // todo: [질문] 여기서 winners로 게임 승자를 출력해야하는데,
         //  출력의 toString을 RacingCars 일급컬렉션에 주고싶어 findWinners를 RacingCars로 wrapping해 리턴하게 됨.
         Winners winners = new Winners(racingCars);
-        RacingCars gameWinners = winners.findWinners();
+        List<String> gameWinners = winners.findWinners();
         OutputView.printGameWinner(gameWinners);
     }
 }

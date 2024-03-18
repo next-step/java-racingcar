@@ -1,5 +1,7 @@
 package step3_racing_car.domain;
 
+import java.util.List;
+
 public class Winners {
     RacingCars racingCars;
 
@@ -7,8 +9,8 @@ public class Winners {
         this.racingCars = racingCars;
     }
 
-    public RacingCars findWinners() {
+    public List<String> findWinners() {
         int maxPosition = this.racingCars.maxPositionValue();
-        return new RacingCars(this.racingCars.matchPositionList(maxPosition));
+        return this.racingCars.matchPositionList(maxPosition).getNames();
     }
 }

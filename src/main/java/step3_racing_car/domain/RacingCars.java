@@ -2,8 +2,8 @@ package step3_racing_car.domain;
 
 import step3_racing_car.strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<RacingCar> items;
@@ -12,21 +12,16 @@ public class RacingCars {
         this.items = items;
     }
 
-    // todo : 전략이 여기까지 올라오는게 맞나?
     public void movePosition(MovingStrategy movingStrategy) {
-        for (int i = 0; i < items.size(); i++) {
-            items.get(i).movePositions(movingStrategy.move());
+        for (RacingCar item : items) {
+            item.movePositions(movingStrategy.move());
         }
     }
 
-    public List<RacingCar> matchPositionList(int maxPosition) {
-        List<RacingCar> cars = new ArrayList<>();
-        for (RacingCar car : this.items) {
-            if (car.isMatch(maxPosition)) {
-                cars.add(car);
-            }
-        }
-        return cars;
+    public RacingCars matchPositionList(int maxPosition) {
+        return new RacingCars(this.items.stream()
+                .filter(car -> car.isMatch(maxPosition))
+                .collect(Collectors.toList()));
     }
 
     public int maxPositionValue() {
@@ -41,20 +36,10 @@ public class RacingCars {
         return items;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        int count = 0;
-        for (RacingCar car : this.items) {
-            stringBuilder.append(car.getName().toString());
-
-            if (count == this.items.size() - 1) {
-                break;
-            }
-
-            stringBuilder.append(",");
-            count++;
-        }
-        return stringBuilder.toString();
+    public List<String> getNames() {
+        return items.stream()
+                .map(RacingCar::getName)
+                .map(Name::toString)
+                .collect(Collectors.toList());
     }
 }
