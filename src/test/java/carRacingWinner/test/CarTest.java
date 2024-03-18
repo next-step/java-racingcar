@@ -38,9 +38,9 @@ public class CarTest {
     public void carPrint() {
         WinnerRepository winnerRepository = new WinnerRepository();
 
-        winnerRepository.addCar(new Car("one"));
-        winnerRepository.addCar(new Car("two"));
-        winnerRepository.addCar(new Car("thre"));
+        winnerRepository.addCar("one");
+        winnerRepository.addCar("two");
+        winnerRepository.addCar("thre");
 
         assertThat(winnerRepository.getCars().size()).isEqualTo(3);
     }
