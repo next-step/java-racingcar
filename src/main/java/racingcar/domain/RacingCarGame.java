@@ -49,10 +49,8 @@ public class RacingCarGame {
     }
 
     private void play(MoveStrategy moveStrategy) {
-        List<RoundScore> roundScores = new ArrayList<>();
         for (Car car : carList) {
-            car.moveForward(new StrategyRandomMove());
-//            roundScores.add(new RoundScore(car.getPosition()));
+            car.moveForward(moveStrategy);
         }
     }
 }
