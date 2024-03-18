@@ -37,7 +37,7 @@ public class Car {
 
     public void print() {
         System.out.print(name + " : ");
-        for (int i = 0; i < location; i++) {
+        for (int i = 0; i <= location; i++) {
             System.out.print(display);
         }
         System.out.println();

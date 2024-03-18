@@ -1,8 +1,6 @@
 package carRacingWinner;
 
 import carRacingWinner.controller.WinnerRacingController;
-import carRacingWinner.repository.WinnerRepository;
-import carRacingWinner.service.WinnerService;
 
 public class RacingWinnerApplication {
 

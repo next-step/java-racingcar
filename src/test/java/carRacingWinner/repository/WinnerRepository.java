@@ -3,9 +3,7 @@ package carRacingWinner.repository;
 import carRacingWinner.entity.Car;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 public class WinnerRepository {
 
@@ -25,6 +23,7 @@ public class WinnerRepository {
         for (Car car : cars) {
             car.print();
         }
+        System.out.println();
     }
 
     public List<Car> getCars() {

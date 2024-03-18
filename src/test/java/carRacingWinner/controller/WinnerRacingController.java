@@ -11,14 +11,14 @@ import java.util.Scanner;
 
 public class WinnerRacingController {
 
-    private Name input;
-    private WinnerRepository winnerRepository;
-    private Winner winner;
+    private Name stringName;
+    private WinnerRepository winnerRepository = new WinnerRepository();
+    private Winner winner = new Winner();
 
     public void racingStart() {
         carsNameInput();
         int cnt = tryCount();
-        winnerRepository.makeCars(input.getName());
+        winnerRepository.makeCars(stringName.getName());
         System.out.println("실행 결과");
         winnerRepository.presentLocation();
 
@@ -33,7 +33,7 @@ public class WinnerRacingController {
 
     public void carsNameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        input = new Name(input());
+        stringName = new Name(input());
     }
 
     private int tryCount() {

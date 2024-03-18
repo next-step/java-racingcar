@@ -7,8 +7,13 @@ public class Name {
     List<String> name;
     static final String division = ",";
 
+    private void createName() {
+        this.name = new ArrayList<>();
+    }
+
     public Name(String input) {
-        this.name = List.of(input.split(division));
+        createName();
+        name = List.of(input.split(division));
     }
 
     public List<String> getName() {
