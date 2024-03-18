@@ -28,10 +28,6 @@ public class InputView {
         return numberCheck(values);
     }
 
-//    public static String inputName(String values) {
-//        return nameCheck(values);
-//    }
-
     static Validator validator = new Validator();
 
     public static Integer numberCheck(String inNumber) {

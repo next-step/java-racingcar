@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingRecords {
+    private List<RacingCar> records = new ArrayList<>();
 
-    List<RacingCar> records = new ArrayList<>();
-
-    public void registerCar(List<String> carNames){
-        for (String name : carNames){
+    public void registerCar(List<String> carNames) {
+        this.records = new ArrayList<>();
+        for (String name : carNames) {
             this.records.add(new RacingCar(name));
         }
     }

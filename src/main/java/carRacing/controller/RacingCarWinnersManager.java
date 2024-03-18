@@ -15,7 +15,6 @@ public class RacingCarWinnersManager {
         WinnersName winnersName = new WinnersName();
 
         // 입력
-        //String[] carNames = inputCarNames();
         List<String> carNames = InputView.inputCarNames();
         int raceCount = InputView.inputNumber(InputView.numberOfRace());
 
