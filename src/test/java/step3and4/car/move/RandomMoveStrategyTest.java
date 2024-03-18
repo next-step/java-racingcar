@@ -1,14 +1,10 @@
-package step3.car.move;
+package step3and4.car.move;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.RandomCreator;
-import step3.RandomNumberCreator;
-import step3.car.Car;
-
-import static org.junit.jupiter.api.Assertions.*;
+import step3and4.car.Car;
 
 class RandomMoveStrategyTest {
 
@@ -19,7 +15,7 @@ class RandomMoveStrategyTest {
     void randomMove(int moveNumber, int actualResult) {
         RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(() -> moveNumber);
 
-        Car car = new Car(randomMoveStrategy);
+        Car car = new Car("pobi",randomMoveStrategy);
         car.move();
         int result = car.getPosition();
 
