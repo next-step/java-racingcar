@@ -38,4 +38,10 @@ public class WinnerRepository {
             cars.add(new Car(name));
         }
     }
+
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
 }
