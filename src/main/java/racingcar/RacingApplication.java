@@ -4,6 +4,8 @@ public class RacingApplication {
 
     public static void main(String[] args) {
         RacingGame game = new RacingGame();
-        game.start(new InputValue(InputView.inputNumber(InputView.numberOfCar()), InputView.inputNumber(InputView.tryCntInput())));
+        String namesOfCar = (InputView.nameOfCars());
+        int tryCntInput = InputView.inputNumber(InputView.tryCntInput());
+        game.start(new InputValue(namesOfCar, tryCntInput));
     }
 }

@@ -1,19 +1,21 @@
 package racingcar;
 
 public class InputValue {
-    private final int numberOfCars;
+    private final String names;
     private final int tryCount;
 
-    public InputValue(int numberOfCars, int tryCount){
-        this.numberOfCars = numberOfCars;
+    public InputValue(String names, int tryCount) {
+        this.names = names;
         this.tryCount = tryCount;
     }
 
-    public int getNumberOfCars(){
-        return numberOfCars;
+    public String getNameOfCars() {
+        return names;
     }
 
-    public int getTryCount(){
+    public int getTryCount() {
         return tryCount;
     }
+
+
 }
