@@ -13,22 +13,14 @@ public class ResultView {
     }
 
     public void showResult(List<Car> carList) {
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getName()+" : "+FORWARD_SIGN.repeat(carList.get(i).getPosition()));
+        for (Car car : carList) {
+            System.out.println(car.getName()+" : "+FORWARD_SIGN.repeat(car.getPosition()));
         }
         System.out.println();
     }
 
     public void showWinners(List<String> winnerNames) {
-        for (int i = 0; i < winnerNames.size(); i++) {
-            System.out.print(winnerNames.get(i));
-            printComma(i, winnerNames.size());
-        }
-        System.out.println("가 최종 우승했습니다.");
+        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 
-    private void printComma(int index, int size) {
-        if (index < size - 1)
-            System.out.print(", ");
-    }
 }
