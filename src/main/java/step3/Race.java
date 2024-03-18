@@ -12,10 +12,10 @@ public class Race {
 
     private final NumberGenerator numberGenerator = new RandomNumberGenerator();
 
-    public List<Car> generateCarList(int carCount){
+    public List<Car> generateCarList(List<String> carNameList){
         List<Car> carList = new ArrayList<>();
-        for(int count = 0; count < carCount; count++){
-            carList.add(new Car());
+        for (String name : carNameList) {
+            carList.add(new Car(name));
         }
         return carList;
     }
@@ -25,5 +25,40 @@ public class Race {
             int chance = numberGenerator.generate();
             car.move(chance);
         }
+    }
+
+    public List<Car> findWinnerList(List<Car> carList) {
+
+        //Stream 함수 사용
+//        int maxPosition = carList.stream()
+//                .mapToInt(Car::getPosition)
+//                .max()
+//                .getAsInt();
+//
+//        List<Car> winnerList = carList.stream()
+//                .filter(car -> car.getPosition() == maxPosition)
+//                .collect(Collectors.toList());
+
+        int maxPosition = getMaxPosition(carList);
+        List<Car> winnerList = new ArrayList<>();
+        for (Car car : carList)
+            winnerList = addWinner(winnerList, car, maxPosition);
+
+        return winnerList;
+
+    }
+
+    private List<Car> addWinner(List<Car> winnerList, Car car, int maxPosition){
+        if (car.getPosition() == maxPosition) {
+            winnerList.add(car);
+        }
+        return winnerList;
+    }
+
+    private int getMaxPosition(List<Car> carList){
+        int maxPosition = 0;
+        for (Car car : carList)
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        return maxPosition;
     }
 }
