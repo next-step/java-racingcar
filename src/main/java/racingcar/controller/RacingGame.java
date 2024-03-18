@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.CarNames;
 import racingcar.domain.MovementStrategy;
 import racingcar.service.Race;
 import racingcar.view.RacingView;
@@ -17,7 +18,7 @@ public class RacingGame {
 
     public void play() {
         try {
-            final String[] carNames = racingView.readCarNames();
+            final CarNames carNames = CarNames.from(racingView.readCarNames());
             final int playingCount = racingView.readPlayingCount();
 
             final Race race = Race.of(carNames, movementStrategy);

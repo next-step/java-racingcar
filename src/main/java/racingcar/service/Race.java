@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import racingcar.domain.CarNames;
 import racingcar.domain.Cars;
 import racingcar.domain.MovementStrategy;
 import racingcar.vo.CarResult;
@@ -57,7 +58,7 @@ public class Race {
         return new RoundResult(round, CarResult.fromCars(this.cars));
     }
 
-    public static Race of(final String[] carNames, final MovementStrategy movementStrategy) {
+    public static Race of(final CarNames carNames, final MovementStrategy movementStrategy) {
         return new Race(Cars.from(carNames), movementStrategy);
     }
 }

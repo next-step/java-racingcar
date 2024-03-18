@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import static racingcar.config.RacingCarException.CAR_NAME_DUPLICATED;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,30 +37,13 @@ public class Cars {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    public static Cars from(final String[] carNames) {
-        validateCarNamesAreNotDuplicated(carNames);
-
-        return new Cars(readyCars(carNames));
+    public static Cars from(final CarNames carNames) {
+        return new Cars(createCars(carNames));
     }
 
-    private static void validateCarNamesAreNotDuplicated(String[] carNames) {
-        if (areCarNamesDuplicated(carNames)) {
-            throw new IllegalArgumentException(CAR_NAME_DUPLICATED.message(carNames));
-        }
-    }
-
-    private static boolean areCarNamesDuplicated(final String[] carNames) {
-        return distinctCarNamesCount(carNames) != carNames.length;
-    }
-
-    private static long distinctCarNamesCount(final String[] carNames) {
-        return Arrays.stream(carNames)
-                .distinct()
-                .count();
-    }
-
-    private static List<Car> readyCars(final String[] carNames) {
-        return Arrays.stream(carNames)
+    private static List<Car> createCars(final CarNames carNames) {
+        return carNames.names()
+                .stream()
                 .map(Car::from)
                 .collect(Collectors.toList());
     }
