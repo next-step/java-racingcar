@@ -24,6 +24,10 @@ public class Driver {
         return new MovementLog(this.name, position);
     }
 
+    public boolean isSameAs(String name) {
+        return Objects.equals(this.name, name);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

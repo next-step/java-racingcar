@@ -23,6 +23,14 @@ public class Position {
         return canMove ? ++this.position : this.position;
     }
 
+    public int compareMax(int number) {
+        return Math.max(this.position, number);
+    }
+
+    public boolean isMax(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

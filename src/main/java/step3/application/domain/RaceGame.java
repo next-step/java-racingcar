@@ -32,4 +32,16 @@ public class RaceGame {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
     }
+
+    public int extractMaxPosition() {
+        return racingCars.extractMaximumPosition();
+    }
+
+    public List<String> findBest(int maxPosition, List<String> names) {
+        List<Car> bestCars = racingCars.findBestDriver(maxPosition);
+        return names.stream()
+                .filter(name -> bestCars.stream()
+                        .anyMatch(car -> car.isBest(name))
+                ).collect(Collectors.toList());
+    }
 }
