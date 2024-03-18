@@ -43,7 +43,7 @@ public class Race {
     }
 
     private List<RoundResult> runAllRounds(final int playingCount) {
-        return IntStream.rangeClosed(START_ROUND, endRound(playingCount))
+        return IntStream.range(START_ROUND, endRound(playingCount))
                 .mapToObj(this::runSingleRound)
                 .collect(Collectors.toList());
     }
