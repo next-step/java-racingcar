@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
-
     private static final Pattern NUMERIC_PATTERN = Pattern.compile("\\d");
     public static final int MIN_DISTANCE = 0;
     public static final int MAX_DISTANCE = 9;

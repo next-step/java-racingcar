@@ -30,8 +30,7 @@ public class ResultView {
     }
 
     private static void printPlayCarName(RacingCar car){
-
-        System.out.println(car.NameOfCar() + " : " + "-"
+        System.out.printf("%s : %s%n", car.name(), "-"
                 .repeat(Math.max(0, car.position())));
     }
 

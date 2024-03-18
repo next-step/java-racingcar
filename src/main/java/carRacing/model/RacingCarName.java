@@ -2,6 +2,7 @@ package carRacing.model;
 
 public class RacingCarName {
     private static final int MAX_LENGTH = 5;
+
     private final String name;
 
     public RacingCarName(String name){
@@ -19,7 +20,7 @@ public class RacingCarName {
         }
     }
 
-    public String theCarName(){
+    public String name(){
         return this.name;
     }
 }

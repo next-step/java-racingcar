@@ -27,7 +27,7 @@ public class WinnersName {
 
     private String findWinnersName(int highScore, RacingCar car){
         if (highScore == car.position()) {
-            return car.NameOfCar();
+            return car.name();
         }
         return "no Winner";
     }
