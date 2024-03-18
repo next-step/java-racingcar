@@ -13,9 +13,9 @@ public class RacingServiceTest {
     @Test
     @DisplayName("자동차가 1칸 앞으로 전진한다.")
     void 자동차_전진_테스트() {
-        Car car = new Car(new CarLocation(0));
+        Car car = new Car(new Location(0));
         RacingService.moveForward(car);
-        assertThat(car.getCarLocation()).isEqualTo(1);
+        assertThat(car.getLocation()).isEqualTo(1);
     }
 
     @ParameterizedTest

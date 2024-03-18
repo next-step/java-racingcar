@@ -2,18 +2,18 @@ package racing;
 
 public class Car {
 
-    private CarLocation carLocation;
+    private Location location;
 
-    public Car(CarLocation carLocation) {
-        this.carLocation = carLocation;
+    public Car(Location location) {
+        this.location = location;
     }
 
-    public CarLocation getCarLocationInfo() {
-        return this.carLocation;
+    public Location getCarLocationInfo() {
+        return this.location;
     }
 
-    public int getCarLocation() {
-        return this.carLocation.getLocation();
+    public int getLocation() {
+        return this.location.getLocation();
     }
 
 }

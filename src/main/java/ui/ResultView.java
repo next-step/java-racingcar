@@ -10,8 +10,8 @@ public class ResultView {
             System.out.println("실행 결과");
         }
 
-        for (int i = 0; i < racingCars.getCarArr().length; i++) {
-            showCarLocation(racingCars.getCarArr()[i].getCarLocation());
+        for (int i = 0; i < racingCars.getCarList().size(); i++) {
+            showCarLocation(racingCars.getCarList().get(i).getLocation());
             System.out.println();
         }
         System.out.println();

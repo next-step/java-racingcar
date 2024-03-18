@@ -1,17 +1,20 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingCars {
-    private Car[] carArr;
+    private List<Car> carList;
 
     public RacingCars(int carCount) {
-        Car[] carArr = new Car[carCount];
-        for (int i = 0; i < carArr.length; i++) {
-            carArr[i] = new Car(new CarLocation(0));
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            carList.add(new Car(new Location(0)));
         }
-        this.carArr = carArr;
+        this.carList = carList;
     }
 
-    public Car[] getCarArr() {
-        return this.carArr;
+    public List<Car> getCarList() {
+        return this.carList;
     }
 }

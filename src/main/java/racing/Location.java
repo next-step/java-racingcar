@@ -2,10 +2,10 @@ package racing;
 
 import exception.CarLocationException;
 
-public class CarLocation {
+public class Location {
     private final Integer location;
 
-    public CarLocation(Integer location) {
+    public Location(Integer location) {
         try {
             validate(location);
         } catch (CarLocationException e) {
@@ -18,10 +18,10 @@ public class CarLocation {
         return this.location;
     }
 
-    public CarLocation moveForward() throws CarLocationException {
+    public Location moveForward() throws CarLocationException {
         Integer newLocation = this.location + 1;
         validate(newLocation);
-        return new CarLocation(newLocation);
+        return new Location(newLocation);
     }
 
     private void validate(Integer location) throws CarLocationException {
