@@ -22,6 +22,6 @@ public class Ranking {
 		return cars.stream()
 				.mapToInt(Car::getPosition)
 				.max()
-				.orElseGet(() -> 0);
+				.orElse(0);
 	}
 }

@@ -11,7 +11,7 @@ public class PrintView {
 	}
 
 	public static void printWinnerMessage(List<Car> cars) {
-		String winnerName = cars.stream().map(car -> car.getName()).collect(Collectors.joining(", "));
+		String winnerName = cars.stream().map(Car::getName).collect(Collectors.joining(", "));
 		System.out.println(winnerName + "가 최종 우승했습니다.");
 	}
 
