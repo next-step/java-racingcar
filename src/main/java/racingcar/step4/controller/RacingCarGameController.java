@@ -1,10 +1,9 @@
 package racingcar.step4.controller;
 
-import racingcar.step4.controller.dto.RacingCarGameDto;
-import racingcar.step4.controller.dto.RacingCarGameWinnerDto;
+import racingcar.step4.view.dto.RacingCarGameDto;
+import racingcar.step4.view.dto.RacingCarGameWinnerDto;
 import racingcar.step4.domain.Car;
 import racingcar.step4.domain.RacingCarGame;
-import racingcar.step4.domain.Winners;
 import racingcar.step4.domain.factory.CarFactory;
 import racingcar.step4.domain.factory.RacingCarGameFactory;
 import racingcar.step4.view.InputValue;

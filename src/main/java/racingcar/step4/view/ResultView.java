@@ -1,7 +1,7 @@
 package racingcar.step4.view;
 
-import racingcar.step4.controller.dto.RacingCarGameDto;
-import racingcar.step4.controller.dto.RacingCarGameWinnerDto;
+import racingcar.step4.view.dto.RacingCarGameDto;
+import racingcar.step4.view.dto.RacingCarGameWinnerDto;
 
 import java.util.List;
 

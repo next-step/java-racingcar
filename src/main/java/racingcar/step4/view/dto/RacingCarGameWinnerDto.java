@@ -1,4 +1,4 @@
-package racingcar.step4.controller.dto;
+package racingcar.step4.view.dto;
 
 import racingcar.step4.domain.Winners;
 
