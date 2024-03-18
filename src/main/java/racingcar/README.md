@@ -36,4 +36,5 @@
 ---
 
 ### 실행결과
-<img width="505" alt="image" src="https://github.com/next-step/java-racingcar/assets/49775540/e8f8bfab-01b6-457f-afe8-08b0e7f04b53">
+<img width="502" alt="image" src="https://github.com/next-step/java-racingcar/assets/49775540/1a3452b4-30a2-47a8-8b68-e21b4246ce7d">
+
