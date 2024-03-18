@@ -18,4 +18,17 @@ public class CarTest {
         assertThat(new Car("fuma").getName()).isEqualTo(name);
     }
 
+    @Test
+    @DisplayName("랜덤값 테스트")
+    public void carMoveChange() {
+        Car car = new Car("dobi") {
+            @Override
+            protected int moveChance() {
+                return 5;
+            }
+        };
+        car.move();
+        car.move();
+        assertThat(car.getLocation()).isEqualTo(2);
+    }
 }
