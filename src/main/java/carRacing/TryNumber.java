@@ -1,13 +1,20 @@
 package carRacing;
 
 public class TryNumber {
-    private final int value;
+    private int value;
 
     public TryNumber(int input) {
         validation(input);
         this.value = input;
     }
 
+    public boolean hasRemainingTryNumber() {
+        return this.value > 0;
+    }
+
+    public void decrease() {
+        this.value -= 1;
+    }
     public int getValue() {
         return value;
     }

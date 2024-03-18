@@ -12,21 +12,22 @@ public class CarRacingGame {
         String[] carNameInputs = InputView.carNameInput();
         TryNumber tryNumber = new TryNumber(InputView.tryInput());
         for (String carName: carNameInputs) {
-            cars.add(new Car(carName));
+            cars.add(new Car(new Name(carName)));
         }
 
         ResultView.printResultStartMessage();
-        for (int i=0; i< tryNumber.getValue(); i++) {
+        while (tryNumber.hasRemainingTryNumber()) {
             forward();
-            System.out.println();
+            ResultView.printResult(cars);
+            tryNumber.decrease();
         }
-        ResultView.printWinner(cars);
+        Winner winner = new Winner(cars);
+        ResultView.printWinner(winner.findWinner());
 
     }
     public void forward() {
         for(Car car : cars) {
             car.move(this.randomUtil.randomCount(RANDOM_NUMBER));
         }
-        ResultView.printResult(cars);
     }
 }

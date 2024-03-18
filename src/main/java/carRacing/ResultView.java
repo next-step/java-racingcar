@@ -7,16 +7,20 @@ public class ResultView {
 
     public static void printResult(List<Car> cars) {
         for(Car car: cars) {
-            System.out.print(car.getName());
-            printCarResult(car);
-        }
-    }
-
-    public static void printCarResult(Car car) {
-        for(int i=0; i<car.getPosition(); i++) {
-            System.out.print("-");
+            String result = "";
+            result += car.getName()+" ";
+            result += printCarPosition(car);
+            System.out.println(result);
         }
         System.out.println();
+    }
+
+    private static String printCarPosition(Car car) {
+        String position = "";
+        for(int i=0; i<car.getPosition(); i++) {
+            position +="-";
+        }
+        return position;
     }
 
     public static void printResultStartMessage() {
@@ -24,17 +28,10 @@ public class ResultView {
     }
 
     public static void printWinner(List<Car> cars) {
-        List<String> winners = getWinner(cars, getMaxPosition(cars));
-        System.out.print(String.join(",",winners));
-        System.out.print("가 최종 우승했습니다.");
-    }
-
-    public static int getMaxPosition(List<Car> cars) {
-        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);
-    }
-
-    public static List<String> getWinner(List<Car> cars, int maxPosition) {
-        return cars.stream().filter(car -> car.getPosition() == maxPosition).map(Car::getName).collect(Collectors.toList());
+        System.out.print(cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(",")));
+        System.out.print("가 최종우승했습니다.");
     }
 }
 
