@@ -34,4 +34,14 @@ public class WinnerService {
             throw new IllegalArgumentException("잘못된 시도 횟수 입니다");
         winnerRepository.tryCount(cnt);
     }
+
+    public void play() {
+        System.out.println("실행 결과");
+        int Try = winnerRepository.getTryCount();
+        while (Try >= 0) {
+            winnerRepository.currentLocation();
+
+            Try--;
+        }
+    }
 }

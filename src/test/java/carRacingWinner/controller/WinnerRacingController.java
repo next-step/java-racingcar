@@ -16,6 +16,7 @@ public class WinnerRacingController {
     public void racingStart() {
         carsNameInput();
         tryCount();
+        winnerService.play();
     }
 
     public void carsNameInput() {
@@ -25,7 +26,7 @@ public class WinnerRacingController {
 
     private void tryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
-        input();
+        winnerService.tryCount(input());
     }
 
     public String input() {
