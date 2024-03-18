@@ -17,4 +17,5 @@ public class CarTest {
         assertThrows(IllegalArgumentException.class, () -> new Car("sonata"));
         assertThat(new Car("fuma").getName()).isEqualTo(name);
     }
+
 }
