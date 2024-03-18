@@ -5,26 +5,18 @@ public class Car {
     private final Name name;
     private final Distance distance;
 
-    // Constructor for UnitTest
-    public Car() {
-        this.name = new Name();
-        this.distance = new Distance();
+    // Primary Constructor, 주생성자
+    public Car(int distance, String name) {
+        this.distance = new Distance(distance);
+        this.name = new Name(name);
     }
 
-    public Car(Name name) {
-        this.name = name;
-        this.distance = new Distance();
-    }
-
-    // Constructor for UnitTest
-    public Car(Distance distance, Name name) {
-        this.name = name;
-        this.distance = distance;
+    public Car(String name) {
+        this(0, name);
     }
 
     public Car(Car car) {
-        this.name = new Name(car.getName().get());
-        this.distance = new Distance(car.getDistance().get());
+        this(car.distance.get(), car.name.get());
     }
 
     public void move(CarMoveStrategy moveStrategy) {
@@ -39,6 +31,10 @@ public class Car {
 
     public Name getName() {
         return this.name;
+    }
+
+    public boolean isWinner(Distance winDistance) {
+        return winDistance.equals(this.distance);
     }
 
 }

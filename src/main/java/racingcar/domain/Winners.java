@@ -1,15 +1,28 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Winners {
 
-    private final Names names;
+    private final List<Car> winners;
 
-    public Winners(Names names) {
-        this.names = names;
+    public Winners() {
+        this.winners = new ArrayList<>();
     }
 
-    public Names get() {
-        return this.names;
+    public void add(Car car, Distance winDistance) {
+        if (car.isWinner(winDistance)) {
+            winners.add(car);
+        }
+    }
+
+    public List<String> getNameStrings() {
+        List<String> names = new ArrayList<>();
+        for (Car winner : winners) {
+            names.add(winner.getName().get());
+        }
+        return names;
     }
 
 }

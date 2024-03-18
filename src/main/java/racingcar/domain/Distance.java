@@ -8,16 +8,22 @@ public class Distance {
 
     private int distance;
 
+    // Primary Constructor, 주생성자
+    public Distance(int initValue) {
+        validateDistance(initValue);
+        this.distance = initValue;
+    }
+
     public Distance() {
-        this.distance = 0;
+        this(0);
     }
 
     // Constructor for UnitTest
-    public Distance(int initValue) {
+
+    private void validateDistance(int initValue) {
         if (isNegative(initValue)) {
             throw new NegativeInitialDistanceException(initValue);
         }
-        this.distance = initValue;
     }
 
     private boolean isNegative(int initValue) {
@@ -32,8 +38,12 @@ public class Distance {
         return this.distance;
     }
 
-    public boolean greaterThan(Distance distance) {
-        return this.distance >= distance.distance;
+
+    public Distance max(Distance distance) {
+        if (this.distance > distance.distance) {
+            return this;
+        }
+        return distance;
     }
 
     @Override

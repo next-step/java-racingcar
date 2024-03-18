@@ -1,33 +1,26 @@
 package racingcar.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String[] names) {
-        this.cars = new ArrayList<>();
-        for (String name : names) {
-            this.cars.add(new Car(new Name(name)));
-        }
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    // Constructor for UnitTest
-    public Cars(Car... cars) {
-        this.cars = Arrays.asList(cars);
+    public Cars(String[] names) {
+        this(Arrays.stream(names).map(Car::new).collect(Collectors.toList()));
     }
 
     public Cars deepCopy() {
         List<Car> copyCars = new ArrayList<>();
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             copyCars.add(new Car(car));
         }
         return new Cars(copyCars);
-    }
-
-    private Cars(List<Car> cars) {
-        this.cars = cars;
     }
 
     public List<Car> get() {
@@ -35,7 +28,7 @@ public class Cars {
     }
 
     public int size() {
-        return cars.size();
+        return this.cars.size();
     }
 
     public void move(CarMoveStrategy moveStrategy) {
@@ -44,51 +37,21 @@ public class Cars {
         }
     }
 
-    public Distance findMaxDistance() {
-        Distance maxDistance = new Distance();
-        for (Car car : cars) {
-            maxDistance = returnMaxDistance(maxDistance, car);
-        }
-        return maxDistance;
-    }
-
-    private Distance returnMaxDistance(Distance maxDistance, Car car) {
-        Distance carDistance = car.getDistance();
-        if (carDistance.greaterThan(maxDistance)) {
-            maxDistance = carDistance;
-        }
-        return maxDistance;
-    }
-
     public Winners getWinners() {
-        Distance maxDistance = findMaxDistance();
-        return new Winners(findNames(maxDistance));
+        Distance winDistance = findWinDistance();
+        Winners winners = new Winners();
+        for (Car car : cars) {
+            winners.add(car, winDistance);
+        }
+        return winners;
     }
 
-    private Names findNames(Distance maxDistance) {
-        Map<Distance, Names> namesByDistanceMap = createNamesByDistanceMap();
-        return namesByDistanceMap.get(maxDistance);
-    }
-
-    private Map<Distance, Names> createNamesByDistanceMap() {
-        Map<Distance, Names> distanceNamesMap = new HashMap<>();
+    private Distance findWinDistance() {
+        Distance winDistance = new Distance();
         for (Car car : this.cars) {
-            putToMap(distanceNamesMap, car);
+            winDistance = winDistance.max(car.getDistance());
         }
-        return distanceNamesMap;
-    }
-
-    private void putToMap(Map<Distance, Names> namesByDistanceMap, Car car) {
-        Distance distance = car.getDistance();
-        Name carName = car.getName();
-        if (namesByDistanceMap.containsKey(distance)) {
-            namesByDistanceMap.get(distance).add(carName);
-            return;
-        }
-
-        Names names = new Names();
-        names.add(carName);
-        namesByDistanceMap.put(distance, names);
+        return winDistance;
     }
 
 }

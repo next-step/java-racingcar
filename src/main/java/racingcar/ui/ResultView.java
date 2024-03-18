@@ -9,6 +9,11 @@ public class ResultView {
     private static final String CAR_POSITION_STRING = "-";
 
     public static void printCarRaceResult(CarRaceResult carRaceResult) {
+        printCarRaceSnapshot(carRaceResult);
+        printWinnerNames(carRaceResult);
+    }
+
+    private static void printCarRaceSnapshot(CarRaceResult carRaceResult) {
         System.out.println("실행 결과");
         System.out.println(getCarsPrintFormat(carRaceResult));
     }
@@ -16,24 +21,30 @@ public class ResultView {
     private static StringBuilder getCarsPrintFormat(CarRaceResult carRaceResult) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Cars cars : carRaceResult.get()) {
-            appendCars(stringBuilder, cars);
+            appendCarsFormat(stringBuilder, cars);
         }
         return stringBuilder;
     }
 
-    private static void appendCars(StringBuilder stringBuilder, Cars cars) {
+    private static void appendCarsFormat(StringBuilder stringBuilder, Cars cars) {
         for (Car car : cars.get()) {
-            stringBuilder.append(getCarPrintFormat(car)).append("\n");
+            stringBuilder.append(formatCar(car)).append(System.lineSeparator());
         }
-        stringBuilder.append("\n");
+        stringBuilder.append(System.lineSeparator());
     }
 
-    private static String getCarPrintFormat(Car car) {
+    private static String formatCar(Car car) {
         return MessageFormat.format("{0} : {1}"
                 , car.getName().get(), CAR_POSITION_STRING.repeat(car.getDistance().get()));
     }
 
-    public static void printWinnerNames(Winners winners) {
-        System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", winners.get()));
+    public static void printWinnerNames(CarRaceResult carRaceResult) {
+        Cars finalResultCars = carRaceResult.getFinalResult();
+        Winners winners = finalResultCars.getWinners();
+        System.out.println(MessageFormat.format("{0}가 최종 우승했습니다.", formatWinners(winners)));
+    }
+
+    private static String formatWinners(Winners winners) {
+        return String.join(",", winners.getNameStrings());
     }
 }
