@@ -11,10 +11,14 @@ public class WinnerRepository {
 
     private List<Car> cars;
 
-    public void addCar(Car car) {
+    private void createCars() {
+        this.cars = new ArrayList<>();
+    }
+
+    public void addCar(String name) {
         if (cars == null)
-            this.cars = new ArrayList<>();
-        this.cars.add(car);
+            createCars();
+        this.cars.add(new Car(name));
     }
 
     public void presentLocation() {
@@ -25,5 +29,13 @@ public class WinnerRepository {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void makeCars(List<String> names) {
+        if (cars == null)
+            createCars();
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
     }
 }
