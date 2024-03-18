@@ -14,6 +14,10 @@ public class RoundRecord {
         this.positions = new HashMap<>();
     }
 
+    public RoundRecord(Map<String, Integer> positions) {
+        this.positions = positions;
+    }
+
     public void addHistory(Car car) {
         this.positions.put(car.getName(), car.getPosition());
     }
@@ -23,22 +27,9 @@ public class RoundRecord {
     }
 
     public List<String> findMaxPosition() {
-//        // 최대값 찾기
-//        int maxValue = this.positions.values().stream()
-//                .max(Integer::compareTo)
-//                //.max((a,b) -> a.compareTo(b))
-//                .orElse(0);
-//
-//        // 최대값을 가진 키 찾기
-//        return this.positions.entrySet().stream()
-//                .filter(position -> position.getValue() == maxValue)
-//                .map(Map.Entry::getKey)
-//                //.map(i -> i.getKey())
-//                .collect(Collectors.toList());
 
         return this.positions.entrySet().stream()
                 .filter(i -> i.getValue().equals(getMaxPosition()))
-                //.map(i-> i.getKey())
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }

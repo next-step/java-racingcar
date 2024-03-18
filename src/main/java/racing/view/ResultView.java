@@ -1,9 +1,9 @@
 package racing.view;
 
 import racing.domain.RoundRecord;
+import racing.domain.RoundRecords;
 
 import java.text.MessageFormat;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -15,33 +15,24 @@ public class ResultView {
     private static final String POSITION_MARK = "_";
     private static final String PRINT_FORMAT = "{0} : {1}";
 
-    public static void showResult(List<RoundRecord> records) {
+    public static void showResult(RoundRecords roundRecords) {
         StringBuilder printResult = new StringBuilder();
         printResult.append(GAME_RESULT);
         printResult.append(NEW_LINE);
-        for (RoundRecord roundRecord : records) {
+        for (RoundRecord roundRecord : roundRecords.getValue()) {
             printResult.append(print(roundRecord));
             printResult.append(NEW_LINE);
             printResult.append(NEW_LINE);
         }
-        printResult.append(findWinner(records)).append(WINNER_ANNOUNCEMENT);
+        printResult.append(findWinner(roundRecords)).append(WINNER_ANNOUNCEMENT);
         System.out.println(printResult.toString());
     }
 
     private static String print(RoundRecord roundRecord) {
-//        StringBuilder result = new StringBuilder();
-//        roundRecord.getPositions().forEach((name, position) -> {
-//            result.append(name + " : " + POSITION_MARK.repeat(Math.max(0, position)));
-//            result.append(NEW_LINE);
-//        });
-//      return result.toString();
-//  }
+
         return roundRecord.getPositions().entrySet()
                 .stream()
-                //.map(position -> makeMessageFormat(position))
                 .map(ResultView::makeMessageFormat)
-                //.map(position -> String.format("%s : %s", position.getKey(), POSITION_MARK.repeat(Math.max(0, position.getValue()))))
-                //.map(position -> position.getKey() + " : " + POSITION_MARK.repeat(Math.max(0, position.getValue())))
                 .collect(Collectors.joining(NEW_LINE));
     }
 
@@ -49,10 +40,7 @@ public class ResultView {
         return MessageFormat.format(PRINT_FORMAT, position.getKey(), POSITION_MARK.repeat(Math.max(0, position.getValue())));
     }
 
-    private static String findWinner(List<RoundRecord> roundRecords) {
-        RoundRecord lastRoundRecord = roundRecords.get(roundRecords.size() - 1);
-        //return lastRoundRecord.findMax().stream().collect(Collectors.joining(","));
-        return String.join(", ", lastRoundRecord.findMaxPosition());
-
+    private static String findWinner(RoundRecords roundRecords) {
+        return String.join(", ", roundRecords.findWinner());
     }
 }
