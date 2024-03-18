@@ -6,17 +6,24 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
     //given
-    Car car = new Car();
+    Car car = new Car("poby");
 
     @Test
     @DisplayName("(1)자동차의 위치를 전달")
+    public void carName() {
+        //when, then
+        Assertions.assertThat(car.carName()).isEqualTo("poby");
+    }
+
+    @Test
+    @DisplayName("(2)자동차의 위치를 전달")
     public void position() {
         //when, then
         Assertions.assertThat(car.position()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("(2)자동차의 위치를 업데이트")
+    @DisplayName("(3)자동차의 위치를 업데이트")
     public void updatePosition() {
         //when
         car.updatePosition();
