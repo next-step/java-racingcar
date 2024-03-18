@@ -23,7 +23,6 @@ public class CarGroup {
     }
 
     public int position(int carIndex) {
-
         return carGroup.get(carIndex).position();
     }
 }

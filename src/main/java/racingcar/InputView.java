@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class InputView {
     Scanner scanner = new Scanner(System.in);
 
-    public int numberOfCar() {
-        System.out.println("자동차 갯수를 입력하세요: ");
-        return scanner.nextInt();
+    public String numberOfCar() {
+        System.out.println("자동차들의 이름을 입력하세요(','로 구분): ");
+        return scanner.nextLine();
     }
 
     public int opportunity() {
