@@ -1,7 +1,7 @@
 package race.domain;
 
 import org.junit.jupiter.api.Test;
-import race.constant.Definition;
+import race.fixture.CarFixtures;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,13 +28,17 @@ public class PositionTest {
 
     @Test
     void 위치_받아오기() {
-        System.out.println(Definition.POBI.getPosition());
-        assertThat(new Position(Definition.POBI.getPosition())).isEqualTo(new Position(0));
+        assertThat(new Position(CarFixtures.POBI.getPosition())).isEqualTo(new Position(0));
     }
 
     @Test
     void 같은_위치() {
         int position = 0;
-        assertThat(new Position(Definition.POBI.getPosition()).isSamePosition(position)).isTrue();
+        assertThat(new Position(CarFixtures.POBI.getPosition()).isSamePosition(position)).isTrue();
+    }
+
+    @Test
+    void 최댓값() {
+        assertThat(Math.max(1, new Position(3).getPosition())).isEqualTo(3);
     }
 }
