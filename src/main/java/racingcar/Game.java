@@ -1,11 +1,11 @@
 package racingcar;
 
-public class Game {
-	public Game() {
-	}
+import java.util.ArrayList;
+import java.util.List;
 
+public class Game {
 	public void play(int numberOfCar, int numberOfTrial) {
-		Car[] cars = setCars(numberOfCar);
+		List<Car> cars = setCars(numberOfCar);
 
 		PrintView.printResultMessage();
 
@@ -14,17 +14,17 @@ public class Game {
 		}
 	}
 
-	private Car[] setCars(int numberOfCar) {
-		Car[] cars = new Car[numberOfCar];
+	private List<Car> setCars(int numberOfCar) {
+		List<Car> cars = new ArrayList<>();
 
 		for(int i = 0; i < numberOfCar; i++) {
-			cars[i] = new Car(new RandomCarMoveStrategy());
+			cars.add(new Car(new RandomCarMoveStrategy()));
 		}
 
 		return cars;
 	}
 
-	private void tryGame(Car[] cars) {
+	private void tryGame(List<Car> cars) {
 		for(Car car : cars) {
 			car.move();
 			PrintView.printCarMoving(car);

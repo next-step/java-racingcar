@@ -19,28 +19,22 @@ class CarTest {
 		Car car = new Car();
 		car.move();
 
-		assertThat(car.getPosition()).isGreaterThan(0);
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@Test
 	@DisplayName("움직일 수 있는 조건을 만족하면 위치는 증가한다.")
 	void increasePositionWithSatisfiedStrategy() {
-		CarMoveStrategy carMoveStrategy = new TestCarMoveStrategy(true);
-		assertThat(carMoveStrategy.isMovable()).isTrue();
-
-		Car car = new Car(carMoveStrategy);
+		Car car = new Car(() -> true);
 		car.move();
 
-		assertThat(car.getPosition()).isGreaterThan(0);
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@Test
 	@DisplayName("움직일 수 있는 조건을 만족하지 못하면 움직임은 증가하지 않는다.")
 	void notIncreasePositionWithNotSatisfiedStrategy() {
-		CarMoveStrategy carMoveStrategy = new TestCarMoveStrategy(false);
-		assertThat(carMoveStrategy.isMovable()).isFalse();
-
-		Car car = new Car(carMoveStrategy);
+		Car car = new Car(() -> false);
 		car.move();
 
 		assertThat(car.getPosition()).isEqualTo(0);
