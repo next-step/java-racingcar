@@ -1,41 +1,54 @@
 package racingcar.domain;
 
 public class Car implements Vehicle {
-    private final int MOVABLE_NUMBER = 4;
-    private final int MAX_NAME_SIZE = 5;
 
-    private final String name;
-    private Integer moveCount = 0;
+    private final String DISPLAY_STRING = "-";
+    private final int MOVABLE_NUMBER = 4;
+    private final Name name;
+    private Position position;
 
     public Car(String name) {
-        validateName(name);
-        this.name = name;
+        this.name = new Name(name);
+        this.position = new Position(0);
     }
 
     @Override
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     @Override
-    public Integer getMoveCount() {
-        return moveCount;
+    public Integer getPosition() {
+        return this.position.getPosition();
     }
 
     @Override
     public void move(int number) {
         if (isMovable(number)) {
-            moveCount++;
+            this.position.increase();
         }
     }
+
+    @Override
+    public Integer max(int other) {
+        return this.position.max(other);
+    }
+
+    @Override
+    public boolean isMatch(int position) {
+
+        return this.position.isMatch(position);
+    }
+
+    @Override
+    public String toString() {
+        return DISPLAY_STRING.repeat(position.getPosition() + 1);
+    }
+
 
     private boolean isMovable(int number) {
         return number >= MOVABLE_NUMBER;
     }
 
-    private void validateName(String name) {
-        if (name.length() > MAX_NAME_SIZE){
-            throw new RuntimeException("자동차 이름은 5자를 초과 할 수 없습니다.");
-        }
-    }
+
 }

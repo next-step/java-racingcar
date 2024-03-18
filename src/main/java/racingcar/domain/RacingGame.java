@@ -1,27 +1,30 @@
 package racingcar.domain;
 
 import java.util.List;
-
-import common.NumberGenerator;
+import java.util.stream.Collectors;
 
 public class RacingGame implements Game {
-    List<Vehicle> vehicles;
-    NumberGenerator numberGenerator;
 
-    public RacingGame(List<Vehicle> vehicles, NumberGenerator numberGenerator) {
-        this.vehicles = vehicles;
-        this.numberGenerator = numberGenerator;
+    private Vehicles vehicles;
+
+    public RacingGame(List<String> carNames) {
+
+        this.vehicles = new Vehicles(carNames);
     }
 
     @Override
     public void start() {
-        for (Vehicle vehicle : vehicles) {
-            vehicle.move(numberGenerator.getNumber());
-        }
+        vehicles.move();
     }
 
     @Override
-    public List<Vehicle> getVehicles() {
+    public Vehicles getVehicles() {
         return vehicles;
+    }
+
+    @Override
+    public String getWinners() {
+        int maxMovePosition = vehicles.getMaxPositionVehicle();
+        return vehicles.getMatchVehicle(maxMovePosition);
     }
 }

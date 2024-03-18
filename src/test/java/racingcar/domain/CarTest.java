@@ -21,25 +21,13 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차의 이름이 5글자 초과하면 RuntimeException 발생한다.")
-    void validateName() {
-        //given
-        String name = "nextstep";
-
-        //when & then
-        assertThatExceptionOfType(RuntimeException.class)
-            .isThrownBy(() -> new Car(name)
-            );
-    }
-
-    @Test
     @DisplayName("움직임이 0인 자동차를 생성한다.")
     void createCar() {
         //given
         Vehicle car = new Car("pobi");
 
         //when & then
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest
@@ -53,7 +41,7 @@ public class CarTest {
         car.move(number);
 
         //then
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -67,6 +55,16 @@ public class CarTest {
         car.move(number);
 
         //then
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("현재 위치의 +1 만큼의 - 문자를 반환한다.")
+    void toStringTest() {
+        //given
+        Car car = new Car("pobi");
+
+        //when & then
+        assertThat(car.toString()).isEqualTo("-");
     }
 }
