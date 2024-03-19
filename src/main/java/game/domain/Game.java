@@ -13,7 +13,9 @@ public class Game {
     }
 
     private List<Car> generateCars(List<Name> names) {
-        return names.stream().map(Car::new).collect(Collectors.toList());
+        return names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void play() {

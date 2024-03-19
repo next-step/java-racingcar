@@ -61,9 +61,9 @@
 # Step5 리뷰 반영
 
 ## Todo
-- Game.java > generateCars 가독성 향상을 위한 개행 추가
 - GameClient에서 사용되는 TryNo와 Name을 2개의 상태값을 가지는 Dto로 변경
 
 ## Done
 - Winner 생성자를 순수함수로 변경
 - Winner <-> Car 의존성 제거 및 maxDistance 상태값 변경
+- Game.java > generateCars 가독성 향상을 위한 개행 추가
