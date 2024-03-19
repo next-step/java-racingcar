@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 
 public class RacingCarGame {
     private final List<Car> carList;
+    private final StrategyRandomMove strategyRandomMove = new StrategyRandomMove();
 
     public RacingCarGame(List<Car> carList) {
         this.carList = carList;
@@ -36,7 +37,7 @@ public class RacingCarGame {
     }
 
     public RoundResult executeRound() {
-        play(new StrategyRandomMove());
+        play(strategyRandomMove);
         return new RoundResult(getRoundResults());
     }
 
