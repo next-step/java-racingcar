@@ -8,17 +8,24 @@ public class Winner {
 
     public List<String> findWinersString(List<Car> cars) {
 
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = car.maxLocation(maxLocation);
-        }
+        int maxLocation = findMaxLocation(cars, 0);
 
+        return findWinnerNames(cars, maxLocation);
+    }
+
+    private static List<String> findWinnerNames(List<Car> cars, int maxLocation) {
         List<String> winnerNames = new ArrayList<>();
         for (Car car : cars) {
             winnersList(maxLocation, winnerNames, car);
         }
-
         return winnerNames;
+    }
+
+    private static int findMaxLocation(List<Car> cars, int maxLocation) {
+        for (Car car : cars) {
+            maxLocation = car.maxLocation(maxLocation);
+        }
+        return maxLocation;
     }
 
     private static void winnersList(int maxLocation, List<String> winnerNames, Car car) {
@@ -29,21 +36,20 @@ public class Winner {
 
     public List<Car> findWinners(List<Car> cars) {
 
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = car.maxLocation(maxLocation);
-        }
+        int maxLocation = findMaxLocation(cars, 0);
+        return findWinners(cars, maxLocation);
+    }
 
+    private static List<Car> findWinners(List<Car> cars, int maxLocation) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             winners(maxLocation, winners, car);
         }
-
         return winners;
     }
 
     private static void winners(int maxLocation, List<Car> winners, Car car) {
-        if (maxLocation == car.getLocation()) {
+        if (car.isMatchLocation(maxLocation)) {
             winners.add(car);
         }
     }

@@ -4,18 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private int CAR_COUNT;
-    private int MOVE_COUNT ;
-
     private static Scanner scanner = new Scanner(System.in);
 
     public InputView() {}
-
-    // 테스트용 생성자
-    public InputView(int carCount, int moveCount) {
-        CAR_COUNT = carCount;
-        MOVE_COUNT = moveCount;
-    }
 
     public int carCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -30,10 +21,6 @@ public class InputView {
     public int moveCount(){
         System.out.println("시도할 회수는 몇 회 인가요?");
         return isPassNumber(scanner.nextInt());
-    }
-
-    private void closeScanner(){
-        scanner.close();
     }
 
     private static int isPassNumber(int number){

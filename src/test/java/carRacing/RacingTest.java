@@ -36,17 +36,6 @@ public class RacingTest {
         }
     }
 
-
-    @DisplayName("원하는 숫자만큼 입력부 세팅시 정상적으로 값이 설정되는지 확인")
-    @Test
-    void inputView_Test() {
-
-        InputView inputView = new InputView(3,5);
-        assertThat(inputView.carCount()).isEqualTo(3);
-        assertThat(inputView.moveCount()).isEqualTo(5);
-    }
-
-
     @DisplayName("차량 3대를 5회 이동시켰을때 결과")
     @Test
     void racingTest() {

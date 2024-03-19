@@ -18,6 +18,10 @@ class CarTest {
         randomNumberFixed = new FixedNumberByParameter(5);
     }
 
+    @Test
+    void 자동차의_최대값_비교_테스트(){
+        assertThat(new Car("등교차", 10).maxLocation(7)).isEqualTo(10);
+    }
 
     @Test
     void 자동차에_5글자가넘는_이름설정(){
