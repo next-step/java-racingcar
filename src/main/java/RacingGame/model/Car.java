@@ -36,17 +36,13 @@ public class Car {
     }
 
     public void move(MovableStrategy strategy) {
-        if (isMoveCar(strategy)) {
+        if (strategy.movable()) {
             move();
         }
     }
 
     private void move() {
         position += DEFAULT_MOVE_DISTANCE;
-    }
-
-    private static boolean isMoveCar(MovableStrategy strategy) {
-        return strategy.movable();
     }
 
     public String name() {
