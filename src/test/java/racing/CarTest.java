@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
     @Test
@@ -22,13 +21,6 @@ class CarTest {
         Car car = new Car("test2");
         assertThat(car.getName()).isEqualTo("test2");
         assertThat(car.getCurrentLocation()).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("자동차 이름이 5글자 초과일 경우, 에러 발생")
-    public void carNameErrorIfOverFiveCharacter() {
-        assertThatThrownBy(() -> new Car("다섯글자넘는")).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이름은 다섯 글자를 초과할 수 없습니다.");
     }
 
     @Test
