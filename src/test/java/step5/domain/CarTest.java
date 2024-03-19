@@ -1,4 +1,4 @@
-package step5;
+package step5.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,21 +19,26 @@ public class CarTest {
                 .isThrownBy(() -> Car.withName("다섯글자다다"));
     }
 
-    @DisplayName("차량 움직임 테스트")
+    @DisplayName("차량을 움직일 경우, 움직인 거리가 증가한다.")
     @Test
     void move() {
         final Car car = Car.withName("test");
-        final Moving strategy = new RandomMoving() {
-            @Override
-            public boolean movable() {
-                return true;
-            }
-        };
 
-        car.move(strategy);
+        car.move(() -> true);
 
         final CarMovementResult result = car.movementResult();
         assertThat(result.moveCount()).isEqualTo(1);
+    }
+
+    @DisplayName("차량을 움직이지 않을 경우, 움직인 거리가 그대로다.")
+    @Test
+    void notMove() {
+        final Car car = Car.withName("test");
+
+        car.move(() -> false);
+
+        final CarMovementResult result = car.movementResult();
+        assertThat(result.moveCount()).isEqualTo(0);
     }
 
 }
