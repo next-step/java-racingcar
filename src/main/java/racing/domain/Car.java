@@ -1,6 +1,7 @@
 package racing.domain;
 
 public class Car {
+    private static final int MOVABLE_LOWER_BOUND = 4;
     private final Name name;
     private final CurrentLocation currentLocation;
 
@@ -23,7 +24,11 @@ public class Car {
     }
 
     public void move(int movePoint) {
-        this.currentLocation.move(movePoint);
+        if (isMove(movePoint)) this.currentLocation.move();
+    }
+
+    private boolean isMove(int movePoint) {
+        return movePoint >= MOVABLE_LOWER_BOUND;
     }
 
     public boolean isSameLocation(int location) {
