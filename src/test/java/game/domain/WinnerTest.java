@@ -26,16 +26,14 @@ class WinnerTest {
     @Test
     @DisplayName("우승자 한 명")
     void single_winner() {
-        Winner winner = new Winner(List.of(car1, car2, car3));
-        assertThat(winner.getSize()).isEqualTo(1);
-        assertThat(winner.getName()).isEqualTo("test2");
+        String winners = new Winner().getWinners(List.of(car1, car2, car3));
+        assertThat(winners).isEqualTo("test2");
     }
 
     @Test
     @DisplayName("우승자가 여러 명이 나온다")
     void multiple_winner() {
-        Winner winner = new Winner(List.of(car1, car2, car3, car4));
-        assertThat(winner.getSize()).isEqualTo(2);
-        assertThat(winner.getName()).isEqualTo("test2, test4");
+        String winners = new Winner().getWinners(List.of(car1, car2, car3, car4));
+        assertThat(winners).isEqualTo("test2, test4");
     }
 }

@@ -44,6 +44,6 @@ public class GameClient {
     }
 
     private static void selectWinnersAndPrint(List<Car> cars) {
-        printPlainMessage(new Winner(cars).getName() + WINNER_POSTFIX);
+        printPlainMessage(new Winner().getWinners(cars) + WINNER_POSTFIX);
     }
 }
