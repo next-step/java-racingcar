@@ -1,8 +1,8 @@
 package step5.view;
 
-import step5.view.result.CarMovementResult;
-import step5.view.result.CarMovementRoundResult;
-import step5.view.result.CarMovementRoundResults;
+import step5.domain.result.CarMovementResult;
+import step5.domain.result.CarMovementRoundResult;
+import step5.domain.result.CarMovementRoundResults;
 
 import java.util.List;
 

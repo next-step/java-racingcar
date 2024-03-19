@@ -1,6 +1,6 @@
 package step5.domain;
 
-import step5.view.result.CarMovementResult;
+import step5.domain.result.CarMovementResult;
 
 public class Car {
     private static final int CAR_NAME_MAX_LENGTH = 5;

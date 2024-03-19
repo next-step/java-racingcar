@@ -1,6 +1,6 @@
 package step5.domain;
 
-import step5.view.result.CarMovementRoundResults;
+import step5.domain.result.CarMovementRoundResults;
 
 public class Racing {
     private final Cars cars;

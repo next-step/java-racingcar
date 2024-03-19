@@ -1,4 +1,4 @@
-package step5.view.result;
+package step5.domain.result;
 
 import java.util.ArrayList;
 import java.util.List;
