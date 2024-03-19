@@ -3,15 +3,12 @@ package racingcar;
 import io.InputView;
 import io.PrintView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Game {
 	public void play() {
 		String[] carNames = InputView.inputNamesOfCar();
 		int numberOfTrial = InputView.inputNumberOfTrial();
 
-		List<Car> cars = setCars(carNames);
+		Cars cars = setCars(carNames);
 
 		PrintView.printResultMessage();
 
@@ -19,26 +16,18 @@ public class Game {
 			tryGame(cars);
 		}
 
-		Ranking ranking = new Ranking(cars);
-		PrintView.printWinnerMessage(ranking.getWinners());
+		PrintView.printWinnerMessage(cars.getWinners());
 	}
 
-	private List<Car> setCars(String[] carNames) {
-		List<Car> cars = new ArrayList<>();
+	private Cars setCars(String[] carNames) {
 		CarMoveStrategy[] carMoveStrategies = StrategyFactory.getCarMoveStrategies();
 
-		for(String carName : carNames) {
-			cars.add(new Car(carName, carMoveStrategies));
-		}
-
-		return cars;
+		return new Cars(carNames, carMoveStrategies);
 	}
 
-	private void tryGame(List<Car> cars) {
-		for(Car car : cars) {
-			car.move();
-			PrintView.printCarMoving(car);
-		}
+	private void tryGame(Cars cars) {
+		cars.move();
+		cars.printPosition();
 
 		PrintView.printEmptyLine();
 	}

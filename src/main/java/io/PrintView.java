@@ -17,7 +17,7 @@ public class PrintView {
 		System.out.println(winnerName + "가 최종 우승했습니다.");
 	}
 
-	public static void printCarMoving(Car car) {
+	public static void printPosition(Car car) {
 		System.out.print(car.getName() + " : " + "-".repeat(car.getPosition()));
 
 		printEmptyLine();

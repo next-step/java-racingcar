@@ -20,6 +20,10 @@ public class Car {
 		position++;
 	}
 
+	public boolean hasEqualPosition(int position) {
+		return this.position == position;
+	}
+
 	public String getName() {
 		return name;
 	}
