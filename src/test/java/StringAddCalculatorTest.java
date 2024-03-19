@@ -2,8 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -13,8 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  */
 public class StringAddCalculatorTest {
     @ParameterizedTest
-    @NullSource
-    @EmptySource
+    @NullAndEmptySource
     @DisplayName("빈 문자열 또는 null값을 입력할 경우 0을 반환해야 한다.")
     void splitAndSumNullOrEmptyStringTest(String input) {
         Assertions.assertEquals(StringAddCalculator.splitAndSum(input), 0);
@@ -42,7 +40,8 @@ public class StringAddCalculatorTest {
     @Test
     @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     void specificSeperatorSplitNumbersReturnNumbersSumTest() {
-        Assertions.assertEquals(StringAddCalculator.splitAndSum("//;\n1;2;3"), 6);
+        Assertions.assertEquals(StringAddCalculator.splitAndSum("//;\\n1;2;3"), 6);
+        Assertions.assertEquals(StringAddCalculator.splitAndSum("//!\\n12!3"), 15);
     }
 
     @Test

@@ -6,16 +6,18 @@ import java.util.regex.Pattern;
  * @date 3/10/24
  */
 public class StringAddCalculator {
+    private static final Pattern PATTERN = Pattern.compile("\\/\\/(.)\\\\n(.*)");
     public static int splitAndSum(String str) {
         if (str == null || str.isEmpty()) {
             return 0;
         }
-        str = formattingStr(str);
-        return sum(split(str, extractSeperator(str)));
+        String seperator = extractSeperator(str);
+        String formattedStr = formattingStr(str);
+        return sum(split(formattedStr, seperator));
     }
 
     private static String formattingStr(String str) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
+        Matcher m = PATTERN.matcher(str);
         if (m.find()) {
             str = m.group(2);
         }
@@ -32,7 +34,9 @@ public class StringAddCalculator {
     private static int sum(String[] split) {
         int sum = 0;
         for (String num : split) {
-            sum += checkNegative(Integer.parseInt(validationNumber(num) ? num : "0"));
+            if(validationNumber(num)) {
+                sum += checkNegative(Integer.parseInt(num));
+            }
         }
         return sum;
     }
@@ -49,6 +53,10 @@ public class StringAddCalculator {
     }
 
     private static String extractSeperator(String str) {
+        Matcher m = PATTERN.matcher(str);
+        if (m.find()) {
+            return  m.group(1);
+        }
         String regex = "[\\\\,\\\\:\\\\;]";
         Matcher matcher = Pattern.compile(regex).matcher(str);
         return matcher.find() ? matcher.group(0) : null;
