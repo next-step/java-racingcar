@@ -1,5 +1,6 @@
 package RacingGame.service;
 
+import RacingGame.common.RandomNumberGenerator;
 import RacingGame.model.CarsManager;
 import RacingGame.model.MovableStrategy;
 import RacingGame.model.Record;
@@ -10,6 +11,7 @@ public class RacingGameService {
     private MovableStrategy movableStrategy;
 
     public RacingGameService() {
+        movableStrategy = new MovableStrategy(new RandomNumberGenerator());
     }
 
     public RacingGameService(MovableStrategy movableStrategy) {

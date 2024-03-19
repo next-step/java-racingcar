@@ -5,6 +5,7 @@ import java.util.List;
 public class Record {
     private static final String CAR_POSITION_UNIT = "-";
     private static final String NEXT_LINE_SEPARATOR = System.lineSeparator();
+
     private final StringBuilder record;
 
     public Record() {
@@ -13,12 +14,12 @@ public class Record {
 
 
     public void addStage(CarsManager carsManager) {
-        for (Car car : carsManager.cars()) {
-            record.append(car.name())
+        carsManager.carNamePositions().forEach((name, position) -> {
+            record.append(name)
                     .append(" : ")
-                    .append(makeHypens(car.getPosition()));
+                    .append(makeHypens(position));
             addNextLine();
-        }
+        });
 
         addNextLine();
     }
