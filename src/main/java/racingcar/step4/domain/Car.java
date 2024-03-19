@@ -26,8 +26,8 @@ public class Car implements Comparable<Car> {
   }
 
   public static Car copy(Car car) {
-    CarName carName = CarName.naming(car.getCarName().get());
-    Position position = Position.specificPosition(car.getPosition().get());
+    CarName carName = CarName.naming(car.getCarName());
+    Position position = Position.specificPosition(car.getPosition());
     CarMoveStrategy strategy = RandomCarMoveStrategy.copy(car.getMoveStrategy());
     return new Car(carName, position, strategy);
   }
@@ -38,12 +38,12 @@ public class Car implements Comparable<Car> {
     }
   }
 
-  public CarName getCarName() {
-    return carName;
+  public String getCarName() {
+    return carName.getName();
   }
 
-  public Position getPosition() {
-    return position;
+  public Integer getPosition() {
+    return position.getPosition();
   }
 
   public CarMoveStrategy getMoveStrategy() {

@@ -23,7 +23,7 @@ public class Position implements Comparable<Position> {
     this.position += 1;
   }
 
-  public int get() {
+  public int getPosition() {
     return position;
   }
 

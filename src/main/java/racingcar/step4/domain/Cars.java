@@ -21,23 +21,19 @@ public class Cars {
     }
   }
 
-  public static Cars pickWinners(Cars candidates) {
-    Car winnerCandidate = Collections.max(candidates.getCars());
-    List<Car> cars = candidates.getCars().stream()
-        .filter(car -> Objects.equals(car.getPosition().get(), winnerCandidate.getPosition().get()))
+  public Cars pickWinners() {
+    Car winnerCandidate = Collections.max(cars);
+    List<Car> winners = cars.stream()
+        .filter(car -> Objects.equals(car.getPosition(), winnerCandidate.getPosition()))
         .collect(Collectors.toList());
 
-    return new Cars(cars);
+    return new Cars(winners);
   }
 
   public List<String> getWinnerNames() {
     return this.cars.stream()
-        .map(it -> it.getCarName().get())
+        .map(Car::getCarName)
         .collect(Collectors.toList());
-  }
-
-  public List<Car> getCars() {
-    return cars;
   }
 
   public Cars copyCars() {
@@ -46,5 +42,10 @@ public class Cars {
 
   public int size() {
     return cars.size();
+  }
+
+  // dto 컨버팅, 테스트 용으로만 사용
+  public List<Car> getCars() {
+    return cars;
   }
 }

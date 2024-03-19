@@ -41,6 +41,6 @@ public class RacingCarGame {
   public void start() {
     this.racingCars.move(new RandomNumberGenerator());
     this.racingCars = racingCars.copyCars();
-    this.winners = Cars.pickWinners(this.racingCars);
+    this.winners = racingCars.pickWinners();
   }
 }

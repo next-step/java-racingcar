@@ -19,7 +19,7 @@ public class CarFactoryTest {
   @CsvSource(value = {"pobi:1", "pobi,crong:2", "pobi,crong,honux:3"}, delimiter = ':')
   @DisplayName("자동차 이름 쉼표(,) 기준으로 들어올 경우, 정상적으로 자동차 n대 생성되는지 테스트")
   void carCreateTest(String given, int expected) {
-    assertThat(CarFactory.of(given).getCars()).hasSize(expected);
+    assertThat(CarFactory.of(given).size()).isEqualTo(expected);
   }
 
   @ParameterizedTest
@@ -30,7 +30,7 @@ public class CarFactoryTest {
     String[] names = given.split(NAME_SEPARATOR);
 
     for (int i = 0; i < names.length; i++) {
-      assertThat(cars.getCars().get(i).getCarName().get()).isEqualTo(names[i]);
+      assertThat(cars.getCars().get(i).getCarName()).isEqualTo(names[i]);
     }
   }
 
@@ -58,6 +58,6 @@ public class CarFactoryTest {
   void carCreateTest5(String given, int expected) {
     Cars cars = CarFactory.of(given);
     assertThat(CarFactory.of(given).getCars()).hasSize(expected);
-    assertThat(cars.getCars().get(0).getCarName().get()).isEqualTo(given);
+    assertThat(cars.getCars().get(0).getCarName()).isEqualTo(given);
   }
 }

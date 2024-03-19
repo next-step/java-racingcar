@@ -34,6 +34,6 @@ public class CarNameTest {
   @ValueSource(strings = {"pobi", "crong", "honux"})
   @DisplayName("자동차 이름이 5자 이하일 경우 정상 생성")
   void carNameTest3(String given) {
-    assertThat(CarName.naming(given).get()).isEqualTo(given);
+    assertThat(CarName.naming(given).getName()).isEqualTo(given);
   }
 }

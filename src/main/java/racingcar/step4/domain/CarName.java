@@ -20,7 +20,7 @@ public class CarName {
     return new CarName(name);
   }
 
-  public String get() {
+  public String getName() {
     return name;
   }
 

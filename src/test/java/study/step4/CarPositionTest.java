@@ -22,12 +22,12 @@ public class CarPositionTest {
   @Test
   @DisplayName("자동차 위치가 양수일 경우 정상 생성")
   void carPositionTest2() {
-    assertThat(Position.specificPosition(10).get()).isEqualTo(10);
+    assertThat(Position.specificPosition(10).getPosition()).isEqualTo(10);
   }
 
   @Test
   @DisplayName("자동차 위치를 기본 위치 생성자를 이용할 경우 DEFAULT_START_POSITION 으로 셋팅")
   void carPositionTest3() {
-    assertThat(Position.defaultPosition().get()).isEqualTo(DEFAULT_START_POSITION);
+    assertThat(Position.defaultPosition().getPosition()).isEqualTo(DEFAULT_START_POSITION);
   }
 }
