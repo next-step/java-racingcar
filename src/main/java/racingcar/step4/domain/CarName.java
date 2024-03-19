@@ -20,6 +20,11 @@ public class CarName {
     return new CarName(name);
   }
 
+  public CarName copy() {
+    return new CarName(name);
+  }
+
+
   public String getName() {
     return name;
   }

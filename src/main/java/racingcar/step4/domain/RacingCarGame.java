@@ -22,20 +22,23 @@ public class RacingCarGame {
     return new RacingCarGame(round, cars, null);
   }
 
+  // dto 컨버팅 용도
   public int getRound() {
     return round;
   }
 
+  // dto 컨버팅 용도
   public List<Car> getRacingCars() {
     return racingCars.getCars();
   }
 
+  // dto 컨버팅 용도
   public Cars getWinners() {
     return winners;
   }
 
   public static RacingCarGame findFinalGame(List<RacingCarGame> racingCarGames) {
-    return Collections.max(racingCarGames, Comparator.comparing(RacingCarGame::getRound));
+    return Collections.max(racingCarGames, Comparator.comparing(it -> it.round));
   }
 
   public void start() {

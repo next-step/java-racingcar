@@ -48,7 +48,6 @@ public class WinnersTest {
     CARS.getCars().get(1).move(bound -> 10);
     CARS.getCars().get(2).move(bound -> 2);
 
-
     Cars winners = CARS.pickWinners();
 
     assertThat(winners.getWinnerNames()).hasSize(2);

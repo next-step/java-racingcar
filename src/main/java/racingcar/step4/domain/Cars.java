@@ -4,7 +4,6 @@ import racingcar.step4.domain.strategy.MoveNumberGenerator;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -24,12 +23,13 @@ public class Cars {
   public Cars pickWinners() {
     Car winnerCandidate = Collections.max(cars);
     List<Car> winners = cars.stream()
-        .filter(car -> Objects.equals(car.getPosition(), winnerCandidate.getPosition()))
+        .filter(winnerCandidate::findSamePosition)
         .collect(Collectors.toList());
 
     return new Cars(winners);
   }
 
+  // dto 컨버팅 용도로만 사용
   public List<String> getWinnerNames() {
     return this.cars.stream()
         .map(Car::getCarName)
