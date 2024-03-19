@@ -1,7 +1,13 @@
+package common;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
+
+    private Calculator() {
+    }
+
     private static final int ZERO = 0;
 
     public static int calculate(String input) {

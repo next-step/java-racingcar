@@ -1,7 +1,7 @@
 package racingcar;
 
 
-
+import java.util.List;
 
 public class RacingCarGame {
 
@@ -25,5 +25,8 @@ public class RacingCarGame {
 
     public void showRacingResult() {
         RacingResultView.viewResult(racingCars);
+    }
+    public void showWinner() {
+        RacingResultView.viewWinners(racingCars.getWinners());
     }
 }
