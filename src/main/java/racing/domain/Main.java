@@ -1,4 +1,7 @@
-package racing;
+package racing.domain;
+
+import racing.view.Input;
+import racing.view.Output;
 
 public class Main {
     public static void main(String[] args) {
