@@ -43,13 +43,15 @@ public class Game {
     public List<Car> getWinners() {
         int maxNum = this.getWinnerLocation();
 
-        return this.attendedCars.stream().filter(car -> car.getCurrentLocation() == maxNum).collect(Collectors.toList());
+        return this.attendedCars.stream()
+                .filter(car -> car.isSameLocation(maxNum))
+                .collect(Collectors.toList());
     }
 
     private int getWinnerLocation() {
         return attendedCars.stream()
-                .max(Comparator.comparing(Car::getCurrentLocation)).orElseGet(() -> new Car("", Integer.MAX_VALUE))
-                .getCurrentLocation();
+                .mapToInt(Car::getCurrentLocation)
+                .max().orElse(-1);
     }
 
     private void playSession() {

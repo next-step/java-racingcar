@@ -3,6 +3,7 @@ package racing;
 public class Car {
     private static final int MOVABLE_LOWER_BOUND = 4;
     private static final int DEFAULT_START_LOCATION = 0;
+    private static final int MINIMUM_NAME_LENGTH = 5;
 
     private final String name;
     private int currentLocation;
@@ -16,7 +17,7 @@ public class Car {
     }
 
     public Car(String name, int currentLocation) {
-        if (name.length() > 5) {
+        if (name.length() > MINIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차의 이름은 다섯 글자를 초과할 수 없습니다.");
         }
 
@@ -32,6 +33,10 @@ public class Car {
         if (isMove(movePoint)) {
             currentLocation++;
         }
+    }
+
+    public boolean isSameLocation(int location) {
+        return currentLocation == location;
     }
 
     private boolean isMove(int movePoint) {
