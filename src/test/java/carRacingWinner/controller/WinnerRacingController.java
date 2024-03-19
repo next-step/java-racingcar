@@ -5,35 +5,33 @@ import carRacingWinner.domain.Name;
 import carRacingWinner.domain.Winner;
 import carRacingWinner.repository.WinnerRepository;
 
-
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class WinnerRacingController {
 
-    private Name stringName;
-    private WinnerRepository winnerRepository = new WinnerRepository();
-    private Winner winner = new Winner();
+    private final Name stringName = new Name();
+    private final WinnerRepository winnerRepository = new WinnerRepository();
+    private final Winner winner = new Winner();
 
     public void racingStart() {
         carsNameInput();
         int cnt = tryCount();
-        winnerRepository.makeCars(stringName.getName());
+        winnerRepository.makeCars(stringName);
         System.out.println("실행 결과");
-        presentLocation(winnerRepository.getCars());
+        presentLocation(winnerRepository);
 
         while (cnt > 0) {
             winnerRepository.moveCars();
-            presentLocation(winnerRepository.getCars());
+            presentLocation(winnerRepository);
             cnt--;
         }
         winner.printWinner(winnerRepository.getCars());
         printFinalResult(winner.getWinner());
     }
 
-    private void presentLocation(List<Car> cars) {
-        for (Car car : cars) {
+    private void presentLocation(WinnerRepository winnerRepository) {
+        for (Car car : winnerRepository.getCars()) {
             System.out.println(car.print());
         }
         System.out.println();
@@ -43,7 +41,7 @@ public class WinnerRacingController {
 
     public void carsNameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        stringName = new Name(input());
+        stringName.make(input());
     }
 
     private int tryCount() {

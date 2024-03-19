@@ -1,6 +1,7 @@
 package carRacingWinner.repository;
 
 import carRacingWinner.domain.Car;
+import carRacingWinner.domain.Name;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,11 @@ public class WinnerRepository {
         return cars;
     }
 
-    public void makeCars(List<String> names) {
+    public void makeCars(Name name) {
         if (cars == null)
             createCars();
-        for (String name : names) {
-            cars.add(new Car(name));
+        for (String carName : name.getName()) {
+            addCar(carName);
         }
     }
 

@@ -28,7 +28,7 @@ public class CarTest {
 
     @Test
     @DisplayName("차량수 확인")
-    public void carPrint() {
+    public void carCount() {
         WinnerRepository winnerRepository = new WinnerRepository();
 
         winnerRepository.addCar("one");
@@ -36,5 +36,12 @@ public class CarTest {
         winnerRepository.addCar("thre");
 
         assertThat(winnerRepository.getCars().size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("차량 출력값")
+    public void carPrint() {
+        Car car = new Car("java", 3);
+        assertThat(car.print()).isEqualTo("java : ----");
     }
 }

@@ -4,16 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Name {
-    List<String> name;
-    static final String division = ",";
+    private List<String> name;
+    private static final String division = ",";
+
+    public Name() {
+        createName();
+    }
+
+    public Name(String word) {
+        make(word);
+    }
 
     private void createName() {
         this.name = new ArrayList<>();
     }
 
-    public Name(String input) {
+    public void make(String input) {
         createName();
-        name = List.of(input.split(division));
+        this.name = List.of(input.split(division));
     }
 
     public List<String> getName() {

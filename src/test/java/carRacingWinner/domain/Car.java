@@ -6,7 +6,7 @@ public class Car {
     int location;
 
     public Car(String name) {
-        new Car(name, 0);
+        this(name, 0);
     }
 
     public Car(String name, int location) {
@@ -30,11 +30,11 @@ public class Car {
         return location;
     }
 
-    public void print() {
-        System.out.print(name + " : ");
-        for (int i = 0; i <= location; i++) {
-            System.out.print(CAR_LOCATION_DISPLAY);
-        }
-        System.out.println();
+    public String print() {
+        StringBuilder carPrint = new StringBuilder();
+        carPrint.append(name).append(" : ");
+        for (int i = 0; i <= location; i++)
+            carPrint.append(CAR_LOCATION_DISPLAY);
+        return carPrint.toString();
     }
 }
