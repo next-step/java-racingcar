@@ -61,9 +61,9 @@
 # Step5 리뷰 반영
 
 ## Todo
-- GameClient에서 사용되는 TryNo와 Name을 2개의 상태값을 가지는 Dto로 변경
 
 ## Done
 - Winner 생성자를 순수함수로 변경
 - Winner <-> Car 의존성 제거 및 maxDistance 상태값 변경
 - Game.java > generateCars 가독성 향상을 위한 개행 추가
+- GameClient에서 사용되는 TryNo 삭제 이후에 GameClinet 내에서 횟수 유효성 검증하도록 수정

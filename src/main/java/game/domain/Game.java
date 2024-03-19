@@ -7,12 +7,12 @@ public class Game {
     private final NumberGenerator generator;
     private final List<Car> cars;
 
-    public Game(NumberGenerator generator, List<Name> names) {
+    public Game(NumberGenerator generator, List<String> names) {
         this.generator = generator;
         this.cars = generateCars(names);
     }
 
-    private List<Car> generateCars(List<Name> names) {
+    private List<Car> generateCars(List<String> names) {
         return names.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());

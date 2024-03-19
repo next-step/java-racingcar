@@ -11,13 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GameTest {
 
-    final List<Name> names = new ArrayList<>();
+    final List<String> names = new ArrayList<>();
     final FakeNumberGenerator generator = new FakeNumberGenerator();
 
     @BeforeEach
     public void setUpCars() {
         for (int i = 0; i < 5; i++) {
-            names.add(new Name("test" + i));
+            names.add("test" + i);
         }
     }
 

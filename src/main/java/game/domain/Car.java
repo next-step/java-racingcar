@@ -10,8 +10,8 @@ public class Car {
         this.distance = new Distance(distance);
     }
 
-    public Car(Name name) {
-        this.name = name;
+    public Car(String name) {
+        this.name = new Name(name);
         this.distance = new Distance(1);
     }
 

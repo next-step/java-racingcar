@@ -3,7 +3,9 @@ package game;
 import game.domain.*;
 import game.view.InputView;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static game.view.ResultView.printPlainMessage;
 import static game.view.ResultView.printPlainMessages;
@@ -16,13 +18,20 @@ public class GameClient {
     private static final String WINNER_POSTFIX = "가 최종 우승했습니다.";
 
     public static void main(String[] args) {
-        List<Name> names = Name.fromNames(inputNames());
-        TryNo gameCount = new TryNo(insertCount());
+        List<String> names = splitNames(inputNames());
+        int gameCount = insertCount();
+        validate(gameCount);
         printPlainMessage(EXECUTION_RESULT);
         NumberGenerator generator = new RandomNumberGenerator(10);
         Game game = new Game(generator, names);
-        playGamesAndPrintResult(game, gameCount.getNumber());
+        playGamesAndPrintResult(game, gameCount);
         selectWinnersAndPrint(game.getCars());
+    }
+
+    private static List<String> splitNames(String names){
+        String[] splitNames = names.split(",");
+        return Arrays.stream(splitNames)
+                .collect(Collectors.toList());
     }
 
     private static String inputNames() {
@@ -33,6 +42,12 @@ public class GameClient {
     private static int insertCount() {
         printPlainMessage(GameClient.ASK_GAME_COUNT_MESSAGE);
         return InputView.insertInt();
+    }
+
+    private static void validate(int number) {
+        if (number <= 0) {
+            throw new RuntimeException();
+        }
     }
 
     private static void playGamesAndPrintResult(Game game, int gameCount) {
