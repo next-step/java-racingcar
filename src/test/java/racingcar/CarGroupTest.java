@@ -56,7 +56,7 @@ CarGroupTest {
 
         //when, then
         for (int i = 0; i < carGroupForWinnerTest.carGroupSize(); i++){
-            Assertions.assertThat(carGroupForWinnerTest.winnerNames().get(i)).isEqualTo(carNamesForWinnerTest[i]);
+            Assertions.assertThat(carGroupForWinnerTest.winners().get(i).carName()).isEqualTo(carNamesForWinnerTest[i]);
         }
     }
 
