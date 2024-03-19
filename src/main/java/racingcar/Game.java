@@ -25,9 +25,10 @@ public class Game {
 
 	private List<Car> setCars(String[] carNames) {
 		List<Car> cars = new ArrayList<>();
+		CarMoveStrategy[] carMoveStrategies = StrategyFactory.getCarMoveStrategies();
 
 		for(String carName : carNames) {
-			cars.add(new Car(carName, new RandomCarMoveStrategy()));
+			cars.add(new Car(carName, carMoveStrategies));
 		}
 
 		return cars;
