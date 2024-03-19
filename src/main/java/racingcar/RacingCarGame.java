@@ -1,7 +1,7 @@
 package racingcar;
 
 
-import java.util.concurrent.ThreadLocalRandom;
+
 
 public class RacingCarGame {
 
@@ -20,12 +20,7 @@ public class RacingCarGame {
     }
 
     private void moveCar() {
-        racingCars.moveCar(new RandomStrategy() {
-            @Override
-            public int create() {
-                return ThreadLocalRandom.current().nextInt(1, 10);
-            }
-        });
+        racingCars.moveCar(new RandomMove());
     }
 
     public void showRacingResult() {

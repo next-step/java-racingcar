@@ -11,7 +11,7 @@ public class RacingResultView {
     }
 
     private static void printPosition(Car car) {
-        int pos = car.position();
+        int pos = car.getPosition();
         StringJoiner sj = new StringJoiner("");
         for (int i = 0; i < pos; i++) {
             sj.add("-");
