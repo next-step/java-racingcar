@@ -1,22 +1,18 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Car> cars;
+    private Cars cars;
     private int tryCount;
 
-    public RacingGame(int tryCount) {
-        this.cars = new ArrayList<>();
+    public RacingGame(List<String> carsName, int tryCount) {
+        this.cars = initCars(carsName);
         this.tryCount = tryCount;
     }
 
-    public List<Car> initcars(int numberOfCar) {
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+    private Cars initCars(List<String> inputNames) {
+        return Cars.from(inputNames);
     }
 
     public void start(MovingStrategy movingStrategy) {
@@ -25,13 +21,17 @@ public class RacingGame {
     }
 
     private void moveCars(MovingStrategy movingStrategy) {
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             car.move(movingStrategy);
         }
     }
 
+    public List<Name> resultWinnerNames() {
+        return cars.getWinnerNames(cars.maxPosition());
+    }
+
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
     public int getTryCount() {
