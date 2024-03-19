@@ -41,16 +41,12 @@ public class RacingCarGame {
     }
 
     private List<RoundScore> getRoundResults() {
-        List<RoundScore> roundScores = new ArrayList<>();
-        for (Car car : carList) {
-            roundScores.add(new RoundScore(car.getPosition()));
-        }
-        return roundScores;
+        return carList.stream()
+                .map(car -> new RoundScore(car.getPosition()))
+                .collect(Collectors.toList());
     }
 
     private void play(MoveStrategy moveStrategy) {
-        for (Car car : carList) {
-            car.moveForward(moveStrategy);
-        }
+        carList.forEach(car -> car.moveForward(moveStrategy));
     }
 }
