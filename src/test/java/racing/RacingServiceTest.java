@@ -1,5 +1,6 @@
 package racing;
 
+import exception.CarLocationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,10 +13,10 @@ public class RacingServiceTest {
 
     @Test
     @DisplayName("자동차가 1칸 앞으로 전진한다.")
-    void 자동차_전진_테스트() {
+    void 자동차_전진_테스트() throws CarLocationException {
         Car car = new Car(new Location(0));
-        RacingService.moveForward(car);
-        assertThat(car.getLocation()).isEqualTo(1);
+        Location newLocation = car.getCarLocationInfo().moveForward();
+        assertThat(newLocation.getLocation()).isEqualTo(1);
     }
 
     @ParameterizedTest
