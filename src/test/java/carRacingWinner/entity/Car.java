@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Car {
 
-    String name;
-    private final String display = "-";
+    private String name;
+    private static final String CAR_LOCATION_DISPLAY = "-";
     int location;
 
     public Car(String name) {
@@ -16,15 +16,9 @@ public class Car {
 
 
 
-    public void move() {
-        int randomValue = moveChance();
+    public void move(int randomValue) {
         if (randomValue > 4)
             location++;
-    }
-
-    protected int moveChance() {
-        Random random = new Random();
-        return random.nextInt(9);
     }
 
     public String getName() {
@@ -38,7 +32,7 @@ public class Car {
     public void print() {
         System.out.print(name + " : ");
         for (int i = 0; i <= location; i++) {
-            System.out.print(display);
+            System.out.print(CAR_LOCATION_DISPLAY);
         }
         System.out.println();
     }

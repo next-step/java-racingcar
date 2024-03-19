@@ -7,6 +7,7 @@ import carRacingWinner.repository.WinnerRepository;
 
 
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class WinnerRacingController {
@@ -23,12 +24,17 @@ public class WinnerRacingController {
         winnerRepository.presentLocation();
 
         while (cnt > 0) {
-            winnerRepository.moveCars();
+            winnerRepository.moveCars(moveChance());
             winnerRepository.presentLocation();
             cnt--;
         }
         winner.printWinner(winnerRepository.getCars());
         printFinalResult(winner.getWinner());
+    }
+
+    private int moveChance() {
+        Random random = new Random();
+        return random.nextInt(9);
     }
 
     public void carsNameInput() {

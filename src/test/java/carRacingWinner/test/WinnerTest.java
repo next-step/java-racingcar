@@ -23,16 +23,11 @@ public class WinnerTest {
         list.add(new Car("a"));
         list.add(new Car("b"));
         list.add(new Car("c"));
-        Car car = new Car("dobi") {
-            @Override
-            protected int moveChance() {
-                return 5;
-            }
-        };
+        Car car = new Car("dobi");
         list.add(car);
-        list.get(3).move();
-        list.get(3).move();
-        list.get(3).move();
+        list.get(3).move(6);
+        list.get(3).move(6);
+        list.get(3).move(6);
 
         assertThat(winner.location(list)).isEqualTo(3);
     }

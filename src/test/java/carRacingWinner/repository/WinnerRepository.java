@@ -38,9 +38,9 @@ public class WinnerRepository {
         }
     }
 
-    public void moveCars() {
+    public void moveCars(int moveStatus) {
         for (Car car : cars) {
-            car.move();
+            car.move(moveStatus);
         }
     }
 }
