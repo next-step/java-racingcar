@@ -1,7 +1,7 @@
 package carRacingWinner.test;
 
-import carRacingWinner.entity.Car;
-import carRacingWinner.entity.Winner;
+import carRacingWinner.domain.Car;
+import carRacingWinner.domain.Winner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,16 +23,11 @@ public class WinnerTest {
         list.add(new Car("a"));
         list.add(new Car("b"));
         list.add(new Car("c"));
-        Car car = new Car("dobi") {
-            @Override
-            protected int moveChance() {
-                return 5;
-            }
-        };
+        Car car = new Car("dobi");
         list.add(car);
-        list.get(3).move();
-        list.get(3).move();
-        list.get(3).move();
+        list.get(3).move(6);
+        list.get(3).move(6);
+        list.get(3).move(6);
 
         assertThat(winner.location(list)).isEqualTo(3);
     }

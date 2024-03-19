@@ -1,6 +1,6 @@
 package carRacingWinner.test;
 
-import carRacingWinner.entity.Car;
+import carRacingWinner.domain.Car;
 import carRacingWinner.repository.WinnerRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,20 +22,13 @@ public class CarTest {
     @Test
     @DisplayName("랜덤값 테스트")
     public void carMoveChange() {
-        Car car = new Car("dobi") {
-            @Override
-            protected int moveChance() {
-                return 5;
-            }
-        };
-        car.move();
-        car.move();
+        Car car = new Car("dobi", 2);
         assertThat(car.getLocation()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("차량수 확인")
-    public void carPrint() {
+    public void carCount() {
         WinnerRepository winnerRepository = new WinnerRepository();
 
         winnerRepository.addCar("one");
@@ -43,5 +36,12 @@ public class CarTest {
         winnerRepository.addCar("thre");
 
         assertThat(winnerRepository.getCars().size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("차량 출력값")
+    public void carPrint() {
+        Car car = new Car("java", 3);
+        assertThat(car.print()).isEqualTo("java : ----");
     }
 }

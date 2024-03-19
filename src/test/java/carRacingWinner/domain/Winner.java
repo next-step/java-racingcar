@@ -1,4 +1,4 @@
-package carRacingWinner.entity;
+package carRacingWinner.domain;
 
 import java.util.ArrayList;
 import java.util.List;

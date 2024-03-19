@@ -1,9 +1,11 @@
 package carRacingWinner.repository;
 
-import carRacingWinner.entity.Car;
+import carRacingWinner.domain.Car;
+import carRacingWinner.domain.Name;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class WinnerRepository {
 
@@ -19,28 +21,27 @@ public class WinnerRepository {
         this.cars.add(new Car(name));
     }
 
-    public void presentLocation() {
-        for (Car car : cars) {
-            car.print();
-        }
-        System.out.println();
-    }
+
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public void makeCars(List<String> names) {
+    public void makeCars(Name name) {
         if (cars == null)
             createCars();
-        for (String name : names) {
-            cars.add(new Car(name));
+        for (String carName : name.getName()) {
+            addCar(carName);
         }
     }
 
     public void moveCars() {
         for (Car car : cars) {
-            car.move();
+            car.move(moveChance());
         }
+    }
+
+    private int moveChance() {
+        return new Random().nextInt(9);
     }
 }

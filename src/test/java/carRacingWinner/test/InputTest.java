@@ -1,6 +1,6 @@
 package carRacingWinner.test;
 
-import carRacingWinner.entity.Name;
+import carRacingWinner.domain.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,8 @@ public class InputTest {
         list.add("pobi");
         list.add("crong");
         list.add("honux");
-
-        assertThat(new Name("pobi,crong,honux").getName()).isEqualTo(list);
+        Name name = new Name();
+        name.make("pobi,crong,honux");
+        assertThat(name.getName()).isEqualTo(list);
     }
 }
