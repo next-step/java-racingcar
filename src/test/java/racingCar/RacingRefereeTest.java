@@ -28,7 +28,7 @@ public class RacingRefereeTest {
         RacingCars cars = new RacingCars(List.of(pobi, crong, honux));
 
         List<String> winners = RacingReferee.pickWinners(cars);
-        Assertions.assertThat(winners).containsExactly(pobi.findCarName().findName());
+        Assertions.assertThat(winners).containsExactly(pobi.findCarName());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class RacingRefereeTest {
 
         List<String> winners = RacingReferee.pickWinners(cars);
         Assertions.assertThat(winners).containsExactly(
-            pobi.findCarName().findName(), crong.findCarName().findName());
+            pobi.findCarName(), crong.findCarName());
     }
 
     @Test
@@ -55,9 +55,9 @@ public class RacingRefereeTest {
         List<String> winners = RacingReferee.pickWinners(cars);
         Assertions.assertThat(winners)
             .containsExactly(
-                pobi.findCarName().findName(),
-                crong.findCarName().findName(),
-                honux.findCarName().findName());
+                pobi.findCarName(),
+                crong.findCarName(),
+                honux.findCarName());
     }
 
 }

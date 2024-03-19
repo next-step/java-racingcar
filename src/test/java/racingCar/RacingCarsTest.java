@@ -12,36 +12,35 @@ public class RacingCarsTest {
     RacingCar crong;
     RacingCar honux;
 
+    MoveRule moveRule = new MoveRule();
+
     @BeforeEach
     void init() {
-        pobi = new RacingCar(new CarName("pobi"));
-        crong = new RacingCar(new CarName("crong"));
-        honux = new RacingCar(new CarName("honux"));
+        pobi = new RacingCar(new CarName("pobi"), new Location(0));
+        crong = new RacingCar(new CarName("crong"), new Location(1));
+        honux = new RacingCar(new CarName("honux"), new Location(5));
     }
 
     @Test
-    @DisplayName("가장 멀리간 위치가 1일 때")
-    void FarthestLocation_Is_One() {
-        pobi.move(true);
-        crong.move(false);
-        honux.move(false);
-        RacingCars cars = new RacingCars(List.of(pobi, crong, honux));
+    @DisplayName("다수의 차 움직임 테스트")
+    void MultipleCars_MovingTest() {
+        RacingCars cars = new RacingCars(List.of(pobi, crong, honux), moveRule);
+        cars.moveCars();
 
-        Assertions.assertThat(cars.findFarthestLocation()).isEqualTo(1);
+        RacingCars moveCars = new RacingCars(List.of(
+            new RacingCar(new CarName("pobi"), new Location(1)),
+            new RacingCar(new CarName("crong"), new Location(2)),
+            new RacingCar(new CarName("honux"), new Location(6))),
+            moveRule);
+
+        Assertions.assertThat(cars).isEqualTo(moveCars);
     }
 
-    @Test
-    @DisplayName("가장 멀리간 위치가 5일 때")
-    void FarthestLocation_Is_Five() {
-        pobi.move(true);
-        pobi.move(true);
-        pobi.move(true);
-        pobi.move(true);
-        pobi.move(true);
+    private static class MoveRule implements RacingRule {
 
-        RacingCars cars = new RacingCars(List.of(pobi, crong, honux));
-
-        Assertions.assertThat(cars.findFarthestLocation()).isEqualTo(5);
+        @Override
+        public boolean isMovable() {
+            return true;
+        }
     }
-
 }

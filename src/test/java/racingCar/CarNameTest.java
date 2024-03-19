@@ -12,7 +12,7 @@ public class CarNameTest {
     @DisplayName("이름이 5자 미만일 시 이름 return")
     void CarName_Correct_Length() {
         CarName carName = new CarName("pobi");
-        assertThat(carName.findName()).isEqualTo("pobi");
+        assertThat(carName.getName()).isEqualTo("pobi");
     }
 
     @Test

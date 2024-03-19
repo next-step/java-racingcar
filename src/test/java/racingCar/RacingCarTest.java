@@ -1,15 +1,11 @@
 package racingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingCarTest {
 
@@ -17,7 +13,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void init() {
-        car = new RacingCar();
+        car = new RacingCar(new CarName("pobi"));
     }
 
     @Test
@@ -47,7 +43,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 여러대의_RacingCar_이동_실패(int input) {
+    void 여러대의_RacingCar_이동_실패() {
         List<RacingCar> cars = Arrays.asList(new RacingCar(), new RacingCar());
         cars.forEach(car -> {
             car.move(false);
@@ -57,10 +53,8 @@ public class RacingCarTest {
 
 
     @Test
-    void 현재Location_만큼_hyphen_Return() {
-        car.move(true);
-        car.move(true);
-        car.move(true);
-        assertThat(car.toString()).isEqualTo("---");
+    void 현재_CarName출력_및_Location_만큼_hyphen_Return() {
+        RacingCar car = new RacingCar(new CarName("pobi"), new Location(3));
+        assertThat(car.toString()).isEqualTo(car.findCarName() + " : ---");
     }
 }
