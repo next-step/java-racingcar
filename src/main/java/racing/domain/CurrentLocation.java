@@ -17,7 +17,7 @@ public class CurrentLocation {
         return currentLocation;
     }
 
-    public void move() {
+    public void moveForward() {
         currentLocation++;
     }
 

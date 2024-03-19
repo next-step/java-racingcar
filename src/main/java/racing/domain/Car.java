@@ -24,7 +24,7 @@ public class Car {
     }
 
     public void move(int movePoint) {
-        if (isMove(movePoint)) this.currentLocation.move();
+        if (isMove(movePoint)) this.currentLocation.moveForward();
     }
 
     private boolean isMove(int movePoint) {
