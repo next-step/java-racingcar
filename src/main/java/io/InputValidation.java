@@ -1,4 +1,4 @@
-package racingcar;
+package io;
 
 public class InputValidation {
 	public void validCarName(String name) {

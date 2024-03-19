@@ -5,7 +5,7 @@ public class Car {
 	private int position;
 	private final CarMoveStrategy[] carMoveStrategies;
 
-	public Car(String name, CarMoveStrategy... carMoveStrategies) {
+	public Car (String name, CarMoveStrategy... carMoveStrategies) {
 		this.name = name;
 		position = 0;
 		this.carMoveStrategies = carMoveStrategies;
