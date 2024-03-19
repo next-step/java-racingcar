@@ -3,6 +3,7 @@ package RacingGame.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CarsManager {
     private List<Car> cars = new ArrayList<>();
@@ -12,38 +13,29 @@ public class CarsManager {
     }
 
     public static CarsManager withCarCount(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+        List<Car> cars = IntStream.range(0, carCount)
+                .mapToObj(i -> new Car())
+                .collect(Collectors.toList());
 
         return new CarsManager(cars);
     }
 
     public static CarsManager withCarNames(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        List<Car> cars = carNames.stream()
+                .map(carname -> new Car(carname))
+                .collect(Collectors.toList());
 
         return new CarsManager(cars);
     }
 
     public void tryMoveCars(MovableStrategy movableStrategy) {
-        for (Car car : cars) {
-            car.move(movableStrategy);
-        }
+        cars.forEach(car -> car.move(movableStrategy));
     }
 
     public List<Integer> getCarsPosition() {
-        List<Integer> list = new ArrayList<>();
-
-        for (Car car : cars) {
-            list.add(car.getPosition());
-        }
-
-        return list;
+        return cars.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
     }
 
     public List<Car> winners() {
@@ -55,18 +47,14 @@ public class CarsManager {
     }
 
     private int findHighestPosition() {
-        int highestPosition = Integer.MIN_VALUE;
-
-        for (Car car : cars) {
-            highestPosition = Math.max(highestPosition, car.getPosition());
-        }
-
-        return highestPosition;
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
     }
 
     public List<String> winnerNames() {
-        List<Car> winners = winners();
-        return winners.stream()
+        return winners().stream()
                 .map(Car::name).collect(Collectors.toList());
     }
 
