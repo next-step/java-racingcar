@@ -1,7 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.RepeatedTest;
-import racingcar.model.RandomNumberStrategy;
+import racingcar.domain.RandomNumberStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

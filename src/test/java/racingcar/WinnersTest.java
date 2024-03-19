@@ -2,13 +2,12 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.model.CarNames;
-import racingcar.model.Cars;
-import racingcar.model.MoveStrategy;
-import racingcar.model.Winners;
+import racingcar.domain.CarNames;
+import racingcar.domain.Cars;
+import racingcar.domain.MoveStrategy;
+import racingcar.domain.Winners;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class WinnersTest {
 

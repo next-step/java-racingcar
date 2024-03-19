@@ -1,14 +1,14 @@
-package racingcar.model;
+package racingcar.domain;
 
 public class Car {
     private static final int MOVE_STANDARD = 4;
     private static final int MOVE_DISTANCE = 1;
 
-    private final String name;
+    private final Name name;
     private int distance;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
         this.distance = 0;
     }
 
@@ -16,7 +16,7 @@ public class Car {
         return this.distance;
     }
 
-    public String getName() { return this.name; }
+    public String getName() { return this.name.getName(); }
 
     public void move(int movableNumber) {
         if (movableNumber >= MOVE_STANDARD) {
