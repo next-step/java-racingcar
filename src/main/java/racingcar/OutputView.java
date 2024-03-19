@@ -13,14 +13,14 @@ public class OutputView {
     }
 
     public void printCarGroupPosition(CarGroup carGroup) {
-        for (int carIndex = 0; carIndex < carGroup.carGroupSize(); carIndex++) {
-            printCarPosition(carGroup.Car(carIndex));
+        for (int carIndex = 0; carIndex < carGroup.size(); carIndex++) {
+            printCarPosition(carGroup.car(carIndex));
         }
         System.out.println("==========");
     }
 
     public void printWinner(CarGroup carGroup) {
-        List<Car> winners = carGroup.winners();
+        List<Car> winners = Winners.findWinners(carGroup.carGroup());
         for (int i = 0; i < winners.size(); i++){
             System.out.print(winners.get(i).carName() + " ");
         }

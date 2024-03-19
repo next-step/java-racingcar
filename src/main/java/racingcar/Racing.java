@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Random;
+
 public class Racing {
 
     InputView inputView;
@@ -15,17 +17,15 @@ public class Racing {
     public void race() {
         int opportunity = inputView.opportunity();
         outputView.printCarGroupPosition(carGroup);
+
+        Random random = new Random();
+        int randomValue = random.nextInt(10);
+
         for (int i = 0; i < (opportunity - 1); i++) {
-            carGroup.updateCarArrayPosition();
+            carGroup.updateCarArrayPosition(randomValue);
             outputView.printCarGroupPosition(carGroup);
         }
+
         outputView.printWinner(carGroup);
     }
-
-    public static void main(String[] args) {
-        Racing racing = new Racing();
-        racing.race();
-    }
-
-
 }

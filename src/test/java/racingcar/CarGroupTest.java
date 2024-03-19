@@ -15,14 +15,14 @@ CarGroupTest {
     @DisplayName("(1)자동차 배열의 길이 전달")
     public void carGroupSize() {
         //when, then
-        Assertions.assertThat(carGroup.carGroupSize()).isEqualTo(3);
+        Assertions.assertThat(carGroup.size()).isEqualTo(3);
     }
 
     @Test
     @DisplayName("(2)자동차 배열 내의 자동차 위치 전달")
     public void position() {
         //when, then
-        for (int i = 0; i < carGroup.carGroupSize(); i++) {
+        for (int i = 0; i < carGroup.size(); i++) {
             Assertions.assertThat(carGroup.position(i)).isEqualTo(0);
         }
     }
@@ -31,12 +31,11 @@ CarGroupTest {
     @DisplayName("(3)자동차 배열 내의 모든 자동차 위치를 업데이트")
     public void updateCarArrayPosition() {
         // when
-        carGroup.updateCarArrayPosition();
+        carGroup.updateCarArrayPosition(5);
 
-        //then (Car Class's Random seed: 54321)
-        int[] actual = {1, 0, 0};
-        for (int i = 0; i < carGroup.carGroupSize(); i++) {
-            Assertions.assertThat(carGroup.position(i)).isEqualTo(actual[i]);
+        // then
+        for (int i = 0; i < carGroup.size(); i++) {
+            Assertions.assertThat(carGroup.position(i)).isEqualTo(1);
         }
     }
 
@@ -47,17 +46,5 @@ CarGroupTest {
         Assertions.assertThat(carGroup.carName(0)).isEqualTo("poby");
     }
 
-    @Test
-    @DisplayName("(5) 우승자 선정")
-    public void winnerNames(){
-        //given
-        String[] carNamesForWinnerTest = {"poby", "crong", "honux"};
-        CarGroup carGroupForWinnerTest = new CarGroup(carNamesForWinnerTest);
-
-        //when, then
-        for (int i = 0; i < carGroupForWinnerTest.carGroupSize(); i++){
-            Assertions.assertThat(carGroupForWinnerTest.winners().get(i).carName()).isEqualTo(carNamesForWinnerTest[i]);
-        }
-    }
 
 }
