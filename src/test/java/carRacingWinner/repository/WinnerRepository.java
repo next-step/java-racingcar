@@ -4,6 +4,7 @@ import carRacingWinner.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class WinnerRepository {
 
@@ -19,12 +20,7 @@ public class WinnerRepository {
         this.cars.add(new Car(name));
     }
 
-    public void presentLocation() {
-        for (Car car : cars) {
-            car.print();
-        }
-        System.out.println();
-    }
+
 
     public List<Car> getCars() {
         return cars;
@@ -38,9 +34,13 @@ public class WinnerRepository {
         }
     }
 
-    public void moveCars(int moveStatus) {
+    public void moveCars() {
         for (Car car : cars) {
-            car.move(moveStatus);
+            car.move(moveChance());
         }
+    }
+
+    private int moveChance() {
+        return new Random().nextInt(9);
     }
 }

@@ -21,21 +21,25 @@ public class WinnerRacingController {
         int cnt = tryCount();
         winnerRepository.makeCars(stringName.getName());
         System.out.println("실행 결과");
-        winnerRepository.presentLocation();
+        presentLocation(winnerRepository.getCars());
 
         while (cnt > 0) {
-            winnerRepository.moveCars(moveChance());
-            winnerRepository.presentLocation();
+            winnerRepository.moveCars();
+            presentLocation(winnerRepository.getCars());
             cnt--;
         }
         winner.printWinner(winnerRepository.getCars());
         printFinalResult(winner.getWinner());
     }
 
-    private int moveChance() {
-        Random random = new Random();
-        return random.nextInt(9);
+    private void presentLocation(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.print());
+        }
+        System.out.println();
     }
+
+
 
     public void carsNameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
