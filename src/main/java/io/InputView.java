@@ -12,7 +12,7 @@ public class InputView {
 
 		for(String name : names) {
 			try {
-				inputValidation.validCarName(name);
+				inputValidation.checkCarName(name);
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 				return inputNamesOfCar();
@@ -28,7 +28,7 @@ public class InputView {
 		int numberOfTrial = scanner.nextInt();
 
 		try {
-			inputValidation.validNumberOfTrial(numberOfTrial);
+			inputValidation.checkNumberOfTrial(numberOfTrial);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			return inputNumberOfTrial();

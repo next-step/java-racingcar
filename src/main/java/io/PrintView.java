@@ -2,9 +2,6 @@ package io;
 
 import racingcar.Car;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class PrintView {
 	private static final String RESULT_MESSAGE = "실행 결과";
 
@@ -12,15 +9,12 @@ public class PrintView {
 		System.out.println("\n" + RESULT_MESSAGE);
 	}
 
-	public static void printWinnerMessage(List<Car> cars) {
-		String winnerName = cars.stream().map(Car::getName).collect(Collectors.joining(", "));
+	public static void printWinnerMessage(String winnerName) {
 		System.out.println(winnerName + "가 최종 우승했습니다.");
 	}
 
 	public static void printPosition(Car car) {
-		System.out.print(car.getName() + " : " + "-".repeat(car.getPosition()));
-
-		printEmptyLine();
+		System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
 	}
 
 	public static void printEmptyLine() {

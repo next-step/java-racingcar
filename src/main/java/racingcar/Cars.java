@@ -17,19 +17,10 @@ public class Cars {
     }
 
     public void move() {
-        cars.forEach(Car::move);
-    }
-
-    public void printPosition() {
-        cars.forEach(PrintView::printPosition);
-    }
-
-    public List<Car> getWinners() {
-        int maxPosition = getMaxPosition();
-
-        return cars.stream()
-                .filter(car -> car.hasEqualPosition(maxPosition))
-                .collect(Collectors.toList());
+        cars.forEach(car -> {
+            car.move();
+            PrintView.printPosition(car);
+        });
     }
 
     private int getMaxPosition() {
@@ -38,4 +29,14 @@ public class Cars {
                 .max()
                 .orElse(0);
     }
+
+    public String getWinnerName() {
+        int maxPosition = getMaxPosition();
+
+        return cars.stream()
+                .filter(car -> car.isEqualPosition(maxPosition))
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+    }
+
 }

@@ -16,7 +16,7 @@ public class Game {
 			tryGame(cars);
 		}
 
-		PrintView.printWinnerMessage(cars.getWinners());
+		PrintView.printWinnerMessage(cars.getWinnerName());
 	}
 
 	private Cars setCars(String[] carNames) {
@@ -27,7 +27,6 @@ public class Game {
 
 	private void tryGame(Cars cars) {
 		cars.move();
-		cars.printPosition();
 
 		PrintView.printEmptyLine();
 	}
