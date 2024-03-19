@@ -57,6 +57,6 @@ public class CarTest {
         String name = "황제드라몬 파이터 모드";
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("차량의 이름은 5글자가 넘어갈 수 없습니다");
+                .hasMessage("차량의 이름은 5 글자가 넘어갈 수 없습니다");
     }
 }
