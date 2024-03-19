@@ -22,7 +22,7 @@ public class RacingGameTest {
 
         WinnersName name = new WinnersName();
 
-        assertThat(name.findWinner(racingCarList)).isEqualTo(Arrays.asList("ssoo"));
+        assertThat(name.findWinner(racingCarList)).isEqualTo(List.of("ssoo"));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class RacingGameTest {
 
         WinnersName name = new WinnersName();
 
-        assertThat(name.findWinner(racingCarList)).isEqualTo(Arrays.asList("minn","ssoo"));
+        assertThat(name.findWinner(racingCarList)).isEqualTo(List.of("minn","ssoo"));
     }
 
 }

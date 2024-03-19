@@ -29,4 +29,10 @@ public class Validator {
         }
     }
 
+    public int positionRangeCheck(int positionNum) {
+        if (positionNum < 0 ) {
+            throw new IllegalArgumentException("위치 값은 양수만 입력 가능합니다..");
+        }
+        return positionNum;
+    }
 }
