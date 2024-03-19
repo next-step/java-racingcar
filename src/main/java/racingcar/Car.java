@@ -14,7 +14,7 @@ public class Car {
         position += 1;
     }
 
-    public int position() {
+    public int getPosition() {
         return position;
     }
 
