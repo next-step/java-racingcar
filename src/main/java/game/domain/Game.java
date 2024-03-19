@@ -7,9 +7,15 @@ public class Game {
     private final NumberGenerator generator;
     private final List<Car> cars;
 
-    public Game(NumberGenerator generator, List<Car> cars) {
+    public Game(NumberGenerator generator, List<String> names) {
         this.generator = generator;
-        this.cars = cars;
+        this.cars = generateCars(names);
+    }
+
+    private List<Car> generateCars(List<String> names) {
+        return names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void play() {
@@ -27,22 +33,7 @@ public class Game {
         return cars;
     }
 
-    public List<Car> getWinner() {
-        int maxDistance = calcMaxDistance();
-        return getWinner(maxDistance);
-    }
-
-    private int calcMaxDistance() {
-        int maxDistance = 0;
-        for (Car car : cars) {
-            maxDistance = Math.max(car.getDistance(), maxDistance);
-        }
-        return maxDistance;
-    }
-
-    private List<Car> getWinner(int maxDistance) {
-        return cars.stream().filter(car -> {
-            return car.getDistance() == maxDistance;
-        }).collect(Collectors.toList());
+    public List<String> toStrings() {
+        return this.cars.stream().map(Car::toString).collect(Collectors.toList());
     }
 }
