@@ -1,7 +1,7 @@
-package step3and4.car;
+package step5.domain.car;
 
-import step3and4.Positive;
-import step3and4.car.move.MoveStrategy;
+import step5.domain.Positive;
+import step5.domain.car.move.MoveStrategy;
 
 public class Car {
     private Positive position;

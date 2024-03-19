@@ -1,8 +1,10 @@
-package step3and4;
+package step5;
 
-import step3and4.ui.InputRequest;
-import step3and4.ui.InputView;
-import step3and4.ui.ResultView;
+import step5.controller.CarController;
+import step5.domain.Racing;
+import step5.view.InputRequest;
+import step5.view.InputView;
+import step5.view.ResultView;
 
 /**
  * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -12,9 +14,7 @@ import step3and4.ui.ResultView;
  */
 public class RacingCar {
     public static void main(String[] args) {
-        InputRequest inputRequest = InputView.createInputRequest();
-        Racing racing = Racing.createRacing(inputRequest.getCarNames(), inputRequest.getTryNumber());
-        ResultView resultView = new ResultView(racing);
-        resultView.startGame();
+        CarController carController = new CarController();
+        carController.startGame();
     }
 }

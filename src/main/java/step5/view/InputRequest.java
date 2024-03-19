@@ -1,4 +1,4 @@
-package step3and4.ui;
+package step5.view;
 
 
 public class InputRequest {

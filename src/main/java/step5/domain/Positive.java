@@ -1,4 +1,4 @@
-package step3and4;
+package step5.domain;
 
 public class Positive {
     private int number;

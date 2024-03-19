@@ -1,10 +1,11 @@
-package step3and4.car.move;
+package step5.car.move;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3and4.car.Car;
+import step5.domain.car.Car;
+import step5.domain.car.move.random.RandomMoveStrategy;
 
 class RandomMoveStrategyTest {
 
