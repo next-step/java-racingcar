@@ -1,4 +1,4 @@
-package step5;
+package step5.domain.result;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
