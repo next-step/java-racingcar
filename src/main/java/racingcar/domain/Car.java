@@ -3,7 +3,6 @@ package racingcar.domain;
 import racingcar.domain.strategy.MoveStrategy;
 
 public class Car {
-    private static final int MIN_MOVE_COUNT = 4;
     private int position;
 
     public Car() {
