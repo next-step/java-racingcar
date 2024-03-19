@@ -12,15 +12,22 @@ public class CarTest {
     @Test
     @DisplayName("랜덤값이_4이상이면_move증가")
     void 랜덤값이_4이상이면_move증가() {
-        Car car1 = new Car(0);
-        Car car2 = new Car(0);
+        Car car = new Car(0);
 
-        car1.decideMove(5);
-        car1.decideMove(8);
+        car.moveOnCondition(5);
+        car.moveOnCondition(8);
 
-        car2.decideMove(2);
+        assertThat(car.getPosition()).isEqualTo(2);
+    }
 
-        assertThat(car1.getPosition()).isEqualTo(2);
-        assertThat(car2.getPosition()).isEqualTo(0);
+    @Test
+    @DisplayName("랜덤값이_4미만이면_move증가X")
+    void 랜덤값이_4미만이면_move증가X() {
+        Car car = new Car(0);
+
+        car.moveOnCondition(2);
+        car.moveOnCondition(1);
+
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

@@ -5,10 +5,17 @@ public class Car {
         this.position = position;
     }
 
-    public void decideMove(int randomNum) {
-        if (randomNum > 3) {
+    public void moveOnCondition(int num) {
+        if (isMove(num)) {
             this.position++;
         }
+    }
+
+    private boolean isMove(int num) {
+        if (num > 3) {
+            return true;
+        }
+        return false;
     }
 
     public int getPosition() {
