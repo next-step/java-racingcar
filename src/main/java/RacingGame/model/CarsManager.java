@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarsManager {
-
     private List<Car> cars = new ArrayList<>();
 
     public CarsManager(List<Car> cars) {

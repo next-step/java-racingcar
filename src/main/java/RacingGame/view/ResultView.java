@@ -6,7 +6,6 @@ import RacingGame.model.Record;
 public class ResultView {
     private static final String INIT_RESULT_PHRASE = "실행 결과";
 
-
     private ResultView() {
         throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE.getMessage());
     }

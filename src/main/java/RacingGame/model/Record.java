@@ -5,6 +5,7 @@ import java.util.List;
 public class Record {
     private static final String CAR_POSITION_UNIT = "-";
     private static final String NEXT_LINE_SEPARATOR = System.lineSeparator();
+
     private final StringBuilder record;
 
     public Record() {

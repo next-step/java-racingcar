@@ -5,6 +5,7 @@ public class Car {
     private static final String DEFAULT_CAR_NAME = "NULL";
     private static final int DEFAULT_MOVE_DISTANCE = 1;
     private static final int INITAIL_CAR_POSITION = 0;
+
     private final String name;
     private int position;
 
