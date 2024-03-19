@@ -1,6 +1,6 @@
 package carRacingWinner.test;
 
-import carRacingWinner.entity.Car;
+import carRacingWinner.domain.Car;
 import carRacingWinner.repository.WinnerRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,9 +22,7 @@ public class CarTest {
     @Test
     @DisplayName("랜덤값 테스트")
     public void carMoveChange() {
-        Car car = new Car("dobi");
-        car.move(5);
-        car.move(5);
+        Car car = new Car("dobi", 2);
         assertThat(car.getLocation()).isEqualTo(2);
     }
 

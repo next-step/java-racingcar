@@ -1,7 +1,7 @@
 package carRacingWinner.test;
 
-import carRacingWinner.entity.Car;
-import carRacingWinner.entity.Winner;
+import carRacingWinner.domain.Car;
+import carRacingWinner.domain.Winner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

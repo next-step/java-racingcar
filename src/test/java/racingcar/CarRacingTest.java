@@ -11,19 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingTest {
 
-    @Test
-    @DisplayName("차량수 반복수 확인")
-    public void CarAndTry() {
-        int Cars = 10;
-        int Try = 5;
-        RacingService service = new RacingService();
-
-//        assertThat(service.carCount()).isEqualTo(10);
-//        assertThat(service.moveCount()).isEqualTo(5);
-        service.makeCars();
-
-//        assertThat(service.).isEqualTo(10);
-    }
 
     @Test
     @DisplayName("차량 움직임 랜덤수")

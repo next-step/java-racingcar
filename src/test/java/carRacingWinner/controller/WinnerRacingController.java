@@ -1,8 +1,8 @@
 package carRacingWinner.controller;
 
-import carRacingWinner.entity.Car;
-import carRacingWinner.entity.Name;
-import carRacingWinner.entity.Winner;
+import carRacingWinner.domain.Car;
+import carRacingWinner.domain.Name;
+import carRacingWinner.domain.Winner;
 import carRacingWinner.repository.WinnerRepository;
 
 

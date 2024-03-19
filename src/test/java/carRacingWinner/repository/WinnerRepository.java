@@ -1,6 +1,6 @@
 package carRacingWinner.repository;
 
-import carRacingWinner.entity.Car;
+import carRacingWinner.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;

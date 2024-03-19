@@ -1,19 +1,20 @@
-package carRacingWinner.entity;
-
-import java.util.Random;
+package carRacingWinner.domain;
 
 public class Car {
-
     private String name;
     private static final String CAR_LOCATION_DISPLAY = "-";
     int location;
 
     public Car(String name) {
+        new Car(name, 0);
+    }
+
+    public Car(String name, int location) {
         if(name.length() > 5)
             throw new IllegalArgumentException("차량의 이름이 너무 깁니다.");
         this.name = name;
+        this.location = location;
     }
-
 
 
     public void move(int randomValue) {
