@@ -30,4 +30,13 @@ public class CurrentLocationTest {
         assertThat(currentLocation.isSameLocation(2)).isFalse();
         assertThat(currentLocation.isSameLocation(3)).isTrue();
     }
+
+    @Test
+    @DisplayName("moveForward() 메서드를 통해 currentLocation 이 1 증가")
+    public void isMoveTest() {
+        CurrentLocation currentLocation = new CurrentLocation();
+        currentLocation.moveForward();
+
+        assertThat(currentLocation.getCurrentLocation()).isEqualTo(1);
+    }
 }
