@@ -16,11 +16,7 @@ public class Cars {
     }
 
     public void moveCars() {
-        this.cars.forEach(car -> car.move(() -> isMovingForward(RandomManager.getInstance().getRandomValue())));
-    }
-
-    private boolean isMovingForward(int value) {
-        return value > MOVE_CONDITION;
+        this.cars.forEach(car -> car.move(() -> RandomManager.getInstance().getRandomValue() > MOVE_CONDITION));
     }
 
     public List<Car> getWinnerCars() {

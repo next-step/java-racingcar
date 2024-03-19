@@ -10,7 +10,7 @@ public class Distance {
 
     private void checkCarDistance(int distance) {
         if (distance < 0) {
-            throw new IllegalArgumentException("거리가 음수입니다.");
+            throw new IllegalArgumentException("거리가 0보다 커야합니다.");
         }
     }
 
