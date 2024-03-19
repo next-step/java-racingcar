@@ -2,6 +2,7 @@ package RacingGame.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -58,7 +59,8 @@ public class CarsManager {
                 .map(Car::name).collect(Collectors.toList());
     }
 
-    public List<Car> cars() {
-        return cars;
+    public Map<String, Integer> carNamePositions() {
+        return cars.stream()
+                .collect(Collectors.toMap(Car::name, Car::getPosition));
     }
 }

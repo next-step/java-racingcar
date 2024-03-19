@@ -14,12 +14,12 @@ public class Record {
 
 
     public void addStage(CarsManager carsManager) {
-        for (Car car : carsManager.cars()) {
-            record.append(car.name())
+        carsManager.carNamePositions().forEach((name, position) -> {
+            record.append(name)
                     .append(" : ")
-                    .append(makeHypens(car.getPosition()));
+                    .append(makeHypens(position));
             addNextLine();
-        }
+        });
 
         addNextLine();
     }
