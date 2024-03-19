@@ -1,7 +1,6 @@
 package race.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -105,7 +104,7 @@ class CarsTest {
 
         // Then
         for (Car car : cars.getCars()) {
-            assertThat(car.getPosition()).isEqualTo(1);
+            assertThat(car.getPosition().getValue()).isEqualTo(1);
         }
     }
 
@@ -122,7 +121,7 @@ class CarsTest {
 
         // Then
         for (Car car : cars.getCars()) {
-            assertThat(car.getPosition()).isEqualTo(expected);
+            assertThat(car.getPosition().getValue()).isEqualTo(expected);
         }
     }
 }

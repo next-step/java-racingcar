@@ -3,7 +3,6 @@ package race.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 import utils.number.NumberGenerator;
 
@@ -42,15 +41,19 @@ public class Cars {
     }
 
     public List<Car> chooseWinners() {
-        Car winner = chooseWinner();
+        int max = this.findMax();
+
         return this.cars.stream()
-                .filter(winner::isSamePosition)
+                .filter((car) -> car.isEqualPosition(max))
                 .collect(Collectors.toList());
     }
 
-    private Car chooseWinner() {
-        TreeSet<Car> cars = new TreeSet<>(this.cars);
-        return cars.last();
+    private int findMax() {
+        int max = 0;
+        for (Car car : this.cars) {
+            max = car.max(max);
+        }
+        return max;
     }
 
     private List<Car> generateCar(int countOfCar) {

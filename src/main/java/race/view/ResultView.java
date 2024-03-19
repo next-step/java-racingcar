@@ -1,6 +1,7 @@
 package race.view;
 
 
+import java.util.List;
 import race.domain.Car;
 import race.domain.Cars;
 
@@ -23,12 +24,25 @@ public class ResultView {
         System.out.println(sb);
     }
 
-    public static void showWinners(String winners) {
-        System.out.println(String.format(WINNERS_FORMAT, winners));
+    public static void showWinners(List<Car> winners) {
+        String winnerNames = joinWinnerNames(winners);
+        System.out.println(String.format(WINNERS_FORMAT, winnerNames));
+    }
+
+    private static String joinWinnerNames(List<Car> winners) {
+        String[] winnerNames = new String[winners.size()];
+
+        for (int i = 0; i < winners.size(); i++) {
+            winnerNames[i] = winners.get(i).getName();
+        }
+        return String.join(",", winnerNames);
     }
 
     private static String showCar(Car car) {
-        return String.format(CAR_FORMAT, car.getName(), drawProgressBar(car.getPosition()));
+        return String.format(CAR_FORMAT,
+                car.getName(),
+                drawProgressBar(car.getPosition().getValue())
+        );
     }
 
     private static String drawProgressBar(int count) {

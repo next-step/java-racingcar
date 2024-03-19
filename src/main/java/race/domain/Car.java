@@ -1,15 +1,22 @@
 package race.domain;
 
-public class Car implements Comparable<Car> {
+import java.util.Objects;
+
+public class Car {
 
     private final int CONDITION_OF_MOVE = 4;
     private final static int MAX_LENGTH_OF_NAME = 5;
-    private int position;
+    private final Position position;
     private final String name;
 
     private Car(String name) {
+        this(name, Position.createInstance(0));
+    }
+
+    private Car(String name, Position position) {
         validateName(name);
         this.name = name;
+        this.position = position;
     }
 
     public static Car createInstance(String name) {
@@ -20,14 +27,14 @@ public class Car implements Comparable<Car> {
         if (!canMove(number)) {
             return;
         }
-        position++;
+        position.increase();
     }
 
     private boolean canMove(int number) {
         return number >= CONDITION_OF_MOVE;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -35,8 +42,12 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public Boolean isSamePosition(Car car) {
-        return position == car.getPosition();
+    public boolean isEqualPosition(int number) {
+        return this.position.equals(Position.createInstance(number));
+    }
+
+    public boolean isEqualPosition(Position position) {
+        return this.position.equals(position);
     }
 
     private void validateName(String name) {
@@ -47,8 +58,7 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    @Override
-    public int compareTo(Car o) {
-        return Integer.compare(position, o.getPosition());
+    public int max(int max) {
+        return this.position.max(max);
     }
 }
