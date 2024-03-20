@@ -1,39 +1,38 @@
 import car.Car;
-import car.randomNumer.impl.RandomNumberByParameter;
+import car.randomNumer.impl.FixedNumberByParameter;
 import carRacing.Racing;
+import carRacing.Winner;
 import carRacing.view.InputView;
 import carRacing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CarRacingApplication {
 
     public static void main(String[] args) {
 
-        //랜덤으로 설정
         //basicCarRacing();
-        
-        //1번 3번 차량만 이기도록 설정
-        customCarRacing();
+        //customCarRacing();
+        showWinnerCarRacing();
 
     }
 
+    //1번 3번 차량만 이기도록 설정
     private static void customCarRacing() {
         //입력부
         InputView inputView = new InputView();
 
         //1,3번 차량만 앞서가도록 랜덤값 세팅
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(new RandomNumberByParameter(9)));
-        cars.add(new Car(new RandomNumberByParameter(2)));
-        cars.add(new Car(new RandomNumberByParameter(6)));
-        cars.add(new Car(new RandomNumberByParameter(1)));
-
-        inputView.setMoveCount();
+        cars.add(new Car(new FixedNumberByParameter(9)));
+        cars.add(new Car(new FixedNumberByParameter(2)));
+        cars.add(new Car(new FixedNumberByParameter(6)));
+        cars.add(new Car(new FixedNumberByParameter(1)));
 
         //레이싱 경주 객체 생성
-        Racing racing = new Racing(cars, inputView.getMoveCount());
+        Racing racing = new Racing(cars, inputView.moveCount());
 
         //레이싱 시작
         racing.startRacingCar();
@@ -52,11 +51,11 @@ public class CarRacingApplication {
         //입력부
         InputView inputView = new InputView();
 
-        inputView.setCarCount();
-        inputView.setMoveCount();
+        int carCount = inputView.carCount();
+        int moveCount = inputView.moveCount();
 
         //레이싱 경주 객체 생성
-        Racing racing = new Racing(inputView.getCarCount(), inputView.getMoveCount());
+        Racing racing = new Racing(carCount, moveCount);
 
         //레이싱 시작
         racing.startRacingCar();
@@ -68,6 +67,35 @@ public class CarRacingApplication {
         ResultView resultView = new ResultView();
         //출력값 입력하여 출력
         resultView.showCardRacingResultByResultList(resultList, "~");
+    }
+
+    //차량명과 우승자를 확인 할 수 있는 차량경주
+    private static void showWinnerCarRacing() {
+        //입력부
+        InputView inputView = new InputView();
+
+        String carList = inputView.carList();
+        int moveCount = inputView.moveCount();
+
+        //레이싱 경주 객체 생성
+        Racing racing = new Racing(carList, moveCount);
+
+        //레이싱 시작
+        racing.startRacingCar();
+
+        //레이싱 결과 배열 확인
+        List<Map<String, Integer>> maps = racing.racingResultMap();
+
+        //출력부
+        ResultView resultView = new ResultView();
+
+        //출력값 입력하여 출력
+        resultView.showCardRacingResultByResultMapList(maps, "~");
+
+        List<Car> cars = racing.Cars();
+
+        List<String> winersString = new Winner().findWinersString(cars);
+        resultView.showWinners(winersString);
     }
 
 }
