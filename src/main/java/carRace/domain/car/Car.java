@@ -27,6 +27,12 @@ public class Car implements Comparable<Car> {
         randomNumberHistory = new RandomNumberHistory();
     }
 
+    public Car(Car other) {
+        this.carName = other.carName;
+        this.moveDistance = other.moveDistance;
+        this.randomNumberHistory = other.randomNumberHistory;
+    }
+
     public CarName getCarName() {
         return carName;
     }
