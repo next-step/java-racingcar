@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class CarName {
+public class Participant {
     private static final int MAX_NAME_LENGTH = 5;
 
     private String name;
