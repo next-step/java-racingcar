@@ -1,10 +1,14 @@
 package racingcar;
 
 public class Car {
+	private final String name;
 	private int position;
 	private final CarMoveStrategy[] carMoveStrategies;
 
-	public Car(CarMoveStrategy... carMoveStrategies) {
+	public Car (String name, CarMoveStrategy... carMoveStrategies) {
+		CarValidation.checkCarName(name);
+
+		this.name = name;
 		position = 0;
 		this.carMoveStrategies = carMoveStrategies;
 	}
@@ -16,6 +20,14 @@ public class Car {
 			}
 		}
 		position++;
+	}
+
+	public boolean isEqualPosition(int position) {
+		return this.position == position;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public int getPosition() {
