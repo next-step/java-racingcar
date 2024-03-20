@@ -25,7 +25,7 @@ public class RacingCarTest {
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
 		if (randomNum >= 4)
-			assertThat(car.getMoveInfo()).isEqualTo(1);
+			assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class RacingCarTest {
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
 		if (randomNum < 4)
-			assertThat(car.getMoveInfo()).isEqualTo(0);
+			assertThat(car.getPosition()).isEqualTo(0);
 	}
 
 	@Test
@@ -51,9 +51,9 @@ public class RacingCarTest {
 				car.moveForward(randomNum++);
 			}
 		}
-		assertThat(carList.get(0).getMoveInfo()).isEqualTo(0);
-		assertThat(carList.get(1).getMoveInfo()).isEqualTo(1);
-		assertThat(carList.get(2).getMoveInfo()).isEqualTo(1);
+		assertThat(carList.get(0).getPosition()).isEqualTo(0);
+		assertThat(carList.get(1).getPosition()).isEqualTo(1);
+		assertThat(carList.get(2).getPosition()).isEqualTo(1);
 	}
 
 	@Test

@@ -27,7 +27,7 @@ public class Car {
 		}
 	}
 
-	public int getMoveInfo() {
+	public int getPosition() {
 		return position;
 	}
 
