@@ -18,4 +18,8 @@ public class Car {
             this.position++;
         }
     }
+
+    public boolean isWinner(int comparisonPosition) {
+        return this.position >= comparisonPosition;
+    }
 }
