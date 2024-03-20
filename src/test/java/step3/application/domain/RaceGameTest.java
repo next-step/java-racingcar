@@ -47,20 +47,10 @@ class RaceGameTest {
 
     @ParameterizedTest
     @MethodSource("raceGameTestDataSet")
-    void 차량들에_대해_가장_먼_이동거리을_추출한다(List<String> names, List<Integer> positions) {
-        RaceGame raceGame = new RaceGame(names, positions);
-        raceGame.startRace(3, new MovablePredicatedGenerator());
-
-        assertThat(raceGame.extractMaxPosition()).isEqualTo(2);
-    }
-
-    @ParameterizedTest
-    @MethodSource("raceGameTestDataSet")
     void 차량들에_대해_가장_멀리_움직인_인원을_조회한다(List<String> names, List<Integer> positions) {
         RaceGame raceGame = new RaceGame(names, positions);
         raceGame.startRace(3, new MovablePredicatedGenerator());
-        int max = raceGame.extractMaxPosition();
-        List<String> best = raceGame.findBest(max, names);
+        List<String> best = raceGame.findBest(names);
         assertThat(best).hasSize(1).containsOnly("honux");
     }
 }

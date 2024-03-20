@@ -17,7 +17,7 @@ class DriverTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"pobi:pobi:true", "crong:honux"}, delimiter = ':')
+    @CsvSource(value = {"pobi:pobi:true", "crong:honux:false"}, delimiter = ':')
     void driver의_이름이_입력된_이름과_일치하는지_여부(String name, String input, boolean answer) {
         Driver driver = new Driver(name);
         Assertions.assertThat(driver.isSameAs(input)).isEqualTo(answer);
