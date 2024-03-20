@@ -5,7 +5,7 @@ import java.util.List;
 public class OutputView {
     public void printCarPosition(Car car) {
         // 입력변수를 Car 하나로 두면 깔끔하긴 한데 캡슐화가 깨지는 거 같음
-        System.out.print(car.carName() + ": ");
+        System.out.print(car.name() + ": ");
         for (int i = 0; i <= car.position(); i++) {
             System.out.print('-');
         }
@@ -21,8 +21,8 @@ public class OutputView {
 
     public void printWinner(CarGroup carGroup) {
         List<Car> winners = Winners.findWinners(carGroup.carGroup());
-        for (int i = 0; i < winners.size(); i++){
-            System.out.print(winners.get(i).carName() + " ");
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.print(winners.get(i).name() + " ");
         }
         System.out.println("가 최종 우승했습니다.");
     }

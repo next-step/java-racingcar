@@ -10,7 +10,6 @@ public class Winners {
             winners.add(car);
         }
     }
-
     public static List<Car> findWinners(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {

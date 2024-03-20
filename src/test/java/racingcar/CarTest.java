@@ -32,7 +32,7 @@ public class CarTest {
     @DisplayName("(3)자동차의 위치를 전달")
     public void carName() {
         //when, then
-        Assertions.assertThat(car.carName()).isEqualTo("poby");
+        Assertions.assertThat(car.name()).isEqualTo("poby");
     }
 
     @Test
@@ -48,7 +48,7 @@ public class CarTest {
         //when
         car.updatePosition(5);
 
-        //then (Car Class's Random seed: 54321)
+        //then
         Assertions.assertThat(car.position()).isEqualTo(1);
     }
 

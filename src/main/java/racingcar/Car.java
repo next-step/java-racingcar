@@ -1,43 +1,40 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private String carName;
-    private int position;
+    private Name name;
+    private Position position;
 
     public Car(String carName) {
-        this.carName = carName;
-        position = 0;
+        this.name = new Name(carName);
+        position = new Position();
     }
 
-    public Car(String carName, int position) {
-        this.carName = carName;
+    public Car(Name name, Position position) {
+        this.name = name;
         this.position = position;
     }
 
-    public String carName() {
-        return this.carName;
+    public Car(String carName, int position) {
+        this(new Name(carName), new Position(position));
+    }
+
+    public String name() {
+        return this.name.get();
     }
 
     public int position() {
-        return this.position;
+        return this.position.get();
     }
 
     public int max(int other) {
-        if (this.position > other){
-            return this.position;
-        }
-        return other;
+        return position.max(other);
     }
 
     public void updatePosition(int randomValue) {
-        if (randomValue >= 4) {
-            position++;
-        }
+        position.updatePosition(randomValue);
     }
 
     public boolean isMatch(int maxPosition) {
-        return maxPosition == this.position;
+        return position.isMatch(maxPosition);
     }
 }

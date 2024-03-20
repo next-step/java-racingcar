@@ -2,15 +2,16 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarGroup {
 
     private List<Car> carGroup;
 
-    public CarGroup(String[] carNames) {
+    public CarGroup(String[] names) {
         carGroup = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            carGroup.add(new Car(carNames[i]));
+        for (int i = 0; i < names.length; i++) {
+            carGroup.add(new Car(names[i]));
         }
     }
 
@@ -31,11 +32,14 @@ public class CarGroup {
     }
 
     public String carName(int carIndex) {
-        return carGroup.get(carIndex).carName();
+        return carGroup.get(carIndex).name();
     }
 
-    public void updateCarArrayPosition(int randomValue) {
+    public void updateCarGroupPosition() {
+        Random random = new Random();
+        int randomValue;
         for (int i = 0; i < carGroup.size(); i++) {
+            randomValue = random.nextInt(10);
             carGroup.get(i).updatePosition(randomValue);
         }
     }
