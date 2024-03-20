@@ -1,6 +1,6 @@
 package racing;
 
-import racing.domain.Game;
+import racing.controller.GameController;
 import racing.view.Input;
 import racing.view.Output;
 
@@ -11,9 +11,11 @@ public class Main {
 
         Input input = new Input();
 
-        Game game = new Game(input.askStringInput(carNameInput));
-        game.playGame(input.askIntInput(attemptsNumberInput));
+        Output.showWinner(GameController.playGame(
+                GameController.createGame(input.inputCarNames(carNameInput)),
+                input.inputAttempts(attemptsNumberInput)
+        ).getWinners());
+
         input.close();
-        Output.showWinner(game.getWinners());
     }
 }
