@@ -19,10 +19,6 @@ public class Car implements Comparable<Car>{
         }
     }
 
-    public boolean isWinner(int comparisonPosition) {
-        return this.position >= comparisonPosition;
-    }
-
     @Override
     public int compareTo(Car o) {
         return Integer.compare(this.position, o.position);
