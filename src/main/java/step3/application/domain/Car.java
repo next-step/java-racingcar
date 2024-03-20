@@ -37,7 +37,7 @@ public class Car {
         return this.position.isMax(maxPosition);
     }
 
-    public boolean isBest(String name) {
+    public boolean isDriver(String name) {
         return this.driver.isSameAs(name);
     }
 
