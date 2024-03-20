@@ -11,7 +11,7 @@ public class Car implements Comparable<Car> {
 
     private final MoveDistance moveDistance;
 
-    private final RandomNumberHistory randomNumberHistory = new RandomNumberHistory();
+    private final RandomNumberHistory randomNumberHistory;
 
     private static final Comparator<Car> COMPARATOR = Comparator.comparingInt(Car::getMoveDistance);
 
@@ -24,6 +24,7 @@ public class Car implements Comparable<Car> {
     public Car(final CarName carName, MoveDistance moveDistance) {
         this.carName = carName;
         this.moveDistance = moveDistance;
+        randomNumberHistory = new RandomNumberHistory();
     }
 
     public CarName getCarName() {
