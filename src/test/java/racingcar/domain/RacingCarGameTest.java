@@ -15,7 +15,7 @@ class RacingCarGameTest {
     @ValueSource(ints = {1, 2, 4})
     @DisplayName("입력된 자동차 대수만큼 RacingCar 객체를 생성한다")
     void createCarList_자동차대수(int carCount) {
-        List<Car> carList = RacingCarGame.createCarList(carCount);
+        List<Car> carList = RacingCarGame.createRacingCars(carCount);
         int actual = carList.size();
         int expected = carCount;
 

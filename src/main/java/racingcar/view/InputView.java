@@ -9,9 +9,9 @@ public class InputView {
         throw new AssertionError();
     }
 
-    public static int inputCarCount() {
+    public static String inputCarCount() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return scanner.nextInt();
+        return scanner.next();
     }
 
     public static int inputTrialCount() {
