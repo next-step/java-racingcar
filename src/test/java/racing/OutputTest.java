@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.view.Output;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

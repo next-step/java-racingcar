@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,8 +8,12 @@ import java.util.stream.Collectors;
 public class Output {
     final static String DASH = "-";
 
-    public static void showSessionStatus(Game game) {
-        for (Car car : game.getAttendedCars()) {
+    public static void showStartOfGame() {
+        System.out.println("실행 결과");
+    }
+
+    public static void showSessionStatus(List<Car> attendedCars) {
+        for (Car car : attendedCars) {
             showDistance(car);
         }
         System.out.println();
