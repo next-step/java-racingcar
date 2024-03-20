@@ -19,6 +19,7 @@ public class Calculator {
 		String[] values;
 
 		Matcher matcher = CUSTOM_DELIMITER.matcher(text);
+
 		if (matcher.find()){
 			String customDelimiter = matcher.group(1);
 			values  = matcher.group(2).split(customDelimiter);
