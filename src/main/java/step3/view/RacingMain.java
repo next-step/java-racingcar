@@ -18,8 +18,7 @@ public class RacingMain {
 
         RaceGame raceGame = new RaceGame(names);
         RaceGameLog raceGameLog = raceGame.startRace(moveCount,new MovableRandomGenerator());
-        int maxPosition = raceGame.extractMaxPosition();
-        List<String> bestDrivers = raceGame.findBest(maxPosition, names);
+        List<String> bestDrivers = raceGame.findBest(names);
 
         ResultView resultView = new ResultView();
         resultView.printRacingHistory(raceGameLog);

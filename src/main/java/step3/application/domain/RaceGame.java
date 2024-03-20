@@ -33,15 +33,21 @@ public class RaceGame {
         }
     }
 
-    public int extractMaxPosition() {
+    public List<String> findBest(List<String> names) {
+        int maxPosition = this.extractMaxPosition();
+        List<Car> bestCars = racingCars.findBestDriver(maxPosition);
+
+        return names.stream()
+                .filter(name -> isBestDriver(bestCars, name))
+                .collect(Collectors.toList());
+    }
+
+    private int extractMaxPosition() {
         return racingCars.extractMaximumPosition();
     }
 
-    public List<String> findBest(int maxPosition, List<String> names) {
-        List<Car> bestCars = racingCars.findBestDriver(maxPosition);
-        return names.stream()
-                .filter(name -> bestCars.stream()
-                        .anyMatch(car -> car.isBest(name))
-                ).collect(Collectors.toList());
+    private boolean isBestDriver(List<Car> cars, String name) {
+        return cars.stream()
+                .anyMatch(car -> car.isDriver(name));
     }
 }
