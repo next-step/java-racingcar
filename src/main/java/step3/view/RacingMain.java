@@ -1,7 +1,8 @@
 package step3.view;
 
 import step3.application.domain.RaceGame;
-import step3.application.domain.model.RaceGameLog;
+import step3.application.domain.model.dto.RaceGameLog;
+import step3.application.generator.MovableRandomGenerator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +17,12 @@ public class RacingMain {
         List<String> names = splitTextAsNames(inputText);
 
         RaceGame raceGame = new RaceGame(names);
-        RaceGameLog raceGameLog = raceGame.startRace(moveCount);
+        RaceGameLog raceGameLog = raceGame.startRace(moveCount,new MovableRandomGenerator());
+        List<String> bestDrivers = raceGame.findBest(names);
 
         ResultView resultView = new ResultView();
         resultView.printRacingHistory(raceGameLog);
+        resultView.printBestDriver(bestDrivers);
     }
 
     private static List<String> splitTextAsNames(String inputText) {
