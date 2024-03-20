@@ -23,7 +23,9 @@ public class Participants {
 
     private static List<Participant> createParticipants(String[] nameArray) {
         validateDuplicate(nameArray);
-        return null;
+        return Arrays.stream(nameArray)
+                .map(Participant::from)
+                .collect(Collectors.toList());
     }
 
     private static void validateDuplicate(String[] participantNames) {

@@ -5,9 +5,13 @@ public class Participant {
 
     private String name;
 
+    private Participant(String name) {
+        this.name = name;
+    }
 
-    public static void from(String name) {
+    public static Participant from(String name) {
         validate(name);
+        return new Participant(name);
     }
 
     private static void validate(String name) {
