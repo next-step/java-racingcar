@@ -21,4 +21,11 @@ public class NameTest {
         assertThatThrownBy(() -> new Name("다섯글자이상자동차")).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("이름은 다섯 글자를 초과할 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("이름으로 빈 값이 들어올 때 에러 발생")
+    public void emptyNameValidation() {
+        assertThatThrownBy(() -> new Name("")).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이름은 빈 값일 수 없습니다.");
+    }
 }
