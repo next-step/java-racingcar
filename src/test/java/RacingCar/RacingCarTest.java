@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 
 public class RacingCarTest {
@@ -17,29 +18,26 @@ public class RacingCarTest {
     @Test
     void MoveForward() {
         Car car = new Car();
-        int rval = random.nextInt(10);
-        car.MoveForward(rval);
-        if (rval > 4) assertThat(car.GetMoveInfo()).isEqualTo(1);
-        else assertThat(car.GetMoveInfo()).isEqualTo(0);
+        car.MoveForward(0);
+        assertThat(car.GetMoveInfo()).isEqualTo(0);
+        car.MoveForward(5);
+        assertThat(car.GetMoveInfo()).isEqualTo(1);
     }
 
     @Test
-    void MoveForward_여러번() {
+    void MoveForward_여러_자동차() {
         for (int i = 0; i < 3; i++) {
             Car car = new Car();
             carList.add(car);
         }
 
-        int rval = 1;
-        for (int i = 0; i < 5; i++) {
-            for (Car car : carList) {
-                car.MoveForward(rval++);
-            }
-        }
+        carList.get(0).MoveForward(3);
+        carList.get(1).MoveForward(5);
+        carList.get(2).MoveForward(6);
 
-        assertThat(carList.get(0).GetMoveInfo()).isEqualTo(3);
-        assertThat(carList.get(1).GetMoveInfo()).isEqualTo(4);
-        assertThat(carList.get(2).GetMoveInfo()).isEqualTo(4);
+        assertThat(carList.get(0).GetMoveInfo()).isEqualTo(0);
+        assertThat(carList.get(1).GetMoveInfo()).isEqualTo(1);
+        assertThat(carList.get(2).GetMoveInfo()).isEqualTo(1);
     }
 
     @Test
