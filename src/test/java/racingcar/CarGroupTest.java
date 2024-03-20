@@ -31,6 +31,4 @@ public class CarGroupTest {
         //when, then
         Assertions.assertThat(carGroup.carName(0)).isEqualTo("poby");
     }
-
-
 }
