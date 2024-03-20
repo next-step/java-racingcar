@@ -53,8 +53,8 @@ public class AttendedCars {
             throw new IllegalArgumentException("필요한 movePoint 수와 일치하지 않습니다.");
         }
 
-        for (int i = 0; i < attendedCars.size(); i++) {
-            attendedCars.get(i).move(randomMovePoint[i]);
+        for (Car car: attendedCars) {
+            car.move(randomMovePoint[attendedCars.indexOf(car)]);
         }
     }
 }
