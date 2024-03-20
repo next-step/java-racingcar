@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class AttendedCarsTest {
     @Test
@@ -50,5 +51,15 @@ public class AttendedCarsTest {
         for (int i = 0; i < attendedCars.getAttendance(); i++) {
             assertThat(attendedCars.getAttendedCars().get(i).getCurrentLocation()).isEqualTo(1);
         }
+    }
+
+    @Test
+    @DisplayName("참여 중인 모든 자동차들 이동 Point Input 갯수 오류")
+    public void testAttendedCarsMoveError() {
+        AttendedCars attendedCars = new AttendedCars("참여1,참여2,참여2");
+
+        assertThatThrownBy(() -> attendedCars.moveAttendedCars(new int[]{1, 3}))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("필요한 movePoint 수와 일치하지 않습니다.");
     }
 }
