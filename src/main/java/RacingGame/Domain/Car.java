@@ -8,11 +8,13 @@ import java.util.List;
 import java.util.Random;
 
 public class Car {
-   private int move = 0;
-   public void MoveForward(int rval) {
-      if(rval > 4) move++;
-   }
-   public int GetMoveInfo(){
-      return move;
-   }
+    private int move = 0;
+
+    public void MoveForward(int rval) {
+        if (rval > 4) move++;
+    }
+
+    public int GetMoveInfo() {
+        return move;
+    }
 }

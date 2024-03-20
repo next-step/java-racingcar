@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class OutputView {
+    public void OutputView() {
+        System.out.println("Result");
+    }
+
     public void PrintResult(List<Car> carList) {
         printAllCars(carList);
     }
@@ -23,5 +27,4 @@ public class OutputView {
         }
         System.out.println();
     }
-
 }
