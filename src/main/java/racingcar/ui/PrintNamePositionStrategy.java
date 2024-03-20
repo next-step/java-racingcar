@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.domain.Car;
 
 public class PrintNamePositionStrategy implements PrintStrategy {
     @Override

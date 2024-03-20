@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import common.StringUtils;
 
@@ -16,6 +16,10 @@ public class RacingCars {
         this.cars = createCars(splitNames(inputName));
     }
 
+    public RacingCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     private String[] splitNames(String inputName) {
         return StringUtils.split(inputName, ",");
     }
@@ -26,9 +30,9 @@ public class RacingCars {
     }
 
 
-    public void moveCar(Movable movable) {
+    public void moveCar(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            movable.moveCar(car);
+            car.move(moveStrategy);
         }
     }
 
@@ -44,15 +48,16 @@ public class RacingCars {
     }
 
     public List<Car> getWinners() {
-        Car carOfMaxPosition = getCarOfMaxPosition();
+        int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(it -> it.getPosition() == carOfMaxPosition.getPosition())
+                .filter(it -> it.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 
-    private Car getCarOfMaxPosition() {
+    private int getMaxPosition() {
         return cars.stream()
                 .max(Comparator.comparing(Car::getPosition))
+                .map(Car::getPosition)
                 .orElseThrow(() -> new IllegalStateException("car.position cannot get max"));
     }
 }

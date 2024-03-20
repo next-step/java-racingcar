@@ -1,12 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 
 import java.util.Objects;
 
 public class Car {
-    private static final int STEP_HURDLE = 4;
     private static final int CAR_NAME_ALLOWED_LENGTH = 5;
-
 
     private int position = 0;
     private String name;
@@ -15,17 +13,21 @@ public class Car {
     }
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         if (CAR_NAME_ALLOWED_LENGTH < name.length()) {
             throw new IllegalArgumentException("car name should be under 5");
         }
         this.name = name;
+        this.position = position;
     }
 
-    public void moveForward(int value) {
-        if (value < STEP_HURDLE) {
-            return;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            position++;
         }
-        position += 1;
     }
 
     public int getPosition() {

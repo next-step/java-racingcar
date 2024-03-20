@@ -2,12 +2,14 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.MoveStrategy;
+import racingcar.domain.RacingCars;
 
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
+import static org.assertj.core.api.Assertions.*;
 
 class RacingCarsTest {
 
@@ -23,17 +25,6 @@ class RacingCarsTest {
         assertThat(sut.numberOfParticipants()).isEqualTo(4);
     }
 
-    @Test
-    @DisplayName("moveCar 매개변수가 4이상이면 자동차가 전진한다")
-    void moveCarTest() {
-        RacingCars sut = new RacingCars(inputName);
-        sut.moveCar(car -> car.moveForward(4));
-
-        for (Car racingCar : sut.getRacingCars()) {
-            assertThat(racingCar.getPosition()).isEqualTo(1);
-        }
-    }
-
 
     @DisplayName("우승자는 한명 이상일 수 있다")
     @Test
@@ -41,13 +32,30 @@ class RacingCarsTest {
 
         // given
         RacingCars sut = new RacingCars(inputName);
-        sut.moveCar(car -> car.moveForward(5));
+        sut.moveCar(() -> true);
 
         // when
         List<Car> winners = sut.getWinners();
 
         // then
         assertThat(winners).containsAnyElementsOf(sut.getRacingCars());
+    }
+
+
+    @Test
+    @DisplayName("우승자는 position이 max인 자동차다")
+    public void winnerTest() {
+        RacingCars sut = new RacingCars(
+                List.of(
+                    new Car("A", 1),
+                    new Car("B", 2),
+                    new Car("C", 3)
+                )
+        );
+
+        List<Car> winners = sut.getWinners();
+
+        assertThat(winners).containsExactly(new Car("C", 3));
     }
 
 }

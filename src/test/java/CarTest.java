@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
+import racingcar.domain.Car;
+import racingcar.domain.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -8,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class CarTest {
 
     @Test
-    @DisplayName("입력값이 4 이상이면 전진한다")
+    @DisplayName("전진")
     void carMoveForward() {
 
         Car car = new Car();
-        car.moveForward(5);
+        car.move(() -> true);
 
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -20,11 +21,11 @@ class CarTest {
 
 
     @Test
-    @DisplayName("입력값이 4 미만이면 전진 불가능하다")
+    @DisplayName("중지")
     void cannotMoveInputLessThan_4() {
 
         Car car = new Car();
-        car.moveForward(3);
+        car.move(() -> false);
 
         assertThat(car.getPosition()).isZero();
     }

@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.ui;
 
 
-import java.util.List;
+import racingcar.domain.RacingCars;
+import racingcar.domain.RandomMoveStrategy;
 
 public class RacingCarGame {
 
@@ -20,7 +21,7 @@ public class RacingCarGame {
     }
 
     private void moveCar() {
-        racingCars.moveCar(new RandomMove());
+        racingCars.moveCar(new RandomMoveStrategy());
     }
 
     public void showRacingResult() {

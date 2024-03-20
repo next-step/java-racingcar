@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.domain.RacingCars;
 
 import java.util.Scanner;
 
