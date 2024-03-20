@@ -14,7 +14,7 @@ class ParticipantsTest {
     @DisplayName("전체 참가자 이름 미입력시 에러를 던진다.")
     void from_이름미입력(String name) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Participant.from(name))
+                .isThrownBy(() -> Participants.from(name))
                 .withMessageMatching("전체 참가자 이름을 입력하세요.");
     }
 
