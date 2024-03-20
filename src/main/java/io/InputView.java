@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
-	private static final InputValidation inputValidation = new InputValidation();
 
 	public static String[] inputNamesOfCar() {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -12,7 +11,7 @@ public class InputView {
 
 		for(String name : names) {
 			try {
-				inputValidation.checkCarName(name);
+				InputValidation.checkCarName(name);
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 				return inputNamesOfCar();
@@ -28,7 +27,7 @@ public class InputView {
 		int numberOfTrial = scanner.nextInt();
 
 		try {
-			inputValidation.checkNumberOfTrial(numberOfTrial);
+			InputValidation.checkNumberOfTrial(numberOfTrial);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			return inputNumberOfTrial();
