@@ -9,6 +9,10 @@ public class Participant {
         this.name = name;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public static Participant from(String name) {
         validate(name);
         return new Participant(name);

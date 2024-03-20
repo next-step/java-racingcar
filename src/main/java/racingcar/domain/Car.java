@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.strategy.MoveStrategy;
 
-public class Car {
+public class Car implements Comparable<Car>{
     private int position;
 
     public Car() {
@@ -21,5 +21,10 @@ public class Car {
 
     public boolean isWinner(int comparisonPosition) {
         return this.position >= comparisonPosition;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.position, o.position);
     }
 }

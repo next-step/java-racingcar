@@ -6,26 +6,31 @@ import racingcar.domain.dto.RoundScore;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.StrategyRandomMove;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.StreamSupport;
 
 public class RacingCarGame {
-    private final List<Car> carList;
+    private static final int FIRST_INDEX = 0;
+
     private final StrategyRandomMove strategyRandomMove = new StrategyRandomMove();
+    private final Map<Participant, Car> racingCars;
 
-    public RacingCarGame(List<Car> carList) {
-        this.carList = carList;
+    public RacingCarGame(Map<Participant, Car> racingCars) {
+        this.racingCars = racingCars;
     }
 
-    public static RacingCarGame from(int carCount) {
-        return new RacingCarGame(createCarList(carCount));
+    public static RacingCarGame from(Participants participants) {
+        return new RacingCarGame(createRacingCars(participants));
     }
-    public static List<Car> createCarList(int carCount) {
-        return IntStream.range(0, carCount)
-                .mapToObj(i -> new Car())
-                .collect(Collectors.toList());
+    public static Map<Participant, Car> createRacingCars(Participants participants) {
+        return StreamSupport.stream(participants.spliterator(), false)
+                .collect(Collectors.toMap(
+                        participant -> participant,
+                        participant -> new Car(),
+                        (existing, replacement) -> existing,
+                        LinkedHashMap::new
+                ));
     }
 
     public RacingResult executeRacing(int trialCount) {
@@ -33,7 +38,7 @@ public class RacingCarGame {
         while (trialCount-- > 0) {
             roundResults.add(executeRound());
         }
-        return new RacingResult(roundResults);
+        return new RacingResult(roundResults, selectWinners());
     }
 
     public RoundResult executeRound() {
@@ -42,12 +47,30 @@ public class RacingCarGame {
     }
 
     private List<RoundScore> getRoundResults() {
-        return carList.stream()
-                .map(car -> new RoundScore(car.getPosition()))
+        return racingCars.keySet().stream()
+                .map(participant -> new RoundScore(participant.getName(), racingCars.get(participant).getPosition()))
                 .collect(Collectors.toList());
     }
 
     private void play(MoveStrategy moveStrategy) {
-        carList.forEach(car -> car.moveForward(moveStrategy));
+        racingCars.keySet().forEach(participant -> racingCars.get(participant).moveForward(moveStrategy));
+    }
+
+    private Participants selectWinners() {
+        int winnerPosition = calculateWinnerPosition();
+        return new Participants(
+                racingCars.keySet().stream()
+                        .filter(participant -> racingCars.get(participant).getPosition() == winnerPosition)
+                        .collect(Collectors.toList())
+
+        );
+    }
+
+    private int calculateWinnerPosition() {
+        List<Car> carList = new ArrayList<>(racingCars.values());
+        carList.sort(Comparator.reverseOrder());
+        Car firstCar = carList.get(FIRST_INDEX);
+
+        return firstCar.getPosition();
     }
 }
