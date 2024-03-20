@@ -67,5 +67,4 @@ public class RacingCarTest {
 	void carNamelengthUnder5() {
 		assertThrows(IllegalArgumentException.class, () -> new Car("춘봉봉봉봉봉"));
 	}
-
 }

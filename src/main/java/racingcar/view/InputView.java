@@ -10,15 +10,14 @@ public class InputView {
 	Scanner scanner = new Scanner(System.in);
 	Random random = new Random();
 
-	public String[] inputCarNumber(List<Car> carList) {
+	public void inputCarNumber(List<Car> carList) {
 		System.out.println("Enter the names of the cars(separated by ,)");
 		String carName = scanner.next();
 		String[] carNameList = carName.split(",");
 		for (int i = 0; i < carNameList.length; i++) {
-			Car car = new Car();
+			Car car = new Car(carNameList[i]);
 			carList.add(car);
 		}
-		return carNameList;
 	}
 
 	public int inputTrialNumber() {
