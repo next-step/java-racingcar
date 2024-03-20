@@ -13,7 +13,7 @@ public class RacingMain {
 		InputView input = new InputView();
 		OutputView output = new OutputView();
 
-		input.inputCarNumber(carList);
+		String[] carNames = input.inputCarNumber(carList);
 		int trialNumber = input.inputTrialNumber();
 		System.out.println("Result");
 
