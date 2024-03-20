@@ -1,32 +1,55 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
+import racingcar.domain.Car;
+import racingcar.domain.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CarTest {
+class CarTest {
 
     @Test
-    @DisplayName("입력값이 4 이상이면 전진한다")
-    public void carMoveForward() {
+    @DisplayName("전진")
+    void carMoveForward() {
 
         Car car = new Car();
-        car.moveForward(5);
+        car.move(() -> true);
 
-        assertThat(car.position()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
 
 
     @Test
-    @DisplayName("입력값이 4 미만이면 전진 불가능하다")
-    public void cannotMoveInputLessThan_4() {
+    @DisplayName("중지")
+    void cannotMoveInputLessThan_4() {
 
         Car car = new Car();
-        car.moveForward(3);
+        car.move(() -> false);
 
-        assertThat(car.position()).isEqualTo(0);
+        assertThat(car.getPosition()).isZero();
     }
 
+
+    @DisplayName("자동차 이름을 부여한다")
+    @Test
+    void carNameTest() {
+        // given
+        Car porsche = new Car("포르쉐");
+
+        // when
+        // then
+        assertThat(porsche.getName()).isEqualTo("포르쉐");
+    }
+
+
+    @DisplayName("자동차 이름을 5글자를 초과할 수 없다")
+    @Test
+    void carNameLengthShouldUnder5() {
+
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class, () -> new Car("포르쉐쉐쉐쉐"));
+    }
 
 }

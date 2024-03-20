@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.ui;
 
 
-import java.util.concurrent.ThreadLocalRandom;
+import racingcar.domain.RacingCars;
+import racingcar.domain.RandomMoveStrategy;
 
 public class RacingCarGame {
 
@@ -20,15 +21,13 @@ public class RacingCarGame {
     }
 
     private void moveCar() {
-        racingCars.moveCar(new RandomStrategy() {
-            @Override
-            public int create() {
-                return ThreadLocalRandom.current().nextInt(1, 10);
-            }
-        });
+        racingCars.moveCar(new RandomMoveStrategy());
     }
 
     public void showRacingResult() {
         RacingResultView.viewResult(racingCars);
+    }
+    public void showWinner() {
+        RacingResultView.viewWinners(racingCars.getWinners());
     }
 }

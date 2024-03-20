@@ -28,16 +28,16 @@ public class SetTest {
 
     @Test
     @DisplayName("Set의 크기를 반환한다")
-    public void getSizeOfSetTest() {
-        assertThat(numbers.size()).isEqualTo(4);
+    void getSizeOfSetTest() {
+        assertThat(numbers).hasSize(3);
     }
 
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("Set에 값이 존재한다")
-    public void containsTrueTest(int num) {
-        assertThat(numbers.contains(num)).isEqualTo(true);
+    void containsTrueTest(int num) {
+        assertThat(numbers).contains(num);
     }
 
 
@@ -49,7 +49,7 @@ public class SetTest {
             "4, false",
     }, delimiter = ',')
     @DisplayName("Set에 값이 존재한다")
-    public void containsTrueFalseTest(String fixture, String expect) {
+    void containsTrueFalseTest(String fixture, String expect) {
         assertThat(numbers.contains(Integer.parseInt(fixture)))
                 .isEqualTo(Boolean.parseBoolean(expect));
     }

@@ -1,6 +1,10 @@
+package common;
+
 import java.util.regex.Pattern;
 
 public final class StringUtils {
+
+    private StringUtils(){}
 
     public static String[] split(String value, String delimeter) {
         return value.split(delimeter);
