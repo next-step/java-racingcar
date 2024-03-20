@@ -1,6 +1,7 @@
 package carRace.domain.car;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -19,6 +20,14 @@ public class CarGroup {
     }
 
     public List<Car> getCarGroup() {
-        return carGroup;
+        return carGroup.stream()
+            .map(Car::new) // 각 Car 객체를 복사하여 새로운 객체 생성
+            .collect(Collectors.toList());
+    }
+
+    public Car findWinningCar() {
+        return carGroup.stream()
+            .max(Car::compareTo)
+            .orElseThrow(NoSuchElementException::new);
     }
 }
