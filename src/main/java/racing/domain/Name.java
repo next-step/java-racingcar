@@ -1,7 +1,7 @@
 package racing.domain;
 
 public class Name {
-    private static final int MINIMUM_NAME_LENGTH = 5;
+    private static final int MAXIMUM_NAME_LENGTH = 5;
 
     private final String name;
 
@@ -15,7 +15,11 @@ public class Name {
     }
 
     private void validateName(String name) {
-        if (name.length() > MINIMUM_NAME_LENGTH) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("이름은 빈 값일 수 없습니다.");
+        }
+
+        if (name.length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 다섯 글자를 초과할 수 없습니다.");
         }
     }
