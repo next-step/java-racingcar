@@ -19,7 +19,7 @@ public class RacingCarName {
         }
     }
 
-    public String theCarName(){
+    public String nameValue(){
         return this.name;
     }
 }

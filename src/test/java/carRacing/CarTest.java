@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-public class RacingCarTest {
+public class CarTest {
 
     private RacingCar racingCar;
     @BeforeEach

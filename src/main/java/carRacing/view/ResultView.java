@@ -18,7 +18,6 @@ public class ResultView {
     }
 
     private static void printPlayCar(RacingCar car){
-
         System.out.println("-".repeat(Math.max(0, car.position())));
     }
 
@@ -30,9 +29,7 @@ public class ResultView {
     }
 
     private static void printPlayCarName(RacingCar car){
-
-        System.out.println(car.NameOfCar() + " : " + "-"
-                .repeat(Math.max(0, car.position())));
+        System.out.printf("%s : %s%n", car.name(), "-".repeat(car.position()));
     }
 
     public static void winnerOfRacing(List<String> name){

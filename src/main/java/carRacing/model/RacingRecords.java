@@ -4,28 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingRecords {
-    private List<RacingCar> records = new ArrayList<>();
+    private final List<RacingCar> records;
+
+    public RacingRecords() {
+        this.records = new ArrayList<>();
+    }
 
     public void registerCar(List<String> carNames) {
-        this.records = new ArrayList<>();
         for (String name : carNames) {
-            this.records.add(new RacingCar(name));
+            this.records.add(new RacingCar(name, 0));
         }
     }
-
-    public void raceRecord() {
-        for (RacingCar racingCar: this.records) {
-            racingCar.move(moving());
-        }
-    }
-
-    private static MoveStrategy moving(){
-        RandomGenerator randomGenerator = new RandomGenerator();
-        return new RandomMoveStrategy(randomGenerator);
-    }
-
     public List<RacingCar> recordsOfCars(){
         return this.records;
     }
 
+    public List<RacingCar> raceRecord(RandomMoveStrategy strategy) {
+        for (RacingCar racingCar : this.records) {
+            racingCar.move(strategy);
+        }
+        return this.records;
+    }
 }

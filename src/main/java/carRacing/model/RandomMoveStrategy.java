@@ -12,4 +12,5 @@ public class RandomMoveStrategy implements MoveStrategy {
     public boolean isMove() {
         return randomGenerator.randomNum() >= STANDARD_NUMBER;
     }
+
 }

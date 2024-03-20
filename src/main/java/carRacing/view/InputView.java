@@ -29,7 +29,6 @@ public class InputView {
     }
 
     static Validator validator = new Validator();
-
     public static Integer numberCheck(String inNumber) {
         validator.numericCheck(inNumber);
         validator.checkNull(inNumber);
@@ -40,5 +39,4 @@ public class InputView {
         String inCarName = InputView.nameOfCar();
         return List.of(inCarName.split(","));
     }
-
 }
