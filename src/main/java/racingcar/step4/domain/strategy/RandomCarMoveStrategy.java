@@ -14,9 +14,9 @@ public class RandomCarMoveStrategy implements CarMoveStrategy {
   }
 
   public static RandomCarMoveStrategy copy(CarMoveStrategy strategy) {
-    if (strategy instanceof RandomCarMoveStrategy) {
-      return new RandomCarMoveStrategy();
+    if (!(strategy instanceof RandomCarMoveStrategy)) {
+      throw new IllegalArgumentException(THIS_STRATEGY_IS_NOT_REPLICABLE);
     }
-    throw new IllegalArgumentException(THIS_STRATEGY_IS_NOT_REPLICABLE);
+    return new RandomCarMoveStrategy();
   }
 }

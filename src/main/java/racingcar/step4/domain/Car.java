@@ -25,10 +25,10 @@ public class Car implements Comparable<Car> {
     this.moveStrategy = moveStrategy;
   }
 
-  public static Car copy(Car car) {
-    CarName carName = CarName.naming(car.getCarName().get());
-    Position position = Position.specificPosition(car.getPosition().get());
-    CarMoveStrategy strategy = RandomCarMoveStrategy.copy(car.getMoveStrategy());
+  public Car copy() {
+    CarName carName = this.carName.copy();
+    Position position = this.position.copy();
+    CarMoveStrategy strategy = RandomCarMoveStrategy.copy(this.moveStrategy);
     return new Car(carName, position, strategy);
   }
 
@@ -38,16 +38,19 @@ public class Car implements Comparable<Car> {
     }
   }
 
-  public CarName getCarName() {
-    return carName;
+  // dto 컨버팅 용도로만 사용
+  public String getCarName() {
+    return carName.getName();
   }
 
-  public Position getPosition() {
-    return position;
+  public Boolean findSamePosition(Car car) {
+    return this.position.isSame(car.position);
   }
 
-  public CarMoveStrategy getMoveStrategy() {
-    return moveStrategy;
+
+  // dto 컨버팅, 테스트 코드 용도로만 사용
+  public Integer getPosition() {
+    return position.getPosition();
   }
 
   @Override

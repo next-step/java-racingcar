@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import racingcar.step4.domain.Car;
+import racingcar.step4.domain.Cars;
 import racingcar.step4.domain.factory.CarFactory;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -21,18 +19,18 @@ public class CarFactoryTest {
   @CsvSource(value = {"pobi:1", "pobi,crong:2", "pobi,crong,honux:3"}, delimiter = ':')
   @DisplayName("자동차 이름 쉼표(,) 기준으로 들어올 경우, 정상적으로 자동차 n대 생성되는지 테스트")
   void carCreateTest(String given, int expected) {
-    assertThat(CarFactory.of(given)).hasSize(expected);
+    assertThat(CarFactory.of(given).size()).isEqualTo(expected);
   }
 
   @ParameterizedTest
   @CsvSource(value = {"pobi", "pobi,crong", "pobi,crong,honux"}, delimiter = ':')
   @DisplayName("자동차 생성 후, 자동차 이름 확인 테스트")
   void carCreateTest2(String given) {
-    List<Car> cars = CarFactory.of(given);
+    Cars cars = CarFactory.of(given);
     String[] names = given.split(NAME_SEPARATOR);
 
     for (int i = 0; i < names.length; i++) {
-      assertThat(cars.get(i).getCarName().get()).isEqualTo(names[i]);
+      assertThat(cars.getCars().get(i).getCarName()).isEqualTo(names[i]);
     }
   }
 
@@ -58,8 +56,8 @@ public class CarFactoryTest {
   @CsvSource(value = {"poi;o:1"}, delimiter = ':')
   @DisplayName("잘못된 구분자가 있지만 5자 이하인 경우, 자동차 1대 정상 생성되는지 테스트")
   void carCreateTest5(String given, int expected) {
-    List<Car> cars = CarFactory.of(given);
-    assertThat(CarFactory.of(given)).hasSize(expected);
-    assertThat(cars.get(0).getCarName().get()).isEqualTo(given);
+    Cars cars = CarFactory.of(given);
+    assertThat(CarFactory.of(given).getCars()).hasSize(expected);
+    assertThat(cars.getCars().get(0).getCarName()).isEqualTo(given);
   }
 }

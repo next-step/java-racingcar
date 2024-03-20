@@ -1,6 +1,6 @@
 package racingcar.step4.domain.factory;
 
-import racingcar.step4.domain.Car;
+import racingcar.step4.domain.Cars;
 import racingcar.step4.domain.RacingCarGame;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class RacingCarGameFactory {
   public static final String NUMBER_OR_ROUND_IS_INCORRECT = "레이싱 횟수 올바르지 않습니다. input: %s";
   public static final String NUMBER_OR_CARS_IS_INCORRECT = "레이싱에 참여한 자동차 갯수가 올바르지 않습니다. 자동차 갯수: %s";
 
-  public static List<RacingCarGame> of(int rounds, List<Car> cars) {
+  public static List<RacingCarGame> of(int rounds, Cars cars) {
     validateNumberOfRounds(rounds);
     validateNumberOfCars(cars.size());
 

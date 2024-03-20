@@ -1,4 +1,4 @@
-package racingcar.step4.presentaion;
+package racingcar.step4.view;
 
 import java.util.Scanner;
 
@@ -7,11 +7,9 @@ public class InputView {
   private static final String UNEXPECTED_ERROR = "예기치 못한 에러가 발생했습니다. input: %s, errorMessage: %s";
   private static final String NEGATIVE_NUMBER_OR_ZERO_IS_NOT_ALLOWED = "입력 값이 잘못되었습니다. 0이나 음수는 허용되지 않습니다. input: %s";
 
-  private InputView() {
-    throw new AssertionError();
-  }
+  public InputView() {}
 
-  public static InputValue receive() {
+  public InputValue receive() {
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");

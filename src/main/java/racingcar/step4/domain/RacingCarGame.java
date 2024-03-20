@@ -5,44 +5,45 @@ import racingcar.step4.domain.strategy.RandomNumberGenerator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
   private final int round;
-  private List<Car> cars;
-  private Winners winners;
+  private Cars racingCars;
+  private Cars winners;
 
-  private RacingCarGame(int round, List<Car> cars, Winners winners) {
+  private RacingCarGame(int round, Cars racingCars, Cars winners) {
     this.round = round;
-    this.cars = cars;
+    this.racingCars = racingCars;
     this.winners = winners;
   }
 
-  public static RacingCarGame generate(int round, List<Car> cars) {
+  public static RacingCarGame generate(int round, Cars cars) {
     return new RacingCarGame(round, cars, null);
   }
 
+  // dto 컨버팅 용도
   public int getRound() {
     return round;
   }
 
-  public List<Car> getCars() {
-    return cars;
+  // dto 컨버팅 용도
+  public List<Car> getRacingCars() {
+    return racingCars.getCars();
   }
 
-  public Winners getWinners() {
+  // dto 컨버팅 용도
+  public Cars getWinners() {
     return winners;
   }
 
   public static RacingCarGame findFinalGame(List<RacingCarGame> racingCarGames) {
-    return Collections.max(racingCarGames, Comparator.comparing(RacingCarGame::getRound));
+    return Collections.max(racingCarGames, Comparator.comparing(it -> it.round));
   }
 
   public void start() {
-    this.cars.forEach(it -> it.move(new RandomNumberGenerator()));
-    List<Car> copyCars = cars.stream().map(Car::copy).collect(Collectors.toList());
-    this.cars = copyCars;
-    this.winners = Winners.pickWinners(copyCars);
+    this.racingCars.move(new RandomNumberGenerator());
+    this.racingCars = racingCars.copyCars();
+    this.winners = racingCars.pickWinners();
   }
 }

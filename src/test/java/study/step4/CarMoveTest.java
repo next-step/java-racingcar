@@ -15,7 +15,7 @@ public class CarMoveTest {
   void carMoveTest() {
     Car car = new Car("car1", new RandomCarMoveStrategy());
     car.move(bound -> 5);
-    assertThat(car.getPosition().get()).isEqualTo(DEFAULT_START_POSITION + 1);
+    assertThat(car.getPosition()).isEqualTo(DEFAULT_START_POSITION + 1);
   }
 
   @Test
@@ -23,6 +23,6 @@ public class CarMoveTest {
   void carStopTest() {
     Car car = new Car("car1", new RandomCarMoveStrategy());
     car.move(bound -> 1);
-    assertThat(car.getPosition().get()).isEqualTo(DEFAULT_START_POSITION);
+    assertThat(car.getPosition()).isEqualTo(DEFAULT_START_POSITION);
   }
 }
