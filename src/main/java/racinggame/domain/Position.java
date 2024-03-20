@@ -44,4 +44,11 @@ public class Position {
     public int hashCode() {
         return Objects.hash(number);
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "number=" + number +
+                '}';
+    }
 }

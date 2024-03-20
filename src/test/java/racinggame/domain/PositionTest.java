@@ -16,4 +16,11 @@ public class PositionTest {
         assertThat(position.max(3)).isEqualTo(4);
         assertThat(position.max(5)).isEqualTo(5);
     }
+
+    @Test
+    void 증가() {
+        Position position = new Position(4);
+        position.increase();
+        assertThat(position).isEqualTo(new Position(5));
+    }
 }
