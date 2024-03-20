@@ -1,13 +1,10 @@
 package racingcar.domain;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Participants {
+public class Participants implements Iterable<Participant>{
 
     private static final String NAME_DELIMETER = ",";
 
@@ -36,8 +33,17 @@ public class Participants {
     }
 
     private static void validateString(String names) {
-        if (null == names || names.length() == 0 || names.trim().length() == 0) {
+        if (null == names || names.trim().isEmpty()) {
             throw new IllegalArgumentException("전체 참가자 이름을 입력하세요.");
         }
+    }
+
+    @Override
+    public Iterator<Participant> iterator() {
+        return participants.iterator();
+    }
+
+    public int size() {
+        return participants.size();
     }
 }
