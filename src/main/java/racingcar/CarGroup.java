@@ -1,46 +1,30 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class CarGroup {
+    private ArrayList<Car> carGroup;
 
-    private List<Car> carGroup;
-
-    public CarGroup(String[] names) {
+    public CarGroup(int numberOfCar) {
         carGroup = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            carGroup.add(new Car(names[i]));
+        for (int i = 0; i < numberOfCar; i++) {
+            carGroup.add(new Car());
         }
     }
 
-    public Car car(int carIndex) {
-        return carGroup.get(carIndex);
+    public void updateCarArrayPosition() {
+        for (int i = 0; i < carGroup.size(); i++) {
+            carGroup.get(i).updatePosition();
+        }
     }
 
-    public List<Car> carGroup() {
-        return carGroup;
-    }
-
-    public int size() {
+    public int carGroupLength() {
         return carGroup.size();
     }
 
     public int position(int carIndex) {
         return carGroup.get(carIndex).position();
-    }
-
-    public String carName(int carIndex) {
-        return carGroup.get(carIndex).name();
-    }
-
-    public void updateCarGroupPosition() {
-        Random random = new Random();
-        int randomValue;
-        for (int i = 0; i < carGroup.size(); i++) {
-            randomValue = random.nextInt(10);
-            carGroup.get(i).updatePosition(randomValue);
-        }
     }
 }
