@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.cars;
 
 import static racingcar.config.RacingCarException.CAR_NAME_DUPLICATED;
 

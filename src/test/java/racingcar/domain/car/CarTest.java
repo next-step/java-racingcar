@@ -1,10 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.config.RacingCarException.CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH;
 import static racingcar.config.RacingCarException.CAR_NAME_NOT_MATCHES_PATTERN;
-import static racingcar.domain.Car.SPEED;
+import static racingcar.domain.car.Car.SPEED;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +13,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.TestRacingCarConfig;
+import racingcar.domain.car.Car;
+import racingcar.domain.movement.MovementStrategy;
 
 class CarTest {
 

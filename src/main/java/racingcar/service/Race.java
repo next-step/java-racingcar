@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import racingcar.domain.Cars;
-import racingcar.domain.MovementStrategy;
+import racingcar.domain.cars.Cars;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.vo.CarResult;
 import racingcar.vo.GameResult;
 import racingcar.vo.RoundResult;

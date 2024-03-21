@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import racingcar.controller.RacingGame;
-import racingcar.domain.MovementStrategy;
 import racingcar.domain.movement.BasicRule;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.domain.movement.NumberGenerator;
 import racingcar.domain.movement.RandomNumberGenerator;
 import racingcar.domain.movement.Rule;
@@ -29,21 +29,20 @@ public final class RacingCarConfig {
         return (RacingGame)container.computeIfAbsent(RacingGame.class, k -> new RacingGame(racingView()));
     }
 
-    public static RacingView racingView() {
-        return (RacingView)container.computeIfAbsent(RacingView.class,
-                k -> new RacingScreen(inputView(), outputView(), resultFormatter()));
+    private static RacingView racingView() {
+        return new RacingScreen(inputView(), outputView(), resultFormatter());
     }
 
-    public static Input inputView() {
-        return (Input)container.computeIfAbsent(Input.class, k -> new ConsoleInput());
+    private static Input inputView() {
+        return new ConsoleInput();
     }
 
-    public static Output outputView() {
-        return (Output)container.computeIfAbsent(Output.class, k -> new ConsoleOutput());
+    private static Output outputView() {
+        return new ConsoleOutput();
     }
 
-    public static ResultFormatter resultFormatter() {
-        return (ResultFormatter)container.computeIfAbsent(ResultFormatter.class, k -> new ConsoleResultFormatter());
+    private static ResultFormatter resultFormatter() {
+        return new ConsoleResultFormatter();
     }
 
     public static MovementStrategy movementStrategy() {
@@ -51,11 +50,11 @@ public final class RacingCarConfig {
                 k -> new MovementStrategy(rule(), numberGenerator()));
     }
 
-    public static Rule rule() {
-        return (Rule)container.computeIfAbsent(Rule.class, k -> new BasicRule());
+    private static Rule rule() {
+        return new BasicRule();
     }
 
-    public static NumberGenerator numberGenerator() {
-        return (NumberGenerator)container.computeIfAbsent(NumberGenerator.class, k -> new RandomNumberGenerator());
+    private static NumberGenerator numberGenerator() {
+        return new RandomNumberGenerator();
     }
 }

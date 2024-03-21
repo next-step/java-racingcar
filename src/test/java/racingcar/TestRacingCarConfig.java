@@ -2,7 +2,7 @@ package racingcar;
 
 import static racingcar.domain.movement.BasicRule.FORWARD_CONDITION;
 
-import racingcar.domain.MovementStrategy;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.domain.movement.BasicRule;
 import racingcar.domain.movement.NumberGenerator;
 import racingcar.domain.movement.RandomNumberGenerator;

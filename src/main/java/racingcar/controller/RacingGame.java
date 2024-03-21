@@ -1,9 +1,9 @@
 package racingcar.controller;
 
 import racingcar.config.RacingCarConfig;
-import racingcar.domain.CarNames;
-import racingcar.domain.Cars;
-import racingcar.domain.MovementStrategy;
+import racingcar.domain.cars.CarNames;
+import racingcar.domain.cars.Cars;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.service.Race;
 import racingcar.view.RacingView;
 import racingcar.vo.GameResult;

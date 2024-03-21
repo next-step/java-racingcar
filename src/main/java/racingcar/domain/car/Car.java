@@ -1,9 +1,11 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import static racingcar.config.RacingCarException.CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH;
 import static racingcar.config.RacingCarException.CAR_NAME_NOT_MATCHES_PATTERN;
 
 import java.util.regex.Pattern;
+
+import racingcar.domain.movement.MovementStrategy;
 
 public class Car {
 

@@ -12,9 +12,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.TestRacingCarConfig;
-import racingcar.domain.CarNames;
-import racingcar.domain.Cars;
-import racingcar.domain.MovementStrategy;
+import racingcar.domain.cars.CarNames;
+import racingcar.domain.cars.Cars;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.vo.GameResult;
 
 class RaceTest {
