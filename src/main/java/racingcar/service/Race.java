@@ -19,9 +19,11 @@ public class Race {
 
     public GameResult progress(final Cars cars, final int playingCount, final MovementStrategy movementStrategy) {
         validatePlayingCountIsInRange(playingCount);
-        final List<RoundResult> roundResults = runAllRounds(cars, playingCount, movementStrategy);
 
-        return new GameResult(roundResults, cars.winnerNames());
+        final List<RoundResult> roundResults = runAllRounds(cars, playingCount, movementStrategy);
+        final Cars winners = cars.winners();
+
+        return new GameResult(roundResults, CarResult.fromCars(winners));
     }
 
     private static void validatePlayingCountIsInRange(final int playingCount) {
@@ -41,7 +43,7 @@ public class Race {
     ) {
         return IntStream.range(START_ROUND, endRound(playingCount))
                 .mapToObj(round -> runSingleRound(round, cars, movementStrategy))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private int endRound(final int playingCount) {

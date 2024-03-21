@@ -3,30 +3,33 @@ package racingcar.vo;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Name;
+import racingcar.domain.car.Position;
 import racingcar.domain.cars.Cars;
 
 public class CarResult {
 
-    private final String name;
-    private final int position;
+    private final Name name;
+    private final Position position;
 
-    private CarResult(final String name, final int position) {
-        this.name = name;
-        this.position = position;
+    private CarResult(final Car car) {
+        this.name = car.name();
+        this.position = car.position();
     }
 
     public String name() {
-        return this.name;
+        return this.name.toString();
     }
 
-    public int position() {
-        return this.position;
+    public String positionResult() {
+        return this.position.toString();
     }
 
     public static List<CarResult> fromCars(final Cars cars) {
         return cars.cars()
                 .stream()
-                .map(car -> new CarResult(car.name(), car.position()))
-                .collect(Collectors.toList());
+                .map(CarResult::new)
+                .collect(Collectors.toUnmodifiableList());
     }
 }
