@@ -1,15 +1,23 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.TestRacingCarConfig.basicRule;
-import static racingcar.TestRacingCarConfig.moveForwardNumberGenerator;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.TestRacingCarConfig;
+
 class CarsTest {
+
+    private static MovementStrategy basicMoveForwardStrategy;
+
+    @BeforeAll
+    static void setUp() {
+        basicMoveForwardStrategy = TestRacingCarConfig.basicMoveForwardStrategy();
+    }
 
     @Test
     @DisplayName("가장 많이 이동한 자동차가 하나인 경우, 해당 자동차의 이름이 담긴 리스트를 반환한다.")
@@ -18,7 +26,7 @@ class CarsTest {
         final Car winnerCar = Car.from(winnerName);
         final Car looserCar = Car.from("alex");
 
-        winnerCar.moveForwardOrStop(new MovementStrategy(basicRule(), moveForwardNumberGenerator()));
+        winnerCar.moveForwardOrStop(basicMoveForwardStrategy);
 
         final Cars cars = new Cars(List.of(winnerCar, looserCar));
 
@@ -37,13 +45,8 @@ class CarsTest {
 
         final Car looserCar = Car.from("haley");
 
-        final MovementStrategy movementForwardStrategy = new MovementStrategy(
-                basicRule(),
-                moveForwardNumberGenerator()
-        );
-
-        winnerCar1.moveForwardOrStop(movementForwardStrategy);
-        winnerCar2.moveForwardOrStop(movementForwardStrategy);
+        winnerCar1.moveForwardOrStop(basicMoveForwardStrategy);
+        winnerCar2.moveForwardOrStop(basicMoveForwardStrategy);
 
         final Cars cars = new Cars(List.of(winnerCar1, winnerCar2, looserCar));
 

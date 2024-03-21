@@ -2,19 +2,28 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.TestRacingCarConfig.basicRule;
-import static racingcar.TestRacingCarConfig.moveForwardNumberGenerator;
-import static racingcar.TestRacingCarConfig.stopNumberGenerator;
 import static racingcar.config.RacingCarException.CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH;
 import static racingcar.config.RacingCarException.CAR_NAME_NOT_MATCHES_PATTERN;
 import static racingcar.domain.Car.SPEED;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.TestRacingCarConfig;
+
 class CarTest {
+
+    private static MovementStrategy basicMoveForwardStrategy;
+    private static MovementStrategy basicStopStrategy;
+
+    @BeforeAll
+    static void setUp() {
+        basicMoveForwardStrategy = TestRacingCarConfig.basicMoveForwardStrategy();
+        basicStopStrategy = TestRacingCarConfig.basicStopStrategy();
+    }
 
     @Test
     @DisplayName("isSamePosition 메서드에 동일한 위치 값을 넣으면 true를 반환한다.")
@@ -56,7 +65,7 @@ class CarTest {
         final Car car = Car.from("kyle");
         final int expectedPosition = car.position() + SPEED;
 
-        car.moveForwardOrStop(new MovementStrategy(basicRule(), moveForwardNumberGenerator()));
+        car.moveForwardOrStop(basicMoveForwardStrategy);
 
         assertThat(car.position())
                 .isEqualTo(expectedPosition);
@@ -68,7 +77,7 @@ class CarTest {
         final Car car = Car.from("kyle");
         final int expectedPosition = car.position();
 
-        car.moveForwardOrStop(new MovementStrategy(basicRule(), stopNumberGenerator()));
+        car.moveForwardOrStop(basicStopStrategy);
 
         assertThat(car.position())
                 .isEqualTo(expectedPosition);
