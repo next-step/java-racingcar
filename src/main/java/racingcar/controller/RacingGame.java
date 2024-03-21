@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.config.RacingCarConfig;
+import racingcar.domain.Rounds;
 import racingcar.domain.cars.CarNames;
 import racingcar.domain.cars.Cars;
 import racingcar.domain.movement.MovementStrategy;
@@ -18,23 +19,26 @@ public class RacingGame {
 
     public void run() {
         try {
-            play();
+            final GameResult gameResult = playGame();
+            racingView.printGameResult(gameResult);
+
         } catch (final IllegalArgumentException e) {
             racingView.printBusinessExceptionMessage(e.getMessage());
+
         } catch (final Exception e) {
             racingView.printUnexpectedExceptionMessage();
         }
     }
 
-    private void play() {
+    private GameResult playGame() {
         final CarNames carNames = CarNames.from(racingView.readCarNames());
         final Cars cars = Cars.from(carNames);
+
         final int playingCount = racingView.readPlayingCount();
+        final Rounds rounds = Rounds.from(playingCount);
 
-        final Race race = new Race();
         final MovementStrategy movementStrategy = RacingCarConfig.movementStrategy();
-        final GameResult gameResult = race.progress(cars, playingCount, movementStrategy);
 
-        racingView.printGameResult(gameResult);
+        return new Race().progress(cars, rounds, movementStrategy);
     }
 }
