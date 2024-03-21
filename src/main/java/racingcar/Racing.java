@@ -22,6 +22,6 @@ public class Racing {
             outputView.printCarGroupPosition(carGroup);
         }
 
-        outputView.printWinner(carGroup);
+        outputView.printWinner(carGroup.findWinners());
     }
 }

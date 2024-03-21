@@ -19,10 +19,9 @@ public class OutputView {
         System.out.println("==========");
     }
 
-    public void printWinner(CarGroup carGroup) {
-        List<Car> winners = Winners.findWinners(carGroup.carGroup());
-        for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i).name() + " ");
+    public void printWinner(List<String> winnerNames) {
+        for (int i = 0; i < winnerNames.size(); i++) {
+            System.out.print(winnerNames.get(i) + " ");
         }
         System.out.println("가 최종 우승했습니다.");
     }

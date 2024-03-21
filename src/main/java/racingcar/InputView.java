@@ -15,7 +15,4 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public String[] splitString(String names) {
-        return names.split(",");
-    }
 }

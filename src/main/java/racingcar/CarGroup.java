@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class CarGroup {
 
-    private final List<Car> carGroup;
     static final private Random random = new Random();
+    private final List<Car> carGroup;
 
     public CarGroup(String names) {
         String[] splitNames = SplitNames(names);
@@ -24,6 +24,7 @@ public class CarGroup {
      * 그럼 CarGroup의 클라이언트가 알아야 하는 게 너무 많아지는 것 같다.
      * 따라서 CarGroup 내에 이를 구현하였다.
      */
+
     public String[] SplitNames(String names) {
         String[] splitNames = names.split(",");
 
@@ -61,5 +62,24 @@ public class CarGroup {
             int randomValue = random.nextInt(randomValueBound);
             car.updatePosition(randomValue);
         }
+    }
+
+    public void addCarToListIfThisPositionIsMatch(Car car, int position, List<String> winnerNames) {
+        if (car.isMatch(position)) {
+            winnerNames.add(car.name());
+        }
+    }
+    public List<String> findWinners() {
+        int maxPosition = 0;
+        for (Car car : carGroup) {
+            maxPosition = car.max(maxPosition);
+        }
+
+        List<String> winnerNames = new ArrayList<>();
+        for (Car car : carGroup) {
+            addCarToListIfThisPositionIsMatch(car, maxPosition, winnerNames);
+        }
+
+        return winnerNames;
     }
 }
