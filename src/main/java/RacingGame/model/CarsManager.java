@@ -7,7 +7,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarsManager {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
+
+    public CarsManager() {
+        this.cars = new ArrayList<>();
+    }
 
     public CarsManager(List<Car> cars) {
         this.cars = cars;

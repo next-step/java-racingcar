@@ -14,9 +14,14 @@ public class RacingGameController {
 
     public void play() {
         String carNames = InputView.InputCarNames();
-        int StageCount = InputView.InputStageCount();
+        int stageCount = InputView.InputStageCount();
 
         ResultView.viewResultPhrase();
-        ResultView.viewResult(racingGameService.play(carNames, StageCount));
+        racingGameService.init(carNames);
+        for (int i = 0; i < stageCount; i++) {
+            ResultView.stageStatus(racingGameService.play());
+        }
+
+        ResultView.showWinners(racingGameService.winners());
     }
 }
