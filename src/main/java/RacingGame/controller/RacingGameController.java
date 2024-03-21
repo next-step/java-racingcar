@@ -18,6 +18,7 @@ public class RacingGameController {
 
         ResultView.viewResultPhrase();
         racingGameService.init(carNames);
+
         for (int i = 0; i < stageCount; i++) {
             ResultView.stageStatus(racingGameService.play());
         }
