@@ -1,19 +1,15 @@
 package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.config.RacingCarException.CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH;
-import static racingcar.config.RacingCarException.CAR_NAME_NOT_MATCHES_PATTERN;
 import static racingcar.domain.car.Car.SPEED;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import racingcar.TestRacingCarConfig;
-import racingcar.domain.car.Car;
 import racingcar.domain.movement.MovementStrategy;
 
 class CarTest {
@@ -27,105 +23,72 @@ class CarTest {
         basicStopStrategy = TestRacingCarConfig.basicStopStrategy();
     }
 
-    @Test
-    @DisplayName("isSamePosition 메서드에 동일한 위치 값을 넣으면 true를 반환한다.")
-    void isSamePosition_SamePosition_True() {
-        final Car car = Car.from("kyle");
-        final int position = car.position();
+    @ParameterizedTest
+    @CsvSource(value = {"1,1,true", "1,2,false"})
+    @DisplayName("자동차의 위치 값을 기준으로 특정 위치에 있는지 여부를 판단한다.")
+    void equalsPosition_Position_TrueOrFalse(
+            final int originPositionValue,
+            final int targetPositionValue,
+            final boolean isEqualPosition
+    ) {
+        final Car car = new Car("kyle", originPositionValue);
+        final Position position = new Position(targetPositionValue);
 
-        assertThat(car.isSamePosition(position))
-                .isTrue();
-    }
-
-    @Test
-    @DisplayName("isSamePosition 메서드에 동일하지 않은 위치 값을 넣으면 false를 반환한다.")
-    void isSamePosition_DifferentPosition_False() {
-        final Car car = Car.from("kyle");
-        final int position = car.position() + 1;
-
-        assertThat(car.isSamePosition(position))
-                .isFalse();
-    }
-
-    @Test
-    @DisplayName("copyOf 메서드는 내부 필드 값은 같으나, 다른 참조를 가진 복사본을 반환한다.")
-    void copyOf() {
-        final Car originCar = Car.from("kyle");
-        final Car copiedCar = originCar.copyOf();
-
-        assertThat(originCar).isNotSameAs(copiedCar);
-
-        assertThat(originCar.name())
-                .isEqualTo(copiedCar.name());
-        assertThat(originCar.position())
-                .isEqualTo(copiedCar.position());
+        assertThat(car.equalsPosition(position))
+                .isEqualTo(isEqualPosition);
     }
 
     @Test
     @DisplayName("자동차는 전진 조건에 해당하면 자동차의 속도만큼 위치를 이동한다.")
-    void moveForwardOrStop_MoveForwardCondition_PositionIncrement() {
-        final Car car = Car.from("kyle");
-        final int expectedPosition = car.position() + SPEED;
+    void moveForwardOrStop_MoveForwardCondition_PlusPosition() {
+        final int startPositionValue = 0;
+        final Car car = new Car("kyle", startPositionValue);
+        final Position expectedPosition = new Position(startPositionValue + SPEED);
 
         car.moveForwardOrStop(basicMoveForwardStrategy);
 
-        assertThat(car.position())
-                .isEqualTo(expectedPosition);
+        assertThat(car.equalsPosition(expectedPosition))
+                .isTrue();
     }
 
     @Test
     @DisplayName("자동차는 정지 조건에 해당하면 현재 위치를 유지한다.")
-    void moveForwardOrStop_StopCondition_PositionMaintain() {
-        final Car car = Car.from("kyle");
-        final int expectedPosition = car.position();
+    void moveForwardOrStop_StopCondition_MaintainPosition() {
+        final int startPositionValue = 0;
+        final Car car = new Car("kyle", startPositionValue);
+        final Position expectedPosition = new Position(startPositionValue);
 
         car.moveForwardOrStop(basicStopStrategy);
 
-        assertThat(car.position())
-                .isEqualTo(expectedPosition);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"a", "1", "kyle", "123", "ky123"})
-    @DisplayName("한 글자 이상의 공백이 없는 영어 소문자와 숫자로 이루어진 이름으로 자동차를 생성한다.")
-    void from_CarNameWithLowercaseAndNumber_Car(final String carName) {
-        assertThat(Car.from(carName).name())
-                .isEqualTo(carName);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {" a", "a ", " a ", "a\n", "\na", "\na\n", "a\n ", "\n a", " a\n"})
-    @DisplayName("자동차 이름의 양쪽 끝에 존재하는 공백을 제거한 후 자동차를 생성한다.")
-    void from_SpacePaddedCarName_Car(final String carName) {
-        assertThat(Car.from(carName).name())
-                .isEqualTo(carName.trim());
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"#", "ky le", "$1k", "k 123"})
-    @DisplayName("영어 소문자나 숫자 이외의 문자가 포함된 이름으로 자동차를 생성하는 경우 예외를 던진다.")
-    void from_CarNameWithSpaceOrSpecialCharacter_Exception(final String invalidCarName) {
-        assertThatThrownBy(() -> Car.from(invalidCarName))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_NOT_MATCHES_PATTERN.message(invalidCarName));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"", " ", "     ", "\n"})
-    @DisplayName("빈 문자열, 공백, 개행으로 자동차를 생성하는 경우 예외를 던진다.")
-    void from_BlankCarName_Exception(final String blankCarName) {
-        assertThatThrownBy(() -> Car.from(blankCarName))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_NOT_MATCHES_PATTERN.message(""));
+        assertThat(car.equalsPosition(expectedPosition))
+                .isTrue();
     }
 
     @Test
-    @DisplayName("최대 길이를 초과한 이름으로 자동차를 생성하는 경우 예외를 던진다.")
-    void from_CarNameLongerThanMaximumLength_Exception() {
-        final String longCarName = "kyle12";
+    @DisplayName("자동차 객체 복사 시 참조 값이 다른 동등한 객체를 생성한다.")
+    void copyOf_SameNameAndPosition_Car() {
+        final Car originCar = new Car("kyle", 1);
+        final Car copiedCar = originCar.copyOf();
 
-        assertThatThrownBy(() -> Car.from(longCarName))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_LONGER_THAN_MAXIMUM_LENGTH.message(longCarName));
+        assertThat(originCar)
+                .isNotSameAs(copiedCar)
+                .isEqualTo(copiedCar);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"kyle,1,kyle,1,true", "kyle,1,alex,1,false", "kyle,1,kyle,2,false", "kyle,1,alex,2,false"})
+    @DisplayName("이름 문자열 리터럴을 기준으로 동등성을 판단한다.")
+    void equals_NameAndPosition_TrueOrFalse(
+            final String originNameValue,
+            final int originPositionValue,
+            final String targetNameValue,
+            final int targetPositionValue,
+            final boolean isEqualCar
+    ) {
+        final Car originCar = new Car(originNameValue, originPositionValue);
+        final Car targetCar = new Car(targetNameValue, targetPositionValue);
+
+        assertThat(originCar.equals(targetCar))
+                .isEqualTo(isEqualCar);
     }
 }

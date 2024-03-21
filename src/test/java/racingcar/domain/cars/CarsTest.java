@@ -4,69 +4,61 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racingcar.TestRacingCarConfig;
 import racingcar.domain.car.Car;
-import racingcar.domain.cars.CarNames;
-import racingcar.domain.cars.Cars;
-import racingcar.domain.movement.MovementStrategy;
 
 class CarsTest {
 
-    private static MovementStrategy basicMoveForwardStrategy;
+    @Test
+    @DisplayName("가장 많이 이동한 자동차가 하나인 경우, 해당 자동차가 우승한다.")
+    void winners_SingleWinner() {
+        final Car winner = new Car("kyle", 2);
+        final Cars cars = new Cars(
+                winner,
+                new Car("alex", 1),
+                new Car("haley", 0)
+        );
 
-    @BeforeAll
-    static void setUp() {
-        basicMoveForwardStrategy = TestRacingCarConfig.basicMoveForwardStrategy();
+        final List<Car> winners = cars.winners().cars();
+
+        assertThat(winners)
+                .hasSize(1)
+                .containsOnly(winner);
     }
 
     @Test
-    @DisplayName("가장 많이 이동한 자동차가 하나인 경우, 해당 자동차의 이름이 담긴 리스트를 반환한다.")
-    void winnerNames_SingleWinner_SingleWinnerName() {
-        final String winnerName = "kyle";
-        final Car winnerCar = Car.from(winnerName);
-        final Car looserCar = Car.from("alex");
+    @DisplayName("가장 많이 이동한 자동차가 여럿인 경우, 해당 자동차들이 공동 우승한다.")
+    void winners_MultipleWinners() {
+        final Car winner1 = new Car("kyle", 2);
+        final Car winner2 = new Car("alex", 2);
+        final Cars cars = new Cars(
+                winner1,
+                winner2,
+                new Car("haley", 0)
+        );
 
-        winnerCar.moveForwardOrStop(basicMoveForwardStrategy);
+        final List<Car> winners = cars.winners().cars();
 
-        final Cars cars = new Cars(List.of(winnerCar, looserCar));
-
-        assertThat(cars.winnerNames())
-                .containsOnly(winnerName);
+        assertThat(winners)
+                .hasSize(2)
+                .containsOnly(winner1, winner2);
     }
 
     @Test
-    @DisplayName("가장 많이 이동한 자동차가 여럿인 경우, 해당 자동차들의 이름이 담긴 리스트를 반환한다.")
-    void winnerNames_MultipleWinners_MultipleWinnerNames() {
-        final String winnerName1 = "kyle";
-        final Car winnerCar1 = Car.from(winnerName1);
-
-        final String winnerName2 = "alex";
-        final Car winnerCar2 = Car.from(winnerName2);
-
-        final Car looserCar = Car.from("haley");
-
-        winnerCar1.moveForwardOrStop(basicMoveForwardStrategy);
-        winnerCar2.moveForwardOrStop(basicMoveForwardStrategy);
-
-        final Cars cars = new Cars(List.of(winnerCar1, winnerCar2, looserCar));
-
-        assertThat(cars.winnerNames())
-                .containsOnly(winnerName1, winnerName2);
-    }
-
-    @Test
-    @DisplayName("자동차 객체 목록을 반환하는 메서드를 호출하면, 그에 대한 복사본 목록이 반환된다.")
+    @DisplayName("참조는 다르지만 동등한 자동차 객체 목록을 반환한다.")
     void cars_CopyCarList() {
-        final String[] names = {"kyle", "alex", "haley"};
-        final CarNames carNames = CarNames.from(names);
-        final Cars cars = Cars.from(carNames);
+        final Car car1 = new Car("kyle", 0);
+        final Car car2 = new Car("alex", 0);
+        final Car car3 = new Car("haley", 0);
 
-        assertThat(cars.cars())
-                .hasSize(names.length);
+        final List<Car> originCars = List.of(car1, car2, car3);
+        final List<Car> copiedCars = new Cars(car1, car2, car3).cars();
+
+        assertThat(originCars)
+                .isNotSameAs(copiedCars)
+                .isEqualTo(copiedCars);
     }
 
     @Test
