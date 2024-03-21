@@ -2,11 +2,11 @@ package racingcar;
 
 import java.util.Objects;
 
-public class Name {
-    private String name;
+public final class Name {
+    private final String name;
 
     public Name(String name) {
-        if ((name == (null)) || (name.length() > 5)) {
+        if ((name == (null)) || (name.isEmpty()) || (name.length() > 5)) {
             throw new IllegalArgumentException("자동차 이름은 1글자 이상 5글자 이내여야 합니다.");
         }
         this.name = name;

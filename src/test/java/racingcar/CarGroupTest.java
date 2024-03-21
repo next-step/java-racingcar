@@ -6,8 +6,20 @@ import org.junit.jupiter.api.Test;
 
 public class CarGroupTest {
     //given
-    String[] carNames = {"poby", "crong", "honux"};
+    String carNames = "poby,crong,honux";
     CarGroup carGroup = new CarGroup(carNames);
+
+    @Test
+    @DisplayName("(0)생성자 테스트")
+    public void carGroup() {
+        //given, when
+        String carNamesForConstructorTest = ",,";
+
+        //then
+        Assertions.assertThatThrownBy( () -> {
+                    new CarGroup(carNamesForConstructorTest);
+                }).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("(1)자동차 배열의 길이 전달")

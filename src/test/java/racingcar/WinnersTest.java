@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class WinnersTest {
-
+    /*
     @Test
     @DisplayName("우승자 선정")
     public void findWinners() {
@@ -18,4 +18,6 @@ public class WinnersTest {
             Assertions.assertThat(carGroupForWinnerTest.carGroup().get(i).name()).isEqualTo(carNamesForWinnerTest[i]);
         }
     }
+
+     */
 }

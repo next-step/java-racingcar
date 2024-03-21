@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Objects;
 
-public class Position {
+public final class Position {
     private int position;
 
     public Position() {

@@ -6,13 +6,26 @@ import java.util.Random;
 
 public class CarGroup {
 
-    private List<Car> carGroup;
+    private final List<Car> carGroup;
+    static final private Random random = new Random();
 
-    public CarGroup(String[] names) {
+    public CarGroup(String names) {
+        String[] splitNames = SplitNames(names);
         carGroup = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            carGroup.add(new Car(names[i]));
+        for (String name : splitNames) {
+            carGroup.add(new Car(name));
         }
+    }
+
+    public String[] SplitNames(String names) {
+        String[] splitNames = names.split(",");
+
+        int countDelimiter = names.length() - names.replace(",", "").length();
+        if (splitNames.length <= countDelimiter) {
+            throw new IllegalArgumentException("자동차의 이름은 빈칸일 수 없습니다.");
+        }
+
+        return splitNames;
     }
 
     public Car car(int carIndex) {
@@ -36,11 +49,10 @@ public class CarGroup {
     }
 
     public void updateCarGroupPosition() {
-        Random random = new Random();
-        int randomValue;
-        for (int i = 0; i < carGroup.size(); i++) {
-            randomValue = random.nextInt(10);
-            carGroup.get(i).updatePosition(randomValue);
+        int randomValueBound = 10;
+        for (Car car : carGroup) {
+            int randomValue = random.nextInt(randomValueBound);
+            car.updatePosition(randomValue);
         }
     }
 }
