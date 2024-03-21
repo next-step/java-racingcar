@@ -7,7 +7,6 @@ public class InputView {
 
     public String names() {
         System.out.println("자동차들의 이름을 입력하세요(','로 구분): ");
-
         return scanner.nextLine();
     }
 

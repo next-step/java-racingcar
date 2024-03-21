@@ -17,6 +17,13 @@ public class CarGroup {
         }
     }
 
+    /* 이름 분리에 관한 메서드가 CarGroup에 있는게 찝찝하다.
+     * 왜냐면 Name 클래스의 입력 제한을 CarGroup이 판단하기 때문이다.
+     * 하지만 split함수를 사용해야 하기 때문에 Name 안에 해당 로직을 넣는 것은 불가능하다.
+     * 그렇다고 NameGroup을 만들면 CarGroup이 NameGroup까지 의존하게 되고
+     * 그럼 CarGroup의 클라이언트가 알아야 하는 게 너무 많아지는 것 같다.
+     * 따라서 CarGroup 내에 이를 구현하였다.
+     */
     public String[] SplitNames(String names) {
         String[] splitNames = names.split(",");
 
