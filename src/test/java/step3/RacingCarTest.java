@@ -17,24 +17,25 @@ public class RacingCarTest {
 	// 시도 횟수
 	List<Car> carList = new ArrayList<Car>();
 	Random random = new Random();
+	private static final int MIN_THRESHOLD = 4;
 
 	@Test
 	@DisplayName("전진하는 경우")
-	void moveForward() throws Exception {
+	void moveForward() {
 		Car car = new Car();
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
-		if (randomNum >= 4)
+		if (randomNum >= MIN_THRESHOLD)
 			assertThat(car.getMoveInfo()).isEqualTo(1);
 	}
 
 	@Test
 	@DisplayName("전진하지 않는 경우")
-	void notMoveForward() throws Exception {
+	void notMoveForward() {
 		Car car = new Car();
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
-		if (randomNum < 4)
+		if (randomNum < MIN_THRESHOLD)
 			assertThat(car.getMoveInfo()).isEqualTo(0);
 	}
 
