@@ -16,9 +16,9 @@ public class CarGroupTest {
         String carNamesForConstructorTest = ",,";
 
         //then
-        Assertions.assertThatThrownBy( () -> {
-                    new CarGroup(carNamesForConstructorTest);
-                }).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> {
+            new CarGroup(carNamesForConstructorTest);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

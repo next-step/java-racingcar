@@ -40,10 +40,6 @@ public class CarGroup {
         return carGroup.get(carIndex);
     }
 
-    public List<Car> carGroup() {
-        return carGroup;
-    }
-
     public int size() {
         return carGroup.size();
     }
@@ -69,6 +65,7 @@ public class CarGroup {
             winnerNames.add(car.name());
         }
     }
+    
     public List<String> findWinners() {
         int maxPosition = 0;
         for (Car car : carGroup) {
