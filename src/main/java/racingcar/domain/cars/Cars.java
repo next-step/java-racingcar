@@ -1,37 +1,49 @@
 package racingcar.domain.cars;
 
+import static racingcar.config.RacingCarException.CARS_EMPTY;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Position;
 import racingcar.domain.movement.MovementStrategy;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(final List<Car> cars) {
+    Cars(final List<Car> cars) {
         this.cars = cars;
+    }
+
+    public Cars(final Car... cars) {
+        this(Arrays.asList(cars));
     }
 
     public void moveForwardOrStop(final MovementStrategy movementStrategy) {
         this.cars.forEach(car -> car.moveForwardOrStop(movementStrategy));
     }
 
-    public List<String> winnerNames() {
-        final int maxPosition = maxPosition();
+    public Cars winners() {
+        final Position winningPosition = winningPosition();
+        final List<Car> winners = this.cars.stream()
+                .filter(car -> wins(car, winningPosition))
+                .collect(Collectors.toUnmodifiableList());
 
-        return this.cars().stream()
-                .filter(car -> car.isSamePosition(maxPosition))
-                .map(Car::name)
-                .collect(Collectors.toList());
+        return new Cars(winners);
     }
 
-    private int maxPosition() {
+    private boolean wins(final Car car, final Position winningPosition) {
+        return car.equalsPosition(winningPosition);
+    }
+
+    private Position winningPosition() {
         return this.cars.stream()
-                .mapToInt(Car::position)
-                .max()
-                .orElse(Integer.MIN_VALUE);
+                .map(Car::position)
+                .max(Position::compareTo)
+                .orElseThrow(() -> new IllegalStateException(CARS_EMPTY.message()));
     }
 
     public List<Car> cars() {
@@ -48,6 +60,6 @@ public class Cars {
         return carNames.names()
                 .stream()
                 .map(Car::from)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 }
