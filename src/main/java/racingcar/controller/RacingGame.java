@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import racingcar.config.RacingCarConfig;
 import racingcar.domain.CarNames;
+import racingcar.domain.Cars;
 import racingcar.domain.MovementStrategy;
 import racingcar.service.Race;
 import racingcar.view.RacingView;
@@ -9,28 +11,30 @@ import racingcar.vo.GameResult;
 public class RacingGame {
 
     private final RacingView racingView;
-    private final MovementStrategy movementStrategy;
 
-    public RacingGame(final RacingView racingView, final MovementStrategy movementStrategy) {
+    public RacingGame(final RacingView racingView) {
         this.racingView = racingView;
-        this.movementStrategy = movementStrategy;
     }
 
-    public void play() {
+    public void run() {
         try {
-            final CarNames carNames = CarNames.from(racingView.readCarNames());
-            final int playingCount = racingView.readPlayingCount();
-
-            final Race race = Race.of(carNames, movementStrategy);
-            final GameResult gameResult = race.progress(playingCount);
-
-            racingView.printGameResult(gameResult);
-
+            play();
         } catch (final IllegalArgumentException e) {
             racingView.printBusinessExceptionMessage(e.getMessage());
-
         } catch (final Exception e) {
             racingView.printUnexpectedExceptionMessage();
         }
+    }
+
+    private void play() {
+        final CarNames carNames = CarNames.from(racingView.readCarNames());
+        final Cars cars = Cars.from(carNames);
+        final int playingCount = racingView.readPlayingCount();
+
+        final Race race = new Race();
+        final MovementStrategy movementStrategy = RacingCarConfig.movementStrategy();
+        final GameResult gameResult = race.progress(cars, playingCount, movementStrategy);
+
+        racingView.printGameResult(gameResult);
     }
 }

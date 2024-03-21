@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import racingcar.domain.CarNames;
 import racingcar.domain.Cars;
 import racingcar.domain.MovementStrategy;
 import racingcar.vo.CarResult;
@@ -18,18 +17,11 @@ public class Race {
     private static final int MINIMUM_PLAYING_COUNT = 1;
     private static final int START_ROUND = 1;
 
-    private final Cars cars;
-    private final MovementStrategy movementStrategy;
-
-    private Race(final Cars racingCars, final MovementStrategy movementStrategy) {
-        this.cars = racingCars;
-        this.movementStrategy = movementStrategy;
-    }
-
-    public GameResult progress(final int playingCount) {
+    public GameResult progress(final Cars cars, final int playingCount, final MovementStrategy movementStrategy) {
         validatePlayingCountIsInRange(playingCount);
+        final List<RoundResult> roundResults = runAllRounds(cars, playingCount, movementStrategy);
 
-        return new GameResult(runAllRounds(playingCount), this.cars.winnerNames());
+        return new GameResult(roundResults, cars.winnerNames());
     }
 
     private static void validatePlayingCountIsInRange(final int playingCount) {
@@ -42,9 +34,13 @@ public class Race {
         return playingCount < MINIMUM_PLAYING_COUNT;
     }
 
-    private List<RoundResult> runAllRounds(final int playingCount) {
+    private List<RoundResult> runAllRounds(
+            final Cars cars,
+            final int playingCount,
+            final MovementStrategy movementStrategy
+    ) {
         return IntStream.range(START_ROUND, endRound(playingCount))
-                .mapToObj(this::runSingleRound)
+                .mapToObj(round -> runSingleRound(round, cars, movementStrategy))
                 .collect(Collectors.toList());
     }
 
@@ -52,13 +48,9 @@ public class Race {
         return START_ROUND + playingCount;
     }
 
-    private RoundResult runSingleRound(final int round) {
-        this.cars.moveForwardOrStop(this.movementStrategy);
+    private RoundResult runSingleRound(final int round, final Cars cars, final MovementStrategy movementStrategy) {
+        cars.moveForwardOrStop(movementStrategy);
 
-        return new RoundResult(round, CarResult.fromCars(this.cars));
-    }
-
-    public static Race of(final CarNames carNames, final MovementStrategy movementStrategy) {
-        return new Race(Cars.from(carNames), movementStrategy);
+        return new RoundResult(round, CarResult.fromCars(cars));
     }
 }

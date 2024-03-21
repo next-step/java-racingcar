@@ -3,10 +3,14 @@ package racingcar.config;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import racingcar.controller.RacingGame;
+import racingcar.domain.MovementStrategy;
 import racingcar.domain.movement.BasicRule;
 import racingcar.domain.movement.NumberGenerator;
 import racingcar.domain.movement.RandomNumberGenerator;
 import racingcar.domain.movement.Rule;
+import racingcar.view.RacingScreen;
+import racingcar.view.RacingView;
 import racingcar.view.io.Input;
 import racingcar.view.io.Output;
 import racingcar.view.io.console.ConsoleInput;
@@ -21,6 +25,15 @@ public final class RacingCarConfig {
     private RacingCarConfig() {
     }
 
+    public static RacingGame racingGame() {
+        return (RacingGame)container.computeIfAbsent(RacingGame.class, k -> new RacingGame(racingView()));
+    }
+
+    public static RacingView racingView() {
+        return (RacingView)container.computeIfAbsent(RacingView.class,
+                k -> new RacingScreen(inputView(), outputView(), resultFormatter()));
+    }
+
     public static Input inputView() {
         return (Input)container.computeIfAbsent(Input.class, k -> new ConsoleInput());
     }
@@ -31,6 +44,11 @@ public final class RacingCarConfig {
 
     public static ResultFormatter resultFormatter() {
         return (ResultFormatter)container.computeIfAbsent(ResultFormatter.class, k -> new ConsoleResultFormatter());
+    }
+
+    public static MovementStrategy movementStrategy() {
+        return (MovementStrategy)container.computeIfAbsent(MovementStrategy.class,
+                k -> new MovementStrategy(rule(), numberGenerator()));
     }
 
     public static Rule rule() {
