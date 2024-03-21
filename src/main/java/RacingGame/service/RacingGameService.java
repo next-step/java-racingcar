@@ -18,18 +18,6 @@ public class RacingGameService {
         this.movableStrategy = movableStrategy;
     }
 
-    public Record play(int carCount, int stageCount) {
-        CarsManager carsManager = CarsManager.withCarCount(carCount);
-        Record record = new Record();
-
-        for (int i = 0; i < stageCount; i++) {
-            progressStage(carsManager);
-            record.addStage(carsManager);
-        }
-
-        return record;
-    }
-
     private void progressStage(CarsManager carsManager) {
         carsManager.tryMoveCars(movableStrategy);
     }
