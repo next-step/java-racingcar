@@ -60,12 +60,19 @@ public class CarGroup {
         }
     }
 
+    /*
+    * Indent 제한에 맞추기 위해 WinnerNames를 구하는 함수를
+    * 아래와 같이 쪼개게 되었는데 좋은 코드는 아닌 거 같습니다.
+    * addCarToListIfThisPositionIsMatch의 매개변수가 3개나 되고,
+    * 오로지 findWinners 함수에서만 쓰이기 때문입니다.
+    * 하지만 이외의 방법이 떠오르지 않아 그냥 push하였습니다.
+     */
     public void addCarToListIfThisPositionIsMatch(Car car, int position, List<String> winnerNames) {
         if (car.isMatch(position)) {
             winnerNames.add(car.name());
         }
     }
-    
+
     public List<String> findWinners() {
         int maxPosition = 0;
         for (Car car : carGroup) {
