@@ -2,6 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static racing.InputView.inputCarCount;
 import static racing.InputView.inputTryCount;
@@ -10,6 +11,7 @@ import static racing.ResultView.printResultMessage;
 
 public class RacingMain {
     public static void main(String[] args) {
+
         int carCount = inputCarCount();
         int tryCount = inputTryCount();
         List<Car> cars = new ArrayList<>();
@@ -27,11 +29,11 @@ public class RacingMain {
         }
     }
 
-
-
     private static void carMove(List<Car> cars) {
+        final int RANDOM_MAX = 10;
+
         for (Car  car : cars) {
-            car.move();
+            car.move(new Random().nextInt(RANDOM_MAX));
         }
     }
 }

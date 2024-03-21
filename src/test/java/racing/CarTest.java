@@ -9,8 +9,15 @@ public class CarTest {
     void move() {
         Car car = new Car();
 
+        car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
 
-        car.move();
+    @Test
+    void stop() {
+        Car car = new Car();
+
+        car.move(3);
+        assertThat(car.getPosition()).isZero();
     }
 }
