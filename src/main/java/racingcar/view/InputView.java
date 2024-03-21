@@ -8,15 +8,10 @@ import racingcar.domain.Car;
 
 public class InputView {
 	Scanner scanner = new Scanner(System.in);
-	Random random = new Random();
 
-	public void inputCarNumber(List<Car> carList) {
+	public int inputCarNumber(List<Car> carList) {
 		System.out.println("How many cars?");
-		int carNumber = scanner.nextInt();
-		for (int i = 0; i < carNumber; i++) {
-			Car car = new Car();
-			carList.add(car);
-		}
+		return scanner.nextInt();
 	}
 
 	public int inputTrialNumber() {
@@ -24,10 +19,4 @@ public class InputView {
 		return scanner.nextInt();
 	}
 
-	public void moveCars(List<Car> carList) {
-		for (Car car : carList) {
-			int randomNum = random.nextInt(10);
-			car.moveForward(randomNum);
-		}
-	}
 }

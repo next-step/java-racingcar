@@ -1,7 +1,6 @@
-package step3;
+package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
-import static racingcar.domain.Car.*;
 
 import java.util.ArrayList;
 import java.util.List;
