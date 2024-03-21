@@ -30,4 +30,12 @@ public class CarGroup {
             .max(Car::compareTo)
             .orElseThrow(NoSuchElementException::new);
     }
+
+    public CarNames findCarNames(Car winningCar) {
+        List<CarName> carNames = carGroup.stream()
+            .filter(car -> car.isSameMoveDistance(winningCar.getMoveDistance()))
+            .map(Car::getCarName)
+            .collect(Collectors.toList());
+        return new CarNames(carNames);
+    }
 }

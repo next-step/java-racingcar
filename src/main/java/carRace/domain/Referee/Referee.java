@@ -14,10 +14,6 @@ public class Referee {
     }
 
     private CarNames findCarNameWithWinningCar(final CarGroup carGroup, final Car winningCar){
-        List<CarName> carNames = carGroup.getCarGroup().stream()
-            .filter(car -> car.isSameMoveDistance(winningCar.getMoveDistance()))
-            .map(Car::getCarName)
-            .collect(Collectors.toList());
-        return new CarNames(carNames);
+        return carGroup.findCarNames(winningCar);
     }
 }
