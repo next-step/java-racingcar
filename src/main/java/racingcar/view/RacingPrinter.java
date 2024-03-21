@@ -8,5 +8,7 @@ public interface RacingPrinter {
 
     void printBusinessExceptionMessage(final String message);
 
+    void printServerExceptionMessage(final String message);
+
     void printUnexpectedExceptionMessage();
 }

@@ -25,6 +25,9 @@ public class RacingGame {
         } catch (final IllegalArgumentException e) {
             racingView.printBusinessExceptionMessage(e.getMessage());
 
+        } catch (final IllegalStateException e) {
+            racingView.printServerExceptionMessage(e.getMessage());
+
         } catch (final Exception e) {
             racingView.printUnexpectedExceptionMessage();
         }

@@ -1,6 +1,8 @@
 package racingcar.domain.cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.config.RacingCarException.CARS_EMPTY;
 
 import java.util.List;
 
@@ -44,6 +46,16 @@ class CarsTest {
         assertThat(winners)
                 .hasSize(2)
                 .containsOnly(winner1, winner2);
+    }
+
+    @Test
+    @DisplayName("자동차 목록이 비어있는 경우, 우승자의 위치를 찾는 과정에서 예외를 던진다.")
+    void winners_EmptyCars_Exception() {
+        final Cars emptyCars = new Cars(List.of());
+
+        assertThatThrownBy(emptyCars::winners)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage(CARS_EMPTY.message());
     }
 
     @Test
