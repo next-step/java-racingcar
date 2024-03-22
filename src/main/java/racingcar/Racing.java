@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static racingcar.view.ResultView.showResult;
+
 public class Racing {
     private int numberOfCar;
     private int times;
     private List<Car> carList;
-    private ResultView resultView;
 
     public Racing(int numberOfCar, int times) {
         this.numberOfCar = numberOfCar;
@@ -19,12 +20,11 @@ public class Racing {
         for (int i = 0; i < numberOfCar; i++) {
             carList.add(new Car());
         }
-        resultView = new ResultView();
     }
 
     public void start() {
         for (int i = 0; i < times; i++) {
-            resultView.showResult(i, carList);
+            showResult(i, carList);
             run();
         }
     }

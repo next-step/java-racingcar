@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ResultView {
 
-    public void showResult(int times, List<Car> carList) {
+    public static void showResult(int times, List<Car> carList) {
         if (times == 0) {
             System.out.println("\n실행 결과");
         }
@@ -18,7 +18,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public String printLocation(int location) {
+    public static String printLocation(int location) {
         String locationMark = "-";
         while (location > 1) {
             locationMark += "-";
