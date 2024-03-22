@@ -11,7 +11,7 @@ public class Car {
     }
 
     public int getLocation() {
-        return location.getLocation();
+        return location.value();
     }
 
     public Location moveForward() throws CarLocationException {

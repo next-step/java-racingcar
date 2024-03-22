@@ -1,6 +1,9 @@
 package ui;
 
+import racing.Car;
 import racing.RacingCars;
+
+import java.util.List;
 
 public class ResultView {
 
@@ -10,15 +13,17 @@ public class ResultView {
             System.out.println("실행 결과");
         }
 
-        for (int i = 0; i < racingCars.getCarList().size(); i++) {
-            showCarLocation(racingCars.getCarList().get(i).getLocation());
+        List<Car> racedCarList = racingCars.getCarList();
+
+        for (int i = 0; i < racedCarList.size(); i++) {
+            showCarLocation(racedCarList.get(i));
             System.out.println();
         }
         System.out.println();
     }
 
-    private static void showCarLocation(Integer location) {
-        for (int i = 0; i < location; i++) {
+    private static void showCarLocation(Car car) {
+        for (int i = 0; i < car.getLocation(); i++) {
             System.out.print("-");
         }
     }

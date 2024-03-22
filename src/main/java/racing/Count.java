@@ -8,12 +8,8 @@ public class Count {
         this.count = count;
     }
 
-    public static Count carCount(int carCount) {
+    public static Count getInstance(int carCount) {
         return new Count(carCount);
-    }
-
-    public static Count tryCount(int tryCount) {
-        return new Count(tryCount);
     }
 
     public int getValue() {

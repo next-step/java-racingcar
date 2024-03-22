@@ -14,7 +14,7 @@ public class Location {
         this.location = location;
     }
 
-    public Integer getLocation() {
+    public Integer value() {
         return this.location;
     }
 
