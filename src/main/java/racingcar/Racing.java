@@ -1,26 +1,27 @@
 package racingcar;
 
 public class Racing {
-    InputView inputView;
-    OutputView outputView;
-    CarGroup carGroup;
+
+    private InputView inputView;
+    private OutputView outputView;
+    private CarGroup carGroup;
 
     public Racing() {
         inputView = new InputView();
         outputView = new OutputView();
-        carGroup = new CarGroup(inputView.numberOfCar());
+        carGroup = new CarGroup(inputView.names());
     }
 
     public void race() {
         int opportunity = inputView.opportunity();
-        for (int i = 0; i < opportunity; i++) {
-            outputView.printCarGroupPosition(carGroup);
-            carGroup.updateCarArrayPosition();
-        }
-    }
+        outputView.printCarGroupPosition(carGroup);
 
-    public static void main(String[] args) {
-        Racing racing = new Racing();
-        racing.race();
+
+        for (int i = 0; i < (opportunity - 1); i++) {
+            carGroup.updateCarGroupPosition();
+            outputView.printCarGroupPosition(carGroup);
+        }
+
+        outputView.printWinner(carGroup.findWinners());
     }
 }
