@@ -31,10 +31,16 @@ public class Racing {
 
     public void run() {
         for (int i = 0; i < numberOfCar; i++) {
-            int condition = new Random().nextInt(10);
-            if (condition >= 4) {
-                carList.get(i).move();
-            }
+            moveCar(i);
         }
     }
+
+    private void moveCar(int i) {
+        int condition = new Random().nextInt(10);
+        if (condition >= 4) {
+            carList.get(i).move();
+        }
+    }
+
+
 }
