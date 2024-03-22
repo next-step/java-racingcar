@@ -2,14 +2,13 @@ package calculator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.commons.lang3.StringUtils;
 
 public class Calculator {
-	private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
+	private static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.)\n(.*)");
 	private static final String DELIMITER = ",|:";
 
 	public static int calculate(String text) {
-		if (StringUtils.isBlank(text)) {
+		if (text == null || text.isBlank()) {
 			return 0;
 		}
 		String[] values = splitValues(text);
@@ -19,7 +18,7 @@ public class Calculator {
 	private static String[] splitValues(String text) {
 		String[] values;
 
-		Matcher matcher = PATTERN.matcher(text);
+		Matcher matcher = CUSTOM_DELIMITER.matcher(text);
 		if (matcher.find()){
 			String customDelimiter = matcher.group(1);
 			values  = matcher.group(2).split(customDelimiter);
