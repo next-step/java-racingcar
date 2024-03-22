@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ public class RacingCarGameService {
 
     private static final RacingCarGameService instance = new RacingCarGameService();
 
+    private static InputView inputView = new InputView();
+    private static ResultView resultView = new ResultView();
+
     private RacingCarGameService() {
 
     }
@@ -20,16 +24,19 @@ public class RacingCarGameService {
         return instance;
     }
 
-    public void gameLogic(String[] nameOfCars, int numberOfAttempt) {
+    public void gameLogic() {
+        String[] nameOfCars = inputView.inputNamesOfCar();
+        int numberOfAttempt = inputView.inputNumberOfAttempt();
+
         Cars cars = new Cars(initCars(nameOfCars));
 
         for (int i = 0; i < numberOfAttempt; i++) {
             cars.moveCars();
-            ResultView.getInstance().printMove(cars);
+            resultView.printMove(cars);
         }
 
         List<Car> winners = cars.getWinnerCars();
-        ResultView.getInstance().printRacingcarWinners(winners);
+        resultView.printRacingcarWinners(winners);
     }
 
     public List<Car> initCars(String[] names) {

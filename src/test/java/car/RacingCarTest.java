@@ -21,11 +21,4 @@ public class RacingCarTest {
         IntStream.range(0, names.length).forEach(i -> assertThat(cars.get(i).getName()).isEqualTo(names[i]));
     }
 
-    @Test
-    @DisplayName("게임 로직 정상실행 통합 테스트")
-    public void testGameLogic() {
-        String[] names = TEST_CAR_NAMES.split(",");
-        RacingCarGameService.getInstance().gameLogic(names, 5);
-    }
-
 }
