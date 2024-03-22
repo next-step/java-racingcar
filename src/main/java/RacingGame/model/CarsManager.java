@@ -10,7 +10,7 @@ public class CarsManager {
     private final List<Car> cars;
 
     public CarsManager() {
-        this.cars = new ArrayList<>();
+        this(new ArrayList<Car>());
     }
 
     public CarsManager(List<Car> cars) {
