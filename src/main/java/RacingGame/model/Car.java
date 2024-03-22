@@ -43,6 +43,6 @@ public class Car {
     }
 
     public boolean isPositionAt(int position) {
-        return this.position.equals(position);
+        return this.position.isValueEquals(position);
     }
 }

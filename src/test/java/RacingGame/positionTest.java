@@ -29,6 +29,6 @@ public class positionTest {
     void equalPosition(int number) {
         Position position = Position.valueOf(number);
 
-        Assertions.assertThat(position.equals(number)).isTrue();
+        Assertions.assertThat(position.isValueEquals(number)).isTrue();
     }
 }
