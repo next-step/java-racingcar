@@ -10,10 +10,19 @@ public class ResultView {
         }
 
         for (Car car : carList) {
-            System.out.println(car.getLocation());
+            System.out.println(printLocation(car.getLocation()));
         }
 
         System.out.println();
+    }
+
+    public String printLocation(int location) {
+        String locationMark = "-";
+        while (location > 1) {
+            locationMark += "-";
+            location--;
+        }
+        return locationMark;
     }
 
 }
