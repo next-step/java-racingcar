@@ -3,6 +3,7 @@ package RacingGame.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -55,7 +56,7 @@ public class CarsManager {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .getAsInt();
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public List<String> winnerNames() {
