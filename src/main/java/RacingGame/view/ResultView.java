@@ -18,13 +18,17 @@ public class ResultView {
     }
 
     public static void stageStatus(Map<String, Integer> play) {
+        StringBuilder sb = new StringBuilder();
+
         for (Map.Entry<String, Integer> entry : play.entrySet()) {
             String carName = entry.getKey();
             int carPosition = entry.getValue();
-            System.out.println(String.format("%s : %s", carName, makeHypens(carPosition)));
+            sb.append(String.format("%s : %s", carName, makeHypens(carPosition)));
+            sb.append(System.lineSeparator());
         }
 
-        System.out.println();
+        sb.append(System.lineSeparator());
+        System.out.println(sb);
     }
 
     private static String makeHypens(int count) {
