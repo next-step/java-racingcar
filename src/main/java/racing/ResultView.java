@@ -4,6 +4,16 @@ package racing;
 import java.util.List;
 
 public class ResultView {
+
+    private ResultView() {
+        throw new IllegalStateException("static method class");
+    }
+
+    static void printResultMessage() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
     static void printResult(List<Car> cars) {
         for (Car car : cars) {
             printCarResult(car);
