@@ -18,7 +18,7 @@ public class Location {
         return this.location;
     }
 
-    public Location moveForward() throws CarLocationException {
+    public Location plusOne() throws CarLocationException {
         Integer newLocation = this.location + 1;
         validate(newLocation);
         return new Location(newLocation);

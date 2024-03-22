@@ -1,5 +1,7 @@
 package racing;
 
+import exception.CarLocationException;
+
 public class Car {
 
     private Location location;
@@ -8,12 +10,12 @@ public class Car {
         this.location = location;
     }
 
-    public Location getCarLocationInfo() {
-        return this.location;
+    public int getLocation() {
+        return location.getLocation();
     }
 
-    public int getLocation() {
-        return this.location.getLocation();
+    public Location moveForward() throws CarLocationException {
+        return location.plusOne();
     }
 
 }

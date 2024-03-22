@@ -24,14 +24,14 @@ public class RacingCars {
 
     public void startRace() throws CarLocationException {
         for (int i = 0; i < this.carList.size(); i++) {
-            oneCarRace(i);
+            oneCarRace(i, carList.get(i));
         }
     }
 
-    private void oneCarRace(int idx) throws CarLocationException {
+    private void oneCarRace(int idx, Car car) throws CarLocationException {
         Integer randomNumber = RandomNumberGenerator.getRandomNumber();
         if (RacingValidator.isMovable(randomNumber)) {
-            Location newCarLocation = carList.get(idx).getCarLocationInfo().moveForward();
+            Location newCarLocation = car.moveForward();
             carList.remove(idx);
             carList.add(idx, new Car(newCarLocation));
         }
