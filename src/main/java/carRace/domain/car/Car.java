@@ -2,14 +2,18 @@ package carRace.domain.car;
 
 import carRace.domain.randomNumber.RandomNumber;
 import carRace.domain.randomNumber.RandomNumberHistory;
+import java.util.Comparator;
+import java.util.List;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final CarName carName;
 
     private final MoveDistance moveDistance;
 
-    private final RandomNumberHistory randomNumberHistory = new RandomNumberHistory();
+    private final RandomNumberHistory randomNumberHistory;
+
+    private static final Comparator<Car> COMPARATOR = Comparator.comparingInt(Car::getMoveDistance);
 
     private static final int RECORD_STANDARD_NUMBER = 4;
 
@@ -20,18 +24,25 @@ public class Car {
     public Car(final CarName carName, MoveDistance moveDistance) {
         this.carName = carName;
         this.moveDistance = moveDistance;
+        randomNumberHistory = new RandomNumberHistory();
+    }
+
+    public Car(Car other) {
+        this.carName = other.carName;
+        this.moveDistance = other.moveDistance;
+        this.randomNumberHistory = other.randomNumberHistory;
     }
 
     public CarName getCarName() {
         return carName;
     }
 
-    public MoveDistance getMoveDistance() {
-        return moveDistance;
+    public int getMoveDistance() {
+        return moveDistance.getMoveDistance();
     }
 
-    public RandomNumberHistory getRandomNumberHistory() {
-        return randomNumberHistory;
+    public List<RandomNumber> getRandomNumberHistory() {
+        return randomNumberHistory.getRandomNumbers();
     }
 
     public void move(final RandomNumber randomNumber) {
@@ -39,5 +50,14 @@ public class Car {
         if (randomNumber.getRandomNumber() >= RECORD_STANDARD_NUMBER) {
             moveDistance.plusMoveDistance();
         }
+    }
+
+    public boolean isSameMoveDistance(int moveDistance) {
+        return this.getMoveDistance() == moveDistance;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return COMPARATOR.compare(this, other);
     }
 }

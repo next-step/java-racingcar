@@ -2,7 +2,7 @@ package carRace.view;
 
 import static java.util.stream.Collectors.joining;
 
-import carRace.domain.car.CarGroups;
+import carRace.domain.car.CarGroup;
 import carRace.domain.car.CarName;
 import carRace.domain.car.CarNames;
 import java.util.stream.IntStream;
@@ -16,10 +16,10 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static void printRaceResult(CarGroups cars) {
-        cars.getCarGroups().stream().forEach(car -> {
+    public static void printRaceResult(CarGroup carGroup) {
+        carGroup.getCarGroup().stream().forEach(car -> {
             System.out.print(car.getCarName().getCarName() + COLON);
-            IntStream.range(0, car.getMoveDistance().getMoveDistance())
+            IntStream.range(0, car.getMoveDistance())
                 .forEach(count -> System.out.print(RACE_MARK));
             System.out.println();
         });

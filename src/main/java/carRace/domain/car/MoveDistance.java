@@ -15,7 +15,7 @@ public class MoveDistance implements Comparable<MoveDistance> {
     public MoveDistance(int moveDistance) {
         this.moveDistance = moveDistance;
 
-        if (moveDistance < 0){
+        if (moveDistance < 0) {
             throw new NotPositiveNumberException(
                 ErrorMessage.MOVE_DISTANCE_NOT_POSITIVE_NUMBER.getMessage());
         }
@@ -25,7 +25,7 @@ public class MoveDistance implements Comparable<MoveDistance> {
         return moveDistance;
     }
 
-    public void plusMoveDistance(){
+    public void plusMoveDistance() {
         moveDistance += 1;
     }
 
