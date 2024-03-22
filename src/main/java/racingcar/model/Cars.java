@@ -1,13 +1,14 @@
 package racingcar.model;
 
-import racingcar.RandomManager;
+import racingcar.MoveStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int MOVE_CONDITION = 3;
+    private static final int INIT_CAR_DISTANCE = 0;
 
     private List<Car> cars;
 
@@ -15,12 +16,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void moveCars() {
-        this.cars.forEach(car -> car.move(() -> isMovingForward(RandomManager.getInstance().getRandomValue())));
+    public static Cars of(List<String> names) {
+        List<Car> cars = new ArrayList<>(names.size());
+
+        for (String name : names) {
+            cars.add(new Car(name, INIT_CAR_DISTANCE));
+        }
+
+        return new Cars(cars);
     }
 
-    private boolean isMovingForward(int value) {
-        return value > MOVE_CONDITION;
+    public void moveCars(MoveStrategy strategy) {
+        this.cars.forEach(car -> car.move(strategy));
     }
 
     public List<Car> getWinnerCars() {

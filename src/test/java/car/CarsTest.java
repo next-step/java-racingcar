@@ -19,7 +19,7 @@ public class CarsTest {
                 new Car("test1", 0),
                 new Car("test2", 0)));
         List<Car> winners = cars.getWinnerCars();
-        assertThat(winners).hasSize(3);
+        assertThat(winners).isEqualTo(List.of(new Car("test0", 0), new Car("test1", 0), new Car("test2", 0)));
     }
 
     @Test
@@ -41,6 +41,7 @@ public class CarsTest {
                 new Car("test1", 3),
                 new Car("test2", 3)));
         List<Car> winners = cars.getWinnerCars();
-        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).isEqualTo(List.of(new Car("test1", 3), new Car("test2", 3)));
     }
+
 }

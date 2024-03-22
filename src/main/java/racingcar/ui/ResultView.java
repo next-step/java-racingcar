@@ -11,14 +11,8 @@ public class ResultView {
     private static final String NAME_DELIMITER = ": ";
     private static final String WINNER_DELIMITER = ", ";
 
-    private static ResultView instance = new ResultView();
-
-    private ResultView() {
+    public ResultView() {
         System.out.println("실행 결과");
-    }
-
-    public static ResultView getInstance() {
-        return instance;
     }
 
     public void printMove(Cars cars) {
