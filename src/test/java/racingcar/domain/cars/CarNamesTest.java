@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.cars;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.config.RacingCarException.CAR_NAME_DUPLICATED;

@@ -9,7 +9,6 @@ import racingcar.vo.RoundResult;
 public class ConsoleResultFormatter implements ResultFormatter {
 
     private static final String CAR_RESULT_FORMAT = "{0} {1}\n";
-    private static final String CAR_POSITION_ICON = "-";
     private static final String ROUND_TITLE = "[Round {0}]\n";
     private static final String WINNER_NOTIFICATION_FORMAT = "최종 우승 : {0}";
     private static final String WINNER_NAME_DELIMITER = ", ";
@@ -23,17 +22,15 @@ public class ConsoleResultFormatter implements ResultFormatter {
                 .forEach(roundResult -> gameResultView.append(formatRoundResult(roundResult)).append(LINE_BREAK));
 
         final String joinWinnerNames = String.join(WINNER_NAME_DELIMITER, gameResult.winnerNames());
-        final String winnerNotification = MessageFormat.format(WINNER_NOTIFICATION_FORMAT, joinWinnerNames);
-        gameResultView.append(winnerNotification);
+        gameResultView.append(MessageFormat.format(WINNER_NOTIFICATION_FORMAT, joinWinnerNames));
 
         return gameResultView.toString();
     }
 
     private String formatRoundResult(final RoundResult roundResult) {
         final StringBuilder roundResultView = new StringBuilder();
-        final String roundTitle = MessageFormat.format(ROUND_TITLE, roundResult.round());
-        roundResultView.append(roundTitle);
 
+        roundResultView.append(MessageFormat.format(ROUND_TITLE, roundResult.round()));
         roundResult.carResults()
                 .forEach(carResult -> roundResultView.append(formatCarResult(carResult)));
 
@@ -41,11 +38,6 @@ public class ConsoleResultFormatter implements ResultFormatter {
     }
 
     private String formatCarResult(final CarResult carResult) {
-        final StringBuilder carResultView = new StringBuilder();
-        final String positionIcons = CAR_POSITION_ICON.repeat(carResult.position());
-
-        carResultView.append(MessageFormat.format(CAR_RESULT_FORMAT, carResult.name(), positionIcons));
-
-        return carResultView.toString();
+        return MessageFormat.format(CAR_RESULT_FORMAT, carResult.name(), carResult.positionResult());
     }
 }

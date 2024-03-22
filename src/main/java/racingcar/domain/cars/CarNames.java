@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.cars;
 
 import static racingcar.config.RacingCarException.CAR_NAME_DUPLICATED;
 
@@ -26,7 +26,7 @@ public class CarNames {
         return Arrays.stream(carNames)
                 .map(String::trim)
                 .distinct()
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private static void validateCarNamesAreNotDuplicated(final String[] names, final List<String> uniqueNames) {

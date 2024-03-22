@@ -1,64 +1,58 @@
 package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.TestRacingCarConfig.basicRule;
-import static racingcar.TestRacingCarConfig.moveForwardNumberGenerator;
-import static racingcar.config.RacingCarException.PLAYING_COUNT_OUT_OF_RANGE;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import racingcar.domain.CarNames;
-import racingcar.domain.MovementStrategy;
+import racingcar.TestRacingCarConfig;
+import racingcar.domain.Rounds;
+import racingcar.domain.car.Car;
+import racingcar.domain.cars.Cars;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.vo.GameResult;
 
 class RaceTest {
 
-    private static MovementStrategy movementForwardStrategy;
+    private static MovementStrategy basicStopStrategy;
 
     @BeforeAll
     static void setUp() {
-        movementForwardStrategy = new MovementStrategy(basicRule(), moveForwardNumberGenerator());
+        basicStopStrategy = TestRacingCarConfig.basicStopStrategy();
     }
 
     @Test
-    @DisplayName("자동차 이름 목록을 통해 레이스를 생성한다.")
-    void of_CarNames_Race() {
-        final String[] names = {"kyle", "alex", "haley"};
-        final CarNames carNames = CarNames.from(names);
+    @DisplayName("우승자가 한 명인 자동차 경주 결과를 반환한다.")
+    void progress_SingleWinner_GameResult() {
+        final Cars cars = new Cars(
+                new Car("kyle", 2),
+                new Car("alex", 1),
+                new Car("haley", 0)
+        );
 
-        assertThat(Race.of(carNames, movementForwardStrategy))
-                .isNotNull();
-    }
-
-    @Test
-    @DisplayName("자동차 경주를 진행하면 그에 따른 경주 결과를 반환한다.")
-    void progress_GameResult_WinnerNames() {
-        final String[] names = {"kyle", "alex", "haley"};
-        final CarNames carNames = CarNames.from(names);
-        final int playingCount = 1;
-
-        final Race race = Race.of(carNames, movementForwardStrategy);
-        final GameResult result = race.progress(playingCount);
+        final Rounds rounds = Rounds.from(1);
+        final GameResult result = new Race().progress(cars, rounds, basicStopStrategy);
 
         assertThat(result.winnerNames())
-                .containsOnly(names);
+                .hasSize(1)
+                .containsOnly("kyle");
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 0})
-    @DisplayName("0 이하의 레이싱 시도 횟수만큼 경주를 하려는 경우 예외를 던진다.")
-    void progress_NegativeOrZeroPlayingCount_Exception(final int negativeOrZeroPlayingCount) {
-        final String[] names = {"kyle", "alex", "haley"};
-        final CarNames carNames = CarNames.from(names);
-        final Race race = Race.of(carNames, movementForwardStrategy);
+    @Test
+    @DisplayName("우승자가 여러 명인 자동차 경주 결과를 반환한다.")
+    void progress_MultipleWinners_GameResult() {
+        final Cars cars = new Cars(
+                new Car("kyle", 2),
+                new Car("alex", 2),
+                new Car("haley", 0)
+        );
 
-        assertThatThrownBy(() -> race.progress(negativeOrZeroPlayingCount))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(PLAYING_COUNT_OUT_OF_RANGE.message(negativeOrZeroPlayingCount));
+        final Rounds rounds = Rounds.from(1);
+        final GameResult result = new Race().progress(cars, rounds, basicStopStrategy);
+
+        assertThat(result.winnerNames())
+                .hasSize(2)
+                .containsOnly("kyle", "alex");
     }
 }

@@ -1,64 +1,38 @@
 package racingcar.service;
 
-import static racingcar.config.RacingCarException.PLAYING_COUNT_OUT_OF_RANGE;
-
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-import racingcar.domain.CarNames;
-import racingcar.domain.Cars;
-import racingcar.domain.MovementStrategy;
+import racingcar.domain.Rounds;
+import racingcar.domain.cars.Cars;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.vo.CarResult;
 import racingcar.vo.GameResult;
 import racingcar.vo.RoundResult;
 
 public class Race {
 
-    private static final int MINIMUM_PLAYING_COUNT = 1;
-    private static final int START_ROUND = 1;
+    public GameResult progress(final Cars cars, final Rounds rounds, final MovementStrategy movementStrategy) {
+        final List<RoundResult> roundResults = runAllRounds(cars, rounds, movementStrategy);
+        final Cars winners = cars.winners();
 
-    private final Cars cars;
-    private final MovementStrategy movementStrategy;
-
-    private Race(final Cars racingCars, final MovementStrategy movementStrategy) {
-        this.cars = racingCars;
-        this.movementStrategy = movementStrategy;
+        return new GameResult(roundResults, CarResult.fromCars(winners));
     }
 
-    public GameResult progress(final int playingCount) {
-        validatePlayingCountIsInRange(playingCount);
-
-        return new GameResult(runAllRounds(playingCount), this.cars.winnerNames());
+    private List<RoundResult> runAllRounds(
+            final Cars cars,
+            final Rounds rounds,
+            final MovementStrategy movementStrategy
+    ) {
+        return rounds.rounds()
+                .stream()
+                .map(round -> runSingleRound(round, cars, movementStrategy))
+                .collect(Collectors.toUnmodifiableList());
     }
 
-    private static void validatePlayingCountIsInRange(final int playingCount) {
-        if (isPlayingCountOutOfRange(playingCount)) {
-            throw new IllegalArgumentException(PLAYING_COUNT_OUT_OF_RANGE.message(playingCount));
-        }
-    }
+    private RoundResult runSingleRound(final int roundCount, final Cars cars, final MovementStrategy movementStrategy) {
+        cars.moveForwardOrStop(movementStrategy);
 
-    private static boolean isPlayingCountOutOfRange(int playingCount) {
-        return playingCount < MINIMUM_PLAYING_COUNT;
-    }
-
-    private List<RoundResult> runAllRounds(final int playingCount) {
-        return IntStream.range(START_ROUND, endRound(playingCount))
-                .mapToObj(this::runSingleRound)
-                .collect(Collectors.toList());
-    }
-
-    private int endRound(final int playingCount) {
-        return START_ROUND + playingCount;
-    }
-
-    private RoundResult runSingleRound(final int round) {
-        this.cars.moveForwardOrStop(this.movementStrategy);
-
-        return new RoundResult(round, CarResult.fromCars(this.cars));
-    }
-
-    public static Race of(final CarNames carNames, final MovementStrategy movementStrategy) {
-        return new Race(Cars.from(carNames), movementStrategy);
+        return new RoundResult(roundCount, CarResult.fromCars(cars));
     }
 }

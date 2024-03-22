@@ -62,6 +62,11 @@ public class RacingScreen implements RacingView {
     }
 
     @Override
+    public void printServerExceptionMessage(final String message) {
+        output.printOneLine(message);
+    }
+
+    @Override
     public void printUnexpectedExceptionMessage() {
         output.printOneLine(UNEXPECTED_EXCEPTION.message());
     }

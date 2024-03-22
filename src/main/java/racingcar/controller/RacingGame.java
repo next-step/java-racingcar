@@ -1,7 +1,10 @@
 package racingcar.controller;
 
-import racingcar.domain.CarNames;
-import racingcar.domain.MovementStrategy;
+import racingcar.config.RacingCarConfig;
+import racingcar.domain.Rounds;
+import racingcar.domain.cars.CarNames;
+import racingcar.domain.cars.Cars;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.service.Race;
 import racingcar.view.RacingView;
 import racingcar.vo.GameResult;
@@ -9,28 +12,36 @@ import racingcar.vo.GameResult;
 public class RacingGame {
 
     private final RacingView racingView;
-    private final MovementStrategy movementStrategy;
 
-    public RacingGame(final RacingView racingView, final MovementStrategy movementStrategy) {
+    public RacingGame(final RacingView racingView) {
         this.racingView = racingView;
-        this.movementStrategy = movementStrategy;
     }
 
-    public void play() {
+    public void run() {
         try {
-            final CarNames carNames = CarNames.from(racingView.readCarNames());
-            final int playingCount = racingView.readPlayingCount();
-
-            final Race race = Race.of(carNames, movementStrategy);
-            final GameResult gameResult = race.progress(playingCount);
-
+            final GameResult gameResult = playGame();
             racingView.printGameResult(gameResult);
 
         } catch (final IllegalArgumentException e) {
             racingView.printBusinessExceptionMessage(e.getMessage());
 
+        } catch (final IllegalStateException e) {
+            racingView.printServerExceptionMessage(e.getMessage());
+
         } catch (final Exception e) {
             racingView.printUnexpectedExceptionMessage();
         }
+    }
+
+    private GameResult playGame() {
+        final CarNames carNames = CarNames.from(racingView.readCarNames());
+        final Cars cars = Cars.from(carNames);
+
+        final int playingCount = racingView.readPlayingCount();
+        final Rounds rounds = Rounds.from(playingCount);
+
+        final MovementStrategy movementStrategy = RacingCarConfig.movementStrategy();
+
+        return new Race().progress(cars, rounds, movementStrategy);
     }
 }

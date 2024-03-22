@@ -3,10 +3,14 @@ package racingcar.config;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import racingcar.controller.RacingGame;
 import racingcar.domain.movement.BasicRule;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.domain.movement.NumberGenerator;
 import racingcar.domain.movement.RandomNumberGenerator;
 import racingcar.domain.movement.Rule;
+import racingcar.view.RacingScreen;
+import racingcar.view.RacingView;
 import racingcar.view.io.Input;
 import racingcar.view.io.Output;
 import racingcar.view.io.console.ConsoleInput;
@@ -21,23 +25,36 @@ public final class RacingCarConfig {
     private RacingCarConfig() {
     }
 
-    public static Input inputView() {
-        return (Input)container.computeIfAbsent(Input.class, k -> new ConsoleInput());
+    public static RacingGame racingGame() {
+        return (RacingGame)container.computeIfAbsent(RacingGame.class, k -> new RacingGame(racingView()));
     }
 
-    public static Output outputView() {
-        return (Output)container.computeIfAbsent(Output.class, k -> new ConsoleOutput());
+    private static RacingView racingView() {
+        return new RacingScreen(inputView(), outputView(), resultFormatter());
     }
 
-    public static ResultFormatter resultFormatter() {
-        return (ResultFormatter)container.computeIfAbsent(ResultFormatter.class, k -> new ConsoleResultFormatter());
+    private static Input inputView() {
+        return new ConsoleInput();
     }
 
-    public static Rule rule() {
-        return (Rule)container.computeIfAbsent(Rule.class, k -> new BasicRule());
+    private static Output outputView() {
+        return new ConsoleOutput();
     }
 
-    public static NumberGenerator numberGenerator() {
-        return (NumberGenerator)container.computeIfAbsent(NumberGenerator.class, k -> new RandomNumberGenerator());
+    private static ResultFormatter resultFormatter() {
+        return new ConsoleResultFormatter();
+    }
+
+    public static MovementStrategy movementStrategy() {
+        return (MovementStrategy)container.computeIfAbsent(MovementStrategy.class,
+                k -> new MovementStrategy(rule(), numberGenerator()));
+    }
+
+    private static Rule rule() {
+        return new BasicRule();
+    }
+
+    private static NumberGenerator numberGenerator() {
+        return new RandomNumberGenerator();
     }
 }
