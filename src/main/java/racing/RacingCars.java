@@ -12,10 +12,11 @@ import java.util.stream.Collectors;
 public class RacingCars {
     private List<Car> carList;
 
-    public RacingCars(int carCount) {
+    public RacingCars(String carNames) {
+        String[] carNameArr = carNames.split(",");
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car(new Location(0)));
+        for (int i = 0; i < carNameArr.length; i++) {
+            carList.add(new Car(carNameArr[i], new Location(0)));
         }
         this.carList = carList;
     }
@@ -35,7 +36,7 @@ public class RacingCars {
         if (RacingValidator.isMovable(randomNumber)) {
             Location newCarLocation = car.moveForward();
             carList.remove(idx);
-            carList.add(idx, new Car(newCarLocation));
+            carList.add(idx, new Car(car.getName(), newCarLocation));
         }
     }
 

@@ -6,10 +6,10 @@ import ui.InputView;
 public class RacingApplication {
 
     public static void main(String[] args) {
-        Count carCount = Count.getInstance(InputView.getCarCount());
+        String carNames = InputView.getCarNames();
         Count tryCount = Count.getInstance(InputView.getTryCount());
         try {
-            RacingService.race(carCount, tryCount);
+            RacingService.race(carNames, tryCount);
         } catch (CarLocationException e) {
             throw new RuntimeException(e);
         }

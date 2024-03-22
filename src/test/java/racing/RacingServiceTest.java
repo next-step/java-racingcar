@@ -19,7 +19,7 @@ public class RacingServiceTest {
     @Test
     @DisplayName("자동차가 1칸 앞으로 전진한다.")
     void 자동차_전진_테스트() throws CarLocationException {
-        Car car = new Car(new Location(0));
+        Car car = new Car("hbae", new Location(0));
         Location newLocation = car.moveForward();
         assertThat(newLocation.value()).isEqualTo(1);
     }
