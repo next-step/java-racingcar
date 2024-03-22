@@ -27,7 +27,7 @@ public class CarsManager {
 
     public static CarsManager withCarNames(List<String> carNames) {
         List<Car> cars = carNames.stream()
-                .map(carname -> new Car(carname))
+                .map(Car::new)
                 .collect(Collectors.toList());
 
         return new CarsManager(cars);
