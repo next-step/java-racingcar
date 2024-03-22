@@ -19,7 +19,7 @@ public class Position {
         this.number++;
     }
 
-    public boolean equals(int number) {
+    public boolean isValueEquals(int number) {
         return this.number == number;
     }
 
