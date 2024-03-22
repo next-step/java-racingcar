@@ -1,6 +1,7 @@
 package RacingGame;
 
 import RacingGame.Domain.Car;
+import RacingGame.Domain.CarManager;
 import RacingGame.View.InputView;
 import RacingGame.View.OutputView;
 
@@ -16,20 +17,9 @@ public class RacingMain {
         int carNum = inputView.InputCarNumber();
         int trialNum = inputView.InputTrialNumber();
 
-        for (int i = 0; i < carNum; i++) {
-            Car car = new Car();
-            carList.add(car);
-        }
-
-        Random random = new Random();
+        CarManager carManger = new CarManager(carNum, trialNum);
+        carManger.MoveForwardCars(trialNum);
         OutputView outputView = new OutputView();
-        int val;
-        for (int i = 0; i < trialNum; i++) {
-            for (int j = 0; j < carNum; j++) {
-                val = random.nextInt(10);
-                carList.get(j).MoveForward(val);
-            }
-            outputView.PrintResult(carList);
-        }
+        outputView.PrintResult(carManger.GetCarHistory(), carNum, trialNum);
     }
 }

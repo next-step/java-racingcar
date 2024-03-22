@@ -10,8 +10,15 @@ public class OutputView {
         System.out.println("Result");
     }
 
-    public void PrintResult(List<Car> carList) {
-        printAllCars(carList);
+    public void PrintResult(int[][] carList, int carNum, int trialNum) {
+        for (int time = 0; time < trialNum; time++) {
+            for (int car = 0; car < carNum; car++) {
+                for (int cnt = 0; cnt < carList[car][time]; cnt++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+            }
+        }
     }
 
     private void printAllCars(List<Car> carList) {
@@ -27,4 +34,6 @@ public class OutputView {
         }
         System.out.println();
     }
+
+
 }
