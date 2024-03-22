@@ -5,16 +5,16 @@ import racingcar.view.ResultView;
 import java.util.Random;
 
 public class Racing {
-    int carNum;
-    int times;
-    Car[] carArr;
-    ResultView resultView;
+    private int numberOfCar;
+    private int times;
+    private Car[] carArr;
+    private ResultView resultView;
 
-    public Racing(int carNum, int times) {
-        this.carNum = carNum;
+    public Racing(int numberOfCar, int times) {
+        this.numberOfCar = numberOfCar;
         this.times = times;
-        carArr = new Car[carNum];
-        for (int i = 0; i < carNum; i++) {
+        carArr = new Car[numberOfCar];
+        for (int i = 0; i < numberOfCar; i++) {
             carArr[i] = new Car();
         }
         resultView = new ResultView();
@@ -28,7 +28,7 @@ public class Racing {
     }
 
     public void run() {
-        for (int i = 0; i < carNum; i++) {
+        for (int i = 0; i < numberOfCar; i++) {
             int condition = new Random().nextInt(10);
             if (condition >= 4) {
                 carArr[i].move();
