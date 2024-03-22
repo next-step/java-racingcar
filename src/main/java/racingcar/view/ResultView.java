@@ -2,9 +2,11 @@ package racingcar.view;
 
 import racingcar.Car;
 
+import java.util.List;
+
 public class ResultView {
 
-    public void showResult(int times, Car[] carList) {
+    public void showResult(int times, List<Car> carList) {
         if (times == 0) {
             System.out.println("\n실행 결과");
         }
