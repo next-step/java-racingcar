@@ -5,13 +5,11 @@ import racingcar.model.Cars;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGameService {
-    private static final int INIT_CAR_DISTANCE = 0;
-
     private static final RacingCarGameService instance = new RacingCarGameService();
+    private static final int MOVE_CONDITION = 3;
 
     private static InputView inputView = new InputView();
     private static ResultView resultView = new ResultView();
@@ -25,28 +23,18 @@ public class RacingCarGameService {
     }
 
     public void gameLogic() {
-        String[] nameOfCars = inputView.inputNamesOfCar();
+        List<String> nameOfCars = inputView.inputNamesOfCar();
         int numberOfAttempt = inputView.inputNumberOfAttempt();
 
-        Cars cars = new Cars(initCars(nameOfCars));
+        Cars cars = Cars.of(nameOfCars);
 
         for (int i = 0; i < numberOfAttempt; i++) {
-            cars.moveCars();
+            cars.moveCars(() -> RandomManager.getInstance().getRandomValue() > MOVE_CONDITION);
             resultView.printMove(cars);
         }
 
         List<Car> winners = cars.getWinnerCars();
         resultView.printRacingcarWinners(winners);
-    }
-
-    public List<Car> initCars(String[] names) {
-        List<Car> cars = new ArrayList<>(names.length);
-
-        for (String name : names) {
-            cars.add(new Car(name, INIT_CAR_DISTANCE));
-        }
-
-        return cars;
     }
 
 }
