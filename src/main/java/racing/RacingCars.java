@@ -1,11 +1,13 @@
 package racing;
 
 import exception.CarLocationException;
+import util.NumberUtil;
 import util.RacingValidator;
 import util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<Car> carList;
@@ -35,5 +37,10 @@ public class RacingCars {
             carList.remove(idx);
             carList.add(idx, new Car(newCarLocation));
         }
+    }
+
+    public List<Car> getWinCarList() {
+        int winnerLocation = NumberUtil.getMaxNumberOfList(carList.stream().map(Car::getLocation).collect(Collectors.toList()));
+        return carList.stream().filter(car -> car.getLocation() == winnerLocation).collect(Collectors.toList());
     }
 }
