@@ -32,12 +32,12 @@ public class Car {
         return this.position.getNumber();
     }
 
-    public Position getMaxPosition(Position other) {
-        return this.position.maxPosition(other);
+    public Position getBiggerPosition(Position other) {
+        return this.position.biggerPosition(other);
     }
 
-    public boolean isWinner(Position maxPosition) {
-        return this.position.equals(maxPosition);
+    public boolean isSamePosition(Position position) {
+        return this.position.equals(position);
     }
 
     @Override
