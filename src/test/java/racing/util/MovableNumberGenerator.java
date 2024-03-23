@@ -1,4 +1,4 @@
-package step3.util;
+package racing.util;
 
 public class MovableNumberGenerator implements NumberGenerator {
 
