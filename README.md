@@ -10,25 +10,37 @@
 
 step 3
 * feature/race-unit-test
-    * generate unit test of requirements
+  * generate unit test of requirements
 * feature/car-racing
-    * generate Car as object
-    * complete the car racing application
-    * refactored and modified the unit test code
+  * generate Car as object
+  * complete the car racing application
+  * refactored and modified the unit test code
 * refactor/step2
-    * put checkInputAvailable() inside the main logic (b/c never used except test code)
-    * refactored codes
-        * put Scanner SCAN as a Constant
-        * modified the Boolean method
-        * modified public methods to private should not be public
-            * modified the test codes as well with using reflection
-* refactor/step3
-    * modified public methods to private should not be public (**modified like the step2 modified**)
-        * modified the test codes as well with using reflection
-        * delete the useless code in step2 test code
+  * put checkInputAvailable() inside the main logic (b/c never used except test code)
+  * refactored codes
+  * put Scanner SCAN as a Constant
+  * modified the Boolean method
+  * modified public methods to private should not be public
+  * modified the test codes as well with using reflection
+* refactor/racing
+  * modified public methods to private should not be public (**modified like the step2 modified**)
+  * modified the test codes as well with using reflection
+  * delete the useless code in step2 test code
 * refactor/optimize-imports
-    * unused imports removed
+  * unused imports removed
 * refactor/remove-reflection
-    * ensure not to test private method -> do not test with reflection
+  * ensure not to test private method -> do not test with reflection
 * refactor/class-segregation
-    * refactored code w/ Class, Interface segregation'
+  * refactored code w/ Class, Interface segregation'
+
+step 4
+* refactor/step-3
+  * refactored based on the feedback from pull request
+  * generate ViewPrinter
+  * set position as Integer to calculate
+* feature/mod-racing-application-with-step4
+  * modified racing application with step4 requirements
+* refactor/step4
+  * refactored with FirstClass Collection
+  * refactored with using Stream()
+  * Test Codes are refactored
