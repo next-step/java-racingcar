@@ -1,5 +1,6 @@
 package RacingGame;
 
+import RacingGame.testClass.FixNumberGenerator;
 import RacingGame.model.Car;
 import RacingGame.model.MovableStrategy;
 import org.junit.jupiter.api.DisplayName;

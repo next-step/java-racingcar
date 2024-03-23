@@ -2,13 +2,16 @@ package RacingGame;
 
 import RacingGame.model.Car;
 import RacingGame.model.CarsManager;
+import RacingGame.model.MovableStrategy;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -50,5 +53,20 @@ public class CarsManagerTest {
                 Arguments.arguments(givenCars(givenPositions(4, 5, 6)), givenPositions(4, 5, 6)),
                 Arguments.arguments(givenCars(givenPositions(5, 6, 7)), givenPositions(5, 6, 7))
         );
+    }
+
+    @Test
+    @DisplayName("차량들의 초기 위치는 0 이다.")
+    void testCarNamePositions() {
+        CarsManager carsManager = CarsManager.withCarNames(List.of("Car1", "Car2"));
+        assertThat(carsManager.carNamePositions()).isEqualTo(Map.of("Car1", 0, "Car2", 0));
+    }
+
+    @Test
+    @DisplayName("차량들은 초기 위치 0 에서 1로 이동한다.")
+    void moveCarsTest() {
+        CarsManager carsManager = CarsManager.withCarCount(2);
+        carsManager.tryMoveCars(new MovableStrategy(() -> 5));
+        assertThat(carsManager.getCarsPosition()).isEqualTo(List.of(1, 1));
     }
 }
