@@ -41,8 +41,4 @@ public class Car {
     public String name() {
         return name.getName();
     }
-
-    public boolean isPositionAt(int position) {
-        return this.position.isValueEquals(position);
-    }
 }
