@@ -43,7 +43,7 @@ public class Game {
         resultView.printSeperateCar();
     }
 
-    public String resultStr(Car car) {
+    private String resultStr(Car car) {
         String result = "";
         for (int i = 0; i < car.getPosition(); i++) {
             result += resultView.printMovingPattern();

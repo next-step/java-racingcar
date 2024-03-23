@@ -6,7 +6,7 @@ public class Cars {
 
     public List<Car> makeCars(int countCar) {
         for (int i = 0; i < countCar; i++) {
-            cars.add(new Car(0));
+            cars.add(new Car("",0));
         }
         return cars;
     }
