@@ -13,4 +13,11 @@ class CarTest {
         assertThat(e.getMessage()).isEqualTo("자동차 이름 길이 초과 (최대 5자)");
     }
 
+    @Test
+    void 자동차_move() throws Exception {
+        Car car = new Car("abc");
+        car.move(1);
+        assertThat(car.getLocation()).isEqualTo(1);
+    }
+
 }

@@ -15,4 +15,17 @@ public class Car {
             throw new Exception("자동차 이름 길이 초과 (최대 5자)");
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void move(int distance) {
+        location += distance;
+    }
+
 }
