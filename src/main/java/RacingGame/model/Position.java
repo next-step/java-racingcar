@@ -1,11 +1,24 @@
 package RacingGame.model;
 
-public class Position {
-    private final int number;
+public final class Position {
+
+    private static final int LOW = 0;
+    private static final int HIGH = 10;
+    private static final Position[] CACHE;
+
+    static {
+        int size = HIGH + 1;
+        CACHE = new Position[size];
+        for (int i = LOW; i <= HIGH; i++) {
+            CACHE[i] = new Position(i);
+        }
+    }
 
     public Position() {
         this(0);
     }
+
+    private final int number;
 
     public Position(int number) {
         this.number = number;
@@ -23,25 +36,9 @@ public class Position {
         return this.number == number;
     }
 
-    private static class PositionCache {
-        static final int low = 0;
-        static final int high = 10;
-        static final Position[] cache;
-
-        static {
-            int size = high + 1;
-            Position[] positions = new Position[size];
-            for (int i = 0; i < positions.length; i++) {
-                positions[i] = new Position(i);
-            }
-
-            cache = positions;
-        }
-    }
-
     public static Position valueOf(int number) {
-        if (number >= PositionCache.low && number <= PositionCache.high) {
-            return PositionCache.cache[number];
+        if (number >= LOW && number <= HIGH) {
+            return CACHE[number];
         }
         return new Position(number);
     }
