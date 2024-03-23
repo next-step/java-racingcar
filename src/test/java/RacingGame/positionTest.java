@@ -19,7 +19,7 @@ public class positionTest {
     @CsvSource(value = {"1:2", "2:3", "3:4", "4:5", "5:6"}, delimiter = ':')
     void increasePosition(int number, int expected) {
         Position position = Position.valueOf(number);
-        position.increase();
+        position = position.increase();
 
         Assertions.assertThat(position.getPosition()).isEqualTo(expected);
     }
