@@ -12,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("자동차 생성 테스트")
     @Test
+    @DisplayName("자동차 값 추출 테스트")
     void createCarTest(){
         // Given
         final String name = "lee";
@@ -24,27 +24,49 @@ public class CarTest {
         assertThat(car.getPosition()).isZero();
     }
 
-    @DisplayName("숫자가 4보다 작으면 위치를 그대로 유지")
     @Test
+    @DisplayName("숫자가 4보다 작으면 위치를 그대로 유지 테스트")
     void stayIfNumberIstSmallerThanFour() {
         // Given
         final Car car = new Car(new Name("lee"), new Position(1));
-        final NumberGenerator numberGenerator = new NonMovableNumberGenerator();
         // When
-        car.move(numberGenerator.generate());
+        car.move(3);
         // Then
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @DisplayName("숫자가 4보다 크면 전진")
     @Test
+    @DisplayName("숫자가 4보다 크면 전진 테스트")
     void moveIfNumberIstGreaterThanAndEqualToFour() {
         // Given
         final Car car = new Car(new Name("lee"), new Position(1));
-        final NumberGenerator numberGenerator = new MovableNumberGenerator();
         // When
-        car.move(numberGenerator.generate());
+        car.move(5);
         // Then
         assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("더 큰 포지션 반환 테스트")
+    void getBiggerPositionTest() {
+        // Given
+        final Car car = new Car(new Name("lee"), new Position(1));
+        final Position smallerPosition = new Position(0);
+        // When
+        Position actual = car.getBiggerPosition(smallerPosition);
+        // Then
+        assertThat(actual.getNumber()).isEqualTo(car.getPosition());
+    }
+
+    @Test
+    @DisplayName("포지션 비교 테스트")
+    void isSamePositionTest() {
+        // Given
+        final Car car = new Car(new Name("lee"), new Position(1));
+        final Position smallerPosition = new Position(0);
+        // When
+        boolean actual = car.isSamePosition(smallerPosition);
+        // Then
+        assertThat(actual).isFalse();
     }
 }
