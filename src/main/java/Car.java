@@ -27,4 +27,9 @@ public class Car {
     public String getName() {
         return name.toString();
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s", this.name);
+    }
 }

@@ -4,9 +4,9 @@ import java.util.List;
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public List<Car> makeCars(int countCar) {
-        for (int i = 0; i < countCar; i++) {
-            cars.add(new Car("",0));
+    public List<Car> makeCars(String[] strArr) {
+        for (int i = 0; i < strArr.length; i++) {
+            cars.add(new Car(strArr[i],0));
         }
         return cars;
     }

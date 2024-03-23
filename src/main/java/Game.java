@@ -8,31 +8,34 @@ public class Game {
     private InputView inputView = new InputView();
     private Input input = new Input();
     private RandomMaker randomMaker = new RandomMaker();
+    private Entry entry = new Entry();
 
     public void playGame() {
         try {
             inputView.requestEntry();
-            int countCar = input.inputIntData();
+            String inputEntryCars = input.inputStringData();
 
             inputView.requestTryCount();
-            int countTry = input.inputIntData();
+            CountTry countTry = new CountTry(input.inputIntData());
 
-            playRound(countCar, countTry);
+            playRound(entry.splitEntry(inputEntryCars), countTry.getCountTry());
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void playRound(int countCar, int countTry) {
+    private void playRound(String[] entryCars, int countTry) {
         Cars cars = new Cars();
 
-        List<Car> carsList = cars.makeCars(countCar);
+        List<Car> carsList = cars.makeCars(entryCars);
         resultView.printResult();
 
         for (int i = 0; i < countTry; i++) {
             playMove(carsList);
         }
+
+        resultView.printWinner(isWinning(carsList));
     }
 
     private void playMove(List<Car> carsList) {
@@ -50,5 +53,23 @@ public class Game {
             result += resultView.printMovingPattern();
         }
         return result;
+    }
+
+    private String isWinning(List<Car> carsList){
+        int maxPosition = carsList.get(0).getPosition();
+        String winner = carsList.get(0).getName();
+
+        for (int i = 1; i < carsList.size(); i++) {
+           int compareNum = carsList.get(i).getPosition();
+            if (maxPosition < compareNum) {
+                maxPosition = compareNum;
+                winner = carsList.get(i).getName();
+            }
+
+            if (maxPosition == compareNum){
+                winner += ", " + carsList.get(i).getName();
+            }
+        }
+        return winner;
     }
 }

@@ -7,4 +7,7 @@ public class CountTry {
         }
     }
 
+    public int getCountTry() {
+        return countTry;
+    }
 }
