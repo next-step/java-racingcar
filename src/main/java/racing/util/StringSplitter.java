@@ -1,10 +1,10 @@
-package step3.util;
+package racing.util;
 
 import java.util.List;
 
 public class StringSplitter {
 
-    public List<String> getNameList(String nameListString){
+    public static List<String> getNameList(String nameListString){
         return List.of(nameListString.split(","));
     }
 }

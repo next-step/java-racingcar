@@ -22,7 +22,7 @@ step 3
   * modified the Boolean method
   * modified public methods to private should not be public
   * modified the test codes as well with using reflection
-* refactor/step3
+* refactor/racing
   * modified public methods to private should not be public (**modified like the step2 modified**)
   * modified the test codes as well with using reflection
   * delete the useless code in step2 test code
@@ -40,3 +40,7 @@ step 4
   * set position as Integer to calculate
 * feature/mod-racing-application-with-step4
   * modified racing application with step4 requirements
+* refactor/step4
+  * refactored with FirstClass Collection
+  * refactored with using Stream()
+  * Test Codes are refactored
