@@ -1,6 +1,7 @@
 package RacingGame.controller;
 
 import RacingGame.model.MovableStrategy;
+import RacingGame.model.RacingResult;
 import RacingGame.service.RacingGameService;
 import RacingGame.view.InputView;
 import RacingGame.view.ResultView;
@@ -17,12 +18,9 @@ public class RacingGameController {
         int stageCount = InputView.InputStageCount();
 
         ResultView.viewResultPhrase();
-        racingGameService.init(carNames);
+        RacingResult racingResult = racingGameService.play(carNames, stageCount);
 
-        for (int i = 0; i < stageCount; i++) {
-            ResultView.stageStatus(racingGameService.play());
-        }
-
-        ResultView.showWinners(racingGameService.winners());
+        ResultView.showProgress(racingResult.getHistories());
+        ResultView.showWinners(racingResult.winners());
     }
 }

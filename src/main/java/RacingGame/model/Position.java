@@ -1,7 +1,7 @@
 package RacingGame.model;
 
 public class Position {
-    private int number;
+    private final int number;
 
     public Position() {
         this(0);
@@ -15,8 +15,8 @@ public class Position {
         return this.number;
     }
 
-    public void increase() {
-        this.number++;
+    public Position increase() {
+        return Position.valueOf(this.number + 1);
     }
 
     public boolean isValueEquals(int number) {

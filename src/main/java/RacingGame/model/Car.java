@@ -5,7 +5,7 @@ public class Car {
     private static final String DEFAULT_CAR_NAME = "NULL";
 
     private final Name name;
-    private final Position position;
+    private Position position;
 
     public Car(String name, int position) {
         this.name = new Name(name);
@@ -35,7 +35,7 @@ public class Car {
     }
 
     private void move() {
-        this.position.increase();
+        this.position = position.increase();
     }
 
     public String name() {
