@@ -13,6 +13,9 @@ public class ResultView {
         System.out.println("@@@@@@@@@@@");
     }
 
+    public void printCarName(String name) {
+        System.out.print(name + ": ");
+    }
     public void printCarMoving(String result) {
         System.out.println(result);
     }

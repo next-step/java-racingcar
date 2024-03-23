@@ -38,6 +38,7 @@ public class Game {
     private void playMove(List<Car> carsList) {
         for (int i = 0; i < carsList.size(); i++) {
             carsList.get(i).moveOnCondition(randomMaker.generateRandom());
+            resultView.printCarName(carsList.get(i).getName());
             resultView.printCarMoving(resultStr(carsList.get(i)));
         }
         resultView.printSeperateCar();
