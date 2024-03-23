@@ -9,6 +9,7 @@ public class Game {
     private Input input = new Input();
     private RandomMaker randomMaker = new RandomMaker();
     private Entry entry = new Entry();
+    private Judge judge = new Judge();
 
     public void playGame() {
         try {
@@ -35,7 +36,7 @@ public class Game {
             playMove(carsList);
         }
 
-        resultView.printWinner(isWinning(carsList));
+        resultView.printWinner(judge.judgeWinner(carsList));
     }
 
     private void playMove(List<Car> carsList) {
@@ -53,23 +54,5 @@ public class Game {
             result += resultView.printMovingPattern();
         }
         return result;
-    }
-
-    private String isWinning(List<Car> carsList){
-        int maxPosition = carsList.get(0).getPosition();
-        String winner = carsList.get(0).getName();
-
-        for (int i = 1; i < carsList.size(); i++) {
-           int compareNum = carsList.get(i).getPosition();
-            if (maxPosition < compareNum) {
-                maxPosition = compareNum;
-                winner = carsList.get(i).getName();
-            }
-
-            if (maxPosition == compareNum){
-                winner += ", " + carsList.get(i).getName();
-            }
-        }
-        return winner;
     }
 }
