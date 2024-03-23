@@ -28,8 +28,8 @@ public class RaceTest {
         final Car leeCar = new Car(new Name("lee"));
         final Car parkCar = new Car(new Name("park"));
         final NumberGenerator numberGenerator = new MovableNumberGenerator();
-        Cars cars = new Cars(List.of(leeCar, parkCar), numberGenerator);
-        Race race = new Race(cars);
+        final Cars cars = new Cars(List.of(leeCar, parkCar));
+        final Race race = new Race(cars, numberGenerator);
         // When
         race.startMoving();
         // Then
@@ -44,8 +44,8 @@ public class RaceTest {
         final Car leeCar = new Car(new Name("lee"));
         final Car parkCar = new Car(new Name("park"));
         final NumberGenerator numberGenerator = new MovableNumberGenerator();
-        Cars cars = new Cars(List.of(leeCar, parkCar), numberGenerator);
-        Race race = new Race(cars);
+        final Cars cars = new Cars(List.of(leeCar, parkCar));
+        final Race race = new Race(cars, numberGenerator);
         // When
         Cars racingCars = race.getCars();
         // Then
@@ -60,8 +60,8 @@ public class RaceTest {
         final Car parkCar = new Car(new Name("park"), new Position(2));
         final Car kimkCar = new Car(new Name("kim"), new Position(2));
         final NumberGenerator numberGenerator = new MovableNumberGenerator();
-        Cars cars = new Cars(List.of(leeCar, parkCar, kimkCar), numberGenerator);
-        Race race = new Race(cars);
+        final Cars cars = new Cars(List.of(leeCar, parkCar, kimkCar));
+        final Race race = new Race(cars, numberGenerator);
         // When
         Winners winnerCars = race.getWinners();
         // Then

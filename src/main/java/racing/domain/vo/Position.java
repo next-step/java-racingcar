@@ -25,7 +25,7 @@ public class Position {
         }
     }
 
-    public Position maxPosition(Position other) {
+    public Position biggerPosition(Position other) {
         if (other.number > number) {
             return other;
         }

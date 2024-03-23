@@ -10,13 +10,9 @@ import java.util.Scanner;
 public class RacingApplication {
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        String carNamesString = InputView.getCarNamesString();
+        int trials = InputView.getTrials();
 
-        InputView.printCarNameRequest();
-        String carNamesString = scan.nextLine();
-
-        InputView.printTrialRequest();
-        int trials = scan.nextInt();
         Cars cars = new Cars(carNamesString);
         Race race = new Race(cars);
         // 게임 진행
