@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
+import static racingcar.domain.Car.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +10,11 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racingcar.domain.Car;
-
 public class RacingCarTest {
 	// 자동차 개수
 	// 시도 횟수
 	List<Car> carList = new ArrayList<Car>();
 	Random random = new Random();
-	private static final int MIN_THRESHOLD = 4;
 
 	@Test
 	@DisplayName("전진하는 경우")
@@ -25,7 +23,7 @@ public class RacingCarTest {
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
 		if (randomNum >= MIN_THRESHOLD)
-			assertThat(car.getMoveInfo()).isEqualTo(1);
+			assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@Test
@@ -35,7 +33,7 @@ public class RacingCarTest {
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
 		if (randomNum < MIN_THRESHOLD)
-			assertThat(car.getMoveInfo()).isEqualTo(0);
+			assertThat(car.getPosition()).isEqualTo(0);
 	}
 
 	@Test
@@ -51,9 +49,14 @@ public class RacingCarTest {
 				car.moveForward(randomNum++);
 			}
 		}
-		assertThat(carList.get(0).getMoveInfo()).isEqualTo(0);
-		assertThat(carList.get(1).getMoveInfo()).isEqualTo(1);
-		assertThat(carList.get(2).getMoveInfo()).isEqualTo(1);
+		assertThat(carList.get(0).getPosition()).isEqualTo(0);
+		assertThat(carList.get(1).getPosition()).isEqualTo(1);
+		assertThat(carList.get(2).getPosition()).isEqualTo(1);
 	}
 
+	@Test
+	void 자동차_이름_부여() {
+		Car car = new Car("춘봉");
+		assertThat(car.getName()).isEqualTo("춘봉");
+	}
 }

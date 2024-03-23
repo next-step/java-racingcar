@@ -9,7 +9,7 @@ public class OutputView {
 
 	public void moveCars(List<Car> carList) {
 		for (Car car : carList) {
-			int moveDistance = car.getMoveInfo();
+			int moveDistance = car.getPosition();
 			System.out.println(DASH.repeat(moveDistance));
 		}
 		System.out.println("");
