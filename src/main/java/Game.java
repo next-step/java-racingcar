@@ -12,18 +12,18 @@ public class Game {
     public void start() {
         cars = createCar();
         gameCount = getGameCount();
-
         System.out.println("실행 결과");
         for (int i = 0; i < gameCount; i++) {
-            for (Car car : cars) {
-                int i1 = (int) (Math.random() * 10);
-                if (i1 >= 4) {
-                    car.drive();
-                }
-            }
-            System.out.println("                           ");
+            job();
         }
 
+    }
+
+    private static void job() {
+        for (Car car : cars) {
+            car.drive(car.getNumber());
+        }
+        System.out.println("                           ");
     }
 
     private static int getGameCount() {

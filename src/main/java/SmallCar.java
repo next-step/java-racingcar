@@ -6,9 +6,16 @@ public class SmallCar implements Car {
     private String status = "";
 
     @Override
-    public void drive() {
-        this.status = this.status + "-";
+    public void drive(int num) {
+        if (num >= 4) {
+            this.status = this.status + "-";
+        }
         System.out.println(this.status);
+    }
+
+    @Override
+    public int getNumber() {
+        return (int) (Math.random() * 10);
     }
 
     public String getStatus() {

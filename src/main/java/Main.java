@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * @author jeongheekim
  * @date 3/12/24
