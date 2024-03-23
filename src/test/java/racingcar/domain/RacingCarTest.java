@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
-import static racingcar.domain.Car.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +16,7 @@ public class RacingCarTest {
 	// 시도 횟수
 	List<Car> carList = new ArrayList<Car>();
 	Random random = new Random();
+	private static final int MIN_THRESHOLD = 4;
 
 	@Test
 	@DisplayName("전진하는 경우")
