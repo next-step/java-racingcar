@@ -9,5 +9,5 @@ public class Main {
         game.start();
         System.out.println("자동차 경주 종료합니다.");
     }
-
 }
+

@@ -16,5 +16,4 @@ class GameTest {
         Car[] cars = game.getCars();
         assertTrue(cars.length > 1);
     }
-
 }

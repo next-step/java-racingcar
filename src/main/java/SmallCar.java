@@ -22,3 +22,4 @@ public class SmallCar implements Car {
         return status;
     }
 }
+
