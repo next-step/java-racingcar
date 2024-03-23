@@ -14,11 +14,6 @@ public class InputView {
         throw new AssertionError(ErrorMessageConstants.CONSTRUCTOR_ERROR_MESSAGE.getMessage());
     }
 
-    public static int InputCarCount() {
-        System.out.println(CAR_COUNT_QUESTION);
-        return Integer.parseInt(scanner.nextLine());
-    }
-
     public static String InputCarNames() {
         System.out.println(CAR_NAME_QUESTION);
         return scanner.nextLine();

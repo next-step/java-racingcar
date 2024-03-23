@@ -3,7 +3,6 @@ package RacingGame.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -42,26 +41,6 @@ public class CarsManager {
         return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
-    }
-
-    public List<Car> winners() {
-        int highestPosition = findHighestPosition();
-
-        return this.cars.stream()
-                .filter(car -> car.isPositionAt(highestPosition))
-                .collect(Collectors.toList());
-    }
-
-    private int findHighestPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
-    }
-
-    public List<String> winnerNames() {
-        return winners().stream()
-                .map(Car::name).collect(Collectors.toList());
     }
 
     public Map<String, Integer> carNamePositions() {
