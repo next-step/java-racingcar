@@ -1,32 +1,34 @@
-import java.util.InputMismatchException;
+import view.InputView;
+import view.ResultView;
+
 import java.util.List;
 
 public class Game {
-    private View view = new View();
+    private ResultView resultView = new ResultView();
+    private InputView inputView = new InputView();
     private Input input = new Input();
     private RandomMaker randomMaker = new RandomMaker();
 
     public void playGame() {
         try {
-            view.requestCarCount();
-            int countCar = input.inputData();
+            inputView.requestEntry();
+            int countCar = input.inputIntData();
 
-            view.requestTryCount();
-            int countTry = input.inputData();
+            inputView.requestTryCount();
+            int countTry = input.inputIntData();
 
             playRound(countCar, countTry);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        /////
     }
 
     private void playRound(int countCar, int countTry) {
         Cars cars = new Cars();
 
         List<Car> carsList = cars.makeCars(countCar);
-        view.printResult();
+        resultView.printResult();
 
         for (int i = 0; i < countTry; i++) {
             playMove(carsList);
@@ -36,15 +38,15 @@ public class Game {
     private void playMove(List<Car> carsList) {
         for (int i = 0; i < carsList.size(); i++) {
             carsList.get(i).moveOnCondition(randomMaker.generateRandom());
-            view.printCarMoving(resultStr(carsList.get(i)));
+            resultView.printCarMoving(resultStr(carsList.get(i)));
         }
-        view.printSeperateCar();
+        resultView.printSeperateCar();
     }
 
     public String resultStr(Car car) {
         String result = "";
         for (int i = 0; i < car.getPosition(); i++) {
-            result += view.printMovingPattern();
+            result += resultView.printMovingPattern();
         }
         return result;
     }
