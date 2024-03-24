@@ -20,4 +20,11 @@ class CarTest {
         assertThat(car.getLocation()).isEqualTo(1);
     }
 
+    @Test
+    void 이름_split() {
+        String inputNames = "pobi,crong,honux";
+        String[] names = inputNames.split(",");
+        assertThat(names).containsExactly("pobi","crong","honux");
+    }
+
 }
