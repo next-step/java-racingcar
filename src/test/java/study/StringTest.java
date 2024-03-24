@@ -49,9 +49,12 @@ public class StringTest {
     @Test
     @DisplayName("콤마 문자열 파싱")
     void split콤마() {
-        String input = "1,2,3";
+        String input = "pobi,crong,honux";
         String[] tokens = input.split(",");
-        assertThat(tokens).containsExactly("1", "2", "3");
+        assertThat(tokens).containsExactly("pobi", "crong", "honux");
+        assertThat(tokens[0]).isEqualTo("pobi");
+        assertThat(tokens[1]).isEqualTo("crong");
+        assertThat(tokens[2]).isEqualTo("honux");
     }
     @Test
     @DisplayName("콜론 문자열 파싱")
