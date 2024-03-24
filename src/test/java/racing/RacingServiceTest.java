@@ -5,7 +5,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import util.NumberUtil;
 import util.RacingValidator;
+import util.RandomNumberGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,9 +19,9 @@ public class RacingServiceTest {
     @Test
     @DisplayName("자동차가 1칸 앞으로 전진한다.")
     void 자동차_전진_테스트() throws CarLocationException {
-        Car car = new Car(new Location(0));
-        Location newLocation = car.getCarLocationInfo().moveForward();
-        assertThat(newLocation.getLocation()).isEqualTo(1);
+        Car car = new Car("hbae", new Location(0));
+        Location newLocation = car.moveForward();
+        assertThat(newLocation.value()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -32,5 +37,19 @@ public class RacingServiceTest {
     void 전진_불가능_테스트(int input) {
         assertThat(RacingValidator.isMovable(input)).isFalse();
     }
+
+    @Test
+    @DisplayName("자동차 우승을 가리기 위해 최대 이동거리를 구하는 테스트를 수행한다.")
+    void 리스트들중_최대_숫자구하기_테스트() {
+        List<Integer> numList = new ArrayList<>();
+        int maxValue = Integer.MIN_VALUE;
+        for (int i = 0; i < 4; i++) {
+            int randomNumber = RandomNumberGenerator.getRandomNumber();
+            maxValue = Math.max(maxValue, randomNumber);
+            numList.add(randomNumber);
+        }
+        assertThat(maxValue).isEqualTo(NumberUtil.getMaxNumberOfList(numList));
+    }
+
 
 }

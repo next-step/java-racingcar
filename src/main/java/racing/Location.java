@@ -14,12 +14,12 @@ public class Location {
         this.location = location;
     }
 
-    public Integer getLocation() {
+    public Integer value() {
         return this.location;
     }
 
-    public Location moveForward() throws CarLocationException {
-        Integer newLocation = this.location + 1;
+    public Location move(Integer moveAmount) throws CarLocationException {
+        Integer newLocation = this.location + moveAmount;
         validate(newLocation);
         return new Location(newLocation);
     }
