@@ -1,10 +1,12 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.Car;
+import racingcar.domain.CarGroup;
 
 import java.util.List;
 
 public class OutputView {
     public void printCarPosition(Car car) {
-        // 입력변수를 Car 하나로 두면 깔끔하긴 한데 캡슐화가 깨지는 거 같음
         System.out.print(car.name() + ": ");
         for (int i = 0; i <= car.position(); i++) {
             System.out.print('-');
