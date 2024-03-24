@@ -1,4 +1,4 @@
-package io;
+package view;
 
 public class InputValidation {
 	public static void checkCarName(String name) {

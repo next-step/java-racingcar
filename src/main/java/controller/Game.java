@@ -1,7 +1,10 @@
-package racingcar;
+package controller;
 
-import io.InputView;
-import io.PrintView;
+import racingcar.CarMoveStrategy;
+import racingcar.Cars;
+import racingcar.StrategyFactory;
+import view.InputView;
+import view.PrintView;
 
 public class Game {
 	public void play() {
@@ -16,7 +19,7 @@ public class Game {
 			tryGame(cars);
 		}
 
-		PrintView.printWinnerMessage(cars.getWinnerName());
+		PrintView.printWinnerMessage(cars.getWinners());
 	}
 
 	private Cars setCars(String[] carNames) {
@@ -26,7 +29,7 @@ public class Game {
 	}
 
 	private void tryGame(Cars cars) {
-		cars.move();
+		PrintView.printPosition(cars.move());
 
 		PrintView.printEmptyLine();
 	}
