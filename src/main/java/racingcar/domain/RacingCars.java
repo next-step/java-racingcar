@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.StringJoiner;
@@ -13,15 +12,14 @@ public class RacingCars {
 	List<Car> cars = new ArrayList<>();
 	OutputView output = new OutputView();
 
-	public String[] splitName(String carName) {
-		return carName.split(",");
+	private String[] splitName(String carName, String delimiter) {
+		return carName.split(delimiter);
 	}
 
-	public void addCarsToList(String carNames) {
-		String[] carNameList = splitName(carNames);
-		for (int i = 0; i < carNameList.length; i++) {
-			Car car = new Car(carNameList[i]);
-			cars.add(car);
+	public RacingCars(String carNames){
+		String[] carNameList = splitName(carNames, ",");
+		for (String carName : carNameList) {
+			cars.add(new Car(carName));
 		}
 	}
 
@@ -32,7 +30,7 @@ public class RacingCars {
 		}
 	}
 
-	public void moveCars() {
+	private void moveCars() {
 		for (Car car : cars) {
 			int randomNum = random.nextInt(10);
 			car.moveForward(randomNum);
@@ -48,8 +46,8 @@ public class RacingCars {
 	}
 
 	private void addToWinnersList(List<Car> winners, Car car) {
-		if (car.getPosition() == maxPosition())
-			winners.add(car);
+		int maxPosition = car.maxPosition(winners);
+		if (car.comparePosition(maxPosition)) winners.add(car);
 	}
 
 	private void viewWinners(List<Car> winners) {
@@ -57,13 +55,6 @@ public class RacingCars {
 		for (Car winner : winners) {
 			stringJoiner.add(winner.getName());
 		}
-		System.out.println(String.format("%s 가 최종 우승했습니다", stringJoiner));
-	}
-
-	public int maxPosition() {
-		return cars.stream()
-			.max(Comparator.comparing(Car::getPosition))
-			.map(Car::getPosition)
-			.orElseThrow(() -> new IllegalStateException("car.position cannot get max"));
+		output.printWinners(stringJoiner);
 	}
 }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.domain.Car.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -20,7 +21,7 @@ public class RacingCarTest {
 	@Test
 	@DisplayName("전진하는 경우")
 	void moveForward() {
-		Car car = new Car();
+		Car car = new Car("name");
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
 		if (randomNum >= MIN_THRESHOLD)
@@ -30,7 +31,7 @@ public class RacingCarTest {
 	@Test
 	@DisplayName("전진하지 않는 경우")
 	void notMoveForward() {
-		Car car = new Car();
+		Car car = new Car("name");
 		int randomNum = random.nextInt(10);
 		car.moveForward(randomNum);
 		if (randomNum < MIN_THRESHOLD)
@@ -41,7 +42,7 @@ public class RacingCarTest {
 	@DisplayName("여러 번 시도하는 경우")
 	void MoveForward_여러번() {
 		for (int i = 0; i < 3; i++) {
-			Car car = new Car();
+			Car car = new Car("name" + i);
 			carList.add(car);
 		}
 		int randomNum = 0;
@@ -56,14 +57,12 @@ public class RacingCarTest {
 	}
 
 	@Test
-	void 자동차_이름_부여() {
-		Car car = new Car("춘봉");
-		assertThat(car.getName()).isEqualTo("춘봉");
-	}
-
-	@DisplayName("자동차 이름은 5글자를 넘을 수 없다")
-	@Test
-	void carNamelengthUnder5() {
-		assertThrows(IllegalArgumentException.class, () -> new Car("춘봉봉봉봉봉"));
+	void 자동차_이름_구분() {
+		String carNames = "car1,car2,car3";
+		RacingCars racingCars = new RacingCars(carNames);
+		List<String> CarNameList = Arrays.asList("car1", "car2", "car3");
+		List<Car> cars = racingCars.cars;
+		assertThat(cars.get(0).getName()).isEqualTo(CarNameList.get(0));
+		assertThat(cars.get(1).getName()).isEqualTo(CarNameList.get(1));
 	}
 }
