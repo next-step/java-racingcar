@@ -11,6 +11,9 @@ public class MainView {
         int times = Integer.parseInt(userInput("시도할 회수는 몇 회 인가요?"));
 
         CarRacing carRacing = new CarRacing(times, inputNames);
+
+        System.out.println("실행 결과");
+        carRacing.playGame();
     }
 
 }
