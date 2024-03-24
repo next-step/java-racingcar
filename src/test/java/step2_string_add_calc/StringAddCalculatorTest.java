@@ -2,8 +2,11 @@ package step2_string_add_calc;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.BDDAssertions.then;
 import static step2_string_add_calc.StringAddCalculator.*;
 
 class StringAddCalculatorTest {
@@ -41,6 +44,17 @@ class StringAddCalculatorTest {
     @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\\n1;2;3” => 6)")
     void useCustomDelimiterWithRegex() {
         assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @ParameterizedTest
+    // GIVEN
+    @ValueSource(strings = {"-1,2,3", "10,-10", "-10,-10"})
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다")
+    void throwRuntimeExceptionWhenInputNegativeNumber(String inputStr) {
+        // WHEN
+        Throwable thrown = catchThrowable(() -> splitAndSum(inputStr));
+        // THEN
+        then(thrown).isInstanceOf(RuntimeException.class);
     }
 
 }
