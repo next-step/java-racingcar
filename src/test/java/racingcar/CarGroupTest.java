@@ -3,17 +3,28 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.CarGroup;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CarGroupTest {
     //given
-    String carNames = "poby,crong,honux";
+    List<String> carNames = new ArrayList<>(Arrays.asList("poby", "grape", "hello"));
     CarGroup carGroup = new CarGroup(carNames);
 
-    @Test
+    @ParameterizedTest
     @DisplayName("(0)생성자 테스트")
-    public void carGroup() {
+    @NullAndEmptySource
+    @ValueSource(strings = {"longname"})
+    public void carGroup(String name) {
         //given, when
-        String carNamesForConstructorTest = ",,";
+        List<String> carNamesForConstructorTest = new ArrayList<>();
+        carNamesForConstructorTest.add(name);
 
         //then
         Assertions.assertThatThrownBy(() -> {

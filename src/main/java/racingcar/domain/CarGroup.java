@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,26 +6,15 @@ import java.util.Random;
 
 public class CarGroup {
 
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     private final List<Car> carGroup;
 
-    public CarGroup(String names) {
-        String[] splitNames = SplitNames(names);
+    public CarGroup(List<String> names) {
+        String[] splitNames = names.toArray(new String[names.size()]);
         carGroup = new ArrayList<>();
         for (String name : splitNames) {
             carGroup.add(new Car(name));
         }
-    }
-
-    public String[] SplitNames(String names) {
-        String[] splitNames = names.split(",");
-
-        int countDelimiter = names.length() - names.replace(",", "").length();
-        if (splitNames.length <= countDelimiter) {
-            throw new IllegalArgumentException("자동차의 이름은 빈칸일 수 없습니다.");
-        }
-
-        return splitNames;
     }
 
     public Car car(int carIndex) {
@@ -47,7 +36,7 @@ public class CarGroup {
     public void updateCarGroupPosition() {
         int randomValueBound = 10;
         for (Car car : carGroup) {
-            int randomValue = random.nextInt(randomValueBound);
+            int randomValue = RANDOM.nextInt(randomValueBound);
             car.updatePosition(randomValue);
         }
     }
