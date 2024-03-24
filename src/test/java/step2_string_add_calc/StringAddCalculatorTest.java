@@ -25,6 +25,7 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
     void returnSum_InputTwoNumbersWithDelimiting() {
+        // 앞 단계의 구분자가 없는 경우도 split()을 활용가능
         assertThat(splitAndSum("2,4")).isEqualTo(6);
         assertThat(splitAndSum("10,4")).isEqualTo(14);
     }
@@ -35,4 +36,11 @@ class StringAddCalculatorTest {
         assertThat(splitAndSum("2,4")).isEqualTo(6);
         assertThat(splitAndSum("10:4")).isEqualTo(14);
     }
+
+    @Test
+    @DisplayName("“//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\\n1;2;3” => 6)")
+    void useCustomDelimiterWithRegex() {
+        assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
+
 }
