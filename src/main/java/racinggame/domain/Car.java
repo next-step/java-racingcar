@@ -3,7 +3,6 @@ package racinggame.domain;
 import racinggame.utils.StringUtils;
 
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
     private static final int FORWARD_NUM = 4;
@@ -38,6 +37,11 @@ public class Car {
 
     public void move(int randomNo) {
         if (randomNo >= FORWARD_NUM)
+            this.position.increase();
+    }
+
+    public void move(CarRandomNo randomNo) {
+        if (randomNo.movable())
             this.position.increase();
     }
 
