@@ -1,7 +1,5 @@
 package step5.domain.result;
 
-import step5.domain.CarName;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;

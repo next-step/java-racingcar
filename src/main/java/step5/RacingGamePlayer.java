@@ -13,6 +13,9 @@ public class RacingGamePlayer {
     public void playRacingGame() {
         final List<String> carNames = RacingInputView.carNames();
         final TryCount tryCount = new TryCount(RacingInputView.tryCount());
+        if (tryCount.zeroOrLessThanZero()) {
+            return;
+        }
 
         final Racing racing = randomMovementRacing(carNames, tryCount);
 
