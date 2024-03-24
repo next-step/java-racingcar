@@ -1,6 +1,5 @@
 package step5.domain;
 
-import step5.domain.result.CarMovementResult;
 import step5.domain.result.CarMovementRoundResult;
 
 import java.util.ArrayList;

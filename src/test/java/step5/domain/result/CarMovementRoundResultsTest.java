@@ -3,6 +3,7 @@ package step5.domain.result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import step5.domain.CarName;
 
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +40,7 @@ public class CarMovementRoundResultsTest {
                 final CarMovementRoundResult first = CarMovementRoundResult.from(
                         Collections.emptyList());
 
-                final List<CarMovementResult> lastResult = List.of(new CarMovementResult("A", 3));
+                final List<CarMovementResult> lastResult = List.of(new CarMovementResult(new CarName("A"), 3));
                 final CarMovementRoundResult second = CarMovementRoundResult.from(lastResult);
 
                 results.add(first);
