@@ -6,7 +6,6 @@ public class Racing {
     private final Cars cars;
     private final int tryCount;
     private final Moving movingStrategy;
-    private final CarMovementRoundResults results = new CarMovementRoundResults();
 
     public static Racing randomMoving(Cars cars, int tryCount) {
         return new Racing(cars, tryCount, new RandomMoving());
@@ -19,16 +18,17 @@ public class Racing {
     }
 
     public CarMovementRoundResults playAndGenerateResults() {
+        final CarMovementRoundResults roundResults = new CarMovementRoundResults();
         if (isUnPlayable()) {
-            return results;
+            return roundResults;
         }
 
         for (int count = 0; count < tryCount; count++) {
             cars.moveAll(movingStrategy);
-            results.add(cars.roundResult());
+            roundResults.add(cars.roundResult());
         }
 
-        return results;
+        return roundResults;
     }
 
     private boolean isUnPlayable() {
