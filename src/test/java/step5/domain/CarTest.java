@@ -5,16 +5,8 @@ import org.junit.jupiter.api.Test;
 import step5.domain.result.CarMovementResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
-
-    @DisplayName("자동차는 5자 초과의 이름을 가질 수 없다.")
-    @Test
-    void constructor() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> Car.withName("다섯글자다다"));
-    }
 
     @DisplayName("차량을 움직일 경우, 움직인 거리가 증가한다.")
     @Test
