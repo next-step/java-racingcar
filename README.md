@@ -44,3 +44,7 @@ step 4
   * refactored with FirstClass Collection
   * refactored with using Stream()
   * Test Codes are refactored
+
+step5
+* refactor/step4
+  * 
