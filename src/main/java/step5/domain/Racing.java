@@ -4,7 +4,7 @@ import step5.domain.result.CarMovementRoundResults;
 
 public class Racing {
     private final Cars cars;
-    private final int tryCount;
+    private final TryCount tryCount;
     private final Moving movingStrategy;
 
     public static Racing randomMoving(Cars cars, int tryCount) {
@@ -13,7 +13,7 @@ public class Racing {
 
     private Racing(Cars cars, int tryCount, Moving movingStrategy) {
         this.cars = cars;
-        this.tryCount = tryCount;
+        this.tryCount = new TryCount(tryCount);
         this.movingStrategy = movingStrategy;
     }
 
@@ -23,15 +23,15 @@ public class Racing {
             return roundResults;
         }
 
-        for (int count = 0; count < tryCount; count++) {
+        tryCount.forEach(count -> {
             cars.moveAll(movingStrategy);
             roundResults.add(cars.roundResult());
-        }
+        });
 
         return roundResults;
     }
 
     private boolean isUnPlayable() {
-        return cars.isEmpty() || tryCount <= 0;
+        return cars.isEmpty() || tryCount.zeroOrLessThanZero();
     }
 }
