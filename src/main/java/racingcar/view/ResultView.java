@@ -6,25 +6,23 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void showResult(int times, List<Car> carList) {
-        if (times == 0) {
-            System.out.println("\n실행 결과");
+    public static void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + markLocation(car.getLocation()));
         }
-
-        for (Car car : carList) {
-            System.out.println(printLocation(car.getLocation()));
-        }
-
         System.out.println();
     }
 
-    public static String printLocation(int location) {
-        String locationMark = "-";
-        while (location > 1) {
-            locationMark += "-";
+    private static String markLocation(int location) {
+        String mark = "";
+        while (location > 0) {
+            mark += "-";
             location--;
         }
-        return locationMark;
+        return mark;
     }
 
+    public static void printGameResult(List<String> cars){
+        System.out.println(cars.toString() + "가 최종 우승했습니다.");
+    }
 }
