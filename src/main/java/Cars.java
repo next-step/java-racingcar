@@ -6,7 +6,7 @@ public class Cars {
 
     public List<Car> makeCars(String[] strArr) {
         for (int i = 0; i < strArr.length; i++) {
-            cars.add(new Car(strArr[i],0));
+            cars.add(new Car(strArr[i],0, false));
         }
         return cars;
     }

@@ -2,9 +2,12 @@ public class Car {
     private Name name;
     private int position;
 
-    public Car(String name, int position) {
+    private boolean isWinner;
+
+    public Car(String name, int position, boolean isWinner) {
         this.name = new Name(name);
         this.position = position;
+        this.isWinner = isWinner;
     }
 
     public void moveOnCondition(int num) {
@@ -24,12 +27,14 @@ public class Car {
         return position;
     }
 
-    public String getName() {
-        return name.toString();
+    public String getCarName() {
+        return name.getName();
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s", this.name);
+    public boolean getIsWinner() {
+        return isWinner;
+    }
+    public void setWinner(boolean winner) {
+        isWinner = winner;
     }
 }

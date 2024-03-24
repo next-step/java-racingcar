@@ -2,25 +2,43 @@ import java.util.List;
 
 public class Judge {
     public String judgeWinner(List<Car> carsList) {
-        int maxPosition = carsList.get(0).getPosition();
-        String winner = carsList.get(0).getName();
+        int maxPosition = 0;
+        String winnerName = "";
 
-        for (int i = 1; i < carsList.size(); i++) {
-            compareWin(maxPosition, winner, carsList, i);
+        for (int i = 0; i < carsList.size(); i++) {
+            compareWin(maxPosition, carsList, i);
         }
-        return winner;
+        for (int i = 0; i < carsList.size(); i++) {
+            winnerName += setWinnerList(carsList, i);
+        }
+
+        return winnerName;
     }
 
-    private void compareWin(int maxPosition, String winner, List<Car> carsList, int i) {
+    private void compareWin(int maxPosition, List<Car> carsList, int i) {
         int compareNum = carsList.get(i).getPosition();
 
-        if (maxPosition < compareNum) {
+        if (isMax(maxPosition, compareNum).equals(State.BIGGER) || isMax(maxPosition,compareNum).equals(State.SAME)) {
             maxPosition = compareNum;
-            winner = carsList.get(i).getName();
+            carsList.get(i).setWinner(true);
         }
+    }
 
-        if (maxPosition == compareNum) {
-            winner = winner + ", " + carsList.get(i).getName();
+    private String setWinnerList(List<Car> carsList, int i){
+        String winnerList = "";
+        if (carsList.get(i).getIsWinner() == true) {
+            winnerList += carsList.get(i).getCarName() + " ";
         }
+        return winnerList;
+    }
+
+    private State isMax(int max, int num) {
+        if (max < num) {
+            return State.BIGGER;
+        }
+        if (max == num) {
+            return State.SAME;
+        }
+        return State.SMALLER;
     }
 }
