@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(String[] names, CarMoveStrategy[] carMoveStrategies) {
+    public Cars(String[] names, CarMoveStrategy carMoveStrategy) {
         cars = new ArrayList<>();
         for(String name : names) {
-            cars.add(new Car(name, carMoveStrategies));
+            cars.add(new Car(name, carMoveStrategy));
         }
     }
 

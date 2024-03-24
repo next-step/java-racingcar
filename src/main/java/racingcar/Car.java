@@ -3,21 +3,18 @@ package racingcar;
 public class Car {
 	private final CarName carName;
 	private int position;
-	private final CarMoveStrategy[] carMoveStrategies;
+	private final CarMoveStrategy carMoveStrategy;
 
-	public Car (String carName, CarMoveStrategy... carMoveStrategies) {
+	public Car (String carName, CarMoveStrategy carMoveStrategy) {
 		this.carName = new CarName(carName);
 		position = 0;
-		this.carMoveStrategies = carMoveStrategies;
+		this.carMoveStrategy = carMoveStrategy;
 	}
 
 	public void move() {
-		for(CarMoveStrategy carMoveStrategy : carMoveStrategies) {
-			if(!carMoveStrategy.isMovable()) {
-				return;
-			}
+		if(carMoveStrategy.isMovable()) {
+			position++;
 		}
-		position++;
 	}
 
 	public boolean isEqualPosition(int position) {

@@ -1,8 +1,6 @@
 package controller;
 
-import racingcar.CarMoveStrategy;
-import racingcar.Cars;
-import racingcar.StrategyFactory;
+import racingcar.*;
 import view.InputView;
 import view.PrintView;
 
@@ -23,9 +21,7 @@ public class Game {
 	}
 
 	private Cars setCars(String[] carNames) {
-		CarMoveStrategy[] carMoveStrategies = StrategyFactory.getCarMoveStrategies();
-
-		return new Cars(carNames, carMoveStrategies);
+		return new Cars(carNames, new MultipleStrategy(new RandomCarMoveStrategy()));
 	}
 
 	private void tryGame(Cars cars) {
