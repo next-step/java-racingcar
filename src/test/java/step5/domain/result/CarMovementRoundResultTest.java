@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step4.view.result.CarMovementResult;
-import step4.view.result.CarMovementRoundResult;
 
 import java.util.List;
 import java.util.stream.Stream;

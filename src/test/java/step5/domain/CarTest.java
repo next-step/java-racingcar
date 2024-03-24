@@ -2,10 +2,7 @@ package step5.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.Car;
-import step4.domain.Moving;
-import step4.domain.RandomMoving;
-import step4.view.result.CarMovementResult;
+import step5.domain.result.CarMovementResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -24,9 +21,8 @@ public class CarTest {
     void move() {
         final Car car = Car.withName("test");
 
-        car.move(() -> true);
+        final CarMovementResult result = car.move(() -> true);
 
-        final CarMovementResult result = car.movementResult();
         assertThat(result.moveCount()).isEqualTo(1);
     }
 
@@ -35,9 +31,8 @@ public class CarTest {
     void notMove() {
         final Car car = Car.withName("test");
 
-        car.move(() -> false);
+        final CarMovementResult result = car.move(() -> false);
 
-        final CarMovementResult result = car.movementResult();
         assertThat(result.moveCount()).isEqualTo(0);
     }
 

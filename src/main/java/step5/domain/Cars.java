@@ -33,17 +33,10 @@ public class Cars {
         return cars.isEmpty();
     }
 
-    public void moveAll(Moving movingStrategy) {
-        cars.forEach(car -> car.move(movingStrategy));
+    public CarMovementRoundResult moveAll(Moving movingStrategy) {
+        return new CarMovementRoundResult(cars.stream()
+                .map(car -> car.move(movingStrategy))
+                .collect(Collectors.toList()));
     }
 
-    public CarMovementRoundResult roundResult() {
-        return CarMovementRoundResult.from(movementResults());
-    }
-
-    private List<CarMovementResult> movementResults() {
-        return cars.stream()
-                .map(Car::movementResult)
-                .collect(Collectors.toList());
-    }
 }

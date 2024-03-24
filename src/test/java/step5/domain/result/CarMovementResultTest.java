@@ -2,8 +2,7 @@ package step5.domain.result;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.Car;
-import step4.view.result.CarMovementResult;
+import step5.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +14,7 @@ public class CarMovementResultTest {
         final String carName = "test";
         final Car car = Car.withName(carName);
 
-        final CarMovementResult result = car.movementResult();
+        final CarMovementResult result = car.move(() -> false);
 
         assertThat(result).isNotNull()
                 .satisfies(r -> {

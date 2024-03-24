@@ -3,9 +3,6 @@ package step5.domain.result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import step4.view.result.CarMovementResult;
-import step4.view.result.CarMovementRoundResult;
-import step4.view.result.CarMovementRoundResults;
 
 import java.util.Collections;
 import java.util.List;

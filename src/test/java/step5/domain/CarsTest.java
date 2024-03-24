@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step4.domain.Cars;
-import step4.view.result.CarMovementRoundResult;
+import step5.domain.result.CarMovementRoundResult;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,9 +36,8 @@ public class CarsTest {
     @Test
     public void moveAll() {
         final Cars cars = Cars.from(List.of("pobi", "crong", "honux"));
-        cars.moveAll(() -> true);
+        final CarMovementRoundResult roundResult = cars.moveAll(() -> true);
 
-        final CarMovementRoundResult roundResult = cars.roundResult();
         assertThat(roundResult.winnerNames()).containsExactly("pobi", "crong", "honux");
     }
 }

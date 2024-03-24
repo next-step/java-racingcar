@@ -23,13 +23,10 @@ public class Car {
         }
     }
 
-    public void move(Moving movingStrategy) {
+    public CarMovementResult move(Moving movingStrategy) {
         if (movingStrategy.movable()) {
             moveCount++;
         }
-    }
-
-    public CarMovementResult movementResult() {
         return new CarMovementResult(name, moveCount);
     }
 

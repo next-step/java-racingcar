@@ -23,10 +23,7 @@ public class Racing {
             return roundResults;
         }
 
-        tryCount.forEach(count -> {
-            cars.moveAll(movingStrategy);
-            roundResults.add(cars.roundResult());
-        });
+        tryCount.forEach(count -> roundResults.add(cars.moveAll(movingStrategy)));
 
         return roundResults;
     }
