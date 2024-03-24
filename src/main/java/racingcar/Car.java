@@ -4,17 +4,17 @@ public class Car {
     private Name name;
     private Position position;
 
-    public Car(Name name, Position position) {
-        this.name = name;
-        this.position = position;
-    }
-
     public Car(String carName) {
         this(new Name(carName), new Position());
     }
 
     public Car(String carName, int position) {
         this(new Name(carName), new Position(position));
+    }
+
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String name() {

@@ -6,7 +6,7 @@ public final class Position {
     private int position;
 
     public Position() {
-        position = 0;
+        this(0);
     }
 
     public Position(int position) {

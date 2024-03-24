@@ -9,5 +9,8 @@ public class PositionTest {
     @DisplayName("position")
     public void position() {
         Assertions.assertThat(new Position(4)).isEqualTo(new Position(4));
+        Assertions.assertThatThrownBy(() -> {
+            new Position(-1);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }

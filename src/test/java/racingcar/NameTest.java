@@ -10,5 +10,11 @@ public class NameTest {
     @DisplayName("name")
     public void name() {
         Assertions.assertThat(new Name("car")).isEqualTo(new Name("car"));
+        Assertions.assertThatThrownBy(() -> {
+            new Name("");
+        }).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> {
+            new Name("longName");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
