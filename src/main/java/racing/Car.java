@@ -1,5 +1,6 @@
 package racing;
 
+
 import exception.CarLocationException;
 import util.RandomNumberGenerator;
 
@@ -33,6 +34,7 @@ public class Car implements Comparable<Car>{
             return location.move(1);
         }
         return location;
+
     }
 
 }
