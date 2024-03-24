@@ -22,9 +22,15 @@ public class StringAddCalculator {
                 .mapToInt(StringAddCalculator::parseAndValidate)
                 .sum();
     }
+
     private static int parseAndValidate(String str) {
-        int num = Integer.parseInt(str);
-        if (num >= 0) return num;
-        throw new RuntimeException("음수나 숫자가 아닌 문자는 허용되지 않습니다.");
+        try {
+            int num = Integer.parseInt(str);
+            if (num < 0)
+                throw new RuntimeException("음수는 허용되지 않습니다: " + str);
+            return num;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("유효하지 않은 숫자입니다: " + str, e);
+        }
     }
 }
