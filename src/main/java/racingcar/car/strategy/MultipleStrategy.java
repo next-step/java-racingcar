@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car.strategy;
 
 public class MultipleStrategy implements CarMoveStrategy {
 	private final CarMoveStrategy[] carMoveStrategies;

@@ -1,6 +1,8 @@
 package controller;
 
-import racingcar.*;
+import racingcar.car.Cars;
+import racingcar.car.strategy.MultipleStrategy;
+import racingcar.car.strategy.RandomCarMoveStrategy;
 import view.InputView;
 import view.PrintView;
 

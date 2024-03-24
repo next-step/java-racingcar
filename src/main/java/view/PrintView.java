@@ -1,6 +1,6 @@
 package view;
 
-import racingcar.Car;
+import racingcar.car.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
