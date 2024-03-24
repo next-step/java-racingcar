@@ -6,23 +6,23 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static int splitAndSum(String inputStr) {
-        if (isNullOrEmpty(inputStr))
-            return 0;
-        Matcher m = Pattern.compile("//(.)\n(.*)")
-                .matcher(inputStr);
-        if (m.find()) {
-            return calcWithDelimiter(m.group(1), m.group(2));
-        }
-        return calcWithDelimiter("[,:]", inputStr);
+        if (isNullOrEmpty(inputStr)) return 0;
+        return Arrays.stream(split(inputStr))
+                .mapToInt(StringAddCalculator::parseAndValidate)
+                .sum();
     }
+
     private static boolean isNullOrEmpty(String input) {
         return input == null || input.isEmpty();
     }
 
-    private static int calcWithDelimiter(String delimiter, String inputStr) {
-        return Arrays.stream(inputStr.split(delimiter))
-                .mapToInt(StringAddCalculator::parseAndValidate)
-                .sum();
+    private static String[] split(String input) {
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(Pattern.quote(customDelimiter));
+        }
+        return input.split(",|:");
     }
 
     private static int parseAndValidate(String str) {
