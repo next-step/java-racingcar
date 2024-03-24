@@ -19,13 +19,14 @@ public class StringAddCalculator {
 
     private static int splitAndSum(String delimiter, String inputStr) {
         return Arrays.stream(inputStr.split(delimiter))
-                .mapToInt(s -> {
-                    int number = Integer.parseInt(s); // 문자열을 정수로 변환
-                    if (number < 0) { // 변환된 정수가 음수인 경우
-                        throw new RuntimeException("음수 입력은 불가능합니다.");
-                    }
-                    return number; // 변환된 양수 정수 반환
-                })
+                .mapToInt(StringAddCalculator::parseAndValidate)
                 .sum();
+    }
+    private static int parseAndValidate(String str) {
+        int num = Integer.parseInt(str);
+        if (num < 0) {
+            throw new RuntimeException("음수는 허용되지 않습니다.");
+        }
+        return num;
     }
 }
