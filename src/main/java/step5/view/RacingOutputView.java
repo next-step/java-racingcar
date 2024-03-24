@@ -24,8 +24,7 @@ public class RacingOutputView {
 
         roundResults.forEach(RacingOutputView::printRacingRoundResult);
 
-        roundResults.lastRoundResult()
-                .ifPresent(RacingOutputView::printRacingWinner);
+        printRacingWinner(roundResults.winnerNames());
     }
 
     public static void printResultTitle() {
@@ -45,8 +44,8 @@ public class RacingOutputView {
         return MOVE_RECORD_UNIT.repeat(Math.max(0, moveCount));
     }
 
-    private static void printRacingWinner(CarMovementRoundResult result) {
-        printLine(String.format(WINNER_MESSAGE_FORMAT, joinWinnerNames(result.winnerNames())));
+    private static void printRacingWinner(List<String> winnerNames) {
+        printLine(String.format(WINNER_MESSAGE_FORMAT, joinWinnerNames(winnerNames)));
     }
 
     private static String joinWinnerNames(List<String> winnerNames) {

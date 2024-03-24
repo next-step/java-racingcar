@@ -4,7 +4,7 @@ import step5.domain.result.CarMovementResult;
 
 public class Car {
     private final CarName name;
-    private int moveCount;
+    private final MoveCount moveCount;
 
     public static Car withName(String name) {
         return new Car(name);
@@ -12,11 +12,12 @@ public class Car {
 
     private Car(String name) {
         this.name = new CarName(name);
+        this.moveCount = new MoveCount();
     }
 
     public CarMovementResult move(Moving movingStrategy) {
         if (movingStrategy.movable()) {
-            moveCount++;
+            moveCount.increase();
         }
         return new CarMovementResult(name, moveCount);
     }

@@ -7,13 +7,13 @@ public class Racing {
     private final TryCount tryCount;
     private final Moving movingStrategy;
 
-    public static Racing randomMoving(Cars cars, int tryCount) {
+    public static Racing randomMoving(Cars cars, TryCount tryCount) {
         return new Racing(cars, tryCount, new RandomMoving());
     }
 
-    private Racing(Cars cars, int tryCount, Moving movingStrategy) {
+    private Racing(Cars cars, TryCount tryCount, Moving movingStrategy) {
         this.cars = cars;
-        this.tryCount = new TryCount(tryCount);
+        this.tryCount = tryCount;
         this.movingStrategy = movingStrategy;
     }
 
