@@ -11,14 +11,14 @@ public class StringAddCalculator {
         // java.util.regex 패키지의 Matcher, Pattern import
         Matcher m = Pattern.compile("//(.)\n(.*)")
                 .matcher(inputStr);
-
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            return Arrays.stream(m.group(2).split(customDelimiter))
-                    .mapToInt(Integer::parseInt)
-                    .sum();
+            return calculate(m.group(1), m.group(2));
         }
-        return Arrays.stream(inputStr.split("[,:]"))
+        return calculate("[,:]", inputStr);
+    }
+
+    private static int calculate(String delimiter, String inputStr) {
+        return Arrays.stream(inputStr.split(delimiter))
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
