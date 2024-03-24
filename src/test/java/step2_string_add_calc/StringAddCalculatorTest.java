@@ -28,4 +28,11 @@ class StringAddCalculatorTest {
         assertThat(splitAndSum("2,4")).isEqualTo(6);
         assertThat(splitAndSum("10,4")).isEqualTo(14);
     }
+
+    @Test
+    @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다.")
+    void useDelimiterInsteadOfComma() {
+        assertThat(splitAndSum("2,4")).isEqualTo(6);
+        assertThat(splitAndSum("10:4")).isEqualTo(14);
+    }
 }
