@@ -6,18 +6,20 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static int splitAndSum(String inputStr) {
-        if (inputStr == null || inputStr.isEmpty())
+        if (isNullOrEmpty(inputStr))
             return 0;
-        // java.util.regex 패키지의 Matcher, Pattern import
         Matcher m = Pattern.compile("//(.)\n(.*)")
                 .matcher(inputStr);
         if (m.find()) {
-            return splitAndSum(m.group(1), m.group(2));
+            return calcWithDelimiter(m.group(1), m.group(2));
         }
-        return splitAndSum("[,:]", inputStr);
+        return calcWithDelimiter("[,:]", inputStr);
+    }
+    private static boolean isNullOrEmpty(String input) {
+        return input == null || input.isEmpty();
     }
 
-    private static int splitAndSum(String delimiter, String inputStr) {
+    private static int calcWithDelimiter(String delimiter, String inputStr) {
         return Arrays.stream(inputStr.split(delimiter))
                 .mapToInt(StringAddCalculator::parseAndValidate)
                 .sum();
