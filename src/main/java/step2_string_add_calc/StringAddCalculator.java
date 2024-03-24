@@ -24,9 +24,7 @@ public class StringAddCalculator {
     }
     private static int parseAndValidate(String str) {
         int num = Integer.parseInt(str);
-        if (num < 0) {
-            throw new RuntimeException("음수는 허용되지 않습니다.");
-        }
-        return num;
+        if (num >= 0) return num;
+        throw new RuntimeException("음수나 숫자가 아닌 문자는 허용되지 않습니다.");
     }
 }
