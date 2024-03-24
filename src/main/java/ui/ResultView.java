@@ -3,7 +3,8 @@ package ui;
 import racing.Car;
 import racing.RacingCars;
 
-import java.util.List;
+import java.util.Iterator;
+import java.util.Set;
 
 public class ResultView {
 
@@ -13,10 +14,10 @@ public class ResultView {
             System.out.println("실행 결과");
         }
 
-        List<Car> racedCarList = racingCars.getCarList();
-
-        for (int i = 0; i < racedCarList.size(); i++) {
-            showCarLocation(racedCarList.get(i));
+        Set<Car> racingCarsSet = racingCars.getCarSet();
+        Iterator<Car> iterator = racingCarsSet.iterator();
+        while (iterator.hasNext()) {
+            showCarLocation(iterator.next());
             System.out.println();
         }
         System.out.println();
@@ -31,10 +32,9 @@ public class ResultView {
 
     public static void showRaceWinner(RacingCars racingCars) {
         StringBuilder sb = new StringBuilder();
-        List<Car> winCarList = racingCars.getWinCarList();
-        for (int i = 0; i < winCarList.size(); i++) {
-            Car winnerCar = winCarList.get(i);
-            sb.append(winnerCar.getName()).append(", ");
+        Iterator<Car> winCarIterator = racingCars.getWinCarList().iterator();
+        while (winCarIterator.hasNext()) {
+            sb.append(winCarIterator.next().getName()).append(", ");
         }
         sb.setLength(sb.length() - 2);
         sb.append("가 최종 우승했습니다.");

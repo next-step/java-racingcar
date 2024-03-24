@@ -1,47 +1,48 @@
 package racing;
 
 import exception.CarLocationException;
-import util.NumberUtil;
-import util.RacingValidator;
-import util.RandomNumberGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    private List<Car> carList;
+    private Set<Car> carSet;
 
     public RacingCars(String carNames) {
         String[] carNameArr = carNames.split(",");
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carNameArr.length; i++) {
-            carList.add(new Car(carNameArr[i], new Location(0)));
+        Set<Car> carSet = new TreeSet<>(Comparator.comparing(Car::getName));
+        for (String carName : carNameArr) {
+            carSet.add(new Car(carName, new Location(0)));
         }
-        this.carList = carList;
+        this.carSet = carSet;
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
+    public Set<Car> getCarSet() {
+        return this.carSet;
     }
 
     public void startRace() throws CarLocationException {
-        for (int i = 0; i < this.carList.size(); i++) {
-            oneCarRace(i, carList.get(i));
+        Iterator<Car> iterator = carSet.iterator();
+        Set<Car> updatedCarSet = new TreeSet<>(Comparator.comparing(Car::getName));
+        while (iterator.hasNext()) {
+            Car nextCar = iterator.next();
+            Location newCarLocation = nextCar.moveForward();
+            String carName = nextCar.getName();
+            updatedCarSet.add(new Car(carName, newCarLocation));
         }
+        carSet.clear();
+        carSet.addAll(updatedCarSet);
     }
 
-    private void oneCarRace(int idx, Car car) throws CarLocationException {
-        Integer randomNumber = RandomNumberGenerator.getRandomNumber();
-        if (RacingValidator.isMovable(randomNumber)) {
-            Location newCarLocation = car.moveForward();
-            carList.remove(idx);
-            carList.add(idx, new Car(car.getName(), newCarLocation));
-        }
+    public Set<Car> getWinCarList() {
+        int winnerLocation = getMaxNumberOfList(carSet.stream().map(Car::getLocation).collect(Collectors.toList()));
+        return carSet.stream().filter(car -> car.getLocation() == winnerLocation).collect(Collectors.toSet());
     }
 
-    public List<Car> getWinCarList() {
-        int winnerLocation = NumberUtil.getMaxNumberOfList(carList.stream().map(Car::getLocation).collect(Collectors.toList()));
-        return carList.stream().filter(car -> car.getLocation() == winnerLocation).collect(Collectors.toList());
+    private int getMaxNumberOfList(List<Integer> numList) {
+        return numList.stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(Integer.MIN_VALUE);
     }
 }
