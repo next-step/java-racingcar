@@ -6,19 +6,23 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printResult(List<Car> cars) {
+    public static void printRoundResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + markLocation(car.getLocation()));
         }
         System.out.println();
     }
 
-    public static String markLocation(int location) {
-        String mark = "-";
+    private static String markLocation(int location) {
+        String mark = "";
         while (location > 0) {
             mark += "-";
             location--;
         }
         return mark;
+    }
+
+    public static void printGameResult(List<String> cars){
+        System.out.println(cars.toString() + "가 최종 우승했습니다.");
     }
 }

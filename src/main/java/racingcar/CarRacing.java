@@ -1,10 +1,9 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-import static racingcar.view.ResultView.printResult;
+import static racingcar.view.ResultView.printGameResult;
+import static racingcar.view.ResultView.printRoundResult;
 
 public class CarRacing {
 
@@ -29,9 +28,10 @@ public class CarRacing {
 
     public void playGame() {
         for (int i = 0; i < times; i++) {
-            printResult(cars);
             run();
+            printRoundResult(cars);
         }
+        printGameResult(gameResult());
     }
 
     private void run() {
@@ -41,9 +41,42 @@ public class CarRacing {
     }
 
     private void moveForward(Car car) {
+        if(car.getLocation() == 0){
+            car.move(1);
+            return;
+        }
+
         int condition = random.nextInt(10);
         if (condition >= 4) {
             car.move(1);
         }
     }
+
+    private List<String> gameResult() {
+        int max = 0;
+        for (int i = 0; i < cars.size(); i++) {
+            max = getMaxLocation(i, max);
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            checkWinner(i, max, winners);
+        }
+
+        return winners;
+    }
+
+    private void checkWinner(int i, int max, List<String> winners) {
+        if (cars.get(i).getLocation() == max) {
+            winners.add(cars.get(i).getName());
+        }
+    }
+
+    private int getMaxLocation(int i, int max) {
+        if (cars.get(i).getLocation() > max) {
+            max = cars.get(i).getLocation();
+        }
+        return max;
+    }
+
 }
