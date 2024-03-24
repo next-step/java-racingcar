@@ -14,7 +14,7 @@ public class PrintView {
 	}
 
 	public static void printPosition(Car car) {
-		System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+		System.out.println(car.getCarName() + " : " + "-".repeat(car.getPosition()));
 	}
 
 	public static void printEmptyLine() {

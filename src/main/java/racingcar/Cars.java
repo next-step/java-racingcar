@@ -35,7 +35,7 @@ public class Cars {
 
         return cars.stream()
                 .filter(car -> car.isEqualPosition(maxPosition))
-                .map(Car::getName)
+                .map(Car::getCarName)
                 .collect(Collectors.joining(","));
     }
 

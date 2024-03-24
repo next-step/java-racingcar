@@ -1,14 +1,12 @@
 package racingcar;
 
 public class Car {
-	private final String name;
+	private final CarName carName;
 	private int position;
 	private final CarMoveStrategy[] carMoveStrategies;
 
-	public Car (String name, CarMoveStrategy... carMoveStrategies) {
-		CarValidation.checkCarName(name);
-
-		this.name = name;
+	public Car (String carName, CarMoveStrategy... carMoveStrategies) {
+		this.carName = new CarName(carName);
 		position = 0;
 		this.carMoveStrategies = carMoveStrategies;
 	}
@@ -26,8 +24,8 @@ public class Car {
 		return this.position == position;
 	}
 
-	public String getName() {
-		return name;
+	public String getCarName() {
+		return carName.getName();
 	}
 
 	public int getPosition() {
