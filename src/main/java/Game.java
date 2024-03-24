@@ -6,11 +6,13 @@ import java.util.Scanner;
  */
 
 public class Game {
-    private static int gameCount;
-    private static Car[] cars;
+
+    public static final String DELIMETER = "-";
+    private int gameCount;
+    private Car[] cars;
 
     public void start() {
-        cars = createCar();
+        cars =  createCar();
         gameCount = getGameCount();
         System.out.println("실행 결과");
         for (int i = 0; i < gameCount; i++) {
@@ -19,14 +21,15 @@ public class Game {
 
     }
 
-    private static void job() {
-        for (Car car : cars) {
-            car.drive(car.getNumber());
+    private void job() {
+        for (Car car : this.cars) {
+            car.drive(car.getNumber(), DELIMETER);
+            System.out.println(car.getStatus());
         }
         System.out.println("                           ");
     }
 
-    private static int getGameCount() {
+    private int getGameCount() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("시도할 회수는 몇 회 인가요?");
         int gameCount = scanner.nextInt();
@@ -35,7 +38,7 @@ public class Game {
     }
 
 
-    private static Car[] createCar() {
+    private Car[] createCar() {
         int carCount = getCarCount();
         Car[] cars = new Car[carCount];
         for (int i = 0; i < carCount; i++) {
@@ -44,7 +47,7 @@ public class Game {
         return cars;
     }
 
-    private static int getCarCount() {
+    private int getCarCount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         Scanner scanner = new Scanner(System.in);
         int carCount = Integer.parseInt(scanner.nextLine());
@@ -52,8 +55,8 @@ public class Game {
         return carCount;
     }
 
-    public static Car[] getCars() {
-        return cars;
+    public Car[] getCars() {
+        return this.cars;
     }
 }
 

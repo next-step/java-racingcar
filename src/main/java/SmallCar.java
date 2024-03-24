@@ -2,15 +2,15 @@
  * @author jeongheekim
  * @date 3/12/24
  */
-public class SmallCar implements Car {
+public class SmallCar extends Car {
     private String status = "";
 
     @Override
-    public void drive(int num) {
+    public void drive(int num, String delimeter) {
         if (num >= 4) {
-            this.status = this.status + "-";
+            this.status = this.status + delimeter;
         }
-        System.out.println(this.status);
+
     }
 
     @Override
@@ -18,8 +18,6 @@ public class SmallCar implements Car {
         return (int) (Math.random() * 10);
     }
 
-    public String getStatus() {
-        return status;
-    }
+
 }
 

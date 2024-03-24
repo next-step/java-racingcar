@@ -1,27 +1,30 @@
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author jeongheekim
  * @date 3/18/24
  */
 class SmallCarTest {
-    @Test
-    @DisplayName("drive 메서드가 호출 되면 status는 empty가 아니다.")
-    void whenDriveStatusMoreThan1() {
-        SmallCar car = new SmallCar();
-        car.drive(car.getNumber());
-        String status = car.getStatus();
-        assertFalse(status.isEmpty());
-    }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {4,5,6})
     @DisplayName("random 값이 4이상일 경우 앞으로 전진한다.")
-    void whenRandom4goDriveTest() {
+    void whenRandom4goDriveTest(int randomNumber) {
         SmallCar car = new SmallCar();
-        assertTrue(car.getNumber() >= 4);
+        car.drive(randomNumber,"-");
+        assertTrue(car.getStatus().length() > 0);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    @DisplayName("random 값이 4미만일 경우 전진하지 않는다.")
+    void whenRandom4NotDriveTest(int randomNumber) {
+        SmallCar car = new SmallCar();
+        car.drive(randomNumber,"-");
+        assertTrue(car.getStatus().length() == 0);
+    }
 }

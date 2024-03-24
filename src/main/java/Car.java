@@ -1,10 +1,15 @@
 /**
  * @author jeongheekim
- * @date 3/12/24
+ * @date 3/25/24
  */
-public interface Car {
-    void drive(int num);
+public abstract class Car {
+    protected String status = "";
 
-    int getNumber();
+    public abstract void drive(int num, String delimiter);
+
+    public abstract int getNumber();
+
+    public String getStatus() {
+        return this.status;
+    }
 }
-
