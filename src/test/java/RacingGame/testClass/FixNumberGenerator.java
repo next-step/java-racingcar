@@ -1,4 +1,4 @@
-package RacingGame;
+package RacingGame.testClass;
 
 import RacingGame.common.NumberGenerator;
 

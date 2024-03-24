@@ -1,52 +1,42 @@
 package RacingGame.service;
 
+import RacingGame.common.RandomNumberGenerator;
 import RacingGame.model.CarsManager;
 import RacingGame.model.MovableStrategy;
-import RacingGame.model.Record;
+import RacingGame.model.RacingResult;
 
 import java.util.List;
 
 public class RacingGameService {
-    private MovableStrategy movableStrategy;
+    private final MovableStrategy movableStrategy;
 
     public RacingGameService() {
+        this(new MovableStrategy(new RandomNumberGenerator()));
     }
 
     public RacingGameService(MovableStrategy movableStrategy) {
         this.movableStrategy = movableStrategy;
     }
 
-    public Record play(int carCount, int stageCount) {
-        CarsManager carsManager = CarsManager.withCarCount(carCount);
-        Record record = new Record();
-
-        for (int i = 0; i < stageCount; i++) {
-            progressStage(carsManager);
-            record.addStage(carsManager);
-        }
-
-        return record;
-    }
-
     private void progressStage(CarsManager carsManager) {
         carsManager.tryMoveCars(movableStrategy);
     }
 
-    public List<String> splitCarNames(String input) {
-        return List.of(input.split(","));
-    }
+    public RacingResult play(String carNames, int stages) {
+        List<String> carNameList = splitCarNames(carNames);
 
-    public Record play(String carNames, int stageCount) {
-        CarsManager carsManager = CarsManager.withCarNames(splitCarNames(carNames));
-        Record record = new Record();
+        CarsManager carsManager = CarsManager.withCarNames(carNameList);
+        RacingResult racingResult = new RacingResult(carNameList, stages);
 
-        for (int i = 0; i < stageCount; i++) {
+        for (int i = 0; i < stages; i++) {
             progressStage(carsManager);
-            record.addStage(carsManager);
+            racingResult.addStage(carsManager.carNamePositions());
         }
 
-        record.addWinners(carsManager.winnerNames());
+        return racingResult;
+    }
 
-        return record;
+    public List<String> splitCarNames(String input) {
+        return List.of(input.split(","));
     }
 }

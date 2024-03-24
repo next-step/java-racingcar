@@ -1,20 +1,15 @@
 package RacingGame.model;
 
 public class Car {
-    private static final String CARNAME_LENGTH_EXCEED = "차량의 이름은 5글자가 넘어갈 수 없습니다";
-    private static final String DEFAULT_CAR_NAME = "NULL";
-    private static final int DEFAULT_MOVE_DISTANCE = 1;
     private static final int INITAIL_CAR_POSITION = 0;
-    private final String name;
-    private int position;
+    private static final String DEFAULT_CAR_NAME = "NULL";
+
+    private final Name name;
+    private Position position;
 
     public Car(String name, int position) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(CARNAME_LENGTH_EXCEED);
-        }
-
-        this.name = name;
-        this.position = position;
+        this.name = new Name(name);
+        this.position = Position.valueOf(position);
     }
 
     public Car() {
@@ -30,28 +25,20 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public void move(MovableStrategy strategy) {
-        if (isMoveCar(strategy)) {
+        if (strategy.movable()) {
             move();
         }
     }
 
     private void move() {
-        position += DEFAULT_MOVE_DISTANCE;
-    }
-
-    private static boolean isMoveCar(MovableStrategy strategy) {
-        return strategy.movable();
+        this.position = position.increase();
     }
 
     public String name() {
-        return this.name;
-    }
-
-    public boolean isPositionAt(int position) {
-        return this.position == position;
+        return name.getName();
     }
 }

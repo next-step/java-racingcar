@@ -2,6 +2,7 @@ package RacingGame;
 
 import RacingGame.model.Car;
 import RacingGame.model.CarsManager;
+import RacingGame.model.MovableStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,6 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -54,32 +56,17 @@ public class CarsManagerTest {
     }
 
     @Test
-    @DisplayName("우승한 차량을 반환 테스트")
-    void winnerCarsTest() {
-        List<Car> cars = List.of(
-                new Car("1등", 5),
-                new Car("2등", 4),
-                new Car("3등", 3),
-                new Car("4등", 2)
-        );
-
-        CarsManager carsManager = new CarsManager(cars);
-
-        assertThat(carsManager.winners().get(0)).isEqualTo(cars.get(0));
+    @DisplayName("차량들의 초기 위치는 0 이다.")
+    void testCarNamePositions() {
+        CarsManager carsManager = CarsManager.withCarNames(List.of("Car1", "Car2"));
+        assertThat(carsManager.carNamePositions()).isEqualTo(Map.of("Car1", 0, "Car2", 0));
     }
 
     @Test
-    @DisplayName("우승한 차량은 한명 이상 반환 할 수 있다")
-    void winnersCarsTest() {
-        List<Car> cars = List.of(
-                new Car("공동1등1", 5),
-                new Car("공동1등2", 5),
-                new Car("3등", 3),
-                new Car("4등", 2)
-        );
-
-        CarsManager carsManager = new CarsManager(cars);
-
-        assertThat(carsManager.winners()).contains(cars.get(0), cars.get(1));
+    @DisplayName("차량들은 초기 위치 0 에서 1로 이동한다.")
+    void moveCarsTest() {
+        CarsManager carsManager = CarsManager.withCarCount(2);
+        carsManager.tryMoveCars(new MovableStrategy(() -> 5));
+        assertThat(carsManager.getCarsPosition()).isEqualTo(List.of(1, 1));
     }
 }
