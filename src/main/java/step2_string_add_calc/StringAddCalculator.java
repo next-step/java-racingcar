@@ -6,7 +6,7 @@ public class StringAddCalculator {
     public static int splitAndSum(String inputStr) {
         if (inputStr == null || inputStr.isEmpty())
             return 0;
-        return Arrays.stream(inputStr.split(","))
+        return Arrays.stream(inputStr.split(",|:"))
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
