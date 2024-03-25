@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static racing.InputView.inputCarCount;
+import static racing.InputView.inputCarNames;
 import static racing.InputView.inputTryCount;
 import static racing.ResultView.printResult;
 import static racing.ResultView.printResultMessage;
@@ -12,12 +12,13 @@ import static racing.ResultView.printResultMessage;
 public class RacingMain {
     public static void main(String[] args) {
 
-        int carCount = inputCarCount();
+        String carNames = inputCarNames();
+        String[] names = carNames.split(",");
         int tryCount = inputTryCount();
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
 
         printResultMessage();

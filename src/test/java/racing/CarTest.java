@@ -20,4 +20,9 @@ public class CarTest {
         car.move(3);
         assertThat(car.getPosition()).isZero();
     }
+
+    @Test
+    void 우승자_찾기() {
+        
+    }
 }
