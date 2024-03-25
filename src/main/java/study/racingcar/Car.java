@@ -4,10 +4,7 @@ import java.util.Random;
 
 public class Car {
 
-    boolean move;
-    public Car() {
-
-    }
+    private int position;
 
     public boolean canMove() {
         Random random = new Random();
@@ -16,6 +13,14 @@ public class Car {
     }
 
     public void move() {
-        System.out.print("-");
+        canMove();
+        if (canMove()) {
+            position++;
+        }
+        convertToDash(this.position);
+    }
+
+    private void convertToDash(int position) {
+        System.out.print("-".repeat(position));
     }
 }

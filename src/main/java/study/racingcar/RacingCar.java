@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,15 +18,14 @@ public class RacingCar{
         System.out.println("시도할 회수는 몇 회 인가요?");
         int triedCount = scanner.nextInt();
 
-        Car[] cars = new Car[givenCars];
+        List<Car> cars = new ArrayList<>(givenCars);
+
 
         for (int i = 0; i < givenCars; i++) {
-            cars[i] = new Car();
+            cars.add(new Car());
 
             for (int j = 0; j < triedCount; j++) {
-                if (cars[i].canMove()) {
-                    cars[i].move();
-                }
+                cars.get(i).move();
             }
             System.out.println();
         }

@@ -1,4 +1,4 @@
-package study.racingcar.dto;
+package study.racingcar.view;
 
 public class ResultView {
 }
