@@ -7,15 +7,14 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WinnersTest {
+public class CarsTest {
     @Test
     void 우승자_찾기() {
         Car pobi = new Car("pobi", 4);
         Car jason = new Car("jason", 3);
         Car woni = new Car("woni", 4);
-        List<Car> cars = Arrays.asList(pobi, jason, woni);
-        List<Car> winners = Winners.findWinners(cars);
-        assertThat(winners).hasSize(2);
-        assertThat(winners).contains(pobi, woni);
+        Cars cars = new Cars(Arrays.asList(pobi, jason, woni));
+        assertThat(cars.findWinners()).hasSize(2);
+        assertThat(cars.findWinners()).contains(pobi, woni);
     }
 }

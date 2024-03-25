@@ -44,6 +44,24 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        return Winners.findWinners(this.cars);
+        return findWinners(maxPosition());
+    }
+
+    private List<Car> findWinners(CarNumber maxPosition) {
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.isMatch(maxPosition)) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private CarNumber maxPosition() {
+        CarNumber maxPosition = new CarNumber();
+        for (Car car : cars) {
+            maxPosition = car.max(maxPosition);
+        }
+        return maxPosition;
     }
 }

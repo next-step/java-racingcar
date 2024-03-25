@@ -9,17 +9,17 @@ public class Car {
 
     private final String name;
 
-    private Position position;
+    private CarNumber position;
 
     public Car(final String name) {
         this(name, 0);
     }
 
     Car(final String name, int position) {
-        this(name, new Position(position));
+        this(name, new CarNumber(position));
     }
 
-    Car(final String name, Position position) {
+    Car(final String name, CarNumber position) {
         if (StringUtils.isBlank(name)) {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
         }
@@ -27,7 +27,7 @@ public class Car {
         this.position = position;
     }
 
-    public Position getPosition() {
+    public CarNumber getPosition() {
         return position;
     }
 
@@ -45,12 +45,12 @@ public class Car {
             this.position.increase();
     }
 
-    public int max(int other) {
+    public CarNumber max(CarNumber other) {
         return this.position.max(other);
     }
 
-    public boolean isMatch(int maxPosition) {
-        return this.position.isMatch(maxPosition);
+    public boolean isMatch(CarNumber maxPosition) {
+        return this.position.equals(maxPosition);
     }
 
     @Override

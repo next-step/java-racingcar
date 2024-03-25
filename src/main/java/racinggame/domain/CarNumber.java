@@ -5,6 +5,10 @@ import java.util.Objects;
 public class CarNumber {
     private int number;
 
+    public CarNumber() {
+        this(0);
+    }
+
     public CarNumber(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("0보다 작은 값이 될 수 없습니다.");
