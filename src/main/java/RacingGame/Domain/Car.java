@@ -1,12 +1,5 @@
 package RacingGame.Domain;
 
-import RacingGame.View.InputView;
-import RacingGame.View.OutputView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class Car {
     private int move = 0;
     private String name;
@@ -16,19 +9,19 @@ public class Car {
         name = str;
     }
 
-    public void SetStrategy(RandomNumberStrategy randomNumberStrategy) {
+    public void setStrategy(RandomNumberStrategy randomNumberStrategy) {
         this.strategy = randomNumberStrategy;
     }
 
-    public void MoveForward() {
-        if (strategy.GenerateRandomNumber() >= 4) move++;
+    public void moveForward() {
+        if (strategy.generateRandomNumber() >= 4) move++;
     }
 
-    public int GetMoveInfo() {
+    public int getMoveInfo() {
         return move;
     }
 
-    public String GetName() {
+    public String getName() {
         return name;
     }
 }

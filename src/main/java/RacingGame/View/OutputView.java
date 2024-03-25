@@ -3,7 +3,6 @@ package RacingGame.View;
 import RacingGame.Domain.Car;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class OutputView {
     public void OutputView() {
@@ -21,7 +20,7 @@ public class OutputView {
     private void printCars(int[][] carStatus, int time, List<Car> carList) {
         int carNum = carStatus.length;
         for (int car = 0; car < carNum; car++) {
-            System.out.print(carList.get(car).GetName() + " : ");
+            System.out.print(carList.get(car).getName() + " : ");
             printCarStatus(carStatus[car][time]);
             System.out.println();
         }

@@ -5,60 +5,55 @@ import java.util.*;
 public class CarManager {
     List<Car> carList;
     int[][] carHistory;
+    int trialCount;
 
-    public CarManager(int trialNum, String[] carNames) {
+    public CarManager(int trialNum, String[] carNames, RandomNumberStrategy randomNumberStrategy) {
         carList = new ArrayList<>();
         carHistory = new int[carNames.length][trialNum];
-        for (int i = 0; i < carNames.length; i++) {
-            Car car = new Car(carNames[i]);
+        trialCount = trialNum;
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            car.setStrategy(randomNumberStrategy);
             carList.add(car);
         }
     }
 
-    public void MoveForwardCars(int trialNum) {
-        for (int i = 0; i < trialNum; i++) {
+    public void moveForwardCars() {
+        for (int i = 0; i < trialCount; i++) {
             moveForward(i);
         }
     }
 
-    private void moveForward(int trialNum) {
+    private void moveForward(int curTry) {
         for (int j = 0; j < carList.size(); j++) {
-            carList.get(j).MoveForward();
-            carHistory[j][trialNum] = carList.get(j).GetMoveInfo();
+            carList.get(j).moveForward();
+            carHistory[j][curTry] = carList.get(j).getMoveInfo();
         }
     }
 
-    public int[][] GetCarHistory() {
+    public int[][] getCarHistory() {
         return carHistory;
     }
 
-    public List<Car> GetCarList() {
+    public List<Car> getCarList() {
         return carList;
     }
 
-    public List<String> GetWinners() {
+    public List<String> getWinners() {
         Integer[] moveList = new Integer[carList.size()];
         for (int i = 0; i < carList.size(); i++) {
-            moveList[i] = carList.get(i).GetMoveInfo();
+            moveList[i] = carList.get(i).getMoveInfo();
         }
         Arrays.sort(moveList, Collections.reverseOrder());
         int maxMove = moveList[0];
-        List<String> winnerList = findWinner(maxMove);
-        return winnerList;
+        return findWinner(maxMove);
     }
 
     private List<String> findWinner(int maxMove) {
         List<String> winnerList = new ArrayList<>();
-        for (int i = 0; i < carList.size(); i++) {
-            if (carList.get(i).GetMoveInfo() == maxMove) winnerList.add(carList.get(i).GetName());
+        for (Car car : carList) {
+            if (car.getMoveInfo() == maxMove) winnerList.add(car.getName());
         }
         return winnerList;
-    }
-
-
-    public void SetStrategy(RandomNumberStrategy randomNumberStrategy) {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).SetStrategy(randomNumberStrategy);
-        }
     }
 }
