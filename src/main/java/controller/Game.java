@@ -1,7 +1,10 @@
-package racingcar;
+package controller;
 
-import io.InputView;
-import io.PrintView;
+import racingcar.car.Cars;
+import racingcar.car.strategy.MultipleStrategy;
+import racingcar.car.strategy.RandomCarMoveStrategy;
+import view.InputView;
+import view.PrintView;
 
 public class Game {
 	public void play() {
@@ -16,17 +19,15 @@ public class Game {
 			tryGame(cars);
 		}
 
-		PrintView.printWinnerMessage(cars.getWinnerName());
+		PrintView.printWinnerMessage(cars.getWinners());
 	}
 
 	private Cars setCars(String[] carNames) {
-		CarMoveStrategy[] carMoveStrategies = StrategyFactory.getCarMoveStrategies();
-
-		return new Cars(carNames, carMoveStrategies);
+		return new Cars(carNames, new MultipleStrategy(new RandomCarMoveStrategy()));
 	}
 
 	private void tryGame(Cars cars) {
-		cars.move();
+		PrintView.printPosition(cars.move());
 
 		PrintView.printEmptyLine();
 	}

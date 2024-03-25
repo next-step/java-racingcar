@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,14 +10,14 @@ class CarTest {
 	@Test
 	@DisplayName("Car이 생성된 후 초기 위치는 0이다.")
 	void whenCarCreatedThenPositionIs0() {
-		Car car = new Car("car");
+		Car car = new Car("car", () -> true);
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
 
 	@Test
 	@DisplayName("Car가 움직이면 위치는 증가한다.")
 	void whenCarMoveThenPositionIncreases() {
-		Car car = new Car("car");
+		Car car = new Car("car", () -> true);
 		car.move();
 
 		assertThat(car.getPosition()).isEqualTo(1);
