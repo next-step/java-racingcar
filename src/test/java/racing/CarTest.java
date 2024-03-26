@@ -13,7 +13,7 @@ class CarTest {
         Car car = new Car();
 
         car.move(4);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -21,7 +21,7 @@ class CarTest {
         Car car = new Car();
 
         car.move(3);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
@@ -40,7 +40,7 @@ class CarTest {
     }
 
     @Test
-    void findMultipleWinners() {
+    void findTwoWinners() {
         Car meta = new Car("meta", 4);
         Car apple = new Car("apple", 2);
         Car kia = new Car("	kia", 4);
@@ -51,5 +51,20 @@ class CarTest {
         assertThat(winners)
                 .hasSize(2)
                 .contains(meta, kia);
+    }
+
+    @Test
+    void findMultipleWinners() {
+        Car a = new Car("a", 1);
+        Car b = new Car("b", 2);
+        Car c = new Car("c", 2);
+        Car d = new Car("d", 2);
+
+        List<Car> cars = List.of(a,b,c,d);
+        List<Car> winners = Car.findWinners(cars);
+
+        assertThat(winners)
+                .hasSize(3)
+                .contains(b, c, d);
     }
 }

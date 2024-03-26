@@ -2,6 +2,7 @@ package racing;
 
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class ResultView {
 
@@ -28,7 +29,12 @@ public class ResultView {
         System.out.println();
     }
 
-    static void printWinners() {
+    static void printWinners(List<Car> winners) {
+        StringJoiner joiner = new StringJoiner(", ", "", "가 최종 우승했습니다.");
 
+        for (Car winner : winners) {
+            joiner.add(winner.getName());
+        }
+        System.out.print(joiner.toString());
     }
 }
