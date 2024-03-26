@@ -11,7 +11,6 @@ import static racing.ResultView.*;
 
 public class RacingMain {
     public static void main(String[] args) {
-        //TODO 함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.
 
         String[] names = inputCarNames().split(",");
         int tryCount = inputTryCount();
