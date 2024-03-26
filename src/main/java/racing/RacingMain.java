@@ -11,26 +11,28 @@ import static racing.ResultView.*;
 
 public class RacingMain {
     public static void main(String[] args) {
-        //TODO 함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.
 
-        String carNames = inputCarNames();
-        String[] names = carNames.split(",");
+        String[] names = inputCarNames().split(",");
         int tryCount = inputTryCount();
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+        List<Car> cars = getCars(names);
 
         printResultMessage();
 
         for (int i = 0; i < tryCount; i++) {
             carMove(cars);
             printResult(cars);
-            System.out.println();
         }
 
         printWinners(findWinners(cars));
+    }
+
+    private static List<Car> getCars(String[] names) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 
     private static void carMove(List<Car> cars) {

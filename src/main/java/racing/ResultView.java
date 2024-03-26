@@ -19,6 +19,7 @@ public class ResultView {
         for (Car car : cars) {
             printCarResult(car);
         }
+        System.out.println();
     }
 
     static void printCarResult(Car car) {
@@ -35,6 +36,6 @@ public class ResultView {
         for (Car winner : winners) {
             joiner.add(winner.getName());
         }
-        System.out.print(joiner.toString());
+        System.out.print(joiner);
     }
 }
