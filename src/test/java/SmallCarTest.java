@@ -13,6 +13,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class SmallCarTest {
 
     @ParameterizedTest
+    @ValueSource(ints = {4,5,6})
+    @DisplayName("random 값이 4이상일 경우 앞으로 전진한다.")
+    void whenRandom4goDriveTest(int randomNumber) {
+        SmallCar car = new SmallCar("pobi");
+        car.drive(randomNumber,"-");
+        assertTrue(car.getStatus().length() > 0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    @DisplayName("random 값이 4미만일 경우 전진하지 않는다.")
+    void whenRandom4NotDriveTest(int randomNumber) {
+        SmallCar car = new SmallCar("pobi");
+        car.drive(randomNumber,"-");
+        assertTrue(car.getStatus().length() == 0);
+    }
+
+    @ParameterizedTest
     @ValueSource(ints = {5})
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
     void carNameNotOverLength(int length) {
