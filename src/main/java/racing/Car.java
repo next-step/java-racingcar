@@ -1,6 +1,5 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,49 +7,60 @@ public class Car {
 
     private static final int GO_CONDITION = 4;
 
-    private int position = 0;
-    private String name;
+    Position position;
+    Name name;
 
     public Car() {
+        this("");
     }
 
     public Car(String name) {
-        if (name.trim().length() > 5) {
-            throw new IllegalStateException("자동차 이름은 5자를 초과할 수 없다.");
-        }
-        this.name = name.trim();
+        this(name, 0);
     }
 
     public Car(String name, int position) {
-        this(name);
+        this(name, new Position(position));
+    }
+
+    public Car(String name, Position position) {
+        this.name = new Name(name);
+        this.position = position;
+    }
+
+    public Car(Name name, Position position) {
+        this.name = name;
         this.position = position;
     }
 
     public static List<Car> findWinners(List<Car> cars) {
         int maxPosition = findMaxPosition(cars);
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isEqual(maxPosition))
                 .collect(Collectors.toList());
+    }
+
+    private boolean isEqual(int maxPosition) {
+        return position.getPosition() == maxPosition;
     }
 
     private static int findMaxPosition(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElse(1);
+                .orElse(0);
     }
 
     public void move(int randomNumber) {
         if (randomNumber >= GO_CONDITION) {
-            position++;
+            position.increase();
         }
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 }

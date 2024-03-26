@@ -11,6 +11,7 @@ import static racing.ResultView.*;
 
 public class RacingMain {
     public static void main(String[] args) {
+        //TODO 함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.
 
         String carNames = inputCarNames();
         String[] names = carNames.split(",");
@@ -34,9 +35,10 @@ public class RacingMain {
 
     private static void carMove(List<Car> cars) {
         final int RANDOM_MAX = 10;
+        Random random = new Random();
 
         for (Car  car : cars) {
-            car.move(new Random().nextInt(RANDOM_MAX));
+            car.move(random.nextInt(RANDOM_MAX));
         }
     }
 }
