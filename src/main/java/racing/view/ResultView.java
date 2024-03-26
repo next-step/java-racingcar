@@ -1,8 +1,8 @@
-package ui;
+package racing.view;
 
-import racing.Car;
-import racing.RacingCars;
-import racing.RacingHistory;
+import racing.domain.Car;
+import racing.domain.RacingCars;
+import racing.domain.RacingHistory;
 
 import java.util.Iterator;
 import java.util.Set;

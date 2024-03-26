@@ -1,7 +1,10 @@
-package racing;
+package racing.service;
 
 import exception.CarLocationException;
-import ui.ResultView;
+import racing.domain.Count;
+import racing.domain.RacingCars;
+import racing.domain.RacingHistory;
+import racing.view.ResultView;
 
 import java.util.Set;
 

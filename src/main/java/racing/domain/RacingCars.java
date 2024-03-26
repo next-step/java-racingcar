@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import exception.CarLocationException;
 
