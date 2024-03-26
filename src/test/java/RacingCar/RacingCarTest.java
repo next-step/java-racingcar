@@ -1,6 +1,7 @@
 package RacingCar;
 
 import RacingGame.Domain.Car;
+import RacingGame.Domain.CarManager;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 
 public class RacingCarTest {
@@ -17,36 +17,70 @@ public class RacingCarTest {
 
     @Test
     void MoveForward() {
-        Car car = new Car();
-        car.MoveForward(0);
-        assertThat(car.GetMoveInfo()).isEqualTo(0);
-        car.MoveForward(5);
-        assertThat(car.GetMoveInfo()).isEqualTo(1);
-    }
+        BigNumberStrategy bigNumberStragey = new BigNumberStrategy();
+        SmallNumberStrategy smallNumberStrategy = new SmallNumberStrategy();
 
-    @Test
-    void MoveForward_여러_자동차() {
-        for (int i = 0; i < 3; i++) {
-            Car car = new Car();
-            carList.add(car);
-        }
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("crong");
+        Car car3 = new Car("honux");
+        car1.setStrategy(smallNumberStrategy);
+        car1.moveForward();
+        assertThat(car1.getMoveInfo()).isEqualTo(0);
 
-        carList.get(0).MoveForward(3);
-        carList.get(1).MoveForward(5);
-        carList.get(2).MoveForward(6);
+        car2.setStrategy(bigNumberStragey);
+        car2.moveForward();
+        assertThat(car2.getMoveInfo()).isEqualTo(1);
 
-        assertThat(carList.get(0).GetMoveInfo()).isEqualTo(0);
-        assertThat(carList.get(1).GetMoveInfo()).isEqualTo(1);
-        assertThat(carList.get(2).GetMoveInfo()).isEqualTo(1);
+        car3.setStrategy(bigNumberStragey);
+        car3.moveForward();
+        assertThat(car3.getMoveInfo()).isEqualTo(1);
     }
 
     @Test
     void GetMoveInfo() {
-        Car car = new Car();
-        assertThat(car.GetMoveInfo()).isEqualTo(0);
-        car.MoveForward(5);
-        assertThat(car.GetMoveInfo()).isEqualTo(1);
-        car.MoveForward(3);
-        assertThat(car.GetMoveInfo()).isEqualTo(1);
+        Car car = new Car("pobi");
+        car.setStrategy(new BigNumberStrategy());
+        assertThat(car.getMoveInfo()).isEqualTo(0);
+        car.moveForward();
+        assertThat(car.getMoveInfo()).isEqualTo(1);
+        car.moveForward();
+        assertThat(car.getMoveInfo()).isEqualTo(2);
+    }
+
+    @Test
+    void GetName() {
+        Car car = new Car("pobi");
+        assertThat(car.getName()).isEqualTo("pobi");
+    }
+
+    @Test
+    void GetCarList() {
+        String[] names = {"pobi", "crong", "honux"};
+        CarManager carManager = new CarManager(5, names, new BigNumberStrategy());
+        List<Car> carList = carManager.getCarList();
+        assertThat(carList.get(0).getName()).isEqualTo("pobi");
+        assertThat(carList.get(1).getName()).isEqualTo("crong");
+        assertThat(carList.get(2).getName()).isEqualTo("honux");
+    }
+
+    @Test
+    void MoveForwardCars() {
+        String[] names = {"pobi"};
+        CarManager carManager = new CarManager(5, names, new BigNumberStrategy());
+        List<Car> carList = carManager.getCarList();
+        carManager.moveForwardCars();
+        carList = carManager.getCarList();
+        assertThat(carList.get(0).getMoveInfo()).isEqualTo(5);
+    }
+
+    @Test
+    void GetWinners() {
+        String[] names = {"pobi", "crong", "honux"};
+        CarManager carManager = new CarManager(5, names, new BigNumberStrategy());
+        List<Car> carList = carManager.getCarList();
+        carManager.moveForwardCars();
+        assertThat(carManager.getWinners().get(0)).isEqualTo("pobi");
+        assertThat(carManager.getWinners().get(1)).isEqualTo("crong");
+        assertThat(carManager.getWinners().get(2)).isEqualTo("honux");
     }
 }
