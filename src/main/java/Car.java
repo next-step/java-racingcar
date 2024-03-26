@@ -4,7 +4,9 @@
  */
 public abstract class Car {
     protected String status = "";
+
     protected String name = "";
+
 
     public abstract void drive(int num, String delimiter);
 
@@ -21,4 +23,5 @@ public abstract class Car {
     public Car(String name) {
         this.name = name;
     }
+
 }

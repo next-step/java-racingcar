@@ -8,12 +8,12 @@ public class SmallCar extends Car {
         super(name);
     }
 
-
     @Override
     public void drive(int num, String delimeter) {
         if (num >= 4) {
             this.status = this.status + delimeter;
         }
+
     }
 
     @Override
