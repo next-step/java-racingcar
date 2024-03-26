@@ -21,7 +21,7 @@ class CarTest {
         Car car = new Car();
 
         car.move(3);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isZero();
     }
 
     @Test
@@ -43,7 +43,7 @@ class CarTest {
     void findTwoWinners() {
         Car meta = new Car("meta", 4);
         Car apple = new Car("apple", 2);
-        Car kia = new Car("	kia", 4);
+        Car kia = new Car("kia", 4);
 
         List<Car> cars = List.of(meta, apple, kia);
         List<Car> winners = Car.findWinners(cars);
