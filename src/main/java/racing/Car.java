@@ -6,9 +6,10 @@ import util.RandomNumberGenerator;
 
 public class Car implements Comparable<Car>{
 
+    private static final int MOVE_FORWARD_CONDITION_NUMBER = 4;
+    private static final int MOVE_AMOUNT = 1;
     private String name;
     private Location location;
-    private static final int MOVE_FORWARD_CONDITION_NUMBER = 4;
 
     public Car(String name, Location location) {
         this.name = name;
@@ -31,10 +32,9 @@ public class Car implements Comparable<Car>{
     public Location moveForward() throws CarLocationException {
         Integer randomNumber = RandomNumberGenerator.getRandomNumber();
         if (randomNumber >= MOVE_FORWARD_CONDITION_NUMBER) {
-            return location.move(1);
+            return location.move(MOVE_AMOUNT);
         }
         return location;
-
     }
 
 }

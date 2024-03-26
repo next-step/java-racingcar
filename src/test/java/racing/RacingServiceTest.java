@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import util.NumberUtil;
 import util.RacingValidator;
 import util.RandomNumberGenerator;
 
@@ -19,9 +18,11 @@ public class RacingServiceTest {
     @Test
     @DisplayName("자동차가 1칸 앞으로 전진한다.")
     void 자동차_전진_테스트() throws CarLocationException {
-        Car car = new Car("hbae", new Location(0));
+        Integer location = 0;
+        Integer moveAmount = 1;
+        Car car = new Car("hbae", new Location(location));
         Location newLocation = car.moveForward();
-        assertThat(newLocation.value()).isEqualTo(1);
+        assertThat(newLocation.value()).isEqualTo(location + moveAmount);
     }
 
     @ParameterizedTest
@@ -48,7 +49,14 @@ public class RacingServiceTest {
             maxValue = Math.max(maxValue, randomNumber);
             numList.add(randomNumber);
         }
-        assertThat(maxValue).isEqualTo(NumberUtil.getMaxNumberOfList(numList));
+        assertThat(maxValue).isEqualTo(getMaxNumberOfList(numList));
+    }
+
+    private int getMaxNumberOfList(List<Integer> numList) {
+        return numList.stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(Integer.MIN_VALUE);
     }
 
 

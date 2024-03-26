@@ -20,7 +20,6 @@ public class Location {
 
     public Location move(Integer moveAmount) throws CarLocationException {
         Integer newLocation = this.location + moveAmount;
-        validate(newLocation);
         return new Location(newLocation);
     }
 

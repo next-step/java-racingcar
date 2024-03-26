@@ -2,19 +2,26 @@ package ui;
 
 import racing.Car;
 import racing.RacingCars;
+import racing.RacingHistory;
 
 import java.util.Iterator;
 import java.util.Set;
 
 public class ResultView {
 
-    public static void showRaceResult(RacingCars racingCars, int tryCount) {
-        if (tryCount == 0) {
+    public static void showRaceResult(Set<RacingHistory> racingHistory) {
+        Iterator<RacingHistory> historyIterator = racingHistory.iterator();
+        while (historyIterator.hasNext()) {
+            RacingHistory nextRound = historyIterator.next();
+            showRaceRound(nextRound.getRound(), nextRound.getHistorySet());
+        }
+    }
+
+    private static void showRaceRound(Integer round, Set<Car> racingCarsSet) {
+        if (round == 1) {
             System.out.println();
             System.out.println("실행 결과");
         }
-
-        Set<Car> racingCarsSet = racingCars.getCarSet();
         Iterator<Car> iterator = racingCarsSet.iterator();
         while (iterator.hasNext()) {
             showCarLocation(iterator.next());
