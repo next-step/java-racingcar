@@ -18,17 +18,25 @@ public class Winner {
     }
 
     public List<String> getWinners(Car[] cars) {
-        List<String> winners = new ArrayList<>();
+        this.filterMaxLength(cars);
         for (Car car : cars) {
-            this.filterMaxLength(car);
+            this.checkWinnerCondition(car);
         }
-        return winners;
+        return this.winners;
     }
 
-    private void filterMaxLength(Car car) {
+    private void filterMaxLength (Car[] cars) {
+        for (Car car : cars) {
+            int carStatusLength = car.getStatus().length();
+            if (this.maxLength <= carStatusLength) {
+                this.updateMaxLength(carStatusLength);
+            }
+        }
+    }
+
+    private void checkWinnerCondition(Car car) {
         int statusLength = car.getStatus().length();
         if (this.maxLength <= statusLength) {
-            this.updateMaxLength(statusLength);
             this.addWinner(car.getName());
         }
     }
