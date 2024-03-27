@@ -40,11 +40,6 @@ public class Car {
             this.position.increase();
     }
 
-    public void move(CarRandomNo randomNo) {
-        if (randomNo.movable())
-            this.position.increase();
-    }
-
     public CarNumber max(CarNumber other) {
         return this.position.max(other);
     }
