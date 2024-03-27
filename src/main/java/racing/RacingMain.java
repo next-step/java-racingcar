@@ -2,34 +2,45 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import static racing.InputView.inputCarCount;
+import static racing.Car.findWinners;
+import static racing.InputView.inputCarNames;
 import static racing.InputView.inputTryCount;
-import static racing.ResultView.printResult;
+import static racing.ResultView.*;
 
 public class RacingMain {
     public static void main(String[] args) {
-        int carCount = inputCarCount();
+
+        String[] names = inputCarNames().split(",");
         int tryCount = inputTryCount();
-        List<Car> cars = new ArrayList<>();
+        List<Car> cars = getCars(names);
 
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-
-        System.out.println();
-        System.out.println("실행 결과");
+        printResultMessage();
 
         for (int i = 0; i < tryCount; i++) {
-            printResult(cars);
-            System.out.println();
             carMove(cars);
+            printResult(cars);
         }
+
+        printWinners(findWinners(cars));
+    }
+
+    private static List<Car> getCars(String[] names) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 
     private static void carMove(List<Car> cars) {
+        final int RANDOM_MAX = 10;
+        Random random = new Random();
+
         for (Car  car : cars) {
-            car.move();
+            car.move(random.nextInt(RANDOM_MAX));
         }
     }
 }
