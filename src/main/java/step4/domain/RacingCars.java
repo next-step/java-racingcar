@@ -3,19 +3,24 @@ package step4.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class RacingCars {
 
     List<RacingCar> racingCars;
 
     public RacingCars(int numberOfCars) {
-        racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) racingCars.add(new RacingCar(i));
+        racingCars = IntStream.rangeClosed(1, numberOfCars)
+                .mapToObj(RacingCar::new)
+                .collect(Collectors.toList());
     }
 
     public RacingCars(String[] cars) {
-        racingCars = new ArrayList<>();
-        for (int i = 0; i < cars.length; i++) racingCars.add(new RacingCar(i, cars[i]));
+        racingCars = IntStream.range(0, cars.length)
+                .mapToObj(i -> new RacingCar(i + 1, cars[i]))
+                .collect(Collectors.toList());
     }
 
     public List<RacingCar> list() {

@@ -1,16 +1,18 @@
 package step4.common;
 
-public class Positive {
+import static step4.common.Constant.NATURAL_FIRST;
+import static step4.common.Constant.ZERO;
 
-    private static final int ZERO = 0;
+public class Positive {
 
     private int positive;
 
     public Positive() {
-        this(ZERO);
+        this(NATURAL_FIRST);
     }
 
     public Positive(int positive) {
+        isValid(positive);
         this.positive = positive;
     }
 
@@ -20,6 +22,10 @@ public class Positive {
 
     public Positive plusOne() {
         return new Positive(++positive);
+    }
+
+    private void isValid(int positive) {
+        if (positive <= ZERO) throw new IllegalArgumentException("양수만 입력 가능합니다.");
     }
 
     @Override

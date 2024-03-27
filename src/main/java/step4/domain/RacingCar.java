@@ -7,13 +7,12 @@ import step4.common.Positive;
 import step4.strategy.MovableStrategy;
 import step4.strategy.RandomMovableStrategy;
 
+import static step4.common.Constant.EMPTY_STRING;
+import static step4.common.Constant.NATURAL_FIRST;
+
 public class RacingCar implements Comparable<RacingCar> {
 
-    private static final int INITIAL_NUMBER = 0;
 
-    private static final int INITIAL_POSITION = 0;
-
-    private static final String INITIAL_NAME = "UNNAMED";
 
     private final CarNumber number;
 
@@ -22,15 +21,15 @@ public class RacingCar implements Comparable<RacingCar> {
     private Position position;
 
     public RacingCar() {
-        this(INITIAL_NUMBER);
+        this(NATURAL_FIRST);
     }
 
     public RacingCar(int number) {
-        this(number, INITIAL_NAME);
+        this(number, EMPTY_STRING);
     }
 
     public RacingCar(int number, String name) {
-        this (number, name, INITIAL_POSITION);
+        this (number, name, NATURAL_FIRST);
     }
 
     public RacingCar(int number, String name, int position) {

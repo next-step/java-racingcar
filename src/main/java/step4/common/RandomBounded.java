@@ -2,9 +2,9 @@ package step4.common;
 
 import java.util.Random;
 
-public class RandomBounded {
+import static step4.common.Constant.FORWARD_STANDARD;
 
-    private static final int FORWARD_STANDARD = 4;
+public class RandomBounded {
 
     private final int random;
 
