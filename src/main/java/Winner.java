@@ -28,9 +28,13 @@ public class Winner {
     private void filterMaxLength (Car[] cars) {
         for (Car car : cars) {
             int carStatusLength = car.getStatus().length();
-            if (this.maxLength <= carStatusLength) {
-                this.updateMaxLength(carStatusLength);
-            }
+            this.compareMaxLength(carStatusLength);
+        }
+    }
+
+    private void compareMaxLength(int carStatusLength) {
+        if (this.maxLength <= carStatusLength) {
+            this.updateMaxLength(carStatusLength);
         }
     }
 

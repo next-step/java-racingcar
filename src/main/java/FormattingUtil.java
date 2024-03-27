@@ -12,10 +12,14 @@ public class FormattingUtil {
         int size = list.size();
         for (int i = 0; i < size; i++) {
             sb.append(list.get(i));
-            if (i < size - 1) {
-                sb.append(",");
-            }
+            addComma(i, size, sb);
         }
         return sb.toString();
+    }
+
+    private static void addComma(int i, int size, StringBuilder sb) {
+        if (i < size - 1) {
+            sb.append(",");
+        }
     }
 }
