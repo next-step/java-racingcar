@@ -1,6 +1,7 @@
 package racing.domain;
 
 import exception.CarLocationException;
+import util.RandomNumberGenerator;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -35,7 +36,8 @@ public class RacingCars {
         Set<Car> updatedCarSet = new TreeSet<>(Comparator.comparing(Car::getName));
         while (iterator.hasNext()) {
             Car nextCar = iterator.next();
-            Location newCarLocation = nextCar.moveForward();
+            Integer randomNumber = RandomNumberGenerator.getRandomNumber();
+            Location newCarLocation = nextCar.moveForward(randomNumber);
             String carName = nextCar.getName();
             updatedCarSet.add(new Car(carName, newCarLocation));
         }
@@ -47,7 +49,7 @@ public class RacingCars {
     public Set<Car> getWinCarList() {
         int winnerLocation = getMaxNumberOfList(carSet.stream().map(Car::getLocation).collect(Collectors.toList()));
         return carSet.stream()
-                .filter(car -> car.getLocation() == winnerLocation)
+                .filter(car -> car.isSameLocation(winnerLocation))
                 .collect(Collectors.toSet());
     }
 

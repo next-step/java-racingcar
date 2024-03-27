@@ -21,10 +21,9 @@ public class RacingServiceTest {
     @DisplayName("자동차가 1칸 앞으로 전진한다.")
     void 자동차_전진_테스트() throws CarLocationException {
         Integer location = 0;
-        Integer moveAmount = 1;
         Car car = new Car("hbae", new Location(location));
-        Location newLocation = car.moveForward();
-        assertThat(newLocation.value()).isEqualTo(location + moveAmount);
+        Integer randomNumber = RandomNumberGenerator.getRandomNumber();
+        assertThat(car.moveForward(randomNumber)).isEqualTo(new Location(1));
     }
 
     @ParameterizedTest

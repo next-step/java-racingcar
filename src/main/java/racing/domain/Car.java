@@ -2,7 +2,6 @@ package racing.domain;
 
 
 import exception.CarLocationException;
-import util.RandomNumberGenerator;
 
 public class Car implements Comparable<Car>{
 
@@ -29,8 +28,11 @@ public class Car implements Comparable<Car>{
         return location.value();
     }
 
-    public Location moveForward() throws CarLocationException {
-        Integer randomNumber = RandomNumberGenerator.getRandomNumber();
+    public boolean isSameLocation(Integer newLocation) {
+        return this.getLocation() == newLocation;
+    }
+
+    public Location moveForward(int randomNumber) throws CarLocationException {
         if (randomNumber >= MOVE_FORWARD_CONDITION_NUMBER) {
             return location.move(MOVE_AMOUNT);
         }

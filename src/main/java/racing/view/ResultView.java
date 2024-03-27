@@ -13,12 +13,12 @@ public class ResultView {
         Iterator<RacingHistory> historyIterator = racingHistory.iterator();
         while (historyIterator.hasNext()) {
             RacingHistory nextRound = historyIterator.next();
-            showRaceRound(nextRound.getRound(), nextRound.getHistorySet());
+            showRaceRound(nextRound.isFirstRound(), nextRound.getRaceHistory());
         }
     }
 
-    private static void showRaceRound(Integer round, Set<Car> racingCarsSet) {
-        if (round == 1) {
+    private static void showRaceRound(boolean isFirstRound, Set<Car> racingCarsSet) {
+        if (isFirstRound) {
             System.out.println();
             System.out.println("실행 결과");
         }

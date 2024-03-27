@@ -2,8 +2,25 @@ package racing.domain;
 
 import exception.CarLocationException;
 
+import java.util.Objects;
+
 public class Location {
     private final Integer location;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Location)) return false;
+
+        Location location1 = (Location) o;
+
+        return Objects.equals(location, location1.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return location != null ? location.hashCode() : 0;
+    }
 
     public Location(Integer location) {
         try {
