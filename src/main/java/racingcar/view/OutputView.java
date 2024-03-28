@@ -6,6 +6,7 @@ import racingcar.domain.dto.RoundScore;
 
 public class OutputView {
     private static final String POSITION_DELIMITOR = "-";
+    private static final String WINENR_DELIMITOR = ",";
 
     private OutputView() {
         throw new AssertionError();
@@ -17,21 +18,29 @@ public class OutputView {
         for (RoundResult roundResult : rounds.getRoundResults()) {
             printCarsPositionByOneRound(roundResult);
         }
-        System.out.println();
+        printLastWinners(rounds);
+    }
+
+    private static void printLastWinners(RacingResult rounds) {
+        System.out.println(String.join(WINENR_DELIMITOR, rounds.getWinnerNames()) + "가 최종 우승했습니다.");
     }
 
     public static void printCarsPositionByOneRound(RoundResult roundResult) {
+        StringBuilder stringBuilder = new StringBuilder();
         for (RoundScore roundScore : roundResult.getRoundScores()) {
-            printCarPosition(roundScore.getPosition());
+            stringBuilder.append(roundScore.getParticipantName())
+                         .append(" : ")
+                         .append(printCarPosition(roundScore.getPosition()))
+                         .append("\n");
         }
-        System.out.println();
+        System.out.println(stringBuilder);
     }
 
-    private static void printCarPosition(int positionNumber) {
+    private static StringBuilder printCarPosition(int positionNumber) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < positionNumber; i++) {
             stringBuilder.append(POSITION_DELIMITOR);
         }
-        System.out.println(stringBuilder);
+        return stringBuilder;
     }
 }
