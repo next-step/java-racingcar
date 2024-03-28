@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
     private final Set<Car> carSet;
-    private final Set<RacingHistory> racingHistory = new TreeSet<>(Comparator.comparing(RacingHistory::getRound));
 
     public RacingCars(String carNames) {
         String[] carNameArr = carNames.split(",");
@@ -19,24 +18,21 @@ public class RacingCars {
         this.carSet = carSet;
     }
 
-    public Set<Car> getCarSet() {
-        return this.carSet;
-    }
-
-    public Set<RacingHistory> startRace(Count tryCount) throws CarLocationException {
+    public Set<RacingHistory> startRace(Count tryCount, RandomNumberGenerator randomNumberGenerator) throws CarLocationException {
+        Set<RacingHistory> racingHistory = new TreeSet<>(Comparator.comparing(RacingHistory::getRound));
         for (int i = 0; i < tryCount.getValue(); i++) {
-            Set<Car> updatedCarSet = racing();
+            Set<Car> updatedCarSet = racing(randomNumberGenerator);
             racingHistory.add(new RacingHistory(i + 1, updatedCarSet));
         }
         return racingHistory;
     }
 
-    private Set<Car> racing() throws CarLocationException {
+    private Set<Car> racing(RandomNumberGenerator randomNumberGenerator) throws CarLocationException {
         Iterator<Car> iterator = carSet.iterator();
         Set<Car> updatedCarSet = new TreeSet<>(Comparator.comparing(Car::getName));
         while (iterator.hasNext()) {
             Car nextCar = iterator.next();
-            Integer randomNumber = RandomNumberGenerator.getRandomNumber();
+            Integer randomNumber = randomNumberGenerator.getRandomNumber();
             Location newCarLocation = nextCar.moveForward(randomNumber);
             String carName = nextCar.getName();
             updatedCarSet.add(new Car(carName, newCarLocation));

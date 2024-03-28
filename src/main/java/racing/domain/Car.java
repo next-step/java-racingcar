@@ -29,7 +29,7 @@ public class Car implements Comparable<Car>{
     }
 
     public boolean isSameLocation(Integer newLocation) {
-        return this.getLocation() == newLocation;
+        return this.location.isSameLocation(newLocation);
     }
 
     public Location moveForward(int randomNumber) throws CarLocationException {

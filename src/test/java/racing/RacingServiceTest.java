@@ -18,12 +18,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingServiceTest {
 
     @Test
-    @DisplayName("자동차가 1칸 앞으로 전진한다.")
+    @DisplayName("자동차가 4이상이면 1칸 앞으로 전진한다.")
     void 자동차_전진_테스트() throws CarLocationException {
         Integer location = 0;
         Car car = new Car("hbae", new Location(location));
-        Integer randomNumber = RandomNumberGenerator.getRandomNumber();
-        assertThat(car.moveForward(randomNumber)).isEqualTo(new Location(1));
+        assertThat(car.moveForward(4)).isEqualTo(new Location(1));
     }
 
     @ParameterizedTest
