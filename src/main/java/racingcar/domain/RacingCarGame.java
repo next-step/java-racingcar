@@ -58,12 +58,19 @@ public class RacingCarGame {
 
     private Participants selectWinners() {
         int winnerPosition = calculateWinnerPosition();
-        return new Participants(
-                racingCars.keySet().stream()
-                        .filter(participant -> racingCars.get(participant).getPosition() == winnerPosition)
-                        .collect(Collectors.toList())
+        List<Participant> winners = new ArrayList<>();
 
-        );
+        for (Participant participant : racingCars.keySet()) {
+            selectWinner(winners, participant, winnerPosition);
+        }
+
+        return new Participants(winners);
+    }
+
+    private void selectWinner(List<Participant> winners, Participant participant, int winnerPosition) {
+        if (racingCars.get(participant).isWinner(winnerPosition)) {
+            winners.add(participant);
+        }
     }
 
     private int calculateWinnerPosition() {
@@ -74,3 +81,4 @@ public class RacingCarGame {
         return firstCar.getPosition();
     }
 }
+
