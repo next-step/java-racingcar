@@ -21,7 +21,7 @@ public class Participants implements Iterable<Participant>{
     private static List<Participant> createParticipants(String[] nameArray) {
         validateDuplicate(nameArray);
         return Arrays.stream(nameArray)
-                .map(Participant::from)
+                .map(Participant::new)
                 .collect(Collectors.toList());
     }
 
