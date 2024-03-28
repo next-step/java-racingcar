@@ -1,8 +1,6 @@
 package racinggame.domain;
 
-import racinggame.utils.StringUtils;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -14,19 +12,17 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String carNames) {
-        this(initCars(carNames));
+        this(carNames.split(","));
     }
 
-    private static List<Car> initCars(String carNames) {
-        if (StringUtils.isBlank(carNames)) {
-            throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
-        }
-        String[] names = carNames.split(",");
-        List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
+    public Cars(String[] carNames) {
+        this(toCars(carNames));
+    }
+
+    private static List<Car> toCars(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public Cars(List<Car> cars) {
