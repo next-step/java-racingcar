@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
     private static final int MAX_BOUND = 10;
@@ -48,13 +49,9 @@ public class Cars {
     }
 
     private List<Car> findWinners(CarNumber maxPosition) {
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.isMatch(maxPosition)) {
-                winners.add(car);
-            }
-        }
-        return winners;
+        return cars.stream()
+                .filter(it -> it.isMatch(maxPosition))
+                .collect(Collectors.toList());
     }
 
     private CarNumber maxPosition() {
