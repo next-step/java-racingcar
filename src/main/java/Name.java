@@ -5,7 +5,7 @@ public class Name {
 
     public Name(String name) {
         if (name.length() < NAME_MIN_SIZE || name.length() > NAME_MAX_SIZE) {
-            throw new RuntimeException("이름은 1~5글자이어야 합니다.");
+            throw new IllegalArgumentException("이름은 1~5글자이어야 합니다.");
         }
         this.name = name;
     }

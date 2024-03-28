@@ -6,7 +6,6 @@ import java.util.List;
 public class Game {
     private ResultView resultView = new ResultView();
     private InputView inputView = new InputView();
-    private Input input = new Input();
     private RandomMaker randomMaker = new RandomMaker();
     private Entry entry = new Entry();
     private Judge judge = new Judge();
@@ -14,10 +13,10 @@ public class Game {
     public void playGame() {
         try {
             inputView.requestEntry();
-            String inputEntryCars = input.inputStringData();
+            String inputEntryCars = inputView.inputStringData();
 
             inputView.requestTryCount();
-            CountTry countTry = new CountTry(input.inputIntData());
+            CountTry countTry = new CountTry(inputView.inputIntData());
 
             playRound(entry.splitEntry(inputEntryCars), countTry.getCountTry());
 

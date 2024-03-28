@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class Judge {
-    private int maxPosition = 0;
+    private int maxPositionStorage = 0;
 
     public String judgeWinner(List<Car> carsList) {
         StringBuilder winnerName = new StringBuilder();
@@ -19,15 +19,15 @@ public class Judge {
 
     private void findMax(List<Car> carsList, int i) {
 
-        if (isMax(maxPosition, carsList.get(i).getPosition()) == true) {
-            maxPosition = carsList.get(i).getPosition();
+        if (isMax(maxPositionStorage, carsList.get(i).getPosition()) == true) {
+            maxPositionStorage = carsList.get(i).getPosition();
         }
     }
 
     private String setWinnerList(List<Car> carsList, int i) {
         String winnerList = "";
 
-        if (isMax(maxPosition, carsList.get(i).getPosition()) == true) {
+        if (isMax(maxPositionStorage, carsList.get(i).getPosition()) == true) {
             winnerList += carsList.get(i).getCarName() + " ";
         }
 
