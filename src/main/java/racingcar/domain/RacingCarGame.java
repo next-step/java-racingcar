@@ -78,9 +78,10 @@ public class RacingCarGame {
         int winnerPosition = calculateWinnerPosition();
         List<Participant> winners = new ArrayList<>();
 
-        for (Participant participant : racingCars.keySet()) {
-            selectWinner(winners, participant, winnerPosition);
-        }
+        racingCars.keySet().stream()
+                .takeWhile(participant -> racingCars.get(participant).isWinner(winnerPosition))
+                .peek(participant -> selectWinner(winners, participant, winnerPosition))
+                .collect(Collectors.toList());
 
         return new Participants(winners);
     }
