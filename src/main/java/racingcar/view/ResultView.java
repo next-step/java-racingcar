@@ -14,12 +14,8 @@ public class ResultView {
     }
 
     private static String markLocation(int location) {
-        String mark = "";
-        while (location > 0) {
-            mark += "-";
-            location--;
-        }
-        return mark;
+        String mark = "-";
+        return mark.repeat(location);
     }
 
     public static void printGameResult(List<String> cars){
