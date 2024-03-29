@@ -16,6 +16,8 @@ import java.util.stream.StreamSupport;
 
 public class RacingCarGame {
     private static final int FIRST_INDEX = 0;
+    private static final int MIN_RACING_COUNT = 1;
+    private static final String MESSAGE_RACING_COUNT = "시도횟수는 자연수만 가능합니다.";
 
     private final StrategyRandomMove strategyRandomMove = new StrategyRandomMove();
     private final Map<Participant, Car> racingCars;
@@ -38,11 +40,23 @@ public class RacingCarGame {
     }
 
     public RacingResult executeRacing(int trialCount) {
+        validateRacingCount(trialCount);
+
         List<RoundResult> roundResults = new ArrayList<>();
         while (trialCount-- > 0) {
             roundResults.add(executeRound());
         }
         return new RacingResult(roundResults, selectWinners());
+    }
+
+    private void validateRacingCount(int trialCount) {
+        if (!isNaturalNumber(trialCount)) {
+            throw new IllegalArgumentException(MESSAGE_RACING_COUNT);
+        }
+    }
+
+    public boolean isNaturalNumber(int trialCount) {
+        return trialCount >= MIN_RACING_COUNT;
     }
 
     private RoundResult executeRound() {
