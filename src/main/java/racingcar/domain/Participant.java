@@ -8,7 +8,7 @@ public class Participant {
             .append("글자를 초과할 수 없습니다.")
             .toString();
 
-    private String name;
+    private final String name;
 
     public Participant(String name) {
         validate(name);

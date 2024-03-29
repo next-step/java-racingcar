@@ -27,7 +27,7 @@ public class RacingCarGame {
         return StreamSupport.stream(participants.spliterator(), false)
                 .collect(Collectors.toMap(
                         participant -> participant,
-                        participant -> new Car(),
+                        participant -> Car.from(participant),
                         (existing, replacement) -> existing,
                         LinkedHashMap::new
                 ));
