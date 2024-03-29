@@ -45,7 +45,7 @@ public class RacingCarGame {
         return new RacingResult(roundResults, selectWinners());
     }
 
-    public RoundResult executeRound() {
+    private RoundResult executeRound() {
         play(strategyRandomMove);
         return new RoundResult(getRoundResults());
     }
