@@ -21,7 +21,7 @@ public class RacingGame {
     }
 
     public void race() {
-        this.tryNo.decrease();
+        this.tryNo = this.tryNo.decrease();
         this.cars.race();
     }
 

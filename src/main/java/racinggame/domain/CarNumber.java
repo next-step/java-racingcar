@@ -3,7 +3,7 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class CarNumber {
-    private int number;
+    private final int number;
 
     public CarNumber() {
         this(0);
@@ -16,12 +16,12 @@ public class CarNumber {
         this.number = number;
     }
 
-    public void increase() {
-        this.number++;
+    public CarNumber increase() {
+        return new CarNumber(this.number + 1);
     }
 
-    public void decrease() {
-        this.number--;
+    public CarNumber decrease() {
+        return new CarNumber(this.number - 1);
     }
 
     public boolean isPositive() {

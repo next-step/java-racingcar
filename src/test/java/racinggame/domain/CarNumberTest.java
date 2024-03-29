@@ -15,13 +15,8 @@ public class CarNumberTest {
 
     @Test
     void 증가_감소() {
-        CarNumber number1 = new CarNumber(1);
-        number1.increase();
-        assertThat(number1).isEqualTo(new CarNumber(2));
-
-        CarNumber number2 = new CarNumber(2);
-        number2.decrease();
-        assertThat(number2).isEqualTo(new CarNumber(1));
+        assertThat(new CarNumber(1).increase()).isEqualTo(new CarNumber(2));
+        assertThat(new CarNumber(2).decrease()).isEqualTo(new CarNumber(1));
     }
 
     @Test

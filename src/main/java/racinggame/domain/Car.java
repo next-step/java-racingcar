@@ -5,9 +5,7 @@ import racinggame.utils.StringUtils;
 import java.util.Objects;
 
 public class Car {
-    private static final int FORWARD_NUM = 4;
-
-    private final String name;
+    private final Name name;
 
     private CarNumber position;
 
@@ -15,15 +13,12 @@ public class Car {
         this(name, 0);
     }
 
-    Car(final String name, int position) {
-        this(name, new CarNumber(position));
+    public Car(final String name, int position) {
+        this(new Name(name), new CarNumber(position));
     }
 
-    Car(final String name, CarNumber position) {
-        if (StringUtils.isBlank(name)) {
-            throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
-        }
-        this.name = name.trim();
+    public Car(final Name name, CarNumber position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -31,13 +26,13 @@ public class Car {
         return position;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public void move(int randomNo) {
-        if (randomNo >= FORWARD_NUM)
-            this.position.increase();
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable())
+            this.position = this.position.increase();
     }
 
     public CarNumber max(CarNumber other) {

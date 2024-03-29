@@ -32,7 +32,7 @@ public class Cars {
     public void race() {
         Random random = new Random();
         for (Car car : cars) {
-            car.move(random.nextInt(MAX_BOUND));
+            car.move(new ComputerTimeBasedMovingStrategy());
         }
     }
 

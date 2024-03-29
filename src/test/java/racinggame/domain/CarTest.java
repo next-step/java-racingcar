@@ -8,14 +8,14 @@ public class CarTest {
     @Test
     public void 이동() {
         Car car = new Car("pobi");
-        car.move(4);
+        car.move(() -> true);
         assertThat(car).isEqualTo(new Car("pobi", 1));
     }
 
     @Test
     public void 정지() {
         Car car = new Car("pobi");
-        car.move(3);
+        car.move(() -> false);
         assertThat(car).isEqualTo(new Car("pobi", 0));
     }
 }
