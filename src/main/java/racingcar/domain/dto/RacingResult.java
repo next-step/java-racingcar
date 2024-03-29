@@ -3,8 +3,6 @@ package racingcar.domain.dto;
 import racingcar.domain.Participant;
 import racingcar.domain.Participants;
 
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -24,7 +22,7 @@ public class RacingResult {
 
     public List<String> getWinnerNames() {
         return StreamSupport.stream(winners.spliterator(), false)
-                            .map(Participant::getName)
-                            .collect(Collectors.toList());
+                .map(Participant::getName)
+                .collect(Collectors.toList());
     }
 }

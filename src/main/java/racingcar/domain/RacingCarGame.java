@@ -6,7 +6,11 @@ import racingcar.domain.dto.RoundScore;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.StrategyRandomMove;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 

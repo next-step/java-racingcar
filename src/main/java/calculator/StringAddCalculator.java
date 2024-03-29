@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,11 +8,11 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     private static final String DEFAULT_SEPARATOR = "[,|:]";
     private static final String CUSTOM_SEPARATOR = "//(.)\n(.*)";
-    private static Pattern CUSTOM_MATCHER = Pattern.compile(CUSTOM_SEPARATOR);
     private static final int DELIMITER_INDEX = 1;
     private static final int TOKEN_INDEX = 2;
     private static final String TOKEN_ILLEGAL = "-";
     private static final String MESSAGE_NEGATIVE_NUMBER = "음수는 올바른 숫자 입력값이 아닙니다";
+    private static Pattern CUSTOM_MATCHER = Pattern.compile(CUSTOM_SEPARATOR);
 
     private StringAddCalculator() {
         throw new AssertionError();
@@ -54,14 +53,14 @@ public class StringAddCalculator {
             return splitTextList;
         }
 
-        splitTextList =  Arrays.asList(text.split(DEFAULT_SEPARATOR));
+        splitTextList = Arrays.asList(text.split(DEFAULT_SEPARATOR));
 
         return splitTextList;
     }
 
     private static void validateNegativeNumberAndThrow(String text) throws IllegalArgumentException {
         if (text.contains(TOKEN_ILLEGAL)) {
-            throw new IllegalArgumentException(text + " : "+ MESSAGE_NEGATIVE_NUMBER);
+            throw new IllegalArgumentException(text + " : " + MESSAGE_NEGATIVE_NUMBER);
         }
     }
 
