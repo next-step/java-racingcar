@@ -8,7 +8,7 @@ public class ResultView {
 
     public static void printRoundResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + markLocation(car.getLocation()));
+            System.out.println(car.toString() + " : " + markLocation(car.getLocation()));
         }
         System.out.println();
     }
@@ -18,7 +18,7 @@ public class ResultView {
         return mark.repeat(location);
     }
 
-    public static void printGameResult(List<String> cars){
+    public static void printGameResult(List<Car> cars){
         System.out.println(cars.toString() + "가 최종 우승했습니다.");
     }
 }

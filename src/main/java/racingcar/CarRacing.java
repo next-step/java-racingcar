@@ -52,13 +52,13 @@ public class CarRacing {
         }
     }
 
-    private List<String> gameResult() {
+    private List<Car> gameResult() {
         int max = 0;
         for (int i = 0; i < cars.size(); i++) {
             max = getMaxLocation(i, max);
         }
 
-        List<String> winners = new ArrayList<>();
+        List<Car> winners = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             checkWinner(i, max, winners);
         }
@@ -66,9 +66,9 @@ public class CarRacing {
         return winners;
     }
 
-    private void checkWinner(int i, int max, List<String> winners) {
+    private void checkWinner(int i, int max, List<Car> winners) {
         if (cars.get(i).getLocation() == max) {
-            winners.add(cars.get(i).getName());
+            winners.add(cars.get(i));
         }
     }
 
