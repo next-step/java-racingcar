@@ -2,14 +2,30 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.dto.RacingResult;
 import racingcar.domain.strategy.MoveStrategy;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class RacingCarGameTest {
+
+    @ParameterizedTest
+    @CsvSource(value = {"5:true", "-3:false", "0:false"})
+    @DisplayName("시도횟수는 자연수여야 한다.")
+    void executeRacing_시도횟수_자연수검증(int trialCnt, boolean expected) {
+        Participants participants = Participants.from("pika,nana,ppo");
+        RacingCarGame racingCarGame = RacingCarGame.from(participants);
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> racingCarGame.executeRacing(trialCnt))
+                .withMessageMatching("시도횟수는 자연수만 가능합니다.");
+    }
+
     @Test
     @DisplayName("입력된 자동차 이름의 개수만큼 RacingCar 객체를 생성한다")
     void createCarList_자동차대수() {
