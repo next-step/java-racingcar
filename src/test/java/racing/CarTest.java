@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
     @Test
     void move() {
-        Car car = new Car();
+        Car car = new Car("mini");
 
         car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
@@ -18,7 +18,7 @@ class CarTest {
 
     @Test
     void stop() {
-        Car car = new Car();
+        Car car = new Car("big");
 
         car.move(3);
         assertThat(car.getPosition()).isZero();

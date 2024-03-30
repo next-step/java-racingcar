@@ -15,4 +15,8 @@ public class Position {
     public void increase() {
         number++;
     }
+
+    public boolean isEqual(int maxPosition) {
+        return number == maxPosition;
+    }
 }
