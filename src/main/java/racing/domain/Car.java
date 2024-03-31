@@ -1,4 +1,7 @@
-package racing;
+package racing.domain;
+
+import racing.Name;
+import racing.Position;
 
 import java.util.List;
 import java.util.stream.Collectors;

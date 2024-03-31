@@ -1,12 +1,12 @@
-package racing;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static racing.Car.findWinners;
-import static racing.ResultView.printResult;
-import static racing.ResultView.printWinners;
+import static racing.domain.Car.findWinners;
+import static racing.view.ResultView.printResult;
+import static racing.view.ResultView.printWinners;
 
 public class RacingGame {
     private final int tryCount;

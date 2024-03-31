@@ -1,17 +1,18 @@
 package racing;
 
-import static racing.InputView.inputCarNames;
-import static racing.InputView.inputTryCount;
-import static racing.RacingGame.getCars;
-import static racing.ResultView.printResultMessage;
+import racing.domain.RacingGame;
+
+import static racing.view.InputView.inputCarNames;
+import static racing.view.InputView.inputTryCount;
+import static racing.domain.RacingGame.getCars;
+import static racing.view.ResultView.printResultMessage;
 
 public class RacingMain {
     public static void main(String[] args) {
         String[] names = inputCarNames().split(",");
+        RacingGame game = new RacingGame(inputTryCount(), getCars(names));
 
         printResultMessage();
-
-        RacingGame game = new RacingGame(inputTryCount(), getCars(names));
 
         game.race();
     }
