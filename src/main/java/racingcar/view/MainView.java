@@ -1,8 +1,15 @@
 package racingcar.view;
 
+import racingcar.Car;
 import racingcar.CarRacing;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static racingcar.Winners.getWinners;
 import static racingcar.view.InputView.userInput;
+import static racingcar.view.ResultView.printGameResult;
+import static racingcar.view.ResultView.printRoundResult;
 
 public class MainView {
 
@@ -13,7 +20,15 @@ public class MainView {
         CarRacing carRacing = new CarRacing(times, inputNames);
 
         System.out.println("실행 결과");
-        carRacing.playGame();
+
+        List<Car> resultCars = new ArrayList<>();
+
+        for (int i = 0; i < times; i++) {
+            resultCars = carRacing.run();
+            printRoundResult(resultCars);
+        }
+
+        printGameResult(getWinners(resultCars));
     }
 
 }

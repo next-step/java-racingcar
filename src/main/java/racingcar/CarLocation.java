@@ -16,7 +16,7 @@ public class CarLocation {
     }
 
     public int checkMaxLocation(int carLocation) {
-        if (this.location >= carLocation) {
+        if (this.location <= carLocation) {
             return carLocation;
         }
         return this.location;

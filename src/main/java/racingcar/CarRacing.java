@@ -1,10 +1,8 @@
 package racingcar;
 
-import java.util.*;
-
-import static racingcar.Winners.getWinners;
-import static racingcar.view.ResultView.printGameResult;
-import static racingcar.view.ResultView.printRoundResult;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class CarRacing {
 
@@ -26,19 +24,14 @@ public class CarRacing {
         }
     }
 
-    public void playGame() {
-        for (int i = 0; i < times; i++) {
-            run();
-            printRoundResult(cars);
-        }
-        printGameResult(getWinners(cars));
-    }
-
-    private void run() {
+    public List<Car> run() {
+        List<Car> results = new ArrayList<>();
         for (Car car : cars) {
             int condition = random.nextInt(10);
             car.move(condition);
+            results.add(car);
         }
+        return results;
     }
 
 }
