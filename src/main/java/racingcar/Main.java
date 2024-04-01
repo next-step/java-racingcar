@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.CarRacing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static racingcar.domain.Winners.getWinners;
@@ -20,10 +21,15 @@ public class Main {
 
         System.out.println("실행 결과");
 
-        List<List<Car>> resultCars = carRacing.run();
+        List<Car> resultCars = new ArrayList<>();
 
-        printRoundResult(resultCars);
-        printGameResult(getWinners(resultCars.get(times-1)));
+        while (carRacing.isDuringGame()) {
+            resultCars = carRacing.run();
+            printRoundResult(resultCars);
+            carRacing.decreaseRunTimes();
+        }
+
+        printGameResult(getWinners(resultCars));
     }
 
 }

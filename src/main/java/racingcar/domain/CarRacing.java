@@ -1,22 +1,25 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
-    private int times;
+    private RunTimes runTimes;
     private RacingCars racingCars;
 
     public CarRacing(int times, String inputNames) throws Exception {
-        this.times = times;
+        this.runTimes = new RunTimes(times);
         this.racingCars = new RacingCars(inputNames);
     }
 
-    public List<List<Car>> run() {
-        List<List<Car>> results = new ArrayList<>();
-        for (int i = 0; i < this.times; i++) {
-            results.add(racingCars.roundRun());
-        }
-        return results;
+    public boolean isDuringGame() {
+        return runTimes.isDuringGame();
+    }
+
+    public void decreaseRunTimes() {
+        runTimes.decrease();
+    }
+
+    public List<Car> run() {
+        return racingCars.roundRun();
     }
 }

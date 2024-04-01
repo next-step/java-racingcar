@@ -6,17 +6,11 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printRoundResult(List<List<Car>> carList) {
-        for(List<Car> cars : carList){
-            printCars(cars);
-            System.out.println();
-        }
-    }
-
-    private static void printCars(List<Car> cars) {
+    public static void printRoundResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.toString() + " : " + printLocationMark(car));
         }
+        System.out.println();
     }
 
     public static void printGameResult(List<Car> cars) {
