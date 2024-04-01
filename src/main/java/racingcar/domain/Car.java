@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+    private static final int MOVE_CONDITION = 4;
     private CarName carName;
     private CarLocation location;
 
@@ -10,7 +11,7 @@ public class Car {
     }
 
     public void move(int condition) {
-        if (condition >= 4) {
+        if (condition >= MOVE_CONDITION) {
             location.increase();
         }
     }
