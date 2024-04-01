@@ -6,7 +6,7 @@ public class Car {
 
     public Car(String name) throws Exception {
         this.carName = new CarName(name);
-        this.location = new CarLocation(0);
+        this.location = new CarLocation();
     }
 
     public void move(int condition) {

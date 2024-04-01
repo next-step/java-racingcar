@@ -3,8 +3,8 @@ package racingcar.domain;
 public class CarLocation {
     private int location;
 
-    public CarLocation(int location) {
-        this.location = location;
+    public CarLocation() {
+        this.location = 0;
     }
 
     public void increase() {
