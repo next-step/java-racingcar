@@ -24,8 +24,8 @@ public class Car {
         return location.checkMaxLocation(carLocation);
     }
 
-    public String locationMark() {
-        return location.locationMark();
+    public int getCarLocation() {
+        return location.getLocation();
     }
 
     @Override

@@ -19,8 +19,7 @@ public class CarLocation {
         return Math.max(this.location, carLocation);
     }
 
-    public String locationMark() {
-        String mark = "-";
-        return mark.repeat(this.location);
+    public int getLocation() {
+        return this.location;
     }
 }
