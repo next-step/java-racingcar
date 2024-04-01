@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.CarRacing;
@@ -11,7 +11,7 @@ import static racingcar.view.InputView.userInput;
 import static racingcar.view.ResultView.printGameResult;
 import static racingcar.view.ResultView.printRoundResult;
 
-public class MainView {
+public class Main {
 
     public static void main(String[] args) throws Exception {
         String inputNames = userInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
