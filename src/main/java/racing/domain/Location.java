@@ -1,9 +1,16 @@
-package racing;
+package racing.domain;
 
 import exception.CarLocationException;
 
+import java.util.Objects;
+
 public class Location {
     private final Integer location;
+
+
+    public boolean isSameLocation(Integer newLocation) {
+        return this.location == newLocation;
+    }
 
     public Location(Integer location) {
         try {
@@ -20,7 +27,6 @@ public class Location {
 
     public Location move(Integer moveAmount) throws CarLocationException {
         Integer newLocation = this.location + moveAmount;
-        validate(newLocation);
         return new Location(newLocation);
     }
 
@@ -31,5 +37,19 @@ public class Location {
         if (location > Integer.MAX_VALUE) {
             throw new CarLocationException("최대 이동할 수 있는 범위를 넘을 수 없습니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Location)) return false;
+
+        Location otherLocation = (Location) o;
+        return Objects.equals(location, otherLocation.value());
+    }
+
+    @Override
+    public int hashCode() {
+        return location != null ? location.hashCode() : 0;
     }
 }

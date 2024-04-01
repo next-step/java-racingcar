@@ -5,9 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import util.NumberUtil;
+import racing.domain.Car;
+import racing.domain.Location;
+import racing.service.NumberGenerator;
+import racing.service.RandomNumberGenerator;
 import util.RacingValidator;
-import util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +19,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingServiceTest {
 
     @Test
-    @DisplayName("자동차가 1칸 앞으로 전진한다.")
+    @DisplayName("자동차가 4이상이면 1칸 앞으로 전진한다.")
     void 자동차_전진_테스트() throws CarLocationException {
-        Car car = new Car("hbae", new Location(0));
-        Location newLocation = car.moveForward();
-        assertThat(newLocation.value()).isEqualTo(1);
+        Integer location = 0;
+        Car car = new Car("hbae", new Location(location));
+        assertThat(car.moveForward(4)).isEqualTo(new Location(1));
     }
 
     @ParameterizedTest
@@ -41,14 +43,22 @@ public class RacingServiceTest {
     @Test
     @DisplayName("자동차 우승을 가리기 위해 최대 이동거리를 구하는 테스트를 수행한다.")
     void 리스트들중_최대_숫자구하기_테스트() {
+        NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         List<Integer> numList = new ArrayList<>();
         int maxValue = Integer.MIN_VALUE;
         for (int i = 0; i < 4; i++) {
-            int randomNumber = RandomNumberGenerator.getRandomNumber();
+            int randomNumber = randomNumberGenerator.getNumber();
             maxValue = Math.max(maxValue, randomNumber);
             numList.add(randomNumber);
         }
-        assertThat(maxValue).isEqualTo(NumberUtil.getMaxNumberOfList(numList));
+        assertThat(maxValue).isEqualTo(getMaxNumberOfList(numList));
+    }
+
+    private int getMaxNumberOfList(List<Integer> numList) {
+        return numList.stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(Integer.MIN_VALUE);
     }
 
 

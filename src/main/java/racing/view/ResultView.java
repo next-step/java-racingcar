@@ -1,20 +1,27 @@
-package ui;
+package racing.view;
 
-import racing.Car;
-import racing.RacingCars;
+import racing.domain.Car;
+import racing.domain.RacingCars;
+import racing.domain.RacingHistory;
 
 import java.util.Iterator;
 import java.util.Set;
 
 public class ResultView {
 
-    public static void showRaceResult(RacingCars racingCars, int tryCount) {
-        if (tryCount == 0) {
+    public static void showRaceResult(Set<RacingHistory> racingHistory) {
+        Iterator<RacingHistory> historyIterator = racingHistory.iterator();
+        while (historyIterator.hasNext()) {
+            RacingHistory nextRound = historyIterator.next();
+            showRaceRound(nextRound.isFirstRound(), nextRound.getRaceHistory());
+        }
+    }
+
+    private static void showRaceRound(boolean isFirstRound, Set<Car> racingCarsSet) {
+        if (isFirstRound) {
             System.out.println();
             System.out.println("실행 결과");
         }
-
-        Set<Car> racingCarsSet = racingCars.getCarSet();
         Iterator<Car> iterator = racingCarsSet.iterator();
         while (iterator.hasNext()) {
             showCarLocation(iterator.next());
