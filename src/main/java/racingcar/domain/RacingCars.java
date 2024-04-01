@@ -8,6 +8,8 @@ public class RacingCars {
     private List<Car> cars;
     private Random random;
 
+    private static final int RANDOM_BOUND = 10;
+
     public RacingCars(String inputNames) throws Exception {
         this.cars = new ArrayList<>();
         grantCarName(inputNames);
@@ -21,15 +23,14 @@ public class RacingCars {
         }
     }
 
-    public List<Car> run() {
-        List<Car> results = new ArrayList<>();
+    public List<Car> roundRun() {
+        List<Car> roundResults = new ArrayList<>();
         for (Car car : cars) {
-            int condition = random.nextInt(10);
+            int condition = random.nextInt(RANDOM_BOUND);
             car.move(condition);
-            results.add(car);
+            roundResults.add(car);
         }
-        return results;
+        return roundResults;
     }
-
 
 }

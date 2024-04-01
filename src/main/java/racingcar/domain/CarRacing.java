@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
@@ -11,8 +12,11 @@ public class CarRacing {
         this.racingCars = new RacingCars(inputNames);
     }
 
-    public List<Car> run() {
-        return racingCars.run();
+    public List<List<Car>> run() {
+        List<List<Car>> results = new ArrayList<>();
+        for (int i = 0; i < this.times; i++) {
+            results.add(racingCars.roundRun());
+        }
+        return results;
     }
-
 }
