@@ -1,7 +1,7 @@
 package racing.domain;
 
 import exception.CarLocationException;
-import util.RandomNumberGenerator;
+import racing.service.NumberGenerator;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public class RacingCars {
         this.carSet = carSet;
     }
 
-    public Set<RacingHistory> startRace(Count tryCount, RandomNumberGenerator randomNumberGenerator) throws CarLocationException {
+    public Set<RacingHistory> startRace(Count tryCount, NumberGenerator randomNumberGenerator) throws CarLocationException {
         Set<RacingHistory> racingHistory = new TreeSet<>(Comparator.comparing(RacingHistory::getRound));
         for (int i = 0; i < tryCount.getValue(); i++) {
             Set<Car> updatedCarSet = racing(randomNumberGenerator);
@@ -27,12 +27,12 @@ public class RacingCars {
         return racingHistory;
     }
 
-    private Set<Car> racing(RandomNumberGenerator randomNumberGenerator) throws CarLocationException {
+    private Set<Car> racing(NumberGenerator randomNumberGenerator) throws CarLocationException {
         Iterator<Car> iterator = carSet.iterator();
         Set<Car> updatedCarSet = new TreeSet<>(Comparator.comparing(Car::getName));
         while (iterator.hasNext()) {
             Car nextCar = iterator.next();
-            Integer randomNumber = randomNumberGenerator.getRandomNumber();
+            Integer randomNumber = randomNumberGenerator.getNumber();
             Location newCarLocation = nextCar.moveForward(randomNumber);
             String carName = nextCar.getName();
             updatedCarSet.add(new Car(carName, newCarLocation));
