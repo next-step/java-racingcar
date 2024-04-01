@@ -1,12 +1,12 @@
 package racingcar.view;
 
-import racingcar.Car;
-import racingcar.CarRacing;
+import racingcar.domain.Car;
+import racingcar.domain.CarRacing;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.Winners.getWinners;
+import static racingcar.domain.Winners.getWinners;
 import static racingcar.view.InputView.userInput;
 import static racingcar.view.ResultView.printGameResult;
 import static racingcar.view.ResultView.printRoundResult;

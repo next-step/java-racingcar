@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class CarName {
     private static int MAX_CAR_NAME = 5;
