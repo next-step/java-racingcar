@@ -8,7 +8,6 @@ public class Game {
     private InputView inputView = new InputView();
     private RandomMaker randomMaker = new RandomMaker();
     private CarGenerater carGenerater = new CarGenerater();
-    private Judge judge = new Judge();
     private Cars cars = new Cars();
 
     public void playGame() {
