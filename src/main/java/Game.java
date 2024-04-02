@@ -7,8 +7,9 @@ public class Game {
     private ResultView resultView = new ResultView();
     private InputView inputView = new InputView();
     private RandomMaker randomMaker = new RandomMaker();
-    private Entry entry = new Entry();
+    private CarGenerater carGenerater = new CarGenerater();
     private Judge judge = new Judge();
+    private Cars cars = new Cars();
 
     public void playGame() {
         try {
@@ -18,7 +19,7 @@ public class Game {
             inputView.requestTryCount();
             CountTry countTry = new CountTry(inputView.inputIntData());
 
-            playRound(entry.splitEntry(inputEntryCars), countTry.getCountTry());
+            playRound(carGenerater.splitEntry(inputEntryCars), countTry.getCountTry());
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -35,7 +36,7 @@ public class Game {
             playMove(carsList);
         }
 
-        resultView.printWinner(judge.judgeWinner(carsList));
+        resultView.printWinner(cars.judgeWinner(carsList));
     }
 
     private void playMove(List<Car> carsList) {

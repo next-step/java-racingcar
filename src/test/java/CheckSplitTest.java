@@ -4,13 +4,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CheckSplitTest {
-    private Entry entry = new Entry();
+    private CarGenerater carGenerater = new CarGenerater();
 
     @Test
     @DisplayName("쉼표_기준으로_나눔")
     void 쉼표_기준으로_나눔() {
         String input = " red,blue, white";
-        String[] arr = entry.splitEntry(input);
+        String[] arr = carGenerater.splitEntry(input);
 
         assertThat("red").isEqualTo(arr[0]);
         assertThat("blue").isEqualTo(arr[1]);

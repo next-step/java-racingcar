@@ -23,6 +23,7 @@ public class Judge {
             maxPositionStorage = carsList.get(i).getPosition();
         }
     }
+    
 
     private String setWinnerList(List<Car> carsList, int i) {
         String winnerList = "";
