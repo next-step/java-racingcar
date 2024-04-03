@@ -11,7 +11,6 @@ public class RacingCarMain {
 		InputView input = new InputView();
 		String carNames = input.setCarNames();
 		int trialNumber = input.setTrialNumber();
-
 		RacingCars racingCars = new RacingCars(carNames);
 		racingCars.conductCarRacing(trialNumber);
 		racingCars.getWinners();
