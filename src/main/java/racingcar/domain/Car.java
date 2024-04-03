@@ -1,50 +1,44 @@
 package racingcar.domain;
 
-import java.util.List;
+import java.util.Objects;
 
 public class Car {
 	public static final int MIN_THRESHOLD = 4;
-	private static final int CAR_NAME_LENGTH_LIMIT = 5;
+	private final Name name;
+	private final Position position;
 
-	private int position = 0;
-	private String name;
-
-	public Car(String name) {
-		this(name, 0);
-	}
-
-	public Car(String name, int position) {
-		if (CAR_NAME_LENGTH_LIMIT < name.length()) {
-			throw new IllegalArgumentException("car name should under 5");
-		}
+	public Car(Name name,  Position position) {
 		this.name = name;
 		this.position = position;
 	}
 
-	public void moveForward(int randomNum) {
+	public Car(String name,  int position) {
+		this(new Name(name), new Position(position));
+	}
+
+	public void moveStrategy(int randomNum) {
 		if (randomNum >= MIN_THRESHOLD) {
-			position++;
+			position.moveForward();
 		}
 	}
-
-	public int getPosition() {
-		return position;
+	public Position max(Position other) {
+		return this.position.max(other);
 	}
 
-	public String getName() {
-		return name;
+	public boolean isMatch(Position maxPosition) {
+		return this.position.equals(maxPosition);
 	}
 
-	public boolean comparePosition(int maxPosition) {
-		return position == maxPosition;
+	public Position position(){
+		return this.position;
 	}
 
-	public int maxPosition(List<Car> cars) {
-		int maxPosition = Integer.MIN_VALUE;
-		for (Car car : cars) {
-			maxPosition = Math.max(maxPosition, car.getPosition());
-		}
-		return maxPosition;
+	public Name name(){
+		return this.name;
+	}
+
+	public boolean comparePosition(Position maxPosition) {
+		return Objects.equals(position, maxPosition);
 	}
 
 }
