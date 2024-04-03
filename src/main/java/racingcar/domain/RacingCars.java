@@ -1,14 +1,14 @@
 package racingcar.domain;
 
+import static racingcar.domain.MoveStrategy.*;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.StringJoiner;
 
 import racingcar.view.OutputView;
 
 public class RacingCars {
-	Random random = new Random();
 	List<Car> cars = new ArrayList<>();
 	OutputView output = new OutputView();
 
@@ -16,10 +16,11 @@ public class RacingCars {
 		return carName.split(delimiter);
 	}
 
-	public RacingCars(String carNames){
+	public RacingCars(String carNames) {
 		String[] carNameList = splitName(carNames, ",");
 		for (String carName : carNameList) {
-			cars.add(new Car(carName));
+			Name name = new Name(carName);
+			cars.add(new Car(name, new Position()));
 		}
 	}
 
@@ -32,28 +33,39 @@ public class RacingCars {
 
 	private void moveCars() {
 		for (Car car : cars) {
-			int randomNum = random.nextInt(10);
-			car.moveForward(randomNum);
+			int randomNum = random();
+			car.moveStrategy(randomNum);
 		}
 	}
 
 	public void getWinners() {
 		List<Car> winners = new ArrayList<>();
-		for (Car car : cars) {
-			addToWinnersList(winners, car);
-		}
+		addToWinnersList(winners);
 		viewWinners(winners);
 	}
 
-	private void addToWinnersList(List<Car> winners, Car car) {
-		int maxPosition = car.maxPosition(winners);
-		if (car.comparePosition(maxPosition)) winners.add(car);
+	private void addToWinnersList(List<Car> winners) {
+		Position maxPosition = maxPosition(cars);
+		for (Car car : cars) {
+			if (car.comparePosition(maxPosition))
+				winners.add(car);
+		}
+	}
+
+
+
+	public Position maxPosition(List<Car> cars) {
+		Position maxPosition = new Position();
+		for (Car car : cars) {
+			maxPosition = car.max(maxPosition);
+		}
+		return maxPosition;
 	}
 
 	private void viewWinners(List<Car> winners) {
 		StringJoiner stringJoiner = new StringJoiner(",");
 		for (Car winner : winners) {
-			stringJoiner.add(winner.getName());
+			stringJoiner.add(winner.name().toString());
 		}
 		output.printWinners(stringJoiner);
 	}
