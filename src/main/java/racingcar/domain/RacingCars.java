@@ -1,14 +1,18 @@
 package racingcar.domain;
 
+
 import static racingcar.domain.MoveStrategy.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.StringJoiner;
 
 import racingcar.view.OutputView;
 
 public class RacingCars {
+
+	Random random = new Random();
 	List<Car> cars = new ArrayList<>();
 	OutputView output = new OutputView();
 
@@ -16,11 +20,13 @@ public class RacingCars {
 		return carName.split(delimiter);
 	}
 
+
 	public RacingCars(String carNames) {
 		String[] carNameList = splitName(carNames, ",");
 		for (String carName : carNameList) {
 			Name name = new Name(carName);
 			cars.add(new Car(name, new Position()));
+
 		}
 	}
 
@@ -33,13 +39,16 @@ public class RacingCars {
 
 	private void moveCars() {
 		for (Car car : cars) {
+
 			int randomNum = random();
 			car.moveStrategy(randomNum);
+
 		}
 	}
 
 	public void getWinners() {
 		List<Car> winners = new ArrayList<>();
+
 		addToWinnersList(winners);
 		viewWinners(winners);
 	}
@@ -51,8 +60,6 @@ public class RacingCars {
 				winners.add(car);
 		}
 	}
-
-
 
 	public Position maxPosition(List<Car> cars) {
 		Position maxPosition = new Position();

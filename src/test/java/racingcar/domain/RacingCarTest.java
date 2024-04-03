@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.domain.Car.*;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class RacingCarTest {
 	@Test
 	@DisplayName("전진하는 경우")
 	void moveForward() {
+
 		Car car = new Car("name", 0);
 		int randomNum = random.nextInt(10);
 		car.moveStrategy(randomNum);
@@ -41,6 +43,7 @@ public class RacingCarTest {
 	@DisplayName("여러 번 시도하는 경우")
 	void MoveForward_여러번() {
 		for (int i = 0; i < 3; i++) {
+
 			Name name = new Name("name"+i);
 			Car car = new Car(name, new Position());
 			carList.add(car);
