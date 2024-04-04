@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingCars {
+    private static final int RANDOM_BOUND = 10;
+
     private List<Car> cars;
     private Random random;
 
-    private static final int RANDOM_BOUND = 10;
 
     public RacingCars(String inputNames) throws Exception {
         this.cars = new ArrayList<>();
