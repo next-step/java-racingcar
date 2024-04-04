@@ -1,4 +1,7 @@
-package racing;
+package racing.domain;
+
+import racing.Name;
+import racing.Position;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,29 +10,16 @@ public class Car {
 
     private static final int GO_CONDITION = 4;
 
-    Position position;
-    Name name;
-
-    public Car() {
-        this("");
-    }
+    private final Position position;
+    private final Name name;
 
     public Car(String name) {
         this(name, 0);
     }
 
     public Car(String name, int position) {
-        this(name, new Position(position));
-    }
-
-    public Car(String name, Position position) {
         this.name = new Name(name);
-        this.position = position;
-    }
-
-    public Car(Name name, Position position) {
-        this.name = name;
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public static List<Car> findWinners(List<Car> cars) {
@@ -40,7 +30,7 @@ public class Car {
     }
 
     private boolean isEqual(int maxPosition) {
-        return position.getPosition() == maxPosition;
+        return position.isEqual(maxPosition);
     }
 
     private static int findMaxPosition(List<Car> cars) {

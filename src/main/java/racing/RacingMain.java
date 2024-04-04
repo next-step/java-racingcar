@@ -1,46 +1,30 @@
 package racing;
 
-import java.util.ArrayList;
+import racing.domain.Car;
+import racing.domain.RacingGame;
+import racing.domain.TryCount;
+
 import java.util.List;
-import java.util.Random;
 
-import static racing.Car.findWinners;
-import static racing.InputView.inputCarNames;
-import static racing.InputView.inputTryCount;
-import static racing.ResultView.*;
+import static racing.domain.Car.findWinners;
+import static racing.domain.Cars.createCarsFromNames;
+import static racing.view.InputView.inputCarNames;
+import static racing.view.InputView.inputTryCount;
+import static racing.view.ResultView.*;
 
-public class RacingMain {
+public class  RacingMain {
     public static void main(String[] args) {
-
         String[] names = inputCarNames().split(",");
-        int tryCount = inputTryCount();
-        List<Car> cars = getCars(names);
+        List<Car> cars = createCarsFromNames(names);
+        TryCount tryCount = new TryCount(inputTryCount());
+        RacingGame game = new RacingGame(tryCount.getTryCount(), cars);
 
         printResultMessage();
 
-        for (int i = 0; i < tryCount; i++) {
-            carMove(cars);
+        for (int i = 0; i < tryCount.getTryCount(); i++) {
+            game.carMove(cars);
             printResult(cars);
         }
-
         printWinners(findWinners(cars));
-    }
-
-    private static List<Car> getCars(String[] names) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
-    }
-
-    private static void carMove(List<Car> cars) {
-        final int RANDOM_MAX = 10;
-        Random random = new Random();
-
-        for (Car  car : cars) {
-            car.move(random.nextInt(RANDOM_MAX));
-        }
     }
 }

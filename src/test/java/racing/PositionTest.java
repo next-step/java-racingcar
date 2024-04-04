@@ -10,4 +10,18 @@ public class PositionTest {
         Position position = new Position(4);
         assertThat(position.getPosition()).isEqualTo(4);
     }
+
+    @Test
+    void increase() {
+        Position position = new Position(4);
+        position.increase();
+        assertThat(position.getPosition()).isEqualTo(5);
+    }
+
+    @Test
+    void isEqual() {
+        Position position = new Position(4);
+        assertThat(position.isEqual(4)).isTrue();
+        assertThat(position.isEqual(5)).isFalse();
+    }
 }

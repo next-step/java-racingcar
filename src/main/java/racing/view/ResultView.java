@@ -1,5 +1,7 @@
-package racing;
+package racing.view;
 
+
+import racing.domain.Car;
 
 import java.util.List;
 import java.util.StringJoiner;
@@ -10,19 +12,19 @@ public class ResultView {
         throw new IllegalStateException("static method class");
     }
 
-    static void printResultMessage() {
+    public static void printResultMessage() {
         System.out.println();
         System.out.println("실행 결과");
     }
 
-    static void printResult(List<Car> cars) {
+    public static void printResult(List<Car> cars) {
         for (Car car : cars) {
             printCarResult(car);
         }
         System.out.println();
     }
 
-    static void printCarResult(Car car) {
+    private static void printCarResult(Car car) {
         System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
@@ -30,7 +32,7 @@ public class ResultView {
         System.out.println();
     }
 
-    static void printWinners(List<Car> winners) {
+    public static void printWinners(List<Car> winners) {
         StringJoiner joiner = new StringJoiner(", ", "", "가 최종 우승했습니다.");
 
         for (Car winner : winners) {
