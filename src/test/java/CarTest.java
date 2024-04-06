@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CheckMoveTest {
+public class CarTest {
 
     @Test
     @DisplayName("랜덤값이_4이상이면_move증가")
