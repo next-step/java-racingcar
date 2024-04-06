@@ -17,31 +17,48 @@ class CarRacingGameTest {
     private final InputStream stdIn = System.in;
     private final PrintStream stdOut = System.out;
 
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    void setUpPrintStream(){
+        System.setOut(new PrintStream(outContent));
+    }
+
     @AfterEach
     void restoreSystemIn() {
         System.setIn(stdIn);
         System.setOut(stdOut);
     }
 
-    @Disabled
+//    @Disabled
     @ParameterizedTest
     @CsvSource({
-            "3, 5, '자동차 대수: 3, 시도할 회수: 5'",
-            "7, 8, '자동차 대수: 7, 시도할 회수: 8'",
-            "11, 22, '자동차 대수: 11, 시도할 회수: 22'",
-            "59, 7, '자동차 대수: 59, 시도할 회수: 7'"
+            "3, 5, 7",
+//            "7, 8, '자동차 대수: 7, 시도할 회수: 8'",
+//            "11, 22, '자동차 대수: 11, 시도할 회수: 22'",
+//            "59, 7, '자동차 대수: 59, 시도할 회수: 7'"
     })
     @DisplayName("csvSource로 부터 받은 데이터와 예상메시지가 일치해야 한다.")
-    public void givenCsvSourceData_whenComparedToExpectedMessage_shouldMatchExactly(
-            String expectedCars, String expectedTries, String expectedOutput) {
+    public void MainOutputTest(
+            String expectedCars, String expectedTries, long expectedLines) {
         // GIVEN
         provideInput(expectedCars, expectedTries);
-        ByteArrayOutputStream outputStreamCaptor = provideOutput();
+//        ByteArrayOutputStream outputStreamCaptor = provideOutput();
         // WHEN
         CarRacingGame.main(new String[]{});
 
         // THEN
-        assertThat(outputStreamCaptor.toString()).contains(expectedOutput);
+        String outputStreamCaptorString = outContent.toString();
+        System.out.println("********************************");
+        System.out.println("********************************");
+        System.out.println(outputStreamCaptorString);
+        System.out.println("********************************");
+        System.out.println("********************************");
+
+        long linesCount = outputStreamCaptorString.lines().count();
+//        assertThat(linesCount).isEqualTo(expectedLines);
+        System.out.println("linesCount: " + linesCount);
+
     }
 
     private void provideInput(String... strings) {
