@@ -1,9 +1,6 @@
 package step3_CarRacing;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -59,12 +56,23 @@ class CarRacingGameTest {
     }
 
     @Test
+    @DisplayName("value4가 4이상이면 움직이고 그러지 않으면 움직이지 않는다.")
     void CarMoveTest(){
         Car car = new Car();
         car.move(4); // 무조건 움직임
         assertThat(car.getDistance()).isEqualTo(2);
         car.move(3); // 무조건 안움직임
         assertThat(car.getDistance()).isEqualTo(2);
+    }
+
+//    @Test
+    @RepeatedTest(10000)
+    @DisplayName("race가 1번이라도 열리면 100대중 1개는 전진 한다")
+    public void RaceRoundTest() {
+        Race race = new Race(100);
+        race.runRound();
+        boolean anyCarMoved = race.getCars().stream().anyMatch(car -> car.getDistance() > 1);
+        assertThat(anyCarMoved).isTrue();
     }
 
 }
