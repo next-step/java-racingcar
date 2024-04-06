@@ -63,6 +63,8 @@ class CarRacingGameTest {
         Car car = new Car();
         car.move(4); // 무조건 움직임
         assertThat(car.getDistance()).isEqualTo(2);
+        car.move(3); // 무조건 안움직임
+        assertThat(car.getDistance()).isEqualTo(2);
     }
 
 }
