@@ -40,6 +40,10 @@ public class Position {
 		return max(that.value);
 	}
 
+	public boolean isEqual(int maxPosition) {
+		return value == maxPosition;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
