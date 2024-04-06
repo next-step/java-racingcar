@@ -26,7 +26,10 @@ class CarRacingGameTest {
 
     @ParameterizedTest
     @CsvSource({
-            "3, 5, '자동차 대수: 3, 시도할 회수: 5'"
+            "3, 5, '자동차 대수: 3, 시도할 회수: 5'",
+            "7, 8, '자동차 대수: 7, 시도할 회수: 8'",
+            "11, 22, '자동차 대수: 11, 시도할 회수: 22'",
+            "59, 7, '자동차 대수: 59, 시도할 회수: 7'"
     })
     @DisplayName("csvSource로 부터 받은 데이터와 예상메시지가 일치해야 한다.")
     public void givenCsvSourceData_whenComparedToExpectedMessage_shouldMatchExactly(
