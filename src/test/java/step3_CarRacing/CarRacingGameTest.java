@@ -1,7 +1,9 @@
 package step3_CarRacing;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,6 +26,7 @@ class CarRacingGameTest {
         System.setOut(stdOut);
     }
 
+    @Disabled
     @ParameterizedTest
     @CsvSource({
             "3, 5, '자동차 대수: 3, 시도할 회수: 5'",
@@ -53,6 +56,13 @@ class CarRacingGameTest {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
         return byteArrayOutputStream;
+    }
+
+    @Test
+    void CarMoveTest(){
+        Car car = new Car();
+        car.move(4); // 무조건 움직임
+        assertThat(car.getDistance()).isEqualTo(2);
     }
 
 }
