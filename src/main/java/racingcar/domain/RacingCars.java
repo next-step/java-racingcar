@@ -8,13 +8,10 @@ import java.util.List;
 
 import java.util.StringJoiner;
 
-import racingcar.view.OutputView;
-
 public class RacingCars {
 
 	Random random = new Random();
 	List<Car> cars = new ArrayList<>();
-	OutputView output = new OutputView();
 
 	private String[] splitName(String carName, String delimiter) {
 		return carName.split(delimiter);
@@ -30,27 +27,21 @@ public class RacingCars {
 		}
 	}
 
-	public void conductCarRacing(int trialNumber) {
-		for (int i = 0; i < trialNumber; i++) {
-			moveCars();
-			output.moveCars(cars);
-		}
-	}
-
-	private void moveCars() {
+	public List<Car> moveCars() {
 		for (Car car : cars) {
 
 			int randomNum = random();
 			car.moveStrategy(randomNum);
 
 		}
+		return cars;
 	}
 
-	public void getWinners() {
+	public String getWinners() {
 		List<Car> winners = new ArrayList<>();
 
 		addToWinnersList(winners);
-		viewWinners(winners);
+		return viewWinners(winners);
 	}
 
 	private void addToWinnersList(List<Car> winners) {
@@ -69,11 +60,11 @@ public class RacingCars {
 		return maxPosition;
 	}
 
-	private void viewWinners(List<Car> winners) {
+	private String viewWinners(List<Car> winners) {
 		StringJoiner stringJoiner = new StringJoiner(",");
 		for (Car winner : winners) {
 			stringJoiner.add(winner.name().toString());
 		}
-		output.printWinners(stringJoiner);
+		return stringJoiner.toString();
 	}
 }
