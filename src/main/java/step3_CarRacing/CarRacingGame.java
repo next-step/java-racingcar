@@ -15,7 +15,7 @@ public class CarRacingGame {
 
         Race race = new Race(numberOfCars);
 
-        System.out.println("\n실행 결과");
+        System.out.printf("실행 결과\n");
         for (int i = 0; i < numberOfRounds; i++) {
             race.runRound();
             race.getCars().forEach(car -> System.out.println("-".repeat(car.getDistance())));

@@ -30,13 +30,18 @@ class CarRacingGameTest {
         System.setOut(stdOut);
     }
 
-//    @Disabled
     @ParameterizedTest
     @CsvSource({
-            "3, 5, 7",
-//            "7, 8, '자동차 대수: 7, 시도할 회수: 8'",
-//            "11, 22, '자동차 대수: 11, 시도할 회수: 22'",
-//            "59, 7, '자동차 대수: 59, 시도할 회수: 7'"
+            "2,3,9",
+            "2,4,12",
+            "3,1,4",
+            "3,2,8",
+            "12,1234,16042",
+            "100,1,101",
+            "100,2,202",
+            "100,50,5050",
+            "100,73,7373",
+            "8562,1,8563",
     })
     @DisplayName("csvSource로 부터 받은 데이터와 예상메시지가 일치해야 한다.")
     public void MainOutputTest(
@@ -49,15 +54,9 @@ class CarRacingGameTest {
 
         // THEN
         String outputStreamCaptorString = outContent.toString();
-        System.out.println("********************************");
-        System.out.println("********************************");
-        System.out.println(outputStreamCaptorString);
-        System.out.println("********************************");
-        System.out.println("********************************");
-
-        long linesCount = outputStreamCaptorString.lines().count();
-//        assertThat(linesCount).isEqualTo(expectedLines);
-        System.out.println("linesCount: " + linesCount);
+        String raceResult = outputStreamCaptorString.split("\n실행 결과\n", 2)[1];
+        long linesCount = raceResult.lines().count();
+        assertThat(linesCount).isEqualTo(expectedLines);
 
     }
 
