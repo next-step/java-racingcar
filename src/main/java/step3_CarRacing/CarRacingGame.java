@@ -3,6 +3,8 @@ package step3_CarRacing;
 import java.util.Scanner;
 
 public class CarRacingGame {
+    // TODO : 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분한다.
+    // TODO : UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
