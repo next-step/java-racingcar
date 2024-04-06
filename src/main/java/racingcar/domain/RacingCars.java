@@ -6,11 +6,10 @@ import static racingcar.domain.MoveStrategy.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Random;
 import java.util.StringJoiner;
 
 public class RacingCars {
-
-	Random random = new Random();
 	List<Car> cars = new ArrayList<>();
 
 	private String[] splitName(String carName, String delimiter) {
