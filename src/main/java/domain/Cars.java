@@ -1,20 +1,18 @@
 package domain;
 
-import domain.Car;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Cars {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
-    public List<Car> makeCars(String[] strArr) {
+    public Cars(String[] strArr) {
+        cars = new ArrayList<>();
         for (int i = 0; i < strArr.length; i++) {
             cars.add(new Car(strArr[i], 0));
         }
-        return getCars();
     }
 
     public String judgeWinner(List<Car> cars) {
@@ -24,7 +22,6 @@ public class Cars {
         for (Car car : cars) {
             selectWinnerName(winnerNames, car, maxPosition);
         }
-
         return winnerNames.toString();
     }
 
