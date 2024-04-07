@@ -6,7 +6,7 @@ import java.util.List;
 public class Game {
     private ResultView resultView = new ResultView();
     private InputView inputView = new InputView();
-    private RandomMaker randomMaker = new RandomMaker();
+    private Condition condition = new Condition();
     private CarGenerater carGenerater = new CarGenerater();
     private Cars cars = new Cars();
 
@@ -40,7 +40,7 @@ public class Game {
 
     private void playMove(List<Car> carsList) {
         for (int i = 0; i < carsList.size(); i++) {
-            carsList.get(i).moveOnCondition(randomMaker.generateRandom());
+            carsList.get(i).move(condition.checkCondition());
             resultView.printCarName(carsList.get(i).getCarName());
             resultView.printCarMoving(resultStr(carsList.get(i)));
         }

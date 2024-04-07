@@ -9,17 +9,10 @@ public class Car {
         this.position = position;
     }
 
-    public void moveOnCondition(int num) {
-        if (isMove(num)) {
+    public void move(boolean isMove) {
+        if (isMove) {
             this.position++;
         }
-    }
-
-    private boolean isMove(int num) {
-        if (num > 3) {
-            return true;
-        }
-        return false;
     }
 
     public int getPosition() {
@@ -39,7 +32,7 @@ public class Car {
             return false;
         }
         Car other = (Car) obj;
-        return this.name == other.name;
+        return this.name.getName().equals(other.name.getName());
     }
 
     @Override
