@@ -1,5 +1,11 @@
+package domain;
+
+import domain.Car;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
@@ -25,6 +31,18 @@ public class Cars {
     private void selectWinnerName(StringBuilder winnerNames, Car car, int maxPosition) {
         if (car.getPosition() == maxPosition) {
             winnerNames.append(car.getCarName()).append(" ");
+        }
+    }
+
+    public void validateCar(List<Car> input) {
+        Set<String> set = new HashSet<>();
+
+        for (Car car : input) {
+            set.add(car.getCarName());
+        }
+
+        if (input.size() != set.size()) {
+            throw new IllegalArgumentException("이름이 중복되었습니다.");
         }
     }
 

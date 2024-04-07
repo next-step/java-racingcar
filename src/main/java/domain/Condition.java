@@ -1,3 +1,5 @@
+package domain;
+
 public class Condition {
     private final int standard = 3;
 

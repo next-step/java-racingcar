@@ -1,34 +1,41 @@
+package controller;
+
+import domain.*;
 import view.InputView;
 import view.ResultView;
 
 import java.util.List;
 
-public class Game {
+public class RacingController {
     private ResultView resultView = new ResultView();
     private InputView inputView = new InputView();
     private Condition condition = new Condition();
     private CarGenerater carGenerater = new CarGenerater();
-    private Cars cars = new Cars();
 
-    public void playGame() {
+    public void playRacing() {
+        inputView.requestEntry();
+        String inputEntryCars = inputView.inputStringData();
+
+        Cars cars = new Cars();
+        List<Car> carsList = cars.makeCars(carGenerater.splitEntry(inputEntryCars));
+
         try {
-            inputView.requestEntry();
-            String inputEntryCars = inputView.inputStringData();
+            cars.validateCar(carsList);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
 
+        try {
             inputView.requestTryCount();
             CountTry countTry = new CountTry(inputView.inputIntData());
 
-            playRound(carGenerater.splitEntry(inputEntryCars), countTry.getCountTry());
-
+            playRound(carsList, countTry.getCountTry(), cars);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void playRound(String[] entryCars, int countTry) {
-        Cars cars = new Cars();
-
-        List<Car> carsList = cars.makeCars(entryCars);
+    private void playRound(List<Car> carsList, int countTry, Cars cars) {
         resultView.printResult();
 
         for (int i = 0; i < countTry; i++) {

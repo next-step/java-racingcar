@@ -1,7 +1,10 @@
+import domain.CarGenerater;
+import domain.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarGeneraterTest {
     private CarGenerater carGenerater = new CarGenerater();

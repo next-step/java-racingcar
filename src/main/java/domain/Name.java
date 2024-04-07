@@ -1,3 +1,5 @@
+package domain;
+
 public class Name {
     private String name;
     private final int NAME_MIN_SIZE = 1;

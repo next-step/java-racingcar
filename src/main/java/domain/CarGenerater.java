@@ -1,3 +1,5 @@
+package domain;
+
 public class CarGenerater {
     public String[] splitEntry(String input) {
         String splitPoint = ",";

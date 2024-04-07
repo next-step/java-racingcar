@@ -1,3 +1,5 @@
+package domain;
+
 public class CountTry {
     private int countTry;
 
