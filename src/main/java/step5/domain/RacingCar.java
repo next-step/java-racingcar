@@ -18,6 +18,8 @@ public class RacingCar implements Comparable<RacingCar> {
 
     private Position position;
 
+    private MovableStrategy movableStrategy;
+
     public RacingCar() {
         this(NATURAL_FIRST);
     }
@@ -34,10 +36,17 @@ public class RacingCar implements Comparable<RacingCar> {
         this.number = new CarNumber(number);
         this.name = new CarName(name);
         this.position = new Position(position);
+        this.movableStrategy = new RandomMovableStrategy();
+    }
+
+    public RacingCar(int number, String name, int position, MovableStrategy movableStrategy) {
+        this.number = new CarNumber(number);
+        this.name = new CarName(name);
+        this.position = new Position(position);
+        this.movableStrategy = movableStrategy;
     }
 
     public void raceCar() {
-        MovableStrategy movableStrategy = new RandomMovableStrategy();
         move(movableStrategy);
     }
 
