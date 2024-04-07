@@ -1,22 +1,26 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Scanner;
 
+import racingcar.domain.Car;
 import racingcar.domain.RacingCars;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarMain {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-
-		System.out.println("Enter the names of the cars(separated by ,)");
-		String carNames = scanner.next();
-
-		System.out.println("How many trials?");
-		int trialNumber = scanner.nextInt();
-		System.out.println("Result");
+		InputView input = new InputView();
+		OutputView output = new OutputView();
+		String carNames = input.setCarNames();
+		int trialNumber = input.setTrialNumber();
 
 		RacingCars racingCars = new RacingCars(carNames);
-		racingCars.conductCarRacing(trialNumber);
-		racingCars.getWinners();
+		for (int i = 0; i < trialNumber; i++) {
+			List<Car> cars = racingCars.moveCars();
+			output.moveCars(cars);
+		}
+		String winners = racingCars.getWinners();
+		output.printWinners(winners);
 	}
 }
