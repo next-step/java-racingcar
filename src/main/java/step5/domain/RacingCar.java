@@ -12,8 +12,6 @@ import static step5.common.Constant.NATURAL_FIRST;
 
 public class RacingCar implements Comparable<RacingCar> {
 
-
-
     private final CarNumber number;
 
     private final CarName name;

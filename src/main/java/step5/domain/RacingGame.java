@@ -5,17 +5,17 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RacingCars {
+public class RacingGame {
 
     List<RacingCar> racingCars;
 
-    public RacingCars(int numberOfCars) {
+    public RacingGame(int numberOfCars) {
         racingCars = IntStream.rangeClosed(1, numberOfCars)
                 .mapToObj(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
-    public RacingCars(String[] cars) {
+    public RacingGame(String[] cars) {
         racingCars = IntStream.range(0, cars.length)
                 .mapToObj(i -> new RacingCar(i + 1, cars[i]))
                 .collect(Collectors.toList());
@@ -25,8 +25,8 @@ public class RacingCars {
         return this.racingCars;
     }
 
-    public void raceCars(RacingCars racingCars) {
-        for (RacingCar racingCar : racingCars.list()) racingCar.raceCar();
+    public void raceCars(RacingGame racingGame) {
+        for (RacingCar racingCar : racingGame.list()) racingCar.raceCar();
     }
 
     public List<String> winners() {
