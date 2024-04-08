@@ -15,10 +15,17 @@ class CarTest {
     }
 
     @Test
-    void 자동차_move() throws Exception {
+    void 자동차_제자리() throws Exception {
         Car car = new Car("abc");
         car.move(1);
-        assertThat(car.isWinner(1)).isEqualTo(1);
+        assertThat(car.checkMaxLocation(1)).isEqualTo(1);
+    }
+
+    @Test
+    void 자동차_move() throws Exception {
+        Car car = new Car("abc");
+        car.move(5);
+        assertThat(car.checkMaxLocation(5)).isEqualTo(5);
     }
 
     @Test
