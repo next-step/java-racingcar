@@ -18,7 +18,7 @@ class CarTest {
     void 자동차_move() throws Exception {
         Car car = new Car("abc");
         car.move(1);
-        assertThat(car.isMax(1)).isEqualTo(1);
+        assertThat(car.isWinner(1)).isEqualTo(1);
     }
 
     @Test

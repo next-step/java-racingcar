@@ -15,7 +15,7 @@ public class Winners {
     }
 
     private static void checkWinner(Car car, int max, List<Car> winners) {
-        if (car.isMax(max)){
+        if (car.isWinner(max)){
             winners.add(car);
         }
     }
