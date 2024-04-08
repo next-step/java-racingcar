@@ -7,6 +7,10 @@ public class CarLocation {
         this.location = 0;
     }
 
+    public CarLocation(int location) {
+        this.location = location;
+    }
+
     public void increase() {
         location++;
     }

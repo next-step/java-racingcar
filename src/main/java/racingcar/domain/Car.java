@@ -10,6 +10,11 @@ public class Car {
         this.location = new CarLocation();
     }
 
+    public Car(String name, int location) throws Exception {
+        this.carName = new CarName(name);
+        this.location = new CarLocation(location);
+    }
+
     public void move(int condition) {
         if (condition >= MOVE_CONDITION) {
             location.increase();
