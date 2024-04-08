@@ -1,14 +1,14 @@
-package step4.domain;
+package step5.domain;
 
-import step4.common.CarName;
-import step4.common.CarNumber;
-import step4.common.Position;
-import step4.common.Positive;
-import step4.strategy.MovableStrategy;
-import step4.strategy.RandomMovableStrategy;
+import step5.common.CarName;
+import step5.common.CarNumber;
+import step5.common.Position;
+import step5.common.Positive;
+import step5.strategy.MovableStrategy;
+import step5.strategy.RandomMovableStrategy;
 
-import static step4.common.Constant.EMPTY_STRING;
-import static step4.common.Constant.NATURAL_FIRST;
+import static step5.common.Constant.EMPTY_STRING;
+import static step5.common.Constant.NATURAL_FIRST;
 
 public class RacingCar implements Comparable<RacingCar> {
 
@@ -17,6 +17,8 @@ public class RacingCar implements Comparable<RacingCar> {
     private final CarName name;
 
     private Position position;
+
+    private MovableStrategy movableStrategy;
 
     public RacingCar() {
         this(NATURAL_FIRST);
@@ -34,10 +36,17 @@ public class RacingCar implements Comparable<RacingCar> {
         this.number = new CarNumber(number);
         this.name = new CarName(name);
         this.position = new Position(position);
+        this.movableStrategy = new RandomMovableStrategy();
+    }
+
+    public RacingCar(int number, String name, int position, MovableStrategy movableStrategy) {
+        this.number = new CarNumber(number);
+        this.name = new CarName(name);
+        this.position = new Position(position);
+        this.movableStrategy = movableStrategy;
     }
 
     public void raceCar() {
-        MovableStrategy movableStrategy = new RandomMovableStrategy();
         move(movableStrategy);
     }
 

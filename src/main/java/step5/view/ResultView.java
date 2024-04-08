@@ -1,7 +1,7 @@
-package step4.view;
+package step5.view;
 
-import step4.domain.RacingCar;
-import step4.domain.RacingCars;
+import step5.domain.RacingCar;
+import step5.domain.RacingGame;
 
 public class ResultView {
 
@@ -9,8 +9,8 @@ public class ResultView {
         System.out.print("\n실행 결과\n");
     }
 
-    public void printRacingCars(RacingCars racingCars) {
-        for (RacingCar racingCar : racingCars.list()) printRacingCar(racingCar);
+    public void printRacingCars(RacingGame racingGame) {
+        for (RacingCar racingCar : racingGame.list()) printRacingCar(racingCar);
         System.out.println();
     }
 
@@ -24,8 +24,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinner(RacingCars racingCars) {
-        String winners = String.join(", ", racingCars.winners());
+    public void printWinner(RacingGame racingGame) {
+        String winners = String.join(", ", racingGame.winners());
         System.out.printf("%s가 최종 우승했습니다.", winners);
     }
 
