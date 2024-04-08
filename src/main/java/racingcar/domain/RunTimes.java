@@ -15,4 +15,12 @@ public class RunTimes {
     public void decrease() {
         this.times--;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RunTimes runTimes = (RunTimes) o;
+        return times == runTimes.times;
+    }
 }
