@@ -26,7 +26,6 @@ public class Main {
         while (carRacing.isDuringGame()) {
             resultCars = carRacing.run();
             printRoundResult(resultCars);
-            carRacing.decreaseRunTimes();
         }
 
         printGameResult(getWinners(resultCars));

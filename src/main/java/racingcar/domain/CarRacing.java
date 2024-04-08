@@ -20,6 +20,7 @@ public class CarRacing {
     }
 
     public List<Car> run() {
+        this.decreaseRunTimes();
         return racingCars.roundRun();
     }
 }
