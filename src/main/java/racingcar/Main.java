@@ -1,17 +1,17 @@
-package racingcar.view;
+package racingcar;
 
-import racingcar.Car;
-import racingcar.CarRacing;
+import racingcar.domain.Car;
+import racingcar.domain.CarRacing;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.Winners.getWinners;
+import static racingcar.domain.Winners.getWinners;
 import static racingcar.view.InputView.userInput;
 import static racingcar.view.ResultView.printGameResult;
 import static racingcar.view.ResultView.printRoundResult;
 
-public class MainView {
+public class Main {
 
     public static void main(String[] args) throws Exception {
         String inputNames = userInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -23,7 +23,7 @@ public class MainView {
 
         List<Car> resultCars = new ArrayList<>();
 
-        for (int i = 0; i < times; i++) {
+        while (carRacing.isDuringGame()) {
             resultCars = carRacing.run();
             printRoundResult(resultCars);
         }

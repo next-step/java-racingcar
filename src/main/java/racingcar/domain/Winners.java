@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class Winners {
     }
 
     private static void checkWinner(Car car, int max, List<Car> winners) {
-        if (car.isMax(max)){
+        if (car.isWinner(max)){
             winners.add(car);
         }
     }
