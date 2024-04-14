@@ -1,27 +1,34 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingCar {
-
-    private static final Scanner scanner = new Scanner(System.in);
+    private final MovePolicy movePolicy;
+    private final Printer printer = new Printer();
 
     private int carCount;
     private int moveCount;
 
-    private final MovePolicy movePolicy = new RandomMove();
-    private final Printer printer = new Printer();
+    public RacingCar(MovePolicy movePolicy) {
+        this.movePolicy = movePolicy;
+    }
 
     public void start() {
-        int[] result = new int[carCount];
+        int numberOfCar = printer.askNumberOfCar();
+        int numberOfTry = printer.askNumberOfTry();
 
-        for (int i = 0; i < moveCount; i++) {
-            for (int j = 0; j < carCount; j++) {
-                if (movePolicy.isAbleToMove()) {
-                    result[j] += 1;
-                }
-            }
+        List<Car> carList = new ArrayList<>();
+
+        for (int i = 0; i < numberOfCar; i++) {
+            carList.add(new Car(movePolicy));
         }
 
-//        printer.print(result);
+        Cars cars = new Cars(carList);
+
+        for (int i = 0; i < numberOfTry; i++) {
+            cars.move();
+        }
+
+        printer.printResult(cars);
     }
 
     public int getCarCount() {

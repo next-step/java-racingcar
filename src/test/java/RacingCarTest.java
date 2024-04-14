@@ -10,7 +10,7 @@ public class RacingCarTest {
         int carCount = 3;
         int moveCount = 5;
 
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar(new RandomMove());
         racingCar.setCarCount(carCount); // 테스트용 메서드 호출
         racingCar.setMoveCount(moveCount); // 테스트용 메서드 호출
 
