@@ -6,7 +6,6 @@ import step3_CarRacing.view.ResultView;
 import java.util.Scanner;
 
 public class CarRacingGame {
-    // TODO : 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분한다.
     public static void main(String[] args) {
         //init
         Scanner scanner = new Scanner(System.in);
