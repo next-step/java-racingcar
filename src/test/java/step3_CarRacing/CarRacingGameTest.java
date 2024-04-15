@@ -64,11 +64,14 @@ class CarRacingGameTest {
         System.setIn(new ByteArrayInputStream(inputStr.getBytes(UTF_8)));
     }
 
+/*
+
     private ByteArrayOutputStream provideOutput() {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
         return byteArrayOutputStream;
     }
+*/
 
     @Test
     @DisplayName("value4가 4이상이면 움직이고 그러지 않으면 움직이지 않는다.")
