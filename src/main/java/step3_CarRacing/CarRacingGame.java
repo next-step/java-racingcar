@@ -10,21 +10,14 @@ public class CarRacingGame {
     // TODO : UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
     public static void main(String[] args) {
         //init
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
         Scanner scanner = new Scanner(System.in);
-
+        InputView inputView = new InputView(scanner);
+        ResultView resultView = new ResultView();
 
         //input
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCars = scanner.nextInt();
-
-        scanner.nextLine(); // nextInt() 사용 후 nextLine() 호출 시 줄바꿈 문자 처리
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int numberOfRounds = scanner.nextInt();
-
+        int numberOfCars = inputView.getNumberOfCars();
         Race race = new Race(numberOfCars);
+        int numberOfRounds = inputView.getNumberOfRounds();
 
         //result
         runRaces(numberOfRounds, race, resultView);
