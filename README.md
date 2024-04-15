@@ -12,7 +12,7 @@
 - [] Race 구현
   - [x] Race 생성자 : 자동차들 list 준비, 
   - [x] 자동차 리스트 가져오기: `@getter` 처리
-  - [] Race runRound
+  - [x] Race runRound
 
 - [ ] Input 구현
   - [ ] 자동차 이름 입력
