@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 version '1.0'
@@ -24,6 +25,14 @@ java {
     }
 }
 
-test {
-    useJUnitPlatform()
+tasks.named('test') {
+    useJUnitPlatform() // Junit5 사용: 테스트 종속성에 JUnit Jupiter API와 JUnit Jupiter Engine을 포함해야 함.
+    maxParallelForks = Runtime.runtime.availableProcessors()
+    finalizedBy jacocoTestCoverageVerification
+}
+jacocoTestReport {
+    reports { csv.setRequired(true) }
+}
+jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
 }
