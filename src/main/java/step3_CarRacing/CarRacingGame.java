@@ -25,12 +25,14 @@ public class CarRacingGame {
         Race race = new Race(numberOfCars);
 
         //result
+        runRaces(numberOfRounds, race, resultView);
+    }
+
+    private static void runRaces(int numberOfRounds, Race race, ResultView resultView) {
         resultView.printResultHeader();
         for (int i = 0; i < numberOfRounds; i++) {
             race.runRound();
             resultView.displayRaceResult(race.getCars());
         }
     }
-
-
 }

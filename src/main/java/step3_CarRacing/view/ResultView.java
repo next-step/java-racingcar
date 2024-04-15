@@ -12,14 +12,6 @@ public class ResultView {
     public void printResultHeader() {
         System.out.print("실행 결과\n");
     }
-/*
 
-    public void displayRoundResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println("-".repeat(car.getDistance()));
-        }
-        System.out.println();
-    }
-*/
 
 }
