@@ -5,7 +5,7 @@
 
 ## 기능 요구사항
 - [x] 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가
-- [ ] Car 구현
+- [x] Car 구현
   - [x] move 구현: random4이상시 움직임
   - [x] getDistance: 차의 움직인 거리 getter
   - [x] 이름: 5자 제한, 생성할때 부여, getter 필요, Lombok  `@getter` 처리
