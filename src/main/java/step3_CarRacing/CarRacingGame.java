@@ -1,12 +1,19 @@
 package step3_CarRacing;
 
+import step3_CarRacing.view.ResultView;
+
 import java.util.Scanner;
 
 public class CarRacingGame {
     // TODO : 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분한다.
     // TODO : UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
     public static void main(String[] args) {
+        //init
+        ResultView resultView = new ResultView();
         Scanner scanner = new Scanner(System.in);
+
+
+        //input
         System.out.println("자동차 대수는 몇 대 인가요?");
         int numberOfCars = scanner.nextInt();
 
@@ -17,11 +24,11 @@ public class CarRacingGame {
 
         Race race = new Race(numberOfCars);
 
-        System.out.printf("실행 결과\n");
+        //result
+        resultView.printResultHeader();
         for (int i = 0; i < numberOfRounds; i++) {
             race.runRound();
-            race.getCars().forEach(car -> System.out.println("-".repeat(car.getDistance())));
-            System.out.println();
+            resultView.displayRaceResult(race.getCars());
         }
     }
 
