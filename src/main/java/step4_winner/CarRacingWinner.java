@@ -1,5 +1,8 @@
 package step4_winner;
 
+import step4_winner.view.InputView;
+import step4_winner.view.ResultView;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -7,11 +10,14 @@ import java.util.stream.Collectors;
 
 public class CarRacingWinner {
     public static void main(String[] args) {
+        // init
         Scanner scanner = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carNamesWithComma = scanner.next();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int numberOfTries = scanner.nextInt();
+        InputView inputView = new InputView(scanner);
+        ResultView resultView = new ResultView();
+
+        // input
+        String carNamesWithComma= inputView.getCarNamesWithComma();
+        int numberOfTries = inputView.getNumberOfRounds();
 
         String[] carNames = carNamesWithComma.split(",");
 
@@ -21,23 +27,19 @@ public class CarRacingWinner {
 
         Race race = new Race(cars);
 
-        System.out.print("실행 결과\n");
-        for(int i = 0; i < numberOfTries; i++) {
+
+        // result
+        runRaces(numberOfTries, race, cars,resultView);
+    }
+
+    private static void runRaces(int numberOfRounds,
+                                 Race race, List<Car> cars,
+                                 ResultView resultView) {
+        resultView.printResultHeader();
+        for(int i = 0; i < numberOfRounds; i++) {
             race.runRound();
-            cars.forEach(car -> System.out.println(car.getName()+" : "+"-".repeat(car.getDistance())));
-            System.out.println();
+            resultView.displayRaceResult(cars);
         }
-
-        // 최대 거리 찾기
-        int maxDistance = cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElseThrow(() -> new IllegalStateException("List is empty "));
-        String winners = cars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-
-        System.out.println(winners+"가 최종 우승했습니다.");
+        resultView.printFinalWinner(cars);
     }
 }
