@@ -24,6 +24,9 @@ java {
         languageVersion = JavaLanguageVersion.of(11)
     }
 }
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:deprecation"
+}
 
 tasks.named('test') {
     useJUnitPlatform() // Junit5 사용: 테스트 종속성에 JUnit Jupiter API와 JUnit Jupiter Engine을 포함해야 함.
@@ -35,4 +38,7 @@ jacocoTestReport {
 }
 jacocoTestCoverageVerification {
     dependsOn jacocoTestReport
+    violationRules{
+        rule { limit { minimum = 0.8 } }
+    }
 }
