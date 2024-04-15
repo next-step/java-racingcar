@@ -1,5 +1,6 @@
 package step3_CarRacing;
 
+import step3_CarRacing.view.InputView;
 import step3_CarRacing.view.ResultView;
 
 import java.util.Scanner;
@@ -9,6 +10,7 @@ public class CarRacingGame {
     // TODO : UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
     public static void main(String[] args) {
         //init
+        InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         Scanner scanner = new Scanner(System.in);
 

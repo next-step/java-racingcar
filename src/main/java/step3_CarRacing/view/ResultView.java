@@ -12,6 +12,4 @@ public class ResultView {
     public void printResultHeader() {
         System.out.print("실행 결과\n");
     }
-
-
 }

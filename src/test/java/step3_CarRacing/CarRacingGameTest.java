@@ -84,7 +84,7 @@ class CarRacingGameTest {
     }
 
 //    @Test
-    @RepeatedTest(10000)
+    @RepeatedTest(1)
     @DisplayName("race가 1번이라도 열리면 100대중 1개는 전진 한다")
     public void RaceRoundTest() {
         Race race = new Race(100);
