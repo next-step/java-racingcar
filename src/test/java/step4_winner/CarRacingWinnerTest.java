@@ -36,7 +36,7 @@ class CarRacingWinnerTest {
     @DisplayName("Input Test")
     void CarRacingWinnerInputTest() {
         // GIVEN 1번만 시도
-        provideInput("a,b,c,d,e,f,g","1");
+        provideInput("a,b,c,d,e,f,g", "1");
 
         // WHEN
         CarRacingWinner.main(new String[]{});
@@ -46,7 +46,7 @@ class CarRacingWinnerTest {
         String raceResult = outputStreamCaptorString.split("\n실행 결과\n", 2)[1];
 
         long linesCount = raceResult.lines().count();
-        assertThat(linesCount).isEqualTo(8L);
+        assertThat(linesCount).isEqualTo(9L);
 
         long emptyLinesCount = raceResult.lines().filter(String::isEmpty).count();
         assertThat(emptyLinesCount).isEqualTo(1L);
@@ -57,7 +57,7 @@ class CarRacingWinnerTest {
     @DisplayName("입력된 값이 없으면 NoSuchElementException")
     void throwNoSuchElementExceptionIfNoInput() {
         // GIVEN
-        provideInput("","");
+        provideInput("", "");
 
         // WHEN
         Throwable IllegalThrown = catchThrowable(() -> CarRacingWinner.main(new String[]{}));
