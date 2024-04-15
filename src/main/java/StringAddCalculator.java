@@ -1,6 +1,8 @@
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringAddCalculator {
     private StringAddCalculator() {
@@ -30,8 +32,14 @@ public class StringAddCalculator {
                 .toArray();
     }
 
-    private static boolean hasNegative(int[] numbers) {
-        return Arrays.stream(numbers).anyMatch(number -> number < 0);
+    private static void checkHasNegativeAndThrow(int[] numbers) {
+        List<Integer> negativeNumbers = Arrays.stream(numbers).filter(number -> number < 0)
+                .boxed()
+                .collect(Collectors.toList());
+
+        if (!negativeNumbers.isEmpty()) {
+            throw new RuntimeException("음수가 포함되었습니다 : " + negativeNumbers);
+        }
     }
 
     private static int stringToIntAndSum(int[] numbers) {
@@ -43,11 +51,9 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] tokens = split(input);
+        int[] numbers = toNumbers(split(input));
 
-        int[] numbers = toNumbers(tokens);
-
-        if (hasNegative(numbers)) throw new RuntimeException("음수가 존재합니다.");
+        checkHasNegativeAndThrow(numbers);
 
         return stringToIntAndSum(numbers);
     }
