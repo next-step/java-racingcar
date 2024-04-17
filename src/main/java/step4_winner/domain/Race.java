@@ -1,4 +1,4 @@
-package step4_winner;
+package step4_winner.domain;
 
 
 import lombok.Getter;
@@ -9,16 +9,14 @@ import java.util.Random;
 public class Race {
     private final Random random = new Random();
     @Getter private final List<Car> cars;
-    @Getter private final int tries;
 
-    public Race(List<Car> cars, int tries) {
+    public Race(List<Car> cars) {
         if (cars.isEmpty())
             throw new IllegalArgumentException("0이상이어야 함");
         this.cars = cars;
-        this.tries = tries;
     }
 
-    public void runRound() {
+    public void runRace() {
         cars.forEach(car -> car.move(random.nextInt(10)));
     }
 }

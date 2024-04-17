@@ -1,4 +1,4 @@
-package step4_winner;
+package step4_winner.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

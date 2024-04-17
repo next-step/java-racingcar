@@ -1,4 +1,4 @@
-package step4_winner;
+package step4_winner.domain;
 
 import lombok.Getter;
 

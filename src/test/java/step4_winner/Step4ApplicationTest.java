@@ -17,7 +17,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-class CarRacingWinnerTest {
+class Step4ApplicationTest {
 
     private final InputStream stdIn = System.in;
     private final PrintStream stdOut = System.out;
@@ -38,7 +38,7 @@ class CarRacingWinnerTest {
     @DisplayName("CarRacingWinner는 인스턴스화 할 수 없다")
     void NonInstanceCarRacingWinner() throws NoSuchMethodException {
         // GIVEN
-        Constructor<CarRacingWinner> constructor = CarRacingWinner.class.getDeclaredConstructor();
+        Constructor<Step4Application> constructor = Step4Application.class.getDeclaredConstructor();
         assertThat(constructor.canAccess(null)).isFalse();
 
         // WHEN
@@ -58,7 +58,7 @@ class CarRacingWinnerTest {
         provideInput("a,b,c,d,e,f,g", "1");
 
         // WHEN
-        CarRacingWinner.main(new String[]{});
+        Step4Application.main(new String[]{});
 
         // THEN
         String outputStreamCaptorString = outContent.toString();
@@ -79,7 +79,7 @@ class CarRacingWinnerTest {
         provideInput("", "");
 
         // WHEN
-        Throwable IllegalThrown = catchThrowable(() -> CarRacingWinner.main(new String[]{}));
+        Throwable IllegalThrown = catchThrowable(() -> Step4Application.main(new String[]{}));
 
         // THEN
         assertThat(IllegalThrown)

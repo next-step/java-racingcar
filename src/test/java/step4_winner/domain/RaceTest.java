@@ -1,4 +1,4 @@
-package step4_winner;
+package step4_winner.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ class RaceTest {
         // GIVEN empty list
         List<Car> cars = new ArrayList<>();
         // WHEN create
-        Throwable illegalThrown = catchThrowable(() -> new Race(cars,1));
+        Throwable illegalThrown = catchThrowable(() -> new Race(cars));
         // THEN
         assertThat(illegalThrown)
                 .isInstanceOf(IllegalArgumentException.class)
@@ -29,7 +29,7 @@ class RaceTest {
         // GIVEN positive
         cars.add(new Car("test1"));
         // WHEN
-        Race legalRace = new Race(cars,1);
+        Race legalRace = new Race(cars);
         // THEN
         assertThat(legalRace).isNotNull();
     }
@@ -43,10 +43,10 @@ class RaceTest {
                 .peek(System.out::println)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        Race race = new Race(cars,1);
+        Race race = new Race(cars);
 
         // WHEN
-        race.runRound();
+        race.runRace();
 
         // then
         boolean anyCarMoved = cars.stream().anyMatch(car -> car.getDistance() > 1);
