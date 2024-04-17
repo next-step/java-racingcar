@@ -1,7 +1,9 @@
 package step4_winner;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CarRacingWinner {
     public static void main(String[] args) {
@@ -13,10 +15,17 @@ public class CarRacingWinner {
 
         String[] carNames = carNamesWithComma.split(",");
 
+        List<Car> cars = Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
+
+        Race race = new Race(cars);
+
         System.out.print("실행 결과\n");
-        System.out.println("cars: "+carNames.length);
-        System.out.println("tries: "+numberOfTries);
-        System.out.println("carlist:");
-        Arrays.stream(carNames).forEach(System.out::println);
+        for(int i = 0; i < numberOfTries; i++) {
+            race.runRound();
+            cars.forEach(car -> System.out.println(car.getName()+" : "+"-".repeat(car.getDistance())));
+            System.out.println();
+        }
     }
 }
