@@ -3,8 +3,7 @@ on:
   pull_request:
     types: [opened,reopened,synchronize]
 
-permissions:
-  issues: write
+permissions: write-all
 
 jobs:
   onPRTest:
