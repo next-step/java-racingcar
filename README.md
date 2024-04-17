@@ -8,7 +8,7 @@
 - [ ] Car 구현
   - [ ] move 구현: random4이상시 움직임
   - [x] getDistance: 차의 움직인 거리 getter
-  - [ ] 이름: 5자 제한, 생성할때 부여, getter 필요, Lombok  `@getter` 처리
+  - [x] 이름: 5자 제한, 생성할때 부여, getter 필요, Lombok  `@getter` 처리
 - [] Race 구현
   - [ ] Race 생성자 : 자동차들 list 준비,
   - [ ] 자동차 리스트 가져오기: `@getter` 처리
