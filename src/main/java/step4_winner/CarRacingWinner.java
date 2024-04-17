@@ -27,5 +27,17 @@ public class CarRacingWinner {
             cars.forEach(car -> System.out.println(car.getName()+" : "+"-".repeat(car.getDistance())));
             System.out.println();
         }
+
+        // 최대 거리 찾기
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("List is empty "));
+        String winners = cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(winners+"가 최종 우승했습니다.");
     }
 }
