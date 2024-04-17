@@ -32,5 +32,5 @@
   - [x] NCSS 15 라인 설정 - PMD Custom Rule apply
 
 - [x] 단일 책임 원칙으로 메서드가 되어 있는지 확인
-- [ ] 모든 로직에 단위 테스트 구현 - UI 제외
+- [x] 모든 로직에 단위 테스트 구현 - UI 제외
 - [x] UI를 `InputView`, `ResultView`로 분리
