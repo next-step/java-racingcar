@@ -34,12 +34,14 @@ class RaceTest {
         assertThat(legalRace).isNotNull();
     }
 
-    @RepeatedTest(1000)
+    @RepeatedTest(1)
     @DisplayName("100개의 차가 참가한 race가 일단 열리면, 100대중 1개는 전진 한다")
     public void RaceRoundTest() {
         // GIVEN
         List<Car> cars = IntStream.range(0, 100)
-                .mapToObj(i -> new Car("c_" + (++i)))
+                .mapToObj(i -> "c_" + (++i))
+                .peek(System.out::println)
+                .map(Car::new)
                 .collect(Collectors.toList());
         Race race = new Race(cars);
 

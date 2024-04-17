@@ -14,7 +14,7 @@
   - [x] 자동차 리스트 가져오기: `@getter` 처리
   - [x] Race runRound
 
-- [ ] Input 구현
+- [x] Input 구현
   - [ ] 자동차 이름 입력
     - [ ] : validate: 5자 : 이미 Car 생성자에서 구현
 
