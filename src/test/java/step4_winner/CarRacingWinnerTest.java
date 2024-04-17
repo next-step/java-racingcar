@@ -9,6 +9,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.NoSuchElementException;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -30,6 +32,23 @@ class CarRacingWinnerTest {
     void restoreSystemIn() {
         System.setIn(stdIn);
         System.setOut(stdOut);
+    }
+
+    @Test
+    @DisplayName("CarRacingWinner는 인스턴스화 할 수 없다")
+    void NonInstanceCarRacingWinner() throws NoSuchMethodException {
+        // GIVEN
+        Constructor<CarRacingWinner> constructor = CarRacingWinner.class.getDeclaredConstructor();
+        assertThat(constructor.canAccess(null)).isFalse();
+
+        // WHEN
+        constructor.setAccessible(true);
+        Throwable throwable = catchThrowable(constructor::newInstance);
+
+        // 리플렉션을 사용하여 생성자를 호출하면, 생성자 내부에서 발생하는 예외는 InvocationTargetException에 감싸져서 발생
+        assertThat(throwable).isInstanceOf(InvocationTargetException.class);
+        // 그 내부의 cause를 검사해서 실제 UnsupportedOperationException가 발생하는지 확인
+        assertThat(throwable.getCause()).isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test

@@ -29,11 +29,11 @@ public class StringTest {
             "(1,2)".charAt(20);
         })
                 .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range:");
+                .hasMessageContaining("out of bounds for length");
         assertThatThrownBy(() -> {
             "(1,2)".charAt(-10);
         })
                 .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range:");
+                .hasMessageContaining("out of bounds for length");
     }
 }

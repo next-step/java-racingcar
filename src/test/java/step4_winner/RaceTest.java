@@ -1,7 +1,6 @@
 package step4_winner;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,7 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 
 class RaceTest {
@@ -20,7 +20,7 @@ class RaceTest {
         // GIVEN empty list
         List<Car> cars = new ArrayList<>();
         // WHEN create
-        Throwable illegalThrown = catchThrowable(() -> new Race(cars));
+        Throwable illegalThrown = catchThrowable(() -> new Race(cars,1));
         // THEN
         assertThat(illegalThrown)
                 .isInstanceOf(IllegalArgumentException.class)
@@ -29,12 +29,12 @@ class RaceTest {
         // GIVEN positive
         cars.add(new Car("test1"));
         // WHEN
-        Race legalRace = new Race(cars);
+        Race legalRace = new Race(cars,1);
         // THEN
         assertThat(legalRace).isNotNull();
     }
 
-    @RepeatedTest(1)
+    @Test
     @DisplayName("100개의 차가 참가한 race가 일단 열리면, 100대중 1개는 전진 한다")
     public void RaceRoundTest() {
         // GIVEN
@@ -43,7 +43,7 @@ class RaceTest {
                 .peek(System.out::println)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        Race race = new Race(cars);
+        Race race = new Race(cars,1);
 
         // WHEN
         race.runRound();

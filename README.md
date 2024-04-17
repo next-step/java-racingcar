@@ -24,12 +24,12 @@
 
 ## Check 사항
 - [ ] 들여쓰기 1까지인지 확인
-- [ ] 메서드가 15라인을 넘어가지 않도록 구현
-  - [ ] ~~pmd 15 line 적용 시도~~
+- [x] 메서드가 15라인을 넘어가지 않도록 구현
+  - [x] ~~pmd 15 line 적용 시도~~
     - https://github.com/pmd/pmd/issues/2127#issue-527718378
     - Enforcing length limits with LoC("lines of code") is not very meaningful, could even be called a bad practice
     - **LoC로 길이 제한을 적용하는 것은 그다지 의미가 없으며, 심지어 나쁜 관행이라고 할 수도 있습니다**
-  - [ ] NCSS 15 라인 설정 - PMD Custom Rule apply
+  - [x] NCSS 15 라인 설정 - PMD Custom Rule apply
 
 - [ ] 단일 책임 원칙으로 메서드가 되어 있는지 확인
 - [ ] 모든 로직에 단위 테스트 구현 - UI 제외

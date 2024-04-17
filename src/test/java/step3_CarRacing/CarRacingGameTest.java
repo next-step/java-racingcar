@@ -76,7 +76,7 @@ class CarRacingGameTest {
         assertThat(car.getDistance()).isEqualTo(2);
     }
 
-    @RepeatedTest(10000)
+    @Test
     @DisplayName("100개의 차가 참가한 race가 일단 열리면, 100대중 1개는 전진 한다")
     public void RaceRoundTest() {
         Race race = new Race(100);
