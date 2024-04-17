@@ -23,8 +23,8 @@
   - [x] 최종 우승자 출력: 1명 이상 일 수 있음
 
 ## Check 사항
-- [ ] 들여쓰기 1까지인지 확인
-- [ ] 메서드가 15라인을 넘어가지 않도록 구현
+- [x] 들여쓰기 1까지인지 확인
+- [x] 메서드가 15라인을 넘어가지 않도록 구현
   - [ ] ~~pmd 15 line 적용 시도~~
     - https://github.com/pmd/pmd/issues/2127#issue-527718378
     - Enforcing length limits with LoC("lines of code") is not very meaningful, could even be called a bad practice
