@@ -33,4 +33,4 @@
 
 - [ ] 단일 책임 원칙으로 메서드가 되어 있는지 확인
 - [ ] 모든 로직에 단위 테스트 구현 - UI 제외
-- [ ] UI를 `InputView`, `ResultView`로 분리
+- [x] UI를 `InputView`, `ResultView`로 분리
