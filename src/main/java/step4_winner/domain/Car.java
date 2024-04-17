@@ -1,12 +1,12 @@
 package step4_winner.domain;
 
 import lombok.Getter;
+import step4_winner.strategy.MovingStrategy;
 
 @Getter
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MIN_DISTANCE = 1;
-    private static final int MOVE_THRESHOLD = 4;
 
     private int distance = MIN_DISTANCE;
     private final String name;
@@ -17,7 +17,7 @@ public class Car {
         this.name = inputName;
     }
 
-    public void move(int randomValue) {
-        if (randomValue >= MOVE_THRESHOLD) distance++;
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMove()) distance++;
     }
 }

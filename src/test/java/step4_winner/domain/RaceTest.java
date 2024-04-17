@@ -2,6 +2,7 @@ package step4_winner.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4_winner.strategy.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ class RaceTest {
         Race race = new Race(cars);
 
         // WHEN
-        race.runRace();
+        race.runRace(new RandomMovingStrategy());
 
         // then
         boolean anyCarMoved = cars.stream().anyMatch(car -> car.getDistance() > 1);

@@ -2,13 +2,13 @@ package step4_winner.domain;
 
 
 import lombok.Getter;
+import step4_winner.strategy.MovingStrategy;
 
 import java.util.List;
-import java.util.Random;
 
+@Getter
 public class Race {
-    private final Random random = new Random();
-    @Getter private final List<Car> cars;
+    private final List<Car> cars;
 
     public Race(List<Car> cars) {
         if (cars.isEmpty())
@@ -16,7 +16,7 @@ public class Race {
         this.cars = cars;
     }
 
-    public void runRace() {
-        cars.forEach(car -> car.move(random.nextInt(10)));
+    public void runRace(MovingStrategy movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 }

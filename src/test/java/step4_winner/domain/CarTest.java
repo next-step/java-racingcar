@@ -3,7 +3,8 @@ package step4_winner.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class CarTest {
 
@@ -22,12 +23,12 @@ class CarTest {
         assertThat(car.getName()).isEqualTo("test1");
 
         // WHEN : 안움직임
-        car.move(3);
+        car.move(() -> false);
         // THEN
         assertThat(car.getDistance()).isEqualTo(1);
 
         // WHEN : 움직임
-        car.move(4);
+        car.move(() -> true);
         // THEN
         assertThat(car.getDistance()).isGreaterThan(1);
     }
