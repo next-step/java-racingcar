@@ -1,6 +1,6 @@
 package step4_winner.view;
 
-import step4_winner.Car;
+import step4_winner.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
