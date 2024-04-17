@@ -6,7 +6,6 @@ on:
 jobs:
   onPRTest:
     runs-on: ubuntu-latest
-    if: github.repository == 'rkaehdaos/java-racingcar'
     steps:
       - name: '소스 checkout'
         uses: actions/checkout@master
