@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'pmd'
 }
 
 version '1.0'
@@ -19,17 +20,45 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 }
 
+// java
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
+
+tasks.named('compileJava') {
+    dependsOn clean
+}
+
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:deprecation"
 }
 
+// pmd
+pmd {
+    toolVersion = "7.0.0"
+    consoleOutput = true
+    ignoreFailures = true
+    incrementalAnalysis = true
+    ruleSets = []
+    ruleSetFiles = files(rootProject.file(".github/pmd/ruleset.xml") as Object)
+}
+
+tasks.named('pmdMain') {
+    // excludes =['**/*',]
+    includes = ['**/step4_winner/*',]
+//    ruleSetFiles = files(rootProject.file(".github/pmd/ruleset.xml") as Object)
+}
+
+tasks.named('pmdTest') {
+     excludes =['**/*',]
+//    includes = ['**/step4_winner/*',]
+}
+
 tasks.named('test') {
-    useJUnitPlatform() // Junit5 사용: 테스트 종속성에 JUnit Jupiter API와 JUnit Jupiter Engine을 포함해야 함.
+    dependsOn pmdMain
+    useJUnitPlatform()
     maxParallelForks = Runtime.runtime.availableProcessors()
     finalizedBy jacocoTestCoverageVerification
 }
@@ -38,7 +67,7 @@ jacocoTestReport {
 }
 jacocoTestCoverageVerification {
     dependsOn jacocoTestReport
-    violationRules{
+    violationRules {
         rule { limit { minimum = 0.8 } }
     }
 }
