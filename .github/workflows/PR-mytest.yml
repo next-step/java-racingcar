@@ -1,26 +1,26 @@
-name: Gradle test On GitHub Action
+name: Gradle PR test On GitHub Action
 on:
-  push:
-    branches-ignore: ['main','master']
+  pull_request:
+    types: [opened,reopened,synchronize]
 
 jobs:
-  onPushTest:
+  onPRTest:
     runs-on: ubuntu-latest
     steps:
       - name: '소스 checkout'
         uses: actions/checkout@master
 
-      - name: 'jdk21 setup'
-        uses: actions/setup-java@v4
+      - name: 'graalvm jdk21 setup'
+        uses: graalvm/setup-graalvm@v1
         with:
-          distribution: 'zulu'
           java-version: '21'
+          distribution: 'graalvm'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          native-image-job-reports: 'true'
           cache: 'gradle'
 
-      - name: 'gradle test'
-        run: |
-          echo "Available processors: $(nproc)"
-          gradle test --no-daemon --parallel
+      - name: 'gradle 빌드'
+        run: gradle build --no-daemon --parallel
 
       - name: '커버리지 정보 및 요약'
         run: |
@@ -42,28 +42,28 @@ jobs:
           else
             branch_coverage=$(echo "scale=2; $branches_covered / $total_branches * 100" | bc)%
           fi
-          echo '# GitHub Action Summary' >> PUSH_summary.md
+          echo '# GitHub Action Summary' >> PR_summary.md
           echo 'GITHUB_STEP_SUMMARY에 커버리지 정보 추가';
-          echo "## JaCoCo 커버리지 요약" >> PUSH_summary.md
-          echo "- Instruction Coverage: $instruction_coverage" >> PUSH_summary.md
-          echo "- Branch Coverage: $branch_coverage" >> PUSH_summary.md
+          echo "## JaCoCo 커버리지 요약" >> PR_summary.md
+          echo "- Instruction Coverage: $instruction_coverage" >> PR_summary.md
+          echo "- Branch Coverage: $branch_coverage" >> PR_summary.md
 
       - name: 'PMD 리포트 요약'
         run: |
           echo 'PMD 파일에서 정보 추출: XML 구조에 의존적이므로 구조가 변경되면 스크립트도 업데이트가 필요';
           echo 'xml이 매우 크면 성능에 문제가 생길 수 있으므로 더 효율적인 파싱 방법의 고려가 필요';
-          echo "## PMD Code Analysis" >> PUSH_summary.md
+          echo "## PMD Code Analysis" >> PR_summary.md
           total_violations=$(grep -c '<violation' build/reports/pmd/main.xml||true)
           if [ "$total_violations" -eq 0 ]; then
-            echo "### 문제 없음" >> PUSH_summary.md
+            echo "### 문제 없음" >> PR_summary.md
           else
-            echo "### Total Violations: $total_violations" >> PUSH_summary.md
+            echo "### Total Violations: $total_violations" >> PR_summary.md
             echo '각 file 태그를 찾아 파일 경로를 추출하고, 내부의 violation 정보를 처리'
             awk '/<file name=/,/<\/file>/' build/reports/pmd/main.xml | awk '
               /<file name="/ {
                 filename=gensub(/.*<file name="([^"]+).*/, "\\1", "g");
                 print "### File: " filename;
-                print "### File: " filename >> "PUSH_summary.md";
+                print "### File: " filename >> "PR_summary.md";
                 next;
               }
               /<violation/,/<\/violation>/ {
@@ -74,7 +74,7 @@ jobs:
                   content = "";
                 } else if ($0 ~ /<\/violation>/) {
                   print "- Line " line ": [" content "](" url ")";
-                  print "- Line " line ": [" content "](" url ")" >> "PUSH_summary.md";
+                  print "- Line " line ": [" content "](" url ")" >> "PR_summary.md";
                   capturing = 0;
                 } else if (capturing) {
                   content = content $0;
@@ -82,7 +82,15 @@ jobs:
               }
             '
           fi
-          cat PUSH_summary.md >> $GITHUB_STEP_SUMMARY
+          cat PR_summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 'PR Comment에 SUMMARY Report 작성'
+        if: github.repository == 'rkaehdaos/java-racingcar'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: 'PR_summary.md'
 
       - name: '실패 시 보고서 업로드'
         uses: actions/upload-artifact@v4
@@ -95,7 +103,7 @@ jobs:
 
       - name: 'slack 알림'
         uses: 8398a7/action-slack@v3
-        if: always()
+        if: github.repository == 'rkaehdaos/java-racingcar'
         with:
           status: ${{ job.status }}
           author_name: my workflow bot
