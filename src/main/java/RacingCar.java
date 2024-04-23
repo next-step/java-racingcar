@@ -3,7 +3,6 @@ import java.util.List;
 
 public class RacingCar {
     private final MovePolicy movePolicy;
-    private final Printer printer = new Printer();
 
     private int carCount;
     private int moveCount;
@@ -13,8 +12,8 @@ public class RacingCar {
     }
 
     public void start() {
-        int numberOfCar = printer.askNumberOfCar();
-        int numberOfTry = printer.askNumberOfTry();
+        int numberOfCar = Printer.askNumberOfCar();
+        int numberOfTry = Printer.askNumberOfTry();
 
         List<Car> carList = new ArrayList<>();
 
@@ -28,7 +27,7 @@ public class RacingCar {
             cars.move();
         }
 
-        printer.printResult(cars);
+        Printer.printResult(cars);
     }
 
     public int getCarCount() {
