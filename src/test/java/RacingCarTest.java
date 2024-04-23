@@ -10,11 +10,18 @@ public class RacingCarTest {
         int carCount = 3;
         int moveCount = 5;
 
-        RacingCar racingCar = new RacingCar(new RandomMove());
+        RacingCar racingCar = new RacingCar(new RandomMove(), "car1,car2,car3");
         racingCar.setCarCount(carCount); // 테스트용 메서드 호출
         racingCar.setMoveCount(moveCount); // 테스트용 메서드 호출
 
         assertThat(racingCar.getCarCount()).isEqualTo(carCount);
         assertThat(racingCar.getMoveCount()).isEqualTo(moveCount);
+    }
+
+    @Test
+    public void 자동차이름은_쉼표를_기준으로_구분한다() {
+        RacingCar racingCar = new RacingCar(new RandomMove(), "car1,car2,car3");
+
+        assertThat(racingCar.getCarCount()).isEqualTo(3);
     }
 }
