@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Printer {
@@ -25,5 +26,15 @@ public class Printer {
         StringBuilder sb = new StringBuilder();
         sb.append(DASH.repeat(Math.max(0, count)));
         System.out.println(sb.toString());
+    }
+
+    public static void printWinner(Cars cars) {
+        List<Car> winners = cars.findWinners();
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .reduce((name1, name2) -> name1 + ", " + name2)
+                .orElse("");
+
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

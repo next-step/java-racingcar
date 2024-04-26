@@ -27,10 +27,15 @@ public class RacingCar {
         }
 
         Printer.printResult(cars);
+        Printer.printWinner(cars);
+    }
+
+    public List<Car> getWinners() {
+        return this.cars.findWinners();
     }
 
     public int getCarCount() {
-        return this.carCount;
+        return this.cars.getCount();
     }
 
     public int getMoveCount() {

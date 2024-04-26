@@ -24,4 +24,11 @@ public class RacingCarTest {
 
         assertThat(racingCar.getCarCount()).isEqualTo(3);
     }
+
+    @Test
+    public void 자동차경주게임을_완료한후_누가_우승했는지를_알려준다_우승자가_한명이상일수있다() {
+        RacingCar racingCar = new RacingCar(new RandomMove(), "car1,car2,car3");
+
+        assertThat(racingCar.getWinners().size()).isGreaterThan(1);
+    }
 }
