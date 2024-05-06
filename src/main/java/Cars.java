@@ -14,7 +14,7 @@ public class Cars {
 
     public void move(MovePolicy movePolicy) {
         for (Car car : this.value) {
-            car.move(movePolicy);
+            car.move(movePolicy.isAbleToMove());
         }
     }
 
