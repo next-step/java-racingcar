@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -11,9 +12,36 @@ public class Cars {
         return this.value;
     }
 
-    public void move() {
+    public void move(MovePolicy movePolicy) {
         for (Car car : this.value) {
-            car.move();
+            car.move(movePolicy.isAbleToMove());
         }
+    }
+
+    public List<Car> findWinners() {
+        return findCarsByPosition(findMaxPosition());
+    }
+
+    public int getCount() {
+        return this.value.size();
+    }
+
+    private int findMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : this.value) {
+            maxPosition = car.max(maxPosition);
+        }
+
+        return maxPosition;
+    }
+
+    private List<Car> findCarsByPosition(int maxPosition) {
+        List<Car> cars = new ArrayList<>();
+
+        this.value.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .forEach(cars::add);
+
+        return cars;
     }
 }

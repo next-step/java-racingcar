@@ -2,48 +2,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
+    private final Cars cars;
     private final MovePolicy movePolicy;
-    private final Printer printer = new Printer();
 
-    private int carCount;
-    private int moveCount;
-
-    public RacingCar(MovePolicy movePolicy) {
+    public RacingCar(MovePolicy movePolicy, String names) {
         this.movePolicy = movePolicy;
+        this.cars = new Cars(createCarList(names));
     }
 
-    public void start() {
-        int numberOfCar = printer.askNumberOfCar();
-        int numberOfTry = printer.askNumberOfTry();
-
+    private List<Car> createCarList(String names) {
         List<Car> carList = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCar; i++) {
-            carList.add(new Car(movePolicy));
+        for (String name : names.split(",")) {
+            carList.add(new Car(name));
         }
 
-        Cars cars = new Cars(carList);
+        return carList;
+    }
 
+    public Cars start(MovePolicy movePolicy, int numberOfTry) {
         for (int i = 0; i < numberOfTry; i++) {
-            cars.move();
+            cars.move(movePolicy);
         }
 
-        printer.printResult(cars);
+        return cars;
+    }
+
+    public List<Car> getWinners() {
+        return this.cars.findWinners();
     }
 
     public int getCarCount() {
-        return this.carCount;
-    }
-
-    public int getMoveCount() {
-        return this.moveCount;
-    }
-
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
-    }
-
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
+        return this.cars.getCount();
     }
 }
