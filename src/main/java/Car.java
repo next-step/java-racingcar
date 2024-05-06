@@ -1,23 +1,20 @@
 public class Car {
     private static final String DEFAULT_NAME = "";
     private int position = 1;
-    private final MovePolicy movePolicy;
     private final String name;
 
-    public Car(MovePolicy movePolicy) {
-        this.movePolicy = movePolicy;
-        this.name = DEFAULT_NAME;
+    public Car() {
+        this(DEFAULT_NAME);
     }
 
-    public Car(MovePolicy movePolicy, String name) {
+    public Car( String name) {
         validateName(name);
 
-        this.movePolicy = movePolicy;
         this.name = name;
     }
 
-    public void move() {
-        if (this.movePolicy.isAbleToMove()) {
+    public void move(MovePolicy movePolicy) {
+        if (movePolicy.isAbleToMove()) {
             this.position++;
         }
     }

@@ -12,9 +12,9 @@ public class Cars {
         return this.value;
     }
 
-    public void move() {
+    public void move(MovePolicy movePolicy) {
         for (Car car : this.value) {
-            car.move();
+            car.move(movePolicy);
         }
     }
 

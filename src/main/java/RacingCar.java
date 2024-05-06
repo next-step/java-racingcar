@@ -5,25 +5,27 @@ public class RacingCar {
     private final Cars cars;
     private int carCount;
     private int moveCount;
+    private final MovePolicy movePolicy;
 
     public RacingCar(MovePolicy movePolicy, String names) {
-        this.cars = new Cars(createCarList(movePolicy, names));
+        this.movePolicy = movePolicy;
+        this.cars = new Cars(createCarList(names));
     }
 
-    private List<Car> createCarList(MovePolicy movePolicy, String names) {
+    private List<Car> createCarList(String names) {
         List<Car> carList = new ArrayList<>();
         for (String name : names.split(",")) {
-            carList.add(new Car(movePolicy, name));
+            carList.add(new Car(name));
         }
 
         return carList;
     }
 
-    public void start() {
+    public void start(MovePolicy movePolicy) {
         int numberOfTry = Printer.askNumberOfTry();
 
         for (int i = 0; i < numberOfTry; i++) {
-            cars.move();
+            cars.move(movePolicy);
         }
 
         Printer.printResult(cars);

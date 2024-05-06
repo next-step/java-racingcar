@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -19,7 +18,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(movePolicy, "car");
+        car = new Car("car");
     }
 
     @Test
@@ -27,7 +26,7 @@ class CarTest {
         when(movePolicy.isAbleToMove()).thenReturn(true);
 
         int beforePosition = car.getPosition();
-        car.move();
+        car.move(movePolicy);
         int afterPosition = car.getPosition();
 
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
@@ -38,7 +37,7 @@ class CarTest {
         when(movePolicy.isAbleToMove()).thenReturn(false);
 
         int beforePosition = car.getPosition();
-        car.move();
+        car.move(movePolicy);
         int afterPosition = car.getPosition();
 
         assertThat(beforePosition).isEqualTo(afterPosition);
@@ -48,8 +47,8 @@ class CarTest {
     public void 자동차이름은_5자를_초과할수없다() {
         String name = "abcdef";
 
-        assertThatThrownBy(() -> new Car(movePolicy, name))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("이름은 5자를 초과할 수 없습니다.");
+        assertThatThrownBy(() -> new Car(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름은 5자를 초과할 수 없습니다.");
     }
 }
