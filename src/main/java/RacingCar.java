@@ -3,8 +3,6 @@ import java.util.List;
 
 public class RacingCar {
     private final Cars cars;
-    private int carCount;
-    private int moveCount;
     private final MovePolicy movePolicy;
 
     public RacingCar(MovePolicy movePolicy, String names) {
@@ -21,15 +19,12 @@ public class RacingCar {
         return carList;
     }
 
-    public void start(MovePolicy movePolicy) {
-        int numberOfTry = Printer.askNumberOfTry();
-
+    public Cars start(MovePolicy movePolicy, int numberOfTry) {
         for (int i = 0; i < numberOfTry; i++) {
             cars.move(movePolicy);
         }
 
-        Printer.printResult(cars);
-        Printer.printWinner(cars);
+        return cars;
     }
 
     public List<Car> getWinners() {
@@ -38,17 +33,5 @@ public class RacingCar {
 
     public int getCarCount() {
         return this.cars.getCount();
-    }
-
-    public int getMoveCount() {
-        return this.moveCount;
-    }
-
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
-    }
-
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
     }
 }

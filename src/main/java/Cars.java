@@ -29,7 +29,7 @@ public class Cars {
     private int findMaxPosition() {
         int maxPosition = 0;
         for (Car car : this.value) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            maxPosition = car.max(maxPosition);
         }
 
         return maxPosition;

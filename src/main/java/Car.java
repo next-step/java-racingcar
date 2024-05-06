@@ -23,6 +23,10 @@ public class Car {
         return this.position == position;
     }
 
+    public int max(int value) {
+        return Math.max(value, this.position);
+    }
+
     public int getPosition() {
         return this.position;
     }
