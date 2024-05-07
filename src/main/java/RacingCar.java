@@ -3,10 +3,8 @@ import java.util.List;
 
 public class RacingCar {
     private final Cars cars;
-    private final MovePolicy movePolicy;
 
-    public RacingCar(MovePolicy movePolicy, String names) {
-        this.movePolicy = movePolicy;
+    public RacingCar(String names) {
         this.cars = new Cars(createCarList(names));
     }
 
@@ -19,10 +17,8 @@ public class RacingCar {
         return carList;
     }
 
-    public Cars start(MovePolicy movePolicy, int numberOfTry) {
-        for (int i = 0; i < numberOfTry; i++) {
-            cars.move(movePolicy);
-        }
+    public Cars move(MovePolicy movePolicy) {
+        cars.move(movePolicy);
 
         return cars;
     }

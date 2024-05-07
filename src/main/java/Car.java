@@ -13,8 +13,8 @@ public class Car {
         this.name = name;
     }
 
-    public void move(boolean isAbleToMove) {
-        if (isAbleToMove) {
+    public void move(MovePolicy movePolicy) {
+        if (movePolicy.isAbleToMove()) {
             this.position++;
         }
     }

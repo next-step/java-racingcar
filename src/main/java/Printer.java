@@ -5,9 +5,9 @@ public class Printer {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String DASH = "-";
 
-    public static int askNumberOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    public static String askNameOfCars() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.next();
     }
 
     public static int askNumberOfTry() {
@@ -15,17 +15,21 @@ public class Printer {
         return scanner.nextInt();
     }
 
-    public static void printResult(Cars cars) {
-        System.out.println("실행 결과");
-        for (Car car : cars.getValue()) {
-            printDashByCount(car.getPosition());
-        }
+    public static void printResultTitle() {
+        System.out.println("\n실행 결과");
     }
 
-    private static void printDashByCount(int count) {
+    public static void printResult(Cars cars) {
+        for (Car car : cars.getValue()) {
+            printDashByCount(car);
+        }
+        System.out.println();
+    }
+
+    private static void printDashByCount(Car car) {
         StringBuilder sb = new StringBuilder();
-        sb.append(DASH.repeat(Math.max(0, count)));
-        System.out.println(sb.toString());
+        sb.append(DASH.repeat(Math.max(0, car.getPosition())));
+        System.out.println(car.getName() + " : " + sb.toString());
     }
 
     public static void printWinner(Cars cars) {

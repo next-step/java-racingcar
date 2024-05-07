@@ -15,7 +15,7 @@ class CarTest {
     @Test
     public void 자동차_전진여부논리값이true라면위치는변한다() {
         int beforePosition = car.getPosition();
-        car.move(true);
+        car.move(() -> true);
         int afterPosition = car.getPosition();
 
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
@@ -24,7 +24,7 @@ class CarTest {
     @Test
     public void 자동차_전진여부논리값이false라면위치는변하지않는다() {
         int beforePosition = car.getPosition();
-        car.move(false);
+        car.move(() -> false);
         int afterPosition = car.getPosition();
 
         assertThat(beforePosition).isEqualTo(afterPosition);
