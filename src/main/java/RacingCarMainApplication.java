@@ -10,7 +10,7 @@ public class RacingCarMainApplication {
 
         Printer.printResultTitle();
 
-        for(int i=0; i<tryCount; i++) {
+        for (int i = 0; i < tryCount; i++) {
             racedCars = racingCar.move(randomMove);
             Printer.printResult(racedCars);
         }
