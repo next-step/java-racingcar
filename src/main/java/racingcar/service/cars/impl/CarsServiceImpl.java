@@ -17,7 +17,6 @@ public class CarsServiceImpl implements CarsService {
     }
 
     public List<String> getCarsName(){
-        Scanner scanner = new Scanner(System.in);
         List<String> carsNameList;
         while(true){
             try{
@@ -26,7 +25,7 @@ public class CarsServiceImpl implements CarsService {
                 checkCarsName(carsNameList);
                 break;
             }catch (IllegalArgumentException e){
-                System.out.println("[ERROR] 이름은 5자를 넘길 수 없습니다.");
+                System.out.println("[ERROR]" + e);
             }
         }
         return carsNameList;

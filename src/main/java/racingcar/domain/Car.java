@@ -15,4 +15,12 @@ public class Car {
         this.position = position;
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "position=" + position +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
