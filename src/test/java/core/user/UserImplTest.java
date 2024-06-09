@@ -1,34 +1,33 @@
 package core.user;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import core.util.Util;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserImplTest {
 
+  Util util = new Util();
   @Test
   @DisplayName("자동차 이름 입력받기")
   void getCarNames() {
-    UserImpl userImpl = new UserImpl();
+    UserImpl userImpl = new UserImpl(util);
     // given
-    String userInput = "pobi, woni, jun";
-    List<String> expectedList = new LinkedList<String>(Arrays.asList("pobi", "woni", "jun"));
+    // String userInput = "pobi, woni, jun";
+    List<String> expectedList = new LinkedList<>(Arrays.asList("pobi", "woni", "jun"));
     // when
-    List<String> carNames = dd(userImpl);
+    List<String> carNames = getCarNames(userImpl);
     // then
     Assertions.assertThat(carNames).isEqualTo(expectedList);
   }
 
-  List<String> dd(UserImpl userImpl) {
+  @SuppressWarnings("StatementWithEmptyBody")
+  List<String> getCarNames(UserImpl userImpl) {
     String userCarNamesCmd = "pobi, woni, jun";
-    do {
-    } while (!userImpl.isUserCarNameCmdValidate((userCarNamesCmd)));
+    while (!userImpl.isUserCarNameCmdValidate((userCarNamesCmd))) {}
 
     return userImpl.parseCarNames(userCarNamesCmd);
   }
