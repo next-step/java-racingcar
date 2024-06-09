@@ -4,16 +4,19 @@ import core.util.Util;
 
 public class CarImpl implements CarInterface {
 
-  Car car;
   Util util;
 
-  public CarImpl(Car car, Util util) {
-    this.car = car;
+  public CarImpl(Util util) {
     this.util = util;
   }
 
   @Override
-  public void goForward(Integer goCost) {
+  public Car createCar(String carName, Integer startPosition) {
+    return new Car(carName, startPosition);
+  }
+
+  @Override
+  public void goForward(Car car, Integer goCost) {
     if (4 > goCost) {
       return;
     }
@@ -21,27 +24,11 @@ public class CarImpl implements CarInterface {
   }
 
   @Override
-  public Integer getRandomNum() {
-    double dValue = Math.random();
-    return (Integer) (int) (dValue * 10);
-  }
-
-  @Override
-  public String getCarName() {
-    return car.getName();
-  }
-
-  @Override
-  public String getDistanceByString() {
+  public String getDistanceWithString(Car car) {
     StringBuilder distanceString = new StringBuilder();
     for (int distance = 0; distance < car.getDistance(); ++distance) {
       distanceString.append("-");
     }
     return String.valueOf(distanceString);
-  }
-
-  @Override
-  public Integer getDistanceByInteger() {
-    return car.getDistance();
   }
 }

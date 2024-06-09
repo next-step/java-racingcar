@@ -2,10 +2,9 @@ package core.car;
 
 public interface CarInterface {
 
-  void goForward(Integer goCost);
-  Integer getRandomNum();
+  Car createCar(String carName, Integer startPosition);
 
-  String getCarName();
-  String getDistanceByString();
-  Integer getDistanceByInteger();
+  void goForward(Car car, Integer goCost);
+
+  String getDistanceWithString(Car car);
 }
