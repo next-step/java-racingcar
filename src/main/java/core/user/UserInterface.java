@@ -3,6 +3,7 @@ package core.user;
 import java.util.List;
 
 public interface UserInterface {
+
   List<String> getCarNames();
 
   Boolean isUserCarNameCmdValidate(String userCarNamesCmd);
@@ -12,4 +13,6 @@ public interface UserInterface {
   Boolean checkComma(String userCarNamesCmd);
 
   List<String> parseCarNames(String userCarNamesCmd);
+
+  Integer getGameTimes();
 }

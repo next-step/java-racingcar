@@ -91,4 +91,30 @@ public class UserImpl implements UserInterface {
     }
     return returnList;
   }
+
+  @Override
+  public Integer getGameTimes() {
+    String userGameTimesCmd = null;
+    util.printMsg("시도할 회수는 몇회인가요?");
+    do {
+      Scanner sc = new Scanner(System.in);
+      userGameTimesCmd = sc.nextLine();
+    } while (!isGameTimeValidate((userGameTimesCmd)));
+
+    return Integer.parseInt(userGameTimesCmd);
+  }
+
+  private boolean isGameTimeValidate(String userGameTimesCmd) {
+    try {
+      int gameTime = Integer.parseInt(userGameTimesCmd);
+      if (0 >= gameTime) {
+        util.printErrorMsg("양의 정수를 입력하세요");
+        return false;
+      }
+    } catch (NumberFormatException e) {
+      util.printErrorMsg("2147483647 이하의 숫자만 입력하십시오");
+      return false;
+    }
+    return true;
+  }
 }
