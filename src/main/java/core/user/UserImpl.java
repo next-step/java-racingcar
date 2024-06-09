@@ -1,11 +1,15 @@
 package core.user;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserImpl implements UserInterface {
+
+  public UserImpl() {
+  }
 
   @Override
   public List<String> getCarNames() {
@@ -14,7 +18,7 @@ public class UserImpl implements UserInterface {
     do {
       Scanner sc = new Scanner(System.in);
       userCarNamesCmd = sc.nextLine();
-    } while(isUserCarNameCmdValidate((userCarNamesCmd)));
+    } while (!isUserCarNameCmdValidate((userCarNamesCmd)));
 
     return parseCarNames(userCarNamesCmd);
   }
@@ -51,7 +55,7 @@ public class UserImpl implements UserInterface {
         return false;
       }
     } catch (InputMismatchException e) {
-      System.out.println("쉼표(,) 사용을 정확히 해주세요");
+      System.out.println("[ERROR] 쉼표(,) 사용을 정확히 해주세요");
       return false;
     }
     return true;
@@ -61,7 +65,7 @@ public class UserImpl implements UserInterface {
     for (String carName : carNames) {
       String trimmedPart = carName.trim();
       if (trimmedPart.isEmpty()) {
-        System.out.println("자동차 이름이 비어있습니다.");
+        System.out.println("[ERROR] 자동차 이름이 비어있습니다.");
         return true;
       }
     }
@@ -70,7 +74,7 @@ public class UserImpl implements UserInterface {
 
   private static boolean isCommaInStartOrEnd(String userCarNamesCmd) {
     if (userCarNamesCmd.startsWith(",") || userCarNamesCmd.endsWith(",")) {
-      System.out.println("자동차 이름 입력을 쉼표(,) 로 시작하거나 끝나면 안됩니다.");
+      System.out.println("[ERROR] 자동차 이름 입력을 쉼표(,) 로 시작하거나 끝나면 안됩니다.");
       return true;
     }
     return false;
@@ -78,11 +82,12 @@ public class UserImpl implements UserInterface {
 
   @Override
   public List<String> parseCarNames(String userCarNamesCmd) {
-    List<String> carNames = Arrays.asList(userCarNamesCmd.split(","));
+    String[] carNames = userCarNamesCmd.split(",");
+    List<String> returnList = new ArrayList<String>();
     for (String carName : carNames) {
       String trimmedPart = carName.trim();
-      carNames.add(trimmedPart);
+      returnList.add(trimmedPart);
     }
-    return carNames;
+    return returnList;
   }
 }
