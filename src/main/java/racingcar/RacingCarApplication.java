@@ -1,8 +1,8 @@
 package racingcar;
 
 import racingcar.controller.RacingCarGame;
-import racingcar.service.CarsService;
-import racingcar.service.impl.CarsServiceImpl;
+import racingcar.service.cars.CarsService;
+import racingcar.service.cars.impl.CarsServiceImpl;
 import racingcar.view.InputView;
 
 public class RacingCarApplication {

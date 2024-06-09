@@ -7,6 +7,10 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
     }
+    public int inputInt() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
 
 
 }

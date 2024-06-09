@@ -1,6 +1,6 @@
-package racingcar.service.impl;
+package racingcar.service.cars.impl;
 
-import racingcar.service.CarsService;
+import racingcar.service.cars.CarsService;
 import racingcar.view.InputView;
 
 import java.util.Arrays;
@@ -16,20 +16,20 @@ public class CarsServiceImpl implements CarsService {
         this.inputView = inputView;
     }
 
-    public String getCarsName(){
+    public List<String> getCarsName(){
         Scanner scanner = new Scanner(System.in);
-        String carsName;
+        List<String> carsNameList;
         while(true){
             try{
-                carsName = inputView.inputString();
-                List<String> carsNameList = splitCarsNmae(carsName);
+                String carsName = inputView.inputString();
+                carsNameList = splitCarsNmae(carsName);
                 checkCarsName(carsNameList);
                 break;
             }catch (IllegalArgumentException e){
                 System.out.println("[ERROR] 이름은 5자를 넘길 수 없습니다.");
             }
         }
-        return carsName;
+        return carsNameList;
     }
 
     private List<String> splitCarsNmae(String carsName){

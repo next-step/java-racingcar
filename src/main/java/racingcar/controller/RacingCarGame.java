@@ -1,7 +1,8 @@
 package racingcar.controller;
 
-import racingcar.service.CarsService;
-import racingcar.view.InputView;
+import racingcar.service.cars.CarsService;
+
+import java.util.List;
 
 public class RacingCarGame {
 
@@ -11,6 +12,6 @@ public class RacingCarGame {
     }
     public void run() {
 
-        carsService.getCarsName();
+        List<String> carsName = carsService.getCarsName();
     }
 }
