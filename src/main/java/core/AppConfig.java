@@ -21,7 +21,7 @@ public class AppConfig {
   }
 
   public UserInterface userInterface() {
-    return new UserImpl();
+    return new UserImpl(util);
   }
 
   public GameInterface gameInterface(CarInterface carImpl) {

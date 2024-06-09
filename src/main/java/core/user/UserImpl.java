@@ -8,9 +8,10 @@ import java.util.Scanner;
 
 public class UserImpl implements UserInterface {
 
-  static Util util = new Util();
+  Util util;
 
-  public UserImpl() {
+  public UserImpl(Util util) {
+    this.util = util;
   }
 
   @Override
@@ -67,7 +68,7 @@ public class UserImpl implements UserInterface {
     return true;
   }
 
-  private static boolean isCarNameEmpty(String[] carNames) {
+  private boolean isCarNameEmpty(String[] carNames) {
     for (String carName : carNames) {
       String trimmedPart = carName.trim();
       if (trimmedPart.isEmpty()) {
@@ -78,7 +79,7 @@ public class UserImpl implements UserInterface {
     return false;
   }
 
-  private static boolean isCommaInStartOrEnd(String userCarNamesCmd) {
+  private boolean isCommaInStartOrEnd(String userCarNamesCmd) {
     if (userCarNamesCmd.startsWith(",") || userCarNamesCmd.endsWith(",")) {
       util.printErrorMsg("자동차 이름 입력을 쉼표(,) 로 시작하거나 끝나면 안됩니다.");
       return true;
