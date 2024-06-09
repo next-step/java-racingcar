@@ -7,5 +7,9 @@ public interface UserInterface {
 
   Boolean isUserCarNameCmdValidate(String userCarNamesCmd);
 
+  Boolean checkCarNameLength(List<String> carNames);
+
+  Boolean checkComma(String uesrCarNamesCmd);
+
   List<String> parseCarNames(String userCarNamesCmd);
 }
