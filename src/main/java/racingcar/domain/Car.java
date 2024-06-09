@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private final int position;
+    private int position;
 
     public int getPosition() { return position; }
 
@@ -15,6 +15,10 @@ public class Car {
         this.position = position;
         this.name = name;
     }
+    public void move(int moveValue){
+        position += moveValue;
+    }
+
 
     @Override
     public String toString() {

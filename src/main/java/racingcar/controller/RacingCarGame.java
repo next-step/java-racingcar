@@ -24,5 +24,6 @@ public class RacingCarGame {
                                  .map(Car::new)
                                  .collect(Collectors.toList());
         int raceTryCount = raceService.getRaceTryCount();
+        raceService.raceStart(cars, raceTryCount);
     }
 }
