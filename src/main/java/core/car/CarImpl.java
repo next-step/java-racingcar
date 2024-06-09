@@ -23,6 +23,7 @@ public class CarImpl implements CarInterface {
     car.setDistance(car.getDistance() + 1);
   }
 
+  @Override
   public String getDistanceWithString(Car car) {
     StringBuilder distanceString = new StringBuilder();
     for (int distance = 0; distance < car.getDistance(); ++distance) {
