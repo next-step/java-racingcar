@@ -9,7 +9,7 @@ public interface UserInterface {
 
   Boolean checkCarNameLength(List<String> carNames);
 
-  Boolean checkComma(String uesrCarNamesCmd);
+  Boolean checkComma(String userCarNamesCmd);
 
   List<String> parseCarNames(String userCarNamesCmd);
 }
