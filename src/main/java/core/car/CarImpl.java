@@ -32,11 +32,16 @@ public class CarImpl implements CarInterface {
   }
 
   @Override
-  public String getDistance() {
+  public String getDistanceByString() {
     StringBuilder distanceString = new StringBuilder();
     for (int distance = 0; distance < car.getDistance(); ++distance) {
       distanceString.append("-");
     }
     return String.valueOf(distanceString);
+  }
+
+  @Override
+  public Integer getDistanceByInteger() {
+    return car.getDistance();
   }
 }

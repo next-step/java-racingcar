@@ -6,5 +6,6 @@ public interface CarInterface {
   Integer getRandomNum();
 
   String getCarName();
-  String getDistance();
+  String getDistanceByString();
+  Integer getDistanceByInteger();
 }
