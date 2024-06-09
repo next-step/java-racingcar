@@ -12,6 +12,7 @@ import java.util.List;
 public class Application {
 
   static Util util;
+
   public static void main(String[] args) {
     UserInterface ui = new UserImpl();
     util = new Util();
@@ -41,8 +42,9 @@ public class Application {
 
     List<Car> winners = new ArrayList<Car>();
     for (Car car : cars) {
-      if (car.getDistance() < maxDistance)
+      if (car.getDistance() < maxDistance) {
         continue;
+      }
       winners.add(car);
     }
 
