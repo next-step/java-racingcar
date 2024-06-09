@@ -4,11 +4,10 @@ public class Car {
 
   private String name;
   private Integer distance;
-  private Integer goCost;
 
-  public Car(String name, Integer distance) {
+  public Car(String name, Integer startPosition) {
     this.name = name;
-    this.distance = distance;
+    this.distance = startPosition;
   }
 
   public String getName() {
@@ -25,13 +24,5 @@ public class Car {
 
   public void setDistance(Integer distance) {
     this.distance = distance;
-  }
-
-  public Integer getGoCost() {
-    return goCost;
-  }
-
-  public void setGoCost(Integer goCost) {
-    this.goCost = goCost;
   }
 }
