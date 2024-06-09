@@ -3,9 +3,11 @@ package racingcar.service.race.impl;
 import racingcar.service.race.RaceService;
 import racingcar.view.InputView;
 
+import java.util.Random;
+
 public class RaceServiceImpl implements RaceService {
     private final InputView inputView;
-
+    private static final int RANDOM_BOUNDARY = 10;
     public RaceServiceImpl(InputView inputView) {
         this.inputView = inputView;
     }
@@ -21,5 +23,10 @@ public class RaceServiceImpl implements RaceService {
             }
         }
     }
+    public int randomValue(){
+        Random random = new Random();
+        return random.nextInt(RANDOM_BOUNDARY);
+    }
+
 
 }
