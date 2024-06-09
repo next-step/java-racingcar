@@ -3,7 +3,7 @@ package core.user;
 import java.util.List;
 
 public interface UserInterface {
-  String getCarNames();
+  List<String> getCarNames();
 
   Boolean isUserCarNameCmdValidate(String userCarNamesCmd);
 
