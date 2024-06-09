@@ -30,6 +30,10 @@ public class UserImpl implements UserInterface {
       return false;
     }
     List<String> carNames = parseCarNames(userCarNamesCmd);
+    if (2 > carNames.size()) {
+      util.printErrorMsg("차가 2대 이상은 있어야 경주가 가능합니다.");
+      return false;
+    }
     return checkCarNameLength(carNames);
   }
 
