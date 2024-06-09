@@ -6,6 +6,7 @@ import racingcar.view.InputView;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RaceServiceImpl implements RaceService {
     private final InputView inputView;
@@ -15,6 +16,17 @@ public class RaceServiceImpl implements RaceService {
     private static final int STOP = 0;
     public RaceServiceImpl(InputView inputView) {
         this.inputView = inputView;
+    }
+    private int randomValue(){
+        Random random = new Random();
+        return random.nextInt(RANDOM_BOUNDARY);
+    }
+    private int moveNumber(int randomValue){
+        if(randomValue >= MOVE_CONDITION ) return GO;
+        return STOP;
+    }
+    public void printCar(Car car){
+        System.out.println(car.getName() + " : " + car.getPosition());
     }
     public int getRaceTryCount(){
         int tryCount;
@@ -28,14 +40,6 @@ public class RaceServiceImpl implements RaceService {
             }
         }
     }
-    private int randomValue(){
-        Random random = new Random();
-        return random.nextInt(RANDOM_BOUNDARY);
-    }
-    private int moveNumber(int randomValue){
-        if(randomValue >= MOVE_CONDITION ) return GO;
-        return STOP;
-    }
     public void raceStart(List<Car> cars, int tryCount){
         for(int i = 0; i < tryCount; ++i){
             for(Car car: cars){
@@ -46,9 +50,22 @@ public class RaceServiceImpl implements RaceService {
             System.out.println();
         }
     }
-    public void printCar(Car car){
-        System.out.println(car.getName() + " : " + car.getPosition());
+
+    public void determineWinner(List<Car> cars){
+
+        int maxPosition = cars.stream()
+                              .mapToInt(Car::getPosition)
+                              .max()
+                              .orElse(Integer.MIN_VALUE);
+
+        String winners = cars.stream()
+                            .filter(car -> car.getPosition() == maxPosition)
+                            .map(Car::getName)
+                            .collect(Collectors.joining(", "));
+
+        System.out.println("최종 우승자 : " + winners);
     }
+
 
 
 

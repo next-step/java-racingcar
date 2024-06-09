@@ -25,6 +25,7 @@ public class RacingCarGame {
                                  .collect(Collectors.toList());
         int raceTryCount = raceService.getRaceTryCount();
         raceService.raceStart(cars, raceTryCount);
+        raceService.determineWinner(cars);
 
     }
 }

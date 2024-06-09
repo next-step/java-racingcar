@@ -7,5 +7,5 @@ import java.util.List;
 public interface RaceService {
     public int getRaceTryCount();
     public void raceStart(List<Car> cars, int tryCount);
-   // public void printResult(List<Car> cars);
+    public void determineWinner(List<Car> cars);
 }
