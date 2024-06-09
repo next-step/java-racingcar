@@ -25,4 +25,9 @@ public class Util {
 
     return sb.toString();
   }
+
+  public Integer getRandomNumFromZero(Integer range) {
+    double dValue = Math.random();
+    return (Integer) (int) (dValue * range);
+  }
 }

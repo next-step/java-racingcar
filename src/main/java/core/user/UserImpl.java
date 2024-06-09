@@ -9,12 +9,13 @@ import java.util.Scanner;
 public class UserImpl implements UserInterface {
 
   static Util util = new Util();
+
   public UserImpl() {
   }
 
   @Override
   public List<String> getCarNames() {
-    String userCarNamesCmd = null;
+    String userCarNamesCmd;
     util.printMsg("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     do {
       Scanner sc = new Scanner(System.in);
@@ -88,7 +89,7 @@ public class UserImpl implements UserInterface {
   @Override
   public List<String> parseCarNames(String userCarNamesCmd) {
     String[] carNames = userCarNamesCmd.split(",");
-    List<String> returnList = new ArrayList<String>();
+    List<String> returnList = new ArrayList<>();
     for (String carName : carNames) {
       String trimmedPart = carName.trim();
       returnList.add(trimmedPart);
@@ -98,7 +99,7 @@ public class UserImpl implements UserInterface {
 
   @Override
   public Integer getGameTimes() {
-    String userGameTimesCmd = null;
+    String userGameTimesCmd;
     util.printMsg("시도할 회수는 몇회인가요?");
     do {
       Scanner sc = new Scanner(System.in);
