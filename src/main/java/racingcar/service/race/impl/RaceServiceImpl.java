@@ -11,8 +11,8 @@ public class RaceServiceImpl implements RaceService {
     private final InputView inputView;
     private static final int RANDOM_BOUNDARY = 10;
     private static final int MOVE_CONDITION = 4;
-    private static final int GO = 4;
-    private static final int STOP = 4;
+    private static final int GO = 1;
+    private static final int STOP = 0;
     public RaceServiceImpl(InputView inputView) {
         this.inputView = inputView;
     }
@@ -28,21 +28,28 @@ public class RaceServiceImpl implements RaceService {
             }
         }
     }
-    public int randomValue(){
+    private int randomValue(){
         Random random = new Random();
         return random.nextInt(RANDOM_BOUNDARY);
     }
-    public int moveNumber(int randomValue){
+    private int moveNumber(int randomValue){
         if(randomValue >= MOVE_CONDITION ) return GO;
         return STOP;
     }
     public void raceStart(List<Car> cars, int tryCount){
         for(int i = 0; i < tryCount; ++i){
             for(Car car: cars){
-                car.move(moveNumber(this.randomValue()));
+                int randomValue = this.randomValue();
+                car.move(moveNumber(randomValue));
+                printCar(car);
             }
+            System.out.println();
         }
     }
+    public void printCar(Car car){
+        System.out.println(car.getName() + " : " + car.getPosition());
+    }
+
 
 
 }

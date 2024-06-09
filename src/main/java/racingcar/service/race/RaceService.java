@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface RaceService {
     public int getRaceTryCount();
-    public int randomValue();
     public void raceStart(List<Car> cars, int tryCount);
+   // public void printResult(List<Car> cars);
 }
