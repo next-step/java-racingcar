@@ -9,10 +9,10 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## 구현할 기능 목록
-- [ ] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n" 텍스트 출력
-- [ ] 유저가 입력한 [자동차 이름]을 ',' 단위로 파싱해서 Struct Car를 담고 있는 배열에 저장 (`IllegalArgumentException` 감지 필요, Struct Car는 String [자동차 이름], Int [전진한 칸] 으로 이루어져 있음)
-- [ ] "시도할 횟수는 몇회인가요?\n" 텍스트 출력
-- [ ] 유저가 입력한 [시도할 횟수]를 int로 저장 (`IllegalArgumentException` 감지 필요)
+- [O] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n" 텍스트 출력
+- [O] 유저가 입력한 [자동차 이름]을 ',' 단위로 파싱해서 Struct Car를 담고 있는 배열에 저장 (`IllegalArgumentException` 감지 필요, Struct Car는 String [자동차 이름], Int [전진한 칸] 으로 이루어져 있음)
+- [O] "시도할 횟수는 몇회인가요?\n" 텍스트 출력
+- [O] 유저가 입력한 [시도할 횟수]를 int로 저장 (`IllegalArgumentException` 감지 필요)
 - [ ] "\n실행 결과\n" 텍스트 출력
 - [ ] 각 자동차마다 0~9 무작위 값 generate한 뒤, 4 이상이면 전진한 칸을 1 증가시킴. (C++이라면 for문 돌리겠지만, Kotlin은 다른 방법 있나 찾아보기 - 왠지 있을 것 같음, 무작위 값은 굳이 int일 필요없어보임. 전진한 칸 수는 int로 저장)
 - [ ] 각 자동차마다 "${자동차 이름} : ", 전진한 칸 수 만큼 '-', '\n'을 출력.
