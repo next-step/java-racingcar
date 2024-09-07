@@ -9,8 +9,8 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## 구현할 기능 목록
-- [ ] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n" 텍스트 출력
-- [ ] 유저가 입력한 [자동차 이름]을 ',' 단위로 파싱해서 Struct Car를 담고 있는 배열에 저장 (`IllegalArgumentException` 감지 필요, Struct Car는 String [자동차 이름], Int [전진한 칸] 으로 이루어져 있음)
+- [x] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n" 텍스트 출력
+- [x] 유저가 입력한 [자동차 이름]을 ',' 단위로 파싱해서 Struct Car를 담고 있는 배열에 저장 (`IllegalArgumentException` 감지 필요, Struct Car는 String [자동차 이름], Int [전진한 칸] 으로 이루어져 있음)
 - [ ] "시도할 횟수는 몇회인가요?\n" 텍스트 출력
 - [ ] 유저가 입력한 [시도할 횟수]를 int로 저장 (`IllegalArgumentException` 감지 필요)
 - [ ] "\n실행 결과\n" 텍스트 출력
