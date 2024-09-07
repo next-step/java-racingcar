@@ -16,6 +16,9 @@ fun main() {
     repeat(tryCount) {
         raceCars(cars)
     }
+
+    // 최종 결과 출력
+    printWinners(cars)
 }
 
 fun inputCarNames(): List<Car> {
@@ -39,6 +42,11 @@ fun raceCars(cars: List<Car>) {
     println()
 }
 
+fun printWinners(cars: List<Car>) {
+    // 최종 우승자 출력
+    val maxPosition = cars.maxByOrNull { it.position }?.position
+    val winners = cars.filter { it.position == maxPosition }.joinToString(", ") { it.name }
+    println("\n최종 우승자 : $winners")
 }
 
 // 차 전진 여부를 결정하는 함수
