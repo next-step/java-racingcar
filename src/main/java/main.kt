@@ -1,3 +1,5 @@
+import kotlin.random.Random
+
 // 자동차 구조체 정의
 data class Car(val name: String, var position: Int = 0)
 
@@ -9,6 +11,9 @@ fun main() {
     // 시도할 횟수 입력받기
     val tryCount = inputTryCount()
     println("\n실행 결과")
+
+    // 자동차 경주
+    raceCars(cars, tryCount)
 }
 
 fun inputCarNames(): List<Car> {
@@ -20,4 +25,23 @@ fun inputCarNames(): List<Car> {
 fun inputTryCount(): Int {
     print("시도할 횟수는 몇회인가요?\n")
     return readLine()?.toInt()?: throw IllegalArgumentException("횟수를 입력해야 합니다.")
+}
+
+fun raceCars(cars: List<Car>, tryCount: Int) {
+    repeat(tryCount) {
+        cars.forEach { car ->
+            moveCarIfNeeded(car) // 중첩을 줄이기 위해 함수 호출
+
+            // 결과 출력
+            println("${car.name} : ${"-".repeat(car.position)}")
+        }
+        println()
+    }
+}
+// 차 전진 여부를 결정하는 함수
+fun moveCarIfNeeded(car: Car) {
+    // 무작위 값을 생성하고, 4 이상이면 전진
+    if (Random.nextInt(10) >= 4) {
+        car.position++
+    }
 }
