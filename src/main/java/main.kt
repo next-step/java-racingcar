@@ -13,7 +13,9 @@ fun main() {
     println("\n실행 결과")
 
     // 자동차 경주
-    raceCars(cars, tryCount)
+    repeat(tryCount) {
+        raceCars(cars)
+    }
 }
 
 fun inputCarNames(): List<Car> {
@@ -27,16 +29,16 @@ fun inputTryCount(): Int {
     return readLine()?.toInt()?: throw IllegalArgumentException("횟수를 입력해야 합니다.")
 }
 
-fun raceCars(cars: List<Car>, tryCount: Int) {
-    repeat(tryCount) {
-        cars.forEach { car ->
-            moveCarIfNeeded(car) // 중첩을 줄이기 위해 함수 호출
+fun raceCars(cars: List<Car>) {
+    cars.forEach { car ->
+        moveCarIfNeeded(car) // 중첩을 줄이기 위해 함수 호출
 
-            // 결과 출력
-            println("${car.name} : ${"-".repeat(car.position)}")
-        }
-        println()
+        // 결과 출력
+        println("${car.name} : ${"-".repeat(car.position)}")
     }
+    println()
+}
+
 }
 
 // 차 전진 여부를 결정하는 함수
