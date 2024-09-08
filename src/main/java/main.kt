@@ -8,6 +8,8 @@ fun main(){
 
     //횟수 입력
     val trialCnt = inputTrialCnt()
+
+    race(cars,trialCnt)
 }
 
 fun inputCarName(): Array<Car>{ //자동차 명 입력
@@ -19,4 +21,22 @@ fun inputCarName(): Array<Car>{ //자동차 명 입력
 fun inputTrialCnt(): Int{ //시도 횟수 입력
     print("시도할 횟수는 몇회인가요?\n")
     return readLine()?.toInt() ?: throw IllegalArgumentException("[ERROR]: 횟수를 입력해주세요")
+}
+
+fun calculateCarMovement(car: Car){ //전진 판단 계산
+    //랜덤 값 생성 후 4이상이면 전진
+    if(4 <= Random.nextInt(10))
+        car.pos++
+}
+
+fun race(cars: Array<Car>, trialCnt: Int){ //경주
+    println("실행 결과")
+    repeat(trialCnt){
+        cars.forEach { car->
+            calculateCarMovement(car)
+
+            println("${car.name}, ${"-".repeat(car.pos)}")
+        }
+        println()
+    }
 }
