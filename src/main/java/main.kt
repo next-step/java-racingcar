@@ -10,6 +10,8 @@ fun main(){
     val trialCnt = inputTrialCnt()
 
     race(cars,trialCnt)
+
+    printWinnerCar(cars)
 }
 
 fun inputCarName(): Array<Car>{ //자동차 명 입력
@@ -39,4 +41,12 @@ fun race(cars: Array<Car>, trialCnt: Int){ //경주
         }
         println()
     }
+    println()
+}
+
+fun printWinnerCar(cars: Array<Car>){
+    val maxPos = cars.maxByOrNull { it.pos }?.pos
+    val winners = cars.filter {it.pos == maxPos}.joinToString(", ") { it.name }
+
+    println("최종 우승자 : ${winners}")
 }
