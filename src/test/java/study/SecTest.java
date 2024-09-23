@@ -5,6 +5,9 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class SecTest {
@@ -30,5 +33,12 @@ public class SecTest {
         assertThat(numbers.contains(1)).isTrue();
         assertThat(numbers.contains(2)).isTrue();
         assertThat(numbers.contains(3)).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("Set에 값이 존재하는 지 확인한다.")
+    void containsWithNoDuplicateCode(int value) {
+        assertThat(numbers.contains(value)).isTrue();
     }
 }
