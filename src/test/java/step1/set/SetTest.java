@@ -27,6 +27,7 @@ class SetTest {
     @DisplayName("size 메소드로 Set의 크기를 확인할 수 있다.")
     @Test
     void size() {
+
         // given & when
         int result = numbers.size();
 
@@ -38,10 +39,24 @@ class SetTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void contains(int num) {
+
         //given &  when
         boolean result = numbers.contains(num);
 
         // then
         assertThat(result).isTrue();
+    }
+
+    @DisplayName("contains 메소드로 set에 원하는 값이 포함되었는지 아닌지 확인할 수 있다.")
+    @ParameterizedTest
+    @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void containsWithExpected(int num, boolean expected) {
+
+        // given & when
+        boolean result = numbers.contains(num);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+
     }
 }
