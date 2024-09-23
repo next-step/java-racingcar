@@ -23,4 +23,11 @@ public class StringTest {
 
         assertThat(values).containsOnly("1");
     }
+
+    @Test
+    @DisplayName("(1, 2)값에서 substring 메소드를 활용하여 1, 2를 반환한다.")
+    void substringOneAndTwo() {
+        String value = "(1, 2)";
+        assertThat(value.substring(1, value.length() - 1)).isEqualTo("1, 2");
+    }
 }
