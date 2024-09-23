@@ -14,5 +14,10 @@ public class StringTest {
         assertThat(split).contains("1","2");
     }
 
-
+    @Test
+    public void 숫자_한개_분리_테스트(){
+        String[] split = "1".split(",");
+        assertThat(split.length).isEqualTo(1);
+        assertThat(split).contains("1");
+    }
 }
