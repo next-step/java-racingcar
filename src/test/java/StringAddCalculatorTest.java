@@ -21,9 +21,17 @@ public class StringAddCalculatorTest {
 
     @ParameterizedTest
     @CsvSource({"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"})
-    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다")
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     void givenIntString_shouldReturnInt(String input) {
         int result = stringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(Integer.valueOf(input));
+    }
+
+    @Test
+    @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
+    void givenTwoIntWithComma_shouldReturnSum() {
+        String input = "1,2";
+        int result = stringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(3);
     }
 }
