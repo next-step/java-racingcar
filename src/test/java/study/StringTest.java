@@ -10,4 +10,10 @@ public class StringTest {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
     }
+
+    @Test
+    void splitStringOfSingleCharacter() {
+        String[] result = "1".split(",");
+        assertThat(result).containsExactly("1");
+    }
 }
