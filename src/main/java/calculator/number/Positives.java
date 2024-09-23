@@ -8,6 +8,8 @@ public class Positives {
 
     private final List<Positive> positives;
 
+    private static final int SKIT_ADD_FIRST_ELEMENT = 1;
+
     public Positives(String[] strings) {
         this(convertToPositives(strings));
     }
@@ -28,7 +30,7 @@ public class Positives {
         }
 
         return this.positives.stream()
-                .skip(1)
+                .skip(SKIT_ADD_FIRST_ELEMENT)
                 .reduce(positives.get(0), Positive::add)
                 .value();
     }
