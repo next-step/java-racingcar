@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class StringClassTest {
+class StringTest {
 
     @DisplayName("split 메소드로 '1,2'를 '1'과 '2'로 구분할 수 있다.")
     @Test
