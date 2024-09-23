@@ -13,11 +13,16 @@ public class StringAddCalculator {
             return addNumbers(numbers);
         }
 
-        return 0;
+        String[] numbers = splitString(text);
+        return addNumbers(numbers);
     }
 
     private static boolean checkNullOrEmpty(String text) {
         return text == null || text.isEmpty();
+    }
+
+    private static String[] splitString(String text) {
+        return text.split(",|:");
     }
 
     private static String[] splitStringWithRegex(String text) {
