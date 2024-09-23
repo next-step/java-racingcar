@@ -46,4 +46,10 @@ public class StringTest {
         assertThat(split).contains("1"," ","");
         assertThat(split).containsExactly(""," ","1");
     }
+
+    @Test
+    public void 컴마만_존재하는_경우_테스트(){
+        String[] split = ",,,".split(",");
+        assertThat(split).hasSize(0);
+    }
 }
