@@ -22,4 +22,14 @@ public class StringTest {
         assertThat(split).contains("1");
         assertThat(split).containsExactly("1");
     }
+
+    @Test
+    public void 컴마_뒤_공백_분리_테스트(){
+        String[] split = "1, ".split(",");
+        assertThat(split).hasSize(2);
+        assertThat(split).contains("1"," ");
+        assertThat(split).containsExactly("1"," ");
+    }
+
+
 }
