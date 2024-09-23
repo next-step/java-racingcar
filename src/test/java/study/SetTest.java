@@ -25,16 +25,16 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("Set 콜렉션의 size 메소드는 콜렉션에 있는 데이터 수를 리턴한다")
+    @DisplayName("Set 콜렉션의 크기는 3개 이다")
     void setSize() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("@ParameterizedTest 사용하여 콜렉션 안의 데이터를 일괄로 확인할 수 있다")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void parameterizedTest(int data){
-        assertThat(numbers.contains(data)).isTrue();
+        assertThat(numbers.contains(data));
     }
 
     @DisplayName("@CsvSource 사용하여 입력 값에 따라 결과값이 다른 경우에 대한 확인이 가능하다")

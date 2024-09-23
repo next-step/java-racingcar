@@ -20,7 +20,7 @@ public class StringTest {
     @Test
     @DisplayName("subString 메서드는 문자열 인덱스 범위를 기준으로 문자열을 잘라서 리턴한다")
     void subString(){
-        String result = "(1,2)".substring(1,4);
+        String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
     
