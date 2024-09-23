@@ -30,13 +30,10 @@ class SetTest {
     class SizeTest {
 
         @Test
-        @DisplayName("numbers의 size 함수를 사용하면 3을 반환한다.")
+        @DisplayName("numbers는 요소 3개를 가지고 있다.")
         void test01() {
-            // when
-            final var size = numbers.size();
-
-            // then
-            assertThat(size).isEqualTo(3);
+            // when & then
+            assertThat(numbers).hasSize(3);
         }
 
     }
