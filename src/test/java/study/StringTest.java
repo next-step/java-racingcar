@@ -19,4 +19,11 @@ public class StringTest {
         String[] result = "1".split(",");
         assertThat(result).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("(1,2) 분리")
+    void splitBracket(){
+        String[] result = "(1,2)".substring(1,4).split(",");
+        assertThat(result).containsExactly("1","2");
+    }
 }
