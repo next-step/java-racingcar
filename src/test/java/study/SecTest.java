@@ -23,4 +23,12 @@ public class SecTest {
     void sizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("Set에 값이 존재하는 지 확인한다.")
+    void contains() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
 }
