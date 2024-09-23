@@ -31,5 +31,19 @@ public class StringTest {
         assertThat(split).containsExactly("1"," ");
     }
 
+    @Test
+    public void 마지막_컴마_테스트(){
+        String[] split = "1, ,".split(",");
+        assertThat(split).hasSize(2);
+        assertThat(split).contains("1"," ");
+        assertThat(split).containsExactly("1"," ");
+    }
 
+    @Test
+    public void 첫_컴마_테스트(){
+        String[] split = ", ,1".split(",");
+        assertThat(split).hasSize(3);
+        assertThat(split).contains("1"," ","");
+        assertThat(split).containsExactly(""," ","1");
+    }
 }
