@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
@@ -43,5 +44,10 @@ public class SetTest {
         assertThat(numbers.contains(num)).isTrue();
     }
 
-
+    @ParameterizedTest
+    @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"},delimiter = ':')
+    @DisplayName("numbers에서_1,2,3일때_true_4,5일때_false")
+    void checkNumbers(int input, boolean expected){
+        assertThat(numbers.contains(input)).isEqualTo(expected);
+    }
 }
