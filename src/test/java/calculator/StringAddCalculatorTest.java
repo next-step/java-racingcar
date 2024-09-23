@@ -60,7 +60,7 @@ class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("\"//;\n1;2;3\" 문자열을 입력했을 때 6을 반환한다.")
+    @DisplayName("\"//;\\n1;2;3\" 문자열을 입력했을 때 6을 반환한다.")
     void test05() {
         // given
         final var text = "//;\n1;2;3";

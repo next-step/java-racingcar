@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.number.Positives;
 import calculator.utils.StringUtils;
 
 import java.util.regex.Pattern;
@@ -12,7 +13,8 @@ public class StringAddCalculator {
     private static final int CUSTOM_DELIMITER_INDEX = 1;
     private static final int TARGET_TEXT_INDEX = 2;
 
-    private StringAddCalculator() {}
+    private StringAddCalculator() {
+    }
 
     public static int splitAndSum(final String text) {
         if (StringUtils.isBlank(text)) {
@@ -20,8 +22,9 @@ public class StringAddCalculator {
         }
 
         final var texts = split(text);
+        final var positives = new Positives(texts);
 
-        return 0;
+        return positives.addAll();
     }
 
     private static String[] split(final String text) {

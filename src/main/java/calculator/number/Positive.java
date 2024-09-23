@@ -9,6 +9,10 @@ public class Positive {
 
     private final int value;
 
+    public Positive(String value) {
+        this(Integer.parseInt(value));
+    }
+
     public Positive(int value) {
         validate(value);
         this.value = value;
@@ -21,6 +25,10 @@ public class Positive {
         if (value == 0) {
             throw new PositiveException(NOT_ALLOWED_ZERO);
         }
+    }
+
+    public Positive add(Positive addend) {
+        return new Positive(this.value + addend.value);
     }
 
     public int value() {
