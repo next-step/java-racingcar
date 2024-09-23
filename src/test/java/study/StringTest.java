@@ -25,7 +25,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("특정 위치의 문자 가져오기")
+    @DisplayName("특정 위치 문자 가져오기")
     void charAt() {
         String data = "abc";
         assertThat(data.charAt(0)).isEqualTo('a');

@@ -26,7 +26,7 @@ public class SetTest {
     
     // Test Case 구현
     @Test
-    @DisplayName("Set의 크기 확인")
+    @DisplayName("Set의 크기를 확인")
     void size(){
         int result = numbers.size();
         assertThat(result).isEqualTo(3);
