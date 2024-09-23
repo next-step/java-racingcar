@@ -16,18 +16,18 @@ class StringAddCalculatorTest {
     @DisplayName("빈 문자열 또는 null 값을 입력하는 경우 0을 반환한다.")
     void test01(final String text) {
         // when
-        final int result = StringAddCalculator.splitAndSum(text);
+        final var result = StringAddCalculator.splitAndSum(text);
 
         // then
         assertThat(result).isZero();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {"1", "2", "3", "4", "5", "6", "7", "8", "9"})
+    @ValueSource(strings = {"1", "2", "3", "4", "5", "6", "7", "8", "9"})
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     void test02(final String text) {
         // when
-        final int result = StringAddCalculator.splitAndSum(text);
+        final var result = StringAddCalculator.splitAndSum(text);
 
         // then
         assertThat(result).isEqualTo(Integer.parseInt(text));
@@ -40,7 +40,7 @@ class StringAddCalculatorTest {
         final var text = "1,2";
 
         // when
-        final int result = StringAddCalculator.splitAndSum(text);
+        final var result = StringAddCalculator.splitAndSum(text);
 
         // then
         assertThat(result).isEqualTo(3);
@@ -53,7 +53,7 @@ class StringAddCalculatorTest {
         final var text = "1,2:3";
 
         // when
-        final int result = StringAddCalculator.splitAndSum(text);
+        final var result = StringAddCalculator.splitAndSum(text);
 
         // then
         assertThat(result).isEqualTo(6);
@@ -66,7 +66,7 @@ class StringAddCalculatorTest {
         final var text = "//;\n1;2;3";
 
         // when
-        final int result = StringAddCalculator.splitAndSum(text);
+        final var result = StringAddCalculator.splitAndSum(text);
 
         // then
         assertThat(result).isEqualTo(6);
