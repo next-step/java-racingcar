@@ -33,4 +33,14 @@ public class SetTest {
     void testContains(int checkValue) {
         assertThat(numbers.contains(checkValue)).isTrue();
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1", "2", "3", "4", "5"})
+    void testRemove(int checkValue) {
+        if (1 <= checkValue && checkValue < 4) {
+            assertThat(numbers.contains(checkValue)).isTrue();
+        } else {
+            assertThat(numbers.contains(checkValue)).isFalse();
+        }
+    }
 }
