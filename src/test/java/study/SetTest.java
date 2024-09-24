@@ -25,4 +25,12 @@ class SetTest {
     void sizeLearningTest() {
         assertThat(numbers).hasSize(3);
     }
+
+    @DisplayName("numbers에 1, 2, 3 값이 모두 존재하는지")
+    @Test
+    void containsLearningTest() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
 }
