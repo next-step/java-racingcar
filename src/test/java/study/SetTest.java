@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class SetTest {
@@ -28,10 +29,10 @@ class SetTest {
         assertThat(numbers).hasSize(3);
     }
 
-    @DisplayName("numbers에 1, 2, 3 값이 모두 존재하는지")
+    @DisplayName("numbers에 1, 2, 3 값이 모두 존재하고 4, 5는 존재하지 않는지")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void containsLearningTest(int element) {
-        assertThat(numbers.contains(element)).isTrue();
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void containsLearningTest(int element, boolean expected) {
+        assertThat(numbers.contains(element)).isEqualTo(expected);
     }
 }
