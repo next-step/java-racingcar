@@ -5,6 +5,8 @@ import calculator.utils.StringUtils;
 
 import java.util.regex.Pattern;
 
+import static calculator.number.PositiveOrZero.ZERO;
+
 public class StringAddCalculator {
 
     private static final String DEFAULT_DELIMITER_REGEX = ",|:";
@@ -18,7 +20,7 @@ public class StringAddCalculator {
 
     public static int splitAndSum(final String text) {
         if (StringUtils.isBlank(text)) {
-            return 0;
+            return ZERO.value();
         }
 
         final var texts = split(text);
