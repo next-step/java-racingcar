@@ -1,6 +1,6 @@
 package calculator;
 
-import calculator.number.Positives;
+import calculator.number.PositiveOrZeros;
 import calculator.utils.StringUtils;
 
 import java.util.regex.Pattern;
@@ -22,9 +22,9 @@ public class StringAddCalculator {
         }
 
         final var texts = split(text);
-        final var positives = new Positives(texts);
+        final var positiveOrZeros = new PositiveOrZeros(texts);
 
-        return positives.addAll();
+        return positiveOrZeros.addAll().value();
     }
 
     private static String[] split(final String text) {
