@@ -25,4 +25,20 @@ public class StringTest {
         assertThat(str).doesNotContain("(",")");
         assertThat(str).isEqualTo("1,2");
     }
+
+    @Test
+    public void test3() {
+        String str = "abc";
+
+        int index = 5;
+
+        assertThatThrownBy(() -> {
+            str.charAt(index); }).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("Index " + index + ", Size " + str.length());
+
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> {
+                    str.charAt(index);
+                }).withMessageMatching("Index \\d, Size \\d");
+    }
 }
