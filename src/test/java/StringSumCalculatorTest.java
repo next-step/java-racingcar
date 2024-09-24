@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StringSumCalculatorTest {
+class StringSumCalculatorTest {
 
     @DisplayName("빈문자나 null이 요청될 시 0으로 출력된다.")
     @ParameterizedTest
