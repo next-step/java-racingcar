@@ -3,22 +3,26 @@ package study;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class StringTest {
 
+    @DisplayName("`1,2`를 ,로 split 했을 때 1과 2로 잘 분리되는지")
     @Test
     void splitLearningTest() {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
     }
 
+    @DisplayName("`(1,2)`을 substring 메서드를 활용해 괄호를 잘 제거할 수 있는지")
     @Test
     void substringLearningTest() {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
 
+    @DisplayName("`abc`를 charAt() 메서드를 활용해 특정 위치의 문자를 잘 가져올 수 있는지")
     @Test
     void charAtLearningTest1() {
         String data = "abc";
@@ -27,6 +31,7 @@ class StringTest {
         assertThat(data.charAt(2)).isEqualTo('c');
     }
 
+    @DisplayName("charAt() 메서드가 문자열의 범위를 벗어난 위치의 문자를 가져올 때 StringIndexOutOfBoundsException을 반환하는지")
     @Test
     void charAtLearningTest2() {
         String data = "abc";
