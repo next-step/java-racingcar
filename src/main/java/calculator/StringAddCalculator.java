@@ -43,12 +43,12 @@ public class StringAddCalculator {
     private static int addNumbers(String[] numbers) {
         checkMinusNumber(numbers);
 
-        int res = 0;
+        int result = 0;
         for (String number : numbers) {
-            res += Integer.parseInt(number);
+            result += Integer.parseInt(number);
         }
 
-        return res;
+        return result;
     }
 
     private static void checkMinusNumber(String[] numbers) {
