@@ -25,39 +25,25 @@ class SetTest {
         numbers.add(3);
     }
 
-    @Nested
-    @DisplayName("size()")
-    class SizeTest {
-
-        @Test
-        @DisplayName("numbers는 요소 3개를 가지고 있다.")
-        void test01() {
-            // when & then
-            assertThat(numbers).hasSize(3);
-        }
-
+    @Test
+    @DisplayName("numbers는 요소 3개를 가지고 있다.")
+    void size() {
+        // when & then
+        assertThat(numbers).hasSize(3);
     }
 
-    @Nested
-    @DisplayName("contains()")
-    class ContainsTest {
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("numbers에 1, 2, 3이 존재한다.")
+    void contains01(final int number) {
+        assertThat(numbers).contains(number);
+    }
 
-        @ParameterizedTest
-        @ValueSource(ints = {1, 2, 3})
-        @DisplayName("numbers에 1, 2, 3이 존재한다.")
-        void test01(final int number) {
-            // when & then
-            assertThat(numbers).contains(number);
-        }
-
-        @ParameterizedTest
-        @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-        @DisplayName("numbers에 1, 2, 3은 존재하고 4, 5는 존재하지 않는다.")
-        void test02(final int number, final boolean expected) {
-            // when & then
-            assertThat(numbers.contains(number)).isEqualTo(expected);
-        }
-
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    @DisplayName("numbers에 1, 2, 3은 존재하고 4, 5는 존재하지 않는다.")
+    void contains02(final int number, final boolean expected) {
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 
 }
