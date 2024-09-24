@@ -17,4 +17,12 @@ class StringTest {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
+
+    @Test
+    void charAtLearningTest1() {
+        String data = "abc";
+        assertThat(data.charAt(0)).isEqualTo('a');
+        assertThat(data.charAt(1)).isEqualTo('b');
+        assertThat(data.charAt(2)).isEqualTo('c');
+    }
 }
