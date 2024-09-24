@@ -27,8 +27,9 @@ public class SetTest {
         System.out.println(numbers.size());
     }
 
-
-
-
-
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3"})
+    void test2(String input) {
+        assertThat(numbers.contains(Integer.parseInt(input))).isTrue();
+    }
 }
