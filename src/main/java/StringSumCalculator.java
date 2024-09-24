@@ -26,19 +26,19 @@ public class StringSumCalculator {
         return numArr;
     }
 
-    // String[] numArr에 포함된 값들을 더해준다.
-    private static int sum(String[] numArr) {
-        return Arrays.stream(numArr)
-                .mapToInt(Integer::parseInt) // 각 문자열을 int로 변환
-                .sum();
-    }
-
     // String[] numArr에 음수가 포함되어있는지 체크한다.
     private static void checkMinus(String[] numArr) {
         boolean check = Arrays.stream(numArr)
                 .anyMatch(s -> s.contains("-"));
 
         if (check) throw new RuntimeException("Minus not allowed");
+    }
+
+    // String[] numArr에 포함된 값들을 더해준다.
+    private static int sum(String[] numArr) {
+        return Arrays.stream(numArr)
+                .mapToInt(Integer::parseInt) // 각 문자열을 int로 변환
+                .sum();
     }
 
 }
