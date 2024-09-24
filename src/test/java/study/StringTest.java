@@ -7,8 +7,9 @@ import org.junit.jupiter.api.Test;
 class StringTest {
 
     @Test
-    void splitLearningTest1() {
+    void splitLearningTest() {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
     }
+
 }
