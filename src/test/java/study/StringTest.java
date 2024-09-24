@@ -3,17 +3,20 @@ package study;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
-    @Test
+    @ParameterizedTest
     @DisplayName("요구사항1 - 문자열 분할여부 확인")
-    void split1() {
+    @ValueSource(strings = {"1", "2"})
+    void split1(String targetStr) {
         String targetString = "1,2";
 
         // then "1,2" -> "1" 존재 여부
-        assertThat(targetString.split(",")).contains("1");
+        assertThat(targetString.split(",")).contains(targetStr);
     }
 
     @Test
