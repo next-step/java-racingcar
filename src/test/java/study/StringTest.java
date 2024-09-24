@@ -1,6 +1,5 @@
 package study;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +15,6 @@ public class StringTest {
     void split() {
         String []splitResult = "1,2".split(",");
 
-        String []oneResult = "1".split(",");
-
-        assertThat(oneResult).containsExactly("1");
         assertThat(splitResult).containsExactly("1", "2");
     }
 
@@ -35,14 +31,11 @@ public class StringTest {
     @Test
     @DisplayName("문자열 chatAt 성공 테스트")
     void chatAt_success() {
-        char zeroIndex = "abc".charAt(0);
-        char oneIndex = "abc".charAt(1);
-        char twoIndex = "abc".charAt(2);
 
         assertAll(
-                ()-> assertEquals(zeroIndex, 'a'),
-                () -> assertEquals(oneIndex, 'b'),
-                () -> assertEquals(twoIndex, 'c')
+                ()-> assertEquals("abc".charAt(0), 'a'),
+                () -> assertEquals("abc".charAt(1), 'b'),
+                () -> assertEquals("abc".charAt(2), 'c')
         );
     }
 
