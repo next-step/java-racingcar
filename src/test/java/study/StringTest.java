@@ -10,9 +10,16 @@ class StringTest {
 
     @DisplayName("`1,2`를 ,로 split 했을 때 1과 2로 잘 분리되는지")
     @Test
-    void splitLearningTest() {
+    void splitLearningTest1() {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
+    }
+
+    @DisplayName("`1`을 ,로 split 했을 때 1만은 포함하는 배열이 반환되는지")
+    @Test
+    void splitLearningTest2() {
+        String[] result = "1".split(",");
+        assertThat(result).containsExactly("1");
     }
 
     @DisplayName("`(1,2)`을 substring 메서드를 활용해 괄호를 잘 제거할 수 있는지")
