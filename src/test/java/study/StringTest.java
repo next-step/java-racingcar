@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class StringTest {
 
@@ -30,12 +32,11 @@ class StringTest {
     }
 
     @DisplayName("`abc`를 charAt() 메서드를 활용해 특정 위치의 문자를 잘 가져올 수 있는지")
-    @Test
-    void charAtLearningTest1() {
+    @ParameterizedTest
+    @CsvSource(value = {"0:a", "1:b", "2:c"}, delimiter = ':')
+    void charAtLearningTest1(int index, char expected) {
         String data = "abc";
-        assertThat(data.charAt(0)).isEqualTo('a');
-        assertThat(data.charAt(1)).isEqualTo('b');
-        assertThat(data.charAt(2)).isEqualTo('c');
+        assertThat(data.charAt(index)).isEqualTo(expected);
     }
 
     @DisplayName("charAt() 메서드가 문자열의 범위를 벗어난 위치의 문자를 가져올 때 StringIndexOutOfBoundsException을 반환하는지")
