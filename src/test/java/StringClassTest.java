@@ -1,28 +1,67 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import java.util.Arrays;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringClassTest {
 
-    static String numberData;
-    static String [] array;
+    @Nested
+    @DisplayName("첫번째 요구사항 클래스")
+    class firstRequiredTest {
+          private String NumbersData = "1,2";
+          private String NumberData = "1";
+          private String [] array;
 
-    @BeforeAll
-    public static void init() {
-        numberData = "1,2";
+        @Test
+        @DisplayName(value = "1,2 split으로 분리여부 확인 테스트")
+        public void numbersSplitTest() {
+            array = NumbersData.split(",");
+            assertThat(array).contains("1","2");
+        }
+
+        @Test
+        @DisplayName(value = "1 split후 1만 포함하는지 확인 테스트")
+        public void oneNumberSplitTest() {
+            array = NumberData.split(",");
+            assertThat(array).containsExactlyInAnyOrder("1");
+        }
+
     }
-    /**
-     * 요구사항 : 1,2"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인
-     * 1. 문자열을 나누어서 배열에 저장한다.
-     * 2. 배열에 1과 2가 각각 조회되는지 or contains로 두개가 다 존재하는지
-     * 검증하기.
-     *
-     */
-    @Test
-    public void SplitTest() {
-        array = numberData.split(",");
-        Arrays.stream(array).peek(i -> System.out.println(i));
 
+    @Nested
+    @DisplayName("두번째 요구사항 클래스")
+    class secondRequiredTest {
+        private String require2NumberData = "(1,2)";
+
+        @Test
+        @DisplayName(value = "(1,2) subString사용해서 1,2만 반환 테스트")
+        public void require2Test() {
+            String result = require2NumberData.substring(1,4);
+            assertThat("1,2").isEqualTo(result);
+        }
+
+    }
+
+    @Nested
+    @DisplayName("세번째 요구사항 클래스")
+    class thirdRequiredTest {
+        private String require2abcData = "abc";
+
+        @Test
+        @DisplayName(value = "abc에서 특정위치 문자 가져오는 테스트")
+        public void require2charAtTest() {
+            char result = require2abcData.charAt(0);
+            assertThat('a').isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName(value = "abc 데이터 indexOutOfBoundsException 발생 테스트")
+        public void require2charAtExceptionTest() {
+            assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                    .isThrownBy(() ->{
+                        require2abcData.charAt(4);
+                    });
+        }
     }
 }
+
