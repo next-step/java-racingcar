@@ -1,15 +1,15 @@
 package calculator;
 
-import calculator.number.PositiveOrZeros;
+import calculator.number.Numbers;
 import calculator.utils.StringUtils;
 
 import java.util.regex.Pattern;
 
-import static calculator.number.PositiveOrZero.ZERO;
+import static calculator.number.Number.ZERO;
 
 public class StringAddCalculator {
 
-    private static final String DEFAULT_DELIMITER_REGEX = ",|:";
+    private static final String DEFAULT_DELIMITER_REGEX = "[,:]";
 
     private static final Pattern PATTERN_FOR_CUSTOM_DELIMITER = Pattern.compile("//(.)\\n(.*)");
     private static final int CUSTOM_DELIMITER_INDEX = 1;
@@ -24,9 +24,9 @@ public class StringAddCalculator {
         }
 
         final var texts = split(text);
-        final var positiveOrZeros = new PositiveOrZeros(texts);
+        final var positiveOrZeros = new Numbers(texts);
 
-        return positiveOrZeros.addAll().value();
+        return positiveOrZeros.addAll();
     }
 
     private static String[] split(final String text) {
