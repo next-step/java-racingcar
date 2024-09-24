@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,8 +24,15 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("size() - Set의 크기는 중복을 제외한 유일한 값의 개수만큼이다.")
+    @DisplayName("size() - Set의 크기는 중복을 제외한 유일한 값의 개수이다.")
     void size() {
         assertThat(numbers.size()).isEqualTo(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("contains() - Set에 존재하는 요소에 대해 참을 반환한다.")
+    void contains_ShouldReturnTrueForExistingElement(int input) {
+        assertThat(numbers.contains(input)).isTrue();
     }
 }
