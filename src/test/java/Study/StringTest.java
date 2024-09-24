@@ -1,7 +1,8 @@
 package Study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Java6Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
@@ -15,4 +16,14 @@ public class StringTest {
         assertThat(split1).contains("1", "2");
         assertThat(split2).containsExactly("1");
     }
+
+    @Test
+    public void test2() {
+        String str = "(1,2)";
+
+        str = str.substring(1, str.length()-1);
+
+        assertThat(str).doesNotContain("(",")");
+    }
 }
+
