@@ -2,6 +2,8 @@ package step1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -28,12 +30,11 @@ public class StringTest {
         assertThat(given).isEqualTo("1,2");
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"0:a", "1:b", "2:c"}, delimiter = ':')
     @DisplayName("charAt() 으로 특정 위치의 문자를 가져온다.")
-    void requirement_3_1() {
-        assertThat("abc".charAt(0)).isEqualTo('a');
-        assertThat("abc".charAt(1)).isEqualTo('b');
-        assertThat("abc".charAt(2)).isEqualTo('c');
+    void requirement_3_1(int index, char expected) {
+        assertThat("abc".charAt(index)).isEqualTo(expected);
     }
 
     @Test
