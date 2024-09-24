@@ -11,7 +11,7 @@ public class StringAddCalculator {
             return Integer.parseInt(input);
         }
 
-        String[] strings = input.split(",");
+        String[] strings = input.split(",|:");
         List<Integer> ints = convertStringArrayToIntArray(strings);
         int result = addCalculator(ints);
         return result;
