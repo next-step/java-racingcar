@@ -4,7 +4,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.rmi.UnexpectedException;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class StringAddCalculatorTest {
 
     private final StringAddCalculator stringAddCalculator = new StringAddCalculator();
@@ -48,5 +52,13 @@ public class StringAddCalculatorTest {
     public void givenIntCanIncludeCustomDelimiter(){
         int result = stringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
+    public void givenIntWithNegative_shouldExceptionOccur() throws Exception {
+        assertThatThrownBy(() -> stringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageMatching("음수는 덧셈이 불가합니다.");
     }
 }
