@@ -31,4 +31,30 @@ public class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
+    @DisplayName("정상적인 특정 위치에서 문자 가져오기")
+    @Test
+    void charAt(){
+        String given = "abc";
+
+        char resultA = given.charAt(0);
+        assertThat(resultA).isEqualTo('a');
+
+
+        char resultB = given.charAt(1);
+        assertThat(resultB).isEqualTo('b');
+
+        char resultC = given.charAt(2);
+        assertThat(resultC).isEqualTo('c');
+    }
+
+    @DisplayName("범위 밖의 위치에서 문자 가져오기")
+    @Test
+    void charAt_예외_발생(){
+        String given = "abc";
+
+        assertThatThrownBy(()->given.charAt(3))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 3");
+    }
+
 }
