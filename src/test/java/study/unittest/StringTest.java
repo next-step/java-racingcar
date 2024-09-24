@@ -1,4 +1,4 @@
-package study;
+package study.unittest;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
