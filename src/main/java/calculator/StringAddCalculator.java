@@ -24,9 +24,9 @@ public class StringAddCalculator {
         }
 
         final var texts = split(text);
-        final var positiveOrZeros = new Numbers(texts);
+        final var numbers = new Numbers(texts);
 
-        return positiveOrZeros.addAll();
+        return numbers.addAll();
     }
 
     private static String[] split(final String text) {
