@@ -34,4 +34,13 @@ public class StringTest {
         assertThat(split).containsExactly("1");
     }
 
+    @Test
+    public void testForParenthesis() {
+
+        // given
+        String testForParenthesis = "(1,2)";
+
+        // when & then
+        assertThat(testForParenthesis.substring(1, 4)).isEqualTo("1,2");
+    }
 }
