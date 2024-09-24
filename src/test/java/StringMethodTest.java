@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("String 클래스에 대한 학습 테스트")
 public class StringMethodTest {
@@ -50,4 +51,32 @@ public class StringMethodTest {
                 .as("(1,2) 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 1,2를 반환한다.")
                 .isEqualTo("1,2");
     }
+
+    @DisplayName("주어진 문자열에서 특정 위치의 문자를 가져온다")
+    @Test
+    void testCharAtSpecificPosition() {
+        // Given
+        String input = "abc";
+
+        // When
+        char result = input.charAt(1);  // 'b'를 가져옴
+
+        // Then
+        assertThat(result).isEqualTo('b');
+    }
+
+    @DisplayName("문자열의 범위를 벗어난 위치에서 charAt()을 호출하면 StringIndexOutOfBoundsException이 발생한다")
+    @Test
+    void testCharAtOutOfBounds() {
+        // Given
+        String input = "abc";
+
+        // Then
+        assertThatThrownBy(() -> {
+            // When
+            input.charAt(3);  // 인덱스 범위를 벗어남
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 3");
+    }
+
 }
