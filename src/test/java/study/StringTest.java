@@ -15,7 +15,7 @@ class StringTest {
         assertThat(result).containsExactly("1", "2");
     }
 
-    @DisplayName("`1`을 ,로 split 했을 때 1만은 포함하는 배열이 반환되는지")
+    @DisplayName("`1`을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지")
     @Test
     void splitLearningTest2() {
         String[] result = "1".split(",");
