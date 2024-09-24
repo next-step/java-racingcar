@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public int splitAndSum(String input) {
@@ -11,8 +13,17 @@ public class StringAddCalculator {
             return Integer.parseInt(input);
         }
 
-        String[] strings = input.split(",|:");
-        List<Integer> ints = convertStringArrayToIntArray(strings);
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
+        String[] stringInts = {};
+
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            stringInts = matcher.group(2).split(customDelimiter);
+        } else {
+            stringInts = input.split(",|;");
+        }
+
+        List<Integer> ints = convertStringArrayToIntArray(stringInts);
         int result = addCalculator(ints);
         return result;
     }
