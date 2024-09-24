@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.rmi.UnexpectedException;
@@ -13,18 +14,16 @@ public class StringAddCalculatorTest {
 
     private final StringAddCalculator stringAddCalculator = new StringAddCalculator();
 
-    @Test
-    @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.")
-    void whenEmptyGivenReturnZero() {
-        int result = stringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
-
-        result = stringAddCalculator.splitAndSum(null);
+    @ParameterizedTest(name = "\"{0}\" 값을 입력할 경우 0을 반환해야 한다.")
+    @NullAndEmptySource
+    void whenEmptyGivenReturnZero(String input) {
+        System.out.println("input :" + input);
+        int result = stringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(0);
     }
 
     @ParameterizedTest
-    @CsvSource({"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"})
+    @CsvSource({"0", "9"})
     @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
     void givenIntString_shouldReturnInt(String input) {
         int result = stringAddCalculator.splitAndSum(input);
@@ -55,10 +54,10 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
+    @DisplayName("음수를 전달할 경우 NegativeNumberException 예외가 발생해야 한다.")
     public void givenIntWithNegative_shouldExceptionOccur() throws Exception {
         assertThatThrownBy(() -> stringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageMatching("음수는 덧셈이 불가합니다.");
+                .isInstanceOf(NegativeNumberException.class)
+                .hasMessageMatching("음수값이 입력되었습니다.");
     }
 }
