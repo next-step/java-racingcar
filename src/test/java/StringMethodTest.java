@@ -20,4 +20,19 @@ public class StringMethodTest {
                 .as("\"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인한다")
                 .containsExactly("1", "2");
     }
+
+    @DisplayName("쉼표로 split 했을 때 1만 포함하는 배열이 반환되는지 확인한다")
+    @Test
+    void splitWithCommaForOneElementTest() {
+        // Given
+        String input = "1";
+
+        // When
+        String[] actual = input.split(",");
+
+        // Then
+        assertThat(actual)
+                .as("\"1\"을 ,로 split 했을 때 1만 포함하는 배열이 반환되는지 확인한다")
+                .contains("1");
+    }
 }
