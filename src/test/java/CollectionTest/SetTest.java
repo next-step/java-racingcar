@@ -32,4 +32,11 @@ public class SetTest {
     void test2(String input) {
         assertThat(numbers.contains(Integer.parseInt(input))).isTrue();
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void test3(String input) {
+        int number = Integer.parseInt(input);
+        assertThat(numbers.contains(number));
+    }
 }
