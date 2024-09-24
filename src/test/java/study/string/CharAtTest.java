@@ -12,7 +12,7 @@ public class CharAtTest {
     private static final String ABC ="abc";
 
     @ParameterizedTest
-    @DisplayName("a추출 테스트")
+    @DisplayName("추출 테스트")
     @CsvSource(value = {"0,a","1,b","2,c"})
     public void popATest(int index,char result){
         assertThat(ABC.charAt(index)).isEqualTo(result);
