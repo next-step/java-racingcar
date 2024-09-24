@@ -1,12 +1,10 @@
 package study.assertJ;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class AsserJTest {
 
@@ -50,8 +48,23 @@ public class AsserJTest {
     }
 
     @Test
+    public void assertThatNullPointerExceptionTest() {
+        assertThatNullPointerException().isThrownBy(() -> { throw new NullPointerException("is Null!"); })
+                .withMessage("%s!", "is Null")
+                .withMessageContaining("Null")
+                .withNoCause();
+    }
+
+    @Test
     public void assertThatExceptionOfTypeHasCauseTest() {
         assertThatExceptionOfType(Exception.class).isThrownBy(() -> { throw new Exception(new NullPointerException("is Null!")); })
                 .withMessageContaining("Null");
+    }
+
+    @Test
+    public void assertThatCodeTest() {
+        assertThatCode(() -> {
+            throw new Exception("테스트!!");
+        }).hasMessageEndingWith("스트!!");
     }
 }
