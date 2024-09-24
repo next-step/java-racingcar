@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final String delimiters = ",|:";
+
     public static int splitAndSum(String text) {
         if (checkNullOrEmpty(text)) {
             return 0;
@@ -24,7 +26,7 @@ public class StringAddCalculator {
     }
 
     private static String[] splitString(String text) {
-        return text.split(",|:");
+        return text.split(delimiters);
     }
 
     private static String[] splitStringWithRegex(String text) {
