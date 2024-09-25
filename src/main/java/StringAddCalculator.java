@@ -38,19 +38,14 @@ public class StringAddCalculator {
                 return 0;
             }
 
-            final int[] numbers = getNumbers();
-            return Arrays.stream(numbers).sum();
+            final String[] calculateTarget = expression.split(String.join("|", separators));
+            return Arrays.stream(calculateTarget)
+                .mapToInt(Integer::parseUnsignedInt)
+                .sum();
         }
 
         private boolean empty() {
             return expression == null || expression.isEmpty();
-        }
-
-        private int[] getNumbers() {
-            final String[] calculateTarget = expression.split(String.join("|", separators));
-            return Arrays.stream(calculateTarget)
-                .mapToInt(Integer::parseUnsignedInt)
-                .toArray();
         }
     }
 }
