@@ -21,4 +21,14 @@ class StringTest {
                 .hasSize(1)
                 .contains("1");
     }
+
+    @Test
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하는지")
+    void substring_returns_correct_string_when_string_is_substring() {
+        var str = "(1,2)";
+        var result = str.substring(str.indexOf("(") + 1, str.indexOf(")"));
+        assertThat(result).isEqualTo("1,2");
+    }
+
+
 }
