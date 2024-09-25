@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -34,5 +35,12 @@ public class SetTest {
     @DisplayName("Set의 contains() 메소드로 1,2,3의 값이 존재하는지 확인")
     void setContains(int values) {
         assertThat(numbers.contains(values)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
+    @DisplayName("Set의 contains() 메소드로 1,2,3 값이 존재하는지 아닌지 확인")
+    void setContainsWithBoolean(int values, boolean expected) {
+        assertThat(numbers.contains(values)).isEqualTo(expected);
     }
 }
