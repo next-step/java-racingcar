@@ -18,14 +18,14 @@ public class Calculator {
 
     private int[] toInts(String[] input) {
         int[] result = new int[input.length];
-        for(int i=0;i<input.length;i++){
-            result[i]= toPositive(input[i]);
+        for (int i = 0; i < input.length; i++) {
+            result[i] = toPositive(input[i]);
         }
         return result;
     }
 
     private int toPositive(String value) {
-        if(isNotPositive(value))throw new RuntimeException("양수가 아닙니다.");
+        if (isNotPositive(value)) throw new RuntimeException("양수가 아닙니다.");
         return Integer.parseInt(value);
     }
 

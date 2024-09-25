@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
-    private Calculator calculator=new Calculator();
+    private Calculator calculator = new Calculator();
 
     @Test
     @DisplayName("콜론 구분자 더하기")
@@ -49,7 +49,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("숫자가 아닌 문자 더하기")
     public void sumNonNumber() {
-        assertThatThrownBy(()->calculator.sum("a,b:c"))
+        assertThatThrownBy(() -> calculator.sum("a,b:c"))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageEndingWith("양수가 아닙니다.");
     }
@@ -57,7 +57,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("음수 더하기")
     public void sumNegative() {
-        assertThatThrownBy(()->calculator.sum("-1,1:2"))
+        assertThatThrownBy(() -> calculator.sum("-1,1:2"))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageEndingWith("양수가 아닙니다.");
     }
