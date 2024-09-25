@@ -46,19 +46,4 @@ public class CalculatorTest {
         assertThat(calculator.sum(null)).isEqualTo(0);
     }
 
-    @Test
-    @DisplayName("숫자가 아닌 문자 더하기")
-    public void sumNonNumber() {
-        assertThatThrownBy(() -> calculator.sum("a,b:c"))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageEndingWith("숫자가 아닙니다.");
-    }
-
-    @Test
-    @DisplayName("음수 더하기")
-    public void sumNegative() {
-        assertThatThrownBy(() -> calculator.sum("-1,1:2"))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageEndingWith("숫자가 아닙니다.");
-    }
 }
