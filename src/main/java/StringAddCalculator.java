@@ -6,7 +6,9 @@ public class StringAddCalculator {
     private static final List<String> DEFAULT_SEPARATORS = List.of(",", ":");
 
     public static int splitAndSum(final String expression) {
-        if (expression == null || expression.isEmpty()) return 0;
+        if (expression == null || expression.isEmpty()) {
+            return 0;
+        }
 
         final ParsedExpression parsedExpression = buildParsedExpression(expression);
         return parsedExpression.calculate();
@@ -31,7 +33,10 @@ public class StringAddCalculator {
         }
 
         public int calculate() {
-            if (empty()) return 0;
+            if (empty()) {
+                return 0;
+            }
+
             final int[] numbers = getNumbers();
             return Arrays.stream(numbers).sum();
         }
