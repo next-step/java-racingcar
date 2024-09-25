@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
@@ -43,5 +44,21 @@ public class CalculatorTest {
     @DisplayName("null 더하기")
     public void sumWithNull() {
         assertThat(calculator.sum(null)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 문자 더하기")
+    public void sumNonNumber() {
+        assertThatThrownBy(()->calculator.sum("a,b:c"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageEndingWith("양수가 아닙니다.");
+    }
+
+    @Test
+    @DisplayName("음수 더하기")
+    public void sumNegative() {
+        assertThatThrownBy(()->calculator.sum("-1,1:2"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageEndingWith("양수가 아닙니다.");
     }
 }
