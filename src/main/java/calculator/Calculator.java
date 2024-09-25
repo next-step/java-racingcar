@@ -1,12 +1,16 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Calculator {
 
     public int sum(String input) {
         if (isEmpty(input)) {
             return 0;
         }
-        return sum(toPositives(split(input)));
+        String[] split = split(input);
+        return sum(toPositives(split));
     }
 
     private boolean isEmpty(String input) {
@@ -23,6 +27,12 @@ public class Calculator {
 
 
     private String[] split(String input) {
+        Matcher matcher = Pattern.compile("//(.+)\n(.*)").matcher(input);
+        if(matcher.find()){
+            String delimiter = matcher.group(1);
+            String group = matcher.group(2);
+            return group.split(delimiter);
+        }
         return input.split("[:,]");
     }
 }

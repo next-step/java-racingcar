@@ -46,4 +46,10 @@ public class CalculatorTest {
         assertThat(calculator.sum(null)).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("커스텀 구분자로 더하기")
+    public void sumWithCustomDelimiter(){
+        assertThat(calculator.sum("////\n1//2")).isEqualTo(3);
+    }
+
 }
