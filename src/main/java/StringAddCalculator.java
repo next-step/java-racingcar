@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final List<String> DEFAULT_SEPARATORS = List.of(",", ":");
+    private static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile("//(.)\n");
 
     public static int splitAndSum(final String expression) {
         if (expression == null || expression.isEmpty()) {
@@ -15,7 +16,7 @@ public class StringAddCalculator {
     }
 
     private static ParsedExpression buildParsedExpression(final String expression) {
-        final Matcher matcher = Pattern.compile("//(.)\n").matcher(expression);
+        final Matcher matcher = CUSTOM_SEPARATOR_PATTERN.matcher(expression);
         final Set<String> separators = new HashSet<>(DEFAULT_SEPARATORS);
         while (matcher.find()) {
             separators.add(matcher.group(1));
