@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final int NO_VALUE_RESPONSE = 0;
-    private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
-    private static final String DEFAULT_LIMITER = ",|:";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITER_PATTERN = ",|:";
 
     public int splitAndSum(String input) {
             if (input == null || input.isBlank()) {
@@ -22,13 +22,13 @@ public class StringAddCalculator {
 
     private int[] split(String input) {
         String[] stringInts = {};
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
 
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             stringInts = matcher.group(2).split(customDelimiter);
         } else {
-            stringInts = input.split(DEFAULT_LIMITER);
+            stringInts = input.split(DEFAULT_DELIMITER_PATTERN);
         }
 
         return convertStringArrayToIntArray(stringInts);
