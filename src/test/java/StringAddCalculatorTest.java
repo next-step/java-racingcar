@@ -1,6 +1,11 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -13,28 +18,55 @@ class StringAddCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
-    @Test
-    public void splitAndSum_숫자하나() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1");
-        assertThat(result).isEqualTo(1);
+    @ParameterizedTest
+    @CsvSource(value = {"1,1", "3,3", "99,99"})
+    public void splitAndSum_숫자하나(final String input, final int excepted) throws Exception {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(excepted);
     }
 
-    @Test
-    public void splitAndSum_쉼표구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1,2");
-        assertThat(result).isEqualTo(3);
+    @ParameterizedTest
+    @CsvSource(value = {"1,2;3", "9,9;18"}, delimiter = ';')
+    public void splitAndSum_쉼표구분자(final String input, final int excepted) throws Exception {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(excepted);
     }
 
-    @Test
-    public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1,2:3");
-        assertThat(result).isEqualTo(6);
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3;6", "5,5:4;14"}, delimiter = ';')
+    public void splitAndSum_쉼표_또는_콜론_구분자(final String input, final int excepted) throws Exception {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(excepted);
     }
 
-    @Test
-    public void splitAndSum_custom_구분자() throws Exception {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
-        assertThat(result).isEqualTo(6);
+    @ParameterizedTest
+    @MethodSource
+    public void splitAndSum_custom_구분자(final String input, final int excepted) throws Exception {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(excepted);
+    }
+
+    public static Stream<Arguments> splitAndSum_custom_구분자() {
+        return Stream.of(
+            Arguments.of("//;\n1;2;3", 6),
+            Arguments.of("//.\n1.2.3", 6),
+            Arguments.of("//@\n1@2@3", 6),
+            Arguments.of("//[\n1[2[3", 6)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    public void splitAndSum_custom_구분자_여러개(final String input, final int excepted) throws Exception {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(excepted);
+    }
+
+    public static Stream<Arguments> splitAndSum_custom_구분자_여러개() {
+        return Stream.of(
+            Arguments.of("//;\n//.\n1;2.3", 6),
+            Arguments.of("//@\n//[\n//*\n1@2[3*4", 10)
+        );
     }
 
     @Test
