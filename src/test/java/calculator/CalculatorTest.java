@@ -51,7 +51,7 @@ public class CalculatorTest {
     public void sumNonNumber() {
         assertThatThrownBy(() -> calculator.sum("a,b:c"))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageEndingWith("양수가 아닙니다.");
+                .hasMessageEndingWith("숫자가 아닙니다.");
     }
 
     @Test
@@ -59,6 +59,6 @@ public class CalculatorTest {
     public void sumNegative() {
         assertThatThrownBy(() -> calculator.sum("-1,1:2"))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageEndingWith("양수가 아닙니다.");
+                .hasMessageEndingWith("숫자가 아닙니다.");
     }
 }
