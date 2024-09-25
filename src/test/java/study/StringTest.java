@@ -24,5 +24,11 @@ public class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
+    @Test
+    void getCharacterUsingCharAt() {
+        String str = "abc";
+        char result = str.charAt(0);
+        assertThat(result).isEqualTo('a');
+    }
 
 }
