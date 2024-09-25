@@ -29,21 +29,25 @@ public class Positives {
 
     static private class Positive {
 
-        private static final String  NOT_POSITIVE_MESSAGE = "숫자가 아닙니다.";;
+        private static final String NOT_POSITIVE_MESSAGE = "숫자가 아닙니다.";
+        ;
         private int number;
 
-        private Positive(int value){
-            if(isNotPositive(value)){
+        private Positive(int value) {
+            if (isNotPositive(value)) {
                 throw new RuntimeException(NOT_POSITIVE_MESSAGE);
             }
-            this.number=value;
+            this.number = value;
         }
 
         private static boolean isNotPositive(int value) {
-            return value<0;
+            return value < 0;
         }
-        private static Positive of(String value){
-            if (isNotNumber(value)) throw new RuntimeException(NOT_POSITIVE_MESSAGE);
+
+        private static Positive of(String value) {
+            if (isNotNumber(value)) {
+                throw new RuntimeException(NOT_POSITIVE_MESSAGE);
+            }
             return new Positive(Integer.parseInt(value));
         }
 
@@ -51,7 +55,7 @@ public class Positives {
             return !value.matches("^\\d+$");
         }
 
-        private int number(){
+        private int number() {
             return number;
         }
     }
