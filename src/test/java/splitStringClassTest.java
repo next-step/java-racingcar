@@ -41,4 +41,18 @@ class splitStringClassTest {
         // then
         assertThat(result).isEqualTo("1,2");
     }
+
+
+    @Test
+    public void getCharLocation() throws Exception {
+        // given
+        String testString = "abc";
+
+        // when & then
+        assertAll(
+                () -> assertEquals('a', testString.charAt(0)),
+                () -> assertEquals('b', testString.charAt(1)),
+                () -> assertEquals('c', testString.charAt(2))
+        );
+    }
 }
