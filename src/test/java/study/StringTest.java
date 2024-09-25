@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringTest {
     @Test
@@ -30,5 +31,18 @@ class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
+    @Test
+    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는지")
+    void charAt_returns_correct_index_when_string_is_charAt() {
+        var str = "abc";
+        assertThat(str.charAt(1)).isEqualTo('b');
+    }
 
+    @Test
+    @DisplayName("charAt() 메소드를 활용해 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException가 발생하는지")
+    void charAt_throws_exception_when_index_is_out_of_bounds() {
+        var str = "abc";
+        assertThatThrownBy(() -> str.charAt(-1))
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
+    }
 }
