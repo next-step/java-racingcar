@@ -28,7 +28,7 @@ public class Calculator {
 
     private String[] split(String input) {
         Matcher matcher = Pattern.compile("//(.+)\n(.*)").matcher(input);
-        if(matcher.find()){
+        if (matcher.find()) {
             String delimiter = matcher.group(1);
             String group = matcher.group(2);
             return group.split(delimiter);
