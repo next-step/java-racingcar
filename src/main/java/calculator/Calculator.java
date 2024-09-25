@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Calculator {
     public int sum(String input) {
+        if (input.isEmpty()) return 0;
         return sum(toInt(split(input)));
     }
 

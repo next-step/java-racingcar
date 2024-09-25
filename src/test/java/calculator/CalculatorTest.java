@@ -27,4 +27,11 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertThat(calculator.sum("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("빈 문자 더하기")
+    public void sumWithEmptyString() {
+        Calculator calculator = new Calculator();
+        assertThat(calculator.sum("")).isEqualTo(0);
+    }
 }
