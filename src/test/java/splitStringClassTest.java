@@ -55,4 +55,15 @@ class splitStringClassTest {
                 () -> assertEquals('c', testString.charAt(2))
         );
     }
+
+    @Test
+    public void getCharLocationOutOfBounds() throws Exception {
+        // given
+        String testString = "abc";
+
+        // when & then
+        assertThrows(StringIndexOutOfBoundsException.class, () -> {
+            testString.charAt(testString.length() + 1);
+        });
+    }
 }
