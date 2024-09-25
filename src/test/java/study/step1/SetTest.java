@@ -1,4 +1,4 @@
-package study;
+package study.step1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,7 +34,7 @@ class SetTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("Set의 contains() 메서드가 true를 반환하는지")
     void contains_returns_true_when_set_is_contained(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
