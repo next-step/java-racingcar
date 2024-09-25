@@ -34,14 +34,14 @@ public class SetTest {
     @DisplayName("Set에 포함된 값 확인")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void containsTest(int num) {
-        assertThat(numbers.contains(num)).isTrue();
+    void containsTest(int number) {
+        assertThat(numbers.contains(number)).isTrue();
     }
 
     @DisplayName("Set에 포함되지 않은 값 확인")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void expectedValueTest(int num, boolean expected) {
-        assertThat(numbers.contains(num)).isEqualTo(expected);
+    void expectedValueTest(int number, boolean expected) {
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
