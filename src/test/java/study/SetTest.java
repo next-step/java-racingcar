@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +27,13 @@ class SetTest {
     @DisplayName("Set의 size() 메서드가 올바른 size를 반환하는지")
     void size_returns_collect_size_when_set_is_size() {
         assertThat(numbers).hasSize(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("Set의 contains() 메서드가 true를 반환하는지")
+    void contains_returns_true_when_set_is_contained(int input) {
+        assertThat(numbers.contains(input)).isTrue();
     }
 
 }
