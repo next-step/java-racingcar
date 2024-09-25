@@ -41,4 +41,11 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertThat(calculator.sum(" ")).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("null 더하기")
+    public void sumWithNull() {
+        Calculator calculator = new Calculator();
+        assertThat(calculator.sum(null)).isEqualTo(0);
+    }
 }

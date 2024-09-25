@@ -9,7 +9,7 @@ public class Calculator {
     }
 
     private static boolean isEmpty(String input) {
-        return input.isEmpty() || input.isBlank();
+        return input == null || input.isEmpty() || input.isBlank();
     }
 
     private int sum(int[] input) {
