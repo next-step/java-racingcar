@@ -1,13 +1,21 @@
 package calculator;
 
+import java.util.Arrays;
+
 public class Calculator {
     public int sum(String input) {
-        String[] split = input.split("[:,]");
+        return sum(toInt(split(input)));
+    }
 
-        int sum = 0;
-        for (String number : split) {
-            sum += Integer.parseInt(number);
-        }
-        return sum;
+    private int sum(int[] input) {
+        return Arrays.stream(input).sum();
+    }
+
+    private int[] toInt(String[] input) {
+        return Arrays.stream(input).mapToInt(Integer::parseInt).toArray();
+    }
+
+    private String[] split(String input) {
+        return input.split("[:,]");
     }
 }
