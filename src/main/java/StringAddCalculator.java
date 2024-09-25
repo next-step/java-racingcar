@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringAddCalculator {
     private static final List<String> DEFAULT_SEPARATORS = List.of(",", ":");
@@ -30,7 +31,9 @@ public class StringAddCalculator {
 
         public ParsedExpression(final String expression, final List<String> separators) {
             this.expression = expression;
-            this.separators = separators;
+            this.separators = separators.stream()
+                .map(Pattern::quote)
+                .collect(Collectors.toList());
         }
 
         public int calculate() {
