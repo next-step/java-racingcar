@@ -29,4 +29,14 @@ public class StringCalculatorTest {
         // then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3", "2,3:5", "3,4:7"}, delimiter = ':')
+    void splitAndSum_쉼표구분자(String input, int expected) {
+        // when
+        int result = StringCalculator.splitAndSum(input);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
 }
