@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SetTest {
+class SetTest {
 
     private Set<Integer> numbers;
 
@@ -26,16 +26,16 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("Set 인터페이스의 size() 메서드를 활용하여 Set의 크기를 확인한다.")
+    @DisplayName("Set Collection의 사이즈 테스트")
     void sizeOfSetTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @DisplayName("ParameterizedTest를 활용하여 원소의 존재여부 테스트")
     @ValueSource(ints = {1, 2, 3})
     void containsTrueTest(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
@@ -44,4 +44,4 @@ public class SetTest {
     void containsTrueAndFalseTest(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
-}
+}   
