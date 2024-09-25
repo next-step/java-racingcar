@@ -34,4 +34,11 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertThat(calculator.sum("")).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("공백 문자 더하기")
+    public void sumWithBlankString() {
+        Calculator calculator = new Calculator();
+        assertThat(calculator.sum(" ")).isEqualTo(0);
+    }
 }
