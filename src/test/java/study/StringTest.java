@@ -3,15 +3,14 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StringTest {
+class StringTest {
 
     @DisplayName("split() 사용")
     @Test
     void split(){
-
         String given = "1,2";
 
         String[] result = given.split(",");
@@ -37,13 +36,11 @@ public class StringTest {
         String given = "abc";
 
         char resultA = given.charAt(0);
-        assertThat(resultA).isEqualTo('a');
-
-
         char resultB = given.charAt(1);
-        assertThat(resultB).isEqualTo('b');
-
         char resultC = given.charAt(2);
+
+        assertThat(resultB).isEqualTo('b');
+        assertThat(resultA).isEqualTo('a');
         assertThat(resultC).isEqualTo('c');
     }
 
