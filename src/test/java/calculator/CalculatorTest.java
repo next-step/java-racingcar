@@ -20,4 +20,11 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertThat(calculator.sum("1,2")).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("콤마와 콜론 혼합 더하기")
+    public void sumWithCommaAndColonDelimiter() {
+        Calculator calculator = new Calculator();
+        assertThat(calculator.sum("1,2:3")).isEqualTo(6);
+    }
 }
