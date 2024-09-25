@@ -27,13 +27,13 @@ public class SetTest {
     void isEquals_ShouldEqualExpectedSetSize() {
         int expectedValue = 3;
 
-        assertThat(numbers.size()).isEqualTo(expectedValue);
+        assertThat(numbers).hasSize(expectedValue);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void isTrue_ShouldReturnTrueExpectedValueSet(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
