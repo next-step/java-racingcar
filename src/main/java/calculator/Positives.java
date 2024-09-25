@@ -42,7 +42,7 @@ public class Positives {
         private static boolean isNotPositive(int value) {
             return value<0;
         }
-        protected static Positive of(String value){
+        private static Positive of(String value){
             if (isNotNumber(value)) throw new RuntimeException(NOT_POSITIVE_MESSAGE);
             return new Positive(Integer.parseInt(value));
         }
@@ -51,7 +51,7 @@ public class Positives {
             return !value.matches("^\\d+$");
         }
 
-        public int number(){
+        private int number(){
             return number;
         }
     }
