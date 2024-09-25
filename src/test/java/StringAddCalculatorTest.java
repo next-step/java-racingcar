@@ -58,6 +58,6 @@ public class StringAddCalculatorTest {
     public void givenIntWithNegative_shouldExceptionOccur() throws Exception {
         assertThatThrownBy(() -> stringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(NegativeNumberException.class)
-                .hasMessageMatching("음수값이 입력되었습니다.");
+                .hasMessageContaining("음수값이 입력되었습니다");
     }
 }

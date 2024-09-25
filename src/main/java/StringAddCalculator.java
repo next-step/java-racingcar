@@ -1,12 +1,12 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class StringAddCalculator {
-    private final int NO_VALUE_RESPONSE = 0;
+    private static final int NO_VALUE_RESPONSE = 0;
+    private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_LIMITER = ",|:";
+
     public int splitAndSum(String input) {
             if (input == null || input.isBlank()) {
                 return NO_VALUE_RESPONSE;
@@ -21,29 +21,38 @@ public class StringAddCalculator {
     }
 
     private int[] split(String input) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
         String[] stringInts = {};
+        Matcher matcher = pattern.matcher(input);
 
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             stringInts = matcher.group(2).split(customDelimiter);
         } else {
-            stringInts = input.split(",|:");
+            stringInts = input.split(DEFAULT_LIMITER);
         }
 
         return convertStringArrayToIntArray(stringInts);
     }
+
     private int sum(int[] input) {
-        return Arrays.stream(input).peek(value -> {
-            if (value < 0) {
-                throw new NegativeNumberException("음수값이 입력되었습니다.");
-            }
-        }).sum();
+        return Arrays.stream(input).sum();
     }
 
     private int[] convertStringArrayToIntArray(String[] input) {
         return Arrays.stream(input)
-                .mapToInt(Integer::parseInt)
+                .mapToInt(this::validateAndParse)
                 .toArray();
+    }
+
+    private int validateAndParse(String value) {
+        try {
+            int number = Integer.parseInt(value); // 정수로 변환
+            if (number < 0) {
+                throw new NegativeNumberException("음수값이 입력되었습니다: " + value); // 음수 처리
+            }
+            return number;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력값입니다: " + value, e); // 잘못된 입력 처리
+        }
     }
 }
