@@ -18,4 +18,11 @@ public class StringTest {
         assertThat(result).containsExactly("1");
     }
 
+    @Test
+    void substringParentheses() {
+        String result = "(1,2)".substring(1, 4);
+        assertThat(result).isEqualTo("1,2");
+    }
+
+
 }
