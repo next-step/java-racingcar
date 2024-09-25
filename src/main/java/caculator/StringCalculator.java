@@ -12,6 +12,7 @@ public class StringCalculator {
     private static final String CUSTOM_DELIMITER_MATCH_PATTERN = "//(.)\\\\n(.*)";
     private static final int CUSTOM_DELIMITER_MATCH_GROUP_NUMBER = 1;
     private static final int PARSING_TARGET_MATCH_GROUP_NUMBER = 2;
+    private static final String MINUS = "-";
 
     public static int splitAndSum(String text) {
         if (text == null || text.isBlank()) {
@@ -53,7 +54,12 @@ public class StringCalculator {
 
     private static List<Integer> parseTokens(String[] tokens) {
         return Arrays.stream(tokens)
-                .map(Integer::parseInt)
+                .map(token -> {
+                    if (token.startsWith(MINUS)) {
+                        throw new RuntimeException("negative number is not supported");
+                    }
+                    return Integer.parseInt(token);
+                })
                 .collect(Collectors.toList());
     }
 

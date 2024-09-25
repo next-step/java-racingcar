@@ -4,8 +4,10 @@ import caculator.StringCalculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 public class StringCalculatorTest {
@@ -58,5 +60,13 @@ public class StringCalculatorTest {
 
         // then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,2,3", "a,b,c", "1,b,c", "a,-2,c"})
+    void splitAndSum_negative_or_notNumber(String input) {
+        // when, then
+        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
     }
 }
