@@ -15,6 +15,7 @@ public class StringAddCalculator {
             return 0;
         }
 
+        // 구분자로 split 하여 String[] 을 반환한다.
         String[] strNumbers = splitNumbers(exp);
         isValidNumber(strNumbers);
 
