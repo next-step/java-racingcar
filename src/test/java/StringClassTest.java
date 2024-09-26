@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StringClassTest {
+class StringClassTest {
     @Test
     @DisplayName("\"1,2\"를 ,로 split 했을 때 분리되는지")
     void splitTest1(){
