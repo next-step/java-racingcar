@@ -9,7 +9,8 @@ public class StringAddCalculator {
             return 0;
         }
 
-        return 0;
+        String[] numbers = exp.split(",|:");
+        return Integer.parseInt(numbers[0]);
     }
 
     private static boolean validateInputValue(String exp) {
