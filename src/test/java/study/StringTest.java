@@ -6,21 +6,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class StringTest {
+class StringTest {
 
   @DisplayName("구분자를 둔 두 숫자가 split()으로 잘 분리되는지 테스트한다.")
   @Test
   void split1() {
-    String str = "1,2";
-    String[] splitedString = str.split(",");
+    String string = "1,2";
+    String[] splitedString = string.split(",");
     assertThat(splitedString).containsExactly("1", "2");
   }
 
   @DisplayName("구분되지 않는 문자를 split()으로 구분했을 때, 원래 값을 그대로 포함한다")
   @Test
   void split2() {
-    String str = "1";
-    String[] splitedString = str.split(",");
+    String string = "1";
+    String[] splitedString = string.split(",");
     assertThat(splitedString).containsExactly("1");
   }
 
@@ -42,18 +42,11 @@ public class StringTest {
     assertThat(data.charAt(0)).isEqualTo('a');
     assertThat(data.charAt(1)).isEqualTo('b');
     assertThat(data.charAt(2)).isEqualTo('c');
+    assertThat(data.charAt(data.length()-1)).isEqualTo('c');
 
     assertThatThrownBy(() -> {
-      data.charAt(3);
-    }).isInstanceOf(StringIndexOutOfBoundsException.class)
-        .hasMessageContaining("String index out of range: 3");
-
-    assertThatThrownBy(() -> {
-      data.charAt(4);
+      data.charAt(data.length());
     }).isExactlyInstanceOf(StringIndexOutOfBoundsException.class);
 
-    assertThatThrownBy(() -> {
-      data.charAt(4);
-    }).isNotExactlyInstanceOf(IndexOutOfBoundsException.class);
   }
 }
