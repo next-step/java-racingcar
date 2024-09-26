@@ -12,7 +12,6 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 class SetTest {
     private Set<Integer> numbers;
 
