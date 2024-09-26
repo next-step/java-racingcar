@@ -23,22 +23,24 @@ public class SetTest {
     numbers.add(3);
   }
 
-  @DisplayName("요구사항 1: Set 컬렉션의 사이즈를 확인한다")
+  @DisplayName("Collection.size()로 Set의 요소 개수를 알 수 있다.")
   @Test
   void size() {
     assertThat(numbers.size()).isEqualTo(3);
     assertThat(numbers.size()).isNotEqualTo(4);
   }
 
-  @DisplayName("요구사항 2: Set 컬렉션에 대한 학습 테스트")
+  @DisplayName("Collection.contains()로 Set의 각 요소를 확인할 수 있다.")
   @Test
   void contains() {
     assertThat(numbers.contains(1)).isTrue();
     assertThat(numbers.contains(2)).isTrue();
     assertThat(numbers.contains(3)).isTrue();
+    assertThat(numbers.contains(4)).isFalse();
+    assertThat(numbers.contains(5)).isFalse();
   }
 
-  @DisplayName("요구사항 3: @ParameterizedTest 학습테스트")
+  @DisplayName("@ParameterizedTest를 활용하여, 주어진 소스 값에 대한 테스트로 중복코드를 제거할 수 있다.")
   @ParameterizedTest(name = "{index} => element={0}, expectedResult={1}")
   @CsvSource({
       "1, true",
@@ -50,5 +52,4 @@ public class SetTest {
   void contains(int element, boolean expectedResult) {
     assertThat(numbers.contains(element)).isEqualTo(expectedResult);
   }
-
 }
