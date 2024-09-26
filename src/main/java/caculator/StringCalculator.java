@@ -24,7 +24,9 @@ public class StringCalculator {
         }
 
         String[] tokens = split(text, null);
-        List<Integer> parsedNumbers = parseTokens(tokens);
+        List<Integer> parsedNumbers = Arrays.stream(tokens)
+                .map(StringCalculator::parseAndValidateToken)
+                .collect(Collectors.toList());
 
         return sum(parsedNumbers);
     }
@@ -34,7 +36,9 @@ public class StringCalculator {
         String parsingTargetText = matched.group(PARSING_TARGET_MATCH_GROUP_NUMBER);
 
         String[] tokens = split(parsingTargetText, customDelimiter);
-        List<Integer> parsedNumbers = parseTokens(tokens);
+        List<Integer> parsedNumbers = Arrays.stream(tokens)
+                .map(StringCalculator::parseAndValidateToken)
+                .collect(Collectors.toList());
 
         return sum(parsedNumbers);
     }
@@ -51,17 +55,13 @@ public class StringCalculator {
         return "[" + COMMA + COLON + customDelimiter + "]";
     }
 
-    private static List<Integer> parseTokens(String[] tokens) {
-        return Arrays.stream(tokens)
-                .map(token -> {
-                    int parsedNumber = Integer.parseInt(token);
-                    if (parsedNumber < 0) {
-                        throw new RuntimeException("negative number is not supported");
-                    }
+    private static int parseAndValidateToken(String token) {
+        int parsedNumber = Integer.parseInt(token);
+        if (parsedNumber < 0) {
+            throw new RuntimeException("negative number is not supported");
+        }
 
-                    return parsedNumber;
-                })
-                .collect(Collectors.toList());
+        return parsedNumber;
     }
 
     private static int sum(List<Integer> numbers) {
