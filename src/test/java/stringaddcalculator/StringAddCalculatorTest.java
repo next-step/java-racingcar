@@ -45,6 +45,7 @@ class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("//;\n");
         assertThat(result).isEqualTo(0);
     }
+
     @Test
     public void splitAndSum_custom_숫자_하나() throws Exception {
         int result = StringAddCalculator.splitAndSum("//;\n1");

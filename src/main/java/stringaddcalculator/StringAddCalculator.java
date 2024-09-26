@@ -29,7 +29,7 @@ public class StringAddCalculator {
         for(int i = 0; i < tokens.length; i++){
             try{
                 int number = Integer.parseInt(tokens[i]);
-                if(number < 0) throw new RuntimeException("음수 입력");
+                if (number < 0) throw new RuntimeException("음수 입력");
                 result += number;
             }catch (RuntimeException e){
                 throw new RuntimeException("계산 실패");
