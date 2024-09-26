@@ -15,11 +15,13 @@ public class Calculator {
         return sum;
     }
 
-    public int[] StringArrToIntArr(String[] textSplitArr) {
+    public int[] stringArrToIntArr(String[] textSplitArr) throws Exception {
         int[] numbers = new int[textSplitArr.length];
 
         for(int i = 0; i < textSplitArr.length; i++) {
-            numbers[i] = Integer.parseInt(textSplitArr[i]);
+            int num = Integer.parseInt(textSplitArr[i]);
+            validatePositive(num);
+            numbers[i] = num;
         }
 
         return numbers;
@@ -84,11 +86,9 @@ public class Calculator {
     }
 
     // "배열에 음수가 포함"
-    public void validatePositive(int[] textSplitArr) throws Exception {
-        for(int num : textSplitArr) {
-            if (num < 0) {
-                throw new RuntimeException("음수가 포함되어 있습니다.");
-            }
+    public void validatePositive(int num) throws Exception {
+        if (num < 0) {
+            throw new RuntimeException("음수가 포함되어 있습니다.");
         }
     }
 }
