@@ -1,18 +1,28 @@
-package caculator;
+package calculator;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
 
-    public int calculate(String[] textSplitArr) {
+    public static final String REGEX = ",|:";
+
+    public int calculate(int[] numbers) {
         int sum = 0;
-        for(String stringTypeNum :  textSplitArr) {
-            sum += Integer.parseInt(stringTypeNum);
+        for(int num : numbers) {
+            sum += num;
         }
         return sum;
+    }
+
+    public int[] StringArrToIntArr(String[] textSplitArr) {
+        int[] numbers = new int[textSplitArr.length];
+
+        for(int i = 0; i < textSplitArr.length; i++) {
+            numbers[i] = Integer.parseInt(textSplitArr[i]);
+        }
+
+        return numbers;
     }
 
     public String[] splitText(String text) throws Exception {
@@ -57,7 +67,7 @@ public class Calculator {
 
     // "콤마와 콜론 구분자를 통한 문자열 분리"
     private String[] textWithCommaAndColon(String text) {
-        return text.split(",|:");
+        return text.split(REGEX);
     }
 
     // "커스텀 구분자를 통한 문자열 분리"
@@ -73,10 +83,9 @@ public class Calculator {
         return textSplitArr;
     }
 
-    // "문자열에 음수가 포함"
-    public void validatePositive(String[] textSplitArr) throws Exception {
-        for(String stringTypeNum : textSplitArr) {
-            int num = Integer.parseInt(stringTypeNum);
+    // "배열에 음수가 포함"
+    public void validatePositive(int[] textSplitArr) throws Exception {
+        for(int num : textSplitArr) {
             if (num < 0) {
                 throw new RuntimeException("음수가 포함되어 있습니다.");
             }
