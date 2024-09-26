@@ -10,7 +10,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SetTest {
+class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
@@ -23,7 +23,7 @@ public class SetTest {
     }
 
     @Test
-    public void size_ShouldReturnSizeOfSet() {
+    void size_ShouldReturnSizeOfSet() {
         int result = numbers.size();
 
         assertThat(result).isEqualTo(3);
@@ -31,7 +31,7 @@ public class SetTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    public void contains_ShouldReturnWhetherOrNotItContains(int number) {
+    void contains_ShouldReturnWhetherOrNotItContains(int number) {
         boolean result = numbers.contains(number);
 
         assertTrue(result);
@@ -39,7 +39,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
-    public void contains_ShouldReturnWhetherOrNotItContainsWithCsv(int number, boolean expectedResult) {
+    void contains_ShouldReturnWhetherOrNotItContainsWithCsv(int number, boolean expectedResult) {
         boolean result = numbers.contains(number);
 
         assertThat(result).isEqualTo(expectedResult);

@@ -6,10 +6,10 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StringTest {
+class StringTest {
 
     @Test
-    public void split_ShouldReturnSplitValues() {
+    void split_ShouldReturnSplitValues() {
         String target = "1,2";
         String[] result = target.split(",");
 
@@ -17,7 +17,7 @@ public class StringTest {
     }
 
     @Test
-    public void split_ShouldReturnSplitValue() {
+    void split_ShouldReturnSplitValue() {
         String target = "1";
         String[] result = target.split(",");
 
@@ -25,7 +25,7 @@ public class StringTest {
     }
 
     @Test
-    public void substring_ShouldReturnSubstring() {
+    void substring_ShouldReturnSubstring() {
         String target = "(1,2)";
         String result = target.substring(1, 4);
 
@@ -33,7 +33,7 @@ public class StringTest {
     }
 
     @Test
-    public void charAt_ShouldReturnSpecifiedChar() {
+    void charAt_ShouldReturnSpecifiedChar() {
         String target = "abc";
         char[] expectedResult = {'a', 'b', 'c'};
 
@@ -45,7 +45,7 @@ public class StringTest {
 
     @Test
     @DisplayName("charAt 으로 length 이상의 인덱스의 char 를 추출하려고 하면 예외를 발생시킨다.")
-    public void charAt_ShouldThrowStringIndexOutOfBoundsException() {
+    void charAt_ShouldThrowStringIndexOutOfBoundsException() {
         String target = "abc";
 
         Random random = new Random();
