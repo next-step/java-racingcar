@@ -18,20 +18,15 @@ public class StringCalculator {
 
         Matcher matched = Pattern.compile(CUSTOM_DELIMITER_MATCH_PATTERN).matcher(text);
         if (matched.find()) {
-            return splitAndSumWithCustomDelimiter(matched);
+            String customDelimiter = matched.group(CUSTOM_DELIMITER_MATCH_GROUP_NUMBER);
+            String parsingTargetText = matched.group(PARSING_TARGET_MATCH_GROUP_NUMBER);
+            return splitAndSumWithCustomDelimiter(parsingTargetText, customDelimiter);
         }
 
-        String[] tokens = split(text, null);
-
-        return Arrays.stream(tokens)
-                .mapToInt(StringCalculator::parseAndValidateToken)
-                .sum();
+        return splitAndSumWithCustomDelimiter(text, null);
     }
 
-    private static int splitAndSumWithCustomDelimiter(Matcher matched) {
-        String customDelimiter = matched.group(CUSTOM_DELIMITER_MATCH_GROUP_NUMBER);
-        String parsingTargetText = matched.group(PARSING_TARGET_MATCH_GROUP_NUMBER);
-
+    private static int splitAndSumWithCustomDelimiter(String parsingTargetText, String customDelimiter) {
         String[] tokens = split(parsingTargetText, customDelimiter);
 
         return Arrays.stream(tokens)
