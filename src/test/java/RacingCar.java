@@ -18,5 +18,37 @@ public class RacingCar {
         int moveCount = scanner.nextInt();
         this.moveCount = moveCount;
         System.out.println(moveCount);
+
+        race();
     }
+
+    private void race() {
+        System.out.println("실행 결과");
+        for (int i = 0; i < moveCount; i++) {
+            for (int cc = 0; cc < carCount; cc++) {
+                int randomInt = getRandomInt();
+                if (randomInt >= 4) {
+                    car[cc]++;
+                }
+            }
+            printRaceCondition();
+        }
+    }
+
+    private void printRaceCondition() {
+        for (int i = 0; i < carCount; i++) {
+            System.out.println("-".repeat(car[i]));
+        }
+        System.out.println();
+    }
+
+    private int getRandomInt() {
+        return new Random().nextInt(10);
+    }
+
+    public static RacingCar main() {
+        new RacingCar();
+        return null;
+    }
+
 }
