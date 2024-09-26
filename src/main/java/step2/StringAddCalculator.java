@@ -36,8 +36,20 @@ public class StringAddCalculator {
     public static int sumNum(String[] numbers) {
         int sum = 0;
         for (String number : numbers) {
-            sum += Integer.parseInt(number);
+            sum += checkNegative(number);
         }
         return sum;
+    }
+
+    public static int checkNegative(String number){
+        try{
+            int num = Integer.parseInt(number);
+            if(num<0){
+                throw new RuntimeException();
+            }
+            return num;
+        }catch (Exception ex){
+            throw new RuntimeException();
+        }
     }
 }
