@@ -1,4 +1,4 @@
-package CollectionTest;
+package collection;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 import static org.assertj.core.api.Assertions.*;
 
-public class SetTest {
+public class CollectionTest {
     private Set<Integer> numbers;
 
     @BeforeEach
@@ -24,19 +24,19 @@ public class SetTest {
 
     @Test
     public void test1() {
-        System.out.println(numbers.size());
+        assertThat(numbers).size().isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1", "2", "3"})
-    void test2(String input) {
-        assertThat(numbers.contains(Integer.parseInt(input))).isTrue();
+    @ValueSource(ints = {1, 2, 3})
+    void test2(int num) {
+        assertThat(numbers).contains(num);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void test3(String input) {
-        int number = Integer.parseInt(input);
-        assertThat(numbers.contains(number));
+    void test3(int num, boolean result) {
+        assertThat(numbers.contains(num)).isEqualTo(result);
     }
 }
