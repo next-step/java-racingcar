@@ -8,20 +8,20 @@ public class StringTest {
 
     @Test
     @DisplayName("Split numbers and verify if 1,2 returns")
-    void SplitCheckTestWithOneTwo() {
+    void splitCheckTestWithOneTwoTest() {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
     }
     @Test
     @DisplayName("Split numbers and verify if 1 returns")
-    void SplitCheckTestWithOne() {
+    void splitCheckTestWithOneTest() {
         String[] result = "1".split(",");
         assertThat(result).containsExactly("1");
     }
 
     @Test
     @DisplayName("Substring if there's Parenthesis exists")
-    void SubstringRemovalParenthesis() {
+    void substringRemovalParenthesisTest() {
         String input = "(1,2)";
         String result = input.substring(1, input.length() - 1);
 
@@ -30,7 +30,7 @@ public class StringTest {
 
     @Test
     @DisplayName("Get index of specific string character")
-    void GetStringIndex() {
+    void getStringIndexTest() {
         String input = "abc";
         char result = input.charAt(1);
         assertThat(result).isEqualTo('b');
@@ -38,7 +38,7 @@ public class StringTest {
 
     @Test
     @DisplayName("Get index of specific string character but throw exception")
-    void GetStringIndexWithException() {
+    void getStringIndexWithExceptionTest() {
         String input = "abc";
 
         assertThatThrownBy(() -> input.charAt(5))
