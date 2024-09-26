@@ -9,7 +9,9 @@ public class Car {
     }
 
     public void move(final MoveStrategy moveStrategy) {
-
+        if (moveStrategy.isMovable()) {
+            this.position = this.position.forward();
+        }
     }
 
     public int getPosition() {
