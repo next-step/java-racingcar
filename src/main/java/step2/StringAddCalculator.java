@@ -1,46 +1,45 @@
 package step2;
 
-import step2.delimiter.Delimiter;
-import step2.delimiter.DelimiterFactory;
+import step2.delimiter.NumberParser;
+import step2.delimiter.DelimiterNumberParserFactory;
 import step2.exception.StringAddIllegalArgumentException;
 
-public class StringAddCalculator {
-    private static final DelimiterFactory delimiterFactory = new DelimiterFactory();
+import java.util.List;
 
-    public static int splitAndSum(String text) {
-        if (isEmpty(text)) {
-            return 0;
-        }
-        Delimiter delimiter = delimiterFactory.getDelimiter(text);
-        String[] splitedString = delimiter.splitFrom(text);
-        return calculateSum(splitedString);
+public class StringAddCalculator {
+    private static final int NOTING = 0;
+    private final DelimiterNumberParserFactory delimiterNumberParserFactory;
+
+    public StringAddCalculator(DelimiterNumberParserFactory delimiterNumberParserFactory) {
+        this.delimiterNumberParserFactory = delimiterNumberParserFactory;
     }
 
-    private static boolean isEmpty(String text) {
+    public int splitAndSum(String text) {
+        if (isEmpty(text)) {
+            return NOTING;
+        }
+        NumberParser numberParser = delimiterNumberParserFactory.getNumberParser(text);
+        List<String> strings = numberParser.splitFrom(text);
+        return calculatePositiveNumberSumFrom(strings);
+    }
+
+    private boolean isEmpty(String text) {
         return text == null || text.isBlank();
     }
 
-    private static int calculateSum(String[] stringArr) {
-        int sum = 0;
-        for (String each : stringArr) {
-            int num = parseIntFrom(each);
-            validateIsNotNegative(num);
-            sum += num;
-        }
-        return sum;
+    private int calculatePositiveNumberSumFrom(List<String> strings) {
+        return strings.stream()
+                .mapToInt(str -> {
+                    int value = Integer.parseInt(str);
+                    validatePositive(value);
+                    return value;
+                })
+                .sum();
     }
 
-    private static int parseIntFrom(String s) {
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }
-
-    private static void validateIsNotNegative(int num) {
+    private void validatePositive(int num) {
         if (num < 0) {
-            throw new StringAddIllegalArgumentException();
+            throw StringAddIllegalArgumentException.INVALID_NEGATIVE_INPUT_NUMBER;
         }
     }
 
