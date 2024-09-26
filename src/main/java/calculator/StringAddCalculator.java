@@ -12,9 +12,6 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return 0;
         }
-        if (text.contains("-")) {
-            throw new RuntimeException();
-        }
         return sum(toIntArray(split(text)));
     }
 
@@ -29,9 +26,17 @@ public class StringAddCalculator {
     private static int[] toIntArray(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers[i] = toInt(values[i]);
         }
         return numbers;
+    }
+
+    private static int toInt(String values) {
+        int number = Integer.parseInt(values);
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+        return number;
     }
 
     private static String[] split(String text) {
