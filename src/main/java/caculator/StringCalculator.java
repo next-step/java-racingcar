@@ -1,10 +1,8 @@
 package caculator;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class StringCalculator {
     private static final String COMMA = ",";
@@ -24,11 +22,10 @@ public class StringCalculator {
         }
 
         String[] tokens = split(text, null);
-        List<Integer> parsedNumbers = Arrays.stream(tokens)
-                .map(StringCalculator::parseAndValidateToken)
-                .collect(Collectors.toList());
 
-        return sum(parsedNumbers);
+        return Arrays.stream(tokens)
+                .mapToInt(StringCalculator::parseAndValidateToken)
+                .sum();
     }
 
     private static int splitAndSumWithCustomDelimiter(Matcher matched) {
@@ -36,11 +33,10 @@ public class StringCalculator {
         String parsingTargetText = matched.group(PARSING_TARGET_MATCH_GROUP_NUMBER);
 
         String[] tokens = split(parsingTargetText, customDelimiter);
-        List<Integer> parsedNumbers = Arrays.stream(tokens)
-                .map(StringCalculator::parseAndValidateToken)
-                .collect(Collectors.toList());
 
-        return sum(parsedNumbers);
+        return Arrays.stream(tokens)
+                .mapToInt(StringCalculator::parseAndValidateToken)
+                .sum();
     }
 
     private static String[] split(String parsingTargetText, String customDelimiter) {
@@ -62,9 +58,5 @@ public class StringCalculator {
         }
 
         return parsedNumber;
-    }
-
-    private static int sum(List<Integer> numbers) {
-        return numbers.stream().reduce(0, Integer::sum);
     }
 }
