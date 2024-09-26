@@ -1,4 +1,4 @@
-package racing;
+package racing.input;
 
 public class RacingInput {
 
