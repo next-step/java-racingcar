@@ -1,11 +1,11 @@
 package racing.input;
 
-public class RacingInput {
+public class RaceInput {
 
     private final int numOfCar;
     private final int numOfAttempt;
 
-    public RacingInput(int numOfCar, int numOfAttempt) {
+    public RaceInput(int numOfCar, int numOfAttempt) {
         this.numOfCar = numOfCar;
         this.numOfAttempt = numOfAttempt;
     }

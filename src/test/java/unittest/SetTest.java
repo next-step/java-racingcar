@@ -1,4 +1,4 @@
-package study.unittest;
+package unittest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
