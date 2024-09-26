@@ -44,4 +44,10 @@ public class StringAddCalculatorTest {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    public void splitAndSum_숫자_이외의_값() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3,a,!,호"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
