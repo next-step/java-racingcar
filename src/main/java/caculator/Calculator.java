@@ -1,73 +1,68 @@
 package caculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Calculator {
+public class Calculator {
 
-    // "문자열을 분리"
-    int splitString(String text) throws Exception {
+    public int calculate(String[] textSplitArr) {
+        int sum = 0;
+        for(String stringTypeNum :  textSplitArr) {
+            sum += Integer.parseInt(stringTypeNum);
+        }
+        return sum;
+    }
+
+    public String[] splitText(String text) throws Exception {
 
         if(text == null || text.isEmpty()) {
-            return emptyStringOrNull(text);
-        }
-
-        if(text.contains("-")) {
-            return stringWithNegative(text);
+            return textIsEmptyStringOrNull(text);
         }
 
         if(text.length() == 1) {
-            return oneString(text);
+            return textIsOneSizeString(text);
         }
 
         if(text.contains(",") && text.contains(":")) {
-            return stringWithCommaAndColon(text);
+            return textWithCommaAndColon(text);
         }
 
         if(text.contains(",")) {
-            return stringWithComma(text);
+            return textWithComma(text);
         }
 
-        return stringWithVariousSeperator(text);
+        return textWithVariousSeperator(text);
     }
 
     // "문자열이 빈문자열 또는 null"
-    int emptyStringOrNull(String text) {
-        return 0;
+    private String[] textIsEmptyStringOrNull(String text) {
+        String[] textSplitArr = new String[1];
+        textSplitArr[0] = "0";
+        return textSplitArr;
     }
 
     // "문자열이 숫자 하나"
-    int oneString(String text) {
-        return Integer.parseInt(text);
+    private String[] textIsOneSizeString(String text) {
+        String[] textSplitArr = new String[1];
+        textSplitArr[0] = text;
+        return textSplitArr;
     }
 
     // "콤마를 통한 문자열 분리"
-    int stringWithComma(String text) {
-        int sum = 0;
-        String[] textSplitArr = text.split(",");
-
-        for(String strNum : textSplitArr) {
-            sum += Integer.parseInt(strNum);
-        }
-
-        return sum;
+    private String[] textWithComma(String text) {
+        return text.split(",");
     }
 
     // "콤마와 콜론 구분자를 통한 문자열 분리"
-    int stringWithCommaAndColon(String text) {
-        int sum = 0;
-        String[] textSplitArr = text.split(",|:");
-
-        for(String strNum : textSplitArr) {
-            sum += Integer.parseInt(strNum);
-        }
-
-        return sum;
+    private String[] textWithCommaAndColon(String text) {
+        return text.split(",|:");
     }
 
     // "커스텀 구분자를 통한 문자열 분리"
-    int stringWithVariousSeperator(String text) { // 예시 : //;\n1;2;3
-        int sum = 0;
+    private String[] textWithVariousSeperator(String text) { // 예시 : //;\n1;2;3
+
         String[] textSplitArr = null;
 
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
@@ -75,16 +70,16 @@ class Calculator {
             String customDelimiter = m.group(1); // 예시 케이스 기준 m.group(1)은 ;
             textSplitArr = m.group(2).split(customDelimiter); // 예시 케이스 기준  m.group(2)는 1;2;3
         }
-
-        for(String strNum : textSplitArr) {
-            sum += Integer.parseInt(strNum);
-        }
-
-        return sum;
+        return textSplitArr;
     }
 
     // "문자열에 음수가 포함"
-    int stringWithNegative(String text) throws Exception {
-        throw new RuntimeException();
+    public void validatePositive(String[] textSplitArr) throws Exception {
+        for(String stringTypeNum : textSplitArr) {
+            int num = Integer.parseInt(stringTypeNum);
+            if (num < 0) {
+                throw new RuntimeException("음수가 포함되어 있습니다.");
+            }
+        }
     }
 }
