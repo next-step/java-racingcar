@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -57,6 +58,7 @@ class splitStringClassTest {
     }
 
     @Test
+    @DisplayName("특정 위치의 문자를 가져올 때 위치값을 벗어나면 예외 발생")
     public void getCharLocationOutOfBounds() throws Exception {
         // given
         String testString = "abc";
