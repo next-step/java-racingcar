@@ -24,12 +24,18 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("charAt() - 특정 인덱스의 문자를 가져오고, 범위를 벗어나면 예외가 발생한다.")
+    @DisplayName("charAt() - 특정 인덱스의 문자를 가져온다.")
     void charAt() {
         String input = "abc";
         assertThat(input.charAt(0)).isEqualTo('a');
         assertThat(input.charAt(1)).isEqualTo('b');
         assertThat(input.charAt(2)).isEqualTo('c');
+    }
+
+    @Test
+    @DisplayName("charAt() - 범위를 벗어나면 예외가 발생한다.")
+    void charAt_StringIndexOutOfBoundsException() {
+        String input = "abc";
         assertThatThrownBy(() -> input.charAt(3))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");

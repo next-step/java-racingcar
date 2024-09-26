@@ -24,9 +24,9 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("size() - Set의 크기는 중복을 제외한 유일한 값의 개수이다.")
+    @DisplayName("Set은 중복을 허용하지 않는다.")
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
