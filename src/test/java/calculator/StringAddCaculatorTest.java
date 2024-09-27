@@ -33,4 +33,10 @@ class StringAddCaculatorTest {
     void splitAndSumByCommaAndColon(){
         assertThat(splitAndSum("1,2:3")).isEqualTo(6);
     }
+
+    @DisplayName("// \n 사이의 커스텀 구분자로 문자열을 쪼개서 합을 구한다")
+    @Test
+    void splitAndSumByCustomDelimiter(){
+        assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
 }
