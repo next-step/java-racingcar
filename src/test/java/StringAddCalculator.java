@@ -33,4 +33,16 @@ class StringAddCalculator {
         Assertions.assertThat(result).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("숫자 두 개를 컴파(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다")
+    void sumAndSplitWithComma(){
+        String str = "1,2";
+        String[] strs = str.split(",");
+        int result = 0;
+        for (String s : strs) {
+            result += Integer.parseInt(s);
+        }
+        Assertions.assertThat(result).isEqualTo(3);
+    }
+
 }
