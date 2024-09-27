@@ -21,4 +21,11 @@ public class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(0);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1-1", "2,-2", "3:-3", "4,:-4", ",5-5", ":,6-6", ",7,-7"}, delimiter = '-')
+    void 숫자_한개는_그대로_반환한다(String input, int expected) {
+        int result = StringAddCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(expected);
+    }
 }
