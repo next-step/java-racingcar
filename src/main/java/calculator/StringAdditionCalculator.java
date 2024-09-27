@@ -8,7 +8,7 @@ public class StringAdditionCalculator {
     }
 
     private static int[] extractNumbers(String input) {
-        String[] inputArray = input.split(",");
+        String[] inputArray = input.split("[,:]");
         int[] numbers = new int[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
             numbers[i] = Integer.parseInt(inputArray[i]);
