@@ -36,7 +36,7 @@ public class StringAddCalculatorTest {
         assertThat(actual).isEqualTo(6);
     }
 
-    @ParameterizedTest(name = "음수를 포함한 문자열 {0} 이 입력되면, RuntimeException 예외를 throw 한다.")
+    @ParameterizedTest(name = "음수를 포함한 문자열 {0} 이 입력되면, NegativeNumberException 예외를 throw 한다.")
     @ValueSource(strings = {
             "-1,1,2", "-1:1,2", "-1,1:2", "-1:1:2",
     })
@@ -45,7 +45,7 @@ public class StringAddCalculatorTest {
                 .isInstanceOf(NegativeNumberException.class)
                 .hasMessage("음수는 입력할 수 없습니다.");
     }
-    @ParameterizedTest(name = "숫자 이외의 값을 포함한 문자열 {0} 이 입력되면, RuntimeException 예외를 throw 한다.")
+    @ParameterizedTest(name = "숫자 이외의 값을 포함한 문자열 {0} 이 입력되면, NotANumberException 예외를 throw 한다.")
     @ValueSource(strings = {
             "a,1,2", "a:1,2", "a,1:2", "a;1:2",
     })
