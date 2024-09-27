@@ -50,7 +50,7 @@ public class SplitUtilTest {
                 .hasMessage("음수는 입력할 수 없습니다.");
     }
 
-    @ParameterizedTest(name = "{0} 을 전달하는 경우 RuntimeException 예외를 throw 한다.")
+    @ParameterizedTest(name = "{0} 을 전달하는 경우 NotANumberException 예외를 throw 한다.")
     @ValueSource(strings = {
             "a,1,2", "a:1,2", "a,1:2", "a;1:2",
     })
