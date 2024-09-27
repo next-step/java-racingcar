@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class StringAddCalculator {
     @ParameterizedTest
@@ -55,6 +57,23 @@ class StringAddCalculator {
             result += Integer.parseInt(s);
         }
         Assertions.assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName(" \"//\" 와 \"\\n\" 문자 사이에 커스텀 구분자를 지정할 수 있다")
+    void customDelimeter() {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher("//;\\n1;2;3");
+        String[] tokens;
+        int result = 0;
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            tokens = m.group(2).split(customDelimiter);
+            // 덧셈 구현
+            for (String token : tokens) {
+                result +=Integer.parseInt(token);
+            }
+            Assertions.assertThat(result).isEqualTo(6);
+        }
     }
 
 }
