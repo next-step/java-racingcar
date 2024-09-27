@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
     public static void validNegative(int num) throws RuntimeException {
         if (num < 0) {
@@ -33,4 +36,19 @@ public class StringAddCalculator {
         }
         return summation;
     }
+
+    public static int splitWithCustomDelimeter(String input) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        int summation = 0;
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            String[] tokens = m.group(2).split(customDelimiter);
+            for (String token : tokens) {
+                summation += Integer.parseInt(token);
+            }
+            return summation;
+        }
+        return -1;
+    }
+
 }
