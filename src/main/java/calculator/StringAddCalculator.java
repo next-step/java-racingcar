@@ -16,7 +16,9 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return 0;
         }
-        return sum(toIntArray(split(text)));
+        String[] split = split(text);
+        int[] intArray = toIntArray(split);
+        return sum(intArray);
     }
 
     private static int sum(int[] numbers) {
