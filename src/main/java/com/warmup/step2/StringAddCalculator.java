@@ -3,11 +3,27 @@ package com.warmup.step2;
 public class StringAddCalculator {
 
     static public int splitAndSum(String input) {
-        if(isNullOrEmpty(input)){
+        if (isNullOrEmpty(input)) {
             return 0;
         }
 
+        if (input.contains(",")) {
+            String[] splittedInput = input.split(",");
+
+            return sumStringArray(splittedInput);
+        }
+
         return Integer.parseInt(input.trim());
+    }
+
+    private static int sumStringArray(String[] splittedInput) {
+        int result = 0;
+
+        for (String s : splittedInput) {
+            result += Integer.parseInt(s);
+        }
+
+        return result;
     }
 
     /**
