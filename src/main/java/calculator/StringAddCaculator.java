@@ -30,9 +30,17 @@ public class StringAddCaculator {
     private static int[] toInts(String[] textArray){
         int[] numbers = new int[textArray.length];
         for(int i = 0; i < textArray.length; i++){
-            numbers[i] = Integer.parseInt(textArray[i]);
+            int number = Integer.parseInt(textArray[i]);
+            validateNumber(number);
+            numbers[i] = number;
         }
         return numbers;
+    }
+
+    private static void validateNumber(int number) {
+        if(number < 0){
+            throw new IllegalArgumentException("음수를 입력할 수 없습니다");
+        }
     }
 
     private static int getSum(int[] numbers) {

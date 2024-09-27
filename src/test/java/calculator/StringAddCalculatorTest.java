@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static calculator.StringAddCaculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
-class StringAddCaculatorTest {
+class StringAddCalculatorTest {
 
     @DisplayName("입력 값이 0 또는 null인 경우 합은 0이다")
     @Test
@@ -38,5 +39,12 @@ class StringAddCaculatorTest {
     @Test
     void splitAndSumByCustomDelimiter(){
         assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @DisplayName("음수를 입력하면 예외가 발생한다")
+    @Test
+    void splitAndSumByNegative(){
+        assertThatThrownBy(() -> splitAndSum("-100,2:3"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
