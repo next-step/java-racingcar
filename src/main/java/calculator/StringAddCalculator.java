@@ -1,11 +1,24 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class StringAddCalculator {
 
     public static int splitAndSum(final String input) {
         String[] split = split(input);
+        List<Integer> listToSum = convertStringsToIntegers(split);
 
-        return sum(split);
+        return sum(listToSum);
+    }
+
+    private static List<Integer> convertStringsToIntegers(final String[] split) {
+        List<Integer> result = new ArrayList<>();
+        for (String number : split) {
+            result.add(Integer.parseInt(number));
+        }
+
+        return result;
     }
 
     private static String[] split(final String input) {
@@ -19,10 +32,10 @@ public final class StringAddCalculator {
         return split;
     }
 
-    private static int sum(final String[] split) {
+    private static int sum(final List<Integer> list) {
         int sum = 0;
-        for (String number : split) {
-            sum += Integer.parseInt(number);
+        for (int number : list) {
+            sum += number;
         }
 
         return sum;
