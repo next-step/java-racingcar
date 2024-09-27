@@ -9,6 +9,9 @@ public class StringAddCalculator {
     public static final String PATTERN = "//(.)\n(.*)";
 
     public int splitAndSum(String text) {
+        if (text == null || text.isBlank()) {
+            return 0;
+        }
         return split(text);
     }
 
