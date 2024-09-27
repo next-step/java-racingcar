@@ -7,6 +7,9 @@ public class StringAddCalculator {
 
     public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
     public static final String DEFAULT_DELIMITER = "[,:]";
+    public static final int CUSTOM_DELIMITER_GROUP = 1;
+    public static final int TEXT_GROUP = 2;
+    public static final int BLANK_STRING_SUM = 0;
 
     private StringAddCalculator() {
         throw new UnsupportedOperationException("Utility class cannot be instantiated.");
@@ -14,7 +17,7 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
-            return 0;
+            return BLANK_STRING_SUM;
         }
         String[] split = split(text);
         int[] intArray = toIntArray(split);
@@ -48,8 +51,8 @@ public class StringAddCalculator {
     private static String[] split(String text) {
         Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(CUSTOM_DELIMITER_GROUP);
+            return m.group(TEXT_GROUP).split(customDelimiter);
         }
         return text.split(DEFAULT_DELIMITER);
     }
