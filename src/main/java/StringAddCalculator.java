@@ -4,4 +4,11 @@ public class StringAddCalculator {
             throw new RuntimeException();
         }
     }
+
+    public static int emptyOrNull(String input) {
+        if(input == null||input.isEmpty()) {
+            return 0;
+        }
+        return 1;
+    }
 }
