@@ -7,7 +7,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringAddCalculatorTest {
 
     @Test
-    public void isEqualTo_문자열_쉽표와_콜론으로_분리_덧셈하여_반환() {
+    public void isEqualTo_문자열_커스텀_구분자_덧셈값_반환() {
+        String numberStr = "//;\n1;2;3";
+        int expectedResult = 6;
+
+        assertThat(StringAddCalculator.splitAndSum(numberStr)).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void isEqualTo_문자열_쉽표와_콜론으로_분리_덧셈값_반환() {
         String numberStr = "3,6:1";
         int expectedResult = 10;
 
@@ -15,7 +23,7 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    public void isEqualTo_문자열_쉽표로_분리_덧셈하여_반환() {
+    public void isEqualTo_문자열_쉽표로_분리_덧셈값_반환() {
         String numberStr = "3,6";
         int expectedResult = 9;
 
