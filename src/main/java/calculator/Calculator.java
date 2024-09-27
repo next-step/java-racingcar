@@ -2,8 +2,6 @@ package calculator;
 
 public class Calculator {
 
-
-
     public int sum(String input) {
         if (isEmpty(input)) {
             return 0;

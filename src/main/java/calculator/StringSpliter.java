@@ -6,19 +6,29 @@ import java.util.regex.Pattern;
 public class StringSpliter {
 
     private static final String DEFAULT_DELIMITER = "[:,]";;
-    public static final String CUSTOM_DELIMITER = "//(.+)\n(.*)";
+    private static final String CUSTOM_DELIMITER = "//(.+)\n(.*)";
 
-    public StringSpliter() {
+    public String[] split(String input) {
+        String param=param(input);
+        String delimiter=delimiter(input);
+        return param.split(delimiter);
     }
 
-    String[] split(String input) {
+    private String param(String input){
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(input);
         if (matcher.find()) {
-            String delimiter = matcher.group(1);
-            String group = matcher.group(2);
-            return group.split(delimiter);
-        }
+            return matcher.group(2);
 
-        return input.split(DEFAULT_DELIMITER);
+        }
+        return input;
+    }
+
+    private String delimiter(String input){
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(input);
+        if (matcher.find()) {
+            return matcher.group(1);
+
+        }
+        return DEFAULT_DELIMITER;
     }
 }
