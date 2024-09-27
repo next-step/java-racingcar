@@ -4,6 +4,7 @@ public class RacingCar {
 
     private final static int FORWARD_DISTANCE = 1; //전진하는 거리
     private final static int FORWARD_STANDARD = 4; //전진여부를 결정하는 기준
+    private final static String DISTANCE_DISPLAY = "-";
 
     private int distance = 0; //현재 전진한 거리
 
@@ -19,6 +20,6 @@ public class RacingCar {
     }
 
     public void result() {
-        System.out.println("-".repeat(distance));
+        System.out.println(DISTANCE_DISPLAY.repeat(distance));
     }
 }
