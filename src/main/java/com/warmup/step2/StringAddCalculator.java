@@ -16,6 +16,9 @@ public class StringAddCalculator {
         return Integer.parseInt(input.trim());
     }
 
+    /**
+     * String Array의 값을 Integer로 변환하여 반환
+     */
     private static int sumStringArray(String[] splittedInput) {
         int result = 0;
 
