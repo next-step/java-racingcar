@@ -1,5 +1,8 @@
 package calculator.util;
 
+import calculator.exception.NegativeNumberException;
+import calculator.exception.NotANumberException;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -66,14 +69,14 @@ public class SplitUtil {
             validateNegativeNumber(parsedInteger);
             return parsedInteger;
         } catch (NumberFormatException e) {
-            throw new RuntimeException("문자는 입력할 수 없습니다.");
+            throw new NotANumberException("숫자가 아닌 문자는 입력할 수 없습니다.");
         }
     }
 
     private static void validateNegativeNumber(int parsedInteger) {
         boolean isNegativeNumber = parsedInteger < 0;
         if (isNegativeNumber) {
-            throw new RuntimeException("0 이상의 숫자 외에는 입력할 수 없습니다.");
+            throw new NegativeNumberException("음수는 입력할 수 없습니다.");
         }
     }
 }

@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.exception.NegativeNumberException;
+import calculator.exception.NotANumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,15 +36,22 @@ public class StringAddCalculatorTest {
         assertThat(actual).isEqualTo(6);
     }
 
-    @ParameterizedTest(name = "숫자 이외의 값 또는 음수를 포함한 문자열 {0} 이 입력되면, RuntimeException 예외를 throw 한다.")
+    @ParameterizedTest(name = "음수를 포함한 문자열 {0} 이 입력되면, RuntimeException 예외를 throw 한다.")
     @ValueSource(strings = {
-            "a,1,2", "a:1,2", "a,1:2", "a;1:2",
             "-1,1,2", "-1:1,2", "-1,1:2", "-1:1:2",
     })
-//    @DisplayName("숫자 이외의 값 또는 음수를 포함한 문자열이 입력되면, RuntimeException 예외를 throw 한다.")
-    void negativeNumberOrNotNumberSumError(String input) {
+    void negativeNumberSumError(String input) {
         assertThatThrownBy(() -> new StringAddCalculator(input))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("입력할 수 없습니다.");
+                .isInstanceOf(NegativeNumberException.class)
+                .hasMessage("음수는 입력할 수 없습니다.");
+    }
+    @ParameterizedTest(name = "숫자 이외의 값을 포함한 문자열 {0} 이 입력되면, RuntimeException 예외를 throw 한다.")
+    @ValueSource(strings = {
+            "a,1,2", "a:1,2", "a,1:2", "a;1:2",
+    })
+    void notNumberSumError(String input) {
+        assertThatThrownBy(() -> new StringAddCalculator(input))
+                .isInstanceOf(NotANumberException.class)
+                .hasMessageContaining("숫자가 아닌 문자는 입력할 수 없습니다.");
     }
 }

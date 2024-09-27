@@ -1,5 +1,7 @@
 package calculator.util;
 
+import calculator.exception.NegativeNumberException;
+import calculator.exception.NotANumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,15 +40,24 @@ public class SplitUtilTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest(name = "{0} 을 전달하는 경우 NegativeNumberException 예외를 throw 한다.")
+    @ValueSource(strings = {
+            "-1,1,2", "-1:1,2", "-1,1:2", "-1:1:2",
+    })
+    void negativeNumberSplitError(String input) {
+        assertThatThrownBy(() -> SplitUtil.ints(input))
+                .isInstanceOf(NegativeNumberException.class)
+                .hasMessage("음수는 입력할 수 없습니다.");
+    }
+
     @ParameterizedTest(name = "{0} 을 전달하는 경우 RuntimeException 예외를 throw 한다.")
     @ValueSource(strings = {
             "a,1,2", "a:1,2", "a,1:2", "a;1:2",
-            "-1,1,2", "-1:1,2", "-1,1:2", "-1:1:2",
     })
-    void negativeNumberOrNotNumberSplitError(String input) {
+    void notNumberSplitError(String input) {
         assertThatThrownBy(() -> SplitUtil.ints(input))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("입력할 수 없습니다.");
+                .isInstanceOf(NotANumberException.class)
+                .hasMessageContaining("숫자가 아닌 문자는 입력할 수 없습니다.");
     }
 
     private static List<Integer> expectedResults(String results) {
