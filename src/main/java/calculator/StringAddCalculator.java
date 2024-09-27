@@ -8,6 +8,10 @@ public class StringAddCalculator {
     public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
     public static final String DEFAULT_DELIMITER = "[,:]";
 
+    private StringAddCalculator() {
+        throw new UnsupportedOperationException("Utility class cannot be instantiated.");
+    }
+
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
