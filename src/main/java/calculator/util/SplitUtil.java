@@ -1,25 +1,27 @@
 package calculator.util;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class SplitUtil {
     private static final String COMMA_OR_SEMI_COLON_REGEX = ",|:";
     private static final String CUSTOM_REGEX = "//(.)\n(.*)";
     private static final String EMPTY_RESULT = "0";
 
-    public static Integer[] integers(String input) {
+    public static List<Integer> ints(String input) {
         if (isInputEmpty(input)) {
-            return emptyIntegers();
+            return emptyInts();
         }
 
         Matcher matcher = customDelimiterMatcher(input);
         if (isMatcherFind(matcher)) {
-            return customIntegers(matcher);
+            return customInts(matcher);
         }
 
-        return defaultIntegers(input);
+        return defaultInts(input);
     }
 
     private static boolean isMatcherFind(Matcher matcher) {
@@ -35,25 +37,25 @@ public class SplitUtil {
                 .matcher(input);
     }
 
-    private static Integer[] emptyIntegers() {
-        return parsedIntegers(new String[]{EMPTY_RESULT});
+    private static List<Integer> emptyInts() {
+        return parsedInts(new String[]{EMPTY_RESULT});
     }
 
-    private static Integer[] defaultIntegers(String input) {
-        return parsedIntegers(input.split(COMMA_OR_SEMI_COLON_REGEX));
+    private static List<Integer> defaultInts(String input) {
+        return parsedInts(input.split(COMMA_OR_SEMI_COLON_REGEX));
     }
 
-    private static Integer[] customIntegers(Matcher matcher) {
+    private static List<Integer> customInts(Matcher matcher) {
         String delimiter = matcher.group(1);
         String numberStrings = matcher.group(2);
 
-        return parsedIntegers(numberStrings.split(delimiter));
+        return parsedInts(numberStrings.split(delimiter));
     }
 
-    private static Integer[] parsedIntegers(String[] splitResults) {
+    private static List<Integer> parsedInts(String[] splitResults) {
         return Arrays.stream(splitResults)
                 .map(SplitUtil::parseInt)
-                .toArray(Integer[]::new);
+                .collect(Collectors.toList());
     }
 
     private static int parseInt(String result) {
