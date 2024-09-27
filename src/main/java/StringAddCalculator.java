@@ -2,11 +2,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static void validNegative(int num) throws RuntimeException {
-        if (num < 0) {
-            throw new RuntimeException();
-        }
-    }
+
+    public static final String COMMA = ",";
+    public static final String DELIMETER = ",|:";
+    public static final String CUSTOMDELIMETER = "//(.)\n(.*)";
 
     public static int emptyOrNull(String input) {
         if (input == null || input.isEmpty()) {
@@ -20,7 +19,7 @@ public class StringAddCalculator {
     }
 
     public static int splitAndSumWithComma(String input) {
-        String[] splited = input.split(",");
+        String[] splited = input.split(COMMA);
         int summation = 0;
         for (String s : splited) {
             summation += Integer.parseInt(s);
@@ -29,7 +28,7 @@ public class StringAddCalculator {
     }
 
     public static int splitAndSumWithCommaOrColon(String input) {
-        String[] splited = input.split(",|:");
+        String[] splited = input.split(DELIMETER);
         int summation = 0;
         for (String s : splited) {
             summation += Integer.parseInt(s);
@@ -38,7 +37,7 @@ public class StringAddCalculator {
     }
 
     public static int splitWithCustomDelimeter(String input) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        Matcher m = Pattern.compile(CUSTOMDELIMETER).matcher(input);
         int summation = 0;
         if (m.find()) {
             String customDelimiter = m.group(1);
@@ -52,7 +51,7 @@ public class StringAddCalculator {
     }
 
     public static void negativeValidation(String input) {
-        String[] splited = input.split(",");
+        String[] splited = input.split(COMMA);
         for (String s : splited) {
             if (Integer.parseInt(s) < 0)
             {
