@@ -1,0 +1,72 @@
+package calculator;
+
+import caculator.StringCalculator;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+
+
+public class StringCalculatorTest {
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void splitAntSum_null_또는_빈문자(String input) {
+        // when
+        int result = StringCalculator.splitAndSum(input);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
+    void splitAndSum_숫자하나(String input, int expected) {
+        // when
+        int result = StringCalculator.splitAndSum(input);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3", "2,3:5", "3,4:7"}, delimiter = ':')
+    void splitAndSum_쉼표구분자(String input, int expected) {
+        // when
+        int result = StringCalculator.splitAndSum(input);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3|6", "2:3,4|9"}, delimiter = '|')
+    void splitAndSum_쉼표_또는_콜론_구분자(String input, int expected) {
+        // when
+        int result = StringCalculator.splitAndSum(input);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"//;\\n1;2;3|6", "//#\\n1#2#3|6", "//$\\n1,2$3|6", "//%\\n1%2,3:4|10"}, delimiter = '|')
+    void splitAndSum_custom_구분자(String input, int expected) {
+        // when
+        int result = StringCalculator.splitAndSum(input);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,2,3", "a,b,c", "1,b,c", "a,-2,c"})
+    void splitAndSum_negative_or_notNumber(String input) {
+        // when, then
+        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
+    }
+}
