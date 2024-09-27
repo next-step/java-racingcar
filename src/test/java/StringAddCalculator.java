@@ -24,4 +24,13 @@ class StringAddCalculator {
 
         Assertions.assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("하나의 문자열로 입력할 경우 해당 숫자를 반환한다")
+    void inputOneStringReturnToInteger(){
+        String str = "1";
+        int result = Integer.parseInt(str);
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
 }
