@@ -30,7 +30,6 @@ public class StringAddCalculator {
 
     public static int splitWithCustomDelimeter(String input) {
         Matcher m = Pattern.compile(CUSTOMDELIMETER).matcher(input);
-        int summation = 0;
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens = m.group(2).split(customDelimiter);
@@ -42,10 +41,14 @@ public class StringAddCalculator {
     public static void negativeValidation(String input) {
         String[] splited = input.split(COMMA);
         for (String s : splited) {
-            if (Integer.parseInt(s) < 0)
-            {
-                throw new RuntimeException();
-            }
+            validNegativeNumberString(s);
+        }
+    }
+
+    private static void validNegativeNumberString(String s) {
+        if (Integer.parseInt(s) < 0)
+        {
+            throw new RuntimeException();
         }
     }
 
