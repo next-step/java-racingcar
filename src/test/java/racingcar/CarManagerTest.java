@@ -42,11 +42,11 @@ public class CarManagerTest {
         car.stop();
         assertThat(car.getTotalMileage()).isEqualTo("");
     }
+    
 
     private static Car getCar() {
         CarManager carManager = new CarManager();
         return carManager.createCarByCnt(1).get(0);
-
     }
 
 }
