@@ -40,9 +40,8 @@ public class StringTest {
     @Test
     @DisplayName("특정위치_벗어났을때_에러발생")
     void charAtThrowError(){
-        String str="abc";
         assertThatThrownBy(() -> {
-            str.charAt(3);
+            "abc".charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
     }
