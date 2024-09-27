@@ -14,11 +14,11 @@ class StringAddCalculator {
     @EmptySource
     @NullSource
     @DisplayName("빈 문자열 또는 null이면 0을 반환")
-    void whenGivenNullOrEmpty(String input){
+    void whenGivenNullOrEmpty(String input) {
         String str = input;
         int result = -1;
 
-        if(str==null || str.equals("")){
+        if (str == null || str.equals("")) {
             result = 0;
         }
 
@@ -27,7 +27,7 @@ class StringAddCalculator {
 
     @Test
     @DisplayName("하나의 문자열로 입력할 경우 해당 숫자를 반환한다")
-    void inputOneStringReturnToInteger(){
+    void inputOneStringReturnToInteger() {
         String str = "1";
         int result = Integer.parseInt(str);
         Assertions.assertThat(result).isEqualTo(1);
@@ -35,7 +35,7 @@ class StringAddCalculator {
 
     @Test
     @DisplayName("숫자 두 개를 컴파(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다")
-    void sumAndSplitWithComma(){
+    void sumAndSplitWithComma() {
         String str = "1,2";
         String[] strs = str.split(",");
         int result = 0;
@@ -43,6 +43,18 @@ class StringAddCalculator {
             result += Integer.parseInt(s);
         }
         Assertions.assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("구분자를 컴마 이외에 콜론을 사용할 수 있다")
+    void sumAndSplitWithCommaOrColon() {
+        String str = "1,2:3";
+        String[] strs = str.split(",|:");
+        int result = 0;
+        for (String s : strs) {
+            result += Integer.parseInt(s);
+        }
+        Assertions.assertThat(result).isEqualTo(6);
     }
 
 }
