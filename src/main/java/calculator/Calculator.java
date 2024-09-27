@@ -6,8 +6,8 @@ public class Calculator {
         if (isEmpty(input)) {
             return 0;
         }
-        StringSpliter stringSpliter = new StringSpliter();
-        String[] split = stringSpliter.split(input);
+        Source source = new Source();
+        String[] split = source.split(input);
         return sum(toPositives(split));
     }
 
