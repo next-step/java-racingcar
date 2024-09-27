@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class SplitUtil {
     private static final String COMMA_OR_SEMI_COLON_REGEX = ",|:";
     private static final String CUSTOM_REGEX = "//(.)\n(.*)";
+    public static final Pattern COMPILED_PATTERN = Pattern.compile(CUSTOM_REGEX);
     private static final String EMPTY_RESULT = "0";
 
     public static List<Integer> ints(String input) {
@@ -33,8 +34,7 @@ public class SplitUtil {
     }
 
     private static Matcher customDelimiterMatcher(String input) {
-        return Pattern.compile(CUSTOM_REGEX)
-                .matcher(input);
+        return COMPILED_PATTERN.matcher(input);
     }
 
     private static List<Integer> emptyInts() {
