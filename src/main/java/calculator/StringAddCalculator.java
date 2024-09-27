@@ -2,6 +2,8 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class StringAddCalculator {
 
@@ -27,9 +29,15 @@ public final class StringAddCalculator {
             return result;
         }
 
-        String delimiter = ",|:";
-        String[] split = input.split(delimiter);
+        final String DEFAULT_DELIMITER_REGEX = ",|:";
+        final String CUSTOM_DELIMITER_REGEX = "//(.*)\n(.*)";
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
+        boolean isCustomDelimiter = matcher.matches();
 
+        String delimiterRegex = isCustomDelimiter ? matcher.group(1) : DEFAULT_DELIMITER_REGEX;
+        String target = isCustomDelimiter ? matcher.group(2) : input;
+
+        String[] split = target.split(delimiterRegex);
         for (String number : split) {
             if (!number.isEmpty()) {
                 result.add(number);
