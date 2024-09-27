@@ -7,7 +7,7 @@ public class StringAddCaculator {
         if(text == null || text.isEmpty()){
             return 0;
         }
-        return getSum(toInts(text.split(",")));
+        return getSum(toInts(text.split(",|:")));
     }
 
     private static int[] toInts(String[] textArray){

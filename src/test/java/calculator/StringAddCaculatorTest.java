@@ -21,4 +21,10 @@ class StringAddCaculatorTest {
     void splitAndSumByComma(){
         assertThat(splitAndSum("1,2,3")).isEqualTo(6);
     }
+
+    @DisplayName(":을 구분자로 문자열을 쪼개서 합을 구한다")
+    @Test
+    void splitAndSumByColon(){
+        assertThat(splitAndSum("1:2:3")).isEqualTo(6);
+    }
 }
