@@ -20,14 +20,12 @@ public class StringAddCalculator {
 
     public static int splitAndSumWithComma(String input) {
         String[] splited = input.split(COMMA);
-        int summation = calculateSum(splited);
-        return summation;
+        return calculateSum(splited);
     }
 
     public static int splitAndSumWithCommaOrColon(String input) {
         String[] splited = input.split(DELIMETER);
-        int summation = calculateSum(splited);
-        return summation;
+        return calculateSum(splited);
     }
 
     public static int splitWithCustomDelimeter(String input) {
@@ -36,8 +34,7 @@ public class StringAddCalculator {
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens = m.group(2).split(customDelimiter);
-            summation = calculateSum(tokens);
-            return summation;
+            return calculateSum(tokens);
         }
         return -1;
     }
