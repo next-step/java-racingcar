@@ -13,14 +13,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class SplitUtilTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = ", 혹은 : 을 포함한 문자열 {0} 이 오면 숫자 배열 {1} 로 분리한다.")
     @CsvSource(value = {
-            ":0", "'':0",
-            "0:0", "1:1",
-            "1,2:1,2", "1;2:1,2",
-            "1,2,3:1,2,3", "1;2,3:1,2,3", "1,2;3:1,2,3", "1;2;3:1,2,3",
-    }, delimiter = ':')
-    @DisplayName("쉼표(,), 세미콜론(;) 을 포함한 문자열이 오면 숫자 배열로 분리한다.")
+            "|0", "''|0",
+            "0|0", "1|1",
+            "1,2|1,2", "1:2|1,2",
+            "1,2,3|1,2,3", "1:2,3|1,2,3", "1,2:3|1,2,3", "1:2:3|1,2,3",
+    }, delimiter = '|')
     void commaOrSemiColonSplit(String input, String results) {
         Integer[] actual = SplitUtil.integers(input);
         Integer[] expected = expectedResults(results);
@@ -37,12 +36,11 @@ public class SplitUtilTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} 을 전달하는 경우 RuntimeException 예외를 throw 한다.")
     @ValueSource(strings = {
-            "a,1,2", "a;1,2", "a,1;2", "a;1;2",
-            "-1,1,2", "-1;1,2", "-1,1;2", "-1;1;2",
+            "a,1,2", "a:1,2", "a,1:2", "a;1:2",
+            "-1,1,2", "-1:1,2", "-1,1:2", "-1:1:2",
     })
-    @DisplayName("숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw 한다.")
     void negativeNumberOrNotNumberSplitError(String input) {
         assertThatThrownBy(() -> SplitUtil.integers(input))
                 .isInstanceOf(RuntimeException.class)

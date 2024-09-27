@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SplitUtil {
-    private static final String COMMA_OR_SEMI_COLON_REGEX = ",|;";
+    private static final String COMMA_OR_SEMI_COLON_REGEX = ",|:";
     private static final String CUSTOM_REGEX = "//(.)\n(.*)";
     private static final String EMPTY_RESULT = "0";
 
