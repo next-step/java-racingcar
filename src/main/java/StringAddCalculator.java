@@ -20,12 +20,12 @@ public class StringAddCalculator {
 
     public static int splitAndSumWithComma(String input) {
         String[] splited = input.split(COMMA);
-        return calculateSum(splited);
+        return calculateSum(toInt(splited));
     }
 
     public static int splitAndSumWithCommaOrColon(String input) {
         String[] splited = input.split(DELIMETER);
-        return calculateSum(splited);
+        return calculateSum(toInt(splited));
     }
 
     public static int splitWithCustomDelimeter(String input) {
@@ -33,7 +33,7 @@ public class StringAddCalculator {
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens = m.group(2).split(customDelimiter);
-            return calculateSum(tokens);
+            return calculateSum(toInt(tokens));
         }
         return -1;
     }
@@ -46,18 +46,25 @@ public class StringAddCalculator {
     }
 
     private static void validNegativeNumberString(String s) {
-        if (Integer.parseInt(s) < 0)
-        {
+        if (Integer.parseInt(s) < 0) {
             throw new RuntimeException();
         }
     }
 
-    private static int calculateSum(String[] splited) {
+    private static int calculateSum(int[] splited) {
         int summation = 0;
-        for (String s : splited) {
-            summation += Integer.parseInt(s);
+        for (int num : splited) {
+            summation += num;
         }
         return summation;
+    }
+
+    private static int[] toInt(String[] splited) {
+        int[] numbers = new int[splited.length];
+        for (int i = 0; i < splited.length; i++) {
+            numbers[i] = Integer.parseInt(splited[i]);
+        }
+        return numbers;
     }
 
 }
