@@ -73,4 +73,19 @@ class StringAddCalculatorTest {
         }
     }
 
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException")
+    void negativeReturnRuntimeException() {
+        String str = "-1,2,3";
+        String[] strs = str.split(",");
+        final int result = 0;
+        for (String s : strs) {
+            int num = Integer.parseInt(s);
+            if (num < 0) {
+                Assertions.assertThatThrownBy(() ->
+                                StringAddCalculator.validNegative(num))
+                        .isInstanceOf(RuntimeException.class);
+            }
+        }
+    }
 }
