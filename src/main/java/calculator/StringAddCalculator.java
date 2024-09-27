@@ -3,17 +3,21 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringAddCaculator {
+public class StringAddCalculator {
 
     private static final String DEFAULT_DELIMITER = ",|:";
     private final static String CUSTOM_DELIMITER = "//(.)\n(.*)";
     private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public static int splitAndSum(String text) {
-        if(text == null || text.isEmpty()){
+        if(isBlank(text)){
             return 0;
         }
         return getSum(toInts(split(text)));
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isEmpty();
     }
 
     private static String[] split(String text) {
