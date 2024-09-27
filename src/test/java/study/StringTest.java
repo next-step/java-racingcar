@@ -4,31 +4,36 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
-    @ParameterizedTest
-    @DisplayName("요구사항1 - 문자열 분할여부 확인")
-    @ValueSource(strings = {"1", "2"})
-    void split1(String targetStr) {
+    @Test
+    @DisplayName("요구사항1 - 1,2 로 분할여부 확인")
+    void split1() {
         String targetString = "1,2";
 
+        String[] expectedResult = new String[]{"1", "2"};
+
         // then "1,2" -> "1" 존재 여부
-        assertThat(targetString.split(",")).contains(targetStr);
+        assertThat(targetString.split(",")).containsExactly(expectedResult);
     }
 
     @Test
-    @DisplayName("요구사항1 - 1포함한 배열 반환여부")
+    @DisplayName("요구사항1 - 1만 포함 여부")
     void split2() {
-        // given
-        String targetString = "1,2";
-        // when
+        String targetString = "1";
+
         String[] result = targetString.split(",");
-        // then
-        String[] expectedResult = new String[]{"1", "2"};
-        assertThat(result).containsExactly(expectedResult);
+
+        assertThat(result).containsOnly("1");
     }
 
     @Test
