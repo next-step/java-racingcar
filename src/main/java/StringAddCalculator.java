@@ -11,4 +11,8 @@ public class StringAddCalculator {
         }
         return 1;
     }
+
+    public static int processOneNumberString(String input) {
+        return Integer.parseInt(input);
+    }
 }
