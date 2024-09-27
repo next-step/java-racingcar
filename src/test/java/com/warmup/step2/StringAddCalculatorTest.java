@@ -8,7 +8,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringAddCalculatorTest {
 
     @Test
-    public void isEqualTo_음수_포함_문자열_에러_반환() {
+    public void ThorwnBy_파싱불가_문자포함_에러반환() {
+        String numberStr = "3,tt";
+
+        assertThatThrownBy(() -> {
+            assertThat(StringAddCalculator.splitAndSum(numberStr));
+        }).isInstanceOf(Exception.class)
+                .hasMessageContaining("tt");
+    }
+
+    @Test
+    public void ThrownBy_음수_포함_문자열_에러_반환() {
         String numberStr = "3,-1";
 
         assertThatThrownBy(() -> {

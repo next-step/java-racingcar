@@ -63,22 +63,34 @@ public class StringAddCalculator {
     }
 
     /**
-     * String Array의 값을 Integer로 변환하여 반환
+     * String Array의 값을 더하여 반환
      */
     private static int sumStringArray(String[] splittedInput) {
         int sumResult = 0;
 
         for (String s : splittedInput) {
-            int parsedValue = Integer.parseInt(s);
-
-            if (parsedValue < 0) {
-                throw new RuntimeException("Invalid input: " + s);
-            }
-
-            sumResult += parsedValue;
+            sumResult += safetyParseIntFromString(s);
         }
 
         return sumResult;
+    }
+
+    /**
+     * String 값을 integer로 안전하게 변환
+     */
+    private static int safetyParseIntFromString(String input) {
+        try {
+            int parsedValue = Integer.parseInt(input);
+
+            if (parsedValue < 0) {
+                throw new RuntimeException("Invalid input: " + input);
+            }
+
+            return parsedValue;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Unable to parse " + input + " as an integer");
+        }
+
     }
 
     /**
