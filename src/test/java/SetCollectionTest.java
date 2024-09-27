@@ -24,7 +24,7 @@ class SetCollectionTest {
 
     @Test
     @DisplayName("size()로 Set의 크기 확인")
-    void sizeTest(){
+    void sizeTest() {
         assertThat(numbers).hasSize(3);
     }
 
@@ -32,14 +32,14 @@ class SetCollectionTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("contains()로 set에 있는 값 확인")
-    void containsTest(int number){
+    void containsTest(int number) {
         assertThat(numbers.contains(number));
     }
 
     @ParameterizedTest
-    @CsvSource(value ={"1:true","2:true","3:true","4:false","5:false"},delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("contains()로 다양한 값 확인")
-    void containsTest2(int value, boolean expected){
+    void containsTest2(int value, boolean expected) {
         assertThat(numbers.contains(value)).isEqualTo(expected);
     }
 }
