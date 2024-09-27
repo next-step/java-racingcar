@@ -1,5 +1,8 @@
 package calculator;
 
-public class StringAddCalculator {
+public final class StringAddCalculator {
 
+    public static int splitAndSum(final String input) {
+        return 0;
+    }
 }
