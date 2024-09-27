@@ -2,13 +2,15 @@ package calculator;
 
 public class StringAdditionCalculator {
 
+    private static final String DELIMETER = "[,:]";
+
     public static int calculate(String input) {
         int[] numbers = extractNumbers(input);
         return sum(numbers);
     }
 
     private static int[] extractNumbers(String input) {
-        String[] inputArray = input.split("[,:]");
+        String[] inputArray = input.split(DELIMETER);
         int[] numbers = new int[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
             numbers[i] = Integer.parseInt(inputArray[i]);
