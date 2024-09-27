@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,23 +19,26 @@ public class Source {
     }
 
     private String param(String input) {
-        Matcher matcher = matcher(input);
-        if (matcher.find()) {
-            return matcher.group(2);
-
-        }
-        return input;
+        return test(input,(matcher -> matcher.group(2))).orElse(input);
     }
 
     private String delimiter(String input) {
-        Matcher matcher = matcher(input);
-        if (matcher.find()) {
-            return matcher.group(1);
-        }
-        return DEFAULT_DELIMITER;
+        return test(input,(matcher)->matcher.group(1)).orElse(DEFAULT_DELIMITER);
     }
 
     private Matcher matcher(String input) {
         return CUSTOM_DELIMITER_PATTERN.matcher(input);
+    }
+
+    private Optional<String> test(String input,Function<Matcher,String> function){
+        Matcher matcher = matcher(input);
+        if (hasCustomDelimiter(matcher)) {
+            return Optional.of(function.apply(matcher));
+        }
+        return Optional.empty();
+    }
+
+    private static boolean hasCustomDelimiter(Matcher matcher) {
+        return matcher.find();
     }
 }
