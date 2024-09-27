@@ -3,11 +3,19 @@ package calculator;
 public class Calculator {
 
     public static int calculate(String targetString) {
+        if (isNullOfEmpty(targetString)) {
+            return 0;
+        }
+
         if (isDelimiter(targetString)) {
             String[] splitStringArray = targetString.split("[;,]");
             return loopAndAdd(splitStringArray);
         }
         return Integer.parseInt(targetString);
+    }
+
+    private static boolean isNullOfEmpty(String targetString) {
+        return targetString == null || targetString.isEmpty();
     }
 
     private static int loopAndAdd(String[] splitStringArray) {
