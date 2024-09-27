@@ -39,4 +39,23 @@ class StringTest {
         assertThatThrownBy(() -> "abc".charAt(4))
                 .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
+
+    @DisplayName("[study]음수 문자열을 parseInt() 적용하면 음수로 정상 전환하여 반환한다.")
+    @Test
+    void test_about_Integer_parseInt() {
+        assertThat(Integer.parseInt("-1")).isEqualTo(-1);
+    }
+    @DisplayName("[study]빈 문자열에 parseInt() 적용하면 NumberFormatException이 발생한다.")
+    @Test
+    void test_about_Integer_parseInt2() {
+        assertThatThrownBy(() -> Integer.parseInt("")).isInstanceOf(NumberFormatException.class);
+    }
+
+    @DisplayName("[study]문자열이 //로 시작하고 그 뒤에 오는 임의의 문자에 줄바꿈 문자가 포함되어 있는지 체크한다. ")
+    @Test
+    void test_about_matches() {
+        String pattern = "^//.*\\n.*";
+
+        assertThat("//@\n".matches(pattern)).isTrue();
+    }
 }
