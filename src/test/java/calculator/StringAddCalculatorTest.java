@@ -47,4 +47,12 @@ class StringAddCalculatorTest {
         assertThatThrownBy(() -> splitAndSum("-100,2:3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("문자형숫자가 아닌 값을 입력하면 예외가 발생한다")
+    @Test
+    void splitAndSumByNonNumber(){
+        assertThatThrownBy(() -> splitAndSum("문자형숫자아님,2:3"))
+                .isInstanceOf(NumberFormatException.class);
+    }
+
 }

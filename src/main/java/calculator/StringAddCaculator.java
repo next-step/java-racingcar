@@ -10,7 +10,6 @@ public class StringAddCaculator {
     private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public static int splitAndSum(String text) {
-        int sum = 0;
         if(text == null || text.isEmpty()){
             return 0;
         }
@@ -30,17 +29,17 @@ public class StringAddCaculator {
     private static int[] toInts(String[] textArray){
         int[] numbers = new int[textArray.length];
         for(int i = 0; i < textArray.length; i++){
-            int number = Integer.parseInt(textArray[i]);
-            validateNumber(number);
-            numbers[i] = number;
+            numbers[i] = toInt(textArray[i]);
         }
         return numbers;
     }
 
-    private static void validateNumber(int number) {
+    private static int toInt(String text) {
+        int number = Integer.parseInt(text);
         if(number < 0){
             throw new IllegalArgumentException("음수를 입력할 수 없습니다");
         }
+        return number;
     }
 
     private static int getSum(int[] numbers) {
