@@ -29,4 +29,10 @@ public class StringAddCalculatorTest {
     void 콜론_포함() {
         assertThat(stringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    void 커스텀_구분자_지정() {
+        int result = stringAddCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
 }
