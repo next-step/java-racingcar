@@ -35,4 +35,13 @@ public class StringAddCalculatorTest {
         int result = stringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    void 음수인_경우() {
+        assertThatThrownBy(() -> {
+            stringAddCalculator.splitAndSum("3,-1");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+
 }
