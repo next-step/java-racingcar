@@ -7,8 +7,8 @@ public class StringAddCalculator {
             return 0;
         }
 
-        if (input.contains(",")) {
-            String[] splittedInput = input.split(",");
+        if (input.contains(",") || input.contains(":")) {
+            String[] splittedInput = input.split("[,:]");
 
             return sumStringArray(splittedInput);
         }
