@@ -1,19 +1,19 @@
 package racing.race;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static racing.Constants.*;
 
 public class Car {
 
-    private final List<Integer> forwardResults = new ArrayList<>();
+    private final Queue<Integer> forwardResults = new LinkedList<>();
 
     public void forward(boolean isForward) {
         forwardResults.add(isForward ? FORWARD : STOP);
     }
 
-    public int raceResult(int index) {
-        return forwardResults.get(index);
+    public int raceResult() {
+        return Optional.ofNullable(forwardResults.poll())
+                .orElseThrow(() -> new IndexOutOfBoundsException("최대 경주 횟수를 초과하였습니다."));
     }
 }

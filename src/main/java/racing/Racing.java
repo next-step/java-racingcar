@@ -5,6 +5,7 @@ import racing.input.RaceInput;
 import racing.race.Car;
 import racing.race.RaceTrack;
 import racing.race.RacingChecker;
+import racing.result.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,9 @@ public class Racing {
 
         RaceTrack track = new RaceTrack(new RacingChecker());
         track.race(input, racingCars);
+
+        ResultView resultView = new ResultView();
+        resultView.result(input.getNumOfAttempt(), racingCars);
     }
 
     public static List<Car> racingCars(int numOfCar) {

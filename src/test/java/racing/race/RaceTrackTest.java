@@ -25,9 +25,11 @@ public class RaceTrackTest {
         track.race(input, racingCars);
 
         for (Car racingCar : racingCars) {
-            assertThat(racingCar.raceResult(input.getNumOfAttempt() - 1))
-                    .isBetween(STOP, FORWARD);
-            Assertions.assertThatThrownBy(() -> racingCar.raceResult(input.getNumOfAttempt()))
+            for (int i = 0; i < input.getNumOfAttempt(); i++) {
+                assertThat(racingCar.raceResult())
+                        .isBetween(STOP, FORWARD);
+            }
+            Assertions.assertThatThrownBy(racingCar::raceResult)
                     .isInstanceOf(IndexOutOfBoundsException.class);
         }
     }

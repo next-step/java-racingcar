@@ -7,6 +7,7 @@ import racing.Constants;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -17,9 +18,11 @@ public class CarTest {
 
         forwardResults.forEach(car::forward);
 
-        for (int i = 0; i < forwardResults.size(); i ++) {
-            assertThat(car.raceResult(i))
-                    .isEqualTo(forwardResults.get(i) ? Constants.FORWARD : Constants.STOP);
+        for (Boolean forwardResult : forwardResults) {
+            assertThat(car.raceResult())
+                    .isEqualTo(forwardResult ? Constants.FORWARD : Constants.STOP);
         }
+
+        assertThatThrownBy(car::raceResult).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
