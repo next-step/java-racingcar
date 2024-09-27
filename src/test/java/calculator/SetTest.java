@@ -1,4 +1,4 @@
-package study;
+package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-//import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
