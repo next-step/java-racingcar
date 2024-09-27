@@ -2,16 +2,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class StringAddCalculator {
+class StringAddCalculatorTest {
     @ParameterizedTest
     @EmptySource
     @NullSource
@@ -70,7 +67,7 @@ class StringAddCalculator {
             tokens = m.group(2).split(customDelimiter);
             // 덧셈 구현
             for (String token : tokens) {
-                result +=Integer.parseInt(token);
+                result += Integer.parseInt(token);
             }
             Assertions.assertThat(result).isEqualTo(6);
         }
