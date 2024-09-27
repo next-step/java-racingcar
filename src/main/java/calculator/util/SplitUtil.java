@@ -11,6 +11,8 @@ public class SplitUtil {
     private static final String CUSTOM_REGEX = "//(.)\n(.*)";
     public static final Pattern COMPILED_PATTERN = Pattern.compile(CUSTOM_REGEX);
     private static final String EMPTY_RESULT = "0";
+    public static final int DELIMITER_GROUP_NUMBER = 1;
+    public static final int STRINGS_GROUP_NUMBER = 2;
 
     public static List<Integer> ints(String input) {
         if (isInputEmpty(input)) {
@@ -46,8 +48,8 @@ public class SplitUtil {
     }
 
     private static List<Integer> customInts(Matcher matcher) {
-        String delimiter = matcher.group(1);
-        String numberStrings = matcher.group(2);
+        String delimiter = matcher.group(DELIMITER_GROUP_NUMBER);
+        String numberStrings = matcher.group(STRINGS_GROUP_NUMBER);
 
         return parsedInts(numberStrings.split(delimiter));
     }
