@@ -1,7 +1,6 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,6 +10,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
@@ -49,5 +49,18 @@ public class StringAddCalculatorTest {
                 Arguments.of("// \n5 6", 11),
                 Arguments.of("//!@\n7!@8", 15)
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideForbiddenCustomDelimiterInput")
+    void 일부_특수문자는_커스텀구분자로_사용될_수_없다(String input) {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("사용할 수 없는 구분자입니다.");
+    }
+
+    private static Stream<Arguments> provideForbiddenCustomDelimiterInput() {
+        return Stream.of("$", "^*", ",.,", "?(", ">)")
+                .map(delimiter -> Arguments.of("//" + delimiter + "\n"));
     }
 }
