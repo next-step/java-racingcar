@@ -48,7 +48,11 @@ public class Positives {
             if (isNotNumber(value)) {
                 throw new RuntimeException(NOT_POSITIVE_MESSAGE);
             }
-            return new Positive(Integer.parseInt(value));
+            return new Positive(toInt(value));
+        }
+
+        private static int toInt(String value) {
+            return Integer.parseInt(value);
         }
 
         private static boolean isNotNumber(String value) {
