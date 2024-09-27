@@ -35,11 +35,19 @@ public class StringAddCalculatorTest {
         assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    @CsvSource(value = {"//@\\n1@2-3", "///\\n3/4-7", "// \n5 6-11", "//#$\n7#$8-15"}, delimiter = '-')
+    @ParameterizedTest
+    @MethodSource("provideCustomDelimiterInput")
     @DisplayName("//와 \\n 사이의 문자를 커스텀구분자로 사용해 분리한 합을 반환한다.")
-    void 커스텀_구분자를_사용할수_있다(String input, int expected) {
+    void 커스텀_구분자를_사용할_수_있다(String input, int expected) {
         int result = StringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideCustomDelimiterInput() {
+        return Stream.of(Arguments.of("//@\n1@2", 3),
+                Arguments.of("///\n3/4", 7),
+                Arguments.of("// \n5 6", 11),
+                Arguments.of("//!@\n7!@8", 15)
+        );
     }
 }
