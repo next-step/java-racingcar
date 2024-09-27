@@ -51,4 +51,13 @@ public class StringAddCalculator {
         return -1;
     }
 
+    public static void negativeValidation(String input) {
+        String[] splited = input.split(",");
+        for (String s : splited) {
+            if (Integer.parseInt(s) < 0)
+            {
+                throw new RuntimeException();
+            }
+        }
+    }
 }

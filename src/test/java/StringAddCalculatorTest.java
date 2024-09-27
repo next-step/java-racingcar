@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
     @ParameterizedTest
@@ -53,4 +54,11 @@ class StringAddCalculatorTest {
         assertThat(result).isEqualTo(6);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,2,3"})
+    @DisplayName("음수를 전달할 경우 RuntimeException 발생")
+    void negativeThrowRuntimeException(String input){
+        assertThatThrownBy(() -> StringAddCalculator.negativeValidation(input))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
