@@ -24,4 +24,13 @@ public class StringAddCalculator {
         }
         return summation;
     }
+
+    public static int splitAndSumWithCommaOrColon(String input) {
+        String[] splited = input.split(",|:");
+        int summation = 0;
+        for (String s : splited) {
+            summation += Integer.parseInt(s);
+        }
+        return summation;
+    }
 }
