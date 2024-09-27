@@ -3,8 +3,19 @@ package com.warmup.step2;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
+
+    @Test
+    public void isEqualTo_음수_포함_문자열_에러_반환() {
+        String numberStr = "3,-1";
+
+        assertThatThrownBy(() -> {
+            assertThat(StringAddCalculator.splitAndSum(numberStr));
+        }).isInstanceOf(Exception.class)
+                .hasMessageContaining("-1");
+    }
 
     @Test
     public void isEqualTo_문자열_커스텀_구분자_덧셈값_반환() {

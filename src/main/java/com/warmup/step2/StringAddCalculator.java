@@ -66,13 +66,19 @@ public class StringAddCalculator {
      * String Array의 값을 Integer로 변환하여 반환
      */
     private static int sumStringArray(String[] splittedInput) {
-        int result = 0;
+        int sumResult = 0;
 
         for (String s : splittedInput) {
-            result += Integer.parseInt(s);
+            int parsedValue = Integer.parseInt(s);
+
+            if (parsedValue < 0) {
+                throw new RuntimeException("Invalid input: " + s);
+            }
+
+            sumResult += parsedValue;
         }
 
-        return result;
+        return sumResult;
     }
 
     /**
