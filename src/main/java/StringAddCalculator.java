@@ -20,19 +20,13 @@ public class StringAddCalculator {
 
     public static int splitAndSumWithComma(String input) {
         String[] splited = input.split(COMMA);
-        int summation = 0;
-        for (String s : splited) {
-            summation += Integer.parseInt(s);
-        }
+        int summation = calculateSum(splited);
         return summation;
     }
 
     public static int splitAndSumWithCommaOrColon(String input) {
         String[] splited = input.split(DELIMETER);
-        int summation = 0;
-        for (String s : splited) {
-            summation += Integer.parseInt(s);
-        }
+        int summation = calculateSum(splited);
         return summation;
     }
 
@@ -42,9 +36,7 @@ public class StringAddCalculator {
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens = m.group(2).split(customDelimiter);
-            for (String token : tokens) {
-                summation += Integer.parseInt(token);
-            }
+            summation = calculateSum(tokens);
             return summation;
         }
         return -1;
@@ -59,4 +51,13 @@ public class StringAddCalculator {
             }
         }
     }
+
+    private static int calculateSum(String[] splited) {
+        int summation = 0;
+        for (String s : splited) {
+            summation += Integer.parseInt(s);
+        }
+        return summation;
+    }
+
 }
