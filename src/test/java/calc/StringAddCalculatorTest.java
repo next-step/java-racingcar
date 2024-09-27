@@ -24,4 +24,9 @@ public class StringAddCalculatorTest {
     void 쉼표가_포함() {
         assertThat(stringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
     }
+
+    @Test
+    void 콜론_포함() {
+        assertThat(stringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
+    }
 }

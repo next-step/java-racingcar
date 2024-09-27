@@ -1,10 +1,12 @@
 package calc;
 
 public class StringAddCalculator {
+
+    public static final String REGEX = ",|:";
+
     public int splitAndSum(String text) {
-        if(text.contains(",")) {
-            String[] splitText = text.split(",");
-            return split(splitText);
+        if(text.contains(",") || text.contains(":")) {
+            return split(text.split(REGEX));
         }
         return Integer.parseInt(text);
     }
