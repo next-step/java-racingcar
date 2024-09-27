@@ -5,16 +5,17 @@ import java.util.regex.Pattern;
 
 public class Source {
 
-    private static final String DEFAULT_DELIMITER = "[:,]";;
+    private static final String DEFAULT_DELIMITER = "[:,]";
+    ;
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.+)\n(.*)");
 
     public String[] split(String input) {
-        String param=param(input);
-        String delimiter=delimiter(input);
+        String param = param(input);
+        String delimiter = delimiter(input);
         return param.split(delimiter);
     }
 
-    private String param(String input){
+    private String param(String input) {
         Matcher matcher = matcher(input);
         if (matcher.find()) {
             return matcher.group(2);
@@ -23,7 +24,7 @@ public class Source {
         return input;
     }
 
-    private String delimiter(String input){
+    private String delimiter(String input) {
         Matcher matcher = matcher(input);
         if (matcher.find()) {
             return matcher.group(1);
