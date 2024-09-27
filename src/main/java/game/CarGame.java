@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 
 public class CarGame {
 
-    private final static int miniMumCarNum = 1; //레이싱 시작을 위한 최소 자동차 수
+    private final static int miniMumCarNum = 2; //레이싱 시작을 위한 최소 자동차 수
     private final static int miniMumAttemptNum = 1; //레이싱 시작을 위한 최소 시도 횟수
 
     private final InputView inputView = new InputView();
@@ -56,7 +56,7 @@ public class CarGame {
 
     //레이싱에 참가하는 자동차가 1대 이하인지 체크
     private void checkMinimumCar(int carNum) {
-        if (carNum <= miniMumCarNum)
+        if (carNum < miniMumCarNum)
             throw new IllegalArgumentException(ExceptionMessage.MINIMUN_CAR_EXCEPTION.message());
     }
 
