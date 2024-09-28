@@ -13,7 +13,9 @@ public final class Calculator {
     private final String regexSpecialChars = ".^$*+?{}[]()|\\";
 
     public int calculate(String input) {
-        if (isNullOrBlank(input)) return defaultReturnValue;
+        if (isNullOrBlank(input)) {
+            return defaultReturnValue;
+        }
         List<Integer> numbers = parseNumbers(input);
         return calculateSum(numbers);
     }
@@ -34,7 +36,9 @@ public final class Calculator {
     }
 
     private List<String> findSplitters(String input) {
-        if (!input.startsWith(customSplitterStarter)) return Arrays.asList(defaultSplitters);
+        if (!input.startsWith(customSplitterStarter)) {
+            return Arrays.asList(defaultSplitters);
+        }
         String customSplitter = findCustomSplitter(input);
         List<String> splitters = new ArrayList<>(Arrays.asList(defaultSplitters));
         splitters.add(customSplitter);
@@ -48,7 +52,9 @@ public final class Calculator {
     }
 
     private String findNumberString(String input) {
-        if (!input.startsWith(customSplitterStarter)) return input;
+        if (!input.startsWith(customSplitterStarter)) {
+            return input;
+        }
         int valueStartIndex = input.indexOf(customSplitterEnder) + customSplitterEnder.length();
         return input.substring(valueStartIndex);
     }
@@ -69,7 +75,9 @@ public final class Calculator {
     }
 
     private String escapeSplitter(String splitter) {
-        if (splitter.chars().anyMatch(ch -> regexSpecialChars.indexOf(ch) >= 0)) return Pattern.quote(splitter);
+        if (splitter.chars().anyMatch(ch -> regexSpecialChars.indexOf(ch) >= 0)) {
+            return Pattern.quote(splitter);
+        }
         return splitter;
     }
 
