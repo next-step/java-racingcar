@@ -45,7 +45,7 @@ public final class CalculatorTest {
 
     @Test
     void customSplitterTest() {
-        String input = "//{\\n1{2;3";
+        String input = "//;\n1;2;3";
         Integer result = calculator.calculate(input);
         assertThat(result).isEqualTo(6);
     }
