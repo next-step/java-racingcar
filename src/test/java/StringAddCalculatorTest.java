@@ -7,12 +7,19 @@ public class StringAddCalculatorTest {
 
     @DisplayName("splitAndSum 메소드는 null 또는 빈문자가 입력 되었을때, 결과값은 '0'이 나와야 한다.")
     @Test
-    public void splitAndSum_메소드_입력갑_검증_테스트() {
+    public void splitAndSum_메소드_입력값_검증_테스트() {
         int expected = StringAddCalculator.splitAndSum(null);
         assertThat(expected).isEqualTo(0);
 
         expected = StringAddCalculator.splitAndSum("");
         assertThat(expected).isEqualTo(0);
+    }
+
+    @DisplayName("splitAndSum 메소드는 숫자 문자 하나가 입력 되었을때, 결과값은 Integer로 변경 후 리턴해야 한다.")
+    @Test
+    public void splitAndSum_메소드_입력값_검증_테스트_2() {
+        int expected = StringAddCalculator.splitAndSum("1");
+        assertThat(expected).isEqualTo(1);
     }
 
 }
