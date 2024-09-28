@@ -6,7 +6,7 @@ public class CarRandomNumber implements RandomNumber {
 
     private int randomRange;
 
-    private final static Random random = new Random();
+    private final static Random RANDOM = new Random();
 
     public CarRandomNumber(int randomRange) {
         this.randomRange = randomRange;
@@ -14,6 +14,6 @@ public class CarRandomNumber implements RandomNumber {
 
     @Override
     public int randomNumber() {
-        return random.nextInt(randomRange);
+        return RANDOM.nextInt(randomRange);
     }
 }
