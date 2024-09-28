@@ -13,7 +13,7 @@ public class StringAdditionCalculator {
     }
 
     private static boolean isInputEmpty(String input) {
-        return (input == null || input.isBlank());
+        return (input == null || input.isEmpty());
     }
 
     private static int[] extractNumbers(String input) {
