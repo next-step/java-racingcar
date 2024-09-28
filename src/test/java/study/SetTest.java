@@ -27,18 +27,14 @@ class SetTest {
     @DisplayName("numbers의 크기를 반환한다.")
     @Test
     void check_size_when_call_method_size_from_Set() {
-        int result = numbers.size();
-
-        assertThat(result).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("numbers기 값을 포함하고 있으면 True를 반환한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void return_true_when_numbers_contains_value(int given) {
-        boolean result = numbers.contains(given);
-
-        assertThat(result).isTrue();
+        assertThat(numbers).contains(given);
     }
 
     @DisplayName("numbers기 값을 포함하고 있으면 True, 반대는 False를 반환한다.")
