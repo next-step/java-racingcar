@@ -2,7 +2,8 @@ package calculator;
 
 public class StringCalculator {
 
-    public static int sum(final String input){
+
+    public static int splitAndSum(final String input){
         if (isStringEmpty(input)){
             return 0;
         }

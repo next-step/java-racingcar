@@ -15,14 +15,14 @@ public class StringCalculatorTest {
     @NullSource
     @ValueSource(strings = {"", "   "})
     void 빈_문자열_입력_시_0_반환(final String input){
-        int result = StringCalculator.sum(input);
+        int result = StringCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(0);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "123", "45678912"})
     void 숫자만_입력시_숫자_반환(final String input ){
-        int result = StringCalculator.sum(input);
+        int result = StringCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(Integer.parseInt(input));
     }
 
@@ -35,8 +35,9 @@ public class StringCalculatorTest {
             "4,5,=9",
             "1,=1"
     }, delimiter = '=')
-    void 쉼표로_구분된_두_숫자_입력_시_합_반환(final String input, final Integer result){
-        StringCalculator.spiltAndSum(input);
+    void 쉼표로_구분된_두_숫자_입력_시_합_반환(final String input, final Integer expected){
+        Integer result = StringCalculator.splitAndSum(input);
+        assertThat(expected).isEqualTo(result);
     }
 
 }
