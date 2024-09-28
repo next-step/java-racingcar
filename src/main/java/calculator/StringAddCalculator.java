@@ -67,6 +67,10 @@ public final class StringAddCalculator {
     private static int sum(final List<Integer> list) {
         int sum = 0;
         for (int number : list) {
+            if (number < 0) {
+                throw new RuntimeException("음수를 계산할 수 없습니다.");
+            }
+
             sum += number;
         }
 
