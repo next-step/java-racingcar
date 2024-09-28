@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private final Car car = new Car();
+    final Car car = new Car();
 
     @Test
     @DisplayName("이동 조건이 충족되면 1번 움직인다.")
@@ -17,7 +17,7 @@ class CarTest {
         car.move(() -> true);
 
         // then
-        assertThat(car.position()).isEqualTo(1);
+        assertThat(car.position().value()).isEqualTo(1);
     }
 
     @Test
@@ -27,7 +27,7 @@ class CarTest {
         car.move(() -> false);
 
         // then
-        assertThat(car.position()).isEqualTo(0);
+        assertThat(car.position().value()).isEqualTo(0);
     }
 
 }

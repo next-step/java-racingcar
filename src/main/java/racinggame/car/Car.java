@@ -14,8 +14,8 @@ public class Car {
         }
     }
 
-    public int position() {
-        return position.value();
+    public Position position() {
+        return position;
     }
 
 }

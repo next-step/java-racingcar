@@ -1,6 +1,7 @@
 package racinggame.ui;
 
-import racinggame.car.Car;
+import racinggame.car.Position;
+import racinggame.car.Round;
 
 import java.util.List;
 
@@ -13,16 +14,22 @@ public class ResultView {
         throw new IllegalStateException("view class");
     }
 
-    public static void promptResult(final List<Car> cars) {
+    public static void promptGameResult(final List<Round> rounds) {
         System.out.println(RESULT_PROMPT);
-        for (final var car : cars) {
-            System.out.println(getPositionGraph(car));
+        for (final var round : rounds) {
+            promptRoundResult(round);
         }
     }
 
-    private static String getPositionGraph(final Car car) {
-        final var position = car.position();
-        return POSITION_GRAPH.repeat(position);
+    public static void promptRoundResult(Round round) {
+        for (final var position : round.result()) {
+            System.out.println(getPositionGraph(position));
+        }
+        System.out.println();
+    }
+
+    private static String getPositionGraph(final Position position) {
+        return POSITION_GRAPH.repeat(position.value());
     }
 
 }
