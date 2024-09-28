@@ -22,4 +22,14 @@ public class StringAddCalculatorTest {
         assertThat(expected).isEqualTo(1);
     }
 
+    @DisplayName("splitAndSum 메소드는 문자열이 ', or :' 로 구분되어 입력 되었을때, 숫자의 합을 반환해야 한다.")
+    @Test
+    public void splitAndSum_메소드_덧셈_테스트() {
+        int expected = StringAddCalculator.splitAndSum("1,2");
+        assertThat(expected).isEqualTo(3);
+
+        expected = StringAddCalculator.splitAndSum("1,2:3");
+        assertThat(expected).isEqualTo(6);
+    }
+
 }
