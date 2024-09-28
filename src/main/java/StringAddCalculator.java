@@ -16,14 +16,10 @@ public class StringAddCalculator {
         if (input == null || input.isEmpty()) {
             return DEFAULT_VALUE_OF_NULL_AND_EMPTYSTRING;
         }
-        String[] splited = input.split(COMMA);
-        return calculateSum(toInt(splited));
-    }
-
-    public static int splitAndSumWithCommaOrColon(String input) {
         String[] splited = input.split(DELIMETER);
         return calculateSum(toInt(splited));
     }
+
 
     public static int splitWithCustomDelimeter(String input) {
         Matcher m = Pattern.compile(CUSTOMDELIMETER).matcher(input);

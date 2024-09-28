@@ -40,7 +40,7 @@ class StringAddCalculatorTest {
     @ValueSource(strings = {"1,2:3"})
     @DisplayName("구분자를 컴마 이외에 콜론을 사용할 수 있다")
     void splitAndSumWithCommaOrColon(String input) {
-        int result = StringAddCalculator.splitAndSumWithCommaOrColon(input);
+        int result = StringAddCalculator.splitAndSum(input);
 
         assertThat(result).isEqualTo(6);
     }
