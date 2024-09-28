@@ -3,6 +3,8 @@ package step3;
 import static step3.InputView.inputCountCar;
 import static step3.InputView.inputTryCount;
 
+import java.util.Random;
+
 public class RacingCar {
     public static void main(String[] args) {
         startRacing();
@@ -18,5 +20,14 @@ public class RacingCar {
 
     public static int makeTryCount(int tryCount){
         return tryCount;
+    }
+
+    public static boolean isMove(){
+        Random random = new Random();
+        int randomNumber = random.nextInt(10);
+        if(randomNumber>=4){
+            return true;
+        }
+        return false;
     }
 }
