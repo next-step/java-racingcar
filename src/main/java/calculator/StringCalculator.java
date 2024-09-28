@@ -8,7 +8,13 @@ public class StringCalculator {
             return 0;
         }
 
-        return parseStringToInt(input);
+        String[] inputSplit = input.split(",");
+        int result = 0;
+        for (String s : inputSplit) {
+            result += parseStringToInt(s);
+        }
+
+        return result;
     }
 
     private static Boolean isStringEmpty(final String input){
