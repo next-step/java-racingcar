@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test;
 
 class CarRaceTest {
 
-    private final static int randomRange = 10;
+    private final static int RANDOM_RANGE = 10;
     private RandomNumber randomNumberGenerator;
 
     @BeforeEach
     void setUp() {
-        randomNumberGenerator = new CarRandomNumber(randomRange);
+        randomNumberGenerator = new CarRandomNumber(RANDOM_RANGE);
     }
 
     @Test
