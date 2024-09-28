@@ -6,7 +6,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
 class StringTest {
+
 
   @DisplayName("구분자를 둔 두 숫자가 split()으로 잘 분리되는지 테스트한다.")
   @Test
@@ -43,10 +45,8 @@ class StringTest {
     assertThat(data.charAt(1)).isEqualTo('b');
     assertThat(data.charAt(2)).isEqualTo('c');
     assertThat(data.charAt(data.length()-1)).isEqualTo('c');
-
     assertThatThrownBy(() -> {
       data.charAt(data.length());
     }).isExactlyInstanceOf(StringIndexOutOfBoundsException.class);
-
   }
 }
