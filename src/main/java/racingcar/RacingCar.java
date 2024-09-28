@@ -16,7 +16,7 @@ public class RacingCar {
         race(carCount, loop);
     }
 
-    static void race(int carCount, int loop){
+    static void race(int carCount, int loop) {
         result = new String[carCount];
 
         System.out.println("실행결과");
@@ -29,7 +29,7 @@ public class RacingCar {
     }
 
     static String run(String carResult) {
-        if(carResult == null) carResult = "";
+        if (carResult == null) carResult = "";
         return carResult + "-";
     }
 
