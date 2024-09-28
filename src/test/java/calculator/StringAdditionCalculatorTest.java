@@ -33,4 +33,10 @@ class StringAdditionCalculatorTest {
     void calculateTest_whenNullOrEmptyString(String input) {
        assertThat(StringAdditionCalculator.calculate(input)).isEqualTo(0);
     }
+
+    @DisplayName("커스텀 구분자를 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 숫자의 합을 잘 반환하는지")
+    @Test
+    void calculateTest_withCustomDelimiter() {
+        assertThat(StringAdditionCalculator.calculate("//;\\n1;2;3")).isEqualTo(6);
+    }
 }
