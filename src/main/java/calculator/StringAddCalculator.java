@@ -12,9 +12,8 @@ public class StringAddCalculator {
         if (isStringEmpty(input)){
             return 0;
         }
-        Integer[] inputSplit = parseInterArray(splitWithDelimiter(input));
 
-        return sumIntegerArray(inputSplit);
+        return sumIntegerArray(parseInterArray(splitWithDelimiter(input)));
     }
 
     private static Integer sumIntegerArray(Integer[] nums){
