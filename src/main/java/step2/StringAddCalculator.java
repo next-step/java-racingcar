@@ -33,10 +33,10 @@ public class StringAddCalculator {
     }
 
     private static String[] splitString(final String inputValue) {
-        Matcher m = CUSTOM_DELEMITER_PATTERN.matcher(inputValue);
-        if (m.find()) {
-            String customDelimiter = m.group(CUSTOM_DELIMITER_INDEX);
-            return m.group(TARGET_STRING_INDEX).split(customDelimiter);
+        Matcher matcher = CUSTOM_DELEMITER_PATTERN.matcher(inputValue);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(CUSTOM_DELIMITER_INDEX);
+            return matcher.group(TARGET_STRING_INDEX).split(customDelimiter);
         }
         return inputValue.split(DELIMITER);
     }
