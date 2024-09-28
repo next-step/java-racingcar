@@ -1,6 +1,4 @@
-package Calculator;
-
-import org.apache.commons.lang3.tuple.Pair;
+package calculator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +18,7 @@ public final class Calculator {
         return calculateSum(numbers);
     }
 
-    private Boolean isNullOrBlank(String input) {
+    private boolean isNullOrBlank(String input) {
         return input == null || input.isBlank();
     }
 
@@ -29,17 +27,10 @@ public final class Calculator {
     }
 
     private List<String> parseStringNumbers(String input) {
-        Pair<List<String>, String> result = extractSplittersAndNumberString(input);
-        List<String> splitters = result.getLeft();
-        String numberString = result.getRight();
-        String splitRegex = convertToRegex(splitters);
-        return Arrays.asList(numberString.split(splitRegex));
-    }
-
-    private Pair<List<String>, String> extractSplittersAndNumberString(String input) {
         List<String> splitters = findSplitters(input);
         String numberString = findNumberString(input);
-        return Pair.of(splitters, numberString);
+        String splitRegex = convertToRegex(splitters);
+        return Arrays.asList(numberString.split(splitRegex));
     }
 
     private List<String> findSplitters(String input) {
@@ -92,7 +83,7 @@ public final class Calculator {
         return numbers;
     }
 
-    private static int convertToInteger(String stringNumber) {
+    private int convertToInteger(String stringNumber) {
         try {
             int number = Integer.parseInt(stringNumber);
             checkInputNumberIsAllowed(number);
@@ -102,7 +93,7 @@ public final class Calculator {
         }
     }
 
-    private static void checkInputNumberIsAllowed(int number) {
+    private void checkInputNumberIsAllowed(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("음수 값이 삽입되었습니다.");
         }

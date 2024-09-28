@@ -1,6 +1,6 @@
-package CalculatorTest;
+package calculatortest;
 
-import Calculator.Calculator;
+import calculator.Calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
