@@ -3,8 +3,7 @@ package CalculatorTest;
 import Calculator.Calculator;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public final class CalculatorTest {
     private final Calculator calculator = new Calculator();
@@ -53,14 +52,12 @@ public final class CalculatorTest {
     @Test
     void notIntegerInputExceptionTest() {
         String input = "1,a,3";
-        assertThatThrownBy(() -> calculator.calculate(input))
-                .isInstanceOf(RuntimeException.class);
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
 
     @Test
     void negativeNumberInputExceptionTest() {
         String input = "1,-2,3";
-        assertThatThrownBy(() -> calculator.calculate(input))
-                .isInstanceOf(RuntimeException.class);
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
 }

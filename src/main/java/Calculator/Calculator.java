@@ -59,18 +59,22 @@ public final class Calculator {
         return input.substring(valueStartIndex);
     }
 
-    private List<Integer> convertToIntegers(List<String> values) {
+    private List<Integer> convertToIntegers(List<String> stringNumbers) {
         List<Integer> numbers = new ArrayList<>();
 
-        for (String value : values) {
-            int number = Integer.parseInt(value);
-            checkNumberValid(number);
-            numbers.add(number);
+        for (String stringNumber : stringNumbers) {
+            try {
+                int number = Integer.parseInt(stringNumber);
+                checkInputNumberIsAllowed(number);
+                numbers.add(number);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("숫자 포멧이 맞지 않습니다: " + stringNumber);
+            }
         }
         return numbers;
     }
 
-    private static void checkNumberValid(int number) {
+    private static void checkInputNumberIsAllowed(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("음수 값이 삽입되었습니다.");
         }
