@@ -10,7 +10,6 @@ public class Main {
     private static final int BOUND = 10;
     private static final int MOVABLE_MINIMUM_NUMBER = 4;
 
-
     public static void main(String[] args) {
         final var carCount = InputView.promptCarCount();
         final var rounds = InputView.promptRounds();
