@@ -5,6 +5,7 @@ public class StringAdditionCalculator {
     private static final String DELIMETER = "[,:]";
 
     public static int calculate(String input) {
+        if (input == null || input.isBlank()) return 0;
         int[] numbers = extractNumbers(input);
         return sum(numbers);
     }
