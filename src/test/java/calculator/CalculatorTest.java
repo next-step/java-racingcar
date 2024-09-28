@@ -18,18 +18,30 @@ class CalculatorTest {
     }
 
     @Test
+    void 기본_구분자_외에_커스텀_구분자_ampersand_를_추가할_수_있다() {
+        String numberWithCustomDelimiter = "//&\n1&2&3&4";
+        assertThat(Calculator.calculate(numberWithCustomDelimiter)).isEqualTo(10);
+    }
+
+    @Test
+    void 기본_구분자_외에_커스텀_구분자_asterisk_를_추가할_수_있다() {
+        String numberWithCustomDelimiter = "//*\n1*2*3*4";
+        assertThat(Calculator.calculate(numberWithCustomDelimiter)).isEqualTo(10);
+    }
+
+    @Test
     void 숫자_하나를_전달하면_값을_그대로_반환한다() {
         assertThat(Calculator.calculate("3")).isEqualTo(3);
     }
 
     @Test
     void 숫자_두개를_콤마_세미콜론과_함께_전달하면_두_숫자를_더한다() {
-        assertThat(Calculator.calculate("1;2")).isEqualTo(3);
+        assertThat(Calculator.calculate("1:2")).isEqualTo(3);
     }
 
     @Test
     void 숫자_여러개를_콤마_세미콜론과_함께_전달하면_여러_숫자를_더한다() {
-        assertThat(Calculator.calculate("1;2;50,2")).isEqualTo(55);
+        assertThat(Calculator.calculate("1:2:50,2")).isEqualTo(55);
     }
 
     @Test
@@ -42,7 +54,7 @@ class CalculatorTest {
     @Test
     void 음수를_전달하면_RuntimeException_반환한다() {
         assertThatThrownBy(() -> {
-            Calculator.calculate("1;-1");
+            Calculator.calculate("1:-1");
         }).isInstanceOf(RuntimeException.class);
     }
 }
