@@ -64,8 +64,8 @@ public class StringAddCalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"-1,2", "//%\n3%-4"})
-    void 계산에_음수를_사용할_수_없다() {
-        assertThatThrownBy((() -> StringAddCalculator.splitAndSum("-1,2")))
+    void 계산에_음수를_사용할_수_없다(String input) {
+        assertThatThrownBy((() -> StringAddCalculator.splitAndSum((input))))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("음수를 계산할 수 없습니다.");
     }
