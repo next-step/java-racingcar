@@ -44,9 +44,13 @@ public class StringAdditionCalculator {
         int[] numbers = new int[stringArray.length];
         for (int i = 0; i < stringArray.length; i++) {
             numbers[i] = Integer.parseInt(stringArray[i]);
-            if (numbers[i] < 0) throw new RuntimeException("음수는 허용하지 않습니다");
+            if (isNegative(numbers[i])) throw new RuntimeException("음수는 허용하지 않습니다");
         }
         return numbers;
+    }
+
+    private static boolean isNegative(int num) {
+        return num < 0;
     }
 
     private static int sum(int[] numbers) {
