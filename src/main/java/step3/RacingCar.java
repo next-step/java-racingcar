@@ -5,58 +5,57 @@ import static step3.InputView.inputTryCount;
 import static step3.ResultView.printGoDistance;
 import static step3.ResultView.printResultMessage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCar {
+    private static final int RANDOM_SIZE = 10;
+
     public static void main(String[] args) {
         startRacing();
     }
-    public static void startRacing(){
-        int car[] = makeRacingCar(inputCountCar());
-        int tryCount = makeTryCount(inputTryCount());
-        getGameResult(car, tryCount);
+
+    public static void startRacing() {
+        Race race = new Race(makeRacingCar(inputCountCar()), makeTryCount(inputTryCount()));
+        getGameResult(race);
     }
 
-    public static int[] makeRacingCar(int carCount){
-        return new int[carCount];
+    private static List<Car> makeRacingCar(int carCount) {
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            carList.add(new Car());
+        }
+        return carList;
     }
 
-    public static int makeTryCount(int tryCount){
+    private static int makeTryCount(int tryCount) {
         return tryCount;
     }
 
-    private static void getGameResult(int[] car, int tryCount) {
+    private static void getGameResult(Race race) {
         printResultMessage();
-        for(int i=0;i<tryCount;i++){
-            car=carMove(car);
-
+        for (int i = 0; i < race.getTryCount(); i++) {
+            carMove(race.getCarList());
         }
     }
 
-    private static int[] carMove(int[] car){
-        for(int i=0;i<car.length;i++){
-            if(isMove()){
-                car[i]+=1;
-            }
-            printMove(car);
+    private static void carMove(List<Car> carList) {
+        for (int i = 0; i < carList.size(); i++) {
+            carList.get(i).goCar(getRandomNum());
+            printMove(carList);
             System.out.println();
         }
-        return car;
     }
 
-    public static boolean isMove(){
+    private static int getRandomNum() {
         Random random = new Random();
-        int randomNumber = random.nextInt(10);
-        if(randomNumber>=4){
-            return true;
-        }
-        return false;
+        return random.nextInt(RANDOM_SIZE);
     }
 
-    public static void printMove(int[] car){
-        for (int i=0;i<car.length;i++){
-            printGoDistance(car[i]);
-            System.out.println();
+    public static void printMove(List<Car> carList) {
+        for (Car car : carList) {
+            printGoDistance(car.getDistance());
         }
     }
 }
