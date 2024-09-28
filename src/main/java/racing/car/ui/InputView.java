@@ -12,11 +12,11 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public int input(){
+    public int input() {
         return scanner.nextInt();
     }
 
-    public void carQuestion(){
+    public void carQuestion() {
         System.out.println(CAR_QUESTION);
     }
 
