@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,7 +35,23 @@ public final class StringAddCalculator {
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
         boolean isCustomDelimiter = matcher.matches();
 
-        String delimiterRegex = isCustomDelimiter ? matcher.group(1) : DEFAULT_DELIMITER_REGEX;
+        String delimiterRegex;
+        if (isCustomDelimiter) {
+            delimiterRegex = matcher.group(1);
+
+            String[] list = {"$", "^", "*", "(", ")", "{", "}", "[", "]", "+", "?", "|", "."};
+            final List<String> FORBIDDEN_DELIMITERS = List.of(list);
+
+            for (String item : FORBIDDEN_DELIMITERS) {
+                if (delimiterRegex.contains(item)) {
+                    throw new RuntimeException("사용할 수 없는 구분자입니다.");
+                }
+            }
+
+        } else {
+            delimiterRegex = DEFAULT_DELIMITER_REGEX;
+        }
+
         String target = isCustomDelimiter ? matcher.group(2) : input;
 
         String[] split = target.split(delimiterRegex);
