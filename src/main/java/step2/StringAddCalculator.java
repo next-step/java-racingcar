@@ -42,7 +42,7 @@ public class StringAddCalculator {
     }
 
     private static void validateInputValue(final int value) {
-        if(value < MIN_NUMBER) {
+        if (value < MIN_NUMBER) {
             throw new RuntimeException("음수는 입력할 수 없습니다.");
         }
     }
@@ -50,7 +50,7 @@ public class StringAddCalculator {
     private static int[] toIntArray(final String inputValue) {
         String[] values = splitString(inputValue);
         int[] result = new int[values.length];
-        for(int i = 0; i < result.length; i++) {
+        for (int i = 0; i < result.length; i++) {
             result[i] = Integer.parseInt(values[i]);
         }
 
