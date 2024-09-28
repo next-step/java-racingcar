@@ -33,9 +33,11 @@ public class StringCalculatorTest {
             "4,5=9",
             "1,2,=3",
             "4,5,=9",
-            "1,=1"
+            "1,=1",
+            "1,2,3,4=10",
+            "1,2,3,4,=10"
     }, delimiter = '=')
-    void 쉼표로_구분된_두_숫자_입력_시_합_반환(final String input, final Integer expected){
+    void 쉼표로_구분된_여러_숫자_입력_시_합_반환(final String input, final Integer expected){
         Integer result = StringCalculator.splitAndSum(input);
         assertThat(expected).isEqualTo(result);
     }
