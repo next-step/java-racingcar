@@ -1,11 +1,9 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
@@ -62,5 +60,13 @@ public class StringAddCalculatorTest {
     private static Stream<Arguments> provideForbiddenCustomDelimiterInput() {
         return Stream.of("$", "^*", ",.,", "?(", ">)")
                 .map(delimiter -> Arguments.of("//" + delimiter + "\n"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,2", "//%\n3%-4"})
+    void 계산에_음수를_사용할_수_없다() {
+        assertThatThrownBy((() -> StringAddCalculator.splitAndSum("-1,2")))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("음수를 계산할 수 없습니다.");
     }
 }
