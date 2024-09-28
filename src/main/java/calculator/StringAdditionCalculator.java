@@ -2,7 +2,7 @@ package calculator;
 
 public class StringAdditionCalculator {
 
-    private static final String DELIMETER = "[,:]";
+    private static final String DELIMITER = "[,:]";
 
     public static int calculate(String input) {
         if (isInputEmpty(input)) return 0;
@@ -15,7 +15,7 @@ public class StringAdditionCalculator {
     }
 
     private static int[] extractNumbers(String input) {
-        String[] inputArray = input.split(DELIMETER);
+        String[] inputArray = input.split(DELIMITER);
         int[] numbers = new int[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
             numbers[i] = Integer.parseInt(inputArray[i]);

@@ -33,5 +33,4 @@ class StringAdditionCalculatorTest {
     void calculateTest_whenNullOrEmptyString(String input) {
        assertThat(StringAdditionCalculator.calculate(input)).isEqualTo(0);
     }
-
 }
