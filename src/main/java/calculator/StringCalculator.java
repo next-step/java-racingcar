@@ -7,14 +7,32 @@ public class StringCalculator {
         if (isStringEmpty(input)){
             return 0;
         }
+        Integer[] inputSplit = parseInterArray(splitWithDelimiter(input, ","));
 
-        String[] inputSplit = input.split(",");
+        return sumIntegerArray(inputSplit);
+    }
+
+    private static Integer sumIntegerArray(Integer[] nums){
         int result = 0;
-        for (String s : inputSplit) {
-            result += parseStringToInt(s);
+        for (Integer num : nums) {
+            result += num;
         }
 
         return result;
+    }
+
+    private static Integer[] parseInterArray(String[] inputs){
+        Integer[] result = new Integer[inputs.length];
+
+        for (int i = 0; i < inputs.length; i++) {
+            result[i] = parseStringToInt(inputs[i]);
+        }
+
+        return result;
+    }
+
+    private static String[] splitWithDelimiter(final String input, final String delimiter) {
+        return input.split(delimiter);
     }
 
     private static Boolean isStringEmpty(final String input){
