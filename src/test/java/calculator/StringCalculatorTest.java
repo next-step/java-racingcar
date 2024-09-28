@@ -1,12 +1,9 @@
 package calculator;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.NullString;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
@@ -55,4 +52,18 @@ public class StringCalculatorTest {
         assertThat(expected).isEqualTo(result);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "'//;\n1;2;3', 6",
+            "'//|\n1|2|3', 6",
+            "'//,\n1,2,3', 6",
+            "'//:\n1:2:3', 6",
+            "'//#\n1#2#3', 6",
+            "'//;\n1;2;3;4', 10",
+            "'//,|\n1,2|3,4', 10"
+    })
+    void 커스텀_구분자를_사용한_합_반환(final String input, final Integer expected) {
+        Integer result = StringCalculator.splitAndSum(input);
+        assertThat(expected).isEqualTo(result);
+    }
 }
