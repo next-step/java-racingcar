@@ -18,4 +18,11 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "123", "45678912"})
+    void 숫자만_입력시_숫자_반환(final String input ){
+        int result = StringCalculator.sum(input);
+        assertThat(result).isEqualTo(Integer.parseInt(input));
+    }
+
 }
