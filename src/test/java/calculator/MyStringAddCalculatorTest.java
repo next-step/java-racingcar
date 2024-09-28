@@ -76,4 +76,9 @@ public class MyStringAddCalculatorTest {
                 .isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    void 숫자가_아닌_값_입력_시_RuntimeException_발생() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1,a,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }

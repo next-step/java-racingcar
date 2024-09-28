@@ -28,9 +28,13 @@ public class StringAddCalculator {
     }
 
     private static void validateNegative(Integer num){
-        if (num < 0) {
+        if (isNegative(num)) {
             throw new RuntimeException("음수는 허용되지 않습니다: " + num);
         }
+    }
+
+    private static boolean isNegative(Integer num) {
+        return num < 0;
     }
 
     private static Integer[] parseInterArray(String[] inputs){
@@ -58,6 +62,10 @@ public class StringAddCalculator {
     }
 
     private static Integer parseStringToInt(final String input) {
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자가 아닌 값이 입력되었습니다: " + input);
+        }
     }
 }
