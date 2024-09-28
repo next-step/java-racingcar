@@ -5,9 +5,13 @@ public class StringAdditionCalculator {
     private static final String DELIMETER = "[,:]";
 
     public static int calculate(String input) {
-        if (input == null || input.isBlank()) return 0;
+        if (isInputEmpty(input)) return 0;
         int[] numbers = extractNumbers(input);
         return sum(numbers);
+    }
+
+    private static boolean isInputEmpty(String input) {
+        return (input == null || input.isBlank());
     }
 
     private static int[] extractNumbers(String input) {
