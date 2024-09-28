@@ -45,7 +45,7 @@ class RacingGameTest {
         final var cars = game.getCars();
         final var softly = new SoftAssertions();
         for (final var car : cars) {
-            softly.assertThat(car.getPosition()).isEqualTo(position);
+            softly.assertThat(car.position()).isEqualTo(position);
         }
         softly.assertAll();
     }

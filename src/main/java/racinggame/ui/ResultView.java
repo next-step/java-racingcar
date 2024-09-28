@@ -21,7 +21,7 @@ public class ResultView {
     }
 
     private static String getPositionGraph(final Car car) {
-        final var position = car.getPosition();
+        final var position = car.position();
         return POSITION_GRAPH.repeat(position);
     }
 
