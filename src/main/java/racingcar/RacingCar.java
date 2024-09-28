@@ -3,17 +3,11 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCar {
-    private static int loop;
-    private static int carCount;
     private static String[] result;
-
     private static Random random = new Random();
 
-    public static void startRace() {
-        carCount = InputView.inputCarCount();
-        loop = InputView.inputLoop();
-
-        race(carCount, loop);
+    public static void main(String[] args) {
+        race(InputView.inputCarCount(), InputView.inputLoop());
     }
 
     static void race(int carCount, int loop) {
