@@ -14,7 +14,7 @@ class StringAddCalculatorTest {
     @NullSource
     @DisplayName("빈 문자열 또는 null이면 0을 반환")
     void whenGivenNullOrEmpty(String input) {
-        int result = StringAddCalculator.emptyOrNull(input);
+        int result = StringAddCalculator.splitAndSum(input);
 
         assertThat(result).isEqualTo(0);
     }
@@ -22,7 +22,7 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("숫자 하나를 입력할 경우 해당 숫자를 반환한다")
     void inputOneNumberStringReturnToInteger() {
-        int result = StringAddCalculator.processOneNumberString("1");
+        int result = StringAddCalculator.splitAndSum("1");
 
         assertThat(result).isEqualTo(1);
     }

@@ -6,15 +6,16 @@ public class StringAddCalculator {
     public static final String COMMA = ",";
     public static final String DELIMETER = ",|:";
     public static final String CUSTOMDELIMETER = "//(.)\n(.*)";
+    public static final int DEFAULTVALUE_OF_NULL_AND_EMPTYSTRING = 0;
 
-    public static int emptyOrNull(String input) {
-        if (input == null || input.isEmpty()) {
-            return 0;
-        }
-        return 1;
+    private StringAddCalculator() {
+        throw new RuntimeException();
     }
 
-    public static int processOneNumberString(String input) {
+    public static int splitAndSum(String input) {
+        if (input == null || input.isEmpty()) {
+            return DEFAULTVALUE_OF_NULL_AND_EMPTYSTRING;
+        }
         return Integer.parseInt(input);
     }
 
@@ -66,5 +67,4 @@ public class StringAddCalculator {
         }
         return numbers;
     }
-
 }
