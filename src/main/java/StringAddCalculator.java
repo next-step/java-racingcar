@@ -7,6 +7,7 @@ public class StringAddCalculator {
     public static final String DELIMETER = ",|:";
     public static final String CUSTOMDELIMETER = "//(.)\n(.*)";
     public static final int DEFAULT_VALUE_OF_NULL_AND_EMPTYSTRING = 0;
+    public static final Pattern pattern = Pattern.compile(CUSTOMDELIMETER);
 
     private StringAddCalculator() {
         throw new RuntimeException();
@@ -16,19 +17,14 @@ public class StringAddCalculator {
         if (input == null || input.isEmpty()) {
             return DEFAULT_VALUE_OF_NULL_AND_EMPTYSTRING;
         }
-        String[] splited = input.split(DELIMETER);
-        return calculateSum(toInt(splited));
-    }
-
-
-    public static int splitWithCustomDelimeter(String input) {
-        Matcher m = Pattern.compile(CUSTOMDELIMETER).matcher(input);
+        Matcher m = pattern.matcher(input);
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens = m.group(2).split(customDelimiter);
             return calculateSum(toInt(tokens));
         }
-        return -1;
+        String[] splited = input.split(DELIMETER);
+        return calculateSum(toInt(splited));
     }
 
     public static void negativeValidation(String input) {

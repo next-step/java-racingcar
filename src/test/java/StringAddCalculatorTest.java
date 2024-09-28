@@ -49,7 +49,7 @@ class StringAddCalculatorTest {
     @ValueSource(strings = {"//;\n1;2;3"})
     @DisplayName("\"//\"와 \"\\n\" 사이의 문자를 커스텀 구분자 사용")
     void customDelimeter(String input) {
-        int result = StringAddCalculator.splitWithCustomDelimeter(input);
+        int result = StringAddCalculator.splitAndSum(input);
 
         assertThat(result).isEqualTo(6);
     }
