@@ -11,47 +11,47 @@ public final class Calculator {
     private final String customSplitterEnder = "\\n";
     private final String[] defaultSplitters = {",", ";"};
 
-    public int calculate(String inputs) {
-        if (isNullOrBlank(inputs)) return 0;
-        List<String> numbers = findNumbers(inputs);
+    public int calculate(String input) {
+        if (isNullOrBlank(input)) return 0;
+        List<String> numbers = findNumbers(input);
         return calculateSum(convertToIntegers(numbers));
     }
 
-    private List<String> findNumbers(String inputs) {
-        Pair<List<String>, String> result = extractSplittersAndCalculatorValues(inputs);
+    private List<String> findNumbers(String input) {
+        Pair<List<String>, String> result = extractSplittersAndCalculatorValues(input);
         List<String> splitters = result.getLeft();
         String values = result.getRight();
         return Arrays.asList(values.split(String.join("|", splitters)));
     }
 
-    private Boolean isNullOrBlank(String inputs) {
-        return inputs == null || inputs.isBlank();
+    private Boolean isNullOrBlank(String input) {
+        return input == null || input.isBlank();
     }
 
-    private Pair<List<String>, String> extractSplittersAndCalculatorValues(String inputs) {
-        List<String> splitters = findSplitters(inputs);
-        String calculatorValue = findValue(inputs);
+    private Pair<List<String>, String> extractSplittersAndCalculatorValues(String input) {
+        List<String> splitters = findSplitters(input);
+        String calculatorValue = findValue(input);
         return Pair.of(splitters, calculatorValue);
     }
 
-    private List<String> findSplitters(String inputs) {
-        if (!inputs.startsWith(customSplitterStarter)) return Arrays.asList(defaultSplitters);
-        String customSplitter = findCustomSplitter(inputs);
+    private List<String> findSplitters(String input) {
+        if (!input.startsWith(customSplitterStarter)) return Arrays.asList(defaultSplitters);
+        String customSplitter = findCustomSplitter(input);
         List<String> splitters = new ArrayList<>(Arrays.asList(defaultSplitters));
         splitters.add(customSplitter);
         return splitters;
     }
 
-    private String findCustomSplitter(String inputs) {
-        int startIndex = inputs.indexOf(customSplitterStarter) + customSplitterStarter.length();
-        int endIndex = inputs.indexOf(customSplitterEnder);
-        return inputs.substring(startIndex, endIndex);
+    private String findCustomSplitter(String input) {
+        int startIndex = input.indexOf(customSplitterStarter) + customSplitterStarter.length();
+        int endIndex = input.indexOf(customSplitterEnder);
+        return input.substring(startIndex, endIndex);
     }
 
-    private String findValue(String inputs) {
-        if (!inputs.startsWith(customSplitterStarter)) return inputs;
-        int valueStartIndex = inputs.indexOf(customSplitterEnder) + customSplitterEnder.length();
-        return inputs.substring(valueStartIndex);
+    private String findValue(String input) {
+        if (!input.startsWith(customSplitterStarter)) return input;
+        int valueStartIndex = input.indexOf(customSplitterEnder) + customSplitterEnder.length();
+        return input.substring(valueStartIndex);
     }
 
     private List<Integer> convertToIntegers(List<String> values) {
