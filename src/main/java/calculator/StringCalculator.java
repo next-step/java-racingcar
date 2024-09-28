@@ -2,12 +2,13 @@ package calculator;
 
 public class StringCalculator {
 
+    private static final String DELIMITER = ",|:";
 
     public static int splitAndSum(final String input){
         if (isStringEmpty(input)){
             return 0;
         }
-        Integer[] inputSplit = parseInterArray(splitWithDelimiter(input, ","));
+        Integer[] inputSplit = parseInterArray(splitWithDelimiter(input, DELIMITER));
 
         return sumIntegerArray(inputSplit);
     }

@@ -42,4 +42,17 @@ public class StringCalculatorTest {
         assertThat(expected).isEqualTo(result);
     }
 
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1,2:=3",
+            "4,5:=9",
+            "1,2:3,4=10",
+            "1,2,3:4,=10"
+    }, delimiter = '=')
+    void 구분자가_여러개일때_합_반환(final String input, final Integer expected){
+        Integer result = StringCalculator.splitAndSum(input);
+        assertThat(expected).isEqualTo(result);
+    }
+
 }
