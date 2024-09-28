@@ -24,6 +24,7 @@ public class StringAddCalculator {
 
     private static int sum(final String inputValue) {
         String[] values = splitString(inputValue);
+        validateInputValue(values);
         int sum = 0;
         for (String value : values) {
             sum += Integer.parseInt(value);
@@ -38,5 +39,13 @@ public class StringAddCalculator {
             return m.group(TARGET_STRING_INDEX).split(customDelimiter);
         }
         return inputValue.split(DELIMITER);
+    }
+
+    private static void validateInputValue(final String[] inputValues) {
+        for(String inputValue : inputValues) {
+            if(Integer.parseInt(inputValue)  < MIN_NUMBER){
+                throw new RuntimeException("음수는 입력할 수 없습니다.");
+            }
+        }
     }
 }
