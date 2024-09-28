@@ -86,15 +86,20 @@ public final class Calculator {
         List<Integer> numbers = new ArrayList<>();
 
         for (String stringNumber : stringNumbers) {
-            try {
-                int number = Integer.parseInt(stringNumber);
-                checkInputNumberIsAllowed(number);
-                numbers.add(number);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("숫자 포멧이 맞지 않습니다: " + stringNumber);
-            }
+            int number = convertToInteger(stringNumber);
+            numbers.add(number);
         }
         return numbers;
+    }
+
+    private static int convertToInteger(String stringNumber) {
+        try {
+            int number = Integer.parseInt(stringNumber);
+            checkInputNumberIsAllowed(number);
+            return number;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자 포멧이 맞지 않습니다: " + stringNumber);
+        }
     }
 
     private static void checkInputNumberIsAllowed(int number) {
