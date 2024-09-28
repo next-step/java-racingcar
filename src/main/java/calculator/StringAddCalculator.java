@@ -3,7 +3,7 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringCalculator {
+public class StringAddCalculator {
 
     private static final String DELIMITER = "[,:]";
     private static final String CUSTOM_DELIMITER_REGEX = "//(.*?)\n(.*)";
@@ -20,10 +20,17 @@ public class StringCalculator {
     private static Integer sumIntegerArray(Integer[] nums){
         int result = 0;
         for (Integer num : nums) {
+            validateNegative(num);
             result += num;
         }
 
         return result;
+    }
+
+    private static void validateNegative(Integer num){
+        if (num < 0) {
+            throw new RuntimeException("음수는 허용되지 않습니다: " + num);
+        }
     }
 
     private static Integer[] parseInterArray(String[] inputs){
@@ -43,7 +50,7 @@ public class StringCalculator {
             return m.group(2).split(customDelimiter);
         }
 
-        return input.split(StringCalculator.DELIMITER);
+        return input.split(StringAddCalculator.DELIMITER);
     }
 
     private static Boolean isStringEmpty(final String input){
