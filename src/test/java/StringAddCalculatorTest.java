@@ -32,4 +32,11 @@ public class StringAddCalculatorTest {
         assertThat(expected).isEqualTo(6);
     }
 
+    @DisplayName("splitAndSum 메소드는 문자열이 '//(구분자)\n(숫자)(구분자)(숫자)(구분자)(숫자)~~' 와 같은 구조로 입력 되었을때, 숫자의 합을 반환해야 한다.")
+    @Test
+    public void splitAndSum_메소드_덧셈_테스트_2() {
+        int expected = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(expected).isEqualTo(6);
+    }
+
 }

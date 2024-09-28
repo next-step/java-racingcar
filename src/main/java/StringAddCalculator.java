@@ -1,8 +1,13 @@
 import utils.validator.Validator;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class StringAddCalculator {
-    public static int splitAndSum(String text) {
 
+    private static final String DEFAULT_DELIMETER = ",|:";
+    private static final String CUSTOM_DELIMETER = "//(.)\n(.*)";
+
+    public static int splitAndSum(String text) {
         if (!Validator.validateUserInput(text)) {
             return 0;
         }
@@ -27,6 +32,22 @@ public class StringAddCalculator {
     }
 
     private static int[] split(String text) {
-        return toInts(text.split(",|:"));
+        if (Validator.hasCustomDelimeter(text)) {
+            return toInts(splitNumberByCustomDelimeter(text));
+        }
+        return toInts(splitNumberByDefaultDelimeter(text));
+    }
+
+    private static String[] splitNumberByCustomDelimeter(String text) {
+        Matcher m = Pattern.compile(CUSTOM_DELIMETER).matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(customDelimiter);
+        }
+        return new String[0];
+    }
+
+    private static String[] splitNumberByDefaultDelimeter(String text) {
+        return text.split(DEFAULT_DELIMETER);
     }
 }
