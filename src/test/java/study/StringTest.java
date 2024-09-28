@@ -37,7 +37,4 @@ public class StringTest {
             target.charAt(-1);
         }).withMessageMatching("String index out of range: -\\d+");
     }
-
-
-
 }
