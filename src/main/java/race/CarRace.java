@@ -19,6 +19,7 @@ public class CarRace {
     }
 
     public List<Car> start() {
+        ResultView.output(cars);
         for (int i = 0; i < tryCount; i++) {
             checkCarForward();
         }
@@ -30,5 +31,6 @@ public class CarRace {
         for (Car car : cars) {
             car.forward(car.getConditionNumber());
         }
+        ResultView.output(cars);
     }
 }
