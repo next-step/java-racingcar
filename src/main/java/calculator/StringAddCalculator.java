@@ -7,6 +7,13 @@ import java.util.regex.Pattern;
 
 public final class StringAddCalculator {
 
+    public static final String DEFAULT_DELIMITER_REGEX = ",|:";
+    public static final String CUSTOM_DELIMITER_REGEX = "//(.*)\n(.*)";
+    public static final String CUSTOM_DELIMITER_PREFIX = "//";
+    public static final int DELIMITER_GROUP = 1;
+    public static final int TARGET_GROUP = 2;
+    public static final List<String> FORBIDDEN_DELIMITERS = List.of("$", "^", "*", "(", ")", "{", "}", "[", "]", "+", "?", "|", ".");
+
     public static int splitAndSum(final String input) {
         List<String> split = split(input);
         List<Integer> listToSum = convertStringsToIntegers(split);
@@ -27,18 +34,15 @@ public final class StringAddCalculator {
     }
 
     private static String getDelimiterRegex(final String input) {
-        final String DEFAULT_DELIMITER_REGEX = ",|:";
-        String delimiterRegex = DEFAULT_DELIMITER_REGEX;
-
-        boolean isCustomDelimiter = input.startsWith("//");
+        boolean isCustomDelimiter = input.startsWith(CUSTOM_DELIMITER_PREFIX);
         if (!isCustomDelimiter) {
             return DEFAULT_DELIMITER_REGEX;
         }
 
-        final String CUSTOM_DELIMITER_REGEX = "//(.*)\n(.*)";
+        String delimiterRegex = DEFAULT_DELIMITER_REGEX;
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
         if (matcher.matches()) {
-            delimiterRegex = matcher.group(1);
+            delimiterRegex = matcher.group(DELIMITER_GROUP);
             checkValidDelimiter(delimiterRegex);
         }
 
@@ -46,15 +50,14 @@ public final class StringAddCalculator {
     }
 
     private static String getTarget(final String input) {
-        boolean isCustomDelimiter = input.startsWith("//");
+        boolean isCustomDelimiter = input.startsWith(CUSTOM_DELIMITER_PREFIX);
         if (!isCustomDelimiter) {
             return input;
         }
 
-        final String CUSTOM_DELIMITER_REGEX = "//(.*)\n(.*)";
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
         if (matcher.matches()) {
-            return matcher.group(2);
+            return matcher.group(TARGET_GROUP);
         }
 
         return input;
@@ -71,8 +74,7 @@ public final class StringAddCalculator {
     }
 
     private static void checkValidDelimiter(String delimiterRegex) {
-        List<String> forbiddenCharacters = List.of("$", "^", "*", "(", ")", "{", "}", "[", "]", "+", "?", "|", ".");
-        for (String item : forbiddenCharacters) {
+        for (String item : FORBIDDEN_DELIMITERS) {
             if (delimiterRegex.contains(item)) {
                 throw new RuntimeException("사용할 수 없는 구분자입니다.");
             }
