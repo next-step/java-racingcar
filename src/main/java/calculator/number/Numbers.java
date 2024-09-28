@@ -12,7 +12,7 @@ public class Numbers {
 
     public Numbers(String[] strings) {
         this.numbers = Arrays.stream(strings)
-                .map(Number::new)
+                .map(Number::from)
                 .collect(Collectors.toList());
     }
 

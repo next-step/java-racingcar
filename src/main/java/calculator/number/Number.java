@@ -1,6 +1,7 @@
 package calculator.number;
 
 import calculator.exception.NumberException;
+import calculator.utils.StringUtils;
 
 import java.util.Objects;
 
@@ -15,17 +16,15 @@ public class Number {
 
     private static final int MINIMUM_VALUE = 0;
 
-    public Number(String value) {
-        try {
-            final var intValue = Integer.parseInt(value);
-            validate(intValue);
-            this.value = intValue;
-        } catch (NumberFormatException exception) {
+    public static Number from(String value) {
+        if (!StringUtils.isNumeric(value)) {
             throw new NumberException(NON_NUMERICAL);
         }
+
+        return new Number(Integer.parseInt(value));
     }
 
-    public Number(int value) {
+    private Number(int value) {
         validate(value);
         this.value = value;
     }
