@@ -23,10 +23,18 @@ public class StringAddCalculator {
         return ret;
     }
 
+    private static int toInt(String num) {
+        int ret = Integer.parseInt(num);
+        if (ret < 0) {
+            throw new IllegalArgumentException("양의 정수가 입력되어야 합니다!");
+        }
+        return ret;
+    }
+
     private static int[] toInts(String[] numbers) {
         int[] ret = new int[numbers.length];
         for (int i = 0 ; i < numbers.length ; i++) {
-            ret[i] = Integer.parseInt(numbers[i]);
+            ret[i] = toInt(numbers[i]);
         }
         return ret;
     }

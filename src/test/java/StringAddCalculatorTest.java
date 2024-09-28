@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
@@ -37,6 +38,13 @@ public class StringAddCalculatorTest {
     public void splitAndSum_메소드_덧셈_테스트_2() {
         int expected = StringAddCalculator.splitAndSum("//;\n1;2;3");
         assertThat(expected).isEqualTo(6);
+    }
+
+    @DisplayName("splitAndSum 메소드는 입력 문자열에 음수가 포함 되었을때, RuntimeException 예외가 반환되어야 한다.")
+    @Test
+    public void splitAndSum_메소드_음수_예외_테스트() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 
 }
