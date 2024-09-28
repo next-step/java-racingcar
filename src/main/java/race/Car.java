@@ -5,10 +5,14 @@ import java.util.Random;
 public class Car {
 
     private int forwardResult = 1;
-    private static final int randomRange = 10;
+    private RandomNumber conditionNumber;
+
+    public Car(RandomNumber randomNumber) {
+        this.conditionNumber = randomNumber;
+    }
 
     public int getConditionNumber() {
-        return new Random().nextInt(randomRange);
+        return conditionNumber.randomNumber();
     }
 
     public void forward(int conditionNumber) {
