@@ -9,7 +9,7 @@ public class StringCalculator {
         return Integer.parseInt(input);
     }
 
-    private static Integer isStringEmpty(String input) {
+    private static Integer isStringEmpty(final String input) {
         if (input == null){
             return 0;
         }
