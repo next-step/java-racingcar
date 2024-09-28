@@ -1,8 +1,8 @@
 package step2;
 
+import step2.delimiter.DefaultNumberParser;
 import step2.delimiter.NumberParser;
 import step2.delimiter.DelimiterNumberParserFactory;
-import step2.exception.StringAddIllegalArgumentException;
 
 import java.util.List;
 
@@ -15,32 +15,22 @@ public class StringAddCalculator {
     }
 
     public int splitAndSum(String text) {
-        if (isEmpty(text)) {
+        if (isBlank(text)) {
             return NOTING;
         }
-        NumberParser numberParser = delimiterNumberParserFactory.getNumberParser(text);
-        List<String> strings = numberParser.splitFrom(text);
-        return calculatePositiveNumberSumFrom(strings);
-    }
 
-    private boolean isEmpty(String text) {
-        return text == null || text.isBlank();
+        NumberParser numberParser = delimiterNumberParserFactory.getNumberParser(text);
+        return calculatePositiveNumberSumFrom(numberParser.split(text));
     }
 
     private int calculatePositiveNumberSumFrom(List<String> strings) {
         return strings.stream()
-                .mapToInt(str -> {
-                    int value = Integer.parseInt(str);
-                    validatePositive(value);
-                    return value;
-                })
+                .mapToInt(DefaultNumberParser::parsePositiveInt)
                 .sum();
     }
 
-    private void validatePositive(int num) {
-        if (num < 0) {
-            throw StringAddIllegalArgumentException.INVALID_NEGATIVE_INPUT_NUMBER;
-        }
+    private boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 
 

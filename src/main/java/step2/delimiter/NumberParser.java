@@ -3,7 +3,7 @@ package step2.delimiter;
 import java.util.List;
 
 public interface NumberParser {
-    List<String> splitFrom(String text);
+    List<String> split(String text);
 
-    boolean isContainsDelimiter(String text);
+    boolean hasDelimiter(String text);
 }
