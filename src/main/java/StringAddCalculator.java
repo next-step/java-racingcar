@@ -6,7 +6,7 @@ public class StringAddCalculator {
     public static final String COMMA = ",";
     public static final String DELIMETER = ",|:";
     public static final String CUSTOMDELIMETER = "//(.)\n(.*)";
-    public static final int DEFAULTVALUE_OF_NULL_AND_EMPTYSTRING = 0;
+    public static final int DEFAULT_VALUE_OF_NULL_AND_EMPTYSTRING = 0;
 
     private StringAddCalculator() {
         throw new RuntimeException();
@@ -14,12 +14,8 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
-            return DEFAULTVALUE_OF_NULL_AND_EMPTYSTRING;
+            return DEFAULT_VALUE_OF_NULL_AND_EMPTYSTRING;
         }
-        return Integer.parseInt(input);
-    }
-
-    public static int splitAndSumWithComma(String input) {
         String[] splited = input.split(COMMA);
         return calculateSum(toInt(splited));
     }
@@ -63,8 +59,16 @@ public class StringAddCalculator {
     private static int[] toInt(String[] splited) {
         int[] numbers = new int[splited.length];
         for (int i = 0; i < splited.length; i++) {
-            numbers[i] = Integer.parseInt(splited[i]);
+            numbers[i] = Integer.parseInt(checkDigit(splited[i]));
         }
         return numbers;
+    }
+    private static String checkDigit(String input) {
+        for (char c : input.toCharArray()) {
+            if(!Character.isDigit(c)) {
+                throw new RuntimeException();
+            }
+        }
+        return input;
     }
 }

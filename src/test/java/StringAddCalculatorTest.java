@@ -31,7 +31,7 @@ class StringAddCalculatorTest {
     @ValueSource(strings = {"1,2"})
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환")
     void splitAndSumWithComma(String input) {
-        int result = StringAddCalculator.splitAndSumWithComma(input);
+        int result = StringAddCalculator.splitAndSum(input);
 
         assertThat(result).isEqualTo(3);
     }
