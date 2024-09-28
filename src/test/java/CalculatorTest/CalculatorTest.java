@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CalculatorTest {
+public final class CalculatorTest {
     private Calculator calculator = new Calculator();
 
     @Test
@@ -53,18 +53,14 @@ public class CalculatorTest {
     @Test
     void notIntegerInputExceptionTest() {
         String input = "1,a,3";
-        assertThatThrownBy(() -> {
-            calculator.calculate(input);
-        })
+        assertThatThrownBy(() -> calculator.calculate(input))
                 .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     void negativeNumberInputExceptionTest() {
         String input = "1,-2,3";
-        assertThatThrownBy(() -> {
-            calculator.calculate(input);
-        })
+        assertThatThrownBy(() -> calculator.calculate(input))
                 .isInstanceOf(RuntimeException.class);
     }
 }
