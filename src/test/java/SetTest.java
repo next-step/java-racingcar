@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -22,19 +22,17 @@ public class SetTest {
         numbers.add(3);
     }
 
-    // Test Case 구현
     @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인한다.")
     @Test
     void countSetSize() {
-        // Then
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("Set에 특정 값이 포함되어 있는지 확인한다")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})  // 테스트할 값들 제공
     void contains(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @DisplayName("Set에 특정 값이 포함되어 있는지 여부를 확인한다")
