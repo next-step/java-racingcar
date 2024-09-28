@@ -10,22 +10,27 @@ public final class Calculator {
     private final String customSplitterStarter = "//";
     private final String customSplitterEnder = "\\n";
     private final String[] defaultSplitters = {",", ";"};
+    private final int defaultReturnValue = 0;
 
     public int calculate(String input) {
-        if (isNullOrBlank(input)) return 0;
-        List<String> numbers = findNumbers(input);
-        return calculateSum(convertToIntegers(numbers));
-    }
-
-    private List<String> findNumbers(String input) {
-        Pair<List<String>, String> result = extractSplittersAndCalculatorValues(input);
-        List<String> splitters = result.getLeft();
-        String values = result.getRight();
-        return Arrays.asList(values.split(String.join("|", splitters)));
+        if (isNullOrBlank(input)) return defaultReturnValue;
+        List<Integer> numbers = parseNumbers(input);
+        return calculateSum(numbers);
     }
 
     private Boolean isNullOrBlank(String input) {
         return input == null || input.isBlank();
+    }
+
+    private List<Integer> parseNumbers(String input) {
+        return convertToIntegers(parseStringNumbers(input));
+    }
+
+    private List<String> parseStringNumbers(String input) {
+        Pair<List<String>, String> result = extractSplittersAndCalculatorValues(input);
+        List<String> splitters = result.getLeft();
+        String values = result.getRight();
+        return Arrays.asList(values.split(String.join("|", splitters)));
     }
 
     private Pair<List<String>, String> extractSplittersAndCalculatorValues(String input) {
