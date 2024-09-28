@@ -1,11 +1,13 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringAdditionCalculatorTest {
 
@@ -38,5 +40,13 @@ class StringAdditionCalculatorTest {
     @Test
     void calculateTest_withCustomDelimiter() {
         assertThat(StringAdditionCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @DisplayName("숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException을 반환하는지")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,-2,3", "안,녕,하,세,요"})
+    void calculateTest_withNonNumericValue_OrNegativeValue(String input) {
+        assertThatThrownBy(() -> StringAdditionCalculator.calculate(input))
+                .isInstanceOf(RuntimeException.class);
     }
 }
