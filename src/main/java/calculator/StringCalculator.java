@@ -3,20 +3,18 @@ package calculator;
 public class StringCalculator {
 
     public static int sum(final String input){
-        Integer x = isStringEmpty(input);
-        if (x != null) return x;
+        if (isStringEmpty(input)){
+            return 0;
+        }
 
-        return Integer.parseInt(input);
+        return parseStringToInt(input);
     }
 
-    private static Integer isStringEmpty(final String input) {
-        if (input == null){
-            return 0;
-        }
+    private static Boolean isStringEmpty(final String input){
+        return input == null || input.isBlank();
+    }
 
-        if (input.isBlank()){
-            return 0;
-        }
-        return null;
+    private static Integer parseStringToInt(final String input) {
+        return Integer.parseInt(input);
     }
 }
