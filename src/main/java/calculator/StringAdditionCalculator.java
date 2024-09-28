@@ -2,7 +2,9 @@ package calculator;
 
 public class StringAdditionCalculator {
 
-    private static final String DELIMITER = "[,:]";
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    private static final String CUSTOM_DELIMITER_PREFIX = "//";
+    private static final String CUSTOM_DELIMITER_SUFFIX = "\n";
 
     public static int calculate(String input) {
         if (isInputEmpty(input)) return 0;
@@ -15,21 +17,33 @@ public class StringAdditionCalculator {
     }
 
     private static int[] extractNumbers(String input) {
-        String delimiter = DELIMITER;
-        if (input.startsWith("//")) {
-            int start = input.indexOf("//") + 2;
-            int end = input.indexOf("\n");
-
-            if (end != -1) {
-                delimiter = input.substring(start, end);
-                input = input.substring(end + 1);
-                System.out.println(input);
-            }
+        String delimiter = DEFAULT_DELIMITER;
+        if (isCustomDelimiterUsed(input)) {
+            delimiter = extractCustomDelimiter(input);
+            input = removeCustomDelimiterPart(input);
         }
-        String[] inputArray = input.split(delimiter);
-        int[] numbers = new int[inputArray.length];
-        for (int i = 0; i < inputArray.length; i++) {
-            numbers[i] = Integer.parseInt(inputArray[i]);
+        return convertStringArrayToIntArray(input.split(delimiter));
+    }
+
+    private static boolean isCustomDelimiterUsed(String input) {
+        return input.startsWith(CUSTOM_DELIMITER_PREFIX) && input.contains(CUSTOM_DELIMITER_SUFFIX);
+    }
+
+    private static String extractCustomDelimiter(String input) {
+        int start = input.indexOf("//") + 2;
+        int end = input.indexOf("\n");
+        return input.substring(start, end);
+    }
+
+    private static String removeCustomDelimiterPart(String input) {
+        int end = input.indexOf("\n");
+        return input.substring(end + 1);
+    }
+
+    private static int[] convertStringArrayToIntArray(String[] stringArray) {
+        int[] numbers = new int[stringArray.length];
+        for (int i = 0; i < stringArray.length; i++) {
+            numbers[i] = Integer.parseInt(stringArray[i]);
         }
         return numbers;
     }
