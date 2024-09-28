@@ -31,4 +31,16 @@ public class RacingCarGameManagementTest {
         Assertions.assertThat(carGameManagement.getGames()).isEqualTo(numberOfGames);
         Assertions.assertThat(carGameManagement.getCars()).hasSize(numberOfCars);
     }
+
+    @Test
+    @DisplayName("랜던 이동 횟수 조회 테스트")
+    void createRandomMoveTest() {
+        //given
+
+        //when
+        int randomInt = RandomUtil.getInt();
+
+        //then
+        Assertions.assertThat(randomInt).isBetween(0, 9);
+    }
 }
