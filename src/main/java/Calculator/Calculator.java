@@ -5,12 +5,14 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public final class Calculator {
     private final String customSplitterStarter = "//";
     private final String customSplitterEnder = "\\n";
     private final String[] defaultSplitters = {",", ";"};
     private final int defaultReturnValue = 0;
+    private final String regexSpecialChars = ".^$*+?{}[]()|\\";
 
     public int calculate(String input) {
         if (isNullOrBlank(input)) return defaultReturnValue;
@@ -27,16 +29,17 @@ public final class Calculator {
     }
 
     private List<String> parseStringNumbers(String input) {
-        Pair<List<String>, String> result = extractSplittersAndCalculatorValues(input);
+        Pair<List<String>, String> result = extractSplittersAndNumberString(input);
         List<String> splitters = result.getLeft();
-        String values = result.getRight();
-        return Arrays.asList(values.split(String.join("|", splitters)));
+        String numberString = result.getRight();
+        String splitRegex = convertToRegex(splitters);
+        return Arrays.asList(numberString.split(splitRegex));
     }
 
-    private Pair<List<String>, String> extractSplittersAndCalculatorValues(String input) {
+    private Pair<List<String>, String> extractSplittersAndNumberString(String input) {
         List<String> splitters = findSplitters(input);
-        String calculatorValue = findValue(input);
-        return Pair.of(splitters, calculatorValue);
+        String numberString = findNumberString(input);
+        return Pair.of(splitters, numberString);
     }
 
     private List<String> findSplitters(String input) {
@@ -53,10 +56,30 @@ public final class Calculator {
         return input.substring(startIndex, endIndex);
     }
 
-    private String findValue(String input) {
+    private String findNumberString(String input) {
         if (!input.startsWith(customSplitterStarter)) return input;
         int valueStartIndex = input.indexOf(customSplitterEnder) + customSplitterEnder.length();
         return input.substring(valueStartIndex);
+    }
+
+    private String convertToRegex(List<String> splitters) {
+        List<String> splittersWithEscape = escapeSplitters(splitters);
+        return String.join("|", splittersWithEscape);
+    }
+
+    private List<String> escapeSplitters(List<String> splitters) {
+        List<String> splittersWithEscape = new ArrayList<>();
+
+        for (String splitter : splitters) {
+            String splitterWithEscape = escapeSplitter(splitter);
+            splittersWithEscape.add(splitterWithEscape);
+        }
+        return splittersWithEscape;
+    }
+
+    private String escapeSplitter(String splitter) {
+        if (splitter.chars().anyMatch(ch -> regexSpecialChars.indexOf(ch) >= 0)) return Pattern.quote(splitter);
+        return splitter;
     }
 
     private List<Integer> convertToIntegers(List<String> stringNumbers) {
