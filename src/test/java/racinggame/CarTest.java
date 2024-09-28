@@ -1,6 +1,5 @@
 package racinggame;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.car.Car;
@@ -9,12 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car;
-
-    @BeforeEach
-    void setUp() {
-        car = new Car();
-    }
+    private final Car car = new Car();
 
     @Test
     @DisplayName("이동 조건이 충족되면 1번 움직인다.")

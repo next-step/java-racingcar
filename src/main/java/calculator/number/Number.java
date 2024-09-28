@@ -16,7 +16,7 @@ public class Number {
 
     private static final int MINIMUM_VALUE = 0;
 
-    public static Number of(String value) {
+    public static Number from(String value) {
         if (!StringUtils.isNumeric(value)) {
             throw new NumberException(NON_NUMERICAL);
         }

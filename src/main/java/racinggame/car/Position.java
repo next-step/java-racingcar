@@ -9,7 +9,9 @@ public class Position {
 
     private static final int MINIMUM_VALUE = 0;
 
-    public static Position of() {
+    private static final int FORWARD_STEP = 1;
+
+    public static Position from() {
         return new Position(MINIMUM_VALUE);
     }
 
@@ -18,7 +20,7 @@ public class Position {
     }
 
     public Position forward() {
-        return new Position(value + 1);
+        return new Position(value + FORWARD_STEP);
     }
 
     public int value() {
