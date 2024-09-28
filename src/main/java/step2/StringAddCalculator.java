@@ -23,11 +23,11 @@ public class StringAddCalculator {
     }
 
     private static int sum(final String inputValue) {
-        String[] values = splitString(inputValue);
-        validateInputValue(values);
+        int[] values = toIntArray(inputValue);
         int sum = 0;
-        for (String value : values) {
-            sum += Integer.parseInt(value);
+        for (int value : values) {
+            validateInputValue(value);
+            sum += value;
         }
         return sum;
     }
@@ -41,11 +41,19 @@ public class StringAddCalculator {
         return inputValue.split(DELIMITER);
     }
 
-    private static void validateInputValue(final String[] inputValues) {
-        for(String inputValue : inputValues) {
-            if(Integer.parseInt(inputValue)  < MIN_NUMBER){
-                throw new RuntimeException("음수는 입력할 수 없습니다.");
-            }
+    private static void validateInputValue(final int value) {
+        if(value < MIN_NUMBER) {
+            throw new RuntimeException("음수는 입력할 수 없습니다.");
         }
+    }
+
+    private static int[] toIntArray(final String inputValue) {
+        String[] values = splitString(inputValue);
+        int[] result = new int[values.length];
+        for(int i = 0; i < result.length; i++) {
+            result[i] = Integer.parseInt(values[i]);
+        }
+
+        return result;
     }
 }
