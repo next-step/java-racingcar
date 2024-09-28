@@ -16,7 +16,7 @@ class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(1);
@@ -26,19 +26,19 @@ class SetTest {
 
     @DisplayName("size 확인")
     @Test
-    void size(){
+    void size() {
         assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void containsValue(int number){
+    void containsValue(int number) {
         assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void containsCsv(int input, boolean expected){
+    void containsCsv(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
