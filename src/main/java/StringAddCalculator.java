@@ -27,25 +27,19 @@ public class StringAddCalculator {
         return calculateSum(toInt(splited));
     }
 
-    public static void negativeValidation(String input) {
-        String[] splited = input.split(COMMA);
-        for (String s : splited) {
-            validNegativeNumberString(s);
-        }
-    }
-
-    private static void validNegativeNumberString(String s) {
-        if (Integer.parseInt(s) < 0) {
-            throw new RuntimeException();
-        }
-    }
-
     private static int calculateSum(int[] splited) {
         int summation = 0;
         for (int num : splited) {
+            isNegative(num);
             summation += num;
         }
         return summation;
+    }
+
+    private static void isNegative(int num) {
+        if (num < 0) {
+            throw new RuntimeException();
+        }
     }
 
     private static int[] toInt(String[] splited) {
@@ -55,12 +49,17 @@ public class StringAddCalculator {
         }
         return numbers;
     }
+
     private static String checkDigit(String input) {
         for (char c : input.toCharArray()) {
-            if(!Character.isDigit(c)) {
-                throw new RuntimeException();
-            }
+            valudateDigit(c);
         }
         return input;
+    }
+
+    private static void valudateDigit(char c) {
+        if (!Character.isDigit(c)) {
+            throw new RuntimeException();
+        }
     }
 }

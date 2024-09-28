@@ -58,7 +58,7 @@ class StringAddCalculatorTest {
     @ValueSource(strings = {"-1,2,3"})
     @DisplayName("음수를 전달할 경우 RuntimeException 발생")
     void negativeThrowRuntimeException(String input) {
-        assertThatThrownBy(() -> StringAddCalculator.negativeValidation(input))
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
                 .isInstanceOf(RuntimeException.class);
     }
 }
