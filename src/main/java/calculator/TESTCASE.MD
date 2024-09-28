@@ -6,6 +6,6 @@
 - [x] 쉼표(,)로 구분된 여러 숫자 입력 시 합 반환
 - [x] 쉼표(,)와 콜론(:)이 혼합된 구분자로 여러 숫자 입력 시 합 반환
 - [x] 커스텀 구분자를 사용한 경우 합 반환
-- [ ] 음수 입력 시 RuntimeException 발생
+- [x] 음수 입력 시 RuntimeException 발생
 - [ ] 숫자가 아닌 값 입력 시 RuntimeException 발생
 
