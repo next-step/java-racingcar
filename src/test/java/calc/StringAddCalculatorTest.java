@@ -39,9 +39,18 @@ public class StringAddCalculatorTest {
         }).isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    void 숫자가_아닌_경우() {
+        assertThatThrownBy(() -> {
+            stringAddCalculator.splitAndSum("s");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
     @ParameterizedTest
     @NullAndEmptySource
     void 빈값(String input) {
         assertThat(stringAddCalculator.splitAndSum(input)).isEqualTo(0);
     }
+
+
 }
