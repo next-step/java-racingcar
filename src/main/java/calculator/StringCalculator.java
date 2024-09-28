@@ -2,13 +2,13 @@ package calculator;
 
 public class StringCalculator {
 
-    private static final String DELIMITER = ",|:";
+    private static final String DELIMITER = "[,:]";
 
     public static int splitAndSum(final String input){
         if (isStringEmpty(input)){
             return 0;
         }
-        Integer[] inputSplit = parseInterArray(splitWithDelimiter(input, DELIMITER));
+        Integer[] inputSplit = parseInterArray(splitWithDelimiter(input));
 
         return sumIntegerArray(inputSplit);
     }
@@ -32,8 +32,8 @@ public class StringCalculator {
         return result;
     }
 
-    private static String[] splitWithDelimiter(final String input, final String delimiter) {
-        return input.split(delimiter);
+    private static String[] splitWithDelimiter(final String input) {
+        return input.split(StringCalculator.DELIMITER);
     }
 
     private static Boolean isStringEmpty(final String input){

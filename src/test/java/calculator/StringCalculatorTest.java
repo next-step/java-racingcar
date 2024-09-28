@@ -50,7 +50,7 @@ public class StringCalculatorTest {
             "1,2:3,4=10",
             "1,2,3:4,=10"
     }, delimiter = '=')
-    void 구분자가_여러개일때_합_반환(final String input, final Integer expected){
+    void 구분자가_쉼표와_콜론일때_합_반환(final String input, final Integer expected){
         Integer result = StringCalculator.splitAndSum(input);
         assertThat(expected).isEqualTo(result);
     }
