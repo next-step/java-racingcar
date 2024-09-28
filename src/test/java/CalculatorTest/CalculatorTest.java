@@ -37,14 +37,14 @@ public class CalculatorTest {
     }
 
     @Test
-    void collonSpliterTest() {
+    void collonSplitterTest() {
         String input = "1,2;3";
         Integer result = calculator.calculate(input);
         assertThat(result).isEqualTo(6);
     }
 
     @Test
-    void customSpliterTest() {
+    void customSplitterTest() {
         String input = "//;\\n1;2;3";
         Integer result = calculator.calculate(input);
         assertThat(result).isEqualTo(6);
