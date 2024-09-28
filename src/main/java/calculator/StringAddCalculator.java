@@ -56,7 +56,7 @@ public class StringAddCalculator {
         return input.split(StringAddCalculator.DELIMITER);
     }
 
-    private static Boolean isStringEmpty(final String input){
+    private static boolean isStringEmpty(final String input){
         return input == null || input.isBlank();
     }
 
