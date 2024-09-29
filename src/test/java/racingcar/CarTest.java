@@ -32,4 +32,12 @@ public class CarTest {
         car.move(input);
         assertThat(car.moveCount).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0"}, delimiter = ':')
+    @DisplayName("4미만인 경우, 자동차 정지")
+    void move_stop(int input, int expected) {
+        car.move(input);
+        assertThat(car.moveCount).isEqualTo(expected);
+    }
 }
