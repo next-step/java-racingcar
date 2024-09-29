@@ -1,15 +1,21 @@
 public class RacingCar {
-    private int move;
+    private int status;
 
     public RacingCar() {
-        this.move = 0;
+        this.status = 0;
     }
 
-    public void setMove(int move) {
-        this.move = move;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public int getMove() {
-        return move;
+    public int getStatus() {
+        return status;
+    }
+
+    public void move(int num) {
+        if (num >= 4) {
+            this.status++;
+        }
     }
 }
