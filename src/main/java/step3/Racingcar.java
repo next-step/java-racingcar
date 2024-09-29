@@ -15,7 +15,11 @@ public class Racingcar {
 
         validateInput(car, round);
 
-        // 게임 시작
+        race(Integer.parseInt(car), Integer.parseInt(round));
+    }
+
+    private static void race(int car, int round) {
+        PrintView.input(car, round);
     }
 
     private static void validateInput(String carInput, String roundInput) {
