@@ -5,8 +5,6 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    private static final String CUSTOM_DELIMETER = "//(.)\n(.*)";
-
     private static final Pattern positiveNumberPattern = Pattern.compile("^\\d+$");
 
     public static boolean validateUserInput(String text) {
@@ -22,11 +20,6 @@ public class Validator {
 
     private static boolean isNull(String text) {
         return text == null;
-    }
-
-    public static boolean hasCustomDelimeter(String text) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMETER).matcher(text);
-        return m.find();
     }
 
     public static boolean isValidNumber(String num) {

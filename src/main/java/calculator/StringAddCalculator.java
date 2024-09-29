@@ -6,8 +6,14 @@ import java.util.regex.Matcher;
 
 public class StringAddCalculator {
 
-    private static final String DEFAULT_DELIMETER = ",|:";
-    private static final String CUSTOM_DELIMETER = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMETER_REGEX = ",|:";
+    private static final String CUSTOM_DELIMETER_REGEX = "//(.)\n(.*)";
+
+    private static final int CUSTOM_DELIMETER = 1;
+    private static final int CUSTOM_PATTERN_NUMBERS = 2;
+
+
+    private static final Pattern customDelimeterPattern = Pattern.compile(CUSTOM_DELIMETER_REGEX);
 
     private static StringAddCalculator instance;
 
@@ -51,22 +57,11 @@ public class StringAddCalculator {
     }
 
     private int[] split(String text) {
-        if (Validator.hasCustomDelimeter(text)) {
-            return toInts(splitNumberByCustomDelimeter(text));
+        Matcher customPatternMatcher = customDelimeterPattern.matcher(text);
+        if (customPatternMatcher.matches()) {
+            String customDelimiter = customPatternMatcher.group(CUSTOM_DELIMETER);
+            return toInts(customPatternMatcher.group(CUSTOM_PATTERN_NUMBERS).split(customDelimiter));
         }
-        return toInts(splitNumberByDefaultDelimeter(text));
-    }
-
-    private String[] splitNumberByCustomDelimeter(String text) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMETER).matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
-        }
-        return new String[0];
-    }
-
-    private String[] splitNumberByDefaultDelimeter(String text) {
-        return text.split(DEFAULT_DELIMETER);
+        return toInts(text.split(DEFAULT_DELIMETER_REGEX));
     }
 }
