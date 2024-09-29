@@ -1,4 +1,4 @@
-package Study;
+package study;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
@@ -23,6 +23,7 @@ public class StringTest {
         str = str.substring(1, str.length()-1);
 
         assertThat(str).doesNotContain("(",")");
+        assertThat(str).isEqualTo("1,2");
     }
 
     @Test
@@ -41,4 +42,3 @@ public class StringTest {
                 }).withMessageMatching("Index \\d, Size \\d");
     }
 }
-
