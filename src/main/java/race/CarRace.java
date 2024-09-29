@@ -36,6 +36,5 @@ public class CarRace {
         for (Car car : cars) {
             car.forward();
         }
-        ResultView.output(cars);
     }
 }
