@@ -18,12 +18,16 @@ public class WorldRallyChampionship {
     public void openWordRallyChampionShip() {
         readyCarRacing();
         startRace();
+        closeRace();
     }
 
-    public void setRacingCars(int carCount) {
-        this.racingCars = new ArrayList<>(carCount);
-        for (int i = 0; i < carCount; i++) {
-            this.racingCars.add(new RacingCar());
+    private void closeRace() {
+        inputView.closeScanner();
+    }
+    public void setRacingCars(List<String> carNames) {
+        this.racingCars = new ArrayList<>(carNames.size());
+        for (int i = 0; i < carNames.size(); i++) {
+            this.racingCars.add(new RacingCar(carNames.get(i)));
         }
     }
 
@@ -32,8 +36,8 @@ public class WorldRallyChampionship {
     }
 
     private void readyCarRacing() {
-        int carCount = this.inputView.receiveCarCount();
-        setRacingCars(carCount);
+        List<String> carNames = this.inputView.receiveCarNames();
+        setRacingCars(carNames);
         this.raceCount = inputView.receiveRaceCount();
     }
 }
