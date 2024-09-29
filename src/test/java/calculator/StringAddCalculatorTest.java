@@ -30,4 +30,13 @@ public class StringAddCalculatorTest {
         assertThat(splitAndSum("1,2:3")).isEqualTo(6);
     }
 
+    @Test
+    void 숫자_하나_구분자_없이() {
+        assertThat(splitAndSum("1")).isEqualTo(1);
+    }
+
+    @Test
+    void 구분자만_입력() {
+        assertThat(splitAndSum(":")).isEqualTo(0);
+    }
 }
