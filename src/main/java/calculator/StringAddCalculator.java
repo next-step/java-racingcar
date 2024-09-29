@@ -42,10 +42,20 @@ public class StringAddCalculator {
         int[] numbers = new int[values.length];
 
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers[i] = toInt(values[i]);
         }
 
         return numbers;
+    }
+
+    private static int toInt(String values) {
+        int number = Integer.parseInt(values);
+
+        if(number < 0) {
+            throw new RuntimeException("음수 입력 불가");
+        }
+
+        return number;
     }
 
     private static boolean isNullOrBlank(String text) {

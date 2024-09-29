@@ -6,5 +6,5 @@
 - [x] 구분자만 입력 했을 경우 0 반환
 - [x] "//"와 "\n" 문자 사이에 커스텀 구분자를 지정 ("//;\n1;2;3" => 6)
 - [x] 커스텀 구분자 이외 구분자 입력 될 시 NumberFormatException 예외 발생 확인
-- [ ] 음수를 전달할 경우 RuntimeException 예외("-1,2,3" => RuntimeException)
+- [x] 음수를 전달할 경우 RuntimeException 예외("-1,2,3" => RuntimeException)
    

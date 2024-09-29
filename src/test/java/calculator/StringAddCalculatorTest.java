@@ -60,4 +60,13 @@ public class StringAddCalculatorTest {
 
     }
 
+    @Test
+    void 음수_입력() {
+
+        assertThatThrownBy(() ->
+                splitAndSum("//;\n-1;2;3")
+        ).isInstanceOf(RuntimeException.class);
+
+    }
+
 }
