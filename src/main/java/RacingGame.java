@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -13,10 +14,13 @@ public class RacingGame {
         this.attempts = attempts;
     }
 
-    public void run() {
+    public List<List<Integer>> run() {
+        List<List<Integer>> allStates = new ArrayList<>();
         for (int i = 0; i < attempts; i++) {
             moveCars();
+            allStates.add(getCarPositions());
         }
+        return allStates;
     }
 
     private void moveCars() {
@@ -25,7 +29,13 @@ public class RacingGame {
         }
     }
 
-    public List<RacingCar> getCars() {
-        return cars;
+    private List<Integer> getCarPositions() {
+        return cars.stream()
+                .map(RacingCar::getPosition)
+                .collect(Collectors.toList());
+    }
+
+    public int getCarCount() {
+        return cars.size();
     }
 }
