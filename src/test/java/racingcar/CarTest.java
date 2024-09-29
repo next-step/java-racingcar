@@ -30,7 +30,7 @@ public class CarTest {
     @DisplayName("4이상인 경우, 자동차 전진")
     void move_forward(int input, int expected) {
         car.move(input);
-        assertThat(car.moveCount).isEqualTo(expected);
+        assertThat(car.getMoveCount()).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -38,6 +38,6 @@ public class CarTest {
     @DisplayName("4미만인 경우, 자동차 정지")
     void move_stop(int input, int expected) {
         car.move(input);
-        assertThat(car.moveCount).isEqualTo(expected);
+        assertThat(car.getMoveCount()).isEqualTo(expected);
     }
 }
