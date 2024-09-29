@@ -4,6 +4,8 @@ import racing.util.NumberGenerator;
 
 public class Car {
 
+    private static final int DEFAULT_POSITION = 0;
+    private static final int RANDOM_NUMBER_BOUNDARY = 4;
     private int position;
 
     private Car(int position) {
@@ -22,10 +24,10 @@ public class Car {
 
     private boolean isMovable(NumberGenerator numberGenerator) {
         int randomNumber = numberGenerator.generate();
-        return randomNumber >= 4;
+        return randomNumber >= RANDOM_NUMBER_BOUNDARY;
     }
 
     public static Car createCar() {
-        return new Car(0);
+        return new Car(DEFAULT_POSITION);
     }
 }
