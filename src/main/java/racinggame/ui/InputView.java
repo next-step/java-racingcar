@@ -11,7 +11,7 @@ public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputView() {
-        throw new IllegalStateException("view view");
+        throw new IllegalStateException("view class");
     }
 
     public static int promptCarCount() {

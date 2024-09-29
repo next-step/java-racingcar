@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 public class Round {
 
-    private final List<Position> result;
-
     private static final int BOUND = 10;
     private static final int MOVABLE_MINIMUM_NUMBER = 4;
+
+    private final List<Position> result;
 
     private Round(List<Car> cars) {
         this.result = cars.stream().map(Car::position).collect(Collectors.toList());

@@ -5,7 +5,7 @@ public class Car {
     private Position position;
 
     public Car() {
-        this.position = Position.from();
+        this.position = new Position();
     }
 
     public void move(final MoveStrategy moveStrategy) {

@@ -13,11 +13,11 @@ import static racinggame.exception.ErrorMessage.ROUND_REQUIREMENT_ERROR;
 
 public class RacingGame {
 
-    private final int roundCount;
-    private final List<Car> cars;
-
     private static final int MINIMUM_CAR_COUNT = 2;
     private static final int MINIMUM_ROUND_COUNT = 1;
+
+    private final int roundCount;
+    private final List<Car> cars;
 
     public RacingGame(int carCount, int roundCount) {
         validateCarCount(carCount);

@@ -10,11 +10,10 @@ import static calculator.exception.ErrorMessage.NOT_ALLOWED_NEGATIVE;
 
 public class Number {
 
-    private final int value;
-
     public static final Number ZERO = new Number(0);
-
     private static final int MINIMUM_VALUE = 0;
+
+    private final int value;
 
     public static Number from(String value) {
         if (!StringUtils.isNumeric(value)) {
