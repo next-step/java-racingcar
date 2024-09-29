@@ -3,12 +3,12 @@ package racingCar;
 import java.util.List;
 
 public class ResultView {
-    public void printRaceCondition(List<RacingCar> racingCars) {
-        System.out.println("실행 결과");
+    private final String FORWARD_STRING = "-";
 
+    public void printRaceCondition(List<RacingCar> racingCars) {
         racingCars.forEach(racingCar -> {
             int distance = racingCar.getPosition();
-            System.out.println("-".repeat(distance)););
+            System.out.println(FORWARD_STRING.repeat(distance));
         });
     }
 }
