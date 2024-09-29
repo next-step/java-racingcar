@@ -7,7 +7,7 @@ public class Calculator implements Calculate {
 
     public static final int INVALID_INPUT_VALUE = 0;
     public static final String USING_PREFIX = "//";
-    public static Character customDelimiter;
+    public Character customDelimiter;
 
     public String expression;
 
@@ -102,6 +102,53 @@ public class Calculator implements Calculate {
 
     @Override
     public int splitAndSum(String express) {
+        int sumValue = 0;
+
+        if (expression.equals("0")) {
+            return 0;
+        }
+
+        if (customDelimiterUsing(customDelimiter)) {
+            return executeWithCustomDelimiter(express);
+        }
+
+        int i = executeWithDefaultDelimiter(express);
+        return (i >= 0) ? i : sumValue;
+    }
+
+    private int executeWithDefaultDelimiter(String express) {
+        int sumValue = 0;
+
+        for (int i = 0; i < express.length(); i++) {
+            sumValue += getValue(express, i);
+        }
+        return sumValue;
+    }
+
+    private static int getValue(String express, int i) {
+        if (express.charAt(i) != DELIMITER_COMMA.getValue() && express.charAt(i) != DELIMITER_COLON.getValue()) {
+            return Integer.parseInt(String.valueOf(express.charAt(i)));
+        }
         return 0;
+    }
+
+    private boolean customDelimiterUsing(Character customDelimiter) {
+        return customDelimiter != null;
+    }
+
+    private int executeWithCustomDelimiter(String express) {
+        int sumValue = 0;
+
+        for (int i = 4; i < express.length(); i++) {
+            sumValue = getSumValue(express, i, sumValue);
+        }
+        return sumValue;
+    }
+
+    private int getSumValue(String express, int i, int sumValue) {
+        if (express.charAt(i) != DELIMITER_COMMA.getValue() && express.charAt(i) != DELIMITER_COLON.getValue() && express.charAt(i) != customDelimiter) {
+            sumValue += Integer.parseInt(String.valueOf(express.charAt(i)));
+        }
+        return sumValue;
     }
 }
