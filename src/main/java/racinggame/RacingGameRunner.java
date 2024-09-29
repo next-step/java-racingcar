@@ -38,7 +38,7 @@ public class RacingGameRunner implements GameRunner {
     private static List<RacingGameRound> settingRacingRounds(final RacingGameRoundInput roundInput, final List<RacingCar> racingCars) {
         final List<RacingGameRound> rounds = new ArrayList<>();
         for (int i = 0; i < roundInput.getRound(); i++) {
-            rounds.add(new RacingGameRound(racingCars));
+            rounds.add(new RacingGameRound(racingCars, new RacingGameRandomNumber()));
         }
 
         return rounds;

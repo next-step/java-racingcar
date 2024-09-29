@@ -1,7 +1,5 @@
 package racinggame;
 
-import racinggame.utils.RacingGameUtils;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -9,16 +7,18 @@ import java.util.Map;
 
 public class RacingGameRound {
     private final List<RacingCar> racingCars;
+    private final RandomNumberGenerator randomNumberGenerator;
     private final Map<RacingCar, Boolean> racingCarMoveStatusMap;
 
-    public RacingGameRound(final List<RacingCar> racingCars) {
+    public RacingGameRound(final List<RacingCar> racingCars, final RandomNumberGenerator randomNumberGenerator) {
         this.racingCars = racingCars;
+        this.randomNumberGenerator = randomNumberGenerator;
         this.racingCarMoveStatusMap = new HashMap<>();
     }
 
     public void start() {
         for (final RacingCar racingCar : racingCars) {
-            final boolean move = racingCar.move(RacingGameUtils.generateRandomNumber());
+            final boolean move = racingCar.move(randomNumberGenerator.generate());
             racingCarMoveStatusMap.put(racingCar, move);
         }
     }
