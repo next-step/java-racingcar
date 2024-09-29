@@ -56,4 +56,8 @@ public class Race {
     private static int generateIntBetween0and9() {
         return new Random().nextInt(RANDOM_UPPER_LIMIT);
     }
+
+    public static boolean canGo(int number) {
+        return number >= 4;
+    }
 }
