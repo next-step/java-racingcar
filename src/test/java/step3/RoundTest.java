@@ -3,11 +3,8 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.car.Car;
 import step3.car.CarController;
 import step3.random.TestRandomNumberGenerator;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,8 +18,8 @@ class RoundTest {
         TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(randomNumber);
 
         CarController carController = new CarController(testRandomNumberGenerator);
-        List<Car> cars = List.of(new Car(), new Car());
-        Round round = new Round(cars, carController);
+        Round round = new Round(carController);
+        round.init(2);
 
         // when
         round.start();
@@ -41,8 +38,8 @@ class RoundTest {
         TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(randomNumber);
 
         CarController carController = new CarController(testRandomNumberGenerator);
-        List<Car> cars = List.of(new Car(), new Car());
-        Round round = new Round(cars, carController);
+        Round round = new Round(carController);
+        round.init(2);
 
         // when
         round.start();
