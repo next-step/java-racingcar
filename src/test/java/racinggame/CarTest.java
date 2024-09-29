@@ -15,4 +15,12 @@ class CarTest {
         assertThat(car.getPosition()).isZero();
     }
 
+    @Test
+    @DisplayName("자동차가 한칸 전진한다.")
+    void moveForwardTest() {
+        var car = Car.create();
+        car.move();
+        assertThat(car.getPosition()).isOne();
+    }
+
 }

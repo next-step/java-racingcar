@@ -1,7 +1,7 @@
 package racinggame;
 
 public class Car {
-    private final int position;
+    private int position;
 
     private Car() {
         this.position = 0;
@@ -13,5 +13,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void move() {
+        position++;
     }
 }
