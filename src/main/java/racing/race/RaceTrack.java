@@ -1,27 +1,40 @@
 package racing.race;
 
+import racing.RaceRule;
 import racing.input.RaceInput;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import static racing.Constants.*;
+import java.util.stream.Collectors;
 
 public class RaceTrack {
 
-    private final RacingChecker checker;
+    private final RaceInput raceInput;
+    private final List<RaceCar> raceCars;
 
-    public RaceTrack(RacingChecker checker) {
-        this.checker = checker;
+    public RaceTrack(RaceInput raceInput) {
+        this.raceInput = raceInput;
+        raceCars = prepareRace(raceInput.getNumOfCar());
     }
 
-    public void race(RaceInput input, List<Car> racingCars) {
-        for (int i = 0; i < input.getNumOfAttempt(); i++) {
-            racingCars.forEach(this::forward);
+    private List<RaceCar> prepareRace(int numOfCar) {
+        List<RaceCar> raceRecords = new ArrayList<>();
+
+        for (int i = 0; i < numOfCar; i++) {
+            raceRecords.add(new RaceCar());
+        }
+        return raceRecords;
+    }
+
+    public void race(RaceRule recordChecker) {
+        for (int i = 0; i < raceInput.getNumOfAttempt(); i++) {
+            raceCars.forEach(raceRecord -> raceRecord.race(recordChecker.isForward()));
         }
     }
 
-    private void forward(Car car) {
-        car.forward(this.checker.isForward(new Random().nextInt(RANDOM_NUMBER_BOUND)));
+    public List<RaceRecord> getRaceResult() {
+        return raceCars.stream()
+                .map(RaceCar::raceRecord)
+                .collect(Collectors.toUnmodifiableList());
     }
 }

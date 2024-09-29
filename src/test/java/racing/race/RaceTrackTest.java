@@ -1,36 +1,60 @@
 package racing.race;
 
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.input.RaceInput;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racing.Constants.FORWARD;
-import static racing.Constants.STOP;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTrackTest {
 
+    RaceInput input = new RaceInput(3, 5);
+    RaceTrack track = new RaceTrack(input);
+
+    @BeforeEach
+    void prepare() {
+        track.race(new RandomNumRaceRule());
+    }
+
     @Test
     void race() {
-        RaceInput input = new RaceInput(3, 5);
-        RaceTrack track = new RaceTrack(new RacingChecker());
-        List<Car> racingCars = IntStream.range(0, input.getNumOfCar())
-                .mapToObj(i -> new Car())
-                .collect(Collectors.toList());
+        List<RaceRecord> raceRecords = track.getRaceResult();
 
-        track.race(input, racingCars);
-
-        for (Car racingCar : racingCars) {
+        assertThat(raceRecords).hasSize(input.getNumOfCar());
+        for (RaceRecord raceRecord : raceRecords) {
             for (int i = 0; i < input.getNumOfAttempt(); i++) {
-                assertThat(racingCar.raceResult())
-                        .isBetween(STOP, FORWARD);
+                assertThat(raceRecord.raceResult(i)).isIn(RaceGauge.FORWARD, RaceGauge.STOP);
             }
-            Assertions.assertThatThrownBy(racingCar::raceResult)
-                    .isInstanceOf(IndexOutOfBoundsException.class);
+            assertThat(raceRecord.raceResult(input.getNumOfAttempt() - 1))
+                    .isInstanceOf(RaceGauge.class);
         }
+    }
+
+    @Test
+    void 레코드_값_추가불가() {
+        List<RaceRecord> raceRecords = track.getRaceResult();
+
+        assertThatThrownBy(() -> raceRecords.add(new RaceRecord(new ArrayList<>())))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void 레코드_값_제거불가() {
+        List<RaceRecord> raceRecords = track.getRaceResult();
+
+        assertThatThrownBy(() -> raceRecords.remove(raceRecords.size() - 1))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void 레코드_재할당_시_원본유지() {
+        List<RaceRecord> raceRecords = track.getRaceResult();
+
+        assertThatThrownBy(() -> raceRecords.set(raceRecords.size() - 1, new RaceRecord(new ArrayList<>())))
+                .isInstanceOf(UnsupportedOperationException.class);
     }
 }
