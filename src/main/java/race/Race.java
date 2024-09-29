@@ -4,13 +4,14 @@ import java.util.Random;
 
 public class Race {
     public static final int RANDOM_UPPER_LIMIT = 10;
+    public static final int MINIMUM_TO_GO_FORWARD = 4;
 
     private static int generateIntBetween0and9() {
         return new Random().nextInt(RANDOM_UPPER_LIMIT);
     }
 
     public static boolean canGo(int number) {
-        return number >= 4;
+        return number >= MINIMUM_TO_GO_FORWARD;
     }
 
     public static int[] initiateCarStates(int carCount) {
