@@ -9,7 +9,7 @@ public class RacingCarTest {
     private RacingCar racingCar = new RacingCar();
 
     @Test
-    @DisplayName("한 칸 이동할 경우 position이 1 증가한다.")
+    @DisplayName("한 칸 이동할 경우 위치가 1 증가한다.")
     public void moveForward_positionShouldBeIncrease() {
         int prevPosition = racingCar.getPosition();
         racingCar.moveForward();
@@ -17,4 +17,14 @@ public class RacingCarTest {
         assertThat(racingCar.getPosition()).isEqualTo(prevPosition + 1);
     }
 
+    @Test
+    @DisplayName("차의 위치를 조회할 경우 position 값을 반환한다.")
+    public void getPositionProperly() {
+        racingCar.moveForward();
+        racingCar.moveForward();
+
+        int position = racingCar.getPosition();
+
+        assertThat(position).isEqualTo(2);
+    }
 }

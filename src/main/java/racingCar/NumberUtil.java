@@ -3,7 +3,15 @@ package racingCar;
 import java.util.Random;
 
 public class NumberUtil {
-    public static int getRandomInt() {
-        return new Random().nextInt(10);
+    private Random random;
+
+    public NumberUtil() {
+        this.random = new Random();
+    }
+    public NumberUtil(Random random) {
+        this.random = random;
+    }
+    public int getRandomInt() {
+        return this.random.nextInt(10);
     }
 }

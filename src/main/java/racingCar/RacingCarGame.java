@@ -9,6 +9,15 @@ public class RacingCarGame {
     private static int MOVE_CONDITION_NUMBER = 4;
     private final String PRINT_EXECUTION_RESULT = "실행 결과";
     private final ResultView resultView = new ResultView();
+    private NumberUtil numberUtil;
+
+    public RacingCarGame() {
+        this.numberUtil = new NumberUtil();
+    }
+
+    public RacingCarGame(NumberUtil numberUtil) {
+        this.numberUtil = numberUtil;
+    }
 
     private boolean isMovable(int number) {
         return number >= MOVE_CONDITION_NUMBER;
@@ -17,7 +26,7 @@ public class RacingCarGame {
     public void race(List<RacingCar> racingCars) {
         System.out.println(PRINT_EXECUTION_RESULT);
         for (RacingCar car : racingCars) {
-            if (isMovable(NumberUtil.getRandomInt())) {
+            if (isMovable(numberUtil.getRandomInt())) {
                 car.moveForward();
             };
         }
