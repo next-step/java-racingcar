@@ -32,13 +32,10 @@ public class StringTest {
     @Test
     @DisplayName("문자열 특정 위치 확인하기")
     void charAt() {
-        String value = "abc";
 
         assertThatThrownBy(() ->
-                value.charAt(value.length() + 1)
+                "abc".charAt("abc".length() + 1)
         ).isInstanceOf(StringIndexOutOfBoundsException.class);
-
     }
-
 
 }
