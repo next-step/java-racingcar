@@ -42,4 +42,3 @@ public class StringTest {
                 }).withMessageMatching("Index \\d, Size \\d");
     }
 }
-
