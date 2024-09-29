@@ -4,6 +4,8 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
 
+    private InputValidator() {};
+
     private static final Pattern positiveNumberPattern = Pattern.compile("^\\d+$");
 
     public static boolean validateUserInput(String text) {
