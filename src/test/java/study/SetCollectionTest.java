@@ -27,7 +27,7 @@ public class SetCollectionTest {
 
     @Test
     @DisplayName("numbers size 확인하기")
-    void charAt() {
+    void size() {
         assertThat(numbers).hasSize(3);
     }
 
@@ -35,7 +35,7 @@ public class SetCollectionTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void contains(int value) {
-        assertThat(numbers.contains(value)).isTrue();
+        assertThat(numbers).contains(value);
     }
 
 
