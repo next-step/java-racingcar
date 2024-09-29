@@ -1,11 +1,15 @@
-import java.util.Random;
+package racingCar;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
-    private RacingCar[] racingCars;
+    private List<RacingCar> racingCars;
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
     private static int MOVE_CONDITION_NUMBER = 4;
+    private int raceCount = 0;
 
     private boolean isMovable(int number) {
         return number >= MOVE_CONDITION_NUMBER;
@@ -21,20 +25,19 @@ public class RacingCarGame {
     }
 
     private void readyCarRacing() {
-        inputView.receiveCarCount();
+        int carCount = inputView.receiveCarCount();
 
-        int carCount = inputView.getCarCount();
+        racingCars = new ArrayList<>(carCount);
 
-        racingCars = new RacingCar[carCount];
         for (int i = 0; i < carCount; i++) {
-            racingCars[i] = new RacingCar();
+            racingCars.add(new RacingCar());
         }
 
-        inputView.receiveMoveCount();
+        this.raceCount = inputView.receiveRaceCount();
     }
 
     private void startRace() {
-        IntStream.range(0, inputView.getMoveCount()).forEach(i -> race());
+        IntStream.range(0, raceCount).forEach(i -> race());
     }
     private void race() {
         for (RacingCar car : racingCars) {

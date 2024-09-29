@@ -1,3 +1,5 @@
+package stringCalculator;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,19 +42,25 @@ public class StringAddCalculator {
 
     private int[] convertStringArrayToIntArray(String[] input) {
         return Arrays.stream(input)
-                .mapToInt(this::validateAndParse)
+                .mapToInt(this::parseInt)
+                .map(this::validatePositive)
                 .toArray();
     }
 
-    private int validateAndParse(String value) {
+    private int parseInt(String value) {
         try {
-            int number = Integer.parseInt(value); // 정수로 변환
-            if (number < 0) {
-                throw new NegativeNumberException("음수값이 입력되었습니다: " + value); // 음수 처리
-            }
+            int number = Integer.parseInt(value);
             return number;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력값입니다: " + value, e); // 잘못된 입력 처리
+            throw new IllegalArgumentException("잘못된 입력값입니다: " + value, e);
         }
+    }
+
+    private int validatePositive(int number) {
+        if (number < 0) {
+            throw new NegativeNumberException("음수값이 입력되었습니다: " + number);
+        }
+
+        return number;
     }
 }

@@ -1,4 +1,4 @@
-import java.util.stream.IntStream;
+package racingCar;
 
 public class RacingCar {
 
