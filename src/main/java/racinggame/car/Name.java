@@ -3,6 +3,8 @@ package racinggame.car;
 import racinggame.utils.StringUtils;
 import racinggame.exception.CarException;
 
+import java.util.Objects;
+
 import static racinggame.exception.ErrorMessage.INVALID_CAR_NAME;
 
 public class Name {
@@ -28,4 +30,20 @@ public class Name {
         return this.value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Name name = (Name) o;
+        return Objects.equals(value, name.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(value);
+    }
 }

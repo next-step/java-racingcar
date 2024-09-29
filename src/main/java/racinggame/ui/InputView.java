@@ -2,11 +2,11 @@ package racinggame.ui;
 
 import java.util.Scanner;
 
-import static racinggame.ui.MessageConstants.CAR_COUNT_QUESTION;
-import static racinggame.ui.MessageConstants.NOT_INTEGER;
-import static racinggame.ui.MessageConstants.ROUNDS_QUESTION;
-
 public class InputView {
+
+    public static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요? ";
+    public static final String ROUNDS_QUESTION = "시도할 회수는 몇 회 인가요? ";
+    public static final String NOT_INTEGER = "정수로 재입력해주세요: ";
 
     private static final Scanner SCANNER = new Scanner(System.in);
 

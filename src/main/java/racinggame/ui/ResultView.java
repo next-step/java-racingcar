@@ -5,10 +5,10 @@ import racinggame.game.Round;
 
 import java.util.List;
 
-import static racinggame.ui.MessageConstants.POSITION_GRAPH;
-import static racinggame.ui.MessageConstants.RESULT_PROMPT;
-
 public class ResultView {
+
+    public static final String RESULT_PROMPT = "실행 결과";
+    public static final String POSITION_GRAPH = "-";
 
     private ResultView() {
         throw new IllegalStateException("view class");
