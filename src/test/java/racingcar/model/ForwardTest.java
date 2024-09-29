@@ -1,8 +1,12 @@
 package racingcar.model;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.ForwardException;
+import racingcar.model.enums.Status;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -28,6 +32,14 @@ public class ForwardTest {
     void 동등_비교(int number) {
         Forward actual = new Forward(number);
         Forward expected = new Forward(number);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void number_값이_4_이상일_경우_전진한다(int number) {
+        Forward actual = new Forward(number);
+        Forward expected = new Forward(Status.FORWARD);
         assertThat(actual).isEqualTo(expected);
     }
 }
