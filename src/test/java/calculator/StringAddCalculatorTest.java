@@ -21,8 +21,13 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-   void 컴마_구분자_합_반환(){
-       assertThat(splitAndSum("1,2")).isEqualTo(3);
-   }
+    void 컴마_구분자_합_반환() {
+        assertThat(splitAndSum("1,2")).isEqualTo(3);
+    }
+
+    @Test
+    void 컴마_와_콜론_구분자_두개_허용() {
+        assertThat(splitAndSum("1,2:3")).isEqualTo(6);
+    }
 
 }

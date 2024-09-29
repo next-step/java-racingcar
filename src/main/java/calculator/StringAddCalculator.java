@@ -2,6 +2,8 @@ package calculator;
 
 public class StringAddCalculator {
 
+    public static final String DELIMITER = ",|:";
+
     public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
             return 0;
@@ -21,11 +23,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-
-        if (text.contains(",")) {
-            return text.split(",");
-        }
-        return new String[]{text};
+        return text.split(DELIMITER);
     }
 
     private static int[] toInt(String[] values) {
