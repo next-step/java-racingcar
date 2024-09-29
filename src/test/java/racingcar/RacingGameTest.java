@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.exception.PositiveNumberException;
 import racingcar.exception.RacingGameException;
 
 import static org.assertj.core.api.Assertions.*;
@@ -21,8 +22,8 @@ public class RacingGameTest {
     void 자동차의_갯수_1대_미만이면_오류(int round) {
         assertThatThrownBy(() -> {
             RacingGame racingGame = new RacingGame(round, 1);
-        }).isInstanceOf(RacingGameException.class)
-                .hasMessage("자동차는 최소 1대 이상이어야 합니다.");
+        }).isInstanceOf(PositiveNumberException.class)
+                .hasMessage("음수는 입력될 수 없습니다.");
     }
 
     @ParameterizedTest
@@ -38,8 +39,8 @@ public class RacingGameTest {
     void 이동_1번_미만_오류(int movement) {
         assertThatThrownBy(() -> {
             RacingGame racingGame = new RacingGame(1, movement);
-        }).isInstanceOf(RacingGameException.class)
-                .hasMessage("이동은 최소 1번 이상이어야 합니다.");
+        }).isInstanceOf(PositiveNumberException.class)
+                .hasMessage("음수는 입력될 수 없습니다.");
     }
 
     @Test
