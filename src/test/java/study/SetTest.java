@@ -30,16 +30,6 @@ public class SetTest {
     assertThat(numbers.size()).isNotEqualTo(4);
   }
 
-  @DisplayName("Collection.contains()로 Set의 각 요소를 확인할 수 있다.")
-  @Test
-  void contains() {
-    assertThat(numbers.contains(1)).isTrue();
-    assertThat(numbers.contains(2)).isTrue();
-    assertThat(numbers.contains(3)).isTrue();
-    assertThat(numbers.contains(4)).isFalse();
-    assertThat(numbers.contains(5)).isFalse();
-  }
-
   @DisplayName("@ParameterizedTest를 활용하여, 주어진 소스 값에 대한 테스트로 중복코드를 제거할 수 있다.")
   @ParameterizedTest(name = "{index} => element={0}, expectedResult={1}")
   @CsvSource({
