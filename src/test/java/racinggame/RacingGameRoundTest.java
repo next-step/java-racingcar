@@ -2,6 +2,8 @@ package racinggame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.util.RacingGameRandomNumber;
+import racinggame.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 

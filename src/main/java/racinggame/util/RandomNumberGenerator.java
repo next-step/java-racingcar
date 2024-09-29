@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.util;
 
 public interface RandomNumberGenerator {
     int generate();

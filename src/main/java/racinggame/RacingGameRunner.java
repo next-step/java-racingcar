@@ -4,6 +4,7 @@ import racinggame.input.RacingCarInput;
 import racinggame.input.RacingGameRoundInput;
 import racinggame.ui.MessageReader;
 import racinggame.ui.MessageWriter;
+import racinggame.util.RacingGameRandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
