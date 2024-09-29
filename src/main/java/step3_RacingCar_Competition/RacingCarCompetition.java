@@ -11,7 +11,6 @@ public class RacingCarCompetition {
     private final boolean STOP = false;
 
     public void startRacing() {
-        insertRacingCarData();
         RacingCarInfo racingCarInfo = insertRacingCarData();
         int totalNumberOfCars = racingCarInfo.totalNumberOfCars();
         int totalMovingCount = racingCarInfo.totalMovingCount();
@@ -69,7 +68,7 @@ public class RacingCarCompetition {
         IntStream.range(0, totalNumberOfCars)
                 .mapToObj(racingCarInfo::findRacingCarData)
                 .forEachOrdered(System.out::println);
-        System.out.println("\n");
+        System.out.println();
     }
 
     /**
