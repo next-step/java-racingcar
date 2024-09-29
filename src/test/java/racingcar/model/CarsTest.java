@@ -14,9 +14,6 @@ import static racingcar.model.enums.Status.STOP;
 public class CarsTest {
     @Test
     void 자동차들의_주어진_이동_횟수_동안_전진_멈춤_상태를_저장한다() {
-        int forwardNumber = 4;
-        int stopNumber = 0;
-
         Car car1 = new Car();
         Car car2 = new Car();
         Car car3 = new Car();
