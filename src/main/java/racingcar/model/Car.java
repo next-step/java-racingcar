@@ -3,20 +3,23 @@ package racingcar.model;
 import racingcar.model.enums.Status;
 import racingcar.model.wrapper.ForwardNumber;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Car {
-    private Status currentStatus;
+    private final List<Status> statuses;
 
     public Car() {
+        this.statuses = new ArrayList<>();
     }
 
-    protected Car(Status currentStatus) {
-        this.currentStatus = currentStatus;
+    public Car(List<Status> statuses) {
+        this.statuses = statuses;
     }
 
     public void move(ForwardNumber forwardNumber) {
-        this.currentStatus = Status.extractByNumber(forwardNumber);
+        this.statuses.add(Status.extractByNumber(forwardNumber));
     }
 
     @Override
@@ -24,11 +27,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return currentStatus == car.currentStatus;
+        return Objects.equals(statuses, car.statuses);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(currentStatus);
+        return Objects.hash(statuses);
     }
 }
