@@ -22,10 +22,18 @@ public final class StringAddCalculator {
     private static List<Integer> convertStringsToIntegers(final List<String> split) {
         List<Integer> result = new ArrayList<>();
         for (String number : split) {
+            validateNumber(number);
             result.add(Integer.parseInt(number));
         }
 
         return result;
+    }
+
+    private static void validateNumber(final String number) {
+        String nonDigitRegex = "\\D+";
+        if (number.matches(nonDigitRegex)) {
+            throw new NumberFormatException("숫자 이외의 문자를 사용할 수 없습니다.");
+        }
     }
 
     private static int sum(final List<Integer> list) {
