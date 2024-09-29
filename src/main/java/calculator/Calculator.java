@@ -10,7 +10,7 @@ public abstract class Calculator {
         try {
             return sum(operands(str));
         } catch (NumberFormatException e) {
-            throw new RuntimeException("The operand must be a number");
+            throw new IllegalOperandException("The operand must be a number");
         }
     }
 
@@ -19,7 +19,7 @@ public abstract class Calculator {
             .mapToInt(Integer::parseInt)
             .peek(operand -> {
                 if (operand < 0) {
-                    throw new RuntimeException("The operand cannot be a negative number");
+                    throw new IllegalOperandException("The operand cannot be a negative number");
                 }
             })
             .sum();
