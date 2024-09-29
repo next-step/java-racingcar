@@ -48,7 +48,7 @@ class CarRaceTest {
         int carCount = 2;
         int tryCount = 2;
 
-        FixedCheckForward stayCondition = new FixedCheckForward(FIX_UNFORWARD_CONDITION);
+        ForwardCheck stayCondition = new FixedCheckForward(FIX_UNFORWARD_CONDITION);
 
         CarRace carRace = new CarRace(carCount, tryCount, stayCondition);
 
