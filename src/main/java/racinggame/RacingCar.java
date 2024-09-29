@@ -8,10 +8,13 @@ public class RacingCar {
         this.position = 0;
     }
 
-    public void move(final int moveCondition) {
+    public boolean move(final int moveCondition) {
         if (moveCondition > MOVE_THRESHOLD) {
             this.position++;
+            return true;
         }
+
+        return false;
     }
 
     public int currentPosition() {
