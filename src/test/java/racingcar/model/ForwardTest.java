@@ -42,4 +42,12 @@ public class ForwardTest {
         Forward expected = new Forward(Status.FORWARD);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void number_값이_4_미만일_경우_멈춘다(int number) {
+        Forward actual = new Forward(number);
+        Forward expected = new Forward(Status.STOP);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
