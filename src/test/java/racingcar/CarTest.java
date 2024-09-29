@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
@@ -22,5 +23,13 @@ public class CarTest {
     void move_OutOfRangeException(int input) {
         assertThatThrownBy(() -> car.move(input))
                 .isInstanceOf(OutOfRangeException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
+    @DisplayName("4이상인 경우, 자동차 전진")
+    void move_forward(int input, int expected) {
+        car.move(input);
+        assertThat(car.moveCount).isEqualTo(expected);
     }
 }
