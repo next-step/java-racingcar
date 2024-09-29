@@ -3,11 +3,10 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static final String COMMA = ",";
-    public static final String DELIMETER = ",|:";
-    public static final String CUSTOMDELIMETER = "//(.)\n(.*)";
-    public static final int DEFAULT_VALUE_OF_NULL_AND_EMPTYSTRING = 0;
-    public static final Pattern pattern = Pattern.compile(CUSTOMDELIMETER);
+    private static final String DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final int DEFAULT_VALUE_OF_NULL_AND_EMPTY_STRING = 0;
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
 
     private StringAddCalculator() {
         throw new RuntimeException();
@@ -15,7 +14,7 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
-            return DEFAULT_VALUE_OF_NULL_AND_EMPTYSTRING;
+            return DEFAULT_VALUE_OF_NULL_AND_EMPTY_STRING;
         }
         Matcher m = pattern.matcher(input);
         if (m.find()) {
@@ -23,7 +22,7 @@ public class StringAddCalculator {
             String[] tokens = m.group(2).split(customDelimiter);
             return calculateSum(toInt(tokens));
         }
-        String[] splited = input.split(DELIMETER);
+        String[] splited = input.split(DELIMITER);
         return calculateSum(toInt(splited));
     }
 
