@@ -26,8 +26,7 @@ class CarTest {
 
     @Test
     void 자동차_진행조건인_4이상의_수가_주어지면_한칸_전진한다() {
-        ForwardCheck fixedCheckForward = new FixedCheckForward(true);
-        Car car = new Car(fixedCheckForward);
+        Car car = new Car(new FixedGo());
 
         car.forward();
 

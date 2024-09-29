@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 
 class CarRaceTest {
 
-    public static final boolean FIX_FORWARD_CONDITION = true;
-    public static final boolean FIX_UNFORWARD_CONDITION = false;
     private ForwardCheck checkCarForward;
 
     @BeforeEach
@@ -33,9 +31,7 @@ class CarRaceTest {
         int carCount = 2;
         int tryCount = 2;
 
-        FixedCheckForward goCondition = new FixedCheckForward(FIX_FORWARD_CONDITION);
-
-        CarRace carRace = new CarRace(carCount, tryCount, goCondition);
+        CarRace carRace = new CarRace(carCount, tryCount, new FixedGo());
 
         List<Car> raceResult = carRace.proceedRound();
 
@@ -48,9 +44,7 @@ class CarRaceTest {
         int carCount = 2;
         int tryCount = 2;
 
-        ForwardCheck stayCondition = new FixedCheckForward(FIX_UNFORWARD_CONDITION);
-
-        CarRace carRace = new CarRace(carCount, tryCount, stayCondition);
+        CarRace carRace = new CarRace(carCount, tryCount, new FixedStay());
 
         List<Car> raceResult = carRace.proceedRound();
 
