@@ -64,4 +64,9 @@ public class Race {
     public static int[] initiateCarStates(int carCount) {
         return new int[carCount];
     }
+
+
+    public static void moveCarForward(int[] carStates, int carIndex) {
+        carStates[carIndex]++;
+    }
 }
