@@ -1,5 +1,6 @@
 package race;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -14,5 +15,19 @@ public class RaceTest {
 
         // then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void 자동차_전진() {
+        // given
+        int[] carStates = {1, 2, 3};
+        int carIndex = 0;
+        int originalCarState = carStates[carIndex];
+
+        // when
+        Race.moveCarForward(carStates, carIndex);
+
+        // then
+        assertThat(carStates[carIndex]).isEqualTo(originalCarState + 1);
     }
 }
