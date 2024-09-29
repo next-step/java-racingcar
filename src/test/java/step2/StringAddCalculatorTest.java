@@ -5,7 +5,6 @@ import static step2.StringAddCalculator.*;
 
 import org.junit.jupiter.api.Test;
 
-// 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
 class StringAddCalculatorTest {
 	@Test
 	void 숫자하나_숫자반환() {
@@ -24,7 +23,19 @@ class StringAddCalculatorTest {
 	}
 
 	@Test
+	void 콜론으로_분할해서_더하기() {
+		assertThat(calculate("1:2:3")).isEqualTo(6);
+	}
+
+	@Test
 	void 커스텀_구분자_테스트() {
 		assertThat(calculate("//hello\n1hello2,3:4hello7")).isEqualTo(17);
+	}
+
+	@Test
+	void 숫자이외의값_음수_에러_테스트() {
+		assertThatThrownBy(() -> calculate("1,-2,3,4")).isInstanceOf(RuntimeException.class);
+		assertThatThrownBy(() -> calculate("1,-2,이상한값,4")).isInstanceOf(RuntimeException.class);
+		assertThatThrownBy(() -> calculate("%/unExpectedValue\r1,-2,3,4")).isInstanceOf(RuntimeException.class);
 	}
 }
