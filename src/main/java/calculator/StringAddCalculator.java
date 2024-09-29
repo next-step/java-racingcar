@@ -13,7 +13,7 @@ public class StringAddCalculator {
         if(isBlank(text)){
             return 0;
         }
-        return getSum(toInts(split(text)));
+        return sum(toInts(split(text)));
     }
 
     private static boolean isBlank(String text) {
@@ -39,14 +39,20 @@ public class StringAddCalculator {
     }
 
     private static int toInt(String text) {
-        int number = Integer.parseInt(text);
+        int number;
+        try{
+            number = Integer.parseInt(text);
+        }catch (NumberFormatException ex){
+            throw new IllegalArgumentException("문자형숫자가 아닌 값을 입력하면 예외가 발생한다", ex);
+        }
+
         if(number < 0){
             throw new IllegalArgumentException("음수를 입력할 수 없습니다");
         }
         return number;
     }
 
-    private static int getSum(int[] numbers) {
+    private static int sum(int[] numbers) {
         int sum = 0;
         for (int number : numbers) {
             sum += number;

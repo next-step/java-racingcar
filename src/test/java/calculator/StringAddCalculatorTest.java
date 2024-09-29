@@ -52,7 +52,7 @@ class StringAddCalculatorTest {
     @Test
     void splitAndSumByNonNumber(){
         assertThatThrownBy(() -> splitAndSum("문자형숫자아님,2:3"))
-                .isInstanceOf(NumberFormatException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
