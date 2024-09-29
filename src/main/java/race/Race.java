@@ -12,4 +12,8 @@ public class Race {
     public static boolean canGo(int number) {
         return number >= 4;
     }
+
+    public static int[] initiateCarStates(int carCount) {
+        return new int[carCount];
+    }
 }
