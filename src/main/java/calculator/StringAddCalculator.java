@@ -1,6 +1,6 @@
 package calculator;
 
-import calculator.utils.validator.Validator;
+import calculator.utils.validator.InputValidator;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -27,7 +27,7 @@ public class StringAddCalculator {
     }
 
     public int splitAndSum(String text) {
-        if (!Validator.validateUserInput(text)) {
+        if (!InputValidator.validateUserInput(text)) {
             return 0;
         }
 
@@ -43,7 +43,7 @@ public class StringAddCalculator {
     }
 
     private int toInt(String num) {
-        Validator.isValidNumber(num);
+        InputValidator.isValidNumber(num);
         int ret = Integer.parseInt(num);
         return ret;
     }

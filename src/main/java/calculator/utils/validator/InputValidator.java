@@ -1,9 +1,8 @@
 package calculator.utils.validator;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Validator {
+public class InputValidator {
 
     private static final Pattern positiveNumberPattern = Pattern.compile("^\\d+$");
 
