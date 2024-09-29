@@ -1,6 +1,7 @@
 package race;
 
+@FunctionalInterface
 public interface RandomNumber {
 
-    int randomNumber();
+    boolean isForward();
 }
