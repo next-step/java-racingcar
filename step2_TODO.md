@@ -5,6 +5,6 @@
 - [x] 숫자 하나 문자열 입력시 해당 숫자를 반환 ("1" -> 1)
 - [x] 구분자만 입력 했을 경우 0 반환
 - [x] "//"와 "\n" 문자 사이에 커스텀 구분자를 지정 ("//;\n1;2;3" => 6)
-- [ ] 커스텀 구분자 이외 구분자 입력 될 시 IllegalArgumentException 예외 throw 한다
+- [x] 커스텀 구분자 이외 구분자 입력 될 시 NumberFormatException 예외 발생 확인
 - [ ] 음수를 전달할 경우 RuntimeException 예외("-1,2,3" => RuntimeException)
    

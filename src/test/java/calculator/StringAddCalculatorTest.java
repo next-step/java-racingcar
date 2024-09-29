@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.NullSource;
 
 import static calculator.StringAddCalculator.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
@@ -48,6 +49,15 @@ public class StringAddCalculatorTest {
     @Test
     void 커스텀_구분자_여러단어() {
         assertThat(splitAndSum("//;:\n1;:2;:3")).isEqualTo(6);
+    }
+
+    @Test
+    void 커스텀_구분자_이외_입력() {
+
+        assertThatThrownBy(() ->
+                splitAndSum("//;\n1:2;3")
+        ).isInstanceOf(NumberFormatException.class);
+
     }
 
 }
