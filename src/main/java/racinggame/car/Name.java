@@ -26,7 +26,7 @@ public class Name {
         }
     }
 
-    private String value() {
+    public String value() {
         return this.value;
     }
 
@@ -45,5 +45,10 @@ public class Name {
     @Override
     public int hashCode() {
         return Objects.hashCode(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }
