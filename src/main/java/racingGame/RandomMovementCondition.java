@@ -1,3 +1,5 @@
+package racingGame;
+
 import java.util.Random;
 
 public class RandomMovementCondition implements MovementCondition {

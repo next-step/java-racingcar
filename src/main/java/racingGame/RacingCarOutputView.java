@@ -1,3 +1,5 @@
+package racingGame;
+
 import java.util.List;
 
 public class RacingCarOutputView {

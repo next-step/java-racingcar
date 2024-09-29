@@ -1,3 +1,5 @@
+package racingGame;
+
 public class RacingCar {
     private int position;
     private final MovementCondition movementCondition;
