@@ -68,4 +68,12 @@ public class StringAddCalculatorTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("음수를 계산할 수 없습니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1,문자", "//#\ntext#2"})
+    void 계산에_숫자_이외의_문자를_사용할_수_없다(String input) {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
+                .isInstanceOf(NumberFormatException.class)
+                .hasMessage("숫자 이외의 문자를 사용할 수 없습니다.");
+    }
 }
