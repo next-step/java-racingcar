@@ -29,7 +29,7 @@ class CarRaceTest {
     }
 
     @Test
-    void 레이스가_start되고_isForward가_true라면_자동차가_조건에_맞게_전진한다() {
+    void round가_진행되고_isForward가_true라면_자동차가_조건에_맞게_전진한다() {
         int carCount = 2;
         int tryCount = 2;
 
@@ -37,14 +37,14 @@ class CarRaceTest {
 
         CarRace carRace = new CarRace(carCount, tryCount, goCondition);
 
-        List<Car> raceResult = carRace.start();
+        List<Car> raceResult = carRace.proceedRound();
 
         assertThat(raceResult).hasSize(carCount);
-        assertThat(raceResult.get(0).getForwardResult()).isEqualTo(3);
+        assertThat(raceResult.get(0).getForwardResult()).isEqualTo(2);
     }
 
     @Test
-    void 레이스가_start되고_isForward가_false라면_자동차가_처음_진행상태로_머무른다() {
+    void round가_진행되고_isForward가_false라면_자동차가_처음_진행상태로_머무른다() {
         int carCount = 2;
         int tryCount = 2;
 
@@ -52,7 +52,7 @@ class CarRaceTest {
 
         CarRace carRace = new CarRace(carCount, tryCount, stayCondition);
 
-        List<Car> raceResult = carRace.start();
+        List<Car> raceResult = carRace.proceedRound();
 
         assertThat(raceResult).hasSize(carCount);
         assertThat(raceResult.get(0).getForwardResult()).isEqualTo(1);

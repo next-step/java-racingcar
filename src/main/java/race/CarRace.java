@@ -13,16 +13,17 @@ public class CarRace {
         initCar(carCount, randomNumber);
     }
 
-    public List<Car> start() {
-        for (int i = 0; i < tryCount; i++) {
-            checkCarForward();
-        }
-
+    public List<Car> proceedRound() {
+        checkCarForward();
         return cars;
     }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getTryCount() {
+        return tryCount;
     }
 
     private void initCar(int carCount, RandomNumber randomNumber) {
