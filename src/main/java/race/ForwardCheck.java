@@ -1,7 +1,7 @@
 package race;
 
 @FunctionalInterface
-public interface RandomNumber {
+public interface ForwardCheck {
 
     boolean isForward();
 }

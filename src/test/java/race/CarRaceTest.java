@@ -11,11 +11,11 @@ class CarRaceTest {
 
     public static final boolean FIX_FORWARD_CONDITION = true;
     public static final boolean FIX_UNFORWARD_CONDITION = false;
-    private RandomNumber checkCarForward;
+    private ForwardCheck checkCarForward;
 
     @BeforeEach
     void setUp() {
-        checkCarForward = new CarRandomNumber();
+        checkCarForward = new CarForwardCheck();
     }
 
     @Test

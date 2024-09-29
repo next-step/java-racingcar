@@ -1,6 +1,6 @@
 package race;
 
-public class FixedCheckForward implements RandomNumber {
+public class FixedCheckForward implements ForwardCheck {
 
     private boolean isForward;
 

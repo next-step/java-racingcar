@@ -3,9 +3,9 @@ package race;
 public class Car {
 
     private int forwardResult = 1;
-    private RandomNumber carForwardCheck;
+    private ForwardCheck carForwardCheck;
 
-    public Car(RandomNumber carForwardCheck) {
+    public Car(ForwardCheck carForwardCheck) {
         this.carForwardCheck = carForwardCheck;
     }
 

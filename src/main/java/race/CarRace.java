@@ -8,9 +8,9 @@ public class CarRace {
     private List<Car> cars = new ArrayList<>();
     private int tryCount;
 
-    public CarRace(int carCount, int tryCount, RandomNumber randomNumber) {
+    public CarRace(int carCount, int tryCount, ForwardCheck forwardCheck) {
         this.tryCount = tryCount;
-        initCar(carCount, randomNumber);
+        initCar(carCount, forwardCheck);
     }
 
     public List<Car> proceedRound() {
@@ -26,9 +26,9 @@ public class CarRace {
         return tryCount;
     }
 
-    private void initCar(int carCount, RandomNumber randomNumber) {
+    private void initCar(int carCount, ForwardCheck forwardCheck) {
         for(int i = 0; i < carCount; i++) {
-            this.cars.add(new Car(randomNumber));
+            this.cars.add(new Car(forwardCheck));
         }
     }
 

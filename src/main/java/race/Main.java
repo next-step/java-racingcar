@@ -7,7 +7,7 @@ public class Main {
         int carCount = InputView.inputCarCount();
         int tryCount = InputView.inputTryCount();
 
-        CarRace carRace = new CarRace(carCount, tryCount, new CarRandomNumber());
+        CarRace carRace = new CarRace(carCount, tryCount, new CarForwardCheck());
 
         ResultView.output(carRace.getCars());
         for (int i = 0; i < carRace.getTryCount(); i++) {

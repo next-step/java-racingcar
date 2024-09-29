@@ -7,17 +7,17 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-    private RandomNumber randomNumberGenerator;
+    private ForwardCheck forwardCheckGenerator;
 
 
     @BeforeEach
     void initRandomNumber() {
-        randomNumberGenerator = new CarRandomNumber();
+        forwardCheckGenerator = new CarForwardCheck();
     }
 
     @Test
     void 자동차를_생성하면_전진하는_방향이_하나_생성된다() {
-        Car car = new Car(randomNumberGenerator);
+        Car car = new Car(forwardCheckGenerator);
 
         int forwardResult = car.getForwardResult();
 

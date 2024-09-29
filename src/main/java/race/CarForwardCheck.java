@@ -2,7 +2,7 @@ package race;
 
 import java.util.Random;
 
-public class CarRandomNumber implements RandomNumber {
+public class CarForwardCheck implements ForwardCheck {
 
     private final static int RANDOM_RANGE = 10;
     private final static int FORWARD_NUMBER = 4;
