@@ -3,7 +3,6 @@ package racingcar.model.wrapper;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.ForwardNumberException;
-import racingcar.model.Forward;
 
 import static org.assertj.core.api.Assertions.*;
 

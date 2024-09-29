@@ -1,19 +1,18 @@
 package racingcar.model;
 
-import racingcar.exception.ForwardNumberException;
 import racingcar.model.enums.Status;
 import racingcar.model.wrapper.ForwardNumber;
 
 import java.util.Objects;
 
-public class Forward {
+public class Car {
     private final Status status;
 
-    public Forward(ForwardNumber number) {
+    public Car(ForwardNumber number) {
         this.status = Status.extractByNumber(number);
     }
 
-    protected Forward(Status status) {
+    protected Car(Status status) {
         this.status = status;
     }
 
@@ -21,8 +20,8 @@ public class Forward {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Forward forward = (Forward) o;
-        return status == forward.status;
+        Car car = (Car) o;
+        return status == car.status;
     }
 
     @Override
