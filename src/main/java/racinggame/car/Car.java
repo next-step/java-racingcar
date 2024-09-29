@@ -2,9 +2,11 @@ package racinggame.car;
 
 public class Car {
 
+    private Name name;
     private Position position;
 
-    public Car() {
+    public Car(final String name) {
+        this.name = new Name(name);
         this.position = new Position();
     }
 
@@ -14,8 +16,12 @@ public class Car {
         }
     }
 
+    public Name name() {
+        return this.name;
+    }
+
     public Position position() {
-        return position;
+        return this.position;
     }
 
 }
