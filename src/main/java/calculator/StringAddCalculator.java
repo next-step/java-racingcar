@@ -37,10 +37,8 @@ public class StringAddCalculator {
     }
 
     private int toInt(String num) {
+        Validator.isValidNumber(num);
         int ret = Integer.parseInt(num);
-        if (ret < 0) {
-            throw new IllegalArgumentException("양의 정수가 입력되어야 합니다!");
-        }
         return ret;
     }
 
