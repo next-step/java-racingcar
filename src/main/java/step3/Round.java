@@ -22,10 +22,6 @@ public class Round {
     }
 
     public void start() {
-        moveCars();
-    }
-
-    private void moveCars() {
         for (Car car : cars) {
             carController.moveCar(car);
         }
