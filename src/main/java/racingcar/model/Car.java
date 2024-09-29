@@ -15,4 +15,12 @@ public class Car {
     public void stop() {
 
     }
+
+    public String showStatus() {
+        StringBuilder status = new StringBuilder();
+        for (int cnt = 0; cnt < position; ++cnt) {
+            status.append("-");
+        }
+        return status.toString();
+    }
 }
