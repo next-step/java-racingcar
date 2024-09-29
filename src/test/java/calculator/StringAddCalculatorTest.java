@@ -39,4 +39,15 @@ public class StringAddCalculatorTest {
     void 구분자만_입력() {
         assertThat(splitAndSum(":")).isEqualTo(0);
     }
+
+    @Test
+    void 커스텀_구분자_한단어() {
+        assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
+    void 커스텀_구분자_여러단어() {
+        assertThat(splitAndSum("//;:\n1;:2;:3")).isEqualTo(6);
+    }
+
 }

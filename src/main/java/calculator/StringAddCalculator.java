@@ -1,8 +1,12 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 
-    public static final String DELIMITER = ",|:";
+    public static final String DEFAULT_DELIMITER = ",|:";
+    public static final String CUSTOM_DELIMITER = "//(.*?)\n(.*)";
 
     public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
@@ -23,7 +27,15 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        return text.split(DELIMITER);
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+
+            return m.group(2).split(customDelimiter);
+        }
+
+        return text.split(DEFAULT_DELIMITER);
     }
 
     private static int[] toInt(String[] values) {
