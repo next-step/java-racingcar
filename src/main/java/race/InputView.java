@@ -3,8 +3,8 @@ package race;
 import java.util.Scanner;
 
 public class InputView {
-    public static final String CAR_COUNT_REQUEST_STATEMENT = "자동차 대수는 몇 대 인가요?";
-    public static final String RANDOM_STOP_OR_GO_COUNT_REQUEST_STATEMENT = "시도할 회수는 몇 회 인가요?";
+    public static final String CAR_COUNT_REQUEST_STATEMENT = "자동차 대수는 몇 대 인가요? (2 이상의 숫자 입력)";
+    public static final String RANDOM_STOP_OR_GO_COUNT_REQUEST_STATEMENT = "시도할 회수는 몇 회 인가요? (1 이상의 숫자 입력)";
     public static final int MIN_CAR_COUNT = 2;
     public static final int MIN_RANDOM_STOP_OR_GO_COUNT = 1;
 
