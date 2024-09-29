@@ -11,24 +11,34 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void 동등_비교(int number) {
-        Car actual = new Car(new ForwardNumber(number));
-        Car expected = new Car(new ForwardNumber(number));
-        assertThat(actual).isEqualTo(expected);
+        Car car = new Car();
+        car.move(new ForwardNumber(number));
+
+        Car expected = new Car();
+        expected.move(new ForwardNumber(number));
+
+        assertThat(car).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void number_값이_4_이상일_경우_전진한다(int number) {
-        Car actual = new Car(new ForwardNumber(number));
+        Car car = new Car();
+        car.move(new ForwardNumber(number));
+
         Car expected = new Car(Status.FORWARD);
-        assertThat(actual).isEqualTo(expected);
+
+        assertThat(car).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void number_값이_4_미만일_경우_멈춘다(int number) {
-        Car actual = new Car(new ForwardNumber(number));
+        Car car = new Car();
+        car.move(new ForwardNumber(number));
+
         Car expected = new Car(Status.STOP);
-        assertThat(actual).isEqualTo(expected);
+
+        assertThat(car).isEqualTo(expected);
     }
 }

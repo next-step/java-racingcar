@@ -6,14 +6,17 @@ import racingcar.model.wrapper.ForwardNumber;
 import java.util.Objects;
 
 public class Car {
-    private final Status status;
+    private Status currentStatus;
 
-    public Car(ForwardNumber number) {
-        this.status = Status.extractByNumber(number);
+    public Car() {
     }
 
-    protected Car(Status status) {
-        this.status = status;
+    protected Car(Status currentStatus) {
+        this.currentStatus = currentStatus;
+    }
+
+    public void move(ForwardNumber forwardNumber) {
+        this.currentStatus = Status.extractByNumber(forwardNumber);
     }
 
     @Override
@@ -21,11 +24,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return status == car.status;
+        return currentStatus == car.currentStatus;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status);
+        return Objects.hash(currentStatus);
     }
 }
