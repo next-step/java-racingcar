@@ -1,48 +1,27 @@
 package step3;
 
-import static step3.ResultView.printCarCount;
-import static step3.ResultView.printTryCount;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
-    public static int inputCountCar() {
+    public static int inputInt(Runnable messagePrinter) {
         Scanner scanner = new Scanner(System.in);
-        int carCount = 0;
+        int count = 0;
         boolean isValid = false;
         while (!isValid) {
-            printCarCount();
+            messagePrinter.run();
             try {
-                carCount = scanner.nextInt();
-                isValid = isPositiveNum(carCount);
+                count = scanner.nextInt();
+                isValid = isPositiveNum(count);
             } catch (InputMismatchException ex) {
                 scanner.next();
             }
         }
-        return carCount;
+        return count;
     }
 
     public static boolean isPositiveNum(int num) {
-        if (num <= 0) {
-            return false;
-        }
-        return true;
-    }
-
-    public static int inputTryCount() {
-        Scanner scanner = new Scanner(System.in);
-        int tryCount = 0;
-        boolean isValid = false;
-        while (!isValid) {
-            printTryCount();
-            try {
-                tryCount = scanner.nextInt();
-                isValid = isPositiveNum(tryCount);
-            } catch (InputMismatchException ex) {
-                scanner.next();
-            }
-        }
-        return tryCount;
+        return num > 0;
     }
 }

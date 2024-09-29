@@ -52,7 +52,7 @@ public class StringAddCalculator {
             }
             return num;
         } catch (NumberFormatException ex) {
-            throw new RuntimeException();
+            throw ex;
         } catch (Exception ex) {
             throw ex;
         }
