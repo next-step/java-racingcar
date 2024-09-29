@@ -7,15 +7,15 @@ import java.util.List;
 public class ResultView {
 
     public void showCommentForGettingCarNumber() {
-        System.out.print("자동차 대수는 몇 대 인가요? : ");
+        System.out.print("자동차 대수는 몇 대 인가요? : \n");
     }
 
     public void showCommentForGettingRoundNumber() {
-        System.out.print("시도할 회수는 몇 회 인가요? : ");
+        System.out.print("시도할 회수는 몇 회 인가요? : \n");
     }
 
     public void showGameResultComment() {
-        System.out.println("\n 실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public void showRoundResult(int roundNumber, List<Car> cars) {

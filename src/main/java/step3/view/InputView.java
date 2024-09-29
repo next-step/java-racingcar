@@ -6,12 +6,10 @@ public class InputView {
     private final Scanner scanner = new Scanner(System.in);
 
     public int getCarNumberFromUser() {
-        String userInput = scanner.nextLine();
-        return Integer.parseInt(userInput);
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public int getRoundNumberFromUser() {
-        String userInput = scanner.nextLine();
-        return Integer.parseInt(userInput);
+        return Integer.parseInt(scanner.nextLine());
     }
 }
