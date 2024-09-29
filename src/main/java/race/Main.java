@@ -1,12 +1,7 @@
+package race;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import race.Car;
-import race.CarRace;
-import race.CarRandomNumber;
-import race.InputView;
-import race.RaceInput;
-import race.RandomNumber;
 
 public class Main {
 
