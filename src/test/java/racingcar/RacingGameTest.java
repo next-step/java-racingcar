@@ -1,11 +1,11 @@
 package racingcar;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.RacingGameException;
 
-import static org.assertj.core.api.Assertions.assertThatNoException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingGameTest {
     @ParameterizedTest
@@ -41,4 +41,37 @@ public class RacingGameTest {
         }).isInstanceOf(RacingGameException.class)
                 .hasMessage("이동은 최소 1번 이상이어야 합니다.");
     }
+
+    @Test
+    void 경기실행_결과를_문자열로_출력한다() {
+        RacingGame racingGame = new RacingGame(3, 5);
+        String actual = racingGame.runAndResult((car) -> 4);
+        String expected = expectedRunAndResult();
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    private String expectedRunAndResult() {
+        int movementCount = 5;
+
+        StringBuilder result = new StringBuilder();
+        for (int index = 1; index <= movementCount; index++) {
+            result.append(expectedOneMovementResult(index));
+        }
+        return result.toString();
+    }
+
+    private String expectedOneMovementResult(int outerIndex) {
+        int carCount = 3;
+        int movementCount = 5;
+        StringBuilder result = new StringBuilder();
+        for (int index = 0; index < carCount; index++) {
+            result.append("-".repeat(outerIndex)).append("\n");
+        }
+        if (outerIndex < movementCount) {
+            result.append("\n");
+        }
+        return result.toString();
+    }
+
 }
