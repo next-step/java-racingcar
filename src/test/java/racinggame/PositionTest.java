@@ -12,7 +12,7 @@ class PositionTest {
     @DisplayName("[성공] 객체를 생성했을 때 값은 0이다.")
      void from() {
         // when
-        final var position = Position.from();
+        final var position = new Position();
 
         // then
         assertThat(position.value()).isEqualTo(0);
@@ -22,7 +22,7 @@ class PositionTest {
     @DisplayName("[성공] 전진했을 때 값은 1이다.")
     void forward() {
         // given
-        final var position = Position.from();
+        final var position = new Position();
 
         // when
         final var forwarded = position.forward();

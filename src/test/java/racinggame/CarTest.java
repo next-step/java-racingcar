@@ -8,11 +8,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    final Car car = new Car();
+    private static final String CAR_NAME = "Mercedes-Benz";
 
     @Test
     @DisplayName("이동 조건이 충족되면 1번 움직인다.")
     void move_01() {
+        // given
+        final Car car = new Car(CAR_NAME);
+
         // when
         car.move(() -> true);
 
@@ -23,6 +26,9 @@ class CarTest {
     @Test
     @DisplayName("이동 조건이 충족되지 않으면 움직이지 않는다.")
     void move_02() {
+        // given
+        final Car car = new Car(CAR_NAME);
+
         // when
         car.move(() -> false);
 

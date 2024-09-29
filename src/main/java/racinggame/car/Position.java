@@ -5,14 +5,13 @@ import java.util.Objects;
 
 public class Position {
 
-    private final int value;
-
     private static final int MINIMUM_VALUE = 0;
-
     private static final int FORWARD_STEP = 1;
 
-    public static Position from() {
-        return new Position(MINIMUM_VALUE);
+    private final int value;
+
+    public Position () {
+        this(MINIMUM_VALUE);
     }
 
     private Position(int value) {
