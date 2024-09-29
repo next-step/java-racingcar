@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
-    @DisplayName("splitAndSum 메소드는 null 또는 빈문자가 입력 되었을때, 결과값은 '0'이 나와야 한다.")
+    @DisplayName("splitAndSum 메소드는 null 또는 빈문자가 입력 되었을때, 숫자 0을 반환해야 한다.")
     @Test
     public void splitAndSum_메소드_입력값_검증_테스트() {
         int expected = StringAddCalculator.getInstance().splitAndSum(null);
@@ -18,14 +18,14 @@ public class StringAddCalculatorTest {
         assertThat(expected).isEqualTo(0);
     }
 
-    @DisplayName("splitAndSum 메소드는 숫자 문자 하나가 입력 되었을때, 결과값은 Integer로 변경 후 리턴해야 한다.")
+    @DisplayName("splitAndSum 메소드는 숫자 하나가 입력 되었을때, Integer로 변경 후 반환해야 한다.")
     @Test
     public void splitAndSum_메소드_입력값_검증_테스트_2() {
         int expected = StringAddCalculator.getInstance().splitAndSum("1");
         assertThat(expected).isEqualTo(1);
     }
 
-    @DisplayName("splitAndSum 메소드는 문자열이 ', or :' 로 구분되어 입력 되었을때, 숫자의 합을 반환해야 한다.")
+    @DisplayName("splitAndSum 메소드는 문자열이 유효한 경우, 숫자의 합을 반환한다.")
     @Test
     public void splitAndSum_메소드_덧셈_테스트() {
         int expected = StringAddCalculator.getInstance().splitAndSum("1,2");
@@ -35,7 +35,7 @@ public class StringAddCalculatorTest {
         assertThat(expected).isEqualTo(6);
     }
 
-    @DisplayName("splitAndSum 메소드는 문자열이 '//(구분자)\n(숫자)(구분자)(숫자)(구분자)(숫자)~~' 와 같은 구조로 입력 되었을때, 숫자의 합을 반환해야 한다.")
+    @DisplayName("splitAndSum 메소드는 문자열이 유효한 커스텀 구조인 경우, 숫자의 합을 반환해야 한다.")
     @Test
     public void splitAndSum_메소드_덧셈_테스트_2() {
         int expected = StringAddCalculator.getInstance().splitAndSum("//;\n1;2;3");
