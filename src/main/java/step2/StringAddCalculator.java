@@ -45,19 +45,10 @@ public class StringAddCalculator {
 	}
 
 	private static int parseInt(String string) {
-		try {
-			int number = Integer.parseInt(string);
-			return checkPositive(number);
-		} catch (Exception e) {
+		int number = Integer.parseInt(string);
+		if (number < 0) {
 			throw new RuntimeException();
 		}
-	}
-
-	private static int checkPositive(int number) {
-		if (number > 0) {
-			return number;
-		} else {
-			throw new RuntimeException();
-		}
+		return number;
 	}
 }
