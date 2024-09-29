@@ -2,7 +2,7 @@ package calculator.splitter;
 
 import java.util.List;
 
-public abstract class Splitter {
+public class Splitter {
 
     private static final String CUSTOM_DELIMITER_PREFIX = "//";
     private static final String CUSTOM_DELIMITER_SUFFIX = "\n";
