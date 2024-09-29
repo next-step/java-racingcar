@@ -2,7 +2,7 @@ package study.step3.car;
 
 public class RacingCar {
 
-    private static final int START_POSITION = 1;
+    private static final int START_POSITION = 0;
     private static final int MOVE_CRITERIA = 4;
     private int position;
 

@@ -11,8 +11,7 @@ public class RacingCarTest {
     void random값이_4미만인_경우() {
         RacingCar racingCar = new RacingCar();
         racingCar.move(3);
-
-        assertThat(racingCar.getCurrentPosition()).isEqualTo(1);
+        assertThat(racingCar.getCurrentPosition()).isEqualTo(0);
     }
 
     @Test
@@ -20,6 +19,6 @@ public class RacingCarTest {
         RacingCar racingCar = new RacingCar();
         racingCar.move(4);
 
-        assertThat(racingCar.getCurrentPosition()).isEqualTo(2);
+        assertThat(racingCar.getCurrentPosition()).isEqualTo(1);
     }
 }
