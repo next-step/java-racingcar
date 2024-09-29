@@ -14,8 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        RaceInput raceInput = inputView.input();
+        RaceInput raceInput = InputView.input();
 
         List<Car> cars = initCars(raceInput.getCarCount());
 
