@@ -2,6 +2,7 @@ package racingcar.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.model.wrapper.ForwardNumber;
 import racingcar.util.NumberCreator;
 
 import java.util.List;
@@ -47,6 +48,24 @@ public class CarsTest {
         Cars expected = new Cars(List.of(car1Expected, car2Expected, car3Expected));
 
         assertThat(cars).isEqualTo(expected);
+    }
+
+    @Test
+    void 자동차들의_상태를_출력한다() {
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        IntStream.range(0,4).forEach((index) -> {
+            cars.moveAll(numberCreator(car1, car2, car3));
+        });
+
+        List<String> actual = cars.currentStatuses();
+        List<String> expected = List.of("----", "----", "");
+
+        assertThat(actual).containsAll(expected);
     }
 
     private static NumberCreator numberCreator(Car... cars) {

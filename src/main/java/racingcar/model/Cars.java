@@ -5,6 +5,7 @@ import racingcar.util.NumberCreator;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -30,5 +31,12 @@ public class Cars {
     public void moveAll(NumberCreator numberCreator) {
         this.cars
                 .forEach(car -> car.move(new ForwardNumber(numberCreator.number(car))));
+    }
+
+    public List<String> currentStatuses() {
+        return this.cars
+                .stream()
+                .map(Car::currentStatus)
+                .collect(Collectors.toList());
     }
 }
