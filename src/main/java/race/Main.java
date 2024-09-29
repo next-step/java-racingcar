@@ -10,7 +10,7 @@ public class Main {
         CarRace carRace = new CarRace(carCount, tryCount, new CarForwardCheck());
 
         ResultView.output(carRace.getCars());
-        for (int i = 0; i < carRace.getTryCount(); i++) {
+        while (carRace.checkTryCount()) {
             carRace.proceedRound();
             ResultView.output(carRace.getCars());
         }

@@ -15,6 +15,7 @@ public class CarRace {
 
     public List<Car> proceedRound() {
         checkCarForward();
+        tryCount--;
         return cars;
     }
 
@@ -22,8 +23,8 @@ public class CarRace {
         return cars;
     }
 
-    public int getTryCount() {
-        return tryCount;
+    public boolean checkTryCount() {
+        return tryCount > 0;
     }
 
     private void initCar(int carCount, ForwardCheck forwardCheck) {
