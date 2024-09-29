@@ -6,22 +6,6 @@ public class Race {
     public static final int RANDOM_UPPER_LIMIT = 10;
     public static final int MINIMUM_TO_GO_FORWARD = 4;
 
-    private static int generateIntBetween0and9() {
-        return new Random().nextInt(RANDOM_UPPER_LIMIT);
-    }
-
-    public static boolean canGo(int number) {
-        return number >= MINIMUM_TO_GO_FORWARD;
-    }
-
-    public static int[] initiateCarStates(int carCount) {
-        return new int[carCount];
-    }
-
-    public static void moveCarForward(int[] carStates, int carIndex) {
-        carStates[carIndex]++;
-    }
-
     public static void start() {
         RaceInput raceInput = InputView.inputCarCountAndRandomStopOrGoCount();
         int[] carStates = initiateCarStates(raceInput.carCount());
@@ -30,6 +14,10 @@ public class Race {
         for (int stopOrGoRound = 0; stopOrGoRound < raceInput.randomStopOrGoCount(); stopOrGoRound++) {
             runStopOrGoRound(raceInput.carCount(), carStates);
         }
+    }
+
+    public static int[] initiateCarStates(int carCount) {
+        return new int[carCount];
     }
 
     private static void runStopOrGoRound(int carCount, int[] carStates) {
@@ -43,5 +31,17 @@ public class Race {
         if (canGo(generateIntBetween0and9())) {
             moveCarForward(carStates, carIndex);
         }
+    }
+
+    private static int generateIntBetween0and9() {
+        return new Random().nextInt(RANDOM_UPPER_LIMIT);
+    }
+
+    public static boolean canGo(int number) {
+        return number >= MINIMUM_TO_GO_FORWARD;
+    }
+
+    public static void moveCarForward(int[] carStates, int carIndex) {
+        carStates[carIndex]++;
     }
 }
