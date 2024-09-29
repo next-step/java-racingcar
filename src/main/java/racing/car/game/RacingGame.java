@@ -35,7 +35,7 @@ public class RacingGame implements Game {
 
     }
 
-    private static void simulateRaceRound(Car[] cars) {
+    public void simulateRaceRound(Car[] cars) {
         for (Car car : cars) {
             int speed = random.random();
             car.move(speed);
@@ -44,20 +44,20 @@ public class RacingGame implements Game {
         System.out.println();
     }
 
-    private static void initializeCars(int carCount, Car[] cars) {
+    public void initializeCars(int carCount, Car[] cars) {
         for (int i = 0; i < carCount; i++) {
             cars[i] = new Car();
         }
     }
 
-    private static int validateCarCount(int carCount) {
+    public int validateCarCount(int carCount) {
         if (carCount < 2) {
             throw new RuntimeException(INVALID_CAR_COUNT_MESSAGE);
         }
         return carCount;
     }
 
-    private static int validateTryCount(int tryCount) {
+    public int validateTryCount(int tryCount) {
         if (tryCount <= 0) {
             throw new RuntimeException(INVALID_TRY_COUNT_MESSAGE);
         }

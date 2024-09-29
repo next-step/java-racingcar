@@ -6,12 +6,12 @@ public class ResultView {
 
     public void outputView(int n) {
         StringBuilder sb = new StringBuilder();
-        makeSentence(n, sb);
+        generateRepeatedLine(n, sb);
 
         System.out.println(sb.toString());
     }
 
-    private static void makeSentence(int n, StringBuilder sb) {
+    private static void generateRepeatedLine(int n, StringBuilder sb) {
         for (int i = 0; i < n; i++) {
             sb.append(LINE);
         }

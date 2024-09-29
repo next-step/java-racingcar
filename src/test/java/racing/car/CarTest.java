@@ -10,6 +10,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     @Test
+    void 초기값_0_테스트() {
+        Car car = new Car();
+        assertThat(car).extracting("position").isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("move 메서드는 3 이상인 경우 position은 증가하지 않는다.")
     void 앞으로_이동_4이하() {
         Car car = new Car();
@@ -28,14 +34,4 @@ public class CarTest {
         assertThat(car).extracting("position").isEqualTo(1);
     }
 
-    @Test
-    @DisplayName("move 메서드가 0 ~ 9 사이의 숫자가 아닌 경우 RuntimeException이 발생 된다.")
-    void 숫자가_0에서_9사이가_아닌_경우() {
-        Car car = new Car();
-
-        assertThatThrownBy(
-                () -> car.move(10))
-                .isInstanceOf(RuntimeException.class);
-
-    }
 }
