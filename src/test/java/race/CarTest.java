@@ -7,22 +7,12 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-    private final static int randomRange = 10;
     private RandomNumber randomNumberGenerator;
 
 
     @BeforeEach
     void initRandomNumber() {
-        randomNumberGenerator = new CarRandomNumber(randomRange);
-    }
-
-    @Test
-    void 자동차의_getCondifionNumber_메소드의_값은_0에서_9사이의_값이다() {
-        Car car = new Car(randomNumberGenerator);
-
-        int conditionNumber = car.getConditionNumber();
-
-        assertThat(conditionNumber).isBetween(0, 9);
+        randomNumberGenerator = new CarRandomNumber();
     }
 
     @Test
@@ -36,10 +26,10 @@ class CarTest {
 
     @Test
     void 자동차_진행조건인_4이상의_수가_주어지면_한칸_전진한다() {
-        FixedNumber fixedNumber = new FixedNumber(4);
-        Car car = new Car(fixedNumber);
+        FixedCheckForward fixedCheckForward = new FixedCheckForward(true);
+        Car car = new Car(fixedCheckForward);
 
-        car.forward(car.getConditionNumber());
+        car.forward();
 
         assertThat(car.getForwardResult()).isEqualTo(2);
     }

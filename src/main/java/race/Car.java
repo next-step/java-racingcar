@@ -1,24 +1,22 @@
 package race;
 
-import java.util.Random;
-
 public class Car {
 
     private int forwardResult = 1;
-    private RandomNumber conditionNumber;
+    private RandomNumber carForwardCheck;
 
-    public Car(RandomNumber randomNumber) {
-        this.conditionNumber = randomNumber;
+    public Car(RandomNumber carForwardCheck) {
+        this.carForwardCheck = carForwardCheck;
     }
 
-    public int getConditionNumber() {
-        return conditionNumber.randomNumber();
-    }
-
-    public void forward(int conditionNumber) {
-        if (conditionNumber >= 4) {
+    public void forward() {
+        if (checkCarForward()) {
             forwardResult++;
         }
+    }
+
+    private boolean checkCarForward() {
+        return carForwardCheck.isForward();
     }
 
     public int getForwardResult() {

@@ -8,18 +8,12 @@ public class CarRace {
     private List<Car> cars = new ArrayList<>();
     private int tryCount;
 
-
-    public CarRace(int carCount, int tryCount, List<Car> cars) {
-        this.cars.addAll(cars);
+    public CarRace(int carCount, int tryCount, RandomNumber randomNumber) {
         this.tryCount = tryCount;
-    }
-
-    public List<Car> getCars() {
-        return cars;
+        initCar(carCount, randomNumber);
     }
 
     public List<Car> start() {
-        ResultView.output(cars);
         for (int i = 0; i < tryCount; i++) {
             checkCarForward();
         }
@@ -27,9 +21,19 @@ public class CarRace {
         return cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    private void initCar(int carCount, RandomNumber randomNumber) {
+        for(int i = 0; i < carCount; i++) {
+            this.cars.add(new Car(randomNumber));
+        }
+    }
+
     private void checkCarForward() {
         for (Car car : cars) {
-            car.forward(car.getConditionNumber());
+            car.forward();
         }
         ResultView.output(cars);
     }

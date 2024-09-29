@@ -9,12 +9,13 @@ import org.junit.jupiter.api.Test;
 
 class CarRaceTest {
 
-    private final static int RANDOM_RANGE = 10;
-    private RandomNumber randomNumberGenerator;
+    public static final boolean FIX_FORWARD_CONDITION = true;
+    public static final boolean FIX_UNFORWARD_CONDITION = false;
+    private RandomNumber checkCarForward;
 
     @BeforeEach
     void setUp() {
-        randomNumberGenerator = new CarRandomNumber(RANDOM_RANGE);
+        checkCarForward = new CarRandomNumber();
     }
 
     @Test
@@ -22,35 +23,38 @@ class CarRaceTest {
         int carCount = 2;
         int tryCount = 2;
 
-        List<Car> cars = List.of(
-            new Car(randomNumberGenerator),
-            new Car(randomNumberGenerator)
-        );
-
-        CarRace carRace = new CarRace(carCount, tryCount, cars);
+        CarRace carRace = new CarRace(carCount, tryCount, checkCarForward);
 
         assertThat(carRace.getCars()).hasSize(carCount);
     }
 
     @Test
-    void 레이스가_start되면_각_자동차마다_조건에_맞게_전진한다() {
+    void 레이스가_start되고_isForward가_true라면_자동차가_조건에_맞게_전진한다() {
         int carCount = 2;
         int tryCount = 2;
 
-        FixedNumber goNumber = new FixedNumber(4);
-        FixedNumber stayNumber = new FixedNumber(1);
+        FixedCheckForward goCondition = new FixedCheckForward(FIX_FORWARD_CONDITION);
 
-        List<Car> cars = List.of(
-            new Car(goNumber),
-            new Car(stayNumber)
-        );
-
-        CarRace carRace = new CarRace(carCount, tryCount, cars);
+        CarRace carRace = new CarRace(carCount, tryCount, goCondition);
 
         List<Car> raceResult = carRace.start();
 
         assertThat(raceResult).hasSize(carCount);
         assertThat(raceResult.get(0).getForwardResult()).isEqualTo(3);
-        assertThat(raceResult.get(1).getForwardResult()).isEqualTo(1);
+    }
+
+    @Test
+    void 레이스가_start되고_isForward가_false라면_자동차가_처음_진행상태로_머무른다() {
+        int carCount = 2;
+        int tryCount = 2;
+
+        FixedCheckForward stayCondition = new FixedCheckForward(FIX_UNFORWARD_CONDITION);
+
+        CarRace carRace = new CarRace(carCount, tryCount, stayCondition);
+
+        List<Car> raceResult = carRace.start();
+
+        assertThat(raceResult).hasSize(carCount);
+        assertThat(raceResult.get(0).getForwardResult()).isEqualTo(1);
     }
 }
