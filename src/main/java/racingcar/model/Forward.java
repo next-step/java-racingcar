@@ -1,17 +1,15 @@
 package racingcar.model;
 
-import racingcar.exception.ForwardException;
+import racingcar.exception.ForwardNumberException;
 import racingcar.model.enums.Status;
+import racingcar.model.wrapper.ForwardNumber;
 
 import java.util.Objects;
 
 public class Forward {
     private final Status status;
 
-    public Forward(int number) {
-        if (number < 0 || number > 9) {
-            throw new ForwardException("0~9 사이의 숫자 외에는 전진숫자로 허용되지 않습니다.");
-        }
+    public Forward(ForwardNumber number) {
         this.status = Status.extractByNumber(number);
     }
 
