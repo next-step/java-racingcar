@@ -1,11 +1,11 @@
 package racinggame;
 
 import racinggame.input.RacingCarInput;
-import racinggame.input.RacingGameInputView;
-import racinggame.input.RacingTryCountInput;
+import racinggame.input.RacingGameRoundInput;
 import racinggame.ui.MessageReader;
 import racinggame.ui.MessageWriter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameRunner implements GameRunner {
@@ -23,12 +23,33 @@ public class RacingGameRunner implements GameRunner {
         final RacingCarInput carInput = RacingCarInput.from(reader.read());
 
         writer.write("시도할 회수는 몇 회 인가요?");
-        final RacingTryCountInput tryCountInput = RacingTryCountInput.from(reader.read());
+        final RacingGameRoundInput roundInput = RacingGameRoundInput.from(reader.read());
 
-        final RacingGameInputView inputView = new RacingGameInputView(carInput, tryCountInput);
-        final List<RacingCar> racingCars = inputView.createRacingCars();
+        final List<RacingCar> racingCars = settingRacingCars(carInput);
+        final List<RacingGameRound> rounds = settingRacingRounds(roundInput, racingCars);
+        for (final RacingGameRound round : rounds) {
+            round.start();
+        }
 
-        final RacingGameResultView racingGameResultView = new RacingGameResultView("-", racingCars, writer, tryCountInput);
-        racingGameResultView.result();
+        final RacingGameResultView resultView = new RacingGameResultView("-", rounds, writer);
+        resultView.result();
+    }
+
+    private static List<RacingGameRound> settingRacingRounds(final RacingGameRoundInput roundInput, final List<RacingCar> racingCars) {
+        final List<RacingGameRound> rounds = new ArrayList<>();
+        for (int i = 0; i < roundInput.getRound(); i++) {
+            rounds.add(new RacingGameRound(racingCars));
+        }
+
+        return rounds;
+    }
+
+    private List<RacingCar> settingRacingCars(final RacingCarInput racingCarInput) {
+        final List<RacingCar> cars = new ArrayList<>();
+        for (int i = 0; i < racingCarInput.getCarCount(); i++) {
+            cars.add(new RacingCar(i + 1));
+        }
+
+        return cars;
     }
 }

@@ -1,52 +1,61 @@
 package racinggame;
 
-import racinggame.input.RacingTryCountInput;
 import racinggame.ui.MessageWriter;
-import racinggame.utils.RacingGameUtils;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public class RacingGameResultView {
     private final String maker;
-    private final List<RacingCar> racingCars;
+    private final List<RacingGameRound> rounds;
     private final MessageWriter writer;
-    private final RacingTryCountInput tryCount;
 
     public RacingGameResultView(final String maker,
-                                final List<RacingCar> racingCars,
-                                final MessageWriter writer,
-                                final RacingTryCountInput tryCount
+                                final List<RacingGameRound> rounds,
+                                final MessageWriter writer
     ) {
         this.maker = maker;
-        this.racingCars = racingCars;
+        this.rounds = rounds;
         this.writer = writer;
-        this.tryCount = tryCount;
     }
 
     public void result() {
         writer.write("실행 결과");
-        processTrials();
+        processRounds();
     }
 
-    private void processTrials() {
-        for (int i = 0; i < tryCount.getTrials(); i++) {
-            processRacingCars();
+    private void processRounds() {
+        final Map<RacingCar, Integer> carStatusMap = new HashMap<>();
+        for (final RacingGameRound round : rounds) {
+            processRacingCars(round, carStatusMap);
+            displayRacingCars(round, carStatusMap);
             writer.write("");
         }
     }
 
-    private void processRacingCars() {
-        for (final RacingCar racingCar : racingCars) {
-            racingCar.isMove(RacingGameUtils.generateRandomNumber());
-            writer.write(convertHistoriesToMaker(racingCar.currentHistories()));
+    private void processRacingCars(final RacingGameRound round, final Map<RacingCar, Integer> carStatusMap) {
+        for (final RacingCar racingCar : round.getRacingCars()) {
+            updateCarStatus(round, carStatusMap, racingCar);
         }
     }
 
-    private String convertHistoriesToMaker(final List<Boolean> histories) {
-        return histories.stream()
-            .filter(b -> b)
-            .map(b -> maker)
-            .collect(Collectors.joining());
+    private static void updateCarStatus(final RacingGameRound round, final Map<RacingCar, Integer> carStatusMap, final RacingCar racingCar) {
+        if (round.isMove(racingCar)) {
+            carStatusMap.put(racingCar, carStatusMap.getOrDefault(racingCar, 0) + 1);
+            return;
+        }
+
+        carStatusMap.put(racingCar, carStatusMap.getOrDefault(racingCar, 0));
+    }
+
+    private void displayRacingCars(final RacingGameRound round, final Map<RacingCar, Integer> carStatusMap) {
+        for (final RacingCar racingCar : round.getRacingCars()) {
+            writer.write(repeatMaker(carStatusMap, racingCar));
+        }
+    }
+
+    private String repeatMaker(final Map<RacingCar, Integer> carStatusMap, final RacingCar racingCar) {
+        return maker.repeat(carStatusMap.get(racingCar));
     }
 }
