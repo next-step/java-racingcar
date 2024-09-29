@@ -6,6 +6,8 @@ import racingcar.model.wrapper.ForwardNumber;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+
 
 public class Car {
     private final List<Status> statuses;
@@ -33,5 +35,12 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(statuses);
+    }
+
+    public String currentStatus() {
+        return this.statuses
+                .stream()
+                .map(Status::printStatus)
+                .collect(Collectors.joining());
     }
 }

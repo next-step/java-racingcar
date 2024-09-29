@@ -58,4 +58,17 @@ public class CarTest {
 
         assertThat(car).isEqualTo(expected);
     }
+
+    @Test
+    void 자동차의_상태를_출력한다() {
+        Car car = new Car();
+        car.move(new ForwardNumber(4));
+        car.move(new ForwardNumber(3));
+        car.move(new ForwardNumber(2));
+        car.move(new ForwardNumber(5));
+
+        String actual = car.currentStatus();
+        String expected = "--";
+        assertThat(actual).isEqualTo(expected);
+    }
 }
