@@ -1,5 +1,7 @@
-package racinggame.car;
+package racinggame.game;
 
+import racinggame.car.Car;
+import racinggame.car.Position;
 import racinggame.utils.RandomUtils;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package racinggame.ui;
 
 import racinggame.car.Position;
-import racinggame.car.Round;
+import racinggame.game.Round;
 
 import java.util.List;
 
