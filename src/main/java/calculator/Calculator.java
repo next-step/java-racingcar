@@ -4,62 +4,52 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-    public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
-    public static final String DEFAULT_DELIMITER_REGEX = "[:,]";
+    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    public static final String DEFAULT_DELIMITER = "[,:]";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public static int calculate(String targetString) {
         if (isNullOfEmpty(targetString)) {
             return 0;
         }
-
-        return hasCustomDelimiter(targetString)
-                ? calculateWithCustomDelimiter(targetString)
-                : calculateWithDefaultDelimiter(targetString);
+        return sumInts(parseToInts(splitWithDelimiter(targetString)));
     }
 
-    private static int calculateWithDefaultDelimiter(String targetString) {
-        if (hasDefaultDelimiter(targetString)) {
-            String[] tokens = targetString.split(DEFAULT_DELIMITER_REGEX);
-            return sumTokens(tokens);
+    private static int[] parseToInts(String[] tokens) {
+        int[] result = new int[tokens.length];
+        for (int i = 0; i < tokens.length; i++) {
+            result[i] = parseToInt(tokens[i]);
         }
-        return Integer.parseInt(targetString); // 구분자 없이 단일 숫자일 때
+        return result;
     }
 
-    private static int calculateWithCustomDelimiter(String targetString) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(targetString);
-        if (m.find()) {
-            String customDelimiter = Pattern.quote(m.group(1));
-            String[] tokens = m.group(2).split(customDelimiter);
-            return sumTokens(tokens);
+    private static String[] splitWithDelimiter(String targetString) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(targetString);
+        if (matcher.find()) {
+            String customDelimiter = Pattern.quote(matcher.group(1));
+            return matcher.group(2).split(customDelimiter);
         }
-        return 0;
+        return targetString.split(DEFAULT_DELIMITER);
     }
 
-    private static boolean hasCustomDelimiter(String targetString) {
-        return Pattern.matches("//(.)\n(.*)", targetString);
+    private static int sumInts(int[] tokens) {
+        int result = 0;
+        for (int addNumber : tokens) {
+            validateMinus(addNumber);
+            result += addNumber;
+        }
+        return result;
     }
 
     private static boolean isNullOfEmpty(String targetString) {
         return targetString == null || targetString.isEmpty();
     }
 
-    private static int sumTokens(String[] tokens) {
-        int result = 0;
-        for (String addNumber : tokens) {
-            validate(addNumber);
-            result += Integer.parseInt(addNumber);
-        }
-        return result;
-    }
-
-    private static boolean hasDefaultDelimiter(String targetString) {
-        return targetString.contains(",") || targetString.contains(":");
-    }
-
-    private static void validate(String targetString) {
+    private static int parseToInt(String input) {
         try {
-            int number = Integer.parseInt(targetString);
+            int number = Integer.parseInt(input);
             validateMinus(number);
+            return number;
         } catch (NumberFormatException e) {
             throw new RuntimeException("숫자가 아닌 값입니다.");
         }
