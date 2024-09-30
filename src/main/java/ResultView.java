@@ -7,7 +7,7 @@ public class ResultView {
 
     public static void printResult(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            System.out.println("-".repeat(Math.max(0, car.getStatus())));
+            System.out.println(car.getName() + " : " + "-".repeat(Math.max(0, car.getStatus())));
         }
         System.out.println();
     }
