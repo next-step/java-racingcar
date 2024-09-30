@@ -13,14 +13,16 @@ public class StringSumCalculator {
         if (isBlank(text)) {
             return 0;
         }
-        return sumNumbers(getNumberArray(getSplit(text)));
+        String[] split = getSplit(text);
+        int[] numbers = getNumbers(split);
+        return sumNumbers(numbers);
     }
 
     private static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private static int[] getNumberArray(final String[] split) {
+    private static int[] getNumbers(final String[] split) {
         final int[] result = new int[split.length];
         for (int i = 0; i < split.length; i++) {
             final int number = getPositiveNumber(split[i]);
@@ -29,7 +31,7 @@ public class StringSumCalculator {
         return result;
     }
 
-    private static int getNumber(final String split) {
+    private static int getPositiveNumber(final String split) {
         final int number = Integer.parseInt(split);
         if(number < 0){
             throw new RuntimeException();
