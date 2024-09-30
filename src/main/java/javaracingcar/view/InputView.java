@@ -1,0 +1,15 @@
+package javaracingcar.view;
+
+import java.util.Scanner;
+
+public class InputView {
+
+    private static final String DEFAULT_REQUIRE_CAR_MESSAGE = "자동차 대수는 몇 대 인가요?\n";
+    private static final String DEFAULT_REQUIRE_TRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?\n";
+    private static Scanner scanner = new Scanner(System.in);
+
+    public int requireInfoCarCount() {
+        System.out.println(DEFAULT_REQUIRE_CAR_MESSAGE);
+        return scanner.nextInt();
+    }
+}

@@ -1,7 +1,10 @@
 package javaracingcar;
 
 
+import javaracingcar.entity.RacingCar;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -100,6 +103,27 @@ public class JavaRacingCarTest {
         JavaRacingCar racingCar = new JavaRacingCar();
 
         assertThatThrownBy(() -> racingCar.requireTryCount(-1)).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void javaRacingCar_차대수_입력시_리스트_size() {
+        JavaRacingCar racingCar = new JavaRacingCar();
+
+        racingCar.requireCarCount(3);
+
+        assertThat(racingCar.carList()).hasSize(3);
+    }
+
+    @Test
+    void javaRacingCar_시작_후_전진_횟수() {
+        JavaRacingCar racingCar = new JavaRacingCar();
+
+        racingCar.requireCarCount(1);
+        racingCar.requireTryCount(10);
+
+        RacingCar result = racingCar.start().get(0);
+
+        assertThat(result.moveCount()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(10);
     }
 
 }
