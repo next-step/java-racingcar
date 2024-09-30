@@ -8,10 +8,11 @@ public class Race {
 
     private List<Car> cars;
 
-    private static final Random random = new Random();
+    private Random random;
 
-    public Race() {
+    public Race(Random random) {
         this.cars = new ArrayList<>();
+        this.random = random;
     }
 
     public List<Car> getCars(){
