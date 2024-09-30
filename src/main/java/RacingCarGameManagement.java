@@ -19,6 +19,19 @@ public class RacingCarGameManagement {
         }
     }
 
+    public RacingCarGameManagement(
+            String[] names,
+            int games,
+            RandomNumberGenerator randomNumberGenerator
+    ) {
+        this.cars = new ArrayList<>(names.length);
+        this.games = games;
+        this.randomNumberGenerator = randomNumberGenerator;
+        for (int i = 0; i < names.length; i++) {
+            this.cars.add(new RacingCar(names[i]));
+        }
+    }
+
     public List<RacingCar> getCars() {
         return cars;
     }

@@ -2,6 +2,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class RacingCarGameManagementTest {
     @Test
     @DisplayName("자동차 대회 게임 생섣 테스트")
@@ -19,6 +21,28 @@ public class RacingCarGameManagementTest {
         Assertions.assertThat(carGameManagement.getCars()).hasSize(numberOfCars);
         for (RacingCar car : carGameManagement.getCars()) {
             Assertions.assertThat(car.getStatus()).isEqualTo(0);
+        }
+    }
+
+    @Test
+    @DisplayName("자동차 대회 게임 생섣 테스트 - 이름 추가")
+    void createRacingCarGameManagementTest_WithNames() {
+        //given
+        int numberOfCars = 3;
+        int numberOfGames = 6;
+        MockRandomNumberGenerator generator = new MockRandomNumberGenerator(3);
+        String[] testNames = new String[]{"pobi", "crong", "honux"};
+
+        //when
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(testNames, numberOfGames, generator);
+
+        //then
+        Assertions.assertThat(carGameManagement.getGames()).isEqualTo(numberOfGames);
+        Assertions.assertThat(carGameManagement.getCars()).hasSize(numberOfCars);
+        List<RacingCar> cars = carGameManagement.getCars();
+        for (int i = 0; i < 3; i++) {
+            Assertions.assertThat(cars.get(i).getStatus()).isEqualTo(0);
+            Assertions.assertThat(cars.get(i).getName()).isEqualTo(testNames[i]);
         }
     }
 

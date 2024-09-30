@@ -7,6 +7,11 @@ public class RacingCar {
         this.name = "";
     }
 
+    public RacingCar(String name) {
+        this.status = 0;
+        this.name = name;
+    }
+
     public RacingCar(int status) {
         this.status = status;
         this.name = "";
