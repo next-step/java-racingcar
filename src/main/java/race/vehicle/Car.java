@@ -21,6 +21,10 @@ public class Car {
         System.out.println(location);
     }
 
+    public String getLocation() {
+        return this.location.toString();
+    }
+
     public static class Builder {
         private StringBuffer location;
         private RandomUtil randomUtil;

@@ -13,7 +13,7 @@ public class Vehicles {
     RandomGenerator randomGenerator = RandomGenerator.getRandomGenerator();
 
     public Vehicles(int num) {
-        if(num < 2){
+        if (num < 2) {
             throw new IllegalArgumentException("게임을 진행할 수 없음");
         }
         initList(num);

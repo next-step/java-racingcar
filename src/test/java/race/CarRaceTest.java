@@ -5,8 +5,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import race.vehicle.Car;
 import race.vehicle.Vehicles;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarRaceTest {
@@ -20,10 +22,9 @@ public class CarRaceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 0 , -1})
+    @ValueSource(ints = {1, 0, -1})
     @DisplayName("2 미만의 숫자를 입력받으면 예외를 발생시킨다")
-    void 자동차_부족(int value)
-    {
+    void 자동차_부족(int value) {
         assertThatThrownBy(() -> {
             Vehicles vehicles = new Vehicles(value);
         }).isInstanceOf(IllegalArgumentException.class)
@@ -32,7 +33,21 @@ public class CarRaceTest {
 
     @Test
     @DisplayName("자동차 전진 테스트")
-    void 자동차_전진(){
+    void 자동차_전진() {
+        Car car = new Car.Builder().initlocation("-").initRandomUtil(bound -> 5).build();
 
+        car.move();
+
+        assertThat(car.getLocation()).isEqualTo("--");
+    }
+
+    @Test
+    @DisplayName("자동차 전진 실패 테스트")
+    void 자동차_전진_실패() {
+        Car car = new Car.Builder().initlocation("-").initRandomUtil(bound -> 1).build();
+
+        car.move();
+
+        assertThat(car.getLocation()).isEqualTo("-");
     }
 }
