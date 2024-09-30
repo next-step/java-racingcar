@@ -5,6 +5,7 @@ import java.util.Random;
 public class RacingCarGame {
 
     private static final int RANDOM_LIMIT = 10;
+    private static final int MINIMUM_MOVE_THRESHOLD = 4;
 
     public void gameStart(){
         int carCountInput = InputView.getCarCountInputFromUser();
@@ -23,6 +24,12 @@ public class RacingCarGame {
 
     private static void raceCars(Car[] cars) {
         for (Car car : cars) {
+            moveIfConditionSatisfied(car);
+        }
+    }
+
+    private static void moveIfConditionSatisfied(Car car) {
+        if(car.getMoveCondition() >= MINIMUM_MOVE_THRESHOLD){
             car.move();
         }
     }
