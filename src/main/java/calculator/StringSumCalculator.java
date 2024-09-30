@@ -23,7 +23,7 @@ public class StringSumCalculator {
     private static int[] getNumberArray(final String[] split) {
         final int[] result = new int[split.length];
         for (int i = 0; i < split.length; i++) {
-            final int number = getNumber(split[i]);
+            final int number = getPositiveNumber(split[i]);
             result[i] = number;
         }
         return result;
