@@ -12,6 +12,6 @@ class RacingGameTest {
     void setUpTest() {
         RacingGame newGame = RacingGame.setUp(1, 5);
         assertThat(newGame.getRoundCount()).isEqualTo(1);
-        assertThat(newGame.getCarCount()).isEqualTo(5);
+        assertThat(newGame.getCars()).hasSize(5);
     }
 }
