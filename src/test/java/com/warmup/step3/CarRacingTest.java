@@ -8,6 +8,15 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarRacingTest {
     @Test
+    public void isEquals_0에서_9사이의_랜덤값_반환() {
+        int expectedMinNum = 0;
+        int expectedMaxNum = 10;
+
+        assertThat(CarRacing.getRandomNumber()).isGreaterThanOrEqualTo(expectedMinNum)
+                .isLessThan(expectedMaxNum);
+    }
+
+    @Test
     public void isEquals_문자열_뒤에_대쉬_추가() {
         String expected = "--";
 
