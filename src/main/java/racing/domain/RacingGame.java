@@ -28,18 +28,35 @@ public class RacingGame {
     }
 
     public List<GameResult> start() {
-        List<GameResult> result = new ArrayList<>();
+        List<GameResult> results = new ArrayList<>();
         for (int i = 0; i < roundCount; i++) {
-            int[] resultArray = new int[cars.size()];
-            int index = 0;
-            for (Car car : cars) {
-                car.move(numberGenerator);
-                resultArray[index] = car.getCurrentPosition();
-                index++;
-            }
-            result.add(GameResult.save(resultArray));
+            playRound(results);
         }
-        return result;
+        return results;
+    }
+
+    private void playRound(List<GameResult> results) {
+        moveCars();
+        int[] positions = getCurrentPositions();
+        saveRoundResult(results, positions);
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            car.move(numberGenerator);
+        }
+    }
+
+    private int[] getCurrentPositions() {
+        int[] positions = new int[cars.size()];
+        for (int i = 0; i < cars.size(); i++) {
+            positions[i] = cars.get(i).getCurrentPosition();
+        }
+        return positions;
+    }
+
+    private void saveRoundResult(List<GameResult> results, int[] positions) {
+        results.add(GameResult.save(positions));
     }
 
     public static RacingGame setUp(int roundCount, int carCount) {
