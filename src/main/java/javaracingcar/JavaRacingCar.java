@@ -34,11 +34,19 @@ public class JavaRacingCar {
         return this.step;
     }
 
-    public void requireCarCount(int carCount) {
+    public void requireCarCount(int carCount) throws RuntimeException {
         this.step = 1;
+
+        if (carCount < 0) {
+            throw new IllegalArgumentException("음수 입력");
+        }
     }
 
-    public void requireTryCount(int tryCount) {
+    public void requireTryCount(int tryCount) throws RuntimeException {
         this.step = 2;
+
+        if (tryCount < 0) {
+            throw new IllegalArgumentException("음수 입력");
+        }
     }
 }
