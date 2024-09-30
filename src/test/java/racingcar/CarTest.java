@@ -13,13 +13,13 @@ public class CarTest {
     private Car car;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         car = new Car(new MockRandom());
     }
 
     @Test
     @DisplayName("랜덤 값이 4 미만일 경우, 상태가 변하지 않아야 한다.")
-    void 랜덤값_4미만_멈춤(){
+    void 랜덤값_4미만_멈춤() {
         MockRandom.setNextInt(3);
 
         String prevStatus = car.getStatus();
@@ -30,7 +30,7 @@ public class CarTest {
 
     @Test
     @DisplayName("랜덤 값이 4 미만일 경우, 상태가 변해야 하고, 상태에 -가 추가되어야 한다.")
-    void 랜덤값_4이상_전진(){
+    void 랜덤값_4이상_전진() {
         MockRandom.setNextInt(8);
 
         String prevStatus = car.getStatus();

@@ -26,7 +26,7 @@ public class RaceTest {
 
     @Test
     @DisplayName("차량의 수에 맞게 차량을 생성하고, 랜덤값이 4 이상인 경우 상태가 변경되어야 한다.")
-    void 라운드_랜덤값_4이상(){
+    void 라운드_랜덤값_4이상() {
 
         race.createCars(3);
 
@@ -34,7 +34,7 @@ public class RaceTest {
         race.round();
 
         List<Car> cars = race.getCars();
-        for(Car car : cars){
+        for (Car car : cars) {
             assertThat(car.getStatus()).isEqualTo("-");
         }
 
@@ -42,7 +42,7 @@ public class RaceTest {
 
     @Test
     @DisplayName("차량의 수에 맞게 차량을 생성하고, 랜덤값이 4 미만인 경우 상태가 변경되지 않아야 한다.")
-    void 라운드_랜덤값_4미만(){
+    void 라운드_랜덤값_4미만() {
 
         race.createCars(3);
 
@@ -50,7 +50,7 @@ public class RaceTest {
         race.round();
 
         List<Car> cars = race.getCars();
-        for(Car car : cars){
+        for (Car car : cars) {
             assertThat(car.getStatus()).isEqualTo("");
         }
 
