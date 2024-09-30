@@ -11,6 +11,10 @@ public class StringSumCalculator {
     public static final int DELIMITER_GROUP = 1;
     public static final int TEXT_GROUP = 2;
 
+    private StringSumCalculator(){
+
+    }
+
     public static int sum(final String text) {
         if (isBlank(text)) {
             return 0;
@@ -35,7 +39,7 @@ public class StringSumCalculator {
 
     private static int getPositiveNumber(final String split) {
         final int number = Integer.parseInt(split);
-        if(number < 0){
+        if (number < 0) {
             throw new RuntimeException();
         }
         return number;
