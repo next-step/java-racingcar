@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class JavaRacingCar {
 
+    private int step;
     private Random random;
 
     private static final int RANDOM_VALUE_RANGE = 10;
@@ -11,7 +12,8 @@ public class JavaRacingCar {
     private static final int MAX_MOVING_RANGE = 9;
 
     public JavaRacingCar() {
-        random = new Random();
+        this.step = 0;
+        this.random = new Random();
     }
 
     protected int random() {
@@ -26,5 +28,17 @@ public class JavaRacingCar {
         }
 
         return false;
+    }
+
+    public int step() {
+        return this.step;
+    }
+
+    public void requireCarCount(int carCount) {
+        this.step = 1;
+    }
+
+    public void requireTryCount(int tryCount) {
+        this.step = 2;
     }
 }

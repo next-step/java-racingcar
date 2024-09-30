@@ -61,4 +61,30 @@ public class JavaRacingCarTest {
         assertThat(result).isFalse();
     }
 
+    @Test
+    void javaRacingCar_객체_생성_시_step(){
+        JavaRacingCar racingCar = new JavaRacingCar();
+
+        assertThat(racingCar.step()).isEqualTo(0);
+    }
+
+    @Test
+    void javaRacingCar_차대수_입력_시_step(){
+        JavaRacingCar racingCar = new JavaRacingCar();
+
+        racingCar.requireCarCount(3);
+
+        assertThat(racingCar.step()).isEqualTo(1);
+    }
+
+    @Test
+    void javaRacingCar_시도_횟수_입력_시_step(){
+        JavaRacingCar racingCar = new JavaRacingCar();
+
+        racingCar.requireCarCount(3);
+        racingCar.requireTryCount(5);
+
+        assertThat(racingCar.step()).isEqualTo(2);
+    }
+
 }
