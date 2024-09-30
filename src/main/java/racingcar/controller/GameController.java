@@ -7,8 +7,6 @@ import racingcar.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.view.ResultView.showCarStatus;
-
 public class GameController {
 
     public static final int RANDOM_THRESHOLD = 4;
