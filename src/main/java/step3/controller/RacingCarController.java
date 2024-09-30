@@ -22,15 +22,16 @@ public class RacingCarController {
         for (int i = 0; i < carCount; i++) {
             carList.add(new Car());
         }
+        OutputView.printRacingResult();
         for (int i = 0; i < tryCount; i++) {
             for (Car car : carList) {
                 if (random.nextInt() >= MOVE_MIN_NUMBER) {
                     car.move();
                 }
-                OutputView.printRacingResult(carList);
+                OutputView.printRacingProgress(car);
             }
+            System.out.println();
         }
-
     }
 
 }
