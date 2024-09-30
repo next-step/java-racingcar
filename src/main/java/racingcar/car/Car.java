@@ -12,7 +12,7 @@ public class Car {
 
     public void move(int randomNumber) {
         if (canMove(randomNumber)) {
-            this.position += 1;
+            position++;
         }
     }
 

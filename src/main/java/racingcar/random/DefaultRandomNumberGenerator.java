@@ -3,7 +3,7 @@ package racingcar.random;
 import java.util.Random;
 
 public class DefaultRandomNumberGenerator implements RandomNumberGenerator {
-    public static final int RANDOM_NUMBER_BOUND = 10;
+    private static final int RANDOM_NUMBER_BOUND = 10;
 
     private final Random random = new Random();
 

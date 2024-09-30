@@ -1,35 +1,35 @@
 package racingcar;
 
-import racingcar.car.CarController;
+import racingcar.car.Cars;
 import racingcar.random.DefaultRandomNumberGenerator;
+import racingcar.random.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingCar {
     private final InputView inputView;
     private final ResultView resultView;
-    private final Round round;
+    private final RandomNumberGenerator randomNumberGenerator;
 
     public RacingCar(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
-        this.round = new Round(new CarController(new DefaultRandomNumberGenerator()));
+        this.randomNumberGenerator = new DefaultRandomNumberGenerator();
     }
 
     public void run() {
         int numberOfCars = inputView.getCarNumberFromUser();
         int numberOfRounds = inputView.getRoundNumberFromUser();
 
-        round.init(numberOfCars);
-        startRacing(numberOfRounds);
+        Cars cars = new Cars(numberOfCars, randomNumberGenerator);
 
+        startRacing(numberOfRounds, cars);
     }
 
-    private void startRacing(int totalRound) {
-        for (int roundCount = 1; roundCount < totalRound + 1; roundCount++) {
-            round.start();
-            resultView.showRoundResult(roundCount, round.getCars());
+    private void startRacing(int numberOfRounds, Cars cars) {
+        for (int roundNumber = 1; roundNumber < numberOfRounds + 1; roundNumber++) {
+            cars.moveCars();
+            resultView.showRoundResult(roundNumber, cars);
         }
     }
-
 }
