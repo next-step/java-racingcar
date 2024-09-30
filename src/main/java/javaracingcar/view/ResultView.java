@@ -8,7 +8,7 @@ public class ResultView {
 
     private static final String DEFAULT_MESSAGE = "실행결과";
 
-    protected ResultView() {
+    private ResultView() {
     }
 
     public static void resultStartMessage() {

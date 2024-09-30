@@ -18,8 +18,4 @@ public class RacingCar {
         return this.moveCount;
     }
 
-    public int carId() {
-        return this.carId;
-    }
-
 }

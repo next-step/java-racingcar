@@ -34,20 +34,6 @@ public class JavaRacingCar {
         this.start();
     }
 
-    protected int random() {
-        int randomValue = random.nextInt(RANDOM_VALUE_RANGE);
-        return randomValue;
-    }
-
-    protected boolean isMove(int randomValue) {
-
-        if (MIN_MOVING_RANGE <= randomValue && randomValue <= MAX_MOVING_RANGE) {
-            return true;
-        }
-
-        return false;
-    }
-
     protected void requireCarCount(int carCount) throws RuntimeException {
 
         if (carCount < 0) {
@@ -71,15 +57,7 @@ public class JavaRacingCar {
         this.tryCount = tryCount;
     }
 
-    public int step() {
-        return this.step;
-    }
-
-    public List<RacingCar> carList() {
-        return this.carList;
-    }
-
-    public List<RacingCar> start() {
+    protected List<RacingCar> start() {
         ResultView.resultStartMessage();
 
         for (int i = 0; i < tryCount; i++) {
@@ -92,5 +70,28 @@ public class JavaRacingCar {
         }
         return this.carList;
     }
+
+    protected int random() {
+        int randomValue = random.nextInt(RANDOM_VALUE_RANGE);
+        return randomValue;
+    }
+
+    protected boolean isMove(int randomValue) {
+
+        if (MIN_MOVING_RANGE <= randomValue && randomValue <= MAX_MOVING_RANGE) {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected int step() {
+        return this.step;
+    }
+
+    protected List<RacingCar> carList() {
+        return this.carList;
+    }
+
 
 }
