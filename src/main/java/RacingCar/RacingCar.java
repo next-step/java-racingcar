@@ -1,7 +1,7 @@
-package step3;
+package RacingCar;
 
-import static step3.InputView.inputInt;
-import static step3.ResultView.printResultMessage;
+import static RacingCar.InputView.inputInt;
+import static RacingCar.ResultView.printResultMessage;
 
 import java.util.ArrayList;
 import java.util.List;

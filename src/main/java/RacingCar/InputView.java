@@ -1,4 +1,4 @@
-package step3;
+package RacingCar;
 
 
 import java.util.InputMismatchException;

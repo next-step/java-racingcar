@@ -1,4 +1,4 @@
-package step3;
+package RacingCar;
 
 public class ResultView {
     private static final String PRINT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";

@@ -1,6 +1,6 @@
-package step3;
+package RacingCar;
 
-import static step3.ResultView.printGoDistance;
+import static RacingCar.ResultView.printGoDistance;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package step3;
+package RacingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
