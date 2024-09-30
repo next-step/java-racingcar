@@ -7,6 +7,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringSumCalculatorTest {
 
     @Test
+    void 쉼표_구분자(){
+        int result = StringSumCalculator.sum("1,2,3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
     void null_또는_빈문자열() {
         int result = StringSumCalculator.sum("");
         assertThat(result).isEqualTo(0);
