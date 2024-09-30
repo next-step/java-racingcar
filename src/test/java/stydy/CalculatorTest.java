@@ -1,80 +1,56 @@
 package stydy;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-
-import java.util.InputMismatchException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import study.Calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
-    final String REG_EXP = "[,:]";
-
-    @ParameterizedTest
-    @NullAndEmptySource
-    void calculatorTest1(String input) {
-
-        int result = basicCalculator(input, REG_EXP);
+    @Test
+    @DisplayName("split and sum test for null and empty")
+    public void splitAndSum_null_또는_빈문자() {
+        int result = Calculator.splitAndSum(null);
         assertThat(result).isEqualTo(0);
 
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"1=1", "1,2=3", "1,2:3=6"},delimiter = '=')
-    void calculator(String input, String output) {
-
-        int totalResult = Integer.parseInt(output);
-        int result = basicCalculator(input, REG_EXP);
-        assertThat(result).isEqualTo(totalResult);
-
+        result = Calculator.splitAndSum("");
+        assertThat(result).isEqualTo(0);
     }
 
     @Test
-    void customCalculator() {
-
-        String input = "//;\n1;2;3";
-        Matcher matcher = Pattern.compile("^//(.)\n(.*)").matcher(input);
-
-        if(matcher.find()) {
-            String group1 = matcher.group(1);
-            String group2 = matcher.group(2);
-
-            basicCalculator(group2, group1);
-        }
+    @DisplayName("split and sum test for one number")
+    public void splitAndSum_숫자하나() throws Exception {
+        int result = Calculator.splitAndSum("1");
+        assertThat(result).isEqualTo(1);
     }
 
     @Test
-    void negativeCaculatir() {
-        String input = "-1,2,3";
-        basicCalculator(input, REG_EXP);
+    @DisplayName("split and sum test for separator ','")
+    public void splitAndSum_쉼표구분자() throws Exception {
+        int result = Calculator.splitAndSum("1,2");
+        assertThat(result).isEqualTo(3);
     }
 
-    int basicCalculator(String input, String regExp) {
-
-        int sum = 0;
-
-        if(input == null || input.isEmpty()) {
-            return sum;
-        }
-
-        String[] arr = input.split(regExp);
-
-        for(int i = 0; i < arr.length; i++) {
-            int result = Integer.parseInt(arr[i]);
-
-            if(result < 0) {
-                Assertions.assertThrows(InputMismatchException.class, () -> {
-                });
-            }
-            sum += result;
-        }
-        return sum;
+    @Test
+    @DisplayName("split and sum test for separator ',|:'")
+    public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
+        int result = Calculator.splitAndSum("1,2:3");
+        assertThat(result).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("split and sum test for custom separator")
+    public void splitAndSum_custom_구분자() throws Exception {
+        int result = Calculator.splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("split and sum test for negative number")
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> Calculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
