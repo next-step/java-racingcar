@@ -10,6 +10,9 @@ public class Vehicles {
     List<Car> list = new ArrayList<>();
 
     public Vehicles(int num) {
+        if(num < 2){
+            throw new IllegalArgumentException("게임을 진행할 수 없음");
+        }
         initList(num);
     }
 
@@ -30,4 +33,7 @@ public class Vehicles {
         }
     }
 
+    public List<Car> getList() {
+        return list;
+    }
 }
