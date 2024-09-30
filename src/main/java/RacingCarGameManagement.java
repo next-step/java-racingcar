@@ -44,6 +44,10 @@ public class RacingCarGameManagement {
     }
 
     public static void main(String[] args) {
+        String[] split = InputView.getNames();
+        for (String name : split) {
+            System.out.println(name);
+        }
         int numberOfCars = InputView.getNumberOfCars();
         int numberOfGames = InputView.getNumberOfGames();
         RandomUtil randomUtil = new RandomUtil();
