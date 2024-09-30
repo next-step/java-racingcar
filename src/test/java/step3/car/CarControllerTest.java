@@ -28,7 +28,7 @@ class CarControllerTest {
 
     @DisplayName("난수값이 4미만이면 차를 안 움직인다.")
     @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3})
+    @ValueSource(ints = {0, 1, 2, 3})
     void noMoveCar(int randomNumber) {
         // given
         TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(randomNumber);

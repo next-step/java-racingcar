@@ -10,9 +10,9 @@ class TestRandomNumberGeneratorTest {
 
     @DisplayName("테스트용 난수 생성기에 입력한 값을 그대로 반환 받을 수 있다.")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5,6,7,8,9,100})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 100})
     void getFixedNumber(int number) {
-    	// given
+        // given
         TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(number);
 
         // when
