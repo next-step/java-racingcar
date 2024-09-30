@@ -26,21 +26,21 @@ public class SetTest {
 
     @Test
     @DisplayName("사이즈 테스트")
-    public void sizeTest(){
+    public void sizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
     @DisplayName("아이템 포함 테스트")
-    @ValueSource(ints={1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void contains(int value) {
         assertThat(numbers.contains(value)).isTrue();
     }
 
     @ParameterizedTest
     @DisplayName("동적 아이템 포함 테스트")
-    @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"},delimiter = ':')
-    void containsByCsv(int value,boolean flag) {
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void containsByCsv(int value, boolean flag) {
         assertThat(numbers.contains(value)).isEqualTo(flag);
     }
 }
