@@ -1,17 +1,19 @@
 package racing.domain;
 
-public class GameResult {
-    private final int[] roundResult;
+import java.util.List;
 
-    private GameResult(int[] roundResult) {
+public class GameResult {
+    private final List<Integer> roundResult;
+
+    private GameResult(List<Integer> roundResult) {
         this.roundResult = roundResult;
     }
 
-    public int[] getRoundResult() {
+    public List<Integer> getRoundResult() {
         return roundResult;
     }
 
-    public static GameResult save(int[] roundResult) {
+    public static GameResult save(List<Integer> roundResult) {
         return new GameResult(roundResult);
     }
 }

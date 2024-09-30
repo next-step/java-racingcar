@@ -37,7 +37,7 @@ public class RacingGame {
 
     private void playRound(List<GameResult> results) {
         moveCars();
-        int[] positions = getCurrentPositions();
+        List<Integer> positions = getCurrentPositions();
         saveRoundResult(results, positions);
     }
 
@@ -47,15 +47,15 @@ public class RacingGame {
         }
     }
 
-    private int[] getCurrentPositions() {
-        int[] positions = new int[cars.size()];
-        for (int i = 0; i < cars.size(); i++) {
-            positions[i] = cars.get(i).getCurrentPosition();
+    private List<Integer> getCurrentPositions() {
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.getCurrentPosition());
         }
         return positions;
     }
 
-    private void saveRoundResult(List<GameResult> results, int[] positions) {
+    private void saveRoundResult(List<GameResult> results, List<Integer> positions) {
         results.add(GameResult.save(positions));
     }
 
