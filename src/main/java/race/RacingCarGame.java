@@ -2,6 +2,7 @@ package race;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
@@ -18,7 +19,6 @@ public class RacingCarGame {
     }
 
     public void race(List<RacingCar> racingCars) {
-        System.out.println(PRINT_EXECUTION_RESULT);
         for (RacingCar car : racingCars) {
             car.moveForward();
         }
@@ -30,6 +30,22 @@ public class RacingCarGame {
     }
 
     public void startRace() {
+        System.out.println(PRINT_EXECUTION_RESULT);
         IntStream.range(0, raceCount).forEach(i -> race(this.racingCars));
+    }
+
+    public void notifyChampionWinner() {
+        int largestMovement = findLargestMovement();
+        List<RacingCar> winners = racingCars.stream()
+                .filter(car -> car.getPosition() == largestMovement).collect(Collectors.toList());
+
+        resultView.printChampionWinner(winners);
+    }
+
+    private int findLargestMovement() {
+        return racingCars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
     }
 }

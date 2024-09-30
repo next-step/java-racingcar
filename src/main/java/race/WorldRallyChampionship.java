@@ -1,8 +1,6 @@
 package race;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class WorldRallyChampionship {
     private InputView inputView = new InputView();
@@ -16,6 +14,7 @@ public class WorldRallyChampionship {
     public void openWordRallyChampionShip() {
         readyCarRacing();
         racingCarGame.startRace();
+        racingCarGame.notifyChampionWinner();
         closeRace();
     }
 

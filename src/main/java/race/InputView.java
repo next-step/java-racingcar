@@ -9,11 +9,26 @@ public class InputView {
     private final String PRINT_HOW_MANY_TRY = "시도할 회수는 몇 회인가요?";
     private final String PRINT_NUMBER_FORMAT_EXCEPTION_PLEASE_INPUT_BETWEEN_ONE_AND_NINE = "1 ~ 9 사이의 양수를 입력해주세요.";
     private final String PRINT_NUMBER_FORMAT_EXCEPTION_PLEASE_INPUT_VALID_NUMBER_BETWEEN_ONE_AND_NINE = "1 ~ 9 사이의 유효한 숫자를 입력 해주세요.";
+    private final String PRINT_CAR_NAME_LENGTH_SHOULD_BE_UNDER_SIX = "자동차 이름은 5자를 초과할 수 없습니다.";
 
     public List<String> receiveCarNames() {
         System.out.println(PRINT_INPUT_CAR_NAME_TO_PARTICIPANT);
-        String carNames = SCANNER.next();
-        return List.of(carNames.split(","));
+        String carNamesString = SCANNER.next();
+        List<String> carNames = List.of(carNamesString.split(","));
+        validateCarNames(carNames);
+        return carNames;
+    }
+
+    private void validateCarNames(List<String> carNames) {
+        carNames.stream().forEach(carName -> {
+            validateCarNameLength(carName);
+        });
+    }
+
+    private void validateCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(PRINT_CAR_NAME_LENGTH_SHOULD_BE_UNDER_SIX);
+        }
     }
 
     public int receiveRaceCount() {
@@ -23,13 +38,11 @@ public class InputView {
             try {
                 int raceCount = SCANNER.nextInt();
                 validateRaceCount(raceCount);
-                System.out.println(raceCount);
                 return raceCount;
             } catch (NumberFormatException e) {
                 System.out.println(PRINT_NUMBER_FORMAT_EXCEPTION_PLEASE_INPUT_VALID_NUMBER_BETWEEN_ONE_AND_NINE);
             }
         }
-
     }
 
     public void closeScanner() {
