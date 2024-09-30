@@ -1,13 +1,11 @@
-package race;
+package race.vehicle;
 
 import java.util.Random;
 
 public class Car {
-    private int carNum;
     private int location;
 
-    Car(int carNum, int location) {
-        this.carNum = carNum;
+    Car(int location) {
         this.location = location;
     }
 

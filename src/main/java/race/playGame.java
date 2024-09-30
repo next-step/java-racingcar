@@ -1,8 +1,5 @@
 package race;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class playGame {
 
     public static final int INITIAL_LOCATION = 1;
@@ -10,23 +7,19 @@ public class playGame {
     public static void main(String[] args) {
         InputView.inputCarView();
         int carNum = InputView.inputCarNumber();
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            cars.add(new Car(i, INITIAL_LOCATION));
-        }
 
-        InputView.inputMoveView();
-        int moveNum = InputView.inputMovementNumber();
-        resultView.printResultView();
-        for (int i = 0; i < moveNum; i++) {
-            for(int j=0 ; j<carNum ; j++){
-                Car car = cars.get(j);
-                resultView.printLocationResultView(car.getLocation());
-                if(j<moveNum)
-                    car.move();
-            }
-            System.out.println();
-        }
+//        InputView.inputMoveView();
+//        int moveNum = InputView.inputMovementNumber();
+//        resultView.printResultView();
+//        for (int i = 0; i < moveNum; i++) {
+//            for(int j=0 ; j<carNum ; j++){
+//                Car car = cars.get(j);
+//                resultView.printLocationResultView(car.getLocation());
+//                if(j<moveNum)
+//                    car.move();
+//            }
+//            System.out.println();
+//        }
 
     }
 }
