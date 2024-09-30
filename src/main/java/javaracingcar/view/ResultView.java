@@ -7,6 +7,7 @@ import java.util.List;
 public class ResultView {
 
     private static final String DEFAULT_MESSAGE = "실행결과";
+    private static final String DEFAULT_MOVE_UNIT = "-";
 
     private ResultView() {
     }
@@ -15,13 +16,17 @@ public class ResultView {
         System.out.println(DEFAULT_MESSAGE);
     }
 
-    public static void printResult(List<RacingCar> racingCars) {
+    public static void endRound(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            for (int i = 0; i < racingCar.moveCount(); i++) {
-                System.out.print("-");
-            }
-            System.out.println("");
+            viewCurrentCarLocation(racingCar);
         }
-        System.out.println("");
+        System.out.println();
+    }
+
+    private static void viewCurrentCarLocation(RacingCar racingCar) {
+        for (int i = 0; i < racingCar.moveCount(); i++) {
+            System.out.print(DEFAULT_MOVE_UNIT);
+        }
+        System.out.println();
     }
 }

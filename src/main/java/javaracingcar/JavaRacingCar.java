@@ -17,7 +17,6 @@ public class JavaRacingCar {
     private int step = 0;
     private int tryCount = 0;
 
-
     private Random random = new Random();
     private List<RacingCar> carList = new ArrayList<>();
 
@@ -34,54 +33,59 @@ public class JavaRacingCar {
         this.start();
     }
 
-    protected void requireCarCount(int carCount) throws RuntimeException {
-
-        if (carCount < 0) {
+    private void validateNegativeNumber(int count) {
+        if (count < 0) {
             throw new IllegalArgumentException("음수 입력");
         }
+    }
 
+    protected void requireCarCount(int carCount) throws RuntimeException {
+        validateNegativeNumber(carCount);
         this.step = 1;
+        initCars(carCount);
+    }
 
+    private void initCars(int carCount) {
         for (int i = 0; i < carCount; i++) {
             carList.add(new RacingCar(i + 1));
         }
     }
 
     protected void requireTryCount(int tryCount) throws RuntimeException {
-
-        if (tryCount < 0) {
-            throw new IllegalArgumentException("음수 입력");
-        }
-
+        validateNegativeNumber(tryCount);
         this.step = 2;
         this.tryCount = tryCount;
     }
 
     protected List<RacingCar> start() {
         ResultView.resultStartMessage();
-
         for (int i = 0; i < tryCount; i++) {
-            for (RacingCar racingCar : this.carList) {
-                if (isMove(random())) {
-                    racingCar.go();
-                }
-            }
-            ResultView.printResult(this.carList);
+            startRound();
         }
         return this.carList;
     }
 
+    private void startRound() {
+        for (RacingCar racingCar : this.carList) {
+            decideCarLocation(racingCar);
+        }
+        ResultView.endRound(this.carList);
+    }
+
+    private void decideCarLocation(RacingCar racingCar) {
+        if (isMove(random())) {
+            racingCar.go();
+        }
+    }
+
     protected int random() {
-        int randomValue = random.nextInt(RANDOM_VALUE_RANGE);
-        return randomValue;
+        return random.nextInt(RANDOM_VALUE_RANGE);
     }
 
     protected boolean isMove(int randomValue) {
-
         if (MIN_MOVING_RANGE <= randomValue && randomValue <= MAX_MOVING_RANGE) {
             return true;
         }
-
         return false;
     }
 
@@ -92,6 +96,5 @@ public class JavaRacingCar {
     protected List<RacingCar> carList() {
         return this.carList;
     }
-
 
 }
