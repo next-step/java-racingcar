@@ -12,9 +12,16 @@ public class RacingGame {
         return round;
     }
 
-    public void start(int tryCount) {
+    public void start(int carCount, int tryCount) {
+        validateNegative(carCount, tryCount);
         for (int i = 0; i < tryCount; i++) {
             validateNextRound(tryCount);
+        }
+    }
+
+    private void validateNegative(int carCount, int tryCount) {
+        if (carCount <= 0 || tryCount <= 0) {
+            throw new RuntimeException("음수가 전달되어 게임을 시작할 수 없습니다.");
         }
     }
 
