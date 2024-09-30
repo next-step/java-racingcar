@@ -3,12 +3,25 @@ package calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringSumCalculatorTest {
 
     @Test
+    void 음수(){
+        assertThatThrownBy(()-> StringSumCalculator.sum("-1"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
     void 커스텀_구분자(){
         int result = StringSumCalculator.sum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void 콜론_쉼표_구분자(){
+        int result = StringSumCalculator.sum("1,2:3");
         assertThat(result).isEqualTo(6);
     }
 

@@ -15,15 +15,24 @@ public class StringSumCalculator {
         return sumNumbers(getNumberArray(getSplit(text)));
     }
 
-    private static int[] getNumberArray(String[] split) {
-        int[] result = new int[split.length];
+    private static int[] getNumberArray(final String[] split) {
+        final int[] result = new int[split.length];
         for (int i = 0; i < split.length; i++) {
-            result[i] = Integer.parseInt(split[i]);
+            final int number = getNumber(split[i]);
+            result[i] = number;
         }
         return result;
     }
 
-    private static int sumNumbers(int[] split) {
+    private static int getNumber(final String split) {
+        final int number = Integer.parseInt(split);
+        if(number < 0){
+            throw new RuntimeException();
+        }
+        return number;
+    }
+
+    private static int sumNumbers(final int[] split) {
         int result = 0;
         for (int number : split) {
             result += number;
@@ -31,11 +40,11 @@ public class StringSumCalculator {
         return result;
     }
 
-    private static String[] getSplit(String text) {
+    private static String[] getSplit(final String text) {
         String[] split = text.split(DEFAULT_DELIMITER);
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+        final Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
         if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
+            final String customDelimiter = matcher.group(1);
             split = matcher.group(2).split(customDelimiter);
         }
         return split;
