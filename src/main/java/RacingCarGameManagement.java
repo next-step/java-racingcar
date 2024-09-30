@@ -1,16 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingCarGameManagement {
-    private RacingCar[] cars;
+    private List<RacingCar> cars;
     private int games;
 
     public RacingCarGameManagement(int cars, int games) {
-        this.cars = new RacingCar[cars];
+        this.cars = new ArrayList<>(cars);
         this.games = games;
-        for (int i = 0; i < this.cars.length; i++) {
-            this.cars[i] = new RacingCar();
+        for (int i = 0; i < cars; i++) {
+            this.cars.add(new RacingCar());
         }
     }
 
-    public RacingCar[] getCars() {
+    public List<RacingCar> getCars() {
         return cars;
     }
 
