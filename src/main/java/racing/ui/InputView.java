@@ -10,8 +10,8 @@ public class InputView {
 
     private static final String ROUND_COUNT_QUESTION = "시도할 횟수는 몇 회 인가요?";
 
-    public InputView() throws IllegalAccessException {
-        throw new IllegalAccessException("유틸형 클래스는 생성할 수 없습니다");
+    public InputView() {
+        throw new UnsupportedOperationException("유틸형 클래스는 생성할 수 없습니다");
     }
 
     public static int readCarCount() {
