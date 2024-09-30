@@ -24,8 +24,13 @@ public class RacingGame {
         initCar(carCount);
         for (int i = 0; i < tryCount; i++) {
             moveCars();
+            printCarPosition();
             validateNextRound(tryCount);
         }
+    }
+
+    private void printCarPosition() {
+        ResultView.printCarPosition(racingMap);
     }
 
     private void moveCars() {
@@ -53,6 +58,7 @@ public class RacingGame {
     private void validateNextRound(int tryCount) {
         if (isNextRound(tryCount)) {
             round++;
+            ResultView.printNewLine();
         }
     }
 
