@@ -14,7 +14,7 @@ public class CarRace {
     }
 
     public List<Car> proceedRound() {
-        checkCarForward();
+        proceed();
         tryCount--;
         return cars;
     }
@@ -33,7 +33,7 @@ public class CarRace {
         }
     }
 
-    private void checkCarForward() {
+    private void proceed() {
         for (Car car : cars) {
             car.forward();
         }
