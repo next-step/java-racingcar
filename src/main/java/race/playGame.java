@@ -18,6 +18,15 @@ public class playGame {
         InputView.inputMoveView();
         int moveNum = InputView.inputMovementNumber();
         resultView.printResultView();
+        for (int i = 0; i < moveNum; i++) {
+            for(int j=0 ; j<carNum ; j++){
+                Car car = cars.get(j);
+                resultView.printLocationResultView(car.getLocation());
+                if(j<moveNum)
+                    car.move();
+            }
+            System.out.println();
+        }
 
     }
 }
