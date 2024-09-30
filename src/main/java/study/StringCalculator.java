@@ -8,6 +8,7 @@ public class StringCalculator {
     public static final String SEPARATOR = ",|:";
     public static final String CUSTOM_SEPARATOR = "//(.)\n(.*)";
     public static final String NUMERIC_REGULAR_EXPRESSION = "^\\d+$";
+    public static final Pattern pattern = Pattern.compile(NUMERIC_REGULAR_EXPRESSION); //이렇게되면?
 
     public static int splitAndSum(String text) {
         return sum(toIntArray(split(blankToZero(text))));
@@ -52,7 +53,6 @@ public class StringCalculator {
     }
 
     private static int toInt(String values) {
-        Pattern pattern = Pattern.compile(NUMERIC_REGULAR_EXPRESSION);  //숫자가 아닌 경우
         Matcher matcher = pattern.matcher(values);
         if (!matcher.matches()) {
             throw new IllegalArgumentException("기본 구분자 또는 커스텀 구분자를 확인해주세요.");

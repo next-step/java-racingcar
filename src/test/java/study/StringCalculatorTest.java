@@ -29,8 +29,8 @@ public class StringCalculatorTest {
 
     @Test
     void 빈값_또는_null() {
-        assertThat(StringCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringCalculator.splitAndSum("")).isEqualTo(0);
+        assertThat(StringCalculator.splitAndSum(null)).isZero();
+        assertThat(StringCalculator.splitAndSum("")).isZero();
     }
 
     @Test
@@ -46,7 +46,7 @@ public class StringCalculatorTest {
 
     @Test
     void 숫자_하나() {
-        assertThat(StringCalculator.splitAndSum("0")).isEqualTo(0);
+        assertThat(StringCalculator.splitAndSum("0")).isZero();
     }
 
 
