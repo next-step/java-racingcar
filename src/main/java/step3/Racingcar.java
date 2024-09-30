@@ -11,7 +11,7 @@ public class Racingcar {
         this.carEngine = carEngine;
     }
 
-    // 테스트용
+    // view 테스트용
     public static void main(String[] args) {
         CarEngine carEngine = new RandomEngine();
         Racingcar racingcar = new Racingcar(carEngine);
@@ -23,7 +23,7 @@ public class Racingcar {
         String car = scanner.nextLine();
         String round = scanner.nextLine();
 
-        validateInput(car, round);
+        InputValidator.validate(car, round);
 
         Cars cars = new Cars(createCars(Integer.parseInt(car)));
 
@@ -50,27 +50,4 @@ public class Racingcar {
         }
     }
 
-    private void validateInput(String carInput, String roundInput) {
-        int car;
-        int round;
-
-        if (carInput == null || carInput.isEmpty()) {
-            throw new IllegalArgumentException("자동차 수 : 올바른 입력값이 아닙니다.");
-        }
-
-        if (roundInput == null || roundInput.isEmpty()) {
-            throw new IllegalArgumentException("게임 진행 횟수 : 올바른 입력값이 아닙니다.");
-        }
-
-        try {
-            car = Integer.parseInt(carInput);
-            round = Integer.parseInt(roundInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값은 숫자(양수)만 입력 가능합니다.");
-        }
-
-        if (car < 0 || round < 0) {
-            throw new IllegalArgumentException("입력값은 양수만 입력 가능합니다.");
-        }
-    }
 }
