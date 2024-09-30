@@ -10,10 +10,14 @@ public class StringSumCalculator {
     public static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
 
     public static int sum(final String text) {
-        if (text == null || text.isEmpty()) {
+        if (isBlank(text)) {
             return 0;
         }
         return sumNumbers(getNumberArray(getSplit(text)));
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 
     private static int[] getNumberArray(final String[] split) {
