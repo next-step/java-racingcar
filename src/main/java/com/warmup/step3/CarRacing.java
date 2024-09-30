@@ -18,6 +18,20 @@ public class CarRacing {
     }
 
     /**
+     * 랜덤하게 진행 여부를 확인하여 Dash를 더해 전달
+     */
+    private static String addRandomDashString(String carStatus) {
+        boolean doForward = isForward(getRandomNumber());
+        if (doForward) {
+            carStatus = addDash(carStatus);
+        }
+
+        System.out.println(carStatus);
+
+        return carStatus;
+    }
+
+    /**
      * 입력한 숫자만큼의 문자열 배열 반환
      */
     public static String[] makeStringArray(int size) {
