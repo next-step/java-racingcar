@@ -7,6 +7,10 @@ public class GameResult {
         this.roundResult = roundResult;
     }
 
+    public int[] getRoundResult() {
+        return roundResult;
+    }
+
     public static GameResult save(int[] roundResult) {
         return new GameResult(roundResult);
     }
