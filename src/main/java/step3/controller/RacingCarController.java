@@ -26,7 +26,6 @@ public class RacingCarController {
         OutputView.printRacingResult();
         for (int i = 0; i < tryCount; i++) {
             processRound(carList);
-            System.out.println();
         }
     }
 
@@ -34,6 +33,7 @@ public class RacingCarController {
         for (Car car : carList) {
             moveCarAndPrintProgress(car);
         }
+        System.out.println();
     }
 
     private void moveCarAndPrintProgress(final Car car) {
