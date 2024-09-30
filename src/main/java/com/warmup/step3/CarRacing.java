@@ -14,7 +14,24 @@ public class CarRacing {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         int tryNumber = scanner.nextInt();
 
-        System.out.println("자동차 대수: " + carNumber + " 시도할 횟수: " + tryNumber);
+        // 자동차 대수만큼의 String Array 구현
+        String[] carArray = makeStringArray(carNumber);
+
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryNumber; i++) {
+            System.out.println("# " + (i + 1) + "회차");
+            runCarRacing(carArray);
+        }
+    }
+
+    /**
+     * 자동차 경주 진행
+     */
+    public static void runCarRacing(String[] carArray) {
+        for (int i = 0; i < carArray.length; i++) {
+            String carStatus = carArray[i] == null ? "" : carArray[i];
+            carArray[i] = addRandomDashString(carStatus);
+        }
     }
 
     /**
