@@ -4,8 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static String BASIC_DELIMITER = ",|:";
+
     public static int splitAndSum(String text) {
-        boolean checkValidNum = validNum(text);
+        boolean checkValidNum = isNum(text);
         if (!checkValidNum) {
             return 0;
         }
@@ -14,7 +17,7 @@ public class StringAddCalculator {
         return sum;
     }
 
-    public static boolean validNum(String text) {
+    public static boolean isNum(String text) {
         if (text == null) {
             return false;
         }
@@ -25,12 +28,12 @@ public class StringAddCalculator {
     }
 
     public static String[] splitNum(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if(m.find()){
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
+        if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
         }
-        return text.split(",|:");
+        return text.split(BASIC_DELIMITER);
     }
 
     public static int sumNum(String[] numbers) {
@@ -41,15 +44,17 @@ public class StringAddCalculator {
         return sum;
     }
 
-    public static int checkNegative(String number){
-        try{
+    public static int checkNegative(String number) {
+        try {
             int num = Integer.parseInt(number);
-            if(num<0){
+            if (num < 0) {
                 throw new RuntimeException();
             }
             return num;
-        }catch (Exception ex){
-            throw new RuntimeException();
+        } catch (NumberFormatException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            throw ex;
         }
     }
 }

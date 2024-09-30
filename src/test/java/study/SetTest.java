@@ -26,7 +26,7 @@ public class SetTest {
     @Test
     @DisplayName("Set_크기_확인")
     void checkSetSize() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("Set_존재_확인에서_중복제거")
     void checkContainsDeleteDuplicate(int num) {
-        assertThat(numbers.contains(num)).isTrue();
+        assertThat(numbers.contains(num));
     }
 
     @ParameterizedTest
