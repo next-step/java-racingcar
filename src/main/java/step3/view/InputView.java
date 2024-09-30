@@ -3,7 +3,7 @@ package step3.view;
 import java.util.Scanner;
 
 public class InputView {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
     private static final String INPUT_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private static final String MIN_COUNT_ERROR_MESSAGE = "최소 1이상의 숫자를 입력하셔야 합니다.";
@@ -23,7 +23,7 @@ public class InputView {
     }
 
     private static int inputCountValue() {
-        int value = scanner.nextInt();
+        int value = SCANNER.nextInt();
         validateMinCount(value);
         return value;
     }
