@@ -27,7 +27,7 @@ public class Car {
         return randomNumber >= RANDOM_NUMBER_BOUNDARY;
     }
 
-    public static Car createCar() {
+    public static Car create() {
         return new Car(DEFAULT_POSITION);
     }
 }

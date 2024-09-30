@@ -13,7 +13,7 @@ class CarTest {
     @DisplayName("자동차가 생성되면 position 0인 상태로 생성이 되는지")
     @Test
     void createCarTest() {
-        Car car = Car.createCar();
+        Car car = Car.create();
         assertThat(car.getCurrentPosition()).isZero();
     }
 
@@ -21,7 +21,7 @@ class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"4:1", "3:0"}, delimiter = ':')
     void carMoveTest(int given, int expected) {
-        Car car = Car.createCar();
+        Car car = Car.create();
         car.move(new FixedNumberGenerator(given));
         assertThat(car.getCurrentPosition()).isEqualTo(expected);
     }
