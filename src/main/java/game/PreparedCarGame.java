@@ -1,12 +1,15 @@
 package game;
 
-import message.Message;
-import uiview.ResultView;
+import car.CarStrategy;
 
-public class PreparedCarGame{
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    private final ResultView resultView = new ResultView();
+public class PreparedCarGame {
+
     private GameStrategy gameStrategy;
+    private final List<List<CarStrategy>> raceSituation = new ArrayList<>();
 
     public void ready(GameStrategy gameStrategy) {
         this.gameStrategy = gameStrategy;
@@ -14,16 +17,21 @@ public class PreparedCarGame{
 
     //레이싱을 시작한다.
     public void startRace() {
-        System.out.println(Message.RESULT_MESSAGE.message());
         for (int i = 0; i < gameStrategy.getAttemptNum(); i++) {
             this.gameStrategy.attemptForwardCar();
-            raceResult();
+            this.raceSituation.add(copyCarStrategy());
         }
     }
 
-    //현재 레이스의 결과를 출력한다.
-    private void raceResult() {
-        resultView.resultView(gameStrategy.getRacingCars());
+    public List<List<CarStrategy>> getRaceSituation() {
+        return raceSituation;
+    }
+
+    //CarStrategy 객체를 새로운주소로 copy한다.
+    private List<CarStrategy> copyCarStrategy() {
+        return this.gameStrategy.getRacingCars().stream()
+                .map(CarStrategy::copy)
+                .collect(Collectors.toList());
     }
 
 }

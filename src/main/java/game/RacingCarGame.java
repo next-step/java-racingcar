@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class RacingCarGame implements GameStrategy{
+public class RacingCarGame implements GameStrategy {
 
     private final static int FORWARD_STANDARD = 4; //전진여부를 결정하는 기준
     private final static int miniMumCarNum = 2; //레이싱 시작을 위한 최소 자동차 수
