@@ -15,4 +15,10 @@ public class CarRacingTest {
     void 자동차_이동_가능여부_확인(int moveNum, boolean shouldMoveResult) {
         assertThat(carRacing.shouldMove(moveNum)).isEqualTo(shouldMoveResult);
     }
+
+    @Test
+    void 차량_개수를_확인한다() {
+        assertThat(carRacing.race(3,5).size()).isEqualTo(3);
+    }
+
 }
