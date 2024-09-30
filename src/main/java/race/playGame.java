@@ -16,5 +16,8 @@ public class playGame {
         }
 
         InputView.inputMoveView();
+        int moveNum = InputView.inputMovementNumber();
+        resultView.printResultView();
+
     }
 }
