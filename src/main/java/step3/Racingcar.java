@@ -42,6 +42,10 @@ public class Racingcar {
     private void race(Cars cars, int round) {
         PrintView printView = new PrintView();
         printView.input(cars.carList.size(), round);
+
+        for (int i = 0; i < round; i++) {
+            cars.moveAll(carEngine);
+        }
     }
 
     private void validateInput(String carInput, String roundInput) {
