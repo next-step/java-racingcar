@@ -7,11 +7,11 @@ public class RacingCarGame {
     private static final int RANDOM_LIMIT = 10;
 
     public void gameStart(){
-        int carCount = InputView.initializeCarCount();
-        int tryCount = InputView.initializeTryRacingCount();
+        int carCountInput = InputView.getCarCountInputFromUser();
+        int racingCountInput = InputView.getRacingCountInputFromUser();
 
         ResultView.printResultMessage();
-        racingCar(tryCount, carCount);
+        racingCar(racingCountInput, carCountInput);
     }
 
     private void racingCar(int tryCount, int carCount) {

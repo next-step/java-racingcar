@@ -13,4 +13,6 @@ public class ResultView {
             car.run();
         }
     }
+
+    private ResultView(){}
 }
