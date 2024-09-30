@@ -15,7 +15,13 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        position++;
+    public void move(int number) {
+        if (isMoveable(number)) {
+            position++;
+        }
+    }
+
+    private boolean isMoveable(int number) {
+        return number >= 4;
     }
 }
