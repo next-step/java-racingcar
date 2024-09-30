@@ -2,16 +2,11 @@ package step3.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import step3.model.Car;
 import step3.view.InputView;
 import step3.view.OutputView;
 
 public class RacingCarController {
-    private static final int MOVE_MIN_NUMBER = 4;
-    private static final int RANDOM_MAX_NUMBER = 10;
-    private static final Random random = new Random();
-
     public RacingCarController() {
     }
 
@@ -37,9 +32,7 @@ public class RacingCarController {
     }
 
     private void moveCarAndPrintProgress(final Car car) {
-        if (random.nextInt(RANDOM_MAX_NUMBER) >= MOVE_MIN_NUMBER) {
-            car.move();
-        }
+        car.moveOrStop();
         OutputView.printRacingProgress(car);
     }
 }
