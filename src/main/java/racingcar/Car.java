@@ -8,7 +8,11 @@ public class Car {
     private String status = "";
 
     private static final int MINIMUM_VALUE = 4;
-    private static Random random = new Random();
+    private Random random;
+
+    public Car(Random random) {
+        this.random = random;
+    }
 
     public String getStatus() {
         return this.status;
