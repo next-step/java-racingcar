@@ -8,10 +8,10 @@ public class RacingCarGameManagementTest {
     void createRacingCarTest() {
         //given
         final int testMove = 3;
-        RacingCar car = new RacingCar();
+
 
         //when
-        car.setStatus(testMove);
+        RacingCar car = new RacingCar(testMove);
 
         //then
         Assertions.assertThat(car.getStatus()).isEqualTo(3);

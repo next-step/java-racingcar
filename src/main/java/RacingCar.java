@@ -5,7 +5,7 @@ public class RacingCar {
         this.status = 0;
     }
 
-    public void setStatus(int status) {
+    public RacingCar(int status) {
         this.status = status;
     }
 
