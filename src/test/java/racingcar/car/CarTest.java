@@ -8,18 +8,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("1대의 자동차를 입력한 값만큼 움직일 수 있다.")
+    @DisplayName("난수 값이 4미만이면 자동차를 움직이지 못한다.")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5})
+    @ValueSource(ints = {0, 1, 2, 3})
     void moveCar(int position) {
         // given
         Car car = new Car();
 
         // when
-        car.move();
+        car.move(position);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 }

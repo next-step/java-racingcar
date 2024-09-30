@@ -3,7 +3,6 @@ package racingcar.car;
 import racingcar.random.RandomNumberGenerator;
 
 public class CarController {
-    public static final int ALLOWED_MINIMUM_DISTANCE = 4;
 
     private final RandomNumberGenerator randomNumberGenerator;
 
@@ -13,12 +12,7 @@ public class CarController {
 
     public void moveCar(Car car) {
         int randomDistance = randomNumberGenerator.generate();
-        if (canMove(randomDistance)) {
-            car.move();
-        }
+        car.move(randomDistance);
     }
 
-    private boolean canMove(int distance) {
-        return distance >= ALLOWED_MINIMUM_DISTANCE;
-    }
 }

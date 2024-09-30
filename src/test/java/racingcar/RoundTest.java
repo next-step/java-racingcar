@@ -10,8 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RoundTest {
 
-    private CarController carController;
-
     @DisplayName("init에서 입력 값으로 들어온 갯수만큼 자동차를 만들 수 있다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
@@ -25,8 +23,7 @@ class RoundTest {
         round.init(numberOfCar);
 
         // then
-        assertThat(round.getCars())
-                .hasSize(numberOfCar);
+        assertThat(round.getCars()).hasSize(numberOfCar);
     }
 
     @DisplayName("난수가 4이상이면 2대의 자동차가 움직인다.")
@@ -43,9 +40,7 @@ class RoundTest {
         round.start();
 
         // then
-        assertThat(round.getCars())
-                .extracting("position")
-                .containsExactly(1, 1);
+        assertThat(round.getCars()).extracting("position").containsExactly(1, 1);
     }
 
     @DisplayName("난수가 4미만이면 2대의 자동차가 움직인다.")
@@ -63,8 +58,6 @@ class RoundTest {
         round.start();
 
         // then
-        assertThat(round.getCars())
-                .extracting("position")
-                .containsExactly(0, 0);
+        assertThat(round.getCars()).extracting("position").containsExactly(0, 0);
     }
 }
