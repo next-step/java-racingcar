@@ -1,8 +1,11 @@
 package race.vehicle;
 
-import java.util.Random;
+import race.Utils.RandomUtil;
 
 public class Car {
+    public static final int MOVE_CONDITION = 4;
+    public static final int BOUND = 10;
+
     private StringBuffer location;
 
     Car(Builder builder) {
@@ -10,8 +13,7 @@ public class Car {
     }
 
     public void move() {
-        Random random = new Random();
-        if (random.nextInt(10) >= 4) {
+        if (RandomUtil.getValue(BOUND) >= MOVE_CONDITION) {
             location.append("-");
         }
         System.out.println(location);
