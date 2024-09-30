@@ -16,7 +16,7 @@ public class CarRacingTest {
     }
 
     @Test
-    public void isEquals_0에서_9사이의_랜덤값_반환() {
+    public void isBetween_0에서_9사이의_랜덤값_반환() {
         int expectedMinNum = 0;
         int expectedMaxNum = 10;
 
