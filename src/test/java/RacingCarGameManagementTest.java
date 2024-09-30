@@ -4,20 +4,6 @@ import org.junit.jupiter.api.Test;
 
 public class RacingCarGameManagementTest {
     @Test
-    @DisplayName("자동차 객체 생성 테스트")
-    void createRacingCarTest() {
-        //given
-        final int testMove = 3;
-
-
-        //when
-        RacingCar car = new RacingCar(testMove);
-
-        //then
-        Assertions.assertThat(car.getStatus()).isEqualTo(3);
-    }
-
-    @Test
     @DisplayName("자동차 대회 게임 생섣 테스트")
     void createRacingCarGameManagementTest() {
         //given
