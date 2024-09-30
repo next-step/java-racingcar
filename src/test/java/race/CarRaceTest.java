@@ -2,6 +2,7 @@ package race;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import race.vehicle.Vehicles;
@@ -27,5 +28,11 @@ public class CarRaceTest {
             Vehicles vehicles = new Vehicles(value);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("게임을 진행할 수 없음");
+    }
+
+    @Test
+    @DisplayName("자동차 전진 테스트")
+    void 자동차_전진(){
+
     }
 }
