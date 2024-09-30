@@ -1,6 +1,7 @@
 package racing.race;
 
 import racing.RaceRule;
+import racing.input.CarInfo;
 import racing.input.RaceInput;
 
 import java.util.ArrayList;
@@ -14,20 +15,20 @@ public class RaceTrack {
 
     public RaceTrack(RaceInput raceInput) {
         this.raceInput = raceInput;
-        raceCars = prepareRace(raceInput.getNumOfCar());
+        raceCars = prepareRace(raceInput.carInfo());
     }
 
-    private List<RaceCar> prepareRace(int numOfCar) {
+    private List<RaceCar> prepareRace(CarInfo carInfo) {
         List<RaceCar> raceRecords = new ArrayList<>();
 
-        for (int i = 0; i < numOfCar; i++) {
-            raceRecords.add(new RaceCar());
+        for (String carName : carInfo.names()) {
+            raceRecords.add(new RaceCar(carName));
         }
         return raceRecords;
     }
 
     public void race(RaceRule recordChecker) {
-        for (int i = 0; i < raceInput.getNumOfAttempt(); i++) {
+        for (int i = 0; i < raceInput.getAttemptNumber().getValue(); i++) {
             raceCars.forEach(raceRecord -> raceRecord.race(recordChecker.isForward()));
         }
     }

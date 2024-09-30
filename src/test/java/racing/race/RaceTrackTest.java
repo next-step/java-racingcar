@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTrackTest {
 
-    RaceInput input = new RaceInput(3, 5);
+    RaceInput input = new RaceInput("pobi,crong,honux", 5);
     RaceTrack track = new RaceTrack(input);
 
     @BeforeEach
@@ -24,13 +24,13 @@ public class RaceTrackTest {
     void race() {
         List<RaceRecord> raceRecords = track.getRaceResult();
 
-        assertThat(raceRecords).hasSize(input.getNumOfCar());
+        assertThat(raceRecords).hasSize(input.carInfo().count());
         for (RaceRecord raceRecord : raceRecords) {
-            for (int i = 0; i < input.getNumOfAttempt(); i++) {
-                assertThat(raceRecord.raceResult(i)).isIn(RaceGauge.FORWARD, RaceGauge.STOP);
+            for (int i = 0; i < input.getAttemptNumber().getValue(); i++) {
+                assertThat(raceRecord.raceResult(i)).isIn(RacePosition.FORWARD, RacePosition.STOP);
             }
-            assertThat(raceRecord.raceResult(input.getNumOfAttempt() - 1))
-                    .isInstanceOf(RaceGauge.class);
+            assertThat(raceRecord.raceResult(input.getAttemptNumber().getValue() - 1))
+                    .isInstanceOf(RacePosition.class);
         }
     }
 

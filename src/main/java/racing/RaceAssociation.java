@@ -20,6 +20,6 @@ public class RaceAssociation {
         List<RaceRecord> raceRecords = track.getRaceResult();
 
         ResultView resultView = new ResultView();
-        resultView.result(input.getNumOfAttempt(), raceRecords);
+        resultView.result(input.getAttemptNumber().getValue(), raceRecords);
     }
 }
