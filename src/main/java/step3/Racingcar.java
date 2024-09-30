@@ -43,8 +43,10 @@ public class Racingcar {
         PrintView printView = new PrintView();
         printView.input(cars.carList.size(), round);
 
+        printView.print("실행 결과");
         for (int i = 0; i < round; i++) {
             cars.moveAll(carEngine);
+            printView.result(cars);
         }
     }
 
