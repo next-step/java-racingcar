@@ -4,6 +4,7 @@ import step3.random.RandomNumberGenerator;
 
 public class CarController {
     public static final int ALLOWED_MINIMUM_DISTANCE = 4;
+
     private final RandomNumberGenerator randomNumberGenerator;
 
     public CarController(RandomNumberGenerator randomNumberGenerator) {
