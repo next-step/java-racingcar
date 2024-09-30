@@ -9,48 +9,39 @@ import java.util.ArrayList;
 
 public class RacingCarGame {
 
-    private final InputView inputView = new InputView();
+    private final InputView inputView;
     private final ResultView resultView = new ResultView();
+    private static final int MOVE_CRITERIA = 4;
+
+    public RacingCarGame(InputView inputView) {
+        this.inputView = inputView;
+    }
 
     public void play() {
-        this.inputView.questionCarCount();
-        int carCount = validateCarCount(this.inputView.getCount());
-        this.inputView.questionGameCount();
-        int gameCount = validateGameCount(this.inputView.getCount());
-
         ArrayList<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
+        for (int i = 0; i < inputView.getCarCount(); i++) {
             racingCars.add(new RacingCar());
         }
 
-        this.resultView.printResult();
-        for (int i = 0; i < gameCount; i++) {
+        resultView.printResult();
+        for (int i = 0; i < inputView.getGameCount(); i++) {
             simulate(racingCars);
-            separateRound(i, gameCount);
+            separateRound(i, inputView.getGameCount());
         }
 
-        this.resultView.gameEnd();
-    }
-
-    private int validateCarCount(int carCount) {
-        if (carCount < 2) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_CAR_COUNT_MESSAGE.getMessage());
-        }
-        return carCount;
-    }
-
-    private int validateGameCount(int gameCount) {
-        if (gameCount < 1) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_GAME_COUNT_MESSAGE.getMessage());
-        }
-        return gameCount;
+        resultView.gameEnd();
     }
 
     private void simulate(ArrayList<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            int randomNumber = random();
-            racingCar.move(randomNumber);
-            this.resultView.printCarPosition(racingCar.getCurrentPosition());
+            move(racingCar, random());
+            resultView.printCarPosition(racingCar.getCurrentPosition());
+        }
+    }
+
+    private void move(RacingCar racingCar, int randomNumber) {
+        if (randomNumber >= MOVE_CRITERIA) {
+            racingCar.move();
         }
     }
 
@@ -60,7 +51,7 @@ public class RacingCarGame {
 
     private void separateRound(int nowRound, int gameCount) {
         if (nowRound != gameCount - 1) {
-            this.resultView.separateGameRound();
+            resultView.separateGameRound();
         }
     }
 
