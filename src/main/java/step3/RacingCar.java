@@ -17,12 +17,9 @@ public class RacingCar {
     }
 
     public void run() {
-        resultView.showCommentForGettingCarNumber();
         int numberOfCars = inputView.getCarNumberFromUser();
-        resultView.showCommentForGettingRoundNumber();
         int numberOfRounds = inputView.getRoundNumberFromUser();
 
-        resultView.showGameResultComment();
         round.init(numberOfCars);
         startRacing(numberOfRounds);
 

@@ -14,7 +14,7 @@ public class CarController {
     public void moveCar(Car car) {
         int randomDistance = randomNumberGenerator.generate();
         if (canMove(randomDistance)) {
-            car.move(randomDistance);
+            car.move();
         }
     }
 
