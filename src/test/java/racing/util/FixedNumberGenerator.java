@@ -1,6 +1,7 @@
 package racing.util;
 
 public class FixedNumberGenerator implements NumberGenerator {
+
     private final int fixedNumber;
 
     public FixedNumberGenerator(int fixedNumber) {
