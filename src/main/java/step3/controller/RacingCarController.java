@@ -24,14 +24,21 @@ public class RacingCarController {
         }
         OutputView.printRacingResult();
         for (int i = 0; i < tryCount; i++) {
-            for (Car car : carList) {
-                if (random.nextInt() >= MOVE_MIN_NUMBER) {
-                    car.move();
-                }
-                OutputView.printRacingProgress(car);
-            }
+            processRound(carList);
             System.out.println();
         }
     }
 
+    private void processRound(final List<Car> carList) {
+        for (Car car : carList) {
+            moveCarAndPrintProgress(car);
+        }
+    }
+
+    private void moveCarAndPrintProgress(final Car car) {
+        if (random.nextInt(10) >= MOVE_MIN_NUMBER) {
+            car.move();
+        }
+        OutputView.printRacingProgress(car);
+    }
 }
