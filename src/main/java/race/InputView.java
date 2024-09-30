@@ -1,4 +1,4 @@
-package racingCar;
+package race;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,6 +9,7 @@ public class InputView {
     private final String PRINT_HOW_MANY_TRY = "시도할 회수는 몇 회인가요?";
     private final String PRINT_NUMBER_FORMAT_EXCEPTION_PLEASE_INPUT_BETWEEN_ONE_AND_NINE = "1 ~ 9 사이의 양수를 입력해주세요.";
     private final String PRINT_NUMBER_FORMAT_EXCEPTION_PLEASE_INPUT_VALID_NUMBER_BETWEEN_ONE_AND_NINE = "1 ~ 9 사이의 유효한 숫자를 입력 해주세요.";
+
     public List<String> receiveCarNames() {
         System.out.println(PRINT_INPUT_CAR_NAME_TO_PARTICIPANT);
         String carNames = SCANNER.next();
