@@ -3,7 +3,10 @@ package racingcar.view;
 import racingcar.model.Car;
 
 public class ResultView {
-    
+
+    private ResultView() {
+    }
+
     public static void showCarStatus(Car car) {
         System.out.print(car.showStatus());
         System.out.println();
