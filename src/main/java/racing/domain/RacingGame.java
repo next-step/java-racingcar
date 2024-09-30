@@ -2,8 +2,6 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.util.NumberGenerator;
-import racing.util.RandomNumberGenerator;
 
 public class RacingGame {
 
@@ -11,12 +9,9 @@ public class RacingGame {
 
     private final List<Car> cars;
 
-    private final NumberGenerator numberGenerator;
-
     private RacingGame(int roundCount, List<Car> cars) {
         this.roundCount = roundCount;
         this.cars = cars;
-        this.numberGenerator = new RandomNumberGenerator();
     }
 
     public int getRoundCount() {
@@ -43,7 +38,7 @@ public class RacingGame {
 
     private void moveCars() {
         for (Car car : cars) {
-            car.move(numberGenerator);
+            car.move();
         }
     }
 
@@ -59,15 +54,7 @@ public class RacingGame {
         results.add(GameResult.save(positions));
     }
 
-    public static RacingGame setUp(int roundCount, int carCount) {
-        return new RacingGame(roundCount, initialCars(carCount));
-    }
-
-    private static List<Car> initialCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.create());
-        }
-        return cars;
+    public static RacingGame setUp(int roundCount, List<Car> cars) {
+        return new RacingGame(roundCount, cars);
     }
 }
