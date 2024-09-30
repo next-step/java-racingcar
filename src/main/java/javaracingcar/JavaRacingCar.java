@@ -17,11 +17,22 @@ public class JavaRacingCar {
     private int step = 0;
     private int tryCount = 0;
 
-    private InputView inputView = new InputView();
-    private ResultView resultView = new ResultView();
 
     private Random random = new Random();
     private List<RacingCar> carList = new ArrayList<>();
+
+    protected JavaRacingCar() {
+    }
+
+    public void execution() {
+        this.requireGameInfo();
+    }
+
+    protected void requireGameInfo() {
+        this.requireCarCount(InputView.requireCarCount());
+        this.requireTryCount(InputView.requireTryCount());
+        this.start();
+    }
 
     protected int random() {
         int randomValue = random.nextInt(RANDOM_VALUE_RANGE);
@@ -37,7 +48,7 @@ public class JavaRacingCar {
         return false;
     }
 
-    public void requireCarCount(int carCount) throws RuntimeException {
+    protected void requireCarCount(int carCount) throws RuntimeException {
 
         if (carCount < 0) {
             throw new IllegalArgumentException("음수 입력");
@@ -50,7 +61,7 @@ public class JavaRacingCar {
         }
     }
 
-    public void requireTryCount(int tryCount) throws RuntimeException {
+    protected void requireTryCount(int tryCount) throws RuntimeException {
 
         if (tryCount < 0) {
             throw new IllegalArgumentException("음수 입력");
@@ -68,23 +79,18 @@ public class JavaRacingCar {
         return this.carList;
     }
 
-    public int tryCount() {
-        return tryCount;
-    }
-
     public List<RacingCar> start() {
+        ResultView.resultStartMessage();
 
         for (int i = 0; i < tryCount; i++) {
             for (RacingCar racingCar : this.carList) {
-                int randomValue = random();
-                if (isMove(randomValue)) {
+                if (isMove(random())) {
                     racingCar.go();
                 }
             }
+            ResultView.printResult(this.carList);
         }
-
         return this.carList;
     }
-
 
 }
