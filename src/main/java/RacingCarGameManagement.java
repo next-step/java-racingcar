@@ -4,10 +4,16 @@ import java.util.List;
 public class RacingCarGameManagement {
     private List<RacingCar> cars;
     private int games;
+    private RandomNumberGenerator randomNumberGenerator;
 
-    public RacingCarGameManagement(int cars, int games) {
+    public RacingCarGameManagement(
+            int cars,
+            int games,
+            RandomNumberGenerator randomNumberGenerator
+    ) {
         this.cars = new ArrayList<>(cars);
         this.games = games;
+        this.randomNumberGenerator = randomNumberGenerator;
         for (int i = 0; i < cars; i++) {
             this.cars.add(new RacingCar());
         }
@@ -33,14 +39,15 @@ public class RacingCarGameManagement {
 
     private void moveCars() {
         for (RacingCar car : this.cars) {
-            car.move(RandomUtil.getInt());
+            car.move(this.randomNumberGenerator.generate());
         }
     }
 
     public static void main(String[] args) {
         int numberOfCars = InputView.getNumberOfCars();
         int numberOfGames = InputView.getNumberOfGames();
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames);
+        RandomUtil randomUtil = new RandomUtil();
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames, randomUtil);
         carGameManagement.start();
     }
 }

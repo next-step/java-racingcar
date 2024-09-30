@@ -23,13 +23,17 @@ public class RacingCarGameManagementTest {
         //given
         int numberOfCars = 3;
         int numberOfGames = 6;
+        MockRandomNumberGenerator generator = new MockRandomNumberGenerator(3);
 
         //when
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames);
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames, generator);
 
         //then
         Assertions.assertThat(carGameManagement.getGames()).isEqualTo(numberOfGames);
         Assertions.assertThat(carGameManagement.getCars()).hasSize(numberOfCars);
+        for (RacingCar car : carGameManagement.getCars()) {
+            Assertions.assertThat(car.getStatus()).isEqualTo(0);
+        }
     }
 
     @Test
@@ -54,7 +58,8 @@ public class RacingCarGameManagementTest {
         //given
         int numberOfCars = 3;
         int numberOfGames = 6;
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames);
+        MockRandomNumberGenerator generator = new MockRandomNumberGenerator(5);
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames, generator);
 
         //when
         carGameManagement.start();
@@ -65,7 +70,7 @@ public class RacingCarGameManagementTest {
         for (RacingCar car : carGameManagement.getCars()) {
             int move = car.getStatus();
             System.out.println(move);
-            Assertions.assertThat(move).isBetween(0, 9);
+            Assertions.assertThat(move).isEqualTo(6);
         }
     }
 }
