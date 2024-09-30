@@ -1,5 +1,7 @@
 package stringaddcalculator;
 
+import stringaddcalculator.dto.CalculatorDto;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -21,9 +23,9 @@ public class StringAddCalculator {
 
         if (text == null) return DEFAULT_CALCULATOR_VALUE;
 
-        Map<String, String> delimiterAndTextMap = getCustomDelimiterAndText(DEFAULT_DELIMITER, text);
-        String confirmDelimiter = delimiterAndTextMap.get("delimiter");
-        String confirmText = delimiterAndTextMap.get("text");
+        CalculatorDto calculatorDto = getCustomDelimiterAndText(DEFAULT_DELIMITER, text);
+        String confirmDelimiter = calculatorDto.delimiter();
+        String confirmText = calculatorDto.text();
 
         if (confirmText.isEmpty()) return DEFAULT_CALCULATOR_VALUE;
 
@@ -66,19 +68,15 @@ public class StringAddCalculator {
         return result;
     }
 
-    private static Map<String, String> getCustomDelimiterAndText(String delimiter, String text) {
-        Map<String, String> result = new HashMap<>();
-
+    private static CalculatorDto getCustomDelimiterAndText(String delimiter, String text) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
 
         if (matcher.find()) {
-            result.put("delimiter", matcher.group(1));
-            result.put("text", matcher.group(2));
-            return result;
+            String customDelimiter = matcher.group(1);
+            String customText = matcher.group(2);
+            return new CalculatorDto(customDelimiter, customText);
         }
 
-        result.put("delimiter", delimiter);
-        result.put("text", text);
-        return result;
+        return new CalculatorDto(delimiter, text);
     }
 }
