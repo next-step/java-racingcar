@@ -21,4 +21,8 @@ public class CarRacingTest {
         assertThat(carRacing.race(3,5).size()).isEqualTo(3);
     }
 
+    @Test
+    void 차량_이동_횟수_0_이상_확인() {
+        assertThat(carRacing.race(3, 5).values()).allMatch(value -> value >= 0);
+    }
 }

@@ -17,14 +17,37 @@ public class CarRacing {
 
     public Map<Integer, Integer> race(int carNums, int moveNums) {
         Map<Integer, Integer> carsMap = initCarsMap(carNums);
-
+        repeatMove(carNums, moveNums, carsMap);
         return carsMap;
     }
 
+    private void repeatMove(int carNums, int moveNums, Map<Integer, Integer> carsMap) {
+        for(int k=1; k<= moveNums; k++) {
+            recordCarMove(carNums, carsMap);
+        }
+    }
+
+    // 차량 이동 기록
+    private void recordCarMove(int carNums, Map<Integer, Integer> carsMap) {
+        for(int i=1; i<=carNums; i++) {
+            addNowCarMove(carsMap, i);
+            ResultView.printNowCarMoves(carsMap.get(i));
+            ResultView.lineChange();
+        }
+        ResultView.lineChange();
+    }
+
+    private void addNowCarMove(Map<Integer, Integer> carsMap, int carNum) {
+        if(shouldMove(random.nextInt(BOUND))) {
+            carsMap.put(carNum, carsMap.get(carNum) + 1);
+        }
+    }
+
+    // 차량 초기화
     private static Map<Integer, Integer> initCarsMap(int carNums) {
         Map<Integer, Integer> carsMap = new HashMap<>();
 
-        for(int i = 1; i<= carNums; i++) {
+        for(int i=1; i<=carNums; i++) {
             carsMap.put(i, 0);
         }
         return carsMap;
