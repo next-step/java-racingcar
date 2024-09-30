@@ -1,12 +1,16 @@
 package race;
 
+import race.Utils.InputUtils;
+import race.vehicle.Vehicles;
+
 public class playGame {
 
     public static final int INITIAL_LOCATION = 1;
 
     public static void main(String[] args) {
-        InputView.inputCarView();
-        int carNum = InputView.inputCarNumber();
+        InputUtils.inputCarView();
+        InputGame inputGame = new InputGame();
+        Vehicles vehicles = new Vehicles(inputGame.inputNumber());
 
 //        InputView.inputMoveView();
 //        int moveNum = InputView.inputMovementNumber();
