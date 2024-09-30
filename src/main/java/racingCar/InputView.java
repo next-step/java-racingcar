@@ -9,12 +9,20 @@ public class InputView {
 
     public static int getCarCountInputFromUser(){
         System.out.println(INPUT_CAR_COUNT_MESSAGE);
-        return scanner.nextInt();
+        int carCountInput = scanner.nextInt();
+        if(carCountInput < 0){
+            throw new IllegalArgumentException("자동차 대수는 양수만 입력되어야 합니다");
+        }
+        return carCountInput;
     }
 
     public static int getRacingCountInputFromUser(){
         System.out.println(INPUT_TRY_RACING_COUNT_MESSAGE);
-        return scanner.nextInt();
+        int raceCountInput = scanner.nextInt();
+        if(raceCountInput < 0){
+            throw new IllegalArgumentException("레이싱 시도 횟수는 양수만 입력되어야 합니다");
+        }
+        return raceCountInput;
     }
 
     private InputView(){}
