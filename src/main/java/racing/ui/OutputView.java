@@ -7,6 +7,10 @@ public class OutputView {
 
     private static final String OUTPUT_START_MESSAGE = "실행 결과";
 
+    public OutputView() throws IllegalAccessException {
+        throw new IllegalAccessException("유틸형 클래스는 생성할 수 없습니다");
+    }
+
     public static void printGameResults(List<GameResult> results) {
         printBlankLine();
         printStartMessage();
