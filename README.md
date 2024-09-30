@@ -12,10 +12,8 @@
 # STEP3 TODO
 - [ ] 자동차 스스로 움직일지 말지 결정 
 - [ ] carController 이름과 역할 바꿔보기 
-- [ ] inputView 책임에 맞게 print 문 변경하기
 - [ ] 게임을 실행하는 역할에 맞게 Round 이름 변경해보기
 - [ ] Rount init을 생성자에서 처리하기
-- [ ] step3 패키지 이름 변경하기
 
 #  STEP3 DONE
 - [x] 자동차 이동
@@ -35,3 +33,5 @@
   - [x] 외부 참조가 없는 변수 private
   - [x] 테스트을 위한 파일은 테스트 패키지에만 두기 
   - [x] 클래스변수와 멤버변수 개행 
+  - [x] inputView 책임에 맞게 print 문 변경하기
+  - [x] racingcar 패키지 이름 변경하기
