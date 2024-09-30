@@ -10,9 +10,9 @@
 - [x] 자동차 전진 하기
   - [x] random 값 생성 (0~9)
   - [x] 전진 조건 구현 (4 이상)
-- [ ] UI 출력
-  - [ ] 입력 UI
-  - [ ] 자동차 상태 UI
+- [x] UI 출력
+  - [x] 입력 UI
+  - [x] 자동차 상태 UI
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
