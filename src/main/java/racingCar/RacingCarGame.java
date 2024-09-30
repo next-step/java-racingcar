@@ -11,14 +11,19 @@ public class RacingCarGame {
         int racingCountInput = InputView.getRacingCountInputFromUser();
 
         ResultView.printResultMessage();
-        racingCar(racingCountInput, carCountInput);
+        startRace(racingCountInput, createRacingCars(carCountInput));
     }
 
-    private void racingCar(int tryCount, int carCount) {
-        for (int i = 0; i < tryCount; i++) {
-            Car[] cars = createRacingCars(carCount);
-            ResultView.printCars(cars);
-            System.out.println();
+    private void startRace(int racingCount, Car[] cars) {
+        for (int i = 0; i < racingCount; i++) {
+            raceCars(cars);
+            ResultView.printRaceResult(cars);
+        }
+    }
+
+    private static void raceCars(Car[] cars) {
+        for (Car car : cars) {
+            car.move();
         }
     }
 
