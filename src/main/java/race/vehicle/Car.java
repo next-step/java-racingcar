@@ -3,20 +3,31 @@ package race.vehicle;
 import java.util.Random;
 
 public class Car {
-    private int location;
+    private StringBuffer location;
 
-    Car(int location) {
-        this.location = location;
+    Car(Builder builder) {
+        this.location = builder.location;
     }
 
     public void move() {
         Random random = new Random();
         if (random.nextInt(10) >= 4) {
-            location++;
+            location.append("-");
         }
+        System.out.println(location);
     }
 
-    public int getLocation() {
-        return location;
+    public static class Builder {
+        private StringBuffer location;
+
+        public Builder initlocation(String input) {
+            location = new StringBuffer(input);
+            return this;
+        }
+
+        public Car build() {
+            return new Car(this);
+        }
+
     }
 }
