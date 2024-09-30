@@ -1,11 +1,11 @@
 package racing.exception;
 
-public class InvalidNumberException extends RuntimeException {
+public class InvalidInputValueException extends RuntimeException {
 
-    public InvalidNumberException() {
+    public InvalidInputValueException() {
     }
 
-    public InvalidNumberException(String message) {
+    public InvalidInputValueException(String message) {
         super(message);
     }
 }

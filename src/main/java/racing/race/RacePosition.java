@@ -1,6 +1,6 @@
 package racing.race;
 
-public enum RaceGauge {
+public enum RacePosition {
 
     STOP(0, ""),
     FORWARD(1,"-");
@@ -8,7 +8,7 @@ public enum RaceGauge {
     private final int value;
     private final String resultMark;
 
-    RaceGauge(int value, String resultMark) {
+    RacePosition(int value, String resultMark) {
         this.value = value;
         this.resultMark = resultMark;
     }
