@@ -4,10 +4,13 @@ import java.util.Random;
 
 public class Car {
     private static final int RANDOM_SIZE = 10;
+    public static final String INPUT_LENGTH_EXCEEDED_ERROR = "5자 초과하였습니다.";
+    public static String EMPTY_NAME_ERROR = "이름이 없습니다.";
     private int distance = 0;
     private String carName = "";
 
     public Car(String carName) {
+        validateCarName(carName);
         this.carName = carName;
     }
 
@@ -33,5 +36,13 @@ public class Car {
 
     public String getCarName(){
         return carName;
+    }
+
+    private void validateCarName(String carName){
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(INPUT_LENGTH_EXCEEDED_ERROR);
+        } else if (carName.length() == 0) {
+            throw new IllegalArgumentException(EMPTY_NAME_ERROR);
+        }
     }
 }
