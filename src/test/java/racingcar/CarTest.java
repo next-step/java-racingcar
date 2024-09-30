@@ -1,4 +1,4 @@
-package RacingCar;
+package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,7 +9,7 @@ public class CarTest {
     private Car car;
     @BeforeEach
     void setCar() {
-        car = new Car();
+        car = new Car("pobi");
     }
     @Test
     public void 전진_하는지() {
@@ -22,4 +22,5 @@ public class CarTest {
         car.setGoCar(1);
         assertThat(car.getDistance()).isEqualTo(0);
     }
+
 }

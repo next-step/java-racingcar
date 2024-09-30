@@ -1,15 +1,16 @@
-package RacingCar;
+package racingcar;
 
-import static RacingCar.ResultView.printGoDistance;
+import static racingcar.ResultView.printGoDistance;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private List<Car> carList;
+    private List<Car> carList = new ArrayList<>();
     private int tryCount;
 
-    public Race(List<Car> carList, int tryCount) {
-        this.carList = carList;
+    public Race(String[] carNameList, int tryCount) {
+        makeRacingCar(carNameList);
         this.tryCount = tryCount;
     }
 
@@ -34,4 +35,11 @@ public class Race {
             printGoDistance(car.getDistance());
         }
     }
+
+    private void makeRacingCar(String[] carNameList) {
+        for (String carName:carNameList) {
+            carList.add(new Car(carName));
+        }
+    }
+
 }

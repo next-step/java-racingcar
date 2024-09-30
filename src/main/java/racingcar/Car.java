@@ -1,10 +1,15 @@
-package RacingCar;
+package racingcar;
 
 import java.util.Random;
 
 public class Car {
-    private int distance = 0;
     private static final int RANDOM_SIZE = 10;
+    private int distance = 0;
+    private String carName = "";
+
+    public Car(String carName) {
+        this.carName = carName;
+    }
 
 
     public void goCar() {
@@ -24,5 +29,9 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    public String getCarName(){
+        return carName;
     }
 }
