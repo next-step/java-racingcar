@@ -1,28 +1,50 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Racingcar {
+    private final CarEngine carEngine;
 
-    public static void main(String[] args) {
-        execute();
+    public Racingcar(CarEngine carEngine) {
+        this.carEngine = carEngine;
     }
 
-    public static void execute() {
+    // 테스트용
+    public static void main(String[] args) {
+        CarEngine carEngine = new RandomEngine();
+        Racingcar racingcar = new Racingcar(carEngine);
+        racingcar.execute();
+    }
+
+    public void execute() {
         Scanner scanner = new Scanner(System.in);
         String car = scanner.nextLine();
         String round = scanner.nextLine();
 
         validateInput(car, round);
 
-        race(Integer.parseInt(car), Integer.parseInt(round));
+        Cars cars = new Cars(createCars(Integer.parseInt(car)));
+
+        race(cars, Integer.parseInt(round));
     }
 
-    private static void race(int car, int round) {
-        PrintView.input(car, round);
+    private List<Car> createCars(int car) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < car; i++) {
+            cars.add(new Car());
+        }
+
+        return cars;
     }
 
-    private static void validateInput(String carInput, String roundInput) {
+    private void race(Cars cars, int round) {
+        PrintView printView = new PrintView();
+        printView.input(cars.carList.size(), round);
+    }
+
+    private void validateInput(String carInput, String roundInput) {
         int car;
         int round;
 
