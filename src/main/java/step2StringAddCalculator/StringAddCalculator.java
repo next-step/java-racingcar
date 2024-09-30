@@ -1,4 +1,4 @@
-package step2_StringAddCalculator;
+package step2StringAddCalculator;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

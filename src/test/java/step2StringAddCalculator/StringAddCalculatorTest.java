@@ -1,4 +1,4 @@
-package step2_StringAddCalculator;
+package step2StringAddCalculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

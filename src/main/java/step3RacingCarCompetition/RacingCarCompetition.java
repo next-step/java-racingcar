@@ -1,8 +1,7 @@
-package step3_RacingCar_Competition;
+package step3RacingCarCompetition;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -11,26 +10,16 @@ public class RacingCarCompetition {
     private final boolean STOP = false;
 
     public void startRacing() {
-        RacingCarInfo racingCarInfo = insertRacingCarData();
-        int totalNumberOfCars = racingCarInfo.totalNumberOfCars();
-        int totalMovingCount = racingCarInfo.totalMovingCount();
+        RacingCarInfo racingCarInfo = new RacingCarInfo(InputView.insertRacingCarData());
+        int totalNumberOfCars =  racingCarInfo.totalNumberOfCars();
+        int totalMovingCount =  racingCarInfo.totalMovingCount();
         ArrayList<ArrayList<Integer>> randomMovingData = randomCarMovingData(totalNumberOfCars, totalMovingCount);
         recordRacingCarData(randomMovingData, racingCarInfo);
 
     }
 
 
-    private RacingCarInfo insertRacingCarData() {
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCars = scanner.nextInt();
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int movingTryCount = scanner.nextInt();
-
-        return new RacingCarInfo(numberOfCars, movingTryCount);
-    }
 
     /**
      * 이중 ArrayList로 0~9 랜덤값 채워 반환하는 메서드
@@ -57,19 +46,11 @@ public class RacingCarCompetition {
                     racingCarInfo.recordGoInRacingCarData(numberOfCars);
                 }
             });
-            printCurrentCarMovement(racingCarInfo, totalNumberOfCars);
+            ResultView.printCurrentCarMovement(racingCarInfo, totalNumberOfCars);
         });
     }
 
-    /**
-     * 현재 시도회수까지 출력하는 메서드
-     */
-    public void printCurrentCarMovement(RacingCarInfo racingCarInfo, int totalNumberOfCars) {
-        IntStream.range(0, totalNumberOfCars)
-                .mapToObj(racingCarInfo::findRacingCarData)
-                .forEachOrdered(System.out::println);
-        System.out.println();
-    }
+
 
     /**
      * TODO private로 하고 싶은데 테스트하자니 지양됨.

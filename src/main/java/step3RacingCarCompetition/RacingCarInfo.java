@@ -1,6 +1,7 @@
-package step3_RacingCar_Competition;
+package step3RacingCarCompetition;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RacingCarInfo {
@@ -20,9 +21,9 @@ public class RacingCarInfo {
     }
 
 
-    public RacingCarInfo(int totalNumberOfCars, int totalMovingCount) {
-        this.totalNumberOfCars = totalNumberOfCars;
-        this.totalMovingCount = totalMovingCount;
+    public RacingCarInfo(List carData) {
+        this.totalNumberOfCars = (int) carData.get(0);
+        this.totalMovingCount = (int) carData.get(1);
         this.racingCarMovingData = new HashMap<>();
     }
 
