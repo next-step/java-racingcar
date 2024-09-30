@@ -38,7 +38,12 @@ public class StringSumCalculator {
     }
 
     private static int getPositiveNumber(final String split) {
-        final int number = Integer.parseInt(split);
+        int number;
+        try {
+            number = Integer.parseInt(split);
+        } catch (NumberFormatException e){
+            throw new RuntimeException();
+        }
         if (number < 0) {
             throw new RuntimeException();
         }
