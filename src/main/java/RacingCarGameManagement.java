@@ -1,23 +1,11 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class RacingCarGameManagement {
     private List<RacingCar> cars;
     private int games;
     private RandomNumberGenerator randomNumberGenerator;
-
-    public RacingCarGameManagement(
-            int cars,
-            int games,
-            RandomNumberGenerator randomNumberGenerator
-    ) {
-        this.cars = new ArrayList<>(cars);
-        this.games = games;
-        this.randomNumberGenerator = randomNumberGenerator;
-        for (int i = 0; i < cars; i++) {
-            this.cars.add(new RacingCar());
-        }
-    }
 
     public RacingCarGameManagement(
             String[] names,
@@ -27,8 +15,8 @@ public class RacingCarGameManagement {
         this.cars = new ArrayList<>(names.length);
         this.games = games;
         this.randomNumberGenerator = randomNumberGenerator;
-        for (int i = 0; i < names.length; i++) {
-            this.cars.add(new RacingCar(names[i]));
+        for (String name : names) {
+            this.cars.add(new RacingCar(name));
         }
     }
 
@@ -47,6 +35,32 @@ public class RacingCarGameManagement {
 
             moveCars();
             ResultView.printResult(this.cars);
+        }
+
+        ResultView.printWinner(findWinner(this.cars));
+    }
+
+    public List<String> findWinner(List<RacingCar> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("cars must not be empty");
+        }
+
+        cars.sort(Comparator.comparing(RacingCar::getStatus));
+        RacingCar winnerCar = cars.get(cars.size() - 1);
+        List<String> winners = new ArrayList<>();
+        for (RacingCar car : cars) {
+            saveWinners(car, winnerCar.getStatus(), winners);
+        }
+        return winners;
+    }
+
+    private void saveWinners(
+            RacingCar car,
+            int maxStatus,
+            List<String> winners
+    ) {
+        if (car.getStatus() == maxStatus) {
+            winners.add(car.getName());
         }
     }
 
