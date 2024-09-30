@@ -5,6 +5,13 @@ import java.util.Random;
 public class CarRacing {
 
     /**
+     * 입력한 숫자만큼의 문자열 배열 반환
+     */
+    public static String[] makeStringArray(int size) {
+        return new String[size];
+    }
+
+    /**
      * 0~9의 랜덤 값 반환
      */
     public static int getRandomNumber() {

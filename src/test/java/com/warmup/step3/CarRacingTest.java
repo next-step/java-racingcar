@@ -7,6 +7,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarRacingTest {
+    
+    @Test
+    public void isEquals_입력한_숫자만큼_문자열_배열_반환() {
+        int expected = 5;
+
+        assertThat(CarRacing.makeStringArray(5)).hasSize(expected);
+    }
+
     @Test
     public void isEquals_0에서_9사이의_랜덤값_반환() {
         int expectedMinNum = 0;
