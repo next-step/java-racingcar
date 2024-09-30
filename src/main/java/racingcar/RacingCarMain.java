@@ -4,20 +4,27 @@ import java.util.List;
 
 public class RacingCarMain {
     public static void main(String[] args) {
+
         int cntOfCar = InputView.inputCountOfCar();
 
         int timesOfRun = InputView.inputTimesOfRun();
 
         List<Car> cars = CarManager.createCarsByCnt(cntOfCar);
 
-        run(timesOfRun, cars);
-
-        OutputView.printMileage(cars, timesOfRun);
+        runAndPrintResult(timesOfRun, cars);
     }
 
-    private static void run(int timesOfRun, List<Car> cars) {
+    private static void runAndPrintResult(int timesOfRun, List<Car> cars) {
+
         for (int i = 0; i < timesOfRun; i++) {
-            cars.forEach(Car :: run);
+            runNthCarGame(cars);
+            OutputView.printMileage(cars, i == 0 ? true : false);
+        }
+    }
+
+    private static void runNthCarGame(List<Car> cars) {
+        for (Car car : cars) {
+            car.run(CarMoveUtil.isMove());
         }
     }
 }
