@@ -8,7 +8,7 @@ public class SubStringTest {
 
 
     @Test
-    public void 괄호제거_테스트(){
+    public void 괄호제거_테스트() {
         String target = "(1,2)";
         String result = target.substring(1, target.length() - 1);
         assertThat(result).isEqualTo("1,2");
