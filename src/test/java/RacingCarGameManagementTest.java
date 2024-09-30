@@ -61,7 +61,7 @@ public class RacingCarGameManagementTest {
     }
 
     @Test
-    @DisplayName("게신 시작 테스트")
+    @DisplayName("게임 시작 테스트")
     void startGameTest() {
         //given
         int numberOfCars = 3;
