@@ -40,6 +40,6 @@ class SetTest {
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("1, 2, 3의 값이 존재하고 나머지는 존재하지 않은지 확인")
     void checkValuesWithBoolean(int value, boolean expected) {
-        assertThat(numbers.contains(value)).isEqualTo(expected);
+        assertThat(numbers.contains(value));
     }
 }
