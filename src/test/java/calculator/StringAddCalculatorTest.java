@@ -6,6 +6,12 @@ import org.junit.jupiter.api.Test;
 
 public class StringAddCalculatorTest {
   @Test
+  void customDelimiter() {
+    int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+    assertThat(result).isEqualTo(6);
+  }
+
+  @Test
   void nullOrBlank() {
     int nullResult = StringAddCalculator.splitAndSum(null);
     assertThat(nullResult).isEqualTo(0);
