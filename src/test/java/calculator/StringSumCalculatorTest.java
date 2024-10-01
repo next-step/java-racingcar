@@ -2,22 +2,18 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringSumCalculatorTest {
 
-    @DisplayName("기본으로 쉼표와 콜론으로 문자열을 구분하고, 구분된 값을 합해서 반환한다.")
-    @Test
-    void split_string_value_with_default_delimiter_and_sum() {
-        int resultWithComma = StringSumCalculator.splitAndSum("2,3");
-        int resultWithColon = StringSumCalculator.splitAndSum("2;3");
-        int resultWithAll = StringSumCalculator.splitAndSum("1,2;3");
-
-        assertThat(resultWithComma).isEqualTo(5);
-        assertThat(resultWithColon).isEqualTo(5);
-        assertThat(resultWithAll).isEqualTo(6);
+    @CsvSource(value = {"2,3=5", "2;3=5", "1,2;3=6"}, delimiter = '=')
+    @ParameterizedTest(name = "[{index}] 인자가 {0}일 때 기본으로 쉼표와 콜론으로 문자열을 구분하고, 구분된 값을 합해서 {1}로 반환한다.")
+    void split_string_value_with_default_delimiter_and_sum(String given, int result) {
+        assertThat(StringSumCalculator.splitAndSum(given)).isEqualTo(result);
     }
 
     @DisplayName("커스텀 구분자를 지정하여, 커스텀 구분자로 문자열을 구분하고 구분된 값들을 합하여 반환한다.")
@@ -41,8 +37,13 @@ class StringSumCalculatorTest {
     @DisplayName("숫자 이외의 값이나 음수를 전달하면, RuntimeException 예외를 발생시킨다.")
     @Test
     void throw_RuntimeException_when_argument_contains_non_number_or_negative() {
-        assertThatThrownBy(() -> StringSumCalculator.splitAndSum("-1,2")).isInstanceOf(RuntimeException.class).hasMessage("숫자 외 문자, 음수는 입력할 수 없습니다.");
-        assertThatThrownBy(() -> StringSumCalculator.splitAndSum("@@")).isInstanceOf(RuntimeException.class).hasMessage("숫자 외 문자, 음수는 입력할 수 없습니다.");
+        assertThatThrownBy(() -> StringSumCalculator.splitAndSum("-1,2"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("숫자 외 문자, 음수는 입력할 수 없습니다.");
+
+        assertThatThrownBy(() -> StringSumCalculator.splitAndSum("@@"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("숫자 외 문자, 음수는 입력할 수 없습니다.");
     }
 
     @DisplayName("숫자 한개를 입력하면 그 값을 반환한다.")

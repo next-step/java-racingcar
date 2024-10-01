@@ -1,10 +1,13 @@
 package calculator;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringSumCalculator {
     private static final String DEFAULT_DELIMITER_REGEX = ",|;";
-    private static final String CUSTOM_DELIMTER_REGEX = "^//.*\\n.*";
+    private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX);
     private static final String ONLY_POSITIVE_NUMBER_REGEX = "^[0-9]*$";
 
     public static int splitAndSum(String value) {
@@ -26,13 +29,10 @@ public class StringSumCalculator {
     }
 
     private static String[] splitNumbersWithDelimiter(String numbers) {
-        final String FRONT_OF_CUSTOM_DELIMITER = "//";
-        final String END_OF_CUSTOM_DELIMITER = "\n";
-
-        if (numbers.matches(CUSTOM_DELIMTER_REGEX)) {
-            String[] delimiterAndNumbers = numbers.split(END_OF_CUSTOM_DELIMITER);
-            String customDelimiter = delimiterAndNumbers[0].substring(FRONT_OF_CUSTOM_DELIMITER.length());
-            return delimiterAndNumbers[1].split(customDelimiter);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(numbers);
+        if (matcher.matches()) {
+            String delimiter = matcher.group(1);
+            return matcher.group(2).split(delimiter);
         }
 
         return numbers.split(DEFAULT_DELIMITER_REGEX);

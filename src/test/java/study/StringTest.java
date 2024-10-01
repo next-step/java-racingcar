@@ -58,4 +58,11 @@ class StringTest {
 
         assertThat("//@\n".matches(pattern)).isTrue();
     }
+
+    @DisplayName("[study]문자열을 원하는 횟수만큼 반복 출력한다.")
+    @Test
+    void return_String_repeatedAs_argument() {
+        assertThat("-".repeat(5)).isEqualTo("-----");
+        assertThat("-".repeat(Math.max(0, -1))).isEmpty();
+    }
 }
