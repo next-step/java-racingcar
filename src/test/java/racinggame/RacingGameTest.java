@@ -17,8 +17,8 @@ class RacingGameTest {
     @DisplayName("게임을 시도할 회수만큼 게임 라운드가 증가한다.")
     void getGameRound(int tryCount) {
         int carCount = 3;
-        racingGame.start(carCount, tryCount);
-        assertThat(racingGame.getRound()).isEqualTo(tryCount);
+        GameRounds gameResult = racingGame.start(carCount, tryCount);
+        assertThat(gameResult.getRoundCount()).isEqualTo(tryCount);
     }
 
     @ParameterizedTest

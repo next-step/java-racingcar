@@ -8,37 +8,35 @@ public class RacingGame {
 
     private static final int DEFAULT_BOUND = 10;
     private final Random random = new Random();
-    private int round;
     private List<Car> cars;
+    private GameRounds rounds;
 
-    public RacingGame() {
-        this.round = 1;
-    }
-
-    public int getRound() {
-        return round;
-    }
-
-    public List<List<Integer>> start(int carCount, int tryCount) {
+    public GameRounds start(int carCount, int tryCount) {
         validateNegative(carCount, tryCount);
         initCar(carCount);
-        List<List<Integer>> results = new ArrayList<>();
+        rounds = new GameRounds();
         for (int i = 0; i < tryCount; i++) {
-            moveCars();
-
-            List<Integer> positions = new ArrayList<>();
-            for (Car car : cars) {
-                positions.add(car.getPosition());
-            }
-            results.add(positions);
-            validateNextRound(tryCount);
+            playGameRound();
         }
-        return results;
+        return rounds;
+    }
+
+    private void playGameRound() {
+        moveCars();
+        saveGameResult();
+    }
+
+    private void saveGameResult() {
+        GameResults gameResults = new GameResults();
+        for (Car car : cars) {
+            gameResults.add(car.getPosition());
+        }
+        rounds.add(gameResults);
     }
 
     private void moveCars() {
         for (Car car : cars) {
-            int number = random.nextInt(DEFAULT_BOUND);
+            var number = random.nextInt(DEFAULT_BOUND);
             car.move(number);
         }
     }
@@ -54,15 +52,5 @@ public class RacingGame {
         if (carCount <= 0 || tryCount <= 0) {
             throw new RuntimeException("음수가 전달되어 게임을 시작할 수 없습니다.");
         }
-    }
-
-    private void validateNextRound(int tryCount) {
-        if (isNextRound(tryCount)) {
-            round++;
-        }
-    }
-
-    private boolean isNextRound(int tryCount) {
-        return round < tryCount;
     }
 }

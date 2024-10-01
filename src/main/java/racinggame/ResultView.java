@@ -1,22 +1,20 @@
 package racinggame;
 
-import java.util.List;
-
 public class ResultView {
 
     private ResultView() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void printCarPositionByRound(List<List<Integer>> gameResults) {
-        for (int round = 0; round < gameResults.size(); round++) {
-            printRound(gameResults, round);
+    public static void printCarPositionByRound(GameRounds gameRounds) {
+        for (int round = 0; round < gameRounds.getRoundCount(); round++) {
+            printRound(gameRounds, round);
         }
     }
 
-    private static void printRound(List<List<Integer>> gameResults, int round) {
-        for (int carPosition = 0; carPosition < gameResults.get(round).size(); carPosition++) {
-            System.out.println(getDashesByCount(gameResults.get(round).get(carPosition)));
+    private static void printRound(GameRounds gameResults, int round) {
+        for (int car = 0; car < gameResults.getCarCount(round); car++) {
+            System.out.println(getDashesByCount(gameResults.getCarPosition(round, car)));
         }
         printNewLine();
     }
