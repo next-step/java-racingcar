@@ -18,7 +18,6 @@ public class Car {
         if (randomUtil.getRandomValue(BOUND) >= MOVE_CONDITION) {
             location.append("-");
         }
-        System.out.println(location);
     }
 
     public String getLocation() {

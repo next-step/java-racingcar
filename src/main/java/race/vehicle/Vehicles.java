@@ -25,15 +25,6 @@ public class Vehicles {
         return this;
     }
 
-    public void gameStart(int num) {
-        for (int i = 0; i < num; i++) {
-            for (Car car : list) {
-                car.move();
-            }
-            System.out.println();
-        }
-    }
-
     public List<Car> getList() {
         return list;
     }

@@ -8,9 +8,9 @@ public class ResultView {
     private static final String EXECUTION = "\n실행 결과";
     private static final String ROUND_SEPERATION = "\n";
 
-    private final List<Car> cars;
+    private static List<Car> cars;
 
-    private ResultView(List<Car> cars) {
+    public ResultView(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -22,12 +22,17 @@ public class ResultView {
         System.out.println(ROUND_SEPERATION);
     }
 
-    public static void printCarLocation(String carLocation){
-        System.out.println(carLocation);
-    }
-
-    public static void pringResult(int round)
+    public static void printResult(int round)
     {
-
+        printResultView();
+        for(int i=0;i<round;i++)
+        {
+            for (Car car : cars) {
+                car.move();
+                System.out.println(car.getLocation());
+            }
+            seperateRound();
+        }
     }
+
 }
