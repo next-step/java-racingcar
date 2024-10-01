@@ -26,15 +26,24 @@ public class GameResult {
         if (roundResults.isEmpty()) {
             return Collections.emptyList();
         }
-        RoundResult finalRoundResult = roundResults.get(roundResults.size() - 1);
-        CarInfoList carInfoList = finalRoundResult.getCarInfoList();
+        RoundResult finalRoundResult = getFinalRoundResult();
+        int maxPosition = getMaxPosition(finalRoundResult);
+        return extractWinnerNames(finalRoundResult, maxPosition);
+    }
 
-        int maxPosition = carInfoList.getCarInfos().stream()
+    private RoundResult getFinalRoundResult() {
+        return roundResults.get(roundResults.size() - 1);
+    }
+
+    private int getMaxPosition(RoundResult finalRoundResult) {
+        return finalRoundResult.getCarInfoList().getCarInfos().stream()
                 .mapToInt(CarInfo::getPosition)
                 .max()
                 .orElse(0);
+    }
 
-        return carInfoList.getCarInfos().stream()
+    private List<String> extractWinnerNames(RoundResult finalRoundResult, int maxPosition) {
+        return finalRoundResult.getCarInfoList().getCarInfos().stream()
                 .filter(carInfo -> carInfo.getPosition() == maxPosition)
                 .map(CarInfo::getName)
                 .collect(Collectors.toList());
