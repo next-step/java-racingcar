@@ -2,7 +2,7 @@ package javaracingcar;
 
 
 import javaracingcar.entity.RacingCar;
-import javaracingcar.entity.RacingCarTest;
+import javaracingcar.entity.RacingCarStepEnum;
 import org.junit.jupiter.api.Test;
 
 
@@ -24,7 +24,7 @@ public class JavaRacingCarTest {
     void javaRacingCar_객체_생성_시_step() {
         JavaRacingCar racingCar = new JavaRacingCar();
 
-        assertThat(racingCar.step()).isEqualTo(0);
+        assertThat(racingCar.step()).isEqualTo(RacingCarStepEnum.INIT);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class JavaRacingCarTest {
 
         racingCar.requireCarCount(3);
 
-        assertThat(racingCar.step()).isEqualTo(1);
+        assertThat(racingCar.step()).isEqualTo(RacingCarStepEnum.CONFIRMED_CAR_COUNT);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class JavaRacingCarTest {
         racingCar.requireCarCount(3);
         racingCar.requireTryCount(5);
 
-        assertThat(racingCar.step()).isEqualTo(2);
+        assertThat(racingCar.step()).isEqualTo(RacingCarStepEnum.CONFIRMED_TRY_COUNT);
     }
 
     @Test
@@ -79,6 +79,13 @@ public class JavaRacingCarTest {
         RacingCar result = racingCar.start().get(0);
 
         assertThat(result.moveCount()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(10);
+    }
+
+    @Test
+    void javaRacingCar_Random_생성_시_시도_횟수() {
+        JavaRacingCar racingCar = new JavaRacingCar();
+
+        assertThat(racingCar.tryCount()).isEqualTo(0);
     }
 
 }
