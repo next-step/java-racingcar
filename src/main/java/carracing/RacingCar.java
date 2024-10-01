@@ -16,22 +16,22 @@ public class RacingCar {
     }
 
     public Map<Integer, Integer> race(int carNumbers, int moveNumbers) {
-        Map<Integer, Integer> carsMap = initCarsMap(carNumbers);
-        repeatMove(moveNumbers, moveNumbers, carsMap);
-        return carsMap;
+        Map<Integer, Integer> carPositions = initCarsMap(carNumbers);
+        repeatMove(moveNumbers, moveNumbers, carPositions);
+        return carPositions;
     }
 
-    private void repeatMove(int carNums, int moveNums, Map<Integer, Integer> carsMap) {
+    private void repeatMove(int carNums, int moveNums, Map<Integer, Integer> carPositions) {
         for(int k=1; k<= moveNums; k++) {
-            recordCarMove(carNums, carsMap);
+            recordCarMove(carNums, carPositions);
         }
     }
 
     // 차량 이동 기록
-    private void recordCarMove(int carNums, Map<Integer, Integer> carsMap) {
+    private void recordCarMove(int carNums, Map<Integer, Integer> carPositions) {
         for(int i=1; i<=carNums; i++) {
-            addNowCarMove(carsMap, i);
-            ResultView.printNowCarMoves(carsMap.get(i));
+            addNowCarMove(carPositions, i);
+            ResultView.printNowCarMoves(carPositions.get(i));
             ResultView.lineChange();
         }
         ResultView.lineChange();
