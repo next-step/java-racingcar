@@ -1,8 +1,8 @@
-package study.step3;
+package study.racing;
 
 import org.junit.jupiter.api.Test;
-import study.step3.car.RacingCar;
-import study.step3.ui.InputView;
+import study.racing.car.RacingCar;
+import study.racing.ui.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

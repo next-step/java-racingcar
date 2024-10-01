@@ -1,7 +1,7 @@
-package study.step3;
+package study.racing;
 
-import study.step3.game.RacingCarGame;
-import study.step3.ui.InputView;
+import study.racing.game.RacingCarGame;
+import study.racing.ui.InputView;
 
 public class RacingCarMain {
 

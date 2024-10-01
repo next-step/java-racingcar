@@ -1,4 +1,4 @@
-package study.step3.ui;
+package study.racing.ui;
 
 public class ResultView {
 

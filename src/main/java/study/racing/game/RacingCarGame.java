@@ -1,9 +1,8 @@
-package study.step3.game;
+package study.racing.game;
 
-import study.step3.car.RacingCar;
-import study.step3.message.ExceptionMessage;
-import study.step3.ui.InputView;
-import study.step3.ui.ResultView;
+import study.racing.car.RacingCar;
+import study.racing.ui.InputView;
+import study.racing.ui.ResultView;
 
 import java.util.ArrayList;
 

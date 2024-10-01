@@ -1,6 +1,6 @@
-package study.step3.ui;
+package study.racing.ui;
 
-import study.step3.message.ExceptionMessage;
+import study.racing.message.ExceptionMessage;
 
 import java.util.Scanner;
 

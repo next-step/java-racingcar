@@ -1,4 +1,4 @@
-package study.step3.car;
+package study.racing.car;
 
 public class RacingCar {
 

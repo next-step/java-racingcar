@@ -1,4 +1,4 @@
-package study.step3.message;
+package study.racing.message;
 
 public enum ExceptionMessage {
     INVALID_CAR_COUNT_MESSAGE("2대 이상의 자동차가 필요합니다."),
