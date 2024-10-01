@@ -1,6 +1,7 @@
 package carracing;
 
 public class Car {
+    private static final int MOVE_REFERENCE_NUM = 4;
     private int moveStatus;
 
     public Car() {
@@ -12,8 +13,7 @@ public class Car {
     }
 
     public void move(int value) {
-        final int FORWARD_REFERENCE_NUM = 4;
-        if (value >= FORWARD_REFERENCE_NUM) {
+        if (value >= MOVE_REFERENCE_NUM) {
             this.moveStatus += 1;
         }
     }

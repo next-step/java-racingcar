@@ -14,9 +14,9 @@ class CarRacingTest {
         assertThat(carRacing.getCars()).hasSize(5);
         assertThat(carRacing.getPlayCount()).isZero();
         assertThat(carRacing.getMoveTryCount()).isEqualTo(3);
-        assertThat(carRacing.getResultView())
+        assertThat(carRacing.getCarsMoveStatusHistory())
                 .isNotNull()
-                .isInstanceOf(ResultView.class);
+                .isInstanceOf(CarsMoveStatusHistory.class);
     }
 
     @DisplayName("경기가 진행되고 끝나면 경기의 진행 횟수는 이동 시도 횟수와 같은 값이다.")

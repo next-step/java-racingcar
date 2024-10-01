@@ -8,14 +8,14 @@ public class CarRacing {
     private static final Random RANDOM = new Random();
     private final List<Car> cars;
     private final int moveTryCount;
+    private final CarsMoveStatusHistory carsMoveStatusHistory;
     private int playCount;
-    private final ResultView resultView;
 
-    private CarRacing(List<Car> cars, int moveTryCount, int playCount, ResultView resultView) {
+    private CarRacing(List<Car> cars, int moveTryCount, CarsMoveStatusHistory carsMoveStatusHistory, int playCount) {
         this.cars = cars;
         this.moveTryCount = moveTryCount;
+        this.carsMoveStatusHistory = carsMoveStatusHistory;
         this.playCount = playCount;
-        this.resultView = resultView;
     }
 
     public static CarRacingBuilder builder() {
@@ -34,17 +34,17 @@ public class CarRacing {
         return playCount;
     }
 
-    public ResultView getResultView() {
-        return resultView;
+    public CarsMoveStatusHistory getCarsMoveStatusHistory() {
+        return carsMoveStatusHistory;
     }
 
     public void start() {
         for (int i = 0; i < this.moveTryCount; i++) {
             this.moveCarsWithRandom();
             this.playCount += 1;
-            this.resultView.saveCarsMoveStatus(this.cars);
+            this.carsMoveStatusHistory.save(this.cars);
         }
-        this.resultView.printCarRacingResult();
+        ResultView.printCarRacingResult(this.carsMoveStatusHistory);
     }
 
     private void moveCarsWithRandom() {
@@ -62,8 +62,7 @@ public class CarRacing {
         private List<Car> cars;
         private int moveTryCount;
         private final int playCount = 0;
-        private final ResultView resultView = new ResultView();
-
+        private final CarsMoveStatusHistory carsMoveStatusHistory = new CarsMoveStatusHistory();
 
         protected CarRacingBuilder() {
         }
@@ -82,7 +81,7 @@ public class CarRacing {
         }
 
         public CarRacing build() {
-            return new CarRacing(this.cars, this.moveTryCount, this.playCount, this.resultView);
+            return new CarRacing(this.cars, this.moveTryCount, this.carsMoveStatusHistory, this.playCount);
         }
     }
 }
