@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingCalculatorTest {
 
@@ -28,7 +29,14 @@ public class RacingCalculatorTest {
         int[] carToArray = new int[carCount];
         RacingCalculator.carToArrayRandomValues(carToArray);
 
-        assertThat(carToArray.length).isEqualTo(carCount);
+        assertThat(carToArray).hasSize(carCount);
         assertThat(carToArray).containsAnyOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {10, 11, 12})
+    void 랜덤값이_0_9사이가_아닐경우(int number) {
+        assertThatThrownBy(() -> RacingCalculator.goAndStop(number)).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
