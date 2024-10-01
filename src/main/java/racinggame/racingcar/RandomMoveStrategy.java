@@ -1,4 +1,4 @@
-package racing;
+package racinggame.racingcar;
 
 import java.util.Random;
 
@@ -6,7 +6,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     private static final int FORWARD_THRESHOLD = 4;
     private final Random random;
 
-    public RandomMoveStrategy() {
+    RandomMoveStrategy() {
         this.random = new Random();
     }
 

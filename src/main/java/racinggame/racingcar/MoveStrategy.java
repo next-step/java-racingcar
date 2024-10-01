@@ -1,4 +1,4 @@
-package racing;
+package racinggame.racingcar;
 
 public interface MoveStrategy {
     boolean shouldMove();
