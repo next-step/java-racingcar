@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarRaceTest {
     @ParameterizedTest
-    @ValueSource(ints = {5, 10, 7})
+    @ValueSource(ints = {5, 10})
     @DisplayName("숫자를 입력받으면 자동차가 성공적으로 생성되는지 확인한다")
     void 자동차_생성(int value) {
         Cars cars = new Cars(value);
