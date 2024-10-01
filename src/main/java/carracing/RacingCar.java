@@ -29,9 +29,9 @@ public class RacingCar {
 
     // 차량 이동 기록
     private void recordCarMove(int carNumbers, Map<Integer, Integer> carPositions) {
-        for (int i = 1; i <= carNumbers; i++) {
-            addNowCarMove(carPositions, i);
-            System.out.print(ResultView.printNowCarMoves(carPositions.get(i)));
+        for (int carNumber = 1; carNumber <= carNumbers; carNumber++) {
+            addNowCarMove(carPositions, carNumber);
+            System.out.print(ResultView.printNowCarMoves(carPositions.get(carNumber)));
             ResultView.lineChange();
         }
         ResultView.lineChange();
