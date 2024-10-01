@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Racingcar {
+public class RacingCarGame {
     private final CarEngine carEngine;
 
-    public Racingcar(CarEngine carEngine) {
+    public RacingCarGame(CarEngine carEngine) {
         this.carEngine = carEngine;
     }
 
     // view 테스트용
     public static void main(String[] args) {
         CarEngine carEngine = new RandomEngine();
-        Racingcar racingcar = new Racingcar(carEngine);
+        RacingCarGame racingcar = new RacingCarGame(carEngine);
         racingcar.execute();
     }
 
