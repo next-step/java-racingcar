@@ -1,6 +1,6 @@
 package racinggame;
 
-import java.util.Map;
+import java.util.List;
 
 public class ResultView {
 
@@ -8,8 +8,8 @@ public class ResultView {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void printCarPosition(Map<Car, Integer> carPosition) {
-        for (Car car : carPosition.keySet()) {
+    public static void printCarPosition(List<Car> cars) {
+        for (Car car : cars) {
             System.out.println(getDashesByCount(car.getPosition()));
         }
     }

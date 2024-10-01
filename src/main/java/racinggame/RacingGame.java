@@ -1,7 +1,7 @@
 package racinggame;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
@@ -9,7 +9,7 @@ public class RacingGame {
     private static final int DEFAULT_BOUND = 10;
     private final Random random = new Random();
     private int round;
-    private Map<Car, Integer> racingMap;
+    private List<Car> cars;
 
     public RacingGame() {
         this.round = 1;
@@ -30,22 +30,20 @@ public class RacingGame {
     }
 
     private void printCarPosition() {
-        ResultView.printCarPosition(racingMap);
+        ResultView.printCarPosition(cars);
     }
 
     private void moveCars() {
-        for (Car car : racingMap.keySet()) {
+        for (Car car : cars) {
             var number = random.nextInt(DEFAULT_BOUND);
             car.move(number);
-            racingMap.put(car, car.getPosition());
         }
     }
 
     private void initCar(int carCount) {
-        racingMap = new HashMap<>();
+        cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            var car = Car.create();
-            racingMap.put(car, car.getPosition());
+            cars.add(Car.create());
         }
     }
 
