@@ -11,26 +11,19 @@ import java.util.Random;
 public class JavaRacingCar {
 
     private static final int RANDOM_VALUE_RANGE = 10;
-    private static final int MIN_MOVING_RANGE = 4;
-    private static final int MAX_MOVING_RANGE = 9;
+    private static final Random random = new Random();
+    private static final List<RacingCar> cars = new ArrayList<>();
 
-    private int step = 0;
-    private int tryCount = 0;
+    private static int step = 0;
+    private static int tryCount = 0;
 
-    private Random random = new Random();
-    private List<RacingCar> carList = new ArrayList<>();
-
-    protected JavaRacingCar() {
+    public JavaRacingCar() {
     }
 
     public void execution() {
-        this.requireGameInfo();
-    }
-
-    protected void requireGameInfo() {
-        this.requireCarCount(InputView.requireCarCount());
-        this.requireTryCount(InputView.requireTryCount());
-        this.start();
+        requireCarCount(InputView.requireCarCount());
+        requireTryCount(InputView.requireTryCount());
+        start();
     }
 
     private void validateNegativeNumber(int count) {
@@ -39,7 +32,7 @@ public class JavaRacingCar {
         }
     }
 
-    protected void requireCarCount(int carCount) throws RuntimeException {
+    public void requireCarCount(int carCount) throws RuntimeException {
         validateNegativeNumber(carCount);
         this.step = 1;
         initCars(carCount);
@@ -47,54 +40,47 @@ public class JavaRacingCar {
 
     private void initCars(int carCount) {
         for (int i = 0; i < carCount; i++) {
-            carList.add(new RacingCar(i + 1));
+            cars.add(new RacingCar());
         }
     }
 
-    protected void requireTryCount(int tryCount) throws RuntimeException {
+    public void requireTryCount(int tryCount) throws RuntimeException {
         validateNegativeNumber(tryCount);
         this.step = 2;
         this.tryCount = tryCount;
     }
 
-    protected List<RacingCar> start() {
+    public List<RacingCar> start() {
         ResultView.resultStartMessage();
         for (int i = 0; i < tryCount; i++) {
             startRound();
         }
-        return this.carList;
+        return this.cars;
     }
 
     private void startRound() {
-        for (RacingCar racingCar : this.carList) {
+        for (RacingCar racingCar : this.cars) {
             decideCarLocation(racingCar);
         }
-        ResultView.endRound(this.carList);
+        ResultView.endRound(this.cars);
     }
 
     private void decideCarLocation(RacingCar racingCar) {
-        if (isMove(random())) {
+        if (racingCar.isMove(random())) {
             racingCar.go();
         }
     }
 
-    protected int random() {
+    public int random() {
         return random.nextInt(RANDOM_VALUE_RANGE);
     }
 
-    protected boolean isMove(int randomValue) {
-        if (MIN_MOVING_RANGE <= randomValue && randomValue <= MAX_MOVING_RANGE) {
-            return true;
-        }
-        return false;
-    }
-
-    protected int step() {
+    public int step() {
         return this.step;
     }
 
-    protected List<RacingCar> carList() {
-        return this.carList;
+    public List<RacingCar> cars() {
+        return this.cars;
     }
 
 }

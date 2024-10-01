@@ -2,6 +2,7 @@ package javaracingcar;
 
 
 import javaracingcar.entity.RacingCar;
+import javaracingcar.entity.RacingCarTest;
 import org.junit.jupiter.api.Test;
 
 
@@ -17,51 +18,6 @@ public class JavaRacingCarTest {
         int result = racingCar.random();
 
         assertThat(result).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
-    }
-
-    @Test
-    void javaRacingCar_randomValue_0인_값() {
-        JavaRacingCar racingCar = new JavaRacingCar();
-
-        boolean result = racingCar.isMove(0);
-
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    void javaRacingCar_randomValue_3인_값() {
-        JavaRacingCar racingCar = new JavaRacingCar();
-
-        boolean result = racingCar.isMove(3);
-
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    void javaRacingCar_randomValue_4인_값() {
-        JavaRacingCar racingCar = new JavaRacingCar();
-
-        boolean result = racingCar.isMove(4);
-
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    void javaRacingCar_randomValue_9인_값() {
-        JavaRacingCar racingCar = new JavaRacingCar();
-
-        boolean result = racingCar.isMove(9);
-
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    void javaRacingCar_randomValue_10인_값() {
-        JavaRacingCar racingCar = new JavaRacingCar();
-
-        boolean result = racingCar.isMove(10);
-
-        assertThat(result).isFalse();
     }
 
     @Test
@@ -110,7 +66,7 @@ public class JavaRacingCarTest {
 
         racingCar.requireCarCount(3);
 
-        assertThat(racingCar.carList()).hasSize(3);
+        assertThat(racingCar.cars()).hasSize(3);
     }
 
     @Test
