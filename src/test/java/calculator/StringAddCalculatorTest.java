@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StringAddCalculatorTest {
+class StringAddCalculatorTest {
 
     @Test
     @DisplayName("숫자 하나를 문자열로 입력할 시 해당 숫자를 반환하는지 확인")
@@ -33,5 +33,12 @@ public class StringAddCalculatorTest {
     void returnZeroForEmptyOrNull() {
         int result = StringAddCalculator.cal("");
         assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("//”와 “\\n” 문자 사이에 커스텀 구분자 지정하여 사용할 수 있는지 확인")
+    void sumWithCustomDelimiter() {
+        int result = StringAddCalculator.cal("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
     }
 }
