@@ -15,9 +15,9 @@ public class RacingCar {
         return randomValue >= MIN_MOVE_VALUE;
     }
 
-    public Map<Integer, Integer> race(int carNums, int moveNums) {
-        Map<Integer, Integer> carsMap = initCarsMap(carNums);
-        repeatMove(carNums, moveNums, carsMap);
+    public Map<Integer, Integer> race(int carNumbers, int moveNumbers) {
+        Map<Integer, Integer> carsMap = initCarsMap(carNumbers);
+        repeatMove(moveNumbers, moveNumbers, carsMap);
         return carsMap;
     }
 
