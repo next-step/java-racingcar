@@ -25,4 +25,5 @@ public class RacingCarTest {
     void 차량_이동_횟수_0_이상_확인() {
         assertThat(RACING_CAR.race(3, 5).values()).allMatch(value -> value >= 0);
     }
+
 }

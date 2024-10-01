@@ -10,7 +10,4 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static String printNowCarMoves(int nowCarMoves) {
-        return "-".repeat(nowCarMoves);
-    }
 }
