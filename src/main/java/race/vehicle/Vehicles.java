@@ -1,7 +1,6 @@
 package race.vehicle;
 
 import race.Utils.RandomGenerator;
-import race.Utils.ResultUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class Vehicles {
     RandomGenerator randomGenerator = RandomGenerator.getRandomGenerator();
 
     public Vehicles(int num) {
-        if (num < 2) {
+        if(num < 2){
             throw new IllegalArgumentException("게임을 진행할 수 없음");
         }
         initList(num);
@@ -27,7 +26,6 @@ public class Vehicles {
     }
 
     public void gameStart(int num) {
-        ResultUtils.printResultView();
         for (int i = 0; i < num; i++) {
             for (Car car : list) {
                 car.move();
