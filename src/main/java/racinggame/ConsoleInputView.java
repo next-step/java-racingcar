@@ -1,7 +1,5 @@
 package racinggame;
 
-import racinggame.racingcar.InputView;
-
 import java.util.Scanner;
 
 public class ConsoleInputView implements InputView {
@@ -9,6 +7,7 @@ public class ConsoleInputView implements InputView {
     private static final String QUESTION_NUMBER_OF_ROUNDS = "시도할 회수는 몇 회 인가요?";
     private static final String ERROR_NOT_POSITIVE = "양수를 입력해주세요: ";
     private static final String ERROR_NOT_NUMBER = "숫자를 입력해주세요: ";
+    private static final int ZERO = 0;
 
     private final Scanner scanner;
 
@@ -63,6 +62,6 @@ public class ConsoleInputView implements InputView {
     }
 
     private boolean isNegativeOrZero(int number) {
-        return number <= 0;
+        return number <= ZERO;
     }
 }
