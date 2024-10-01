@@ -15,7 +15,7 @@ public class RacingGameController {
         String[] carNames = inputView.getCarNames();
         int attempts = inputView.getAttempts();
 
-        RacingGame racingGame = new RacingGame(carCount, attempts, new RandomMovementCondition());
+        RacingGame racingGame = new RacingGame(carNames, attempts, new RandomMovementCondition());
         List<List<Integer>> allStates = racingGame.run();
 
         outputView.printGame(allStates);
