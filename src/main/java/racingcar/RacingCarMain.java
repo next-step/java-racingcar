@@ -5,11 +5,11 @@ import java.util.List;
 public class RacingCarMain {
     public static void main(String[] args) {
 
-        int cntOfCar = InputView.inputCountOfCar();
+        List<String> namesOfCar = InputView.inputNamesOfCar();
 
         int timesOfRun = InputView.inputTimesOfRun();
 
-        List<Car> cars = CarManager.createCarsByCnt(cntOfCar);
+        List<Car> cars = CarManager.createCarsByCnt(namesOfCar);
 
         runAndPrintResult(timesOfRun, cars);
     }
@@ -20,6 +20,8 @@ public class RacingCarMain {
             runNthCarGame(cars);
             OutputView.printMileage(cars, i == 0 ? true : false);
         }
+
+        OutputView.printWinner(cars);
     }
 
     private static void runNthCarGame(List<Car> cars) {
