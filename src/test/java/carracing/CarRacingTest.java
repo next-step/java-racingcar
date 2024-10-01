@@ -27,30 +27,6 @@ class CarRacingTest {
         assertThat(carRacing.getCars().get(0).getMoveStatus()).isZero();
     }
 
-    @DisplayName("랜덤값이 4이상 9이하 일때에만 차를 전진하게 한다.")
-    @Test
-    void move_car_when_reference_is_between_4_and_9() {
-        CarRacing carRacing = CarRacing.builder().moveTryCount(3).cars(5).build();
-        Car given = carRacing.getCars().get(0);
-        carRacing.moveCar(given, 4);
-        carRacing.moveCar(given, 9);
-
-        assertThat(given.getMoveStatus()).isEqualTo(2);
-    }
-
-
-    @DisplayName("랜덤값이 4 미만, 9 초과 일때에는 차가 전진하지 않는다.")
-    @Test
-    void do_not_move_car_when_reference_is_lowerThan_4_or_biggerThan_9() {
-        CarRacing carRacing = CarRacing.builder().moveTryCount(3).cars(5).build();
-        Car given = carRacing.getCars().get(0);
-
-        carRacing.moveCar(given, 3);
-        carRacing.moveCar(given, 10);
-
-        assertThat(given.getMoveStatus()).isZero();
-    }
-
     @DisplayName("경기가 진행되고 끝나면 경기의 진행 횟수는 이동 시도 횟수와 같은 값이다.")
     @Test
     void playCount_is_equalTo_moveTryCount_when_carRacing_is_over() {

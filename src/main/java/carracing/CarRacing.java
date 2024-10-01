@@ -38,12 +38,6 @@ public class CarRacing {
         return resultView;
     }
 
-    public void moveCar(Car car, int reference) {
-        if (reference >= 4 && reference <= 9) {
-            car.move();
-        }
-    }
-
     public void start() {
         for (int i = 0; i < this.moveTryCount; i++) {
             this.moveCarsWithRandom();
@@ -55,7 +49,7 @@ public class CarRacing {
 
     private void moveCarsWithRandom() {
         for (Car car : this.cars) {
-            this.moveCar(car, RANDOM.nextInt(10));
+            car.move(RANDOM.nextInt(10));
         }
     }
 

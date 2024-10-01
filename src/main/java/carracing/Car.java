@@ -11,7 +11,10 @@ public class Car {
         return moveStatus;
     }
 
-    public void move() {
-        this.moveStatus += 1;
+    public void move(int value) {
+        final int FORWARD_REFERENCE_NUM = 4;
+        if (value >= FORWARD_REFERENCE_NUM) {
+            this.moveStatus += 1;
+        }
     }
 }

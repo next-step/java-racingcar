@@ -10,7 +10,7 @@ class ResultViewTest {
     @Test
     void save_cars_moveStatus_after_carRacing_starts() {
         CarRacing carRacing = CarRacing.builder().cars(1).build();
-        carRacing.getCars().get(0).move();
+        carRacing.getCars().get(0).move(4);
 
         ResultView resultView = new ResultView();
 
