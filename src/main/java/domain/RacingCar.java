@@ -1,3 +1,5 @@
+package domain;
+
 public class RacingCar {
     private int status;
     private String name;
