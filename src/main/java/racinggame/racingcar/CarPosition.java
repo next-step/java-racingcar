@@ -18,5 +18,4 @@ public class CarPosition {
     int getCurrentValue() {
         return value;
     }
-
 }
