@@ -18,7 +18,7 @@ public class Cars {
     Cars initCars(int num) {
         for (int i = 0; i < num; i++) {
             cars.add(new Car.Builder().
-                    initRandomUtil(RandomGenerator.getRandomGenerator()).build());
+                    initGenerator(RandomGenerator.getRandomGenerator()).build());
         }
         return this;
     }

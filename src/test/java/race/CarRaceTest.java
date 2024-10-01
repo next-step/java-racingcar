@@ -34,7 +34,7 @@ public class CarRaceTest {
     @Test
     @DisplayName("자동차 전진 테스트")
     void 자동차_전진() {
-        Car car = new Car.Builder().initlocation("-").initRandomUtil(bound -> 5).build();
+        Car car = new Car.Builder().initGenerator(bound -> 5).build();
 
         car.move();
 
@@ -44,7 +44,7 @@ public class CarRaceTest {
     @Test
     @DisplayName("자동차 전진 실패 테스트")
     void 자동차_전진_실패() {
-        Car car = new Car.Builder().initlocation("-").initRandomUtil(bound -> 1).build();
+        Car car = new Car.Builder().initlocation("-").initGenerator(bound -> 1).build();
 
         car.move();
 

@@ -33,7 +33,7 @@ public class Car {
             return this;
         }
 
-        public Builder initRandomUtil(Generator generator) {
+        public Builder initGenerator(Generator generator) {
             this.generator = generator;
             return this;
         }
