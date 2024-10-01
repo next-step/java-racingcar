@@ -2,7 +2,7 @@ package racingcar.dto;
 
 public final class RacingCarStateDTO {
     final int carNo;
-    final int position;
+    public final int position;
 
     public RacingCarStateDTO(int carNo, int position) {
         this.carNo = carNo;
