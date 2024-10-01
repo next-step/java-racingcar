@@ -2,6 +2,7 @@ package racing.ui;
 
 import java.util.List;
 import racing.domain.GameResult;
+import racing.model.CarInfo;
 
 public class OutputView {
 
@@ -21,17 +22,14 @@ public class OutputView {
     }
 
     private static void printResult(GameResult result) {
-        for (int position : result.getRoundResult()) {
-            System.out.println(convertPositionToGage(position));
+        for (CarInfo info : result.getRoundResult()) {
+            System.out.println(convertCarInfoToGage(info));
         }
     }
 
-    private static String convertPositionToGage(int position) {
-        StringBuilder positionGage = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            positionGage.append("-");
-        }
-        return positionGage.toString();
+    private static String convertCarInfoToGage(CarInfo info) {
+        return info.getName() + " : "
+                + "-".repeat(Math.max(0, info.getPosition()));
     }
 
     private static void printBlankLine() {

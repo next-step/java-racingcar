@@ -15,7 +15,8 @@ class CarTest {
     @Test
     void createCarTest() {
         Car car = Car.create("테스터", new RandomNumberGenerator());
-        assertThat(car.getCurrentPosition()).isZero();
+        assertThat(car.getCarInfo()
+                .getPosition()).isZero();
     }
 
     @DisplayName("자동차가 생성된 랜덤 난수가 4 이상인 경우에만 한 칸 전진하는지")
@@ -24,6 +25,7 @@ class CarTest {
     void carMoveTest(int given, int expected) {
         Car car = Car.create("테스터", new FixedNumberGenerator(given));
         car.move();
-        assertThat(car.getCurrentPosition()).isEqualTo(expected);
+        assertThat(car.getCarInfo()
+                .getPosition()).isEqualTo(expected);
     }
 }

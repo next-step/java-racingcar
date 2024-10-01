@@ -4,8 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.model.CarInfo;
 import racing.util.FixedNumberGenerator;
 import racing.util.RandomNumberGenerator;
 
@@ -43,6 +45,10 @@ class RacingGameTest {
         assertThat(results).hasSize(1);
         List<Integer> expectedPositions = Arrays.asList(1, 1, 1, 0, 0);
         GameResult result = results.get(0);
-        assertThat(result.getRoundResult()).isEqualTo(expectedPositions);
+        assertThat(result.getRoundResult()
+                .stream()
+                .map(CarInfo::getPosition)
+                .collect(Collectors.toList())
+        ).isEqualTo(expectedPositions);
     }
 }
