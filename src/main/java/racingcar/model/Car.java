@@ -1,26 +1,37 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class Car {
+
+    public static final int RANDOM_THRESHOLD = 4;
 
     private int position;
 
-    public void move() {
-        position++;
+    public void moveForward(int randomNumber) {
+        if (movable(randomNumber)) {
+            position++;
+        }
+    }
+
+    private static boolean movable(int randomNumber) {
+        return randomNumber >= RANDOM_THRESHOLD;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public void stop() {
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position;
     }
 
-    public String showStatus() {
-        StringBuilder status = new StringBuilder();
-        for (int cnt = 0; cnt < position; ++cnt) {
-            status.append("-");
-        }
-        return status.toString();
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
