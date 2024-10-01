@@ -1,4 +1,4 @@
-package study.step1;
+package study;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -38,9 +38,9 @@ class SetTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true","2:true","3:true","4:false", "5:false"}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("Set의 contains() 메서드가 올바른 boolean을 반환하는지")
-    void contains_returns_collect_boolean_when_set_is_contained(int input, boolean status){
+    void contains_returns_collect_boolean_when_set_is_contained(int input, boolean status) {
         assertThat(numbers.contains(input)).isEqualTo(status);
     }
 

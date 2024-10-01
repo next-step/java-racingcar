@@ -1,8 +1,8 @@
-package step2;
+package calculator;
 
 import java.util.Arrays;
 
-import static step2.util.StringUtils.hasText;
+import static calculator.util.StringUtils.hasText;
 
 public class StringAddCalculator {
 
