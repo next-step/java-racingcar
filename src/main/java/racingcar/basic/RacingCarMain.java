@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.basic;
 
-import racingcar.controller.GameController;
+import racingcar.basic.controller.GameController;
 
-import static racingcar.view.InputView.*;
+import static racingcar.basic.view.InputView.*;
 
 public class RacingCarMain {
 

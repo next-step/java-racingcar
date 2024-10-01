@@ -1,12 +1,11 @@
-package racingcar.controller;
+package racingcar.basic.controller;
 
-import racingcar.model.Car;
-import racingcar.view.ResultView;
+import racingcar.basic.model.Car;
+import racingcar.basic.utils.NumberGenerator;
+import racingcar.basic.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static racingcar.utils.NumberGenerator.randomNumber;
 
 public class GameController {
 
@@ -54,6 +53,6 @@ public class GameController {
     }
 
     private void moveCar(Car car) {
-        car.moveForward(randomNumber());
+        car.moveForward(NumberGenerator.randomNumber());
     }
 }

@@ -1,7 +1,8 @@
-package racingcar.utils;
+package racingcar.basic.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.basic.utils.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
