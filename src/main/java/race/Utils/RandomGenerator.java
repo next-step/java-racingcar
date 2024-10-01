@@ -2,7 +2,7 @@ package race.Utils;
 
 import java.util.Random;
 
-public class RandomGenerator implements RandomUtil {
+public class RandomGenerator implements Generator {
     private final Random random = new Random();
     private static RandomGenerator randomGenerator;
 
@@ -10,7 +10,7 @@ public class RandomGenerator implements RandomUtil {
 
     }
 
-    public static RandomGenerator getRandomGenerator() {
+    public static Generator getRandomGenerator() {
         if (randomGenerator == null) {
             randomGenerator = new RandomGenerator();
         }
@@ -18,7 +18,7 @@ public class RandomGenerator implements RandomUtil {
     }
 
     @Override
-    public int getRandomValue(int num) {
+    public int getValue(int num) {
         return random.nextInt(num);
     }
 }

@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static final String INITIAL_LOCATION = "-";
     private final List<Car> cars = new ArrayList<>();
-
-    RandomGenerator randomGenerator = RandomGenerator.getRandomGenerator();
 
     public Cars(int num) {
         if(num < 2){
@@ -20,7 +17,8 @@ public class Cars {
 
     Cars initCars(int num) {
         for (int i = 0; i < num; i++) {
-            cars.add(new Car.Builder().initlocation(INITIAL_LOCATION).initRandomUtil(randomGenerator).build());
+            cars.add(new Car.Builder().
+                    initRandomUtil(RandomGenerator.getRandomGenerator()).build());
         }
         return this;
     }

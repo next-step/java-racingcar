@@ -1,21 +1,21 @@
 package race.vehicle;
 
-import race.Utils.RandomUtil;
+import race.Utils.Generator;
 
 public class Car {
     private static final int MOVE_CONDITION = 4;
     private static final int BOUND = 10;
+    public static final String INITIAL_LOCATION = "-";
 
-    private StringBuffer location;
-    private RandomUtil randomUtil;
+    private StringBuffer location = new StringBuffer(INITIAL_LOCATION);
+    private Generator generator;
 
     Car(Builder builder) {
-        this.location = builder.location;
-        this.randomUtil = builder.randomUtil;
+        this.generator = builder.generator;
     }
 
     public void move() {
-        if (randomUtil.getRandomValue(BOUND) >= MOVE_CONDITION) {
+        if (generator.getValue(BOUND) >= MOVE_CONDITION) {
             location.append("-");
         }
     }
@@ -26,15 +26,15 @@ public class Car {
 
     public static class Builder {
         private StringBuffer location;
-        private RandomUtil randomUtil;
+        private Generator generator;
 
         public Builder initlocation(String input) {
             this.location = new StringBuffer(input);
             return this;
         }
 
-        public Builder initRandomUtil(RandomUtil randomUtil) {
-            this.randomUtil = randomUtil;
+        public Builder initRandomUtil(Generator generator) {
+            this.generator = generator;
             return this;
         }
 

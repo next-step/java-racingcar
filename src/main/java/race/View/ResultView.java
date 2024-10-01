@@ -8,7 +8,7 @@ public class ResultView {
     private static final String EXECUTION = "\n실행 결과";
     private static final String ROUND_SEPARATION = "\n";
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public ResultView(List<Car> cars) {
         this.cars = cars;
