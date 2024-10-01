@@ -1,6 +1,6 @@
 package race.Utils;
 
 @FunctionalInterface
-public interface Generator {
+public interface NumberGenerator {
     public int getValue(int num);
 }

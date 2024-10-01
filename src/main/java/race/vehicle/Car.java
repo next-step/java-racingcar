@@ -1,6 +1,6 @@
 package race.vehicle;
 
-import race.Utils.Generator;
+import race.Utils.NumberGenerator;
 
 public class Car {
     private static final int MOVE_CONDITION = 4;
@@ -8,14 +8,14 @@ public class Car {
     public static final String INITIAL_LOCATION = "-";
 
     private StringBuffer location = new StringBuffer(INITIAL_LOCATION);
-    private Generator generator;
+    private NumberGenerator numberGenerator;
 
     Car(Builder builder) {
-        this.generator = builder.generator;
+        this.numberGenerator = builder.numberGenerator;
     }
 
     public void move() {
-        if (generator.getValue(BOUND) >= MOVE_CONDITION) {
+        if (numberGenerator.getValue(BOUND) >= MOVE_CONDITION) {
             location.append("-");
         }
     }
@@ -26,15 +26,15 @@ public class Car {
 
     public static class Builder {
         private StringBuffer location;
-        private Generator generator;
+        private NumberGenerator numberGenerator;
 
         public Builder initlocation(String input) {
             this.location = new StringBuffer(input);
             return this;
         }
 
-        public Builder initGenerator(Generator generator) {
-            this.generator = generator;
+        public Builder initGenerator(NumberGenerator numberGenerator) {
+            this.numberGenerator = numberGenerator;
             return this;
         }
 

@@ -2,17 +2,17 @@ package race.Utils;
 
 import java.util.Random;
 
-public class RandomGenerator implements Generator {
+public class RandomNumberGenerator implements NumberGenerator {
     private final Random random = new Random();
-    private static RandomGenerator randomGenerator;
+    private static RandomNumberGenerator randomGenerator;
 
-    private RandomGenerator() {
+    private RandomNumberGenerator() {
 
     }
 
-    public static Generator getRandomGenerator() {
+    public static NumberGenerator getRandomGenerator() {
         if (randomGenerator == null) {
-            randomGenerator = new RandomGenerator();
+            randomGenerator = new RandomNumberGenerator();
         }
         return randomGenerator;
     }
