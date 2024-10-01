@@ -1,10 +1,12 @@
 package study.racing.game;
 
-import study.racing.car.RacingCar;
+import study.racing.car.Car;
 import study.racing.ui.InputView;
 import study.racing.ui.ResultView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
@@ -17,30 +19,31 @@ public class RacingCarGame {
     }
 
     public void play() {
-        ArrayList<RacingCar> racingCars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < inputView.getCarCount(); i++) {
-            racingCars.add(new RacingCar());
+            cars.add(new Car(inputView.getCarNames()[i]));
         }
 
         resultView.printResult();
         for (int i = 0; i < inputView.getGameCount(); i++) {
-            simulate(racingCars);
+            simulate(cars);
             separateRound(i, inputView.getGameCount());
         }
 
-        resultView.gameEnd();
+        List<Car> winners = pickWinners(cars);
+        resultView.gameEnd(winners);
     }
 
-    private void simulate(ArrayList<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars) {
-            move(racingCar, random());
-            resultView.printCarPosition(racingCar.getCurrentPosition());
+    private void simulate(List<Car> cars) {
+        for (Car car : cars) {
+            move(car, random());
+            resultView.printCarPosition(car);
         }
     }
 
-    private void move(RacingCar racingCar, int randomNumber) {
+    private void move(Car car, int randomNumber) {
         if (randomNumber >= MOVE_CRITERIA) {
-            racingCar.move();
+            car.move();
         }
     }
 
@@ -52,6 +55,14 @@ public class RacingCarGame {
         if (nowRound != gameCount - 1) {
             resultView.separateGameRound();
         }
+    }
+
+    private List<Car> pickWinners(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getCurrentPosition).max().orElse(0);
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getCurrentPosition() == maxPosition)
+                .collect(Collectors.toList());
+        return winners;
     }
 
 }

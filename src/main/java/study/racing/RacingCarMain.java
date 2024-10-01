@@ -7,7 +7,7 @@ public class RacingCarMain {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        inputView.validateCarCount(inputView.insertCarCount());
+        inputView.validateCar(inputView.insertCar());
         inputView.validateGameCount(inputView.insertGameCount());
 
         RacingCarGame racingCarGame = new RacingCarGame(inputView);

@@ -1,11 +1,13 @@
 package study.racing.car;
 
-public class RacingCar {
+public class Car {
 
-    private static final int START_POSITION = 0;
     private int position;
+    private final String name;
+    private static final int START_POSITION = 0;
 
-    public RacingCar() {
+    public Car(String name) {
+        this.name = name;
         this.position = START_POSITION;
     }
 
@@ -15,5 +17,9 @@ public class RacingCar {
 
     public int getCurrentPosition() {
         return this.position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
