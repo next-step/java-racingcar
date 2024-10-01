@@ -12,7 +12,7 @@ public class RacingGameController {
     }
 
     public void run() {
-        int carCount = inputView.getCarCount();
+        String[] carNames = inputView.getCarNames();
         int attempts = inputView.getAttempts();
 
         RacingGame racingGame = new RacingGame(carCount, attempts, new RandomMovementCondition());
