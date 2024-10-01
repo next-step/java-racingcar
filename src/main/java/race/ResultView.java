@@ -4,7 +4,9 @@ import java.util.List;
 
 public class ResultView {
 
-    private static final String EXPRESS_STRING = "-";
+    private static final String FORWARD_STRING = "-";
+    private static final String OUTPUT_DELIMITER = " : ";
+    private static final String WINNER_DELIMITER = ",";
 
     public static void output(List<Car> cars) {
         for (Car car : cars) {
@@ -14,9 +16,15 @@ public class ResultView {
     }
 
     private static void carForwardPrint(Car car) {
+        System.out.print(car.getCarName() + OUTPUT_DELIMITER);
         for (int i = 0; i < car.getForwardResult(); i++) {
-            System.out.print(EXPRESS_STRING);
+            System.out.print(FORWARD_STRING);
         }
         System.out.println();
+    }
+
+    public static void announceWinner(List<String> raceResult) {
+        String winnersName = String.join(WINNER_DELIMITER, raceResult);
+        System.out.println(winnersName + "가 최종 우승했습니다.");
     }
 }
