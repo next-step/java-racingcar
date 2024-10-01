@@ -55,4 +55,19 @@ class RacingGameTest {
                 .collect(Collectors.toList())
         ).isEqualTo(expectedPositions);
     }
+
+    @DisplayName("게임이 끝난 후 우승자를 잘 반환하는지")
+    @Test
+    void getWinnersTest() {
+        Cars cars = Cars.create(
+                Arrays.asList("pobi", "honux", "linux"),
+                new FixedNumberGenerator(5)
+        );
+
+        RacingGame racingGame = RacingGame.setUp(5, cars);
+        racingGame.start();
+
+        List<String> winners = racingGame.getWinners();
+        assertThat(winners).containsExactlyInAnyOrder("pobi", "honux", "linux");
+    }
 }

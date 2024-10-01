@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.List;
 import racing.model.RoundResult;
 import racing.model.collection.Cars;
 import racing.model.collection.GameResult;
@@ -35,6 +36,10 @@ public class RacingGame {
         cars.moveCars();
         RoundResult roundResult = RoundResult.save(cars.getCurrentCarInfoList());
         gameResult.addRoundResult(roundResult);
+    }
+
+    public List<String> getWinners() {
+        return cars.getWinners();
     }
 
     public static RacingGame setUp(int roundCount, Cars cars) {
