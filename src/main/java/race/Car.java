@@ -2,10 +2,12 @@ package race;
 
 public class Car {
 
+    private String carName;
     private int forwardResult = 1;
     private ForwardCheck carForwardCheck;
 
-    public Car(ForwardCheck carForwardCheck) {
+    public Car(String carName, ForwardCheck carForwardCheck) {
+        this.carName = carName;
         this.carForwardCheck = carForwardCheck;
     }
 
@@ -21,5 +23,9 @@ public class Car {
 
     public int getForwardResult() {
         return forwardResult;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 }

@@ -17,7 +17,8 @@ class CarTest {
 
     @Test
     void 자동차를_생성하면_전진하는_방향이_하나_생성된다() {
-        Car car = new Car(forwardCheckGenerator);
+        String carName = "testCar";
+        Car car = new Car(carName, forwardCheckGenerator);
 
         int forwardResult = car.getForwardResult();
 
@@ -26,7 +27,8 @@ class CarTest {
 
     @Test
     void 자동차_진행조건인_4이상의_수가_주어지면_한칸_전진한다() {
-        Car car = new Car(new FixedGo());
+        String carName = "testCar";
+        Car car = new Car(carName, new FixedGo());
 
         car.forward();
 
