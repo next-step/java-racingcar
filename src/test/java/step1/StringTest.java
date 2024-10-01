@@ -21,12 +21,14 @@ public class StringTest {
     }
 
     @Test
-    void split2() {}
-    // given
-    String string = "1";
-    // when
-//    string.split(","); // 질문1 : "1"을 ","로 split할 수 있나요?
-    // then
+    void split2() {
+        // given
+        String string = "1";
+        // when
+        String[] result = string.split(",");
+        // then
+        assertThat(result).contains("1");
+    }
 
     @Test
     void substring() {
