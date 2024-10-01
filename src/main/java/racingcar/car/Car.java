@@ -1,13 +1,26 @@
 package racingcar.car;
 
-public class Car {
-    private static final int ALLOWED_MINIMUM_DISTANCE = 4;
-    private static final int DEFAULT_POSITION = 0;
+import racingcar.exception.RacingCarIllegalArgumentException;
+import util.StringUtil;
 
+public class Car {
+    private static final int ALLOWED_MAXIMUM_NAME_LENGTH = 5;
+    private static final int DEFAULT_POSITION = 1;
+    private static final int ALLOWED_MINIMUM_DISTANCE = 4;
+
+    private final String name;
     private int position;
 
-    public Car() {
+    private Car(String name) {
         this.position = DEFAULT_POSITION;
+        this.name = name;
+    }
+
+    public static Car of(String name) {
+        if (StringUtil.isBlank(name) || name.length() > ALLOWED_MAXIMUM_NAME_LENGTH) {
+            throw RacingCarIllegalArgumentException.INVALID_NAME_LENGTH;
+        }
+        return new Car(name);
     }
 
     public void move(int randomNumber) {
@@ -23,4 +36,10 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public String getName() {
+        return name;
+    }
+
+
 }
