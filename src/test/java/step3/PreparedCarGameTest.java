@@ -1,17 +1,11 @@
-import car.CarStrategy;
-import car.RacingCar;
-import game.GameStrategy;
-import game.PreparedCarGame;
-import game.RacingCarGame;
-import org.assertj.core.api.Assertions;
+package step3;
+
+import step3.car.CarStrategy;
+import step3.game.PreparedCarGame;
+import step3.game.RacingCarGame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
-import util.RandomUtil;
-
-import java.util.List;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;

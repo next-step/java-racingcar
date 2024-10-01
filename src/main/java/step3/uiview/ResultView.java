@@ -1,7 +1,7 @@
-package uiview;
+package step3.uiview;
 
-import car.CarStrategy;
-import message.Message;
+import step3.car.CarStrategy;
+import step3.message.Message;
 
 import java.util.List;
 

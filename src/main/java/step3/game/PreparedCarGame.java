@@ -1,6 +1,6 @@
-package game;
+package step3.game;
 
-import car.CarStrategy;
+import step3.car.CarStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

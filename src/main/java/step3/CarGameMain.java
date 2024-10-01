@@ -1,8 +1,10 @@
-import game.GameStrategy;
-import game.PreparedCarGame;
-import game.RacingCarGame;
-import uiview.InputView;
-import uiview.ResultView;
+package step3;
+
+import step3.game.GameStrategy;
+import step3.game.PreparedCarGame;
+import step3.game.RacingCarGame;
+import step3.uiview.InputView;
+import step3.uiview.ResultView;
 
 public class CarGameMain {
 

@@ -1,6 +1,8 @@
-import car.CarStrategy;
-import game.RacingCarGame;
-import message.ExceptionMessage;
+package step3;
+
+import step3.car.CarStrategy;
+import step3.game.RacingCarGame;
+import step3.message.ExceptionMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

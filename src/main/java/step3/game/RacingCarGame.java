@@ -1,9 +1,9 @@
-package game;
+package step3.game;
 
-import car.CarStrategy;
-import car.RacingCar;
-import message.ExceptionMessage;
-import util.RandomUtil;
+import step3.car.CarStrategy;
+import step3.car.RacingCar;
+import step3.message.ExceptionMessage;
+import step3.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package car;
+package step3.car;
 
 public class RacingCar implements CarStrategy {
 

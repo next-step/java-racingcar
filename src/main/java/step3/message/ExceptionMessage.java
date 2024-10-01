@@ -1,4 +1,4 @@
-package message;
+package step3.message;
 
 public enum ExceptionMessage {
 

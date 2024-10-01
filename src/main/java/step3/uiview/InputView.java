@@ -1,6 +1,6 @@
-package uiview;
+package step3.uiview;
 
-import message.Message;
+import step3.message.Message;
 
 import java.util.Scanner;
 
