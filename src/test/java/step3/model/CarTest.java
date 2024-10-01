@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 class CarTest {
     @Test
     void 자동차_생성(){
-        Car car = new Car();
+        String carName = "hwan2-99";
+        Car car = new Car(carName);
         assertThat(car.getMoveCount()).isEqualTo(0);
     }
 }

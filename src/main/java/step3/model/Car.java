@@ -8,8 +8,10 @@ public class Car {
     private static final Random RANDOM = new Random();
 
     private int moveCount;
+    private final String name;
 
-    public Car() {
+    public Car(final String name) {
+        this.name = name;
     }
 
     public int getMoveCount() {

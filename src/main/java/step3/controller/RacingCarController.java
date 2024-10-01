@@ -9,10 +9,10 @@ public class RacingCarController {
     }
 
     public void racing() {
-        int carCount = InputView.getCarCount();
+        String carNames = InputView.getCarNames();
         int tryCount = InputView.getTryCount();
 
-        Cars cars = Cars.from(carCount);
+        Cars cars = Cars.from(carNames);
         OutputView.printRacingResult();
         for (int i = 0; i < tryCount; i++) {
             cars.moveCars();

@@ -1,19 +1,22 @@
 package step3.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
+    private static final String DELIMITER = ",";
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars from(int carCount) {
+    public static Cars from(final String inputValue) {
+        List<String> carNames = Arrays.asList(inputValue.split(DELIMITER));
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return new Cars(cars);
     }
