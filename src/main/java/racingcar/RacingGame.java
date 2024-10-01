@@ -4,55 +4,39 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.wrapper.PositiveNumber;
 import racingcar.util.NumberCreator;
+import racingcar.util.PrintUtil;
+import racingcar.util.RandomNumberGenerator;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingGame {
-    public static final String LINE_BREAK = "\n";
-    public static final String EMPTY_STRING = "";
-    private final PositiveNumber carSize;
-    private final PositiveNumber movement;
 
-    public RacingGame(int carSize, int movement) {
-        this.carSize = new PositiveNumber(carSize);
-        this.movement = new PositiveNumber(movement);
-    }
+    public static void play() {
+        InputView inputView = new InputView(new Scanner(System.in));
+        PositiveNumber carNumber = new PositiveNumber(inputView.carNumber());
+        PositiveNumber movement = new PositiveNumber(inputView.movement());
 
-    public String runAndResult(NumberCreator numberCreator) {
-        Cars cars = createCars();
-        StringBuilder movementStatusesResult = new StringBuilder();
+        Cars cars = createCars(carNumber);
+        StringBuilder result = new StringBuilder();
         for (int index = 0; movement.isGreaterThan(index); index++) {
-            cars.moveAll(numberCreator);
-            movementStatusesResult.append(statusesResult(cars, index));
+            cars.moveAll(new RandomNumberGenerator());
+            result.append(PrintUtil.result(cars));
         }
-        return movementStatusesResult.toString();
+
+        ResultView resultView = new ResultView();
+        resultView.print(result.toString());
+
     }
 
-    private Cars createCars() {
+    private static Cars createCars(PositiveNumber carSize) {
         List<Car> carList = new ArrayList<>();
         for (int index = 0; carSize.isGreaterThan(index); index++) {
             carList.add(new Car());
         }
         return new Cars(carList);
-    }
-
-
-    private String statusesResult(Cars cars, int index) {
-        return movementStatuses(cars) +
-                movementLineBreak(index);
-    }
-
-    private String movementLineBreak(int index) {
-        int compareIndex = index + 1;
-        if (movement.isGreaterThan(compareIndex)) {
-            return LINE_BREAK;
-        }
-        return EMPTY_STRING;
-    }
-
-    private String movementStatuses(Cars cars) {
-        List<String> currentStatuses = cars.currentStatuses();
-        return String.join(LINE_BREAK, currentStatuses) + LINE_BREAK;
     }
 }
