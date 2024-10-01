@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCar {
@@ -20,11 +22,11 @@ public class RacingCar {
         return new Random().nextInt(10);
     }
 
-    public static int moveForward(int randomValue) {
+    public String moveForward(String car, int randomValue) {
         if (randomValue >= 4) {
-            return 1;
+            return car + "-";
         }
-        return 0;
+        return car;
     }
 
     public List<String> getCars() {

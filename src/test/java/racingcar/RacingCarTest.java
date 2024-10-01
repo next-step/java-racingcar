@@ -1,22 +1,40 @@
 package racingcar;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
+
     @Test
-    void 랜덤값_4_이상_전진(){
-        int result = RacingCar.moveForward(4);
-        assertThat(result).isEqualTo(1);
-        result = RacingCar.moveForward(1);
-        assertThat(result).isEqualTo(0);
+    @DisplayName("랜덤 값이 4 이상일 경우 전진한다.")
+    void 랜덤값_4_이상_전진() {
+        String result = RacingCar.getInstance().moveForward("-", 4);
+        assertThat(result).isEqualTo("--");
+        result = RacingCar.getInstance().moveForward("--",1);
+        assertThat(result).isEqualTo("--");
     }
 
     @Test
-    void 랜덤값_추출(){
+    @DisplayName("사용자 입력에 맞춰 매치 수를 세팅한다.")
+    void initialize_match(){
+        RacingCar.getInstance().setMatch(5);
+        assertThat(RacingCar.getInstance().getMatch()).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("사용자 입력에 맞춰 자동차를 세팅한다.")
+    void initialize_car(){
+        RacingCar.getInstance().initializeCar(5);
+        assertThat(RacingCar.getInstance().getCars()).hasSize(5);
+    }
+
+    @Test
+    @DisplayName("0~9 사이의 랜덤 값을 추출한다.")
+    void 랜덤값_추출() {
         int random = RacingCar.getRandomValue();
-        assertThat(random).isBetween(0,9);
+        assertThat(random).isBetween(0, 9);
     }
 }
