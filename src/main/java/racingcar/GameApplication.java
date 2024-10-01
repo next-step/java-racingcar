@@ -5,7 +5,7 @@ import racingcar.view.ResultView;
 
 public class GameApplication {
     public static void main(String[] args) {
-        RacingCar racingCar = new RacingCar(new InputView(), new ResultView());
-        racingCar.run();
+        CarRacing carRacing = new CarRacing(new InputView(), new ResultView());
+        carRacing.run();
     }
 }

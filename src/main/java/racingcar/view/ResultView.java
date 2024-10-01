@@ -1,21 +1,23 @@
 package racingcar.view;
 
 import racingcar.car.Car;
-import racingcar.car.Cars;
+import racingcar.car.Race;
 
 public class ResultView {
-    public static final int FIRST_ROUND = 1;
 
-    public void showRoundResult(int roundNumber, Cars cars) {
-        if (roundNumber == FIRST_ROUND) {
-            System.out.println("\n실행 결과");
-        }
+    public void showCarsInitState(Race race) {
+        System.out.println("\n실행 결과");
+        showCarsState(race);
+    }
 
-        System.out.println("Round : " + roundNumber);
-        for (Car car : cars.getCars()) {
-            System.out.printf("[%3d] %s%n", car.getPosition(), "-".repeat(car.getPosition()));
+    public void showCarsState(Race race) {
+        for (Car car : race.getCars()) {
+            System.out.printf("%5s %s%n", car.getName(), "-".repeat(car.getPosition()));
         }
         System.out.println();
+    }
 
+    public void showWinnerNames(Race race) {
+        System.out.printf("%s가 최종 우승했습니다.", String.join(", ", race.getWinners()));
     }
 }
