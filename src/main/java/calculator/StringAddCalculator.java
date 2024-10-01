@@ -8,14 +8,14 @@ public class StringAddCalculator {
     public static final String DEFAULT_DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
 
-    public static int cal(String text) {
+    public static int calculateSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
-        return stringSum(toInts(getSplit(text)));
+        return sumValues(toInts(splitValues(text)));
     }
 
-    private static String[] getSplit(String text) {
+    private static String[] splitValues(String text) {
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
@@ -45,7 +45,7 @@ public class StringAddCalculator {
         }
     }
 
-    private static int stringSum(int[] values) {
+    private static int sumValues(int[] values) {
         int result = 0;
         for (int value : values) {
             result += value;
