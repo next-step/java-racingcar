@@ -2,11 +2,11 @@ package calculator;
 
 public class StringAddCalculator {
 
-  public static int splitAndSum(String number) {
-    if (number.contains(",")) {
-      return sum(toInts(number.split(",")));
-    }
-    return Integer.parseInt(number);
+  public static final String DELIMITER = ",|:";
+
+  public static int splitAndSum(String text) {
+    String[] values = text.split(DELIMITER);
+    return sum(toInts(values));
   }
 
   private static int[] toInts(String[] values) {
