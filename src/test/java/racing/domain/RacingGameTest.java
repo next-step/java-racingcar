@@ -41,11 +41,11 @@ class RacingGameTest {
         );
 
         RacingGame newGame = RacingGame.setUp(1, cars);
-        List<GameResult> results = newGame.start();
+        List<RoundResult> results = newGame.start();
         assertThat(results).hasSize(1);
         List<Integer> expectedPositions = Arrays.asList(1, 1, 1, 0, 0);
-        GameResult result = results.get(0);
-        assertThat(result.getRoundResult()
+        RoundResult result = results.get(0);
+        assertThat(result.getCarInfoList()
                 .stream()
                 .map(CarInfo::getPosition)
                 .collect(Collectors.toList())

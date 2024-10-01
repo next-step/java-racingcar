@@ -23,15 +23,15 @@ public class RacingGame {
         return cars;
     }
 
-    public List<GameResult> start() {
-        List<GameResult> results = new ArrayList<>();
+    public List<RoundResult> start() {
+        List<RoundResult> results = new ArrayList<>();
         for (int i = 0; i < roundCount; i++) {
             playRound(results);
         }
         return results;
     }
 
-    private void playRound(List<GameResult> results) {
+    private void playRound(List<RoundResult> results) {
         moveCars();
         List<CarInfo> carInfoList = getCurrentCarInfoList();
         saveRoundResult(results, carInfoList);
@@ -51,8 +51,8 @@ public class RacingGame {
         return carInfoList;
     }
 
-    private void saveRoundResult(List<GameResult> results, List<CarInfo> carInfoList) {
-        results.add(GameResult.save(carInfoList));
+    private void saveRoundResult(List<RoundResult> results, List<CarInfo> carInfoList) {
+        results.add(RoundResult.save(carInfoList));
     }
 
     public static RacingGame setUp(int roundCount, List<Car> cars) {

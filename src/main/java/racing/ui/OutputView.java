@@ -1,7 +1,7 @@
 package racing.ui;
 
 import java.util.List;
-import racing.domain.GameResult;
+import racing.domain.RoundResult;
 import racing.model.CarInfo;
 
 public class OutputView {
@@ -12,17 +12,17 @@ public class OutputView {
         throw new UnsupportedOperationException("유틸형 클래스는 생성할 수 없습니다");
     }
 
-    public static void printGameResults(List<GameResult> results) {
+    public static void printGameResults(List<RoundResult> results) {
         printBlankLine();
         printStartMessage();
-        for (GameResult result : results) {
+        for (RoundResult result : results) {
             printResult(result);
             printBlankLine();
         }
     }
 
-    private static void printResult(GameResult result) {
-        for (CarInfo info : result.getRoundResult()) {
+    private static void printResult(RoundResult result) {
+        for (CarInfo info : result.getCarInfoList()) {
             System.out.println(convertCarInfoToGage(info));
         }
     }
