@@ -5,7 +5,8 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-  public static final String DELIMITER = ",|:";
+  public static final String DEFAULT_DELIMITER = ",|:";
+  public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
 
   public static int splitAndSum(String text) {
     if (isBlank(text)) {
@@ -15,12 +16,12 @@ public class StringAddCalculator {
   }
 
   private static String[] split(String text) {
-    Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+    Matcher m = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
     if (m.find()) {
       String customDelimiter = m.group(1);
       return m.group(2).split(customDelimiter);
     }
-    return text.split(DELIMITER);
+    return text.split(DEFAULT_DELIMITER);
   }
 
   private static boolean isBlank(String text) {
@@ -30,7 +31,11 @@ public class StringAddCalculator {
   private static int[] toInts(String[] values) {
     int[] numbers = new int[values.length];
     for (int i = 0; i < values.length; i++) {
-      numbers[i] = Integer.parseInt(values[i]);
+      int number = Integer.parseInt(values[i]);
+      if (number < 0) {
+        throw new RuntimeException("Negative numbers are not supported");
+      }
+      numbers[i] = number;
     }
     return numbers;
   }

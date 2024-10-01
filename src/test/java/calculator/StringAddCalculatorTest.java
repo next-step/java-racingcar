@@ -1,10 +1,18 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
 public class StringAddCalculatorTest {
+  @Test
+  void negativeInteger() {
+    assertThatThrownBy(() ->
+      StringAddCalculator.splitAndSum("1,-2,3")
+    ).isInstanceOf(RuntimeException.class);
+  }
+
   @Test
   void customDelimiter() {
     int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
