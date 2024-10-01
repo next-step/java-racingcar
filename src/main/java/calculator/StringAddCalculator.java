@@ -5,7 +5,18 @@ public class StringAddCalculator {
     public static final String DELIMITER = ",|:";
 
     public static int cal(String text) {
-        return stringSum(toInts(text.split(DELIMITER)));
+        if (isBlank(text)) {
+            return 0;
+        }
+        return stringSum(toInts(getSplit(text)));
+    }
+
+    private static String[] getSplit(String text) {
+        return text.split(DELIMITER);
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 
     private static int[] toInts(String[] values) {
