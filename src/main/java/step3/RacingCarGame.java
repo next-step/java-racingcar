@@ -41,7 +41,7 @@ public class RacingCarGame {
 
     private void race(Cars cars, int round) {
         PrintView printView = new PrintView();
-        printView.input(cars.carList.size(), round);
+        printView.input(cars.getCarList().size(), round);
 
         printView.print("실행 결과");
         for (int i = 0; i < round; i++) {

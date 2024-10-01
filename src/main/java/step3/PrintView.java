@@ -11,7 +11,7 @@ public class PrintView {
     }
 
     public void result(Cars cars) {
-        for (Car car : cars.carList) {
+        for (Car car : cars.getCarList()) {
             System.out.println(getDash(car.getPosition()));
         }
         enter();

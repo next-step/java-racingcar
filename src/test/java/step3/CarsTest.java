@@ -28,9 +28,9 @@ public class CarsTest {
 
         cars.moveAll(carEngine);
 
-        assertThat(cars.carList.get(0).getPosition()).isEqualTo(1);
-        assertThat(cars.carList.get(1).getPosition()).isEqualTo(1);
-        assertThat(cars.carList.get(2).getPosition()).isEqualTo(1);
+        assertThat(cars.getCarList().get(0).getPosition()).isEqualTo(1);
+        assertThat(cars.getCarList().get(1).getPosition()).isEqualTo(1);
+        assertThat(cars.getCarList().get(2).getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -51,8 +51,8 @@ public class CarsTest {
 
         cars.moveAll(carEngine);
 
-        assertThat(cars.carList.get(0).getPosition()).isEqualTo(0);
-        assertThat(cars.carList.get(1).getPosition()).isEqualTo(0);
-        assertThat(cars.carList.get(2).getPosition()).isEqualTo(0);
+        assertThat(cars.getCarList().get(0).getPosition()).isEqualTo(0);
+        assertThat(cars.getCarList().get(1).getPosition()).isEqualTo(0);
+        assertThat(cars.getCarList().get(2).getPosition()).isEqualTo(0);
     }
 }

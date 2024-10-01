@@ -3,9 +3,9 @@ package step3;
 import java.util.List;
 
 public class Cars {
-    List<Car> carList;
+    private final List<Car> carList;
 
-    public Cars(List<Car> cars) {
+    public Cars(final List<Car> cars) {
         this.carList = cars;
     }
 
@@ -14,4 +14,9 @@ public class Cars {
             car.move(carEngine);
         }
     }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
+
 }
