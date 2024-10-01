@@ -2,19 +2,19 @@ package step3;
 
 public class Car {
     private static final int FORWARD = 4;
-    private int position;
+    private Position position;
 
     public Car() {
-        this.position = 0;
+        this.position = new Position();
     }
 
     public void move(CarEngine carEngine) {
         if (carEngine.getPower() >= FORWARD) {
-            position += 1;
+            position.add();
         }
     }
 
     public int getPosition() {
-        return this.position;
+        return position.getPosition();
     }
 }
