@@ -1,10 +1,10 @@
-package CarRacing;
+package carracing;
 
 public class RacingDisplay {
     private static final InputView inputView = new InputView();
     private static final ResultView resultView = new ResultView();
 
-    private static final CarRacing carRacing = new CarRacing();
+    private static final RacingCar RACING_CAR = new RacingCar();
 
     public static void main(String[] args) {
         int carNums = inputView.inputCarView();
@@ -13,6 +13,6 @@ public class RacingDisplay {
         ResultView.lineChange();
         ResultView.resultPrintResultComment();
 
-        carRacing.race(carNums, moveNums);
+        RACING_CAR.race(carNums, moveNums);
     }
 }

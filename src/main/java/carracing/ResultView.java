@@ -1,4 +1,4 @@
-package CarRacing;
+package carracing;
 
 public class ResultView {
 

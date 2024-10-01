@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class CarRacing {
+public class RacingCar {
 
     public static final int BOUND = 10;
     public static final int MIN_MOVE_VALUE = 4;
