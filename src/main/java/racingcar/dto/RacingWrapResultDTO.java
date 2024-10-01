@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-public class RacingWrapResultDTO {
+public final class RacingWrapResultDTO {
     final int wrapNumber;
     final RacingCarStatesDTO catStates;
 

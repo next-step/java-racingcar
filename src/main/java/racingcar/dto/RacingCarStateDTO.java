@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-public class RacingCarStateDTO {
+public final class RacingCarStateDTO {
     final int carNo;
     final int position;
 

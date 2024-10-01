@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-public class RacingResultDTO {
+public final class RacingResultDTO {
     final RacingWrapResultDTO[] wrapResults;
 
     public RacingResultDTO(RacingWrapResultDTO[] wrapResults) {

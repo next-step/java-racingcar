@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-public class RacingCarStatesDTO {
+public final class RacingCarStatesDTO {
     final RacingCarStateDTO[] catStates;
 
     public RacingCarStatesDTO(RacingCarStateDTO[] catStates) {
