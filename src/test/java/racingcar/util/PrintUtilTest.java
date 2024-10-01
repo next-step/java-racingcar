@@ -16,7 +16,7 @@ public class PrintUtilTest {
         // given
         Cars cars = new Cars(List.of(new Car(), new Car(), new Car()));
         String expected = "-----\n-----\n-----\n\n";
-        IntStream.range(0, 5).forEach(index -> cars.moveAll(() -> new ForwardStatus(4)));
+        IntStream.range(0, 5).forEach(index -> cars.moveAllByNumberCreator(() -> new ForwardStatus(4)));
         // when
         String actual = PrintUtil.result(cars);
         // then

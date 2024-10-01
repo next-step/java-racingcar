@@ -24,7 +24,7 @@ public class CarsTest {
         Cars expected = new Cars(List.of(car1Expected, car2Expected, car3Expected));
 
         // when
-        cars.moveAll(() -> new ForwardStatus(4));
+        cars.moveAllByNumberCreator(() -> new ForwardStatus(4));
 
         // then
         assertThat(cars).isEqualTo(expected);
@@ -44,7 +44,7 @@ public class CarsTest {
         Cars expected = new Cars(List.of(car1Expected, car2Expected, car3Expected));
 
         // when
-        IntStream.range(0, 4).forEach((index) -> cars.moveAll(() -> new ForwardStatus(4)));
+        IntStream.range(0, 4).forEach((index) -> cars.moveAllByNumberCreator(() -> new ForwardStatus(4)));
 
         // then
         assertThat(cars).isEqualTo(expected);
@@ -63,7 +63,7 @@ public class CarsTest {
         Car car3Expected = new Car(List.of(FORWARD, FORWARD, FORWARD, FORWARD));
         List<Car> expected = List.of(car1Expected, car2Expected, car3Expected);
 
-        IntStream.range(0, 4).forEach((index) -> cars.moveAll(() -> new ForwardStatus(4)));
+        IntStream.range(0, 4).forEach((index) -> cars.moveAllByNumberCreator(() -> new ForwardStatus(4)));
 
         // when
         List<Car> actual = cars.currentCars();

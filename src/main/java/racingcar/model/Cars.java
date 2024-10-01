@@ -26,7 +26,7 @@ public class Cars {
         return Objects.hash(cars);
     }
 
-    public void moveAll(NumberCreator numberCreator) {
+    public void moveAllByNumberCreator(NumberCreator numberCreator) {
         this.cars
                 .forEach(car -> car.move(numberCreator));
     }

@@ -23,7 +23,7 @@ public class RacingGame {
         Cars cars = createCars(carNumber);
         StringBuilder result = new StringBuilder();
         for (int index = 0; movementNumber.isGreaterThan(index); index++) {
-            cars.moveAll(new RandomNumberGenerator());
+            cars.moveAllByNumberCreator(new RandomNumberGenerator());
             result.append(PrintUtil.result(cars));
         }
 
