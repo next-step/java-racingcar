@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import static CarRacingGame.PrintView.printCars;
-
 public class CarRacingGameUtils {
     private Map<String, String> cars;
 
@@ -25,12 +23,14 @@ public class CarRacingGameUtils {
             System.out.println();
         }
     }
+
     public void moveCars() {
         cars.forEach((carNumber, currentPosition) -> {
             String newPosition = makeDistanceOfCars(currentPosition);
             cars.put(carNumber, newPosition);
         });
     }
+
     public String makeDistanceOfCars(String currentPosition) {
         Random random = new Random();
         int randomValue = random.nextInt(10);
