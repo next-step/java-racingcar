@@ -22,14 +22,14 @@ public class RacingCar {
     }
 
     private void repeatMove(int carNums, int moveNums, Map<Integer, Integer> carPositions) {
-        for(int k=1; k<= moveNums; k++) {
+        for (int k = 1; k <= moveNums; k++) {
             recordCarMove(carNums, carPositions);
         }
     }
 
     // 차량 이동 기록
     private void recordCarMove(int carNums, Map<Integer, Integer> carPositions) {
-        for(int i=1; i<=carNums; i++) {
+        for (int i = 1; i <= carNums; i++) {
             addNowCarMove(carPositions, i);
             ResultView.printNowCarMoves(carPositions.get(i));
             ResultView.lineChange();
@@ -38,7 +38,7 @@ public class RacingCar {
     }
 
     private void addNowCarMove(Map<Integer, Integer> carsMap, int carNum) {
-        if(shouldMove(RANDOM.nextInt(BOUND))) {
+        if (shouldMove(RANDOM.nextInt(BOUND))) {
             carsMap.put(carNum, carsMap.get(carNum) + 1);
         }
     }
@@ -47,7 +47,7 @@ public class RacingCar {
     private static Map<Integer, Integer> initCarsMap(int carNums) {
         Map<Integer, Integer> carsMap = new HashMap<>();
 
-        for(int i=1; i<=carNums; i++) {
+        for (int i = 1; i <= carNums; i++) {
             carsMap.put(i, 0);
         }
         return carsMap;
