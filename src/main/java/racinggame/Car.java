@@ -1,6 +1,7 @@
 package racinggame;
 
 public class Car {
+    public static final int MINIMUM_MOVE_NUMBER = 4;
     private int position;
 
     private Car() {
@@ -22,6 +23,6 @@ public class Car {
     }
 
     private boolean isMoveable(int number) {
-        return number >= 4;
+        return number >= MINIMUM_MOVE_NUMBER;
     }
 }
