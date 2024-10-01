@@ -26,7 +26,7 @@ public class ConsoleResultView implements ResultView {
     }
 
     private void printRoundSeparator() {
-        printMessage(ROUND_SEPARATOR); // Add a newline to separate each round
+        printMessage(ROUND_SEPARATOR);
     }
 
     private void printMessage(String message) {
