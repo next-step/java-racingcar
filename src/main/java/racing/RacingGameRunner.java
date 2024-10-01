@@ -12,9 +12,9 @@ import racing.util.RandomNumberGenerator;
 public class RacingGameRunner {
 
     public static void main(String[] args) {
-        int carCount = InputView.readCarCount();
+        List<String> carNames = InputView.readCarNames();
         int roundCount = InputView.readRoundCount();
-        List<Car> cars = initialCars(carCount);
+        List<Car> cars = initialCars(carNames);
 
         RacingGame racingGame = RacingGame.setUp(roundCount, cars);
         List<GameResult> gameResults = racingGame.start();
@@ -22,10 +22,10 @@ public class RacingGameRunner {
         OutputView.printGameResults(gameResults);
     }
 
-    private static List<Car> initialCars(int carCount) {
+    private static List<Car> initialCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.create(new RandomNumberGenerator()));
+        for (String name : carNames) {
+            cars.add(Car.create(name, new RandomNumberGenerator()));
         }
         return cars;
     }

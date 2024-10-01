@@ -15,11 +15,11 @@ class RacingGameTest {
     @Test
     void setUpTest() {
         List<Car> cars = Arrays.asList(
-                Car.create(new RandomNumberGenerator()),
-                Car.create(new RandomNumberGenerator()),
-                Car.create(new RandomNumberGenerator()),
-                Car.create(new RandomNumberGenerator()),
-                Car.create(new RandomNumberGenerator())
+                Car.create("테스터", new RandomNumberGenerator()),
+                Car.create("테스터", new RandomNumberGenerator()),
+                Car.create("테스터", new RandomNumberGenerator()),
+                Car.create("테스터", new RandomNumberGenerator()),
+                Car.create("테스터", new RandomNumberGenerator())
         );
 
         RacingGame newGame = RacingGame.setUp(1, cars);
@@ -31,11 +31,11 @@ class RacingGameTest {
     @Test
     void startTest() {
         List<Car> cars = Arrays.asList(
-                Car.create(new FixedNumberGenerator(5)),
-                Car.create(new FixedNumberGenerator(5)),
-                Car.create(new FixedNumberGenerator(5)),
-                Car.create(new FixedNumberGenerator(3)),
-                Car.create(new FixedNumberGenerator(3))
+                Car.create("테스터", new FixedNumberGenerator(5)),
+                Car.create("테스터", new FixedNumberGenerator(5)),
+                Car.create("테스터", new FixedNumberGenerator(5)),
+                Car.create("테스터", new FixedNumberGenerator(3)),
+                Car.create("테스터", new FixedNumberGenerator(3))
         );
 
         RacingGame newGame = RacingGame.setUp(1, cars);
