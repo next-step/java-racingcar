@@ -24,7 +24,7 @@ public class RacingCar {
 
     public String moveForward(String car, int randomValue) {
         if (randomValue >= 4) {
-            return car + "-";
+            return car.concat("-");
         }
         return car;
     }
@@ -46,4 +46,16 @@ public class RacingCar {
             cars.add("-");
         }
     }
+
+    public void startMatch() {
+        if (match > 0) {
+            moveForwardCars();
+            match--;
+        }
+    }
+
+    private void moveForwardCars() {
+        cars.replaceAll(car -> moveForward(car, getRandomValue()));
+    }
+
 }
