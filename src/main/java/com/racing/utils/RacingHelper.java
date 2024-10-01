@@ -6,7 +6,7 @@ import java.util.Random;
  * 레이싱에서 사용 할 헬퍼 메서드를 모아놓은 클래스
  */
 public class RacingHelper {
-    private static final int RANDOM_NUMBER = 10;
+    private static final int RANDOM_NUMBER_RANGE = 10;
 
     /**
      * 0~9의 랜덤 값 반환
@@ -14,6 +14,6 @@ public class RacingHelper {
     public static int getRandomNumber() {
         Random rand = new Random();
 
-        return rand.nextInt(RANDOM_NUMBER);
+        return rand.nextInt(RANDOM_NUMBER_RANGE);
     }
 }
