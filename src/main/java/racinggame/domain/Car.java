@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class Car {
     public static final int MINIMUM_MOVE_NUMBER = 4;

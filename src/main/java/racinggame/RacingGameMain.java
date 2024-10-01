@@ -1,5 +1,9 @@
 package racinggame;
 
+import racinggame.domain.RacingGame;
+import racinggame.ui.InputView;
+import racinggame.ui.ResultView;
+
 public class RacingGameMain {
     public static void main(String[] args) {
         var carCount = InputView.readCarCount();

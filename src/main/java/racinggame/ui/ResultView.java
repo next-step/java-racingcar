@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.ui;
+
+import racinggame.domain.GameRounds;
 
 public class ResultView {
 
