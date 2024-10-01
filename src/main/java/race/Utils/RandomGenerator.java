@@ -3,7 +3,7 @@ package race.Utils;
 import java.util.Random;
 
 public class RandomGenerator implements RandomUtil {
-    Random random = new Random();
+    private final Random random = new Random();
     private static RandomGenerator randomGenerator;
 
     private RandomGenerator() {

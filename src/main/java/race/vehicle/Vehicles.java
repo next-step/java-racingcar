@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vehicles {
-    public static final String INITIAL_LOCATION = "-";
-    List<Car> list = new ArrayList<>();
+    private static final String INITIAL_LOCATION = "-";
+    private final List<Car> list = new ArrayList<>();
 
     RandomGenerator randomGenerator = RandomGenerator.getRandomGenerator();
 
