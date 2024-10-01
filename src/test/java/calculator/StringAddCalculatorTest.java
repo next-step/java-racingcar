@@ -27,4 +27,11 @@ public class StringAddCalculatorTest {
         int result = StringAddCalculator.cal("1:2");
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환하는지 확인")
+    void returnZeroForEmptyOrNull() {
+        int result = StringAddCalculator.cal("");
+        assertThat(result).isEqualTo(0);
+    }
 }
