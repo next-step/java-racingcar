@@ -1,5 +1,6 @@
 package step3.model;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Car {
@@ -30,5 +31,18 @@ public class Car {
 
     private boolean isMove() {
         return RANDOM.nextInt(RANDOM_MAX_NUMBER) >= MOVE_MIN_NUMBER;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Car car = (Car) object;
+        return Objects.equals(carName, car.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return carName != null ? carName.hashCode() : 0;
     }
 }

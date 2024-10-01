@@ -30,4 +30,17 @@ public class CarName {
             throw new IllegalArgumentException(BLANK_CONTAIN_ERROR_MESSAGE);
         }
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        CarName carName = (CarName) object;
+        return this.carName.equals(carName.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return carName.hashCode();
+    }
 }
