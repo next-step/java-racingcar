@@ -3,6 +3,7 @@ package racingcar.util;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.wrapper.ForwardStatus;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -15,7 +16,7 @@ public class PrintUtilTest {
         // given
         Cars cars = new Cars(List.of(new Car(), new Car(), new Car()));
         String expected = "-----\n-----\n-----\n\n";
-        IntStream.range(0, 5).forEach(index -> cars.moveAll((car) -> 4));
+        IntStream.range(0, 5).forEach(index -> cars.moveAll(() -> new ForwardStatus(4)));
         // when
         String actual = PrintUtil.result(cars);
         // then

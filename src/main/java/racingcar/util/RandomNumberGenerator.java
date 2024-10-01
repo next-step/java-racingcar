@@ -1,13 +1,13 @@
 package racingcar.util;
 
-import racingcar.model.Car;
+import racingcar.model.wrapper.ForwardStatus;
 
 import java.util.Random;
 
 public class RandomNumberGenerator implements NumberCreator {
 
     @Override
-    public int number(Car car) {
-        return new Random().nextInt(10);
+    public ForwardStatus number() {
+        return new ForwardStatus(new Random().nextInt(10));
     }
 }

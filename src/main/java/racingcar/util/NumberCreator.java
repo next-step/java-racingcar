@@ -1,8 +1,8 @@
 package racingcar.util;
 
-import racingcar.model.Car;
+import racingcar.model.wrapper.ForwardStatus;
 
 @FunctionalInterface
 public interface NumberCreator {
-    int number(Car car);
+    ForwardStatus number();
 }

@@ -1,14 +1,13 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.Test;
-import racingcar.util.NumberCreator;
+import racingcar.model.wrapper.ForwardStatus;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
 import static racingcar.model.enums.Status.FORWARD;
-import static racingcar.model.enums.Status.STOP;
 
 public class CarsTest {
     @Test
@@ -21,11 +20,11 @@ public class CarsTest {
 
         Car car1Expected = new Car(List.of(FORWARD));
         Car car2Expected = new Car(List.of(FORWARD));
-        Car car3Expected = new Car(List.of(STOP));
+        Car car3Expected = new Car(List.of(FORWARD));
         Cars expected = new Cars(List.of(car1Expected, car2Expected, car3Expected));
 
         // when
-        cars.moveAll(numberCreator(car1, car2, car3));
+        cars.moveAll(() -> new ForwardStatus(4));
 
         // then
         assertThat(cars).isEqualTo(expected);
@@ -41,11 +40,11 @@ public class CarsTest {
 
         Car car1Expected = new Car(List.of(FORWARD, FORWARD, FORWARD, FORWARD));
         Car car2Expected = new Car(List.of(FORWARD, FORWARD, FORWARD, FORWARD));
-        Car car3Expected = new Car(List.of(STOP, STOP, STOP, STOP));
+        Car car3Expected = new Car(List.of(FORWARD, FORWARD, FORWARD, FORWARD));
         Cars expected = new Cars(List.of(car1Expected, car2Expected, car3Expected));
 
         // when
-        IntStream.range(0, 4).forEach((index) -> cars.moveAll(numberCreator(car1, car2, car3)));
+        IntStream.range(0, 4).forEach((index) -> cars.moveAll(() -> new ForwardStatus(4)));
 
         // then
         assertThat(cars).isEqualTo(expected);
@@ -61,10 +60,10 @@ public class CarsTest {
 
         Car car1Expected = new Car(List.of(FORWARD, FORWARD, FORWARD, FORWARD));
         Car car2Expected = new Car(List.of(FORWARD, FORWARD, FORWARD, FORWARD));
-        Car car3Expected = new Car(List.of(STOP, STOP, STOP, STOP));
+        Car car3Expected = new Car(List.of(FORWARD, FORWARD, FORWARD, FORWARD));
         List<Car> expected = List.of(car1Expected, car2Expected, car3Expected);
 
-        IntStream.range(0, 4).forEach((index) -> cars.moveAll(numberCreator(car1, car2, car3)));
+        IntStream.range(0, 4).forEach((index) -> cars.moveAll(() -> new ForwardStatus(4)));
 
         // when
         List<Car> actual = cars.currentCars();
@@ -73,17 +72,4 @@ public class CarsTest {
         assertThat(actual).containsAll(expected);
     }
 
-    private static NumberCreator numberCreator(Car... cars) {
-        int forwardNumber = 4;
-        int stopNumber = 0;
-        return car -> {
-            if (cars[0].equals(car)) {
-                return forwardNumber;
-            }
-            if (cars[1].equals(car)) {
-                return forwardNumber;
-            }
-            return stopNumber;
-        };
-    }
 }

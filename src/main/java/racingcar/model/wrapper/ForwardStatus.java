@@ -1,15 +1,19 @@
 package racingcar.model.wrapper;
 
-import racingcar.exception.ForwardNumberException;
+import racingcar.exception.ForwardStatusException;
+import racingcar.model.enums.Status;
 
 import java.util.Objects;
 
-public class ForwardNumber {
+import static racingcar.model.enums.Status.FORWARD;
+import static racingcar.model.enums.Status.STOP;
+
+public class ForwardStatus {
     private final int number;
 
-    public ForwardNumber(int number) {
+    public ForwardStatus(int number) {
         if (isInvalidNumber(number)) {
-            throw new ForwardNumberException("0~9 사이의 숫자 외에는 전진숫자로 허용되지 않습니다.");
+            throw new ForwardStatusException("0~9 사이의 숫자 외에는 전진숫자로 허용되지 않습니다.");
         }
         this.number = number;
     }
@@ -19,7 +23,14 @@ public class ForwardNumber {
                 number > 9;
     }
 
-    public boolean isForwardNumber() {
+    public Status status() {
+        if (isForwardNumber()) {
+            return FORWARD;
+        }
+        return STOP;
+    }
+
+    private boolean isForwardNumber() {
         return this.number >= 4 &&
                 this.number <= 9;
     }
@@ -28,7 +39,7 @@ public class ForwardNumber {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ForwardNumber that = (ForwardNumber) o;
+        ForwardStatus that = (ForwardStatus) o;
         return number == that.number;
     }
 

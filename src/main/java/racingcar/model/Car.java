@@ -1,12 +1,11 @@
 package racingcar.model;
 
 import racingcar.model.enums.Status;
-import racingcar.model.wrapper.ForwardNumber;
+import racingcar.util.NumberCreator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 public class Car {
@@ -20,8 +19,8 @@ public class Car {
         this.statuses = statuses;
     }
 
-    public void move(ForwardNumber forwardNumber) {
-        this.statuses.add(Status.extractByNumber(forwardNumber));
+    public void move(NumberCreator numberCreator) {
+        this.statuses.add(numberCreator.number().status());
     }
 
     @Override
