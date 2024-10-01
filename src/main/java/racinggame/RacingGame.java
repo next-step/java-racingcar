@@ -19,23 +19,26 @@ public class RacingGame {
         return round;
     }
 
-    public void start(int carCount, int tryCount) {
+    public List<List<Integer>> start(int carCount, int tryCount) {
         validateNegative(carCount, tryCount);
         initCar(carCount);
+        List<List<Integer>> results = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
             moveCars();
-            printCarPosition();
+
+            List<Integer> positions = new ArrayList<>();
+            for (Car car : cars) {
+                positions.add(car.getPosition());
+            }
+            results.add(positions);
             validateNextRound(tryCount);
         }
-    }
-
-    private void printCarPosition() {
-        ResultView.printCarPosition(cars);
+        return results;
     }
 
     private void moveCars() {
         for (Car car : cars) {
-            var number = random.nextInt(DEFAULT_BOUND);
+            int number = random.nextInt(DEFAULT_BOUND);
             car.move(number);
         }
     }
@@ -56,7 +59,6 @@ public class RacingGame {
     private void validateNextRound(int tryCount) {
         if (isNextRound(tryCount)) {
             round++;
-            ResultView.printNewLine();
         }
     }
 
