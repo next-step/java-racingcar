@@ -2,10 +2,10 @@ package racingcar.dto;
 
 public final class RacingWrapResultDTO {
     final int wrapNumber;
-    final RacingCarStatesDTO catStates;
+    final RacingCarStatesDTO carStates;
 
     public RacingWrapResultDTO(int wrapNumber, RacingCarStatesDTO catStates) {
         this.wrapNumber = wrapNumber;
-        this.catStates = catStates;
+        this.carStates = catStates;
     }
 }
