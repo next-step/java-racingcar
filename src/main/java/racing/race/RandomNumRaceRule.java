@@ -3,16 +3,14 @@ package racing.race;
 import racing.RaceRule;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumRaceRule implements RaceRule {
 
     private final static int RANDOM_NUMBER_BOUND = 10;
     private final static int MIN_NUM_OF_FORWARD = 4;
 
-    private final static Random RANDOM = new Random();
-
     public boolean isForward() {
-        RANDOM.setSeed(System.currentTimeMillis());
-        return RANDOM.nextInt(RANDOM_NUMBER_BOUND) >= MIN_NUM_OF_FORWARD;
+        return ThreadLocalRandom.current().nextInt(RANDOM_NUMBER_BOUND) >= MIN_NUM_OF_FORWARD;
     }
 }
