@@ -2,7 +2,6 @@ package race;
 
 public class Car {
 
-    private final static String EXPRESS_STRING = "-";
     private int forwardResult = 1;
     private ForwardCheck carForwardCheck;
 
@@ -20,7 +19,7 @@ public class Car {
         return carForwardCheck.isForward();
     }
 
-    public String getCarPosition() {
-        return EXPRESS_STRING.repeat(forwardResult);
+    public int getForwardResult() {
+        return forwardResult;
     }
 }
