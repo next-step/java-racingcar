@@ -8,9 +8,9 @@
 ## TODO
 
 ## DONE
--[x] 0~9까지 랜덤값을 구하는 기능 - NumberUtil
--[x] 랜덤값이 4이상일 경우 1, 4미만의 경우 0을 계산하는 기능 - RacingCalculator
--[x] 자동차 대수 만큼 랜덤값을 배열에 넣는 기능 - RacingCalculator
+-[x] 0~9까지 랜덤값을 구하는 기능 - NumberUtil, RacingCalculator
+-[x] 입력한 대수만큼 자동차를 생성하는 기능 - CarFactory
+-[x] n대의 자동차가 전진 또는 멈추는 기능 - Car
+-[x] 주어진 횟수 동안 자동차 레이싱 (위의 기능을 호출하는 기능) - RacingGame
 -[x] 사용자의 입력을 받는 기능 - InputView
--[x] 주어진 횟수 동안 n대의 자동차가 전진 또는 멈추는 기능 - RacingGame
 -[x] 자동차의 상태를 화면에 출력하는 ResultView (어느 시점에 출력할 것인지 제약 없음)
