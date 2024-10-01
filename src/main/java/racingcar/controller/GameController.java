@@ -1,15 +1,14 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
-import racingcar.utils.NumberGenerator;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameController {
+import static racingcar.utils.NumberGenerator.randomNumber;
 
-    public static final int RANDOM_THRESHOLD = 4;
+public class GameController {
 
     private List<Car> cars;
     private int numberOfCars;
@@ -40,14 +39,21 @@ public class GameController {
         for (Car car : cars) {
             moveCar(car);
         }
+        showPlayResult();
+    }
+
+    private void showPlayResult() {
+        for (Car car : cars) {
+            ResultView.showCarStatus(car.getPosition());
+        }
         ResultView.nextLine();
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     private void moveCar(Car car) {
-        int randomNumber = NumberGenerator.randomNumber();
-        if (randomNumber >= RANDOM_THRESHOLD) {
-            car.move();
-        }
-        ResultView.showCarStatus(car);
+        car.moveForward(randomNumber());
     }
 }
