@@ -9,7 +9,7 @@ public class CarRacing {
     public static final int BOUND = 10;
     public static final int MIN_MOVE_VALUE = 4;
 
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     public boolean shouldMove(int randomValue) {
         return randomValue >= MIN_MOVE_VALUE;
@@ -38,7 +38,7 @@ public class CarRacing {
     }
 
     private void addNowCarMove(Map<Integer, Integer> carsMap, int carNum) {
-        if(shouldMove(random.nextInt(BOUND))) {
+        if(shouldMove(RANDOM.nextInt(BOUND))) {
             carsMap.put(carNum, carsMap.get(carNum) + 1);
         }
     }
