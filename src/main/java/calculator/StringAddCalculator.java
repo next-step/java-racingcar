@@ -5,12 +5,16 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty()) {
+        if (isBlank(text)) {
             return 0;
         }
 
         String[] tokens = getTokens(text);
         return sum(tokens);
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isEmpty();
     }
 
     private static String[] getTokens(String text) {
