@@ -21,15 +21,15 @@ public class RacingCar {
         return carPositions;
     }
 
-    private void repeatMove(int carNums, int moveNums, Map<Integer, Integer> carPositions) {
-        for (int k = 1; k <= moveNums; k++) {
-            recordCarMove(carNums, carPositions);
+    private void repeatMove(int carNumbers, int moveNumbers, Map<Integer, Integer> carPositions) {
+        for (int move = 1; move <= moveNumbers; move++) {
+            recordCarMove(carNumbers, carPositions);
         }
     }
 
     // 차량 이동 기록
-    private void recordCarMove(int carNums, Map<Integer, Integer> carPositions) {
-        for (int i = 1; i <= carNums; i++) {
+    private void recordCarMove(int carNumbers, Map<Integer, Integer> carPositions) {
+        for (int i = 1; i <= carNumbers; i++) {
             addNowCarMove(carPositions, i);
             System.out.print(ResultView.printNowCarMoves(carPositions.get(i)));
             ResultView.lineChange();
