@@ -13,7 +13,7 @@ public class Cars {
     }
 
     public static Cars from(final String inputValue) {
-        List<String> carNames = Arrays.asList(inputValue.split(DELIMITER));
+        String[] carNames = inputValue.split(DELIMITER);
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
