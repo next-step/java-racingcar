@@ -3,9 +3,10 @@ package carracing;
 import java.util.List;
 
 public class ResultView {
-    private final StringBuilder output;
     private static final String CAR_MOVESTATUS_DASH = "-";
-    private static final String NEW_LINE = "\n";
+    private static final String NEW_LINE = System.lineSeparator();
+
+    private final StringBuilder output;
 
     public ResultView() {
         this.output = new StringBuilder("실행 결과").append(NEW_LINE);
