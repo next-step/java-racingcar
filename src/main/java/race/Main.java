@@ -1,13 +1,17 @@
 package race;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.inputCarCount();
+        String[] carNames = InputView.inputCarName();
         int tryCount = InputView.inputTryCount() - 1;
 
-        CarRace carRace = new CarRace(carCount, tryCount, new CarForwardCheck());
+        CarRace carRace = new CarRace(carNames, tryCount, new CarForwardCheck());
+
+        List<Car> cars = carRace.getCars();
 
         ResultView.output(carRace.getCars());
         while (carRace.checkTryCount()) {
@@ -15,5 +19,4 @@ public class Main {
             ResultView.output(carRace.getCars());
         }
     }
-
 }
