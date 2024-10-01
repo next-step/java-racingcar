@@ -18,5 +18,7 @@ public class Main {
             carRace.proceedRound();
             ResultView.output(carRace.getCars());
         }
+
+        ResultView.announceWinner(carRace.getRaceResult());
     }
 }

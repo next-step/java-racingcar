@@ -29,6 +29,25 @@ public class CarRace {
         return tryCount > 0;
     }
 
+    public List<String> getRaceResult() {
+        List<String> raceResult = new ArrayList<>();
+
+        List<Car> cars = getCars();
+        int size = cars.size();
+
+        int maxPosition = Integer.MIN_VALUE;
+
+        for (int i = 0; i < size; i++) {
+            maxPosition = compareMaxPosition(cars, i, maxPosition);
+        }
+
+        for (Car car : cars) {
+            collectWinners(car, maxPosition, raceResult);
+        }
+
+        return raceResult;
+    }
+
     private void initCar(String[] carNames, ForwardCheck forwardCheck) {
         int carCount = carNames.length;
         for(int i = 0; i < carCount; i++) {
@@ -40,5 +59,18 @@ public class CarRace {
         for (Car car : cars) {
             car.forward();
         }
+    }
+
+    private static void collectWinners(Car car, int maxPosition, List<String> raceResult) {
+        if (car.getForwardResult() == maxPosition) {
+            raceResult.add(car.getCarName());
+        }
+    }
+
+    private int compareMaxPosition(List<Car> cars, int index, int maxPosition) {
+        if (cars.get(index).getForwardResult() > maxPosition) {
+            maxPosition = cars.get(index).getForwardResult();
+        }
+        return maxPosition;
     }
 }
