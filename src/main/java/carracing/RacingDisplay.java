@@ -8,9 +8,9 @@ public class RacingDisplay {
         int carNums = InputView.inputCarView();
         int moveNums = InputView.inputMoveView();
 
-        ResultView.lineChange();
-        ResultView.resultPrintResultComment();
+        System.out.println();
+        System.out.println("실행 결과");
 
-        RACING_CAR.race(3, 5);
+        RACING_CAR.race(carNums, moveNums);
     }
 }
