@@ -6,23 +6,23 @@ import java.util.List;
 
 public class ResultView {
     private static final String EXECUTION = "\n실행 결과";
-    private static final String ROUND_SEPERATION = "\n";
+    private static final String ROUND_SEPARATION = "\n";
 
-    private static List<Car> cars;
+    private List<Car> cars;
 
     public ResultView(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static void printResultView() {
+    private void printResultView() {
         System.out.println(EXECUTION);
     }
 
-    public static void seperateRound() {
-        System.out.println(ROUND_SEPERATION);
+    private void separateRound() {
+        System.out.println(ROUND_SEPARATION);
     }
 
-    public static void printResult(int round)
+    public void printResult(int round)
     {
         printResultView();
         for(int i=0;i<round;i++)
@@ -31,7 +31,7 @@ public class ResultView {
                 car.move();
                 System.out.println(car.getLocation());
             }
-            seperateRound();
+            separateRound();
         }
     }
 

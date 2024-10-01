@@ -3,8 +3,8 @@ package race.vehicle;
 import race.Utils.RandomUtil;
 
 public class Car {
-    public static final int MOVE_CONDITION = 4;
-    public static final int BOUND = 10;
+    private static final int MOVE_CONDITION = 4;
+    private static final int BOUND = 10;
 
     private StringBuffer location;
     private RandomUtil randomUtil;
