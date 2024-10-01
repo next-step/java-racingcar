@@ -1,13 +1,14 @@
 package racingcar.model.wrapper;
 
-import racingcar.exception.PositiveNumberException;
+import racingcar.exception.CarNumberException;
+import racingcar.exception.MovementNumberException;
 
-public class PositiveNumber {
+public class MovementNumber {
     private final int number;
 
-    public PositiveNumber(int number) {
+    public MovementNumber(int number) {
         if (number < 1) {
-            throw new PositiveNumberException("음수는 입력될 수 없습니다.");
+            throw new MovementNumberException("이동 횟수는 1 이상이어야 합니다.");
         }
         this.number = number;
     }

@@ -4,27 +4,27 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.exception.PositiveNumberException;
+import racingcar.exception.CarNumberException;
 
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class PositiveNumberTest {
+public class CarNumberTest {
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, Integer.MAX_VALUE})
-    void 양수를_만든다(int number) {
+    @ValueSource(ints = {1, 2, 3, 4})
+    void 자동차_대수는_최소_1대_이상이다(int number) {
         assertThatNoException().isThrownBy(() -> {
-            new PositiveNumber(number);
+            CarNumber carNumber = new CarNumber(number);
         });
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, Integer.MIN_VALUE})
-    void 음수_입력시_에러(int number) {
+    @ValueSource(ints = {0, -1, Integer.MIN_VALUE})
+    void 자동차_대수_1대_미만이면_오류(int number) {
         assertThatThrownBy(() -> {
-            new PositiveNumber(number);
-        }).isInstanceOf(PositiveNumberException.class)
-                .hasMessage("음수는 입력될 수 없습니다.");
+            CarNumber carNumber = new CarNumber(number);
+        }).isInstanceOf(CarNumberException.class)
+                .hasMessage("자동차 대수는 1대 이상이어야 합니다.");
     }
 
     @ParameterizedTest
@@ -34,9 +34,8 @@ public class PositiveNumberTest {
             "4,4,false",
     })
     void 큰_값인지_여부를_리턴한다(int number, int compare, boolean expected) {
-        PositiveNumber positiveNumber = new PositiveNumber(number);
-        boolean actual = positiveNumber.isGreaterThan(compare);
+        CarNumber carNumber = new CarNumber(number);
+        boolean actual = carNumber.isGreaterThan(compare);
         Assertions.assertThat(actual).isEqualTo(expected);
     }
-
 }

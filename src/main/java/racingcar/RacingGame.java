@@ -2,8 +2,8 @@ package racingcar;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.wrapper.PositiveNumber;
-import racingcar.util.NumberCreator;
+import racingcar.model.wrapper.CarNumber;
+import racingcar.model.wrapper.MovementNumber;
 import racingcar.util.PrintUtil;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
@@ -17,12 +17,12 @@ public class RacingGame {
 
     public static void play() {
         InputView inputView = new InputView(new Scanner(System.in));
-        PositiveNumber carNumber = new PositiveNumber(inputView.carNumber());
-        PositiveNumber movement = new PositiveNumber(inputView.movement());
+        CarNumber carNumber = new CarNumber(inputView.carNumber());
+        MovementNumber movementNumber = new MovementNumber(inputView.movement());
 
         Cars cars = createCars(carNumber);
         StringBuilder result = new StringBuilder();
-        for (int index = 0; movement.isGreaterThan(index); index++) {
+        for (int index = 0; movementNumber.isGreaterThan(index); index++) {
             cars.moveAll(new RandomNumberGenerator());
             result.append(PrintUtil.result(cars));
         }
@@ -32,7 +32,7 @@ public class RacingGame {
 
     }
 
-    private static Cars createCars(PositiveNumber carSize) {
+    private static Cars createCars(CarNumber carSize) {
         List<Car> carList = new ArrayList<>();
         for (int index = 0; carSize.isGreaterThan(index); index++) {
             carList.add(new Car());
