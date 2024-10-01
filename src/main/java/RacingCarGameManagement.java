@@ -78,9 +78,9 @@ public class RacingCarGameManagement {
     public static void main(String[] args) {
         String[] split = InputView.getNames();
         int numberOfGames = InputView.getNumberOfGames();
-        RandomUtil randomUtil = new RandomUtil();
+        RandomNumberGeneratorImpl randomNumberGeneratorImpl = new RandomNumberGeneratorImpl();
 
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(split), numberOfGames, randomUtil);
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(split), numberOfGames, randomNumberGeneratorImpl);
         carGameManagement.start();
     }
 }
