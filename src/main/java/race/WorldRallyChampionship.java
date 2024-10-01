@@ -4,7 +4,7 @@ import java.util.List;
 
 public class WorldRallyChampionship {
     private InputView inputView = new InputView();
-    private RacingCarGame racingCarGame = new RacingCarGame();
+    private RacingCarGame racingCarGame;
 
     public static void main(String[] args) {
         WorldRallyChampionship wrc = new WorldRallyChampionship();
@@ -24,8 +24,7 @@ public class WorldRallyChampionship {
 
     private void readyCarRacing() {
         List<String> carNames = this.inputView.receiveCarNames();
-        racingCarGame.setRacingCars(carNames);
         int raceCount = inputView.receiveRaceCount();
-        racingCarGame.setRaceCount(raceCount);
+        racingCarGame = new RacingCarGame(carNames, raceCount);
     }
 }

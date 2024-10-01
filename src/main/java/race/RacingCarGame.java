@@ -1,45 +1,41 @@
 package race;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
-    private final String PRINT_EXECUTION_RESULT = "실행 결과";
     private final ResultView resultView = new ResultView();
-    private List<RacingCar> racingCars;
-    private int raceCount = 0;
+    private final List<RacingCar> racingCars;
+    private final int raceCount;
 
-    public void setRacingCars(List<String> carNames) {
-        this.racingCars = new ArrayList<>(carNames.size());
-        for (int i = 0; i < carNames.size(); i++) {
-            this.racingCars.add(new RacingCar(carNames.get(i)));
-        }
+    public RacingCarGame(List<String> carNames, int raceCount) {
+        this.racingCars = carNames.stream().map(RacingCar::new).collect(Collectors.toUnmodifiableList());
+        this.raceCount = raceCount;
     }
 
-    public void race(List<RacingCar> racingCars) {
+    public void startRace() {
+        System.out.println("실행 결과");
+        IntStream.range(0, raceCount).forEach(i -> race(this.racingCars));
+    }
+
+    private void race(List<RacingCar> racingCars) {
         for (RacingCar car : racingCars) {
             car.moveForward();
         }
         resultView.printRaceCondition(racingCars);
     }
 
-    public void setRaceCount(int raceCount) {
-        this.raceCount = raceCount;
-    }
-
-    public void startRace() {
-        System.out.println(PRINT_EXECUTION_RESULT);
-        IntStream.range(0, raceCount).forEach(i -> race(this.racingCars));
-    }
-
     public void notifyChampionWinner() {
         int largestMovement = findLargestMovement();
-        List<RacingCar> winners = racingCars.stream()
-                .filter(car -> car.getPosition() == largestMovement).collect(Collectors.toList());
-
+        List<RacingCar> winners = findWinners(largestMovement);
         resultView.printChampionWinner(winners);
+    }
+
+    private List<RacingCar> findWinners(int largestMovement) {
+        return racingCars.stream()
+                .filter(car -> car.checkSamePosition(largestMovement))
+                .collect(Collectors.toList());
     }
 
     private int findLargestMovement() {
