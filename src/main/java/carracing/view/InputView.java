@@ -1,4 +1,4 @@
-package racingcar.view;
+package carracing.view;
 
 import java.util.Arrays;
 import java.util.List;

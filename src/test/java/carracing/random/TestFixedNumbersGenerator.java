@@ -1,4 +1,6 @@
-package racingcar.random;
+package carracing.random;
+
+import carracing.domain.random.RandomNumberGenerator;
 
 import java.util.Iterator;
 import java.util.List;

@@ -1,6 +1,6 @@
-package racingcar.car;
+package carracing.domain;
 
-import racingcar.exception.RacingCarIllegalArgumentException;
+import carracing.exception.RacingCarIllegalArgumentException;
 import util.StringUtil;
 
 public class Car {

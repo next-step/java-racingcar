@@ -1,7 +1,7 @@
-package racingcar;
+package carracing;
 
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import carracing.view.InputView;
+import carracing.view.ResultView;
 
 public class GameApplication {
     public static void main(String[] args) {

@@ -1,12 +1,12 @@
-package racingcar.car;
+package carracing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.random.TestFixedNumberGenerator;
-import racingcar.random.TestFixedNumbersGenerator;
+import carracing.random.TestFixedNumberGenerator;
+import carracing.random.TestFixedNumbersGenerator;
 
 import java.util.List;
 

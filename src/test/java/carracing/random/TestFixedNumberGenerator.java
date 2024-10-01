@@ -1,4 +1,6 @@
-package racingcar.random;
+package carracing.random;
+
+import carracing.domain.random.RandomNumberGenerator;
 
 public class TestFixedNumberGenerator implements RandomNumberGenerator {
     private final int fixedNumber;

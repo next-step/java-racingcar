@@ -1,10 +1,10 @@
-package racingcar;
+package carracing;
 
-import racingcar.car.Race;
-import racingcar.random.DefaultRandomNumberGenerator;
-import racingcar.random.RandomNumberGenerator;
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import carracing.domain.Race;
+import carracing.domain.random.DefaultRandomNumberGenerator;
+import carracing.domain.random.RandomNumberGenerator;
+import carracing.view.InputView;
+import carracing.view.ResultView;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package racingcar.exception;
+package carracing.exception;
 
 
 public class RacingCarIllegalArgumentException extends RuntimeException {
