@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.exception.StringAddException;
 import org.junit.jupiter.api.Test;
 
 import static calculator.StringAddCalculator.splitAndSum;
@@ -47,12 +48,12 @@ class StringAddCalculatorTest {
     @Test
     void splitAndSum_negative() {
         assertThatThrownBy(() -> splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(StringAddException.class);
     }
 
     @Test
     void splitAndSum_숫자가아닌문자() {
         assertThatThrownBy(() -> splitAndSum("1,2,C"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(StringAddException.class);
     }
 }

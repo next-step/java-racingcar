@@ -7,12 +7,13 @@ import java.util.regex.Pattern;
 
 import static java.lang.Character.*;
 
-
 public class StringAddCalculator {
 
-    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
+    private static final int DEFAULT_VALUE = 0;
+
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
 
     private StringAddCalculator() {
 
@@ -21,7 +22,7 @@ public class StringAddCalculator {
     public static int splitAndSum(String expression) {
 
         if (isBlank(expression)) {
-            return 0;
+            return DEFAULT_VALUE;
         }
 
         return addNumber(splitNumbers(expression));
