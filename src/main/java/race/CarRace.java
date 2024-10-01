@@ -1,6 +1,8 @@
 package race;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CarRace {
@@ -8,9 +10,9 @@ public class CarRace {
     private List<Car> cars = new ArrayList<>();
     private int tryCount;
 
-    public CarRace(int carCount, int tryCount, ForwardCheck forwardCheck) {
+    public CarRace(String[] carNames, int tryCount, ForwardCheck forwardCheck) {
         this.tryCount = tryCount;
-        initCar(carCount, forwardCheck);
+        initCar(carNames, forwardCheck);
     }
 
     public List<Car> proceedRound() {
@@ -27,9 +29,10 @@ public class CarRace {
         return tryCount > 0;
     }
 
-    private void initCar(int carCount, ForwardCheck forwardCheck) {
+    private void initCar(String[] carNames, ForwardCheck forwardCheck) {
+        int carCount = carNames.length;
         for(int i = 0; i < carCount; i++) {
-            this.cars.add(new Car(forwardCheck));
+            this.cars.add(new Car(carNames[i], forwardCheck));
         }
     }
 
