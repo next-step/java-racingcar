@@ -3,15 +3,20 @@ package racinggame.racingcar;
 public class CarPosition {
     private int value;
 
-    CarPosition() {
+    public CarPosition() {
         this.value = 0;
     }
 
-    boolean isAtStart() {
+    public boolean isAtStart() {
         return value == 0;
     }
 
-    void moveForward() {
+    public void moveForward() {
         value++;
     }
+
+    int getCurrentValue() {
+        return value;
+    }
+
 }

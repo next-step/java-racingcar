@@ -13,10 +13,13 @@ public class RacingCar {
         return position.isAtStart();
     }
 
-    void move() {
+    public void move() {
         if (moveStrategy.shouldMove()) {
             position.moveForward();
         }
     }
 
+    int getCurrentPosition() {
+        return position.getCurrentValue();
+    }
 }
