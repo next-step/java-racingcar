@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarGameManagementTest {
@@ -17,7 +18,7 @@ public class RacingCarGameManagementTest {
         String[] testNames = new String[]{"pobi", "crong", "honux"};
 
         //when
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(testNames, numberOfGames, generator);
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(testNames), numberOfGames, generator);
 
         //then
         Assertions.assertThat(carGameManagement.getGames()).isEqualTo(numberOfGames);
@@ -53,7 +54,7 @@ public class RacingCarGameManagementTest {
         int numberOfGames = 6;
         MockRandomNumberGenerator generator = new MockRandomNumberGenerator(5);
         String[] testNames = new String[]{"pobi", "crong", "honux"};
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(testNames, numberOfGames, generator);
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(testNames), numberOfGames, generator);
 
 
         //when
@@ -82,7 +83,7 @@ public class RacingCarGameManagementTest {
         list.add(new RacingCar(1, testNames[0]));
         list.add(new RacingCar(3, testNames[1]));
         list.add(new RacingCar(5, testNames[2]));
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(testNames, numberOfGames, new MockRandomNumberGenerator(5));
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(testNames), numberOfGames, new MockRandomNumberGenerator(5));
 
         //when
         List<String> winner = carGameManagement.findWinner(list);

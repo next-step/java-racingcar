@@ -3,6 +3,7 @@ import ui.InputView;
 import ui.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,11 +13,11 @@ public class RacingCarGameManagement {
     private RandomNumberGenerator randomNumberGenerator;
 
     public RacingCarGameManagement(
-            String[] names,
+            List<String> names,
             int games,
             RandomNumberGenerator randomNumberGenerator
     ) {
-        this.cars = new ArrayList<>(names.length);
+        this.cars = new ArrayList<>(names.size());
         this.games = games;
         this.randomNumberGenerator = randomNumberGenerator;
         for (String name : names) {
@@ -79,7 +80,7 @@ public class RacingCarGameManagement {
         int numberOfGames = InputView.getNumberOfGames();
         RandomUtil randomUtil = new RandomUtil();
 
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(split, numberOfGames, randomUtil);
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(split), numberOfGames, randomUtil);
         carGameManagement.start();
     }
 }
