@@ -1,20 +1,23 @@
 package racingcar;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceGameTest {
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4})
-    void 사용자_입력값만큼의_경주에_참가할_자동차를_생성할_수_있다(final int competitorCount) {
+
+    @DisplayName("원하는 값 만큼 경주에 참가할 자동차를 생성할 수 있다.")
+    @Test
+    void createCompetitorTest() {
         //given
-        final int forwardAttempts = 2;
-        RaceGame raceGame = new RaceGame(competitorCount, forwardAttempts);
+        List<Car> cars = List.of(new Car(), new Car());
+        RaceGame raceGame = new RaceGame(2, cars);
         //then
         assertThat(raceGame).isNotNull();
-        assertThat(raceGame.getCars().size()).isEqualTo(competitorCount);
+        assertThat(raceGame.getCars()).hasSize(2);
     }
 }
