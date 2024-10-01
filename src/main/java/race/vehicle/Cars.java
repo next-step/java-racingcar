@@ -5,27 +5,27 @@ import race.Utils.RandomGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vehicles {
+public class Cars {
     private static final String INITIAL_LOCATION = "-";
-    private final List<Car> list = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     RandomGenerator randomGenerator = RandomGenerator.getRandomGenerator();
 
-    public Vehicles(int num) {
+    public Cars(int num) {
         if(num < 2){
             throw new IllegalArgumentException("게임을 진행할 수 없음");
         }
-        initList(num);
+        initCars(num);
     }
 
-    Vehicles initList(int num) {
+    Cars initCars(int num) {
         for (int i = 0; i < num; i++) {
-            list.add(new Car.Builder().initlocation(INITIAL_LOCATION).initRandomUtil(randomGenerator).build());
+            cars.add(new Car.Builder().initlocation(INITIAL_LOCATION).initRandomUtil(randomGenerator).build());
         }
         return this;
     }
 
-    public List<Car> getList() {
-        return list;
+    public List<Car> getCars() {
+        return cars;
     }
 }
