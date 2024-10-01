@@ -9,5 +9,6 @@ public class ResultView {
         for (String car : cars) {
             System.out.println(car);
         }
+        System.out.println();
     }
 }
