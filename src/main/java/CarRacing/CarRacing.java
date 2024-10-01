@@ -1,4 +1,4 @@
-package CarRacing;
+package carracing;
 
 import java.util.HashMap;
 import java.util.Map;
