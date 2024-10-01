@@ -17,24 +17,21 @@ class CarTest {
         assertThat(car.getPosition()).isZero();
     }
 
-    @Test
-    @DisplayName("자동차가 현재 위치를 반환한다.")
-    void getCurrentPositionTest() {
-        var moveCount = 3;
-        var correctNumber = 5;
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("4 미만의 수가 전달되었을 때 자동차가 한칸 이동한다.")
+    void carDoesNotMoveWhenRandomValueIsLessThanFour(int incorrectMoveNumber) {
         var car = initCar();
-        for (int i = 0; i < moveCount; i++) {
-            car.move(correctNumber);
-        }
-        assertThat(car.getPosition()).isEqualTo(moveCount);
+        car.move(incorrectMoveNumber);
+        assertThat(car.getPosition()).isZero();
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6})
     @DisplayName("4 이상의 수가 전달되었을 때 자동차가 한칸 이동한다.")
-    void carMovesForwardWhenRandomValueIsFourOrHigher(int number) {
+    void carMovesForwardWhenRandomValueIsFourOrHigher(int correctMoveNumber) {
         var car = initCar();
-        car.move(number);
+        car.move(correctMoveNumber);
         assertThat(car.getPosition()).isOne();
     }
 
