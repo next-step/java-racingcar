@@ -46,6 +46,17 @@ public class CarTest {
     }
 
     @Test
+    void 자동차의_한번_이동_횟수_동안_전진_멈춤_상태를_저장한다() {
+        Car car = new Car();
+        car.move(new ForwardNumber(4));
+
+        List<Status> statuses = List.of(Status.FORWARD);
+        Car expected = new Car(statuses);
+
+        assertThat(car).isEqualTo(expected);
+    }
+
+    @Test
     void 자동차의_주어진_이동_횟수_동안_전진_멈춤_상태를_저장한다() {
         Car car = new Car();
         car.move(new ForwardNumber(4));
