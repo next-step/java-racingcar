@@ -1,6 +1,5 @@
 package racing.race;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -31,5 +30,19 @@ public class RaceRecordTest {
         RaceCar car = new RaceCar(CAR_NAME);
         forwardResults.forEach(car::race);
         return car;
+    }
+
+    @Test
+    void 레이스_결과_합계() {
+        int totalPoint = forwardResults.stream()
+                .mapToInt(isForward -> isForward ? FORWARD.getPoint() : STOP.getPoint())
+                .sum();
+        RaceCar car = getRaceCar();
+        RaceRecord record = car.raceRecord();
+
+        int result = record.totalPoint();
+
+        assertThat(result).isEqualTo(totalPoint);
+        assertThat(record.name()).isEqualTo(CAR_NAME);
     }
 }
