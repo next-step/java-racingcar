@@ -44,7 +44,7 @@ public class RacingCar {
     }
 
     // 차량 초기화
-    private static Map<Integer, Integer> initCarsMap(int carNums) {
+    private Map<Integer, Integer> initCarsMap(int carNums) {
         Map<Integer, Integer> carsMap = new HashMap<>();
 
         for (int i = 1; i <= carNums; i++) {
