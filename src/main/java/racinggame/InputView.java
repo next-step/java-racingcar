@@ -1,4 +1,4 @@
-package racinggame.racingcar;
+package racinggame;
 
 public interface InputView {
     int readNumberOfCars();
