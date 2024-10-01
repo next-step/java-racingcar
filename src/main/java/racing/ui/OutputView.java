@@ -1,8 +1,9 @@
 package racing.ui;
 
-import java.util.List;
-import racing.domain.RoundResult;
 import racing.model.CarInfo;
+import racing.model.RoundResult;
+import racing.model.collection.CarInfoList;
+import racing.model.collection.GameResult;
 
 public class OutputView {
 
@@ -12,17 +13,18 @@ public class OutputView {
         throw new UnsupportedOperationException("유틸형 클래스는 생성할 수 없습니다");
     }
 
-    public static void printGameResults(List<RoundResult> results) {
+    public static void printGameResults(GameResult gameResult) {
         printBlankLine();
         printStartMessage();
-        for (RoundResult result : results) {
+        for (RoundResult result : gameResult.getRoundResults()) {
             printResult(result);
             printBlankLine();
         }
     }
 
     private static void printResult(RoundResult result) {
-        for (CarInfo info : result.getCarInfoList()) {
+        CarInfoList carInfoList = result.getCarInfoList();
+        for (CarInfo info : carInfoList.getCarInfos()) {
             System.out.println(convertCarInfoToGage(info));
         }
     }

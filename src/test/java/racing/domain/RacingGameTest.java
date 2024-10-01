@@ -8,44 +8,48 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.CarInfo;
+import racing.model.RoundResult;
+import racing.model.collection.CarInfoList;
+import racing.model.collection.Cars;
+import racing.model.collection.GameResult;
 import racing.util.FixedNumberGenerator;
 import racing.util.RandomNumberGenerator;
 
 class RacingGameTest {
 
-    @DisplayName("생성자를 통해 자동차 리스트와 전진 수를 잘 생성하는지")
+    @DisplayName("생성자를 통해 자동차 리스트와 라운드 수를 잘 생성하는지")
     @Test
     void setUpTest() {
-        List<Car> cars = Arrays.asList(
-                Car.create("테스터", new RandomNumberGenerator()),
-                Car.create("테스터", new RandomNumberGenerator()),
-                Car.create("테스터", new RandomNumberGenerator()),
-                Car.create("테스터", new RandomNumberGenerator()),
-                Car.create("테스터", new RandomNumberGenerator())
+        Cars cars = Cars.create(
+                Arrays.asList("테스터1", "테스터2", "테스터3", "테스터4", "테스터5"),
+                new RandomNumberGenerator()
         );
 
         RacingGame newGame = RacingGame.setUp(1, cars);
         assertThat(newGame.getRoundCount()).isEqualTo(1);
-        assertThat(newGame.getCars()).hasSize(5);
+        assertThat(newGame.getCars()).isEqualTo(cars);
     }
 
-    @DisplayName("게임이 시작되면 라운드 수 만큼의 결과 객체를 잘 반환하는지")
+    @DisplayName("게임이 시작되면 라운드 수만큼의 결과 객체를 잘 반환하는지")
     @Test
     void startTest() {
-        List<Car> cars = Arrays.asList(
-                Car.create("테스터", new FixedNumberGenerator(5)),
-                Car.create("테스터", new FixedNumberGenerator(5)),
-                Car.create("테스터", new FixedNumberGenerator(5)),
-                Car.create("테스터", new FixedNumberGenerator(3)),
-                Car.create("테스터", new FixedNumberGenerator(3))
+        Cars cars = Cars.create(
+                Arrays.asList("테스터1", "테스터2", "테스터3", "테스터4", "테스터5"),
+                new FixedNumberGenerator(5)
         );
 
         RacingGame newGame = RacingGame.setUp(1, cars);
-        List<RoundResult> results = newGame.start();
+        GameResult gameResult = newGame.start();
+
+        List<RoundResult> results = gameResult.getRoundResults();
         assertThat(results).hasSize(1);
-        List<Integer> expectedPositions = Arrays.asList(1, 1, 1, 0, 0);
+
+        List<Integer> expectedPositions = Arrays.asList(1, 1, 1, 1, 1);
+
         RoundResult result = results.get(0);
-        assertThat(result.getCarInfoList()
+        CarInfoList carInfoList = result.getCarInfoList();
+
+        assertThat(carInfoList.getCarInfos()
                 .stream()
                 .map(CarInfo::getPosition)
                 .collect(Collectors.toList())
