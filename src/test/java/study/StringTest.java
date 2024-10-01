@@ -37,8 +37,8 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("인덱스가 범위를 벗어날 경우 예외 발생 확인")
-    void StringIndexOutOfBoundsExceptionTest() {
+    @DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어날 경우 StringIndexOutOfBoundsException 예외 발생 확인")
+    void checkIndexOutOfBounds() {
         String str = "abc";
 
         assertThatThrownBy(() -> {
