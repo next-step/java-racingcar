@@ -16,7 +16,7 @@ public class Cars {
         String[] carNames = inputValue.split(DELIMITER);
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(new CarName(carName)));
         }
         return new Cars(cars);
     }

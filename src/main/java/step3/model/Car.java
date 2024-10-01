@@ -8,10 +8,10 @@ public class Car {
     private static final Random RANDOM = new Random();
 
     private int moveCount;
-    private final String name;
+    private final CarName carName;
 
-    public Car(final String name) {
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
     }
 
     public int getMoveCount() {
@@ -19,7 +19,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return carName.getCarName();
     }
 
     public void moveOrStop() {
