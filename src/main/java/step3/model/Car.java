@@ -18,6 +18,10 @@ public class Car {
         return moveCount;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void moveOrStop() {
         if (isMove()) {
             moveCount++;
