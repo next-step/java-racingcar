@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class StringSumCalculator {
     private static final String DEFAULT_DELIMITER_REGEX = ",|;";
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX);
     private static final String ONLY_POSITIVE_NUMBER_REGEX = "^[0-9]*$";
 
     public static int splitAndSum(String value) {
@@ -28,7 +29,7 @@ public class StringSumCalculator {
     }
 
     private static String[] splitNumbersWithDelimiter(String numbers) {
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(numbers);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(numbers);
         if (matcher.matches()) {
             String delimiter = matcher.group(1);
             return matcher.group(2).split(delimiter);
