@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarCompetitionTest {
@@ -17,24 +14,14 @@ class RacingCarCompetitionTest {
     static RacingCarInfo racingCarInfo;
     static int totalCarNumber = 2;
     static int totalMovingCount = 2;
-    static ArrayList<ArrayList<Integer>> customMovingData;
+
 
     @BeforeAll
     static void init() {
         racingCarCompetition = new RacingCarCompetition();
-        racingCarInfo = new RacingCarInfo(List.of(totalCarNumber, totalMovingCount));
-        customMovingData = new ArrayList<>();
-        ArrayList<Integer> innerData = new ArrayList<>();
-        innerData.add(1);
-        innerData.add(4);
-        customMovingData.add(innerData);
-
-        innerData = new ArrayList<>();
-        innerData.add(4);
-        innerData.add(4);
-        customMovingData.add(innerData);
-
-
+        racingCarInfo = new RacingCarInfo(2);
+        racingCarInfo.recordGoInRacingCarData(0, "-");
+        racingCarInfo.recordGoInRacingCarData(1, "--");
     }
 
     @DisplayName(value = "랜덤값 범위 확인 테스트")
@@ -45,17 +32,21 @@ class RacingCarCompetitionTest {
 
     @DisplayName(value = "이동, 정지 테스트")
     @ParameterizedTest()
-    @CsvSource({"0,false", "5,true", "9,true"})
-    void movingStopDecisionTest(int randomNumber, boolean isGoStop) {
+    @CsvSource({"0,''", "5,-", "9,-"})
+    void movingStopDecisionTest(int randomNumber, String isGoStop) {
         assertThat(racingCarCompetition.moveStopDecision(randomNumber)).isEqualTo(isGoStop);
     }
 
     @Test
-    @DisplayName(value = "차 이동상태 저장 여부 테스트, 차2대,이동 2번")
+    @DisplayName(value = "차 이동상태 저장 기능 테스트")
     void recordRacingCarDataTest() {
-        racingCarCompetition.recordRacingCarData(customMovingData, racingCarInfo);
-        assertThat(racingCarInfo.findRacingCarData(1)).isEqualTo("--");
+        racingCarInfo.recordGoInRacingCarData(0, "-");
+        assertThat(racingCarInfo.findRacingCarData(0)).isEqualTo("--");
     }
 
-
+    @Test
+    @DisplayName(value = "차 이동상태 저장 확인 테스트, 차2대,이동 2번")
+    void findRacingCarDataTest() {
+        assertThat(racingCarInfo.findRacingCarData(1)).isEqualTo("--");
+    }
 }

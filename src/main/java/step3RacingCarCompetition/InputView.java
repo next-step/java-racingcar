@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static List insertRacingCarData() {
+    public static List<Integer> insertRacingCarData() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
