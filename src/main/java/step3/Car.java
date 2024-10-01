@@ -1,15 +1,14 @@
 package step3;
 
 public class Car {
-    private static final int FORWARD = 4;
-    private Position position;
+    private final Position position;
 
     public Car() {
         this.position = new Position();
     }
 
     public void move(CarEngine carEngine) {
-        if (carEngine.getPower() >= FORWARD) {
+        if (carEngine.canGetPower()) {
             position.add();
         }
     }
