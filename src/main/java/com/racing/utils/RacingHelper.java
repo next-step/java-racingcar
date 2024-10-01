@@ -7,6 +7,7 @@ import java.util.Random;
  */
 public class RacingHelper {
     private static final int RANDOM_NUMBER_RANGE = 10;
+    private static final int FORWARD_MINIMUM_NUMBER = 4;
 
     /**
      * 0~9의 랜덤 값 반환
@@ -15,5 +16,13 @@ public class RacingHelper {
         Random rand = new Random();
 
         return rand.nextInt(RANDOM_NUMBER_RANGE);
+    }
+
+
+    /**
+     * 전진 여부 반환
+     */
+    public static boolean isForward(int input) {
+        return input >= FORWARD_MINIMUM_NUMBER;
     }
 }
