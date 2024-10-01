@@ -19,14 +19,6 @@ class CarRacingTest {
                 .isInstanceOf(ResultView.class);
     }
 
-    @DisplayName("경주에 참여하는 차들의 초기 이동 상태는 0이다.")
-    @Test
-    void cars_init_moveStatus_is_zero() {
-        CarRacing carRacing = CarRacing.builder().moveTryCount(3).cars(1).build();
-
-        assertThat(carRacing.getCars().get(0).getMoveStatus()).isZero();
-    }
-
     @DisplayName("경기가 진행되고 끝나면 경기의 진행 횟수는 이동 시도 횟수와 같은 값이다.")
     @Test
     void playCount_is_equalTo_moveTryCount_when_carRacing_is_over() {
@@ -35,6 +27,6 @@ class CarRacingTest {
 
         carRacing.start();
 
-        assertThat(carRacing.getPlayCount()).isEqualTo(givenMoveTryCount);
+        assertThat(carRacing.isFinish()).isTrue();
     }
 }

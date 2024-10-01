@@ -53,6 +53,10 @@ public class CarRacing {
         }
     }
 
+    public boolean isFinish() {
+        return this.playCount == this.moveTryCount;
+    }
+
 
     public static class CarRacingBuilder {
         protected List<Car> cars;
