@@ -7,11 +7,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CarInfoTest {
+public class RaceLineupTest {
 
     static String inputNames = "pobi,crong,honux";
 
-    static List<String> names = CarInfo.of(inputNames).names();
+    static List<String> names = RaceLineup.of(inputNames).names();
 
     @Test
     void 자동차_이름_리스트_요소() {

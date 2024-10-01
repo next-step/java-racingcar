@@ -4,19 +4,19 @@ import racing.exception.InvalidInputValueException;
 
 import java.util.List;
 
-public class CarInfo {
+public class RaceLineup {
 
     private final static String INPUT_DELIMITER = ",";
 
     private final List<String> names;
 
-    private CarInfo(String input) {
+    private RaceLineup(String input) {
         validateValue(input);
         this.names = List.of(input.split(INPUT_DELIMITER));
     }
 
-    public static CarInfo of(String input) {
-        return new CarInfo(input);
+    public static RaceLineup of(String input) {
+        return new RaceLineup(input);
     }
 
     private void validateValue(String input) {

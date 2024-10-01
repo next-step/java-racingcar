@@ -2,19 +2,19 @@ package racing.input;
 
 public class RaceInput {
 
-    private final CarInfo carNumber;
+    private final RaceLineup raceLineup;
     private final RaceAttempt attemptNumber;
 
-    public RaceInput(String carInfo, int numOfAttempt) {
-        this.carNumber = CarInfo.of(carInfo);
+    public RaceInput(String raceLineupInput, int numOfAttempt) {
+        this.raceLineup = RaceLineup.of(raceLineupInput);
         this.attemptNumber = RaceAttempt.of(numOfAttempt);
     }
 
-    public CarInfo carInfo() {
-        return carNumber;
+    public RaceLineup raceLineup() {
+        return raceLineup;
     }
 
-    public RaceAttempt getAttemptNumber() {
+    public RaceAttempt attemptNumber() {
         return attemptNumber;
     }
 }
