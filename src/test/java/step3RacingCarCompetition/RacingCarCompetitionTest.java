@@ -12,9 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarCompetitionTest {
     static RacingCarCompetition racingCarCompetition;
     static RacingCarInfo racingCarInfo;
-    static int totalCarNumber = 2;
-    static int totalMovingCount = 2;
-
 
     @BeforeAll
     static void init() {
