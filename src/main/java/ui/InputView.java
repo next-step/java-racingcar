@@ -1,3 +1,5 @@
+package ui;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -19,5 +21,20 @@ public class InputView {
             throw new IllegalArgumentException("0이상 입력 해주세요");
         }
         return num;
+    }
+
+    public static String[] getNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] names = SC.nextLine().split(",");
+        for (String name : names) {
+            checkCarNameLength(name);
+        }
+        return names;
+    }
+
+    public static void checkCarNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 초괴되면 안됩니다. " + name);
+        }
     }
 }

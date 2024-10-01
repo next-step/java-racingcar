@@ -1,47 +1,33 @@
+import domain.RacingCar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class RacingCarGameManagementTest {
     @Test
-    @DisplayName("자동차 객체 생성 테스트")
-    void createRacingCarTest() {
-        //given
-        final int testMove = 3;
-        RacingCar car = new RacingCar();
-
-        //when
-        car.setStatus(testMove);
-
-        //then
-        Assertions.assertThat(car.getStatus()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("자동차 대회 게임 생섣 테스트")
-    void createRacingCarGameManagementTest() {
+    @DisplayName("자동차 대회 게임 생섣 테스트 - 이름 추가")
+    void createRacingCarGameManagementTest_WithNames() {
         //given
         int numberOfCars = 3;
         int numberOfGames = 6;
+        MockRandomNumberGenerator generator = new MockRandomNumberGenerator(3);
+        String[] testNames = new String[]{"pobi", "crong", "honux"};
 
         //when
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames);
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(testNames), numberOfGames, generator);
 
         //then
         Assertions.assertThat(carGameManagement.getGames()).isEqualTo(numberOfGames);
         Assertions.assertThat(carGameManagement.getCars()).hasSize(numberOfCars);
-    }
-
-    @Test
-    @DisplayName("랜던 이동 횟수 조회 테스트")
-    void createRandomMoveCarsTest() {
-        //given
-
-        //when
-        int randomInt = RandomUtil.getInt();
-
-        //then
-        Assertions.assertThat(randomInt).isBetween(0, 9);
+        List<RacingCar> cars = carGameManagement.getCars();
+        for (int i = 0; i < 3; i++) {
+            Assertions.assertThat(cars.get(i).getStatus()).isEqualTo(0);
+            Assertions.assertThat(cars.get(i).getName()).isEqualTo(testNames[i]);
+        }
     }
 
     @Test
@@ -49,7 +35,7 @@ public class RacingCarGameManagementTest {
     void carMoveCarsTest() {
         //given
         int[] moves = new int[]{1, 4, 9};
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar("pobi");
 
         //when
         for (int move : moves) {
@@ -58,26 +44,52 @@ public class RacingCarGameManagementTest {
 
         //then
         Assertions.assertThat(car.getStatus()).isEqualTo(2);
+        Assertions.assertThat(car.getName()).isEqualTo("pobi");
     }
 
     @Test
-    @DisplayName("게신 시작 테스트")
+    @DisplayName("게임 시작 테스트")
     void startGameTest() {
         //given
-        int numberOfCars = 3;
         int numberOfGames = 6;
-        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(numberOfCars, numberOfGames);
+        MockRandomNumberGenerator generator = new MockRandomNumberGenerator(5);
+        String[] testNames = new String[]{"pobi", "crong", "honux"};
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(testNames), numberOfGames, generator);
+
 
         //when
         carGameManagement.start();
 
         //then
         Assertions.assertThat(carGameManagement.getGames()).isEqualTo(0);
-        Assertions.assertThat(carGameManagement.getCars()).hasSize(numberOfCars);
-        for (RacingCar car : carGameManagement.getCars()) {
-            int move = car.getStatus();
+        Assertions.assertThat(carGameManagement.getCars()).hasSize(testNames.length);
+        List<RacingCar> cars = carGameManagement.getCars();
+        for (int i = 0; i < 3; i++) {
+            int move = cars.get(i).getStatus();
+            String name = cars.get(i).getName();
             System.out.println(move);
-            Assertions.assertThat(move).isBetween(0, 9);
+            Assertions.assertThat(move).isEqualTo(6);
+            Assertions.assertThat(name).isEqualTo(testNames[i]);
         }
+    }
+
+    @Test
+    @DisplayName("우승자 테스트")
+    void getWinnersTest() {
+        //given
+        int numberOfGames = 6;
+        String[] testNames = new String[]{"pobi", "crong", "honux"};
+        ArrayList<RacingCar> list = new ArrayList<>();
+        list.add(new RacingCar(1, testNames[0]));
+        list.add(new RacingCar(3, testNames[1]));
+        list.add(new RacingCar(5, testNames[2]));
+        RacingCarGameManagement carGameManagement = new RacingCarGameManagement(Arrays.asList(testNames), numberOfGames, new MockRandomNumberGenerator(5));
+
+        //when
+        List<String> winner = carGameManagement.findWinner(list);
+
+        //then
+
+        Assertions.assertThat(winner).hasSameElementsAs(List.of("honux"));
     }
 }
