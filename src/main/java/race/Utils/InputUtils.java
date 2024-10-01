@@ -13,16 +13,15 @@ public class InputUtils {
     }
 
     public static int inputCarView() {
-        System.out.println(INPUT_NUMBER_OF_CAR);
-        return InputNumber();
+        return InputNumber(INPUT_NUMBER_OF_CAR);
     }
 
     public static int inputMoveView() {
-        System.out.println(INPUT_NUMBER_OF_MOVEMENT);
-        return InputNumber();
+        return InputNumber(INPUT_NUMBER_OF_MOVEMENT);
     }
 
-    private static int InputNumber() {
+    private static int InputNumber(String inputQuestion) {
+        System.out.println(inputQuestion);
         return scanner.nextInt();
     }
 }
