@@ -17,7 +17,7 @@ public class RacingCar {
 
     public Map<Integer, Integer> race(int carNumbers, int moveNumbers) {
         Map<Integer, Integer> carPositions = initCarsMap(carNumbers);
-        repeatMove(moveNumbers, moveNumbers, carPositions);
+        repeatMove(carNumbers, moveNumbers, carPositions);
         return carPositions;
     }
 
@@ -31,15 +31,15 @@ public class RacingCar {
     private void recordCarMove(int carNums, Map<Integer, Integer> carPositions) {
         for (int i = 1; i <= carNums; i++) {
             addNowCarMove(carPositions, i);
-            ResultView.printNowCarMoves(carPositions.get(i));
+            System.out.print(ResultView.printNowCarMoves(carPositions.get(i)));
             ResultView.lineChange();
         }
         ResultView.lineChange();
     }
 
-    private void addNowCarMove(Map<Integer, Integer> carsMap, int carNum) {
+    private void addNowCarMove(Map<Integer, Integer> carPositions, int carNumber) {
         if (shouldMove(RANDOM.nextInt(BOUND))) {
-            carsMap.put(carNum, carsMap.get(carNum) + 1);
+            carPositions.put(carNumber, carPositions.get(carNumber) + 1);
         }
     }
 

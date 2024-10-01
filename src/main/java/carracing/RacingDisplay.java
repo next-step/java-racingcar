@@ -11,6 +11,6 @@ public class RacingDisplay {
         ResultView.lineChange();
         ResultView.resultPrintResultComment();
 
-        RACING_CAR.race(carNums, moveNums);
+        RACING_CAR.race(3, 5);
     }
 }

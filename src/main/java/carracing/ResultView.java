@@ -10,13 +10,7 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printLine() {
-        System.out.print("-");
-    }
-
-    public static void printNowCarMoves(int nowCarMoves) {
-        for(int j = 0; j< nowCarMoves; j++) {
-            ResultView.printLine();
-        }
+    public static String printNowCarMoves(int nowCarMoves) {
+        return "-".repeat(nowCarMoves);
     }
 }
