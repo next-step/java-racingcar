@@ -1,7 +1,6 @@
 package racingcar.util;
 
 import org.junit.jupiter.api.Test;
-import racingcar.RacingGame;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 

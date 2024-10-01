@@ -33,10 +33,8 @@ public class Cars {
                 .forEach(car -> car.move(new ForwardNumber(numberCreator.number(car))));
     }
 
-    public List<String> currentStatuses() {
-        return this.cars
-                .stream()
-                .map(Car::currentStatus)
-                .collect(Collectors.toList());
+    public List<Car> currentCars() {
+        return this.cars;
     }
+
 }

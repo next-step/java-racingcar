@@ -9,6 +9,7 @@ import racingcar.model.wrapper.ForwardNumber;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.model.enums.Status.FORWARD;
 
 public class CarTest {
     @ParameterizedTest
@@ -29,7 +30,7 @@ public class CarTest {
         Car car = new Car();
         car.move(new ForwardNumber(number));
 
-        Car expected = new Car(List.of(Status.FORWARD));
+        Car expected = new Car(List.of(FORWARD));
 
         assertThat(car).isEqualTo(expected);
     }
@@ -50,7 +51,7 @@ public class CarTest {
         Car car = new Car();
         car.move(new ForwardNumber(4));
 
-        List<Status> statuses = List.of(Status.FORWARD);
+        List<Status> statuses = List.of(FORWARD);
         Car expected = new Car(statuses);
 
         assertThat(car).isEqualTo(expected);
@@ -64,7 +65,7 @@ public class CarTest {
         car.move(new ForwardNumber(2));
         car.move(new ForwardNumber(5));
 
-        List<Status> statuses = List.of(Status.FORWARD, Status.STOP, Status.STOP, Status.FORWARD);
+        List<Status> statuses = List.of(FORWARD, Status.STOP, Status.STOP, FORWARD);
         Car expected = new Car(statuses);
 
         assertThat(car).isEqualTo(expected);
@@ -78,8 +79,8 @@ public class CarTest {
         car.move(new ForwardNumber(2));
         car.move(new ForwardNumber(5));
 
-        String actual = car.currentStatus();
-        String expected = "--";
+        List<Status> actual = car.currentStatus();
+        List<Status> expected = List.of(FORWARD, FORWARD);
         assertThat(actual).isEqualTo(expected);
     }
 }

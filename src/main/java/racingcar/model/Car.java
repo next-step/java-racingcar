@@ -37,10 +37,7 @@ public class Car {
         return Objects.hash(statuses);
     }
 
-    public String currentStatus() {
-        return this.statuses
-                .stream()
-                .map(Status::printStatus)
-                .collect(Collectors.joining());
+    public List<Status> currentStatus() {
+        return this.statuses;
     }
 }
