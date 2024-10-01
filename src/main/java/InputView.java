@@ -23,6 +23,16 @@ public class InputView {
 
     public static String[] getNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return SC.nextLine().split(",");
+        String[] names = SC.nextLine().split(",");
+        for (String name : names) {
+            checkCarNameLength(name);
+        }
+        return names;
+    }
+
+    public static void checkCarNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 초괴되면 안됩니다. " + name);
+        }
     }
 }
