@@ -18,7 +18,7 @@ public class Race {
     public static Race of(List<String> carNames, RandomNumberGenerator randomNumberGenerator) {
         List<Car> cars = carNames.stream()
                 .map(Car::of)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
         return new Race(cars, randomNumberGenerator);
     }
 
@@ -35,9 +35,9 @@ public class Race {
 
     public List<String> getWinners() {
         return cars.stream()
-                .filter(car -> car.getPosition() == getMaxPosition())
+                .filter(car -> car.isPositionEqualTo(getMaxPosition()))
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private int getMaxPosition() {
