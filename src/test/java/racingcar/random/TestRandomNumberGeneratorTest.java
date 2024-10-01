@@ -13,10 +13,10 @@ class TestRandomNumberGeneratorTest {
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 100})
     void getFixedNumber(int number) {
         // given
-        TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(number);
+        TestFixedNumberGenerator testFixedNumberGenerator = new TestFixedNumberGenerator(number);
 
         // when
-        int result = testRandomNumberGenerator.generate();
+        int result = testFixedNumberGenerator.generate();
 
         // then
         assertThat(result).isEqualTo(number);

@@ -1,9 +1,9 @@
 package racingcar.random;
 
-public class TestRandomNumberGenerator implements RandomNumberGenerator {
+public class TestFixedNumberGenerator implements RandomNumberGenerator {
     private final int fixedNumber;
 
-    public TestRandomNumberGenerator(int fixedNumber) {
+    public TestFixedNumberGenerator(int fixedNumber) {
         this.fixedNumber = fixedNumber;
     }
 
