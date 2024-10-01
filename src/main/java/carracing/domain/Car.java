@@ -16,7 +16,7 @@ public class Car {
         this.name = name;
     }
 
-    public static Car of(String name) {
+    public static Car from(String name) {
         if (StringUtil.isBlank(name) || name.length() > ALLOWED_MAXIMUM_NAME_LENGTH) {
             throw RacingCarIllegalArgumentException.INVALID_NAME_LENGTH;
         }
@@ -28,9 +28,7 @@ public class Car {
             position++;
         }
     }
-    public boolean isPositionEqualTo(int position){
-        return this.position == position;
-    }
+
     public int getPosition() {
         return position;
     }
@@ -38,10 +36,10 @@ public class Car {
     public String getName() {
         return name;
     }
+
     private boolean canMove(int distance) {
         return distance >= ALLOWED_MINIMUM_DISTANCE;
     }
-
 
 
 }

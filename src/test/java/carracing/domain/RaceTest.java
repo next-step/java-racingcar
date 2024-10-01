@@ -1,17 +1,18 @@
 package carracing.domain;
 
+import carracing.domain.record.RoundRecords;
+import carracing.random.TestFixedNumberGenerator;
+import carracing.random.TestFixedNumbersGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import carracing.random.TestFixedNumberGenerator;
-import carracing.random.TestFixedNumbersGenerator;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.groups.Tuple.*;
+import static org.assertj.core.groups.Tuple.tuple;
 
 class RaceTest {
 
@@ -23,7 +24,7 @@ class RaceTest {
         List<String> carNames = List.of("green", "blue", "red");
 
         // when
-        Race race = Race.of(carNames, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 1, testFixedNumberGenerator);
 
         // then
         assertThat(race.getCars())
@@ -43,10 +44,10 @@ class RaceTest {
         // given
         TestFixedNumberGenerator testFixedNumberGenerator = new TestFixedNumberGenerator(randomNumber);
         List<String> carNames = List.of("green");
-        Race race = Race.of(carNames, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 1, testFixedNumberGenerator);
 
         // when
-        race.moveCars();
+        race.start();
 
         // then
         assertThat(race.getCars())
@@ -63,10 +64,10 @@ class RaceTest {
         // given
         TestFixedNumberGenerator testFixedNumberGenerator = new TestFixedNumberGenerator(randomNumber);
         List<String> carNames = List.of("green");
-        Race race = Race.of(carNames, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 1, testFixedNumberGenerator);
 
         // when
-        race.moveCars();
+        race.start();
 
         // then
         assertThat(race.getCars())
@@ -82,10 +83,10 @@ class RaceTest {
         // given
         TestFixedNumbersGenerator testFixedNumberGenerator = new TestFixedNumbersGenerator(List.of(1, 6, 3));
         List<String> carNames = List.of("green", "blue", "red");
-        Race race = Race.of(carNames, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 1, testFixedNumberGenerator);
 
         // when
-        race.moveCars();
+        race.start();
 
         // then
         assertThat(race.getCars())
@@ -111,12 +112,10 @@ class RaceTest {
                 4, 3, 2
         ));
         List<String> carNames = List.of("green", "blue", "red");
-        Race race = Race.of(carNames, testFixedNumberGenerator);
+        Race race = Race.of(carNames, round, testFixedNumberGenerator);
 
         // when
-        for (int i = 0; i < round; i++) {
-            race.moveCars();
-        }
+        race.start();
 
         // then
         assertThat(race.getCars())
@@ -129,55 +128,10 @@ class RaceTest {
                 );
     }
 
-    @DisplayName("3대의 자동차 목록에서 3라운드동안 가장 멀리 이동한 자동차 1대를 찾을 수 있다.")
+
+    @DisplayName("3대의 자동차 목록에서 3라운드동안 이동한 결과를 반환 받을 수 있다.")
     @Test
-    void getOneWinner() {
-        // given
-        TestFixedNumbersGenerator testFixedNumberGenerator = new TestFixedNumbersGenerator(List.of(
-                1, 6, 3,
-                1, 4, 2,
-                3, 8, 1
-        ));
-        List<String> carNames = List.of("green", "blue", "red");
-        Race race = Race.of(carNames, testFixedNumberGenerator);
-
-        for (int i = 0; i < 3; i++) {
-            race.moveCars();
-        }
-        // when
-        List<String> result = race.getWinners();
-
-        // then
-        assertThat(result).hasSize(1)
-                .containsExactly("blue");
-    }
-
-    @DisplayName("3대의 자동차 목록에서 3라운드동안 가장 멀리 이동한 자동차 2대를 찾을 수 있다.")
-    @Test
-    void getTwoWinners() {
-        // given
-        TestFixedNumbersGenerator testFixedNumberGenerator = new TestFixedNumbersGenerator(List.of(
-                7, 9, 3,
-                8, 8, 2,
-                9, 5, 1
-        ));
-        List<String> carNames = List.of("green", "blue", "red");
-        Race race = Race.of(carNames, testFixedNumberGenerator);
-
-        for (int i = 0; i < 3; i++) {
-            race.moveCars();
-        }
-        // when
-        List<String> result = race.getWinners();
-
-        // then
-        assertThat(result).hasSize(2)
-                .containsExactlyInAnyOrder("green", "blue");
-    }
-
-    @DisplayName("3대의 자동차 목록에서 3라운드동안 가장 멀리 이동한 자동차 3대를 찾을 수 있다.")
-    @Test
-    void getThreeWinners() {
+    void getCarRecords() {
         // given
         TestFixedNumbersGenerator testFixedNumberGenerator = new TestFixedNumbersGenerator(List.of(
                 7, 9, 8,
@@ -185,16 +139,42 @@ class RaceTest {
                 9, 5, 4
         ));
         List<String> carNames = List.of("green", "blue", "red");
-        Race race = Race.of(carNames, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 3, testFixedNumberGenerator);
 
-        for (int i = 0; i < 3; i++) {
-            race.moveCars();
-        }
         // when
-        List<String> result = race.getWinners();
+        RoundRecords result = race.start();
 
         // then
-        assertThat(result).hasSize(3)
-                .containsExactlyInAnyOrder("green", "blue", "red");
+        assertThat(result.getRoundRecords()).hasSize(4)
+                .satisfiesExactly(
+                        init -> assertThat(init.getCarRecords())
+                                .extracting("name", "position")
+                                .containsExactlyInAnyOrder(
+                                        tuple("green", 1),
+                                        tuple("blue", 1),
+                                        tuple("red", 1)
+                                ),
+                        roundResult1 -> assertThat(roundResult1.getCarRecords())
+                                .extracting("name", "position")
+                                .containsExactlyInAnyOrder(
+                                        tuple("green", 2),
+                                        tuple("blue", 2),
+                                        tuple("red", 2)
+                                ),
+                        roundResult2 -> assertThat(roundResult2.getCarRecords())
+                                .extracting("name", "position")
+                                .containsExactlyInAnyOrder(
+                                        tuple("green", 3),
+                                        tuple("blue", 3),
+                                        tuple("red", 3)
+                                ),
+                        roundResult3 -> assertThat(roundResult3.getCarRecords())
+                                .extracting("name", "position")
+                                .containsExactlyInAnyOrder(
+                                        tuple("green", 4),
+                                        tuple("blue", 4),
+                                        tuple("red", 4)
+                                )
+                );
     }
 }

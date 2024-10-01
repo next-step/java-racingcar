@@ -22,6 +22,11 @@
 - [x] 자동차 경주 게임을 완료한 후 누가 우승했는지 표시. 우승자는 한 명이상 가능하다.
 - [x] 한 메소드에서는 오직 한 단계의 들여쓰기만 사용한다.
   - [x] 메소드 길이가 15라인 이하로 제한한다.
+- [x]피드백
+  - [x] "A  ,B  ,C" 와 같은 input 케이스를 처리하기
+  - [x]  car.getPosition() == getMaxPosition() -> 객체에 메시지로 전달하기
+  - [x] Collectors.toList()와 Collectors.toUnmodifiableList 차이점 확인하기
+  - [x] 레이스 결과를 담은 객체를 반환하여 startRace 메소드 개선시키기
 --- 
 # STEP3 TODO
 # STEP3 DONE

@@ -16,7 +16,7 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void moveCar(int position) {
         // given
-        Car car = Car.of("green");
+        Car car = Car.from("green");
 
         // when
         car.move(position);
@@ -30,7 +30,7 @@ class CarTest {
     @ValueSource(strings = {"green", "blue", "red"})
     void carNameReturnSuccess(String carName) {
         // given
-        Car car = Car.of(carName);
+        Car car = Car.from(carName);
 
         // when
         car.move(1);
@@ -47,7 +47,7 @@ class CarTest {
     void carNameWithEmptyString(String carName) {
 
         // then
-        assertThatThrownBy(() -> Car.of(carName))
+        assertThatThrownBy(() -> Car.from(carName))
                 .isInstanceOf(RacingCarIllegalArgumentException.class);
     }
 
@@ -57,7 +57,7 @@ class CarTest {
     void carNameReturnException(String carName) {
 
         // then
-        assertThatThrownBy(() -> Car.of(carName))
+        assertThatThrownBy(() -> Car.from(carName))
                 .isInstanceOf(RacingCarIllegalArgumentException.class);
     }
 }
