@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 자동차 경주 게임 step3 기능 목록
+* 게임 시작 기능
+  * 입력 값에 따라 자동차 대수와 전진 수를 생성
+* 게임 상태 출력 기능
+  * 주어진 전진 수에 맞추어 전진 후 결과를 출력
