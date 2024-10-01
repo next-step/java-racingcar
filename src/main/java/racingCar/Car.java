@@ -2,16 +2,21 @@ package racingCar;
 
 public class Car {
 
-    private final int moveCondition;
+    private static final int MINIMUM_MOVE_THRESHOLD = 4;
 
+    private int moveCondition;
     private int position;
 
-    public Car(int moveCondition){
+    public void move(){
+        if(isMoveable()) this.position++;
+    }
+
+    public void applyMoveCondition(int moveCondition) {
         this.moveCondition = moveCondition;
     }
 
-    public void move(){
-        this.position++;
+    private boolean isMoveable() {
+        return moveCondition >= MINIMUM_MOVE_THRESHOLD;
     }
 
     public int getMoveCondition() {

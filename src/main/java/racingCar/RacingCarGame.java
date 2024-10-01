@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RacingCarGame {
 
-    private static final int RANDOM_LIMIT = 10;
-    private static final int MINIMUM_MOVE_THRESHOLD = 4;
+    private static final int MOVE_CONDITION_LIMIT = 10;
+    private static final Random MOVE_CONDITION_MAKER = new Random();
 
     public void gameStart(){
         int carCountInput = InputView.getCarCountInputFromUser();
@@ -22,14 +22,9 @@ public class RacingCarGame {
         }
     }
 
-    private static void raceCars(Car[] cars) {
+    private void raceCars(Car[] cars) {
         for (Car car : cars) {
-            moveIfConditionSatisfied(car);
-        }
-    }
-
-    private static void moveIfConditionSatisfied(Car car) {
-        if(car.getMoveCondition() >= MINIMUM_MOVE_THRESHOLD){
+            car.applyMoveCondition(createMoveCondition());
             car.move();
         }
     }
@@ -37,12 +32,12 @@ public class RacingCarGame {
     private Car[] createRacingCars(int carCount) {
         Car[] cars = new Car[carCount];
         for (int i = 0; i < carCount; i++) {
-            cars[i] = new Car(getRandomInt());
+            cars[i] = new Car();
         }
         return cars;
     }
 
-    private int getRandomInt(){
-        return new Random().nextInt(RANDOM_LIMIT);
+    private int createMoveCondition(){
+        return MOVE_CONDITION_MAKER.nextInt(MOVE_CONDITION_LIMIT);
     }
 }
