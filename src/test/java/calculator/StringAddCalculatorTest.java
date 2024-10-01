@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
 
@@ -40,5 +41,13 @@ class StringAddCalculatorTest {
     void sumWithCustomDelimiter() {
         int result = StringAddCalculator.cal("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값 또는 음수를 전달할 경우 RuntimeException 예외 throw하는지 확인")
+    void returnErrorForInvalidText() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.cal("-3");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
