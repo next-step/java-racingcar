@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 public class StringAddCalculatorTest {
   @Test
   void nullOrBlank() {
-    int result1 = StringAddCalculator.splitAndSum(null);
-    assertThat(result1).isEqualTo(0);
-    int result2 = StringAddCalculator.splitAndSum("");
-    assertThat(result2).isEqualTo(0);
-    int result3 = StringAddCalculator.splitAndSum(" ");
-    assertThat(result3).isEqualTo(0);
+    int nullResult = StringAddCalculator.splitAndSum(null);
+    assertThat(nullResult).isEqualTo(0);
+    int emptyResult = StringAddCalculator.splitAndSum("");
+    assertThat(emptyResult).isEqualTo(0);
+    int whiteSpaceResult = StringAddCalculator.splitAndSum(" ");
+    assertThat(whiteSpaceResult).isEqualTo(0);
   }
 
   @Test
