@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+# 기능 구현 목록
+1) 자동차 대수 시도할 횟수 input 구현
+2) Random 함수 사용 자동차 이동 구현
+3) 자동차 상태 출력 구현 (InputView, ResultView)
