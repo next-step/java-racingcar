@@ -2,18 +2,17 @@ package calculator;
 
 import calculator.util.SplitUtil;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class StringAddCalculator {
-    private final Integer[] operands;
+    private final List<Integer> operands;
 
     public StringAddCalculator(String input) {
-        this.operands = SplitUtil.integers(input);
+        this.operands = SplitUtil.ints(input);
     }
 
     public int sum() {
-        return Arrays.stream(operands)
-                .reduce(Integer::sum)
-                .orElse(0);
+        return operands.stream()
+                .mapToInt(i -> i).sum();
     }
 }
