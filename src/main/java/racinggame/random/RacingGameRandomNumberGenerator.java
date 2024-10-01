@@ -1,8 +1,8 @@
-package racinggame.util;
+package racinggame.random;
 
 import java.util.Random;
 
-public class RacingGameRandomNumber implements RandomNumberGenerator {
+public class RacingGameRandomNumberGenerator implements RandomNumberGenerator {
     private static final int MAX_RANDOM_VALUE = 10;
 
     @Override

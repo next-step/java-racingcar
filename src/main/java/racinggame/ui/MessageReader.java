@@ -1,5 +1,5 @@
 package racinggame.ui;
 
-public interface MessageReader<T> {
-    T read();
+public interface MessageReader {
+    int readInt();
 }
