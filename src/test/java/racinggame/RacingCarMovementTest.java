@@ -64,7 +64,7 @@ class RacingCarMovementTest {
         }
 
         List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        System.out.println("positions.toString() = " + positions.toString());
+
         assertThat(positions.get(0)).isEqualTo(4);
         assertThat(positions.get(1)).isEqualTo(0);
         assertThat(positions.get(2)).isBetween(0, 4);

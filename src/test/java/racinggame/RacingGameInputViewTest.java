@@ -128,6 +128,4 @@ class RacingGameInputViewTest {
         assertThat(numberOfRounds).isEqualTo(3);
         assertThat(testOut.toString()).contains("숫자를 입력해주세요");
     }
-
-
 }
