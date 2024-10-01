@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 public class CarRacing {
-    protected List<Car> cars;
-    protected int moveTryCount;
-    protected int playCount;
-    protected ResultView resultView;
     private static final Random RANDOM = new Random();
+    private final List<Car> cars;
+    private final int moveTryCount;
+    private int playCount;
+    private final ResultView resultView;
 
     private CarRacing(List<Car> cars, int moveTryCount, int playCount, ResultView resultView) {
         this.cars = cars;
@@ -59,10 +59,10 @@ public class CarRacing {
 
 
     public static class CarRacingBuilder {
-        protected List<Car> cars;
-        protected int moveTryCount;
-        protected int playCount = 0;
-        protected ResultView resultView = new ResultView();
+        private List<Car> cars;
+        private int moveTryCount;
+        private final int playCount = 0;
+        private final ResultView resultView = new ResultView();
 
 
         protected CarRacingBuilder() {
