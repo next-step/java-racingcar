@@ -1,4 +1,4 @@
-package javaracingcar;
+package javaracingcar.controller;
 
 
 import javaracingcar.controller.JavaRacingCar;
