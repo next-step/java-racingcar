@@ -3,8 +3,6 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarGameTest {
@@ -30,5 +28,16 @@ public class RacingCarGameTest {
         }
         // int[] expected = new int[] {5, 8, 7, 3, 4, 4, 4, 6, 8, 8};
         assertThat(racingCar.getTotalForwardCounts()).isEqualTo(9);
+    }
+
+    @Test
+    @DisplayName("자동차의 상태를 화면에 출력한다. 자동차 전진 횟수는 '-' 의 개수와 같다")
+    void testDisplayResult() {
+        RacingCar racingCar = new RacingCar(new Operator(1L));
+        for (int i = 0; i < 10; i++) {
+            racingCar.race();
+        }
+        String result = ResultView.display(new RacingCar[]{racingCar});
+        assertThat(result).isEqualTo("---------\n\n");
     }
 }

@@ -13,6 +13,8 @@ public class RacingCarGame {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int totalRacingCounts = scanner.nextInt();
 
+        System.out.println("실행 결과");
+
         start(totalCars, totalRacingCounts);
 
     }
@@ -24,6 +26,7 @@ public class RacingCarGame {
 
         for (int i = 0; i < totalRacingCounts; i++) {
             result += racing(racingCars);
+            ResultView.display(racingCars);
         }
 
         return result;
