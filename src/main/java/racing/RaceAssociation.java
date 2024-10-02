@@ -3,6 +3,7 @@ package racing;
 import racing.input.InputView;
 import racing.input.RaceInput;
 import racing.race.RaceRecord;
+import racing.race.RaceResult;
 import racing.race.RaceTrack;
 import racing.race.RandomNumRaceRule;
 import racing.result.ResultView;
@@ -17,9 +18,9 @@ public class RaceAssociation {
 
         RaceTrack track = new RaceTrack(input);
         track.race(new RandomNumRaceRule());
-        List<RaceRecord> raceRecords = track.getRaceResult();
+        RaceResult raceResult = track.getRaceResult();
 
         ResultView resultView = new ResultView();
-        resultView.result(input.getNumOfAttempt(), raceRecords);
+        resultView.result(input.attemptNumber().getValue(), raceResult);
     }
 }

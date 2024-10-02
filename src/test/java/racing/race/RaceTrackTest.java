@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTrackTest {
 
-    RaceInput input = new RaceInput(3, 5);
+    RaceInput input = new RaceInput("pobi,crong,honux", 5);
     RaceTrack track = new RaceTrack(input);
 
     @BeforeEach
@@ -22,39 +22,16 @@ public class RaceTrackTest {
 
     @Test
     void race() {
-        List<RaceRecord> raceRecords = track.getRaceResult();
+        RaceResult raceResult = track.getRaceResult();
 
-        assertThat(raceRecords).hasSize(input.getNumOfCar());
-        for (RaceRecord raceRecord : raceRecords) {
-            for (int i = 0; i < input.getNumOfAttempt(); i++) {
-                assertThat(raceRecord.raceResult(i)).isIn(RaceGauge.FORWARD, RaceGauge.STOP);
+        assertThat(raceResult.count()).isEqualTo(input.raceLineUp().count());
+
+        raceResult.stream().forEach(raceRecord -> {
+            for (int i = 0; i < input.attemptNumber().getValue(); i++) {
+                assertThat(raceRecord.raceResult(i)).isIn(RacePosition.FORWARD, RacePosition.STOP);
             }
-            assertThat(raceRecord.raceResult(input.getNumOfAttempt() - 1))
-                    .isInstanceOf(RaceGauge.class);
-        }
-    }
-
-    @Test
-    void 레코드_값_추가불가() {
-        List<RaceRecord> raceRecords = track.getRaceResult();
-
-        assertThatThrownBy(() -> raceRecords.add(new RaceRecord(new ArrayList<>())))
-                .isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    void 레코드_값_제거불가() {
-        List<RaceRecord> raceRecords = track.getRaceResult();
-
-        assertThatThrownBy(() -> raceRecords.remove(raceRecords.size() - 1))
-                .isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    void 레코드_재할당_시_원본유지() {
-        List<RaceRecord> raceRecords = track.getRaceResult();
-
-        assertThatThrownBy(() -> raceRecords.set(raceRecords.size() - 1, new RaceRecord(new ArrayList<>())))
-                .isInstanceOf(UnsupportedOperationException.class);
+            assertThat(raceRecord.raceResult(input.attemptNumber().getValue() - 1))
+                    .isInstanceOf(RacePosition.class);
+        });
     }
 }
