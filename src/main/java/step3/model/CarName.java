@@ -7,6 +7,7 @@ public class CarName {
     private static final String INVALID_LENGTH_CAR_NAME_ERROR_MESSAGE =
             "자동차 이름의 길이는 " + MINIMUM_LENGTH + " 이상 " + MAXIMUM_LENGTH + " 이하 이어야 합니다.";
     private static final String BLANK_CONTAIN_ERROR_MESSAGE = "자동차 이름에 공백은 포함될 수 없습니다.";
+
     private final String carName;
 
     public CarName(final String carName) {

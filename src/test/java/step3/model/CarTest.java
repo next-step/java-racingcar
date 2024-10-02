@@ -8,7 +8,7 @@ class CarTest {
     @Test
     void 자동차_생성(){
         String carName = "hwan2";
-        Car car = new Car(new CarName(carName));
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        Car car = new Car(carName);
+        assertThat(car.getMovement()).isEqualTo(0);
     }
 }

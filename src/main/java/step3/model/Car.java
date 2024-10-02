@@ -8,15 +8,16 @@ public class Car {
     private static final int RANDOM_MAX_NUMBER = 10;
     private static final Random RANDOM = new Random();
 
-    private int moveCount;
     private final CarName carName;
+    private Movement movement;
 
-    public Car(CarName carName) {
-        this.carName = carName;
+    public Car(final String carName) {
+        this.carName = new CarName(carName);
+        this.movement = new Movement();
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public int getMovement() {
+        return movement.getMoveCount();
     }
 
     public String getName() {
@@ -25,7 +26,7 @@ public class Car {
 
     public void moveOrStop() {
         if (isMove()) {
-            moveCount++;
+            movement.move();
         }
     }
 
