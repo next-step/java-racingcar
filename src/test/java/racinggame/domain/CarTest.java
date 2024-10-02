@@ -15,6 +15,7 @@ class CarTest {
         var car = initCar();
         assertThat(car).isNotNull();
         assertThat(car.getPosition()).isZero();
+        assertThat(car.getName()).isEqualTo("테스트카");
     }
 
     @ParameterizedTest

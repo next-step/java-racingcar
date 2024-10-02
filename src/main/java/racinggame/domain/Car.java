@@ -19,6 +19,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void move(int number) {
         if (isMoveable(number)) {
             position++;
