@@ -5,15 +5,15 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 public class RacingCarCompetition {
-    private final String GO = "-";
-    private final String STOP = "";
-    private final int TOTALCARNUMBER_INDEX = 0;
-    private final int TOTALMOVINGCOUNT_INDEX = 1;
+    private final String go = "-";
+    private final String stop = "";
+    private final int totalCarNumberIndex = 0;
+    private final int totalmovingcountIndex = 1;
 
     public void startRacing() {
         List<Integer> inputCarData = InputView.insertRacingCarData();
-        int totalNumberOfCars = inputCarData.get(TOTALCARNUMBER_INDEX);
-        int totalMovingCount = inputCarData.get(TOTALMOVINGCOUNT_INDEX);
+        int totalNumberOfCars = inputCarData.get(totalCarNumberIndex);
+        int totalMovingCount = inputCarData.get(totalmovingcountIndex);
 
         RacingCarInfo racingCarInfo = new RacingCarInfo(totalNumberOfCars);
         IntStream.range(0, totalMovingCount).forEachOrdered(movingTryCount -> {
@@ -31,6 +31,6 @@ public class RacingCarCompetition {
     }
 
     public String moveStopDecision(int randomNumber) {
-        return randomNumber >= 4 ? GO : STOP;
+        return randomNumber >= 4 ? go : stop;
     }
 }
