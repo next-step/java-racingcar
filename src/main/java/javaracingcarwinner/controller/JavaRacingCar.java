@@ -10,14 +10,17 @@ import java.util.stream.Collectors;
 public class JavaRacingCar {
     private final List<RacingCar> cars = new ArrayList<>();
 
-    public JavaRacingCar(String text) {
+    public JavaRacingCar(String text) throws RuntimeException {
         List<String> names = Arrays.stream(text.split(",")).collect(Collectors.toList());
+
         for (String name : names) {
+            if (name.length() > 5) throw new IllegalArgumentException("5자 이상 입력");
             cars.add(new RacingCar(name));
         }
+
     }
 
-    public List<RacingCar> cars(){
+    public List<RacingCar> cars() {
         return this.cars;
     }
 }
