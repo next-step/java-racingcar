@@ -47,6 +47,7 @@ public class RacingCarGame {
     private void decideWinner() {
         int maxCarPosition = getMaxCarPosition();
         List<Car> championCars = findChampionCars(maxCarPosition);
+        ResultView.printRaceChampion(championCars);
     }
 
     private List<Car> findChampionCars(int maxCarPosition) {
