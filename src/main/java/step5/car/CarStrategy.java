@@ -11,4 +11,6 @@ public interface CarStrategy {
 
     CarStrategy copy();
 
+    boolean isWinner(int topDistance);
+
 }

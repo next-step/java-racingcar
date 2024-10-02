@@ -41,6 +41,11 @@ public class RacingCar implements CarStrategy {
         return new RacingCar(this.carName, this.distance);
     }
 
+    @Override
+    public boolean isWinner(int topDistance) {
+        return topDistance == this.distance;
+    }
+
     //자동차 이름 변경
     private void changeCarName(String carName) {
         checkCarNameLength(carName);
