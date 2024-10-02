@@ -7,10 +7,6 @@ public class CarPosition {
         this.value = 0;
     }
 
-    public boolean isAtStart() {
-        return value == 0;
-    }
-
     public void moveForward() {
         value++;
     }
