@@ -27,9 +27,9 @@ class RacingCarTest {
     void canMoveIfAtLeastFour(){
         //given
         Car car = new Car();
+        int currentPosition = car.getPosition();
 
         //when
-        int currentPosition = car.getPosition();
         car.move(4);
         car.move(9);
 
