@@ -1,6 +1,5 @@
 package racingcar;
 
-import exception.OutOfRangeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,7 +21,7 @@ public class CarTest {
     @DisplayName("0과 9사이의 범위를 벗어나면 예외 발생")
     void move_OutOfRangeException(int input) {
         assertThatThrownBy(() -> car.move(input))
-                .isInstanceOf(OutOfRangeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest

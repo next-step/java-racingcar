@@ -1,7 +1,5 @@
 package calculator;
 
-import exception.NegativeNumberException;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,7 +43,7 @@ public class StringAddCalculator {
     private static int toInt(String values) {
         int number = Integer.parseInt(values);
         if (number < 0) {
-            throw new NegativeNumberException(number);
+            throw new IllegalArgumentException("Negative numbers are not allowed: " + number);
         }
         return number;
     }
