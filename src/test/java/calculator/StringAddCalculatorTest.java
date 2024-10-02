@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -29,10 +31,11 @@ class StringAddCalculatorTest {
         assertThat(result).isEqualTo(3);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환하는지 확인")
-    void returnZeroForEmptyOrNull() {
-        int result = StringAddCalculator.calculateSum("");
+    @NullAndEmptySource
+    void returnZeroForEmpty(String input) {
+        int result = StringAddCalculator.calculateSum(input);
         assertThat(result).isEqualTo(0);
     }
 
