@@ -33,8 +33,8 @@ public class SetTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("Set의 contains() 메소드로 1,2,3의 값이 존재하는지 확인")
-    void setContains(int values) {
-        assertThat(numbers.contains(values)).isTrue();
+    void setContains(int value) {
+        assertThat(numbers.contains(value)).isTrue();
     }
 
     @ParameterizedTest
