@@ -8,7 +8,7 @@ public class Position {
         position = INITIAL_POSITION;
     }
 
-    public void add() {
+    public void forwardOnce() {
         position += 1;
     }
 

@@ -9,7 +9,7 @@ public class Car {
 
     public void move(CarEngine carEngine) {
         if (carEngine.canGetPower()) {
-            position.add();
+            position.forwardOnce();
         }
     }
 
