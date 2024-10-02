@@ -4,13 +4,13 @@ public class RacingCar {
     private final CarPosition position;
     private final MoveStrategy moveStrategy;
 
-    RacingCar(CarPosition position, MoveStrategy moveStrategy) {
+    private RacingCar(CarPosition position, MoveStrategy moveStrategy) {
         this.position = position;
         this.moveStrategy = moveStrategy;
     }
 
-    boolean isAtStartPosition() {
-        return position.isAtStart();
+    public static RacingCar create(MoveStrategy moveStrategy) {
+        return new RacingCar(new CarPosition(), moveStrategy);
     }
 
     public void move() {

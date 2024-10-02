@@ -1,22 +1,24 @@
 package racinggame.racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<RacingCar> cars;
 
-    public RacingCars() {
-        this.cars = new ArrayList<>();
+    private RacingCars(List<RacingCar> cars) {
+        this.cars = new ArrayList<>(cars);
     }
 
-    public void addCar(MoveStrategy strategy) {
-        cars.add(new RacingCar(new CarPosition(), strategy));
-    }
+    public static RacingCars create(int numberOfCars, MoveStrategy moveStrategy) {
+        List<RacingCar> cars = new ArrayList<>();
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(RacingCar.create(moveStrategy));
+        }
 
-    public boolean allCarsAtStartPosition() {
-        return cars.stream().allMatch(RacingCar::isAtStartPosition);
+        return new RacingCars(cars);
     }
 
     public int count() {
@@ -33,4 +35,7 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public List<RacingCar> getCars() {
+        return Collections.unmodifiableList(cars);
+    }
 }
