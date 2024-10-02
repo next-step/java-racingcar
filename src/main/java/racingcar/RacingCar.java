@@ -6,17 +6,9 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private RacingCar() {
-
-    }
-
-    private static final RacingCar INSTANCE = new RacingCar();
     private int match;
     public static List<String> cars = new ArrayList<>();
 
-    public static RacingCar getInstance() {
-        return INSTANCE;
-    }
 
     public static int getRandomValue() {
         return new Random().nextInt(10);
