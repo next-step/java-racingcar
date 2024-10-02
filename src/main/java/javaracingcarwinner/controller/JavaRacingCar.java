@@ -11,13 +11,16 @@ public class JavaRacingCar {
     private static final String SPLIT_DELIMITER = ",";
     private final List<RacingCar> cars = new ArrayList<>();
 
-    public JavaRacingCar(String text) throws RuntimeException {
+    private final int tryCount;
+    public JavaRacingCar(String text, int tryCount) throws RuntimeException {
         List<String> names = split(text);
 
         for (String name : names) {
             validateName(name);
             cars.add(new RacingCar(name));
         }
+
+        this.tryCount = tryCount;
 
     }
 
@@ -33,5 +36,9 @@ public class JavaRacingCar {
 
     public List<RacingCar> cars() {
         return this.cars;
+    }
+
+    public int tryCount() {
+        return this.tryCount;
     }
 }

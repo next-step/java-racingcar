@@ -12,13 +12,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class JavaRacingCarWinner {
     @Test
     void split_리스트_사이즈_검증() {
-        JavaRacingCar javaRacingCar = new JavaRacingCar("pobi,crong,honux");
+        JavaRacingCar javaRacingCar = new JavaRacingCar("pobi,crong,honux", 5);
         List<RacingCar> cars = javaRacingCar.cars();
         assertThat(cars).hasSize(3);
     }
 
     @Test
     void 이름_5자_넘을_시_예외() {
-        assertThatThrownBy(() -> new JavaRacingCar("pobi,crong,honux,jeonghyeonkwon")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> new JavaRacingCar("pobi,crong,honux,jeonghyeonkwon", 5)).isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    void 입력된_시도_횟수_검증() {
+        JavaRacingCar javaRacingCar = new JavaRacingCar("pobi,crong,honux", 5);
+
+        assertThat(javaRacingCar.tryCount()).isEqualTo(5);
+    }
+
 }
