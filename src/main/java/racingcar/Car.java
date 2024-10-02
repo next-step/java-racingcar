@@ -19,7 +19,9 @@ public class Car {
     }
 
     public void run() {
-        if (!checkGreaterThanOrEqualToMinimumValue(generateRandomNumber())) return;
+        if (!checkGreaterThanOrEqualToMinimumValue(generateRandomNumber())) {
+            return;
+        }
         this.status += "-";
     }
 
