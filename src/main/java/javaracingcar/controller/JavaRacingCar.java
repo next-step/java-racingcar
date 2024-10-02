@@ -12,7 +12,7 @@ public class JavaRacingCar {
     private static final int RANDOM_VALUE_RANGE = 10;
     private static final int DEFAULT_TRY_COUNT_VALUE = 0;
 
-    private final Random random = new Random();
+    private static final Random random = new Random();
     private final List<RacingCar> cars = new ArrayList<>();
 
     private int tryCount = DEFAULT_TRY_COUNT_VALUE;
