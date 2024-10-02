@@ -1,12 +1,10 @@
 package racingGame.controller;
 
+import racingGame.domain.GameResult;
 import racingGame.domain.RacingGame;
 import racingGame.domain.RandomMovementCondition;
 import racingGame.ui.RacingCarInputView;
 import racingGame.ui.RacingCarOutputView;
-
-import java.util.List;
-import java.util.Map;
 
 public class RacingGameController {
     private final RacingCarInputView inputView;
@@ -22,8 +20,8 @@ public class RacingGameController {
         int attempts = inputView.getAttempts();
 
         RacingGame racingGame = new RacingGame(carNames, attempts, new RandomMovementCondition());
-        List<Map<String, Integer>> allStates = racingGame.run();
+        GameResult gameResult = racingGame.run();
 
-        outputView.printGame(allStates, racingGame.getWinners());
+        outputView.printGame(gameResult);
     }
 }

@@ -1,26 +1,27 @@
 package racingGame.ui;
 
+import racingGame.domain.GameResult;
+import racingGame.domain.RacingCar;
+import racingGame.domain.RoundResult;
+
 import java.util.List;
-import java.util.Map;
 
 public class RacingCarOutputView {
-    public void printGame(List<Map<String, Integer>> gameStates, List<String> winners) {
+    public void printGame(GameResult gameResult) {
         printGameStart();
-        for (Map<String, Integer> state : gameStates) {
-            printGameState(state);
+        for (RoundResult roundResult : gameResult.getRoundResults()) {
+            printRoundResult(roundResult);
         }
-        printWinners(winners);
+        printWinners(gameResult.getWinners());
     }
 
     private void printGameStart() {
         System.out.println("실행 결과");
     }
 
-    private void printGameState(Map<String, Integer> state) {
-        for (Map.Entry<String, Integer> entry : state.entrySet()) {
-            String carName = entry.getKey();
-            int position = entry.getValue();
-            System.out.println(carName + " : " + "-".repeat(position));
+    private void printRoundResult(RoundResult roundResult) {
+        for (RacingCar car : roundResult.getRacingCars()) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }

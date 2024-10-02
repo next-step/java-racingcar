@@ -4,12 +4,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingGame.domain.GameResult;
 import racingGame.domain.MovementCondition;
 import racingGame.domain.RacingGame;
+import racingGame.domain.RoundResult;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -43,9 +44,9 @@ class RacingGameTest {
     void gameRunsForSpecifiedAttempts(int attempts) {
         RacingGame game = new RacingGame(CAR_NAMES, attempts, () -> true);
 
-        List<Map<String, Integer>> results = game.run();
+        GameResult results = game.run();
 
-        assertEquals(attempts, results.size());
+        assertEquals(attempts, results.getRoundResults().size());
     }
 
     @DisplayName("항상 전진하는 경우, 모든 차가 매 라운드마다 전진한다.")
@@ -53,13 +54,14 @@ class RacingGameTest {
     void allCarsAdvanceWhenConditionAlwaysTrue() {
         RacingGame game = new RacingGame(CAR_NAMES, 5, () -> true);
 
-        List<Map<String, Integer>> results = game.run();
+        GameResult results = game.run();
 
-        for (int i = 0; i < results.size(); i++) {
-            Map<String, Integer> roundResult = results.get(i);
-            assertEquals(CAR_NAMES.length, roundResult.size());
-            for (String carName : CAR_NAMES) {
-                assertEquals(i + 1, roundResult.get(carName));
+        List<RoundResult> roundResults = results.getRoundResults();
+        for (int i = 0; i < roundResults.size(); i++) {
+            RoundResult roundResult = roundResults.get(i);
+            assertEquals(CAR_NAMES.length, roundResult.getRacingCars().size());
+            for (var car : roundResult.getRacingCars()) {
+                assertEquals(i + 1, car.getPosition());
             }
         }
     }
@@ -69,12 +71,12 @@ class RacingGameTest {
     @Test
     void noCarsAdvanceWhenConditionAlwaysFalse() {
         RacingGame game = new RacingGame(CAR_NAMES, 5, () -> false);
-        List<Map<String, Integer>> results = game.run();
+        GameResult results = game.run();
 
-        for (Map<String, Integer> roundResult : results) {
-            assertEquals(CAR_NAMES.length, roundResult.size());
-            for (String carName : CAR_NAMES) {
-                assertEquals(0, roundResult.get(carName));
+        for (RoundResult roundResult : results.getRoundResults()) {
+            assertEquals(CAR_NAMES.length, roundResult.getRacingCars().size());
+            for (var car : roundResult.getRacingCars()) {
+                assertEquals(0, car.getPosition());
             }
         }
     }
@@ -84,8 +86,8 @@ class RacingGameTest {
     void allCarsWinWhenSameDistance() {
         RacingGame game = new RacingGame(CAR_NAMES, 5, () -> true);
 
-        game.run();
-        List<String> actual = game.getWinners();
+        GameResult results = game.run();
+        List<String> actual = results.getWinners();
 
         assertIterableEquals(
                 actual.stream().sorted().collect(Collectors.toList()),
@@ -98,8 +100,8 @@ class RacingGameTest {
     void allCarsWinWhenConditionAlwaysFalse() {
         RacingGame game = new RacingGame(CAR_NAMES, 5, () -> false);
 
-        game.run();
-        List<String> actual = game.getWinners();
+        GameResult results = game.run();
+        List<String> actual = results.getWinners();
 
         assertIterableEquals(
                 actual.stream().sorted().collect(Collectors.toList()),
@@ -120,8 +122,8 @@ class RacingGameTest {
         };
         RacingGame game = new RacingGame(CAR_NAMES, 5, moveOnlyFirst);
 
-        game.run();
-        List<String> actual = game.getWinners();
+        GameResult results = game.run();
+        List<String> actual = results.getWinners();
 
         assertEquals(1, actual.size());
         assertEquals(CAR_NAMES[0], actual.get(0));
