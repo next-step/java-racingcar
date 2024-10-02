@@ -30,6 +30,7 @@ public class RacingCarGame implements GameStrategy {
 
     @Override
     public void startRace() {
+        checkRestart();
         for (int i = 0; i < attemptNum; i++) {
             attemptForwardCar();
             raceSituation.add(copyCarStrategy());
@@ -55,6 +56,7 @@ public class RacingCarGame implements GameStrategy {
     //우승자의 이름을 가져온다.
     @Override
     public List<String> winnerRace() {
+        checkStart();
         return getTopDistanceCarName(getTopDistance());
     }
 
@@ -122,6 +124,18 @@ public class RacingCarGame implements GameStrategy {
     private void checkMinimumAttempt() {
         if (this.attemptNum < miniMumAttemptNum)
             throw new IllegalArgumentException(ExceptionMessage.MINIMUN_ATTEMPT_EXCEPTION.message());
+    }
+
+    //레이싱 재시작하는지를 체크한다.
+    private void checkRestart() {
+        if (!this.raceSituation.isEmpty())
+            throw new IllegalArgumentException(ExceptionMessage.GAME_ALREADY_START.message());
+    }
+
+    //시작을 했는지 안했는지 체크한다.
+    protected void checkStart() {
+        if (this.raceSituation.isEmpty())
+            throw new IllegalArgumentException(ExceptionMessage.GAME_NOT_START.message());
     }
 
     //CarStrategy 객체를 새로운주소로 copy한다.
