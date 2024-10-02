@@ -20,7 +20,7 @@ class CarTest {
                 .getPosition()).isZero();
     }
 
-    @DisplayName("생성된 자동차 명이 5자 이상이면 예외를 잘 발생시키는지")
+    @DisplayName("생성된 자동차 명이 5자 초과이면 예외를 잘 발생시키는지")
     @Test
     void createCarTest_withOverSizedName() {
         assertThatThrownBy(() -> Car.create("테스트자동차", new RandomNumberGenerator()))
