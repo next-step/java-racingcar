@@ -1,6 +1,7 @@
 package racingGame;
 
 import java.util.List;
+import java.util.Map;
 
 public class RacingGameController {
     private final RacingCarInputView inputView;
@@ -16,8 +17,8 @@ public class RacingGameController {
         int attempts = inputView.getAttempts();
 
         RacingGame racingGame = new RacingGame(carNames, attempts, new RandomMovementCondition());
-        List<List<Integer>> allStates = racingGame.run();
+        List<Map<String, Integer>> allStates = racingGame.run();
 
-        outputView.printGame(allStates);
+        outputView.printGame(allStates, racingGame.getWinners());
     }
 }
