@@ -1,12 +1,9 @@
 package step3.model;
 
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
     private static final int MOVE_MIN_NUMBER = 4;
-    private static final int RANDOM_MAX_NUMBER = 10;
-    private static final Random RANDOM = new Random();
 
     private final CarName carName;
     private Movement movement;
@@ -24,14 +21,10 @@ public class Car {
         return carName.getCarName();
     }
 
-    public void moveOrStop() {
-        if (isMove()) {
+    public void moveOrStop(final int value) {
+        if (value >= MOVE_MIN_NUMBER) {
             movement.move();
         }
-    }
-
-    private boolean isMove() {
-        return RANDOM.nextInt(RANDOM_MAX_NUMBER) >= MOVE_MIN_NUMBER;
     }
 
     @Override
@@ -44,6 +37,6 @@ public class Car {
 
     @Override
     public int hashCode() {
-        return carName != null ? carName.hashCode() : 0;
+        return carName.hashCode();
     }
 }

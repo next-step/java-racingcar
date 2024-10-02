@@ -27,10 +27,8 @@ public class Cars {
         return cars;
     }
 
-    public void moveCars() {
-        for (Car car : cars) {
-            car.moveOrStop();
-        }
+    public void moveCars(final MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.moveOrStop(moveStrategy.generateNumber()));
     }
 
     private void validateDuplicated(final List<Car> cars) {
