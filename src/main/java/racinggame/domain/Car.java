@@ -8,16 +8,16 @@ public class Car {
     private int position;
 
     private Car(String name, int position) {
+        validateCarNameLength(name);
         this.name = name;
         this.position = position;
     }
 
     public static Car create(String name) {
-        validateCarNameLength(name);
         return new Car(name, DEFAULT_POSITION);
     }
 
-    private static void validateCarNameLength(String name) {
+    private void validateCarNameLength(String name) {
         if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
             throw new RuntimeException("자동차의 이름은 5자리를 초과할 수 없습니다.");
         }
