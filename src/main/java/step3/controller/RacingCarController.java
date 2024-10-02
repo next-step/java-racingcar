@@ -1,22 +1,27 @@
 package step3.controller;
 
 import step3.model.Cars;
+import step3.model.MoveStrategy;
+import step3.model.RaceWinners;
 import step3.view.InputView;
 import step3.view.OutputView;
 
 public class RacingCarController {
+
     public RacingCarController() {
     }
 
     public void racing() {
-        String carNames = InputView.getCarNames();
-        Cars cars = Cars.from(carNames);
-
+        Cars cars = Cars.from(InputView.getCarNames());
         int tryCount = InputView.getTryCount();
         OutputView.printRacingResult();
+
         for (int i = 0; i < tryCount; i++) {
-            cars.moveCars();
+            cars.moveCars(new MoveStrategy());
             OutputView.printRacingProgress(cars);
         }
+
+        RaceWinners raceWinners = new RaceWinners(cars.getCars());
+        OutputView.printRacingWinners(raceWinners.getWinnerNames());
     }
 }

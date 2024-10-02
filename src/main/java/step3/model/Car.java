@@ -27,6 +27,10 @@ public class Car {
         }
     }
 
+    public boolean isSameMovement(final Car car){
+        return this.movement.equals(car.getMovement());
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
