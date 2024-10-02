@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class RandomEngine implements CarEngine {
 
-    public static final int DEFAULT_MOVE_ENERGY = 4;
     public static final int RANDOM_BOUND = 10;
     private static final Random RANDOM = new Random();
     private int energy;
