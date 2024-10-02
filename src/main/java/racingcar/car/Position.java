@@ -2,15 +2,14 @@ package racingcar.car;
 
 public class Position {
 
-    public static final int INITIAL_LOCATION = 0;
     private int currentLocation;
 
-    public Position() {
-        this.currentLocation = INITIAL_LOCATION;
+    public Position(int currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
-    public void add() {
-        currentLocation++;
+    public Position add() {
+        return new Position(currentLocation++);
     }
 
     public int getCurrentLocation() {
