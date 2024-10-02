@@ -2,5 +2,6 @@ package race.Utils;
 
 @FunctionalInterface
 public interface NumberGenerator {
-    int getValue(int num);
+    int bound = 10;
+    int getValue();
 }
