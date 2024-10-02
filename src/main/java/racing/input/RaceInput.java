@@ -2,16 +2,16 @@ package racing.input;
 
 public class RaceInput {
 
-    private final RaceLineup raceLineup;
+    private final RaceLineUp raceLineUp;
     private final RaceAttempt attemptNumber;
 
     public RaceInput(String raceLineupInput, int numOfAttempt) {
-        this.raceLineup = RaceLineup.of(raceLineupInput);
+        this.raceLineUp = RaceLineUp.of(raceLineupInput);
         this.attemptNumber = RaceAttempt.of(numOfAttempt);
     }
 
-    public RaceLineup raceLineup() {
-        return raceLineup;
+    public RaceLineUp raceLineUp() {
+        return raceLineUp;
     }
 
     public RaceAttempt attemptNumber() {

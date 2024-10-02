@@ -1,7 +1,7 @@
 package racing.race;
 
 import racing.RaceRule;
-import racing.input.RaceLineup;
+import racing.input.RaceLineUp;
 import racing.input.RaceInput;
 
 import java.util.ArrayList;
@@ -15,10 +15,10 @@ public class RaceTrack {
 
     public RaceTrack(RaceInput raceInput) {
         this.raceInput = raceInput;
-        raceCars = prepareRace(raceInput.raceLineup());
+        raceCars = prepareRace(raceInput.raceLineUp());
     }
 
-    private List<RaceCar> prepareRace(RaceLineup raceLineup) {
+    private List<RaceCar> prepareRace(RaceLineUp raceLineup) {
         List<RaceCar> raceRecords = new ArrayList<>();
 
         for (String carName : raceLineup.names()) {
@@ -33,9 +33,10 @@ public class RaceTrack {
         }
     }
 
-    public List<RaceRecord> getRaceResult() {
-        return raceCars.stream()
+    public RaceResult getRaceResult() {
+        return new RaceResult(raceCars.stream()
                 .map(RaceCar::raceRecord)
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.toList())
+        );
     }
 }

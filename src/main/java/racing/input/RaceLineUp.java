@@ -2,26 +2,37 @@ package racing.input;
 
 import racing.exception.InvalidInputValueException;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class RaceLineup {
+public class RaceLineUp {
 
     private final static String INPUT_DELIMITER = ",";
 
     private final List<String> names;
 
-    private RaceLineup(String input) {
-        validateValue(input);
-        this.names = List.of(input.split(INPUT_DELIMITER));
+    private RaceLineUp(String input) {
+        validateInput(input);
+
+        List<String> splitNames = List.of(input.split(INPUT_DELIMITER));
+        validateNames(splitNames);
+
+        this.names = splitNames;
     }
 
-    public static RaceLineup of(String input) {
-        return new RaceLineup(input);
+    public static RaceLineUp of(String input) {
+        return new RaceLineUp(input);
     }
 
-    private void validateValue(String input) {
+    private void validateInput(String input) {
         if (input.isBlank()) {
             throw new InvalidInputValueException("레이스 참가자 수는 1 이상이여야 합니다.");
+        }
+    }
+
+    private void validateNames(List<String> splitNames) {
+        if (splitNames.stream().anyMatch(splitName -> splitName.length() > 5)) {
+            throw new InvalidInputValueException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
 

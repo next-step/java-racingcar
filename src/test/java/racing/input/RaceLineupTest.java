@@ -11,7 +11,7 @@ public class RaceLineupTest {
 
     static String inputNames = "pobi,crong,honux";
 
-    static List<String> names = RaceLineup.of(inputNames).names();
+    static List<String> names = RaceLineUp.of(inputNames).names();
 
     @Test
     void 자동차_이름_리스트_요소() {
