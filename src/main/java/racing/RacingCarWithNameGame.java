@@ -1,6 +1,10 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingCarWithNameGame {
 
@@ -28,6 +32,7 @@ public class RacingCarWithNameGame {
             ResultView.display(racingCars);
         }
 
+        ResultView.displayWinners(findWinners(racingCars));
         return result;
     }
 
@@ -63,4 +68,19 @@ public class RacingCarWithNameGame {
         }
         return result;
     }
+
+    public static List<RacingCar> findWinners(RacingCar[] racingCars) {
+        int max = 0;
+        for (RacingCar racingCar : racingCars) {
+            max = Math.max(max, racingCar.getTotalForwardCounts());
+        }
+
+        List<RacingCar> winners = new ArrayList<>();
+        for (RacingCar racingCar : racingCars) {
+            winners.add(max == racingCar.getTotalForwardCounts() ? racingCar : null);
+        }
+        return winners.stream().filter(Objects::nonNull).collect(Collectors.toList());
+    }
+
+
 }

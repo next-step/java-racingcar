@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -38,5 +40,21 @@ public class RacingCarWithNameGameTest {
         }
         String result = ResultView.display(new RacingCar[]{racingCar});
         assertThat(result).isEqualTo("pobi : ---------\n\n");
+    }
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다")
+    void testFindWinners() {
+        RacingCar pobiRacingCar = new RacingCar("pobi", new Operator(1L));
+        RacingCar crongRacingCar = new RacingCar("crong", new Operator(2L));
+        RacingCar honuxRacingCar = new RacingCar("honux", new Operator(1L));
+        for (int i = 0; i < 10; i++) {
+            pobiRacingCar.race();
+            crongRacingCar.race();
+            honuxRacingCar.race();
+        }
+        List<RacingCar> winners = RacingCarWithNameGame.findWinners(new RacingCar[]{crongRacingCar, pobiRacingCar, honuxRacingCar});
+        String result = ResultView.displayWinners(winners);
+        assertThat(result).isEqualTo("pobi, honux가 최종 우승했습니다.");
     }
 }
