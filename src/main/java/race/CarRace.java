@@ -59,7 +59,7 @@ public class CarRace {
         }
     }
 
-    private static void collectWinners(Car car, int maxPosition, List<String> raceResult) {
+    private void collectWinners(Car car, int maxPosition, List<String> raceResult) {
         if (car.getForwardResult() == maxPosition) {
             raceResult.add(car.getCarName());
         }
