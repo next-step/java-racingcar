@@ -21,10 +21,6 @@ public class JavaRacingCar {
     private RacingCarStepEnum step = RacingCarStepEnum.INIT;
 
     public JavaRacingCar() {
-
-    }
-
-    public void execution() {
         requireCarCount(InputView.requireCarCount());
         requireTryCount(InputView.requireTryCount());
         start();
@@ -54,7 +50,7 @@ public class JavaRacingCar {
         return random.nextInt(RANDOM_VALUE_RANGE);
     }
 
-    private static void validateNegativeNumber(int count) {
+    private void validateNegativeNumber(int count) {
         if (count < 0) {
             throw new IllegalArgumentException("음수 입력");
         }
