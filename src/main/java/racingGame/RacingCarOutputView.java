@@ -1,23 +1,33 @@
 package racingGame;
 
 import java.util.List;
+import java.util.Map;
 
 public class RacingCarOutputView {
-    public void printGameStart() {
+    public void printGame(List<Map<String, Integer>> gameStates, List<String> winners) {
+        printGameStart();
+        for (Map<String, Integer> state : gameStates) {
+            printGameState(state);
+        }
+        printWinners(winners);
+    }
+
+    private void printGameStart() {
         System.out.println("실행 결과");
     }
 
-    public void printGameState(List<Integer> carPositions) {
-        for (int position : carPositions) {
-            System.out.println("-".repeat(position));
+    private void printGameState(Map<String, Integer> state) {
+        for (Map.Entry<String, Integer> entry : state.entrySet()) {
+            String carName = entry.getKey();
+            int position = entry.getValue();
+            System.out.println(carName + " : " + "-".repeat(position));
         }
         System.out.println();
     }
 
-    public void printGame(List<List<Integer>> gameStates) {
-        printGameStart();
-        for (List<Integer> state : gameStates) {
-            printGameState(state);
-        }
+    private void printWinners(List<String> winners) {
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
+
+
 }
