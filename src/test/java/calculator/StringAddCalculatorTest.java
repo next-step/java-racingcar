@@ -2,10 +2,9 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import static calculator.StringAddCalculator.*;
+import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -13,12 +12,10 @@ public class StringAddCalculatorTest {
 
 
     @ParameterizedTest
-    @NullSource
-    @EmptySource
+    @NullAndEmptySource
     void 빈문자열_또는_null(String value) {
 
         assertThat(splitAndSum(value)).isZero();
-        assertThat(splitAndSum(value)).isEqualTo(0);
     }
 
     @Test

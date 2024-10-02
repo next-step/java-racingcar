@@ -7,6 +7,7 @@ public class StringAddCalculator {
 
     public static final String DEFAULT_DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER = "//(.*?)\n(.*)";
+    public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
@@ -27,7 +28,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
 
         if (m.find()) {
             String customDelimiter = m.group(1);
