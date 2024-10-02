@@ -14,7 +14,6 @@ public class RacingCarGame implements GameStrategy {
     private final static int FORWARD_STANDARD = 4; //전진여부를 결정하는 기준
     private final static int miniMumCarNum = 2; //레이싱 시작을 위한 최소 자동차 수
     private final static int miniMumAttemptNum = 1; //레이싱 시작을 위한 최소 시도 횟수
-    private final static int miniMumCarNameLength = 5; //자동차 이름 최대 길이
 
     private List<CarStrategy> cars = new ArrayList<>();
     private int attemptNum;
@@ -82,7 +81,6 @@ public class RacingCarGame implements GameStrategy {
         String[] carNameArr = StringUtil.deviceComma(carName);
         checkMinimumCar(carNameArr.length);
         for (String name : carNameArr) {
-            checkCarNameLength(name);
             cars.add(new RacingCar(name));
         }
     }
@@ -96,12 +94,6 @@ public class RacingCarGame implements GameStrategy {
         } else if (this.topDistance == car.getDistance()) {
             winners.add(car.getCarName());
         }
-    }
-
-    //레이싱에 참가하는 자동차이름이 5자를 초과하는지 체크
-    private void checkCarNameLength(String carName) {
-        if (carName.length() > miniMumCarNameLength)
-            throw new IllegalArgumentException(ExceptionMessage.MINIMUN_CAR_NAME_EXCEPTION.message());
     }
 
     //레이싱에 참가하는 자동차가 1대 이하인지 체크
