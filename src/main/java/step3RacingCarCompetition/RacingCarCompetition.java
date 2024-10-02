@@ -1,19 +1,17 @@
 package step3RacingCarCompetition;
 
-import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class RacingCarCompetition {
     private final String go = "-";
     private final String stop = "";
-    private final int totalCarNumberIndex = 0;
-    private final int totalmovingcountIndex = 1;
 
     public void startRacing() {
-        List<Integer> inputCarData = InputView.insertRacingCarData();
-        int totalNumberOfCars = inputCarData.get(totalCarNumberIndex);
-        int totalMovingCount = inputCarData.get(totalmovingcountIndex);
+        Scanner scanner = new Scanner(System.in);
+        int totalNumberOfCars = InputCars.numberOfCars(scanner);
+        int totalMovingCount = InputTryCount.movingTryCount(scanner);
 
         RacingCarInfo racingCarInfo = new RacingCarInfo(totalNumberOfCars);
         IntStream.range(0, totalMovingCount).forEachOrdered(movingTryCount -> {
