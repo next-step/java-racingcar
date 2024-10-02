@@ -1,29 +1,31 @@
-package racingGame;
+package racingGame.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
     private final List<RacingCar> cars;
     private final int attempts;
 
-    public RacingGame(int carCount, int attempts, MovementCondition movementCondition) {
-        this.cars = IntStream.range(0, carCount)
-                .mapToObj(i -> new RacingCar(movementCondition))
+    public RacingGame(String[] carNames, int attempts, MovementCondition movementCondition) {
+        this.cars = Arrays.stream(carNames)
+                .map(name -> new RacingCar(name, movementCondition))
                 .collect(Collectors.toList());
         this.attempts = attempts;
     }
 
-    public List<List<Integer>> run() {
-        List<List<Integer>> allStates = new ArrayList<>();
+    public GameResult run() {
+        List<RoundResult> roundResults = new ArrayList<>();
         for (int i = 0; i < attempts; i++) {
             moveCars();
-            allStates.add(getCarPositions());
+            roundResults.add(new RoundResult(takeSnapshot()));
         }
-        return allStates;
+
+        return new GameResult(roundResults);
     }
+
 
     private void moveCars() {
         for (RacingCar car : cars) {
@@ -31,13 +33,14 @@ public class RacingGame {
         }
     }
 
-    private List<Integer> getCarPositions() {
+    private List<RacingCar> takeSnapshot() {
         return cars.stream()
-                .map(RacingCar::getPosition)
+                .map(car -> new RacingCar(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
     }
 
     public int getCarCount() {
         return cars.size();
     }
+
 }
