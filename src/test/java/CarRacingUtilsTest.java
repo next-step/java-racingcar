@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class carRacingUtilsTest {
+public class CarRacingUtilsTest {
 
     private CarRacingGameUtils carRacingGameUtils;
 
@@ -20,10 +21,19 @@ public class carRacingUtilsTest {
     @DisplayName("Set the numbers of the cars and check proper numbers of items")
     public void testInitialCarSettings() {
         carRacingGameUtils.initialCarSettings(3);
-        Map<String, String> cars = carRacingGameUtils.initialCarSettings(3);  // 자동차 상태 확인
-
+        Map<String, String> cars = carRacingGameUtils.initialCarSettings(3);
         assertEquals(3, cars.size());
 
     }
 
+    @Test
+    @DisplayName("Set the numbers of the cars and check cars move properly")
+    public void testMoveCars() {
+        int numberOfCars = 2;
+        carRacingGameUtils.initialCarSettings(numberOfCars);
+        carRacingGameUtils.moveCars();
+        carRacingGameUtils.cars.forEach((car, position) -> {
+            assertTrue(position.equals("-") || position.equals("--"));
+        });
+    }
 }
