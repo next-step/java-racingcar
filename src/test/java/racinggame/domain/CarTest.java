@@ -36,7 +36,7 @@ class CarTest {
     }
 
     private Car initCar() {
-        return Car.create();
+        return Car.create("테스트카");
     }
 
 }

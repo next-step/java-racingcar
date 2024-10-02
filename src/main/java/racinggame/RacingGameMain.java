@@ -6,10 +6,10 @@ import racinggame.ui.ResultView;
 
 public class RacingGameMain {
     public static void main(String[] args) {
-        var carCount = InputView.readCarCount();
+        var carNames = InputView.readCarNames();
         var tryCount = InputView.readTryCount();
         var racingGame = new RacingGame();
-        var gameResults = racingGame.start(carCount, tryCount);
+        var gameResults = racingGame.start(carNames, tryCount);
         ResultView.printCarPositionByRound(gameResults);
     }
 }

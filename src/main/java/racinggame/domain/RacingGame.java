@@ -11,9 +11,9 @@ public class RacingGame {
     private List<Car> cars;
     private GameRounds rounds;
 
-    public GameRounds start(int carCount, int tryCount) {
-        validateNegative(carCount, tryCount);
-        initCar(carCount);
+    public GameRounds start(List<String> carNames, int tryCount) {
+        validateNegative(tryCount);
+        initCar(carNames);
         rounds = new GameRounds();
         for (int i = 0; i < tryCount; i++) {
             playGameRound();
@@ -39,15 +39,15 @@ public class RacingGame {
         }
     }
 
-    private void initCar(int carCount) {
+    private void initCar(List<String> carNames) {
         cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.create());
+        for (String carName : carNames) {
+            cars.add(Car.create(carName));
         }
     }
 
-    private void validateNegative(int carCount, int tryCount) {
-        if (carCount <= 0 || tryCount <= 0) {
+    private void validateNegative(int tryCount) {
+        if (tryCount <= 0) {
             throw new RuntimeException("음수가 전달되어 게임을 시작할 수 없습니다.");
         }
     }
