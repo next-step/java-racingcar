@@ -18,6 +18,7 @@ public class RacingCarGame {
 
         ResultView.printResultMessage();
         startRace(racingCount, createRacingCars(carNames));
+        decideWinner();
     }
 
     private Car[] createRacingCars(String carNames) {
@@ -41,6 +42,30 @@ public class RacingCarGame {
             raceCars(cars);
             ResultView.printRaceResult(cars);
         }
+    }
+
+    private void decideWinner() {
+        int maxCarPosition = getMaxCarPosition();
+        List<Car> championCars = findChampionCars(maxCarPosition);
+    }
+
+    private List<Car> findChampionCars(int maxCarPosition) {
+        List<Car> championCars = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxCarPosition) {
+                championCars.add(car);
+            }
+        }
+        return championCars;
+    }
+
+    private int getMaxCarPosition() {
+        int maxCarPosition = 0;
+        for (Car car : cars) {
+            maxCarPosition = Math.max(maxCarPosition, car.getPosition());
+        }
+        return maxCarPosition;
     }
 
     private void raceCars(Car[] cars) {
