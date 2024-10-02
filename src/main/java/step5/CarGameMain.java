@@ -18,7 +18,9 @@ public class CarGameMain {
         String carName = inputView.inputCarName();
         int attemptNum = inputView.inputAttemptNum();
 
-        carGame.ready(racingCarGame(carName, attemptNum));
+        carGame.setGameStrategy(racingCarGame());
+
+        carGame.ready(carName, attemptNum);
         carGame.startRace();
 
         resultView.resultView(carGame.getRaceSituation());
@@ -26,10 +28,8 @@ public class CarGameMain {
 
     }
 
-    public static GameStrategy racingCarGame(String carName, int attemptNum) {
-        RacingCarGame carGame = new RacingCarGame();
-        carGame.readyRace(carName, attemptNum);
-        return carGame;
+    private static GameStrategy racingCarGame() {
+        return new RacingCarGame();
     }
 
 }
