@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -30,6 +31,16 @@ class RacingGameTest {
         assertThatThrownBy(() -> racingGame.start(carNames, tryCount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("음수가 전달되어 게임을 시작할 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("게임 진행 후 우승자를 반환한다.")
+    void getWinner() {
+        List<String> carNames = initCarNames();
+        int tryCount = 2;
+        GameRounds gameResult = racingGame.start(carNames, tryCount);
+        assertThat(gameResult.getWinner()).isNotNull();
+        assertThat(gameResult.getWinner()).hasSizeGreaterThanOrEqualTo(0);
     }
 
     private List<String> initCarNames() {
