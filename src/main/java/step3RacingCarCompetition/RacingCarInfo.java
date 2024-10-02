@@ -2,10 +2,11 @@ package step3RacingCarCompetition;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class RacingCarInfo {
 
-    private ArrayList<String> racingCarMovingData;
+    private List<String> racingCarMovingData;
 
     public RacingCarInfo(int totalNumberOfCars) {
 

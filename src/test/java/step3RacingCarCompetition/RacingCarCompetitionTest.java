@@ -1,6 +1,6 @@
 package step3RacingCarCompetition;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -10,11 +10,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarCompetitionTest {
-    static RacingCarCompetition racingCarCompetition;
-    static RacingCarInfo racingCarInfo;
+    RacingCarCompetition racingCarCompetition;
+    RacingCarInfo racingCarInfo;
 
-    @BeforeAll
-    static void init() {
+    @BeforeEach
+    void init() {
         racingCarCompetition = new RacingCarCompetition();
         racingCarInfo = new RacingCarInfo(2);
         racingCarInfo.recordGoInRacingCarData(0, "-");
@@ -29,7 +29,7 @@ class RacingCarCompetitionTest {
 
     @DisplayName(value = "이동, 정지 테스트")
     @ParameterizedTest()
-    @CsvSource({"0,''", "5,-", "9,-"})
+    @CsvSource({"3,''", "4,-"})
     void movingStopDecisionTest(int randomNumber, String isGoStop) {
         assertThat(racingCarCompetition.moveStopDecision(randomNumber)).isEqualTo(isGoStop);
     }
