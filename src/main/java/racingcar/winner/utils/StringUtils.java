@@ -2,12 +2,12 @@ package racingcar.winner.utils;
 
 public class StringUtils {
 
-    public static final int MAX_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public static String[] split(String input) {
-        String[] splited = input.split(",");
-        validateInputValues(splited);
-        return splited;
+        String[] values = input.split(",");
+        validateInputValues(values);
+        return values;
     }
 
     private static void validateInputValues(String[] values) {
