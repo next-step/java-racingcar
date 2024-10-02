@@ -6,30 +6,25 @@ import java.util.Random;
 public class Car {
 
     private String status = "";
-
-    private static final int MINIMUM_VALUE = 4;
-    private Random random;
-
-    public Car(Random random) {
-        this.random = random;
-    }
+    private MoveStrategy moveStrategy;
 
     public String getStatus() {
         return this.status;
     }
 
+    public MoveStrategy getMoveStrategy() {
+        return this.moveStrategy;
+    }
+
+    public void setMoveStrategy(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+    }
+
     public void run() {
-        if (!checkGreaterThanOrEqualToMinimumValue(generateRandomNumber())) {
+        if (!moveStrategy.isMove()) {
             return;
         }
         this.status += "-";
     }
 
-    public int generateRandomNumber() {
-        return random.nextInt(10);
-    }
-
-    public boolean checkGreaterThanOrEqualToMinimumValue(int number) {
-        return number >= MINIMUM_VALUE;
-    }
 }

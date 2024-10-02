@@ -14,7 +14,7 @@ public class RaceTest {
 
     @BeforeEach
     void setUp() {
-        race = new Race(new MockRandom());
+        race = new Race();
     }
 
     @Test
