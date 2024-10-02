@@ -1,8 +1,8 @@
-package study.step3;
+package study.racing;
 
 import org.junit.jupiter.api.Test;
-import study.step3.car.RacingCar;
-import study.step3.ui.InputView;
+import study.racing.car.Car;
+import study.racing.ui.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -11,7 +11,7 @@ public class RacingCarTest {
 
     @Test
     void move() {
-        RacingCar racingCar = new RacingCar();
+        Car racingCar = new Car("TEST");
 
         racingCar.move();
 
@@ -22,7 +22,15 @@ public class RacingCarTest {
     void input_유효성_검사_자동차_2대미만() {
         InputView inputView = new InputView();
         assertThatThrownBy(() -> {
-            inputView.validateCarCount(1);
+            inputView.validateCar(new String[]{"a"});
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void input_유효성_검사_자동차_이름_5자_초과() {
+        InputView inputView = new InputView();
+        assertThatThrownBy(() -> {
+            inputView.validateCar(new String[]{"123456", "12345"});
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
