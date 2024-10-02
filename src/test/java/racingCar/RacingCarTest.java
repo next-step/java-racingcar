@@ -15,12 +15,11 @@ class RacingCarTest {
     void cannotMoveIfUnderFour() {
         //given
         Car car = new Car();
-        car.applyMoveCondition(1);
 
         //when
         int currentPosition = car.getPosition();
-        car.move();
-        car.move();
+        car.move(1);
+        car.move(3);
 
         //then
         assertThat(car.getPosition()).isEqualTo(currentPosition);
@@ -31,26 +30,29 @@ class RacingCarTest {
     void canMoveIfAtLeastFour(){
         //given
         Car car = new Car();
-        car.applyMoveCondition(4);
 
         //when
         int currentPosition = car.getPosition();
-        car.move();
-        car.move();
+        car.move(4);
+        car.move(9);
 
         //then
         assertThat(car.getPosition()).isEqualTo(currentPosition + 2);
     }
 
-    @DisplayName("자동차의 전진 조건의 값은 0-9사의의 숫자를 가지고 있다")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
-    void checkConditionRange(int moveCondition){
+    @DisplayName("자동차는 멈추거나, 앞으로만 간다")
+    @Test
+    void moveForward(){
         //given
         Car car = new Car();
-        car.applyMoveCondition(moveCondition);
 
         //when, then
-        assertThat(car.getMoveCondition()).isBetween(0, 9);
+        int startPosition = car.getPosition();
+        car.move(1);
+        assertThat(car.getPosition()).isGreaterThanOrEqualTo(startPosition);
+
+        car.move(9);
+        assertThat(car.getPosition()).isGreaterThanOrEqualTo(startPosition);
     }
+
 }

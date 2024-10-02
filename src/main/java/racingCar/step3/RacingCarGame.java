@@ -24,8 +24,7 @@ public class RacingCarGame {
 
     private void raceCars(Car[] cars) {
         for (Car car : cars) {
-            car.applyMoveCondition(createMoveCondition());
-            car.move();
+            car.move(createMoveCondition());
         }
     }
 
