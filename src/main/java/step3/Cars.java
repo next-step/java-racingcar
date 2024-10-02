@@ -1,12 +1,14 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
     private final List<Car> carList;
 
     public Cars(final List<Car> cars) {
-        this.carList = cars;
+        this.carList = new ArrayList<>(cars);
     }
 
     public void moveAll(CarEngine carEngine) {
@@ -16,7 +18,7 @@ public class Cars {
     }
 
     public List<Car> getCarList() {
-        return carList;
+        return Collections.unmodifiableList(carList);
     }
 
 }
