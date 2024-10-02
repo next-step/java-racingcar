@@ -2,14 +2,15 @@
 
 ## TODO
 
-- 시도 횟수 음수 일 시 RuntimeException 예외 처리
 - 차 리스트 우승자 검증
 
 ---
 
 ## DONE
+
 - split() 메소드 구분 시 생성된 객체 리스트 사이즈 확인
 - 이름 5자 넘을 시 RuntimeException 처리
 - 입력 된 시도 횟수 검증
 - 생성된 차 객체 이름, 생성 시 위치, 이동 검증
 - 랜덤 값에 따른 차 이동 검증
+- 시도 횟수 음수 일 시 RuntimeException 예외 처리
