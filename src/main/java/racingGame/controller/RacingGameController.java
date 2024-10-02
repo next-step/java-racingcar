@@ -1,4 +1,9 @@
-package racingGame;
+package racingGame.controller;
+
+import racingGame.domain.RacingGame;
+import racingGame.domain.RandomMovementCondition;
+import racingGame.ui.RacingCarInputView;
+import racingGame.ui.RacingCarOutputView;
 
 import java.util.List;
 import java.util.Map;

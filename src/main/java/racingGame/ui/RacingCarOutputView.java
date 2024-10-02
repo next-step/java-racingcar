@@ -1,4 +1,4 @@
-package racingGame;
+package racingGame.ui;
 
 import java.util.List;
 import java.util.Map;
