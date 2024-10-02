@@ -4,9 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.car.CarStrategy;
+import step5.game.GameStrategy;
 import step5.game.PreparedCarGame;
 import step5.game.RacingCarGame;
 import step5.message.ExceptionMessage;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,17 +27,19 @@ public class PreparedCarGameTest {
     void readyCarTest() {
         int attemptNum = 3;
         RacingCarGame carGame = spy(new RacingCarGame()); //실체 객체를 mock
-        carGame.readyRace("test1, test2, test3", attemptNum);
+
+        PreparedCarGame preparedCarGame = new PreparedCarGame();
+        preparedCarGame.setGameStrategy(carGame);
+        preparedCarGame.ready("test1, test2, test3", attemptNum);
 
         given(carGame.decideForward()) //랜덤으로 전진을 결정하는 메소드를 항상 true로 반환하도록 처리
                 .willReturn(true);
 
-        PreparedCarGame preparedCarGame = new PreparedCarGame();
-        preparedCarGame.ready(carGame);
-
         preparedCarGame.startRace();
 
-        for (CarStrategy car : carGame.getRacingCars()) {
+        List<List<CarStrategy>> raceSituation = preparedCarGame.getRaceSituation();
+
+        for (CarStrategy car : raceSituation.get(raceSituation.size() - 1)) {
             assertThat(car.getDistance()).isEqualTo(attemptNum);
         }
     }
@@ -44,11 +49,10 @@ public class PreparedCarGameTest {
     @Test
     void checkStartTest() {
         int attemptNum = 3;
-        RacingCarGame carGame = new RacingCarGame(); //실체 객체를 mock
-        carGame.readyRace("test1, test2, test3", attemptNum);
 
         PreparedCarGame preparedCarGame = new PreparedCarGame();
-        preparedCarGame.ready(carGame);
+        preparedCarGame.setGameStrategy(new RacingCarGame());
+        preparedCarGame.ready("test1, test2, test3", attemptNum);
 
         assertThatThrownBy(preparedCarGame::winnerRace)
                 .isInstanceOf(IllegalArgumentException.class)
@@ -59,11 +63,10 @@ public class PreparedCarGameTest {
     @Test
     void alreadyStartTest() {
         int attemptNum = 3;
-        RacingCarGame carGame = new RacingCarGame();
-        carGame.readyRace("test1, test2, test3", attemptNum);
 
         PreparedCarGame preparedCarGame = new PreparedCarGame();
-        preparedCarGame.ready(carGame);
+        preparedCarGame.setGameStrategy(new RacingCarGame());
+        preparedCarGame.ready("test1, test2, test3", attemptNum);
 
         preparedCarGame.startRace();
 

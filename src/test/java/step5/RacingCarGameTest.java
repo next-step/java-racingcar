@@ -29,7 +29,7 @@ public class RacingCarGameTest {
     @Test
     void readyCarTest() {
         racingCarGame.readyRace("test1, test2, test3", 2);
-        assertThat(racingCarGame.getRacingCars()).hasSize(3);
+        assertThat(racingCarGame.getCars()).hasSize(3);
         assertThat(racingCarGame.getAttemptNum()).isEqualTo(2);
     }
 
@@ -44,7 +44,7 @@ public class RacingCarGameTest {
 
         carGame.attemptForwardCar();
 
-        for (CarStrategy car : carGame.getRacingCars()) {
+        for (CarStrategy car : carGame.getCars()) {
             assertThat(car.getDistance()).isEqualTo(1);
         }
     }
@@ -56,9 +56,14 @@ public class RacingCarGameTest {
         for (int i = 1; i < 4; i++) {
             cars.add(createCar("test" + i, i));
         }
-        RacingCarGame carGame = new RacingCarGame(cars);
 
-        List<String> winners = carGame.getWinners();
+        RacingCarGame carGame = new RacingCarGame(cars){
+            @Override
+            public void checkStart() {
+            }
+        }; //테스트시 예외를 벗어나기 위한 Override
+
+        List<String> winners = carGame.winnerRace();
 
         assertThat(winners)
                 .contains("test3");
