@@ -12,7 +12,7 @@ public class PrintView {
 
     public void result(Cars cars) {
         for (Car car : cars.getCarList()) {
-            System.out.println(getDash(car.getPosition()));
+            System.out.println(car.getName() + " : " + getDash(car.getPosition()));
         }
         enter();
     }
