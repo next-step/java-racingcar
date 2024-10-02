@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculatorUtils {
+
     private static final String DELEMETER = ",|:";
 
     public static String[] splitStringCalculator(String inputs) {
@@ -17,6 +18,7 @@ public class StringCalculatorUtils {
         }
 
         return splitedString.split(currentDelimeter);
+
     }
     public static List<Integer> convertInputs(String[] inputs) {
         List<Integer> result = new ArrayList<>();
