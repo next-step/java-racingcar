@@ -8,7 +8,7 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-## 기능 목록 
+## step3 : 기능 목록 
 * UI 기능 구현  (클래스 InputView)
     * 자동차 대수 입력 
     * 시도 횟수 입력 
@@ -20,3 +20,11 @@
     * 자동차 멈춤 기능 ( + "")
 * 전진 조건 구현(random value > 4)
 * 자동차 최종/특정 회차 상태 출력 기능 (클래스 OutputView)
+
+## step4 : 기능 목록
+* UI 입력 기능 수정 (클래스 InputView)
+  * 자동차 이름 입력 및 이름 길이 검증 추가
+* 자동차 이름 부여 기능 추가 
+* 우승자 조회 기능 
+* UI 출력 기능 수정 (클래스 Input)
+   

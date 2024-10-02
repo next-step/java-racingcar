@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,13 +11,13 @@ class CarTest {
 
     @Test
     void getTotalMoveCnt() {
-        Car car = getCar();
+        Car car = getCar("carName");
         assertThat(car.getMoveTotalCnt()).isEqualTo(0);
     }
 
     @Test
     void run_전진() {
-        Car car = getCar();
+        Car car = getCar("carName");
 
         car.run(true);
 
@@ -24,16 +26,25 @@ class CarTest {
 
     @Test
     void run_멈춤() {
-        Car car = getCar();
+
+        Car car = getCar("carName");
 
         car.run(false);
 
         assertThat(car.getMoveTotalCnt()).isEqualTo(0);
     }
 
-    private static Car getCar() {
+    @Test
+    void getName_자동차이름부여확인() {
+
+        Car car = getCar("pobi");
+
+        assertThat(car.getName()).isEqualTo("pobi");
+    }
+
+    private static Car getCar(String carName) {
         CarManager carManager = new CarManager();
-        return carManager.createCarsByCnt(1).get(0);
+        return carManager.createCarsByCnt(Arrays.asList(carName)).get(0);
     }
 
 
