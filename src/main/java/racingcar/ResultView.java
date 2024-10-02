@@ -13,12 +13,14 @@ public class ResultView {
     }
 
     public static void printHistory(int[][] histories) {
-        System.out.print("\n" + EXECUTE_RESULT + "\n");
+        StringBuilder result = new StringBuilder();
+        result.append("\n" + EXECUTE_RESULT + "\n");
         for (int[] history : histories) {
             for (int position : history) {
-                System.out.print(ResultView.printPosition(position) + "\n");
+                result.append(ResultView.printPosition(position)).append("\n");
             }
-            System.out.print("\n");
+            result.append("\n");
         }
+        System.out.print(result);
     }
 }
