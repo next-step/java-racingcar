@@ -44,10 +44,18 @@ class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("숫자 이외의 값 또는 음수를 전달할 경우 RuntimeException 예외 throw하는지 확인")
-    void returnErrorForInvalidText() {
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외 throw하는지 확인")
+    void returnErrorForNegativeNum() {
         assertThatThrownBy(() -> {
             StringAddCalculator.calculateSum("-3");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값을 전달할 경우 RuntimeException 예외 throw하는지 확인")
+    void returnErrorForInvalidText() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.calculateSum("&");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

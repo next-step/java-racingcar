@@ -33,16 +33,24 @@ public class StringAddCalculator {
         int[] numbers = new int[values.length];
 
         for (int i = 0; i < values.length; i++) {
-            checkInvalid(values[i]);
+            validateNumber(values[i]);
             numbers[i] = Integer.parseInt(values[i]);
         }
         return numbers;
     }
 
-    private static void checkInvalid(String values) {
-        int num = Integer.parseInt(values);
-        if (num < 0) {
+    private static void validateNumber(String value) {
+        int number = parseNumber(value);
+        if (number < 0) {
             throw new IllegalArgumentException("음수는 계산되지 않습니다.");
+        }
+    }
+
+    private static int parseNumber(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자 이외의 값이 입력되었습니다.");
         }
     }
 
