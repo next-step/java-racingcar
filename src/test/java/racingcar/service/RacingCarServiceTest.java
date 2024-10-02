@@ -14,4 +14,13 @@ public class RacingCarServiceTest {
             assertThat(carNumber).isBetween(1, 9);
         }
     }
+
+    @Test
+    public  void IsMovingForwardTest() {
+        boolean[] carForwardStatuses = racingCarService.IsMovingForward(racingCarService.generateRandomNumberForMovingCar(3));
+
+        for(boolean carForwardStatus : carForwardStatuses) {
+            assertThat(carForwardStatus).isIn(true, false);
+        }
+    }
 }

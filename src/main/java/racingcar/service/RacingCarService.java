@@ -25,4 +25,15 @@ public class RacingCarService {
 
         return  randomNumbers;
     }
+
+    public boolean[] IsMovingForward(int[] randomNumbers) {
+        boolean[] carForwardStatuses = new boolean[randomNumbers.length];
+
+        for(int i = 0; i < randomNumbers.length; i++) {
+            if(randomNumbers[i] >= 4)
+                carForwardStatuses[i] = true;
+        }
+
+        return carForwardStatuses;
+    }
 }
