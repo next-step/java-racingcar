@@ -16,14 +16,17 @@ public class JavaRacingCar {
     public JavaRacingCar(String text, int tryCount) throws RuntimeException {
         List<String> names = split(text);
 
+        initCars(names);
+        validateTryCount(tryCount);
+
+        this.tryCount = tryCount;
+    }
+
+    private void initCars(List<String> names) {
         for (String name : names) {
             validateName(name);
             cars.add(new RacingCar(name));
         }
-
-        validateTryCount(tryCount);
-        this.tryCount = tryCount;
-
     }
 
     private void validateTryCount(int tryCount) {
