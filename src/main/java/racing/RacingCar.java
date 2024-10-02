@@ -2,10 +2,17 @@ package racing;
 
 public class RacingCar {
 
+    private String name;
     private int totalForwardCounts;
     private Operator operator;
 
     public RacingCar(Operator operator) {
+        this.totalForwardCounts = 0;
+        this.operator = operator;
+    }
+
+    public RacingCar(String name, Operator operator) {
+        this.name = name;
         this.totalForwardCounts = 0;
         this.operator = operator;
     }
@@ -18,5 +25,9 @@ public class RacingCar {
 
     public int getTotalForwardCounts() {
         return this.totalForwardCounts;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
