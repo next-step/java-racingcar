@@ -1,5 +1,6 @@
 package Step2;
 
+<<<<<<< HEAD
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,5 +54,10 @@ public class StringAdder {
         }
 
         return cur_num;
+=======
+public class StringAdder {
+    public int sum(String input) {
+        return 0;
+>>>>>>> 7c25f2c (WIP: feat, test: add step 2)
     }
 }
