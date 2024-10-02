@@ -57,11 +57,7 @@ public class RacingCarGameTest {
             cars.add(createCar("test" + i, i));
         }
 
-        RacingCarGame carGame = new RacingCarGame(cars){
-            @Override
-            public void checkStart() {
-            }
-        }; //테스트시 예외를 벗어나기 위한 Override
+        RacingCarGame carGame = new RacingCarGame(cars);
 
         List<String> winners = carGame.winnerRace();
 
