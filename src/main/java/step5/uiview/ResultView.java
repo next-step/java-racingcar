@@ -1,6 +1,7 @@
 package step5.uiview;
 
 import step5.car.CarStrategy;
+import step5.game.PreparedCarGame;
 import step5.message.Message;
 
 import java.util.List;
@@ -14,13 +15,14 @@ public class ResultView {
     private final static String WINNER_TARGET = "{winner}";
 
     //현재 레이싱결과를 출력한다.
-    public void resultView(List<List<CarStrategy>> raceSituation) {
+    public void resultView(PreparedCarGame preparedCarGame) {
         System.out.println(Message.RESULT_MESSAGE.message());
-        raceSituationResultView(raceSituation);
+        raceSituationResultView(preparedCarGame.getRaceSituation());
+        winnerView(preparedCarGame.winnerRace());
     }
 
     //현재 레이싱 우승자를 출력한다.
-    public void winnerView(List<String> winner) {
+    private void winnerView(List<String> winner) {
         System.out.println(Message.WINNER.message().replace(WINNER_TARGET, String.join(COMMA, winner)));
     }
 

@@ -23,8 +23,7 @@ public class CarGameMain {
         carGame.ready(carName, attemptNum);
         carGame.startRace();
 
-        resultView.resultView(carGame.getRaceSituation());
-        resultView.winnerView(carGame.winnerRace());
+        resultView.resultView(carGame);
 
     }
 
