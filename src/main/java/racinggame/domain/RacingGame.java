@@ -48,7 +48,7 @@ public class RacingGame {
 
     private void validateNegative(int tryCount) {
         if (tryCount <= 0) {
-            throw new RuntimeException("음수가 전달되어 게임을 시작할 수 없습니다.");
+            throw new IllegalArgumentException("음수가 전달되어 게임을 시작할 수 없습니다.");
         }
     }
 }

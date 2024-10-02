@@ -38,10 +38,10 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차의 이름이 5자리를 초과할 경우 RuntimeException 예외를 throw 한다.")
+    @DisplayName("자동차의 이름이 5자리를 초과할 경우 예외를 throw 한다.")
     void throwExceptionWhenCarNameExceedsFiveCharacters() {
         assertThatThrownBy(() -> Car.create("BMW530"))
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차의 이름은 5자리를 초과할 수 없습니다.");
     }
 

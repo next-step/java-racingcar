@@ -19,7 +19,7 @@ public class Car {
 
     private void validateCarNameLength(String name) {
         if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
-            throw new RuntimeException("자동차의 이름은 5자리를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("자동차의 이름은 " + MAXIMUM_CAR_NAME_LENGTH + "자리를 초과할 수 없습니다.");
         }
     }
 

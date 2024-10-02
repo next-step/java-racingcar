@@ -17,16 +17,18 @@ class RacingGameTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("게임을 시도할 회수만큼 게임 라운드가 증가한다.")
     void getGameRound(int tryCount) {
-        GameRounds gameResult = racingGame.start(initCarNames(), tryCount);
+        List<String> carNames = initCarNames();
+        GameRounds gameResult = racingGame.start(carNames, tryCount);
         assertThat(gameResult.getRoundCount()).isEqualTo(tryCount);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, -2, -3})
-    @DisplayName("시도할 횟수에 음수를 전달하는 경우 RuntimeException 예외를 throw 한다.")
+    @DisplayName("시도할 횟수에 음수를 전달하는 경우 예외를 throw 한다.")
     void throwExceptionWhenNegativeParameter(int tryCount) {
-        assertThatThrownBy(() -> racingGame.start(initCarNames(), tryCount))
-                .isInstanceOf(RuntimeException.class)
+        List<String> carNames = initCarNames();
+        assertThatThrownBy(() -> racingGame.start(carNames, tryCount))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("음수가 전달되어 게임을 시작할 수 없습니다.");
     }
 
