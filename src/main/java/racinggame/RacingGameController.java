@@ -6,28 +6,29 @@ import java.util.List;
 public class RacingGameController {
     private final InputView inputView;
     private final ResultView resultView;
-    private final Race race;
+    private final MoveStrategy moveStrategy;
 
-    public RacingGameController(InputView inputView, ResultView resultView, Race race) {
+    public RacingGameController(InputView inputView, ResultView resultView, MoveStrategy moveStrategy) {
         this.inputView = inputView;
         this.resultView = resultView;
-        this.race = race;
+        this.moveStrategy = moveStrategy;
     }
 
     public void run() {
         int numberOfCars = inputView.readNumberOfCars();
         int numberOfRounds = inputView.readNumberOfRounds();
 
-        initializeRace(numberOfCars);
-        conductRace(numberOfRounds);
+        Race race = initializeRace(numberOfCars);
+        conductRace(race, numberOfRounds);
     }
 
-    private void initializeRace(int numberOfCars) {
-        race.createRacingCars(numberOfCars);
+    private Race initializeRace(int numberOfCars) {
+        Race race = Race.create(numberOfCars, moveStrategy);
         resultView.printResultMessage();
+        return race;
     }
 
-    private void conductRace(int numberOfRounds) {
+    private void conductRace(Race race, int numberOfRounds) {
         for (int i = 0; i < numberOfRounds; i++) {
             List<Integer> roundResult = race.proceedRounds();
             resultView.printRaceResults(roundResult);
