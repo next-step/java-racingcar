@@ -11,19 +11,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class RacingGameControllerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "3, 1",
-            "5, 1",
+            "3, 5",
+            "5, 3",
+            "4, 4",
             "3, 2",
-            "4, 3",
-            "3, 5"
+            "2, 6"
     })
-    @DisplayName("입력받은 시도 횟수만큼 게임을 진행한다")
+    @DisplayName("입력받은 자동차 수와 시도 횟수만큼 게임을 진행한다")
     void runMultipleRounds(int numberOfCars, int numberOfRounds) {
         String input = numberOfCars + "\n" + numberOfRounds + "\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
@@ -32,19 +35,37 @@ class RacingGameControllerTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        RacingCars racingCars = new RacingCars();
         MoveStrategy moveStrategy = new RandomMoveStrategy();
-        Race race = new Race(racingCars, moveStrategy);
-        InputView inputView = new ConsoleInputView(); // 실제 구현체 사용
-        ResultView resultView = new ConsoleResultView(); // 실제 구현체 사용
-        RacingGameController controller = new RacingGameController(inputView, resultView, race);
+        InputView inputView = new ConsoleInputView();
+        ResultView resultView = new ConsoleResultView();
+        RacingGameController controller = new RacingGameController(inputView, resultView, moveStrategy);
 
         controller.run();
 
-        assertThat(racingCars.count()).isEqualTo(numberOfCars);
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        for (int position : positions) {
-            assertThat(position).isBetween(0, numberOfRounds);
+        String output = outputStream.toString();
+        String[] lines = output.split("\n");
+
+        assertThat(lines).contains("실행 결과");
+
+        List<String> resultLines = Arrays.stream(lines)
+                .dropWhile(line -> !line.equals("실행 결과"))
+                .skip(1)
+                .filter(line -> !line.trim().isBlank())
+                .collect(Collectors.toList());
+
+        int actualRounds = resultLines.size() / numberOfCars;
+
+        assertThat(actualRounds).isEqualTo(numberOfRounds);
+
+        for (int i = 0; i < numberOfRounds; i++) {
+            List<String> roundResults = resultLines.subList(i * numberOfCars, (i + 1) * numberOfCars);
+
+            assertThat(roundResults).hasSize(numberOfCars);
+
+            for (String result : roundResults) {
+                int position = result.length();
+                assertThat(position).isBetween(1, numberOfRounds + 1);
+            }
         }
     }
 }
