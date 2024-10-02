@@ -1,9 +1,9 @@
 package racinggame.ui;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final String CARS_NAME_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -27,9 +27,8 @@ public class InputView {
     }
 
     private static List<String> arrayToList(String[] array) {
-        List<String> list = new ArrayList<>();
-        Collections.addAll(list, array);
-        return list;
+        return Arrays.stream(array)
+                .collect(Collectors.toList());
     }
 
 }
