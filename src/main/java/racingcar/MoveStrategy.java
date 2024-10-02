@@ -1,0 +1,5 @@
+package racingcar;
+
+public interface MoveStrategy {
+    boolean isForward(int number);
+}
