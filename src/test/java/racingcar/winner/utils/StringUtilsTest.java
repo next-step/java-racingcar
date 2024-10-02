@@ -17,7 +17,7 @@ class StringUtilsTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 5글자 초과시 IllegalArgumentException를 반환한다.")
+    @DisplayName("자동차 이름이 5글자 초과시 IllegalArgumentException 예외를 던진다.")
     void split_쉼표_5글자초과() {
         assertThatThrownBy(() -> split("Byeongjoon,pobi"))
                 .isInstanceOf(IllegalArgumentException.class)
