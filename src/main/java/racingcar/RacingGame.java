@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Random;
 
 public class RacingGame {
+    private static final Random RANDOM = new Random();
     private static final int RANDOM_BOUND = 10;
 
     private RacingGame() {
@@ -21,9 +22,8 @@ public class RacingGame {
     }
 
     private static void moveAndPrint(Car[] cars) {
-        Random random = new Random();
         for (Car car : cars) {
-            int randomNumber = random.nextInt(RANDOM_BOUND);
+            int randomNumber = RANDOM.nextInt(RANDOM_BOUND);
             car.move(randomNumber);
             ResultView.print(car.getMoveCount());
         }
