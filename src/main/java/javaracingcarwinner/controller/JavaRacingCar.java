@@ -9,11 +9,12 @@ import java.util.stream.Collectors;
 
 public class JavaRacingCar {
     private static final String SPLIT_DELIMITER = ",";
-    private final List<RacingCar> cars = new ArrayList<>();
+    private static final int MAX_NAME_LENGTH = 5;
 
+    private final List<RacingCar> cars = new ArrayList<>();
     private final int tryCount;
 
-    public JavaRacingCar(String text, final int tryCount) throws RuntimeException {
+    public JavaRacingCar(final String text, final int tryCount) throws RuntimeException {
         initCars(toList(split(text)));
 
         validateTryCount(tryCount);
@@ -28,8 +29,8 @@ public class JavaRacingCar {
     }
 
     private void validateName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("5자 이상 입력");
+        if (name.length() >= MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("5자 초과");
         }
     }
 
