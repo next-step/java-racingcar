@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -34,6 +35,14 @@ class CarTest {
         var car = initCar();
         car.move(correctMoveNumber);
         assertThat(car.getPosition()).isOne();
+    }
+
+    @Test
+    @DisplayName("자동차의 이름이 5자리를 초과할 경우 RuntimeException 예외를 throw 한다.")
+    void throwExceptionWhenCarNameExceedsFiveCharacters() {
+        assertThatThrownBy(() -> Car.create("BMW530"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("자동차의 이름은 5자리를 초과할 수 없습니다.");
     }
 
     private Car initCar() {
