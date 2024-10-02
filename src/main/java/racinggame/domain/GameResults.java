@@ -22,4 +22,10 @@ public class GameResults {
         return positions.get(carIndex);
     }
 
+    public void save(List<Car> cars) {
+        for (Car car : cars) {
+            add(car.getPosition());
+        }
+    }
+
 }

@@ -28,9 +28,7 @@ public class RacingGame {
 
     private void saveGameResult() {
         GameResults gameResults = new GameResults();
-        for (Car car : cars) {
-            gameResults.add(car.getPosition());
-        }
+        gameResults.save(cars);
         rounds.add(gameResults);
     }
 
