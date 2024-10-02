@@ -52,13 +52,14 @@ public class RacingCarGame {
 
     private List<Car> findChampionCars(int maxCarPosition) {
         List<Car> championCars = new ArrayList<>();
-
         for (Car car : cars) {
-            if (car.getPosition() == maxCarPosition) {
-                championCars.add(car);
-            }
+            if (isChampionCar(car, maxCarPosition)) championCars.add(car);
         }
         return championCars;
+    }
+
+    private static boolean isChampionCar(Car car, int maxCarPosition) {
+        return car.getPosition() == maxCarPosition;
     }
 
     private int getMaxCarPosition() {

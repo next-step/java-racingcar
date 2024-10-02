@@ -6,7 +6,7 @@ import java.util.List;
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행결과";
     private static final String STATE_PRINT_FORMAT = "-";
-    private static final String CAR_NAME_SEPARATOR = ",";
+    private static final String CHAMPION_CAR_NAME_SEPARATOR = ",";
     private static final String CHAMPION_PRINT_FORMAT = "%s가 최종 우승했습니다.";
 
     public static void printResultMessage(){
@@ -21,7 +21,7 @@ public class ResultView {
     }
 
     public static void printRaceChampion(List<Car> championCars) {
-        String championName = String.join(CAR_NAME_SEPARATOR, getChampionCarNames(championCars));
+        String championName = String.join(CHAMPION_CAR_NAME_SEPARATOR, getChampionCarNames(championCars));
         System.out.format(CHAMPION_PRINT_FORMAT, championName);
     }
 
