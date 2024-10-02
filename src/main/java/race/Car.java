@@ -7,6 +7,9 @@ public class Car {
     private ForwardCheck carForwardCheck;
 
     public Car(String carName, ForwardCheck carForwardCheck) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다");
+        }
         this.carName = carName;
         this.carForwardCheck = carForwardCheck;
     }
