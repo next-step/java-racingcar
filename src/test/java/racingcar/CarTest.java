@@ -19,27 +19,27 @@ class CarTest {
         Assertions.assertThat(car.getCurrentLocation()).isEqualTo(0);
     }
 
-    @DisplayName("4 이상의 숫자가 주어지면 자동차의 위치가 1 증가한다.")
+    @DisplayName("CarEngine이 충분한 힘을 제공하면 자동차의 위치가 1 증가한다.")
     @Test
     void carMoveTestWithEnoughPower() {
         // given
         Car car = Car.createCar();
 
         // when
-        car.move(TestEngine.createCarEngine(4));
+        car.move(() -> true);
 
         // then
         assertThat(car.getCurrentLocation()).isEqualTo(1);
     }
 
-    @DisplayName("4 미만의 숫자가 주어지면 자동차의 위치는 변화하지 않는다.")
+    @DisplayName("CarEngine이 충분한 힘을 제공하지 않으면 자동차의 위치는 변화하지 않는다.")
     @Test
     void carMoveTestWithNotEnoughPower() {
         // given
         Car car = Car.createCar();
 
         // when
-        car.move(TestEngine.createCarEngine(3));
+        car.move(() -> false);
 
         // then
         assertThat(car.getCurrentLocation()).isEqualTo(0);
