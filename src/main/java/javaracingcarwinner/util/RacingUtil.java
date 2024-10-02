@@ -4,8 +4,15 @@ import javaracingcarwinner.entity.RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingUtil {
+    private static final int RANDOM_VALUE_RANGE = 10;
+    private static final Random random = new Random();
+
+    public static int random(){
+        return random.nextInt(RANDOM_VALUE_RANGE);
+    }
 
     public static List<RacingCar> whoIsWinners(List<RacingCar> cars) {
         final List<RacingCar> winners = new ArrayList<>();

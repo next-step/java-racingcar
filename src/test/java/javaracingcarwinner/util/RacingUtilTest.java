@@ -11,6 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingUtilTest {
 
     @Test
+    void random_작동_검증() {
+        int result = RacingUtil.random();
+
+        assertThat(result).isLessThanOrEqualTo(9).isGreaterThanOrEqualTo(0);
+    }
+
+    @Test
     void 우승자_검증_1명() {
         List<RacingCar> cars = new ArrayList<>();
 
