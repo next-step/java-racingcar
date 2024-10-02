@@ -32,9 +32,8 @@ public class GameResults {
     private void updateWinners(List<Car> cars) {
         winners.clear();
         int maxPosition = findMaxPosition(cars);
-
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+            if (car.isEqualPosition(maxPosition)) {
                 winners.add(car.getName());
             }
         }

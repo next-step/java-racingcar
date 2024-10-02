@@ -40,4 +40,8 @@ public class Car {
     private boolean isMoveable(int number) {
         return number >= MINIMUM_MOVE_NUMBER;
     }
+
+    public boolean isEqualPosition(int number) {
+        return position == number;
+    }
 }
