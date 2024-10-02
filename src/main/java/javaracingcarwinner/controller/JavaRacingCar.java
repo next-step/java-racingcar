@@ -13,12 +13,10 @@ public class JavaRacingCar {
 
     private final int tryCount;
 
-    public JavaRacingCar(String text, int tryCount) throws RuntimeException {
-        List<String> names = split(text);
+    public JavaRacingCar(String text, final int tryCount) throws RuntimeException {
+        initCars(toList(split(text)));
 
-        initCars(names);
         validateTryCount(tryCount);
-
         this.tryCount = tryCount;
     }
 
@@ -29,18 +27,24 @@ public class JavaRacingCar {
         }
     }
 
-    private void validateTryCount(int tryCount) {
-        if (tryCount < 0) throw new IllegalArgumentException("음수 입력");
-    }
-
-    private List<String> split(String text) {
-        return Arrays.stream(text.split(SPLIT_DELIMITER)).collect(Collectors.toList());
-    }
-
     private void validateName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("5자 이상 입력");
         }
+    }
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount < 0) {
+            throw new IllegalArgumentException("음수 입력");
+        }
+    }
+
+    private List<String> toList(String[] array) {
+        return Arrays.stream(array).collect(Collectors.toList());
+    }
+
+    private String[] split(String text) {
+        return text.split(SPLIT_DELIMITER);
     }
 
     public List<RacingCar> cars() {
