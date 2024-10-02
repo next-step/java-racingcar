@@ -4,6 +4,8 @@ import racinggame.domain.GameRounds;
 
 public class ResultView {
 
+    public static final String SUFFIX_WINNER = "가 최종 우승했습니다.";
+
     private ResultView() {
         throw new IllegalStateException("Utility class");
     }
@@ -12,6 +14,7 @@ public class ResultView {
         for (int round = 0; round < gameRounds.getRoundCount(); round++) {
             printRound(gameRounds, round);
         }
+        printWinner(gameRounds);
     }
 
     private static void printRound(GameRounds gameResults, int round) {
@@ -21,6 +24,11 @@ public class ResultView {
             System.out.println(name + " : " + getDashesByCount(position));
         }
         printNewLine();
+    }
+
+    private static void printWinner(GameRounds gameResults) {
+        String winners = String.join(",", gameResults.getWinner());
+        System.out.println(winners + SUFFIX_WINNER);
     }
 
     private static String getDashesByCount(int count) {

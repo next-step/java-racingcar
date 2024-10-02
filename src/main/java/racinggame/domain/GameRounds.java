@@ -29,4 +29,8 @@ public class GameRounds {
     public String getCarName(int roundIndex, int carIndex) {
         return gameResults.get(roundIndex).getGameResult(carIndex).getCarName();
     }
+
+    public List<String> getWinner() {
+        return gameResults.get(gameResults.size() - 1).getWinners();
+    }
 }
