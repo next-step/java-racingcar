@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racing.domain.Car;
 import racing.model.CarInfo;
+import racing.model.RoundResult;
 import racing.util.NumberGenerator;
 
 public class Cars {
@@ -20,12 +21,12 @@ public class Cars {
         }
     }
 
-    public CarInfoList getCurrentCarInfoList() {
+    public RoundResult getRoundResult() {
         List<CarInfo> carInfoList = new ArrayList<>();
         for (Car car : cars) {
             carInfoList.add(car.getCarInfo());
         }
-        return new CarInfoList(carInfoList);
+        return RoundResult.save(carInfoList);
     }
 
     public static Cars create(List<String> carNames, NumberGenerator numberGenerator) {

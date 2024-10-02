@@ -36,14 +36,16 @@ public class GameResult {
     }
 
     private int getMaxPosition(RoundResult finalRoundResult) {
-        return finalRoundResult.getCarInfoList().getCarInfos().stream()
+        return finalRoundResult.getCarInfos()
+                .stream()
                 .mapToInt(CarInfo::getPosition)
                 .max()
                 .orElse(0);
     }
 
     private List<String> extractWinnerNames(RoundResult finalRoundResult, int maxPosition) {
-        return finalRoundResult.getCarInfoList().getCarInfos().stream()
+        return finalRoundResult.getCarInfos()
+                .stream()
                 .filter(carInfo -> carInfo.getPosition() == maxPosition)
                 .map(CarInfo::getName)
                 .collect(Collectors.toList());

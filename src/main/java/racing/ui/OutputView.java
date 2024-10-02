@@ -3,7 +3,6 @@ package racing.ui;
 import java.util.List;
 import racing.model.CarInfo;
 import racing.model.RoundResult;
-import racing.model.collection.CarInfoList;
 import racing.model.collection.GameResult;
 
 public class OutputView {
@@ -26,8 +25,7 @@ public class OutputView {
     }
 
     private static void printResult(RoundResult result) {
-        CarInfoList carInfoList = result.getCarInfoList();
-        for (CarInfo info : carInfoList.getCarInfos()) {
+        for (CarInfo info : result.getCarInfos()) {
             System.out.println(convertCarInfoToGage(info));
         }
     }

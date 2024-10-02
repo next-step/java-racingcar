@@ -1,19 +1,20 @@
 package racing.model;
 
-import racing.model.collection.CarInfoList;
+import java.util.Collections;
+import java.util.List;
 
 public class RoundResult {
-    private final CarInfoList carInfoList;
+    private final List<CarInfo> carInfos;
 
-    private RoundResult(CarInfoList carInfoList) {
-        this.carInfoList = carInfoList;
+    private RoundResult(List<CarInfo> carInfos) {
+        this.carInfos = carInfos;
     }
 
-    public CarInfoList getCarInfoList() {
-        return carInfoList;
+    public List<CarInfo> getCarInfos() {
+        return Collections.unmodifiableList(carInfos);
     }
 
-    public static RoundResult save(CarInfoList carInfoList) {
-        return new RoundResult(carInfoList);
+    public static RoundResult save(List<CarInfo> carInfos) {
+        return new RoundResult(carInfos);
     }
 }

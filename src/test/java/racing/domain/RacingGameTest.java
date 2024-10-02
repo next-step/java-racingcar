@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.CarInfo;
 import racing.model.RoundResult;
-import racing.model.collection.CarInfoList;
 import racing.model.collection.Cars;
 import racing.model.collection.GameResult;
 import racing.util.FixedNumberGenerator;
@@ -47,9 +46,8 @@ class RacingGameTest {
         List<Integer> expectedPositions = Arrays.asList(1, 1, 1, 1, 1);
 
         RoundResult result = results.get(0);
-        CarInfoList carInfoList = result.getCarInfoList();
 
-        assertThat(carInfoList.getCarInfos()
+        assertThat(result.getCarInfos()
                 .stream()
                 .map(CarInfo::getPosition)
                 .collect(Collectors.toList())

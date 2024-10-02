@@ -33,7 +33,7 @@ public class RacingGame {
 
     private void playRound(GameResult gameResult) {
         cars.moveCars();
-        RoundResult roundResult = RoundResult.save(cars.getCurrentCarInfoList());
+        RoundResult roundResult = cars.getRoundResult();
         gameResult.addRoundResult(roundResult);
     }
 
