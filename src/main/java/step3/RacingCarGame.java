@@ -5,6 +5,7 @@ import java.util.List;
 
 public class RacingCarGame {
     private final CarEngine carEngine;
+    private final PrintView printView = new PrintView();
 
     public RacingCarGame(CarEngine carEngine) {
         this.carEngine = carEngine;
@@ -37,13 +38,19 @@ public class RacingCarGame {
     }
 
     private void race(Cars cars, int round) {
-        PrintView printView = new PrintView();
-
         printView.print("실행 결과");
         for (int i = 0; i < round; i++) {
             cars.moveAll(carEngine);
             printView.result(cars);
         }
+
+        getWinnerAndPrint(cars);
+    }
+
+    private void getWinnerAndPrint(Cars cars) {
+        List<String> winner = cars.getWinner();
+
+        printView.printWinner(winner);
     }
 
 }

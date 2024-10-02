@@ -22,4 +22,8 @@ public class Car {
     public int getPosition() {
         return position.getPosition();
     }
+
+    public boolean isWinner(int maxScore) {
+        return maxScore == getPosition();
+    }
 }

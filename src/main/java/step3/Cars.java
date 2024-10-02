@@ -21,4 +21,22 @@ public class Cars {
         return Collections.unmodifiableList(carList);
     }
 
+    public List<String> getWinner() {
+        List<String> winner = new ArrayList<>();
+
+        for (Car car : carList) {
+            findWinner(winner, car);
+        }
+
+        return winner;
+    }
+
+    private void findWinner(List<String> winner, Car car) {
+        int maxScore = Score.getMax(carList);
+
+        if (car.isWinner(maxScore)) {
+            winner.add(car.getName());
+        }
+    }
+
 }

@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class PrintView {
 
     public void input(int car, int count) {
@@ -25,6 +27,10 @@ public class PrintView {
         }
 
         return dash;
+    }
+
+    public void printWinner(List<String> winner) {
+        print(String.join(", ", winner) + "가 최종 우승했습니다.");
     }
 
     public void print(String message) {
