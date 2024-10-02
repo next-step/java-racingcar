@@ -1,11 +1,10 @@
 package step3;
 
 public class Position {
-    private static final int INITIAL_POSITION = 0;
     private int position;
 
-    public Position() {
-        position = INITIAL_POSITION;
+    public static Position zeroPosition() {
+        return new Position();
     }
 
     public void forwardOnce() {

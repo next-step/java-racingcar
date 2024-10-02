@@ -4,7 +4,7 @@ public class Car {
     private final Position position;
 
     public Car() {
-        this.position = new Position();
+        this.position = Position.zeroPosition();
     }
 
     public void move(CarEngine carEngine) {
