@@ -59,7 +59,7 @@ public class RacingCarGame {
     }
 
     private static boolean isChampionCar(Car car, int maxCarPosition) {
-        return car.getPosition() == maxCarPosition;
+        return car.isCurrentPosition(maxCarPosition);
     }
 
     private int getMaxCarPosition() {

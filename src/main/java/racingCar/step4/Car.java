@@ -19,6 +19,10 @@ public class Car {
         if(isMoveable(moveCondition)) this.position++;
     }
 
+    public boolean isCurrentPosition(int position) {
+        return this.position == position;
+    }
+
     private boolean isMoveable(int moveCondition) {
         return moveCondition >= MINIMUM_MOVE_THRESHOLD;
     }
