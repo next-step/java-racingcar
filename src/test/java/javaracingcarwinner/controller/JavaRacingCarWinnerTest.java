@@ -29,4 +29,9 @@ public class JavaRacingCarWinnerTest {
         assertThat(javaRacingCar.tryCount()).isEqualTo(5);
     }
 
+    @Test
+    void 입력된_시도_횟수_negative_value() {
+        assertThatThrownBy(() -> new JavaRacingCar("pobi,crong,honux", -4)).isInstanceOf(RuntimeException.class);
+    }
+
 }

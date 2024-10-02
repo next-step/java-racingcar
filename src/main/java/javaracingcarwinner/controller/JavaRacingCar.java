@@ -12,6 +12,7 @@ public class JavaRacingCar {
     private final List<RacingCar> cars = new ArrayList<>();
 
     private final int tryCount;
+
     public JavaRacingCar(String text, int tryCount) throws RuntimeException {
         List<String> names = split(text);
 
@@ -20,8 +21,13 @@ public class JavaRacingCar {
             cars.add(new RacingCar(name));
         }
 
+        validateTryCount(tryCount);
         this.tryCount = tryCount;
 
+    }
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount < 0) throw new IllegalArgumentException("음수 입력");
     }
 
     private List<String> split(String text) {
