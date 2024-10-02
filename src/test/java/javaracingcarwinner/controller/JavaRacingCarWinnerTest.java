@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class JavaRacingCarWinner {
+public class JavaRacingCarWinnerTest {
     @Test
     void split_리스트_사이즈_검증() {
         JavaRacingCar javaRacingCar = new JavaRacingCar("pobi,crong,honux", 5);
