@@ -47,9 +47,8 @@ public class CarRace {
     }
 
     private void initCar(String[] carNames, ForwardCheck forwardCheck) {
-        int carCount = carNames.length;
-        for(int i = 0; i < carCount; i++) {
-            this.cars.add(new Car(carNames[i], forwardCheck));
+        for(String carName : carNames) {
+            this.cars.add(new Car(carName, forwardCheck));
         }
     }
 
