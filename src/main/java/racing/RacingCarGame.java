@@ -32,7 +32,7 @@ public class RacingCarGame {
     private static RacingCar[] readyRacingCars(int totalCars) {
         RacingCar[] racingCars = new RacingCar[totalCars];
         for (int i = 0; i < totalCars; i++) {
-            racingCars[i] = new RacingCar();
+            racingCars[i] = new RacingCar(new Operator());
         }
         return racingCars;
     }
