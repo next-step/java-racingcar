@@ -1,15 +1,16 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import racing.model.RoundResult;
+import racing.model.collection.Cars;
+import racing.model.collection.GameResult;
 
 public class RacingGame {
 
     private final int roundCount;
 
-    private final List<Car> cars;
+    private final Cars cars;
 
-    private RacingGame(int roundCount, List<Car> cars) {
+    private RacingGame(int roundCount, Cars cars) {
         this.roundCount = roundCount;
         this.cars = cars;
     }
@@ -18,43 +19,25 @@ public class RacingGame {
         return roundCount;
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 
-    public List<GameResult> start() {
-        List<GameResult> results = new ArrayList<>();
+    public GameResult start() {
+        GameResult gameResult = new GameResult();
         for (int i = 0; i < roundCount; i++) {
-            playRound(results);
+            playRound(gameResult);
         }
-        return results;
+        return gameResult;
     }
 
-    private void playRound(List<GameResult> results) {
-        moveCars();
-        List<Integer> positions = getCurrentPositions();
-        saveRoundResult(results, positions);
+    private void playRound(GameResult gameResult) {
+        cars.moveCars();
+        RoundResult roundResult = cars.getRoundResult();
+        gameResult.addRoundResult(roundResult);
     }
 
-    private void moveCars() {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-
-    private List<Integer> getCurrentPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getCurrentPosition());
-        }
-        return positions;
-    }
-
-    private void saveRoundResult(List<GameResult> results, List<Integer> positions) {
-        results.add(GameResult.save(positions));
-    }
-
-    public static RacingGame setUp(int roundCount, List<Car> cars) {
+    public static RacingGame setUp(int roundCount, Cars cars) {
         return new RacingGame(roundCount, cars);
     }
 }

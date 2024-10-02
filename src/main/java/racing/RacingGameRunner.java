@@ -1,10 +1,9 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
-import racing.domain.Car;
-import racing.domain.GameResult;
 import racing.domain.RacingGame;
+import racing.model.collection.Cars;
+import racing.model.collection.GameResult;
 import racing.ui.InputView;
 import racing.ui.OutputView;
 import racing.util.RandomNumberGenerator;
@@ -12,21 +11,13 @@ import racing.util.RandomNumberGenerator;
 public class RacingGameRunner {
 
     public static void main(String[] args) {
-        int carCount = InputView.readCarCount();
+        List<String> carNames = InputView.readCarNames();
         int roundCount = InputView.readRoundCount();
-        List<Car> cars = initialCars(carCount);
 
+        Cars cars = Cars.create(carNames, new RandomNumberGenerator());
         RacingGame racingGame = RacingGame.setUp(roundCount, cars);
-        List<GameResult> gameResults = racingGame.start();
 
-        OutputView.printGameResults(gameResults);
-    }
-
-    private static List<Car> initialCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.create(new RandomNumberGenerator()));
-        }
-        return cars;
+        GameResult gameResult = racingGame.start();
+        OutputView.printGameResults(gameResult);
     }
 }
