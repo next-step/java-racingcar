@@ -13,22 +13,33 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class InputViewTest {
 
     @Test
-    @DisplayName("input 메서드 실행 시, 입력한 숫자를 반환해야한다.")
-    void input_메서드_테스트() {
+    @DisplayName("inputTry 메서드 실행 시, 입력한 숫자를 반환해야한다.")
+    void input_Try_메서드_테스트() {
         Scanner scanner = new Scanner("3");
         InputView view = new InputView(scanner);
 
-        int number = view.input();
+        int number = view.inputTry();
 
         assertThat(number).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("input 메서드 실행 후, 문자열 입력시 InputMismatchException 예외 발생")
-    void input_메서드_문자_입력_예외_테스트() {
+    @DisplayName("inputTry 메서드 실행 후, 문자열 입력시 InputMismatchException 예외 발생")
+    void input_Try_메서드_문자_입력_예외_테스트() {
         Scanner scanner = new Scanner("asb");
         InputView view = new InputView(scanner);
 
-        assertThatThrownBy(view::input).isInstanceOf(InputMismatchException.class);
+        assertThatThrownBy(view::inputTry).isInstanceOf(InputMismatchException.class);
+    }
+
+    @Test
+    @DisplayName("")
+    void input_Car_메서드_테스트(){
+        Scanner scanner = new Scanner("leo,seounggyun");
+        InputView view = new InputView(scanner);
+
+        String[] carNames= view.inputCar();
+
+        assertThat(carNames).isEqualTo(new String[]{"leo","seounggyun"});
     }
 }

@@ -1,6 +1,7 @@
 package racing.car.ui;
 
 import racing.car.car.Car;
+
 import java.util.List;
 
 public class ResultView {
@@ -14,6 +15,7 @@ public class ResultView {
             generateRepeatedLine(car.getPosition(), sb);
             System.out.println(sb.toString());
         }
+
         System.out.println();
     }
 

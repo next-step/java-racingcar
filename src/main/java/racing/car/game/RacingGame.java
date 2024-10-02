@@ -3,6 +3,7 @@ package racing.car.game;
 import racing.car.car.Car;
 import racing.car.ui.InputView;
 import racing.car.ui.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,14 +19,14 @@ public class RacingGame implements Game {
     @Override
     public void play() {
         INPUT_VIEW.carQuestion();
-        int carCount = validateCarCount(INPUT_VIEW.input());
+        String[] carNames = INPUT_VIEW.inputCar();
 
         List<Car> cars = new ArrayList<>();
 
-        initializeCars(carCount, cars);
+        initializeCars(carNames, cars);
 
         INPUT_VIEW.tryQuestion();
-        int tryCount = validateTryCount(INPUT_VIEW.input());
+        int tryCount = validateTryCount(INPUT_VIEW.inputTry());
 
         for (int i = 0; i < tryCount; i++) {
             simulateRaceRound(cars);
@@ -37,9 +38,9 @@ public class RacingGame implements Game {
         RESULT_VIEW.outputView(cars);
     }
 
-    public void initializeCars(int carCount, List<Car> cars) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    public void initializeCars(String[] carNames, List<Car> cars) {
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i]));
         }
     }
 
