@@ -28,7 +28,7 @@ public class RacingCarGame {
     private Car[] createCarsFromNames(String[] carNames) {
         cars = new Car[carNames.length];
         for (int i = 0; i < carNames.length; i++) {
-            cars[i] = new Car(carNames[i]);
+            cars[i] = Car.createCarWithName(carNames[i]);
         }
         return cars;
     }
