@@ -64,6 +64,7 @@ public class RacingCarGame implements GameStrategy {
         return winners;
     }
 
+
     //차를 전진시킬지 결정한다.
     public boolean decideForward() {
         return RandomUtil.getRandomValuelessThenTen() >= FORWARD_STANDARD;

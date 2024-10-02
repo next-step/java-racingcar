@@ -7,17 +7,15 @@ public class RacingCar implements CarStrategy {
     private final static int FORWARD_DISTANCE = 1; //전진하는 거리
     private final static int miniMumCarNameLength = 5; //자동차 이름 최대 길이
 
-    private final String carName; //자동차이름
+    private String carName; //자동차이름
     private int distance = 0; //현재 전진한 거리
 
     public RacingCar(String carName) {
-        checkCarNameLength(carName);
-        this.carName = carName;
+        changeCarName(carName);
     }
 
     public RacingCar(String carName, int distance) {
-        checkCarNameLength(carName);
-        this.carName = carName;
+        changeCarName(carName);
         this.distance = distance;
     }
 
@@ -41,6 +39,12 @@ public class RacingCar implements CarStrategy {
     @Override
     public CarStrategy copy() {
         return new RacingCar(this.carName, this.distance);
+    }
+
+    //자동차 이름 변경
+    private void changeCarName(String carName) {
+        checkCarNameLength(carName);
+        this.carName = carName;
     }
 
     //레이싱에 참가하는 자동차이름이 5자를 초과하는지 체크
