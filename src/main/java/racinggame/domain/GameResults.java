@@ -4,27 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResults {
-    private final List<Integer> positions;
+    private final List<GameResult> results;
 
     public GameResults() {
-        this.positions = new ArrayList<>();
-    }
-
-    public void add(int position) {
-        positions.add(position);
+        this.results = new ArrayList<>();
     }
 
     public int carCount() {
-        return positions.size();
+        return results.size();
     }
 
-    public int getCarPosition(int carIndex) {
-        return positions.get(carIndex);
+    public GameResult getGameResult(int index) {
+        return results.get(index);
     }
 
     public void save(List<Car> cars) {
         for (Car car : cars) {
-            add(car.getPosition());
+            this.results.add(new GameResult(car.getName(), car.getPosition()));
         }
     }
 

@@ -16,7 +16,9 @@ public class ResultView {
 
     private static void printRound(GameRounds gameResults, int round) {
         for (int car = 0; car < gameResults.getCarCount(round); car++) {
-            System.out.println(getDashesByCount(gameResults.getCarPosition(round, car)));
+            String name = gameResults.getCarName(round, car);
+            int position = gameResults.getCarPosition(round, car);
+            System.out.println(name + " : " + getDashesByCount(position));
         }
         printNewLine();
     }
