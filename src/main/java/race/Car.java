@@ -20,6 +20,17 @@ public class Car {
         }
     }
 
+    public boolean isMaxPosition(int maxPosition) {
+        return forwardResult == maxPosition;
+    }
+
+    public int compareWithMaxPosition(int maxPosition) {
+        if (forwardResult > maxPosition) {
+            return forwardResult;
+        }
+        return maxPosition;
+    }
+
     private boolean checkCarForward() {
         return carForwardCheck.isForward();
     }

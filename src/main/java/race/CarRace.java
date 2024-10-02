@@ -5,6 +5,7 @@ import java.util.List;
 
 public class CarRace {
 
+    public static final int INIT_MAX_POSITION = Integer.MIN_VALUE;
     private List<Car> cars = new ArrayList<>();
     private int tryCount;
 
@@ -30,14 +31,7 @@ public class CarRace {
     public List<String> getRaceResult() {
         List<String> raceResult = new ArrayList<>();
 
-        List<Car> cars = getCars();
-        int size = cars.size();
-
-        int maxPosition = Integer.MIN_VALUE;
-
-        for (int i = 0; i < size; i++) {
-            maxPosition = compareMaxPosition(cars, i, maxPosition);
-        }
+        int maxPosition = calculateMaxPosition(cars.size(), INIT_MAX_POSITION, getCars());
 
         for (Car car : cars) {
             collectWinners(car, maxPosition, raceResult);
@@ -59,15 +53,19 @@ public class CarRace {
     }
 
     private void collectWinners(Car car, int maxPosition, List<String> raceResult) {
-        if (car.getForwardResult() == maxPosition) {
+        if (car.isMaxPosition(maxPosition)) {
             raceResult.add(car.getCarName());
         }
     }
 
-    private int compareMaxPosition(List<Car> cars, int index, int maxPosition) {
-        if (cars.get(index).getForwardResult() > maxPosition) {
-            maxPosition = cars.get(index).getForwardResult();
+    private int calculateMaxPosition(int size, int maxPosition, List<Car> cars) {
+        for (int i = 0; i < size; i++) {
+            maxPosition = compareMaxPosition(cars.get(i), maxPosition);
         }
         return maxPosition;
+    }
+
+    private int compareMaxPosition(Car car, int maxPosition) {
+        return car.compareWithMaxPosition(maxPosition);
     }
 }
