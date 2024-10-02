@@ -7,7 +7,7 @@ public class ResultView {
     public static String display(RacingCar[] racingCars) {
         StringBuilder builder = new StringBuilder();
         for (RacingCar racingCar : racingCars) {
-            builder.append(display(racingCar.getTotalForwardCounts()));
+            builder.append(display(racingCar));
             builder.append('\n');
         }
         builder.append('\n');
@@ -17,9 +17,12 @@ public class ResultView {
         return result;
     }
 
-    private static String display(int count) {
+    private static String display(RacingCar racingCar) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < count; i++) {
+        if(racingCar.getName() != null){
+            builder.append(String.format("%s : ", racingCar.getName()));
+        }
+        for (int i = 0; i < racingCar.getTotalForwardCounts(); i++) {
             builder.append(DISPLAY_CHARACTER);
         }
         return builder.toString();

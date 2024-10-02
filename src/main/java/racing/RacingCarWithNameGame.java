@@ -14,7 +14,6 @@ public class RacingCarWithNameGame {
         int totalRacingCounts = scanner.nextInt();
 
         System.out.println("실행 결과");
-
         start(totalCarNames, totalRacingCounts);
 
     }

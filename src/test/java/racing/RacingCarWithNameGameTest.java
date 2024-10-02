@@ -28,4 +28,15 @@ public class RacingCarWithNameGameTest {
             RacingCarWithNameGame.start("pobi,crong,honux1", 5);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("자동차의 이름과 상태를 화면에 출력한다. 자동차 전진 횟수는 '-' 의 개수와 같다")
+    void testDisplayResultWithCarName() {
+        RacingCar racingCar = new RacingCar("pobi", new Operator(1L));
+        for (int i = 0; i < 10; i++) {
+            racingCar.race();
+        }
+        String result = ResultView.display(new RacingCar[]{racingCar});
+        assertThat(result).isEqualTo("pobi : ---------\n\n");
+    }
 }
