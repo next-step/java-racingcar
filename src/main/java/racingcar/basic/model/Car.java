@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-    public static final int RANDOM_THRESHOLD = 4;
+    private static final int RANDOM_THRESHOLD = 4;
 
     private int position;
 
@@ -14,7 +14,7 @@ public class Car {
         }
     }
 
-    private static boolean movable(int randomNumber) {
+    private boolean movable(int randomNumber) {
         return randomNumber >= RANDOM_THRESHOLD;
     }
 
