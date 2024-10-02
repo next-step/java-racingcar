@@ -16,16 +16,16 @@ public class RacingGame {
     }
 
     public List<Map<String, Integer>> run() {
-        List<Map<String, Integer>> allStates = new ArrayList<>();
+        List<Map<String, Integer>> roundsWithCarPosition = new ArrayList<>();
         for (int i = 0; i < attempts; i++) {
             moveCars();
-            allStates.add(getCarPositions());
+            roundsWithCarPosition.add(getCarPositions());
         }
 
-        Map<String, Integer> finalStates = allStates.get(allStates.size() - 1);
+        Map<String, Integer> finalStates = roundsWithCarPosition.get(roundsWithCarPosition.size() - 1);
         determineWinners(finalStates);
 
-        return allStates;
+        return roundsWithCarPosition;
     }
 
     private void determineWinners(Map<String, Integer> finalStates) {
