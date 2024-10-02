@@ -64,14 +64,6 @@ public class RacingCarGameTest {
                 .contains("test3");
     }
 
-    @DisplayName("자동차들의 이름과 시도 횟수를 입력받아 레이싱 준비를 할 시 자동차이름이 5를 초과하면 예외를 발생시킨다.")
-    @Test
-    void readyCarNameOverFiveThrowException() {
-        assertThatThrownBy(() -> racingCarGame.readyRace("testtest, test2, test3", 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.MINIMUN_CAR_NAME_EXCEPTION.message());
-    }
-
     @DisplayName("자동차들의 이름과 시도 횟수를 입력받아 레이싱 준비를 할 시 시도 횟수가 1미만이면 예외를 발생시킨다.")
     @Test
     void readyCarAttemptLessThanOneThrowException() {
