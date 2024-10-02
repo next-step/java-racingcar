@@ -1,39 +1,35 @@
 package racingcar;
 
-import java.util.Random;
-
 public class RacingGame {
-    private static final Random RANDOM = new Random();
-    private static final int RANDOM_BOUND = 10;
-
     private RacingGame() {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    public static void play() {
-        int carCount = InputView.getCarCount();
-        int attemptCount = InputView.getAttemptCount();
-        Car[] cars = createCars(carCount);
-        ResultView.printExecuteResult();
-        for (int i = 0; i < attemptCount; i++) {
-            moveAndPrint(cars);
-            ResultView.nextAttempt();
+    public static int[][] race(int carCount, int attemptCount, MoveStrategy moveStrategy, RandomHolder randomHolder) {
+        Car[] carArray = createCars(carCount);
+        int[][] raceResults = new int[attemptCount][carCount];
+        for (int attempt = 0; attempt < attemptCount; attempt++) {
+            raceResults[attempt] = runAttempt(carArray, moveStrategy, randomHolder);
         }
+        return raceResults;
     }
 
-    private static void moveAndPrint(Car[] cars) {
-        for (Car car : cars) {
-            int randomNumber = RANDOM.nextInt(RANDOM_BOUND);
-            car.move(randomNumber);
-            ResultView.print(car.getMoveCount());
+    private static int[] runAttempt(Car[] carArray, MoveStrategy moveStrategy, RandomHolder randomHolder) {
+        int[] attemptResult = new int[carArray.length];
+        for (int i = 0; i < carArray.length; i++) {
+            int randomValue = randomHolder.getNumber();
+            carArray[i].move(moveStrategy, randomValue);
+            attemptResult[i] = carArray[i].getPosition();
         }
+        return attemptResult;
     }
 
-    private static Car[] createCars(int count) {
-        Car[] cars = new Car[count];
-        for (int i = 0; i < count; i++) {
+    private static Car[] createCars(int carCount) {
+        Car[] cars = new Car[carCount];
+        for (int i = 0; i < carCount; i++) {
             cars[i] = new Car();
         }
         return cars;
     }
+
 }

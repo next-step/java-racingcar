@@ -8,19 +8,17 @@ public class ResultView {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    public static void printExecuteResult() {
-        System.out.println();
-        System.out.println(EXECUTE_RESULT);
+    private static String printPosition(int position) {
+        return FORWARD.repeat(Math.max(0, position));
     }
 
-    public static void print(int moveCount) {
-        for (int i = 0; i < moveCount; i++) {
-            System.out.print(FORWARD);
+    public static void printHistory(int[][] histories) {
+        System.out.print("\n" + EXECUTE_RESULT + "\n");
+        for (int[] history : histories) {
+            for (int position : history) {
+                System.out.print(ResultView.printPosition(position) + "\n");
+            }
+            System.out.print("\n");
         }
-        System.out.println();
-    }
-
-    public static void nextAttempt() {
-        System.out.println();
     }
 }
