@@ -1,18 +1,11 @@
 package racingcar.service;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingCarService {
-    private final Scanner scanner = new Scanner(System.in);
 
-    public int EnterNumberOfCars() {
-        return scanner.nextInt();
-    }
-
-    public int EnterNumberOfMoves() {
-        return scanner.nextInt();
-    }
+    // 자동차 번호와 상태를 저장
+    private static final Map<Integer,String> carMovementStatuses = new HashMap<>();
 
     public int[] generateRandomNumberForMovingCar(int numberOfCars) {
         Random random = new Random();
@@ -35,5 +28,20 @@ public class RacingCarService {
         }
 
         return carForwardStatuses;
+    }
+
+    public void saveCarMovementStatuses(boolean[] carForwardStatuses) {
+        for(int i = 0; i < carForwardStatuses.length; i++) {
+            if(carMovementStatuses.get(i) == null) {
+                carMovementStatuses.put(i, carForwardStatuses[i] ? "-" : "");
+                continue;
+            }
+
+            carMovementStatuses.put(i, carMovementStatuses.get(i) + (carForwardStatuses[i] ? "-" : ""));
+        }
+    }
+
+    public Map<Integer, String> getCarMoveStatuses() {
+        return carMovementStatuses;
     }
 }

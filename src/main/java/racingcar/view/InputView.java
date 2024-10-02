@@ -2,14 +2,18 @@ package racingcar.view;
 
 import racingcar.service.RacingCarService;
 
+import java.util.Scanner;
+
 public class InputView {
-    private static final RacingCarService racingCarService = new RacingCarService();
+    private final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public int EnterNumberOfCars() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        int NumberOfCars = racingCarService.EnterNumberOfCars();
+        return scanner.nextInt();
+    }
 
+    public int EnterNumberOfMoves() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        int NumberOfMoves = racingCarService.EnterNumberOfMoves();
+        return scanner.nextInt();
     }
 }
