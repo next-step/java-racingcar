@@ -19,7 +19,7 @@ public class ResultView {
     }
 
     private void separateRound() {
-        System.out.println(ROUND_SEPARATION);
+        System.out.print(ROUND_SEPARATION);
     }
 
     public void printResult(int round)
