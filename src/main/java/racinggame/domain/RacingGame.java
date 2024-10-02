@@ -8,13 +8,17 @@ public class RacingGame {
 
     private static final int DEFAULT_BOUND = 10;
     private final Random random = new Random();
-    private List<Car> cars;
-    private GameRounds rounds;
+    private final List<Car> cars;
+    private final GameRounds rounds;
+
+    public RacingGame() {
+        this.cars = new ArrayList<>();
+        this.rounds = new GameRounds();
+    }
 
     public GameRounds start(List<String> carNames, int tryCount) {
         validateNegative(tryCount);
         initCar(carNames);
-        rounds = new GameRounds();
         for (int i = 0; i < tryCount; i++) {
             playGameRound();
         }
@@ -40,7 +44,6 @@ public class RacingGame {
     }
 
     private void initCar(List<String> carNames) {
-        cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(Car.create(carName));
         }
