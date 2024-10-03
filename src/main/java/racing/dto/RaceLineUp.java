@@ -1,8 +1,7 @@
-package racing.input;
+package racing.dto;
 
 import racing.exception.InvalidInputValueException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class RaceLineUp {

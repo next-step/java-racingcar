@@ -1,4 +1,4 @@
-package racing.race;
+package racing.domain;
 
 import java.util.Comparator;
 import java.util.List;
@@ -26,10 +26,8 @@ public class RaceResult {
     }
 
     public List<RaceRecord> topRankedRacers() {
-        int topRanked = topRankedPoint();
-
         return raceRecords.stream()
-                .filter(raceRecord -> raceRecord.totalPoint() == topRanked)
+                .filter(raceRecord -> raceRecord.totalPoint() == topRankedPoint())
                 .collect(Collectors.toUnmodifiableList());
     }
 

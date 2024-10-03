@@ -1,4 +1,4 @@
-package racing.race;
+package racing.constant;
 
 public enum RacePosition {
 

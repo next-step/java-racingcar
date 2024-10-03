@@ -1,11 +1,11 @@
-package racing.input;
+package racing.dto;
 
-public class RaceInput {
+public class RaceInfo {
 
     private final RaceLineUp raceLineUp;
     private final RaceAttempt attemptNumber;
 
-    public RaceInput(String raceLineupInput, int numOfAttempt) {
+    public RaceInfo(String raceLineupInput, int numOfAttempt) {
         this.raceLineUp = RaceLineUp.of(raceLineupInput);
         this.attemptNumber = RaceAttempt.of(numOfAttempt);
     }

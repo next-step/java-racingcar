@@ -1,8 +1,7 @@
-package racing.race;
+package racing.domain;
 
 import racing.RaceRule;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumRaceRule implements RaceRule {
