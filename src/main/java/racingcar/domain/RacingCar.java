@@ -11,4 +11,10 @@ public class RacingCar {
     public void move() {
         this.status += "-";
     }
+
+    public void move(boolean movable) {
+        if(movable){
+            move();
+        }
+    }
 }
