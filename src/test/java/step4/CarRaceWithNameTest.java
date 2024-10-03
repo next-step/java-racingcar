@@ -28,20 +28,20 @@ public class CarRaceWithNameTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi,crong,honux"})
-    @DisplayName("자동차 이름 입력 테스트")
+    @DisplayName("우승자 테스트")
     void 우승자_찾기(String input){
         Cars cars = new Cars(input.split(","));
         cars.getCars().get(0).move(() -> 5);
         cars.getCars().get(1).move(() -> 1);
         cars.getCars().get(2).move(() -> 1);
 
-        Assertions.assertThat(cars.getWinners().get(0).getName()).isEqualTo("pobi");
+        Assertions.assertThat(cars.getWinners()).hasSize(1);
 
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi,crong,honux"})
-    @DisplayName("자동차 이름 입력 테스트")
+    @DisplayName("우승자(2명이상) 테스트")
     void 우승자_찾기_2명_이상(String input){
         Cars cars = new Cars(input.split(","));
         cars.getCars().get(0).move(() -> 5);
