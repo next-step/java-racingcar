@@ -1,6 +1,6 @@
 package racinggame.ui;
 
-public class RacingMessageWriter implements MessageWriter {
+public class RacingGameMessageWriter implements MessageWriter {
     @Override
     public void write(final String message) {
         System.out.println(message);
