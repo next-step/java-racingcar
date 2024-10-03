@@ -26,7 +26,7 @@ class CarTest {
         Car car = Car.createCar();
 
         // when
-        car.move(() -> true);
+        car.move((defaultMoveEnergy) -> true);
 
         // then
         assertThat(car.getCurrentLocation()).isEqualTo(1);
@@ -39,7 +39,7 @@ class CarTest {
         Car car = Car.createCar();
 
         // when
-        car.move(() -> false);
+        car.move((defaultMoveEnergy) -> false);
 
         // then
         assertThat(car.getCurrentLocation()).isEqualTo(0);

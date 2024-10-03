@@ -4,6 +4,7 @@ import racingcar.engine.CarEngine;
 
 public class Car {
     public static final int INITIAL_LOCATION = 0;
+    public static final int DEFAULT_MOVE_ENERGY = 4;
 
     private Position position;
 
@@ -16,7 +17,7 @@ public class Car {
     }
 
     public void move(CarEngine carEngine) {
-        if (carEngine.hasEnoughPower()) {
+        if (carEngine.hasEnoughPower(DEFAULT_MOVE_ENERGY)) {
             position.add();
         }
     }
