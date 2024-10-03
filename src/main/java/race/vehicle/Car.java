@@ -1,12 +1,14 @@
 package race.vehicle;
 
+import race.util.NumberGenerator;
+
 public class Car {
     private static final int MOVE_CONDITION = 4;
 
     private int location = 1;
 
-    public void move(int number) {
-        if (isMovable(number)) {
+    public void move(NumberGenerator generator) {
+        if (isMovable(generator.getValue())) {
             this.location++;
         }
     }

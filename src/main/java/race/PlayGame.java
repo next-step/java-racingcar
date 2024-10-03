@@ -19,7 +19,7 @@ public class PlayGame {
         for(int i = 0; i< round; i++){
             for(Car car : cars){
                 resultView.printCarLocation(car.getLocation());
-                car.move(RandomNumberGenerator.getRandomGenerator().getValue());
+                car.move(RandomNumberGenerator.getRandomGenerator());
             }
             resultView.separateRound();
         }
