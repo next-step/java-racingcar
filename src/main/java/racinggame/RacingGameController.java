@@ -14,6 +14,16 @@ public class RacingGameController {
         this.moveStrategy = moveStrategy;
     }
 
+    public static void main(String[] args) {
+        InputView inputView = new ConsoleInputView();
+        ResultView resultView = new ConsoleResultView();
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+
+        RacingGameController controller = new RacingGameController(inputView, resultView, moveStrategy);
+        controller.run();
+    }
+
+
     public void run() {
         int numberOfCars = inputView.readNumberOfCars();
         int numberOfRounds = inputView.readNumberOfRounds();
