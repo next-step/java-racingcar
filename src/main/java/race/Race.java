@@ -9,7 +9,7 @@ public class Race {
     private final int round;
 
     public Race(int carCount, int roundCount) {
-        for (int i = 0; i < carCount; i++) {
+        for (int i = 1; i <= carCount; i++) {
             cars.add(new Car(i));
         }
 
