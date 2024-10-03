@@ -9,7 +9,7 @@ public final class RacingCarStatesDTO {
         this.catStates = carStates;
     }
 
-    public static RacingCarStatesDTO fromRacingCars(RacingCar[] racingCars){
+    public static RacingCarStatesDTO fromRacingCars(RacingCar[] racingCars) {
         int racingCarsNum = racingCars.length;
         RacingCarStateDTO[] carStates = new RacingCarStateDTO[racingCarsNum];
         for (int i = 0; i < racingCarsNum; i++) {
