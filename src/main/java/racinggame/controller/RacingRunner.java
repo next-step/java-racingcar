@@ -1,15 +1,18 @@
-package racinggame.domain;
+package racinggame.controller;
 
+import racinggame.domain.RacingCars;
+import racinggame.domain.RacingGame;
+import racinggame.domain.RacingGameResults;
 import racinggame.ui.RacingGameInputView;
 import racinggame.ui.RacingGameResultView;
 import racinggame.ui.RacingGameViewFactory;
 
-import java.util.List;
-
 public class RacingRunner {
     public void start() {
         final RacingGame racingGame = settingRacingGame();
-        final List<RacingGameResult> results = racingGame.play();
+
+        final RacingGameResults results = racingGame.play();
+
         final RacingGameResultView racingGameResultView = RacingGameViewFactory.createResultView(results);
         racingGameResultView.display();
     }
