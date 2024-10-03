@@ -33,11 +33,8 @@ public class RacingCarMain {
     }
 
     private static void printRoundResult(Map<String, Integer> gameResult) {
-        Set<Map.Entry<String, Integer>> entries = gameResult.entrySet();
-        for (Map.Entry<String, Integer> entry : entries) {
-            String carName = entry.getKey();
-            Integer carResult = entry.getValue();
-            ResultView.showCarNameAndResult(carName, StringUtils.repeatCharacter('-', carResult));
+        for (Map.Entry<String, Integer> entry : gameResult.entrySet()) {
+            ResultView.showCarNameAndResult(entry.getKey(), entry.getValue());
         }
         ResultView.nextLine();
     }
