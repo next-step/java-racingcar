@@ -1,10 +1,13 @@
 package racingcar;
 
+import java.util.Random;
+
 public class RacingCar {
     private int carNo;
     private int position;
 
-    static int INITIAL_POSITION =  0;
+    static Random random = new Random();
+    static int INITIAL_POSITION = 0;
 
     public RacingCar(int carNo) {
         this.carNo = carNo;
@@ -12,7 +15,10 @@ public class RacingCar {
     }
 
     public void race() {
-
+        int randomDecisionMaker = random.nextInt(10);
+        if (randomDecisionMaker >= 4) {
+            this.position++;
+        }
     }
 
     public int getCarNo() {
