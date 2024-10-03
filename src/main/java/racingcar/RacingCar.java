@@ -9,7 +9,7 @@ public class RacingCar {
     static Random random = new Random();
     static int INITIAL_POSITION = 0;
 
-    public RacingCar(int carNo) {
+    private RacingCar(int carNo) {
         this.carNo = carNo;
         this.position = INITIAL_POSITION;
     }
@@ -27,5 +27,9 @@ public class RacingCar {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public static RacingCar createWithCarNo(int carNo) {
+        return new RacingCar(carNo);
     }
 }

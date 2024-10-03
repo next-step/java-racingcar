@@ -12,7 +12,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("차량을 생성하면 position이 0입니다.")
     void newRacingCarPositionTest() {
-        RacingCar newCar = new RacingCar(0);
+        RacingCar newCar = RacingCar.createWithCarNo(0);
         Assertions.assertEquals(0, newCar.getCarNo());
     }
 
@@ -20,14 +20,14 @@ public class RacingCarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("차량을 생성할 때 지정된 carNo를 가집니다.")
     void newRacingCarCarNoTest(int carNo) {
-        RacingCar newCar = new RacingCar(carNo);
+        RacingCar newCar = RacingCar.createWithCarNo(carNo);
         Assertions.assertEquals(carNo, newCar.getCarNo());
     }
 
     @Test
     @DisplayName("race 이후에 position 이 단조증가합니다.")
     void raceMonotoneIncrementTest() {
-        RacingCar car = new RacingCar(0);
+        RacingCar car = RacingCar.createWithCarNo(0);
         int testWrapCount = 20;
         for (int i = 0; i < testWrapCount; i++) {
             int beforePosition = car.getPosition();
@@ -40,7 +40,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("race 이후에 position은 최대 1 증가합니다.")
     void racePositionIncrementByMaximumOneTest() {
-        RacingCar car = new RacingCar(0);
+        RacingCar car = RacingCar.createWithCarNo(0);
         int testWrapCount = 200;
         for (int i = 0; i < testWrapCount; i++) {
             int beforePosition = car.getPosition();
@@ -53,7 +53,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("race 이후에 position은 60프로 확률로 증가합니다")
     void racePositionIncrementsWith60PercentChanceTest() {
-        RacingCar car = new RacingCar(0);
+        RacingCar car = RacingCar.createWithCarNo(0);
         int beforePosition = car.getPosition();
         int testWrapCount = 1000;
         for (int i = 0; i < testWrapCount; i++) {

@@ -15,7 +15,7 @@ public class RacingCarSimulator {
         for (int i = 0; i < tryNumber; i++) {
             wrapResults[i] = simulateWrap(i, racingCars);
         }
-        return new RacingResultDTO(wrapResults);
+        return RacingResultDTO.create(wrapResults);
     }
 
     private static RacingWrapResultDTO simulateWrap(int wrapNo, RacingCar[] racingCars) {
@@ -23,13 +23,13 @@ public class RacingCarSimulator {
             racingCar.race();
         }
         RacingCarStatesDTO carStates = RacingCarStatesDTO.fromRacingCars(racingCars);
-        return new RacingWrapResultDTO(wrapNo, carStates);
+        return RacingWrapResultDTO.create(wrapNo, carStates);
     }
 
     private static RacingCar[] createRacingCars(int carNumber) {
         RacingCar[] racingCars = new RacingCar[carNumber];
         for (int i = 0; i < carNumber; i++) {
-            racingCars[i] = new RacingCar(i);
+            racingCars[i] = RacingCar.createWithCarNo(i);
         }
         return racingCars;
     }
