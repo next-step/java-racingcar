@@ -6,7 +6,9 @@ import racinggame.racingcar.RacingCars;
 import racinggame.racingcar.RandomMoveStrategy;
 import racinggame.racingcar.MoveStrategy;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,51 +19,54 @@ class RacingCarMovementTest {
     @DisplayName("자동차 정지 테스트")
     @Test
     void stopRacingCar() {
-        RacingCars racingCars = RacingCars.create(1, () -> false);
+        List<String> name = List.of("a");
+        RacingCars racingCars = RacingCars.create(() -> false, name);
         racingCars.moveAll();
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        assertThat(positions).containsExactly(0);
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+        assertThat(carInfo.get("a")).isEqualTo(0);
     }
 
     @DisplayName("자동차 전진 테스트")
     @Test
     void moveRacingCar() {
-        RacingCars racingCars = RacingCars.create(1, () -> true);
+        List<String> name = List.of("a");
+        RacingCars racingCars = RacingCars.create(() -> true, name);
         racingCars.moveAll();
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        assertThat(positions).containsExactly(1);
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+        assertThat(carInfo.get("a")).isEqualTo(1);
     }
 
     @DisplayName("다중 이동 테스트")
     @Test
     void moveMultipleRacingCar() {
-        RacingCars racingCars = RacingCars.create(1, () -> true);
+        List<String> name = List.of("a");
+        RacingCars racingCars = RacingCars.create(() -> true, name);
 
         for (int i = 0; i < 5; i++) {
             racingCars.moveAll();
         }
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        assertThat(positions).containsExactly(5);
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+        assertThat(carInfo.get("a")).isEqualTo(5);
     }
 
     @DisplayName("다중 자동차 테스트")
     @Test
     void testMultipleCars() {
         MoveStrategy randomMove = new RandomMoveStrategy();
-
-        RacingCars racingCars = RacingCars.create(3, randomMove);
+        List<String> names = Arrays.asList("a", "b", "c");
+        RacingCars racingCars = RacingCars.create(randomMove, names);
 
         for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
             racingCars.moveAll();
         }
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
 
-        assertThat(positions.get(0)).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
-        assertThat(positions.get(1)).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
-        assertThat(positions.get(2)).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
+        assertThat(carInfo.get("a")).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
+        assertThat(carInfo.get("b")).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
+        assertThat(carInfo.get("c")).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
     }
 }

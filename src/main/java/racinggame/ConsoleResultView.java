@@ -1,28 +1,55 @@
 package racinggame;
 
 import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
 
 public class ConsoleResultView implements ResultView {
-    private static final String EXECUTION_RESULT_MESSAGE = "실행 결과";
+    private static final String EXECUTION_ANNOUNCEMENT_MESSAGE = "실행 결과";
+    private static final String WINNER_ANNOUNCEMENT_SUFFIX = "가 최종 우승했습니다.";
+
     private static final String POSITION_MARKER = "-";
-    private static final int MIN_POSITION = 0;
-    private static final String ROUND_SEPARATOR = "\n";
+    private static final String ROUND_SEPARATOR = "";
+    private static final String COLON = ":";
 
     @Override
-    public void printRaceResults(List<Integer> positions) {
-        positions.forEach(this::printPosition);
+    public void printRaceResults(Map<String, Integer> carsInfo) {
+        carsInfo.forEach((carName, position) -> {
+            String positionMarker = createPositionMarker(position);
+            String message = formatRaceResultMessage(carName, positionMarker);
+            printMessage(message);
+        });
         printRoundSeparator();
     }
 
     @Override
-    public void printResultMessage() {
-        printMessage(EXECUTION_RESULT_MESSAGE);
+    public void printExecutionAnnouncementMessage() {
+        printMessage(EXECUTION_ANNOUNCEMENT_MESSAGE);
     }
 
-    private void printPosition(int position) {
-        int adjustedPosition = Math.max(MIN_POSITION, position);
-        String result = POSITION_MARKER.repeat(adjustedPosition == MIN_POSITION ? 1 : adjustedPosition);
-        printMessage(result);
+    @Override
+    public void printWinners(List<String> winners) {
+        String winnersMessage = formatWinnersMessage(winners);
+        printMessage(winnersMessage);
+    }
+
+    private String formatWinnersMessage(List<String> winners) {
+        String winnersNames = joinNames(winners);
+        return winnersNames + WINNER_ANNOUNCEMENT_SUFFIX;
+    }
+
+    private String joinNames(List<String> names) {
+        StringJoiner joiner = new StringJoiner(", ");
+        names.forEach(joiner::add);
+        return joiner.toString();
+    }
+
+    private String createPositionMarker(int position) {
+        return POSITION_MARKER.repeat(position);
+    }
+
+    private String formatRaceResultMessage(String carName, String positionMarker) {
+        return carName + COLON + positionMarker;
     }
 
     private void printRoundSeparator() {

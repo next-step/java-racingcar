@@ -1,8 +1,6 @@
 package racinggame.racingcar;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -12,11 +10,10 @@ public class RacingCars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static RacingCars create(int numberOfCars, MoveStrategy moveStrategy) {
-        List<RacingCar> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(RacingCar.create(moveStrategy));
-        }
+    public static RacingCars create(MoveStrategy moveStrategy, List<String> nameList) {
+        List<RacingCar> cars = nameList.stream()
+                .map(name -> RacingCar.create(moveStrategy, name))
+                .collect(Collectors.toList());
 
         return new RacingCars(cars);
     }
@@ -29,13 +26,11 @@ public class RacingCars {
         cars.forEach(RacingCar::move);
     }
 
-    public List<Integer> getCurrentPositionsRepresentation() {
-        return cars.stream()
-                .map(RacingCar::getCurrentPosition)
-                .collect(Collectors.toList());
-    }
-
-    public List<RacingCar> getCars() {
-        return Collections.unmodifiableList(cars);
+    public Map<String, Integer> getCarsInfo() {
+        Map<String, Integer> carInfo = new LinkedHashMap<>();
+        for (RacingCar car : cars) {
+            carInfo.put(car.getCarName(), car.getCurrentPosition());
+        }
+        return carInfo;
     }
 }

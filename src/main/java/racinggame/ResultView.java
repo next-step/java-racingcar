@@ -1,8 +1,10 @@
 package racinggame;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ResultView {
-    void printRaceResults(List<Integer> positions);
-    void printResultMessage();
+    void printRaceResults(Map<String, Integer> positions);
+    void printExecutionAnnouncementMessage();
+    void printWinners(List<String> winners);
 }

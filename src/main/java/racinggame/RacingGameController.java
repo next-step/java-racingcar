@@ -14,24 +14,43 @@ public class RacingGameController {
         this.moveStrategy = moveStrategy;
     }
 
-    public void run() {
-        int numberOfCars = inputView.readNumberOfCars();
-        int numberOfRounds = inputView.readNumberOfRounds();
+    public static void main(String[] args) {
+        InputView inputView = new ConsoleInputView();
+        ResultView resultView = new ConsoleResultView();
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
 
-        Race race = initializeRace(numberOfCars);
-        conductRace(race, numberOfRounds);
+        RacingGameController controller = new RacingGameController(inputView, resultView, moveStrategy);
+        controller.run();
     }
 
-    private Race initializeRace(int numberOfCars) {
-        Race race = Race.create(numberOfCars, moveStrategy);
-        resultView.printResultMessage();
+    public void run() {
+        List<String> namesOfCars = inputView.readNamesOfCars();
+        int numberOfRounds = inputView.readNumberOfRounds();
+
+        Race race = initializeRace(namesOfCars);
+        conductRace(race, numberOfRounds);
+        List<String> winners = race.determineWinners();
+        printRaceWinners(winners);
+    }
+
+    private Race initializeRace(List<String > namesOfCars) {
+        Race race = Race.create(moveStrategy, namesOfCars);
+        resultView.printExecutionAnnouncementMessage();
         return race;
     }
 
     private void conductRace(Race race, int numberOfRounds) {
         for (int i = 0; i < numberOfRounds; i++) {
-            List<Integer> roundResult = race.proceedRounds();
-            resultView.printRaceResults(roundResult);
+            conductSingleRound(race);
         }
+    }
+
+    private void conductSingleRound(Race race) {
+        race.proceedRound();
+        resultView.printRaceResults(race.collectResults());
+    }
+
+    private void printRaceWinners(List<String> winners) {
+        resultView.printWinners(winners);
     }
 }

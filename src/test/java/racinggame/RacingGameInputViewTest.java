@@ -12,8 +12,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 class RacingGameInputViewTest {
 
@@ -35,9 +37,9 @@ class RacingGameInputViewTest {
 
     @ParameterizedTest
     @CsvSource({
-            "'5\n', 5, '자동차 대수는 몇 대 인가요?'",
-            "'10\n', 10, '자동차 대수는 몇 대 인가요?'",
-            "'1\n', 1, '자동차 대수는 몇 대 인가요?'"
+            "'a,b,c,d,e\n', 5, '경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).'",
+            "'pobi,crong,honux\n', 3, '경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).'",
+            "'carr\n', 1, '경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).'"
     })
     @DisplayName("자동차 대수를 정상적으로 입력받는다")
     void readValidNumberOfCars(String input, int expected, String expectedOutput) {
@@ -45,9 +47,9 @@ class RacingGameInputViewTest {
         System.setIn(in);
 
         ConsoleInputView consoleInputView = new ConsoleInputView();
-        int numberOfCars = consoleInputView.readNumberOfCars();
+        List<String> namesOfCars = consoleInputView.readNamesOfCars();
 
-        assertThat(numberOfCars).isEqualTo(expected);
+        assertThat(namesOfCars).containsExactly(input.trim().split(","));
         assertThat(testOut.toString()).contains(expectedOutput);
     }
 
@@ -70,33 +72,18 @@ class RacingGameInputViewTest {
     }
 
     @ParameterizedTest
-    @DisplayName("음수나 0을 입력하면 재입력을 요구한다")
-    @ValueSource(strings = {"-1\n", "0\n"})
-    void readInvalidPositiveNumber(String input) {
-        String validInput = "5\n";
+    @DisplayName("5자 이상의 이름을 입력하면 재입력을 요구한다")
+    @ValueSource(strings = {"abcdef\n", "longname\n"})
+    void readInvalidCarNames(String input) {
+        String validInput = "pobi,crong\n";
         InputStream in = new ByteArrayInputStream((input + validInput).getBytes());
         System.setIn(in);
 
         ConsoleInputView consoleInputView = new ConsoleInputView();
-        int numberOfCars = consoleInputView.readNumberOfCars();
+        List<String> namesOfCars = consoleInputView.readNamesOfCars();
 
-        assertThat(numberOfCars).isEqualTo(5);
-        assertThat(testOut.toString()).contains("양수를 입력해주세요");
-    }
-
-    @Test
-    @DisplayName("문자열을 입력하면 재입력을 요구한다")
-    void readInvalidStringInput() {
-        String invalidInput = "abc\n";
-        String validInput = "5\n";
-        InputStream in = new ByteArrayInputStream((invalidInput + validInput).getBytes());
-        System.setIn(in);
-
-        ConsoleInputView consoleInputView = new ConsoleInputView();
-        int numberOfCars = consoleInputView.readNumberOfCars();
-
-        assertThat(numberOfCars).isEqualTo(5);
-        assertThat(testOut.toString()).contains("숫자를 입력해주세요");
+        assertThat(namesOfCars).containsExactly("pobi", "crong");
+        assertThat(testOut.toString()).contains("자동차 이름은 5자 이하여야 합니다");
     }
 
     @ParameterizedTest
