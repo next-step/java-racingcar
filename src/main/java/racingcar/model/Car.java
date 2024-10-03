@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.model.enums.Status;
+import racingcar.model.wrapper.CarName;
 import racingcar.util.NumberCreator;
 
 import java.util.ArrayList;
@@ -10,22 +11,30 @@ import java.util.Objects;
 
 
 public class Car {
+    private final CarName carName;
     private final List<Status> statuses;
 
-    public Car() {
+    public Car(CarName carName) {
+        this.carName = carName;
         this.statuses = new ArrayList<>();
     }
 
-    public Car(final List<Status> statuses) {
+    public Car(CarName carName, List<Status> statuses) {
+        this.carName = carName;
         this.statuses = statuses;//NOTE: 내부에서 변경해야 하므로 여기서 불변객체를 선언하면 안됨
     }
 
-    public static Car newInstance() {
-        return new Car();
+    public static Car newInstance(final CarName carName) {
+        return new Car(carName);
     }
 
     public void move(NumberCreator numberCreator) {
         this.statuses.add(numberCreator.number().status());
+    }
+
+    public List<Status> currentStatus() {
+        //NOTE: 외부에서는 변경할수 없으므로 여기서 불변객체로 리턴
+        return Collections.unmodifiableList(this.statuses);
     }
 
     @Override
@@ -33,16 +42,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(statuses, car.statuses);
+        return Objects.equals(carName, car.carName) && Objects.equals(statuses, car.statuses);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(statuses);
-    }
-
-    public List<Status> currentStatus() {
-        //NOTE: 외부에서는 변경할수 없으므로 여기서 불변객체로 리턴
-        return Collections.unmodifiableList(this.statuses);
+        return Objects.hash(carName, statuses);
     }
 }

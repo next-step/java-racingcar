@@ -3,10 +3,25 @@ package racingcar.model.wrapper;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.ForwardStatusException;
+import racingcar.model.Car;
+import racingcar.model.enums.Status;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.model.enums.Status.FORWARD;
+import static racingcar.model.enums.Status.STOP;
+import static racingcar.model.fixture.CarFixture.carName;
 
 public class ForwardStatusTest {
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    void 동등_비교(int number) {
+        ForwardStatus actual = new ForwardStatus(number);
+        ForwardStatus expected = new ForwardStatus(number);
+        assertThat(actual).isEqualTo(expected);
+    }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
@@ -26,10 +41,28 @@ public class ForwardStatusTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
-    void 동등_비교(int number) {
-        ForwardStatus actual = new ForwardStatus(number);
-        ForwardStatus expected = new ForwardStatus(number);
-        assertThat(actual).isEqualTo(expected);
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void number_값이_4_이상일_경우_전진한다(int number) {
+        // given
+        ForwardStatus forwardStatus = new ForwardStatus(number);
+
+        // when
+        Status actual = forwardStatus.status();
+
+        // then
+        assertThat(actual).isEqualTo(FORWARD);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void number_값이_4_미만일_경우_멈춘다(int number) {
+        // given
+        ForwardStatus forwardStatus = new ForwardStatus(number);
+
+        // when
+        Status actual = forwardStatus.status();
+
+        // then
+        assertThat(actual).isEqualTo(STOP);
     }
 }
