@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.modal;
 
 public class GameResult {
     private final String carName;

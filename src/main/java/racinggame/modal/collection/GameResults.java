@@ -1,4 +1,7 @@
-package racinggame.domain;
+package racinggame.modal.collection;
+
+import racinggame.domain.Car;
+import racinggame.modal.GameResult;
 
 import java.util.ArrayList;
 import java.util.List;

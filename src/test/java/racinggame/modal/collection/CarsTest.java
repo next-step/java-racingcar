@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.modal.collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
