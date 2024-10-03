@@ -1,8 +1,10 @@
 package racingcar.controller;
 
-import racingcar.service.RacingService;
+import java.util.logging.Logger;
 
 public class ResultView {
+
+    private static final Logger logger = Logger.getLogger(ResultView.class.getName());
 
     private ResultView() {
 
@@ -17,11 +19,7 @@ public class ResultView {
         return INSTANCE;
     }
 
-    public void printCars(RacingService racingService) {
-//        List<String> cars = racingService.getCars();
-//        for (String car : cars) {
-//            System.out.println(car);
-//        }
-//        System.out.println();
+    public void printRacingCarsStatus(String racingCarsStatus) {
+        logger.info(racingCarsStatus);
     }
 }
