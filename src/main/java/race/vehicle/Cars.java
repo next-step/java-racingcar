@@ -7,7 +7,7 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(int num) {
-        if(num < 2){
+        if (num < 2) {
             throw new IllegalArgumentException("게임을 진행할 수 없음");
         }
         initCars(num);
