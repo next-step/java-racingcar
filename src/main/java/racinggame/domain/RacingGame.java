@@ -36,11 +36,9 @@ public class RacingGame {
 
     private void updateWinners(GameResults gameResults, Cars cars) {
         int maxPosition = cars.getMaxPosition();
-        for (Car car : cars.getCarList()) {
-            if (car.isEqualPosition(maxPosition)) {
-                gameResults.saveWinners(car);
-            }
-        }
+        cars.getCarList().stream()
+                .filter(car -> car.isEqualPosition(maxPosition))
+                .forEach(gameResults::saveWinners);
     }
 
     private void moveCars() {
