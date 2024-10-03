@@ -1,17 +1,19 @@
-package racingCar;
+package race;
 
 import java.util.Random;
 
-public class NumberUtil {
+public class NumberPicker {
     private Random random;
 
-    public NumberUtil() {
+    public NumberPicker() {
         this.random = new Random();
     }
-    public NumberUtil(Random random) {
+
+    public NumberPicker(Random random) {
         this.random = random;
     }
-    public int getRandomInt() {
+
+    public int generateRandomNumberUnderTen() {
         return this.random.nextInt(10);
     }
 }
