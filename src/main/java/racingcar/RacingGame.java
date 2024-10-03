@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Winner;
 import racingcar.model.wrapper.CarName;
 import racingcar.model.wrapper.MovementNumber;
 import racingcar.util.PrintUtil;
@@ -28,6 +29,7 @@ public class RacingGame {
 
         ResultView resultView = new ResultView();
         resultView.printResult(result.toString());
+        resultView.printWinner(PrintUtil.winner(new Winner(cars)));
     }
 
     private static Cars createCars(List<CarName> carNames) {

@@ -10,4 +10,8 @@ public class ResultView {
         System.out.println("실행 결과");
         System.out.println(result);
     }
+
+    public void printWinner(String winner) {
+        System.out.println(winner);
+    }
 }
