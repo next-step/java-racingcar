@@ -55,7 +55,7 @@ public class RacingCarTest {
     void racePositionIncrementsWith60PercentChanceTest() {
         RacingCar car = new RacingCar(0);
         int beforePosition = car.getPosition();
-        int testWrapCount = 100;
+        int testWrapCount = 1000;
         for (int i = 0; i < testWrapCount; i++) {
             car.race();
         }
