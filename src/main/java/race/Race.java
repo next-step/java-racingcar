@@ -6,15 +6,32 @@ import java.util.Random;
 
 public class Race {
     public static final int RANDOM_UPPER_LIMIT = 10;
+    private static final int MIN_CAR_COUNT = 2;
+    private static final int MIN_GAME_COUNT = 1;
 
     public static void start() {
-        RaceInput raceInput = InputView.inputCarCountAndGameCount();
+        RaceInput raceInput = getRaceInput();
         List<RacingCar> cars = initiateCars(raceInput.carCount());
 
         ResultView.printResultTitle();
         for (int gameCount = 0; gameCount < raceInput.gameCount(); gameCount++) {
             runStopOrGoRound(cars);
         }
+    }
+
+    private static RaceInput getRaceInput() {
+        int carCount = 0;
+        int gameCount = 0;
+
+        while (carCount < MIN_CAR_COUNT) {
+            carCount = InputView.inputCarCount();
+        }
+
+        while (gameCount < MIN_GAME_COUNT) {
+            gameCount = InputView.inputGameCount();
+        }
+
+        return new RaceInput(carCount, gameCount);
     }
 
     public static List<RacingCar> initiateCars(int carCount) {
