@@ -2,9 +2,11 @@ package racing.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racing.constant.RacePosition.FORWARD;
 import static racing.constant.RacePosition.STOP;
 
@@ -18,11 +20,12 @@ public class RaceRecordTest {
     void record() {
         RaceCar car = getRaceCar();
         RaceRecord record = car.raceRecord();
+        List<Integer> results = results();
 
         assertThat(record.name()).isEqualTo(CAR_NAME);
         for (int i = 0; i < forwardResults.size(); i++) {
             assertThat(record.raceResult(i))
-                    .isEqualTo(forwardResults.get(i) ? FORWARD : STOP);
+                    .isEqualTo(results.get(i));
         }
     }
 
@@ -30,6 +33,17 @@ public class RaceRecordTest {
         RaceCar car = new RaceCar(CAR_NAME);
         forwardResults.forEach(car::race);
         return car;
+    }
+
+    private List<Integer> results() {
+        List<Integer> results = new ArrayList<>();
+        int sum = 0;
+
+        for (boolean isForward : forwardResults) {
+            sum += isForward ? FORWARD.getPoint() : STOP.getPoint();
+            results.add(sum);
+        }
+        return results;
     }
 
     @Test
@@ -44,5 +58,16 @@ public class RaceRecordTest {
 
         assertThat(result).isEqualTo(totalPoint);
         assertThat(record.name()).isEqualTo(CAR_NAME);
+    }
+
+    @Test
+    void 레이스_결과_수() {
+        RaceCar raceCar = getRaceCar();
+        RaceRecord record = raceCar.raceRecord();
+
+        assertThat(record.raceResult(forwardResults.size() - 1))
+                .isNotNull();
+        assertThatThrownBy(() -> record.raceResult(forwardResults.size()))
+                .isInstanceOf(IndexOutOfBoundsException.class);
     }
 }

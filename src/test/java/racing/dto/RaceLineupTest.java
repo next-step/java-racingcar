@@ -1,6 +1,7 @@
 package racing.dto;
 
 import org.junit.jupiter.api.Test;
+import racing.exception.InvalidInputValueException;
 
 import java.util.List;
 
@@ -34,5 +35,12 @@ public class RaceLineupTest {
     void 자동차_이름_수정_시_원본유지() {
         assertThatThrownBy(() -> names.set(names.size() - 1, ""))
                 .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void 자동차_이름_5자_초과() {
+        String input = "sadfdasfasfa,pobi";
+        assertThatThrownBy(() -> RaceLineUp.of(input))
+                .isInstanceOf(InvalidInputValueException.class);
     }
 }

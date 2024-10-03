@@ -26,10 +26,8 @@ public class RaceTrackTest {
 
         raceResult.stream().forEach(raceRecord -> {
             for (int i = 0; i < input.attemptNumber().getValue(); i++) {
-                assertThat(raceRecord.raceResult(i)).isIn(RacePosition.FORWARD, RacePosition.STOP);
+                assertThat(raceRecord.raceResult(i)).isNotNull();
             }
-            assertThat(raceRecord.raceResult(input.attemptNumber().getValue() - 1))
-                    .isInstanceOf(RacePosition.class);
         });
     }
 }
