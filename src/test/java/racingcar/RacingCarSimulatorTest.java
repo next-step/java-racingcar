@@ -8,8 +8,6 @@ import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWrapResultDTO;
 
 public class RacingCarSimulatorTest {
-
-
     @ParameterizedTest
     @ValueSource(ints = {1,3,5,7,9})
     @DisplayName("결과는 입력한 트라이 횟수와 같은 수의 wrapResult를 가집니다")
