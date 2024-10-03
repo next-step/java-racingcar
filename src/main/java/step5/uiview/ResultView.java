@@ -2,6 +2,7 @@ package step5.uiview;
 
 import step5.domain.PreparedCarGame;
 import step5.domain.car.CarStrategy;
+import step5.domain.situation.GameSituation;
 import step5.message.Message;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class ResultView {
         System.out.println(Message.WINNER.message().replace(WINNER_TARGET, String.join(COMMA, winner)));
     }
 
-    private void raceSituationResultView(List<List<CarStrategy>> raceSituation) {
-        for (List<CarStrategy> carStrategy : raceSituation) {
+    private void raceSituationResultView(GameSituation gameSituation) {
+        for (List<CarStrategy> carStrategy : gameSituation.getRaceSituation()) {
             carSituationResultView(carStrategy);
             System.out.println();
         }

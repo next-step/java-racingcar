@@ -2,13 +2,13 @@ package step5.domain.game;
 
 import step5.domain.car.CarStrategy;
 import step5.domain.car.RacingCar;
+import step5.domain.situation.GameSituation;
 import step5.message.ExceptionMessage;
 import step5.util.RandomUtil;
 import step5.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarGame implements GameStrategy {
 
@@ -27,9 +27,10 @@ public class RacingCarGame implements GameStrategy {
     }
 
     @Override
-    public void startRace() {
+    public void startRace(GameSituation gameSituation) {
         for (int i = 0; i < attemptNum; i++) {
             attemptForwardCar();
+            gameSituation.addCarStrategy(cars);
         }
     }
 
@@ -97,7 +98,7 @@ public class RacingCarGame implements GameStrategy {
     private List<String> getTopDistanceCarName(int topDistance) {
         List<String> winner = new ArrayList<>();
         for (CarStrategy car : cars) {
-            if(car.isWinner(topDistance)) {
+            if (car.isWinner(topDistance)) {
                 winner.add(car.getCarName());
             }
         }
@@ -114,13 +115,6 @@ public class RacingCarGame implements GameStrategy {
     private void checkMinimumAttempt() {
         if (this.attemptNum < miniMumAttemptNum)
             throw new IllegalArgumentException(ExceptionMessage.MINIMUN_ATTEMPT_EXCEPTION.message());
-    }
-
-    //CarStrategy 객체를 새로운주소로 copy한다.
-    private List<CarStrategy> copyCarStrategy() {
-        return this.cars.stream()
-                .map(CarStrategy::copy)
-                .collect(Collectors.toList());
     }
 
 }
