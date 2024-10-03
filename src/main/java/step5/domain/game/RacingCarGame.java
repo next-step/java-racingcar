@@ -1,7 +1,7 @@
-package step5.game;
+package step5.domain.game;
 
-import step5.car.CarStrategy;
-import step5.car.RacingCar;
+import step5.domain.car.CarStrategy;
+import step5.domain.car.RacingCar;
 import step5.message.ExceptionMessage;
 import step5.util.RandomUtil;
 import step5.util.StringUtil;
@@ -16,8 +16,6 @@ public class RacingCarGame implements GameStrategy {
     private final static int miniMumCarNum = 2; //레이싱 시작을 위한 최소 자동차 수
     private final static int miniMumAttemptNum = 1; //레이싱 시작을 위한 최소 시도 횟수
 
-    private final List<List<CarStrategy>> raceSituation = new ArrayList<>();
-
     private List<CarStrategy> cars = new ArrayList<>();
     private int attemptNum;
 
@@ -30,10 +28,8 @@ public class RacingCarGame implements GameStrategy {
 
     @Override
     public void startRace() {
-        checkRestart();
         for (int i = 0; i < attemptNum; i++) {
             attemptForwardCar();
-            raceSituation.add(copyCarStrategy());
         }
     }
 
@@ -56,13 +52,7 @@ public class RacingCarGame implements GameStrategy {
     //우승자의 이름을 가져온다.
     @Override
     public List<String> winnerRace() {
-        checkStart();
         return getTopDistanceCarName(getTopDistance());
-    }
-
-    @Override
-    public List<List<CarStrategy>> getRaceSituation() {
-        return raceSituation;
     }
 
     //차를 전진시킬지 결정한다.
@@ -124,18 +114,6 @@ public class RacingCarGame implements GameStrategy {
     private void checkMinimumAttempt() {
         if (this.attemptNum < miniMumAttemptNum)
             throw new IllegalArgumentException(ExceptionMessage.MINIMUN_ATTEMPT_EXCEPTION.message());
-    }
-
-    //레이싱 재시작하는지를 체크한다.
-    private void checkRestart() {
-        if (!this.raceSituation.isEmpty())
-            throw new IllegalArgumentException(ExceptionMessage.GAME_ALREADY_START.message());
-    }
-
-    //시작을 했는지 안했는지 체크한다.
-    protected void checkStart() {
-        if (this.raceSituation.isEmpty())
-            throw new IllegalArgumentException(ExceptionMessage.GAME_NOT_START.message());
     }
 
     //CarStrategy 객체를 새로운주소로 copy한다.

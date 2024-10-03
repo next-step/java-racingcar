@@ -1,7 +1,7 @@
 package step5.uiview;
 
-import step5.car.CarStrategy;
-import step5.game.PreparedCarGame;
+import step5.domain.PreparedCarGame;
+import step5.domain.car.CarStrategy;
 import step5.message.Message;
 
 import java.util.List;

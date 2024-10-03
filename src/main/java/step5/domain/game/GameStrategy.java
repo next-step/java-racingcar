@@ -1,6 +1,4 @@
-package step5.game;
-
-import step5.car.CarStrategy;
+package step5.domain.game;
 
 import java.util.List;
 
@@ -15,7 +13,5 @@ public interface GameStrategy {
     void attemptForwardCar();
 
     List<String> winnerRace();
-
-    List<List<CarStrategy>>  getRaceSituation();
 
 }

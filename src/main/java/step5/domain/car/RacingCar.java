@@ -1,4 +1,4 @@
-package step5.car;
+package step5.domain.car;
 
 import step5.message.ExceptionMessage;
 

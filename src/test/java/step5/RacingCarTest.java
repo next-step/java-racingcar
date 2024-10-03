@@ -3,8 +3,8 @@ package step5;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.car.CarStrategy;
-import step5.car.RacingCar;
+import step5.domain.car.CarStrategy;
+import step5.domain.car.RacingCar;
 import step5.message.ExceptionMessage;
 
 import static org.assertj.core.api.Assertions.assertThat;

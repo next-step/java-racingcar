@@ -1,4 +1,4 @@
-package step5.car;
+package step5.domain.car;
 
 public interface CarStrategy {
 

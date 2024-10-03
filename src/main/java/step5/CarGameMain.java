@@ -1,8 +1,8 @@
 package step5;
 
-import step5.game.GameStrategy;
-import step5.game.PreparedCarGame;
-import step5.game.RacingCarGame;
+import step5.domain.PreparedCarGame;
+import step5.domain.game.GameStrategy;
+import step5.domain.game.RacingCarGame;
 import step5.uiview.InputView;
 import step5.uiview.ResultView;
 
@@ -18,17 +18,18 @@ public class CarGameMain {
         String carName = inputView.inputCarName();
         int attemptNum = inputView.inputAttemptNum();
 
-        carGame.setGameStrategy(racingCarGame());
+        carGame.ready(racingCarGame(carName, attemptNum));
 
-        carGame.ready(carName, attemptNum);
         carGame.startRace();
 
         resultView.resultView(carGame);
 
     }
 
-    private static GameStrategy racingCarGame() {
-        return new RacingCarGame();
+    private static GameStrategy racingCarGame(String carName, int attemptNum) {
+        RacingCarGame carGame = new RacingCarGame();
+        carGame.readyRace(carName, attemptNum);
+        return carGame;
     }
 
 }

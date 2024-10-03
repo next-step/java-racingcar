@@ -3,9 +3,9 @@ package step5;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.car.CarStrategy;
-import step5.car.RacingCar;
-import step5.game.RacingCarGame;
+import step5.domain.car.CarStrategy;
+import step5.domain.car.RacingCar;
+import step5.domain.game.RacingCarGame;
 import step5.message.ExceptionMessage;
 
 import java.util.ArrayList;
@@ -57,11 +57,7 @@ public class RacingCarGameTest {
             cars.add(createCar("test" + i, i));
         }
 
-        RacingCarGame carGame = new RacingCarGame(cars){
-            @Override
-            public void checkStart() {
-            }
-        }; //테스트시 예외를 벗어나기 위한 Override
+        RacingCarGame carGame = new RacingCarGame(cars); //테스트시 예외를 벗어나기 위한 Override
 
         List<String> winners = carGame.winnerRace();
 
