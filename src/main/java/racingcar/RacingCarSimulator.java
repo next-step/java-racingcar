@@ -22,7 +22,7 @@ public class RacingCarSimulator {
         for (RacingCar racingCar : racingCars) {
             racingCar.race();
         }
-        RacingCarStatesDTO carStates = new RacingCarStatesDTO(racingCars);
+        RacingCarStatesDTO carStates = RacingCarStatesDTO.fromRacingCars(racingCars);
         return new RacingWrapResultDTO(wrapNo, carStates);
     }
 
