@@ -6,13 +6,20 @@
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
 ## 기능 목록
-- [x] 사용자 입력 받기 (자동차 대수, 이동 횟수)
-- [x] 자동차 전진 하기
-  - [x] random 값 생성 (0~9)
-  - [x] 전진 조건 구현 (4 이상)
-- [x] UI 출력
-  - [x] 입력 UI
-  - [x] 자동차 상태 UI
+- [x] 사용자 입력 받기 (InputUtils)
+  - [ ] 자동차 이름 (InputUtils)
+    - [ ] 쉼표로 구분 (InputUtils)
+  - [x] 시도 횟수
+- [x] 자동차 전진 하기 (Car) 
+  - [x] 전진 조건 구현 (4 이상) (Car)
+- [ ] 값 생성 (NumberGenerator)
+  - [x] 랜덤 값 생성 (RandomNumberGenerator)
+- [ ] 게임 진행(PlayGame)
+  - [x] 자동차 상태 UI 출력 (ResultView)
+    - [ ] 자동차 이름 출력 (ResulView)
+  - [x] 자동차 전진 (Car)
+  - [ ] 우승자 출력(1명 이상) (ResultView)
+  - [ ] 우승자 판별 (Cars)
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
