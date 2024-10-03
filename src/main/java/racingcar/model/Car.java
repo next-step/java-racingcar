@@ -49,4 +49,8 @@ public class Car {
     public int hashCode() {
         return Objects.hash(carName, statuses);
     }
+
+    public CarName carName() {
+        return this.carName;
+    }
 }

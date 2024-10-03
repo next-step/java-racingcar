@@ -1,11 +1,13 @@
 package racingcar.model.wrapper;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.CarNameException;
+
+import static racingcar.model.fixture.CarFixture.carName;
 
 public class CarNameTest {
     @ParameterizedTest
@@ -14,6 +16,16 @@ public class CarNameTest {
         Assertions.assertThatNoException().isThrownBy(() -> {
             CarName carName = new CarName(name);
         });
+    }
+
+    @Test
+    void 동등_비교() {
+        // given
+        String name = "name";
+        // when
+        CarName actual = new CarName(name);
+        // then
+        Assertions.assertThat(actual).isEqualTo(carName);
     }
 
     @ParameterizedTest
@@ -32,4 +44,12 @@ public class CarNameTest {
         }).isInstanceOf(CarNameException.class).hasMessage("자동차 이름은 빈값일 수 없습니다.");
     }
 
+    @Test
+    void 자동차_이름을_출력한다() {
+        // given
+        // when
+        String actual = carName.name();
+        // then
+        Assertions.assertThat(actual).isEqualTo("name");
+    }
 }

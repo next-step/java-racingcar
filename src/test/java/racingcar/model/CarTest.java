@@ -97,6 +97,19 @@ public class CarTest {
     }
 
     @Test
+    void 자동차의_이름을_출력한다() {
+        // given
+        String name = "name";
+        Car car = new Car(new CarName(name));
+
+        // when
+        CarName actual = car.carName();
+
+        // then
+        assertThat(actual).isEqualTo(carName);
+    }
+
+    @Test
     void 자동차_상태들을_외부에서_접근하여_변경할수_없다() {
         // given
         Car car = new Car(carName);

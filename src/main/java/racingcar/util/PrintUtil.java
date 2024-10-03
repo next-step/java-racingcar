@@ -12,6 +12,7 @@ public class PrintUtil {
     public static final String LINE_BREAK = "\n";
     public static final String DASH = "-";
     public static final String EMPTY_STRING = "";
+    public static final String COLON = " : ";
 
     public static String result(Cars cars) {
         return carsStatuses(cars) + LINE_BREAK;
@@ -25,10 +26,13 @@ public class PrintUtil {
     }
 
     private static String carStatus(Car car) {
-        return car.currentStatus()
+        String name = car.carName()
+                .name();
+        String currentStatus = car.currentStatus()
                 .stream()
                 .map(PrintUtil::convertPrintForwardStatus)
                 .collect(Collectors.joining());
+        return name + COLON + currentStatus;
     }
 
     private static String convertPrintForwardStatus(Status status) {
