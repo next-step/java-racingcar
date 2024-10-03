@@ -14,7 +14,7 @@ public class Cars {
         initCars(names);
     }
 
-    void initCars(String[] names) {
+    private void initCars(String[] names) {
         for (String name : names) {
             cars.add(new Car(name));
         }
