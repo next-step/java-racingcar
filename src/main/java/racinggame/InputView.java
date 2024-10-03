@@ -1,6 +1,8 @@
 package racinggame;
 
+import java.util.List;
+
 public interface InputView {
-    int readNumberOfCars();
+    List<String> readNamesOfCars();
     int readNumberOfRounds();
 }
