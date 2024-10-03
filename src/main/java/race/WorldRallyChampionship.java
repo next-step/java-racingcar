@@ -14,7 +14,8 @@ public class WorldRallyChampionship {
     public void openWordRallyChampionShip() {
         readyCarRacing();
         racingCarGame.startRace();
-        racingCarGame.notifyChampionWinner();
+        List<RacingCar> winners = racingCarGame.findWinners();
+        racingCarGame.notifyChampionWinner(winners);
         closeRace();
     }
 

@@ -37,7 +37,7 @@ public class RacingCarTest {
         racingCar.moveForward();
         racingCar.moveForward();
 
-        assertThat(racingCar.checkSamePosition(2)).isTrue();
+        assertThat(racingCar.hasSamePosition(2)).isTrue();
     }
 
     @Test

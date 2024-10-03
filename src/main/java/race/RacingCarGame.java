@@ -14,6 +14,11 @@ public class RacingCarGame {
         this.raceCount = raceCount;
     }
 
+    public RacingCarGame(List<RacingCar> racingCars) {
+        this.racingCars = List.copyOf(racingCars);
+        this.raceCount = 1;
+    }
+
     public void startRace() {
         System.out.println("실행 결과");
         IntStream.range(0, raceCount).forEach(i -> race(this.racingCars));
@@ -26,15 +31,14 @@ public class RacingCarGame {
         resultView.printRaceCondition(racingCars);
     }
 
-    public void notifyChampionWinner() {
-        int largestMovement = findLargestMovement();
-        List<RacingCar> winners = findWinners(largestMovement);
+    public void notifyChampionWinner(List<RacingCar> winners) {
         resultView.printChampionWinner(winners);
     }
 
-    private List<RacingCar> findWinners(int largestMovement) {
+    public List<RacingCar> findWinners() {
+        int largestMovement = findLargestMovement();
         return racingCars.stream()
-                .filter(car -> car.checkSamePosition(largestMovement))
+                .filter(car -> car.hasSamePosition(largestMovement))
                 .collect(Collectors.toList());
     }
 

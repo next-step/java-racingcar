@@ -1,8 +1,10 @@
 package race;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private final Scanner scanner;
@@ -19,12 +21,19 @@ public class InputView {
     public InputView() {
         this(new Scanner(System.in));
     }
+
     public List<String> receiveCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String carNamesString = scanner.nextLine();
-        List<String> carNames = List.of(carNamesString.split(CAR_NAME_SPLIT_REGEX));
-        validateCarNamesCount(carNames);
-        return carNames;
+        return Arrays.stream(carNamesString.split(","))
+                .map(String::trim)
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        list -> {
+                            validateCarNamesCount(list);
+                            return List.copyOf(list);
+                        }));
+
+
     }
 
     private void validateCarNamesCount(List<String> carNames) {
@@ -38,24 +47,29 @@ public class InputView {
 
         while (true) {
             try {
-                int raceCount = scanner.nextInt();
-                validateRaceCount(raceCount);
-                return raceCount;
+                return getValidRaceCount();
             } catch (InputMismatchException e) {
-                throw new InputMismatchException("1 ~ 9 사이의 유효한 숫자를 입력 해주세요.");
+                System.out.println("1 ~ 9 사이의 유효한 숫자를 입력 해주세요.");
+                scanner.next();
             }
+        }
+    }
+
+    private int getValidRaceCount() {
+        int raceCount = scanner.nextInt();
+        validateRaceCount(raceCount);
+        return raceCount;
+    }
+
+    private void validateRaceCount(int raceCount) {
+        if (raceCount < MIN_RACE_COUNT || raceCount > MAX_RACE_COUNT) {
+            throw new IllegalArgumentException("1 ~ 9 사이의 양수를 입력해주세요.");
         }
     }
 
     public void closeScanner() {
         if (scanner != null) {
             scanner.close();
-        }
-    }
-
-    private void validateRaceCount(int raceCount) {
-        if (raceCount < MIN_RACE_COUNT || raceCount > MAX_RACE_COUNT) {
-            throw new IllegalArgumentException("우");
         }
     }
 }

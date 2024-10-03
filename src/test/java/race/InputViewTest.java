@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,14 +35,13 @@ public class InputViewTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"test", "/", "10ad"})
-    @DisplayName("경주 횟수가 숫자로 입력되지 않을 경우 InputMismatchException이 발생한다.")
+    @DisplayName("경주 횟수가 숫자로 입력되지 않을 경우 NoSuchElementException이 발생한다.")
     public void givenRaceCountIsWrong_shouldReturnInputMismatchException(String input) {
         Scanner scanner = new Scanner(input);
         InputView inputView = new InputView(scanner);
 
         assertThatThrownBy(inputView::receiveRaceCount)
-                .isInstanceOf(InputMismatchException.class)
-                .hasMessage("1 ~ 9 사이의 유효한 숫자를 입력 해주세요.");
+                .isInstanceOf(NoSuchElementException.class);
     }
 
     @ParameterizedTest
