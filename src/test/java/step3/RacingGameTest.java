@@ -27,4 +27,14 @@ class RacingGameTest {
 			assertThat(car.getMoveTimes()).isEqualTo(moveCount);
 		}
 	}
+
+	@Test
+	@DisplayName("이동을 시도 할 시 4 이상이면 움직이고 4 미만일시 움직이지 않는 테스트")
+	void carRandomMoveTest() {
+		Car car = new Car();
+		car.move(3);
+		assertThat(car.getPosition()).isEqualTo(0);
+		car.move(5);
+		assertThat(car.getPosition()).isEqualTo(1);
+	}
 }
