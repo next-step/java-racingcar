@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
     public static final String CAR_COUNT_REQUEST_STATEMENT = "자동차 대수는 몇 대 인가요? (2 이상의 숫자 입력)";
-    public static final String RANDOM_STOP_OR_GO_COUNT_REQUEST_STATEMENT = "시도할 회수는 몇 회 인가요? (1 이상의 숫자 입력)";
+    public static final String GAME_COUNT_REQUEST_STATEMENT = "시도할 회수는 몇 회 인가요? (1 이상의 숫자 입력)";
     public static final int MIN_CAR_COUNT = 2;
     public static final int MIN_RANDOM_STOP_OR_GO_COUNT = 1;
 
@@ -15,7 +15,7 @@ public class InputView {
         while (carCount < MIN_CAR_COUNT || gameCount < MIN_RANDOM_STOP_OR_GO_COUNT) {
             System.out.println(CAR_COUNT_REQUEST_STATEMENT);
             carCount = getInput();
-            System.out.println(RANDOM_STOP_OR_GO_COUNT_REQUEST_STATEMENT);
+            System.out.println(GAME_COUNT_REQUEST_STATEMENT);
             gameCount = getInput();
         }
 
