@@ -51,4 +51,5 @@ public class CarRaceWithNameTest {
         Assertions.assertThat(cars.getWinners()).hasSize(2);
 
     }
+
 }

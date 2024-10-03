@@ -61,4 +61,5 @@ class StringAddCalculatorTest {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
                 .isInstanceOf(RuntimeException.class);
     }
+
 }

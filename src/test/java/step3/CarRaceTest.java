@@ -50,4 +50,5 @@ public class CarRaceTest {
 
         assertThat(car.getLocation()).isEqualTo(1);
     }
+
 }

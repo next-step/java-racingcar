@@ -27,4 +27,5 @@ public class InputUtils {
         Scanner scanner = new Scanner(System.in);
         return scanner.next().split(",");
     }
+
 }

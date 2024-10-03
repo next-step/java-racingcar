@@ -19,8 +19,8 @@
   - [x] 자동차 상태 UI 출력 (ResultView)
     - [x] 자동차 이름 출력 (ResulView)
   - [x] 자동차 전진 (Car)
-  - [ ] 우승자 출력(1명 이상) (ResultView)
-  - [ ] 우승자 판별 (Cars)
+  - [x] 우승자 출력(1명 이상) (ResultView)
+  - [x] 우승자 판별 (Cars)
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
