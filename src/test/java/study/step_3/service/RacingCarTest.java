@@ -1,5 +1,6 @@
 package study.step_3.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -14,8 +15,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RacingCarTest {
 
-    RacingCar racingCar = new RacingCar();
-    Random random = new Random();
+    RacingCar racingCar;
+    Random random;
+
+    @BeforeEach
+    void setUp() {
+        racingCar = new RacingCar();
+        random = new Random();
+    }
 
     @DisplayName("전진하는 조건 값의 범위는 0부터 9까지이다.")
     @ParameterizedTest
@@ -56,4 +63,21 @@ class RacingCarTest {
         //when & then
         assertFalse(randomResult > standard);
     }
+
+    @DisplayName("랜덤 값의 범위와 기준값을 파라미터로 받고 파라미터 값 이상일 경우 distance가 1 증가한다.")
+    @ParameterizedTest
+    @CsvSource({"5,0", "10,0"})
+    void canDrive(int bound, int standard) {
+        // when & then
+        assertThat(racingCar.drive(bound, standard)).isEqualTo(1);
+    }
+
+    @DisplayName("랜덤 값의 범위와 기준값을 파라미터로 받고 파라미터 값 이하일 경우 distance는 증가하지 않는다.")
+    @ParameterizedTest
+    @CsvSource({"5,6", "10,11"})
+    void cantDrive(int bound, int standard) {
+        // when & then
+        assertThat(racingCar.drive(bound, standard)).isEqualTo(0);
+    }
+
 }
