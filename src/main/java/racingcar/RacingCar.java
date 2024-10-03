@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCar {
-    private int carNo;
+    private final int carNo;
     private int position;
 
     static Random random = new Random();
