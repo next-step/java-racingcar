@@ -14,7 +14,7 @@ public class ResultView {
     }
 
     private static void printWrapResults(RacingResultDTO result) {
-        for (RacingWrapResultDTO wrapResult: result.wrapResults) {
+        for (RacingWrapResultDTO wrapResult : result.wrapResults) {
             RacingCarStatesDTO carStates = wrapResult.carStates;
             printCarSates(carStates);
             addBlankLine();
@@ -22,7 +22,7 @@ public class ResultView {
     }
 
     private static void printCarSates(RacingCarStatesDTO carStates) {
-        for(RacingCarStateDTO carState : carStates.catStates) {
+        for (RacingCarStateDTO carState : carStates.catStates) {
             printCarSate(carState);
         }
     }
