@@ -19,7 +19,7 @@ class RacingCarMovementTest {
     @Test
     void stopRacingCar() {
         List<String> name = List.of("a");
-        RacingCars racingCars = RacingCars.create(1, () -> false, name);
+        RacingCars racingCars = RacingCars.create(() -> false, name);
         racingCars.moveAll();
 
         List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
@@ -30,7 +30,7 @@ class RacingCarMovementTest {
     @Test
     void moveRacingCar() {
         List<String> name = List.of("a");
-        RacingCars racingCars = RacingCars.create(1, () -> true, name);
+        RacingCars racingCars = RacingCars.create(() -> true, name);
         racingCars.moveAll();
 
         List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
@@ -41,7 +41,7 @@ class RacingCarMovementTest {
     @Test
     void moveMultipleRacingCar() {
         List<String> name = List.of("a");
-        RacingCars racingCars = RacingCars.create(1, () -> true, name);
+        RacingCars racingCars = RacingCars.create(() -> true, name);
 
         for (int i = 0; i < 5; i++) {
             racingCars.moveAll();
@@ -56,7 +56,7 @@ class RacingCarMovementTest {
     void testMultipleCars() {
         MoveStrategy randomMove = new RandomMoveStrategy();
         List<String> names = Arrays.asList("a", "b", "c");
-        RacingCars racingCars = RacingCars.create(3, randomMove, names);
+        RacingCars racingCars = RacingCars.create(randomMove, names);
 
         for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
             racingCars.moveAll();

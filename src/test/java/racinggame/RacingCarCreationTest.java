@@ -17,7 +17,7 @@ class RacingCarCreationTest {
     void singleCarCreation() {
         MoveStrategy dummyStrategy = () -> false;
         List<String> nameList = List.of("a");
-        RacingCars racingCars = RacingCars.create(1, dummyStrategy, nameList);
+        RacingCars racingCars = RacingCars.create(dummyStrategy, nameList);
 
         assertThat(racingCars.count()).isEqualTo(1);
         assertThat(racingCars.getCarNames()).containsOnly("a");
@@ -29,7 +29,7 @@ class RacingCarCreationTest {
     void multipleCarCreation() {
         MoveStrategy dummyStrategy = () -> false;
         List<String> nameList = Arrays.asList("a", "b", "c");
-        RacingCars racingCars = RacingCars.create(3, dummyStrategy, nameList);
+        RacingCars racingCars = RacingCars.create(dummyStrategy, nameList);
 
         assertThat(racingCars.count()).isEqualTo(3);
         assertThat(racingCars.getCarNames()).isEqualTo(nameList);

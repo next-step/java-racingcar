@@ -12,11 +12,10 @@ public class RacingCars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static RacingCars create(int numberOfCars, MoveStrategy moveStrategy, List<String> nameList) {
-        List<RacingCar> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(RacingCar.create(moveStrategy, nameList.get(i)));
-        }
+    public static RacingCars create(MoveStrategy moveStrategy, List<String> nameList) {
+        List<RacingCar> cars = nameList.stream()
+                .map(name -> RacingCar.create(moveStrategy, name))
+                .collect(Collectors.toList());
 
         return new RacingCars(cars);
     }

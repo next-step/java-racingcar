@@ -9,8 +9,8 @@ public class Race {
         this.racingCars = racingCars;
     }
 
-    public static Race create(int numberOfCars, MoveStrategy moveStrategy) {
-        RacingCars racingcars = RacingCars.create(numberOfCars, moveStrategy);
+    public static Race create(MoveStrategy moveStrategy, List<String> carNames) {
+        RacingCars racingcars = RacingCars.create(moveStrategy, carNames);
         return new Race(racingcars);
     }
 
