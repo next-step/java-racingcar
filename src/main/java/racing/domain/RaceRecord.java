@@ -9,7 +9,7 @@ public class RaceRecord {
     private final List<RacePosition> results;
     private final String name;
 
-    private Integer totalPoint;
+    private Integer pointTotal;
 
     public RaceRecord(List<RacePosition> results) {
         this.results = results;
@@ -30,9 +30,9 @@ public class RaceRecord {
     }
 
     public int totalPoint() {
-        if (totalPoint == null) {
-            totalPoint = results.stream().mapToInt(RacePosition::getPoint).sum();
+        if (pointTotal == null) {
+            pointTotal = results.stream().mapToInt(RacePosition::getPoint).sum();
         }
-        return totalPoint;
+        return pointTotal;
     }
 }
