@@ -17,7 +17,7 @@ public class RaceWinners {
                 .orElse(Movement.DEFAULT_COUNT);
 
         return cars.stream()
-                .filter(car -> car.getMovement() == maxMovement)
+                .filter(car -> car.isSameMaxMovement(maxMovement))
                 .collect(Collectors.toList());
     }
 

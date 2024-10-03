@@ -27,6 +27,10 @@ public class Car {
         }
     }
 
+    public boolean isSameMaxMovement(final int maxMovement) {
+        return maxMovement == getMovement();
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
