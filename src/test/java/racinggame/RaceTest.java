@@ -10,6 +10,7 @@ import racinggame.racingcar.RandomMoveStrategy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Map;
 
 class RaceTest {
 
@@ -20,19 +21,17 @@ class RaceTest {
     })
     @DisplayName("주어진 자동차 수로 경주를 생성하고 지정된 라운드 수만큼 진행한다")
     void createAndProceedRace(String nameInput, int numberOfRounds) {
-//        MoveStrategy moveStrategy = new RandomMoveStrategy();
-//        List<String> names = List.of(nameInput.split(","));
-//        Race race = Race.create(moveStrategy, names);
-//
-//        for (int round = 0; round < numberOfRounds; round++) {
-////            List<Integer> roundResult = race.proceedRounds();
-//            final int currentRound = round;
-//
-//            assertThat(roundResult).hasSize(names.size());
-//            assertThat(roundResult).allSatisfy(position ->
-//                    assertThat(position).isBetween(0, currentRound + 1)
-//            );
-//        }
-    }
+        List<String> carNames = List.of(nameInput.split(","));
+        MoveStrategy moveStrategy = new RandomMoveStrategy(); // 모든 자동차가 매 라운드마다 전진하도록 설정
+        Race race = Race.create(moveStrategy, carNames);
 
+        for (int i = 0; i < numberOfRounds; i++) {
+            race.proceedRound();
+        }
+
+        Map<String, Integer> results = race.collectResults();
+
+        assertThat(results).hasSize(carNames.size());
+        carNames.forEach(carName -> assertThat(results.get(carName)).isBetween(0, numberOfRounds));
+    }
 }

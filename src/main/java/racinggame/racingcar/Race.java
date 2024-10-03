@@ -1,6 +1,7 @@
 package racinggame.racingcar;
 
 import java.util.List;
+import java.util.Map;
 
 public class Race {
     private final RacingCars racingCars;
@@ -14,8 +15,11 @@ public class Race {
         return new Race(racingcars);
     }
 
-    public List<Integer> proceedRounds() {
+    public void proceedRound() {
         racingCars.moveAll();
-        return racingCars.getCurrentPositionsRepresentation();
+    }
+
+    public Map<String, Integer> collectResults() {
+        return racingCars.getCarsInfo();
     }
 }

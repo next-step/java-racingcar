@@ -27,7 +27,7 @@ public class RacingCars {
     }
 
     public Map<String, Integer> getCarsInfo() {
-        Map<String, Integer> carInfo = new HashMap<>();
+        Map<String, Integer> carInfo = new LinkedHashMap<>();
         for (RacingCar car : cars) {
             carInfo.put(car.getCarName(), car.getCurrentPosition());
         }

@@ -39,8 +39,12 @@ public class RacingGameController {
 
     private void conductRace(Race race, int numberOfRounds) {
         for (int i = 0; i < numberOfRounds; i++) {
-            List<Integer> roundResult = race.proceedRounds();
-            resultView.printRaceResults(roundResult);
+            conductSingleRound(race);
         }
+    }
+
+    private void conductSingleRound(Race race) {
+        race.proceedRound();
+        resultView.printRaceResults(race.collectResults());
     }
 }
