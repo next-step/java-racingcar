@@ -20,6 +20,17 @@ public class RaceCar {
     }
 
     public RaceRecord raceRecord() {
-        return new RaceRecord(name, List.copyOf(results));
+        return new RaceRecord(name, List.of(accumulatedPoints()));
+    }
+
+    private Integer[] accumulatedPoints() {
+        Integer[] accumulatedPoints = new Integer[results.size()];
+        int accumulatedPoint = 0;
+
+        for (int i = 0; i < results.size(); i++) {
+            accumulatedPoint += results.get(i).getPoint();
+            accumulatedPoints[i] = accumulatedPoint;
+        }
+        return accumulatedPoints;
     }
 }

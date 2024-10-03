@@ -1,27 +1,23 @@
 package racing.domain;
 
-import racing.constant.RacePosition;
-
-import java.util.*;
+import java.util.List;
 
 public class RaceRecord {
 
-    private final List<RacePosition> results;
+    private final List<Integer> results;
     private final String name;
 
-    private Integer pointTotal;
-
-    public RaceRecord(List<RacePosition> results) {
+    public RaceRecord(List<Integer> results) {
         this.results = results;
         this.name = "";
     }
 
-    public RaceRecord(String name, List<RacePosition> results) {
+    public RaceRecord(String name, List<Integer> results) {
         this.name = name;
         this.results = results;
     }
 
-    public RacePosition raceResult(int attempt) {
+    public int raceResult(int attempt) {
         return results.get(attempt);
     }
 
@@ -30,9 +26,6 @@ public class RaceRecord {
     }
 
     public int totalPoint() {
-        if (pointTotal == null) {
-            pointTotal = results.stream().mapToInt(RacePosition::getPoint).sum();
-        }
-        return pointTotal;
+        return results.get(results.size() - 1);
     }
 }

@@ -1,11 +1,13 @@
 package racing.view.result;
 
+import racing.constant.RacePosition;
 import racing.domain.RaceRecord;
 import racing.domain.RaceResult;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
@@ -14,20 +16,23 @@ public class ResultView {
     public void result(int numOfAttempt, RaceResult raceResult) {
         System.out.println("실행 결과");
 
-        String[] results = new String[raceResult.count()];
-        Arrays.fill(results, "");
         for (int i = 0; i < numOfAttempt; i++) {
-            printRace(raceResult, results, i);
+            printRace(raceResult, i);
             System.out.println();
         }
         printTopRankedRacers(raceResult);
     }
 
-    private void printRace(RaceResult raceResult, String[] results, int attempt) {
-        for (int j = 0; j < raceResult.count(); j++) {
-            results[j] += raceResult.raceRecord(j).raceResult(attempt).getResultMark();
-            System.out.println(raceResult.raceRecord(j).name() + " : " + results[j]);
+    private void printRace(RaceResult raceResult, int attempt) {
+        for (int i = 0; i < raceResult.count(); i++) {
+            int position = raceResult.raceRecord(i).raceResult(attempt);
+            System.out.println(raceResult.raceRecord(i).name() + " : " + raceMark(position));
         }
+    }
+
+    private String raceMark(int position) {
+        return IntStream.range(0, position)
+                .mapToObj(i -> RacePosition.FORWARD.getResultMark()).collect(Collectors.joining());
     }
 
     private void printTopRankedRacers(RaceResult raceResult) {
