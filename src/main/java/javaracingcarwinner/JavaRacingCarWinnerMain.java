@@ -1,7 +1,6 @@
 package javaracingcarwinner;
 
 import javaracingcarwinner.controller.JavaRacingCar;
-import javaracingcarwinner.entity.RacingCar;
 import javaracingcarwinner.view.InputView;
 import javaracingcarwinner.view.ResultView;
 
