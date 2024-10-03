@@ -32,9 +32,13 @@ public class Cars {
 
     private void findWinner(int checkMax) {
         for (Car car : cars) {
-            if (car.getLocation() == checkMax) {
-                winners.add(car);
-            }
+            addWinner(checkMax, car);
+        }
+    }
+
+    private void addWinner(int checkMax, Car car) {
+        if (car.getLocation() == checkMax) {
+            winners.add(car);
         }
     }
 }
