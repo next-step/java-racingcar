@@ -21,7 +21,7 @@ public class RacingCarController {
             OutputView.printRacingProgress(cars);
         }
 
-        RaceWinners raceWinners = new RaceWinners(cars.getCars());
+        RaceWinners raceWinners = cars.getRaceWinners();
         OutputView.printRacingWinners(raceWinners.getWinnerNames());
     }
 }

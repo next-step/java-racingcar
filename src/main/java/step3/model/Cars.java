@@ -31,6 +31,10 @@ public class Cars {
         cars.forEach(car -> car.moveOrStop(moveStrategy.generateNumber()));
     }
 
+    public RaceWinners getRaceWinners() {
+        return new RaceWinners(cars);
+    }
+
     private void validateDuplicated(final List<Car> cars) {
         Set<Car> carsSet = new HashSet<>(cars);
         if (carsSet.size() != cars.size()) {
