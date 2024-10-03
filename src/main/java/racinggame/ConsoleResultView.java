@@ -20,8 +20,7 @@ public class ConsoleResultView implements ResultView {
     }
 
     private void printPosition(int position) {
-        int adjustedPosition = Math.max(MIN_POSITION, position);
-        String result = POSITION_MARKER.repeat(adjustedPosition == MIN_POSITION ? 1 : adjustedPosition);
+        String result = POSITION_MARKER.repeat(position);
         printMessage(result);
     }
 
