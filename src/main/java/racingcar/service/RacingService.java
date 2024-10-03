@@ -24,10 +24,14 @@ public class RacingService {
 
     public void match() {
         if (matchCount > 0) {
-            for (RacingCar car : racingCar) {
-                car.move(RandomMove.getInstance().movable());
-            }
+            movingCars();
             matchCount--;
+        }
+    }
+
+    private void movingCars() {
+        for (RacingCar car : racingCar) {
+            car.move(RandomMove.getInstance().movable());
         }
     }
 
