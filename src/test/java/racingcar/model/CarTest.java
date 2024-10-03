@@ -125,4 +125,18 @@ public class CarTest {
             actual.add(0, FORWARD);
         }).isInstanceOf(UnsupportedOperationException.class);
     }
+
+    @Test
+    void 자동차의_현재_이동거리를_출력한다() {
+        // given
+        Car car = new Car(carName);
+        car.move(() -> new ForwardStatus(4));
+        car.move(() -> new ForwardStatus(3));
+        car.move(() -> new ForwardStatus(2));
+        car.move(() -> new ForwardStatus(5));
+        // when
+        int actual = car.currentForwardCount();
+        // then
+        Assertions.assertThat(actual).isEqualTo(2);
+    }
 }

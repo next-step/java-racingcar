@@ -4,6 +4,8 @@ import racingcar.util.NumberCreator;
 
 import java.util.*;
 
+import static racingcar.model.enums.Status.FORWARD;
+
 public class Cars {
 
     private final List<Car> cars;
@@ -37,6 +39,10 @@ public class Cars {
     public List<Car> currentCars() {
         //NOTE: 외부에서는 변경할수 없으므로 여기서 불변객체로 리턴
         return Collections.unmodifiableList(this.cars);
+    }
+
+    public int maxForwardCount() {
+        return this.cars.stream().mapToInt(Car::currentForwardCount).max().orElseGet(() -> 0);
     }
 
 }

@@ -9,11 +9,8 @@ import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -30,8 +27,7 @@ public class RacingGame {
         }
 
         ResultView resultView = new ResultView();
-        resultView.print(result.toString());
-
+        resultView.printResult(result.toString());
     }
 
     private static Cars createCars(List<CarName> carNames) {

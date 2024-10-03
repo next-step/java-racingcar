@@ -12,6 +12,8 @@ public class CarName {
     public static final String NOT_ALLOWED_EMPTY_NAME = "자동차 이름은 빈값일 수 없습니다.";
     public static final String NOT_ALLOWED_EXCEED_MAX_NAME_LENGTH = "자동차 이름은 5자를 초과할 수 없습니다.";
     public static final String CAR_NAME_SPLITTER = ",";
+    public static final String NOT_ALLOWED_EMPTY_CAR_STRINGS = "자동차 이름 문자열은 빈값일 수 없습니다.";
+    public static final String NOT_ALLOWED_DUPLICATED_CAR_NAMES = "자동차들의 이름들은 중복될 수 없습니다.";
     private final String name;
 
     public CarName(final String name) {
@@ -35,13 +37,16 @@ public class CarName {
 
     public static List<CarName> convertStringToCarNames(String stringCarNames) {
         if (stringCarNames == null || stringCarNames.isEmpty()) {
-            throw new CarNameException("자동차 이름 문자열은 빈값일 수 없습니다.");
+            throw new CarNameException(NOT_ALLOWED_EMPTY_CAR_STRINGS);
         }
+
         String[] carNames = stringCarNames.split(CAR_NAME_SPLITTER);
+
         long distinctCarNamesCount = Arrays.stream(carNames).distinct().count();
         if (carNames.length > distinctCarNamesCount) {
-            throw new CarNameException("자동차들의 이름들은 중복될 수 없습니다.");
+            throw new CarNameException(NOT_ALLOWED_DUPLICATED_CAR_NAMES);
         }
+
         return Arrays.stream(carNames)
                 .map(CarName::new)
                 .collect(Collectors.toList());

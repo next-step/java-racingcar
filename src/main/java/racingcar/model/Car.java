@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import static racingcar.model.enums.Status.*;
+
 
 public class Car {
     private final CarName carName;
@@ -52,5 +54,13 @@ public class Car {
 
     public CarName carName() {
         return this.carName;
+    }
+
+    public int currentForwardCount() {
+        long count = this.statuses
+                .stream()
+                .filter(status -> status.equals(FORWARD))
+                .count();
+        return Long.valueOf(count).intValue();
     }
 }

@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.model.enums.Status.FORWARD;
+import static racingcar.model.enums.Status.STOP;
 import static racingcar.model.fixture.CarFixture.*;
 import static racingcar.model.fixture.CarsFixture.*;
 
@@ -110,5 +111,20 @@ public class CarsTest {
             actual.remove(0);
             actual.add(0, new Car(new CarName("name4")));
         }).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void 가장_많이_이동한_자동차의_전진_갯수를_리턴한다() {
+        // given
+        Car car1 = new Car(carName1, List.of(FORWARD, STOP, FORWARD, FORWARD));
+        Car car2 = new Car(carName2, List.of(FORWARD, FORWARD, FORWARD, FORWARD));
+        Car car3 = new Car(carName3, List.of(FORWARD, FORWARD, FORWARD, FORWARD));
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        // when
+        int actual = cars.maxForwardCount();
+
+        // then
+        Assertions.assertThat(actual).isEqualTo(4);
     }
 }
