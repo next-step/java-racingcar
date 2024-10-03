@@ -18,7 +18,7 @@ public class Car {
 
     public void move(CarEngine carEngine) {
         if (carEngine.hasEnoughPower(DEFAULT_MOVE_ENERGY)) {
-            position.add();
+            position = position.add();
         }
     }
 
