@@ -37,7 +37,12 @@ public class CarName {
         if (stringCarNames == null || stringCarNames.isEmpty()) {
             throw new CarNameException("자동차 이름 문자열은 빈값일 수 없습니다.");
         }
-        return Arrays.stream(stringCarNames.split(CAR_NAME_SPLITTER))
+        String[] carNames = stringCarNames.split(CAR_NAME_SPLITTER);
+        long distinctCarNamesCount = Arrays.stream(carNames).distinct().count();
+        if (carNames.length > distinctCarNamesCount) {
+            throw new CarNameException("자동차들의 이름들은 중복될 수 없습니다.");
+        }
+        return Arrays.stream(carNames)
                 .map(CarName::new)
                 .collect(Collectors.toList());
     }

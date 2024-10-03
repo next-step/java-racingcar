@@ -81,4 +81,17 @@ public class CarNameTest {
                 .hasMessage("자동차 이름 문자열은 빈값일 수 없습니다.");
 
     }
+
+    @Test
+    void 자동차들의_이름들은_중복될_수_없다() {
+        // given
+
+        // then
+        Assertions.assertThatThrownBy(() -> {
+            // when
+            CarName.convertStringToCarNames(duplicatedCarNames);
+        }).isInstanceOf(CarNameException.class)
+                .hasMessage("자동차들의 이름들은 중복될 수 없습니다.");
+
+    }
 }
