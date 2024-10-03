@@ -2,7 +2,9 @@ package racingcar.util;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Winner;
 import racingcar.model.enums.Status;
+import racingcar.model.wrapper.CarName;
 
 import java.util.stream.Collectors;
 
@@ -12,6 +14,9 @@ public class PrintUtil {
     public static final String LINE_BREAK = "\n";
     public static final String DASH = "-";
     public static final String EMPTY_STRING = "";
+    public static final String COLON = " : ";
+    public static final String FINAL_WINNER_POSTFIX = "가 최종 우승했습니다.";
+    public static final String COMMA = ", ";
 
     public static String result(Cars cars) {
         return carsStatuses(cars) + LINE_BREAK;
@@ -25,10 +30,13 @@ public class PrintUtil {
     }
 
     private static String carStatus(Car car) {
-        return car.currentStatus()
+        String name = car.carName()
+                .name();
+        String currentStatus = car.currentStatus()
                 .stream()
                 .map(PrintUtil::convertPrintForwardStatus)
                 .collect(Collectors.joining());
+        return name + COLON + currentStatus;
     }
 
     private static String convertPrintForwardStatus(Status status) {
@@ -38,4 +46,11 @@ public class PrintUtil {
         return EMPTY_STRING;
     }
 
+    public static String winner(Winner winner) {
+        return winner.result()
+                .stream()
+                .map(CarName::name)
+                .collect(Collectors.joining(COMMA)) +
+                FINAL_WINNER_POSTFIX;
+    }
 }

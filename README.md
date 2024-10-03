@@ -54,7 +54,7 @@
     * ~~자동차의 상태를 화면에 출력한다.~~
     * ~~몇 대의 자동차를 입력 받는다.~~
     * ~~몇 번의 이동을 할 것인지를 입력 받는다.~~
-
+---
 ## 기능 개선사항
 ```java
 public class Application {
@@ -70,6 +70,7 @@ public class Application {
   * RacingGame 을 통해서 출력에 필요한 정보를 받는다.
   * 나머지는 ResultView 쪽으로 역할과 책임을 위임한다.
     * RacingGame 의 실행역할 까지 가져갈 필요는 없다.
+---
 ```java
 public class RacingGame {
     private final PositiveNumber carSize;
@@ -79,6 +80,7 @@ public class RacingGame {
 * 비즈니스 요건을 적용하다보면 carSize와 movement에 다른 조건의 validation들이 적용되어야 할 수도 있다.
   * CarSize, Movement와 같은 식으로 원시객체가 포장되는것도 하나의 방법이 될 수 있다.
   * https://velog.io/@kanamycine/Java-%EC%9B%90%EC%8B%9C%EA%B0%92-%ED%8F%AC%EC%9E%A5
+---
 ```java
 public class RacingGame {
     //...
@@ -101,6 +103,7 @@ public class RacingGame {
   * 또한 콘솔이라고 할지라도 콘솔에 출력 형식이 변경 된다거나,
   * 출력 형식에 대한 요구사항이 생긴다면,
   * 비즈니스 요구사항과는 상관없이 계속적으로 수정이 발생해야 할 부분.
+---
 ```java
 public enum Status {
     FORWARD("-"), STOP("");
@@ -110,6 +113,7 @@ public enum Status {
 * Status에 대해서도
   * 출력 format이 변경 될 경우 Enum도 계속 수정이 될수밖에 없다.
   * (예를 들어 -가 *, =등으로 변경된다고 가정하면)
+---
 ```java
 public class Car {
     //...
@@ -125,7 +129,7 @@ public class Car {
     * 혹은 Racing 경기 중 사고가 발생해서 사고난 차 이외의 차들을 멈추게 한다든지 하는, 
     * 숫자가 아닌 조건에 대한 Car 변경의 요건을 반영하기가 좀 까다롭다.
     * 향후 발생할 수정사항이나 확장성에 대해서 조금더 유연한 구조를 가져가도록 개선
-
+---
 ```java
 public class Car {
     public String currentStatus() {
@@ -137,14 +141,14 @@ public class Car {
 }
 ```
 * 위에서도 의견드렸지만 출력에 필요한 정보를 제공하는 건 좋지만, 
-  * 출력 format까지 Car가 담당한다면 출력 format 때문에 계속적인 수정이 발생 
+* 출력 format까지 Car가 담당한다면 출력 format 때문에 계속적인 수정이 발생
+---
 ```java
 public class Cars {
-    public void moveAll(NumberCreator numberCreator) {
-        
-    }
-}
+  public void moveAll(NumberCreator numberCreator) {
 
+  }
+}
 ```
 * moveAll 네이밍 크게 나쁘지 않은 것 같음
   * 아주 소소한 의견이긴 합니다만 개인적으로 Cars가 정의가 된 코드가 아닌
@@ -158,7 +162,7 @@ cars.moveAll(number);
 // 이렇게 된다면 변수명을 아무렇게나 지어도 creator에 의한 move all 이구나 추측이 가능합니다.
 cars.moveAllByNumberCreator(number);
 ```
-
+---
 ```java
 public enum Status {
     FORWARD("-"), STOP("");
@@ -182,7 +186,7 @@ public enum Status {
 * Enum은 기본적으로 상수들의 집합 
   * 지금 구조에서는 특정 값을 Enum으로 변환하거나 
   * Enum을 속성 값으로 변환하는 printStatus() 같은 method 정도만 제공하면 충분
-
+---
 ```java
 @FunctionalInterface
 public interface NumberCreator {
@@ -194,7 +198,7 @@ public interface NumberCreator {
   * Car는 왜 필요한걸까?
   * 그리고 실제 비즈니스를 구현한 RandomNumberGenerator를 봐도 Car는 사용하지 않고 있다. 
   * 이렇게 되면 나중에 Car가 수정되었을 때 전혀 관련이 없는 NumberCreator들 까지 수정 영향이 있는지 확인해야 하는 번거로움도 발생. 
-
+---
 ```java
 public class RandomNumberGenerator implements NumberCreator {
 
@@ -206,3 +210,37 @@ public class RandomNumberGenerator implements NumberCreator {
 ```
 * 매번 Random객체를 생성하지 않도록 정적상수로 추출 
   * 10도 매직넘버 이니 추출
+---
+```java
+public class CarsTest {
+    @Test
+    void test() {
+        List<Car> racingEndedCars = cars.currentCars();
+        // 이런식으로 수정이 가능한 상황.
+        racingEndedCars.add(new Car());
+        racingEndedCars.remove(1);
+    }
+}
+```
+* 자바에서는 List객체의 reference를 전달하기 때문에 외부에서 get으로 참조한 값에 대해서 수정이 가능
+* 그래서 보통은 새로 List를 만들어 copy해서 전달하는 방법이 있을 수 있고, 번거롭다면 최소한 데이터가 변경되지 않도록 불변객체로 반환
+* 불변객체란
+  * https://velog.io/@conatuseus/Java-Immutable-Object%EB%B6%88%EB%B3%80%EA%B0%9D%EC%B2%B4
+---
+```java
+public class CarNumber {
+    private final int number;
+
+    public CarNumber(int number) {
+        if (number < 1) {
+            throw new CarNumberException("자동차 대수는 1대 이상이어야 합니다.");
+        }
+        this.number = number;
+    }
+//...
+}
+```
+* 이 객체를 사용하는 객체나 서비스들의 편의성을 위해 정적 팩토리 method도 추가 된다면 더 좋을 것 같다.
+* 정적 팩토리 메소드
+  * https://johngrib.github.io/wiki/pattern/static-factory-method/
+
