@@ -1,10 +1,8 @@
-package 문자열_덧셈_계산기_2단계;
+package step2StringAddCalculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -13,12 +11,8 @@ class StringAddCalculatorTest {
 
     int result;
 
-    public static Stream<String> provideTestData() {
-        return Stream.of(null, "");
-    }
-
     @ParameterizedTest
-    @MethodSource("provideTestData")
+    @NullAndEmptySource()
     void splitAndSum_null_또는_빈문자(String input) {
         result = StringAddCalculator.splitAndSum(input);
         assertThat(result).isEqualTo(0);
