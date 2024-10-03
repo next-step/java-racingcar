@@ -8,7 +8,8 @@ public class Car {
     private int location = 1;
     private String name ;
 
-    Car(String name){
+    public Car(String name){
+        checkNameLength(name);
         this.name = name;
     }
 
@@ -28,6 +29,11 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    private static void checkNameLength(String name) {
+        if(name.length()>5|| name.isEmpty())
+            throw new IllegalArgumentException("길이가 1이상 5이하인 문자열이여야 함");
     }
 
 }
