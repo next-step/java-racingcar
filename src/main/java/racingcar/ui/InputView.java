@@ -3,11 +3,11 @@ package racingcar.ui;
 import java.util.Scanner;
 
 public class InputView {
-    private static Scanner scanner = new Scanner(System.in);
-    private static String INPUT_CAR_NUMBER_QUESTION = "자동차 대수는 몇 대 인가요?";
-    private static String INPUT_TRY_NUMBER_QUESTION = "시도할 회수는 몇 회 인가요?";
-    private static String NOT_AN_INTEGER_MESSAGE = "입력하신 값이 정수가 아닙니다.";
-    private static String NOT_A_POSITIVE_NUMBER_MESSAGE = "입력하신 값이 양의 정수가 아닙니다.";
+    private final static Scanner scanner = new Scanner(System.in);
+    private final static String INPUT_CAR_NUMBER_QUESTION = "자동차 대수는 몇 대 인가요?";
+    private final static String INPUT_TRY_NUMBER_QUESTION = "시도할 회수는 몇 회 인가요?";
+    private final static String NOT_AN_INTEGER_MESSAGE = "입력하신 값이 정수가 아닙니다.";
+    private final static String NOT_A_POSITIVE_NUMBER_MESSAGE = "입력하신 값이 양의 정수가 아닙니다.";
 
     public static int inputCarNumber() {
         boolean hasValidInput = false;
