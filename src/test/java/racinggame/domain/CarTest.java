@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -15,6 +16,7 @@ class CarTest {
         var car = initCar();
         assertThat(car).isNotNull();
         assertThat(car.getPosition()).isZero();
+        assertThat(car.getName()).isEqualTo("테스트카");
     }
 
     @ParameterizedTest
@@ -35,8 +37,16 @@ class CarTest {
         assertThat(car.getPosition()).isOne();
     }
 
+    @Test
+    @DisplayName("자동차의 이름이 5자리를 초과할 경우 예외를 throw 한다.")
+    void throwExceptionWhenCarNameExceedsFiveCharacters() {
+        assertThatThrownBy(() -> Car.create("BMW530"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차의 이름은 5자리를 초과할 수 없습니다.");
+    }
+
     private Car initCar() {
-        return Car.create();
+        return Car.create("테스트카");
     }
 
 }

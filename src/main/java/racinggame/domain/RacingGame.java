@@ -8,13 +8,17 @@ public class RacingGame {
 
     private static final int DEFAULT_BOUND = 10;
     private final Random random = new Random();
-    private List<Car> cars;
-    private GameRounds rounds;
+    private final List<Car> cars;
+    private final GameRounds rounds;
 
-    public GameRounds start(int carCount, int tryCount) {
-        validateNegative(carCount, tryCount);
-        initCar(carCount);
-        rounds = new GameRounds();
+    public RacingGame() {
+        this.cars = new ArrayList<>();
+        this.rounds = new GameRounds();
+    }
+
+    public GameRounds start(List<String> carNames, int tryCount) {
+        validateNegative(tryCount);
+        initCar(carNames);
         for (int i = 0; i < tryCount; i++) {
             playGameRound();
         }
@@ -28,9 +32,7 @@ public class RacingGame {
 
     private void saveGameResult() {
         GameResults gameResults = new GameResults();
-        for (Car car : cars) {
-            gameResults.add(car.getPosition());
-        }
+        gameResults.save(cars);
         rounds.add(gameResults);
     }
 
@@ -41,16 +43,15 @@ public class RacingGame {
         }
     }
 
-    private void initCar(int carCount) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.create());
+    private void initCar(List<String> carNames) {
+        for (String carName : carNames) {
+            cars.add(Car.create(carName));
         }
     }
 
-    private void validateNegative(int carCount, int tryCount) {
-        if (carCount <= 0 || tryCount <= 0) {
-            throw new RuntimeException("음수가 전달되어 게임을 시작할 수 없습니다.");
+    private void validateNegative(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("음수가 전달되어 게임을 시작할 수 없습니다.");
         }
     }
 }
