@@ -1,4 +1,4 @@
-package race.util;
+package step3.util;
 
 import java.util.Scanner;
 

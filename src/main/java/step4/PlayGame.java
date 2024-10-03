@@ -1,8 +1,8 @@
-package race;
+package step4;
 
-import race.util.RandomNumberGenerator;
-import race.vehicle.Car;
-import race.view.ResultView;
+import step4.util.RandomNumberGenerator;
+import step4.vehicle.Car;
+import step4.view.ResultView;
 
 import java.util.List;
 

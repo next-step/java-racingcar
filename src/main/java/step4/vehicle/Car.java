@@ -1,6 +1,6 @@
-package race.vehicle;
+package step4.vehicle;
 
-import race.util.NumberGenerator;
+import step4.util.NumberGenerator;
 
 public class Car {
     private static final int MOVE_CONDITION = 4;

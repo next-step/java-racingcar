@@ -1,8 +1,8 @@
-package race;
+package step4;
 
-import race.util.InputUtils;
-import race.vehicle.Cars;
-import race.view.ResultView;
+import step4.util.InputUtils;
+import step4.vehicle.Cars;
+import step4.view.ResultView;
 
 public class Start {
     public static void main(String[] args) {
