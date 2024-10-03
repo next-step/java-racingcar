@@ -9,19 +9,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     private Car car;
-    private MoveStrategy strategy;
 
     @BeforeEach
     void setUp() {
         car = new Car();
-        strategy = new FourOrMore();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
     @DisplayName("자동차는 MoveStrategy에 따라 움직인다.")
     void move_forward(int input, int expected) {
-        car.move(strategy, input);
+        car.move(new FourOrMore(new TestRandomHolder(input)));
         assertThat(car.getPosition()).isEqualTo(expected);
     }
 }

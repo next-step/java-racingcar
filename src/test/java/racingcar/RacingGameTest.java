@@ -11,10 +11,9 @@ public class RacingGameTest {
     void race() {
         int carCount = 3;
         int attemptCount = 5;
-        MoveStrategy moveStrategy = new FourOrMore();
-        RandomHolder randomHolder = new TestRandomHolder(4);
+        MoveStrategy moveStrategy = new FourOrMore(new TestRandomHolder(4));
 
-        int[][] result = RacingGame.race(carCount, attemptCount, moveStrategy, randomHolder);
+        int[][] result = RacingGame.race(carCount, attemptCount, moveStrategy);
 
         for (int attempt = 0; attempt < attemptCount; attempt++) {
             for (int car = 0; car < carCount; car++) {

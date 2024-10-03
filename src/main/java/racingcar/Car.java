@@ -3,8 +3,8 @@ package racingcar;
 public class Car {
     private int position;
 
-    public void move(MoveStrategy moveStrategy, int number) {
-        if (moveStrategy.isForward(number)) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isForward()) {
             position++;
         }
     }
