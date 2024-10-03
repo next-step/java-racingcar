@@ -67,4 +67,18 @@ public class CarNameTest {
         // then
         Assertions.assertThat(actual).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 입력받은_자동차_이름_문자열은_빈값일_수_없다(String emptyString) {
+        // given
+
+        // then
+        Assertions.assertThatThrownBy(() -> {
+            // when
+            CarName.convertStringToCarNames(emptyString);
+        }).isInstanceOf(CarNameException.class)
+                .hasMessage("자동차 이름 문자열은 빈값일 수 없습니다.");
+
+    }
 }

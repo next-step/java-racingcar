@@ -34,6 +34,9 @@ public class CarName {
     }
 
     public static List<CarName> convertStringToCarNames(String stringCarNames) {
+        if (stringCarNames == null || stringCarNames.isEmpty()) {
+            throw new CarNameException("자동차 이름 문자열은 빈값일 수 없습니다.");
+        }
         return Arrays.stream(stringCarNames.split(CAR_NAME_SPLITTER))
                 .map(CarName::new)
                 .collect(Collectors.toList());
