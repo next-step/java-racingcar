@@ -42,4 +42,5 @@ class SetCollectionTest {
     void containsTest2(int value, boolean expected) {
         assertThat(numbers.contains(value)).isEqualTo(expected);
     }
+
 }
