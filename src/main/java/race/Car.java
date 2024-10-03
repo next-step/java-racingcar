@@ -34,6 +34,10 @@ public class Car {
         position += 1;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
     public int getPosition() {
         return this.position;
     }

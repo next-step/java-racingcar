@@ -17,12 +17,13 @@ public class Race {
     }
 
     public void run() {
+        ResultView resultView = new ResultView();
+
         Random random = new Random();
         for (int i = 0; i < round; i++) {
             cars.forEach(car -> car.accelerate(random.nextInt(10)));
+            resultView.printCurrentRoundProgress(cars);
         }
-
-        System.out.println("cars = " + cars);
     }
 
 }
