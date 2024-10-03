@@ -1,9 +1,9 @@
 package racinggame.domain;
 
 public class Car {
-    public static final int MINIMUM_MOVE_NUMBER = 4;
-    public static final int MAXIMUM_CAR_NAME_LENGTH = 5;
-    public static final int DEFAULT_POSITION = 0;
+    private static final int MINIMUM_MOVE_NUMBER = 4;
+    private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
+    private static final int DEFAULT_POSITION = 0;
     private final String name;
     private int position;
 
@@ -41,7 +41,11 @@ public class Car {
         return number >= MINIMUM_MOVE_NUMBER;
     }
 
-    public boolean isEqualPosition(int number) {
-        return position == number;
+    public boolean isEqualPosition(int otherPosition) {
+        return position == otherPosition;
+    }
+
+    public int comparePosition(int otherPosition) {
+        return Math.max(position, otherPosition);
     }
 }

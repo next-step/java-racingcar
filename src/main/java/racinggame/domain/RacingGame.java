@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -8,17 +7,16 @@ public class RacingGame {
 
     private static final int DEFAULT_BOUND = 10;
     private final Random random = new Random();
-    private final List<Car> cars;
+    private final Cars cars;
     private final GameRounds rounds;
 
-    public RacingGame() {
-        this.cars = new ArrayList<>();
+    public RacingGame(List<String> carNames) {
+        this.cars = new Cars(carNames);
         this.rounds = new GameRounds();
     }
 
-    public GameRounds start(List<String> carNames, int tryCount) {
+    public GameRounds start(int tryCount) {
         validateNegative(tryCount);
-        initCar(carNames);
         for (int i = 0; i < tryCount; i++) {
             playGameRound();
         }
@@ -31,21 +29,24 @@ public class RacingGame {
     }
 
     private void saveGameResult() {
-        GameResults gameResults = new GameResults();
-        gameResults.save(cars);
+        GameResults gameResults = new GameResults(cars);
+        updateWinners(gameResults, cars);
         rounds.add(gameResults);
     }
 
-    private void moveCars() {
-        for (Car car : cars) {
-            var number = random.nextInt(DEFAULT_BOUND);
-            car.move(number);
+    private void updateWinners(GameResults gameResults, Cars cars) {
+        int maxPosition = cars.getMaxPosition();
+        for (Car car : cars.getCarList()) {
+            if (car.isEqualPosition(maxPosition)) {
+                gameResults.saveWinners(car);
+            }
         }
     }
 
-    private void initCar(List<String> carNames) {
-        for (String carName : carNames) {
-            cars.add(Car.create(carName));
+    private void moveCars() {
+        for (Car car : cars.getCarList()) {
+            var number = random.nextInt(DEFAULT_BOUND);
+            car.move(number);
         }
     }
 

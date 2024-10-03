@@ -12,14 +12,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
 
-    private final RacingGame racingGame = new RacingGame();
+    private final RacingGame racingGame = new RacingGame(initCarNames());
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("게임을 시도할 회수만큼 게임 라운드가 증가한다.")
     void getGameRound(int tryCount) {
-        List<String> carNames = initCarNames();
-        GameRounds gameResult = racingGame.start(carNames, tryCount);
+        GameRounds gameResult = racingGame.start(tryCount);
         assertThat(gameResult.getRoundCount()).isEqualTo(tryCount);
     }
 
@@ -27,8 +26,7 @@ class RacingGameTest {
     @ValueSource(ints = {-1, -2, -3})
     @DisplayName("시도할 횟수에 음수를 전달하는 경우 예외를 throw 한다.")
     void throwExceptionWhenNegativeParameter(int tryCount) {
-        List<String> carNames = initCarNames();
-        assertThatThrownBy(() -> racingGame.start(carNames, tryCount))
+        assertThatThrownBy(() -> racingGame.start(tryCount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("음수가 전달되어 게임을 시작할 수 없습니다.");
     }
@@ -36,9 +34,8 @@ class RacingGameTest {
     @Test
     @DisplayName("게임 진행 후 우승자를 반환한다.")
     void getWinner() {
-        List<String> carNames = initCarNames();
         int tryCount = 2;
-        GameRounds gameResult = racingGame.start(carNames, tryCount);
+        GameRounds gameResult = racingGame.start(tryCount);
         assertThat(gameResult.getWinner()).isNotNull();
         assertThat(gameResult.getWinner()).hasSizeGreaterThanOrEqualTo(0);
     }
