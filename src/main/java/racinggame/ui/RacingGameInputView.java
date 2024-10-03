@@ -8,8 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racinggame.domain.RacingGameRules.MAX_RACING_CAR_NAME_LENGTH;
-import static racinggame.domain.RacingGameRules.MIN_RACING_CAR_COUNT;
+import static racinggame.domain.RacingGameRules.*;
 
 public class RacingGameInputView {
     private final static String DELIMITER = ",";
@@ -61,11 +60,14 @@ public class RacingGameInputView {
             .collect(Collectors.toList());
     }
 
-    public int inputRacingCarCount() {
-        return 0;
-    }
-
     public int inputRacingRoundCount() {
-        return 0;
+        writer.write("시도할 회수는 몇 회 인가요?");
+
+        final int roundCount = reader.readInt();
+        if (roundCount < MIN_RACING_ROUND_COUNT) {
+            throw new IllegalArgumentException("시도할 회수는 최소 " + MIN_RACING_ROUND_COUNT + "회 이상이여야 합니다.");
+        }
+
+        return roundCount;
     }
 }

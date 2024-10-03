@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racinggame.domain.RacingCars;
 
 import java.io.ByteArrayInputStream;
+import java.util.InputMismatchException;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -79,6 +80,33 @@ class RacingGameInputViewTest {
 
         final RacingCars racingCars = racingGameInputView.inputRacingCarNames();
         assertThat(racingCars.size()).isEqualTo(3);
+    }
 
+    @Test
+    @DisplayName("1이상의 라운드를 입력하면 해당 값을 반환한다.")
+    void testValidRoundTest() {
+        final MessageReader reader = new RacingMessageReader(
+            new ByteArrayInputStream("3".getBytes())
+        );
+        final RacingGameInputView racingGameInputView = new RacingGameInputView(reader, new RacingMessageWriter());
+        assertThat(racingGameInputView.inputRacingRoundCount()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("1미만 또는 숫자가 아닌 문자를 입력하면 예외가 발생한다.")
+    void testInValidRoundTest() {
+        final MessageReader reader = new RacingMessageReader(
+            new ByteArrayInputStream("0".getBytes())
+        );
+        final RacingGameInputView racingGameInputView = new RacingGameInputView(reader, new RacingMessageWriter());
+        assertThatThrownBy(racingGameInputView::inputRacingRoundCount)
+            .isExactlyInstanceOf(IllegalArgumentException.class);
+
+        final MessageReader reader2 = new RacingMessageReader(
+            new ByteArrayInputStream("ㄴ".getBytes())
+        );
+        final RacingGameInputView racingGameInputView2 = new RacingGameInputView(reader2, new RacingMessageWriter());
+        assertThatThrownBy(racingGameInputView2::inputRacingRoundCount)
+            .isExactlyInstanceOf(InputMismatchException.class);
     }
 }
