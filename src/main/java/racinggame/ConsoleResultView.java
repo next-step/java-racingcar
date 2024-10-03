@@ -1,12 +1,13 @@
 package racinggame;
 
-import racinggame.racingcar.RacingCars;
-
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class ConsoleResultView implements ResultView {
-    private static final String EXECUTION_RESULT_MESSAGE = "실행 결과";
+    private static final String EXECUTION_ANNOUNCEMENT_MESSAGE = "실행 결과";
+    private static final String WINNER_ANNOUNCEMENT_SUFFIX = "가 최종 우승했습니다.";
+
     private static final String POSITION_MARKER = "-";
     private static final String ROUND_SEPARATOR = "";
     private static final String COLON = ":";
@@ -22,8 +23,25 @@ public class ConsoleResultView implements ResultView {
     }
 
     @Override
-    public void printResultMessage() {
-        printMessage(EXECUTION_RESULT_MESSAGE);
+    public void printExecutionAnnouncementMessage() {
+        printMessage(EXECUTION_ANNOUNCEMENT_MESSAGE);
+    }
+
+    @Override
+    public void printWinners(List<String> winners) {
+        String winnersMessage = formatWinnersMessage(winners);
+        printMessage(winnersMessage);
+    }
+
+    private String formatWinnersMessage(List<String> winners) {
+        String winnersNames = joinNames(winners);
+        return winnersNames + WINNER_ANNOUNCEMENT_SUFFIX;
+    }
+
+    private String joinNames(List<String> names) {
+        StringJoiner joiner = new StringJoiner(", ");
+        names.forEach(joiner::add);
+        return joiner.toString();
     }
 
     private String createPositionMarker(int position) {

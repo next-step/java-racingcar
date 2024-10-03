@@ -5,5 +5,6 @@ import java.util.Map;
 
 public interface ResultView {
     void printRaceResults(Map<String, Integer> positions);
-    void printResultMessage();
+    void printExecutionAnnouncementMessage();
+    void printWinners(List<String> winners);
 }
