@@ -2,6 +2,7 @@ package race;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Race {
     private final List<Car> cars = new ArrayList<>();
@@ -16,8 +17,12 @@ public class Race {
     }
 
     public void run() {
+        Random random = new Random();
+        for (int i = 0; i < round; i++) {
+            cars.forEach(car -> car.accelerate(random.nextInt(10)));
+        }
+
         System.out.println("cars = " + cars);
-        System.out.println("round = " + round);
     }
 
 }
