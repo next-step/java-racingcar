@@ -19,9 +19,7 @@ public class RacingGame {
 
     public static void play() {
         InputView inputView = new InputView(new Scanner(System.in));
-        List<CarName> carNames = Arrays.stream(inputView.carNames().split(","))
-                .map(CarName::new)
-                .collect(Collectors.toList());
+        List<CarName> carNames = CarName.convertStringToCarNames(inputView.carNames());
         MovementNumber movementNumber = new MovementNumber(inputView.movement());
 
         Cars cars = createCars(carNames);

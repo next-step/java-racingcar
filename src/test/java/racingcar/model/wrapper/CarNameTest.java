@@ -7,7 +7,10 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.CarNameException;
 
+import java.util.List;
+
 import static racingcar.model.fixture.CarFixture.carName;
+import static racingcar.model.fixture.CarsFixture.*;
 
 public class CarNameTest {
     @ParameterizedTest
@@ -51,5 +54,17 @@ public class CarNameTest {
         String actual = carName.name();
         // then
         Assertions.assertThat(actual).isEqualTo("name");
+    }
+
+    @Test
+    void 입력받은_자동차_이름_문자열을_쉼표_기준으로_구분한다() {
+        // given
+        List<CarName> expected = List.of(carName1, carName2, carName3);
+
+        // when
+        List<CarName> actual = CarName.convertStringToCarNames(carNames);
+
+        // then
+        Assertions.assertThat(actual).isEqualTo(expected);
     }
 }
