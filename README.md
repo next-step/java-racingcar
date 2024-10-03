@@ -8,6 +8,7 @@
 ## 기능 목록
 - [x] 사용자 입력 받기 (InputUtils)
   - [x] 자동차 이름 (InputUtils)
+    - [x] 이름 길이 1이상 5이하(Car)
     - [x] 쉼표로 구분 (InputUtils)
   - [x] 시도 횟수
 - [x] 자동차 전진 하기 (Car) 
