@@ -8,9 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racinggame.domain.RacingGameRules.MAX_RACING_CAR_NAME_LENGTH;
+import static racinggame.domain.RacingGameRules.MIN_RACING_CAR_COUNT;
+
 public class RacingGameInputView {
-    public static final int MIN_CAR_COUNT = 2;
-    public static final int MIN_ROUND_COUNT = 1;
+    private final static String DELIMITER = ",";
 
     private final MessageReader reader;
     private final MessageWriter writer;
@@ -23,27 +25,40 @@ public class RacingGameInputView {
     public RacingCars inputRacingCarNames() {
         writer.write("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        final String inputString = reader.readString();
-        if (inputString.isEmpty()) {
-            throw new IllegalArgumentException();
+        final String[] carNames = parseCarNames(reader.readString());
+        validateCarNames(carNames);
+
+        return new RacingCars(createRacingCars(carNames));
+    }
+
+    private String[] parseCarNames(final String userInput) {
+        if (userInput.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
         }
 
-        final String[] split = inputString.split(",");
-        if (split.length < 2) {
-            throw new IllegalArgumentException();
+        return userInput.split(DELIMITER);
+    }
+
+    private void validateCarNames(final String[] carNames) {
+        if (carNames.length < MIN_RACING_CAR_COUNT) {
+            throw new IllegalArgumentException("최소 2대의 자동차 이름을 입력해야 합니다.");
         }
 
-        for (final String carName : split) {
-            if (carName.isEmpty() || carName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
+        for (final String carName : carNames) {
+            validateCarName(carName);
         }
+    }
 
-        final List<RacingCar> collect = Arrays.stream(split)
+    private static void validateCarName(final String carName) {
+        if (carName.isEmpty() || carName.length() > MAX_RACING_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차의 이름은 최대 " + MAX_RACING_CAR_NAME_LENGTH + "글자를 초과 할 수 없습니다.");
+        }
+    }
+
+    private List<RacingCar> createRacingCars(final String[] carNames) {
+        return Arrays.stream(carNames)
             .map(s -> new RacingCar(new RacingGameRandomNumberGenerator()))
             .collect(Collectors.toList());
-
-        return new RacingCars(collect);
     }
 
     public int inputRacingCarCount() {
