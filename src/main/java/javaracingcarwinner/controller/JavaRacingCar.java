@@ -1,5 +1,6 @@
 package javaracingcarwinner.controller;
 
+import javaracingcarwinner.dto.RacingInfoDto;
 import javaracingcarwinner.entity.RacingCar;
 
 import java.util.ArrayList;
@@ -12,13 +13,21 @@ public class JavaRacingCar {
     private static final int MAX_NAME_LENGTH = 5;
 
     private final List<RacingCar> cars = new ArrayList<>();
-    private final int tryCount;
 
-    public JavaRacingCar(final String text, final int tryCount) throws RuntimeException {
-        initCars(toList(split(text)));
+    private int tryCount;
 
-        validateTryCount(tryCount);
-        this.tryCount = tryCount;
+    public JavaRacingCar(RacingInfoDto info) {
+        initCars(toList(split(info.text())));
+        validateTryCount(info.tryCount());
+        this.tryCount = tryCount();
+    }
+
+    private String[] split(String text) {
+        return text.split(SPLIT_DELIMITER);
+    }
+
+    private List<String> toList(String[] array) {
+        return Arrays.stream(array).collect(Collectors.toList());
     }
 
     private void initCars(List<String> names) {
@@ -29,7 +38,7 @@ public class JavaRacingCar {
     }
 
     private void validateName(String name) {
-        if (name.length() >= MAX_NAME_LENGTH) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("5자 초과");
         }
     }
@@ -38,14 +47,6 @@ public class JavaRacingCar {
         if (tryCount < 0) {
             throw new IllegalArgumentException("음수 입력");
         }
-    }
-
-    private List<String> toList(String[] array) {
-        return Arrays.stream(array).collect(Collectors.toList());
-    }
-
-    private String[] split(String text) {
-        return text.split(SPLIT_DELIMITER);
     }
 
     public List<RacingCar> cars() {

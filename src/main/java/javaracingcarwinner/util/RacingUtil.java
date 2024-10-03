@@ -10,7 +10,7 @@ public class RacingUtil {
     private static final int RANDOM_VALUE_RANGE = 10;
     private static final Random random = new Random();
 
-    public static int random(){
+    public static int random() {
         return random.nextInt(RANDOM_VALUE_RANGE);
     }
 
