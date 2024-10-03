@@ -1,8 +1,6 @@
 package racinggame.racingcar;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -28,15 +26,11 @@ public class RacingCars {
         cars.forEach(RacingCar::move);
     }
 
-    public List<Integer> getCurrentPositionsRepresentation() {
-        return cars.stream()
-                .map(RacingCar::getCurrentPosition)
-                .collect(Collectors.toList());
-    }
-
-    public List<String> getCarNames() {
-        return cars.stream()
-                .map(RacingCar::getCarName)
-                .collect(Collectors.toList());
+    public Map<String, Integer> getCarsInfo() {
+        Map<String, Integer> carInfo = new HashMap<>();
+        for (RacingCar car : cars) {
+            carInfo.put(car.getCarName(), car.getCurrentPosition());
+        }
+        return carInfo;
     }
 }

@@ -7,6 +7,7 @@ import racinggame.racingcar.RacingCars;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,9 +20,11 @@ class RacingCarCreationTest {
         List<String> nameList = List.of("a");
         RacingCars racingCars = RacingCars.create(dummyStrategy, nameList);
 
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+
         assertThat(racingCars.count()).isEqualTo(1);
-        assertThat(racingCars.getCarNames()).containsOnly("a");
-        assertThat(racingCars.getCurrentPositionsRepresentation()).containsOnly(0);
+        assertThat(carInfo).containsOnlyKeys("a");
+        assertThat(carInfo.get("a")).isEqualTo(0);
     }
 
     @Test
@@ -31,8 +34,10 @@ class RacingCarCreationTest {
         List<String> nameList = Arrays.asList("a", "b", "c");
         RacingCars racingCars = RacingCars.create(dummyStrategy, nameList);
 
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+
         assertThat(racingCars.count()).isEqualTo(3);
-        assertThat(racingCars.getCarNames()).isEqualTo(nameList);
-        assertThat(racingCars.getCurrentPositionsRepresentation()).containsOnly(0);
+        assertThat(carInfo.keySet()).containsExactlyInAnyOrderElementsOf(nameList);
+        assertThat(carInfo.values()).containsOnly(0);
     }
 }

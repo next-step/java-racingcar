@@ -8,6 +8,7 @@ import racinggame.racingcar.MoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,8 +23,8 @@ class RacingCarMovementTest {
         RacingCars racingCars = RacingCars.create(() -> false, name);
         racingCars.moveAll();
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        assertThat(positions).containsExactly(0);
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+        assertThat(carInfo.get("a")).isEqualTo(0);
     }
 
     @DisplayName("자동차 전진 테스트")
@@ -33,8 +34,8 @@ class RacingCarMovementTest {
         RacingCars racingCars = RacingCars.create(() -> true, name);
         racingCars.moveAll();
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        assertThat(positions).containsExactly(1);
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+        assertThat(carInfo.get("a")).isEqualTo(1);
     }
 
     @DisplayName("다중 이동 테스트")
@@ -47,8 +48,8 @@ class RacingCarMovementTest {
             racingCars.moveAll();
         }
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
-        assertThat(positions).containsExactly(5);
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
+        assertThat(carInfo.get("a")).isEqualTo(5);
     }
 
     @DisplayName("다중 자동차 테스트")
@@ -62,10 +63,10 @@ class RacingCarMovementTest {
             racingCars.moveAll();
         }
 
-        List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
+        Map<String, Integer> carInfo = racingCars.getCarsInfo();
 
-        assertThat(positions.get(0)).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
-        assertThat(positions.get(1)).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
-        assertThat(positions.get(2)).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
+        assertThat(carInfo.get("a")).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
+        assertThat(carInfo.get("b")).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
+        assertThat(carInfo.get("c")).isBetween(INIT_POSITION, NUMBER_OF_ROUNDS);
     }
 }
