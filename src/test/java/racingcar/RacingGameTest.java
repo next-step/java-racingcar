@@ -13,11 +13,11 @@ public class RacingGameTest {
         int attemptCount = 5;
         MoveStrategy moveStrategy = new FourOrMore(new TestRandomHolder(4));
 
-        int[][] result = RacingGame.race(carCount, attemptCount, moveStrategy);
+        RaceResult raceResult = RacingGame.race(carCount, attemptCount, moveStrategy);
 
         for (int attempt = 0; attempt < attemptCount; attempt++) {
             for (int car = 0; car < carCount; car++) {
-                assertThat(result[attempt][car]).isEqualTo(attempt + 1);
+                assertThat(raceResult.getAttemptResults()[attempt].getCarPositions()[car]).isEqualTo(attempt + 1);
             }
         }
     }

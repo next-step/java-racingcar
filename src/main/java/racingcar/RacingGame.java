@@ -5,22 +5,23 @@ public class RacingGame {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    public static int[][] race(int carCount, int attemptCount, MoveStrategy moveStrategy) {
+    public static RaceResult race(int carCount, int attemptCount, MoveStrategy moveStrategy) {
         Car[] carArray = createCars(carCount);
-        int[][] raceResults = new int[attemptCount][carCount];
+        RaceResult raceResult = new RaceResult(attemptCount);
         for (int attempt = 0; attempt < attemptCount; attempt++) {
-            raceResults[attempt] = runAttempt(carArray, moveStrategy);
+            AttemptResult attemptResult = runAttempt(carArray, moveStrategy);
+            raceResult.addAttemptResult(attemptResult, attempt);
         }
-        return raceResults;
+        return raceResult;
     }
 
-    private static int[] runAttempt(Car[] carArray, MoveStrategy moveStrategy) {
-        int[] attemptResult = new int[carArray.length];
+    private static AttemptResult runAttempt(Car[] carArray, MoveStrategy moveStrategy) {
+        int[] positions = new int[carArray.length];
         for (int i = 0; i < carArray.length; i++) {
             carArray[i].move(moveStrategy);
-            attemptResult[i] = carArray[i].getPosition();
+            positions[i] = carArray[i].getPosition();
         }
-        return attemptResult;
+        return new AttemptResult(positions);
     }
 
     private static Car[] createCars(int carCount) {
