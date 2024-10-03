@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static racinggame.domain.RacingGameRules.MIN_RACING_CAR_COUNT;
-
 public class RacingCars implements Iterable<RacingCar> {
     private final List<RacingCar> racingCars;
 
@@ -15,10 +13,6 @@ public class RacingCars implements Iterable<RacingCar> {
     }
 
     public static RacingCars create(final List<RacingCar> racingCars) {
-        if (racingCars.size() < MIN_RACING_CAR_COUNT) {
-            throw new IllegalArgumentException("자동차는 최소 " + MIN_RACING_CAR_COUNT + "대 이상이여야 합니다.");
-        }
-
         return new RacingCars(racingCars);
     }
 
