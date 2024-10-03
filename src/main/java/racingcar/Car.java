@@ -4,15 +4,18 @@ public class Car {
 
     private int position = 0;
 
-    public void move(int randomNum) {
+    public int move(int randomNum) {
         if (randomNum >= 4) {
             position++;
         }
+        return position;
     }
 
     public int getPosition() {
         return position;
     }
 
-
+    public void forceMove() {
+        position++;
+    }
 }
