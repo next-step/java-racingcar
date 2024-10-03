@@ -17,8 +17,12 @@ public class GameResults {
         return results.size();
     }
 
-    public GameResult getGameResult(int index) {
-        return results.get(index);
+    public int getGameResultCarPositionByIndex(int index) {
+        return results.get(index).getCarPosition();
+    }
+
+    public String getGameResultCarNameByIndex(int index) {
+        return results.get(index).getCarName();
     }
 
     public List<String> getWinners() {

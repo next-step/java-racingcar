@@ -23,11 +23,11 @@ public class GameRounds {
     }
 
     public int getCarPosition(int roundIndex, int carIndex) {
-        return gameResults.get(roundIndex).getGameResult(carIndex).getCarPosition();
+        return gameResults.get(roundIndex).getGameResultCarPositionByIndex(carIndex);
     }
 
     public String getCarName(int roundIndex, int carIndex) {
-        return gameResults.get(roundIndex).getGameResult(carIndex).getCarName();
+        return gameResults.get(roundIndex).getGameResultCarNameByIndex(carIndex);
     }
 
     public List<String> getWinner() {
