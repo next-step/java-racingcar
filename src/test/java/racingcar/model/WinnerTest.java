@@ -35,11 +35,12 @@ public class WinnerTest {
         Car car2 = new Car(carName2, List.of(FORWARD, FORWARD, FORWARD, FORWARD));
         Car car3 = new Car(carName3, List.of(FORWARD, FORWARD, FORWARD, FORWARD));
         Cars cars = new Cars(List.of(car1, car2, car3));
+        List<CarName> expected = List.of(car2.carName(), car3.carName());
 
         // when
-        int actual = cars.maxForwardCount();
+        List<CarName> actual = new Winner(cars).result();
 
         // then
-        Assertions.assertThat(actual).isEqualTo(4);
+        Assertions.assertThat(actual).isEqualTo(expected);
     }
 }
