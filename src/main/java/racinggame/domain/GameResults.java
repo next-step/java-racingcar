@@ -7,7 +7,7 @@ public class GameResults {
     private final List<GameResult> results;
     private final List<String> winners;
 
-    public GameResults(List<Car> cars) {
+    public GameResults(Cars cars) {
         this.results = new ArrayList<>();
         this.winners = new ArrayList<>();
         saveResults(cars);
@@ -25,8 +25,8 @@ public class GameResults {
         return winners;
     }
 
-    private void saveResults(List<Car> cars) {
-        for (Car car : cars) {
+    private void saveResults(Cars cars) {
+        for (Car car : cars.getCarList()) {
             GameResult gameResult = new GameResult(car.getName(), car.getPosition());
             this.results.add(gameResult);
         }
@@ -35,5 +35,4 @@ public class GameResults {
     public void saveWinners(Car car) {
         winners.add(car.getName());
     }
-
 }
