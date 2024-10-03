@@ -4,7 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-    public static final String DEFAULT_DELIMITER = "[,:]";
+
+    private static final String DEFAULT_DELIMITER = "[,:]";
+
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int calculate(String targetString) {
