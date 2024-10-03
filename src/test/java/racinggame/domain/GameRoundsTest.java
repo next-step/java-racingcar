@@ -37,6 +37,17 @@ class GameRoundsTest {
         assertThat(gameRounds.getCarName(0, 2)).isEqualTo("자동차3");
     }
 
+    @Test
+    @DisplayName("getWinner 메서드가 게임 우승자를 반환한다.")
+    void getWinnerTest() {
+        GameResults gameResults = initGameResults();
+        gameResults.saveWinners(Car.create("자동차1"));
+        GameRounds gameRounds = new GameRounds();
+        gameRounds.save(gameResults);
+        assertThat(gameRounds.getWinner()).isNotEmpty();
+        assertThat(gameRounds.getWinner().get(0)).isEqualTo("자동차1");
+    }
+
     private GameRounds initGameRounds() {
         GameRounds gameRounds = new GameRounds();
         gameRounds.save(initGameResults());
