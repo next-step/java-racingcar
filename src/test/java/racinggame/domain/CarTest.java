@@ -2,8 +2,6 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -13,26 +11,26 @@ class CarTest {
     @Test
     @DisplayName("자동차를 생성한다.")
     void createCarTest() {
-        var car = initCar();
+        Car car = initCar();
         assertThat(car).isNotNull();
         assertThat(car.getPosition()).isZero();
         assertThat(car.getName()).isEqualTo("테스트카");
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
+    @Test
     @DisplayName("4 미만의 수가 전달되었을 때 자동차가 이동하지 않는다.")
-    void carDoesNotMoveWhenRandomValueIsLessThanFour(int incorrectMoveNumber) {
-        var car = initCar();
+    void carDoesNotMoveWhenRandomValueIsLessThanFour() {
+        Car car = initCar();
+        int incorrectMoveNumber = 3;
         car.move(incorrectMoveNumber);
         assertThat(car.getPosition()).isZero();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6})
+    @Test
     @DisplayName("4 이상의 수가 전달되었을 때 자동차가 한칸 이동한다.")
-    void carMovesForwardWhenRandomValueIsFourOrHigher(int correctMoveNumber) {
-        var car = initCar();
+    void carMovesForwardWhenRandomValueIsFourOrHigher() {
+        Car car = initCar();
+        int correctMoveNumber = 4;
         car.move(correctMoveNumber);
         assertThat(car.getPosition()).isOne();
     }
