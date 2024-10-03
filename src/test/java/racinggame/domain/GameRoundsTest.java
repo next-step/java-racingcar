@@ -30,6 +30,13 @@ class GameRoundsTest {
         assertThat(gameRounds.getCarPosition(0, 0)).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("getCarName 메서드가 특정 라운드의 특정 자동차 이름을 반환한다.")
+    void getCarNameTest() {
+        GameRounds gameRounds = initGameRounds();
+        assertThat(gameRounds.getCarName(0, 2)).isEqualTo("자동차3");
+    }
+
     private GameRounds initGameRounds() {
         GameRounds gameRounds = new GameRounds();
         gameRounds.save(initGameResults());
