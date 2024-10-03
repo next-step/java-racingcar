@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -83,5 +84,34 @@ public class CarTest {
         List<Status> actual = car.currentStatus();
         List<Status> expected = List.of(FORWARD, STOP, STOP, FORWARD);
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 자동차_상태들을_외부에서_접근하여_변경할수_없다() {
+        // given
+        Car car = new Car();
+        car.move(() -> new ForwardStatus(4));
+        car.move(() -> new ForwardStatus(3));
+        car.move(() -> new ForwardStatus(2));
+        car.move(() -> new ForwardStatus(5));
+        // when
+        List<Status> actual = car.currentStatus();
+        // then
+        Assertions.assertThatThrownBy(() -> {
+            actual.remove(0);
+            actual.add(0, FORWARD);
+        }).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void 자동차를_정적_팩토리_메소드로_생성한다() {
+        // given
+        Car expected = new Car();
+
+        // when
+        Car actual = Car.newInstance();
+
+        // then
+        Assertions.assertThat(actual).isEqualTo(expected);
     }
 }
