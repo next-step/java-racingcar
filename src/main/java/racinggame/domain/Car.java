@@ -41,7 +41,11 @@ public class Car {
         return number >= MINIMUM_MOVE_NUMBER;
     }
 
-    public boolean isEqualPosition(int number) {
-        return position == number;
+    public boolean isEqualPosition(int otherPosition) {
+        return position == otherPosition;
+    }
+
+    public int comparePosition(int otherPosition) {
+        return Math.max(position, otherPosition);
     }
 }

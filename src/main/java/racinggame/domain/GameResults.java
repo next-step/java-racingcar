@@ -41,9 +41,10 @@ public class GameResults {
 
     private int findMaxPosition(List<Car> cars) {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+                .reduce(0,
+                        (maxPosition, car) -> car.comparePosition(maxPosition),
+                        Math::max
+                );
     }
 
     private void saveResults(List<Car> cars) {
