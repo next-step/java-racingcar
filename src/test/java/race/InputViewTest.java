@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class RaceTest {
+class InputViewTest {
     
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
