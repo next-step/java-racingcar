@@ -2,18 +2,18 @@ package race;
 
 public class RaceInput {
     private final int carCount;
-    private final int randomStopOrGoCount;
+    private final int gameCount;
 
-    public RaceInput(int carCount, int randomStopOrGoCount) {
+    public RaceInput(int carCount, int gameCount) {
         this.carCount = carCount;
-        this.randomStopOrGoCount = randomStopOrGoCount;
+        this.gameCount = gameCount;
     }
 
     public int carCount() {
         return this.carCount;
     }
 
-    public int randomStopOrGoCount() {
-        return this.randomStopOrGoCount;
+    public int gameCount() {
+        return this.gameCount;
     }
 }

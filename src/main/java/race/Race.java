@@ -12,7 +12,7 @@ public class Race {
         List<RacingCar> cars = initiateCars(raceInput.carCount());
 
         ResultView.printResultTitle();
-        for (int stopOrGoRound = 0; stopOrGoRound < raceInput.randomStopOrGoCount(); stopOrGoRound++) {
+        for (int gameCount = 0; gameCount < raceInput.gameCount(); gameCount++) {
             runStopOrGoRound(cars);
         }
     }

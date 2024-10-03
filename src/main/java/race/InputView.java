@@ -10,16 +10,16 @@ public class InputView {
 
     public static RaceInput inputCarCountAndGameCount() {
         int carCount = 0;
-        int randomStopOrGoCount = 0;
+        int gameCount = 0;
 
-        while (carCount < MIN_CAR_COUNT || randomStopOrGoCount < MIN_RANDOM_STOP_OR_GO_COUNT) {
+        while (carCount < MIN_CAR_COUNT || gameCount < MIN_RANDOM_STOP_OR_GO_COUNT) {
             System.out.println(CAR_COUNT_REQUEST_STATEMENT);
             carCount = getInput();
             System.out.println(RANDOM_STOP_OR_GO_COUNT_REQUEST_STATEMENT);
-            randomStopOrGoCount = getInput();
+            gameCount = getInput();
         }
 
-        return new RaceInput(carCount, randomStopOrGoCount);
+        return new RaceInput(carCount, gameCount);
     }
 
     private static int getInput() {
