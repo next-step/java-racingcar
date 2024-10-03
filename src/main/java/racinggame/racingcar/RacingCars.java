@@ -34,8 +34,4 @@ public class RacingCars {
                 .map(RacingCar::getCurrentPosition)
                 .collect(Collectors.toList());
     }
-
-    public List<RacingCar> getCars() {
-        return Collections.unmodifiableList(cars);
-    }
 }
