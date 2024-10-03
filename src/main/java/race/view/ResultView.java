@@ -1,4 +1,4 @@
-package race.View;
+package race.view;
 
 public class ResultView {
     private static final String EXECUTION = "\n실행 결과";
