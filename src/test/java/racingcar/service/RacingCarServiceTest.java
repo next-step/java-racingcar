@@ -19,8 +19,8 @@ public class RacingCarServiceTest {
     }
 
     @Test
-    public  void IsMovingForwardTest() {
-        boolean[] carForwardStatuses = racingCarService.IsMovingForward(racingCarService.generateRandomNumberForMovingCar(3));
+    public void isMovingForwardTest() {
+        boolean[] carForwardStatuses = racingCarService.isMovingForward(racingCarService.generateRandomNumberForMovingCar(3));
 
         for(boolean carForwardStatus : carForwardStatuses) {
             assertThat(carForwardStatus).isIn(true, false);

@@ -10,12 +10,12 @@ public class RacingCarController {
     private static final RacingCarService racingCarService = new RacingCarService();
 
     public static void main(String[] args) {
-        int numberOfCars = inputView.EnterNumberOfCars();
-        int NumberOfMoves = inputView.EnterNumberOfMoves();
+        int numberOfCars = inputView.enterNumberOfCars();
+        int NumberOfMoves = inputView.enterNumberOfMoves();
 
         for(int i = 0; i < NumberOfMoves; i++) {
             racingCarService.saveCarMovementStatuses(
-                    racingCarService.IsMovingForward(
+                    racingCarService.isMovingForward(
                             racingCarService.generateRandomNumberForMovingCar(numberOfCars)
                     )
             );
