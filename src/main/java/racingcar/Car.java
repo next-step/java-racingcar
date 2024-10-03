@@ -4,7 +4,7 @@ public class Car {
     private int position;
 
     public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isForward()) {
+        if (moveStrategy.isMove()) {
             position++;
         }
     }

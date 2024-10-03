@@ -2,5 +2,5 @@ package racingcar;
 
 @FunctionalInterface
 public interface MoveStrategy {
-    boolean isForward();
+    boolean isMove();
 }
