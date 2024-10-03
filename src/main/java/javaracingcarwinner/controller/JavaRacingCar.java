@@ -2,6 +2,8 @@ package javaracingcarwinner.controller;
 
 import javaracingcarwinner.dto.RacingInfoDto;
 import javaracingcarwinner.entity.RacingCar;
+import javaracingcarwinner.util.RacingUtil;
+import javaracingcarwinner.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,13 +15,46 @@ public class JavaRacingCar {
     private static final int MAX_NAME_LENGTH = 5;
 
     private final List<RacingCar> cars = new ArrayList<>();
+    private final ResultView resultView;
 
     private int tryCount;
 
-    public JavaRacingCar(RacingInfoDto info) {
+    public JavaRacingCar(RacingInfoDto info, ResultView resultView) {
         initCars(toList(split(info.text())));
         validateTryCount(info.tryCount());
-        this.tryCount = tryCount();
+        this.tryCount = info.tryCount();
+        this.resultView = resultView;
+        start();
+    }
+
+    private void start() {
+        this.resultView.startMessage();
+        startRound();
+        this.resultView.printWinners(RacingUtil.whoIsWinners(this.cars));
+    }
+
+    private void startRound() {
+        for (int i = 0; i < this.tryCount; i++) {
+            startRoundEachCar();
+            resultView.printRound(this.cars);
+        }
+    }
+
+    private void startRoundEachCar() {
+        for (int i = 0; i < this.cars.size(); i++) {
+            decidedMoveCar(i);
+        }
+    }
+
+    private void decidedMoveCar(int carIndex) {
+        RacingCar racingCar = this.cars.get(carIndex);
+        if (racingCar.isMove(random())) {
+            racingCar.go();
+        }
+    }
+
+    private int random() {
+        return RacingUtil.random();
     }
 
     private String[] split(String text) {
@@ -33,7 +68,7 @@ public class JavaRacingCar {
     private void initCars(List<String> names) {
         for (String name : names) {
             validateName(name);
-            cars.add(new RacingCar(name));
+            this.cars.add(new RacingCar(name));
         }
     }
 

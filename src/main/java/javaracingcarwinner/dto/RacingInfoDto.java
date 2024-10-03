@@ -5,15 +5,16 @@ public class RacingInfoDto {
     private final String text;
     private final int tryCount;
 
-    public RacingInfoDto(final String text, final int tryCount){
+    public RacingInfoDto(final String text, final int tryCount) {
         this.text = text;
         this.tryCount = tryCount;
     }
 
-    public String text(){
+    public String text() {
         return this.text;
     }
-    public int tryCount(){
+
+    public int tryCount() {
         return this.tryCount;
     }
 }

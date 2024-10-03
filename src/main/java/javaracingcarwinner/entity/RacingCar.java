@@ -24,7 +24,6 @@ public class RacingCar {
         if (MIN_STANDARDS_VALUE <= value && value <= MAX_STANDARDS_VALUE) {
             return true;
         }
-
         return false;
     }
 
