@@ -1,37 +1,34 @@
 package carracing;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CarsMoveStatusHistory {
     /**
      * 외부 List : 자동차 경주(CarRacing)의 moveTryCount 갯수만큼 생성되어야 한다.
-     * 내부 List : 자동차 경주(CarRacing)의 cars 갯수만큼 생성되어야 한다.
+     * 내부 Map : 자동차 경주(CarRacing)의 cars 갯수만큼 생성되어야 한다.
      */
-    private final List<List<Integer>> carsMoveStatusHistory;
+    private final List<Map<Car, Integer>> carsMoveStatusHistory;
 
     public CarsMoveStatusHistory() {
         this.carsMoveStatusHistory = new ArrayList<>();
     }
 
     public void save(List<Car> cars) {
-        ArrayList<Integer> carsMoveStatusOfEachMoveTryCount = new ArrayList<>();
-
+        Map<Car, Integer> carsMoveStatus = new LinkedHashMap<>();
         for (Car car : cars) {
-            carsMoveStatusOfEachMoveTryCount.add(car.getMoveStatus());
+            carsMoveStatus.put(car, car.getMoveStatus());
         }
-        this.carsMoveStatusHistory.add(carsMoveStatusOfEachMoveTryCount);
+        this.carsMoveStatusHistory.add(carsMoveStatus);
     }
 
-    public List<List<Integer>> getCarsMoveStatusHistory() {
+    public List<Map<Car, Integer>> getCarsMoveStatusHistory() {
         return this.carsMoveStatusHistory;
     }
 
-    public List<Integer> getCarsMoveStatusHistoryByMoveTryCount(int moveTryCount) {
+    public Map<Car, Integer> getCarsMoveStatusHistoryByMoveTryCount(int moveTryCount) {
         return this.carsMoveStatusHistory.get(moveTryCount);
-    }
-
-    public int getCarMoveStatusHistory(int tryCount, int carIndex) {
-        return this.carsMoveStatusHistory.get(tryCount).get(carIndex);
     }
 }

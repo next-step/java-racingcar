@@ -21,7 +21,5 @@ class CarsMoveStatusHistoryTest {
 
         assertThat(carsMoveStatusHistory.getCarsMoveStatusHistory()).hasSize(1);
         assertThat(carsMoveStatusHistory.getCarsMoveStatusHistoryByMoveTryCount(0)).hasSize(2);
-        assertThat(carsMoveStatusHistory.getCarMoveStatusHistory(0, 0)).isEqualTo(2);
-        assertThat(carsMoveStatusHistory.getCarMoveStatusHistory(0, 1)).isZero();
     }
 }

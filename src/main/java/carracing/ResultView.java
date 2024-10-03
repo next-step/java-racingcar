@@ -1,6 +1,6 @@
 package carracing;
 
-import java.util.List;
+import java.util.Map;
 
 public class ResultView {
     private static final String CAR_MOVESTATUS_DASH = "-";
@@ -17,9 +17,9 @@ public class ResultView {
         System.out.println(stringBuilder);
     }
 
-    private static StringBuilder createResultOfAMoveTryCount(List<Integer> carsMoveStatusHistoryByTryCount) {
+    private static StringBuilder createResultOfAMoveTryCount(Map<Car, Integer> carsMoveStatusHistoryByTryCount) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Integer integer : carsMoveStatusHistoryByTryCount) {
+        for (Integer integer : carsMoveStatusHistoryByTryCount.values()) {
             stringBuilder
                     .append(createDashBy(integer))
                     .append(NEW_LINE);
