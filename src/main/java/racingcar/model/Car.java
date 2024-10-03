@@ -1,11 +1,20 @@
 package racingcar.model;
 
 public class Car {
-    int carNumber;
-    public String currentCarMovingStatus;
+    private final int carNumber;
+    private int carMovingDistance;
 
-    public Car(int carNumber, String currentMovingStatus) {
+    public Car(int carNumber, int carMovingDistance) {
         this.carNumber = carNumber;
-        this.currentCarMovingStatus = currentMovingStatus;
+        this.carMovingDistance = carMovingDistance;
+    }
+
+    public void move(boolean isCarMovingForward) {
+        if(isCarMovingForward)
+            carMovingDistance++;
+    }
+
+    public int getCarMovingDistance() {
+        return this.carMovingDistance;
     }
 }

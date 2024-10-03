@@ -5,22 +5,24 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.service.CarRacing;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingTest {
-    private final CarRacing carRacing = new CarRacing();
+    private final CarRacing carRacing = new CarRacing(3);
     
     @Test
     @DisplayName("자동차들의 상태를 저장할 배열을 만드는 메서드 테스트")
     public void makeCarsStatusArr() {
-        carRacing.makeCarsStatusArr(3);
-        assertThat(carRacing.getCarsStatus()).hasSize(3);
+        carRacing.makeCarsStatusList(5);
+        assertThat(carRacing.getCarsStatus()).hasSize(5);
     }
 
     @Test
     @DisplayName("자동차들의 움직임을 결정하기 위한 1~9까지의 랜덤한 숫자를 발생시키는 메서드 테스트")
     public void generateRandomNumberForMovingCarTest() {
-        int[] randomNumbers = carRacing.generateRandomNumberForMovingCar(3);
+        int[] randomNumbers = carRacing.generateRandomNumberForMovingCar(5);
 
         for(int carNumber : randomNumbers) {
             assertThat(carNumber).isBetween(1, 9);
@@ -38,23 +40,31 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("각각의 자동차에 대한 전진여부에 따라 실제로 자동차들을 이동시키고 자동차 상태 배열에 저장하는 메서드 테스트")
-    public void saveCarsStatus() {
-        carRacing.makeCarsStatusArr(3);
-        Car[] carsStatus = carRacing.getCarsStatus();
+    @DisplayName("각각의 자동차에 대한 전진여부에 따라 실제로 자동차들을 이동시키는 메서드 테스트")
+    public void carMove() {
+        carRacing.makeCarsStatusList(3);
+        List<Car> carsStatus = carRacing.getCarsStatus();
 
         boolean[] carForwardStatuses1 = {true, false, true};
-        carRacing.saveCarsStatus(carForwardStatuses1);
 
-        assertThat(carsStatus[0].currentCarMovingStatus).isEqualTo("-"); // 첫 번째 자동차는 전진했으므로 "-"
-        assertThat(carsStatus[1].currentCarMovingStatus).isEqualTo(""); // 두 번째 자동차는 전진하지 않았으므로 "-"
-        assertThat(carsStatus[2].currentCarMovingStatus).isEqualTo("-"); // 세 번째 자동차는 전진했으므로 "-"
+        for(int i = 0; i < carsStatus.size(); i++) {
+            Car car = carsStatus.get(i);
+            car.move(carForwardStatuses1[i]);
+        }
+
+        assertThat(carsStatus.get(0).getCarMovingDistance()).isEqualTo(1);
+        assertThat(carsStatus.get(1).getCarMovingDistance()).isEqualTo(0);
+        assertThat(carsStatus.get(2).getCarMovingDistance()).isEqualTo(1);
 
         boolean[] carForwardStatuses2 = {false, true, true};
-        carRacing.saveCarsStatus(carForwardStatuses2);
 
-        assertThat(carsStatus[0].currentCarMovingStatus).isEqualTo("-"); // 첫 번째 자동차는 여전히 "-"
-        assertThat(carsStatus[1].currentCarMovingStatus).isEqualTo("-"); // 두 번째 자동차는 전진했으므로 "-" 추가
-        assertThat(carsStatus[2].currentCarMovingStatus).isEqualTo("--"); // 세 번째 자동차는 전진했으므로 "-" 추가
+        for(int i = 0; i < carsStatus.size(); i++) {
+            Car car = carsStatus.get(i);
+            car.move(carForwardStatuses2[i]);
+        }
+
+        assertThat(carsStatus.get(0).getCarMovingDistance()).isEqualTo(1);
+        assertThat(carsStatus.get(1).getCarMovingDistance()).isEqualTo(1);
+        assertThat(carsStatus.get(2).getCarMovingDistance()).isEqualTo(2);
     }
 }

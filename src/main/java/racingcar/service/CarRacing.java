@@ -5,24 +5,35 @@ import java.util.*;
 
 public class CarRacing {
 
-    private static Car[] carsStatus = null;
+    private List<Car> carsStatus;
 
-    public Car[] carRaceReady(int numberOfCars) {
-        makeCarsStatusArr(numberOfCars);
-        return getCarsStatus();
+    public CarRacing() {}
+
+    public CarRacing(int numberOfCars) {
+        carRaceReady(numberOfCars);
     }
 
-    public void carRaceStart(int numberOfCars) {
-        int[] randomNumbers = generateRandomNumberForMovingCar(numberOfCars);
+    private void carRaceReady(int numberOfCars) {
+        makeCarsStatusList(numberOfCars);
+    }
+
+    public void carRaceStart() {
+        int[] randomNumbers = generateRandomNumberForMovingCar(carsStatus.size());
+
         boolean[] carsMovingForwardStatus = isCarMovingForward(randomNumbers);
-        saveCarsStatus(carsMovingForwardStatus);
+
+        for(int i = 0; i < carsMovingForwardStatus.length; i++) {
+            Car car = carsStatus.get(i);
+            boolean isCarMovingForward = carsMovingForwardStatus[i];
+            car.move(isCarMovingForward);
+        }
     }
 
-    public void makeCarsStatusArr(int numberOfCars) {
-        carsStatus = new Car[numberOfCars];
+    public void makeCarsStatusList(int numberOfCars) {
+        carsStatus = new ArrayList<Car>();
 
-        for(int i = 0; i < carsStatus.length; i++) {
-            carsStatus[i] = new Car(i+1, "");
+        for(int i = 0; i < numberOfCars; i++) {
+            carsStatus.add(new Car(i+1, 0));
         }
     }
 
@@ -48,17 +59,7 @@ public class CarRacing {
         return carsMovingForwardStatus;
     }
 
-    public void saveCarsStatus(boolean[] carsMovingForwardStatus) {
-        for(int i = 0; i < carsMovingForwardStatus.length; i++) {
-            Car carStatus = carsStatus[i];
-
-            if(carsMovingForwardStatus[i]) {
-                carStatus.currentCarMovingStatus += "-";
-            }
-        }
-    }
-
-    public Car[] getCarsStatus() {
+    public List<Car> getCarsStatus() {
         return carsStatus;
     }
 }
