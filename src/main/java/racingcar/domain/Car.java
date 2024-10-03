@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.util.NumberGenerator;
 
 public class Car {
     private static final int MIN_MOVABLE_CONDITION_NUMBER = 4;

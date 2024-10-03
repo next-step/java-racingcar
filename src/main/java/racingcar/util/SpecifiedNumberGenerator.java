@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.util;
 
 public class SpecifiedNumberGenerator implements NumberGenerator {
 
