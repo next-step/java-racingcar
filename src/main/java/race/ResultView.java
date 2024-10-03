@@ -10,7 +10,7 @@ public class ResultView {
 
 
     public static void printResultTitle() {
-        System.out.printf(LINE_BREAK + RESULT_TITLE);
+        System.out.printf(LINE_BREAK + RESULT_TITLE + LINE_BREAK);
     }
 
     public static void printCarStates(List<RacingCar> cars) {
