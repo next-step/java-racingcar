@@ -1,21 +1,23 @@
 package racingcar;
 
 public class RacingGame {
-    private RacingGame() {
-        throw new UnsupportedOperationException("Utility class");
+    private final MoveStrategy moveStrategy;
+
+    public RacingGame(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
-    public static RaceResult race(int carCount, int attemptCount, MoveStrategy moveStrategy) {
+    public RaceResult race(int carCount, int attemptCount) {
         Car[] carArray = createCars(carCount);
         RaceResult raceResult = new RaceResult(attemptCount);
         for (int attempt = 0; attempt < attemptCount; attempt++) {
-            AttemptResult attemptResult = runAttempt(carArray, moveStrategy);
+            AttemptResult attemptResult = runAttempt(carArray);
             raceResult.addAttemptResult(attemptResult, attempt);
         }
         return raceResult;
     }
 
-    private static AttemptResult runAttempt(Car[] carArray, MoveStrategy moveStrategy) {
+    private AttemptResult runAttempt(Car[] carArray) {
         int[] positions = new int[carArray.length];
         for (int i = 0; i < carArray.length; i++) {
             carArray[i].move(moveStrategy);
@@ -24,12 +26,11 @@ public class RacingGame {
         return new AttemptResult(positions);
     }
 
-    private static Car[] createCars(int carCount) {
+    private Car[] createCars(int carCount) {
         Car[] cars = new Car[carCount];
         for (int i = 0; i < carCount; i++) {
             cars[i] = new Car();
         }
         return cars;
     }
-
 }

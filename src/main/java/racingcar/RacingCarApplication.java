@@ -4,7 +4,8 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         int carCount = InputView.getCarCount();
         int attemptCount = InputView.getAttemptCount();
-        RaceResult raceResult = RacingGame.race(carCount, attemptCount, new FourOrMore(new SystemRandomHolder()));
+        RacingGame racingGame = new RacingGame(new FourOrMore(new SystemRandomHolder()));
+        RaceResult raceResult = racingGame.race(carCount, attemptCount);
         ResultView.printHistory(raceResult);
     }
 }
