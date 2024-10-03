@@ -11,7 +11,7 @@ public class RacingMessageReader implements MessageReader {
     }
 
     @Override
-    public int readInt() {
-        return scanner.nextInt();
+    public String readString() {
+        return scanner.nextLine();
     }
 }

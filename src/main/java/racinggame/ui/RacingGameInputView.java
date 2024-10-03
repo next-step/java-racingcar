@@ -1,5 +1,13 @@
 package racinggame.ui;
 
+import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
+import racinggame.random.RacingGameRandomNumberGenerator;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class RacingGameInputView {
     public static final int MIN_CAR_COUNT = 2;
     public static final int MIN_ROUND_COUNT = 1;
@@ -12,25 +20,37 @@ public class RacingGameInputView {
         this.writer = writer;
     }
 
-    public int inputRacingCarCount() {
-        writer.write("자동차 대수는 몇 대 인가요?");
+    public RacingCars inputRacingCarNames() {
+        writer.write("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        final int carCount = reader.readInt();
-        if (carCount < MIN_CAR_COUNT) {
-            throw new IllegalArgumentException("자동차는 최소 " + MIN_CAR_COUNT + "대 이상이여야 합니다.");
+        final String inputString = reader.readString();
+        if (inputString.isEmpty()) {
+            throw new IllegalArgumentException();
         }
 
-        return carCount;
+        final String[] split = inputString.split(",");
+        if (split.length < 2) {
+            throw new IllegalArgumentException();
+        }
+
+        for (final String carName : split) {
+            if (carName.isEmpty() || carName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        final List<RacingCar> collect = Arrays.stream(split)
+            .map(s -> new RacingCar(new RacingGameRandomNumberGenerator()))
+            .collect(Collectors.toList());
+
+        return new RacingCars(collect);
+    }
+
+    public int inputRacingCarCount() {
+        return 0;
     }
 
     public int inputRacingRoundCount() {
-        writer.write("시도할 회수는 몇 회 인가요?");
-
-        final int roundCount = reader.readInt();
-        if (roundCount < MIN_ROUND_COUNT) {
-            throw new IllegalArgumentException("시도할 회수는 최소 " + MIN_ROUND_COUNT + "회 이상이여야 합니다.");
-        }
-
-        return roundCount;
+        return 0;
     }
 }
