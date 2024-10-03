@@ -21,7 +21,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("4 미만의 수가 전달되었을 때 자동차가 한칸 이동한다.")
+    @DisplayName("4 미만의 수가 전달되었을 때 자동차가 이동하지 않는다.")
     void carDoesNotMoveWhenRandomValueIsLessThanFour(int incorrectMoveNumber) {
         var car = initCar();
         car.move(incorrectMoveNumber);
