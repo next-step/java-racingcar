@@ -25,10 +25,6 @@ public class StringUtils {
         }
     }
     public static String repeatCharacter(Character character, int count) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < count; i++) {
-            result.append(character);
-        }
-        return result.toString();
+        return character.toString().repeat(count);
     }
 }
