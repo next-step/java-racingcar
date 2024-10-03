@@ -15,22 +15,20 @@ class RaceTest {
 
     @ParameterizedTest
     @CsvSource({
-            "3, 5",
-            "5, 3",
-            "4, 4",
-            "3, 2",
-            "2, 6"
+            "'a,b,c,d,e', 5",
+            "'pobi,crong,honux', 3",
     })
     @DisplayName("주어진 자동차 수로 경주를 생성하고 지정된 라운드 수만큼 진행한다")
-    void createAndProceedRace(int numberOfCars, int numberOfRounds) {
+    void createAndProceedRace(String nameInput, int numberOfRounds) {
         MoveStrategy moveStrategy = new RandomMoveStrategy();
-        Race race = Race.create(numberOfCars, moveStrategy);
+        List<String> names = List.of(nameInput.split(","));
+        Race race = Race.create(moveStrategy, names);
 
         for (int round = 0; round < numberOfRounds; round++) {
             List<Integer> roundResult = race.proceedRounds();
             final int currentRound = round;
 
-            assertThat(roundResult).hasSize(numberOfCars);
+            assertThat(roundResult).hasSize(names.size());
             assertThat(roundResult).allSatisfy(position ->
                     assertThat(position).isBetween(0, currentRound + 1)
             );

@@ -23,17 +23,16 @@ public class RacingGameController {
         controller.run();
     }
 
-
     public void run() {
-        int numberOfCars = inputView.readNumberOfCars();
+        List<String> namesOfCars = inputView.readNamesOfCars();
         int numberOfRounds = inputView.readNumberOfRounds();
 
-        Race race = initializeRace(numberOfCars);
+        Race race = initializeRace(namesOfCars);
         conductRace(race, numberOfRounds);
     }
 
-    private Race initializeRace(int numberOfCars) {
-        Race race = Race.create(numberOfCars, moveStrategy);
+    private Race initializeRace(List<String > namesOfCars) {
+        Race race = Race.create(moveStrategy, namesOfCars);
         resultView.printResultMessage();
         return race;
     }
