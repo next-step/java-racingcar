@@ -48,4 +48,11 @@ class StringAddCalculatorTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("음수는 허용하지 않습니다.");
     }
+
+    @DisplayName("문자를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)")
+    @Test
+    void 문자() {
+        assertThatThrownBy(() -> splitAndSum("hello"))
+                .isInstanceOf(NumberFormatException.class);
+    }
 }
