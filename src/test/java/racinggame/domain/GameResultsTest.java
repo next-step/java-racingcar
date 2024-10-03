@@ -16,6 +16,13 @@ class GameResultsTest {
         assertThat(gameResults).isNotNull();
     }
 
+    @Test
+    @DisplayName("carCount 메서드가 게임 결과에 저장된 게임 참여 자동차 대수를 반환한다.")
+    void carCountTest() {
+        GameResults gameResults = initGameResults();
+        assertThat(gameResults.carCount()).isEqualTo(3);
+    }
+
     private GameResults initGameResults() {
         List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
         return new GameResults(new Cars(carNames));
