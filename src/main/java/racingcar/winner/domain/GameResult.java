@@ -30,7 +30,7 @@ public class GameResult {
         return winnersName;
     }
 
-    private static void isWinner(int position, int maxPosition, String name, List<String> winnersName) {
+    private void isWinner(int position, int maxPosition, String name, List<String> winnersName) {
         if (position == maxPosition) {
             winnersName.add(name);
         }
