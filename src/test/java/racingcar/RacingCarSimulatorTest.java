@@ -9,13 +9,12 @@ import racingcar.dto.RacingWrapResultDTO;
 
 public class RacingCarSimulatorTest {
 
-    final static RacingCarSimulator simulator = new RacingCarSimulator();
 
     @ParameterizedTest
     @ValueSource(ints = {1,3,5,7,9})
     @DisplayName("결과는 입력한 트라이 횟수와 같은 수의 wrapResult를 가집니다")
     void wrapResultsSizeTest(int tryNumber){
-        RacingResultDTO result = simulator.simulate(1, tryNumber);
+        RacingResultDTO result = RacingCarSimulator.simulate(1, tryNumber);
         Assertions.assertEquals(tryNumber, result.wrapResults.length);
     }
 
@@ -23,7 +22,7 @@ public class RacingCarSimulatorTest {
     @ValueSource(ints = {1,3,5,7,9})
     @DisplayName("wrapResult는 입력한 차의 수와 같은 수의 차량 상태를 가집니다")
     void carStateSizeTest(int carNumber){
-        RacingResultDTO result = simulator.simulate(carNumber, 1);
+        RacingResultDTO result = RacingCarSimulator.simulate(carNumber, 1);
         RacingWrapResultDTO[] wrapResults = result.wrapResults;
         for(RacingWrapResultDTO wrapResult: wrapResults) {
             Assertions.assertEquals(carNumber, wrapResult.carStates.catStates.length);
