@@ -10,7 +10,7 @@ public class RacingCarGame {
     private static final int MOVE_CONDITION_LIMIT = 10;
     private static final Random MOVE_CONDITION_MAKER = new Random();
 
-    private Car[] cars;
+    private RacingCar[] cars;
 
     public void gameStart(){
         String carNames = InputView.getCarNamesInputFromUser();
@@ -21,14 +21,14 @@ public class RacingCarGame {
         decideWinner();
     }
 
-    private Car[] createRacingCars(String carNames) {
+    private RacingCar[] createRacingCars(String carNames) {
         return createCarsFromNames(splitCarName(carNames));
     }
 
-    private Car[] createCarsFromNames(String[] carNames) {
-        cars = new Car[carNames.length];
+    private RacingCar[] createCarsFromNames(String[] carNames) {
+        cars = new RacingCar[carNames.length];
         for (int i = 0; i < carNames.length; i++) {
-            cars[i] = Car.createCarWithName(carNames[i]);
+            cars[i] = RacingCar.createCarWithName(carNames[i]);
         }
         return cars;
     }
@@ -37,7 +37,7 @@ public class RacingCarGame {
         return carNames.split(CAR_NAME_SEPARATOR);
     }
 
-    private void startRace(int racingCount, Car[] cars) {
+    private void startRace(int racingCount, RacingCar[] cars) {
         for(int i = 0; i < racingCount; i++){
             raceCars(cars);
             ResultView.printRaceResult(cars);
@@ -46,32 +46,32 @@ public class RacingCarGame {
 
     private void decideWinner() {
         int maxCarPosition = getMaxCarPosition();
-        List<Car> championCars = findChampionCars(maxCarPosition);
+        List<RacingCar> championCars = findChampionCars(maxCarPosition);
         ResultView.printRaceChampion(championCars);
     }
 
-    private List<Car> findChampionCars(int maxCarPosition) {
-        List<Car> championCars = new ArrayList<>();
-        for (Car car : cars) {
+    private List<RacingCar> findChampionCars(int maxCarPosition) {
+        List<RacingCar> championCars = new ArrayList<>();
+        for (RacingCar car : cars) {
             if (isChampionCar(car, maxCarPosition)) championCars.add(car);
         }
         return championCars;
     }
 
-    private static boolean isChampionCar(Car car, int maxCarPosition) {
+    private static boolean isChampionCar(RacingCar car, int maxCarPosition) {
         return car.isCurrentPosition(maxCarPosition);
     }
 
     private int getMaxCarPosition() {
         int maxCarPosition = 0;
-        for (Car car : cars) {
+        for (RacingCar car : cars) {
             maxCarPosition = Math.max(maxCarPosition, car.getPosition());
         }
         return maxCarPosition;
     }
 
-    private void raceCars(Car[] cars) {
-        for (Car car : cars) {
+    private void raceCars(RacingCar[] cars) {
+        for (RacingCar car : cars) {
             car.move(createMoveCondition());
         }
     }

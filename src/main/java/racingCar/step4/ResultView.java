@@ -13,19 +13,19 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printRaceResult(Car[] cars) {
-        for (Car car : cars) {
+    public static void printRaceResult(RacingCar[] cars) {
+        for (RacingCar car : cars) {
             printCarPosition(car);
         }
         endRace();
     }
 
-    public static void printRaceChampion(List<Car> championCars) {
+    public static void printRaceChampion(List<RacingCar> championCars) {
         String championName = String.join(CHAMPION_CAR_NAME_SEPARATOR, getChampionCarNames(championCars));
         System.out.format(CHAMPION_PRINT_FORMAT, championName);
     }
 
-    private static void printCarPosition(Car car) {
+    private static void printCarPosition(RacingCar car) {
         StringBuilder sb = new StringBuilder();
 
         sb.append(String.format("%s : ", car.getName()));
@@ -41,9 +41,9 @@ public class ResultView {
         System.out.println();
     }
 
-    private static List<String> getChampionCarNames(List<Car> championCars) {
+    private static List<String> getChampionCarNames(List<RacingCar> championCars) {
         List<String> championCarNames = new ArrayList<>();
-        for (Car car : championCars) {
+        for (RacingCar car : championCars) {
             championCarNames.add(car.getName());
         }
         return championCarNames;
