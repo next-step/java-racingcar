@@ -22,23 +22,16 @@ public class ResultView {
         }
         System.out.println();
     }
+
     public void printCarName(Car car) {
         System.out.print(car.getName() + " : ");
     }
 
     public void printWinners(List<Car> winners) {
-        for(int i = 0; i < winners.size(); i++) {
-            winnerOrWinners(winners, i);
+        for (int i = 0; i < winners.size() - 1; i++) {
+            System.out.print(winners.get(i).getName() + ", ");
         }
+        System.out.print(winners.get(winners.size()-1).getName()+"가 우승하였습니다");
     }
 
-    private static void winnerOrWinners(List<Car> winners, int i) {
-        if(i != winners.size()-1)
-        {
-            System.out.print(winners.get(i).getName()+", ");
-        }
-        else{
-            System.out.print(winners.get(i).getName()+"가 우승하였습니다");
-        }
-    }
 }
