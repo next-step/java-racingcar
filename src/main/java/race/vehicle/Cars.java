@@ -13,11 +13,10 @@ public class Cars {
         initCars(num);
     }
 
-    Cars initCars(int num) {
+    void initCars(int num) {
         for (int i = 0; i < num; i++) {
             cars.add(new Car());
         }
-        return this;
     }
 
     public List<Car> getCars() {
