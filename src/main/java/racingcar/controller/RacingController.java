@@ -4,8 +4,8 @@ import racingcar.service.RacingService;
 
 public class RacingController {
 
-    private InputView inputView;
-    private ResultView resultView;
+    private final InputView inputView;
+    private final ResultView resultView;
 
     public RacingController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
