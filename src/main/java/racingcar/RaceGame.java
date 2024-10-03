@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RaceGame {
     private final List<Car> cars;
@@ -22,15 +21,20 @@ public class RaceGame {
         for (int i = 0; i < attemptCount; i++) {
             forwardAttempt();
         }
-        ResultView resultView = new ResultView();
-        resultView.showGameResult(results);
+    }
+
+    public List<RoundResult> getResults() {
+        return results;
+    }
+
+    public void showGameResult() {
+        ResultView.printResultView(results);
     }
 
     private void forwardAttempt() {
         RoundResult roundResult = new RoundResult();
         for (Car car : cars) {
-            int random = new Random().nextInt(10);
-            car.move(random);
+            car.move();
             roundResult.addResult(car.getPosition());
         }
         results.add(roundResult);
