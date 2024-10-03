@@ -31,9 +31,26 @@ public class RacingGame {
     }
 
     private void saveGameResult() {
-        GameResults gameResults = new GameResults();
-        gameResults.save(cars);
+        GameResults gameResults = new GameResults(cars);
+        updateWinners(gameResults, cars);
         rounds.add(gameResults);
+    }
+
+    private void updateWinners(GameResults gameResults, List<Car> cars) {
+        int maxPosition = findMaxPosition(cars);
+        for (Car car : cars) {
+            if (car.isEqualPosition(maxPosition)) {
+                gameResults.saveWinners(car);
+            }
+        }
+    }
+
+    private int findMaxPosition(List<Car> cars) {
+        return cars.stream()
+                .reduce(0,
+                        (maxPosition, car) -> car.comparePosition(maxPosition),
+                        Math::max
+                );
     }
 
     private void moveCars() {

@@ -7,9 +7,10 @@ public class GameResults {
     private final List<GameResult> results;
     private final List<String> winners;
 
-    public GameResults() {
+    public GameResults(List<Car> cars) {
         this.results = new ArrayList<>();
         this.winners = new ArrayList<>();
+        saveResults(cars);
     }
 
     public int carCount() {
@@ -24,34 +25,15 @@ public class GameResults {
         return winners;
     }
 
-    public void save(List<Car> cars) {
-        updateWinners(cars);
-        saveResults(cars);
-    }
-
-    private void updateWinners(List<Car> cars) {
-        winners.clear();
-        int maxPosition = findMaxPosition(cars);
-        for (Car car : cars) {
-            if (car.isEqualPosition(maxPosition)) {
-                winners.add(car.getName());
-            }
-        }
-    }
-
-    private int findMaxPosition(List<Car> cars) {
-        return cars.stream()
-                .reduce(0,
-                        (maxPosition, car) -> car.comparePosition(maxPosition),
-                        Math::max
-                );
-    }
-
     private void saveResults(List<Car> cars) {
         for (Car car : cars) {
             GameResult gameResult = new GameResult(car.getName(), car.getPosition());
             this.results.add(gameResult);
         }
+    }
+
+    public void saveWinners(Car car) {
+        winners.add(car.getName());
     }
 
 }
