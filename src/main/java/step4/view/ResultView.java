@@ -2,6 +2,8 @@ package step4.view;
 
 import step4.vehicle.Car;
 
+import java.util.List;
+
 public class ResultView {
     private static final String EXECUTION = "\n실행 결과";
     private static final String ROUND_SEPARATION = "\n";
@@ -22,5 +24,21 @@ public class ResultView {
     }
     public void printCarName(Car car) {
         System.out.print(car.getName() + " : ");
+    }
+
+    public void printWinners(List<Car> winners) {
+        for(int i = 0; i < winners.size(); i++) {
+            winnerOrWinners(winners, i);
+        }
+    }
+
+    private static void winnerOrWinners(List<Car> winners, int i) {
+        if(i != winners.size()-1)
+        {
+            System.out.print(winners.get(i).getName()+", ");
+        }
+        else{
+            System.out.print(winners.get(i).getName()+"가 우승하였습니다");
+        }
     }
 }

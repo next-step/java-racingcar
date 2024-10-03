@@ -2,14 +2,13 @@ package step4;
 
 import step4.util.RandomNumberGenerator;
 import step4.vehicle.Car;
+import step4.vehicle.Cars;
 import step4.view.ResultView;
 
-import java.util.List;
-
 public class PlayGame {
-    List<Car> cars;
+    Cars cars;
     ResultView resultView;
-    PlayGame(List<Car> cars, ResultView resultView) {
+    PlayGame(Cars cars, ResultView resultView) {
         this.cars = cars;
         this.resultView = resultView;
     }
@@ -17,13 +16,14 @@ public class PlayGame {
     public void gameStart(int round){
         resultView.printResultView();
         for(int i = 0; i< round; i++){
-            for(Car car : cars){
+            for(Car car : cars.getCars()){
                 resultView.printCarName(car);
                 resultView.printCarLocation(car.getLocation());
                 car.move(RandomNumberGenerator.getRandomGenerator());
             }
             resultView.separateRound();
         }
+        resultView.printWinners(cars.getWinners());
     }
 
 }
