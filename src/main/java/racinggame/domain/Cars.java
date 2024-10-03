@@ -13,12 +13,8 @@ public class Cars {
 
     private void initCar(List<String> carNames) {
         for (String carName : carNames) {
-            add(Car.create(carName));
+            carList.add(Car.create(carName));
         }
-    }
-
-    public void add(Car car) {
-        carList.add(car);
     }
 
     public List<Car> getCarList() {
