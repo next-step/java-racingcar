@@ -14,7 +14,7 @@ public class RaceWinners {
         int maxMovement = cars.stream()
                 .mapToInt(Car::getMovement)
                 .max()
-                .orElse(0);
+                .orElse(Movement.DEFAULT_COUNT);
 
         return cars.stream()
                 .filter(car -> car.getMovement() == maxMovement)
