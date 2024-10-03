@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-
     private static final int DEFAULT_BOUND = 10;
+
     private final Random random = new Random();
     private final Cars cars;
     private final GameRounds rounds;

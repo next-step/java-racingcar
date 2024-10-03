@@ -3,7 +3,6 @@ package racinggame.ui;
 import racinggame.domain.GameRounds;
 
 public class ResultView {
-
     public static final String SUFFIX_WINNER = "가 최종 우승했습니다.";
 
     private ResultView() {
