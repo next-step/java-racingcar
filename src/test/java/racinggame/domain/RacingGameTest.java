@@ -1,32 +1,42 @@
 package racinggame.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
 import racinggame.random.RacingGameRandomNumberGenerator;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
-    private List<RacingCar> racingCars;
-
-    @BeforeEach
-    void setUp() {
-        racingCars = List.of(
-            new RacingCar(new RacingGameRandomNumberGenerator()),
-            new RacingCar(new RacingGameRandomNumberGenerator()),
-            new RacingCar(new RacingGameRandomNumberGenerator())
+    @Test
+    @DisplayName("입력받은 라운드 수 만큼의 게임결과가 생긴다.")
+    void testRoundCount() {
+        final RacingCars racingCars = RacingCars.create(
+            List.of(
+                new RacingCar(new RacingGameRandomNumberGenerator(), "1번자동차"),
+                new RacingCar(new RacingGameRandomNumberGenerator(), "2번자동차")
+            )
         );
+        final RacingGame racingGame = new RacingGame(racingCars, 3);
+
+        final RacingGameResults play = racingGame.play();
+
+        assertThat(play.size()).isEqualTo(3);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = { "1,1", "2,2", "9,9" })
-    @DisplayName("라운드 수 만큼의 레이싱 결과 목록을 반환한다.")
-    void testResultList(final int round, final int except) {
-        final RacingGame racingGame = new RacingGame(racingCars, round);
-        assertThat(racingGame.play()).hasSize(except);
+    @Test
+    @DisplayName("레이싱카가 2대 미만인 경우 예외가 발생한다.")
+    void testMinimumCars() {
+        final RacingCars racingCars = RacingCars.create(
+            List.of(
+                new RacingCar(new RacingGameRandomNumberGenerator(), "1번자동차")
+            )
+        );
+        final RacingGame racingGame = new RacingGame(racingCars, 3);
+
+        assertThatThrownBy(racingGame::play)
+            .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }
