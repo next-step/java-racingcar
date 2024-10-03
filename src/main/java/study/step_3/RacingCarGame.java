@@ -44,8 +44,8 @@ public class RacingCarGame {
         }
     }
 
-    private void racingCarMoving(List<RacingCar> garage, int j) {
-        int distance = garage.get(j).drive(10, 4);
+    private void racingCarMoving(List<RacingCar> garage, int numberOfCar) {
+        int distance = garage.get(numberOfCar).drive(10, 4);
 
         if ((distance > 0)) {
             uiController.SkidMark(distance);
