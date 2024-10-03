@@ -12,10 +12,10 @@ public class RacingCars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static RacingCars create(int numberOfCars, MoveStrategy moveStrategy) {
+    public static RacingCars create(int numberOfCars, MoveStrategy moveStrategy, List<String> nameList) {
         List<RacingCar> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(RacingCar.create(moveStrategy));
+            cars.add(RacingCar.create(moveStrategy, nameList.get(i)));
         }
 
         return new RacingCars(cars);
@@ -32,6 +32,12 @@ public class RacingCars {
     public List<Integer> getCurrentPositionsRepresentation() {
         return cars.stream()
                 .map(RacingCar::getCurrentPosition)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getCarNames() {
+        return cars.stream()
+                .map(RacingCar::getCarName)
                 .collect(Collectors.toList());
     }
 }
