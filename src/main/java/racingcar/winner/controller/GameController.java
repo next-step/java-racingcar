@@ -1,11 +1,11 @@
 package racingcar.winner.controller;
 
 import racingcar.winner.domain.Car;
+import racingcar.winner.domain.GameResult;
 import racingcar.winner.utils.NumberGenerator;
 import racingcar.winner.utils.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GameController {
 
@@ -29,16 +29,26 @@ public class GameController {
         return cars;
     }
 
-    public void start() {
-        for (int round = 1; round < numberOfTries; ++round) {
-            playRound();
+    public GameResult start() {
+        List<Map<String, Integer>> gameResults = new ArrayList<>();
+        for (int round = 1; round <= numberOfTries; ++round) {
+            gameResults.add(playRound());
         }
+        return new GameResult(gameResults);
     }
 
-    private void playRound() {
+    private Map<String, Integer> playRound() {
         for (Car car : cars) {
-            int randomNumber = NumberGenerator.generateRandomNumber();
-            car.moveForward(randomNumber);
+            car.moveForward(NumberGenerator.generateRandomNumber());
         }
+        return getRoundGameResult();
+    }
+
+    private Map<String, Integer> getRoundGameResult() {
+        Map<String, Integer> roundResult = new LinkedHashMap<>();
+        for (Car car : cars) {
+            roundResult.put(car.getName(), car.getPosition());
+        }
+        return roundResult;
     }
 }
