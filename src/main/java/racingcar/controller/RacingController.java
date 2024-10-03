@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.service.RacingService;
+import racingcar.service.RacingGame;
 
 public class RacingController {
 
@@ -15,11 +15,11 @@ public class RacingController {
     public void play() {
         int carNumber = inputView.getCarNumber();
         int matchNumber = inputView.getMatchNumber();
-        RacingService racingService = new RacingService(carNumber, matchNumber);
+        RacingGame racingGame = new RacingGame(carNumber, matchNumber);
 
-        while (racingService.isMatching()) {
-            racingService.match();
-            resultView.printRacingCarsStatus(racingService.getRacingCarsStatus());
+        while (racingGame.isMatching()) {
+            racingGame.match();
+            resultView.printRacingCarsStatus(racingGame.getRacingCarsStatus());
         }
     }
 }

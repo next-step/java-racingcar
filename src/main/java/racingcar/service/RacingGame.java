@@ -6,12 +6,12 @@ import racingcar.domain.RandomMove;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingService {
+public class RacingGame {
 
     private final List<RacingCar> racingCar = new ArrayList<>();
     private int matchCount;
 
-    public RacingService(int carNumber, int matchCount) {
+    public RacingGame(int carNumber, int matchCount) {
         this.matchCount = matchCount;
         for (int i = 0; i < carNumber; i++) {
             racingCar.add(new RacingCar());
