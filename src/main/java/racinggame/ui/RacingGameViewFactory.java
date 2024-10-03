@@ -1,8 +1,6 @@
 package racinggame.ui;
 
-import racinggame.domain.RacingGameResult;
-
-import java.util.List;
+import racinggame.domain.RacingGameResults;
 
 public class RacingGameViewFactory {
     public static RacingGameInputView createInputView() {
@@ -12,9 +10,9 @@ public class RacingGameViewFactory {
         );
     }
 
-    public static RacingGameResultView createResultView(final List<RacingGameResult> racingCars) {
+    public static RacingGameResultView createResultView(final RacingGameResults racingGameResults) {
         return new RacingGameResultView(
-            racingCars,
+            racingGameResults,
             new RacingGameMessageWriter()
         );
     }
