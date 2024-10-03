@@ -6,20 +6,23 @@ import java.util.Random;
 
 public class CarRacing {
     private static final Random RANDOM = new Random();
-    private final List<Car> cars;
+    private List<Car> cars;
     private final int moveTryCount;
     private final CarsMoveStatusHistory carsMoveStatusHistory;
     private int playCount;
 
-    private CarRacing(List<Car> cars, int moveTryCount, CarsMoveStatusHistory carsMoveStatusHistory, int playCount) {
-        this.cars = cars;
+    public CarRacing(int carCount, int moveTryCount) {
+        this.createRaceCars(carCount);
         this.moveTryCount = moveTryCount;
-        this.carsMoveStatusHistory = carsMoveStatusHistory;
-        this.playCount = playCount;
+        this.carsMoveStatusHistory = new CarsMoveStatusHistory();
+        this.playCount = 0;
     }
 
-    public static CarRacingBuilder builder() {
-        return new CarRacingBuilder();
+    private void createRaceCars(int carCount) {
+        this.cars = new ArrayList<>(carCount);
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
+        }
     }
 
     public List<Car> getCars() {
@@ -55,33 +58,5 @@ public class CarRacing {
 
     public boolean isFinish() {
         return this.playCount == this.moveTryCount;
-    }
-
-
-    public static class CarRacingBuilder {
-        private List<Car> cars;
-        private int moveTryCount;
-        private final int playCount = 0;
-        private final CarsMoveStatusHistory carsMoveStatusHistory = new CarsMoveStatusHistory();
-
-        protected CarRacingBuilder() {
-        }
-
-        public CarRacingBuilder cars(int carCount) {
-            this.cars = new ArrayList<>(carCount);
-            for (int i = 0; i < carCount; i++) {
-                cars.add(new Car());
-            }
-            return this;
-        }
-
-        public CarRacingBuilder moveTryCount(int moveTryCount) {
-            this.moveTryCount = moveTryCount;
-            return this;
-        }
-
-        public CarRacing build() {
-            return new CarRacing(this.cars, this.moveTryCount, this.carsMoveStatusHistory, this.playCount);
-        }
     }
 }
