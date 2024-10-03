@@ -1,47 +1,42 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Race {
     public static final int RANDOM_UPPER_LIMIT = 10;
-    public static final int MINIMUM_TO_GO_FORWARD = 4;
 
     public static void start() {
         RaceInput raceInput = InputView.inputCarCountAndGameCount();
-        int[] carStates = initiateCarStates(raceInput.carCount());
+        List<RacingCar> cars = initiateCars(raceInput.carCount());
 
         ResultView.printResultTitle();
         for (int stopOrGoRound = 0; stopOrGoRound < raceInput.randomStopOrGoCount(); stopOrGoRound++) {
-            runStopOrGoRound(raceInput.carCount(), carStates);
+            runStopOrGoRound(cars);
         }
     }
 
-    public static int[] initiateCarStates(int carCount) {
-        return new int[carCount];
-    }
+    public static List<RacingCar> initiateCars(int carCount) {
+        List<RacingCar> cars = new ArrayList<>();
 
-    private static void runStopOrGoRound(int carCount, int[] carStates) {
         for (int carIndex = 0; carIndex < carCount; carIndex++) {
-            moveCarForwardIfCanGo(carStates, carIndex);
+            RacingCar car = new RacingCar();
+            cars.add(car);
         }
-        ResultView.printCarStates(carStates);
+
+        return cars;
     }
 
-    private static void moveCarForwardIfCanGo(int[] carStates, int carIndex) {
-        if (canGo(generateIntBetween0and9())) {
-            moveCarForward(carStates, carIndex);
+    private static void runStopOrGoRound(List<RacingCar> cars) {
+        for (RacingCar car : cars) {
+            int generatedRandom = generateIntBetween0and9();
+            car.moveCarForwardIfCanGo(generatedRandom);
         }
+        ResultView.printCarStates(cars);
     }
 
     private static int generateIntBetween0and9() {
         return new Random().nextInt(RANDOM_UPPER_LIMIT);
-    }
-
-    public static boolean canGo(int number) {
-        return number >= MINIMUM_TO_GO_FORWARD;
-    }
-
-    public static void moveCarForward(int[] carStates, int carIndex) {
-        carStates[carIndex]++;
     }
 }
