@@ -16,10 +16,6 @@ public class CarName {
         this.carName = carName;
     }
 
-    public String getCarName() {
-        return carName;
-    }
-
     private void validateNameLength(final String carName) {
         if (carName.isEmpty() || MAXIMUM_LENGTH < carName.length()) {
             throw new IllegalArgumentException(INVALID_LENGTH_CAR_NAME_ERROR_MESSAGE);
@@ -30,6 +26,10 @@ public class CarName {
         if (carName.contains(BLANK)) {
             throw new IllegalArgumentException(BLANK_CONTAIN_ERROR_MESSAGE);
         }
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     @Override
