@@ -7,8 +7,8 @@
 
 ## 기능 목록
 - [x] 사용자 입력 받기 (InputUtils)
-  - [ ] 자동차 이름 (InputUtils)
-    - [ ] 쉼표로 구분 (InputUtils)
+  - [x] 자동차 이름 (InputUtils)
+    - [x] 쉼표로 구분 (InputUtils)
   - [x] 시도 횟수
 - [x] 자동차 전진 하기 (Car) 
   - [x] 전진 조건 구현 (4 이상) (Car)
