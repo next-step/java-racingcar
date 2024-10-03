@@ -45,6 +45,14 @@ class GameResultsTest {
         assertThat(gameResults.getGameResultCarNameByIndex(2)).isEqualTo("자동차3");
     }
 
+    @Test
+    @DisplayName("saveWinners 메서드가 외부에서 전달된 Car를 저장한다.")
+    void saveWinnersTest() {
+        GameResults gameResults = initGameResults();
+        gameResults.saveWinners(Car.create("자동차1"));
+        assertThat(gameResults.getWinners()).hasSize(1);
+    }
+
     private GameResults initGameResults() {
         List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
         return new GameResults(new Cars(carNames));
