@@ -8,7 +8,7 @@ import racingcar.dto.RacingWrapResultDTO;
 public class ResultView {
     private static String RESULT_PRINT_HEADER = "실행 결과";
 
-    public void printRacingResult(RacingResultDTO result, int tryNumber, int carNumber) {
+    public static void printRacingResult(RacingResultDTO result) {
         printHeader();
         printWrapResults(result);
     }
