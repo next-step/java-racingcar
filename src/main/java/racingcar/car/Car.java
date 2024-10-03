@@ -7,13 +7,24 @@ public class Car {
     public static final int DEFAULT_MOVE_ENERGY = 4;
 
     private Position position;
+    private final String name;
 
-    private Car() {
+    private Car(String name) {
         this.position = new Position(INITIAL_LOCATION);
+        this.name = name;
     }
 
-    public static Car createCar() {
-        return new Car();
+    private Car(String name, int currentLocation) {
+        this.name = name;
+        this.position = new Position(currentLocation);
+    }
+
+    public static Car createCar(String name) {
+        return new Car(name);
+    }
+
+    public static Car createCar(String name, int currentLocation) {
+        return new Car(name, currentLocation);
     }
 
     public void move(CarEngine carEngine) {
@@ -24,5 +35,9 @@ public class Car {
 
     public int getCurrentLocation() {
         return position.getCurrentLocation();
+    }
+
+    public String getName() {
+        return name;
     }
 }

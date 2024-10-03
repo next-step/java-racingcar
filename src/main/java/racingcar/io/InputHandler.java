@@ -2,7 +2,7 @@ package racingcar.io;
 
 public interface InputHandler {
 
-    int getCarCountFromUser();
+    String[] getCarNamesFromUser();
 
     int getTrialCountFromUser();
 }

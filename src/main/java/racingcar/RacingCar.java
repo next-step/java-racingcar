@@ -22,12 +22,12 @@ public class RacingCar implements GameRunnable {
     @Override
     public void run() {
         try {
-            outputHandler.showCommentForCarCount();
-            int carCountFromUser = inputHandler.getCarCountFromUser();
+            outputHandler.showCommentForCarNames();
+            String[] carNamesFromUser = inputHandler.getCarNamesFromUser();
             outputHandler.showCommentForTrialCount();
             int trialCountFromUser = inputHandler.getTrialCountFromUser();
 
-            racingStart(carCountFromUser, trialCountFromUser);
+            racingStart(carNamesFromUser, trialCountFromUser);
         } catch (GameException e) {
             outputHandler.showExceptionMessage(e);
         } catch (Exception e) {
@@ -35,14 +35,16 @@ public class RacingCar implements GameRunnable {
         }
     }
 
-    private void racingStart(int carCount, int trialCount) {
-        Cars cars = Cars.createCars(carCount);
+    private void racingStart(String[] carNames, int trialCount) {
+        Cars cars = Cars.createCars(carNames);
 
         outputHandler.showSimpleMessage("실행 결과");
         for (int i = 0; i < trialCount; i++) {
             cars.move();
             outputHandler.showTrialResult(cars);
         }
+
+        outputHandler.showWinnerOfRace(cars);
     }
 
 }

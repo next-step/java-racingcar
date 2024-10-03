@@ -4,7 +4,7 @@ import racingcar.car.Cars;
 
 public interface OutputHandler {
 
-    void showCommentForCarCount();
+    void showCommentForCarNames();
 
     void showCommentForTrialCount();
 
@@ -13,4 +13,6 @@ public interface OutputHandler {
     void showSimpleMessage(String message);
 
     void showTrialResult(Cars cars);
+
+    void showWinnerOfRace(Cars cars);
 }
