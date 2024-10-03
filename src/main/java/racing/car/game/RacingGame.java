@@ -1,6 +1,7 @@
 package racing.car.game;
 
 import racing.car.car.Car;
+import racing.car.random.GenerateRandom;
 import racing.car.ui.InputView;
 import racing.car.ui.ResultView;
 
@@ -15,6 +16,8 @@ public class RacingGame implements Game {
     private static final ResultView RESULT_VIEW = new ResultView();
     private static final String INVALID_CAR_COUNT_MESSAGE = "게임을 진행하려면 자동차가 최소 2대 있어야 합니다.";
     private static final String INVALID_TRY_COUNT_MESSAGE = "게임을 진행하려면 시도 횟수는 1 이상이어야 합니다.";
+    private static final GenerateRandom GENERATE_RANDOM = new GenerateRandom();
+    private int max = Integer.MIN_VALUE;
 
     @Override
     public void play() {
@@ -31,11 +34,21 @@ public class RacingGame implements Game {
         for (int i = 0; i < tryCount; i++) {
             simulateRaceRound(cars);
         }
-
+        max(cars);
+        RESULT_VIEW.outputWinnerView(max, cars);
     }
 
     public void simulateRaceRound(List<Car> cars) {
+        for(Car car : cars) {
+            car.move(GENERATE_RANDOM.random());
+        }
         RESULT_VIEW.outputView(cars);
+    }
+
+    public void max(List<Car> cars) {
+        for(Car car: cars) {
+            max = Math.max(max, car.getPosition());
+        }
     }
 
     public void initializeCars(String[] carNames, List<Car> cars) {

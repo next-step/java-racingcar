@@ -13,6 +13,11 @@ public class Car implements Movable {
         this.name = name;
     }
 
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     @Override
     public void move(int number) {
         if (isMoveAllowed(number)) {
@@ -22,6 +27,10 @@ public class Car implements Movable {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isWin(int max) {
+        return max == position;
     }
 
     public String getName() {

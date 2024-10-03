@@ -77,7 +77,7 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("splitTry 메서드 테스트 이름 문자열 쉼표 구분시 String 배열에 저장")
     void splitTry_메서드_테스트() {
         String input = "leo,bara,bake";
         String[] carNames = input.split(",");
