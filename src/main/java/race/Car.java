@@ -1,38 +1,29 @@
 package race;
 
-import java.util.UUID;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Car {
-    private UUID id;
     private int step;
 
-    private Car() {
-        this.id = UUID.randomUUID();
-        this.step = 0;
+    private Car(int step) {
+        this.step = step;
     }
 
-    public void move() {
-        this.step++;
-    }
+    public int moveBy(ICarMoveRule carMoveRule, int moveStep) {
+        if (carMoveRule.check()) {
+            this.step += moveStep;
+        }
 
-    public UUID getId() {
-        return this.id;
-    }
-
-    public int getCurrentStep() {
         return this.step;
     }
 
-    public static Car create() {
-        return new Car();
+    public static Car create(int startStep) {
+        return new Car(startStep);
     }
 
-    public static Car[] create(int count) {
-        Car[] cars = new Car[count];
-        for (int i = 0; i < count; i++) {
-            cars[i] = Car.create();
-        }
-
-        return cars;
+    public static List<Car> create(int startStep, int count) {
+        return Stream.generate(() -> Car.create(startStep)).limit(count).collect(Collectors.toList());
     }
 }

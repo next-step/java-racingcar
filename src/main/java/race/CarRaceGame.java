@@ -1,26 +1,41 @@
 package race;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class CarRaceGame {
+    private static final int CAR_START_STEP = 0;
+    private static final int CAR_MOVE_STEP = 1;
+    
+    private static final IRandomValueGenerator RANDOM_VALUE_GENERATOR = RandomValueGenerator.create();
+    private static final ICarMoveRule CAR_MOVE_RULE = CarMoveRule.with(RANDOM_VALUE_GENERATOR);
+
     public static void main(String[] args) {
         int carCount = InputView.inputCarCount();
         int roundCount = InputView.inputRoundCount();
 
-        ResultView.print(play(roundCount, Car.create(carCount)));
+        ResultView.print(play(roundCount, carCount));
     }
 
-    private static List<CarRaceGameHistory> play(int roundCount, Car[] cars) {
+    private static List<CarRaceGameHistory> play(int roundCount, int carCount) {
+        List<Car> cars = Car.create(CAR_START_STEP, carCount);
         List<CarRaceGameHistory> histories = new ArrayList<>();
 
         for (int round = 1; round <= roundCount; round++) {
-            Arrays.stream(cars).filter(car -> CarRaceGameRule.checkMove(new Random())).forEach(Car::move);
-            histories.addAll(Arrays.asList(CarRaceGameHistory.record(round, cars)));
+            histories.addAll(playRound(round, cars));
         }
 
         return histories;
+    }
+
+    private static List<CarRaceGameHistory> playRound(int round, List<Car> cars) {
+        List<CarRaceGameHistory> roundHistories = new ArrayList<>();
+
+        cars.forEach(car -> {
+            int step = car.moveBy(CAR_MOVE_RULE, CAR_MOVE_STEP);
+            roundHistories.add(CarRaceGameHistory.record(round, step));
+        });
+
+        return roundHistories;
     }
 }

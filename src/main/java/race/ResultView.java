@@ -9,25 +9,18 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    private static void printRound(int round) {
-        System.out.println(round + "라운드");
-    }
-
     public static void print(List<CarRaceGameHistory> histories) {
         System.out.println();
         printTitle();
 
-        int currentRound = histories.get(0).getRound();
-        printRound(currentRound);
-
+        int round = histories.get(0).getRound();
         for (CarRaceGameHistory history : histories) {
-            if (currentRound != history.getRound()) {
-                System.out.println();
-                currentRound = history.getRound();
-                printRound(currentRound);
-            }
+            System.out.println(PIECE.repeat(history.getStep()));
 
-            System.out.println(history.getCar().getId() + PIECE.repeat(history.getStep()));
+            if (round != history.getRound()) {
+                System.out.println();
+                round = history.getRound();
+            }
         }
     }
 }
