@@ -7,13 +7,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-public class CarTest {
+class CarTest {
 
     private Car car;
 
     @BeforeEach
     public void setUp() {
-        car = new Car(0);
+        car = new Car( 0);
     }
 
     @ParameterizedTest
@@ -25,7 +25,6 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = 3)
     void 멈추기_false(int number) {
-        Car car = new Car(0);
         assertThat(car.isGo(number)).isFalse();
     }
 

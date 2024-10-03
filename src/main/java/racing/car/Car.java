@@ -5,8 +5,7 @@ public class Car {
     private static final int MAX_BOUND = 9;
     private static final int STANDARD = 4;
 
-    boolean isGo;
-    int position;
+    private int position;
 
     public Car(int position) {
         this.position = position;
@@ -14,13 +13,15 @@ public class Car {
 
     public boolean isGo(int randomNumber) {
         if (randomNumber < MIN_BOUND || randomNumber > MAX_BOUND) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("랜덤 값이 범위를 초과하였습니다.");
         }
+
         if (randomNumber >= STANDARD) {
             position++;
             return true;
         }
-        return isGo;
+
+        return false;
     }
 
     public int getPosition() {
