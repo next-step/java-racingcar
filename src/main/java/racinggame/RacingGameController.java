@@ -29,11 +29,13 @@ public class RacingGameController {
 
         Race race = initializeRace(namesOfCars);
         conductRace(race, numberOfRounds);
+        List<String> winners = race.determineWinners();
+        printRaceWinners(winners);
     }
 
     private Race initializeRace(List<String > namesOfCars) {
         Race race = Race.create(moveStrategy, namesOfCars);
-        resultView.printResultMessage();
+        resultView.printExecutionAnnouncementMessage();
         return race;
     }
 
@@ -46,5 +48,9 @@ public class RacingGameController {
     private void conductSingleRound(Race race) {
         race.proceedRound();
         resultView.printRaceResults(race.collectResults());
+    }
+
+    private void printRaceWinners(List<String> winners) {
+        resultView.printWinners(winners);
     }
 }
