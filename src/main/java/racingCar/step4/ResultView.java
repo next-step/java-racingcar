@@ -13,8 +13,8 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printRaceResult(RacingCar[] cars) {
-        for (RacingCar car : cars) {
+    public static void printRaceResult(RacingCars cars) {
+        for (RacingCar car : cars.getCars()) {
             printCarPosition(car);
         }
         endRace();
