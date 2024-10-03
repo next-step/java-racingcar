@@ -31,7 +31,7 @@ public class RacingGame {
     private void saveGameResult() {
         GameResults gameResults = new GameResults(cars);
         updateWinners(gameResults, cars);
-        rounds.add(gameResults);
+        rounds.save(gameResults);
     }
 
     private void updateWinners(GameResults gameResults, Cars cars) {

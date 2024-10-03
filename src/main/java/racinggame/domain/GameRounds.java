@@ -10,7 +10,7 @@ public class GameRounds {
         this.gameResults = new ArrayList<>();
     }
 
-    public void add(GameResults gameResults) {
+    public void save(GameResults gameResults) {
         this.gameResults.add(gameResults);
     }
 
