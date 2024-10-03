@@ -7,7 +7,15 @@ public class Calculator {
 
     public static final String REGEX = ",|:";
 
-    public int calculate(int[] numbers) {
+    public int calculate(String text) throws Exception {
+        return addNumbers(
+                stringArrToIntArr(
+                        splitText(text)
+                )
+        );
+    }
+
+    private int addNumbers(int[] numbers) {
         int sum = 0;
         for(int num : numbers) {
             sum += num;
@@ -15,7 +23,7 @@ public class Calculator {
         return sum;
     }
 
-    public int[] stringArrToIntArr(String[] textSplitArr) throws Exception {
+    private int[] stringArrToIntArr(String[] textSplitArr) throws Exception {
         int[] numbers = new int[textSplitArr.length];
 
         for(int i = 0; i < textSplitArr.length; i++) {
@@ -27,7 +35,7 @@ public class Calculator {
         return numbers;
     }
 
-    public String[] splitText(String text) throws Exception {
+    private String[] splitText(String text) throws Exception {
 
         if(text == null || text.isEmpty()) {
             return textIsEmptyStringOrNull(text);
@@ -86,7 +94,7 @@ public class Calculator {
     }
 
     // "배열에 음수가 포함"
-    public void validatePositive(int num) throws Exception {
+    private void validatePositive(int num) throws Exception {
         if (num < 0) {
             throw new RuntimeException("음수가 포함되어 있습니다.");
         }
