@@ -5,6 +5,9 @@ import racingcar.dto.RacingCarStatesDTO;
 import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWrapResultDTO;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class ResultView {
     private static String RESULT_PRINT_HEADER = "실행 결과";
 
@@ -15,14 +18,24 @@ public class ResultView {
 
     private static void printWrapResults(RacingResultDTO result) {
         for (RacingWrapResultDTO wrapResult : result.wrapResults) {
-            RacingCarStatesDTO carStates = wrapResult.carStates;
-            printCarSates(carStates);
+            printWrapResult(wrapResult);
             addBlankLine();
         }
     }
 
-    private static void printCarSates(RacingCarStatesDTO carStates) {
-        for (RacingCarStateDTO carState : carStates.catStates) {
+    private static void printWrapResult(RacingWrapResultDTO wrapResult) {
+        RacingCarStateDTO[] orderedCarStates = decideCarStateOrders(wrapResult);
+        printCarSates(orderedCarStates);
+    }
+
+    private static RacingCarStateDTO[] decideCarStateOrders(RacingWrapResultDTO wrapResult) {
+        RacingCarStatesDTO carStates = wrapResult.carStates;
+        Arrays.sort(carStates.catStates, Comparator.comparingInt(carState -> carState.carNo));
+        return carStates.catStates;
+    }
+
+    private static void printCarSates(RacingCarStateDTO[] carStates) {
+        for (RacingCarStateDTO carState : carStates) {
             printCarSate(carState);
         }
     }
