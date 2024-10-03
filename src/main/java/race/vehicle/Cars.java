@@ -1,7 +1,5 @@
 package race.vehicle;
 
-import race.Utils.RandomNumberGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +15,7 @@ public class Cars {
 
     Cars initCars(int num) {
         for (int i = 0; i < num; i++) {
-            cars.add(new Car.Builder().
-                    initGenerator(RandomNumberGenerator.getRandomGenerator()).build());
+            cars.add(new Car());
         }
         return this;
     }

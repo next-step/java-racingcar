@@ -3,7 +3,7 @@ package race.vehicle;
 public class Car {
     private static final int MOVE_CONDITION = 4;
 
-    private static int location = 1;
+    private int location = 1;
 
     public void move(int number) {
         if (isMovable(number)) {
