@@ -18,8 +18,4 @@ public class Race {
         racingCars.moveAll();
         return racingCars.getCurrentPositionsRepresentation();
     }
-
-    public int getNumberOfCars() {
-        return racingCars.count();
-    }
 }
