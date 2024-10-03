@@ -1,25 +1,23 @@
 package racing;
 
-import racing.input.InputView;
-import racing.input.RaceInput;
-import racing.race.RaceRecord;
-import racing.race.RaceTrack;
-import racing.race.RandomNumRaceRule;
-import racing.result.ResultView;
-
-import java.util.List;
+import racing.view.input.InputView;
+import racing.dto.RaceInfo;
+import racing.domain.RaceResult;
+import racing.domain.RaceTrack;
+import racing.domain.RandomNumRaceRule;
+import racing.view.result.ResultView;
 
 public class RaceAssociation {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        RaceInput input = inputView.racingInput();
+        RaceInfo input = inputView.racingInput();
 
         RaceTrack track = new RaceTrack(input);
         track.race(new RandomNumRaceRule());
-        List<RaceRecord> raceRecords = track.getRaceResult();
+        RaceResult raceResult = track.getRaceResult();
 
         ResultView resultView = new ResultView();
-        resultView.result(input.getNumOfAttempt(), raceRecords);
+        resultView.result(input.attemptNumber().getValue(), raceResult);
     }
 }

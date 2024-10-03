@@ -1,4 +1,4 @@
-package racing.race;
+package racing.domain;
 
 public enum RacePosition {
 
