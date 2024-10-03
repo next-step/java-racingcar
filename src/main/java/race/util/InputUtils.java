@@ -24,4 +24,5 @@ public class InputUtils {
         System.out.println(inputQuestion);
         return scanner.nextInt();
     }
+
 }

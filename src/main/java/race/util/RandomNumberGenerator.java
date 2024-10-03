@@ -21,4 +21,5 @@ public class RandomNumberGenerator implements NumberGenerator {
     public int getValue() {
         return random.nextInt(bound);
     }
+
 }

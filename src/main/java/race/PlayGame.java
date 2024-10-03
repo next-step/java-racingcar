@@ -1,13 +1,28 @@
 package race;
 
-import race.util.InputUtils;
+import race.util.RandomNumberGenerator;
+import race.vehicle.Car;
 import race.view.ResultView;
-import race.vehicle.Cars;
+
+import java.util.List;
 
 public class PlayGame {
-    public static void main(String[] args) {
-        Cars cars = new Cars(InputUtils.inputCarView());
-        ResultView resultView = new ResultView(cars.getCars());
-        resultView.printResult(InputUtils.inputMoveView());
+    List<Car> cars;
+    ResultView resultView;
+    PlayGame(List<Car> cars, ResultView resultView) {
+        this.cars = cars;
+        this.resultView = resultView;
     }
+
+    public void gameStart(int round){
+        resultView.printResultView();
+        for(int i = 0; i< round; i++){
+            for(Car car : cars){
+                resultView.printCarLocation(car.getLocation());
+                car.move(RandomNumberGenerator.getRandomGenerator().getValue());
+            }
+            resultView.separateRound();
+        }
+    }
+
 }

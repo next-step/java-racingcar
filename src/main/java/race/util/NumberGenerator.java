@@ -5,4 +5,5 @@ public interface NumberGenerator {
     int bound = 10;
 
     int getValue();
+
 }
