@@ -6,8 +6,15 @@ import java.util.List;
 public class Cars {
     private final List<Car> carList;
 
-    public Cars() {
+    public Cars(List<String> carNames) {
         this.carList = new ArrayList<>();
+        initCar(carNames);
+    }
+
+    private void initCar(List<String> carNames) {
+        for (String carName : carNames) {
+            add(Car.create(carName));
+        }
     }
 
     public void add(Car car) {

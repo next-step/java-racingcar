@@ -10,14 +10,13 @@ public class RacingGame {
     private final Cars cars;
     private final GameRounds rounds;
 
-    public RacingGame() {
-        this.cars = new Cars();
+    public RacingGame(List<String> carNames) {
+        this.cars = new Cars(carNames);
         this.rounds = new GameRounds();
     }
 
-    public GameRounds start(List<String> carNames, int tryCount) {
+    public GameRounds start(int tryCount) {
         validateNegative(tryCount);
-        initCar(carNames);
         for (int i = 0; i < tryCount; i++) {
             playGameRound();
         }
@@ -48,12 +47,6 @@ public class RacingGame {
         for (Car car : cars.getCarList()) {
             var number = random.nextInt(DEFAULT_BOUND);
             car.move(number);
-        }
-    }
-
-    private void initCar(List<String> carNames) {
-        for (String carName : carNames) {
-            cars.add(Car.create(carName));
         }
     }
 
