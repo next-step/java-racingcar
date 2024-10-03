@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Operator {
 
-    private Random random;
+    private final Random random;
 
     public Operator() {
         this.random = new Random();

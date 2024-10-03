@@ -4,7 +4,7 @@ public class RacingCar {
 
     private String name;
     private int totalForwardCounts;
-    private Operator operator;
+    private final Operator operator;
 
     public RacingCar(Operator operator) {
         this.totalForwardCounts = 0;
