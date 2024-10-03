@@ -13,7 +13,7 @@ public final class RacingCarStatesDTO {
         int racingCarsNum = racingCars.length;
         RacingCarStateDTO[] carStates = new RacingCarStateDTO[racingCarsNum];
         for (int i = 0; i < racingCarsNum; i++) {
-            carStates[i] = new RacingCarStateDTO(racingCars[i]);
+            carStates[i] = RacingCarStateDTO.fromRacingCar(racingCars[i]);
         }
         return new RacingCarStatesDTO(carStates);
     }

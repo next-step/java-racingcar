@@ -6,8 +6,12 @@ public final class RacingCarStateDTO {
     final int carNo;
     public final int position;
 
-    public RacingCarStateDTO(RacingCar racingCar) {
-        this.carNo = racingCar.getCarNo();
-        this.position = racingCar.getPosition();
+    private RacingCarStateDTO(int carNo, int position) {
+        this.carNo = carNo;
+        this.position = position;
+    }
+
+    public static RacingCarStateDTO fromRacingCar(RacingCar racingCar) {
+        return new RacingCarStateDTO(racingCar.getCarNo(), racingCar.getPosition());
     }
 }
