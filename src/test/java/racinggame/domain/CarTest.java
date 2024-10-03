@@ -55,6 +55,14 @@ class CarTest {
         assertThat(car.isEqualPosition(orderPosition)).isTrue();
     }
 
+    @Test
+    @DisplayName("자동차의 위치와 입력된 위치 중 더 큰 위치를 반환한다.")
+    void comparePositionTest() {
+        Car car = initCar();
+        int orderPosition = Integer.MAX_VALUE;
+        assertThat(car.comparePosition(orderPosition)).isEqualTo(orderPosition);
+    }
+
     private Car initCar() {
         return Car.create("테스트카");
     }
