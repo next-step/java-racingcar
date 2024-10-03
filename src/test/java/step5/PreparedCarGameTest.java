@@ -4,12 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.car.CarStrategy;
-import step4.game.PreparedCarGame;
-import step4.game.RacingCarGame;
-import step4.message.ExceptionMessage;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.spy;
 
@@ -39,37 +35,5 @@ public class PreparedCarGameTest {
         }
     }
 
-
-    @DisplayName("우승자 선별시 아직 시작도 하지않은 게임이면 예외를 발생시킨다.")
-    @Test
-    void checkStartTest() {
-        int attemptNum = 3;
-        step4.game.RacingCarGame carGame = new step4.game.RacingCarGame(); //실체 객체를 mock
-        carGame.readyRace("test1, test2, test3", attemptNum);
-
-        step4.game.PreparedCarGame preparedCarGame = new step4.game.PreparedCarGame();
-        preparedCarGame.ready(carGame);
-
-        assertThatThrownBy(preparedCarGame::winnerRace)
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(step4.message.ExceptionMessage.GAME_NOT_START.message());
-    }
-
-    @DisplayName("자동차게임이 이전에 이미 시작되었다면 예외를 발생시킨다.")
-    @Test
-    void alreadyStartTest() {
-        int attemptNum = 3;
-        step4.game.RacingCarGame carGame = new RacingCarGame();
-        carGame.readyRace("test1, test2, test3", attemptNum);
-
-        step4.game.PreparedCarGame preparedCarGame = new PreparedCarGame();
-        preparedCarGame.ready(carGame);
-
-        preparedCarGame.startRace();
-
-        assertThatThrownBy(preparedCarGame::startRace)
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.GAME_ALREADY_START.message());
-    }
 
 }
