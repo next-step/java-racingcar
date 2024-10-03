@@ -36,6 +36,15 @@ class GameResultsTest {
         assertThat(gameResults.getGameResultCarPositionByIndex(2)).isZero();
     }
 
+    @Test
+    @DisplayName("getGameResultCarNameByIndex 메서드가 게임 결과에 저장된 자동차 이름을 반환한다.")
+    void getGameResultCarNameByIndexTest() {
+        GameResults gameResults = initGameResults();
+        assertThat(gameResults.getGameResultCarNameByIndex(0)).isEqualTo("자동차1");
+        assertThat(gameResults.getGameResultCarNameByIndex(1)).isEqualTo("자동차2");
+        assertThat(gameResults.getGameResultCarNameByIndex(2)).isEqualTo("자동차3");
+    }
+
     private GameResults initGameResults() {
         List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
         return new GameResults(new Cars(carNames));
