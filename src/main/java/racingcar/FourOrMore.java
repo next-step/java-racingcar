@@ -10,7 +10,7 @@ public class FourOrMore implements MoveStrategy {
     }
 
     @Override
-    public boolean isMove() {
+    public boolean isMovable() {
         return randomHolder.getNumber() >= FORWARD_VALUE;
     }
 }

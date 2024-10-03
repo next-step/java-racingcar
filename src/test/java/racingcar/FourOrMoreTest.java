@@ -13,6 +13,6 @@ public class FourOrMoreTest {
     @DisplayName("숫자가 4 이상이면 참, 아니면 거짓을 반환한다.")
     void move_forward(int input, boolean expected) {
         FourOrMore strategy = new FourOrMore(new TestRandomHolder(input));
-        assertThat(strategy.isMove()).isEqualTo(expected);
+        assertThat(strategy.isMovable()).isEqualTo(expected);
     }
 }
