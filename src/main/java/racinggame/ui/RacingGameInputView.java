@@ -56,7 +56,7 @@ public class RacingGameInputView {
 
     private List<RacingCar> createRacingCars(final String[] carNames) {
         return Arrays.stream(carNames)
-            .map(s -> new RacingCar(new RacingGameRandomNumberGenerator()))
+            .map(name -> new RacingCar(new RacingGameRandomNumberGenerator(), name))
             .collect(Collectors.toList());
     }
 
