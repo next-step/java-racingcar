@@ -17,7 +17,7 @@ public class Movement {
         return moveCount;
     }
 
-    public void move(){
+    public void move() {
         moveCount++;
     }
 }

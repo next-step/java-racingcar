@@ -34,8 +34,12 @@ public class CarName {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
         CarName carName = (CarName) object;
         return this.carName.equals(carName.carName);
     }
