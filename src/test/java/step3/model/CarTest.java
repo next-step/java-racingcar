@@ -30,8 +30,9 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"hwan22"," "})
-    void 자동차_이름의_길이는_1이상_5이하가_아니면_예외발생(String value){
-       assertThatThrownBy(() -> new Car(value));
+    @ValueSource(strings = {"hwan22", " "})
+    void 자동차_이름의_길이는_1이상_5이하가_아니면_예외발생(String value) {
+        assertThatThrownBy(() -> new Car(value))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
