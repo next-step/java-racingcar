@@ -5,13 +5,13 @@ import racinggame.domain.RacingGameResult;
 import java.util.List;
 
 public class RacingGameResultView {
+    private static final String MAKER = "-";
+
     private final List<RacingGameResult> results;
-    private final String maker;
     private final MessageWriter writer;
 
-    public RacingGameResultView(final List<RacingGameResult> results, final String maker, final MessageWriter writer) {
+    public RacingGameResultView(final List<RacingGameResult> results, final MessageWriter writer) {
         this.results = results;
-        this.maker = maker;
         this.writer = writer;
     }
 
@@ -26,7 +26,7 @@ public class RacingGameResultView {
 
     private void displayCarPosition(final RacingGameResult result) {
         for (final int position : result.getResults()) {
-            writer.write(maker.repeat(position));
+            writer.write(MAKER.repeat(position));
         }
     }
 }

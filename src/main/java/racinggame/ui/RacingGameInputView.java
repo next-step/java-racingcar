@@ -27,7 +27,7 @@ public class RacingGameInputView {
         final String[] carNames = parseCarNames(reader.readString());
         validateCarNames(carNames);
 
-        return new RacingCars(createRacingCars(carNames));
+        return RacingCars.create(createRacingCars(carNames));
     }
 
     private String[] parseCarNames(final String userInput) {
