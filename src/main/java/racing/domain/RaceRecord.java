@@ -1,4 +1,6 @@
-package racing.race;
+package racing.domain;
+
+import racing.constant.RacePosition;
 
 import java.util.*;
 

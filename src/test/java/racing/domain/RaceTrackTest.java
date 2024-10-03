@@ -1,18 +1,16 @@
-package racing.race;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.input.RaceInput;
-
-import java.util.ArrayList;
-import java.util.List;
+import racing.constant.RacePosition;
+import racing.dto.RaceInfo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTrackTest {
 
-    RaceInput input = new RaceInput("pobi,crong,honux", 5);
+    RaceInfo input = new RaceInfo("pobi,crong,honux", 5);
     RaceTrack track = new RaceTrack(input);
 
     @BeforeEach

@@ -1,8 +1,8 @@
-package racing.race;
+package racing.domain;
 
 import racing.RaceRule;
-import racing.input.RaceLineUp;
-import racing.input.RaceInput;
+import racing.dto.RaceInfo;
+import racing.dto.RaceLineUp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 public class RaceTrack {
 
-    private final RaceInput raceInput;
+    private final RaceInfo raceInput;
     private final List<RaceCar> raceCars;
 
-    public RaceTrack(RaceInput raceInput) {
+    public RaceTrack(RaceInfo raceInput) {
         this.raceInput = raceInput;
         raceCars = prepareRace(raceInput.raceLineUp());
     }

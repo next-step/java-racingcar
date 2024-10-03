@@ -1,4 +1,4 @@
-package racing.input;
+package racing.dto;
 
 import org.junit.jupiter.api.Test;
 

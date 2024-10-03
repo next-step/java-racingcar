@@ -1,10 +1,9 @@
-package racing.result;
+package racing.view.result;
 
-import racing.race.RaceRecord;
-import racing.race.RaceResult;
+import racing.domain.RaceRecord;
+import racing.domain.RaceResult;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 

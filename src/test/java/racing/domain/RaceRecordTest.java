@@ -1,12 +1,12 @@
-package racing.race;
+package racing.domain;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racing.race.RacePosition.FORWARD;
-import static racing.race.RacePosition.STOP;
+import static racing.constant.RacePosition.FORWARD;
+import static racing.constant.RacePosition.STOP;
 
 public class RaceRecordTest {
 
