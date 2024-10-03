@@ -5,6 +5,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+**/src/test/java/study/**
+ToDo.md
 
 ### STS ###
 .apt_generated

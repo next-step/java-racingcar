@@ -4,44 +4,51 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
+    private static final String DELIMITER = "[,:]";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+
     public static int splitAndSum(String text) throws IllegalArgumentException {
         if (isNullOrEmpty(text)) {
             return 0;
         }
+        return sum(toInts(splitStringsByDelimiter(text)));
+    }
 
-        Matcher m = customDelimeter(text);
+    private static Matcher customDelimiter(String text) {
+        return Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+    }
+
+    private static String[] splitStringsByDelimiter(String text) {
+        Matcher m = customDelimiter(text);
         if (m.find()) {
-            return stringAddCalculation(splitStringsByDelimeter(m.group(2), m.group(1)));
+            return m.group(2).split(m.group(1));
         }
-
-        return stringAddCalculation(splitStringsByDelimeter(text, "[,:]"));
+        return text.split(DELIMITER);
     }
 
-    private static Matcher customDelimeter(String text) {
-        return Pattern.compile("//(.)\n(.*)").matcher(text);
+    private static int[] toInts(String[] strings) {
+        int[] numbers = new int[strings.length];
+        for (int i = 0; i < strings.length; i++) {
+            int number = Integer.parseInt(strings[i]);
+            throwIfNegative(number);
+            numbers[i] = number;
+        }
+        return numbers;
     }
 
-    private static String[] splitStringsByDelimeter(String text, String delimeter) {
-        return text.split(delimeter);
-    }
-
-    private static int stringAddCalculation(String[] strings) {
+    private static int sum(int[] numbers) {
         int result = 0;
-        for (String s : strings) {
-            throwIfNegative(s);
-            result += parseStringToInt(s);
+        for (int number : numbers) {
+            result += number;
         }
         return result;
     }
 
-    private static void throwIfNegative(String s) {
-        if (parseStringToInt(s) < 0) {
-            throw new IllegalArgumentException();
+    private static void throwIfNegative(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("음수는 허용하지 않습니다.");
         }
-    }
-
-    private static int parseStringToInt(String s) {
-        return Integer.parseInt(s);
     }
 
     private static boolean isNullOrEmpty(String text) {
