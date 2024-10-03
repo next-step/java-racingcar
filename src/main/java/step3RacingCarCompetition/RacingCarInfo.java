@@ -1,23 +1,27 @@
 package step3RacingCarCompetition;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingCarInfo {
 
-    private List<String> racingCarMovingData;
+    private final List<Car> racingCarMovingData;
 
-    public RacingCarInfo(int totalNumberOfCars) {
-
-        this.racingCarMovingData = new ArrayList<>(Collections.nCopies(totalNumberOfCars, ""));
+    public RacingCarInfo(int totalNumberOfCars, int totalMovingCount, RandomGenerator randomGenerator) {
+        racingCarMovingData = new ArrayList<>();
+        for (int numberOfCars = 0; numberOfCars < totalNumberOfCars; numberOfCars++) {
+            Car car = new Car();// 새 인스턴스를 매번 생성 안해주면 랜덤값이 전부 같아지는 이슈 해결.
+            car.recordCarData(totalMovingCount, randomGenerator);
+            racingCarMovingData.add(car);
+        }
     }
 
-    public void recordGoInRacingCarData(int numberOfCars, String moveString) {
-        racingCarMovingData.set(numberOfCars, racingCarMovingData.get(numberOfCars) + moveString);
+    public List<String> findEachRoundRacingCarData(int movingCount) {
+        List<String> eachMovingCarData = new ArrayList<>();
+        for (Car car : racingCarMovingData) {
+            eachMovingCarData.add(car.findEachMovingData(movingCount));
+        }
+        return eachMovingCarData;
     }
 
-    public String findRacingCarData(int numberOfCars) {
-        return racingCarMovingData.get(numberOfCars);
-    }
 }

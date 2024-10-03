@@ -1,34 +1,28 @@
 package step3RacingCarCompetition;
 
-import java.util.Random;
+import java.util.List;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class RacingCarCompetition {
-    private final String go = "-";
-    private final String stop = "";
+    final static int ENDRANGE = 10;
 
     public void startRacing() {
         Scanner scanner = new Scanner(System.in);
+        RandomGenerator randomGenerator = new RandomNumber(ENDRANGE);
         int totalNumberOfCars = InputCars.numberOfCars(scanner);
         int totalMovingCount = InputTryCount.movingTryCount(scanner);
+        RacingCarInfo racingCarInfo = new RacingCarInfo(totalNumberOfCars, totalMovingCount, randomGenerator);
 
-        RacingCarInfo racingCarInfo = new RacingCarInfo(totalNumberOfCars);
-        IntStream.range(0, totalMovingCount).forEachOrdered(movingTryCount -> {
-            IntStream.range(0, totalNumberOfCars).forEachOrdered(numberOfCars -> {
-                racingCarInfo.recordGoInRacingCarData(numberOfCars, moveStopDecision(randomNumber()));
-                ResultView.printCurrentCarMovement(racingCarInfo.findRacingCarData(numberOfCars));
-            });
-            ResultView.printNewLine();
-        });
+        printCarsMovingData(totalMovingCount, racingCarInfo);
     }
 
-    public int randomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
+    private void printCarsMovingData(int totalMovingCount, RacingCarInfo racingCarInfo) {
+        ResultView.printPreview();
+        for (int movingCount = 0; movingCount < totalMovingCount; movingCount++) {
+            List<String> currentCarsMovingData = racingCarInfo.findEachRoundRacingCarData(movingCount);
+            ResultView.printCurrentCarMovement(currentCarsMovingData);
+        }
     }
 
-    public String moveStopDecision(int randomNumber) {
-        return randomNumber >= 4 ? go : stop;
-    }
+
 }
