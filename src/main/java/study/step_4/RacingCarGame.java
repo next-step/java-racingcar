@@ -1,11 +1,12 @@
 package study.step_4;
 
-
 import study.step_4.service.RacingCar;
 import study.step_4.ui.InputView;
 import study.step_4.ui.OutputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RacingCarGame {
@@ -34,6 +35,7 @@ public class RacingCarGame {
         int playCars = numberOfCars.length;
         List<RacingCar> garage = setUpRacingCar(numberOfCars);
         startGame(attempt, playCars, garage);
+        award(garage);
     }
 
     private void startGame(int attempt, int numberOfCars, List<RacingCar> garage) {
@@ -57,9 +59,31 @@ public class RacingCarGame {
         String name = racingCar.getName();
 
         if ((distance > 0)) {
-            outputView.SkidMark(name ,distance);
+            outputView.SkidMark(name, distance);
         }
-        outputView.cantDrive(name ,distance);
+        outputView.cantDrive(name, distance);
+    }
+
+    public void award(List<RacingCar> garage) {
+        outputView.winnerAwards(findWinners(garage));
+    }
+
+    public List<String> findWinners(List<RacingCar> list) {
+        Collections.sort(list, Comparator.comparingInt(RacingCar::getDistance));
+
+        int maxDistance = list.get(list.size() - 1).getDistance();
+        List<String> winners = new ArrayList<>();
+
+        for (RacingCar car : list) {
+            sameWinnder(car, maxDistance, winners);
+        }
+        return winners;
+    }
+
+    private static void sameWinnder(RacingCar car, int maxDistance, List<String> winners) {
+        if (car.getDistance() == maxDistance) {
+            winners.add(car.getName());
+        }
     }
 
     public static void main(String[] args) {

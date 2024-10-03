@@ -23,4 +23,21 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void winnerAwards(List<String> winnersList) {
+        StringBuilder winners = new StringBuilder();
+
+        for (int i = 0; i < winnersList.size(); i++) {
+            winners.append(winnersList.get(i));
+            avaliableMoreWinner(winnersList, i, winners);
+        }
+
+        System.out.println(winners + " " + InfoMessage.FINAL_WINNER.getMessage());
+    }
+
+    private static void avaliableMoreWinner(List<String> winnersList, int i, StringBuilder winners) {
+        if (i < winnersList.size() - 1) {
+            winners.append(COMMA);
+        }
+    }
 }

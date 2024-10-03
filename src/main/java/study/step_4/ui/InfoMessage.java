@@ -5,6 +5,7 @@ public enum InfoMessage {
     ATTEMPT_COUNT_QUESTION("시도할 회수는 몇회인가요?"),
     EXECUTION_RESULT("실행 결과"),
     WHEEL_LOSS("바퀴가 빠졌습니다..."),
+    FINAL_WINNER("가 최종 우승했습니다."),
     SKID_MARK("-");
 
     private final String message;
