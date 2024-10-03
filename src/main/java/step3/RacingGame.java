@@ -7,11 +7,25 @@ public final class RacingGame {
 	public static void main(String[] args) {
 		int carCount = inputView.getCarCount();
 		int moveCount = inputView.getMoveCount();
+
 		Car[] cars = inputCars(carCount);
+		race(cars, moveCount);
 		resultView.printResult();
 	}
 
+	public static void race(Car[] cars, int moveCount) {
+		for (Car car : cars) {
+			for (int i = 0; i < moveCount; i++) {
+				car.move();
+			}
+		}
+	}
+
 	public static Car[] inputCars(int count) {
-		return new Car[count];
+		Car[] cars = new Car[count];
+		for (int i = 0; i < count; i++) {
+			cars[i] = new Car();
+		}
+		return cars;
 	}
 }
