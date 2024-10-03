@@ -6,7 +6,7 @@ public class Car implements Movable {
     private int position;
     private static final int MOVE_THRESHOLD = 4;
 
-    public Car(){
+    public Car() {
     }
 
     public Car(String name) {

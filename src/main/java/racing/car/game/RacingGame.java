@@ -39,14 +39,14 @@ public class RacingGame implements Game {
     }
 
     public void simulateRaceRound(List<Car> cars) {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move(GENERATE_RANDOM.random());
         }
         RESULT_VIEW.outputView(cars);
     }
 
     public void max(List<Car> cars) {
-        for(Car car: cars) {
+        for (Car car : cars) {
             max = Math.max(max, car.getPosition());
         }
     }

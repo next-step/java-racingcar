@@ -82,7 +82,7 @@ public class RacingGameTest {
         String input = "leo,bara,bake";
         String[] carNames = input.split(",");
 
-        assertThat(carNames).isEqualTo(new String[]{"leo","bara", "bake"});
+        assertThat(carNames).isEqualTo(new String[]{"leo", "bara", "bake"});
     }
 
 }
