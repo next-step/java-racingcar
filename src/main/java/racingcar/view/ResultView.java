@@ -1,16 +1,12 @@
 package racingcar.view;
 
-import racingcar.service.RacingCarService;
-import java.util.Map;
+import racingcar.model.Car;
 
 public class ResultView {
-    private static final RacingCarService racingCarService = new RacingCarService();
 
-    public void printCarStatusResult(Map<Integer, String> carMovementStatuses) {
-        System.out.println("실행 결과");
-
-        for(int i = 0; i < carMovementStatuses.size(); i++) {
-            System.out.println(carMovementStatuses.get(i));
+    public void printCarsStatusResult(Car[] carsStatus) {
+        for(int i = 0; i < carsStatus.length; i++) {
+            System.out.println(carsStatus[i].currentCarMovingStatus);
         }
 
         System.out.println();
