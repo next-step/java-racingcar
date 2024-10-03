@@ -16,7 +16,7 @@
   - [x] 랜덤 값 생성 (RandomNumberGenerator)
 - [ ] 게임 진행(PlayGame)
   - [x] 자동차 상태 UI 출력 (ResultView)
-    - [ ] 자동차 이름 출력 (ResulView)
+    - [x] 자동차 이름 출력 (ResulView)
   - [x] 자동차 전진 (Car)
   - [ ] 우승자 출력(1명 이상) (ResultView)
   - [ ] 우승자 판별 (Cars)
