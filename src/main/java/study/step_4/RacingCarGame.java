@@ -27,7 +27,43 @@ public class RacingCarGame {
         return garage;
     }
 
+    public void gamePlay() {
+        String[] numberOfCars = inputView.welcomeMessage();
+        int attempt = inputView.askAttemptMessage();
+
+        int playCars = numberOfCars.length;
+        List<RacingCar> garage = setUpRacingCar(numberOfCars);
+        startGame(attempt, playCars, garage);
+    }
+
+    private void startGame(int attempt, int numberOfCars, List<RacingCar> garage) {
+        outputView.endGameMessage();
+
+        for (int i = 0; i < attempt; i++) {
+            startRacing(numberOfCars, garage);
+            System.out.println();
+        }
+    }
+
+    private void startRacing(int numberOfCars, List<RacingCar> garage) {
+        for (int j = 0; j < numberOfCars; j++) {
+            racingCarMoving(garage, j);
+        }
+    }
+
+    private void racingCarMoving(List<RacingCar> garage, int numberOfCar) {
+        RacingCar racingCar = garage.get(numberOfCar);
+        int distance = racingCar.drive(10, 4);
+        String name = racingCar.getName();
+
+        if ((distance > 0)) {
+            outputView.SkidMark(name ,distance);
+        }
+        outputView.cantDrive(name ,distance);
+    }
+
     public static void main(String[] args) {
         RacingCarGame game = new RacingCarGame(new InputView(), new OutputView());
+        game.gamePlay();
     }
 }
