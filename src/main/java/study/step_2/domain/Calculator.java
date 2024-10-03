@@ -1,7 +1,7 @@
-package study.step_1.domain;
+package study.step_2.domain;
 
-import static study.step_1.constant.error.ErrorMessage.*;
-import static study.step_1.domain.DelimConstant.*;
+import static study.step_2.constant.error.ErrorMessage.*;
+import static study.step_2.domain.DelimConstant.*;
 
 public class Calculator implements Calculate {
 

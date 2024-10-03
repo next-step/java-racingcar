@@ -5,12 +5,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.step_1.domain.Calculator;
-import study.step_1.service.AddCalculator;
+import study.step_2.domain.Calculator;
+import study.step_2.service.AddCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static study.step_1.domain.Calculator.INVALID_INPUT_VALUE;
+import static study.step_2.domain.Calculator.INVALID_INPUT_VALUE;
 
 public class CalculatorTest {
 

@@ -1,8 +1,8 @@
 package study.step_2;
 
 import org.junit.jupiter.api.Test;
-import study.step_1.domain.Calculator;
-import study.step_1.service.AddCalculator;
+import study.step_2.domain.Calculator;
+import study.step_2.service.AddCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;

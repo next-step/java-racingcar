@@ -1,6 +1,6 @@
-package study.step_1.service;
+package study.step_2.service;
 
-import study.step_1.domain.Calculate;
+import study.step_2.domain.Calculate;
 
 public class AddCalculator {
 

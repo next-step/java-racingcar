@@ -1,4 +1,4 @@
-package study.step_1.constant.error;
+package study.step_2.constant.error;
 
 public enum ErrorMessage {
     INVALID_NEGATIVE_NUMBER("음수 값은 허용되지 않습니다."),
