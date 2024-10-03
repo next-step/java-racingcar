@@ -7,7 +7,7 @@ public class Race {
     public static final int MINIMUM_TO_GO_FORWARD = 4;
 
     public static void start() {
-        RaceInput raceInput = InputView.inputCarCountAndRandomStopOrGoCount();
+        RaceInput raceInput = InputView.inputCarCountAndGameCount();
         int[] carStates = initiateCarStates(raceInput.carCount());
 
         ResultView.printResultTitle();

@@ -8,7 +8,7 @@ public class InputView {
     public static final int MIN_CAR_COUNT = 2;
     public static final int MIN_RANDOM_STOP_OR_GO_COUNT = 1;
 
-    public static RaceInput inputCarCountAndRandomStopOrGoCount() {
+    public static RaceInput inputCarCountAndGameCount() {
         int carCount = 0;
         int randomStopOrGoCount = 0;
 
