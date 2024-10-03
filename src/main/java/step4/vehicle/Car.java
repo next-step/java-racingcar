@@ -26,4 +26,8 @@ public class Car {
         return this.location;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
 }

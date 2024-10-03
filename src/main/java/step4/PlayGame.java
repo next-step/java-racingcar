@@ -18,11 +18,14 @@ public class PlayGame {
         resultView.printResultView();
         for(int i = 0; i< round; i++){
             for(Car car : cars){
+                resultView.printCarName(car);
                 resultView.printCarLocation(car.getLocation());
                 car.move(RandomNumberGenerator.getRandomGenerator());
             }
             resultView.separateRound();
         }
     }
+
+
 
 }

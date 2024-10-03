@@ -1,5 +1,7 @@
 package step4.view;
 
+import step4.vehicle.Car;
+
 public class ResultView {
     private static final String EXECUTION = "\n실행 결과";
     private static final String ROUND_SEPARATION = "\n";
@@ -18,5 +20,7 @@ public class ResultView {
         }
         System.out.println();
     }
-
+    public void printCarName(Car car) {
+        System.out.print(car.getName() + " : ");
+    }
 }
