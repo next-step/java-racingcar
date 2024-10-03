@@ -6,6 +6,7 @@ import racinggame.racingcar.RacingCars;
 import racinggame.racingcar.RandomMoveStrategy;
 import racinggame.racingcar.MoveStrategy;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,7 +18,8 @@ class RacingCarMovementTest {
     @DisplayName("자동차 정지 테스트")
     @Test
     void stopRacingCar() {
-        RacingCars racingCars = RacingCars.create(1, () -> false);
+        List<String> name = List.of("a");
+        RacingCars racingCars = RacingCars.create(1, () -> false, name);
         racingCars.moveAll();
 
         List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
@@ -27,7 +29,8 @@ class RacingCarMovementTest {
     @DisplayName("자동차 전진 테스트")
     @Test
     void moveRacingCar() {
-        RacingCars racingCars = RacingCars.create(1, () -> true);
+        List<String> name = List.of("a");
+        RacingCars racingCars = RacingCars.create(1, () -> true, name);
         racingCars.moveAll();
 
         List<Integer> positions = racingCars.getCurrentPositionsRepresentation();
@@ -37,7 +40,8 @@ class RacingCarMovementTest {
     @DisplayName("다중 이동 테스트")
     @Test
     void moveMultipleRacingCar() {
-        RacingCars racingCars = RacingCars.create(1, () -> true);
+        List<String> name = List.of("a");
+        RacingCars racingCars = RacingCars.create(1, () -> true, name);
 
         for (int i = 0; i < 5; i++) {
             racingCars.moveAll();
@@ -51,8 +55,8 @@ class RacingCarMovementTest {
     @Test
     void testMultipleCars() {
         MoveStrategy randomMove = new RandomMoveStrategy();
-
-        RacingCars racingCars = RacingCars.create(3, randomMove);
+        List<String> names = Arrays.asList("a", "b", "c");
+        RacingCars racingCars = RacingCars.create(3, randomMove, names);
 
         for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
             racingCars.moveAll();
