@@ -1,26 +1,23 @@
-package racingcar.controller;
+package racingcar.basic.controller;
 
-import racingcar.model.Car;
-import racingcar.view.ResultView;
+import racingcar.basic.model.Car;
+import racingcar.basic.utils.NumberGenerator;
+import racingcar.basic.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.utils.NumberGenerator.randomNumber;
-
 public class GameController {
 
-    private List<Car> cars;
-    private int numberOfCars;
+    private final List<Car> cars;
     private int numberOfTries;
 
     public GameController(int numberOfCars, int numberOfTries) {
-        this.numberOfCars = numberOfCars;
         this.numberOfTries = numberOfTries;
-        cars = createCars();
+        cars = createCars(numberOfCars);
     }
 
-    private List<Car> createCars() {
+    private List<Car> createCars(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
         for (int cnt = 0; cnt < numberOfCars; cnt++) {
             cars.add(new Car());
@@ -42,6 +39,10 @@ public class GameController {
         showPlayResult();
     }
 
+    private void moveCar(Car car) {
+        car.moveForward(NumberGenerator.randomNumber());
+    }
+
     private void showPlayResult() {
         for (Car car : cars) {
             ResultView.showCarStatus(car.getPosition());
@@ -51,9 +52,5 @@ public class GameController {
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    private void moveCar(Car car) {
-        car.moveForward(randomNumber());
     }
 }
