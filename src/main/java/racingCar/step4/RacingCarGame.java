@@ -1,8 +1,6 @@
 package racingCar.step4;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCarGame {
 
@@ -23,8 +21,10 @@ public class RacingCarGame {
     }
 
     private void startRace(int racingCount) {
+        RandomNumber randomNumber = new RandomNumber();
+
         for (int i = 0; i < racingCount; i++) {
-            cars.move();
+            cars.move(randomNumber);
             ResultView.printRaceResult(cars);
         }
     }

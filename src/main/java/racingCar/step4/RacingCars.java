@@ -2,13 +2,12 @@ package racingCar.step4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class RacingCars {
 
     private static final String CAR_NAME_SEPARATOR = ",";
-    private static final int MOVE_CONDITION_LIMIT = 10;
-    private static final Random MOVE_CONDITION_MAKER = new Random();
 
     private final List<RacingCar> cars;
 
@@ -30,14 +29,10 @@ public class RacingCars {
         return names.split(CAR_NAME_SEPARATOR);
     }
 
-    public void move() {
+    public void move(RandomNumber randomNumber) {
         for (RacingCar car : cars) {
-            car.move(createMoveCondition());
+            car.move(randomNumber.generate());
         }
-    }
-
-    private int createMoveCondition(){
-        return MOVE_CONDITION_MAKER.nextInt(MOVE_CONDITION_LIMIT);
     }
 
     public int getMaxCarPosition() {
