@@ -2,20 +2,21 @@ package racingcar;
 
 public class Car {
 
-    private int position = 0;
+    public static final int MOVE_CONDITION = 4;
+    private int currentPosition;
 
-    public int move(int randomNum) {
-        if (randomNum >= 4) {
-            position++;
+    public int moveCar(int randomNumber) {
+        if (randomNumber >= MOVE_CONDITION) {
+            currentPosition++;
         }
-        return position;
+        return currentPosition;
     }
 
-    public int getPosition() {
-        return position;
+    public int getCurrentPosition() {
+        return currentPosition;
     }
 
     public void forceMove() {
-        position++;
+        currentPosition++;
     }
 }

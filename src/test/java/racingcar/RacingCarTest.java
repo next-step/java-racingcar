@@ -17,14 +17,14 @@ public class RacingCarTest {
     @DisplayName("자동차가 이동하는 값이 4 이상일 경우에만 전진하고 그렇지않으면 멈춰있는지 확인")
     void carMovesOrStopsByRandomNum(int num) {
         Car car = new Car();
-        car.move(num);
+        car.moveCar(num);
 
         System.out.println("num :: " + num);
         if (num >= 4) {
-            assertThat(car.getPosition()).isEqualTo(1);
+            assertThat(car.getCurrentPosition()).isEqualTo(1);
             return;
         }
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getCurrentPosition()).isEqualTo(0);
     }
 
     static IntStream randomNum() {

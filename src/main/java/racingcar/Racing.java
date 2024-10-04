@@ -29,13 +29,13 @@ public class Racing {
     private void playFirstRound() {
         for (Car car : cars) {
             car.forceMove();
-            ResultView.drawCarPosition(car.getPosition());
+            ResultView.drawCarPosition(car.getCurrentPosition());
         }
     }
 
     private void play() {
         for (Car car : cars) {
-            int position = car.move(RANDOM.nextInt(10));
+            int position = car.moveCar(RANDOM.nextInt(10));
             ResultView.drawCarPosition(position);
         }
     }
