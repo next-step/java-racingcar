@@ -9,8 +9,12 @@ public class Car {
     private Movement movement;
 
     public Car(final String carName) {
+        this(carName, new Movement());
+    }
+
+    public Car(final String carName, final Movement movement) {
         this.carName = new CarName(carName);
-        this.movement = new Movement();
+        this.movement = movement;
     }
 
     public int getMovement() {
