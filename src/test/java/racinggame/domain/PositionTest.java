@@ -21,4 +21,20 @@ class PositionTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("음수가 전달되어 객체를 생성할 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("현재 위치와 입력된 위치가 같을 때 true를 반환한다.")
+    void isEqualPositionTest() {
+        Position position = new Position(2);
+        int orderPosition = 2;
+        assertThat(position.isEqualPosition(orderPosition)).isTrue();
+    }
+
+    @Test
+    @DisplayName("현재 위치와 입력된 위치 중 더 큰 위치를 반환한다.")
+    void comparePositionTest() {
+        Position position = new Position(2);
+        int orderPosition = 3;
+        assertThat(position.comparePosition(orderPosition)).isEqualTo(orderPosition);
+    }
 }

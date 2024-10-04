@@ -6,9 +6,13 @@ public class Car {
     private static final int DEFAULT_POSITION = 0;
 
     private final String name;
-    private int position;
+    private Position position;
 
     private Car(String name, int position) {
+        this(name, new Position(position));
+    }
+
+    private Car(String name, Position position) {
         validateCarNameLength(name);
         this.name = name;
         this.position = position;
@@ -25,7 +29,7 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 
     public String getName() {
@@ -34,7 +38,8 @@ public class Car {
 
     public void move(int number) {
         if (isMoveable(number)) {
-            position++;
+            int oldPosition = position.getValue();
+            this.position = new Position(oldPosition + 1);
         }
     }
 
@@ -43,10 +48,10 @@ public class Car {
     }
 
     public boolean isEqualPosition(int otherPosition) {
-        return position == otherPosition;
+        return position.isEqualPosition(otherPosition);
     }
 
     public int comparePosition(int otherPosition) {
-        return Math.max(position, otherPosition);
+        return position.comparePosition(otherPosition);
     }
 }

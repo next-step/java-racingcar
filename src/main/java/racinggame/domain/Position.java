@@ -16,6 +16,18 @@ public class Position {
         }
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public boolean isEqualPosition(int otherPosition) {
+        return value == otherPosition;
+    }
+
+    public int comparePosition(int otherPosition) {
+        return Math.max(value, otherPosition);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

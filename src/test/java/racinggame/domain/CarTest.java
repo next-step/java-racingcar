@@ -43,24 +43,6 @@ class CarTest {
                 .hasMessage("자동차의 이름은 5자리를 초과할 수 없습니다.");
     }
 
-    @Test
-    @DisplayName("자동차의 위치와 입력된 위치가 같을 때 true를 반환한다.")
-    void isEqualPositionTest() {
-        Car car = initCar();
-        int correctMoveNumber = 5;
-        int orderPosition = 1;
-        car.move(correctMoveNumber);
-        assertThat(car.isEqualPosition(orderPosition)).isTrue();
-    }
-
-    @Test
-    @DisplayName("자동차의 위치와 입력된 위치 중 더 큰 위치를 반환한다.")
-    void comparePositionTest() {
-        Car car = initCar();
-        int orderPosition = Integer.MAX_VALUE;
-        assertThat(car.comparePosition(orderPosition)).isEqualTo(orderPosition);
-    }
-
     private Car initCar() {
         return Car.create("테스트카");
     }
