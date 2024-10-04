@@ -2,6 +2,7 @@ package racinggame.modal.collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.vo.TestRandomNumber;
 
 import java.util.List;
 
@@ -21,9 +22,9 @@ class CarsTest {
     void getMaxPositionTest() {
         Cars cars = initCars();
         int correctMoveNumber = 5;
-        cars.getCarList().get(0).move(correctMoveNumber);
-        cars.getCarList().get(0).move(correctMoveNumber);
-        cars.getCarList().get(1).move(correctMoveNumber);
+        cars.getCarList().get(0).move(new TestRandomNumber(correctMoveNumber));
+        cars.getCarList().get(0).move(new TestRandomNumber(correctMoveNumber));
+        cars.getCarList().get(1).move(new TestRandomNumber(correctMoveNumber));
         assertThat(cars.getMaxPosition()).isEqualTo(2);
     }
 

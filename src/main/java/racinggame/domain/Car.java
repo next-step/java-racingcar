@@ -1,5 +1,8 @@
 package racinggame.domain;
 
+import racinggame.domain.vo.Position;
+import racinggame.domain.vo.RandomNumber;
+
 public class Car {
     private static final int MINIMUM_MOVE_NUMBER = 4;
     private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
@@ -34,6 +37,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void move(RandomNumber randomNumber) {
+        move(randomNumber.getValue());
     }
 
     public void move(int number) {

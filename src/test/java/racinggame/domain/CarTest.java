@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.vo.TestRandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -22,7 +23,7 @@ class CarTest {
     void carDoesNotMoveWhenRandomValueIsLessThanFour() {
         Car car = initCar();
         int incorrectMoveNumber = 3;
-        car.move(incorrectMoveNumber);
+        car.move(new TestRandomNumber(incorrectMoveNumber));
         assertThat(car.getPosition()).isZero();
     }
 
@@ -31,7 +32,7 @@ class CarTest {
     void carMovesForwardWhenRandomValueIsFourOrHigher() {
         Car car = initCar();
         int correctMoveNumber = 4;
-        car.move(correctMoveNumber);
+        car.move(new TestRandomNumber(correctMoveNumber));
         assertThat(car.getPosition()).isOne();
     }
 

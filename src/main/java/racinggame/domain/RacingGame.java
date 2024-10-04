@@ -1,16 +1,13 @@
 package racinggame.domain;
 
+import racinggame.domain.vo.RandomNumber;
 import racinggame.modal.collection.Cars;
 import racinggame.modal.collection.GameResults;
 import racinggame.modal.collection.GameRounds;
 
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
-    private static final int DEFAULT_BOUND = 10;
-
-    private final Random random = new Random();
     private final Cars cars;
     private final GameRounds rounds;
 
@@ -52,8 +49,8 @@ public class RacingGame {
         }
     }
 
-    private int getNumber() {
-        return random.nextInt(DEFAULT_BOUND);
+    private RandomNumber getNumber() {
+        return new RandomNumber();
     }
 
     private void validateNegative(int tryCount) {

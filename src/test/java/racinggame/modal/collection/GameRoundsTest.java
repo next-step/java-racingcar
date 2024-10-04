@@ -3,6 +3,7 @@ package racinggame.modal.collection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
+import racinggame.domain.vo.TestRandomNumber;
 
 import java.util.List;
 
@@ -23,8 +24,8 @@ class GameRoundsTest {
         List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
         Cars cars = new Cars(carNames);
         int correctMoveNumber = 5;
-        cars.getCarList().get(0).move(correctMoveNumber);
-        cars.getCarList().get(0).move(correctMoveNumber);
+        cars.getCarList().get(0).move(new TestRandomNumber(correctMoveNumber));
+        cars.getCarList().get(0).move(new TestRandomNumber(correctMoveNumber));
         GameResults gameResults = new GameResults(cars);
         GameRounds gameRounds = new GameRounds();
         gameRounds.save(gameResults);

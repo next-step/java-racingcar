@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.domain.vo;
 
 import java.util.Objects;
 
