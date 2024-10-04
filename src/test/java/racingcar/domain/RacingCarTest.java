@@ -14,7 +14,7 @@ public class RacingCarTest {
         RacingCar racingCar = new RacingCar();
         boolean movable = false;
         racingCar.move(movable);
-        assertThat(racingCar.getStatus()).isEqualTo("-");
+        assertThat(racingCar.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class RacingCarTest {
         RacingCar racingCar = new RacingCar();
         boolean movable = true;
         racingCar.move(movable);
-        assertThat(racingCar.getStatus()).isEqualTo("--");
+        assertThat(racingCar.getPosition()).isEqualTo(2);
     }
 
     @Test
@@ -31,13 +31,13 @@ public class RacingCarTest {
     void 자동차_전진() {
         RacingCar racingCar = new RacingCar();
         racingCar.move();
-        assertThat(racingCar.getStatus()).isEqualTo("--");
+        assertThat(racingCar.getPosition()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("자동차 객체를 만들면, 자동차를 시작 상태로 세팅한다.")
     void 자동차_세팅() {
         RacingCar racingCar = new RacingCar();
-        assertThat(racingCar.getStatus()).isEqualTo("-");
+        assertThat(racingCar.getPosition()).isEqualTo(1);
     }
 }

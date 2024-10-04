@@ -2,18 +2,18 @@ package racingcar.domain;
 
 public class RacingCar {
 
-    private String status = "-";
+    private int position = 1;
 
-    public String getStatus() {
-        return status;
+    public int getPosition() {
+        return this.position;
     }
 
     public void move() {
-        this.status += "-";
+        this.position++;
     }
 
     public void move(boolean movable) {
-        if(movable){
+        if (movable) {
             move();
         }
     }

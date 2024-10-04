@@ -42,7 +42,7 @@ public class RacingGame {
     public String getRacingCarsStatus() {
         StringBuilder sb = new StringBuilder();
         for (RacingCar car : racingCar) {
-            sb.append(car.getStatus());
+            sb.append(car.getPosition());
             sb.append("\n");
         }
         return sb.toString();
