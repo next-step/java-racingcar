@@ -3,6 +3,7 @@ package racinggame.domain;
 import racinggame.domain.collection.Cars;
 import racinggame.domain.collection.GameResults;
 import racinggame.domain.collection.GameRounds;
+import racinggame.domain.strategy.RandomMoveStrategy;
 
 import java.util.List;
 
@@ -43,13 +44,8 @@ public class RacingGame {
 
     private void moveCars() {
         for (Car car : cars.getCarList()) {
-            var number = getNumber();
-            car.move(number);
+            car.move(new RandomMoveStrategy());
         }
-    }
-
-    private RandomNumber getNumber() {
-        return new RandomNumber();
     }
 
     private void validateNegative(int tryCount) {

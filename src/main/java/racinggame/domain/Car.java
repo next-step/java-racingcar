@@ -1,7 +1,8 @@
 package racinggame.domain;
 
+import racinggame.domain.strategy.MoveStrategy;
+
 public class Car {
-    private static final int MINIMUM_MOVE_NUMBER = 4;
     private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
     private static final int DEFAULT_POSITION = 0;
 
@@ -36,14 +37,10 @@ public class Car {
         return name;
     }
 
-    public void move(RandomNumber randomNumber) {
-        if (isMoveable(randomNumber)) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMoveable()) {
             position = position.increment();
         }
-    }
-
-    private boolean isMoveable(RandomNumber randomNumber) {
-        return randomNumber.getValue() >= MINIMUM_MOVE_NUMBER;
     }
 
     public boolean isEqualPosition(int otherPosition) {

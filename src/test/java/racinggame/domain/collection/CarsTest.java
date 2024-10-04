@@ -2,7 +2,7 @@ package racinggame.domain.collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.TestRandomNumber;
+import racinggame.domain.strategy.AlwaysMoveStrategy;
 
 import java.util.List;
 
@@ -21,10 +21,9 @@ class CarsTest {
     @DisplayName("getMaxPosition 메서드가 가장높은 위치의 Car position을 반환한다.")
     void getMaxPositionTest() {
         Cars cars = initCars();
-        int correctMoveNumber = 5;
-        cars.getCarList().get(0).move(new TestRandomNumber(correctMoveNumber));
-        cars.getCarList().get(0).move(new TestRandomNumber(correctMoveNumber));
-        cars.getCarList().get(1).move(new TestRandomNumber(correctMoveNumber));
+        cars.getCarList().get(0).move(new AlwaysMoveStrategy());
+        cars.getCarList().get(0).move(new AlwaysMoveStrategy());
+        cars.getCarList().get(1).move(new AlwaysMoveStrategy());
         assertThat(cars.getMaxPosition()).isEqualTo(2);
     }
 
