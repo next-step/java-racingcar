@@ -1,12 +1,10 @@
 package racingcar.view;
 
 import racingcar.model.CarRecord;
-import racingcar.service.CarRacing;
 
 import java.util.List;
 
 public class ResultView {
-    private CarRacing carRacing;
 
     public ResultView() {
         System.out.println("실행 결과");

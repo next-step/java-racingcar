@@ -16,7 +16,11 @@ public class CarRacing {
     }
 
     private void carRaceReady(int numberOfCars) {
-        makeCarsList(numberOfCars);
+        cars = new ArrayList<Car>();
+
+        for(int i = 0; i < numberOfCars; i++) {
+            cars.add(new Car());
+        }
     }
 
     public List<CarRecord> carRaceStart() {
@@ -29,14 +33,6 @@ public class CarRacing {
         }
 
         return records;
-    }
-
-    public void makeCarsList(int numberOfCars) {
-        cars = new ArrayList<Car>();
-
-        for(int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
     }
 
     public boolean isCarMovingForward() {
