@@ -1,6 +1,10 @@
 package racingcar;
 
 public class ResultView {
+    public static void printMessage() {
+        System.out.println("실행 결과");
+    }
+
     public static void printResult() {
         for (Car car : RacingGame.cars) {
             for (int i = 0; i < car.getDistance(); i++) {
