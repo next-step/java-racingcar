@@ -40,17 +40,13 @@ public class Car {
     }
 
     public void move(RandomNumber randomNumber) {
-        move(randomNumber.getValue());
-    }
-
-    public void move(int number) {
-        if (isMoveable(number)) {
+        if (isMoveable(randomNumber)) {
             position = position.increment();
         }
     }
 
-    private boolean isMoveable(int number) {
-        return number >= MINIMUM_MOVE_NUMBER;
+    private boolean isMoveable(RandomNumber randomNumber) {
+        return randomNumber.getValue() >= MINIMUM_MOVE_NUMBER;
     }
 
     public boolean isEqualPosition(int otherPosition) {
