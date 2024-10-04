@@ -10,25 +10,25 @@ public class ResultView {
         StringBuilder stringBuilder = new StringBuilder("실행 결과").append(NEW_LINE);
 
         for (int i = 0; i < carsMoveStatusHistory.getCarsMoveStatusHistory().size(); i++) {
-            stringBuilder.append(createResultOfAMoveTryCount(carsMoveStatusHistory.getCarsMoveStatusHistoryByMoveTryCount(i)))
+            stringBuilder.append(createResultByAMoveTryCount(carsMoveStatusHistory.getCarsMoveStatusHistoryByMoveTryCount(i)))
                     .append(NEW_LINE);
         }
 
         System.out.println(stringBuilder);
     }
 
-    private static StringBuilder createResultOfAMoveTryCount(Map<Car, Integer> carsMoveStatusHistoryByTryCount) {
+    private static StringBuilder createResultByAMoveTryCount(Map<Car, CarPosition> carsMoveStatusHistoryByTryCount) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Integer integer : carsMoveStatusHistoryByTryCount.values()) {
+        for (CarPosition position : carsMoveStatusHistoryByTryCount.values()) {
             stringBuilder
-                    .append(createDashBy(integer))
+                    .append(createDashBy(position))
                     .append(NEW_LINE);
         }
         return stringBuilder;
     }
 
-    private static String createDashBy(Integer carMoveStatus) {
-        return CAR_MOVESTATUS_DASH.repeat(Math.max(0, carMoveStatus));
+    private static String createDashBy(CarPosition position) {
+        return CAR_MOVESTATUS_DASH.repeat(position.getMax(0));
     }
 
 }

@@ -2,19 +2,19 @@ package carracing;
 
 public class Car {
     private static final int MOVE_REFERENCE_NUM = 4;
-    private int moveStatus;
+    private CarPosition position;
 
     public Car() {
-        this.moveStatus = 0;
+        this.position = new CarPosition();
     }
 
-    public int getMoveStatus() {
-        return moveStatus;
+    public CarPosition getPosition() {
+        return this.position;
     }
 
     public void move(int value) {
         if (value >= MOVE_REFERENCE_NUM) {
-            this.moveStatus += 1;
+            this.position = this.position.increase();
         }
     }
 }

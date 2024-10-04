@@ -10,25 +10,25 @@ public class CarsMoveStatusHistory {
      * 외부 List : 자동차 경주(CarRacing)의 moveTryCount 갯수만큼 생성되어야 한다.
      * 내부 Map : 자동차 경주(CarRacing)의 cars 갯수만큼 생성되어야 한다.
      */
-    private final List<Map<Car, Integer>> carsMoveStatusHistory;
+    private final List<Map<Car, CarPosition>> carsMoveStatusHistory;
 
     public CarsMoveStatusHistory() {
         this.carsMoveStatusHistory = new ArrayList<>();
     }
 
     public void save(List<Car> cars) {
-        Map<Car, Integer> carsMoveStatus = new LinkedHashMap<>();
+        Map<Car, CarPosition> carsMoveStatus = new LinkedHashMap<>();
         for (Car car : cars) {
-            carsMoveStatus.put(car, car.getMoveStatus());
+            carsMoveStatus.put(car, car.getPosition());
         }
         this.carsMoveStatusHistory.add(carsMoveStatus);
     }
 
-    public List<Map<Car, Integer>> getCarsMoveStatusHistory() {
+    public List<Map<Car, CarPosition>> getCarsMoveStatusHistory() {
         return this.carsMoveStatusHistory;
     }
 
-    public Map<Car, Integer> getCarsMoveStatusHistoryByMoveTryCount(int moveTryCount) {
+    public Map<Car, CarPosition> getCarsMoveStatusHistoryByMoveTryCount(int moveTryCount) {
         return this.carsMoveStatusHistory.get(moveTryCount);
     }
 }
