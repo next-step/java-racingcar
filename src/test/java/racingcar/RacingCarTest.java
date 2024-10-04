@@ -52,6 +52,7 @@ class RacingCarTest {
         assertThat(race.getMaxDistance()).isEqualTo(5);
     }
 
+    @DisplayName("우승자를 구할 수 있다.")
     @Test
     public void 우승자1명() {
         List<Car> carList = race.getCarList();
@@ -63,6 +64,7 @@ class RacingCarTest {
         assertThat(race.getWinnerCarList().get(0)).isEqualTo("pobi");
     }
 
+    @DisplayName("우승자를 구할 수 있다.")
     @Test
     public void 우승자_여러명() {
         List<Car> carList = race.getCarList();
