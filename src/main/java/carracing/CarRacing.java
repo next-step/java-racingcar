@@ -1,9 +1,9 @@
 package carracing;
 
 import carracing.domain.Race;
-import carracing.domain.record.RoundRecords;
 import carracing.domain.random.DefaultRandomNumberGenerator;
 import carracing.domain.random.RandomNumberGenerator;
+import carracing.domain.record.RoundRecord;
 import carracing.view.InputView;
 import carracing.view.ResultView;
 
@@ -24,13 +24,10 @@ public class CarRacing {
         List<String> carNames = inputView.getCarNamesFromUser();
         int numberOfRounds = inputView.getRoundNumberFromUser();
 
-        Race race = initializeRace(carNames, numberOfRounds);
-        RoundRecords carRacingResult = race.start();
+        Race race = Race.of(carNames, numberOfRounds, randomNumberGenerator);
+        List<RoundRecord> carRacingResult = race.start();
         resultView.showCarRacingResult(carRacingResult);
     }
 
-    private Race initializeRace(List<String> carNames, int numberOfRounds) {
-        return Race.of(carNames, numberOfRounds, randomNumberGenerator);
-    }
 
 }

@@ -1,20 +1,17 @@
 package carracing.domain;
 
 import carracing.domain.random.RandomNumberGenerator;
-import carracing.domain.record.CarRecord;
 import carracing.domain.record.RoundRecord;
-import carracing.domain.record.RoundRecords;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private final List<Car> cars = new ArrayList<>();
-    private final List<RoundRecord> roundRecords = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
     private final int rounds;
     private final RandomNumberGenerator randomNumberGenerator;
-
+    private final List<RoundRecord> roundRecords = new ArrayList<>();
 
     private Race(List<Car> cars, int rounds, RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
@@ -23,20 +20,25 @@ public class Race {
     }
 
     public static Race of(List<String> carNames, int rounds, RandomNumberGenerator randomNumberGenerator) {
-        List<Car> cars = carNames.stream()
-                .map(Car::from)
-                .collect(Collectors.toUnmodifiableList());
+        List<Car> cars = createCars(carNames);
         return new Race(cars, rounds, randomNumberGenerator);
     }
 
-    public RoundRecords start() {
+    private static List<Car> createCars(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::from)
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    public List<RoundRecord> start() {
         recordRound();
 
         for (int i = 0; i < rounds; i++) {
             moveCars();
             recordRound();
         }
-        return RoundRecords.from(roundRecords);
+
+        return roundRecords;
     }
 
     public List<Car> getCars() {
@@ -44,18 +46,15 @@ public class Race {
     }
 
     private void recordRound() {
-        List<CarRecord> roundResult = cars.stream()
-                .map(CarRecord::of)
-                .collect(Collectors.toUnmodifiableList());
-        roundRecords.add(RoundRecord.from(roundResult));
+        roundRecords.add(RoundRecord.from(cars));
     }
 
     private void moveCars() {
-        cars.forEach(car -> {
-            int randomDistance = randomNumberGenerator.generate();
-            car.move(randomDistance);
-        });
+        cars = cars.stream()
+                .map(car -> {
+                    int randomDistance = randomNumberGenerator.generate();
+                    return car.move(randomDistance);
+                }).collect(Collectors.toUnmodifiableList());
     }
-
 
 }
