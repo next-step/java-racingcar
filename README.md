@@ -28,4 +28,4 @@
 * 자동차 이릅 5자 제한 적용 [X]
 * UI, domain package 분리 [X]
 * validation class 생성 및 이름 validate 책임을 생성자로 옮김 [X]
-* saveWinners method를 순수함수 형태로 재작성
+* saveWinners method를 순수함수 형태로 재작성 [X]
