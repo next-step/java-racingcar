@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Racing {
 
-    public static final String LINE = "-".repeat(5);
     private static final Random RANDOM = new Random();
 
     private final List<Car> cars;
@@ -18,7 +17,7 @@ public class Racing {
 
     public void start() {
         for (int i = 0; i < roundNum; i++) {
-            System.out.println(LINE + (i + 1) + " 라운드 시작!" + LINE);
+            ResultView.roundStart(i + 1);
             play();
         }
     }
@@ -29,6 +28,5 @@ public class Racing {
             ResultView.drawCarPosition(position);
         }
     }
-
 
 }
