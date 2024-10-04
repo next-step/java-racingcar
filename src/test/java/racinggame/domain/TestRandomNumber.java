@@ -1,4 +1,4 @@
-package racinggame.domain.vo;
+package racinggame.domain;
 
 public class TestRandomNumber extends RandomNumber {
     private final int value;

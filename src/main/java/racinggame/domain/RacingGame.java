@@ -1,9 +1,8 @@
 package racinggame.domain;
 
-import racinggame.domain.vo.RandomNumber;
-import racinggame.modal.collection.Cars;
-import racinggame.modal.collection.GameResults;
-import racinggame.modal.collection.GameRounds;
+import racinggame.domain.collection.Cars;
+import racinggame.domain.collection.GameResults;
+import racinggame.domain.collection.GameRounds;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package racinggame.modal.collection;
+package racinggame.domain.collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.vo.TestRandomNumber;
+import racinggame.domain.TestRandomNumber;
 
 import java.util.List;
 
