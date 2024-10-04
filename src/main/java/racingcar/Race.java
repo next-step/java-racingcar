@@ -30,7 +30,7 @@ public class Race {
         }
     }
 
-    public void carMove() {
+    private void carMove() {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).goCar();
         }
@@ -38,7 +38,7 @@ public class Race {
         System.out.println();
     }
 
-    public void printCarList() {
+    private void printCarList() {
         for (Car car : carList) {
             car.printCarRaceResult();
             System.out.println();

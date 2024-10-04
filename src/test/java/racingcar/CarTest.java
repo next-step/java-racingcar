@@ -44,4 +44,14 @@ public class CarTest {
                 .hasMessage(EMPTY_NAME_ERROR);
     }
 
+    @DisplayName("자동차의 거리가 최대이동 거리인지 구할 수 있다.")
+    @Test
+    public void 최대거리_여부() {
+        car.setGoCar(4);
+        car.setGoCar(4);
+        car.setGoCar(4);
+        assertThat(car.isWinnerCar(3)).isTrue();
+        assertThat(car.isWinnerCar(2)).isFalse();
+    }
+
 }
