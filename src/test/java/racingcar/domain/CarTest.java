@@ -1,18 +1,22 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.CarManager;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
     @Test
-    void getTotalMoveCnt() {
+    void getCurrentPosition() {
         Car car = getCar("carName");
-        assertThat(car.getMoveTotalCnt()).isEqualTo(0);
+        assertThat(car.getCurrentPosition()).isEqualTo(0);
     }
+
 
     @Test
     void run_전진() {
@@ -20,7 +24,7 @@ class CarTest {
 
         car.run(true);
 
-        assertThat(car.getMoveTotalCnt()).isEqualTo(1);
+        assertThat(car.getCurrentPosition()).isEqualTo(1);
     }
 
     @Test
@@ -30,8 +34,9 @@ class CarTest {
 
         car.run(false);
 
-        assertThat(car.getMoveTotalCnt()).isEqualTo(0);
+        assertThat(car.getCurrentPosition()).isEqualTo(0);
     }
+
 
     @Test
     void getName_자동차이름부여확인() {

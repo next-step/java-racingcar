@@ -3,39 +3,37 @@ package racingcar.view;
 import racingcar.domain.Car;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
-
-    public static void printMileage(List<Car> cars, boolean isFirst) {
-        if (isFirst) {
-            System.out.println("실행 결과");
-        }
-        for (Car car : cars) {
-            System.out.println(car.getName()+ ":" + "-".repeat(car.getMoveTotalCnt()));
+    public static void printTitleMsg(String msg) {
+        System.out.println(msg);
+    }
+    public static void printRaceResult(Map<String, Integer> raceResult) {
+        for (Map.Entry entry : raceResult.entrySet()) {
+            System.out.println(entry.getKey()+ ":" + "-".repeat((Integer) entry.getValue()));
         }
         System.out.println();
     }
 
-    public static void printWinner(List<Car> cars) {
-        Integer max = cars.stream().map(Car::getMoveTotalCnt).max(Integer::compare).orElse(Integer.valueOf(-1));
+    public static void printWinners(List<Car> winners) {
+        StringBuilder winnerMsg = new StringBuilder();
 
-        List<String> winnerNames = cars.stream().filter(car -> car.getMoveTotalCnt() == max).map(Car::getName).collect(Collectors.toList());
-
-        for (int i = 0; i < winnerNames.size(); i++) {
-            printName(winnerNames.get(i), i == winnerNames.size()-1);
+        for (int i = 0; i < winners.size(); i++) {
+            winnerMsg.append(buildWinnerPrintMsg(winners.get(i).getName(), i == 0));
         }
-        System.out.println("가 최종 우승했습니다");
+
+        winnerMsg.append("가 최종 우승했습니다");
+
+        System.out.println(winnerMsg);
 
     }
 
-    private static void printName(String name, boolean isLast) {
-        if (isLast) {
-            System.out.print(name);
-            return;
+    private static String buildWinnerPrintMsg(String name, boolean isFirstWinner) {
+        if (isFirstWinner) {
+            return name;
         }
-        System.out.print(name + ",");
+        return "," + name;
     }
-
-
 }
