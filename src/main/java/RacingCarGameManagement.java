@@ -1,6 +1,6 @@
 import domain.RacingCar;
-import ui.InputView;
-import ui.ResultView;
+import view.InputView;
+import view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
