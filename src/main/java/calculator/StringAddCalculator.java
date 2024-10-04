@@ -43,7 +43,7 @@ public class StringAddCalculator {
     private static int toInt(String values) {
         int number = Integer.parseInt(values);
         if (number < 0) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException("Negative numbers are not allowed: " + number);
         }
         return number;
     }
