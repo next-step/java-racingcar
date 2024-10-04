@@ -32,4 +32,8 @@ public class CarPosition {
     public int getMax(int max) {
         return Math.max(max, this.value);
     }
+
+    public boolean isSame(int position) {
+        return this.value == position;
+    }
 }

@@ -21,4 +21,21 @@ class CarPositionTest {
 
         assertThat(carPosition.increase()).isEqualTo(new CarPosition(1));
     }
+
+    @DisplayName("자신의 value 값과 인자 값을 비교하여 최대값을 반환한다.")
+    @Test
+    void return_max_position_compare_value_with_argument() {
+        CarPosition carPosition = new CarPosition(4);
+
+        assertThat(carPosition.getMax(3)).isEqualTo(4);
+        assertThat(carPosition.getMax(5)).isEqualTo(5);
+    }
+    @DisplayName("자신의 value 값과 인자 값을 비교하여 같은 값인지를 비교하여 결과를 반환한다.")
+    @Test
+    void return_result_compareTo_value_with_argument() {
+        CarPosition carPosition = new CarPosition(4);
+
+        assertThat(carPosition.isSame(4)).isTrue();
+        assertThat(carPosition.isSame(5)).isFalse();
+    }
 }

@@ -17,4 +17,12 @@ public class Car {
             this.position = this.position.increase();
         }
     }
+
+    public int getMax(int max) {
+        return this.position.getMax(max);
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position.isSame(position);
+    }
 }
