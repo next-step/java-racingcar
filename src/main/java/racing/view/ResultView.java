@@ -1,22 +1,35 @@
 package racing.view;
 
 import racing.car.Car;
+import racing.car.Cars;
 
-public class ResultView {
+public class ResultView implements ResultHandler {
 
-    public static void startCycle(int carNumber, int count) {
-        System.out.println("자동차" + carNumber + "대 " + count + "회");
-        System.out.println("실행 결과");
+    public void racingPrint(Cars cars) {
+        for (Car car : cars.getItems()) {
+            System.out.print(car.getName() + ":");
+            movePrint(car);
+        }
+        System.out.println();
     }
 
-    public static void resultGoAndStop(Car car) {
-        for (int j = 0; j < car.getPosition(); j++) {
+    private void movePrint(Car car) {
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    public static void endCycle() {
-        System.out.println("=========================");
+    @Override
+    public void endCycle() {
+        System.out.println();
+    }
+
+    @Override
+    public void winnerPrint(Cars winner) {
+        System.out.println("우승자 발표!");
+        for (Car car : winner.getItems()) {
+            System.out.println(car.getName());
+        }
     }
 }

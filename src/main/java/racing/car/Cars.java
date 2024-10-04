@@ -1,7 +1,6 @@
 package racing.car;
 
-import racing.game.RacingCalculator;
-import racing.view.ResultView;
+import racing.game.Calculator;
 
 import java.util.List;
 
@@ -13,17 +12,14 @@ public class Cars {
         this.items = items;
     }
 
-    public int carSize() {
-        return items.size();
-    }
-
-    public void carGoAndStop(RacingCalculator racingCalculator) {
+    public Cars carGoAndStop(Calculator calculator) {
         for (Car item : items) {
-            item.isGo(racingCalculator.getRandomNumber());
-            ResultView.resultGoAndStop(item);
+            item.isGo(calculator.getRandomNumber());
         }
-        ResultView.endCycle(); //사이클 끝났다 출력
+        return this;
     }
 
-
+    public List<Car> getItems() {
+        return items;
+    }
 }
