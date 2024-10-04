@@ -1,6 +1,6 @@
 package javaracingcarwinner.view;
 
-import javaracingcarwinner.dto.RacingInfoDto;
+import javaracingcarwinner.dto.GameSettingDto;
 
 import java.util.Scanner;
 
@@ -10,26 +10,20 @@ public class InputView {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    private final RacingInfoDto racingInfoDto;
-
-    public InputView(){
-        String text = requestCarName();
-        int tryCount = requestTryCount();
-        this.racingInfoDto = new RacingInfoDto(text,tryCount);
+    private InputView() {
     }
 
-    private String requestCarName() {
+    public static GameSettingDto settings() {
+        return new GameSettingDto(requestCarName(), requestTryCount());
+    }
+
+    private static String requestCarName() {
         System.out.print(REQUEST_CAR_NAME_MESSAGE);
         return scanner.nextLine();
     }
 
-    private int requestTryCount() {
+    private static int requestTryCount() {
         System.out.print(REQUEST_TRY_COUNT);
         return scanner.nextInt();
     }
-
-    public RacingInfoDto info(){
-        return this.racingInfoDto;
-    }
-
 }

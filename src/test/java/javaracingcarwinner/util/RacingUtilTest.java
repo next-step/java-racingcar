@@ -21,13 +21,8 @@ public class RacingUtilTest {
     void 우승자_검증_1명() {
         List<RacingCar> cars = new ArrayList<>();
 
-        RacingCar winner = new RacingCar("winner");
-        winner.go().go().go();
-        cars.add(winner);
-
-        RacingCar woogie = new RacingCar("woogie");
-        woogie.go();
-        cars.add(woogie);
+        cars.add(new RacingCar("winner",3));
+        cars.add(new RacingCar("woogie",1));
 
         List<RacingCar> winners = RacingUtil.whoIsWinners(cars);
 
@@ -43,21 +38,10 @@ public class RacingUtilTest {
     void 우승자_검증_공동() {
         List<RacingCar> cars = new ArrayList<>();
 
-        RacingCar winner = new RacingCar("winner");
-        winner.go().go().go();
-        cars.add(winner);
-
-        RacingCar winner2 = new RacingCar("winner2");
-        winner2.go().go().go();
-        cars.add(winner2);
-
-        RacingCar winner3 = new RacingCar("winner3");
-        winner3.go().go().go();
-        cars.add(winner3);
-
-        RacingCar loser = new RacingCar("loser");
-        loser.go();
-        cars.add(loser);
+        cars.add(new RacingCar("winner",3));
+        cars.add(new RacingCar("winner2",3));
+        cars.add(new RacingCar("winner3",3));
+        cars.add(new RacingCar("loser",1));
 
         List<RacingCar> winners = RacingUtil.whoIsWinners(cars);
 

@@ -1,6 +1,6 @@
 package javaracingcarwinner.controller;
 
-import javaracingcarwinner.dto.RacingInfoDto;
+import javaracingcarwinner.dto.GameSettingDto;
 import javaracingcarwinner.entity.RacingCar;
 import javaracingcarwinner.util.RacingUtil;
 import javaracingcarwinner.view.ResultView;
@@ -19,7 +19,7 @@ public class JavaRacingCar {
 
     private int tryCount;
 
-    public JavaRacingCar(RacingInfoDto info, ResultView resultView) {
+    public JavaRacingCar(GameSettingDto info, ResultView resultView) {
         initCars(toList(split(info.text())));
         validateTryCount(info.tryCount());
         this.tryCount = info.tryCount();
@@ -48,13 +48,7 @@ public class JavaRacingCar {
 
     private void decidedMoveCar(int carIndex) {
         RacingCar racingCar = this.cars.get(carIndex);
-        if (racingCar.isMove(random())) {
-            racingCar.go();
-        }
-    }
-
-    private int random() {
-        return RacingUtil.random();
+        racingCar.move();
     }
 
     private String[] split(String text) {

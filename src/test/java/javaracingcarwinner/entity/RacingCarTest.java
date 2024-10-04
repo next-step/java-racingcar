@@ -47,12 +47,4 @@ public class RacingCarTest {
         assertThat(result).isTrue();
     }
 
-    @Test
-    void 차_이동_시() {
-        RacingCar racingCar = new RacingCar("woogie");
-
-        racingCar.go().go();
-
-        assertThat(racingCar.location()).isEqualTo(2);
-    }
 }

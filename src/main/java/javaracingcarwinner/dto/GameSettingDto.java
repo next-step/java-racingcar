@@ -1,11 +1,11 @@
 package javaracingcarwinner.dto;
 
-public class RacingInfoDto {
+public class GameSettingDto {
 
     private final String text;
     private final int tryCount;
 
-    public RacingInfoDto(final String text, final int tryCount) {
+    public GameSettingDto(final String text, final int tryCount) {
         this.text = text;
         this.tryCount = tryCount;
     }

@@ -6,8 +6,7 @@ import javaracingcarwinner.view.ResultView;
 
 public class JavaRacingCarWinnerMain {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
         ResultView resultView = new ResultView();
-        JavaRacingCar javaRacingCar = new JavaRacingCar(inputView.info(), resultView);
+        JavaRacingCar javaRacingCar = new JavaRacingCar(InputView.settings(), resultView);
     }
 }
