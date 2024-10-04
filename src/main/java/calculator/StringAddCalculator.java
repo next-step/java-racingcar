@@ -1,11 +1,13 @@
+package calculator;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class StringAddCalculator {
-    public static final String DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
-    public static final int DEFAULT_RESULT = 0;
+public class StringAddCalculator {
+    private static final String DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final int DEFAULT_RESULT = 0;
 
     static int splitAndSum(String text) {
         if (isInvalid(text)) {
