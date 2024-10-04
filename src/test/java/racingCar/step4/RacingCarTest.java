@@ -11,7 +11,7 @@ class RacingCarTest {
     @DisplayName("자동차의 이름은 5자 초과하여 입력할 수 없다")
     @Test
     void validateCarNameSize(){
-        assertThatThrownBy(() -> RacingCar.createCarWithName("자동차이름5자초과"))
+        assertThatThrownBy(() -> RacingCar.ofName("자동차이름5자초과"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하만 입력 가능합니다");
     }
@@ -20,7 +20,7 @@ class RacingCarTest {
     @Test
     void cannotMoveIfUnderFour() {
         //given
-        RacingCar car = RacingCar.createCarWithName("sklee");
+        RacingCar car = RacingCar.ofName("sklee");
 
         //when
         int currentPosition = car.getPosition();
@@ -35,7 +35,7 @@ class RacingCarTest {
     @Test
     void canMoveIfAtLeastFour(){
         //given
-        RacingCar car = RacingCar.createCarWithName("sklee");
+        RacingCar car = RacingCar.ofName("sklee");
         int currentPosition = car.getPosition();
 
         //when
@@ -50,7 +50,7 @@ class RacingCarTest {
     @Test
     void moveForward(){
         //given
-        RacingCar car = RacingCar.createCarWithName("sklee");
+        RacingCar car = RacingCar.ofName("sklee");
 
         //when, then
         int startPosition = car.getPosition();

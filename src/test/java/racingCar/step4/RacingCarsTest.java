@@ -5,12 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarsTest {
-    
-    private RacingCars cars;
 
     @DisplayName(",기준으로 자동차 이름을 입력하여 이름의 수만큼 자동차를 생성한다")
     @Test
@@ -18,45 +15,53 @@ class RacingCarsTest {
         //given
         String carNames = "aa,bb,cc";
         //when
-        cars = RacingCars.createCarsWithNames("aa,bb,cc");
+        RacingCars cars = RacingCars.ofNames("aa,bb,cc");
         //then
         assertThat(cars.getCars()).hasSize(3);
+    }
+
+    @DisplayName("차들이 이동한다")
+    @Test
+    void moveCars(){
+        RacingCars cars = RacingCars.ofNames("aa,bb,cc");
+
+        cars.move(new RandomNumber(3));
+        cars.move(new RandomNumber(4));
+        cars.move(new RandomNumber(5));
+
+        assertThat(cars.getMaxCarPosition()).isEqualTo(2);
     }
 
     @DisplayName("차들 중 가장 멀리 이동한 차의 위치를 구할 수 있다")
     @Test
     void getMaxPositionByCars(){
-        //given, when
-        raceCars(3, "aa,bb,cc");
+        List<RacingCar> cars = List.of(
+                RacingCar.ofNameAndPosition("1등", 5)
+                , RacingCar.ofNameAndPosition("2등", 4)
+                , RacingCar.ofNameAndPosition("3등", 3)
 
-        //then
-        int maxPosition = cars.getCars().stream()
-                            .mapToInt(RacingCar::getPosition)
-                            .max()
-                            .orElse(0);
-        assertThat(cars.getMaxCarPosition()).isEqualTo(maxPosition);
+        );
+        RacingCars carGroup = RacingCars.ofCars(cars);
+
+        assertThat(carGroup.getMaxCarPosition()).isEqualTo(5);
     }
 
     @DisplayName("같은 위치의 차들 조회할 수 있다")
+    @Test
     void findCarsByPosition(){
-        //given, when
-        raceCars(5, "aa,bb,cc");
+        List<RacingCar> cars = List.of(
+                RacingCar.ofNameAndPosition("공동1등", 5)
+                , RacingCar.ofNameAndPosition("공동1등", 5)
+                , RacingCar.ofNameAndPosition("3등", 3)
 
-        //when, then
-        List<RacingCar> samePositionCarsByStream = cars.getCars().stream()
-                .filter(car -> car.getPosition() == 5)
-                .collect(toList());
+        );
+        RacingCars carGroup = RacingCars.ofCars(cars);
 
-        List<RacingCar> samePositionByMethod = cars.findCarsByPosition(5);
-        assertThat(samePositionByMethod).isEqualTo(samePositionCarsByStream);
+        assertThat(carGroup.findCarsByPosition(5)).hasSize(2);
+        assertThat(carGroup.findCarsByPosition(5)).containsExactly(
+                RacingCar.ofNameAndPosition("공동1등", 5)
+                , RacingCar.ofNameAndPosition("공동1등", 5)
+        );
     }
 
-    private void raceCars(int racingCount, String carNames) {
-        //given
-        cars = RacingCars.createCarsWithNames(carNames);
-        //when
-        for (int i = 0; i < racingCount; i++) {
-            cars.move();
-        }
-    }
 }
