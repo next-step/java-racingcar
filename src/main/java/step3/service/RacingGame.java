@@ -1,56 +1,44 @@
 package step3.service;
 
-import static step3.view.InputView.*;
-import static step3.view.ResultView.*;
-
 import java.util.Random;
 
 import step3.domain.Car;
 import step3.exception.RaceParamUnvalidException;
 
-public class RacingGame {
-	Car[] cars;
-	int moveCount;
-	Random random = new Random();
+public final class RacingGame {
+	public static final int RANDOM_BOUND = 10;
 
-	public static void main(String[] args) {
-		int carCount = getCarCount();
-		int moveCount = getMoveCount();
-		RacingGame game = new RacingGame();
-		game.race(carCount, moveCount);
-	}
-
-	public void race(int carCount, int moveCount) {
-		this.setRaceInfo(carCount, moveCount);
-		printStart();
-		this.moveCars();
-	}
-
-	public void setRaceInfo(int carCount, int moveCount) {
+	/**
+	 @return : int[moveIndex][carIndex]
+	 */
+	public static int[][] race(int carCount, int moveCount) {
 		if (carCount < 1 || moveCount < 1) {
 			throw new RaceParamUnvalidException();
 		}
-		this.cars = new Car[carCount];
-		this.moveCount = moveCount;
+		Car[] cars = makeCars(carCount);
+		int[][] raceResult = new int[moveCount][carCount];
+		for (int moveIndex = 0; moveIndex < moveCount; moveIndex++) {
+			raceResult[moveIndex] = moveCars(cars);
+		}
+		return raceResult;
+	}
+
+	private static Car[] makeCars(int carCount) {
+		Car[] cars = new Car[carCount];
 		for (int i = 0; i < carCount; i++) {
 			cars[i] = new Car();
 		}
-	}
-
-	private void moveCars() {
-		for (int i = 0; i < moveCount; i++) {
-			moveCarsOnce();
-		}
-	}
-
-	private void moveCarsOnce() {
-		for (Car car : this.cars) {
-			car.move(random.nextInt(10));
-		}
-		printCurrentPosition(this.cars);
-	}
-
-	public Car[] getCars() {
 		return cars;
+	}
+
+	private static int[] moveCars(Car[] cars) {
+		Random random = new Random();
+		int[] movedResult = new int[cars.length];
+		for (int carIndex = 0; carIndex < cars.length; carIndex++) {
+			cars[carIndex].move(random.nextInt(RANDOM_BOUND));
+			movedResult[carIndex] = cars[carIndex].getPosition();
+		}
+
+		return movedResult;
 	}
 }

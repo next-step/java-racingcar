@@ -1,22 +1,22 @@
 package step3.view;
 
-import step3.domain.Car;
-
 public final class ResultView {
-	public static void printCurrentPosition(Car[] cars) {
-		for (Car car : cars) {
-			printCarPosition(car);
+	public static void printCurrentPosition(int[][] raceResult) {
+		System.out.println("실행 결과");
+		for (int moveIndex = 0; moveIndex < raceResult.length; moveIndex++) {
+			printCarPositionWithMoveIndex(raceResult[moveIndex]);
+		}
+	}
+
+	private static void printCarPositionWithMoveIndex(int[] raceResult) {
+		for (int carIndex : raceResult) {
+			printCarPositions(carIndex);
 		}
 		System.out.println("");
 	}
 
-	public static void printStart() {
-		System.out.println("실행 결과");
-	}
-
-	private static void printCarPosition(Car car) {
-		int carPosition = car.getPosition();
-		for (int j = 0; j < carPosition; j++) {
+	private static void printCarPositions(int position) {
+		for (int i = 0; i < position; i++) {
 			System.out.print("-");
 		}
 		System.out.println("");
