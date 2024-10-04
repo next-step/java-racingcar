@@ -47,11 +47,22 @@ public class CarTest {
     @DisplayName("자동차의 거리가 최대이동 거리인지 구할 수 있다.")
     @Test
     public void 최대거리_여부() {
-        car.setGoCar(4);
-        car.setGoCar(4);
-        car.setGoCar(4);
-        assertThat(car.isWinnerCar(3)).isTrue();
-        assertThat(car.isWinnerCar(2)).isFalse();
+        Car maxDistanceCar = new Car("Car1");
+        maxDistanceCar.setGoCar(4);
+        maxDistanceCar.setGoCar(4);
+        maxDistanceCar.setGoCar(4);
+        assertThat(maxDistanceCar.isWinnerCar(3)).isTrue();
+        assertThat(maxDistanceCar.isWinnerCar(2)).isFalse();
     }
 
+    @DisplayName("거리를 비교하여 큰 값을 리턴한다.")
+    @Test
+    public void 거리비교_리턴() {
+        Car distanceCar = new Car("Car1");
+        distanceCar.setGoCar(4);
+        distanceCar.setGoCar(4);
+        distanceCar.setGoCar(4);
+        assertThat(distanceCar.compareDistance(5)).isEqualTo(5);
+        assertThat(distanceCar.compareDistance(2)).isEqualTo(3);
+    }
 }
