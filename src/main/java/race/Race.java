@@ -17,6 +17,7 @@ public class Race {
         }
 
         List<String> winners = findWinners(cars);
+        ResultView.printWinnerMessage(winners);
     }
 
     public static List<RacingCar> initiateCars(List<String> carNames) {
