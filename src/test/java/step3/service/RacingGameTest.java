@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step3.domain.Car;
+import step3.exception.RaceParamUnvalidException;
 
 class RacingGameTest {
 
@@ -14,7 +15,7 @@ class RacingGameTest {
 	void carCountTest() {
 		RacingGame racingGame = new RacingGame();
 		int carCount = 4;
-		racingGame.setRaceInfo(carCount, 0);
+		racingGame.setRaceInfo(carCount, 1);
 		for (Car car : racingGame.getCars()) {
 			assertThat(car).isNotNull();
 		}
@@ -40,5 +41,13 @@ class RacingGameTest {
 		assertThat(car.getPosition()).isEqualTo(0);
 		car.move(5);
 		assertThat(car.getPosition()).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("입력이 잘못되었을경우 익셉션 발생 테스트")
+	void unExpectedInputExceptionTest() {
+		RacingGame racingGame = new RacingGame();
+		assertThatThrownBy(() -> racingGame.race(1, -1)).isInstanceOf(RaceParamUnvalidException.class);
+		assertThatThrownBy(() -> racingGame.race(-1, 1)).isInstanceOf(RaceParamUnvalidException.class);
 	}
 }

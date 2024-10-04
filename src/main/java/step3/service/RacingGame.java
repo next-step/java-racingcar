@@ -6,6 +6,7 @@ import static step3.view.ResultView.*;
 import java.util.Random;
 
 import step3.domain.Car;
+import step3.exception.RaceParamUnvalidException;
 
 public class RacingGame {
 	Car[] cars;
@@ -26,6 +27,9 @@ public class RacingGame {
 	}
 
 	public void setRaceInfo(int carCount, int moveCount) {
+		if (carCount < 1 || moveCount < 1) {
+			throw new RaceParamUnvalidException();
+		}
 		this.cars = new Car[carCount];
 		this.moveCount = moveCount;
 		for (int i = 0; i < carCount; i++) {
