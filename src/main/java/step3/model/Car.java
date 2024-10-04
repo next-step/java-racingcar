@@ -23,7 +23,7 @@ public class Car {
 
     public void moveOrStop(final int value) {
         if (value >= MOVE_MIN_NUMBER) {
-            movement.move();
+            movement = movement.move();
         }
     }
 
