@@ -17,6 +17,7 @@ public class CarTest {
         car = new Car("pobi");
     }
 
+    @DisplayName("숫자가 4이상인 경우 전진할 수 있다.")
     @Test
     public void 전진_하는지() {
         car.setGoCar(4);
@@ -29,6 +30,7 @@ public class CarTest {
         car.setGoCar(1);
         assertThat(car.getDistance()).isEqualTo(0);
     }
+
 
     @DisplayName("자동차 이름이 빈칸이나 5글자를 초과할 수 없다.")
     @Test
