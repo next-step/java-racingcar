@@ -7,6 +7,7 @@ import javaracingcarwinner.view.ResultView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,4 +45,36 @@ public class JavaRacingCarWinnerTest {
         assertThatThrownBy(() -> new JavaRacingCar(new GameSettingDto("pobi,crong,honux", -4), resultView)).isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    void 우승자_검증_1명() {
+        List<RacingCar> cars = new ArrayList<>();
+
+        cars.add(new RacingCar("pobi",3));
+        cars.add(new RacingCar("kwon",1));
+
+        List<RacingCar> winners = JavaRacingCar.whoIsWinners(cars);
+
+        assertThat(winners).hasSize(1);
+
+        RacingCar who = winners.get(0);
+
+        assertThat(who.name()).isEqualTo("pobi");
+
+    }
+
+    @Test
+    void 우승자_검증_공동() {
+        List<RacingCar> cars = new ArrayList<>();
+
+        cars.add(new RacingCar("win",3));
+        cars.add(new RacingCar("win2",3));
+        cars.add(new RacingCar("win3",3));
+        cars.add(new RacingCar("loser",1));
+
+        List<RacingCar> winners = JavaRacingCar.whoIsWinners(cars);
+
+        assertThat(winners).hasSize(3);
+
+        assertThat(winners.stream().map(w -> w.name()).toArray()).contains("win", "win", "win3");
+    }
 }

@@ -13,7 +13,7 @@ public class InputView {
     private InputView() {
     }
 
-    public static GameSettingDto settings() {
+    public static GameSettingDto gameSettings() {
         return new GameSettingDto(requestCarName(), requestTryCount());
     }
 

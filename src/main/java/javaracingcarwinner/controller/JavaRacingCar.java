@@ -2,7 +2,6 @@ package javaracingcarwinner.controller;
 
 import javaracingcarwinner.dto.GameSettingDto;
 import javaracingcarwinner.entity.RacingCar;
-import javaracingcarwinner.util.RacingUtil;
 import javaracingcarwinner.view.ResultView;
 
 import java.util.ArrayList;
@@ -12,17 +11,17 @@ import java.util.stream.Collectors;
 
 public class JavaRacingCar {
     private static final String SPLIT_DELIMITER = ",";
-    private static final int MAX_NAME_LENGTH = 5;
+
 
     private final List<RacingCar> cars = new ArrayList<>();
     private final ResultView resultView;
 
     private int tryCount;
 
-    public JavaRacingCar(GameSettingDto info, ResultView resultView) {
-        initCars(toList(split(info.text())));
-        validateTryCount(info.tryCount());
-        this.tryCount = info.tryCount();
+    public JavaRacingCar(GameSettingDto settings, ResultView resultView) {
+        initCars(toList(split(settings.text())));
+        validateTryCount(settings.tryCount());
+        this.tryCount = settings.tryCount();
         this.resultView = resultView;
         start();
     }
@@ -30,7 +29,7 @@ public class JavaRacingCar {
     private void start() {
         this.resultView.startMessage();
         startRound();
-        this.resultView.printWinners(RacingUtil.whoIsWinners(this.cars));
+        this.resultView.printWinners(whoIsWinners(this.cars));
     }
 
     private void startRound() {
@@ -61,16 +60,11 @@ public class JavaRacingCar {
 
     private void initCars(List<String> names) {
         for (String name : names) {
-            validateName(name);
             this.cars.add(new RacingCar(name));
         }
     }
 
-    private void validateName(String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("5자 초과");
-        }
-    }
+
 
     private void validateTryCount(int tryCount) {
         if (tryCount < 0) {
@@ -85,4 +79,36 @@ public class JavaRacingCar {
     public int tryCount() {
         return this.tryCount;
     }
+
+    public static List<RacingCar> whoIsWinners(List<RacingCar> cars) {
+        final List<RacingCar> winners = new ArrayList<>();
+
+        final int winnerLocation = winnerLocation(cars);
+
+        for (RacingCar car : cars) {
+            addWinner(winners, winnerLocation, car);
+        }
+
+        return winners;
+    }
+
+    private static void addWinner(List<RacingCar> winners, int winnerLocation, RacingCar car) {
+        if (isWinner(winnerLocation, car.location())) {
+            winners.add(car);
+        }
+    }
+
+    private static boolean isWinner(int winnerLocation, int location) {
+        return winnerLocation == location;
+    }
+
+    private static int winnerLocation(List<RacingCar> cars) {
+        int maxLocation = 0;
+
+        for (RacingCar car : cars) {
+            maxLocation = car.max(maxLocation);
+        }
+        return maxLocation;
+    }
+
 }
