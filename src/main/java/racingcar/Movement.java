@@ -4,8 +4,13 @@ import java.util.Random;
 
 public class Movement {
     private static final int  MOVE_CONDITION = 4;
-    int randomNumber =  new Random().nextInt();
+    private final Random random;
+
+    public Movement(Random random) {
+        this.random = random;
+    }
+
     public boolean isMove() {
-        return randomNumber >= MOVE_CONDITION;
+        return random.nextInt() >= MOVE_CONDITION;
     }
 }
