@@ -1,8 +1,5 @@
 package race;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CarRaceGameHistory {
     private final int round;
     private final int step;

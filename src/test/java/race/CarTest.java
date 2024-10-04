@@ -15,11 +15,11 @@ class CarTest {
     @Test
     void move_자동차_이동조건에_따라_자동차가_이동한다() {
         int startStep = 0;
-        int moveStep = 1;
 
         Car car = Car.create(startStep);
-        int step = car.moveBy(MockCarMoveRule.createThatPassed(), moveStep);
-        assertThat(step).isEqualTo(startStep + moveStep);
+        car.moveBy(new ForwardCarMoveRule());
+
+        assertThat(car).isEqualTo(Car.create(startStep + 1));
     }
 
     @Test
@@ -27,9 +27,9 @@ class CarTest {
         int startStep = 0;
 
         Car car = Car.create(startStep);
-        int step = car.moveBy(MockCarMoveRule.createThatFailed(), 1);
+        car.moveBy(new HoldCarMoveRule());
 
-        assertThat(step).isEqualTo(startStep);
+        assertThat(car).isEqualTo(Car.create(startStep));
     }
 }
 
