@@ -10,9 +10,6 @@ public class ResultView {
     private static final String PRINT_RACE_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String PRINT_GO_CAR_NAME = "%s : ";
 
-    public static void printCarCount() {
-        System.out.println(PRINT_CAR_COUNT);
-    }
 
     public static void printTryCount() {
         System.out.println(PRINT_TRY_COUNT);
@@ -23,16 +20,18 @@ public class ResultView {
     }
 
     public static void printGoDistance() {
-            System.out.print(PRINT_GO_DISTANCE);
+        System.out.print(PRINT_GO_DISTANCE);
     }
-    public static void printCarName(String carName){
+
+    public static void printCarName(String carName) {
         System.out.printf(PRINT_GO_CAR_NAME, carName);
     }
-    public static void printRaceCarName(){
+
+    public static void printRaceCarName() {
         System.out.println(PRINT_RACE_CAR_NAME);
     }
 
-    public static void printWinnerCarName(List<String> winnerCarList){
+    public static void printWinnerCarName(List<String> winnerCarList) {
         System.out.println("최종 우승자 : " + String.join(", ", winnerCarList));
     }
 }

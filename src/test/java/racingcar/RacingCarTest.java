@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,15 +27,15 @@ class RacingCarTest {
     }
 
     @Test
-    public void 차이름_분리_확인(){
+    public void 차이름_분리_확인() {
         assertThat(race.getCarList().get(0).getCarName()).isEqualTo("pobi");
         assertThat(race.getCarList().get(1).getCarName()).isEqualTo("crong");
     }
 
     @Test
-    public void 차_최대_이동거리(){
+    public void 차_최대_이동거리() {
         List<Car> carList = race.getCarList();
-        for (int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             carList.get(0).setGoCar(5);
         }
         carList.get(1).setGoCar(5);
@@ -43,9 +44,9 @@ class RacingCarTest {
     }
 
     @Test
-    public void 우승자1명(){
+    public void 우승자1명() {
         List<Car> carList = race.getCarList();
-        for (int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             carList.get(0).setGoCar(5);
         }
         carList.get(1).setGoCar(5);
@@ -54,9 +55,9 @@ class RacingCarTest {
     }
 
     @Test
-    public void 우승자_여러명(){
+    public void 우승자_여러명() {
         List<Car> carList = race.getCarList();
-        for (int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             carList.get(0).setGoCar(5);
             carList.get(1).setGoCar(5);
         }

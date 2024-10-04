@@ -25,7 +25,7 @@ public class Race {
     }
 
     public void startTry() {
-        for(int i=0;i<tryCount;i++){
+        for (int i = 0; i < tryCount; i++) {
             carMove();
         }
     }

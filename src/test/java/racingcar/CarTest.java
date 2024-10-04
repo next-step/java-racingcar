@@ -10,10 +10,12 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
     private Car car;
+
     @BeforeEach
     void setCar() {
         car = new Car("pobi");
     }
+
     @Test
     public void 전진_하는지() {
         car.setGoCar(4);
@@ -27,7 +29,7 @@ public class CarTest {
     }
 
     @Test
-    public void 자동차이름_에러_확인(){
+    public void 자동차이름_에러_확인() {
         assertThatThrownBy(() -> new Car("abcdef"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INPUT_LENGTH_EXCEEDED_ERROR);

@@ -37,11 +37,11 @@ public class Car {
         return distance;
     }
 
-    public String getCarName(){
+    public String getCarName() {
         return carName;
     }
 
-    private void validateCarName(String carName){
+    private void validateCarName(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEEDED_ERROR);
         } else if (carName.length() == 0) {
@@ -49,17 +49,17 @@ public class Car {
         }
     }
 
-    public int compareDistance(int maxDistance){
-        return Math.max(distance,maxDistance);
+    public int compareDistance(int maxDistance) {
+        return Math.max(distance, maxDistance);
     }
 
     public boolean isWinnerCar(int maxDistance) {
-        return distance==maxDistance;
+        return distance == maxDistance;
     }
 
-    public void printCarRaceResult(){
+    public void printCarRaceResult() {
         printCarName(carName);
-        for(int i=0;i<distance;i++){
+        for (int i = 0; i < distance; i++) {
             printGoDistance();
         }
     }
