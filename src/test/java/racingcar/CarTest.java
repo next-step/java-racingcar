@@ -23,6 +23,7 @@ public class CarTest {
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
+    @DisplayName("숫자가 3미만인 경우 전진할 수 없다.")
     @Test
     public void 전진_안하는지() {
         car.setGoCar(1);
