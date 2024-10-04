@@ -1,15 +1,25 @@
 package racinggame.domain;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameResult {
-    private final List<Integer> results;
+    private final RacingCars racingCars;
 
-    public RacingGameResult(final List<Integer> results) {
-        this.results = results;
+    public RacingGameResult(final RacingCars racingCars) {
+        this.racingCars = racingCars;
     }
 
-    public List<Integer> getResults() {
-        return results;
+    public RacingCars getRacingCars() {
+        return racingCars;
+    }
+
+    public RacingCars winners() {
+        final int maxPosition = racingCars.getMaxPosition();
+
+        return RacingCars.create(
+            racingCars.stream()
+                .filter(racingCar -> racingCar.currentPosition() == maxPosition)
+                .collect(Collectors.toUnmodifiableList())
+        );
     }
 }

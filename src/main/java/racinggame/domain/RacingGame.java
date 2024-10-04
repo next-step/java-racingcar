@@ -1,37 +1,27 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import static racinggame.domain.RacingGameRules.MIN_RACING_CAR_COUNT;
 
 public class RacingGame {
-    private final List<RacingCar> racingCars;
+    private final RacingCars racingCars;
     private final int roundCount;
 
-    public RacingGame(final List<RacingCar> racingCars, final int roundCount) {
+    public RacingGame(final RacingCars racingCars, final int roundCount) {
         this.racingCars = racingCars;
         this.roundCount = roundCount;
     }
 
-    public List<RacingGameResult> play() {
-        return processRounds();
-    }
+    public RacingGameResults play() {
+        if (racingCars.size() < MIN_RACING_CAR_COUNT) {
+            throw new IllegalArgumentException("자동차는 최소 " + MIN_RACING_CAR_COUNT + "대 이상이여야 합니다.");
+        }
 
-    private List<RacingGameResult> processRounds() {
-        final List<RacingGameResult> results = new ArrayList<>();
+        final RacingGameResults results = new RacingGameResults();
         for (int i = 0; i < roundCount; i++) {
-            final RacingGameResult racingGameResult = new RacingGameResult(moveCars());
+            final RacingGameResult racingGameResult = new RacingGameResult(racingCars.moves());
             results.add(racingGameResult);
         }
 
-        return results;
-    }
-
-    private List<Integer> moveCars() {
-        final List<Integer> results = new ArrayList<>();
-        for (final RacingCar car : racingCars) {
-            car.move();
-            results.add(car.currentPosition());
-        }
         return results;
     }
 }
