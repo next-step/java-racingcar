@@ -26,5 +26,6 @@ public class RacingGame {
             }
             ResultView.printResult();
         }
+        ResultView.printWinners();
     }
 }
