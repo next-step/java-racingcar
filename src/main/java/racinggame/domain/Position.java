@@ -3,11 +3,17 @@ package racinggame.domain;
 import java.util.Objects;
 
 public class Position {
-
     private final int value;
 
     public Position(int value) {
+        validateNegative(value);
         this.value = value;
+    }
+
+    private void validateNegative(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("음수가 전달되어 객체를 생성할 수 없습니다.");
+        }
     }
 
     @Override
