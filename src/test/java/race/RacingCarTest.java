@@ -10,7 +10,7 @@ public class RacingCarTest {
     @CsvSource(value = {"0:0", "3:0", "4:1", "9:1"}, delimiter = ':')
     void 값이_4이상이면_전진_4미만이면_정지(int number, int expected) {
         // given
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar("car 1");
 
         // when
         car.moveCarForwardIfCanGo(number);

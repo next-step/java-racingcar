@@ -6,39 +6,25 @@ import java.util.Random;
 
 public class Race {
     public static final int RANDOM_UPPER_LIMIT = 10;
-    private static final int MIN_CAR_COUNT = 2;
-    private static final int MIN_GAME_COUNT = 1;
 
     public static void start() {
-        RaceInput raceInput = getRaceInput();
-        List<RacingCar> cars = initiateCars(raceInput.carCount());
+        RaceInput raceInput = InputView.getRaceInput();
+        List<RacingCar> cars = initiateCars(raceInput.carNames());
 
         ResultView.printResultTitle();
         for (int gameCount = 0; gameCount < raceInput.gameCount(); gameCount++) {
             runStopOrGoRound(cars);
         }
+
+        List<String> winners = findWinners(cars);
+        ResultView.printWinnerMessage(winners);
     }
 
-    private static RaceInput getRaceInput() {
-        int carCount = 0;
-        int gameCount = 0;
-
-        while (carCount < MIN_CAR_COUNT) {
-            carCount = InputView.inputCarCount();
-        }
-
-        while (gameCount < MIN_GAME_COUNT) {
-            gameCount = InputView.inputGameCount();
-        }
-
-        return new RaceInput(carCount, gameCount);
-    }
-
-    public static List<RacingCar> initiateCars(int carCount) {
+    public static List<RacingCar> initiateCars(List<String> carNames) {
         List<RacingCar> cars = new ArrayList<>();
 
-        for (int carIndex = 0; carIndex < carCount; carIndex++) {
-            RacingCar car = new RacingCar();
+        for (String carName : carNames) {
+            RacingCar car = new RacingCar(carName);
             cars.add(car);
         }
 
@@ -51,6 +37,31 @@ public class Race {
             car.moveCarForwardIfCanGo(generatedRandom);
         }
         ResultView.printCarStates(cars);
+    }
+
+    private static List<String> findWinners(List<RacingCar> cars) {
+        int maxState = findMaxState(cars);
+        List<String> winners = new ArrayList<>();
+
+        for (RacingCar car : cars) {
+            if (maxState == car.state()) {
+                winners.add(car.name());
+            }
+        }
+
+        return winners;
+    }
+
+    private static int findMaxState(List<RacingCar> cars) {
+        int maxState = 0;
+
+        for (RacingCar car : cars) {
+            if (car.state() > maxState) {
+                maxState = car.state();
+            }
+        }
+
+        return maxState;
     }
 
     private static int generateIntBetween0and9() {

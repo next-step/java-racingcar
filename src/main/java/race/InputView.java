@@ -1,27 +1,79 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    public static final String CAR_COUNT_REQUEST_STATEMENT = "자동차 대수는 몇 대 인가요? (2 이상의 숫자 입력)";
-    public static final String GAME_COUNT_REQUEST_STATEMENT = "시도할 회수는 몇 회 인가요? (1 이상의 숫자 입력)";
+    private static final String CAR_NAME_DELIMITER = ",";
 
-    public static int inputCarCount() {
-        System.out.println(CAR_COUNT_REQUEST_STATEMENT);
-        return getInput();
+    public static RaceInput getRaceInput() {
+        List<String> parsedCarNames = getCarNamesInput();
+        int gameCount = getGameCountInput();
+
+        return new RaceInput(gameCount, parsedCarNames);
     }
 
-    public static int inputGameCount() {
-        System.out.println(GAME_COUNT_REQUEST_STATEMENT);
-        return getInput();
+    private static List<String> getCarNamesInput() {
+        List<String> parsedCarNames = new ArrayList<>();
+        String carNames = "";
+
+        while (true) {
+            try {
+                carNames = inputCarName();
+                parsedCarNames = parseCarNames(carNames);
+                InputValidator.validateCarNames(parsedCarNames);
+                break;
+            } catch (InvalidInputException e) {
+                ResultView.printErrorMessage(e);
+            }
+        }
+
+        return parsedCarNames;
     }
 
-    private static int getInput() {
+    private static int getGameCountInput() {
+        int gameCount = 0;
+
+        while (true) {
+            try {
+                gameCount = inputGameCount();
+                InputValidator.validateGameCount(gameCount);
+                break;
+            } catch (InvalidInputException e) {
+                ResultView.printErrorMessage(e);
+            }
+        }
+
+        return gameCount;
+    }
+
+    private static String inputCarName() {
+        ResultView.printCarNamesRequestMessage();
+        return getInputString();
+    }
+
+    private static int inputGameCount() {
+        ResultView.printGameCountRequestMessage();
+        return getInputInteger();
+    }
+
+    private static List<String> parseCarNames(String carNames) {
+        return Arrays.asList(carNames.split(CAR_NAME_DELIMITER));
+    }
+
+    private static int getInputInteger() {
         try {
             Scanner scanner = new Scanner(System.in);
             return scanner.nextInt();
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    private static String getInputString() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
     }
 }
