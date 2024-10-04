@@ -8,9 +8,7 @@ public class ResultView {
 
     public static void drawCarPosition(int position) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
-        }
+        sb.append("-".repeat(position));
         System.out.println(sb.toString());
     }
 }
