@@ -18,6 +18,10 @@ public class ResultView {
         System.out.println(GAME_COUNT_REQUEST_STATEMENT);
     }
 
+    public static void printErrorMessage(Exception e) {
+        System.out.println(e.getMessage());
+    }
+
     public static void printResultTitle() {
         System.out.printf(LINE_BREAK + RESULT_TITLE + LINE_BREAK);
     }
