@@ -1,30 +1,34 @@
-package step3;
+package step3.service;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
-import static step3.RacingGame.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step3.domain.Car;
+
 class RacingGameTest {
+
 	@Test
 	@DisplayName("자동차는 입력받은 n대 만큼 생성되는지 체크하는 테스트")
 	void carCountTest() {
-		Car[] cars = inputCars(4);
-		for (Car car : cars) {
+		RacingGame racingGame = new RacingGame();
+		int carCount = 4;
+		racingGame.setRaceInfo(carCount, 0);
+		for (Car car : racingGame.getCars()) {
 			assertThat(car).isNotNull();
 		}
-		assertThat(cars).hasSize(4);
+		assertThat(racingGame.getCars()).hasSize(carCount);
 	}
 
 	@Test
 	@DisplayName("자동차는 입력받은 n번 만큼 이동을 시도하는지 체크하는 테스트")
 	void carMoveTest() {
-		Car[] cars = inputCars(4);
+		RacingGame racingGame = new RacingGame();
 		int moveCount = 5;
-		race(cars, moveCount);
-		for (Car car : cars) {
-			assertThat(car.getMoveTimes()).isEqualTo(moveCount);
+		racingGame.race(4, moveCount);
+		for (Car car : racingGame.getCars()) {
+			assertThat(car.getMoveCalledCount()).isEqualTo(moveCount);
 		}
 	}
 
