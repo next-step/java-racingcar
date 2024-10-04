@@ -24,6 +24,12 @@ public class Race {
         return carList;
     }
 
+    public void startTry() {
+        for(int i=0;i<tryCount;i++){
+            carMove();
+        }
+    }
+
     public void carMove() {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).goCar();
@@ -34,7 +40,7 @@ public class Race {
 
     public void printCarList() {
         for (Car car : carList) {
-            printGoDistance(car);
+            car.printCarRaceResult();
         }
     }
 
@@ -46,7 +52,7 @@ public class Race {
 
     public void setMaxDistance() {
         for (Car car : carList) {
-            maxDistance = Math.max(car.getDistance(), maxDistance);
+            maxDistance = car.compareDistance(maxDistance);
         }
     }
 
@@ -55,6 +61,7 @@ public class Race {
     }
 
     public List<String> getWinnerCarList() {
+        setMaxDistance();
         List<String> winnerCarList = new ArrayList<>();
         for (Car car : carList) {
             addWinner(winnerCarList, car);
@@ -63,7 +70,7 @@ public class Race {
     }
 
     public void addWinner(List<String> winnerCarList, Car car) {
-        if (car.getDistance() == maxDistance) {
+        if (car.isWinnerCar(maxDistance)) {
             winnerCarList.add(car.getCarName());
         }
     }

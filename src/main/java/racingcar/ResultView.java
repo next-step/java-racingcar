@@ -22,14 +22,12 @@ public class ResultView {
         System.out.println(PRINT_RESULT_MESSAGE);
     }
 
-    public static void printGoDistance(Car car) {
-        System.out.printf(PRINT_GO_CAR_NAME, car.getCarName());
-        for (int i = 0; i < car.getDistance(); i++) {
+    public static void printGoDistance() {
             System.out.print(PRINT_GO_DISTANCE);
-        }
-        System.out.println();
     }
-
+    public static void printCarName(String carName){
+        System.out.printf(PRINT_GO_CAR_NAME, carName);
+    }
     public static void printRaceCarName(){
         System.out.println(PRINT_RACE_CAR_NAME);
     }

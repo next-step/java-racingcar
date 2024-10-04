@@ -28,9 +28,6 @@ public class RacingCar {
 
     private static void getGameResult(Race race) {
         printResultMessage();
-        for (int i = 0; i < race.getTryCount(); i++) {
-            race.carMove();
-        }
-        race.setMaxDistance();
+        race.startTry();
     }
 }

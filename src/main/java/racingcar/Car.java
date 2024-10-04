@@ -2,6 +2,9 @@ package racingcar;
 
 import java.util.Random;
 
+import static racingcar.ResultView.printCarName;
+import static racingcar.ResultView.printGoDistance;
+
 public class Car {
     private static final int RANDOM_SIZE = 10;
     public static final String INPUT_LENGTH_EXCEEDED_ERROR = "5자 초과하였습니다.";
@@ -43,6 +46,21 @@ public class Car {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEEDED_ERROR);
         } else if (carName.length() == 0) {
             throw new IllegalArgumentException(EMPTY_NAME_ERROR);
+        }
+    }
+
+    public int compareDistance(int maxDistance){
+        return Math.max(distance,maxDistance);
+    }
+
+    public boolean isWinnerCar(int maxDistance) {
+        return distance==maxDistance;
+    }
+
+    public void printCarRaceResult(){
+        printCarName(carName);
+        for(int i=0;i<distance;i++){
+            printGoDistance();
         }
     }
 }
