@@ -1,11 +1,12 @@
 import domain.RacingCar;
-import ui.InputView;
-import ui.ResultView;
+import view.InputView;
+import view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGameManagement {
     private List<RacingCar> cars;
@@ -52,21 +53,14 @@ public class RacingCarGameManagement {
 
         cars.sort(Comparator.comparing(RacingCar::getStatus));
         RacingCar winnerCar = cars.get(cars.size() - 1);
-        List<String> winners = new ArrayList<>();
-        for (RacingCar car : cars) {
-            saveWinners(car, winnerCar.getStatus(), winners);
-        }
-        return winners;
+        return getWinners(cars, winnerCar.getStatus());
     }
 
-    private void saveWinners(
-            RacingCar car,
-            int maxStatus,
-            List<String> winners
-    ) {
-        if (car.getStatus() == maxStatus) {
-            winners.add(car.getName());
-        }
+    private List<String> getWinners(List<RacingCar> cars, int maxStatus) {
+        return cars.stream()
+                .filter(car -> car.getStatus() == maxStatus)
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
     }
 
     private void moveCars() {
