@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     public static List<Car> cars = new ArrayList<>();
@@ -22,7 +21,7 @@ public class RacingGame {
         ResultView.printMessage();
         for (int i = 0; i < racingCount; i++) {
             for (Car car : cars) {
-                Movement movement = new Movement(new Random());
+                Movement movement = new RandomMovement();
                 car.move(movement.isMove());
             }
             ResultView.printResult();
