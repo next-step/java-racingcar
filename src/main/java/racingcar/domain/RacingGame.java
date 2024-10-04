@@ -20,11 +20,8 @@ public class RacingGame {
     }
 
     public List<Car> getWinners() {
-        // max position 조회
-        int max = 0;
-        for (Car car : cars) {
-            max = car.max(max);
-        }
+
+        Integer max = cars.stream().map(Car::getCurrentPosition).max(Integer::compare).orElseThrow(()-> new IllegalArgumentException("우승자가 존재하지 않습니다."));
 
         final int finalMax = max;
 

@@ -10,7 +10,6 @@ public class InputView {
     private static Scanner SCANNER = new Scanner(System.in);
 
     public static List<String> inputNamesOfCar() {
-        List<String> nameList = new ArrayList<>();
         String [] names = SCANNER.useDelimiter(",").nextLine().split(",");
         return Arrays.asList(names);
     }

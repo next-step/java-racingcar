@@ -8,13 +8,12 @@ public class Car {
     private static int MAX_LENGTH_OF_NAME = 5;
     private static int MIN_LENGTH_OF_NAME = 1;
 
-    private Position position;
+    private int position;
     private String name;
 
     public Car(String name) {
         validateNameOfCar(name);
         this.name = name;
-        this.position = new Position(0);
     }
 
     private void validateNameOfCar(String name) {
@@ -28,16 +27,12 @@ public class Car {
 
     public void run(boolean isMove) {
         if (isMove) {
-            position.add();
+            position++;
         }
     }
 
-    public int max(int inputMax) {
-        return position.max(inputMax);
-    }
-
     public boolean isSamePosition(int inputPosition) {
-        return position.isSamePosition(inputPosition);
+        return this.position == inputPosition;
     }
 
     public String getName() {
@@ -45,6 +40,6 @@ public class Car {
     }
 
     public int getCurrentPosition() {
-        return position.getValue();
+        return position;
     }
 }

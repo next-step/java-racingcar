@@ -13,14 +13,14 @@ class CarTest {
 
     @Test
     void getCurrentPosition() {
-        Car car = getCar("carName");
+        Car car = getCar("car");
         assertThat(car.getCurrentPosition()).isEqualTo(0);
     }
 
 
     @Test
     void run_전진() {
-        Car car = getCar("carName");
+        Car car = getCar("car");
 
         car.run(true);
 
@@ -30,7 +30,7 @@ class CarTest {
     @Test
     void run_멈춤() {
 
-        Car car = getCar("carName");
+        Car car = getCar("car");
 
         car.run(false);
 
@@ -44,6 +44,11 @@ class CarTest {
         Car car = getCar("pobi");
 
         assertThat(car.getName()).isEqualTo("pobi");
+    }
+    @Test
+    void getName_자동차이름검증() {
+        assertThatThrownBy(() -> getCar("자동차명테스트")).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 명은 최소1글자, 최대5글자로 제한합니다.");
     }
 
     private static Car getCar(String carName) {
