@@ -47,9 +47,13 @@ public class RacingGame {
 
     private void moveCars() {
         for (Car car : cars.getCarList()) {
-            var number = random.nextInt(DEFAULT_BOUND);
+            var number = getNumber();
             car.move(number);
         }
+    }
+
+    private int getNumber() {
+        return random.nextInt(DEFAULT_BOUND);
     }
 
     private void validateNegative(int tryCount) {
