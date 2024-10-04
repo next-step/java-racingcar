@@ -38,8 +38,7 @@ public class Car {
 
     public void move(int number) {
         if (isMoveable(number)) {
-            int oldPosition = position.getValue();
-            this.position = new Position(oldPosition + 1);
+            position = position.increment();
         }
     }
 

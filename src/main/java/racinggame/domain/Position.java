@@ -28,6 +28,10 @@ public class Position {
         return Math.max(value, otherPosition);
     }
 
+    public Position increment() {
+        return new Position(value + 1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

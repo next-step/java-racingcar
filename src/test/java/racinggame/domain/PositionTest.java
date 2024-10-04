@@ -37,4 +37,12 @@ class PositionTest {
         int orderPosition = 3;
         assertThat(position.comparePosition(orderPosition)).isEqualTo(orderPosition);
     }
+
+    @Test
+    @DisplayName("increment 메서드가 Position의 value를 1 증가한 새로운 객체를 반환한다.")
+    void incrementTest() {
+        Position position = new Position(2);
+        assertThat(position.increment()).isEqualTo(new Position(3));
+    }
+
 }
