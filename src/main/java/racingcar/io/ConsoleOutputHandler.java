@@ -3,10 +3,15 @@ package racingcar.io;
 import racingcar.car.Car;
 import racingcar.car.Cars;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConsoleOutputHandler implements OutputHandler {
+
+
     @Override
-    public void showCommentForCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public void showCommentForCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
     @Override
@@ -27,12 +32,36 @@ public class ConsoleOutputHandler implements OutputHandler {
     @Override
     public void showTrialResult(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(drawCurrentLocation(car.getCurrentLocation()));
+            System.out.println(drawCurrentLocation(car));
         }
         System.out.println();
     }
 
-    private StringBuilder drawCurrentLocation(int currentLocation) {
-        return new StringBuilder().append("-".repeat(Math.max(0, currentLocation)));
+    private StringBuilder drawCurrentLocation(Car car) {
+        return new StringBuilder().append(car.getName()).append(" : ").append("-".repeat(Math.max(0, car.getCurrentLocation())));
+    }
+
+    @Override
+    public void showWinnerOfRace(Cars cars) {
+        printWinners(cars.getWinners());
+    }
+
+    private void printWinners(List<String> winners) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < winners.size(); i++) {
+            stringBuilder.append(winners.get(i));
+            addComma(winners, i, stringBuilder);
+        }
+
+        stringBuilder.append("가 최종 우승했습니다.");
+
+        System.out.println(stringBuilder);
+    }
+
+    private void addComma(List<String> winners, int index, StringBuilder stringBuilder) {
+        if (index < winners.size() - 1) {
+            stringBuilder.append(", ");
+        }
     }
 }

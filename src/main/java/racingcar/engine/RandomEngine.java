@@ -17,7 +17,7 @@ public class RandomEngine implements CarEngine {
     }
 
     @Override
-    public boolean hasEnoughPower() {
-        return energy >= DEFAULT_MOVE_ENERGY;
+    public boolean hasEnoughPower(int defaultMoveEnergy) {
+        return energy >= defaultMoveEnergy;
     }
 }

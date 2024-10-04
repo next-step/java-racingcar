@@ -13,7 +13,7 @@ class CarTest {
     @Test
     void createCarTest() {
         // given // when
-        Car car = Car.createCar();
+        Car car = Car.createCar("pobi");
 
         // then
         Assertions.assertThat(car.getCurrentLocation()).isEqualTo(0);
@@ -23,10 +23,10 @@ class CarTest {
     @Test
     void carMoveTestWithEnoughPower() {
         // given
-        Car car = Car.createCar();
+        Car car = Car.createCar("pobi");
 
         // when
-        car.move(() -> true);
+        car.move((defaultMoveEnergy) -> true);
 
         // then
         assertThat(car.getCurrentLocation()).isEqualTo(1);
@@ -36,10 +36,10 @@ class CarTest {
     @Test
     void carMoveTestWithNotEnoughPower() {
         // given
-        Car car = Car.createCar();
+        Car car = Car.createCar("pobi");
 
         // when
-        car.move(() -> false);
+        car.move((defaultMoveEnergy) -> false);
 
         // then
         assertThat(car.getCurrentLocation()).isEqualTo(0);

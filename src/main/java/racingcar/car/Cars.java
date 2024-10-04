@@ -17,10 +17,10 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars createCars(int carCount) {
+    public static Cars createCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.createCar());
+        for (String carName : carNames) {
+            cars.add(Car.createCar(carName));
         }
         return of(cars);
     }
@@ -33,5 +33,26 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxLocation = getMaxLocation();
+
+        for (Car car : cars) {
+            if (car.getCurrentLocation() == maxLocation) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
+    public int getMaxLocation() {
+        int maxLocation = Integer.MIN_VALUE;
+        for (Car car : cars) {
+            maxLocation = Math.max(maxLocation, car.getCurrentLocation());
+        }
+        return maxLocation;
     }
 }
