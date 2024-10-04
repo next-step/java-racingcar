@@ -3,6 +3,8 @@ package race;
 public class RacingCar {
     private static final int DEFAULT_STATE = 0;
     private static final int MINIMUM_TO_GO_FORWARD = 4;
+    private static final String CAR_STATE_MARKER = "-";
+    public static final String CAR_NAME_POSTFIX = " : ";
 
     private int state = 0;
     private final String name;
@@ -18,6 +20,18 @@ public class RacingCar {
 
     public String name() {
         return this.name;
+    }
+
+    public String makeCarStateMessage() {
+        StringBuilder message = new StringBuilder(name + CAR_NAME_POSTFIX);
+        if (state == 0) {
+            return message.toString();
+        }
+
+        String carStateMarkers = CAR_STATE_MARKER.repeat(state);
+        message.append(carStateMarkers);
+
+        return message.toString();
     }
 
     public void moveCarForwardIfCanGo(int generatedRandom) {
