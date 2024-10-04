@@ -8,13 +8,13 @@ public class RacingCar {
         return this.position;
     }
 
-    public void move() {
-        this.position++;
-    }
-
     public void move(boolean movable) {
         if (movable) {
             move();
         }
+    }
+
+    public void move() {
+        this.position++;
     }
 }
