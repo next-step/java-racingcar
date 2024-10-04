@@ -1,26 +1,32 @@
 package study.racing;
 
-import java.util.InputMismatchException;
+import study.validation.InputValidation;
+
 import java.util.Scanner;
 
 public class InputView {
-    static Scanner scanner = null;
 
-    public static int racingQuestion(String msg) {
-        int carCount = 0;
+    public Car input() {
+        Scanner scanner = new Scanner(System.in);
+        Car car = new Car();
+
         while (true) {
-            try {
-                scanner = new Scanner(System.in);
-                System.out.println(msg);
-                carCount = scanner.nextInt();
-                if(carCount <= 0) {
-                    throw new InputMismatchException();
-                }
-                return carCount;
 
-            }catch (InputMismatchException e) {
-                System.out.println(RacingMessage.TRY_AGAIN.msg());
+            System.out.println(RacingMessage.CAR_COUNT.msg());
+            String carCount = scanner.nextLine();
+
+            System.out.println(RacingMessage.TRY_COUNT.msg());
+            String tryCount = scanner.nextLine();
+
+            boolean isInputMatchForCar = InputValidation.racingInputValidation(carCount);
+            boolean isInputMatchForTry = InputValidation.racingInputValidation(tryCount);
+
+            if(isInputMatchForCar && isInputMatchForTry) {
+                car.setCarCount(Integer.parseInt(carCount));
+                car.setTryCount(Integer.parseInt(tryCount));
+                break;
             }
         }
+        return car;
     }
 }
