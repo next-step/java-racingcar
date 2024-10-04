@@ -9,15 +9,17 @@ public class Racing {
 
     private final List<Car> cars;
     private final int roundNum;
+    private final ResultView resultView;
 
-    public Racing(List<Car> cars, int roundNum) {
+    public Racing(List<Car> cars, int roundNum, ResultView resultView) {
         this.cars = cars;
         this.roundNum = roundNum;
+        this.resultView = resultView;
     }
 
     public void start() {
         for (int i = 0; i < roundNum; i++) {
-            ResultView.roundStart(i + 1);
+            resultView.roundStart(i + 1);
             play();
         }
     }
@@ -25,7 +27,7 @@ public class Racing {
     private void play() {
         for (Car car : cars) {
             int position = car.moveCar(RANDOM.nextInt(10));
-            ResultView.drawCarPosition(position);
+            resultView.drawCarPosition(position);
         }
     }
 

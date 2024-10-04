@@ -14,7 +14,8 @@ public class RacingCarMain {
             cars.add(new Car());
         }
 
-        Racing racing = new Racing(cars, roundNum);
+        ResultView resultView = new ResultView();
+        Racing racing = new Racing(cars, roundNum, resultView);
         racing.start();
     }
 
