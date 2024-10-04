@@ -16,7 +16,4 @@ public class Car {
         return currentPosition;
     }
 
-    public void forceMove() {
-        currentPosition++;
-    }
 }
