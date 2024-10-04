@@ -1,11 +1,13 @@
 package racingcar.service;
 
 import racingcar.model.Car;
+import racingcar.model.CarRecord;
+
 import java.util.*;
 
 public class CarRacing {
 
-    private List<Car> carsStatus;
+    private List<Car> cars;
 
     public CarRacing() {}
 
@@ -14,53 +16,41 @@ public class CarRacing {
     }
 
     private void carRaceReady(int numberOfCars) {
-        makeCarsStatusList(numberOfCars);
+        makeCarsList(numberOfCars);
     }
 
-    public void carRaceStart() {
-        int[] randomNumbers = generateRandomNumberForMovingCar(carsStatus.size());
+    public List<CarRecord> carRaceStart() {
+        List<CarRecord> records = new ArrayList<>();
 
-        boolean[] carsMovingForwardStatus = isCarMovingForward(randomNumbers);
-
-        for(int i = 0; i < carsMovingForwardStatus.length; i++) {
-            Car car = carsStatus.get(i);
-            boolean isCarMovingForward = carsMovingForwardStatus[i];
-            car.move(isCarMovingForward);
+        for(Car car : cars) {
+            car.move(isCarMovingForward());
+            CarRecord record = new CarRecord(car.getMovingDistance());
+            records.add(record);
         }
+
+        return records;
     }
 
-    public void makeCarsStatusList(int numberOfCars) {
-        carsStatus = new ArrayList<Car>();
+    public void makeCarsList(int numberOfCars) {
+        cars = new ArrayList<Car>();
 
         for(int i = 0; i < numberOfCars; i++) {
-            carsStatus.add(new Car(i+1, 0));
+            cars.add(new Car());
         }
     }
 
-    public int[] generateRandomNumberForMovingCar(int numberOfCars) {
+    public boolean isCarMovingForward() {
         Random random = new Random();
+        int randomNumber = random.nextInt(9) + 1;
 
-        int[] randomNumbers = new int[numberOfCars];
+            if(randomNumber >= 4)
+                return true;
 
-        for(int i = 0; i < numberOfCars; i++)
-            randomNumbers[i] = random.nextInt(9) + 1;
-
-        return randomNumbers;
+        return false;
     }
 
-    public boolean[] isCarMovingForward(int[] randomNumbers) {
-        boolean[] carsMovingForwardStatus = new boolean[randomNumbers.length];
-
-        for(int i = 0; i < randomNumbers.length; i++) {
-            if(randomNumbers[i] >= 4)
-                carsMovingForwardStatus[i] = true;
-        }
-
-        return carsMovingForwardStatus;
-    }
-
-    public List<Car> getCarsStatus() {
-        return carsStatus;
+    public List<Car> getCars() {
+        return cars;
     }
 }
 
