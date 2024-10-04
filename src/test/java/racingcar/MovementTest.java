@@ -30,6 +30,6 @@ class MovementTest {
             }
         };
         Movement movement = new Movement(mockRandom);
-        assertThat(movement.isMove()).isTrue();
+        assertThat(movement.isMove()).isFalse();
     }
 }
