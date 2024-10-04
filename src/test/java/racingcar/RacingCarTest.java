@@ -1,11 +1,13 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.InputView.isPositiveNum;
 
 
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RacingCarTest {
@@ -24,6 +26,12 @@ class RacingCarTest {
     @Test
     public void 시도횟수_입력() {
         assertThat(race.getTryCount()).isEqualTo(5);
+    }
+
+    @DisplayName("시도횟수가 숫자가 아니거나 0이하일 수 없다.")
+    @Test
+    public void 숫자_0이하_입력() {
+        assertThat(isPositiveNum(-1)).isFalse();
     }
 
     @Test

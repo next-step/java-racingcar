@@ -41,6 +41,7 @@ public class Race {
     public void printCarList() {
         for (Car car : carList) {
             car.printCarRaceResult();
+            System.out.println();
         }
     }
 
