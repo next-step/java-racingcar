@@ -8,10 +8,10 @@ public class Winner {
         List<Car> winners = new ArrayList<>();
         int maxDistance = 0;
         for (Car car : RacingGame.cars) {
-            maxDistance = Math.max(maxDistance, car.getDistance());
-        }
-
-        for (Car car : RacingGame.cars) {
+            if (car.getDistance() > maxDistance) {
+                maxDistance = car.getDistance();
+                winners.clear();
+            }
             if (car.getDistance() == maxDistance) {
                 winners.add(car);
             }
