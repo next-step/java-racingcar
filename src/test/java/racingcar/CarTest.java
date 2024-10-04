@@ -6,6 +6,7 @@ import static racingcar.Car.EMPTY_NAME_ERROR;
 import static racingcar.Car.INPUT_LENGTH_EXCEEDED_ERROR;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
@@ -28,6 +29,7 @@ public class CarTest {
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
+    @DisplayName("자동차 이름이 빈칸이나 5글자를 초과할 수 없다.")
     @Test
     public void 자동차이름_에러_확인() {
         assertThatThrownBy(() -> new Car("abcdef"))
