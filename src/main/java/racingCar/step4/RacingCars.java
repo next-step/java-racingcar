@@ -15,13 +15,17 @@ public class RacingCars {
         this.cars = cars;
     }
 
-    public static RacingCars createCarsWithNames(String names){
+    public static RacingCars ofNames(String names){
         List<RacingCar> cars = new ArrayList<>();
         String[] nameArray = splitName(names);
         for (String name : nameArray) {
-            RacingCar car = RacingCar.createCarWithName(name);
+            RacingCar car = RacingCar.ofName(name);
             cars.add(car);
         }
+        return new RacingCars(cars);
+    }
+
+    public static RacingCars ofCars(List<RacingCar> cars){
         return new RacingCars(cars);
     }
 
@@ -53,6 +57,19 @@ public class RacingCars {
 
     public List<RacingCar> getCars() {
         return cars;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(cars, that.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cars);
     }
 }
 

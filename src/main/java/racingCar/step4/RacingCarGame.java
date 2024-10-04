@@ -17,7 +17,7 @@ public class RacingCarGame {
     }
 
     private void createRacingCars(String carNames) {
-        this.cars = RacingCars.createCarsWithNames(carNames);
+        this.cars = RacingCars.ofNames(carNames);
     }
 
     private void startRace(int racingCount) {
