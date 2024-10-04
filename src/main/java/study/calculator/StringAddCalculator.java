@@ -14,36 +14,49 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.*?)\n(.*)");
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
-        } else {
-            String[] values = splitNum(input);
-            return sum(values);
         }
+        String[] values = splitNumber(input);
+        return sum(values);
     }
 
-    public static String[] splitNum(String input) {
+    public static String[] splitNumber(String input) {
         String delimiter = ",|:";
         if (input.startsWith("//")) {
-            Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
-            if (matcher.find()) {
-                delimiter = matcher.group(1); // ; 구분자
-                input = matcher.group(2); // 1;2;3 추출
-            }
+            String[] result = extractCustomDelimiter(input);
+            delimiter = result[0];
+            input = result[1];
         }
         return input.split(delimiter);
+    }
+
+    public static String[] extractCustomDelimiter(String input) {
+        Matcher matcher = CUSTOM_DELIMITER.matcher(input);
+        String[] result = null;
+        if (matcher.find()) {
+            String delimiter = matcher.group(1); // ; 구분자
+            String inputValue = matcher.group(2); // 1;2;3 추출
+            result = new String[]{delimiter, inputValue};
+        }
+        return result;
     }
 
 
     private static int sum(String[] values) {
         int sum = 0;
         for (String value : values) {
-            int number = Integer.parseInt(value);
-            if (number < 0) {
-                throw new RuntimeException("음수는 입력할 수 없습니다.");
+            try {
+                int number = Integer.parseInt(value);
+                if (number < 0) {
+                    throw new RuntimeException("음수는 입력할 수 없습니다.");
+                }
+                sum += number;
+            } catch (NumberFormatException e) {
+                throw new RuntimeException("숫자만 입력할 수 있습니다.");
             }
-            sum += number;
         }
         return sum;
     }
