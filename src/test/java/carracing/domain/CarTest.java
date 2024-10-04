@@ -15,28 +15,22 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void moveCar(int position) {
-        // given
         Car car = Car.from("green");
 
-        // when
-        car.move(position);
+        Car result = car.move(position);
 
-        // then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(result).isEqualTo(Car.of("green", 1));
     }
 
     @DisplayName("자동차 이름은 1글자부터 5글자 이하의 길이를 허용한다.")
     @ParameterizedTest
     @ValueSource(strings = {"green", "blue", "red"})
     void carNameReturnSuccess(String carName) {
-        // given
         Car car = Car.from(carName);
 
-        // when
-        car.move(1);
+        Car result = car.move(1);
 
-        // then
-        assertThat(car)
+        assertThat(result)
                 .extracting("name", "position")
                 .containsExactly(carName, 1);
     }
@@ -45,8 +39,6 @@ class CarTest {
     @ParameterizedTest
     @NullAndEmptySource
     void carNameWithEmptyString(String carName) {
-
-        // then
         assertThatThrownBy(() -> Car.from(carName))
                 .isInstanceOf(RacingCarIllegalArgumentException.class);
     }
@@ -55,8 +47,6 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"cleancode", "exception", "georgia"})
     void carNameReturnException(String carName) {
-
-        // then
         assertThatThrownBy(() -> Car.from(carName))
                 .isInstanceOf(RacingCarIllegalArgumentException.class);
     }
