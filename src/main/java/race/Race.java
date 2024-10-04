@@ -15,6 +15,8 @@ public class Race {
         for (int gameCount = 0; gameCount < raceInput.gameCount(); gameCount++) {
             runStopOrGoRound(cars);
         }
+
+        List<String> winners = findWinners(cars);
     }
 
     public static List<RacingCar> initiateCars(List<String> carNames) {
@@ -34,6 +36,31 @@ public class Race {
             car.moveCarForwardIfCanGo(generatedRandom);
         }
         ResultView.printCarStates(cars);
+    }
+
+    private static List<String> findWinners(List<RacingCar> cars) {
+        int maxState = findMaxState(cars);
+        List<String> winners = new ArrayList<>();
+
+        for (RacingCar car : cars) {
+            if (maxState == car.state()) {
+                winners.add(car.name());
+            }
+        }
+
+        return winners;
+    }
+
+    private static int findMaxState(List<RacingCar> cars) {
+        int maxState = 0;
+
+        for (RacingCar car : cars) {
+            if (car.state() > maxState) {
+                maxState = car.state();
+            }
+        }
+
+        return maxState;
     }
 
     private static int generateIntBetween0and9() {
