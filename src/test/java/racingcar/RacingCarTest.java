@@ -40,6 +40,7 @@ class RacingCarTest {
         assertThat(race.getCarList().get(1).getCarName()).isEqualTo("crong");
     }
 
+    @DisplayName("최대 이동 거리를 구할 수 있다.")
     @Test
     public void 차_최대_이동거리() {
         List<Car> carList = race.getCarList();
