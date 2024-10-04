@@ -1,8 +1,10 @@
 package racingcar;
 
-import racingcar.model.Garage;
+import racingcar.model.Car;
 import racingcar.model.Racing;
 import racingcar.view.InputView;
+
+import java.util.List;
 
 public class RacingCarGame {
     public static void main(String[] args) {
@@ -10,9 +12,11 @@ public class RacingCarGame {
     }
 
     public static void start() {
-        Garage.createCars(InputView.inputCarCount());
+        Racing racing = new Racing();
 
-        Racing.game(InputView.inputGameCount());
+        List<Car> cars = racing.ready(InputView.inputCarCount());
+
+        racing.game(cars, InputView.inputGameCount());
     }
 
 }

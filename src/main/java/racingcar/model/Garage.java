@@ -1,14 +1,18 @@
 package racingcar.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Garage {
 
-    public static Car[] cars;
+    public List<Car> cars  = new ArrayList<>();
 
-    public static void createCars(int number) {
-        cars = new Car[number];
+    public List<Car> createCars(int number) {
 
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car();
+        for (int i = 0; i < number; i++) {
+             cars.add(new Car());
         }
+
+        return cars;
     }
 }
