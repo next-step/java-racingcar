@@ -3,9 +3,18 @@ package racingcar.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
+
+    @Test
+    @DisplayName("자동차의 상태를 전달한다.")
+    void 자동차_상태_전달() {
+        RacingGame racingGame = new RacingGame(2, 2);
+        assertThat(racingGame.getRacingCarsPosition()).isEqualTo(Arrays.asList(1, 1));
+    }
 
     @Test
     @DisplayName("매치를 진행하면 match가 감소한다.")

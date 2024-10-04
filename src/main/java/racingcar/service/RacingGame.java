@@ -39,12 +39,16 @@ public class RacingGame {
         return matchCount;
     }
 
-    public String getRacingCarsStatus() {
-        StringBuilder sb = new StringBuilder();
+    /**
+     * 도메인 계층에서 getter로 전달하면 도메인 계층에 직접 참조하고,
+     * getter로 clear하는 문제가 생길 수 있으므로
+     * Integer 클래스로 복사해서 반환
+     */
+    public List<Integer> getRacingCarsPosition() {
+        List<Integer> result = new ArrayList<>();
         for (RacingCar car : racingCar) {
-            sb.append(car.getPosition());
-            sb.append("\n");
+            result.add(car.getPosition());
         }
-        return sb.toString();
+        return result;
     }
 }

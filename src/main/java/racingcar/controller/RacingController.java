@@ -19,7 +19,7 @@ public class RacingController {
 
         while (racingGame.isMatching()) {
             racingGame.match();
-            resultView.printRacingCarsStatus(racingGame.getRacingCarsStatus());
+            resultView.printRacingCarsStatus(racingGame.getRacingCarsPosition());
         }
     }
 }

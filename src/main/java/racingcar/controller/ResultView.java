@@ -1,6 +1,8 @@
 package racingcar.controller;
 
 
+import java.util.List;
+
 public class ResultView {
 
 
@@ -17,7 +19,17 @@ public class ResultView {
         return INSTANCE;
     }
 
-    public void printRacingCarsStatus(String racingCarsStatus) {
-        System.out.println(racingCarsStatus);
+
+    public void printRacingCarsStatus(List<Integer> racingCarsPosition) {
+        StringBuilder sb = new StringBuilder();
+        for (Integer position : racingCarsPosition) {
+            sb.append(getPosition(position));
+            sb.append("\n");
+        }
+        System.out.println(sb);
+    }
+
+    private String getPosition(Integer position) {
+        return "-".repeat(position);
     }
 }
