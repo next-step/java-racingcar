@@ -7,14 +7,14 @@ public class RacingGame {
     public static List<Car> cars = new ArrayList<>();
 
     public static void main(String[] args) {
-        int carCount = InputView.getCarCount();
+        String[] carNames = InputView.getCarName();
         int racingCount = InputView.getRacingCount();
-        run(carCount, racingCount);
+        run(carNames, racingCount);
     }
 
-    private static void run(int carCount, int racingCount) {
-        for (int i = 0; i < carCount; i++) {
-            Car car = new Car();
+    private static void run(String[] carNames, int racingCount) {
+        for (String carName : carNames) {
+            Car car = new Car(carName);
             cars.add(car);
         }
 
