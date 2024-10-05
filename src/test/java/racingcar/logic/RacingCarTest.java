@@ -30,19 +30,19 @@ public class RacingCarTest {
     @DisplayName("race 시에 movableStrategy 가 true면 전진한다")
     void raceForwardTest() {
         RacingCar car = RacingCar.valueOf(DEFAULT_CAR_NAME, 0);
-        int beforePosition = car.getPosition();
+        Position beforePosition = car.getPosition();
         car.race(() -> true);
-        int afterPosition = car.getPosition();
-        assertThat(afterPosition).isEqualTo(beforePosition + 1);
+        Position afterPosition = car.getPosition();
+        assertThat(afterPosition).isEqualTo(beforePosition.move());
     }
 
     @Test
     @DisplayName("race 시에 movableStrategy 가 false면 전진하지 않는다")
     void raceStayTest() {
         RacingCar car = RacingCar.valueOf(DEFAULT_CAR_NAME, 0);
-        int beforePosition = car.getPosition();
+        Position beforePosition = car.getPosition();
         car.race(() -> false);
-        int afterPosition = car.getPosition();
+        Position afterPosition = car.getPosition();
         assertThat(afterPosition).isEqualTo(beforePosition);
     }
 }

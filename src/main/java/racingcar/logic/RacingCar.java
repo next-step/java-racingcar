@@ -9,12 +9,12 @@ public class RacingCar {
 
     private final String name;
     private final int carNo;
-    private int position;
+    private Position position;
 
     private RacingCar(String name, int carNo) {
         this.name = name;
         this.carNo = carNo;
-        this.position = INITIAL_POSITION;
+        this.position = Position.valueOf(INITIAL_POSITION);
     }
 
     public static RacingCar valueOf(String name, int carNo) {
@@ -23,7 +23,7 @@ public class RacingCar {
 
     public void race(MovableStrategy movableStrategy) {
         if (movableStrategy.isMove()) {
-            this.position++;
+            this.position = this.position.move();
         }
     }
 
@@ -35,7 +35,7 @@ public class RacingCar {
         return this.carNo;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 
