@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Winners;
 import racingcar.model.wrapper.CarName;
@@ -20,7 +19,7 @@ public class RacingGameController {
         List<CarName> carNames = CarName.convertStringToCarNames(inputView.carNames());
         MovementNumber movementNumber = new MovementNumber(inputView.movement());
 
-        Cars cars = createCars(carNames);
+        Cars cars = Cars.newInstance(carNames);
         StringBuilder result = new StringBuilder();
         for (int index = 0; movementNumber.isGreaterThan(index); index++) {
             cars.moveAllByNumberCreator(new RandomNumberGenerator());
@@ -32,11 +31,4 @@ public class RacingGameController {
         resultView.printWinners(PrintUtil.winners(new Winners(cars)));
     }
 
-    private static Cars createCars(List<CarName> carNames) {
-        Car[] cars = carNames.stream()
-                .map(Car::new)
-                .toArray(Car[]::new);
-
-        return Cars.newInstance(cars);
-    }
 }

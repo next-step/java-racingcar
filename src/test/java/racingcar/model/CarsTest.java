@@ -25,7 +25,7 @@ public class CarsTest {
         Cars expected = new Cars(carList);
 
         // when
-        Cars actual = Cars.newInstance(car1, car2, car3);
+        Cars actual = Cars.newInstance(List.of(carName1, carName2, carName3));
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);

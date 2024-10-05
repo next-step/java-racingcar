@@ -1,11 +1,13 @@
 package racingcar.model;
 
+import racingcar.model.wrapper.CarName;
 import racingcar.util.NumberCreator;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -15,8 +17,10 @@ public class Cars {
         this.cars = cars;// NOTE: 내부에서 변경해야 하므로 여기서 불변객체를 선언하면 안됨
     }
 
-    public static Cars newInstance(final Car... cars) {
-        return new Cars(Arrays.asList(cars)) ;
+    public static Cars newInstance(final List<CarName> carNames) {
+        return new Cars(carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList()));
     }
 
     @Override
