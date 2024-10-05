@@ -2,6 +2,8 @@ package racingcar.logic;
 
 import racingcar.logic.movableStrategy.MovableStrategy;
 
+import java.util.Objects;
+
 public class RacingCar {
     private static final int INITIAL_POSITION = 0;
 
@@ -35,5 +37,18 @@ public class RacingCar {
 
     public int getPosition() {
         return this.position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return carNo == racingCar.carNo && Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, carNo);
     }
 }
