@@ -59,7 +59,7 @@ class RacingGameTest {
             RoundResult roundResult = roundResults.get(i);
             assertEquals(CAR_NAMES.length, roundResult.getRacingCars().size());
             for (var car : roundResult.getRacingCars()) {
-                assertEquals(i + 1, car.getPosition());
+                assertEquals(i + 1, car.getPositionValue());
             }
         }
     }
@@ -74,7 +74,7 @@ class RacingGameTest {
         for (RoundResult roundResult : results.getRoundResults()) {
             assertEquals(CAR_NAMES.length, roundResult.getRacingCars().size());
             for (var car : roundResult.getRacingCars()) {
-                assertEquals(0, car.getPosition());
+                assertEquals(0, car.getPositionValue());
             }
         }
     }

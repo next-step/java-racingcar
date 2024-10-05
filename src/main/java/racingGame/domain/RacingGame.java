@@ -37,7 +37,7 @@ public class RacingGame {
 
     private List<RacingCar> takeSnapshot() {
         return cars.stream()
-                .map(car -> new RacingCar(car.getName(), car.getPosition()))
+                .map(car -> new RacingCar(car.getNameValue(), car.getPositionValue()))
                 .collect(Collectors.toList());
     }
 

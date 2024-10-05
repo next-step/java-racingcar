@@ -17,7 +17,7 @@ class RacingCarTest {
     @DisplayName("자동차 이름이 5글자 이하면 정상적으로 생성된다.")
     void createCarWithValidName() {
         RacingCar car = new RacingCar(CAR_NAME, () -> true);
-        assertThat(car.getName()).isEqualTo(CAR_NAME);
+        assertThat(car.getNameValue()).isEqualTo(CAR_NAME);
     }
 
     @ParameterizedTest
@@ -43,7 +43,7 @@ class RacingCarTest {
 
         car.move();
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPositionValue()).isEqualTo(1);
     }
 
     @DisplayName("이동 조건이 만족하지 않으면 움직이지 않는다.")
@@ -53,7 +53,7 @@ class RacingCarTest {
 
         car.move();
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPositionValue()).isEqualTo(0);
     }
 
 }

@@ -17,14 +17,15 @@ public class RoundResult {
     }
 
     public List<String> getWinners() {
-        int maxPosition = racingCars.stream()
-                .mapToInt(RacingCar::getPosition)
+        int maxPositionValue = racingCars.stream()
+                .mapToInt(RacingCar::getPositionValue)
                 .max()
                 .orElse(0);
 
+
         return racingCars.stream()
-                .filter(car -> car.getPosition() == (maxPosition))
-                .map(RacingCar::getName)
+                .filter(car -> car.getPositionValue() == (maxPositionValue))
+                .map(RacingCar::getNameValue)
                 .collect(Collectors.toList());
     }
 }

@@ -14,8 +14,9 @@ public class RacingCar {
     }
 
     public RacingCar(String name, Integer position) {
-        this(name, (MovementCondition) null);
         this.position = new Position(position);
+        this.name = new Name(name);
+        this.movementCondition = null;
     }
 
     public void move() {
@@ -24,11 +25,11 @@ public class RacingCar {
         }
     }
 
-    public int getPosition() {
+    public int getPositionValue() {
         return position.getPosition();
     }
 
-    public String getName() {
+    public String getNameValue() {
         return name.getName();
     }
 }
