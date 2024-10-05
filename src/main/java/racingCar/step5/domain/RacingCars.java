@@ -59,6 +59,10 @@ public class RacingCars {
         return samePositionCars;
     }
 
+    public List<RacingCar> getCars() {
+        return new ArrayList<RacingCar>(cars);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

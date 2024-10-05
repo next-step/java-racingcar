@@ -49,6 +49,14 @@ public class RacingCar {
         return moveCondition >= MOVE_CONDITION_LIMIT;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
