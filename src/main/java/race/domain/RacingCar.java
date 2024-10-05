@@ -10,8 +10,12 @@ public class RacingCar {
     private final String name;
 
     public RacingCar(String name) {
-        this.state = DEFAULT_STATE;
+        this(name, DEFAULT_STATE);
+    }
+
+    public RacingCar(String name, int state) {
         this.name = name;
+        this.state = state;
     }
 
     public int state() {
@@ -39,6 +43,13 @@ public class RacingCar {
         if (carCanGo) {
             moveForward();
         }
+    }
+
+    public int max(int maxState) {
+        if (state > maxState) {
+            return state;
+        }
+        return maxState;
     }
 
     private boolean canGo(int number) {

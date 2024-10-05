@@ -55,9 +55,7 @@ public class Race {
         int maxState = 0;
 
         for (RacingCar car : cars) {
-            if (car.state() > maxState) {
-                maxState = car.state();
-            }
+            maxState = car.max(maxState);
         }
 
         return maxState;

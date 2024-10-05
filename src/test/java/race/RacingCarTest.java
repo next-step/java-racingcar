@@ -1,5 +1,6 @@
 package race;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import race.domain.RacingCar;
@@ -18,5 +19,19 @@ public class RacingCarTest {
 
         // then
         assertThat(car.state()).isEqualTo(expected);
+    }
+
+    @Test
+    void 더_큰_상태값_반환() {
+        // given
+        int currentMaxState = 4;
+        int currentCarState = 5;
+        RacingCar car = new RacingCar("car 1", currentCarState);
+
+        // when
+        int result = car.max(currentMaxState);
+
+        // then
+        assertThat(result).isEqualTo(currentCarState);
     }
 }
