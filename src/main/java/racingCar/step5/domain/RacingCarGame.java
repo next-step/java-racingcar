@@ -15,9 +15,9 @@ public class RacingCarGame {
         this.randomNumber = randomNumber;
     }
 
-    public RacingCarGameResult start() {
+    public RacingCarGameResult start(int racingCont) {
         initialize(cars);
-        startRace(cars);
+        startRace(cars, racingCont);
         decideWinner(cars);
 
         return gameResult;
@@ -27,9 +27,11 @@ public class RacingCarGame {
         gameResult = new RacingCarGameResult();
     }
 
-    private void startRace(RacingCars cars) {
-        cars.move(randomNumber);
-        gameResult.addRacingResult(cars);
+    private void startRace(RacingCars cars, int racingCont) {
+        for (int i = 0; i < racingCont; i++) {
+            cars.move(randomNumber);
+            gameResult.addRacingResult(cars);
+        }
     }
 
     private void decideWinner(RacingCars cars) {
