@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,7 +34,7 @@ public class RacingCars implements Iterable<RacingCar> {
         return stream()
             .mapToInt(RacingCar::currentPosition)
             .max()
-            .orElse(0);
+            .orElseThrow(() -> new NoSuchElementException("움직인 개체가 존재하지 않습니다."));
     }
 
     @Override
