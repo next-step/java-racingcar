@@ -23,11 +23,24 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
+    public static RacingCars ofCars(List<RacingCar> cars) {
+        return new RacingCars(cars);
+    }
+
     private static String[] splitName(String names) {
         return names.split(CAR_NAME_SEPERATOR);
     }
 
     public int countCars() {
         return this.cars.size();
+    }
+
+    public int getMaxCarPosition() {
+        int maxPosition = 0;
+
+        for (RacingCar car : cars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 }
