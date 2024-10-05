@@ -6,6 +6,9 @@ public class RacingCar {
     private final String name;
 
     public RacingCar(String name) {
+        if (name.length() > 5) {
+            throw new IllegalStateException("자동차의 이름은 5자리를 초과할 수 없습니다.");
+        }
         this.name = name;
     }
 
