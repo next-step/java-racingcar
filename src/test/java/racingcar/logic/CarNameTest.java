@@ -20,9 +20,7 @@ public class CarNameTest {
     @Test
     @DisplayName("다섯 글자를 넘어가는 차 이름을 생성 시도 시, 에러가 발생합니다")
     public void tooLongCarNameTest() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            CarName.valueOf("1234567");
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> CarName.valueOf("1234567"));
     }
 
     @ParameterizedTest
