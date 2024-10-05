@@ -7,6 +7,9 @@ public class Position {
     private final int value;
 
     public Position(final int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Position not allowed minus");
+        }
         this.value = value;
     }
 
