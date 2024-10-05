@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class ResultView {
-    private final static String RESULT_PRINT_HEADER = "실행 결과";
+    private static final String RESULT_PRINT_HEADER = "실행 결과";
 
     public static void printRacingResult(RacingResultDTO result) {
         printHeader();
