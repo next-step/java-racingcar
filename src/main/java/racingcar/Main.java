@@ -1,4 +1,5 @@
-import racingcar.RacingCarSimulator;
+package racingcar;
+
 import racingcar.dto.RacingResultDTO;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
