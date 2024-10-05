@@ -2,8 +2,6 @@ package racinggame.domain;
 
 import racinggame.random.RandomNumberGenerator;
 
-import static racinggame.domain.RacingGameRules.MAX_RACING_CAR_NAME_LENGTH;
-
 public class RacingCar {
     public static final int MAX_RACING_CAR_NAME_LENGTH = 5;
     public static final int MOVE_THRESHOLD = 4;
