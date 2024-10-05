@@ -71,7 +71,7 @@ public class InputView {
         boolean hasValidInput = false;
         T input = null;
         while (!hasValidInput) {
-            System.out.println(INPUT_CAR_NAMES_QUESTION);
+            System.out.println(questionMessage);
             input = tryInputFunction.get();
             hasValidInput = inputValidationFunction.apply(input);
         }
