@@ -31,7 +31,7 @@ public class ResultView {
         for (int i = 0; i < winners.size() - 1; i++) {
             System.out.print(winners.get(i).getName() + ", ");
         }
-        System.out.print(winners.get(winners.size()-1).getName()+"가 우승하였습니다");
+        System.out.print(winners.get(winners.size() - 1).getName() + "가 우승하였습니다");
     }
 
 }

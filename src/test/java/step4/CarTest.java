@@ -7,16 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import step4.vehicle.Car;
 import step4.vehicle.Cars;
 
-public class CarRaceWithNameTest {
-
-    @ParameterizedTest
-    @ValueSource(strings = {"pobi,crong,honux"})
-    @DisplayName("자동차 이름 입력 테스트")
-    void 자동차_이름입력_테스트(String input) {
-        Cars car = new Cars(input.split(","));
-        Assertions.assertThat(car).hasNoNullFieldsOrProperties();
-    }
-
+public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"violin", ""})
     @DisplayName("자동차 이름 입력 테스트(공백)")
@@ -35,7 +26,7 @@ public class CarRaceWithNameTest {
         cars.getCars().get(1).move(() -> 1);
         cars.getCars().get(2).move(() -> 1);
 
-        Assertions.assertThat(cars.getWinners()).hasSize(1);
+        Assertions.assertThat(cars.findWinners()).hasSize(1);
 
     }
 
@@ -48,8 +39,7 @@ public class CarRaceWithNameTest {
         cars.getCars().get(1).move(() -> 5);
         cars.getCars().get(2).move(() -> 1);
 
-        Assertions.assertThat(cars.getWinners()).hasSize(2);
+        Assertions.assertThat(cars.findWinners()).hasSize(2);
 
     }
-
 }

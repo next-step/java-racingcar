@@ -21,7 +21,7 @@ public class PlayGame {
             playRound();
             resultView.separateRound();
         }
-        resultView.printWinners(cars.getWinners());
+        resultView.printWinners(cars.findWinners());
     }
 
     private void playRound() {
