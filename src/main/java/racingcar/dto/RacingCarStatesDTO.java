@@ -2,23 +2,25 @@ package racingcar.dto;
 
 import racingcar.RacingCar;
 
-public final class RacingCarStatesDTO {
-    public final RacingCarStateDTO[] carStates;
+import java.util.ArrayList;
+import java.util.List;
 
-    private RacingCarStatesDTO(RacingCarStateDTO[] carStates) {
+public final class RacingCarStatesDTO {
+    public final List<RacingCarStateDTO> carStates;
+
+    private RacingCarStatesDTO(List<RacingCarStateDTO> carStates) {
         this.carStates = carStates;
     }
 
-    public static RacingCarStatesDTO fromRacingCars(RacingCar[] racingCars) {
-        int racingCarsNum = racingCars.length;
-        RacingCarStateDTO[] carStates = new RacingCarStateDTO[racingCarsNum];
-        for (int i = 0; i < racingCarsNum; i++) {
-            carStates[i] = RacingCarStateDTO.fromRacingCar(racingCars[i]);
+    public static RacingCarStatesDTO fromRacingCars(List<RacingCar> racingCars) {
+        List<RacingCarStateDTO> carStates = new ArrayList<>();
+        for (RacingCar racingCar : racingCars) {
+            carStates.add(RacingCarStateDTO.fromRacingCar(racingCar));
         }
         return new RacingCarStatesDTO(carStates);
     }
 
-    public RacingCarStateDTO[] getCarStates() {
+    public List<RacingCarStateDTO> getCarStates() {
         return this.carStates;
     }
 }
