@@ -3,9 +3,9 @@ package racinggame.controller;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
 import racinggame.domain.RacingGameResults;
-import racinggame.ui.RacingGameInputView;
-import racinggame.ui.RacingGameResultView;
-import racinggame.ui.RacingGameViewFactory;
+import racinggame.view.RacingGameInputView;
+import racinggame.view.RacingGameResultView;
+import racinggame.view.RacingGameViewFactory;
 
 public class RacingRunner {
     public void start() {

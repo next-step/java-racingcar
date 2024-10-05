@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.view;
 
 import java.io.InputStream;
 import java.util.Scanner;

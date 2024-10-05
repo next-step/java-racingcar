@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.view;
 
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingCars;
