@@ -11,14 +11,16 @@ public class RaceWinners {
     }
 
     private List<Car> determineWinners(final List<Car> cars) {
-        int maxMovement = cars.stream()
+        return cars.stream()
+                .filter(car -> car.isSameMaxMovement(getMaxMovement(cars)))
+                .collect(Collectors.toList());
+    }
+
+    private static int getMaxMovement(final List<Car> cars) {
+        return cars.stream()
                 .mapToInt(Car::getMovement)
                 .max()
                 .orElse(Movement.DEFAULT_COUNT);
-
-        return cars.stream()
-                .filter(car -> car.isSameMaxMovement(maxMovement))
-                .collect(Collectors.toList());
     }
 
     public List<String> getWinnerNames() {
