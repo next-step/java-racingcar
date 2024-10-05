@@ -33,11 +33,12 @@ public class RacingCarSimulator {
     private static List<String> findWinners(List<RacingCar> racingCars) {
         List<String> winners = new ArrayList<>();
         int maxPosition = INITIAL_POSITION;
-        for(RacingCar car: racingCars){
-            if(car.getPosition() > maxPosition);{
+        for (RacingCar car : racingCars) {
+            int carPosition = car.getPosition();
+            if (carPosition > maxPosition) {
                 winners.add(car.getName());
-            }
-            if(car.getPosition() == maxPosition) {
+                maxPosition = carPosition;
+            } else if (carPosition == maxPosition) {
                 winners = new ArrayList<>();
                 winners.add(car.getName());
             }
