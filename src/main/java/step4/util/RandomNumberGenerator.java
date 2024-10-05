@@ -19,7 +19,7 @@ public class RandomNumberGenerator implements NumberGenerator {
 
     @Override
     public int getValue() {
-        return random.nextInt(bound);
+        return random.nextInt(BOUND);
     }
 
 }

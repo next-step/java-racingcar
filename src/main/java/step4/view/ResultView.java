@@ -1,6 +1,6 @@
 package step4.view;
 
-import step4.vehicle.Car;
+import step4.domain.Car;
 
 import java.util.List;
 

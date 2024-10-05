@@ -1,20 +1,28 @@
-package step4;
+package step4.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.vehicle.Car;
-import step4.vehicle.Cars;
 
-public class CarTest {
+public class CarsTest {
+
     @ParameterizedTest
-    @ValueSource(strings = {"violin", ""})
-    @DisplayName("자동차 이름 입력 테스트(공백)")
-    void 자동차_이름입력_테스트_범위_밖(String input) {
-        Assertions.assertThatThrownBy(() -> new Car(input)).
-                isInstanceOf(IllegalArgumentException.class).
-                hasMessageContaining("길이가 1이상 5이하인 문자열이여야 함");
+    @ValueSource(strings = {"pobi,crong,honux"})
+    @DisplayName("자동차 이름 입력 테스트")
+    void 자동차_이름입력_테스트(String input) {
+        Cars car = new Cars(input.split(","));
+        Assertions.assertThat(car).hasNoNullFieldsOrProperties();
+        Assertions.assertThat(car.getCars()).hasSize(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi"})
+    @DisplayName("자동차 이름 입력 테스트")
+    void 자동차_이름입력_테스트_2명미만_예외발생(String input) {
+        Assertions.assertThatThrownBy(() -> new Cars(input.split(",")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임을 진행할 수 없음");
     }
 
     @ParameterizedTest

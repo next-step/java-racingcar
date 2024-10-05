@@ -1,4 +1,4 @@
-package step4.vehicle;
+package step4.domain;
 
 import step4.util.NumberGenerator;
 
