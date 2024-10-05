@@ -1,14 +1,9 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CarManager {
-    private final List<Car> cars;
     CarManager(String[] carNames) {
-        this.cars = new ArrayList<>();
         for (String carName : carNames) {
-            this.cars.add(new Car(carName));
+            Cars.addCar(new Car(carName));
         }
     }
 
@@ -16,13 +11,13 @@ public class CarManager {
         ResultView.printMessage();
         for (int i = 0; i < racingCount; i++) {
             raceOnce();
-            ResultView.printResult(cars);
+            ResultView.printResult();
         }
-        ResultView.printWinners(cars);
+        ResultView.printWinners();
     }
 
     private void raceOnce() {
-        for (Car car : cars) {
+        for (Car car : Cars.getCars()) {
             Movement movement = new RandomMovement();
             car.move(movement.isMove());
         }

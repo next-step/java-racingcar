@@ -11,7 +11,7 @@ public class Winner {
 
     private static int getMaxDistance() {
         int maxDistance = 0;
-        for (Car car : RacingGame.cars) {
+        for (Car car : Cars.getCars()) {
             maxDistance = Math.max(maxDistance, car.getDistance());
         }
         return maxDistance;
@@ -19,7 +19,7 @@ public class Winner {
 
     private static List<Car> getWinnersByMaxDistance(int maxDistance) {
         List<Car> winners = new ArrayList<>();
-        for (Car car : RacingGame.cars) {
+        for (Car car : Cars.getCars()) {
             addWinnerIfMaxDistance(winners, car, maxDistance);
         }
         return winners;

@@ -9,7 +9,7 @@ public class ResultView {
     }
 
     public static void printResult() {
-        for (Car car : RacingGame.cars) {
+        for (Car car : Cars.getCars()) {
             System.out.print(car.getName() + " : ");
             System.out.print("-".repeat(car.getDistance()));
             System.out.println();
