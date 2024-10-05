@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.logic.RacingCar.RACE_DECISION_NUMBER;
 
 public class RacingCarTest {
     @Test
@@ -26,47 +25,21 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("race 이후에 position 이 단조증가합니다.")
-    void raceMonotoneIncrementTest() {
-        RacingCar car = RacingCar.createWithCarNo(0);
-        int testWrapCount = 20;
-        for (int i = 0; i < testWrapCount; i++) {
-            int beforePosition = car.getPosition();
-            car.race();
-            int afterPosition = car.getPosition();
-            assertThat(afterPosition).isGreaterThanOrEqualTo(beforePosition);
-        }
-    }
-
-    @Test
-    @DisplayName("race 이후에 position은 최대 1 증가합니다.")
-    void racePositionIncrementByMaximumOneTest() {
-        RacingCar car = RacingCar.createWithCarNo(0);
-        int testWrapCount = 200;
-        for (int i = 0; i < testWrapCount; i++) {
-            int beforePosition = car.getPosition();
-            car.race();
-            int afterPosition = car.getPosition();
-            assertThat(afterPosition).isLessThanOrEqualTo(beforePosition + 1);
-        }
-    }
-
-    @Test
-    @DisplayName("race 시에 RACE_DECISION_NUMBER 이상을 입력받으면 1 전진한다")
+    @DisplayName("race 시에 movableStrategy 가 true면 전진한다")
     void raceForwardTest() {
         RacingCar car = RacingCar.createWithCarNo(0);
         int beforePosition = car.getPosition();
-        car.race(RACE_DECISION_NUMBER);
+        car.race(() -> true);
         int afterPosition = car.getPosition();
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
 
     @Test
-    @DisplayName("race 시에 RACE_DECISION_NUMBER보다 작은 값을 입력받으면 전진하지 않는다")
+    @DisplayName("race 시에 movableStrategy 가 false면 전진하지 않는다")
     void raceStayTest() {
         RacingCar car = RacingCar.createWithCarNo(0);
         int beforePosition = car.getPosition();
-        car.race(RACE_DECISION_NUMBER - 1);
+        car.race(() -> false);
         int afterPosition = car.getPosition();
         assertThat(afterPosition).isEqualTo(beforePosition);
     }

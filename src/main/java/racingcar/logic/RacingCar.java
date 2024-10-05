@@ -1,11 +1,9 @@
 package racingcar.logic;
 
-import java.util.Random;
+import racingcar.logic.movableStrategy.MovableStrategy;
 
 public class RacingCar {
-    private static Random RANDOM = new Random();
     private static final int INITIAL_POSITION = 0;
-    static final int RACE_DECISION_NUMBER = 4;
 
     private final int carNo;
     private int position;
@@ -19,19 +17,10 @@ public class RacingCar {
         return new RacingCar(carNo);
     }
 
-    public void race() {
-        int randomNumber = getRandomNumber();
-        race(randomNumber);
-    }
-
-    public void race(int randomNumber) {
-        if (randomNumber >= RACE_DECISION_NUMBER) {
+    public void race(MovableStrategy movableStrategy) {
+        if (movableStrategy.isMove()) {
             this.position++;
         }
-    }
-
-    private int getRandomNumber() {
-        return RANDOM.nextInt(10);
     }
 
     public int getCarNo() {

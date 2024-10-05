@@ -3,6 +3,7 @@ package racingcar.logic;
 import racingcar.dto.RacingCarStatesDTO;
 import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWrapResultDTO;
+import racingcar.logic.movableStrategy.RandomMovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class RacingCarSimulator {
 
     private static RacingWrapResultDTO simulateWrap(int wrapNo, List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            racingCar.race();
+            racingCar.race(new RandomMovableStrategy());
         }
         RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingCars);
         return RacingWrapResultDTO.valueOf(wrapNo, carStates);
