@@ -2,16 +2,18 @@ package racingcar.domain;
 
 public class RacingCar {
 
+    public static final int DEFAULT_POSITION = 1;
+    public static final int MAX_NAME_LENGTH = 5;
     private int position;
     private final String name;
 
     public RacingCar(String name) {
-        this(name, 1);
+            this(name, DEFAULT_POSITION);
     }
 
     public RacingCar(String name, int position) {
         this.position = position;
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalStateException("자동차의 이름은 5자리를 초과할 수 없습니다.");
         }
         this.name = name;
