@@ -1,8 +1,10 @@
 package racingcar.io;
 
+import racingcar.car.CarName;
+
 public interface InputHandler {
 
-    String[] getCarNamesFromUser();
+    CarName[] getCarNamesFromUser();
 
     int getTrialCountFromUser();
 }

@@ -3,7 +3,6 @@ package racingcar.io;
 import racingcar.car.Car;
 import racingcar.car.Cars;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConsoleOutputHandler implements OutputHandler {
@@ -48,10 +47,11 @@ public class ConsoleOutputHandler implements OutputHandler {
 
     private void printWinners(List<String> winners) {
         StringBuilder stringBuilder = new StringBuilder();
+        int winnersSize = winners.size();
 
-        for (int i = 0; i < winners.size(); i++) {
+        for (int i = 0; i < winnersSize; i++) {
             stringBuilder.append(winners.get(i));
-            addComma(winners, i, stringBuilder);
+            addComma(winnersSize, i, stringBuilder);
         }
 
         stringBuilder.append("가 최종 우승했습니다.");
@@ -59,8 +59,8 @@ public class ConsoleOutputHandler implements OutputHandler {
         System.out.println(stringBuilder);
     }
 
-    private void addComma(List<String> winners, int index, StringBuilder stringBuilder) {
-        if (index < winners.size() - 1) {
+    private void addComma(int winnersSize, int index, StringBuilder stringBuilder) {
+        if (index < winnersSize - 1) {
             stringBuilder.append(", ");
         }
     }

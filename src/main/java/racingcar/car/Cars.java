@@ -4,6 +4,7 @@ import racingcar.engine.RandomEngine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -17,9 +18,9 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars createCars(String[] carNames) {
+    public static Cars createCars(CarName[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
+        for (CarName carName : carNames) {
             cars.add(Car.createCar(carName));
         }
         return of(cars);
@@ -36,22 +37,18 @@ public class Cars {
     }
 
     public List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
         int maxLocation = getMaxLocation();
 
-        for (Car car : cars) {
-            if (car.getCurrentLocation() == maxLocation) {
-                winners.add(car.getName());
-            }
-        }
-
-        return winners;
+        return cars.stream()
+                .filter(car -> car.isSame(maxLocation))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public int getMaxLocation() {
-        int maxLocation = Integer.MIN_VALUE;
+        int maxLocation = 0;
         for (Car car : cars) {
-            maxLocation = Math.max(maxLocation, car.getCurrentLocation());
+            maxLocation = car.max(maxLocation);
         }
         return maxLocation;
     }

@@ -7,23 +7,18 @@ public class Car {
     public static final int DEFAULT_MOVE_ENERGY = 4;
 
     private Position position;
-    private final String name;
+    private final CarName name;
 
-    private Car(String name) {
-        this.position = new Position(INITIAL_LOCATION);
+    private Car(CarName name, int position) {
         this.name = name;
+        this.position = Position.of(position);
     }
 
-    private Car(String name, int currentLocation) {
-        this.name = name;
-        this.position = new Position(currentLocation);
+    public static Car createCar(CarName name) {
+        return new Car(name, INITIAL_LOCATION);
     }
 
-    public static Car createCar(String name) {
-        return new Car(name);
-    }
-
-    public static Car createCar(String name, int currentLocation) {
+    public static Car createCar(CarName name, int currentLocation) {
         return new Car(name, currentLocation);
     }
 
@@ -34,10 +29,18 @@ public class Car {
     }
 
     public int getCurrentLocation() {
-        return position.getCurrentLocation();
+        return position.getPosition();
     }
 
     public String getName() {
-        return name;
+        return name.getName();
+    }
+
+    public boolean isSame(int maxLocation) {
+        return position.isSame(maxLocation);
+    }
+
+    public int max(int maxLocation) {
+        return position.max(maxLocation);
     }
 }

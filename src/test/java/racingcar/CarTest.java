@@ -1,9 +1,9 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
+import racingcar.car.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,17 +13,17 @@ class CarTest {
     @Test
     void createCarTest() {
         // given // when
-        Car car = Car.createCar("pobi");
+        Car car = Car.createCar(CarName.of("pobi"));
 
         // then
-        Assertions.assertThat(car.getCurrentLocation()).isEqualTo(0);
+        assertThat(car.getCurrentLocation()).isEqualTo(0);
     }
 
     @DisplayName("CarEngine이 충분한 힘을 제공하면 자동차의 위치가 1 증가한다.")
     @Test
     void carMoveTestWithEnoughPower() {
         // given
-        Car car = Car.createCar("pobi");
+        Car car = Car.createCar(CarName.of("pobi"));
 
         // when
         car.move((defaultMoveEnergy) -> true);
@@ -36,7 +36,7 @@ class CarTest {
     @Test
     void carMoveTestWithNotEnoughPower() {
         // given
-        Car car = Car.createCar("pobi");
+        Car car = Car.createCar(CarName.of("pobi"));
 
         // when
         car.move((defaultMoveEnergy) -> false);

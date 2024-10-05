@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
+import racingcar.car.CarName;
 import racingcar.car.Cars;
 
 import java.util.List;
@@ -15,7 +16,11 @@ class CarsTest {
     @Test
     void createCarsTest() {
         // given
-        String[] carNames = {"pobi","crong","honux"};
+        CarName[] carNames = {
+                CarName.of("pobi"),
+                CarName.of("crong"),
+                CarName.of("honux")
+        };
 
         // when
         Cars cars = Cars.createCars(carNames);
@@ -28,9 +33,9 @@ class CarsTest {
     @Test
     void getMaxLocationTest() {
         // given
-        Car car1 = Car.createCar("pobi", 3);
-        Car car2 = Car.createCar("crong", 5);
-        Car car3 = Car.createCar("honux", 2);
+        Car car1 = Car.createCar(CarName.of("pobi"), 3);
+        Car car2 = Car.createCar(CarName.of("crong"), 5);
+        Car car3 = Car.createCar(CarName.of("honux"), 2);
         Cars cars = Cars.of(List.of(car1, car2, car3));
 
         // when
@@ -45,9 +50,9 @@ class CarsTest {
     @Test
     void getWinnersTest() {
         // given
-        Car car1 = Car.createCar("pobi", 3);
-        Car car2 = Car.createCar("crong", 5);
-        Car car3 = Car.createCar("honux", 5);
+        Car car1 = Car.createCar(CarName.of("pobi"), 3);
+        Car car2 = Car.createCar(CarName.of("crong"), 5);
+        Car car3 = Car.createCar(CarName.of("honux"), 5);
         Cars cars = Cars.of(List.of(car1, car2, car3));
 
         // when

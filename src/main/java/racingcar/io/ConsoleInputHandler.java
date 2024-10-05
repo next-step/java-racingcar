@@ -1,7 +1,9 @@
 package racingcar.io;
 
+import racingcar.car.CarName;
 import racingcar.validation.UserInputValidator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsoleInputHandler implements InputHandler {
@@ -10,13 +12,19 @@ public class ConsoleInputHandler implements InputHandler {
     public static final String DEFAULT_DELIMITER = ",";
 
     @Override
-    public String[] getCarNamesFromUser() {
+    public CarName[] getCarNamesFromUser() {
         String userInput = SCANNER.nextLine();
         UserInputValidator.carNamesInputValidate(userInput, DEFAULT_DELIMITER);
-        return toStringArray(userInput);
+        return toCarNameArray(userInput);
     }
 
-    private String[] toStringArray(String userInput) {
+    private CarName[] toCarNameArray(String userInput) {
+        return Arrays.stream(getSplit(userInput))
+                .map(CarName::of)
+                .toArray(CarName[]::new);
+    }
+
+    private String[] getSplit(String userInput) {
         return userInput.split(DEFAULT_DELIMITER);
     }
 
@@ -24,6 +32,10 @@ public class ConsoleInputHandler implements InputHandler {
     public int getTrialCountFromUser() {
         String userInput = SCANNER.nextLine();
         UserInputValidator.numberInputValidate(userInput);
+        return getAnInt(userInput);
+    }
+
+    private int getAnInt(String userInput) {
         return Integer.parseInt(userInput);
     }
 }
