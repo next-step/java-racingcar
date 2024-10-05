@@ -48,7 +48,7 @@ public class CarsTest {
         cars.getCars().get(2).move(() -> 1);
 
         Assertions.assertThat(cars.findWinners()).hasSize(2);
-        Assertions.assertThat(cars.findWinners()).contains("pobi","crong");
+        Assertions.assertThat(cars.findWinners()).contains("pobi", "crong");
 
     }
 }

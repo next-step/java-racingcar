@@ -33,7 +33,7 @@ public class PlayGame {
     }
 
     private static void checkRoundNum(int round) {
-        if(round <1)
+        if (round < 1)
             throw new IllegalArgumentException("최소 한 라운드 이상은 진행해야함");
     }
 
