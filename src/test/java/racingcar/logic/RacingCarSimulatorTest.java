@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWrapResultDTO;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarSimulatorTest {
@@ -14,7 +16,8 @@ public class RacingCarSimulatorTest {
     @ValueSource(ints = {1, 3, 5, 7, 9})
     @DisplayName("결과는 입력한 트라이 횟수와 같은 수의 wrapResult를 가집니다")
     void wrapResultsSizeTest(int tryNumber) {
-        RacingResultDTO result = RacingCarSimulator.simulate(1, tryNumber);
+        List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, tryNumber);
         Assertions.assertEquals(tryNumber, result.getWrapResults().size());
     }
 
@@ -22,7 +25,11 @@ public class RacingCarSimulatorTest {
     @ValueSource(ints = {1, 3, 5, 7, 9})
     @DisplayName("wrapResult는 입력한 차의 수와 같은 수의 차량 상태를 가집니다")
     void carStateSizeTest(int carNumber) {
-        RacingResultDTO result = RacingCarSimulator.simulate(carNumber, 1);
+        List<String> carNames = new ArrayList<>();
+        for(int i=0; i<carNumber ;i++){
+            carNames.add("car"+i);
+        }
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
         List<RacingWrapResultDTO> wrapResults = result.getWrapResults();
         for (RacingWrapResultDTO wrapResult : wrapResults) {
             Assertions.assertEquals(carNumber, wrapResult.getCarStates().getCarStates().size());

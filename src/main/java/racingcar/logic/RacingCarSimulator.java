@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarSimulator {
-    public static RacingResultDTO simulate(int carNumber, int tryNumber) {
+    public static RacingResultDTO simulate(List<String> carNames, int tryNumber) {
         List<RacingCar> racingCars = createRacingCars(carNumber);
         return simulateRacing(tryNumber, racingCars);
     }
