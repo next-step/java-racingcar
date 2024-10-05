@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.view;
 
 public interface MessageReader {
     int readInt();

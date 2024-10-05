@@ -3,9 +3,13 @@ package racinggame.domain;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingCars implements Iterable<RacingCar> {
+    public static final int MIN_RACING_CAR_COUNT = 2;
+
     private final List<RacingCar> racingCars;
 
     private RacingCars(final List<RacingCar> racingCars) {
@@ -17,8 +21,11 @@ public class RacingCars implements Iterable<RacingCar> {
     }
 
     public RacingCars moves() {
-        racingCars.forEach(RacingCar::move);
-        return new RacingCars(racingCars);
+        return new RacingCars(
+            racingCars.stream()
+                .map(RacingCar::move)
+                .collect(Collectors.toList())
+        );
     }
 
     public int size() {
@@ -29,7 +36,7 @@ public class RacingCars implements Iterable<RacingCar> {
         return stream()
             .mapToInt(RacingCar::currentPosition)
             .max()
-            .orElse(0);
+            .orElseThrow(() -> new NoSuchElementException("움직인 개체가 존재하지 않습니다."));
     }
 
     @Override
