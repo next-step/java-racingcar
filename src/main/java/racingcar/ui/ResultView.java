@@ -18,7 +18,7 @@ public class ResultView {
     }
 
     private static void printWrapResults(RacingResultDTO result) {
-        for (RacingWrapResultDTO wrapResult : result.getWrapResults()) {
+        for (RacingWrapResultDTO wrapResult : result.getWrapResults().getWrapResults()) {
             printWrapResult(wrapResult);
             addBlankLine();
         }
@@ -43,8 +43,9 @@ public class ResultView {
     }
 
     private static void printCarSate(RacingCarStateDTO carState) {
+        String carName = carState.getCarName();
         String dashes = "-".repeat(carState.getPosition());
-        System.out.println(dashes);
+        System.out.printf("%s : %s%n", carName, dashes);
     }
 
     private static void printHeader() {

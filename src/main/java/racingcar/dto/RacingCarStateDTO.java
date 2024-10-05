@@ -17,6 +17,10 @@ public final class RacingCarStateDTO {
         return new RacingCarStateDTO(racingCar.getName(), racingCar.getCarNo(), racingCar.getPosition());
     }
 
+    public String getCarName() {
+        return this.carName;
+    }
+
     public int getCarNo() {
         return this.carNo;
     }
