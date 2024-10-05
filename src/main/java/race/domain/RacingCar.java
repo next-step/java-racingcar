@@ -28,9 +28,6 @@ public class RacingCar {
 
     public String makeCarStateMessage() {
         StringBuilder message = new StringBuilder(name + CAR_NAME_POSTFIX);
-        if (state == 0) {
-            return message.toString();
-        }
 
         String carStateMarkers = CAR_STATE_MARKER.repeat(state);
         message.append(carStateMarkers);
