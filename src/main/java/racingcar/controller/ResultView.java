@@ -35,18 +35,20 @@ public class ResultView {
 
     public void printWinners(List<String> winners) {
         StringBuilder sb = new StringBuilder();
+        int maxIndex = winners.size() - 1;
         for (int i = 0; i < winners.size(); i++) {
             sb.append(winners.get(i));
-            addComma(winners, i, sb);
+            sb.append(addComma(maxIndex, i));
         }
         sb.append("가 최종 우승했습니다.");
         System.out.println(sb);
     }
 
-    private static void addComma(List<String> winners, int i, StringBuilder sb) {
-        if (i != winners.size() - 1) {
-            sb.append(", ");
+    private String addComma(int maxSize, int index) {
+        if (index != maxSize) {
+            return ", ";
         }
+        return "";
     }
 
     private String getPosition(Integer position) {
