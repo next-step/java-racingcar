@@ -1,11 +1,11 @@
 package racingcar.ui;
 
+import racingcar.logic.CarName;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import static racingcar.logic.CarName.MAX_CAR_NAME_LENGTH;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
@@ -13,7 +13,6 @@ public class InputView {
     private static final String INPUT_TRY_NUMBER_QUESTION = "시도할 회수는 몇 회 인가요?";
     private static final String INPUT_CAR_NAMES_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String NOT_AN_INTEGER_MESSAGE = "입력하신 값이 정수가 아닙니다.";
-    private static final String EMPTY_INPUT_MESSAGE = "입력하신 값이 비어있습니다.";
     private static final String NOT_A_POSITIVE_NUMBER_MESSAGE = "입력하신 값이 양의 정수가 아닙니다.";
     private static final String CAR_NAMES_INPUT_SPLITTER = ",";
 
@@ -63,19 +62,22 @@ public class InputView {
 
     private static boolean isCarNamesInputValid(List<String> input) {
         if (input == null) {
-            System.out.println(EMPTY_INPUT_MESSAGE);
+            System.out.println(CarName.BLANK_CAR_NAME_MESSAGE);
             return false;
         }
-        for (String carName : input) {
-            if (isCarNameInvalid(carName)) {
-                return false;
-            }
+        if (hasTooLongCarName(input)) {
+            System.out.println(CarName.TOO_LONG_CAR_NAME_MESSAGE);
+            return false;
         }
         return true;
     }
 
-    private static boolean isCarNameInvalid(String carName) {
-        return carName.length() > MAX_CAR_NAME_LENGTH;
+    private static boolean hasTooLongCarName(List<String> input) {
+        boolean hasTooLongCarName = true;
+        for (String carName : input) {
+            hasTooLongCarName = hasTooLongCarName && CarName.isTooLong(carName);
+        }
+        return hasTooLongCarName;
     }
 
     private static <T> T input(String questionMessage, Supplier<T> tryInputFunction, Function<T, Boolean> inputValidationFunction) {
