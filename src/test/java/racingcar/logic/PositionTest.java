@@ -20,9 +20,7 @@ public class PositionTest {
     @Test
     @DisplayName("음수 포지션을 생성하려고 하면 에러가 발생합니다")
     public void NegativePositionTest() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Position.valueOf(-1);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> Position.valueOf(-1));
     }
 
     @ParameterizedTest
