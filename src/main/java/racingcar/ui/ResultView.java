@@ -49,7 +49,7 @@ public class ResultView {
 
     private static void printCarSate(RacingCarStateDTO carState) {
         String carName = carState.getCarName();
-        String dashes = "-".repeat(carState.getPosition());
+        String dashes = "-".repeat(carState.getPosition() + 1);
         System.out.printf("%s : %s%n", carName, dashes);
     }
 

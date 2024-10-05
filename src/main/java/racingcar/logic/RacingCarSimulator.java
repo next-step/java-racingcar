@@ -21,10 +21,16 @@ public class RacingCarSimulator {
     }
 
     private static List<RacingWrapResultDTO> proceedWraps(int tryNumber, List<RacingCar> racingCars) {
-        List<RacingWrapResultDTO> wrapResults = new ArrayList<>();
+        List<RacingWrapResultDTO> wrapResults = initializeWrapResults(racingCars);
         for (int i = 0; i < tryNumber; i++) {
-            wrapResults.add(simulateWrap(i, racingCars));
+            wrapResults.add(simulateWrap(i + 1, racingCars));
         }
+        return wrapResults;
+    }
+
+    private static List<RacingWrapResultDTO> initializeWrapResults(List<RacingCar> racingCars) {
+        List<RacingWrapResultDTO> wrapResults = new ArrayList<>();
+        wrapResults.add(RacingWrapResultDTO.valueOf(0, RacingCarStatesDTO.valueOf(racingCars)));
         return wrapResults;
     }
 
