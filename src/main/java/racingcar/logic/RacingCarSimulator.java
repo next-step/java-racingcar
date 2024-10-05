@@ -6,6 +6,8 @@ import racingcar.dto.RacingWrapResultDTO;
 import racingcar.logic.movableStrategy.RandomMovableStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RacingCarSimulator {
@@ -35,35 +37,26 @@ public class RacingCarSimulator {
     }
 
     private static List<String> findWinners(List<RacingCar> racingCars) {
-        List<RacingCar> winnerCars = new ArrayList<>();
+        int topDistance = findTopDistance(racingCars);
+        return findCarsWithTopDistance(racingCars, topDistance);
+    }
+
+    private static List<String> findCarsWithTopDistance(List<RacingCar> racingCars, int topDistance) {
+        List<String> carsWithTopDistance = new ArrayList<>();
         for (RacingCar car : racingCars) {
-            updateWinnerCars(car, winnerCars);
+            updateCarsWithTopDistance(topDistance, car, carsWithTopDistance);
         }
-        return extractNames(winnerCars);
+        return carsWithTopDistance;
     }
 
-    private static void updateWinnerCars(RacingCar car, List<RacingCar> winnerCars) {
-        if (winnerCars.isEmpty()) {
-            winnerCars.add(car);
-            return;
-        }
-        int currentWinnerPosition = winnerCars.get(0).getPosition();
-        int carPosition = car.getPosition();
-
-        if (carPosition > currentWinnerPosition) {
-            winnerCars.clear();
-        }
-        if (carPosition >= currentWinnerPosition) {
-            winnerCars.add(car);
+    private static void updateCarsWithTopDistance(int topDistance, RacingCar car, List<String> carsWithTopDistance) {
+        if (car.getPosition() == topDistance) {
+            carsWithTopDistance.add(car.getName());
         }
     }
 
-    private static List<String> extractNames(List<RacingCar> winnerCars) {
-        List<String> winnerNames = new ArrayList<>();
-        for (RacingCar winnerCar : winnerCars) {
-            winnerNames.add(winnerCar.getName());
-        }
-        return winnerNames;
+    private static int findTopDistance(List<RacingCar> racingCars) {
+        return Collections.max(racingCars, Comparator.comparingInt(RacingCar::getPosition)).getPosition();
     }
 
     private static RacingWrapResultDTO simulateWrap(int wrapNo, List<RacingCar> racingCars) {
