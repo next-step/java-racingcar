@@ -30,8 +30,8 @@ public class PositionTest {
     @DisplayName("move하면 포지션이 1 증가한다.")
     public void moveTest(int position) {
         Position positionInstance = Position.valueOf(position);
-        positionInstance.move();
-        Assertions.assertEquals(position + 1, positionInstance.getPosition());
+        Position newPositionInstance = positionInstance.move();
+        Assertions.assertEquals(position + 1, newPositionInstance.getPosition());
     }
 
     @ParameterizedTest
