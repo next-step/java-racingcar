@@ -2,9 +2,11 @@ package racingcar.logic;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.RacingResultDTO;
+import racingcar.dto.RacingWinnersDTO;
 import racingcar.dto.RacingWrapResultDTO;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class RacingCarSimulatorTest {
     void wrapResultsSizeTest(int tryNumber) {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, tryNumber);
-        Assertions.assertEquals(tryNumber, result.getWrapResults().size());
+        Assertions.assertEquals(tryNumber, result.getWrapResults().getWrapResults().size());
     }
 
     @ParameterizedTest
@@ -30,9 +32,18 @@ public class RacingCarSimulatorTest {
             carNames.add("car"+i);
         }
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
-        List<RacingWrapResultDTO> wrapResults = result.getWrapResults();
+        List<RacingWrapResultDTO> wrapResults = result.getWrapResults().getWrapResults();
         for (RacingWrapResultDTO wrapResult : wrapResults) {
             Assertions.assertEquals(carNumber, wrapResult.getCarStates().getCarStates().size());
         }
+    }
+
+    @Test
+    @DisplayName("racingResults는 1명 이상의 승자 리스트를 가집니다.")
+    void hasWinnesrTest() {
+        List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
+        RacingWinnersDTO winners = result.getWinners();
+        Assertions.assertFalse(winners.getWinners().isEmpty());
     }
 }
