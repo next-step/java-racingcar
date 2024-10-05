@@ -5,8 +5,9 @@ import racingcar.dto.RacingCarStatesDTO;
 import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWrapResultDTO;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class ResultView {
     private static final String RESULT_PRINT_HEADER = "실행 결과";
@@ -24,17 +25,18 @@ public class ResultView {
     }
 
     private static void printWrapResult(RacingWrapResultDTO wrapResult) {
-        RacingCarStateDTO[] orderedCarStates = decideCarStateOrders(wrapResult);
+        List<RacingCarStateDTO> orderedCarStates = decideCarStateOrders(wrapResult);
         printCarSates(orderedCarStates);
     }
 
-    private static RacingCarStateDTO[] decideCarStateOrders(RacingWrapResultDTO wrapResult) {
-        RacingCarStatesDTO carStates = wrapResult.carStates;
-        Arrays.sort(carStates.getCarStates(), Comparator.comparingInt(RacingCarStateDTO::getCarNo));
-        return carStates.getCarStates();
+    private static List<RacingCarStateDTO> decideCarStateOrders(RacingWrapResultDTO wrapResult) {
+        RacingCarStatesDTO carStates = wrapResult.getCarStates();
+        List<RacingCarStateDTO> orderedCarStates =  new ArrayList<>(carStates.getCarStates());
+        orderedCarStates.sort(Comparator.comparingInt(RacingCarStateDTO::getCarNo));
+        return orderedCarStates;
     }
 
-    private static void printCarSates(RacingCarStateDTO[] carStates) {
+    private static void printCarSates(List<RacingCarStateDTO> carStates) {
         for (RacingCarStateDTO carState : carStates) {
             printCarSate(carState);
         }
