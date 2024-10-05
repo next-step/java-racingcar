@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.RacingCar.RACE_DECISION_NUMBER;
 
 public class RacingCarTest {
     @Test
@@ -51,21 +53,22 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("race 이후에 position은 60프로 확률로 증가합니다")
-    void racePositionIncrementsWith60PercentChanceTest() {
+    @DisplayName("race 시에 RACE_DECISION_NUMBER 이상을 입력받으면 1 전진한다")
+    void raceForwardTest() {
         RacingCar car = RacingCar.createWithCarNo(0);
         int beforePosition = car.getPosition();
-        int testWrapCount = 1000;
-        for (int i = 0; i < testWrapCount; i++) {
-            car.race();
-        }
-
+        car.race(RACE_DECISION_NUMBER);
         int afterPosition = car.getPosition();
-        int expectedMeanPosition = beforePosition + 600;
-        int sigma = 15; // square root of 600 * (1-0.6)
+        assertThat(afterPosition).isEqualTo(beforePosition + 1);
+    }
 
-        // 6시그마 범위 안에 있는지 확인 (100만분의 1 확률로 벗어날 수 있음)
-        assertThat(afterPosition).isLessThanOrEqualTo(expectedMeanPosition + 6 * sigma);
-        assertThat(afterPosition).isGreaterThanOrEqualTo(expectedMeanPosition - 6 * sigma);
+    @Test
+    @DisplayName("race 시에 RACE_DECISION_NUMBER보다 작은 값을 입력받으면 전진하지 않는다")
+    void raceStayTest() {
+        RacingCar car = RacingCar.createWithCarNo(0);
+        int beforePosition = car.getPosition();
+        car.race(RACE_DECISION_NUMBER - 1);
+        int afterPosition = car.getPosition();
+        assertThat(afterPosition).isEqualTo(beforePosition);
     }
 }

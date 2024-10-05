@@ -5,6 +5,7 @@ import java.util.Random;
 public class RacingCar {
     static Random RANDOM = new Random();
     static final int INITIAL_POSITION = 0;
+    static final int RACE_DECISION_NUMBER = 4;
 
     private final int carNo;
     private int position;
@@ -19,10 +20,18 @@ public class RacingCar {
     }
 
     public void race() {
-        int randomDecisionMaker = RANDOM.nextInt(10);
-        if (randomDecisionMaker >= 4) {
+        int randomNumber = getRandomNumber();
+        race(randomNumber);
+    }
+
+    public void race(int randomNumber) {
+        if (randomNumber >= RACE_DECISION_NUMBER) {
             this.position++;
         }
+    }
+
+    private int getRandomNumber() {
+        return RANDOM.nextInt(10);
     }
 
     public int getCarNo() {
