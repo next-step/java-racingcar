@@ -9,11 +9,12 @@ import static racingcar.model.enums.Status.FORWARD;
 import static racingcar.model.enums.Status.STOP;
 
 public class ForwardStatus {
+    public static final String NOT_ALLOWED_BETWEEN_ZERO_TO_NINE = "0~9 사이의 숫자 외에는 전진숫자로 허용되지 않습니다.";
     private final int number;
 
     public ForwardStatus(int number) {
         if (isInvalidNumber(number)) {
-            throw new ForwardStatusException("0~9 사이의 숫자 외에는 전진숫자로 허용되지 않습니다.");
+            throw new ForwardStatusException(NOT_ALLOWED_BETWEEN_ZERO_TO_NINE);
         }
         this.number = number;
     }

@@ -3,7 +3,6 @@ package racingcar.model;
 import racingcar.model.wrapper.CarName;
 import racingcar.util.NumberCreator;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -23,19 +22,6 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cars cars1 = (Cars) o;
-        return Objects.equals(cars, cars1.cars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars);
-    }
-
     public void moveAllByNumberCreator(NumberCreator numberCreator) {
         this.cars
                 .forEach(car -> car.move(numberCreator));
@@ -48,6 +34,19 @@ public class Cars {
 
     public int maxForwardCount() {
         return this.cars.stream().mapToInt(Car::currentForwardCount).max().orElseGet(() -> 0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 
 }

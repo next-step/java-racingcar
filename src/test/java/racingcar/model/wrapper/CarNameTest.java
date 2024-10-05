@@ -11,6 +11,7 @@ import java.util.List;
 
 import static racingcar.model.fixture.CarFixture.carName;
 import static racingcar.model.fixture.CarsFixture.*;
+import static racingcar.model.wrapper.CarName.*;
 
 public class CarNameTest {
     @ParameterizedTest
@@ -36,7 +37,7 @@ public class CarNameTest {
     void 자동차_이름은_5자를_초과할_수_없다(String name) {
         Assertions.assertThatThrownBy(() -> {
             CarName carName = new CarName(name);
-        }).isInstanceOf(CarNameException.class).hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+        }).isInstanceOf(CarNameException.class).hasMessage(NOT_ALLOWED_EXCEED_MAX_NAME_LENGTH);
     }
 
     @ParameterizedTest
@@ -44,7 +45,7 @@ public class CarNameTest {
     void 자동차_이름이_빈값일수_없다(String name) {
         Assertions.assertThatThrownBy(() -> {
             CarName carName = new CarName(name);
-        }).isInstanceOf(CarNameException.class).hasMessage("자동차 이름은 빈값일 수 없습니다.");
+        }).isInstanceOf(CarNameException.class).hasMessage(NOT_ALLOWED_EMPTY_NAME);
     }
 
     @Test
@@ -78,7 +79,7 @@ public class CarNameTest {
             // when
             CarName.convertStringToCarNames(emptyString);
         }).isInstanceOf(CarNameException.class)
-                .hasMessage("자동차 이름 문자열은 빈값일 수 없습니다.");
+                .hasMessage(NOT_ALLOWED_EMPTY_CAR_STRINGS);
 
     }
 
@@ -91,7 +92,7 @@ public class CarNameTest {
             // when
             CarName.convertStringToCarNames(duplicatedCarNames);
         }).isInstanceOf(CarNameException.class)
-                .hasMessage("자동차들의 이름들은 중복될 수 없습니다.");
+                .hasMessage(NOT_ALLOWED_DUPLICATED_CAR_NAMES);
 
     }
 }
