@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static racingcar.logic.CarName.MAX_CAR_NAME_LENGTH;
+
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String INPUT_CAR_NUMBER_QUESTION = "자동차 대수는 몇 대 인가요?";
@@ -14,7 +16,6 @@ public class InputView {
     private static final String EMPTY_INPUT_MESSAGE = "입력하신 값이 비어있습니다.";
     private static final String NOT_A_POSITIVE_NUMBER_MESSAGE = "입력하신 값이 양의 정수가 아닙니다.";
     private static final String CAR_NAMES_INPUT_SPLITTER = ",";
-    private static final int MAX_CAR_NAME_LENGTH = 5;
 
     public static List<String> inputCarNames() {
         return input(INPUT_CAR_NAMES_QUESTION, InputView::tryCarNamesInput, InputView::isCarNamesInputValid);
