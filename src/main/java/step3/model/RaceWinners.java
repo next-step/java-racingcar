@@ -16,7 +16,7 @@ public class RaceWinners {
                 .collect(Collectors.toList());
     }
 
-    private static int getMaxMovement(final List<Car> cars) {
+    private int getMaxMovement(final List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getMovement)
                 .max()
