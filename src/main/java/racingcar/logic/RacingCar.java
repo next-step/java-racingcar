@@ -25,6 +25,10 @@ public class RacingCar {
         }
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getCarNo() {
         return this.carNo;
     }
