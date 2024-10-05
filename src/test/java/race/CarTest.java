@@ -40,6 +40,6 @@ class CarTest {
         String carName = "testCar";
         assertThatThrownBy(() -> new Car(carName, new FixedGo()))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("자동차 이름은 5글자를 초과할 수 없습니다");
+            .hasMessageContaining("CarName is too long");
     }
 }

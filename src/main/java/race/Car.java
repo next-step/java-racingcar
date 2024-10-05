@@ -2,13 +2,14 @@ package race;
 
 public class Car {
 
-    private String carName;
+    public static final int CAR_NAME_LENGTH = 5;
+    private final String carName;
     private int forwardResult = 1;
-    private ForwardCheck carForwardCheck;
+    private final ForwardCheck carForwardCheck;
 
     public Car(String carName, ForwardCheck carForwardCheck) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다");
+        if (carName.length() > CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("CarName is too long");
         }
         this.carName = carName;
         this.carForwardCheck = carForwardCheck;
