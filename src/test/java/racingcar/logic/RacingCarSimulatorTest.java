@@ -14,13 +14,21 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarSimulatorTest {
+    @Test
+    @DisplayName("입력한 트라이 횟수가 0이면 초기 상태 wrapResult만 가집니다.")
+    void wrapResultsSizeTest() {
+        List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 0);
+        Assertions.assertEquals(1, result.getWrapResults().getWrapResults().size());
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 7, 9})
-    @DisplayName("결과는 입력한 트라이 횟수와 같은 수의 wrapResult를 가집니다")
+    @DisplayName("결과는 입력한 트라이 횟수보다 하나 많은 수의 wrapResult를 가집니다")
     void wrapResultsSizeTest(int tryNumber) {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, tryNumber);
-        Assertions.assertEquals(tryNumber, result.getWrapResults().getWrapResults().size());
+        Assertions.assertEquals(tryNumber + 1, result.getWrapResults().getWrapResults().size());
     }
 
     @ParameterizedTest
