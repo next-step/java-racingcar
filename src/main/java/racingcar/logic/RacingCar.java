@@ -35,8 +35,8 @@ public class RacingCar {
         return this.carNo;
     }
 
-    public Position getPosition() {
-        return this.position;
+    public int getPosition() {
+        return this.position.getPosition();
     }
 
     @Override

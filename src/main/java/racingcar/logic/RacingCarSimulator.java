@@ -47,8 +47,8 @@ public class RacingCarSimulator {
             winnerCars.add(car);
             return;
         }
-        int currentWinnerPosition = winnerCars.get(0).getPosition().getPosition();
-        int carPosition = car.getPosition().getPosition();
+        int currentWinnerPosition = winnerCars.get(0).getPosition();
+        int carPosition = car.getPosition();
 
         if (carPosition > currentWinnerPosition) {
             winnerCars.clear();

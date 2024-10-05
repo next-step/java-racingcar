@@ -14,7 +14,7 @@ public final class RacingCarStateDTO {
     }
 
     public static RacingCarStateDTO valueOf(RacingCar racingCar) {
-        return new RacingCarStateDTO(racingCar.getName(), racingCar.getCarNo(), racingCar.getPosition().getPosition());
+        return new RacingCarStateDTO(racingCar.getName(), racingCar.getCarNo(), racingCar.getPosition());
     }
 
     public String getCarName() {
