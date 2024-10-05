@@ -23,12 +23,16 @@ public class ResultView {
 
     private static void appendWinners(List<Car> winners, StringBuilder result) {
         for (int i = 0; i < winners.size(); i++) {
-            result.append(winners.get(i).getName());
-            if (i != winners.size() - 1) {
-                result.append(", ");
-            }
+            result.append(winners.get(i).getName()).append(getCommaIfNotLast(winners, i));
         }
         result.append(WINNER_ANNOUNCEMENT_MESSAGE);
+    }
+
+    private static String getCommaIfNotLast(List<Car> winners, int i) {
+        if (i != winners.size() - 1) {
+            return ", ";
+        }
+        return "";
     }
 
     private static void appendPosition(AttemptResult attemptResult, StringBuilder result) {
