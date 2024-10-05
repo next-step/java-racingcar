@@ -1,4 +1,8 @@
-package race;
+package race.view;
+
+import race.domain.InputValidator;
+import race.domain.InvalidInputException;
+import race.domain.RaceInput;
 
 import java.util.ArrayList;
 import java.util.Arrays;

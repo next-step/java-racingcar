@@ -30,7 +30,7 @@
 
 ## 리펙토링 대상 목록
 
-- [  ] domain, view, controller 패키지 분리
+- [ v ] domain, view, controller 패키지 분리
 - [  ] controller 용 RaceController 구현 - 기존 로직과 연동
   - view -> domain 의존은 가능, domain -> view 의존은 하지 않도록 주의
   - [  ] Race -> InputView 의존 제거

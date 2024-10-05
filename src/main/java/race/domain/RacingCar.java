@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class RacingCar {
     private static final int DEFAULT_STATE = 0;

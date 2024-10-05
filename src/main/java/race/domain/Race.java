@@ -1,4 +1,7 @@
-package race;
+package race.domain;
+
+import race.view.InputView;
+import race.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

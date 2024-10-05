@@ -2,6 +2,8 @@ package race;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import race.domain.InputValidator;
+import race.domain.InvalidInputException;
 
 import java.util.ArrayList;
 import java.util.List;
