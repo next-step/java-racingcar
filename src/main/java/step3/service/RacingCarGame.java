@@ -1,4 +1,8 @@
-package step3;
+package step3.service;
+
+import step3.domain.Car;
+import step3.domain.Cars;
+import step3.view.PrintView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,17 +13,6 @@ public class RacingCarGame {
 
     public RacingCarGame(CarEngine carEngine) {
         this.carEngine = carEngine;
-    }
-
-    // view 테스트용
-    public static void main(String[] args) {
-        CarEngine carEngine = new RandomEngine();
-        RacingCarGame racingcar = new RacingCarGame(carEngine);
-
-        InputView inputView = new InputView();
-        inputView.receiveAndViewAndValidate();
-
-        racingcar.execute(inputView.getCarNameArray(), inputView.getRound());
     }
 
     public void execute(String[] carNameArray, int round) {

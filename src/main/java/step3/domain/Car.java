@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.service.CarEngine;
 
 public class Car {
     private final Name name;
