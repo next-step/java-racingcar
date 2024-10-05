@@ -1,4 +1,4 @@
-package racing.ui;
+package racing.view;
 
 import java.util.List;
 import racing.model.CarInfo;
