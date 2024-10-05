@@ -1,17 +1,26 @@
-package racingCar.step3;
+package racingCar.step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
+
+    @DisplayName("자동차의 이름은 5자 초과하여 입력할 수 없다")
+    @Test
+    void validateCarNameSize(){
+        assertThatThrownBy(() -> RacingCar.ofName("자동차이름5자초과"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자 이하만 입력 가능합니다");
+    }
 
     @DisplayName("자동차의 상태 값이 4미만이면 전진할 수 없으므로 위치가 변하지 않는다")
     @Test
     void cannotMoveIfUnderFour() {
         //given
-        Car car = new Car();
+        RacingCar car = RacingCar.ofName("sklee");
 
         //when
         int currentPosition = car.getPosition();
@@ -26,7 +35,7 @@ class RacingCarTest {
     @Test
     void canMoveIfAtLeastFour(){
         //given
-        Car car = new Car();
+        RacingCar car = RacingCar.ofName("sklee");
         int currentPosition = car.getPosition();
 
         //when
@@ -41,7 +50,7 @@ class RacingCarTest {
     @Test
     void moveForward(){
         //given
-        Car car = new Car();
+        RacingCar car = RacingCar.ofName("sklee");
 
         //when, then
         int startPosition = car.getPosition();
@@ -51,5 +60,4 @@ class RacingCarTest {
         car.move(9);
         assertThat(car.getPosition()).isGreaterThanOrEqualTo(startPosition);
     }
-
 }
