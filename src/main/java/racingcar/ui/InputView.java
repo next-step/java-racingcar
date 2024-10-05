@@ -27,18 +27,6 @@ public class InputView {
         return input(INPUT_TRY_NUMBER_QUESTION, InputView::tryInputNumber, InputView::isNumberInputValid);
     }
 
-    private static boolean isNumberInputValid(Integer input) {
-        if (input == null) {
-            System.out.println(NOT_AN_INTEGER_MESSAGE);
-            return false;
-        }
-        if (input <= 0) {
-            System.out.println(NOT_A_POSITIVE_NUMBER_MESSAGE);
-            return false;
-        }
-        return true;
-    }
-
     private static Integer tryInputNumber() {
         String input = scanner.nextLine();
         if (input.isEmpty()) {
@@ -49,6 +37,18 @@ public class InputView {
         } catch (NumberFormatException e) {
             return null;
         }
+    }
+
+    private static boolean isNumberInputValid(Integer input) {
+        if (input == null) {
+            System.out.println(NOT_AN_INTEGER_MESSAGE);
+            return false;
+        }
+        if (input <= 0) {
+            System.out.println(NOT_A_POSITIVE_NUMBER_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
     private static List<String> tryCarNamesInput() {
