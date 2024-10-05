@@ -6,7 +6,14 @@ public class RandomNumber {
     private final int value;
 
     public RandomNumber(int value) {
+        if (value < 1 || value > 9) {
+            throw new IllegalArgumentException();
+        }
         this.value = value;
+    }
+
+    public boolean isBigOrEqual(int forwardNumber) {
+        return value >= forwardNumber;
     }
 
     @Override
