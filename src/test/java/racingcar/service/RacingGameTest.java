@@ -13,6 +13,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
     @Test
+    @DisplayName("자동차 경주 우승자 찾기")
+    void 우승자_선별(){
+        RacingCar pobiCar = new RacingCar("pobi", 5);
+        RacingCar crongCar = new RacingCar("crong", 3);
+        RacingCar honuxCar = new RacingCar("honux", 5);
+        List<String> winners = RacingGame.getInstance().findWinners(Arrays.asList(pobiCar, crongCar, honuxCar));
+        assertThat(winners).hasSize(2);
+        assertThat(winners).isEqualTo(Arrays.asList("pobi", "honux"));
+    }
+
+    @Test
     @DisplayName("자동차 대수에 맞게 초기화한다.")
     void 자동차_초기화() {
         List<RacingCar> racingCars = RacingGame.getInstance().createRacingCars("pobi,crong,honux");

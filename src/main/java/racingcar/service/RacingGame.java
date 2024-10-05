@@ -5,6 +5,7 @@ import racingcar.domain.RandomMove;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -56,5 +57,25 @@ public class RacingGame {
             cars.add(new RacingCar(name));
         }
         return cars;
+    }
+
+    public List<String> findWinners(List<RacingCar> racingCars) {
+        int maxPosition = 0;
+        maxPosition = getMaxPosition(racingCars, maxPosition);
+        return getWinnersName(racingCars, maxPosition);
+    }
+
+    private static List<String> getWinnersName(List<RacingCar> racingCars, int maxPosition) {
+        return racingCars.stream()
+                .filter(c -> c.isSamePosition(maxPosition))
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
+    }
+
+    private static int getMaxPosition(List<RacingCar> racingCars, int maxPosition) {
+        for (RacingCar racingCar : racingCars) {
+            maxPosition = racingCar.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 }
