@@ -1,13 +1,15 @@
 package racingcar;
 
-public class AttemptResult {
-    private final int[] carPositions;
+import java.util.List;
 
-    public AttemptResult(int[] positions) {
-        this.carPositions = positions;
+public class AttemptResult {
+    private final List<Integer> carPositions;
+
+    public AttemptResult(List<Integer> carPositions) {
+        this.carPositions = carPositions;
     }
 
-    public int[] getCarPositions() {
+    public List<Integer> getCarPositions() {
         return this.carPositions;
     }
 }

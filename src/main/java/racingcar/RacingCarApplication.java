@@ -1,11 +1,14 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingCarApplication {
     public static void main(String[] args) {
-        int carCount = InputView.getCarCount();
+        String carNames = InputView.getCarCount();
         int attemptCount = InputView.getAttemptCount();
         RacingGame racingGame = new RacingGame(new FourOrMore(new SystemRandomHolder()));
-        RaceResult raceResult = racingGame.race(carCount, attemptCount);
+        List<Car> cars = racingGame.createCars(carNames);
+        RaceResult raceResult = racingGame.race(cars, attemptCount);
         ResultView.printHistory(raceResult);
     }
 }

@@ -4,6 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -17,15 +22,26 @@ public class RacingGameTest {
     @Test
     @DisplayName("시도 횟수별 자동차의 위치를 기록한다.")
     void race() {
-        int carCount = 3;
+        List<Car> cars = Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"));
         int attemptCount = 5;
 
-        RaceResult raceResult = racingGame.race(carCount, attemptCount);
+        RaceResult raceResult = racingGame.race(cars, attemptCount);
 
-        for (int attempt = 0; attempt < attemptCount; attempt++) {
-            for (int car = 0; car < carCount; car++) {
-                assertThat(raceResult.getAttemptResults()[attempt].getCarPositions()[car]).isEqualTo(attempt + 1);
+        for (int i = 0; i < raceResult.getAttemptResults().length; i++) {
+            for (Integer carPosition : raceResult.getAttemptResults()[i].getCarPositions()) {
+                assertThat(carPosition).isEqualTo(i + 1);
             }
         }
+    }
+
+    @Test
+    @DisplayName("쉼표로 구분된 문자열로 자동차를 생성한다.")
+    void createCars() {
+        String carNames = "pobi,crong,honux";
+        List<Car> cars = racingGame.createCars(carNames);
+        assertThat(cars).hasSize(3);
+        assertThat(cars.get(0).getName()).isEqualTo("pobi");
+        assertThat(cars.get(1).getName()).isEqualTo("crong");
+        assertThat(cars.get(2).getName()).isEqualTo("honux");
     }
 }
