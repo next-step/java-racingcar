@@ -15,6 +15,11 @@ public class ResultView {
     public static void printRacingResult(RacingResultDTO result) {
         printHeader();
         printWrapResults(result);
+        printWinners(result);
+    }
+
+    private static void printHeader() {
+        System.out.println(RESULT_PRINT_HEADER);
     }
 
     private static void printWrapResults(RacingResultDTO result) {
@@ -48,8 +53,9 @@ public class ResultView {
         System.out.printf("%s : %s%n", carName, dashes);
     }
 
-    private static void printHeader() {
-        System.out.println(RESULT_PRINT_HEADER);
+    private static void printWinners(RacingResultDTO result) {
+        String winnerNames = String.join(", ", result.getWinners().getWinners());
+        System.out.printf("%s가 최종 우승했습니다.%n", winnerNames);
     }
 
     private static void addBlankLine() {

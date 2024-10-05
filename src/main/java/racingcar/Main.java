@@ -13,7 +13,7 @@ public class Main {
         List<String> carNames = InputView.inputCarNames();
         int tryNumber = InputView.inputTryNumber();
 
-        RacingResultDTO result = RacingCarSimulator.simulate(carNumber, tryNumber);
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, tryNumber);
         ResultView.printRacingResult(result);
     }
 }
