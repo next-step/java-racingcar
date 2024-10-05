@@ -4,11 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -20,6 +18,15 @@ public class RacingGameTest {
     }
 
     @Test
+    @DisplayName("우승자 이름을 출력한다.")
+    void getWinners() {
+        Car pobi = new Car(0, "pobi");
+        Car hoya = new Car(5, "hoya");
+        List<Car> cars = List.of(pobi, hoya);
+        assertThat(racingGame.getWinners(cars)).contains(hoya);
+    }
+
+    @Test
     @DisplayName("시도 횟수별 자동차의 위치를 기록한다.")
     void race() {
         List<Car> cars = Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"));
@@ -28,7 +35,7 @@ public class RacingGameTest {
         RaceResult raceResult = racingGame.race(cars, attemptCount);
 
         for (int i = 0; i < raceResult.getAttemptResults().size(); i++) {
-            for (Car car : raceResult.getAttemptResults().get(i).getCarPositions()) {
+            for (Car car : raceResult.getAttemptResults().get(i).getCars()) {
                 assertThat(car.getPosition()).isEqualTo(i + 1);
             }
         }

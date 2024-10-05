@@ -12,4 +12,8 @@ public class RaceResult {
     public List<AttemptResult> getAttemptResults() {
         return this.attemptResults;
     }
+
+    public AttemptResult getLastAttemptResult() {
+        return this.attemptResults.get(this.attemptResults.size() - 1);
+    }
 }

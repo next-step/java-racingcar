@@ -26,4 +26,8 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public int maxPosition(int maxPosition) {
+        return Math.max(position, maxPosition);
+    }
 }

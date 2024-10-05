@@ -9,7 +9,7 @@ public class AttemptResult {
         this.cars = cars;
     }
 
-    public List<Car> getCarPositions() {
+    public List<Car> getCars() {
         return this.cars;
     }
 }
