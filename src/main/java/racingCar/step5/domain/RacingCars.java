@@ -19,7 +19,7 @@ public class RacingCars {
         List<RacingCar> cars = new ArrayList<>();
 
         for (String carName : namesArray) {
-            cars.add(new RacingCar(carName));
+            cars.add(RacingCar.ofName(carName));
         }
         return new RacingCars(cars);
     }
