@@ -1,4 +1,7 @@
-package racinggame.domain;
+package racinggame.domain.collection;
+
+import racinggame.domain.Car;
+import racinggame.domain.GameResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +20,12 @@ public class GameResults {
         return results.size();
     }
 
-    public GameResult getGameResult(int index) {
-        return results.get(index);
+    public int getGameResultCarPositionByIndex(int index) {
+        return results.get(index).getCarPosition();
+    }
+
+    public String getGameResultCarNameByIndex(int index) {
+        return results.get(index).getCarName();
     }
 
     public List<String> getWinners() {

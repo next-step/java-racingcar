@@ -1,13 +1,19 @@
 package racinggame.domain;
 
+import racinggame.domain.strategy.MoveStrategy;
+
 public class Car {
-    private static final int MINIMUM_MOVE_NUMBER = 4;
     private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
     private static final int DEFAULT_POSITION = 0;
+
     private final String name;
-    private int position;
+    private Position position;
 
     private Car(String name, int position) {
+        this(name, new Position(position));
+    }
+
+    private Car(String name, Position position) {
         validateCarNameLength(name);
         this.name = name;
         this.position = position;
@@ -24,28 +30,24 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 
     public String getName() {
         return name;
     }
 
-    public void move(int number) {
-        if (isMoveable(number)) {
-            position++;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMoveable()) {
+            position = position.increment();
         }
     }
 
-    private boolean isMoveable(int number) {
-        return number >= MINIMUM_MOVE_NUMBER;
-    }
-
     public boolean isEqualPosition(int otherPosition) {
-        return position == otherPosition;
+        return position.isEqualPosition(otherPosition);
     }
 
     public int comparePosition(int otherPosition) {
-        return Math.max(position, otherPosition);
+        return position.comparePosition(otherPosition);
     }
 }

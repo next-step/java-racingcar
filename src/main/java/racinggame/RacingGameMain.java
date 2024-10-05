@@ -8,8 +8,10 @@ public class RacingGameMain {
     public static void main(String[] args) {
         var carNames = InputView.readCarNames();
         var tryCount = InputView.readTryCount();
+
         var racingGame = new RacingGame(carNames);
         var gameResults = racingGame.start(tryCount);
+
         ResultView.printCarPositionByRound(gameResults);
     }
 }

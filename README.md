@@ -11,7 +11,7 @@
 
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-## 자동차 경주 게임 step3 기능 목록
+## 자동차 경주 게임 기능 목록
 
 ### Car
 
@@ -29,7 +29,7 @@
 
 - [x] 게임을 진행한다.
 - [x] 게임의 자동차 대수 또는 시도할 횟수에 음수를 전달하는 경우 예외를 throw 한다.
-- [ ] 게임 진행 후 우승자를 반환한다.
+- [x] 게임 진행 후 우승자를 반환한다.
 
 ### ResultView
 

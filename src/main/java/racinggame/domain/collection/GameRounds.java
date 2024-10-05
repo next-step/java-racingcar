@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.domain.collection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class GameRounds {
         this.gameResults = new ArrayList<>();
     }
 
-    public void add(GameResults gameResults) {
+    public void save(GameResults gameResults) {
         this.gameResults.add(gameResults);
     }
 
@@ -23,11 +23,11 @@ public class GameRounds {
     }
 
     public int getCarPosition(int roundIndex, int carIndex) {
-        return gameResults.get(roundIndex).getGameResult(carIndex).getCarPosition();
+        return gameResults.get(roundIndex).getGameResultCarPositionByIndex(carIndex);
     }
 
     public String getCarName(int roundIndex, int carIndex) {
-        return gameResults.get(roundIndex).getGameResult(carIndex).getCarName();
+        return gameResults.get(roundIndex).getGameResultCarNameByIndex(carIndex);
     }
 
     public List<String> getWinner() {

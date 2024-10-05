@@ -1,12 +1,13 @@
 package racinggame.domain;
 
+import racinggame.domain.collection.Cars;
+import racinggame.domain.collection.GameResults;
+import racinggame.domain.collection.GameRounds;
+import racinggame.domain.strategy.RandomMoveStrategy;
+
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
-
-    private static final int DEFAULT_BOUND = 10;
-    private final Random random = new Random();
     private final Cars cars;
     private final GameRounds rounds;
 
@@ -31,22 +32,19 @@ public class RacingGame {
     private void saveGameResult() {
         GameResults gameResults = new GameResults(cars);
         updateWinners(gameResults, cars);
-        rounds.add(gameResults);
+        rounds.save(gameResults);
     }
 
     private void updateWinners(GameResults gameResults, Cars cars) {
         int maxPosition = cars.getMaxPosition();
-        for (Car car : cars.getCarList()) {
-            if (car.isEqualPosition(maxPosition)) {
-                gameResults.saveWinners(car);
-            }
-        }
+        cars.getCarList().stream()
+                .filter(car -> car.isEqualPosition(maxPosition))
+                .forEach(gameResults::saveWinners);
     }
 
     private void moveCars() {
         for (Car car : cars.getCarList()) {
-            var number = random.nextInt(DEFAULT_BOUND);
-            car.move(number);
+            car.move(new RandomMoveStrategy());
         }
     }
 

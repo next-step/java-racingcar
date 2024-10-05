@@ -1,4 +1,6 @@
-package racinggame.domain;
+package racinggame.domain.collection;
+
+import racinggame.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +15,8 @@ public class Cars {
 
     private void initCar(List<String> carNames) {
         for (String carName : carNames) {
-            add(Car.create(carName));
+            carList.add(Car.create(carName));
         }
-    }
-
-    public void add(Car car) {
-        carList.add(car);
     }
 
     public List<Car> getCarList() {
