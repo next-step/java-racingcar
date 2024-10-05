@@ -2,7 +2,7 @@ package racingcar.logic;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position>{
     private static final String NEGATIVE_POSITION_MESSAGE = "음수 포지션은 존재할 수 없습니다.";
     private static final int MOVE_AMOUNT = 1;
 
@@ -38,5 +38,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hashCode(position);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return Integer.compare(this.position, o.position);
     }
 }

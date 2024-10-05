@@ -49,4 +49,13 @@ public class PositionTest {
         Position positionInstance2 = Position.valueOf(position);
         Assertions.assertEquals(positionInstance1.hashCode(), positionInstance2.hashCode());
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 7, 9})
+    @DisplayName("큰 position 을 가진 Position이 더 크다")
+    public void compareTest(int position) {
+        Position positionInstanceWithSmallPosition = Position.valueOf(position);
+        Position positionInstanceWithBiggerPosition = Position.valueOf(position + 1);
+        Assertions.assertEquals(1, positionInstanceWithBiggerPosition.compareTo(positionInstanceWithSmallPosition));
+    }
 }
