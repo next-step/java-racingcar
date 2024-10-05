@@ -28,8 +28,8 @@ public class RacingGameTest {
         RaceResult raceResult = racingGame.race(cars, attemptCount);
 
         for (int i = 0; i < raceResult.getAttemptResults().length; i++) {
-            for (Integer carPosition : raceResult.getAttemptResults()[i].getCarPositions()) {
-                assertThat(carPosition).isEqualTo(i + 1);
+            for (Car car : raceResult.getAttemptResults()[i].getCarPositions()) {
+                assertThat(car.getPosition()).isEqualTo(i + 1);
             }
         }
     }

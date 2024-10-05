@@ -8,6 +8,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(int position, String name) {
+        this.position = position;
+        this.name = name;
+    }
+
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             position++;

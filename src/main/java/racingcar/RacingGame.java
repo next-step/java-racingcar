@@ -20,10 +20,10 @@ public class RacingGame {
     }
 
     private AttemptResult runAttempt(List<Car> cars) {
-        List<Integer> positions = new ArrayList<>();
+        List<Car> positions = new ArrayList<>();
         for (Car car : cars) {
             car.move(moveStrategy);
-            positions.add(car.getPosition());
+            positions.add(new Car(car.getPosition(), car.getName()));
         }
         return new AttemptResult(positions);
     }

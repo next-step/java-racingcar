@@ -3,13 +3,13 @@ package racingcar;
 import java.util.List;
 
 public class AttemptResult {
-    private final List<Integer> carPositions;
+    private final List<Car> cars;
 
-    public AttemptResult(List<Integer> carPositions) {
-        this.carPositions = carPositions;
+    public AttemptResult(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Integer> getCarPositions() {
-        return this.carPositions;
+    public List<Car> getCarPositions() {
+        return this.cars;
     }
 }

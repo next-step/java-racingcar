@@ -18,8 +18,8 @@ public class ResultView {
     }
 
     private static void appendPosition(AttemptResult attemptResult, StringBuilder result) {
-        for (int position : attemptResult.getCarPositions()) {
-            result.append(FORWARD.repeat(Math.max(0, position))).append("\n");
+        for (Car car : attemptResult.getCarPositions()) {
+            result.append(car.getName()).append(" : ").append(FORWARD.repeat(Math.max(0, car.getPosition()))).append("\n");
         }
         result.append("\n");
     }
