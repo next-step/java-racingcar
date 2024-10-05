@@ -34,4 +34,18 @@ public class RacingCarTest {
         // then
         assertThat(result).isEqualTo(currentCarState);
     }
+
+    @Test
+    void 상태값_같은지_검증() {
+        // given
+        int currentCarState = 5;
+        int inputState = 5;
+        RacingCar car = new RacingCar("car 1", currentCarState);
+
+        // when
+        boolean result = car.isStateEqualWith(inputState);
+
+        // then
+        assertThat(result).isTrue();
+    }
 }

@@ -59,4 +59,8 @@ public class RacingCar {
     private void moveForward() {
         state++;
     }
+
+    public boolean isStateEqualWith(int state) {
+        return this.state == state;
+    }
 }

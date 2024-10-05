@@ -43,7 +43,7 @@ public class Race {
         List<String> winners = new ArrayList<>();
 
         for (RacingCar car : cars) {
-            if (maxState == car.state()) {
+            if (car.isStateEqualWith(maxState)) {
                 winners.add(car.name());
             }
         }
