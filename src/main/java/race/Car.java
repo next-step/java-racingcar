@@ -13,6 +13,7 @@ public class Car {
             throw new IllegalArgumentException("CarName is too long");
         }
         this.carName = carName;
+        this.position = new Position(1);
     }
 
     public Car(String carName, Position position) {
