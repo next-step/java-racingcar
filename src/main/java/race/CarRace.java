@@ -29,10 +29,11 @@ public class CarRace {
     }
 
     public List<String> getRaceResult() {
+        return getWinners(calculateMaxPosition(cars.size(), INIT_MAX_POSITION, getCars()));
+    }
+
+    private List<String> getWinners(int maxPosition) {
         List<String> raceResult = new ArrayList<>();
-
-        int maxPosition = calculateMaxPosition(cars.size(), INIT_MAX_POSITION, getCars());
-
         for (Car car : cars) {
             collectWinners(car, maxPosition, raceResult);
         }
