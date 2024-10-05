@@ -3,22 +3,24 @@ package racingcar;
 import racingcar.dto.RacingCarStatesDTO;
 import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWrapResultDTO;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingCarSimulator {
     public static RacingResultDTO simulate(int carNumber, int tryNumber) {
-        RacingCar[] racingCars = createRacingCars(carNumber);
+        List<RacingCar> racingCars = createRacingCars(carNumber);
         return simulateRacing(tryNumber, racingCars);
     }
 
-    private static RacingResultDTO simulateRacing(int tryNumber, RacingCar[] racingCars) {
-        RacingWrapResultDTO[] wrapResults = new RacingWrapResultDTO[tryNumber];
+    private static RacingResultDTO simulateRacing(int tryNumber, List<RacingCar> racingCars) {
+        List<RacingWrapResultDTO> wrapResults = new ArrayList<>();
         for (int i = 0; i < tryNumber; i++) {
-            wrapResults[i] = simulateWrap(i, racingCars);
+            wrapResults.add(simulateWrap(i, racingCars));
         }
         return RacingResultDTO.create(wrapResults);
     }
 
-    private static RacingWrapResultDTO simulateWrap(int wrapNo, RacingCar[] racingCars) {
+    private static RacingWrapResultDTO simulateWrap(int wrapNo, List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             racingCar.race();
         }
@@ -26,10 +28,10 @@ public class RacingCarSimulator {
         return RacingWrapResultDTO.create(wrapNo, carStates);
     }
 
-    private static RacingCar[] createRacingCars(int carNumber) {
-        RacingCar[] racingCars = new RacingCar[carNumber];
+    private static List<RacingCar> createRacingCars(int carNumber) {
+        List<RacingCar> racingCars = new ArrayList<>();
         for (int i = 0; i < carNumber; i++) {
-            racingCars[i] = RacingCar.createWithCarNo(i);
+            racingCars.add(RacingCar.createWithCarNo(i));
         }
         return racingCars;
     }
