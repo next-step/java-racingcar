@@ -14,6 +14,10 @@ public class RacingCar {
         this.position = INITIAL_POSITION;
     }
 
+    public static RacingCar createWithCarNo(int carNo) {
+        return new RacingCar(carNo);
+    }
+
     public void race() {
         int randomDecisionMaker = RANDOM.nextInt(10);
         if (randomDecisionMaker >= 4) {
@@ -27,9 +31,5 @@ public class RacingCar {
 
     public int getPosition() {
         return this.position;
-    }
-
-    public static RacingCar createWithCarNo(int carNo) {
-        return new RacingCar(carNo);
     }
 }
