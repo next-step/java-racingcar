@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
@@ -13,7 +13,7 @@ import racingcar.view.ResultView;
 import java.util.List;
 import java.util.Scanner;
 
-public class RacingGame {
+public class RacingGameController {
 
     public static void play() {
         InputView inputView = new InputView(new Scanner(System.in));
