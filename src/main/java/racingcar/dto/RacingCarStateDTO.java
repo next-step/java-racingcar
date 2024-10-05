@@ -3,10 +3,12 @@ package racingcar.dto;
 import racingcar.logic.RacingCar;
 
 public final class RacingCarStateDTO {
+    private final String carName;
     private final int carNo;
     private final int position;
 
-    private RacingCarStateDTO(int carNo, int position) {
+    private RacingCarStateDTO(String carName, int carNo, int position) {
+        this.carName = carName;
         this.carNo = carNo;
         this.position = position;
     }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RacingCarSimulator {
     public static RacingResultDTO simulate(List<String> carNames, int tryNumber) {
-        List<RacingCar> racingCars = createRacingCars(carNumber);
+        List<RacingCar> racingCars = createRacingCars(carNames);
         return simulateRacing(tryNumber, racingCars);
     }
 
@@ -30,10 +30,10 @@ public class RacingCarSimulator {
         return RacingWrapResultDTO.valueOf(wrapNo, carStates);
     }
 
-    private static List<RacingCar> createRacingCars(int carNumber) {
+    private static List<RacingCar> createRacingCars(List<String> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            racingCars.add(RacingCar.createWithCarNo(i));
+        for (int carNumber = 0; carNumber < carNames.size(); carNumber++) {
+            racingCars.add(RacingCar.valueOf(carNames.get(carNumber), carNumber));
         }
         return racingCars;
     }

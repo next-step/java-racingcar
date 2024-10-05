@@ -5,16 +5,18 @@ import racingcar.logic.movableStrategy.MovableStrategy;
 public class RacingCar {
     private static final int INITIAL_POSITION = 0;
 
+    private final String name;
     private final int carNo;
     private int position;
 
-    private RacingCar(int carNo) {
+    private RacingCar(String name, int carNo) {
+        this.name = name;
         this.carNo = carNo;
         this.position = INITIAL_POSITION;
     }
 
-    public static RacingCar createWithCarNo(int carNo) {
-        return new RacingCar(carNo);
+    public static RacingCar valueOf(String name, int carNo) {
+        return new RacingCar(name, carNo);
     }
 
     public void race(MovableStrategy movableStrategy) {
