@@ -9,29 +9,29 @@ public class CarRace {
     private static final int MAX_RANGE = 10;
 
     private List<Car> cars = new ArrayList<>();
-    private int tryCount;
+    private TryCount tryCount;
 
-    public CarRace(String[] carNames, int tryCount) {
-        this.tryCount = tryCount;
-        initCar(carNames);
-    }
-
-    public CarRace(List<Car> cars, int tryCount) {
+    public CarRace(List<Car> cars, TryCount tryCount) {
         this.tryCount = tryCount;
         this.cars.addAll(cars);
     }
 
+    public CarRace(String[] carNames, TryCount tryCount) {
+        this.tryCount = tryCount;
+        initCar(carNames);
+    }
+
     public void proceedRound() {
         proceed();
-        tryCount--;
+        this.tryCount = tryCount.decrease();
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public boolean checkTryCount() {
-        return tryCount > 0;
+    public boolean isPlus() {
+        return tryCount.isPlus();
     }
 
     public List<String> getRaceResult() {

@@ -12,10 +12,9 @@ class CarRaceTest {
     @Test
     void 입력받은_자동차_이름들과_횟수를_가지고_CarRace를_생성한다() {
         String[] carNames = {"pobi", "crong", "honux"};
-        int tryCount = 2;
         int carCount = carNames.length;
 
-        CarRace carRace = new CarRace(carNames, tryCount);
+        CarRace carRace = new CarRace(carNames, new TryCount(2));
 
         List<Car> cars = carRace.getCars();
         List<String> createdCarNames = new ArrayList<>();
@@ -35,9 +34,8 @@ class CarRaceTest {
             new Car("max", new Position(2)),
             new Car("lili", new Position(3))
         );
-        int tryCount = 2;
 
-        CarRace carRace = new CarRace(cars, tryCount);
+        CarRace carRace = new CarRace(cars, new TryCount(2));
 
         List<String> raceResult = carRace.getRaceResult();
 

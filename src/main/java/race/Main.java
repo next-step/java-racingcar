@@ -3,14 +3,10 @@ package race;
 public class Main {
 
     public static void main(String[] args) {
-
-        String[] carNames = InputView.inputCarName();
-        int tryCount = InputView.inputTryCount();
-
-        CarRace carRace = new CarRace(carNames, tryCount);
+        CarRace carRace = new CarRace(InputView.inputCarName(), new TryCount(InputView.inputTryCount()));
 
         ResultView.output(carRace.getCars());
-        while (carRace.checkTryCount()) {
+        while (carRace.isPlus()) {
             carRace.proceedRound();
             ResultView.output(carRace.getCars());
         }
