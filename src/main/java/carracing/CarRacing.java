@@ -3,26 +3,28 @@ package carracing;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class CarRacing {
     private static final Random RANDOM = new Random();
-    private List<Car> cars;
+    private final List<Car> cars;
     private final int moveTryCount;
     private final CarsMoveStatusHistory carsMoveStatusHistory;
     private int playCount;
 
-    public CarRacing(int carCount, int moveTryCount) {
-        this.createRaceCars(carCount);
+    public CarRacing(String[] carNames, int moveTryCount) {
+        this.cars = this.createRaceCars(carNames);
         this.moveTryCount = moveTryCount;
         this.carsMoveStatusHistory = new CarsMoveStatusHistory();
         this.playCount = 0;
     }
 
-    private void createRaceCars(int carCount) {
-        this.cars = new ArrayList<>(carCount);
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    private List<Car> createRaceCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>(carNames.length);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
+        return cars;
     }
 
     public List<Car> getCars() {
@@ -48,6 +50,10 @@ public class CarRacing {
             this.carsMoveStatusHistory.save(this.cars);
         }
         ResultView.printCarRacingResult(this.carsMoveStatusHistory);
+        ResultView.printCarRacingWinners(CarRacingWinners.findWinners(cars)
+                        .stream()
+                        .map(Car::getCarNameString)
+                        .collect(Collectors.toList()));
     }
 
     private void moveCarsWithRandom() {

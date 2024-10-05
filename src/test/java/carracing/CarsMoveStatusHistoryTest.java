@@ -11,10 +11,10 @@ class CarsMoveStatusHistoryTest {
     @DisplayName("자동차 경주 시도 횟수 별 차들의 이동 상태를 저장한다.")
     @Test
     void return_cars_moveStatus_by_carRacing_moveTryCount() {
-        Car car1 = new Car();
+        Car car1 = new Car("moon");
         car1.move(4);
         car1.move(4);
-        Car car2 = new Car();
+        Car car2 = new Car("zi");
         CarsMoveStatusHistory carsMoveStatusHistory = new CarsMoveStatusHistory();
 
         carsMoveStatusHistory.save(List.of(car1, car2));

@@ -6,9 +6,9 @@ public class InputView {
     private InputView() {
     }
 
-    public static int carCountFromUser() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return getIntegerInputFromUser();
+    public static String[] carNamesFromUser() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return getStringInputFromUser().split(",");
     }
 
     public static int moveTryCountFromUser() {
@@ -19,5 +19,9 @@ public class InputView {
     private static int getIntegerInputFromUser() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
+    }
+    private static String getStringInputFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
     }
 }
