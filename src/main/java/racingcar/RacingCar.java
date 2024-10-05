@@ -3,11 +3,11 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCar {
+    static Random RANDOM = new Random();
+    static final int INITIAL_POSITION = 0;
+
     private final int carNo;
     private int position;
-
-    static Random random = new Random();
-    static int INITIAL_POSITION = 0;
 
     private RacingCar(int carNo) {
         this.carNo = carNo;
@@ -15,7 +15,7 @@ public class RacingCar {
     }
 
     public void race() {
-        int randomDecisionMaker = random.nextInt(10);
+        int randomDecisionMaker = RANDOM.nextInt(10);
         if (randomDecisionMaker >= 4) {
             this.position++;
         }
