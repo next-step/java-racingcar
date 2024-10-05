@@ -1,4 +1,4 @@
-package study.racing.ui;
+package study.racing.view;
 
 import study.racing.message.ExceptionMessage;
 

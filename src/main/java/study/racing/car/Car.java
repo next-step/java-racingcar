@@ -2,24 +2,27 @@ package study.racing.car;
 
 public class Car {
 
-    private int position;
-    private final String name;
-    private static final int START_POSITION = 0;
+    private Position position;
+    private final CarName name;
 
-    public Car(String name) {
+    public Car(String name, int position) {
+        this(new CarName(name), new Position(position));
+    }
+
+    public Car(CarName name, Position position) {
         this.name = name;
-        this.position = START_POSITION;
+        this.position = position;
     }
 
     public void move() {
-        this.position++;
+        this.position = this.position.increase();
     }
 
-    public int getCurrentPosition() {
+    public Position getCurrentPosition() {
         return this.position;
     }
 
-    public String getName() {
+    public CarName getName() {
         return this.name;
     }
 }

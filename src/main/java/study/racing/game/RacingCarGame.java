@@ -1,10 +1,11 @@
 package study.racing.game;
 
 import study.racing.car.Car;
-import study.racing.ui.InputView;
-import study.racing.ui.ResultView;
+import study.racing.view.InputView;
+import study.racing.view.ResultView;
+import study.racing.winners.Winners;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,10 +20,9 @@ public class RacingCarGame {
     }
 
     public void play() {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < inputView.getCarCount(); i++) {
-            cars.add(new Car(inputView.getCarNames()[i]));
-        }
+        List<Car> cars = Arrays.stream(inputView.getCarNames())
+                .map(name -> new Car(name, 0))
+                .collect(Collectors.toList());
 
         resultView.printResult();
         for (int i = 0; i < inputView.getGameCount(); i++) {
@@ -30,7 +30,7 @@ public class RacingCarGame {
             separateRound(i, inputView.getGameCount());
         }
 
-        List<Car> winners = pickWinners(cars);
+        List<Car> winners = Winners.pickWinners(cars);
         resultView.gameEnd(winners);
     }
 
@@ -55,14 +55,6 @@ public class RacingCarGame {
         if (nowRound != gameCount - 1) {
             resultView.separateGameRound();
         }
-    }
-
-    private List<Car> pickWinners(List<Car> cars) {
-        int maxPosition = cars.stream().mapToInt(Car::getCurrentPosition).max().orElse(0);
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getCurrentPosition() == maxPosition)
-                .collect(Collectors.toList());
-        return winners;
     }
 
 }
