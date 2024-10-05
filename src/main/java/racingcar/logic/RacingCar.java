@@ -8,17 +8,17 @@ public class RacingCar {
     private static final int INITIAL_POSITION = 0;
 
     private final CarName name;
-    private final int carNo;
+    private final CarNo carNo;
     private Position position;
 
-    private RacingCar(CarName name, int carNo) {
+    private RacingCar(CarName name, CarNo carNo) {
         this.name = name;
         this.carNo = carNo;
         this.position = Position.valueOf(INITIAL_POSITION);
     }
 
     public static RacingCar valueOf(String name, int carNo) {
-        return new RacingCar(CarName.valueOf(name), carNo);
+        return new RacingCar(CarName.valueOf(name), CarNo.valueOf(carNo));
     }
 
     public void race(MovableStrategy movableStrategy) {
@@ -32,7 +32,7 @@ public class RacingCar {
     }
 
     public int getCarNo() {
-        return this.carNo;
+        return this.carNo.getCarNo();
     }
 
     public int getPosition() {
