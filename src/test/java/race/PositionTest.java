@@ -18,4 +18,24 @@ class PositionTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("Position not allowed minus");
     }
+
+    @Test
+    void isMaxPosition으로_가장_멀리간_위치인지_확인한다() {
+        Position position = new Position(4);
+        assertThat(position.isMaxPosition(4)).isTrue();
+    }
+
+    @Test
+    void compareWithMaxPosition으로_더_멀리간_위치를_확인한다() {
+        Position position = new Position(4);
+        assertThat(position.compareWithMaxPosition(5)).isEqualTo(5);
+    }
+
+    @Test
+    void increase를_하면_값이_1만큼_커진다() {
+        Position position = new Position(4);
+        Position result = position.increase();
+
+        assertThat(result).isEqualTo(new Position(5));
+    }
 }
