@@ -21,8 +21,8 @@ public class Car {
         this.position = position;
     }
 
-    public void forward(int randomNumber) {
-        if (randomNumber >= FORWARD_NUMBER) {
+    public void forward(RandomNumber randomNumber) {
+        if (randomNumber.isBigOrEqual(FORWARD_NUMBER)) {
             this.position = position.increase();
         }
     }

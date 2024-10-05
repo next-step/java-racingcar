@@ -17,7 +17,7 @@ class CarTest {
     void 자동차_진행조건인_4이상의_수가_주어지면_한칸_전진한다() {
         Car car = new Car("tCar");
 
-        car.forward(4);
+        car.forward(new RandomNumber(4));
 
         assertThat(car.getPosition()).isEqualTo(2);
     }

@@ -59,8 +59,8 @@ public class CarRace {
         }
     }
 
-    private int getRandomNumber() {
-        return new Random().nextInt(MAX_RANGE);
+    private RandomNumber getRandomNumber() {
+        return new RandomNumber(new Random().nextInt(MAX_RANGE));
     }
 
     private void collectWinners(Car car, int maxPosition, List<String> raceResult) {
