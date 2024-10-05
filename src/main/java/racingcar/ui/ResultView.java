@@ -31,7 +31,7 @@ public class ResultView {
 
     private static List<RacingCarStateDTO> decideCarStateOrders(RacingWrapResultDTO wrapResult) {
         RacingCarStatesDTO carStates = wrapResult.getCarStates();
-        List<RacingCarStateDTO> orderedCarStates =  new ArrayList<>(carStates.getCarStates());
+        List<RacingCarStateDTO> orderedCarStates = new ArrayList<>(carStates.getCarStates());
         orderedCarStates.sort(Comparator.comparingInt(RacingCarStateDTO::getCarNo));
         return orderedCarStates;
     }
