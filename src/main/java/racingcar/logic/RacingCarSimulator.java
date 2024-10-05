@@ -8,8 +8,6 @@ import racingcar.logic.movableStrategy.RandomMovableStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.logic.RacingCar.INITIAL_POSITION;
-
 public class RacingCarSimulator {
     public static RacingResultDTO simulate(List<String> carNames, int tryNumber) {
         List<RacingCar> racingCars = createRacingCars(carNames);
@@ -31,19 +29,35 @@ public class RacingCarSimulator {
     }
 
     private static List<String> findWinners(List<RacingCar> racingCars) {
-        List<String> winners = new ArrayList<>();
-        int maxPosition = INITIAL_POSITION;
+        List<RacingCar> winnerCars = new ArrayList<>();
         for (RacingCar car : racingCars) {
-            int carPosition = car.getPosition();
-            if (carPosition > maxPosition) {
-                winners.add(car.getName());
-                maxPosition = carPosition;
-            } else if (carPosition == maxPosition) {
-                winners = new ArrayList<>();
-                winners.add(car.getName());
-            }
+            updateWinnerCars(car, winnerCars);
         }
-        return winners;
+        return extractNames(winnerCars);
+    }
+
+    private static void updateWinnerCars(RacingCar car, List<RacingCar> winnerCars) {
+        if (winnerCars.isEmpty()) {
+            winnerCars.add(car);
+            return;
+        }
+        int currentWinnerPosition = winnerCars.get(0).getPosition();
+        int carPosition = car.getPosition();
+
+        if (carPosition > currentWinnerPosition) {
+            winnerCars.clear();
+        }
+        if (carPosition >= currentWinnerPosition) {
+            winnerCars.add(car);
+        }
+    }
+
+    private static List<String> extractNames(List<RacingCar> winnerCars) {
+        List<String> winnerNames = new ArrayList<>();
+        for(RacingCar winnerCar: winnerCars) {
+            winnerNames.add(winnerCar.getName());
+        }
+        return winnerNames;
     }
 
     private static RacingWrapResultDTO simulateWrap(int wrapNo, List<RacingCar> racingCars) {
