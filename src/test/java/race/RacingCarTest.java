@@ -48,4 +48,17 @@ public class RacingCarTest {
         // then
         assertThat(result).isTrue();
     }
+
+    @Test
+    void 자동차_상태_메시지_검증() {
+        // given
+        RacingCar car = new RacingCar("car 1", 5);
+        String expectedResult = "car 1 : -----";
+
+        // when
+        String result = car.makeCarStateMessage();
+
+        // then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
