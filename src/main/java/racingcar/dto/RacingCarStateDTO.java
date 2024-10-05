@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-import racingcar.RacingCar;
+import racingcar.logic.RacingCar;
 
 public final class RacingCarStateDTO {
     private final int carNo;

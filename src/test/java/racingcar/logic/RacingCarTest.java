@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.logic;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.RacingCar.RACE_DECISION_NUMBER;
+import static racingcar.logic.RacingCar.RACE_DECISION_NUMBER;
 
 public class RacingCarTest {
     @Test

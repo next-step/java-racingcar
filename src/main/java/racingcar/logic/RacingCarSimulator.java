@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.logic;
 
 import racingcar.dto.RacingCarStatesDTO;
 import racingcar.dto.RacingResultDTO;
