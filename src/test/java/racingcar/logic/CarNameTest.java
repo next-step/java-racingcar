@@ -18,7 +18,7 @@ public class CarNameTest {
     }
 
     @Test
-    @DisplayName("다섯 글자 이상의 차 이름을 생성 시도 시, 에러가 발생합니다")
+    @DisplayName("다섯 글자를 넘어가는 차 이름을 생성 시도 시, 에러가 발생합니다")
     public void tooLongCarNameTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             CarName.valueOf("1234567");
@@ -36,7 +36,7 @@ public class CarNameTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"car1", "car2", "car3"})
-    @DisplayName("같은 position 을 가지면 같은 hashCode()가 true다")
+    @DisplayName("같은 이름을 가지면 같은 hashCode()가 true다")
     public void hashCodeTest(String carName) {
         CarName carNameInstance1 = CarName.valueOf(carName);
         CarName carNameInstance2 = CarName.valueOf(carName);
