@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.model.CarInfo;
+import racing.model.CarSnapshot;
 import racing.model.RoundResult;
 
 public class GameResult {
@@ -38,7 +38,7 @@ public class GameResult {
     private int getMaxPosition(RoundResult finalRoundResult) {
         return finalRoundResult.getCarInfos()
                 .stream()
-                .mapToInt(CarInfo::getPosition)
+                .mapToInt(CarSnapshot::getPosition)
                 .max()
                 .orElse(0);
     }
@@ -47,7 +47,7 @@ public class GameResult {
         return finalRoundResult.getCarInfos()
                 .stream()
                 .filter(carInfo -> carInfo.getPosition() == maxPosition)
-                .map(CarInfo::getName)
+                .map(CarSnapshot::getName)
                 .collect(Collectors.toList());
     }
 }

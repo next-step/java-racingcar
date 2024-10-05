@@ -1,14 +1,14 @@
-package racing;
+package racing.controller;
 
 import java.util.List;
 import racing.domain.RacingGame;
 import racing.model.collection.Cars;
 import racing.model.collection.GameResult;
-import racing.ui.InputView;
-import racing.ui.OutputView;
 import racing.util.RandomNumberGenerator;
+import racing.view.InputView;
+import racing.view.OutputView;
 
-public class RacingGameRunner {
+public class RacingGameController {
 
     public static void main(String[] args) {
         List<String> carNames = InputView.readCarNames();
