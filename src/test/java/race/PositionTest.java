@@ -11,4 +11,11 @@ class PositionTest {
         Position position = new Position(4);
         assertThat(position).isEqualTo(new Position(4));
     }
+
+    @Test
+    void Position은_음수가_아니다() {
+        assertThatThrownBy(() -> new Position(-1))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("Position not allowed minus");
+    }
 }
