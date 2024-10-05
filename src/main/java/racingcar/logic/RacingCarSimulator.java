@@ -54,7 +54,7 @@ public class RacingCarSimulator {
 
     private static List<String> extractNames(List<RacingCar> winnerCars) {
         List<String> winnerNames = new ArrayList<>();
-        for(RacingCar winnerCar: winnerCars) {
+        for (RacingCar winnerCar : winnerCars) {
             winnerNames.add(winnerCar.getName());
         }
         return winnerNames;

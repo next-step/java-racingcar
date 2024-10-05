@@ -28,8 +28,8 @@ public class RacingCarSimulatorTest {
     @DisplayName("wrapResult는 입력한 차의 수와 같은 수의 차량 상태를 가집니다")
     void carStateSizeTest(int carNumber) {
         List<String> carNames = new ArrayList<>();
-        for(int i=0; i<carNumber ;i++){
-            carNames.add("car"+i);
+        for (int i = 0; i < carNumber; i++) {
+            carNames.add("car" + i);
         }
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
         List<RacingWrapResultDTO> wrapResults = result.getWrapResults().getWrapResults();

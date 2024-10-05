@@ -77,7 +77,7 @@ public class InputView {
         return carName.length() > MAX_CAR_NAME_LENGTH;
     }
 
-    private static <T> T input(String questionMessage, Supplier<T> tryInputFunction, Function<T,Boolean> inputValidationFunction) {
+    private static <T> T input(String questionMessage, Supplier<T> tryInputFunction, Function<T, Boolean> inputValidationFunction) {
         boolean hasValidInput = false;
         T input = null;
         while (!hasValidInput) {
