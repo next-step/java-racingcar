@@ -11,12 +11,12 @@ public class RacingGame {
     }
 
     public RaceResult race(List<Car> cars, int attemptCount) {
-        RaceResult raceResult = new RaceResult(attemptCount);
+        List<AttemptResult> attemptResults = new ArrayList<>();
         for (int attempt = 0; attempt < attemptCount; attempt++) {
             AttemptResult attemptResult = runAttempt(cars);
-            raceResult.addAttemptResult(attemptResult, attempt);
+            attemptResults.add(attemptResult);
         }
-        return raceResult;
+        return new RaceResult(attemptResults);
     }
 
     private AttemptResult runAttempt(List<Car> cars) {

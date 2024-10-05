@@ -1,17 +1,15 @@
 package racingcar;
 
+import java.util.List;
+
 public class RaceResult {
-    private final AttemptResult[] attemptResults;
+    private final List<AttemptResult> attemptResults;
 
-    public RaceResult(int attemptCount) {
-        this.attemptResults = new AttemptResult[attemptCount];
+    public RaceResult(List<AttemptResult> attemptResults) {
+        this.attemptResults = attemptResults;
     }
 
-    public void addAttemptResult(AttemptResult attemptResult, int attempt) {
-        attemptResults[attempt] = attemptResult;
-    }
-
-    public AttemptResult[] getAttemptResults() {
+    public List<AttemptResult> getAttemptResults() {
         return this.attemptResults;
     }
 }

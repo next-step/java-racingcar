@@ -27,8 +27,8 @@ public class RacingGameTest {
 
         RaceResult raceResult = racingGame.race(cars, attemptCount);
 
-        for (int i = 0; i < raceResult.getAttemptResults().length; i++) {
-            for (Car car : raceResult.getAttemptResults()[i].getCarPositions()) {
+        for (int i = 0; i < raceResult.getAttemptResults().size(); i++) {
+            for (Car car : raceResult.getAttemptResults().get(i).getCarPositions()) {
                 assertThat(car.getPosition()).isEqualTo(i + 1);
             }
         }
