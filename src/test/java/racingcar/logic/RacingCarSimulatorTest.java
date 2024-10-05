@@ -40,7 +40,7 @@ public class RacingCarSimulatorTest {
 
     @Test
     @DisplayName("racingResults는 1명 이상의 승자 리스트를 가집니다.")
-    void hasWinnesrTest() {
+    void hasWinnerTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
         RacingWinnersDTO winners = result.getWinners();
