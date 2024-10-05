@@ -8,35 +8,32 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final List<RacingCar> racingCar = new ArrayList<>();
-    private int matchCount;
+    private static RacingGame INSTANCE = null;
 
-    public RacingGame(int carNumber, int matchCount) {
-        this.matchCount = matchCount;
-        for (int i = 0; i < carNumber; i++) {
-            racingCar.add(new RacingCar());
+    public static RacingGame getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new RacingGame();
         }
+        return INSTANCE;
     }
 
-    public boolean isMatching() {
+
+    public boolean isMatching(int matchCount) {
         return matchCount > 0;
     }
 
-    public void match() {
+    public int match(int matchCount, List<RacingCar> racingCars) {
         if (matchCount > 0) {
-            movingCars();
+            movingCars(racingCars);
             matchCount--;
         }
+        return matchCount;
     }
 
-    private void movingCars() {
-        for (RacingCar car : racingCar) {
+    private void movingCars(List<RacingCar> racingCars) {
+        for (RacingCar car : racingCars) {
             car.move(RandomMove.getInstance().movable());
         }
-    }
-
-    public int getMatchCount() {
-        return matchCount;
     }
 
     /**
@@ -44,11 +41,19 @@ public class RacingGame {
      * getter로 clear하는 문제가 생길 수 있으므로
      * Integer 클래스로 복사해서 반환
      */
-    public List<Integer> getRacingCarsPosition() {
+    public List<Integer> getRacingCarsPosition(List<RacingCar> racingCars) {
         List<Integer> result = new ArrayList<>();
-        for (RacingCar car : racingCar) {
+        for (RacingCar car : racingCars) {
             result.add(car.getPosition());
         }
         return result;
+    }
+
+    public List<RacingCar> createRacingCars(int carNumber) {
+        List<RacingCar> cars = new ArrayList<>();
+        for (int i = 0; i < carNumber; i++) {
+            cars.add(new RacingCar());
+        }
+        return cars;
     }
 }
