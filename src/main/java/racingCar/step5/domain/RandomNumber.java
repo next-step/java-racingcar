@@ -18,7 +18,7 @@ public class RandomNumber {
 
     public int generate() {
         if (number == 0) {
-            number = RANDOM.nextInt(NUMBER_LIMIT);
+            return RANDOM.nextInt(NUMBER_LIMIT);
         }
         return number;
     }
