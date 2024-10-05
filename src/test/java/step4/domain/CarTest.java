@@ -15,5 +15,16 @@ public class CarTest {
                 hasMessageContaining("길이가 1이상 5이하인 문자열이여야 함");
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi"})
+    @DisplayName("우승자 테스트")
+    void 우승자_찾기(String input) {
+        Car car = new Car(input);
+
+        car.move(() -> 5);
+
+        Assertions.assertThat(car.getLocation()).isEqualTo(2);
+
+    }
 
 }

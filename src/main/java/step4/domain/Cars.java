@@ -26,10 +26,11 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> findWinners() {
+    public List<String> findWinners() {
         int maxScore = cars.stream().mapToInt(Car::getLocation).max().getAsInt();
         return cars.stream()
                 .filter(car -> car.getLocation() == maxScore)
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
