@@ -3,10 +3,10 @@ package racingcar.logic;
 import java.util.Objects;
 
 public class Position {
-    private static String NEGATIVE_POSITION_MESSAGE = "음수 포지션은 존재할 수 없습니다.";
-    private static int MOVE_AMOUNT = 1;
+    private static final String NEGATIVE_POSITION_MESSAGE = "음수 포지션은 존재할 수 없습니다.";
+    private static final int MOVE_AMOUNT = 1;
 
-    private int position;
+    private final int position;
 
     private Position(int position) {
         this.position = position;
