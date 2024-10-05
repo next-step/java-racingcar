@@ -2,12 +2,14 @@ package racingcar.domain;
 
 import racingcar.service.dto.RacingCarDto;
 
+import java.util.Objects;
+
 public class RacingCar {
 
-    public static final int DEFAULT_POSITION = 1;
-    public static final int MAX_NAME_LENGTH = 5;
     private int position;
     private final String name;
+    public static final int DEFAULT_POSITION = 1;
+    public static final int MAX_NAME_LENGTH = 5;
 
     public RacingCar(String name) {
         this(name, DEFAULT_POSITION);
@@ -29,10 +31,6 @@ public class RacingCar {
         return position == this.position;
     }
 
-    public int getPosition() {
-        return this.position;
-    }
-
     public void move(boolean movable) {
         if (movable) {
             move();
@@ -50,4 +48,18 @@ public class RacingCar {
     public RacingCarDto toDto() {
         return new RacingCarDto(this.name, this.position);
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        RacingCar racingCar = (RacingCar) object;
+        return position == racingCar.position && Objects.equals(getName(), racingCar.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, getName());
+    }
 }
+
