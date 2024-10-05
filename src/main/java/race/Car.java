@@ -3,6 +3,7 @@ package race;
 public class Car {
 
     public static final int CAR_NAME_LENGTH = 5;
+
     private final String carName;
     private int forwardResult = 1;
     private final ForwardCheck carForwardCheck;
@@ -26,10 +27,7 @@ public class Car {
     }
 
     public int compareWithMaxPosition(int maxPosition) {
-        if (forwardResult > maxPosition) {
-            return forwardResult;
-        }
-        return maxPosition;
+        return Math.max(forwardResult, maxPosition);
     }
 
     private boolean checkCarForward() {
