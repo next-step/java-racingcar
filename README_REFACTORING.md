@@ -10,8 +10,8 @@
     * ~~model 하위 패키지~~
   * ~~UI 관련된 객체를 view 패키지에 구현~~
     * ~~view 하위 패키지~~
-  * controller 패키지
-    * RacingGame 객체 패키징 필요
+  * ~~controller 패키지~~
+    * ~~RacingGame 객체 패키징 필요~~
 * MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
   * ~~view 패키지의 객체가 domain 패키지 객체에 의존한 경우(의존 가능 관계)~~
     * ~~InputView : Scanner 의존(domain 의존 X), System 의존(domain 의존 X)~~
