@@ -17,8 +17,10 @@ public class RacingGame {
         }
 
         final RacingGameResults results = new RacingGameResults();
+        RacingCars currentCars = racingCars;
         for (int i = 0; i < roundCount; i++) {
-            final RacingGameResult racingGameResult = new RacingGameResult(racingCars.moves());
+            currentCars = currentCars.moves();
+            final RacingGameResult racingGameResult = new RacingGameResult(currentCars);
             results.add(racingGameResult);
         }
 

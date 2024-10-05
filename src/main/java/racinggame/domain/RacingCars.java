@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingCars implements Iterable<RacingCar> {
@@ -17,8 +18,11 @@ public class RacingCars implements Iterable<RacingCar> {
     }
 
     public RacingCars moves() {
-        racingCars.forEach(RacingCar::move);
-        return new RacingCars(racingCars);
+        return new RacingCars(
+            racingCars.stream()
+                .map(RacingCar::move)
+                .collect(Collectors.toList())
+        );
     }
 
     public int size() {
