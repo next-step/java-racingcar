@@ -16,14 +16,15 @@ public class RacingController {
     }
 
     public void play() {
-        int carNumber = inputView.getCarNumber();
+        String carNames = inputView.getRacingCars();
         int matchCount = inputView.getMatchCount();
-        List<RacingCar> racingCars = RacingGame.getInstance().createRacingCars(carNumber);
+        RacingGame game = RacingGame.getInstance();
+        List<RacingCar> racingCars = game.createRacingCars(carNames);
 
 
-        while (RacingGame.getInstance().isMatching(matchCount)) {
-            int currentCount = RacingGame.getInstance().match(matchCount, racingCars);
-            resultView.printRacingCarsStatus(RacingGame.getInstance().getRacingCarsPosition(racingCars));
+        while (game.isMatching(matchCount)) {
+            int currentCount = game.match(matchCount, racingCars);
+            resultView.printRacingCarsStatus(game.getRacingCarsPosition(racingCars));
             matchCount = currentCount;
         }
     }

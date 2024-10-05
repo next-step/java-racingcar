@@ -15,14 +15,14 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 대수에 맞게 초기화한다.")
     void 자동차_초기화() {
-        List<RacingCar> racingCars = RacingGame.getInstance().createRacingCars(4);
-        assertThat(racingCars).hasSize(4);
+        List<RacingCar> racingCars = RacingGame.getInstance().createRacingCars("pobi,crong,honux");
+        assertThat(racingCars).hasSize(3);
     }
 
     @Test
     @DisplayName("자동차의 상태를 전달한다.")
     void 자동차_상태_전달() {
-        List<RacingCar> racingCars = RacingGame.getInstance().createRacingCars(2);
+        List<RacingCar> racingCars = RacingGame.getInstance().createRacingCars("pobi,crong");
         assertThat(RacingGame.getInstance().getRacingCarsPosition(racingCars)).isEqualTo(Arrays.asList(1, 1));
     }
 

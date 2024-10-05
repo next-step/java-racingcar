@@ -49,10 +49,11 @@ public class RacingGame {
         return result;
     }
 
-    public List<RacingCar> createRacingCars(int carNumber) {
+    public List<RacingCar> createRacingCars(String carNames) {
         List<RacingCar> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new RacingCar());
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            cars.add(new RacingCar(name));
         }
         return cars;
     }
