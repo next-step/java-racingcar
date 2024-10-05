@@ -8,6 +8,10 @@ public class WinnerDto {
         this.carName = carName;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

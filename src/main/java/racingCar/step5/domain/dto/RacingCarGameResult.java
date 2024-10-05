@@ -1,5 +1,6 @@
 package racingCar.step5.domain.dto;
 
+import racingCar.step3.Car;
 import racingCar.step5.domain.RacingCar;
 import racingCar.step5.domain.RacingCars;
 
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class RacingCarGameResult {
-    private List<CarDto> racingResults;
+    private List<RaceResult> racingResults;
     private List<WinnerDto> winners;
 
     public RacingCarGameResult() {
@@ -17,12 +18,16 @@ public class RacingCarGameResult {
     }
 
     public void addRacingResult(RacingCars cars){
+        RaceResult raceResult = new RaceResult();
+
         for (RacingCar car : cars.getCars()) {
-            this.racingResults.add(new CarDto(car.getName(), car.getPosition()));
+            CarDto carDto = new CarDto(car.getName(), car.getPosition());
+            raceResult.add(carDto);
         }
+        racingResults.add(raceResult);
     }
 
-    public List<CarDto> getRacingResults() {
+    public List<RaceResult> getRacingResults() {
         return racingResults;
     }
 
