@@ -2,7 +2,7 @@ package step3.model;
 
 public class Movement {
     static final int DEFAULT_COUNT = 0;
-    static final int FORWARD_COUNT = 1;
+    private static final int FORWARD_COUNT = 1;
 
     private int moveCount;
 
