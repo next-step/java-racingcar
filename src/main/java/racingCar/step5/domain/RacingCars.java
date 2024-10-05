@@ -2,6 +2,7 @@ package racingCar.step5.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RacingCars {
 
@@ -42,5 +43,26 @@ public class RacingCars {
             maxPosition = car.maxPosition(maxPosition);
         }
         return maxPosition;
+    }
+
+    public List<RacingCar> samePosition(int position) {
+        List<RacingCar> samePositionCars = new ArrayList<>();
+        for (RacingCar car : cars) {
+            if(car.isSamePosition(position)) samePositionCars.add(car);
+        }
+        return samePositionCars;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars cars1 = (RacingCars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cars);
     }
 }

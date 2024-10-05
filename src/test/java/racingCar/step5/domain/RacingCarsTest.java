@@ -30,6 +30,25 @@ public class RacingCarsTest {
         assertThat(carGroup.getMaxCarPosition()).isEqualTo(5);
     }
 
+    @DisplayName("동일한 위치에 있는 차들을 조회할 수 있다")
+    @Test
+    void samePositionCars(){
+        List<RacingCar> cars = List.of(
+                RacingCar.ofNameAndPosition("공동1등", 5)
+                , RacingCar.ofNameAndPosition("공동2등", 5)
+                , RacingCar.ofNameAndPosition("3등", 3)
+
+        );
+        RacingCars carGroup = RacingCars.ofCars(cars);
+
+        assertThat(carGroup.samePosition(5)).hasSize(2);
+        assertThat(carGroup.samePosition(5)).containsExactly(
+                RacingCar.ofNameAndPosition("공동1등", 5)
+                , RacingCar.ofNameAndPosition("공동2등", 5)
+        );
+
+    }
+
 
 
 
