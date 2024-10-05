@@ -2,6 +2,8 @@ package racingcar.ui;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
@@ -14,38 +16,16 @@ public class InputView {
     private static final String CAR_NAMES_INPUT_SPLITTER = ",";
 
     public static List<String> inputCarNames() {
-        boolean hasValidInput = false;
-        List<String> input = null;
-        while (!hasValidInput) {
-            System.out.println(INPUT_CAR_NAMES_QUESTION);
-            input = tryCarNamesInput();
-            hasValidInput = isCarNamesInputValid(input);
-        }
-        return input;
+        return input(INPUT_CAR_NAMES_QUESTION, InputView::tryCarNamesInput, InputView::isCarNamesInputValid);
     }
 
     public static int inputCarNumber() {
-        boolean hasValidInput = false;
-        Integer input = null;
-        while (!hasValidInput) {
-            System.out.println(INPUT_CAR_NUMBER_QUESTION);
-            input = tryInputNumber();
-            hasValidInput = isNumberInputValid(input);
-        }
-        return input;
+        return input(INPUT_CAR_NUMBER_QUESTION, InputView::tryInputNumber, InputView::isNumberInputValid);
     }
 
     public static int inputTryNumber() {
-        boolean hasValidInput = false;
-        Integer input = null;
-        while (!hasValidInput) {
-            System.out.println(INPUT_TRY_NUMBER_QUESTION);
-            input = tryInputNumber();
-            hasValidInput = isNumberInputValid(input);
-        }
-        return input;
+        return input(INPUT_TRY_NUMBER_QUESTION, InputView::tryInputNumber, InputView::isNumberInputValid);
     }
-
 
     private static boolean isNumberInputValid(Integer input) {
         if (input == null) {
@@ -85,6 +65,17 @@ public class InputView {
             return false;
         }
         return true;
+    }
+
+    private static <T> T input(String questionMessage, Supplier<T> tryInputFunction, Function<T,Boolean> inputValidationFunction) {
+        boolean hasValidInput = false;
+        T input = null;
+        while (!hasValidInput) {
+            System.out.println(INPUT_CAR_NAMES_QUESTION);
+            input = tryInputFunction.get();
+            hasValidInput = inputValidationFunction.apply(input);
+        }
+        return input;
     }
 
     public void close() {
