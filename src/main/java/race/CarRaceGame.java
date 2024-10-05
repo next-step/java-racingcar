@@ -10,14 +10,14 @@ public class CarRaceGame {
     private static final CarMoveRule CAR_MOVE_RULE = CarRandomMoveRule.create(RANDOM);
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        List<String> carNames = InputView.inputCarNames();
         int roundCount = InputView.inputRoundCount();
 
-        ResultView.print(play(roundCount, carCount));
+        ResultView.print(play(roundCount, carNames));
     }
 
-    private static List<CarRaceGameHistory> play(int roundCount, int carCount) {
-        List<Car> cars = Car.create(CAR_START_STEP, carCount);
+    private static List<CarRaceGameHistory> play(int roundCount, List<String> names) {
+        List<Car> cars = Car.create(CAR_START_STEP, names);
         List<CarRaceGameHistory> histories = new ArrayList<>();
 
         for (int round = 1; round <= roundCount; round++) {
@@ -32,7 +32,7 @@ public class CarRaceGame {
 
         cars.forEach(car -> {
             car.moveBy(CAR_MOVE_RULE);
-            roundHistories.add(CarRaceGameHistory.record(round, car.getStep()));
+            roundHistories.add(CarRaceGameHistory.record(round, car.getStep(), car.getName()));
         });
 
         return roundHistories;

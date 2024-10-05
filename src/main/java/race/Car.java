@@ -3,17 +3,23 @@ package race;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Car {
     private int step;
 
-    private Car(int step) {
+    private final String name;
+
+    private Car(int step, String name) {
         this.step = step;
+        this.name = name;
     }
 
     public int getStep() {
         return this.step;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void moveBy(CarMoveRule carMoveRule) {
@@ -22,12 +28,12 @@ public class Car {
         }
     }
 
-    public static Car create(int startStep) {
-        return new Car(startStep);
+    public static Car create(int startStep, String name) {
+        return new Car(startStep, name);
     }
 
-    public static List<Car> create(int startStep, int count) {
-        return Stream.generate(() -> Car.create(startStep)).limit(count).collect(Collectors.toList());
+    public static List<Car> create(int startStep, List<String> names) {
+        return names.stream().map((name) -> Car.create(startStep, name)).collect(Collectors.toList());
     }
 
     @Override
