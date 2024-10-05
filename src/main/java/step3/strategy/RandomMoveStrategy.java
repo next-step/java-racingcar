@@ -2,7 +2,7 @@ package step3.strategy;
 
 import java.util.Random;
 
-public class RandomStrategy implements MoveStrategy {
+public class RandomMoveStrategy implements MoveStrategy {
     private static final Random RANDOM = new Random();
     private static final int MAX_NUMBER = 10;
 
