@@ -12,6 +12,14 @@ public class TryCount {
         this.value = value;
     }
 
+    public TryCount decrease() {
+        return new TryCount(value - 1);
+    }
+
+    public boolean isPlus() {
+        return value > 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)

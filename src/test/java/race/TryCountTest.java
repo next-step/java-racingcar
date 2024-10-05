@@ -26,4 +26,22 @@ class TryCountTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("TryCount is not allowed minus number or zero");
     }
+
+    @Test
+    void decrease를_실행하면_값이_1_줄어든다() {
+        TryCount tryCount = new TryCount(3);
+
+        TryCount result = tryCount.decrease();
+
+        assertThat(result).isEqualTo(new TryCount(2));
+    }
+
+    @Test
+    void isZero를_실행하면_양수인지_확인한다() {
+        TryCount tryCount = new TryCount(1);
+
+        boolean result = tryCount.isPlus();
+
+        assertThat(result).isTrue();
+    }
 }
