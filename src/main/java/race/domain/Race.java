@@ -1,6 +1,5 @@
 package race.domain;
 
-import race.view.InputView;
 import race.view.ResultView;
 
 import java.util.ArrayList;
@@ -10,17 +9,14 @@ import java.util.Random;
 public class Race {
     public static final int RANDOM_UPPER_LIMIT = 10;
 
-    public static void start() {
-        RaceInput raceInput = InputView.getRaceInput();
+    public static List<String> start(RaceInput raceInput) {
         List<RacingCar> cars = initiateCars(raceInput.carNames());
 
-        ResultView.printResultTitle();
         for (int gameCount = 0; gameCount < raceInput.gameCount(); gameCount++) {
             runStopOrGoRound(cars);
         }
 
-        List<String> winners = findWinners(cars);
-        ResultView.printWinnerMessage(winners);
+        return findWinners(cars);
     }
 
     public static List<RacingCar> initiateCars(List<String> carNames) {

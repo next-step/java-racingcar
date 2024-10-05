@@ -1,7 +1,7 @@
-import race.domain.Race;
+import race.controller.RaceController;
 
 public class Main {
     public static void main(String[] args) {
-        Race.start();
+        RaceController.startRace();
     }
 }
