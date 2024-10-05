@@ -16,6 +16,11 @@ public class CarRace {
         initCar(carNames);
     }
 
+    public CarRace(List<Car> cars, int tryCount) {
+        this.tryCount = tryCount;
+        this.cars.addAll(cars);
+    }
+
     public void proceedRound() {
         proceed();
         tryCount--;

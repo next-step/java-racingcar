@@ -30,15 +30,18 @@ class CarRaceTest {
 
     @Test
     void getRaceResult를_실행하면_자동차_경주_결과_가장_멀리_간_자동차의_이름들을_가져온다() {
-        String[] carNames = {"pobi", "crong", "honux"};
-        int carCount = carNames.length;
+        List<Car> cars = List.of(
+            new Car("pobi", 4),
+            new Car("max", 2),
+            new Car("lili", 3)
+        );
         int tryCount = 2;
 
-        CarRace carRace = new CarRace(carNames, tryCount);
+        CarRace carRace = new CarRace(cars, tryCount);
 
         List<String> raceResult = carRace.getRaceResult();
 
-        assertThat(raceResult).hasSize(carCount);
-        assertThat(raceResult).containsExactlyInAnyOrder("pobi", "crong", "honux");
+        assertThat(raceResult).hasSize(1);
+        assertThat(raceResult).isEqualTo(List.of("pobi"));
     }
 }
