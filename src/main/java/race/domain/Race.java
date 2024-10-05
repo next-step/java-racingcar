@@ -5,6 +5,7 @@ import race.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Race {
     public static final int RANDOM_UPPER_LIMIT = 10;
@@ -40,15 +41,11 @@ public class Race {
 
     private static List<String> findWinners(List<RacingCar> cars) {
         int maxState = findMaxState(cars);
-        List<String> winners = new ArrayList<>();
 
-        for (RacingCar car : cars) {
-            if (car.isStateEqualWith(maxState)) {
-                winners.add(car.name());
-            }
-        }
-
-        return winners;
+        return cars.stream()
+                .filter(car -> car.isStateEqualWith(maxState))
+                .map(RacingCar::name)
+                .collect(Collectors.toList());
     }
 
     private static int findMaxState(List<RacingCar> cars) {
