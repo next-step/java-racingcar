@@ -3,7 +3,7 @@ package racingcar.logic;
 import racingcar.logic.movableStrategy.MovableStrategy;
 
 public class RacingCar {
-    private static final int INITIAL_POSITION = 0;
+    static final int INITIAL_POSITION = 0;
 
     private final String name;
     private final int carNo;

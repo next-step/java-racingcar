@@ -13,6 +13,10 @@ public final class RacingWrapResultDTO {
         return new RacingWrapResultDTO(wrapNumber, catStates);
     }
 
+    public int getWrapNumber() {
+        return this.wrapNumber;
+    }
+
     public RacingCarStatesDTO getCarStates() {
         return this.carStates;
     }
