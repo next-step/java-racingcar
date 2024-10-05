@@ -33,7 +33,7 @@ public class RacingCarTest {
         int beforePosition = car.getPosition();
         car.race(() -> true);
         int afterPosition = car.getPosition();
-        assertThat(afterPosition).isEqualTo(beforePosition);
+        assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
 
     @Test
