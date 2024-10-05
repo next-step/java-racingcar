@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WinnerTest {
     @BeforeEach
     void setUp() {
-        Cars.clear(); // 테스트 전에 Cars 리스트 초기화
+        Cars.clear();
     }
 
     @Test
