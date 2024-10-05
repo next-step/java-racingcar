@@ -1,6 +1,7 @@
 package step3.model;
 
 import java.util.Objects;
+import step3.strategy.MoveStrategy;
 
 public class Car {
     private static final int MOVE_MIN_NUMBER = 4;

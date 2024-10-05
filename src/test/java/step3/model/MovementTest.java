@@ -14,7 +14,6 @@ class MovementTest {
     @Test
     void 자동차_전진_확인() {
         Movement movement = new Movement();
-        movement.move();
-        assertThat(movement.getMoveCount()).isEqualTo(1);
+        assertThat(movement.move().getMoveCount()).isEqualTo(1);
     }
 }

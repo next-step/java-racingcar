@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
+import step3.strategy.MoveStrategy;
+import step3.strategy.RandomStrategy;
 
 class CarsTest {
 
@@ -22,9 +24,9 @@ class CarsTest {
         String carNames = "hwan,hwan2,hwan3";
         Cars cars = Cars.from(carNames);
 
-        MoveStrategy moveStrategy = new MoveStrategy();
+        RandomStrategy randomStrategy = new RandomStrategy();
         for (int i = 0; i < 100; i++) {
-            cars.moveCars(moveStrategy);
+            cars.moveCars(randomStrategy);
         }
 
         List<Integer> movements = cars.getCars().stream()

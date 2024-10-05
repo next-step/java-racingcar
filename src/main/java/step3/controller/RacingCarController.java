@@ -1,8 +1,8 @@
 package step3.controller;
 
 import step3.model.Cars;
-import step3.model.MoveStrategy;
 import step3.model.RaceWinners;
+import step3.strategy.RandomStrategy;
 import step3.view.InputView;
 import step3.view.OutputView;
 
@@ -17,7 +17,7 @@ public class RacingCarController {
         OutputView.printRacingResult();
 
         for (int i = 0; i < tryCount; i++) {
-            cars.moveCars(new MoveStrategy());
+            cars.moveCars(new RandomStrategy());
             OutputView.printRacingProgress(cars);
         }
 
