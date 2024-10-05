@@ -1,4 +1,4 @@
-package study.racing.ui;
+package study.racing.view;
 
 import study.racing.car.Car;
 
@@ -18,7 +18,7 @@ public class ResultView {
 
     public void printCarPosition(Car car) {
         sb.append(car.getName()).append(" : ");
-        sb.append(CAR_MOVEMENT.repeat(car.getCurrentPosition())).append('\n');
+        sb.append(CAR_MOVEMENT.repeat(car.getCurrentPosition().getValue())).append('\n');
     }
 
     public void separateGameRound() {
@@ -26,7 +26,7 @@ public class ResultView {
     }
 
     public void gameEnd(List<Car> winners) {
-        String result = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
+        String result = winners.stream().map(c -> c.getName().getValue()).collect(Collectors.joining(", "));
         sb.append(result).append(END_MESSAGE);
         System.out.println(sb.toString());
     }

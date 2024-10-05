@@ -2,7 +2,7 @@ package study.racing;
 
 import org.junit.jupiter.api.Test;
 import study.racing.car.Car;
-import study.racing.ui.InputView;
+import study.racing.view.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -11,11 +11,11 @@ public class RacingCarTest {
 
     @Test
     void move() {
-        Car racingCar = new Car("TEST");
+        Car racingCar = new Car("TEST", 0);
 
         racingCar.move();
 
-        assertThat(racingCar.getCurrentPosition()).isEqualTo(1);
+        assertThat(racingCar.getCurrentPosition().getValue()).isEqualTo(1);
     }
 
     @Test

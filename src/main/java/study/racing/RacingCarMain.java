@@ -1,7 +1,7 @@
 package study.racing;
 
 import study.racing.game.RacingCarGame;
-import study.racing.ui.InputView;
+import study.racing.view.InputView;
 
 public class RacingCarMain {
 
