@@ -3,8 +3,8 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCar {
-    static Random RANDOM = new Random();
-    static final int INITIAL_POSITION = 0;
+    private static Random RANDOM = new Random();
+    private static final int INITIAL_POSITION = 0;
     static final int RACE_DECISION_NUMBER = 4;
 
     private final int carNo;
