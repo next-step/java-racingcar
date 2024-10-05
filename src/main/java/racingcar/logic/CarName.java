@@ -3,9 +3,8 @@ package racingcar.logic;
 import java.util.Objects;
 
 public class CarName {
-    private static final String NEGATIVE_POSITION_MESSAGE = "음수 포지션은 존재할 수 없습니다.";
     public static final int MAX_CAR_NAME_LENGTH = 5;
-
+    private static final String NEGATIVE_POSITION_MESSAGE = "음수 포지션은 존재할 수 없습니다.";
     private final String carName;
 
     private CarName(String carName) {
