@@ -30,8 +30,8 @@ public class ResultView {
 
     private static RacingCarStateDTO[] decideCarStateOrders(RacingWrapResultDTO wrapResult) {
         RacingCarStatesDTO carStates = wrapResult.carStates;
-        Arrays.sort(carStates.catStates, Comparator.comparingInt(carState -> carState.carNo));
-        return carStates.catStates;
+        Arrays.sort(carStates.carStates, Comparator.comparingInt(carState -> carState.carNo));
+        return carStates.carStates;
     }
 
     private static void printCarSates(RacingCarStateDTO[] carStates) {

@@ -3,10 +3,10 @@ package racingcar.dto;
 import racingcar.RacingCar;
 
 public final class RacingCarStatesDTO {
-    public final RacingCarStateDTO[] catStates;
+    public final RacingCarStateDTO[] carStates;
 
     private RacingCarStatesDTO(RacingCarStateDTO[] carStates) {
-        this.catStates = carStates;
+        this.carStates = carStates;
     }
 
     public static RacingCarStatesDTO fromRacingCars(RacingCar[] racingCars) {

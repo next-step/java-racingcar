@@ -23,7 +23,7 @@ public class RacingCarSimulatorTest {
         RacingResultDTO result = RacingCarSimulator.simulate(carNumber, 1);
         RacingWrapResultDTO[] wrapResults = result.wrapResults;
         for (RacingWrapResultDTO wrapResult : wrapResults) {
-            Assertions.assertEquals(carNumber, wrapResult.carStates.catStates.length);
+            Assertions.assertEquals(carNumber, wrapResult.carStates.carStates.length);
         }
     }
 }
