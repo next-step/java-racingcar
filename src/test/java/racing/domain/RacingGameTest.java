@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.CarInfo;
+import racing.model.CarSnapshot;
 import racing.model.RoundResult;
 import racing.model.collection.Cars;
 import racing.model.collection.GameResult;
@@ -49,7 +49,7 @@ class RacingGameTest {
 
         assertThat(result.getCarInfos()
                 .stream()
-                .map(CarInfo::getPosition)
+                .map(CarSnapshot::getPosition)
                 .collect(Collectors.toList())
         ).isEqualTo(expectedPositions);
     }

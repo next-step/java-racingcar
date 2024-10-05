@@ -1,12 +1,12 @@
 package racing.model;
 
-public class CarInfo {
+public class CarSnapshot {
 
     private final int position;
 
     private final String name;
 
-    public CarInfo(int position, String name) {
+    public CarSnapshot(int position, String name) {
         this.position = position;
         this.name = name;
     }

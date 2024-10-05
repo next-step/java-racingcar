@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.model.CarInfo;
+import racing.model.CarSnapshot;
 import racing.util.NumberGenerator;
 
 public class Car {
@@ -18,8 +18,8 @@ public class Car {
         this.numberGenerator = numberGenerator;
     }
 
-    public CarInfo getCarInfo() {
-        return new CarInfo(this.position, this.name);
+    public CarSnapshot getCarInfo() {
+        return new CarSnapshot(this.position, this.name);
     }
 
     public void move() {

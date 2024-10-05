@@ -1,7 +1,7 @@
 package racing.view;
 
 import java.util.List;
-import racing.model.CarInfo;
+import racing.model.CarSnapshot;
 import racing.model.RoundResult;
 import racing.model.collection.GameResult;
 
@@ -25,12 +25,12 @@ public class OutputView {
     }
 
     private static void printResult(RoundResult result) {
-        for (CarInfo info : result.getCarInfos()) {
+        for (CarSnapshot info : result.getCarInfos()) {
             System.out.println(convertCarInfoToGage(info));
         }
     }
 
-    private static String convertCarInfoToGage(CarInfo info) {
+    private static String convertCarInfoToGage(CarSnapshot info) {
         return info.getName() + " : "
                 + "-".repeat(Math.max(0, info.getPosition()));
     }

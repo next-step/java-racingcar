@@ -3,7 +3,7 @@ package racing.model.collection;
 import java.util.ArrayList;
 import java.util.List;
 import racing.domain.Car;
-import racing.model.CarInfo;
+import racing.model.CarSnapshot;
 import racing.model.RoundResult;
 import racing.util.NumberGenerator;
 
@@ -22,11 +22,11 @@ public class Cars {
     }
 
     public RoundResult getRoundResult() {
-        List<CarInfo> carInfoList = new ArrayList<>();
+        List<CarSnapshot> carSnapshotList = new ArrayList<>();
         for (Car car : cars) {
-            carInfoList.add(car.getCarInfo());
+            carSnapshotList.add(car.getCarInfo());
         }
-        return RoundResult.save(carInfoList);
+        return RoundResult.save(carSnapshotList);
     }
 
     public static Cars create(List<String> carNames, NumberGenerator numberGenerator) {
