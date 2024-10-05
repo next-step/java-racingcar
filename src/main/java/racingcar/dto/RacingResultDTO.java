@@ -9,7 +9,7 @@ public final class RacingResultDTO {
         this.wrapResults = wrapResults;
     }
 
-    public static RacingResultDTO create(List<RacingWrapResultDTO> wrapResults) {
+    public static RacingResultDTO valueOf(List<RacingWrapResultDTO> wrapResults) {
         return new RacingResultDTO(wrapResults);
     }
 

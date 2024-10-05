@@ -11,7 +11,7 @@ public final class RacingCarStateDTO {
         this.position = position;
     }
 
-    public static RacingCarStateDTO fromRacingCar(RacingCar racingCar) {
+    public static RacingCarStateDTO valueOf(RacingCar racingCar) {
         return new RacingCarStateDTO(racingCar.getCarNo(), racingCar.getPosition());
     }
 

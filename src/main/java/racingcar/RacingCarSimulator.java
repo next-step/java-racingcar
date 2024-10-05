@@ -18,15 +18,15 @@ public class RacingCarSimulator {
         for (int i = 0; i < tryNumber; i++) {
             wrapResults.add(simulateWrap(i, racingCars));
         }
-        return RacingResultDTO.create(wrapResults);
+        return RacingResultDTO.valueOf(wrapResults);
     }
 
     private static RacingWrapResultDTO simulateWrap(int wrapNo, List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             racingCar.race();
         }
-        RacingCarStatesDTO carStates = RacingCarStatesDTO.fromRacingCars(racingCars);
-        return RacingWrapResultDTO.create(wrapNo, carStates);
+        RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingCars);
+        return RacingWrapResultDTO.valueOf(wrapNo, carStates);
     }
 
     private static List<RacingCar> createRacingCars(int carNumber) {
