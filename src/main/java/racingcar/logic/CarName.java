@@ -4,7 +4,8 @@ import java.util.Objects;
 
 public class CarName {
     public static final int MAX_CAR_NAME_LENGTH = 5;
-    private static final String NEGATIVE_POSITION_MESSAGE = "음수 포지션은 존재할 수 없습니다.";
+    private static final String BLANK_CAR_NAME_MESSAGE = "차 이름은 빈 칸일 수 없습니다";
+    private static final String TOO_LONG_CAR_NAME_MESSAGE = "차 이름이 너무 깁니다.";
     private final String carName;
 
     private CarName(String carName) {
@@ -13,10 +14,10 @@ public class CarName {
 
     public static CarName valueOf(String carName) {
         if (carName.isBlank()) {
-            throw new IllegalArgumentException(NEGATIVE_POSITION_MESSAGE);
+            throw new IllegalArgumentException(BLANK_CAR_NAME_MESSAGE);
         }
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException(NEGATIVE_POSITION_MESSAGE);
+            throw new IllegalArgumentException(TOO_LONG_CAR_NAME_MESSAGE);
         }
         return new CarName(carName);
     }
