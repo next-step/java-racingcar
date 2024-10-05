@@ -16,16 +16,8 @@ public class ResultView {
 
     private static void printStatusAll(List<Car> cars) {
         for (Car car : cars) {
-            printStatus(car.getPosition());
+            car.getStatus(symbol);
         }
         System.out.println();
-    }
-
-    private static void printStatus(int position) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < position; i++) {
-            sb.append(symbol);
-        }
-        System.out.println(sb);
     }
 }

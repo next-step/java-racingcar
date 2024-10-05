@@ -25,4 +25,12 @@ public class Car {
         this.position++;
     }
 
+    public String getStatus(String symbol){
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < position; i++) {
+            sb.append(symbol);
+        }
+        return sb.toString();
+    }
+
 }
