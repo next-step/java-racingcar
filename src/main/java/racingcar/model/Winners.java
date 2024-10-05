@@ -5,10 +5,10 @@ import racingcar.model.wrapper.CarName;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Winner {
+public class Winners {
     private final Cars cars;
 
-    public Winner(final Cars cars) {
+    public Winners(final Cars cars) {
         this.cars = cars;
     }
 

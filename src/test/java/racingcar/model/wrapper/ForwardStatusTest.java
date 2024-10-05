@@ -3,15 +3,11 @@ package racingcar.model.wrapper;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.ForwardStatusException;
-import racingcar.model.Car;
 import racingcar.model.enums.Status;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static racingcar.model.enums.Status.FORWARD;
 import static racingcar.model.enums.Status.STOP;
-import static racingcar.model.fixture.CarFixture.carName;
 
 public class ForwardStatusTest {
 

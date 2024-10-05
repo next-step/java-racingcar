@@ -1,8 +1,6 @@
 package racingcar.study.staticfactory.example;
 //import lombok.RequiredArgsConstructor;
 
-import javax.xml.namespace.QName;
-
 //@RequiredArgsConstructor(staticName = "of")
 public class BlogUser {
     private final Long id;

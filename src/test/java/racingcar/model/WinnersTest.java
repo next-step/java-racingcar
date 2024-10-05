@@ -10,7 +10,7 @@ import static racingcar.model.enums.Status.FORWARD;
 import static racingcar.model.enums.Status.STOP;
 import static racingcar.model.fixture.CarsFixture.*;
 
-public class WinnerTest {
+public class WinnersTest {
 
     @Test
     void 우승자_생성() {
@@ -24,7 +24,7 @@ public class WinnerTest {
         // when
         Assertions.assertThatNoException().isThrownBy(() -> {
             // then
-            Winner winner = new Winner(cars);
+            Winners winner = new Winners(cars);
         });
     }
 
@@ -38,7 +38,7 @@ public class WinnerTest {
         List<CarName> expected = List.of(car2.carName(), car3.carName());
 
         // when
-        List<CarName> actual = new Winner(cars).result();
+        List<CarName> actual = new Winners(cars).result();
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);

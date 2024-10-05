@@ -3,9 +3,7 @@ package racingcar.util;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.Winner;
-import racingcar.model.enums.Status;
-import racingcar.model.wrapper.CarName;
+import racingcar.model.Winners;
 import racingcar.model.wrapper.ForwardStatus;
 
 import java.util.List;
@@ -40,7 +38,7 @@ public class PrintUtilTest {
         Cars cars = new Cars(List.of(car1, car2, car3));
         String expected = "name1, name3가 최종 우승했습니다.";
 
-        String actual = PrintUtil.winner(new Winner(cars));
+        String actual = PrintUtil.winners(new Winners(cars));
 
         assertThat(actual).isEqualTo(expected);
     }

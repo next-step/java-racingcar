@@ -4,11 +4,11 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.exception.CarNumberException;
 import racingcar.exception.MovementNumberException;
 
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.model.wrapper.MovementNumber.NOT_ALLOWED_BELOW_ONE;
 
 public class MovementNumberTest {
     @ParameterizedTest
@@ -25,7 +25,7 @@ public class MovementNumberTest {
         assertThatThrownBy(() -> {
             new MovementNumber(number);
         }).isInstanceOf(MovementNumberException.class)
-                .hasMessage("이동 횟수는 1 이상이어야 합니다.");
+                .hasMessage(NOT_ALLOWED_BELOW_ONE);
     }
 
     @ParameterizedTest
