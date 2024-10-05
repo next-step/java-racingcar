@@ -2,20 +2,13 @@ package racing.car.car;
 
 public class Car implements Movable {
 
-    private String name;
-    private int position;
     private static final int MOVE_THRESHOLD = 4;
+    private final String name;
+    private int position;
 
-    public Car() {
-    }
-
+    // 생성자에서 name을 반드시 받도록 강제
     public Car(String name) {
         this.name = name;
-    }
-
-    public Car(String name, int position) {
-        this.name = name;
-        this.position = position;
     }
 
     @Override
@@ -40,5 +33,5 @@ public class Car implements Movable {
     private boolean isMoveAllowed(int number) {
         return number >= MOVE_THRESHOLD;
     }
-
 }
+
