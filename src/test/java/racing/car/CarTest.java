@@ -13,7 +13,8 @@ class CarTest {
 
     @BeforeEach
     public void setUp() {
-        car = new Car( 0);
+        String name = "bmw";
+        car = new Car(name, 0);
     }
 
     @ParameterizedTest

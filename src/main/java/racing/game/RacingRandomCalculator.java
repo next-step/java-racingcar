@@ -1,19 +1,20 @@
 package racing.game;
 
-public class RacingCalculator {
+public class RacingRandomCalculator implements Calculator {
 
     private final RandomGenerator randomGenerator;
 
-    public RacingCalculator() {
+    public RacingRandomCalculator() {
         this.randomGenerator = new RandomGenerator();
     }
 
-    public RacingCalculator(RandomGenerator randomGenerator) {
+    public RacingRandomCalculator(RandomGenerator randomGenerator) {
         this.randomGenerator = randomGenerator;
     }
 
     public int getRandomNumber() {
         return randomGenerator.getRandomNumber();
     }
+
 
 }

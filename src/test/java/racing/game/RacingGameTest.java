@@ -4,12 +4,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.Car;
 import racing.car.Cars;
+import racing.fake.FakeRandomCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
 
 
 class RacingGameTest {
@@ -30,23 +30,19 @@ class RacingGameTest {
     @ParameterizedTest
     @ValueSource(ints = 5)
     void 주어진_5번_횟수만큼_전진하는_메서드_실행(int count) {
-        //given
         List<Car> items = new ArrayList<>();
-        Car car1 = new Car( 0);
-        Car car2 = new Car( 0);
+        Car car1 = new Car( "bmw", 0);
+        Car car2 = new Car( "volvo",0);
         items.add(car1);
         items.add(car2);
         Cars cars = new Cars(items);
+        Calculator racingCalculator = new FakeRandomCalculator();
 
-        //when
-        RacingCalculator racingCalculator = mock(RacingCalculator.class);
-        when(racingCalculator.getRandomNumber()).thenReturn(5); // 항상 4이상의 값을 주는 Fake
-
-        //then
         while (count > 0) { // 5번 실행되면 5번 전진하기 때문에 검증
             count--;
             cars.carGoAndStop(racingCalculator);
         }
+
         assertThat(items).allMatch(car -> car.getPosition() == 5);
     }
 

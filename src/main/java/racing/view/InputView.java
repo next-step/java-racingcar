@@ -3,21 +3,23 @@ package racing.view;
 import java.util.Scanner;
 
 public class InputView {
-    public static final String STR1 = "자동차 대수는 몇 대 인가요?";
+    public static final String STR1 = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)로 구분)";
     public static final String STR2 = "시도할 회수는 몇 회 인가요?";
+    public static final String CAR_NAME_GUBUN = ",";
+
     public static final Scanner scanner = new Scanner(System.in);
 
-    public int carInput() {
+    public String carInput() {
         System.out.print(STR1);
-        return input();
+        return strInput();
     }
 
     public int cntInput() {
         System.out.print(STR2);
-        return input();
+        return intInput();
     }
 
-    private static int input() {
+    private static int intInput() {
         int input = scanner.nextInt();
         if (input < 0) {
             throw new IllegalArgumentException("음수는 허용하지 않습니다.");
@@ -25,4 +27,11 @@ public class InputView {
         return input;
     }
 
+    private static String strInput(){
+        String name = scanner.nextLine();
+        if(!name.contains(CAR_NAME_GUBUN)){
+            throw new IllegalArgumentException("구분자를 포함해주세요.");
+        }
+        return name;
+    }
 }
