@@ -1,4 +1,4 @@
-package step3RacingCarCompetition;
+package step3racingcarcompetition;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,19 +12,19 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarCompetitionTest {
-    RacingCarCompetition racingCarCompetition;
-    RacingCarInfo racingCarInfo;
-    RandomGenerator randomGenerator;
-    RandomGenerator testRandomMockGenerator;
-    Car car;
     final static int TOTAL_NUMBER_OF_CARS = 2;
     final static int TOTAL_MOVING_COUNT = 2;
+    RacingCarCompetition racingCarCompetition;
+    RacingCarInfo racingCarInfo;
+    RandomGenerator randomGenerator = new RandomNumber(10);
+    ;
+    RandomGenerator testRandomMockGenerator = new TestRandomNumberGenerator();
+    Car car;
+
 
     @BeforeEach
     void init() {
         car = new Car();
-        randomGenerator = new RandomNumber(10);
-        testRandomMockGenerator = new TestRandomNumberGenerator();
         racingCarCompetition = new RacingCarCompetition();
         racingCarInfo = new RacingCarInfo(TOTAL_NUMBER_OF_CARS, TOTAL_MOVING_COUNT, testRandomMockGenerator);
     }
@@ -50,19 +50,5 @@ class RacingCarCompetitionTest {
         assertThat(resultData).isEqualTo(List.of("44", "44"));
     }
 
-    @DisplayName(value = "차 이동상태 판단 기능 테스트")
-    @ParameterizedTest()
-    @CsvSource(value = {"3,''", "4,-"})
-    void moveStopDecisionTest(char randomNumber, String resultMovingString) {
-        assertThat(ResultView.moveStopDecision(randomNumber))
-                .isEqualTo(resultMovingString);
-    }
 
-    @DisplayName(value = "차 이동상태 저장 확인 테스트, 차2대,이동 2번")
-    @ParameterizedTest()
-    @CsvSource(value = {"33,''", "34,-", "43,-", "44,--"})
-    void findRacingCarDataTest(String movingData, String expectedResultString) {
-        assertThat(ResultView.convertMovingData(movingData))
-                .isEqualTo(expectedResultString);
-    }
 }

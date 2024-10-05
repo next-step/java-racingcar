@@ -1,4 +1,4 @@
-package step3RacingCarCompetition;
+package step3racingcarcompetition;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,8 +9,8 @@ public class RacingCarCompetition {
     public void startRacing() {
         Scanner scanner = new Scanner(System.in);
         RandomGenerator randomGenerator = new RandomNumber(ENDRANGE);
-        int totalNumberOfCars = InputCars.numberOfCars(scanner);
-        int totalMovingCount = InputTryCount.movingTryCount(scanner);
+        int totalNumberOfCars = InputView.numberOfCars(scanner);
+        int totalMovingCount = InputView.movingTryCount(scanner);
         RacingCarInfo racingCarInfo = new RacingCarInfo(totalNumberOfCars, totalMovingCount, randomGenerator);
 
         printCarsMovingData(totalMovingCount, racingCarInfo);
