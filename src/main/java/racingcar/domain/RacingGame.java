@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.dto.AttemptResult;
+import racingcar.dto.RaceResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,27 +12,30 @@ public class RacingGame {
     public static final int DEFAULT_MAX_POSITION = 0;
 
     private final MoveStrategy moveStrategy;
+    private final List<Car> cars = new ArrayList<>();
 
-    public RacingGame(MoveStrategy moveStrategy) {
+    public RacingGame(String carNames, MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
+        createCars(carNames);
     }
 
-    public List<Car> createCars(String carNames) {
-        List<Car> cars = new ArrayList<>();
+    private void createCars(String carNames) {
         String[] names = carNames.split(DELIMITER);
         for (String name : names) {
             cars.add(new Car(name));
         }
-        return cars;
     }
 
-    public RaceResult race(List<Car> cars, int attemptCount) {
+    public RaceResult race(int attemptCount) {
         List<AttemptResult> attemptResults = new ArrayList<>();
         for (int attempt = 0; attempt < attemptCount; attempt++) {
             AttemptResult attemptResult = runAttempt(cars);
             attemptResults.add(attemptResult);
         }
-        return new RaceResult(attemptResults);
+
+        List<String> winners = getWinners();
+
+        return new RaceResult(attemptResults, winners);
     }
 
     private AttemptResult runAttempt(List<Car> cars) {
@@ -41,13 +47,14 @@ public class RacingGame {
         return new AttemptResult(positions);
     }
 
-    public List<Car> getWinners(List<Car> cars) {
+    private List<String> getWinners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(DEFAULT_MAX_POSITION);
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }

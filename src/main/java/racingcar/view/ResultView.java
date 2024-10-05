@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.dto.AttemptResult;
+import racingcar.domain.Car;
+import racingcar.dto.RaceResult;
 
 import java.util.List;
 
@@ -12,25 +16,25 @@ public class ResultView {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    public static void printHistory(RaceResult raceResult, List<Car> winners) {
+    public static void print(RaceResult raceResult) {
         StringBuilder result = new StringBuilder();
         result.append(LINE_SEPARATOR).append(EXECUTION_RESULT_MESSAGE).append(LINE_SEPARATOR);
         for (AttemptResult attemptResult : raceResult.getAttemptResults()) {
             appendPosition(attemptResult, result);
         }
-        appendWinners(winners, result);
+        appendWinners(raceResult.getWinners(), result);
         System.out.print(result);
     }
 
-    private static void appendWinners(List<Car> winners, StringBuilder result) {
+    private static void appendWinners(List<String> winners, StringBuilder result) {
         for (int i = 0; i < winners.size(); i++) {
-            result.append(winners.get(i).getName()).append(getCommaIfNotLast(winners, i));
+            result.append(winners.get(i)).append(getCommaIfNotLast(winners, i));
         }
         result.append(WINNER_ANNOUNCEMENT_MESSAGE);
     }
 
-    private static String getCommaIfNotLast(List<Car> winners, int i) {
-        if (i != winners.size() - 1) {
+    private static String getCommaIfNotLast(List<String> winners, int index) {
+        if (index != winners.size() - 1) {
             return ", ";
         }
         return "";
