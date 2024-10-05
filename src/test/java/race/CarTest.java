@@ -42,4 +42,19 @@ class CarTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("CarName is too long");
     }
+
+    @Test
+    void 자동차_위치가_가장_멀리간_위치인지_확인한다() {
+        Car car = new Car("testC", 4, new FixedGo());
+
+        assertThat(car.isMaxPosition(4)).isTrue();
+    }
+
+    @Test
+    void 자동차_위치와_현재_가장_멀리간_위치중에서_더_큰값을_반환한다() {
+        Car car = new Car("testC", 4, new FixedGo());
+        int maxPosition = 5;
+
+        assertThat(car.compareWithMaxPosition(maxPosition)).isEqualTo(5);
+    }
 }
