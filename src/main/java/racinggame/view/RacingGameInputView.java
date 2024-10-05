@@ -8,7 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racinggame.domain.RacingGameRules.*;
+import static racinggame.domain.RacingCar.MAX_RACING_CAR_NAME_LENGTH;
+import static racinggame.domain.RacingCars.MIN_RACING_CAR_COUNT;
+import static racinggame.domain.RacingGame.MIN_RACING_ROUND_COUNT;
 
 public class RacingGameInputView {
     private final static String DELIMITER = ",";

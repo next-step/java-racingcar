@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingCars implements Iterable<RacingCar> {
+    public static final int MIN_RACING_CAR_COUNT = 2;
+
     private final List<RacingCar> racingCars;
 
     private RacingCars(final List<RacingCar> racingCars) {
