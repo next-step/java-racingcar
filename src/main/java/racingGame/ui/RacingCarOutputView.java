@@ -1,8 +1,8 @@
 package racingGame.ui;
 
 import racingGame.domain.GameResult;
-import racingGame.domain.RacingCar;
 import racingGame.domain.RoundResult;
+import racingGame.domain.car.RacingCar;
 
 import java.util.List;
 

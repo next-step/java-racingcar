@@ -1,5 +1,7 @@
 package racingGame.domain;
 
+import racingGame.domain.car.RacingCar;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ public class RoundResult {
                 .orElse(0);
 
         return racingCars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.getPosition() == (maxPosition))
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
