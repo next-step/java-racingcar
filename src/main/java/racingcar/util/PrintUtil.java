@@ -2,7 +2,7 @@ package racingcar.util;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.Winner;
+import racingcar.model.Winners;
 import racingcar.model.enums.Status;
 import racingcar.model.wrapper.CarName;
 
@@ -46,7 +46,7 @@ public class PrintUtil {
         return EMPTY_STRING;
     }
 
-    public static String winner(Winner winner) {
+    public static String winners(Winners winner) {
         return winner.result()
                 .stream()
                 .map(CarName::name)

@@ -1,6 +1,5 @@
 package racingcar.model.wrapper;
 
-import racingcar.exception.CarNumberException;
 import racingcar.exception.MovementNumberException;
 
 public class MovementNumber {

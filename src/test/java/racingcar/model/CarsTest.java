@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.model.enums.Status.FORWARD;
 import static racingcar.model.enums.Status.STOP;
-import static racingcar.model.fixture.CarFixture.*;
 import static racingcar.model.fixture.CarsFixture.*;
 
 public class CarsTest {

@@ -11,7 +11,7 @@ public class ResultView {
         System.out.println(result);
     }
 
-    public void printWinner(String winner) {
+    public void printWinners(String winner) {
         System.out.println(winner);
     }
 }

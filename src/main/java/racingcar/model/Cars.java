@@ -2,9 +2,10 @@ package racingcar.model;
 
 import racingcar.util.NumberCreator;
 
-import java.util.*;
-
-import static racingcar.model.enums.Status.FORWARD;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 public class Cars {
 

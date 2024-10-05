@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import static racingcar.model.enums.Status.*;
+import static racingcar.model.enums.Status.FORWARD;
 
 
 public class Car {
