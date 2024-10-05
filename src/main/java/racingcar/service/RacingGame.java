@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.RacingCar;
 import racingcar.domain.RandomMove;
+import racingcar.service.dto.RacingCarDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +43,10 @@ public class RacingGame {
      * getter로 clear하는 문제가 생길 수 있으므로
      * Integer 클래스로 복사해서 반환
      */
-    public List<Integer> getRacingCarsPosition(List<RacingCar> racingCars) {
-        List<Integer> result = new ArrayList<>();
-        for (RacingCar car : racingCars) {
-            result.add(car.getPosition());
+    public List<RacingCarDto> getRacingCarsPosition(List<RacingCar> racingCars) {
+        List<RacingCarDto> result = new ArrayList<>();
+        for (RacingCar racingCar : racingCars) {
+            result.add(racingCar.toDto());
         }
         return result;
     }

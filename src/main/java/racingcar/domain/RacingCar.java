@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.service.dto.RacingCarDto;
+
 public class RacingCar {
 
     public static final int DEFAULT_POSITION = 1;
@@ -8,7 +10,7 @@ public class RacingCar {
     private final String name;
 
     public RacingCar(String name) {
-            this(name, DEFAULT_POSITION);
+        this(name, DEFAULT_POSITION);
     }
 
     public RacingCar(String name, int position) {
@@ -43,5 +45,9 @@ public class RacingCar {
 
     public String getName() {
         return this.name;
+    }
+
+    public RacingCarDto toDto() {
+        return new RacingCarDto(this.name, this.position);
     }
 }

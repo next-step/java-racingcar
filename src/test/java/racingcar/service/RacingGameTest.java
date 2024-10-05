@@ -3,6 +3,7 @@ package racingcar.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
+import racingcar.service.dto.RacingCarDto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,10 +32,12 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("자동차의 상태를 전달한다.")
+    @DisplayName("자동차의 이름과 위치를 전달한다.")
     void 자동차_상태_전달() {
         List<RacingCar> racingCars = RacingGame.getInstance().createRacingCars("pobi,crong");
-        assertThat(RacingGame.getInstance().getRacingCarsPosition(racingCars)).isEqualTo(Arrays.asList(1, 1));
+        RacingCarDto pobiCar = new RacingCarDto("pobi", 1);
+        RacingCarDto crongCar = new RacingCarDto("crong", 1);
+        assertThat(RacingGame.getInstance().getRacingCarsPosition(racingCars)).isEqualTo(Arrays.asList(pobiCar, crongCar));
     }
 
     @Test

@@ -27,5 +27,7 @@ public class RacingController {
             resultView.printRacingCarsStatus(game.getRacingCarsPosition(racingCars));
             matchCount = currentCount;
         }
+
+        resultView.printWinners(game.findWinners(racingCars));
     }
 }
