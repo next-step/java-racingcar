@@ -2,13 +2,16 @@ package racingcar;
 
 public class Car {
     private int position;
-    private String name;
+    private final String name;
 
     public Car(String name) {
-        this.name = name;
+        this(0, name);
     }
 
     public Car(int position, String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("Car names cannot exceed 5 characters");
+        }
         this.position = position;
         this.name = name;
     }
