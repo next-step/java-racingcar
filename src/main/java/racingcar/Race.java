@@ -23,7 +23,7 @@ public class Race {
 
     public void round() {
         for (Car car : this.cars) {
-            car.run();
+            car.run(car.isMove());
         }
     }
 }

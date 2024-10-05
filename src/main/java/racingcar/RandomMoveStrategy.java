@@ -5,10 +5,10 @@ import java.util.Random;
 public class RandomMoveStrategy implements MoveStrategy {
 
     private static final int MINIMUM_VALUE = 4;
-    private Random random;
+    private static Random random;
 
-    RandomMoveStrategy() {
-        this.random = new Random();
+    public RandomMoveStrategy() {
+        random = new Random();
     }
 
     @Override

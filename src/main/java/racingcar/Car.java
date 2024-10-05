@@ -3,26 +3,26 @@ package racingcar;
 
 public class Car {
 
-    private String status = "";
+    private int position = 0;
     private MoveStrategy moveStrategy;
 
-    public String getStatus() {
-        return this.status;
+    public int getPosition() {
+        return this.position;
     }
 
-    public MoveStrategy getMoveStrategy() {
-        return this.moveStrategy;
+    public Car(){
+        this.moveStrategy = new RandomMoveStrategy();
     }
 
-    public void setMoveStrategy(MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
+    public boolean isMove() {
+        return moveStrategy.isMove();
     }
 
-    public void run() {
-        if (!moveStrategy.isMove()) {
+    public void run(boolean isMove) {
+        if (!isMove) {
             return;
         }
-        this.status += "-";
+        this.position++;
     }
 
 }
