@@ -6,7 +6,7 @@ public class Car {
     private static final int FORWARD_NUMBER = 4;
 
     private final String carName;
-    private int position = 1;
+    private Position position;
 
     public Car(String carName) {
         if (carName.length() > CAR_NAME_LENGTH) {
@@ -15,27 +15,27 @@ public class Car {
         this.carName = carName;
     }
 
-    public Car(String carName, int position) {
+    public Car(String carName, Position position) {
         this.carName = carName;
         this.position = position;
     }
 
     public void forward(int randomNumber) {
         if (randomNumber >= FORWARD_NUMBER) {
-            position++;
+            this.position = position.increase();
         }
     }
 
     public boolean isMaxPosition(int maxPosition) {
-        return position == maxPosition;
+        return this.position.isMaxPosition(maxPosition);
     }
 
     public int compareWithMaxPosition(int maxPosition) {
-        return Math.max(position, maxPosition);
+        return this.position.compareWithMaxPosition(maxPosition);
     }
 
-    public int getForwardResult() {
-        return position;
+    public int getPosition() {
+        return position.getValue();
     }
 
     public String getCarName() {
