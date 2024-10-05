@@ -7,7 +7,7 @@ public class Main {
         String[] carNames = InputView.inputCarName();
         int tryCount = InputView.inputTryCount();
 
-        CarRace carRace = new CarRace(carNames, tryCount, new CarForwardCheck());
+        CarRace carRace = new CarRace(carNames, tryCount);
 
         ResultView.output(carRace.getCars());
         while (carRace.checkTryCount()) {

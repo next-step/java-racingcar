@@ -6,21 +6,19 @@ import java.util.Random;
 
 public class CarRace {
 
-    private static final int INIT_MAX_POSITION = Integer.MIN_VALUE;
     private static final int MAX_RANGE = 10;
 
     private List<Car> cars = new ArrayList<>();
     private int tryCount;
 
-    public CarRace(String[] carNames, int tryCount, ForwardCheck forwardCheck) {
+    public CarRace(String[] carNames, int tryCount) {
         this.tryCount = tryCount;
-        initCar(carNames, forwardCheck);
+        initCar(carNames);
     }
 
-    public List<Car> proceedRound() {
+    public void proceedRound() {
         proceed();
         tryCount--;
-        return cars;
     }
 
     public List<Car> getCars() {
@@ -32,7 +30,7 @@ public class CarRace {
     }
 
     public List<String> getRaceResult() {
-        return getWinners(calculateMaxPosition(cars.size(), INIT_MAX_POSITION, getCars()));
+        return getWinners(calculateMaxPosition(cars.size(), getCars()));
     }
 
     private List<String> getWinners(int maxPosition) {
@@ -44,7 +42,7 @@ public class CarRace {
         return raceResult;
     }
 
-    private void initCar(String[] carNames, ForwardCheck forwardCheck) {
+    private void initCar(String[] carNames) {
         for(String carName : carNames) {
             this.cars.add(new Car(carName));
         }
@@ -66,7 +64,8 @@ public class CarRace {
         }
     }
 
-    private int calculateMaxPosition(int size, int maxPosition, List<Car> cars) {
+    private int calculateMaxPosition(int size, List<Car> cars) {
+        int maxPosition = 0;
         for (int i = 0; i < size; i++) {
             maxPosition = compareMaxPosition(cars.get(i), maxPosition);
         }
