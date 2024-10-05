@@ -2,50 +2,37 @@ package step3.model;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
-import step3.strategy.MoveStrategy;
-import step3.strategy.RandomStrategy;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-class CarsTest {
-
+class CarTest {
     @Test
-    void 자동차들_객체_생성() {
-        String carNames = "hwan,hwan2,hwan3";
-        Cars cars = Cars.from(carNames);
-
-        assertThat(cars.getCars()).hasSize(3);
+    void 자동차_생성() {
+        Car car = new Car("hwan2");
+        assertThat(car.getMovement()).isEqualTo(0);
     }
 
-    @Test
-    void 자동차들_전진_확인() {
-        String carNames = "hwan,hwan2,hwan3";
-        Cars cars = Cars.from(carNames);
-
-        RandomStrategy randomStrategy = new RandomStrategy();
-        for (int i = 0; i < 100; i++) {
-            cars.moveCars(randomStrategy);
-        }
-
-        List<Integer> movements = cars.getCars().stream()
-                .map(Car::getMovement)
-                .collect(Collectors.toList());
-
-        assertThat(movements).anyMatch(movement -> movement > 0);
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5})
+    void 임의의_값이_4_이상이면_전진한다(int value) {
+        Car car = new Car("hwan2");
+        car.moveOrStop(value);
+        assertThat(car.getMovement()).isEqualTo(1);
     }
 
-    @Test
-    void 우승자_생성_확인() {
-        Car hwan2 = new Car("hwan2", new Movement(3));
-        Car chan = new Car("chan", new Movement());
-        Car ming = new Car("ming", new Movement(2));
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3})
+    void 임의의_값이_4_미만이면_전진하지않는다(int value) {
+        Car car = new Car("hwan2");
+        car.moveOrStop(value);
+        assertThat(car.getMovement()).isEqualTo(0);
+    }
 
-        Cars cars = new Cars(Arrays.asList(hwan2, chan, ming));
-        RaceWinners raceWinners = cars.getRaceWinners();
-
-        assertThat(raceWinners.getWinnerNames()).hasSize(1);
-        assertThat(raceWinners.getWinnerNames()).contains("hwan2");
+    @ParameterizedTest
+    @ValueSource(strings = {"hwan22", " "})
+    void 자동차_이름의_길이는_1이상_5이하가_아니면_예외발생(String value) {
+        assertThatThrownBy(() -> new Car(value))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
