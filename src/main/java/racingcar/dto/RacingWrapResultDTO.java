@@ -1,7 +1,7 @@
 package racingcar.dto;
 
 public final class RacingWrapResultDTO {
-    public final int wrapNumber;
+    private final int wrapNumber;
     public final RacingCarStatesDTO carStates;
 
     private RacingWrapResultDTO(int wrapNumber, RacingCarStatesDTO catStates) {
@@ -11,5 +11,9 @@ public final class RacingWrapResultDTO {
 
     public static RacingWrapResultDTO create(int wrapNumber, RacingCarStatesDTO catStates) {
         return new RacingWrapResultDTO(wrapNumber, catStates);
+    }
+
+    public RacingCarStatesDTO getCarStates() {
+        return this.carStates;
     }
 }

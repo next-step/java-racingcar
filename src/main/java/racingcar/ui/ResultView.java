@@ -17,7 +17,7 @@ public class ResultView {
     }
 
     private static void printWrapResults(RacingResultDTO result) {
-        for (RacingWrapResultDTO wrapResult : result.wrapResults) {
+        for (RacingWrapResultDTO wrapResult : result.getWrapResults()) {
             printWrapResult(wrapResult);
             addBlankLine();
         }
@@ -30,8 +30,8 @@ public class ResultView {
 
     private static RacingCarStateDTO[] decideCarStateOrders(RacingWrapResultDTO wrapResult) {
         RacingCarStatesDTO carStates = wrapResult.carStates;
-        Arrays.sort(carStates.carStates, Comparator.comparingInt(carState -> carState.carNo));
-        return carStates.carStates;
+        Arrays.sort(carStates.getCarStates(), Comparator.comparingInt(RacingCarStateDTO::getCarNo));
+        return carStates.getCarStates();
     }
 
     private static void printCarSates(RacingCarStateDTO[] carStates) {
@@ -41,7 +41,7 @@ public class ResultView {
     }
 
     private static void printCarSate(RacingCarStateDTO carState) {
-        String dashes = "-".repeat(carState.position);
+        String dashes = "-".repeat(carState.getPosition());
         System.out.println(dashes);
     }
 

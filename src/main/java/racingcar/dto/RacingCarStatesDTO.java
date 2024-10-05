@@ -17,4 +17,8 @@ public final class RacingCarStatesDTO {
         }
         return new RacingCarStatesDTO(carStates);
     }
+
+    public RacingCarStateDTO[] getCarStates() {
+        return this.carStates;
+    }
 }
