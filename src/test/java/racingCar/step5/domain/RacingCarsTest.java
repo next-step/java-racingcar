@@ -27,7 +27,7 @@ public class RacingCarsTest {
         );
         RacingCars carGroup = RacingCars.ofCars(cars);
 
-        assertThat(carGroup.getMaxCarPosition()).isEqualTo(5);
+        assertThat(carGroup.maxPosition()).isEqualTo(5);
     }
 
     @DisplayName("동일한 위치에 있는 차들을 조회할 수 있다")
@@ -47,6 +47,18 @@ public class RacingCarsTest {
                 , RacingCar.ofNameAndPosition("공동2등", 5)
         );
 
+    }
+    
+    @DisplayName("차들이 이동한다")
+    @Test
+    void moveCars() {
+        RacingCars cars = RacingCars.ofNames("aa,bb,cc");
+
+        cars.move(new RandomNumber(3));
+        cars.move(new RandomNumber(4));
+        cars.move(new RandomNumber(5));
+
+        assertThat(cars.maxPosition()).isEqualTo(2);
     }
 
 

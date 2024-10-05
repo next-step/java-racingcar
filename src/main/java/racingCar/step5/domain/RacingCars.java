@@ -36,7 +36,13 @@ public class RacingCars {
         return this.cars.size();
     }
 
-    public int getMaxCarPosition() {
+    public void move(RandomNumber randomNumber) {
+        for (RacingCar car : cars) {
+            car.move(randomNumber.generate());
+        }
+    }
+
+    public int maxPosition() {
         int maxPosition = 0;
 
         for (RacingCar car : cars) {
