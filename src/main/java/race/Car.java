@@ -2,28 +2,26 @@ package race;
 
 public class Car {
 
-    public static final int CAR_NAME_LENGTH = 5;
+    private static final int CAR_NAME_LENGTH = 5;
+    private static final int FORWARD_NUMBER = 4;
 
     private final String carName;
     private int position = 1;
-    private final ForwardCheck forwardCheck;
 
-    public Car(String carName, ForwardCheck forwardCheck) {
+    public Car(String carName) {
         if (carName.length() > CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("CarName is too long");
         }
         this.carName = carName;
-        this.forwardCheck = forwardCheck;
     }
 
-    public Car(String carName, int position, ForwardCheck forwardCheck) {
+    public Car(String carName, int position) {
         this.carName = carName;
         this.position = position;
-        this.forwardCheck = forwardCheck;
     }
 
-    public void forward() {
-        if (checkCarForward()) {
+    public void forward(int randomNumber) {
+        if (randomNumber >= FORWARD_NUMBER) {
             position++;
         }
     }
@@ -34,10 +32,6 @@ public class Car {
 
     public int compareWithMaxPosition(int maxPosition) {
         return Math.max(position, maxPosition);
-    }
-
-    private boolean checkCarForward() {
-        return forwardCheck.isForward();
     }
 
     public int getForwardResult() {

@@ -2,10 +2,13 @@ package race;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarRace {
 
-    public static final int INIT_MAX_POSITION = Integer.MIN_VALUE;
+    private static final int INIT_MAX_POSITION = Integer.MIN_VALUE;
+    private static final int MAX_RANGE = 10;
+
     private List<Car> cars = new ArrayList<>();
     private int tryCount;
 
@@ -43,14 +46,18 @@ public class CarRace {
 
     private void initCar(String[] carNames, ForwardCheck forwardCheck) {
         for(String carName : carNames) {
-            this.cars.add(new Car(carName, forwardCheck));
+            this.cars.add(new Car(carName));
         }
     }
 
     private void proceed() {
         for (Car car : cars) {
-            car.forward();
+            car.forward(getRandomNumber());
         }
+    }
+
+    private int getRandomNumber() {
+        return new Random().nextInt(MAX_RANGE);
     }
 
     private void collectWinners(Car car, int maxPosition, List<String> raceResult) {
