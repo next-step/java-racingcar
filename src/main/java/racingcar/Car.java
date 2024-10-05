@@ -10,7 +10,7 @@ public class Car {
         return this.position;
     }
 
-    public Car(){
+    public Car() {
         this.moveStrategy = new RandomMoveStrategy();
     }
 
