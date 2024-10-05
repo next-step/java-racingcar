@@ -1,4 +1,4 @@
-package step3;
+package step3.service;
 
 @FunctionalInterface
 public interface CarEngine {

@@ -2,6 +2,9 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.Cars;
+import step3.service.CarEngine;
 
 import java.util.ArrayList;
 import java.util.List;
