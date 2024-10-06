@@ -15,19 +15,10 @@ public class InputView {
         this.scanner = new Scanner(input);
     }
 
-    public int askCarCount() {
-        System.out.println(Car.QUESTION);
+    public String askCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)를 기준으로 구분)");
 
-        int input;
-        try {
-            input = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            throw new IllegalArgumentException("1 ~ 10 사이의 정수만 사용할 수 있습니다.");
-        }
-
-        Car.validateCarCountRange(input);
-
-        return input;
+        return scanner.nextLine();
     }
 
     public int askRoundCount() {

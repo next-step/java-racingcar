@@ -4,10 +4,11 @@ public class RaceApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int carCount = inputView.askCarCount();
+        String carNames = inputView.askCarNames();
+        Cars cars = new Cars(carNames.split(","));
         int roundCount = inputView.askRoundCount();
 
-        Race race = new Race(new Cars(new String[]{"test1", "test2"}), roundCount);
+        Race race = new Race(cars, roundCount);
         race.run();
     }
 }

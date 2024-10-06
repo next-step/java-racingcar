@@ -13,10 +13,20 @@ public class Cars {
     public Cars(String[] names) {
         List<Car> entry = new ArrayList<>();
         for (String name : names) {
+            checkDuplicate(entry, name);
             entry.add(new Car(name));
         }
 
         this.cars = entry;
+    }
+
+    private void checkDuplicate(List<Car> entry, String name) {
+        entry.stream()
+                .filter(car -> name.equals(car.getName()))
+                .findAny()
+                .ifPresent(car -> {
+                    throw new IllegalStateException("동일한 자동차 이름을 사용할 수 없습니다. : "+ car.getName());
+                });
     }
 
     public void move() {
