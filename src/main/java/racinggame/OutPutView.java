@@ -5,6 +5,8 @@ import racinggame.SnapShotStore.SnapShot;
 
 public class OutPutView {
 
+    private static final String HYPHEN = "-";
+
     public static void render(SnapShot snapShot) {
         System.out.println("실행 결과");
         for(int count=0;count<snapShot.repeatCount();count++){
@@ -20,6 +22,6 @@ public class OutPutView {
     }
 
     private static String renderHyphen(int count) {
-        return "-".repeat(count);
+        return HYPHEN.repeat(count);
     }
 }
