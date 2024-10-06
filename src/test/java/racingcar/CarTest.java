@@ -49,4 +49,17 @@ public class CarTest {
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 차_이름_5자_이하면_생성() {
+        Car car = new Car("test");
+
+        assertThat(car.getMoveCount()).isEqualTo(0);
+    }
+    @Test
+    void 차_이름_5자_초과하면_에러() {
+        assertThatThrownBy(() ->
+               new Car("test12")
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
