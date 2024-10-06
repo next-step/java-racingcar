@@ -10,9 +10,7 @@ import java.util.List;
 
 public class RacingCar {
 
-    public static void main(String[] args) {
-        startRacing();
-    }
+
 
     public static void startRacing() {
         Race race = new Race((inputCarList(ResultView::printRaceCarName)),
