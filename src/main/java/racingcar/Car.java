@@ -1,9 +1,7 @@
 package racingcar;
 
-import java.util.Random;
-
-import static racingcar.ResultView.printCarName;
-import static racingcar.ResultView.printGoDistance;
+import static racingcar.view.ResultView.printCarName;
+import static racingcar.view.ResultView.printGoDistance;
 
 public class Car {
     public static final String INPUT_LENGTH_EXCEEDED_ERROR = "5자 초과하였습니다.";

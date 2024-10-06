@@ -1,7 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.InputView.isPositiveNum;
+import static racingcar.view.InputView.isPositiveNum;
 
 
 import java.util.List;

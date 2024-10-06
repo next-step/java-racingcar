@@ -1,7 +1,5 @@
 package racingcar;
 
-import static racingcar.ResultView.printGoDistance;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

@@ -1,12 +1,11 @@
 package racingcar;
 
-import static racingcar.InputView.inputCarList;
-import static racingcar.InputView.inputInt;
-import static racingcar.ResultView.printResultMessage;
-import static racingcar.ResultView.printWinnerCarName;
+import racingcar.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
+import static racingcar.view.InputView.inputCarList;
+import static racingcar.view.InputView.inputInt;
+import static racingcar.view.ResultView.printResultMessage;
+import static racingcar.view.ResultView.printWinnerCarName;
 
 public class RacingCar {
 
