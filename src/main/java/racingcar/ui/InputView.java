@@ -5,7 +5,6 @@ import racingcar.domain.CarName;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
@@ -17,55 +16,51 @@ public class InputView {
     private static final String CAR_NAMES_INPUT_SPLITTER = ",";
 
     public static List<String> inputCarNames() {
-        return input(INPUT_CAR_NAMES_QUESTION, InputView::tryCarNamesInput, InputView::isCarNamesInputValid);
+        return input(INPUT_CAR_NAMES_QUESTION, InputView::isCarNamesInputValid, InputView::convertToCarNames);
     }
 
     public static int inputCarNumber() {
-        return input(INPUT_CAR_NUMBER_QUESTION, InputView::tryInputNumber, InputView::isNumberInputValid);
+        return input(INPUT_CAR_NUMBER_QUESTION, InputView::isNumberInputValid, InputView::convertToNumber);
     }
 
     public static int inputTryNumber() {
-        return input(INPUT_TRY_NUMBER_QUESTION, InputView::tryInputNumber, InputView::isNumberInputValid);
+        return input(INPUT_TRY_NUMBER_QUESTION, InputView::isNumberInputValid, InputView::convertToNumber);
     }
 
-    private static Integer tryInputNumber() {
-        String input = scanner.nextLine();
-        if (input.isEmpty()) {
-            return null;
-        }
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return null;
-        }
+    private static Integer convertToNumber(String rawInput) {
+        return Integer.parseInt(rawInput);
     }
 
-    private static boolean isNumberInputValid(Integer input) {
-        if (input == null) {
+    private static boolean isNumberInputValid(String rawInput) {
+        if (rawInput.isEmpty()) {
             System.out.println(NOT_AN_INTEGER_MESSAGE);
             return false;
         }
-        if (input <= 0) {
+        int numberInput;
+        try {
+            numberInput = Integer.parseInt(rawInput);
+        } catch (NumberFormatException e) {
+            System.out.println(NOT_AN_INTEGER_MESSAGE);
+            return false;
+        }
+        if (numberInput <= 0) {
             System.out.println(NOT_A_POSITIVE_NUMBER_MESSAGE);
             return false;
         }
         return true;
     }
 
-    private static List<String> tryCarNamesInput() {
-        String input = scanner.nextLine();
-        if (input.isEmpty()) {
-            return null;
-        }
-        return List.of(input.split(CAR_NAMES_INPUT_SPLITTER));
+    private static List<String> convertToCarNames(String rawInput) {
+        return List.of(rawInput.split(CAR_NAMES_INPUT_SPLITTER));
     }
 
-    private static boolean isCarNamesInputValid(List<String> input) {
-        if (input == null) {
+    private static boolean isCarNamesInputValid(String rawInput) {
+        if (rawInput == null || rawInput.isEmpty()) {
             System.out.println(CarName.BLANK_CAR_NAME_MESSAGE);
             return false;
         }
-        if (hasTooLongCarName(input)) {
+        List<String> carNames = List.of(rawInput.split(CAR_NAMES_INPUT_SPLITTER));
+        if (hasTooLongCarName(carNames)) {
             System.out.println(CarName.TOO_LONG_CAR_NAME_MESSAGE);
             return false;
         }
@@ -80,13 +75,14 @@ public class InputView {
         return hasTooLongCarName;
     }
 
-    private static <T> T input(String questionMessage, Supplier<T> tryInputFunction, Function<T, Boolean> inputValidationFunction) {
+    private static <T> T input(String questionMessage, Function<String, Boolean> inputValidationFunction, Function<String, T> convertInputFunction) {
         boolean hasValidInput = false;
         T input = null;
         while (!hasValidInput) {
             System.out.println(questionMessage);
-            input = tryInputFunction.get();
-            hasValidInput = inputValidationFunction.apply(input);
+            String rawInput = scanner.nextLine();
+            hasValidInput = inputValidationFunction.apply(rawInput);
+            input = convertInputFunction.apply(rawInput);
         }
         return input;
     }
