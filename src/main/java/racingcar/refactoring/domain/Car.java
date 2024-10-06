@@ -8,24 +8,25 @@ public class Car {
 
     private static final int RANDOM_THRESHOLD = 4;
 
-    private String name;
-    private int position;
+    private Name name;
+    private Position position;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
+        this.position = new Position(0);
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public void moveForward(int randomNumber) {
         if (movable(randomNumber)) {
-            position++;
+            position = position.addPosition();
         }
     }
 
