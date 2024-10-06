@@ -60,4 +60,17 @@ public class RacingCarTest {
         assertThat(racingCar.getCars(1)).isIn(0, 1);
         assertThat(racingCar.getCars(2)).isIn(0, 1);
     }
+
+    @DisplayName("입력 횟수만큼 자동차가 경주했는지에 대한 테스트")
+    @Test
+    void racingCarTest() {
+        makeTestInput("3\n5\n");
+
+        RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
+        racingCar.startRacing();
+
+        assertThat(racingCar.getCars(0)).isBetween(0, 5);
+        assertThat(racingCar.getCars(1)).isBetween(0, 5);
+        assertThat(racingCar.getCars(2)).isBetween(0, 5);
+    }
 }
