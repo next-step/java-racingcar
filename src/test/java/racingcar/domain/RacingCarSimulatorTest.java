@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,13 +12,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 public class RacingCarSimulatorTest {
     @Test
     @DisplayName("입력한 트라이 횟수가 0이면 초기 상태 wrapResult만 가집니다.")
     void wrapResultsSizeTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, 0);
-        Assertions.assertEquals(1, result.getWrapResults().getWrapResults().size());
+        assertThat(result.getWrapResults().getWrapResults().size()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -28,7 +30,7 @@ public class RacingCarSimulatorTest {
     void wrapResultsSizeTest(int tryNumber) {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, tryNumber);
-        Assertions.assertEquals(tryNumber + 1, result.getWrapResults().getWrapResults().size());
+        assertThat(result.getWrapResults().getWrapResults().size()).isEqualTo(tryNumber + 1);
     }
 
     @ParameterizedTest
@@ -42,7 +44,7 @@ public class RacingCarSimulatorTest {
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
         List<RacingWrapResultDTO> wrapResults = result.getWrapResults().getWrapResults();
         for (RacingWrapResultDTO wrapResult : wrapResults) {
-            Assertions.assertEquals(carNumber, wrapResult.getCarStates().getCarStates().size());
+            assertThat(wrapResult.getCarStates().getCarStates().size()).isEqualTo(carNumber);
         }
     }
 
@@ -52,6 +54,6 @@ public class RacingCarSimulatorTest {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
         RacingWinnersDTO winners = result.getWinners();
-        Assertions.assertFalse(winners.getWinners().isEmpty());
+        assertThat(winners.getWinners()).isNotEmpty();
     }
 }

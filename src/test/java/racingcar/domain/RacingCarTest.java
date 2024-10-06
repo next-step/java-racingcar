@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +14,7 @@ public class RacingCarTest {
     @DisplayName("차량을 생성하면 position이 0입니다.")
     void newRacingCarPositionTest() {
         RacingCar newCar = RacingCar.valueOf(DEFAULT_CAR_NAME, 0);
-        Assertions.assertEquals(0, newCar.getCarNo());
+        assertThat( newCar.getCarNo()).isEqualTo(0);
     }
 
     @ParameterizedTest
@@ -23,7 +22,7 @@ public class RacingCarTest {
     @DisplayName("차량을 생성할 때 지정된 carNo를 가집니다.")
     void newRacingCarCarNoTest(int carNo) {
         RacingCar newCar = RacingCar.valueOf(DEFAULT_CAR_NAME, carNo);
-        Assertions.assertEquals(carNo, newCar.getCarNo());
+        assertThat(newCar.getCarNo()).isEqualTo(carNo);
     }
 
     @Test

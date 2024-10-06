@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class PositionTest {
@@ -14,7 +14,7 @@ public class PositionTest {
     @DisplayName("포지션을 생성하면 해당 포지션을 가지고 있습니다.")
     public void getPositionTest(int position) {
         Position positionInstance = Position.valueOf(position);
-        Assertions.assertEquals(position, positionInstance.value());
+        assertThat(positionInstance.value()).isEqualTo(position);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class PositionTest {
     public void moveTest(int position) {
         Position positionInstance = Position.valueOf(position);
         Position newPositionInstance = positionInstance.move();
-        Assertions.assertEquals(position + 1, newPositionInstance.value());
+        assertThat(newPositionInstance.value()).isEqualTo(position + 1);
     }
 
     @ParameterizedTest
@@ -38,7 +38,7 @@ public class PositionTest {
     public void equalsTest(int position) {
         Position positionInstance1 = Position.valueOf(position);
         Position positionInstance2 = Position.valueOf(position);
-        Assertions.assertEquals(positionInstance1, positionInstance2);
+        assertThat(positionInstance1).isEqualTo(positionInstance2);
     }
 
     @ParameterizedTest
@@ -47,7 +47,7 @@ public class PositionTest {
     public void hashCodeTest(int position) {
         Position positionInstance1 = Position.valueOf(position);
         Position positionInstance2 = Position.valueOf(position);
-        Assertions.assertEquals(positionInstance1.hashCode(), positionInstance2.hashCode());
+        assertThat(positionInstance1.hashCode()).isEqualTo(positionInstance2.hashCode());
     }
 
     @ParameterizedTest
@@ -56,6 +56,6 @@ public class PositionTest {
     public void compareTest(int position) {
         Position positionInstanceWithSmallPosition = Position.valueOf(position);
         Position positionInstanceWithBiggerPosition = Position.valueOf(position + 1);
-        Assertions.assertEquals(1, positionInstanceWithBiggerPosition.compareTo(positionInstanceWithSmallPosition));
+        assertThat(positionInstanceWithBiggerPosition).isGreaterThan(positionInstanceWithSmallPosition);
     }
 }

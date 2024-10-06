@@ -1,9 +1,10 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarNoTest {
     @ParameterizedTest
@@ -11,7 +12,7 @@ public class CarNoTest {
     @DisplayName("생성하면 입력한 차 번호를 가지고 있습니다.")
     public void getCarNoTest(int carNo) {
         CarNo carNoInstance = CarNo.valueOf(carNo);
-        Assertions.assertEquals(carNo, carNoInstance.value());
+        assertThat(carNoInstance.value()).isEqualTo(carNo);
     }
 
     @ParameterizedTest
@@ -20,7 +21,7 @@ public class CarNoTest {
     public void equalsTest(int carNo) {
         CarNo carNoInstance1 = CarNo.valueOf(carNo);
         CarNo carNoInstance2 = CarNo.valueOf(carNo);
-        Assertions.assertEquals(carNoInstance1, carNoInstance2);
+        assertThat(carNoInstance1).isEqualTo(carNoInstance2);
     }
 
     @ParameterizedTest
@@ -29,6 +30,6 @@ public class CarNoTest {
     public void hashCodeTest(int carNo) {
         CarNo carNoInstance1 = CarNo.valueOf(carNo);
         CarNo carNoInstance2 = CarNo.valueOf(carNo);
-        Assertions.assertEquals(carNoInstance1.hashCode(), carNoInstance2.hashCode());
+        assertThat(carNoInstance1.hashCode()).isEqualTo(carNoInstance2.hashCode());
     }
 }

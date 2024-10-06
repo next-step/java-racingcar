@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarNameTest {
@@ -14,7 +14,7 @@ public class CarNameTest {
     @DisplayName("생성하면 차 이름을 가지고 있습니다.")
     public void getCarNameTest(String carName) {
         CarName carNameInstance = CarName.valueOf(carName);
-        Assertions.assertEquals(carName, carNameInstance.value());
+        assertThat(carNameInstance.value()).isEqualTo(carName);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class CarNameTest {
     public void equalsTest(String carName) {
         CarName carNameInstance1 = CarName.valueOf(carName);
         CarName carNameInstance2 = CarName.valueOf(carName);
-        Assertions.assertEquals(carNameInstance1, carNameInstance2);
+        assertThat(carNameInstance1).isEqualTo(carNameInstance2);
     }
 
     @ParameterizedTest
@@ -38,6 +38,6 @@ public class CarNameTest {
     public void hashCodeTest(String carName) {
         CarName carNameInstance1 = CarName.valueOf(carName);
         CarName carNameInstance2 = CarName.valueOf(carName);
-        Assertions.assertEquals(carNameInstance1.hashCode(), carNameInstance2.hashCode());
+        assertThat(carNameInstance1.hashCode()).isEqualTo(carNameInstance2.hashCode());
     }
 }
