@@ -2,21 +2,17 @@ package race;
 
 public class Car {
 
-    private static final int CAR_NAME_LENGTH = 5;
     private static final int FORWARD_NUMBER = 4;
 
-    private final String carName;
+    private final CarName carName;
     private Position position;
 
-    public Car(String carName) {
-        if (carName.length() > CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("CarName is too long");
-        }
+    public Car(CarName carName) {
         this.carName = carName;
         this.position = new Position(1);
     }
 
-    public Car(String carName, Position position) {
+    public Car(CarName carName, Position position) {
         this.carName = carName;
         this.position = position;
     }
@@ -40,6 +36,6 @@ public class Car {
     }
 
     public String getCarName() {
-        return carName;
+        return carName.getValue();
     }
 }

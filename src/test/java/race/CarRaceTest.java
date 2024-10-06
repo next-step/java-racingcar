@@ -30,9 +30,9 @@ class CarRaceTest {
     @Test
     void getRaceResult를_실행하면_자동차_경주_결과_가장_멀리_간_자동차의_이름들을_가져온다() {
         List<Car> cars = List.of(
-            new Car("pobi", new Position(4)),
-            new Car("max", new Position(2)),
-            new Car("lili", new Position(3))
+            new Car(new CarName("pobi"), new Position(4)),
+            new Car(new CarName("max"), new Position(2)),
+            new Car(new CarName("lili"), new Position(3))
         );
 
         CarRace carRace = new CarRace(cars, new TryCount(2));

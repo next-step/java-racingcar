@@ -49,7 +49,7 @@ public class CarRace {
 
     private void initCar(String[] carNames) {
         for(String carName : carNames) {
-            this.cars.add(new Car(carName));
+            this.cars.add(new Car(new CarName(carName)));
         }
     }
 
