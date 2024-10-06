@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.car.CarName;
 import racingcar.car.Cars;
 import racingcar.exception.GameException;
 import racingcar.game.GameRunnable;
@@ -23,7 +24,7 @@ public class RacingCar implements GameRunnable {
     public void run() {
         try {
             outputHandler.showCommentForCarNames();
-            String[] carNamesFromUser = inputHandler.getCarNamesFromUser();
+            CarName[] carNamesFromUser = inputHandler.getCarNamesFromUser();
             outputHandler.showCommentForTrialCount();
             int trialCountFromUser = inputHandler.getTrialCountFromUser();
 
@@ -35,7 +36,7 @@ public class RacingCar implements GameRunnable {
         }
     }
 
-    private void racingStart(String[] carNames, int trialCount) {
+    private void racingStart(CarName[] carNames, int trialCount) {
         Cars cars = Cars.createCars(carNames);
 
         outputHandler.showSimpleMessage("실행 결과");
