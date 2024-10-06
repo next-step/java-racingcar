@@ -1,27 +1,34 @@
 package carracing.view;
 
-import carracing.domain.record.CarRecord;
+import carracing.domain.car.Car;
 import carracing.domain.record.RoundRecord;
-import carracing.domain.record.RoundRecords;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public void showCarRacingResult(RoundRecords roundRecords) {
+    public void showCarRacingResult(List<RoundRecord> roundRecords) {
         System.out.println("\n실행 결과");
-        for (RoundRecord roundRecord : roundRecords.getRoundRecords()) {
+
+        for (RoundRecord roundRecord : roundRecords) {
             showRoundResult(roundRecord);
         }
-        showWinnerNames(roundRecords);
     }
 
     private void showRoundResult(RoundRecord roundRecord) {
-        for (CarRecord carRecord : roundRecord.getCarRecords()) {
-            System.out.printf("%-5s : %s%n", carRecord.getName(), "-".repeat(carRecord.getPosition()));
+
+        for (Car carRecord : roundRecord.getCars()) {
+            System.out.printf("%-5s : %s%n", carRecord.getCarName(), "-".repeat(carRecord.getCarPosition()));
         }
         System.out.println();
     }
 
-    private void showWinnerNames(RoundRecords roundRecords) {
-        System.out.printf("%s가 최종 우승했습니다.", String.join(", ", roundRecords.findWinners()));
+    public void showWinnerNames(List<Car> cars) {
+        List<String> winnerNames = cars.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toUnmodifiableList());
+
+        System.out.printf("%s가 최종 우승했습니다.", String.join(", ", winnerNames));
     }
 }

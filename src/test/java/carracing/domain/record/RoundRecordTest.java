@@ -1,5 +1,8 @@
 package carracing.domain.record;
 
+import carracing.domain.car.Car;
+import carracing.domain.car.Name;
+import carracing.domain.car.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,52 +15,56 @@ class RoundRecordTest {
     @DisplayName("3대의 자동차 목록에서 3라운드동안 가장 멀리 이동한 자동차 1대를 찾을 수 있다.")
     @Test
     void getOneWinner() {
-        // given
-        CarRecord green = CarRecord.of("green", 3);
-        CarRecord blue = CarRecord.of("blue", 4);
-        CarRecord red = CarRecord.of("red", 5);
+        Car green = Car.of(Name.from("green"), Position.from(3));
+        Car blue = Car.of(Name.from("blue"), Position.from(4));
+        Car red = Car.of(Name.from("red"), Position.from(5));
         RoundRecord roundRecord = RoundRecord.from(List.of(green, blue, red));
 
-        // when
-        List<String> result = roundRecord.getLeadingCarNames();
+        List<Car> result = roundRecord.getLeadingCar();
 
-        // then
-        assertThat(result).hasSize(1)
-                .containsExactly("red");
+        assertThat(result)
+                .hasSize(1)
+                .containsExactlyInAnyOrder(
+                        Car.of(Name.from("red"), Position.from(5)
+                        ));
     }
 
     @DisplayName("3대의 자동차 목록에서 3라운드동안 가장 멀리 이동한 자동차 2대를 찾을 수 있다.")
     @Test
     void getTwoWinners() {
-        // given
-        CarRecord green = CarRecord.of("green", 3);
-        CarRecord blue = CarRecord.of("blue", 4);
-        CarRecord red = CarRecord.of("red", 4);
+        Car green = Car.of(Name.from("green"), Position.from(3));
+        Car blue = Car.of(Name.from("blue"), Position.from(4));
+        Car red = Car.of(Name.from("red"), Position.from(4));
         RoundRecord roundRecord = RoundRecord.from(List.of(green, blue, red));
 
-        // when
-        List<String> result = roundRecord.getLeadingCarNames();
+        List<Car> result = roundRecord.getLeadingCar();
 
-        // then
-        assertThat(result).hasSize(2)
-                .containsExactlyInAnyOrder("blue", "red");
+        assertThat(result)
+                .hasSize(2)
+                .containsExactlyInAnyOrder(
+                        Car.of(Name.from("blue"), Position.from(4)),
+                        Car.of(Name.from("red"), Position.from(4))
+                );
+
     }
 
     @DisplayName("3대의 자동차 목록에서 3라운드동안 가장 멀리 이동한 자동차 3대를 찾을 수 있다.")
     @Test
     void getThreeWinners() {
-        // given
-        CarRecord green = CarRecord.of("green", 4);
-        CarRecord blue = CarRecord.of("blue", 4);
-        CarRecord red = CarRecord.of("red", 4);
+        Car green = Car.of(Name.from("green"), Position.from(4));
+        Car blue = Car.of(Name.from("blue"), Position.from(4));
+        Car red = Car.of(Name.from("red"), Position.from(4));
         RoundRecord roundRecord = RoundRecord.from(List.of(green, blue, red));
 
-        // when
-        List<String> result = roundRecord.getLeadingCarNames();
+        List<Car> result = roundRecord.getLeadingCar();
 
-        // then
-        assertThat(result).hasSize(3)
-                .containsExactlyInAnyOrder("green", "blue", "red");
+        assertThat(result)
+                .hasSize(3)
+                .containsExactlyInAnyOrder(
+                        Car.of(Name.from("blue"), Position.from(4)),
+                        Car.of(Name.from("red"), Position.from(4)),
+                        Car.of(Name.from("green"), Position.from(4))
+                );
     }
 
 }
