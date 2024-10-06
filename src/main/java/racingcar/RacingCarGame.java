@@ -12,7 +12,7 @@ public class RacingCarGame {
     public static void start() {
         Racing racing = new Racing();
 
-        Garage garage = racing.ready(InputView.inputCarDriver());
+        Garage garage = racing.ready(InputView.inputCarName());
 
         racing.game(garage.getCars(), InputView.inputGameCount());
     }

@@ -6,6 +6,7 @@ import racingcar.model.Garage;
 import racingcar.model.Racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingTest {
 
@@ -18,9 +19,6 @@ class RacingTest {
         assertThat(garage.getCars()).hasSize(3);
     }
 
-
-
-
     @Test
     void 차_생성후_차_이름_확인() {
         Racing racing = new Racing();
@@ -28,6 +26,15 @@ class RacingTest {
         Garage garage = racing.ready("a,b,c");
 
         assertThat(garage.getCars()).contains(new Car("a"));
+    }
+
+    @Test
+    void 차_이름_중복_불가() {
+        Racing racing = new Racing();
+
+        assertThatThrownBy(() ->
+                racing.ready("a,b,c,a")
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
 
