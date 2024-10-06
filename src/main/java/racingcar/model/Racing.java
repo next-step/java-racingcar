@@ -13,11 +13,13 @@ public class Racing {
         return Garage.createCars(names);
     }
 
-    public void game(List<Car> cars, int count) {
+    public void game(Garage garage, int count) {
         for (int i = 0; i < count; i++) {
-            moveCar(cars);
-            ResultView.print(cars);
+            moveCar(garage.getCars());
+            ResultView.print(garage);
         }
+
+        ResultView.printWinner(garage);
     }
 
     private void moveCar(List<Car> cars) {

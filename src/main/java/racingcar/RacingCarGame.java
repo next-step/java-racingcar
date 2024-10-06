@@ -14,7 +14,7 @@ public class RacingCarGame {
 
         Garage garage = racing.ready(InputView.inputCarName());
 
-        racing.game(garage.getCars(), InputView.inputGameCount());
+        racing.game(garage, InputView.inputGameCount());
     }
 
 }

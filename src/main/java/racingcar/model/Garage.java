@@ -10,7 +10,7 @@ public class Garage {
     private static final String DELIMITER = ",";
     private final List<Car> cars;
 
-    private Garage(List<Car> cars) {
+    public Garage(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException("차는 최소 1대 이상 필요 합니다.");
         }
@@ -44,6 +44,37 @@ public class Garage {
         }
     }
 
+    public List<Car> findWinner(){
+        int maxPosition = getMaxPosition();
+
+        return findWinner(maxPosition);
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+
+            int moveCount = car.getMoveCount();
+
+            if(moveCount > maxPosition){
+                maxPosition = moveCount;
+            }
+        }
+        return maxPosition;
+    }
+
+    private List<Car> findWinner(int maxPosition) {
+        List<Car>  winner = new ArrayList<>();
+
+        for (Car car : cars) {
+            if(car.getMoveCount() == maxPosition){
+                winner.add(car);
+            }
+        }
+
+        return winner;
+    }
 
     public List<Car> getCars() {
         return cars;
