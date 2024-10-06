@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarsTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"5chars", "5글자이상"})
+    @ValueSource(strings = {"5chars", "5글자이상차"})
     void 자동차_이름은_5자를_초과할_수_없다(String input) {
         assertThatThrownBy(() -> new Cars(new String[]{input}))
                 .isInstanceOf(IllegalArgumentException.class)
