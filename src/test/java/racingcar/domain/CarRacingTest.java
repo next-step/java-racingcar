@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.dto.RacingWrapResultsDTO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,9 +34,9 @@ public class CarRacingTest {
     public void proceedWrapTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         CarRacing racing = CarRacing.valueOf(carNames);
-        RacingWrapResultsDTO beforeWrapResults = racing.getWrapResults();
+        int beforeWrapResultsSize = racing.getWrapResults().getWrapResults().size();
         racing.proceedWrap();
-        RacingWrapResultsDTO afterWrapResults = racing.getWrapResults();
-        assertThat(afterWrapResults.getWrapResults().size()).isEqualTo(beforeWrapResults.getWrapResults().size() + 1);
+        int afterWrapResultsSize = racing.getWrapResults().getWrapResults().size();
+        assertThat(afterWrapResultsSize).isEqualTo(beforeWrapResultsSize + 1);
     }
 }
