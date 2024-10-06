@@ -1,6 +1,7 @@
 package racingcar.refactoring.controller;
 
 import racingcar.refactoring.domain.Car;
+import racingcar.refactoring.domain.Cars;
 import racingcar.refactoring.domain.GameResult;
 import racingcar.refactoring.utils.NumberGenerator;
 import racingcar.refactoring.utils.StringUtils;
@@ -12,24 +13,24 @@ import java.util.Map;
 
 public class GameController {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private int numberOfTries;
-
-    public List<Car> getCars() {
-        return cars;
-    }
 
     public GameController(String names, int numberOfTries) {
         this.cars = createCars(names);
         this.numberOfTries = numberOfTries;
     }
 
-    private List<Car> createCars(String names) {
+    public List<Car> getCars() {
+        return cars.getCars();
+    }
+
+    private Cars createCars(String names) {
         List<Car> cars = new ArrayList<>();
         for (String name : StringUtils.split(names)) {
             cars.add(new Car(name));
         }
-        return cars;
+        return new Cars(cars);
     }
 
     public GameResult start() {
@@ -41,7 +42,7 @@ public class GameController {
     }
 
     private Map<String, Integer> playRound() {
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             car.moveForward(NumberGenerator.generateRandomNumber());
         }
         return getRoundGameResult();
@@ -49,7 +50,7 @@ public class GameController {
 
     private Map<String, Integer> getRoundGameResult() {
         Map<String, Integer> roundResult = new LinkedHashMap<>();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             roundResult.put(car.getName(), car.getPosition());
         }
         return roundResult;
