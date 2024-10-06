@@ -6,8 +6,8 @@ public class TryCount {
     private final int value;
 
     public TryCount(int value) {
-        if (value <= 0) {
-            throw new IllegalArgumentException("TryCount is not allowed minus number or zero");
+        if (value < 0) {
+            throw new IllegalArgumentException("TryCount is not allowed minus number");
         }
         this.value = value;
     }
