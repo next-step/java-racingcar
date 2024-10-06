@@ -4,31 +4,34 @@ import race.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCarGame {
     private final ResultView resultView = new ResultView();
     private final List<RacingCar> racingCars;
-    private final int raceCount;
-    private final NumberPicker numberPicker = new NumberPicker();
+    private final RaceCount raceCount;
     private final static int RANDOM_NUMBER_LIMIT = 10;
+    private final NumberPicker numberPicker = new NumberPicker();
 
     public RacingCarGame(List<String> carNames, int raceCount) {
         this.racingCars = carNames.stream().map(RacingCar::new).collect(Collectors.toUnmodifiableList());
-        this.raceCount = raceCount;
+        this.raceCount = new RaceCount(raceCount);
     }
 
     public RacingCarGame(List<RacingCar> racingCars) {
         this.racingCars = List.copyOf(racingCars);
-        this.raceCount = 0;
+        this.raceCount = new RaceCount();
     }
 
     public void startRace() {
-        System.out.println("실행 결과");
-        IntStream.range(0, raceCount).forEach(i -> race(this.racingCars));
+        resultView.printRaceStartMessage();
+        while (raceCount.hasMoreRaces()) {
+            race();
+            raceCount.decrease();
+        }
+
     }
 
-    private void race(List<RacingCar> racingCars) {
+    private void race() {
         for (RacingCar car : racingCars) {
             car.moveForward(numberPicker.generateRandomNumber(RANDOM_NUMBER_LIMIT));
         }
@@ -47,9 +50,12 @@ public class RacingCarGame {
     }
 
     private int findLargestMovement() {
-        return racingCars.stream()
-                .mapToInt(RacingCar::getPosition)
-                .max()
-                .orElse(0);
+        int maxValue = 0;
+
+        for (RacingCar racingCar : racingCars) {
+            maxValue = racingCar.findMaxValue(maxValue);
+        }
+        return maxValue;
     }
+
 }

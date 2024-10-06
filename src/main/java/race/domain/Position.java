@@ -11,11 +11,15 @@ public class Position {
         this.position++;
     }
 
-    public int getPosition() {
-        return this.position;
-    }
-
     public boolean hasSamePosition(int otherPosition) {
         return this.position == otherPosition;
+    }
+
+    public int findMaxValue(int maxValue) {
+        return Math.max(maxValue, this.position);
+    }
+
+    public String drawForwardDistance(String forwardString) {
+        return forwardString.repeat(this.position);
     }
 }

@@ -37,6 +37,5 @@ public class RacingCarGameTest {
         List<RacingCar> winners = racingCarGame.findWinners();
 
         assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners).extracting(RacingCar::getName).containsExactly("test1");
     }
 }

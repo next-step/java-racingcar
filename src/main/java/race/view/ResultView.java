@@ -3,24 +3,29 @@ package race.view;
 import race.domain.RacingCar;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
     private final String FORWARD_STRING = "-";
 
     public void printRaceCondition(List<RacingCar> racingCars) {
         racingCars.forEach(racingCar -> {
-            int distance = racingCar.getPosition();
-            System.out.println(racingCar.getName() + " : " + FORWARD_STRING.repeat(distance));
+            String distanceString = racingCar.drawForwardDistance(FORWARD_STRING);
+            racingCar.printName();
+            System.out.println(" : " + distanceString);
         });
         System.out.println();
     }
 
     public void printChampionWinner(List<RacingCar> winners) {
-        String winnerNames = winners.stream()
-                .map(RacingCar::getName)
-                .collect(Collectors.joining(","));
+        IntStream.range(0, winners.size()).forEach(index -> {
+            RacingCar racingCar = winners.get(index);
+            racingCar.printNameWithComma(index != winners.size() - 1);
+        });
+        System.out.println("가 최종 우승했습니다.");
+    }
 
-        System.out.println(winnerNames + "가 최종 우승했습니다.");
+    public void printRaceStartMessage() {
+        System.out.println("실행 결과");
     }
 }

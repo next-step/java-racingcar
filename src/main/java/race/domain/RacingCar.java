@@ -7,7 +7,6 @@ public class RacingCar {
     private CarName name;
 
     public RacingCar(String name, Position position) {
-
         this.name = new CarName(name);
         this.position = position;
     }
@@ -20,18 +19,15 @@ public class RacingCar {
         this(name, 0);
     }
 
-    public String getName() {
-        return this.name.getName();
+    public void printName() {
+
+        this.name.printName();
     }
 
     public void moveForward(int value) {
         if (isMovable(value)) {
             this.position.move();
         }
-    }
-
-    public int getPosition() {
-        return this.position.getPosition();
     }
 
     public boolean hasSamePosition(int position) {
@@ -42,4 +38,15 @@ public class RacingCar {
         return number >= MOVE_CONDITION_NUMBER;
     }
 
+    public int findMaxValue(int maxValue) {
+        return this.position.findMaxValue(maxValue);
+    }
+
+    public String drawForwardDistance(String forwardString) {
+        return this.position.drawForwardDistance(forwardString);
+    }
+
+    public void printNameWithComma(boolean b) {
+        this.name.printNameWithComma(b);
+    }
 }
