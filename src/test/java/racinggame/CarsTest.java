@@ -29,7 +29,7 @@ public class CarsTest {
     public void 자동차_갯수로_생성테스트() {
         Cars cars = Cars.of(1);
         assertThat(cars.count()).isEqualTo(1);
-        assertThat(cars).isEqualTo(new Cars(carList(0)));
+        assertThat(cars).isEqualTo(new Cars(carList(1)));
     }
 
     @Test

@@ -23,7 +23,8 @@ public class RacingGameTest {
         racingGame.start(repeatAndCapacities);
 
         SnapShot result = racingGame.matchResult();
-        assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(carDtos(repeat, 0, repeat, repeat));
+        assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(
+                carDtos(repeat + 1, 1, repeat + 1, repeat + 1));
     }
 
     private static List<CarDto> carDtos(int... positions) {
