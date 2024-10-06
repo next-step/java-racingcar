@@ -11,13 +11,11 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
+        if(cars.isEmpty())throw new IllegalArgumentException("자동차가 비여 있을 수 없습니다.");
         this.cars = cars;
     }
 
     public static Cars of(int count) {
-        if (!isPositive(count)) {
-            throw new IllegalArgumentException("음수를 사용 할 수 없습니다.");
-        }
         return new Cars(carInitialization(count));
     }
 
