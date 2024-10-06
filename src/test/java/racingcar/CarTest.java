@@ -12,13 +12,7 @@ public class CarTest {
     @Test
     @DisplayName("랜덤 값이 4 미만일 경우, 위치가 변하지 않아야 한다.")
     void 랜덤값_4미만_멈춤() {
-        MoveStrategy moveStrategy = new MoveStrategy() {
-            @Override
-            public boolean isMove() {
-                return false;
-            }
-        };
-
+        MoveStrategy moveStrategy = () -> false;
         car = new Car("ming", moveStrategy);
         int prePosition = car.getPosition();
         car.run();
@@ -28,13 +22,7 @@ public class CarTest {
     @Test
     @DisplayName("랜덤 값이 4 이상일 경우, 위치가 변해야 한다.")
     void 랜덤값_4이상_전진() {
-        MoveStrategy moveStrategy = new MoveStrategy() {
-            @Override
-            public boolean isMove() {
-                return true;
-            }
-        };
-
+        MoveStrategy moveStrategy = () -> true;
         car = new Car("ming", moveStrategy);
         int prePosition = car.getPosition();
         car.run();
