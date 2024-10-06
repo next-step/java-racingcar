@@ -34,14 +34,15 @@ public class Car {
         return Objects.hash(position);
     }
 
-    static class CarDto{
+    static class CarDto {
+
         private final int position;
 
         public CarDto(int position) {
             this.position = position;
         }
 
-        public CarDto(Car car){
+        public CarDto(Car car) {
             this(car.position);
         }
 

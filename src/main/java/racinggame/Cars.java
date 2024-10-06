@@ -40,7 +40,7 @@ public class Cars {
         car.move(capacity);
     }
 
-    public int count(){
+    public int count() {
         return cars.size();
     }
 
@@ -62,8 +62,8 @@ public class Cars {
     }
 
     public List<CarDto> result() {
-        List<CarDto> result=new ArrayList<>();
-        for(Car car:cars){
+        List<CarDto> result = new ArrayList<>();
+        for (Car car : cars) {
             result.add(new CarDto(car));
         }
         return result;
