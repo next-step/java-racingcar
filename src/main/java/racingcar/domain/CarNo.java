@@ -3,18 +3,18 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class CarNo {
-    private final int carNo;
+    private final int value;
 
     private CarNo(int carNo) {
-        this.carNo = carNo;
+        this.value = carNo;
     }
 
     public static CarNo valueOf(int carNo) {
         return new CarNo(carNo);
     }
 
-    public int getCarNo() {
-        return this.carNo;
+    public int value() {
+        return this.value;
     }
 
     @Override
@@ -22,11 +22,11 @@ public class CarNo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarNo carNo1 = (CarNo) o;
-        return carNo == carNo1.carNo;
+        return value == carNo1.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(carNo);
+        return Objects.hashCode(value);
     }
 }

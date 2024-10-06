@@ -30,7 +30,7 @@ public class RacingCar {
     }
 
     public int getCarNo() {
-        return this.carNo.getCarNo();
+        return this.carNo.value();
     }
 
     public int getPosition() {

@@ -11,7 +11,7 @@ public class CarNoTest {
     @DisplayName("생성하면 입력한 차 번호를 가지고 있습니다.")
     public void getCarNoTest(int carNo) {
         CarNo carNoInstance = CarNo.valueOf(carNo);
-        Assertions.assertEquals(carNo, carNoInstance.getCarNo());
+        Assertions.assertEquals(carNo, carNoInstance.value());
     }
 
     @ParameterizedTest
