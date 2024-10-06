@@ -9,12 +9,9 @@ public class Racing {
 
     private static final Random RANDOM = new Random();
 
-
-    public List<Car> ready(int number) {
-      return new Garage().createCars(number);
-
+    public Garage ready(String names) {
+        return Garage.createCars(names);
     }
-
 
     public void game(List<Car> cars, int count) {
         for (int i = 0; i < count; i++) {
