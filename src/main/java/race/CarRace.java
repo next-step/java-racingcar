@@ -41,9 +41,10 @@ public class CarRace {
     private List<String> getWinners(int maxPosition) {
         List<String> raceResult = new ArrayList<>();
         for (Car car : cars) {
-            collectWinners(car, maxPosition, raceResult);
+            raceResult.add(collectWinners(car, maxPosition));
         }
 
+        raceResult.removeIf(String::isBlank);
         return raceResult;
     }
 
@@ -63,10 +64,11 @@ public class CarRace {
         return new RandomNumber(new Random().nextInt(MAX_RANGE));
     }
 
-    private void collectWinners(Car car, int maxPosition, List<String> raceResult) {
+    private String collectWinners(Car car, int maxPosition) {
         if (car.isMaxPosition(maxPosition)) {
-            raceResult.add(car.getCarName());
+            return car.getCarName();
         }
+        return "";
     }
 
     private int calculateMaxPosition() {
