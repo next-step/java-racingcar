@@ -27,7 +27,7 @@ public class CarRace {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return new ArrayList<>(cars);
     }
 
     public boolean isPlus() {
