@@ -18,7 +18,6 @@ public class RoundResult {
         return result.entrySet();
     }
 
-
     public List<String> findKeysByValue(int value) {
         List<String> keys = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : result.entrySet()) {

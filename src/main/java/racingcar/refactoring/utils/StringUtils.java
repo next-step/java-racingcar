@@ -2,8 +2,6 @@ package racingcar.refactoring.utils;
 
 public class StringUtils {
 
-    private static final int MAX_NAME_LENGTH = 5;
-
     private StringUtils() {
     }
 
