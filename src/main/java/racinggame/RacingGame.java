@@ -1,24 +1,23 @@
 package racinggame;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import racinggame.Car.CarDto;
+import racinggame.SnapShotStore.SnapShot;
 
 public class RacingGame {
 
-    private final List<List<CarDto>> snapShot;
+    private final SnapShotStore snapShotStore = new SnapShotStore();
     private Cars cars;
 
     public RacingGame(int carCount) {
         this.cars = Cars.of(carCount);
-        this.snapShot = new ArrayList<>();
     }
 
     public void start(List<List<Integer>> repeatAndCapacities) {
         for (List<Integer> capacities : repeatAndCapacities) {
             moveAll(capacities);
-            snapShot.add(cars.result());
+            snapShotStore.save(cars.result());
         }
     }
 
@@ -29,23 +28,6 @@ public class RacingGame {
     }
 
     public SnapShot matchResult() {
-        return new SnapShot(snapShot);
-    }
-
-    public static class SnapShot {
-
-        private final List<List<CarDto>> snapShot;
-
-        public SnapShot(List<List<CarDto>> snapShot) {
-            this.snapShot = snapShot;
-        }
-
-        public List<CarDto> getSnapShot(int index) {
-            return Collections.unmodifiableList(snapShot.get(index));
-        }
-
-        public int repeatCount() {
-            return snapShot.size();
-        }
+        return this.snapShotStore.snapShot();
     }
 }
