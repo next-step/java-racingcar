@@ -2,10 +2,10 @@ package racingcar.refactoring.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.winner.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.winner.utils.StringUtils.split;
+import static racingcar.refactoring.utils.StringUtils.repeatCharacter;
+import static racingcar.refactoring.utils.StringUtils.split;
 
 class StringUtilsTest {
 
@@ -18,7 +18,7 @@ class StringUtilsTest {
 
     @Test
     void 문자_반복() {
-        String result = StringUtils.repeatCharacter('-', 5);
+        String result = repeatCharacter('-', 5);
         assertThat(result).isEqualTo("-----");
     }
 }
