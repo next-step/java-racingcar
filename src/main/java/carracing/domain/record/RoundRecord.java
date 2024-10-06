@@ -2,6 +2,7 @@ package carracing.domain.record;
 
 import carracing.domain.car.Car;
 import carracing.domain.car.Position;
+import carracing.exception.RacingCarIllegalArgumentException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class RoundRecord {
         return cars.stream()
                 .map(Car::getPosition)
                 .reduce(Position::createMaxPosition)
-                .orElse(Position.from(0));
+                .orElseThrow(() -> RacingCarIllegalArgumentException.INVALID_MAX_POSITION);
     }
 
 }

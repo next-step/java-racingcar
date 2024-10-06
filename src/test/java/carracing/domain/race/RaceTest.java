@@ -1,6 +1,5 @@
 package carracing.domain.race;
 
-import carracing.domain.Race;
 import carracing.domain.car.Car;
 import carracing.domain.car.Name;
 import carracing.domain.car.Position;

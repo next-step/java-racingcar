@@ -15,10 +15,10 @@ public class ResultView {
             showRoundResult(roundRecord);
         }
 
-        showWinnerNames(roundRecords);
     }
 
     private void showRoundResult(RoundRecord roundRecord) {
+
         for (Car carRecord : roundRecord.getCars()) {
             System.out.printf("%-5s : %s%n", carRecord.getName(), "-".repeat(carRecord.getPosition().getValue()));
         }
@@ -26,20 +26,11 @@ public class ResultView {
         System.out.println();
     }
 
-    private void showWinnerNames(List<RoundRecord> roundRecords) {
-        RoundRecord lastRound = getLastRoundRecord(roundRecords);
-        List<String> winnerNames = getLeadingCarNames(lastRound);
-        System.out.printf("%s가 최종 우승했습니다.", String.join(", ", winnerNames));
-    }
-
-    private RoundRecord getLastRoundRecord(List<RoundRecord> roundRecords) {
-        return roundRecords.get(roundRecords.size() - 1);
-    }
-
-    private static List<String> getLeadingCarNames(RoundRecord roundRecord) {
-        return roundRecord.getLeadingCar()
-                .stream()
+    public void showWinnerNames(List<Car> cars) {
+        List<String> winnerNames = cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toUnmodifiableList());
+
+        System.out.printf("%s가 최종 우승했습니다.", String.join(", ", winnerNames));
     }
 }
