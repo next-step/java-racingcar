@@ -1,8 +1,9 @@
 package race.view;
 
-import race.domain.RacingCar;
+import race.domain.RaceResult;
 
 import java.util.List;
+import java.util.Map;
 
 public class ResultView {
     private static final String CAR_NAMES_REQUEST_STATEMENT = "경주할 자동차 이름을 입력하세요(각 이름은 5글자 이하, 자동차는 최소 2대 이상이며, 쉼표(,)를 기준으로 구분)";
@@ -28,16 +29,31 @@ public class ResultView {
         System.out.printf(LINE_BREAK + RESULT_TITLE + LINE_BREAK);
     }
 
-    public static void printCarStates(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            System.out.println(car.makeCarStateMessage());
-        }
-        System.out.printf(LINE_BREAK);
+    public static void printRaceResult(RaceResult raceResult) {
+        printCarStateMessages(raceResult.roundCarStateMessageMap());
+        printWinnerMessage(raceResult.winners());
     }
 
-    public static void printWinnerMessage(List<String> winners) {
+    private static void printCarStateMessages(Map<Integer, List<String>> roundCarStateMessageMap) {
+        for (int round : roundCarStateMessageMap.keySet()) {
+            printRoundMessage(round);
+            List<String> carStateMessages = roundCarStateMessageMap.get(round);
+            printCarStateMessages(carStateMessages);
+        }
+    }
+
+    private static void printWinnerMessage(List<String> winners) {
         String winnerMessage = makeWinnersMessage(winners);
         System.out.println(winnerMessage);
+    }
+
+    private static void printRoundMessage(int round) {
+        System.out.println("[round " + (round + 1) + "]");
+    }
+
+    private static void printCarStateMessages(List<String> carStateMessages) {
+        carStateMessages.forEach(System.out::println);
+        System.out.printf(LINE_BREAK);
     }
 
     private static String makeWinnersMessage(List<String> winners) {
