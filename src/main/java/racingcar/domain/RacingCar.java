@@ -5,8 +5,6 @@ import racingcar.domain.movableStrategy.MovableStrategy;
 import java.util.Objects;
 
 public class RacingCar {
-    private static final int INITIAL_POSITION = 0;
-
     private final CarName name;
     private final CarNo carNo;
     private Position position;
@@ -14,7 +12,7 @@ public class RacingCar {
     private RacingCar(CarName name, CarNo carNo) {
         this.name = name;
         this.carNo = carNo;
-        this.position = Position.valueOf(INITIAL_POSITION);
+        this.position = Position.valueOfInitialPosition();
     }
 
     public static RacingCar valueOf(String name, int carNo) {

@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position implements Comparable<Position> {
     private static final String NEGATIVE_POSITION_MESSAGE = "음수 포지션은 존재할 수 없습니다.";
     private static final int MOVE_AMOUNT = 1;
+    private static final int INITIAL_POSITION = 0;
 
     private final int position;
 
@@ -17,6 +18,10 @@ public class Position implements Comparable<Position> {
             throw new IllegalArgumentException(NEGATIVE_POSITION_MESSAGE);
         }
         return new Position(position);
+    }
+
+    public static Position valueOfInitialPosition() {
+        return new Position(INITIAL_POSITION);
     }
 
     public Position move() {
