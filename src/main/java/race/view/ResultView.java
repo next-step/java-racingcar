@@ -1,6 +1,8 @@
-package race;
+package race.view;
 
 import java.util.List;
+
+import race.car.Car;
 
 public class ResultView {
 
@@ -17,7 +19,7 @@ public class ResultView {
 
     private static void carForwardPrint(Car car) {
         System.out.print(car.getCarName() + OUTPUT_DELIMITER);
-        for (int i = 0; i < car.getForwardResult(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(FORWARD_STRING);
         }
         System.out.println();
