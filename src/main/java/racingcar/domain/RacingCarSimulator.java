@@ -60,7 +60,7 @@ public class RacingCarSimulator {
     }
 
     private static RacingWrapResultDTO simulateWrap(int wrapNo, List<RacingCar> racingCars) {
-        racingCars.forEach(racingCar -> racingCar.race(new RandomMovableStrategy()));
+        racingCars.forEach(racingCar -> racingCar.race(RandomMovableStrategy.getInstance()));
         RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingCars);
         return RacingWrapResultDTO.valueOf(wrapNo, carStates);
     }
