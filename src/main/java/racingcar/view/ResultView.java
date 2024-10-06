@@ -16,6 +16,7 @@ public class ResultView {
     }
 
     private static void printCarMovement(Car car) {
+        System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getMoveCount(); i++) {
             System.out.print(MOVE_UNIT);
         }
