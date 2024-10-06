@@ -35,4 +35,4 @@
   - view -> domain 의존은 가능, domain -> view 의존은 하지 않도록 주의
   - [ v ] Race -> InputView 의존 제거
   - [ v ] Race -> ResultView 의존 제거
-- [  ] 테스트 가능한 부분과 힘든 부분 분리
+- [ v ] 테스트 가능한 부분과 힘든 부분 분리
