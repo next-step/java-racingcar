@@ -7,10 +7,10 @@ public class Position implements Comparable<Position> {
     private static final int MOVE_AMOUNT = 1;
     private static final int INITIAL_POSITION = 0;
 
-    private final int position;
+    private final int value;
 
     private Position(int position) {
-        this.position = position;
+        this.value = position;
     }
 
     public static Position valueOf(int position) {
@@ -25,15 +25,15 @@ public class Position implements Comparable<Position> {
     }
 
     public Position move() {
-        return Position.valueOf(this.position + MOVE_AMOUNT);
+        return Position.valueOf(this.value + MOVE_AMOUNT);
     }
 
-    public int getPosition() {
-        return this.position;
+    public int value() {
+        return this.value;
     }
 
     public boolean isSamePosition(int position) {
-        return this.position == position;
+        return this.value == position;
     }
 
     @Override
@@ -41,16 +41,16 @@ public class Position implements Comparable<Position> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
-        return position == position1.position;
+        return value == position1.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(position);
+        return Objects.hashCode(value);
     }
 
     @Override
     public int compareTo(Position o) {
-        return Integer.compare(this.position, o.position);
+        return Integer.compare(this.value, o.value);
     }
 }

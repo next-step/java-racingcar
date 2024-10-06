@@ -14,7 +14,7 @@ public class PositionTest {
     @DisplayName("포지션을 생성하면 해당 포지션을 가지고 있습니다.")
     public void getPositionTest(int position) {
         Position positionInstance = Position.valueOf(position);
-        Assertions.assertEquals(position, positionInstance.getPosition());
+        Assertions.assertEquals(position, positionInstance.value());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class PositionTest {
     public void moveTest(int position) {
         Position positionInstance = Position.valueOf(position);
         Position newPositionInstance = positionInstance.move();
-        Assertions.assertEquals(position + 1, newPositionInstance.getPosition());
+        Assertions.assertEquals(position + 1, newPositionInstance.value());
     }
 
     @ParameterizedTest

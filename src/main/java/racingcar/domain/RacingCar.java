@@ -34,7 +34,7 @@ public class RacingCar {
     }
 
     public int getPosition() {
-        return this.position.getPosition();
+        return this.position.value();
     }
 
     public boolean isSamePosition(int position) {
