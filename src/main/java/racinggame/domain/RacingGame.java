@@ -11,9 +11,9 @@ public class RacingGame {
 
     private Integer repeatCount;
 
-    public RacingGame(int carCount,int repeatCount) {
-        this.cars = Cars.of(carCount);
+    public RacingGame(int repeatCount,int carCount) {
         this.repeatCount=repeatCount;
+        this.cars = Cars.of(carCount);
     }
 
     public SnapShot start(List<List<Integer>> repeatAndCapacities) {

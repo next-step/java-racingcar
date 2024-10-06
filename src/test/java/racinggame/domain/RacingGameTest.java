@@ -18,7 +18,7 @@ public class RacingGameTest {
     public void 이동횟수만큼_이동_테스트() {
         int repeat = 4;
 
-        RacingGame racingGame = new RacingGame(4,repeat);
+        RacingGame racingGame = new RacingGame(repeat,4);
         SnapShot result =  racingGame.start(new TestNumberGenerator(4));
 
         assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(
