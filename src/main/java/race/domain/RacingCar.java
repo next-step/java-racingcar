@@ -1,24 +1,21 @@
 package race.domain;
 
 public class RacingCar {
-    private static final int DEFAULT_STATE = 0;
-    private static final int MINIMUM_TO_GO_FORWARD = 4;
-    private static final String CAR_STATE_MARKER = "-";
-
-    private int state = 0;
+    private final CarState state;
     private final String name;
 
     public RacingCar(String name) {
-        this(name, DEFAULT_STATE);
+        this(name, new CarState());
     }
 
     public RacingCar(String name, int state) {
         this.name = name;
-        this.state = state;
+        this.state = new CarState(state);
     }
 
-    public int state() {
-        return this.state;
+    public RacingCar(String name, CarState state) {
+        this.name = name;
+        this.state = state;
     }
 
     public String name() {
@@ -26,33 +23,26 @@ public class RacingCar {
     }
 
     public String makeCarStateMessage() {
-        String carStateMarkers = CAR_STATE_MARKER.repeat(state);
+        String carStateMarkers = state.makeCarStateMarkers();
         return String.format("%s : %s", name, carStateMarkers);
     }
 
     public void moveCarForwardIfCanGo(int generatedRandom) {
-        boolean carCanGo = canGo(generatedRandom);
+        boolean carCanGo = state.canGo(generatedRandom);
         if (carCanGo) {
             moveForward();
         }
     }
 
     public int max(int maxState) {
-        if (state > maxState) {
-            return state;
-        }
-        return maxState;
-    }
-
-    private boolean canGo(int number) {
-        return number >= MINIMUM_TO_GO_FORWARD;
+        return state.max(maxState);
     }
 
     private void moveForward() {
-        state++;
+        state.moveForward();
     }
 
     public boolean isStateEqualWith(int state) {
-        return this.state == state;
+        return this.state.isEqualWith(state);
     }
 }

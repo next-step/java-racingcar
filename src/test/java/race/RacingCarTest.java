@@ -18,35 +18,7 @@ public class RacingCarTest {
         car.moveCarForwardIfCanGo(number);
 
         // then
-        assertThat(car.state()).isEqualTo(expected);
-    }
-
-    @Test
-    void 더_큰_상태값_반환() {
-        // given
-        int currentMaxState = 4;
-        int currentCarState = 5;
-        RacingCar car = new RacingCar("car 1", currentCarState);
-
-        // when
-        int result = car.max(currentMaxState);
-
-        // then
-        assertThat(result).isEqualTo(currentCarState);
-    }
-
-    @Test
-    void 상태값_같은지_검증() {
-        // given
-        int currentCarState = 5;
-        int inputState = 5;
-        RacingCar car = new RacingCar("car 1", currentCarState);
-
-        // when
-        boolean result = car.isStateEqualWith(inputState);
-
-        // then
-        assertThat(result).isTrue();
+        assertThat(car.isStateEqualWith(expected)).isTrue();
     }
 
     @Test
