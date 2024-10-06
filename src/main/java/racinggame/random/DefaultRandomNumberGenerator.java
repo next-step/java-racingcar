@@ -7,8 +7,8 @@ import java.util.Random;
 public class DefaultRandomNumberGenerator implements Radom{
 
     @Override
-    public List<List<Integer>> generate(int repeatCount, int carCount) {
-        return radoms(repeatCount, carCount);
+    public List<Integer> generate(int count) {
+        return carCapacity(count);
     }
 
     private static List<List<Integer>> radoms(int repeatCount, int carCount) {

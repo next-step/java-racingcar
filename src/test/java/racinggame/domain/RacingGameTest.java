@@ -42,15 +42,9 @@ public class RacingGameTest {
         }
 
         @Override
-        public List<List<Integer>> generate(int repeatCount, int carCount) {
-            List<List<Integer>> repeatAndCapacities = new ArrayList<>();
-            for (int i = 0; i < repeatCount; i++) {
-                repeatAndCapacities.add( new ArrayList<>(Collections.nCopies(carCount, value)));
-            }
-            return repeatAndCapacities;
+        public List<Integer> generate(int count) {
+            return  new ArrayList<>(Collections.nCopies(count, value));
         }
     }
-
-
 
 }

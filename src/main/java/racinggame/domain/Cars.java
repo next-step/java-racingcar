@@ -62,4 +62,10 @@ public class Cars {
         }
         return result;
     }
+
+    public void move(List<Integer> generate) {
+        for(int i=0;i<generate.size();i++){
+            move(i,generate.get(i));
+        }
+    }
 }
