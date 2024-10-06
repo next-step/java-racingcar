@@ -16,7 +16,7 @@ public class Car {
         }
     }
 
-    public int getMax(int max) {
+    public int compareMax(int max) {
         return this.position.compareMax(max);
     }
 
