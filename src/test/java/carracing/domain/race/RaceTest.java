@@ -3,9 +3,10 @@ package carracing.domain.race;
 import carracing.domain.car.Car;
 import carracing.domain.car.Name;
 import carracing.domain.car.Position;
+import carracing.domain.move.ForwardStrategy;
+import carracing.domain.move.MoveStrategy;
+import carracing.domain.move.StopStrategy;
 import carracing.domain.record.RoundRecord;
-import carracing.random.TestFixedNumberGenerator;
-import carracing.random.TestFixedNumbersGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,7 +21,7 @@ class RaceTest {
     @DisplayName("이름 리스트로 자동차들을 초기화 할 수 있다")
     @Test
     void of() {
-        TestFixedNumberGenerator testFixedNumberGenerator = new TestFixedNumberGenerator(3);
+        MoveStrategy moveStrategy = new StopStrategy();
         List<String> carNames = List.of("green", "blue", "red");
         List<Car> expected = List.of(
                 Car.of(Name.from("green"), Position.from(1)),
@@ -28,7 +29,7 @@ class RaceTest {
                 Car.of(Name.from("red"), Position.from(1))
         );
 
-        Race race = Race.of(carNames, 1, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 1, moveStrategy);
 
         assertThat(race.getCars())
                 .hasSize(3)
@@ -40,9 +41,9 @@ class RaceTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 9, 100})
     void moveCars(int randomNumber) {
-        TestFixedNumberGenerator testFixedNumberGenerator = new TestFixedNumberGenerator(randomNumber);
+        MoveStrategy moveStrategy = new ForwardStrategy();
         List<String> carNames = List.of("green");
-        Race race = Race.of(carNames, 1, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 1, moveStrategy);
 
         List<RoundRecord> expected = List.of(
                 RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1)))),
@@ -57,37 +58,12 @@ class RaceTest {
                 .isEqualTo(expected);
     }
 
-    @DisplayName("난수 값이 4미만이면 자동차를 움직이지 못한다.")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    void noMoveCars(int randomNumber) {
-        TestFixedNumberGenerator testFixedNumberGenerator = new TestFixedNumberGenerator(randomNumber);
-        List<String> carNames = List.of("green");
-        Race race = Race.of(carNames, 1, testFixedNumberGenerator);
-
-        List<RoundRecord> expected = List.of(
-                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1)))),
-                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1))))
-        );
-
-        List<RoundRecord> result = race.start();
-
-        assertThat(result)
-                .hasSize(2)
-                .usingRecursiveComparison()
-                .isEqualTo(expected);
-    }
-
     @DisplayName("3대의 자동차 목록에서 3라운드동안 이동한 결과를 반환 받을 수 있다.")
     @Test
     void getCarRecords() {
-        TestFixedNumbersGenerator testFixedNumberGenerator = new TestFixedNumbersGenerator(List.of(
-                7, 9, 8,
-                8, 8, 4,
-                9, 5, 4
-        ));
+        MoveStrategy moveStrategy = new ForwardStrategy();
         List<String> carNames = List.of("green", "blue", "red");
-        Race race = Race.of(carNames, 3, testFixedNumberGenerator);
+        Race race = Race.of(carNames, 3, moveStrategy);
 
         List<RoundRecord> expected = List.of(
                 RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1)), Car.of(Name.from("blue"), Position.from(1)), Car.of(Name.from("red"), Position.from(1)))),

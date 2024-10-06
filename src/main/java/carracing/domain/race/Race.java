@@ -2,7 +2,7 @@ package carracing.domain.race;
 
 import carracing.domain.car.Car;
 import carracing.domain.car.Name;
-import carracing.domain.random.RandomNumberGenerator;
+import carracing.domain.move.MoveStrategy;
 import carracing.domain.record.RoundRecord;
 
 import java.util.ArrayList;
@@ -11,18 +11,18 @@ import java.util.stream.Collectors;
 
 public class Race {
     private final int totalRoundNumber;
-    private final RandomNumberGenerator randomNumberGenerator;
+    private final MoveStrategy moveStrategy;
     private final List<RoundRecord> roundRecords = new ArrayList<>();
 
     private List<Car> cars = new ArrayList<>();
 
-    private Race(List<Car> cars, int rounds, RandomNumberGenerator randomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
+    private Race(List<Car> cars, int rounds, MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
         this.totalRoundNumber = rounds;
         this.cars.addAll(cars);
     }
 
-    public static Race of(List<String> carNames, int rounds, RandomNumberGenerator randomNumberGenerator) {
+    public static Race of(List<String> carNames, int rounds, MoveStrategy randomNumberGenerator) {
         List<Car> cars = createCars(carNames);
         return new Race(cars, rounds, randomNumberGenerator);
     }
@@ -58,9 +58,6 @@ public class Race {
     }
     private void moveCars() {
         cars = cars.stream()
-                .map(car -> {
-                    int randomDistance = randomNumberGenerator.generate();
-                    return car.move(randomDistance);
-                }).collect(Collectors.toUnmodifiableList());
+                .map(car -> car.move(moveStrategy)).collect(Collectors.toUnmodifiableList());
     }
 }

@@ -1,10 +1,10 @@
 package carracing.domain.car;
 
+import carracing.domain.move.MoveStrategy;
+
 import java.util.Objects;
 
 public class Car {
-    private static final int ALLOWED_MINIMUM_DISTANCE = 4;
-
     private final Name name;
     private final Position position;
 
@@ -21,23 +21,19 @@ public class Car {
         return new Car(name, Position.create());
     }
 
-    public Car move(int randomNumber) {
-        if (canMove(randomNumber)) {
+    public Car move(MoveStrategy strategy) {
+        if (strategy.isMovable()) {
             Position increasedPosition = Position.from(position.increase());
             return new Car(name, increasedPosition);
         }
         return new Car(name, position);
     }
 
-    private boolean canMove(int distance) {
-        return distance >= ALLOWED_MINIMUM_DISTANCE;
-    }
-
     public boolean isPositionEqualTo(Position position) {
         return this.position.isSame(position);
     }
 
-    public String  getName() {
+    public String getName() {
         return name.getValue();
     }
 
