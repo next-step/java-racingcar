@@ -1,6 +1,10 @@
 package racingcar.refactoring.domain;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RoundResult {
 
@@ -19,12 +23,11 @@ public class RoundResult {
     }
 
     public List<String> findKeysByValue(int value) {
-        List<String> keys = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : result.entrySet()) {
-            if (entry.getValue() == value) {
-                keys.add(entry.getKey());
-            }
-        }
-        return keys;
+        return result.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() == value)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
     }
 }
