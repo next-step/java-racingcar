@@ -14,7 +14,7 @@ import java.util.Map;
 public class GameController {
 
     private final Cars cars;
-    private int numberOfTries;
+    private final int numberOfTries;
 
     public GameController(String names, int numberOfTries) {
         this.cars = createCars(names);
@@ -42,9 +42,7 @@ public class GameController {
     }
 
     private RoundResult playRound() {
-        for (Car car : cars.getCars()) {
-            car.move();
-        }
+        cars.moveAll();
         return getRoundGameResult();
     }
 
