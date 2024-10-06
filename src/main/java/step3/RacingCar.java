@@ -43,6 +43,7 @@ public class RacingCar {
     public void startRacing() {
         for (int i = 0; i < numberOfRace; i++) {
             moveCar();
+            RacingCarResultView.printRacingCarStatus(this);
         }
     }
 

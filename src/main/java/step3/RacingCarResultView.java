@@ -10,6 +10,7 @@ public class RacingCarResultView {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
 }
