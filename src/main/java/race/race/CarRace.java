@@ -1,6 +1,7 @@
 package race.race;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -30,7 +31,7 @@ public class CarRace {
     }
 
     public List<Car> getCars() {
-        return new ArrayList<>(cars);
+        return Collections.unmodifiableList(cars);
     }
 
     public boolean isPlus() {
