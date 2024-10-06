@@ -1,7 +1,7 @@
 package racingcar;
 
-public class CarManager {
-    CarManager(String[] carNames) {
+public class Race {
+    Race(String[] carNames) {
         for (String carName : carNames) {
             Cars.addCar(new Car(carName));
         }
