@@ -4,7 +4,7 @@ public class Name {
 
     private static final int MAX_NAME_LENGTH = 5;
 
-    String name;
+    private String name;
 
     public Name(String name) {
         checkNameLength(name);

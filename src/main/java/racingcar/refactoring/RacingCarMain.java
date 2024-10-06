@@ -2,6 +2,7 @@ package racingcar.refactoring;
 
 import racingcar.refactoring.controller.GameController;
 import racingcar.refactoring.domain.GameResult;
+import racingcar.refactoring.domain.RoundResult;
 import racingcar.refactoring.view.ResultView;
 
 import java.util.List;
@@ -26,14 +27,14 @@ public class RacingCarMain {
         ResultView.showResultDescription();
     }
 
-    private static void printRoundResults(List<Map<String, Integer>> gameResults) {
-        for (Map<String, Integer> gameResult : gameResults) {
-            printRoundResult(gameResult);
+    private static void printRoundResults(List<RoundResult> roundResults) {
+        for (RoundResult roundResult : roundResults) {
+            printRoundResult(roundResult);
         }
     }
 
-    private static void printRoundResult(Map<String, Integer> gameResult) {
-        for (Map.Entry<String, Integer> entry : gameResult.entrySet()) {
+    private static void printRoundResult(RoundResult roundResult) {
+        for (Map.Entry<String, Integer> entry : roundResult.getEntrySet()) {
             ResultView.showCarNameAndResult(entry.getKey(), entry.getValue());
         }
         ResultView.nextLine();
