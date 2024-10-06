@@ -8,6 +8,7 @@ import racinggame.Car.CarDto;
 
 public class Cars {
 
+    private static final int DEFAULT_POSITION = 0;
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -22,15 +23,15 @@ public class Cars {
     }
 
     private static boolean isPositive(int number) {
-        return 0 <= number;
+        return DEFAULT_POSITION <= number;
     }
 
     private static ArrayList<Car> carInitialization(int carCount) {
         assert -1 < carCount;
 
         ArrayList<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(0));
+        for (int i = DEFAULT_POSITION; i < carCount; i++) {
+            cars.add(new Car(DEFAULT_POSITION));
         }
         return cars;
     }
