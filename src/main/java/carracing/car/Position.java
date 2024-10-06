@@ -1,14 +1,14 @@
-package carracing;
+package carracing.car;
 
 import java.util.Objects;
 
-public class CarPosition {
+public class Position {
     private final int value;
 
-    public CarPosition() {
+    public Position() {
         this.value = 0;
     }
-    public CarPosition(int value) {
+    public Position(int value) {
         this.value = value;
     }
 
@@ -16,7 +16,7 @@ public class CarPosition {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CarPosition that = (CarPosition) o;
+        Position that = (Position) o;
         return value == that.value;
     }
 
@@ -25,11 +25,11 @@ public class CarPosition {
         return Objects.hash(value);
     }
 
-    public CarPosition increase() {
-        return new CarPosition(this.value + 1);
+    public Position increase() {
+        return new Position(this.value + 1);
     }
 
-    public int getMax(int max) {
+    public int compareMax(int max) {
         return Math.max(max, this.value);
     }
 

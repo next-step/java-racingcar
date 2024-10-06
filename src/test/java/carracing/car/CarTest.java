@@ -1,5 +1,7 @@
-package carracing;
+package carracing.car;
 
+import carracing.car.Car;
+import carracing.car.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ class CarTest {
 
         car.move(4);
 
-        assertThat(car.getPosition()).isEqualTo(new CarPosition(1));
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @DisplayName("기준 값이 4 미만 일때에는 차가 전진하지 않는다.")
@@ -23,6 +25,6 @@ class CarTest {
 
         car.move(3);
 
-        assertThat(car.getPosition()).isEqualTo(new CarPosition(0));
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 }

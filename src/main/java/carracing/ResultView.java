@@ -1,5 +1,8 @@
 package carracing;
 
+import carracing.car.Car;
+import carracing.car.Position;
+
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
@@ -22,9 +25,9 @@ public class ResultView {
         System.out.println(stringBuilder);
     }
 
-    private static StringBuilder createResultByAMoveTryCount(Map<Car, CarPosition> carsMoveStatusHistoryByTryCount) {
+    private static StringBuilder createResultByAMoveTryCount(Map<Car, Position> carsMoveStatusHistoryByTryCount) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Map.Entry<Car, CarPosition> carMoveStatusHistoryByTryCount : carsMoveStatusHistoryByTryCount.entrySet()) {
+        for (Map.Entry<Car, Position> carMoveStatusHistoryByTryCount : carsMoveStatusHistoryByTryCount.entrySet()) {
             stringBuilder
                     .append(carMoveStatusHistoryByTryCount.getKey().getCarNameString())
                     .append(COLON)
@@ -34,8 +37,8 @@ public class ResultView {
         return stringBuilder;
     }
 
-    private static String createDashBy(CarPosition position) {
-        return CAR_MOVESTATUS_DASH.repeat(position.getMax(0));
+    private static String createDashBy(Position position) {
+        return CAR_MOVESTATUS_DASH.repeat(position.compareMax(0));
     }
 
     public static void printCarRacingWinners(List<String> winnersNames) {

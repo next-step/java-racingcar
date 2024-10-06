@@ -1,5 +1,7 @@
 package carracing;
 
+import carracing.car.Car;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,13 +12,11 @@ public class CarRacing {
     private final List<Car> cars;
     private final int moveTryCount;
     private final CarsMoveStatusHistory carsMoveStatusHistory;
-    private int playCount;
 
     public CarRacing(String[] carNames, int moveTryCount) {
         this.cars = this.createRaceCars(carNames);
         this.moveTryCount = moveTryCount;
         this.carsMoveStatusHistory = new CarsMoveStatusHistory();
-        this.playCount = 0;
     }
 
     private List<Car> createRaceCars(String[] carNames) {
@@ -35,10 +35,6 @@ public class CarRacing {
         return moveTryCount;
     }
 
-    public int getPlayCount() {
-        return playCount;
-    }
-
     public CarsMoveStatusHistory getCarsMoveStatusHistory() {
         return carsMoveStatusHistory;
     }
@@ -46,7 +42,6 @@ public class CarRacing {
     public void start() {
         for (int i = 0; i < this.moveTryCount; i++) {
             this.moveCarsWithRandom();
-            this.playCount += 1;
             this.carsMoveStatusHistory.save(this.cars);
         }
         ResultView.printCarRacingResult(this.carsMoveStatusHistory);
@@ -60,9 +55,5 @@ public class CarRacing {
         for (Car car : this.cars) {
             car.move(RANDOM.nextInt(10));
         }
-    }
-
-    public boolean isFinish() {
-        return this.playCount == this.moveTryCount;
     }
 }

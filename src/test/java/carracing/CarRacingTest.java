@@ -12,20 +12,10 @@ class CarRacingTest {
         CarRacing carRacing = new CarRacing(new String[]{"moon", "zi"}, 3);
 
         assertThat(carRacing.getCars()).hasSize(2);
-        assertThat(carRacing.getPlayCount()).isZero();
         assertThat(carRacing.getMoveTryCount()).isEqualTo(3);
         assertThat(carRacing.getCarsMoveStatusHistory())
                 .isNotNull()
                 .isInstanceOf(CarsMoveStatusHistory.class);
     }
 
-    @DisplayName("경기가 진행되고 끝나면 경기의 진행 횟수는 이동 시도 횟수와 같은 값이다.")
-    @Test
-    void playCount_is_equalTo_moveTryCount_when_carRacing_is_over() {
-        CarRacing carRacing = new CarRacing(new String[]{"moon", "zi"}, 3);
-
-        carRacing.start();
-
-        assertThat(carRacing.isFinish()).isTrue();
-    }
 }
