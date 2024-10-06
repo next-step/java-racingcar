@@ -14,21 +14,19 @@ public class ResultView {
         for (RoundRecord roundRecord : roundRecords) {
             showRoundResult(roundRecord);
         }
-
     }
 
     private void showRoundResult(RoundRecord roundRecord) {
 
         for (Car carRecord : roundRecord.getCars()) {
-            System.out.printf("%-5s : %s%n", carRecord.getName(), "-".repeat(carRecord.getPosition().getValue()));
+            System.out.printf("%-5s : %s%n", carRecord.getCarName(), "-".repeat(carRecord.getCarPosition()));
         }
-
         System.out.println();
     }
 
     public void showWinnerNames(List<Car> cars) {
         List<String> winnerNames = cars.stream()
-                .map(Car::getName)
+                .map(Car::getCarName)
                 .collect(Collectors.toUnmodifiableList());
 
         System.out.printf("%s가 최종 우승했습니다.", String.join(", ", winnerNames));

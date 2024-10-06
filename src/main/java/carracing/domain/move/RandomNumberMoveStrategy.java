@@ -11,7 +11,6 @@ public class RandomNumberMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMovable() {
-        int randomNum = random.nextInt(RANDOM_NUMBER_BOUND);
-        return randomNum >= ALLOWED_MINIMUM_DISTANCE;
+        return random.nextInt(RANDOM_NUMBER_BOUND) >= ALLOWED_MINIMUM_DISTANCE;
     }
 }

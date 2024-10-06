@@ -23,19 +23,20 @@ public class Race {
     }
 
     public static Race of(List<String> carNames, int rounds, MoveStrategy randomNumberGenerator) {
-        List<Car> cars = createCars(carNames);
-        return new Race(cars, rounds, randomNumberGenerator);
+        return new Race(createCars(carNames), rounds, randomNumberGenerator);
     }
 
     public List<RoundRecord> start() {
         recordRound();
+        startRounds();
+        return roundRecords;
+    }
 
+    private void startRounds() {
         for (int i = 0; i < totalRoundNumber; i++) {
             moveCars();
             recordRound();
         }
-
-        return roundRecords;
     }
 
     public List<Car> getWinners() {
@@ -56,8 +57,10 @@ public class Race {
     private void recordRound() {
         roundRecords.add(RoundRecord.from(cars));
     }
+
     private void moveCars() {
         cars = cars.stream()
-                .map(car -> car.move(moveStrategy)).collect(Collectors.toUnmodifiableList());
+                .map(car -> car.move(moveStrategy))
+                .collect(Collectors.toUnmodifiableList());
     }
 }

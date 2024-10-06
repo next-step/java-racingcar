@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class Name {
     private static final int ALLOWED_MAXIMUM_NAME_LENGTH = 5;
+
     private final String value;
 
     private Name(String value) {
@@ -17,6 +18,7 @@ public class Name {
         if (StringUtil.isBlank(name) || name.length() > ALLOWED_MAXIMUM_NAME_LENGTH) {
             throw RacingCarIllegalArgumentException.INVALID_NAME_LENGTH;
         }
+
         return new Name(name);
     }
 

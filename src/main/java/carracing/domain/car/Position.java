@@ -7,6 +7,7 @@ import java.util.Objects;
 public class Position {
     private static final int DEFAULT_POSITION = 1;
     private static final int DEFAULT_INCREMENT = 1;
+
     private final int value;
 
     private Position(int value) {

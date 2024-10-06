@@ -20,8 +20,10 @@ public class RoundRecord {
     }
 
     public List<Car> getLeadingCar() {
+        Position maxPosition = calculateMaxPosition();
+
         return cars.stream()
-                .filter(car -> car.isPositionEqualTo(calculateMaxPosition()))
+                .filter(car -> car.isPositionEqualTo(maxPosition))
                 .collect(Collectors.toUnmodifiableList());
     }
 
@@ -36,5 +38,4 @@ public class RoundRecord {
                 .reduce(Position::createMaxPosition)
                 .orElseThrow(() -> RacingCarIllegalArgumentException.INVALID_MAX_POSITION);
     }
-
 }

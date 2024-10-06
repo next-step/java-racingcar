@@ -33,8 +33,12 @@ public class Car {
         return this.position.isSame(position);
     }
 
-    public String getName() {
+    public String getCarName() {
         return name.getValue();
+    }
+
+    public int getCarPosition() {
+        return position.getValue();
     }
 
     public Position getPosition() {
