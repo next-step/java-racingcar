@@ -22,4 +22,11 @@ public class CarsTest {
         assertThat(cars.getCars()).contains(new Car(0));
     }
 
+    @Test
+    public void 자동차_이동테스트() {
+        Cars cars = Cars.of(1);
+        cars.moveAll();
+        assertThat(cars.getCars()).contains(new Car(1));
+    }
+
 }

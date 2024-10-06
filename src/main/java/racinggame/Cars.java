@@ -2,6 +2,7 @@ package racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
 
@@ -34,5 +35,12 @@ public class Cars {
 
     public List<Car> getCars() {
         return this.cars;
+    }
+
+    public void moveAll() {
+        Random random = new Random();
+        for (Car car:cars){
+            car.move(random.nextInt(10));
+        }
     }
 }
