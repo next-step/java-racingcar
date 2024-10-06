@@ -16,7 +16,7 @@ public class ResultView {
 
     private static void printAll(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName()+" : "+car.getStatus(symbol));
+            System.out.println(car.getName() + " : " + car.getStatus(symbol));
         }
         System.out.println();
     }
