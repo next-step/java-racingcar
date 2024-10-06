@@ -48,7 +48,7 @@ public class CarRacing {
     }
 
     private int findCurrentWrapNo() {
-        return Collections.max(this.getWrapResults().getWrapResults(), Comparator.comparingInt(RacingWrapResultDTO::getWrapNumber)).getWrapNumber();
+        return Collections.max(this.wrapResults.getWrapResults(), Comparator.comparingInt(RacingWrapResultDTO::getWrapNumber)).getWrapNumber();
     }
 
     public RacingWrapResultsDTO getWrapResults() {
