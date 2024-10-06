@@ -1,7 +1,7 @@
 package step4racinggamewinner;
 
 public class Position {
-    private int position = 0;
+    private int position;
 
     public Position(int positionNumber) {
         position = positionNumber;

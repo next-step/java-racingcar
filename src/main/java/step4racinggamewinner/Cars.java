@@ -2,7 +2,9 @@ package step4racinggamewinner;
 
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cars {
 
@@ -57,6 +59,13 @@ public class Cars {
         }
     }
 
+    public Map<String, Integer> currentCarNameAndPosition() {
+        Map<String, Integer> carNamePosition = new LinkedHashMap<>();
+        for (Car car : cars) {
+            carNamePosition.put(car.carName(), car.currentPosition());
+        }
+        return carNamePosition;
+    }
 
     public List<Integer> currentCarPositionList() {
         List<Integer> movementList = new ArrayList<>();
