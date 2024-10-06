@@ -34,10 +34,6 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getCars() {
-        return this.cars;
-    }
-
     public void mode(int index, int capacity) {
         Car car = cars.get(index);
         car.move(capacity);
