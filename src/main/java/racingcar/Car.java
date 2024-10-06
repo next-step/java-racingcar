@@ -19,10 +19,9 @@ public class Car {
     }
 
     public void run(boolean isMove) {
-        if (!isMove) {
-            return;
+        if (isMove) {
+            this.position++;
         }
-        this.position++;
     }
 
     public String getStatus(String symbol) {
