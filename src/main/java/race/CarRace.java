@@ -35,7 +35,7 @@ public class CarRace {
     }
 
     public List<String> getRaceResult() {
-        return getWinners(calculateMaxPosition(cars.size(), getCars()));
+        return getWinners(calculateMaxPosition());
     }
 
     private List<String> getWinners(int maxPosition) {
@@ -69,10 +69,10 @@ public class CarRace {
         }
     }
 
-    private int calculateMaxPosition(int size, List<Car> cars) {
+    private int calculateMaxPosition() {
         int maxPosition = 0;
-        for (int i = 0; i < size; i++) {
-            maxPosition = compareMaxPosition(cars.get(i), maxPosition);
+        for (Car car : cars) {
+            maxPosition = compareMaxPosition(car, maxPosition);
         }
         return maxPosition;
     }
