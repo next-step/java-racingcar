@@ -14,7 +14,7 @@ public class CarNameTest {
     @DisplayName("생성하면 차 이름을 가지고 있습니다.")
     public void getCarNameTest(String carName) {
         CarName carNameInstance = CarName.valueOf(carName);
-        Assertions.assertEquals(carName, carNameInstance.getCarName());
+        Assertions.assertEquals(carName, carNameInstance.value());
     }
 
     @Test

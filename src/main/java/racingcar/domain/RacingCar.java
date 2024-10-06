@@ -26,7 +26,7 @@ public class RacingCar {
     }
 
     public String getName() {
-        return this.name.getCarName();
+        return this.name.value();
     }
 
     public int getCarNo() {
