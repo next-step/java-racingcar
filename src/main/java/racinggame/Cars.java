@@ -3,12 +3,11 @@ package racinggame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 import racinggame.Car.CarDto;
 
 public class Cars {
 
-    private static final int DEFAULT_POSITION = 0;
+    private static final int DEFAULT_POSITION = 1;
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -30,13 +29,13 @@ public class Cars {
         assert -1 < carCount;
 
         ArrayList<Car> cars = new ArrayList<>();
-        for (int i = DEFAULT_POSITION; i < carCount; i++) {
+        for (int i = 0; i < carCount; i++) {
             cars.add(new Car(DEFAULT_POSITION));
         }
         return cars;
     }
 
-    public void mode(int index, int capacity) {
+    public void move(int index, int capacity) {
         Car car = cars.get(index);
         car.move(capacity);
     }

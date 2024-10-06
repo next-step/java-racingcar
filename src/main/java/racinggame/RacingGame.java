@@ -1,8 +1,6 @@
 package racinggame;
 
-import java.util.Collections;
 import java.util.List;
-import racinggame.Car.CarDto;
 import racinggame.SnapShotStore.SnapShot;
 
 public class RacingGame {
@@ -23,7 +21,7 @@ public class RacingGame {
 
     private void moveAll(List<Integer> capacities) {
         for (int i = 0; i < capacities.size(); i++) {
-            cars.mode(i, capacities.get(i));
+            cars.move(i, capacities.get(i));
         }
     }
 
