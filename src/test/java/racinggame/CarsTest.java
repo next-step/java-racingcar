@@ -18,8 +18,8 @@ public class CarsTest {
     public void 자동차_생성테스트() {
         List<Car> list = List.of(new Car(0), new Car(1), new Car(2), new Car(3), new Car(4));
         Cars cars = new Cars(list);
-        assertThat(cars.count()).isEqualTo(1);
         assertThat(cars.getCars()).containsAll(list);
+        assertThat(cars.count()).isEqualTo(list.size());
     }
 
     @Test
