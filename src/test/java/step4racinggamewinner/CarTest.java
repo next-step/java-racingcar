@@ -55,8 +55,19 @@ public class CarTest {
         randomGenerator = new TestRandomGenerator();
         cars = new Cars("red,blue");
         cars.recordEachRoundMoving(randomGenerator);
-        assertThat(cars.currentCarMovement())
+        assertThat(cars.currentCarPositionList())
                 .isEqualTo(List.of(1, 1));
     }
+
+    @Test
+    void 우승자_찾기() {
+        Car red = new Car("red", 4);
+        Car kaki = new Car("kaki", 2);
+        Car blue = new Car("blue", 4);
+        cars = new Cars(List.of(red, kaki, blue));
+        assertThat(cars.findWinner()).isEqualTo(List.of("red", "blue"));
+
+    }
+
 
 }

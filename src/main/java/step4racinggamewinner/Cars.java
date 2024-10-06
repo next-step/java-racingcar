@@ -14,12 +14,17 @@ public class Cars {
     public Cars() {
     }
 
+
     public Cars(String carNames) {
         cars = new ArrayList<>();
         List<String> carNamesList = List.of(carNames.split(","));
 
         checkNameLength(carNamesList);
         registCars(carNamesList);
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     private void registCars(List<String> carNamesList) {
@@ -53,11 +58,31 @@ public class Cars {
     }
 
 
-    public List<Integer> currentCarMovement() {
+    public List<Integer> currentCarPositionList() {
         List<Integer> movementList = new ArrayList<>();
         for (Car car : cars) {
-            movementList.add(car.currentMovement());
+            movementList.add(car.currentPosition());
         }
         return movementList;
     }
+
+
+    public List<String> findWinner() {
+
+        List<Integer> positionList = currentCarPositionList();
+        List<String> winnerNameList = new ArrayList<>();
+        winnerNameList.add(cars.get(0).carName());
+        int currentPosition = positionList.get(0);
+        for (int i = 1; i < positionList.size(); i++) {
+            if (currentPosition == positionList.get(i)) {
+                winnerNameList.add(cars.get(i).carName());
+            } else if (currentPosition < positionList.get(i)) {
+                winnerNameList.clear();
+                winnerNameList.add(cars.get(i).carName());
+            }
+        }
+        return winnerNameList;
+
+    }
+
 }

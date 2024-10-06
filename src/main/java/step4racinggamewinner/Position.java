@@ -11,7 +11,7 @@ public class Position {
         position += movement;
     }
 
-    public int currentMovement() {
+    public int currentPosition() {
         return position;
     }
 }

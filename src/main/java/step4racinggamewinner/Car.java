@@ -5,15 +5,24 @@ public class Car {
     private Position position;
 
     public Car(String carName) {
+        this(carName, 0);
+    }
+
+    public Car(String carName, int positionNumber) {
         this.carName = carName;
-        position = new Position(0);
+        position = new Position(positionNumber);
     }
 
     public void updateMovement(int movement) {
         position.updateMovement(movement);
     }
 
-    public int currentMovement() {
-        return position.currentMovement();
+    public int currentPosition() {
+        return position.currentPosition();
     }
+
+    public String carName() {
+        return this.carName;
+    }
+
 }
