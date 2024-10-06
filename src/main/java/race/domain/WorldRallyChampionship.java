@@ -1,4 +1,6 @@
-package race;
+package race.domain;
+
+import race.view.InputView;
 
 import java.util.List;
 

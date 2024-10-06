@@ -2,6 +2,7 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.RacingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,25 +18,9 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("랜덤으로 뽑은 값이 기준 이상일 경우 차는 한 칸 전진한다.")
-    public void givenIntOverFour_racingCarShouldBeMoveForward() {
-        FakeRandom fakeRandom = new FakeRandom(4);
-        NumberPicker numberPicker = new NumberPicker(fakeRandom);
-        RacingCar racingCar = new RacingCar("car", numberPicker);
-        racingCar.moveForward();
-
-        assertThat(racingCar.getPosition()).isEqualTo(1);
-    }
-
-    @Test
     @DisplayName("차 위치와 주어진 위치가 동일한 지 비교한다.")
     public void carPositionAndGivenPositionAreSame() {
-        FakeRandom fakeRandom = new FakeRandom(4);
-        NumberPicker numberPicker = new NumberPicker(fakeRandom);
-        RacingCar racingCar = new RacingCar("car", numberPicker);
-
-        racingCar.moveForward();
-        racingCar.moveForward();
+        RacingCar racingCar = new RacingCar("car", 2);
 
         assertThat(racingCar.hasSamePosition(2)).isTrue();
     }

@@ -2,9 +2,10 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.RacingCar;
+import race.domain.RacingCarGame;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,19 +26,13 @@ public class RacingCarGameTest {
     @Test
     @DisplayName("특정 차량이 앞서있는 경우 해당 차량이 우승자가 된다.")
     public void pickRaceWinner1() {
-        List<String> carNames = List.of("test1", "test2");
-        FakeRandom fakeRandom = new FakeRandom(4);
-        NumberPicker numberPicker = new NumberPicker(fakeRandom);
+        RacingCar racingCar1 = new RacingCar("test1");
+        RacingCar racingCar2 = new RacingCar("test2");
 
-        List<RacingCar> racingCars = carNames.stream()
-                .map(name -> new RacingCar(name, numberPicker))
-                .collect(Collectors.toList());
+        racingCar1.moveForward(4);
+        racingCar1.moveForward(4);
 
-        RacingCarGame racingCarGame = new RacingCarGame(racingCars);
-
-        RacingCar racingCar = racingCars.get(0);
-        racingCar.moveForward();
-        racingCar.moveForward();
+        RacingCarGame racingCarGame = new RacingCarGame(List.of(racingCar1, racingCar2));
 
         List<RacingCar> winners = racingCarGame.findWinners();
 

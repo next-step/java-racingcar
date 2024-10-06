@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import java.util.Random;
 
@@ -13,7 +13,7 @@ public class NumberPicker {
         this.random = random;
     }
 
-    public int generateRandomNumberUnderTen() {
-        return this.random.nextInt(10);
+    public int generateRandomNumber(int limit) {
+        return this.random.nextInt(limit);
     }
 }

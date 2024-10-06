@@ -1,4 +1,6 @@
-package race;
+package race.domain;
+
+import race.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,6 +10,8 @@ public class RacingCarGame {
     private final ResultView resultView = new ResultView();
     private final List<RacingCar> racingCars;
     private final int raceCount;
+    private final NumberPicker numberPicker = new NumberPicker();
+    private final static int RANDOM_NUMBER_LIMIT = 10;
 
     public RacingCarGame(List<String> carNames, int raceCount) {
         this.racingCars = carNames.stream().map(RacingCar::new).collect(Collectors.toUnmodifiableList());
@@ -16,7 +20,7 @@ public class RacingCarGame {
 
     public RacingCarGame(List<RacingCar> racingCars) {
         this.racingCars = List.copyOf(racingCars);
-        this.raceCount = 1;
+        this.raceCount = 0;
     }
 
     public void startRace() {
@@ -26,7 +30,7 @@ public class RacingCarGame {
 
     private void race(List<RacingCar> racingCars) {
         for (RacingCar car : racingCars) {
-            car.moveForward();
+            car.moveForward(numberPicker.generateRandomNumber(RANDOM_NUMBER_LIMIT));
         }
         resultView.printRaceCondition(racingCars);
     }
