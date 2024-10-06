@@ -29,13 +29,20 @@ public class Cars {
         return cars;
     }
 
-    public void move(int index, int capacity) {
-        Car car = cars.get(index);
-        car.move(capacity);
-    }
-
     public int count() {
         return cars.size();
+    }
+
+
+    public void move(List<Integer> generate) {
+        for(int i=0;i<generate.size();i++){
+            move(i,generate.get(i));
+        }
+    }
+
+    private void move(int index, int capacity) {
+        Car car = cars.get(index);
+        car.move(capacity);
     }
 
     @Override
@@ -61,11 +68,5 @@ public class Cars {
             result.add(new CarDto(car));
         }
         return result;
-    }
-
-    public void move(List<Integer> generate) {
-        for(int i=0;i<generate.size();i++){
-            move(i,generate.get(i));
-        }
     }
 }

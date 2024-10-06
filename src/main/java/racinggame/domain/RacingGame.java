@@ -25,13 +25,6 @@ public class RacingGame {
         return matchResult();
     }
 
-
-    private void moveAll(List<Integer> capacities) {
-        for (int i = 0; i < capacities.size(); i++) {
-            cars.move(i, capacities.get(i));
-        }
-    }
-
     private SnapShot matchResult() {
         return this.snapShotStore.snapShot();
     }

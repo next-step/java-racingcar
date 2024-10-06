@@ -10,15 +10,6 @@ public class DefaultRandomNumberGenerator implements Radom{
     public List<Integer> generate(int count) {
         return carCapacity(count);
     }
-
-    private static List<List<Integer>> radoms(int repeatCount, int carCount) {
-        List<List<Integer>> radoms = new ArrayList<>();
-        for (int count = 0; count < repeatCount; count++) {
-            radoms.add(carCapacity(carCount));
-        }
-        return radoms;
-    }
-
     private static List<Integer> carCapacity(int carCount) {
         Random random = new Random();
         List<Integer> result = new ArrayList<>();
