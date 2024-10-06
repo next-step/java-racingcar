@@ -10,12 +10,7 @@
 
 ---
 
-# STEP5 TODOa
-- [ ] Car 생성자 유효성 체크 -> Name과 Position Wrapping 및 유효성 체크 
-- [ ] move 아래에 canMove 메소드를 선언 -> private이지만 가독성 향상을 위해 위치조정
-- [ ] 이동 조건 변경에 대응하기 위해 이동 여부를 전략 패턴으로 구현 
-- [ ] resultView에 비지니스로직이 있어 약간의 아쉬움
-- 
+# STEP5 TODO
 # STEP5 DONE
 - [x] 4단계 피드백
   - [x] 자동차 객체를 불변으로 만들어 이동에 관한 스냅샷 찍기
@@ -25,7 +20,11 @@
   - [x] 핵심 비지니스 로직을 가지는 객체를 domain 패키지로, UI 관련 패키지를 view 패키지로 나누기
   - [x] domain 패키지는 view 패키지에 의존하지 않도록 구현하기
   - [x] 테스트가 가능한 부분에 대해 단위 테스트 작성하기
-  
+- [x] 5단계 피드백
+  - [x] Car 생성자 유효성 체크 -> Name과 Position Wrapping 및 유효성 체크
+  - [x] move 아래에 canMove 메소드를 선언 -> 움직임 전략 패턴으로 코드 제거 됨
+  - [x] 이동 조건 변경에 대응하기 위해 이동 여부를 전략 패턴으로 구현
+  - [x] resultView에 비지니스로직이 있어 약간의 아쉬움 -> 비지니스 로직 제거
 ---
 # STEP4 TODO
 # STEP4 DONE
@@ -37,7 +36,7 @@
 - [x] 자동차 경주 게임을 완료한 후 누가 우승했는지 표시. 우승자는 한 명이상 가능하다.
 - [x] 한 메소드에서는 오직 한 단계의 들여쓰기만 사용한다.
   - [x] 메소드 길이가 15라인 이하로 제한한다.
-- [x]피드백
+- [x] 피드백
   - [x] "A  ,B  ,C" 와 같은 input 케이스를 처리하기
   - [x]  car.getPosition() == getMaxPosition() -> 객체에 메시지로 전달하기
   - [x] Collectors.toList()와 Collectors.toUnmodifiableList 차이점 확인하기
