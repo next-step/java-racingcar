@@ -6,16 +6,11 @@ import java.util.Random;
 
 public class DefaultRandomNumberGenerator implements Radom{
 
+    private static final int UPPER_BOUND = 10;
+
     @Override
-    public List<Integer> generate(int count) {
-        return carCapacity(count);
-    }
-    private static List<Integer> carCapacity(int carCount) {
+    public int generate() {
         Random random = new Random();
-        List<Integer> result = new ArrayList<>();
-        for (int count = 0; count < carCount; count++) {
-            result.add(random.nextInt(10));
-        }
-        return result;
+        return random.nextInt(UPPER_BOUND);
     }
 }

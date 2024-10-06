@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import racinggame.domain.Car.CarDto;
+import racinggame.random.Radom;
 
 public class Cars {
 
@@ -33,10 +34,9 @@ public class Cars {
         return cars.size();
     }
 
-
-    public void move(List<Integer> generate) {
-        for(int i=0;i<generate.size();i++){
-            move(i,generate.get(i));
+    public void move(Radom radom) {
+        for(int i=0;i<count();i++){
+            move(i,radom.generate());
         }
     }
 

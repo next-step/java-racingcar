@@ -18,8 +18,7 @@ public class RacingGame {
 
     public SnapShot start(Radom radom) {
         for(int i=0;i<repeatCount;i++){
-            List<Integer> generate = radom.generate(cars.count());
-            cars.move(generate);
+            cars.move(radom);
             snapShotStore.save(cars.result());
         }
         return matchResult();

@@ -4,11 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
+import racinggame.random.Radom;
 
 public class CarsTest {
 
@@ -34,11 +36,31 @@ public class CarsTest {
         assertThat(cars).isEqualTo(new Cars(carList(1)));
     }
 
+//    @Test
+//    public void 자동차_이동테스트() {
+//        List<Car> list = carList(List.of(0,3));
+//        Cars cars = new Cars(list);
+//        cars.move(List.of(4,3));
+//        assertThat(cars).isEqualTo(new Cars(carList(1,3)));
+//    }
+
     @Test
     public void 자동차_이동테스트() {
         List<Car> list = carList(List.of(0,3));
         Cars cars = new Cars(list);
-        cars.move(List.of(4,3));
+        cars.move(new Radom() {
+
+            private List<Integer> result=List.of(4,3);
+            private Iterator<Integer> iter=result.iterator();
+
+            @Override
+            public int generate() {
+                if(!iter.hasNext()){
+                    this.iter=result.iterator();
+                }
+                return iter.next();
+            }
+        });
         assertThat(cars).isEqualTo(new Cars(carList(1,3)));
     }
 

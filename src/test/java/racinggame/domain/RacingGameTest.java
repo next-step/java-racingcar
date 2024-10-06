@@ -42,8 +42,8 @@ public class RacingGameTest {
         }
 
         @Override
-        public List<Integer> generate(int count) {
-            return  new ArrayList<>(Collections.nCopies(count, value));
+        public int generate() {
+            return value;
         }
     }
 
