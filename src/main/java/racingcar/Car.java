@@ -8,8 +8,15 @@ public class Car {
     private MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
+        validateName(name);
         this.name = name;
         this.moveStrategy = moveStrategy;
+    }
+
+    private void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없다.");
+        }
     }
 
     public int getPosition() {
