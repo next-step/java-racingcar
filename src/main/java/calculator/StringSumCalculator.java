@@ -1,10 +1,12 @@
 package calculator;
 
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringSumCalculator {
     private static StringSumCalculator INSTANCE = null;
+    private final Logger logger = Logger.getLogger("logger");
 
     public final String DEFAULT_DELIMITER = "[,:]";
     public final String CUSTOM_DELIMITER = "//(.)\n(.*)";
@@ -50,9 +52,11 @@ public class StringSumCalculator {
         try {
             number = Integer.parseInt(split);
         } catch (NumberFormatException e) {
+            logger.severe("숫자 형식이 올바르지 않습니다.");
             throw new RuntimeException();
         }
         if (number < 0) {
+            logger.severe("숫자는 음수일 수 없습니다.");
             throw new RuntimeException();
         }
         return number;

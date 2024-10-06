@@ -5,6 +5,7 @@ import java.util.Random;
 public class RandomMove implements MovingStrategy {
     public static final int NUMBER_BOUND = 10;
     public static final int MOVE_MIN = 4;
+    public static final Random RANDOM = new Random();
     private static RandomMove INSTANCE = null;
 
     public static RandomMove getInstance() {
@@ -21,7 +22,7 @@ public class RandomMove implements MovingStrategy {
     }
 
     public int getRandomValue() {
-        return new Random().nextInt(NUMBER_BOUND);
+        return RANDOM.nextInt(NUMBER_BOUND);
     }
 
     public boolean movable(int randomValue){
