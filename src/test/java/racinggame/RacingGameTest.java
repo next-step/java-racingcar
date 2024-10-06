@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racinggame.Car.CarDto;
 
 public class RacingGameTest {
 
@@ -19,7 +20,10 @@ public class RacingGameTest {
         RacingGame racingGame=new RacingGame(4);
         racingGame.start(repeatAndCapacities);
 
-        Cars cars=racingGame.getCars();
-        assertThat(cars).isEqualTo(new Cars(List.of(new Car(4),new Car(4),new Car(4),new Car(4))));
+        List<List<CarDto>> result=racingGame.matchResult();
+        for(int i=0;i<repeat;i++){
+            List<CarDto> carDtos = result.get(i);
+            assertThat(carDtos).isEqualTo(List.of(new CarDto(i+1),new CarDto(i+1),new CarDto(i+1),new CarDto(i+1)));
+        }
     }
 }

@@ -1,19 +1,23 @@
 package racinggame;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import racinggame.Car.CarDto;
 
 public class RacingGame {
 
     private Cars cars;
+    private List<List<CarDto>> snapShot;
 
     public RacingGame(int carCount) {
         this.cars = Cars.of(carCount);
+        this.snapShot=new ArrayList<>();
     }
 
     public void start(List<List<Integer>> repeatAndCapacities) {
         for(List<Integer> capacities:repeatAndCapacities){
             moveAll(capacities);
+            snapShot.add(cars.result());
         }
     }
 
@@ -23,7 +27,8 @@ public class RacingGame {
         }
     }
 
-    public Cars getCars() {
-        return cars;
+    public List<List<CarDto>> matchResult() {
+        return snapShot;
     }
+
 }

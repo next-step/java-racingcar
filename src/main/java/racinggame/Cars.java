@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import racinggame.Car.CarDto;
 
 public class Cars {
 
@@ -58,5 +59,13 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
+    }
+
+    public List<CarDto> result() {
+        List<CarDto> result=new ArrayList<>();
+        for(Car car:cars){
+            result.add(new CarDto(car));
+        }
+        return result;
     }
 }
