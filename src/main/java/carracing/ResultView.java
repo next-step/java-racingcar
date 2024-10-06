@@ -1,10 +1,10 @@
 package carracing;
 
 import carracing.car.Car;
+import carracing.car.Cars;
 import carracing.car.Position;
 
 import java.util.List;
-import java.util.Map;
 import java.util.StringJoiner;
 
 public class ResultView {
@@ -16,22 +16,21 @@ public class ResultView {
     public static void printCarRacingResult(CarsMoveStatusHistory carsMoveStatusHistory) {
         StringBuilder stringBuilder = new StringBuilder("실행 결과").append(NEW_LINE);
 
-        for (int i = 0; i < carsMoveStatusHistory.getCarsMoveStatusHistory().size(); i++) {
+        for (int i = 0; i < carsMoveStatusHistory.getCarsByMoveTryCount().size(); i++) {
             stringBuilder
-                    .append(createResultByAMoveTryCount(carsMoveStatusHistory.getCarsMoveStatusHistoryByMoveTryCount(i)))
+                    .append(createResultByAMoveTryCount(carsMoveStatusHistory.getCarsByMoveTryStep(i)))
                     .append(NEW_LINE);
         }
 
         System.out.println(stringBuilder);
     }
 
-    private static StringBuilder createResultByAMoveTryCount(Map<Car, Position> carsMoveStatusHistoryByTryCount) {
+    private static StringBuilder createResultByAMoveTryCount(Cars cars) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Map.Entry<Car, Position> carMoveStatusHistoryByTryCount : carsMoveStatusHistoryByTryCount.entrySet()) {
+        for (Car car : cars.get()) {
             stringBuilder
-                    .append(carMoveStatusHistoryByTryCount.getKey().getCarNameString())
-                    .append(COLON)
-                    .append(createDashBy(carMoveStatusHistoryByTryCount.getValue()))
+                    .append(car.getNameString()).append(COLON)
+                    .append(createDashBy(car.getPosition()))
                     .append(NEW_LINE);
         }
         return stringBuilder;

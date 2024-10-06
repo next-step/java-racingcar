@@ -10,6 +10,11 @@ public class Car {
         this.position = new Position();
     }
 
+    private Car(Name carName, Position position) {
+        this.name = carName;
+        this.position = position;
+    }
+
     public void move(int value) {
         if (value >= MOVE_REFERENCE_NUM) {
             this.position = this.position.increase();
@@ -27,7 +32,11 @@ public class Car {
         return this.position;
     }
 
-    public String getCarNameString() {
+    public String getNameString() {
         return this.name.getValue();
+    }
+
+    public Car deepCopy() {
+        return new Car(this.name, this.position);
     }
 }

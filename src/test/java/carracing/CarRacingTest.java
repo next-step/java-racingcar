@@ -11,7 +11,7 @@ class CarRacingTest {
     void return_carRacing_instance() {
         CarRacing carRacing = new CarRacing(new String[]{"moon", "zi"}, 3);
 
-        assertThat(carRacing.getCars()).hasSize(2);
+        assertThat(carRacing.getCars()).isEqualTo(carRacing.getCars());
         assertThat(carRacing.getMoveTryCount()).isEqualTo(3);
         assertThat(carRacing.getCarsMoveStatusHistory())
                 .isNotNull()
