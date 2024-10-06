@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static racingcar.view.ResultView.printCarName;
 import static racingcar.view.ResultView.printGoDistance;

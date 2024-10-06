@@ -2,12 +2,13 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.Car.EMPTY_NAME_ERROR;
-import static racingcar.Car.INPUT_LENGTH_EXCEEDED_ERROR;
+import static racingcar.domain.Car.EMPTY_NAME_ERROR;
+import static racingcar.domain.Car.INPUT_LENGTH_EXCEEDED_ERROR;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 
 public class CarTest {
     private Car car;

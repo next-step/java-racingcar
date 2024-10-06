@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import static racingcar.RacingCar.startRacing;
+import static racingcar.domain.RacingCar.startRacing;
 
 public class RacingCarController {
     public static void main(String[] args) {
