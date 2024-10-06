@@ -45,8 +45,19 @@ public class RacingCarTest {
         RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
         racingCar.generateRandomNumber();
 
-        assertThat(racingCar.getCar(0)).isBetween(0, 9);
-        assertThat(racingCar.getCar(1)).isBetween(0, 9);
-        assertThat(racingCar.getCar(2)).isBetween(0, 9);
+        assertThat(racingCar.generateRandomNumber()).isBetween(0, 9);
+    }
+
+    @DisplayName("랜덤 난수 발생 값에 따른 자동차 이동 테스트")
+    @Test
+    void moveCarTest() {
+        makeTestInput("3\n5\n");
+
+        RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
+        racingCar.moveCar();
+
+        assertThat(racingCar.getCars(0)).isIn(0, 1);
+        assertThat(racingCar.getCars(1)).isIn(0, 1);
+        assertThat(racingCar.getCars(2)).isIn(0, 1);
     }
 }

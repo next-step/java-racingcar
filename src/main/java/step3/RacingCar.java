@@ -6,6 +6,7 @@ public class RacingCar {
 
     private final int numberOfCar;
     private final int numberOfRace;
+    private final Random random = new Random();
 
     private int[] cars;
 
@@ -24,15 +25,18 @@ public class RacingCar {
         return this.numberOfRace;
     }
 
-    public int getCar(int index) {
+    public int getCars(int index) {
         return this.cars[index];
     }
 
-    public void generateRandomNumber() {
-        Random random = new Random();
+    public int generateRandomNumber() {
+        return random.nextInt(10);
+    }
 
-        for (int car : cars) {
-            car = random.nextInt(10);
+    public void moveCar() {
+        for (int i=0;i<numberOfCar;i++) {
+            if (generateRandomNumber() >= 4)
+                cars[i]++;
         }
     }
 
