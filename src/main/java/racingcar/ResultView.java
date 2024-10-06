@@ -16,7 +16,7 @@ public class ResultView {
 
     private static void printStatusAll(List<Car> cars) {
         for (Car car : cars) {
-            car.getStatus(symbol);
+            System.out.println(car.getStatus(symbol));
         }
         System.out.println();
     }
