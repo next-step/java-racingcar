@@ -9,13 +9,13 @@ public class OutPutView {
 
     public static void render(SnapShot snapShot) {
         System.out.println("실행 결과");
-        for(int count=0;count<snapShot.repeatCount();count++){
+        for (int count = 0; count < snapShot.repeatCount(); count++) {
             renderCars(snapShot, count);
         }
     }
 
     private static void renderCars(SnapShot snapShot, int count) {
-        for(CarDto carDto : snapShot.getSnapShot(count)){
+        for (CarDto carDto : snapShot.getSnapShot(count)) {
             System.out.println(renderHyphen(carDto.position()));
         }
         System.out.println();

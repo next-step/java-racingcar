@@ -13,7 +13,7 @@ public class InputView {
 
     private static int readCount(String message, Scanner scanner) {
         System.out.println(message);
-        return  scanner.nextInt();
+        return scanner.nextInt();
     }
 
 }
