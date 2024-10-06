@@ -2,6 +2,7 @@ package step3.model;
 
 public class Movement {
     static final int DEFAULT_COUNT = 0;
+    private static final int FORWARD_COUNT = 1;
 
     private int moveCount;
 
@@ -17,7 +18,7 @@ public class Movement {
         return moveCount;
     }
 
-    public void move() {
-        moveCount++;
+    public Movement move() {
+        return new Movement(this.moveCount + FORWARD_COUNT);
     }
 }

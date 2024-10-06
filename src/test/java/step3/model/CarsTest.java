@@ -2,9 +2,11 @@ package step3.model;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
+import step3.strategy.RandomMoveStrategy;
 
 class CarsTest {
 
@@ -21,9 +23,9 @@ class CarsTest {
         String carNames = "hwan,hwan2,hwan3";
         Cars cars = Cars.from(carNames);
 
-        MoveStrategy moveStrategy = new MoveStrategy();
+        RandomMoveStrategy randomStrategy = new RandomMoveStrategy();
         for (int i = 0; i < 100; i++) {
-            cars.moveCars(moveStrategy);
+            cars.moveCars(randomStrategy);
         }
 
         List<Integer> movements = cars.getCars().stream()
@@ -31,13 +33,5 @@ class CarsTest {
                 .collect(Collectors.toList());
 
         assertThat(movements).anyMatch(movement -> movement > 0);
-    }
-
-    @Test
-    void 우승자_생성_확인() {
-        String carNames = "hwan,hwan2,hwan3";
-        Cars cars = Cars.from(carNames);
-
-
     }
 }
