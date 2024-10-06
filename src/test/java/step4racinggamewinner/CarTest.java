@@ -2,6 +2,8 @@ package step4racinggamewinner;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     final static int TEST_CAR_COUNT = 3;
-
+    RandomGenerator randomGenerator;
     Cars cars;
 
     @BeforeEach
@@ -34,6 +36,27 @@ public class CarTest {
                     cars.checkNameLength(List.of(carNames.split(",")));
                 }
         ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3,false", "4,true"})
+    void 이동여부_판단테스트(int randomNumber, boolean decisionResult) {
+        String carNames = "red,kaki";
+        int testRandomNumber = 4;
+        cars = new Cars("red");
+        assertThat(cars.decideGoStop(randomNumber)).isEqualTo(decisionResult);
+    }
+
+
+    @Test
+    void 자동차별_한라운드_이동여부_저장() {
+        String carNames = "red,kaki";
+        int testRandomNumber = 4;
+        randomGenerator = new TestRandomGenerator();
+        cars = new Cars("red,blue");
+        cars.recordEachRoundMoving(randomGenerator);
+        assertThat(cars.currentCarMovement())
+                .isEqualTo(List.of(1, 1));
     }
 
 }
