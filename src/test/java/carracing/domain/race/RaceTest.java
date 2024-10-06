@@ -1,5 +1,9 @@
-package carracing.domain;
+package carracing.domain.race;
 
+import carracing.domain.Race;
+import carracing.domain.car.Car;
+import carracing.domain.car.Name;
+import carracing.domain.car.Position;
 import carracing.domain.record.RoundRecord;
 import carracing.random.TestFixedNumberGenerator;
 import carracing.random.TestFixedNumbersGenerator;
@@ -20,9 +24,9 @@ class RaceTest {
         TestFixedNumberGenerator testFixedNumberGenerator = new TestFixedNumberGenerator(3);
         List<String> carNames = List.of("green", "blue", "red");
         List<Car> expected = List.of(
-                Car.of("green", 1),
-                Car.of("blue", 1),
-                Car.of("red", 1)
+                Car.of(Name.from("green"), Position.from(1)),
+                Car.of(Name.from("blue"), Position.from(1)),
+                Car.of(Name.from("red"), Position.from(1))
         );
 
         Race race = Race.of(carNames, 1, testFixedNumberGenerator);
@@ -42,8 +46,8 @@ class RaceTest {
         Race race = Race.of(carNames, 1, testFixedNumberGenerator);
 
         List<RoundRecord> expected = List.of(
-                RoundRecord.from(List.of(Car.of("green", 1))),
-                RoundRecord.from(List.of(Car.of("green", 2)))
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1)))),
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(2))))
         );
 
         List<RoundRecord> result = race.start();
@@ -63,8 +67,8 @@ class RaceTest {
         Race race = Race.of(carNames, 1, testFixedNumberGenerator);
 
         List<RoundRecord> expected = List.of(
-                RoundRecord.from(List.of(Car.of("green", 1))),
-                RoundRecord.from(List.of(Car.of("green", 1)))
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1)))),
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1))))
         );
 
         List<RoundRecord> result = race.start();
@@ -87,10 +91,10 @@ class RaceTest {
         Race race = Race.of(carNames, 3, testFixedNumberGenerator);
 
         List<RoundRecord> expected = List.of(
-                RoundRecord.from(List.of(Car.of("green", 1), Car.of("blue", 1), Car.of("red", 1))),
-                RoundRecord.from(List.of(Car.of("green", 2), Car.of("blue", 2), Car.of("red", 2))),
-                RoundRecord.from(List.of(Car.of("green", 3), Car.of("blue", 3), Car.of("red", 3))),
-                RoundRecord.from(List.of(Car.of("green", 4), Car.of("blue", 4), Car.of("red", 4)))
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(1)), Car.of(Name.from("blue"), Position.from(1)), Car.of(Name.from("red"), Position.from(1)))),
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(2)), Car.of(Name.from("blue"), Position.from(2)), Car.of(Name.from("red"), Position.from(2)))),
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(3)), Car.of(Name.from("blue"), Position.from(3)), Car.of(Name.from("red"), Position.from(3)))),
+                RoundRecord.from(List.of(Car.of(Name.from("green"), Position.from(4)), Car.of(Name.from("blue"), Position.from(4)), Car.of(Name.from("red"), Position.from(4))))
         );
 
         List<RoundRecord> result = race.start();

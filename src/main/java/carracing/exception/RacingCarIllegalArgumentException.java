@@ -4,6 +4,7 @@ package carracing.exception;
 public class RacingCarIllegalArgumentException extends RuntimeException {
 
     public static final RacingCarIllegalArgumentException INVALID_NAME_LENGTH = new RacingCarIllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH);
+    public static final RacingCarIllegalArgumentException INVALID_POSITION = new RacingCarIllegalArgumentException(ErrorMessage.INVALID_POSITION);
 
     public RacingCarIllegalArgumentException(ErrorMessage errorMessage) {
         super(errorMessage.toString());

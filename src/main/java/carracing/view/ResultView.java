@@ -1,6 +1,6 @@
 package carracing.view;
 
-import carracing.domain.Car;
+import carracing.domain.car.Car;
 import carracing.domain.record.RoundRecord;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class ResultView {
 
     private void showRoundResult(RoundRecord roundRecord) {
         for (Car carRecord : roundRecord.getCars()) {
-            System.out.printf("%-5s : %s%n", carRecord.getName(), "-".repeat(carRecord.getPosition()));
+            System.out.printf("%-5s : %s%n", carRecord.getName(), "-".repeat(carRecord.getPosition().getValue()));
         }
 
         System.out.println();

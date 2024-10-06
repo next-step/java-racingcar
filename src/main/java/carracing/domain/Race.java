@@ -1,5 +1,7 @@
 package carracing.domain;
 
+import carracing.domain.car.Car;
+import carracing.domain.car.Name;
 import carracing.domain.random.RandomNumberGenerator;
 import carracing.domain.record.RoundRecord;
 
@@ -8,10 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private List<Car> cars = new ArrayList<>();
     private final int rounds;
     private final RandomNumberGenerator randomNumberGenerator;
     private final List<RoundRecord> roundRecords = new ArrayList<>();
+
+    private List<Car> cars = new ArrayList<>();
 
     private Race(List<Car> cars, int rounds, RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
@@ -26,7 +29,7 @@ public class Race {
 
     private static List<Car> createCars(List<String> carNames) {
         return carNames.stream()
-                .map(Car::from)
+                .map(name -> Car.from(Name.from(name)))
                 .collect(Collectors.toUnmodifiableList());
     }
 
@@ -41,10 +44,6 @@ public class Race {
         return roundRecords;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     private void recordRound() {
         roundRecords.add(RoundRecord.from(cars));
     }
@@ -57,4 +56,7 @@ public class Race {
                 }).collect(Collectors.toUnmodifiableList());
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 }

@@ -1,6 +1,7 @@
 package carracing.domain.record;
 
-import carracing.domain.Car;
+import carracing.domain.car.Car;
+import carracing.domain.car.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +18,22 @@ public class RoundRecord {
         return new RoundRecord(cars);
     }
 
-    public List<Car> getCars() {
-        return cars.stream()
-                .collect(Collectors.toUnmodifiableList());
-    }
-
     public List<Car> getLeadingCar() {
         return cars.stream()
                 .filter(car -> car.isPositionEqualTo(calculateMaxPosition()))
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    private int calculateMaxPosition() {
+    public List<Car> getCars() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    private Position calculateMaxPosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .reduce(Position::createMaxPosition)
+                .orElse(Position.from(0));
     }
 
 }
