@@ -6,10 +6,9 @@ import java.util.regex.Pattern;
 
 public class StringAdditionCalculator {
 
-    private Long[] numberArray;
-    private Long result;
-    private String customSeperator = "";
-    private String additionSeperator = ",:";
+    private static final String ADDITION_SEPERATOR = ",:";
+    private static final Pattern EXTRACT_PATTERN = Pattern.compile("//(.*?)\\n");
+    private static final Pattern COMPILED_PATTERN = Pattern.compile("^[0-9" + ADDITION_SEPERATOR+ "]+$");;
 
     public StringAdditionCalculator(){};
 
@@ -18,52 +17,51 @@ public class StringAdditionCalculator {
         if(input == null || input.isEmpty())
             return 0L;
 
-        input = extractCustomSeperator(input);
+        input = replaceCustomSeperator(input);
         checkInputPattern(input);
-        setNumberArray(input);
-        additionArray();
+        return additionArray(getNumberArray(input));
 
-        return result;
     }
 
-    public String extractCustomSeperator(String input){
+    public String replaceCustomSeperator(String input){
 
-        String regex = "//(.*?)\\n";
-
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = EXTRACT_PATTERN.matcher(input);
 
         if (matcher.find()) {
             String delimiter = matcher.group(1);
-            customSeperator += delimiter;
+            String replaceRegex = "["+delimiter+"]";
+
+            input = input.replaceAll("//(.*?)\\n", "");
+            input = input.replaceAll(replaceRegex, ":");
         }
 
-        return input.replaceAll(regex, "");
+        return input;
     }
 
     public void checkInputPattern(String input){
 
-        Pattern compiledPattern = Pattern.compile("^[0-9" + additionSeperator + customSeperator + "]+$");
-        Matcher matcher = compiledPattern.matcher(input);
+        Matcher matcher = COMPILED_PATTERN.matcher(input);
 
         if (!matcher.matches())
-            throw new RuntimeException();
-        
+            throw new RuntimeException("옳지 않은 패턴 또는 음수가 포함되어 있습니다.");
+
     }
 
-    public void setNumberArray(String input) {
-        String[] stringArray = input.split("[" + additionSeperator + customSeperator + "]+");
+    public Long[] getNumberArray(String input) {
+        String[] stringArray = input.split("[" + ADDITION_SEPERATOR + "]+");
 
-        numberArray = Arrays.stream(stringArray)
+         return Arrays.stream(stringArray)
                 .map(Long::parseLong)
                 .toArray(Long[]::new);
     }
 
-    public void additionArray(){
-        result = 0L;
+    public Long additionArray(Long[] numberArray){
+        Long result = 0L;
 
         for(Long number : numberArray) {
             result+=number;
         }
+
+        return result;
     }
 }
