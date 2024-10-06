@@ -3,11 +3,13 @@ package racinggame.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car.CarDto;
 import racinggame.domain.RacingGame;
 import racinggame.domain.SnapShotStore.SnapShot;
+import racinggame.random.Radom;
 
 public class RacingGameTest {
 
@@ -15,15 +17,12 @@ public class RacingGameTest {
     @Test
     public void 이동횟수만큼_이동_테스트() {
         int repeat = 4;
-        List<List<Integer>> repeatAndCapacities = new ArrayList<>();
-        for (int i = 0; i < repeat; i++) {
-            repeatAndCapacities.add(List.of(4, 3, 4, 4));
-        }
-        RacingGame racingGame = new RacingGame(4);
-        SnapShot result =  racingGame.start(repeatAndCapacities);
+
+        RacingGame racingGame = new RacingGame(4,repeat);
+        SnapShot result =  racingGame.start(new TestNumberGenerator(4));
 
         assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(
-                carDtos(repeat + 1, 1, repeat + 1, repeat + 1));
+                carDtos(repeat + 1, repeat+1, repeat + 1, repeat + 1));
     }
 
     private static List<CarDto> carDtos(int... positions) {
@@ -33,5 +32,25 @@ public class RacingGameTest {
         }
         return result;
     }
+
+    static class TestNumberGenerator implements Radom{
+
+        private Integer value;
+
+        public TestNumberGenerator(Integer value) {
+            this.value = value;
+        }
+
+        @Override
+        public List<List<Integer>> generate(int repeatCount, int carCount) {
+            List<List<Integer>> repeatAndCapacities = new ArrayList<>();
+            for (int i = 0; i < repeatCount; i++) {
+                repeatAndCapacities.add( new ArrayList<>(Collections.nCopies(carCount, value)));
+            }
+            return repeatAndCapacities;
+        }
+    }
+
+
 
 }

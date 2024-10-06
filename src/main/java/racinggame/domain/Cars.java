@@ -19,10 +19,6 @@ public class Cars {
         return new Cars(carInitialization(count));
     }
 
-    private static boolean isPositive(int number) {
-        return DEFAULT_POSITION <= number;
-    }
-
     private static ArrayList<Car> carInitialization(int carCount) {
         assert -1 < carCount;
 
