@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-import racingcar.logic.CarName;
+import racingcar.domain.CarName;
 
 import java.util.List;
 import java.util.Scanner;

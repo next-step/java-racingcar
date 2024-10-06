@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.dto.RacingResultDTO;
-import racingcar.logic.RacingCarSimulator;
+import racingcar.domain.RacingCarSimulator;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 

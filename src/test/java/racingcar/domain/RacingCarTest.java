@@ -1,4 +1,4 @@
-package racingcar.logic;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-import racingcar.logic.RacingCar;
+import racingcar.domain.RacingCar;
 
 public final class RacingCarStateDTO {
     private final String carName;

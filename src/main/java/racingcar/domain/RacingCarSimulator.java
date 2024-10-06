@@ -1,9 +1,9 @@
-package racingcar.logic;
+package racingcar.domain;
 
 import racingcar.dto.RacingCarStatesDTO;
 import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWrapResultDTO;
-import racingcar.logic.movableStrategy.RandomMovableStrategy;
+import racingcar.domain.movableStrategy.RandomMovableStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;

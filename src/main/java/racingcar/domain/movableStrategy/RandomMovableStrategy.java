@@ -1,4 +1,4 @@
-package racingcar.logic.movableStrategy;
+package racingcar.domain.movableStrategy;
 
 import java.util.Random;
 

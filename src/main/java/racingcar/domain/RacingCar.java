@@ -1,6 +1,6 @@
-package racingcar.logic;
+package racingcar.domain;
 
-import racingcar.logic.movableStrategy.MovableStrategy;
+import racingcar.domain.movableStrategy.MovableStrategy;
 
 import java.util.Objects;
 
