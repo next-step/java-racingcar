@@ -1,13 +1,11 @@
+package racingGame.domain;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingGame.domain.GameResult;
-import racingGame.domain.MovementCondition;
-import racingGame.domain.RacingGame;
-import racingGame.domain.RoundResult;
 
 import java.util.Arrays;
 import java.util.List;
@@ -61,7 +59,7 @@ class RacingGameTest {
             RoundResult roundResult = roundResults.get(i);
             assertEquals(CAR_NAMES.length, roundResult.getRacingCars().size());
             for (var car : roundResult.getRacingCars()) {
-                assertEquals(i + 1, car.getPosition());
+                assertEquals(i + 1, car.getPositionValue());
             }
         }
     }
@@ -76,7 +74,7 @@ class RacingGameTest {
         for (RoundResult roundResult : results.getRoundResults()) {
             assertEquals(CAR_NAMES.length, roundResult.getRacingCars().size());
             for (var car : roundResult.getRacingCars()) {
-                assertEquals(0, car.getPosition());
+                assertEquals(0, car.getPositionValue());
             }
         }
     }

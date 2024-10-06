@@ -1,8 +1,8 @@
 package racingGame.ui;
 
 import racingGame.domain.GameResult;
-import racingGame.domain.RacingCar;
 import racingGame.domain.RoundResult;
+import racingGame.domain.car.RacingCar;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class RacingCarOutputView {
 
     private void printRoundResult(RoundResult roundResult) {
         for (RacingCar car : roundResult.getRacingCars()) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+            System.out.println(car.getNameValue() + " : " + "-".repeat(car.getPositionValue()));
         }
         System.out.println();
     }

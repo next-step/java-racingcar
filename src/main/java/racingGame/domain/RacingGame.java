@@ -1,5 +1,7 @@
 package racingGame.domain;
 
+import racingGame.domain.car.RacingCar;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +37,7 @@ public class RacingGame {
 
     private List<RacingCar> takeSnapshot() {
         return cars.stream()
-                .map(car -> new RacingCar(car.getName(), car.getPosition()))
+                .map(car -> new RacingCar(car.getNameValue(), car.getPositionValue()))
                 .collect(Collectors.toList());
     }
 
