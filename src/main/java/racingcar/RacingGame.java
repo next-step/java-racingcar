@@ -5,6 +5,12 @@ public class RacingGame {
         String[] carNames = InputView.getCarName();
         Race race = new Race(carNames);
         int racingCount = InputView.getRacingCount();
-        race.run(racingCount);
+
+        ResultView.printMessage();
+        for (int i = 0; i < racingCount; i++) {
+            race.run();
+            ResultView.printResult();
+        }
+        ResultView.printWinners();
     }
 }
