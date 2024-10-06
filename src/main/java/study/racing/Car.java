@@ -1,32 +1,30 @@
 package study.racing;
 
 public class Car {
-
-    private int carCount;
-    private int tryCount;
+    private int carNo;
+    private int moveCount;
 
     public Car() {
-
     }
 
-    public Car(int carCount, int tryCount) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
+    public Car(int carNo, int moveCount) {
+        this.carNo = carNo;
+        this.moveCount = moveCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public int getCarNo() {
+        return carNo;
     }
 
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
+    public void setCarNo(int carNo) {
+        this.carNo = carNo;
     }
 
-    public int getTryCount() {
-        return tryCount;
+    public int getMoveCount() {
+        return moveCount;
     }
 
-    public void setTryCount(int tryCount) {
-        this.tryCount = tryCount;
+    public void setMoveCount(int moveCount) {
+        this.moveCount = moveCount;
     }
 }

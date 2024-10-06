@@ -9,7 +9,7 @@ public class InputValidation {
         boolean isInputMatchType = true;
 
         if(inputCount.isBlank()) {
-            return isInputMatchType;
+            return isInputMatchType = false;
         }
 
         try {
@@ -17,8 +17,8 @@ public class InputValidation {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            System.out.println(RacingMessage.TRY_AGAIN.msg());
             isInputMatchType = false;
+            System.out.println(RacingMessage.TRY_AGAIN.msg());
         }
 
         return isInputMatchType;
