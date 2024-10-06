@@ -8,9 +8,11 @@ class RandomNumberTest {
 
     @Test
     void 생성() {
-        RandomNumber randomNumber = new RandomNumber(4);
+        RandomNumber randomNumber1 = new RandomNumber(4);
+        RandomNumber randomNumber2 = new RandomNumber(0);
 
-        assertThat(randomNumber).isEqualTo(new RandomNumber(4));
+        assertThat(randomNumber1).isEqualTo(new RandomNumber(4));
+        assertThat(randomNumber2).isEqualTo(new RandomNumber(0));
     }
 
     @Test
@@ -20,8 +22,8 @@ class RandomNumberTest {
     }
 
     @Test
-    void RandomNumber는_0보다_크다() {
-        assertThatThrownBy(() -> new RandomNumber(0))
+    void RandomNumber는_음수가_아니다() {
+        assertThatThrownBy(() -> new RandomNumber(-1))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
