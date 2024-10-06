@@ -11,6 +11,8 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(String[] names) {
+        validateCount(names);
+
         List<Car> entry = new ArrayList<>();
         for (String name : names) {
             checkDuplicate(entry, name);
@@ -18,6 +20,12 @@ public class Cars {
         }
 
         this.cars = entry;
+    }
+
+    private static void validateCount(String[] names) {
+        if (names.length > 10) {
+            throw new IllegalArgumentException("자동차 수는 1 ~ 10대 사이로 설정해야 합니다.");
+        }
     }
 
     private void checkDuplicate(List<Car> entry, String name) {
