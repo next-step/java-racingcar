@@ -20,9 +20,8 @@ public class RacingGameTest {
             repeatAndCapacities.add(List.of(4, 3, 4, 4));
         }
         RacingGame racingGame = new RacingGame(4);
-        racingGame.start(repeatAndCapacities);
+        SnapShot result =  racingGame.start(repeatAndCapacities);
 
-        SnapShot result = racingGame.matchResult();
         assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(
                 carDtos(repeat + 1, 1, repeat + 1, repeat + 1));
     }
