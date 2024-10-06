@@ -29,7 +29,7 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi"})
-    @DisplayName("움직임 가능한 경우 테스트")
+    @DisplayName("움직임 불가능한 경우 테스트")
     void 자동차_움직임_불가능(String input) {
         Car car = new Car(input);
 
