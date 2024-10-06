@@ -13,10 +13,14 @@ public class Cars {
     }
 
     public static Cars of(int count) {
-        if(!isPositive(count)){
+        if (!isPositive(count)) {
             throw new IllegalArgumentException("음수를 사용 할 수 없습니다.");
         }
         return new Cars(carInitialization(count));
+    }
+
+    private static boolean isPositive(int number) {
+        return 0 <= number;
     }
 
     private static ArrayList<Car> carInitialization(int carCount) {
@@ -29,18 +33,16 @@ public class Cars {
         return cars;
     }
 
-    private static boolean isPositive(int number){
-        return 0<=number;
-    }
-
     public List<Car> getCars() {
         return this.cars;
     }
 
-    public void moveAll() {
-        Random random = new Random();
-        for (Car car:cars){
-            car.move(random.nextInt(10));
-        }
+    public void mode(int index, int capacity) {
+        Car car = cars.get(index);
+        car.move(capacity);
+    }
+
+    public int count(){
+        return cars.size();
     }
 }
