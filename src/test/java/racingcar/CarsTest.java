@@ -15,7 +15,7 @@ class CarsTest {
     @Test
     @DisplayName("차 리스트에 차를 추가하는지 확인")
     void addCar() {
-        Car car = new Car("thanker");
+        Car car = new Car("truck");
         Cars.addCar(car);
 
         assertThat(Cars.getCars()).hasSize(1);
@@ -25,7 +25,7 @@ class CarsTest {
     @Test
     @DisplayName("차 리스트를 가져오는지 확인")
     void getCars() {
-        Car car1 = new Car("thanker");
+        Car car1 = new Car("truck");
         Car car2 = new Car("pobi");
         Cars.addCar(car1);
         Cars.addCar(car2);
