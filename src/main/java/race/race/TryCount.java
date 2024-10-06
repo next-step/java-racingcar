@@ -1,4 +1,4 @@
-package race;
+package race.race;
 
 import java.util.Objects;
 

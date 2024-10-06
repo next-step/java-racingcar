@@ -1,8 +1,11 @@
-package race;
+package race.race;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import race.car.Car;
+import race.car.CarName;
 
 public class CarRace {
 

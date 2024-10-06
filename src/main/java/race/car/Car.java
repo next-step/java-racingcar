@@ -1,4 +1,6 @@
-package race;
+package race.car;
+
+import race.race.RandomNumber;
 
 public class Car {
 

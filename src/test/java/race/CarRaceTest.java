@@ -7,6 +7,12 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import race.car.Car;
+import race.car.CarName;
+import race.car.Position;
+import race.race.CarRace;
+import race.race.TryCount;
+
 class CarRaceTest {
 
     @Test

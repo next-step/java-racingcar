@@ -4,6 +4,10 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import race.car.Car;
+import race.car.CarName;
+import race.race.RandomNumber;
+
 class CarTest {
 
     @Test
