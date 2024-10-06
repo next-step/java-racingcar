@@ -50,7 +50,7 @@ public class RacingCarSimulator {
     }
 
     private static void updateCarsWithTopDistance(int topDistance, RacingCar car, List<String> carsWithTopDistance) {
-        if (car.getPosition() == topDistance) {
+        if (car.isSamePosition(topDistance)) {
             carsWithTopDistance.add(car.getName());
         }
     }
