@@ -6,20 +6,16 @@ public class Car {
     private int position = 0;
     private MoveStrategy moveStrategy;
 
-    public Car() {
-        this.moveStrategy = new RandomMoveStrategy();
+    public Car(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public int getPosition() {
         return this.position;
     }
 
-    public boolean isMove() {
-        return moveStrategy.isMove();
-    }
-
-    public void run(boolean isMove) {
-        if (isMove) {
+    public void run() {
+        if (moveStrategy.isMove()) {
             this.position++;
         }
     }

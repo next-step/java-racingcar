@@ -18,13 +18,13 @@ public class Race {
     public void createCars(int carCount) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+            this.cars.add(new Car(new RandomMoveStrategy()));
         }
     }
 
     public void round() {
         for (Car car : this.cars) {
-            car.run(car.isMove());
+            car.run();
         }
     }
 }

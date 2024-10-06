@@ -12,24 +12,22 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(new RandomMoveStrategy());
     }
 
     @Test
     @DisplayName("랜덤 값이 4 미만일 경우, 위치가 변하지 않아야 한다.")
     void 랜덤값_4미만_멈춤() {
-        car = new Car();
         int prePosition = car.getPosition();
-        car.run(false);
+        car.run();
         assertThat(car.getPosition()).isEqualTo(prePosition);
     }
 
     @Test
     @DisplayName("랜덤 값이 4 이상일 경우, 위치가 변해야 한다.")
     void 랜덤값_4이상_전진() {
-        car = new Car();
         int prePosition = car.getPosition();
-        car.run(true);
+        car.run();
         assertThat(car.getPosition()).isNotEqualTo(prePosition);
         assertThat(car.getPosition()).isEqualTo(1);
     }
