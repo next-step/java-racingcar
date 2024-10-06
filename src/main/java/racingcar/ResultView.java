@@ -10,13 +10,13 @@ public class ResultView {
         System.out.println("실행결과");
         for (int i = 0; i < loop; i++) {
             race.round();
-            printStatusAll(race.getCars());
+            printAll(race.getCars());
         }
     }
 
-    private static void printStatusAll(List<Car> cars) {
+    private static void printAll(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getStatus(symbol));
+            System.out.println(car.getName()+" : "+car.getStatus(symbol));
         }
         System.out.println();
     }
