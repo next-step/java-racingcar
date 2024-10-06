@@ -8,11 +8,17 @@ public class RacingCarInputView {
 
     static int scanNumberOfCar() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        return SCANNER.nextInt();
+        int numberOfCar = SCANNER.nextInt();
+        SCANNER.nextLine();
+
+        return numberOfCar;
     }
 
     static int scanNumberOfRace() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        return SCANNER.nextInt();
+        int numberOfRace = SCANNER.nextInt();
+        SCANNER.nextLine();
+
+        return numberOfRace;
     }
 }

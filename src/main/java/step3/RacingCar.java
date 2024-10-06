@@ -8,10 +8,10 @@ public class RacingCar {
     private final int numberOfRace;
     private final Random random = new Random();
 
-    private int[] cars;
+    private int[] carPosition;
 
     public RacingCar(final int numberOfCar, final int numberOfRace) {
-        this.cars = new int[numberOfCar];
+        this.carPosition = new int[numberOfCar];
 
         this.numberOfCar = numberOfCar;
         this.numberOfRace = numberOfRace;
@@ -25,8 +25,8 @@ public class RacingCar {
         return this.numberOfRace;
     }
 
-    public int getCars(int index) {
-        return this.cars[index];
+    public int getCarPosition(int index) {
+        return this.carPosition[index];
     }
 
     public int generateRandomNumber() {
@@ -34,14 +34,14 @@ public class RacingCar {
     }
 
     public void moveCar() {
-        for (int i=0;i<numberOfCar;i++) {
+        for (int i = 0; i < numberOfCar; i++) {
             if (generateRandomNumber() >= 4)
-                cars[i]++;
+                carPosition[i]++;
         }
     }
 
     public void startRacing() {
-        for(int i=0;i<numberOfRace;i++){
+        for (int i = 0; i < numberOfRace; i++) {
             moveCar();
         }
     }
