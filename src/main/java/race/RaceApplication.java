@@ -7,7 +7,7 @@ public class RaceApplication {
         int carCount = inputView.askCarCount();
         int roundCount = inputView.askRoundCount();
 
-        Race race = new Race(new Cars(carCount), roundCount);
+        Race race = new Race(new Cars(new String[]{"test1", "test2"}), roundCount);
         race.run();
     }
 }

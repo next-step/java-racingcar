@@ -14,7 +14,7 @@ class CarTest {
 
     @BeforeEach
     void setCar() {
-        this.car = new Car(0);
+        this.car = new Car("car");
     }
 
     @AfterEach

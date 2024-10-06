@@ -10,11 +10,12 @@ public class Cars {
 
     private List<Car> cars;
 
-    public Cars(int count) {
+    public Cars(String[] names) {
         List<Car> entry = new ArrayList<>();
-        for (int i = 1; i <= count; i++) {
-            entry.add(new Car(i));
+        for (String name : names) {
+            entry.add(new Car(name));
         }
+
         this.cars = entry;
     }
 
@@ -23,10 +24,10 @@ public class Cars {
         cars.forEach(car -> car.accelerate(random.nextInt(10)));
     }
 
-    public Map<Integer, Integer> getPositions() {
+    public Map<String, Integer> getPositions() {
         return cars.stream()
                 .collect(Collectors.toMap(
-                        Car::getId,
+                        Car::getName,
                         Car::getPosition
                 ));
     }

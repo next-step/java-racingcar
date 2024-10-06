@@ -1,18 +1,17 @@
 package race;
 
-import java.util.List;
 import java.util.Map;
 
 public class ResultView {
 
     public void printCurrentRoundProgress(Cars cars) {
-        Map<Integer, Integer> currentPositions = cars.getPositions();
+        Map<String, Integer> currentPositions = cars.getPositions();
 
-        for(Map.Entry<Integer, Integer> status : currentPositions.entrySet()) {
-            Integer id = status.getKey();
+        for(Map.Entry<String, Integer> status : currentPositions.entrySet()) {
+            String name = status.getKey();
             Integer position = status.getValue();
 
-            System.out.println(id + "\t: " + "=".repeat(position));
+            System.out.println(name + "\t: " + "=".repeat(position));
         }
 
         System.out.println();
