@@ -7,7 +7,7 @@ public class Position {
         position = positionNumber;
     }
 
-    public void updateMovement(int movement) {
+    public void updatePosition(int movement) {
         position += movement;
     }
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Cars {
 
-    public static final int MAX_CARNAME_LENGTH = 5;
+    public static final int CARNAME_MAX_LENGTH = 5;
     public static final int GO = 1;
     public static final int STOP = 0;
     private List<Car> cars;
@@ -22,21 +22,25 @@ public class Cars {
         List<String> carNamesList = List.of(carNames.split(","));
 
         checkNameLength(carNamesList);
-        registCars(carNamesList);
+        registerCars(carNamesList);
     }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    private void registCars(List<String> carNamesList) {
-        carNamesList.stream().map(Car::new).forEachOrdered(car -> cars.add(car));
+    private void registerCars(List<String> carNamesList) {
+        carNamesList.stream()
+                .map(Car::new)
+                .forEachOrdered(car -> cars.add(car));
     }
 
     public void checkNameLength(List<String> carNamesList) {
-        carNamesList.stream().filter(carName -> carName.length() > MAX_CARNAME_LENGTH).forEachOrdered(carName -> {
-            throw new IllegalArgumentException();
-        });
+        carNamesList.stream()
+                .filter(carName -> carName.length() > CARNAME_MAX_LENGTH)
+                .forEachOrdered(carName -> {
+                    throw new IllegalArgumentException();
+                });
     }
 
     public int carCount() {
@@ -52,11 +56,18 @@ public class Cars {
 
     }
 
-    public void recordEachRoundMoving(RandomGenerator randomGenerator) {
+    public void recordEachRoundMoving(int randomNumber) {
         for (Car car : cars) {
-            int randomNumber = randomGenerator.generateRandomNumber();
-            car.updateMovement(decideGoStop(randomNumber));
+            car.updatePosition(decideGoStop(randomNumber));
         }
+    }
+
+    public void viewRacing(int movingTryCount, RandomGenerator randomGenerator) {
+        for (int i = 0; i < movingTryCount; i++) {
+            recordEachRoundMoving(randomGenerator.generateRandomNumber());
+            ResultView.printCurrentCarPosition(currentCarNameAndPosition());
+        }
+
     }
 
     public Map<String, Integer> currentCarNameAndPosition() {

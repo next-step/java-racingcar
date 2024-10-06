@@ -13,8 +13,8 @@ public class Car {
         position = new Position(positionNumber);
     }
 
-    public void updateMovement(int movement) {
-        position.updateMovement(movement);
+    public void updatePosition(int decisionResultNumber) {
+        this.position.updatePosition(decisionResultNumber);
     }
 
     public int currentPosition() {

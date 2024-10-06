@@ -11,11 +11,7 @@ public class Main {
         Cars racingCars = new Cars(carNames);
         RandomGenerator randomGenerator = new RacingCarRandomGenerator();
         ResultView.printPreview();
-        for (int i = 0; i < movingTryCount; i++) {
-            racingCars.recordEachRoundMoving(randomGenerator);
-            ResultView.printCurrentCarPosition(racingCars.currentCarNameAndPosition());
-        }
-
+        racingCars.viewRacing(movingTryCount, randomGenerator);
         ResultView.printCurrentCarPosition(racingCars.currentCarNameAndPosition());
         ResultView.printWinner(racingCars.findWinner());
 

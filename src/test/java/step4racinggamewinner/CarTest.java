@@ -13,6 +13,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     final static int TEST_CAR_COUNT = 3;
+    public static final int GO = 1;
+    public static final int STOP = 0;
     RandomGenerator randomGenerator;
     Cars cars;
 
@@ -39,8 +41,8 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"3,false", "4,true"})
-    void 이동여부_판단테스트(int randomNumber, boolean decisionResult) {
+    @CsvSource(value = {"3,0", "4,1"})
+    void 이동여부_판단테스트(int randomNumber, int decisionResult) {
         String carNames = "red,kaki";
         int testRandomNumber = 4;
         cars = new Cars("red");
@@ -54,7 +56,7 @@ public class CarTest {
         int testRandomNumber = 4;
         randomGenerator = new TestRandomGenerator();
         cars = new Cars("red,blue");
-        cars.recordEachRoundMoving(randomGenerator);
+        cars.recordEachRoundMoving(randomGenerator.generateRandomNumber());
         assertThat(cars.currentCarPositionList())
                 .isEqualTo(List.of(1, 1));
     }
