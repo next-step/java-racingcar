@@ -1,9 +1,9 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import racinggame.Car.CarDto;
+import racinggame.domain.Car.CarDto;
 
 public class SnapShotStore {
 
@@ -17,7 +17,7 @@ public class SnapShotStore {
         return new SnapShot();
     }
 
-    class SnapShot {
+    public class SnapShot {
 
         public List<CarDto> getSnapShot(int index) {
             return Collections.unmodifiableList(snapShot.get(index));

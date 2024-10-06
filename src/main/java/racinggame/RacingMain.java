@@ -3,7 +3,11 @@ package racinggame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import racinggame.SnapShotStore.SnapShot;
+import racinggame.view.OutPutView;
+import racinggame.domain.RacingGame;
+import racinggame.domain.SnapShotStore.SnapShot;
+import racinggame.dto.InputDto;
+import racinggame.view.InputView;
 
 public class RacingMain {
 

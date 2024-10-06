@@ -1,7 +1,7 @@
-package racinggame;
+package racinggame.view;
 
-import racinggame.Car.CarDto;
-import racinggame.SnapShotStore.SnapShot;
+import racinggame.domain.Car.CarDto;
+import racinggame.domain.SnapShotStore.SnapShot;
 
 public class OutPutView {
 

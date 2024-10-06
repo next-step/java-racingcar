@@ -1,9 +1,9 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import racinggame.Car.CarDto;
+import racinggame.domain.Car.CarDto;
 
 public class Cars {
 

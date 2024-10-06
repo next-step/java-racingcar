@@ -1,13 +1,13 @@
-package racinggame;
+package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import org.junit.jupiter.api.Test;
-import racinggame.Car.CarDto;
-import racinggame.SnapShotStore.SnapShot;
+import racinggame.domain.Car.CarDto;
+import racinggame.domain.RacingGame;
+import racinggame.domain.SnapShotStore.SnapShot;
 
 public class RacingGameTest {
 

@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.dto;
 
 public class InputDto {
 

@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.Objects;
 
@@ -34,7 +34,7 @@ public class Car {
         return Objects.hash(position);
     }
 
-    static class CarDto {
+    public static class CarDto {
 
         private final int position;
 

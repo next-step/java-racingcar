@@ -1,7 +1,7 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.List;
-import racinggame.SnapShotStore.SnapShot;
+import racinggame.domain.SnapShotStore.SnapShot;
 
 public class RacingGame {
 
