@@ -12,11 +12,12 @@ public class RacingGame {
         this.cars = Cars.of(carCount);
     }
 
-    public void start(List<List<Integer>> repeatAndCapacities) {
+    public SnapShot start(List<List<Integer>> repeatAndCapacities) {
         for (List<Integer> capacities : repeatAndCapacities) {
             moveAll(capacities);
             snapShotStore.save(cars.result());
         }
+        return matchResult();
     }
 
     private void moveAll(List<Integer> capacities) {
@@ -25,7 +26,10 @@ public class RacingGame {
         }
     }
 
-    public SnapShot matchResult() {
+//    public SnapShot matchResult() {
+//        return this.snapShotStore.snapShot();
+//    }
+    private SnapShot matchResult() {
         return this.snapShotStore.snapShot();
     }
 }

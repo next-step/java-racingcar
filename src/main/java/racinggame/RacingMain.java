@@ -14,8 +14,7 @@ public class RacingMain {
     public static void main(String[] args) {
         InputDto read = InputView.readCount();
         RacingGame racingGame = new RacingGame(read.getCarCount());
-        racingGame.start(radoms(read.getRepeatCount(), read.getCarCount()));
-        SnapShot snapShot = racingGame.matchResult();
+        SnapShot snapShot = racingGame.start(radoms(read.getRepeatCount(), read.getCarCount()));
         OutPutView.render(snapShot);
     }
 
