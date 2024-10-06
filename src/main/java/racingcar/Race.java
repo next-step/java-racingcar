@@ -7,18 +7,18 @@ public class Race {
 
     private List<Car> cars;
 
-    public Race(int carCount) {
-        createCars(carCount);
+    public Race(String[] carNames) {
+        createCars(carNames);
     }
 
     public List<Car> getCars() {
         return this.cars;
     }
 
-    public void createCars(int carCount) {
+    public void createCars(String[] carNames) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car(new RandomMoveStrategy()));
+        for (int i = 0; i < carNames.length; i++) {
+            this.cars.add(new Car(carNames[i], new RandomMoveStrategy()));
         }
     }
 

@@ -19,7 +19,7 @@ public class CarTest {
             }
         };
 
-        car = new Car(moveStrategy);
+        car = new Car("ming", moveStrategy);
         int prePosition = car.getPosition();
         car.run();
         assertThat(car.getPosition()).isEqualTo(prePosition);
@@ -35,7 +35,7 @@ public class CarTest {
             }
         };
 
-        car = new Car(moveStrategy);
+        car = new Car("ming", moveStrategy);
         int prePosition = car.getPosition();
         car.run();
         assertThat(car.getPosition()).isNotEqualTo(prePosition);
