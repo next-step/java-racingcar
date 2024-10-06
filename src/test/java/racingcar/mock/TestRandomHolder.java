@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.mock;
+
+import racingcar.domain.RandomHolder;
 
 public class TestRandomHolder implements RandomHolder {
 

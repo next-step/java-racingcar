@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 @FunctionalInterface
 public interface RandomHolder {

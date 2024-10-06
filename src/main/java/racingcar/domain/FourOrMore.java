@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class FourOrMore implements MoveStrategy {
     public static final int FORWARD_VALUE = 4;
