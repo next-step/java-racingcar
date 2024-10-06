@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
@@ -31,7 +32,7 @@ public class ResultView {
         System.out.println(PRINT_RACE_CAR_NAME);
     }
 
-    public static void printWinnerCarName(List<String> winnerCarList) {
-        System.out.println("최종 우승자 : " + String.join(", ", winnerCarList));
+    public static void printWinnerCarName(List<String> winnerNames) {
+        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
     }
 }

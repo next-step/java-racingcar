@@ -18,7 +18,7 @@ public class RacingCar {
         Race race = new Race((inputCarList(ResultView::printRaceCarName)),
                 makeTryCount(inputInt(ResultView::printTryCount)));
         getGameResult(race);
-        printWinnerCarName(race.getWinnerCarList());
+        printWinnerCarName(race.getWinnerCarNames());
     }
 
 

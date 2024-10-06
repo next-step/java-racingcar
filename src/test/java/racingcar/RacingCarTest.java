@@ -45,9 +45,9 @@ class RacingCarTest {
     public void 차_최대_이동거리() {
         List<Car> carList = race.getCarList();
         for (int i = 0; i < 5; i++) {
-            carList.get(0).setGoCar(5);
+            carList.get(0).goCar(5);
         }
-        carList.get(1).setGoCar(5);
+        carList.get(1).goCar(5);
         race.setMaxDistance();
         assertThat(race.getMaxDistance()).isEqualTo(5);
     }
@@ -57,11 +57,11 @@ class RacingCarTest {
     public void 우승자1명() {
         List<Car> carList = race.getCarList();
         for (int i = 0; i < 5; i++) {
-            carList.get(0).setGoCar(5);
+            carList.get(0).goCar(5);
         }
-        carList.get(1).setGoCar(5);
+        carList.get(1).goCar(5);
         race.setMaxDistance();
-        assertThat(race.getWinnerCarList().get(0)).isEqualTo("pobi");
+        assertThat(race.getWinnerCarNames().get(0)).isEqualTo("pobi");
     }
 
     @DisplayName("우승자를 구할 수 있다.")
@@ -69,12 +69,12 @@ class RacingCarTest {
     public void 우승자_여러명() {
         List<Car> carList = race.getCarList();
         for (int i = 0; i < 5; i++) {
-            carList.get(0).setGoCar(5);
-            carList.get(1).setGoCar(5);
+            carList.get(0).goCar(5);
+            carList.get(1).goCar(5);
         }
 
         race.setMaxDistance();
-        assertThat(race.getWinnerCarList().get(0)).isEqualTo("pobi");
-        assertThat(race.getWinnerCarList().get(1)).isEqualTo("crong");
+        assertThat(race.getWinnerCarNames().get(0)).isEqualTo("pobi");
+        assertThat(race.getWinnerCarNames().get(1)).isEqualTo("crong");
     }
 }
