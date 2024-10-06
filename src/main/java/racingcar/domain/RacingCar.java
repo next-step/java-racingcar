@@ -46,7 +46,7 @@ public class RacingCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return carNo == racingCar.carNo && Objects.equals(name, racingCar.name);
+        return carNo.equals(racingCar.carNo) && name.equals(racingCar.name);
     }
 
     @Override
