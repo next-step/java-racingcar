@@ -1,13 +1,14 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racinggame.Car.CarDto;
 
 public class RacingGame {
 
+    private final List<List<CarDto>> snapShot;
     private Cars cars;
-    private List<List<CarDto>> snapShot;
 
     public RacingGame(int carCount) {
         this.cars = Cars.of(carCount);
@@ -27,8 +28,24 @@ public class RacingGame {
         }
     }
 
-    public List<List<CarDto>> matchResult() {
-        return snapShot;
+    public SnapShot matchResult() {
+        return new SnapShot(snapShot);
     }
 
+    public static class SnapShot {
+
+        private final List<List<CarDto>> snapShot;
+
+        public SnapShot(List<List<CarDto>> snapShot) {
+            this.snapShot = snapShot;
+        }
+
+        public List<CarDto> getSnapShot(int index) {
+            return Collections.unmodifiableList(snapShot.get(index));
+        }
+
+        public int repeatCount() {
+            return snapShot.size();
+        }
+    }
 }
