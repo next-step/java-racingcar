@@ -1,6 +1,7 @@
 package carracing;
 
 import carracing.car.Car;
+import carracing.car.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,17 +11,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingWinnersTest {
 
-    @DisplayName("자동차 경주 게임을 완료한 후 우승자를 찾는다.")
+    @DisplayName("자동차 경주 게임을 완료한 후 우승자를 반환한다.")
     @Test
-    void find_winners_after_carRacing_is_done() {
+    void return_winners_after_carRacing_is_done() {
         Car moon = new Car("moon");
-        moon.move(4);
-        moon.move(4);
         Car zi = new Car("zi");
+        Cars cars = new Cars(List.of(moon, zi));
+        moon.move(4);
+        moon.move(4);
         zi.move(4);
 
-        List<Car> winners = CarRacingWinners.findWinners(List.of(moon, zi));
+        Cars winners = CarRacingWinners.findWinners(cars);
 
-        assertThat(winners).containsExactly(moon);
+        assertThat(winners.get()).containsExactly(moon);
     }
 }

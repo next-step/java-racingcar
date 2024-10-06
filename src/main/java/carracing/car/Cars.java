@@ -19,10 +19,11 @@ public class Cars {
         }
     }
 
-    public List<Car> getCarsSamePositionAs(int maxPosition) {
-        return this.cars.stream()
+    public Cars getCarsSamePositionAs(int maxPosition) {
+         return new Cars(this.cars.stream()
                 .filter(car -> car.isSamePosition(maxPosition))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+         );
     }
 
     public Cars deepCopy() {
@@ -37,4 +38,10 @@ public class Cars {
         return this.cars;
     }
 
+    public int compareMax(int maxPosition) {
+        for(Car car : this.cars) {
+            maxPosition = car.compareMax(maxPosition);
+        }
+        return maxPosition;
+    }
 }
