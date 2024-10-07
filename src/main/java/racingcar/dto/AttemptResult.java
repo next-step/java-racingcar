@@ -5,16 +5,23 @@ import racingcar.domain.Car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class AttemptResult {
     private final List<Car> cars;
 
-    public AttemptResult(List<Car> cars) {
+    public AttemptResult(final List<Car> cars) {
         this.cars = cars;
     }
 
     public List<Car> getCars() {
-        return new ArrayList<>(this.cars);
+        return new ArrayList<>(cars);
+    }
+
+    public String formatAttempt(String lineSeparator) {
+        return cars.stream()
+                .map(car -> car.print() + lineSeparator)
+                .collect(Collectors.joining()) + lineSeparator;
     }
 
     @Override
@@ -32,5 +39,12 @@ public class AttemptResult {
     @Override
     public int hashCode() {
         return Objects.hashCode(cars);
+    }
+
+    @Override
+    public String toString() {
+        return "AttemptResult{" +
+                "cars=" + cars +
+                '}';
     }
 }

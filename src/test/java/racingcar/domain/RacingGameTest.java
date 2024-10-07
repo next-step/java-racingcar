@@ -16,7 +16,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame(new FourOrMore(new TestRandomHolder(4)), new DelimiterCarCreationStrategy());
+        racingGame = new RacingGame(new FourOrMore(new TestRandomHolder(4)), new DelimiterCreationStrategy());
     }
 
     @Test
