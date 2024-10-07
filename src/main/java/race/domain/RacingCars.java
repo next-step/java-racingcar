@@ -2,9 +2,13 @@ package race.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingCars {
+    public static final int RANDOM_UPPER_LIMIT = 10;
+    
     private final List<RacingCar> racingCars;
 
     public static RacingCars from(List<String> carNames) {
@@ -18,8 +22,21 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
+    public List<String> startRound() {
+        List<Integer> randomNumbers = IntStream.range(0, count())
+                .map(integer -> generateIntBetween0and9())
+                .boxed()
+                .collect(Collectors.toList());
+
+        return moveAndReturnCarStateMessages(randomNumbers);
+    }
+
     public int count() {
         return racingCars.size();
+    }
+
+    private static int generateIntBetween0and9() {
+        return new Random().nextInt(RANDOM_UPPER_LIMIT);
     }
 
     public List<String> moveAndReturnCarStateMessages(List<Integer> numbers) {
