@@ -1,21 +1,29 @@
 package racingGame.model.car;
 
-public class Car {
+import racingGame.model.strategy.MovementStrategy;
 
-    private static final int MINIMUM_MOVEMENT_VALUE = 4;
+public class Car {
 
     private int position;
 
     public Car() {
-        this.position = 0;
+        this(0);
+    }
+
+    public Car(int position) {
+        this.position = position;
+    }
+
+    public Car clone() {
+        return new Car(this.getPosition());
     }
 
     public int getPosition() {
         return this.position;
     }
 
-    public void move(int number) {
-        if (number >= MINIMUM_MOVEMENT_VALUE) {
+    public void move(MovementStrategy strategy) {
+        if (strategy.isMovable()) {
             this.position++;
         }
     }
