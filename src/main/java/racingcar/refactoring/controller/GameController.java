@@ -12,11 +12,9 @@ import java.util.List;
 public class GameController {
 
     private final Cars cars;
-    private final int numberOfTries;
 
-    public GameController(String names, int numberOfTries) {
+    public GameController(String names) {
         this.cars = createCars(names);
-        this.numberOfTries = numberOfTries;
     }
 
     private Cars createCars(String names) {
@@ -31,7 +29,7 @@ public class GameController {
         return cars.getCars();
     }
 
-    public GameResult start() {
+    public GameResult start(int numberOfTries) {
         List<RoundResult> gameResults = new ArrayList<>();
         for (int round = 1; round <= numberOfTries; ++round) {
             gameResults.add(playRound());

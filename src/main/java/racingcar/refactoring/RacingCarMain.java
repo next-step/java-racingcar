@@ -15,8 +15,8 @@ import static racingcar.refactoring.view.InputView.inputCarsNames;
 public class RacingCarMain {
 
     public static void main(String[] args) {
-        GameController game = new GameController(inputCarsNames(), howManyTry());
-        GameResult gameResults = game.start();
+        GameController game = new GameController(inputCarsNames());
+        GameResult gameResults = game.start(howManyTry());
 
         printGameResultDescription();
         printRoundResults(gameResults.getRoundResults());
