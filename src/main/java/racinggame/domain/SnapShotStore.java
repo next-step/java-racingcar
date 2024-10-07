@@ -1,30 +1,20 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import racinggame.domain.Car.CarDto;
+import racinggame.dto.SnapShotDto;
 
 public class SnapShotStore {
 
-    private final List<List<CarDto>> snapShot = new ArrayList<>();
+    private final List<SnapShot> snapShot = new ArrayList<>();
 
     public void save(List<CarDto> result) {
-        snapShot.add(result);
+        snapShot.add(new SnapShot(result));
     }
 
-    public SnapShot snapShot() {
-        return new SnapShot();
+    public SnapShotDto snapShot() {
+        return new SnapShotDto(snapShot);
     }
 
-    public class SnapShot {
-
-        public List<CarDto> getSnapShot(int index) {
-            return Collections.unmodifiableList(snapShot.get(index));
-        }
-
-        public int repeatCount() {
-            return snapShot.size();
-        }
-    }
 }

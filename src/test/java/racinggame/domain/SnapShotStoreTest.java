@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car.CarDto;
-import racinggame.domain.SnapShotStore;
-import racinggame.domain.SnapShotStore.SnapShot;
+import racinggame.dto.SnapShotDto;
 
 public class SnapShotStoreTest {
 
@@ -25,7 +24,7 @@ public class SnapShotStoreTest {
             snapShotStore.save(carDtos);
         }
 
-        SnapShot snapShot = snapShotStore.snapShot();
+        SnapShotDto snapShot = snapShotStore.snapShot();
         assertThat(snapShot.repeatCount()).isEqualTo(repeatCount);
         for (int i = 0; i < repeatCount; i++) {
             assertThat(snapShot.getSnapShot(i)).isEqualTo(list.get(i));

@@ -1,7 +1,6 @@
 package racinggame.domain;
 
-import java.util.List;
-import racinggame.domain.SnapShotStore.SnapShot;
+import racinggame.dto.SnapShotDto;
 import racinggame.random.Radom;
 
 public class RacingGame {
@@ -16,7 +15,7 @@ public class RacingGame {
     }
 
 
-    public SnapShot start(Radom radom) {
+    public SnapShotDto start(Radom radom) {
         for(int i=0;i<repeatCount;i++){
             cars.move(radom);
             snapShotStore.save(cars.result());
@@ -24,7 +23,7 @@ public class RacingGame {
         return matchResult();
     }
 
-    private SnapShot matchResult() {
+    private SnapShotDto matchResult() {
         return this.snapShotStore.snapShot();
     }
 }
