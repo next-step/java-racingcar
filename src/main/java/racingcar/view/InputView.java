@@ -1,8 +1,9 @@
 package racingcar.view;
 
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static racingcar.domain.ErrorMessage.IS_NOT_TRY_COUNT;
 
 public class InputView {
     private static final String BASIC_DELIMITER = ",";
@@ -11,23 +12,21 @@ public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static int inputInt(Runnable messagePrinter) {
-        int count = 0;
-        boolean isValid = false;
-        while (!isValid) {
+        try {
             messagePrinter.run();
-            try {
-                count = SCANNER.nextInt();
-                isValid = isPositiveNum(count);
-            } catch (InputMismatchException ex) {
-                SCANNER.next();
-            }
+            int count = SCANNER.nextInt();
+            SCANNER.nextLine();
+            return count;
+        } catch (InputMismatchException ex) {
+            SCANNER.nextLine();
+            throw new IllegalArgumentException(IS_NOT_TRY_COUNT);
+        } catch (Exception ex) {
+            SCANNER.nextLine();
+            throw new IllegalArgumentException(IS_NOT_TRY_COUNT);
         }
-        return SCANNER.nextInt();
     }
 
-    public static boolean isPositiveNum(int num) {
-        return num > 0;
-    }
+
 
     public static String[] inputCarList(Runnable messagePrinter) {
         messagePrinter.run();

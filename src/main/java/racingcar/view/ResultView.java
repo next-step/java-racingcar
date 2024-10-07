@@ -35,4 +35,8 @@ public class ResultView {
     public static void printWinnerCarName(List<String> winnerNames) {
         System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
     }
+
+    public static void printErrorMessage(Exception ex){
+        System.out.println("error: "+ex.getMessage());
+    }
 }
