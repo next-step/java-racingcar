@@ -1,17 +1,17 @@
 package racingcar.service;
 
-import racingcar.domain.FourOrMore;
-import racingcar.domain.MoveStrategy;
-import racingcar.domain.RacingGame;
-import racingcar.domain.SystemRandomHolder;
+import racingcar.domain.*;
 import racingcar.dto.RaceResult;
 
 public class RacingGameService {
 
-    private final MoveStrategy moveStrategy = new FourOrMore(new SystemRandomHolder());
+    private final RacingGame racingGame;
 
-    public RaceResult play(String carNames, int attemptCount) {
-        RacingGame racingGame = new RacingGame(carNames, moveStrategy);
-        return racingGame.race(attemptCount);
+    public RacingGameService(final RacingGame racingGame) {
+        this.racingGame = racingGame;
+    }
+
+    public RaceResult play(final String carNames, final int attemptCount) {
+        return racingGame.play(carNames, attemptCount);
     }
 }

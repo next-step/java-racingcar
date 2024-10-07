@@ -5,7 +5,7 @@ public class FourOrMore implements MoveStrategy {
 
     private final RandomHolder randomHolder;
 
-    public FourOrMore(RandomHolder randomHolder) {
+    public FourOrMore(final RandomHolder randomHolder) {
         this.randomHolder = randomHolder;
     }
 

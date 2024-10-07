@@ -7,7 +7,11 @@ import racingcar.view.ResultView;
 
 public class RacingGameController {
 
-    private final RacingGameService racingGameService = new RacingGameService();
+    private final RacingGameService racingGameService;
+
+    public RacingGameController(final RacingGameService racingGameService) {
+        this.racingGameService = racingGameService;
+    }
 
     public void run() {
         String carNames = InputView.getCarCount();
