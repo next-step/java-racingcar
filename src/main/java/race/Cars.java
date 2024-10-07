@@ -16,13 +16,15 @@ public class Cars {
     public Cars(String[] names) {
         validateCount(names);
 
-        List<Car> entry = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
+        List<String> entry = new ArrayList<>();
         for (String name : names) {
             checkDuplicate(entry, name);
-            entry.add(new Car(name));
+            cars.add(new Car(name));
+            entry.add(name);
         }
 
-        this.cars = entry;
+        this.cars = cars;
     }
 
     public Cars(Car... cars) {
@@ -35,13 +37,10 @@ public class Cars {
         }
     }
 
-    private void checkDuplicate(List<Car> entry, String name) {
-        entry.stream()
-                .filter(car -> name.equals(car.getName()))
-                .findAny()
-                .ifPresent(car -> {
-                    throw new IllegalStateException("동일한 자동차 이름을 사용할 수 없습니다. : "+ car.getName());
-                });
+    private void checkDuplicate(List<String> entry, String name) {
+        if (entry.contains(name)) {
+            throw new IllegalStateException("동일한 자동차 이름을 사용할 수 없습니다. : "+ name);
+        }
     }
 
     public void move() {
