@@ -28,7 +28,7 @@ public class ResultView {
             sb.append(racingCar.getName());
             sb.append(" : ");
             sb.append(getPosition(racingCar.getPosition()));
-            sb.append("\n");
+            sb.append(System.lineSeparator());
         }
         System.out.println(sb);
     }
