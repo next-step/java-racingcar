@@ -6,7 +6,6 @@ import racingcar.model.Car;
 import racingcar.model.RaceRecord;
 import racingcar.model.RaceWinner;
 import racingcar.service.CarRacing;
-
 import java.util.ArrayList;
 import java.util.List;
 

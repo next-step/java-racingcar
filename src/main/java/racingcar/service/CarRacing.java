@@ -3,7 +3,6 @@ package racingcar.service;
 import racingcar.model.Car;
 import racingcar.model.RaceRecord;
 import racingcar.model.RaceWinner;
-
 import java.util.*;
 
 public class CarRacing {
@@ -37,11 +36,11 @@ public class CarRacing {
     public RaceWinner decideCarRaceWinner(List<RaceRecord> records) {
         return new RaceWinner(records);
     }
-
+  
     public boolean isCarMovingForward() {
         Random random = new Random();
         int randomNumber = random.nextInt(9) + 1;
-
+  
         return randomNumber >= canMovingForward;
     }
 

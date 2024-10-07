@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.model.RaceRecord;
 import racingcar.model.RaceWinner;
-
 import java.util.List;
 
 public class ResultView {

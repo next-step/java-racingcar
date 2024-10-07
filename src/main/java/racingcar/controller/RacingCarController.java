@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+
 import racingcar.model.RaceRecord;
 import racingcar.service.CarRacing;
 import racingcar.view.InputView;
