@@ -1,9 +1,15 @@
 package race;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
+
+    private static final int LOWER_BOUND = 1;
+    private static final int UPPER_BOUND = 10;
 
     private List<Car> cars;
 
@@ -24,8 +30,8 @@ public class Cars {
     }
 
     private static void validateCount(String[] names) {
-        if (names.length > 10) {
-            throw new IllegalArgumentException("자동차 수는 1 ~ 10대 사이로 설정해야 합니다.");
+        if (names.length < LOWER_BOUND || names.length > UPPER_BOUND) {
+            throw new IllegalArgumentException("자동차 수는 "+ LOWER_BOUND +" ~ "+ UPPER_BOUND +"대 사이로 설정해야 합니다.");
         }
     }
 

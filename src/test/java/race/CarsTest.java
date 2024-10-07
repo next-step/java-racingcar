@@ -22,7 +22,6 @@ class CarsTest {
         assertThatThrownBy(() -> new Cars(input.split(",")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 수는 1 ~ 10대 사이로 설정해야 합니다.");
-
     }
 
     @Test
