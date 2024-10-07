@@ -1,12 +1,13 @@
-package step4.vehicle;
+package step4.domain;
 
 import step4.util.NumberGenerator;
 
 public class Car {
     private static final int MOVE_CONDITION = 4;
+    public static final int INITIAL_CONDITION = 1;
 
-    private int location = 1;
-    private String name;
+    private int location = INITIAL_CONDITION;
+    private final String name;
 
     public Car(String name) {
         checkNameLength(name);
@@ -31,7 +32,7 @@ public class Car {
         return this.name;
     }
 
-    private static void checkNameLength(String name) {
+    private void checkNameLength(String name) {
         if (name.length() > 5 || name.isEmpty())
             throw new IllegalArgumentException("길이가 1이상 5이하인 문자열이여야 함");
     }

@@ -1,6 +1,6 @@
 package step4.view;
 
-import step4.vehicle.Car;
+import step4.domain.Car;
 
 import java.util.List;
 
@@ -27,11 +27,11 @@ public class ResultView {
         System.out.print(car.getName() + " : ");
     }
 
-    public void printWinners(List<Car> winners) {
+    public void printWinners(List<String> winners) {
         for (int i = 0; i < winners.size() - 1; i++) {
-            System.out.print(winners.get(i).getName() + ", ");
+            System.out.print(winners.get(i) + ", ");
         }
-        System.out.print(winners.get(winners.size()-1).getName()+"가 우승하였습니다");
+        System.out.print(winners.get(winners.size() - 1) + "가 우승하였습니다");
     }
 
 }

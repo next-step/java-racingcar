@@ -1,14 +1,16 @@
-package step4.vehicle;
+package step4.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
+    private static final int NUMBER_OF_PLAYERS = 2;
+
     private final List<Car> cars = new ArrayList<>();
-    private final List<Car> winners = new ArrayList<>();
 
     public Cars(String[] names) {
-        if (names.length < 2) {
+        if (names.length < NUMBER_OF_PLAYERS) {
             throw new IllegalArgumentException("게임을 진행할 수 없음");
         }
         initCars(names);
@@ -24,22 +26,12 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getWinners() {
+    public List<String> findWinners() {
         int maxScore = cars.stream().mapToInt(Car::getLocation).max().getAsInt();
-        findWinner(maxScore);
-        return winners;
-    }
-
-    private void findWinner(int checkMax) {
-        for (Car car : cars) {
-            addWinner(checkMax, car);
-        }
-    }
-
-    private void addWinner(int checkMax, Car car) {
-        if (car.getLocation() == checkMax) {
-            winners.add(car);
-        }
+        return cars.stream()
+                .filter(car -> car.getLocation() == maxScore)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
 }

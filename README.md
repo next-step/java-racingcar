@@ -14,9 +14,9 @@
   - [x] 시도 횟수
 - [x] 자동차 전진 하기 (Car) 
   - [x] 전진 조건 구현 (4 이상) (Car)
-- [ ] 값 생성 (NumberGenerator)
+- [x] 값 생성 (NumberGenerator)
   - [x] 랜덤 값 생성 (RandomNumberGenerator)
-- [ ] 게임 진행(PlayGame)
+- [x] 게임 진행(PlayGame)
   - [x] 자동차 상태 UI 출력 (ResultView)
     - [x] 자동차 이름 출력 (ResulView)
   - [x] 자동차 전진 (Car)

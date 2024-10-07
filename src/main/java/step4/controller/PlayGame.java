@@ -1,15 +1,15 @@
-package step4;
+package step4.controller;
 
 import step4.util.RandomNumberGenerator;
-import step4.vehicle.Car;
-import step4.vehicle.Cars;
+import step4.domain.Car;
+import step4.domain.Cars;
 import step4.view.ResultView;
 
 public class PlayGame {
-    Cars cars;
-    ResultView resultView;
+    private final Cars cars;
+    private final ResultView resultView;
 
-    PlayGame(Cars cars, ResultView resultView) {
+    public PlayGame(Cars cars, ResultView resultView) {
         this.cars = cars;
         this.resultView = resultView;
     }
@@ -21,7 +21,7 @@ public class PlayGame {
             playRound();
             resultView.separateRound();
         }
-        resultView.printWinners(cars.getWinners());
+        resultView.printWinners(cars.findWinners());
     }
 
     private void playRound() {
@@ -33,7 +33,7 @@ public class PlayGame {
     }
 
     private static void checkRoundNum(int round) {
-        if(round <1)
+        if (round < 1)
             throw new IllegalArgumentException("최소 한 라운드 이상은 진행해야함");
     }
 
