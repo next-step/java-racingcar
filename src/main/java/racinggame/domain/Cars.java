@@ -21,8 +21,6 @@ public class Cars {
     }
 
     private static ArrayList<Car> carInitialization(int carCount) {
-        assert -1 < carCount;
-
         ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car(DEFAULT_POSITION));
