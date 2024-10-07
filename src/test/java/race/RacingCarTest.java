@@ -28,7 +28,7 @@ public class RacingCarTest {
         String expectedResult = "car 1 : -----";
 
         // when
-        String result = car.makeCarStateMessage();
+        String result = car.toString();
 
         // then
         assertThat(result).isEqualTo(expectedResult);

@@ -24,7 +24,8 @@ public class RacingCar {
         return this.name;
     }
 
-    public String makeCarStateMessage() {
+    @Override
+    public String toString() {
         String carStateMarkers = state.makeCarStateMarkers();
         return String.format("%s : %s", name, carStateMarkers);
     }

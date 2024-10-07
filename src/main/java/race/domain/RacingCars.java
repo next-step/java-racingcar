@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class RacingCars {
     public static final int RANDOM_UPPER_LIMIT = 10;
-    
+
     private final List<RacingCar> racingCars;
 
     public static RacingCars from(List<String> carNames) {
@@ -50,8 +50,7 @@ public class RacingCars {
             RacingCar car = racingCars.get(carIndex);
             car.moveCarForwardIfCanGo(numbers.get(carIndex));
 
-            String carStateMessage = car.makeCarStateMessage();
-            carStatesMessages.add(carStateMessage);
+            carStatesMessages.add(car.toString());
         }
 
         return carStatesMessages;
