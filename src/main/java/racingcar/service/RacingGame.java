@@ -2,7 +2,8 @@ package racingcar.service;
 
 import racingcar.domain.RacingCar;
 import racingcar.domain.RandomMove;
-import racingcar.service.dto.RacingCarDto;
+import racingcar.service.dto.GameResult;
+import racingcar.service.dto.RacingCarRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,17 @@ public class RacingGame {
             INSTANCE = new RacingGame();
         }
         return INSTANCE;
+    }
+
+    public List<GameResult> race(int matchCount, List<RacingCar> racingCars) {
+        List<GameResult> result = new ArrayList<>();
+        while (isMatching(matchCount)) {
+            int currentCount = match(matchCount, racingCars);
+            result.add(getRacingCarsPosition(racingCars));
+            matchCount = currentCount;
+        }
+
+        return result;
     }
 
 
@@ -44,12 +56,12 @@ public class RacingGame {
      * getter로 clear하는 문제가 생길 수 있으므로
      * Integer 클래스로 복사해서 반환
      */
-    public List<RacingCarDto> getRacingCarsPosition(List<RacingCar> racingCars) {
-        List<RacingCarDto> result = new ArrayList<>();
+    public GameResult getRacingCarsPosition(List<RacingCar> racingCars) {
+        List<RacingCarRecord> result = new ArrayList<>();
         for (RacingCar racingCar : racingCars) {
-            result.add(RacingCarDto.from(racingCar));
+            result.add(RacingCarRecord.from(racingCar));
         }
-        return result;
+        return new GameResult(result);
     }
 
     public List<RacingCar> createRacingCars(String carNames) {

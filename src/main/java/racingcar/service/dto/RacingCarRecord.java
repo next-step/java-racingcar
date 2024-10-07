@@ -4,11 +4,11 @@ import racingcar.domain.RacingCar;
 
 import java.util.Objects;
 
-public class RacingCarDto {
+public class RacingCarRecord {
     private final String name;
     private final int position;
 
-    public RacingCarDto(String name, int position) {
+    public RacingCarRecord(String name, int position) {
         this.name = name;
         this.position = position;
     }
@@ -21,8 +21,8 @@ public class RacingCarDto {
         return position;
     }
 
-    public static RacingCarDto from(RacingCar racingCar) {
-        return new RacingCarDto(racingCar.getName(), racingCar.getPosition());
+    public static RacingCarRecord from(RacingCar racingCar) {
+        return new RacingCarRecord(racingCar.getName(), racingCar.getPosition());
     }
 
     @Override
@@ -33,7 +33,7 @@ public class RacingCarDto {
         if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        RacingCarDto that = (RacingCarDto) object;
+        RacingCarRecord that = (RacingCarRecord) object;
         return getPosition() == that.getPosition() && Objects.equals(getName(), that.getName());
     }
 
