@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.domain.Match;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RandomMove;
 import racingcar.service.dto.GameResult;
@@ -21,28 +22,21 @@ public class RacingGame {
         return INSTANCE;
     }
 
-    public List<GameResult> race(int matchCount, List<RacingCar> racingCars) {
+    public List<GameResult> race(Match match, List<RacingCar> racingCars) {
         List<GameResult> result = new ArrayList<>();
-        while (isMatching(matchCount)) {
-            int currentCount = match(matchCount, racingCars);
+        while (match.isMatching()) {
+            match(match, racingCars);
             result.add(getRacingCarsPosition(racingCars));
-            matchCount = currentCount;
         }
 
         return result;
     }
 
-
-    public boolean isMatching(int matchCount) {
-        return matchCount > 0;
-    }
-
-    public int match(int matchCount, List<RacingCar> racingCars) {
-        if (matchCount > 0) {
+    public void match(Match match, List<RacingCar> racingCars) {
+        if (match.isMatching()) {
             movingCars(racingCars);
-            matchCount--;
+            match.match();
         }
-        return matchCount;
     }
 
     private void movingCars(List<RacingCar> racingCars) {

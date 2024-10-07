@@ -2,6 +2,7 @@ package racingcar.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Match;
 import racingcar.domain.RacingCar;
 import racingcar.service.dto.GameResult;
 import racingcar.service.dto.RacingCarRecord;
@@ -17,9 +18,9 @@ public class RacingGameTest {
     @DisplayName("자동차 경주 진행")
     void 자동차_경주_진행() {
         RacingCar pobiCar = new RacingCar("pobi", 5);
-        int matchCount = 5;
+        Match match = new Match(5);
         List<RacingCar> racingCars = List.of(pobiCar);
-        List<GameResult> race = RacingGame.getInstance().race(matchCount, racingCars);
+        List<GameResult> race = RacingGame.getInstance().race(match, racingCars);
         assertThat(race.size()).isEqualTo(5);
     }
 
