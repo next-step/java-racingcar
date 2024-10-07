@@ -9,14 +9,14 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RaceTest {
-    private Race race;
+public class CarsTest {
+    private Cars cars;
 
     @Test
     @DisplayName("입력한 수 만큼의 자동차를 생성한다.")
     void 자동차_생성() {
-        race = Race.fromCarNames(Arrays.asList("name", "name2", "name3"));
-        assertThat(race.getCars()).hasSize(3);
+        cars = Cars.fromCarNames(Arrays.asList("name", "name2", "name3"));
+        assertThat(cars.getCarList()).hasSize(3);
     }
 
     @Test
@@ -30,9 +30,9 @@ public class RaceTest {
         carList.add(car2);
         carList.add(car3);
 
-        race = new Race(carList);
+        cars = new Cars(carList);
 
-        assertThat(race.getWinners()).hasSize(2);
-        assertThat(race.getWinners()).containsAll(Arrays.asList("name2", "name3"));
+        assertThat(cars.getWinners()).hasSize(2);
+        assertThat(cars.getWinners()).containsAll(Arrays.asList("name2", "name3"));
     }
 }

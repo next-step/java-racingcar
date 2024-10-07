@@ -2,27 +2,28 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Race {
+public class Cars {
 
-    private List<Car> cars;
+    private List<Car> carList;
 
-    public Race(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<Car> cars) {
+        this.carList = cars;
     }
 
-    public static Race fromCarNames(List<String> carNames) {
+    public static Cars fromCarNames(List<String> carNames) {
         List<Car> cars = carNames.stream().map(c -> new Car(c, new RandomMoveStrategy())).collect(Collectors.toList());
-        return new Race(cars);
+        return new Cars(cars);
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public List<Car> getCarList() {
+        return this.carList;
     }
 
     public void round() {
-        for (Car car : this.cars) {
+        for (Car car : this.carList) {
             car.run();
         }
     }
@@ -30,7 +31,7 @@ public class Race {
     public List<String> getWinners() {
         List<String> winnerNames = new ArrayList<>();
         int maxPosition = getMaxPosition();
-        for (Car car : this.cars) {
+        for (Car car : this.carList) {
             if (car.getPosition() == maxPosition) {
                 winnerNames.add(car.getName());
             }
@@ -40,7 +41,7 @@ public class Race {
 
     private int getMaxPosition() {
         int maxPosition = 0;
-        for (Car car : this.cars) {
+        for (Car car : this.carList) {
             if (car.getPosition() > maxPosition) {
                 maxPosition = car.getPosition();
             }
