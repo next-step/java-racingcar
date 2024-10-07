@@ -14,7 +14,7 @@ public class Position {
         return position;
     }
 
-    public Position addPosition() {
+    public Position plusPosition() {
         return new Position(position + 1);
     }
 

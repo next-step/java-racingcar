@@ -19,11 +19,11 @@ public class GameResult {
     }
 
     private List<String> createWinnersName() {
-        return findFinalRoundResult().findKeysByValue(getMaxPosition());
+        return findFinalRoundResult().findNamesByPosition(getMaxPosition());
     }
 
     private int getMaxPosition() {
-        return findFinalRoundResult().findMaxValue();
+        return findFinalRoundResult().findMaxPosition();
     }
 
     private RoundResult findFinalRoundResult() {

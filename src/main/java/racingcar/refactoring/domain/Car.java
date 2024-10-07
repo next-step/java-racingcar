@@ -8,7 +8,7 @@ public class Car {
 
     private static final int RANDOM_THRESHOLD = 4;
 
-    private Name name;
+    private final Name name;
     private Position position;
 
     public Car(String name) {
@@ -26,7 +26,7 @@ public class Car {
 
     public void moveForward(int randomNumber) {
         if (movable(randomNumber)) {
-            position = position.addPosition();
+            position = position.plusPosition();
         }
     }
 

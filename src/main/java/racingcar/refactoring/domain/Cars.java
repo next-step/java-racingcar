@@ -24,10 +24,10 @@ public class Cars {
     }
 
     public Map<String, Integer> createNamePositionMap() {
-        Map<String, Integer> current = new LinkedHashMap<>();
+        Map<String, Integer> result = new LinkedHashMap<>();
         for (Car car : cars) {
-            current.put(car.getName(), car.getPosition());
+            result.put(car.getName(), car.getPosition());
         }
-        return current;
+        return result;
     }
 }
