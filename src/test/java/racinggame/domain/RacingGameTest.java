@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.Car.CarDto;
+import racinggame.dto.CarDto;
 import racinggame.dto.SnapShotDto;
 import racinggame.random.Radom;
 

@@ -1,6 +1,6 @@
 package racinggame.view;
 
-import racinggame.domain.Car.CarDto;
+import racinggame.dto.CarDto;
 import racinggame.dto.SnapShotDto;
 
 public class OutPutView {

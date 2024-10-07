@@ -2,7 +2,6 @@ package racinggame.dto;
 
 import java.util.Collections;
 import java.util.List;
-import racinggame.domain.Car.CarDto;
 import racinggame.domain.SnapShot;
 
 public class SnapShotDto {

@@ -3,7 +3,7 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import racinggame.domain.Car.CarDto;
+import racinggame.dto.CarDto;
 import racinggame.random.Radom;
 
 public class Cars {

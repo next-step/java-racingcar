@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.Car.CarDto;
+import racinggame.dto.CarDto;
 import racinggame.dto.SnapShotDto;
 
 public class SnapShotStoreTest {

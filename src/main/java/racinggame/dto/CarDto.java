@@ -1,20 +1,18 @@
-package racinggame.domain;
+package racinggame.dto;
 
 import java.util.Objects;
+import racinggame.domain.Car;
 
-public class Car {
+public class CarDto {
 
-    private static final int MOVE_BOUND = 4;
-    private int position;
+    private final int position;
 
-    public Car(int position) {
+    public CarDto(int position) {
         this.position = position;
     }
 
-    public void move(int number) {
-        if (MOVE_BOUND <= number) {
-            position++;
-        }
+    public CarDto(Car car) {
+        this(car.position());
     }
 
     public int position() {
@@ -29,13 +27,12 @@ public class Car {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Car car = (Car) o;
-        return position == car.position;
+        CarDto carDto = (CarDto) o;
+        return position == carDto.position;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(position);
     }
-
 }

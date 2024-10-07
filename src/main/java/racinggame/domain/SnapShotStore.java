@@ -2,7 +2,7 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.Car.CarDto;
+import racinggame.dto.CarDto;
 import racinggame.dto.SnapShotDto;
 
 public class SnapShotStore {
