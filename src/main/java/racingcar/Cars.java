@@ -13,15 +13,28 @@ public class Cars {
     }
 
     public static Cars fromCarNames(List<String> carNames) {
-        List<Car> cars = carNames.stream().map(c -> new Car(c, new RandomMoveStrategy())).collect(Collectors.toList());
-        return new Cars(cars);
+        List<Car> carList = carNames.stream().map(c -> new Car(c, new RandomMoveStrategy())).collect(Collectors.toList());
+        return new Cars(carList);
     }
 
     public List<Car> getCarList() {
         return this.carList;
     }
 
-    public void round() {
+    public List<List<String>> runRace(int loop) {
+        List<List<String>> raceResults = new ArrayList<>();
+        for (int i = 0; i < loop; i++) {
+            round();
+            List<String> roundResult = carList.stream()
+                    .map(car -> ResultView.generateCarStatusResult(car))
+                    .collect(Collectors.toList());
+            raceResults.add(roundResult);
+        }
+
+        return raceResults;
+    }
+
+    private void round() {
         for (Car car : this.carList) {
             car.run();
         }
