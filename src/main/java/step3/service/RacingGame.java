@@ -27,7 +27,6 @@ public final class RacingGame {
 		return cars;
 	}
 
-	@SuppressWarnings("checkstyle:RegexpSingleline")
 	public static RacingHistory race(int carCount, int moveCount) {
 		throwExceptionIfParamsNotValid(carCount, moveCount);
 
