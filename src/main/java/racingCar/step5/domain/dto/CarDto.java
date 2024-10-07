@@ -1,5 +1,7 @@
 package racingCar.step5.domain.dto;
 
+import racingCar.step5.domain.RacingCar;
+
 import java.util.Objects;
 
 public class CarDto {
@@ -9,6 +11,10 @@ public class CarDto {
     public CarDto(String name, int position) {
         this.name = name;
         this.position = position;
+    }
+
+    public static CarDto of(RacingCar car) {
+        return new CarDto(car.getName(), car.getPosition());
     }
 
     public String getName() {

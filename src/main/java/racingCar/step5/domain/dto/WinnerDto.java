@@ -1,5 +1,7 @@
 package racingCar.step5.domain.dto;
 
+import racingCar.step5.domain.RacingCar;
+
 import java.util.Objects;
 
 public class WinnerDto {
@@ -10,6 +12,10 @@ public class WinnerDto {
 
     public String getCarName() {
         return carName;
+    }
+
+    public static WinnerDto of(RacingCar winnerCar){
+        return new WinnerDto(winnerCar.getName());
     }
 
     @Override
