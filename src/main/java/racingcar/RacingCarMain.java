@@ -15,8 +15,13 @@ public class RacingCarMain {
         }
 
         ResultView resultView = new ResultView();
-        Racing racing = new Racing(cars, roundNum, resultView);
-        racing.start();
+        Racing racing = new Racing(cars);
+
+        for (int i = 0; i < roundNum; i++) {
+            resultView.roundStart(i + 1);
+            List<Integer> carPositions = racing.play();
+            resultView.drawCarPositions(carPositions);
+        }
     }
 
 }

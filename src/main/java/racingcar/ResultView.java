@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
     private static final String LINE = "-".repeat(5);
@@ -8,9 +10,11 @@ public class ResultView {
         System.out.println(LINE + roundNumber + " 라운드 시작!" + LINE);
     }
 
-    public static void drawCarPosition(int position) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("-".repeat(position));
-        System.out.println(stringBuilder.toString());
+    public static void drawCarPositions(List<Integer> positions) {
+        for (int position : positions) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("-".repeat(position));
+            System.out.println(stringBuilder.toString());
+        }
     }
 }
