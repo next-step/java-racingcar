@@ -1,6 +1,8 @@
 package race.domain;
 
 public class RacingCar {
+    private static final int MINIMUM_TO_GO_FORWARD = 4;
+
     private final CarState state;
     private final String name;
 
@@ -28,10 +30,14 @@ public class RacingCar {
     }
 
     public void moveCarForwardIfCanGo(int generatedRandom) {
-        boolean carCanGo = state.canGo(generatedRandom);
+        boolean carCanGo = canGo(generatedRandom);
         if (carCanGo) {
             moveForward();
         }
+    }
+
+    private boolean canGo(int number) {
+        return number >= MINIMUM_TO_GO_FORWARD;
     }
 
     public int max(int maxState) {

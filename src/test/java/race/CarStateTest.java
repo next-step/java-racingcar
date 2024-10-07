@@ -58,28 +58,4 @@ public class CarStateTest {
         // then
         assertThat(state.isEqualWith(1)).isTrue();
     }
-
-    @Test
-    void 입력값이_4이상이면_전진() {
-        // given
-        CarState state = new CarState();
-
-        // when
-        boolean result = state.canGo(4);
-
-        // then
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    void 입력값이_4미만이면_멈춤() {
-        // given
-        CarState state = new CarState();
-
-        // when
-        boolean result = state.canGo(3);
-
-        // then
-        assertThat(result).isFalse();
-    }
 }

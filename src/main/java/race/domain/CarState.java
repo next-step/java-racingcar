@@ -2,7 +2,6 @@ package race.domain;
 
 public class CarState {
     private static final int DEFAULT_STATE = 0;
-    private static final int MINIMUM_TO_GO_FORWARD = 4;
     private static final String CAR_STATE_MARKER = "-";
 
     private int state;
@@ -24,10 +23,6 @@ public class CarState {
             return state;
         }
         return maxState;
-    }
-
-    public boolean canGo(int number) {
-        return number >= MINIMUM_TO_GO_FORWARD;
     }
 
     public void moveForward() {
