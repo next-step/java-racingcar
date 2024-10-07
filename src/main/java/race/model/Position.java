@@ -1,4 +1,4 @@
-package race.domain;
+package race.model;
 
 public class Position {
     private int position;
@@ -19,7 +19,7 @@ public class Position {
         return Math.max(maxValue, this.position);
     }
 
-    public String drawForwardDistance(String forwardString) {
-        return forwardString.repeat(this.position);
+    public void drawForwardDistance(String forwardString) {
+        System.out.print(forwardString.repeat(this.position));
     }
 }

@@ -10,9 +10,10 @@ public class ResultView {
 
     public void printRaceCondition(List<RacingCar> racingCars) {
         racingCars.forEach(racingCar -> {
-            String distanceString = racingCar.drawForwardDistance(FORWARD_STRING);
             racingCar.printName();
-            System.out.println(" : " + distanceString);
+            System.out.print(" : ");
+            racingCar.drawForwardDistance(FORWARD_STRING);
+            System.out.println();
         });
         System.out.println();
     }

@@ -1,14 +1,19 @@
 package race.domain;
 
+import race.model.CarName;
+import race.model.Position;
 
 public class RacingCar {
-    private static final int MOVE_CONDITION_NUMBER = 4;
     private Position position;
     private CarName name;
 
-    public RacingCar(String name, Position position) {
-        this.name = new CarName(name);
+    public RacingCar(CarName name, Position position) {
+        this.name = name;
         this.position = position;
+    }
+
+    public RacingCar(String name, Position position) {
+        this(new CarName(name), position);
     }
 
     public RacingCar(String name, int position) {
@@ -19,13 +24,20 @@ public class RacingCar {
         this(name, 0);
     }
 
-    public void printName() {
+    public RacingCar(CarName name, int position) {
+        this(name, new Position(position));
+    }
 
+    public RacingCar(CarName name) {
+        this(name, 0);
+    }
+
+    public void printName() {
         this.name.printName();
     }
 
-    public void moveForward(int value) {
-        if (isMovable(value)) {
+    public void moveForward(MoveStrategy moveStrategy, int number) {
+        if (moveStrategy.isMovable(number)) {
             this.position.move();
         }
     }
@@ -34,16 +46,12 @@ public class RacingCar {
         return this.position.hasSamePosition(position);
     }
 
-    private boolean isMovable(int number) {
-        return number >= MOVE_CONDITION_NUMBER;
-    }
-
     public int findMaxValue(int maxValue) {
         return this.position.findMaxValue(maxValue);
     }
 
-    public String drawForwardDistance(String forwardString) {
-        return this.position.drawForwardDistance(forwardString);
+    public void drawForwardDistance(String forwardString) {
+        this.position.drawForwardDistance(forwardString);
     }
 
     public void printNameWithComma(boolean b) {

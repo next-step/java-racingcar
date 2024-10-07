@@ -1,7 +1,7 @@
 package race;
 
 import org.junit.jupiter.api.Test;
-import race.domain.NumberPicker;
+import race.util.NumberPicker;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -30,8 +30,6 @@ public class InputView {
                             validateCarNamesCount(list);
                             return list;
                         }));
-
-
     }
 
     private void validateCarNamesCount(List<String> carNames) {

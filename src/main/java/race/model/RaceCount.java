@@ -1,4 +1,4 @@
-package race.domain;
+package race.model;
 
 public class RaceCount {
     private int raceCount;
