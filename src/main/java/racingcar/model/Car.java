@@ -14,8 +14,9 @@ public class Car {
     }
 
     public void move(boolean isCarMovingForward) {
-        if(isCarMovingForward)
+        if(isCarMovingForward) {
             movingDistance++;
+        }
     }
 
     public int getMovingDistance() {
