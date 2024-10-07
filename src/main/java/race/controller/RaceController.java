@@ -1,7 +1,9 @@
 package race.controller;
 
+import race.domain.GoCondition;
 import race.domain.RaceInput;
 import race.domain.RacingCars;
+import race.domain.RandomGoCondition;
 import race.view.InputView;
 import race.view.ResultView;
 
@@ -13,9 +15,11 @@ public class RaceController {
         ResultView.printResultTitle();
 
         RacingCars cars = RacingCars.from(raceInput.carNames());
+        GoCondition randomGoCondition = new RandomGoCondition();
+
         for (int round = 0; round < raceInput.gameCount(); round++) {
             ResultView.printRoundTitle(round);
-            cars.startRound();
+            cars.startRound(randomGoCondition);
             ResultView.printRoundResult(cars);
         }
 

@@ -1,12 +1,9 @@
 package race.domain;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    public static final int RANDOM_UPPER_LIMIT = 10;
-
     private final List<RacingCar> racingCars;
 
     public static RacingCars from(List<String> carNames) {
@@ -20,10 +17,9 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    public void startRound() {
+    public void startRound(GoCondition goCondition) {
         for (RacingCar car : racingCars) {
-            int randomNumber = generateIntBetween0and9();
-            car.moveCarForwardIfCanGo(randomNumber);
+            car.move(goCondition);
         }
     }
 
@@ -36,10 +32,6 @@ public class RacingCars {
         }
 
         return carStates.toString();
-    }
-
-    private static int generateIntBetween0and9() {
-        return new Random().nextInt(RANDOM_UPPER_LIMIT);
     }
 
     public List<String> findWinners() {
