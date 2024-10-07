@@ -1,15 +1,15 @@
-package CarRacingGame;
+package carRacingGame;
 
 public class CarRacingGame {
     static CarRacingGameUtils cars = new CarRacingGameUtils();
 
     public static void main(String[] args) {
-
-        int numberOfCars = InputView.inputNumberOfCars();
+        String[] nameOfCars = InputView.inputNameOfCars();
         int numberOfAttempts = InputView.inputNumberOfAttempts();
 
-        cars.initialCarSettings(numberOfCars);
-        cars.printMovingCars(numberOfAttempts);
+        cars.setupCars(nameOfCars);
+        cars.displayRaceProgress(numberOfAttempts);
+        cars.printWinnerName();
     }
 }
 
