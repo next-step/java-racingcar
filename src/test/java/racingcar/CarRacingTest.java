@@ -53,4 +53,18 @@ public class CarRacingTest {
         assertThat(cars.get(1).getMovingDistance()).isEqualTo(1);
         assertThat(cars.get(2).getMovingDistance()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("자동차 경주 승자를 결정하는 메서드 테스트")
+    public void decideWinnerTest() {
+        List<RaceRecord> records = new ArrayList<>();
+
+        records.add(new RaceRecord("pobi", 3));
+        records.add(new RaceRecord("crong", 2));
+        records.add(new RaceRecord("honux", 3));
+
+        RaceWinner winner = new RaceWinner(records);
+
+        assertThat(winner.getName()).isEqualTo("pobi, honux가 최종 우승했습니다.");
+    }
 }

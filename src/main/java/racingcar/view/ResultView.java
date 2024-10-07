@@ -19,5 +19,8 @@ public class ResultView {
         System.out.println();
     }
 
-
+    private void printRaceWinner(List<RaceRecord> records) {
+        RaceWinner winner = new RaceWinner(records);
+        System.out.println(winner.getName());
+    }
 }
