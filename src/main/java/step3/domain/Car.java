@@ -1,32 +1,26 @@
 package step3.domain;
 
 public class Car {
-	private final int MIN_MOVE_VALUE = 4;
-	private final int speed = 1; // 나중에 speed 설정하게 되면 final 제거 및 생성자 추가 필요
-	private int position;
-	private int moveCalledCount;
+	public static int DEFAULT_SPEED = 1;
+	public static int STOP_SPEED = 0;
+
+	private Integer position;
+	private CarMoveStrategy moveStrategy;
 
 	public Car() {
 		this.position = 0;
-		this.moveCalledCount = 0;
+		this.moveStrategy = new CarAtDefaultStrategy(); // 기본 전략 지정
 	}
 
-	public void move(int input) {
-		if (input >= MIN_MOVE_VALUE) {
-			moveForward();
-		}
-		this.moveCalledCount++;
-	}
-
-	public void moveForward() {
-		this.position = this.position + this.speed;
-	}
-
-	public int getMoveCalledCount() {
-		return moveCalledCount;
+	public void move(Integer randVal) {
+		this.position += this.moveStrategy.getMovePosition(randVal);
 	}
 
 	public int getPosition() {
 		return position;
+	}
+
+	public void setMoveStrategy(CarMoveStrategy moveStrategy) {
+		this.moveStrategy = moveStrategy;
 	}
 }

@@ -1,44 +1,56 @@
 package step3.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import step3.domain.Car;
+import step3.domain.CarAtDefaultStrategy;
+import step3.domain.CarMoveStrategy;
+import step3.domain.MovedHistory;
+import step3.domain.RacingHistory;
 import step3.exception.RaceParamUnvalidException;
 
 public final class RacingGame {
-	public static final int RANDOM_BOUND = 10;
+	private static final int RANDOM_BOUND = 10;
+	private static final CarMoveStrategy carAtDefaultStrategy = new CarAtDefaultStrategy();
+	private static final Random random = new Random();
 
-	/**
-	 @return : int[moveIndex][carIndex]
-	 */
-	public static int[][] race(int carCount, int moveCount) {
-		if (carCount < 1 || moveCount < 1) {
-			throw new RaceParamUnvalidException();
-		}
-		Car[] cars = makeCars(carCount);
-		int[][] raceResult = new int[moveCount][carCount];
-		for (int moveIndex = 0; moveIndex < moveCount; moveIndex++) {
-			raceResult[moveIndex] = moveCars(cars);
-		}
-		return raceResult;
-	}
-
-	private static Car[] makeCars(int carCount) {
-		Car[] cars = new Car[carCount];
+	public static List<Car> makeCars(Integer carCount) {
+		List<Car> cars = new ArrayList<>();
 		for (int i = 0; i < carCount; i++) {
-			cars[i] = new Car();
+			cars.add(new Car());
+		}
+		for (Car car : cars) {
+			car.setMoveStrategy(carAtDefaultStrategy);
 		}
 		return cars;
 	}
 
-	private static int[] moveCars(Car[] cars) {
-		Random random = new Random();
-		int[] movedResult = new int[cars.length];
-		for (int carIndex = 0; carIndex < cars.length; carIndex++) {
-			cars[carIndex].move(random.nextInt(RANDOM_BOUND));
-			movedResult[carIndex] = cars[carIndex].getPosition();
+	@SuppressWarnings("checkstyle:RegexpSingleline")
+	public static RacingHistory race(int carCount, int moveCount) {
+		throwExceptionIfParamsNotValid(carCount, moveCount);
+
+		List<Car> cars = makeCars(carCount);
+
+		RacingHistory racingHistory = new RacingHistory();
+		for (int i = 0; i < moveCount; i++) {
+			racingHistory.writePositionHistory(moveCars(cars));
+		}
+		return racingHistory;
+	}
+
+	private static void throwExceptionIfParamsNotValid(int carCount, int moveCount) {
+		if (carCount < 1 || moveCount < 1) {
+			throw new RaceParamUnvalidException();
+		}
+	}
+
+	private static MovedHistory moveCars(List<Car> cars) {
+		for (Car car : cars) {
+			car.move(random.nextInt(RANDOM_BOUND));
 		}
 
-		return movedResult;
+		return MovedHistory.from(cars);
 	}
 }

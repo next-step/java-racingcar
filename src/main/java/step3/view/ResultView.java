@@ -1,24 +1,29 @@
 package step3.view;
 
+import step3.domain.MovedHistory;
+import step3.domain.RacingHistory;
+
 public final class ResultView {
-	public static void printCurrentPosition(int[][] raceResult) {
-		System.out.println("실행 결과");
-		for (int moveIndex = 0; moveIndex < raceResult.length; moveIndex++) {
-			printCarPositionWithMoveIndex(raceResult[moveIndex]);
+	public static void printRacingHistory(RacingHistory raceResult) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("실행 결과\n");
+		for (MovedHistory movedHistory : raceResult.getMovedHistories()) {
+			printCarPositionsAtMoveTime(movedHistory, stringBuilder);
 		}
+		System.out.println(stringBuilder);
 	}
 
-	private static void printCarPositionWithMoveIndex(int[] raceResult) {
-		for (int carIndex : raceResult) {
-			printCarPositions(carIndex);
+	private static void printCarPositionsAtMoveTime(MovedHistory movedHistory, StringBuilder stringBuilder) {
+		for (Integer carPosition : movedHistory.getCarPositions()) {
+			printCarPositionAtMoveTime(carPosition, stringBuilder);
 		}
-		System.out.println("");
+		stringBuilder.append("\n");
 	}
 
-	private static void printCarPositions(int position) {
-		for (int i = 0; i < position; i++) {
-			System.out.print("-");
+	private static void printCarPositionAtMoveTime(Integer carPosition, StringBuilder stringBuilder) {
+		for (int i = 0; i < carPosition; i++) {
+			stringBuilder.append("-");
 		}
-		System.out.println("");
+		stringBuilder.append("\n");
 	}
 }
