@@ -8,37 +8,41 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    public static final String DELIMITER = ",";
     public static final int DEFAULT_MAX_POSITION = 0;
 
     private final MoveStrategy moveStrategy;
-    private final List<Car> cars = new ArrayList<>();
+    private final CarCreationStrategy carCreationStrategy;
 
-    public RacingGame(String carNames, MoveStrategy moveStrategy) {
+    public RacingGame(MoveStrategy moveStrategy, CarCreationStrategy carCreationStrategy) {
         this.moveStrategy = moveStrategy;
-        createCars(carNames);
+        this.carCreationStrategy = carCreationStrategy;
     }
 
-    private void createCars(String carNames) {
-        String[] names = carNames.split(DELIMITER);
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+    public RaceResult play(String carNames, int attemptCount) {
+        List<Car> cars = create(carNames);
+        return race(attemptCount, cars);
     }
 
-    public RaceResult race(int attemptCount) {
-        List<AttemptResult> attemptResults = new ArrayList<>();
-        for (int attempt = 0; attempt < attemptCount; attempt++) {
-            AttemptResult attemptResult = runAttempt(cars);
-            attemptResults.add(attemptResult);
-        }
+    private List<Car> create(String names) {
+        return carCreationStrategy.create(names);
+    }
 
-        List<String> winners = getWinners();
-
+    private RaceResult race(int attemptCount, List<Car> cars) {
+        List<AttemptResult> attemptResults = getAttemptResults(attemptCount, cars);
+        List<String> winners = getWinners(cars);
         return new RaceResult(attemptResults, winners);
     }
 
-    private AttemptResult runAttempt(List<Car> cars) {
+    private List<AttemptResult> getAttemptResults(int attemptCount, List<Car> cars) {
+        List<AttemptResult> attemptResults = new ArrayList<>();
+        for (int attempt = 0; attempt < attemptCount; attempt++) {
+            AttemptResult attemptResult = getAttemptResult(cars);
+            attemptResults.add(attemptResult);
+        }
+        return attemptResults;
+    }
+
+    private AttemptResult getAttemptResult(List<Car> cars) {
         List<Car> positions = new ArrayList<>();
         for (Car car : cars) {
             car.move(moveStrategy);
@@ -47,7 +51,7 @@ public class RacingGame {
         return new AttemptResult(positions);
     }
 
-    private List<String> getWinners() {
+    private List<String> getWinners(List<Car> cars) {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()

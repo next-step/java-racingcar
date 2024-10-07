@@ -16,13 +16,13 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame("pobi,catsb,hoya", new FourOrMore(new TestRandomHolder(4)));
+        racingGame = new RacingGame(new FourOrMore(new TestRandomHolder(4)), new DelimiterCarCreationStrategy());
     }
 
     @Test
     @DisplayName("시도 횟수별 자동차의 위치와 우승자를 반환한다.")
-    void race() {
-        RaceResult raceResult = racingGame.race(1);
+    void play() {
+        RaceResult raceResult = racingGame.play("pobi,catsb,hoya", 1);
         assertThat(raceResult.getAttemptResults()).isEqualTo(List.of(new AttemptResult(List.of(new Car(1, "pobi"), new Car(1, "catsb"), new Car(1, "hoya")))));
         assertThat(raceResult.getWinners()).isEqualTo(List.of("pobi", "catsb", "hoya"));
     }
