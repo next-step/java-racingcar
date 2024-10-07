@@ -57,12 +57,8 @@ public class Cars {
     }
 
     public int getMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = car.maxPosition(maxPosition);
-        }
-
-        return maxPosition;
+        return cars.stream()
+                .reduce(0, (position, car) -> car.maxPosition(position), Integer::max);
     }
 
     public List<Car> getWinners(int position) {
