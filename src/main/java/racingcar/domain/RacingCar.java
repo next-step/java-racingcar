@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.service.dto.RacingCarDto;
-
 import java.util.Objects;
 
 public class RacingCar {
@@ -45,21 +43,25 @@ public class RacingCar {
         return this.name;
     }
 
-    public RacingCarDto toDto() {
-        return new RacingCarDto(this.name, this.position);
+    public int getPosition() {
+        return position;
     }
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
         RacingCar racingCar = (RacingCar) object;
-        return position == racingCar.position && Objects.equals(getName(), racingCar.getName());
+        return getPosition() == racingCar.getPosition() && Objects.equals(getName(), racingCar.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, getName());
+        return Objects.hash(getPosition(), getName());
     }
 }
 

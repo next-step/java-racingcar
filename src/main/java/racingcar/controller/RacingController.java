@@ -1,7 +1,9 @@
 package racingcar.controller;
 
+import racingcar.domain.Match;
 import racingcar.domain.RacingCar;
 import racingcar.service.RacingGame;
+import racingcar.service.dto.GameResult;
 
 import java.util.List;
 
@@ -17,17 +19,13 @@ public class RacingController {
 
     public void play() {
         String carNames = inputView.getRacingCars();
-        int matchCount = inputView.getMatchCount();
+        Match match = new Match(inputView.getMatchCount());
         RacingGame game = RacingGame.getInstance();
         List<RacingCar> racingCars = game.createRacingCars(carNames);
 
+        List<GameResult> results = game.race(match, racingCars);
 
-        while (game.isMatching(matchCount)) {
-            int currentCount = game.match(matchCount, racingCars);
-            resultView.printRacingCarsStatus(game.getRacingCarsPosition(racingCars));
-            matchCount = currentCount;
-        }
-
+        resultView.printGameResult(results);
         resultView.printWinners(game.findWinners(racingCars));
     }
 }

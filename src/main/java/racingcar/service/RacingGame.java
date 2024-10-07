@@ -1,8 +1,10 @@
 package racingcar.service;
 
+import racingcar.domain.Match;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RandomMove;
-import racingcar.service.dto.RacingCarDto;
+import racingcar.service.dto.GameResult;
+import racingcar.service.dto.RacingCarRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
+    public static final String CAR_NAME_DELIMITER = ",";
     private static RacingGame INSTANCE = null;
 
     public static RacingGame getInstance() {
@@ -19,17 +22,21 @@ public class RacingGame {
         return INSTANCE;
     }
 
+    public List<GameResult> race(Match match, List<RacingCar> racingCars) {
+        List<GameResult> result = new ArrayList<>();
+        while (match.isMatching()) {
+            match(match, racingCars);
+            result.add(getRacingCarsPosition(racingCars));
+        }
 
-    public boolean isMatching(int matchCount) {
-        return matchCount > 0;
+        return result;
     }
 
-    public int match(int matchCount, List<RacingCar> racingCars) {
-        if (matchCount > 0) {
+    public void match(Match match, List<RacingCar> racingCars) {
+        if (match.isMatching()) {
             movingCars(racingCars);
-            matchCount--;
+            match.match();
         }
-        return matchCount;
     }
 
     private void movingCars(List<RacingCar> racingCars) {
@@ -43,17 +50,17 @@ public class RacingGame {
      * getter로 clear하는 문제가 생길 수 있으므로
      * Integer 클래스로 복사해서 반환
      */
-    public List<RacingCarDto> getRacingCarsPosition(List<RacingCar> racingCars) {
-        List<RacingCarDto> result = new ArrayList<>();
+    public GameResult getRacingCarsPosition(List<RacingCar> racingCars) {
+        List<RacingCarRecord> result = new ArrayList<>();
         for (RacingCar racingCar : racingCars) {
-            result.add(racingCar.toDto());
+            result.add(RacingCarRecord.from(racingCar));
         }
-        return result;
+        return new GameResult(result);
     }
 
     public List<RacingCar> createRacingCars(String carNames) {
         List<RacingCar> cars = new ArrayList<>();
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(CAR_NAME_DELIMITER);
         for (String name : names) {
             cars.add(new RacingCar(name));
         }

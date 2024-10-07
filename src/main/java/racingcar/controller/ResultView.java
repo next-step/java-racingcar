@@ -1,7 +1,8 @@
 package racingcar.controller;
 
 
-import racingcar.service.dto.RacingCarDto;
+import racingcar.service.dto.GameResult;
+import racingcar.service.dto.RacingCarRecord;
 
 import java.util.List;
 
@@ -21,14 +22,19 @@ public class ResultView {
         return INSTANCE;
     }
 
+    public void printGameResult(List<GameResult> results) {
+        for (GameResult result : results) {
+            printRacingCarsStatus(result);
+        }
+    }
 
-    public void printRacingCarsStatus(List<RacingCarDto> racingCars) {
+    public void printRacingCarsStatus(GameResult result) {
         StringBuilder sb = new StringBuilder();
-        for (RacingCarDto racingCar : racingCars) {
+        for (RacingCarRecord racingCar : result.getResult()) {
             sb.append(racingCar.getName());
             sb.append(" : ");
             sb.append(getPosition(racingCar.getPosition()));
-            sb.append("\n");
+            sb.append(System.lineSeparator());
         }
         System.out.println(sb);
     }
