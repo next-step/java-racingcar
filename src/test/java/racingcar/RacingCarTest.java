@@ -12,23 +12,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    @ParameterizedTest
-    @MethodSource("randomNum")
-    @DisplayName("자동차가 이동하는 값이 4 이상일 경우에만 전진하고 그렇지않으면 멈춰있는지 확인")
-    void carMovesOrStopsByRandomNum(int num) {
+    @Test
+    @DisplayName("자동차가 이동하는 값이 4 이상일 경우 전진하는지 확인")
+    void carMovesWhenFourOrMore() {
         Car car = new Car();
-        car.moveCar(num);
-
-        System.out.println("num :: " + num);
-        if (num >= 4) {
-            assertThat(car.getCurrentPosition()).isEqualTo(1);
-            return;
-        }
-        assertThat(car.getCurrentPosition()).isEqualTo(0);
+        car.move(4);
+        assertThat(car.getCurrentPosition()).isEqualTo(1);
     }
 
-    static IntStream randomNum() {
-        Random random = new Random();
-        return IntStream.generate(() -> random.nextInt(10)).limit(1);
+    @Test
+    @DisplayName("자동차가 이동하는 값이 4 이하일 경우 멈춰있는지 확인")
+    void carStopWhenLessThanFour() {
+        Car car = new Car();
+        car.move(3);
+        assertThat(car.getCurrentPosition()).isEqualTo(0);
     }
 }

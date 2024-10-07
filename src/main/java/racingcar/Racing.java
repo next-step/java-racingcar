@@ -26,7 +26,7 @@ public class Racing {
 
     private void play() {
         for (Car car : cars) {
-            int position = car.moveCar(RANDOM.nextInt(10));
+            int position = car.move(RANDOM.nextInt(10));
             resultView.drawCarPosition(position);
         }
     }
