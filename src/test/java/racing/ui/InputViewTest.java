@@ -33,25 +33,11 @@ public class InputViewTest {
     }
 
     @Test
-    @DisplayName("inputCar 메서드 5글자미만 입력시 성공")
-    void input_Car_메서드_테스트_성공() {
-        Scanner scanner = new Scanner("leo,seo");
-        InputView view = new InputView(scanner);
+    @DisplayName("splitTry 메서드 테스트 이름 문자열 쉼표 구분시  String 배열에 저장")
+    void splitTry_메서드_테스트() {
+        String input = "leo,bara,bake";
+        String[] carNames = input.split(",");
 
-        String[] carNames = view.inputCar();
-
-        assertThat(carNames).isEqualTo(new String[]{"leo", "seo"});
+        assertThat(carNames).isEqualTo(new String[]{"leo", "bara", "bake"});
     }
-
-    @Test
-    @DisplayName("inputCar 메서드 5글자 초과 시 예외 발생")
-    void input_Car_메서드_5글자_초과_예외_테스트() {
-        Scanner scanner = new Scanner("leo,seoun");
-        InputView view = new InputView(scanner);
-
-        assertThatThrownBy(view::inputCar)
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageMatching("이름은 5글자 미만으로 입력해주세요.");
-    }
-
 }

@@ -22,12 +22,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public void outputWinnerView(int max, List<Car> cars) {
-        String winners = cars.stream()
-                .filter(car -> car.isWin(max))
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-        System.out.println(winners + "가 최종 우승했습니다.");
+    public void outputWinnerView(List<String> winners) {
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 
     private static void generateRepeatedLine(int repeatCount, StringBuilder outputBuilder) {

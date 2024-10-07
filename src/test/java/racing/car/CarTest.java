@@ -34,4 +34,23 @@ public class CarTest {
         assertThat(car).extracting("position").isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("자동차_이름이_5글자_미만_성공")
+    void 자동차_이름_5글자_미만_성공() {
+        String name = "leo";
+        Car car = new Car(name);
+
+        assertThat(car).isNotNull();
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("자동차_이름이_5글자_초과_에러")
+    void 자동차_이름_5글자_초과_에러() {
+
+        assertThatThrownBy(() -> {
+            new Car("hanseounggyun");
+        }).isInstanceOf(RuntimeException.class).hasMessageMatching("자동차 이름이 5자글자를 초과하였습니다.");
+    }
+
 }

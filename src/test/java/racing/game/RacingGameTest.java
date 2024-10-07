@@ -24,13 +24,11 @@ public class RacingGameTest {
     @Test
     @DisplayName("initializeCars 메서드는 각 Car 객체를 올바르게 초기화해야 한다.")
     void initializeCars_메서드_테스트() {
-        List<Car> carList = new ArrayList<>();
-        String[] cars = {"leo", "seounggyun"};
-        game.initializeCars(cars, carList);
+        List<Car> cars = new ArrayList<>();
+        String[] carNames = {"leo", "seoun"};
+        game.initializeCars(carNames, cars);
 
-        for (int i = 0; i < cars.length; i++) {
-            assertThat(carList.get(i)).isNotNull();
-        }
+        assertThat(cars).extracting(Car::getName).contains("leo", "seoun");
     }
 
     @Test
@@ -76,13 +74,5 @@ public class RacingGameTest {
                 .hasMessageMatching("게임을 진행하려면 시도 횟수는 1 이상이어야 합니다.");
     }
 
-    @Test
-    @DisplayName("splitTry 메서드 테스트 이름 문자열 쉼표 구분시 String 배열에 저장")
-    void splitTry_메서드_테스트() {
-        String input = "leo,bara,bake";
-        String[] carNames = input.split(",");
-
-        assertThat(carNames).isEqualTo(new String[]{"leo", "bara", "bake"});
-    }
 
 }
