@@ -1,6 +1,7 @@
 package racingcar.view;
 
-import racingcar.model.CarRecord;
+import racingcar.model.RaceRecord;
+import racingcar.model.RaceWinner;
 
 import java.util.List;
 
@@ -10,13 +11,17 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printRacingResult(List<CarRecord> records) {
+    public void printRacingResult(List<RaceRecord> records, int raceCount, int totalNumberOfRace) {
 
-        for(CarRecord record : records) {
-            System.out.println(record.getDashCharacterString());
+        for(RaceRecord record : records) {
+            System.out.println(record.getCarName() + " : " + record.getDashCharacterString());
         }
 
         System.out.println();
+
+        if(raceCount == totalNumberOfRace) {
+            printRaceWinner(records);
+        }
     }
 
     private void printRaceWinner(List<RaceRecord> records) {

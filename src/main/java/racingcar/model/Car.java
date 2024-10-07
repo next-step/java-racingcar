@@ -1,10 +1,12 @@
 package racingcar.model;
 
 public class Car {
+    private String name;
     private int movingDistance;
 
-    public Car() {
+    public Car(String name) {
         this(0);
+        this.name = name;
     }
 
     private Car(int movingDistance) {
@@ -18,5 +20,9 @@ public class Car {
 
     public int getMovingDistance() {
         return this.movingDistance;
+    }
+
+    public String getName() {
+        return name;
     }
 }

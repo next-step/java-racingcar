@@ -3,8 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
+import racingcar.model.RaceRecord;
+import racingcar.model.RaceWinner;
 import racingcar.service.CarRacing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,21 +17,24 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주 준비 메서드 테스트")
     public void carRaceReadyTest() {
-        CarRacing carRacing = new CarRacing(3);
+        CarRacing carRacing = new CarRacing(new String[]{"pobi", "crong", "honux"});
         assertThat(carRacing.getCars()).hasSize(3);
+        assertThat(carRacing.getCars().get(0).getName()).isEqualTo("pobi");
+        assertThat(carRacing.getCars().get(1).getName()).isEqualTo("crong");
+        assertThat(carRacing.getCars().get(2).getName()).isEqualTo("honux");
     }
 
     @Test
     @DisplayName("발생한 랜덤한 값들을 기반으로 자동차들의 전진 여부를 결정하는 메서드 테스트")
     public void isCarMovingForwardTest() {
-            CarRacing carRacing = new CarRacing(3);
+            CarRacing carRacing = new CarRacing(new String[]{"pobi", "crong", "honux"});
             assertThat(carRacing.isCarMovingForward()).isIn(true, false);
     }
 
     @Test
     @DisplayName("각각의 자동차에 대한 전진여부에 따라 실제로 자동차들을 이동시키는 메서드 테스트")
     public void carMoveTest() {
-        CarRacing carRacing = new CarRacing(3);
+        CarRacing carRacing = new CarRacing(new String[]{"pobi", "crong", "honux"});
         List<Car> cars= carRacing.getCars();
         int count = 0;
 

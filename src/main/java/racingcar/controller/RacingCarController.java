@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.CarRecord;
+import racingcar.model.RaceRecord;
 import racingcar.service.CarRacing;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -11,15 +11,15 @@ public class RacingCarController {
     private static final InputView inputView = new InputView();
 
     public static void main(String[] args) {
-        int numberOfCars = inputView.enterNumberOfCars();
-        int numberOfMoves = inputView.enterNumberOfMoves();
+        String[] carNames = inputView.enterCarNames().split(",");
+        int totalNumberOfRace = inputView.enterNumberOfRace();
 
-        CarRacing carRacing = new CarRacing(numberOfCars);
+        CarRacing carRacing = new CarRacing(carNames);
         ResultView resultView = new ResultView();
 
-        for(int i = 0; i < numberOfMoves; i++) {
-            List<CarRecord> records = carRacing.carRaceStart();
-            resultView.printRacingResult(records);
+        for(int raceCount = 1; raceCount <= totalNumberOfRace; raceCount++) {
+            List<RaceRecord> records = carRacing.carRaceStart();
+            resultView.printRacingResult(records, raceCount, totalNumberOfRace);
         }
     }
 }
