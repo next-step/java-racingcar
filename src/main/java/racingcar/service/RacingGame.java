@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
+    public static final String CAR_NAME_DELIMITER = ",";
     private static RacingGame INSTANCE = null;
 
     public static RacingGame getInstance() {
@@ -53,7 +54,7 @@ public class RacingGame {
 
     public List<RacingCar> createRacingCars(String carNames) {
         List<RacingCar> cars = new ArrayList<>();
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(CAR_NAME_DELIMITER);
         for (String name : names) {
             cars.add(new RacingCar(name));
         }
