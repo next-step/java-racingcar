@@ -1,7 +1,9 @@
-package racing.car.winner;
+package racing.winner;
 
 import org.junit.jupiter.api.Test;
 import racing.car.car.Car;
+import racing.car.winner.Winner;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
