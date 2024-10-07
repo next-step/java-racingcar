@@ -5,6 +5,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Car {
+    private static final int MAX_LENGTH_OF_NAME = 5;
+
     private int step;
 
     private final String name;
@@ -14,26 +16,29 @@ public class Car {
         this.name = name;
     }
 
-    public int getStep() {
-        return this.step;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void moveBy(CarMoveRule carMoveRule) {
-        if (carMoveRule.check()) {
+    public void moveBy(CarMoveRule carMoveRule, CarMoveRuleValue carMoveRuleValue) {
+        if (carMoveRule.check(carMoveRuleValue)) {
             this.step++;
         }
     }
 
+    public CarRaceGameHistory recordHistory(int round) {
+        return CarRaceGameHistory.record(round, step, name);
+    }
+
+
     public static Car create(int startStep, String name) {
+        if (name.length() > MAX_LENGTH_OF_NAME) {
+            throw new IllegalArgumentException("이름은 최대 5자 이하로 입력 가능합니다.");
+        }
+
         return new Car(startStep, name);
     }
 
     public static List<Car> create(int startStep, List<String> names) {
-        return names.stream().map((name) -> Car.create(startStep, name)).collect(Collectors.toList());
+        return names.stream()
+                    .map((name) -> Car.create(startStep, name))
+                    .collect(Collectors.toList());
     }
 
     @Override

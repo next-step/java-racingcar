@@ -1,9 +1,6 @@
 package race;
 
-import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class CarRaceGameHistory {
     private final int round;
@@ -14,6 +11,10 @@ public class CarRaceGameHistory {
         this.round = round;
         this.step = step;
         this.name = name;
+    }
+
+    public static CarRaceGameHistory newInstance(CarRaceGameHistory history) {
+        return new CarRaceGameHistory(history.round, history.step, history.name);
     }
 
     public int getStep() {
@@ -32,19 +33,8 @@ public class CarRaceGameHistory {
         return new CarRaceGameHistory(round, step, name);
     }
 
-    public static List<CarRaceGameHistory> selectWinningHistories(List<CarRaceGameHistory> histories) {
-        if (isNotSameRound(histories)) {
-            throw new IllegalArgumentException("같은 라운드의 게임 기록이 아닙니다.");
-        }
-
-        int maxStep =
-                histories.stream().mapToInt(CarRaceGameHistory::getStep).max().orElseThrow(NoSuchElementException::new);
-
-        return histories.stream().filter(history -> history.step == maxStep).collect(Collectors.toList());
-    }
-
-    private static boolean isNotSameRound(List<CarRaceGameHistory> histories) {
-        return histories.stream().anyMatch(history -> history.round != histories.get(0).round);
+    public boolean isSameStep(int step) {
+        return this.step == step;
     }
 
     @Override

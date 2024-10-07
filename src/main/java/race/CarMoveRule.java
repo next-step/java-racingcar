@@ -1,5 +1,5 @@
 package race;
 
 public interface CarMoveRule {
-    boolean check();
+    boolean check(CarMoveRuleValue value);
 }
