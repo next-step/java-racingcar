@@ -1,4 +1,4 @@
-package step4racinggamewinner;
+package step4racinggamewinner.random;
 
 public class TestRandomGenerator implements RandomGenerator {
     @Override

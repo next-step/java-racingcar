@@ -1,27 +1,23 @@
 package step4racinggamewinner;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step4racinggamewinner.random.RandomGenerator;
+import step4racinggamewinner.random.TestRandomGenerator;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    final static int TEST_CAR_COUNT = 3;
-    public static final int GO = 1;
-    public static final int STOP = 0;
+    static final int TEST_CAR_COUNT = 3;
+    static final int DEFAULT_POSITION = 0;
     RandomGenerator randomGenerator;
     Cars cars;
-
-    @BeforeEach
-    void init() {
-
-    }
 
     @Test
     void 쉼표기준으로_자동차_생성() {
@@ -40,11 +36,23 @@ public class CarTest {
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void baseLineCar테스트() {
+        String carNames = "red,kaki";
+        cars = new Cars(carNames);
+        assertThat(cars.baseLineCar().carName()).isEqualTo("red");
+    }
+
+    @Test
+    void specificCarName테스트() {
+        String carNames = "red,kaki";
+        cars = new Cars(carNames);
+        assertThat(cars.specificCarName(0)).isEqualTo("red");
+    }
+
     @ParameterizedTest
     @CsvSource(value = {"3,0", "4,1"})
     void 이동여부_판단테스트(int randomNumber, int decisionResult) {
-        String carNames = "red,kaki";
-        int testRandomNumber = 4;
         cars = new Cars("red");
         assertThat(cars.decideGoStop(randomNumber)).isEqualTo(decisionResult);
     }
@@ -52,23 +60,25 @@ public class CarTest {
 
     @Test
     void 자동차별_한라운드_이동여부_저장() {
-        String carNames = "red,kaki";
-        int testRandomNumber = 4;
         randomGenerator = new TestRandomGenerator();
         cars = new Cars("red,blue");
-        cars.recordEachRoundMoving(randomGenerator.generateRandomNumber());
+        cars.recordEachRoundMoving(randomGenerator);
         assertThat(cars.currentCarPositionList())
                 .isEqualTo(List.of(1, 1));
     }
 
     @Test
-    void 우승자_찾기() {
-        Car red = new Car("red", 4);
-        Car kaki = new Car("kaki", 2);
-        Car blue = new Car("blue", 4);
-        cars = new Cars(List.of(red, kaki, blue));
-        assertThat(cars.findWinner()).isEqualTo(List.of("red", "blue"));
+    void carNameAndPosition테스트() {
+        cars = new Cars("red,blue");
+        assertThat(cars.carNameAndPosition())
+                .isEqualTo(Map.of("red", DEFAULT_POSITION, "blue", DEFAULT_POSITION));
+    }
 
+    @Test
+    void currentCarPositionList테스트() {
+        cars = new Cars("red,blue");
+        assertThat(cars.currentCarPositionList())
+                .isEqualTo(List.of(DEFAULT_POSITION, DEFAULT_POSITION));
     }
 
 

@@ -1,4 +1,4 @@
-package step4racinggamewinner;
+package step4racinggamewinner.random;
 
 @FunctionalInterface
 public interface RandomGenerator {

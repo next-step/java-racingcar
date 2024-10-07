@@ -1,5 +1,8 @@
 package step4racinggamewinner;
 
+import step4racinggamewinner.random.RacingCarRandomGenerator;
+import step4racinggamewinner.random.RandomGenerator;
+
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +15,8 @@ public class Main {
         RandomGenerator randomGenerator = new RacingCarRandomGenerator();
         ResultView.printPreview();
         racingCars.viewRacing(movingTryCount, randomGenerator);
-        ResultView.printCurrentCarPosition(racingCars.currentCarNameAndPosition());
+
+        ResultView.printTotalCarPosition(racingCars.carNameAndPosition());
         ResultView.printWinner(racingCars.findWinner());
 
     }
