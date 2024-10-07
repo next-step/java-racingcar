@@ -2,24 +2,19 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
     private List<Car> cars;
 
-    public Race(String[] carNames) {
-        createCars(carNames);
-    }
-
     public Race(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void createCars(String[] carNames) {
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            this.cars.add(new Car(carNames[i], new RandomMoveStrategy()));
-        }
+    public static Race fromCarNames(List<String> carNames) {
+        List<Car> cars = carNames.stream().map(c -> new Car(c, new RandomMoveStrategy())).collect(Collectors.toList());
+        return new Race(cars);
     }
 
     public List<Car> getCars() {
