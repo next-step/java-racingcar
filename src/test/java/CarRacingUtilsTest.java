@@ -1,12 +1,12 @@
-import CarRacingGame.CarRacingGameUtils;
+
+import carRacingGame.CarRacingGameUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarRacingUtilsTest {
 
@@ -18,22 +18,46 @@ public class CarRacingUtilsTest {
     }
 
     @Test
-    @DisplayName("Set the numbers of the cars and check proper numbers of items")
-    public void testInitialCarSettings() {
-        carRacingGameUtils.initialCarSettings(3);
-        Map<String, String> cars = carRacingGameUtils.initialCarSettings(3);
-        assertEquals(3, cars.size());
+    @DisplayName("Test if car names are properly saved")
+    public void testSetupCars() {
+        String[] carNames = {"Car1", "Car2", "Car3"};
 
+        Map<String, String> cars = carRacingGameUtils.setupCars(carNames);
+
+        assertEquals(3, cars.size());
+        assertTrue(cars.containsKey("Car1"));
+        assertTrue(cars.containsKey("Car2"));
+        assertTrue(cars.containsKey("Car3"));
     }
 
     @Test
-    @DisplayName("Set the numbers of the cars and check cars move properly")
+    public void testMakeDistanceOfCars() {
+
+        String initialPosition = "";
+        String newPosition = carRacingGameUtils.moveForward(initialPosition);
+        assertTrue(newPosition.equals("") || newPosition.equals("-"));
+    }
+
+    @Test
     public void testMoveCars() {
-        int numberOfCars = 2;
-        carRacingGameUtils.initialCarSettings(numberOfCars);
+
+        String[] carNames = {"Car1", "Car2"};
+        carRacingGameUtils.setupCars(carNames);
         carRacingGameUtils.moveCars();
-        carRacingGameUtils.cars.forEach((car, position) -> {
-            assertTrue(position.equals("-") || position.equals("--"));
+        carRacingGameUtils.cars.forEach((carName, position) -> {
+            assertTrue(position.equals("") || position.equals("-"));
         });
+    }
+
+    @Test
+    @DisplayName("test if winners found properly")
+    public void testRacingResult() {
+
+        String[] carNames = {"Car1", "Car2"};
+        carRacingGameUtils.setupCars(carNames);
+        carRacingGameUtils.moveCars();
+        carRacingGameUtils.racingResult();
+
+        assertFalse(carRacingGameUtils.finalWinners.isEmpty());
     }
 }
