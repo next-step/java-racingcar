@@ -1,24 +1,30 @@
 package study.racing;
 
+import study.racing.constants.RacingMessage;
+import study.racing.domain.Input;
 import study.validation.InputValidation;
 
 import java.util.Scanner;
 
 public class InputView {
 
-    public int input(String code) {
+    public Input readInput() {
         Scanner scanner = new Scanner(System.in);
-        int totalCount = 0;
 
-        System.out.println(RacingMessage.find(code).getMsg());
-        String count = scanner.nextLine();
+        System.out.println(RacingMessage.CAR_COUNT.getMsg());
+        String carCount = scanner.nextLine();
 
-        boolean isInputMatch = InputValidation.racingInputValidation(count);
+        System.out.println(RacingMessage.TRY_COUNT.getMsg());
+        String roundCount = scanner.nextLine();
 
+        int car = 0;
+        int round = 0;
+
+        boolean isInputMatch = InputValidation.racingInputValidation(carCount, roundCount);
         if(isInputMatch) {
-            totalCount = Integer.parseInt(count);
-
+            car = Integer.parseInt(carCount);
+            round = Integer.parseInt(roundCount);
         }
-        return totalCount;
+        return new Input(car, round);
     }
 }

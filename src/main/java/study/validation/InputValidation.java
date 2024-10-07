@@ -1,19 +1,19 @@
 package study.validation;
 
-import study.racing.RacingMessage;
+import study.racing.constants.RacingMessage;
 
 public class InputValidation {
 
-    public static boolean racingInputValidation(String inputCount) {
+    public static boolean racingInputValidation(String carCount, String tryCount) {
 
         boolean isInputMatchType = true;
 
-        if(inputCount.isBlank()) {
+        if(carCount.isBlank() && tryCount.isBlank()) {
             return isInputMatchType = false;
         }
 
         try {
-            if(Integer.parseInt(inputCount) < 0) {
+            if(Integer.parseInt(carCount) < 0 || Integer.parseInt(tryCount) < 0) {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {

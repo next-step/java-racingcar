@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.constants;
 
 import java.util.Arrays;
 

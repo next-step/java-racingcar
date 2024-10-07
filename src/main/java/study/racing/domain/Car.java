@@ -1,11 +1,8 @@
-package study.racing;
+package study.racing.domain;
 
 public class Car {
     private int carNo;
     private int moveCount;
-
-    public Car() {
-    }
 
     public Car(int carNo, int moveCount) {
         this.carNo = carNo;
@@ -26,5 +23,10 @@ public class Car {
 
     public void setMoveCount(int moveCount) {
         this.moveCount = moveCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Car " + carNo + " (Moves: " + moveCount + ")";
     }
 }

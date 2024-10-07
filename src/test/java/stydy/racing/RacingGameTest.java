@@ -3,7 +3,7 @@ package stydy.racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import study.racing.RacingGame;
+import study.racing.controller.RacingGame;
 import study.utils.NumberUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;

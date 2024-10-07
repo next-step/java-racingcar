@@ -7,10 +7,9 @@ public class MoveUnderOneDigitStrategy implements RacingMoveStrategy{
     @Override
     public int move() {
         int randomNumber = NumberUtils.randomNumberUnder10();
-        int forWord = 0;
-        if(randomNumber >=4 ) {
-            forWord++;
+        if(randomNumber >= 4 ) {
+            return 1;
         }
-        return forWord;
+        return 0;
     }
 }
