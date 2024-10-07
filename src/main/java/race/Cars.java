@@ -33,13 +33,13 @@ public class Cars {
 
     private static void validateCount(String[] names) {
         if (names.length < LOWER_BOUND || names.length > UPPER_BOUND) {
-            throw new IllegalArgumentException("자동차 수는 "+ LOWER_BOUND +" ~ "+ UPPER_BOUND +"대 사이로 설정해야 합니다.");
+            throw new IllegalArgumentException("자동차 수는 " + LOWER_BOUND + " ~ " + UPPER_BOUND + "대 사이로 설정해야 합니다.");
         }
     }
 
     private void checkDuplicate(List<String> entry, String name) {
         if (entry.contains(name)) {
-            throw new IllegalStateException("동일한 자동차 이름을 사용할 수 없습니다. : "+ name);
+            throw new IllegalStateException("동일한 자동차 이름을 사용할 수 없습니다. : " + name);
         }
     }
 

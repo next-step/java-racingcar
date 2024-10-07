@@ -1,7 +1,5 @@
 package race;
 
-import java.util.Random;
-
 public class Car {
 
     private static final int THRESHOLD = 4;

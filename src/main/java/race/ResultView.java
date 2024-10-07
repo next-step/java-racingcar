@@ -8,7 +8,7 @@ public class ResultView {
     public void printCurrentRoundProgress(Cars cars) {
         Map<String, Integer> currentPositions = cars.getPositions();
 
-        for(Map.Entry<String, Integer> status : currentPositions.entrySet()) {
+        for (Map.Entry<String, Integer> status : currentPositions.entrySet()) {
             String name = status.getKey();
             Integer position = status.getValue();
 
@@ -29,6 +29,6 @@ public class ResultView {
                 .get();
 
 
-        System.out.println(result +"가 최종 우승했습니다.");
+        System.out.println(result + "가 최종 우승했습니다.");
     }
 }
