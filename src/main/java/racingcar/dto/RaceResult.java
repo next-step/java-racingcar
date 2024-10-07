@@ -1,5 +1,6 @@
 package racingcar.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,11 +14,11 @@ public class RaceResult {
     }
 
     public List<AttemptResult> getAttemptResults() {
-        return this.attemptResults;
+        return new ArrayList<>(this.attemptResults);
     }
 
     public List<String> getWinners() {
-        return winners;
+        return new ArrayList<>(this.winners);
     }
 
     @Override

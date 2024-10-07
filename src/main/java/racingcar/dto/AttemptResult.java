@@ -2,6 +2,7 @@ package racingcar.dto;
 
 import racingcar.domain.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class AttemptResult {
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return new ArrayList<>(this.cars);
     }
 
     @Override
