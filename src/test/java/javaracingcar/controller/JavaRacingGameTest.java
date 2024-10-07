@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class JavaRacingCarTest {
+public class JavaRacingGameTest {
 
     @Test
     void javaRacingCar_Random_범위_0에서_9사이인지() {

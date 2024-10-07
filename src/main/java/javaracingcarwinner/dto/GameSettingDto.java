@@ -10,11 +10,11 @@ public class GameSettingDto {
         this.tryCount = tryCount;
     }
 
-    public String text() {
+    public String getText() {
         return this.text;
     }
 
-    public int tryCount() {
+    public int getTryCount() {
         return this.tryCount;
     }
 }

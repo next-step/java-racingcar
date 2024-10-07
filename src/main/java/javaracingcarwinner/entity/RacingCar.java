@@ -60,4 +60,8 @@ public class RacingCar {
         }
         return maxLocation;
     }
+
+    public RacingCar currentLocationSave() {
+        return new RacingCar(this.name, this.location);
+    }
 }
