@@ -1,8 +1,6 @@
-package javaracingcar;
+package javaracingcar.controller;
 
 import javaracingcar.entity.RacingCar;
-import javaracingcar.entity.RacingCarStepEnum;
-import javaracingcar.view.InputView;
 import javaracingcar.view.ResultView;
 
 import java.util.ArrayList;
@@ -14,32 +12,15 @@ public class JavaRacingCar {
     private static final int RANDOM_VALUE_RANGE = 10;
     private static final int DEFAULT_TRY_COUNT_VALUE = 0;
 
-    private final Random random = new Random();
+    private static final Random random = new Random();
     private final List<RacingCar> cars = new ArrayList<>();
 
     private int tryCount = DEFAULT_TRY_COUNT_VALUE;
-    private RacingCarStepEnum step = RacingCarStepEnum.INIT;
 
-    public JavaRacingCar() {
-
-    }
-
-    public void execution() {
-        requireCarCount(InputView.requireCarCount());
-        requireTryCount(InputView.requireTryCount());
+    public JavaRacingCar(int carCount, int tryCount) {
+        requireCarCount(carCount);
+        requireTryCount(tryCount);
         start();
-    }
-
-    public void requireCarCount(int carCount) throws RuntimeException {
-        validateNegativeNumber(carCount);
-        initCars(carCount);
-        this.step = RacingCarStepEnum.CONFIRMED_CAR_COUNT;
-    }
-
-    public void requireTryCount(int tryCount) throws RuntimeException {
-        validateNegativeNumber(tryCount);
-        this.step = RacingCarStepEnum.CONFIRMED_TRY_COUNT;
-        this.tryCount = tryCount;
     }
 
     public List<RacingCar> start() {
@@ -54,7 +35,17 @@ public class JavaRacingCar {
         return random.nextInt(RANDOM_VALUE_RANGE);
     }
 
-    private static void validateNegativeNumber(int count) {
+    private void requireCarCount(int carCount) throws RuntimeException {
+        validateNegativeNumber(carCount);
+        initCars(carCount);
+    }
+
+    private void requireTryCount(int tryCount) throws RuntimeException {
+        validateNegativeNumber(tryCount);
+        this.tryCount = tryCount;
+    }
+
+    private void validateNegativeNumber(int count) {
         if (count < 0) {
             throw new IllegalArgumentException("음수 입력");
         }
@@ -81,10 +72,6 @@ public class JavaRacingCar {
 
     public int tryCount() {
         return this.tryCount;
-    }
-
-    public RacingCarStepEnum step() {
-        return this.step;
     }
 
     public List<RacingCar> cars() {

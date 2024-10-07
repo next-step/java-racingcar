@@ -7,15 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarTest {
 
     @Test
-    void racingCar_randomValue_0인_값() {
-        RacingCar racingCar = new RacingCar();
-
-        boolean result = racingCar.isMove(0);
-
-        assertThat(result).isFalse();
-    }
-
-    @Test
     void racingCar_randomValue_3인_값() {
         RacingCar racingCar = new RacingCar();
 

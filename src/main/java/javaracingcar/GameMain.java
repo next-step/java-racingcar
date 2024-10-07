@@ -1,8 +1,10 @@
 package javaracingcar;
 
+import javaracingcar.controller.JavaRacingCar;
+import javaracingcar.view.InputView;
+
 public class GameMain {
     public static void main(String[] args) {
-        JavaRacingCar game = new JavaRacingCar();
-        game.execution();
+        new JavaRacingCar(InputView.requireCarCount(), InputView.requireTryCount());
     }
 }
