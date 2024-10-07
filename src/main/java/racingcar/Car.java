@@ -3,6 +3,7 @@ package racingcar;
 
 public class Car {
 
+    private static final int NAME_MAX_LENGTH = 5;
     private int position = 0;
     private String name;
     private MoveStrategy moveStrategy;
@@ -20,7 +21,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없다.");
         }
     }
