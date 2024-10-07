@@ -48,4 +48,15 @@ public class Car {
         return sb.toString();
     }
 
+    public boolean comparePosition(int position) {
+        return this.position == position;
+    }
+
+    public int getMaxPosition(int prevPosition){
+        if (this.position > prevPosition) {
+            return this.position;
+        }
+        return prevPosition;
+    }
+
 }
