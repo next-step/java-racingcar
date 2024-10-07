@@ -14,7 +14,7 @@ public class RoundResult {
         this.result = result;
     }
 
-    public int findMaxValue() {
+    public int findMaxPosition() {
         return Collections.max(result.values());
     }
 
@@ -22,10 +22,10 @@ public class RoundResult {
         return result.entrySet();
     }
 
-    public List<String> findKeysByValue(int value) {
+    public List<String> findNamesByPosition(int position) {
         return result.entrySet()
                 .stream()
-                .filter(entry -> entry.getValue() == value)
+                .filter(entry -> entry.getValue() == position)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
