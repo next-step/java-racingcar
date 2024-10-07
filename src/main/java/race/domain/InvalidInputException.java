@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class InvalidInputException extends RuntimeException {
     public InvalidInputException(String message) {

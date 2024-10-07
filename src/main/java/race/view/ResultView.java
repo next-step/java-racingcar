@@ -1,4 +1,6 @@
-package race;
+package race.view;
+
+import race.domain.RacingCars;
 
 import java.util.List;
 
@@ -26,11 +28,12 @@ public class ResultView {
         System.out.printf(LINE_BREAK + RESULT_TITLE + LINE_BREAK);
     }
 
-    public static void printCarStates(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            System.out.println(car.makeCarStateMessage());
-        }
-        System.out.printf(LINE_BREAK);
+    public static void printRoundTitle(int round) {
+        System.out.println("[round " + (round + 1) + "]");
+    }
+
+    public static void printRoundResult(RacingCars cars) {
+        System.out.println(cars.toString());
     }
 
     public static void printWinnerMessage(List<String> winners) {
