@@ -3,8 +3,6 @@ package racing.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.car.Car;
 import racing.car.game.RacingGame;
 
@@ -23,16 +21,14 @@ public class RacingGameTest {
         game = new RacingGame();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {2, 3, 5})
+    @Test
     @DisplayName("initializeCars 메서드는 각 Car 객체를 올바르게 초기화해야 한다.")
-    void initializeCars_메서드_테스트(int carCount) {
+    void initializeCars_메서드_테스트() {
         List<Car> cars = new ArrayList<>();
-        game.initializeCars(carCount, cars);
+        String[] carNames = {"leo", "seoun"};
+        game.initializeCars(carNames, cars);
 
-        for (int i = 0; i < carCount; i++) {
-            assertThat(cars.get(i)).isNotNull();
-        }
+        assertThat(cars).extracting(Car::getName).contains("leo", "seoun");
     }
 
     @Test
@@ -77,4 +73,6 @@ public class RacingGameTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageMatching("게임을 진행하려면 시도 횟수는 1 이상이어야 합니다.");
     }
+
+
 }
