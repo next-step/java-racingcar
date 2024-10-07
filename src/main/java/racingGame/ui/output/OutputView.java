@@ -1,10 +1,8 @@
 package racingGame.ui.output;
 
-import racingGame.model.car.Car;
-
-import java.util.List;
+import racingGame.model.car.CarMovement;
 
 public interface OutputView {
-    void printCarGraph(List<Car> cars);
+    void printCarGraph(CarMovement cars);
     void printInitMessage();
 }
