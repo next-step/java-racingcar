@@ -56,14 +56,18 @@ public class Cars {
                 ));
     }
 
-    public List<Car> getWinners() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+    public int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
 
+        return maxPosition;
+    }
+
+    public List<Car> getWinners(int position) {
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isInPosition(position))
                 .collect(Collectors.toList());
     }
 }
