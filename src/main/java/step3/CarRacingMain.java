@@ -9,6 +9,6 @@ public class CarRacingMain {
         Game game = new Game();
         game.play(inputCarCount(), inputGameCount());
 
-        ResultView.result(game.showGameResult());
+//        ResultView.result(game.showGameResult());
     }
 }

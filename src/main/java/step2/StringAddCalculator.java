@@ -30,9 +30,8 @@ public class StringAddCalculator {
     private static int[] toInts(String[] strings) {
         int[] numbers = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
-            int number = Integer.parseInt(strings[i]);
-            throwIfNegative(number);
-            numbers[i] = number;
+            throwIfInvalidInput(strings[i]);
+            numbers[i] = Integer.parseInt(strings[i]);
         }
         return numbers;
     }
@@ -45,7 +44,14 @@ public class StringAddCalculator {
         return result;
     }
 
-    private static void throwIfNegative(int number) {
+    private static void throwIfInvalidInput(String input) {
+        int number = 0;
+        try {
+            number = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("0 이상 2,147,483,647 이하의 숫자만 입력 가능합니다.");
+        }
+
         if (number < 0) {
             throw new IllegalArgumentException("음수는 허용하지 않습니다.");
         }
