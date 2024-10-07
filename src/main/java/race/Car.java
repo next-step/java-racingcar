@@ -38,4 +38,12 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
+
+    public int maxPosition(int comparePosition) {
+        return Math.max(this.position, comparePosition);
+    }
+
+    public boolean isInPosition(int comparePosition) {
+        return this.position == comparePosition;
+    }
 }
