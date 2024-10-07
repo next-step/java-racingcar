@@ -1,43 +1,41 @@
 package racingCar.step5.domain;
 
-import racingCar.step5.domain.dto.RacingCarGameResult;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
     private final RacingCars cars;
     private final RandomNumber randomNumber;
 
-    private RacingCarGameResult gameResult;
+    private List<RacingCars> gameResult;
 
     public RacingCarGame(RacingCars cars, RandomNumber randomNumber) {
         this.cars = cars;
         this.randomNumber = randomNumber;
     }
 
-    public RacingCarGameResult start(int racingCont) {
+    public List<RacingCars> start(int racingCont) {
         initialize(cars);
-        startRace(cars, racingCont);
-        decideWinner(cars);
+        raceRounds(cars, racingCont);
 
         return gameResult;
     }
 
     private void initialize(RacingCars cars) {
-        gameResult = new RacingCarGameResult();
+        gameResult = new ArrayList<>();
     }
 
-    private void startRace(RacingCars cars, int racingCont) {
+    private void raceRounds(RacingCars cars, int racingCont) {
         for (int i = 0; i < racingCont; i++) {
             cars.move(randomNumber);
-            gameResult.addRacingResult(cars);
+            gameResult.add(cars.copy());
         }
     }
 
-    private void decideWinner(RacingCars cars) {
+    public List<RacingCar> decideWinner() {
         int maxPosition = cars.maxPosition();
         List<RacingCar> winners = cars.samePosition(maxPosition);
-        gameResult.addWinner(winners);
+        return winners;
     }
 
 }

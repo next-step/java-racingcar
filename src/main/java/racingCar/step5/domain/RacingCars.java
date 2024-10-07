@@ -63,6 +63,10 @@ public class RacingCars {
         return new ArrayList<RacingCar>(cars);
     }
 
+    public RacingCars copy() {
+        return new RacingCars(cars);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
