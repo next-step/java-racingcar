@@ -7,9 +7,7 @@ import racingcar.refactoring.domain.RoundResult;
 import racingcar.refactoring.utils.StringUtils;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class GameController {
 
@@ -42,15 +40,6 @@ public class GameController {
     }
 
     private RoundResult playRound() {
-        cars.moveAll();
-        return getRoundGameResult();
-    }
-
-    private RoundResult getRoundGameResult() {
-        Map<String, Integer> roundResult = new LinkedHashMap<>();
-        for (Car car : cars.getCars()) {
-            roundResult.put(car.getName(), car.getPosition());
-        }
-        return new RoundResult(roundResult);
+        return new RoundResult(cars.moveAll());
     }
 }
