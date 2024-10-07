@@ -47,7 +47,7 @@ public class RacingGame {
     public List<RacingCarDto> getRacingCarsPosition(List<RacingCar> racingCars) {
         List<RacingCarDto> result = new ArrayList<>();
         for (RacingCar racingCar : racingCars) {
-            result.add(racingCar.toDto());
+            result.add(RacingCarDto.from(racingCar));
         }
         return result;
     }
