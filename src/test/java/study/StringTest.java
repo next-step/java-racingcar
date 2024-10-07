@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.StringJoiner;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -64,5 +66,15 @@ class StringTest {
     void return_String_repeatedAs_argument() {
         assertThat("-".repeat(5)).isEqualTo("-----");
         assertThat("-".repeat(Math.max(0, -1))).isEmpty();
+    }
+
+    @DisplayName("[study]StringJoiner를 이용해 리스트 원소들을 콤마로 연결한다.")
+    @Test
+    void connect_values_with_comma_using_StringJoiner() {
+        StringJoiner stringJoiner = new StringJoiner(", ");
+        stringJoiner.add("moon");
+        stringJoiner.add("yoon");
+        stringJoiner.add("ji");
+        assertThat(stringJoiner.toString()).isEqualTo("moon, yoon, ji");
     }
 }

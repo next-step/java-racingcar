@@ -1,28 +1,32 @@
 package carracing;
 
+import carracing.car.Car;
+import carracing.car.Cars;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class CarRacing {
-    private static final Random RANDOM = new Random();
-    private final List<Car> cars;
+    private final Cars cars;
     private final int moveTryCount;
-    private int playCount;
-    private final ResultView resultView;
+    private final CarsMoveStatusHistory carsMoveStatusHistory;
 
-    private CarRacing(List<Car> cars, int moveTryCount, int playCount, ResultView resultView) {
-        this.cars = cars;
+    public CarRacing(String[] carNames, int moveTryCount) {
+        this.cars = this.createRaceCars(carNames);
         this.moveTryCount = moveTryCount;
-        this.playCount = playCount;
-        this.resultView = resultView;
+        this.carsMoveStatusHistory = new CarsMoveStatusHistory();
     }
 
-    public static CarRacingBuilder builder() {
-        return new CarRacingBuilder();
+    private Cars createRaceCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>(carNames.length);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return new Cars(cars);
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 
@@ -30,59 +34,20 @@ public class CarRacing {
         return moveTryCount;
     }
 
-    public int getPlayCount() {
-        return playCount;
-    }
-
-    public ResultView getResultView() {
-        return resultView;
+    public CarsMoveStatusHistory getCarsMoveStatusHistory() {
+        return carsMoveStatusHistory;
     }
 
     public void start() {
         for (int i = 0; i < this.moveTryCount; i++) {
-            this.moveCarsWithRandom();
-            this.playCount += 1;
-            this.resultView.saveCarsMoveStatus(this.cars);
+            this.cars.move();
+            this.carsMoveStatusHistory.save(this.cars);
         }
-        this.resultView.printCarRacingResult();
-    }
-
-    private void moveCarsWithRandom() {
-        for (Car car : this.cars) {
-            car.move(RANDOM.nextInt(10));
-        }
-    }
-
-    public boolean isFinish() {
-        return this.playCount == this.moveTryCount;
-    }
-
-
-    public static class CarRacingBuilder {
-        private List<Car> cars;
-        private int moveTryCount;
-        private final int playCount = 0;
-        private final ResultView resultView = new ResultView();
-
-
-        protected CarRacingBuilder() {
-        }
-
-        public CarRacingBuilder cars(int carCount) {
-            this.cars = new ArrayList<>(carCount);
-            for (int i = 0; i < carCount; i++) {
-                cars.add(new Car());
-            }
-            return this;
-        }
-
-        public CarRacingBuilder moveTryCount(int moveTryCount) {
-            this.moveTryCount = moveTryCount;
-            return this;
-        }
-
-        public CarRacing build() {
-            return new CarRacing(this.cars, this.moveTryCount, this.playCount, this.resultView);
-        }
+        ResultView.printCarRacingResult(this.carsMoveStatusHistory);
+        ResultView.printCarRacingWinners(
+                CarRacingWinners.findWinners(this.cars).get()
+                        .stream()
+                        .map(Car::getNameString)
+                        .collect(Collectors.toList()));
     }
 }
