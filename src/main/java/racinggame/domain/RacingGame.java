@@ -5,7 +5,6 @@ import racinggame.random.Radom;
 
 public class RacingGame {
 
-    private final SnapShotStore snapShotStore = new SnapShotStore();
     private Cars cars;
     private Integer repeatCount;
 
@@ -18,12 +17,8 @@ public class RacingGame {
     public SnapShotDto start(Radom radom) {
         for(int i=0;i<repeatCount;i++){
             cars.move(radom);
-            snapShotStore.save(cars.result());
         }
-        return matchResult();
+        return cars.history();
     }
 
-    private SnapShotDto matchResult() {
-        return this.snapShotStore.snapShot();
-    }
 }

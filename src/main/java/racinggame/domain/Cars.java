@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import racinggame.dto.CarDto;
+import racinggame.dto.SnapShotDto;
 import racinggame.random.Radom;
 
 public class Cars {
 
     private static final int DEFAULT_POSITION = 1;
+    private final SnapShotStore snapShotStore = new SnapShotStore();
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -36,11 +38,24 @@ public class Cars {
         for(int i=0;i<count();i++){
             move(i,radom.generate());
         }
+        snapShotStore.save(nowState());
     }
 
     private void move(int index, int capacity) {
         Car car = cars.get(index);
         car.move(capacity);
+    }
+
+    private List<CarDto> nowState() {
+        List<CarDto> result = new ArrayList<>();
+        for (Car car : cars) {
+            result.add(new CarDto(car));
+        }
+        return result;
+    }
+
+    public SnapShotDto history() {
+        return this.snapShotStore.snapShot();
     }
 
     @Override
@@ -58,13 +73,5 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    public List<CarDto> result() {
-        List<CarDto> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(new CarDto(car));
-        }
-        return result;
     }
 }
