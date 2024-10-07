@@ -1,4 +1,4 @@
-package StringAddCalculator;
+package stringAddCalculator;
 
 import java.util.List;
 
