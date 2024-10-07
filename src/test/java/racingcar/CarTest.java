@@ -2,8 +2,8 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.Car.EMPTY_NAME_ERROR;
-import static racingcar.domain.Car.INPUT_LENGTH_EXCEEDED_ERROR;
+import static racingcar.domain.ErrorMessage.EMPTY_NAME_ERROR;
+import static racingcar.domain.ErrorMessage.INPUT_LENGTH_EXCEEDED_ERROR;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

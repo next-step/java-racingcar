@@ -22,7 +22,7 @@ public class InputView {
                 SCANNER.next();
             }
         }
-        return count;
+        return SCANNER.nextInt();
     }
 
     public static boolean isPositiveNum(int num) {
