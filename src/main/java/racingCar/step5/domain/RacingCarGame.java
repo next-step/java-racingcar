@@ -15,13 +15,13 @@ public class RacingCarGame {
     }
 
     public List<RacingCars> start(int racingCont) {
-        initialize(cars);
+        initialize();
         raceRounds(cars, racingCont);
 
         return gameResult;
     }
 
-    private void initialize(RacingCars cars) {
+    private void initialize() {
         gameResult = new ArrayList<>();
     }
 
@@ -34,8 +34,7 @@ public class RacingCarGame {
 
     public List<RacingCar> decideWinner() {
         int maxPosition = cars.maxPosition();
-        List<RacingCar> winners = cars.samePosition(maxPosition);
-        return winners;
+        return cars.samePosition(maxPosition);
     }
 
 }

@@ -12,13 +12,13 @@ public class RacingCarGameResult {
         List<RaceResult> racingResults = new ArrayList<>();
 
         for (RacingCars race : raceResults) {
-            RaceResult raceResult = getRaceResult(race);
+            RaceResult raceResult = createRaceResult(race);
             racingResults.add(raceResult);
         }
         return racingResults;
     }
 
-    private static RaceResult getRaceResult(RacingCars race) {
+    private static RaceResult createRaceResult(RacingCars race) {
         RaceResult raceResult = new RaceResult();
         for(RacingCar car : race.getCars()){
             CarDto carDto = CarDto.of(car);
