@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RacingCarTest {
 
     @Test
-    @DisplayName("자동차 이름이 5자리 초과할 경우 error를 발생한다.")
+    @DisplayName("자동차 이름이 5자리 초과할 경우 exception을 발생한다.")
     void 자동차_이름_5자리_이상() {
         assertThatThrownBy(() -> new RacingCar("heeeee"))
                 .isInstanceOf(IllegalStateException.class);
