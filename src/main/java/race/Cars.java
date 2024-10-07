@@ -1,9 +1,6 @@
 package race;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -20,6 +17,10 @@ public class Cars {
         }
 
         this.cars = entry;
+    }
+
+    public Cars(Car... cars) {
+        this.cars = List.of(cars);
     }
 
     private static void validateCount(String[] names) {
@@ -48,5 +49,16 @@ public class Cars {
                         Car::getName,
                         Car::getPosition
                 ));
+    }
+
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
