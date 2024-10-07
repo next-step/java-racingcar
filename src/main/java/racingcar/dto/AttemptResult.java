@@ -18,8 +18,12 @@ public class AttemptResult {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         AttemptResult that = (AttemptResult) o;
         return Objects.equals(cars, that.cars);
     }
