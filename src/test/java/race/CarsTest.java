@@ -28,6 +28,19 @@ class CarsTest {
     }
 
     @Test
+    void 자동차들_중_가장_많이_전진한_자동차의_위치() {
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Cars cars = new Cars(car1, car2);
+
+        car1.accelerate(10);
+        car1.accelerate(10);
+        car2.accelerate(10);
+
+        assertThat(cars.getMaxPosition()).isEqualTo(2);
+    }
+
+    @Test
     void 우승자_선발() {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
@@ -35,7 +48,8 @@ class CarsTest {
 
         car1.accelerate(10);
 
-        List<Car> winners = cars.getWinners();
+        int maxPosition = cars.getMaxPosition();
+        List<Car> winners = cars.getWinners(maxPosition);
         assertThat(winners.get(0)).isEqualTo(car1);
     }
 
@@ -48,7 +62,8 @@ class CarsTest {
         car1.accelerate(10);
         car2.accelerate(10);
 
-        assertThat(cars.getWinners()).hasSize(2);
+        int maxPosition = cars.getMaxPosition();
+        assertThat(cars.getWinners(maxPosition)).hasSize(2);
     }
 
     @Test
