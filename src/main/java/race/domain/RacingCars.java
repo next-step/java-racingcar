@@ -1,10 +1,8 @@
 package race.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCars {
     public static final int RANDOM_UPPER_LIMIT = 10;
@@ -22,38 +20,26 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    public List<String> startRound() {
-        List<Integer> randomNumbers = IntStream.range(0, count())
-                .map(integer -> generateIntBetween0and9())
-                .boxed()
-                .collect(Collectors.toList());
-
-        return moveAndReturnCarStateMessages(randomNumbers);
+    public void startRound() {
+        for (RacingCar car : racingCars) {
+            int randomNumber = generateIntBetween0and9();
+            car.moveCarForwardIfCanGo(randomNumber);
+        }
     }
 
-    public int count() {
-        return racingCars.size();
+    @Override
+    public String toString() {
+        StringBuilder carStates = new StringBuilder();
+
+        for (RacingCar car : racingCars) {
+            carStates.append(String.format("%s%n", car));
+        }
+
+        return carStates.toString();
     }
 
     private static int generateIntBetween0and9() {
         return new Random().nextInt(RANDOM_UPPER_LIMIT);
-    }
-
-    public List<String> moveAndReturnCarStateMessages(List<Integer> numbers) {
-        if (numbers.size() != racingCars.size()) {
-            throw new IllegalArgumentException("입력값들의 개수는 자동차의 개수와 같아야 합니다");
-        }
-
-        List<String> carStatesMessages = new ArrayList<>();
-
-        for (int carIndex = 0; carIndex < racingCars.size(); carIndex++) {
-            RacingCar car = racingCars.get(carIndex);
-            car.moveCarForwardIfCanGo(numbers.get(carIndex));
-
-            carStatesMessages.add(car.toString());
-        }
-
-        return carStatesMessages;
     }
 
     public List<String> findWinners() {
