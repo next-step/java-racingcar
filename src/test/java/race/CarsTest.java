@@ -1,10 +1,13 @@
 package race;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -46,5 +49,24 @@ class CarsTest {
         car2.accelerate(10);
 
         assertThat(cars.getWinners()).hasSize(2);
+    }
+
+    @Test
+    void 자동차별_현재_위치를_구한다() {
+
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Cars cars = new Cars(car1, car2);
+
+        car1.accelerate(10);
+        car1.accelerate(10);
+        car2.accelerate(10);
+
+        Map<String, Integer> positions = cars.getPositions();
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(positions).hasSize(2);
+            softly.assertThat(positions.get("car1")).isEqualTo(2);
+            softly.assertThat(positions.get("car2")).isEqualTo(1);
+        });
     }
 }
