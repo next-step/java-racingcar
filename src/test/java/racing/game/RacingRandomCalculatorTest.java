@@ -1,6 +1,7 @@
 package racing.game;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.game.RacingRandomCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
