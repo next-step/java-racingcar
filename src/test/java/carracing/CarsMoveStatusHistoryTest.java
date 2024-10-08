@@ -20,6 +20,6 @@ class CarsMoveStatusHistoryTest {
 
         carsMoveStatusHistory.save(cars);
 
-        assertThat(carsMoveStatusHistory.getCarsByMoveTryCount()).hasSize(1);
+        assertThat(carsMoveStatusHistory.moveTryCount()).isEqualTo(1);
     }
 }

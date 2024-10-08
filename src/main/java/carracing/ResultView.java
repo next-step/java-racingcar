@@ -16,7 +16,7 @@ public class ResultView {
     public static void printCarRacingResult(CarsMoveStatusHistory carsMoveStatusHistory) {
         StringBuilder stringBuilder = new StringBuilder("실행 결과").append(NEW_LINE);
 
-        for (int i = 0; i < carsMoveStatusHistory.getCarsByMoveTryCount().size(); i++) {
+        for (int i = 0; i < carsMoveStatusHistory.moveTryCount(); i++) {
             stringBuilder
                     .append(createResultByAMoveTryCount(carsMoveStatusHistory.getCarsByMoveTryStep(i)))
                     .append(NEW_LINE);
@@ -42,7 +42,7 @@ public class ResultView {
 
     public static void printCarRacingWinners(List<String> winnersNames) {
         StringJoiner stringJoiner = new StringJoiner(COMMA);
-        for(String winnerName : winnersNames) {
+        for (String winnerName : winnersNames) {
             stringJoiner.add(winnerName);
         }
         System.out.println(stringJoiner + "가 최종 우승했습니다.");

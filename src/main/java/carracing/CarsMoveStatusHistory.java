@@ -19,8 +19,8 @@ public class CarsMoveStatusHistory {
         this.carsByMoveTryCount.add(cars.deepCopy());
     }
 
-    public List<Cars> getCarsByMoveTryCount() {
-        return this.carsByMoveTryCount;
+    public int moveTryCount() {
+        return this.carsByMoveTryCount.size();
     }
 
     /**
