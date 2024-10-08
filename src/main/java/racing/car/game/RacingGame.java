@@ -1,13 +1,11 @@
 package racing.car.game;
 
-import racing.car.car.Car;
+import racing.car.car.Cars;
 import racing.car.random.GenerateRandom;
 import racing.car.ui.InputView;
 import racing.car.ui.ResultView;
 import racing.car.winner.Winner;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame implements Game {
@@ -17,14 +15,13 @@ public class RacingGame implements Game {
     private static final ResultView RESULT_VIEW = new ResultView();
     private static final String INVALID_CAR_COUNT_MESSAGE = "게임을 진행하려면 자동차가 최소 2대 있어야 합니다.";
     private static final String INVALID_TRY_COUNT_MESSAGE = "게임을 진행하려면 시도 횟수는 1 이상이어야 합니다.";
-    private static final GenerateRandom GENERATE_RANDOM = new GenerateRandom();
 
     @Override
     public void play() {
         INPUT_VIEW.carQuestion();
         String[] carNames = INPUT_VIEW.inputCar();
 
-        List<Car> cars = new ArrayList<>();
+        Cars cars = new Cars(new ArrayList<>());
 
         initializeCars(carNames, cars);
 
@@ -38,25 +35,17 @@ public class RacingGame implements Game {
         RESULT_VIEW.outputWinnerView(Winner.getWinnerInfo(max(cars), cars));
     }
 
-    public void simulateRaceRound(List<Car> cars) {
-        for (Car car : cars) {
-            car.move(GENERATE_RANDOM.random());
-        }
+    public void simulateRaceRound(Cars cars) {
+        cars.move(new GenerateRandom());
         RESULT_VIEW.outputView(cars);
     }
 
-    public int max(List<Car> cars) {
-        int max = 0;
-        for (Car car : cars) {
-            max = Math.max(max, car.getPosition());
-        }
-        return max;
+    public int max(Cars cars) {
+        return cars.max();
     }
 
-    public void initializeCars(String[] carNames, List<Car> cars) {
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
-        }
+    public void initializeCars(String[] carNames, Cars cars) {
+        cars.initialize(carNames);
     }
 
     public int validateCarCount(int carCount) {

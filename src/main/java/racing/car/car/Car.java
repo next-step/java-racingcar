@@ -1,52 +1,55 @@
 package racing.car.car;
 
-public class Car implements Movable {
+import java.util.Objects;
 
-    private static final int MOVE_THRESHOLD = 4;
-    private static final int NAME_LIMIT_LENGTH = 5;
-    private final String name;
-    private final String OVER_MESSAGE_ERROR = "자동차 이름이 5자글자를 초과하였습니다.";
-    private int position;
+public class Car implements Movable {
+    private final CarName name;
+    private Position position;
 
     public Car(String name) {
-        checkName(name);
-        this.name = name;
+        this(name, 0);
     }
 
     // 생성자에서 name을 반드시 받도록 강제
     public Car(String name, int position) {
-        checkName(name);
-        this.name = name;
-        this.position = position;
+        this.name = new CarName(name);
+        this.position = new Position(position);
     }
 
     @Override
     public void move(int number) {
-        if (isMoveAllowed(number)) {
-            position++;
-        }
+        position = position.move(number);
     }
 
-    public int getPosition() {
-        return position;
+    public boolean isSame(int otherPosition) {
+        return this.position.isSame(otherPosition);
     }
 
-    public boolean isSame(int max) {
-        return max == position;
+    public int max(int maxPosition) {
+        return this.position.max(maxPosition);
     }
 
-    public String getName() {
-        return name;
+    public void draw(){
+        name.draw();
+        position.draw();
     }
 
-    private boolean isMoveAllowed(int number) {
-        return number >= MOVE_THRESHOLD;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
-    private void checkName(String name) {
-        if (name.length() > NAME_LIMIT_LENGTH) {
-            throw new IllegalArgumentException(OVER_MESSAGE_ERROR);
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString() {
+        return name.toString();
     }
 }
 

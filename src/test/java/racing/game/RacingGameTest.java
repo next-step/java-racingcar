@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.car.car.Car;
+import racing.car.car.Cars;
 import racing.car.game.RacingGame;
 
 import java.util.ArrayList;
@@ -24,11 +25,12 @@ public class RacingGameTest {
     @Test
     @DisplayName("initializeCars 메서드는 각 Car 객체를 올바르게 초기화해야 한다.")
     void initializeCars_메서드_테스트() {
-        List<Car> cars = new ArrayList<>();
+        Cars cars = new Cars(new ArrayList<>());
         String[] carNames = {"leo", "seoun"};
         game.initializeCars(carNames, cars);
 
-        assertThat(cars).extracting(Car::getName).contains("leo", "seoun");
+
+        assertThat(cars).isEqualTo(new Cars(List.of(new Car("leo", 0), new Car("seoun",0))));
     }
 
     @Test
@@ -77,7 +79,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 리스트에서 position 최대 값 구하기")
     void 자동차_max_메서드_테스트() {
-        List<Car> cars = List.of(new Car("dong", 3), new Car("duu", 4));
+        Cars cars = new Cars(List.of(new Car("dong", 3), new Car("duu", 4)));
         int max =game.max(cars);
 
         assertThat(max).isEqualTo(4);
