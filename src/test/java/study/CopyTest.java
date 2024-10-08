@@ -1,6 +1,6 @@
 package study;
 
-import carracing.car.Car;
+import carracing.domain.carracing.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

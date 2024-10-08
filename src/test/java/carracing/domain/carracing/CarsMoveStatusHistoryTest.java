@@ -1,7 +1,5 @@
-package carracing;
+package carracing.domain.carracing;
 
-import carracing.car.Car;
-import carracing.car.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

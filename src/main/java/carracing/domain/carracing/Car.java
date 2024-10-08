@@ -1,4 +1,4 @@
-package carracing.car;
+package carracing.domain.carracing;
 
 public class Car {
     private static final int MOVE_REFERENCE_NUM = 4;

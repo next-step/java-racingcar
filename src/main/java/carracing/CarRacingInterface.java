@@ -1,5 +1,8 @@
 package carracing;
 
+import carracing.domain.carracing.CarRacing;
+import carracing.view.InputView;
+
 public class CarRacingInterface {
     public static void start() {
         String[] carNames = InputView.carNamesFromUser();
