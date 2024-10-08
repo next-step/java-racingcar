@@ -47,6 +47,7 @@ class StringTest {
     void test_about_Integer_parseInt() {
         assertThat(Integer.parseInt("-1")).isEqualTo(-1);
     }
+
     @DisplayName("[study]빈 문자열에 parseInt() 적용하면 NumberFormatException이 발생한다.")
     @Test
     void test_about_Integer_parseInt2() {

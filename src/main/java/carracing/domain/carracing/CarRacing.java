@@ -25,6 +25,7 @@ public class CarRacing {
     public int getMoveTryCount() {
         return moveTryCount;
     }
+
     public CarsMoveStatusHistory getCarsMoveStatusHistory() {
         return carsMoveStatusHistory;
     }

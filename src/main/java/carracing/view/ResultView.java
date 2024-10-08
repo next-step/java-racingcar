@@ -1,8 +1,8 @@
 package carracing.view;
 
-import carracing.domain.carracing.CarsMoveStatusHistory;
 import carracing.domain.carracing.Car;
 import carracing.domain.carracing.Cars;
+import carracing.domain.carracing.CarsMoveStatusHistory;
 import carracing.domain.carracing.Position;
 
 import java.util.List;

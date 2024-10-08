@@ -20,6 +20,7 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
+
     private static String getStringInputFromUser() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();

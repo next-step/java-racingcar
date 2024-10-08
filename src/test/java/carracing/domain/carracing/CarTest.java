@@ -25,6 +25,7 @@ class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
+
     @DisplayName("객체를 깊은 복사한다.")
     @Test
     void deepCopy_object() {

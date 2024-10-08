@@ -8,6 +8,7 @@ public class Position {
     public Position() {
         this.value = 0;
     }
+
     public Position(int value) {
         this.value = value;
     }

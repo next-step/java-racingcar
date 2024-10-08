@@ -2,8 +2,8 @@ package carracing.domain.carracing;
 
 public class Car {
     private static final int MOVE_REFERENCE_NUM = 4;
-    private Position position;
     private final Name name;
+    private Position position;
 
     public Car(String carName) {
         this.name = new Name(carName);
@@ -28,6 +28,7 @@ public class Car {
     public boolean isSamePosition(int position) {
         return this.position.isSame(position);
     }
+
     public Position getPosition() {
         return this.position;
     }

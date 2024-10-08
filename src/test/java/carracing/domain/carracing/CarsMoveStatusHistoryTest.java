@@ -20,6 +20,7 @@ class CarsMoveStatusHistoryTest {
 
         assertThat(carsMoveStatusHistory.numberOfMoveTryCount()).isEqualTo(1);
     }
+
     @DisplayName("인자로 전달하는 이동시도 횟수 단계에 해당하는 Cars 객체를 반환한다.")
     @Test
     void carsBy() {
