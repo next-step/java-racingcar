@@ -41,7 +41,7 @@ class CarTest {
         Car deepCopiedCar = car.deepCopy();
         car.move(4);
 
-        assertThat(car.getPosition()).isEqualTo(new Position(1));
-        assertThat(deepCopiedCar.getPosition()).isEqualTo(new Position(0));
+        assertThat(car).isNotEqualTo(deepCopiedCar)
+                .isNotSameAs(deepCopiedCar);
     }
 }

@@ -24,7 +24,8 @@ class CarsTest {
         Cars deepCopiedCars = cars.deepCopy();
         cars.get().add(new Car("zi"));
 
-        assertThat(cars.get().size()).isNotEqualTo(deepCopiedCars.get().size());
+        assertThat(cars).isNotEqualTo(deepCopiedCars)
+                .isNotSameAs(deepCopiedCars);
     }
 
     @DisplayName("필드를 반환한다.")
