@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.model.Garage;
+import racingcar.model.CarManager;
 import racingcar.model.Racing;
 import racingcar.view.InputView;
 
@@ -12,9 +12,9 @@ public class RacingCarGame {
     public static void start() {
         Racing racing = new Racing();
 
-        Garage garage = racing.ready(InputView.inputCarName());
+        CarManager carManager = racing.ready(InputView.inputCarName());
 
-        racing.game(garage, InputView.inputGameCount());
+        racing.game(carManager, InputView.inputGameCount());
     }
 
 }

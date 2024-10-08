@@ -11,7 +11,7 @@ public class CarTest {
     void 차_생성시_위치는_0이다() {
         Car car = new Car("a");
 
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.currentPosition()).isEqualTo(0);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class CarTest {
 
         car.move(4);
 
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.currentPosition()).isEqualTo(1);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class CarTest {
 
         car.move(3);
 
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.currentPosition()).isEqualTo(0);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class CarTest {
 
         car.move(-3);
 
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.currentPosition()).isEqualTo(0);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class CarTest {
     void 차_이름_5자_이하면_생성() {
         Car car = new Car("test");
 
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getName()).isEqualTo("test");
     }
     @Test
     void 차_이름_5자_초과하면_에러() {

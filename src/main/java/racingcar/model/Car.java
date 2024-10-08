@@ -6,21 +6,21 @@ public class Car {
     private static final int MOVE_CONDITION = 4;
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private String name;
-    private int position;
+    private Position position;
 
 
     public Car(String name) {
-        this(name, 0);
+        this(name, new Position(0));
     }
 
-    public Car(String name, int position) {
+    public Car(String name, Position position) {
         validateCarName(name);
 
         this.name = name;
         this.position = position;
     }
 
-    private static void validateCarName(String name) {
+    private void validateCarName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("차 이름은 필수 입니다.");
         }
@@ -30,14 +30,18 @@ public class Car {
         }
     }
 
-    public void move(int number) {
-        if (number >= MOVE_CONDITION) {
-            position++;
+    public void move(int randomNumber) {
+        if (randomNumber >= MOVE_CONDITION) {
+            position.increase();
         }
     }
 
-    public int getMoveCount() {
+    public Position currentPosition() {
         return position;
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return position.hasSamePosition(maxPosition);
     }
 
     @Override

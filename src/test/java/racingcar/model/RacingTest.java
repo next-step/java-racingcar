@@ -10,8 +10,8 @@ class RacingTest {
     void 차_생성() {
         Racing racing = new Racing();
 
-        Garage garage = racing.ready("a,b,c");
+        CarManager carManager = racing.ready("a,b,c");
 
-        assertThat(garage.getCars()).hasSize(3);
+        assertThat(carManager.getCars()).hasSize(3);
     }
 }
