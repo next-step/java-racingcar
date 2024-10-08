@@ -32,12 +32,17 @@ public class RacingCar {
         this(name, 0);
     }
 
-    public void printName() {
-        this.name.printName();
+
+    public CarName getName() {
+        return this.name;
     }
 
-    public void moveForward(MoveStrategy moveStrategy, int number) {
-        if (moveStrategy.isMovable(number)) {
+    public Position getPosition() {
+        return this.position;
+    }
+
+    public void moveForward(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             this.position.move();
         }
     }
@@ -52,9 +57,5 @@ public class RacingCar {
 
     public void drawForwardDistance(String forwardString) {
         this.position.drawForwardDistance(forwardString);
-    }
-
-    public void printNameWithComma(boolean b) {
-        this.name.printNameWithComma(b);
     }
 }

@@ -19,14 +19,7 @@ public class CarName {
         }
     }
 
-    public void printName() {
-        System.out.print(name);
-    }
-
-    public void printNameWithComma(boolean addComma) {
-        printName();
-        if (addComma) {
-            System.out.print(", ");
-        }
+    public String getName() {
+        return this.name;
     }
 }

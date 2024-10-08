@@ -1,32 +1,34 @@
 package race.view;
 
-import race.domain.RacingCar;
+import race.model.RaceRecord;
+import race.model.RaceResult;
+import race.model.CarName;
 
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private final String FORWARD_STRING = "-";
 
-    public void printRaceCondition(List<RacingCar> racingCars) {
-        racingCars.forEach(racingCar -> {
-            racingCar.printName();
-            System.out.print(" : ");
-            racingCar.drawForwardDistance(FORWARD_STRING);
-            System.out.println();
-        });
-        System.out.println();
-    }
 
-    public void printChampionWinner(List<RacingCar> winners) {
-        IntStream.range(0, winners.size()).forEach(index -> {
-            RacingCar racingCar = winners.get(index);
-            racingCar.printNameWithComma(index != winners.size() - 1);
-        });
-        System.out.println("가 최종 우승했습니다.");
+    public void printChampionWinner(List<CarName> winners) {
+        String winnerNames = winners.stream()
+                .map(CarName::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 
     public void printRaceStartMessage() {
         System.out.println("실행 결과");
+    }
+
+    public void printRaceResult(RaceResult raceResult) {
+        for (RaceRecord car : raceResult.getResult()) {
+            System.out.print(car.getName());
+            System.out.print(" : ");
+            System.out.print(FORWARD_STRING.repeat(car.getPosition()));
+            System.out.println();
+        }
+        System.out.println();
     }
 }
