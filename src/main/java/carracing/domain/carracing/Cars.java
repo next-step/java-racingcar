@@ -1,4 +1,4 @@
-package carracing.car;
+package carracing.domain.carracing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,14 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
+    }
+
+    public static Cars create(String[] carNames) {
+        List<Car> cars = new ArrayList<>(carNames.length);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return new Cars(cars);
     }
 
     public void move() {
