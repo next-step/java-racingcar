@@ -1,20 +1,37 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-    private static List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    public static void addCar(Car car) {
-        cars.add(car);
+    public Cars(String[] carNames) {
+        this.cars = makeCars(carNames);
     }
 
-    public static List<Car> getCars() {
+    private static List<Car> makeCars(String[] carNames) {
+        return Arrays.stream(carNames)
+                     .map(Car::new)
+                     .collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
         return cars;
     }
 
-    public static void clear() {
-        cars.clear();
+    public int getMaxDistance() {
+        return cars.stream()
+                   .mapToInt(Car::getDistance)
+                   .max()
+                   .orElse(0);
+    }
+
+    public List<Car> getWinners() {
+        int maxDistance = getMaxDistance();
+        return cars.stream()
+                   .filter(car -> car.isWinner(maxDistance))
+                   .collect(Collectors.toList());
     }
 }
