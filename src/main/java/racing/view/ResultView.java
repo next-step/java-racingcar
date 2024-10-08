@@ -3,7 +3,7 @@ package racing.view;
 import racing.car.Car;
 import racing.car.Cars;
 
-public class ResultView implements ResultHandler {
+public class ResultView {
 
     public void racingPrint(Cars cars) {
         for (Car car : cars.getItems()) {
@@ -20,12 +20,10 @@ public class ResultView implements ResultHandler {
         System.out.println();
     }
 
-    @Override
     public void endCycle() {
         System.out.println();
     }
 
-    @Override
     public void winnerPrint(Cars winner) {
         System.out.println("우승자 발표!");
         for (Car car : winner.getItems()) {
