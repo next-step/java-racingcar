@@ -4,12 +4,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingHistory {
+
     private final List<List<Car>> cars = new ArrayList<>();
     private int size;
 
     public void saveHistory(List<Car> cars) {
         this.cars.add(cars.stream()
-                .map(car -> new Car(car.getCarNo(), car.getMoveCount()))
+                .map(car -> new Car(car.getCarNo(), car.getMoveCount(), car.getCarName()))
                 .collect(Collectors.toList()));
     }
 
@@ -23,5 +24,9 @@ public class RacingHistory {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public List<List<Car>> getCars() {
+        return cars;
     }
 }
