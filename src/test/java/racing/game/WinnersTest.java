@@ -1,8 +1,9 @@
 package racing.game;
 
 import org.junit.jupiter.api.Test;
-import racing.car.Car;
-import racing.car.Cars;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
+import racing.domain.game.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
