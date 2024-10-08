@@ -5,10 +5,9 @@ public class RacingCar {
     private static final int DEFAULT_MOVE_VALUE = 1;
     private static final int MIN_STANDARDS_VALUE = 4;
     private static final int MAX_STANDARDS_VALUE = 9;
-
     private static final int MAX_NAME_LENGTH = 5;
 
-
+    private final MoveStrategy move;
     private final String name;
 
     private int location;
@@ -18,9 +17,14 @@ public class RacingCar {
     }
 
     public RacingCar(String name, int location) {
+        this(name, location, new Move());
+    }
+
+    public RacingCar(String name, int location, MoveStrategy move) {
         validateName(name);
         this.name = name;
         this.location = location;
+        this.move = move;
     }
 
     private void validateName(String name) {
@@ -29,8 +33,8 @@ public class RacingCar {
         }
     }
 
-    public void move(MoveStrategy move) {
-        if (isMove(move.movingValue())) {
+    public void move() {
+        if (isMove(this.move.movingValue())) {
             go();
         }
     }

@@ -6,11 +6,10 @@ import java.util.List;
 public class Round {
 
     private final List<RacingCar> roundCars = new ArrayList<>();
-    private final Move move = new Move();
 
     public Round(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            car.move(this.move);
+            car.move();
             this.roundCars.add(car.currentLocationSave());
         }
     }

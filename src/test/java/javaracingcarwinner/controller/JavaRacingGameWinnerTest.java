@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class JavaRacingGameWinnerTest {
 
-
     @Test
     void split_리스트_사이즈_검증() {
         JavaRacingGame javaRacingGame = new JavaRacingGame(new GameSettingDto("pobi,crong,honux", 5));

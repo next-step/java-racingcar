@@ -25,8 +25,8 @@ public class RacingCarTest {
     @Test
     void 차_random_value_3일시() {
         final MoveStrategy moveStrategy = () -> 3;
-        RacingCar racingCar = new RacingCar("kwon");
-        racingCar.move(moveStrategy);
+        RacingCar racingCar = new RacingCar("kwon", 0, moveStrategy);
+        racingCar.move();
 
         assertThat(racingCar.location()).isEqualTo(0);
     }
@@ -35,8 +35,8 @@ public class RacingCarTest {
     @Test
     void 차_random_value_4일시() {
         final MoveStrategy moveStrategy = () -> 4;
-        RacingCar racingCar = new RacingCar("kwon");
-        racingCar.move(moveStrategy);
+        RacingCar racingCar = new RacingCar("kwon", 0, moveStrategy);
+        racingCar.move();
 
         assertThat(racingCar.location()).isEqualTo(1);
     }
