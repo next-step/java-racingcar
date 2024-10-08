@@ -21,6 +21,23 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("자동차가 우승자인지 확인")
+    void isWinnerWhenDistanceIsMax() {
+        Car car = new Car("win");
+        car.move(true);
+        assertThat(car.isWinner(1)).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차가 우승자가 아닌지 확인")
+    void isNotWinnerWhenDistanceIsNotMax() {
+        Car car = new Car("lose");
+        car.move(true);
+        assertThat(car.isWinner(2)).isFalse();
+    }
+
+
+    @Test
     @DisplayName("자동차가 이동하는지 확인")
     void move() {
         Car car = new Car("truck");
