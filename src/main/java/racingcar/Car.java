@@ -53,10 +53,7 @@ public class Car {
     }
 
     public int getMaxPosition(int prevPosition){
-        if (this.position > prevPosition) {
-            return this.position;
-        }
-        return prevPosition;
+        return this.position > prevPosition ? this.position : prevPosition;
     }
 
 }
