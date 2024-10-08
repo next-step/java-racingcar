@@ -21,7 +21,7 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public int askRoundCount() {
+    public Round askRoundCount() {
         System.out.println("시도할 이동 횟수는 몇 회 입니까?");
 
         int input;
@@ -36,6 +36,6 @@ public class InputView {
             throw new IllegalArgumentException("이동 횟수는 1회 이상으로 설정해야 합니다.");
         }
 
-        return input;
+        return new Round(input);
     }
 }

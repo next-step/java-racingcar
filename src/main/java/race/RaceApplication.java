@@ -6,9 +6,9 @@ public class RaceApplication {
         InputView inputView = new InputView();
         String carNames = inputView.askCarNames();
         Cars cars = new Cars(carNames.split(","));
-        int roundCount = inputView.askRoundCount();
+        Round round = inputView.askRoundCount();
 
-        Race race = new Race(cars, roundCount);
+        Race race = new Race(cars, round);
         race.run();
     }
 }
