@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -14,7 +15,7 @@ class CarTest {
 
     @BeforeEach
     void setCar() {
-        this.car = new Car(0);
+        this.car = new Car("car");
     }
 
     @AfterEach
@@ -46,4 +47,11 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", "5chars", "5글자이상차"})
+    void 자동차_이름은_1자_이상_5자_이하이다(String input) {
+        assertThatThrownBy(() -> new Car(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 1~5자까지 가능합니다. : "+ input);
+    }
 }

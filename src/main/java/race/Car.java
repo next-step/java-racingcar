@@ -1,26 +1,23 @@
 package race;
 
-import java.util.Random;
-
 public class Car {
 
-    public static final String QUESTION = "자동차는 몇 대 입니까?";
-
-    private static final int LOWER_BOUND = 1;
-    private static final int UPPER_BOUND = 10;
     private static final int THRESHOLD = 4;
+    private static final int NAME_LENGTH_LIMIT = 5;
 
-    private int id;
+    private final String name;
     private int position;
 
-    public Car(int id) {
-        this.id = id;
+    public Car(String name) {
+        validateName(name);
+
+        this.name = name;
         this.position = 0;
     }
 
-    public static void validateCarCountRange(int carCount) {
-        if (carCount < LOWER_BOUND || carCount > UPPER_BOUND) {
-            throw new IllegalArgumentException("자동차 수는 "+ LOWER_BOUND +" ~ "+ UPPER_BOUND +"대 사이로 설정해야 합니다.");
+    private void validateName(String name) {
+        if (name.isEmpty() || name.length() > NAME_LENGTH_LIMIT) {
+            throw new IllegalArgumentException("자동차 이름은 1~5자까지 가능합니다. : " + name);
         }
     }
 
@@ -34,11 +31,19 @@ public class Car {
         position += 1;
     }
 
-    public int getId() {
-        return this.id;
+    public String getName() {
+        return this.name;
     }
 
     public int getPosition() {
         return this.position;
+    }
+
+    public int maxPosition(int comparePosition) {
+        return Math.max(this.position, comparePosition);
+    }
+
+    public boolean isInPosition(int comparePosition) {
+        return this.position == comparePosition;
     }
 }

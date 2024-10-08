@@ -1,29 +1,24 @@
 package race;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class Race {
-    private final List<Car> cars = new ArrayList<>();
+    private final Cars cars;
     private final int round;
 
-    public Race(int carCount, int roundCount) {
-        for (int i = 1; i <= carCount; i++) {
-            cars.add(new Car(i));
-        }
-
+    public Race(Cars cars, int roundCount) {
+        this.cars = cars;
         this.round = roundCount;
     }
 
     public void run() {
         ResultView resultView = new ResultView();
 
-        Random random = new Random();
         for (int i = 0; i < round; i++) {
-            cars.forEach(car -> car.accelerate(random.nextInt(10)));
+            cars.move();
             resultView.printCurrentRoundProgress(cars);
         }
+
+        int maxPosition = cars.getMaxPosition();
+        resultView.printWinners(cars.getWinners(maxPosition));
     }
 
 }
