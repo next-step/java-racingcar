@@ -28,6 +28,5 @@ public class RoundResult {
                 .filter(entry -> entry.getValue() == position)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
-
     }
 }
