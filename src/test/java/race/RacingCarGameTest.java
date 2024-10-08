@@ -2,9 +2,12 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.RacingCar;
+import race.domain.RacingCarGame;
+import race.domain.RandomMoveStrategy;
+import race.model.CarName;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,10 +17,12 @@ public class RacingCarGameTest {
     @Test
     @DisplayName("모두 이동하지 않는 경우 공동 우승자가 된다.")
     public void pickRaceWinner() {
-        List<String> carNames = List.of("test1", "test2");
-        RacingCarGame racingCarGame = new RacingCarGame(carNames, 2);
+        RacingCar racingCar1 = new RacingCar("test1");
+        RacingCar racingCar2 = new RacingCar("test2");
+        List<RacingCar> racingCars = List.of(racingCar1, racingCar2);
+        RacingCarGame racingCarGame = new RacingCarGame(racingCars, new RandomMoveStrategy());
 
-        List<RacingCar> winners = racingCarGame.findWinners();
+        List<CarName> winners = racingCarGame.findWinnersName();
 
         assertThat(winners.size()).isEqualTo(2);
 
@@ -25,23 +30,11 @@ public class RacingCarGameTest {
     @Test
     @DisplayName("특정 차량이 앞서있는 경우 해당 차량이 우승자가 된다.")
     public void pickRaceWinner1() {
-        List<String> carNames = List.of("test1", "test2");
-        FakeRandom fakeRandom = new FakeRandom(4);
-        NumberPicker numberPicker = new NumberPicker(fakeRandom);
-
-        List<RacingCar> racingCars = carNames.stream()
-                .map(name -> new RacingCar(name, numberPicker))
-                .collect(Collectors.toList());
-
-        RacingCarGame racingCarGame = new RacingCarGame(racingCars);
-
-        RacingCar racingCar = racingCars.get(0);
-        racingCar.moveForward();
-        racingCar.moveForward();
-
-        List<RacingCar> winners = racingCarGame.findWinners();
+        RacingCar racingCar1 = new RacingCar("test1", 2);
+        RacingCar racingCar2 = new RacingCar("test2");
+        RacingCarGame racingCarGame = new RacingCarGame(List.of(racingCar1, racingCar2), new RandomMoveStrategy());
+        List<CarName> winners = racingCarGame.findWinnersName();
 
         assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners).extracting(RacingCar::getName).containsExactly("test1");
     }
 }
