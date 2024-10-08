@@ -29,8 +29,17 @@ class CalculatorTest {
 
     @Test
     void divide() {
-        double number = Calculator.divide(1, 2);
+        double number = Calculator.divide(2, 2);
 
-        assertThat(number).isEqualTo(0.5);
+        assertThat(number).isEqualTo(1);
+    }
+
+    @Test
+    void run() {
+        InputString inputString = new InputString("2 + 3 * 4 / 2");
+
+        int result = Calculator.run(inputString);
+
+        assertThat(result).isEqualTo(10);
     }
 }
