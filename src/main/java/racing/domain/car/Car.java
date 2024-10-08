@@ -8,19 +8,19 @@ public class Car {
     private static final int STANDARD = 4;
 
     private Position position;
-    private String name;
+    private final String name;
 
-    public Car(final String name, int position) {
+    public Car(final String name, final int position) {
         this(name, new Position(position));
     }
 
-    public Car(final String name, Position position) {
+    public Car(final String name, final Position position) {
         this.name = name;
-        this.position = position;
+        this.position = new Position(position.getValue());
     }
 
-    //깊은 복사
-    public Car(Car car){
+    //깊은 복사 RacingGame 뷰 분리를 위해서
+    public Car(Car car) {
         this.name = car.getName();
         this.position = new Position(car.getPosition());
     }
@@ -30,7 +30,8 @@ public class Car {
             throw new IllegalArgumentException("랜덤 값이 범위를 초과하였습니다.");
         }
         if (randomNumber >= STANDARD) {
-            this.position = position.increase();
+            //this.position = position.increase();
+            this.position = new Position(position.increase().getValue());
             return true;
         }
         return false;
@@ -44,7 +45,7 @@ public class Car {
         return this.position.maxPosition(maxPosition);
     }
 
-    public boolean isSame(int maxPosition){
+    public boolean isSame(int maxPosition) {
         return this.position.isSame(maxPosition);
     }
 
