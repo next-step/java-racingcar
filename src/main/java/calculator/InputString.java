@@ -57,4 +57,12 @@ public class InputString {
     private boolean isEmpty(String input) {
         return input.isEmpty();
     }
+
+    public String getOperator() {
+        return operators.remove();
+    }
+
+    public int getOneNumber() {
+        return numbers.remove();
+    }
 }

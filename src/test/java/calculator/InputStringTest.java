@@ -26,4 +26,46 @@ class InputStringTest {
         assertThat(inputString.numberCount()).isEqualTo(4);
         assertThat(inputString.operatorCount()).isEqualTo(3);
     }
+
+    @Test
+    void 연산자_하나를_반환한다() {
+        InputString inputString = new InputString("2 + 3 * 4 / 2");
+        inputString.split();
+
+        String operator = inputString.getOperator();
+
+        assertThat(operator).isEqualTo("+");
+    }
+
+    @Test
+    void 숫자_하나를_반환한다() {
+        InputString inputString = new InputString("2 + 3 * 4 / 2");
+        inputString.split();
+
+        int number = inputString.getOneNumber();
+
+        assertThat(number).isEqualTo(2);
+    }
+
+    @Test
+    void 숫자_하나를_꺼내면_숫자_개수가_줄어든다() {
+        InputString inputString = new InputString("2 + 3 * 4 / 2");
+        inputString.split();
+        inputString.getOneNumber();
+
+        int result = inputString.numberCount();
+
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    void 연산자_하나를_꺼내면_연산자_개수가_줄어든다() {
+        InputString inputString = new InputString("2 + 3 * 4 / 2");
+        inputString.split();
+        inputString.getOperator();
+
+        int result = inputString.operatorCount();
+
+        assertThat(result).isEqualTo(2);
+    }
 }
