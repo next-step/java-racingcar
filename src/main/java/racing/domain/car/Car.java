@@ -20,7 +20,7 @@ public class Car {
     }
 
     //깊은 복사 RacingGame 뷰 분리를 위해서
-    public Car(Car car){
+    public Car(Car car) {
         this.name = car.getName();
         this.position = new Position(car.getPosition());
     }
@@ -45,7 +45,7 @@ public class Car {
         return this.position.maxPosition(maxPosition);
     }
 
-    public boolean isSame(int maxPosition){
+    public boolean isSame(int maxPosition) {
         return this.position.isSame(maxPosition);
     }
 

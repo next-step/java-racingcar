@@ -14,9 +14,9 @@ public class Cars {
     }
 
     //깊은 복사 RacingGame 뷰 분리를 위해서
-    public Cars(Cars cars){
+    public Cars(Cars cars) {
         List<Car> newCars = new ArrayList<>();
-        for(Car car : cars.items){
+        for (Car car : cars.items) {
             newCars.add(new Car(car));
         }
         this.items = newCars;

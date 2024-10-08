@@ -11,7 +11,7 @@ import racing.view.ResultView;
 
 public class RacingController {
 
-    public void racingStart(){
+    public void racingStart() {
         InputView input = new InputView(); //입력
         String carName = input.carInput();
         int cycle = input.cntInput();

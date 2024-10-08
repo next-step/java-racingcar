@@ -25,7 +25,7 @@ public class RacingGame {
         int round = 0;
         while (cycle > 0) {
             cycle--;
-            round ++;
+            round++;
             cars.carGoAndStop(racingRandomCalculator);
             Cars copyCars = new Cars(cars); //RacingGame 뷰 분리를 위해서
             ResultRacing resultRacing = new ResultRacing(copyCars, round);
