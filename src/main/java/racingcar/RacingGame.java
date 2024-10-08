@@ -3,14 +3,16 @@ package racingcar;
 public class RacingGame {
     public static void main(String[] args) {
         String[] carNames = InputView.getCarName();
-        Race race = new Race(carNames);
+        Cars cars = new Cars(carNames);
+        Race race = new Race(cars);
         int racingCount = InputView.getRacingCount();
 
-        ResultView.printMessage();
+        ResultView resultView = new ResultView();
+        resultView.printMessage();
         for (int i = 0; i < racingCount; i++) {
             race.run();
-            ResultView.printResult();
+            resultView.printResult(cars);
         }
-        ResultView.printWinners();
+        resultView.printWinners(cars);
     }
 }

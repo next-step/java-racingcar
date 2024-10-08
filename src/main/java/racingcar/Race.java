@@ -1,14 +1,13 @@
 package racingcar;
 
 public class Race {
-    Race(String[] carNames) {
-        for (String carName : carNames) {
-            Cars.addCar(new Car(carName));
-        }
+    private final Cars cars;
+    Race(Cars cars) {
+        this.cars = cars;
     }
 
     public void run() {
-        for (Car car : Cars.getCars()) {
+        for (Car car : cars.getCars()) {
             Movement movement = new RandomMovement();
             car.move(movement.isMove());
         }
