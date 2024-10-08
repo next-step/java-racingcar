@@ -15,18 +15,7 @@ public class GameResult {
     }
 
     public List<String> findWinners() {
-        return createWinnersName();
-    }
-
-    private List<String> createWinnersName() {
-        return findFinalRoundResult().findNamesByPosition(getMaxPosition());
-    }
-
-    private int getMaxPosition() {
-        return findFinalRoundResult().findMaxPosition();
-    }
-
-    private RoundResult findFinalRoundResult() {
-        return roundResults.get(roundResults.size() - 1);
+        RoundResult finalResult = roundResults.get(roundResults.size() - 1);
+        return finalResult.findMaxPositionNames();
     }
 }

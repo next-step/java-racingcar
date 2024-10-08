@@ -14,18 +14,15 @@ public class RoundResult {
         this.result = result;
     }
 
-    public int findMaxPosition() {
-        return Collections.max(result.values());
-    }
-
     public Set<Map.Entry<String, Integer>> getEntrySet() {
         return result.entrySet();
     }
 
-    public List<String> findNamesByPosition(int position) {
+    public List<String> findMaxPositionNames() {
+        int maxPosition = Collections.max(result.values());
         return result.entrySet()
                 .stream()
-                .filter(entry -> entry.getValue() == position)
+                .filter(entry -> entry.getValue() == maxPosition)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
