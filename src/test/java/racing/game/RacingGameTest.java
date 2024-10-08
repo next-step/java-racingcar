@@ -74,5 +74,12 @@ public class RacingGameTest {
                 .hasMessageMatching("게임을 진행하려면 시도 횟수는 1 이상이어야 합니다.");
     }
 
+    @Test
+    @DisplayName("자동차 리스트에서 position 최대 값 구하기")
+    void 자동차_max_메서드_테스트() {
+        List<Car> cars = List.of(new Car("dong", 3), new Car("duu", 4));
+        int max =game.max(cars);
 
+        assertThat(max).isEqualTo(4);
+    }
 }

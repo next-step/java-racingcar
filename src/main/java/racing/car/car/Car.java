@@ -3,6 +3,7 @@ package racing.car.car;
 public class Car implements Movable {
 
     private static final int MOVE_THRESHOLD = 4;
+    private static final int NAME_LIMIT_LENGTH = 5;
     private final String name;
     private final String OVER_MESSAGE_ERROR = "자동차 이름이 5자글자를 초과하였습니다.";
     private int position;
@@ -43,8 +44,8 @@ public class Car implements Movable {
     }
 
     private void checkName(String name) {
-        if (name.length() > 5) {
-            throw new RuntimeException(OVER_MESSAGE_ERROR);
+        if (name.length() > NAME_LIMIT_LENGTH) {
+            throw new IllegalArgumentException(OVER_MESSAGE_ERROR);
         }
     }
 }
