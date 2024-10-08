@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain.car;
 
 import java.util.Objects;
 
@@ -17,6 +17,12 @@ public class Car {
     public Car(final String name, Position position) {
         this.name = name;
         this.position = position;
+    }
+
+    //깊은 복사
+    public Car(Car car){
+        this.name = car.getName();
+        this.position = new Position(car.getPosition());
     }
 
     public boolean isGo(int randomNumber) {

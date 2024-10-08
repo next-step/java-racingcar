@@ -5,9 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
 import racing.fake.FakeRandomCalculator;
-import racing.game.Calculator;
-import racing.game.RacingRandomCalculator;
+import racing.domain.game.Calculator;
+import racing.domain.game.RacingRandomCalculator;
 
 import java.util.ArrayList;
 import java.util.List;

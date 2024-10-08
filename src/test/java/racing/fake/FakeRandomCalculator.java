@@ -1,6 +1,6 @@
 package racing.fake;
 
-import racing.game.Calculator;
+import racing.domain.game.Calculator;
 
 public class FakeRandomCalculator implements Calculator {
 

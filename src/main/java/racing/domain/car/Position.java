@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain.car;
 
 public class Position {
 

@@ -1,16 +1,24 @@
 package racing.view;
 
-import racing.car.Car;
-import racing.car.Cars;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
+import racing.domain.result.ResultRacing;
+import racing.domain.result.ResultRacings;
 
 public class ResultView implements ResultHandler {
 
-    public void racingPrint(Cars cars) {
-        for (Car car : cars.getItems()) {
-            System.out.print(car.getName() + ":");
-            movePrint(car);
+    public void racingPrint(ResultRacings resultRacings, int cycle) {
+        int round = 0;
+        while(cycle >0 ){
+            ResultRacing racing = resultRacings.getResultsRacings().get(round);
+            for (Car car : racing.getCars().getItems()) {
+                System.out.print(car.getName() + ":");
+                movePrint(car);
+            }
+            round ++;
+            cycle --;
+            endCycle();
         }
-        System.out.println();
     }
 
     private void movePrint(Car car) {

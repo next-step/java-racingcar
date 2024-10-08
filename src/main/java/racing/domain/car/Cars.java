@@ -1,7 +1,8 @@
-package racing.car;
+package racing.domain.car;
 
-import racing.game.Calculator;
+import racing.domain.game.Calculator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -10,6 +11,15 @@ public class Cars {
 
     public Cars(List<Car> items) {
         this.items = items;
+    }
+
+    //깊은 복사 RacingGame 뷰와 분리하기위해
+    public Cars(Cars cars){
+        List<Car> newCars = new ArrayList<>();
+        for(Car car : cars.items){
+            newCars.add(new Car(car));
+        }
+        this.items = newCars;
     }
 
     public Cars carGoAndStop(Calculator calculator) {

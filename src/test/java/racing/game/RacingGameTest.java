@@ -2,8 +2,9 @@ package racing.game;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.car.Car;
-import racing.car.Cars;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
+import racing.domain.game.Calculator;
 import racing.fake.FakeRandomCalculator;
 
 import java.util.ArrayList;
