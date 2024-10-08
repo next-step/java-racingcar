@@ -1,16 +1,15 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomMovement;
-
 public class Race {
     private final Cars cars;
-    public Race(Cars cars) {
+    private final Movement movement;
+    public Race(Cars cars, Movement movement) {
         this.cars = cars;
+        this.movement = movement;
     }
 
     public void run() {
         for (Car car : cars.getCars()) {
-            Movement movement = new RandomMovement();
             car.move(movement.isMove());
         }
     }
