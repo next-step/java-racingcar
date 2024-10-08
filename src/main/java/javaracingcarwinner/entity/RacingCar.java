@@ -1,15 +1,13 @@
 package javaracingcarwinner.entity;
 
-import java.util.Random;
-
 public class RacingCar {
     private static final int DEFAULT_LOCATION = 0;
     private static final int DEFAULT_MOVE_VALUE = 1;
     private static final int MIN_STANDARDS_VALUE = 4;
     private static final int MAX_STANDARDS_VALUE = 9;
-    private static final int RANDOM_RANGE = 10;
+
     private static final int MAX_NAME_LENGTH = 5;
-    private static final Random random = new Random();
+
 
     private final String name;
 
@@ -31,8 +29,8 @@ public class RacingCar {
         }
     }
 
-    public void move() {
-        if (isMove(random.nextInt(RANDOM_RANGE))) {
+    public void move(MoveStrategy move) {
+        if (isMove(move.movingValue())) {
             go();
         }
     }
