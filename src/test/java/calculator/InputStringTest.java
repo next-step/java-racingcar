@@ -28,6 +28,14 @@ class InputStringTest {
     }
 
     @Test
+    void 올바른_연산자가_아니면_Exception이_발생한다() {
+        InputString inputString = new InputString("2 + 3 * 4 / 2");
+
+        assertThatThrownBy(inputString::split)
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 연산자_하나를_반환한다() {
         InputString inputString = new InputString("2 + 3 * 4 / 2");
         inputString.split();

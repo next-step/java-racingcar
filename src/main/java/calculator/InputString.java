@@ -31,9 +31,10 @@ public class InputString {
     }
 
     private void checkOperator(String value) {
-        if (OPERATOR_PATTERN.matcher(value).matches()) {
-            operators.add(value);
+        if (!OPERATOR_PATTERN.matcher(value).matches()) {
+            throw new IllegalArgumentException();
         }
+        operators.add(value);
     }
 
     private void checkNumber(String value) {
