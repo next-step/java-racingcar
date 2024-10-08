@@ -21,6 +21,12 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
+    public Car(Car car){
+        this.position = car.position;
+        this.name = car.name;
+        this.moveStrategy = car.moveStrategy;
+    }
+
     private void validateName(String name) {
         if (name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없다.");

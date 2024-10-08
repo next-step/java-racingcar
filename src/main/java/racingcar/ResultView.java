@@ -6,11 +6,11 @@ public class ResultView {
 
     private static final String symbol = "-";
 
-    public static void printRaceResults(List<List<String>> raceResults) {
+    public static void printRaceResults(List<List<Car>> raceResults) {
         System.out.println("실행결과");
-        for (List<String> roundResult : raceResults) {
-            for (String result : roundResult) {
-                System.out.println(result);
+        for (List<Car> roundResult : raceResults) {
+            for (Car car : roundResult) {
+                System.out.println(generateCarStatusResult(car));
             }
             System.out.println();
         }
