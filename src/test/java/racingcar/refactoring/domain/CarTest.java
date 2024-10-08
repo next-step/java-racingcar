@@ -3,6 +3,7 @@ package racingcar.refactoring.domain;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 class CarTest {
 
@@ -12,16 +13,16 @@ class CarTest {
     @Test
     void car_두칸_이동() {
         Car car = new Car("joon");
-        car.moveForward(MOVABLE_NUMBER);
-        car.moveForward(MOVABLE_NUMBER);
+        car.moveForward(() -> true);
+        car.moveForward(() -> true);
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
     void car_정지() {
         Car car = new Car("joon");
-        car.moveForward(STOP_NUMBER);
-        car.moveForward(STOP_NUMBER);
+        car.moveForward(() -> false);
+        car.moveForward(() -> false);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 

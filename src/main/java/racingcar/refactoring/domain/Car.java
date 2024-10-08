@@ -2,11 +2,7 @@ package racingcar.refactoring.domain;
 
 import java.util.Objects;
 
-import static racingcar.refactoring.utils.NumberGenerator.generateRandomNumber;
-
 public class Car {
-
-    private static final int RANDOM_THRESHOLD = 4;
 
     private final Name name;
     private Position position;
@@ -24,18 +20,10 @@ public class Car {
         return position.getPosition();
     }
 
-    public void moveForward(int randomNumber) {
-        if (movable(randomNumber)) {
+    public void moveForward(MovingStrategy strategy) {
+        if (strategy.movable()) {
             position = position.plusPosition();
         }
-    }
-
-    public void move() {
-        moveForward(generateRandomNumber());
-    }
-
-    private boolean movable(int randomNumber) {
-        return randomNumber >= RANDOM_THRESHOLD;
     }
 
     @Override

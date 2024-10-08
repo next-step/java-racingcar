@@ -7,6 +7,7 @@ import java.util.Map;
 public class Cars {
 
     private final List<Car> cars;
+    private static final MovingStrategy randomMovingStrategy = new RandomMovingStrategy();
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -18,7 +19,7 @@ public class Cars {
 
     public Map<String, Integer> moveAll() {
         for (Car car : cars) {
-            car.move();
+            car.moveForward(randomMovingStrategy);
         }
         return createNamePositionMap();
     }
