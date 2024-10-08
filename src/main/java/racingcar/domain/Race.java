@@ -1,8 +1,10 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.utils.RandomMovement;
 
 public class Race {
     private final Cars cars;
-    Race(Cars cars) {
+    public Race(Cars cars) {
         this.cars = cars;
     }
 

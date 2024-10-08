@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.utils;
+
+import racingcar.domain.Movement;
 
 public class TestMovement implements Movement {
     private static final int MOVE_CONDITION = 4;
