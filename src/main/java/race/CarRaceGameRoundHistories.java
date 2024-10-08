@@ -13,7 +13,7 @@ public class CarRaceGameRoundHistories {
     public static CarRaceGameRoundHistories create(Map<Integer, List<CarRaceGameHistory>> roundHistories) {
         return new CarRaceGameRoundHistories(roundHistories);
     }
-    
+
     public Map<Integer, List<CarRaceGameHistory>> get() {
         Map<Integer, List<CarRaceGameHistory>> roundHistories = new HashMap<>();
 
@@ -28,20 +28,30 @@ public class CarRaceGameRoundHistories {
     }
 
     public List<String> selectWinners() {
-        List<CarRaceGameHistory> lastRoundHistories = this.roundHistories.get(this.roundHistories.size());
-
-        int maxStep = lastRoundHistories.stream()
-                .mapToInt(CarRaceGameHistory::getStep)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
-
-        List<CarRaceGameHistory> winningHistories = lastRoundHistories.stream()
-                .filter(history -> history.isSameStep(maxStep))
-                .collect(Collectors.toList());
+        List<CarRaceGameHistory> lastRoundHistories = this.getLastRoundHistories();
+        List<CarRaceGameHistory> winningHistories = this.getWinningRoundHistories(lastRoundHistories);
 
         return winningHistories.stream()
                 .map(CarRaceGameHistory::getName)
                 .collect(Collectors.toList());
+    }
+
+    private List<CarRaceGameHistory> getLastRoundHistories() {
+        return this.roundHistories.get(this.roundHistories.size());
+    }
+
+    private List<CarRaceGameHistory> getWinningRoundHistories(List<CarRaceGameHistory> roundHistories) {
+
+        return roundHistories.stream()
+                .filter(history -> history.isSameStep(this.getMaxStep(roundHistories)))
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxStep(List<CarRaceGameHistory> roundHistories) {
+        return roundHistories.stream()
+                .mapToInt(CarRaceGameHistory::getStep)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 
     @Override

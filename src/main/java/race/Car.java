@@ -12,6 +12,10 @@ public class Car {
     private final String name;
 
     private Car(int step, String name) {
+        if (name.length() > MAX_LENGTH_OF_NAME) {
+            throw new IllegalArgumentException("이름은 최대 5자 이하로 입력 가능합니다.");
+        }
+
         this.step = step;
         this.name = name;
     }
@@ -28,17 +32,13 @@ public class Car {
 
 
     public static Car create(int startStep, String name) {
-        if (name.length() > MAX_LENGTH_OF_NAME) {
-            throw new IllegalArgumentException("이름은 최대 5자 이하로 입력 가능합니다.");
-        }
-
         return new Car(startStep, name);
     }
 
     public static List<Car> create(int startStep, List<String> names) {
         return names.stream()
-                    .map((name) -> Car.create(startStep, name))
-                    .collect(Collectors.toList());
+                .map((name) -> Car.create(startStep, name))
+                .collect(Collectors.toList());
     }
 
     @Override
