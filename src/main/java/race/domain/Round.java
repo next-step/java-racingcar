@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class Round {
     private final int value;

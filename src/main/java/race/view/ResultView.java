@@ -1,4 +1,7 @@
-package race;
+package race.view;
+
+import race.domain.Car;
+import race.domain.Cars;
 
 import java.util.List;
 import java.util.Map;

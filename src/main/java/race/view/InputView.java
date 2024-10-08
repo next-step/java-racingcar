@@ -1,4 +1,6 @@
-package race;
+package race.view;
+
+import race.domain.Round;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -21,7 +23,7 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public Round askRoundCount() {
+    public int askRoundCount() {
         System.out.println("시도할 이동 횟수는 몇 회 입니까?");
 
         int input;
@@ -36,6 +38,6 @@ public class InputView {
             throw new IllegalArgumentException("이동 횟수는 1회 이상으로 설정해야 합니다.");
         }
 
-        return new Round(input);
+        return input;
     }
 }
