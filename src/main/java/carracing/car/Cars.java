@@ -19,11 +19,31 @@ public class Cars {
         }
     }
 
-    public Cars getCarsSamePositionAs(int maxPosition) {
-         return new Cars(this.cars.stream()
+    public List<String> winnersNames() {
+        int maxPosition = -1;
+        maxPosition = this.compareMax(maxPosition);
+
+        return this.winnersNames(maxPosition);
+    }
+
+    private int compareMax(int maxPosition) {
+        for (Car car : this.cars) {
+            maxPosition = car.compareMax(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private List<String> winnersNames(int maxPosition) {
+        return this.getCarsSamePositionAs(maxPosition)
+                .stream()
+                .map(Car::getNameString)
+                .collect(Collectors.toList());
+    }
+
+    private List<Car> getCarsSamePositionAs(int maxPosition) {
+        return this.cars.stream()
                 .filter(car -> car.isSamePosition(maxPosition))
-                .collect(Collectors.toList())
-         );
+                .collect(Collectors.toList());
     }
 
     public Cars deepCopy() {
@@ -38,10 +58,4 @@ public class Cars {
         return this.cars;
     }
 
-    public int compareMax(int maxPosition) {
-        for(Car car : this.cars) {
-            maxPosition = car.compareMax(maxPosition);
-        }
-        return maxPosition;
-    }
 }

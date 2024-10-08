@@ -8,17 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-    @DisplayName("position 값이 인자 maxPosition 값과 동일한 자동차들만 반환한다.")
-    @Test
-    void return_Cars_samePositionAs_argument() {
-        Car moon = new Car("moon");
-        Car zi = new Car("zi");
-        Cars cars = new Cars(List.of(moon, zi));
-        moon.move(4);
-
-        assertThat(cars.getCarsSamePositionAs(1).get()).containsExactly(moon);
-    }
-
     @DisplayName("객체를 깊은 복사한다.")
     @Test
     void deepCopy_object() {
@@ -48,9 +37,9 @@ class CarsTest {
         assertThat(cars.get()).containsExactly(moon, zi);
     }
 
-    @DisplayName("자동차들 중 가장 이동 상태가 높은 값을 반환한다.")
+    @DisplayName("자동차 경주 게임의 우승 차의 이름을 반환한다.")
     @Test
-    void return_the_highest_position_among_the_cars() {
+    void return_winnersNames() {
         Car moon = new Car("moon");
         Car zi = new Car("zi");
         Cars cars = new Cars(List.of(moon, zi));
@@ -58,6 +47,7 @@ class CarsTest {
         moon.move(4);
         zi.move(4);
 
-        assertThat(cars.compareMax(-1)).isEqualTo(2);
+        assertThat(cars.winnersNames())
+                .containsExactly(moon.getNameString());
     }
 }

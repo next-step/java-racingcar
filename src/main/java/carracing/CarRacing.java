@@ -5,7 +5,6 @@ import carracing.car.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRacing {
     private final Cars cars;
@@ -44,10 +43,6 @@ public class CarRacing {
             this.carsMoveStatusHistory.save(this.cars);
         }
         ResultView.printCarRacingResult(this.carsMoveStatusHistory);
-        ResultView.printCarRacingWinners(
-                CarRacingWinners.findWinners(this.cars).get()
-                        .stream()
-                        .map(Car::getNameString)
-                        .collect(Collectors.toList()));
+        ResultView.printCarRacingWinners(this.cars.winnersNames());
     }
 }
