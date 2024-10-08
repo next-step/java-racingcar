@@ -6,18 +6,24 @@ public class ResultView {
 
     private static final String symbol = "-";
 
-    public static void printResult(Race race, int loop) {
+    public static void printRaceResults(List<List<String>> raceResults) {
         System.out.println("실행결과");
-        for (int i = 0; i < loop; i++) {
-            race.round();
-            printStatusAll(race.getCars());
+        for (List<String> roundResult : raceResults) {
+            for (String result : roundResult) {
+                System.out.println(result);
+            }
+            System.out.println();
         }
     }
 
-    private static void printStatusAll(List<Car> cars) {
-        for (Car car : cars) {
-            car.getStatus(symbol);
-        }
-        System.out.println();
+    public static String generateCarStatusResult(Car car) {
+        return car.getName() + " : " + car.getStatus(symbol);
     }
+
+    public static void printWinners(List<String> winners) {
+        String winnerNames = String.join(", ", winners);
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
+    }
+
+
 }
