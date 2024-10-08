@@ -8,15 +8,15 @@ public class Car {
     private static final int STANDARD = 4;
 
     private Position position;
-    private String name;
+    private final String name;
 
-    public Car(final String name, int position) {
+    public Car(final String name, final int position) {
         this(name, new Position(position));
     }
 
-    public Car(final String name, Position position) {
+    public Car(final String name, final Position position) {
         this.name = name;
-        this.position = position;
+        this.position = new Position(position.getValue());
     }
 
     public boolean isGo(int randomNumber) {
@@ -24,7 +24,8 @@ public class Car {
             throw new IllegalArgumentException("랜덤 값이 범위를 초과하였습니다.");
         }
         if (randomNumber >= STANDARD) {
-            this.position = position.increase();
+            //this.position = position.increase();
+            this.position = new Position(position.increase().getValue());
             return true;
         }
         return false;
