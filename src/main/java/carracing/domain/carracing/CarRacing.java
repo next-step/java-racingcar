@@ -22,10 +22,6 @@ public class CarRacing {
         ResultView.printCarRacingWinners(this.cars.winnersNames());
     }
 
-    public Cars getCars() {
-        return cars;
-    }
-
     public int getMoveTryCount() {
         return moveTryCount;
     }

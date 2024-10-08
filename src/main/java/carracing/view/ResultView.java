@@ -17,9 +17,9 @@ public class ResultView {
     public static void printCarRacingResult(CarsMoveStatusHistory carsMoveStatusHistory) {
         StringBuilder stringBuilder = new StringBuilder("실행 결과").append(NEW_LINE);
 
-        for (int i = 0; i < carsMoveStatusHistory.moveTryCount(); i++) {
+        for (int i = 0; i < carsMoveStatusHistory.numberOfMoveTryCount(); i++) {
             stringBuilder
-                    .append(createResultByAMoveTryCount(carsMoveStatusHistory.getCarsByMoveTryStep(i)))
+                    .append(createResultByAMoveTryCount(carsMoveStatusHistory.carsBy(i)))
                     .append(NEW_LINE);
         }
 

@@ -17,14 +17,14 @@ public class CarsMoveStatusHistory {
         this.carsByMoveTryCount.add(cars.deepCopy());
     }
 
-    public int moveTryCount() {
+    public int numberOfMoveTryCount() {
         return this.carsByMoveTryCount.size();
     }
 
     /**
      * @param moveTryStep 이동시도 횟수 중 얻고자 하는 단계 (값은 0부터 시작한다.)
      */
-    public Cars getCarsByMoveTryStep(int moveTryStep) {
+    public Cars carsBy(int moveTryStep) {
         return this.carsByMoveTryCount.get(moveTryStep);
     }
 }
