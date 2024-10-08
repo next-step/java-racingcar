@@ -31,9 +31,9 @@ public class CarsTest {
     @DisplayName("자동차 중 1명 이상의 우승자를 구한다.")
     void 우승자_구하기() {
         List<Car> carList = new ArrayList<>();
-        Car car = new Car("name1", 3);
-        Car car2 = new Car("name2", 8);
-        Car car3 = new Car("name3", 8);
+        Car car = new Car("name1", 3, () -> false);
+        Car car2 = new Car("name2", 8, () -> false);
+        Car car3 = new Car("name3", 8, () -> false);
         carList.add(car);
         carList.add(car2);
         carList.add(car3);

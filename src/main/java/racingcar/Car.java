@@ -14,10 +14,11 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public Car(String name, int position) {
+    public Car(String name, int position, MoveStrategy moveStrategy) {
         validateName(name);
         this.name = name;
         this.position = position;
+        this.moveStrategy = moveStrategy;
     }
 
     private void validateName(String name) {
