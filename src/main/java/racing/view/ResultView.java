@@ -9,14 +9,14 @@ public class ResultView {
 
     public void racingPrint(ResultRacings resultRacings, int cycle) {
         int round = 0;
-        while(cycle >0 ){
+        while (cycle > 0) {
             ResultRacing racing = resultRacings.getResultsRacings().get(round);
             for (Car car : racing.getCars().getItems()) {
                 System.out.print(car.getName() + ":");
                 movePrint(car);
             }
-            round ++;
-            cycle --;
+            round++;
+            cycle--;
             endCycle();
         }
     }
