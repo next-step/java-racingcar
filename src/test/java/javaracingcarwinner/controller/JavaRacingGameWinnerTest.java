@@ -7,9 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class JavaRacingGameWinnerTest {
 
@@ -58,10 +60,17 @@ public class JavaRacingGameWinnerTest {
         cars.add(new RacingCar("loser", 1));
 
         List<RacingCar> winners = JavaRacingGame.whoIsWinners(cars);
+        List<String> names = winners.stream().map(w -> w.name()).collect(Collectors.toList());
 
-        assertThat(winners).hasSize(3);
+        assertAll(
+                () -> {
+                    assertThat(names).hasSize(3);
+                },
+                () -> {
+                    assertThat(names).contains("win", "win2", "win3");
+                }
+        );
 
-        assertThat(winners.stream().map(w -> w.name()).toArray()).contains("win", "win", "win3");
     }
 
 }
