@@ -17,8 +17,7 @@ public class Race {
             resultView.printCurrentRoundProgress(cars);
         }
 
-        int maxPosition = cars.getMaxPosition();
-        resultView.printWinners(cars.getWinners(maxPosition));
+        resultView.printWinners(cars.getWinners());
     }
 
 }

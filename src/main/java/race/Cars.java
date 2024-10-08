@@ -56,14 +56,14 @@ public class Cars {
                 ));
     }
 
-    public int getMaxPosition() {
+    private int getMaxPosition() {
         return cars.stream()
                 .reduce(0, (position, car) -> car.maxPosition(position), Integer::max);
     }
 
-    public List<Car> getWinners(int position) {
+    public List<Car> getWinners() {
         return cars.stream()
-                .filter(car -> car.isInPosition(position))
+                .filter(car -> car.isInPosition(getMaxPosition()))
                 .collect(Collectors.toList());
     }
 }
