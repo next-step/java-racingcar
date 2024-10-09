@@ -1,8 +1,12 @@
 package racing.entity;
 
 public class Car {
+
     private final String name;
     private int position;
+
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int RANDOM_RANGE = 10;
 
     public Car(String name) {
         this.name = name;
@@ -24,8 +28,8 @@ public class Car {
     }
 
     private boolean canMove() {
-        int randomValue = (int) (Math.random() * 10);
-        return randomValue >= 4;
+        int randomValue = (int) (Math.random() * RANDOM_RANGE);
+        return randomValue >= MOVE_THRESHOLD;
     }
 }
 
