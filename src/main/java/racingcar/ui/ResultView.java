@@ -54,7 +54,7 @@ public class ResultView {
     }
 
     private static void printWinners(RacingResultDTO result) {
-        String winnerNames = String.join(", ", result.getWinners().getWinners());
+        String winnerNames = String.join(", ", result.getWinners().getWinnerNames());
         System.out.printf("%s가 최종 우승했습니다.%n", winnerNames);
     }
 

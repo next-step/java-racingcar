@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.RacingResultDTO;
-import racingcar.dto.RacingWinnersDTO;
+import racingcar.dto.RacingWinnerNamesDTO;
 import racingcar.dto.RacingWrapResultDTO;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class RacingCarSimulatorTest {
     void hasWinnerTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1);
-        RacingWinnersDTO winners = result.getWinners();
-        assertThat(winners.getWinners()).isNotEmpty();
+        RacingWinnerNamesDTO winners = result.getWinners();
+        assertThat(winners.getWinnerNames()).isNotEmpty();
     }
 }
