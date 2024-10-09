@@ -34,8 +34,8 @@ public class Cars {
     }
 
     public void move(CapacityGenerator capacityGenerator) {
-        for(int i=0;i<count();i++){
-            move(i, capacityGenerator.generate());
+        for(Car car :cars){
+            car.move(capacityGenerator.generate());
         }
         snapShotStore.save(nowState());
     }
