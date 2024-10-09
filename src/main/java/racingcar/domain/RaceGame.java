@@ -1,44 +1,43 @@
 package racingcar.domain;
 
-import racingcar.ui.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGame {
-    private final List<Car> cars;
-    private final int attemptCount;
-    private final List<RoundResult> results = new ArrayList<>();
 
-    public RaceGame(final int attemptCount, List<Car> cars) {
-        this.attemptCount = attemptCount;
-        this.cars = cars;
+    private final int carCount;
+
+    private final int tryCount;
+
+    public RaceGame(UserInputData userInput) {
+        this.carCount = userInput.getCarCount();
+        this.tryCount = userInput.getTryCount();
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Positions> playGame(final MoveStrategy moveStrategy) {
+        Cars cars = new Cars(carCount);
+
+        return playRounds(cars, moveStrategy);
     }
 
-    public void startRace() {
-        for (int i = 0; i < attemptCount; i++) {
-            forwardAttempt();
+    public List<Positions> playRounds(Cars cars, MoveStrategy moveStrategy) {
+        List<Positions> allRoundPositions = new ArrayList<>();
+
+        for (int i = 0; i < tryCount; i++) {
+            Positions positions = playRound(cars, moveStrategy);
+            allRoundPositions.add(positions);
         }
+        return allRoundPositions;
     }
 
-    public List<RoundResult> getResults() {
-        return results;
-    }
-
-    public void showGameResult() {
-        ResultView.printResultView(results);
-    }
-
-    private void forwardAttempt() {
-        RoundResult roundResult = new RoundResult();
-        for (Car car : cars) {
-            car.move();
-            roundResult.addResult(car.getPosition());
+    public Positions playRound(Cars cars, MoveStrategy moveStrategy) {
+        Positions positions = new Positions();
+        for (Car car : cars.getCars()) {
+            car.move(moveStrategy);
+            positions.save(new Position(car.getPosition()));
         }
-        results.add(roundResult);
+
+        return positions;
     }
+
 }

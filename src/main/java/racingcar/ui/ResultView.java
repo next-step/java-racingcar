@@ -1,20 +1,33 @@
 package racingcar.ui;
 
-import racingcar.domain.RoundResult;
+import racingcar.domain.Position;
+import racingcar.domain.Positions;
 
 import java.util.List;
 
 public class ResultView {
 
-    public static void printResultView(List<RoundResult> gameResult) {
-        System.out.println();
-        System.out.println("실행 결과");
+    public static final String DASH = "-";
+    public static final String EXECUTE_RESULT = "실행 결과";
 
-        for (RoundResult roundResult : gameResult) {
-            for (int i = 0; i < roundResult.getResults().size(); i++) {
-                System.out.println("-".repeat(roundResult.getResults().get(i)));
-            }
+    public static void print(List<Positions> gameResult) {
+        System.out.println(EXECUTE_RESULT);
+
+        for (Positions roundResult : gameResult) {
+            printPositionsPerRound(roundResult);
             System.out.println();
         }
     }
+
+    private static void printPositionsPerRound(Positions positions) {
+        for (Position position : positions.getPositions()) {
+            printPosition(position);
+            System.out.println();
+        }
+    }
+
+    private static void printPosition(Position position) {
+        System.out.print(DASH.repeat(position.getValue()));
+    }
+
 }

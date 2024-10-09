@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.domain.Car;
-import racingcar.domain.RaceGame;
+import racingcar.domain.*;
 import racingcar.ui.InputView;
-import racingcar.util.CarFactory;
+import racingcar.ui.ResultView;
+import racingcar.util.RandomNumberGenerator;
 
 import java.util.List;
 
@@ -11,13 +11,15 @@ public class GameApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int competitors = inputView.getCompetitors();
-        int attemptCount = inputView.getAttemptCount();
+        UserInputData userInput = inputView.getUserInput();
+        RaceGame raceGame = new RaceGame(userInput);
 
-        List<Car> cars = CarFactory.createCars(competitors);
-        RaceGame raceGame = new RaceGame(attemptCount, cars);
+        run(raceGame);
+    }
 
-        raceGame.startRace();
-        raceGame.showGameResult();
+    private static void run(final RaceGame game) {
+        MoveStrategy moveStrategy = new ForwardStrategy(new RandomNumberGenerator());
+        List<Positions> positions = game.playGame(moveStrategy);
+        ResultView.print(positions);
     }
 }
