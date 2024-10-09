@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -19,6 +20,23 @@ class CarTest {
     void validateName_5자초과() {
         assertThatThrownBy(() -> new Car("invalid")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("자동차가 우승자인지 확인")
+    void isWinnerWhenDistanceIsMax() {
+        Car car = new Car("win");
+        car.move(true);
+        assertThat(car.isWinner(1)).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차가 우승자가 아닌지 확인")
+    void isNotWinnerWhenDistanceIsNotMax() {
+        Car car = new Car("lose");
+        car.move(true);
+        assertThat(car.isWinner(2)).isFalse();
+    }
+
 
     @Test
     @DisplayName("자동차가 이동하는지 확인")

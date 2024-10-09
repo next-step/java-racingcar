@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
     private final String name;
@@ -21,6 +21,10 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    public boolean isWinner(int maxDistance) {
+        return distance == maxDistance;
     }
 
     private void validateName(String name) {
