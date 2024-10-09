@@ -14,7 +14,7 @@ public class ResultView {
     public void printRacingResult(List<RaceRecord> records, int raceCount, int totalNumberOfRace) {
 
         for(RaceRecord record : records) {
-            System.out.println(record.getCarName() + " : " + record.getDashCharacterString());
+            System.out.println(record.getCarName() + " : " + generateDashedString(record.getCarMovingDistance()));
         }
 
         System.out.println();
@@ -24,8 +24,12 @@ public class ResultView {
         }
     }
 
+    private String generateDashedString(int movingDistance) {
+        return "-".repeat(movingDistance);
+    }
+
     private void printRaceWinner(List<RaceRecord> records) {
         RaceWinner winner = new RaceWinner(records);
-        System.out.println(winner.getName());
+        System.out.println(winner.getNames());
     }
 }
