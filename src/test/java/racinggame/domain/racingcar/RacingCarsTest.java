@@ -1,9 +1,8 @@
-package racinggame;
+package racinggame.domain.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.racingcar.MoveStrategy;
-import racinggame.racingcar.RacingCars;
+import racinggame.domain.strategy.MoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarCreationTest {
+class RacingCarsTest {
 
     @Test
     @DisplayName("단일 자동차 객체 생성")

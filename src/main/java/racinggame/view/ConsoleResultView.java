@@ -1,8 +1,7 @@
-package racinggame;
+package racinggame.view;
 
 import java.util.List;
 import java.util.Map;
-import java.util.StringJoiner;
 
 public class ConsoleResultView implements ResultView {
     private static final String EXECUTION_ANNOUNCEMENT_MESSAGE = "실행 결과";
@@ -39,10 +38,9 @@ public class ConsoleResultView implements ResultView {
     }
 
     private String joinNames(List<String> names) {
-        StringJoiner joiner = new StringJoiner(", ");
-        names.forEach(joiner::add);
-        return joiner.toString();
+        return String.join(", ", names);
     }
+
 
     private String createPositionMarker(int position) {
         return POSITION_MARKER.repeat(position);

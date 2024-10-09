@@ -1,10 +1,8 @@
-package racinggame;
+package racinggame.domain.strategy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.racingcar.RacingCars;
-import racinggame.racingcar.RandomMoveStrategy;
-import racinggame.racingcar.MoveStrategy;
+import racinggame.domain.racingcar.RacingCars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +10,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarMovementTest {
+class StrategyTest {
     private static final int INIT_POSITION = 0;
     private static final int NUMBER_OF_ROUNDS = 4;
 

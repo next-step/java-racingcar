@@ -1,4 +1,6 @@
-package racinggame.racingcar;
+package racinggame.domain.racingcar;
+
+import racinggame.domain.strategy.MoveStrategy;
 
 public class RacingCar {
     private final CarName name;

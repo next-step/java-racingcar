@@ -1,6 +1,13 @@
-package racinggame;
+package racinggame.controller;
 
-import racinggame.racingcar.*;
+import racinggame.domain.strategy.MoveStrategy;
+import racinggame.domain.race.Race;
+import racinggame.domain.strategy.RandomMoveStrategy;
+import racinggame.view.ConsoleInputView;
+import racinggame.view.ConsoleResultView;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
+
 import java.util.List;
 
 public class RacingGameController {
