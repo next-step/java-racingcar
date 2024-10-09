@@ -8,6 +8,6 @@ public class CarRacingMain {
     public static void main(String[] args) {
 
         Game game = new Game();
-        result(game.play(inputCarCount(), inputGameCount()));
+        result(game.play(inputCarName(), inputGameCount()));
     }
 }

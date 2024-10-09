@@ -1,7 +1,6 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Cars {
 
@@ -17,11 +16,11 @@ public class Cars {
         }
     }
 
-    public List<Integer> showCarsDistances() {
-        List<Integer> carsDistances = new ArrayList<>();
+    public Map<String, Integer> showCarsPositions() {
+        Map<String, Integer> carsPositions = new HashMap<>();
         for (Car car : cars) {
-            carsDistances.add(car.showDistance());
+            carsPositions.put(car.getName(), car.getPosition());
         }
-        return carsDistances;
+        return carsPositions;
     }
 }

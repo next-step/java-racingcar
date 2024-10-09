@@ -1,13 +1,16 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
 
-    public GameResults play(int carCount, int gameCount) {
+    private static final String NAME_DELIMITER = ",";
 
-        Cars cars = new Cars(makeRacingCars(carCount));
+    public GameResults play(String nameInput, int gameCount) {
+        Cars cars = new Cars(makeRacingCars(nameInput));
         return new GameResults(playAndSaveGameResults(gameCount, cars));
     }
 
@@ -15,15 +18,16 @@ public class Game {
         List<RoundResult> gameResults = new ArrayList<>();
         for (int i = 0; i < gameCount; i++) {
             cars.moveCarsByStrategy();
-            gameResults.add(new RoundResult(cars.showCarsDistances()));
+            gameResults.add(new RoundResult(cars.showCarsPositions()));
         }
         return gameResults;
     }
 
-    private List<Car> makeRacingCars(int carCount) {
+    private List<Car> makeRacingCars(String nameInput) {
+        String[] names = nameInput.split(NAME_DELIMITER);
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
         return cars;
     }

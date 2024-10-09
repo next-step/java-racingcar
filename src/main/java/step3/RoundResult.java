@@ -1,20 +1,25 @@
 package step3;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class RoundResult {
 
-    private final List<Integer> roundResult;
+    private final Map<String, Integer> roundResult;
 
-    public RoundResult(List<Integer> roundResult) {
+    public RoundResult(Map<String, Integer> roundResult) {
         this.roundResult = roundResult;
     }
 
-    public int getSize() {
-        return roundResult.size();
+    public Set<Map.Entry<String, Integer>> getEntrySet() {
+        return roundResult.entrySet();
     }
 
-    public int getCarDistance(int index) {
-        return roundResult.get(index);
+    public int getMaxPosition() {
+        int maxPosition = 0;
+        for (Map.Entry<String, Integer> entry : getEntrySet()) {
+            maxPosition = Math.max(maxPosition, entry.getValue());
+        }
+        return maxPosition;
     }
 }

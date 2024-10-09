@@ -11,18 +11,18 @@ class CarTest {
 
     @BeforeEach
     void generate_car() {
-        car = new Car();
+        car = new Car("Car");
     }
 
     @Test
     void move_when_movable() {
         car.move(() -> true);
-        assertThat(car.showDistance()).isEqualTo(1);
+        assertThat(car.showPosition()).isEqualTo(1);
     }
 
     @Test
     void stop_when_not_movable() {
         car.move(() -> false);
-        assertThat(car.showDistance()).isEqualTo(0);
+        assertThat(car.showPosition()).isEqualTo(0);
     }
 }
