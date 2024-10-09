@@ -1,33 +1,36 @@
 package racing;
 
+import java.util.UUID;
+
 public class RacingCar {
 
     private String name;
-    private int totalForwardCounts;
+    private RacingCarPosition position;
     private final Operator operator;
 
     public RacingCar(Operator operator) {
-        this.totalForwardCounts = 0;
+        this.name = UUID.randomUUID().toString();
         this.operator = operator;
+        this.position = new RacingCarPosition(this.name);
     }
 
     public RacingCar(String name, Operator operator) {
         this.name = name;
-        this.totalForwardCounts = 0;
         this.operator = operator;
+        this.position = new RacingCarPosition(this.name);
     }
 
     public void race() {
         if (operator.isOngoing()) {
-            this.totalForwardCounts += 1;
+            this.position.move();
         }
-    }
-
-    public int getTotalForwardCounts() {
-        return this.totalForwardCounts;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public RacingCarPosition getPosition() {
+        return this.position;
     }
 }

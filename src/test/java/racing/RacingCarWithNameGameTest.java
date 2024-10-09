@@ -11,19 +11,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RacingCarWithNameGameTest {
 
     @Test
-    @DisplayName("사용자는 자동차 이름 목록, 이동 횟수를 입력해서 게임을 실행 할 수 있다.")
-    void testStartRacingGame() {
-        String totalCarNames = "pobi,crong,honux";
-        String[] carNames = totalCarNames.split(",");
-        int totalRacingCounts = 5;
-
-        int result = RacingCarWithNameGame.start(totalCarNames, totalRacingCounts);
-
-        // 게임 실행 결과 모든 차는 주어진 이동 수 만큼 실행되어야 한다.
-        assertThat(result).isEqualTo(carNames.length * totalRacingCounts);
-    }
-
-    @Test
     @DisplayName("자동차 이름이 5글자를 초과할 경우 예외를 발생한다")
     void testCarNameOverFiveLetters() {
         assertThatThrownBy(() -> {
@@ -38,7 +25,7 @@ public class RacingCarWithNameGameTest {
         for (int i = 0; i < 10; i++) {
             racingCar.race();
         }
-        String result = ResultView.display(new RacingCar[]{racingCar});
+        String result = ResultView.display(new RacingCarPosition[]{racingCar.getPosition()});
         assertThat(result).isEqualTo("pobi : ---------\n\n");
     }
 
@@ -48,12 +35,13 @@ public class RacingCarWithNameGameTest {
         RacingCar pobiRacingCar = new RacingCar("pobi", new Operator(1L));
         RacingCar crongRacingCar = new RacingCar("crong", new Operator(2L));
         RacingCar honuxRacingCar = new RacingCar("honux", new Operator(1L));
+
+        RacingCars racingCars = new RacingCars(new RacingCar[]{pobiRacingCar, crongRacingCar, honuxRacingCar});
         for (int i = 0; i < 10; i++) {
-            pobiRacingCar.race();
-            crongRacingCar.race();
-            honuxRacingCar.race();
+            racingCars.racing();
         }
-        List<RacingCar> winners = RacingCarWithNameGame.findWinners(new RacingCar[]{crongRacingCar, pobiRacingCar, honuxRacingCar});
+
+        List<RacingCar> winners = racingCars.findWinners();
         String result = ResultView.displayWinners(winners);
         assertThat(result).isEqualTo("pobi, honux가 최종 우승했습니다.");
     }
