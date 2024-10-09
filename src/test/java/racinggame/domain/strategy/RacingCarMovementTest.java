@@ -1,10 +1,8 @@
-package racinggame;
+package racinggame.domain.strategy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.racingcar.RacingCars;
-import racinggame.domain.strategy.RandomMoveStrategy;
-import racinggame.domain.strategy.MoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
