@@ -6,6 +6,7 @@ public class Car {
 
     private static final int MOVE_BOUND = 4;
     private static final int DEFAULT_POSITION = 1;
+
     private int position;
 
     public Car(int position) {
