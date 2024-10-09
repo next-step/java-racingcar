@@ -5,20 +5,17 @@ import java.util.List;
 
 public class CarRaceGame {
     private static final int CAR_START_STEP = 0;
-    private static final int CAR_MOVE_STEP = 1;
-    
-    private static final IRandomValueGenerator RANDOM_VALUE_GENERATOR = RandomValueGenerator.create();
-    private static final ICarMoveRule CAR_MOVE_RULE = CarMoveRule.with(RANDOM_VALUE_GENERATOR);
+    private static final CarMoveRule CAR_MOVE_RULE = CarRandomMoveRule.create();
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        List<String> carNames = InputView.inputCarNames();
         int roundCount = InputView.inputRoundCount();
 
-        ResultView.print(play(roundCount, carCount));
+        ResultView.print(play(roundCount, carNames));
     }
 
-    private static List<CarRaceGameHistory> play(int roundCount, int carCount) {
-        List<Car> cars = Car.create(CAR_START_STEP, carCount);
+    private static List<CarRaceGameHistory> play(int roundCount, List<String> names) {
+        List<Car> cars = Car.create(CAR_START_STEP, names);
         List<CarRaceGameHistory> histories = new ArrayList<>();
 
         for (int round = 1; round <= roundCount; round++) {
@@ -32,8 +29,9 @@ public class CarRaceGame {
         List<CarRaceGameHistory> roundHistories = new ArrayList<>();
 
         cars.forEach(car -> {
-            int step = car.moveBy(CAR_MOVE_RULE, CAR_MOVE_STEP);
-            roundHistories.add(CarRaceGameHistory.record(round, step));
+            CarMoveRuleValue carMoveRuleValue = CarRandomMoveRuleValue.create(CarRandomMoveRule.BOUND_OF_RANDOM);
+            car.moveBy(CAR_MOVE_RULE, carMoveRuleValue);
+            roundHistories.add(car.recordHistory(round));
         });
 
         return roundHistories;
