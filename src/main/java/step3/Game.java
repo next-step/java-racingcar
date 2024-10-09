@@ -17,7 +17,7 @@ public class Game {
     private List<RoundResult> playAndSaveGameResults(int gameCount, Cars cars) {
         List<RoundResult> gameResults = new ArrayList<>();
         for (int i = 0; i < gameCount; i++) {
-            cars.moveCarsByStrategy();
+            cars.moveCarsByStrategy(new RandomMoveStrategy());
             gameResults.add(new RoundResult(cars.showCarsPositions()));
         }
         return gameResults;

@@ -10,9 +10,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void moveCarsByStrategy() {
+    public void moveCarsByStrategy(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(new RandomMoveStrategy());
+            car.move(moveStrategy);
         }
     }
 
