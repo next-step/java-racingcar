@@ -2,18 +2,17 @@ package racingcar.model;
 
 public class RaceRecord {
     private String carName;
-    private String dashCharacterString;
+    private int carMovingDistance;
 
     public RaceRecord(String carName, int movingDistance) {
         this.carName = carName;
-        this.dashCharacterString = "-".repeat(movingDistance);
+        this.carMovingDistance = movingDistance;
     }
-
-    public String getDashCharacterString() {
-        return dashCharacterString;
-    }
-
     public String getCarName() {
         return carName;
+    }
+
+    public int getCarMovingDistance() {
+        return carMovingDistance;
     }
 }
