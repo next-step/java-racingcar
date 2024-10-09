@@ -1,25 +1,20 @@
 package step3;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameResults {
 
-    private final List<List<Integer>> gameResult;
+    private final List<RoundResult> gameResults;
 
-    public GameResults(List<List<Integer>> gameResult) {
-        this.gameResult = gameResult;
+    public GameResults(List<RoundResult> gameResults) {
+        this.gameResults = gameResults;
     }
 
-    public void saveGameResults(Cars cars) {
-        List<Integer> roundResult = new ArrayList<>();
-        for (Car car : cars.getCars()) {
-            roundResult.add(car.showDistance());
-        }
-        gameResult.add(roundResult);
+    public int getSize() {
+        return gameResults.size();
     }
 
-    public List<List<Integer>> showGameResults() {
-        return gameResult;
+    public RoundResult getRoundResult(int index) {
+        return gameResults.get(index);
     }
 }
