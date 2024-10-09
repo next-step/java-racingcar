@@ -11,11 +11,9 @@ public class RacingCars {
     }
 
     public static RacingCars create(MoveStrategy moveStrategy, List<String> nameList) {
-        List<RacingCar> cars = nameList.stream()
+        return nameList.stream()
                 .map(name -> RacingCar.create(moveStrategy, name))
-                .collect(Collectors.toList());
-
-        return new RacingCars(cars);
+                .collect(Collectors.collectingAndThen(Collectors.toList(), RacingCars::new));
     }
 
     public int count() {
