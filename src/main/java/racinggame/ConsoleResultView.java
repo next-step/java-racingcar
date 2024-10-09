@@ -39,10 +39,9 @@ public class ConsoleResultView implements ResultView {
     }
 
     private String joinNames(List<String> names) {
-        StringJoiner joiner = new StringJoiner(", ");
-        names.forEach(joiner::add);
-        return joiner.toString();
+        return String.join(", ", names);
     }
+
 
     private String createPositionMarker(int position) {
         return POSITION_MARKER.repeat(position);
