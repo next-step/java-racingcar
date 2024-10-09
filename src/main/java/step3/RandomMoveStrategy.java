@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
+    private static final Random RANDOM = new Random();
     private static final int RANDOM_NUMBER_BOUND = 10;
     private static final int MOVE_THRESHOLD = 4;
 
@@ -13,7 +14,6 @@ public class RandomMoveStrategy implements MoveStrategy {
     }
 
     private int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_NUMBER_BOUND);
+        return RANDOM.nextInt(RANDOM_NUMBER_BOUND);
     }
 }

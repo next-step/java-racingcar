@@ -5,20 +5,20 @@ import java.util.List;
 
 public class Game {
 
-    public void play(int carCount, int gameCount) {
+    public GameResults play(int carCount, int gameCount) {
 
         Cars cars = new Cars(makeRacingCars(carCount));
 
-        for (int i = 0; i < gameCount; i++) {
-            moveAndSaveResult(cars, i);
-        }
-
+        return new GameResults(playAndSaveGameResults(gameCount, cars));
     }
 
-    private void moveAndSaveResult(Cars cars, int i) {
-        for (Car car : cars.getCars()) {
-            car.move(new RandomMoveStrategy());
+    private List<RoundResult> playAndSaveGameResults(int gameCount, Cars cars) {
+        List<RoundResult> gameResults = new ArrayList<>();
+        for (int i = 0; i < gameCount; i++) {
+            cars.moveCarsByStrategy();
+            gameResults.add(new RoundResult(cars.showCarsDistances()));
         }
+        return gameResults;
     }
 
     private List<Car> makeRacingCars(int carCount) {

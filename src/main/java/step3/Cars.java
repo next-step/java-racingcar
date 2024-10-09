@@ -1,5 +1,6 @@
 package step3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -10,7 +11,17 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public void moveCarsByStrategy() {
+        for (Car car : cars) {
+            car.move(new RandomMoveStrategy());
+        }
+    }
+
+    public List<Integer> showCarsDistances() {
+        List<Integer> carsDistances = new ArrayList<>();
+        for (Car car : cars) {
+            carsDistances.add(car.showDistance());
+        }
+        return carsDistances;
     }
 }
