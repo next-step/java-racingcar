@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racinggame.dto.CarDto;
 import racinggame.dto.SnapShotDto;
-import racinggame.random.Radom;
+import racinggame.generator.TestNumberGenerator;
 
 public class RacingGameTest {
 
@@ -31,18 +31,5 @@ public class RacingGameTest {
         return result;
     }
 
-    static class TestNumberGenerator implements Radom{
-
-        private Integer value;
-
-        public TestNumberGenerator(Integer value) {
-            this.value = value;
-        }
-
-        @Override
-        public int generate() {
-            return value;
-        }
-    }
 
 }
