@@ -42,9 +42,8 @@ public class Cars {
         }
     }
 
-    public void move() {
-        Random random = new Random();
-        cars.forEach(car -> car.accelerate(random.nextInt(10)));
+    public void move(int random) {
+        cars.forEach(car -> car.accelerate(random));
     }
 
     public Map<String, Integer> getPositions() {

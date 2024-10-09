@@ -72,4 +72,22 @@ class CarsTest {
             softly.assertThat(positions.get("car2")).isEqualTo(1);
         });
     }
+
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void 목록_내_전체_자동차를_전진시킨다(int rounds) {
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Cars cars = new Cars(car1, car2);
+
+        for (int i = 0; i < rounds; i++) {
+            cars.move(10);
+        }
+
+        assertSoftly(softly -> {
+            softly.assertThat(car1.getCurrentPosition()).isEqualTo(rounds);
+            softly.assertThat(car2.getCurrentPosition()).isEqualTo(rounds);
+        });
+    }
 }
