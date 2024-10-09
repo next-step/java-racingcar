@@ -1,4 +1,11 @@
-package race;
+package race.controller;
+
+import race.domain.Car;
+import race.domain.CarMoveRule;
+import race.domain.CarRaceGameHistory;
+import race.domain.CarRandomMoveRule;
+import race.view.InputView;
+import race.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +36,7 @@ public class CarRaceGame {
         List<CarRaceGameHistory> roundHistories = new ArrayList<>();
 
         cars.forEach(car -> {
-            CarMoveRuleValue carMoveRuleValue = CarRandomMoveRuleValue.create(CarRandomMoveRule.BOUND_OF_RANDOM);
-            car.moveBy(CAR_MOVE_RULE, carMoveRuleValue);
+            car.moveBy(CAR_MOVE_RULE);
             roundHistories.add(car.recordHistory(round));
         });
 

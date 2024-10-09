@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,8 +20,8 @@ public class Car {
         this.name = name;
     }
 
-    public void moveBy(CarMoveRule carMoveRule, CarMoveRuleValue carMoveRuleValue) {
-        if (carMoveRule.check(carMoveRuleValue)) {
+    public void moveBy(CarMoveRule carMoveRule) {
+        if (carMoveRule.movable()) {
             this.step++;
         }
     }

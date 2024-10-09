@@ -1,4 +1,7 @@
-package race;
+package race.view;
+
+import race.domain.CarRaceGameHistory;
+import race.domain.CarRaceGameRoundHistories;
 
 import java.util.List;
 import java.util.Map;

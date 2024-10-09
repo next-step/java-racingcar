@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import org.junit.jupiter.api.Test;
 
