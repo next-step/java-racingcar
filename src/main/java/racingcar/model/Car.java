@@ -5,16 +5,16 @@ public class Car {
     private int movingDistance;
 
     public Car(String name) {
-        this(0);
-        this.name = name;
+        this(name, 0);
     }
 
-    private Car(int movingDistance) {
+    private Car(String name, int movingDistance) {
+        this.name = name;
         this.movingDistance = movingDistance;
     }
 
     public void move(boolean isCarMovingForward) {
-        if(isCarMovingForward) {
+        if (isCarMovingForward) {
             movingDistance++;
         }
     }
