@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static racingcar.domain.ErrorMessage.INPUT_LENGTH_EXCEEDED_ERROR;
 import static racingcar.domain.ErrorMessage.IS_NOT_TRY_COUNT;
 
 public class Race {
@@ -28,26 +27,15 @@ public class Race {
         return carList;
     }
 
-    public void startTry() {
-        for (int i = 0; i < tryCount; i++) {
-            carMove();
-        }
-    }
 
-    private void carMove() {
+    public void carMove() {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).goCar(getRandomNum());
         }
-        printCarList();
-        System.out.println();
+
     }
 
-    private void printCarList() {
-        for (Car car : carList) {
-            car.printCarRaceResult();
-            System.out.println();
-        }
-    }
+
 
     private void makeRacingCar(String[] carNameList) {
         for (String carName : carNameList) {

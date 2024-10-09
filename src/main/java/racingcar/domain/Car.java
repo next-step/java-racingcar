@@ -2,8 +2,7 @@ package racingcar.domain;
 
 import static racingcar.domain.ErrorMessage.EMPTY_NAME_ERROR;
 import static racingcar.domain.ErrorMessage.INPUT_LENGTH_EXCEEDED_ERROR;
-import static racingcar.view.ResultView.printCarName;
-import static racingcar.view.ResultView.printGoDistance;
+
 
 public class Car {
 
@@ -49,12 +48,5 @@ public class Car {
 
     public boolean isWinnerCar(int maxDistance) {
         return distance == maxDistance;
-    }
-
-    public void printCarRaceResult() {
-        printCarName(carName);
-        for (int i = 0; i < distance; i++) {
-            printGoDistance();
-        }
     }
 }
