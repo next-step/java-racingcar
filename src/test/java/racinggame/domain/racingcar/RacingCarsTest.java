@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarCreationTest {
+class RacingCarsTest {
 
     @Test
     @DisplayName("단일 자동차 객체 생성")

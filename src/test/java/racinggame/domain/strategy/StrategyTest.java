@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarMovementTest {
+class StrategyTest {
     private static final int INIT_POSITION = 0;
     private static final int NUMBER_OF_ROUNDS = 4;
 
