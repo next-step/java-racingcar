@@ -4,8 +4,8 @@ public class Car {
 
     public static final int MOVE_CONDITION = 4;
     private static final int MAX_NAME_LENGTH = 5;
-    private final String name;
 
+    private final String name;
     private int currentPosition;
 
     public Car(final String name) {

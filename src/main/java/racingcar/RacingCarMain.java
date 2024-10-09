@@ -22,6 +22,8 @@ public class RacingCarMain {
             List<RacingResult> carPositions = racing.play();
             resultView.drawCarPositions(carPositions);
         }
+        List<Car> winners = Winners.findWinners(cars);
+        resultView.printWinners(winners);
     }
 
 }
