@@ -1,6 +1,6 @@
 package carracing.domain.carracing;
 
-import carracing.view.ResultView;
+import java.util.List;
 
 public class CarRacing {
     private final Cars cars;
@@ -18,8 +18,6 @@ public class CarRacing {
             this.cars.move();
             this.carsMoveStatusHistory.save(this.cars);
         }
-        ResultView.printCarRacingResult(this.carsMoveStatusHistory);
-        ResultView.printCarRacingWinners(this.cars.winnersNames());
     }
 
     public int getMoveTryCount() {
@@ -28,5 +26,9 @@ public class CarRacing {
 
     public CarsMoveStatusHistory getCarsMoveStatusHistory() {
         return carsMoveStatusHistory;
+    }
+
+    public List<String> winnersNames() {
+        return cars.winnersNames();
     }
 }
