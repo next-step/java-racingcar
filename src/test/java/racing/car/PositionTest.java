@@ -31,7 +31,7 @@ class PositionTest {
     void test(){
         Car car1 = new Car("ㅁㅁ", 0);
         car1.isGo(7);
-        Car car2 = car1;
+        Car car2 = new Car(car1.getName(), car1.getPosition());
         car2.isGo(7);
 
         assertThat(car1.getPosition()).isEqualTo(1);

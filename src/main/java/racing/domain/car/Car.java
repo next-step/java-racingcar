@@ -19,19 +19,12 @@ public class Car {
         this.position = new Position(position.getValue());
     }
 
-    //깊은 복사 RacingGame 뷰 분리를 위해서
-    public Car(Car car) {
-        this.name = car.getName();
-        this.position = new Position(car.getPosition());
-    }
-
     public boolean isGo(int randomNumber) {
         if (randomNumber < MIN_BOUND || randomNumber > MAX_BOUND) {
             throw new IllegalArgumentException("랜덤 값이 범위를 초과하였습니다.");
         }
         if (randomNumber >= STANDARD) {
-            //this.position = position.increase();
-            this.position = new Position(position.increase().getValue());
+            this.position = position.increase();
             return true;
         }
         return false;

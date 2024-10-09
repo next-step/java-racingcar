@@ -1,5 +1,6 @@
 package racing.domain.car;
 
+import racing.domain.dto.CarDTO;
 import racing.domain.game.Calculator;
 
 import java.util.ArrayList;
@@ -13,13 +14,12 @@ public class Cars {
         this.items = items;
     }
 
-    //깊은 복사 RacingGame 뷰 분리를 위해서
-    public Cars(Cars cars) {
-        List<Car> newCars = new ArrayList<>();
-        for (Car car : cars.items) {
-            newCars.add(new Car(car));
+    public List<CarDTO> toCarDTO() {
+        List<CarDTO> newCars = new ArrayList<>();
+        for (Car car : items) {
+            newCars.add(new CarDTO(car.getName(), car.getPosition()));
         }
-        this.items = newCars;
+        return newCars;
     }
 
     public Cars carGoAndStop(Calculator calculator) {
