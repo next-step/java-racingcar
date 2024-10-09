@@ -14,7 +14,7 @@ public class RacingCarTest {
     @DisplayName("차량을 생성하면 position이 0입니다.")
     void newRacingCarPositionTest() {
         RacingCar newCar = RacingCar.valueOf(DEFAULT_CAR_NAME, 0);
-        assertThat( newCar.getCarNo()).isEqualTo(0);
+        assertThat(newCar.getCarNo()).isEqualTo(0);
     }
 
     @ParameterizedTest

@@ -32,7 +32,7 @@ public class CarRacingTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,3,5,7,9})
+    @ValueSource(ints = {1, 3, 5, 7, 9})
     @DisplayName("proceedWraps을 진행하면 wrapResult가 tryNumber + 1만큼 생깁니다 ")
     public void proceedWrapsTest(int tryNumber) {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));

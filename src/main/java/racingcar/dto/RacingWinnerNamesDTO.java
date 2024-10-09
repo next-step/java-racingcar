@@ -14,7 +14,7 @@ public final class RacingWinnerNamesDTO {
 
     public static RacingWinnerNamesDTO valueOf(List<RacingCar> winners) {
         List<String> winnerNames = new ArrayList<>();
-        for(RacingCar winner: winners) {
+        for (RacingCar winner : winners) {
             winnerNames.add(winner.getName());
         }
         return new RacingWinnerNamesDTO(winnerNames);
