@@ -4,6 +4,9 @@ import racingGame.model.car.Cars;
 import racingGame.model.car.Car;
 import racingGame.model.strategy.MovementStrategy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGameService {
 
     private final MovementStrategy movementStrategy;
@@ -23,6 +26,11 @@ public class RacingGameService {
         if (movementStrategy.isMovable()) {
             car.move();
         }
+    }
+
+    public List<Car> findWinners(Cars cars) {
+        int maxPosition = cars.getMaxPosition();
+        return cars.findCarsWithSamePosition(maxPosition);
     }
 
 }

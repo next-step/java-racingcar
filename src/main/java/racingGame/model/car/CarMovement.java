@@ -18,4 +18,7 @@ public class CarMovement {
         return this.progress;
     }
 
+    public Cars getFinalCarState() {
+        return this.progress.get(this.progress.size()-1);
+    }
 }

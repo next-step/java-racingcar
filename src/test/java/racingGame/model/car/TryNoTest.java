@@ -31,12 +31,13 @@ public class TryNoTest {
 
     @ParameterizedTest
     @CsvSource(value = {"2:1", "3:4", "2:10"}, delimiter = ':')
-    @DisplayName("moveCarsForAllRounds 메소드는 입력한 라운드 수만큼, 시도 되어야 한다.")
-    public void moveCarsForAllRounds_메소드_테스트(final int carCount, final int tryNo) {
+    @DisplayName("tryForRounds 메소드는 입력한 라운드 수만큼, 시도 되어야 한다.")
+    public void tryForRounds_메소드_테스트(final int carCount, final int tryNo) {
         RacingGameService gameService = new RacingGameService(new RandomMovementStrategy());
         TryNo round = new TryNo(tryNo, gameService);
+        Cars cars = Cars.createCars(carCount);
 
-        CarMovement expected = round.tryForRounds(carCount);
+        CarMovement expected = round.tryForRounds(cars);
 
         assertThat(expected.getProgress()).hasSize(tryNo);
     }

@@ -18,8 +18,7 @@ public class TryNo {
         this.gameService = gameService;
     }
 
-    public CarMovement tryForRounds(int carCount) {
-        Cars cars = Cars.createCars(carCount);
+    public CarMovement tryForRounds(Cars cars) {
         CarMovement ret = new CarMovement();
 
         for (int i = 0; i < this.round; i++) {

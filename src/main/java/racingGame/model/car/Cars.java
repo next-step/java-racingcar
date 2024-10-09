@@ -25,6 +25,14 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public static Cars toCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(0, name));
+        }
+        return new Cars(cars);
+    }
+
     public Cars clone() {
         List<Car> newCars = new ArrayList<>();
         for (Car car : this.cars) {
@@ -41,5 +49,23 @@ public class Cars {
         if (carCount < MINIMUM_CAR_COUNT) {
             throw new IllegalArgumentException(CAR_COUNT_ERROR_MESSAGE);
         }
+    }
+
+    public int getMaxPosition() {
+        int position = 0;
+        for (Car car : this.cars) {
+            position = car.getGreaterPosition(position);
+        }
+        return position;
+    }
+
+    public List<Car> findCarsWithSamePosition(int position) {
+        List<Car> findCars = new ArrayList<>();
+        for (Car car : this.cars) {
+            if (car.isSamePosition(position)) {
+                findCars.add(car.clone());
+            }
+        }
+        return findCars;
     }
 }

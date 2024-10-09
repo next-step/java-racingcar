@@ -5,7 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingGame.model.car.Car;
+import racingGame.model.car.Cars;
 import racingGame.model.strategy.RandomMovementStrategy;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -39,6 +42,17 @@ public class RacingGameServiceTest {
         gameService.moveCarByOneStep(car);
 
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 우승자_찾기() {
+        RacingGameService gameService = new RacingGameService(new RandomMovementStrategy());
+        Cars cars = new Cars(List.of(new Car(1, ""), new Car(2, ""), new Car(3, "")));
+
+        List<Car> expected = gameService.findWinners(cars);
+
+        assertThat(expected).hasSize(1);
+        assertThat(expected.get(0).getPosition()).isEqualTo(3);
     }
 
 }
