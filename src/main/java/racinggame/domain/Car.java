@@ -5,10 +5,15 @@ import java.util.Objects;
 public class Car {
 
     private static final int MOVE_BOUND = 4;
+    private static final int DEFAULT_POSITION = 1;
     private int position;
 
     public Car(int position) {
         this.position = position;
+    }
+
+    public static Car defaultCar(){
+        return new Car(DEFAULT_POSITION);
     }
 
     public void move(int number) {

@@ -9,7 +9,6 @@ import racinggame.random.Radom;
 
 public class Cars {
 
-    private static final int DEFAULT_POSITION = 1;
     private final SnapShotStore snapShotStore = new SnapShotStore();
     private List<Car> cars;
 
@@ -25,7 +24,7 @@ public class Cars {
     private static ArrayList<Car> carInitialization(int carCount) {
         ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(DEFAULT_POSITION));
+            cars.add(Car.defaultCar());
         }
         return cars;
     }
