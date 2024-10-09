@@ -1,5 +1,7 @@
 package racinggame;
 
+import racinggame.racingcar.CarName;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -8,14 +10,11 @@ import java.util.stream.Stream;
 public class ConsoleInputView implements InputView {
     private static final String QUESTION_NAMES_OF_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String QUESTION_NUMBER_OF_ROUNDS = "시도할 회수는 몇 회 인가요?";
-
-    private static final String ERROR_INVALID_NAME = "자동차 이름은 5자 이하여야 합니다. 다시 입력해주세요.";
     private static final String ERROR_NOT_POSITIVE = "양수를 입력해주세요: ";
     private static final String ERROR_NOT_NUMBER = "숫자를 입력해주세요: ";
 
     private static final int ZERO = 0;
     private static final String NAME_SEPARATOR = ",";
-    private static final int MAX_NAME_LENGTH = 5;
 
     private final Scanner scanner;
 
@@ -42,8 +41,10 @@ public class ConsoleInputView implements InputView {
     private List<String> readValidNames() {
         try {
             List<String> names = splitNames(readInput());
-            validateNames(names);
-            return names;
+            return names.stream()
+                    .map(CarName::new) // CarName 객체 생성, 이름을 검증함
+                    .map(CarName::getValue)
+                    .collect(Collectors.toList());
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
             return readValidNames();
@@ -54,19 +55,6 @@ public class ConsoleInputView implements InputView {
         return Stream.of(input.split(NAME_SEPARATOR))
                 .map(String::trim)
                 .collect(Collectors.toList());
-    }
-
-    private void validateNames(List<String> names) {
-        names.stream()
-                .filter(name -> !isValidName(name))
-                .findFirst()
-                .ifPresent(invalidName -> {
-                    throw new RuntimeException(ERROR_INVALID_NAME + ": " + invalidName);
-                });
-    }
-
-    private boolean isValidName(String name) {
-        return name.length() <= MAX_NAME_LENGTH;
     }
 
     private int readPositiveNumber() {
