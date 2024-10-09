@@ -5,16 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 import step4.domain.Car;
-import step4.domain.CarAtDefaultStrategy;
 import step4.domain.CarMoveStrategy;
+import step4.domain.DefaultRandomMoveStrategy;
 import step4.domain.MovedHistory;
 import step4.domain.RacingHistory;
 import step4.exception.RaceParamUnvalidException;
 
 public final class RacingGame {
-	private static final int RANDOM_BOUND = 10;
-	private static final CarMoveStrategy carAtDefaultStrategy = new CarAtDefaultStrategy();
-	private static final Random random = new Random();
+	private static final CarMoveStrategy defaultRandomMoveStrategy = new DefaultRandomMoveStrategy(new Random());
 
 	public static List<Car> makeCars(Integer carCount) {
 		List<Car> cars = new ArrayList<>();
@@ -22,7 +20,7 @@ public final class RacingGame {
 			cars.add(new Car());
 		}
 		for (Car car : cars) {
-			car.setMoveStrategy(carAtDefaultStrategy);
+			car.setMoveStrategy(defaultRandomMoveStrategy);
 		}
 		return cars;
 	}
@@ -47,7 +45,7 @@ public final class RacingGame {
 
 	private static MovedHistory moveCars(List<Car> cars) {
 		for (Car car : cars) {
-			car.move(random.nextInt(RANDOM_BOUND));
+			car.move(car.getMoveStrategy().movable());
 		}
 
 		return MovedHistory.from(cars);

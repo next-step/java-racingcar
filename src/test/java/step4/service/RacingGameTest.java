@@ -4,18 +4,19 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static step4.service.RacingGame.*;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step4.domain.Car;
-import step4.domain.CarAtDefaultStrategy;
+import step4.domain.DefaultRandomMoveStrategy;
 import step4.domain.RacingHistory;
 import step4.exception.RaceParamUnvalidException;
 
 class RacingGameTest {
-	private CarAtDefaultStrategy carAtDefaultStrategy;
+	private DefaultRandomMoveStrategy defaultRandomMoveStrategy;
 	private Car car;
 	private Integer prevPosition;
 
@@ -23,7 +24,7 @@ class RacingGameTest {
 	void setUp() {
 		car = new Car();
 		prevPosition = car.getPosition();
-		carAtDefaultStrategy = new CarAtDefaultStrategy();
+		defaultRandomMoveStrategy = new DefaultRandomMoveStrategy(new Random());
 	}
 
 	@Test
@@ -46,28 +47,30 @@ class RacingGameTest {
 	}
 
 	@Test
-	@DisplayName("4 이상일 시 움직이는 CarAtDefaultStrategy 테스트")
-	void carDefaultStrategyMoveTest() {
-		car.setMoveStrategy(carAtDefaultStrategy);
-		car.move(CarAtDefaultStrategy.MIN_MOVE_VALUE);
-		Integer expectedPosition = prevPosition + carAtDefaultStrategy.speed();
-		assertThat(car.getPosition()).isEqualTo(expectedPosition);
-	}
-
-	@Test
-	@DisplayName("4 미만일 시 움직이지 않는 CarAtDefaultStrategy 테스트")
-	void carDefaultStrategyStopTest() {
-		car.setMoveStrategy(carAtDefaultStrategy);
-		car.move(CarAtDefaultStrategy.MIN_MOVE_VALUE - 1);
-		assertThat(car.getPosition()).isEqualTo(prevPosition);
+	@DisplayName("movable 값이 True 일때만 움직이는지 확인하는 테스트")
+	void carDefaultRandomMoveTest() {
+		car.setMoveStrategy(defaultRandomMoveStrategy);
+		boolean movable = car.getMoveStrategy().movable();
+		car.move(movable);
+		if (movable) {
+			Integer expectedPosition = prevPosition + defaultRandomMoveStrategy.speed();
+			assertThat(car.getPosition()).isEqualTo(expectedPosition);
+		} else {
+			assertThat(car.getPosition()).isEqualTo(prevPosition);
+		}
 	}
 
 	@Test
 	@DisplayName("전략을 정하지 않을시 기본 전략으로 움직이는지 확인하는 테스트")
 	void noStrategyTest() {
-		car.move(CarAtDefaultStrategy.MIN_MOVE_VALUE);
-		Integer expectedPosition = prevPosition + carAtDefaultStrategy.speed();
-		assertThat(car.getPosition()).isEqualTo(expectedPosition);
+		boolean movable = car.getMoveStrategy().movable();
+		car.move(movable);
+		if (movable) {
+			Integer expectedPosition = prevPosition + defaultRandomMoveStrategy.speed();
+			assertThat(car.getPosition()).isEqualTo(expectedPosition);
+		} else {
+			assertThat(car.getPosition()).isEqualTo(prevPosition);
+		}
 	}
 
 	@Test

@@ -1,7 +1,7 @@
 package step4.domain;
 
 public interface CarMoveStrategy {
-	Integer speed();
+	int speed();
 
-	Integer getMovePosition(Integer randVal);
+	boolean movable();
 }
