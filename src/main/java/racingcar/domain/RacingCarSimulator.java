@@ -12,8 +12,6 @@ public class RacingCarSimulator {
     }
 
     private static void proceedRacing(int tryNumber, CarRacing carRacing) {
-        for (int i = 0; i < tryNumber; i++) {
-            carRacing.proceedWrap();
-        }
+        carRacing.proceedWraps(tryNumber);
     }
 }

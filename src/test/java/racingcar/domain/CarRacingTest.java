@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,14 +31,14 @@ public class CarRacingTest {
                 .isNotEmpty());
     }
 
-    @Test
-    @DisplayName("wrap을 진행하면 wrapResult가 하나 추가됩니다.")
-    public void proceedWrapTest() {
+    @ParameterizedTest
+    @ValueSource(ints = {1,3,5,7,9})
+    @DisplayName("proceedWraps을 진행하면 wrapResult가 tryNumber + 1만큼 생깁니다 ")
+    public void proceedWrapsTest(int tryNumber) {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         CarRacing racing = CarRacing.valueOf(carNames);
-        int beforeWrapResultsSize = racing.getWrapResults().getWrapResults().size();
-        racing.proceedWrap();
-        int afterWrapResultsSize = racing.getWrapResults().getWrapResults().size();
-        assertThat(afterWrapResultsSize).isEqualTo(beforeWrapResultsSize + 1);
+        racing.proceedWraps(tryNumber);
+        int afterRacingWrapResultsSize = racing.getWrapResults().getWrapResults().size();
+        assertThat(afterRacingWrapResultsSize).isEqualTo(tryNumber + 1);
     }
 }

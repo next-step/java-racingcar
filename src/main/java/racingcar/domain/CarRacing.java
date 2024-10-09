@@ -36,7 +36,13 @@ public class CarRacing {
         return wrapResults;
     }
 
-    public void proceedWrap() {
+    public void proceedWraps(int tryNumber) {
+        for (int i = 0; i < tryNumber; i++) {
+            proceedWrap();
+        }
+    }
+
+    private void proceedWrap() {
         int currentWrapNo = findCurrentWrapNo();
         List<RacingCar> racingCars = this.racingFleet.getRacingCars();
         racingCars.forEach(racingCar -> racingCar.race(RandomMovableStrategy.getInstance()));
