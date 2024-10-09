@@ -11,11 +11,6 @@ public class Car {
 
     private static final int MOVE_THRESHOLD = 4;
     private static final int RANDOM_RANGE = 10;
-=======
-public class Car {
-    private final String name;
-    private int position;
->>>>>>> 6186238e5 (feat: 테스트 작성)
 
     public Car(String name) {
         this.name = name;
@@ -37,13 +32,8 @@ public class Car {
     }
 
     private boolean canMove() {
-<<<<<<< HEAD
-        int randomValue = random.nextInt(RANDOM_RANGE);
+        int randomValue = (int) (Math.random() * RANDOM_RANGE);
         return randomValue >= MOVE_THRESHOLD;
-=======
-        int randomValue = (int) (Math.random() * 10);
-        return randomValue >= 4;
->>>>>>> 6186238e5 (feat: 테스트 작성)
     }
 }
 
