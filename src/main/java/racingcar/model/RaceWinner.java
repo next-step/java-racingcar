@@ -37,7 +37,7 @@ public class RaceWinner {
 
     private void nameListToString(List<String> nameList) {
         names = String.join(", " , nameList);
-        names += "가 최종우승했습니다.";
+        names += "가 최종 우승했습니다.";
     }
 
     public String getNames() {
