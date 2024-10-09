@@ -19,7 +19,7 @@ public class RacingCarMain {
 
         for (int i = 0; i < roundNum; i++) {
             resultView.roundStart(i + 1);
-            List<Integer> carPositions = racing.play();
+            List<RacingResult> carPositions = racing.play();
             resultView.drawCarPositions(carPositions);
         }
     }

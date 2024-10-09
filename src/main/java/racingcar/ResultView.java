@@ -10,10 +10,12 @@ public class ResultView {
         System.out.println(LINE + roundNumber + " 라운드 시작!" + LINE);
     }
 
-    public static void drawCarPositions(List<Integer> positions) {
-        for (int position : positions) {
+    public static void drawCarPositions(List<RacingResult> results) {
+        for (RacingResult result : results) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("-".repeat(position));
+            stringBuilder.append(result.getName())
+                    .append(" : ")
+                    .append("-".repeat(result.getPosition()));
             System.out.println(stringBuilder.toString());
         }
     }

@@ -14,13 +14,15 @@ public class Racing {
         this.cars = cars;
     }
 
-    public List<Integer> play() {
-        List<Integer> positions = new ArrayList();
+    public List<RacingResult> play() {
+        List<RacingResult> racingResults = new ArrayList();
+
         for (Car car : cars) {
             car.move(RANDOM.nextInt(10));
-            positions.add(car.getCurrentPosition());
+            RacingResult racingResult = new RacingResult(car.getName(), car.getCurrentPosition());
+            racingResults.add(racingResult);
         }
-        return positions;
+        return racingResults;
     }
 
 }
