@@ -1,9 +1,8 @@
-package racing.ui;
+package racing.car.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.ui.InputView;
-
+import racing.car.view.InputView;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package racing.car.car;
+package racing.car.domain;
 
 public interface Movable {
     void move(int number);

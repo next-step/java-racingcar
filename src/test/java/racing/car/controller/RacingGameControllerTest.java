@@ -1,34 +1,35 @@
-package racing.game;
+package racing.car.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.car.Car;
-import racing.car.game.RacingGame;
+import racing.car.domain.Car;
+import racing.car.model.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class RacingGameTest {
-    private RacingGame game;
+public class RacingGameControllerTest {
+    private RacingGameController game;
 
     @BeforeEach
     void setUp() {
-        game = new RacingGame();
+        game = new RacingGameController();
     }
 
     @Test
     @DisplayName("initializeCars 메서드는 각 Car 객체를 올바르게 초기화해야 한다.")
     void initializeCars_메서드_테스트() {
-        List<Car> cars = new ArrayList<>();
+        Cars cars = new Cars(new ArrayList<>());
         String[] carNames = {"leo", "seoun"};
         game.initializeCars(carNames, cars);
 
-        assertThat(cars).extracting(Car::getName).contains("leo", "seoun");
+
+        assertThat(cars).isEqualTo(new Cars(List.of(new Car("leo", 0), new Car("seoun",0))));
     }
 
     @Test
@@ -74,5 +75,12 @@ public class RacingGameTest {
                 .hasMessageMatching("게임을 진행하려면 시도 횟수는 1 이상이어야 합니다.");
     }
 
+    @Test
+    @DisplayName("자동차 리스트에서 position 최대 값 구하기")
+    void 자동차_max_메서드_테스트() {
+        Cars cars = new Cars(List.of(new Car("dong", 3), new Car("duu", 4)));
+        int max =game.max(cars);
 
+        assertThat(max).isEqualTo(4);
+    }
 }
