@@ -13,7 +13,9 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
-        if(cars.isEmpty())throw new IllegalArgumentException("자동차가 비여 있을 수 없습니다.");
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("자동차가 비여 있을 수 없습니다.");
+        }
         this.cars = cars;
     }
 
@@ -34,7 +36,7 @@ public class Cars {
     }
 
     public void move(CapacityGenerator capacityGenerator) {
-        for(Car car :cars){
+        for (Car car : cars) {
             car.move(capacityGenerator.generate());
         }
         snapShotStore.save(nowState());
