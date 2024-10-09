@@ -22,7 +22,7 @@ public class ConsoleOutputView implements OutputView{
 
     private void printCarGraphByOneStep(Cars cars) {
         StringBuilder sb = new StringBuilder();
-        for (Car car : cars.getCarGroup()) {
+        for (Car car : cars.getCars()) {
             int position = car.getPosition();
             sb.append(POSITION_ICON.repeat(position)).append(NEW_LINE);
         }
