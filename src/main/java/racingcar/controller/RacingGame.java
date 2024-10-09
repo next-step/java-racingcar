@@ -13,12 +13,11 @@ public class RacingGame {
         Race race = new Race(cars, new RandomMovement());
         int racingCount = InputView.getRacingCount();
 
-        ResultView resultView = new ResultView();
-        resultView.printMessage();
+        ResultView.printMessage();
         for (int i = 0; i < racingCount; i++) {
             race.run();
-            resultView.printResult(cars);
+            ResultView.printResult(cars);
         }
-        resultView.printWinners(cars);
+        ResultView.printWinners(cars);
     }
 }
