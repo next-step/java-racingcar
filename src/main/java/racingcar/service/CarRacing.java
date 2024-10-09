@@ -2,14 +2,15 @@ package racingcar.service;
 
 import racingcar.model.Car;
 import racingcar.model.RaceRecord;
-import racingcar.model.RaceWinner;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class CarRacing {
+    private static final int CAN_MOVING_FORWARD = 4;
 
     private List<Car> cars;
-    private static final int canMovingForward = 4;
 
     public CarRacing(String[] carNames) {
         carRaceReady(carNames);
@@ -26,7 +27,7 @@ public class CarRacing {
     public List<RaceRecord> carRaceStart() {
         List<RaceRecord> records = new ArrayList<>();
 
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move(isCarMovingForward());
             records.add(new RaceRecord(car.getName(), car.getMovingDistance()));
         }
@@ -34,15 +35,11 @@ public class CarRacing {
         return records;
     }
 
-    public RaceWinner decideCarRaceWinner(List<RaceRecord> records) {
-        return new RaceWinner(records);
-    }
-
     public boolean isCarMovingForward() {
         Random random = new Random();
         int randomNumber = random.nextInt(9) + 1;
 
-        return randomNumber >= canMovingForward;
+        return randomNumber >= CAN_MOVING_FORWARD;
     }
 
     public List<Car> getCars() {
