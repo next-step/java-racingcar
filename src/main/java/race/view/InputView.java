@@ -1,4 +1,4 @@
-package race;
+package race.view;
 
 import java.util.Arrays;
 import java.util.List;

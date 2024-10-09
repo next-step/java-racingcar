@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ class CarTest {
         int round = 1;
 
         CarRaceGameHistory history = Car.create(step, name)
-                                        .recordHistory(round);
+                .recordHistory(round);
 
         assertThat(history).isEqualTo(CarRaceGameHistory.record(round, step, name));
     }
@@ -34,27 +34,27 @@ class CarTest {
         String name = "soohyun";
 
         assertThatThrownBy(() -> Car.create(startStep, name)).isInstanceOf(IllegalArgumentException.class)
-                                                             .hasMessageContaining("이름은 최대 5자 이하로 입력 가능합니다.");
+                .hasMessageContaining("이름은 최대 5자 이하로 입력 가능합니다.");
     }
 
     @Test
-    void move_자동차_이동조건에_따라_자동차가_이동한다() {
+    void moveBy_자동차_이동조건에_따라_자동차가_이동한다() {
         int startStep = 0;
         String name = "dex";
 
         Car car = Car.create(startStep, name);
-        car.moveBy(new MockCarMoveRule(), new MockForwardCarMoveRuleValue());
+        car.moveBy(() -> true);
 
         assertThat(car).isEqualTo(Car.create(startStep + 1, name));
     }
 
     @Test
-    void move_자동차_이동조건을_만족하지_않으면_자동차가_이동하지_않는다() {
+    void moveBy_자동차_이동조건을_만족하지_않으면_자동차가_이동하지_않는다() {
         int startStep = 0;
         String name = "dex";
 
         Car car = Car.create(startStep, name);
-        car.moveBy(new MockCarMoveRule(), new MockHoldCarMoveRuleValue());
+        car.moveBy(() -> false);
 
         assertThat(car).isEqualTo(Car.create(startStep, name));
     }
