@@ -11,11 +11,15 @@ public class Winners {
     private static List<Car> findWinners(List<Car> cars, int maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (maxPosition == car.getCurrentPosition()) {
-                winners.add(car);
-            }
+            addIfMaxPosition(maxPosition, car, winners);
         }
         return winners;
+    }
+
+    private static void addIfMaxPosition(int maxPosition, Car car, List<Car> winners) {
+        if (maxPosition == car.getCurrentPosition()) {
+            winners.add(car);
+        }
     }
 
     private static int getMaxPosition(List<Car> cars) {

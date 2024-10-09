@@ -7,6 +7,10 @@ public class ResultView {
 
     private static final String LINE = "-".repeat(5);
 
+    private ResultView() {
+
+    }
+
     public static void roundStart(int roundNumber) {
         System.out.println(LINE + roundNumber + " 라운드 시작!" + LINE);
     }
@@ -22,7 +26,7 @@ public class ResultView {
         }
     }
 
-    public void printWinners(List<Car> winners) {
+    public static void printWinners(List<Car> winners) {
         String winnersName = winners.stream().map(Car::getName)
                 .collect(Collectors.joining(","));
 

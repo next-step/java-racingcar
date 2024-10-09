@@ -14,16 +14,15 @@ public class RacingCarMain {
             cars.add(new Car(names[i]));
         }
 
-        ResultView resultView = new ResultView();
         Racing racing = new Racing(cars);
 
         for (int i = 0; i < roundNum; i++) {
-            resultView.roundStart(i + 1);
+            ResultView.roundStart(i + 1);
             List<RacingResult> carPositions = racing.play();
-            resultView.drawCarPositions(carPositions);
+            ResultView.drawCarPositions(carPositions);
         }
         List<Car> winners = Winners.findWinners(cars);
-        resultView.printWinners(winners);
+        ResultView.printWinners(winners);
     }
 
 }

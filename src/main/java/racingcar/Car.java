@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    public static final int MOVE_CONDITION = 4;
+    private static final int MOVE_CONDITION = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
@@ -18,8 +18,8 @@ public class Car {
         this.currentPosition = position;
     }
 
-    private static void validationCarName(String name) {
-        if (name == null) {
+    private void validationCarName(String name) {
+        if (name == null || name.trim().isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
         }
         if (name.trim().length() >= MAX_NAME_LENGTH) {
