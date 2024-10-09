@@ -1,6 +1,6 @@
 package race.view;
 
-import race.domain.Car;
+import race.domain.car.Car;
 import race.domain.Cars;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class ResultView {
 
         for (Map.Entry<String, Integer> status : currentPositions.entrySet()) {
             String name = status.getKey();
-            Integer position = status.getValue();
+            int position = status.getValue();
 
             System.out.println(name + "\t: " + "=".repeat(position));
         }

@@ -1,4 +1,4 @@
-package race.domain;
+package race.domain.car;
 
 public class Car {
 
@@ -6,13 +6,13 @@ public class Car {
     private static final int NAME_LENGTH_LIMIT = 5;
 
     private final String name;
-    private int position;
+    private final Position position;
 
     public Car(String name) {
         validateName(name);
 
         this.name = name;
-        this.position = 0;
+        this.position = new Position(0);
     }
 
     private void validateName(String name) {
@@ -28,22 +28,22 @@ public class Car {
     }
 
     private void move() {
-        position += 1;
+        this.position.forward();
     }
 
     public String getName() {
         return this.name;
     }
 
-    public int getPosition() {
-        return this.position;
+    public int getCurrentPosition() {
+        return this.position.getValue();
     }
 
-    public int maxPosition(int comparePosition) {
-        return Math.max(this.position, comparePosition);
+    public Boolean isAhead(Car compareCar) {
+        return this.position.max(compareCar.position) == this.position;
     }
 
     public boolean isInPosition(int comparePosition) {
-        return this.position == comparePosition;
+        return this.position.equals(new Position(comparePosition));
     }
 }

@@ -4,13 +4,14 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import race.domain.Car;
+import race.domain.car.Car;
 import race.domain.Cars;
 
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 class CarsTest {
 
@@ -49,7 +50,8 @@ class CarsTest {
         car1.accelerate(10);
         car2.accelerate(10);
 
-        assertThat(cars.getWinners()).hasSize(2);
+        List<Car> winners = cars.getWinners();
+        assertThat(winners).hasSize(2);
     }
 
     @Test

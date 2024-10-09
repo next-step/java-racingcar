@@ -1,9 +1,8 @@
 package race.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import race.domain.car.Car;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -52,18 +51,22 @@ public class Cars {
         return cars.stream()
                 .collect(Collectors.toMap(
                         Car::getName,
-                        Car::getPosition
+                        Car::getCurrentPosition
                 ));
     }
 
     private int getMaxPosition() {
         return cars.stream()
-                .reduce(0, (position, car) -> car.maxPosition(position), Integer::max);
+                .mapToInt(Car::getCurrentPosition)
+                .max()
+                .orElse(0);
     }
 
     public List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
+
         return cars.stream()
-                .filter(car -> car.isInPosition(getMaxPosition()))
+                .filter(car -> car.isInPosition(maxPosition))
                 .collect(Collectors.toList());
     }
 }
