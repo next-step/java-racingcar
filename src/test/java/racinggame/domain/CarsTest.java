@@ -36,14 +36,6 @@ public class CarsTest {
         assertThat(cars).isEqualTo(new Cars(carList(1)));
     }
 
-//    @Test
-//    public void 자동차_이동테스트() {
-//        List<Car> list = carList(List.of(0,3));
-//        Cars cars = new Cars(list);
-//        cars.move(List.of(4,3));
-//        assertThat(cars).isEqualTo(new Cars(carList(1,3)));
-//    }
-
     @Test
     public void 자동차_이동테스트() {
         List<Car> list = carList(List.of(0,3));
