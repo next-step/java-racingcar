@@ -1,4 +1,4 @@
-package racing.car.car;
+package racing.car.model;
 
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ public class Position {
         this.position = position;
     }
 
-    public Position move(int number) {
+    public Position increase(int number) {
         if (isMove(number)) {
             position++;
         }
@@ -33,13 +33,6 @@ public class Position {
         return this.position == otherPosition;
     }
 
-    public void draw() {
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,5 +44,9 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    public int getPosition() {
+        return this.position;
     }
 }

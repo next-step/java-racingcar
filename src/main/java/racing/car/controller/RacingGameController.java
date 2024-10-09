@@ -1,14 +1,14 @@
-package racing.car.game;
+package racing.car.controller;
 
-import racing.car.car.Cars;
+import racing.car.model.Cars;
 import racing.car.random.GenerateRandom;
-import racing.car.ui.InputView;
-import racing.car.ui.ResultView;
-import racing.car.winner.Winner;
+import racing.car.view.InputView;
+import racing.car.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RacingGame implements Game {
+public class RacingGameController {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final InputView INPUT_VIEW = new InputView(scanner);
@@ -16,7 +16,12 @@ public class RacingGame implements Game {
     private static final String INVALID_CAR_COUNT_MESSAGE = "게임을 진행하려면 자동차가 최소 2대 있어야 합니다.";
     private static final String INVALID_TRY_COUNT_MESSAGE = "게임을 진행하려면 시도 횟수는 1 이상이어야 합니다.";
 
-    @Override
+
+    public static void main(String[] args) {
+        RacingGameController game = new RacingGameController();
+        game.play();
+    }
+
     public void play() {
         INPUT_VIEW.carQuestion();
         String[] carNames = INPUT_VIEW.inputCar();
@@ -32,7 +37,7 @@ public class RacingGame implements Game {
             simulateRaceRound(cars);
         }
 
-        RESULT_VIEW.outputWinnerView(Winner.getWinnerInfo(max(cars), cars));
+        RESULT_VIEW.outputWinnerView(cars.findWinner(max(cars)));
     }
 
     public void simulateRaceRound(Cars cars) {
@@ -41,11 +46,11 @@ public class RacingGame implements Game {
     }
 
     public int max(Cars cars) {
-        return cars.max();
+        return cars.getMaxPosition();
     }
 
     public void initializeCars(String[] carNames, Cars cars) {
-        cars.initialize(carNames);
+        cars.addCars(carNames);
     }
 
     public int validateCarCount(int carCount) {

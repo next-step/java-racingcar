@@ -1,4 +1,7 @@
-package racing.car.car;
+package racing.car.domain;
+
+import racing.car.model.CarName;
+import racing.car.model.Position;
 
 import java.util.Objects;
 
@@ -18,7 +21,7 @@ public class Car implements Movable {
 
     @Override
     public void move(int number) {
-        position = position.move(number);
+        position = position.increase(number);
     }
 
     public boolean isSame(int otherPosition) {
@@ -29,9 +32,12 @@ public class Car implements Movable {
         return this.position.max(maxPosition);
     }
 
-    public void draw(){
-        name.draw();
-        position.draw();
+    public String getName() {
+        return this.name.getName();
+    }
+
+    public int getPosition() {
+        return this.position.getPosition();
     }
 
     @Override
@@ -51,5 +57,8 @@ public class Car implements Movable {
     public String toString() {
         return name.toString();
     }
+
+
+
 }
 

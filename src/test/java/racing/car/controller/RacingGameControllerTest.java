@@ -1,25 +1,24 @@
-package racing.game;
+package racing.car.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.car.Car;
-import racing.car.car.Cars;
-import racing.car.game.RacingGame;
+import racing.car.domain.Car;
+import racing.car.model.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class RacingGameTest {
-    private RacingGame game;
+public class RacingGameControllerTest {
+    private RacingGameController game;
 
     @BeforeEach
     void setUp() {
-        game = new RacingGame();
+        game = new RacingGameController();
     }
 
     @Test

@@ -1,10 +1,9 @@
-package racing.car.car;
+package racing.car.model;
 
 import java.util.Objects;
 
 public class CarName {
     private static final String OVER_MESSAGE_ERROR = "자동차 이름이 5자글자를 초과하였습니다.";
-
     private static final int NAME_LIMIT_LENGTH = 5;
     private final String name;
 
@@ -19,8 +18,8 @@ public class CarName {
         }
     }
 
-    public void draw() {
-        System.out.print(name+ " : ");
+    public String getName(){
+        return this.name;
     }
 
     @Override

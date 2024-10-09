@@ -1,6 +1,8 @@
-package racing.car.car;
+package racing.car.model;
 
+import racing.car.domain.Car;
 import racing.car.random.Random;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -12,7 +14,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public int max() {
+    public int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = car.max(maxPosition);
@@ -20,7 +22,7 @@ public class Cars {
         return maxPosition;
     }
 
-    public void initialize(String[] carNames) {
+    public void addCars(String[] carNames) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
@@ -37,10 +39,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void draw() {
-        for (Car car : cars) {
-            car.draw();
-        }
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     @Override
