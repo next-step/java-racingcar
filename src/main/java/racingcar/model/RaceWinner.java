@@ -5,48 +5,42 @@ import java.util.List;
 
 public class RaceWinner {
 
-    List<String> nameList;
-    int longestMovingDistance;
+    private String names;
+    private int longestMovingDistance;
 
     public RaceWinner(List<RaceRecord> records) {
-        nameList = new ArrayList<>();
         longestMovingDistance = -1;
+        List<String> nameList = new ArrayList<>();
 
-        for(RaceRecord record : records) {
-            decideWinner(record);
+        findLongestMovingDistance(records);
+
+        for (RaceRecord record : records) {
+            decideWinner(record, nameList);
         }
+
+        nameListToString(nameList);
     }
 
-    private void decideWinner(RaceRecord record) {
-        int movingDistance = record.getDashCharacterString().length();
+    private void decideWinner(RaceRecord record, List<String> nameList) {
+        int movingDistance = record.getCarMovingDistance();
 
-//        System.out.println(movingDistance + " " + longestMovingDistance + " " + record.getCarName());
-
-        if(movingDistance == longestMovingDistance) {
-            nameList.add(record.getCarName());
-            return;
-        }
-
-        if(movingDistance > longestMovingDistance ) {
-            longestMovingDistance = movingDistance;
-            nameList.clear();
+        if (longestMovingDistance == movingDistance) {
             nameList.add(record.getCarName());
         }
     }
 
-    private StringBuilder stringListToStringBuilderForPrint() {
-        StringBuilder winnerName = new StringBuilder();
-
-        for(int i = 0; i < nameList.size(); i++) {
-            winnerName.append(i == nameList.size() - 1 ? nameList.get(i) : nameList.get(i) + ", ");
+    private void findLongestMovingDistance(List<RaceRecord> records) {
+        for (RaceRecord record : records) {
+            longestMovingDistance = Math.max(longestMovingDistance, record.getCarMovingDistance());
         }
-
-        winnerName.append("가 최종 우승했습니다.");
-
-        return winnerName;
     }
 
-    public String getName() {
-        return stringListToStringBuilderForPrint().toString();
+    private void nameListToString(List<String> nameList) {
+        names = String.join(", " , nameList);
+        names += "가 최종우승했습니다.";
+    }
+
+    public String getNames() {
+        return names;
     }
 }
