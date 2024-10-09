@@ -6,26 +6,25 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
+    public static final String CAR_NAME = "pobi";
 
     @DisplayName("자동차가 전진 조건일때 전진한다")
     @Test
     void carMovesForward() {
 
-        Car car = new Car();
+        Car car = new Car(CAR_NAME);
         car.move(() -> true);
 
-        assertThat(car.getPosition())
-                .isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @DisplayName("자동차가 정지 조건일때 멈춰있는다.")
+    @DisplayName("자동차가 정지 조건일때 멈춰있는다")
     @Test
     void carMovesStop() {
-        Car car = new Car();
+        Car car = new Car(CAR_NAME);
         car.move(() -> false);
 
-        assertThat(car.getPosition())
-                .isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 }

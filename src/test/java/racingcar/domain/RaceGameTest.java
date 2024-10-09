@@ -10,14 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RaceGameTest {
 
-    private static Cars createCars(int 생성할_자동차_대수) {
-        return new Cars(생성할_자동차_대수);
+    public static final String CAR_NAMES = "pobi, jason, jobi";
+
+    private static Cars createCars(String 경주할_자동차_이름) {
+        return new Cars(경주할_자동차_이름);
     }
 
     @Test
     void playRounds() {
         // Given & When
-        UserInputData userInputData = new UserInputData(1, 1);
+        UserInputData userInputData = new UserInputData(CAR_NAMES, 1);
         RaceGame raceGame = new RaceGame(userInputData);
 
         MoveStrategy moveStrategy = new ForwardStrategy(new RandomNumberGenerator()) {
@@ -44,19 +46,18 @@ class RaceGameTest {
                 return true;
             }
         };
-        Positions positions = new Positions();
-        Cars cars = createCars(1);
+        Records records = new Records();
+        Cars cars = createCars(CAR_NAMES);
 
         // When
         for (Car car : cars.getCars()) {
             car.move(moveStrategy);
-            positions.save(new Position(car.getPosition()));
+            records.save(new Record(car.getPosition(),car.getName().getValue()));
         }
 
         // Then
-        Position result = positions.getPositions().get(0);
-
-        assertThat(result.getValue()).isOne();
+        Record result = records.getRecords().get(0);
+        assertThat(result.getPosition()).isOne();
     }
 
 }

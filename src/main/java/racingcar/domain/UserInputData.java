@@ -2,16 +2,16 @@ package racingcar.domain;
 
 public class UserInputData {
 
-    private final int carCount;
+    private final String carNames;
     private final int tryCount;
 
-    public UserInputData(int carCount, int tryCount) {
-        this.carCount = carCount;
+    public UserInputData(String carNames, int tryCount) {
+        this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNames() {
+        return carNames;
     }
 
     public int getTryCount() {

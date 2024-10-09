@@ -19,7 +19,10 @@ public class GameApplication {
 
     private static void run(final RaceGame game) {
         MoveStrategy moveStrategy = new ForwardStrategy(new RandomNumberGenerator());
-        List<Positions> positions = game.playGame(moveStrategy);
+        List<Records> positions = game.playGame(moveStrategy);
         ResultView.print(positions);
+
+        Winner winner = new Winner(positions);
+        ResultView.printWinners(winner);
     }
 }

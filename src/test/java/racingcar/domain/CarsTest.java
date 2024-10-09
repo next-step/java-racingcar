@@ -1,17 +1,17 @@
 package racingcar.domain;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 class CarsTest {
 
-    @ParameterizedTest
-    @ValueSource(ints = {3, 4, 5})
-    void 사용자_입력값_만큼의_자동차를_생성할_수_있다(final int userInput) {
-        Cars cars = new Cars(userInput);
-        assertThat(cars.getCars().size()).isEqualTo(userInput);
+    public static final String CAR_NAMES = "pobi, jason, jobi";
+
+    @Test
+    void 사용자_입력값_만큼의_자동차를_생성할_수_있다() {
+        Cars cars = new Cars(CAR_NAMES);
+        assertThat(cars.getCars().size()).isEqualTo(3);
     }
 }

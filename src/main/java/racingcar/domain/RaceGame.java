@@ -5,39 +5,39 @@ import java.util.List;
 
 public class RaceGame {
 
-    private final int carCount;
+    private final String carNames;
 
     private final int tryCount;
 
     public RaceGame(UserInputData userInput) {
-        this.carCount = userInput.getCarCount();
+        this.carNames = userInput.getCarNames();
         this.tryCount = userInput.getTryCount();
     }
 
-    public List<Positions> playGame(final MoveStrategy moveStrategy) {
-        Cars cars = new Cars(carCount);
+    public List<Records> playGame(final MoveStrategy moveStrategy) {
+        Cars cars = new Cars(carNames);
 
         return playRounds(cars, moveStrategy);
     }
 
-    public List<Positions> playRounds(Cars cars, MoveStrategy moveStrategy) {
-        List<Positions> allRoundPositions = new ArrayList<>();
+    public List<Records> playRounds(Cars cars, MoveStrategy moveStrategy) {
+        List<Records> allRoundRecords = new ArrayList<>();
 
         for (int i = 0; i < tryCount; i++) {
-            Positions positions = playRound(cars, moveStrategy);
-            allRoundPositions.add(positions);
+            Records records = playRound(cars, moveStrategy);
+            allRoundRecords.add(records);
         }
-        return allRoundPositions;
+        return allRoundRecords;
     }
 
-    public Positions playRound(Cars cars, MoveStrategy moveStrategy) {
-        Positions positions = new Positions();
+    public Records playRound(Cars cars, MoveStrategy moveStrategy) {
+        Records records = new Records();
         for (Car car : cars.getCars()) {
             car.move(moveStrategy);
-            positions.save(new Position(car.getPosition()));
+            records.save(new Record(car.getPosition(), car.getName().getValue()));
         }
 
-        return positions;
+        return records;
     }
 
 }
