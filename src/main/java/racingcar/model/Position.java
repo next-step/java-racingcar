@@ -6,6 +6,9 @@ public class Position {
 
     private int position;
 
+    public Position() {
+        this(0);
+    }
 
     public Position(int position) {
         this.position = position;
@@ -15,8 +18,11 @@ public class Position {
         position++;
     }
 
-    public int max(int maxPosition) {
+    public int currentPosition() {
+        return position;
+    }
 
+    public int max(int maxPosition) {
         if (this.position > maxPosition) {
             return this.position;
         }
@@ -24,17 +30,8 @@ public class Position {
         return maxPosition;
     }
 
-    public boolean hasSamePosition(int maxPosition) {
-        return position == maxPosition;
-    }
-
-    public String draw(String moveUnit) {
-        StringBuilder draw = new StringBuilder();
-
-        for (int i = 1; i < position; i++) {
-            draw.append(moveUnit);
-        }
-        return draw.toString();
+    public boolean hasSamePosition(int position) {
+        return this.position == position;
     }
 
 

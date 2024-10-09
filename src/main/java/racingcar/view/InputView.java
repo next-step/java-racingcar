@@ -13,17 +13,20 @@ public class InputView {
         return input();
     }
 
-    public static int inputGameCount() {
+    public static int inputGameRound() {
         System.out.println(GAME_COUNT_MESSAGE);
+        int input;
 
-        return inputInt();
+        try {
+            input = Integer.parseInt(input());
+        } catch (Exception e) {
+            throw new NumberFormatException("정수를 입력 해주세요");
+        }
+
+        return input;
     }
 
     private static String input() {
-        return SCANNER.next();
-    }
-
-    private static int inputInt() {
-        return SCANNER.nextInt();
+        return SCANNER.nextLine();
     }
 }

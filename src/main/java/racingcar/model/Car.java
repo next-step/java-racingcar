@@ -10,7 +10,7 @@ public class Car {
 
 
     public Car(String name) {
-        this(name, new Position(0));
+        this(name, new Position());
     }
 
     public Car(String name, Position position) {
@@ -30,19 +30,26 @@ public class Car {
         }
     }
 
+
+    public int currentPosition() {
+        return position.currentPosition();
+    }
+
     public void move(int randomNumber) {
         if (randomNumber >= MOVE_CONDITION) {
             position.increase();
         }
     }
 
-    public Position currentPosition() {
-        return position;
+    public int max(int maxPosition) {
+        return position.max(maxPosition);
     }
 
-    public boolean isWinner(int maxPosition) {
+
+    public boolean isWineer(int maxPosition) {
         return position.hasSamePosition(maxPosition);
     }
+
 
     @Override
     public boolean equals(Object o) {

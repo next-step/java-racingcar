@@ -9,24 +9,12 @@ public class Racing {
 
     private static final Random RANDOM = new Random();
 
-    public CarManager ready(String names) {
-        return CarManager.createCars(names);
-    }
 
-    public void game(CarManager carManager, int count) {
-        for (int i = 0; i < count; i++) {
-            moveCar(carManager.getCars());
-        }
-
-        ResultView.printWinner(carManager.findWinner());
-    }
-
-    private void moveCar(List<Car> cars) {
+    public void start(List<Car> cars) {
         for (Car car : cars) {
             car.move(RANDOM.nextInt(10));
+            ResultView.printCarMovement(car);
         }
-
-        ResultView.print(cars);
+        System.out.println();
     }
-
 }

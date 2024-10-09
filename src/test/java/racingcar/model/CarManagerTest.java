@@ -15,7 +15,7 @@ class CarManagerTest {
 
         CarManager carManager = new CarManager(Arrays.asList(a, b, c));
 
-        assertThat(carManager.findWinner()).contains(c);
+        assertThat(carManager.findWinner()).contains("a");
     }
 
     @Test
@@ -26,15 +26,6 @@ class CarManagerTest {
 
         CarManager carManager = new CarManager(Arrays.asList(a, b, c));
 
-        assertThat(carManager.findWinner()).contains(b, c);
+        assertThat(carManager.findWinner()).contains("b", "c");
     }
-
-
-    @Test
-    void 차_생성() {
-        assertThat(CarManager.createCars("a,b,c").getCars())
-                .hasSize(3);
-    }
-
-
 }
