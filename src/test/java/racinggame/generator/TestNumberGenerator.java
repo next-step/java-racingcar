@@ -1,8 +1,8 @@
 package racinggame.generator;
 
-import racinggame.random.Radom;
+import racinggame.random.CapacityGenerator;
 
-public class TestNumberGenerator implements Radom {
+public class TestNumberGenerator implements CapacityGenerator {
 
     protected Integer value;
 

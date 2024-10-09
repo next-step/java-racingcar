@@ -1,7 +1,5 @@
 package racinggame.random;
 
-import java.util.List;
-
-public interface Radom {
+public interface CapacityGenerator {
     int generate();
 }

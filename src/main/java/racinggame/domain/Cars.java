@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import racinggame.dto.CarDto;
 import racinggame.dto.SnapShotDto;
-import racinggame.random.Radom;
+import racinggame.random.CapacityGenerator;
 
 public class Cars {
 
@@ -33,9 +33,9 @@ public class Cars {
         return cars.size();
     }
 
-    public void move(Radom radom) {
+    public void move(CapacityGenerator capacityGenerator) {
         for(int i=0;i<count();i++){
-            move(i,radom.generate());
+            move(i, capacityGenerator.generate());
         }
         snapShotStore.save(nowState());
     }

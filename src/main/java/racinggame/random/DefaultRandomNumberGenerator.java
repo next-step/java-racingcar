@@ -1,10 +1,8 @@
 package racinggame.random;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-public class DefaultRandomNumberGenerator implements Radom{
+public class DefaultRandomNumberGenerator implements CapacityGenerator {
 
     private static final int UPPER_BOUND = 10;
 

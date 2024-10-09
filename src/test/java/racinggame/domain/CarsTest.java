@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
-import racinggame.random.Radom;
+import racinggame.random.CapacityGenerator;
 
 public class CarsTest {
 
@@ -38,7 +38,7 @@ public class CarsTest {
     public void 자동차_이동테스트() {
         List<Car> list = carList(List.of(0,3));
         Cars cars = new Cars(list);
-        cars.move(new Radom() {
+        cars.move(new CapacityGenerator() {
 
             private List<Integer> result=List.of(4,3);
             private Iterator<Integer> iter=result.iterator();
