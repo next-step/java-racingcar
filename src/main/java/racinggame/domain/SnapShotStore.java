@@ -3,7 +3,7 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 import racinggame.dto.CarDto;
-import racinggame.dto.SnapShotDto;
+import racinggame.dto.History;
 
 public class SnapShotStore {
 
@@ -13,8 +13,8 @@ public class SnapShotStore {
         snapShot.add(new SnapShot(result));
     }
 
-    public SnapShotDto snapShot() {
-        return new SnapShotDto(snapShot);
+    public History snapShot() {
+        return new History(snapShot);
     }
 
 }

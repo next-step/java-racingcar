@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-import racinggame.dto.SnapShotDto;
+import racinggame.dto.History;
 import racinggame.random.CapacityGenerator;
 
 public class RacingGame {
@@ -13,8 +13,7 @@ public class RacingGame {
         this.cars = Cars.from(carCount);
     }
 
-
-    public SnapShotDto start(CapacityGenerator capacityGenerator) {
+    public History start(CapacityGenerator capacityGenerator) {
         for(int i=0;i<repeatCount;i++){
             cars.move(capacityGenerator);
         }

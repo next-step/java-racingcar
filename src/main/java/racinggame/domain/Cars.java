@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import racinggame.dto.CarDto;
-import racinggame.dto.SnapShotDto;
+import racinggame.dto.History;
 import racinggame.random.CapacityGenerator;
 
 public class Cars {
@@ -40,11 +40,6 @@ public class Cars {
         snapShotStore.save(nowState());
     }
 
-    private void move(int index, int capacity) {
-        Car car = cars.get(index);
-        car.move(capacity);
-    }
-
     private List<CarDto> nowState() {
         List<CarDto> result = new ArrayList<>();
         for (Car car : cars) {
@@ -53,7 +48,7 @@ public class Cars {
         return result;
     }
 
-    public SnapShotDto history() {
+    public History history() {
         return this.snapShotStore.snapShot();
     }
 
