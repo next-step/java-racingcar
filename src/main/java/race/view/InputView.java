@@ -1,7 +1,5 @@
 package race.view;
 
-import race.domain.Round;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

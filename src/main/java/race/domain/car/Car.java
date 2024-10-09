@@ -39,10 +39,6 @@ public class Car {
         return this.position.getValue();
     }
 
-    public Boolean isAhead(Car compareCar) {
-        return this.position.max(compareCar.position) == this.position;
-    }
-
     public boolean isInPosition(int comparePosition) {
         return this.position.equals(new Position(comparePosition));
     }
