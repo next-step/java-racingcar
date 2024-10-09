@@ -8,7 +8,6 @@ public class Game {
     public GameResults play(int carCount, int gameCount) {
 
         Cars cars = new Cars(makeRacingCars(carCount));
-
         return new GameResults(playAndSaveGameResults(gameCount, cars));
     }
 
