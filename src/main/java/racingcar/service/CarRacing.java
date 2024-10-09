@@ -35,7 +35,7 @@ public class CarRacing {
         return records;
     }
 
-    public boolean isCarMovingForward() {
+    private boolean isCarMovingForward() {
         Random random = new Random();
         int randomNumber = random.nextInt(9) + 1;
 
