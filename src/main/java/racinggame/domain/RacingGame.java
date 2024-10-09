@@ -10,7 +10,7 @@ public class RacingGame {
 
     public RacingGame(int repeatCount,int carCount) {
         this.repeatCount=repeatCount;
-        this.cars = Cars.of(carCount);
+        this.cars = Cars.from(carCount);
     }
 
 

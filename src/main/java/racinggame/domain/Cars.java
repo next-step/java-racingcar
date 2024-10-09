@@ -17,7 +17,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(int count) {
+    public static Cars from(int count) {
         return new Cars(carInitialization(count));
     }
 
