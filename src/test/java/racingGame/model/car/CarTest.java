@@ -3,6 +3,7 @@ package racingGame.model.car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,26 +16,26 @@ public class CarTest {
     void 생성자_테스트() {
         Car car = new Car();
 
+        assertThat(car.getName()).isEqualTo("");
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @CsvSource(value = {"2:a", "3:b", "2:c"}, delimiter = ':')
     @DisplayName("생성자는 입력이 유효한 경우, 객체를 생성한다.")
-    void 생성자_테스트_2(final int position) {
-        Car car = new Car(position);
+    void 생성자_테스트_2(final int position, final String name) {
+        Car car = new Car(position, name);
 
+        assertThat(car.getName()).isEqualTo(name);
         assertThat(car.getPosition()).isEqualTo(position);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-2, -1})
+    @CsvSource(value = {"-1:a", "1:666666", "2:7777777"}, delimiter = ':')
     @DisplayName("생성자는 입력이 유효하지 않은 경우, 예외를 반환한다.")
-    void 생성자_예외_테스트(final int position) {
-
-        assertThatThrownBy(() -> new Car(position))
+    void 생성자_예외_테스트(final int position, final String name) {
+        assertThatThrownBy(() -> new Car(position, name))
                 .isInstanceOf(RuntimeException.class);
-
     }
 
 }
