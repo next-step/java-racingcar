@@ -1,4 +1,6 @@
-package carracing.domain.carracing;
+package carracing.domain.carracing.dto;
+
+import carracing.domain.carracing.Cars;
 
 import java.util.ArrayList;
 import java.util.List;

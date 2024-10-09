@@ -1,5 +1,7 @@
 package carracing.domain.carracing;
 
+import carracing.domain.carracing.dto.CarsMoveStatusHistory;
+
 import java.util.List;
 
 public class CarRacing {

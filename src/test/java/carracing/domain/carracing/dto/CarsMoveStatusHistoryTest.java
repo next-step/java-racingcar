@@ -1,5 +1,7 @@
-package carracing.domain.carracing;
+package carracing.domain.carracing.dto;
 
+import carracing.domain.carracing.Car;
+import carracing.domain.carracing.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
