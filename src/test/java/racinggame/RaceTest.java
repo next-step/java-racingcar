@@ -3,9 +3,9 @@ package racinggame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racinggame.racingcar.MoveStrategy;
-import racinggame.racingcar.Race;
-import racinggame.racingcar.RandomMoveStrategy;
+import racinggame.domain.strategy.MoveStrategy;
+import racinggame.domain.race.Race;
+import racinggame.domain.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

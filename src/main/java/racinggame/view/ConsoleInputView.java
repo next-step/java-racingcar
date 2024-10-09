@@ -1,6 +1,6 @@
-package racinggame;
+package racinggame.view;
 
-import racinggame.racingcar.CarName;
+import racinggame.domain.racingcar.CarName;
 
 import java.util.List;
 import java.util.Scanner;

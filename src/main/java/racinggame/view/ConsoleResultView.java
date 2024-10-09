@@ -1,8 +1,7 @@
-package racinggame;
+package racinggame.view;
 
 import java.util.List;
 import java.util.Map;
-import java.util.StringJoiner;
 
 public class ConsoleResultView implements ResultView {
     private static final String EXECUTION_ANNOUNCEMENT_MESSAGE = "실행 결과";

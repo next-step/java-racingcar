@@ -1,4 +1,4 @@
-package racinggame.racingcar;
+package racinggame.domain.strategy;
 
 public interface MoveStrategy {
     boolean shouldMove();

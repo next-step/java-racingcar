@@ -1,4 +1,7 @@
-package racinggame.racingcar;
+package racinggame.domain.race;
+
+import racinggame.domain.racingcar.RacingCars;
+import racinggame.domain.strategy.MoveStrategy;
 
 import java.util.List;
 import java.util.Map;
