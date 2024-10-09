@@ -1,6 +1,6 @@
 package step3;
 
-import java.util.List;
+import java.util.*;
 
 public class Cars {
 
@@ -10,7 +10,17 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public void moveCarsByStrategy(MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.move(moveStrategy);
+        }
+    }
+
+    public Map<String, Integer> showCarsPositions() {
+        Map<String, Integer> carsPositions = new HashMap<>();
+        for (Car car : cars) {
+            carsPositions.put(car.getName(), car.getPosition());
+        }
+        return carsPositions;
     }
 }
