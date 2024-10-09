@@ -42,6 +42,6 @@ public class RacingFleetTest {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
         RacingFleet fleet = RacingFleet.valueOf(carNames);
         List<RacingCar> winners = fleet.findWinners();
-        assertThat(winners).allSatisfy(racingCar -> carNames.contains(racingCar.getName()));
+        assertThat(winners).allMatch(racingCar -> carNames.contains(racingCar.getName()));
     }
 }
