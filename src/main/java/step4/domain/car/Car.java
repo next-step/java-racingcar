@@ -7,7 +7,6 @@ import step4.domain.movestrategy.DefaultRandomMoveStrategy;
 
 public class Car {
 	public static int DEFAULT_SPEED = 1;
-	public static int STOP_SPEED = 0;
 
 	private int position;
 	private CarMoveStrategy moveStrategy;

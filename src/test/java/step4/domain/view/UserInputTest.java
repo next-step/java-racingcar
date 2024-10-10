@@ -40,4 +40,11 @@ class UserInputTest {
 		}).isInstanceOf(RaceParamUnvalidException.class);
 	}
 
+	@Test
+	@DisplayName("name의 크기가 5를 초과할 경우 익셉션 발생 테스트")
+	void ifNameIsBiggerThant5ExceptionTest() {
+		assertThatThrownBy(() -> {
+			new UserInput(1, "hellos");
+		}).isInstanceOf(RaceParamUnvalidException.class);
+	}
 }

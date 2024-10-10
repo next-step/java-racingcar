@@ -7,21 +7,13 @@ import step4.domain.view.UserInput;
 
 public final class RacingGame {
 	public static RacingHistory race(UserInput userInput) {
-		CarList cars = makeCars(userInput);
-
+		CarList cars = CarList.from(userInput.getNameList());
 		RacingHistory racingHistory = new RacingHistory();
 		for (int i = 0; i < userInput.getMoveCount(); i++) {
-			racingHistory.writePositionHistory(moveCars(cars));
+			cars.moveCarList();
+			MovedHistory movedHistory = MovedHistory.from(cars);
+			racingHistory.writePositionHistory(movedHistory);
 		}
 		return racingHistory;
-	}
-
-	public static CarList makeCars(UserInput userInput) {
-		return CarList.from(userInput.getNameList());
-	}
-
-	private static MovedHistory moveCars(CarList cars) {
-		cars.moveCarList();
-		return MovedHistory.from(cars);
 	}
 }

@@ -25,6 +25,9 @@ public class UserInput {
 	}
 
 	private void splitName(String nameString) {
+		if (nameString.isEmpty()) {
+			throw new RaceParamUnvalidException();
+		}
 		String[] tempList = nameString.split(",");
 		for (String string : tempList) {
 			throwExceptionWhenNameIsEmpty(string);

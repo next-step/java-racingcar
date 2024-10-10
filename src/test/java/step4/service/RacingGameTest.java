@@ -35,7 +35,7 @@ class RacingGameTest {
 	@Test
 	@DisplayName("자동차는 입력받은 이름의 개수만큼 생성되는지 체크하는 테스트")
 	void carCountTest() {
-		CarList cars = makeCars(userInput);
+		CarList cars = CarList.from(userInput.getNameList());
 		for (Car car : cars.getList()) {
 			assertThat(car).isNotNull();
 		}
