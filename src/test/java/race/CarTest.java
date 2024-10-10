@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import race.domain.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -27,14 +28,14 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3, 4})
     void 이동_시_0_이상_4_이하_난수에는_이동하지_않는다(int randomNumber) {
         car.accelerate(randomNumber);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getCurrentPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {5, 6, 7, 8, 9})
     void 이동_시_5_이상_9_이하_난수에는_전진한다(int randomNumber) {
         car.accelerate(randomNumber);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getCurrentPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -44,7 +45,7 @@ class CarTest {
             car.accelerate(5);
         }
 
-        assertThat(car.getPosition()).isEqualTo(expectedPosition);
+        assertThat(car.getCurrentPosition()).isEqualTo(expectedPosition);
     }
 
     @ParameterizedTest

@@ -1,4 +1,4 @@
-package race;
+package race.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

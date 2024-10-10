@@ -3,13 +3,15 @@ package race;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import race.domain.car.Car;
+import race.domain.Cars;
 
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 class CarsTest {
 
@@ -28,19 +30,6 @@ class CarsTest {
     }
 
     @Test
-    void 자동차들_중_가장_많이_전진한_자동차의_위치() {
-        Car car1 = new Car("car1");
-        Car car2 = new Car("car2");
-        Cars cars = new Cars(car1, car2);
-
-        car1.accelerate(10);
-        car1.accelerate(10);
-        car2.accelerate(10);
-
-        assertThat(cars.getMaxPosition()).isEqualTo(2);
-    }
-
-    @Test
     void 우승자_선발() {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
@@ -48,8 +37,7 @@ class CarsTest {
 
         car1.accelerate(10);
 
-        int maxPosition = cars.getMaxPosition();
-        List<Car> winners = cars.getWinners(maxPosition);
+        List<Car> winners = cars.getWinners();
         assertThat(winners.get(0)).isEqualTo(car1);
     }
 
@@ -62,8 +50,8 @@ class CarsTest {
         car1.accelerate(10);
         car2.accelerate(10);
 
-        int maxPosition = cars.getMaxPosition();
-        assertThat(cars.getWinners(maxPosition)).hasSize(2);
+        List<Car> winners = cars.getWinners();
+        assertThat(winners).hasSize(2);
     }
 
     @Test
@@ -82,6 +70,24 @@ class CarsTest {
             softly.assertThat(positions).hasSize(2);
             softly.assertThat(positions.get("car1")).isEqualTo(2);
             softly.assertThat(positions.get("car2")).isEqualTo(1);
+        });
+    }
+
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void 목록_내_전체_자동차를_전진시킨다(int rounds) {
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Cars cars = new Cars(car1, car2);
+
+        for (int i = 0; i < rounds; i++) {
+            cars.move(10);
+        }
+
+        assertSoftly(softly -> {
+            softly.assertThat(car1.getCurrentPosition()).isEqualTo(rounds);
+            softly.assertThat(car2.getCurrentPosition()).isEqualTo(rounds);
         });
     }
 }
