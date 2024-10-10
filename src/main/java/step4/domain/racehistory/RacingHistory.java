@@ -1,4 +1,4 @@
-package step4.domain;
+package step4.domain.racehistory;
 
 import java.util.ArrayList;
 import java.util.List;

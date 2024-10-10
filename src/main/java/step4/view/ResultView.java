@@ -1,7 +1,7 @@
 package step4.view;
 
-import step4.domain.MovedHistory;
-import step4.domain.RacingHistory;
+import step4.domain.racehistory.MovedHistory;
+import step4.domain.racehistory.RacingHistory;
 
 public final class ResultView {
 	public static void printRacingHistory(RacingHistory raceResult) {

@@ -1,4 +1,4 @@
-package step4.domain;
+package step4.domain.movestrategy;
 
 public interface CarMoveStrategy {
 	int speed();

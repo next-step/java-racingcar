@@ -1,6 +1,8 @@
-package step4.domain;
+package step4.domain.movestrategy;
 
 import java.util.Random;
+
+import step4.domain.car.Car;
 
 public class DefaultRandomMoveStrategy implements CarMoveStrategy {
 	public static final int MIN_MOVE_VALUE = 4;
