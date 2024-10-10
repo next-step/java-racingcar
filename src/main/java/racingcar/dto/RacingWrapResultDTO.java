@@ -9,8 +9,12 @@ public final class RacingWrapResultDTO {
         this.carStates = catStates;
     }
 
-    public static RacingWrapResultDTO create(int wrapNumber, RacingCarStatesDTO catStates) {
+    public static RacingWrapResultDTO valueOf(int wrapNumber, RacingCarStatesDTO catStates) {
         return new RacingWrapResultDTO(wrapNumber, catStates);
+    }
+
+    public int getWrapNumber() {
+        return this.wrapNumber;
     }
 
     public RacingCarStatesDTO getCarStates() {

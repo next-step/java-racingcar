@@ -1,19 +1,25 @@
 package racingcar.dto;
 
-import java.util.List;
+import racingcar.domain.CarRacing;
 
 public final class RacingResultDTO {
-    private final List<RacingWrapResultDTO> wrapResults;
+    private final RacingWinnerNamesDTO winners;
+    private final RacingWrapResultsDTO wrapResults;
 
-    private RacingResultDTO(List<RacingWrapResultDTO> wrapResults) {
+    private RacingResultDTO(RacingWinnerNamesDTO winners, RacingWrapResultsDTO wrapResults) {
+        this.winners = winners;
         this.wrapResults = wrapResults;
     }
 
-    public static RacingResultDTO create(List<RacingWrapResultDTO> wrapResults) {
-        return new RacingResultDTO(wrapResults);
+    public static RacingResultDTO valueOf(CarRacing carRacing) {
+        return new RacingResultDTO(RacingWinnerNamesDTO.valueOf(carRacing.findWinners()), carRacing.getWrapResults());
     }
 
-    public List<RacingWrapResultDTO> getWrapResults() {
+    public RacingWinnerNamesDTO getWinners() {
+        return this.winners;
+    }
+
+    public RacingWrapResultsDTO getWrapResults() {
         return this.wrapResults;
     }
 }

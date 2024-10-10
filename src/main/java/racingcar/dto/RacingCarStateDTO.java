@@ -1,18 +1,24 @@
 package racingcar.dto;
 
-import racingcar.RacingCar;
+import racingcar.domain.RacingCar;
 
 public final class RacingCarStateDTO {
+    private final String carName;
     private final int carNo;
     private final int position;
 
-    private RacingCarStateDTO(int carNo, int position) {
+    private RacingCarStateDTO(String carName, int carNo, int position) {
+        this.carName = carName;
         this.carNo = carNo;
         this.position = position;
     }
 
-    public static RacingCarStateDTO fromRacingCar(RacingCar racingCar) {
-        return new RacingCarStateDTO(racingCar.getCarNo(), racingCar.getPosition());
+    public static RacingCarStateDTO valueOf(RacingCar racingCar) {
+        return new RacingCarStateDTO(racingCar.getName(), racingCar.getCarNo(), racingCar.getPosition());
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 
     public int getCarNo() {
