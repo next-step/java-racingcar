@@ -1,7 +1,9 @@
-package racing.car;
+package racing.domain.car;
 
-import racing.game.Calculator;
+import racing.domain.dto.CarDTO;
+import racing.domain.game.Calculator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -10,6 +12,14 @@ public class Cars {
 
     public Cars(List<Car> items) {
         this.items = items;
+    }
+
+    public List<CarDTO> toCarDTO() {
+        List<CarDTO> newCars = new ArrayList<>();
+        for (Car car : items) {
+            newCars.add(new CarDTO(car.getName(), car.getPosition()));
+        }
+        return newCars;
     }
 
     public Cars carGoAndStop(Calculator calculator) {

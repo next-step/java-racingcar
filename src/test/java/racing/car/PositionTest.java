@@ -1,6 +1,8 @@
 package racing.car;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.car.Car;
+import racing.domain.car.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,6 +25,17 @@ class PositionTest {
     void inclease(){
         Position position = new Position(4);
         assertThat(position.increase()).isEqualTo(new Position(5));
+    }
+
+    @Test
+    void test(){
+        Car car1 = new Car("ㅁㅁ", 0);
+        car1.isGo(7);
+        Car car2 = new Car(car1.getName(), car1.getPosition());
+        car2.isGo(7);
+
+        assertThat(car1.getPosition()).isEqualTo(1);
+        assertThat(car2.getPosition()).isEqualTo(2);
     }
 
 }

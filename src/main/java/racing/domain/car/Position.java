@@ -1,10 +1,10 @@
-package racing.car;
+package racing.domain.car;
 
 public class Position {
 
-    private int value;
+    private final int value;
 
-    public Position(int value) {
+    public Position(final int value) {
         this.value = value;
     }
 
@@ -13,8 +13,7 @@ public class Position {
     }
 
     public Position increase() {
-        this.value++;
-        return this;
+        return new Position(this.value + 1); //피드백 반영
     }
 
     public int maxPosition(int maxPosition) {

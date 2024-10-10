@@ -1,31 +1,38 @@
 package racing.view;
 
-import racing.car.Car;
-import racing.car.Cars;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
+import racing.domain.dto.CarDTO;
+import racing.domain.dto.RacingResultDTO;
+import racing.domain.dto.ResultRacingsDTO;
 
-public class ResultView implements ResultHandler {
+public class ResultView {
 
-    public void racingPrint(Cars cars) {
-        for (Car car : cars.getItems()) {
-            System.out.print(car.getName() + ":");
-            movePrint(car);
+    public void racingPrint(ResultRacingsDTO resultRacingsDTO, int cycle) {
+        int round = 0;
+        while (cycle > 0) {
+            RacingResultDTO racing = resultRacingsDTO.getResultsRacings().get(round);
+            for (CarDTO car : racing.getCarResult()) {
+                System.out.print(car.getName() + ":");
+                movePrint(car);
+            }
+            round++;
+            cycle--;
+            endCycle();
         }
-        System.out.println();
     }
 
-    private void movePrint(Car car) {
+    private void movePrint(CarDTO car) {
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    @Override
     public void endCycle() {
         System.out.println();
     }
 
-    @Override
     public void winnerPrint(Cars winner) {
         System.out.println("우승자 발표!");
         for (Car car : winner.getItems()) {

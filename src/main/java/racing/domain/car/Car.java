@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain.car;
 
 import java.util.Objects;
 
@@ -8,15 +8,15 @@ public class Car {
     private static final int STANDARD = 4;
 
     private Position position;
-    private String name;
+    private final String name;
 
-    public Car(final String name, int position) {
+    public Car(final String name, final int position) {
         this(name, new Position(position));
     }
 
-    public Car(final String name, Position position) {
+    public Car(final String name, final Position position) {
         this.name = name;
-        this.position = position;
+        this.position = new Position(position.getValue());
     }
 
     public boolean isGo(int randomNumber) {
@@ -38,7 +38,7 @@ public class Car {
         return this.position.maxPosition(maxPosition);
     }
 
-    public boolean isSame(int maxPosition){
+    public boolean isSame(int maxPosition) {
         return this.position.isSame(maxPosition);
     }
 
