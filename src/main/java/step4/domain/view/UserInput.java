@@ -18,19 +18,19 @@ public class UserInput {
 		}
 	}
 
-	private static void throwExceptionWhenNameIsEmpty(String string) {
-		if (string.isEmpty()) {
+	private static void throwExceptionWhenNameIsUnvalid(String string) {
+		if (string.isEmpty() || string.trim().isEmpty() || string.length() > 5) {
 			throw new RaceParamUnvalidException();
 		}
 	}
 
 	private void splitName(String nameString) {
-		if (nameString.isEmpty()) {
+		if (nameString == null || nameString.isEmpty()) {
 			throw new RaceParamUnvalidException();
 		}
 		String[] tempList = nameString.split(",");
 		for (String string : tempList) {
-			throwExceptionWhenNameIsEmpty(string);
+			throwExceptionWhenNameIsUnvalid(string);
 		}
 		this.nameList = nameString.split(",");
 	}
