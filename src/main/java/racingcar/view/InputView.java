@@ -34,7 +34,7 @@ public class InputView {
                 return false;
             }
 
-            if(carName.length() > LIMIT_CAR_NAME_LENGTH) {
+            if (carName.length() > LIMIT_CAR_NAME_LENGTH) {
                 System.out.println("이름은 5글자를 초과할 수 없습니다. 다시 입력해주세요");
                 return false;
             }
