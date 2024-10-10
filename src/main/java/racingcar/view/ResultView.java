@@ -8,17 +8,22 @@ public class ResultView {
 
     private static final String MOVE_UNIT = "-";
 
-    public static void print(List<Car> cars){
-        for (Car car : cars) {
-            printCarMovement(car);
-        }
-        System.out.println();
+    public static void printCarMovement(Car car) {
+        System.out.println(car.getName() + ": "
+                + draw(car.currentPosition()));
     }
 
-    private static void printCarMovement(Car car) {
-        for (int i = 0; i < car.getMoveCount(); i++) {
-            System.out.print(MOVE_UNIT);
+    private static String draw(int currentPosition) {
+        StringBuilder draw = new StringBuilder();
+        for (int i = 0; i < currentPosition; i++) {
+            draw.append(MOVE_UNIT);
         }
-        System.out.println();
+
+        return draw.toString();
+    }
+
+    public static void printWinner(List<String> winners) {
+        System.out.println(String.join(",", winners));
+
     }
 }

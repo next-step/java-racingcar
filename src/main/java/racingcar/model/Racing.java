@@ -10,23 +10,11 @@ public class Racing {
     private static final Random RANDOM = new Random();
 
 
-    public List<Car> ready(int number) {
-      return new Garage().createCars(number);
-
-    }
-
-
-    public void game(List<Car> cars, int count) {
-        for (int i = 0; i < count; i++) {
-            moveCar(cars);
-            ResultView.print(cars);
-        }
-    }
-
-    private void moveCar(List<Car> cars) {
+    public void start(List<Car> cars) {
         for (Car car : cars) {
             car.move(RANDOM.nextInt(10));
+            ResultView.printCarMovement(car);
         }
+        System.out.println();
     }
-
 }
