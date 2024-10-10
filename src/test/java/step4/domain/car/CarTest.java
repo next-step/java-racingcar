@@ -18,7 +18,7 @@ public class CarTest {
 	@BeforeEach
 	void setUp() {
 		car = new Car("singleCar");
-		prevPosition = car.getPosition();
+		prevPosition = car.getCurrentPosition();
 		defaultRandomMoveStrategy = new DefaultRandomMoveStrategy(new Random());
 	}
 
@@ -27,14 +27,14 @@ public class CarTest {
 	void carStrategyMoveTest() {
 		car.move(true);
 		Integer expectedPosition = prevPosition + defaultRandomMoveStrategy.speed();
-		assertThat(car.getPosition()).isEqualTo(expectedPosition);
+		assertThat(car.getCurrentPosition()).isEqualTo(expectedPosition);
 	}
 
 	@Test
 	@DisplayName("movable 값이 False 일때는 안 움직이는지 확인하는 테스트")
 	void carStrategyStopTest() {
 		car.move(false);
-		assertThat(car.getPosition()).isEqualTo(prevPosition);
+		assertThat(car.getCurrentPosition()).isEqualTo(prevPosition);
 	}
 
 	@Test

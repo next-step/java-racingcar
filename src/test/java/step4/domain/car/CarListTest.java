@@ -43,7 +43,7 @@ class CarListTest {
 		List<Car> winners = carList.getWinner();
 		assertThat(winners.size()).isEqualTo(1);
 		for (Car winner : winners) {
-			assertThat(winner.getPosition()).isEqualTo(4);
+			assertThat(winner.getCurrentPosition()).isEqualTo(4);
 		}
 	}
 

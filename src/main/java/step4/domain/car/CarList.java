@@ -5,9 +5,11 @@ import java.util.List;
 
 public class CarList {
 	List<Car> cars;
+	int movedCount;
 
 	public CarList(List<Car> cars) {
 		this.cars = cars;
+		this.movedCount = 0;
 	}
 
 	public static CarList from(String[] nameList) {
@@ -22,6 +24,7 @@ public class CarList {
 		for (Car car : cars) {
 			car.move(car.getMoveStrategy().movable());
 		}
+		this.movedCount++;
 	}
 
 	public List<Car> getList() {
@@ -36,15 +39,19 @@ public class CarList {
 		List<Car> winnerList = new ArrayList<>();
 		int maxValue = 0;
 		for (Car car : cars) {
-			if (maxValue < car.getPosition()) {
-				maxValue = car.getPosition();
+			if (maxValue < car.getCurrentPosition()) {
+				maxValue = car.getCurrentPosition();
 			}
 		}
 		for (Car car : cars) {
-			if (car.getPosition() == maxValue) {
+			if (car.getCurrentPosition() == maxValue) {
 				winnerList.add(car);
 			}
 		}
 		return winnerList;
+	}
+
+	public int getMovedCount() {
+		return movedCount;
 	}
 }
