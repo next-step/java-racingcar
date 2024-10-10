@@ -20,6 +20,13 @@ public class CarList {
 		return new CarList(cars);
 	}
 
+	private static int getMaxPosition(Car car, int maxValue) {
+		if (maxValue < car.getCurrentPosition()) {
+			maxValue = car.getCurrentPosition();
+		}
+		return maxValue;
+	}
+
 	public void moveCarList() {
 		for (Car car : cars) {
 			car.move(car.getMoveStrategy().movable());
@@ -37,15 +44,13 @@ public class CarList {
 
 	public List<Car> getWinner() {
 		List<Car> winnerList = new ArrayList<>();
-		int maxValue = 0;
+		int maxPosition = 0;
 		for (Car car : cars) {
-			if (maxValue < car.getCurrentPosition()) {
-				maxValue = car.getCurrentPosition();
-			}
+			maxPosition = getMaxPosition(car, maxPosition);
 		}
 		for (Car car : cars) {
-			if (car.getCurrentPosition() == maxValue) {
-				winnerList.add(car);
+			if (car.getCurrentPosition() == maxPosition) {
+				winnerList.add(car); // 이거 줄일수가 없어요...
 			}
 		}
 		return winnerList;

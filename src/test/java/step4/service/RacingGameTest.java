@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import step4.domain.car.Car;
 import step4.domain.car.CarList;
 import step4.domain.view.UserInput;
 
@@ -26,8 +25,6 @@ class RacingGameTest {
 	@DisplayName("자동차는 입력받은 n번 만큼 이동을 시도하는지 체크하는 테스트")
 	void carMoveTest() {
 		CarList carList = race(userInput);
-		for (Car car : carList.getList()) {
-			assertThat(car.getCarPositionHistory().size()).isEqualTo(TEST_MOVE_COUNT);
-		}
+		assertThat(carList.getMovedCount()).isEqualTo(TEST_MOVE_COUNT);
 	}
 }
