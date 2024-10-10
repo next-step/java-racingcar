@@ -1,48 +1,45 @@
 package racingcar.service;
 
 import racingcar.model.Car;
-import racingcar.model.CarRecord;
+import racingcar.model.RaceRecord;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class CarRacing {
+    private static final int CAN_MOVING_FORWARD = 4;
 
     private List<Car> cars;
 
-    public CarRacing() {}
-
-    public CarRacing(int numberOfCars) {
-        carRaceReady(numberOfCars);
+    public CarRacing(String[] carNames) {
+        carRaceReady(carNames);
     }
 
-    private void carRaceReady(int numberOfCars) {
+    private void carRaceReady(String[] carNames) {
         cars = new ArrayList<Car>();
 
-        for(int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 
-    public List<CarRecord> carRaceStart() {
-        List<CarRecord> records = new ArrayList<>();
+    public List<RaceRecord> carRaceStart() {
+        List<RaceRecord> records = new ArrayList<>();
 
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move(isCarMovingForward());
-            CarRecord record = new CarRecord(car.getMovingDistance());
-            records.add(record);
+            records.add(new RaceRecord(car.getName(), car.getMovingDistance()));
         }
 
         return records;
     }
 
-    public boolean isCarMovingForward() {
+    private boolean isCarMovingForward() {
         Random random = new Random();
         int randomNumber = random.nextInt(9) + 1;
 
-            if(randomNumber >= 4)
-                return true;
-
-        return false;
+        return randomNumber >= CAN_MOVING_FORWARD;
     }
 
     public List<Car> getCars() {
