@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.view;
 
+import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 
 public class ResultView {
     private static final String PRINT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
@@ -19,8 +21,11 @@ public class ResultView {
         System.out.println(PRINT_RESULT_MESSAGE);
     }
 
-    public static void printGoDistance() {
-        System.out.print(PRINT_GO_DISTANCE);
+    public static void printGoDistance(Car car) {
+        printCarName(car.getCarName());
+        for(int i=0;i< car.getDistance();i++){
+            System.out.print(PRINT_GO_DISTANCE);
+        }
     }
 
     public static void printCarName(String carName) {
@@ -31,7 +36,11 @@ public class ResultView {
         System.out.println(PRINT_RACE_CAR_NAME);
     }
 
-    public static void printWinnerCarName(List<String> winnerCarList) {
-        System.out.println("최종 우승자 : " + String.join(", ", winnerCarList));
+    public static void printWinnerCarName(List<String> winnerNames) {
+        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
+    }
+
+    public static void printErrorMessage(Exception ex){
+        System.out.println("error: "+ex.getMessage());
     }
 }

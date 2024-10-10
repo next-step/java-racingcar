@@ -1,16 +1,19 @@
-package racingcar;
-
-import static racingcar.ResultView.printGoDistance;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static racingcar.domain.ErrorMessage.IS_NOT_TRY_COUNT;
 
 public class Race {
+    private static final int RANDOM_SIZE = 10;
     private List<Car> carList = new ArrayList<>();
     private int tryCount;
     private int maxDistance;
 
     public Race(String[] carNameList, int tryCount) {
+        validateTryCount(tryCount);
         makeRacingCar(carNameList);
         this.tryCount = tryCount;
         this.maxDistance = 0;
@@ -24,30 +27,25 @@ public class Race {
         return carList;
     }
 
-    public void startTry() {
-        for (int i = 0; i < tryCount; i++) {
-            carMove();
-        }
-    }
 
-    private void carMove() {
+    public void carMove() {
         for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).goCar();
+            carList.get(i).goCar(getRandomNum());
         }
-        printCarList();
-        System.out.println();
+
     }
 
-    private void printCarList() {
-        for (Car car : carList) {
-            car.printCarRaceResult();
-            System.out.println();
-        }
-    }
+
 
     private void makeRacingCar(String[] carNameList) {
         for (String carName : carNameList) {
             carList.add(new Car(carName));
+        }
+    }
+
+    public static void validateTryCount(int num) {
+        if(num<1){
+            throw new IllegalArgumentException(IS_NOT_TRY_COUNT);
         }
     }
 
@@ -61,18 +59,32 @@ public class Race {
         return maxDistance;
     }
 
-    public List<String> getWinnerCarList() {
+    public List<String> getWinnerCarNames(){
+        List<String> winnerNames = new ArrayList<>();
+        for (Car car : getWinnerCarList()) {
+            winnerNames.add(car.getCarName());
+        }
+        return winnerNames;
+    }
+
+    private List<Car> getWinnerCarList() {
         setMaxDistance();
-        List<String> winnerCarList = new ArrayList<>();
+        List<Car> winnerCarList = new ArrayList<>();
         for (Car car : carList) {
             addWinner(winnerCarList, car);
         }
         return winnerCarList;
     }
 
-    public void addWinner(List<String> winnerCarList, Car car) {
+    public void addWinner(List<Car> winnerCarList, Car car) {
         if (car.isWinnerCar(maxDistance)) {
-            winnerCarList.add(car.getCarName());
+            winnerCarList.add(car);
         }
     }
+
+    private int getRandomNum() {
+        Random random = new Random();
+        return random.nextInt(RANDOM_SIZE);
+    }
+
 }

@@ -2,12 +2,13 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.Car.EMPTY_NAME_ERROR;
-import static racingcar.Car.INPUT_LENGTH_EXCEEDED_ERROR;
+import static racingcar.domain.ErrorMessage.EMPTY_NAME_ERROR;
+import static racingcar.domain.ErrorMessage.INPUT_LENGTH_EXCEEDED_ERROR;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 
 public class CarTest {
     private Car car;
@@ -20,14 +21,14 @@ public class CarTest {
     @DisplayName("숫자가 4이상인 경우 전진할 수 있다.")
     @Test
     public void 전진_하는지() {
-        car.setGoCar(4);
+        car.goCar(4);
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @DisplayName("숫자가 3미만인 경우 전진할 수 없다.")
     @Test
     public void 전진_안하는지() {
-        car.setGoCar(1);
+        car.goCar(1);
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
@@ -48,9 +49,9 @@ public class CarTest {
     @Test
     public void 최대거리_여부() {
         Car maxDistanceCar = new Car("Car1");
-        maxDistanceCar.setGoCar(4);
-        maxDistanceCar.setGoCar(4);
-        maxDistanceCar.setGoCar(4);
+        maxDistanceCar.goCar(4);
+        maxDistanceCar.goCar(4);
+        maxDistanceCar.goCar(4);
         assertThat(maxDistanceCar.isWinnerCar(3)).isTrue();
         assertThat(maxDistanceCar.isWinnerCar(2)).isFalse();
     }
@@ -59,9 +60,9 @@ public class CarTest {
     @Test
     public void 거리비교_리턴() {
         Car distanceCar = new Car("Car1");
-        distanceCar.setGoCar(4);
-        distanceCar.setGoCar(4);
-        distanceCar.setGoCar(4);
+        distanceCar.goCar(4);
+        distanceCar.goCar(4);
+        distanceCar.goCar(4);
         assertThat(distanceCar.compareDistance(5)).isEqualTo(5);
         assertThat(distanceCar.compareDistance(2)).isEqualTo(3);
     }

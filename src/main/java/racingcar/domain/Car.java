@@ -1,14 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
-import java.util.Random;
+import static racingcar.domain.ErrorMessage.EMPTY_NAME_ERROR;
+import static racingcar.domain.ErrorMessage.INPUT_LENGTH_EXCEEDED_ERROR;
 
-import static racingcar.ResultView.printCarName;
-import static racingcar.ResultView.printGoDistance;
 
 public class Car {
-    private static final int RANDOM_SIZE = 10;
-    public static final String INPUT_LENGTH_EXCEEDED_ERROR = "5자 초과하였습니다.";
-    public static String EMPTY_NAME_ERROR = "이름이 없습니다.";
+
     private int distance = 0;
     private String carName = "";
 
@@ -18,16 +15,12 @@ public class Car {
     }
 
 
-    public void goCar() {
-        setGoCar(getRandomNum());
+    public void goCar(int randomNum) {
+        setGoCar(randomNum);
     }
 
-    private int getRandomNum() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_SIZE);
-    }
 
-    public void setGoCar(int randomNum) {
+    private void setGoCar(int randomNum) {
         if (randomNum >= 4) {
             distance += 1;
         }
@@ -55,12 +48,5 @@ public class Car {
 
     public boolean isWinnerCar(int maxDistance) {
         return distance == maxDistance;
-    }
-
-    public void printCarRaceResult() {
-        printCarName(carName);
-        for (int i = 0; i < distance; i++) {
-            printGoDistance();
-        }
     }
 }
