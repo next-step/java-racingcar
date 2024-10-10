@@ -13,13 +13,13 @@ public class ResultView {
 
     public void printRacingResult(List<RaceRecord> records, int raceCount, int totalNumberOfRace) {
 
-        for(RaceRecord record : records) {
+        for (RaceRecord record : records) {
             System.out.println(record.getCarName() + " : " + generateDashedString(record.getCarMovingDistance()));
         }
 
         System.out.println();
 
-        if(raceCount == totalNumberOfRace) {
+        if (raceCount == totalNumberOfRace) {
             printRaceWinner(records);
         }
     }
