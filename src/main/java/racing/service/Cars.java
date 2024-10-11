@@ -3,11 +3,11 @@ package racing.service;
 import racing.entity.Car;
 import java.util.List;
 
-public class CarRacingService {
+public class Cars {
 
     private final List<Car> cars;
 
-    public CarRacingService(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 

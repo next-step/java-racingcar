@@ -1,9 +1,12 @@
 package racing.entity;
 
+import java.util.Random;
+
 public class Car {
 
     private final String name;
     private int position;
+    private final Random random = new Random();
 
     private static final int MOVE_THRESHOLD = 4;
     private static final int RANDOM_RANGE = 10;
@@ -28,9 +31,10 @@ public class Car {
     }
 
     private boolean canMove() {
-        int randomValue = (int) (Math.random() * RANDOM_RANGE);
+        int randomValue = random.nextInt(RANDOM_RANGE);
         return randomValue >= MOVE_THRESHOLD;
     }
 }
+
 
 

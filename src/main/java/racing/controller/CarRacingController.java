@@ -1,7 +1,7 @@
 package racing.controller;
 
 import racing.entity.Car;
-import racing.service.CarRacingService;
+import racing.service.Cars;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -14,7 +14,7 @@ public class CarRacingController {
         List<Car> cars = inputView.inputCar();
         int rounds = inputView.inputNumber();
 
-        CarRacingService racingService = new CarRacingService(cars);
+        Cars racingService = new Cars(cars);
         ResultView resultView = new ResultView();
 
         for (int i = 0; i < rounds; i++) {
@@ -23,4 +23,5 @@ public class CarRacingController {
         }
     }
 }
+
 
