@@ -1,4 +1,4 @@
-package carracing.car;
+package carracing.domain.carracing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,17 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-    @DisplayName("position 값이 인자 maxPosition 값과 동일한 자동차들만 반환한다.")
-    @Test
-    void return_Cars_samePositionAs_argument() {
-        Car moon = new Car("moon");
-        Car zi = new Car("zi");
-        Cars cars = new Cars(List.of(moon, zi));
-        moon.move(4);
-
-        assertThat(cars.getCarsSamePositionAs(1).get()).containsExactly(moon);
-    }
-
     @DisplayName("객체를 깊은 복사한다.")
     @Test
     void deepCopy_object() {
@@ -35,7 +24,8 @@ class CarsTest {
         Cars deepCopiedCars = cars.deepCopy();
         cars.get().add(new Car("zi"));
 
-        assertThat(cars.get().size()).isNotEqualTo(deepCopiedCars.get().size());
+        assertThat(cars).isNotEqualTo(deepCopiedCars)
+                .isNotSameAs(deepCopiedCars);
     }
 
     @DisplayName("필드를 반환한다.")
@@ -48,16 +38,20 @@ class CarsTest {
         assertThat(cars.get()).containsExactly(moon, zi);
     }
 
-    @DisplayName("자동차들 중 가장 이동 상태가 높은 값을 반환한다.")
+    @DisplayName("자동차 경주 게임의 우승 차의 이름을 반환한다.")
     @Test
-    void return_the_highest_position_among_the_cars() {
-        Car moon = new Car("moon");
-        Car zi = new Car("zi");
+    void return_winnersNames() {
+        Car moon = new Car("moon", 2);
+        Car zi = new Car("zi", 1);
         Cars cars = new Cars(List.of(moon, zi));
-        moon.move(4);
-        moon.move(4);
-        zi.move(4);
 
-        assertThat(cars.compareMax(-1)).isEqualTo(2);
+        assertThat(cars.winnersNames())
+                .containsExactly(moon.getNameString());
+    }
+
+    @DisplayName("주어진 이름 별 차들을 생성한다.")
+    @Test
+    void create_cars() {
+        assertThat(Cars.create(new String[]{"moon", "zi"}).get()).hasSize(2);
     }
 }

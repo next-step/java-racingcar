@@ -44,7 +44,7 @@ public class StringSumCalculator {
 
     private static int[] toInts(String[] strNums) {
         int[] intNums = new int[strNums.length];
-        for (int i=0; i< strNums.length; i++) {
+        for (int i = 0; i < strNums.length; i++) {
             checkOnlyPositiveNumber(strNums[i]);
 
             intNums[i] = Integer.parseInt(strNums[i]);

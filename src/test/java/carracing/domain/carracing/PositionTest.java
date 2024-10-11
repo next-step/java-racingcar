@@ -1,4 +1,4 @@
-package carracing.car;
+package carracing.domain.carracing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,6 +30,7 @@ class PositionTest {
         assertThat(position.compareMax(3)).isEqualTo(4);
         assertThat(position.compareMax(5)).isEqualTo(5);
     }
+
     @DisplayName("자신의 value 값과 인자 값을 비교하여 같은 값인지를 비교하여 결과를 반환한다.")
     @Test
     void return_result_compareTo_value_with_argument() {
