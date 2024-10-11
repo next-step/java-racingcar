@@ -45,7 +45,6 @@ public class RacingCompetitionTest {
         assertThat(winners).extracting(Car::getCarName).contains("a", "b", "c");
     }
 
-    @Disabled
     @Test
     @DisplayName("자동차 경주가 잘 출력되는지 확인")
     public void racing() {
