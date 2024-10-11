@@ -2,8 +2,8 @@ package racingcar;
 
 import racingcar.domain.RacingCarSimulator;
 import racingcar.dto.RacingResultDTO;
-import racingcar.ui.InputView;
-import racingcar.ui.ResultView;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
