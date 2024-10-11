@@ -44,7 +44,7 @@ public class CarRacing {
 
     private void proceedWrap() {
         int currentWrapNo = findCurrentWrapNo();
-        racingFleet.raceAll();
+        racingFleet.raceAll(RandomMovableStrategy.getInstance());
         RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingFleet);
         this.wrapResults.getWrapResults().add(RacingWrapResultDTO.valueOf(currentWrapNo + 1, carStates));
     }

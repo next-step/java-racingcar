@@ -19,6 +19,14 @@ public class RacingFleetTest {
     }
 
     @Test
+    @DisplayName("차 이름으로 생성되면 입력한 수만큼 RacingCar들을 가집니다.")
+    void raceAllTest() {
+        List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
+        RacingFleet fleet = RacingFleet.valueOf(carNames);
+        assertThat(fleet.getRacingCars().size()).isEqualTo(3);
+    }
+
+    @Test
     @DisplayName("같은 이름셋으로 생성한 racingFleets는 equals가 true입니다.")
     void equalsTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));

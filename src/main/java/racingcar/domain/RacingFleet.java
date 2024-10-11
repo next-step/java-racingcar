@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.movableStrategy.MovableStrategy;
 import racingcar.domain.movableStrategy.RandomMovableStrategy;
 
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class RacingFleet {
         return this.racingCars;
     }
 
-    public void raceAll() {
-        racingCars.forEach(racingCar -> racingCar.race(RandomMovableStrategy.getInstance()));
+    public void raceAll(MovableStrategy movableStrategy) {
+        racingCars.forEach(racingCar -> racingCar.race(movableStrategy));
     }
 
     public List<RacingCar> findWinners() {
