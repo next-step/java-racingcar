@@ -41,12 +41,9 @@ class CarsTest {
     @DisplayName("자동차 경주 게임의 우승 차의 이름을 반환한다.")
     @Test
     void return_winnersNames() {
-        Car moon = new Car("moon");
-        Car zi = new Car("zi");
+        Car moon = new Car("moon", 2);
+        Car zi = new Car("zi", 1);
         Cars cars = new Cars(List.of(moon, zi));
-        moon.move(4);
-        moon.move(4);
-        zi.move(4);
 
         assertThat(cars.winnersNames())
                 .containsExactly(moon.getNameString());

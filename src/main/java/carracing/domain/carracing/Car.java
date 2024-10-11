@@ -1,13 +1,17 @@
 package carracing.domain.carracing;
 
+import java.util.Objects;
+
 public class Car {
-    private static final int MOVE_REFERENCE_NUM = 4;
     private final Name name;
     private Position position;
 
     public Car(String carName) {
-        this.name = new Name(carName);
-        this.position = new Position();
+        this(new Name(carName), new Position());
+    }
+
+    public Car(String carName, int position) {
+        this(new Name(carName), new Position(position));
     }
 
     private Car(Name carName, Position position) {
@@ -15,10 +19,8 @@ public class Car {
         this.position = position;
     }
 
-    public void move(int value) {
-        if (value >= MOVE_REFERENCE_NUM) {
-            this.position = this.position.increase();
-        }
+    public void move() {
+        this.position = this.position.increase();
     }
 
     public int compareMax(int max) {
@@ -39,5 +41,18 @@ public class Car {
 
     public Car deepCopy() {
         return new Car(this.name, this.position);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return name.equals(car.name) && position.equals(car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }

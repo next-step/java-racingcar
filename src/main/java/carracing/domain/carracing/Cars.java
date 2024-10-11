@@ -1,12 +1,13 @@
 package carracing.domain.carracing;
 
+import carracing.domain.carracing.dto.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final Random RANDOM = new Random();
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -19,12 +20,6 @@ public class Cars {
             cars.add(new Car(carName));
         }
         return new Cars(cars);
-    }
-
-    public void move() {
-        for (Car car : this.cars) {
-            car.move(RANDOM.nextInt(10));
-        }
     }
 
     public List<String> winnersNames() {
@@ -66,4 +61,22 @@ public class Cars {
         return this.cars;
     }
 
+    public void move(MoveStrategy moveStrategy) {
+        for (Car car : this.cars) {
+            moveStrategy.move(car);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return cars.equals(cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
+    }
 }
