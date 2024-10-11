@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class RacingCarStatesDTO {
-    public final List<RacingCarStateDTO> carStates;
+    private final List<RacingCarStateDTO> carStates;
 
     private RacingCarStatesDTO(List<RacingCarStateDTO> carStates) {
         this.carStates = carStates;
