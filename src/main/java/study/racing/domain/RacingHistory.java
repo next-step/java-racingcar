@@ -10,7 +10,11 @@ public class RacingHistory {
 
     public void saveHistory(List<Car> cars) {
         this.cars.add(cars.stream()
-                .map(car -> new Car(car.getCarNo(), car.getMoveCount(), car.getCarName()))
+                .map(car -> new Car.Builder()
+                        .setCarNo(car.getCarNo())
+                        .setMoveCount(car.getMoveCount())
+                        .setCarName(car.getCarName())
+                        .build())
                 .collect(Collectors.toList()));
     }
 

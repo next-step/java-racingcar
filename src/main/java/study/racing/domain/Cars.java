@@ -1,7 +1,6 @@
 package study.racing.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
@@ -16,22 +15,28 @@ public class Cars {
         return new Cars(initOfCarList(carCount));
     }
 
-    public static Cars initOfCar(Input input) {
-        return new Cars(initOfCarList(input));
+    public static Cars initOfCar(CarRaceInput carRaceInput) {
+        return new Cars(initOfCarList(carRaceInput));
     }
 
     public static List<Car> initOfCarList(int carCount) {
         List<Car> cars = new ArrayList<>();
         for(int i = 0; i < carCount; i++) {
-            cars.add(new Car(i, 0));
+            cars.add(new Car.Builder()
+                    .setCarNo(i)
+                    .setMoveCount(0)
+                    .build());
         }
         return cars;
     }
 
-    public static List<Car> initOfCarList(Input input) {
+    public static List<Car> initOfCarList(CarRaceInput carRaceInput) {
         List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < input.getCarCount(); i++) {
-            cars.add(new Car(input.getCarNames()[i], 0));
+        for(int i = 0; i < carRaceInput.getCarCount(); i++) {
+            cars.add(new Car.Builder()
+                    .setCarName(carRaceInput.getCarNames().get(i))
+                    .setMoveCount(0)
+                    .build());
         }
         return cars;
     }

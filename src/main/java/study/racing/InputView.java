@@ -1,16 +1,21 @@
 package study.racing;
 
 import study.racing.constants.RacingMessage;
-import study.racing.domain.Input;
-import study.validation.InputValidation;
+import study.racing.domain.CarRaceInput;
+import study.validation.CountValidator;
+import study.validation.NameValidator;
+import study.validation.RaceInputValidator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
 
     Scanner scanner = new Scanner(System.in);
 
-    public Input readInput() {
+    public CarRaceInput readInput() {
 
         System.out.println(RacingMessage.CAR_COUNT.getMsg());
         String carCount = scanner.nextLine();
@@ -21,15 +26,18 @@ public class InputView {
         int car = 0;
         int round = 0;
 
-        boolean isInputMatch = InputValidation.racingInputValidation(carCount, roundCount);
-        if(isInputMatch) {
+        RaceInputValidator raceInputValidator = new CountValidator();
+
+        boolean isCarInputMatch = raceInputValidator.validate(carCount);
+        boolean isTryInputMatch = raceInputValidator.validate(roundCount);
+        if(isCarInputMatch && isTryInputMatch) {
             car = Integer.parseInt(carCount);
             round = Integer.parseInt(roundCount);
         }
-        return new Input(car, round);
+        return new CarRaceInput(car, round);
     }
 
-    public Input readWinnerInput() {
+    public CarRaceInput collectUserInput() {
 
         System.out.println(RacingMessage.CAR_NAME.getMsg());
         String carName = scanner.nextLine();
@@ -38,13 +46,20 @@ public class InputView {
         String roundCount = scanner.nextLine();
 
         int round = 0;
-        Input input = null;
-        boolean isInputMatch = InputValidation.racingInputValidationForNames(carName, roundCount);
-        if(isInputMatch) {
-            String[] carNames = carName.trim().split(",");
+        CarRaceInput carRaceInput = null;
+
+        RaceInputValidator roundInputValidator = new CountValidator();
+        RaceInputValidator participantInputValidator = new NameValidator();
+
+        boolean isRoundInputMatch = roundInputValidator.validate(roundCount);
+        boolean isParticipantInputMatch = participantInputValidator.validate(carName);
+        if(isRoundInputMatch && isParticipantInputMatch) {
+            List<String> carNames = Arrays.stream(carName.trim().split(","))
+                                        .map(String::trim)
+                                        .collect(Collectors.toList());
             round = Integer.parseInt(roundCount);
-            input = new Input(carNames, carNames.length, round);
+            carRaceInput = new CarRaceInput(carNames, carNames.size(), round);
         }
-        return input;
+        return carRaceInput;
     }
 }
