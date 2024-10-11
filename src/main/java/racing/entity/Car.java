@@ -1,6 +1,9 @@
 package racing.entity;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 090df7a39 (fix: 테스트 수정)
 import java.util.Random;
 
 public class Car {
@@ -32,13 +35,17 @@ public class Car {
     }
 
     private boolean canMove() {
-        int randomValue = (int) (Math.random() * RANDOM_RANGE);
+        int randomValue = random.nextInt(RANDOM_RANGE);
         return randomValue >= MOVE_THRESHOLD;
     }
 }
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 6186238e5 (feat: 테스트 작성)
+=======
+
+>>>>>>> 090df7a39 (fix: 테스트 수정)
