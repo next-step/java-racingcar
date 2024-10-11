@@ -32,7 +32,7 @@ public class CarRacing {
 
     private static List<RacingWrapResultDTO> initializeWrapResults(RacingFleet racingFleet) {
         List<RacingWrapResultDTO> wrapResults = new ArrayList<>();
-        wrapResults.add(RacingWrapResultDTO.valueOf(0, RacingCarStatesDTO.valueOf(racingFleet.getRacingCars())));
+        wrapResults.add(RacingWrapResultDTO.valueOf(0, RacingCarStatesDTO.valueOf(racingFleet)));
         return wrapResults;
     }
 
@@ -44,9 +44,8 @@ public class CarRacing {
 
     private void proceedWrap() {
         int currentWrapNo = findCurrentWrapNo();
-        List<RacingCar> racingCars = this.racingFleet.getRacingCars();
-        racingCars.forEach(racingCar -> racingCar.race(RandomMovableStrategy.getInstance()));
-        RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingCars);
+        racingFleet.raceAll();
+        RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingFleet);
         this.wrapResults.getWrapResults().add(RacingWrapResultDTO.valueOf(currentWrapNo + 1, carStates));
     }
 
