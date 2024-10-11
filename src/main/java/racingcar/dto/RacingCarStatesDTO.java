@@ -1,6 +1,7 @@
 package racingcar.dto;
 
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingFleet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,8 @@ public final class RacingCarStatesDTO {
         this.carStates = carStates;
     }
 
-    public static RacingCarStatesDTO valueOf(List<RacingCar> racingCars) {
+    public static RacingCarStatesDTO valueOf(RacingFleet fleet) {
+        List<RacingCar> racingCars = fleet.getRacingCars();
         List<RacingCarStateDTO> carStates = new ArrayList<>();
         for (RacingCar racingCar : racingCars) {
             carStates.add(RacingCarStateDTO.valueOf(racingCar));
