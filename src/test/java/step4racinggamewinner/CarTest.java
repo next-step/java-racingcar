@@ -70,7 +70,7 @@ public class CarTest {
     @Test
     void carNameAndPosition테스트() {
         cars = new Cars("red,blue");
-        assertThat(cars.carNameAndPosition())
+        assertThat(cars.carNameAndPositions())
                 .isEqualTo(Map.of("red", DEFAULT_POSITION, "blue", DEFAULT_POSITION));
     }
 

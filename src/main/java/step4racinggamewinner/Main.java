@@ -16,7 +16,7 @@ public class Main {
         ResultView.printPreview();
         racingCars.viewRacing(movingTryCount, randomGenerator);
 
-        ResultView.printTotalCarPosition(racingCars.carNameAndPosition());
+        ResultView.printTotalCarPosition(racingCars.carNameAndPositions());
         ResultView.printWinner(racingCars.findWinner());
 
     }

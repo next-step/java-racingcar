@@ -73,12 +73,12 @@ public class Cars {
     public void viewRacing(int movingTryCount, RandomGenerator randomGenerator) {
         for (int i = 0; i < movingTryCount; i++) {
             recordEachRoundMoving(randomGenerator);
-            ResultView.printTotalCarPosition(carNameAndPosition());
+            ResultView.printTotalCarPosition(carNameAndPositions());
         }
 
     }
 
-    public Map<String, Integer> carNameAndPosition() {
+    public Map<String, Integer> carNameAndPositions() {
         Map<String, Integer> carNamePosition = new LinkedHashMap<>();
         for (Car car : cars) {
             carNamePosition.put(car.carName(), car.currentPosition());
@@ -86,6 +86,17 @@ public class Cars {
         return carNamePosition;
     }
 
+    public Car currentCar(int carIndex) {
+        return cars.get(carIndex);
+    }
+
+    private int currentCarPosition(int index) {
+        return cars.get(index).currentPosition();
+    }
+
+    private String currentCarName(int index) {
+        return cars.get(index).carName();
+    }
 
     public List<String> findWinner() {
         Winners winners = new Winners(this);
