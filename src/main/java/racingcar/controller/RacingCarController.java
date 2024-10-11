@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.RaceRecord;
+import racingcar.model.Car;
 import racingcar.service.CarRacing;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -17,8 +17,8 @@ public class RacingCarController {
         CarRacing carRacing = new CarRacing(carNames);
         ResultView resultView = new ResultView();
 
-        for(int raceCount = 1; raceCount <= totalNumberOfRace; raceCount++) {
-            List<RaceRecord> records = carRacing.carRaceStart();
+        for (int raceCount = 1; raceCount <= totalNumberOfRace; raceCount++) {
+            List<Car> records = carRacing.carRaceStart();
             resultView.printRacingResult(records, raceCount, totalNumberOfRace);
         }
     }

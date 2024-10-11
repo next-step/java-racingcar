@@ -1,46 +1,35 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceWinner {
 
-    private String names;
-    private int longestMovingDistance;
+    private List<Car> list;
 
-    public RaceWinner(List<RaceRecord> records) {
-        longestMovingDistance = -1;
-        List<String> nameList = new ArrayList<>();
+    public RaceWinner(List<Car> cars) {
+        int longestMovingDistance = -1;
 
-        findLongestMovingDistance(records);
+        longestMovingDistance = findLongestMovingDistance(cars, longestMovingDistance);
 
-        for (RaceRecord record : records) {
-            decideWinner(record, nameList);
+        list = decideWinner(cars, longestMovingDistance);
+    }
+
+    private List<Car> decideWinner(List<Car> cars, int longestMovingDistance) {
+        return cars.stream()
+                .filter(it -> it.isSame(longestMovingDistance))
+                .collect(Collectors.toList());
+    }
+
+    private int findLongestMovingDistance(List<Car> cars, int longestMovingDistance) {
+        for (Car car : cars) {
+            longestMovingDistance = car.isLongest(longestMovingDistance);
         }
-
-        nameListToString(nameList);
+        return longestMovingDistance;
     }
 
-    private void decideWinner(RaceRecord record, List<String> nameList) {
-        int movingDistance = record.getCarMovingDistance();
-
-        if (longestMovingDistance == movingDistance) {
-            nameList.add(record.getCarName());
-        }
+    public List<Car> getWinnerList() {
+        return list;
     }
 
-    private void findLongestMovingDistance(List<RaceRecord> records) {
-        for (RaceRecord record : records) {
-            longestMovingDistance = Math.max(longestMovingDistance, record.getCarMovingDistance());
-        }
-    }
-
-    private void nameListToString(List<String> nameList) {
-        names = String.join(", " , nameList);
-        names += "가 최종 우승했습니다.";
-    }
-
-    public String getNames() {
-        return names;
-    }
 }

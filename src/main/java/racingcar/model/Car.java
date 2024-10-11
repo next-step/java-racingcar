@@ -1,29 +1,35 @@
 package racingcar.model;
 
 public class Car {
-    private String name;
-    private int movingDistance;
+    private final String name;
+    private final MovingDistance movingDistance;
 
     public Car(String name) {
-        this(name, 0);
+        this(name,0);
     }
 
-    private Car(String name, int movingDistance) {
+    public Car(String name, int movingDistance) {
         this.name = name;
-        this.movingDistance = movingDistance;
+        this.movingDistance = new MovingDistance(movingDistance);
     }
 
-    public void move(boolean isCarMovingForward) {
-        if (isCarMovingForward) {
-            movingDistance++;
-        }
+    public void move() {
+         movingDistance.increase(RandomNumber.make());
     }
 
-    public int getMovingDistance() {
-        return this.movingDistance;
+    public int isLongest(int longestMovingDistance) {
+        return movingDistance.isLongest(longestMovingDistance);
+    }
+
+    public boolean isSame(int longestMovingDistance) {
+        return movingDistance.isSame(longestMovingDistance);
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getMovingDistance() {
+        return movingDistance.getValue();
     }
 }
