@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -7,16 +9,17 @@ public class InputView {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public String[] enterCarNames() {
-        String[] enteredCarNames = new String[0];
-        boolean validCarName = false;
+    public List<String> enterCarNames() {
+        List<String > enteredCarNames = new ArrayList<>();
+        boolean validCarNames = false;
 
-        while (!validCarName) {
+        while (!validCarNames) {
             System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
 
-            enteredCarNames = scanner.nextLine().split(",");
-            removeSpaces(enteredCarNames);
-            validCarName = isValidCarName(enteredCarNames);
+            enteredCarNames = new ArrayList<>(List.of(scanner.nextLine().split(",")));
+            System.out.println(enteredCarNames);
+            removeSpace(enteredCarNames);
+            validCarNames = isValidCarNames(enteredCarNames);
         }
 
         return enteredCarNames;
@@ -27,25 +30,27 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    private boolean isValidCarName(String[] enteredCarNames) {
-        for (String carName : enteredCarNames) {
-            if (carName.isEmpty()) {
-                System.out.println("이름은 비어있을 수 없습니다. 다시 입력해주세요");
-                return false;
-            }
+    private boolean isValidCarNames(List<String> enteredCarNames) {
+        return enteredCarNames.stream().allMatch(this::validateName);
+    }
 
-            if (carName.length() > LIMIT_CAR_NAME_LENGTH) {
-                System.out.println("이름은 5글자를 초과할 수 없습니다. 다시 입력해주세요");
-                return false;
-            }
+    private boolean validateName(String carName) {
+        if (carName.isEmpty()) {
+            System.out.println("이름은 비어있을 수 없습니다. 다시 입력해주세요");
+            return false;
+        }
+
+        if (carName.length() > LIMIT_CAR_NAME_LENGTH) {
+            System.out.println("이름은 5글자를 초과할 수 없습니다. 다시 입력해주세요");
+            return false;
         }
 
         return true;
     }
 
-    private void removeSpaces(String[] enteredCarNames) {
-        for (int i = 0; i < enteredCarNames.length; i++) {
-            enteredCarNames[i] = enteredCarNames[i].trim();
+    private void removeSpace(List<String> enteredCarNames) {
+        for(int i = 0; i < enteredCarNames.size(); i++) {
+            enteredCarNames.set(i, enteredCarNames.get(i).trim());
         }
     }
 

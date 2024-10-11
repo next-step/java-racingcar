@@ -11,7 +11,7 @@ public class RacingCarController {
     private static final InputView inputView = new InputView();
 
     public static void main(String[] args) {
-        String[] carNames = inputView.enterCarNames();
+        List<String> carNames = inputView.enterCarNames();
         int totalNumberOfRace = inputView.enterNumberOfRace();
 
         CarRacing carRacing = new CarRacing(carNames);
