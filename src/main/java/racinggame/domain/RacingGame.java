@@ -9,6 +9,9 @@ public class RacingGame {
     private Integer repeatCount;
 
     public RacingGame(int repeatCount,int carCount) {
+        if(repeatCount<=0){
+            throw new IllegalArgumentException("반복횟수는 1이상이여야 합니다.");
+        }
         this.repeatCount=repeatCount;
         this.cars = Cars.from(carCount);
     }
