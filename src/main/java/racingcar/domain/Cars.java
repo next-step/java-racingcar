@@ -5,19 +5,15 @@ import java.util.List;
 
 public class Cars {
 
-    private final static String DELIMITER = ",";
-
     private final List<Car> cars = new ArrayList<>();
 
-
-    public Cars(final String userInput) {
-        String[] carNames = userInput.split(DELIMITER);
+    public Cars(final List<String> carNames) {
         this.create(carNames);
     }
 
-    private void create(String[] carNames) {
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i].trim()));
+    private void create(List<String> carNames) {
+        for (String carName : carNames) {
+            cars.add(new Car(carName.trim()));
         }
     }
 

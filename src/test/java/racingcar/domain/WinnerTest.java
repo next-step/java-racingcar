@@ -10,7 +10,7 @@ class WinnerTest {
 
     @Test
     void winnerTest() {
-        Winner winner = new Winner(RacingFixture.자동차_경주_기록_목록);
+        Winner winner = new Winner(RacingFixture.자동차_경주_기록_목록.get(RacingFixture.자동차_경주_기록_목록.size()-1));
         List<String> winners = winner.getWinners();
 
         Assertions.assertThat(winners.get(0)).isEqualTo("pobi");

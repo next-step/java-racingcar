@@ -5,13 +5,13 @@ import java.util.List;
 
 public class RaceGame {
 
-    private final String carNames;
+    private final List<String> carNames;
 
     private final int tryCount;
 
-    public RaceGame(UserInputData userInput) {
-        this.carNames = userInput.getCarNames();
-        this.tryCount = userInput.getTryCount();
+    public RaceGame(List<String>carNames, int tryCount) {
+        this.carNames = carNames;
+        this.tryCount = tryCount;
     }
 
     public List<Records> playGame(final MoveStrategy moveStrategy) {

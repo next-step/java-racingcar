@@ -1,16 +1,18 @@
 package racingcar.domain;
 
+import java.util.List;
+
 public class UserInputData {
 
-    private final String carNames;
+    private final List<String> carNames;
     private final int tryCount;
 
-    public UserInputData(String carNames, int tryCount) {
+    public UserInputData(List<String> carNames, int tryCount) {
         this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public String getCarNames() {
+    public List<String> getCarNames() {
         return carNames;
     }
 

@@ -11,7 +11,7 @@ public class ResultView {
     public static final String DASH = "-";
     public static final String EXECUTE_RESULT = "실행 결과";
 
-    public static void print(List<Records> gameResult) {
+    public static void printGameResult(List<Records> gameResult) {
         System.out.println(EXECUTE_RESULT);
 
         for (Records roundResult : gameResult) {

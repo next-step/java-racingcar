@@ -5,19 +5,15 @@ import java.util.stream.Collectors;
 
 public class Winner {
 
-    private final Records record;
+    private final Records records;
 
-    public Winner(List<Records> records) {
-        this.record = getLastRound(records);
-    }
-
-    private Records getLastRound(List<Records> records) {
-        return records.get(records.size() - 1);
+    public Winner(Records lastRoundRecords) {
+        this.records = lastRoundRecords;
     }
 
     public List<String> getWinners() {
-        int maxDistance = record.getRecords().stream().mapToInt(Record::getPosition).max().orElse(0);
-        return record.getRecords().stream().filter(record -> record.getPosition() == maxDistance)
+        return records.getBestRecord()
+                .stream()
                 .map(Record::getName)
                 .collect(Collectors.toList());
     }
