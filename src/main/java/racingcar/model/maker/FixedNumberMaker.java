@@ -1,4 +1,4 @@
-package racingcar.model.number;
+package racingcar.model.maker;
 
 public class FixedNumberMaker implements NumberMaker {
     @Override

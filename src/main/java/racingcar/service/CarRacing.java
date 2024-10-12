@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.model.number.Number;
+import racingcar.model.maker.NumberMaker;
 import racingcar.model.race.Car;
 
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ public class CarRacing {
         }
     }
 
-    public List<Car> carRaceStart(Number number) {
+    public List<Car> carRaceStart(NumberMaker numberMaker) {
         for (Car car : cars) {
-            car.move(number.make());
+            car.move(numberMaker.make());
         }
 
         return cars;

@@ -2,7 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.number.FixedNumber;
+import racingcar.model.maker.FixedNumberMaker;
 import racingcar.model.race.Car;
 import racingcar.service.CarRacing;
 
@@ -25,6 +25,6 @@ public class CarRacingTest {
     public void carRaceStartTest() {
         CarRacing carRacing = new CarRacing(List.of("pobi", "crong", "honux"));
 
-        assertThat(carRacing.carRaceStart(new FixedNumber())).map(Car::getMovingDistance).isEqualTo(List.of(1, 1, 1));
+        assertThat(carRacing.carRaceStart(new FixedNumberMaker())).map(Car::getMovingDistance).isEqualTo(List.of(1, 1, 1));
     }
 }
