@@ -1,7 +1,7 @@
 package racingGame.ui.input;
 
 public interface InputView {
-    int getCarCount();
+    String[] getCarNames();
 
     int getMoveCount();
 }

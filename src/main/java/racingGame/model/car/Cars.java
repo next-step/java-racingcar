@@ -9,47 +9,58 @@ public class Cars {
 
     private static final int MINIMUM_CAR_COUNT = 2;
 
-    private List<Car> carGroup;
-
-    public Cars() {
-        carGroup = new ArrayList<>();
-    }
-
-    public Cars(int carCount) {
-        this();
-        validateCarCount(carCount);
-        for (int i = 0 ; i < carCount ; i++) {
-            addCar();
-        }
-    }
+    private List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this();
         validateCarCount(cars.size());
-        for (Car car : cars) {
-            addCar(car);
+        this.cars = cars;
+    }
+
+    public static Cars newInstance(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(Car.newInstance(name));
         }
-    }
-
-    public void addCar() {
-        this.carGroup.add(new Car());
-    }
-
-    public void addCar(Car car) {
-        this.carGroup.add(car.clone());
+        return new Cars(cars);
     }
 
     public Cars clone() {
-        return new Cars(this.getCarGroup());
+        List<Car> newCars = new ArrayList<>();
+        for (Car car : this.cars) {
+            newCars.add(car.clone());
+        }
+        return new Cars(newCars);
     }
 
-    public List<Car> getCarGroup() {
-        return this.carGroup;
+    public List<Car> getCars() {
+        return new ArrayList<>(this.cars);
     }
 
-    private void validateCarCount(int carCount) {
+    private static void validateCarCount(int carCount) {
         if (carCount < MINIMUM_CAR_COUNT) {
             throw new IllegalArgumentException(CAR_COUNT_ERROR_MESSAGE);
+        }
+    }
+
+    public int getMaxPosition() {
+        int position = 0;
+        for (Car car : this.cars) {
+            position = car.getGreaterPosition(position);
+        }
+        return position;
+    }
+
+    public List<Car> findCarsWithSamePosition(int position) {
+        List<Car> findCars = new ArrayList<>();
+        for (Car car : this.cars) {
+            addCarIfSamePosition(position, car, findCars);
+        }
+        return findCars;
+    }
+
+    private static void addCarIfSamePosition(int position, Car car, List<Car> findCars) {
+        if (car.isSamePosition(position)) {
+            findCars.add(car.clone());
         }
     }
 }

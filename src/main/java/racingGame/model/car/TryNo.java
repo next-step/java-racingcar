@@ -6,15 +6,21 @@ public class TryNo {
 
     private static final String MOVE_COUNT_ERROR_MESSAGE = "최소 1회 이상은 입력해주세요!";
 
-    private int tryNo;
+    private int round;
 
     public TryNo(int tryNo) {
         validateMoveCount(tryNo);
-        this.tryNo = tryNo;
+        this.round = tryNo;
+    }
+
+    public void forEach(Runnable runnable) {
+        for(int i = 0; i< this.round; i++) {
+            runnable.run();
+        }
     }
 
     public int getTryNo() {
-        return this.tryNo;
+        return this.round;
     }
 
     private void validateMoveCount(int tryNo) {

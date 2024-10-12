@@ -1,39 +1,50 @@
 package racingGame.service;
 
-import racingGame.model.car.Cars;
 import racingGame.model.car.CarMovement;
+import racingGame.model.car.Cars;
 import racingGame.model.car.Car;
 import racingGame.model.car.TryNo;
-import racingGame.model.numbergenerator.NumberGenerator;
-import racingGame.model.numbergenerator.RandomNumberGenerator;
+import racingGame.model.strategy.MovementStrategy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGameService {
 
-    private static final int MINIMUM_MOVEMENT_VALUE = 4;
+    private final MovementStrategy movementStrategy;
 
-    private final NumberGenerator numberGenerator = new RandomNumberGenerator();
+    public RacingGameService(MovementStrategy movementStrategy) {
+        this.movementStrategy = movementStrategy;
+    }
 
-    public RacingGameService() {}
-
-    public CarMovement moveCarsForAllRounds(int carCount, TryNo tryNo) {
-        Cars cars = new Cars(carCount);
+    public CarMovement moveCarsForAllRounds(Cars cars, int round) {
+        TryNo tryNo = new TryNo(round);
         CarMovement ret = new CarMovement();
 
-        for (int i = 0; i < tryNo.getTryNo(); i++) {
-            Cars car = moveCarsByOneStep(cars);
+        tryNo.forEach(() -> {
+            Cars car = moveAllCarByOneStep(cars);
             ret.addOneStepProgress(car);
-        }
+        });
 
         return ret;
     }
 
-    private Cars moveCarsByOneStep(Cars cars) {
-        for (Car car : cars.getCarGroup()) {
-            car.move(() ->
-                numberGenerator.generateNumber() >= MINIMUM_MOVEMENT_VALUE
-            );
+    public Cars moveAllCarByOneStep(Cars cars) {
+        for (Car car : cars.getCars()) {
+            moveCarByOneStep(car);
         }
         return cars;
+    }
+
+    public void moveCarByOneStep(Car car) {
+        if (movementStrategy.isMovable()) {
+            car.move();
+        }
+    }
+
+    public List<Car> findWinners(Cars cars) {
+        int maxPosition = cars.getMaxPosition();
+        return cars.findCarsWithSamePosition(maxPosition);
     }
 
 }
