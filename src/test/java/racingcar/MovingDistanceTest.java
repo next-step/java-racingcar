@@ -11,14 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MovingDistanceTest {
 
     @Test
-    @DisplayName("랜덤변수 값이 4이상이면 이동, 미만이면 정지")
+    @DisplayName("isCarMoved 변수가 true 이면 이동, false 이면 정지")
     public void increase() {
         MovingDistance movingDistance = new MovingDistance(1);
 
-        movingDistance.increase(4);
+        movingDistance.increase(true);
         assertThat(movingDistance.getValue()).isEqualTo(2);
 
-        movingDistance.increase(3);
+        movingDistance.increase(false);
         assertThat(movingDistance.getValue()).isEqualTo(2);
     }
 
@@ -34,6 +34,6 @@ public class MovingDistanceTest {
     @DisplayName("자동차들중 최대 이동거리를 구하는 메서드 테스트")
     public void isLongest() {
         MovingDistance movingDistance = new MovingDistance(2);
-        assertThat(movingDistance.isLongest(1)).isEqualTo(2);
+        assertThat(movingDistance.longest(1)).isEqualTo(2);
     }
 }

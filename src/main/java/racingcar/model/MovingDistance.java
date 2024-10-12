@@ -1,21 +1,19 @@
 package racingcar.model;
 
 public class MovingDistance {
-    private static final int CAN_MOVING_FORWARD = 4;
-
     private int value;
 
     public MovingDistance(int value) {
         this.value = value;
     }
 
-    public void increase(int randomNumber) {
-        if (randomNumber >= CAN_MOVING_FORWARD) {
+    public void increase(boolean isCarMoved) {
+        if (isCarMoved) {
             this.value++;
         }
     }
 
-    public int isLongest(int longestMovingDistance) {
+    public int longest(int longestMovingDistance) {
         return Math.max(value, longestMovingDistance);
     }
 

@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.model.Car;
+import racingcar.model.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class CarRacing {
 
     public List<Car> carRaceStart() {
         for (Car car : cars) {
-            car.move();
+            car.move(RandomNumber.make());
         }
 
         return cars;

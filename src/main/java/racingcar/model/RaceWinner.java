@@ -5,14 +5,11 @@ import java.util.stream.Collectors;
 
 public class RaceWinner {
 
-    private List<Car> list;
+    private final List<Car> winners;
 
     public RaceWinner(List<Car> cars) {
-        int longestMovingDistance = -1;
-
-        longestMovingDistance = findLongestMovingDistance(cars, longestMovingDistance);
-
-        list = decideWinner(cars, longestMovingDistance);
+        int longestMovingDistance = findLongestMovingDistance(cars);
+        winners = decideWinner(cars, longestMovingDistance);
     }
 
     private List<Car> decideWinner(List<Car> cars, int longestMovingDistance) {
@@ -21,15 +18,17 @@ public class RaceWinner {
                 .collect(Collectors.toList());
     }
 
-    private int findLongestMovingDistance(List<Car> cars, int longestMovingDistance) {
+    private int findLongestMovingDistance(List<Car> cars) {
+        int longestMovingDistance = -1;
+
         for (Car car : cars) {
-            longestMovingDistance = car.isLongest(longestMovingDistance);
+            longestMovingDistance = car.longest(longestMovingDistance);
         }
         return longestMovingDistance;
     }
 
-    public List<Car> getWinnerList() {
-        return list;
+    public List<Car> getWinners() {
+        return winners;
     }
 
 }

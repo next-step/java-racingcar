@@ -21,6 +21,6 @@ public class RaceWinnerTest {
 
         RaceWinner winner = new RaceWinner(cars);
 
-        assertThat(winner.getWinnerList()).map(Car::getName).containsExactly("kb", "jh");
+        assertThat(winner.getWinners()).map(Car::getName).containsExactly("kb", "jh");
     }
 }
