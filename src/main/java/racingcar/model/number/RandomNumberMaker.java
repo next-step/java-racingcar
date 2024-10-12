@@ -1,11 +1,11 @@
-package racingcar.model;
+package racingcar.model.number;
 
 import java.util.Random;
 
-public class RandomNumber {
+public class RandomNumberMaker implements NumberMaker {
     private static final int RANDOM_NUMBER_BOUND = 10;
 
-    public static int make() {
+    public int make() {
         Random random = new Random();
 
         return random.nextInt(RANDOM_NUMBER_BOUND);
