@@ -14,7 +14,7 @@ public class CarTest {
     @Test
     @DisplayName("기본 생성자로 객체를 생성한 경우, 포지션은 0 이다")
     void 생성자_테스트() {
-        Car car = new Car();
+        Car car = new Car("a");
 
         assertThat(car.getName()).isEqualTo("");
         assertThat(car.getPosition()).isEqualTo(0);

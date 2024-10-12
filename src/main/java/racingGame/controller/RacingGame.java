@@ -23,12 +23,13 @@ public class RacingGame {
     }
 
     public void play() {
-        Cars cars = Cars.toCars(input.getCarNames());
-        TryNo round = new TryNo(input.getMoveCount(), gameService);
+        Cars cars = Cars.newInstance(input.getCarNames());
+        int round = input.getMoveCount();
 
         output.printInitMessage();
 
-        CarMovement carMovement = round.tryForRounds(cars);
+        CarMovement carMovement = gameService.moveCarsForAllRounds(cars, round);
+
         List<Car> winners = gameService.findWinners(carMovement.getFinalCarState());
 
         output.printCarGraph(carMovement);

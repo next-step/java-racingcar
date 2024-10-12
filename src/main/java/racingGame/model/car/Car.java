@@ -10,8 +10,8 @@ public class Car {
     private int position;
     private String name;
 
-    public Car() {
-        this(0, "");
+    public Car(String name) {
+        this(0, name);
     }
 
     public Car(int position, String name) {
@@ -19,6 +19,10 @@ public class Car {
         validateName(name);
         this.position = position;
         this.name = name;
+    }
+
+    public static Car newInstance(String name) {
+        return new Car(name);
     }
 
     private void validateName(String name) {

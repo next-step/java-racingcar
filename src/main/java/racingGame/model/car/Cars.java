@@ -16,19 +16,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars createCars(int carCount) {
-        validateCarCount(carCount);
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0 ; i < carCount ; i++) {
-            cars.add(new Car());
-        }
-        return new Cars(cars);
-    }
-
-    public static Cars toCars(String[] carNames) {
+    public static Cars newInstance(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
-            cars.add(new Car(0, name));
+            cars.add(Car.newInstance(name));
         }
         return new Cars(cars);
     }
@@ -62,10 +53,14 @@ public class Cars {
     public List<Car> findCarsWithSamePosition(int position) {
         List<Car> findCars = new ArrayList<>();
         for (Car car : this.cars) {
-            if (car.isSamePosition(position)) {
-                findCars.add(car.clone());
-            }
+            addCarIfSamePosition(position, car, findCars);
         }
         return findCars;
+    }
+
+    private static void addCarIfSamePosition(int position, Car car, List<Car> findCars) {
+        if (car.isSamePosition(position)) {
+            findCars.add(car.clone());
+        }
     }
 }
