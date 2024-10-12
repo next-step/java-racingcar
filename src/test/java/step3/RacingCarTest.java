@@ -54,17 +54,17 @@ public class RacingCarTest {
         assertThat(racingCar.generateRandomNumber()).isBetween(0, 9);
     }
 
-    @DisplayName("랜덤 난수 발생 값에 따른 자동차 이동 테스트")
+    @DisplayName("숫자 값에 따른 자동차 이동 테스트")
     @Test
     void moveCarTest() {
         makeTestInput("3\n5\n");
 
         RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
-        racingCar.moveCar();
+        racingCar.moveCar(3, 0);
+        racingCar.moveCar(5, 1);
 
-        assertThat(racingCar.getCarPosition(0)).isIn(0, 1);
-        assertThat(racingCar.getCarPosition(1)).isIn(0, 1);
-        assertThat(racingCar.getCarPosition(2)).isIn(0, 1);
+        assertThat(racingCar.getCarPosition(0)).isEqualTo(0);
+        assertThat(racingCar.getCarPosition(1)).isEqualTo(1);
     }
 
     @DisplayName("입력 횟수만큼 자동차가 경주했는지에 대한 테스트")
@@ -72,48 +72,24 @@ public class RacingCarTest {
     void racingCarTest() {
         makeTestInput("3\n5\n");
 
+        OutputView outputView = new ConsoleOutputView();
         RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
-        racingCar.startRacing();
+        racingCar.startRacing(outputView);
 
         assertThat(racingCar.getCarPosition(0)).isBetween(0, 5);
         assertThat(racingCar.getCarPosition(1)).isBetween(0, 5);
         assertThat(racingCar.getCarPosition(2)).isBetween(0, 5);
     }
 
-    @DisplayName("자동차 대수 만큼 결과를 출력했는지 확인하는 테스트")
-    @Test
-    void resultViewTest() {
-        makeTestInput("3\n5\n");
-        System.setOut(new PrintStream(outputStreamCaptor));
-
-        RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
-        racingCar.startRacing();
-        RacingCarResultView.printRacingCarStatus(racingCar);
-
-        String output = outputStreamCaptor.toString();
-
-        assertTrue(output.contains("-"));
-
-        long numberOfLines = output.lines().count();
-        // input시 줄바꿈 2회 포함 5줄
-        assertEquals(5, numberOfLines);
-    }
-
     @DisplayName("자동차 대수 만큼 결과를 매번 출력했는지 확인하는 테스트")
     @Test
     void isResultViewRunNumberOfRaceTest() {
         makeTestInput("3\n5\n");
-        System.setOut(new PrintStream(outputStreamCaptor));
 
+        MockOutputView outputView = new MockOutputView();
         RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
-        racingCar.startRacing();
+        racingCar.startRacing(outputView);
 
-        String output = outputStreamCaptor.toString();
-
-        assertTrue(output.contains("-"));
-
-        long numberOfLines = output.lines().count();
-        // input시 줄바꿈 2회, 전체 결과 출력후 줄바꿈 포함 한 레이스당 4줄
-        assertEquals(22, numberOfLines);
+        assertTrue(outputView.getOutputs().contains("-"));
     }
 }

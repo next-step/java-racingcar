@@ -33,17 +33,22 @@ public class RacingCar {
         return random.nextInt(10);
     }
 
-    public void moveCar() {
+    public void doRacing() {
         for (int i = 0; i < numberOfCar; i++) {
-            if (generateRandomNumber() >= 4)
-                carPosition[i]++;
+            moveCar(generateRandomNumber(), i);
         }
     }
 
-    public void startRacing() {
+    public void moveCar(int number, int carNumber) {
+        if (number >= 4)
+            carPosition[carNumber]++;
+
+    }
+
+    public void startRacing(OutputView outputView) {
         for (int i = 0; i < numberOfRace; i++) {
-            moveCar();
-            RacingCarResultView.printRacingCarStatus(this);
+            doRacing();
+            RacingCarResultView.printRacingCarStatus(outputView, this);
         }
     }
 

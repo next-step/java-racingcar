@@ -1,16 +1,15 @@
 package step3;
 
+import java.util.stream.IntStream;
+
 public class RacingCarResultView {
 
-    static void printRacingCarStatus(RacingCar racingCar) {
+    static void printRacingCarStatus(OutputView outputView, RacingCar racingCar) {
 
-        for (int i = 0; i < racingCar.getNumberOfCar(); i++) {
-            for (int j = 0; j < racingCar.getCarPosition(i); j++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
-        System.out.println();
+        IntStream.range(0, racingCar.getNumberOfCar())
+                .mapToObj(i -> "-".repeat(racingCar.getCarPosition(i)))
+                .forEach(outputView::print);
+
     }
 
 }
