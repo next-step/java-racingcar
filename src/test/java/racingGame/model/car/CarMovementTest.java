@@ -8,7 +8,7 @@ public class CarMovementTest {
 
     @Test
     public void add_성공_테스트() {
-        Cars obj = Cars.createCars(3);
+        Cars obj = Cars.newInstance(new String[]{"a", "b"});
         CarMovement expected = new CarMovement();
 
         expected.addOneStepProgress(obj);

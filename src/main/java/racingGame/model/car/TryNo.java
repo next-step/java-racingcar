@@ -1,7 +1,5 @@
 package racingGame.model.car;
 
-import racingGame.service.RacingGameService;
-
 public class TryNo {
 
     private static final int MINIMUM_MOVE_COUNT = 1;
@@ -10,23 +8,15 @@ public class TryNo {
 
     private int round;
 
-    private final RacingGameService gameService;
-
-    public TryNo(int tryNo, RacingGameService gameService) {
+    public TryNo(int tryNo) {
         validateMoveCount(tryNo);
         this.round = tryNo;
-        this.gameService = gameService;
     }
 
-    public CarMovement tryForRounds(Cars cars) {
-        CarMovement ret = new CarMovement();
-
-        for (int i = 0; i < this.round; i++) {
-            Cars car = gameService.moveAllCarByOneStep(cars);
-            ret.addOneStepProgress(car);
+    public void forEach(Runnable runnable) {
+        for(int i = 0; i< this.round; i++) {
+            runnable.run();
         }
-
-        return ret;
     }
 
     public int getTryNo() {

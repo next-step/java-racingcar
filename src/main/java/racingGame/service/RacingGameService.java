@@ -1,7 +1,9 @@
 package racingGame.service;
 
+import racingGame.model.car.CarMovement;
 import racingGame.model.car.Cars;
 import racingGame.model.car.Car;
+import racingGame.model.car.TryNo;
 import racingGame.model.strategy.MovementStrategy;
 
 import java.util.ArrayList;
@@ -13,6 +15,18 @@ public class RacingGameService {
 
     public RacingGameService(MovementStrategy movementStrategy) {
         this.movementStrategy = movementStrategy;
+    }
+
+    public CarMovement moveCarsForAllRounds(Cars cars, int round) {
+        TryNo tryNo = new TryNo(round);
+        CarMovement ret = new CarMovement();
+
+        tryNo.forEach(() -> {
+            Cars car = moveAllCarByOneStep(cars);
+            ret.addOneStepProgress(car);
+        });
+
+        return ret;
     }
 
     public Cars moveAllCarByOneStep(Cars cars) {

@@ -12,6 +12,7 @@ public class ConsoleOutputView implements OutputView{
     private static final String NEW_LINE = "\n";
     private static final String NAME_POSITION_SEPARATOR = " : ";
     private static final String RESULT_WINNERS_POSTFIX_MESSAGES = "가 최종 우승했습니다.";
+    public static final String CAR_SEPERATOR = ",";
 
     @Override
     public void printCarGraph(CarMovement carMovementProgress) {
@@ -45,12 +46,16 @@ public class ConsoleOutputView implements OutputView{
     public void printWinners(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
         for (Car car : cars) {
-            if (sb.length() > 0) {
-                sb.append(",");
-            }
-            sb.append(car.getName());
+            addWinners(car, sb);
         }
         sb.append(RESULT_WINNERS_POSTFIX_MESSAGES);
         System.out.println(sb);
+    }
+
+    private static void addWinners(Car car, StringBuilder sb) {
+        if (sb.length() > 0) {
+            sb.append(CAR_SEPERATOR);
+        }
+        sb.append(car.getName());
     }
 }
