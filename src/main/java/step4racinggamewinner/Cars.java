@@ -10,63 +10,54 @@ import java.util.Map;
 
 public class Cars {
 
-    public static final int CARNAME_MAX_LENGTH = 5;
-    public static final int GO = 1;
-    public static final int STOP = 0;
     private List<Car> cars;
 
-    public Cars() {
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
 
-    public Cars(String carNames) {
-        cars = new ArrayList<>();
+    public static Cars registerCars(String carNames) {
         List<String> carNamesList = List.of(carNames.split(","));
-        checkNameLength(carNamesList);
-        registerCars(carNamesList);
+        List<Car> cars = createCarList(carNamesList);
+        checkNameLength(cars);
+        return new Cars(cars);
     }
 
-    public Cars(Car... cars) {
-        this.cars = List.of(cars);
+    private static List<Car> createCarList(List<String> carNamesList) {
+        List<Car> carList = new ArrayList<>();
+        for (String carName : carNamesList) {
+            Car car = new Car(carName);
+            carList.add(car);
+        }
+        return carList;
     }
 
-    protected Car baseLineCar() {
+    private static List<Car> checkNameLength(List<Car> cars) {
+        for (Car car : cars) {
+            car.checkNameLength();
+        }
+        return cars;
+    }
+
+    public Car baseLineCar() {
         return cars.get(0);
     }
 
-    protected String specificCarName(int index) {
+    public String specificCarName(int index) {
         return cars.get(index).carName();
     }
 
-    private void registerCars(List<String> carNamesList) {
-        carNamesList.stream()
-                .map(Car::new)
-                .forEachOrdered(car -> cars.add(car));
-    }
-
-    public void checkNameLength(List<String> carNamesList) {
-        carNamesList.stream()
-                .filter(carName -> carName.length() > CARNAME_MAX_LENGTH)
-                .forEachOrdered(carName -> {
-                    throw new IllegalArgumentException();
-                });
-    }
 
     public int carCount() {
         return cars.size();
     }
 
-    public int decideGoStop(int randomNumber) {
-        if (randomNumber >= 4) {
-            return GO;
-        }
-        return STOP;
-
-    }
 
     public void recordEachRoundMoving(RandomGenerator randomGenerator) {
         for (Car car : cars) {
-            car.updatePosition(decideGoStop(randomGenerator.generateRandomNumber()));
+            car.updatePosition(car.decideGoStop(randomGenerator.generateRandomNumber()));
         }
     }
 
@@ -88,14 +79,6 @@ public class Cars {
 
     public Car currentCar(int carIndex) {
         return cars.get(carIndex);
-    }
-
-    private int currentCarPosition(int index) {
-        return cars.get(index).currentPosition();
-    }
-
-    private String currentCarName(int index) {
-        return cars.get(index).carName();
     }
 
     public List<String> findWinner() {

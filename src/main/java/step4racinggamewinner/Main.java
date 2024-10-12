@@ -11,7 +11,8 @@ public class Main {
         String carNames = InputView.nameOfCars(scanner);
         int movingTryCount = InputView.movingTryCount(scanner);
 
-        Cars racingCars = new Cars(carNames);
+        Cars racingCars = Cars.registerCars(carNames);
+
         RandomGenerator randomGenerator = new RacingCarRandomGenerator();
         ResultView.printPreview();
         racingCars.viewRacing(movingTryCount, randomGenerator);

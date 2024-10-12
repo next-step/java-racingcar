@@ -19,7 +19,7 @@ public class WinnerTest {
         Car red = new Car("red", redPositionNumber);
         Car kaki = new Car("kaki", kakiPositionNumber);
         Car blue = new Car("blue", bluePositionNumber);
-        cars = new Cars(red, kaki, blue);
+        cars = new Cars(List.of(red, kaki, blue));
         winners = new Winners(cars);
         assertThat(winners.findWinner()).isEqualTo(winnersList);
     }
