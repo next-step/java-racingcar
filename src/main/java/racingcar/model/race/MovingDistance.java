@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.race;
 
 public class MovingDistance {
     private int value;

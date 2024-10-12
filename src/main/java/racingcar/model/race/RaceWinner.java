@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.race;
 
 import java.util.List;
 import java.util.stream.Collectors;

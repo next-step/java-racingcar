@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.Car;
+import racingcar.model.race.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +36,6 @@ public class ResultView {
 
         String name = String.join(", ", names);
 
-        return name += "가 최종 우승했습니다.";
+        return name + "가 최종 우승했습니다.";
     }
 }

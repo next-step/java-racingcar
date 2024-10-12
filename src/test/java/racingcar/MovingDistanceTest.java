@@ -3,8 +3,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
-import racingcar.model.MovingDistance;
+import racingcar.model.race.Car;
+import racingcar.model.race.MovingDistance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

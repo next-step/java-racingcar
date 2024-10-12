@@ -1,29 +1,27 @@
 package racingcar.service;
 
-import racingcar.model.Car;
-import racingcar.model.RandomNumber;
+import racingcar.model.number.Number;
+import racingcar.model.race.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
-    private List<Car> cars;
+    private final List<Car> cars = new ArrayList<Car>();
 
     public CarRacing(List<String> carNames) {
         carRaceReady(carNames);
     }
 
     private void carRaceReady(List<String> carNames) {
-        cars = new ArrayList<Car>();
-
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
 
-    public List<Car> carRaceStart() {
+    public List<Car> carRaceStart(Number number) {
         for (Car car : cars) {
-            car.move(RandomNumber.make());
+            car.move(number.make());
         }
 
         return cars;

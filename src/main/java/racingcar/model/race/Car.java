@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.race;
 
 public class Car {
     private static final int CAN_MOVING_FORWARD = 4;
