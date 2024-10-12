@@ -2,20 +2,19 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-class ForwardStrategyTest {
+class RandomStrategyTest {
 
     @Test
     void isMovableTrue() {
         MoveStrategy moveStrategy = () -> true;
-        assertTrue(moveStrategy.isMovable());
+        assertThat(moveStrategy.isMovable()).isTrue();
     }
 
     @Test
     void isMovableFalse() {
         MoveStrategy moveStrategy = () -> false;
-        assertFalse(moveStrategy.isMovable());
+        assertThat(moveStrategy.isMovable()).isFalse();
     }
 }
