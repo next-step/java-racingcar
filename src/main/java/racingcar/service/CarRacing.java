@@ -1,45 +1,30 @@
 package racingcar.service;
 
-import racingcar.model.Car;
-import racingcar.model.RaceRecord;
+import racingcar.model.maker.NumberMaker;
+import racingcar.model.race.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarRacing {
-    private static final int CAN_MOVING_FORWARD = 4;
+    private final List<Car> cars = new ArrayList<Car>();
 
-    private List<Car> cars;
-
-    public CarRacing(String[] carNames) {
+    public CarRacing(List<String> carNames) {
         carRaceReady(carNames);
     }
 
-    private void carRaceReady(String[] carNames) {
-        cars = new ArrayList<Car>();
-
+    private void carRaceReady(List<String> carNames) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
 
-    public List<RaceRecord> carRaceStart() {
-        List<RaceRecord> records = new ArrayList<>();
-
+    public List<Car> carRaceStart(NumberMaker numberMaker) {
         for (Car car : cars) {
-            car.move(isCarMovingForward());
-            records.add(new RaceRecord(car.getName(), car.getMovingDistance()));
+            car.move(numberMaker.make());
         }
 
-        return records;
-    }
-
-    private boolean isCarMovingForward() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(9) + 1;
-
-        return randomNumber >= CAN_MOVING_FORWARD;
+        return cars;
     }
 
     public List<Car> getCars() {

@@ -1,9 +1,9 @@
 package racingcar.view;
 
-import racingcar.model.RaceRecord;
-import racingcar.model.RaceWinner;
+import racingcar.model.race.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -11,25 +11,31 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printRacingResult(List<RaceRecord> records, int raceCount, int totalNumberOfRace) {
-
-        for (RaceRecord record : records) {
-            System.out.println(record.getCarName() + " : " + generateDashedString(record.getCarMovingDistance()));
+    public void printRacingResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + generateDashedString(car.getMovingDistance()));
         }
 
         System.out.println();
-
-        if (raceCount == totalNumberOfRace) {
-            printRaceWinner(records);
-        }
     }
 
     private String generateDashedString(int movingDistance) {
         return "-".repeat(movingDistance);
     }
 
-    private void printRaceWinner(List<RaceRecord> records) {
-        RaceWinner winner = new RaceWinner(records);
-        System.out.println(winner.getNames());
+    public void printRaceWinner(List<Car> winners) {
+        String winnerNames = winnersToString(winners);
+
+        System.out.println(winnerNames);
+    }
+
+    private String winnersToString(List<Car> winners) {
+        List<String> names = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        String name = String.join(", ", names);
+
+        return name + "가 최종 우승했습니다.";
     }
 }
