@@ -12,12 +12,12 @@ public class InputView {
     private static final String TRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private static final String DELIMITER = ",";
 
-    public List<String> getCarNames() {
+    public static List<String> getCarNames() {
         System.out.println(CAR_NAME_MESSAGE);
         return Arrays.asList(SCANNER.nextLine().split(DELIMITER));
     }
 
-    public int getTryCount() {
+    public static int getTryCount() {
         System.out.println(TRY_COUNT_MESSAGE);
         return SCANNER.nextInt();
     }
