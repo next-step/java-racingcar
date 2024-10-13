@@ -12,7 +12,7 @@ public class RacingMain {
 
     public static void main(String[] args) {
         InputDto read = InputView.readCount();
-        RacingGame racingGame = new RacingGame(read.getRepeatCount(), new CommaPatternNames("test,test"));
+        RacingGame racingGame = new RacingGame(read.getRepeatCount(), new CommaPatternNames(read.getCarNames()));
         History snapShot = racingGame.start(new DefaultRandomNumberGenerator());
         OutPutView.render(snapShot);
     }
