@@ -11,15 +11,15 @@ public class Name {
 
 
     public Name(String name) {
-        validationName(name.trim());
-        this.name = name;
+        validationName(name);
+        this.name = name.trim();
     }
 
-    private void validationName(String value) {
-        if (value == null || value.isEmpty()) {
+    private void validationName(String name) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException(INVALID_NAME_MESSAGE);
         }
-        if (value.length() > 5) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException(MAX_CAR_NAME_MESSAGE);
         }
     }
