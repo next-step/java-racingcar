@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import racinggame.dto.CarDto;
@@ -19,14 +20,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(int count) {
-        return new Cars(carInitialization(count));
+    public static Cars from(String names) {
+        return new Cars(carInitialization(split(names)));
     }
 
-    private static ArrayList<Car> carInitialization(int carCount) {
+    private static List<String> split(String names) {
+        return List.of(names.split(","));
+    }
+
+    private static ArrayList<Car> carInitialization(List<String> names) {
         ArrayList<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.defaultCar("test"));
+        for(String name:names){
+            cars.add(Car.defaultCar(name));
         }
         return cars;
     }

@@ -13,7 +13,7 @@ public class RacingGame {
             throw new IllegalArgumentException("반복횟수는 1이상이여야 합니다.");
         }
         this.repeatCount=repeatCount;
-        this.cars = Cars.from(carCount);
+        this.cars = Cars.from("test,test");
     }
 
     private boolean isNonNegative(int repeatCount) {

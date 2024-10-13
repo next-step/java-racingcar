@@ -28,9 +28,9 @@ public class CarsTest {
     }
 
     @Test
-    public void 자동차_갯수로_생성테스트() {
-        Cars cars = Cars.from(1);
-        assertThat(cars).isEqualTo(new Cars(carList(1)));
+    public void 자동차_이름으로_생성테스트() {
+        Cars cars = Cars.from("test,test");
+        assertThat(cars).isEqualTo(new Cars(carList(1, 1)));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class CarsTest {
     private static List<Car> carList(List<Integer> positions) {
         ArrayList<Car> list = new ArrayList<>();
         for (Integer position : positions) {
-            list.add(new Car(position, ""));
+            list.add(new Car(position, "test"));
         }
         return list;
     }
