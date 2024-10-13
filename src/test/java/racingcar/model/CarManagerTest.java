@@ -17,7 +17,7 @@ class CarManagerTest {
 
         CarManager carManager = new CarManager(Arrays.asList(a, b, c));
 
-        assertThat(carManager.findWinner()).contains("a");
+        assertThat(carManager.findWinner()).containsExactly("c");
     }
 
     @Test
@@ -28,7 +28,7 @@ class CarManagerTest {
 
         CarManager carManager = new CarManager(Arrays.asList(a, b, c));
 
-        assertThat(carManager.findWinner()).contains("b", "c");
+        assertThat(carManager.findWinner()).containsExactly("b", "c");
     }
 
     @Test

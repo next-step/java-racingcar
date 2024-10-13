@@ -16,7 +16,6 @@ public class RacingCarGame {
 
     public static void start() {
 
-        // 레이싱을 한 라운드로 보고싶음!
         Racing racing = new Racing();
 
         List<Car> cars = CarFactory.createCars(InputView.inputCarName());

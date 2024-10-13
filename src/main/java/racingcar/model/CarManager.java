@@ -45,15 +45,23 @@ public class CarManager {
     public List<String> findWinner() {
         winners.clear();
 
-        int maxPosition = 0;
+        int maxPosition = getMaxPosition(cars);
 
         for (Car car : cars) {
-            maxPosition = car.max(maxPosition);
-
             addWinner(car, maxPosition);
         }
 
         return winners;
+    }
+
+    private int getMaxPosition(List<Car> cars) {
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            maxPosition = car.max(maxPosition);
+        }
+
+        return maxPosition;
     }
 
     private void addWinner(Car car, int maxPosition) {
