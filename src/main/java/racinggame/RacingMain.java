@@ -1,7 +1,6 @@
 package racinggame;
 
 import racinggame.domain.CommaPatternNames;
-import racinggame.dto.History;
 import racinggame.dto.Result;
 import racinggame.random.DefaultRandomNumberGenerator;
 import racinggame.view.OutPutView;
