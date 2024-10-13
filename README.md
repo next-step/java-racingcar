@@ -33,7 +33,7 @@
 ## 5단계 - 자동차 경주(리팩토링)
 
 ### TODO
-- [ ] 4단계 피드백 반영 - RacingCarPosition 에서 name 속성 제거
+- [x] 4단계 피드백 반영 - RacingCarPosition 에서 name 속성 제거
 - [ ] 4단계 피드백 반영 - RacingCar[] 를 List 로 변경 
 - [ ] 핵심 비지니스 로직을 가지는 객체를 domain 패키지에 구현한다.
 - [ ] UI 관련한 객체를 view 패키지에 구현한다.

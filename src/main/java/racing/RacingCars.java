@@ -27,24 +27,19 @@ public class RacingCars {
         }
     }
 
-    public RacingCarPosition[] getPositions() {
-        RacingCarPosition[] result = new RacingCarPosition[this.racingCars.length];
-        for (int i = 0 ; i < this.racingCars.length; i++ ) {
-            RacingCar racingCar = this.racingCars[i];
-            result[i] = racingCar.getPosition();
-        }
-        return result;
+    public RacingCar[] getRacingCars() {
+        return this.racingCars;
     }
 
     public List<RacingCar> findWinners() {
         int max = 0;
         for (RacingCar racingCar : this.racingCars) {
-            max = Math.max(max, racingCar.getPosition().getCarPosition());
+            max = Math.max(max, racingCar.getCurrentPosition());
         }
 
         List<RacingCar> winners = new ArrayList<>();
         for (RacingCar racingCar : this.racingCars) {
-            winners.add(max == racingCar.getPosition().getCarPosition() ? racingCar : null);
+            winners.add(max == racingCar.getCurrentPosition() ? racingCar : null);
         }
 
         return winners.stream().filter(Objects::nonNull).collect(Collectors.toList());

@@ -25,7 +25,7 @@ public class RacingCarWithNameGameTest {
         for (int i = 0; i < 10; i++) {
             racingCar.race();
         }
-        String result = ResultView.display(new RacingCarPosition[]{racingCar.getPosition()});
+        String result = ResultView.display(new RacingCar[]{racingCar});
         assertThat(result).isEqualTo("pobi : ---------\n\n");
     }
 

@@ -27,7 +27,7 @@ public class RacingCarGameTest {
             racingCar.race();
         }
         // int[] expected = new int[] {5, 8, 7, 3, 4, 4, 4, 6, 8, 8};
-        assertThat(racingCar.getPosition().getCarPosition()).isEqualTo(9);
+        assertThat(racingCar.getCurrentPosition()).isEqualTo(9);
     }
 
     @Test

@@ -20,7 +20,7 @@ public class RacingCarWithNameGame {
 
         for (int i = 0; i < totalRacingCounts; i++) {
             racingCars.racing();
-            ResultView.display(racingCars.getPositions());
+            ResultView.display(racingCars.getRacingCars());
         }
 
         ResultView.displayWinners(racingCars.findWinners());

@@ -2,24 +2,18 @@ package racing;
 
 public class RacingCarPosition {
 
-    private final String carName;
-    private Integer carPosition;
+    private Integer position;
 
-    public RacingCarPosition(String carName) {
-        this.carName = carName;
-        this.carPosition = 0;
+    public RacingCarPosition() {
+        this.position = 0;
     }
 
     public void move() {
-        this.carPosition++;
+        this.position++;
     }
 
-    public String getCarName() {
-        return this.carName;
-    }
-
-    public Integer getCarPosition() {
-        return this.carPosition;
+    public Integer getPosition() {
+        return this.position;
     }
 
 }
