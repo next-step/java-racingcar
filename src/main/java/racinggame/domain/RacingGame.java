@@ -9,11 +9,15 @@ public class RacingGame {
     private Integer repeatCount;
 
     public RacingGame(int repeatCount,int carCount) {
-        if(repeatCount<=0){
+        if(isNonNegative(repeatCount)){
             throw new IllegalArgumentException("반복횟수는 1이상이여야 합니다.");
         }
         this.repeatCount=repeatCount;
         this.cars = Cars.from(carCount);
+    }
+
+    private boolean isNonNegative(int repeatCount) {
+        return repeatCount <= 0;
     }
 
     public History start(CapacityGenerator capacityGenerator) {
