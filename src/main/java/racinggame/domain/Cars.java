@@ -26,7 +26,7 @@ public class Cars {
     private static ArrayList<Car> carInitialization(int carCount) {
         ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(Car.defaultCar());
+            cars.add(Car.defaultCar("test"));
         }
         return cars;
     }
