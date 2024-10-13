@@ -56,4 +56,8 @@ public class Car {
     public String name() {
         return name;
     }
+
+    public boolean isPositionEqual(int position) {
+        return this.position==position;
+    }
 }

@@ -27,4 +27,11 @@ public class CarTest {
         assertThatCode(() -> new Car(0, "next")).doesNotThrowAnyException();
     }
 
+    @Test
+    public void 위치_검증_테스트() {
+        Car car = new Car(1, "test");
+        assertThat(car.isPositionEqual(1)).isTrue();
+        assertThat(car.isPositionEqual(2)).isFalse();
+    }
+
 }

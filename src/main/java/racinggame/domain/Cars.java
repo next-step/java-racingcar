@@ -56,7 +56,7 @@ public class Cars {
 
     public List<String> winners() {
         int max = cars.stream().mapToInt(Car::position).max().orElse(0);
-        return cars.stream().filter(car -> car.position() == max)
+        return cars.stream().filter(car -> car.isPositionEqual(max))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
