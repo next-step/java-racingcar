@@ -32,10 +32,6 @@ public class Cars {
         return cars;
     }
 
-    public int count() {
-        return cars.size();
-    }
-
     public void move(CapacityGenerator capacityGenerator) {
         for (Car car : cars) {
             car.move(capacityGenerator.generate());

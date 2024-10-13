@@ -11,18 +11,10 @@ import racinggame.random.CapacityGenerator;
 public class CarsTest {
 
     @Test
-    public void 자동차_갯수_카운트테스트() {
-        List<Car> list = carList(List.of(0, 1, 2, 3, 4), List.of("t1", "t2", "t3", "t4", "t5"));
-        Cars cars = new Cars(list);
-        assertThat(cars.count()).isEqualTo(list.size());
-    }
-
-    @Test
     public void 자동차_생성테스트() {
         List<Car> list = carList(List.of(0, 1, 2, 3, 4), List.of("t1", "t2", "t3", "t4", "t5"));
         Cars cars = new Cars(list);
         assertThat(cars).isEqualTo(new Cars(list));
-        assertThat(cars.count()).isEqualTo(list.size());
     }
 
     @Test
