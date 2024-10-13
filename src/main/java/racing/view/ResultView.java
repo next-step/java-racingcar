@@ -1,4 +1,4 @@
-package racing;
+package racing.view;
 
 import racing.domain.RacingCar;
 

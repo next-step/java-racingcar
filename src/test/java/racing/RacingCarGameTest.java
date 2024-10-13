@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.Operator;
 import racing.domain.RacingCar;
+import racing.view.ResultView;
 
 import java.util.List;
 

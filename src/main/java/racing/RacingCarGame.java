@@ -3,6 +3,8 @@ package racing;
 import racing.domain.Operator;
 import racing.domain.RacingCar;
 import racing.domain.UserInput;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
