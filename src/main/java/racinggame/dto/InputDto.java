@@ -2,16 +2,16 @@ package racinggame.dto;
 
 public class InputDto {
 
-    private final int carCount;
+    private final String carNames;
     private final int repeatCount;
 
-    public InputDto(int carCount, int repeatCount) {
-        this.carCount = carCount;
+    public InputDto(String carNames, int repeatCount) {
+        this.carNames = carNames;
         this.repeatCount = repeatCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNames() {
+        return carNames;
     }
 
     public int getRepeatCount() {

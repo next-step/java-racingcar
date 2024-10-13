@@ -8,13 +8,22 @@ public class Car {
     private static final int DEFAULT_POSITION = 1;
 
     private int position;
+    private String name;
 
-    public Car(int position) {
+    public Car(int position, String name) {
+        if (isNotInvalidName(name)) {
+            throw new IllegalArgumentException("자동차의 이름의 길이는 1이상 4이하여야 합니다.");
+        }
         this.position = position;
+        this.name = name;
     }
 
-    public static Car defaultCar(){
-        return new Car(DEFAULT_POSITION);
+    private boolean isNotInvalidName(String name) {
+        return name == null || name.isBlank() || 4 < name.length();
+    }
+
+    public static Car defaultCar(String name) {
+        return new Car(DEFAULT_POSITION, name);
     }
 
     public void move(int number) {
@@ -36,12 +45,19 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return position == car.position;
+        return position == car.position && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(position, name);
     }
 
+    public String name() {
+        return name;
+    }
+
+    public boolean isPositionEqual(int position) {
+        return this.position==position;
+    }
 }

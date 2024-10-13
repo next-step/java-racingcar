@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racinggame.generator.CarDtoTestGenerator.carDtos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +13,14 @@ import racinggame.dto.History;
 public class SnapShotStoreTest {
 
     @Test
-    public void 스냅샷_저장_테스트(){
+    public void 스냅샷_저장_테스트() {
         SnapShotStore snapShotStore = new SnapShotStore();
         Random random = new Random();
         List<List<CarDto>> list = new ArrayList<>();
         int repeatCount = 5;
         for (int i = 0; i < repeatCount; i++) {
-            List<CarDto> carDtos = carDtos(random.nextInt(10), random.nextInt(10), random.nextInt(10),
-                    random.nextInt(10));
+            List<CarDto> carDtos = carDtos(List.of(random.nextInt(10), random.nextInt(10), random.nextInt(10),
+                    random.nextInt(10)), List.of("t1", "t2", "t3", "t4"));
             list.add(carDtos);
             snapShotStore.save(carDtos);
         }
@@ -29,14 +30,5 @@ public class SnapShotStoreTest {
         for (int i = 0; i < repeatCount; i++) {
             assertThat(snapShot.getSnapShot(i)).isEqualTo(list.get(i));
         }
-    }
-
-
-    private static List<CarDto> carDtos(int... positions) {
-        ArrayList<CarDto> result = new ArrayList<>();
-        for (int position : positions) {
-            result.add(new CarDto(position));
-        }
-        return result;
     }
 }

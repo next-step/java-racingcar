@@ -1,8 +1,12 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import racinggame.dto.CarDto;
 import racinggame.dto.History;
 import racinggame.random.CapacityGenerator;
@@ -19,20 +23,16 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(int count) {
-        return new Cars(carInitialization(count));
+    public static Cars from(List<String> names) {
+        return new Cars(carInitialization(names));
     }
 
-    private static ArrayList<Car> carInitialization(int carCount) {
+    private static ArrayList<Car> carInitialization(List<String> names) {
         ArrayList<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.defaultCar());
+        for (String name : names) {
+            cars.add(Car.defaultCar(name));
         }
         return cars;
-    }
-
-    public int count() {
-        return cars.size();
     }
 
     public void move(CapacityGenerator capacityGenerator) {
@@ -52,6 +52,13 @@ public class Cars {
 
     public History history() {
         return this.snapShotStore.snapShot();
+    }
+
+    public List<String> winners() {
+        int max = cars.stream().mapToInt(Car::position).max().orElse(0);
+        return cars.stream().filter(car -> car.isPositionEqual(max))
+                .map(Car::name)
+                .collect(Collectors.toList());
     }
 
     @Override

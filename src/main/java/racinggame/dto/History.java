@@ -5,6 +5,7 @@ import java.util.List;
 import racinggame.domain.SnapShot;
 
 public class History {
+
     private final List<SnapShot> snapShots;
 
     public History(List<SnapShot> snapShots) {
