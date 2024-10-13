@@ -1,5 +1,7 @@
 package racing;
 
+import racing.domain.UserInput;
+
 import java.util.Scanner;
 
 public class InputView {

@@ -1,5 +1,8 @@
 package racing;
 
+import racing.domain.RacingCars;
+import racing.domain.UserInput;
+
 public class RacingCarWithNameGame {
 
     public static void main(String[] args) {

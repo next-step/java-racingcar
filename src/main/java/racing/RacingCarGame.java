@@ -1,5 +1,9 @@
 package racing;
 
+import racing.domain.Operator;
+import racing.domain.RacingCar;
+import racing.domain.UserInput;
+
 import java.util.ArrayList;
 import java.util.List;
 
