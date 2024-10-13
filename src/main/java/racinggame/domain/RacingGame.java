@@ -8,7 +8,7 @@ import racinggame.random.CapacityGenerator;
 public class RacingGame {
 
     private Cars cars;
-    private Integer repeatCount;
+    private int repeatCount;
 
     public RacingGame(int repeatCount, Names names) {
         if (isNonNegative(repeatCount)) {
