@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racinggame.dto.CarDto;
 import racinggame.dto.History;
+import racinggame.dto.Result;
 import racinggame.generator.TestNumberGenerator;
 
 public class RacingGameTest {
@@ -19,7 +20,7 @@ public class RacingGameTest {
         int repeat = 4;
 
         RacingGame racingGame = new RacingGame(repeat, defaultNames());
-        History result = racingGame.start(new TestNumberGenerator(4));
+        Result result = racingGame.start(new TestNumberGenerator(4));
 
         assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(
                 carDtos(List.of(repeat + 1, repeat + 1, repeat + 1, repeat + 1), List.of("t1", "t2", "t3", "t4")));
