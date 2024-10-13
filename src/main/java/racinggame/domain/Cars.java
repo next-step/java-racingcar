@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.OptionalInt;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racinggame.dto.CarDto;
 import racinggame.dto.History;
@@ -55,14 +56,7 @@ public class Cars {
 
     public List<String> winners() {
         int max = cars.stream().mapToInt(Car::position).max().getAsInt();
-
-        ArrayList<String> result = new ArrayList<>();
-        for(Car car:cars){
-            if(car.position()==max){
-                result.add(car.name());
-            }
-        }
-        return result;
+        return cars.stream().filter(car -> car.position() == max).map(Car::name).collect(Collectors.toList());
     }
 
     @Override
