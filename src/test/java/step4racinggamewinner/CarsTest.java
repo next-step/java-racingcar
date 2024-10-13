@@ -48,27 +48,13 @@ public class CarsTest {
 
 
     @Test
-    void 자동차별_한라운드_이동여부_저장() {
-        randomGenerator = new AlwaysMoveNumber();
-        cars = Cars.registerCars("red,blue");
-        cars.recordEachRoundMoving(randomGenerator);
-        assertThat(cars.currentCarPositionList())
-                .isEqualTo(List.of(1, 1));
-    }
-
-    @Test
     void carNameAndPosition테스트() {
         cars = Cars.registerCars("red,blue");
         assertThat(cars.carNameAndPositions())
                 .isEqualTo(Map.of("red", DEFAULT_POSITION, "blue", DEFAULT_POSITION));
     }
 
-    @Test
-    void currentCarPositionList테스트() {
-        cars = Cars.registerCars("red,blue");
-        assertThat(cars.currentCarPositionList())
-                .isEqualTo(List.of(DEFAULT_POSITION, DEFAULT_POSITION));
-    }
+
 
 
 }

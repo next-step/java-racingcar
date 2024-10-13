@@ -2,6 +2,7 @@ package step4racinggamewinner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Winners {
 
@@ -14,29 +15,26 @@ public class Winners {
     }
 
     public List<String> findWinner() {
-        List<Integer> currentCarPositionList = cars.currentCarPositionList();
-        Car baseLineCar = this.cars.baseLineCar();
-        winnerNameList.add(baseLineCar.carName());
-        int baseLinePosition = baseLineCar.currentPosition();
-
-        for (int carIndex = 1; carIndex < currentCarPositionList.size(); carIndex++) {
-            baseLinePosition = compareCars(baseLinePosition, cars.currentCar(carIndex));
-        }
+        addWinnerNameToList(carNameAndPositionMap(), maxCarPosition());
         return winnerNameList;
     }
 
-    private int compareCars(int baseLinePosition, Car currentCar) {
-        int resultPosition = baseLinePosition;
-        int currentCarPosition = currentCar.currentPosition();
-        String currentCarName = currentCar.carName();
-
-        if (baseLinePosition < currentCarPosition) {
-            winnerNameList.clear();
-            winnerNameList.add(currentCarName);
-            resultPosition = currentCarPosition;
-        } else if (baseLinePosition == currentCarPosition) {
-            winnerNameList.add(currentCarName);
+    public void addWinnerNameToList(Map<String, Integer> carNameAndPositionMap, int maxCarPosition) {
+        for ( String carName : carNameAndPositionMap.keySet()) {
+            if (carNameAndPositionMap.get(carName) == maxCarPosition) {
+                winnerNameList.add(carName);
+            }
         }
-        return resultPosition;
     }
+
+    public Map<String, Integer> carNameAndPositionMap() {
+        return cars.carNameAndPositions();
+    }
+
+    public int maxCarPosition() {
+        return cars.maxCarPosition();
+    }
+    
+
+
 }

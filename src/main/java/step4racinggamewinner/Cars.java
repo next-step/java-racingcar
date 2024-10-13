@@ -3,10 +3,7 @@ package step4racinggamewinner;
 
 import step4racinggamewinner.random.RandomGenerator;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Cars {
 
@@ -77,21 +74,18 @@ public class Cars {
         return carNamePosition;
     }
 
-    public Car currentCar(int carIndex) {
-        return cars.get(carIndex);
-    }
 
     public List<String> findWinner() {
         Winners winners = new Winners(this);
         return winners.findWinner();
     }
 
-    public List<Integer> currentCarPositionList() {
-        List<Integer> movementList = new ArrayList<>();
-        for (Car car : cars) {
-            movementList.add(car.currentPosition());
-        }
-        return movementList;
-    }
 
+
+    public int maxCarPosition() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::currentPosition))
+                .map(Car::currentPosition)
+                .orElse(0);
+    }
 }
