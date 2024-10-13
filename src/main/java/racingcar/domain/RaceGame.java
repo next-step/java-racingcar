@@ -1,44 +1,26 @@
 package racingcar.domain;
 
-import racingcar.ui.ResultView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGame {
-    private final List<Car> cars;
-    private final int attemptCount;
-    private final List<RoundResult> results = new ArrayList<>();
 
-    public RaceGame(final int attemptCount, List<Car> cars) {
-        this.attemptCount = attemptCount;
-        this.cars = cars;
+    private final Cars cars;
+
+    public RaceGame(List<Car> cars) {
+        this.cars = new Cars(cars);
+    }
+
+    public void moveCars(final MoveStrategy moveStrategy) {
+        for (Car car : cars.getCars()) {
+            car.move(moveStrategy);
+        }
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
-    public void startRace() {
-        for (int i = 0; i < attemptCount; i++) {
-            forwardAttempt();
-        }
-    }
-
-    public List<RoundResult> getResults() {
-        return results;
-    }
-
-    public void showGameResult() {
-        ResultView.printResultView(results);
-    }
-
-    private void forwardAttempt() {
-        RoundResult roundResult = new RoundResult();
-        for (Car car : cars) {
-            car.move();
-            roundResult.addResult(car.getPosition());
-        }
-        results.add(roundResult);
+    public List<String> getWinnersName() {
+        return cars.getFarthestCarNames();
     }
 }

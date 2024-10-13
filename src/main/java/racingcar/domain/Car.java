@@ -1,31 +1,41 @@
 package racingcar.domain;
 
-import racingcar.util.NumberGenerator;
 
-public class Car {
-    private static final int MIN_MOVABLE_CONDITION_NUMBER = 4;
-    private static final int INITIAL_CAR_POSITION = 0;
-    private final NumberGenerator numberGenerator;
+public class Car implements Comparable<Car> {
 
-    private int position = 0;
+    private final Name name;
+    private final Position position;
 
-    public Car(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-        this.position = INITIAL_CAR_POSITION;
+    public Car(String name) {
+        this(name, new Position());
     }
 
-    public void move() {
-        if (determineMovable()) {
-            position++;
+    public Car(String name, Position position) {
+        this.name = new Name(name);
+        this.position = position;
+    }
+
+    public void move(final MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            position.increase();
         }
     }
 
-    private boolean determineMovable() {
-        int randomNumber = numberGenerator.generate();
-        return randomNumber >= MIN_MOVABLE_CONDITION_NUMBER;
+    public String getName() {
+        return name.getName();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
+    }
+
+
+    @Override
+    public int compareTo(Car other) {
+        return position.compareTo(other.position);
+    }
+
+    public boolean isSamePosition(Car farthestCar) {
+        return position.equals(farthestCar.position);
     }
 }
