@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,6 @@ public class CarFactory {
         List<Car> cars = new ArrayList<>();
 
         for (String name: names.split(DELIMITER)) {
-    // 이름 유효성 검사 추가
                 cars.add(new Car(name));
         }
 

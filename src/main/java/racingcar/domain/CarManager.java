@@ -1,14 +1,11 @@
-package racingcar.model;
+package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class CarManager {
     private final List<Car> cars;
-    private List<String> winners = new ArrayList<>();
-
 
     public CarManager(List<Car> cars) {
         validate(cars);
@@ -42,16 +39,9 @@ public class CarManager {
         return cars;
     }
 
-    public List<String> findWinner() {
-        winners.clear();
+    public RacingWinners findWinners() {
 
-        int maxPosition = getMaxPosition(cars);
-
-        for (Car car : cars) {
-            addWinner(car, maxPosition);
-        }
-
-        return winners;
+        return new RacingWinners(cars, getMaxPosition(cars));
     }
 
     private int getMaxPosition(List<Car> cars) {
@@ -62,11 +52,5 @@ public class CarManager {
         }
 
         return maxPosition;
-    }
-
-    private void addWinner(Car car, int maxPosition) {
-        if(car.isWineer(maxPosition)){
-            winners.add(car.getName());
-        }
     }
 }
