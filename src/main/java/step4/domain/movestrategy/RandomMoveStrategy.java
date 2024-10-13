@@ -2,20 +2,13 @@ package step4.domain.movestrategy;
 
 import java.util.Random;
 
-import step4.domain.car.Car;
-
-public class DefaultRandomMoveStrategy implements CarMoveStrategy {
-	public static final int MIN_MOVE_VALUE = 4;
+public class RandomMoveStrategy implements CarMoveStrategy {
+	private static final int MIN_MOVE_VALUE = 4;
 	private static final int RANDOM_BOUND = 10;
 	private final Random random;
 
-	public DefaultRandomMoveStrategy(Random random) {
+	public RandomMoveStrategy(Random random) {
 		this.random = random;
-	}
-
-	@Override
-	public int speed() {
-		return Car.DEFAULT_SPEED;
 	}
 
 	@Override

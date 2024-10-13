@@ -2,7 +2,7 @@ package step4.view;
 
 import java.util.Scanner;
 
-import step4.domain.view.UserInput;
+import step4.dto.UserInput;
 
 public final class InputView {
 	private static Scanner scanner = new Scanner(System.in);

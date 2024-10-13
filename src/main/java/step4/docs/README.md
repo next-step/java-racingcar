@@ -28,4 +28,29 @@
 3. 경주게임을 완료한 후 누가 우승했는지 확인할 수 있다.
 4. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 5. 입력값이 올바르지 않은경우 익셉션을 발생시킨다.
+6. 추가 기능 (이름은 중복되거나 빈 값이 들어갈 수 없다.)
 
+## 실행 및 테스트 방법
+
+- 실행
+    - RacingGameController 의 main 함수 실행 후 입출력 확인한다.
+- 입출력 예시
+  ![example.png](example.png)
+- 테스트
+    - step4의 단위 테스트 전체 실행 후 정상동작을 확인한다.
+
+## 프로젝트 구성 / 다이어그램
+
+- JAVA 11버전 이상
+- GRADLE
+- 내부 클래스 다이어그램
+  ![classDiagram.png](classDiagram.png)
+- 시퀀스 다이어그램
+  ![sequenceDiagram.png](sequenceDiagram.png)
+
+## 라이브러리
+
+테스트에 사용중인 라이브러리는 다음과 같다.
+
+- org.assertj:assertj-core:3.22.0
+- org.junit.jupiter:junit-jupiter:5.8.2
