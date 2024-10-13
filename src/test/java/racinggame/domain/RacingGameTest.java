@@ -22,7 +22,7 @@ public class RacingGameTest {
         History result = racingGame.start(new TestNumberGenerator(4));
 
         assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(
-                carDtos(repeat + 1, repeat + 1, repeat + 1, repeat + 1));
+                carDtos(List.of(repeat + 1, repeat + 1, repeat + 1, repeat + 1), List.of("t1", "t2", "t3", "t4")));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class RacingGameTest {
     }
 
     private static CommaPatternNames defaultNames() {
-        return new CommaPatternNames("test,test,test,test");
+        return new CommaPatternNames("t1,t2,t3,t4");
     }
 
 }

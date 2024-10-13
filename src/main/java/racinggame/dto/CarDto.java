@@ -6,13 +6,15 @@ import racinggame.domain.Car;
 public class CarDto {
 
     private final int position;
+    private final String name;
 
-    public CarDto(int position) {
+    public CarDto(int position, String name) {
         this.position = position;
+        this.name = name;
     }
 
     public CarDto(Car car) {
-        this(car.position());
+        this(car.position(), car.name());
     }
 
     public int position() {
@@ -28,11 +30,15 @@ public class CarDto {
             return false;
         }
         CarDto carDto = (CarDto) o;
-        return position == carDto.position;
+        return position == carDto.position && Objects.equals(name, carDto.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(position, name);
+    }
+
+    public String name() {
+        return name;
     }
 }

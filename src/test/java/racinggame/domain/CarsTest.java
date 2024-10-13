@@ -45,6 +45,15 @@ public class CarsTest {
         assertThat(cars).isEqualTo(new Cars(carList(List.of(1, 3), names)));
     }
 
+    @Test
+    public void 우승자_테스트() {
+        List<String> names = List.of("t1", "t2");
+        List<Car> list = carList(List.of(0, 3), names);
+        Cars cars = new Cars(list);
+        List<String> winners = cars.winners();
+        assertThat(winners).isEqualTo(List.of("t2"));
+    }
+
     private static List<Car> carList(List<Integer> positions, List<String> names) {
         ArrayList<Car> list = new ArrayList<>();
         for (int i = 0; i < positions.size(); i++) {

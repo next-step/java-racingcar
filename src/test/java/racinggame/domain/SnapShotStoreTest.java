@@ -19,8 +19,8 @@ public class SnapShotStoreTest {
         List<List<CarDto>> list = new ArrayList<>();
         int repeatCount = 5;
         for (int i = 0; i < repeatCount; i++) {
-            List<CarDto> carDtos = carDtos(random.nextInt(10), random.nextInt(10), random.nextInt(10),
-                    random.nextInt(10));
+            List<CarDto> carDtos = carDtos(List.of(random.nextInt(10), random.nextInt(10), random.nextInt(10),
+                    random.nextInt(10)), List.of("t1", "t2", "t3", "t4"));
             list.add(carDtos);
             snapShotStore.save(carDtos);
         }
