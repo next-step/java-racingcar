@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racinggame.generator.CarDtoTestGenerator.carDtos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +31,5 @@ public class RacingGameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("반복횟수는 1이상이여야 합니다.");
     }
-
-    private static List<CarDto> carDtos(int... positions) {
-        ArrayList<CarDto> result = new ArrayList<>();
-        for (int position : positions) {
-            result.add(new CarDto(position));
-        }
-        return result;
-    }
-
 
 }
