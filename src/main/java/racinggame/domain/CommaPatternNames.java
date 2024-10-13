@@ -7,8 +7,8 @@ public class CommaPatternNames implements Names {
     private final List<String> names;
 
     public CommaPatternNames(String names) {
-        if(names==null){
-            throw new NullPointerException();
+        if (names == null) {
+            throw new NullPointerException("이름은 null일 수 없습니다.");
         }
         this.names = toList(splitNames(names));
     }
