@@ -34,7 +34,7 @@
 
 ### TODO
 - [x] 4단계 피드백 반영 - RacingCarPosition 에서 name 속성 제거
-- [ ] 4단계 피드백 반영 - RacingCar[] 를 List 로 변경 
+- [x] 4단계 피드백 반영 - RacingCar[] 를 List 로 변경 
 - [ ] 핵심 비지니스 로직을 가지는 객체를 domain 패키지에 구현한다.
 - [ ] UI 관련한 객체를 view 패키지에 구현한다.
 - [ ] 테스트 가능한 부분에 대해서만 단위 테스트를 진행

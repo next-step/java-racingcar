@@ -25,7 +25,7 @@ public class RacingCarWithNameGameTest {
         for (int i = 0; i < 10; i++) {
             racingCar.race();
         }
-        String result = ResultView.display(new RacingCar[]{racingCar});
+        String result = ResultView.display(List.of(racingCar));
         assertThat(result).isEqualTo("pobi : ---------\n\n");
     }
 
@@ -36,7 +36,7 @@ public class RacingCarWithNameGameTest {
         RacingCar crongRacingCar = new RacingCar("crong", new Operator(2L));
         RacingCar honuxRacingCar = new RacingCar("honux", new Operator(1L));
 
-        RacingCars racingCars = new RacingCars(new RacingCar[]{pobiRacingCar, crongRacingCar, honuxRacingCar});
+        RacingCars racingCars = new RacingCars(List.of(pobiRacingCar, crongRacingCar, honuxRacingCar));
         for (int i = 0; i < 10; i++) {
             racingCars.racing();
         }

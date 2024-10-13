@@ -7,7 +7,7 @@ public class ResultView {
 
     public static final char DISPLAY_CHARACTER = '-';
 
-    public static String display(RacingCar[] racingCars) {
+    public static String display(List<RacingCar> racingCars) {
         StringBuilder builder = new StringBuilder();
         for (RacingCar racingCar : racingCars) {
             builder.append(display(racingCar));

@@ -1,6 +1,7 @@
 package racing;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingCarGame {
 
@@ -15,7 +16,7 @@ public class RacingCarGame {
     public static int start(int totalCars, int totalRacingCounts) {
         int result = 0;
 
-        RacingCar[] racingCars = readyRacingCars(totalCars);
+        List<RacingCar> racingCars = readyRacingCarsList(totalCars);
 
         for (int i = 0; i < totalRacingCounts; i++) {
             result += racing(racingCars);
@@ -25,15 +26,15 @@ public class RacingCarGame {
         return result;
     }
 
-    private static RacingCar[] readyRacingCars(int totalCars) {
-        RacingCar[] racingCars = new RacingCar[totalCars];
+    private static List<RacingCar> readyRacingCarsList(int totalCars) {
+        List<RacingCar> racingCars = new ArrayList<>();
         for (int i = 0; i < totalCars; i++) {
-            racingCars[i] = new RacingCar(new Operator());
+            racingCars.add(new RacingCar(new Operator()));
         }
         return racingCars;
     }
 
-    private static int racing(RacingCar[] racingCars) {
+    private static int racing(List<RacingCar> racingCars) {
         int result = 0;
         for (RacingCar racingCar : racingCars) {
             racingCar.race();

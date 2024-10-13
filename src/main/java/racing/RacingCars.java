@@ -7,17 +7,17 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
 
-    private final RacingCar[] racingCars;
+    private final List<RacingCar> racingCars;
 
-    public RacingCars(RacingCar[] racingCars) {
+    public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
 
     public RacingCars(String totalCarNames) {
         String[] carNames = splitCarNames(totalCarNames);
-        this.racingCars = new RacingCar[carNames.length];
-        for (int i = 0; i < carNames.length; i++) {
-            racingCars[i] = new RacingCar(carNames[i], new Operator());
+        this.racingCars = new ArrayList<>();
+        for (String carName : carNames) {
+            this.racingCars.add(new RacingCar(carName, new Operator()));
         }
     }
 
@@ -27,7 +27,7 @@ public class RacingCars {
         }
     }
 
-    public RacingCar[] getRacingCars() {
+    public List<RacingCar> getRacingCars() {
         return this.racingCars;
     }
 

@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarGameTest {
@@ -37,7 +39,7 @@ public class RacingCarGameTest {
         for (int i = 0; i < 10; i++) {
             racingCar.race();
         }
-        String result = ResultView.display(new RacingCar[]{racingCar});
+        String result = ResultView.display(List.of(racingCar));
         assertThat(result).isEqualTo("---------\n\n");
     }
 }
