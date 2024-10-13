@@ -32,8 +32,8 @@ public class RacingGameTest {
                 .hasMessage("반복횟수는 1이상이여야 합니다.");
     }
 
-    private static String defaultNames() {
-        return "test,test,test,test";
+    private static CommaPatternNames defaultNames() {
+        return new CommaPatternNames("test,test,test,test");
     }
 
 }
