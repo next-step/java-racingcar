@@ -4,22 +4,22 @@ import java.util.List;
 
 public class CommaPatternNames implements Names {
 
-    private String names;
+    private final List<String> names;
 
     public CommaPatternNames(String names) {
         if(names==null){
             throw new NullPointerException();
         }
-        this.names = names;
+        this.names = toList(splitNames(names));
     }
 
     @Override
     public List<String> split() {
-        return toList(splitNames());
+        return names;
     }
 
-    private String[] splitNames() {
-        return this.names.split(",");
+    private String[] splitNames(String names) {
+        return names.split(",");
     }
 
     private List<String> toList(String[] names) {
