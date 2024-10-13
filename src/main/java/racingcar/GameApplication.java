@@ -27,6 +27,8 @@ public class GameApplication {
         ResultView.printExecuteMessage();
         for (int i = 0; i < tryCount; i++) {
             raceGame.moveCars(moveStrategy);
+            ResultView.print(raceGame);
         }
+        ResultView.printWinnersName(raceGame);
     }
 }

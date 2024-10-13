@@ -1,15 +1,18 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Name {
 
     private static final String MAX_CAR_NAME_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
     private static final String INVALID_NAME_MESSAGE = "적어도 이름은 1자 이상이여야 합니다.";
 
-    private final String value;
+    private final String name;
 
-    public Name(String value) {
-        validationName(value);
-        this.value = value;
+
+    public Name(String name) {
+        validationName(name.trim());
+        this.name = name;
     }
 
     private void validationName(String value) {
@@ -21,7 +24,20 @@ public class Name {
         }
     }
 
-    public String getValue() {
-        return value;
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name1 = (Name) o;
+        return Objects.equals(name, name1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }

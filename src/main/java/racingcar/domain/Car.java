@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 
-public class Car {
+public class Car implements Comparable<Car>{
 
     private final Name name;
     private final Position position;
@@ -21,11 +21,21 @@ public class Car {
         }
     }
 
-    public Name getName() {
-        return name;
+    public String getName() {
+        return name.getName();
     }
 
     public int getPosition() {
         return position.getPosition();
+    }
+
+
+    @Override
+    public int compareTo(Car other) {
+        return position.compareTo(other.position);
+    }
+
+    public boolean isSamePosition(Car farthestCar) {
+        return position.equals(farthestCar.position);
     }
 }

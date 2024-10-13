@@ -4,17 +4,30 @@ import java.util.List;
 
 public class RaceGame {
 
-    private final List<Car> cars;
-    private final int tryCount;
+    private final Cars cars;
+    private final GameRound gameRound;
 
     public RaceGame(List<Car> cars, int tryCount) {
-        this.cars = cars;
-        this.tryCount = tryCount;
+        this(cars,new GameRound(tryCount));
+    }
+
+    public RaceGame(List<Car> cars, GameRound gameRound) {
+        this.cars = new Cars(cars);
+        this.gameRound = gameRound;
     }
 
     public void moveCars(final MoveStrategy moveStrategy) {
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
+            gameRound.increase();
             car.move(moveStrategy);
         }
+    }
+
+    public List<Car> getCars() {
+        return cars.getCars();
+    }
+
+    public List<String> getWinnersName() {
+        return cars.getFarthestCarNames();
     }
 }
