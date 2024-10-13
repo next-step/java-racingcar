@@ -45,12 +45,11 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return position == car.position;
+        return position == car.position && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(position, name);
     }
-
 }
