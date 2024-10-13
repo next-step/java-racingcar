@@ -17,10 +17,6 @@ public class RacingGame {
         this.cars = Cars.from(names.split());
     }
 
-//    private static List<String> split(String names) {
-//        return List.of(names.split(","));
-//    }
-
     private boolean isNonNegative(int repeatCount) {
         return repeatCount <= 0;
     }
