@@ -18,7 +18,7 @@ public class RacingGameTest {
     public void 이동횟수만큼_이동_테스트() {
         int repeat = 4;
 
-        RacingGame racingGame = new RacingGame(repeat, "test,test,test,test");
+        RacingGame racingGame = new RacingGame(repeat, defaultNames());
         History result = racingGame.start(new TestNumberGenerator(4));
 
         assertThat(result.getSnapShot(result.repeatCount() - 1)).isEqualTo(
@@ -27,9 +27,13 @@ public class RacingGameTest {
 
     @Test
     public void 이동_횟수_음수_테스트() {
-        assertThatThrownBy(() -> new RacingGame(0, "test,test,test,test"))
+        assertThatThrownBy(() -> new RacingGame(0, defaultNames()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("반복횟수는 1이상이여야 합니다.");
+    }
+
+    private static String defaultNames() {
+        return "test,test,test,test";
     }
 
 }
