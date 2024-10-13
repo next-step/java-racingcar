@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomMoveStrategy implements MoveStrategy{
+public class RandomMoveStrategy implements MoveStrategy {
 
     private static final Random RANDOM = new Random();
     private static final int MAXIMUM_BOUNDARY_NUMBER = 10;

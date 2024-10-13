@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
 
     private final Name name;
     private final Position position;
