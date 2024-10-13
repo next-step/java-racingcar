@@ -21,7 +21,7 @@ public class GameApplication {
 
         int tryCount = InputView.getTryCount();
 
-        RaceGame raceGame = new RaceGame(cars, tryCount);
+        RaceGame raceGame = new RaceGame(cars);
         MoveStrategy moveStrategy = new RandomMoveStrategy();
 
         ResultView.printExecuteMessage();
