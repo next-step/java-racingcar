@@ -29,7 +29,7 @@ public class CarsTest {
 
     @Test
     public void 자동차_이름으로_생성테스트() {
-        Cars cars = Cars.from("test,test");
+        Cars cars = Cars.from(List.of("test","test"));
         assertThat(cars).isEqualTo(new Cars(carList(1, 1)));
     }
 

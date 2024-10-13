@@ -11,7 +11,7 @@ public class RacingMain {
 
     public static void main(String[] args) {
         InputDto read = InputView.readCount();
-        RacingGame racingGame = new RacingGame(read.getRepeatCount(),read.getCarCount());
+        RacingGame racingGame = new RacingGame(read.getRepeatCount(),"test,test");
         History snapShot = racingGame.start(new DefaultRandomNumberGenerator());
         OutPutView.render(snapShot);
     }

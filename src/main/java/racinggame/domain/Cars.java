@@ -20,12 +20,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(String names) {
-        return new Cars(carInitialization(split(names)));
-    }
-
-    private static List<String> split(String names) {
-        return List.of(names.split(","));
+    public static Cars from(List<String> names) {
+        return new Cars(carInitialization(names));
     }
 
     private static ArrayList<Car> carInitialization(List<String> names) {
