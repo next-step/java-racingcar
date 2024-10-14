@@ -1,6 +1,7 @@
 package racingcar.dto;
 
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCarState;
 
 public final class RacingCarStateDTO {
     private final String carName;
@@ -15,6 +16,10 @@ public final class RacingCarStateDTO {
 
     public static RacingCarStateDTO valueOf(RacingCar racingCar) {
         return new RacingCarStateDTO(racingCar.getName(), racingCar.getCarNo(), racingCar.getPosition());
+    }
+
+    public static RacingCarStateDTO valueOf(RacingCarState state) {
+        return new RacingCarStateDTO(state.getCarName(), state.getCarNo(), state.getPosition());
     }
 
     public String getCarName() {

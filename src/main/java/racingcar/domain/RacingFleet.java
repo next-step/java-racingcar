@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.movableStrategy.MovableStrategy;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,6 +25,10 @@ public class RacingFleet {
 
     public List<RacingCar> getRacingCars() {
         return this.racingCars;
+    }
+
+    public void raceAll(MovableStrategy movableStrategy) {
+        racingCars.forEach(racingCar -> racingCar.race(movableStrategy));
     }
 
     public List<RacingCar> findWinners() {

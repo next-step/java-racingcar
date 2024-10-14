@@ -19,6 +19,27 @@ public class RacingFleetTest {
     }
 
     @Test
+    @DisplayName("raceAll을 하면 movabaleStrategy 값에 따라 내부 차량이 진행함.")
+    void raceAllTest() {
+        List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
+        RacingFleet fleet = RacingFleet.valueOf(carNames);
+        List<RacingCar> racingCars = fleet.getRacingCars();
+        List<Integer> positionsBeforeRaceAll = new ArrayList<>();
+        for (RacingCar car : racingCars) {
+            positionsBeforeRaceAll.add(car.getPosition());
+        }
+        fleet.raceAll(() -> true);
+
+        List<Integer> positionsAfterRaceAll = new ArrayList<>();
+        for (RacingCar car : racingCars) {
+            positionsAfterRaceAll.add(car.getPosition());
+        }
+        for (int i = 0; i < racingCars.size(); i++) {
+            assertThat(positionsAfterRaceAll.get(i)).isGreaterThan(positionsBeforeRaceAll.get(i));
+        }
+    }
+
+    @Test
     @DisplayName("같은 이름셋으로 생성한 racingFleets는 equals가 true입니다.")
     void equalsTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));

@@ -12,7 +12,7 @@ public final class RacingResultDTO {
     }
 
     public static RacingResultDTO valueOf(CarRacing carRacing) {
-        return new RacingResultDTO(RacingWinnerNamesDTO.valueOf(carRacing.findWinners()), carRacing.getWrapResults());
+        return new RacingResultDTO(RacingWinnerNamesDTO.valueOf(carRacing.findWinners()), RacingWrapResultsDTO.valueOf(carRacing.getHistories()));
     }
 
     public RacingWinnerNamesDTO getWinners() {

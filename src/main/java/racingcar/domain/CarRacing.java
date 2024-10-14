@@ -1,39 +1,33 @@
 package racingcar.domain;
 
-import racingcar.domain.movableStrategy.RandomMovableStrategy;
-import racingcar.dto.RacingCarStatesDTO;
-import racingcar.dto.RacingWrapResultDTO;
-import racingcar.dto.RacingWrapResultsDTO;
+import racingcar.domain.movableStrategy.MovableStrategy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
 public class CarRacing {
     private final RacingFleet racingFleet;
-    private final RacingWrapResultsDTO wrapResults;
+    private final RacingHistories histories;
+    private final MovableStrategy movableStrategy;
 
-    private CarRacing(RacingFleet racingFleet, RacingWrapResultsDTO wrapResults) {
+    private CarRacing(RacingFleet racingFleet, RacingHistories histories, MovableStrategy movableStrategy) {
         this.racingFleet = racingFleet;
-        this.wrapResults = wrapResults;
+        this.histories = histories;
+        this.movableStrategy = movableStrategy;
     }
 
-    public static CarRacing valueOf(List<String> carNames) {
+    public static CarRacing valueOf(List<String> carNames,  MovableStrategy movableStrategy) {
         RacingFleet racingFleet = initializeRacingCars(carNames);
-        List<RacingWrapResultDTO> wrapResults = initializeWrapResults(racingFleet);
-        return new CarRacing(racingFleet, RacingWrapResultsDTO.valueOf(wrapResults));
+        RacingHistories histories = initializeRacingHistories(racingFleet);
+        return new CarRacing(racingFleet, histories, movableStrategy);
     }
 
     private static RacingFleet initializeRacingCars(List<String> carNames) {
         return RacingFleet.valueOf(carNames);
     }
 
-    private static List<RacingWrapResultDTO> initializeWrapResults(RacingFleet racingFleet) {
-        List<RacingWrapResultDTO> wrapResults = new ArrayList<>();
-        wrapResults.add(RacingWrapResultDTO.valueOf(0, RacingCarStatesDTO.valueOf(racingFleet.getRacingCars())));
-        return wrapResults;
+    private static RacingHistories initializeRacingHistories(RacingFleet racingFleet) {
+        return RacingHistories.newInstance(racingFleet);
     }
 
     public void proceedWraps(int tryNumber) {
@@ -43,19 +37,12 @@ public class CarRacing {
     }
 
     private void proceedWrap() {
-        int currentWrapNo = findCurrentWrapNo();
-        List<RacingCar> racingCars = this.racingFleet.getRacingCars();
-        racingCars.forEach(racingCar -> racingCar.race(RandomMovableStrategy.getInstance()));
-        RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingCars);
-        this.wrapResults.getWrapResults().add(RacingWrapResultDTO.valueOf(currentWrapNo + 1, carStates));
+        racingFleet.raceAll(movableStrategy);
+        this.histories.recordRacingState(racingFleet);
     }
 
-    private int findCurrentWrapNo() {
-        return Collections.max(this.wrapResults.getWrapResults(), Comparator.comparingInt(RacingWrapResultDTO::getWrapNumber)).getWrapNumber();
-    }
-
-    public RacingWrapResultsDTO getWrapResults() {
-        return this.wrapResults;
+    public RacingHistories getHistories() {
+        return this.histories;
     }
 
     public List<RacingCar> getRacingCars() {
@@ -71,11 +58,11 @@ public class CarRacing {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarRacing carRacing = (CarRacing) o;
-        return Objects.equals(racingFleet, carRacing.racingFleet) && Objects.equals(wrapResults, carRacing.wrapResults);
+        return Objects.equals(racingFleet, carRacing.racingFleet) && Objects.equals(histories, carRacing.histories);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(racingFleet, wrapResults);
+        return Objects.hash(racingFleet, histories);
     }
 }
