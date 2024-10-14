@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.movableStrategy.RandomMovableStrategy;
 import racingcar.dto.RacingResultDTO;
 import racingcar.dto.RacingWinnerNamesDTO;
 import racingcar.dto.RacingWrapResultDTO;
@@ -21,7 +20,7 @@ public class RacingCarSimulatorTest {
     @DisplayName("입력한 트라이 횟수가 0이면 초기 상태 wrapResult만 가집니다.")
     void wrapResultsSizeTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
-        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 0, RandomMovableStrategy.getInstance());
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 0, () -> true);
         assertThat(result.getWrapResults().getWrapResults().size()).isEqualTo(1);
     }
 
@@ -30,7 +29,7 @@ public class RacingCarSimulatorTest {
     @DisplayName("결과는 입력한 트라이 횟수보다 하나 많은 수의 wrapResult를 가집니다")
     void wrapResultsSizeTest(int tryNumber) {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
-        RacingResultDTO result = RacingCarSimulator.simulate(carNames, tryNumber, RandomMovableStrategy.getInstance());
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, tryNumber, () -> true);
         assertThat(result.getWrapResults().getWrapResults().size()).isEqualTo(tryNumber + 1);
     }
 
@@ -42,7 +41,7 @@ public class RacingCarSimulatorTest {
         for (int i = 0; i < carNumber; i++) {
             carNames.add("car" + i);
         }
-        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1, RandomMovableStrategy.getInstance());
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1, () -> true);
         List<RacingWrapResultDTO> wrapResults = result.getWrapResults().getWrapResults();
         for (RacingWrapResultDTO wrapResult : wrapResults) {
             assertThat(wrapResult.getCarStates().getCarStates().size()).isEqualTo(carNumber);
@@ -53,7 +52,7 @@ public class RacingCarSimulatorTest {
     @DisplayName("racingResults는 1명 이상의 승자 리스트를 가집니다.")
     void hasWinnerTest() {
         List<String> carNames = new ArrayList<>(Arrays.asList("Car1", "Car2", "Car3"));
-        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1, RandomMovableStrategy.getInstance());
+        RacingResultDTO result = RacingCarSimulator.simulate(carNames, 1, () -> true);
         RacingWinnerNamesDTO winners = result.getWinners();
         assertThat(winners.getWinnerNames()).isNotEmpty();
     }
