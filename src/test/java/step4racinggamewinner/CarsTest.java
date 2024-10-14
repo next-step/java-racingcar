@@ -1,8 +1,6 @@
 package step4racinggamewinner;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import step4racinggamewinner.random.RandomGenerator;
 
 import java.util.List;
@@ -14,6 +12,7 @@ public class CarsTest {
 
     static final int TEST_CAR_COUNT = 3;
     static final int DEFAULT_POSITION = 0;
+    static final int TEST_MOVING_NUMBER = 1;
     RandomGenerator randomGenerator;
     Cars cars;
 
@@ -26,24 +25,14 @@ public class CarsTest {
 
 
     @Test
-    void baseLineCar테스트() {
-        String carNames = "red,kaki";
-        cars = Cars.registerCars(carNames);
-        assertThat(cars.baseLineCar().carName()).isEqualTo("red");
-    }
+    void registerCars테스트() {
+        String carName = "red";
+        List<Car> carList = List.of(new Car("red"));
+        Cars cars = Cars.registerCars(carName);
+        Cars decideCars = new Cars(carList);
 
-    @Test
-    void specificCarName테스트() {
-        String carNames = "red,kaki";
-        cars = Cars.registerCars(carNames);
-        assertThat(cars.specificCarName(0)).isEqualTo("red");
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"3,0", "4,1"})
-    void 이동여부_판단테스트(int randomNumber, int decisionResult) {
-        Car car = new Car("red");
-        assertThat(car.decideGoStop(randomNumber)).isEqualTo(decisionResult);
+        assertThat(cars.carNameAndPositions())
+                .isEqualTo(decideCars.carNameAndPositions());
     }
 
 
@@ -55,6 +44,12 @@ public class CarsTest {
     }
 
 
-
-
+    @Test
+    void maxCarPosition() {
+        String carNames = "red,kaki";
+        randomGenerator = new AlwaysMoveNumber();
+        cars = Cars.registerCars(carNames);
+        cars.recordEachRoundMoving(randomGenerator);
+        assertThat(cars.maxCarPosition()).isEqualTo(TEST_MOVING_NUMBER);
+    }
 }

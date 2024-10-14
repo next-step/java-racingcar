@@ -20,11 +20,9 @@ public class Winners {
     }
 
     public void addWinnerNameToList(Map<String, Integer> carNameAndPositionMap, int maxCarPosition) {
-        for ( String carName : carNameAndPositionMap.keySet()) {
-            if (carNameAndPositionMap.get(carName) == maxCarPosition) {
-                winnerNameList.add(carName);
-            }
-        }
+        carNameAndPositionMap.keySet().stream()
+                .filter(carName -> carNameAndPositionMap.get(carName) == maxCarPosition)
+                .forEachOrdered(carName -> winnerNameList.add(carName));
     }
 
     public Map<String, Integer> carNameAndPositionMap() {
@@ -34,7 +32,6 @@ public class Winners {
     public int maxCarPosition() {
         return cars.maxCarPosition();
     }
-    
 
 
 }

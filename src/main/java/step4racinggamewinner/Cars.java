@@ -38,14 +38,6 @@ public class Cars {
         return cars;
     }
 
-    public Car baseLineCar() {
-        return cars.get(0);
-    }
-
-    public String specificCarName(int index) {
-        return cars.get(index).carName();
-    }
-
 
     public int carCount() {
         return cars.size();
@@ -79,7 +71,6 @@ public class Cars {
         Winners winners = new Winners(this);
         return winners.findWinner();
     }
-
 
 
     public int maxCarPosition() {
