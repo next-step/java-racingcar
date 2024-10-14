@@ -1,9 +1,9 @@
 package com.racing.domain;
 
-import com.racing.utils.IRandomMove;
 import com.racing.utils.RacingHelper;
+import com.racing.utils.RandomMover;
 
-public class Car implements IRandomMove {
+public class Car implements RandomMover {
 
     private int state = 0;
 
