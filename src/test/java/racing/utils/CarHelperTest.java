@@ -1,5 +1,6 @@
 package racing.utils;
 
+import com.racing.domain.Car;
 import com.racing.utils.CarHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,5 +42,33 @@ public class CarHelperTest {
 
         assertThat(CarHelper.splitCarName(" pobi , crong ,  toolongname "))
                 .isEqualTo(expectedValue);
+    }
+
+    @Test
+    @DisplayName("우승자가 한 명일 경우 정확히 결정되는지 테스트")
+    void isEquals_SingleWinner() {
+        Car car1 = new Car(3, "car1");
+        Car car2 = new Car(2, "car2");
+        Car car3 = new Car(1, "car3");
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+
+        List<Car> winners = CarHelper.determineWinners(cars);
+
+        assertThat(winners).hasSize(1);
+        assertThat(winners.get(0).displayCarName()).isEqualTo("car1");
+    }
+
+    @Test
+    @DisplayName("여러 명의 우승자가 있을 경우 모두 선정되는지 테스트")
+    void isEquals_MultipleWinner() {
+        Car car1 = new Car(3, "car1");
+        Car car2 = new Car(3, "car2");
+        Car car3 = new Car(1, "car3");
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+
+        List<Car> winners = CarHelper.determineWinners(cars);
+
+        assertThat(winners).hasSize(2);
+        assertThat(winners).extracting("name").containsExactlyInAnyOrder("car1", "car2");
     }
 }
