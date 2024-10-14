@@ -1,14 +1,15 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.domain.RacingWinners;
+
 
 import java.util.List;
 
 public class ResultView {
 
     private static final String MOVE_UNIT = "-";
-    public static void print(List<Car> cars){
+
+    public static void print(List<Car> cars) {
         for (Car car : cars) {
             printCarMovement(car);
         }
@@ -29,7 +30,7 @@ public class ResultView {
         return draw.toString();
     }
 
-    public static void printWinner(RacingWinners winners) {
-        System.out.println(winners + "가 최종 우승했습니다.");
+    public static void printWinner(List<String> winners) {
+        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
 }

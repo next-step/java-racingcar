@@ -5,9 +5,31 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarManagerTest {
+    @Test
+    void 우승자_1인() {
+        Car a = new Car("a", new Position(10));
+        Car b = new Car("b", new Position(12));
+        Car c = new Car("c", new Position(13));
+
+        CarManager carManager = new CarManager(Arrays.asList(a, b, c));
+
+        assertThat(carManager.findWinners()).containsExactly("c");
+    }
+
+    @Test
+    void 우승자_2인() {
+        Car a = new Car("a", new Position(10));
+        Car b = new Car("b", new Position(12));
+        Car c = new Car("c", new Position(12));
+
+        CarManager carManager = new CarManager(Arrays.asList(a, b, c));
+
+        assertThat(carManager.findWinners()).containsExactly("b","c");
+    }
 
     @Test
     void 빈_목록_생성() {

@@ -39,9 +39,11 @@ public class CarManager {
         return cars;
     }
 
-    public RacingWinners findWinners() {
+    public List<String> findWinners() {
 
-        return new RacingWinners(cars, getMaxPosition(cars));
+        WinnerFinder winnerFinder = new WinnerFinder(getMaxPosition(cars));
+
+        return winnerFinder.findWinners(cars);
     }
 
     private int getMaxPosition(List<Car> cars) {
