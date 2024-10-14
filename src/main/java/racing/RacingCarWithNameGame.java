@@ -1,9 +1,9 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import racing.domain.RacingCars;
+import racing.domain.UserInput;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 public class RacingCarWithNameGame {
 
@@ -20,7 +20,7 @@ public class RacingCarWithNameGame {
 
         for (int i = 0; i < totalRacingCounts; i++) {
             racingCars.racing();
-            ResultView.display(racingCars.getPositions());
+            ResultView.display(racingCars.getRacingCars());
         }
 
         ResultView.displayWinners(racingCars.findWinners());

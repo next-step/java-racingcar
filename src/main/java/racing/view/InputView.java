@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.domain.UserInput;
 
 import java.util.Scanner;
 

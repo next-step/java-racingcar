@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.domain.RacingCar;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +9,7 @@ public class ResultView {
 
     public static final char DISPLAY_CHARACTER = '-';
 
-    public static String display(RacingCar[] racingCars) {
+    public static String display(List<RacingCar> racingCars) {
         StringBuilder builder = new StringBuilder();
         for (RacingCar racingCar : racingCars) {
             builder.append(display(racingCar));
@@ -20,33 +22,12 @@ public class ResultView {
         return result;
     }
 
-    public static String display(RacingCarPosition[] positions) {
-        StringBuilder builder = new StringBuilder();
-        for (RacingCarPosition racingCar : positions) {
-            builder.append(display(racingCar));
-            builder.append('\n');
-        }
-        builder.append('\n');
-
-        String result = builder.toString();
-        System.out.print(result);
-        return result;
-    }
-
     private static String display(RacingCar racingCar) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < racingCar.getPosition().getCarPosition(); i++) {
-            builder.append(DISPLAY_CHARACTER);
+        if (racingCar.getName() != null) {
+            builder.append(String.format("%s : ", racingCar.getName()));
         }
-        return builder.toString();
-    }
-
-    private static String display(RacingCarPosition position) {
-        StringBuilder builder = new StringBuilder();
-        if (position.getCarName() != null) {
-            builder.append(String.format("%s : ", position.getCarName()));
-        }
-        for (int i = 0; i < position.getCarPosition(); i++) {
+        for (int i = 0; i < racingCar.getCurrentPosition(); i++) {
             builder.append(DISPLAY_CHARACTER);
         }
         return builder.toString();

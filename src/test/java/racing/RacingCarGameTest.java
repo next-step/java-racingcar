@@ -2,6 +2,11 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Operator;
+import racing.domain.RacingCar;
+import racing.view.ResultView;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,7 +32,7 @@ public class RacingCarGameTest {
             racingCar.race();
         }
         // int[] expected = new int[] {5, 8, 7, 3, 4, 4, 4, 6, 8, 8};
-        assertThat(racingCar.getPosition().getCarPosition()).isEqualTo(9);
+        assertThat(racingCar.getCurrentPosition()).isEqualTo(9);
     }
 
     @Test
@@ -37,7 +42,7 @@ public class RacingCarGameTest {
         for (int i = 0; i < 10; i++) {
             racingCar.race();
         }
-        String result = ResultView.display(new RacingCar[]{racingCar});
+        String result = ResultView.display(List.of(racingCar));
         assertThat(result).isEqualTo("---------\n\n");
     }
 }
