@@ -27,7 +27,6 @@ public class RacingHelper implements RandomMover {
         return rand.nextInt(RANDOM_NUMBER_RANGE);
     }
 
-
     /**
      * 전진 여부 반환
      */
