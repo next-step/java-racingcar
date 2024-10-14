@@ -37,4 +37,12 @@ public class Car {
     public String displayCarName() {
         return name;
     }
+
+    public int getState() {
+        return state;
+    }
+
+    public boolean isDefeated(int verseState) {
+        return state < verseState;
+    }
 }
