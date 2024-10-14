@@ -22,8 +22,9 @@ public class CarHelper {
     }
 
     private static void addIfValid(String carName, List<String> validNames) {
-        if (isValidCarName(carName)) {
-            validNames.add(carName);
+        String trimmedName = carName.trim();
+        if (isValidCarName(trimmedName)) {
+            validNames.add(trimmedName);
         }
     }
 
