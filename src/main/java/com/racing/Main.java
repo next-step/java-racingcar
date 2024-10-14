@@ -17,6 +17,9 @@ public class Main {
 
         List<Car> carList = createCars(validCarNames);
         runRace(carList, tryNumber);
+
+        List<Car> winners = CarHelper.determineWinners(carList);
+        ResultView.printWinners(winners);
     }
 
     private static List<Car> createCars(List<String> carNames) {
