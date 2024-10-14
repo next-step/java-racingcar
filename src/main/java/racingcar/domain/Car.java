@@ -22,11 +22,11 @@ public class Car implements Comparable<Car> {
     }
 
     public String getName() {
-        return name.getName();
+        return name.getValue();
     }
 
     public int getPosition() {
-        return position.getPosition();
+        return position.getValue();
     }
 
 
