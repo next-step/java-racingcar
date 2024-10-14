@@ -20,7 +20,7 @@ public class Name {
         if (value == null || value.isEmpty()) {
             throw new IllegalArgumentException(INVALID_NAME_MESSAGE);
         }
-        if (value.length() > NAME_MAXIMUM_LENGTH) {
+        if (value.trim().length() > NAME_MAXIMUM_LENGTH) {
             throw new IllegalArgumentException(MAX_CAR_NAME_MESSAGE);
         }
     }
