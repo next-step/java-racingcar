@@ -1,18 +1,18 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringAddCal {
-    public static int splitAndSum(String input) throws RuntimeException {
-        if (nullOrEmpty(input) == false) {
+public class StringAddCalculator {
+    public static int splitAndSum(String input) {
+        if (nullOrEmpty(input)) {
          return 0;
         }
 
-        String[] split = customDelimeter(input);
+        String[] split = customDelimiter(input);
 
         return calAllSum(split);
     }
 
-    public static String[] customDelimeter(String input) {
+    public static String[] customDelimiter(String input) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
         if(m.find()) {
             String customDelimeter = m.group(1);
@@ -34,15 +34,12 @@ public class StringAddCal {
     }
 
     public static boolean nullOrEmpty(String input) {
-        if(input == null || input.isEmpty()) {
-            return false;
-        }
-        return true;
+        return input == null || input.isEmpty();
     }
 
-    public static int calAllSum(String[] split) {
+    public static int calAllSum(String[] stringArray) {
         int sum = 0;
-        for(String s : split) {
+        for(String s : stringArray) {
             int num = stringCastingInt(s);
             negative(num);
             sum = sum + num;
