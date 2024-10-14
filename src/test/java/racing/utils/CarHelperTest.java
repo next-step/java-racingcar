@@ -27,4 +27,19 @@ public class CarHelperTest {
     void isEquals_ShouldEqualsExpectedValueSet(String carName, boolean expected) {
         assertThat(CarHelper.isValidCarName(carName)).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("모든 이름이 유효하지 않을 때 빈 리스트 반환")
+    public void splitAndValidateCarNames_ShouldReturnEmptyList_WhenAllNamesAreInvalid() {
+        assertThat(CarHelper.splitCarName("   ,toolongname,anotherlong")).isEmpty();
+    }
+
+    @Test
+    @DisplayName("이름 앞뒤의 공백을 제거하고 유효한 이름만 반환")
+    public void splitAndValidateCarNames_ShouldTrimAndReturnValidNames() {
+        List<String> expectedValue = Arrays.asList("pobi", "crong");
+
+        assertThat(CarHelper.splitCarName(" pobi , crong ,  toolongname "))
+                .isEqualTo(expectedValue);
+    }
 }
