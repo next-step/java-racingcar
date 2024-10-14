@@ -26,6 +26,10 @@ public class Car {
         }
     }
 
+    public String displayRacingState() {
+        return displayCarName() + " : " + displayState();
+    }
+
     public String displayState() {
         return "-".repeat(state);
     }

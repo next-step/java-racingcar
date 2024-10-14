@@ -12,7 +12,7 @@ public class ResultView {
     public static void printRoundResult(int round, List<Car> carList) {
         System.out.println("# " + round + "회차");
         for (Car car : carList) {
-            System.out.println(car.displayState());
+            System.out.println(car.displayRacingState());
         }
         System.out.println();
     }
