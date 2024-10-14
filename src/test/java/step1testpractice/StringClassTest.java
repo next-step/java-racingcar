@@ -1,4 +1,4 @@
-package step1TestPractice;
+package step1testpractice;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

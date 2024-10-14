@@ -1,4 +1,4 @@
-package step1TestPractice;
+package step1testpractice;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

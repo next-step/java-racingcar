@@ -1,4 +1,4 @@
-package step3RacingCarCompetition;
+package step3racingcarcompetition;
 
 public class TestRandomNumberGenerator implements RandomGenerator {
 
