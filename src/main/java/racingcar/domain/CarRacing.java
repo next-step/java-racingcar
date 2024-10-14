@@ -13,27 +13,27 @@ import java.util.Objects;
 
 public class CarRacing {
     private final RacingFleet racingFleet;
-    private final RacingWrapResultsDTO wrapResults;
+    private final RacingHistories histories;
 
-    private CarRacing(RacingFleet racingFleet, RacingWrapResultsDTO wrapResults) {
+    private CarRacing(RacingFleet racingFleet, RacingHistories histories) {
         this.racingFleet = racingFleet;
-        this.wrapResults = wrapResults;
+        this.histories = histories;
     }
 
     public static CarRacing valueOf(List<String> carNames) {
         RacingFleet racingFleet = initializeRacingCars(carNames);
-        List<RacingWrapResultDTO> wrapResults = initializeWrapResults(racingFleet);
-        return new CarRacing(racingFleet, RacingWrapResultsDTO.valueOf(wrapResults));
+        RacingHistories histories = initializeRacingHistories(racingFleet);
+        return new CarRacing(racingFleet, histories);
     }
 
     private static RacingFleet initializeRacingCars(List<String> carNames) {
         return RacingFleet.valueOf(carNames);
     }
 
-    private static List<RacingWrapResultDTO> initializeWrapResults(RacingFleet racingFleet) {
-        List<RacingWrapResultDTO> wrapResults = new ArrayList<>();
-        wrapResults.add(RacingWrapResultDTO.valueOf(0, RacingCarStatesDTO.valueOf(racingFleet)));
-        return wrapResults;
+    private static RacingHistories initializeRacingHistories(RacingFleet racingFleet) {
+        List<RacingHistory> histories = new ArrayList<>();
+        histories.add(RacingHistory.valueOf(0, RacingCarStates.valueOf(racingFleet)));
+        return RacingHistories.valueOf(histories);
     }
 
     public void proceedWraps(int tryNumber) {
@@ -45,16 +45,16 @@ public class CarRacing {
     private void proceedWrap() {
         int currentWrapNo = findCurrentWrapNo();
         racingFleet.raceAll(RandomMovableStrategy.getInstance());
-        RacingCarStatesDTO carStates = RacingCarStatesDTO.valueOf(racingFleet);
-        this.wrapResults.getWrapResults().add(RacingWrapResultDTO.valueOf(currentWrapNo + 1, carStates));
+        RacingCarStates carStates = RacingCarStates.valueOf(racingFleet);
+        this.histories.value().add(RacingHistory.valueOf(currentWrapNo + 1, carStates));
     }
 
     private int findCurrentWrapNo() {
-        return Collections.max(this.wrapResults.getWrapResults(), Comparator.comparingInt(RacingWrapResultDTO::getWrapNumber)).getWrapNumber();
+        return Collections.max(this.histories.value(), Comparator.comparingInt(RacingHistory::getWrapNumber)).getWrapNumber();
     }
 
-    public RacingWrapResultsDTO getWrapResults() {
-        return this.wrapResults;
+    public RacingHistories getHistories() {
+        return this.histories;
     }
 
     public List<RacingCar> getRacingCars() {
@@ -70,11 +70,11 @@ public class CarRacing {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarRacing carRacing = (CarRacing) o;
-        return Objects.equals(racingFleet, carRacing.racingFleet) && Objects.equals(wrapResults, carRacing.wrapResults);
+        return Objects.equals(racingFleet, carRacing.racingFleet) && Objects.equals(histories, carRacing.histories);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(racingFleet, wrapResults);
+        return Objects.hash(racingFleet, histories);
     }
 }
