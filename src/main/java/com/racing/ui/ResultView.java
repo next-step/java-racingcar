@@ -16,4 +16,21 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void printWinners(List<Car> winners) {
+        System.out.print("최종 우승자: ");
+        int winnerSize = winners.size();
+        for (int i = 0; i < winnerSize; i++) {
+            System.out.print(winners.get(i).displayCarName());
+            printComma(i < winnerSize - 1);
+        }
+
+        System.out.println();
+    }
+
+    private static void printComma(boolean isComma) {
+        if (isComma) {
+            System.out.print(", ");
+        }
+    }
 }
