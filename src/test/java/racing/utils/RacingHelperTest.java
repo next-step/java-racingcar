@@ -12,6 +12,14 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class RacingHelperTest {
 
     @Test
+    @DisplayName("모킹 데이터인 false를 반환 받는다.")
+    public void isEquals_GetRandomBoolean() {
+        RandomMoverMock randomMover = new RandomMoverMock();
+
+        assertThat(randomMover.shouldMove()).isEqualTo(false);
+    }
+
+    @Test
     @DisplayName("0~9 사이의 랜덤 값을 반환 받는지 여부 확인합니다.")
     public void isBetween_RangeOfRandomNumber() {
         int expectedMinNum = 0;
@@ -20,7 +28,6 @@ public class RacingHelperTest {
         assertThat(RacingHelper.getRandomNumber()).isGreaterThanOrEqualTo(expectedMinNum)
                 .isLessThan(expectedMaxNum);
     }
-
 
     @ParameterizedTest
     @CsvSource(value = {"1:false", "3:false", "4:true", "5:true"}, delimiter = ':')

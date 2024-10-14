@@ -3,24 +3,32 @@ package com.racing;
 import com.racing.domain.Car;
 import com.racing.ui.InputView;
 import com.racing.ui.ResultView;
+import com.racing.utils.CarHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        int carNumber = InputView.getCarNumber();
+        String carNames = InputView.getCarName();
         int tryNumber = InputView.getTryNumber();
 
-        List<Car> carList = createCars(carNumber);
+        List<String> validCarNames = CarHelper.splitCarName(carNames);
+
+        List<Car> carList = createCars(validCarNames);
         runRace(carList, tryNumber);
+
+        List<Car> winners = CarHelper.determineWinners(carList);
+        ResultView.printWinners(winners);
     }
 
-    private static List<Car> createCars(int carNumber) {
+    private static List<Car> createCars(List<String> carNames) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            carList.add(new Car());
+
+        for (String carName : carNames) {
+            carList.add(new Car(0, carName));
         }
+
         return carList;
     }
 
