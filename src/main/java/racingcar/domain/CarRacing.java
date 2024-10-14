@@ -1,13 +1,7 @@
 package racingcar.domain;
 
 import racingcar.domain.movableStrategy.RandomMovableStrategy;
-import racingcar.dto.RacingCarStatesDTO;
-import racingcar.dto.RacingWrapResultDTO;
-import racingcar.dto.RacingWrapResultsDTO;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,9 +25,7 @@ public class CarRacing {
     }
 
     private static RacingHistories initializeRacingHistories(RacingFleet racingFleet) {
-        List<RacingHistory> histories = new ArrayList<>();
-        histories.add(RacingHistory.valueOf(0, RacingCarStates.valueOf(racingFleet)));
-        return RacingHistories.valueOf(histories);
+        return RacingHistories.newInstance(racingFleet);
     }
 
     public void proceedWraps(int tryNumber) {
@@ -43,14 +35,8 @@ public class CarRacing {
     }
 
     private void proceedWrap() {
-        int currentWrapNo = findCurrentWrapNo();
         racingFleet.raceAll(RandomMovableStrategy.getInstance());
-        RacingCarStates carStates = RacingCarStates.valueOf(racingFleet);
-        this.histories.value().add(RacingHistory.valueOf(currentWrapNo + 1, carStates));
-    }
-
-    private int findCurrentWrapNo() {
-        return Collections.max(this.histories.value(), Comparator.comparingInt(RacingHistory::getWrapNumber)).getWrapNumber();
+        this.histories.recordRacingState(racingFleet);
     }
 
     public RacingHistories getHistories() {
