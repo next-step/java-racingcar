@@ -1,6 +1,5 @@
 package racingcar.dto;
 
-import racingcar.domain.RacingCarStates;
 import racingcar.domain.RacingHistory;
 
 public final class RacingWrapResultDTO {
