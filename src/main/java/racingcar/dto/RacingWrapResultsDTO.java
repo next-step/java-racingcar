@@ -19,7 +19,7 @@ public final class RacingWrapResultsDTO {
 
     public static RacingWrapResultsDTO valueOf(RacingHistories histories) {
         List<RacingWrapResultDTO> wrapResults = new ArrayList<>();
-        for(RacingHistory history : histories.value()){
+        for (RacingHistory history : histories.value()) {
             wrapResults.add(RacingWrapResultDTO.valueOf(history));
         }
         return new RacingWrapResultsDTO(wrapResults);
