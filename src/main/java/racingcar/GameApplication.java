@@ -1,10 +1,7 @@
 package racingcar;
 
 
-import racingcar.domain.Car;
-import racingcar.domain.MoveStrategy;
-import racingcar.domain.RaceGame;
-import racingcar.domain.RandomMoveStrategy;
+import racingcar.domain.*;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
@@ -14,21 +11,18 @@ import java.util.stream.Collectors;
 public class GameApplication {
 
     public static void main(String[] args) {
-        List<Car> cars = InputView.getCarNames()
-                .stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
+        List<String> carNames = InputView.getCarNames();
+        Cars cars= Cars.createCars(carNames);
 
         int tryCount = InputView.getTryCount();
 
-        RaceGame raceGame = new RaceGame(cars);
         MoveStrategy moveStrategy = new RandomMoveStrategy();
 
         ResultView.printExecuteMessage();
         for (int i = 0; i < tryCount; i++) {
-            raceGame.moveCars(moveStrategy);
-            ResultView.print(raceGame);
+            cars.moveCars(moveStrategy);
+            ResultView.print(cars);
         }
-        ResultView.printWinnersName(raceGame);
+        ResultView.printWinnersName(cars);
     }
 }

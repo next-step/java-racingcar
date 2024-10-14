@@ -1,30 +1,41 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private List<Car> cars = new ArrayList<>();
+  private final List<Car> cars;
 
-    public Cars(final List<Car> cars) {
-        this.cars = cars;
-    }
+  public Cars(final List<Car> cars) {
+    this.cars = cars;
+  }
 
-    public List<Car> getCars() {
-        return this.cars;
-    }
+  public static Cars createCars(List<String> carNames) {
+    return new Cars(
+            carNames.stream()
+                    .map(Car::new)
+                    .collect(Collectors.toList())
+    );
+  }
 
-    public List<String> getFarthestCarNames() {
-        Car farthestCar = cars.stream()
-                .max(Car::compareTo)
-                .orElseThrow(() -> new IllegalStateException("경주에 참가한 자동차가 존재하지 않습니다."));
+  public List<Car> getCars() {
+    return Collections.unmodifiableList(cars);
+  }
 
-        return cars.stream()
-                .filter(car -> car.isSamePosition(farthestCar))
-                .map(Car::getName)
-                .collect(Collectors.toList());
-    }
+  public List<String> getWinnersName() {
+    Car farthestCar = cars.stream()
+            .max(Car::compareTo)
+            .orElseThrow(() -> new IllegalStateException("경주에 참가한 자동차가 존재하지 않습니다."));
 
+    return cars.stream()
+            .filter(car -> car.isSamePosition(farthestCar))
+            .map(Car::getName)
+            .collect(Collectors.toList());
+  }
+
+  public void moveCars(final MoveStrategy moveStrategy) {
+    cars.forEach(car -> car.move(moveStrategy));
+  }
 }

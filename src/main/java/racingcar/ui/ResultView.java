@@ -1,9 +1,7 @@
 package racingcar.ui;
 
 import racingcar.domain.Car;
-import racingcar.domain.RaceGame;
-
-import java.util.List;
+import racingcar.domain.Cars;
 
 public class ResultView {
 
@@ -14,9 +12,8 @@ public class ResultView {
         System.out.println(EXECUTE_RESULT);
     }
 
-    public static void print(RaceGame raceGame) {
-        List<Car> cars = raceGame.getCars();
-        for (Car car : cars) {
+    public static void print(Cars cars) {
+        for (Car car : cars.getCars()) {
             System.out.println(car.getName() + " : " + convertPositionToDash(car.getPosition()));
         }
         System.out.println();
@@ -26,8 +23,8 @@ public class ResultView {
         return DASH.repeat(Math.max(0, position));
     }
 
-    public static void printWinnersName(RaceGame raceGame) {
-        String winnersName = String.join(",", raceGame.getWinnersName());
+    public static void printWinnersName(Cars cars) {
+        String winnersName = String.join(",", cars.getWinnersName());
         System.out.println(winnersName + "가 최종 우승했습니다.");
     }
 }
