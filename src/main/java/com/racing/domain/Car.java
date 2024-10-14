@@ -1,9 +1,8 @@
 package com.racing.domain;
 
 import com.racing.utils.RacingHelper;
-import com.racing.utils.RandomMover;
 
-public class Car implements RandomMover {
+public class Car {
 
     private int state = 0;
 
@@ -18,15 +17,11 @@ public class Car implements RandomMover {
     }
 
     public void move() {
-        if (shouldMove()) {
+        RacingHelper racingHelper = new RacingHelper();
+        
+        if (racingHelper.shouldMove()) {
             state++;
         }
-    }
-
-    @Override
-    public boolean shouldMove() {
-        int randNum = RacingHelper.getRandomNumber();
-        return RacingHelper.isForward(randNum);
     }
 
     public String displayState() {
