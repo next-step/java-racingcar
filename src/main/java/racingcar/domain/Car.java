@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
 
@@ -19,11 +19,19 @@ public class Car {
     }
 
     private void validationCarName(String name) {
-        if (name == null || name.trim().isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
-        }
+        validateNotNullOrEmpty(name);
+        validateNameLength(name);
+    }
+
+    private static void validateNameLength(String name) {
         if (name.trim().length() >= MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH + " 미만의 글자여야 합니다.");
+        }
+    }
+
+    private static void validateNotNullOrEmpty(String name) {
+        if (name == null || name.trim().isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
         }
     }
 
