@@ -2,7 +2,7 @@ package com.racing.domain;
 
 public class Car {
 
-    private int position = 0;
+    private Position position;
     private String name;
 
     // 기본 생성자
@@ -11,14 +11,14 @@ public class Car {
     }
 
     // 상태 지정 생성자
-    public Car(int state, String name) {
-        this.position = state;
+    public Car(int position, String name) {
+        this.position = new Position(position);
         this.name = name;
     }
 
     public void move(boolean isMovable) {
         if (isMovable) {
-            position++;
+            position.addPosition();
         }
     }
 
@@ -27,7 +27,7 @@ public class Car {
     }
 
     public String displayState() {
-        return "-".repeat(position);
+        return "-".repeat(position.getPosition());
     }
 
     public String displayCarName() {
@@ -35,10 +35,10 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public boolean isDefeated(int verseState) {
-        return position < verseState;
+        return position.getPosition() < verseState;
     }
 }
