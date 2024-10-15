@@ -3,8 +3,6 @@ package com.racing.ui;
 import com.racing.domain.Car;
 import com.racing.domain.Cars;
 
-import java.util.List;
-
 public class ResultView {
     public static void printStartMessage() {
         System.out.println("실행 결과");
@@ -18,11 +16,11 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printWinners(List<Car> winners) {
+    public static void printWinners(Cars winners) {
         System.out.print("최종 우승자: ");
-        int winnerSize = winners.size();
+        int winnerSize = winners.getCarList().size();
         for (int i = 0; i < winnerSize; i++) {
-            System.out.print(winners.get(i).displayCarName());
+            System.out.print(winners.getCarList().get(i).displayCarName());
             printComma(i < winnerSize - 1);
         }
 

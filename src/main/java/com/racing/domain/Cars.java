@@ -3,6 +3,7 @@ package com.racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
     List<Car> carList;
@@ -30,6 +31,16 @@ public class Cars {
         }
 
         return maxPosition;
+    }
+
+    public Cars determineWinners() {
+        int maxPosition = this.findMaxPosition();
+
+        List<Car> winnerList = this.carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+
+        return new Cars(winnerList);
     }
 
     @Override

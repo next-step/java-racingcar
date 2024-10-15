@@ -20,7 +20,8 @@ public class Main {
 
         runRace(cars, tryNumber);
 
-        List<Car> winners = CarHelper.determineWinners(cars);
+        Cars winners =
+                cars.determineWinners();
         ResultView.printWinners(winners);
     }
 

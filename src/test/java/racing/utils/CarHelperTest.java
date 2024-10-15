@@ -44,10 +44,10 @@ public class CarHelperTest {
         Car car3 = new Car(1, "car3");
         Cars cars = new Cars(Arrays.asList(car1, car2, car3));
 
-        List<Car> winners = CarHelper.determineWinners(cars);
+        Cars winners = cars.determineWinners();
 
-        assertThat(winners).hasSize(1);
-        assertThat(winners.get(0).displayCarName()).isEqualTo("car1");
+        assertThat(winners.getCarList()).hasSize(1);
+        assertThat(winners.getCarList().get(0).displayCarName()).isEqualTo("car1");
     }
 
     @Test
@@ -58,9 +58,9 @@ public class CarHelperTest {
         Car car3 = new Car(1, "car3");
         Cars cars = new Cars(Arrays.asList(car1, car2, car3));
 
-        List<Car> winners = CarHelper.determineWinners(cars);
+        Cars winners = cars.determineWinners();
 
-        assertThat(winners).hasSize(2);
-        assertThat(winners).extracting("name").containsExactlyInAnyOrder("car1", "car2");
+        assertThat(winners.getCarList()).hasSize(2);
+        assertThat(winners.getCarList()).extracting("name").containsExactlyInAnyOrder("car1", "car2");
     }
 }

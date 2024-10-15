@@ -1,8 +1,5 @@
 package com.racing.utils;
 
-import com.racing.domain.Car;
-import com.racing.domain.Cars;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,23 +32,6 @@ public class CarHelper {
         }
 
         return carName.length() < VALID_CAR_NAME;
-    }
-
-    public static List<Car> determineWinners(Cars cars) {
-        List<Car> winners = new ArrayList<>();
-        int maxPosition = cars.findMaxPosition();
-
-        for (Car car : cars.getCarList()) {
-            addWinners(car, maxPosition, winners);
-        }
-
-        return winners;
-    }
-
-    private static void addWinners(Car car, int maxPosition, List<Car> winners) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car);
-        }
     }
 
 }
