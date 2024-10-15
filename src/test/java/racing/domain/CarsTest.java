@@ -35,4 +35,30 @@ public class CarsTest {
         assertThat(cars.getCarList()).hasSize(1);
         assertThat(cars.getCarList().get(0)).isEqualTo(newCar);
     }
+
+    @Test
+    @DisplayName("가장 앞선 자동차의 위치를 정확히 찾는지 테스트")
+    void findMaxPositionTest() {
+        Car car1 = new Car(3, "car1");
+        Car car2 = new Car(5, "car2");
+        Car car3 = new Car(1, "car3");
+        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
+
+        int maxPosition = cars.findMaxPosition();
+
+        assertThat(maxPosition).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("모든 자동차가 같은 위치에 있을 때 정확한 위치를 반환하는지 테스트")
+    void findMaxPositionWhenAllCarsAtSamePosition() {
+        Car car1 = new Car(3, "car1");
+        Car car2 = new Car(3, "car2");
+        Car car3 = new Car(3, "car3");
+        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
+
+        int maxPosition = cars.findMaxPosition();
+
+        assertThat(maxPosition).isEqualTo(3);
+    }
 }

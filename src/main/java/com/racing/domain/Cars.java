@@ -23,6 +23,15 @@ public class Cars {
         return this.carList;
     }
 
+    public int findMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : this.carList) {
+            maxPosition = car.isDefeated(maxPosition) ? maxPosition : car.getPosition();
+        }
+
+        return maxPosition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -39,7 +39,7 @@ public class CarHelper {
 
     public static List<Car> determineWinners(Cars cars) {
         List<Car> winners = new ArrayList<>();
-        int maxPosition = findMaxPosition(cars.getCarList());
+        int maxPosition = cars.findMaxPosition();
 
         for (Car car : cars.getCarList()) {
             addWinners(car, maxPosition, winners);
@@ -52,15 +52,6 @@ public class CarHelper {
         if (car.getPosition() == maxPosition) {
             winners.add(car);
         }
-    }
-
-    private static int findMaxPosition(List<Car> carList) {
-        int maxPosition = 0;
-        for (Car car : carList) {
-            maxPosition = car.isDefeated(maxPosition) ? maxPosition : car.getPosition();
-        }
-
-        return maxPosition;
     }
 
 }
