@@ -25,7 +25,6 @@ public class PositionTest {
         assertThat(position.getPosition()).isEqualTo(2);
     }
 
-
     @Test
     @DisplayName("position 값에 따라 올바른 대시 문자열을 반환하는지 여부")
     public void displayDashAsPositionTest() {
@@ -34,4 +33,15 @@ public class PositionTest {
 
         assertThat(result).isEqualTo("---");
     }
+
+    @Test
+    @DisplayName("position을 올바르게 비교하여 큰 값인지 여부")
+    public void isBiggerThanPositionTest() {
+        Position position = new Position(5);
+
+        assertThat(position.isBiggerThanPosition(6)).isTrue();
+        assertThat(position.isBiggerThanPosition(5)).isFalse();
+        assertThat(position.isBiggerThanPosition(4)).isFalse();
+    }
+
 }

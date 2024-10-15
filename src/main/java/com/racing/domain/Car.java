@@ -39,6 +39,6 @@ public class Car {
     }
 
     public boolean isDefeated(int verseState) {
-        return position.getPosition() < verseState;
+        return position.isBiggerThanPosition(verseState);
     }
 }

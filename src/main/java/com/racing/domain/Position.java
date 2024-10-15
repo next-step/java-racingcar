@@ -25,6 +25,10 @@ public class Position {
         return "-".repeat(this.position);
     }
 
+    public boolean isBiggerThanPosition(int number) {
+        return this.position < number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
