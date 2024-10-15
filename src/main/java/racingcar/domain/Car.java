@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -16,7 +16,7 @@ public class Car {
     public Car(String name, Position position) {
         validateCarName(name);
 
-        this.name = name;
+        this.name = name.trim();
         this.position = position;
     }
 
@@ -46,7 +46,7 @@ public class Car {
     }
 
 
-    public boolean isWineer(int maxPosition) {
+    public boolean isWinner(int maxPosition) {
         return position.hasSamePosition(maxPosition);
     }
 

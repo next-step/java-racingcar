@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -80,7 +80,7 @@ public class CarTest {
     void 차_우승자인지(){
         Car car = new Car("test", new Position(4));
 
-        assertThat(car.isWineer(4)).isTrue();
+        assertThat(car.isWinner(4)).isTrue();
     }
 
 }

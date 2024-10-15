@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.model.Car;
-import racingcar.model.CarFactory;
-import racingcar.model.CarManager;
-import racingcar.model.Racing;
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.domain.CarManager;
+import racingcar.domain.Racing;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -16,7 +16,6 @@ public class RacingCarGame {
 
     public static void start() {
 
-        // 레이싱을 한 라운드로 보고싶음!
         Racing racing = new Racing();
 
         List<Car> cars = CarFactory.createCars(InputView.inputCarName());
@@ -27,9 +26,10 @@ public class RacingCarGame {
 
         for (int i = 0; i < gameRound; i++) {
             racing.start(carManager.getCars());
+            ResultView.print(cars);
         }
 
-        ResultView.printWinner(carManager.findWinner());
+        ResultView.printWinner(carManager.findWinners());
     }
 
 }

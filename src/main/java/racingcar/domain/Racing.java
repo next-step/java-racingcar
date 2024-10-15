@@ -1,6 +1,4 @@
-package racingcar.model;
-
-import racingcar.view.ResultView;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.Random;
@@ -13,8 +11,6 @@ public class Racing {
     public void start(List<Car> cars) {
         for (Car car : cars) {
             car.move(RANDOM.nextInt(10));
-            ResultView.printCarMovement(car);
         }
-        System.out.println();
     }
 }
