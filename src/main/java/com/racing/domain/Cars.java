@@ -43,6 +43,10 @@ public class Cars {
         return new Cars(winnerList);
     }
 
+    public int carsSize() {
+        return this.carList.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

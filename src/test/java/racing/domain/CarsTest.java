@@ -61,4 +61,19 @@ public class CarsTest {
 
         assertThat(maxPosition).isEqualTo(3);
     }
+
+
+    @Test
+    @DisplayName("carsSize 메서드가 정확한 자동차 수를 반환하는지 테스트")
+    void carsSizeTest() {
+        Car car1 = new Car(3, "car1");
+        Car car2 = new Car(3, "car2");
+        Car car3 = new Car(3, "car3");
+        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
+
+        int size = cars.carsSize();
+
+        assertThat(size).isEqualTo(3);
+    }
+
 }
