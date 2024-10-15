@@ -14,9 +14,9 @@ public class RacingHelperTest {
     @Test
     @DisplayName("모킹 데이터인 false를 반환 받는다.")
     public void isEquals_GetRandomBoolean() {
-        RandomMoverMock randomMover = new RandomMoverMock();
+        RandomStrategyMock randomStrategy = new RandomStrategyMock();
 
-        assertThat(randomMover.shouldMove()).isEqualTo(false);
+        assertThat(randomStrategy.shouldMove()).isEqualTo(false);
     }
 
     @Test

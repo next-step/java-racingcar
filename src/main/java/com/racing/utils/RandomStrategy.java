@@ -1,5 +1,5 @@
 package com.racing.utils;
 
-public interface RandomMover {
+public interface RandomStrategy {
     public boolean shouldMove();
 }
