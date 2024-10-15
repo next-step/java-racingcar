@@ -5,6 +5,10 @@ import java.util.Objects;
 public class Position {
     private final int position;
 
+    public Position() {
+        this(0);
+    }
+
     public Position(int position) {
         this.position = position;
     }
