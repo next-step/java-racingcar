@@ -4,6 +4,7 @@ import com.racing.domain.Car;
 import com.racing.ui.InputView;
 import com.racing.ui.ResultView;
 import com.racing.utils.CarHelper;
+import com.racing.utils.RacingHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +42,10 @@ public class Main {
     }
 
     private static void moveAllCars(List<Car> carList) {
+        RacingHelper racingHelper = new RacingHelper();
+
         for (Car car : carList) {
-            car.move();
+            car.move(racingHelper.shouldMove());
         }
     }
 }

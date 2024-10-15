@@ -1,7 +1,5 @@
 package com.racing.domain;
 
-import com.racing.utils.RacingHelper;
-
 public class Car {
 
     private int position = 0;
@@ -18,10 +16,8 @@ public class Car {
         this.name = name;
     }
 
-    public void move() {
-        RacingHelper racingHelper = new RacingHelper();
-
-        if (racingHelper.shouldMove()) {
+    public void move(boolean isMovable) {
+        if (isMovable) {
             position++;
         }
     }
