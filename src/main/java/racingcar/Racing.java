@@ -15,7 +15,7 @@ public class Racing {
     }
 
     public List<RacingResult> play() {
-        List<RacingResult> racingResults = new ArrayList();
+        List<RacingResult> racingResults = new ArrayList<>();
 
         for (Car car : cars) {
             car.move(RANDOM.nextInt(10));

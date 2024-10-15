@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
+    public static final StringBuilder BUILDER = new StringBuilder();
     private static final String LINE = "-".repeat(5);
 
     private ResultView() {
@@ -17,23 +18,20 @@ public class ResultView {
 
     public static void drawCarPositions(List<RacingResult> results) {
         for (RacingResult result : results) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder
+            BUILDER
                     .append(result.getName())
                     .append(" : ")
-                    .append("-".repeat(result.getPosition()));
-            System.out.println(stringBuilder.toString());
+                    .append("-".repeat(result.getPosition()))
+                    .append("\n");
         }
+        System.out.println(BUILDER.toString());
     }
 
     public static void printWinners(List<Car> winners) {
         String winnersName = winners.stream().map(Car::getName)
                 .collect(Collectors.joining(","));
 
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder
-                .append(winnersName)
-                .append("이(가) 최종 우승 했습니다.");
-        System.out.println(stringBuilder.toString());
+        BUILDER.append(winnersName).append("이(가) 최종 우승 했습니다.");
+        System.out.println(BUILDER.toString());
     }
 }

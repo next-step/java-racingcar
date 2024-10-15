@@ -23,7 +23,7 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
         }
         if (name.trim().length() >= MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5 미만의 글자여야 합니다.");
+            throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH + " 미만의 글자여야 합니다.");
         }
     }
 
