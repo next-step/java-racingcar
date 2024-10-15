@@ -18,11 +18,9 @@ public class Main {
 
         Cars cars = createCars(validCarNames);
 
-        // 리팩토링 단계에서 임시로 선언했습니다!
-        List<Car> carList = cars.getCarList();
-        runRace(carList, tryNumber);
+        runRace(cars, tryNumber);
 
-        List<Car> winners = CarHelper.determineWinners(carList);
+        List<Car> winners = CarHelper.determineWinners(cars);
         ResultView.printWinners(winners);
     }
 
@@ -36,18 +34,18 @@ public class Main {
         return cars;
     }
 
-    private static void runRace(List<Car> carList, int tryNumber) {
+    private static void runRace(Cars cars, int tryNumber) {
         ResultView.printStartMessage();
         for (int i = 0; i < tryNumber; i++) {
-            moveAllCars(carList);
-            ResultView.printRoundResult(i + 1, carList);
+            moveAllCars(cars);
+            ResultView.printRoundResult(i + 1, cars.getCarList());
         }
     }
 
-    private static void moveAllCars(List<Car> carList) {
+    private static void moveAllCars(Cars cars) {
         RacingHelper racingHelper = new RacingHelper();
 
-        for (Car car : carList) {
+        for (Car car : cars.getCarList()) {
             car.move(racingHelper.shouldMove());
         }
     }
