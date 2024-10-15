@@ -57,7 +57,6 @@ public class CarHelper {
         int maxPosition = 0;
         for (Car car : carList) {
             maxPosition = car.isDefeated(maxPosition) ? maxPosition : car.getPosition();
-
         }
 
         return maxPosition;
