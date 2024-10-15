@@ -21,6 +21,10 @@ public class Position {
         return position;
     }
 
+    public String displayDashAsPosition() {
+        return "-".repeat(this.position);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

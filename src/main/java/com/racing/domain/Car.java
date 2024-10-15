@@ -27,7 +27,7 @@ public class Car {
     }
 
     public String displayState() {
-        return "-".repeat(position.getPosition());
+        return position.displayDashAsPosition();
     }
 
     public String displayCarName() {

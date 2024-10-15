@@ -24,4 +24,14 @@ public class PositionTest {
 
         assertThat(position.getPosition()).isEqualTo(2);
     }
+
+
+    @Test
+    @DisplayName("position 값에 따라 올바른 대시 문자열을 반환하는지 여부")
+    public void displayDashAsPositionTest() {
+        Position position = new Position(3);
+        String result = position.displayDashAsPosition();
+
+        assertThat(result).isEqualTo("---");
+    }
 }
