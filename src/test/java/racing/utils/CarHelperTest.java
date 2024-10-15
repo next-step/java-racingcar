@@ -1,6 +1,7 @@
 package racing.utils;
 
 import com.racing.domain.Car;
+import com.racing.domain.Cars;
 import com.racing.utils.CarHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,7 @@ public class CarHelperTest {
         Car car1 = new Car(3, "car1");
         Car car2 = new Car(2, "car2");
         Car car3 = new Car(1, "car3");
-        List<Car> cars = Arrays.asList(car1, car2, car3);
+        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
 
         List<Car> winners = CarHelper.determineWinners(cars);
 
@@ -55,7 +56,7 @@ public class CarHelperTest {
         Car car1 = new Car(3, "car1");
         Car car2 = new Car(3, "car2");
         Car car3 = new Car(1, "car3");
-        List<Car> cars = Arrays.asList(car1, car2, car3);
+        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
 
         List<Car> winners = CarHelper.determineWinners(cars);
 

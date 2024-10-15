@@ -38,7 +38,9 @@ public class Main {
         ResultView.printStartMessage();
         for (int i = 0; i < tryNumber; i++) {
             moveAllCars(cars);
-            ResultView.printRoundResult(i + 1, cars.getCarList());
+
+            int roundNumber = i + 1;
+            ResultView.printRoundResult(roundNumber, cars);
         }
     }
 
