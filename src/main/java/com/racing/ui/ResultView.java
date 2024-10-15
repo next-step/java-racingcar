@@ -1,6 +1,5 @@
 package com.racing.ui;
 
-import com.racing.domain.Car;
 import com.racing.domain.Cars;
 
 public class ResultView {
@@ -10,17 +9,17 @@ public class ResultView {
 
     public static void printRoundResult(int round, Cars cars) {
         System.out.println("# " + round + "회차");
-        for (Car car : cars.getCarList()) {
-            System.out.println(car.displayRacingPosition());
-        }
+
+        cars.printRacingPositions();
+
         System.out.println();
     }
 
     public static void printWinners(Cars winners) {
         System.out.print("최종 우승자: ");
-        int winnerSize = winners.getCarList().size();
+        int winnerSize = winners.carsSize();
         for (int i = 0; i < winnerSize; i++) {
-            System.out.print(winners.getCarList().get(i).displayCarName());
+            System.out.print(winners.getCarName(i));
             printComma(i < winnerSize - 1);
         }
 

@@ -47,6 +47,20 @@ public class Cars {
         return this.carList.size();
     }
 
+    public String getCarName(int index) {
+        if (index < 0 || index >= carList.size()) {
+            throw new IndexOutOfBoundsException("Invalid car index");
+        }
+
+        return carList.get(index).displayCarName();
+    }
+
+    public void printRacingPositions() {
+        for (Car car : carList) {
+            System.out.println(car.displayRacingPosition());
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
