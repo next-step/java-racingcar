@@ -23,4 +23,16 @@ public class CarsTest {
 
         assertThat(new Cars(Arrays.asList(pobyCar, jongCar, leeCar))).isEqualTo(cars);
     }
+
+    @Test
+    @DisplayName("addCars 메서드가 Car 객체를 정상적으로 추가하는지 여부")
+    public void addCarsTest() {
+        Cars cars = new Cars();
+        Car newCar = new Car(4, "newCar");
+
+        cars.addCars(newCar);
+
+        assertThat(cars.getCarList()).hasSize(1);
+        assertThat(cars.getCarList().get(0)).isEqualTo(newCar);
+    }
 }

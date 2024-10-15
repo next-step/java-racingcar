@@ -1,12 +1,12 @@
 package com.racing;
 
 import com.racing.domain.Car;
+import com.racing.domain.Cars;
 import com.racing.ui.InputView;
 import com.racing.ui.ResultView;
 import com.racing.utils.CarHelper;
 import com.racing.utils.RacingHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -16,21 +16,24 @@ public class Main {
 
         List<String> validCarNames = CarHelper.splitCarName(carNames);
 
-        List<Car> carList = createCars(validCarNames);
+        Cars cars = createCars(validCarNames);
+
+        // 리팩토링 단계에서 임시로 선언했습니다!
+        List<Car> carList = cars.getCarList();
         runRace(carList, tryNumber);
 
         List<Car> winners = CarHelper.determineWinners(carList);
         ResultView.printWinners(winners);
     }
 
-    private static List<Car> createCars(List<String> carNames) {
-        List<Car> carList = new ArrayList<>();
+    private static Cars createCars(List<String> carNames) {
+        Cars cars = new Cars();
 
         for (String carName : carNames) {
-            carList.add(new Car(0, carName));
+            cars.addCars(new Car(0, carName));
         }
 
-        return carList;
+        return cars;
     }
 
     private static void runRace(List<Car> carList, int tryNumber) {

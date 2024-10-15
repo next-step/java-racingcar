@@ -15,6 +15,14 @@ public class Cars {
         this.carList = carList;
     }
 
+    public void addCars(Car car) {
+        carList.add(car);
+    }
+
+    public List<Car> getCarList() {
+        return this.carList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
