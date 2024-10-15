@@ -28,7 +28,7 @@ public class CarHelper {
         }
     }
 
-    public static boolean isValidCarName(String carName) {
+    private static boolean isValidCarName(String carName) {
         if (carName.isEmpty()) {
             return false;
         }
