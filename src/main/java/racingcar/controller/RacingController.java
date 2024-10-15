@@ -1,9 +1,9 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Racing;
 import racingcar.domain.RacingResult;
-import racingcar.domain.Winners;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -16,20 +16,20 @@ public class RacingController {
         String[] names = InputView.getCarNames();
         int roundNum = InputView.getRoundNumber();
 
-        List<Car> cars = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
+            carList.add(new Car(names[i]));
         }
 
-        Racing racing = new Racing(cars);
+        Cars cars = new Cars(carList);
+        Racing racing = new Racing(cars.getCars());
 
         for (int i = 0; i < roundNum; i++) {
             ResultView.roundStart(i + 1);
             List<RacingResult> carPositions = racing.play();
             ResultView.drawCarPositions(carPositions);
         }
-        
-        List<Car> winners = Winners.findWinners(cars);
+        List<Car> winners = cars.findWinners();
         ResultView.printWinners(winners);
     }
 }
