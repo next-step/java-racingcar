@@ -23,11 +23,7 @@ public class Car {
     }
 
     public String displayRacingPosition() {
-        return displayCarName() + " : " + displayState();
-    }
-
-    public String displayState() {
-        return position.displayDashAsPosition();
+        return this.name + " : " + position.displayDashAsPosition();
     }
 
     public String displayCarName() {
