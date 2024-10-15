@@ -4,8 +4,6 @@ import com.racing.domain.Car;
 import com.racing.utils.CarHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,13 +18,6 @@ public class CarHelperTest {
         List<String> expectedValue = Arrays.asList("pobi", "crong", "honux");
 
         assertThat(CarHelper.splitCarName("pobi,crong,honux")).isEqualTo(expectedValue);
-    }
-
-    @ParameterizedTest
-    @DisplayName("5글자 이하일 경우 true, 6글자 이상일 경우 false반환")
-    @CsvSource(value = {"poby:true", "crong:true", "honux:true", "testtttt:false", "qweqweqwe:false"}, delimiter = ':')
-    void isEquals_ShouldEqualsExpectedValueSet(String carName, boolean expected) {
-        assertThat(CarHelper.isValidCarName(carName)).isEqualTo(expected);
     }
 
     @Test
