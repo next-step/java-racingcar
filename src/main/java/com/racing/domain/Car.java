@@ -3,7 +3,7 @@ package com.racing.domain;
 public class Car {
 
     private Position position;
-    private String name;
+    private CarName carName;
 
     // 기본 생성자
     public Car() {
@@ -11,9 +11,9 @@ public class Car {
     }
 
     // 상태 지정 생성자
-    public Car(int position, String name) {
+    public Car(int position, String carName) {
         this.position = new Position(position);
-        this.name = name;
+        this.carName = new CarName(carName);
     }
 
     public void move(boolean isMovable) {
@@ -23,11 +23,11 @@ public class Car {
     }
 
     public String displayRacingPosition() {
-        return this.name + " : " + position.displayDashAsPosition();
+        return carName.getCarName() + " : " + position.displayDashAsPosition();
     }
 
     public String displayCarName() {
-        return name;
+        return carName.getCarName();
     }
 
     public int getPosition() {
