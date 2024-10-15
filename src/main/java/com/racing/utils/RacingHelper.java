@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * 레이싱에서 사용 할 헬퍼 메서드를 모아놓은 클래스
  */
-public class RacingHelper implements RandomMover {
+public class RacingHelper implements RandomStrategy {
     private static final int RANDOM_NUMBER_RANGE = 10;
     private static final int FORWARD_MINIMUM_NUMBER = 4;
 

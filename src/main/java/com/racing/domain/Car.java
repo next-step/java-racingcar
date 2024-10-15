@@ -1,11 +1,9 @@
 package com.racing.domain;
 
-import com.racing.utils.RacingHelper;
-
 public class Car {
 
-    private int state = 0;
-    private String name;
+    private Position position;
+    private CarName carName;
 
     // 기본 생성자
     public Car() {
@@ -13,36 +11,30 @@ public class Car {
     }
 
     // 상태 지정 생성자
-    public Car(int state, String name) {
-        this.state = state;
-        this.name = name;
+    public Car(int position, String carName) {
+        this.position = new Position(position);
+        this.carName = new CarName(carName);
     }
 
-    public void move() {
-        RacingHelper racingHelper = new RacingHelper();
-
-        if (racingHelper.shouldMove()) {
-            state++;
+    public void move(boolean isMovable) {
+        if (isMovable) {
+            position.addPosition();
         }
     }
 
-    public String displayRacingState() {
-        return displayCarName() + " : " + displayState();
-    }
-
-    public String displayState() {
-        return "-".repeat(state);
+    public String displayRacingPosition() {
+        return carName.getCarName() + " : " + position.displayDashAsPosition();
     }
 
     public String displayCarName() {
-        return name;
+        return carName.getCarName();
     }
 
-    public int getState() {
-        return state;
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public boolean isDefeated(int verseState) {
-        return state < verseState;
+        return position.isBiggerThanPosition(verseState);
     }
 }

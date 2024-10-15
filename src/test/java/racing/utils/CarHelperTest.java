@@ -1,11 +1,10 @@
 package racing.utils;
 
 import com.racing.domain.Car;
+import com.racing.domain.Cars;
 import com.racing.utils.CarHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,13 +19,6 @@ public class CarHelperTest {
         List<String> expectedValue = Arrays.asList("pobi", "crong", "honux");
 
         assertThat(CarHelper.splitCarName("pobi,crong,honux")).isEqualTo(expectedValue);
-    }
-
-    @ParameterizedTest
-    @DisplayName("5글자 이하일 경우 true, 6글자 이상일 경우 false반환")
-    @CsvSource(value = {"poby:true", "crong:true", "honux:true", "testtttt:false", "qweqweqwe:false"}, delimiter = ':')
-    void isEquals_ShouldEqualsExpectedValueSet(String carName, boolean expected) {
-        assertThat(CarHelper.isValidCarName(carName)).isEqualTo(expected);
     }
 
     @Test
@@ -50,12 +42,12 @@ public class CarHelperTest {
         Car car1 = new Car(3, "car1");
         Car car2 = new Car(2, "car2");
         Car car3 = new Car(1, "car3");
-        List<Car> cars = Arrays.asList(car1, car2, car3);
+        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
 
-        List<Car> winners = CarHelper.determineWinners(cars);
+        Cars winners = cars.determineWinners();
 
-        assertThat(winners).hasSize(1);
-        assertThat(winners.get(0).displayCarName()).isEqualTo("car1");
+        assertThat(winners.getCarList()).hasSize(1);
+        assertThat(winners.getCarList().get(0).displayCarName()).isEqualTo("car1");
     }
 
     @Test
@@ -64,11 +56,11 @@ public class CarHelperTest {
         Car car1 = new Car(3, "car1");
         Car car2 = new Car(3, "car2");
         Car car3 = new Car(1, "car3");
-        List<Car> cars = Arrays.asList(car1, car2, car3);
+        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
 
-        List<Car> winners = CarHelper.determineWinners(cars);
+        Cars winners = cars.determineWinners();
 
-        assertThat(winners).hasSize(2);
-        assertThat(winners).extracting("name").containsExactlyInAnyOrder("car1", "car2");
+        assertThat(winners.getCarList()).hasSize(2);
+        assertThat(winners.getCarList()).extracting("name").containsExactlyInAnyOrder("car1", "car2");
     }
 }

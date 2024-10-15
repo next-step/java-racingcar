@@ -1,11 +1,12 @@
 package com.racing;
 
 import com.racing.domain.Car;
+import com.racing.domain.Cars;
 import com.racing.ui.InputView;
 import com.racing.ui.ResultView;
 import com.racing.utils.CarHelper;
+import com.racing.utils.RacingHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -15,34 +16,40 @@ public class Main {
 
         List<String> validCarNames = CarHelper.splitCarName(carNames);
 
-        List<Car> carList = createCars(validCarNames);
-        runRace(carList, tryNumber);
+        Cars cars = createCars(validCarNames);
 
-        List<Car> winners = CarHelper.determineWinners(carList);
+        runRace(cars, tryNumber);
+
+        Cars winners =
+                cars.determineWinners();
         ResultView.printWinners(winners);
     }
 
-    private static List<Car> createCars(List<String> carNames) {
-        List<Car> carList = new ArrayList<>();
+    private static Cars createCars(List<String> carNames) {
+        Cars cars = new Cars();
 
         for (String carName : carNames) {
-            carList.add(new Car(0, carName));
+            cars.addCars(new Car(0, carName));
         }
 
-        return carList;
+        return cars;
     }
 
-    private static void runRace(List<Car> carList, int tryNumber) {
+    private static void runRace(Cars cars, int tryNumber) {
         ResultView.printStartMessage();
         for (int i = 0; i < tryNumber; i++) {
-            moveAllCars(carList);
-            ResultView.printRoundResult(i + 1, carList);
+            moveAllCars(cars);
+
+            int roundNumber = i + 1;
+            ResultView.printRoundResult(roundNumber, cars);
         }
     }
 
-    private static void moveAllCars(List<Car> carList) {
-        for (Car car : carList) {
-            car.move();
+    private static void moveAllCars(Cars cars) {
+        RacingHelper racingHelper = new RacingHelper();
+
+        for (Car car : cars.getCarList()) {
+            car.move(racingHelper.shouldMove());
         }
     }
 }
