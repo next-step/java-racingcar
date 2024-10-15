@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCar {
@@ -8,10 +10,12 @@ public class RacingCar {
     private final int numberOfRace;
     private final Random random = new Random();
 
-    private int[] carPosition;
+    private List<Car> cars = new ArrayList<>();
 
     public RacingCar(final int numberOfCar, final int numberOfRace) {
-        this.carPosition = new int[numberOfCar];
+        for (int i = 0; i < numberOfCar; i++) {
+            cars.add(new Car(0));
+        }
 
         this.numberOfCar = numberOfCar;
         this.numberOfRace = numberOfRace;
@@ -26,7 +30,7 @@ public class RacingCar {
     }
 
     public int getCarPosition(int index) {
-        return this.carPosition[index];
+        return this.cars.get(index).getPosition();
     }
 
     public int generateRandomNumber() {
@@ -41,8 +45,7 @@ public class RacingCar {
 
     public void moveCar(int number, int carNumber) {
         if (number >= 4)
-            carPosition[carNumber]++;
-
+            this.cars.get(carNumber).move();
     }
 
     public void startRacing(OutputView outputView) {
