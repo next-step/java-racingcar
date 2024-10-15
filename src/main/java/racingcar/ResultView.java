@@ -25,6 +25,7 @@ public class ResultView {
                     .append("\n");
         }
         System.out.println(BUILDER.toString());
+        BUILDER.setLength(0);
     }
 
     public static void printWinners(List<Car> winners) {
@@ -33,5 +34,6 @@ public class ResultView {
 
         BUILDER.append(winnersName).append("이(가) 최종 우승 했습니다.");
         System.out.println(BUILDER.toString());
+        BUILDER.setLength(0);
     }
 }
