@@ -38,29 +38,29 @@ public class CarHelper {
 
     public static List<Car> determineWinners(List<Car> carList) {
         List<Car> winners = new ArrayList<>();
-        int maxState = findMaxState(carList);
+        int maxPosition = findMaxPosition(carList);
 
         for (Car car : carList) {
-            addWinners(car, maxState, winners);
+            addWinners(car, maxPosition, winners);
         }
 
         return winners;
     }
 
-    private static void addWinners(Car car, int maxState, List<Car> winners) {
-        if (car.getState() == maxState) {
+    private static void addWinners(Car car, int maxPosition, List<Car> winners) {
+        if (car.getPosition() == maxPosition) {
             winners.add(car);
         }
     }
 
-    private static int findMaxState(List<Car> carList) {
-        int maxState = 0;
+    private static int findMaxPosition(List<Car> carList) {
+        int maxPosition = 0;
         for (Car car : carList) {
-            maxState = car.isDefeated(maxState) ? maxState : car.getState();
+            maxPosition = car.isDefeated(maxPosition) ? maxPosition : car.getPosition();
 
         }
 
-        return maxState;
+        return maxPosition;
     }
 
 }

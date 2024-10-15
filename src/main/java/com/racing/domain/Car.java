@@ -4,7 +4,7 @@ import com.racing.utils.RacingHelper;
 
 public class Car {
 
-    private int state = 0;
+    private int position = 0;
     private String name;
 
     // 기본 생성자
@@ -14,7 +14,7 @@ public class Car {
 
     // 상태 지정 생성자
     public Car(int state, String name) {
-        this.state = state;
+        this.position = state;
         this.name = name;
     }
 
@@ -22,27 +22,27 @@ public class Car {
         RacingHelper racingHelper = new RacingHelper();
 
         if (racingHelper.shouldMove()) {
-            state++;
+            position++;
         }
     }
 
-    public String displayRacingState() {
+    public String displayRacingPosition() {
         return displayCarName() + " : " + displayState();
     }
 
     public String displayState() {
-        return "-".repeat(state);
+        return "-".repeat(position);
     }
 
     public String displayCarName() {
         return name;
     }
 
-    public int getState() {
-        return state;
+    public int getPosition() {
+        return position;
     }
 
     public boolean isDefeated(int verseState) {
-        return state < verseState;
+        return position < verseState;
     }
 }
