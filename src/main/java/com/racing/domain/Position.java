@@ -3,7 +3,7 @@ package com.racing.domain;
 import java.util.Objects;
 
 public class Position {
-    private final int position;
+    private int position;
 
     public Position() {
         this(0);
@@ -11,6 +11,14 @@ public class Position {
 
     public Position(int position) {
         this.position = position;
+    }
+
+    public void addPosition() {
+        this.position++;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
