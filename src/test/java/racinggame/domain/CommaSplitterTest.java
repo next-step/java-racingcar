@@ -6,11 +6,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class CommaPatternNamesTest {
+class CommaSplitterTest {
 
     @Test
     public void 숫자_두개_분리_테스트() {
-        List<String> split = new CommaPatternNames("1,2").split();
+        List<String> split = new CommaSplitter().split("1,2");
         assertThat(split).hasSize(2);
         assertThat(split).contains("1", "2");
         assertThat(split).containsExactly("1", "2");
@@ -18,6 +18,6 @@ class CommaPatternNamesTest {
 
     @Test
     public void 숫자_한개_분리_테스트() {
-        assertThatThrownBy(()->new CommaPatternNames(null)).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> new CommaSplitter().split(null)).isInstanceOf(NullPointerException.class);
     }
 }
