@@ -1,5 +1,6 @@
 package racinggame;
 
+import racinggame.controller.GameController;
 import racinggame.domain.CommaPatternNames;
 import racinggame.dto.Result;
 import racinggame.random.DefaultRandomNumberGenerator;
@@ -12,8 +13,8 @@ public class RacingMain {
 
     public static void main(String[] args) {
         InputDto read = InputView.readCount();
-        RacingGame racingGame = new RacingGame(read.getRepeatCount(), new CommaPatternNames(read.getCarNames()));
-        Result result = racingGame.start(new DefaultRandomNumberGenerator());
+        GameController controller = new GameController();
+        Result result = controller.play(read);
         OutPutView.render(result);
     }
 
