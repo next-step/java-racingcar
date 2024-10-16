@@ -8,8 +8,9 @@ import racinggame.random.DefaultRandomNumberGenerator;
 
 public class GameController {
 
-    public Result play(InputDto inputDto){
-        RacingGame racingGame = new RacingGame(inputDto.getRepeatCount(), new CommaPatternNames(inputDto.getCarNames()));
+    public Result play(InputDto inputDto) {
+        RacingGame racingGame = new RacingGame(inputDto.getRepeatCount(),
+                new CommaPatternNames(inputDto.getCarNames()));
         return racingGame.start(new DefaultRandomNumberGenerator());
     }
 }

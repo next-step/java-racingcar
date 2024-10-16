@@ -12,9 +12,10 @@ import racinggame.view.InputView;
 public class RacingMain {
 
     public static void main(String[] args) {
-        InputDto read = InputView.readCount();
+        String carNames = InputView.readCarNames();
+        int repeatCount = InputView.readRepeatCount();
         GameController controller = new GameController();
-        Result result = controller.play(read);
+        Result result = controller.play(new InputDto(carNames,repeatCount));
         OutPutView.render(result);
     }
 
