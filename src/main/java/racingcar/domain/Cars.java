@@ -15,11 +15,9 @@ public class Cars {
   }
 
   public static Cars createCars(List<String> carNames) {
-    return new Cars(
-            carNames.stream()
-                    .map(Car::new)
-                    .collect(Collectors.toList())
-    );
+    return carNames.stream()
+            .map(Car::new)
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::new));
   }
 
   public List<Car> getCars() {
