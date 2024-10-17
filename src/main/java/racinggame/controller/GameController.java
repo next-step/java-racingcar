@@ -1,6 +1,6 @@
 package racinggame.controller;
 
-import racinggame.domain.CommaSplitter;
+import racinggame.domain.CommaPatternNames;
 import racinggame.domain.Names;
 import racinggame.domain.RacingGame;
 import racinggame.dto.InputDto;
@@ -11,7 +11,7 @@ public class GameController {
 
     public Result play(InputDto inputDto) {
         RacingGame racingGame = new RacingGame(inputDto.getRepeatCount(),
-                new Names(inputDto.getCarNames(), new CommaSplitter()));
+                new CommaPatternNames(inputDto.getCarNames()));
         return racingGame.start(new DefaultRandomNumberGenerator());
     }
 }

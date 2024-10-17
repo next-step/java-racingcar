@@ -31,7 +31,7 @@ public class RacingGameTest {
     }
 
     private static Names defaultNames() {
-        return new Names("t1,t2,t3,t4", new CommaSplitter());
+        return new CommaPatternNames("t1,t2,t3,t4");
     }
 
 }
