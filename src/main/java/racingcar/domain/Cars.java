@@ -14,7 +14,7 @@ public class Cars {
     public List<Car> findWinners() {
         int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.getCurrentPosition() == maxPosition)
+                .filter(car -> car.isAtPosition(maxPosition))
                 .collect(Collectors.toList());
     }
 
