@@ -13,7 +13,7 @@ class CarsTest {
   public static final List<String> WINNERS_NAME = List.of("pobi");
   private static final List<Car> CARS = List.of(
           new Car("pobi", new Position(2)),
-          new Car("jason",new Position(1)),
+          new Car("jason", new Position(1)),
           new Car("jobi", new Position(0))
   );
 
