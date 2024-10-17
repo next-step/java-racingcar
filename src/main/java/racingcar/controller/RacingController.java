@@ -7,8 +7,8 @@ import racingcar.domain.RacingResult;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingController {
 
@@ -17,7 +17,9 @@ public class RacingController {
         int roundNum = InputView.getRoundNumber();
 
         Cars cars = Cars.from(names);
-        Racing racing = new Racing(cars.getCars());
+
+        Random random = new Random();
+        Racing racing = new Racing(cars.getCars(), random);
 
         for (int i = 0; i < roundNum; i++) {
             ResultView.roundStart(i + 1);

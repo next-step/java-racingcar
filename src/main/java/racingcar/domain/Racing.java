@@ -9,9 +9,11 @@ public class Racing {
     public static final int MAX_BOUND = 10;
 
     private final List<Car> cars;
+    private final Random random;
 
-    public Racing(List<Car> cars) {
+    public Racing(List<Car> cars, Random random) {
         this.cars = cars;
+        this.random = random;
     }
 
     public List<RacingResult> play() {
@@ -26,7 +28,6 @@ public class Racing {
     }
 
     private int getRandomNum() {
-        Random random = new Random();
         return random.nextInt(MAX_BOUND);
     }
 }
