@@ -25,7 +25,7 @@ public class Racing {
         return racingResults;
     }
 
-    protected int getRandomNum() {
+    private int getRandomNum() {
         Random random = new Random();
         return random.nextInt(MAX_BOUND);
     }
