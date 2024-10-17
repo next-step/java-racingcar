@@ -1,16 +1,15 @@
 package racinggame.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class CommaPatternNames implements Names {
 
+    private static final String PATTERN = ",";
     private final List<String> names;
 
-    public CommaPatternNames(String names) {
-        if (names == null) {
-            throw new NullPointerException("이름은 null일 수 없습니다.");
-        }
-        this.names = toList(splitNames(names));
+    public CommaPatternNames(String value) {
+        this.names = toList(splitNames(value));
     }
 
     @Override
@@ -19,10 +18,12 @@ public class CommaPatternNames implements Names {
     }
 
     private String[] splitNames(String names) {
-        return names.split(",");
+        return names.split(PATTERN);
     }
 
     private List<String> toList(String[] names) {
         return List.of(names);
     }
+
+
 }

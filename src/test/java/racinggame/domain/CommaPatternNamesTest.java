@@ -18,6 +18,6 @@ class CommaPatternNamesTest {
 
     @Test
     public void 숫자_한개_분리_테스트() {
-        assertThatThrownBy(()->new CommaPatternNames(null)).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> new CommaPatternNames(null).split()).isInstanceOf(NullPointerException.class);
     }
 }

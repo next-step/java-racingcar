@@ -4,11 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racinggame.generator.CarDtoTestGenerator.carDtos;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racinggame.dto.CarDto;
-import racinggame.dto.History;
 import racinggame.dto.Result;
 import racinggame.generator.TestNumberGenerator;
 
@@ -33,7 +30,7 @@ public class RacingGameTest {
                 .hasMessage("반복횟수는 1이상이여야 합니다.");
     }
 
-    private static CommaPatternNames defaultNames() {
+    private static Names defaultNames() {
         return new CommaPatternNames("t1,t2,t3,t4");
     }
 
