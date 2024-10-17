@@ -16,12 +16,7 @@ public class RacingController {
         String[] names = InputView.getCarNames();
         int roundNum = InputView.getRoundNumber();
 
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            carList.add(new Car(names[i]));
-        }
-
-        Cars cars = new Cars(carList);
+        Cars cars = Cars.from(names);
         Racing racing = new Racing(cars.getCars());
 
         for (int i = 0; i < roundNum; i++) {

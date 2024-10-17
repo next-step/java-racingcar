@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
     private final List<Car> cars;
@@ -27,4 +28,13 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public static Cars from(String[] names) {
+        List<Car> carList =
+                Stream.of(names)
+                        .map(name -> new Car(new CarName(name), new CarPosition(0)))
+                        .collect(Collectors.toList());
+        return new Cars(carList);
+    }
+
 }
