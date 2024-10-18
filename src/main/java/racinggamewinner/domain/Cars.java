@@ -1,4 +1,4 @@
-package racinggamewinner;
+package racinggamewinner.domain;
 
 
 import racinggamewinner.random.RandomGenerator;
@@ -38,24 +38,18 @@ public class Cars {
         return cars;
     }
 
-
     public int carCount() {
         return cars.size();
     }
 
+    public void raceOneRound(RandomGenerator randomGenerator) {
+        recordEachRoundMoving(randomGenerator);
+    }
 
     public void recordEachRoundMoving(RandomGenerator randomGenerator) {
         for (Car car : cars) {
             car.updatePosition(car.decideGoStop(randomGenerator.generateRandomNumber()));
         }
-    }
-
-    public void viewRacing(int movingTryCount, RandomGenerator randomGenerator) {
-        for (int i = 0; i < movingTryCount; i++) {
-            recordEachRoundMoving(randomGenerator);
-            ResultView.printTotalCarPosition(carNameAndPositions());
-        }
-
     }
 
     public Map<String, Integer> carNameAndPositions() {

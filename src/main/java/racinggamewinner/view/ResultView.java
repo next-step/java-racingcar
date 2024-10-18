@@ -1,4 +1,4 @@
-package racinggamewinner;
+package racinggamewinner.view;
 
 import java.util.List;
 import java.util.Map;

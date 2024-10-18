@@ -1,4 +1,4 @@
-package racinggamewinner;
+package racinggamewinner.domain;
 
 public class Position {
     private int position;

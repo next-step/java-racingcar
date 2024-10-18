@@ -3,6 +3,9 @@ package racinggamewinner;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racinggamewinner.domain.Car;
+import racinggamewinner.domain.Cars;
+import racinggamewinner.domain.Winners;
 
 import java.util.List;
 import java.util.stream.Stream;

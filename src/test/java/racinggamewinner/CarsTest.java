@@ -1,6 +1,8 @@
 package racinggamewinner;
 
 import org.junit.jupiter.api.Test;
+import racinggamewinner.domain.Car;
+import racinggamewinner.domain.Cars;
 import racinggamewinner.random.RandomGenerator;
 
 import java.util.List;
