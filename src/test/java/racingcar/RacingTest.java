@@ -15,9 +15,8 @@ public class RacingTest {
     @Test
     @DisplayName("자동차의 위치와 이름을 가지고 있는 RacingResult로 잘 반환하는지 확인")
     void playTest() {
-        Car testCar1 = new Car(new CarName("yun"), new CarPosition(0));
-        Car testCar2 = new Car(new CarName("yun2"), new CarPosition(0));
-        List<Car> cars = Arrays.asList(testCar1, testCar2);
+        String[] names = {"yun", "yun2"};
+        Cars cars = Cars.from(names);
 
         Random random = new Random();
         Racing racing = new Racing(cars, random);

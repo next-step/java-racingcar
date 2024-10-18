@@ -6,8 +6,6 @@ import java.util.Random;
 
 public class Racing {
 
-    public static final int MAX_BOUND = 10;
-
     private final Cars cars;
     private final Random random;
 
@@ -18,16 +16,14 @@ public class Racing {
 
     public List<RacingResult> play() {
         List<RacingResult> racingResults = new ArrayList<>();
+        MovingStrategy movingStrategy = new RandomMovingStrategy(random);
 
         for (Car car : cars.getCars()) {
-            car.move(getRandomNum());
+            car.move(movingStrategy);
             RacingResult racingResult = new RacingResult(car.getName(), car.getCurrentPosition());
             racingResults.add(racingResult);
         }
         return racingResults;
     }
 
-    private int getRandomNum() {
-        return random.nextInt(MAX_BOUND);
-    }
 }
