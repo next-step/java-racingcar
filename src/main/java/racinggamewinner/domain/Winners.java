@@ -7,22 +7,15 @@ import java.util.Map;
 public class Winners {
 
     private Cars cars;
-    private List<String> winnerNameList = new ArrayList<>();
+    private WinnerList winnerNameList;
 
     public Winners(Cars cars) {
         this.cars = cars;
-
+        this.winnerNameList = new WinnerList(new ArrayList<>());
     }
 
     public List<String> findWinner() {
-        addWinnerNameToList(carNameAndPositionMap(), maxCarPosition());
-        return winnerNameList;
-    }
-
-    public void addWinnerNameToList(Map<String, Integer> carNameAndPositionMap, int maxCarPosition) {
-        carNameAndPositionMap.keySet().stream()
-                .filter(carName -> carNameAndPositionMap.get(carName) == maxCarPosition)
-                .forEachOrdered(carName -> winnerNameList.add(carName));
+        return winnerNameList.findWinner(carNameAndPositionMap(), maxCarPosition());
     }
 
     public Map<String, Integer> carNameAndPositionMap() {

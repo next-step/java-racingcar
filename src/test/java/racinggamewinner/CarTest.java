@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggamewinner.domain.Car;
+import racinggamewinner.domain.Cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,5 +26,6 @@ public class CarTest {
         Car car = new Car("red");
         assertThat(car.decideGoStop(randomNumber)).isEqualTo(decisionResult);
     }
+
 
 }
