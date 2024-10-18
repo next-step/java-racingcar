@@ -1,7 +1,7 @@
 package racinggamewinner.domain;
 
-import racinggamewinner.random.RacingCarRandomGenerator;
-import racinggamewinner.random.RandomStrategy;
+import racinggamewinner.random.RacingCarRandomNumber;
+import racinggamewinner.random.NumberGenerateStrategy;
 import racinggamewinner.view.InputView;
 import racinggamewinner.view.ResultView;
 
@@ -15,10 +15,10 @@ public class Main {
 
         Cars racingCars = Cars.registerCars(carNames);
         ResultView.printPreview();
-        RandomStrategy randomStrategy = new RandomStrategy(new RacingCarRandomGenerator());
+        NumberGenerateStrategy numberGenerateStrategy = new NumberGenerateStrategy(new RacingCarRandomNumber());
 
         for (int i = 0; i < maxMovingCount; i++) {
-            racingCars.raceOneRound(randomStrategy);
+            racingCars.raceOneRound(numberGenerateStrategy);
             ResultView.printTotalCarPosition(racingCars.carNameAndPositions());
         }
 

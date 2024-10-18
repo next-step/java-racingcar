@@ -3,7 +3,7 @@ package racinggamewinner;
 import org.junit.jupiter.api.Test;
 import racinggamewinner.domain.Car;
 import racinggamewinner.domain.Cars;
-import racinggamewinner.random.RandomStrategy;
+import racinggamewinner.random.NumberGenerateStrategy;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +15,7 @@ public class CarsTest {
     static final int TEST_CAR_COUNT = 3;
     static final int DEFAULT_POSITION = 0;
     static final int TEST_MOVING_NUMBER = 1;
-    RandomStrategy randomStrategy;
+    NumberGenerateStrategy numberGenerateStrategy;
     Cars cars;
 
     @Test
@@ -49,9 +49,9 @@ public class CarsTest {
     @Test
     void maxCarPosition() {
         String carNames = "red,kaki";
-        randomStrategy = new RandomStrategy(new AlwaysMoveNumber());
+        numberGenerateStrategy = new NumberGenerateStrategy(new AlwaysMoveNumber());
         cars = Cars.registerCars(carNames);
-        cars.recordEachRoundMoving(randomStrategy);
+        cars.recordEachRoundMoving(numberGenerateStrategy);
         assertThat(cars.maxCarPosition()).isEqualTo(TEST_MOVING_NUMBER);
     }
 }

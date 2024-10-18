@@ -1,13 +1,13 @@
 package racinggamewinner;
 
-import racinggamewinner.random.RandomGenerator;
+import racinggamewinner.random.NumberGenerator;
 
-public class AlwaysMoveNumber implements RandomGenerator {
+public class AlwaysMoveNumber implements NumberGenerator {
 
     public static final int TEST_MOVING_NUMBER = 4;
 
     @Override
-    public int generateRandomNumber() {
+    public int generateNumber() {
         return TEST_MOVING_NUMBER;
     }
 }

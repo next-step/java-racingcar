@@ -1,7 +1,7 @@
 package racinggamewinner.domain;
 
 
-import racinggamewinner.random.RandomStrategy;
+import racinggamewinner.random.NumberGenerateStrategy;
 
 import java.util.*;
 
@@ -41,13 +41,13 @@ public class Cars {
         return cars.size();
     }
 
-    public void raceOneRound(RandomStrategy randomStrategy) {
-        recordEachRoundMoving(randomStrategy);
+    public void raceOneRound(NumberGenerateStrategy numberGenerateStrategy) {
+        recordEachRoundMoving(numberGenerateStrategy);
     }
 
-    public void recordEachRoundMoving(RandomStrategy randomStrategy) {
+    public void recordEachRoundMoving(NumberGenerateStrategy numberGenerateStrategy) {
         for (Car car : cars) {
-            car.updatePosition(car.decideGoStop(randomStrategy.executeStrategy()));
+            car.updatePosition(car.decideGoStop(numberGenerateStrategy.executeStrategy()));
         }
     }
 
