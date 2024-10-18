@@ -8,10 +8,10 @@ public class Racing {
 
     public static final int MAX_BOUND = 10;
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final Random random;
 
-    public Racing(List<Car> cars, Random random) {
+    public Racing(Cars cars, Random random) {
         this.cars = cars;
         this.random = random;
     }
@@ -19,7 +19,7 @@ public class Racing {
     public List<RacingResult> play() {
         List<RacingResult> racingResults = new ArrayList<>();
 
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             car.move(getRandomNum());
             RacingResult racingResult = new RacingResult(car.getName(), car.getCurrentPosition());
             racingResults.add(racingResult);

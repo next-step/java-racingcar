@@ -2,6 +2,8 @@ package racingcar.domain;
 
 public class Car {
 
+    private static final int MOVE_CONDITION = 4;
+
     private final CarName carName;
     private final CarPosition carPosition;
 
@@ -11,7 +13,9 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        carPosition.move(randomNumber);
+        if (randomNumber >= MOVE_CONDITION) {
+            carPosition.move();
+        }
     }
 
     public String getName() {

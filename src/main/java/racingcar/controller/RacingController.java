@@ -19,7 +19,7 @@ public class RacingController {
         Cars cars = Cars.from(names);
 
         Random random = new Random();
-        Racing racing = new Racing(cars.getCars(), random);
+        Racing racing = new Racing(cars, random);
 
         for (int i = 0; i < roundNum; i++) {
             ResultView.roundStart(i + 1);
