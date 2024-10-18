@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggamewinner.domain.Car;
-import racinggamewinner.domain.Cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,10 +13,7 @@ public class CarTest {
     @Test
     void 차이름5글자_초과실패() {
         Car car = new Car("redeee");
-        assertThatThrownBy(() -> {
-                    car.checkNameLength();
-                }
-        ).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(car::checkNameLength).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest

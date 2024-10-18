@@ -31,11 +31,10 @@ public class Cars {
         return carList;
     }
 
-    private static List<Car> checkNameLength(List<Car> cars) {
+    private static void checkNameLength(List<Car> cars) {
         for (Car car : cars) {
             car.checkNameLength();
         }
-        return cars;
     }
 
     public int carCount() {

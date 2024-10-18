@@ -1,7 +1,6 @@
 package racinggamewinner;
 
 import org.junit.jupiter.api.Test;
-import racinggamewinner.domain.Main;
 import racinggamewinner.domain.WinnerList;
 
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 package racinggamewinner;
 
 import org.junit.jupiter.api.Test;
-import racinggamewinner.domain.Car;
 import racinggamewinner.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
