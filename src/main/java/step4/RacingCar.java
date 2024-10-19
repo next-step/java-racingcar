@@ -23,6 +23,10 @@ public class RacingCar {
         return this.cars.size();
     }
 
+    public String getNameOfCar(int index) {
+        return this.cars.get(index).getName();
+    }
+
     public int getNumberOfRace() {
         return this.numberOfRace;
     }

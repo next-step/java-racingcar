@@ -10,6 +10,10 @@ public class Car {
         this.position = position;
     }
 
+    public String getName() {
+        return carName;
+    }
+
     public Integer getPosition() {
         return position;
     }
