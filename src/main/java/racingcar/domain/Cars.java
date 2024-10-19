@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,10 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.carList = cars;
+    }
+
+    public Cars(Car... cars) {
+        this.carList = List.of(cars);
     }
 
     public static Cars fromCarNames(List<String> carNames) {
