@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Position;
 
 import java.util.Arrays;
 
@@ -30,7 +31,7 @@ public class CarsTest {
     @Test
     @DisplayName("자동차 중 1명 이상의 우승자를 구한다.")
     void 우승자_구하기() {
-        cars = new Cars(new Car("name1", 3, () -> false), new Car("name2", 8, () -> false), new Car("name3", 8, () -> false));
+        cars = new Cars(new Car("name1", new Position(3), () -> false), new Car("name2", new Position(8), () -> false), new Car("name3", new Position(8), () -> false));
 
         assertThat(cars.getWinners()).hasSize(2);
         assertThat(cars.getWinners()).containsAll(Arrays.asList("name2", "name3"));

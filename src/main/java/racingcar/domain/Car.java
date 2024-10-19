@@ -6,17 +6,18 @@ import java.util.Objects;
 public class Car {
 
     private static final int NAME_MAX_LENGTH = 5;
-    private int position = 0;
+    private Position position;
     private String name;
     private MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
         validateName(name);
         this.name = name;
+        this.position = new Position(0);
         this.moveStrategy = moveStrategy;
     }
 
-    public Car(String name, int position, MoveStrategy moveStrategy) {
+    public Car(String name, Position position, MoveStrategy moveStrategy) {
         validateName(name);
         this.name = name;
         this.position = position;
@@ -35,34 +36,26 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return this.position;
-    }
-
     public String getName() {
         return this.name;
     }
 
     public void run() {
         if (moveStrategy.isMove()) {
-            this.position++;
+            this.position.move();
         }
     }
 
-    public String getStatus(String symbol) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < position; i++) {
-            sb.append(symbol);
-        }
-        return sb.toString();
+    public String getStatus(String symbol){
+        return this.position.getStatus(symbol);
     }
 
     public boolean comparePosition(int position) {
-        return this.position == position;
+        return this.position.comparePosition(position);
     }
 
     public int getMaxPosition(int prevPosition){
-        return this.position > prevPosition ? this.position : prevPosition;
+        return this.position.getMaxPosition(prevPosition);
     }
 
     @Override
@@ -70,11 +63,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position && Objects.equals(name, car.name);
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, name, moveStrategy);
+        return Objects.hash(position, name);
     }
 }
