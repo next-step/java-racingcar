@@ -48,6 +48,23 @@ public class RacingCar {
     public void moveCar(int number, int carNumber) {
         if (number >= 4)
             this.cars.get(carNumber).move();
+
+    }
+
+    public List<String> getWinner() {
+        int maxPosition = 0;
+        List<String> winner = new ArrayList<>();
+
+        for (Car car : this.cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        for (Car car : this.cars) {
+            if (car.getPosition() == maxPosition)
+                winner.add(car.getName());
+        }
+
+        return winner;
     }
 
     public void startRacing(OutputView outputView) {
@@ -55,6 +72,8 @@ public class RacingCar {
             doRacing();
             RacingCarResultView.printRacingCarStatus(outputView, this);
         }
+        RacingCarResultView.printRacingCarWinner(outputView, this);
     }
+
 
 }
