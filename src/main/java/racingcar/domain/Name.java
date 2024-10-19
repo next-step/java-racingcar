@@ -7,7 +7,7 @@ public class Name {
     private static final int NAME_MAX_LENGTH = 5;
     private String name;
 
-    public Name(String name){
+    public Name(String name) {
         validateName(name);
         this.name = name;
     }

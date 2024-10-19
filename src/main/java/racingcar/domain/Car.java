@@ -21,7 +21,7 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public Car(Car car){
+    public Car(Car car) {
         this.position = car.position;
         this.name = car.name;
         this.moveStrategy = car.moveStrategy;
@@ -37,7 +37,7 @@ public class Car {
         }
     }
 
-    public String getStatus(String symbol){
+    public String getStatus(String symbol) {
         return this.position.getStatus(symbol);
     }
 
@@ -45,7 +45,7 @@ public class Car {
         return this.position.comparePosition(position);
     }
 
-    public int getMaxPosition(int prevPosition){
+    public int getMaxPosition(int prevPosition) {
         return this.position.getMaxPosition(prevPosition);
     }
 

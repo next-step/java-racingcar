@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Position {
     private int position;
 
-    public Position(int position){
+    public Position(int position) {
         this.position = position;
     }
 
@@ -17,7 +17,7 @@ public class Position {
         return sb.toString();
     }
 
-    public void move(){
+    public void move() {
         this.position++;
     }
 
@@ -25,7 +25,7 @@ public class Position {
         return this.position == position;
     }
 
-    public int getMaxPosition(int prevPosition){
+    public int getMaxPosition(int prevPosition) {
         return this.position > prevPosition ? this.position : prevPosition;
     }
 

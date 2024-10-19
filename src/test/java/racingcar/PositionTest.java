@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PositionTest {
     @Test
-    void 이동(){
+    void 이동() {
         Position position = new Position(0);
         position.move();
         assertThat(position).isEqualTo(new Position(1));

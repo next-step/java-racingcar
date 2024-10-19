@@ -11,18 +11,20 @@ public class HashCodeTest {
 
     private Car car;
     private Car car2;
+
     @BeforeEach
-    void setUp(){
+    void setUp() {
         car = new Car("ming", new Position(1), () -> false);
         car2 = new Car("ming", new Position(1), () -> false);
     }
 
     @Test
-    void equals_테스트(){
+    void equals_테스트() {
         assertThat(car).isEqualTo(car2);
     }
+
     @Test
-    void hashCode_테스트(){
+    void hashCode_테스트() {
         assertThat(car.hashCode()).isEqualTo(car2.hashCode());
     }
 
