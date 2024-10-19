@@ -7,7 +7,7 @@ public class AlwaysMoveNumber implements NumberGenerator {
     public static final int TEST_MOVING_NUMBER = 4;
 
     @Override
-    public int generateNumber() {
+    public int executeStrategy() {
         return TEST_MOVING_NUMBER;
     }
 }

@@ -1,7 +1,9 @@
-package racinggamewinner.domain;
+package racinggamewinner.controller;
 
-import racinggamewinner.random.RacingCarRandomNumber;
+import racinggamewinner.domain.Cars;
 import racinggamewinner.random.NumberGenerateStrategy;
+import racinggamewinner.random.NumberGenerator;
+import racinggamewinner.random.RacingCarRandomNumber;
 import racinggamewinner.view.InputView;
 import racinggamewinner.view.ResultView;
 
@@ -15,14 +17,13 @@ public class Main {
 
         Cars racingCars = Cars.registerCars(carNames);
         ResultView.printPreview();
-        NumberGenerateStrategy numberGenerateStrategy = new NumberGenerateStrategy(new RacingCarRandomNumber());
+        NumberGenerator numberGenerateStrategy = new NumberGenerateStrategy(new RacingCarRandomNumber());
 
         for (int i = 0; i < maxMovingCount; i++) {
             racingCars.raceOneRound(numberGenerateStrategy);
             ResultView.printTotalCarPosition(racingCars.carNameAndPositions());
         }
-
-        ResultView.printTotalCarPosition(racingCars.carNameAndPositions());
+        
         ResultView.printWinner(racingCars.findWinner());
 
     }

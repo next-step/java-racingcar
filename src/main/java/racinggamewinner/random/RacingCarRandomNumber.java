@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RacingCarRandomNumber implements NumberGenerator {
     @Override
-    public int generateNumber() {
+    public int executeStrategy() {
         Random random = new Random();
         return random.nextInt(10);
     }
