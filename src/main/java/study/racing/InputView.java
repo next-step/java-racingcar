@@ -39,27 +39,46 @@ public class InputView {
 
     public CarRaceInput collectUserInput() {
 
-        System.out.println(RacingMessage.CAR_NAME.getMsg());
-        String carName = scanner.nextLine();
-
-        System.out.println(RacingMessage.TRY_COUNT.getMsg());
-        String roundCount = scanner.nextLine();
+        String carName = validCarName();
+        int roundCount = validRound();
 
         int round = 0;
         CarRaceInput carRaceInput = null;
 
-        RaceInputValidator roundInputValidator = new CountValidator();
-        RaceInputValidator participantInputValidator = new NameValidator();
-
-        boolean isRoundInputMatch = roundInputValidator.validate(roundCount);
-        boolean isParticipantInputMatch = participantInputValidator.validate(carName);
-        if(isRoundInputMatch && isParticipantInputMatch) {
+        if (carName != null && roundCount >= 1) {
             List<String> carNames = Arrays.stream(carName.trim().split(","))
-                                        .map(String::trim)
-                                        .collect(Collectors.toList());
-            round = Integer.parseInt(roundCount);
+                    .map(String::trim)
+                    .collect(Collectors.toList());
+            round = roundCount;
             carRaceInput = new CarRaceInput(carNames, carNames.size(), round);
         }
+
         return carRaceInput;
+    }
+
+    private String validCarName() {
+
+        System.out.println(RacingMessage.CAR_NAME.getMsg());
+        String carName = scanner.nextLine();
+
+        RaceInputValidator participantInputValidator = new NameValidator();
+        if (!participantInputValidator.validate(carName)) {
+            return null;
+        }
+
+        return carName;
+    }
+
+    private int validRound() {
+
+        System.out.println(RacingMessage.TRY_COUNT.getMsg());
+        String roundCount = scanner.nextLine();
+
+        RaceInputValidator roundInputValidator = new CountValidator();
+        if (!roundInputValidator.validate(roundCount)) {
+            return 0;
+        }
+
+        return Integer.parseInt(roundCount);
     }
 }

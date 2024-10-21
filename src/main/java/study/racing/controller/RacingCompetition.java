@@ -16,9 +16,9 @@ public class RacingCompetition {
         InputView inputView = new InputView();
         CarRaceInput carRaceInput = inputView.collectUserInput();
 
-        RacingGameWinnerService racingGameWinnerService = new RacingGameWinnerService(carRaceInput);
-        RacingHistory racingHistory = racingGameWinnerService.raceStart(new MoveUnderOneDigitStrategy());
-        List<Car> winners = racingGameWinnerService.findWinners(racingHistory);
+        RacingGameWinnerService racingGameWinnerService = new RacingGameWinnerService();
+        RacingHistory racingHistory = racingGameWinnerService.raceStart(carRaceInput, new MoveUnderOneDigitStrategy());
+        List<Car> winners = racingGameWinnerService.findWinners(carRaceInput.getCarCount(), racingHistory);
 
         ResultView resultView = new ResultView();
         resultView.printRacingHistory(racingHistory);

@@ -53,6 +53,10 @@ public class Car {
         return carName;
     }
 
+    public void move(int count) {
+        this.moveCount += count;
+    }
+
     @Override
     public String toString() {
         return "Car " + (carName != null ? carName : carNo) + " (Moves: " + moveCount + ")";
