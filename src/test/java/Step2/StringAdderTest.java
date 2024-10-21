@@ -56,7 +56,6 @@ class StringAdderTest {
     @ParameterizedTest
     @CsvSource({"'1,2,a', 'a,b,c', 'k'"})
     void throw_RuntimeException_when_number_not_provided(String input){
-
         // act, assert
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> adder.sum(input));
