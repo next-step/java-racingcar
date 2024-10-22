@@ -1,6 +1,7 @@
 package com.racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class Cars {
     }
 
     public List<Car> getItems() {
-        return this.items;
+        return Collections.unmodifiableList(this.items);
     }
 
     public int findMaxPosition() {
