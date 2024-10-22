@@ -1,55 +1,9 @@
 package com.racing;
 
-import com.racing.domain.Car;
-import com.racing.domain.Cars;
-import com.racing.ui.InputView;
-import com.racing.ui.ResultView;
-import com.racing.utils.CarHelper;
-import com.racing.utils.RacingHelper;
-
-import java.util.List;
+import com.racing.service.RacingService;
 
 public class Main {
     public static void main(String[] args) {
-        String carNames = InputView.getCarName();
-        int tryNumber = InputView.getTryNumber();
-
-        List<String> validCarNames = CarHelper.splitCarName(carNames);
-
-        Cars cars = createCars(validCarNames);
-
-        runRace(cars, tryNumber);
-
-        Cars winners =
-                cars.determineWinners();
-        ResultView.printWinners(winners);
-    }
-
-    private static Cars createCars(List<String> carNames) {
-        Cars cars = new Cars();
-
-        for (String carName : carNames) {
-            cars.addCars(new Car(0, carName));
-        }
-
-        return cars;
-    }
-
-    private static void runRace(Cars cars, int tryNumber) {
-        ResultView.printStartMessage();
-        for (int i = 0; i < tryNumber; i++) {
-            moveAllCars(cars);
-
-            int roundNumber = i + 1;
-            ResultView.printRoundResult(roundNumber, cars);
-        }
-    }
-
-    private static void moveAllCars(Cars cars) {
-        RacingHelper racingHelper = new RacingHelper();
-
-        for (Car car : cars.getCarList()) {
-            car.move(racingHelper.shouldMove());
-        }
+        RacingService.startRacingGame();
     }
 }
