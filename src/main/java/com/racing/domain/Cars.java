@@ -55,12 +55,6 @@ public class Cars {
         return carList.get(index).displayCarName();
     }
 
-    public void printRacingPositions() {
-        for (Car car : carList) {
-            System.out.println(car.displayRacingPosition());
-        }
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

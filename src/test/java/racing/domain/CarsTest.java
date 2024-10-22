@@ -5,8 +5,6 @@ import com.racing.domain.Cars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -90,24 +88,5 @@ public class CarsTest {
         assertThat(cars.getCarName(1)).isEqualTo("crong");
         assertThatThrownBy(() -> cars.getCarName(2))
                 .isInstanceOf(IndexOutOfBoundsException.class);
-    }
-
-    @Test
-    @DisplayName("printRacingPositions 메서드 테스트")
-    void printRacingPositionsTest() {
-        // Given
-        Car car1 = new Car(1, "pobi");
-        Car car2 = new Car(3, "crong");
-        Cars cars = new Cars(Arrays.asList(car1, car2));
-
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        cars.printRacingPositions();
-
-        String expectedOutput = "pobi : -\ncrong : ---\n";
-        assertThat(outContent.toString()).isEqualTo(expectedOutput);
-
-        System.setOut(System.out);
     }
 }
