@@ -25,7 +25,7 @@ public class Cars {
         return Collections.unmodifiableList(this.items);
     }
 
-    public int findMaxPosition() {
+    private int findMaxPosition() {
         int maxPosition = 0;
         for (Car car : this.items) {
             maxPosition = car.isDefeated(maxPosition) ? maxPosition : car.getPosition();
