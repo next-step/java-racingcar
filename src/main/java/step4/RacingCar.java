@@ -56,11 +56,11 @@ public class RacingCar {
         List<String> winner = new ArrayList<>();
 
         for (Car car : this.cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            maxPosition = car.compareAndGetMax(maxPosition);
         }
 
         for (Car car : this.cars) {
-            if (car.getPosition() == maxPosition)
+            if (car.compareAndGetMax(maxPosition) == maxPosition)
                 winner.add(car.getName());
         }
 

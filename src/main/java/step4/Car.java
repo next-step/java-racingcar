@@ -18,6 +18,11 @@ public class Car {
         return position;
     }
 
+    public Integer compareAndGetMax(int compare) {
+        if(compare>position) return compare;
+        return position;
+    }
+
     public void move() {
         position++;
     }
