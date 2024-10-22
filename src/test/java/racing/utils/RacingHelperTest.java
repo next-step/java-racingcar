@@ -1,6 +1,6 @@
 package racing.utils;
 
-import com.racing.utils.RacingHelper;
+import com.racing.utils.CarMovement;
 import com.warmup.step3.CarRacing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ public class RacingHelperTest {
         int expectedMinNum = 0;
         int expectedMaxNum = 10;
 
-        assertThat(RacingHelper.getRandomNumber()).isGreaterThanOrEqualTo(expectedMinNum)
+        assertThat(CarMovement.getRandomNumber()).isGreaterThanOrEqualTo(expectedMinNum)
                 .isLessThan(expectedMaxNum);
     }
 

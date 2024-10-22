@@ -5,7 +5,7 @@ import com.racing.domain.Cars;
 import com.racing.ui.InputView;
 import com.racing.ui.ResultView;
 import com.racing.utils.CarHelper;
-import com.racing.utils.RacingHelper;
+import com.racing.utils.CarMovement;
 
 import java.util.List;
 
@@ -46,10 +46,10 @@ public class RacingService {
     }
 
     private static void advanceAllCars(Cars cars) {
-        RacingHelper racingHelper = new RacingHelper();
+        CarMovement carMovement = new CarMovement();
 
         for (Car car : cars.getItems()) {
-            car.move(racingHelper.shouldMove());
+            car.move(carMovement.shouldMove());
         }
     }
 }
