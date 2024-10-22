@@ -1,6 +1,6 @@
 package racing.utils;
 
-import com.racing.utils.RacingHelper;
+import com.racing.utils.CarMovement;
 import com.warmup.step3.CarRacing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,9 +14,9 @@ public class RacingHelperTest {
     @Test
     @DisplayName("모킹 데이터인 false를 반환 받는다.")
     public void isEquals_GetRandomBoolean() {
-        RandomMoverMock randomMover = new RandomMoverMock();
+        RandomStrategyMock randomStrategy = new RandomStrategyMock();
 
-        assertThat(randomMover.shouldMove()).isEqualTo(false);
+        assertThat(randomStrategy.shouldMove()).isEqualTo(false);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class RacingHelperTest {
         int expectedMinNum = 0;
         int expectedMaxNum = 10;
 
-        assertThat(RacingHelper.getRandomNumber()).isGreaterThanOrEqualTo(expectedMinNum)
+        assertThat(CarMovement.getRandomNumber()).isGreaterThanOrEqualTo(expectedMinNum)
                 .isLessThan(expectedMaxNum);
     }
 

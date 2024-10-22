@@ -1,27 +1,28 @@
 package com.racing.ui;
 
 import com.racing.domain.Car;
-
-import java.util.List;
+import com.racing.domain.Cars;
 
 public class ResultView {
     public static void printStartMessage() {
         System.out.println("실행 결과");
     }
 
-    public static void printRoundResult(int round, List<Car> carList) {
+    public static void printRoundResult(int round, Cars cars) {
         System.out.println("# " + round + "회차");
-        for (Car car : carList) {
-            System.out.println(car.displayRacingState());
+
+        for (Car car : cars.getItems()) {
+            System.out.println(car.displayRacingPosition());
         }
+
         System.out.println();
     }
 
-    public static void printWinners(List<Car> winners) {
+    public static void printWinners(Cars winners) {
         System.out.print("최종 우승자: ");
-        int winnerSize = winners.size();
+        int winnerSize = winners.carsSize();
         for (int i = 0; i < winnerSize; i++) {
-            System.out.print(winners.get(i).displayCarName());
+            System.out.print(winners.getCarName(i));
             printComma(i < winnerSize - 1);
         }
 
