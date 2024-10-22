@@ -46,8 +46,8 @@ public class CarHelperTest {
 
         Cars winners = cars.determineWinners();
 
-        assertThat(winners.getCarList()).hasSize(1);
-        assertThat(winners.getCarList().get(0).displayCarName()).isEqualTo("car1");
+        assertThat(winners.getItems()).hasSize(1);
+        assertThat(winners.getItems().get(0).displayCarName()).isEqualTo("car1");
     }
 
     @Test
@@ -60,7 +60,7 @@ public class CarHelperTest {
 
         Cars winners = cars.determineWinners();
 
-        assertThat(winners.getCarList()).hasSize(2);
-        assertThat(winners.getCarList()).extracting("name").containsExactlyInAnyOrder("car1", "car2");
+        assertThat(winners.getItems()).hasSize(2);
+        assertThat(winners.getItems()).extracting("name").containsExactlyInAnyOrder("car1", "car2");
     }
 }

@@ -48,7 +48,7 @@ public class RacingService {
     private static void advanceAllCars(Cars cars) {
         RacingHelper racingHelper = new RacingHelper();
 
-        for (Car car : cars.getCarList()) {
+        for (Car car : cars.getItems()) {
             car.move(racingHelper.shouldMove());
         }
     }

@@ -11,7 +11,7 @@ public class ResultView {
     public static void printRoundResult(int round, Cars cars) {
         System.out.println("# " + round + "회차");
 
-        for (Car car : cars.getCarList()) {
+        for (Car car : cars.getItems()) {
             System.out.println(car.displayRacingPosition());
         }
 

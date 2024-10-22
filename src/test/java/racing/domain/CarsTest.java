@@ -33,8 +33,8 @@ public class CarsTest {
 
         cars.addCars(newCar);
 
-        assertThat(cars.getCarList()).hasSize(1);
-        assertThat(cars.getCarList().get(0)).isEqualTo(newCar);
+        assertThat(cars.getItems()).hasSize(1);
+        assertThat(cars.getItems().get(0)).isEqualTo(newCar);
     }
 
     @Test

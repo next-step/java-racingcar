@@ -6,27 +6,27 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    List<Car> carList;
+    private final List<Car> items;
 
     public Cars() {
-        carList = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
     public Cars(List<Car> carList) {
-        this.carList = carList;
+        this.items = carList;
     }
 
     public void addCars(Car car) {
-        carList.add(car);
+        items.add(car);
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
+    public List<Car> getItems() {
+        return this.items;
     }
 
     public int findMaxPosition() {
         int maxPosition = 0;
-        for (Car car : this.carList) {
+        for (Car car : this.items) {
             maxPosition = car.isDefeated(maxPosition) ? maxPosition : car.getPosition();
         }
 
@@ -36,7 +36,7 @@ public class Cars {
     public Cars determineWinners() {
         int maxPosition = this.findMaxPosition();
 
-        List<Car> winnerList = this.carList.stream()
+        List<Car> winnerList = this.items.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
 
@@ -44,15 +44,15 @@ public class Cars {
     }
 
     public int carsSize() {
-        return this.carList.size();
+        return this.items.size();
     }
 
     public String getCarName(int index) {
-        if (index < 0 || index >= carList.size()) {
+        if (index < 0 || index >= items.size()) {
             throw new IndexOutOfBoundsException("Invalid car index");
         }
 
-        return carList.get(index).displayCarName();
+        return items.get(index).displayCarName();
     }
 
     @Override
@@ -60,11 +60,11 @@ public class Cars {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cars cars = (Cars) o;
-        return Objects.equals(carList, cars.carList);
+        return Objects.equals(items, cars.items);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(carList);
+        return Objects.hashCode(items);
     }
 }
