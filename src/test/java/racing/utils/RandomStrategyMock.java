@@ -1,8 +1,8 @@
 package racing.utils;
 
-import com.racing.utils.RandomStrategy;
+import com.racing.utils.MovementStrategy;
 
-public class RandomStrategyMock implements RandomStrategy {
+public class RandomStrategyMock implements MovementStrategy {
     @Override
     public boolean shouldMove() {
         return false;
