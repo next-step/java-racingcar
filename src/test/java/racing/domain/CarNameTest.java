@@ -31,6 +31,6 @@ public class CarNameTest {
     @DisplayName("null로 CarName 객체 생성 시 예외 발생")
     public void createCarNameWithNullThrowsException() {
         assertThatThrownBy(() -> new CarName(null))
-                .isInstanceOf(NullPointerException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
