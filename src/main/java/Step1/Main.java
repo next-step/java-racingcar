@@ -22,7 +22,11 @@ public class Main {
 
         Result res = baseball.play(computer, user);
 
-        System.out.println(res.ball + "볼 " + res.strike + "스트라이크");
+        if (res.ball == 0 && res.strike == 0){
+            System.out.println("낫싱");
+        } else {
+            System.out.println(res.ball + "볼 " + res.strike + "스트라이크");
+        }
 
         return res.strike;
     }
