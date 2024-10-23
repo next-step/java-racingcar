@@ -27,6 +27,7 @@ public class Main {
         } else {
             System.out.println(res.ball + "볼 " + res.strike + "스트라이크");
         }
+        System.out.println(res.ball + "볼 " + res.strike + "스트라이크");
 
         return res.strike;
     }
