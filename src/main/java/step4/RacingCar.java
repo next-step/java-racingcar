@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,23 +6,25 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private final int numberOfCar;
     private final int numberOfRace;
     private final Random random = new Random();
 
     private List<Car> cars = new ArrayList<>();
 
-    public RacingCar(final int numberOfCar, final int numberOfRace) {
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car(0));
+    public RacingCar(final List<String> carNameList, final int numberOfRace) {
+        for (String carName : carNameList) {
+            cars.add(new Car(carName, 0));
         }
 
-        this.numberOfCar = numberOfCar;
         this.numberOfRace = numberOfRace;
     }
 
     public int getNumberOfCar() {
-        return this.numberOfCar;
+        return this.cars.size();
+    }
+
+    public String getNameOfCar(int index) {
+        return this.cars.get(index).getName();
     }
 
     public int getNumberOfRace() {
@@ -38,7 +40,7 @@ public class RacingCar {
     }
 
     public void doRacing() {
-        for (int i = 0; i < numberOfCar; i++) {
+        for (int i = 0; i < getNumberOfCar(); i++) {
             moveCar(generateRandomNumber(), i);
         }
     }
@@ -46,6 +48,23 @@ public class RacingCar {
     public void moveCar(int number, int carNumber) {
         if (number >= 4)
             this.cars.get(carNumber).move();
+
+    }
+
+    public List<String> getWinner() {
+        int maxPosition = 0;
+        List<String> winner = new ArrayList<>();
+
+        for (Car car : this.cars) {
+            maxPosition = car.compareAndGetMax(maxPosition);
+        }
+
+        for (Car car : this.cars) {
+            if (car.compareAndGetMax(maxPosition) == maxPosition)
+                winner.add(car.getName());
+        }
+
+        return winner;
     }
 
     public void startRacing(OutputView outputView) {
@@ -53,6 +72,8 @@ public class RacingCar {
             doRacing();
             RacingCarResultView.printRacingCarStatus(outputView, this);
         }
+        RacingCarResultView.printRacingCarWinner(outputView, this);
     }
+
 
 }
