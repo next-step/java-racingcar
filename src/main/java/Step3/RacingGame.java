@@ -7,52 +7,44 @@ import java.util.Random;
 public class RacingGame {
 
     private final List<RacingCar> cars;
-    private int playNum;
-    private boolean hasBoard;
+    private final List<List<Integer>> gameRecord;
+    private final int playNum;
 
-    public RacingGame() {
+    public RacingGame(int carNum, int playNum) {
         this.cars = new ArrayList<>();
-        this.playNum = 0;
-        this.hasBoard = false;
-    }
-
-    public void makeBoard(int carNum, int playNum) {
-        this.playNum = playNum;
-
-        this.cars.clear();
+        this.gameRecord = new ArrayList<>();
 
         for (int i = 0; i < carNum; i++) {
             this.cars.add(new RacingCar());
         }
 
-        this.hasBoard = true;
+        this.playNum = playNum;
     }
 
     public List<RacingCar> getCars() {
         return this.cars;
     }
 
-    public boolean play() {
-        if (!this.hasBoard) {
-            return false;
-        }
-
-        System.out.println("실행 결과");
-
+    public List<List<Integer>> play() {
         Random random = new Random();
         for (int i = 0; i < this.playNum; i++) {
-            moveCar(random);
-            System.out.println();
+            List<Integer> turnRecord = tryMoveCars(random);
+
+            this.gameRecord.add(turnRecord);
         }
 
-        return true;
+        return this.gameRecord;
     }
 
-    private void moveCar(Random random) {
+    private List<Integer> tryMoveCars(Random random) {
+        List<Integer> turnRecord = new ArrayList<>();
+
         for (RacingCar car : this.cars) {
-            car.move(random.nextInt(10));
-            car.print();
-            System.out.println();
+            int position = car.move(random.nextInt(10));
+
+            turnRecord.add(position);
         }
+
+        return turnRecord;
     }
 }
