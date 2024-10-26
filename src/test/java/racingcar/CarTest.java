@@ -28,4 +28,18 @@ public class CarTest {
         assertThat(car).isEqualTo(new Car("ming", new Position(1), () -> false));
     }
 
+    @Test
+    void position_최댓값_비교() {
+        car = new Car("ming", () -> true);
+        car.run();
+        assertThat(car.comparePosition(1)).isTrue();
+    }
+
+    @Test
+    void position_최댓값() {
+        car = new Car("ming", () -> true);
+        car.run();
+        assertThat(car.getMaxPosition(0)).isEqualTo(1);
+    }
+
 }
