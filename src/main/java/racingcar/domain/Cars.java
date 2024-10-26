@@ -21,7 +21,7 @@ public class Cars {
         return new Cars(carList);
     }
 
-    public List<Car> getCarList() {
+    public List<Car> getValues() {
         return this.carList;
     }
 
