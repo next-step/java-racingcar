@@ -36,6 +36,35 @@ public class RacingGame {
         return this.gameRecord;
     }
 
+    public List<Integer> getWinner() {
+        List<Integer> winnersIdx = new ArrayList<>();
+        List<Integer> lastTurnRecord = this.gameRecord.get(this.gameRecord.size() - 1);
+
+        int max = 0;
+        for (Integer finalPosition : lastTurnRecord) {
+            max = getMax(finalPosition, max);
+        }
+
+        for (int i = 0; i < lastTurnRecord.size(); i++) {
+            pickIfWinner(lastTurnRecord, i, max, winnersIdx);
+        }
+
+        return winnersIdx;
+    }
+
+    private static void pickIfWinner(List<Integer> lastTurnRecord, int i, int max, List<Integer> winnersIdx) {
+        if (lastTurnRecord.get(i) == max) {
+            winnersIdx.add(i);
+        }
+    }
+
+    private static int getMax(Integer finalPosition, int max) {
+        if (finalPosition > max) {
+            max = finalPosition;
+        }
+        return max;
+    }
+
     private List<Integer> tryMoveCars(Random random) {
         List<Integer> turnRecord = new ArrayList<>();
 
