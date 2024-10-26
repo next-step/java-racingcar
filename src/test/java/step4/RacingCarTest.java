@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RacingCarTest {
 
-
     void makeTestInput(String input) {
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -32,7 +31,7 @@ public class RacingCarTest {
     void createCarTest() {
         makeTestInput("pobi,crong,honux\n5\n"); // 3대의 자동차와 5회의 경주 입력
 
-        RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
+        RacingCar racingCar = RacingCarInputView.scanInputAndCreateRacingCar();
         assertThat(racingCar.getNumberOfCar()).isEqualTo(3);
         assertThat(racingCar.getNumberOfRace()).isEqualTo(5);
     }
@@ -43,7 +42,7 @@ public class RacingCarTest {
         makeTestInput("pobi,cronggggg,honux\n5\n"); // 3대의 자동차와 5회의 경주 입력
 
         assertThatThrownBy(() ->
-                RacingCarFactory.createRacingCarWithInputView())
+                RacingCarInputView.scanInputAndCreateRacingCar())
                 .isInstanceOf(IndexOutOfBoundsException.class)
                 .isInstanceOf(RuntimeException.class);
     }
@@ -51,10 +50,9 @@ public class RacingCarTest {
     @DisplayName("전진하는 자동차 출력 시 이름이 잘 출력되는지 테스트")
     @Test
     void moveCarPrintTest() {
-        makeTestInput("pobi,crong,honux\n1\n"); // 3대의 자동차와 5회의 경주 입력
-
         MockOutputView outputView = new MockOutputView();
-        RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
+
+        RacingCar racingCar = RacingCarFactory.createRacingCar("pobi,crong,honux", 1);
         outputView.startAndPrintRacing(racingCar);
 
         assertTrue(outputView.getOutputs().get(0).contains("pobi"));
@@ -66,11 +64,9 @@ public class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"1,5,7,1,1,1=crong,honux", "7,1,1,1,1,1=pobi", "9,9,9,1,1,1=pobi,crong,honux"}, delimiter = '=')
     void racingWinnerCheckTest(String input, String expected) {
-
-        makeTestInput("pobi,crong,honux\n1\n");
-
         MockOutputView outputView = new MockOutputView();
-        RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
+
+        RacingCar racingCar = RacingCarFactory.createRacingCar("pobi,crong,honux", 1);
 
         String[] stringArray = input.split(",");
         int[] inputList = new int[stringArray.length];

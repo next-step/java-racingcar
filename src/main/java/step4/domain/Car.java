@@ -19,7 +19,7 @@ public class Car {
     }
 
     public Integer compareAndGetMax(int compare) {
-        if(compare>position) return compare;
+        if (compare > position) return compare;
         return position;
     }
 

@@ -1,17 +1,11 @@
 package step4.domain;
 
-import step4.view.RacingCarInputView;
-
 import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarFactory {
 
-    public static RacingCar createRacingCarWithInputView() {
-
-        String carInfo = RacingCarInputView.scanCarInfo();
-        int numberOfRace = RacingCarInputView.scanNumberOfRace();
-
+    public static RacingCar createRacingCar(String carInfo, int numberOfRace) {
         return createRacingCar(splitCarInfo(carInfo), numberOfRace);
     }
 

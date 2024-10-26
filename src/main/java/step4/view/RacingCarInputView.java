@@ -1,5 +1,8 @@
 package step4.view;
 
+import step4.domain.RacingCar;
+import step4.domain.RacingCarFactory;
+
 import java.util.Scanner;
 
 public class RacingCarInputView {
@@ -21,5 +24,13 @@ public class RacingCarInputView {
         scanner.nextLine();
 
         return numberOfRace;
+    }
+
+    public static RacingCar scanInputAndCreateRacingCar() {
+
+        String carInfo = RacingCarInputView.scanCarInfo();
+        int numberOfRace = RacingCarInputView.scanNumberOfRace();
+
+        return RacingCarFactory.createRacingCar(carInfo, numberOfRace);
     }
 }
