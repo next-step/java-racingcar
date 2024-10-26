@@ -26,7 +26,7 @@ public class Position {
     }
 
     public int getMaxPosition(int prevPosition) {
-        return this.position > prevPosition ? this.position : prevPosition;
+        return Math.max(this.position, prevPosition);
     }
 
     @Override
