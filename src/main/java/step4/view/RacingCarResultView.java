@@ -1,14 +1,16 @@
-package step4;
+package step4.view;
+
+import step4.domain.RacingCar;
 
 import java.util.stream.IntStream;
 
 public class RacingCarResultView {
 
-    static void printRacingCarWinner(OutputView outputView, RacingCar racingCar) {
+    public static void printRacingCarWinner(OutputView outputView, RacingCar racingCar) {
         outputView.print(makeCarWinnerToString(racingCar));
     }
 
-    static void printRacingCarStatus(OutputView outputView, RacingCar racingCar) {
+    public static void printRacingCarStatus(OutputView outputView, RacingCar racingCar) {
 
         IntStream.range(0, racingCar.getNumberOfCar())
                 .mapToObj(i -> makeCarStatusToString(racingCar, i))

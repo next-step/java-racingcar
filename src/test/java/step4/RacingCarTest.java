@@ -4,6 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step4.domain.RacingCar;
+import step4.domain.RacingCarFactory;
+import step4.view.MockOutputView;
+import step4.view.RacingCarInputView;
+import step4.view.RacingCarResultView;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -50,7 +55,7 @@ public class RacingCarTest {
 
         MockOutputView outputView = new MockOutputView();
         RacingCar racingCar = RacingCarFactory.createRacingCarWithInputView();
-        racingCar.startRacing(outputView);
+        outputView.startAndPrintRacing(racingCar);
 
         assertTrue(outputView.getOutputs().get(0).contains("pobi"));
         assertTrue(outputView.getOutputs().get(1).contains("crong"));

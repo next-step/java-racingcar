@@ -1,4 +1,4 @@
-package step4;
+package step4.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,12 +67,12 @@ public class RacingCar {
         return winner;
     }
 
-    public void startRacing(OutputView outputView) {
-        for (int i = 0; i < numberOfRace; i++) {
-            doRacing();
-            RacingCarResultView.printRacingCarStatus(outputView, this);
-        }
-        RacingCarResultView.printRacingCarWinner(outputView, this);
+    public Integer compareNumberOfRace(int compareNumber) {
+        if (this.numberOfRace > compareNumber)
+            return 1;
+        if (this.numberOfRace == compareNumber)
+            return 0;
+        return -1;
     }
 
 

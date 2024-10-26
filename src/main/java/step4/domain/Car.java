@@ -1,4 +1,4 @@
-package step4;
+package step4.domain;
 
 public class Car {
     private final String carName;
