@@ -14,8 +14,8 @@ public class HashCodeTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("ming", new Position(1), () -> false);
-        car2 = new Car("ming", new Position(1), () -> false);
+        car = new Car("ming", 1, () -> false);
+        car2 = new Car("ming", 1, () -> false);
     }
 
     @Test

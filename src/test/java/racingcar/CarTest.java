@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Name;
 import racingcar.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,7 +17,7 @@ public class CarTest {
     void 랜덤값_4미만_멈춤() {
         car = new Car("ming", () -> false);
         car.run();
-        assertThat(car).isEqualTo(new Car("ming", new Position(0), () -> false));
+        assertThat(car).isEqualTo(new Car("ming", () -> false));
     }
 
     @Test
@@ -24,8 +25,8 @@ public class CarTest {
     void 랜덤값_4이상_전진() {
         car = new Car("ming", () -> true);
         car.run();
-        assertThat(car).isNotEqualTo(new Car("ming", new Position(0), () -> false));
-        assertThat(car).isEqualTo(new Car("ming", new Position(1), () -> false));
+        assertThat(car).isNotEqualTo(new Car("ming", () -> false));
+        assertThat(car).isEqualTo(new Car("ming", 1, () -> false));
     }
 
     @Test

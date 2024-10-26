@@ -10,31 +10,31 @@ public class Car {
     private MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        this.name = new Name(name);
-        this.position = new Position(0);
-        this.moveStrategy = moveStrategy;
+        this(new Name(name), new Position(0), moveStrategy);
     }
 
-    public Car(String name, Position position, MoveStrategy moveStrategy) {
-        this.name = new Name(name);
-        this.position = position;
-        this.moveStrategy = moveStrategy;
+    public Car(String name, int position, MoveStrategy moveStrategy) {
+        this(new Name(name), new Position(position), moveStrategy);
     }
 
     public Car(Car car) {
-        this.position = car.position;
-        this.name = car.name;
-        this.moveStrategy = car.moveStrategy;
+        this(car.name, car.position, car.moveStrategy);
     }
 
-    public String getName() {
-        return this.name.getName();
+    public Car(Name name, Position position, MoveStrategy moveStrategy) { //주 생성자
+        this.name = name;
+        this.position = position;
+        this.moveStrategy = moveStrategy;
     }
 
     public void run() {
         if (moveStrategy.isMove()) {
             this.position.move();
         }
+    }
+
+    public String getName() {
+        return this.name.getValue();
     }
 
     public String getStatus(String symbol) {
