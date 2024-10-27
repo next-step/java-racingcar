@@ -3,29 +3,21 @@ package Step3;
 public class RacingCar {
     private int pos;
 
-    public int getPos() {
-        return this.pos;
-    }
-
     public RacingCar() {
         this.pos = 0;
     }
 
-    public RacingCar(int pos) {
-        this.pos = pos;
+    public int getPos() {
+        return this.pos;
     }
 
-    public void move(int rand) {
+    public int move(int rand) {
         if (rand < 4) {
-            return;
+            return this.pos;
         }
 
-        this.pos++;
-    }
+        this.pos += 1;
 
-    public void print() {
-        for (int i = 0; i < this.pos; i++) {
-            System.out.print("-");
-        }
+        return this.pos;
     }
 }

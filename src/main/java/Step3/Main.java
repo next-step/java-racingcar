@@ -1,25 +1,21 @@
 package Step3;
 
-import java.util.Scanner;
+import java.util.List;
 
 public class Main {
+    private static final InputView inputView = new InputView();
+
     public static void main(String[] args) {
-        int carNum = readInput("자동차 대수는 몇 대 인가요?");
-        int playNum = readInput("시도할 횟수는 몇 회 인가요?");
+        String carNameInput = inputView.readStringInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] carNames = carNameInput.split(",");
 
-        RacingGame game = new RacingGame();
-        game.makeBoard(carNum, playNum);
+        int playNum = inputView.readIntegerInput("시도할 횟수는 몇 회 인가요?");
 
-        game.play();
+        RacingGame racingGame = new RacingGame(carNames.length, playNum);
+        List<List<Integer>> gameRecord = racingGame.play();
+        List<Integer> winnersIdx = racingGame.getWinner();
 
-    }
-
-    private static int readInput(String question) {
-        System.out.println(question);
-
-        Scanner scanner = new Scanner(System.in);
-        String value = scanner.nextLine();
-
-        return Integer.parseInt(value);
+        inputView.printResult(gameRecord, carNames);
+        inputView.printWinner(carNames, winnersIdx);
     }
 }
