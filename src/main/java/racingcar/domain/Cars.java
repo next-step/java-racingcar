@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +12,24 @@ public class Cars {
         this.carList = cars;
     }
 
+    public Cars(Car... cars) {
+        this.carList = List.of(cars);
+    }
+
     public static Cars fromCarNames(List<String> carNames) {
         List<Car> carList = carNames.stream().map(c -> new Car(c, new RandomMoveStrategy())).collect(Collectors.toList());
         return new Cars(carList);
     }
 
-    public List<Car> getCarList() {
+    public List<Car> getValues() {
         return this.carList;
     }
 
-    public List<List<String>> runRace(int loop) {
-        List<List<String>> raceResults = new ArrayList<>();
+    public List<List<Car>> runRace(int loop) {
+        List<List<Car>> raceResults = new ArrayList<>();
         for (int i = 0; i < loop; i++) {
             round();
-            List<String> roundResult = carList.stream()
-                    .map(car -> ResultView.generateCarStatusResult(car))
-                    .collect(Collectors.toList());
+            List<Car> roundResult = carList.stream().map(Car::new).collect(Collectors.toList());
             raceResults.add(roundResult);
         }
 
