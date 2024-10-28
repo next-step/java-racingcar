@@ -9,7 +9,7 @@ import java.util.Random;
 public class Car {
 
     private final String name;
-    private int position;
+    protected int position;
     private final Random random = new Random();
 
     private static final int MOVE_THRESHOLD = 4;
@@ -34,7 +34,7 @@ public class Car {
         }
     }
 
-    private boolean canMove() {
+    protected boolean canMove() {
         int randomValue = random.nextInt(RANDOM_RANGE);
         return randomValue >= MOVE_THRESHOLD;
     }

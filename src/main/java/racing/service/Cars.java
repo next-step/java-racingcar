@@ -2,6 +2,7 @@ package racing.service;
 
 import racing.entity.Car;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -19,6 +20,17 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> findWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
 

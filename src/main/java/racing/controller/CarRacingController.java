@@ -37,6 +37,7 @@ public class CarRacingController {
             racingService.moveCars();
             resultView.printResult(racingService.getCars());
         }
+        resultView.findWinners(racingService.findWinners());
     }
 }
 
