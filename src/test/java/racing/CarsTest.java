@@ -6,7 +6,7 @@ import racing.service.Cars;
 import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CarRacingServiceTest {
+public class CarsTest {
 
     @Test
     void testMoveCars() {
