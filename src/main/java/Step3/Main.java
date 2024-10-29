@@ -1,6 +1,7 @@
 package Step3;
 
 import java.util.List;
+import java.util.Random;
 
 public class Main {
     private static final InputView inputView = new InputView();
@@ -11,11 +12,19 @@ public class Main {
 
         int playNum = inputView.readIntegerInput("시도할 횟수는 몇 회 인가요?");
 
-        RacingGame racingGame = new RacingGame(carNames.length, playNum);
-        List<List<Integer>> gameRecord = racingGame.play();
-        List<Integer> winnersIdx = racingGame.getWinner();
+        RacingGame racingGame = new RacingGame(carNames, playNum);
 
-        inputView.printResult(gameRecord, carNames);
-        inputView.printWinner(carNames, winnersIdx);
+        int[][] playRands = RandGenerator.genPlayRands(carNames.length, playNum);
+
+        try {
+            List<List<Integer>> gameRecord = racingGame.play(playRands);
+            List<RacingCar> winners = racingGame.getWinner();
+
+            inputView.printResult(gameRecord, carNames);
+            inputView.printWinner(carNames, winners);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

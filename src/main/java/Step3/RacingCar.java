@@ -1,23 +1,32 @@
 package Step3;
 
 public class RacingCar {
-    private int pos;
+    private final int THRESHOLD = 4;
+    private final int MOVE_DISTANCE = 1;
 
-    public RacingCar() {
-        this.pos = 0;
+    private String name;
+    private int position;
+
+    public RacingCar(String name, int position) {
+        this.name = name;
+        this.position = 0;
     }
 
-    public int getPos() {
-        return this.pos;
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return this.position;
     }
 
     public int move(int rand) {
-        if (rand < 4) {
-            return this.pos;
+        if (rand < THRESHOLD) {
+            return this.position;
         }
 
-        this.pos += 1;
+        this.position += MOVE_DISTANCE;
 
-        return this.pos;
+        return this.position;
     }
 }

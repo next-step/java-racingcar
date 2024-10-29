@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar("test" , 0);
 
     // params: random_value, move_distance
     @ParameterizedTest
@@ -25,10 +25,10 @@ public class RacingCarTest {
             "9, 1"
     })
     void move_if_rand_is_equal_or_greater_than_four(int rand, int distance) {
-        int prev_pos = racingCar.getPos();
+        int prev_pos = racingCar.getPosition();
 
         racingCar.move(rand);
 
-        assertThat(racingCar.getPos()).isEqualTo(prev_pos + distance);
+        assertThat(racingCar.getPosition()).isEqualTo(prev_pos + distance);
     }
 }
