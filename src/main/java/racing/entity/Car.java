@@ -4,34 +4,39 @@ import java.util.Random;
 
 public class Car {
 
-    private final String name;
-    protected int position;
+    private final CarName carName;
+    private Position position;
     private final Random random = new Random();
 
     private static final int MOVE_THRESHOLD = 4;
     private static final int RANDOM_RANGE = 10;
 
-    public Car(String name) {
-        this.name = name;
-        this.position = 0;
+    public Car(String carName) {
+        this.carName = new CarName(carName);
+        this.position = new Position(0);
     }
 
     public String getName() {
-        return name;
+        return carName.getValue();
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 
     public void move() {
-        if (canMove()) {
-            position += 1;
+        int randomValue = random.nextInt(RANDOM_RANGE);
+        if (canMove(randomValue)) {
+            position = position.movePosition();
         }
     }
 
-    protected boolean canMove() {
-        int randomValue = random.nextInt(RANDOM_RANGE);
+    protected boolean canMove(int randomValue) {
         return randomValue >= MOVE_THRESHOLD;
     }
+
+    public boolean isPosition(int maxPosition) {
+        return position.getValue() == maxPosition;
+    }
+
 }

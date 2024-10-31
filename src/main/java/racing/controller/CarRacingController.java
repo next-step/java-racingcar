@@ -11,16 +11,16 @@ public class CarRacingController {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        List<Car> cars = inputView.inputCar();
+        List<Car> carList = inputView.inputCar();
         int rounds = inputView.inputNumber();
 
-        Cars racingService = new Cars(cars);
+        Cars cars = new Cars(carList);
         ResultView resultView = new ResultView();
 
         for (int i = 0; i < rounds; i++) {
-            racingService.moveCars();
-            resultView.printResult(racingService.getCars());
+            cars.moveCars();
+            resultView.printResult(cars.getCars());
         }
-        resultView.findWinners(racingService.findWinners());
+        resultView.findWinners(cars.findWinners());
     }
 }
