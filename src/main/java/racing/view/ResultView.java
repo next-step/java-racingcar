@@ -3,6 +3,7 @@ package racing.view;
 import racing.entity.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     public void printResult(List<Car> cars) {
@@ -16,11 +17,17 @@ public class ResultView {
     }
 
     private String carPosition(int position) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            sb.append("-");
+            stringBuilder.append("-");
         }
-        return sb.toString();
+        return stringBuilder.toString();
+    }
+
+    public void findWinners(List<Car> winners) {
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("우승자는 " + winnerNames + " 입니다.");
     }
 }
-
