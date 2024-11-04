@@ -1,15 +1,13 @@
-package step3;
+package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Cars;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
 
@@ -17,14 +15,7 @@ class CarsTest {
 
     @BeforeEach
     void createCars() {
-        List<Car> carList = new ArrayList<>();
-        Car car1 = new Car("Kim");
-        Car car2 = new Car("Lee");
-        Car car3 = new Car("Cha");
-        carList.add(car1);
-        carList.add(car2);
-        carList.add(car3);
-        cars = new Cars(carList);
+        cars = new Cars("Kim,Lee,Cha");
     }
 
     @Test
@@ -34,6 +25,7 @@ class CarsTest {
         map.put("Lee", 1);
         map.put("Cha", 1);
         cars.moveCarsByStrategy(() -> true);
+
         assertThat(cars.showCarsPositions()).isEqualTo(map);
     }
 
@@ -44,6 +36,7 @@ class CarsTest {
         map.put("Lee", 0);
         map.put("Cha", 0);
         cars.moveCarsByStrategy(() -> false);
+
         assertThat(cars.showCarsPositions()).isEqualTo(map);
     }
 }

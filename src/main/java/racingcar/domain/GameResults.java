@@ -1,12 +1,8 @@
-package step3;
+package racingcar.domain;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class GameResults {
-
-    public static final String NAME_DELIMITER = ",";
     private final List<RoundResult> gameResults;
 
     public GameResults(List<RoundResult> gameResults) {
@@ -21,11 +17,8 @@ public class GameResults {
         return gameResults.get(index);
     }
 
-    public String getWinners() {
+    public List<String> findWinners() {
         RoundResult finalResult = getRoundResult(getSize() - 1);
-        return finalResult.getEntrySet().stream()
-                .filter(entry -> finalResult.getMaxPosition() == entry.getValue())
-                .map(Map.Entry::getKey)
-                .collect(Collectors.joining(NAME_DELIMITER));
+        return finalResult.findWinners();
     }
 }

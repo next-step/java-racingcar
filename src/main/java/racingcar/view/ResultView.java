@@ -1,17 +1,22 @@
-package step3;
+package racingcar.view;
+
+import racingcar.domain.GameResults;
+import racingcar.domain.RoundResult;
 
 import java.util.Map;
 
 public class ResultView {
+    public static final String NAME_DELIMITER = ",";
 
-    public static void result(GameResults gameResults) {
+    public static void printGameResults(GameResults gameResults) {
         System.out.println();
         System.out.println("실행 결과");
         for (int i = 0; i < gameResults.getSize(); i++) {
             printRoundResult(gameResults.getRoundResult(i));
             System.out.println();
         }
-        System.out.println(gameResults.getWinners() + "가 최종 우승했습니다.");
+        String winners = String.join(NAME_DELIMITER, gameResults.findWinners());
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
     private static void printRoundResult(RoundResult roundResult) {
