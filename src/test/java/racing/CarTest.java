@@ -20,7 +20,9 @@ public class CarTest {
         Car car = new Car("Car") {
             @Override
             public void move() {
+
                 if (canMove(5)) {
+
                     Position position = new Position(1);
                 }
             }

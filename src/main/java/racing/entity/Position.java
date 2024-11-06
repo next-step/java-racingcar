@@ -18,4 +18,3 @@ public class Position {
         return new Position(value + 1);
     }
 }
-

@@ -32,4 +32,3 @@ public class Cars {
                 .filter(car -> car.isPosition(maxPosition))
                 .collect(Collectors.toList());
     }
-}
