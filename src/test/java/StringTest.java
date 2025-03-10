@@ -53,4 +53,22 @@ public class StringTest {
             Assertions.assertThat(result).contains("1");
         }
     }
+
+    @Nested
+    @DisplayName("substringTest")
+    class SubstringTest {
+
+        @Test
+        @DisplayName("\"(1,2)\" 값이 주어졌을 때 substring()으로 맨앞뒤를 자르면 \"1,2\"가 반환되는가?")
+        void removeParentheses() {
+            // given
+            var testData = "(1,2)";
+
+            // when
+            var result = testData.substring(1, testData.length() - 1);
+
+            // then
+            Assertions.assertThat(result).isEqualTo("1,2");
+        }
+    }
 }
