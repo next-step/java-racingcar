@@ -9,5 +9,6 @@ public class StringTest {
     void split() {
         String[] result = "1,2".split(",");
         assertThat(result).containsExactly("1","2");
+        
     }
 }
