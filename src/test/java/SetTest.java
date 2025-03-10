@@ -29,15 +29,13 @@ public class SetTest {
         assertEquals(3, numbers.size());
     }
 
-    @ParameterizedTest
-    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
+    @ParameterizedTest(name = "Set의 contains() 메소드를 활용해 다음 숫자가 존재하는지를 확인: {0}")
     @ValueSource(strings = {"1", "2", "3"})
     void test2(int num) {
         assertTrue(numbers.contains(num));
     }
 
-    @ParameterizedTest
-    @DisplayName("입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현")
+    @ParameterizedTest(name = "입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현 - 입력 값: {0}, 결과 값: {1}")
     @CsvSource({
             "1, true",
             "2, true",
