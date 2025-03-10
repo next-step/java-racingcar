@@ -1,7 +1,6 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -69,6 +68,38 @@ public class StringTest {
 
             // then
             Assertions.assertThat(result).isEqualTo("1,2");
+        }
+    }
+
+    @Nested
+    @DisplayName("charAtTest")
+    class CharAtTest {
+
+        @Test
+        @DisplayName("\"abc\" 값이 주어졌을 때 charAt()으로 특정 위치의 문자를 가져오는가?")
+        void getCharAt() {
+            // given
+            var testData = "abc";
+            var index = 1;
+
+            // when
+            var result = testData.charAt(index);
+
+            // then
+            Assertions.assertThat(result).isEqualTo('b');
+        }
+
+        @Test
+        @DisplayName("charAt()으로 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는가?")
+        void getCharAtWithIndexOutOfBounds() {
+            // given
+            var testData = "abc";
+            var index = testData.length();
+
+            // when & then
+            Assertions.assertThatThrownBy(() -> testData.charAt(index))
+                    .isInstanceOf(StringIndexOutOfBoundsException.class)
+                    .hasMessage("String index out of range: " + index);
         }
     }
 }
