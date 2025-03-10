@@ -1,3 +1,9 @@
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
 /**
  * 요구사항 1
  * "1,2"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.
@@ -14,4 +20,37 @@
  */
 
 public class StringTest {
+
+    @Nested
+    @DisplayName("splitTest")
+    class SplitTest {
+
+        @Test
+        @DisplayName("\"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리되가?")
+        void splitByComma() {
+            // given
+            var testData = "1,2";
+            var splitter = ",";
+
+            // when
+            var result = testData.split(splitter);
+
+            // then
+            Assertions.assertThat(result).containsExactly("1", "2");
+        }
+
+        @Test
+        @DisplayName("\"1,2\"을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는가?")
+        void splitByCommaWithOne() {
+            // given
+            var testData = "1,2";
+            var splitter = ",";
+
+            // when
+            var result = testData.split(splitter);
+
+            // then
+            Assertions.assertThat(result).contains("1");
+        }
+    }
 }
