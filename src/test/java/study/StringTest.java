@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
     @Test
-    void stringSplitTest1(){
+    void stringSplitTest1(){  // 요구사항 1
         //given
         String given = "1,2";
 
@@ -20,7 +20,7 @@ public class StringTest {
         assertThat(result).containsExactly("1", "2");
     }
     @Test
-    void stringSplitTest2(){
+    void stringSplitTest2(){  // 요구사항 1
         //given
         String given = "1,1";
 
@@ -31,7 +31,7 @@ public class StringTest {
         assertThat(result).containsExactly("1", "1");
     }
     @Test
-    void subStringTest(){
+    void subStringTest(){  // 요구사항 2
         //given
         String given = "(1,2)";
 
@@ -43,7 +43,7 @@ public class StringTest {
     }
     @Test
     @DisplayName("charAt 테스트 (요구사항 3)")
-    void charAtTest(){
+    void charAtTest(){  // 요구사항 3
         //given
         String given = "abc";
 
