@@ -40,9 +40,8 @@ public class StringTest {
     }
 
     int finalTargetIdx = targetIdx;
-    assertThatThrownBy(() -> {
-      testString.charAt(finalTargetIdx);
-    }).isInstanceOf(StringIndexOutOfBoundsException.class)
+    assertThatThrownBy(() -> testString.charAt(finalTargetIdx))
+        .isInstanceOf(StringIndexOutOfBoundsException.class)
         .hasMessageContaining("String index out of range:");
   }
 }
