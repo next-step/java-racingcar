@@ -41,7 +41,8 @@ public class StringTest {
 
         assertThatThrownBy(() ->
             data.charAt(3))
-            .isInstanceOf(StringIndexOutOfBoundsException.class);
+            .isInstanceOf(StringIndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range: 3");
     }
 
 }
