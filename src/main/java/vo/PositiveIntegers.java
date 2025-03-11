@@ -2,10 +2,10 @@ package vo;
 
 import java.util.List;
 
-public class Integers {
+public class PositiveIntegers {
     private final List<Integer> values;
 
-    private Integers(List<Integer> values) {
+    private PositiveIntegers(List<Integer> values) {
         validateNegative(values);
         this.values = values;
     }
@@ -20,8 +20,8 @@ public class Integers {
         );
     }
 
-    public static Integers of(List<Integer> values) {
-        return new Integers(values);
+    public static PositiveIntegers of(List<Integer> values) {
+        return new PositiveIntegers(values);
     }
 
     public int sum() {

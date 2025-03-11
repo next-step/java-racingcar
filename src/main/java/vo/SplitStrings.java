@@ -18,8 +18,8 @@ public class SplitStrings {
         return new SplitStrings(values);
     }
 
-    public Integers toIntegers() {
-        return Integers.of(
+    public PositiveIntegers toIntegers() {
+        return PositiveIntegers.of(
             values.stream()
                 .map(s -> {
                     validateNotNumber(s);
