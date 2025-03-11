@@ -17,9 +17,19 @@ public class StringAddCalculator {
             var customSpliter = matcher.group(1);
             var tokens = matcher.group(2).split(customSpliter);
 
+            if (Arrays.stream(tokens)
+                    .mapToInt(Integer::parseInt).anyMatch(num -> num < 0)) {
+                throw new RuntimeException();
+            }
+
             return Arrays.stream(tokens)
                     .mapToInt(Integer::parseInt)
                     .sum();
+        }
+
+        if (Arrays.stream(value.split("[,:]"))
+                .mapToInt(Integer::parseInt).anyMatch(num -> num < 0)) {
+            throw new RuntimeException();
         }
 
         return Arrays.stream(value.split("[,:]"))
