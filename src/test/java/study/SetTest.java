@@ -56,6 +56,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter=':')
+    @DisplayName(value="요구사항 3 : contains test by using ParameterizedTest annotation and CsvSource")
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }

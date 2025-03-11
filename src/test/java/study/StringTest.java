@@ -30,7 +30,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName(value="요구사항 2 : substring test")
+    @DisplayName(value="요구사항 3 : exception test")
     void exception(){
 
         // 요구사항 3-1
