@@ -50,14 +50,14 @@ public class SetTest {
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     @DisplayName(value="요구사항 2 : contains test by using ParameterizedTest annotation")
-    void isBlank_ShouldReturnTrueForNullOrBlankStrings(int number) {
+    void containsParameterizedTest(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter=':')
     @DisplayName(value="요구사항 3 : contains test by using ParameterizedTest annotation and CsvSource")
-    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int number, boolean expected) {
+    void containsParameterizedTestNCsvSource(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
