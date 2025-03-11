@@ -18,4 +18,17 @@ public class StringTest {
         // then
         assertAll(() -> assertThat(sut).contains("1", "2"), () -> assertThat(sut).containsExactly("1", "2"));
     }
+
+    @DisplayName("(1,2) 값이 주어졌을 때 substring 활용해 괄호를 제거 한다.")
+    @Test
+    void substringTest() {
+        // given
+        String str = "(1,2)";
+
+        // when
+        String sut = str.substring(1, str.length() - 1);
+
+        // then
+        assertThat(sut).isEqualTo("1,2");
+    }
 }
