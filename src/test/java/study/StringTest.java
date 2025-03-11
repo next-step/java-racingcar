@@ -1,16 +1,14 @@
 package study;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
+
     @Test
     void srs1Test() {
         String value1 = "1,2";
