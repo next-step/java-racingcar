@@ -24,15 +24,13 @@ public class SetTest {
 
     @Test
     void 컬렉션_크기_구하기() {
-        int size = this.numbers.size();
-
-        assertThat(size).isEqualTo(3);
+        assertThat(this.numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void 숫자_포함여부_확인(int value) {
-        assertThat(this.numbers.contains(value)).isTrue();
+        assertThat(this.numbers).contains(value);
     }
 
     @ParameterizedTest
