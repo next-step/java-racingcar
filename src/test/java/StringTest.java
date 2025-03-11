@@ -1,4 +1,5 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
@@ -30,5 +31,31 @@ public class StringTest {
 
         // then
         assertThat(sut).isEqualTo("1,2");
+    }
+
+    @DisplayName("abc 값이 주어졌을 때 charAt 활용해 특정 위치의 문자를 가져온다.")
+    @Test
+    void charAtTest() {
+        // given
+        String str = "abc";
+
+        // when
+        char sut = str.charAt(1);
+
+        // then
+        assertThat(sut).isEqualTo('b');
+    }
+
+    @DisplayName("charAt 활용 시 위치 값을 벗어나면 에러가 발생한다.")
+    @Test
+    void charAtExceptionTest() {
+        // given
+        String str = "abc";
+
+        // when
+        // then
+        assertThatThrownBy(() -> {
+            str.charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
