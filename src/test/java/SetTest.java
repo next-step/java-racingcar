@@ -25,7 +25,7 @@ class SetTest {
     @DisplayName("size() 메소드를 활용해 Set의 크기를 확인할 수 있다.")
     @Test
     void getSize_UsingSize() {
-        assertThat(numbers).hasSize(3);
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @DisplayName("Set에 저장한 데이터의 존재 여부를 확인한다.")
