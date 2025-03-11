@@ -36,7 +36,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    @DisplayName("1, 2, 3에 대해서는 true를 4, 5에 대해서는 false를 반홚나다.")
+    @DisplayName("1, 2, 3에 대해서는 true를 4, 5에 대해서는 false를 반환한다.")
     public void containsOver3(int number, boolean expected){
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
