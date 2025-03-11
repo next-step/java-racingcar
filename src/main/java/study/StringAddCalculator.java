@@ -6,6 +6,10 @@ public class StringAddCalculator {
             return 0;
         }
 
+        if (Integer.parseInt(value) == 1) {
+            return 1;
+        }
+
         return 0;
     }
 }
