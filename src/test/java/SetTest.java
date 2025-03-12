@@ -1,10 +1,13 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -37,10 +40,9 @@ public class SetTest {
      * JUnit의 ParameterizedTest를 활용해 중복 코드를 제거해 본다.
      */
 
-    @Test
-    void containsTest (){
-        assertEquals(true, numbers.contains(1));
-        assertEquals(true, numbers.contains(2));
-        assertEquals(true, numbers.contains(3));
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void containsTest (int number){
+        assertTrue(numbers.contains(number), "Set에 값 " + number + "이(가) 존재하지 않습니다.");
     }
 }
