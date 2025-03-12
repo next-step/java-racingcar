@@ -28,16 +28,15 @@ public class StringAddCalculator {
     }
 
     private List<String> getDelimiters(String input) {
-        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
+        List<String> delimiters = new ArrayList<>(DEFAULT_DELIMITERS);
 
-        if (!matcher.find()) {
-            return DEFAULT_DELIMITERS;
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            delimiters.add(customDelimiter);
         }
 
-        String customDelimiter = matcher.group(1);
-        return new ArrayList<>(DEFAULT_DELIMITERS) {{
-            add(customDelimiter);
-        }};
+        return delimiters;
     }
 
     private String[] splitByDelimiters(String input, List<String> delimiters) {
