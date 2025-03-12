@@ -9,6 +9,7 @@ public class StringAddCalculator {
 
     private static final List<String> DEFAULT_DELIMITERS = List.of(",", ":");
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String ALTERNATION_OPERATOR = "|";
 
     public int splitAndSum(String input) {
         if (input == null || input.isBlank()) return 0;
@@ -40,7 +41,7 @@ public class StringAddCalculator {
     }
 
     private String[] splitByDelimiters(String input, List<String> delimiters) {
-        String regex = String.join("|", delimiters);
+        String regex = String.join(ALTERNATION_OPERATOR, delimiters);
         return input.split(regex);
     }
 
