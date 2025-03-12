@@ -28,13 +28,13 @@ public class StringAddCalculator {
     }
 
     private List<String> getDelimiters(String input) {
-        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(input);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
 
-        if (!m.find()) {
+        if (!matcher.find()) {
             return DEFAULT_DELIMITERS;
         }
 
-        String customDelimiter = m.group(1);
+        String customDelimiter = matcher.group(1);
         return new ArrayList<>(DEFAULT_DELIMITERS) {{
             add(customDelimiter);
         }};
