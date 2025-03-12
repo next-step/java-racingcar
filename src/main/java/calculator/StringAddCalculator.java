@@ -1,29 +1,17 @@
 package calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class StringAddCalculator {
 
-    public static int splitAndSum(String text) {
+    private StringAddCalculator() {
+
+    }
+
+    public static int sum(String text) {
         if (text == null || text.isEmpty()) {
             return 0;
         }
 
-        if (text.length() == 1) {
-            return Integer.parseInt(text);
-        }
-
-        Pattern pattern = Pattern.compile("//(.)\\n(.*)");
-        Matcher m = pattern.matcher(text);
-        String delimiter = "[,:]";
-
-        if (m.find()) {
-            delimiter = m.group(1);
-            text = m.group(2);
-        }
-
-        String[] numbers = text.split(delimiter);
+        String[] numbers = StringParser.splitNumberString(text);
         int sum = 0;
 
         for (String s : numbers) {
@@ -33,7 +21,6 @@ public class StringAddCalculator {
             }
             sum += number;
         }
-
         return sum;
     }
 }
