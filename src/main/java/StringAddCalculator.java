@@ -11,7 +11,7 @@ public class StringAddCalculator {
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public int splitAndSum(String input) {
-        if (input == null || input.isEmpty()) return 0;
+        if (input == null || input.isBlank()) return 0;
         return calculate(input);
     }
 

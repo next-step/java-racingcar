@@ -15,10 +15,16 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_null_또는_빈문자() {
         int result = stringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isZero();
 
         result = stringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isZero();
+
+        result = stringAddCalculator.splitAndSum(" ");
+        assertThat(result).isZero();
+
+        result = stringAddCalculator.splitAndSum("   ");
+        assertThat(result).isZero();
     }
 
     @Test
