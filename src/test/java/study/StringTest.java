@@ -1,5 +1,8 @@
+package study;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +17,10 @@ public class StringTest {
         String[] output = input.split(",");
 
         // then
-        assertThat(output).contains("1", "2");
-        assertThat(output).containsExactly("1", "2");
+        assertAll(
+                () -> assertThat(output).contains("1", "2"),
+                () ->  assertThat(output).containsExactly("1", "2")
+        );
     }
 
     @Test
@@ -27,8 +32,10 @@ public class StringTest {
         String[] output = input.split(",");
 
         // then
-        assertThat(output).contains("1");
-        assertThat(output).containsExactly("1");
+        assertAll(
+                () -> assertThat(output).contains("1"),
+                () -> assertThat(output).containsExactly("1")
+        );
     }
 
     @Test
