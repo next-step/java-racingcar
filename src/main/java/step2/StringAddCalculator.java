@@ -1,31 +1,12 @@
 package step2;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class StringAddCalculator {
-    private static String delimiter = ",|:";
-
     public static int splitAndSum(final String input) {
         if (input == null || input.isBlank()) {
             return 0;
         }
 
-        int total = 0;
-
-        Pattern pattern = Pattern.compile("(.)\\n(.*)");
-        Matcher matcher = pattern.matcher(input);
-
-        if (matcher.find()) {
-            delimiter = matcher.group(1);
-            String[] numbers = matcher.group(2).split(delimiter);
-            total = sumParsedNumbers(numbers);
-        } else {
-            String[] numbers = input.split(delimiter);
-            total = sumParsedNumbers(numbers);
-        }
-
-        return total;
+        return sumParsedNumbers(new ParsedInput(input).getNumbers());
     }
 
     private static int sumParsedNumbers(String[] numbers) {
@@ -34,7 +15,7 @@ public class StringAddCalculator {
         for (String number : numbers) {
             int parsed = Integer.parseInt(number);
             if (parsed < 0) {
-                throw new RuntimeException();
+                throw new RuntimeException("음수는 입력 불가 합니다.");
             }
 
             total += parsed;
