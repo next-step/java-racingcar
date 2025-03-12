@@ -14,6 +14,7 @@ class SetTest {
 
     private Set<Integer> numbers;
 
+    //참고: 테스트를 할때, 상태를 공유하는것은 독립성을 보장할수 없을수 있습니다.
     @BeforeEach
     void setUp() {
         numbers = new HashSet<>();
@@ -27,7 +28,7 @@ class SetTest {
     @DisplayName("요구사항1: Set의 size() 메소드를 활용해 Set의 크기를 확인한다.")
     void size() {
         assertThat(numbers).size().isEqualTo(3);
-        assertThat(numbers).hasSize(3);
+        //assertThat(numbers).hasSize(3);
     }
 
     @Test
@@ -36,6 +37,7 @@ class SetTest {
         assertThat(numbers.contains(1)).isTrue();
         assertThat(numbers.contains(2)).isTrue();
         assertThat(numbers.contains(3)).isTrue();
+        //assertThat(numbers).contains(1,2,3);
     }
 
     //참고: https://www.baeldung.com/parameterized-tests-junit-5
