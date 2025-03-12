@@ -10,14 +10,14 @@ public class PositiveNumber {
     }
 
     private void validatePositive(int number) {
-        if (number < 0) throw new RuntimeException();
+        if (number < 0) throw new RuntimeException("Negative number is not allowed: " + number);
     }
 
     private int parse(String token) {
         try {
             return Integer.parseInt(token);
         } catch (NumberFormatException e) {
-            throw new RuntimeException();
+            throw new RuntimeException("Invalid number format: " + token);
         }
     }
 

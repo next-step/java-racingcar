@@ -43,6 +43,13 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageStartingWith("Negative number is not allowed");
+    }
+    @Test
+    public void splitAndSum_invalidFormat() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1,a,3"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageStartingWith("Invalid number format");
     }
 }
