@@ -1,3 +1,5 @@
+package study;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
@@ -29,13 +31,13 @@ public class SetTest {
         assertThat(expected).isEqualTo(3);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} => 입력값: {0}")
     @ValueSource(ints = {1, 2, 3})
     void set에_포함된_값이면_true를_반환한다(int input){
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} => 입력값: {0}, 기대값: {1}")
     @CsvSource({
             "1, true",
             "2, true",
