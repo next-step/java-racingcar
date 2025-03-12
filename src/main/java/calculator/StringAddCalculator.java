@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.exception.NotPositiveNumberException;
+
 public class StringAddCalculator {
 
     private StringAddCalculator() {
@@ -17,7 +19,7 @@ public class StringAddCalculator {
         for (String s : numbers) {
             int number = Integer.parseInt(s);
             if (number < 0) {
-                throw new RuntimeException();
+                throw new NotPositiveNumberException();
             }
             sum += number;
         }

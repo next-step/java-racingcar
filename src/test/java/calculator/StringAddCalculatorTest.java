@@ -3,6 +3,7 @@ package calculator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import calculator.exception.NotPositiveNumberException;
 import org.junit.jupiter.api.Test;
 
 class StringAddCalculatorTest {
@@ -43,6 +44,6 @@ class StringAddCalculatorTest {
     @Test
     void sum_negative(){
         assertThatThrownBy(() -> StringAddCalculator.sum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(NotPositiveNumberException.class);
     }
 }
