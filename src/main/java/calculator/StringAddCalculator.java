@@ -1,6 +1,8 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,10 +16,12 @@ public class StringAddCalculator {
         }
 
         string = customString(string);
-        String[] splitStrings = string.split(delimiter);
+        List<String> splitStrings = Arrays.asList(string.split(delimiter));
 
         // 오류 처리
-        isNegativeOrNotNumber(splitStrings);
+        for (String splitString : splitStrings) {
+            isNegativeOrNotNumber(splitString);
+        }
 
         return calculationResult(splitStrings);
     }
@@ -38,24 +42,22 @@ public class StringAddCalculator {
     }
 
     // 모두 더한 결과 반환
-    private static int calculationResult(String[] resultStringArray) {
-        return Arrays.stream(resultStringArray)
+    private static int calculationResult(List<String> resultStringArray) {
+        return resultStringArray.stream()
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
 
     // 음수 or 숫자가 아닌 문자열 있으면 Error 발생
-    private static void isNegativeOrNotNumber(String[] splitStrings) {
-        for (String splitString : splitStrings) {
-            int num;
-            try {
-                num = Integer.parseInt(splitString);
-            } catch (Exception e) {
-                throw new RuntimeException("숫자 이외의 값이 입력되었습니다.");
-            }
-            if (num < 0) {
-                throw new RuntimeException("음수 값이 입력되었습니다.");
-            }
+    private static void isNegativeOrNotNumber(String str) {
+        int num;
+        try {
+            num = Integer.parseInt(str);
+        } catch (Exception e) {
+            throw new RuntimeException("숫자 이외의 값이 입력되었습니다.");
+        }
+        if (num < 0) {
+            throw new RuntimeException("음수 값이 입력되었습니다.");
         }
     }
 }
