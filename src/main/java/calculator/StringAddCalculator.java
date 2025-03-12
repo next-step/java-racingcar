@@ -19,6 +19,17 @@ public class StringAddCalculator {
         return sumPositiveNumbersOrThrow(tokens);
     }
 
+    private static String[] splitIntoTokens(String text) {
+        Matcher matcher = CUSTOM_DELIMITER_PARSE_PATTERN.matcher(text);
+
+        if (matcher.find()) {
+            String customDelimiter = Pattern.quote(matcher.group(1));
+            return matcher.group(2).split(customDelimiter);
+        }
+
+        return DEFAULT_DELIMITERS_PATTERN.split(text);
+    }
+
     private static int sumPositiveNumbersOrThrow(String[] tokens) {
         int sum = 0;
         for (String token : tokens) {
@@ -34,17 +45,6 @@ public class StringAddCalculator {
             sum += num;
         }
         return sum;
-    }
-
-    private static String[] splitIntoTokens(String text) {
-        Matcher matcher = CUSTOM_DELIMITER_PARSE_PATTERN.matcher(text);
-
-        if (matcher.find()) {
-            String customDelimiter = Pattern.quote(matcher.group(1));
-            return matcher.group(2).split(customDelimiter);
-        }
-
-        return DEFAULT_DELIMITERS_PATTERN.split(text);
     }
 
     private static boolean isValidInteger(String input) {
