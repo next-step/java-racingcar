@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringTest {
@@ -26,5 +27,18 @@ class StringTest {
         String[] result = input.split(",");
         assertThat(result).containsExactly("1");
     }
+
+    /*요구사항 2
+    * "(1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현한다.
+    * */
+    @Test
+    void substringTest() {
+        String input = "(1,2)";
+        String result = input.substring(1,input.length()-1);
+        assertThat(result).isEqualTo("1,2");
+    }
+
+
+
 
 }
