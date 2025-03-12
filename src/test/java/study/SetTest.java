@@ -26,13 +26,13 @@ public class SetTest {
     // Test Case 구현
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void containsA(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+    void containsA(int input) {
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
