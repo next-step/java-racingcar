@@ -1,6 +1,6 @@
 package calculator;
 
-import calculator.exception.NotPositiveNumberException;
+import java.util.Arrays;
 
 public class StringAddCalculator {
 
@@ -14,15 +14,6 @@ public class StringAddCalculator {
         }
 
         String[] numbers = StringParser.splitNumberString(text);
-        int sum = 0;
-
-        for (String s : numbers) {
-            int number = Integer.parseInt(s);
-            if (number < 0) {
-                throw new NotPositiveNumberException();
-            }
-            sum += number;
-        }
-        return sum;
+        return Arrays.stream(numbers).mapToInt(e -> new PositiveNumber(e).getValue()).sum();
     }
 }
