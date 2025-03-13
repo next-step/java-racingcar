@@ -5,7 +5,7 @@ public class Car {
     int position;
 
     public Car() {
-        this.position = 0;
+        this.position = 1;
     }
 
     public int active(boolean canProgress) {
