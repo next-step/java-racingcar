@@ -7,7 +7,10 @@ import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
 public class Input {
-    String tokens;
+    private static final int GROUP_INDEX_DELIMITER = 1;
+    private static final int GROUP_INDEX_NUMBERS = 2;
+
+    final String tokens;
 
     public Input(String tokens) {
         this.tokens = tokens;
@@ -37,8 +40,8 @@ public class Input {
         Matcher customMatcher = CalculatorMatcher.getCustomMatcher(this.tokens);
 
         if (customMatcher.find()) {
-            final String delimiter = customMatcher.group(1);
-            return Arrays.stream(customMatcher.group(2).split(delimiter))
+            final String delimiter = customMatcher.group(GROUP_INDEX_DELIMITER);
+            return Arrays.stream(customMatcher.group(GROUP_INDEX_NUMBERS).split(delimiter))
                     .collect(Collectors.toList());
         }
         return Collections.emptyList();
