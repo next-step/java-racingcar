@@ -11,7 +11,7 @@ public class StringTest {
      * Request 1 : "1,2"를 ,로 split 했을 때 1과 2로 잘 분리되는지 확인하는 테스트
      */
     @Test
-    void splitWithSeperatorTest() {
+    void splitWithSeparatorTest() {
         String[] result = "1,2".split(",");
         Assertions.assertAll(
             () -> assertThat(result).contains("1"),
@@ -21,7 +21,7 @@ public class StringTest {
     }
 
     @Test
-    void splitWithoutSeperatorTest() {
+    void splitWithoutSeparatorTest() {
         String[] result = "1".split(",");
         Assertions.assertAll(
             () -> assertThat(result).containsExactly("1"),
