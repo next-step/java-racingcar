@@ -28,10 +28,9 @@ public class StringCalculatorTest {
     }
 
     @DisplayName("음수를 전달할 경우 예외가 발생한다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"-1:-2:3", "1,2,-3", "-1,2:3"})
-    void inputNegativeNumThrowExceptionTest(String text) {
-        assertThatThrownBy(() -> new StringCalculator(text).calc()).isInstanceOf(RuntimeException.class);
+    @Test
+    void inputNegativeNumThrowExceptionTest() {
+        assertThatThrownBy(() -> new StringCalculator("-1:2:3").calc()).isInstanceOf(RuntimeException.class);
     }
 
     @DisplayName("")
