@@ -83,7 +83,7 @@ public class DelimitedStringCalculatorTest {
   @DisplayName("음수를 가지는 형식의 문자열이 주어졌을 때 sum()을 호출하면 RuntimeException을 던진다.")
   @Test
   void sum_withNegativeValue_throwsException() {
-    String input "-1:2";
+    String input = "-1:2";
 
     Assertions.assertThrows(
         IllegalArgumentException.class,
