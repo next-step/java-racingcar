@@ -31,13 +31,11 @@ public class StringAddCalculator {
 
     private static int sumNumbers(int[] numbers) {
         int sum = 0;
-        try {
-            for (int number : numbers) {
-                if (number < 0)
-                    throw new RuntimeException();
-                sum += number;
-            }
-        } catch (NumberFormatException ignored) {}
+        for (int number : numbers) {
+            if (number < 0)
+                throw new RuntimeException();
+            sum += number;
+        }
         return sum;
     }
 }
