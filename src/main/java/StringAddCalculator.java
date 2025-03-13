@@ -13,40 +13,48 @@ public class StringAddCalculator {
         if (Objects.isNull(text) || text.isBlank()) {
             return 0;
         }
-        return sum(toInt(split(text)));
+
+        String delimiter = findDelimiter(text);
+        String textToSplit = findTextToSplit(text);
+        return sum(toInts(split(textToSplit, delimiter)));
     }
 
-    private static String[] split(String text) {
+    private static String findDelimiter(String text) {
         Matcher matcher = PATTERN.matcher(text);
         if (!matcher.find()) {
-            return text.split(DELIMITER);
+            return DELIMITER;
         }
-
-        String customDelimiter = matcher.group(1);
-        String delimitedText = matcher.group(2);
-        return delimitedText.split(customDelimiter);
+        return matcher.group(1);
     }
 
-    private static int[] toInt(String[] texts) {
+    private static String findTextToSplit(String text) {
+        Matcher matcher = PATTERN.matcher(text);
+        if (!matcher.find()) {
+            return text;
+        }
+        return matcher.group(2);
+    }
+
+    private static String[] split(String text, String delimiter) {
+        return text.split(delimiter);
+    }
+
+    private static int[] toInts(String[] texts) {
         return Arrays.stream(texts)
-            .mapToInt(StringAddCalculator::toIntOrThrow)
+            .mapToInt(StringAddCalculator::toInt)
             .toArray();
     }
 
-    private static int toIntOrThrow(String text) {
-        try {
-            int parsedValue = toInt(text);
-            if (parsedValue < 0) {
-                throw new NumberFormatException();
-            }
-            return parsedValue;
-        } catch (NumberFormatException e) {
-            throw new RuntimeException();
-        }
+    private static int toInt(String text) {
+        int parsedValue = Integer.parseInt(text);
+        validate(parsedValue);
+        return parsedValue;
     }
 
-    private static int toInt(String text) {
-        return Integer.parseInt(text);
+    private static void validate(int value) {
+        if (value < 0) {
+            throw new RuntimeException();
+        }
     }
 
     private static int sum(int[] values) {
