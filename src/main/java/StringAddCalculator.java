@@ -4,6 +4,12 @@ public class StringAddCalculator {
             return 0;
         }
 
-        return Integer.parseInt(text);
+        String[] split = text.split(",");
+        int sum = 0;
+        for (String s : split) {
+            sum += Integer.parseInt(s);
+        }
+
+        return sum;
     }
 }
