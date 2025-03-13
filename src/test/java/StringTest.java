@@ -2,26 +2,21 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class StringTest {
 
     @Test
     void shouldSplitCorrectly() {
-        {
-            String[] actual = "1,2".split(",");
-            Assertions.assertThat(actual).containsExactly("1", "2");
-        }
-
-        {
-            String[] actual = "1".split(",");
-            Assertions.assertThat(actual).containsExactly("1");
-        }
+        assertThat("1,2".split(",")).containsExactly("1", "2");
+        assertThat("1".split(",")).containsExactly("1");
     }
 
     @Test
     void shouldTrimParentheses() {
         String input = "(1,2)";
         String actual = input.substring(1, input.length() - 1);
-        Assertions.assertThat(actual).isEqualTo("1,2");
+        assertThat(actual).isEqualTo("1,2");
     }
 
     @Test
@@ -33,7 +28,7 @@ public class StringTest {
             input.charAt(100);
         }, IndexOutOfBoundsException.class);
 
-        Assertions.assertThat(e)
+        assertThat(e)
             .hasMessageMatching("String index out of range: \\d+");
     }
 }
