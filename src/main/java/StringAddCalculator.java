@@ -2,36 +2,40 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
+
     static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
             return 0;
         }
-
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] numbers = m.group(2).split(customDelimiter);
-            return sumNumbers(numbers);
-        } else {
-            try {
-                int number = Integer.parseInt(text);
-                if (number < 0)
-                    throw new RuntimeException();
-            } catch (NumberFormatException ignored) {}
-
-            String[] numbers = text.split("[,:]");
-            return sumNumbers(numbers);
-        }
+        String[] tokens = splitText(text);
+        int[] numbers = convertStringToIntList(tokens);
+        return sumNumbers(numbers);
     }
 
-    private static int sumNumbers(String[] numbers) {
+    private static String[] splitText(String text) {
+        Matcher m = pattern.matcher(text);
+        if (m.find()) {
+            return m.group(2).split(m.group(1));
+        }
+        return text.split("[,:]");
+    }
+
+    private static int[] convertStringToIntList(String[] numbers) {
+        int[] converted = new int[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            converted[i] = Integer.parseInt(numbers[i]);
+        }
+        return converted;
+    }
+
+    private static int sumNumbers(int[] numbers) {
         int sum = 0;
         try {
-            for (String number : numbers) {
-                int parsed = Integer.parseInt(number);
-                if (parsed < 0)
+            for (int number : numbers) {
+                if (number < 0)
                     throw new RuntimeException();
-                sum += Integer.parseInt(number);
+                sum += number;
             }
         } catch (NumberFormatException ignored) {}
         return sum;
