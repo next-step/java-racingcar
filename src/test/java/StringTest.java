@@ -51,8 +51,7 @@ class StringTest {
         String input = "abc";
         int index = 100;
 
-        assertThrows(StringIndexOutOfBoundsException.class, () -> {
-            input.charAt(index);
-        }, "인덱스 " + index + " 은 문자열의 길이를 벗어나므로 예외가 발생해야 한다");
+        assertThrows(StringIndexOutOfBoundsException.class, () -> input.charAt(-1), "음수 인덱스는 예외 발생");
+        assertThrows(StringIndexOutOfBoundsException.class, () -> input.charAt(input.length()), "문자열 길이와 동일한 인덱스는 예외 발생");
     }
 }
