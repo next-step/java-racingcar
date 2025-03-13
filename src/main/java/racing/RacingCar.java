@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class RacingCar {
 
-    public List<Car> createCars(int size) {
+    public static List<Car> createCars(int size) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             cars.add(new Car());
@@ -15,13 +15,13 @@ public class RacingCar {
     }
 
 
-    public void activeTurns(List<Car> cars, int turn) {
+    public static void activeTurns(List<Car> cars, int turn) {
         for (int i = 0; i < turn; i++) {
-            this.activeCars(cars);
+            activeCars(cars);
         }
     }
 
-    protected void activeCars(List<Car> cars) {
+    public static void activeCars(List<Car> cars) {
         Random random = new Random();
         for (Car car : cars) {
             car.active(canProgress(random.nextInt(10)));
