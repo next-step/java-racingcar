@@ -23,4 +23,8 @@ public class RacingCar {
     protected void activeCar() {
         System.out.println("todo");
     }
+
+    public static boolean canMove(int randomNumber) {
+        return randomNumber >= 4;
+    }
 }
