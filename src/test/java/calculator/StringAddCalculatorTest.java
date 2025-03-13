@@ -29,7 +29,7 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("//와 \n 문자 사이에 커스텀 문자를 지정할 수 있다.")
     public void test4(){
-
+        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
 
     @Test
