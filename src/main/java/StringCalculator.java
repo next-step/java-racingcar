@@ -9,10 +9,13 @@ public class StringCalculator {
         if (isEmptyOrNull(text)) {
             return 0;
         }
-        String[] split = splitUserInput();
+
+        int[] split = parseStrsToInts(splitUserInput());
+
         if (split.length == 1) {
-            return parseStrToInt(split[0]);
+            return split[0];
         }
+
         return 0;
     }
 
@@ -24,8 +27,21 @@ public class StringCalculator {
         return text.split("[,:]");
     }
 
-    private int parseStrToInt(String str) {
-        return Integer.parseInt(str);
+    private int[] parseStrsToInts(String[] inputs) {
+        int[] result = new int[inputs.length];
+        for (int i = 0; i < inputs.length; i++) {
+            result[i] = parseInt(inputs[i]);
+        }
+        return result;
+    }
+
+    private int parseInt(String input) {
+        int parsedNumber = Integer.parseInt(input);
+
+        if (parsedNumber < 0) {
+            throw new RuntimeException("negative number is not allowed");
+        }
+        return parsedNumber;
     }
 
 }
