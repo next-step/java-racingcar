@@ -1,5 +1,6 @@
 package step2;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,11 +46,8 @@ public class StringAddCalculator {
   }
 
   private static int add(String[] tokens) {
-    int sum = 0;
-    for (String token : tokens) {
-      int val = Integer.parseInt(token);
-      sum += val;
-    }
-    return sum;
+    return Arrays.stream(tokens)
+        .mapToInt(Integer::parseInt)
+        .sum();
   }
 }
