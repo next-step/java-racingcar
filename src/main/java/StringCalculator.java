@@ -6,11 +6,18 @@ public class StringCalculator {
     }
 
     public int calc() {
+        if (isEmptyOrNull(text)) {
+            return 0;
+        }
         String[] split = splitUserInput();
         if (split.length == 1) {
             return parseStrToInt(split[0]);
         }
         return 0;
+    }
+
+    private boolean isEmptyOrNull(String str) {
+        return str == null || str.isEmpty();
     }
 
     private String[] splitUserInput() {
