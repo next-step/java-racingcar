@@ -15,17 +15,26 @@ public class RacingCar {
     }
 
 
-    public static void activeTurns(List<Car> cars, int turn) {
+    public static List<List<Integer>> activeTurns(List<Car> cars, int turn) {
+        List<List<Integer>> totalPositions = new ArrayList<>();
         for (int i = 0; i < turn; i++) {
-            activeCars(cars);
+            List<Integer> positionsAfterActive = activeCars(cars);
+            totalPositions.add(positionsAfterActive);
         }
+        return totalPositions;
     }
 
-    public static void activeCars(List<Car> cars) {
-        Random random = new Random();
+    public static List<Integer> activeCars(List<Car> cars) {
+        List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
-            car.active(canProgress(random.nextInt(10)));
+            positions.add(car.active(canProgress(getRandom())));
         }
+        return positions;
+    }
+
+    public static int getRandom() {
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
     public static boolean canProgress(int randomNumber) {
