@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
 public class Input {
+    public static final List<String> DEFAULT_DELIMITER = List.of(",", ":");
     private static final int GROUP_INDEX_DELIMITER = 1;
     private static final int GROUP_INDEX_NUMBERS = 2;
 
@@ -48,7 +49,8 @@ public class Input {
     }
 
     public Boolean hasDefaultDelimiter() {
-        return this.tokens.contains(",") || this.tokens.contains(":");
+        return DEFAULT_DELIMITER.stream()
+                .anyMatch(this.tokens::contains);
     }
 
     public Integer parseToInt() {

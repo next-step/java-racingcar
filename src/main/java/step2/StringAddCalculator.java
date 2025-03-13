@@ -2,9 +2,9 @@ package step2;
 
 import java.util.List;
 
-public class StringAddCalculator {
+import static step2.Input.DEFAULT_DELIMITER;
 
-    private static final String DEFAULT_DELIMITER_REGEX = "[,:]";
+public class StringAddCalculator {
 
     /**
      * 문자열 덧셈 계산기
@@ -21,19 +21,19 @@ public class StringAddCalculator {
         }
 
         if (input.hasDefaultDelimiter()) {
-            return sumStringArray(input.splitWithDefaultRegex(DEFAULT_DELIMITER_REGEX));
+            return sumStringArray(input.splitWithDefaultRegex(getDefaultDelimiterRegex()));
         }
 
         return input.parseToInt();
     }
 
-    /**
-     * StringArray 의 sum 값을 반환하는 함수
-     */
+    private static String getDefaultDelimiterRegex() {
+        return "[" + String.join("", DEFAULT_DELIMITER) + "]";
+    }
+
     private static int sumStringArray(List<String> tokens) {
         return tokens.stream()
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
-
 }
