@@ -1,19 +1,39 @@
 package racing;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class GrandPrix {
-    private final int totalRound;
-    private int playedRound;
+    private int currentRound;
+    private final List<Round> rounds;
 
     public GrandPrix(int totalRound) {
-        this.totalRound = totalRound;
-        this.playedRound = 0;
+        this.currentRound = 0;
+        this.rounds = IntStream.range(0, totalRound)
+                .mapToObj(i -> new Round())
+                .collect(Collectors.toList());
     }
 
     public boolean isFinished() {
-        return playedRound == totalRound;
+        return rounds.stream()
+                .allMatch(Round::isFinished);
     }
 
     public void play() {
-        playedRound++;
+        rounds.get(currentRound).play();
+        currentRound++;
+    }
+
+    static class Round {
+        private boolean finished;
+
+        void play() {
+            finished = true;
+        }
+
+        boolean isFinished() {
+            return finished;
+        }
     }
 }
