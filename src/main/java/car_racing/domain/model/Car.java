@@ -1,4 +1,4 @@
-package car_racing;
+package car_racing.domain.model;
 
 public class Car {
     private int distance;

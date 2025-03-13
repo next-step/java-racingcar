@@ -1,4 +1,4 @@
-package car_racing;
+package car_racing.view.model;
 
 public class UserInput {
     private final int numOfCar;

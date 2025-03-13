@@ -1,5 +1,6 @@
 package car_racing;
 
+import car_racing.domain.model.Car;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

@@ -1,4 +1,7 @@
-package car_racing;
+package car_racing.domain;
+
+import car_racing.view.model.UserInput;
+import car_racing.view.UserInputProcessor;
 
 public class GameController {
     private final UserInputProcessor userInputProcessor = new UserInputProcessor();

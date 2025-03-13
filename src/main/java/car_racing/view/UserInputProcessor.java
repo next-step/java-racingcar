@@ -1,4 +1,6 @@
-package car_racing;
+package car_racing.view;
+
+import car_racing.view.model.UserInput;
 
 import java.util.Scanner;
 
