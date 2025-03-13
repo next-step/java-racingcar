@@ -15,13 +15,13 @@ public class PositiveInteger {
     }
 
     private static void validateNegative(int value) {
-        if (value < 0) {
+        if (NumberUtils.isNegativeNumber(value)) {
             throw new NegativeNumberException();
         }
     }
 
     private static void validateNotNumber(String string) {
-        if (!NumberUtils.isNumber(string)) {
+        if (NumberUtils.isNotNumber(string)) {
             throw new NotNumberException();
         }
     }

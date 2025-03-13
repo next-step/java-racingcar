@@ -16,7 +16,7 @@ public class SplitTarget {
 
     private SplitTarget(String value) {
         this.value = Optional.ofNullable(value)
-            .filter(v -> !StringUtils.isNullOrEmpty(v))
+            .filter(StringUtils::hasNotText)
             .map(this::configureInstance)
             .orElse(DEFAULT_VALUE);
     }

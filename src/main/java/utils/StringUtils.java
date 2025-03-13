@@ -8,7 +8,11 @@ public class StringUtils {
         throw new UtilInstantiationException();
     }
 
-    public static boolean isNullOrEmpty(String value) {
+    public static boolean hasText(String value) {
         return value == null || value.isBlank();
+    }
+
+    public static boolean hasNotText(String value) {
+        return !hasText(value);
     }
 }
