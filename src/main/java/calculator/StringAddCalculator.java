@@ -39,12 +39,12 @@ public class StringAddCalculator {
     return text.split(DELIMITER);
   }
 
-    private static int sum(int[] numbers) {
-      int sum = 0;
-      for (int number : numbers) {
-        sum += number;
-      }
-      return sum;
+  private static int sum(int[] numbers) {
+    int sum = 0;
+    for (int number : numbers) {
+      sum += number;
     }
+    return sum;
+  }
 
 }
