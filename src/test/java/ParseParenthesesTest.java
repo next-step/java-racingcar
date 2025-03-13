@@ -5,9 +5,8 @@ class ParseParenthesesTest {
 
     @Test
     void testParseParentheses() {
-        ParseParentheses parseParentheses = new ParseParentheses();
         String input = "(1,2)";
-        String actual = parseParentheses.parse(input);
+        String actual = input.substring(1, input.length() - 1);
         String expected = "1,2";
         Assertions.assertThat(actual).isEqualTo(expected);
     }

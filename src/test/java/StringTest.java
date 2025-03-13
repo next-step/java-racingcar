@@ -1,7 +1,6 @@
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -16,6 +15,7 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("String 길이보다 큰 index로 charAt 호출 시 StringIndexOutOfBoundsException이 발생해야 한다")
     public void charAtTest() {
         String str = "abc";
         assertThatThrownBy(() -> str.charAt(3))
