@@ -53,6 +53,10 @@ public class Input {
                 .anyMatch(this.tokens::contains);
     }
 
+    public static String getDefaultDelimiterRegex() {
+        return "[" + String.join("", DEFAULT_DELIMITER) + "]";
+    }
+
     public Integer parseToInt() {
         return Integer.parseInt(this.tokens);
     }

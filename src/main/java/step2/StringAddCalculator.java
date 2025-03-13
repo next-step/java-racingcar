@@ -2,7 +2,7 @@ package step2;
 
 import java.util.List;
 
-import static step2.Input.DEFAULT_DELIMITER;
+import static step2.Input.getDefaultDelimiterRegex;
 
 public class StringAddCalculator {
 
@@ -25,10 +25,6 @@ public class StringAddCalculator {
         }
 
         return input.parseToInt();
-    }
-
-    private static String getDefaultDelimiterRegex() {
-        return "[" + String.join("", DEFAULT_DELIMITER) + "]";
     }
 
     private static int sumStringArray(List<String> tokens) {
