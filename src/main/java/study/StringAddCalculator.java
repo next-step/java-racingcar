@@ -1,11 +1,12 @@
 package study;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static final String SEPARATOR = ",|:";
+    public static final String DEFAULT_DELIMITER = ",|:";
+    public static final String REGEX = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
         if (StringUtils.isBlank(text)) {
@@ -13,44 +14,41 @@ public class StringAddCalculator {
         }
 
         String[] tokens = splitText(text);
-        List<String> textTokens = new ArrayList<>(List.of(tokens));
 
-        return textTokens
-                .stream()
-                .mapToInt(StringAddCalculator::toPositive)
-                .sum();
+        int sum = 0;
+        for (String token : tokens) {
+            sum = sum + toPositiveInt(token);
+        }
+
+        return sum;
     }
 
     public static String[] splitText(String text) {
-        String customSeparator = findSeparator(text);
-        if (StringUtils.isNotBlank(customSeparator)) {
-            text = text.substring(text.indexOf("\n") + 1);
-            return text.split(SEPARATOR + "|" + customSeparator);
+        Matcher m = Pattern.compile(REGEX).matcher(text);
+        if (m.find()) {
+            String customSeparator = m.group(1);
+            text = m.group(2);
+            return text.split(DEFAULT_DELIMITER + "|" + customSeparator);
         }
 
-        return text.split(SEPARATOR);
+        return text.split(DEFAULT_DELIMITER);
     }
 
-    public static String findSeparator(String text) {
-        if (text.startsWith("//") && text.contains("\n")) {
-            return text.substring(2, text.indexOf("\n"));
-        }
-        return null;
-    }
-
-    public static int toPositive(String text) throws RuntimeException {
-        int number = -1;
-
-        try {
-            number = Integer.parseInt(text);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException();
-        }
+    public static int toPositiveInt(String text) throws RuntimeException {
+        int number = parseInt(text);
 
         if (number < 0) {
             throw new RuntimeException();
         }
 
         return number;
+    }
+
+    public static int parseInt(String text) throws RuntimeException {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException();
+        }
     }
 }
