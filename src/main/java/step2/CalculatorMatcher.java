@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class CalculatorMatcher {
 
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
-    private static final String NEGATIVE_REGEX = "(-\\d+).*";
+    private static final String NEGATIVE_REGEX = ".*(-\\d+).*";
 
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX);
     private static final Pattern NEGATIVE_PATTERN = Pattern.compile(NEGATIVE_REGEX);
