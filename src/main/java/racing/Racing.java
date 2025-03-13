@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Racing {
 
-
     public static List<List<Integer>> activeTurns(List<Car> cars, int turn) {
         List<List<Integer>> totalPositions = new ArrayList<>();
         for (int i = 0; i < turn; i++) {
