@@ -2,6 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingCar {
 
@@ -14,14 +15,17 @@ public class RacingCar {
     }
 
 
-    public void activeTurns(int turn) {
+    public void activeTurns(List<Car> cars, int turn) {
         for (int i = 0; i < turn; i++) {
-            this.activeCar();
+            this.activeCars(cars);
         }
     }
 
-    protected void activeCar() {
-        System.out.println("todo");
+    protected void activeCars(List<Car> cars) {
+        Random random = new Random();
+        for (Car car : cars) {
+            car.active(canProgress(random.nextInt(10)));
+        }
     }
 
     public static boolean canProgress(int randomNumber) {
