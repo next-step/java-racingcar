@@ -12,4 +12,15 @@ public class RacingCar {
         }
         return cars;
     }
+
+
+    public void activeTurns(int turn) {
+        for (int i = 0; i < turn; i++) {
+            this.activeCar();
+        }
+    }
+
+    protected void activeCar() {
+        System.out.println("todo");
+    }
 }
