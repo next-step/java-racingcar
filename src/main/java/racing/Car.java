@@ -8,5 +8,11 @@ public class Car {
         this.position = 0;
     }
 
+    public int active(boolean canProgress) {
+        if (canProgress) {
+            this.position++;
+        }
+        return this.position;
+    }
 
 }
