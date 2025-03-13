@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class GrandPrixTest {
 
     @Test
-    @DisplayName("그랑프리는 전체 라운드 수를 입력받아 전체 라운드 수 만큼 진행한다.")
+    @DisplayName("전체 라운드 수를 입력받아 전체 라운드 수 만큼 play한다")
     void playForTotalRoundCountTest() {
         // given
         int totalRound = 5;
