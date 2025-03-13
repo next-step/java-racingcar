@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,22 +16,22 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] tokens = splitIntoTokens(text);
+        List<String> tokens = splitIntoTokens(text);
         return sumPositiveNumbersOrThrow(tokens);
     }
 
-    private static String[] splitIntoTokens(String text) {
+    private static List<String> splitIntoTokens(String text) {
         Matcher matcher = CUSTOM_DELIMITER_PARSE_PATTERN.matcher(text);
 
         if (matcher.find()) {
             String customDelimiter = Pattern.quote(matcher.group(1));
-            return matcher.group(2).split(customDelimiter);
+            return List.of(matcher.group(2).split(customDelimiter));
         }
 
-        return DEFAULT_DELIMITERS_PATTERN.split(text);
+        return List.of(DEFAULT_DELIMITERS_PATTERN.split(text));
     }
 
-    private static int sumPositiveNumbersOrThrow(String[] tokens) {
+    private static int sumPositiveNumbersOrThrow(List<String> tokens) {
         int sum = 0;
         for (String token : tokens) {
             if (!isValidInteger(token)) {
