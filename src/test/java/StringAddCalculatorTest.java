@@ -8,6 +8,12 @@ class StringAddCalculatorTest {
     StringAddCalculator cal = new StringAddCalculator();
 
     @Test
+    @DisplayName(value="1. 빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.(예 : “” => 0, null => 0)")
+    void 빈값을_0으로_변환(){
+        assertEquals(0, cal.add(""));
+    }
+
+    @Test
     @DisplayName(value="4. 구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다. (예 : “1,2:3” => 6)")
     void 콤마_콜론_구분자_합계(){
         assertEquals(6, cal.add("1,2:3"));
