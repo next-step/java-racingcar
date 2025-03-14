@@ -1,5 +1,0 @@
-package racingcar;
-
-class InputHandlerTest {
-
-}

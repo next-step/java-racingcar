@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class RaceController {
@@ -16,17 +17,19 @@ public class RaceController {
 		raceService.runRace();
 	}
 
-	private int getIntegerInput() {
+	public int getIntegerInput() {
 		InputView.printCarInputMessage();
 		return parseValidInt();
 	}
 
-	private int parseValidInt() {
+	public int parseValidInt() {
 		int parsedValue;
 		try {
 			parsedValue = scanner.nextInt();
 		} catch (InputMismatchException e) {
 			throw new RuntimeException("정수만 입력할 수 있습니다.");
+		} catch (NoSuchElementException e) {
+			throw new RuntimeException("입력값이 존재하지 않습니다.");
 		}
 
 		if (parsedValue <= 0) {
