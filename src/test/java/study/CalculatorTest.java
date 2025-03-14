@@ -1,6 +1,7 @@
 package study;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static study.Calculator.sum;
 
 import org.junit.jupiter.api.DisplayName;
@@ -51,5 +52,23 @@ public class CalculatorTest {
     void numbersWithCustomDelimiterShouldReturnSum() {
         int result = sum("//;\n3;4");
         assertThat(result).isEqualTo(7);
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값")
+    void nonNumberInputShouldThrowException() {
+        assertThrows(
+            RuntimeException.class,
+            () -> sum("2,a")
+        );
+    }
+
+    @Test
+    @DisplayName("음수")
+    void negativeNumbersShouldThrowException() {
+        assertThrows(
+            RuntimeException.class,
+            () -> sum("-2,3")
+        );
     }
 }
