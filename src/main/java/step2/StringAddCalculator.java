@@ -1,0 +1,21 @@
+package step2;
+
+
+import java.util.List;
+
+public class StringAddCalculator {
+
+    private final static NumberSeparator numberSeparator = new NumberSeparator();
+
+
+    public static int splitAndSum(String o) {
+        List<Integer> splitNumber = numberSeparator.separate(o);
+        return sum(splitNumber);
+    }
+
+    private static int sum(List<Integer> splitNumber) {
+        return splitNumber.stream()
+            .mapToInt(Integer::intValue)
+            .sum();
+    }
+}
