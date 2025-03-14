@@ -16,10 +16,6 @@ public class CarRacing {
         throw new IllegalStateException("인스턴스 생성이 불가능한 클래스입니다.");
     }
 
-    public static void main(String[] args) {
-        racing();
-    }
-
     public static void racing() {
         Scanner scanner = new Scanner(System.in);
         int carCount = getCarCount(scanner);
