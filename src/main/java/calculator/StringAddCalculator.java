@@ -5,7 +5,8 @@ public class StringAddCalculator {
         if(Util.isEmpty(input)) {
             return 0;
         }
-        String[] tokens = StringParser.split(input);
-        return StringParser.sum(tokens);
+        String[] tokens = Splitter.split(input);
+        int[] numbers = StringParser.toInt(tokens);
+        return Number.sum(numbers);
     }
 }
