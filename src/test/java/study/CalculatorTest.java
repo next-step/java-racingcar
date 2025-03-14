@@ -45,4 +45,11 @@ public class CalculatorTest {
         int result = sum("2,3:4");
         assertThat(result).isEqualTo(9);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자")
+    void numbersWithCustomDelimiterShouldReturnSum() {
+        int result = sum("//;\n3;4");
+        assertThat(result).isEqualTo(7);
+    }
 }
