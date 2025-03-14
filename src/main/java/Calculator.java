@@ -28,7 +28,11 @@ public class Calculator {
     public static Integer[] toInts(String[] inputArray) {
         Integer[] result = new Integer[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
-            result[i] = Integer.parseInt(inputArray[i]);
+            int num = Integer.parseInt(inputArray[i]);
+            if (num < 0) {
+                throw new RuntimeException();
+            }
+            result[i] = num;
         }
         return result;
     }
@@ -36,9 +40,6 @@ public class Calculator {
     public static Integer sum(Integer[] numbers) {
         int result = 0;
         for (int num : numbers) {
-            if (num < 0) {
-                throw new RuntimeException("Negative input!");
-            }
             result += num;
         }
         return result;
