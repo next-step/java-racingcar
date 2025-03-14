@@ -29,7 +29,7 @@ public class StringParser {
     }
 
     private static void validateText(String text, String delimiter) {
-        String validPattern = String.format("^[0-9%s]+$", delimiter.replace("|", ""));
+        String validPattern = String.format("^(-?)[0-9%s]+$", delimiter.replace("|", ""));
         if (!text.matches(validPattern)) {
             throw new UnexpectedCharacterException();
         }
