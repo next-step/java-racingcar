@@ -29,5 +29,4 @@ class CarTest {
         return IntStream.rangeClosed(0, 9)
                 .mapToObj(it -> Arguments.of(it, it >= 4));
     }
-
 }
