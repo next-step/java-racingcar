@@ -33,4 +33,11 @@ public class StringCalculatorTest {
   void 음수를_전달할_경우_runtimeexception_예외가_발생해야_한다() {
     assertThatThrownBy(() -> StringCalculator.calculate("-1,2,3")).isInstanceOf(RuntimeException.class);
   }
+
+  @Test
+  void 커스텀_구분자를_지정해서_사용할_수_있다() {
+    assertThat(StringCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
+  }
+
+
 }

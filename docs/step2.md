@@ -37,7 +37,7 @@ String[] numbers = text.split(",");
 String[] tokens= text.split(",|:");
 ```
 
-- [ ] "//"와 "\n" 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : "//;\n1;2;3" => 6)
+- [x] "//"와 "\n" 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : "//;\n1;2;3" => 6)
 
 ```
 // java.util.regex 패키지의 Matcher, Pattern import
