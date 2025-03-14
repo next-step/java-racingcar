@@ -10,7 +10,16 @@ public class StringCalculator {
     }
 
     int[] numbers = getIntegerList(textNumbers, delimiter);
+
+    validatePositiveNumbers(numbers);
+
     return Arrays.stream(numbers).sum();
+  }
+
+  private static void validatePositiveNumbers(int[] numbers) {
+    if (Arrays.stream(numbers).anyMatch(n -> n < 0)) {
+      throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+    }
   }
 
   private static int[] getIntegerList(String text, String delimiter) {

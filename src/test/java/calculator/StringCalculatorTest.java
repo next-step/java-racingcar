@@ -1,6 +1,7 @@
 package calculator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,5 +27,10 @@ public class StringCalculatorTest {
   void 구분자를_입력받을_수_있다() {
     assertThat(StringCalculator.calculate("1,2,3", ",")).isEqualTo(6);
     assertThat(StringCalculator.calculate("1,2:3", ",|:")).isEqualTo(6);
+  }
+
+  @Test
+  void 음수를_전달할_경우_runtimeexception_예외가_발생해야_한다() {
+    assertThatThrownBy(() -> StringCalculator.calculate("-1,2,3")).isInstanceOf(RuntimeException.class);
   }
 }
