@@ -17,13 +17,25 @@ public class Calculator {
     }
 
     private static String[] split(String s) {
-        String delimiterRegex = DEFAULT_NUMBERS_DELIMITER_REGEX;
+        String delimiter = computeDelimiter(s);
+        String stringToSplit = extractStringToSplit(s);
+        return stringToSplit.split(delimiter);
+    }
+
+    private static String computeDelimiter(String s) {
         if (s.startsWith(CUSTOM_DELIMITER_PREFIX)) {
             int delimiterEnd = s.indexOf(NEW_LINE);
-            delimiterRegex = Pattern.quote(s.substring(2, delimiterEnd));
-            s = s.substring(delimiterEnd + 1);
+            return Pattern.quote(s.substring(2, delimiterEnd));
         }
-        return s.split(delimiterRegex);
+        return DEFAULT_NUMBERS_DELIMITER_REGEX;
+    }
+
+    private static String extractStringToSplit(String s) {
+        if (s.startsWith(CUSTOM_DELIMITER_PREFIX)) {
+            int delimiterEnd = s.indexOf(NEW_LINE);
+            return s.substring(delimiterEnd + 1);
+        }
+        return s;
     }
 
     private static int[] parseNonNegativeInts(String[] numberStrings) {
