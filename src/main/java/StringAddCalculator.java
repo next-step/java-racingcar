@@ -9,7 +9,6 @@ public class StringAddCalculator
     문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
 
     5. “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)
-    6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)
      */
 
     public int add(String str){
@@ -20,7 +19,11 @@ public class StringAddCalculator
         int sum = 0;
         String[] strArr = str.split(",|:");
         for(String s : strArr){
-            sum += Integer.parseInt(s);
+            int num = Integer.parseInt(s);
+            if(num < 0){
+                throw new RuntimeException("음수는 허용하지 않습니다.");
+            }
+            sum += num;
         }
         return sum;
     }

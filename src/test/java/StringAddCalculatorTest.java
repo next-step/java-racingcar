@@ -8,6 +8,14 @@ class StringAddCalculatorTest {
     StringAddCalculator cal = new StringAddCalculator();
 
     @Test
+    @DisplayName(value="6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)")
+    void 음수_익셉션(){
+        assertThrows(RuntimeException.class, ()->{
+            cal.add("-1,2,3");
+        });
+    }
+
+    @Test
     @DisplayName(value="1. 빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.(예 : “” => 0, null => 0)")
     void 빈값을_0으로_변환(){
         assertEquals(0, cal.add(""));
