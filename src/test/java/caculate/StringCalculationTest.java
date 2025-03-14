@@ -16,4 +16,10 @@ public class StringCalculationTest {
         int actual = StringCalculation.add("1,2:3");
         assertThat(actual).isEqualTo(6);
     }
+
+    @Test
+    public void add_empty_or_null() {
+        int actual = StringCalculation.add("");
+        assertThat(actual).isEqualTo(0);
+    }
 }
