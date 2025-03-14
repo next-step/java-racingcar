@@ -1,15 +1,16 @@
 package racingcar.racing;
 
 import racingcar.racing.model.Car;
+import racingcar.racing.util.RandomGenerator;
 import racingcar.racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
+    private final ResultView resultView;
     private int stage;
-    private ResultView resultView;
 
     public Game(int carSize) {
         this.stage = 0;
@@ -19,17 +20,22 @@ public class Game {
     }
 
     private void init(int carSize) {
-        this.cars = new ArrayList<>(carSize);
-
         for (int i = 0; i < carSize; i++)
             this.cars.add(new Car());
     }
 
     public void start() {
-        // 한번의 횟수에 진행할 로직
+        cars.forEach(this::moveCar);
+        stage++;
 
-        // view
-        resultView.view(cars);
+        resultView.view(cars, stage);
+    }
+
+    private void moveCar(Car car) {
+        int randomNumber = RandomGenerator.generateRandomNumber(10);
+
+        if (randomNumber >= 4)
+            car.move();
     }
 
     public List<Car> getCars() {

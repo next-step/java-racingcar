@@ -35,9 +35,9 @@ class ResultViewTest {
         car3.move();
         cars.add(car3);
 
-        resultView.view(cars);
+        resultView.view(cars, 1);
 
-        Assertions.assertThat(output.toString()).isEqualTo("-\n--\n---\n");
+        Assertions.assertThat(output.toString()).isEqualTo("stage: 1\n-\n--\n---\n\n");
         System.setOut(System.out);
     }
 
