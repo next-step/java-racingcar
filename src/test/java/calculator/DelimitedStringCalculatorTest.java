@@ -61,33 +61,47 @@ public class DelimitedStringCalculatorTest {
   @DisplayName("커스컴 구분자를 가지는 형식의 문자열이 주어졌을 때 sum()을 호출하면 수의 합을 반환한다.")
   @Test
   void sum_customDelimiterString_returnsSumOfNumbers() {
-    String input = "//;\n1;2;3";
+    String input1 = "//;\n1;2;3";
+    String input2 = "//$\n1$2$4";
 
-    int result = DelimitedStringCalculator.sum(input);
+    int result1 = DelimitedStringCalculator.sum(input1);
+    int result2 = DelimitedStringCalculator.sum(input2);
 
-    assertThat(result).isEqualTo(6);
+    assertThat(result1).isEqualTo(6);
+    assertThat(result2).isEqualTo(7);
   }
 
 
-  @DisplayName("커스텀 구분자를 입력받은 형태가 아닌데 \",\" 혹은 \":\" 구분자가 아닌 문자열이 주어졌을 떄 sum()을 호출하면 IllegalArgumentException을 던진다.")
+  @DisplayName("커스텀 구분자를 입력받은 형태가 아닌데 \",\" 혹은 \":\" 구분자가 아닌 문자열이 주어졌을 떄 sum()을 호출하면 RuntimeException을 던진다.")
   @Test
-  void sum_invalidDelimiter_throwsIllegalArgumentException() {
+  void sum_invalidDelimiter_throwsRuntimeException() {
     String input = "1$2";
 
     Assertions.assertThrows(
-        IllegalArgumentException.class,
-        () -> DelimitedStringCalculator.sum("1$2")
+        RuntimeException.class,
+        () -> DelimitedStringCalculator.sum(input)
     );
   }
 
   @DisplayName("음수를 가지는 형식의 문자열이 주어졌을 때 sum()을 호출하면 RuntimeException을 던진다.")
   @Test
-  void sum_withNegativeValue_throwsException() {
+  void sum_withNegativeValue_throwsRuntimeException() {
     String input = "-1:2";
 
     Assertions.assertThrows(
-        IllegalArgumentException.class,
-        () -> DelimitedStringCalculator.sum("1$2")
+        RuntimeException.class,
+        () -> DelimitedStringCalculator.sum(input)
+    );
+  }
+
+  @DisplayName("커스텀 구분자를 입력받았을 때 커스텀 구분자랑 숫자 이외 문자열이 주어졌을 때 sum()을 호출하면 RuntimeException을 던진다.")
+  @Test
+  void sum_invalidCharacterWithoutDelimiter_throwsRuntimeException() {
+    String input = "//;\n1;2;3|4";
+
+    Assertions.assertThrows(
+        RuntimeException.class,
+        () -> DelimitedStringCalculator.sum(input)
     );
   }
 }
