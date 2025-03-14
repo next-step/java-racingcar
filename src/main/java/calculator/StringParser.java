@@ -7,25 +7,29 @@ import java.util.regex.Pattern;
 public class StringParser {
 
     private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern PATTERN = Pattern.compile("//(.)\\R(.*)");
 
     private StringParser() {
 
     }
 
     public static String[] split(String text) {
-        Pattern pattern = Pattern.compile("//(.)\\n(.*)");
-        Matcher m = pattern.matcher(text);
+        Matcher matcher = PATTERN.matcher(text);
         String delimiter = DEFAULT_DELIMITER;
 
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            delimiter = String.join("|", delimiter, customDelimiter);
-            text = m.group(2);
+        if (matcher.find()) {
+            delimiter = extractCustomDelimiter(matcher);
+            text = matcher.group(2);
         }
 
         validateText(text, delimiter);
 
         return text.split(delimiter);
+    }
+
+    private static String extractCustomDelimiter(Matcher matcher) {
+        String customDelimiter = matcher.group(1);
+        return String.join("|", DEFAULT_DELIMITER, customDelimiter);
     }
 
     private static void validateText(String text, String delimiter) {
