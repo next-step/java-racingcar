@@ -1,6 +1,7 @@
 package step1.study;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
@@ -25,21 +26,23 @@ public class SetTest {
         numbers.add(3);
     }
 
-    // Test Case 구현
     @Test
-    void srs1Test() {
-        assertThat(numbers.size()).isEqualTo(3);
+    @DisplayName("set.size()")
+    void size() {
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void srs2Test(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+    @DisplayName("set.contains() #1")
+    void contains1(int number) {
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void srs3Test(int number, boolean expected) {
+    @DisplayName("set.contains() #2")
+    void contains2(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
