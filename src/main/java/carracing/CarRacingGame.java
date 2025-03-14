@@ -21,4 +21,12 @@ public class CarRacingGame {
         }
         return result;
     }
+
+    public List<Integer> playGame(int gameCount) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < gameCount; ++i) {
+            result = playOneRound();
+        }
+        return result;
+    }
 }

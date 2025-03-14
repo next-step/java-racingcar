@@ -34,4 +34,10 @@ public class CarRacingGameTest {
     void play_one_round() {
         assertThat(carRacingGame.playOneRound()).containsExactly(1, 1, 1);
     }
+
+    @DisplayName("자동차 경주 게임 여러 라운드 진행")
+    @Test
+    void play_several_rounds() {
+        assertThat(carRacingGame.playGame(5)).containsExactly(3, 3, 5);
+    }
 }
