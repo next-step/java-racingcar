@@ -10,14 +10,14 @@ public class CarRaceGame {
 
     private static void makeCars() {
         int carNumber = InputView.inputCarNumber();
-        for (int i=0; i<carNumber; i++) {
+        for (int i = 0; i < carNumber; i++) {
             cars.add(new Car(0));
         }
     }
 
     private static void race() {
         int tryNumber = InputView.inputTryNumber();
-        for (int i=0; i<tryNumber; i++) {
+        for (int i = 0; i < tryNumber; i++) {
             moveAllCars();
             printCars();
         }

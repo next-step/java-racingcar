@@ -1,4 +1,3 @@
-import javax.xml.transform.Result;
 import java.util.Random;
 
 public class Car {
@@ -30,7 +29,8 @@ public class Car {
         this.location++;
     }
 
-    public void stop() {}
+    public void stop() {
+    }
 
     public int getLocation() {
         return this.location;
