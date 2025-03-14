@@ -1,7 +1,5 @@
 package carracing;
 
-import java.util.Random;
-
 public class Car {
     int distance = 0;
 
