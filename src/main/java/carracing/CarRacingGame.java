@@ -14,7 +14,7 @@ public class CarRacingGame {
         randomNumberGenerator = new RandomNumberGenerator(seed);
     }
 
-    private List<Integer> playOneRound() {
+    public List<Integer> playOneRound() {
         List<Integer> result = new ArrayList<>();
         for (Car car : cars) {
             result.add(car.move(randomNumberGenerator.generateNumber()));
@@ -22,10 +22,10 @@ public class CarRacingGame {
         return result;
     }
 
-    public List<Integer> playGame(int gameCount) {
-        List<Integer> result = new ArrayList<>();
+    public List<List<Integer>> playGame(int gameCount) {
+        List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < gameCount; ++i) {
-            result = playOneRound();
+            result.add(playOneRound());
         }
         return result;
     }

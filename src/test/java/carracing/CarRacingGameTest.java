@@ -3,6 +3,8 @@ package carracing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingGameTest {
@@ -32,12 +34,19 @@ public class CarRacingGameTest {
     @DisplayName("자동차 경주 게임 한 라운드 진행")
     @Test
     void play_one_round() {
-        assertThat(carRacingGame.playGame(1)).containsExactly(1, 1, 1);
+        assertThat(carRacingGame.playOneRound()).containsExactly(1, 1, 1);
     }
 
     @DisplayName("자동차 경주 게임 여러 라운드 진행")
     @Test
     void play_several_rounds() {
-        assertThat(carRacingGame.playGame(5)).containsExactly(3, 3, 5);
+        assertThat(carRacingGame.playGame(5))
+                .containsExactly(
+                        List.of(1, 1, 1),
+                        List.of(2, 2, 2),
+                        List.of(3, 3, 3),
+                        List.of(3, 3, 4),
+                        List.of(3, 3, 5)
+                );
     }
 }
