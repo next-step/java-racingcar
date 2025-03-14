@@ -22,7 +22,7 @@ public class DelimitedStringCalculator {
     }
 
     if (hasDefaultDelimiter(input)) {
-      return sumNonNegativeNumberWithDefaultDelimiters(input);
+      return sumNonNegativeNumberWithDefaultDelimiter(input);
     }
 
     return convertStringToNumber(input);
@@ -67,7 +67,7 @@ public class DelimitedStringCalculator {
     return m.find();
   }
 
-  private static int sumNonNegativeNumberWithDefaultDelimiters(String input) {
+  private static int sumNonNegativeNumberWithDefaultDelimiter(String input) {
     Matcher m = Pattern.compile(DEFAULT_DELIMITER_REGEX).matcher(input);
 
     if (!m.matches()) {
