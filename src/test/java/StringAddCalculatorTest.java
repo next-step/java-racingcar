@@ -8,7 +8,13 @@ class StringAddCalculatorTest {
     StringAddCalculator cal = new StringAddCalculator();
 
     @Test
-    @DisplayName(value="숫자 형태의 문자를 숫자로 변형")
+    @DisplayName(value="3. 숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.(예 : “1,2”)")
+    void 콤마_합계(){
+        assertEquals(3, cal.add("1,2"));
+    }
+
+    @Test
+    @DisplayName(value="2. 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.(예 : “1”)")
     void 문자열_단건(){
         assertEquals(1, cal.add("1"));
     }
