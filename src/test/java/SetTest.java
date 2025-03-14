@@ -22,21 +22,13 @@ public class SetTest {
   @Test
   @DisplayName("size() 메소드를 활용해 Set의 크기를 확인한다.")
   void size() {
-    assertThat(numbers.size()).isEqualTo(3);
+    assertThat(numbers).hasSize(3);
   }
-
-//  @Test
-//  @DisplayName("Set의 contains() 메소드를 활용해 1,2,3의 값이 존재하는지 확인한다.")
-//  void contains() {
-//    assertThat(numbers.contains(1)) .isTrue();
-//    assertThat(numbers.contains(2)) .isTrue();
-//    assertThat(numbers.contains(3)) .isTrue();
-//  }
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
   void contains(int number) {
-    assertThat(numbers.contains(number)) .isTrue();
+    assertThat(numbers).contains(number);
   }
 
   @ParameterizedTest
