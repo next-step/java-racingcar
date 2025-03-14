@@ -24,6 +24,14 @@ public class StringParser {
     public static int[] toInt(String [] input){
         return Arrays.stream(input)
                 .mapToInt(Integer::parseInt)
+                .filter(StringParser::isPositive)
                 .toArray();
+    }
+
+    public static boolean isPositive(int number){
+        if(number < 0) {
+            throw new NegativeNumberException("invalid value");
+        }
+        return true;
     }
 }
