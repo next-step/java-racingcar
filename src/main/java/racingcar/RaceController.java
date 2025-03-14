@@ -1,48 +1,38 @@
 package racingcar;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class RaceController {
-	private final InputView inputView;
-	private final OutputView outputView;
-	private RaceModel race;
 
-	public RaceController(InputView inputView, OutputView outputView) {
-		this.inputView = inputView;
-		this.outputView = outputView;
+	private final Scanner scanner = new Scanner(System.in);
+
+	public void runRace() {
+		int carInput = getIntegerInput();
+		int roundInput = getIntegerInput();
+		scanner.close();
+
+		RaceService raceService = new RaceService(carInput, roundInput);
+		raceService.runRace();
 	}
 
-	public void startRace() {
-		getInputs();
-		runRounds();
+	private int getIntegerInput() {
+		InputView.printCarInputMessage();
+		return parseValidInt();
 	}
 
-	private void getInputs() {
-		inputView.printCarInputMessage();
-		int carInput = InputHandler.parseValidInt();
-		inputView.printRoundInputMessage();
-		int roundInput = InputHandler.parseValidInt();
-		race = new RaceModel(roundInput, carInput);
-	}
-
-	private void runRounds() {
-		outputView.printResultMessage();
-		while (race.getRemainingRounds() > 0) {
-			runOneRound();
+	private int parseValidInt() {
+		int parsedValue;
+		try {
+			parsedValue = scanner.nextInt();
+		} catch (InputMismatchException e) {
+			throw new RuntimeException("정수만 입력할 수 있습니다.");
 		}
-	}
 
-	private void runOneRound() {
-		for (CarModel car : race.getCars()) {
-			moveCar(car);
+		if (parsedValue <= 0) {
+			throw new RuntimeException("1 이상의 정수만 입력할 수 있습니다.");
 		}
-		race.reduceRound();
-		outputView.printEndOneRound();
-	}
-
-	private void moveCar(CarModel car) {
-		if (CarMoveHandler.canGo()) {
-			car.go();
-		}
-		outputView.printCarDistance(car.getDistance());
+		return parsedValue;
 	}
 
 }
