@@ -1,4 +1,5 @@
 public class StringCalculator {
+    public static final String DELIMITERS_REGEX = "[,:]";
     private final String text;
 
     public StringCalculator(String text) {
@@ -10,13 +11,7 @@ public class StringCalculator {
             return 0;
         }
 
-        int[] split = parseStrsToInts(splitUserInput());
-
-        if (split.length == 1) {
-            return split[0];
-        }
-
-        return 0;
+        return sum(parseStrsToInts(splitUserInput()));
     }
 
     private boolean isEmptyOrNull(String str) {
@@ -24,7 +19,7 @@ public class StringCalculator {
     }
 
     private String[] splitUserInput() {
-        return text.split("[,:]");
+        return text.split(DELIMITERS_REGEX);
     }
 
     private int[] parseStrsToInts(String[] inputs) {
@@ -44,4 +39,13 @@ public class StringCalculator {
         return parsedNumber;
     }
 
+    private int sum(int[] numbers) {
+        int result = 0;
+
+        for (int number : numbers) {
+            result += number;
+        }
+
+        return result;
+    }
 }

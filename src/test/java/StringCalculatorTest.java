@@ -33,13 +33,15 @@ public class StringCalculatorTest {
         assertThatThrownBy(() -> new StringCalculator("-1:2:3").calc()).isInstanceOf(RuntimeException.class);
     }
 
-    @DisplayName("")
-    @Test
-    void test(){
-      // given
+    @DisplayName("쉼표 또는 콜론을 구분자로 분리한 각 숫자의 합을 반환한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3", "1:2:3", "1,2:3"})
+    void delimitersSumTest(String argument) {
+        // given
+        StringCalculator stringCalculator = new StringCalculator(argument);
 
-      // when
-
-      // then
+        // when
+        // then
+        assertThat(stringCalculator.calc()).isEqualTo(6);
     }
 }
