@@ -14,6 +14,8 @@ public class StringAddCalculator {
         }
 
         String[] numbers = StringParser.split(text);
-        return Arrays.stream(numbers).mapToInt(e -> new PositiveNumber(e).getValue()).sum();
+        return Arrays.stream(numbers)
+            .mapToInt(e -> new PositiveNumber(e).getValue())
+            .sum();
     }
 }
