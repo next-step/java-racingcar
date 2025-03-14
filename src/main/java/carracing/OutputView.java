@@ -4,6 +4,7 @@ import java.util.List;
 
 public class OutputView {
     public static void printTotalResult(List<List<Integer>> result) {
+        System.out.println("실행 결과");
         for (List<Integer> oneRound : result) {
             printOneRoundResult(oneRound);
             System.out.println();
