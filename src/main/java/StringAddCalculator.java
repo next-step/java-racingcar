@@ -7,7 +7,7 @@ public class StringAddCalculator {
     public static final String DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
 
-    public static int splitAndSum(String text) throws RuntimeException {
+    public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
             return 0;
         }
@@ -37,8 +37,8 @@ public class StringAddCalculator {
     }
 
     private static int[] validateNegative(int[] values) {
-        for (int i = 0; i < values.length; i++) {
-            if (values[i] < 0) {
+        for (int value : values) {
+            if (value < 0) {
                 throw new RuntimeException("have negative value");
             }
         }

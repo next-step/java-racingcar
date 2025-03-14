@@ -20,7 +20,7 @@ public class StringAddCalculatorTest {
     @Test
     @DisplayName("숫자 하나")
     void numbersTest() {
-        int actual = StringAddCalculator.splitAndSum("1");
+        final int actual = StringAddCalculator.splitAndSum("1");
         assertThat(actual).isEqualTo(1);
     }
 
