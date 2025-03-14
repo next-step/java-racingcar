@@ -11,7 +11,7 @@ class GrandPrixTest {
     void playForTotalRoundCountTest() {
         // given
         int totalRound = 5;
-        var grandPrix = new GrandPrix(totalRound);
+        var grandPrix = new GrandPrix(totalRound, 0);
         int playedRound = 0;
 
         // when

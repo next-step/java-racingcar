@@ -10,10 +10,11 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 class CarTest {
+    static final int MOVE_THRESHOLD = 4;
 
     @ParameterizedTest
     @MethodSource("testData")
-    @DisplayName("자동차는 주사위의 값이 4 이상일 때만 전진한다.")
+    @DisplayName("자동차는 주사위의 값이 MOVE_THRESHOLD값의 이상일 때만 전진한다.")
     void moveOnceTest(int diceValue, boolean expected) {
         // given
         var car = new Car();
@@ -27,6 +28,6 @@ class CarTest {
 
     static Stream<Arguments> testData() {
         return IntStream.rangeClosed(0, 9)
-                .mapToObj(it -> Arguments.of(it, it >= 4));
+                .mapToObj(it -> Arguments.of(it, it >= MOVE_THRESHOLD));
     }
 }
