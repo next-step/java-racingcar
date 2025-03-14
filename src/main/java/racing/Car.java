@@ -5,10 +5,11 @@ import java.util.List;
 
 public class Car {
 
-    int position;
+    public static final int START_POSITION = 1;
+    private int position;
 
     public Car() {
-        this.position = 1;
+        this.position = START_POSITION;
     }
 
     public int active(boolean canProgress) {
