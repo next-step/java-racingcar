@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
 
 public class Position {
+
     private final PositiveInteger value;
 
     private Position(PositiveInteger value) { this.value = value; }

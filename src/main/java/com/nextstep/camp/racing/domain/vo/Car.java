@@ -1,10 +1,8 @@
 package com.nextstep.camp.racing.domain.vo;
 
-import java.util.List;
-
 public class Car {
 
-    private Moves moves = Moves.initialize();
+    private final Moves moves = Moves.initialize();
 
     private Car() {
     }

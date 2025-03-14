@@ -26,7 +26,7 @@ public class Moves {
     }
 
     public void move() {
-        this.values.add(Move.of(true));
+        this.values.add(Move.decide());
     }
 
     public Position getPosition() {
