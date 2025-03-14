@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,35 +14,21 @@ public class Calculator {
 
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
         if (matcher.matches()) {
-            Integer[] numbers = toInts(split(matcher.group(2), matcher.group(1)));
-            return sum(numbers);
+            return sum(split(matcher.group(2), matcher.group(1)));
         }
-
-        Integer[] numbers = toInts(split(input, DEFAULT_DELIMITER_REGEX));
-        return sum(numbers);
+        return sum(split(input, DEFAULT_DELIMITER_REGEX));
     }
 
     public static String[] split(String input, String delimiter) {
         return input.split(delimiter);
     }
 
-    public static Integer[] toInts(String[] inputArray) {
-        Integer[] result = new Integer[inputArray.length];
-        for (int i = 0; i < inputArray.length; i++) {
-            int num = Integer.parseInt(inputArray[i]);
-            if (num < 0) {
-                throw new RuntimeException();
-            }
-            result[i] = num;
-        }
-        return result;
-    }
-
-    public static Integer sum(Integer[] numbers) {
-        int result = 0;
-        for (int num : numbers) {
-            result += num;
-        }
-        return result;
+    public static Integer sum(String[] inputArray) {
+        return Arrays.stream(inputArray)
+                .mapToInt(Integer::parseInt)
+                .peek(num -> {
+                    if (num < 0) throw new RuntimeException();
+                })
+                .sum();
     }
 }
