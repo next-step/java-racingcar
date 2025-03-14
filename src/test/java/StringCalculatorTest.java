@@ -13,7 +13,7 @@ class StringCalculatorTest {
         int result = StringCalculator.splitAndSum(null);
         assertThat(result).isEqualTo(0);
 
-        result = StringCalculator.splitAndSum(null);
+        result = StringCalculator.splitAndSum("");
         assertThat(result).isEqualTo(0);
     }
 
@@ -47,7 +47,7 @@ class StringCalculatorTest {
 
     @Test
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
-    void splitAndSum_negative() throws Exception {\
+    void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringCalculator.splitAndSum("-1,2,3"))
             .isInstanceOf(RuntimeException.class);
     }
