@@ -16,4 +16,9 @@ public class StringCalculatorTest {
     assertThat(StringCalculator.calculate(null)).isEqualTo(0);
     assertThat(StringCalculator.calculate("")).isEqualTo(0);
   }
+
+  @Test
+  void 컴마구분자로_입력한_두_숫자는_합을_반환한다() {
+    assertThat(StringCalculator.calculate("1,2,3")).isEqualTo(6);
+  }
 }

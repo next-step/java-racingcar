@@ -24,7 +24,7 @@ if (text.isEmpty()) {}
 int number = Integer.parseInt(text);
 ```
 
-- [ ] 숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.(예 : "1,2")
+- [x] 숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.(예 : "1,2")
 
 ```
 String[] numbers = text.split(",");
