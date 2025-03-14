@@ -21,4 +21,10 @@ public class StringCalculatorTest {
   void 컴마구분자로_입력한_두_숫자는_합을_반환한다() {
     assertThat(StringCalculator.calculate("1,2,3")).isEqualTo(6);
   }
+
+  @Test
+  void 구분자를_입력받을_수_있다() {
+    assertThat(StringCalculator.calculate("1,2,3", ",")).isEqualTo(6);
+    assertThat(StringCalculator.calculate("1,2:3", ",|:")).isEqualTo(6);
+  }
 }
