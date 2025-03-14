@@ -9,6 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -25,21 +27,20 @@ public class SetTest {
 
     @Test
     void testSetSizeIs3() {
-        Assertions.assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void shouldContainAllSpecifiedNumbers(int number) {
-        Assertions.assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1,2,3:true", "4,5:false"}, delimiter = ':')
-    void shouldValidateContainmentUsingCsvData(String input, boolean expected) {
-        for (String actual : input.split(",")) {
-            int number = Integer.parseInt(actual);
-            Assertions.assertThat(numbers.contains(number)).isEqualTo(expected);
-        }
+    @CsvSource(value = {
+        "1:true", "2:true", "3:true",
+        "4:false", "5:false"}, delimiter = ':')
+    void shouldValidateContainmentUsingCsvData(int number, boolean expected) {
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
