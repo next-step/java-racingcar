@@ -7,6 +7,10 @@ public class Calculator {
     public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
 
     public static int splitAndSum(String input) {
+        if (input == null || input.isEmpty()) {
+            return 0;
+        }
+
         Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
         if (matcher.matches()) {
             Integer[] numbers = toInts(split(matcher.group(2), matcher.group(1)));
@@ -18,9 +22,6 @@ public class Calculator {
     }
 
     public static String[] split(String input, String delimiter) {
-        if (input == null || input.isEmpty()) {
-            return new String[0];
-        }
         return input.split(delimiter);
     }
 
