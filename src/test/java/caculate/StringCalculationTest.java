@@ -22,4 +22,10 @@ public class StringCalculationTest {
         int actual = StringCalculation.add("");
         assertThat(actual).isEqualTo(0);
     }
+
+    @Test
+    public void add_custom_delimiter() {
+        int actual = StringCalculation.add("//;\n1;2;3");
+        assertThat(actual).isEqualTo(6);
+    }
 }
