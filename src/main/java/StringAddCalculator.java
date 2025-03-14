@@ -11,29 +11,47 @@ public class StringAddCalculator
     예를 들어 “//;\n1;2;3”과 같이 값을 입력할 경우 커스텀 구분자는 세미콜론(;)이며, 결과 값은 6이 반환되어야 한다.
     문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
      */
+    private static String DELIMITER = ",|:";
 
     public int add(String str){
-        if(str == null || str.isBlank()){
-            str = "0";
-        }
-        Pattern pattern = Pattern.compile("//(.)\n(.*)");
-        Matcher matcher = pattern.matcher(str);
+        return getSum(toIntArr(getStringWhenHasDelimiter(getZeroWhenBlank(str)).split(DELIMITER)));
+    }
 
-        String delimeter = ",|:";
-        if(matcher.find()){
-            delimeter = matcher.group(1);
-            str = matcher.group(2);
+    private int[] toIntArr(String[] strArr) {
+        int[] intArr = new int[strArr.length];
+        for(int i = 0; i < strArr.length; i++){
+            intArr[i] = toInt(strArr[i]);
         }
+        return intArr;
+    }
 
+    private int toInt(String s) {
+        int num = Integer.parseInt(s);
+        if(num < 0){
+            throw new RuntimeException("음수는 허용하지 않습니다.");
+        }
+        return num;
+    }
+
+    private static int getSum(int[] numbers) {
         int sum = 0;
-        String[] strArr = str.split(delimeter);
-        for(String s : strArr){
-            int num = Integer.parseInt(s);
-            if(num < 0){
-                throw new RuntimeException("음수는 허용하지 않습니다.");
-            }
+        for(int num : numbers){
             sum += num;
         }
         return sum;
+    }
+
+    private static String getStringWhenHasDelimiter(String str) {
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(str);
+
+        if(matcher.find()){
+            DELIMITER = matcher.group(1);
+            return matcher.group(2);
+        }
+        return str;
+    }
+
+    private static String getZeroWhenBlank(String str) {
+        return str == null || str.isBlank() ? "0" : str;
     }
 }
