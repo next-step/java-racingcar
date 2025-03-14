@@ -34,7 +34,7 @@ public class CarRacing {
         return scanner.nextInt();
     }
 
-    protected static void process(int carCount, int tryCount) {
+    private static void process(int carCount, int tryCount) {
         System.out.println(RESULT_MESSAGE);
         List<String> cars = initializeList(carCount);
         for (int i = 0; i < tryCount; i++) {
@@ -51,7 +51,7 @@ public class CarRacing {
         return cars;
     }
 
-    protected static void moveCars(List<String> cars, int carCount) {
+    private static void moveCars(List<String> cars, int carCount) {
         for (int i = 0; i < carCount; i++) {
             cars.set(i, cars.get(i) + moveOrStay(getRandomNumber()));
         }
