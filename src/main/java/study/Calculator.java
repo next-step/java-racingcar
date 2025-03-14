@@ -13,12 +13,7 @@ public class Calculator {
             return 0;
         }
 
-        int[] ints = parseInts(split(s));
-        if (hasNegativeNumbers(ints)) {
-            throw new RuntimeException();
-        }
-
-        return sum(ints);
+        return add(parseNonNegativeInts(split(s)));
     }
 
     private static String[] split(String s) {
@@ -31,24 +26,23 @@ public class Calculator {
         return s.split(delimiterRegex);
     }
 
-    private static int[] parseInts(String[] numberStrings) {
+    private static int[] parseNonNegativeInts(String[] numberStrings) {
         int[] numbers = new int[numberStrings.length];
         for (int i = 0; i < numberStrings.length; i++) {
-            numbers[i] = Integer.parseInt(numberStrings[i]);
+            numbers[i] = parseNonNegativeInt(numberStrings[i]);
         }
         return numbers;
     }
 
-    private static boolean hasNegativeNumbers(int[] numbers) {
-        for (int number : numbers) {
-            if (number < 0) {
-                return true;
-            }
+    private static int parseNonNegativeInt(String numberStrings) {
+        int num = Integer.parseInt(numberStrings);
+        if (num < 0) {
+            throw new RuntimeException();
         }
-        return false;
+        return num;
     }
 
-    private static int sum(int[] numbers) {
+    private static int add(int[] numbers) {
         int sum = 0;
         for (int num : numbers) {
             sum = sum + num;
