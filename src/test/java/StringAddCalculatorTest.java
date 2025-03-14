@@ -8,6 +8,12 @@ class StringAddCalculatorTest {
     StringAddCalculator cal = new StringAddCalculator();
 
     @Test
+    @DisplayName(value="5. “//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\\n1;2;3” => 6)")
+    void 패턴_구분자(){
+        assertEquals(6, cal.add("//;\n1;2;3"));
+    }
+
+    @Test
     @DisplayName(value="6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)")
     void 음수_익셉션(){
         assertThrows(RuntimeException.class, ()->{

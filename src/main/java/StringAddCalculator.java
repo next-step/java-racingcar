@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator
 {
     /*
@@ -7,17 +10,23 @@ public class StringAddCalculator
     커스텀 구분자는 문자열 앞부분의 “//”와 “\n” 사이에 위치하는 문자를 커스텀 구분자로 사용한다.
     예를 들어 “//;\n1;2;3”과 같이 값을 입력할 경우 커스텀 구분자는 세미콜론(;)이며, 결과 값은 6이 반환되어야 한다.
     문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
-
-    5. “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)
      */
 
     public int add(String str){
         if(str == null || str.isBlank()){
             str = "0";
         }
+        Pattern pattern = Pattern.compile("//(.)\n(.*)");
+        Matcher matcher = pattern.matcher(str);
+
+        String delimeter = ",|:";
+        if(matcher.find()){
+            delimeter = matcher.group(1);
+            str = matcher.group(2);
+        }
 
         int sum = 0;
-        String[] strArr = str.split(",|:");
+        String[] strArr = str.split(delimeter);
         for(String s : strArr){
             int num = Integer.parseInt(s);
             if(num < 0){
