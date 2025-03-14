@@ -14,6 +14,13 @@ public class CalculatorTest {
     }
 
     @Test
+    @Description("null을 입력할 경우 0을 반환")
+    void splitAndSum_Null() {
+        int result = Calculator.splitAndSum(null);
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
     @Description("쉼표(,)구분자를 가지는 경우 각 숫자를 더한 값을 반환")
     void splitAndSum_CommaDelimiter() {
         int result = Calculator.splitAndSum("1,2,3");
