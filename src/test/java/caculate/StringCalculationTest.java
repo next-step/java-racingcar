@@ -10,4 +10,10 @@ public class StringCalculationTest {
         int actual = StringCalculation.add("1,2,3");
         assertThat(actual).isEqualTo(6);
     }
+
+    @Test
+    public void add_delimiter_colon() {
+        int actual = StringCalculation.add("1,2:3");
+        assertThat(actual).isEqualTo(6);
+    }
 }
