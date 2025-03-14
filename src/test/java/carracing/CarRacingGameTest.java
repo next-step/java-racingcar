@@ -32,7 +32,7 @@ public class CarRacingGameTest {
     @DisplayName("자동차 경주 게임 한 라운드 진행")
     @Test
     void play_one_round() {
-        assertThat(carRacingGame.playOneRound()).containsExactly(1, 1, 1);
+        assertThat(carRacingGame.playGame(1)).containsExactly(1, 1, 1);
     }
 
     @DisplayName("자동차 경주 게임 여러 라운드 진행")

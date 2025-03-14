@@ -6,7 +6,7 @@ public class RandomNumberGenerator {
     public static final int RANDOM_UPPER_BOUND = 10;
     private static Random random;
 
-    public RandomNumberGenerator(int seed) {
+    public RandomNumberGenerator(long seed) {
         random = new Random(seed);
     }
 

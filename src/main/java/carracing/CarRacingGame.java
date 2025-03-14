@@ -7,14 +7,14 @@ public class CarRacingGame {
     private List<Car> cars = new ArrayList<>();
     private RandomNumberGenerator randomNumberGenerator;
 
-    public CarRacingGame(int numCar, int seed) {
+    public CarRacingGame(int numCar, long seed) {
         for (int i = 0; i < numCar; i++) {
             cars.add(new Car());
         }
         randomNumberGenerator = new RandomNumberGenerator(seed);
     }
 
-    public List<Integer> playOneRound() {
+    private List<Integer> playOneRound() {
         List<Integer> result = new ArrayList<>();
         for (Car car : cars) {
             result.add(car.move(randomNumberGenerator.generateNumber()));
