@@ -10,6 +10,7 @@ public class NumberSeparator {
 
     private static final String DEFAULT_DELIMITER = "[,:]";
     private static final String DELIMITER_FIND_REGEX = "//(.)\n(.*)";
+    private static final Pattern DELIMITER_FIND_PATTERN = Pattern.compile(DELIMITER_FIND_REGEX);
 
     public List<Integer> separate(String input) {
         if (StringUtils.isEmpty(input)) {
@@ -18,15 +19,13 @@ public class NumberSeparator {
         if (StringUtils.isNumeric(input)) {
             return List.of(Integer.parseInt(input));
         }
-        Pattern pattern = Pattern.compile(DELIMITER_FIND_REGEX);
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = DELIMITER_FIND_PATTERN.matcher(input);
 
-        String[] values;
+        String[] values = input.split(DEFAULT_DELIMITER);
+
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             values = matcher.group(2).split(customDelimiter);
-        } else {
-            values = input.split(DEFAULT_DELIMITER);
         }
         return convertStringArrayToIntegerList(values);
     }

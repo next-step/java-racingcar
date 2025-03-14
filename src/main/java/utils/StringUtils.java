@@ -2,9 +2,6 @@ package utils;
 
 public class StringUtils {
 
-    public StringUtils() {
-    }
-
     public static boolean isEmpty(String str) {
         return str == null || str.isEmpty();
     }
