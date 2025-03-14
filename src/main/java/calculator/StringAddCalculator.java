@@ -13,7 +13,7 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] numbers = StringParser.splitNumberString(text);
+        String[] numbers = StringParser.split(text);
         return Arrays.stream(numbers).mapToInt(e -> new PositiveNumber(e).getValue()).sum();
     }
 }
