@@ -49,8 +49,24 @@ public class StringCalculation {
     private static int getSum(String[] values) {
         int sum = 0;
         for (String value : values) {
-            sum += Integer.parseInt(value);
+            sum += convertToNumber(value);
         }
         return sum;
+    }
+
+    private static int convertToNumber(String value) {
+        try {
+            int number = Integer.parseInt(value);
+            checkNumberCondition(number);
+            return number;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자가 아닌 값이 입력되었습니다.");
+        }
+    }
+
+    private static void checkNumberCondition(int number) {
+        if (number < 0) {
+            throw new RuntimeException("음수는 입력할 수 없습니다.");
+        }
     }
 }
