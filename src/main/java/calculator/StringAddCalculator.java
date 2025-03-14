@@ -1,14 +1,20 @@
+package calculator;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
+    public static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
+    public static final String CUSTOM_DELIMITER_PREFIX = "//";
+    public static final String DEFAULT_DELIMITERS_REGEX = "[,:]";
 
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
             return 0;
         }
         if (hasCustomDelimiter(text)) {
-            return sum(text.split("[,:]"));
+            return sum(text.split(DEFAULT_DELIMITERS_REGEX));
         }
         return parseAndSumWithCustomDelimiter(text);
     }
@@ -28,11 +34,11 @@ public class StringAddCalculator {
     }
 
     private static Matcher getCustomDelimeterAndNumbers(String text) {
-        return Pattern.compile("//(.)\n(.*)").matcher(text);
+        return Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
     }
 
     private static boolean hasCustomDelimiter(String text) {
-        return !text.startsWith("//");
+        return !text.startsWith(CUSTOM_DELIMITER_PREFIX);
     }
 
     private static int sum(String[] stringNumbers) {
