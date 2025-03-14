@@ -54,19 +54,10 @@ public class StringSeperator {
     }
 
     private List<Integer> convert(List<String> data) {
-        List<Integer> numbers = new ArrayList<>();
-        for (String datum : data) {
-            try {
-                int number = Integer.parseInt(datum);
-                if (number < 0) {
-                    throw new RuntimeException("음수는 입력할 수 없습니다.");
-                }
-                numbers.add(number);
-            } catch (NumberFormatException e) {
-                throw new RuntimeException("숫자가 아닌 값이 포함되어 있습니다.");
-            }
-        }
-        return numbers;
+        return data.stream()
+                .map(PositiveNumber::new)
+                .map(PositiveNumber::getValue)
+                .collect(Collectors.toList());
     }
 
     private boolean isBlank(String input) {
