@@ -1,10 +1,16 @@
+import javax.xml.transform.Result;
 import java.util.Random;
 
 public class Car {
     private int location;
+    private final ResultView resultView = new ResultView();
 
     public Car(int location) {
         this.location = location;
+    }
+
+    public void printLocation() {
+        resultView.printCarLocation(this);
     }
 
     public boolean randomGo() {
