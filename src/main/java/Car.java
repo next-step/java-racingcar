@@ -9,6 +9,8 @@ public class Car {
         this.location++;
     }
 
+    public void stop() {}
+
     public int getLocation() {
         return this.location;
     }

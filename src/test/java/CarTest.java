@@ -9,4 +9,11 @@ public class CarTest {
         car.go();
         assertThat(car.getLocation()).isEqualTo(1);
     }
+
+    @Test
+    void 자동차_멈춤() {
+        Car car = new Car(0);
+        car.stop();
+        assertThat(car.getLocation()).isEqualTo(0);
+    }
 }
