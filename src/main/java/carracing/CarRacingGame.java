@@ -1,5 +1,24 @@
 package carracing;
 
-public class CarRacingGame {
+import java.util.ArrayList;
+import java.util.List;
 
+public class CarRacingGame {
+    private List<Car> cars = new ArrayList<>();
+    private RandomNumberGenerator randomNumberGenerator;
+
+    public CarRacingGame(int numCar, int seed) {
+        for (int i = 0; i < numCar; i++) {
+            cars.add(new Car());
+        }
+        randomNumberGenerator = new RandomNumberGenerator(seed);
+    }
+
+    public List<Integer> playOneRound() {
+        List<Integer> result = new ArrayList<>();
+        for (Car car : cars) {
+            result.add(car.move(randomNumberGenerator.generateNumber()));
+        }
+        return result;
+    }
 }

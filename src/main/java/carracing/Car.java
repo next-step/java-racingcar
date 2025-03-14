@@ -1,7 +1,7 @@
 package carracing;
 
 public class Car {
-    int distance = 0;
+    int distance = 1;
 
     public int move(int randomNum) {
         if (randomNum >= 4) {
