@@ -4,12 +4,14 @@ import java.util.Arrays;
 
 public class StringCalculator {
 
-  public static int calculate(String textNumbers, String delimiter) {
+  private static final String DEFAULT_DELIMITER = ",|:";
+
+  public static int calculate(String textNumbers) {
     if (isBlank(textNumbers)) {
       return 0;
     }
 
-    int[] numbers = getIntegerList(textNumbers, delimiter);
+    int[] numbers = getIntegerList(textNumbers, DEFAULT_DELIMITER);
 
     validatePositiveNumbers(numbers);
 
@@ -27,10 +29,6 @@ public class StringCalculator {
     return Arrays.stream(numbers)
         .mapToInt(Integer::parseInt)
         .toArray();
-  }
-
-  public static int calculate(String textNumbers) {
-    return calculate(textNumbers, ",");
   }
 
   private static boolean isBlank(String text) {

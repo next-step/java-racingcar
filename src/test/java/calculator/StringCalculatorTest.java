@@ -24,9 +24,9 @@ public class StringCalculatorTest {
   }
 
   @Test
-  void 구분자를_입력받을_수_있다() {
-    assertThat(StringCalculator.calculate("1,2,3", ",")).isEqualTo(6);
-    assertThat(StringCalculator.calculate("1,2:3", ",|:")).isEqualTo(6);
+  void 구분자를_컴마외에_콜론도_사용할_수_있다() {
+    assertThat(StringCalculator.calculate("1,2,3")).isEqualTo(6);
+    assertThat(StringCalculator.calculate("1,2:3")).isEqualTo(6);
   }
 
   @Test
