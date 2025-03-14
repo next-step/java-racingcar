@@ -3,10 +3,12 @@ package carracing;
 import java.util.Random;
 
 public class Car {
-    public static final int SEED = 50;
-    Random random = new Random(SEED);
+    int distance = 0;
 
-    public boolean canMove() {
-        return random.nextInt(10) >= 4;
+    public int move(int randomNum) {
+        if (randomNum >= 4) {
+            distance++;
+        }
+        return distance;
     }
 }
