@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class StringSeperator {
     private final Pattern pattern = Pattern.compile("//(.)\n(.*)");
-    public List<Integer> Seperate(String input) {
+    public List<Integer> seperate(String input) {
         List<Integer> numbers = new ArrayList<>();
 
         if (isBlank(input)) {
