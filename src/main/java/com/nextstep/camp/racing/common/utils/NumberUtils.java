@@ -1,5 +1,7 @@
 package com.nextstep.camp.racing.common.utils;
 
+import java.math.BigDecimal;
+
 import com.nextstep.camp.racing.domain.exception.UtilInstantiationException;
 
 public class NumberUtils {
@@ -22,16 +24,28 @@ public class NumberUtils {
         return !isNumber(value);
     }
 
-    public static boolean isNegativeNumber(int value) {
-        return value < ZERO;
+    public static boolean isNegativeNumber(Number value) {
+        if (value == null) {
+            return false;
+        }
+        BigDecimal bigDecimal = new BigDecimal(value.toString());
+        return bigDecimal.compareTo(BigDecimal.ZERO) < 0;
     }
 
-    public static boolean isPositiveNumber(int value) {
-        return value > ZERO;
+    public static boolean isPositiveNumber(Number value) {
+        if (value == null) {
+            return false;
+        }
+        BigDecimal bigDecimal = new BigDecimal(value.toString());
+        return bigDecimal.compareTo(BigDecimal.ZERO) > 0;
     }
 
-    public static boolean isZero(int value) {
-        return value == ZERO;
+    public static boolean isZero(Number value) {
+        if (value == null) {
+            return false;
+        }
+        BigDecimal bigDecimal = new BigDecimal(value.toString());
+        return bigDecimal.compareTo(BigDecimal.ZERO) == ZERO;
     }
 
 

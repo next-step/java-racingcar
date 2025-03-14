@@ -19,7 +19,6 @@ class CreateRacingViewTest {
 
     @ParameterizedTest
     @MethodSource("provideElementData")
-    @DisplayName("다양한 입력값에 대해 toViewData()가 올바른 데이터를 반환하는지 테스트")
     void toViewData_ShouldReturnCorrectData_AfterRender(String quantityValue, String maxPositionValue) {
         String simulatedInput = quantityValue + "\n" + maxPositionValue + "\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
@@ -45,7 +44,6 @@ class CreateRacingViewTest {
     }
 
     @Test
-    @DisplayName("render() 실행 없이 toViewData() 호출 시 예외 발생")
     void toViewData_ShouldThrowException_IfRenderNotCalled() {
         Scanner scanner = new Scanner(System.in);
         CreateRacingView view = CreateRacingView.publish(List.of(QuantityInput.create(scanner), MaxPositionInput.create(scanner)));

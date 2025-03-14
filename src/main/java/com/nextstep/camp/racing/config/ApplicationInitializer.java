@@ -1,6 +1,7 @@
 package com.nextstep.camp.racing.config;
 
 import com.nextstep.camp.racing.application.dto.RacingRequest;
+import com.nextstep.camp.racing.application.dto.RacingResponse;
 import com.nextstep.camp.racing.application.mapper.RequestMapper;
 import com.nextstep.camp.racing.presentation.RacingController;
 import com.nextstep.camp.racing.infrastructure.view.CreateRacingViewHandler;
@@ -24,6 +25,6 @@ public class ApplicationInitializer {
 
         ViewData viewData = viewHandler.handleUserInput();
         RacingRequest request = RequestMapper.toRacingRequest(viewData);
-        //controller.startRace(request);
+        RacingResponse racingResponse = controller.startRace(request);
     }
 }

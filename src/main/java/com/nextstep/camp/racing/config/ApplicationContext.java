@@ -3,7 +3,9 @@ package com.nextstep.camp.racing.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.nextstep.camp.racing.application.RacingService;
 import com.nextstep.camp.racing.infrastructure.view.CreateRacingViewHandler;
+import com.nextstep.camp.racing.presentation.RacingController;
 
 public class ApplicationContext {
 
@@ -12,6 +14,8 @@ public class ApplicationContext {
 
     private ApplicationContext() {
         register(CreateRacingViewHandler.class, new CreateRacingViewHandler());
+        register(RacingService.class, new RacingService());
+        register(RacingController.class, new RacingController(getBean(RacingService.class)));
     }
 
     public static ApplicationContext getInstance() {

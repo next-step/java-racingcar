@@ -1,11 +1,18 @@
 package com.nextstep.camp.racing.common.vo;
 
+import java.util.Objects;
+
 import com.nextstep.camp.racing.domain.exception.NegativeNumberException;
 import com.nextstep.camp.racing.domain.exception.NotNumberException;
 import com.nextstep.camp.racing.common.utils.NumberUtils;
 
 public class PositiveInteger {
     private final int value;
+
+    private PositiveInteger(Number number) {
+        validateNegative(number.intValue());
+        this.value = number.intValue();
+    }
 
     private PositiveInteger(String stringValue) {
         validateNotNumber(stringValue);
@@ -26,11 +33,29 @@ public class PositiveInteger {
         }
     }
 
+    public static PositiveInteger of(Number number) {
+        return new PositiveInteger(number);
+    }
+
     public static PositiveInteger of(String value) {
         return new PositiveInteger(value);
     }
 
     public int value() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        PositiveInteger that = (PositiveInteger) object;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(value);
     }
 }
