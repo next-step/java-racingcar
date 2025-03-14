@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
     public static int splitAndSum(String input) {
         if (!isValid(input)) {
             return 0;
@@ -39,4 +40,3 @@ public class StringAddCalculator {
         return Arrays.stream(tokens).sum();
     }
 }
-

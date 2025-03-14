@@ -1,9 +1,9 @@
 package step2.calculator;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import org.junit.jupiter.api.Test;
 
 public class StringAddCalculatorTest {
 
@@ -51,20 +51,20 @@ public class StringAddCalculatorTest {
 
     @Test
     public void splitAndSum_negative() {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3")).isInstanceOf(
+            RuntimeException.class);
     }
 
     @Test
     public void splitAndSum_delimCustomAndNegative() {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("//-\n-1-2-3"))
-            .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("//-\n-1-2-3")).isInstanceOf(
+            RuntimeException.class);
     }
 
     @Test
     public void splitAndSum_blank() {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(" "))
-            .isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(" ")).isInstanceOf(
+            RuntimeException.class);
     }
 
     @Test
