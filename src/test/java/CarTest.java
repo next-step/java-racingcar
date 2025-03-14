@@ -16,4 +16,13 @@ public class CarTest {
         car.stop();
         assertThat(car.getLocation()).isEqualTo(0);
     }
+
+    @Test
+    void 자동차_랜덤_전진() {
+        Car car = new Car(0);
+        if (car.randomGo())
+            assertThat(car.getLocation()).isEqualTo(1);
+        else
+            assertThat(car.getLocation()).isEqualTo(0);
+    }
 }

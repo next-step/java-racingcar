@@ -1,8 +1,23 @@
+import java.util.Random;
+
 public class Car {
     private int location;
 
     public Car(int location) {
         this.location = location;
+    }
+
+    public boolean randomGo() {
+        if (getRandomInt() >= 4) {
+            go();
+            return true;
+        }
+        stop();
+        return false;
+    }
+
+    private int getRandomInt() {
+        return new Random().nextInt(10);
     }
 
     public void go() {
@@ -14,5 +29,4 @@ public class Car {
     public int getLocation() {
         return this.location;
     }
-
 }
