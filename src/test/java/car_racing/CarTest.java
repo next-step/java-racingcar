@@ -2,8 +2,10 @@ package car_racing;
 
 import car_racing.domain.model.Car;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -16,11 +18,21 @@ class CarTest {
         assertThat(car.getDistance()).isEqualTo(inputDistance);
     }
 
-    @ParameterizedTest(name = "자동차를 음수만큼 움직이면 에러가 발생한다. 움직인 값: {0}")
-    @ValueSource(ints = {-1, -2, -3})
-    void sholdThrowRuntimeExceptionWhenNegativeDistanceIsGiven(int inputDistance) {
+    @ParameterizedTest(name = "자동차를 음수만큼 움직이면 예외가 발생한다. 움직인 값: {0}")
+    @CsvSource({
+            "-1, true",
+            "0, false",
+            "1, false"
+    })
+    void sholdThrowRuntimeExceptionWhenNegativeDistanceIsGiven(int inputDistance, boolean shouldThrow) {
         Car car = new Car();
-        assertThatThrownBy(() -> car.move(inputDistance))
-                .isInstanceOf(RuntimeException.class);
+
+        if (shouldThrow) {
+            assertThatThrownBy(() -> car.move(inputDistance))
+                    .isInstanceOf(RuntimeException.class);
+        } else {
+            assertThatCode(() -> car.move(inputDistance))
+                    .doesNotThrowAnyException();
+        }
     }
 }
