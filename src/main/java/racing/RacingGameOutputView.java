@@ -16,7 +16,7 @@ public class RacingGameOutputView {
         System.out.println();
     }
 
-    public static void printCarPosition(Car car) {
+    private static void printCarPosition(Car car) {
         int position = car.getPosition();
         System.out.println(convertIntegerToSymbol(position, DASH));
     }
