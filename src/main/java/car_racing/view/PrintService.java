@@ -3,13 +3,13 @@ package car_racing.view;
 import car_racing.domain.model.Car;
 import car_racing.domain.model.Cars;
 
-public class CarPrinter {
+public class PrintService {
     public static void showRaceStart() {
         System.out.println("\n실행 결과");
     }
 
     public static void showRaceResult(Cars cars) {
-        cars.forEach(CarPrinter::showEachRaceResult);
+        cars.forEach(PrintService::showEachRaceResult);
         System.out.println();
     }
 

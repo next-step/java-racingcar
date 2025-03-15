@@ -4,7 +4,7 @@ import car_racing.view.model.UserInput;
 
 import java.util.Scanner;
 
-public class UserInputProcessor {
+public class UserInputService {
     private static final Scanner scanner = new Scanner(System.in);
 
     public UserInput getUserInput() {
