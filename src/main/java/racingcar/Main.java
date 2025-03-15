@@ -9,7 +9,8 @@ public class Main {
         int carCount = inputView.inputCarCount();
         int tryCount = inputView.inputTryCount();
         List<Car> cars = GenerateCarUtils.generateCars(carCount);
-        RacingCarService racingCarService = new RacingCarService(cars, tryCount);
-        List<Car> process = racingCarService.process();
+        ResultView resultView = new ResultView();
+        RacingCarService racingCarService = new RacingCarService(cars, tryCount, resultView);
+        racingCarService.process();
     }
 }

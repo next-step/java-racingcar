@@ -18,7 +18,7 @@ class RacingCarServiceTest {
                 new CarForTest(true)
         );
         int tryCount = 3;
-        new RacingCarService(carsForTest, tryCount).process();
+        new RacingCarService(carsForTest, tryCount, new ResultView()).process();
         Assertions.assertThat(carsForTest).allMatch(car -> car.getPosition() == tryCount);
     }
 
