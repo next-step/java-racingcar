@@ -8,7 +8,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CarTest {
 
-  @DisplayName("차를 이동시키고 위치에 따른 콘솔 출력 형태의 스트링을 요구하면 반환한다.")
+  @DisplayName("차를 이동시키고 위치에 따른 콘솔 출력 형태의 문자열을 요구하면 반환한다.")
   @ParameterizedTest
   @CsvSource(value = {
       "0:''",

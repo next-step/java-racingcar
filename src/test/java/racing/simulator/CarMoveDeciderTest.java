@@ -13,7 +13,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 
 class CarMoveDeciderTest {
 
-  @DisplayName("canMove() 함수를 호출 시 3 이하 random 수로 뽑힐시 false를 반환한다.")
+  @DisplayName("움직일지 판단 할 시 3 이하 random 수로 뽑힐시 false를 반환한다.")
   @ParameterizedTest
   @ValueSource(ints = {0, 1, 2, 3})
   void canMove_returnFalse(int randomNum) {
@@ -24,7 +24,7 @@ class CarMoveDeciderTest {
     assertFalse(new CarMoveDecider(mockRandom).canMove());
   }
 
-  @DisplayName("canMove() 함수를 호출 시 4 이상 random 수로 뽑힐시 true를 반환한다.")
+  @DisplayName("움직일지 판단 할 시 4 이상 random 수로 뽑힐시 true를 반환한다.")
   @ParameterizedTest
   @ValueSource(ints = {4, 5, 6, 7, 8, 9})
   void canMove_returnTrue(int randomNum) {
