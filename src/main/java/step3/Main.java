@@ -1,6 +1,7 @@
 package step3;
 
 
+import step3.random.DefaultRandomStrategy;
 import step3.util.InputView;
 
 public class Main {
@@ -9,5 +10,8 @@ public class Main {
     public static void main(String[] args) {
         int carCount = InputView.inputInt(CAR_COUNT_MESSAGE);
         int moveCount = InputView.inputInt(MOVE_COUNT_MESSAGE);
+        RacingGame game = new RacingGame(carCount, moveCount, new DefaultRandomStrategy());
+        System.out.print("\n실행 결과");
+        System.out.println(game.start());
     }
 }
