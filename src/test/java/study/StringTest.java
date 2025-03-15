@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -35,7 +36,7 @@ public class StringTest {
     int targetIdx = 0;
 
     Random random = new Random();
-    while(targetIdx <= 2) {
+    while (targetIdx <= 2) {
       targetIdx = random.nextInt(Integer.MAX_VALUE) + 1;
     }
 

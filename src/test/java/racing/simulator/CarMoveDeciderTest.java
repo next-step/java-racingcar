@@ -26,7 +26,7 @@ class CarMoveDeciderTest {
 
   @DisplayName("canMove() 함수를 호출 시 4 이상 random 수로 뽑힐시 true를 반환한다.")
   @ParameterizedTest
-  @ValueSource(ints = {4, 5, 6, 7, 8 ,9})
+  @ValueSource(ints = {4, 5, 6, 7, 8, 9})
   void canMove_returnTrue(int randomNum) {
     Random mockRandom = Mockito.mock(Random.class);
 

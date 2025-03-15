@@ -12,7 +12,6 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import static org.mockito.ArgumentMatchers.anyInt;
 
 class CarRacingGameSimulatorTest {
@@ -31,14 +30,14 @@ class CarRacingGameSimulatorTest {
   @ParameterizedTest
   @ValueSource(ints = {0, 1, -1})
   void isNotValidCarCount_notPositiveNumberCarCount_returnTrue(int carCount) {
-    assertThrows(RuntimeException.class,() -> CarRacingGameSimulator.checkNotValidCarCount(carCount));
+    assertThrows(RuntimeException.class, () -> CarRacingGameSimulator.checkNotValidCarCount(carCount));
   }
 
   @DisplayName("시뮬레이션 수 값이 0 또는 음수일 때 검증 로직을 호출하면 RuntimeException을 던진다.")
   @ParameterizedTest
   @ValueSource(ints = {0, -1})
   void isNotSimulateCount_notPositiveNumberSimulationCount_returnTrue(int simulateCount) {
-    assertThrows(RuntimeException.class,() -> CarRacingGameSimulator.checkNotValidSimulateCount(simulateCount));
+    assertThrows(RuntimeException.class, () -> CarRacingGameSimulator.checkNotValidSimulateCount(simulateCount));
   }
 
 
@@ -75,7 +74,7 @@ class CarRacingGameSimulatorTest {
     int carCount = 3;
     CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, Mockito.mock(CarMoveDecider.class));
 
-    Car[] firstCopiedCars= simulator.copyCars();
+    Car[] firstCopiedCars = simulator.copyCars();
     Car[] secondCopiedCars = simulator.copyCars();
 
     assertAll(

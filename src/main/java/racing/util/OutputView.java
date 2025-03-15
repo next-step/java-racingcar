@@ -9,7 +9,7 @@ public class OutputView {
   }
 
   public static void showCarLocation(Car[] cars) {
-    for (Car car: cars) {
+    for (Car car : cars) {
       System.out.println(car.getLocationConsoleFormat());
     }
   }

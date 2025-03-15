@@ -1,7 +1,7 @@
 package calculator;
 
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DelimitedStringCalculator {
 
@@ -35,7 +35,7 @@ public class DelimitedStringCalculator {
   private static boolean hasCustomDelimiter(String input) {
     Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
 
-    return  matcher.matches();
+    return matcher.matches();
   }
 
   private static int sumNonNegativeNumberWithCustomDelimiter(String input) {
@@ -56,9 +56,9 @@ public class DelimitedStringCalculator {
     }
 
     throw new IllegalArgumentException(String.format(
-            "커스텀 구분자가 들어가있는 문자열 형태가 아닙니다. - %s",
-            input
-        ));
+        "커스텀 구분자가 들어가있는 문자열 형태가 아닙니다. - %s",
+        input
+    ));
   }
 
   private static boolean hasDefaultDelimiter(String input) {
@@ -109,7 +109,7 @@ public class DelimitedStringCalculator {
 
   private static int convertStringToNumber(String value) {
     try {
-       return Integer.parseInt(value);
+      return Integer.parseInt(value);
     } catch (NumberFormatException e) {
       throw new IllegalArgumentException(String.format(
           "유효하지 않는 숫자 형식의 문자가 문자열에 있습니다. - %s ",

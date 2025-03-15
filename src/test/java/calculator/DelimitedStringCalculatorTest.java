@@ -20,7 +20,7 @@ public class DelimitedStringCalculatorTest {
 
   @DisplayName("null이 주어졌을 때 sum()을 호출하면 0을 반환한다.")
   @Test
-  void sum_null_returnZero(){
+  void sum_null_returnZero() {
     String input = null;
 
     int result = DelimitedStringCalculator.sum(input);

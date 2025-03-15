@@ -5,7 +5,7 @@ import java.util.Random;
 public class CarMoveDecider {
 
   private final Random random;
-  private static final int MOVE_THRESHOLD= 4;
+  private static final int MOVE_THRESHOLD = 4;
   private static final int RANDOM_RANGE_LIMIT = 10;
 
   public CarMoveDecider(Random random) {
