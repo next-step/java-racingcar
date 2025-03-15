@@ -1,5 +1,5 @@
 package step3;
 
-public interface Moving {
+public interface MovingStrategy {
     boolean canMove();
 }

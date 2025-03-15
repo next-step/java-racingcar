@@ -7,8 +7,8 @@ public class Car {
         this.position = 0;
     }
 
-    public void move(Moving moving) {
-        if (moving.canMove()) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.canMove()) {
             position++;
         }
     }

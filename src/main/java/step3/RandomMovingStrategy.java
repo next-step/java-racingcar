@@ -2,7 +2,7 @@ package step3;
 
 import java.util.Random;
 
-public class RandomMoving implements Moving {
+public class RandomMovingStrategy implements MovingStrategy {
     public static final int BOUND = 10;
     private final Random random = new Random();
 
