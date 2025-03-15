@@ -15,11 +15,10 @@ class CarTest {
       "2:--",
       "7:-------",
   }, delimiter = ':')
-  void getLocationConsoleFormat_returnsConsolePrintFormat(String goCount, String consoleOutput) {
+  void getLocationConsoleFormat_returnsConsolePrintFormat(int goCount, String consoleOutput) {
     Car car = new Car();
-    int goCountNum = Integer.parseInt(goCount);
 
-    for (int i = 0; i < goCountNum; i++) {
+    for (int i = 0; i < goCount; i++) {
       car.go();
     }
 

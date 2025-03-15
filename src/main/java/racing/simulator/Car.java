@@ -7,6 +7,10 @@ class Car {
     this.location = 0;
   }
 
+  Car(Car car) {
+    this.location = car.location;
+  }
+
   void go() {
     this.location += 1;
   }
