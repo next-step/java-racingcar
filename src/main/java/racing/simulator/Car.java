@@ -1,6 +1,6 @@
 package racing.simulator;
 
-class Car {
+public class Car {
   private int location;
 
   Car() {
@@ -15,7 +15,7 @@ class Car {
     this.location += 1;
   }
 
-  String getLocationConsoleFormat() {
+  public String getLocationConsoleFormat() {
     return "-".repeat(Math.max(0, location));
   }
 

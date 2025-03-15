@@ -2,7 +2,7 @@ package racing.simulator;
 
 import java.util.Random;
 
-class CarMoveDecider {
+public class CarMoveDecider {
 
   private final Random random;
   private static final int MOVE_THRESHOLD= 4;

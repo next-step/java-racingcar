@@ -1,6 +1,7 @@
 package racing.simulator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -18,118 +19,103 @@ class CarRacingGameSimulatorTest {
 
   @DisplayName("자동차 수 값이 1, 0, 음수일 때 CarRacingGameSimulator 생성자를 호출하면 RuntimeException을 던진다.")
   @ParameterizedTest
-  @CsvSource(value = {
-      "-1:1",
-      "0:1",
-      "1:1"
-  }, delimiter = ':')
-  void constructor_notPositiveNumberCarCount_throwsRuntimeException(String carCount, String simulateCount) {
+  @ValueSource(ints = {0, 1, -1})
+  void constructor_notPositiveNumberCarCount_throwsRuntimeException(int carCount) {
     assertThrows(RuntimeException.class, () -> new CarRacingGameSimulator(
-        Integer.parseInt(carCount),
-        Integer.parseInt(simulateCount),
+        carCount,
         Mockito.mock(CarMoveDecider.class))
     );
   }
 
-  @DisplayName("자동차 수 값이 1, 0, 음수일 때 검증 로직을 호출하면 true를 반환한다.")
+  @DisplayName("자동차 수 값이 1, 0, 음수일 때 검증 로직을 호출하면 RuntimeException을 던진다.")
   @ParameterizedTest
   @ValueSource(ints = {0, 1, -1})
   void isNotValidCarCount_notPositiveNumberCarCount_returnTrue(int carCount) {
-    assertThat(CarRacingGameSimulator.isNotValidCarCount(carCount)).isEqualTo(true);
+    assertThrows(RuntimeException.class,() -> CarRacingGameSimulator.checkNotValidCarCount(carCount));
   }
 
-  @DisplayName("자동차 수 값이 1, 0, 음수 이외 값이 왔을 때 검증 로직을 호출하면 true를 반환한다.")
-  @ParameterizedTest
-  @ValueSource(ints = {2, 3, 5, 10})
-  void isNotValidCarCount_notPositiveNumberCarCount_returnFalse(int carCount) {
-    assertThat(CarRacingGameSimulator.isNotValidCarCount(carCount)).isEqualTo(false);
-  }
-
-  @DisplayName("시뮬레이션 수 값이 0 또는 음수일 때 CarRacingGameSimulator 생성자를 RuntimeException을 던진다.")
-  @ParameterizedTest
-  @CsvSource(value = {
-      "2:0",
-      "2:-1"
-  }, delimiter = ':')
-  void constructor_notPositiveNumberSimulationCount_throwsRuntimeException(String carCount, String simulateCount) {
-    assertThrows(RuntimeException.class, () -> new CarRacingGameSimulator(
-        Integer.parseInt(carCount),
-        Integer.parseInt(simulateCount),
-        Mockito.mock(CarMoveDecider.class))
-    );
-  }
-
-  @DisplayName("시뮬레이션 수 값이 0 또는 음수일 때 검증 로직을 호출하면 true를 반환한다.")
+  @DisplayName("시뮬레이션 수 값이 0 또는 음수일 때 검증 로직을 호출하면 RuntimeException을 던진다.")
   @ParameterizedTest
   @ValueSource(ints = {0, -1})
   void isNotSimulateCount_notPositiveNumberSimulationCount_returnTrue(int simulateCount) {
-    assertThat(CarRacingGameSimulator.isNotValidSimulateCount(simulateCount)).isEqualTo(true);
-  }
-
-  @DisplayName("시뮬레이션 수 값이 0, 음수가 아닐 때 검증 로직을 호출하면 false를 반환한다.")
-  @ParameterizedTest
-  @ValueSource(ints = {1, 2, 3, 5, 10})
-  void isNotSimulateCount_notPositiveNumberSimulationCount_returnFalse(int simulateCount) {
-    assertThat(CarRacingGameSimulator.isNotValidSimulateCount(simulateCount)).isEqualTo(false);
+    assertThrows(RuntimeException.class,() -> CarRacingGameSimulator.checkNotValidSimulateCount(simulateCount));
   }
 
 
-  @DisplayName("시물레이션을 수행하면 시뮬레이션 결과를 반환한다.")
+  @DisplayName("차들을 move 하려고 시도하면 랜덤 값에 따라 움직이거나 움직이지 않는다.")
   @ParameterizedTest
   @CsvSource(value = {
-      "3:2:0:''",
-      "3:2:1:''",
-      "3:1:2:''",
-      "3:2:3:''",
-      "3:2:4:--",
-      "3:4:5:----",
-      "3:2:6:--",
-      "3:5:7:-----",
-      "3:2:8:--",
-      "3:2:9:--"
+      "3:0:''",
+      "3:1:''",
+      "3:2:''",
+      "3:3:''",
+      "3:4:-",
+      "3:5:-",
+      "3:6:-",
+      "3:7:-",
+      "3:8:-",
+      "3:9:-"
   }, delimiter = ':')
-  void simulate_returnSimulateResult(int carCount, int simulateCount, int randomNum, String consoleOutput) {
+  void tryMove_carMoveOrStayBasedOnRandomValue(int carCount, int randomNum, String consoleOutput) {
     Random mockRandom = Mockito.mock(Random.class);
     Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, simulateCount,  new CarMoveDecider(mockRandom));
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new CarMoveDecider(mockRandom));
 
-    Car[] result = simulator.simulate();
+    simulator.tryMoveCars();
+    Car[] result = simulator.copyCars();
+
+    assertThat(result)
+        .extracting(Car::getLocationConsoleFormat)
+        .containsOnly(consoleOutput);
+  }
+
+  @DisplayName("차들을 copy 하면 자동차 배열의 깊은 복사를 반환한다.")
+  @Test
+  void copyCars_ShouldReturnDeepCopiedCarArray() {
+    int carCount = 3;
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, Mockito.mock(CarMoveDecider.class));
+
+    Car[] firstCopiedCars= simulator.copyCars();
+    Car[] secondCopiedCars = simulator.copyCars();
 
     assertAll(
-        () -> assertThat(result.length).isEqualTo(carCount),
-        () -> assertThat(result)
-            .extracting(Car::getLocationConsoleFormat)
-            .containsOnly(consoleOutput)
+        () -> assertThat(firstCopiedCars).hasSize(carCount),
+        () -> assertThat(secondCopiedCars).hasSize(carCount),
+        () -> {
+          for (int i = 0; i < carCount; i++) {
+            assert firstCopiedCars != null;
+            assert secondCopiedCars != null;
+            assertThat(firstCopiedCars[i]).isNotSameAs(secondCopiedCars[i]);
+          }
+        }
     );
   }
 
-  @DisplayName("시물레이션을 여러번 수행하면 새롭게 세팅되어 시뮬레이션을 수행해 결과를 반환한다.")
+  @DisplayName("차들을 reset 하면 차의 위치가 0이 된다.")
   @ParameterizedTest
   @CsvSource(value = {
-      "3:2:0:''",
-      "3:2:1:''",
-      "3:1:2:''",
-      "3:2:3:''",
-      "3:2:4:--",
-      "3:4:5:----",
-      "3:2:6:--",
-      "3:5:7:-----",
-      "3:2:8:--",
-      "3:2:9:--"
+      "3:0",
+      "3:1",
+      "3:2",
+      "3:3",
+      "3:4",
+      "3:5",
+      "3:6",
+      "3:7",
+      "3:8",
+      "3:9"
   }, delimiter = ':')
-  void simulateMultipleTimes_returnsNewSimulationResult(int carCount, int simulateCount, int randomNum, String consoleOutput) {
+  void reset_shouldSetCarPositionToZero(int carCount, int randomNum) {
     Random mockRandom = Mockito.mock(Random.class);
     Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, simulateCount,  new CarMoveDecider(mockRandom));
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new CarMoveDecider(mockRandom));
 
-    simulator.simulate();
-    Car[] result = simulator.simulate();
+    simulator.tryMoveCars();
+    simulator.resetCars();
+    Car[] result = simulator.copyCars();
 
-    assertAll(
-        () -> assertThat(result.length).isEqualTo(carCount),
-        () -> assertThat(result)
-            .extracting(Car::getLocationConsoleFormat)
-            .containsOnly(consoleOutput)
-    );
+    assertThat(result)
+        .extracting(Car::getLocationConsoleFormat)
+        .containsOnly("");
   }
 }
