@@ -24,14 +24,14 @@ public class SetTest {
     @Test
     @DisplayName("numbers의 크기는 3와 같다.")
     public void size(){
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("1,2,3의 값이 set에 존재한다.")
     public void contains(int number){
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
