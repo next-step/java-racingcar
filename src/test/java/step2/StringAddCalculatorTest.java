@@ -73,16 +73,10 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("쉼표 또는 콜론 또는 커스텀 구분자로 숫자의 합을 반환한다.")
-    public void calcalate_comaOrColonOrcustomDelimiterTest() {
-        int result = StringAddCalculator.calculate("//?\n1?2:3,4");
-        assertThat(result).isEqualTo(10);
-    }
-
-    @Test
-    @DisplayName("쉼표 또는 콜론 또는 커스텀 구분자가 아닌 구분자가 들어갈 경우, RuntimeException 예외를 throw 한다.")
+    @DisplayName("커스텀 구분자가 아닌 구분자가 들어갈 경우, RuntimeException 예외를 throw 한다.")
     public void calcalate_elseDelimiterTest() {
         assertThatThrownBy(() -> StringAddCalculator.calculate("//?\n1?2:3,4;5"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("숫자가 아닌 값이 포함되어 있습니다. 입력값: 2:3,4;5");
     }
 }
