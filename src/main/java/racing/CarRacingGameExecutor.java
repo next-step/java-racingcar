@@ -2,6 +2,7 @@ package racing;
 
 import racing.simulator.CarMoveDecider;
 import racing.simulator.CarRacingGameSimulator;
+import racing.util.InputValidator;
 import racing.util.InputView;
 import racing.util.OutputView;
 
@@ -20,13 +21,13 @@ public class CarRacingGameExecutor {
 
   private static int getCarCount() {
     int carCount = InputView.showCarCountInput();
-    CarRacingGameSimulator.checkNotValidCarCount(carCount);
+    InputValidator.checkNotValidCarCount(carCount);
     return carCount;
   }
 
   private static int getSimulateCount() {
     int simulateCount = InputView.showSimulateCountInput();
-    CarRacingGameSimulator.checkNotValidSimulateCount(simulateCount);
+    InputValidator.checkNotValidSimulateCount(simulateCount);
     return simulateCount;
   }
 
