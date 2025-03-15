@@ -18,7 +18,7 @@ public class RacingCarGameTest {
     void inputCarNumbers() {
         String input = "3";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        String output = RacingCarGame.inputUsers();
+        String output = RacingCarGame.inputCarCount();
 
         assertThat(output).isEqualTo(input);
     }
@@ -28,7 +28,7 @@ public class RacingCarGameTest {
     void inputMovement() {
         String input = "5";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        String output = RacingCarGame.inputMovements();
+        String output = RacingCarGame.inputTryCount();
         assertThat(output).isEqualTo(input);
     }
 
