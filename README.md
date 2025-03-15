@@ -20,10 +20,9 @@
   UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
 
 ## TO DO
-- RandomMovingStrategy
-  - 랜덤으로 움직일지 말지 결과를 반환한다.
 - Game
   - 몇 대의 자동차로 몇 번의 이동을 할 것인지를 받아서 작업을 수행한다.
+  - 
 - InputView
 - ResultView
 
@@ -31,3 +30,5 @@
 - Car
     - 자동차는 각 턴 마다 랜덤으로 1칸을 전진하거나 움직이지 않는다.
     - 움직일지 말지를 외부에서 받아서 결정하도록 한다.
+- RandomMovingStrategy
+    - 랜덤으로 움직일지 말지 결과를 반환한다.
