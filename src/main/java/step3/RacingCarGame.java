@@ -25,4 +25,8 @@ public class RacingCarGame {
     public static Integer getRandomValue() {
         return RANDOM.nextInt(10);
     }
+
+    public static Boolean isMove(int randomNumber) {
+        return randomNumber >= 4;
+    }
 }

@@ -3,6 +3,8 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
@@ -59,5 +61,15 @@ public class RaceTest {
         );
     }
 
-
+    @ParameterizedTest
+    @ValueSource(ints = {3, 4, 5, 6})
+    @DisplayName("자동차 경주 게임은 선택된 값이 4이상일 경우 전진한다.")
+    void isMove(int number) {
+        Boolean move = RacingCarGame.isMove(number);
+        if (number < 4) {
+            assertThat(move).isFalse();
+            return;
+        }
+        assertThat(move).isTrue();
+    }
 }
