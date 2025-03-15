@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class StringAddCalculator {
 
@@ -17,11 +19,9 @@ public class StringAddCalculator {
   }
 
   private static int sum(String[] values) {
-    int result = 0;
-    for (String value : values) {
-      result += parseInt(value);
-    }
-    return result;
+    return Arrays.stream(values)
+        .mapToInt(StringAddCalculator::parseInt)
+        .reduce(0, Integer::sum);
   }
 
   private static Integer parseInt(String value) throws RuntimeException {
