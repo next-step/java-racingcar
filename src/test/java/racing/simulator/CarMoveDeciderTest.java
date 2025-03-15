@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarMoveDeciderTest {
 
-  @DisplayName("canMove() 함수를 호출 시 4 이하 random한 수로 뽑힐시 false를 반환한다.")
+  @DisplayName("canMove() 함수를 호출 시 3 이하 random한 수로 뽑힐시 false를 반환한다.")
   @ParameterizedTest
-  @ValueSource(ints = {0, 1, 2, 3 ,4})
+  @ValueSource(ints = {0, 1, 2, 3})
   void canMove_returnFalse(int randomNum) {
     Random mockRandom = Mockito.mock(Random.class);
 
@@ -22,9 +22,9 @@ class CarMoveDeciderTest {
     assertFalse(new CarMoveDecider(mockRandom).canMove());
   }
 
-  @DisplayName("canMove() 함수를 호출 시 5 이상 random한 수로 뽑힐시 true를 반환한다.")
+  @DisplayName("canMove() 함수를 호출 시 4 이상 random한 수로 뽑힐시 true를 반환한다.")
   @ParameterizedTest
-  @ValueSource(ints = {5, 6, 7, 8 ,9})
+  @ValueSource(ints = {4, 5, 6, 7, 8 ,9})
   void canMove_returnTrue(int randomNum) {
     Random mockRandom = Mockito.mock(Random.class);
 
