@@ -1,18 +1,42 @@
 package racing;
 
+import racing.simulator.CarMoveDecider;
 import racing.simulator.CarRacingGameSimulator;
+import racing.util.InputView;
+import racing.util.OutputView;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class CarRacingGameExecutor {
 
-  CarRacingGameSimulator carRacingGameSimulator;
-
   public static void main(String[] args) {
-    // TODO console input 구현
+    int carCount = getCarCount();
+    int simulateCount = getSimulateCount();
 
-    // TODO simulator 작동
+    OutputView.showWhitespace();
+    OutputView.showExecutionResultText();
+    execute(carCount, simulateCount);
+  }
 
-    // TODO console output 구현
+  private static int getCarCount() {
+    int carCount = InputView.showCarCountInput();
+    CarRacingGameSimulator.checkNotValidCarCount(carCount);
+    return carCount;
+  }
+
+  private static int getSimulateCount() {
+    int simulateCount = InputView.showSimulateCountInput();
+    CarRacingGameSimulator.checkNotValidSimulateCount(simulateCount);
+    return simulateCount;
+  }
+
+  private static void execute(int carCount, int simulateCount) {
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new CarMoveDecider(new Random()));
+    for (int i = 0; i < simulateCount; i++) {
+      simulator.tryMoveCars();
+      OutputView.showCarLocation(simulator.copyCars());
+      OutputView.showWhitespace();
+    }
+    simulator.resetCars();
   }
 }
