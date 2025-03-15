@@ -1,4 +1,4 @@
-package racing;
+package racing.entity;
 
 public class Car {
     private int position = 1;

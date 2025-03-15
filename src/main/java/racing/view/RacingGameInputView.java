@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.message.GameMessage;
 
 import java.util.Scanner;
 

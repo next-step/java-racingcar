@@ -1,4 +1,7 @@
-package racing;
+package racing.view;
+
+import racing.entity.Car;
+import racing.message.GameMessage;
 
 import java.util.List;
 

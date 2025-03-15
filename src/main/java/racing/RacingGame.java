@@ -1,5 +1,10 @@
 package racing;
 
+import racing.entity.Car;
+import racing.message.GameMessage;
+import racing.view.RacingGameInputView;
+import racing.view.RacingGameOutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

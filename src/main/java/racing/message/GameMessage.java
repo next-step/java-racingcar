@@ -1,4 +1,4 @@
-package racing;
+package racing.message;
 
 public enum GameMessage {
     CAR_COUNT_MESSAGE("자동차 대수는 몇 대 인가요?"),
