@@ -7,28 +7,30 @@ import org.mockito.Mockito;
 
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyInt;
 
 class CarMoveDeciderTest {
 
-  @DisplayName("canMove() 함수를 호출 시 3 이하 random한 수로 뽑힐시 false를 반환한다.")
+  @DisplayName("canMove() 함수를 호출 시 3 이하 random 수로 뽑힐시 false를 반환한다.")
   @ParameterizedTest
   @ValueSource(ints = {0, 1, 2, 3})
   void canMove_returnFalse(int randomNum) {
     Random mockRandom = Mockito.mock(Random.class);
 
-    Mockito.when(mockRandom.nextInt(10)).thenReturn(randomNum);
+    Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
 
     assertFalse(new CarMoveDecider(mockRandom).canMove());
   }
 
-  @DisplayName("canMove() 함수를 호출 시 4 이상 random한 수로 뽑힐시 true를 반환한다.")
+  @DisplayName("canMove() 함수를 호출 시 4 이상 random 수로 뽑힐시 true를 반환한다.")
   @ParameterizedTest
   @ValueSource(ints = {4, 5, 6, 7, 8 ,9})
   void canMove_returnTrue(int randomNum) {
     Random mockRandom = Mockito.mock(Random.class);
 
-    Mockito.when(mockRandom.nextInt(10)).thenReturn(randomNum);
+    Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
 
     assertTrue(new CarMoveDecider(mockRandom).canMove());
   }

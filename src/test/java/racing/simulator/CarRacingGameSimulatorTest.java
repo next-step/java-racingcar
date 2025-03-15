@@ -8,7 +8,10 @@ import org.mockito.Mockito;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.mockito.ArgumentMatchers.anyInt;
 
 class CarRacingGameSimulatorTest {
 
@@ -57,12 +60,12 @@ class CarRacingGameSimulatorTest {
   }, delimiter = ':')
   void simulate_returnSimulateResult(int carCount, int simulateCount, int randomNum, String consoleOutput) {
     Random mockRandom = Mockito.mock(Random.class);
-    Mockito.when(mockRandom.nextInt(10)).thenReturn(randomNum);
+    Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
     CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, simulateCount,  new CarMoveDecider(mockRandom));
 
     Car[] result = simulator.simulate();
 
-    assertAll (
+    assertAll(
         () -> assertThat(result.length).isEqualTo(carCount),
         () -> assertThat(result)
             .extracting(Car::getLocationConsoleFormat)
@@ -86,13 +89,13 @@ class CarRacingGameSimulatorTest {
   }, delimiter = ':')
   void simulateMultipleTimes_returnsNewSimulationResult(int carCount, int simulateCount, int randomNum, String consoleOutput) {
     Random mockRandom = Mockito.mock(Random.class);
-    Mockito.when(mockRandom.nextInt(10)).thenReturn(randomNum);
+    Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
     CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, simulateCount,  new CarMoveDecider(mockRandom));
 
     simulator.simulate();
     Car[] result = simulator.simulate();
 
-    assertAll (
+    assertAll(
         () -> assertThat(result.length).isEqualTo(carCount),
         () -> assertThat(result)
             .extracting(Car::getLocationConsoleFormat)
