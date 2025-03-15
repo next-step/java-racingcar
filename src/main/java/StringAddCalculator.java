@@ -19,15 +19,24 @@ public class StringAddCalculator {
   private static int sum(String[] values) {
     int result = 0;
     for (String value : values) {
-      result += validateAndTransform(value);
+      result += parseInt(value);
     }
     return result;
   }
 
-  private static Integer validateAndTransform(String value) throws RuntimeException {
-    if (!Character.isDigit(value.charAt(0))) {
+  private static Integer parseInt(String value) throws RuntimeException {
+    var transformedValue = 0;
+
+    try {
+       transformedValue = Integer.parseInt(value);
+    } catch (NumberFormatException e) {
       throw new RuntimeException();
     }
-    return Integer.parseInt(value);
+
+    if (transformedValue < 0) {
+      throw new RuntimeException();
+    }
+
+    return transformedValue;
   }
 }
