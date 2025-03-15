@@ -2,7 +2,7 @@ package study;
 
 public class StringCalculator {
 
-    public static final String DELIMETER = ",";
+    public static final String DELIMETER = ",|:";
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {

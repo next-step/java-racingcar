@@ -26,4 +26,10 @@ public class StringCalculatorTest {
         int numbersWithCommaResult = StringCalculator.splitAndSum("1,2");
         assertThat(numbersWithCommaResult).isEqualTo(3);
     }
+
+    @Test
+    void 여러_숫자_콤마_콜론() {
+        int numbersWithCommaResult = StringCalculator.splitAndSum("1,2:3");
+        assertThat(numbersWithCommaResult).isEqualTo(6);
+    }
 }
