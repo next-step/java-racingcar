@@ -9,7 +9,7 @@ public class DelimitedStringCalculator {
   private static final String DEFAULT_DELIMITER_REGEX = "^[0-9,:]+$";
 
   private DelimitedStringCalculator() {
-
+    throw new UnsupportedOperationException("DelimitedStringCalculator 클래스는 생성자를 지원하지 않습니다.");
   }
 
   public static int sum(String input) {
