@@ -17,9 +17,13 @@ public class CarRacingGameSimulator {
 
   public void tryMoveCars() {
     for (Car car : cars) {
-      if (this.carMoveDecider.canMove()) {
-        car.go();
-      }
+      tryMoveCar(car);
+    }
+  }
+
+  void tryMoveCar(Car car) {
+    if (this.carMoveDecider.canMove()) {
+      car.go();
     }
   }
 
