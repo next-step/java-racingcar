@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class CarRacing {
-    private static final String QUESTION_HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
-    private static final String QUESTION_HOW_MANY_TRIES = "시도할 회수는 몇 회 인가요?";
-    private static final String RESULT_MESSAGE = "실행 결과";
+import static edu.nextstep.camp.racingcar.step3.InputView.getCarCount;
+import static edu.nextstep.camp.racingcar.step3.InputView.getTryCount;
 
+public class CarRacing {
     private static final Random random = new Random();
 
     private CarRacing() {
@@ -22,24 +21,14 @@ public class CarRacing {
         int tryCount = getTryCount(scanner);
 
         process(carCount, tryCount);
-    }
 
-    protected static int getCarCount(Scanner scanner) {
-        System.out.println(QUESTION_HOW_MANY_CARS);
-        return scanner.nextInt();
-    }
-
-    protected static int getTryCount(Scanner scanner) {
-        System.out.println(QUESTION_HOW_MANY_TRIES);
-        return scanner.nextInt();
+        ResultView.printResult(List.of("---", "-", "--"));
     }
 
     private static void process(int carCount, int tryCount) {
-        System.out.println(RESULT_MESSAGE);
         List<String> cars = initializeList(carCount);
         for (int i = 0; i < tryCount; i++) {
             moveCars(cars, carCount);
-            print(cars);
         }
     }
 
@@ -66,12 +55,5 @@ public class CarRacing {
 
     private static int getRandomNumber() {
         return random.nextInt(10);
-    }
-
-    private static void print(List<String> cars) {
-        for (String car : cars) {
-            System.out.println(car);
-        }
-        System.out.println();
     }
 }
