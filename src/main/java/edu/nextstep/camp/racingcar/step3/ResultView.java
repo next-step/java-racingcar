@@ -9,10 +9,13 @@ public class ResultView {
         throw new IllegalStateException("인스턴스 생성이 불가능한 클래스입니다.");
     }
 
-    public static void printResult(List<String> cars) {
+    public static void printResultMessage() {
         System.out.println(RESULT_MESSAGE);
-        for (String car : cars) {
-            System.out.println(car);
+    }
+
+    public static void printCarStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getPositionString());
         }
         System.out.println();
     }

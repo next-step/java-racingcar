@@ -8,7 +8,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ResultViewTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -19,15 +19,24 @@ class ResultViewTest {
     }
 
     @Test
-    void printResult_ShouldPrintFormattedOutput() {
+    void 자동차의_현재_위치가_잘_출력되는지_테스트() {
         // Given
-        List<String> cars = Arrays.asList("--", "-", "---");
+        List<Car> cars = Arrays.asList(new Car(2), new Car(1), new Car(3));
 
         // When
-        ResultView.printResult(cars);
+        ResultView.printCarStatus(cars);
 
         // Then
-        String expectedOutput = "실행 결과\n--\n-\n---\n\n";
-        assertEquals(expectedOutput, outputStream.toString());
+        String expectedOutput = "--\n-\n---\n\n";
+        assertThat(outputStream.toString()).isEqualTo(expectedOutput);
+    }
+
+    @Test
+    void 결과_메시지가_잘_출력되는지_테스트() {
+        // When
+        ResultView.printResultMessage();
+
+        // Then
+        assertThat(outputStream.toString()).isEqualTo("실행 결과\n");
     }
 }
