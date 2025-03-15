@@ -10,12 +10,13 @@ import java.util.Random;
 class CarTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"2:false", "3:false", "4:true", "5:true"}, delimiter = ':')
+    @CsvSource(value = {"2:0", "3:0", "4:1", "5:1"}, delimiter = ':')
     @DisplayName("숫자가 4 이상이 나오면 자동차는 움직일 수 있다")
-    void isMoveTest(int number, boolean isCarMove) {
+    void moveTest(int number, int expectedPosition) {
         Car car = new Car();
-        boolean actual = car.isMove(new RandomForTest(number));
-        Assertions.assertThat(actual).isEqualTo(isCarMove);
+        car.move(new RandomForTest(number));
+        int actualPosition = car.getPosition();
+        Assertions.assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
     private static class RandomForTest extends Random {

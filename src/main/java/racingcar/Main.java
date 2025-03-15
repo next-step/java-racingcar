@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +11,7 @@ public class Main {
         int tryCount = inputView.inputTryCount();
         List<Car> cars = new CarsGenerator().generateCars(carCount);
         ResultView resultView = new ResultView();
-        RacingGame racingGame = new RacingGame(cars, tryCount, resultView, new CarsMover());
-        racingGame.process();
+        RacingGame racingGame = new RacingGame(cars, tryCount, resultView);
+        racingGame.process(new Random());
     }
 }

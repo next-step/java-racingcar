@@ -17,11 +17,13 @@ public class Car {
         return this.position;
     }
 
-    public void move(int distance) {
-        this.position += distance;
+    public void move(Random random) {
+        if (this.isMove(random)) {
+            this.position++;
+        }
     }
 
-    public boolean isMove(Random random) {
+    private boolean isMove(Random random) {
         return this.getRandomNumber(random) >= Car.MOVE_BOUND;
     }
 
