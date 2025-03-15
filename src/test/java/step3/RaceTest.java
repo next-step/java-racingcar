@@ -1,12 +1,14 @@
 package step3;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RaceTest {
 
@@ -46,4 +48,16 @@ public class RaceTest {
         car.stop();
         assertThat(car.getDistance()).isEqualTo(0);
     }
+
+    @RepeatedTest(100)
+    @DisplayName("랜덤 값은 0-9사이의 값이 만들어진다.")
+    void makeRandom() {
+        Integer randomValue = RacingCarGame.getRandomValue();
+        assertTrue(
+                randomValue >= 0 && randomValue <= 9,
+                "랜덤 값은 0-9 사이의 값이어야 합니다."
+        );
+    }
+
+
 }
