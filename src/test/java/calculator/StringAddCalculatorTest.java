@@ -44,4 +44,10 @@ class StringAddCalculatorTest {
         assertThat(StringAddCalculator.run("1;2,3")).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정할 수 있다.")
+    void customDelimiterTest() {
+        assertThat(StringAddCalculator.run("//!\n1!2!3")).isEqualTo(6);
+    }
+
 }

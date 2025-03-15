@@ -1,6 +1,9 @@
 package calculator;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 class StringAddCalculator {
 
     private static final String DEFAULT_DELIMITERS = "[,;]";
@@ -19,6 +22,11 @@ class StringAddCalculator {
     }
 
     private static String[] split(String str) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(customDelimiter);
+        }
         return str.split(DEFAULT_DELIMITERS);
     }
 
