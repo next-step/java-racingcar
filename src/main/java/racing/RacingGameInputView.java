@@ -2,11 +2,11 @@ package racing;
 
 import java.util.Scanner;
 
-public class InputView {
+public class RacingGameInputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int getIntegerInput(String queryMessage) {
-        System.out.println(queryMessage);
+    public static int getIntegerInput(GameMessage gameMessage) {
+        System.out.println(gameMessage.getGameMessage());
         return Integer.parseInt(scanner.nextLine().trim());
     }
     public static int getCarCount() {
