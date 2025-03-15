@@ -20,4 +20,10 @@ public class StringCalculatorTest {
         int singleNumberResult = StringCalculator.splitAndSum("1");
         assertThat(singleNumberResult).isEqualTo(1);
     }
+
+    @Test
+    void 여러_숫자_콤마() {
+        int numbersWithCommaResult = StringCalculator.splitAndSum("1,2");
+        assertThat(numbersWithCommaResult).isEqualTo(3);
+    }
 }
