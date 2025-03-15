@@ -14,4 +14,10 @@ public class StringCalculatorTest {
         int emptyResult = StringCalculator.splitAndSum("");
         assertThat(emptyResult).isEqualTo(0);
     }
+
+    @Test
+    void 숫자_하나() {
+        int singleNumberResult = StringCalculator.splitAndSum("1");
+        assertThat(singleNumberResult).isEqualTo(1);
+    }
 }

@@ -7,8 +7,7 @@ public class StringCalculator {
             return 0;
         }
 
-        // default value
-        return 0;
+        return Integer.parseInt(text);
     }
 
     private static boolean isBlank(String text) {
