@@ -1,19 +1,20 @@
 package car_racing.domain.model;
 
+import car_racing.domain.strategy.CarMovingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Consumer;
 
 public class Cars {
-    private static final Random random = new Random();
-    private static final int MOVE_THRESHOLD = 4;
     private static final int DEFAULT_MOVE_DISTANCE = 1;
 
     private final List<Car> cars;
+    private final CarMovingStrategy movingStrategy;
 
-    public Cars(int numOfCars) {
+    public Cars(int numOfCars, CarMovingStrategy movingStrategy) {
         this.cars = new ArrayList<>();
+        this.movingStrategy = movingStrategy;
         for (int i = 0; i < numOfCars; i++) {
             this.cars.add(new Car());
         }
@@ -21,15 +22,11 @@ public class Cars {
 
     public void moveAll() {
         cars.forEach(car -> {
-            if (isMovable()) car.move(DEFAULT_MOVE_DISTANCE);
+            if (movingStrategy.movable()) car.move(DEFAULT_MOVE_DISTANCE);
         });
     }
 
     public void forEach(Consumer<Car> action) {
         cars.forEach(action);
-    }
-
-    private boolean isMovable() {
-        return random.nextInt() > MOVE_THRESHOLD;
     }
 }

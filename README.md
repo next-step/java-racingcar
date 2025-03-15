@@ -27,4 +27,4 @@
 피드백 반영
 - [x] CarTest: 경계값을 테스트할 수 있도록 변경하기
 - [x] 컨트롤러가 상태를 갖는게 적절한지(Cars), 다른 컨트롤러를 갖는게 맞는지(CarController) 고민
-- [ ] CarController에서 random을 제거하고 moveAll() 테스트 가능하도록 변경하기
+- [x] CarController에서 random을 제거하고 moveAll() 테스트 가능하도록 변경하기

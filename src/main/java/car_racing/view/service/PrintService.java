@@ -1,4 +1,4 @@
-package car_racing.view;
+package car_racing.view.service;
 
 import car_racing.domain.model.Car;
 import car_racing.domain.model.Cars;

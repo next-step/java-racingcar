@@ -1,12 +1,13 @@
-package car_racing.domain;
+package car_racing.domain.service;
 
+import car_racing.domain.strategy.CarMovingStrategy;
 import car_racing.domain.model.Cars;
-import car_racing.view.PrintService;
+import car_racing.view.service.PrintService;
 import car_racing.view.model.UserInput;
 
 public class RaceService {
-    public void race(UserInput userInput) {
-        Cars cars = new Cars(userInput.getNumOfCar());
+    public void race(UserInput userInput, CarMovingStrategy carMovingStrategy) {
+        Cars cars = new Cars(userInput.getNumOfCar(), carMovingStrategy);
 
         showRaceStart();
         for (int i = 0; i < userInput.getNumOfGame(); i++) {
