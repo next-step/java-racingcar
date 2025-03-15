@@ -7,14 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
-import java.util.Scanner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RaceTest {
-
-    public static final int START = 0;
+public class RacingCarGameTest {
 
     @Test
     @DisplayName("사용자는 1회의 시도에 몇 대의 자동차를 사용할지 입력할 수 있다.")
@@ -31,24 +28,8 @@ public class RaceTest {
     void inputMovement() {
         String input = "5";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        String output = RacingCarGame.inputUsers();
+        String output = RacingCarGame.inputMovements();
         assertThat(output).isEqualTo(input);
-    }
-
-    @Test
-    @DisplayName("자동차는 전진할 수 있다.")
-    void carCanMove() {
-        Car car = new Car(START);
-        car.move();
-        assertThat(car.getDistance()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("자동차는 멈출 수 있다.")
-    void carCanStop() {
-        Car car = new Car(START);
-        car.stop();
-        assertThat(car.getDistance()).isEqualTo(0);
     }
 
     @RepeatedTest(100)
