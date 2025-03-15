@@ -33,9 +33,15 @@ class StringAddCalculator {
     private static int[] parseStringToInt(String[] strs) {
         int[] ints = new int[strs.length];
         for (int i = 0; i < strs.length; i++) {
-            ints[i] = Integer.parseInt(strs[i]);
+            ints[i] = parseInt(strs[i]);
         }
         return ints;
+    }
+
+    private static int parseInt(String stringNumber) {
+        int number = Integer.parseInt(stringNumber);
+        if (number < 0) throw new RuntimeException("음수는 허용하지 않습니다.");
+        return number;
     }
 
     private static int sum(int[] numbers) {
