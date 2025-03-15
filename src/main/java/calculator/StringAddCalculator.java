@@ -2,11 +2,11 @@ package calculator;
 
 public class StringAddCalculator {
     public static int splitAndSum(String input) {
-        if(Util.isEmpty(input)) {
+        if (StringUtils.isEmpty(input)) {
             return 0;
         }
         String[] tokens = Splitter.split(input);
         int[] numbers = StringParser.toInt(tokens);
-        return Number.sum(numbers);
+        return Numbers.sum(numbers);
     }
 }

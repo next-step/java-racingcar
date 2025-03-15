@@ -2,16 +2,19 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("빈 값, null을 입력하면 0을 보낸다.")
-    public void test1(){
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    public void test1(String input){
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(0);
     }
 
     @Test
@@ -20,11 +23,11 @@ class StringAddCalculatorTest {
         assertThat(StringAddCalculator.splitAndSum("1")).isEqualTo(1);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2", "1:2"})
     @DisplayName(", :를 구분자로 숫자를 연속해서 입력하면 두 숫자의 합을 반환한다.")
-    public void test3(){
-        assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
-        assertThat(StringAddCalculator.splitAndSum("1:2")).isEqualTo(3);
+    public void test3(String input){
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(3);
     }
 
     @Test
