@@ -11,13 +11,8 @@ public class StringAddCalculator {
     }
 
     Matcher m = pattern.matcher(text);
-    if (m.find()) {
-      String customDelimiter = m.group(1);
-      String values = m.group(2);
-      return sum(values.split(customDelimiter));
-    }
 
-    return sum(text.split("[,:]"));
+    return m.find() ? sum(m.group(2).split(m.group(1))) : sum(text.split("[,:]"));
   }
 
   private static int sum(String[] values) {
