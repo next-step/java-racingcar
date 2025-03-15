@@ -4,10 +4,11 @@ import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy {
     public static final int BOUND = 10;
+    public static final int THRESHOLD = 4;
     private final Random random = new Random();
 
     @Override
     public boolean canMove() {
-        return random.nextInt(BOUND) >= 4;
+        return random.nextInt(BOUND) >= THRESHOLD;
     }
 }
