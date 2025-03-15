@@ -1,12 +1,23 @@
 package racing;
 
+import java.util.List;
+
 public class RacingGameOutputView {
     private static final String DASH = "-";
 
-    public static void printCarPosition(Car testCar) {
+    public static void printOutputHeadMessage() {
         System.out.println(GameMessage.OUTPUT_HEAD_MESSAGE.getGameMessage());
+    }
 
-        int position = testCar.getPosition();
+    public static void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            printCarPosition(car);
+        }
+        System.out.println();
+    }
+
+    public static void printCarPosition(Car car) {
+        int position = car.getPosition();
         System.out.println(convertIntegerToSymbol(position, DASH));
     }
 
