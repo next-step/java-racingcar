@@ -1,25 +1,41 @@
 package study;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
     public static final String DELIMETER = ",|:";
+    public static final String REGEX = "//(.)\n(.*)";
 
-    public static int splitAndSum(String text) {
+    public static int  splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
 
-        String[] values = text.split(DELIMETER);
-        int[] numbers = toInts(values);
+        Matcher m = Pattern.compile(REGEX).matcher(text);
 
-        return sum(numbers);
+        if (isCustomDelimeter(m)) {
+            String customDelimiter = m.group(1);
+            String[] values = m.group(2).split(customDelimiter);
+
+            return sum(values);
+        }
+
+        String[] values = text.split(DELIMETER);
+
+        return sum(values);
     }
 
-    private static int[] toInts(String[] values) {
+    private static boolean isCustomDelimeter(Matcher m) {
+        return m.find();
+    }
+
+    private static int[] toNumbers(String[] values) {
         int[] numbers = new int[values.length];
 
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = toInt(values[i]);
+            numbers[i] = toNumber(values[i]);
         }
 
         return numbers;
@@ -35,7 +51,13 @@ public class StringCalculator {
         return sum;
     }
 
-    private static int toInt(String value) {
+    private static int sum(String[] values) {
+        int[] numbers = toNumbers(values);
+
+        return sum(numbers);
+    }
+
+    private static int toNumber(String value) {
         return Integer.parseInt(value);
     }
 

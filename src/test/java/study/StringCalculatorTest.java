@@ -32,4 +32,10 @@ public class StringCalculatorTest {
         int numbersWithCommaResult = StringCalculator.splitAndSum("1,2:3");
         assertThat(numbersWithCommaResult).isEqualTo(6);
     }
+
+    @Test
+    void 커스텀_구분자() {
+        int numbersWithCommaResult = StringCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(numbersWithCommaResult).isEqualTo(6);
+    }
 }
