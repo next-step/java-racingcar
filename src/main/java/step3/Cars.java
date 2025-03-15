@@ -19,4 +19,12 @@ public class Cars {
     public void moveAll() {
         cars.forEach((Car car) -> car.move(movingStrategy));
     }
+
+    public StringBuilder status() {
+        StringBuilder result = new StringBuilder();
+        for (Car car : cars) {
+            result.append("-".repeat(car.getPosition())).append("\n");
+        }
+        return result;
+    }
 }
