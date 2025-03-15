@@ -2,24 +2,24 @@ package racingcar;
 
 import java.util.List;
 
-public class RacingCarService {
+public class RacingGame {
 
     private final List<Car> cars;
     private final int tryCount;
     private final ResultView resultView;
+    private final CarsMover carsMover;
 
-    public RacingCarService(List<Car> cars, int tryCount, ResultView resultView) {
+    public RacingGame(List<Car> cars, int tryCount, ResultView resultView, CarsMover carsMover) {
         this.cars = cars;
         this.tryCount = tryCount;
         this.resultView = resultView;
+        this.carsMover = carsMover;
     }
 
     public void process() {
         resultView.printResult();
         for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                car.move();
-            }
+            carsMover.moveCars(this.cars);
             resultView.printCars(this.cars);
         }
     }

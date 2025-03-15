@@ -3,13 +3,13 @@ package racingcar;
 import java.util.Random;
 
 public class Car {
+
     private static final int RANDOM_NUMBER_BOUND = 10;
     private static final int MOVE_BOUND = 4;
-    private final Random random;
+
     private int position;
 
-    public Car(Random random) {
-        this.random = random;
+    public Car() {
         this.position = 0;
     }
 
@@ -17,18 +17,15 @@ public class Car {
         return this.position;
     }
 
-    public void move() {
-        if (isMove()) {
-            this.position++;
-        }
+    public void move(int distance) {
+        this.position += distance;
     }
 
-    @VisibleForTesting
-    boolean isMove() {
-        return this.getRandomNumber() >= Car.MOVE_BOUND;
+    public boolean isMove(Random random) {
+        return this.getRandomNumber(random) >= Car.MOVE_BOUND;
     }
 
-    private int getRandomNumber() {
+    private int getRandomNumber(Random random) {
         return random.nextInt(Car.RANDOM_NUMBER_BOUND);
     }
 }

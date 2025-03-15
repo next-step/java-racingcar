@@ -8,9 +8,9 @@ public class Main {
         InputView inputView = new InputView(new Scanner(System.in));
         int carCount = inputView.inputCarCount();
         int tryCount = inputView.inputTryCount();
-        List<Car> cars = GenerateCarUtils.generateCars(carCount);
+        List<Car> cars = new CarsGenerator().generateCars(carCount);
         ResultView resultView = new ResultView();
-        RacingCarService racingCarService = new RacingCarService(cars, tryCount, resultView);
-        racingCarService.process();
+        RacingGame racingGame = new RacingGame(cars, tryCount, resultView, new CarsMover());
+        racingGame.process();
     }
 }

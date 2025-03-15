@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class GenerateCarUtilsTest {
+class CarsGeneratorTest {
 
     @Test
     @DisplayName("자동차 개수만큼 자동차가 생성되어야 한다.")
     void generateCars() {
         int carCount = 5;
-        List<Car> cars = GenerateCarUtils.generateCars(carCount);
+        List<Car> cars = new CarsGenerator().generateCars(carCount);
         Assertions.assertThat(cars.size()).isEqualTo(carCount);
     }
 }
