@@ -12,7 +12,14 @@ public class StringAddCalculator {
             return 0;
         }
 
-        return sum(toIntegers(splitText(text)));
+        Integer[] integers = toIntegers(splitText(text));
+        for (Integer integer : integers) {
+            if (integer < 0) {
+                throw new RuntimeException();
+            }
+        }
+
+        return sum(integers);
     }
 
     private static boolean isInvalid(String text) {
