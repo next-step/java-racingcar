@@ -10,13 +10,11 @@ public class StringAddCalculator {
       return 0;
     }
 
-    if (text.startsWith("//")) {
-      Matcher m = pattern.matcher(text);
-      if (m.find()) {
-        String customDelimiter = m.group(1);
-        String values = m.group(2);
-        return sum(values.split(customDelimiter));
-      }
+    Matcher m = pattern.matcher(text);
+    if (m.find()) {
+      String customDelimiter = m.group(1);
+      String values = m.group(2);
+      return sum(values.split(customDelimiter));
     }
 
     return sum(text.split("[,:]"));
