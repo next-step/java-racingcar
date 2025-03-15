@@ -12,11 +12,10 @@ class Car {
   }
 
   String getLocationConsoleFormat() {
-    return "";
+    return "-".repeat(Math.max(0, location));
   }
 
   void reset() {
     location = 0;
   }
-
 }
