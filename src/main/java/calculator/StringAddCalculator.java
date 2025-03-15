@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static final String CUSTOM_DELIMITER_PATTERN = "//(.)\n(.*)";
-    public static final String CUSTOM_DELIMITER_PREFIX = "//";
-    public static final String DEFAULT_DELIMITERS_REGEX = "[,:]";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String CUSTOM_DELIMITER_PREFIX = "//";
+    private static final String DEFAULT_DELIMITERS_REGEX = "[,:]";
 
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
@@ -24,17 +24,19 @@ public class StringAddCalculator {
     }
 
     private static Integer parseAndSumWithCustomDelimiter(String text) {
-        Matcher m = getCustomDelimeterAndNumbers(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] stringNumbers = m.group(2).split(customDelimiter);
+        Matcher matcher = getCustomDelimeterAndNumbers(text);
+        if (matcher.find()) {
+            int delimiterGroupIndex = 1;
+            int stringNumbersIndex = 2;
+            String customDelimiter = matcher.group(delimiterGroupIndex);
+            String[] stringNumbers = matcher.group(stringNumbersIndex).split(customDelimiter);
             return sum(stringNumbers);
         }
         throw new RuntimeException("입력을 확인해주세요.");
     }
 
     private static Matcher getCustomDelimeterAndNumbers(String text) {
-        return Pattern.compile(CUSTOM_DELIMITER_PATTERN).matcher(text);
+        return CUSTOM_DELIMITER_PATTERN.matcher(text);
     }
 
     private static boolean hasCustomDelimiter(String text) {
