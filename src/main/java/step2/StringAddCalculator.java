@@ -37,16 +37,21 @@ public class StringAddCalculator {
         List<Integer> numbers = new ArrayList<>();
 
         for (String value : values) {
-            int number = parseInt(value);
-
-            if (isNegative(number)) {
-                throw new RuntimeException("음수는 허용되지 않습니다.");
-            }
-
+            int number = getNumber(value);
             numbers.add(number);
         }
 
         return numbers;
+    }
+
+    private static int getNumber(String value) {
+        int number = parseInt(value);
+
+        if (isNegative(number)) {
+            throw new RuntimeException("음수는 허용되지 않습니다.");
+        }
+
+        return number;
     }
 
     private static boolean isNegative(int number) {
