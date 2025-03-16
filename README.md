@@ -20,3 +20,4 @@
   - 이름을 갖는다. 결과에 함께 출력해 주어야 함.
 - [X] MovingStrategy
 - [X] RandomMovingStrategy
+- [X] Cars
