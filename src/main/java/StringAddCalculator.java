@@ -14,7 +14,16 @@ public class StringAddCalculator
     private static String DELIMITER = ",|:";
 
     public int add(String str){
-        return getSum(toIntArr(getStringWhenHasDelimiter(getZeroWhenBlank(str)).split(DELIMITER)));
+
+        if(isBlank(str)){
+            str = "0";
+        }
+
+        str = getStringWhenHasDelimiter(str);
+
+        int[] intArr = toIntArr(str.split(DELIMITER));
+
+        return getSum(intArr);
     }
 
     private int[] toIntArr(String[] strArr) {
@@ -25,10 +34,10 @@ public class StringAddCalculator
         return intArr;
     }
 
-    private int toInt(String s) {
-        int num = Integer.parseInt(s);
+    private int toInt(String str) {
+        int num = Integer.parseInt(str);
         if(num < 0){
-            throw new RuntimeException("음수는 허용하지 않습니다.");
+            throw new IllegalArgumentException("음수는 허용하지 않습니다.");
         }
         return num;
     }
@@ -51,7 +60,7 @@ public class StringAddCalculator
         return str;
     }
 
-    private static String getZeroWhenBlank(String str) {
-        return str == null || str.isBlank() ? "0" : str;
+    private static boolean isBlank(String str) {
+        return str == null || str.isBlank();
     }
 }
