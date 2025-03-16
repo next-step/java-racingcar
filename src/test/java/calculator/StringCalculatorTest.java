@@ -15,6 +15,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringCalculatorTest {
 
     @Test
+    @DisplayName("숫자 하나일때 숫자반환")
+    void test4() {
+        int result = StringCalculator.cal("23");
+        assertThat(result).isEqualTo(23);
+    }
+    @Test
     @DisplayName("커스텀 구분자")
     void test3() {
         int result = StringCalculator.cal("//;\n1;2;3");
