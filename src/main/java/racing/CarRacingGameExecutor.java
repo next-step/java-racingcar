@@ -2,7 +2,8 @@ package racing;
 
 import racing.simulator.RandomCarMovingStrategy;
 import racing.simulator.CarRacingGameSimulator;
-import racing.util.InputValidator;
+import racing.types.CarCount;
+import racing.types.SimulateCount;
 import racing.util.InputView;
 import racing.util.OutputView;
 
@@ -11,8 +12,8 @@ import java.util.List;
 public class CarRacingGameExecutor {
 
   public static void main(String[] args) {
-    int carCount = getCarCount();
-    int simulateCount = getSimulateCount();
+    CarCount carCount = getCarCount();
+    SimulateCount simulateCount = getSimulateCount();
 
     CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new RandomCarMovingStrategy());
 
@@ -22,16 +23,14 @@ public class CarRacingGameExecutor {
 
   }
 
-  private static int getCarCount() {
+  private static CarCount getCarCount() {
     int carCount = InputView.showCarCountInput();
-    InputValidator.checkNotValidCarCount(carCount);
-    return carCount;
+    return new CarCount(carCount);
   }
 
-  private static int getSimulateCount() {
+  private static SimulateCount getSimulateCount() {
     int simulateCount = InputView.showSimulateCountInput();
-    InputValidator.checkNotValidSimulateCount(simulateCount);
-    return simulateCount;
+    return new SimulateCount(simulateCount);
   }
 
   private static void printSimulationResult(List<List<Integer>> simulationResults) {

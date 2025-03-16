@@ -1,5 +1,8 @@
 package racing.simulator;
 
+import racing.types.CarCount;
+import racing.types.SimulateCount;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,15 +11,15 @@ public class CarRacingGameSimulator {
 
   private final List<Car> cars = new ArrayList<>();
 
-  public CarRacingGameSimulator(int carCount, CarMovingStrategy carMovingStrategy) {
-    for (int i = 0; i < carCount; i++) {
+  public CarRacingGameSimulator(CarCount carCount, CarMovingStrategy carMovingStrategy) {
+    for (int i = 0; i < carCount.getCount(); i++) {
       cars.add(new Car(carMovingStrategy));
     }
   }
 
-  public List<List<Integer>> run(int simulateCount) {
+  public List<List<Integer>> run(SimulateCount simulateCount) {
     List<List<Integer>> res = new ArrayList<>();
-    for (int i = 0; i < simulateCount; i++) {
+    for (int i = 0; i < simulateCount.getCount(); i++) {
       moveCars();
       res.add(getCarsLocation());
     }

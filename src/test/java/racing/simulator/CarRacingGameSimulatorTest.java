@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.types.CarCount;
+import racing.types.SimulateCount;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,9 +22,9 @@ class CarRacingGameSimulatorTest {
     int carCount = 3;
     int simulateCount = 4;
 
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, () -> true);
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
 
-    List<List<Integer>> simulateResults = Objects.requireNonNull(simulator.run(simulateCount));
+    List<List<Integer>> simulateResults = Objects.requireNonNull(simulator.run(new SimulateCount(simulateCount)));
     List<Car> currentCars = simulator.copyCars();
 
     assertAll(
@@ -41,7 +43,7 @@ class CarRacingGameSimulatorTest {
     int carCount = 3;
     int simulateMoves = 5;
 
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, () -> true);
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
 
     IntStream.range(0, simulateMoves).forEach(i -> simulator.moveCars());
 
@@ -58,7 +60,7 @@ class CarRacingGameSimulatorTest {
   @ValueSource(booleans = {true, false})
   void tryMoveCars_carsMovedByStrategy(boolean strategyResult) {
     int carCount = 3;
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, () -> strategyResult);
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new CarCount(carCount), () -> strategyResult);
 
     simulator.moveCars();
     List<Car> result = simulator.copyCars();
@@ -72,7 +74,7 @@ class CarRacingGameSimulatorTest {
   @Test
   void copyCars_shouldReturnDeepCopiedCarArray() {
     int carCount = 3;
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, () -> true);
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
 
     List<Car> firstCopiedCars = simulator.copyCars();
     List<Car> secondCopiedCars = simulator.copyCars();
@@ -89,7 +91,7 @@ class CarRacingGameSimulatorTest {
   @Test
   void reset_shouldSetCarPositionToZero() {
     int carCount = 3;
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, () -> true);
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
 
     simulator.moveCars();
     simulator.resetCars();
