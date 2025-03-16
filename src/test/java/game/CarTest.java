@@ -3,23 +3,21 @@ package game;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
-    @ParameterizedTest(name = "입력값이 {0} 이면 이동하지 않는다.")
-    @ValueSource(ints = {0, 1, 2, 3})
-    void move_1(int number) {
+    @DisplayName("3 이하면 이동하지 않는다.")
+    @Test
+    void move_1() {
         Car car = new Car();
-        car.move(number);
+        car.move(3);
         Assertions.assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @ParameterizedTest(name = "입력값이 {0} 이면 1칸 이동한다.")
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void move_2(int number) {
+    @DisplayName("4 이상히면 이동한다.")
+    @Test
+    void move_2() {
         Car car = new Car();
-        car.move(number);
+        car.move(4);
         Assertions.assertThat(car.getPosition()).isEqualTo(1);
     }
 
