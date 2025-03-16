@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,5 +31,14 @@ public class InputViewTest {
 
     int actual = inputView.receiveTryCount();
     assertEquals(expected, actual);
+  }
+
+  @DisplayName("숫자가 아닌 입력을 받았을 때 예외를 던지는 기능 테스트")
+  @Test
+  void testGetInvalidInput() {
+    Scanner testScanner = new Scanner("invalid input\n");
+    InputView inputView = new InputView(testScanner);
+
+    Assertions.assertThrows(InputMismatchException.class, inputView::receiveCarCount);
   }
 }
