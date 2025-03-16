@@ -1,5 +1,6 @@
 package calculator;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -41,5 +42,13 @@ public class StringCalculatorTest {
     @DisplayName("null 값을 입력할 경우 0을 반환한다.")
     void null_값() {
         assertThat(StringCalculator.calculate(null)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("음수 값을 입력할 경우 RuntimeException 예외가 발생한다..")
+    void 음수_값() {
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            StringCalculator.calculate("-1,2,3");
+        });
     }
 }
