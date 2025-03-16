@@ -6,7 +6,7 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 public class StringAddCalculator {
-    public static final String REGEX = ",";
+    public static final String REGEX = ",|:";
     public static final int ZERO = 0;
 
     public static int splitAndSum(String text) {
