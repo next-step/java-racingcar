@@ -15,15 +15,15 @@ public class RacingGameTest {
     @ParameterizedTest
     @CsvSource(value = {"1:false", "2:false", "3:false", "4:true", "5:true", "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
     void movableTest(int number, boolean expected) {
-        Car car = new Car();
+        Car car = new Car("pobi");
         assertThat(car.movable(number)).isEqualTo(expected);
     }
 
     @Test
     void raceTest() {
-        int carCount = 3;
+        String[] carNames = {"pobi", "crong", "honux"};
         int tryCount = 5;
-        Cars cars = new Cars(carCount);
+        Cars cars = new Cars(carNames);
         cars.race(tryCount);
         List<String> positionStrings = cars.getPositionStrings();
 

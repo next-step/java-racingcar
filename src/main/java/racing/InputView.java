@@ -5,10 +5,15 @@ import java.util.Scanner;
 public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
+    private static final String CAR_NAME_DELIMITER = ",";
 
-    public static int inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return inputNumber();
+    public static String[] inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분)");
+        return splitCarNames(inputString());
+    }
+
+    private static String[] splitCarNames(String carNames) {
+        return carNames.split(CAR_NAME_DELIMITER);
     }
 
     public static int inputTryCount() {
@@ -16,7 +21,11 @@ public class InputView {
         return inputNumber();
     }
 
-    public static int inputNumber() {
+    private static int inputNumber() {
         return scanner.nextInt();
+    }
+
+    private static String inputString() {
+        return scanner.nextLine();
     }
 }

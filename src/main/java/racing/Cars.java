@@ -6,10 +6,10 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int carCount) {
+    public Cars(String[] carNames) {
         cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 

@@ -7,10 +7,10 @@ public class RacingGame {
     }
 
     public static void run() {
-        int carCount = InputView.inputCarCount();
+        String[] carNames = InputView.inputCarNames();
         int tryCount = InputView.inputTryCount();
 
-        Cars cars = new Cars(carCount);
+        Cars cars = new Cars(carNames);
 
         cars.race(tryCount);
     }
