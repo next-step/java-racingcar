@@ -1,6 +1,5 @@
 package racing;
 
-import racing.simulator.Car;
 import racing.simulator.RandomCarMovingStrategy;
 import racing.simulator.CarRacingGameSimulator;
 import racing.util.InputValidator;
@@ -35,9 +34,9 @@ public class CarRacingGameExecutor {
     return simulateCount;
   }
 
-  private static void printSimulationResult(List<List<Car>> simulationResults) {
+  private static void printSimulationResult(List<List<Integer>> simulationResults) {
     simulationResults.forEach(roundResult -> {
-      OutputView.showCarsLocation(roundResult);
+      OutputView.showLocation(roundResult);
       OutputView.showWhitespace();
     });
   }

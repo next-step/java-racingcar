@@ -2,6 +2,7 @@ package racing.simulator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacingGameSimulator {
 
@@ -13,14 +14,18 @@ public class CarRacingGameSimulator {
     }
   }
 
-  public List<List<Car>> run(int simulateCount) {
-    List<List<Car>> res = new ArrayList<>();
+  public List<List<Integer>> run(int simulateCount) {
+    List<List<Integer>> res = new ArrayList<>();
     for (int i = 0; i < simulateCount; i++) {
       moveCars();
-      res.add(copyCars());
+      res.add(getCarsLocation());
     }
     resetCars();
     return res;
+  }
+
+  public List<Integer> getCarsLocation() {
+    return cars.stream().map(Car::getLocation).collect(Collectors.toList());
   }
 
   public void moveCars() {

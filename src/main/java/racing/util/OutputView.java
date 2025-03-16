@@ -1,7 +1,5 @@
 package racing.util;
 
-import racing.simulator.Car;
-
 import java.util.List;
 
 public class OutputView {
@@ -10,12 +8,8 @@ public class OutputView {
     System.out.println("실행 결과");
   }
 
-  public static void showCarsLocation(List<Car> cars) {
-    cars.forEach(OutputView::showCarLocation);
-  }
-
-  public static void showCarLocation(Car car) {
-    System.out.println("-".repeat(Math.max(0, car.getLocation())));
+  public static void showLocation(List<Integer> locations) {
+    locations.forEach(location -> System.out.println("-".repeat(Math.max(0,location))));
   }
 
   public static void showWhitespace() {
