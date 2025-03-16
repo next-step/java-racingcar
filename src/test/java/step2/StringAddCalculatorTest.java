@@ -38,6 +38,10 @@ public class StringAddCalculatorTest {
         // [] => 0
         // [1,2] => 3
         // [1,2,3] => 6
+        assertEquals(0, stringAddCalculator.addNumbersInArray(new int[]{}));
+        assertEquals(3, stringAddCalculator.addNumbersInArray(new int[]{1, 2}));
+        assertEquals(6, stringAddCalculator.addNumbersInArray(new int[]{1, 2, 3}));
+
     }
 
     @Test

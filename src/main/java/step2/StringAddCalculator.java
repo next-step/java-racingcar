@@ -22,4 +22,18 @@ public class StringAddCalculator {
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
+
+    public int addNumbersInArray(int[] numbers) {
+        int sum = 0;
+
+        if (numbers == null) {
+            return sum;
+        }
+
+        for (int num:numbers) {
+            sum += num;
+        }
+
+        return sum;
+    }
 }
