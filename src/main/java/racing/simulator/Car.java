@@ -20,7 +20,7 @@ public class Car {
   }
 
   public void go() {
-    if (carMovingStrategy.isMove()) {
+    if (carMovingStrategy.canMove()) {
       this.location += 1;
     }
   }

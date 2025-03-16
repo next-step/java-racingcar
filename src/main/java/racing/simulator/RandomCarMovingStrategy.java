@@ -16,7 +16,7 @@ public class RandomCarMovingStrategy implements CarMovingStrategy {
     this.random = random;
   }
 
-  public boolean isMove() {
+  public boolean canMove() {
     return random.nextInt(RANDOM_RANGE_LIMIT) >= MOVE_THRESHOLD;
   }
 }

@@ -23,7 +23,7 @@ class RandomCarMovingStrategyTest {
       }
     };
 
-    assertFalse(new RandomCarMovingStrategy(randomStub).isMove());
+    assertFalse(new RandomCarMovingStrategy(randomStub).canMove());
   }
 
   @DisplayName("움직일지 판단 할 시 4 이상 random 수로 뽑힐시 true를 반환한다.")
@@ -38,6 +38,6 @@ class RandomCarMovingStrategyTest {
       }
     };
 
-    assertTrue(new RandomCarMovingStrategy(randomStub).isMove());
+    assertTrue(new RandomCarMovingStrategy(randomStub).canMove());
   }
 }
