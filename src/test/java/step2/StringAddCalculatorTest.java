@@ -11,6 +11,12 @@ public class StringAddCalculatorTest {
 
     private StringAddCalculator stringAddCalculator;
 
+    @BeforeEach
+    void setUp() {
+        // 각 테스트 실행 전에 StringAddCalculator 객체 초기화
+        stringAddCalculator = new StringAddCalculator();
+    }
+
     @Test
     void splitNumbersTest() {
         // 쉼표(,) 또는 콜론(:)을 구분자로 숫자를 구분하는 메소드 테스트
@@ -18,6 +24,11 @@ public class StringAddCalculatorTest {
         // "" => []
         // "1,2" => [1,2]
         // "1,2:3" => [1,2,3]
+
+        // assertArrayEquals(expectedArray, actualArray);
+        assertArrayEquals(new int[]{}, stringAddCalculator.splitNumbers(""));
+        assertArrayEquals(new int[]{1, 2}, stringAddCalculator.splitNumbers("1,2"));
+        assertArrayEquals(new int[]{1, 2, 3}, stringAddCalculator.splitNumbers("1,2:3"));
     }
 
     @Test
