@@ -24,11 +24,11 @@ public class RacingTest {
     }
 
     @Test
-    @DisplayName("각 자동차 행동")
-    void 자동차_행동() {
+    @DisplayName("각 자동차 이동")
+    void 자동차_이동() {
         List<Car> cars = List.of(new Car(), new Car(), new Car());
 
-        List<Integer> positions = Racing.activeCars(cars);
+        List<Integer> positions = Racing.moveCars(cars);
 
         assertThat(positions).hasSize(3);
     }
@@ -36,8 +36,8 @@ public class RacingTest {
     @ParameterizedTest
     @CsvSource(value = {"0:false", "1:false", "2:false", "3:false", "4:true", "5:true",
             "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
-    void 전진_조건(int randomNumber, boolean canMove) {
-        assertThat(Racing.canProgress(randomNumber)).isEqualTo(canMove);
+    void 전진_조건(int number, boolean canMove) {
+        assertThat(Racing.canProgress(number)).isEqualTo(canMove);
     }
 
 }
