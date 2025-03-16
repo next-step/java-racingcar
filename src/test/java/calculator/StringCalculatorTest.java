@@ -15,8 +15,15 @@ public class StringCalculatorTest {
 
     @Test
     @DisplayName("숫자 두개를 컴마 구분자로 입력할 경우 합을 반환")
-    void delimiterTest() {
-        int result = StringCalculator.calculate("1, 2");
+    void commaDelimiterTest() {
+        int result = StringCalculator.calculate("1,2");
         assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("숫자 여러개를 컴마 또는 콜론 구분자로 입력할 경우에도 합을 반환")
+    void complexDelimiterTest() {
+        int result = StringCalculator.calculate("1,2:3");
+        assertThat(result).isEqualTo(6);
     }
 }
