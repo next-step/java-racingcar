@@ -21,8 +21,10 @@ public class Cars {
         return cars;
     }
 
-    public static void move(Car car) {
-        int randomNumber = RandomNumberGenerator.getRandomNumber();
-        car.move(randomNumber);
+    public static void move(List<Car> cars) {
+        for(Car car: cars) {
+            int randomNumber = RandomNumberGenerator.getRandomNumber();
+            car.move(randomNumber);
+        }
     }
 }

@@ -37,9 +37,7 @@ public class RacingCarGameExecutor {
     }
 
     public static void moveCarPerRound(List<Car> cars) {
-        for (Car car : cars) {
-            Cars.move(car);
-        }
+        Cars.move(cars);
         getCarResults(cars);
     }
 }
