@@ -19,5 +19,5 @@
 * 자동차 경주를 관리하는 클래스 (몇 대, 몇 번, 경주 진행) : Racing
 * 자동차 경주 결과를 저장하는 클래스 : RacingBoard
 * 자동차 클래스 (전진, 상태 리턴) : Car
-* 랜덤 값 생성하는 클래스 : RandomNumberGenerator
+* 랜덤 값 생성하는 클래스 : RandomNumberGenerator - 테스트를 위해 인터페이스로 구현
 * UI 입출력 관리하는 클래스: InputView, OutputView

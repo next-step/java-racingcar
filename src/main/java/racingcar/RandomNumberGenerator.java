@@ -1,8 +1,9 @@
 package racingcar;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
 
-  public static int generateRandomNumber() {
+  @Override
+  public int generateNumber() {
       return (int) (Math.random() * 10);
   }
 }

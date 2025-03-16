@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 class RandomNumberGeneratorTest {
   @Test
   void generateRandomNumber() {
-    int randomNumber = RandomNumberGenerator.generateRandomNumber();
+    RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    int randomNumber = randomNumberGenerator.generateNumber();
     assertThat(randomNumber).isBetween(0, 9);
   }
 
