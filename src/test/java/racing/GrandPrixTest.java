@@ -31,7 +31,7 @@ class GrandPrixTest {
     @DisplayName("그랑프리 리포트를 하면 현재 상황을 리턴한다.")
     void reportTest() {
         // given
-        var luckyDice = new DiceTest.MockRandom(CarTest.MOVE_THRESHOLD + 1);
+        var luckyDice = new DiceTest.MockRandom(Car.MOVE_THRESHOLD + 1);
         var totalRound = 5;
         var carCount = 3;
         var grandPrix = new GrandPrix(totalRound, carCount, luckyDice);

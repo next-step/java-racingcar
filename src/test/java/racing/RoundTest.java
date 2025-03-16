@@ -31,7 +31,7 @@ class RoundTest {
         var car3 = new Car();
         var cars = List.of(car1, car2, car3);
         // 항상 성공하는 주사위
-        var luckyDice = new DiceTest.MockRandom(CarTest.MOVE_THRESHOLD + 1);
+        var luckyDice = new DiceTest.MockRandom(Car.MOVE_THRESHOLD + 1);
         var round = new Round(luckyDice);
         var playTimes = 3;
 

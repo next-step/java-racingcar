@@ -1,6 +1,7 @@
 package racing;
 
 public class Car {
+    static final int MOVE_THRESHOLD = 4;
     private int position;
 
     public Car() {

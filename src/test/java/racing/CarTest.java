@@ -10,8 +10,6 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 class CarTest {
-    static final int MOVE_THRESHOLD = 4;
-
     @ParameterizedTest
     @MethodSource("testData")
     @DisplayName("자동차는 주사위의 값이 MOVE_THRESHOLD값의 이상일 때만 전진한다.")
@@ -28,6 +26,6 @@ class CarTest {
 
     static Stream<Arguments> testData() {
         return IntStream.rangeClosed(0, 9)
-                .mapToObj(it -> Arguments.of(it, it >= MOVE_THRESHOLD));
+                .mapToObj(it -> Arguments.of(it, it >= Car.MOVE_THRESHOLD));
     }
 }
