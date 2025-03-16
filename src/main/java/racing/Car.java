@@ -5,9 +5,16 @@ public class Car {
     private static final String POSITION_SYMBOL = "-";
     private static final int MOVE_THRESHOLD = 4;
     private int position;
+    private CarName name;
 
     public Car() {
         this.position = 0;
+    }
+
+    public Car(String name) {
+        this();
+        this.name = new CarName(name);
+
     }
 
     public void race() {

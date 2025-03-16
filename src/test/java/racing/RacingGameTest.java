@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RacingGameTest {
@@ -34,5 +35,10 @@ public class RacingGameTest {
 
     private boolean isDashOnly(String input) {
         return input.matches("^-*$");
+    }
+
+    @Test
+    void carNameTest() {
+        assertThatThrownBy(() -> new Car("abcdef")).isInstanceOf(IllegalArgumentException.class);
     }
 }
