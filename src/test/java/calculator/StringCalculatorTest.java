@@ -30,4 +30,16 @@ public class StringCalculatorTest {
     void 커스텀_구분자() {
         assertThat(StringCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("빈 문자열을 입력할 경우 0을 반환한다.")
+    void 빈_문자열() {
+        assertThat(StringCalculator.calculate("")).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("null 값을 입력할 경우 0을 반환한다.")
+    void null_값() {
+        assertThat(StringCalculator.calculate(null)).isEqualTo(0);
+    }
 }
