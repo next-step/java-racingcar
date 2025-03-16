@@ -1,9 +1,13 @@
 package racing;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RacingGameTest {
 
@@ -12,5 +16,23 @@ public class RacingGameTest {
     void movableTest(int number, boolean expected) {
         Car car = new Car();
         assertThat(car.movable(number)).isEqualTo(expected);
+    }
+
+    @Test
+    void raceTest() {
+        int carCount = 3;
+        int tryCount = 5;
+        Cars cars = new Cars(carCount);
+        cars.race(tryCount);
+        List<String> positionStrings = cars.getPositionStrings();
+
+        for (String positionString : positionStrings) {
+            assertTrue(isDashOnly(positionString));
+            assertThat(positionString.length()).isBetween(0, tryCount);
+        }
+    }
+
+    private boolean isDashOnly(String input) {
+        return input.matches("^-*$");
     }
 }
