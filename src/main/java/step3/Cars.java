@@ -27,4 +27,8 @@ public class Cars {
         }
         return result;
     }
+
+    List<Car> getCars() {
+        return cars;
+    }
 }
