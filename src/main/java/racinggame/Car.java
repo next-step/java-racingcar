@@ -8,7 +8,7 @@ public class Car {
         return this.position;
     }
 
-    public void move(int randomNumber) {
+    public void move(final int randomNumber) {
         if (randomNumber >= 4) {
             this.position++;
         }
