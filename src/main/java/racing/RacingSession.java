@@ -20,10 +20,6 @@ public class RacingSession {
         return new RacingSession(cars);
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public List<List<Integer>> startRacing(int turns){
         List<List<Integer>> totalPositions = new ArrayList<>();
         for (int i = 0; i < turns; i++) {
@@ -80,5 +76,18 @@ public class RacingSession {
         }
     }
 
+    public RacingResultDto getRacingResult() {
+        List<String> carNames = getCarNames();
+        List<String> winnerNames = findWinners(carNames, this.lastPlayHistory);
 
+        return new RacingResultDto(carNames, this.lastPlayHistory, winnerNames);
+    }
+
+    private List<String> getCarNames(){
+        List<String> carNames = new ArrayList<>();
+        for (Car car : this.cars){
+            carNames.add(car.getName());
+        }
+        return carNames;
+    }
 }
