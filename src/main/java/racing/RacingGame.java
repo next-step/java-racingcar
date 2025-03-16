@@ -2,9 +2,13 @@ package racing;
 
 public class RacingGame {
 
+    public static void main(String[] args) {
+        run();
+    }
+
     public static void run() {
-        int carCount = 3;
-        int tryCount = 5;
+        int carCount = InputView.inputCarCount();
+        int tryCount = InputView.inputTryCount();
 
         Cars cars = new Cars(carCount);
 
