@@ -1,7 +1,5 @@
 package racing;
 
-import java.util.List;
-import java.util.Random;
 import racing.model.Cars;
 import racing.service.RaceService;
 import racing.service.RandomNumberGenerator;
