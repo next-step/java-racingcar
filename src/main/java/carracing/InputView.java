@@ -21,7 +21,6 @@ public class InputView {
 
   private int getIntegerInput() {
     int count = scanner.nextInt();
-    scanner.nextLine();
     return count;
   }
 }
