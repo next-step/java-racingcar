@@ -22,9 +22,8 @@ class RandomMovingStrategyTest {
 
         assertThat(randomMovingStrategy.canMove()).isTrue();
     }
-
     @Test
-    void 랜덤값이_4미만이면_참을_반환한다() {
+    void 랜덤값이_4미만이면_거짓을_반환한다() {
         Random random = new Random() {
             @Override
             public int nextInt(int bound) {
