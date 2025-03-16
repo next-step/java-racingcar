@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    public static final int BOUND = 10;
     private final List<Car> cars;
 
     public Cars(PositiveInteger count) {
@@ -19,8 +18,7 @@ public class Cars {
         return cars;
     }
 
-    public void race() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(BOUND);
+    public void race(RandomNumberGenerator randomNumberGenerator) {
         for (Car car : this.cars) {
             car.move(randomNumberGenerator.generate());
         }

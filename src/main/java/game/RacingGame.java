@@ -21,7 +21,7 @@ public class RacingGame {
 
     private void play(PositiveInteger totalRound) {
         for (int i = 0; i < totalRound.value(); i++) {
-            cars.race();
+            cars.race(new RandomNumberGenerator());
             ResultView.print(cars.getPositions());
         }
     }

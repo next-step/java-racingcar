@@ -3,16 +3,11 @@ package game;
 import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
-    private final Random random;
-    private final int bound;
-
-    public RandomNumberGenerator(int bound) {
-        random = new Random();
-        this.bound = bound;
-    }
+    private final Random RANDOM = new Random();
+    private final int BOUND = 10;
 
     @Override
     public int generate() {
-        return random.nextInt(bound);
+        return RANDOM.nextInt(BOUND);
     }
 }
