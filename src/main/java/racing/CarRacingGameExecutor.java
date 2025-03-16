@@ -35,10 +35,10 @@ public class CarRacingGameExecutor {
     return simulateCount;
   }
 
-  private static void printSimulationResult(List<List<Car>> result) {
-    for(List<Car> roundResult: result) {
-      OutputView.showCarLocation(roundResult);
+  private static void printSimulationResult(List<List<Car>> simulationResults) {
+    simulationResults.forEach(roundResult -> {
+      OutputView.showCarsLocation(roundResult);
       OutputView.showWhitespace();
-    }
+    });
   }
 }

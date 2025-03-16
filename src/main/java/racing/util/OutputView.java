@@ -10,10 +10,12 @@ public class OutputView {
     System.out.println("실행 결과");
   }
 
-  public static void showCarLocation(List<Car> cars) {
-    for (Car car : cars) {
-      System.out.println(car.getLocationConsoleFormat());
-    }
+  public static void showCarsLocation(List<Car> cars) {
+    cars.forEach(OutputView::showCarLocation);
+  }
+
+  public static void showCarLocation(Car car) {
+    System.out.println("-".repeat(Math.max(0, car.getLocation())));
   }
 
   public static void showWhitespace() {

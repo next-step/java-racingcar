@@ -25,10 +25,6 @@ public class Car {
     }
   }
 
-  public String getLocationConsoleFormat() {
-    return "-".repeat(Math.max(0, location));
-  }
-
   public void reset() {
     location = 0;
   }

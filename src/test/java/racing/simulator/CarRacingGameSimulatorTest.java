@@ -80,7 +80,7 @@ class CarRacingGameSimulatorTest {
     List<Car> result = simulator.copyCars();
 
     assertThat(result)
-        .extracting(Car::getLocationConsoleFormat)
-        .containsOnly("");
+        .extracting(Car::getLocation)
+        .containsOnly(0);
   }
 }
