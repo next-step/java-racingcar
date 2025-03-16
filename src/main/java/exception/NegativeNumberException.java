@@ -1,4 +1,4 @@
-package calculator;
+package exception;
 
 public class NegativeNumberException extends RuntimeException{
     public NegativeNumberException(String message){

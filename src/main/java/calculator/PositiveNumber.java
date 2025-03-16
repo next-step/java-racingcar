@@ -1,5 +1,7 @@
 package calculator;
 
+import exception.NegativeNumberException;
+
 public class PositiveNumber {
     private final int value;
     public PositiveNumber(int value){
