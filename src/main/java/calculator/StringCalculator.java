@@ -14,11 +14,16 @@ public class StringCalculator {
 
     public static int calculate(String input) {
         int result = 0;
+        if (isEmptyInput(input)) return 0;
         String[] numbers = splitNumbers(input);
         for (String number : numbers) {
             result += toInt(number);
         }
         return result;
+    }
+
+    private static boolean isEmptyInput(String input) {
+        return input == null || input.isEmpty();
     }
 
     private static String[] splitNumbers(String input) {
