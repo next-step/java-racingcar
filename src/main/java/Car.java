@@ -11,19 +11,10 @@ public class Car {
      * 자동차를 앞으로 전진시킵니다.
      */
     public void move() {
-        if (!validMove()) {
-            return;
-        }
-        position += MOVE_STEP;
-    }
-
-    /**
-     * @return
-     * 랜덤 값이 유효한 값인지 확인합니다.
-     */
-    private boolean validMove() {
         int num = RandomUtil.nextInt(RANDOM_BOUND);
-        return num >= MOVE_BOUND;
+        if (num >= MOVE_BOUND) {
+            position += MOVE_STEP;
+        }
     }
 
     public int getPosition() {
