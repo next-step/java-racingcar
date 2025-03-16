@@ -24,4 +24,10 @@ public class StringCalculatorTest {
     void 콜론_구분자() {
         assertThat(StringCalculator.calculate("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("//와 \\n 문자 사이에 커스텀 구분자를 지정하여 구분한 후 숫자들의 합을 반환한다.")
+    void 커스텀_구분자() {
+        assertThat(StringCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
+    }
 }
