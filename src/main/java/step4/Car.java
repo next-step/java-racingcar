@@ -19,6 +19,10 @@ public class Car {
         return this.position;
     }
 
+    String getName() {
+        return this.name;
+    }
+
     public StringBuilder getCurrentStatus() {
         return new StringBuilder()
                 .append(name)
