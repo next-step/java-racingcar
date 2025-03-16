@@ -13,9 +13,12 @@ public class StringCalculator {
     }
 
     public static int calculate(String input) {
-        int result = 0;
         if (isEmptyInput(input)) return 0;
-        String[] numbers = splitNumbers(input);
+        return sum(splitNumbers(input));
+    }
+
+    private static int sum(String[] numbers) {
+        int result = 0;
         for (String number : numbers) {
             result += toInt(number);
         }
