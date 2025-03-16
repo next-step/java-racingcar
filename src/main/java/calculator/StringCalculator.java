@@ -1,7 +1,7 @@
 package calculator;
 
 public class StringCalculator {
-    private static final String regex = ",";
+    private static final String regex = "[,:]";
 
     public static int cal(String str) {
         if (str == null || str.isEmpty()) {
