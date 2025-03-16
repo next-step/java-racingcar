@@ -38,10 +38,20 @@ public class StringAddCalculator {
         List<Integer> numbers = new ArrayList<>();
 
         for (String value : values) {
-            numbers.add(parseInt(value));
+            int number = parseInt(value);
+
+            if (isNegative(number)) {
+                throw new RuntimeException("음수는 허용되지 않습니다.");
+            }
+
+            numbers.add(number);
         }
 
         return numbers;
+    }
+
+    private static boolean isNegative(int number) {
+        return number < ZERO;
     }
 
     public static String[] split(String text) {
