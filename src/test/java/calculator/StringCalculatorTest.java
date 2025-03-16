@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class StringCalculatorTest {
+class StringCalculatorTest {
 
   @Test
   @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생")
