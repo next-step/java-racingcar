@@ -26,12 +26,12 @@ public class Racing {
   public RacingBoard racingRound(int round) {
     RacingBoard racingBoard = new RacingBoard(round);
 
-    cars.forEach(car -> {
-      if (isEnabledMove()) {
-        car.move();
-      }
-      racingBoard.record(car.getPosition());
-    });
+    cars.stream()
+        .peek(car -> {
+          if (isEnabledMove()) car.move();
+        })
+        .map(Car::getPosition)
+        .forEach(racingBoard::record);
 
     return racingBoard;
   }
