@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 class CarTest {
@@ -25,7 +24,10 @@ class CarTest {
     }
 
     static Stream<Arguments> testData() {
-        return IntStream.rangeClosed(0, 9)
-                .mapToObj(it -> Arguments.of(it, it >= Car.MOVE_THRESHOLD));
+        return Stream.of(
+                Arguments.of(Car.MOVE_THRESHOLD-1, false),
+                Arguments.of(Car.MOVE_THRESHOLD, true),
+                Arguments.of(Car.MOVE_THRESHOLD+1, true)
+        );
     }
 }
