@@ -1,8 +1,6 @@
 package step2;
 
-import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.Map;
 
 public class StringAddCalculator {
 
@@ -11,10 +9,9 @@ public class StringAddCalculator {
     }
 
     public int calculate(String input) {
-//        if(!checkIfValidInput(input)) {
-//            // "", "1", "-3", "abc" 등의 경우 처리
-//            throw new IllegalArgumentException("Invalid input");
-//        }
+        if(!checkIfValidInput(input)) {
+            throw new IllegalArgumentException("Invalid input");
+        }
         String numbersWithSeparators = extractNumbers(input); // "\\;\n1;2;3" -> "1;2;3"
         String separators = filterSeparators(input); // SEPARATORS = ",:" -> ",:;"
         int[] numbers = splitNumbers(numbersWithSeparators, separators); // e,g. "1,2;3" -> [1,2,3]
@@ -67,5 +64,41 @@ public class StringAddCalculator {
         String[] arr = checkIfOnlyNumbers(numbersWithCustomSeparator);
         return arr[arr.length-1];
     }
+
+    public boolean checkIfValidInput(String input) {
+        // 1. 입력값이 비어있으면 유효하지 않음
+        if (input == null || input.isEmpty()) {
+            return false;
+        }
+
+        // 2. 커스텀 구분자 형식이 유효하지 않으면 오류
+        if (input.startsWith("//")) {
+            String[] parts = input.split("\n", 2);
+            if (parts.length < 2 || parts[0].length() < 3 || !parts[0].substring(2).matches("^[^\\d]+$")) {
+                return false; // 커스텀 구분자가 숫자나 빈 문자열이면 오류
+            }
+        } else if (!Character.isDigit(input.charAt(0)) && !input.startsWith("//")) {
+            return false; // "\n;\n1;2;3;" 과 같은 경우
+        }
+
+        // 3. 숫자 확인: 입력 문자열에서 유효한 숫자 배열로 변환 시도
+        try {
+            String separators = filterSeparators(input);
+            String numbers = extractNumbers(input);
+            String[] tokens = numbers.split(createRegex(separators));
+
+            for (String token : tokens) {
+                int number = Integer.parseInt(token.trim());
+                if (number < 0) { // 음수일 경우 오류
+                    return false;
+                }
+            }
+        } catch (NumberFormatException e) {
+            return false; // 숫자가 아닌 값이 포함되어 있으면 오류
+        }
+
+        return true; // 모든 검증을 통과하면 유효
+    }
+
 
 }

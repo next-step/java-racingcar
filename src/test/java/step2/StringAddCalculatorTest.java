@@ -1,11 +1,9 @@
 package step2;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StringAddCalculatorTest {
 
@@ -71,23 +69,32 @@ public class StringAddCalculatorTest {
     void checkIfInputsAreNumbersTest() {
         // 숫자가 아닌 값이 들어오면 오류
 
-        // "a,b,c" => error
-        // "NaN:e:log" => error
+        // "a,b,c" => false
+        // "NaN:e:log" => false
+        // "1,2,3" -> true
+        assertFalse(stringAddCalculator.checkIfValidInput("a,b,c"));
+        assertFalse(stringAddCalculator.checkIfValidInput("NaN:e:log"));
+        assertTrue(stringAddCalculator.checkIfValidInput("1,2,3"));
     }
 
     @Test
     void checkIfInputsArePositiveNumbersTest() {
         // 숫자가 아닌 값이 들어오면 오류
 
-        // "-1,-2" => error
+        // "-1,-2" => false
+        assertFalse(stringAddCalculator.checkIfValidInput("-1,-2"));
+        assertTrue(stringAddCalculator.checkIfValidInput("1,2,3"));
     }
 
     @Test
     void checkIfValidCustomSeparatorTest() {
         // 숫자가 아닌 값이 들어오면 오류
 
-        // "//;//1;2;3" => error
-        // "\n;\n1;2;3" => error
+        // "//;//1;2;3" => false
+        // "\n;\n1;2;3" => false
+        assertFalse(stringAddCalculator.checkIfValidInput("//;//1;2;3"));
+        assertFalse(stringAddCalculator.checkIfValidInput("\n;\n1;2;3"));
+        assertTrue(stringAddCalculator.checkIfValidInput("//;\n1;2;3"));
     }
 
 
