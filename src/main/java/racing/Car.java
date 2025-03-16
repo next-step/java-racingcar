@@ -35,7 +35,15 @@ public class Car {
         return POSITION_SYMBOL.repeat(position);
     }
 
-    public String getName() {
-        return name.getName();
+    public CarName getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
     }
 }

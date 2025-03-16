@@ -23,7 +23,7 @@ public class CarName {
         return name == null || name.isEmpty();
     }
 
-    public String getName() {
+    public String toString() {
         return name;
     }
 }

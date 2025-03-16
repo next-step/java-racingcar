@@ -37,11 +37,30 @@ public class Cars {
         return positionStrings;
     }
 
-    public List<String> getCarNames() {
-        List<String> carNames = new ArrayList<>();
+    public List<CarName> getCarNames() {
+        List<CarName> carNames = new ArrayList<>();
         for (Car car : cars) {
             carNames.add(car.getName());
         }
         return carNames;
+    }
+
+    public List<Car> getWinners() {
+        List<Car> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition();
+        for (Car car : cars) {
+            if (car.isWinner(maxPosition)) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    public int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+        return maxPosition;
     }
 }

@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.List;
+
 public class RacingGame {
 
     public static void main(String[] args) {
@@ -13,5 +15,7 @@ public class RacingGame {
         Cars cars = new Cars(carNames);
 
         cars.race(tryCount);
+        List<Car> winners = cars.getWinners();
+        ResultView.printWinners(winners);
     }
 }
