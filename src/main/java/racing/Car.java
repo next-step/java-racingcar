@@ -3,6 +3,7 @@ package racing;
 public class Car {
 
     private static final String POSITION_SYMBOL = "-";
+    private static final int MOVE_THRESHOLD = 4;
     private int position;
 
     public Car() {
@@ -15,7 +16,7 @@ public class Car {
         }
     }
 
-    public void move() {
+    private void move() {
         position++;
     }
 
@@ -24,7 +25,7 @@ public class Car {
     }
 
     public boolean movable(int number) {
-        return number >= 4;
+        return number >= MOVE_THRESHOLD;
     }
 
     public String getPositionString() {
