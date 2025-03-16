@@ -1,12 +1,13 @@
 package racing;
 
-import racing.simulator.CarMoveDecider;
+import racing.simulator.Car;
+import racing.simulator.RandomCarMovingStrategy;
 import racing.simulator.CarRacingGameSimulator;
 import racing.util.InputValidator;
 import racing.util.InputView;
 import racing.util.OutputView;
 
-import java.util.Random;
+import java.util.List;
 
 public class CarRacingGameExecutor {
 
@@ -14,9 +15,12 @@ public class CarRacingGameExecutor {
     int carCount = getCarCount();
     int simulateCount = getSimulateCount();
 
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new RandomCarMovingStrategy());
+
     OutputView.showWhitespace();
     OutputView.showExecutionResultText();
-    execute(carCount, simulateCount);
+    printSimulationResult(simulator.run(simulateCount));
+
   }
 
   private static int getCarCount() {
@@ -31,13 +35,10 @@ public class CarRacingGameExecutor {
     return simulateCount;
   }
 
-  private static void execute(int carCount, int simulateCount) {
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new CarMoveDecider(new Random()));
-    for (int i = 0; i < simulateCount; i++) {
-      simulator.tryMoveCars();
-      OutputView.showCarLocation(simulator.copyCars());
+  private static void printSimulationResult(List<List<Car>> result) {
+    for(List<Car> roundResult: result) {
+      OutputView.showCarLocation(roundResult);
       OutputView.showWhitespace();
     }
-    simulator.resetCars();
   }
 }

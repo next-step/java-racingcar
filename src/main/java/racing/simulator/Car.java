@@ -1,25 +1,35 @@
 package racing.simulator;
 
 public class Car {
+
   private int location;
+  private final CarMovingStrategy carMovingStrategy;
 
-  Car() {
+  public Car(CarMovingStrategy carMovingStrategy) {
     this.location = 0;
+    this.carMovingStrategy = carMovingStrategy;
   }
 
-  Car(Car car) {
+  public Car(Car car) {
     this.location = car.location;
+    this.carMovingStrategy = car.carMovingStrategy;
   }
 
-  void go() {
-    this.location += 1;
+  public int getLocation() {
+    return location;
+  }
+
+  public void go() {
+    if (carMovingStrategy.isMove()) {
+      this.location += 1;
+    }
   }
 
   public String getLocationConsoleFormat() {
     return "-".repeat(Math.max(0, location));
   }
 
-  void reset() {
+  public void reset() {
     location = 0;
   }
 }

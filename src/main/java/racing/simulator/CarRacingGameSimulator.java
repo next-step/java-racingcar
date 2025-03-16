@@ -1,36 +1,36 @@
 package racing.simulator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarRacingGameSimulator {
 
-  private final int carCount;
-  private final CarMoveDecider carMoveDecider;
-  private final Car[] cars;
+  private final List<Car> cars = new ArrayList<>();
 
-  public CarRacingGameSimulator(int carCount, CarMoveDecider carMoveDecider) {
-    this.carCount = carCount;
-    this.carMoveDecider = carMoveDecider;
-    this.cars = new Car[carCount];
+  public CarRacingGameSimulator(int carCount, CarMovingStrategy carMovingStrategy) {
     for (int i = 0; i < carCount; i++) {
-      cars[i] = new Car();
+      cars.add(new Car(carMovingStrategy));
     }
   }
 
-  public void tryMoveCars() {
-    for (Car car : cars) {
-      tryMoveCar(car);
+  public List<List<Car>> run(int simulateCount) {
+    List<List<Car>> res = new ArrayList<>();
+    for (int i = 0; i < simulateCount; i++) {
+      moveCars();
+      res.add(copyCars());
     }
+    resetCars();
+    return res;
   }
 
-  void tryMoveCar(Car car) {
-    if (this.carMoveDecider.canMove()) {
-      car.go();
-    }
+  public void moveCars() {
+    cars.forEach(Car::go);
   }
 
-  public Car[] copyCars() {
-    Car[] res = new Car[carCount];
-    for (int i = 0; i < carCount; i++) {
-      res[i] = new Car(cars[i]);
+  public List<Car> copyCars() {
+    List<Car> res = new ArrayList<>();
+    for (Car car: cars) {
+      res.add(new Car(car));
     }
     return res;
   }

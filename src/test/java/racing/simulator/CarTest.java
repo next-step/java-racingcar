@@ -2,27 +2,23 @@ package racing.simulator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CarTest {
 
-  @DisplayName("차를 이동시키고 위치에 따른 콘솔 출력 형태의 문자열을 요구하면 반환한다.")
+  @DisplayName("전략에 따라 차를 이동한다.")
   @ParameterizedTest
-  @CsvSource(value = {
-      "0:''",
-      "1:-",
-      "2:--",
-      "7:-------",
-  }, delimiter = ':')
-  void getLocationConsoleFormat_returnsConsolePrintFormat(int goCount, String consoleOutput) {
-    Car car = new Car();
+  @ValueSource(booleans = {true, false})
+  void getLocationConsoleFormat_returnsConsolePrintFormat(boolean strategyResult) {
+    int simulateCount  = 4;
+    Car car = new Car(() -> strategyResult);
 
-    for (int i = 0; i < goCount; i++) {
+    for (int i = 0; i < simulateCount ; i++) {
       car.go();
     }
 
-    assertThat(car.getLocationConsoleFormat()).isEqualTo(consoleOutput);
+    assertThat(car.getLocation()).isEqualTo(strategyResult ? simulateCount : 0);
   }
 }

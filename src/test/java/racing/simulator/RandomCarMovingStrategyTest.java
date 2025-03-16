@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
 
-class CarMoveDeciderTest {
+class RandomCarMovingStrategyTest {
 
   @DisplayName("움직일지 판단 할 시 3 이하 random 수로 뽑힐시 false를 반환한다.")
   @ParameterizedTest
@@ -21,7 +21,7 @@ class CarMoveDeciderTest {
 
     Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
 
-    assertFalse(new CarMoveDecider(mockRandom).canMove());
+    assertFalse(new RandomCarMovingStrategy(mockRandom).isMove());
   }
 
   @DisplayName("움직일지 판단 할 시 4 이상 random 수로 뽑힐시 true를 반환한다.")
@@ -32,6 +32,6 @@ class CarMoveDeciderTest {
 
     Mockito.when(mockRandom.nextInt(anyInt())).thenReturn(randomNum);
 
-    assertTrue(new CarMoveDecider(mockRandom).canMove());
+    assertTrue(new RandomCarMovingStrategy(mockRandom).isMove());
   }
 }
