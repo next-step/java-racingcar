@@ -18,10 +18,8 @@ public class RaceService {
         return new Cars(carList, numberGenerator);
     }
 
-    public void moveCar(Cars cars, int moveCount) {
-        for (int i = 0; i < moveCount; i++) {
-            cars.moveAll();
-        }
+    public void moveCar(Cars cars) {
+        cars.moveAll();
     }
 
 }

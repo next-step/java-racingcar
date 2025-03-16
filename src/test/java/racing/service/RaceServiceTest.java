@@ -37,11 +37,9 @@ class RaceServiceTest {
         Cars cars = raceService.generateCar(3, new FakeNumberGenerator());
 
         // when
-        raceService.moveCar(cars, 5);
+        raceService.moveCar(cars);
 
         // then
-        assertThat(cars.getPositions()).isEqualTo(Arrays.asList(5, 5, 5));
+        assertThat(cars.getPositions()).isEqualTo(Arrays.asList(1, 1, 1));
     }
-
-
 }
