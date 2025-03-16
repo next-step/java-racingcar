@@ -1,4 +1,8 @@
-package racing;
+package racing.ui;
+
+import racing.car.Car;
+import racing.car.CarName;
+import racing.car.Cars;
 
 import java.util.List;
 
@@ -26,7 +30,8 @@ public class ResultView {
 
     public static void printWinners(List<Car> winners) {
         for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i).getName());
+            CarName winnerName = winners.get(i).getName();
+            System.out.print(winnerName);
             if (i != winners.size() - 1) {
                 System.out.print(", ");
             }

@@ -1,4 +1,6 @@
-package racing;
+package racing.car;
+
+import racing.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
