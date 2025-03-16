@@ -9,7 +9,7 @@ public class OutputView {
   }
 
   public static void showLocation(List<Integer> locations) {
-    locations.forEach(location -> System.out.println("-".repeat(Math.max(0,location))));
+    locations.forEach(location -> System.out.println("-".repeat(Math.max(0, location))));
   }
 
   public static void showWhitespace() {

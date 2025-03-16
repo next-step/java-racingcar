@@ -12,10 +12,10 @@ class CarTest {
   @ParameterizedTest
   @ValueSource(booleans = {true, false})
   void getLocationConsoleFormat_returnsConsolePrintFormat(boolean strategyResult) {
-    int simulateCount  = 4;
+    int simulateCount = 4;
     Car car = new Car(() -> strategyResult);
 
-    for (int i = 0; i < simulateCount ; i++) {
+    for (int i = 0; i < simulateCount; i++) {
       car.go();
     }
 

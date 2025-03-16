@@ -37,7 +37,7 @@ public class CarRacingGameSimulator {
 
   public List<Car> copyCars() {
     List<Car> res = new ArrayList<>();
-    for (Car car: cars) {
+    for (Car car : cars) {
       res.add(new Car(car));
     }
     return res;
