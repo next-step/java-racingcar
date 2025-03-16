@@ -42,7 +42,6 @@ public class RacingCarGame {
         OutputView.printCarDistance(car.getDistance());
     }
 
-
     public static boolean isMove(int randomNumber) {
         return randomNumber >= MOVE_CRITERIA;
     }
