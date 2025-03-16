@@ -59,11 +59,12 @@ public class StringAddCalculatorTest {
 
     @Test
     void extractNumbersTest() {
-        // 커스텀 메소드를 포함하는 문자열의 경우, 위 테스트에 사용된 메소드들을 사용해 적절한 결과 도출 확인 테스트
+        // 커스텀 메소드를 포함하는 문자열의 경우, 번호만 담긴 부분 추출
 
-        // "//;\n1;2;3" => [1,2,3]
-        stringAddCalculator.checkIfOnlyNumbers("1:2:3");
-        stringAddCalculator.checkIfOnlyNumbers("//;\n1;2;3");
+        // "\\;\n1;2;3" -> "1;2;3"
+        // "1,2:3" => "1,2:3"
+        assertEquals("1;2;3",  stringAddCalculator.extractNumbers("\\;\n1;2;3"));
+        assertEquals("1,2:3",  stringAddCalculator.extractNumbers("1,2:3"));
     }
 
     @Test

@@ -15,7 +15,7 @@ public class StringAddCalculator {
 //            // "", "1", "-3", "abc" 등의 경우 처리
 //            throw new IllegalArgumentException("Invalid input");
 //        }
-        String numbersWithSeparators = extractNumbers(input); // "\\;\n1;2;3" -> "1,2;3"
+        String numbersWithSeparators = extractNumbers(input); // "\\;\n1;2;3" -> "1;2;3"
         String separators = filterSeparators(input); // SEPARATORS = ",:" -> ",:;"
         int[] numbers = splitNumbers(numbersWithSeparators, separators); // e,g. "1,2;3" -> [1,2,3]
         int result = addNumbersInArray(numbers); // [1,2,3] -> 6
