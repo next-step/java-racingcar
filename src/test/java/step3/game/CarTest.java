@@ -1,10 +1,9 @@
-package step3;
+package step3.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.game.Car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static step3.game.Car.START_LINE;

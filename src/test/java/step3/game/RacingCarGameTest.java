@@ -1,11 +1,9 @@
-package step3;
+package step3.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.game.PositiveNumber;
-import step3.game.RacingCarGame;
 import step3.view.InputView;
 
 import java.io.ByteArrayInputStream;

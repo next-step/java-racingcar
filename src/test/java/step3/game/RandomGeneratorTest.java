@@ -1,8 +1,7 @@
-package step3;
+package step3.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import step3.game.RandomGenerator;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
