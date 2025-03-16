@@ -9,9 +9,7 @@ import racingcar.random.NumberGenerator;
 public class Racing {
   private ArrayList<Car> cars;
   private ArrayList<RacingBoard> racingBoards;
-
   private final int round;
-
   private final NumberGenerator numberGenerator;
 
   public Racing(int carCount, int round, NumberGenerator numberGenerator) {

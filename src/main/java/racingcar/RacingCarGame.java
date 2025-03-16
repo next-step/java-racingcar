@@ -7,8 +7,10 @@ import racingcar.view.ResultView;
 
 public class RacingCarGame {
     public static void main(String[] args) {
+
       int carCount = InputView.inputCarCount();
       int round = InputView.inputRound();
+      InputView.closeScanner();
 
       Racing racing = new Racing(carCount, round, new RandomNumberGenerator());
       List<RacingBoard> racingBoards = racing.start();
