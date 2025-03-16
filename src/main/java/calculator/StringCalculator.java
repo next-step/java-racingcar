@@ -1,7 +1,11 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
     private static final String regex = "[,:]";
+    private static final String custom_delimiter = "//(.)\n(.*)";
 
     public static int cal(String str) {
         if (str == null || str.isEmpty()) {
@@ -11,6 +15,10 @@ public class StringCalculator {
     }
 
     private static String[] split(String str) {
+        Matcher m = Pattern.compile(custom_delimiter).matcher(str);
+        if (m.find()) {
+            return m.group(2).split(m.group(1));
+        }
         return str.split(regex);
     }
 
