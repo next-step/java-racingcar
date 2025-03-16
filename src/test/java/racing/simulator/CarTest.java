@@ -11,7 +11,7 @@ class CarTest {
   @DisplayName("전략에 따라 차를 이동한다.")
   @ParameterizedTest
   @ValueSource(booleans = {true, false})
-  void getLocationConsoleFormat_returnsConsolePrintFormat(boolean strategyResult) {
+  void go_carMovedByStrategy(boolean strategyResult) {
     int simulateCount = 4;
     Car car = new Car(() -> strategyResult);
 
