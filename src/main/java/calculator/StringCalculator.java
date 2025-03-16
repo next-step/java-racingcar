@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +12,7 @@ public class StringCalculator {
         if (str == null || str.isEmpty()) {
             return 0;
         }
-        return sum(split(str));
+        return sum(toInts(split(str)));
     }
 
     private static String[] split(String str) {
@@ -22,19 +23,15 @@ public class StringCalculator {
         return str.split(regex);
     }
 
-    private static int sum(String[] strings) {
-        int result = 0;
-        for (String s : strings) {
-            result += toInts(s);
-        }
-        return result;
+    private static int sum(int[] ints) {
+        return Arrays.stream(ints).sum();
     }
 
-    private static int toInts(String s) {
-        int i = Integer.parseInt(s);
-        if(i < 0) {
-            throw new RuntimeException("음수는 허용되지 않습니다.");
-        }
-        return i;
+    private static int[] toInts(String[] strings) {
+        return Arrays.stream(strings).mapToInt(s -> {
+            int i = Integer.parseInt(s);
+            if (i < 0) throw new RuntimeException("음수는 허용되지 않습니다");
+            return i;
+        }).toArray();
     }
 }
