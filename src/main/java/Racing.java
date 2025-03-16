@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Racing {
 
-    private final List<Car> carList = new ArrayList<>(); // 자동자 리스트
+    private final List<Car> carList = new ArrayList<>(); // 자동차 리스트
 
     private final int tryCount; // 시도 횟수
 
