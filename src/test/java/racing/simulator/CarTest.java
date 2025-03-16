@@ -1,6 +1,7 @@
 package racing.simulator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,5 +21,20 @@ class CarTest {
     }
 
     assertThat(car.getLocation()).isEqualTo(strategyResult ? simulateCount : 0);
+  }
+
+  @DisplayName("reset하면 차의 위치를 0으로 만든다.")
+  @Test
+  void reset_setLocationZero() {
+    int simulateCount = 4;
+    Car car = new Car(() -> true);
+
+    for (int i = 0; i < simulateCount; i++) {
+      car.go();
+    }
+
+    car.reset();
+
+    assertThat(car.getLocation()).isEqualTo(0);
   }
 }
