@@ -21,13 +21,13 @@ public class CarRacingGameSimulator {
     List<List<Integer>> res = new ArrayList<>();
     for (int i = 0; i < simulateCount.getCount(); i++) {
       moveCars();
-      res.add(getCarsLocation());
+      res.add(getCarLocations());
     }
     resetCars();
     return res;
   }
 
-  public List<Integer> getCarsLocation() {
+  public List<Integer> getCarLocations() {
     return cars.stream().map(Car::getLocation).collect(Collectors.toList());
   }
 
