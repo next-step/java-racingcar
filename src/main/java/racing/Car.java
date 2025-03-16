@@ -7,14 +7,14 @@ public class Car {
 
     public static final int START_POSITION = 1;
     private int position;
-    private String name;
+    private final String name;
 
     public Car(String name) {
         this.position = START_POSITION;
         this.name = name;
     }
 
-    public int active(boolean canProgress) {
+    public int move(boolean canProgress) {
         if (canProgress) {
             this.position++;
         }
@@ -24,15 +24,6 @@ public class Car {
     public String getName(){
         return this.name;
     }
-
-//    public static List<Car> createCars(int size) {
-//        List<Car> cars = new ArrayList<>();
-//        for (int i = 0; i < size; i++) {
-//            cars.add(new Car());
-//        }
-//        return cars;
-//    }
-
 
     public static List<Car> createCars(String carNames) {
         String[] names = carNames.split(",");

@@ -20,7 +20,7 @@ public class CarTest {
     @CsvSource(value = {"false:1", "true:2"}, delimiter = ':')
     void 행동시_전진여부_결과(boolean canProgress, int expectedPosition) {
         Car car = new Car("name");
-        assertThat(car.active(canProgress)).isEqualTo(expectedPosition);
+        assertThat(car.move(canProgress)).isEqualTo(expectedPosition);
     }
 
 
