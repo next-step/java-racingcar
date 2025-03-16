@@ -4,12 +4,9 @@ import util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarExecutor {
     private static List<Car> cars;
-    private static Random random = new Random();
-    private static final int MOVING_STANDARD = 4;
 
     private CarExecutor() {
 
@@ -26,8 +23,6 @@ public class CarExecutor {
 
     public static void move(Car car) {
         int randomNumber = RandomNumberGenerator.getRandomNumber();
-        if (randomNumber >= MOVING_STANDARD) {
-            car.move();
-        }
+        car.move(randomNumber);
     }
 }
