@@ -5,10 +5,10 @@ import util.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarExecutor {
+public class Cars {
     private static List<Car> cars;
 
-    private CarExecutor() {
+    private Cars() {
 
     }
 

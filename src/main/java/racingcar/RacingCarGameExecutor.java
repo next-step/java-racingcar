@@ -11,7 +11,7 @@ public class RacingCarGameExecutor {
         int carCount = getCarCount();
         int tryCount = getTryCount();
 
-        List<Car> cars = CarExecutor.initializeCars(carCount);
+        List<Car> cars = Cars.initializeCars(carCount);
         moveCar(cars, tryCount);
     }
 
@@ -38,7 +38,7 @@ public class RacingCarGameExecutor {
 
     public static void moveCarPerRound(List<Car> cars) {
         for (Car car : cars) {
-            CarExecutor.move(car);
+            Cars.move(car);
         }
         getCarResults(cars);
     }
