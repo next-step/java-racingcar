@@ -10,7 +10,7 @@ public class PositiveInteger {
         this.value = value;
     }
 
-    public int getValue() {
+    public int value() {
         return value;
     }
 

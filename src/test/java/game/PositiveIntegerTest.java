@@ -18,7 +18,7 @@ class PositiveIntegerTest {
     void constructor_2() {
         int value = 0;
         PositiveInteger positiveInteger = new PositiveInteger(value);
-        Assertions.assertThat(positiveInteger.getValue()).isEqualTo(value);
+        Assertions.assertThat(positiveInteger.value()).isEqualTo(value);
     }
 
     @DisplayName("addOne 메서드 호출 시 value가 1 증가")
@@ -27,7 +27,7 @@ class PositiveIntegerTest {
         int initialValue = 0;
         PositiveInteger positiveInteger = new PositiveInteger(0);
         positiveInteger.addOne();
-        Assertions.assertThat(positiveInteger.getValue()).isEqualTo(++initialValue);
+        Assertions.assertThat(positiveInteger.value()).isEqualTo(++initialValue);
     }
 
 }

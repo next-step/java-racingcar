@@ -7,11 +7,11 @@ public class RacingGame {
     private Cars cars;
 
     public void start() {
-        ready(readCarCount());
-        play(readRoundCount());
+        ready(new PositiveInteger(readCarCount()));
+        play(new PositiveInteger(readRoundCount()));
     }
 
-    private void ready(int totalCarCount) {
+    private void ready(PositiveInteger totalCarCount) {
         cars = new Cars(totalCarCount);
     }
 
@@ -19,8 +19,8 @@ public class RacingGame {
         return InputView.read("자동차 대수는 몇 대 인가요?");
     }
 
-    private void play(int totalRound) {
-        for (int i = 0; i < totalRound; i++) {
+    private void play(PositiveInteger totalRound) {
+        for (int i = 0; i < totalRound.value(); i++) {
             cars.race();
             ResultView.print(cars.getPositions());
         }
