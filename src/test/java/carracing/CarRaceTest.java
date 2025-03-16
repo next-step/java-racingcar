@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -69,5 +71,23 @@ public class CarRaceTest {
     testCar.move(number);
 
     assertEquals(currentPosition, testCar.getPosition());
+  }
+
+  @DisplayName("자동차의 상태를 출력하는 기능 테스트")
+  @Test
+  void testPrintCarStatus() {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outputStream));
+
+    Car testCar = new Car();
+    testCar.move(4);
+    testCar.move(5);
+    testCar.move(3);
+    ResultView.printCarStatus(testCar);
+
+    System.setOut(originalOut);
+    String expectedOutput = "---\n";
+    assertEquals(expectedOutput, outputStream.toString());
   }
 }
