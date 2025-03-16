@@ -16,5 +16,7 @@
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 
 ## TODO
-- [] Car
+- [X] Car
   - 이름을 갖는다. 결과에 함께 출력해 주어야 함.
+- [X] MovingStrategy
+- [X] RandomMovingStrategy
