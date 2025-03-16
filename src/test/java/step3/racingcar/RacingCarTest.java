@@ -7,6 +7,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.racingcar.model.RacingCar;
+import step3.racingcar.model.RacingCarResult;
 
 public class RacingCarTest {
 

@@ -4,6 +4,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.racingcar.model.RacingCar;
+import step3.racingcar.model.RacingCarGameRound;
+import step3.racingcar.model.RacingCarResult;
 
 public class RacingCarGameRoundTest {
 
