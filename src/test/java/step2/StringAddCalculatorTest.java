@@ -46,10 +46,14 @@ public class StringAddCalculatorTest {
 
     @Test
     void findCustomSeparatorTest() {
-        // 커스텀 메소드를 찾아내는 메소드 테스트
+        // 커스텀 구분자를 찾아내는 메소드 테스트
 
         // "//;\n1;2;3" => ;
-        // "//#\n1#2#3" => ;
+        // "//#\n1#2#3" => #
+        // "//#;\n1#2#3" => #;
+        assertEquals(";", stringAddCalculator.findCustomSeparator("//;\n1;2;3"));
+        assertEquals("#", stringAddCalculator.findCustomSeparator("//#\n1#2#3"));
+        assertEquals("#;", stringAddCalculator.findCustomSeparator("//#;\n1#2#3"));
     }
 
     @Test

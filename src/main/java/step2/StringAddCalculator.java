@@ -2,9 +2,13 @@ package step2;
 
 import java.util.Arrays;
 
-
 public class StringAddCalculator {
     private static final String DEFAULT_SEPARATORS = ",:";
+    private static final String REGEX = "//(.)\n(.*)";
+
+    public StringAddCalculator() {
+        this.findCustomSeparator("\\#\n1#2#3");
+    }
 
     private static String createRegex(String separators) {
         return "["+separators+"]";
@@ -35,5 +39,12 @@ public class StringAddCalculator {
         }
 
         return sum;
+    }
+
+    public String findCustomSeparator(String numbersWithCustomSeparator) {
+        // e.g. //;\n1;2;3
+        String[] lines = numbersWithCustomSeparator.split("\n"); // e.g. [//;, 1;2;3]
+        String customSeparator = lines[0].substring(2);  // e.g. //;. ->  ;
+        return customSeparator;
     }
 }
