@@ -1,5 +1,7 @@
 package racingcar;
 
+import util.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,10 +25,9 @@ public class CarExecutor {
     }
 
     public static void move(Car car) {
-        int randomNumber = random.nextInt(10);
+        int randomNumber = RandomNumberGenerator.getRandomNumber();
         if (randomNumber >= MOVING_STANDARD) {
             car.move();
         }
     }
-
 }
