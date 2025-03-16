@@ -8,13 +8,11 @@ import racingcar.random.NumberGenerator;
 
 public class Racing {
   private ArrayList<Car> cars;
-  private ArrayList<RacingBoard> racingBoards;
   private final int round;
   private final NumberGenerator numberGenerator;
 
   public Racing(int carCount, int round, NumberGenerator numberGenerator) {
     this.cars = new ArrayList<>();
-    this.racingBoards = new ArrayList<>();
     this.round = round;
     this.numberGenerator = numberGenerator;
 
@@ -41,7 +39,7 @@ public class Racing {
   public List<RacingBoard> start() {
     return IntStream.range(0, round)
         .mapToObj(this::racingRound)
-        .collect(Collectors.toCollection(() -> racingBoards));
+        .collect(Collectors.toList());
   }
 
   public boolean isEnabledMove() {
