@@ -1,4 +1,4 @@
-package calculator.exception;
+package racinggame.exception;
 
 public class NotPositiveNumberException extends RuntimeException {
 

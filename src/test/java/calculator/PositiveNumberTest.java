@@ -16,7 +16,7 @@ class PositiveNumberTest {
     @ParameterizedTest
     @ValueSource(strings = {"1"})
     void stringToInt(String text) {
-        assertThat(new PositiveNumber(text).getValue()).isEqualTo(1);
+        assertThat(new PositiveNumber(text)).isEqualTo(new PositiveNumber(1));
     }
 
     @DisplayName("숫자 이외의 문자열을 전달하는 경우 InvalidNumberFormatException 예외를 반환한다.")

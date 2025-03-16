@@ -1,11 +1,9 @@
 package calculator.exception;
 
-import static common.ExceptionDetails.INVALID_NUMBER_FORMAT_EXCEPTION;
-
 public class InvalidNumberFormatException extends RuntimeException {
 
     public InvalidNumberFormatException() {
-        super(INVALID_NUMBER_FORMAT_EXCEPTION.getMessage());
+        super("숫자 이외의 값은 입력할 수 없습니다.");
     }
 
 }
