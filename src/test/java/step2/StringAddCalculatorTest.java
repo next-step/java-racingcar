@@ -66,36 +66,43 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    void checkIfInputsAreNumbersTest() {
-        // 숫자가 아닌 값이 들어오면 오류
+    void checkIfOnlyPositiveNumbersTest() {
+        // 숫자가 아니거나 음수 값이 들어오면 오류
 
         // "a,b,c" => false
         // "NaN:e:log" => false
-        // "1,2,3" -> true
-        assertFalse(stringAddCalculator.checkIfValidInput("a,b,c"));
-        assertFalse(stringAddCalculator.checkIfValidInput("NaN:e:log"));
-        assertTrue(stringAddCalculator.checkIfValidInput("1,2,3"));
-    }
-
-    @Test
-    void checkIfInputsArePositiveNumbersTest() {
-        // 숫자가 아닌 값이 들어오면 오류
-
         // "-1,-2" => false
-        assertFalse(stringAddCalculator.checkIfValidInput("-1,-2"));
-        assertTrue(stringAddCalculator.checkIfValidInput("1,2,3"));
+        // "1,2,3" -> true
+        assertFalse(stringAddCalculator.checkIfOnlyPositiveNumbers("a,b,c"));
+        assertFalse(stringAddCalculator.checkIfOnlyPositiveNumbers("NaN:e:log"));
+        assertFalse(stringAddCalculator.checkIfOnlyPositiveNumbers("-1,-2"));
+        assertTrue(stringAddCalculator.checkIfOnlyPositiveNumbers("1,2,3"));
     }
 
     @Test
-    void checkIfValidCustomSeparatorTest() {
+    void checkIfValidPatternTest() {
         // 숫자가 아닌 값이 들어오면 오류
 
         // "//;//1;2;3" => false
         // "\n;\n1;2;3" => false
-        assertFalse(stringAddCalculator.checkIfValidInput("//;//1;2;3"));
-        assertFalse(stringAddCalculator.checkIfValidInput("\n;\n1;2;3"));
-        assertTrue(stringAddCalculator.checkIfValidInput("//;\n1;2;3"));
+        assertFalse(stringAddCalculator.checkIfValidPattern("//;//1;2;3"));
+        assertFalse(stringAddCalculator.checkIfValidPattern("\n;\n1;2;3"));
+        assertTrue(stringAddCalculator.checkIfValidPattern("//;\n1;2;3"));
     }
 
+    @Test
+    void calculateTest() {
+        // 정상 입력에 대한 계산 결과 테스트
+        assertEquals(6, stringAddCalculator.calculate("//;\n1;2;3"));  // 1 + 2 + 3 = 6
+        assertEquals(6, stringAddCalculator.calculate("1,2:3"));      // 1 + 2 + 3 = 6
+        assertEquals(0, stringAddCalculator.calculate(""));           // 빈 문자열 => 0
+        assertEquals(2, stringAddCalculator.calculate("2"));          // 2 => 2
+        assertEquals(10, stringAddCalculator.calculate("5,5"));       // 5 + 5 = 10
 
+        // 유효하지 않은 입력에 대한 예외 발생 테스트
+        assertThrows(IllegalArgumentException.class, () -> stringAddCalculator.calculate("a,b,c"));
+        assertThrows(IllegalArgumentException.class, () -> stringAddCalculator.calculate("-1,-2"));
+        assertThrows(IllegalArgumentException.class, () -> stringAddCalculator.calculate("//;\n"));
+        assertThrows(IllegalArgumentException.class, () -> stringAddCalculator.calculate("\n;\n1;2;3"));
+    }
 }
