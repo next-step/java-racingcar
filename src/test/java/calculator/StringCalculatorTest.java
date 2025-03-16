@@ -7,12 +7,17 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-/*
-4. 음수의 경우 RuntimeException 예외를 처리한다
-7. 숫자 하나(숫자만) 문자열로 입력할 경우 해당 숫자를 반환
- */
 public class StringCalculatorTest {
+
+    @Test
+    @DisplayName("음수 예외")
+    void test5() {
+        assertThatThrownBy(
+                () -> StringCalculator.cal("-2,3")
+        ).isInstanceOf(RuntimeException.class);
+    }
 
     @Test
     @DisplayName("숫자 하나일때 숫자반환")

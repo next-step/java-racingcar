@@ -31,6 +31,10 @@ public class StringCalculator {
     }
 
     private static int toInts(String s) {
-        return Integer.parseInt(s);
+        int i = Integer.parseInt(s);
+        if(i < 0) {
+            throw new RuntimeException("음수는 허용되지 않습니다.");
+        }
+        return i;
     }
 }
