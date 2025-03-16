@@ -1,8 +1,8 @@
-package edu.nextstep.camp.racingcar.step2;
+package edu.nextstep.camp.tutorial;
 
 import org.junit.jupiter.api.Test;
 
-import static edu.nextstep.camp.racingcar.step2.StringAddCalculator.splitAndSum;
+import static edu.nextstep.camp.tutorial.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

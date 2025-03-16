@@ -1,4 +1,4 @@
-package edu.nextstep.camp.racingcar.step3;
+package edu.nextstep.camp.carracing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

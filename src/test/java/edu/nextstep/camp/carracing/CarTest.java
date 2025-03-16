@@ -1,4 +1,4 @@
-package edu.nextstep.camp.racingcar.step3;
+package edu.nextstep.camp.carracing;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

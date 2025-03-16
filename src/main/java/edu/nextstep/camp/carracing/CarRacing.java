@@ -1,17 +1,21 @@
-package edu.nextstep.camp.racingcar.step3;
+package edu.nextstep.camp.carracing;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static edu.nextstep.camp.racingcar.step3.InputView.getCarCount;
-import static edu.nextstep.camp.racingcar.step3.InputView.getTryCount;
+import static edu.nextstep.camp.carracing.InputView.getCarCount;
+import static edu.nextstep.camp.carracing.InputView.getTryCount;
 
 public class CarRacing {
     private static final int RANDOM_NUMBER_BOUND = 10;
 
     private CarRacing() {
         throw new IllegalStateException("인스턴스 생성이 불가능한 클래스입니다.");
+    }
+
+    public static void main(String[] args) {
+        racing();
     }
 
     public static void racing() {
@@ -23,7 +27,7 @@ public class CarRacing {
 
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
-            moveCars(cars, carCount);
+            moveCars(cars);
             ResultView.printCarStatus(cars);
         }
     }
@@ -36,9 +40,9 @@ public class CarRacing {
         return cars;
     }
 
-    private static void moveCars(List<Car> cars, int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.get(i).move(RandomNumberGenerator.generateRandomNumber(RANDOM_NUMBER_BOUND));
+    private static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.move(RandomNumberGenerator.generateRandomNumber(RANDOM_NUMBER_BOUND));
         }
     }
 }

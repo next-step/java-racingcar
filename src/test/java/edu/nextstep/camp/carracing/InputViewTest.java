@@ -1,12 +1,12 @@
-package edu.nextstep.camp.racingcar.step3;
+package edu.nextstep.camp.carracing;
 
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
-import static edu.nextstep.camp.racingcar.step3.InputView.getCarCount;
-import static edu.nextstep.camp.racingcar.step3.InputView.getTryCount;
+import static edu.nextstep.camp.carracing.InputView.getCarCount;
+import static edu.nextstep.camp.carracing.InputView.getTryCount;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class InputViewTest {
