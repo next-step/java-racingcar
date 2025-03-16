@@ -39,12 +39,12 @@ public class SetTest {
   }
 
   @ParameterizedTest
-  @CsvSource({
+  @CsvSource(value = {
       "1 | true",
       "2 | true",
       "3 | true",
       "4 | false",
-      "5 | false"})
+      "5 | false"}, delimiter = '|')
   @DisplayName("요구사항3: Set의 contains 메소드는 Set에 포함되지 않은 원소가 주어지면 false를 반환한다")
   void contains(Integer number, boolean expected) {
     boolean contains = numbers.contains(number);
