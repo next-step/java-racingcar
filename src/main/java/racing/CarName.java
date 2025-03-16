@@ -22,5 +22,9 @@ public class CarName {
     private boolean isBlank(String name) {
         return name == null || name.isEmpty();
     }
+
+    public String getName() {
+        return name;
+    }
 }
 

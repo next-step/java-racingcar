@@ -15,9 +15,10 @@ public class ResultView {
 
     public static void printCars(Cars cars) {
         List<String> positionStrings = cars.getPositionStrings();
+        List<String> carNames = cars.getCarNames();
 
         for (int i = 0; i < positionStrings.size(); i++) {
-            System.out.print("Car" + (i + 1) + ": ");
+            System.out.print(carNames.get(i) + " : ");
             System.out.println(positionStrings.get(i));
         }
         System.out.println();

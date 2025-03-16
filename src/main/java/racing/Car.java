@@ -34,4 +34,8 @@ public class Car {
     public String getPositionString() {
         return POSITION_SYMBOL.repeat(position);
     }
+
+    public String getName() {
+        return name.getName();
+    }
 }

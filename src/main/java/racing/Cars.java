@@ -36,4 +36,12 @@ public class Cars {
         }
         return positionStrings;
     }
+
+    public List<String> getCarNames() {
+        List<String> carNames = new ArrayList<>();
+        for (Car car : cars) {
+            carNames.add(car.getName());
+        }
+        return carNames;
+    }
 }
