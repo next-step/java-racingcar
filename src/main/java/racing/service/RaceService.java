@@ -7,7 +7,7 @@ import racing.model.Cars;
 
 public class RaceService {
 
-    public Cars generateCar(int carCount) {
+    public Cars generateCar(int carCount, NumberGenerator numberGenerator) {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
@@ -15,7 +15,7 @@ public class RaceService {
             carList.add(car);
         }
 
-        return new Cars(carList);
+        return new Cars(carList, numberGenerator);
     }
 
     public void moveCar(Cars cars, int moveCount) {

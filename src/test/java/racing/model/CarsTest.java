@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.fake.FakeNumberGenerator;
 
 class CarsTest {
     private Cars cars;
@@ -16,7 +17,7 @@ class CarsTest {
     @Test
     void moveAllTest() {
         // given
-        cars = new Cars(makeDummyCars(3));
+        cars = new Cars(makeDummyCars(3), new FakeNumberGenerator());
 
         // when
         cars.moveAll();

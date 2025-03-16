@@ -6,6 +6,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.fake.FakeNumberGenerator;
 import racing.model.Cars;
 
 class RaceServiceTest {
@@ -23,7 +24,7 @@ class RaceServiceTest {
         int carCount = 3;
 
         // when
-        Cars cars = raceService.generateCar(carCount);
+        Cars cars = raceService.generateCar(carCount, new FakeNumberGenerator());
 
         // then
         assertThat(cars.size()).isEqualTo(carCount);
@@ -33,7 +34,7 @@ class RaceServiceTest {
     @Test
     void moveCarTest() {
         // given
-        Cars cars = raceService.generateCar(3);
+        Cars cars = raceService.generateCar(3, new FakeNumberGenerator());
 
         // when
         raceService.moveCar(cars, 5);
