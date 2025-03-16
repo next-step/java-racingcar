@@ -1,7 +1,7 @@
 package racingcar;
 
-public class RacingCar {
-  private int position = 0;
+public class Car {
+  private int position;
 
   public void move() {
     position++;

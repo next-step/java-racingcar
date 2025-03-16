@@ -15,7 +15,9 @@
 * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다. 
 
 ## 기능 목록
-* 자동차 경주 게임을 진행하는 클래스 (사용자 입/출력, 게임 진행) : RacingCarGame
-* 자동차 경주를 관리하는 클래스 (몇 대, 자동차 상태 출력) : RacingCarManager
-* 자동차 클래스 (전진, 상태 리턴) : RacingCar
-* 자동차 전진 여부를 결정하는 클래스 (랜덤 값 생성) : RandomNumberGenerator
+* 자동차 경주 게임을 진행하는 클래스 (사용자 입/출력) : RacingCarGame
+* 자동차 경주를 관리하는 클래스 (몇 대, 몇 번, 경주 진행) : Racing
+* 자동차 경주 결과를 저장하는 클래스 : RacingBoard
+* 자동차 클래스 (전진, 상태 리턴) : Car
+* 랜덤 값 생성하는 클래스 : RandomNumberGenerator
+* UI 입출력 관리하는 클래스: InputView, OutputView
