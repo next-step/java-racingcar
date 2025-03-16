@@ -49,4 +49,36 @@ public class RacingSession {
     public static boolean canProgress(int number) {
         return number >= MIN_PROGRESS_NUMBER;
     }
+
+
+    public static List<String> findWinners(List<String> carNames, List<List<Integer>> playHistory){
+        int maxPosition = findMaxPosition(playHistory);
+        List<Integer> lastPositions = playHistory.get(playHistory.size()-1);
+        return findMaxPositionNames(carNames, lastPositions, maxPosition);
+    }
+
+    private static int findMaxPosition(List<List<Integer>> playHistory){
+        List<Integer> lastPositions = playHistory.get(playHistory.size()-1);
+        int maxPosition = 0;
+        for (Integer lastPosition : lastPositions) {
+            maxPosition = Math.max(maxPosition, lastPosition);
+        }
+        return maxPosition;
+    }
+
+    private static List<String> findMaxPositionNames(List<String> carNames, List<Integer> lastPositions, int maxPosition){
+        List<String> lastPositionCarNames = new ArrayList<>();
+        for (int i=0; i<lastPositions.size(); i++) {
+            insertIfMaxPosition(carNames.get(i), lastPositions.get(i), maxPosition, lastPositionCarNames);
+        }
+        return lastPositionCarNames;
+    }
+
+    private static void insertIfMaxPosition(String carName, int nowPosition, int maxPosition, List<String> lastPositionCarNames){
+        if (nowPosition == maxPosition) {
+            lastPositionCarNames.add(carName);
+        }
+    }
+
+
 }
