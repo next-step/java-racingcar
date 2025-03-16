@@ -3,10 +3,8 @@ import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.MockedStatic;
@@ -32,7 +30,7 @@ class CarTest {
             car.move();
 
             //then
-            assertThat(car.getPath()).isEqualTo("-");
+            assertThat(car.getPosition()).isEqualTo(1);
         }
 
     }
@@ -50,7 +48,7 @@ class CarTest {
             car.move();
 
             //then
-            assertThat(car.getPath()).isEqualTo("");
+            assertThat(car.getPosition()).isEqualTo(0);
         }
 
     }
