@@ -12,6 +12,7 @@ class StringAddCalculatorTest {
     @DisplayName(value="5. “//”와 “\\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\\n1;2;3” => 6)")
     void 패턴_구분자(){
         assertThat(cal.add("//;\n1;2;3")).isEqualTo(6);
+        assertThat(cal.add("1,5,6")).isEqualTo(12);
     }
 
     @Test
@@ -24,6 +25,7 @@ class StringAddCalculatorTest {
     @DisplayName(value="1. 빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.(예 : “” => 0, null => 0)")
     void 빈값을_0으로_변환(){
         assertThat(cal.add("")).isEqualTo(0);
+        assertThat(cal.add(null)).isEqualTo(0);
     }
 
     @Test
