@@ -21,7 +21,7 @@ class CarTest {
     })
     void 숫자에_따른_차_이동_후_position_테스트(int number, String expectedPosition) {
         // Given
-        Car car = new Car();
+        Car car = new Car("myCar");
 
         // When
         car.move(number);

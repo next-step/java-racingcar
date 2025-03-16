@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static edu.nextstep.camp.carracing.InputView.getCarCount;
 import static edu.nextstep.camp.carracing.InputView.getTryCount;
+import static edu.nextstep.camp.carracing.InputView.inputCarNames;
+import static edu.nextstep.camp.carracing.StringUtils.split;
 
 public class CarRacing {
     private static final int RANDOM_NUMBER_BOUND = 10;
+    private static final Scanner scanner = new Scanner(System.in);
 
     private CarRacing() {
         throw new IllegalStateException("인스턴스 생성이 불가능한 클래스입니다.");
@@ -19,11 +21,10 @@ public class CarRacing {
     }
 
     public static void racing() {
-        Scanner scanner = new Scanner(System.in);
-        int carCount = getCarCount(scanner);
-        int tryCount = getTryCount(scanner);
+        String[] carNames = split(inputCarNames(scanner));
+        List<Car> cars = initializeCars(carNames);
 
-        List<Car> cars = initializeCars(carCount);
+        int tryCount = getTryCount(scanner);
 
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
@@ -32,10 +33,10 @@ public class CarRacing {
         }
     }
 
-    private static List<Car> initializeCars(int carCount) {
+    private static List<Car> initializeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
         return cars;
     }

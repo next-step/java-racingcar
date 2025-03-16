@@ -5,16 +5,17 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
-import static edu.nextstep.camp.carracing.InputView.getCarCount;
 import static edu.nextstep.camp.carracing.InputView.getTryCount;
+import static edu.nextstep.camp.carracing.InputView.inputCarNames;
+import static edu.nextstep.camp.carracing.StringUtils.split;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class InputViewTest {
 
     @Test
     void 자동차_입력_테스트() {
-        String carCount = "5";
-        assertThat(getCarCount(new Scanner(new ByteArrayInputStream(carCount.getBytes())))).isEqualTo(5);
+        String carCount = "car1,car2,car3";
+        assertThat(split(inputCarNames(new Scanner(new ByteArrayInputStream(carCount.getBytes())))).length).isEqualTo(3);
     }
 
     @Test
