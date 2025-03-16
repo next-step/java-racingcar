@@ -1,6 +1,6 @@
 package racinggame;
 
-public class FakeRandomGenerator implements RandomGenerator{
+public class FakeRandomGenerator implements RandomGenerator {
 
     private final int fixedNumber;
 

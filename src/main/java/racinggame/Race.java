@@ -7,7 +7,11 @@ public class Race {
     private final List<Car> carList;
     private final RandomGenerator randomGenerator;
 
-    public Race(List<Car> carList, RandomGenerator randomGenerator) {
+    public Race(final List<Car> carList) {
+        this(carList, new RacingRandomGenerator());
+    }
+
+    public Race(final List<Car> carList, final RandomGenerator randomGenerator) {
         this.carList = carList;
         this.randomGenerator = randomGenerator;
     }
