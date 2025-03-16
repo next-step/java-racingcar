@@ -23,7 +23,7 @@ public class ResultViewTest {
     ResultView.printCarStatus(testCar);
 
     System.setOut(originalOut);
-    String expectedOutput = "--\n";
+    String expectedOutput = "---\n";
     Assertions.assertEquals(expectedOutput, outputStream.toString());
   }
 }
