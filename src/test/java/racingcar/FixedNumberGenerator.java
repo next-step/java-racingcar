@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.random.NumberGenerator;
+
 public class FixedNumberGenerator implements NumberGenerator {
 
   private final int number;

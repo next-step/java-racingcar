@@ -1,7 +1,10 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import racingcar.random.NumberGenerator;
 
 public class Racing {
   private ArrayList<Car> cars;
@@ -24,22 +27,23 @@ public class Racing {
     IntStream.range(0, carCount).mapToObj(Car::new).forEach(this.cars::add);
   }
 
-  public void racingRound(int round) {
+  public RacingBoard racingRound(int round) {
     RacingBoard racingBoard = new RacingBoard(round);
 
-    cars.stream()
-        .peek(car -> {
-          if (isEnabledMove())
-            car.move();
-        }) // 이동 조건 체크 후 이동
-        .map(Car::getPosition) // 자동차 위치 가져오기
-        .forEach(racingBoard::record); // 위치 기록
+    cars.forEach(car -> {
+      if (isEnabledMove()) {
+        car.move();
+      }
+      racingBoard.record(car.getPosition());
+    });
 
-    racingBoards.add(racingBoard);
+    return racingBoard;
   }
 
-  public void racing() {
-    IntStream.range(0, round).forEach(this::racingRound);
+  public List<RacingBoard> start() {
+    return IntStream.range(0, round)
+        .mapToObj(this::racingRound)
+        .collect(Collectors.toCollection(() -> racingBoards));
   }
 
   public boolean isEnabledMove() {
@@ -48,9 +52,5 @@ public class Racing {
 
   public ArrayList<Car> getCars() {
     return cars;
-  }
-
-  public ArrayList<RacingBoard> getRacingBoards() {
-    return racingBoards;
   }
 }
