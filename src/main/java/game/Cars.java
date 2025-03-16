@@ -5,9 +5,7 @@ import java.util.List;
 
 public class Cars {
     public static final int BOUND = 10;
-    private List<Car> cars;
-
-    private Cars() {}
+    private final List<Car> cars;
 
     public Cars(int count) {
         this.cars = createCars(count);
