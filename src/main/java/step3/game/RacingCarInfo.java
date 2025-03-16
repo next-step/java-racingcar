@@ -12,11 +12,11 @@ public class RacingCarInfo {
         this.tryCount = tryCount;
     }
 
-    public static RacingCarInfo getCars(int carCount) {
+    public static RacingCarInfo getCars(PositiveNumber carCount, PositiveNumber tryCount) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
+        for (int i = 0; i < carCount.number; i++) {
             cars.add(new Car());
         }
-        return new RacingCarInfo(cars, carCount);
+        return new RacingCarInfo(cars, tryCount.number);
     }
 }

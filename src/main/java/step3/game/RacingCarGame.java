@@ -22,15 +22,10 @@ public class RacingCarGame {
     }
 
     private static RacingCarInfo getGameInput() {
-        return getCars(parseInt(inputCarCount()));
-    }
-
-    public static String inputCarCount() {
-        return InputView.inputCarCount();
-    }
-
-    public static String inputTryCount() {
-        return InputView.inputTryCount();
+        return getCars(
+                InputView.inputCarCount(),
+                InputView.inputTryCount()
+        );
     }
 
     private static void takeTurn(List<Car> cars) {
@@ -47,9 +42,6 @@ public class RacingCarGame {
         OutputView.printCarDistance(car.getDistance());
     }
 
-    private static int parseInt(String input) {
-        return Integer.parseInt(input);
-    }
 
     public static boolean isMove(int randomNumber) {
         return randomNumber >= MOVE_CRITERIA;
