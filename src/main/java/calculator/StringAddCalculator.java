@@ -8,6 +8,9 @@ class StringAddCalculator {
 
     private static final String DEFAULT_DELIMITERS = "[,;]";
     private static final Pattern DELIMITER_REGEX_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final int PATTERN_MATCHING_GROUP_FIRST_INDEX = 1;
+    private static final int PATTERN_MATCHING_GROUP_SECOND_INDEX = 2;
+
 
     public static int run(String str) {
         if (isEmptyOrNull(str)) {
@@ -25,8 +28,8 @@ class StringAddCalculator {
     private static String[] split(String str) {
         Matcher m = DELIMITER_REGEX_PATTERN.matcher(str);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(PATTERN_MATCHING_GROUP_FIRST_INDEX);
+            return m.group(PATTERN_MATCHING_GROUP_SECOND_INDEX).split(customDelimiter);
         }
         return str.split(DEFAULT_DELIMITERS);
     }
