@@ -10,12 +10,13 @@ public class ResultView {
     }
 
     public static void printResultMessage() {
+        System.out.println();
         System.out.println(RESULT_MESSAGE);
     }
 
     public static void printCarStatus(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getPositionString());
+            System.out.println(car.getCurrentPositionString());
         }
         System.out.println();
     }

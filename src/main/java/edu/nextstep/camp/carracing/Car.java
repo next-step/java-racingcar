@@ -4,7 +4,7 @@ public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private static final String MOVE_SYMBOL = "-";
 
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
@@ -32,7 +32,7 @@ public class Car {
         }
     }
 
-    public String getPositionString() {
-        return MOVE_SYMBOL.repeat(position);
+    public String getCurrentPositionString() {
+        return String.format("%s : %s", name, MOVE_SYMBOL.repeat(position));
     }
 }

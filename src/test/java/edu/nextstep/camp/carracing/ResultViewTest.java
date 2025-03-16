@@ -26,7 +26,7 @@ class ResultViewTest {
         ResultView.printCarStatus(cars);
 
         // Then
-        String expectedOutput = "--\n-\n---\n\n";
+        String expectedOutput = "car1 : --\ncar2 : -\ncar3 : ---\n\n";
         assertThat(outputStream.toString()).isEqualTo(expectedOutput);
     }
 
@@ -36,6 +36,6 @@ class ResultViewTest {
         ResultView.printResultMessage();
 
         // Then
-        assertThat(outputStream.toString()).isEqualTo("실행 결과\n");
+        assertThat(outputStream.toString()).isEqualTo("\n실행 결과\n");
     }
 }
