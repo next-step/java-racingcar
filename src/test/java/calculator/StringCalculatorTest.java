@@ -38,4 +38,24 @@ public class StringCalculatorTest {
             () -> assertThat(resultOfNull).isEqualTo(0)
         );
     }
+
+    @Test
+    @DisplayName("커스텀 구분자 지정 시 해당 구분자로 숫자를 분리하여 합을 반환")
+    void customDelimiterTest() {
+        int result = StringCalculator.calculate("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수 입력 시 RuntimeException 발생")
+    void negativeNumberTest() {
+        Assertions.assertAll(
+            () -> assertThatThrownBy(
+                () -> StringCalculator.calculate("-1,2,3")
+            ).isInstanceOf(RuntimeException.class),
+            () -> assertThatThrownBy(
+                () -> StringCalculator.calculate("-1")
+            ).isInstanceOf(RuntimeException.class)
+        );
+    }
 }
