@@ -2,20 +2,10 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printRace(Racing racing) {
-        System.out.println("실행 결과");
-
-        for (List<String> score : racing.getScore()) {
-            priceScore(score);
-            System.out.println("\n");
+    public static void printRaceRound(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println("-".repeat(car.getPosition()));
         }
-
-
-    }
-
-    private static void priceScore(List<String> score) {
-        for (String s : score) {
-            System.out.println(s);
-        }
+        System.out.println("\n");
     }
 }

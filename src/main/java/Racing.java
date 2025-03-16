@@ -7,8 +7,6 @@ public class Racing {
 
     private final int tryCount; // 시도 횟수
 
-    private List<List<String>> score = new ArrayList<>(); // 레이싱 점수
-
     /**
      * @param carNum
      * @param tryCount
@@ -34,8 +32,11 @@ public class Racing {
      * 레이싱 시작
      */
     public void start() {
+        System.out.println("실행 결과");
+
         for (int i = 0; i < tryCount; i++) {
             race();
+            ResultView.printRaceRound(carList);
         }
     }
 
@@ -43,21 +44,9 @@ public class Racing {
      * 레이싱 점수를 저장합니다.
      */
     private void race() {
-        List<String> carsPath = new ArrayList<>();
-
         for (Car car : carList) {
             car.move();
-            carsPath.add(car.getPath());
         }
-
-        score.add(carsPath);
     }
 
-    /**
-     * @return
-     * 레이싱 점수를 반환합니다.
-     */
-    public List<List<String>> getScore() {
-        return score;
-    }
 }

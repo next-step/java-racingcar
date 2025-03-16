@@ -9,8 +9,6 @@ public class ApplicationMain {
 
         racing.start();
 
-        ResultView.printRace(racing);
-
     }
 
 }

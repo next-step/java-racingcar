@@ -12,17 +12,4 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @DisplayName("레이싱 메소드 테스트")
 class RacingTest {
 
-    @Test
-    @DisplayName("점수를 기록합니다.")
-    void start_경기_시작_후_점수_기록() {
-        //given
-        Racing racing = new Racing(2,5);
-
-        //when
-        racing.start();
-
-        //then
-        assertThat(racing.getScore().size()).isEqualTo(5);
-    }
-
 }

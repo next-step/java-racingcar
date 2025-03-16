@@ -26,12 +26,7 @@ public class Car {
         return num >= MOVE_BOUND;
     }
 
-    /**
-     * @return
-     * 경로를 반환합니다.
-     */
-    public String getPath() {
-        return "-".repeat(position);
+    public int getPosition() {
+        return position;
     }
-
 }
