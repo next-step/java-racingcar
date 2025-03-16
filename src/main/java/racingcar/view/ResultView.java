@@ -13,6 +13,5 @@ public class ResultView {
         .forEach(record -> {
           System.out.println("-".repeat(record));
         });
-    }
   }
 }
