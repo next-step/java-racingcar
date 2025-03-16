@@ -39,6 +39,12 @@ public class StringCalculatorTest {
     }
 
     @Test
+    @DisplayName("빈 문자열을 입력할 경우 0을 반환한다.")
+    void 공백_문자열() {
+        assertThat(StringCalculator.calculate(" ")).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("null 값을 입력할 경우 0을 반환한다.")
     void null_값() {
         assertThat(StringCalculator.calculate(null)).isEqualTo(0);
