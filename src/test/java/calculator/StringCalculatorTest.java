@@ -12,4 +12,10 @@ public class StringCalculatorTest {
     void 숫자_하나() {
         assertThat(StringCalculator.toInt("1")).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("숫자 두 개를 컴마 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
+    void 컴마_구분자() {
+        assertThat(StringCalculator.calculate("1,2")).isEqualTo(3);
+    }
 }
