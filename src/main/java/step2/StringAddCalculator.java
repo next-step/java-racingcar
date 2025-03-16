@@ -9,7 +9,6 @@ import static java.lang.Integer.parseInt;
 
 public class StringAddCalculator {
     public static final String REGEX = ",|:";
-    public static final int ZERO = 0;
     public static final String CUSTOM_REGEX = "//(.)\n(.*)";
     public static final int DELIMITER_GROUP = 1;
     public static final int TEXT_GROUP = 2;
@@ -18,14 +17,14 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
-            return ZERO;
+            return 0;
         }
 
         return sum(toInts(split(text)));
     }
 
     public static int sum(List<Integer> numbers) {
-        int result = ZERO;
+        int result = 0;
 
         for (int number : numbers) {
             result += number;
@@ -51,7 +50,7 @@ public class StringAddCalculator {
     }
 
     private static boolean isNegative(int number) {
-        return number < ZERO;
+        return number < 0;
     }
 
     public static String[] split(String text) {
