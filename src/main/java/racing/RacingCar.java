@@ -10,7 +10,7 @@ public class RacingCar {
         int carCount = InputView.getCarSize();
         int turnCount = InputView.getTurn();
 
-        List<Car> cars = Car.createCars(carCount);
+        List<Car> cars = Car.createCars("a,b,c");
         List<List<Integer>> carPositionsAtTurns = Racing.activeTurns(cars, turnCount);
 
         ResultView.printResult(carPositionsAtTurns);

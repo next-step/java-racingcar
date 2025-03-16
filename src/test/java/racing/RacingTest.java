@@ -13,7 +13,7 @@ public class RacingTest {
     @Test
     @DisplayName("입력받은 수만큼 턴 행동")
     void 턴_행동() {
-        List<Car> cars = List.of(new Car(), new Car());
+        List<Car> cars = List.of(new Car("a"), new Car("b"));
 
         List<List<Integer>> positions = Racing.activeTurns(cars, 5);
 
@@ -26,7 +26,7 @@ public class RacingTest {
     @Test
     @DisplayName("각 자동차 이동")
     void 자동차_이동() {
-        List<Car> cars = List.of(new Car(), new Car(), new Car());
+        List<Car> cars = List.of(new Car("a"), new Car("b"), new Car("c"));
 
         List<Integer> positions = Racing.moveCars(cars);
 

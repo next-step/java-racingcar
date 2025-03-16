@@ -7,9 +7,11 @@ public class Car {
 
     public static final int START_POSITION = 1;
     private int position;
+    private String name;
 
-    public Car() {
+    public Car(String name) {
         this.position = START_POSITION;
+        this.name = name;
     }
 
     public int active(boolean canProgress) {
@@ -19,11 +21,27 @@ public class Car {
         return this.position;
     }
 
-    public static List<Car> createCars(int size) {
+    public String getName(){
+        return this.name;
+    }
+
+//    public static List<Car> createCars(int size) {
+//        List<Car> cars = new ArrayList<>();
+//        for (int i = 0; i < size; i++) {
+//            cars.add(new Car());
+//        }
+//        return cars;
+//    }
+
+
+    public static List<Car> createCars(String carNames) {
+        String[] names = carNames.split(",");
+
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            cars.add(new Car());
+        for (String s : names) {
+            cars.add(new Car(s));
         }
         return cars;
     }
+
 }
