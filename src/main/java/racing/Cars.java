@@ -20,8 +20,12 @@ public class Cars {
     }
 
     public void race(int tryCount) {
+        ResultView.printTitle();
+
         for (int i = 0; i < tryCount; i++) {
+            ResultView.printTryCount(i + 1);
             race();
+            ResultView.printCars(this);
         }
     }
 
