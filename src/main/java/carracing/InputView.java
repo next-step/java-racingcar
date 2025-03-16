@@ -20,7 +20,6 @@ public class InputView {
   }
 
   private int getIntegerInput() {
-    int count = scanner.nextInt();
-    return count;
+    return scanner.nextInt();
   }
 }
