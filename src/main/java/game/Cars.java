@@ -20,8 +20,9 @@ public class Cars {
     }
 
     public void race() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(BOUND);
         for (Car car : this.cars) {
-            car.move(RandomUtils.nextInt(BOUND));
+            car.move(randomNumberGenerator.generate());
         }
     }
 
