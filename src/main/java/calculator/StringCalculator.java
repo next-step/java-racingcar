@@ -1,6 +1,6 @@
 package calculator;
 
-public class Calculator {
+public class StringCalculator {
     public static int cal(String str) {
         if (str == null || str.isEmpty()) {
             return 0;
