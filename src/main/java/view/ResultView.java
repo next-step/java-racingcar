@@ -12,6 +12,6 @@ public class ResultView {
     }
 
     private static String convert(int position) {
-        return MOVE_SIGN.repeat(Math.max(0, position));
+        return MOVE_SIGN.repeat(position);
     }
 }
