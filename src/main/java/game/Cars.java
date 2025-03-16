@@ -18,9 +18,9 @@ public class Cars {
         return cars;
     }
 
-    public void race(RandomNumberGenerator randomNumberGenerator) {
+    public void race(NumberGenerator numberGenerator) {
         for (Car car : this.cars) {
-            car.move(randomNumberGenerator.generate());
+            car.move(numberGenerator.generate());
         }
     }
 
