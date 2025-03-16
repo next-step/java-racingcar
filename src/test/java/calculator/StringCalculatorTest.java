@@ -18,4 +18,10 @@ public class StringCalculatorTest {
     void 컴마_구분자() {
         assertThat(StringCalculator.calculate("1,2")).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("숫자를 콜론 구분자로 입력할 경우 숫자의 합을 반환한다.")
+    void 콜론_구분자() {
+        assertThat(StringCalculator.calculate("1,2:3")).isEqualTo(6);
+    }
 }
