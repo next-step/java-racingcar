@@ -13,6 +13,8 @@ public class Race {
 
     private static final Random random = new Random();
 
+    private static final int MOVEMENT_THRESHOLD = 4;
+
     public Race(int carCount, int totalRounds) {
         if (carCount < 1 || totalRounds < 1) {
             throw new IllegalArgumentException();
@@ -33,13 +35,13 @@ public class Race {
         }
 
         for (int i = 0; i < carCount; i++) {
-            carPositions.set(i, move(carPositions.get(i), random.nextInt(10)));
+            carPositions.set(i, getCarPositionAfterMove(carPositions.get(i), random.nextInt(10)));
         }
         currentRound++;
     }
 
-    private int move(int initialPosition, int seed) {
-        if (seed >= 4) return initialPosition + 1;
+    public int getCarPositionAfterMove(int initialPosition, int seed) {
+        if (seed >= MOVEMENT_THRESHOLD) return initialPosition + 1;
         return initialPosition;
     }
 }

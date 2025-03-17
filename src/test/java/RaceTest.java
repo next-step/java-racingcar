@@ -65,4 +65,18 @@ class RaceTest {
         }
         assertThrows(IllegalStateException.class, race::runRound);
     }
+
+    @Test
+    @DisplayName("랜덤 변수가 4이상이면 차가 한 칸 움직인다.")
+    void carMovesOneStepIfRandomNumberIsGreaterThanEqual4() {
+        Race race = new Race(5, 3);
+        for (int i = 0; i < 4; i++) {
+            int carPositionAfterMove = race.getCarPositionAfterMove(0, i);
+            assertThat(carPositionAfterMove).isEqualTo(0);
+        }
+        for (int i = 4; i < 10; i++) {
+            int carPositionAfterMove = race.getCarPositionAfterMove(0, i);
+            assertThat(carPositionAfterMove).isEqualTo(1);
+        }
+    }
 }
