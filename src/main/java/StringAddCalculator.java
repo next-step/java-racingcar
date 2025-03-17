@@ -7,7 +7,7 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER_REGEX = ",|:";
 
     public int splitAndSum(String text) {
-        if(isNullOrBlank(text)) return 0;
+        if (isNullOrBlank(text)) return 0;
 
         return sum(convertToNumbers(splitByDelimiter(text)));
     }
