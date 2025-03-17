@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacingGame {
-    private List<Car> cars = new ArrayList<>();
-    private RandomNumberGenerator randomNumberGenerator;
+    private final List<Car> cars = new ArrayList<>();
+    private final NumberGenerator randomNumberGenerator;
 
-    public CarRacingGame(int numCar, long seed) {
+    public CarRacingGame(int numCar, NumberGenerator numberGenerator) {
         for (int i = 0; i < numCar; i++) {
             cars.add(new Car());
         }
-        randomNumberGenerator = new RandomNumberGenerator(seed);
+        randomNumberGenerator = numberGenerator;
     }
 
     public List<String> playOneRound() {

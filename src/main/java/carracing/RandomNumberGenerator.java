@@ -2,12 +2,12 @@ package carracing;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
     public static final int RANDOM_UPPER_BOUND = 10;
-    private static Random random;
+    private final Random random;
 
-    public RandomNumberGenerator(long seed) {
-        random = new Random(seed);
+    public RandomNumberGenerator() {
+        random = new Random();
     }
 
     public int generateNumber() {
