@@ -5,15 +5,12 @@ import java.util.Random;
 
 public class Race {
 
+    private static final Random random = new Random();
+    private static final int MOVEMENT_THRESHOLD = 4;
     private final int carCount;
     private final int totalRounds;
-
-    private List<Integer> carPositions;
+    private final List<Integer> carPositions;
     private int currentRound = 0;
-
-    private static final Random random = new Random();
-
-    private static final int MOVEMENT_THRESHOLD = 4;
 
     public Race(int carCount, int totalRounds) {
         if (carCount < 1 || totalRounds < 1) {
@@ -30,7 +27,7 @@ public class Race {
     }
 
     public void runRound() {
-        if (currentRound >= totalRounds) {
+        if (isRaceFinished()) {
             throw new IllegalStateException("Race has already finished");
         }
 
@@ -40,8 +37,18 @@ public class Race {
         currentRound++;
     }
 
+    public boolean isRaceFinished() {
+        return currentRound >= totalRounds;
+    }
+
     public int getCarPositionAfterMove(int initialPosition, int seed) {
-        if (seed >= MOVEMENT_THRESHOLD) return initialPosition + 1;
+        if (seed < 0 || seed > 9) {
+            throw new IllegalArgumentException("Invalid seed: " + seed);
+        }
+
+        if (seed >= MOVEMENT_THRESHOLD) {
+            return initialPosition + 1;
+        }
         return initialPosition;
     }
 }
