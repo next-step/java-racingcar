@@ -9,19 +9,24 @@ public class RacingCarGame {
     public static void main(String[] args) {
 
         int carCount = InputView.showCarCountInput();
-        if(!isPositiveNumber(carCount)) {
-            System.out.println(INVALID_INPUT_MSG+carCount);
-            return;
-        }
-
+        checkValidInput(carCount);
         int tryCount = InputView.showTryCountInput();
-        if(!isPositiveNumber(tryCount)) {
-            System.out.println(INVALID_INPUT_MSG+tryCount);
-            return;
+        checkValidInput(tryCount);
+
+        Car[] cars = CarManager.prepareCar(carCount);
+        startGame(cars, tryCount);
+    }
+
+    private static void checkValidInput(int num) {
+        if (num <= 0) {
+            System.out.println(INVALID_INPUT_MSG + num);
+            System.exit(0);
         }
     }
 
-    private static Boolean isPositiveNumber(int number) {
-        return number > 0;
+    private static void startGame(Car[] cars, int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            Car[] movedCars = CarManager.moveCar(cars);
+        }
     }
 }
