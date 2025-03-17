@@ -13,6 +13,13 @@ public class CalculatorTest {
     //- 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
 
     @Test
+    @DisplayName("null")
+    void nullShouldReturnZero() {
+        int result = sum(null);
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("빈 문자열")
     void emptyStringShouldReturnZero() {
         int result = sum("");
