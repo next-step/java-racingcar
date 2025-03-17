@@ -1,15 +1,20 @@
 package racing.simulator;
 
+import racing.types.RacingCarName;
+
 public class RacingCar {
 
+  private RacingCarName carName;
   private int location;
 
-  public RacingCar() {
+  public RacingCar(RacingCarName carName) {
+    this.carName = carName;
     this.location = 0;
   }
 
   public RacingCar(RacingCar racingCar) {
     this.location = racingCar.location;
+    this.carName = racingCar.carName;
   }
 
   public int getLocation() {

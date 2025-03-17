@@ -24,13 +24,13 @@ public class RacingCatNameTest {
     assertThrows(RuntimeException.class, () -> new RacingCarName(carName));
   }
 
-  @DisplayName("자동차 이름이 빈 문자열이나 null이면 RuntimeException을 던진다.")
+  @DisplayName("자동차 이름이 빈 문자열이면 RuntimeException을 던진다.")
   @Test
   void constructor_givenEmptyStringName_throwsException() {
     assertThrows(RuntimeException.class, () -> new RacingCarName(""));
   }
 
-  @DisplayName("자동차 이름이 빈 문자열이나 null이면 RuntimeException을 던진다.")
+  @DisplayName("자동차 이름이 null이면 RuntimeException을 던진다.")
   @Test
   void constructor_givenNull_throwsException() {
     assertThrows(RuntimeException.class, () -> new RacingCarName(null));

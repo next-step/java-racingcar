@@ -19,5 +19,4 @@ public class RacingCarName {
   public String getName() {
     return name;
   }
-
 }
