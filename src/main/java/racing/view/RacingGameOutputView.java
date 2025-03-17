@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.entity.Car;
+import racing.entity.RacingCars;
 import racing.message.GameMessage;
 
 import java.util.List;
@@ -12,7 +13,9 @@ public class RacingGameOutputView {
         System.out.println(GameMessage.OUTPUT_HEAD_MESSAGE.getGameMessage());
     }
 
-    public static void printRoundResult(List<Car> cars) {
+    public static void printRoundResult(RacingCars racingCars) {
+        List<Car> cars = racingCars.getCars();
+
         for (Car car : cars) {
             printCarPosition(car);
         }
