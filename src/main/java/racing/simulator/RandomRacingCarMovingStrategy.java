@@ -2,17 +2,17 @@ package racing.simulator;
 
 import java.util.Random;
 
-public class RandomCarMovingStrategy implements CarMovingStrategy {
+public class RandomRacingCarMovingStrategy implements RacingCarMovingStrategy {
 
   private final Random random;
   private static final int MOVE_THRESHOLD = 4;
   private static final int RANDOM_RANGE_LIMIT = 10;
 
-  public RandomCarMovingStrategy() {
+  public RandomRacingCarMovingStrategy() {
     this.random = new Random();
   }
 
-  public RandomCarMovingStrategy(Random random) {
+  public RandomRacingCarMovingStrategy(Random random) {
     this.random = random;
   }
 

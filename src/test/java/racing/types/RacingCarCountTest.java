@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class CarCountTest {
+class RacingCarCountTest {
 
   @DisplayName("자동차 수 값이 1, 0, 음수일 때 생성자를 호출하면 RuntimeException을 던진다.")
   @ParameterizedTest

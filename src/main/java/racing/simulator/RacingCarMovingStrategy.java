@@ -1,5 +1,5 @@
 package racing.simulator;
 
-public interface CarMovingStrategy {
+public interface RacingCarMovingStrategy {
   boolean canMove();
 }

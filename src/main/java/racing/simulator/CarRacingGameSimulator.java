@@ -9,43 +9,21 @@ import java.util.stream.Collectors;
 
 public class CarRacingGameSimulator {
 
-  private final List<Car> cars = new ArrayList<>();
+  private final RacingCarGroup racingCarGroup;
 
-  public CarRacingGameSimulator(CarCount carCount, CarMovingStrategy carMovingStrategy) {
-    for (int i = 0; i < carCount.getCount(); i++) {
-      cars.add(new Car(carMovingStrategy));
-    }
+  public CarRacingGameSimulator(CarCount carCount, RacingCarMovingStrategy racingCarMovingStrategy) {
+    this.racingCarGroup = new RacingCarGroup(carCount, racingCarMovingStrategy);
   }
 
   public List<List<Integer>> run(SimulateCount simulateCount) {
     List<List<Integer>> res = new ArrayList<>();
+
     for (int i = 0; i < simulateCount.getCount(); i++) {
-      moveCars();
-      res.add(getCarLocations());
+      racingCarGroup.moveCars();
+      res.add(racingCarGroup.getCarLocations());
     }
-    resetCars();
+
+    racingCarGroup.resetCars();
     return res;
-  }
-
-  public List<Integer> getCarLocations() {
-    return cars.stream().map(Car::getLocation).collect(Collectors.toList());
-  }
-
-  public void moveCars() {
-    cars.forEach(Car::go);
-  }
-
-  public List<Car> copyCars() {
-    List<Car> res = new ArrayList<>();
-    for (Car car : cars) {
-      res.add(new Car(car));
-    }
-    return res;
-  }
-
-  public void resetCars() {
-    for (Car car : cars) {
-      car.reset();
-    }
   }
 }
