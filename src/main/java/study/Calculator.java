@@ -49,7 +49,7 @@ public class Calculator {
     private static int parseNonNegativeInt(String numberStrings) {
         int num = Integer.parseInt(numberStrings);
         if (num < 0) {
-            throw new RuntimeException();
+            throw new RuntimeException("Negative numbers are not allowed");
         }
         return num;
     }
