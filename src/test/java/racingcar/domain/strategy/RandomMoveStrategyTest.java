@@ -4,21 +4,17 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.domain.Car;
 
 import java.util.Random;
 
 class RandomMoveStrategyTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"2:0", "3:0", "4:1", "5:1"}, delimiter = ':')
+    @CsvSource(value = {"2:false", "3:false", "4:true", "5:true"}, delimiter = ':')
     @DisplayName("숫자가 4 이상이 나오면 자동차는 움직일 수 있다")
-    void moveTest(int number, int expectedPosition) {
-        Car car = Car.of("pobi");
+    void moveTest(int number, boolean expectedIsMovable) {
         RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(new RandomForTest(number));
-        car.move(randomMoveStrategy);
-        int actualPosition = car.getPosition();
-        Assertions.assertThat(actualPosition).isEqualTo(expectedPosition);
+        Assertions.assertThat(randomMoveStrategy.isMovable()).isEqualTo(expectedIsMovable);
     }
 
     public static class RandomForTest extends Random {

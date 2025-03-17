@@ -28,24 +28,23 @@ public class Cars {
         if (this.winnerCars != null) {
             return this.winnerCars;
         }
-        int maxPosition = getMaxPosition(this.cars);
+        Car maxCar = getCarWithMaxPosition(this.cars);
         this.winnerCars = this.cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.compareTo(maxCar) == 0)
                 .collect(Collectors.toList());
         return this.winnerCars;
     }
 
-    private int getMaxPosition(List<Car> cars) {
+    private Car getCarWithMaxPosition(List<Car> cars) {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
+                .max(Car::compareTo)
                 .orElseThrow(IllegalStateException::new);
     }
 
     public String getRaceStatusString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars) {
-            stringBuilder.append(car.getName()).append(" : ").append("-".repeat(car.getPosition())).append('\n');
+            stringBuilder.append(car.getStatusString()).append('\n');
         }
         return stringBuilder.toString();
     }

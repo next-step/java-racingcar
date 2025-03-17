@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.strategy.MoveStrategy;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private static final int MAX_NAME_LENGTH = 5;
 
@@ -21,9 +21,13 @@ public class Car {
         return new Car(0, name);
     }
 
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.position, o.position);
+    }
 
-    public int getPosition() {
-        return this.position;
+    public String getStatusString() {
+        return this.name + " : " + "-".repeat(this.position);
     }
 
     public String getName() {
