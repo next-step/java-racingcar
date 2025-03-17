@@ -1,9 +1,14 @@
 package race;
 
 public class RacingCar {
+    private int racingNumber;
     private int position;
 
-    public boolean shouldMove(int num) {
+    public RacingCar(int racingNumber) {
+        this.racingNumber = racingNumber;
+    }
+
+    private boolean shouldMove(int num) {
         return num >= 4;
     }
 
@@ -15,6 +20,7 @@ public class RacingCar {
     }
 
     public void printPosition() {
-        System.out.println("|" + "-".repeat(Math.max(0, position)));
+        String racingNumber = String.format("%02d", this.racingNumber + 1);
+        System.out.println("Car " + racingNumber + " : " + "-".repeat(Math.max(0, position)));
     }
 }
