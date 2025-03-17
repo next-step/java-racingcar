@@ -5,7 +5,6 @@ import car_racing.domain.strategy.CarMovingStrategy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class Cars {
     private static final int DEFAULT_MOVE_DISTANCE = 1;

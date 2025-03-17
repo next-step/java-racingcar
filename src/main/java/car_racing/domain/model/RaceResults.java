@@ -1,7 +1,9 @@
 package car_racing.domain.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceResults {
     private static final String RACE_RESULT_DELIMITER = " : ";
@@ -30,4 +32,15 @@ public class RaceResults {
 
         return sb.toString();
     }
+
+    public List<Car> getWinners() {
+        if (cars.isEmpty()) return Collections.emptyList();
+
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
+    }
+
 }
