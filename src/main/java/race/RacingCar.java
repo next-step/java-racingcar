@@ -1,19 +1,22 @@
 package race;
 
 public class RacingCar {
-    private int racingNumber;
+    private final int racingNumber;
     private int position;
+    private final RandomNumberGenerator randomNumberGenerator;
 
-    public RacingCar(int racingNumber) {
+    public RacingCar(int racingNumber, RandomNumberGenerator randomNumberGenerator) {
         this.racingNumber = racingNumber;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     private boolean shouldMove(int num) {
         return num >= 4;
     }
 
-    public int move(int i) {
-        if (shouldMove(i)) {
+    public int move() {
+        int randomValue = randomNumberGenerator.generate();
+        if (shouldMove(randomValue)) {
             position++;
         }
         return position;
