@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -7,9 +6,8 @@ public class Race {
 
     private static final Random random = new Random();
     private static final int MOVEMENT_THRESHOLD = 4;
-    private final int carCount;
     private final int totalRounds;
-    private final List<Integer> carPositions;
+    private final List<Car> cars;
     private int currentRound = 0;
 
     public Race(int carCount, int totalRounds) {
@@ -17,13 +15,19 @@ public class Race {
             throw new IllegalArgumentException();
         }
 
-        this.carCount = carCount;
         this.totalRounds = totalRounds;
-        this.carPositions = new ArrayList<>(Collections.nCopies(carCount, 0));
+        this.cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            this.cars.add(new Car());
+        }
     }
 
     public List<Integer> getCarPositions() {
-        return List.of(carPositions.toArray(new Integer[0]));
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.getPosition());
+        }
+        return positions;
     }
 
     public void runRound() {
@@ -31,8 +35,8 @@ public class Race {
             throw new IllegalStateException("Race has already finished");
         }
 
-        for (int i = 0; i < carCount; i++) {
-            carPositions.set(i, getCarPositionAfterMove(carPositions.get(i), random.nextInt(10)));
+        for (Car car : cars) {
+            moveCar(car, random.nextInt(10));
         }
         currentRound++;
     }
@@ -41,14 +45,13 @@ public class Race {
         return currentRound >= totalRounds;
     }
 
-    public int getCarPositionAfterMove(int initialPosition, int seed) {
+    public void moveCar(Car car, int seed) {
         if (seed < 0 || seed > 9) {
             throw new IllegalArgumentException("Invalid seed: " + seed);
         }
 
         if (seed >= MOVEMENT_THRESHOLD) {
-            return initialPosition + 1;
+            car.move();
         }
-        return initialPosition;
     }
 }

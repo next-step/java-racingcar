@@ -70,13 +70,16 @@ class RaceTest {
     @DisplayName("랜덤 변수가 4이상이면 차가 한 칸 움직인다.")
     void carMovesOneStepIfRandomNumberIsGreaterThanEqual4() {
         Race race = new Race(5, 3);
+
         for (int i = 0; i < 4; i++) {
-            int carPositionAfterMove = race.getCarPositionAfterMove(0, i);
-            assertThat(carPositionAfterMove).isEqualTo(0);
+            Car car = new Car();
+            race.moveCar(car, i);
+            assertThat(car.getPosition()).isEqualTo(0);
         }
         for (int i = 4; i < 10; i++) {
-            int carPositionAfterMove = race.getCarPositionAfterMove(0, i);
-            assertThat(carPositionAfterMove).isEqualTo(1);
+            Car car = new Car();
+            race.moveCar(car, i);
+            assertThat(car.getPosition()).isEqualTo(1);
         }
     }
 
@@ -84,7 +87,8 @@ class RaceTest {
     @DisplayName("자동차를 움직이는 변수는 0에서 9사이의 값이다.")
     void carMoveVariableIsBetween0And9() {
         Race race = new Race(5, 3);
-        assertThrows(IllegalArgumentException.class, () -> {race.getCarPositionAfterMove(0, -1);});
-        assertThrows(IllegalArgumentException.class, () -> {race.getCarPositionAfterMove(0, 10);});
+        Car car = new Car();
+        assertThrows(IllegalArgumentException.class, () -> {race.moveCar(car, -1);});
+        assertThrows(IllegalArgumentException.class, () -> {race.moveCar(car, 10);});
     }
 }
