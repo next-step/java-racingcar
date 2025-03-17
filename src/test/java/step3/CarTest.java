@@ -4,9 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static step3.Car.GO;
+import static step3.Car.STOP;
 
-public class CarTest {
+class CarTest {
 
     private Car car;
 
@@ -19,30 +21,30 @@ public class CarTest {
     @DisplayName("랜덤 숫자가 4 이상일 경우 GO 반환")
     void movementStatus_GO() {
         String movementStatus = car.getMovementStatus(5);
-        assertEquals(Car.GO, movementStatus);
+        assertThat(GO).isEqualTo(movementStatus);
     }
 
     @Test
     @DisplayName("랜덤 숫자가 4 미만일 경우 STOP 반환")
     void movementStatus_STOP() {
         String movementStatus = car.getMovementStatus(3);
-        assertEquals(Car.STOP, movementStatus);
+        assertThat(STOP).isEqualTo(movementStatus);
     }
 
     @Test
     @DisplayName("GO 상태일 때 updatePosition 메서드를 호출하면 position은 -가 추가된다.")
     void updatePosition_GO() {
         Car car = new Car();
-        car.updatePosition(Car.GO);
-        assertEquals(Car.GO, car.getPosition());
+        car.updatePosition(GO);
+        assertThat(GO).isEqualTo(car.getPosition());
     }
 
     @Test
     @DisplayName("STOP 상태일 때 updatePosition 메서드를 호출하면 position은 변하지 않는다.")
     void updatePosition_STOP() {
         Car car = new Car();
-        car.updatePosition(Car.STOP);
-        assertEquals("", car.getPosition());
+        car.updatePosition(STOP);
+        assertThat("").isEqualTo(car.getPosition());
     }
 
     @Test
@@ -50,7 +52,7 @@ public class CarTest {
     void move_GO() {
         Car car = createCar(9);
         car.move();
-        assertEquals(Car.GO, car.getPosition());
+        assertThat(GO).isEqualTo(car.getPosition());
     }
 
     @Test
@@ -58,7 +60,7 @@ public class CarTest {
     void move_STOP() {
         Car car = createCar(1);
         car.move();
-        assertEquals("", car.getPosition());
+        assertThat("").isEqualTo(car.getPosition());
     }
 
     private Car createCar(int randomNumber) {
