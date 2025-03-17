@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+* 입력값 받기
+* 앞으로 이동
+* 랜덤값 생성
+* 전진 조건 판별
+* 결과값 출력
