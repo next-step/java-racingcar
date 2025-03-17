@@ -21,3 +21,4 @@
 - [X] MovingStrategy
 - [X] RandomMovingStrategy
 - [X] Cars
+- [X] RacingGame
