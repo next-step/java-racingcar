@@ -1,8 +1,10 @@
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class StringAddCalculator {
-    public final static Pattern pattern = Pattern.compile("//(.)\n(.*)");
+    private static final List<Splitter> splitters = List.of(
+        new CustomDelimiterSplitter(),
+        new DefaultSplitter());
+
 
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
@@ -14,17 +16,15 @@ public class StringAddCalculator {
 
 
     public static String[] split(String input) {
-        Matcher matcher = pattern.matcher(input);
-        String delimiter = ",|:";
-        String numbersPart = input;
+        for (Splitter splitter : splitters) {
+            if (!splitter.isSupport(input)) {
+                continue;
+            }
 
-        if (matcher.matches()) {
-            String customDelimiter = Pattern.quote(matcher.group(1));
-            delimiter += "|" + customDelimiter;
-            numbersPart = matcher.group(2);
+            return splitter.split(input);
         }
 
-        return numbersPart.split(delimiter);
+        throw new RuntimeException("여기에 도달 할 수 없습니다.");
     }
 
     public static int sum(String[] numbers) {
