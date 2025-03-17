@@ -3,11 +3,14 @@ package step3.racingcar.controller;
 import java.util.Scanner;
 import step3.racingcar.exception.RacingCarGameException;
 import step3.racingcar.model.RacingCar;
+import step3.racingcar.model.RacingCarEngine;
 import step3.racingcar.model.RacingCarGameRound;
 import step3.racingcar.model.RacingCarGameSet;
 import step3.racingcar.view.RacingCarGameRoundView;
 
 public class RacingCarGameSetController {
+
+    final private static int THRESHOLD = 4;
 
     private RacingCarGameSet gameSet;
 
@@ -46,7 +49,7 @@ public class RacingCarGameSetController {
     public RacingCar[] initCars(int numberOfCars) {
         RacingCar[] cars = new RacingCar[numberOfCars];
         for (int i = 0; i < numberOfCars; i++) {
-            cars[i] = new RacingCar(i);
+            cars[i] = new RacingCar(i, new RacingCarEngine(THRESHOLD));
         }
         return cars;
     }

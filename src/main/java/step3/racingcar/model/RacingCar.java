@@ -1,17 +1,16 @@
 package step3.racingcar.model;
 
-import java.util.Random;
-
 public class RacingCar {
 
     private int no;
     private int position;
+    private RacingCarEngine engine;
     private RacingCarResult roundResult;
-    final static private int BOUND = 10;
     final static private int THRESHOLD = 4;
 
-    public RacingCar(int no) {
+    public RacingCar(int no, RacingCarEngine engine) {
         this.no = no;
+        this.engine = engine;
         this.position = 0;
     }
 
@@ -27,12 +26,8 @@ public class RacingCar {
         return this.roundResult;
     }
 
-    public boolean canGo() {
-        return new Random().nextInt(BOUND) >= THRESHOLD;
-    }
-
     public void run() {
-        if (canGo()) {
+        if (engine.canRun()) {
             this.position++;
             this.roundResult = RacingCarResult.GO;
             return;
