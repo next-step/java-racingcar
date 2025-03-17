@@ -18,4 +18,18 @@ public class RacingCarTest {
         assertThat(car.shouldMove(3)).isFalse();
         assertThat(car.shouldMove(0)).isFalse();
     }
+
+    @Test
+    void move() {
+        RacingCar car = new RacingCar();
+        assertThat(car.move(5)).isEqualTo("-");
+        assertThat(car.move(9)).isEqualTo("--");
+    }
+
+    @Test
+    void not_move() {
+        RacingCar car = new RacingCar();
+        assertThat(car.move(5)).isEqualTo("-");
+        assertThat(car.move(0)).isEqualTo("-");
+    }
 }
