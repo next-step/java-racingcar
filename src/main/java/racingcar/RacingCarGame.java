@@ -9,7 +9,7 @@ import racingcar.ui.RacingCarResultView;
 public class RacingCarGame {
 
     public static void start() {
-        RacingCarInput input = RacingCarInputView.show();
+        RacingCarInput input = RacingCarInputView.view();
         List<RacingCar> racingCars = RacingCar.createRacingCars(input.getCarCount());
         RacingCarResultView.view(racingCars, input.getTryCount());
     }

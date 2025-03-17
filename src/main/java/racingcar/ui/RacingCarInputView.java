@@ -6,7 +6,7 @@ public class RacingCarInputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static RacingCarInput show() {
+    public static RacingCarInput view() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carCount = SCANNER.nextInt();
 
