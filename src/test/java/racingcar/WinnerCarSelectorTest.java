@@ -1,0 +1,4 @@
+package racingcar;
+
+class WinnerCarSelectorTest {
+}
