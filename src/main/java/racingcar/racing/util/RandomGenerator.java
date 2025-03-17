@@ -3,9 +3,9 @@ package racingcar.racing.util;
 import java.util.Random;
 
 public class RandomGenerator {
-    private final static Random random = new Random();
+    private final static Random RANDOM = new Random();
 
-    public static int generateRandomNumber(int max) {
-        return random.nextInt(max);
+    public int generateRandomNumber(int max) {
+        return RANDOM.nextInt(max);
     }
 }
