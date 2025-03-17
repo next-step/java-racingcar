@@ -9,7 +9,7 @@ public class RacingSession {
     public static final int MIN_PROGRESS_NUMBER = 4;
 
     private final List<Car> cars;
-    private List<List<Integer>> lastPlayHistory;
+    private List<CarPositions> lastPlayHistory;
 
     private RacingSession(List<Car> cars){
         this.cars = cars;
@@ -20,8 +20,8 @@ public class RacingSession {
         return new RacingSession(cars);
     }
 
-    public List<List<Integer>> startRacing(int turns){
-        List<List<Integer>> totalPositions = new ArrayList<>();
+    public List<CarPositions> startRacing(int turns){
+        List<CarPositions> totalPositions = new ArrayList<>();
         for (int i = 0; i < turns; i++) {
             totalPositions.add(moveCars(cars));
         }
@@ -29,12 +29,12 @@ public class RacingSession {
         return totalPositions;
     }
 
-    public static List<Integer> moveCars(List<Car> cars) {
+    public static CarPositions moveCars(List<Car> cars) {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
             positions.add(car.move(canProgress(getProgressNumber())));
         }
-        return positions;
+        return new CarPositions(positions);
     }
 
     public static int getProgressNumber() {
@@ -47,25 +47,25 @@ public class RacingSession {
     }
 
 
-    public static List<String> findWinners(List<String> carNames, List<List<Integer>> playHistory){
+    public static List<String> findWinners(List<String> carNames, List<CarPositions> playHistory){
         int maxPosition = findMaxPosition(playHistory);
-        List<Integer> lastPositions = playHistory.get(playHistory.size()-1);
+        CarPositions lastPositions = playHistory.get(playHistory.size()-1);
         return findMaxPositionNames(carNames, lastPositions, maxPosition);
     }
 
-    private static int findMaxPosition(List<List<Integer>> playHistory){
-        List<Integer> lastPositions = playHistory.get(playHistory.size()-1);
+    private static int findMaxPosition(List<CarPositions> playHistory){
+        CarPositions lastPositions = playHistory.get(playHistory.size()-1);
         int maxPosition = 0;
-        for (Integer lastPosition : lastPositions) {
+        for (Integer lastPosition : lastPositions.getCarPositions()) {
             maxPosition = Math.max(maxPosition, lastPosition);
         }
         return maxPosition;
     }
 
-    private static List<String> findMaxPositionNames(List<String> carNames, List<Integer> lastPositions, int maxPosition){
+    private static List<String> findMaxPositionNames(List<String> carNames, CarPositions lastPositions, int maxPosition){
         List<String> lastPositionCarNames = new ArrayList<>();
-        for (int i=0; i<lastPositions.size(); i++) {
-            insertIfMaxPosition(carNames.get(i), lastPositions.get(i), maxPosition, lastPositionCarNames);
+        for (int i=0; i<carNames.size(); i++) {
+            insertIfMaxPosition(carNames.get(i), lastPositions.getCarPosition(i), maxPosition, lastPositionCarNames);
         }
         return lastPositionCarNames;
     }

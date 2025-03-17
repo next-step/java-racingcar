@@ -16,11 +16,11 @@ public class RacingSessionTest {
     void 턴_행동() {
         RacingSession session = RacingSession.of("a,b");
 
-        List<List<Integer>> positions = session.startRacing(5);
+        List<CarPositions> positions = session.startRacing(5);
 
         assertThat(positions).hasSize(5);
-        for (List<Integer> position : positions) {
-            assertThat(position).hasSize(2);
+        for (CarPositions position : positions) {
+            assertThat(position.getCarPositions()).hasSize(2);
         }
     }
 
@@ -29,9 +29,9 @@ public class RacingSessionTest {
     void 자동차_이동() {
         List<Car> cars = List.of(new Car("a"), new Car("b"), new Car("c"));
 
-        List<Integer> positions = RacingSession.moveCars(cars);
+        CarPositions positions = RacingSession.moveCars(cars);
 
-        assertThat(positions).hasSize(3);
+        assertThat(positions.getCarPositions()).hasSize(3);
     }
 
     @ParameterizedTest
@@ -46,11 +46,11 @@ public class RacingSessionTest {
     void 우승자_찾기() {
         List<String> carNames = List.of("a","b", "c");
 
-        List<List<Integer>> playHistory = List.of(
-            List.of(1,1,1),
-            List.of(1,2,1),
-            List.of(2,2,2),
-            List.of(3,2,3)
+        List<CarPositions> playHistory = List.of(
+            new CarPositions(List.of(1,1,1)),
+            new CarPositions(List.of(1,2,1)),
+            new CarPositions(List.of(2,2,2)),
+            new CarPositions(List.of(3,2,3))
         );
 
         List<String> winners = RacingSession.findWinners(carNames, playHistory);

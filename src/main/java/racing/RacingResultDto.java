@@ -4,10 +4,10 @@ import java.util.List;
 
 public class RacingResultDto {
     private final List<String> carNames;
-    private final List<List<Integer>> playHistory;
+    private final List<CarPositions> playHistory;
     private final List<String> winnerNames;
 
-    public RacingResultDto(List<String> carNames, List<List<Integer>> playHistory, List<String> winnerNames) {
+    public RacingResultDto(List<String> carNames, List<CarPositions> playHistory, List<String> winnerNames) {
         this.carNames = carNames;
         this.playHistory = playHistory;
         this.winnerNames = winnerNames;
@@ -17,7 +17,7 @@ public class RacingResultDto {
         return carNames;
     }
 
-    public List<List<Integer>> getPlayHistory() {
+    public List<CarPositions> getPlayHistory() {
         return playHistory;
     }
 
