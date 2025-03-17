@@ -1,21 +1,24 @@
 package step2;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static int splitAndSum(String s) {
-        if (s == null || s.isEmpty()) {
+    private static final Pattern BASIC_PATTERN = Pattern.compile(",|:");
+
+    public static int splitAndSum(String text) {
+        if (text == null || text.isEmpty()) {
             return 0;
         }
 
         DelimiterReader reader = new DelimiterReader();
 
-        if (reader.hasCustomDelimiter(s)) {
-            return sum(reader.extractAndSplit(s));
+        if (reader.hasCustomDelimiter(text)) {
+            return sum(reader.extractAndSplit(text));
         }
 
-        return sum(s.split(",|:"));
+        return sum(text.split(BASIC_PATTERN.pattern()));
     }
 
     private static Integer sum(String[] numbers) {
