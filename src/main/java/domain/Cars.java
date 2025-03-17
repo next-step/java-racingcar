@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import policy.CarMovementRandomizer;
+
 public class Cars {
 
     private final List<Car> values;
@@ -31,6 +33,6 @@ public class Cars {
     }
 
     public void move() {
-        this.values.forEach(Car::move);
+        this.values.forEach(car -> car.move(new CarMovementRandomizer()));
     }
 }

@@ -1,6 +1,8 @@
 import domain.Car;
 import domain.Cars;
 import org.junit.jupiter.api.Test;
+import policy.CarMovabilityPolicy;
+import policy.CarImmovablePolicy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,4 +24,17 @@ public class RacingCarTest {
         assertThat(cars.getPositions()).allMatch(position -> position.equals(1));
     }
 
+    @Test
+    void 자동차_전진() {
+        Car car = Car.create();
+        car.move(new CarMovabilityPolicy());
+        assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    void 자동차_정지() {
+        Car car = Car.create();
+        car.move(new CarImmovablePolicy());
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 }

@@ -1,6 +1,6 @@
 package domain;
 
-import policy.RacingCarPolicy;
+import policy.CarMovementPolicy;
 import vo.CarPosition;
 
 public class Car {
@@ -19,8 +19,8 @@ public class Car {
         return this.position.getValue();
     }
 
-    public void move() {
-        if (RacingCarPolicy.isMovable()) {
+    public void move(CarMovementPolicy policy) {
+        if (policy.isMovable()) {
             this.position.move();
         }
     }
