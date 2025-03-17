@@ -18,7 +18,7 @@ class RacingGameTest {
                 Car.of("crong")
         );
         int tryCount = 3;
-        new RacingGame(carsForTest, tryCount, new ResultView()).process(new RandomForTest(CAR_MOVE_BOUND));
+        new RacingGame(carsForTest, tryCount, new ResultView(), new WinnerCarSelector()).process(new RandomForTest(CAR_MOVE_BOUND));
         Assertions.assertThat(carsForTest).allMatch(car -> car.getPosition() == tryCount);
     }
 }
