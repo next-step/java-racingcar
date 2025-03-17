@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(int carCounts) {
         cars = new ArrayList<>();
