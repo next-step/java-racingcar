@@ -47,13 +47,11 @@ class RoundTest {
         var cars = List.of(car1, car2, car3);
         // 항상 성공하는 주사위
         var luckyDice = new DiceTest.MockRandom(Car.MOVE_THRESHOLD + 1);
-        var round = new Round(luckyDice);
         var playTimes = 3;
+        var rounds = List.of(new Round(luckyDice), new Round(luckyDice), new Round(luckyDice));
 
         // when
-        for (int i = 0; i < playTimes; i++) {
-            round.play(cars);
-        }
+        rounds.forEach(round -> round.play(cars));
 
         // then
         Assertions.assertThat(car1.getPosition()).isEqualTo(playTimes);
