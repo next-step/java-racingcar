@@ -19,9 +19,13 @@ public class CarManager {
 
     public static void moveCars(Car[] cars) {
         for (Car car : cars) {
-            if (canMove(rand.nextInt(MAX_RAND_VALUE))) {
-                car.move();
-            }
+            moveCar(car);
+        }
+    }
+
+    public static void moveCar(Car car) {
+        if (canMove(rand.nextInt(MAX_RAND_VALUE))) {
+            car.move();
         }
     }
 
