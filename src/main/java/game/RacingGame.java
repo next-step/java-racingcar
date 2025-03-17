@@ -25,8 +25,9 @@ public class RacingGame {
     private void play(PositiveInteger totalRound) {
         for (int i = 0; i < totalRound.value(); i++) {
             cars.race(RANDOM_NUMBER_GENERATOR);
-            ResultView.print(cars.getPositions());
+            ResultView.print(cars);
         }
+        ResultView.printResult(cars);
     }
 
     private int readRoundCount() {

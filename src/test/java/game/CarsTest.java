@@ -16,7 +16,7 @@ class CarsTest {
         // when
         cars.race(() -> 4);
         // then
-        Assertions.assertThat(cars.getPositions()).containsExactly(1, 1, 1);
+        Assertions.assertThat(cars.positions()).containsExactly(1, 1, 1);
 
     }
 
@@ -28,7 +28,7 @@ class CarsTest {
         // when
         cars.race(() -> 3);
         // then
-        Assertions.assertThat(cars.getPositions()).containsExactly(0, 0, 0);
+        Assertions.assertThat(cars.positions()).containsExactly(0, 0, 0);
 
     }
 }

@@ -2,6 +2,8 @@ package game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -24,11 +26,16 @@ public class Cars {
         }
     }
 
-    public List<Integer> getPositions() {
+    public List<Integer> positions() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : this.cars) {
             positions.add(car.position());
         }
         return positions;
+    }
+
+    public Map<String, Integer> positionByName() {
+        return this.cars.stream()
+                .collect(Collectors.toMap(Car::name, Car::position));
     }
 }
