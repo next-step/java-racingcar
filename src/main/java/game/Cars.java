@@ -6,14 +6,14 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(PositiveInteger count) {
-        this.cars = createCars(count.value());
+    public Cars(CarNames carNames) {
+        this.cars = from(carNames);
     }
 
-    private List<Car> createCars(int count) {
+    private static List<Car> from(CarNames carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car());
+        for (String username : carNames.names()) {
+            cars.add(new Car(new CarName(username)));
         }
         return cars;
     }
@@ -27,7 +27,7 @@ public class Cars {
     public List<Integer> getPositions() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : this.cars) {
-            positions.add(car.getPosition());
+            positions.add(car.position());
         }
         return positions;
     }

@@ -4,9 +4,11 @@ public class Car {
     private static final int MOVE_CONDITION = 4;
 
     private final PositiveInteger position;
+    private final CarName name;
 
-    public Car() {
+    public Car(CarName name) {
         this.position = new PositiveInteger(0);
+        this.name = name;
     }
 
     public void move(int number) {
@@ -15,7 +17,7 @@ public class Car {
         }
     }
 
-    public int getPosition() {
+    public int position() {
         return position.value();
     }
 }
