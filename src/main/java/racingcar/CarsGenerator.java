@@ -5,10 +5,11 @@ import java.util.List;
 
 public class CarsGenerator {
 
-    public List<Car> generateCars(int carCount) {
+    public List<Car> generateCars(String inputCars) {
         List<Car> cars = new ArrayList<>();
-        for (int carIndex = 0; carIndex < carCount; carIndex++) {
-            cars.add(new Car());
+        String[] carNames = inputCars.split(",");
+        for (String carName : carNames) {
+            cars.add(Car.of(carName));
         }
         return cars;
     }
