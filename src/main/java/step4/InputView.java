@@ -19,7 +19,7 @@ public class InputView {
 
     private static boolean validateCarNames(String[] carNames) {
         for (String carName : carNames) {
-            if (carName != null && !carName.isBlank() && carName.length() <= 5) {
+            if (carName == null || carName.isBlank() || carName.length() > 5) {
                 return false;
             }
         }

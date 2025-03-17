@@ -22,3 +22,5 @@
 - [X] RandomMovingStrategy
 - [X] Cars
 - [X] RacingGame
+- [X] InputView
+- [X] OutputView
