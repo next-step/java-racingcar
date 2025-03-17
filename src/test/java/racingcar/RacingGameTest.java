@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Random;
 
 class RacingGameTest {
 
@@ -21,19 +20,5 @@ class RacingGameTest {
         int tryCount = 3;
         new RacingGame(carsForTest, tryCount, new ResultView()).process(new RandomForTest(CAR_MOVE_BOUND));
         Assertions.assertThat(carsForTest).allMatch(car -> car.getPosition() == tryCount);
-    }
-
-    private static class RandomForTest extends Random {
-
-        private final int returnNumber;
-
-        RandomForTest(int returnNumber) {
-            this.returnNumber = returnNumber;
-        }
-
-        @Override
-        public int nextInt(int bound) {
-            return returnNumber;
-        }
     }
 }

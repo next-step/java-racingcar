@@ -5,8 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Random;
-
 class CarTest {
 
     @ParameterizedTest
@@ -17,19 +15,5 @@ class CarTest {
         car.move(new RandomForTest(number));
         int actualPosition = car.getPosition();
         Assertions.assertThat(actualPosition).isEqualTo(expectedPosition);
-    }
-
-    private static class RandomForTest extends Random {
-
-        private final int returnNumber;
-
-        RandomForTest(int returnNumber) {
-            this.returnNumber = returnNumber;
-        }
-
-        @Override
-        public int nextInt(int bound) {
-            return returnNumber;
-        }
     }
 }
