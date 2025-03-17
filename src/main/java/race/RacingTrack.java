@@ -15,14 +15,18 @@ public class RacingTrack {
         }
     }
 
-    public void start() {
+    public void startRace() {
         System.out.println("### Racing Start!!! ###");
         for (int i = 0; i < numOfAttempts; i++) {
-            for (RacingCar car : cars) {
-                car.move();
-                car.printPosition();
-            }
+            moveAndShowCars();
             System.out.println();
+        }
+    }
+
+    private void moveAndShowCars() {
+        for (RacingCar car : cars) {
+            car.move();
+            car.printPosition();
         }
     }
 }
