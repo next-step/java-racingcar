@@ -1,6 +1,7 @@
 package racingcar;
 
 import util.RandomNumberGenerator;
+import util.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,20 @@ public class Cars {
         }
     }
 
-    public static void move(List<Car> cars) {
-        for(Car car: cars) {
+    public void move(int tryCounts) {
+        ResultView.showResultMessage();
+        for (int index = 0; index < tryCounts; index++) {
+            move();
+            getCarResults();
+        }
+    }
+
+    public void getCarResults() {
+        ResultView.showCarGameResult(cars);
+    }
+
+    public void move() {
+        for (Car car : cars) {
             int randomNumber = RandomNumberGenerator.getRandomNumber();
             car.move(randomNumber);
         }
