@@ -1,11 +1,10 @@
-package edu.nextstep.camp.racingcar.step3;
+package edu.nextstep.camp.carracing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,13 +20,13 @@ class ResultViewTest {
     @Test
     void 자동차의_현재_위치가_잘_출력되는지_테스트() {
         // Given
-        List<Car> cars = Arrays.asList(new Car(2), new Car(1), new Car(3));
+        List<Car> cars = List.of(new Car("car1", 2), new Car("car2", 1), new Car("car3", 3));
 
         // When
         ResultView.printCarStatus(cars);
 
         // Then
-        String expectedOutput = "--\n-\n---\n\n";
+        String expectedOutput = "car1 : --\ncar2 : -\ncar3 : ---\n\n";
         assertThat(outputStream.toString()).isEqualTo(expectedOutput);
     }
 
@@ -37,6 +36,6 @@ class ResultViewTest {
         ResultView.printResultMessage();
 
         // Then
-        assertThat(outputStream.toString()).isEqualTo("실행 결과\n");
+        assertThat(outputStream.toString()).isEqualTo("\n실행 결과\n");
     }
 }

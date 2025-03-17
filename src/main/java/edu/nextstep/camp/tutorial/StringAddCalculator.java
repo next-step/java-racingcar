@@ -1,4 +1,4 @@
-package edu.nextstep.camp.racingcar.step2;
+package edu.nextstep.camp.tutorial;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
