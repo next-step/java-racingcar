@@ -5,19 +5,17 @@ import java.util.Arrays;
 public class StringCalculator {
 
     public static int splitAndSum(String s) {
-        if (s == null) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
-        if (s.isEmpty()) {
-            return 0;
-        }
+
         DelimiterReader reader = new DelimiterReader();
+
         if (reader.hasCustomDelimiter(s)) {
-            String[] numbers = reader.extractAndSplit(s);
-            return sum(numbers);
+            return sum(reader.extractAndSplit(s));
         }
-        String[] numbers = s.split(",|:");
-        return sum(numbers);
+
+        return sum(s.split(",|:"));
     }
 
     private static Integer sum(String[] numbers) {
