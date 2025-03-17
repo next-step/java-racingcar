@@ -79,4 +79,12 @@ class RaceTest {
             assertThat(carPositionAfterMove).isEqualTo(1);
         }
     }
+
+    @Test
+    @DisplayName("자동차를 움직이는 변수는 0에서 9사이의 값이다.")
+    void carMoveVariableIsBetween0And9() {
+        Race race = new Race(5, 3);
+        assertThrows(IllegalArgumentException.class, () -> {race.getCarPositionAfterMove(0, -1);});
+        assertThrows(IllegalArgumentException.class, () -> {race.getCarPositionAfterMove(0, 10);});
+    }
 }
