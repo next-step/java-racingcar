@@ -7,19 +7,23 @@ public class StringAddCalculator {
     public static final String CHAR_LINE_BREAK = "\\n";
     public static final String REGEX_DELIMITER = "[,:]";
 
-    public static Integer splitAndSum(String text) {
+    public static Integer calculate(String text) {
         if (isInvalid(text)) {
             return 0;
         }
 
         Integer[] integers = toIntegers(splitText(text));
         for (Integer integer : integers) {
-            if (integer < 0) {
-                throw new RuntimeException();
-            }
+            validateInteger(integer);
         }
 
         return sum(integers);
+    }
+
+    private static void validateInteger(Integer integer) {
+        if (integer < 0) {
+            throw new RuntimeException();
+        }
     }
 
     private static boolean isInvalid(String text) {
