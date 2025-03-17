@@ -32,12 +32,12 @@ public class RacingSession {
     public static List<Integer> moveCars(List<Car> cars) {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
-            positions.add(car.move(canProgress(getRandom())));
+            positions.add(car.move(canProgress(getProgressNumber())));
         }
         return positions;
     }
 
-    public static int getRandom() {
+    public static int getProgressNumber() {
         Random random = new Random();
         return random.nextInt(10);
     }
