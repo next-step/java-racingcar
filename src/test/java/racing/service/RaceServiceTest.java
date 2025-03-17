@@ -10,13 +10,11 @@ import racing.fake.FakeNumberGenerator;
 import racing.model.Cars;
 
 class RaceServiceTest {
-    private static final int MOVE_NUMBER = 4;
-    private static final int STOP_NUMBER = 3;
     private RaceService raceService;
 
     @BeforeEach
     void setUp() {
-        raceService = new RaceService();
+        raceService = new RaceService(new FakeNumberGenerator(4));
     }
 
     @DisplayName("입력 받은 n대의 자동차를 생성한다.")
@@ -26,7 +24,7 @@ class RaceServiceTest {
         int carCount = 3;
 
         // when
-        Cars cars = raceService.generateCar(carCount, new FakeNumberGenerator(MOVE_NUMBER));
+        Cars cars = raceService.generateCar(carCount);
 
         // then
         assertThat(cars.size()).isEqualTo(carCount);
@@ -36,7 +34,7 @@ class RaceServiceTest {
     @Test
     void moveCarTest() {
         // given
-        Cars cars = raceService.generateCar(3, new FakeNumberGenerator(MOVE_NUMBER));
+        Cars cars = raceService.generateCar(3);
 
         // when
         raceService.moveCar(cars);

@@ -16,8 +16,8 @@ public class RacingGameApplication {
         int moveCount = inputView.getMoveCount();
 
         // 2. GAME
-        RaceService raceService = new RaceService();
-        Cars cars = raceService.generateCar(carCount, new RandomNumberGenerator(RAND));
+        RaceService raceService = new RaceService(new RandomNumberGenerator(RAND));
+        Cars cars = raceService.generateCar(carCount);
         StringBuilder gameStatus = new StringBuilder();
 
         for (int i = 0; i < moveCount; i++) {
