@@ -14,9 +14,25 @@ public class StringCalculator {
         CustomDelimiter delimiter = new CustomDelimiter();
         if (delimiter.hasCustomDelimiter(s)) {
             String[] numbers = delimiter.extractAndSplit(s);
-            return Arrays.stream(numbers).map(Integer::parseInt).reduce(0, Integer::sum);
+            return Arrays.stream(numbers)
+                    .map(it -> {
+                                int num = Integer.parseInt(it);
+                                if (num < 0) {
+                                    throw new RuntimeException("숫자는 음수일 수 없습니다");
+                                }
+                                return num;
+                            }
+                    ).reduce(0, Integer::sum);
         }
         String[] numbers = s.split(",|:");
-        return Arrays.stream(numbers).map(Integer::parseInt).reduce(0, Integer::sum);
+        return Arrays.stream(numbers)
+                .map(it -> {
+                            int num = Integer.parseInt(it);
+                            if (num < 0) {
+                                throw new RuntimeException("숫자는 음수일 수 없습니다");
+                            }
+                            return num;
+                        }
+                ).reduce(0, Integer::sum);
     }
 }

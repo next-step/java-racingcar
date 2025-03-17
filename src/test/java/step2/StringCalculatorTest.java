@@ -1,6 +1,7 @@
 package step2;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -37,6 +38,12 @@ public class StringCalculatorTest {
     public void splitAndSum_custom_구분자() throws Exception {
         int result = StringCalculator.splitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test()
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> StringCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 
 }
