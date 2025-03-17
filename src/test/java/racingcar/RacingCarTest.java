@@ -1,19 +1,20 @@
 package racingcar;
 
-import calculator.StringAddCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.generator.RandomGenerator;
 import racingcar.ui.InputView;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingCarTest {
 
@@ -37,6 +38,32 @@ public class RacingCarTest {
     void stop(){
         car.move(()->false);
         assertThat(car.getMoveCount()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("전진 조건에 만족하면 모두 전진")
+    void moveAll(){
+        Cars cars = new Cars(RacingCar.getCars(CAR));
+        cars.moveAll(()->true);
+
+        assertAll(
+                () -> assertThat(cars.getCurrentStatus().get(0).getMoveCount()).isEqualTo(2),
+                () -> assertThat(cars.getCurrentStatus().get(1).getMoveCount()).isEqualTo(2),
+                () -> assertThat(cars.getCurrentStatus().get(2).getMoveCount()).isEqualTo(2)
+                );
+    }
+
+    @Test
+    @DisplayName("전진 조건에 만족하지 않으면 모두 멈춤")
+    void stopAll(){
+        Cars cars = new Cars(RacingCar.getCars(CAR));
+        cars.moveAll(()->false);
+
+        assertAll(
+                () -> assertThat(cars.getCurrentStatus().get(0).getMoveCount()).isEqualTo(1),
+                () -> assertThat(cars.getCurrentStatus().get(1).getMoveCount()).isEqualTo(1),
+                () -> assertThat(cars.getCurrentStatus().get(2).getMoveCount()).isEqualTo(1)
+        );
     }
 
     @Test
@@ -66,10 +93,10 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("반환된 자동차 배열의 크기는 입력된 크기와 같다.")
+    @DisplayName("반환된 자동차 List의 크기는 입력된 크기와 같다.")
     public void getCars() {
-        Car[] cars = RacingCarService.getCars(CAR);
-        assertThat(cars.length).isEqualTo(CAR);
+        ArrayList<Car> cars = RacingCar.getCars(CAR);
+        assertThat(cars.size()).isEqualTo(CAR);
     }
 
 
