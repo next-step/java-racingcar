@@ -6,4 +6,8 @@ public class RacingCar {
     public int createRandom() {
         return random.nextInt(10);
     }
+
+    public boolean isGoingForward(int value) {
+        return value >= 4;
+    }
 }
