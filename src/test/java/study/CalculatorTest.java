@@ -27,6 +27,13 @@ public class CalculatorTest {
     }
 
     @Test
+    @DisplayName("blank")
+    void blankShouldReturnZero() {
+        int result = sum(" ");
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("숫자 한 개")
     void singleNumberShouldReturnItself() {
         int result = sum("5");

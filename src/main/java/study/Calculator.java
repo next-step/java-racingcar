@@ -9,7 +9,7 @@ public class Calculator {
     private static final String NEW_LINE = "\n";
 
     public static int sum(String numbersWithDelimiter) {
-        if (numbersWithDelimiter == null || numbersWithDelimiter.isEmpty()) {
+        if (numbersWithDelimiter == null || numbersWithDelimiter.isBlank()) {
             return 0;
         }
 
