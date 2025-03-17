@@ -3,18 +3,18 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final int DEFAULT_VALUE = 0;
+    private  static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
             return DEFAULT_VALUE;
         }
 
-        switch (input.length()) {
-            case 1:
-                return processSingleCharacter(input);
-            default:
-                return processMultipleCharacter(input);
+        if (input.length() == 1){
+            return processSingleCharacter(input);
         }
+
+        return processMultipleCharacter(input);
     }
 
     private static int processSingleCharacter(String input) throws RuntimeException {
@@ -32,7 +32,7 @@ public class StringAddCalculator {
     }
 
     private static int processMultipleCharacter(String input) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(input);
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens = m.group(2).split(customDelimiter);
