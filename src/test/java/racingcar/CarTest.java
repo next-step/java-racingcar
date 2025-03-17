@@ -21,6 +21,7 @@ class CarTest {
 
     private static class RandomValueForTest extends Random {
         private final int returnNumber;
+
         RandomValueForTest(int returnNumber) {
             this.returnNumber = returnNumber;
         }
