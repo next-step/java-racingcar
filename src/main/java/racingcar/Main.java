@@ -19,7 +19,6 @@ public class Main {
         for (int i = 0; i < numberOfRounds; i++) {
             racing.playRound();
             System.out.println(ResultView.printCarsDistance(racing.getCars()));
-            System.out.println();
         }
     }
 }
