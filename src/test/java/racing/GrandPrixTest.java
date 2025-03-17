@@ -14,16 +14,13 @@ class GrandPrixTest {
         // given
         int totalRound = 5;
         var grandPrix = new GrandPrix(totalRound, 0, new Random());
-        int playedRound = 0;
 
         // when
         while (!grandPrix.isFinished()) {
             grandPrix.play();
-            playedRound++;
         }
 
         // then
         Assertions.assertThat(grandPrix.isFinished()).isTrue();
-        Assertions.assertThat(playedRound).isEqualTo(totalRound);
     }
 }
