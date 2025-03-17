@@ -1,20 +1,27 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Racing {
-    private List<Car> cars;
+    private final Set<Car> cars;
 
-    public Racing(Integer carCount) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+    public Racing(List<Car> cars) {
+        this.cars = new HashSet<>(cars);
     }
 
-    public List<Car> playRound() {
+    public Racing(Set<Car> cars) {
+        this.cars = cars;
+    }
+
+    public void playRound() {
         cars.forEach(Car::play);
-        return this.cars;
+    }
+
+    public List<Car> getCars() {
+        return this.cars.stream().sorted(Comparator.comparing(Car::getName)).collect(Collectors.toList());
     }
 }

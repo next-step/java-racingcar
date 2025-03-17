@@ -10,9 +10,7 @@ class ResultViewTest {
 
     @Test
     void 자동차_목록을_받아서_이동한_거리를_출력한다() {
-        List<Car> cars = List.of(new Car(), new Car(), new Car());
-
-        String actual = ResultView.printDistance(cars);
+        String actual = ResultView.printCarsDistance(List.of(new Car("a"), new Car("a"), new Car("b")));
         assertThat(actual).isEqualTo("\n\n\n");
     }
 }

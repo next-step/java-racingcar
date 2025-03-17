@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
 
-    public static String printDistance(List<Car> cars) {
+    public static String printCarsDistance(List<Car> cars) {
         StringBuilder result = new StringBuilder();
         cars.stream().forEachOrdered(car -> {
             for (int i = 0; i < car.getDistance(); i++) {
