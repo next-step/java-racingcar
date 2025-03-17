@@ -27,7 +27,7 @@ public class RacingSessionTest {
     @Test
     @DisplayName("각 자동차 이동")
     void 자동차_이동() {
-        List<Car> cars = List.of(new Car("a"), new Car("b"), new Car("c"));
+        List<Car> cars = List.of(Car.of("a"), Car.of("b"), Car.of("c"));
 
         CarPositions positions = RacingSession.moveCars(cars);
 

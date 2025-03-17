@@ -9,7 +9,14 @@ public class RacingCar {
         String carNames = InputView.getCarNames();
         int turnCount = InputView.getTurn();
 
-        RacingSession session = RacingSession.of(carNames);
+        RacingSession session;
+        try {
+            session = RacingSession.of(carNames);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         session.startRacing(turnCount);
         RacingResultDto racingResult = session.getRacingResult();
 
