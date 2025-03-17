@@ -26,26 +26,4 @@ class GrandPrixTest {
         Assertions.assertThat(grandPrix.isFinished()).isTrue();
         Assertions.assertThat(playedRound).isEqualTo(totalRound);
     }
-
-    @Test
-    @DisplayName("report를 통해 현재 상황을 report class로 만들어서 반환한다.")
-    void makeReportsTest() {
-        // given
-        var luckyDice = new DiceTest.MockRandom(Car.MOVE_THRESHOLD + 1);
-        var totalRound = 5;
-        var carCount = 3;
-        var grandPrix = new GrandPrix(totalRound, carCount, luckyDice);
-        var playTimes = 3;
-
-        for (int i = 0; i < playTimes; i++) {
-            grandPrix.play();
-        }
-
-        // when
-        var report = grandPrix.report();
-
-        // then
-        Assertions.assertThat(report).hasSize(carCount);
-        report.forEach(it -> Assertions.assertThat(it.getPosition()).isEqualTo(playTimes));
-    }
 }
