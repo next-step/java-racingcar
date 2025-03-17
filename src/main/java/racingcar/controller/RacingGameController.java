@@ -1,12 +1,16 @@
-package racingcar;
+package racingcar.controller;
 
-public class RacingGame {
+import racingcar.domain.Cars;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.view.ResultView;
+
+public class RacingGameController {
 
     private final Cars cars;
     private final int tryCount;
     private final ResultView resultView;
 
-    public RacingGame(Cars cars, int tryCount, ResultView resultView) {
+    public RacingGameController(Cars cars, int tryCount, ResultView resultView) {
         this.cars = cars;
         this.tryCount = tryCount;
         this.resultView = resultView;

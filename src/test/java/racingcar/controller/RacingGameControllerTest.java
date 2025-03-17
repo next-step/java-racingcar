@@ -1,12 +1,16 @@
-package racingcar;
+package racingcar.controller;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.strategy.AlwaysMoveStrategy;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
-class RacingGameTest {
+class RacingGameControllerTest {
 
     @Test
     @DisplayName("자동차들이 최대 tryCount만큼 움직여야 한다")
@@ -16,7 +20,7 @@ class RacingGameTest {
                 Car.of("crong")
         ));
         int tryCount = 3;
-        new RacingGame(carsForTest, tryCount, new ResultView()).process(new AlwaysMoveStrategy());
+        new RacingGameController(carsForTest, tryCount, new ResultView()).process(new AlwaysMoveStrategy());
         Assertions.assertThat(carsForTest.getRaceStatusString()).contains("-".repeat(tryCount));
     }
 }

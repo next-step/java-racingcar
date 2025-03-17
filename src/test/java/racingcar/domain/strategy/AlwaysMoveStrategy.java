@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.strategy;
 
 public class AlwaysMoveStrategy implements MoveStrategy {
 

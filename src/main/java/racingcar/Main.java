@@ -1,5 +1,12 @@
 package racingcar;
 
+import racingcar.controller.RacingGameController;
+import racingcar.domain.Cars;
+import racingcar.domain.CarsGenerator;
+import racingcar.domain.strategy.RandomMoveStrategy;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,7 +18,7 @@ public class Main {
         int tryCount = inputView.inputTryCount();
         Cars cars = CarsGenerator.generateCars(inputCars);
         ResultView resultView = new ResultView();
-        RacingGame racingGame = new RacingGame(cars, tryCount, resultView);
-        racingGame.process(new RandomMoveStrategy(new Random()));
+        RacingGameController racingGameController = new RacingGameController(cars, tryCount, resultView);
+        racingGameController.process(new RandomMoveStrategy(new Random()));
     }
 }
