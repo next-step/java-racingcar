@@ -33,7 +33,7 @@ public class CarRaceGame {
 
     private static void printCars() {
         for (Car car : cars) {
-            car.printLocation();
+            ResultView.printCarLocation(car);
         }
         System.out.println();
     }
