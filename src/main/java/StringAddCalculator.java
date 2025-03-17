@@ -13,7 +13,6 @@ public class StringAddCalculator {
     }
 
 
-
     public static String[] split(String input) {
         Matcher matcher = pattern.matcher(input);
         String delimiter = ",|:";
