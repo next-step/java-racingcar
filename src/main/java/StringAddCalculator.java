@@ -2,6 +2,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    public final static Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
@@ -11,8 +12,9 @@ public class StringAddCalculator {
         return sum(split(input));
     }
 
+
+
     public static String[] split(String input) {
-        Pattern pattern = Pattern.compile("//(.)\n(.*)");
         Matcher matcher = pattern.matcher(input);
         String delimiter = ",|:";
         String numbersPart = input;
