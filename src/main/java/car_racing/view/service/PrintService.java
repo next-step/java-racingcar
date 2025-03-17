@@ -1,19 +1,25 @@
 package car_racing.view.service;
 
-import car_racing.domain.model.Car;
-import car_racing.domain.model.Cars;
+import car_racing.domain.model.RaceResults;
+import car_racing.view.model.UserInput;
+
+import java.util.List;
 
 public class PrintService {
     public static void showRaceStart() {
         System.out.println("\n실행 결과");
     }
 
-    public static void showRaceResult(Cars cars) {
-        cars.forEach(PrintService::showEachRaceResult);
-        System.out.println();
+    public static void showRaceResult(RaceResults raceResults, UserInput userInput) {
+        for (int i = 0; i < userInput.getNumOfGame(); i++) {
+            showEachRound(raceResults.getNthRoundResult(i));
+            System.out.println();
+        }
     }
 
-    private static void showEachRaceResult(Car car) {
-        System.out.println("-".repeat(car.getDistance()));
+    private static void showEachRound(List<Integer> roundResults) {
+        for (int roundResult: roundResults) {
+            System.out.println("-".repeat(roundResult));
+        }
     }
 }
