@@ -2,11 +2,16 @@ package carracing;
 
 public class Car {
     private int distance = 1;
+    private String distanceString = "-";
 
-    public int move(int randomNum) {
+    public void move(int randomNum) {
         if (randomNum >= 4) {
             distance++;
+            distanceString += "-";
         }
-        return distance;
+    }
+
+    public String getDistanceString() {
+        return distanceString;
     }
 }

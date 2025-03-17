@@ -14,16 +14,17 @@ public class CarRacingGame {
         randomNumberGenerator = new RandomNumberGenerator(seed);
     }
 
-    public List<Integer> playOneRound() {
-        List<Integer> result = new ArrayList<>();
+    public List<String> playOneRound() {
+        List<String> result = new ArrayList<>();
         for (Car car : cars) {
-            result.add(car.move(randomNumberGenerator.generateNumber()));
+            car.move(randomNumberGenerator.generateNumber());
+            result.add(car.getDistanceString());
         }
         return result;
     }
 
-    public List<List<Integer>> playGame(int gameCount) {
-        List<List<Integer>> result = new ArrayList<>();
+    public List<List<String>> playGame(int gameCount) {
+        List<List<String>> result = new ArrayList<>();
         for (int i = 0; i < gameCount; ++i) {
             result.add(playOneRound());
         }

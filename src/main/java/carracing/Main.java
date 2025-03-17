@@ -10,7 +10,7 @@ public class Main {
 
         Random random = new Random();
         CarRacingGame carRacingGame = new CarRacingGame(carNumber, random.nextLong());
-        List<List<Integer>> gameResult = carRacingGame.playGame(gameCount);
+        List<List<String>> gameResult = carRacingGame.playGame(gameCount);
 
         OutputView.printTotalResult(gameResult);
     }
