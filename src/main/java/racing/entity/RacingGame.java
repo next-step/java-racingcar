@@ -5,8 +5,12 @@ import racing.view.RacingGameOutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
+    private static final Random RANDOM = new Random();
+    private static final int MAX_RANDOM_VALUE = 9; // random 최대값
+
     private final int carCount;
     private final int roundCount;
     private final MoveRule moveRule;
@@ -33,7 +37,7 @@ public class RacingGame {
     private void playRound(RacingCars racingCars) {
         List<Car> cars = racingCars.getCars();
         for (Car car : cars) {
-            if (moveRule.isMovable()) {
+            if (moveRule.isMovable(getRandomValue())) {
                 car.move();
             }
         }
@@ -46,6 +50,10 @@ public class RacingGame {
         }
 
         return cars;
+    }
+
+    private static int getRandomValue() {
+        return RANDOM.nextInt(MAX_RANDOM_VALUE);
     }
 
 }
