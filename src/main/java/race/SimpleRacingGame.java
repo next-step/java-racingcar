@@ -6,13 +6,16 @@ public class SimpleRacingGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int numberOfCars = getCustomerInput(scanner, "자동차 대수는 몇 대 인가요? (1-10): ");
-        int numberOfAttempts = getCustomerInput(scanner, "시도할 회수는 몇 회 인가요? (1-10): ");
+        int numOfCars = getCustomerInput(scanner, "자동차 대수는 몇 대 인가요? (1-10): ");
+        int numOfAttempts = getCustomerInput(scanner, "시도할 회수는 몇 회 인가요? (1-10): ");
 
-        System.out.println("입력된 자동차 대수: " + numberOfCars);
-        System.out.println("입력된 시도 횟수: " + numberOfAttempts);
+        System.out.println("입력된 자동차 대수: " + numOfCars);
+        System.out.println("입력된 시도 횟수: " + numOfAttempts);
 
         scanner.close();
+
+        RacingTrack racingGame = new RacingTrack(numOfCars, numOfAttempts);
+        racingGame.start();
     }
 
     private static int getCustomerInput(Scanner scanner, String message) {

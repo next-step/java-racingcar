@@ -7,11 +7,14 @@ public class RacingCar {
         return num >= 4;
     }
 
-    public String move(int i) {
+    public int move(int i) {
         if (shouldMove(i)) {
             position++;
         }
+        return position;
+    }
 
-        return "-".repeat(Math.max(0, position));
+    public void printPosition() {
+        System.out.println("|" + "-".repeat(Math.max(0, position)));
     }
 }

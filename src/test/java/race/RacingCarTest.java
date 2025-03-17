@@ -1,10 +1,15 @@
 package race;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RacingCarTest {
+    @Order(10)
     @Test
     void should_move_over_4() {
         RacingCar car = new RacingCar();
@@ -12,6 +17,7 @@ public class RacingCarTest {
         assertThat(car.shouldMove(9)).isTrue();
     }
 
+    @Order(20)
     @Test
     void should_not_move_under_4() {
         RacingCar car = new RacingCar();
@@ -19,17 +25,19 @@ public class RacingCarTest {
         assertThat(car.shouldMove(0)).isFalse();
     }
 
+    @Order(30)
     @Test
     void move() {
         RacingCar car = new RacingCar();
-        assertThat(car.move(5)).isEqualTo("-");
-        assertThat(car.move(9)).isEqualTo("--");
+        assertThat(car.move(5)).isEqualTo(1);
+        assertThat(car.move(9)).isEqualTo(2);
     }
 
+    @Order(40)
     @Test
     void not_move() {
         RacingCar car = new RacingCar();
-        assertThat(car.move(5)).isEqualTo("-");
-        assertThat(car.move(0)).isEqualTo("-");
+        assertThat(car.move(5)).isEqualTo(1);
+        assertThat(car.move(0)).isEqualTo(1);
     }
 }
