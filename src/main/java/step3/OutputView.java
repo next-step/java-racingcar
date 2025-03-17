@@ -12,6 +12,8 @@ public class OutputView {
     public void printPositions() {
         List<CarPositions> history = simulator.getHistory();
 
+        System.out.println("실행 결과");
+
         for (CarPositions carPositions : history) {
             printPosition(carPositions);
         }
