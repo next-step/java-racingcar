@@ -2,9 +2,7 @@ package racing.simulator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import racing.types.CarCount;
+import racing.types.RacingCarCount;
 import racing.types.SimulateCount;
 
 import java.util.List;
@@ -22,7 +20,7 @@ class RacingCarRacingGameSimulatorTest {
     int carCount = 3;
     int simulateCount = 4;
 
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new RacingCarCount(carCount), () -> true);
 
     List<List<Integer>> simulateResults = Objects.requireNonNull(simulator.run(new SimulateCount(simulateCount)));
 

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.types.CarCount;
+import racing.types.RacingCarCount;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +21,7 @@ class RacingCarGroupTest {
     int carCount = 3;
     int simulateMoves = 5;
 
-    RacingCarGroup carGroup = new RacingCarGroup(new CarCount(carCount), () -> true);
+    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> true);
 
     IntStream.range(0, simulateMoves).forEach(i -> carGroup.moveCars());
 
@@ -38,7 +38,7 @@ class RacingCarGroupTest {
   @ValueSource(booleans = {true, false})
   void tryMoveCars_carsMovedByStrategy(boolean strategyResult) {
     int carCount = 3;
-    RacingCarGroup carGroup = new RacingCarGroup(new CarCount(carCount), () -> strategyResult);
+    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> strategyResult);
 
     carGroup.moveCars();
     List<RacingCar> result = carGroup.copyCars();
@@ -52,7 +52,7 @@ class RacingCarGroupTest {
   @Test
   void copyCars_returnDeepCopiedCarArray() {
     int carCount = 3;
-    RacingCarGroup carGroup = new RacingCarGroup(new CarCount(carCount), () -> true);
+    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> true);
 
     List<RacingCar> firstCopiedRacingCars = carGroup.copyCars();
     List<RacingCar> secondCopiedRacingCars = carGroup.copyCars();
@@ -69,7 +69,7 @@ class RacingCarGroupTest {
   @Test
   void reset_setCarPositionToZero() {
     int carCount = 3;
-    RacingCarGroup carGroup = new RacingCarGroup(new CarCount(carCount), () -> true);
+    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> true);
 
     carGroup.moveCars();
     carGroup.resetCars();

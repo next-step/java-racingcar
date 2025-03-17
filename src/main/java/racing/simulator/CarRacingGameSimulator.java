@@ -1,18 +1,17 @@
 package racing.simulator;
 
-import racing.types.CarCount;
+import racing.types.RacingCarCount;
 import racing.types.SimulateCount;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRacingGameSimulator {
 
   private final RacingCarGroup racingCarGroup;
 
-  public CarRacingGameSimulator(CarCount carCount, RacingCarMovingStrategy racingCarMovingStrategy) {
-    this.racingCarGroup = new RacingCarGroup(carCount, racingCarMovingStrategy);
+  public CarRacingGameSimulator(RacingCarCount racingCarCount, RacingCarMovingStrategy racingCarMovingStrategy) {
+    this.racingCarGroup = new RacingCarGroup(racingCarCount, racingCarMovingStrategy);
   }
 
   public List<List<Integer>> run(SimulateCount simulateCount) {
