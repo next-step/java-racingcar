@@ -24,6 +24,6 @@ public class RacingCar {
 
     public void printPosition() {
         String racingNumber = String.format("%02d", this.racingNumber + 1);
-        System.out.println("Car " + racingNumber + " : " + "-".repeat(Math.max(0, position)));
+        System.out.println("Car " + racingNumber + " : " + "-".repeat(position));
     }
 }
