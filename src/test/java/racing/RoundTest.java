@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -20,6 +21,20 @@ class RoundTest {
 
         // then
         Assertions.assertThat(round.isFinished()).isTrue();
+    }
+
+    @Test
+    @DisplayName("종료된 라운드는 play를 할 수 없다.")
+    void playFinishedRoundTest() {
+        // given
+        var round = new Round(new Random());
+        List<Car> testCars = Collections.emptyList();
+        round.play(testCars);
+
+        // when & then
+        Assertions.assertThatThrownBy(() -> round.play(testCars))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("이미 종료된 라운드입니다.");
     }
 
     @Test
