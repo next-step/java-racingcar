@@ -39,7 +39,7 @@ public class StringAddCalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"//;\n1;2;3", "///\n1/2,3"})
+    @ValueSource(strings = {"//;\n1;2;3", "///\n1/2,3", "//+\n1/2,3"})
     @DisplayName("“//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     public void splitAndSum_custom_구분자(String input) throws Exception {
         int result = StringAddCalculator.splitAndSum(input);

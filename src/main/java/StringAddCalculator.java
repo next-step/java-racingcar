@@ -2,6 +2,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITER_REGEX = ",|:";
 
     public static int splitAndSum(String text) {
         if(isNullOrBlank(text)) return 0;
@@ -14,15 +16,17 @@ public class StringAddCalculator {
     }
 
     private static String[] splitByDelimiter(String text) {
-        final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
-        final String DEFAULT_DELIMITER_REGEX = ",|:";
-
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(String.join("|", DEFAULT_DELIMITER_REGEX, customDelimiter));
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            String textWithCustomDelimiter = matcher.group(2);
+            return textWithCustomDelimiter.split(combineDefaultDelimiterWith(customDelimiter));
         }
         return text.split(DEFAULT_DELIMITER_REGEX);
+    }
+
+    private static String combineDefaultDelimiterWith(String customDelimiter) {
+        return String.format("%s|%s", DEFAULT_DELIMITER_REGEX, Pattern.quote(customDelimiter));
     }
 
     private static int[] convertToNumbers(String[] tokens) {
