@@ -16,6 +16,6 @@ public class InputView {
         System.out.println(PLAY_TIME_COUNT_INPUT_MESSAGE);
         var playTimeCount = scanner.nextInt();
 
-        return new GrandPrix(playTimeCount, participantsCarCount, new Random());
+        return new GrandPrix(playTimeCount, participantsCarCount);
     }
 }

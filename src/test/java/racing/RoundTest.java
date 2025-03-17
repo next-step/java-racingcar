@@ -6,15 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 class RoundTest {
-
     @Test
     @DisplayName("라운드를 play하면 해당 라운드가 종료된다")
     void finishRoundTest() {
         // given
-        var round = new Round(new Random());
+        var round = new Round(DiceTest.luckyDice);
 
         // when
         round.play(List.of());
@@ -27,7 +25,7 @@ class RoundTest {
     @DisplayName("종료된 라운드는 play를 할 수 없다.")
     void playFinishedRoundTest() {
         // given
-        var round = new Round(new Random());
+        var round = new Round(DiceTest.luckyDice);
         List<Car> testCars = Collections.emptyList();
         round.play(testCars);
 
@@ -46,7 +44,7 @@ class RoundTest {
         var car3 = new Car();
         var cars = List.of(car1, car2, car3);
         // 항상 성공하는 주사위
-        var luckyDice = new DiceTest.MockRandom(Car.MOVE_THRESHOLD + 1);
+        var luckyDice = DiceTest.luckyDice;
         var playTimes = 3;
         var rounds = List.of(new Round(luckyDice), new Round(luckyDice), new Round(luckyDice));
 

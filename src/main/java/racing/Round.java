@@ -7,8 +7,8 @@ public class Round {
     private final Dice dice;
     private boolean finished;
 
-    public Round(Random random) {
-        this.dice = new Dice(random);
+    public Round(Dice dice) {
+        this.dice = dice;
         this.finished = false;
     }
 

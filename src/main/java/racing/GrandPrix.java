@@ -10,10 +10,10 @@ public class GrandPrix {
     private final List<Round> rounds;
     private final List<Car> cars;
 
-    public GrandPrix(int totalRound, int totalCars, Random random) {
+    public GrandPrix(int totalRound, int totalCars) {
         this.currentRound = 0;
         this.rounds = IntStream.range(0, totalRound)
-                               .mapToObj(i -> new Round(random))
+                               .mapToObj(i -> new Round(new Dice(new Random())))
                                .collect(Collectors.toUnmodifiableList());
         this.cars = IntStream.range(0, totalCars)
                              .mapToObj(i -> new Car())
