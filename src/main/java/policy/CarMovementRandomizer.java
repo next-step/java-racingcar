@@ -12,7 +12,7 @@ public class CarMovementRandomizer implements CarMovementPolicy {
         return getRandom() >= REFERENCE_VALUE;
     }
 
-    public static int getRandom() {
-        return new Random().nextInt(CarMovementRandomizer.RANDOM_BOUND);
+    private static int getRandom() {
+        return new Random().nextInt(RANDOM_BOUND);
     }
 }

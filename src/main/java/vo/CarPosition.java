@@ -2,9 +2,9 @@ package vo;
 
 public class CarPosition {
 
-    private int value;
-
     private static final int ONE_STEP = 1;
+
+    private int value;
 
     public CarPosition(int value) {
         this.value = value;

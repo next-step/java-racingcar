@@ -18,11 +18,11 @@ public class ResultView {
 
     private static void printPositions(Cars cars) {
         cars.getPositions()
-            .forEach(ResultView::printPositions);
+            .forEach(ResultView::printHyphens);
         System.out.println();
     }
 
-    private static void printPositions(int value) {
+    private static void printHyphens(int value) {
         System.out.println(HYPHEN.repeat(value));
     }
 

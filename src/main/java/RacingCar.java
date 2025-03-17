@@ -8,7 +8,7 @@ public class RacingCar {
         play();
     }
 
-    public static void play() {
+    private static void play() {
         int carCount = InputView.getCarCount();
         int tryCount = InputView.getTryCount();
 
