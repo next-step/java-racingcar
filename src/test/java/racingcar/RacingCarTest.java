@@ -18,12 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingCarTest {
 
-    private static final int CAR = 5;
+    private static final int CAR = 3;
     Car car;
+    Cars cars;
 
     @BeforeEach
     void setUp() {
         car = new Car(); // 1로 초기화
+        cars = new Cars(RacingCar.getCars(CAR));
     }
 
     @Test
@@ -43,7 +45,6 @@ public class RacingCarTest {
     @Test
     @DisplayName("전진 조건에 만족하면 모두 전진")
     void moveAll(){
-        Cars cars = new Cars(RacingCar.getCars(CAR));
         cars.moveAll(()->true);
 
         assertAll(
@@ -56,7 +57,6 @@ public class RacingCarTest {
     @Test
     @DisplayName("전진 조건에 만족하지 않으면 모두 멈춤")
     void stopAll(){
-        Cars cars = new Cars(RacingCar.getCars(CAR));
         cars.moveAll(()->false);
 
         assertAll(

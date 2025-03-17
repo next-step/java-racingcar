@@ -12,15 +12,11 @@ import java.util.List;
 
 public class RacingCar {
 
-    public static void main(String[] args) {
-        gameStart();
-    }
     public static void gameStart() {
         Cars cars = new Cars(getCars(InputView.inputValidatedNumberOfCar()));
         Race race = new Race(cars, InputView.inputValidatedNumberOfAttempts());
         race.start(createRandomStrategy());
     }
-
 
     public static ArrayList<Car> getCars(int car) {
         ArrayList<Car> cars = new ArrayList<>();
@@ -29,7 +25,6 @@ public class RacingCar {
         }
         return cars;
     }
-
 
     private static RandomStrategy createRandomStrategy() {
         return new RandomStrategy(new RandomGenerator());
