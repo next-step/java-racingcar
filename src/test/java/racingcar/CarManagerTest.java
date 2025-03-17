@@ -40,8 +40,20 @@ public class CarManagerTest {
         CarManager.moveCars(cars);
         CarManager.moveCars(cars);
         for (Car car : cars) {
-            System.out.println(car.getCarLocation());
             assertThat(car.getCarLocation()).isBetween(0, 2);
         }
     }
+
+    @Test
+    @Description("random 값이 4 이상일 경우 움직일 수 있다.")
+    void canMove_True() {
+        assertThat(CarManager.canMove(4)).isTrue();
+    }
+
+    @Test
+    @Description("random 값이 4 미만일 경우 움직일 수 없다.")
+    void canMove_False() {
+        assertThat(CarManager.canMove(3)).isFalse();
+    }
+
 }
