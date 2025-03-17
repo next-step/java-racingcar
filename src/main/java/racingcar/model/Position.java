@@ -3,6 +3,7 @@ package racingcar.model;
 public class Position {
 
     private int position;
+    private static final String DELIMITER = "-";
 
     public Position() {
         this.position = 0;
@@ -22,6 +23,6 @@ public class Position {
 
     @Override
     public String toString() {
-        return String.valueOf(this.position);
+        return DELIMITER.repeat(position);
     }
 }

@@ -28,7 +28,7 @@ public class Car {
         return position.isSameAs(other);
     }
 
-    public void print() {
+    public void printPosition() {
         System.out.println(position);
     }
 }
