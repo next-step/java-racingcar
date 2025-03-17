@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Car {
     private int location;
     private final ResultView resultView = new ResultView();
@@ -12,16 +10,9 @@ public class Car {
         resultView.printCarLocation(this);
     }
 
-    public boolean randomGo() {
-        if (getRandomInt() >= 4) {
+    public void randomGo(int randomValue) {
+        if (randomValue >= 4)
             go();
-            return true;
-        }
-        return false;
-    }
-
-    private int getRandomInt() {
-        return new Random().nextInt(10);
     }
 
     public void go() {

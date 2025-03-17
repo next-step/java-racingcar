@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CarRaceGame {
-    private static ArrayList<Car> cars = new ArrayList<>();
+    private static final ArrayList<Car> cars = new ArrayList<>();
+    private static final Random random = new Random();
 
     public static void main(String[] args) {
         makeCars();
@@ -25,7 +27,7 @@ public class CarRaceGame {
 
     private static void moveAllCars() {
         for (Car car : cars) {
-            car.randomGo();
+            car.randomGo(random.nextInt(10));
         }
     }
 
