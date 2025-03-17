@@ -18,7 +18,7 @@ class CarTest {
 
     @ParameterizedTest(name = "자동차를 음수만큼 움직이면 예외가 발생한다. 움직인 값: {0}")
     @ValueSource(ints = {-1})
-    void sholdThrowRuntimeExceptionWhenNegativeDistanceIsGiven(int inputDistance) {
+    void shouldThrowRuntimeExceptionWhenNegativeDistanceIsGiven(int inputDistance) {
         Car car = new Car();
         assertThatThrownBy(() -> car.move(inputDistance))
                 .isInstanceOf(RuntimeException.class);
