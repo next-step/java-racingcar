@@ -12,14 +12,14 @@ public class StringAddCalculator {
     if (isEmptyText(text)) {
       return 0;
     }
-    int[] numbers = toInts(split(text));
-    return sum(numbers);
+    String[] numbers = split(text);
+    return sumNumbers(numbers);
   }
 
-  private static int[] toInts(String[] numbers) {
+  private static int sumNumbers(String[] numbers) {
     return Arrays.stream(numbers)
         .mapToInt(StringAddCalculator::toInt)
-        .toArray();
+        .sum();
   }
 
   private static int toInt(String number) {
@@ -40,10 +40,6 @@ public class StringAddCalculator {
       return matcher.group(2).split(matcher.group(1));
     }
     return text.split(DELIMITER);
-  }
-
-  private static int sum(int[] numbers) {
-    return Arrays.stream(numbers).sum();
   }
 
 }
