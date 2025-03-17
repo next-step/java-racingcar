@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.Arrays;
+
 public class StringCalculator {
 
 
@@ -10,6 +12,8 @@ public class StringCalculator {
         if (s.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(s);
+        String[] numbers = s.split(",");
+        Integer result = Arrays.stream(numbers).map(Integer::parseInt).reduce(0, Integer::sum);
+        return result;
     }
 }

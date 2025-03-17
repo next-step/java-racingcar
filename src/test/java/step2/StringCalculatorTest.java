@@ -21,4 +21,10 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(1);
     }
 
+    @Test
+    public void splitAndSum_쉼표구분자() throws Exception {
+        int result = StringCalculator.splitAndSum("1,2");
+        assertThat(result).isEqualTo(3);
+    }
+
 }
