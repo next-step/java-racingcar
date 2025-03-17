@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.InputMismatchException;
@@ -82,6 +84,25 @@ public class CarRacingTest {
     InputView inputView = new InputView(testScanner);
 
     Assertions.assertThrows(InputMismatchException.class, inputView::receiveTryCount);
+  }
+
+  @DisplayName("매 회마다 자동차들의 위치를 출력하는 기능 테스트")
+  @Test
+  void testPrintCarPosition() {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outputStream));
+
+    Car car = new Car("pobi");
+    car.move(4);
+    car.move(4);
+    car.move(1);
+    String expected = "pobi : " + "---\n";
+
+    ResultView.printCarStatus(car);
+
+    System.setOut(originalOut);
+    Assertions.assertEquals(expected, outputStream.toString());
   }
 
 }
