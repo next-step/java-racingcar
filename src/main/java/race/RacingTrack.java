@@ -11,7 +11,7 @@ public class RacingTrack {
         this.numOfAttempts = numOfAttempts;
         this.cars = new ArrayList<>();
         for (int i = 0; i < numOfCars; i++) {
-            cars.add(new RacingCar(i));
+            cars.add(new RacingCar(i, new DefaultRandomNumberGenerator()));
         }
     }
 
@@ -19,7 +19,7 @@ public class RacingTrack {
         System.out.println("### Racing Start!!! ###");
         for (int i = 0; i < numOfAttempts; i++) {
             for (RacingCar car : cars) {
-                car.move(RacingUtil.generateRandomNum());
+                car.move();
                 car.printPosition();
             }
             System.out.println();
