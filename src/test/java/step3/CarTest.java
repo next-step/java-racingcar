@@ -44,4 +44,29 @@ public class CarTest {
         car.updatePosition(Car.STOP);
         assertEquals("", car.getPosition());
     }
+
+    @Test
+    @DisplayName("랜덤 숫자가 9일 때 GO 상태로 이동")
+    void move_GO() {
+        Car car = createCar(9);
+        car.move();
+        assertEquals(Car.GO, car.getPosition());
+    }
+
+    @Test
+    @DisplayName("랜덤 숫자가 1일 때 STOP 상태로 이동")
+    void move_STOP() {
+        Car car = createCar(1);
+        car.move();
+        assertEquals("", car.getPosition());
+    }
+
+    private Car createCar(int randomNumber) {
+        return new Car() {
+            @Override
+            protected int generateRandomNumber() {
+                return randomNumber;
+            }
+        };
+    }
 }

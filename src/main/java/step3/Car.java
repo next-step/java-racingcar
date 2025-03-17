@@ -1,11 +1,19 @@
 package step3;
 
+import java.util.Random;
+
 public class Car {
     public static final int MIN_MOVEMENT_THRESHOLD = 4;
     public static final String GO = "-";
     public static final String STOP = "";
 
+    private final Random random = new Random();
+
     private String position = "";
+
+    public void move() {
+        updatePosition(getMovementStatus(generateRandomNumber()));
+    }
 
     public String getPosition() {
         return position;
@@ -23,6 +31,10 @@ public class Car {
         }
 
         return STOP;
+    }
+
+    protected int generateRandomNumber() {
+        return random.nextInt(10);
     }
 }
 
