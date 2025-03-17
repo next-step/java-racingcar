@@ -3,7 +3,7 @@ package racingCar;
 import java.util.Random;
 
 
-public class NumberRandomizer {
+public class NumberRandomUtil {
 
     private static final Random random = new Random();
     private static final int BOUND = 10;

@@ -9,7 +9,7 @@ public class Car {
     }
 
     public void move() {
-        if (NumberRandomizer.generate() >= CONDITION) {
+        if (NumberRandomUtil.generate() >= CONDITION) {
             position += 1;
         }
     }
