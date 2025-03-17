@@ -12,14 +12,14 @@ public class PrintService {
 
     public static void showRaceResult(RaceResults raceResults, UserInput userInput) {
         for (int i = 0; i < userInput.getNumOfGame(); i++) {
-            showEachRound(raceResults.getNthRoundResult(i));
+            showEachRound(raceResults.getRaceResultOfNthRound(i));
             System.out.println();
         }
     }
 
-    private static void showEachRound(List<Integer> roundResults) {
-        for (int roundResult: roundResults) {
-            System.out.println("-".repeat(roundResult));
+    private static void showEachRound(List<String> roundResults) {
+        for (String roundResult: roundResults) {
+            System.out.println(roundResult);
         }
     }
 }

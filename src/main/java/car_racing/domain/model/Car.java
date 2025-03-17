@@ -17,11 +17,15 @@ public class Car {
         this.raceResult.addRecord(this.distance);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getDistance() {
         return distance;
     }
 
     public RaceResult getRaceResult() {
-        return this.raceResult;
+        return raceResult;
     }
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceResult {
+    private static final String CAR_POSITION_MARKER = "-";
+
     private final List<Integer> positionHistory;
 
     public RaceResult() {
@@ -14,7 +16,7 @@ public class RaceResult {
         positionHistory.add(distance);
     }
 
-    public Integer getPositionOfNthRound(int n) {
-        return positionHistory.get(n);
+    public String getPositionOfNthRound(int n) {
+        return CAR_POSITION_MARKER.repeat(positionHistory.get(n));
     }
 }

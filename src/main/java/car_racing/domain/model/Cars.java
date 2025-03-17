@@ -34,9 +34,7 @@ public class Cars {
     }
 
     public RaceResults getRaceResults() {
-        List<RaceResult> raceResults = cars.stream()
-                .map(Car::getRaceResult)
-                .collect(Collectors.toList());
-        return new RaceResults(raceResults);
+        return new RaceResults(this.cars);
     }
+
 }
