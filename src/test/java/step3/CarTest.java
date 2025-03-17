@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.game.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,7 +13,7 @@ public class CarTest {
     void carNotMoveTest() {
         Car car = new Car();
         car.move(3);
-        assertThat(car.getPosition()).isEmpty();
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
@@ -20,7 +21,7 @@ public class CarTest {
     void carMoveTest() {
         Car car = new Car();
         car.move(5);
-        assertThat(car.getPosition()).isEqualTo("-");
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test

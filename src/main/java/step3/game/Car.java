@@ -1,4 +1,4 @@
-package step3;
+package step3.game;
 
 public class Car {
     private static final int POSSIBLE_MOVE_CONDITION = 4;
@@ -15,7 +15,7 @@ public class Car {
         }
     }
 
-    public String getPosition() {
-        return "-".repeat(position);
+    public int getPosition() {
+        return position;
     }
 }
