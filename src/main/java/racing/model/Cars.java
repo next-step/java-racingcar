@@ -13,6 +13,15 @@ public class Cars {
         this.numberGenerator = numberGenerator;
     }
 
+    public static Cars create(int count, NumberGenerator numberGenerator) {
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            Car car = new Car();
+            carList.add(car);
+        }
+        return new Cars(carList, numberGenerator);
+    }
+
     public void moveAll() {
         for (Car car : cars) {
             car.move(numberGenerator.generateNumber());

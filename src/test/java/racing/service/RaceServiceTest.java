@@ -1,8 +1,8 @@
 package racing.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,11 +10,12 @@ import racing.fake.FakeNumberGenerator;
 import racing.model.Cars;
 
 class RaceServiceTest {
+    public static final int MOVE_NUMBER = 4;
     private RaceService raceService;
 
     @BeforeEach
     void setUp() {
-        raceService = new RaceService(new FakeNumberGenerator(4));
+        raceService = new RaceService(new FakeNumberGenerator(MOVE_NUMBER));
     }
 
     @DisplayName("입력 받은 n대의 자동차를 생성한다.")
@@ -27,7 +28,7 @@ class RaceServiceTest {
         Cars cars = raceService.generateCar(carCount);
 
         // then
-        assertThat(cars.size()).isEqualTo(carCount);
+        assertThat(cars.getCars().size()).isEqualTo(carCount);
     }
 
     @DisplayName("자동차를 움직일 수 있다.")
@@ -40,6 +41,10 @@ class RaceServiceTest {
         raceService.moveCar(cars);
 
         // then
-        assertThat(cars.getPositions()).isEqualTo(Arrays.asList(1, 1, 1));
+        assertAll(() -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1),
+                () -> assertThat(cars.getCars().get(1).getPosition()).isEqualTo(1),
+                () -> assertThat(cars.getCars().get(2).getPosition()).isEqualTo(1)
+        );
+
     }
 }
