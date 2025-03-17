@@ -13,10 +13,6 @@ public class Racing {
         this.cars = new HashSet<>(cars);
     }
 
-    public Racing(Set<Car> cars) {
-        this.cars = cars;
-    }
-
     public void playRound() {
         cars.forEach(Car::play);
     }
