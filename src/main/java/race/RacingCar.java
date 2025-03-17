@@ -4,10 +4,12 @@ public class RacingCar {
     private final int racingNumber;
     private int position;
     private final RandomNumberGenerator randomNumberGenerator;
+    private final PositionFormatter positionFormatter;
 
-    public RacingCar(int racingNumber, RandomNumberGenerator randomNumberGenerator) {
+    public RacingCar(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionFormatter positionFormatter) {
         this.racingNumber = racingNumber;
         this.randomNumberGenerator = randomNumberGenerator;
+        this.positionFormatter = positionFormatter;
     }
 
     private boolean shouldMove(int num) {
@@ -23,7 +25,6 @@ public class RacingCar {
     }
 
     public void printPosition() {
-        String racingNumber = String.format("%02d", this.racingNumber + 1);
-        System.out.println("Car " + racingNumber + " : " + "-".repeat(position));
+        System.out.println(positionFormatter.format(racingNumber, position));
     }
 }
