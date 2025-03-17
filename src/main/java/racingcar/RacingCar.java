@@ -29,18 +29,6 @@ public class RacingCar {
         return MOVE_SYMBOL.repeat(distance);
     }
 
-    public static void moveIfMovable(List<RacingCar> racingCarList) {
-        for (RacingCar car : racingCarList) {
-            car.moveIfMovable();
-        }
-    }
-
-    public static void display(List<RacingCar> racingCarList) {
-        for (RacingCar car : racingCarList) {
-            System.out.println(car.display());
-        }
-    }
-
     public static List<RacingCar> createRacingCars(int carCount) {
         List<RacingCar> racingCars = new ArrayList<>();
 
