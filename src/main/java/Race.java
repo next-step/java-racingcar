@@ -17,4 +17,8 @@ public class Race {
         this.roundCount = roundCount;
         this.carPositions = new ArrayList<>(Collections.nCopies(carCount, 0));
     }
+
+    public List<Integer> getCarPostions() {
+        return carPositions;
+    }
 }
