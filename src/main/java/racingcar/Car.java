@@ -1,11 +1,7 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 
-    private static final int RANDOM_NUMBER_BOUND = 10;
-    private static final int MOVE_BOUND = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
     private int position;
@@ -32,17 +28,9 @@ public class Car {
         return name;
     }
 
-    public void move(Random random) {
-        if (this.isMove(random)) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             this.position++;
         }
-    }
-
-    private boolean isMove(Random random) {
-        return this.getRandomNumber(random) >= Car.MOVE_BOUND;
-    }
-
-    private int getRandomNumber(Random random) {
-        return random.nextInt(Car.RANDOM_NUMBER_BOUND);
     }
 }

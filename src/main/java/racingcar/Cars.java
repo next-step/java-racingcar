@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -18,7 +17,9 @@ public class Cars {
     }
 
     public String getWinnerCarNames() {
-        return getWinnerCars().stream().map(Car::getName).collect(Collectors.joining(", "));
+        return getWinnerCars().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     private List<Car> getWinnerCars() {
@@ -26,9 +27,10 @@ public class Cars {
             return this.winnerCars;
         }
         int maxPosition = getMaxPosition(this.cars);
-        return this.cars.stream()
+        this.winnerCars = this.cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
+        return this.winnerCars;
     }
 
     private int getMaxPosition(List<Car> cars) {
@@ -46,9 +48,12 @@ public class Cars {
         return stringBuilder.toString();
     }
 
-    public void moveAll(Random random) {
+    public void moveAll(MoveStrategy moveStrategy) {
+        if (winnerCars != null) {
+            throw new IllegalStateException("우승자가 이미 결정되었습니다.");
+        }
         for (Car car : cars) {
-            car.move(random);
+            car.move(moveStrategy);
         }
     }
 }

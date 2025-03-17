@@ -34,4 +34,17 @@ public class CarsTest {
         )).getRaceStatusString();
         Assertions.assertThat(raceStatus).isEqualTo("pobi : ---\ncrong : --\n");
     }
+
+    @Test
+    @DisplayName("우승자가 결정되었을 때에는 더 이상 움직일 수 없어야 한다")
+    void cannotMoveWhenWinnersAlreadyExists() {
+        Cars cars = Cars.of(List.of(
+                new Car(3, "pobi"),
+                new Car(2, "crong")
+        ));
+        cars.getWinnerCarNames();
+        Assertions.assertThatThrownBy(() -> cars.moveAll(new AlwaysMoveStrategy()))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("우승자가 이미 결정되었습니다.");
+    }
 }

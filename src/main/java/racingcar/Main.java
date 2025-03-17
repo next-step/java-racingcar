@@ -9,9 +9,9 @@ public class Main {
         InputView inputView = new InputView(new Scanner(System.in));
         String inputCars = inputView.inputCars();
         int tryCount = inputView.inputTryCount();
-        Cars cars = new CarsGenerator().generateCars(inputCars);
+        Cars cars = CarsGenerator.generateCars(inputCars);
         ResultView resultView = new ResultView();
         RacingGame racingGame = new RacingGame(cars, tryCount, resultView);
-        racingGame.process(new Random());
+        racingGame.process(new RandomMoveStrategy(new Random()));
     }
 }

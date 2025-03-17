@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CarsGenerator {
 
-    public Cars generateCars(String inputCars) {
+    public static Cars generateCars(String inputCars) {
         List<Car> cars = new ArrayList<>();
         String[] carNames = inputCars.split(",");
         for (String carName : carNames) {

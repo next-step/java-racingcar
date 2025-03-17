@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.Random;
-
 public class RacingGame {
 
     private final Cars cars;
@@ -14,16 +12,16 @@ public class RacingGame {
         this.resultView = resultView;
     }
 
-    public void process(Random random) {
+    public void process(MoveStrategy moveStrategy) {
         resultView.printResult();
         for (int i = 0; i < tryCount; i++) {
-            moveCars(this.cars, random);
+            moveCars(this.cars, moveStrategy);
             resultView.printCars(this.cars);
         }
         resultView.printWinners(cars);
     }
 
-    private void moveCars(Cars cars, Random random) {
-        cars.moveAll(random);
+    private void moveCars(Cars cars, MoveStrategy moveStrategy) {
+        cars.moveAll(moveStrategy);
     }
 }
