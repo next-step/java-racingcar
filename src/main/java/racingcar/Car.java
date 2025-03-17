@@ -6,6 +6,8 @@ import java.util.Random;
 public class Car {
 
     public static final Random RANDOM = new Random();
+    private static final int MOVE_PROBABILITY = 4;
+    private static int TOTAL_PROBABILITY = 10;
     private Integer distance = 0;
     private Integer playCount = 0;
 
@@ -19,13 +21,13 @@ public class Car {
 
     public Integer play() {
         playCount++;
-        if (moveOrStop()) {
+        if (moveForwardOrNot()) {
             distance++;
         }
         return getDistance();
     }
 
-    private static boolean moveOrStop() {
-        return RANDOM.nextInt(10) >= 4;
+    private static boolean moveForwardOrNot() {
+        return RANDOM.nextInt(TOTAL_PROBABILITY) >= MOVE_PROBABILITY;
     }
 }
