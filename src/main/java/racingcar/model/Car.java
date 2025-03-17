@@ -4,6 +4,7 @@ package racingcar.model;
 public class Car {
 
     private final Position position;
+    private static final int MOVE_CONDITION_NUMBER = 4;
 
     public Car() {
         this.position = new Position();
@@ -13,8 +14,14 @@ public class Car {
         this.position = new Position(initialPosition);
     }
 
-    public void move() {
-        position.incrementPosition();
+    public void move(int randomValue) {
+        if (canMove(randomValue)) {
+            position.incrementPosition();
+        }
+    }
+
+    private static boolean canMove(int randomValue) {
+        return randomValue >= MOVE_CONDITION_NUMBER;
     }
 
     public boolean isAtPosition(Position other) {
