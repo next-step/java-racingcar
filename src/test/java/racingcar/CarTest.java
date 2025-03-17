@@ -1,47 +1,47 @@
 package racingcar;
 
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.*;
 
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.MockedStatic;
+import org.junit.jupiter.api.Test;
 
 class CarTest {
-	static final int MIN_MOVE_VALUE = 4;
-	static final int MAX_BOUND = 10;
+	Car car;
 
-	static MockedStatic<RandomNumberGenerator> generator;
-
-	@BeforeAll
-	static void setUp() {
-		generator = mockStatic(RandomNumberGenerator.class);
+	@BeforeEach
+	void setUp() {
+		car = new Car();
 	}
 
-	@ParameterizedTest(name = "랜덤값: {0}, 기대값: {1}")
-	@MethodSource("goTestData")
-	@DisplayName("자동차는 MIN_MOVE_VALUE(=4) 이상이면 car의 distance를 1 증가한다.")
-	void goTest(int randomNumber, boolean expected) {
-		// given
-		Car car = new Car();
-		when(RandomNumberGenerator.generateRandomNumber()).thenReturn(randomNumber);
-
+	@Test
+	@DisplayName("자동차의 초기 위치는 0이다.")
+	void initialLocationTest() {
 		// when
-		car.go();
+		int initLocation = car.getLocation();
 
 		// then
-		Assertions.assertEquals(car.getDistance(), expected ? 1 : 0);
+		assertThat(initLocation).isZero();
 	}
 
-	static Stream<Arguments> goTestData() {
-		return IntStream.range(0, MAX_BOUND)
-			.mapToObj(i -> Arguments.of(i, i >= MIN_MOVE_VALUE));
+	@Test
+	@DisplayName("전진 조건을 만족하면 전진한다.")
+	void goTest_go() {
+		// when
+		car.go(() -> true);
+
+		// then
+		assertThat(car.getLocation()).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("전진 조건을 만족하지 않으면 정지한다.")
+	void goTest_stop() {
+		// when
+		car.go(() -> false);
+
+		// then
+		assertThat(car.getLocation()).isEqualTo(0);
 	}
 
 }

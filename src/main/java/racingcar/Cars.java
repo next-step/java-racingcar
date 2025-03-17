@@ -14,9 +14,15 @@ public class Cars {
 		this.cars = tempCars;
 	}
 
-	public void moveCars() {
+	public void moveCars(MovingStrategy movingStrategy) {
 		for (Car car : cars) {
-			car.go();
+			car.go(movingStrategy);
 		}
+	}
+
+	public List<Integer> getCarsLocation() {
+		return cars.stream()
+			.map(Car::getLocation)
+			.toList();
 	}
 }

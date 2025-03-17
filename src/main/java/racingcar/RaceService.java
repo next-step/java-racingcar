@@ -11,15 +11,21 @@ public class RaceService {
 
 	public void runRace() {
 		OutputView.printResultMessage();
-		while (race.getRemainingRounds() > 0) {
+		while (race.hasRemainRound()) {
 			runOneRound();
 		}
 	}
 
 	private void runOneRound() {
-		cars.moveCars();
+		cars.moveCars(randomMovingStrategy());
 		race.reduceRound();
+		cars.getCarsLocation()
+			.forEach(OutputView::printCarDistance);
 		OutputView.printEndOneRound();
+	}
+
+	private MovingStrategy randomMovingStrategy() {
+		return new RandomMovingStrategy();
 	}
 
 }

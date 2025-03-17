@@ -1,22 +1,19 @@
 package racingcar;
 
 public class Car {
-	private static final int MIN_MOVE_VALUE = 4;
-	private int distance;
+	private int location;
 
 	public Car() {
-		distance = 0;
+		location = 0;
 	}
 
-	public void go() {
-		int randomNumber = RandomNumberGenerator.generateRandomNumber();
-		if (randomNumber >= MIN_MOVE_VALUE) {
-			distance++;
+	public void go(MovingStrategy movingStrategy) {
+		if (movingStrategy.canGo()) {
+			location++;
 		}
-		OutputView.printCarDistance(distance);
 	}
 
-	public int getDistance() {
-		return distance;
+	public int getLocation() {
+		return location;
 	}
 }

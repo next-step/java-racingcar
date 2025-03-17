@@ -15,4 +15,8 @@ public class Race {
 		remainingRounds--;
 	}
 
+	public boolean hasRemainRound() {
+		return remainingRounds > 0;
+	}
+
 }
