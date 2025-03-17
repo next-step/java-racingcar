@@ -5,8 +5,8 @@ import racing.GrandPrix;
 public class OutputView {
 
     public static void printResult(GrandPrix grandPrix) {
-        var report = grandPrix.report();
+        var reports = grandPrix.report();
 
-        report.forEach((key, value) -> System.out.println("-".repeat(value)));
+        reports.forEach(report -> System.out.println("-".repeat(report.getPosition())));
     }
 }
