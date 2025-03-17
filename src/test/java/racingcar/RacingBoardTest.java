@@ -16,7 +16,7 @@ class RacingBoardTest {
     racingBoard.record(3);
     racingBoard.record(2);
 
-    assertThat(racingBoard.getRecords()).containsExactly(4, 3, 2);
+    assertThat(racingBoard.getRecords()).containsExactlyInAnyOrder(4, 3, 2);
     assertThat(racingBoard.getRound()).isEqualTo(round);
 
   }

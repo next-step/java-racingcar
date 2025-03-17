@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 import racingcar.random.NumberGenerator;
 
 public class Racing {
-  private ArrayList<Car> cars;
+  private List<Car> cars;
   private final int round;
   private final NumberGenerator numberGenerator;
 
@@ -20,20 +20,9 @@ public class Racing {
   }
 
   private void prepareCars(int carCount) {
-    IntStream.range(0, carCount).mapToObj(Car::new).forEach(this.cars::add);
-  }
-
-  public RacingBoard racingRound(int round) {
-    RacingBoard racingBoard = new RacingBoard(round);
-
-    cars.stream()
-        .peek(car -> {
-          if (isEnabledMove()) car.move();
-        })
-        .map(Car::getPosition)
-        .forEach(racingBoard::record);
-
-    return racingBoard;
+    this.cars = IntStream.range(0, carCount)
+        .mapToObj(Car::new)
+        .collect(Collectors.toList());
   }
 
   public List<RacingBoard> start() {
@@ -42,11 +31,24 @@ public class Racing {
         .collect(Collectors.toList());
   }
 
+  private RacingBoard racingRound(int round) {
+    RacingBoard racingBoard = new RacingBoard(round);
+
+    cars.stream()
+        .filter(car -> isEnabledMove()) // 이동 가능 여부 체크
+        .peek(Car::move)                    // 이동
+        .map(Car::getPosition)              // 이동 후 위치 가져오기
+        .collect(Collectors.toList())
+        .forEach(racingBoard::record);      // 레이싱 보드에 기록
+
+    return racingBoard;
+  }
+
   public boolean isEnabledMove() {
     return numberGenerator.generateNumber() >= 4;
   }
 
-  public ArrayList<Car> getCars() {
+  public List<Car> getCars() {
     return cars;
   }
 }
