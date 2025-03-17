@@ -7,7 +7,7 @@ import car_racing.view.model.UserInput;
 
 public class RaceService {
     public RaceResults race(UserInput userInput, CarMovingStrategy carMovingStrategy) {
-        Cars cars = new Cars(userInput.getNumOfCar(), carMovingStrategy);
+        Cars cars = new Cars(userInput.getNamesOfCar(), carMovingStrategy);
 
         for (int i = 0; i < userInput.getNumOfGame(); i++) {
             cars.moveAll();

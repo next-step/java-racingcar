@@ -13,11 +13,11 @@ public class Cars {
     private final List<Car> cars;
     private final CarMovingStrategy movingStrategy;
 
-    public Cars(int numOfCars, CarMovingStrategy movingStrategy) {
+    public Cars(List<String> namesOfCars, CarMovingStrategy movingStrategy) {
         this.cars = new ArrayList<>();
         this.movingStrategy = movingStrategy;
-        for (int i = 0; i < numOfCars; i++) {
-            this.cars.add(new Car());
+        for (String namesOfCar : namesOfCars) {
+            this.cars.add(new Car(namesOfCar));
         }
     }
 

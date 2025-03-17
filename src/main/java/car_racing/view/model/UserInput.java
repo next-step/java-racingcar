@@ -11,8 +11,8 @@ public class UserInput {
         this.numOfGame = numOfGame;
     }
 
-    public int getNumOfCar() {
-        return namesOfCars.size();
+    public List<String> getNamesOfCar() {
+        return namesOfCars;
     }
 
     public int getNumOfGame() {
