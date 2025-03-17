@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Random;
 
 class RacingGameTest {
 
@@ -14,26 +13,12 @@ class RacingGameTest {
     @Test
     @DisplayName("자동차들이 최대 tryCount만큼 움직여야 한다")
     void process() {
-        List<Car> carsForTest = List.of(
-                new Car(),
-                new Car()
-        );
+        Cars carsForTest = Cars.of(List.of(
+                Car.of("pobi"),
+                Car.of("crong")
+        ));
         int tryCount = 3;
         new RacingGame(carsForTest, tryCount, new ResultView()).process(new RandomForTest(CAR_MOVE_BOUND));
-        Assertions.assertThat(carsForTest).allMatch(car -> car.getPosition() == tryCount);
-    }
-
-    private static class RandomForTest extends Random {
-
-        private final int returnNumber;
-
-        RandomForTest(int returnNumber) {
-            this.returnNumber = returnNumber;
-        }
-
-        @Override
-        public int nextInt(int bound) {
-            return returnNumber;
-        }
+        Assertions.assertThat(carsForTest.getRaceStatusString()).contains("-".repeat(tryCount));
     }
 }
