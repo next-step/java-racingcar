@@ -19,7 +19,7 @@ public class InputView {
         return scanner.nextLine().trim();
     }
 
-    public int convertToInt(String input) {
+    public static int convertToInt(String input) {
         try {
             return Integer.parseInt(input.trim());
         } catch (NumberFormatException e) {
