@@ -28,4 +28,20 @@ public class CarTest {
         String movementStatus = car.getMovementStatus(3);
         assertEquals(Car.STOP, movementStatus);
     }
+
+    @Test
+    @DisplayName("GO 상태일 때 updatePosition 메서드를 호출하면 position은 -가 추가된다.")
+    void updatePosition_GO() {
+        Car car = new Car();
+        car.updatePosition(Car.GO);
+        assertEquals(Car.GO, car.getPosition());
+    }
+
+    @Test
+    @DisplayName("STOP 상태일 때 updatePosition 메서드를 호출하면 position은 변하지 않는다.")
+    void updatePosition_STOP() {
+        Car car = new Car();
+        car.updatePosition(Car.STOP);
+        assertEquals("", car.getPosition());
+    }
 }
