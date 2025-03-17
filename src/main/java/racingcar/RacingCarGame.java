@@ -29,8 +29,8 @@ public class RacingCarGame {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             System.out.println("Round " + (i + 1));
-            Car[] movedCars = CarManager.moveCar(cars);
-            OutputView.showCarsLocation(movedCars);
+            CarManager.moveCars(cars);
+            OutputView.showCarsLocation(cars);
         }
     }
 }

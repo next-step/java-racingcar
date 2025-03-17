@@ -26,7 +26,8 @@ public class CarManagerTest {
     @Test
     @Description("자동차를 한번 움직인 경우 모든 자동차의 위치가 0 또는 1이어야 함")
     void moveCar_1Try() {
-        Car[] cars = CarManager.moveCar(new Car[]{new Car(), new Car()});
+        Car[] cars = new Car[]{new Car(0), new Car(0)};
+        CarManager.moveCars(cars);
         for (Car car : cars) {
             assertThat(car.getCarLocation()).isBetween(0, 1);
         }
@@ -35,7 +36,9 @@ public class CarManagerTest {
     @Test
     @Description("자동차를 두번 움직인 경우 모든 자동차의 위치가 0 또는 2이어야 함")
     void moveCar_2Try() {
-        Car[] cars = CarManager.moveCar(CarManager.moveCar(new Car[]{new Car(), new Car()}));
+        Car[] cars = new Car[]{new Car(0), new Car(0), new Car(0)};
+        CarManager.moveCars(cars);
+        CarManager.moveCars(cars);
         for (Car car : cars) {
             System.out.println(car.getCarLocation());
             assertThat(car.getCarLocation()).isBetween(0, 2);

@@ -10,18 +10,17 @@ public class CarManager {
     public static Car[] prepareCar(int carCount) {
         Car[] cars = new Car[carCount];
         for (int i = 0; i < carCount; i++) {
-            cars[i] = new Car();
+            cars[i] = new Car(0);
         }
         return cars;
     }
 
-    public static Car[] moveCar(Car[] cars) {
+    public static void moveCars(Car[] cars) {
         for (Car car : cars) {
             if (canMove()) {
                 car.move();
             }
         }
-        return cars;
     }
 
     public static boolean canMove() {

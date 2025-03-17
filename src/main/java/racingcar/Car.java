@@ -2,7 +2,11 @@ package racingcar;
 
 public class Car {
 
-    private int location = 0;
+    private int location;
+
+    public Car(int location) {
+        this.location = location;
+    }
 
     public void move() {
         location += 1;
