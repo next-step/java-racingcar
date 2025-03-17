@@ -1,12 +1,10 @@
 package edu.nextstep.camp.carracing;
 
-import static edu.nextstep.camp.carracing.CarValidator.validateCarName;
-
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private static final String MOVE_SYMBOL = "-";
 
-    private final String name;
+    private final CarName name;
     private int position;
 
     public Car(String name) {
@@ -14,8 +12,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        validateCarName(name);
-        this.name = name;
+        this.name = new CarName(name);
         this.position = position;
     }
 
@@ -26,10 +23,14 @@ public class Car {
     }
 
     public String getCurrentPositionString() {
-        return String.format("%s : %s", name, MOVE_SYMBOL.repeat(position));
+        return String.format("%s : %s", name.getName(), MOVE_SYMBOL.repeat(position));
     }
 
-    public String getName() {
+    public boolean isMaxPosition(int position) {
+        return this.position == position;
+    }
+
+    public CarName getName() {
         return name;
     }
 
