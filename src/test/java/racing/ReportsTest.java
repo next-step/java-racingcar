@@ -31,14 +31,14 @@ class ReportsTest {
         // given
         var testCars = List.of(new Car(), new Car());
         var reports = new Reports(testCars);
-        var mockPrintStrategy = new MockScoreBoard();
+        var scoreBoard = new MockScoreBoard();
 
         // when
-        reports.print(mockPrintStrategy);
+        reports.print(scoreBoard);
 
         // then
-        Assertions.assertThat(mockPrintStrategy.getSize()).isEqualTo(testCars.size());
-        reports.getReports().forEach(score -> Assertions.assertThat(score).isEqualTo(0));
+        Assertions.assertThat(scoreBoard.getSize()).isEqualTo(testCars.size());
+        scoreBoard.getScores().forEach(score -> Assertions.assertThat(score).isEqualTo(0));
     }
 
     static class MockScoreBoard implements ScoreBoard {
@@ -51,6 +51,10 @@ class ReportsTest {
 
         int getSize() {
             return scores.size();
+        }
+
+        List<Integer> getScores() {
+            return scores;
         }
     }
 }

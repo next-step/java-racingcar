@@ -30,12 +30,7 @@ public class GrandPrix {
         currentRound++;
     }
 
-    public List<Report> report() {
-        return IntStream.range(0, cars.size())
-                        .boxed()
-                        .map(i -> new Report(i, cars
-                                .get(i)
-                                .getPosition()))
-                        .collect(Collectors.toUnmodifiableList());
+    public Reports report() {
+        return new Reports(cars);
     }
 }
