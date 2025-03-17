@@ -1,19 +1,20 @@
 package racing;
 
+import static racing.view.InputView.getCarCount;
+import static racing.view.InputView.getMoveCount;
+import static racing.view.OutputView.printResult;
+
 import racing.model.Cars;
 import racing.service.RaceService;
 import racing.service.RandomNumberGenerator;
-import racing.view.InputView;
-import racing.view.OutputView;
 
 public class RacingGameApplication {
     private static final int RAND = 10;
 
     public static void main(String[] args) {
         // 1. INPUT
-        InputView inputView = new InputView();
-        int carCount = inputView.getCarCount();
-        int moveCount = inputView.getMoveCount();
+        int carCount = getCarCount();
+        int moveCount = getMoveCount();
 
         // 2. GAME
         RaceService raceService = new RaceService(new RandomNumberGenerator(RAND));
@@ -27,8 +28,7 @@ public class RacingGameApplication {
         }
 
         // 3. OUTPUT
-        OutputView outputView = new OutputView();
-        outputView.printResult(gameStatus.toString());
+        printResult(gameStatus.toString());
     }
 
     private static void appendCarPosition(Cars cars, StringBuilder gameStatus) {
