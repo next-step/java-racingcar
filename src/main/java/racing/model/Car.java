@@ -1,6 +1,7 @@
 package racing.model;
 
 public class Car {
+    private static final int MOVE_CONDITION = 4;
     private int position;
 
     public Car() {
@@ -8,7 +9,7 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= 4) {
+        if (number >= MOVE_CONDITION) {
             this.position++;
         }
     }
