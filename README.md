@@ -19,4 +19,4 @@
 - [x] 게임 시작 시 자동차 객체 초기 init 구현
 - [ ] 시도할 횟수 입력
 - [ ] 실행 결과 출력
-- [ ] UI 로직 구현 (InputView, OutputView)
+- [x] UI 로직 구현 (InputView, OutputView)
