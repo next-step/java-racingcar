@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarGame {
 
@@ -25,8 +26,11 @@ public class RacingCarGame {
     }
 
     private static void startGame(Car[] cars, int tryCount) {
+        System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
+            System.out.println("Round " + (i + 1));
             Car[] movedCars = CarManager.moveCar(cars);
+            OutputView.showCarsLocation(movedCars);
         }
     }
 }
