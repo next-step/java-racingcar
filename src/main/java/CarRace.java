@@ -7,8 +7,10 @@ public class CarRace {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int numCar = receiveCarNum();
-        int numTry = receiveNumTry();
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        int numCar = receiveCarNum(scanner.nextInt());
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        int numTry = receiveNumTry(scanner.nextInt());
         String[] cars = initCurrentState(numCar);
 
         IntStream.range(0, numTry)
@@ -19,18 +21,14 @@ public class CarRace {
                         });
     }
 
-    public static Integer receiveCarNum() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numCar = scanner.nextInt();
+    public static Integer receiveCarNum(int numCar) {
         if (numCar > 0) {
             return numCar;
         }
         throw new RuntimeException("자동차 대수는 양수 여야합니다.");
     }
 
-    public static Integer receiveNumTry() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int numTry = scanner.nextInt();
+    public static Integer receiveNumTry(int numTry) {
         if (numTry > 0) {
             return numTry;
         }
@@ -46,22 +44,30 @@ public class CarRace {
     }
 
     public static void updateCurrentState(String[] cars, int numCar) {
-        Random random = new Random();
         if (numCar <= 0) {
             throw new RuntimeException("자동차 대수는 양수 여야합니다.");
         }
         IntStream.range(0, numCar)
                 .forEach(
                         j -> {
+                            Random random = new Random();
                             int randomVal = random.nextInt(10);
-                            if (randomVal >= 4) {
-                                cars[j] += "-";
-                            }
+                            checkAndMove(cars, j, randomVal);
                         });
     }
 
     public static void printCurrentState(String[] cars) {
         Arrays.stream(cars).forEach(System.out::println);
         System.out.println();
+    }
+
+    public static void checkAndMove(String[] cars, int j, int randomVal) {
+        if (randomVal < 0 || randomVal > 9) {
+            throw new RuntimeException("랜덤 값은 0에서 9사이의 값이어야합니다.");
+        }
+
+        if (randomVal >= 4) {
+            cars[j] += "-";
+        }
     }
 }
