@@ -1,4 +1,4 @@
-package step3;
+package step3.game;
 
 import step3.random.RandomStrategy;
 
@@ -6,26 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
+    private final List<List<Integer>> result = new ArrayList<>();
     private final int moveCount;
     private final RandomStrategy random;
-    private final StringBuilder sb = new StringBuilder();
 
-    public RacingGame(int carCount, int moveCount, RandomStrategy random) {
+    public RacingGame(int moveCount, RandomStrategy random, List<Car> cars) {
         this.random = random;
         this.moveCount = moveCount;
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+        this.cars = cars;
     }
 
-    public String start() {
+    public List<List<Integer>> start() {
         for (int i = 0; i < moveCount; i++) {
             moveCars();
-            printCarPositions();
-            sb.append("\n");
+            getCurrentCarPositions(i);
         }
-        return sb.toString();
+        return result;
     }
 
     private void moveCars() {
@@ -38,9 +35,10 @@ public class RacingGame {
         return random.generateRandomValue();
     }
 
-    private void printCarPositions() {
+    private void getCurrentCarPositions(int index) {
+        result.add(new ArrayList<>());
         for (Car car : cars) {
-            sb.append("\n"+car.getPosition());
+            result.get(index).add(car.getPosition());
         }
     }
 }
