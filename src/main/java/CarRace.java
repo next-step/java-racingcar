@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CarRace {
@@ -5,8 +6,8 @@ public class CarRace {
 
     public static void main(String[] args) {
         int numCar = receiveCarNum();
-
         int numTry = receiveNumTry();
+        String[] cars = initCurrentState(numCar);
     }
 
     public static Integer receiveCarNum() {
@@ -25,5 +26,13 @@ public class CarRace {
             return numTry;
         }
         throw new RuntimeException("시도할 회수는 양수 여야합니다.");
+    }
+
+    public static String[] initCurrentState(int numCar) {
+        if (numCar > 0) {
+            return Arrays.stream(new String[numCar]).map(car -> "-").toArray(String[]::new);
+        }
+
+        throw new RuntimeException("자동차 대수는 양수 여야합니다.");
     }
 }
