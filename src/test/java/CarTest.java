@@ -24,6 +24,6 @@ class CarTest {
     @DisplayName(value="차량이 전진하는지 여부 확인")
     void 차량_전진_테스트(){
         car.move();
-        assertThat(car.print()).isIn("-","");
+        assertThat(car.showDistance()).isIn("-","");
     }
 }

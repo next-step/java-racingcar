@@ -6,7 +6,7 @@ public class Car {
 
     public Car(){
         this.distance = 0;
-        random  = new Random();
+        this.random  = new Random();
     }
 
     public void move(){
@@ -21,12 +21,7 @@ public class Car {
         return random.nextInt(10);
     }
 
-    public String print(){
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < distance; i++){
-            sb.append("-");
-        }
-        return sb.toString();
+    public String showDistance(){
+        return "-".repeat(distance);
     }
-
 }
