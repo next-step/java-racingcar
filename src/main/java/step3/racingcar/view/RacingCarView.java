@@ -5,7 +5,7 @@ import step3.racingcar.model.RacingCarResult;
 
 public class RacingCarView {
 
-    private RacingCar car;
+    private final RacingCar car;
 
     public RacingCarView(RacingCar car) {
         this.car = car;

@@ -2,15 +2,14 @@ package step3.racingcar.model;
 
 public class RacingCar {
 
-    private int no;
+    private final int no;
+    private final RacingCarEngine carEngine;
     private int position;
-    private RacingCarEngine engine;
     private RacingCarResult roundResult;
-    final static private int THRESHOLD = 4;
 
-    public RacingCar(int no, RacingCarEngine engine) {
+    public RacingCar(int no, RacingCarEngine carEngine) {
         this.no = no;
-        this.engine = engine;
+        this.carEngine = carEngine;
         this.position = 0;
     }
 
@@ -27,7 +26,7 @@ public class RacingCar {
     }
 
     public void run() {
-        if (engine.canRun()) {
+        if (carEngine.canRun()) {
             this.position++;
             this.roundResult = RacingCarResult.GO;
             return;

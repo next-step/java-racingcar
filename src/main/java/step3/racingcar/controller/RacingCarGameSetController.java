@@ -10,7 +10,7 @@ import step3.racingcar.view.RacingCarGameRoundView;
 
 public class RacingCarGameSetController {
 
-    final private static int THRESHOLD = 4;
+    private final static int THRESHOLD = 4;
 
     private RacingCarGameSet gameSet;
 
@@ -19,7 +19,7 @@ public class RacingCarGameSetController {
         int numberOfRounds = getNumberOfRounds();
         RacingCar[] cars = initCars(numberOfCars);
         RacingCarGameRound[] gameRounds = initRounds(numberOfRounds, cars);
-        this.gameSet = new RacingCarGameSet(cars, gameRounds);
+        this.gameSet = new RacingCarGameSet(gameRounds);
     }
 
     public int getNumberOfCars() {
@@ -69,7 +69,7 @@ public class RacingCarGameSetController {
             gameRoundController.roundStart();
 
             RacingCarGameRoundView gameRoundView = new RacingCarGameRoundView(gameRound);
-            gameRoundView.showGameRound();
+            gameRoundView.showRound();
         }
     }
 
