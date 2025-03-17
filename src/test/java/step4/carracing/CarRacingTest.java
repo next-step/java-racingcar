@@ -1,12 +1,17 @@
 package step4.carracing;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +32,7 @@ public class CarRacingTest {
   @ParameterizedTest
   @ValueSource(ints = {4, 5, 6, 7, 8, 9})
   void testMove(int number) {
-    Car car = new Car();
+    Car car = new Car("test");
     int currentPosition = car.getPosition();
 
     car.move(number);
@@ -39,11 +44,44 @@ public class CarRacingTest {
   @ParameterizedTest
   @ValueSource(ints = {0, 1, 2, 3})
   void testNotMove(int number) {
-    Car car = new Car();
+    Car car = new Car("test");
     int currentPosition = car.getPosition();
 
     car.move(number);
 
     assertEquals(currentPosition, car.getPosition());
   }
+
+  @DisplayName("자동차 이름 리스트를 입력받는 기능 테스트")
+  @Test
+  void testGetCarNameListInput() {
+    List<String> expected = List.of("pobi", "crong", "honux");
+    Scanner testScanner = new Scanner("pobi, crong, honux" + "\n");
+    InputView inputView = new InputView(testScanner);
+
+    List<String> actual = inputView.receiveCarNames();
+
+    assertEquals(expected, actual);
+  }
+
+  @DisplayName("이동 횟수를 입력받는 기능 테스트")
+  @Test
+  void testGetTryCountInput() {
+    int expected = 5;
+    Scanner testScanner = new Scanner(expected + "\n");
+    InputView inputView = new InputView(testScanner);
+
+    int actual = inputView.receiveTryCount();
+    assertEquals(expected, actual);
+  }
+
+  @DisplayName("숫자가 아닌 입력을 받았을 때 예외를 던지는 기능 테스트")
+  @Test
+  void testGetInvalidInput() {
+    Scanner testScanner = new Scanner("invalid input\n");
+    InputView inputView = new InputView(testScanner);
+
+    Assertions.assertThrows(InputMismatchException.class, inputView::receiveTryCount);
+  }
+
 }

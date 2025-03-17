@@ -4,9 +4,11 @@ public class Car {
   static final int MOVE_THRESHOLD = 4;
   private static final int INIT_POSITION = 1;
   private int position;
+  private final String name;
 
-  public Car() {
+  public Car(String name) {
     this.position = INIT_POSITION;
+    this.name = name;
   }
 
   public void move(int number) {
@@ -21,5 +23,9 @@ public class Car {
 
   public int getPosition() {
     return position;
+  }
+
+  public String getName() {
+    return name;
   }
 }
