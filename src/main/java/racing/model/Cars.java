@@ -5,7 +5,6 @@ import java.util.List;
 import racing.service.NumberGenerator;
 
 public class Cars {
-    private static final int RAND = 10;
     private final List<Car> cars;
     private final NumberGenerator numberGenerator;
 
@@ -16,7 +15,7 @@ public class Cars {
 
     public void moveAll() {
         for (Car car : cars) {
-            car.move(numberGenerator.generateRandomNumber(RAND));
+            car.move(numberGenerator.generateNumber());
         }
     }
 

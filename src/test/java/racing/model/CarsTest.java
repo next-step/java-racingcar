@@ -12,13 +12,15 @@ import org.junit.jupiter.api.Test;
 import racing.fake.FakeNumberGenerator;
 
 class CarsTest {
+    private static final int MOVE_NUMBER = 4;
+    private static final int STOP_NUMBER = 3;
     private Cars cars;
 
     @DisplayName("리스트 안의 모든 자동차를 움직일 수 있다.")
     @Test
     void moveAllTest() {
         // given
-        cars = new Cars(makeDummyCars(3), new FakeNumberGenerator());
+        cars = new Cars(makeDummyCars(3), new FakeNumberGenerator(MOVE_NUMBER));
 
         // when
         cars.moveAll();
@@ -31,7 +33,7 @@ class CarsTest {
     @Test
     void getPositionsTest() {
         // given
-        cars = new Cars(makeDummyCars(7), new FakeNumberGenerator());
+        cars = new Cars(makeDummyCars(7), new FakeNumberGenerator(STOP_NUMBER));
 
         // when
         List<Integer> positions = cars.getPositions();
@@ -45,7 +47,7 @@ class CarsTest {
     @Test
     void sizeTest() {
         // given
-        cars = new Cars(makeDummyCars(5), new FakeNumberGenerator());
+        cars = new Cars(makeDummyCars(5), new FakeNumberGenerator(MOVE_NUMBER));
 
         // when
         // then

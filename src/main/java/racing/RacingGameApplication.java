@@ -7,6 +7,8 @@ import racing.view.InputView;
 import racing.view.OutputView;
 
 public class RacingGameApplication {
+    private static final int RAND = 10;
+
     public static void main(String[] args) {
         // 1. INPUT
         InputView inputView = new InputView();
@@ -15,7 +17,7 @@ public class RacingGameApplication {
 
         // 2. GAME
         RaceService raceService = new RaceService();
-        Cars cars = raceService.generateCar(carCount, new RandomNumberGenerator());
+        Cars cars = raceService.generateCar(carCount, new RandomNumberGenerator(RAND));
         StringBuilder gameStatus = new StringBuilder();
 
         for (int i = 0; i < moveCount; i++) {
