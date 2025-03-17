@@ -17,7 +17,6 @@ public class Car {
             go();
             return true;
         }
-        stop();
         return false;
     }
 
@@ -27,9 +26,6 @@ public class Car {
 
     public void go() {
         this.location++;
-    }
-
-    public void stop() {
     }
 
     public int getLocation() {
