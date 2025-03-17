@@ -8,6 +8,7 @@
 
 # 프로그래밍 요구 사항
 ## TODO
+* bugfix OutputView 를 수정한다.
 * main 함수를 작성한다.
 ## DONE
 * 자동차는 전진 또는 멈출 수 있다. (0 ~ 9 random 값 4이상 전진)
