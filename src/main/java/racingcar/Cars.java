@@ -35,4 +35,8 @@ public class Cars {
             car.move(randomNumber);
         }
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
