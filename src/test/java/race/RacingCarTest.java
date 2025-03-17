@@ -1,51 +1,43 @@
 package race;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-class FixedNumberGenerator implements RandomNumberGenerator {
-    private final int fixedValue;
-
-    public FixedNumberGenerator(int fixedValue) {
-        this.fixedValue = fixedValue;
-    }
-
-    @Override
-    public int generate() {
-        return fixedValue;
-    }
-}
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RacingCarTest {
     @Order(10)
     @Test
-    void move() {
-        RacingCar car = new RacingCar(1, new FixedNumberGenerator(5));
-        assertThat(car.move()).isEqualTo(1);
-        assertThat(car.move()).isEqualTo(2);
+    void should_move_over_4() {
+        RacingCar car = new RacingCar();
+        assertThat(car.shouldMove(4)).isTrue();
+        assertThat(car.shouldMove(9)).isTrue();
     }
 
     @Order(20)
     @Test
-    void not_move() {
-        RacingCar car = new RacingCar(1, new FixedNumberGenerator(2));
-        assertThat(car.move()).isEqualTo(0);
-        assertThat(car.move()).isEqualTo(0);
+    void should_not_move_under_4() {
+        RacingCar car = new RacingCar();
+        assertThat(car.shouldMove(3)).isFalse();
+        assertThat(car.shouldMove(0)).isFalse();
     }
 
+    @Order(30)
     @Test
     void move() {
         RacingCar car = new RacingCar();
-        assertThat(car.move(5)).isEqualTo("-");
-        assertThat(car.move(9)).isEqualTo("--");
+        assertThat(car.move(5)).isEqualTo(1);
+        assertThat(car.move(9)).isEqualTo(2);
     }
 
+    @Order(40)
     @Test
     void not_move() {
         RacingCar car = new RacingCar();
-        assertThat(car.move(5)).isEqualTo("-");
-        assertThat(car.move(0)).isEqualTo("-");
+        assertThat(car.move(5)).isEqualTo(1);
+        assertThat(car.move(0)).isEqualTo(1);
     }
 }

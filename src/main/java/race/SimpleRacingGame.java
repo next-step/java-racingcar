@@ -15,7 +15,7 @@ public class SimpleRacingGame {
         scanner.close();
 
         RacingTrack racingGame = new RacingTrack(numOfCars, numOfAttempts);
-        racingGame.startRace();
+        racingGame.start();
     }
 
     private static int getCustomerInput(Scanner scanner, String message) {
