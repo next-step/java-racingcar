@@ -11,20 +11,16 @@ public class StringCalculator {
         if (s.isEmpty()) {
             return 0;
         }
-        CustomDelimiter delimiter = new CustomDelimiter();
-        if (delimiter.hasCustomDelimiter(s)) {
-            String[] numbers = delimiter.extractAndSplit(s);
-            return Arrays.stream(numbers)
-                    .map(it -> {
-                                int num = Integer.parseInt(it);
-                                if (num < 0) {
-                                    throw new RuntimeException("숫자는 음수일 수 없습니다");
-                                }
-                                return num;
-                            }
-                    ).reduce(0, Integer::sum);
+        DelimiterReader reader = new DelimiterReader();
+        if (reader.hasCustomDelimiter(s)) {
+            String[] numbers = reader.extractAndSplit(s);
+            return sum(numbers);
         }
         String[] numbers = s.split(",|:");
+        return sum(numbers);
+    }
+
+    private static Integer sum(String[] numbers) {
         return Arrays.stream(numbers)
                 .map(it -> {
                             int num = Integer.parseInt(it);
