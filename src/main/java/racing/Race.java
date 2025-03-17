@@ -1,9 +1,6 @@
 package racing;
 
 import java.util.List;
-import java.util.Random;
-
-import static racing.Car.MOVE_POWER_BOUND;
 
 public class Race {
     private int numberOfLaps;
@@ -36,7 +33,7 @@ public class Race {
 
     private void performLap() {
         for(Car car: cars) {
-            car.move(() -> new Random().nextInt(MOVE_POWER_BOUND));
+            car.move();
         }
     }
 }

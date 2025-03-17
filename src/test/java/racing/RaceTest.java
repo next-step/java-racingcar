@@ -39,7 +39,7 @@ public class RaceTest {
         try {
             int numberOfCars = 3;
             int numberOfLaps = 5;
-            List<Car> cars = CarFactory.createRacingCars(numberOfCars, () -> 0);
+            List<Car> cars = CarFactory.createRacingCars(numberOfCars, Car.mustGoMoveConditionProvider);
             Race race = new Race(cars, numberOfLaps);
             race.startRacing();
 

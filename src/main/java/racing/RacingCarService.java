@@ -2,8 +2,6 @@ package racing;
 
 import java.util.List;
 
-import static racing.Car.DEFAULT_MOVE_POWER_CONDITION;
-
 public class RacingCarService {
 
     private int numberOfCars;
