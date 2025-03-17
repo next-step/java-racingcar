@@ -34,4 +34,18 @@ public class RacingCarTest {
         assertThat(car.move()).isEqualTo(0);
         assertThat(car.move()).isEqualTo(0);
     }
+
+    @Test
+    void move() {
+        RacingCar car = new RacingCar();
+        assertThat(car.move(5)).isEqualTo("-");
+        assertThat(car.move(9)).isEqualTo("--");
+    }
+
+    @Test
+    void not_move() {
+        RacingCar car = new RacingCar();
+        assertThat(car.move(5)).isEqualTo("-");
+        assertThat(car.move(0)).isEqualTo("-");
+    }
 }
