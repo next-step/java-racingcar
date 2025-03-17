@@ -8,34 +8,34 @@ public class Calculator {
     private static final String CUSTOM_DELIMITER_PREFIX = "//";
     private static final String NEW_LINE = "\n";
 
-    public static int sum(String s) {
-        if (s == null || s.isEmpty()) {
+    public static int sum(String numbersWithDelimiter) {
+        if (numbersWithDelimiter == null || numbersWithDelimiter.isEmpty()) {
             return 0;
         }
 
-        return add(parseNonNegativeInts(split(s)));
+        return add(parseNonNegativeInts(split(numbersWithDelimiter)));
     }
 
-    private static String[] split(String s) {
-        String delimiter = computeDelimiter(s);
-        String stringToSplit = extractStringToSplit(s);
+    private static String[] split(String numbersWithDelimiter) {
+        String delimiter = computeDelimiter(numbersWithDelimiter);
+        String stringToSplit = extractStringToSplit(numbersWithDelimiter);
         return stringToSplit.split(delimiter);
     }
 
-    private static String computeDelimiter(String s) {
-        if (s.startsWith(CUSTOM_DELIMITER_PREFIX)) {
-            int delimiterEnd = s.indexOf(NEW_LINE);
-            return Pattern.quote(s.substring(2, delimiterEnd));
+    private static String computeDelimiter(String numbersWithDelimiter) {
+        if (numbersWithDelimiter.startsWith(CUSTOM_DELIMITER_PREFIX)) {
+            int delimiterEnd = numbersWithDelimiter.indexOf(NEW_LINE);
+            return Pattern.quote(numbersWithDelimiter.substring(2, delimiterEnd));
         }
         return DEFAULT_NUMBERS_DELIMITER_REGEX;
     }
 
-    private static String extractStringToSplit(String s) {
-        if (s.startsWith(CUSTOM_DELIMITER_PREFIX)) {
-            int delimiterEnd = s.indexOf(NEW_LINE);
-            return s.substring(delimiterEnd + 1);
+    private static String extractStringToSplit(String numbersWithDelimiter) {
+        if (numbersWithDelimiter.startsWith(CUSTOM_DELIMITER_PREFIX)) {
+            int delimiterEnd = numbersWithDelimiter.indexOf(NEW_LINE);
+            return numbersWithDelimiter.substring(delimiterEnd + 1);
         }
-        return s;
+        return numbersWithDelimiter;
     }
 
     private static int[] parseNonNegativeInts(String[] numberStrings) {
