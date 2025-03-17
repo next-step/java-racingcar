@@ -23,7 +23,6 @@ public class CarRaceTest {
     @DisplayName("자동차 대수로 양수를 받아야합니다. 초기 상태는 무조건 한칸(-)씩 있어야합니다. ")
     @Test
     public void initCurrentStateTest() {
-
         int negativeNumCar = -1;
         assertThatThrownBy(() -> CarRace.initCurrentState(negativeNumCar))
                 .isInstanceOf(RuntimeException.class)
@@ -33,5 +32,19 @@ public class CarRaceTest {
         String[] expectedValues = {"-", "-", "-"};
         String[] cars = CarRace.initCurrentState(positiveNumCar);
         assertThat(cars).containsExactly(expectedValues);
+    }
+
+    @DisplayName("자동차 대수로 양수를 받아야합니다. 상태는 무조건 한칸(-)씩 있어야합니다. ")
+    @Test
+    public void updateCurrentStateTest() {
+        int negativeNumCar = -1;
+        String[] emptyCars = {};
+        assertThatThrownBy(() -> CarRace.updateCurrentState(emptyCars, negativeNumCar))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("자동차 대수는 양수 여야합니다.");
+
+        int positiveNumCar = 3;
+        String[] cars = {"-", "-", "-"};
+        CarRace.updateCurrentState(cars, positiveNumCar);
     }
 }

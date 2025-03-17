@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class CarRace {
     public static Scanner scanner = new Scanner(System.in);
@@ -8,6 +10,13 @@ public class CarRace {
         int numCar = receiveCarNum();
         int numTry = receiveNumTry();
         String[] cars = initCurrentState(numCar);
+
+        IntStream.range(0, numTry)
+                .forEach(
+                        i -> {
+                            updateCurrentState(cars, numCar);
+                            printCurrentState(cars);
+                        });
     }
 
     public static Integer receiveCarNum() {
@@ -34,5 +43,25 @@ public class CarRace {
         }
 
         throw new RuntimeException("자동차 대수는 양수 여야합니다.");
+    }
+
+    public static void updateCurrentState(String[] cars, int numCar) {
+        Random random = new Random();
+        if (numCar <= 0) {
+            throw new RuntimeException("자동차 대수는 양수 여야합니다.");
+        }
+        IntStream.range(0, numCar)
+                .forEach(
+                        j -> {
+                            int randomVal = random.nextInt(10);
+                            if (randomVal >= 4) {
+                                cars[j] += "-";
+                            }
+                        });
+    }
+
+    public static void printCurrentState(String[] cars) {
+        Arrays.stream(cars).forEach(System.out::println);
+        System.out.println();
     }
 }
