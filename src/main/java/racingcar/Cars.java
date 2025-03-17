@@ -8,17 +8,12 @@ import java.util.List;
 public class Cars {
     private static List<Car> cars;
 
-    private Cars() {
-
-    }
-
-    public static List<Car> initializeCars(int cartCounts) {
+    public Cars(int carCounts) {
         cars = new ArrayList<>();
-        for (int index = 0; index < cartCounts; index++) {
+        for (int index = 0; index < carCounts; index++) {
             Car car = new Car();
             cars.add(car);
         }
-        return cars;
     }
 
     public static void move(List<Car> cars) {
