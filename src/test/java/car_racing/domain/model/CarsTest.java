@@ -4,7 +4,8 @@ import car_racing.domain.strategy.AlwaysMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 
 class CarsTest {
     @Test
@@ -13,6 +14,6 @@ class CarsTest {
         Cars cars = new Cars(3, new AlwaysMovingStrategy());
         cars.moveAll();
 
-        cars.forEach(car -> assertEquals(1, car.getDistance()));
+        cars.forEach(car -> assertThat(car.getDistance()).isEqualTo(1));
     }
 }
