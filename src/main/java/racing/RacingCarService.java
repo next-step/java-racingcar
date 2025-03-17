@@ -1,12 +1,13 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static racing.Car.DEFAULT_MOVE_POWER_CONDITION;
 
 public class RacingCarService {
 
-    int numberOfCars;
-    int numberOfLaps;
+    private int numberOfCars;
+    private int numberOfLaps;
 
 
     public void start() {
@@ -20,7 +21,8 @@ public class RacingCarService {
     }
 
     private void startRacing() {
-        Race r = new Race(numberOfCars, numberOfLaps);
+        List<Car> cars = CarFactory.createRacingCars(numberOfCars);
+        Race r = new Race(cars, numberOfLaps);
         r.startRacing();
     }
 }
