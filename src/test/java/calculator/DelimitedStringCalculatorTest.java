@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class DelimitedStringCalculatorTest {
 
@@ -20,7 +21,7 @@ public class DelimitedStringCalculatorTest {
 
   @DisplayName("null이 주어졌을 때 sum()을 호출하면 0을 반환한다.")
   @Test
-  void sum_null_returnZero(){
+  void sum_null_returnZero() {
     String input = null;
 
     int result = DelimitedStringCalculator.sum(input);
@@ -67,8 +68,10 @@ public class DelimitedStringCalculatorTest {
     int result1 = DelimitedStringCalculator.sum(input1);
     int result2 = DelimitedStringCalculator.sum(input2);
 
-    assertThat(result1).isEqualTo(6);
-    assertThat(result2).isEqualTo(7);
+    assertAll(
+        () -> assertThat(result1).isEqualTo(6),
+        () -> assertThat(result2).isEqualTo(7)
+    );
   }
 
 
