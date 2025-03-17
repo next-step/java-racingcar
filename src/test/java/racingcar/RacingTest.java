@@ -21,4 +21,15 @@ class RacingTest {
         racing.playRound();
         assertThat(racing.getCars().get(0).getPlayCount()).isEqualTo(1);
     }
+
+    @Test
+    void 가장_멀리_간_차_목록을_가져올_수_있다() {
+        Racing racing = new Racing(List.of(
+                new Car("a", 5, 0),
+                new Car("b", 10, 0),
+                new Car("c", 10, 0)
+        ));
+
+        assertThat(racing.getFarthestCars()).hasSize(2);
+    }
 }

@@ -1,8 +1,13 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
+
+    public static String printWinners(List<Car> cars) {
+        return String.format("%s가 최종 우승했습니다.", cars.stream().map(Car::getName).collect(Collectors.joining(", ")));
+    }
 
     public static String printCarsDistance(List<Car> cars) {
         StringBuilder result = new StringBuilder();

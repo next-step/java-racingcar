@@ -20,5 +20,7 @@ public class Main {
             racing.playRound();
             System.out.println(ResultView.printCarsDistance(racing.getCars()));
         }
+        System.out.println(ResultView.printWinners(racing.getFarthestCars()));
+
     }
 }

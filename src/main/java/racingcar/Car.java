@@ -18,6 +18,14 @@ public class Car {
         this.name = name;
     }
 
+    // test용 생성자
+    protected Car(String name, Integer distance, Integer playCount) {
+        validateName(name);
+        this.name = name;
+        this.distance = distance < 0 ? 0 : distance;
+        this.playCount = playCount < 0 ? 0 : playCount;
+    }
+
     private static void validateName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 null이나 빈 문자열이 될 수 없습니다.");

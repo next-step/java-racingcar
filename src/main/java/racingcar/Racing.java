@@ -20,4 +20,10 @@ public class Racing {
     public List<Car> getCars() {
         return this.cars.stream().sorted(Comparator.comparing(Car::getName)).collect(Collectors.toList());
     }
+
+    public List<Car> getFarthestCars() {
+        int maxDistance = getCars().stream().mapToInt(Car::getDistance).max().orElse(0);
+
+        return getCars().stream().filter(car -> car.getDistance() == maxDistance).collect(Collectors.toList());
+    }
 }
