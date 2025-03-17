@@ -28,8 +28,8 @@ class GrandPrixTest {
     }
 
     @Test
-    @DisplayName("그랑프리 리포트를 하면 현재 상황을 리턴한다.")
-    void reportTest() {
+    @DisplayName("report를 통해 현재 상황을 report class로 만들어서 반환한다.")
+    void makeReportsTest() {
         // given
         var luckyDice = new DiceTest.MockRandom(Car.MOVE_THRESHOLD + 1);
         var totalRound = 5;
@@ -46,6 +46,6 @@ class GrandPrixTest {
 
         // then
         Assertions.assertThat(report).hasSize(carCount);
-        Assertions.assertThat(report.values()).allMatch(it -> it == playTimes);
+        report.forEach(it -> Assertions.assertThat(it.getPosition()).isEqualTo(playTimes));
     }
 }
