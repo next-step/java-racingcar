@@ -10,10 +10,20 @@ public class OutputView {
     }
 
     public void printPositions() {
-        List<String> positions = simulator.getPositions();
+        List<CarPositions> history = simulator.getHistory();
+
+        for (CarPositions carPositions : history) {
+            printPosition(carPositions);
+        }
+    }
+
+    public void printPosition(CarPositions carPositions) {
+        List<String> positions = carPositions.getPositions();
 
         for (String position : positions) {
             System.out.println(position);
         }
+
+        System.out.println();
     }
 }
