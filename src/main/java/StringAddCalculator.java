@@ -33,7 +33,7 @@ public class StringAddCalculator {
         for (String s : numbers) {
             int number = Integer.parseInt(s);
             if (number < 0) {
-                throw new RuntimeException();
+                throw new RuntimeException("numbers는 음수를 허용하지 않습니다.");
             }
             sum += number;
         }
