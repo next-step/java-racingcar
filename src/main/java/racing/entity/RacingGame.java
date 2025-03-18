@@ -1,29 +1,25 @@
 package racing.entity;
 
-import racing.rule.MoveRule;
+import racing.generator.CarsGenerator;
+import racing.rule.RandomMoveRule;
 import racing.view.RacingGameOutputView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
-    private static final Random RANDOM = new Random();
-    private static final int MAX_RANDOM_VALUE = 9; // random 최대값
-
     private final int carCount;
     private final int roundCount;
-    private final MoveRule moveRule;
+    private final RandomMoveRule randomMoveRule;
 
-    public RacingGame(int carCount, int roundCount, MoveRule moveRule) {
+    public RacingGame(int carCount, int roundCount, RandomMoveRule randomMoveRule) {
         this.carCount = carCount;
         this.roundCount = roundCount;
-        this.moveRule = moveRule;
+        this.randomMoveRule = randomMoveRule;
     }
 
     // 레이싱 게임 진행 (자동차 리스트 생성 => RoundCount 만큼 라운드 진행)
     public void playRacingGame() {
-        RacingCars racingCars = new RacingCars(generateCars(carCount));
+        RacingCars racingCars = new RacingCars(CarsGenerator.generateCars(carCount));
 
         RacingGameOutputView.printOutputHeadMessage();
 
@@ -37,23 +33,10 @@ public class RacingGame {
     private void playRound(RacingCars racingCars) {
         List<Car> cars = racingCars.getCars();
         for (Car car : cars) {
-            if (moveRule.isMovable(getRandomValue())) {
+            if (randomMoveRule.isMovableByRandomValue()) {
                 car.move();
             }
         }
-    }
-
-    private static List<Car> generateCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-
-        return cars;
-    }
-
-    private static int getRandomValue() {
-        return RANDOM.nextInt(MAX_RANDOM_VALUE);
     }
 
 }
