@@ -8,8 +8,8 @@ public class Main {
         String carNumber = InputView.inputCarNumber();
         int gameCount = InputView.inputGameCount();
 
-        CarRacingGame carRacingGame = new CarRacingGame(carNumber, new RandomNumberGenerator());
-        List<List<String>> gameResult = carRacingGame.playGame(gameCount);
+        CarRacingGame carRacingGame = new CarRacingGame(carNumber, gameCount, new RandomNumberGenerator());
+        List<List<String>> gameResult = carRacingGame.playGame();
 
         OutputView.printTotalResult(gameResult);
     }
