@@ -41,7 +41,7 @@
 * UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
 
 #### 구현할 기능 목록
-* UI 로직을 InputView, ResultView와 같은 클래스로 분리한다.
+* UI 로직을 InputView, ResultView 클래스로 분리한다.
 * InputView에서 게임에 참가할 자동차 대수를 입력 받는 부분을 자동차이름 리스트를 받도록 수정한다.
   * 쉼표(,)로 구분하여 참가 대수와 이름을 셋팅
   * 자동차 이름은 5자를 초과할 수 없다.
