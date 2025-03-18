@@ -20,6 +20,6 @@ public class CarNames {
     public List<String> names() {
         return this.names.stream()
                 .map(CarName::name)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 }
