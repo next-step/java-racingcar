@@ -11,10 +11,13 @@ import org.junit.jupiter.api.Test;
 
 class RacingTest {
 
+    int simulateCarCount = 5;
+    int simulateMoveCount = 3;
+
     @BeforeEach
     @DisplayName("초기 작업")
     void init() {
-        String simulatedInput = "5\n3\n";
+        String simulatedInput = simulateCarCount + "\n" + simulateMoveCount + "\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
     }
 
@@ -24,8 +27,24 @@ class RacingTest {
         Racing racing = new Racing();
         racing.init();
         assertAll(
-            () -> assertThat(racing.carCount).isEqualTo(5),
-            () -> assertThat(racing.moveCount).isEqualTo(3)
+            () -> assertThat(racing.carCount).isEqualTo(simulateCarCount),
+            () -> assertThat(racing.moveCount).isEqualTo(simulateMoveCount)
+        );
+    }
+
+    @Test
+    @DisplayName("자동차 이동 검증테스트")
+    void runTest() {
+        Racing racing = new Racing();
+        racing.init();
+        racing.run();
+        assertAll(
+            () -> assertThat(racing.cars.length).isEqualTo(simulateCarCount),
+            () -> assertThat(racing.cars[0].position).isBetween(0, simulateMoveCount),
+            () -> assertThat(racing.cars[1].position).isBetween(0, simulateMoveCount),
+            () -> assertThat(racing.cars[2].position).isBetween(0, simulateMoveCount),
+            () -> assertThat(racing.cars[3].position).isBetween(0, simulateMoveCount),
+            () -> assertThat(racing.cars[4].position).isBetween(0, simulateMoveCount)
         );
     }
 }
