@@ -13,9 +13,10 @@ class RoundTest {
     void finishRoundTest() {
         // given
         var round = new Round(DiceTest.luckyDice);
+        List<Car> testCars = Collections.emptyList();
 
         // when
-        round.play(List.of());
+        round.play(testCars);
 
         // then
         Assertions.assertThat(round.isFinished()).isTrue();
