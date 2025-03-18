@@ -3,17 +3,16 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import racing.RandomGenerator;
-import racing.domain.Car;
 
 public class Racing {
 
   List<Car> cars = new ArrayList<>();
 
   public Racing(int carCount) {
-    setCars(carCount);
+    generateCars(carCount);
   }
 
-  public List<Car> setCars(int carCount) {
+  private List<Car> generateCars(int carCount) {
     for (int i = 0; i < carCount; i++) {
       cars.add(new Car());
     }
@@ -26,7 +25,6 @@ public class Racing {
   }
 
   public void simulateRace() {
-
     for (Car car : cars) {
       car.driveOrStop(RandomGenerator.generate());
     }
