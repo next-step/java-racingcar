@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputView {
 
   private static final String NUM_CAR_QUESTION = "자동차 대수는 몇 대 인가요?";
-  private static final String NUM_TRY_QUESTION = "시도할 회수는 몇 회 인가요?";
+  private static final String NUM_ROUND_QUESTION = "시도할 회수는 몇 회 인가요?";
   private final Scanner scanner;
 
   public InputView() {
@@ -17,8 +17,8 @@ public class InputView {
     return askInt();
   }
 
-  public int getNumTry() {
-    System.out.println(NUM_TRY_QUESTION);
+  public int getNumRounds() {
+    System.out.println(NUM_ROUND_QUESTION);
     return askInt();
   }
 
