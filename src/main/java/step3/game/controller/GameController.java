@@ -1,6 +1,8 @@
-package step3.game;
+package step3.game.controller;
 
-import step3.game.car.CarName;
+import step3.game.domain.car.CarName;
+import step3.game.domain.PositiveNumber;
+import step3.game.domain.RacingCarGame;
 import step3.view.input.ConsoleInputView;
 import step3.view.input.InputView;
 import step3.view.output.OutputView;

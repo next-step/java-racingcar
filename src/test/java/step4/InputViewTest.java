@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.game.car.CarName;
-import step3.game.PositiveNumber;
+import step3.game.domain.car.CarName;
+import step3.game.domain.PositiveNumber;
 import step3.view.input.InputView;
 import step4.mock.TestInputView;
 

@@ -1,11 +1,11 @@
-package step3.game;
+package step3.game.domain;
 
-import step3.game.car.Car;
-import step3.game.car.CarName;
+import step3.game.domain.car.Car;
+import step3.game.domain.car.CarName;
 
 import java.util.Set;
 
-import static step3.game.RandomGenerator.getRandomValue;
+import static step3.game.domain.RandomGenerator.getRandomValue;
 
 public class RacingCarGame {
 

@@ -1,7 +1,7 @@
-package step3.game;
+package step3.game.domain;
 
-import step3.game.car.Car;
-import step3.game.car.CarName;
+import step3.game.domain.car.Car;
+import step3.game.domain.car.CarName;
 
 import java.util.HashSet;
 import java.util.Set;

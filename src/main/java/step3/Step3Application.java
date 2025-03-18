@@ -1,6 +1,6 @@
 package step3;
 
-import step3.game.GameController;
+import step3.game.controller.GameController;
 import step3.view.input.ConsoleInputView;
 import step3.view.output.ConsoleOutputView;
 

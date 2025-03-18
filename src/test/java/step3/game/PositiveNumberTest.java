@@ -3,10 +3,11 @@ package step3.game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step3.game.domain.PositiveNumber;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static step3.game.PositiveNumber.POSITIVE_EXCEPTION_MESSAGE;
+import static step3.game.domain.PositiveNumber.POSITIVE_EXCEPTION_MESSAGE;
 
 public class PositiveNumberTest {
 
