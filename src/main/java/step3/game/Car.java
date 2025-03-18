@@ -5,9 +5,11 @@ public class Car {
     public static final int START_LINE = 0;
 
     private Integer moveSteps;
+    public final CarName name;
 
-    public Car() {
+    public Car(CarName name) {
         this.moveSteps = START_LINE;
+        this.name = name;
     }
 
     public void move() {
@@ -16,5 +18,9 @@ public class Car {
 
     public Integer getDistance() {
         return moveSteps;
+    }
+
+    public String getCarName() {
+        return name.getCarName();
     }
 }
