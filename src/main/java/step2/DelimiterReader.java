@@ -6,18 +6,20 @@ import java.util.regex.Pattern;
 public class DelimiterReader {
 
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final Integer CUSTOM_DELIMITER_INDEX = 1;
+    private static final Integer EXTRACTED_TEXT_INDEX = 2;
 
-    public boolean hasCustomDelimiter(String s) {
-        if (s.matches(CUSTOM_PATTERN.pattern())) {
+    public boolean hasCustomDelimiter(String text) {
+        if (text.matches(CUSTOM_PATTERN.pattern())) {
             return true;
         }
         return false;
     }
 
-    public String[] extractAndSplit(String s) {
-        Matcher matcher = CUSTOM_PATTERN.matcher(s);
+    public String[] extractAndSplit(String text) {
+        Matcher matcher = CUSTOM_PATTERN.matcher(text);
         if (matcher.find()) {
-            return matcher.group(2).split(matcher.group(1));
+            return matcher.group(EXTRACTED_TEXT_INDEX).split(matcher.group(CUSTOM_DELIMITER_INDEX));
         }
         throw new IllegalArgumentException("매치가 없습니다");
     }
