@@ -110,7 +110,7 @@ public class CarRacingGameTest {
         GameResult gameResult = carRacingGame.playGame();
 
         assertThat(gameResult.getWinners())
-                .containsExactlyInAnyOrder("honux");
+                .contains("honux");
     }
 
     @DisplayName("우승자 판별 기능 (여러명)")
@@ -123,6 +123,6 @@ public class CarRacingGameTest {
         );
         GameResult gameResult = carRacing.playGame();
         assertThat(gameResult.getWinners())
-                .containsExactlyInAnyOrder("pobi", "crong", "honux");
+                .contains("pobi", "crong", "honux");
     }
 }

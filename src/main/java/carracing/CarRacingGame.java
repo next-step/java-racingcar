@@ -68,15 +68,17 @@ public class CarRacingGame {
         List<String> winners = new ArrayList<>();
         int maxDistance = maxCarDistance();
         for (Car car : cars) {
-            updateWinners(car, maxDistance, winners);
+            winners.add(returnNameIfMax(car, maxDistance));
         }
+        winners.removeAll(Collections.singletonList(null));
         return winners;
     }
 
-    private void updateWinners(Car car, int maxDistance, List<String> winners) {
+    private String returnNameIfMax(Car car, int maxDistance) {
         if (car.getDistance() == maxDistance) {
-            winners.add(car.getName());
+            return car.getName();
         }
+        return null;
     }
 
     private int maxCarDistance() {
