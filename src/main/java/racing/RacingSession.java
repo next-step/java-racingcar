@@ -9,7 +9,7 @@ public class RacingSession {
     public static final int MIN_PROGRESS_NUMBER = 4;
 
     private final List<Car> cars;
-    private List<CarPositions> lastPlayHistory;
+    private PlayHistory lastPlayHistory;
 
     private RacingSession(List<Car> cars){
         this.cars = cars;
@@ -25,7 +25,7 @@ public class RacingSession {
         for (int i = 0; i < turns; i++) {
             totalPositions.add(moveCars(cars));
         }
-        this.lastPlayHistory = totalPositions;
+        this.lastPlayHistory = new PlayHistory(getCarNames(), totalPositions);
         return totalPositions;
     }
 
@@ -46,39 +46,9 @@ public class RacingSession {
         return number >= MIN_PROGRESS_NUMBER;
     }
 
-
-    public static List<String> findWinners(List<String> carNames, List<CarPositions> playHistory){
-        int maxPosition = findMaxPosition(playHistory);
-        CarPositions lastPositions = playHistory.get(playHistory.size()-1);
-        return findMaxPositionNames(carNames, lastPositions, maxPosition);
-    }
-
-    private static int findMaxPosition(List<CarPositions> playHistory){
-        CarPositions lastPositions = playHistory.get(playHistory.size()-1);
-        int maxPosition = 0;
-        for (Integer lastPosition : lastPositions.getCarPositions()) {
-            maxPosition = Math.max(maxPosition, lastPosition);
-        }
-        return maxPosition;
-    }
-
-    private static List<String> findMaxPositionNames(List<String> carNames, CarPositions lastPositions, int maxPosition){
-        List<String> lastPositionCarNames = new ArrayList<>();
-        for (int i=0; i<carNames.size(); i++) {
-            insertIfMaxPosition(carNames.get(i), lastPositions.getCarPosition(i), maxPosition, lastPositionCarNames);
-        }
-        return lastPositionCarNames;
-    }
-
-    private static void insertIfMaxPosition(String carName, int nowPosition, int maxPosition, List<String> lastPositionCarNames){
-        if (nowPosition == maxPosition) {
-            lastPositionCarNames.add(carName);
-        }
-    }
-
     public RacingResultDto getRacingResult() {
         List<String> carNames = getCarNames();
-        List<String> winnerNames = findWinners(carNames, this.lastPlayHistory);
+        List<String> winnerNames = this.lastPlayHistory.findWinners();
 
         return new RacingResultDto(carNames, this.lastPlayHistory, winnerNames);
     }

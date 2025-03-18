@@ -9,7 +9,7 @@ public class ResultView {
 
     public static void printResult(RacingResultDto racingResultDto) {
         System.out.println("실행 결과");
-        for (CarPositions carPositions : racingResultDto.getPlayHistory()) {
+        for (CarPositions carPositions : racingResultDto.getPlayHistory().getPositions()) {
             printTurnResult(racingResultDto.getCarNames(), carPositions);
         }
 

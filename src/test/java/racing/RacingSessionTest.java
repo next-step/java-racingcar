@@ -41,21 +41,5 @@ public class RacingSessionTest {
         assertThat(RacingSession.canProgress(number)).isEqualTo(canMove);
     }
 
-    @Test
-    @DisplayName("경기 기록에서 우승자 찾기")
-    void 우승자_찾기() {
-        List<String> carNames = List.of("a","b", "c");
-
-        List<CarPositions> playHistory = List.of(
-            new CarPositions(List.of(1,1,1)),
-            new CarPositions(List.of(1,2,1)),
-            new CarPositions(List.of(2,2,2)),
-            new CarPositions(List.of(3,2,3))
-        );
-
-        List<String> winners = RacingSession.findWinners(carNames, playHistory);
-
-        assertThat(winners).isEqualTo(List.of("a", "c"));
-    }
 
 }
