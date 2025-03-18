@@ -5,6 +5,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final Pattern CUSTOM_SEPERATOR_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_SEPERATOR_PATTERN = ",|:";
+    private static final int CUSTOM_SEPARATOR_GROUP_INDEX = 1;
+    private static final int CUSTOM_NUMBERS_GROUP_INDEX = 2;
+
     public static int splitAndSum(String input) {
         if (isNullOrEmpty(input)) {
             return 0;
@@ -28,8 +33,9 @@ public class StringAddCalculator {
                 .reduce((a, b) -> a + b)
                 .orElse("");
 
-        if (!negative.isEmpty())
+        if (!negative.isEmpty()) {
             throw new RuntimeException("음수는 허용되지 않습니다: " + negative);
+        }
     }
 
     private static String[] splitByCustomOrDefault(String input) {
@@ -46,15 +52,15 @@ public class StringAddCalculator {
     }
 
     private static Matcher matchCustomSeperator(String input) {
-        return Pattern.compile("//(.)\n(.*)").matcher(input);
+        return CUSTOM_SEPERATOR_PATTERN.matcher(input);
     }
 
     private static String[] splitByCustomSeperator(Matcher m) {
-        return m.group(2).split(Pattern.quote(m.group(1)));
+        return m.group(CUSTOM_NUMBERS_GROUP_INDEX).split(Pattern.quote(m.group(CUSTOM_SEPARATOR_GROUP_INDEX)));
     }
 
     private static String[] splitByDefaultSeperator(String input) {
-        return input.split(",|:");
+        return input.split(DEFAULT_SEPERATOR_PATTERN);
     }
 
     private static int sumNumbers(String[] numbers) {
