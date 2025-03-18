@@ -9,14 +9,14 @@ public class CarRacingGame {
     public static final String DELIMITER = ",";
     private final List<Car> cars = new ArrayList<>();
     private final NumberGenerator randomNumberGenerator;
-    private int gameCount;
+    private final int gameCount;
 
-    public CarRacingGame(String carNameString, int _gameCount, NumberGenerator numberGenerator) {
+    public CarRacingGame(String carNameString, int gameCount, NumberGenerator numberGenerator) {
         String[] names = validateStringArray(carNameString);
         for (String name : names) {
             cars.add(new Car(name));
         }
-        gameCount = validateGameCount(_gameCount);
+        this.gameCount = validateGameCount(gameCount);
         randomNumberGenerator = numberGenerator;
     }
 

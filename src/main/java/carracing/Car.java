@@ -6,8 +6,8 @@ public class Car {
     private int distance = 1;
     private String distanceString;
 
-    public Car(String _name) {
-        name = _name;
+    public Car(String name) {
+        this.name = name;
         distanceString = name + " : -";
     }
 

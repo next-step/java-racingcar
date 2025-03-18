@@ -6,9 +6,9 @@ public class GameResult {
     private final List<List<String>> carDistances;
     private final List<String> winners;
 
-    public GameResult(List<List<String>> _carDistances, List<String> _winners) {
-        carDistances = _carDistances;
-        winners = _winners;
+    public GameResult(List<List<String>> carDistances, List<String> winners) {
+        this.carDistances = carDistances;
+        this.winners = winners;
     }
 
     public List<List<String>> getCarDistances() {
