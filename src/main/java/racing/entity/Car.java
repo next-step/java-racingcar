@@ -1,11 +1,17 @@
 package racing.entity;
 
+import java.util.Objects;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private int position = 1;
     private String carName;
 
     public Car() {
+    }
+
+    public Car(String carName) {
+        registerName(carName);
     }
 
     public int getPosition() {
@@ -36,4 +42,13 @@ public class Car {
 
         return true;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position && Objects.equals(carName, car.carName);
+    }
+
 }

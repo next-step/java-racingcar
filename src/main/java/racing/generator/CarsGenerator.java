@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarsGenerator {
-    public static List<Car> generateCars(int carCount) {
+    public static List<Car> generateCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
 
         return cars;
