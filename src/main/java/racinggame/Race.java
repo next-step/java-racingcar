@@ -4,20 +4,20 @@ import java.util.List;
 
 public class Race {
 
-    private final List<Car> carList;
-    private final RandomGenerator randomGenerator;
+    private final List<Car> cars;
+    private final MoveStrategy moveStrategy;
 
-    public Race(final List<Car> carList) {
-        this(carList, new RacingRandomGenerator());
+    public Race(final List<Car> cars) {
+        this(cars, new RandomMoveStrategy());
     }
 
-    public Race(final List<Car> carList, final RandomGenerator randomGenerator) {
-        this.carList = carList;
-        this.randomGenerator = randomGenerator;
+    public Race(final List<Car> cars, final MoveStrategy moveStrategy) {
+        this.cars = cars;
+        this.moveStrategy = moveStrategy;
     }
 
     public List<Car> cars() {
-        return this.carList;
+        return this.cars;
     }
 
     public void run(final int rounds) {
@@ -27,6 +27,6 @@ public class Race {
     }
 
     private void moveCars() {
-        carList.forEach(car -> car.move(randomGenerator.nextInt()));
+        cars.forEach(car -> car.move(moveStrategy));
     }
 }
