@@ -14,13 +14,14 @@ public class RaceService {
 		while (race.hasRemainRound()) {
 			runOneRound();
 		}
+		OutputView.printWinners(cars.getWinners());
 	}
 
 	private void runOneRound() {
 		cars.moveCars(randomMovingStrategy());
 		race.reduceRound();
-		cars.getCarsLocation()
-			.forEach(OutputView::printCarDistance);
+		cars.getCarsNameAndLocation()
+			.forEach(carInfo -> OutputView.printCarDistance(carInfo.name(), carInfo.location()));
 		OutputView.printEndOneRound();
 	}
 
