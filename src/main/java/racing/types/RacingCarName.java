@@ -2,9 +2,14 @@ package racing.types;
 
 public class RacingCarName {
 
+  public static final String DEFAULT_NAME = "unknown";
   private static final int MAZ_CAR_NAME_LEN = 5;
 
   private final String name;
+
+  public RacingCarName() {
+    this.name = DEFAULT_NAME;
+  }
 
   public RacingCarName(String racingCarName) {
     if (racingCarName == null || racingCarName.isEmpty()) {

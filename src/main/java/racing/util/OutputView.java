@@ -1,6 +1,7 @@
 package racing.util;
 
 import racing.simulator.RacingCar;
+import racing.types.RacingCarName;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class OutputView {
     racingCars.forEach(racingCar -> {
       String name = racingCar.getName();
 
-      String output = (name == null)
+      String output = (RacingCarName.DEFAULT_NAME.equals(name))
           ? "-".repeat(Math.max(0, racingCar.getLocation()))
           : name + " : " + "-".repeat(Math.max(0, racingCar.getLocation()));
 

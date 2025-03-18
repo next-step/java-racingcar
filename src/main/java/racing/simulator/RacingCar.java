@@ -8,8 +8,7 @@ public class RacingCar {
   private int location;
 
   public RacingCar() {
-    this.carName = null;
-    this.location = 0;
+    this(new RacingCarName());
   }
 
   public RacingCar(RacingCarName carName) {
