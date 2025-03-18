@@ -1,6 +1,5 @@
 package racing.util;
 
-import racing.simulator.CarRacingGameWinnerSelector;
 import racing.types.RacingCar;
 import racing.types.RacingCarName;
 

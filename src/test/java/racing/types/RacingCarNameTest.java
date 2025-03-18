@@ -26,7 +26,7 @@ public class RacingCarNameTest {
 
   @DisplayName("자동차 이름의 길이가 6 이상이면 RuntimeException을 던진다.")
   @ParameterizedTest
-  @ValueSource(strings = { "abcdef", "longname", "123456", "longerName" })
+  @ValueSource(strings = {"abcdef", "longname", "123456", "longerName"})
   void constructor_givenCarNameLengthIsSixOrMore_throwsException(String carName) {
     assertThrows(RuntimeException.class, () -> new RacingCarName(carName));
   }

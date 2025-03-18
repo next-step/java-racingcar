@@ -12,7 +12,7 @@ public class RacingCarCount {
     }
     this.count = carCount;
   }
-  
+
   public int getCount() {
     return count;
   }

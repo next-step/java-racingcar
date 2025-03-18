@@ -11,7 +11,7 @@ public class RacingCarGroup {
   RacingCarMovingStrategy racingCarMovingStrategy;
 
   public RacingCarGroup(List<RacingCarName> racingCarNames, RacingCarMovingStrategy racingCarMovingStrategy) {
-    for (RacingCarName name: racingCarNames) {
+    for (RacingCarName name : racingCarNames) {
       racingCars.add(new RacingCar(name));
     }
     this.racingCarMovingStrategy = racingCarMovingStrategy;

@@ -17,7 +17,7 @@ class RacingCarTest {
     RacingCar racingCar = new RacingCar(new RacingCarName("test"));
 
     for (int i = 0; i < simulateCount; i++) {
-      racingCar.go(()-> strategyResult);
+      racingCar.go(() -> strategyResult);
     }
 
     assertThat(racingCar.getLocation()).isEqualTo(strategyResult ? simulateCount : 0);

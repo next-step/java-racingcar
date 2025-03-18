@@ -1,8 +1,8 @@
 package racing;
 
 import racing.simulator.CarRacingGameSimulator;
-import racing.types.RacingCar;
 import racing.simulator.RandomRacingCarMovingStrategy;
+import racing.types.RacingCar;
 import racing.types.RacingCarCount;
 import racing.types.SimulateCount;
 import racing.util.InputView;

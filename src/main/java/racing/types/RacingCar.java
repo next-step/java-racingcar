@@ -25,7 +25,9 @@ public class RacingCar {
     return location;
   }
 
-  public String getName() { return carName.getName(); }
+  public String getName() {
+    return carName.getName();
+  }
 
   public void go(RacingCarMovingStrategy racingCarMovingStrategy) {
     if (racingCarMovingStrategy.canMove()) {
