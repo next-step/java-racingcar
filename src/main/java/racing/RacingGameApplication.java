@@ -7,8 +7,8 @@ import racing.view.RacingGameInputView;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
-        int carCount = RacingGameInputView.getIntegerInput(GameMessage.CAR_COUNT_MESSAGE);
-        int roundCount = RacingGameInputView.getIntegerInput(GameMessage.ATTEMPT_COUNT_MESSAGE);
+        int carCount = RacingGameInputView.getIntegerInput(GameMessage.CAR_INFO_INPUT_MESSAGE);
+        int roundCount = RacingGameInputView.getIntegerInput(GameMessage.ATTEMPT_COUNT_INPUT_MESSAGE);
         RandomMoveRule randomMoveRule = new RandomMoveRule();
 
         RacingGame racingGame = new RacingGame(carCount, roundCount, randomMoveRule);
