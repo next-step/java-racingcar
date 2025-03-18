@@ -16,6 +16,7 @@ class CarRacingGameWinnerSelectorTest {
   @Test
   public void select_returnOneWinners() {
     RacingCar winnerRacingCar = new RacingCar(new RacingCarName("a"));
+    winnerRacingCar.go(() -> true);
 
     List<RacingCar> input = List.of(
         winnerRacingCar,
@@ -26,7 +27,7 @@ class CarRacingGameWinnerSelectorTest {
     CarRacingGameWinnerSelector selector = new CarRacingGameWinnerSelector();
 
     List<RacingCar> winners = selector.select(input);
-    assertThat(winners).containsOnly(winnerRacingCar);
+    assertThat(winners).containsExactly(winnerRacingCar);
   }
 
   @DisplayName("여러명의 우승자가 있을 때 우승자를 요청하면 여러명의의 우승자를 가져온다.")
@@ -34,17 +35,19 @@ class CarRacingGameWinnerSelectorTest {
   public void select_returnMultipleWinners() {
     RacingCar winnerRacingCar1 = new RacingCar(new RacingCarName("a"));
     RacingCar winnerRacingCar2 = new RacingCar(new RacingCarName("b"));
+    winnerRacingCar1.go(() -> true);
+    winnerRacingCar2.go(() -> true);
 
     List<RacingCar> input = List.of(
         winnerRacingCar1,
-        winnerRacingCar2,
-        new RacingCar(new RacingCarName("c"))
+        new RacingCar(new RacingCarName("c")),
+        winnerRacingCar2
     );
 
     CarRacingGameWinnerSelector selector = new CarRacingGameWinnerSelector();
 
     List<RacingCar> winners = selector.select(input);
-    assertThat(winners).containsOnly(winnerRacingCar1, winnerRacingCar2);
+    assertThat(winners).containsExactly(winnerRacingCar1, winnerRacingCar2);
   }
 
 }
