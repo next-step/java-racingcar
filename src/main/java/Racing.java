@@ -8,22 +8,23 @@ public class Racing {
     private final int tryCount; // 시도 횟수
 
     /**
-     * @param carNum
+     * @param carName
      * @param tryCount
      * 레이싱 초기화
      */
-    public Racing(int carNum, int tryCount) {
-        carListSetting(carNum);
+    public Racing(String[] carName, int tryCount) {
+        carListSetting(carName);
         this.tryCount = tryCount;
     }
 
     /**
-     * @param count
+     * @param carName
      * 자동차 리스트 초기화
      */
-    private void carListSetting(int count) {
-        for (int i = 0; i < count; i++) {
+    private void carListSetting(String[] carName) {
+        for (int i = 0; i < carName.length; i++) {
             Car car = new Car();
+            car.changeCarName(carName[i]);
             carList.add(car);
         }
     }
@@ -32,7 +33,7 @@ public class Racing {
      * 레이싱 시작
      */
     public void start() {
-        System.out.println("실행 결과");
+        ResultView.printExecuteResult();
 
         for (int i = 0; i < tryCount; i++) {
             race();

@@ -1,6 +1,7 @@
 
 public class Car {
 
+    private String name;
     private int position;
 
     private final static int RANDOM_BOUND = 10;
@@ -19,5 +20,13 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void changeCarName(String carName) {
+        this.name = carName;
+    }
+
+    public String getName() {
+        return name;
     }
 }
