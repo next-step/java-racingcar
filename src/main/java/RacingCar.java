@@ -11,7 +11,7 @@ public class RacingCar {
 
         int tryTimes = InputView.getAnswerToInteger("시도할 회수는 몇 회 인가요?");
 
-        System.out.println("실행 결과");
+        ResultView.println("실행 결과");
 
         for (int j = 0; j < tryTimes; j++) {
             moveCars(cars);
