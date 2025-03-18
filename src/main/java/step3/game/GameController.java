@@ -1,8 +1,8 @@
 package step3.game;
 
-import step3.view.ConsoleInputView;
-import step3.view.InputView;
-import step3.view.OutputView;
+import step3.view.input.ConsoleInputView;
+import step3.view.input.InputView;
+import step3.view.output.OutputView;
 
 import java.util.Set;
 

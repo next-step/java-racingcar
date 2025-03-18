@@ -1,6 +1,6 @@
 package step4.mock;
 
-import step3.view.AbstractInputView;
+import step3.view.input.AbstractInputView;
 
 public class TestInputView extends AbstractInputView {
 

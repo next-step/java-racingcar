@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step3.game.CarName;
 import step3.game.PositiveNumber;
-import step3.view.InputView;
+import step3.view.input.InputView;
 import step4.mock.TestInputView;
 
 import java.util.Set;

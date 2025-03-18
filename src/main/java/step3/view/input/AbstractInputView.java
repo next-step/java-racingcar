@@ -1,4 +1,4 @@
-package step3.view;
+package step3.view.input;
 
 import step3.game.CarName;
 import step3.game.PositiveNumber;

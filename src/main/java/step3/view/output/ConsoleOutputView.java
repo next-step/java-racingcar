@@ -1,4 +1,4 @@
-package step3.view;
+package step3.view.output;
 
 import step3.game.Car;
 
@@ -9,6 +9,7 @@ import java.util.Set;
 public class ConsoleOutputView implements OutputView {
 
     public static final String WINNER_DELIMETER = ", ";
+    public static final String CAR_MOVE_SYMBOL = "-";
 
     @Override
     public void result() {
@@ -17,7 +18,7 @@ public class ConsoleOutputView implements OutputView {
 
     @Override
     public String carDistance(Integer distance) {
-        return "-".repeat(distance);
+        return CAR_MOVE_SYMBOL.repeat(distance);
     }
 
     @Override

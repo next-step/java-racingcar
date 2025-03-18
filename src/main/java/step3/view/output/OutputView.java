@@ -1,8 +1,7 @@
-package step3.view;
+package step3.view.output;
 
 import step3.game.Car;
 
-import java.util.List;
 import java.util.Set;
 
 public interface OutputView {
