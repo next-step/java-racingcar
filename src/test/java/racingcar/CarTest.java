@@ -6,16 +6,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    private Car car;
+
     @Test
-    void 자동차는_경기_play_횟수를_알_수_있다() {
-        Car car = new Car();
-        assertThat(car.play()).isGreaterThanOrEqualTo(0);
-        assertThat(car.getPlayCount()).isEqualTo(1);
+    void play_호출시_move가_true면_distance가_증가한다() {
+        car = new Car(() -> true);
+        car.play();
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
-    void 자동차의_전진한_거리가_0_또는_양수의_숫자로_리턴된다() {
-        Car car = new Car();
-        assertThat(car.getDistance()).isGreaterThanOrEqualTo(0);
+    void play_호출시_move가_false면_distance가_증가하지_않는다() {
+        car = new Car(() -> false);
+        car.play();
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 }

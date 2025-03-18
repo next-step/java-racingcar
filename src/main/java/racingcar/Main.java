@@ -12,8 +12,10 @@ public class Main {
         OutputView.askRoundNumbers();
         int numberOfRounds = InputView.getNumberOfRounds(); // 두 번째 값 입력받음
 
+        MoveStrategy moveStrategy = new DefaultMoveStrategy();
+
         List<Car> cars = IntStream.range(0, numberOfCars)
-                .mapToObj(i -> new Car())
+                .mapToObj(i -> new Car(moveStrategy))
                 .collect(Collectors.toList());
 
         Racing racing = new Racing(cars);

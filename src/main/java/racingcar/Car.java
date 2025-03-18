@@ -1,34 +1,22 @@
 package racingcar;
 
 
-import java.util.Random;
-
 public class Car {
 
-    private static final int MAX_RANDOM_NUMBER = 10;
-    private static final int MOVE_OR_STOP_BOUNDARY = 4;
-
-    public static final Random RANDOM = new Random();
+    private final MoveStrategy moveStrategy;
     private Integer distance = 0;
-    private Integer playCount = 0;
 
-    public Integer getDistance() {
+    public Car(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+    }
+
+    public Integer getDistance(z) {
         return distance;
     }
 
-    public Integer getPlayCount() {
-        return playCount;
-    }
-
-    public Integer play() {
-        playCount++;
-        if (moveOrStop()) {
+    public void play() {
+        if (moveStrategy.move()) {
             distance++;
         }
-        return getDistance();
-    }
-
-    private boolean moveOrStop() {
-        return RANDOM.nextInt(MAX_RANDOM_NUMBER) >= MOVE_OR_STOP_BOUNDARY;
     }
 }
