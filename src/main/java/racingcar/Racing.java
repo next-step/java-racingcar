@@ -10,15 +10,14 @@ public class Racing {
   private List<Car> cars;
   private final NumberGenerator numberGenerator;
 
-  public Racing(int carCount, NumberGenerator numberGenerator) {
+  public Racing(List<String> carNames, NumberGenerator numberGenerator) {
     this.numberGenerator = numberGenerator;
-    prepareCars(carCount);
-
+    prepareCars(carNames);
   }
 
-  private void prepareCars(int carCount) {
-    this.cars = IntStream.range(0, carCount)
-        .mapToObj(Car::new)
+  private void prepareCars(List<String> carNames) {
+    this.cars = carNames.stream()
+        .map(Car::new)
         .collect(Collectors.toList());
   }
 
@@ -38,4 +37,5 @@ public class Racing {
   public List<Car> getCars() {
     return cars;
   }
+
 }

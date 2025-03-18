@@ -1,11 +1,11 @@
 package racingcar;
 
 public class Car {
-  private final long id;
+  private final String name;
   private int position;
 
-  public Car(long id) {
-    this.id = id;
+  public Car(String name) {
+    this.name = name;
     this.position = 0;
   }
 
@@ -17,7 +17,7 @@ public class Car {
     return position;
   }
 
-  public long getId() {
-    return id;
+  public String getName() {
+    return name;
   }
 }

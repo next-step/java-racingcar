@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.random.RandomNumberGenerator;
 import racingcar.view.InputView;
@@ -8,15 +9,20 @@ import racingcar.view.ResultView;
 public class RacingCarGame {
     public static void main(String[] args) {
 
-      int carCount = InputView.inputCarCount();
-      int round = InputView.inputRound();
+      List<String> carNames = InputView.inputCarName();
+      int rounds = InputView.inputRound();
       InputView.closeScanner();
 
-      Racing racing = new Racing(carCount, new RandomNumberGenerator());
+      Racing racing = new Racing(carNames, new RandomNumberGenerator());
+      List<Car> lastRecords = new ArrayList<>();
 
-      for (int i = 0; i < round; i++) {
-        ResultView.printResult(racing.start());
+      for (int now = 0; now < rounds; now++) {
+        lastRecords = racing.start();
+        ResultView.printResult(lastRecords);
       }
+
+      List<String> winners = RacingWinnerDeterminer.getWinner(lastRecords);
+      ResultView.printWinner(winners);
     }
 
 }

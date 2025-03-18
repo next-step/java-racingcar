@@ -10,8 +10,8 @@ class CarTest {
   @Test
   @DisplayName("자동차는 전진할 수 있다.")
   void move() {
-    long id = 1;
-    Car car = new Car(1);
+    String name = "pobi";
+    Car car = new Car(name);
     car.move();
     assertThat(car.getPosition()).isEqualTo(1);
   }
