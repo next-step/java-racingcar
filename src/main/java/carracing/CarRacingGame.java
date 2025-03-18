@@ -1,6 +1,7 @@
 package carracing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class CarRacingGame {
     private final int gameCount;
 
     public CarRacingGame(String carNameString, int gameCount, NumberGenerator numberGenerator) {
-        String[] names = validateStringArray(carNameString);
+        List<String> names = validateStringArray(carNameString);
         for (String name : names) {
             cars.add(new Car(name));
         }
@@ -27,12 +28,12 @@ public class CarRacingGame {
         return gameCount;
     }
 
-    private String[] validateStringArray(String carNameString) {
+    private List<String> validateStringArray(String carNameString) {
         String[] names = carNameString.split(DELIMITER);
         for (String name : names) {
             checkValidateName(name);
         }
-        return names;
+        return Arrays.asList(names);
     }
 
     private static void checkValidateName(String name) {

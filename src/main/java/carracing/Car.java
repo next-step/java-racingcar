@@ -16,11 +16,11 @@ public class Car {
     }
 
     public String getDistanceString() {
-        String returnString = name + " : ";
+        String distanceString = name + " : ";
         for (int i = 0; i < distance; ++i) {
-            returnString += "-";
+            distanceString += "-";
         }
-        return returnString;
+        return distanceString;
     }
 
     public int getDistance() {
