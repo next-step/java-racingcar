@@ -36,7 +36,37 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
+    public List<Car> getWinner() {
+        return collectWinners(seekMaxPosition());
+    }
+
     private Car carMove(Car car) {
         return car.moved(numberGenerator.generateNumber());
+    }
+
+    private int seekMaxPosition() {
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        return maxPosition;
+    }
+
+    private List<Car> collectWinners(int maxPosition) {
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            addIfWinner(maxPosition, car, winners);
+        }
+
+        return winners;
+    }
+
+    private void addIfWinner(int maxPosition, Car car, List<Car> winners) {
+        if (car.getPosition() == maxPosition) {
+            winners.add(car);
+        }
     }
 }

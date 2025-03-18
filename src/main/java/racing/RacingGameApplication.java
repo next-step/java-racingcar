@@ -23,5 +23,6 @@ public class RacingGameApplication {
             cars = raceService.moveCar(cars);
             OutputView.printResult(cars);
         }
+        OutputView.printWinner(cars.getWinner());
     }
 }
