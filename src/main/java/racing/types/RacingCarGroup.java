@@ -1,11 +1,9 @@
-package racing.simulator;
+package racing.types;
 
-import racing.types.RacingCarCount;
-import racing.types.RacingCarName;
+import racing.simulator.RacingCarMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarGroup {
 
@@ -24,10 +22,6 @@ public class RacingCarGroup {
       racingCars.add(new RacingCar());
     }
     this.racingCarMovingStrategy = racingCarMovingStrategy;
-  }
-
-  public List<Integer> getCarLocations() {
-    return racingCars.stream().map(RacingCar::getLocation).collect(Collectors.toList());
   }
 
   public void moveCars() {

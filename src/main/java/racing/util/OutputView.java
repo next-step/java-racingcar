@@ -1,6 +1,6 @@
 package racing.util;
 
-import racing.simulator.RacingCar;
+import racing.types.RacingCar;
 import racing.types.RacingCarName;
 
 import java.util.List;

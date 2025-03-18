@@ -2,7 +2,9 @@ package racing.simulator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.types.RacingCar;
 import racing.types.RacingCarCount;
+import racing.types.RacingCarName;
 import racing.types.SimulateCount;
 
 import java.util.List;
@@ -18,16 +20,26 @@ class RacingCarRacingGameSimulatorTest {
   @Test
   void run_givenSimulateCount_returnLocationResult() {
     int carCount = 3;
+    List<RacingCarName> carNames = List.of(
+        new RacingCarName("pobi"),
+        new RacingCarName("crong"),
+        new RacingCarName("honux")
+    );
     int simulateCount = 4;
 
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(new RacingCarCount(carCount), () -> true);
+    CarRacingGameSimulator simulatorWithCarCount = new CarRacingGameSimulator(new RacingCarCount(carCount), () -> true);
+    List<List<RacingCar>> simulateWithCarCountResults = Objects.requireNonNull(simulatorWithCarCount.run(new SimulateCount(simulateCount)));
 
-    List<List<RacingCar>> simulateResults = Objects.requireNonNull(simulator.run(new SimulateCount(simulateCount)));
+    CarRacingGameSimulator simulatorWithCarNames = new CarRacingGameSimulator(carNames, () -> true);
+    List<List<RacingCar>> simulateWithCarNamesResults = Objects.requireNonNull(simulatorWithCarNames.run(new SimulateCount(simulateCount)));
 
     assertAll(
-        () -> assertThat(simulateResults).hasSize(simulateCount),
-        () -> IntStream.range(0, simulateResults.size())
-            .forEach(i -> assertThat(simulateResults.get(i)).extracting(RacingCar::getLocation).containsOnly(i + 1))
+        () -> assertThat(simulateWithCarCountResults).hasSize(simulateCount),
+        () -> IntStream.range(0, simulateWithCarCountResults.size())
+            .forEach(i -> assertThat(simulateWithCarCountResults.get(i)).extracting(RacingCar::getLocation).containsOnly(i + 1)),
+        () -> assertThat(simulateWithCarNamesResults).hasSize(simulateCount),
+        () -> IntStream.range(0, simulateWithCarNamesResults.size())
+            .forEach(i -> assertThat(simulateWithCarNamesResults.get(i)).extracting(RacingCar::getLocation).containsOnly(i + 1))
     );
   }
 }

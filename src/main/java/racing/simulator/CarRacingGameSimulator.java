@@ -1,8 +1,6 @@
 package racing.simulator;
 
-import racing.types.RacingCarCount;
-import racing.types.RacingCarName;
-import racing.types.SimulateCount;
+import racing.types.*;
 
 import java.util.ArrayList;
 import java.util.List;

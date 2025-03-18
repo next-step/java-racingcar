@@ -1,6 +1,6 @@
-package racing.simulator;
+package racing.types;
 
-import racing.types.RacingCarName;
+import racing.simulator.RacingCarMovingStrategy;
 
 public class RacingCar {
 
