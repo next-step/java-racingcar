@@ -27,14 +27,14 @@ public class CarRace {
         if (numCar > 0) {
             return numCar;
         }
-        throw new RuntimeException("자동차 대수는 양수 여야합니다.");
+        throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
     }
 
     public static Integer receiveNumTry(int numTry) {
         if (numTry > 0) {
             return numTry;
         }
-        throw new RuntimeException("시도할 회수는 양수 여야합니다.");
+        throw new RuntimeException("시도할 회수는 1 이상의 값이어야 합니다.");
     }
 
     public static String[] initCurrentState(int numCar) {
@@ -42,12 +42,12 @@ public class CarRace {
             return Arrays.stream(new String[numCar]).map(car -> "-").toArray(String[]::new);
         }
 
-        throw new RuntimeException("자동차 대수는 양수 여야합니다.");
+        throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
     }
 
     public static void updateCurrentState(String[] cars, int numCar) {
         if (numCar <= 0) {
-            throw new RuntimeException("자동차 대수는 양수 여야합니다.");
+            throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
         }
         IntStream.range(0, numCar)
                 .forEach(

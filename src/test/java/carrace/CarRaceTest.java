@@ -16,7 +16,7 @@ public class CarRaceTest {
 
         assertThatThrownBy(() -> CarRace.receiveCarNum(negativeNumCar))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("자동차 대수는 양수 여야합니다.");
+                .hasMessageContaining("자동차 대수는 1 이상의 값이어야합니다.");
 
         assertThat(CarRace.receiveCarNum(positiveNumCar)).isEqualTo(positiveNumCar);
     }
@@ -29,7 +29,7 @@ public class CarRaceTest {
 
         assertThatThrownBy(() -> CarRace.receiveNumTry(negativeNumTry))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("시도할 회수는 양수 여야합니다.");
+                .hasMessageContaining("시도할 회수는 1 이상의 값이어야 합니다.");
 
         assertThat(CarRace.receiveNumTry(positiveNumTry)).isEqualTo(positiveNumTry);
     }
@@ -40,7 +40,7 @@ public class CarRaceTest {
         int negativeNumCar = -1;
         assertThatThrownBy(() -> CarRace.initCurrentState(negativeNumCar))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("자동차 대수는 양수 여야합니다.");
+                .hasMessageContaining("자동차 대수는 1 이상의 값이어야합니다.");
 
         int positiveNumCar = 3;
         String[] expectedValues = {"-", "-", "-"};
@@ -55,7 +55,7 @@ public class CarRaceTest {
         String[] emptyCars = {};
         assertThatThrownBy(() -> CarRace.updateCurrentState(emptyCars, negativeNumCar))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("자동차 대수는 양수 여야합니다.");
+                .hasMessageContaining("자동차 대수는 1 이상의 값이어야합니다.");
 
         int positiveNumCar = 3;
         String[] cars = {"-", "-", "-"};
