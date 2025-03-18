@@ -1,5 +1,9 @@
 package racing;
 
+import racing.domain.Racing;
+import racing.view.InputView;
+import racing.view.ResultView;
+
 public class RacingCarApplication {
 
   public static void main(String[] args) {
