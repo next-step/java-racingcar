@@ -2,11 +2,12 @@ package util;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements RandomGenerator {
     private static Random random = new Random();
     private static final int MAX_BOUND = 10;
 
-    public static int getRandomNumber() {
+    @Override
+    public int generate() {
         return random.nextInt(MAX_BOUND);
     }
 }

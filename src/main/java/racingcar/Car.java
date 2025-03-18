@@ -1,6 +1,7 @@
 package racingcar;
 
 import exception.TooLongException;
+import util.RandomGenerator;
 
 public class Car {
     private static final int INITIAL_DISTANCE = 0;
@@ -21,8 +22,8 @@ public class Car {
         this.carName = carName;
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber >= MOVING_STANDARD) {
+    public void move(RandomGenerator randomGenerator) {
+        if (randomGenerator.generate() >= MOVING_STANDARD) {
             distance += 1;
         }
     }

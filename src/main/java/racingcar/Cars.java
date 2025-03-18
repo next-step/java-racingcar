@@ -33,8 +33,7 @@ public class Cars {
 
     public void move() {
         for (Car car : cars) {
-            int randomNumber = RandomNumberGenerator.getRandomNumber();
-            car.move(randomNumber);
+            car.move(new RandomNumberGenerator());
         }
     }
 
