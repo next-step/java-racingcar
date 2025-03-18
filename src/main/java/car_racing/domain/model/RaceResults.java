@@ -3,31 +3,26 @@ package car_racing.domain.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RaceResults {
-    private final List<Car> cars;
+    private final List<RaceResultOfRound> raceResults = new ArrayList<>();
 
-    public RaceResults(List<Car> cars) {
-        this.cars = cars;
+    public void addRaceResult(RaceResultOfRound raceResult) {
+        raceResults.add(raceResult);
     }
 
-    public List<String> getRaceResultOfNthRound(int round) {
-        List<String> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(car.getRaceResultOfRound(round));
-        }
-        return result;
+    public String getRaceResultOfNthRound(int round) {
+        RaceResultOfRound raceResult = raceResults.get(round);
+        return raceResult.toString();
     }
 
-    public List<Car> getWinners() {
-        if (cars.isEmpty()) return Collections.emptyList();
+    public List<String> getWinnersName() {
+        if (raceResults.isEmpty()) return Collections.emptyList();
 
-        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        RaceResultOfRound resultOfLastRound = raceResults.get(raceResults.size() - 1);
+        int maxDistance = resultOfLastRound.getMaxPosition();
 
-        return cars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .collect(Collectors.toList());
+        return resultOfLastRound.getWinners(maxDistance);
     }
 
 }

@@ -1,5 +1,6 @@
 package car_racing.domain.model;
 
+import car_racing.domain.strategy.AlwaysMovingStrategy;
 import car_racing.domain.strategy.CarMovingStrategy;
 
 import java.util.ArrayList;
@@ -31,9 +32,4 @@ public class Cars {
     public void forEach(Consumer<Car> action) {
         cars.forEach(action);
     }
-
-    public RaceResults getRaceResults() {
-        return new RaceResults(this.cars);
-    }
-
 }

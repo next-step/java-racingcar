@@ -19,13 +19,13 @@ public class UserInputService {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
         List<String> names = Arrays.asList(scanner.nextLine().split(","));
-        validateName(names);
+        validateInputNames(names);
 
         return names;
     }
 
-    private void validateName(List<String> name) {
-        if (name == null || name.isEmpty()) {
+    private void validateInputNames(List<String> names) {
+        if (names == null || names.isEmpty()) {
             throw new RuntimeException("자동차를 하나 이상 입력해야 합니다.");
         }
     }
