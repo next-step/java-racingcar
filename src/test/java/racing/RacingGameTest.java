@@ -1,8 +1,10 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.entity.RacingGame;
 import racing.rule.RandomMoveRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +29,14 @@ class RacingGameTest {
 
         boolean actual = randomMoveRule.isMovable(input);
         assertThat(actual).isFalse();
+    }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차로 우승자를 선정한다. (동반 우승 가능) ")
+    public void select_winners_basedOn_MaxPosition() {
+        // given
+        // when
+        // then
     }
 
 }
