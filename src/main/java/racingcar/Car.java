@@ -3,14 +3,17 @@ package racingcar;
 public class Car {
     private static final int INITIAL_DISTANCE = 0;
     private static final int MOVING_STANDARD = 4;
+    private final String carName;
     private int distance;
 
-    public Car() {
+    public Car(String carName) {
         this.distance = INITIAL_DISTANCE;
+        this.carName = carName;
     }
 
-    public Car(int distance) {
+    public Car(int distance, String carName) {
         this.distance = distance;
+        this.carName = carName;
     }
 
     public void move(int randomNumber) {
