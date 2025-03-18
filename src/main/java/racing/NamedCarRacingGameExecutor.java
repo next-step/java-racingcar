@@ -1,6 +1,7 @@
 package racing;
 
 import racing.simulator.CarRacingGameSimulator;
+import racing.simulator.CarRacingGameWinnerSelector;
 import racing.types.RacingCar;
 import racing.simulator.RandomRacingCarMovingStrategy;
 import racing.types.RacingCarName;
@@ -21,8 +22,9 @@ public class NamedCarRacingGameExecutor {
 
     OutputView.showWhitespace();
     OutputView.showExecutionResultText();
-    printSimulationResult(simulator.run(simulateCount));
-
+    List<List<RacingCar>> simulateResult = simulator.run(simulateCount);
+    printSimulationResult(simulateResult);
+    printWinner(simulateResult, new CarRacingGameWinnerSelector());
   }
 
   private static List<RacingCarName> getCarNames() {
@@ -39,5 +41,9 @@ public class NamedCarRacingGameExecutor {
       OutputView.showLocation(roundResult);
       OutputView.showWhitespace();
     });
+  }
+
+  private static void printWinner(List<List<RacingCar>> simulateResult, CarRacingGameWinnerSelector selector) {
+    OutputView.showWinner(selector.select(simulateResult.get(simulateResult.size() - 1)));
   }
 }
