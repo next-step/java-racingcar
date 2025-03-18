@@ -2,7 +2,9 @@ package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import static org.assertj.core.api.Assertions.*;
+import racingCar.util.NumberRandomUtil;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class NumberRandomUtilTest {
     @RepeatedTest(100)

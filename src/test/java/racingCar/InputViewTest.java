@@ -6,7 +6,7 @@ import racingCar.view.InputView;
 
 import java.io.ByteArrayInputStream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputViewTest {
     @Test

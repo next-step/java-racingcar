@@ -1,4 +1,6 @@
-package racingCar;
+package racingCar.domain;
+
+import racingCar.util.NumberRandomUtil;
 
 public class Car {
     private static final int CONDITION = 4;
