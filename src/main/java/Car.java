@@ -2,9 +2,11 @@ public class Car {
 
     public static final int STANDARD_VALUE = 4;
     private int position;
+    private String name;
 
-    public Car() {
+    public Car(String carName) {
         this.position = 0;
+        this.name = carName;
     }
 
     public void move() {
@@ -16,5 +18,9 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
