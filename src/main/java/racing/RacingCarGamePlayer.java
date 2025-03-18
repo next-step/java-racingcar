@@ -25,7 +25,7 @@ public class RacingCarGamePlayer {
             RacingCarGame racingGame = new RacingCarGame(gameConfig, numberGenerator);
             racingGame.startRace();
 
-            resultView.displayRaceResults(racingGame.getCars(), gameConfig.getAttemptCount());
+            resultView.displayRaceResults(racingGame.getResult());
         } finally {
             inputView.close();
         }

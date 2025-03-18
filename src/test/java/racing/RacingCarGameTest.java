@@ -28,8 +28,7 @@ class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(new GameConfig(3, numberOfRounds));
         racingCarGame.startRace();
 
-        Car car = racingCarGame.getCars()[0];
-        assertThat(car.getPositions()).hasSize(numberOfRounds);
+        assertThat(racingCarGame.getResult()).hasSize(numberOfRounds);
     }
 
     @Test
@@ -42,8 +41,7 @@ class RacingCarGameTest {
 
         racingCarGame.startRace();
         for (Car car : racingCarGame.getCars()) {
-            assertThat(car.getPositions()).hasSize(numberOfRounds);
-            assertEquals(numberOfRounds+1, car.getPosition(0));
+            assertEquals(numberOfRounds+1, car.getPosition());
         }
     }
 
@@ -57,8 +55,7 @@ class RacingCarGameTest {
 
         racingCarGame.startRace();
         for (Car car : racingCarGame.getCars()) {
-            assertThat(car.getPositions()).hasSize(numberOfRounds);
-            assertEquals(1, car.getPosition(0));
+            assertEquals(1, car.getPosition());
         }
     }
 }
