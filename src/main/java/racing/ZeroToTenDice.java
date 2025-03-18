@@ -9,6 +9,10 @@ public class ZeroToTenDice implements Dice {
         this.random = new Random();
     }
 
+    ZeroToTenDice(Random random) {
+        this.random = random;
+    }
+
     @Override
     public int roll() {
         return random.nextInt(10);

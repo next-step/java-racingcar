@@ -10,12 +10,9 @@ class ZeroToTenDiceTest {
 
     @Test
     @DisplayName("ZeroToTenDice의 roll은 random.nextInt()에 bound를 10을 넣어서 호출한다. ")
-    void rollTest() throws NoSuchFieldException, IllegalAccessException {
+    void rollTest() {
         // given
-        var dice = new ZeroToTenDice();
-        var randomFiled = ZeroToTenDice.class.getDeclaredField("random");
-        randomFiled.setAccessible(true);
-        randomFiled.set(dice, new MockRandom());
+        var dice = new ZeroToTenDice(new MockRandom());
 
         // when
         int bound = dice.roll();
