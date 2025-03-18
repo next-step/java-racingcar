@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Racing(Integer carCount) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+    public Racing(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Car> playRound() {
+    public void playRound() {
         cars.forEach(Car::play);
-        return this.cars;
+    }
+
+    public String getRacingStatus() {
+        StringBuilder result = new StringBuilder();
+        cars.stream().forEachOrdered(car -> {
+            for (int i = 0; i < car.getDistance(); i++) {
+                result.append("-");
+            }
+            result.append("\n");
+        });
+        return result.toString();
     }
 }

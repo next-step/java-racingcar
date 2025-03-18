@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class OutputView {
 
@@ -14,14 +15,12 @@ public class OutputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public static String printResult(List<Car> cars) {
-        StringBuilder result = new StringBuilder();
-        cars.stream().forEachOrdered(car -> {
-            for (int i = 0; i < car.getDistance(); i++) {
-                result.append(DISTANCE_UNIT);
-            }
-            result.append("\n");
+    public static void showRace(Racing racing, int numberOfRounds) {
+        System.out.println("\n실행결과");
+
+        IntStream.range(0, numberOfRounds).forEach(i -> {
+            racing.playRound();
+            System.out.println(racing.getRacingStatus());
         });
-        return result.toString();
     }
 }
