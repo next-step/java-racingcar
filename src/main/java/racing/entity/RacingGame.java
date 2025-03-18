@@ -8,7 +8,7 @@ import java.util.List;
 public class RacingGame {
     private final RandomMoveRule randomMoveRule;
 
-    private int maxPosition;
+    private int maxPosition = 1;
 
     public RacingGame(RandomMoveRule randomMoveRule) {
         this.randomMoveRule = randomMoveRule;
@@ -19,10 +19,15 @@ public class RacingGame {
         List<Car> cars = racingCars.getCars();
         for (Car car : cars) {
             if (randomMoveRule.isMovableByRandomValue()) {
-                car.move();
-                updateMaxPosition(car.getPosition());
+                moveCar(car);
             }
         }
+    }
+
+    // 차를 움직이고, 경주 게임 내 가장 멀리간 자동차의 위치값 갱신
+    public void moveCar(Car car) {
+        car.move();
+        updateMaxPosition(car.getPosition());
     }
 
     // 레이싱 게임 우승자 발표 (우승자 1명 이상 가능)
