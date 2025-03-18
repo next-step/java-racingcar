@@ -5,6 +5,7 @@ import racingCar.util.NumberRandomUtil;
 public class Car {
     private static final int CONDITION = 4;
     private static final int INITIAL_POSITION = 1;
+    private static final int POSITION_MOVE = 1;
     private int position;
 
     public Car() {
@@ -17,7 +18,7 @@ public class Car {
 
     public void move() {
         if (NumberRandomUtil.generate() >= CONDITION) {
-            position += 1;
+            position += POSITION_MOVE;
         }
     }
 
