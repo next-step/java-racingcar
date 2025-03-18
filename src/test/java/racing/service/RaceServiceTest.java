@@ -22,20 +22,21 @@ class RaceServiceTest {
     @Test
     void generateCarsTest() {
         // given
-        int carCount = 3;
+        String[] carNames = {"BMW", "BENZ", "AUDI"};
 
         // when
-        Cars cars = raceService.generateCar(carCount);
+        Cars cars = raceService.generateCar(carNames);
 
         // then
-        assertThat(cars.getCars().size()).isEqualTo(carCount);
+        assertThat(cars.getCars().size()).isEqualTo(carNames.length);
     }
 
     @DisplayName("자동차 이동을 요청할 수 있다.")
     @Test
     void moveCarTest() {
         // given
-        Cars cars = raceService.generateCar(3);
+        String[] carNames = {"BMW", "BENZ", "AUDI"};
+        Cars cars = raceService.generateCar(carNames);
 
         // when
         raceService.moveCar(cars);
@@ -45,6 +46,6 @@ class RaceServiceTest {
                 () -> assertThat(cars.getCars().get(1).getPosition()).isEqualTo(1),
                 () -> assertThat(cars.getCars().get(2).getPosition()).isEqualTo(1)
         );
-
     }
+
 }

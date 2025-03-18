@@ -9,8 +9,8 @@ public class RaceService {
         this.numberGenerator = numberGenerator;
     }
 
-    public Cars generateCar(int carCount) {
-        return Cars.create(carCount, numberGenerator);
+    public Cars generateCar(String[] carNames) {
+        return Cars.create(carNames, numberGenerator);
     }
 
     public Cars moveCar(Cars cars) {
