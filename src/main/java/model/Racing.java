@@ -4,23 +4,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    private List<Car> carList;
-    private int tryCount;
+    private final List<Car> carList;
+    private int remainTryCount;
 
     public Racing(int carCount, int tryCount) {
-        this.tryCount = tryCount;
+        this.validate(carCount, tryCount);
+        this.remainTryCount = tryCount;
 
         carList = new ArrayList<>();
-        for(int i = 0 ; i< carCount; i++){
+
+        for (int i = 0; i < carCount; i++) {
             carList.add(new Car());
         }
     }
 
-    public void start(){
-        if(carList == null || carList.isEmpty()){
-            throw new RuntimeException("")
+    private void validate(int carCount, int tryCount) {
+        if (carCount <= 0) {
+            throw new RuntimeException("자동차 대수는 0 이상을 입력해주세요.");
         }
 
-        if(tryCount = )
+        if (tryCount <= 0) {
+            throw new RuntimeException("회수는 0 이상을 입력해주세요.");
+        }
     }
+
+    public void move() {
+        for (Car car : carList) {
+            car.tryMove();
+        }
+
+        remainTryCount--;
+    }
+
+    public boolean isRemainTry() {
+        return this.remainTryCount > 0;
+    }
+
+    public void print() {
+        for (Car car : carList) {
+            car.print();
+        }
+        System.out.print("\n");
+    }
+
 }
