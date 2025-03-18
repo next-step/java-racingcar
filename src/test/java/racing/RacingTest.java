@@ -11,21 +11,22 @@ import org.junit.jupiter.api.Test;
 
 class RacingTest {
 
-    int simulateCarCount = 5;
-    int simulateMoveCount = 3;
+    int simulateCarCount = 3;
+    int simulateMoveCount = 5;
+    Racing racing;
 
     @BeforeEach
     @DisplayName("초기 작업")
     void init() {
         String simulatedInput = simulateCarCount + "\n" + simulateMoveCount + "\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        racing = new Racing();
+        racing.init();
     }
 
     @Test
     @DisplayName("몇 대의 자동차로 몇 번 이동할 수 있는지 확인")
     void initTest() {
-        Racing racing = new Racing();
-        racing.init();
         assertAll(
             () -> assertThat(racing.carCount).isEqualTo(simulateCarCount),
             () -> assertThat(racing.moveCount).isEqualTo(simulateMoveCount)
@@ -35,16 +36,11 @@ class RacingTest {
     @Test
     @DisplayName("자동차 이동 검증테스트")
     void runTest() {
-        Racing racing = new Racing();
-        racing.init();
         racing.run();
-        assertAll(
-            () -> assertThat(racing.cars.length).isEqualTo(simulateCarCount),
-            () -> assertThat(racing.cars[0].position).isBetween(0, simulateMoveCount),
-            () -> assertThat(racing.cars[1].position).isBetween(0, simulateMoveCount),
-            () -> assertThat(racing.cars[2].position).isBetween(0, simulateMoveCount),
-            () -> assertThat(racing.cars[3].position).isBetween(0, simulateMoveCount),
-            () -> assertThat(racing.cars[4].position).isBetween(0, simulateMoveCount)
-        );
+        CarGroup carGroup = racing.cars;
+        assertThat(carGroup.cars.size()).isEqualTo(simulateCarCount);
+        for (int i=0; i<simulateCarCount; i++) {
+            assertThat(carGroup.cars.get(i).position).isBetween(0, simulateMoveCount);
+        }
     }
 }
