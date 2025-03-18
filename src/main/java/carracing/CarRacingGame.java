@@ -1,6 +1,7 @@
 package carracing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CarRacingGame {
@@ -52,13 +53,37 @@ public class CarRacingGame {
         return result;
     }
 
-    public List<List<String>> playGame() {
+    public GameResult playGame() {
         List<List<String>> result = new ArrayList<>();
         result.add(saveInitialState());
         for (int i = 0; i < gameCount; ++i) {
             result.add(playOneRound());
         }
-        return result;
+        List<String> winners = decideWinners();
+        return new GameResult(result, winners);
+    }
+
+    private List<String> decideWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = maxCarDistance();
+        for (Car car : cars) {
+            updateWinners(car, maxDistance, winners);
+        }
+        return winners;
+    }
+
+    private void updateWinners(Car car, int maxDistance, List<String> winners) {
+        if (car.getDistance() == maxDistance) {
+            winners.add(car.getName());
+        }
+    }
+
+    private int maxCarDistance() {
+        List<Integer> distances = new ArrayList<>();
+        for (Car car : cars) {
+            distances.add(car.getDistance());
+        }
+        return Collections.max(distances);
     }
 
     private List<String> saveInitialState() {

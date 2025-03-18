@@ -9,8 +9,9 @@ public class Main {
         int gameCount = InputView.inputGameCount();
 
         CarRacingGame carRacingGame = new CarRacingGame(carNumber, gameCount, new RandomNumberGenerator());
-        List<List<String>> gameResult = carRacingGame.playGame();
+        GameResult gameResult = carRacingGame.playGame();
 
-        OutputView.printTotalResult(gameResult);
+        OutputView.printTotalResult(gameResult.getCarDistances());
+        OutputView.printWinners(gameResult.getWinners());
     }
 }

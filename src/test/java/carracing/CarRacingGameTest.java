@@ -51,7 +51,8 @@ public class CarRacingGameTest {
     @DisplayName("자동차 경주 게임 여러 라운드 진행")
     @Test
     void play_several_rounds() {
-        assertThat(carRacingGame.playGame())
+        GameResult gameResult = carRacingGame.playGame();
+        assertThat(gameResult.getCarDistances())
                 .containsExactly(
                         List.of("pobi : -", "crong : -", "honux : -"),
                         List.of("pobi : -", "crong : -", "honux : -"),
@@ -73,5 +74,24 @@ public class CarRacingGameTest {
     void car_name_over_5() {
         assertThatThrownBy(() -> new CarRacingGame("abcdef", 1, testNumberGenerator))
                 .isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("우승자 판별 기능 (한명)")
+    @Test
+    void winner_one() {
+        GameResult gameResult = carRacingGame.playGame();
+        assertThat(gameResult.getWinners())
+                .containsExactlyInAnyOrder("honux");
+    }
+
+    @DisplayName("우승자 판별 기능 (여러명)")
+    @Test
+    void winner_several() {
+        CarRacingGame carRacing = new CarRacingGame("pobi,crong,honux", 2,
+                new TestNumberGenerator(List.of(4, 4, 4, 4, 4, 4))
+        );
+        GameResult gameResult = carRacing.playGame();
+        assertThat(gameResult.getWinners())
+                .containsExactlyInAnyOrder("pobi", "crong", "honux");
     }
 }
