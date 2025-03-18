@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class CarFactory {
 
-  public static Car createCar(String carName) {
+  static Car createCar(String carName) {
     return Car.of(carName);
   }
 
