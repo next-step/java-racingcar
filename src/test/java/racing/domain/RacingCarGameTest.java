@@ -1,11 +1,9 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
 import racing.config.GameConfig;
 import racing.util.NumberGenerator;
-import racing.domain.RacingCarGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
