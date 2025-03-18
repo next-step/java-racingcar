@@ -1,11 +1,9 @@
 package car_racing.domain.model;
 
 public class Car {
-    private String name;
-    private int distance;
+    private final String name;
     private final RaceResult raceResult = new RaceResult();
-
-    public Car() {}
+    private int distance;
 
     public Car(String name) {
         this.name = name;
