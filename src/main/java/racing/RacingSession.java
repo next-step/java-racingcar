@@ -25,7 +25,7 @@ public class RacingSession {
         for (int i = 0; i < turns; i++) {
             totalPositions.add(moveCars(cars));
         }
-        this.lastPlayHistory = new PlayHistory(getCarNames(), totalPositions);
+        this.lastPlayHistory = new PlayHistory(totalPositions);
         return totalPositions;
     }
 
@@ -48,7 +48,7 @@ public class RacingSession {
 
     public RacingResultDto getRacingResult() {
         List<String> carNames = getCarNames();
-        List<String> winnerNames = this.lastPlayHistory.findWinners();
+        List<String> winnerNames = this.lastPlayHistory.findWinners(carNames);
 
         return new RacingResultDto(carNames, this.lastPlayHistory, winnerNames);
     }

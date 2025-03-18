@@ -19,8 +19,8 @@ public class PlayHistoryTest {
             new CarPositions(List.of(2,2,2)),
             new CarPositions(List.of(3,2,3))
         );
-        PlayHistory history = new PlayHistory(carNames, carPositionsAtTurn);
-        List<String> winners = history.findWinners();
+        PlayHistory history = new PlayHistory(carPositionsAtTurn);
+        List<String> winners = history.findWinners(carNames);
 
         assertThat(winners).isEqualTo(List.of("a", "c"));
     }

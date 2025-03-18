@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayHistory {
-    private final List<String> carNames;
     private final List<CarPositions> positions;
 
-    public PlayHistory(List<String> carNames, List<CarPositions> positions) {
-        this.carNames = carNames;
+    public PlayHistory(List<CarPositions> positions) {
         this.positions = positions;
     }
-
     public List<CarPositions> getPositions(){
         return this.positions;
     }
 
-    public List<String> findWinners(){
+    public List<String> findWinners(List<String> carNames){
         int maxPosition = findMaxPosition();
         CarPositions lastPositions = this.positions.get(this.positions.size()-1);
-        return findMaxPositionNames(lastPositions, maxPosition);
+        return findMaxPositionNames(carNames, lastPositions, maxPosition);
     }
 
     private int findMaxPosition(){
@@ -31,9 +28,9 @@ public class PlayHistory {
         return maxPosition;
     }
 
-    private List<String> findMaxPositionNames(CarPositions lastPositions, int maxPosition){
+    private List<String> findMaxPositionNames(List<String> carNames, CarPositions lastPositions, int maxPosition){
         List<String> lastPositionCarNames = new ArrayList<>();
-        for (int i=0; i<this.carNames.size(); i++) {
+        for (int i=0; i<carNames.size(); i++) {
             insertIfMaxPosition(carNames.get(i), lastPositions.getCarPosition(i), maxPosition, lastPositionCarNames);
         }
         return lastPositionCarNames;
