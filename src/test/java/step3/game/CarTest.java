@@ -2,30 +2,33 @@ package step3.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import step3.game.car.Car;
+import step3.game.car.CarName;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static step3.game.Car.START_LINE;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
 
     @Test
     @DisplayName("자동차는 전진할 수 있다.")
     void carCanMove() {
-        Car car = new Car();
+        Car car = new Car(new CarName("test"));
         car.move();
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    @DisplayName("자동차의 현재 위치를 알 수 있다.")
-    void carCannotMove(int distance) {
-        Car car = new Car();
-        for (int i = 0; i < distance; i++) {
-            car.move();
-        }
-        assertThat(car.getDistance()).isEqualTo(START_LINE + distance);
+    @Test
+    @DisplayName("자동차의 이름은 5자를 초과할 수 없다.")
+    void carNameLength() {
+        assertDoesNotThrow(() -> new CarName("test"));
     }
+
+    @Test
+    @DisplayName("자동차의 이름은 5자보다 길면 예외가 발생한다.")
+    void carNameLengthOverLimit() {
+        assertThrows(RuntimeException.class, () -> new CarName("longname"));
+    }
+
 }
