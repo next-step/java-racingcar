@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-public class ResultView {
+public class OutputView {
 
     private static final String DISTANCE_UNIT = "-";
 
@@ -14,7 +14,7 @@ public class ResultView {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public static String printDistance(List<Car> cars) {
+    public static String printResult(List<Car> cars) {
         StringBuilder result = new StringBuilder();
         cars.stream().forEachOrdered(car -> {
             for (int i = 0; i < car.getDistance(); i++) {
