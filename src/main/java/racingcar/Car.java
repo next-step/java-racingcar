@@ -5,6 +5,9 @@ import java.util.Random;
 
 public class Car {
 
+    private static final int MAX_RANDOM_NUMBER = 10;
+    private static final int MOVE_OR_STOP_BOUNDARY = 4;
+
     public static final Random RANDOM = new Random();
     private Integer distance = 0;
     private Integer playCount = 0;
@@ -26,6 +29,6 @@ public class Car {
     }
 
     private static boolean moveOrStop() {
-        return RANDOM.nextInt(10) >= 4;
+        return RANDOM.nextInt(MAX_RANDOM_NUMBER) >= MOVE_OR_STOP_BOUNDARY;
     }
 }
