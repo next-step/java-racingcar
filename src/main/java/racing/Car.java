@@ -2,14 +2,16 @@ package racing;
 
 public class Car {
 
-  int position;
+  private static final int MOVE_THRESHOLD = 4;
+
+  private int position;
 
   public int getPosition() {
     return position;
   }
 
   public void driveOrStop(int randomNumber) {
-    if(randomNumber >= 4){
+    if (randomNumber >= MOVE_THRESHOLD) {
       position++;
     }
   }
