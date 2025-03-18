@@ -2,14 +2,19 @@ package racingcar;
 
 import util.InputValidator;
 import util.InputView;
+import util.ResultView;
+
+import java.util.List;
 
 public class RacingCarGameExecutor {
     public static void main(String[] args) {
-        int carCount = getCarCount();
+        String[] carNames = InputView.getCarNames();
         int tryCount = getTryCount();
 
-        Cars cars = new Cars(carCount);
+        Cars cars = new Cars(carNames);
         cars.move(tryCount);
+        List<Car> winners = cars.getWinners();
+        ResultView.showCarGameWinners(winners);
     }
 
     public static int getCarCount() {

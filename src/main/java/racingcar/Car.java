@@ -17,12 +17,20 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if(randomNumber >= MOVING_STANDARD) {
+        if (randomNumber >= MOVING_STANDARD) {
             distance += 1;
         }
     }
 
     public int getDistance() {
         return distance;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public boolean isWinner(int distance) {
+        return distance == this.distance;
     }
 }

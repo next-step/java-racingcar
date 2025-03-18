@@ -5,13 +5,14 @@ import util.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
 
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
-        for (String carName: carNames) {
+        for (String carName : carNames) {
             Car car = new Car(carName);
             cars.add(car);
         }
@@ -38,5 +39,19 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> getWinners() {
+        int maxDistance = getMaxDistance();
+        return cars.stream()
+                .filter(car -> car.isWinner(maxDistance))
+                .collect(Collectors.toList());
+    }
+
+    public int getMaxDistance() {
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
     }
 }
