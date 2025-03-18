@@ -10,9 +10,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static final int MOVABLE_THRESHOLD = 4;
-    public static final int DEFAULT_MOVING_DISTANCE = 1;
-    public static final int RANDOM_BOUND = 10;
+    private static final int MOVABLE_THRESHOLD = 4;
+    private static final int DEFAULT_MOVING_DISTANCE = 1;
+    private static final int RANDOM_BOUND = 10;
+
+    private static final Random random = new Random();
 
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
@@ -28,7 +30,6 @@ public class Main {
             cars.add(new Car(MOVABLE_THRESHOLD));
         }
 
-        Random random = new Random();
         for (int i = 0; i < attempts; i++) {
             for (Car car : cars) {
                 int randomInt = random.nextInt(RANDOM_BOUND);
