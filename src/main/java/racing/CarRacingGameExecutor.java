@@ -1,7 +1,7 @@
 package racing;
 
 import racing.simulator.CarRacingGameSimulator;
-import racing.simulator.RandomRacingCarMovingStrategy;
+import racing.simulator.RandomCarMovingStrategy;
 import racing.types.Car;
 import racing.types.CarCount;
 import racing.types.SimulateCount;
@@ -16,7 +16,7 @@ public class CarRacingGameExecutor {
     CarCount carCount = getCarCount();
     SimulateCount simulateCount = getSimulateCount();
 
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new RandomRacingCarMovingStrategy());
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new RandomCarMovingStrategy());
 
     OutputView.showWhitespace();
     OutputView.showExecutionResultText();

@@ -8,23 +8,23 @@ import java.util.List;
 public class CarRacingGameSimulator {
 
   private final CarGroup carGroup;
-  RacingCarMovingStrategy racingCarMovingStrategy;
+  CarMovingStrategy carMovingStrategy;
 
-  public CarRacingGameSimulator(List<CarName> carNames, RacingCarMovingStrategy racingCarMovingStrategy) {
+  public CarRacingGameSimulator(List<CarName> carNames, CarMovingStrategy carMovingStrategy) {
     this.carGroup = new CarGroup(carNames);
-    this.racingCarMovingStrategy = racingCarMovingStrategy;
+    this.carMovingStrategy = carMovingStrategy;
   }
 
-  public CarRacingGameSimulator(CarCount carCount, RacingCarMovingStrategy racingCarMovingStrategy) {
+  public CarRacingGameSimulator(CarCount carCount, CarMovingStrategy carMovingStrategy) {
     this.carGroup = new CarGroup(carCount);
-    this.racingCarMovingStrategy = racingCarMovingStrategy;
+    this.carMovingStrategy = carMovingStrategy;
   }
 
   public List<List<Car>> run(SimulateCount simulateCount) {
     List<List<Car>> res = new ArrayList<>();
 
     for (int i = 0; i < simulateCount.getCount(); i++) {
-      carGroup.moveCars(racingCarMovingStrategy);
+      carGroup.moveCars(carMovingStrategy);
       res.add(carGroup.copyCars());
     }
 

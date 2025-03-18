@@ -2,7 +2,7 @@ package racing;
 
 import racing.simulator.CarRacingGameSimulator;
 import racing.simulator.CarRacingGameWinnerSelector;
-import racing.simulator.RandomRacingCarMovingStrategy;
+import racing.simulator.RandomCarMovingStrategy;
 import racing.types.Car;
 import racing.types.CarName;
 import racing.types.SimulateCount;
@@ -18,7 +18,7 @@ public class NamedCarRacingGameExecutor {
     List<CarName> names = getCarNames();
     SimulateCount simulateCount = getSimulateCount();
 
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(names, new RandomRacingCarMovingStrategy());
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(names, new RandomCarMovingStrategy());
 
     OutputView.showWhitespace();
     OutputView.showExecutionResultText();

@@ -1,6 +1,6 @@
 package racing.types;
 
-import racing.simulator.RacingCarMovingStrategy;
+import racing.simulator.CarMovingStrategy;
 
 public class Car {
 
@@ -29,8 +29,8 @@ public class Car {
     return carName.getName();
   }
 
-  public void go(RacingCarMovingStrategy racingCarMovingStrategy) {
-    if (racingCarMovingStrategy.canMove()) {
+  public void go(CarMovingStrategy carMovingStrategy) {
+    if (carMovingStrategy.canMove()) {
       this.location += 1;
     }
   }

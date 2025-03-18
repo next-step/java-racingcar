@@ -1,6 +1,6 @@
 package racing.types;
 
-import racing.simulator.RacingCarMovingStrategy;
+import racing.simulator.CarMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ public class CarGroup {
     }
   }
 
-  public void moveCars(RacingCarMovingStrategy racingCarMovingStrategy) {
-    cars.forEach(car -> car.go(racingCarMovingStrategy));
+  public void moveCars(CarMovingStrategy carMovingStrategy) {
+    cars.forEach(car -> car.go(carMovingStrategy));
   }
 
   public List<Car> copyCars() {

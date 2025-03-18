@@ -9,7 +9,7 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class RandomRacingCarMovingStrategyTest {
+class RandomCarMovingStrategyTest {
 
   @DisplayName("움직일지 판단 할 시 3 이하 random 수로 뽑힐시 false를 반환한다.")
   @ParameterizedTest
@@ -23,7 +23,7 @@ class RandomRacingCarMovingStrategyTest {
       }
     };
 
-    assertFalse(new RandomRacingCarMovingStrategy(randomStub).canMove());
+    assertFalse(new RandomCarMovingStrategy(randomStub).canMove());
   }
 
   @DisplayName("움직일지 판단 할 시 4 이상 random 수로 뽑힐시 true를 반환한다.")
@@ -38,6 +38,6 @@ class RandomRacingCarMovingStrategyTest {
       }
     };
 
-    assertTrue(new RandomRacingCarMovingStrategy(randomStub).canMove());
+    assertTrue(new RandomCarMovingStrategy(randomStub).canMove());
   }
 }
