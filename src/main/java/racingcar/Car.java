@@ -10,7 +10,7 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public Integer getDistance(z) {
+    public Integer getDistance() {
         return distance;
     }
 
