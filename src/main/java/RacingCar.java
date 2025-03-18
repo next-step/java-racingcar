@@ -19,15 +19,15 @@ public class RacingCar {
     }
 
 
-    public int createRandom() {
+    private int createRandom() {
         return random.nextInt(10);
     }
 
-    public boolean isGoingForward(int value) {
+    private boolean isGoingForward(int value) {
         return value >= 4;
     }
 
-    public void start(int carNumber, int tryCount) {
+    private void start(int carNumber, int tryCount) {
         System.out.println("실행 결과");
         String[] raceResult = new String[carNumber];
         for(int i=0; i<carNumber; i++){

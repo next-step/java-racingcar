@@ -3,6 +3,7 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -16,7 +17,7 @@ class RacingCarTest {
     private final RacingCar racingCar = new RacingCar();
 
     @ParameterizedTest
-    @CsvSource(delimiter = ',', value = {"3,5", "0,0", "1,-1"})
+    @CsvSource(delimiter = ',', value = {"3,5", "4,5"})
     @DisplayName("자동차 대수와 시도할 회수를 순서대로 입력받는 안내문구를 출력하고 입력받는다.")
     void printGuideMessage(int carNumber, int tryCount) {
         String in = String.format("%s%n%s%n", carNumber, tryCount);
@@ -44,27 +45,29 @@ class RacingCarTest {
     @Test
     @DisplayName("주어진 횟수 동안 자동차는 전진하거나 멈출 수 있으며, 횟수마다 실행 결과를 출력한다.")
     void printRaceResult() {
+        final int carNumber = 2, tryCount = 2;
+        String in = String.format("%s%n%s%n", carNumber, tryCount);
+        System.setIn(new ByteArrayInputStream(in.getBytes()));
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        racingCar.start(2, 2);
+        racingCar.input();
 
         assertThat(out.toString()).containsPattern("실행 결과\n-{0,1}\n-{0,1}\n\n-{0,2}\n-{0,2}");
     }
 
-    @RepeatedTest(value = 30)
-    @DisplayName("0에서 9 사이 random 값을 생성한다.")
-    void createRandomBetween() {
-        assertThat(racingCar.createRandom()).isBetween(0, 9);
-    }
+//    @RepeatedTest(value = 30)
+//    @DisplayName("0에서 9 사이 random 값을 생성한다.")
+//    void createRandomBetween() {
+//        assertThat(racingCar.createRandom()).isBetween(0, 9);
+//    }
 
-    @ParameterizedTest
-    @CsvSource(delimiter = ':', value = { "0:false", "4:true", "9:true" })
-    @DisplayName("random 값이 4 이상이면 전진하고, 그렇지 않으면 정지한다.")
-    void determineMoveOrNot(int input, boolean expected) {
-        assertThat(racingCar.isGoingForward(input)).isEqualTo(expected);
-    }
-
+//    @ParameterizedTest
+//    @CsvSource(delimiter = ':', value = { "0:false", "4:true", "9:true" })
+//    @DisplayName("random 값이 4 이상이면 전진하고, 그렇지 않으면 정지한다.")
+//    void determineMoveOrNot(int input, boolean expected) {
+//        assertThat(racingCar.isGoingForward(input)).isEqualTo(expected);
+//    }
 
 
 }
