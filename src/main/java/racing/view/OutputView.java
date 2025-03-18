@@ -15,6 +15,7 @@ public class OutputView {
     public static void printResult(Cars cars) {
         List<Car> carList = cars.getCars();
         for (Car car : carList) {
+            System.out.print(car.getName() + " : ");
             System.out.println("-".repeat(car.getPosition()));
         }
         System.out.println();
