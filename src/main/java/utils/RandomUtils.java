@@ -4,10 +4,14 @@ import java.util.Random;
 
 public class RandomUtils {
 
-    private static final Random rand = new Random();
+    private Random random;
 
-    public static int getRandomNumber(int maxRandomNumber) {
-        return rand.nextInt(maxRandomNumber);
+    public RandomUtils(Random random) {
+        this.random = random;
+    }
+
+    public int getRandomNumber(int maxRandomNumber) {
+        return random.nextInt(maxRandomNumber);
     }
 
 }

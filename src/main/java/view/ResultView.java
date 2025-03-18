@@ -13,12 +13,12 @@ public class ResultView {
 
     public void broadcast() {
         for (Car car : cars) {
-            getRandomNumber(car.currentPosition());
+            printPosition(car.currentPosition());
             System.out.println();
         }
     }
 
-    private void getRandomNumber(int currentPosition) {
+    private void printPosition(int currentPosition) {
         for (int i = 0; i < currentPosition; i++) {
             System.out.print("-");
         }
