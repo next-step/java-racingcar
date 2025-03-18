@@ -1,21 +1,21 @@
 package step3.game;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RacingCarInfo {
-    public final List<Car> cars;
+    public final Set<Car> cars;
     public final Integer tryCount;
 
-    private RacingCarInfo(List<Car> cars, Integer tryCount) {
+    private RacingCarInfo(Set<Car> cars, Integer tryCount) {
         this.cars = cars;
         this.tryCount = tryCount;
     }
 
-    public static RacingCarInfo getCars(PositiveNumber carCount, PositiveNumber tryCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount.number; i++) {
-            cars.add(new Car());
+    public static RacingCarInfo getCars(Set<CarName> carNames, PositiveNumber tryCount) {
+        Set<Car> cars = new HashSet<>();
+        for (CarName carName : carNames) {
+            cars.add(new Car(carName));
         }
         return new RacingCarInfo(cars, tryCount.number);
     }
