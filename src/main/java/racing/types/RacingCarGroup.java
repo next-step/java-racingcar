@@ -8,23 +8,20 @@ import java.util.List;
 public class RacingCarGroup {
 
   private final List<RacingCar> racingCars = new ArrayList<>();
-  RacingCarMovingStrategy racingCarMovingStrategy;
 
-  public RacingCarGroup(List<RacingCarName> racingCarNames, RacingCarMovingStrategy racingCarMovingStrategy) {
+  public RacingCarGroup(List<RacingCarName> racingCarNames) {
     for (RacingCarName name : racingCarNames) {
       racingCars.add(new RacingCar(name));
     }
-    this.racingCarMovingStrategy = racingCarMovingStrategy;
   }
 
-  public RacingCarGroup(RacingCarCount racingCarCount, RacingCarMovingStrategy racingCarMovingStrategy) {
+  public RacingCarGroup(RacingCarCount racingCarCount) {
     for (int i = 0; i < racingCarCount.getCount(); i++) {
       racingCars.add(new RacingCar());
     }
-    this.racingCarMovingStrategy = racingCarMovingStrategy;
   }
 
-  public void moveCars() {
+  public void moveCars(RacingCarMovingStrategy racingCarMovingStrategy) {
     racingCars.forEach(car -> car.go(racingCarMovingStrategy));
   }
 

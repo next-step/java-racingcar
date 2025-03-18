@@ -23,12 +23,12 @@ class RacingCarGroupTest {
         new RacingCarName("honux")
     );
 
-    RacingCarGroup carGroupWithCount = new RacingCarGroup(carCount, () -> strategyResult);
-    carGroupWithCount.moveCars();
+    RacingCarGroup carGroupWithCount = new RacingCarGroup(carCount);
+    carGroupWithCount.moveCars(() -> strategyResult);
     List<RacingCar> resultWithCount = carGroupWithCount.copyCars();
 
-    RacingCarGroup carGroupWithNames = new RacingCarGroup(names, () -> strategyResult);
-    carGroupWithNames.moveCars();
+    RacingCarGroup carGroupWithNames = new RacingCarGroup(names);
+    carGroupWithNames.moveCars(() -> strategyResult);
     List<RacingCar> resultWithNames = carGroupWithNames.copyCars();
 
     assertAll(
@@ -51,11 +51,11 @@ class RacingCarGroupTest {
         new RacingCarName("honux")
     );
 
-    RacingCarGroup carGroupWithNames = new RacingCarGroup(names, () -> true);
+    RacingCarGroup carGroupWithNames = new RacingCarGroup(names);
     List<RacingCar> firstCopiedCarGroupWithNames = carGroupWithNames.copyCars();
     List<RacingCar> secondCopiedCarGroupWithNames = carGroupWithNames.copyCars();
 
-    RacingCarGroup carGroupWithCount = new RacingCarGroup(carCount, () -> true);
+    RacingCarGroup carGroupWithCount = new RacingCarGroup(carCount);
     List<RacingCar> firstCopiedCarGroupWithCount = carGroupWithCount.copyCars();
     List<RacingCar> secondCopiedCarGroupWithCount = carGroupWithCount.copyCars();
 
@@ -82,13 +82,13 @@ class RacingCarGroupTest {
         new RacingCarName("honux")
     );
 
-    RacingCarGroup carGroupWithNames = new RacingCarGroup(names, () -> true);
-    carGroupWithNames.moveCars();
+    RacingCarGroup carGroupWithNames = new RacingCarGroup(names);
+    carGroupWithNames.moveCars(() -> true);
     carGroupWithNames.resetCars();
     List<RacingCar> resultWithNames = carGroupWithNames.copyCars();
 
-    RacingCarGroup carGroupWithCount = new RacingCarGroup(carCount, () -> true);
-    carGroupWithCount.moveCars();
+    RacingCarGroup carGroupWithCount = new RacingCarGroup(carCount);
+    carGroupWithCount.moveCars(() -> true);
     carGroupWithCount.resetCars();
     List<RacingCar> resultWithCount = carGroupWithCount.copyCars();
 
