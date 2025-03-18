@@ -9,8 +9,8 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## To-Do
-- [ ] 입력 UI 테스트 구현
-- [ ] 입력 UI 구현
+- [x] 입력 UI 테스트 구현
+- [x] 입력 UI 구현
 - [ ] 자동차 경주 게임 테스트 구현
 - [ ] 자동차 경주 게임 구현
 - [ ] 우승자 출력 테스트 구현
