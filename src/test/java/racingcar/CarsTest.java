@@ -11,7 +11,8 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(3);
+        String[] carNames = {"pobi", "crong", "honux"};
+        cars = new Cars(carNames);
     }
 
     @Test
