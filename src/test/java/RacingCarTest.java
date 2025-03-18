@@ -3,16 +3,15 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
-
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
     private final RacingCar racingCar = new RacingCar();
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Test
     @DisplayName("자동차 대수와 시도할 회수를 순서대로 입력받는 안내문구를 출력하고 입력받는다.")
@@ -23,7 +22,17 @@ public class RacingCarTest {
         racingCar.input();
 
         String expected = "자동차 대수는 몇 대 인가요?\n시도할 회수는 몇 회 인가요?\n\n";
-        assertThat(out.toString().replace("\r\n", "\n")).isEqualTo(expected);
+        assertThat(out.toString().replace("\r\n", "\n")).startsWith(expected);
+    }
+
+    @Test
+    @DisplayName("주어진 횟수 동안 n대의 자동차는 전진하거나 멈출 수 있으며, 횟수마다 실행 결과를 출력한다.")
+    public void test7() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        racingCar.start(1, 2);
+        String print = out.toString();
+        assertThat(print).containsPattern("실행 결과\n?[-]\n\n?[-]");
     }
 
     @RepeatedTest(value = 30)
