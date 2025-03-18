@@ -6,9 +6,13 @@ public class Car {
   private int position;
   private final String name;
 
-  public Car(String name) {
+  private Car(String name) {
     this.position = INIT_POSITION;
     this.name = name;
+  }
+
+  public static Car of(String name) {
+    return new Car(name);
   }
 
   public void move(int number) {

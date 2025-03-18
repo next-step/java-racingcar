@@ -2,8 +2,10 @@ package step4.carracing;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -19,6 +21,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@TestMethodOrder(value = MethodOrderer.DisplayName.class)
 public class CarRacingTest {
   private static final Set<Integer> VALID_RANDOM_NUMBERS = new HashSet<>(Arrays.asList(
           0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -34,7 +37,7 @@ public class CarRacingTest {
   @ParameterizedTest
   @ValueSource(ints = {4, 5, 6, 7, 8, 9})
   void testMove(int number) {
-    Car car = new Car("test");
+    Car car = CarFactory.createCar("test");
     int currentPosition = car.getPosition();
 
     car.move(number);
@@ -46,7 +49,7 @@ public class CarRacingTest {
   @ParameterizedTest
   @ValueSource(ints = {0, 1, 2, 3})
   void testNotMove(int number) {
-    Car car = new Car("test");
+    Car car = CarFactory.createCar("test");
     int currentPosition = car.getPosition();
 
     car.move(number);
@@ -93,7 +96,7 @@ public class CarRacingTest {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outputStream));
 
-    Car car = new Car("pobi");
+    Car car = CarFactory.createCar("pobi");
     car.move(4);
     car.move(4);
     car.move(1);
@@ -108,10 +111,8 @@ public class CarRacingTest {
   @DisplayName("자동차 경주의 우승자를 구하는 기능 테스트")
   @Test
   void testGetWinners() {
-    List<Car> cars = List.of(
-            new Car("pobi"),
-            new Car("crong"),
-            new Car("honux")
+    List<Car> cars = CarFactory.createCars(
+            List.of("pobi", "crong", "honux")
     );
     cars.get(0).move(4);
     cars.get(0).move(4);
@@ -147,5 +148,23 @@ public class CarRacingTest {
 
     System.setOut(originalOut);
     assertTrue(outputStream.toString().contains("pobi, crong, honux가 최종 우승했습니다."));
+  }
+
+  @DisplayName("자동차 생성 테스트")
+  @Test
+  void testCreateCar() {
+    Car car = CarFactory.createCar("pobi");
+    assertEquals("pobi", car.getName());
+    assertEquals(1, car.getPosition());
+  }
+
+  @DisplayName("자동차 리스트 생성 테스트")
+  @Test
+  void testCreateCars() {
+    List<Car> carList = CarFactory.createCars(List.of("pobi", "crong", "honux"));
+
+    assertEquals(3, carList.size());
+    assertEquals("pobi", carList.get(0).getName());
+    assertEquals(1, carList.get(0).getPosition());
   }
 }
