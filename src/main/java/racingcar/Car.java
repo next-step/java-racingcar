@@ -5,6 +5,7 @@ import exception.TooLongException;
 public class Car {
     private static final int INITIAL_DISTANCE = 0;
     private static final int MOVING_STANDARD = 4;
+    private static final int NAME_LENGTH_STANDARD = 5;
     private final String carName;
     private int distance;
 
@@ -42,7 +43,7 @@ public class Car {
         if(carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름으로 빈 값을 넣을 수 없습니다.");
         }
-        if(carName.length() > 5) {
+        if(carName.length() > NAME_LENGTH_STANDARD) {
             throw new TooLongException("자동차 이름은 5자를 초과할 수 없다. carName.length :" + carName.length());
         }
     }
