@@ -11,6 +11,7 @@ public interface InputView {
 
     PositiveNumber tryCount();
 
+    @Deprecated
     PositiveNumber carCount();
 
     Set<CarName> carNames();
