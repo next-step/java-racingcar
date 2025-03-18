@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -29,5 +31,18 @@ class CarTest {
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("자동차 이름으로 빈 값을 넣을 수 없다.")
+    public void emptyCarName(String carName){
+        assertThatThrownBy(() -> new Car(0, carName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
+    @Test
+    @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
+    public void tooLongCarName(){
+        assertThatThrownBy(()-> new Car(0, "abcdef"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }
