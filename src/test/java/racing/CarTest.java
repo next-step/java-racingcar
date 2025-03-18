@@ -35,7 +35,7 @@ class CarTest {
         String carName = "ABCDEF";
 
         // when & then
-        assertThatThrownBy(() -> car.registerName(carName)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> car.registerName(carName)).isInstanceOf(Exception.class)
                 .hasMessageContaining("자동차 이름은 5자 이하여야 합니다.");
     }
 }

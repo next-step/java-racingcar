@@ -18,7 +18,7 @@ class CarsGeneratorTest {
         List<String> userInput = List.of("ford", "kia", "tesla");
 
         // when
-        List<Car> actual = CarsGenerator.generateCars(userInput);
+        List<Car> actual = CarsGenerator.generateCarList(userInput);
 
         // then
         List<Car> expected = List.of(new Car("ford"), new Car("kia"), new Car("tesla"));
