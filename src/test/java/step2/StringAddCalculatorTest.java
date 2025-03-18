@@ -43,12 +43,14 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("음수는 입력할 수 없습니다.");
     }
 
     @Test
     public void splitAndSum_문자포함() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1,2,test"))
-            .isInstanceOf(RuntimeException.class);
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("숫자가 아닌 값이 입력되었습니다.");
     }
 }

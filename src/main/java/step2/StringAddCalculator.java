@@ -5,11 +5,11 @@ import java.util.List;
 
 public class StringAddCalculator {
 
-    private final static NumberSeparator numberSeparator = new NumberSeparator();
+    private final static NumberSeparator separator = new NumberSeparator();
 
 
     public static int splitAndSum(String o) {
-        List<Integer> splitNumber = numberSeparator.separate(o);
+        List<Integer> splitNumber = separator.separate(o);
         return sum(splitNumber);
     }
 
