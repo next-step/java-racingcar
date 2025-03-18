@@ -1,10 +1,12 @@
 package racing.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racing.service.NumberGenerator;
 
 public class Cars {
+    private static final int INIT_POSITION = 1;
     private final List<Car> cars;
     private final NumberGenerator numberGenerator;
 
@@ -16,28 +18,25 @@ public class Cars {
     public static Cars create(int count, NumberGenerator numberGenerator) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Car car = new Car();
+            Car car = new Car(INIT_POSITION);
             carList.add(car);
         }
         return new Cars(carList, numberGenerator);
     }
 
-    public void moveAll() {
+    public Cars movedAll() {
+        List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            car.move(numberGenerator.generateNumber());
+            newCars.add(carMove(car));
         }
+        return new Cars(newCars, numberGenerator);
     }
 
-    public List<Integer> getPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
-    public int size() {
-        return cars.size();
+    private Car carMove(Car car) {
+        return car.moved(numberGenerator.generateNumber());
     }
-
 }

@@ -13,7 +13,7 @@ public class RaceService {
         return Cars.create(carCount, numberGenerator);
     }
 
-    public void moveCar(Cars cars) {
-        cars.moveAll();
+    public Cars moveCar(Cars cars) {
+        return cars.movedAll();
     }
 }

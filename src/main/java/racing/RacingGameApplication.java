@@ -20,7 +20,7 @@ public class RacingGameApplication {
 
         OutputView.printResultLabel();
         for (int i = 0; i < moveCount; i++) {
-            raceService.moveCar(cars);
+            cars = raceService.moveCar(cars);
             OutputView.printResult(cars);
         }
     }

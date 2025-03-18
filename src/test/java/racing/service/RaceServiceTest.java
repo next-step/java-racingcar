@@ -18,7 +18,7 @@ class RaceServiceTest {
         raceService = new RaceService(new FakeNumberGenerator(MOVE_NUMBER));
     }
 
-    @DisplayName("입력 받은 n대의 자동차를 생성한다.")
+    @DisplayName("입력 받은 n대의 자동차를 생성 요청 한다.")
     @Test
     void generateCarsTest() {
         // given
@@ -31,7 +31,7 @@ class RaceServiceTest {
         assertThat(cars.getCars().size()).isEqualTo(carCount);
     }
 
-    @DisplayName("자동차를 움직일 수 있다.")
+    @DisplayName("자동차 이동을 요청할 수 있다.")
     @Test
     void moveCarTest() {
         // given

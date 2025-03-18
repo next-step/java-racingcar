@@ -1,6 +1,7 @@
 package racing.view;
 
 import java.util.List;
+import racing.model.Car;
 import racing.model.Cars;
 
 public class OutputView {
@@ -12,9 +13,9 @@ public class OutputView {
     }
 
     public static void printResult(Cars cars) {
-        List<Integer> positions = cars.getPositions();
-        for (Integer position : positions) {
-            System.out.println("-".repeat(position));
+        List<Car> carList = cars.getCars();
+        for (Car car : carList) {
+            System.out.println("-".repeat(car.getPosition()));
         }
         System.out.println();
     }
