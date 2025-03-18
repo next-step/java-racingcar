@@ -5,13 +5,13 @@ import java.util.stream.Collectors;
 
 public class CarFactory {
 
-  static Car createCar(String carName) {
-    return Car.of(carName);
+  static Car createCar(String carName, CarMoveStrategy carMoveStrategy) {
+    return Car.of(carName, carMoveStrategy);
   }
 
-  public static List<Car> createCars(List<String> carNameList) {
+  public static List<Car> createCars(List<String> carNameList, CarMoveStrategy carMoveStrategy) {
     return carNameList.stream()
-                      .map(Car::of)
+                      .map(carName -> createCar(carName, carMoveStrategy))
                       .collect(Collectors.toList());
   }
 }

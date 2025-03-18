@@ -8,14 +8,12 @@ import static step4.carracing.ResultView.printCarStatus;
 
 public class CarRaceGame {
 
-  private final CarMoveStrategy carMoveStrategy;
   private final Scanner scanner;
   private List<String> carNames;
   private List<Car> carList;
   private int tryCount;
 
-  public CarRaceGame(CarMoveStrategy carMoveStrategy, Scanner scanner) {
-    this.carMoveStrategy = carMoveStrategy;
+  public CarRaceGame(Scanner scanner) {
     this.scanner = scanner;
   }
 
@@ -33,7 +31,7 @@ public class CarRaceGame {
   }
 
   private void setUp() {
-    this.carList = CarFactory.createCars(this.carNames);
+    this.carList = CarFactory.createCars(this.carNames, new RandomCarMoveStrategy());
   }
 
   private void play() {
@@ -55,7 +53,7 @@ public class CarRaceGame {
 
   private void moveCars() {
     for (Car car: this.carList) {
-      car.move(this.carMoveStrategy.getMoveSteps());
+      car.move();
     }
   }
 
