@@ -13,20 +13,8 @@ class RacingTest {
   void createCars() {
     int carCount = 5;
     int dummyNumber = 1;
-    Racing racing = new Racing(carCount, dummyNumber, new FixedNumberGenerator(dummyNumber));
+    Racing racing = new Racing(carCount, new FixedNumberGenerator(dummyNumber));
     assertThat(racing.getCars()).hasSize(carCount);
-  }
-
-  @Test
-  @DisplayName("레이싱이 진행되면 입력한 라운드만큼 라운드보드가 생성된다.")
-  void racingRound() {
-    int carCount = 2;
-    int dummyNumber = 1;
-    int round = 3;
-    Racing racing = new Racing(carCount, round, new FixedNumberGenerator(dummyNumber));
-    List<RacingBoard> racingBoardArrayList = racing.start();
-
-    assertThat(racingBoardArrayList).hasSize(round);
   }
 
   @Test
@@ -34,11 +22,10 @@ class RacingTest {
   void cantmoveCar() {
     int carCount = 1;
     int randomNumber = 3;
-    int round = 1;
 
-    Racing racing = new Racing(carCount, round, new FixedNumberGenerator(randomNumber));
-    boolean result = racing.isEnabledMove();
-    assertThat(result).isFalse();
+    Racing racing = new Racing(carCount, new FixedNumberGenerator(randomNumber));
+    List<Car> result = racing.start();
+    assertThat(result.get(0).getPosition()).isEqualTo(0);
   }
 
   @Test
@@ -46,10 +33,9 @@ class RacingTest {
   void canmoveCar() {
     int carCount = 1;
     int randomNumber = 4;
-    int round = 1;
 
-    Racing racing = new Racing(carCount, round, new FixedNumberGenerator(randomNumber));
-    boolean result = racing.isEnabledMove();
-    assertThat(result).isTrue();
+    Racing racing = new Racing(carCount, new FixedNumberGenerator(randomNumber));
+    List<Car> result = racing.start();
+    assertThat(result.get(0).getPosition()).isEqualTo(1);
   }
 }

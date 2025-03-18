@@ -12,10 +12,11 @@ public class RacingCarGame {
       int round = InputView.inputRound();
       InputView.closeScanner();
 
-      Racing racing = new Racing(carCount, round, new RandomNumberGenerator());
-      List<RacingBoard> racingBoards = racing.start();
+      Racing racing = new Racing(carCount, new RandomNumberGenerator());
 
-      ResultView.printResult(racingBoards);
+      for (int i = 0; i < round; i++) {
+        ResultView.printResult(racing.start());
+      }
     }
 
 }

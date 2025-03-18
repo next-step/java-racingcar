@@ -8,15 +8,12 @@ import racingcar.random.NumberGenerator;
 
 public class Racing {
   private List<Car> cars;
-  private final int round;
   private final NumberGenerator numberGenerator;
 
-  public Racing(int carCount, int round, NumberGenerator numberGenerator) {
-    this.cars = new ArrayList<>();
-    this.round = round;
+  public Racing(int carCount, NumberGenerator numberGenerator) {
     this.numberGenerator = numberGenerator;
-
     prepareCars(carCount);
+
   }
 
   private void prepareCars(int carCount) {
@@ -25,27 +22,17 @@ public class Racing {
         .collect(Collectors.toList());
   }
 
-  public List<RacingBoard> start() {
-    return IntStream.range(0, round)
-        .mapToObj(this::racingRound)
+  public List<Car> start() {
+    return cars.stream()
+        .map(this::tryMove)
         .collect(Collectors.toList());
   }
 
-  private RacingBoard racingRound(int round) {
-    RacingBoard racingBoard = new RacingBoard(round);
-
-    cars.stream()
-        .filter(car -> isEnabledMove()) // 이동 가능 여부 체크
-        .peek(Car::move)                    // 이동
-        .map(Car::getPosition)              // 이동 후 위치 가져오기
-        .collect(Collectors.toList())
-        .forEach(racingBoard::record);      // 레이싱 보드에 기록
-
-    return racingBoard;
-  }
-
-  public boolean isEnabledMove() {
-    return numberGenerator.generateNumber() >= 4;
+  private Car tryMove(Car car) {
+    if (numberGenerator.generateNumber() >= 4) {
+      car.move();
+    }
+    return car;
   }
 
   public List<Car> getCars() {
