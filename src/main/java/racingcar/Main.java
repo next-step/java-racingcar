@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.view.InputView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,12 +15,10 @@ public class Main {
     public static final String DEFAULT_MARKER = "-";
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView(new Scanner(System.in));
+        int carCount = inputView.getCarCount();
+        int attempts = inputView.getAttempts();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carCount = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int attempts = scanner.nextInt();
         System.out.println("\n실행 결과");
 
         List<Car> cars = new ArrayList<>();
