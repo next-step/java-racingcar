@@ -1,5 +1,6 @@
 package racingcar;
 
+import exception.NoCarException;
 import util.RandomNumberGenerator;
 import util.ResultView;
 
@@ -52,6 +53,6 @@ public class Cars {
         return cars.stream()
                 .mapToInt(Car::getDistance)
                 .max()
-                .orElse(0);
+                .orElseThrow(() -> new NoCarException("빈 자동차입니다."));
     }
 }
