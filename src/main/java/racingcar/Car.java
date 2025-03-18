@@ -10,10 +10,17 @@ public class Car {
         this.movableThreshold = movableThreshold;
     }
 
-    public void moveOrStop(int randomInt, int distance) {
-        if (isMovable(randomInt)) {
-            position += distance;
+    public void moveOrStop(int randomInt) {
+        if (isOutOfBound(randomInt)) {
+            throw new IllegalArgumentException("0 부터 9 사이의 정수값만 입력 가능합니다.");
         }
+        if (isMovable(randomInt)) {
+            position++;
+        }
+    }
+
+    private boolean isOutOfBound(int randomInt) {
+        return randomInt < 0 || randomInt > 9;
     }
 
     private boolean isMovable(int randomInt) {

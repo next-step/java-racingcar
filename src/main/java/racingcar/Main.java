@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class Main {
 
     private static final int MOVABLE_THRESHOLD = 4;
-    private static final int DEFAULT_MOVING_DISTANCE = 1;
     private static final int RANDOM_BOUND = 10;
 
     private static final Random random = new Random();
@@ -33,7 +32,7 @@ public class Main {
         for (int i = 0; i < attempts; i++) {
             for (Car car : cars) {
                 int randomInt = random.nextInt(RANDOM_BOUND);
-                car.moveOrStop(randomInt, DEFAULT_MOVING_DISTANCE);
+                car.moveOrStop(randomInt);
             }
             resultView.printCurrentRacingProgress(cars);
         }
