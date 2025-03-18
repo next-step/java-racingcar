@@ -1,27 +1,17 @@
 package step3.view;
 
+import step3.game.CarName;
 import step3.game.PositiveNumber;
 
-import java.util.Scanner;
+import java.util.Set;
 
-public class InputView {
-    static Scanner scanner = new Scanner(System.in);
+public interface InputView {
 
-    public static PositiveNumber inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return new PositiveNumber(getInput());
-    }
+    String read();
 
-    public static PositiveNumber inputTryCount() {
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        return new PositiveNumber(getInput());
-    }
+    PositiveNumber tryCount();
 
-    private static String getInput() {
-        return scanner.nextLine();
-    }
+    PositiveNumber carCount();
 
-    public static void closeScanner() {
-        scanner.close();
-    }
+    Set<CarName> carNames();
 }

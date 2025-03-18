@@ -1,16 +1,17 @@
 package step3.view;
 
-public class OutputView {
+import step3.game.Car;
 
-    public static void printResult() {
-        System.out.println("실행 결과");
-    }
+import java.util.List;
+import java.util.Set;
 
-    public static void printCarDistance(Integer distance) {
-        System.out.println("-".repeat(distance));
-    }
+public interface OutputView {
 
-    public static void endOfThisTurn() {
-        System.out.println();
-    }
+    void result();
+
+    String carDistance(Integer distance);
+
+    void finalResult(Set<Car> carInfo);
+
+    void endOfThisTurn(Set<Car> cars);
 }
