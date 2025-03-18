@@ -28,7 +28,7 @@ public class Car {
         return getDistance();
     }
 
-    private static boolean moveOrStop() {
+    private boolean moveOrStop() {
         return RANDOM.nextInt(MAX_RANDOM_NUMBER) >= MOVE_OR_STOP_BOUNDARY;
     }
 }
