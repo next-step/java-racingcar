@@ -16,9 +16,7 @@ public class Round {
             throw new IllegalStateException("이미 종료된 라운드입니다.");
         }
 
-        cars.forEach(car -> {
-            car.move(dice.roll());
-        });
+        cars.forEach(car -> car.move(dice.roll()));
         finished = true;
     }
 
