@@ -2,17 +2,14 @@ package racing.view;
 
 import racing.entity.Car;
 import racing.entity.RacingCars;
-import racing.entity.RacingGame;
 import racing.message.GameMessage;
 
 import java.util.List;
-import java.util.StringJoiner;
 
 public class RacingGameOutputView {
-    private static final String ROUND_RESULT_FORMAT = "%s : %s";
     private static final String DASH = "-";
 
-    public static void printOutputHeadMessage() {
+    public static void printHeadOfOutputMessage() {
         System.out.println(GameMessage.HEAD_OF_OUTPUT_MESSAGE.getGameMessage());
     }
 
@@ -34,7 +31,7 @@ public class RacingGameOutputView {
         String carName = car.getCarName();
         int position = car.getPosition();
 
-        System.out.println(String.format(ROUND_RESULT_FORMAT, carName, convertIntegerToSymbol(position, DASH)));
+        System.out.println(String.format("%s : %s", carName, convertIntegerToSymbol(position, DASH)));
     }
 
     private static String convertIntegerToSymbol(int repeatCount, String symbol) {
