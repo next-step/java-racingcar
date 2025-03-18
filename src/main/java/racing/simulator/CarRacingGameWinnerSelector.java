@@ -11,7 +11,7 @@ public class CarRacingGameWinnerSelector {
 
   public List<Car> select(List<Car> cars) {
     if (cars.isEmpty()) {
-      return new ArrayList<>(); // 빈 리스트 처리
+      return new ArrayList<>();
     }
 
     int maxLocation = cars.stream()
