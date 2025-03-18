@@ -4,8 +4,13 @@ import racing.types.RacingCarName;
 
 public class RacingCar {
 
-  private RacingCarName carName;
+  private final RacingCarName carName;
   private int location;
+
+  public RacingCar() {
+    this.carName = null;
+    this.location = 0;
+  }
 
   public RacingCar(RacingCarName carName) {
     this.carName = carName;
@@ -20,6 +25,8 @@ public class RacingCar {
   public int getLocation() {
     return location;
   }
+
+  public String getName() { return carName.getName(); }
 
   public void go(RacingCarMovingStrategy racingCarMovingStrategy) {
     if (racingCarMovingStrategy.canMove()) {

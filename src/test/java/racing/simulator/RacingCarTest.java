@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.types.RacingCarName;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -14,7 +15,7 @@ class RacingCarTest {
   @ValueSource(booleans = {true, false})
   void go_carMovedByStrategy(boolean strategyResult) {
     int simulateCount = 4;
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar(new RacingCarName("test"));
 
     for (int i = 0; i < simulateCount; i++) {
       racingCar.go(()-> strategyResult);
@@ -27,7 +28,7 @@ class RacingCarTest {
   @Test
   void reset_setLocationZero() {
     int simulateCount = 4;
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar(new RacingCarName("test"));
 
     for (int i = 0; i < simulateCount; i++) {
       racingCar.go(() -> true);

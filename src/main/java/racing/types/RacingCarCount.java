@@ -2,7 +2,7 @@ package racing.types;
 
 public class RacingCarCount {
 
-  private static final int MIN_CAR_COUNT = 2;
+  public static final int MIN_CAR_COUNT = 2;
 
   private final int count;
 

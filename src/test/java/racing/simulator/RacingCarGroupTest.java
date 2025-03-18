@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.types.RacingCarCount;
+import racing.types.RacingCarName;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,17 +18,20 @@ class RacingCarGroupTest {
   @DisplayName("각 자동차의 현재 위치를 정수 형태로 반환한다.")
   @Test
   void getCarLocations_returnCurrentLocations() {
-    int carCount = 3;
+    List<RacingCarName> names = List.of(
+        new RacingCarName("pobi"),
+        new RacingCarName("crong"),
+        new RacingCarName("honux")
+    );
     int simulateMoves = 5;
-
-    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> true);
+    RacingCarGroup carGroup = new RacingCarGroup(names, () -> true);
 
     IntStream.range(0, simulateMoves).forEach(i -> carGroup.moveCars());
 
     List<Integer> carLocations = Objects.requireNonNull(carGroup.getCarLocations());
 
     assertAll(
-        () -> assertThat(carLocations).hasSize(carCount),
+        () -> assertThat(carLocations).hasSize(names.size()),
         () -> carLocations.forEach(location -> assertThat(location).isEqualTo(simulateMoves))
     );
   }
@@ -37,8 +40,12 @@ class RacingCarGroupTest {
   @ParameterizedTest
   @ValueSource(booleans = {true, false})
   void tryMoveCars_carsMovedByStrategy(boolean strategyResult) {
-    int carCount = 3;
-    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> strategyResult);
+    List<RacingCarName> names = List.of(
+        new RacingCarName("pobi"),
+        new RacingCarName("crong"),
+        new RacingCarName("honux")
+    );
+    RacingCarGroup carGroup = new RacingCarGroup(names, () -> strategyResult);
 
     carGroup.moveCars();
     List<RacingCar> result = carGroup.copyCars();
@@ -51,15 +58,19 @@ class RacingCarGroupTest {
   @DisplayName("차들을 copy 하면 자동차 배열의 깊은 복사를 반환한다.")
   @Test
   void copyCars_returnDeepCopiedCarArray() {
-    int carCount = 3;
-    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> true);
+    List<RacingCarName> names = List.of(
+        new RacingCarName("pobi"),
+        new RacingCarName("crong"),
+        new RacingCarName("honux")
+    );
+    RacingCarGroup carGroup = new RacingCarGroup(names, () -> true);
 
     List<RacingCar> firstCopiedRacingCars = carGroup.copyCars();
     List<RacingCar> secondCopiedRacingCars = carGroup.copyCars();
 
     assertAll(
-        () -> assertThat(firstCopiedRacingCars).hasSize(carCount),
-        () -> assertThat(secondCopiedRacingCars).hasSize(carCount),
+        () -> assertThat(firstCopiedRacingCars).hasSize(names.size()),
+        () -> assertThat(secondCopiedRacingCars).hasSize(names.size()),
         () -> assertThat(firstCopiedRacingCars)
             .zipSatisfy(secondCopiedRacingCars, (element1, element2) -> assertThat(element1).isNotSameAs(element2))
     );
@@ -68,8 +79,12 @@ class RacingCarGroupTest {
   @DisplayName("차들을 reset 하면 차의 위치가 0이 된다.")
   @Test
   void reset_setCarPositionToZero() {
-    int carCount = 3;
-    RacingCarGroup carGroup = new RacingCarGroup(new RacingCarCount(carCount), () -> true);
+    List<RacingCarName> names = List.of(
+        new RacingCarName("pobi"),
+        new RacingCarName("crong"),
+        new RacingCarName("honux")
+    );
+    RacingCarGroup carGroup = new RacingCarGroup(names, () -> true);
 
     carGroup.moveCars();
     carGroup.resetCars();

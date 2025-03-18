@@ -22,12 +22,12 @@ class RacingCarRacingGameSimulatorTest {
 
     CarRacingGameSimulator simulator = new CarRacingGameSimulator(new RacingCarCount(carCount), () -> true);
 
-    List<List<Integer>> simulateResults = Objects.requireNonNull(simulator.run(new SimulateCount(simulateCount)));
+    List<List<RacingCar>> simulateResults = Objects.requireNonNull(simulator.run(new SimulateCount(simulateCount)));
 
     assertAll(
         () -> assertThat(simulateResults).hasSize(simulateCount),
         () -> IntStream.range(0, simulateResults.size())
-            .forEach(i -> assertThat(simulateResults.get(i)).containsOnly(i + 1))
+            .forEach(i -> assertThat(simulateResults.get(i)).extracting(RacingCar::getLocation).containsOnly(i + 1))
     );
   }
 }

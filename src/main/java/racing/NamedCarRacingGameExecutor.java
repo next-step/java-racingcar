@@ -4,19 +4,21 @@ import racing.simulator.CarRacingGameSimulator;
 import racing.simulator.RacingCar;
 import racing.simulator.RandomRacingCarMovingStrategy;
 import racing.types.RacingCarCount;
+import racing.types.RacingCarName;
 import racing.types.SimulateCount;
 import racing.util.InputView;
 import racing.util.OutputView;
+import racing.util.RacingCarNameInputSplitter;
 
 import java.util.List;
 
-public class CarRacingGameExecutor {
+public class NamedCarRacingGameExecutor {
 
   public static void main(String[] args) {
-    RacingCarCount racingCarCount = getCarCount();
+    List<RacingCarName> names = getCarNames() ;
     SimulateCount simulateCount = getSimulateCount();
 
-    CarRacingGameSimulator simulator = new CarRacingGameSimulator(racingCarCount, new RandomRacingCarMovingStrategy());
+    CarRacingGameSimulator simulator = new CarRacingGameSimulator(names, new RandomRacingCarMovingStrategy());
 
     OutputView.showWhitespace();
     OutputView.showExecutionResultText();
@@ -24,9 +26,8 @@ public class CarRacingGameExecutor {
 
   }
 
-  private static RacingCarCount getCarCount() {
-    int carCount = InputView.showCarCountInput();
-    return new RacingCarCount(carCount);
+  private static List<RacingCarName> getCarNames() {
+    return RacingCarNameInputSplitter.split(InputView.showCarNamesInput());
   }
 
   private static SimulateCount getSimulateCount() {

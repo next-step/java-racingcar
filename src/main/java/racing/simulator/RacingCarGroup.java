@@ -1,6 +1,7 @@
 package racing.simulator;
 
 import racing.types.RacingCarCount;
+import racing.types.RacingCarName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,13 @@ public class RacingCarGroup {
 
   private final List<RacingCar> racingCars = new ArrayList<>();
   RacingCarMovingStrategy racingCarMovingStrategy;
+
+  public RacingCarGroup(List<RacingCarName> racingCarNames, RacingCarMovingStrategy racingCarMovingStrategy) {
+    for (RacingCarName name: racingCarNames) {
+      racingCars.add(new RacingCar(name));
+    }
+    this.racingCarMovingStrategy = racingCarMovingStrategy;
+  }
 
   public RacingCarGroup(RacingCarCount racingCarCount, RacingCarMovingStrategy racingCarMovingStrategy) {
     for (int i = 0; i < racingCarCount.getCount(); i++) {
