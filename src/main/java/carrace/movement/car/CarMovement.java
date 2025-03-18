@@ -1,6 +1,8 @@
 package carrace.movement.car;
 
-public class CarMovement {
+import carrace.common.Move;
+
+public class CarMovement implements Move {
 
     private String position = "-";
 
