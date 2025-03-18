@@ -14,7 +14,7 @@ public class RaceService {
 		while (race.hasRemainRound()) {
 			runOneRound();
 		}
-		OutputView.printWinners(cars.getWinners());
+		OutputView.printWinner(cars.determineWinner());
 	}
 
 	private void runOneRound() {

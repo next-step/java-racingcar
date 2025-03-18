@@ -25,6 +25,10 @@ public class Car {
 		}
 	}
 
+	public boolean isSameLocation(int compareLocation) {
+		return compareLocation == location;
+	}
+
 	public int getLocation() {
 		return location;
 	}

@@ -33,17 +33,17 @@ public class Cars {
 			.toList();
 	}
 
-	public int getMaxLocation() {
+	public int findMaxLocation() {
 		return cars.stream()
 			.mapToInt(Car::getLocation)
 			.max()
 			.orElseThrow(() -> new RuntimeException("자동차가 존재하지 않습니다."));
 	}
 
-	public List<String> getWinners() {
-		int maxLocation = getMaxLocation();
+	public List<String> determineWinner() {
+		int maxLocation = findMaxLocation();
 		return cars.stream()
-			.filter(car -> car.getLocation() == maxLocation)
+			.filter(car -> car.isSameLocation(maxLocation))
 			.map(Car::getName)
 			.toList();
 	}
