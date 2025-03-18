@@ -1,5 +1,8 @@
 package step3.game;
 
+import step3.game.car.Car;
+import step3.game.car.CarName;
+
 import java.util.HashSet;
 import java.util.Set;
 

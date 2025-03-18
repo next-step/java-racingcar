@@ -1,6 +1,6 @@
 package step3.view.input;
 
-import step3.game.CarName;
+import step3.game.car.CarName;
 import step3.game.PositiveNumber;
 
 import java.util.Set;

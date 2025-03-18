@@ -1,5 +1,6 @@
 package step3.game;
 
+import step3.game.car.CarName;
 import step3.view.input.ConsoleInputView;
 import step3.view.input.InputView;
 import step3.view.output.OutputView;

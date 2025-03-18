@@ -1,6 +1,6 @@
 package step3.view.output;
 
-import step3.game.Car;
+import step3.game.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;

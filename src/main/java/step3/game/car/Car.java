@@ -1,4 +1,4 @@
-package step3.game;
+package step3.game.car;
 
 public class Car {
 
