@@ -3,7 +3,7 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
@@ -13,13 +13,13 @@ public class CarTest {
         Car car = new Car();
         int initialPosition = car.getPosition();
         int newPosition = car.moveForward();
-        assertEquals(initialPosition + 1, newPosition);
+        assertThat(newPosition).isEqualTo(initialPosition + 1);
     }
 
     @Test
     @DisplayName("자동차의 초기 위치는 1이어야 한다")
     void getPosition_ShouldReturnInitialPosition() {
         Car car = new Car();
-        assertEquals(1, car.getPosition());
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }

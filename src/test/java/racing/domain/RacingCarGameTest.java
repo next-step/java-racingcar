@@ -6,7 +6,6 @@ import racing.config.GameConfig;
 import racing.util.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingCarGameTest {
 
@@ -39,7 +38,7 @@ class RacingCarGameTest {
 
         racingCarGame.startRace();
         for (Car car : racingCarGame.getCars()) {
-            assertEquals(numberOfRounds+1, car.getPosition());
+            assertThat(car.getPosition()).isEqualTo(numberOfRounds+1);
         }
     }
 
@@ -53,7 +52,7 @@ class RacingCarGameTest {
 
         racingCarGame.startRace();
         for (Car car : racingCarGame.getCars()) {
-            assertEquals(1, car.getPosition());
+            assertThat(car.getPosition()).isEqualTo(1);
         }
     }
 }
