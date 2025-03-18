@@ -26,14 +26,6 @@ public class Cars {
         }
     }
 
-    public List<Integer> positions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : this.cars) {
-            positions.add(car.position());
-        }
-        return positions;
-    }
-
     public Map<String, Integer> positionByName() {
         return this.cars.stream()
                 .collect(Collectors.toMap(Car::name, Car::position));

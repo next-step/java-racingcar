@@ -4,7 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.AbstractMap;
 import java.util.List;
+
 class CarsTest {
 
     @DisplayName("전진하는 전략일 때는 1칸 전진한다")
@@ -15,8 +17,8 @@ class CarsTest {
         // when
         cars.race(() -> 4);
         // then
-        Assertions.assertThat(cars.positions()).containsExactly(1, 1, 1);
-
+        Assertions.assertThat(cars.positionByName())
+                .containsExactly(new AbstractMap.SimpleEntry<>("a", 1), new AbstractMap.SimpleEntry<>("b", 1), new AbstractMap.SimpleEntry<>("c", 1));
     }
 
     @DisplayName("정지하는 전략일 때는 전진하지 않는다")
@@ -27,7 +29,7 @@ class CarsTest {
         // when
         cars.race(() -> 3);
         // then
-        Assertions.assertThat(cars.positions()).containsExactly(0, 0, 0);
-
+        Assertions.assertThat(cars.positionByName())
+                .containsExactly(new AbstractMap.SimpleEntry<>("a", 0), new AbstractMap.SimpleEntry<>("b", 0), new AbstractMap.SimpleEntry<>("c", 0));
     }
 }
