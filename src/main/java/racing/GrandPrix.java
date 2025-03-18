@@ -1,7 +1,6 @@
 package racing;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -13,7 +12,7 @@ public class GrandPrix {
     public GrandPrix(int totalRound, int totalCars) {
         this.currentRound = 0;
         this.rounds = IntStream.range(0, totalRound)
-                               .mapToObj(i -> new Round(new Dice(new Random())))
+                               .mapToObj(i -> new Round(new ZeroToTenDice()))
                                .collect(Collectors.toUnmodifiableList());
         this.cars = IntStream.range(0, totalCars)
                              .mapToObj(i -> new Car())

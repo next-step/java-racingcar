@@ -1,7 +1,6 @@
 package racing;
 
 import java.util.Collection;
-import java.util.Random;
 
 public class Round {
     private final Dice dice;
