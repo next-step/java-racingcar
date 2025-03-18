@@ -7,6 +7,7 @@ import racing.message.GameMessage;
 import java.util.List;
 
 public class RacingGameOutputView {
+    private static final String ROUND_RESULT_FORMAT = "%s : %s";
     private static final String DASH = "-";
 
     public static void printOutputHeadMessage() {
@@ -17,14 +18,16 @@ public class RacingGameOutputView {
         List<Car> cars = racingCars.getCars();
 
         for (Car car : cars) {
-            printCarPosition(car);
+            printCarInfo(car);
         }
         System.out.println();
     }
 
-    private static void printCarPosition(Car car) {
+    private static void printCarInfo(Car car) {
+        String carName = car.getCarName();
         int position = car.getPosition();
-        System.out.println(convertIntegerToSymbol(position, DASH));
+
+        System.out.println(String.format(ROUND_RESULT_FORMAT, carName, convertIntegerToSymbol(position, DASH)));
     }
 
     private static String convertIntegerToSymbol(int repeatCount, String symbol) {
