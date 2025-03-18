@@ -13,16 +13,16 @@ import org.junit.jupiter.api.Test;
 
 public class RaceTest {
 
-    private static final int INITIAL_CAR_POSITION = new Car().position();
+    private static final int INITIAL_CAR_POSITION = 1;
     private static final int MIN_CARS = 1;
     private static final int MAX_CARS = 10;
-    private List<Car> cars;
+    private List<String> carNames;
 
     @BeforeEach
     void setUp() {
         int randomNumberOfCars = new Random().nextInt(MAX_CARS) + MIN_CARS;
-        cars = IntStream.range(0, randomNumberOfCars)
-            .mapToObj(i -> new Car())
+        carNames = IntStream.range(0, randomNumberOfCars)
+            .mapToObj(i -> "테스트카" + i)
             .collect(Collectors.toList());
     }
 
@@ -33,10 +33,10 @@ public class RaceTest {
         @DisplayName("전진 조건을 만족하지 않으면 자동차는 움직이지 않는다.")
         @Test
         void notMove() {
-            Race race = new Race(cars, new FakeMoveStrategy(false));
+            Race race = new Race(carNames, new FakeMoveStrategy(false));
             race.run(3);
-            for (Car car : race.cars()) {
-                assertThat(car.position()).isEqualTo(INITIAL_CAR_POSITION);
+            for (Car car : race.getCars()) {
+                assertThat(car.getPosition()).isEqualTo(INITIAL_CAR_POSITION);
             }
         }
 
@@ -44,10 +44,10 @@ public class RaceTest {
         @Test
         void move() {
             int rounds = 3;
-            Race race = new Race(cars, new FakeMoveStrategy(true));
+            Race race = new Race(carNames, new FakeMoveStrategy(true));
             race.run(rounds);
-            for (Car car : race.cars()) {
-                assertThat(car.position()).isEqualTo(INITIAL_CAR_POSITION + rounds);
+            for (Car car : race.getCars()) {
+                assertThat(car.getPosition()).isEqualTo(INITIAL_CAR_POSITION + rounds);
             }
         }
     }
