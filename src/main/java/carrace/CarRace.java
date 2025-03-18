@@ -23,21 +23,21 @@ public class CarRace {
                         });
     }
 
-    public static Integer receiveCarNum(int numCar) {
+    static Integer receiveCarNum(int numCar) {
         if (numCar > 0) {
             return numCar;
         }
         throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
     }
 
-    public static Integer receiveNumTry(int numTry) {
+    static Integer receiveNumTry(int numTry) {
         if (numTry > 0) {
             return numTry;
         }
         throw new RuntimeException("시도할 회수는 1 이상의 값이어야 합니다.");
     }
 
-    public static String[] initCurrentState(int numCar) {
+    static String[] initCurrentState(int numCar) {
         if (numCar > 0) {
             return Arrays.stream(new String[numCar]).map(car -> "-").toArray(String[]::new);
         }
@@ -45,7 +45,7 @@ public class CarRace {
         throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
     }
 
-    public static void updateCurrentState(String[] cars, int numCar) {
+    static void updateCurrentState(String[] cars, int numCar) {
         if (numCar <= 0) {
             throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
         }
@@ -58,12 +58,12 @@ public class CarRace {
                         });
     }
 
-    public static void printCurrentState(String[] cars) {
+    private static void printCurrentState(String[] cars) {
         Arrays.stream(cars).forEach(System.out::println);
         System.out.println();
     }
 
-    public static void checkAndMove(String[] cars, int j, int randomVal) {
+    static void checkAndMove(String[] cars, int j, int randomVal) {
         if (randomVal < 0 || randomVal > 9) {
             throw new RuntimeException("랜덤 값은 0에서 9사이의 값이어야합니다.");
         }
