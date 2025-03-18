@@ -19,7 +19,7 @@ public class InputView {
             return toInteger(value);
         } catch (NumberFormatException e) {
             System.out.println("0보다 큰 양의 정수를 입력해주세요. 입력값=" + value);
-            return readPositiveInteger(question); // 재귀 호출로 다시 입력 요청
+            return readPositiveInteger(question);
         }
     }
 
@@ -38,7 +38,7 @@ public class InputView {
             return parseCSVCarNames(carNames);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return readCarNames(question); // 재귀 호출로 다시 입력 요청
+            return readCarNames(question);
         }
     }
 

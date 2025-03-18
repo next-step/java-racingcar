@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
 class CarsTest {
 
     @DisplayName("전진하는 전략일 때는 1칸 전진한다")
