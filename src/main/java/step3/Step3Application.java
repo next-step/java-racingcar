@@ -1,9 +1,12 @@
 package step3;
 
-import static step3.game.RacingCarGame.game;
+import step3.game.GameController;
+import step3.view.ConsoleInputView;
+import step3.view.ConsoleOutputView;
 
 public class Step3Application {
     public static void main(String[] args) {
-        game();
+        GameController game = new GameController(new ConsoleInputView(), new ConsoleOutputView());
+        game.start();
     }
 }
