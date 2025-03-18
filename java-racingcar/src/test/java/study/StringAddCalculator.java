@@ -4,18 +4,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\\n(.*)");
+    private static final int CUSTOM_DELIMITER_GROUP = 1;
+    private static final int NUMBER_GROUP = 2;
 
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty()) {
+        if (text == null || text.trim().isEmpty()) {
             return 0;
         }
 
-        String delimiter = ",|:";
-        Matcher m = Pattern.compile("//(.)\\n(.*)").matcher(text);
+        String delimiter = DEFAULT_DELIMITER;
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
 
         if (m.find()) {
-            delimiter = Pattern.quote(m.group(1));
-            text = m.group(2);
+            delimiter = Pattern.quote(m.group(CUSTOM_DELIMITER_GROUP));
+            text = m.group(NUMBER_GROUP);
         }
 
         String[] tokens = text.split(delimiter);
@@ -42,3 +46,5 @@ public class StringAddCalculator {
         }
     }
 }
+
+
