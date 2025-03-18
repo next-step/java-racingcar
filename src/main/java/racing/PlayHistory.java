@@ -31,14 +31,14 @@ public class PlayHistory {
     private List<String> findMaxPositionNames(List<String> carNames, CarPositions lastPositions, int maxPosition){
         List<String> lastPositionCarNames = new ArrayList<>();
         for (int i=0; i<carNames.size(); i++) {
-            insertIfMaxPosition(carNames.get(i), lastPositions.getCarPosition(i), maxPosition, lastPositionCarNames);
+            insertIfMaxPosition(new PositionCompare(carNames.get(i), lastPositions.getCarPosition(i), maxPosition), lastPositionCarNames);
         }
         return lastPositionCarNames;
     }
 
-    private void insertIfMaxPosition(String carName, int nowPosition, int maxPosition, List<String> lastPositionCarNames){
-        if (nowPosition == maxPosition) {
-            lastPositionCarNames.add(carName);
+    private void insertIfMaxPosition(PositionCompare compare, List<String> lastPositionCarNames){
+        if (compare.isMaxPosition()) {
+            lastPositionCarNames.add(compare.getCarName());
         }
     }
 }
