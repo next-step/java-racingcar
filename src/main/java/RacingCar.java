@@ -12,6 +12,9 @@ public class RacingCar {
         int tryCount = scanner.nextInt();
         System.out.println();
 
+        if (carNumber < 1 || tryCount < 1)
+            throw new IllegalArgumentException(String.format("입력값은 양수여야 합니다. carNumber:%d, tryCount:%d", carNumber, tryCount));
+
         start(carNumber, tryCount);
     }
 

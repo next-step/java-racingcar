@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarTest {
     private final RacingCar racingCar = new RacingCar();
@@ -23,6 +24,17 @@ public class RacingCarTest {
 
         String expected = "자동차 대수는 몇 대 인가요?\n시도할 회수는 몇 회 인가요?\n\n";
         assertThat(out.toString().replace("\r\n", "\n")).startsWith(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(delimiter = ',', value = {"-3,0", "0,0", "3,-1"})
+    @DisplayName("자동차 대수와 시도할 회수는 양수여야한다.")
+    public void test9(int carNumber, int tryCount) {
+        String in = String.format("%s%n%s%n", carNumber, tryCount);
+        System.setIn(new ByteArrayInputStream(in.getBytes()));
+
+        assertThatThrownBy(racingCar::input)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
