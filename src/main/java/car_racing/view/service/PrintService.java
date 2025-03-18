@@ -6,7 +6,7 @@ import car_racing.view.model.UserInput;
 import java.util.List;
 
 public class PrintService {
-    private static final String WINNER_DELIMITER = ",";
+    private static final String WINNER_DELIMITER = ", ";
 
     public static void showRaceStart() {
         System.out.println("\n실행 결과");
