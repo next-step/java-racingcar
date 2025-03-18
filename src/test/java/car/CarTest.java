@@ -12,7 +12,7 @@ public class CarTest {
     @DisplayName("자동차가 전진하여 위치가 1 증가한다.")
     void 자동차_전진() {
         Car car = new Car();
-        car.move();
+        car.goForward();
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
@@ -23,4 +23,14 @@ public class CarTest {
         Car car = new Car();
         assertThat(car.isAtLeastBaseNumber(input)).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @DisplayName("자동차가 전달받은 숫자가 4 이상이면 위치가 1 증가하고, 4 미만이면 정지한다.")
+    @CsvSource(value = {"4:1", "3:0"}, delimiter = ':')
+    void 자동차_전진_정지(int input, int expected) {
+        Car car = new Car();
+        car.move(input);
+        assertThat(car.getPosition()).isEqualTo(expected);
+    }
+
 }
