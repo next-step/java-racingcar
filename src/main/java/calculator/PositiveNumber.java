@@ -8,7 +8,7 @@ public class PositiveNumber {
 
     private final int value;
 
-    public PositiveNumber(final String str) {
+    public PositiveNumber(String str) {
         if (!str.matches("-?\\d+")) {
             throw new InvalidNumberFormatException();
         }
@@ -17,7 +17,7 @@ public class PositiveNumber {
         this.value = number;
     }
 
-    public PositiveNumber(final int number) {
+    public PositiveNumber(int number) {
         validatePositive(number);
         this.value = number;
     }

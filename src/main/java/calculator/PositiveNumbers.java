@@ -8,11 +8,11 @@ public class PositiveNumbers {
 
     private final List<PositiveNumber> positiveNumbers;
 
-    public PositiveNumbers(final List<PositiveNumber> positiveNumbers) {
+    public PositiveNumbers(List<PositiveNumber> positiveNumbers) {
         this.positiveNumbers = positiveNumbers;
     }
 
-    public PositiveNumbers(final String[] numbers) {
+    public PositiveNumbers(String[] numbers) {
         this.positiveNumbers = Arrays.stream(numbers)
             .map(PositiveNumber::new)
             .collect(Collectors.toList());

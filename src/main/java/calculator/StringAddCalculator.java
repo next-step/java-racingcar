@@ -6,7 +6,7 @@ public class StringAddCalculator {
 
     }
 
-    public static int sum(final String text) {
+    public static int sum(String text) {
         if (text == null || text.isEmpty()) {
             return 0;
         }
