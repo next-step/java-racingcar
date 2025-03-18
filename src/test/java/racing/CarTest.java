@@ -17,7 +17,7 @@ public class CarTest {
 
   @Test
   void 자동차_전진() {
-    car.driveOrStop(5);
+    car.driveOrStop(4);
     assertThat(car.getPosition()).isEqualTo(1);
   }
 }
