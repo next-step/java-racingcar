@@ -1,12 +1,14 @@
 package car_racing.domain.model;
 
 public class Car {
-    private final String name;
+    private static final String RACE_RESULT_DELIMITER = " : ";
+
+    private final Name name;
     private final RaceResult raceResult = new RaceResult();
-    private int distance;
+    private Integer distance;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
     }
 
     public void move(int distance) {
@@ -16,14 +18,19 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return this.name.getName();
     }
 
     public int getDistance() {
         return distance;
     }
 
-    public RaceResult getRaceResult() {
-        return raceResult;
+    public String getRaceResultOfRound(int round) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.name.getName())
+                .append(RACE_RESULT_DELIMITER)
+                .append(raceResult.getPositionOfNthRound(round));
+        return sb.toString();
     }
+
 }
