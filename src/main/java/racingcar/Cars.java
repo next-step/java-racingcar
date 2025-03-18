@@ -6,10 +6,12 @@ import java.util.List;
 public class Cars {
 	private final List<Car> cars;
 
-	public Cars(int carAmount) {
+	public Cars(String namesInput) {
+		String[] names = namesInput.split(",");
+
 		List<Car> tempCars = new ArrayList<>();
-		for (int i = 0; i < carAmount; i++) {
-			tempCars.add(new Car());
+		for (String name : names) {
+			tempCars.add(new Car(name.trim()));
 		}
 		this.cars = tempCars;
 	}

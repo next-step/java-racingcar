@@ -4,7 +4,7 @@ public class RaceService {
 	private final Race race;
 	private final Cars cars;
 
-	public RaceService(int carInput, int roundInput) {
+	public RaceService(String carInput, int roundInput) {
 		this.race = new Race(roundInput);
 		this.cars = new Cars(carInput);
 	}
