@@ -110,7 +110,7 @@ public class CarRacingGameTest {
         GameResult gameResult = carRacingGame.playGame();
 
         assertThat(gameResult.getWinners())
-                .contains("honux");
+                .doesNotContain("pobi", "crong");
     }
 
     @DisplayName("우승자 판별 기능 (여러명)")

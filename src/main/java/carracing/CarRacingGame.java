@@ -82,11 +82,11 @@ public class CarRacingGame {
     }
 
     private int maxCarDistance() {
-        List<Integer> distances = new ArrayList<>();
+        int maxDistance = 0;
         for (Car car : cars) {
-            distances.add(car.getDistance());
+            maxDistance = Math.max(maxDistance, car.getDistance());
         }
-        return Collections.max(distances);
+        return maxDistance;
     }
 
     private List<String> saveInitialState() {
