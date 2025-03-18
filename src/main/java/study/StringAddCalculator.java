@@ -40,11 +40,17 @@ public class StringAddCalculator {
     private static int sum(final String[] numbers) {
         return Arrays.stream(numbers)
                 .map(String::trim)
-                .filter(Predicate.not(String::isEmpty))
-                .map(Integer::parseInt)
+                .map(StringAddCalculator::parseNumber)
                 .peek(StringAddCalculator::validatePositive)
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    private static int parseNumber(final String number) {
+        if (isNullOrBlank(number)) {
+            throw new IllegalArgumentException("Empty value encountered while parsing numbers.");
+        }
+        return Integer.parseInt(number);
     }
 
     private static void validatePositive(final int number) {
