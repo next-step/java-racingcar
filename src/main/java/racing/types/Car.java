@@ -2,23 +2,23 @@ package racing.types;
 
 import racing.simulator.RacingCarMovingStrategy;
 
-public class RacingCar {
+public class Car {
 
-  private final RacingCarName carName;
+  private final CarName carName;
   private int location;
 
-  public RacingCar() {
-    this(new RacingCarName());
+  public Car() {
+    this(new CarName());
   }
 
-  public RacingCar(RacingCarName carName) {
+  public Car(CarName carName) {
     this.carName = carName;
     this.location = 0;
   }
 
-  public RacingCar(RacingCar racingCar) {
-    this.location = racingCar.location;
-    this.carName = racingCar.carName;
+  public Car(Car car) {
+    this.location = car.location;
+    this.carName = car.carName;
   }
 
   public int getLocation() {

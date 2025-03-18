@@ -7,28 +7,28 @@ import java.util.List;
 
 public class CarRacingGameSimulator {
 
-  private final RacingCarGroup racingCarGroup;
+  private final CarGroup carGroup;
   RacingCarMovingStrategy racingCarMovingStrategy;
 
-  public CarRacingGameSimulator(List<RacingCarName> racingCarNames, RacingCarMovingStrategy racingCarMovingStrategy) {
-    this.racingCarGroup = new RacingCarGroup(racingCarNames);
+  public CarRacingGameSimulator(List<CarName> carNames, RacingCarMovingStrategy racingCarMovingStrategy) {
+    this.carGroup = new CarGroup(carNames);
     this.racingCarMovingStrategy = racingCarMovingStrategy;
   }
 
-  public CarRacingGameSimulator(RacingCarCount racingCarCount, RacingCarMovingStrategy racingCarMovingStrategy) {
-    this.racingCarGroup = new RacingCarGroup(racingCarCount);
+  public CarRacingGameSimulator(CarCount carCount, RacingCarMovingStrategy racingCarMovingStrategy) {
+    this.carGroup = new CarGroup(carCount);
     this.racingCarMovingStrategy = racingCarMovingStrategy;
   }
 
-  public List<List<RacingCar>> run(SimulateCount simulateCount) {
-    List<List<RacingCar>> res = new ArrayList<>();
+  public List<List<Car>> run(SimulateCount simulateCount) {
+    List<List<Car>> res = new ArrayList<>();
 
     for (int i = 0; i < simulateCount.getCount(); i++) {
-      racingCarGroup.moveCars(racingCarMovingStrategy);
-      res.add(racingCarGroup.copyCars());
+      carGroup.moveCars(racingCarMovingStrategy);
+      res.add(carGroup.copyCars());
     }
 
-    racingCarGroup.resetCars();
+    carGroup.resetCars();
     return res;
   }
 }

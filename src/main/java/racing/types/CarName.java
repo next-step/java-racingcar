@@ -1,17 +1,17 @@
 package racing.types;
 
-public class RacingCarName {
+public class CarName {
 
   public static final String DEFAULT_NAME = "unknown";
   private static final int MAZ_CAR_NAME_LEN = 5;
 
   private final String name;
 
-  public RacingCarName() {
+  public CarName() {
     this.name = DEFAULT_NAME;
   }
 
-  public RacingCarName(String racingCarName) {
+  public CarName(String racingCarName) {
     if (racingCarName == null || racingCarName.isEmpty()) {
       throw new IllegalArgumentException("차 이름은 비어있을 수 없습니다.");
     }

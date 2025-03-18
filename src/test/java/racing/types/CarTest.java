@@ -7,34 +7,34 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class RacingCarTest {
+class CarTest {
 
   @DisplayName("전략에 따라 차를 이동한다.")
   @ParameterizedTest
   @ValueSource(booleans = {true, false})
   void go_carMovedByStrategy(boolean strategyResult) {
     int simulateCount = 4;
-    RacingCar racingCar = new RacingCar(new RacingCarName("test"));
+    Car car = new Car(new CarName("test"));
 
     for (int i = 0; i < simulateCount; i++) {
-      racingCar.go(() -> strategyResult);
+      car.go(() -> strategyResult);
     }
 
-    assertThat(racingCar.getLocation()).isEqualTo(strategyResult ? simulateCount : 0);
+    assertThat(car.getLocation()).isEqualTo(strategyResult ? simulateCount : 0);
   }
 
   @DisplayName("reset하면 차의 위치를 0으로 만든다.")
   @Test
   void reset_setLocationZero() {
     int simulateCount = 4;
-    RacingCar racingCar = new RacingCar(new RacingCarName("test"));
+    Car car = new Car(new CarName("test"));
 
     for (int i = 0; i < simulateCount; i++) {
-      racingCar.go(() -> true);
+      car.go(() -> true);
     }
 
-    racingCar.reset();
+    car.reset();
 
-    assertThat(racingCar.getLocation()).isEqualTo(0);
+    assertThat(car.getLocation()).isEqualTo(0);
   }
 }

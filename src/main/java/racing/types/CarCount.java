@@ -1,12 +1,12 @@
 package racing.types;
 
-public class RacingCarCount {
+public class CarCount {
 
   public static final int MIN_CAR_COUNT = 2;
 
   private final int count;
 
-  public RacingCarCount(int carCount) {
+  public CarCount(int carCount) {
     if (carCount < MIN_CAR_COUNT) {
       throw new IllegalArgumentException("자동차 수는 최소 " + MIN_CAR_COUNT + "대여야 합니다.");
     }
