@@ -3,7 +3,7 @@ package racingcar;
 public class RaceController {
 
 	public void runRace() {
-		int carInput = InputView.getCarInput();
+		String carInput = InputView.getCarInput();
 		int roundInput = InputView.getRoundInput();
 		InputView.closeScanner();
 

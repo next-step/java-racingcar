@@ -6,10 +6,11 @@ import java.util.List;
 public class Cars {
 	private final List<Car> cars;
 
-	public Cars(int carAmount) {
+	public Cars(String namesInput) {
+		String[] names = namesInput.split(",");
 		List<Car> tempCars = new ArrayList<>();
-		for (int i = 0; i < carAmount; i++) {
-			tempCars.add(new Car());
+		for (String name : names) {
+			tempCars.add(new Car(name.trim()));
 		}
 		this.cars = tempCars;
 	}
@@ -25,4 +26,26 @@ public class Cars {
 			.map(Car::getLocation)
 			.toList();
 	}
+
+	public List<CarInfo> getCarsNameAndLocation() {
+		return cars.stream()
+			.map(CarInfo::new)
+			.toList();
+	}
+
+	public int findMaxLocation() {
+		return cars.stream()
+			.mapToInt(Car::getLocation)
+			.max()
+			.orElseThrow(() -> new RuntimeException("자동차가 존재하지 않습니다."));
+	}
+
+	public List<String> determineWinner() {
+		int maxLocation = findMaxLocation();
+		return cars.stream()
+			.filter(car -> car.isSameLocation(maxLocation))
+			.map(Car::getName)
+			.toList();
+	}
+
 }

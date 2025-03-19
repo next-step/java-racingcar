@@ -4,7 +4,7 @@ public class RaceService {
 	private final Race race;
 	private final Cars cars;
 
-	public RaceService(int carInput, int roundInput) {
+	public RaceService(String carInput, int roundInput) {
 		this.race = new Race(roundInput);
 		this.cars = new Cars(carInput);
 	}
@@ -14,13 +14,14 @@ public class RaceService {
 		while (race.hasRemainRound()) {
 			runOneRound();
 		}
+		OutputView.printWinner(cars.determineWinner());
 	}
 
 	private void runOneRound() {
 		cars.moveCars(randomMovingStrategy());
 		race.reduceRound();
-		cars.getCarsLocation()
-			.forEach(OutputView::printCarDistance);
+		cars.getCarsNameAndLocation()
+			.forEach(carInfo -> OutputView.printCarDistance(carInfo.name(), carInfo.location()));
 		OutputView.printEndOneRound();
 	}
 
