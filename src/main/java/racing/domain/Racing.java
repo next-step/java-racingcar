@@ -29,6 +29,4 @@ public class Racing {
       car.driveOrStop(RandomGenerator.generate());
     }
   }
-
-
 }
