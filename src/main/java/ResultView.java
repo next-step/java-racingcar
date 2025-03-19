@@ -35,8 +35,8 @@ public class ResultView {
         println(Messages.RACE_RESULT);
     }
 
-    public static void printWinner(List<Car> cars){
-        println(getWinner(cars));
+    public static void printWinner(List<Car> cars) {
+        println(getWinner(cars) + Messages.RACE_WINNER);
     }
 
     public static String getWinner(List<Car> cars) {

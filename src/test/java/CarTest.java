@@ -37,7 +37,7 @@ class CarTest {
 
     @Test
     @DisplayName(value = "승자 테스트")
-    void 승자_출력_테스트(){
+    void 승자_출력_테스트() {
         ArrayList<Car> cars = new ArrayList<Car>();
         Car a = new Car("a");
         a.move(4);
