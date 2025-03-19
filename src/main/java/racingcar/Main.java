@@ -25,8 +25,8 @@ public class Main {
                 .map(name -> new Car(name, moveStrategy))
                 .collect(Collectors.toList());
 
-        Racing racing = new Racing(new Cars(cars));
+        Racing racing = new Racing(new Cars(cars), numberOfRounds);
 
-        OutputView.showRace(racing, numberOfRounds);
+        OutputView.showRace(racing);
     }
 }

@@ -37,6 +37,25 @@ class CarsTest {
     }
 
     @Test
+    void getCarsWithMaxDistance를_호출하면_가장_많이_전진한_Car_객체를_반환한다() {
+        MoveStrategy moveStrategy = mock(MoveStrategy.class);
+        Car car1 = new Car("pobi", moveStrategy);
+        Car car2 = new Car("poci", moveStrategy);
+        Car car3 = new Car("podi", moveStrategy);
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        when(moveStrategy.move()).thenReturn(true);
+
+        cars.moveAll();
+        car3.play();
+
+        List<Car> result = cars.getCarsWithMaxDistance();
+
+        assertEquals(1, result.size());
+        assertTrue(result.contains(car3));
+    }
+
+    @Test
     void toString을_호출하면_Cars_객체에_있는_Car_객체의_거리만큼_하이픈이_출력된다() {
         MoveStrategy moveStrategy = mock(MoveStrategy.class);
         Car car1 = new Car("pobi", moveStrategy);

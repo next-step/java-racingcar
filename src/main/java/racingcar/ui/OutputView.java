@@ -2,8 +2,6 @@ package racingcar.ui;
 
 import racingcar.racing.Racing;
 
-import java.util.stream.IntStream;
-
 public class OutputView {
 
     private static final String DISTANCE_UNIT = "-";
@@ -16,12 +14,11 @@ public class OutputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public static void showRace(Racing racing, int numberOfRounds) {
+    public static void showRace(Racing racing) {
         System.out.println("\n실행결과");
 
-        IntStream.range(0, numberOfRounds).forEach(i -> {
-            racing.start();
-            System.out.println(racing);
-        });
+        racing.start();
+
+        System.out.println(racing);
     }
 }

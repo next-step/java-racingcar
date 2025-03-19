@@ -1,6 +1,7 @@
 package racingcar.racing;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -24,6 +25,17 @@ public class Cars {
         return cars;
     }
 
+    public List<Car> getCarsWithMaxDistance() {
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -32,6 +44,7 @@ public class Cars {
             result.append("-".repeat(Math.max(0, car.getDistance())));
             result.append("\n");
         });
+
         return result.toString();
     }
 }
