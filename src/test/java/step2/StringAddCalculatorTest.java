@@ -23,8 +23,6 @@ public class StringAddCalculatorTest {
         // "1,2" => [1,2]
         // "1,2:3" => [1,2,3]
 
-        // assertArrayEquals(expectedArray, actualArray);
-//        assertArrayEquals(new int[]{}, stringAddCalculator.splitNumbers(""));
         assertArrayEquals(new int[]{1, 2}, stringAddCalculator.splitNumbers("1,2", stringAddCalculator.filterSeparators("1,2")));
         assertArrayEquals(new int[]{1, 2, 3}, stringAddCalculator.splitNumbers("1,2:3", stringAddCalculator.filterSeparators("1,2")));
     }
