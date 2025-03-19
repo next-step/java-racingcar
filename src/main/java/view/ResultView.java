@@ -2,6 +2,7 @@ package view;
 
 import game.Cars;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -22,16 +23,14 @@ public class ResultView {
         return MOVE_SIGN.repeat(position);
     }
 
-    public static void printResult(Cars cars) {
-        Map<String, Integer> positionByName = cars.positionByName();
-        int maxPosition = positionByName.values().stream()
-                .max(Integer::compareTo)
-                .orElseThrow(IllegalArgumentException::new);
-        String winners = positionByName.entrySet()
-                .stream()
-                .filter(entry -> entry.getValue() == maxPosition)
-                .map(Map.Entry::getKey)
+    public static void printWinners(List<String> winnerNames) {
+        System.out.println(join(winnerNames) + "가 최종 우승했습니다.");
+    }
+    private static String join(List<String> winnerNames) {
+        if (winnerNames == null || winnerNames.isEmpty()) {
+            return "";
+        }
+        return winnerNames.stream()
                 .collect(Collectors.joining(WINNERS_DELIMITER));
-        System.out.println(winners + "가 최종 우승했습니다.");
     }
 }

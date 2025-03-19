@@ -27,7 +27,7 @@ public class RacingGame {
             cars.race(RANDOM_NUMBER_GENERATOR);
             ResultView.print(cars);
         }
-        ResultView.printResult(cars);
+        ResultView.printWinners(cars.winners());
     }
 
     private int readRoundCount() {
