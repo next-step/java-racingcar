@@ -39,4 +39,15 @@ public class Cars {
     public List<Car> getCurrentStatus() {
         return Collections.unmodifiableList(cars);
     }
+
+    public String getWinner() {
+        int maxMoveCount = cars.stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
 }

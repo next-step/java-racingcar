@@ -127,4 +127,31 @@ public class RacingCarTest {
         assertThat(InputView.inputValidatedNameOfCar()).containsExactly(input.split(","));
 
     }
+
+    @Test
+    @DisplayName("단일 우승자 결정 ")
+    void getWinner() {
+        Car pobi = new Car("pobi");
+        Car woni = new Car("crong");
+        Cars cars = new Cars(List.of(pobi, woni));
+        pobi.move(() -> true);
+
+        assertThat(cars.getWinner()).isEqualTo("pobi");
+    }
+
+    @Test
+    @DisplayName("공동 우승자 결정 ")
+    void getWinners() {
+        // Given
+        Car pobi = new Car("pobi");
+        Car woni = new Car("crong");
+        Cars cars = new Cars(List.of(pobi, woni));
+
+        // When
+        String result = cars.getWinner();
+
+        // Then
+        assertThat(result).isEqualTo("pobi, crong");
+    }
+
 }
