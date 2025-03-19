@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.car.Car;
+import racingcar.racing.Car;
 import racingcar.movepolicy.DefaultMoveStrategy;
 import racingcar.movepolicy.MoveStrategy;
 import racingcar.racing.Racing;

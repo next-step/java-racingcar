@@ -1,9 +1,7 @@
 package racingcar.racing;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import racingcar.movepolicy.MoveStrategy;
-import racingcar.car.Car;
 
 import java.util.List;
 
