@@ -37,4 +37,23 @@ class GrandPrixTest {
         // then
         Assertions.assertThat(grandPrix.getCarCount()).isEqualTo(names.size());
     }
+
+    @Test
+    @DisplayName("참가자가 1명이면 챔피온은 바로 그 1명이다.")
+    void findChampionTest() {
+        // given
+        var carName = "pobi";
+        var grandPrix = new GrandPrix(5, List.of(carName));
+        while (!grandPrix.isFinished()) {
+            grandPrix.play();
+        }
+
+        // when
+        var champions = grandPrix.findChampions();
+
+        // then
+        Assertions.assertThat(champions)
+                .hasSize(1)
+                .containsExactly(carName);
+    }
 }
