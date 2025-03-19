@@ -1,9 +1,6 @@
 package racing.types;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CarRacingGameSimulateResult {
@@ -31,7 +28,7 @@ public class CarRacingGameSimulateResult {
     List<Car> lastSimulateResult = getLastSimulateResult();
 
     if (lastSimulateResult.isEmpty()) {
-      return new ArrayList<>();
+      return Collections.emptyList();
     }
 
     int maxLocation = lastSimulateResult.stream()
