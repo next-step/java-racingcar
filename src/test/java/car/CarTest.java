@@ -1,10 +1,12 @@
 package car;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.FixedNumberGenerator;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
     @Test
@@ -23,6 +25,12 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-
+    @Test
+    @DisplayName("자동차 이름이 5자가 넘으면 예외가 발생한다.")
+    void 자동차_이름_초과() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Car("pobijjang");
+        });
+    }
 
 }
