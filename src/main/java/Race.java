@@ -12,7 +12,7 @@ public class Race {
 
     public Race(GameSettings settings) {
         if (settings.getCarCount() < 1 || settings.getRoundCount() < 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid game settings: " + settings);
         }
 
         this.totalRounds = settings.getRoundCount();
