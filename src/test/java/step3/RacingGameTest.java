@@ -72,4 +72,45 @@ public class RacingGameTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("winners가 한명인 경우, 정상적으로 반환하는지 체크한다")
+    void getCurrentOneWinnersTest() {
+        // given
+        List<String> expected = List.of("a");
+        // when
+        RacingGame game = new RacingGame(2, new RandomStrategy() {
+            private int index = 0;
+            private final int[] values = {6, 2, 3, 4, 5, 1};
+
+            @Override
+            public int generateRandomValue() {
+                return values[index++];
+            }
+        }, CarFactory.createCars("a,b,c"));
+
+        // then
+        game.start();
+        assertThat(game.getCurrentWinners()).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("winners가 여러명인 경우, 정상적으로 반환하는지 체크한다")
+    void getCurrentMultiWinnersTest() {
+        // given
+        List<String> expected = List.of("a", "b");
+        // when
+        RacingGame game = new RacingGame(2, new RandomStrategy() {
+            private int index = 0;
+            private final int[] values = {6, 4, 3, 4, 5, 1};
+
+            @Override
+            public int generateRandomValue() {
+                return values[index++];
+            }
+        }, CarFactory.createCars("a,b,c"));
+
+        // then
+        game.start();
+        assertThat(game.getCurrentWinners()).isEqualTo(expected);
+    }
 }
