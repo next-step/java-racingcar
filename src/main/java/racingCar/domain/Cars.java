@@ -3,6 +3,7 @@ package racingCar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -11,14 +12,17 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars generateCars(int numOfCars) {
-        if(numOfCars < 0 ) {
-            throw new RuntimeException("0 이하의 숫자는 입력 불가능 합니다.");
+    public static Cars generateCars(List<String> names) {
+        if (names == null || names.isEmpty()) {
+            throw new RuntimeException("적어도 하나의 자동차를 입력해야 합니다.");
         }
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numOfCars; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            if (name.length() > 6) {
+                throw new RuntimeException("자동차의 이름은 5글자를 초과 할 수 없습니다.");
+            }
+            cars.add(new Car(name));
         }
         return new Cars(cars);
     }
@@ -31,6 +35,27 @@ public class Cars {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    public List<Car> winners() {
+        if (cars.isEmpty()) {
+            throw new RuntimeException("자동차가 존재하지 않습니다.");
+        }
+
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new RuntimeException("자동차가 존재하지 않습니다."));
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+
+        if(winners.isEmpty()) {
+            throw new RuntimeException("우승자가 존재하지 않습니다.");
+        }
+
+        return winners;
     }
 
 }
