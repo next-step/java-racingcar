@@ -5,59 +5,61 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    private static final String DELIMITER = ",|:";
+    public static final String DELIMITER = ",|:";
+    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
 
     public static int add(String text) {
-        if (text == null || text.isBlank()) {
+        if (isBlank(text)) {
             return 0;
         }
-
-        if (text.startsWith("//")) {
-            return parseWithCustomDelimiter(text);
-        }
-
-        return parseWithDefaultDelimiter(text);
+        return sum(toInts(split(text)));
     }
 
-    private static int parseWithDefaultDelimiter(String text) {
-        String[] strings = text.split(DELIMITER);
-        return calculateSum(strings);
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 
-    private static int parseWithCustomDelimiter(String text) {
-        Pattern pattern = Pattern.compile("//(.)\n(.*)");
-        Matcher matcher = pattern.matcher(text);
+    private static String[] split(String text) {
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
 
         if (!matcher.find()) {
-            return 0;
+            return text.split(DELIMITER);
         }
 
         String customDelimiter = matcher.group(1);
-        String[] strings = matcher.group(2).split(customDelimiter);
-
-        return calculateSum(strings);
+        return matcher.group(2).split(customDelimiter);
     }
 
-    private static int calculateSum(String[] strings) {
+    private static int sum(int[] numbers) {
         int sum = 0;
-        for (String string : strings) {
-            parseValidNumber(string);
-            sum += Integer.parseInt(string);
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
         }
         return sum;
+    }
+
+    private static int[] toInts(String[] strings) {
+        int[] numbers = new int[strings.length];
+        for (int i = 0; i < strings.length; i++) {
+            numbers[i] = parseValidNumber(strings[i]);
+        }
+        return numbers;
     }
 
     private static int parseValidNumber(String text) {
         try {
             int number = Integer.parseInt(text);
-            throwIfNegative(number);
+            validateNegative(number);
             return number;
         } catch (Exception e) {
+            if (text == null || text.isBlank()) {
+                return 0;
+            }
             throw new RuntimeException();
         }
     }
 
-    private static void throwIfNegative(int number) {
+    private static void validateNegative(int number) {
         if (number < 0) {
             throw new RuntimeException();
         }
