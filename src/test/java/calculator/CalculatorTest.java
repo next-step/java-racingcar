@@ -1,3 +1,6 @@
+package calculator;
+
+import calculator.Calculator;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 
