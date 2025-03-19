@@ -1,36 +1,23 @@
 package RacingCar;
 
+import NumberGenerator.TestNumberGenerator;
 import org.junit.jupiter.api.*;
-import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingCarTest {
-    private RacingCar racingCar;
     private static final int MOVE_CONDITION = 4;
 
-    @BeforeEach
-    void setUp(){
-        racingCar = new RacingCar(MOVE_CONDITION);
+    @Test
+    void moveShouldIncreasePosition(){
+        RacingCar car = new RacingCar(MOVE_CONDITION, new TestNumberGenerator(MOVE_CONDITION));
+        car.move();
+        assertEquals(1, car.position());
     }
 
     @Test
-    public void move(){
-        int beforePosition = racingCar.position();
-        racingCar.move();
-        assertThat(racingCar.position() == beforePosition+1);
-    }
-
-    @Test
-    public void generateRandom(){
-        final int MAX_LEN = 10000;
-        for (int i=0; i<MAX_LEN; i++){
-            assertThat(racingCar.generateRandom(0, 9)).isBetween(0, 9);
-        }
-    }
-
-    @Test
-    public void canMove(){
-        final int THRESHOLD_VALUE = 4;
-        assertThat(racingCar.canMove(THRESHOLD_VALUE-1)).isEqualTo(false);
-        assertThat(racingCar.canMove(THRESHOLD_VALUE)).isEqualTo(true);
+    void moveShouldNotIncreasePosition(){
+        RacingCar car = new RacingCar(MOVE_CONDITION, new TestNumberGenerator(MOVE_CONDITION-1));
+        car.move();
+        assertEquals(0, car.position());
     }
 }
