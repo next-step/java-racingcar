@@ -34,8 +34,8 @@ public class SetCollectionTest {
     @DisplayName("[요구사항2] Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인한다")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void successSetContains(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+    void successSetContains(int input) {
+        assertThat(numbers).contains(input);
     }
 
     @DisplayName("[요구사항3] 입력 값에 따라 set에 포함 여부 결과 값이 다른지 확인한다")
