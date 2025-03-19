@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static final String DELIMITER = "[,:]";
-    public static final String REGEX = "//(.)\n(.*)";
+    private static final String DELIMITER = "[,:]";
+    private static final String REGEX = "//(.)\n(.*)";
 
     public static int calculate(String text) {
         if (isBlank(text)) {
@@ -21,11 +21,13 @@ public class StringCalculator {
     }
 
     private static String[] split(String text) {
-        Matcher m = Pattern.compile(REGEX).matcher(text);
+        Matcher matcher = Pattern.compile(REGEX).matcher(text);
+        final int delimiterGroupNum = 1;
+        final int numbersGroupNum = 2;
 
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(delimiterGroupNum);
+            return matcher.group(numbersGroupNum).split(customDelimiter);
         }
 
         return text.split(DELIMITER);
@@ -46,7 +48,7 @@ public class StringCalculator {
         int number = Integer.parseInt(value);
 
         if (number < 0) {
-            throw new RuntimeException();
+            throw new RuntimeException("음수는 불가능합니다.");
         }
 
         return number;

@@ -1,6 +1,8 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static calculator.StringCalculator.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,10 +15,10 @@ public class StringCalculatorTest {
         assertThatThrownBy(() -> calculate("-1,2,3")).isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    void 빈문자_또는_null은_0을_반환한다() {
-        assertThat(calculate(null)).isEqualTo(0);
-        assertThat(calculate("")).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 빈문자_또는_null은_0을_반환한다(String input) {
+        assertThat(calculate(input)).isEqualTo(0);
     }
 
     @Test
