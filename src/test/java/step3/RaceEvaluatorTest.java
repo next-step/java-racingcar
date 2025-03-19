@@ -24,13 +24,13 @@ class RaceEvaluatorTest {
   }
 
   @Test
-  void 랜덤값이_4_이상이면_자동차가_전진한다() {
+  void 랜덤값이_임계점_이상이면_자동차가_전진한다() {
     when(random.nextInt(10)).thenReturn(4);
     assertTrue(raceEvaluator.evaluate());
   }
 
   @Test
-  void 랜덤값이_4_미만이면_자동차가_전진하지_않는다() {
+  void 랜덤값이_임계점_미만이면_자동차가_전진하지_않는다() {
     when(random.nextInt(10)).thenReturn(3);
     assertFalse(raceEvaluator.evaluate());
   }

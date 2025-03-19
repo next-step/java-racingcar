@@ -14,8 +14,21 @@ public class ResultTest {
   @BeforeEach
   void setUp() {
     result = new Result();
-    firstRound = createCars(new int[]{2, 1, 0});
-    secondRound = createCars(new int[]{1, 1, 1});
+
+    firstRound = new Car[3];
+    firstRound[0] = new Car();
+    firstRound[0].addScore(2);
+    firstRound[1] = new Car();
+    firstRound[1].addScore(1);
+    firstRound[2] = new Car();
+
+    secondRound = new Car[3];
+    secondRound[0] = new Car();
+    secondRound[0].addScore(1);
+    secondRound[1] = new Car();
+    secondRound[1].addScore(1);
+    secondRound[2] = new Car();
+    secondRound[2].addScore(1);
   }
 
   @Test
@@ -53,17 +66,5 @@ public class ResultTest {
 
     assertThat(merged).extracting("score")
         .containsExactly(3, 2, 1);
-  }
-
-  // 테스트용
-  private Car[] createCars(int[] scores) {
-    Car[] cars = new Car[scores.length];
-    for (int i = 0; i < scores.length; i++) {
-      cars[i] = new Car();
-      for (int j = 0; j < scores[i]; j++) {
-        cars[i].move();
-      }
-    }
-    return cars;
   }
 }

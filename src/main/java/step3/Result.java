@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Result {
 
-  Map<Integer, Car[]> result;
+  private final Map<Integer, Car[]> result;
 
   public Result() {
     result = new HashMap<>();
@@ -17,7 +17,7 @@ public class Result {
     }
 
     for (int i = 0; i < roundResult.length; i++) {
-      roundResult[i].mergeScore(result.get(round - 1)[i].getScore());
+      roundResult[i].addScore(result.get(round - 1)[i].getScore());
     }
 
     return roundResult;

@@ -18,9 +18,8 @@ public class CarTest {
   void mergeScore() {
     Car car = new Car();
     car.move();
-    car.move();
 
-    car.mergeScore(3);
-    assertEquals(5, car.getScore());
+    car.addScore(3);
+    assertEquals(4, car.getScore());
   }
 }

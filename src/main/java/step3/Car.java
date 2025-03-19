@@ -2,14 +2,15 @@ package step3;
 
 public class Car {
 
+  private static final int DEFAULT_SCORE = 0;
   private int score;
 
   public Car() {
-    this.score = 0;
+    this.score = DEFAULT_SCORE;
   }
 
-  public void mergeScore(int previousScore) {
-    this.score += previousScore;
+  public void addScore(int additionalScore) {
+    this.score += additionalScore;
   }
 
   public int getScore() {
