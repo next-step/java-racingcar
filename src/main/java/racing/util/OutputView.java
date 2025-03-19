@@ -1,7 +1,7 @@
 package racing.util;
 
+import racing.property.CarRacingGameProperty;
 import racing.types.Car;
-import racing.types.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ public class OutputView {
     cars.forEach(racingCar -> {
       String name = racingCar.getName();
 
-      String output = (CarName.DEFAULT_NAME.equals(name))
+      String output = (CarRacingGameProperty.CAR_DEFAULT_NAME.equals(name))
           ? "-".repeat(Math.max(0, racingCar.getLocation()))
           : name + " : " + "-".repeat(Math.max(0, racingCar.getLocation()));
 

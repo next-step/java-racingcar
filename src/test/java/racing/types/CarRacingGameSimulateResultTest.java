@@ -12,24 +12,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarRacingGameSimulateResultTest {
 
-  @DisplayName("생성자 호출 시 시뮬레이션 결과에 null이 들어가면 RuntimeException을 던진다.")
-  @Test
-  public void constructor_givenNull_throwRuntimeException() {
-    assertThatThrownBy(() -> CarRacingGameSimulateResult.valueOf(null))
-        .isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("시뮬레이션 결과는 null이 들어갈 수 없습니다.");
-  }
-
-  @DisplayName("생성자 호출 시 한 라운드의 결과에 null이 있으면 RuntimeException을 던진다.")
-  @Test
-  public void constructor_givenNullRoundResult_throwRuntimeException() {
-    List<List<Car>> simulationResult = new ArrayList<>();
-    simulationResult.add(null);
-    assertThatThrownBy(() -> CarRacingGameSimulateResult.valueOf(simulationResult))
-        .isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("시뮬레이션 각 라운드 결과에서 null이 들어갈 수 없습니다.");
-  }
-
   @DisplayName("생성자 호출 시 한 라운드의 결과에 빈 결과가 있으면 RuntimeException을 던진다.")
   @Test
   public void constructor_givenEmptyRoundResult_throwRuntimeException() {

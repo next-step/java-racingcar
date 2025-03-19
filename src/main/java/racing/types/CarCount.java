@@ -1,8 +1,8 @@
 package racing.types;
 
-public class CarCount {
+import racing.property.CarRacingGameProperty;
 
-  public static final int MIN_CAR_COUNT = 2;
+public class CarCount {
 
   private final int count;
 
@@ -11,8 +11,8 @@ public class CarCount {
   }
 
   private CarCount(int carCount) {
-    if (carCount < MIN_CAR_COUNT) {
-      throw new IllegalArgumentException("자동차 수는 최소 " + MIN_CAR_COUNT + "대여야 합니다.");
+    if (carCount < CarRacingGameProperty.MIN_CAR_COUNT) {
+      throw new IllegalArgumentException("자동차 수는 최소 " + CarRacingGameProperty.MIN_CAR_COUNT + "대여야 합니다.");
     }
     this.count = carCount;
   }

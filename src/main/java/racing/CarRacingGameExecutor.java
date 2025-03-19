@@ -2,14 +2,11 @@ package racing;
 
 import racing.simulator.CarRacingGameSimulator;
 import racing.simulator.RandomCarMovingStrategy;
-import racing.types.Car;
 import racing.types.CarCount;
-import racing.types.CarRacingGameSimulateResult;
 import racing.types.SimulateCount;
 import racing.util.InputView;
 import racing.util.OutputView;
 
-import java.util.List;
 
 public class CarRacingGameExecutor {
 

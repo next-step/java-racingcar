@@ -1,14 +1,15 @@
 package racing.types;
 
+import racing.property.CarRacingGameProperty;
+
 public class CarName {
 
-  public static final String DEFAULT_NAME = "unknown";
   private static final int MAZ_CAR_NAME_LEN = 5;
 
   private final String name;
 
   public CarName() {
-    this.name = DEFAULT_NAME;
+    this.name = CarRacingGameProperty.CAR_DEFAULT_NAME;
   }
 
   public static CarName valueOf(String carName) {

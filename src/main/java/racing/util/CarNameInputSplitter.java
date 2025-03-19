@@ -1,6 +1,6 @@
 package racing.util;
 
-import racing.types.CarCount;
+import racing.property.CarRacingGameProperty;
 import racing.types.CarName;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class CarNameInputSplitter {
     }
 
     List<String> nameList = List.of(racingCarNames.split(","));
-    if (nameList.size() < CarCount.MIN_CAR_COUNT) {
+    if (nameList.size() < CarRacingGameProperty.MIN_CAR_COUNT) {
       throw new IllegalArgumentException("차 이름들의 값은 2개 이상으로 들어와야 합니다.");
     }
 

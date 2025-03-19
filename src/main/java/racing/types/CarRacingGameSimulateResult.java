@@ -11,12 +11,6 @@ public class CarRacingGameSimulateResult {
   }
 
   private CarRacingGameSimulateResult(List<List<Car>> simulateResult) {
-    if (simulateResult == null) {
-      throw new IllegalArgumentException("시뮬레이션 결과는 null이 들어갈 수 없습니다.");
-    }
-    if (simulateResult.stream().anyMatch(Objects::isNull)) {
-      throw new IllegalArgumentException("시뮬레이션 각 라운드 결과에서 null이 들어갈 수 없습니다.");
-    }
     if (simulateResult.stream().anyMatch(List::isEmpty)) {
       throw new IllegalArgumentException("시뮬레이션 각 라운드 결과에서 빈 결과가 들어갈 수 없습니다.");
     }

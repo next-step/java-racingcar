@@ -8,9 +8,24 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class CarGroupTest {
+
+  @DisplayName("생성자에 중복된 차 이름이 들어오면 RuntimeException을 던진다.")
+  @Test
+  void constructor_duplicateCarName_throwsRuntimeException() {
+    List<CarName> names = List.of(
+        CarName.valueOf("A"),
+        CarName.valueOf("A"),
+        CarName.valueOf("A")
+    );
+
+    assertThatThrownBy(() -> CarGroup.valueOf(names))
+        .isInstanceOf(RuntimeException.class)
+        .hasMessageContaining("차 이름은 중복될 수 없습니다.");
+  }
 
   @DisplayName("차들을 move 하면 전략에 따라 차를 움직인다.")
   @ParameterizedTest

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.property.CarRacingGameProperty;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -14,7 +15,7 @@ public class CarNameTest {
   @DisplayName("자동차 이름을 할당하지 않으면 default 값으로 생성한다.")
   @Test
   void constructor_givenNotCarName_assignDefaultCarName() {
-    assertThat(new Car().getName()).isEqualTo(CarName.DEFAULT_NAME);
+    assertThat(new Car().getName()).isEqualTo(CarRacingGameProperty.CAR_DEFAULT_NAME);
   }
 
   @DisplayName("자동차 이름의 길이는 5 이하이다.")

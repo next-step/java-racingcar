@@ -3,7 +3,9 @@ package racing.types;
 import racing.simulator.CarMovingStrategy;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarGroup {
 
@@ -18,9 +20,19 @@ public class CarGroup {
   }
 
   private CarGroup(List<CarName> carNames) {
+    if (hasDuplicateNames(carNames)) {
+      throw new IllegalArgumentException("차 이름은 중복될 수 없습니다.");
+    }
+
     for (CarName name : carNames) {
       cars.add(Car.valueOf(name));
     }
+  }
+
+  private boolean hasDuplicateNames(List<CarName> carNames) {
+    Set<String> uniqueNames = new HashSet<>();
+    return carNames.stream()
+        .anyMatch(carName -> !uniqueNames.add(carName.getName()));
   }
 
   private CarGroup(CarCount carCount) {
