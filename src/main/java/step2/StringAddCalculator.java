@@ -106,7 +106,7 @@ public class StringAddCalculator {
     }
 
     public boolean checkIfEmptyInput (String input) {
-        if (input == null || input.isEmpty()) {
+        if (input == null || input.isBlank()) {
             return true;
         }
         return false;
