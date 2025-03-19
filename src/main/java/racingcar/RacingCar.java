@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Cars;
+import racingcar.utils.NumberUtils;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -11,8 +12,8 @@ public class RacingCar {
     }
 
     private static void play() {
-        int carCount = InputView.getCarCount();
-        int tryCount = InputView.getTryCount();
+        int carCount = NumberUtils.toInt(InputView.getCarCount());
+        int tryCount = NumberUtils.toInt(InputView.getTryCount());
 
         Cars cars = CarManager.initCars(carCount);
         ResultView.print(cars, tryCount);
