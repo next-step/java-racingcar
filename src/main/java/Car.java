@@ -1,4 +1,8 @@
 public class Car {
+
+    static final int MOVE_THRESHOLD = 4;
+    static final int CAR_NAME_THRESHOLD = 5;
+
     private int distance;
     private String carName;
 
@@ -7,6 +11,9 @@ public class Car {
     }
 
     public Car(String carName) {
+        if(carName == null || carName.isBlank() || carName.length() > CAR_NAME_THRESHOLD){
+            throw new IllegalArgumentException(Messages.ERROR_CAR_NAME_LENGTH);
+        }
         this.distance = 0;
         this.carName = carName;
     }
@@ -24,6 +31,6 @@ public class Car {
     }
 
     public boolean isMovable(int randomNumber) {
-        return randomNumber >= Constants.MOVE_THRESHOLD;
+        return randomNumber >= MOVE_THRESHOLD;
     }
 }

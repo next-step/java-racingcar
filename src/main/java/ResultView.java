@@ -23,30 +23,7 @@ public class ResultView {
         println(Messages.ASK_CAR_NAMES);
     }
 
-    public static void askCarCounts() {
-        println(Messages.ASK_CAR_COUNT);
-    }
-
-    public static void askTryTimes() {
-        println(Messages.ASK_TRY_TIMES);
-    }
-
-    public static void printResult() {
-        println(Messages.RACE_RESULT);
-    }
-
     public static void printWinner(List<Car> cars) {
-        println(getWinner(cars) + Messages.RACE_WINNER);
+        println(cars.stream().map(Car::getCarName).collect(Collectors.joining(", ")) + Messages.RACE_WINNER);
     }
-
-    public static String getWinner(List<Car> cars) {
-
-        int maxDistance = cars.stream().max(Comparator.comparing(Car::getDistance)).get().getDistance();
-
-        List<Car> maxCars = cars.stream().collect(Collectors.groupingBy(Car::getDistance)).get(maxDistance);
-
-        return maxCars.stream().map(Car::getCarName).collect(Collectors.joining(","));
-    }
-
-
 }

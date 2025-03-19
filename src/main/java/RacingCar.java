@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCar {
 
@@ -7,47 +9,20 @@ public class RacingCar {
 
 //        int carCount = InputView.getAnswerToInteger(Messages.ASK_CAR_COUNT);
 
-        ResultView.askCarNames();
-
         String[] carNames = InputView.getCarNames();
 
-        List<Car> cars = generateCarsWithName(carNames);
+        List<Car> cars = CarUtils.generateCarsWithName(carNames);
 
-        ResultView.askTryTimes();
+        int tryTimes = InputView.getAnswerToInteger(Messages.ASK_TRY_TIMES);
 
-        int tryTimes = InputView.getAnswerToInteger();
-
-        ResultView.printResult();
+        ResultView.println(Messages.RACE_RESULT);
 
         for (int j = 0; j < tryTimes; j++) {
-            moveCars(cars);
+            CarUtils.moveCars(cars);
         }
 
-        ResultView.printWinner(cars);
+        List<Car> winnerCars = CarUtils.getWinnerCars(cars);
 
-    }
-
-    private static void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            car.move(RandomUtils.generateRandomNumber(10));
-            ResultView.printResultWithName(car);
-        }
-        ResultView.println("");
-    }
-
-    private static List<Car> generateCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-        return cars;
-    }
-
-    private static List<Car> generateCarsWithName(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
-        }
-        return cars;
+        ResultView.printWinner(winnerCars);
     }
 }

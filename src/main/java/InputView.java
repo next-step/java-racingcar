@@ -5,8 +5,9 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int getAnswerToInteger() {
+    public static int getAnswerToInteger(String question) {
         while (true) {
+            ResultView.println(question);
             try {
                 return scanner.nextInt();
             } catch (Exception e) {
@@ -17,6 +18,7 @@ public class InputView {
 
     public static String[] getCarNames() {
         while (true) {
+            ResultView.askCarNames();
             try {
                 String str = scanner.next();
                 return str.split(",");

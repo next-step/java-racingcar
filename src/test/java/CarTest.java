@@ -2,8 +2,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -25,7 +28,7 @@ class CarTest {
     @DisplayName(value = "랜덤 함수가 4 이상인 경우 true / 미만이면 false 인지 검증")
     void 차량_전진여부_테스트() {
         int randomNum = RandomUtils.generateRandomNumber(10);
-        assertThat(randomNum >= Constants.MOVE_THRESHOLD).isEqualTo(car.isMovable(randomNum));
+        assertThat(randomNum >= Car.MOVE_THRESHOLD).isEqualTo(car.isMovable(randomNum));
     }
 
     @Test
@@ -38,18 +41,23 @@ class CarTest {
     @Test
     @DisplayName(value = "승자 테스트")
     void 승자_출력_테스트() {
-        ArrayList<Car> cars = new ArrayList<Car>();
-        Car a = new Car("a");
-        a.move(4);
-        cars.add(a);
-        Car b = new Car("b");
-        cars.add(b);
-        b.move(4);
-        Car c = new Car("c");
-        cars.add(c);
-        b.move(1);
+        List<Car> cars = List.of(
+                new Car("a"),
+                new Car("b"),
+                new Car("c")
+        );
+        cars.get(0).move(4);
+        cars.get(1).move(4);
+        cars.get(2).move(1);
 
-        assertThat(ResultView.getWinner(cars)).isEqualTo("a,b");
+        assertThat(CarUtils.getWinnerCars(cars)).isEqualTo(List.of(cars.get(0), cars.get(1)));
     }
 
+    @Test
+    @DisplayName(value = "차량 이름 5글자 넘어간 경우 에러 케이스")
+    void 차량명_초과_테스트() {
+        assertThatThrownBy(() -> {
+            new Car("가나다라마바");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
