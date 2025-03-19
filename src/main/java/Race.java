@@ -5,7 +5,6 @@ import java.util.Random;
 public class Race {
 
     private static final Random random = new Random();
-    private static final int MOVEMENT_THRESHOLD = 4;
     private final int totalRounds;
     private final List<Car> cars;
     private int currentRound = 0;
@@ -36,22 +35,12 @@ public class Race {
         }
 
         for (Car car : cars) {
-            moveCar(car, random.nextInt(10));
+            car.move(random.nextInt(10));
         }
         currentRound++;
     }
 
     public boolean isRaceInProgress() {
         return currentRound < totalRounds;
-    }
-
-    public void moveCar(Car car, int seed) {
-        if (seed < 0 || seed > 9) {
-            throw new IllegalArgumentException("Invalid seed: " + seed);
-        }
-
-        if (seed >= MOVEMENT_THRESHOLD) {
-            car.move();
-        }
     }
 }

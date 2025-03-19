@@ -70,34 +70,4 @@ class RaceTest {
         }
         assertThrows(IllegalStateException.class, race::runRound);
     }
-
-    @Test
-    @DisplayName("랜덤 변수가 4이상이면 차가 한 칸 움직인다.")
-    void carMovesOneStepIfRandomNumberIsGreaterThanEqual4() {
-        Race race = new Race(new GameSettings(5, 3));
-
-        for (int i = 0; i < 4; i++) {
-            Car car = new Car();
-            race.moveCar(car, i);
-            assertThat(car.getPosition()).isEqualTo(0);
-        }
-        for (int i = 4; i < 10; i++) {
-            Car car = new Car();
-            race.moveCar(car, i);
-            assertThat(car.getPosition()).isEqualTo(1);
-        }
-    }
-
-    @Test
-    @DisplayName("자동차를 움직이는 변수는 0에서 9사이의 값이다.")
-    void carMoveVariableIsBetween0And9() {
-        Race race = new Race(new GameSettings(5, 3));
-        Car car = new Car();
-        assertThrows(IllegalArgumentException.class, () -> {
-            race.moveCar(car, -1);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            race.moveCar(car, 10);
-        });
-    }
 }
