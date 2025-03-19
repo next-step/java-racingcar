@@ -27,7 +27,6 @@ public class SetCollectionTest {
     void successSetSize() {
         int expected = numbers.size();
 
-        //then
         assertThat(numbers).hasSize(expected);
     }
 
