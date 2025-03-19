@@ -31,11 +31,14 @@ public class StringAddCalculator {
 
     public int[] splitNumbers(String numbers, String separators) {
         String regex = createRegex(separators);
+        String[] tokens = numbers.split(regex);
 
-        // [TODO] 강의에서 로또 미션 전까지는 stream 사용 없이 해보라는 조언
-        return Arrays.stream(numbers.split(regex))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+        int[] result = new int[tokens.length];
+        for(int i=0; i<tokens.length; i++) {
+            result[i] = Integer.parseInt(tokens[i].trim());
+        }
+
+        return result;
     }
 
     public int addNumbersInArray(int[] numbers) {
