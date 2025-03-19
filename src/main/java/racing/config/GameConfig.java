@@ -1,16 +1,16 @@
 package racing.config;
 
 public class GameConfig {
-    int carCount;
+    String[] carNames;
     int attemptCount;
 
-    public GameConfig(int carCount, int attemptCount) {
-        this.carCount = carCount;
+    public GameConfig(String[] carNames, int attemptCount) {
+        this.carNames = carNames;
         this.attemptCount = attemptCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String[] getCarNames() {
+        return carNames;
     }
 
     public int getAttemptCount() {
