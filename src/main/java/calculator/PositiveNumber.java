@@ -26,6 +26,10 @@ public class PositiveNumber {
         return this.value;
     }
 
+    public PositiveNumber sum(PositiveNumber other) {
+        return new PositiveNumber(this.value + other.value);
+    }
+
     private static void validatePositive(int number) {
         if (number < 0) {
             throw new NotPositiveNumberException();

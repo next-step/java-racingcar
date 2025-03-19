@@ -15,14 +15,14 @@ class PositiveNumbersTest {
     void sum() {
         String[] numbers = {"1", "2", "3"};
         PositiveNumbers positiveNumbers = new PositiveNumbers(numbers);
-        assertThat(positiveNumbers.sumPositiveNumber()).isEqualTo(6);
+        assertThat(positiveNumbers.sum()).isEqualTo(6);
     }
 
     @DisplayName("빈 리스트를 전달하면 덧셈 결과 0을 반환한다.")
     @Test
     void emptyListReturnZero() {
         PositiveNumbers positiveNumbers = new PositiveNumbers(new String[]{});
-        assertThat(positiveNumbers.sumPositiveNumber()).isZero();
+        assertThat(positiveNumbers.sum()).isZero();
     }
 
     @DisplayName("숫자 이외의 문자열을 전달하는 경우 InvalidNumberFormatException 예외를 반환한다.")

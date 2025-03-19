@@ -18,9 +18,9 @@ public class PositiveNumbers {
             .collect(Collectors.toList());
     }
 
-    public int sumPositiveNumber() {
+    public int sum() {
         return positiveNumbers.stream()
-            .mapToInt(PositiveNumber::getValue)
-            .sum();
+            .reduce(new PositiveNumber(0), PositiveNumber::sum)
+            .getValue();
     }
 }
