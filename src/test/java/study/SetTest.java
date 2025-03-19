@@ -27,29 +27,20 @@ public class SetTest {
     @Test
     @DisplayName("요구사항1: set size")
     void req1() {
-        assertThat( numbers.size() ).isEqualTo( 3 );
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @DisplayName("요구사항2: ParameterizedTest - ValueSource")
     @ValueSource( ints = {1, 2, 3} )
     void req2(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
     @DisplayName("요구사항3: ParameterizedTest - CsvSource")
     @CsvSource(value =  {"1:True", "2:True", "3:True", "4:False", "5:False"}, delimiter = ':')
-    void req3(String input, String expected) {
-
-        // given
-        Integer i = Integer.parseInt( input );
-        Boolean e = Boolean.parseBoolean( expected );
-
-        // then
-        assertThat( numbers.contains(i) ).isEqualTo( e );
+    void req3(int i, boolean e) {
+        assertThat(numbers.contains(i)).isEqualTo( e );
     }
-
-
-
 }
