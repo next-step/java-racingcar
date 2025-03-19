@@ -1,18 +1,31 @@
 package racing;
 
+import racing.entity.RacingCars;
 import racing.entity.RacingGame;
-import racing.message.GameMessage;
-import racing.rule.MoveRule;
-import racing.rule.RacingGameMoveRule;
+import racing.rule.RandomMoveRule;
 import racing.view.RacingGameInputView;
+import racing.view.RacingGameOutputView;
+
+import java.util.List;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
-        int carCount = RacingGameInputView.getIntegerInput(GameMessage.CAR_COUNT_MESSAGE);
-        int roundCount = RacingGameInputView.getIntegerInput(GameMessage.ATTEMPT_COUNT_MESSAGE);
-        MoveRule moveRule = new RacingGameMoveRule();
+        // 레이싱 게임 입력
+        RacingCars racingCars = RacingGameInputView.getCarsInput();
+        int roundCount = RacingGameInputView.getRoundCountInput();
+        RandomMoveRule randomMoveRule = new RandomMoveRule();
 
-        RacingGame racingGame = new RacingGame(carCount, roundCount, moveRule);
-        racingGame.playRacingGame();
+        // 레이싱 게임 진행
+        RacingGame racingGame = new RacingGame(randomMoveRule);
+
+        RacingGameOutputView.printHeadOfOutputMessage();
+        for (int i = 0; i < roundCount; i++) {
+            racingGame.playRound(racingCars);
+            RacingGameOutputView.printRoundResult(racingCars);
+        }
+
+        // 우승자 발표
+        List<String> winners = racingGame.getWinners(racingCars);
+        RacingGameOutputView.printRacingGameWinners(winners);
     }
 }
