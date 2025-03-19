@@ -8,6 +8,10 @@ public class Car {
     private final static int MOVE_BOUND = 4;
     private final static int MOVE_STEP = 1;
 
+    public Car(String name) {
+        this.name = name;
+    }
+
     /**
      * 자동차를 앞으로 전진시킵니다.
      */
@@ -20,10 +24,6 @@ public class Car {
 
     public int getPosition() {
         return position;
-    }
-
-    public void changeCarName(String carName) {
-        this.name = carName;
     }
 
     public String getName() {
