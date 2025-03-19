@@ -1,21 +1,18 @@
 package ui;
 
 import racing.GrandPrix;
-import racing.Reports.ScoreBoard;
+import racing.Report;
+
+import java.util.stream.IntStream;
 
 public class OutputView {
-    private static final ScoreBoard consoleScoreBoard = new ConsoleScoreBoard();
-
     public static void printResult(GrandPrix grandPrix) {
-        var reports = grandPrix.report();
-        reports.print(consoleScoreBoard);
+        var report = grandPrix.report();
+        printPosition(grandPrix.getCarCount(), report);
         System.out.println();
     }
 
-    public static class ConsoleScoreBoard implements ScoreBoard {
-        @Override
-        public void print(int position) {
-            System.out.println("-".repeat(position));
-        }
+    private static void printPosition(Integer carCount, Report report) {
+        IntStream.range(0, carCount).forEach(index -> System.out.println("-".repeat(report.findPositionByIndex(index))));
     }
 }

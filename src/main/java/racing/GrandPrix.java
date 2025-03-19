@@ -29,7 +29,11 @@ public class GrandPrix {
         currentRound++;
     }
 
-    public Reports report() {
-        return new Reports(cars);
+    public Report report() {
+        return new Report(cars);
+    }
+
+    public Integer getCarCount() {
+        return cars.size();
     }
 }
