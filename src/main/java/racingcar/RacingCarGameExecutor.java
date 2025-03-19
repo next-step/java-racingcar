@@ -8,11 +8,13 @@ import java.util.List;
 
 public class RacingCarGameExecutor {
     public static void main(String[] args) {
-        int carCount = getCarCount();
+        String[] carNames = InputView.getCarNames();
         int tryCount = getTryCount();
 
-        List<Car> cars = Cars.initializeCars(carCount);
-        moveCar(cars, tryCount);
+        Cars cars = new Cars(carNames);
+        cars.move(tryCount);
+        List<Car> winners = cars.getWinners();
+        ResultView.showCarGameWinners(winners);
     }
 
     public static int getCarCount() {
@@ -23,21 +25,5 @@ public class RacingCarGameExecutor {
     public static int getTryCount() {
         int tryCount = InputView.getTryCountInput();
         return InputValidator.checkValidTryCount(tryCount);
-    }
-
-    public static void getCarResults(List<Car> car) {
-        ResultView.showCarGameResult(car);
-    }
-
-    public static void moveCar(List<Car> cars, int tryCount) {
-        ResultView.showResultMessage();
-        for (int index = 0; index < tryCount; index++) {
-            moveCarPerRound(cars);
-        }
-    }
-
-    public static void moveCarPerRound(List<Car> cars) {
-        Cars.move(cars);
-        getCarResults(cars);
     }
 }
