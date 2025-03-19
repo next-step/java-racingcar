@@ -17,13 +17,13 @@ public class ResultView {
         printStream.println("실행 결과");
         List<RoundResult> allRoundResults = result.getAllRoundResults();
         for (int i = 0; i < allRoundResults.size(); i++) {
-            printRoundResult(allRoundResults, i);
+            printRoundResult(allRoundResults.get(i));
+            printEmptyLineBetweenRounds(i, allRoundResults.size());
         }
     }
 
-    private void printRoundResult(List<RoundResult> allRoundResults, int i) {
-        printRoundResult(allRoundResults.get(i));
-        if (i < allRoundResults.size() - 1) printStream.println();
+    private void printEmptyLineBetweenRounds(int i, int size) {
+        if (i < size- 1) printStream.println();
     }
 
     private void printRoundResult(RoundResult roundResult) {

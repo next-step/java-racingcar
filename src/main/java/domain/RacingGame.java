@@ -24,10 +24,14 @@ public class RacingGame {
     public RacingGameResult gameStart() {
         RacingGameResult racingGameResult = new RacingGameResult();
         for (int i = 0; i < numberOfTrial; i++) {
-            moveCars();
-            racingGameResult.addRoundResult(new RoundResult(racingCars));
+            progressRound(racingGameResult);
         }
         return racingGameResult;
+    }
+
+    private void progressRound(RacingGameResult racingGameResult) {
+        moveCars();
+        racingGameResult.addRoundResult(new RoundResult(racingCars));
     }
 
     private void moveCars() {

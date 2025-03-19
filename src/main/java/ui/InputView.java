@@ -27,7 +27,7 @@ public class InputView {
         try {
             number = scanner.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("유효하지 않은 입력입니다. 정수를 입력하세요."); // 오류 메시지 출력
+            System.out.println("유효하지 않은 입력입니다. 정수를 입력하세요.");
             scanner.nextLine(); // 잘못된 입력을 버퍼에서 제거
         }
         return number;

@@ -23,9 +23,8 @@ class RacingGameTest {
     @CsvSource(value = {"0, 1", "1, 0", "0, 0", "-1, 1", "1, -1", "-1, -1"})
     void test(Integer numberOfCar, Integer numberOfRacing) {
         // When & Then
-        assertThatThrownBy(() -> {
-            new RacingGame(numberOfCar, numberOfRacing, alwaysMove);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new RacingGame(numberOfCar, numberOfRacing, alwaysMove))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차의 수 또는 시도 횟수가 0보다 큰 경우 예외 발생하지 않음")

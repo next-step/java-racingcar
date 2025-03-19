@@ -1,5 +1,4 @@
 import domain.RacingGame;
-import domain.RacingGameResult;
 import movingStrategy.RandomlyMove;
 import ui.InputView;
 import ui.ResultView;
@@ -13,10 +12,12 @@ public class RacingGameApplication {
 
         String carCountPrompt = "자동차 대수는 몇 대 인가요?";
         String trialCountPrompt = "시도할 회수는 몇 회 인가요?";
+        int bound = 10;
+        int threshold = 4;
 
         Integer numberOfCar = inputView.queryIntegerInputWithPrompt(carCountPrompt);
         Integer numberOfTrial = inputView.queryIntegerInputWithPrompt(trialCountPrompt);
-        RacingGame racingGame = new RacingGame(numberOfCar, numberOfTrial, new RandomlyMove(10, 4));
+        RacingGame racingGame = new RacingGame(numberOfCar, numberOfTrial, new RandomlyMove(bound, threshold));
 
         new ResultView(System.out).printResult(racingGame.gameStart());
     }
