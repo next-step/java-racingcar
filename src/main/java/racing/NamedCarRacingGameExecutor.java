@@ -5,9 +5,9 @@ import racing.simulator.RandomCarMovingStrategy;
 import racing.types.CarName;
 import racing.types.CarRacingGameSimulateResult;
 import racing.types.SimulateCount;
+import racing.util.CarNameInputSplitter;
 import racing.util.InputView;
 import racing.util.OutputView;
-import racing.util.CarNameInputSplitter;
 
 import java.util.List;
 

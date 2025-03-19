@@ -1,6 +1,7 @@
 package racing.types;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRacingGameSimulateResult {
@@ -23,7 +24,8 @@ public class CarRacingGameSimulateResult {
   }
 
   public List<Car> getWinner() {
-    List<Car> lastSimulateResult =  this.simulateResult.get(this.simulateResult.size() - 1);;
+    List<Car> lastSimulateResult = this.simulateResult.get(this.simulateResult.size() - 1);
+    ;
 
     if (lastSimulateResult.isEmpty()) {
       return Collections.emptyList();
