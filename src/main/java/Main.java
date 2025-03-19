@@ -1,7 +1,7 @@
 
 
-import UI.InputView;
-import UI.ResultView;
+import ui.InputView;
+import ui.ResultView;
 import model.Racing;
 
 public class Main {
