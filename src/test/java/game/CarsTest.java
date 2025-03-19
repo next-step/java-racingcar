@@ -32,4 +32,50 @@ class CarsTest {
         Assertions.assertThat(cars.positionByName())
                 .containsExactly(new AbstractMap.SimpleEntry<>("a", 0), new AbstractMap.SimpleEntry<>("b", 0), new AbstractMap.SimpleEntry<>("c", 0));
     }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차가 우승한다.")
+    void winners() {
+        // 우승자 찾기
+        Car car1 = new Car(new CarName("car1"));
+        Car car2 = new Car(new CarName("car2"));
+        Car car3 = new Car(new CarName("car3"));
+        car1.move(4);
+        car1.move(4);
+        car1.move(4);
+        car2.move(4);
+        car2.move(4);
+        car2.move(3);
+        car3.move(4);
+        car3.move(3);
+        car3.move(3);
+        Cars cars = new Cars(List.of(car1, car2, car3));
+        // when
+        List<String> winners = cars.winners();
+        // then
+        Assertions.assertThat(winners).containsExactly("car1");
+    }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차가 하나 이상인 경우 우승자는 한명 이상일 수 있다.")
+    void winners_우승자여러명() {
+        // 우승자 찾기
+        Car car1 = new Car(new CarName("car1"));
+        Car car2 = new Car(new CarName("car2"));
+        Car car3 = new Car(new CarName("car3"));
+        car1.move(4);
+        car1.move(4);
+        car1.move(4);
+        car2.move(4);
+        car2.move(4);
+        car2.move(4);
+        car3.move(4);
+        car3.move(3);
+        car3.move(3);
+        Cars cars = new Cars(List.of(car1, car2, car3));
+        // when
+        List<String> winners = cars.winners();
+        // then
+        Assertions.assertThat(winners).containsExactly("car1", "car2");
+    }
 }

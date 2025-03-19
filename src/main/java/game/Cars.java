@@ -10,11 +10,15 @@ import static view.ResultView.WINNERS_DELIMITER;
 public class Cars {
     private final List<Car> cars;
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public Cars(CarNames carNames) {
         this.cars = from(carNames);
     }
 
-    private static List<Car> from(CarNames carNames) {
+    private List<Car> from(CarNames carNames) {
         List<Car> cars = new ArrayList<>();
         for (String username : carNames.names()) {
             cars.add(new Car(new CarName(username)));
