@@ -3,6 +3,7 @@ package racingcar.model;
 public class Position {
 
     private int position;
+
     private static final String DELIMITER = "-";
 
     public Position() {
@@ -14,7 +15,7 @@ public class Position {
     }
 
     public void incrementPosition() {
-        position += 1;
+        position ++;
     }
 
     public boolean isSameAs(Position other) {

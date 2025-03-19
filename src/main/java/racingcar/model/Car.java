@@ -4,6 +4,7 @@ package racingcar.model;
 public class Car {
 
     private final Position position;
+
     private static final int MOVE_CONDITION_NUMBER = 4;
 
     public Car() {
@@ -20,7 +21,7 @@ public class Car {
         }
     }
 
-    private static boolean canMove(int randomValue) {
+    private boolean canMove(int randomValue) {
         return randomValue >= MOVE_CONDITION_NUMBER;
     }
 

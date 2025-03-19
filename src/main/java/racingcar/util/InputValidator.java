@@ -6,9 +6,13 @@ import static racingcar.message.ErrorMessage.POSITIVE_NUMBER;
 
 public class InputValidator {
 
+    private InputValidator() {}
+
     public static int validatePositiveNumber(String input) {
         int number = InputView.convertToInt(input);
+
         validatePositive(number);
+
         return number;
     }
 
