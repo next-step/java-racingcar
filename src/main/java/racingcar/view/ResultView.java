@@ -1,8 +1,8 @@
-package view;
+package racingcar.view;
 
 import java.util.stream.IntStream;
 
-import domain.Cars;
+import racingcar.domain.Cars;
 
 public class ResultView {
 

@@ -1,4 +1,4 @@
-package policy;
+package racingcar.policy;
 
 public interface CarMovementPolicy {
 

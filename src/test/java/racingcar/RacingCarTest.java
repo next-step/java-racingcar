@@ -1,8 +1,10 @@
-import domain.Car;
-import domain.Cars;
+package racingcar;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import org.junit.jupiter.api.Test;
-import policy.CarMovabilityPolicy;
-import policy.CarImmovablePolicy;
+import racingcar.policy.CarMovabilityPolicy;
+import racingcar.policy.CarImmovablePolicy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package vo;
+package racingcar.vo;
 
 public class CarPosition {
 

@@ -1,4 +1,4 @@
-package policy;
+package racingcar.policy;
 
 import java.util.Random;
 

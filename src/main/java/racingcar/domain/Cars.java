@@ -1,10 +1,10 @@
-package domain;
+package racingcar.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import policy.CarMovementRandomizer;
+import racingcar.policy.CarMovementRandomizer;
 
 public class Cars {
 

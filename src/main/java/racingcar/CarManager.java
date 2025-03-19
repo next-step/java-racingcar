@@ -1,4 +1,6 @@
-import domain.Cars;
+package racingcar;
+
+import racingcar.domain.Cars;
 
 public class CarManager {
 

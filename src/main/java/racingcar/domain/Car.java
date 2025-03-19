@@ -1,7 +1,7 @@
-package domain;
+package racingcar.domain;
 
-import policy.CarMovementPolicy;
-import vo.CarPosition;
+import racingcar.policy.CarMovementPolicy;
+import racingcar.vo.CarPosition;
 
 public class Car {
 
