@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    public int add(String text) {
+    public static int add(String text) {
         if (text == null || text.isBlank()) {
             return 0;
         }
@@ -17,13 +17,13 @@ public class Calculator {
         return parseWithDefaultDelimiter(text);
     }
 
-    private int parseWithDefaultDelimiter(String text) {
+    private static int parseWithDefaultDelimiter(String text) {
         String regex = ",|:";
         String[] strings = text.split(regex);
         return calculateSum(strings);
     }
 
-    private int parseWithCustomDelimiter(String text) {
+    private static int parseWithCustomDelimiter(String text) {
         Pattern pattern = Pattern.compile("//(.)\n(.*)");
         Matcher matcher = pattern.matcher(text);
 
@@ -37,7 +37,7 @@ public class Calculator {
         return 0;
     }
 
-    private int calculateSum(String[] strings) {
+    private static int calculateSum(String[] strings) {
         int sum = 0;
         for (String string : strings) {
             parseValidNumber(string);
@@ -46,7 +46,7 @@ public class Calculator {
         return sum;
     }
 
-    private int parseValidNumber(String text) {
+    private static int parseValidNumber(String text) {
         try {
             int number = Integer.parseInt(text);
             throwIfNegative(number);
@@ -56,7 +56,7 @@ public class Calculator {
         }
     }
 
-    private void throwIfNegative(int number) {
+    private static void throwIfNegative(int number) {
         if (number < 0) {
             throw new RuntimeException();
         }
