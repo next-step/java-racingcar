@@ -1,8 +1,8 @@
 package racing.model;
 
 public class Car {
-    private static final int MOVE_CONDITION = 4;
     public static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_CONDITION = 4;
     private final String name;
     private final int position;
 
@@ -19,14 +19,6 @@ public class Car {
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
     private boolean canMove(int number) {
         return number >= MOVE_CONDITION;
     }
@@ -35,9 +27,17 @@ public class Car {
         return new Car(this.name, this.position + 1);
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void checkNameIsPossible(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(name + " is over " + MAX_NAME_LENGTH + " letters");
         }
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
