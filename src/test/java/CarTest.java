@@ -3,6 +3,7 @@ import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -16,6 +17,19 @@ class CarTest {
 
     @InjectMocks
     private Car car;
+
+    @Test
+    @DisplayName("자동차를 생성합니다")
+    void create_car() {
+        //given
+        String carName = "car1";
+
+        //when
+        Car car = new Car(carName);
+
+        //then
+        assertThat(car.getName()).isEqualTo(carName);
+    }
 
     @DisplayName("숫자가 4보다 같거나 크면 앞으로 전진한다.")
     @ParameterizedTest
