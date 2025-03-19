@@ -1,9 +1,12 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGame {
 
-    private Integer numberOfCar;
-    private Integer numberOfTrial;
+    private final Integer numberOfCar;
+    private final Integer numberOfTrial;
 
     public RacingGame(Integer numberOfCar, Integer numberOfTrial) {
         if (isValid(numberOfCar, numberOfTrial)) {
@@ -19,6 +22,10 @@ public class RacingGame {
     }
 
     public RacingGameResult gameStart() {
-        return new RacingGameResult();
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (int i = 0; i < numberOfCar; i++) {
+            racingCars.add(new RacingCar());
+        }
+        return new RacingGameResult(racingCars);
     }
 }
