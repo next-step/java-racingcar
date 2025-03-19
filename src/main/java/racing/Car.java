@@ -1,18 +1,23 @@
 package racing;
 
 import java.util.Random;
+import java.util.function.BooleanSupplier;
 
 public class Car {
     public static final int MOVE_POWER_BOUND = 10;
     public static final int DEFAULT_MOVE_POWER_CONDITION = 4;
-    public static final CarMoveConditionProvider mustGoMoveConditionProvider = () -> true;
-    public static final CarMoveConditionProvider randomMoveConditionProvider = () -> new Random().nextInt(MOVE_POWER_BOUND) > DEFAULT_MOVE_POWER_CONDITION;
+    public static final BooleanSupplier mustGoMoveConditionSupplier = () -> true;
+    public static final BooleanSupplier randomMoveConditionSupplier = () -> new Random().nextInt(MOVE_POWER_BOUND) >= DEFAULT_MOVE_POWER_CONDITION;
+
     private int position = 1;
+    BooleanSupplier moveConditionSupplier;
+    
+    public Car() {
+        this(randomMoveConditionSupplier);
+    }
 
-    CarMoveConditionProvider provider;
-
-    public Car(CarMoveConditionProvider provider) {
-        this.provider = provider;
+    public Car(BooleanSupplier moveConditionSupplier) {
+        this.moveConditionSupplier = moveConditionSupplier;
     }
 
     public int getPosition() {
@@ -20,7 +25,7 @@ public class Car {
     }
 
     public void move() {
-        if (provider.isMovable()) {
+        if (this.moveConditionSupplier.getAsBoolean()) {
             this.position += 1;
         }
     }
