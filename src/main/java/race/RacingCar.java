@@ -1,15 +1,20 @@
 package race;
 
 public class RacingCar {
-    private final int racingNumber;
+    private static final int MAX_NAME_LENGTH = 5;
+    private final String racingName;
     private int position;
     private final RandomNumberGenerator randomNumberGenerator;
     private final PositionPrinter positionPrinter;
 
-    private RacingCar(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
-        this.racingNumber = racingNumber;
+    private RacingCar(String racingName, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
+        this.racingName = racingName;
         this.randomNumberGenerator = randomNumberGenerator;
         this.positionPrinter = positionPrinter;
+    }
+
+    public static boolean validateName(String carName) {
+        return !carName.isEmpty() && carName.length() <= MAX_NAME_LENGTH;
     }
 
     private boolean shouldMove(int num) {
@@ -25,10 +30,10 @@ public class RacingCar {
     }
 
     public void printPosition() {
-        positionPrinter.printPosition(racingNumber, position);
+        positionPrinter.printPosition(racingName, position);
     }
 
-    static RacingCar create(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
-        return new RacingCar(racingNumber, randomNumberGenerator, positionPrinter);
+    static RacingCar create(String racingName, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
+        return new RacingCar(racingName, randomNumberGenerator, positionPrinter);
     }
 }

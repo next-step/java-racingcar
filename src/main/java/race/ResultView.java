@@ -6,8 +6,8 @@ public class ResultView {
     public static PositionPrinter createPositionPrinter() {
         return new PositionPrinter() {
             @Override
-            public void printPosition(int carNumber, int position) {
-                System.out.println("Car " + String.format("%02d", carNumber + 1) + " : " + "-".repeat(position));
+            public void printPosition(String carName, int position) {
+                System.out.println(String.format("%-5s", carName) + " : " + "-".repeat(position));
             }
         };
     }

@@ -3,16 +3,17 @@ package race;
 public class SimpleRacingGame {
     public static void main(String[] args) {
         RacingTrack racingTrack = new RacingTrack(10, 10);
-        int numOfCars;
+
+        String[] carNames;
         do {
-            numOfCars = InputView.getNumberInput("자동차 대수는 몇 대 인가요? (1-10):");
-        } while (!racingTrack.validateCarCount(numOfCars));
+            carNames = InputView.getStringInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분):", ",");
+        } while (!racingTrack.validateCarNames(carNames));
 
         int numOfAttempts;
         do {
             numOfAttempts = InputView.getNumberInput("시도할 회수는 몇 회 인가요? (1-10):");
         } while (!racingTrack.validateAttemptCount(numOfAttempts));
 
-        racingTrack.startRace(numOfCars, numOfAttempts);
+        racingTrack.startRace(carNames, numOfAttempts);
     }
 }

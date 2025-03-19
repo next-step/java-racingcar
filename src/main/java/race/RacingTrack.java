@@ -14,8 +14,8 @@ public class RacingTrack {
         this.cars = new ArrayList<>();
     }
 
-    public void startRace(int numOfCars, int numOfAttempts) {
-        setupCars(numOfCars);
+    public void startRace(String[] carNames, int numOfAttempts) {
+        setupCars(carNames);
 
         ResultView.printRaceStartMessage();
         for (int i = 0; i < numOfAttempts; i++) {
@@ -24,9 +24,9 @@ public class RacingTrack {
         }
     }
 
-    public void setupCars(int numOfCars) {
-        for (int i = 0; i < numOfCars; i++) {
-            cars.add(RacingCarFactory.create(i, ResultView.createPositionPrinter()));
+    public void setupCars(String[] carNames) {
+        for (String name : carNames) {
+            cars.add(RacingCarFactory.create(name, ResultView.createPositionPrinter()));
         }
     }
 
@@ -42,5 +42,15 @@ public class RacingTrack {
 
     public boolean validateAttemptCount(int num) {
         return num >= 1 && num <= this.maxAttemptCount;
+    }
+
+    public boolean validateCarNames(String[] names) {
+        if (names.length < 1 || names.length > this.maxCarCount) {
+            return false;
+        }
+        for (String name : names) {
+            if (!RacingCar.validateName(name)) return false;
+        }
+        return true;
     }
 }
