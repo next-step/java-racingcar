@@ -5,10 +5,12 @@ import utils.NumberGenerator;
 public class Car {
     private final static int INITIAL_POSITION = 0;
     private final static int BASE_NUMBER = 4;
+    private final static int MAX_NAME_LENGTH = 5;
     private int position = INITIAL_POSITION;
     private final String name;
 
     public Car(String name) {
+        validateName(name);
         this.name = name;
     }
 
@@ -33,5 +35,15 @@ public class Car {
 
     private boolean isAtLeastBaseNumber(int number) {
         return BASE_NUMBER <= number;
+    }
+
+    private void validateName(String name) {
+        if (exceedsMaxNameLength(name)) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+    }
+
+    private boolean exceedsMaxNameLength(String name) {
+        return name.length() > MAX_NAME_LENGTH;
     }
 }
