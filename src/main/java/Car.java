@@ -1,22 +1,29 @@
-import java.util.Random;
-
 public class Car {
     private int distance;
+    private String carName;
 
     public Car() {
         this.distance = 0;
     }
 
+    public Car(String carName) {
+        this.distance = 0;
+        this.carName = carName;
+    }
+
     public int getDistance() {
-        return distance;
+        return this.distance;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 
     public void move(int randomNumber) {
-        if (isMove(randomNumber)) distance++;
+        if (isMovable(randomNumber)) distance++;
     }
 
-    public boolean isMove(int randomNumber) {
-        return randomNumber >= 4;
+    public boolean isMovable(int randomNumber) {
+        return randomNumber >= Constants.MOVE_THRESHOLD;
     }
-
 }

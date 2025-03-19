@@ -5,32 +5,49 @@ public class RacingCar {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.getAnswerToInteger("자동차 대수는 몇 대 인가요?");
+//        int carCount = InputView.getAnswerToInteger(Messages.ASK_CAR_COUNT);
 
-        List<Car> cars = generateCars(carCount);
+        ResultView.askCarNames();
 
-        int tryTimes = InputView.getAnswerToInteger("시도할 회수는 몇 회 인가요?");
+        String[] carNames = InputView.getCarNames();
 
-        ResultView.println("실행 결과");
+        List<Car> cars = generateCarsWithName(carNames);
+
+        ResultView.askTryTimes();
+
+        int tryTimes = InputView.getAnswerToInteger();
+
+        ResultView.printResult();
 
         for (int j = 0; j < tryTimes; j++) {
             moveCars(cars);
-            ResultView.println("");
         }
+
+        ResultView.printWinner(cars);
+
     }
 
-    private static void moveCars(List<Car> carList) {
-        for (Car car : carList) {
+    private static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
             car.move(RandomUtils.generateRandomNumber(10));
-            ResultView.printResult(car);
+            ResultView.printResultWithName(car);
         }
+        ResultView.println("");
     }
 
     private static List<Car> generateCars(int carCount) {
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            cars.add(new Car());
         }
-        return carList;
+        return cars;
+    }
+
+    private static List<Car> generateCarsWithName(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i]));
+        }
+        return cars;
     }
 }
