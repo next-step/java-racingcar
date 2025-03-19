@@ -19,7 +19,7 @@ public class StringTests {
     @Test
     @DisplayName("\"1,\"을 분리하면 \"1\"만 포함하는 배열이 생성된다")
     void splitOne() {
-        assertThat("1".split(",")).containsExactly("1");
+        assertThat("1,".split(",")).containsExactly("1");
     }
 
     @Test
