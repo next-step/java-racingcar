@@ -7,7 +7,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class CarTest {
     @Test
     public void 자동차의_시작위치는_1이다() {
-        Car car = new Car(Car.mustGoMoveConditionSupplier);
+        Car car = new Car();
         assertThat(car.getPosition()).isEqualTo(1);
     }
 

@@ -11,6 +11,10 @@ public class Car {
 
     private int position = 1;
     BooleanSupplier moveConditionSupplier;
+    
+    public Car() {
+        this(randomMoveConditionSupplier);
+    }
 
     public Car(BooleanSupplier moveConditionSupplier) {
         this.moveConditionSupplier = moveConditionSupplier;
