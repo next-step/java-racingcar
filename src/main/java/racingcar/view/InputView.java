@@ -1,14 +1,16 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
   private static final Scanner scanner = new Scanner(System.in); // 단일 Scanner 유지
 
-  public static int inputCarCount() {
-    System.out.println("자동차 대수는 몇 대 인가요?");
-    int carCount = Integer.parseInt(scanner.nextLine().trim());
-    return carCount;
+  public static List<String> inputCarName() {
+    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    String inputName = scanner.nextLine().trim();
+    return Arrays.asList(inputName.split(","));
   }
 
   public static int inputRound() {

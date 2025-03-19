@@ -1,18 +1,24 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.RacingBoard;
+import java.util.stream.Collectors;
+import racingcar.Car;
+import racingcar.Cars;
 
 public class ResultView {
 
-  public static void printResult(List<RacingBoard> racingBoards) {
+  public static void printResult(Cars result) {
     System.out.println("실행 결과");
 
-    racingBoards.forEach(board -> {
-      board.getRecords().forEach(record -> {
-        System.out.println("-".repeat(record));
-      });
-      System.out.println();
-    });
+    String output = result.stream()
+        .map(car -> car.getName() + ":" + "-".repeat(car.getPosition())) // 위치만큼 "-" 생성
+        .collect(Collectors.joining("\n")); // 각 자동차 결과를 줄바꿈으로 연결
+
+    System.out.println(output);
+    System.out.println();
+  }
+
+  public static void printWinner(List<String> winners) {
+    System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
   }
 }
