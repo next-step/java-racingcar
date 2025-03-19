@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.movepolicy.DefaultMoveStrategy;
 import racingcar.movepolicy.MoveStrategy;
 import racingcar.racing.Car;
+import racingcar.racing.Cars;
 import racingcar.racing.Racing;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
@@ -24,7 +25,7 @@ public class Main {
                 .map(name -> new Car(name, moveStrategy))
                 .collect(Collectors.toList());
 
-        Racing racing = new Racing(cars);
+        Racing racing = new Racing(new Cars(cars));
 
         OutputView.showRace(racing, numberOfRounds);
     }

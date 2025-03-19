@@ -1,16 +1,14 @@
 package racingcar.racing;
 
-import java.util.List;
-
 public class Racing {
-    private final List<Car> cars;
+    private final Cars cars;
 
-    public Racing(List<Car> cars) {
+    public Racing(Cars cars) {
         this.cars = cars;
     }
 
-    public void playRound() {
-        cars.forEach(Car::play);
+    public void start() {
+        cars.moveAll();
     }
 
     @Override

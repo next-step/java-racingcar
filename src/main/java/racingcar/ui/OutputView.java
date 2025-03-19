@@ -20,7 +20,7 @@ public class OutputView {
         System.out.println("\n실행결과");
 
         IntStream.range(0, numberOfRounds).forEach(i -> {
-            racing.playRound();
+            racing.start();
             System.out.println(racing);
         });
     }
