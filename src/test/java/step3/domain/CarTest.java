@@ -1,6 +1,5 @@
 package step3.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,12 +9,7 @@ import static step3.domain.Car.STOP;
 
 class CarTest {
 
-    private Car car;
-
-    @BeforeEach
-    void setUp() {
-        car = new Car();
-    }
+    private final Car car = new Car();
 
     @Test
     @DisplayName("랜덤 숫자가 4 이상일 경우 GO 반환")
