@@ -6,11 +6,7 @@ import java.util.regex.Pattern;
 public class Calculator {
 
     public int add(String text) {
-        if (text == null) {
-            return 0;
-        }
-
-        if (text.isEmpty()) {
+        if (text == null || text.isBlank()) {
             return 0;
         }
 
