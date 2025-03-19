@@ -4,16 +4,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static step3.domain.Car.GO;
 
 class CarTest {
 
     @Test
-    @DisplayName("랜덤 숫자가 9일 때 이동한다.")
+    @DisplayName("랜덤 숫자가 9일 때 한칸 이동한다.")
     void move_GO() {
         Car car = createCar(9);
         car.move();
-        assertThat(GO).isEqualTo(car.getPosition());
+        assertThat(1).isEqualTo(car.getPosition());
     }
 
     @Test

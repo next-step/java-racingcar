@@ -3,9 +3,9 @@ package step3.domain;
 import java.util.Random;
 
 public class Car {
-    public static final int MIN_MOVEMENT_THRESHOLD = 4;
-    public static final int GO = 1;
-    public static final int STOP = 0;
+    private static final int MIN_MOVEMENT_THRESHOLD = 4;
+    private static final int GO = 1;
+    private static final int STOP = 0;
 
     private final Random random = new Random();
 
