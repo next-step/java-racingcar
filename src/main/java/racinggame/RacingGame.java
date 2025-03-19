@@ -8,7 +8,9 @@ public class RacingGame {
         List<String> carNames = InputView.getCarNames();
         int rounds = InputView.getRounds();
 
-        Race race = new Race(carNames, new RandomMoveStrategy());
-        OutputView.printRace(race, rounds);
+        Cars cars = Cars.from(carNames, new RandomMoveStrategy());
+
+        OutputView.printRace(cars, rounds);
+        OutputView.printWinners(cars.getWinners());
     }
 }
