@@ -1,15 +1,27 @@
 package racing.simulator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RandomCarMovingStrategyTest {
+
+  @DisplayName("생성자 테스트1")
+  @Test
+  void constructorTest1() {
+    assertDoesNotThrow(() -> new RandomCarMovingStrategy());
+  }
+
+  @DisplayName("생성자 테스트2")
+  @Test
+  void constructorTest2() {
+    assertDoesNotThrow(() -> new RandomCarMovingStrategy(new Random()));
+  }
 
   @DisplayName("움직일지 판단 할 시 3 이하 random 수로 뽑힐시 false를 반환한다.")
   @ParameterizedTest
