@@ -1,25 +1,17 @@
 package racingcar.racing;
 
-import java.util.List;
+import java.util.stream.IntStream;
 
 public class Racing {
-    private final List<Car> cars;
+    private final Cars cars;
+    private final int round;
 
-    public Racing(List<Car> cars) {
+    public Racing(Cars cars, int round) {
         this.cars = cars;
+        this.round = round;
     }
 
-    public void playRound() {
-        cars.forEach(Car::play);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        cars.forEach(car -> {
-            result.append("-".repeat(Math.max(0, car.getDistance())));
-            result.append("\n");
-        });
-        return result.toString();
+    public void start() {
+        IntStream.range(0, round).forEach(i -> cars.moveAll());
     }
 }
