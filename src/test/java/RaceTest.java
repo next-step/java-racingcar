@@ -1,4 +1,5 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
@@ -29,6 +30,10 @@ class RaceTest {
         });
         assertThrows(IllegalArgumentException.class, () -> {
             new Race(new GameSettings(5, 0));
+        });
+
+        assertDoesNotThrow(() -> {
+            new Race(new GameSettings(5, 1));
         });
     }
 
