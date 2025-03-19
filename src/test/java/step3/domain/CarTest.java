@@ -9,7 +9,7 @@ import static step3.domain.Car.GO;
 class CarTest {
 
     @Test
-    @DisplayName("랜덤 숫자가 9일 때 GO 상태로 이동")
+    @DisplayName("랜덤 숫자가 9일 때 이동한다.")
     void move_GO() {
         Car car = createCar(9);
         car.move();
@@ -17,11 +17,11 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("랜덤 숫자가 1일 때 STOP 상태로 이동")
+    @DisplayName("랜덤 숫자가 1일 때 STOP 이므로 이동하지 않는다.")
     void move_STOP() {
         Car car = createCar(1);
         car.move();
-        assertThat("").isEqualTo(car.getPosition());
+        assertThat(0).isEqualTo(car.getPosition());
     }
 
     private Car createCar(int randomNumber) {

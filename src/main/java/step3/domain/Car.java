@@ -4,24 +4,24 @@ import java.util.Random;
 
 public class Car {
     public static final int MIN_MOVEMENT_THRESHOLD = 4;
-    public static final String GO = "-";
-    public static final String STOP = "";
+    public static final int GO = 1;
+    public static final int STOP = 0;
 
     private final Random random = new Random();
 
-    private String position = "";
+    private int position = 0;
 
     public void move() {
-        if (getMovementStatus(generateRandomNumber()).equals(GO)) {
+        if (getMovementStatus(generateRandomNumber()) == GO) {
             position += GO;
         }
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    private String getMovementStatus(int randomNumber) {
+    private int getMovementStatus(int randomNumber) {
         if (randomNumber >= MIN_MOVEMENT_THRESHOLD) {
             return GO;
         }
