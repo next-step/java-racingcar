@@ -1,6 +1,7 @@
 package ui;
 
 import racing.GrandPrix;
+import racing.ZeroToTenDice;
 
 import java.util.Arrays;
 import java.util.Scanner;

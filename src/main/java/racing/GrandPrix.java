@@ -10,9 +10,13 @@ public class GrandPrix {
     private final List<Car> cars;
 
     public GrandPrix(int totalRound, List<String> names) {
+        this(totalRound, names, new ZeroToTenDice());
+    }
+
+    GrandPrix(int totalRound, List<String> names, Dice dice) {
         this.currentRound = 0;
         this.rounds = IntStream.range(0, totalRound)
-                               .mapToObj(i -> new Round(new ZeroToTenDice()))
+                               .mapToObj(i -> new Round(dice))
                                .collect(Collectors.toUnmodifiableList());
         this.cars = names.stream()
                 .map(Car::new)

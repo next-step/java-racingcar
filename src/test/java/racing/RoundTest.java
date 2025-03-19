@@ -58,11 +58,4 @@ class RoundTest {
         Assertions.assertThat(car2.getPosition()).isEqualTo(playTimes);
         Assertions.assertThat(car3.getPosition()).isEqualTo(playTimes);
     }
-
-    static class LuckyDice implements Dice {
-        @Override
-        public int roll() {
-            return Car.MOVE_THRESHOLD + 1;
-        }
-    }
 }
