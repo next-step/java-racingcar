@@ -9,7 +9,7 @@ public class Car {
     }
 
     public void move(int diceValue) {
-        if (diceValue >= 4) {
+        if (diceValue >= MOVE_THRESHOLD) {
             position++;
         }
     }
