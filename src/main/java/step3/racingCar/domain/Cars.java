@@ -5,26 +5,29 @@ import java.util.Collections;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> carList;
+    private final List<Car> cars;
 
-    public Cars(List<Car> carList) {
-        this.carList = carList;
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public static Cars generateCars(int numOfCars) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < numOfCars ; i++) {
-            carList.add(new Car());
+        if(numOfCars < 0 ) {
+            throw new RuntimeException("0 이하의 숫자는 입력 불가능 합니다.");
         }
-        return new Cars(carList);
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < numOfCars; i++) {
+            cars.add(new Car());
+        }
+        return new Cars(cars);
     }
 
-    public List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     public void move() {
-        for (Car car: carList) {
+        for (Car car: cars) {
             car.move();
         }
     }

@@ -13,7 +13,6 @@ class InputViewTest {
     @DisplayName("음수를 입력받을 경우 exception")
     void negative() {
         System.setIn(new ByteArrayInputStream("-1\n".getBytes()));
-        assertThatThrownBy(InputView::numOfCars).isInstanceOf(RuntimeException.class);
         assertThatThrownBy(InputView::times).isInstanceOf(RuntimeException.class);
     }
 }

@@ -5,6 +5,8 @@ import step3.racingCar.util.NumberRandomUtil;
 public class Car {
     private static final int CONDITION = 4;
     private static final int INITIAL_POSITION = 1;
+    private static final int POSITION_MOVE = 1;
+
     private int position;
 
     public Car() {
@@ -24,7 +26,7 @@ public class Car {
     // 테스트용: 랜덤 숫자를 직접 주입할 수 있는 메서드
     public void move(int randomNumber) {
         if (randomNumber >= CONDITION) {
-            position += 1;
+            position += POSITION_MOVE;
         }
     }
 }
