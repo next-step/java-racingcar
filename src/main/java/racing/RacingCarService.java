@@ -20,7 +20,7 @@ public class RacingCarService {
 
     private void startRacing() {
         List<Car> cars = CarFactory.createRacingCars(numberOfCars);
-        Race r = new Race(cars, numberOfLaps);
-        r.startRacing();
+        Race race = new Race(cars, numberOfLaps);
+        race.startRacing();
     }
 }
