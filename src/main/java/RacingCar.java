@@ -1,4 +1,5 @@
 import car.Cars;
+import car.WinnerDeterminer;
 import utils.*;
 
 import java.util.stream.IntStream;
@@ -21,5 +22,7 @@ public class RacingCar {
             cars.moveAll(numberGenerator);
             OutputView.displayRoundResult(cars.getCars());
         });
+
+        OutputView.displayWinners(WinnerDeterminer.findWinners(cars));
     }
 }
