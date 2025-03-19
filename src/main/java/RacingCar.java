@@ -1,4 +1,5 @@
 import car.Car;
+import car.Cars;
 import utils.*;
 
 import java.util.List;
@@ -13,13 +14,14 @@ public class RacingCar {
         int carCount = InputView.inputCarCount();
         int tryCount = InputView.inputTryCount();
 
-        List<Car> cars = CarGenerator.generateCars(carCount);
-        OutputView.displayResultMessage();
+        Cars cars = new Cars(CarGenerator.generateCars(carCount));
 
+        OutputView.displayResultMessage();
         NumberGenerator numberGenerator = new RandomNumberGenerator();
+
         IntStream.range(0, tryCount).forEach(i -> {
-            cars.forEach(car -> car.move(numberGenerator));
-            OutputView.displayRoundResult(cars);
+            cars.moveAll(numberGenerator);
+            OutputView.displayRoundResult(cars.getCars());
         });
     }
 }
