@@ -12,17 +12,13 @@ public class Car {
     private String position = "";
 
     public void move() {
-        updatePosition(getMovementStatus(generateRandomNumber()));
+        if (getMovementStatus(generateRandomNumber()).equals(GO)) {
+            position += GO;
+        }
     }
 
     public String getPosition() {
         return position;
-    }
-
-    void updatePosition(String movementStatus) {
-        if (movementStatus.equals(GO)) {
-            position += movementStatus;
-        }
     }
 
     private String getMovementStatus(int randomNumber) {
