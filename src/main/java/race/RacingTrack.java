@@ -25,6 +25,7 @@ public class RacingTrack {
         }
     }
 
+    // getWinners() 메서드 테스틀 위하여 추가한 생성자
     public void startRace(List<RacingCar> cars, int numOfAttempts) {
         this.cars.addAll(cars);
 
