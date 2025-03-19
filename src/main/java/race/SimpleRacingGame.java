@@ -15,5 +15,6 @@ public class SimpleRacingGame {
         } while (!racingTrack.validateAttemptCount(numOfAttempts));
 
         racingTrack.startRace(carNames, numOfAttempts);
+        ResultView.printRaceWinners(racingTrack.getWinners());
     }
 }

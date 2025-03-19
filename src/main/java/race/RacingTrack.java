@@ -1,6 +1,7 @@
 package race;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingTrack {
@@ -24,7 +25,17 @@ public class RacingTrack {
         }
     }
 
-    public void setupCars(String[] carNames) {
+    public void startRace(List<RacingCar> cars, int numOfAttempts) {
+        this.cars.addAll(cars);
+
+        ResultView.printRaceStartMessage();
+        for (int i = 0; i < numOfAttempts; i++) {
+            moveAndShowCars();
+            ResultView.printRaceStatus(cars);
+        }
+    }
+
+    private void setupCars(String[] carNames) {
         for (String name : carNames) {
             cars.add(RacingCarFactory.create(name, ResultView.createPositionPrinter()));
         }
@@ -52,5 +63,16 @@ public class RacingTrack {
             if (!RacingCar.validateName(name)) return false;
         }
         return true;
+    }
+
+    public List<RacingCar> getWinners() {
+        cars.sort(Collections.reverseOrder());
+        List<RacingCar> winners = new ArrayList<>();
+        winners.add(cars.get(0));
+
+        for (int i = 1; i < cars.size(); i++) {
+            if (cars.get(i).compareTo(cars.get(0)) == 0) winners.add(cars.get(i));
+        }
+        return winners;
     }
 }
