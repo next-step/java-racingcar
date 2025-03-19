@@ -14,16 +14,16 @@ public class Main {
 
         int maxRandomNumber = InputView.getMaxRandomNumber();
 
-        List<Car> cars = new ArrayList<>();
+        List<Car> simpleCars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            simpleCars.add(new SimpleCar());
         }
 
         RacingGame racingGame = new RacingGame(
-            cars,
+            simpleCars,
             maxRandomNumber
         );
-        ResultView resultView = new ResultView(cars);
+        ResultView resultView = new ResultView(simpleCars);
 
         System.out.println("실행 결과\n");
         for (int i = 0; i < tryCount; i++) {

@@ -6,7 +6,7 @@ import utils.RandomUtils;
 
 public class RacingGame {
 
-    private List<Car> cars;
+    protected List<Car> cars;
     private int maxRandomNumber;
     private RandomUtils randomUtils;
 
@@ -18,9 +18,9 @@ public class RacingGame {
     }
 
     public void rollTheDice() {
-        for (Car car : cars) {
+        for (Car simpleCar : cars) {
             int diceResult = randomUtils.getRandomNumber(this.maxRandomNumber);
-            car.move(diceResult);
+            simpleCar.move(diceResult);
         }
     }
 
