@@ -28,9 +28,9 @@ public class RacingCarTest {
     }
 
     @Test
-    public void checkMoveCondition(){
+    public void canMove(){
         final int THRESHOLD_VALUE = 4;
-        assertThat(racingCar.checkMoveCondition(THRESHOLD_VALUE-1)).isEqualTo(false);
-        assertThat(racingCar.checkMoveCondition(THRESHOLD_VALUE)).isEqualTo(true);
+        assertThat(racingCar.canMove(THRESHOLD_VALUE-1)).isEqualTo(false);
+        assertThat(racingCar.canMove(THRESHOLD_VALUE)).isEqualTo(true);
     }
 }

@@ -16,12 +16,8 @@ public class RacingCar {
     // ==============================
     // 🔹 Internal logic methods
     // ==============================
-    boolean checkMoveCondition(int num) {
-        if (num >= this.moveCondition) {
-            return true;
-        }
-
-        return false;
+    boolean canMove(int num) {
+        return num >= this.moveCondition;
     }
 
     void move() {

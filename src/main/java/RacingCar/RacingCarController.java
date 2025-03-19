@@ -53,7 +53,7 @@ public class RacingCarController {
         for (int i = 0; i < tryNum; i++) {
             for (int j = 0; j < carNum; j++) {
                 int randNum = cars[j].generateRandom(0, 9);
-                if (cars[j].checkMoveCondition(randNum)){
+                if (cars[j].canMove(randNum)){
                     cars[j].move();
                 }
                 System.out.println("-".repeat(cars[j].position()));
