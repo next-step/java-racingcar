@@ -2,10 +2,7 @@ package racing.simulator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.types.Car;
-import racing.types.CarCount;
-import racing.types.CarName;
-import racing.types.SimulateCount;
+import racing.types.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -28,18 +25,24 @@ class CarRacingGameSimulatorTest {
     int simulateCount = 4;
 
     CarRacingGameSimulator simulatorWithCarCount = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
-    List<List<Car>> simulateWithCarCountResults = Objects.requireNonNull(simulatorWithCarCount.run(new SimulateCount(simulateCount)));
+    CarRacingGameSimulateResult simulateWithCarCountResults = Objects.requireNonNull(simulatorWithCarCount.run(new SimulateCount(simulateCount)));
 
     CarRacingGameSimulator simulatorWithCarNames = new CarRacingGameSimulator(carNames, () -> true);
-    List<List<Car>> simulateWithCarNamesResults = Objects.requireNonNull(simulatorWithCarNames.run(new SimulateCount(simulateCount)));
+    CarRacingGameSimulateResult simulateWithCarNamesResults = Objects.requireNonNull(simulatorWithCarNames.run(new SimulateCount(simulateCount)));
 
     assertAll(
-        () -> assertThat(simulateWithCarCountResults).hasSize(simulateCount),
-        () -> IntStream.range(0, simulateWithCarCountResults.size())
-            .forEach(i -> assertThat(simulateWithCarCountResults.get(i)).extracting(Car::getLocation).containsOnly(i + 1)),
-        () -> assertThat(simulateWithCarNamesResults).hasSize(simulateCount),
-        () -> IntStream.range(0, simulateWithCarNamesResults.size())
-            .forEach(i -> assertThat(simulateWithCarNamesResults.get(i)).extracting(Car::getLocation).containsOnly(i + 1))
+        () -> assertThat(simulateWithCarCountResults.getSimulationResult()).hasSize(simulateCount),
+        () -> IntStream.range(0, simulateWithCarCountResults.getSimulationResult().size())
+            .forEach(i ->
+                assertThat(simulateWithCarCountResults.getSimulationResult().get(i))
+                    .extracting(Car::getLocation).containsOnly(i + 1)
+            ),
+        () -> assertThat(simulateWithCarNamesResults.getSimulationResult()).hasSize(simulateCount),
+        () -> IntStream.range(0, simulateWithCarNamesResults.getSimulationResult().size())
+            .forEach(i ->
+                assertThat(simulateWithCarNamesResults.getSimulationResult().get(i))
+                    .extracting(Car::getLocation).containsOnly(i + 1)
+            )
     );
   }
 }

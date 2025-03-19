@@ -20,7 +20,7 @@ public class CarRacingGameSimulator {
     this.carMovingStrategy = carMovingStrategy;
   }
 
-  public List<List<Car>> run(SimulateCount simulateCount) {
+  public CarRacingGameSimulateResult run(SimulateCount simulateCount) {
     List<List<Car>> res = new ArrayList<>();
 
     for (int i = 0; i < simulateCount.getCount(); i++) {
@@ -29,6 +29,6 @@ public class CarRacingGameSimulator {
     }
 
     carGroup.resetCars();
-    return res;
+    return new CarRacingGameSimulateResult(res);
   }
 }
