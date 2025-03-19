@@ -12,21 +12,21 @@ public class Racing {
     private static final List<Car> winners = new ArrayList<>(); //우승 자동차
 
     /**
-     * @param carName
+     * @param carNames
      * @param tryCount
      * 레이싱 초기화
      */
-    public Racing(List<String> carName, int tryCount) {
-        carListSetting(carName);
+    public Racing(List<String> carNames, int tryCount) {
+        carListSetting(carNames);
         this.tryCount = tryCount;
     }
 
     /**
-     * @param carName
+     * @param carNames
      * 자동차 리스트 초기화
      */
-    private void carListSetting(List<String> carName) {
-        for (String name : carName) {
+    private void carListSetting(List<String> carNames) {
+        for (String name : carNames) {
             carList.add(new Car(name));
         }
     }
