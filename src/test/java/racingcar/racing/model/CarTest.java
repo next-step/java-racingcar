@@ -9,7 +9,11 @@ class CarTest {
     @DisplayName("move 테스트")
     @Test
     public void move() {
-        Car car = new Car();
+        Car car = new Car("name");
+
+        assertThat(car.getCarName())
+                .isEqualTo("name");
+
         assertThat(car.getPosition())
                 .isEqualTo(0);
 

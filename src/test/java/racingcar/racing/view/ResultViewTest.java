@@ -20,16 +20,16 @@ class ResultViewTest {
         System.setOut(new PrintStream(output));
 
         List<Car> cars = new ArrayList<>();
-        Car car1 = new Car();
+        Car car1 = new Car("a");
         car1.move();
         cars.add(car1);
 
-        Car car2 = new Car();
+        Car car2 = new Car("abc");
         car2.move();
         car2.move();
         cars.add(car2);
 
-        Car car3 = new Car();
+        Car car3 = new Car("abcde");
         car3.move();
         car3.move();
         car3.move();
@@ -37,7 +37,7 @@ class ResultViewTest {
 
         resultView.view(cars, 1);
 
-        Assertions.assertThat(output.toString()).isEqualTo("stage: 1\n-\n--\n---\n\n");
+        Assertions.assertThat(output.toString()).isEqualTo("stage: 1\na     : -\nabc   : --\nabcde : ---\n\n");
         System.setOut(System.out);
     }
 
