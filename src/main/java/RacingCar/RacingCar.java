@@ -1,16 +1,18 @@
 package RacingCar;
 
+import NumberGenerator.NumberGenerator;
+
 import java.util.Random;
 
 public class RacingCar {
-    private int moveCondition;
+    private final int moveCondition;
     private int position;
-    private Random random;
+    private final NumberGenerator numberGenerator;
 
-    public RacingCar(int moveCondition) {
+    public RacingCar(int moveCondition, NumberGenerator numberGenerator) {
         this.moveCondition = moveCondition;
         this.position = 0;
-        this.random = new Random();
+        this.numberGenerator = numberGenerator;
     }
 
     // ==============================
@@ -21,14 +23,12 @@ public class RacingCar {
     }
 
     void move() {
-        this.position += 1;
+        if (canMove(numberGenerator.generate(0, 9))) {
+            this.position++;
+        }
     }
 
-    int generateRandom(int min, int max) {
-        return random.nextInt(max - min + 1) + min;
-    }
-
-    int position(){
+    int position() {
         return this.position;
     }
 }
