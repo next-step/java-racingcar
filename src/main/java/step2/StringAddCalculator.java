@@ -1,6 +1,8 @@
 package step2;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
@@ -50,7 +52,7 @@ public class StringAddCalculator {
         return sum;
     }
 
-    public String[] checkIfOnlyNumbers(String numbersWithCustomSeparator) {
+    private String[] checkIfOnlyNumbers(String numbersWithCustomSeparator) {
         String[] arr = numbersWithCustomSeparator.split("\n");
         return arr;
     }
@@ -73,36 +75,15 @@ public class StringAddCalculator {
     }
 
     public boolean checkIfValidPattern(String input) {
-        // 커스텀 구분자 형식이 유효하지 않으면 오류
-        if (input.startsWith("//")) {
-            String[] parts = input.split("\n", 2);
-            if (parts.length < 2 || parts[0].length() < 3 || !parts[0].substring(2).matches("^[^\\d]+$")) {
-                return false; // 커스텀 구분자가 숫자나 빈 문자열이면 오류
-            }
-        } else if (!Character.isDigit(input.charAt(0)) && !input.startsWith("//")) {
-            return false; // "\n;\n1;2;3;" 과 같은 경우
-        }
-
-        return true; // 모든 검증을 통과하면 유효
+        Pattern pattern = Pattern.compile("^//[^\\d]+\\n.*");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
     }
 
     public boolean checkIfOnlyPositiveNumbers(String input) {
-        // 숫자 확인: 입력 문자열에서 유효한 숫자 배열로 변환 시도
-        try {
-            String separators = filterSeparators(input);
-            String numbers = extractNumbers(input);
-            String[] tokens = numbers.split(createRegex(separators));
-
-            for (String token : tokens) {
-                int number = Integer.parseInt(token.trim());
-                if (number < 0) { // 음수일 경우 오류
-                    return false;
-                }
-            }
-        } catch (NumberFormatException e) {
-            return false; // 숫자가 아닌 값이 포함되어 있으면 오류
-        }
-        return true;
+        Pattern pattern = Pattern.compile("^[\\d,:\n]*S");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
     }
 
     public boolean checkIfEmptyInput (String input) {
