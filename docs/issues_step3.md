@@ -33,3 +33,5 @@
   - 새로운 결과 저장
 ## RoundResult
 - 각각 시도 별로 차량의 위치를 저장
+## ResultView
+- 콘솔 이외의 출력을 고려하여 PrintStream을 생성자로 받음
