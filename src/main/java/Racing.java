@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 public class Racing {
@@ -15,7 +16,7 @@ public class Racing {
      * @param tryCount
      * 레이싱 초기화
      */
-    public Racing(String[] carName, int tryCount) {
+    public Racing(List<String> carName, int tryCount) {
         carListSetting(carName);
         this.tryCount = tryCount;
     }
@@ -24,11 +25,9 @@ public class Racing {
      * @param carName
      * 자동차 리스트 초기화
      */
-    private void carListSetting(String[] carName) {
-        for (int i = 0; i < carName.length; i++) {
-            Car car = new Car();
-            car.changeCarName(carName[i]);
-            carList.add(car);
+    private void carListSetting(List<String> carName) {
+        for (String name : carName) {
+            carList.add(new Car(name));
         }
     }
 
