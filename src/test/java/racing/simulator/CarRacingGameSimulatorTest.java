@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class CarRacingGameSimulatorTest {
 
-  @DisplayName("시뮬레이션을 수행하면 simulateCount 만큼의 결과를 담은 리스트를 반환하고, 종료 후 자동차를 리셋한다.")
+  @DisplayName("시뮬레이션을 수행하면 simulateCount 만큼의 결과를 담은 리스트를 반환한다.")
   @Test
   void run_givenSimulateCount_returnLocationResult() {
     int carCount = 3;
@@ -44,5 +44,19 @@ class CarRacingGameSimulatorTest {
                     .extracting(Car::getLocation).containsOnly(i + 1)
             )
     );
+  }
+
+  @DisplayName("시뮬레이션을 수행하면 종료 후 자동차들을 리셋한다.")
+  @Test
+  void run_givenSimulateCount_resetCarGroupLocation() {
+    int carCount = 3;
+    int simulateCount = 4;
+
+    CarRacingGameSimulator simulatorWithCarCount = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
+    simulatorWithCarCount.run(new SimulateCount(simulateCount));
+
+    CarGroup carGroup = simulatorWithCarCount.getCarGroup();
+
+    assertThat(carGroup.copyCars()).extracting(Car::getLocation).containsOnly(0);
   }
 }
