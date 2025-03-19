@@ -5,9 +5,6 @@ public class SimpleRacingGame {
         int numOfCars = InputView.getNumberInput("자동차 대수는 몇 대 인가요? (1-10): ", 1, 10);
         int numOfAttempts = InputView.getNumberInput("시도할 회수는 몇 회 인가요? (1-10): ", 1, 10);
 
-        System.out.println("입력된 자동차 대수: " + numOfCars);
-        System.out.println("입력된 시도 횟수: " + numOfAttempts);
-
         RacingTrack racingGame = new RacingTrack(numOfCars, numOfAttempts);
         racingGame.startRace();
     }

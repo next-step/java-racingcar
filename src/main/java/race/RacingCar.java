@@ -4,12 +4,12 @@ public class RacingCar {
     private final int racingNumber;
     private int position;
     private final RandomNumberGenerator randomNumberGenerator;
-    private final PositionOutputViewer positionOutputViewer;
+    private final PositionPrinter positionPrinter;
 
-    private RacingCar(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionOutputViewer positionOutputViewer) {
+    private RacingCar(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
         this.racingNumber = racingNumber;
         this.randomNumberGenerator = randomNumberGenerator;
-        this.positionOutputViewer = positionOutputViewer;
+        this.positionPrinter = positionPrinter;
     }
 
     private boolean shouldMove(int num) {
@@ -25,10 +25,10 @@ public class RacingCar {
     }
 
     public void printPosition() {
-        positionOutputViewer.showPosition(racingNumber, position);
+        positionPrinter.printPosition(racingNumber, position);
     }
 
-    static RacingCar create(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionOutputViewer positionOutputViewer) {
-        return new RacingCar(racingNumber, randomNumberGenerator, positionOutputViewer);
+    static RacingCar create(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
+        return new RacingCar(racingNumber, randomNumberGenerator, positionPrinter);
     }
 }

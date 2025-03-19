@@ -11,22 +11,21 @@ public class RacingTrack {
         this.numOfAttempts = numOfAttempts;
         this.cars = new ArrayList<>();
         for (int i = 0; i < numOfCars; i++) {
-            cars.add(RacingCarFactory.create(i));
+            cars.add(RacingCarFactory.create(i, ResultView.createPositionPrinter()));
         }
     }
 
     public void startRace() {
-        System.out.println("### Racing Start!!! ###");
+        ResultView.printRaceStartMessage();
         for (int i = 0; i < numOfAttempts; i++) {
             moveAndShowCars();
-            System.out.println();
+            ResultView.printRaceStatus(cars);
         }
     }
 
     private void moveAndShowCars() {
         for (RacingCar car : cars) {
             car.move();
-            car.printPosition();
         }
     }
 }
