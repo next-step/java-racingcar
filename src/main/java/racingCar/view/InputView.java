@@ -20,6 +20,6 @@ public class InputView {
         if (times < 1) {
             throw new RuntimeException("0 이하의 숫자는 입력 불가능 합니다.");
         }
-        return scanner.nextInt();
+        return times;
     }
 }
