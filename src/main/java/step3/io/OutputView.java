@@ -1,6 +1,9 @@
-package step3;
+package step3.io;
 
 import java.util.List;
+
+import step3.domain.CarPositions;
+import step3.domain.CarSimulator;
 
 public class OutputView {
     private final CarSimulator simulator;

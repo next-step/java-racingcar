@@ -1,6 +1,8 @@
-package step3;
+package step3.io;
 
 import java.util.Scanner;
+
+import step3.exception.InvalidInputException;
 
 public class InputView {
 

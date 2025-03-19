@@ -1,9 +1,11 @@
-package step3;
+package step3.io;
 
 import java.util.Scanner;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import step3.exception.InvalidInputException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
