@@ -18,13 +18,12 @@ class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"3,---", "1,-", "2,--"})
     public void move를_하면_MOVE_SYMBOL이_추가된다(int moveCount, String expected) {
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar(new AlwaysRacingCarMoveStrategy());
 
         for (int i = 0; i < moveCount; i++) {
-            car.move();
+            car.moveIfMovable();
         }
 
         assertThat(car.display()).isEqualTo(expected);
     }
-
 }
