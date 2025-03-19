@@ -1,25 +1,31 @@
 package view;
 
+import racing.CarPositions;
+import racing.RacingResultDto;
+
 import java.util.List;
 
 public class ResultView {
 
-    public static void printResult(List<List<Integer>> carPositionsAtTurns) {
+    public static void printResult(RacingResultDto racingResultDto) {
         System.out.println("실행 결과");
-        for (List<Integer> carPositions : carPositionsAtTurns) {
-            printTurnResult(carPositions);
+        for (CarPositions carPositions : racingResultDto.getPlayHistory().getPositions()) {
+            printTurnResult(racingResultDto.getCarNames(), carPositions);
         }
+
+        String winners = String.join(", ", racingResultDto.getWinnerNames());
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
-    private static void printTurnResult(List<Integer> carPositions) {
-        for (int carPosition : carPositions) {
-            printCarPosition(carPosition);
+    private static void printTurnResult(List<String> carNames, CarPositions carPositions) {
+        for (int i=0; i<carNames.size(); i++) {
+            printCarPosition(carNames.get(i), carPositions.getCarPosition(i));
         }
         System.out.println();
     }
 
-    private static void printCarPosition(int carPosition) {
-        System.out.println("-".repeat(carPosition));
+    private static void printCarPosition(String carName, int carPosition) {
+        System.out.println(carName + " : " + "-".repeat(carPosition));
     }
 
 }

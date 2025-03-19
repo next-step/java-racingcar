@@ -1,19 +1,26 @@
 package racing;
 
-import java.util.List;
 import view.InputView;
 import view.ResultView;
 
 public class RacingCar {
 
     public static void main(String[] args) {
-        int carCount = InputView.getCarSize();
+        String carNames = InputView.getCarNames();
         int turnCount = InputView.getTurn();
 
-        List<Car> cars = Car.createCars(carCount);
-        List<List<Integer>> carPositionsAtTurns = Racing.activeTurns(cars, turnCount);
+        RacingSession session;
+        try {
+            session = RacingSession.of(carNames);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
-        ResultView.printResult(carPositionsAtTurns);
+        session.startRacing(turnCount);
+        RacingResultDto racingResult = session.getRacingResult();
+
+        ResultView.printResult(racingResult);
     }
 
 }
