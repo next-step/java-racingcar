@@ -4,18 +4,21 @@ import racingCar.domain.Cars;
 import racingCar.view.InputView;
 import racingCar.view.ResultView;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RacingGame {
     public void race() {
-        int numOfCars = InputView.numOfCars();
+        List<String> names = Arrays.asList(InputView.nameOfCars());
         int times = InputView.times();
 
-        Cars cars = Cars.generateCars(numOfCars);
-
+        Cars cars = Cars.generateCars(names);
         ResultView.output();
         for (int i = 0; i < times; i++) {
             cars.move();
-            ResultView.result(cars);
+            ResultView.position(cars);
         }
+        ResultView.result(cars.winners());
     }
 }
 
