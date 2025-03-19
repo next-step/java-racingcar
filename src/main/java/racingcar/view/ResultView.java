@@ -3,10 +3,11 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.Car;
+import racingcar.Cars;
 
 public class ResultView {
 
-  public static void printResult(List<Car> result) {
+  public static void printResult(Cars result) {
     System.out.println("실행 결과");
 
     String output = result.stream()

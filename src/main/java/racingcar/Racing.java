@@ -7,24 +7,20 @@ import java.util.stream.IntStream;
 import racingcar.random.NumberGenerator;
 
 public class Racing {
-  private List<Car> cars;
+  private Cars cars;
   private final NumberGenerator numberGenerator;
 
-  public Racing(List<String> carNames, NumberGenerator numberGenerator) {
+  public Racing(Cars cars, NumberGenerator numberGenerator) {
+    this.cars = cars;
     this.numberGenerator = numberGenerator;
-    prepareCars(carNames);
   }
 
-  private void prepareCars(List<String> carNames) {
-    this.cars = carNames.stream()
-        .map(Car::new)
-        .collect(Collectors.toList());
-  }
-
-  public List<Car> start() {
-    return cars.stream()
+  public Cars start() {
+    List<Car> movedCars = cars.stream()
         .map(this::tryMove)
         .collect(Collectors.toList());
+
+    return new Cars(movedCars);
   }
 
   private Car tryMove(Car car) {
@@ -34,7 +30,7 @@ public class Racing {
     return car;
   }
 
-  public List<Car> getCars() {
+  public Cars getCars() {
     return cars;
   }
 

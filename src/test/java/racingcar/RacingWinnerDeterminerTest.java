@@ -20,7 +20,7 @@ class RacingWinnerDeterminerTest {
     cars.get(1).move();
 
     //when
-    List<String> winners = RacingWinnerDeterminer.getWinner(cars);
+    List<String> winners = RacingWinnerDeterminer.getWinner(new Cars(cars));
 
     //then
     assertThat(winners).containsExactly("crong");
@@ -39,7 +39,7 @@ class RacingWinnerDeterminerTest {
     cars.get(2).move();
 
     //when
-    List<String> winners = RacingWinnerDeterminer.getWinner(cars);
+    List<String> winners = RacingWinnerDeterminer.getWinner(new Cars(cars));
 
     //then
     assertThat(winners).containsExactlyInAnyOrder("pobi", "crong", "honux");

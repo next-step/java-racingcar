@@ -4,6 +4,8 @@ public class Car {
   private final String name;
   private int position;
 
+  public static final int CAR_NAME_MAX_LENGTH = 5;
+
   public Car(String name) {
     validateName(name);
     this.name = name;
@@ -11,8 +13,8 @@ public class Car {
   }
 
   private void validateName(String name) {
-    if (name.length() > 5) {
-      throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
+    if (name.length() > CAR_NAME_MAX_LENGTH) {
+      throw new IllegalArgumentException("이름은 " + CAR_NAME_MAX_LENGTH + "자 이하여야 합니다.");
     }
   }
 
