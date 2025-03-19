@@ -19,7 +19,7 @@ public class CarSimulator {
     }
 
     public CarPositions getPositions() {
-        List<String> positions = new ArrayList<>();
+        List<Integer> positions = new ArrayList<>();
 
         for (Car car : cars) {
             positions.add(car.getPosition());
