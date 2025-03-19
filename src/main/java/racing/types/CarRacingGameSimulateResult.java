@@ -35,9 +35,9 @@ public class CarRacingGameSimulateResult {
     }
 
     int maxLocation = lastSimulateResult.stream()
-        .max(Comparator.comparingInt(Car::getLocation))
-        .get()
-        .getLocation();
+        .mapToInt(Car::getLocation)
+        .max()
+        .orElse(0);
 
     return lastSimulateResult.stream()
         .filter(car -> car.getLocation() == maxLocation)
