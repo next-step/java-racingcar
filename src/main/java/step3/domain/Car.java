@@ -25,7 +25,7 @@ public class Car {
         }
     }
 
-    public String getMovementStatus(int randomNumber) {
+    private String getMovementStatus(int randomNumber) {
         if (randomNumber >= MIN_MOVEMENT_THRESHOLD) {
             return GO;
         }
