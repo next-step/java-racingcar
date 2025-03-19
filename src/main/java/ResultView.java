@@ -1,23 +1,19 @@
 public class ResultView {
-    private String[] raceResult;
+    private final StringBuilder builder = new StringBuilder();
 
-    public ResultView(int carNumber) {
+    public void printStart() {
+        System.out.println();
         System.out.println("실행 결과");
-
-        raceResult = new String[carNumber];
-        for (int i = 0; i < carNumber; i++) {
-            raceResult[i] = "";
-        }
     }
 
-    public void write(int carIndex) {
-        raceResult[carIndex] += "-";
+    public void printDash(int count) {
+        while(count-->0){
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
-    public void read() {
-        for (String result : raceResult) {
-            System.out.println(result);
-        }
+    public void printFinish() {
         System.out.println();
     }
 }
