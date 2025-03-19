@@ -27,14 +27,14 @@ public class Calculator {
         Pattern pattern = Pattern.compile("//(.)\n(.*)");
         Matcher matcher = pattern.matcher(text);
 
-        if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            String[] strings = matcher.group(2).split(customDelimiter);
-
-            return calculateSum(strings);
+        if (!matcher.find()) {
+            return 0;
         }
 
-        return 0;
+        String customDelimiter = matcher.group(1);
+        String[] strings = matcher.group(2).split(customDelimiter);
+
+        return calculateSum(strings);
     }
 
     private static int calculateSum(String[] strings) {
