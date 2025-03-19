@@ -8,6 +8,7 @@ import step3.random.RandomStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,11 +30,15 @@ public class RacingGameTest {
             public int generateRandomValue() {
                 return values[index++];
             }
-        }, CarFactory.createCars(3));
+        }, CarFactory.createCars("a,b,c"));
 
 
         // then
-        List<List<Integer>> actual = game.start();
+        List<List<Integer>> actual = game.start().stream().map(list -> {
+            List<Integer> positions = new ArrayList<>();
+            list.forEach(gameHistory -> positions.add(gameHistory.getPosition()));
+            return positions;
+        }).collect(Collectors.toList());
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -56,9 +61,15 @@ public class RacingGameTest {
 
                 return values[index++];
             }
-        }, CarFactory.createCars(2));
+        }, CarFactory.createCars("a,b"));
 
         // then
-        assertThat(game.start()).isEqualTo(expected);
+        List<List<Integer>> actual = game.start().stream().map(list -> {
+            List<Integer> positions = new ArrayList<>();
+            list.forEach(gameHistory -> positions.add(gameHistory.getPosition()));
+            return positions;
+        }).collect(Collectors.toList());
+        assertThat(actual).isEqualTo(expected);
     }
+
 }
