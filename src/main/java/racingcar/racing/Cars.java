@@ -28,6 +28,7 @@ public class Cars {
     public String toString() {
         StringBuilder result = new StringBuilder();
         cars.forEach(car -> {
+            result.append(car.getName()).append(" : ");
             result.append("-".repeat(Math.max(0, car.getDistance())));
             result.append("\n");
         });

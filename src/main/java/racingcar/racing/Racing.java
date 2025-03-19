@@ -15,11 +15,6 @@ public class Racing {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
-        cars.forEach(car -> {
-            result.append("-".repeat(Math.max(0, car.getDistance())));
-            result.append("\n");
-        });
-        return result.toString();
+        return cars.toString();
     }
 }

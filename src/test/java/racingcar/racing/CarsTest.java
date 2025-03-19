@@ -39,9 +39,9 @@ class CarsTest {
     @Test
     void toString을_호출하면_Cars_객체에_있는_Car_객체의_거리만큼_하이픈이_출력된다() {
         MoveStrategy moveStrategy = mock(MoveStrategy.class);
-        Car car1 = new Car(moveStrategy);
-        Car car2 = new Car(moveStrategy);
-        Car car3 = new Car(moveStrategy);
+        Car car1 = new Car("pobi", moveStrategy);
+        Car car2 = new Car("poci", moveStrategy);
+        Car car3 = new Car("podi", moveStrategy);
         Cars cars = new Cars(List.of(car1, car2, car3));
 
         when(moveStrategy.move()).thenReturn(true);
@@ -50,6 +50,6 @@ class CarsTest {
 
         String result = cars.toString();
 
-        assertEquals("-\n-\n-\n", result);
+        assertEquals("pobi : -\npoci : -\npodi : -\n", result);
     }
 }
