@@ -9,13 +9,21 @@ public class CarGroup {
 
   private final List<Car> cars = new ArrayList<>();
 
-  public CarGroup(List<CarName> carNames) {
+  public static CarGroup valueOf(List<CarName> carNames) {
+    return new CarGroup(carNames);
+  }
+
+  public static CarGroup valueOf(CarCount carCount) {
+    return new CarGroup(carCount);
+  }
+
+  private CarGroup(List<CarName> carNames) {
     for (CarName name : carNames) {
       cars.add(Car.valueOf(name));
     }
   }
 
-  public CarGroup(CarCount carCount) {
+  private CarGroup(CarCount carCount) {
     for (int i = 0; i < carCount.getCount(); i++) {
       cars.add(new Car());
     }

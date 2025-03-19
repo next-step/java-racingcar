@@ -23,11 +23,11 @@ class CarGroupTest {
         CarName.valueOf("honux")
     );
 
-    CarGroup carGroupWithCount = new CarGroup(carCount);
+    CarGroup carGroupWithCount = CarGroup.valueOf(carCount);
     carGroupWithCount.moveCars(() -> strategyResult);
     List<Car> resultWithCount = carGroupWithCount.copyCars();
 
-    CarGroup carGroupWithNames = new CarGroup(names);
+    CarGroup carGroupWithNames = CarGroup.valueOf(names);
     carGroupWithNames.moveCars(() -> strategyResult);
     List<Car> resultWithNames = carGroupWithNames.copyCars();
 
@@ -51,11 +51,11 @@ class CarGroupTest {
         CarName.valueOf("honux")
     );
 
-    CarGroup carGroupWithNames = new CarGroup(names);
+    CarGroup carGroupWithNames = CarGroup.valueOf(names);
     List<Car> firstCopiedCarGroupWithNames = carGroupWithNames.copyCars();
     List<Car> secondCopiedCarGroupWithNames = carGroupWithNames.copyCars();
 
-    CarGroup carGroupWithCount = new CarGroup(carCount);
+    CarGroup carGroupWithCount = CarGroup.valueOf(carCount);
     List<Car> firstCopiedCarGroupWithCount = carGroupWithCount.copyCars();
     List<Car> secondCopiedCarGroupWithCount = carGroupWithCount.copyCars();
 
@@ -82,12 +82,12 @@ class CarGroupTest {
         CarName.valueOf("honux")
     );
 
-    CarGroup carGroupWithNames = new CarGroup(names);
+    CarGroup carGroupWithNames = CarGroup.valueOf(names);
     carGroupWithNames.moveCars(() -> true);
     carGroupWithNames.resetCars();
     List<Car> resultWithNames = carGroupWithNames.copyCars();
 
-    CarGroup carGroupWithCount = new CarGroup(carCount);
+    CarGroup carGroupWithCount = CarGroup.valueOf(carCount);
     carGroupWithCount.moveCars(() -> true);
     carGroupWithCount.resetCars();
     List<Car> resultWithCount = carGroupWithCount.copyCars();

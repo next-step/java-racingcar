@@ -11,12 +11,12 @@ public class CarRacingGameSimulator {
   CarMovingStrategy carMovingStrategy;
 
   public CarRacingGameSimulator(List<CarName> carNames, CarMovingStrategy carMovingStrategy) {
-    this.carGroup = new CarGroup(carNames);
+    this.carGroup = CarGroup.valueOf(carNames);
     this.carMovingStrategy = carMovingStrategy;
   }
 
   public CarRacingGameSimulator(CarCount carCount, CarMovingStrategy carMovingStrategy) {
-    this.carGroup = new CarGroup(carCount);
+    this.carGroup = CarGroup.valueOf(carCount);
     this.carMovingStrategy = carMovingStrategy;
   }
 
@@ -33,6 +33,6 @@ public class CarRacingGameSimulator {
     }
 
     carGroup.resetCars();
-    return new CarRacingGameSimulateResult(res);
+    return CarRacingGameSimulateResult.valueOf(res);
   }
 }
