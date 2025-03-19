@@ -2,15 +2,26 @@ package racingcar.racing;
 
 import java.util.List;
 
-public class Racing {
+public class Cars {
     private final List<Car> cars;
 
-    public Racing(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void playRound() {
+    public void add(Car car) {
+        if (car == null) {
+            throw new IllegalArgumentException("Car cannot be null");
+        }
+        cars.add(car);
+    }
+
+    public void moveAll() {
         cars.forEach(Car::play);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     @Override

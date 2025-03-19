@@ -1,9 +1,8 @@
 package racingcar;
 
+import racingcar.racing.Car;
 import racingcar.movepolicy.DefaultMoveStrategy;
 import racingcar.movepolicy.MoveStrategy;
-import racingcar.racing.Car;
-import racingcar.racing.Cars;
 import racingcar.racing.Racing;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
@@ -26,7 +25,7 @@ public class Main {
                 .mapToObj(i -> new Car(moveStrategy))
                 .collect(Collectors.toList());
 
-        Racing racing = new Racing(new Cars(cars), numberOfRounds);
+        Racing racing = new Racing(cars);
 
         OutputView.showRace(racing, numberOfRounds);
     }
