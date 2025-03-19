@@ -10,8 +10,21 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class CarGroupTest {
+
+  @DisplayName("생성자 테스트1")
+  @Test
+  void constructorTest1() {
+    assertDoesNotThrow(() -> CarGroup.valueOf(List.of(CarName.valueOf("test"))));
+  }
+
+  @DisplayName("생성자 테스트2")
+  @Test
+  void constructorTest2() {
+    assertDoesNotThrow(() -> CarGroup.valueOf(CarCount.valueOf(12)));
+  }
 
   @DisplayName("생성자에 중복된 차 이름이 들어오면 RuntimeException을 던진다.")
   @Test

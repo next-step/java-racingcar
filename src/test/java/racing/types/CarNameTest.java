@@ -12,6 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarNameTest {
 
+  @DisplayName("생성자 테스트1")
+  @Test
+  void constructorTest1() {
+    assertDoesNotThrow(CarName::new);
+  }
+
+  @DisplayName("생성자 테스트2")
+  @Test
+  void constructorTest2() {
+    assertDoesNotThrow(() -> CarName.valueOf("test"));
+  }
+
   @DisplayName("자동차 이름을 할당하지 않으면 default 값으로 생성한다.")
   @Test
   void constructor_givenNotCarName_assignDefaultCarName() {

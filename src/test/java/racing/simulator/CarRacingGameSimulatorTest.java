@@ -10,8 +10,26 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class CarRacingGameSimulatorTest {
+
+  @DisplayName("생성자 테스트1")
+  @Test
+  void constructorTest1() {
+    List<CarName> carNames = List.of(
+        CarName.valueOf("pobi"),
+        CarName.valueOf("crong"),
+        CarName.valueOf("honux")
+    );
+    assertDoesNotThrow(() -> new CarRacingGameSimulator(carNames, new RandomCarMovingStrategy()));
+  }
+
+  @DisplayName("생성자 테스트2")
+  @Test
+  void constructorTest2() {
+    assertDoesNotThrow(() -> new CarRacingGameSimulator(CarCount.valueOf(3), () -> true));
+  }
 
   @DisplayName("시뮬레이션을 수행하면 simulateCount 만큼의 결과를 담은 리스트를 반환한다.")
   @Test

@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 public class CarRacingGameSimulateResult {
   private final List<List<Car>> simulateResult;
 
-  public static CarRacingGameSimulateResult valueOf(List<List<Car>> simulatieResult) {
-    return new CarRacingGameSimulateResult(simulatieResult);
+  public static CarRacingGameSimulateResult valueOf(List<List<Car>> simulateResult) {
+    return new CarRacingGameSimulateResult(simulateResult);
   }
 
   private CarRacingGameSimulateResult(List<List<Car>> simulateResult) {

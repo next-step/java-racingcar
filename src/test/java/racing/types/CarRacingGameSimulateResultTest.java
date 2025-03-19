@@ -3,14 +3,20 @@ package racing.types;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class CarRacingGameSimulateResultTest {
+
+  @DisplayName("생성자 테스트1")
+  @Test
+  void constructorTest1() {
+    assertDoesNotThrow(() -> CarRacingGameSimulateResult.valueOf(List.of(List.of(new Car()))));
+  }
 
   @DisplayName("생성자 호출 시 한 라운드의 결과에 빈 결과가 있으면 RuntimeException을 던진다.")
   @Test
