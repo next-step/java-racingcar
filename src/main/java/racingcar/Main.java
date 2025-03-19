@@ -1,25 +1,32 @@
 package racingcar;
 
+import racingcar.movepolicy.DefaultMoveStrategy;
+import racingcar.movepolicy.MoveStrategy;
+import racingcar.racing.Car;
+import racingcar.racing.Cars;
+import racingcar.racing.Racing;
+import racingcar.ui.InputView;
+import racingcar.ui.OutputView;
+
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
         OutputView.askCarNumbers();
-        int numberOfCars = InputView.getCarNames(); // 첫 번째 값 입력받음
+        List<String> carNames = InputView.getCarNames(); // 첫 번째 값 입력받음
 
         OutputView.askRoundNumbers();
         int numberOfRounds = InputView.getNumberOfRounds(); // 두 번째 값 입력받음
 
         MoveStrategy moveStrategy = new DefaultMoveStrategy();
 
-        List<Car> cars = IntStream.range(0, numberOfCars)
-                .mapToObj(i -> new Car(moveStrategy))
+        List<Car> cars = carNames.stream()
+                .map(name -> new Car(name, moveStrategy))
                 .collect(Collectors.toList());
 
-        Racing racing = new Racing(cars);
+        Racing racing = new Racing(new Cars(cars), numberOfRounds);
 
-        OutputView.showRace(racing, numberOfRounds);
+        OutputView.showRace(racing);
     }
 }
