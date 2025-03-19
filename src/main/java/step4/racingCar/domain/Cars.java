@@ -3,6 +3,7 @@ package step4.racingCar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -33,6 +34,27 @@ public class Cars {
         for (Car car: cars) {
             car.move();
         }
+    }
+
+    public List<Car> winners() {
+        if (cars.isEmpty()) {
+            throw new RuntimeException("자동차가 존재하지 않습니다.");
+        }
+
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new RuntimeException("자동차가 존재하지 않습니다."));
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+
+        if(winners.isEmpty()) {
+            throw new RuntimeException("우승자가 존재하지 않습니다.");
+        }
+
+        return winners;
     }
 
 }
