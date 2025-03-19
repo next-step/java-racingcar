@@ -1,8 +1,5 @@
 import car.Car;
-import utils.CarGenerator;
-import utils.InputView;
-import utils.OutputView;
-import utils.RandomNumberGenerator;
+import utils.*;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -19,8 +16,9 @@ public class RacingCar {
         List<Car> cars = CarGenerator.generateCars(carCount);
         OutputView.displayResultMessage();
 
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
         IntStream.range(0, tryCount).forEach(i -> {
-            cars.forEach(car -> car.move(RandomNumberGenerator.generate()));
+            cars.forEach(car -> car.move(numberGenerator));
             OutputView.displayRoundResult(cars);
         });
     }

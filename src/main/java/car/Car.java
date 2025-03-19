@@ -1,16 +1,20 @@
 package car;
 
+import utils.NumberGenerator;
+
 public class Car {
-    private int position = 0;
+    private final static int INITIAL_POSITION = 0;
+    private int position = INITIAL_POSITION;
     private final static int BASE_NUMBER = 4;
 
-    public void move(int randomNumber) {
-        if (isAtLeastBaseNumber(randomNumber)) {
+    public void move(NumberGenerator numberGenerator) {
+        int movableNumber = numberGenerator.generate();
+        if (isAtLeastBaseNumber(movableNumber)) {
             goForward();
         }
     }
 
-    public void goForward() {
+    private void goForward() {
         this.position++;
     }
 
@@ -18,7 +22,7 @@ public class Car {
         return this.position;
     }
 
-    public boolean isAtLeastBaseNumber(int number) {
+    private boolean isAtLeastBaseNumber(int number) {
         return BASE_NUMBER <= number;
     }
 }
