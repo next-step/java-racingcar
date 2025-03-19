@@ -111,6 +111,15 @@ public class RacingCarTest {
     }
 
     @Test
+    @DisplayName("자동차 이름이 5자 초과할 경우 오류 리턴")
+    void inputCarName_5자초과() {
+        String[] invalidNames = {"bmw", "hyundai"};
+
+        assertThatThrownBy(() -> new Cars(invalidNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("자동차 이름은 쉼표로 구분")
     void inputCarName_split() {
         String input = "pobi,crong,honux";
