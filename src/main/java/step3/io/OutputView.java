@@ -23,12 +23,13 @@ public class OutputView {
     }
 
     public void printPosition(CarPositions carPositions) {
-        List<String> positions = carPositions.getPositions();
+        List<Integer> positions = carPositions.getPositions();
 
-        for (String position : positions) {
-            System.out.println(position);
+        for (int position : positions) {
+            System.out.println("-".repeat(position));
         }
 
         System.out.println();
     }
+
 }
