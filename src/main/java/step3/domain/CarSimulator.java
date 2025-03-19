@@ -18,6 +18,10 @@ public class CarSimulator {
         }
     }
 
+    public List<CarPositions> getHistory() {
+        return history;
+    }
+
     public CarPositions getPositions() {
         List<Integer> positions = new ArrayList<>();
 
@@ -39,10 +43,6 @@ public class CarSimulator {
         for (Car car : cars) {
             car.move();
         }
-    }
-
-    public List<CarPositions> getHistory() {
-        return history;
     }
 
     private void saveHistory() {
