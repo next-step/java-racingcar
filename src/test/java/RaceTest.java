@@ -11,13 +11,13 @@ class RaceTest {
     @DisplayName("자동차 개수는 양수여야 한다.")
     void negativeOrZeroCarCountInputReturnsError() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Race(-1, 3);
+            new Race(new GameSettings(-1, 3));
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            new Race(0, 3);
+            new Race(new GameSettings(0, 3));
         });
 
-        Race race = new Race(1, 3);
+        Race race = new Race(new GameSettings(1, 3));
         assertThat(race.getCarPositions()).hasSize(1);
     }
 
@@ -25,17 +25,17 @@ class RaceTest {
     @DisplayName("경주 횟수는 양수여야 한다.")
     void negativeOrZeroRaceCountInputReturnsError() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Race(5, -1);
+            new Race(new GameSettings(5, -1));
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            new Race(5, 0);
+            new Race(new GameSettings(5, 0));
         });
     }
 
     @Test
     @DisplayName("경기 시작시 자동차의 위치는 0이다.")
     void carPositionsAtStartAreZero() {
-        Race race = new Race(5, 3);
+        Race race = new Race(new GameSettings(5, 3));
         for (Integer carPositions : race.getCarPositions()) {
             assertThat(carPositions).isZero();
         }
@@ -44,7 +44,7 @@ class RaceTest {
     @Test
     @DisplayName("한 라운드가 진행되면 자동차의 위치는 기존 위치이거나, 기존 위치 + 1이다.")
     void carPositionsAfterOneRoundAreEitherSameOrIncremented() {
-        Race race = new Race(5, 3);
+        Race race = new Race(new GameSettings(5, 3));
         race.runRound();
         List<Integer> initialPositions = race.getCarPositions();
 
@@ -59,7 +59,7 @@ class RaceTest {
     @Test
     @DisplayName("전체 라운드를 넘어가면 에러가 발생한다.")
     void exceedingTotalRoundsThrowsError() {
-        Race race = new Race(5, 3);
+        Race race = new Race(new GameSettings(5, 3));
         for (int i = 0; i < 3; i++) {
             race.runRound();
         }
@@ -69,7 +69,7 @@ class RaceTest {
     @Test
     @DisplayName("랜덤 변수가 4이상이면 차가 한 칸 움직인다.")
     void carMovesOneStepIfRandomNumberIsGreaterThanEqual4() {
-        Race race = new Race(5, 3);
+        Race race = new Race(new GameSettings(5, 3));
 
         for (int i = 0; i < 4; i++) {
             Car car = new Car();
@@ -86,9 +86,13 @@ class RaceTest {
     @Test
     @DisplayName("자동차를 움직이는 변수는 0에서 9사이의 값이다.")
     void carMoveVariableIsBetween0And9() {
-        Race race = new Race(5, 3);
+        Race race = new Race(new GameSettings(5, 3));
         Car car = new Car();
-        assertThrows(IllegalArgumentException.class, () -> {race.moveCar(car, -1);});
-        assertThrows(IllegalArgumentException.class, () -> {race.moveCar(car, 10);});
+        assertThrows(IllegalArgumentException.class, () -> {
+            race.moveCar(car, -1);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            race.moveCar(car, 10);
+        });
     }
 }

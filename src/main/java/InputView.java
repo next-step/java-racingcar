@@ -7,12 +7,13 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public String prompt(String message) {
-        System.out.println(message);
-        return scanner.nextLine();
+    public GameSettings getGameSettings() {
+        int carCount = promptInt("자동차 대수는 몇 대 인가요?");
+        int roundCount = promptInt("시도할 회수는 몇 회 인가요?");
+        return new GameSettings(carCount, roundCount);
     }
 
-    public int promptInt(String message) {
+    private int promptInt(String message) {
         System.out.println(message);
         while (!scanner.hasNextInt()) {
             System.out.println("That's not a valid number!");

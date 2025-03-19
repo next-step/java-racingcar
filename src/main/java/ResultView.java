@@ -1,8 +1,9 @@
 import java.util.List;
 
 public class ResultView {
-    public void present(String result) {
-        System.out.println(result);
+
+    public void presentStartMessage() {
+        System.out.println("실행 결과");
     }
 
     public void presentCars(List<Integer> carPositions) {
