@@ -6,14 +6,28 @@ public class Car {
     private static final int CONDITION = 4;
     private static final int INITIAL_POSITION = 1;
     private static final int POSITION_MOVE = 1;
+    private static final int NAME_LENGTH = 5;
     private int position;
+    private final String name;
 
-    public Car() {
+    public Car(String name) {
+        validateNameLength(name);
+        this.name = name;
         this.position = INITIAL_POSITION;
+    }
+
+    private void validateNameLength(String name) {
+        if (name.length() > NAME_LENGTH) {
+            throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+        }
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void move() {
