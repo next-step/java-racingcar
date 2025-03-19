@@ -1,8 +1,8 @@
-package racingCar;
+package step3.racingCar;
 
-import racingCar.domain.Cars;
-import racingCar.view.InputView;
-import racingCar.view.ResultView;
+import step3.racingCar.domain.Cars;
+import step3.racingCar.view.InputView;
+import step3.racingCar.view.ResultView;
 
 public class RacingGame {
     public void race() {

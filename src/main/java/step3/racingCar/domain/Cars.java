@@ -1,4 +1,4 @@
-package racingCar.domain;
+package step3.racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,7 +1,7 @@
-package racingCar.view;
+package step3.racingCar.view;
 
-import racingCar.domain.Car;
-import racingCar.domain.Cars;
+import step3.racingCar.domain.Car;
+import step3.racingCar.domain.Cars;
 
 public class ResultView {
 

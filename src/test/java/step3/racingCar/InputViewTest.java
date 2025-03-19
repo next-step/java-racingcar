@@ -1,8 +1,8 @@
-package racingCar;
+package step3.racingCar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingCar.view.InputView;
+import step3.racingCar.view.InputView;
 
 import java.io.ByteArrayInputStream;
 
