@@ -15,4 +15,11 @@ class InputViewTest {
         System.setIn(new ByteArrayInputStream("-1\n".getBytes()));
         assertThatThrownBy(InputView::times).isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    @DisplayName("구분자가 포함되지 않을 경우 exception")
+    void separatorException() {
+        System.setIn(new ByteArrayInputStream("yeo.jin.yu".getBytes()));
+        assertThatThrownBy(InputView::nameOfCars).isInstanceOf(RuntimeException.class);
+    }
 }
