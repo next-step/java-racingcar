@@ -1,8 +1,6 @@
-import car.Car;
 import car.Cars;
 import utils.*;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class RacingCar {
@@ -11,10 +9,10 @@ public class RacingCar {
     }
 
     private static void play() {
-        int carCount = InputView.inputCarCount();
+        String[] carNames = InputView.inputCarNames();
         int tryCount = InputView.inputTryCount();
 
-        Cars cars = new Cars(CarGenerator.generateCars(carCount));
+        Cars cars = new Cars(CarGenerator.generateCars(carNames));
 
         OutputView.displayResultMessage();
         NumberGenerator numberGenerator = new RandomNumberGenerator();
