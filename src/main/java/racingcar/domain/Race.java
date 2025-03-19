@@ -20,4 +20,13 @@ public class Race {
             ResultView.viewRacingCar(cars.getCurrentStatus());
         }
     }
+    public void startWithName(MovingStrategy strategy) {
+        System.out.println("실행 결과");
+        ResultView.viewRacingCarWithName(cars.getCurrentStatus());
+        for (int attempt = 1; attempt < totalAttempts; attempt++) {
+            cars.moveAll(strategy);
+            ResultView.viewRacingCarWithName(cars.getCurrentStatus());
+        }
+        ResultView.viewRacingCarWinner(cars);
+    }
 }
