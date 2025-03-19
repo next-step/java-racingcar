@@ -41,7 +41,7 @@ public class SetCollectionTest {
     @DisplayName("[요구사항3] 입력 값에 따라 set에 포함 여부 결과 값이 다른지 확인한다")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void toUpperCase(int actual, boolean expected) {
+    void checkSetInclusionByInput(int actual, boolean expected) {
         assertThat(numbers.contains(actual)).isEqualTo(expected);
     }
 }
