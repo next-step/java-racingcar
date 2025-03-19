@@ -6,7 +6,7 @@ import racing.RandomGenerator;
 
 public class Racing {
 
-  List<Car> cars = new ArrayList<>();
+  private final List<Car> cars = new ArrayList<>();
 
   public Racing(int carCount) {
     generateCars(carCount);
