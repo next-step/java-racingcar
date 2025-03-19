@@ -15,7 +15,7 @@ public class GrandPrix {
                                .mapToObj(i -> new Round(new ZeroToTenDice()))
                                .collect(Collectors.toUnmodifiableList());
         this.cars = IntStream.range(0, totalCars)
-                             .mapToObj(i -> new Car())
+                             .mapToObj(i -> new Car(""))
                              .collect(Collectors.toUnmodifiableList());
     }
 

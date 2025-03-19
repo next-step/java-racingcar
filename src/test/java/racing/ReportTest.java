@@ -16,7 +16,7 @@ class ReportTest {
         var carCount = 3;
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            var car = new Car();
+            var car = new Car("");
             moveCar(car, i);
             cars.add(car);
         }

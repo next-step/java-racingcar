@@ -4,12 +4,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Random;
 
 class GrandPrixTest {
 
     @Test
-    @DisplayName("전체 라운드 수를 입력받아 전체 라운드 수 만큼 play한다")
+    @DisplayName("자동차의 이름들을 입력 받아 전체 라운드 수 만큼 play한다")
     void playForTotalRoundCountTest() {
         // given
         int totalRound = 5;
