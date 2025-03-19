@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
+    private static final String DELIMITER = ",|:";
+
     public static int add(String text) {
         if (text == null || text.isBlank()) {
             return 0;
@@ -18,8 +20,7 @@ public class Calculator {
     }
 
     private static int parseWithDefaultDelimiter(String text) {
-        String regex = ",|:";
-        String[] strings = text.split(regex);
+        String[] strings = text.split(DELIMITER);
         return calculateSum(strings);
     }
 
