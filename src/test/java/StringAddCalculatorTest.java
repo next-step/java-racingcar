@@ -40,6 +40,14 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Negative number");
+    }
+
+    @Test
+    public void splitAndSum_문자() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("abc"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Not number value");
     }
 }
