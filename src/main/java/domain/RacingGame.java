@@ -22,10 +22,12 @@ public class RacingGame {
     }
 
     public RacingGameResult gameStart() {
+        RacingGameResult racingGameResult = new RacingGameResult();
         for (int i = 0; i < numberOfTrial; i++) {
             moveCars();
+            racingGameResult.addRoundResult(new RoundResult(racingCars));
         }
-        return new RacingGameResult(racingCars);
+        return racingGameResult;
     }
 
     private void moveCars() {

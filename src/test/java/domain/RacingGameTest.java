@@ -3,13 +3,14 @@ package domain;
 import movingStrategy.AlwaysMove;
 import movingStrategy.Moveable;
 import movingStrategy.RandomlyMove;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
 
@@ -22,7 +23,7 @@ class RacingGameTest {
     @CsvSource(value = {"0, 1", "1, 0", "0, 0", "-1, 1", "1, -1", "-1, -1"})
     void test(Integer numberOfCar, Integer numberOfRacing) {
         // When & Then
-        Assertions.assertThatThrownBy(() -> {
+        assertThatThrownBy(() -> {
             new RacingGame(numberOfCar, numberOfRacing, alwaysMove);
         }).isInstanceOf(IllegalArgumentException.class);
     }
@@ -38,36 +39,32 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(validNumberOfCar, validNumberOfTrial, alwaysMove);
 
         // Then
-        Assertions.assertThatNoException().isThrownBy(racingGame::gameStart);
+        assertThatNoException().isThrownBy(racingGame::gameStart);
     }
 
     @DisplayName("numberOfCar 만큼 자동차가 생성됨")
     @Test
     void carProduceTest() {
         RacingGameResult racingGameResult = playTestGame(alwaysMove);
-        List<RacingCar> racingCars = racingGameResult.getRacedCars();
-        Assertions.assertThat(racingCars).hasSize(NUMBER_OF_CAR);
+        List<RoundResult> roundResults = racingGameResult.getAllRoundResults();
+        assertThat(roundResults.get(0).whereAreCars()).hasSize(NUMBER_OF_CAR);
     }
 
     @DisplayName("numberOfTrial 만큼 자동차가 진행함")
     @Test
     void alwaysMoveTest() {
         RacingGameResult racingGameResult = playTestGame(alwaysMove);
-        List<RacingCar> racingCars = racingGameResult.getRacedCars();
-
-        Assertions.assertThat(racingCars)
-                .allMatch(car -> car.whereIsCar() == NUMBER_OF_TRIAL);
+        assertThat(racingGameResult.getLastRoundResult().whereAreCars()).containsOnly(NUMBER_OF_TRIAL);
     }
 
-    @DisplayName("0에서 numberOfTrial 사이의 값만큼 자동차가 진행함")
+    @DisplayName("numberOfTrial 보다 작거나 같은 값만큼 자동차가 진행함")
     @Test
     void randomlyMoveTest() {
         RandomlyMove randomlyMove = new RandomlyMove(10, 4);
         RacingGameResult racingGameResult = playTestGame(randomlyMove);
-        List<RacingCar> racingCars = racingGameResult.getRacedCars();
 
-        Assertions.assertThat(racingCars)
-                .allMatch(car -> car.whereIsCar() <= NUMBER_OF_TRIAL || car.whereIsCar() >= 0);
+        assertThat(racingGameResult.getLastRoundResult().whereAreCars())
+                .allMatch(progress -> progress <= NUMBER_OF_TRIAL);
     }
 
     private RacingGameResult playTestGame(Moveable moveable) {

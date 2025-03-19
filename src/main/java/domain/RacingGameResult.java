@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameResult {
-    private final List<RacingCar> racedCars;
+    private final List<RoundResult> roundResult;
 
-    public RacingGameResult(List<RacingCar> racedCars) {
-        this.racedCars = new ArrayList<>(racedCars);
+    public RacingGameResult() {
+        this.roundResult = new ArrayList<>();
     }
 
-    public List<RacingCar> getRacedCars() {
-        return this.racedCars;
+    public void addRoundResult(RoundResult roundResult) {
+        this.roundResult.add(roundResult);
+    }
+
+    public List<RoundResult> getAllRoundResults() {
+        return roundResult;
+    }
+
+    public RoundResult getLastRoundResult() {
+        return roundResult.get(roundResult.size() - 1);
     }
 }
