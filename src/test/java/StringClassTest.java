@@ -39,16 +39,28 @@ class StringClassTest {
     void successSplit3_2() {
         assertThatThrownBy(() -> {
             "abc".charAt(10);
-        }).isInstanceOf(IndexOutOfBoundsException.class);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 
     @DisplayName("[요구사항2] 'abc' 에서 charAt(10)으로 위치 값을 벗어나면 StringIndexOutOfBoundsException 이 발생한다")
     @Test
     void successSplit3_2_2() {
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
             .isThrownBy(() -> {
                 "abc".charAt(10);
             }).withMessageMatching("String index out of range: \\d+");
     }
 
+    @DisplayName("[요구사항2] 'abc' 에서 charAt()으로 위치 값을 벗어나면 StringIndexOutOfBoundsException 이 발생한다")
+    @Test
+    void successSplit3_2_3() {
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+            .isThrownBy(() -> {
+                "abc".charAt(-1);
+            }).withMessageMatching("String index out of range: -\\d+");
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+            .isThrownBy(() -> {
+                "abc".charAt("abc".length());
+            }).withMessageMatching("String index out of range: \\d+");
+    }
 }
