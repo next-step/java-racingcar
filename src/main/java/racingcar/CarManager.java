@@ -1,36 +1,34 @@
 package racingcar;
 
-import java.util.Random;
+import racingcar.strategy.IMoveStrategy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarManager {
 
-    public static final int MAX_RAND_VALUE = 9;
-    public static final int MIN_MOVE_VALUE = 4;
+    public static List<Car> prepareCar(int carCount) {
+        if (carCount <=  0) {
+            throw new RuntimeException("자동차 개수는 0 이상이어야 합니다.");
+        }
 
-    public static Random rand = new Random();
-
-    public static Car[] prepareCar(int carCount) {
-        Car[] cars = new Car[carCount];
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars[i] = new Car(0);
+            cars.add(new Car(0));
         }
         return cars;
     }
 
-    public static void moveCars(Car[] cars) {
+    public static void moveCars(List<Car> cars, IMoveStrategy moveStrategy) {
         for (Car car : cars) {
-            moveCar(car);
+            moveCar(car, moveStrategy);
         }
     }
 
-    public static void moveCar(Car car) {
-        if (canMove(rand.nextInt(MAX_RAND_VALUE))) {
+    private static void moveCar(Car car, IMoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
             car.move();
         }
-    }
-
-    public static boolean canMove(int num) {
-        return num >= MIN_MOVE_VALUE;
     }
 
 }

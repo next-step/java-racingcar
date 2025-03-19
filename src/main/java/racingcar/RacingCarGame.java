@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class RacingCarGame {
 
@@ -14,7 +17,7 @@ public class RacingCarGame {
         int tryCount = InputView.showTryCountInput();
         checkValidInput(tryCount);
 
-        Car[] cars = CarManager.prepareCar(carCount);
+        List<Car> cars = CarManager.prepareCar(carCount);
         startGame(cars, tryCount);
     }
 
@@ -25,11 +28,11 @@ public class RacingCarGame {
         }
     }
 
-    private static void startGame(Car[] cars, int tryCount) {
+    private static void startGame(List<Car> cars, int tryCount) {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             System.out.println("Round " + (i + 1));
-            CarManager.moveCars(cars);
+            CarManager.moveCars(cars, new RandomMoveStrategy());
             OutputView.showCarsLocation(cars);
         }
     }
