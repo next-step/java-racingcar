@@ -32,7 +32,7 @@ public class Car {
 
     public void move() {
         if (NumberRandomUtil.generate() >= CONDITION) {
-            position += 1;
+            position += POSITION_MOVE;
         }
     }
 
