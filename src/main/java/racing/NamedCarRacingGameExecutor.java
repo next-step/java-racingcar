@@ -15,7 +15,7 @@ public class NamedCarRacingGameExecutor {
 
   public static void main(String[] args) {
     List<CarName> names = CarNameInputSplitter.split(InputView.showCarNamesInput());
-    SimulateCount simulateCount = new SimulateCount(InputView.showSimulateCountInput());
+    SimulateCount simulateCount = SimulateCount.valueOf(InputView.showSimulateCountInput());
 
     CarRacingGameSimulator simulator = new CarRacingGameSimulator(names, new RandomCarMovingStrategy());
 

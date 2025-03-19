@@ -14,8 +14,8 @@ import java.util.List;
 public class CarRacingGameExecutor {
 
   public static void main(String[] args) {
-    CarCount carCount = new CarCount(InputView.showCarCountInput());
-    SimulateCount simulateCount = new SimulateCount(InputView.showSimulateCountInput());
+    CarCount carCount = CarCount.valueOf(InputView.showCarCountInput());
+    SimulateCount simulateCount = SimulateCount.valueOf(InputView.showSimulateCountInput());
 
     CarRacingGameSimulator simulator = new CarRacingGameSimulator(carCount, new RandomCarMovingStrategy());
 

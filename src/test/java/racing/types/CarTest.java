@@ -14,7 +14,7 @@ class CarTest {
   @ValueSource(booleans = {true, false})
   void go_carMovedByStrategy(boolean strategyResult) {
     int simulateCount = 4;
-    Car car = new Car(new CarName("test"));
+    Car car = Car.valueOf(CarName.valueOf("test"));
 
     for (int i = 0; i < simulateCount; i++) {
       car.go(() -> strategyResult);
@@ -27,7 +27,7 @@ class CarTest {
   @Test
   void reset_setLocationZero() {
     int simulateCount = 4;
-    Car car = new Car(new CarName("test"));
+    Car car = Car.valueOf(CarName.valueOf("test"));
 
     for (int i = 0; i < simulateCount; i++) {
       car.go(() -> true);

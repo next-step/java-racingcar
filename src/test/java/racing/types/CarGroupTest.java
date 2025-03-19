@@ -16,11 +16,11 @@ class CarGroupTest {
   @ParameterizedTest
   @ValueSource(booleans = {true, false})
   void tryMoveCars_carsMovedByStrategy(boolean strategyResult) {
-    CarCount carCount = new CarCount(3);
+    CarCount carCount = CarCount.valueOf(3);
     List<CarName> names = List.of(
-        new CarName("pobi"),
-        new CarName("crong"),
-        new CarName("honux")
+        CarName.valueOf("pobi"),
+        CarName.valueOf("crong"),
+        CarName.valueOf("honux")
     );
 
     CarGroup carGroupWithCount = new CarGroup(carCount);
@@ -44,11 +44,11 @@ class CarGroupTest {
   @DisplayName("차들을 copy 하면 자동차 배열의 깊은 복사를 반환한다.")
   @Test
   void copyCars_returnDeepCopiedCarArray() {
-    CarCount carCount = new CarCount(4);
+    CarCount carCount = CarCount.valueOf(4);
     List<CarName> names = List.of(
-        new CarName("pobi"),
-        new CarName("crong"),
-        new CarName("honux")
+        CarName.valueOf("pobi"),
+        CarName.valueOf("crong"),
+        CarName.valueOf("honux")
     );
 
     CarGroup carGroupWithNames = new CarGroup(names);
@@ -75,11 +75,11 @@ class CarGroupTest {
   @DisplayName("차들을 reset 하면 차의 위치가 0이 된다.")
   @Test
   void reset_setCarPositionToZero() {
-    CarCount carCount = new CarCount(5);
+    CarCount carCount = CarCount.valueOf(5);
     List<CarName> names = List.of(
-        new CarName("pobi"),
-        new CarName("crong"),
-        new CarName("honux")
+        CarName.valueOf("pobi"),
+        CarName.valueOf("crong"),
+        CarName.valueOf("honux")
     );
 
     CarGroup carGroupWithNames = new CarGroup(names);

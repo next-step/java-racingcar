@@ -18,17 +18,17 @@ class CarRacingGameSimulatorTest {
   void run_givenSimulateCount_returnLocationResult() {
     int carCount = 3;
     List<CarName> carNames = List.of(
-        new CarName("pobi"),
-        new CarName("crong"),
-        new CarName("honux")
+        CarName.valueOf("pobi"),
+        CarName.valueOf("crong"),
+        CarName.valueOf("honux")
     );
     int simulateCount = 4;
 
-    CarRacingGameSimulator simulatorWithCarCount = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
-    CarRacingGameSimulateResult simulateWithCarCountResults = Objects.requireNonNull(simulatorWithCarCount.run(new SimulateCount(simulateCount)));
+    CarRacingGameSimulator simulatorWithCarCount = new CarRacingGameSimulator(CarCount.valueOf(carCount), () -> true);
+    CarRacingGameSimulateResult simulateWithCarCountResults = Objects.requireNonNull(simulatorWithCarCount.run(SimulateCount.valueOf(simulateCount)));
 
     CarRacingGameSimulator simulatorWithCarNames = new CarRacingGameSimulator(carNames, () -> true);
-    CarRacingGameSimulateResult simulateWithCarNamesResults = Objects.requireNonNull(simulatorWithCarNames.run(new SimulateCount(simulateCount)));
+    CarRacingGameSimulateResult simulateWithCarNamesResults = Objects.requireNonNull(simulatorWithCarNames.run(SimulateCount.valueOf(simulateCount)));
 
     assertAll(
         () -> assertThat(simulateWithCarCountResults.getSimulationResult()).hasSize(simulateCount),
@@ -52,8 +52,8 @@ class CarRacingGameSimulatorTest {
     int carCount = 3;
     int simulateCount = 4;
 
-    CarRacingGameSimulator simulatorWithCarCount = new CarRacingGameSimulator(new CarCount(carCount), () -> true);
-    simulatorWithCarCount.run(new SimulateCount(simulateCount));
+    CarRacingGameSimulator simulatorWithCarCount = new CarRacingGameSimulator(CarCount.valueOf(carCount), () -> true);
+    simulatorWithCarCount.run(SimulateCount.valueOf(simulateCount));
 
     CarGroup carGroup = simulatorWithCarCount.getCarGroup();
 

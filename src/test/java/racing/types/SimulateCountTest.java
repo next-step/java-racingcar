@@ -12,6 +12,6 @@ class SimulateCountTest {
   @ParameterizedTest
   @ValueSource(ints = {0, -1})
   void constructor_givenNotPositiveNumberSimulationCount_throwRuntimeException(int simulateCount) {
-    assertThrows(RuntimeException.class, () -> new SimulateCount(simulateCount));
+    assertThrows(RuntimeException.class, () -> SimulateCount.valueOf(simulateCount));
   }
 }

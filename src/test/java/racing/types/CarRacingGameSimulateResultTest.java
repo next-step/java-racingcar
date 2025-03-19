@@ -41,23 +41,23 @@ class CarRacingGameSimulateResultTest {
   @DisplayName("한명의 우승자가 있을 때 우승자를 요청하면 한명의 우승자를 가져온다.")
   @Test
   public void getWinner_returnOneWinners() {
-    Car firstRoundCar1 = new Car(new CarName("a"));
+    Car firstRoundCar1 = Car.valueOf(CarName.valueOf("a"));
     firstRoundCar1.go(() -> true);
 
     List<Car> firstRoundResult = List.of(
         firstRoundCar1,
-        new Car(new CarName("b")),
-        new Car(new CarName("c"))
+        Car.valueOf(CarName.valueOf("b")),
+        Car.valueOf(CarName.valueOf("c"))
     );
 
-    Car secondCountCar1 = new Car(new CarName("a"));
+    Car secondCountCar1 = Car.valueOf(CarName.valueOf("a"));
     secondCountCar1.go(() -> true);
     secondCountCar1.go(() -> true);
 
     List<Car> secondRoundResult = List.of(
         secondCountCar1,
-        new Car(new CarName("b")),
-        new Car(new CarName("c"))
+        Car.valueOf(CarName.valueOf("b")),
+        Car.valueOf(CarName.valueOf("c"))
     );
 
     CarRacingGameSimulateResult simulateResult = new CarRacingGameSimulateResult(
@@ -70,29 +70,29 @@ class CarRacingGameSimulateResultTest {
   @DisplayName("여러명의 우승자가 있을 때 우승자를 요청하면 여러명의의 우승자를 가져온다.")
   @Test
   public void getWinner_returnMultipleWinners() {
-    Car firstRoundCar1 = new Car(new CarName("a"));
+    Car firstRoundCar1 = Car.valueOf(CarName.valueOf("a"));
     firstRoundCar1.go(() -> true);
-    Car firstRoundCar2 = new Car(new CarName("b"));
+    Car firstRoundCar2 = Car.valueOf(CarName.valueOf("b"));
     firstRoundCar2.go(() -> true);
 
     List<Car> firstRoundResult = List.of(
         firstRoundCar1,
         firstRoundCar2,
-        new Car(new CarName("c"))
+        Car.valueOf(CarName.valueOf("c"))
     );
 
-    Car secondCountCar1 = new Car(new CarName("a"));
+    Car secondCountCar1 = Car.valueOf(CarName.valueOf("a"));
     secondCountCar1.go(() -> true);
     secondCountCar1.go(() -> true);
 
-    Car secondCountCar2 = new Car(new CarName("b"));
+    Car secondCountCar2 = Car.valueOf(CarName.valueOf("b"));
     secondCountCar2.go(() -> true);
     secondCountCar2.go(() -> true);
 
     List<Car> secondRoundResult = List.of(
         secondCountCar1,
         secondCountCar2,
-        new Car(new CarName("c"))
+        Car.valueOf(CarName.valueOf("c"))
     );
 
     CarRacingGameSimulateResult simulateResult = new CarRacingGameSimulateResult(

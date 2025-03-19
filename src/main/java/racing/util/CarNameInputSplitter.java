@@ -18,6 +18,6 @@ public class CarNameInputSplitter {
       throw new IllegalArgumentException("차 이름들의 값은 2개 이상으로 들어와야 합니다.");
     }
 
-    return nameList.stream().map(CarName::new).collect(Collectors.toList());
+    return nameList.stream().map(CarName::valueOf).collect(Collectors.toList());
   }
 }

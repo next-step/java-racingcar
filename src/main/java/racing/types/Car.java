@@ -11,12 +11,20 @@ public class Car {
     this(new CarName());
   }
 
-  public Car(CarName carName) {
+  public static Car valueOf(Car car) {
+    return new Car(car);
+  }
+
+  public static Car valueOf(CarName carName) {
+    return new Car(carName);
+  }
+
+  private Car(CarName carName) {
     this.carName = carName;
     this.location = 0;
   }
 
-  public Car(Car car) {
+  private Car(Car car) {
     this.location = car.location;
     this.carName = car.carName;
   }

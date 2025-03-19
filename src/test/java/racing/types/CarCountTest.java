@@ -12,6 +12,6 @@ class CarCountTest {
   @ParameterizedTest
   @ValueSource(ints = {0, 1, -1})
   void constructor_givenZeroOrOneOrNegativeCarCount_throwsRuntimeException(int carCount) {
-    assertThrows(RuntimeException.class, () -> new CarCount(carCount));
+    assertThrows(RuntimeException.class, () -> CarCount.valueOf(carCount));
   }
 }

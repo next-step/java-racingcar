@@ -11,14 +11,18 @@ public class CarName {
     this.name = DEFAULT_NAME;
   }
 
-  public CarName(String racingCarName) {
-    if (racingCarName == null || racingCarName.isEmpty()) {
+  public static CarName valueOf(String carName) {
+    return new CarName(carName);
+  }
+
+  private CarName(String carName) {
+    if (carName == null || carName.isEmpty()) {
       throw new IllegalArgumentException("차 이름은 비어있을 수 없습니다.");
     }
-    if (racingCarName.length() > MAZ_CAR_NAME_LEN) {
+    if (carName.length() > MAZ_CAR_NAME_LEN) {
       throw new IllegalArgumentException("차 이름은 5글자를 초과할 수 없습니다.");
     }
-    this.name = racingCarName;
+    this.name = carName;
   }
 
   public String getName() {

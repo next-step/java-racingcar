@@ -11,7 +11,7 @@ public class CarGroup {
 
   public CarGroup(List<CarName> carNames) {
     for (CarName name : carNames) {
-      cars.add(new Car(name));
+      cars.add(Car.valueOf(name));
     }
   }
 
@@ -28,7 +28,7 @@ public class CarGroup {
   public List<Car> copyCars() {
     List<Car> res = new ArrayList<>();
     for (Car car : cars) {
-      res.add(new Car(car));
+      res.add(Car.valueOf(car));
     }
     return res;
   }
