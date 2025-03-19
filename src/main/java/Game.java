@@ -8,7 +8,7 @@ public class Game {
         resultView.presentStartMessage();
 
         Race race = new Race(settings);
-        while (!race.isRaceFinished()) {
+        while (race.isRaceInProgress()) {
             race.runRound();
             resultView.presentCars(race.getCarPositions());
         }

@@ -31,7 +31,7 @@ public class Race {
     }
 
     public void runRound() {
-        if (isRaceFinished()) {
+        if (!isRaceInProgress()) {
             throw new IllegalStateException("Race has already finished");
         }
 
@@ -41,8 +41,8 @@ public class Race {
         currentRound++;
     }
 
-    public boolean isRaceFinished() {
-        return currentRound >= totalRounds;
+    public boolean isRaceInProgress() {
+        return currentRound < totalRounds;
     }
 
     public void moveCar(Car car, int seed) {
