@@ -13,12 +13,11 @@ public class Racing {
         cars.forEach(Car::play);
     }
 
-    public String getRacingStatus() {
+    @Override
+    public String toString() {
         StringBuilder result = new StringBuilder();
-        cars.stream().forEachOrdered(car -> {
-            for (int i = 0; i < car.getDistance(); i++) {
-                result.append("-");
-            }
+        cars.forEach(car -> {
+            result.append("-".repeat(Math.max(0, car.getDistance())));
             result.append("\n");
         });
         return result.toString();
