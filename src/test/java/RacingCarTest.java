@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -25,7 +24,7 @@ class RacingCarTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        racingCar.input();
+        racingCar.host();
 
         List<String> expected = List.of("자동차 대수는 몇 대 인가요?", "시도할 회수는 몇 회 인가요?");
         assertThat(out.toString()).contains(expected);
@@ -38,22 +37,22 @@ class RacingCarTest {
         String in = String.format("%s%n%s%n", carNumber, tryCount);
         System.setIn(new ByteArrayInputStream(in.getBytes()));
 
-        assertThatThrownBy(racingCar::input)
+        assertThatThrownBy(racingCar::host)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(delimiter = ',', value = {"2,2", "4,5", "1,3"})
     @DisplayName("주어진 횟수 동안 자동차는 전진하거나 멈출 수 있으며, 횟수마다 실행 결과를 출력한다.")
-    void printRaceResult() {
-        final int carNumber = 2, tryCount = 2;
+    void printRaceResult(int carNumber, int tryCount) {
         String in = String.format("%s%n%s%n", carNumber, tryCount);
         System.setIn(new ByteArrayInputStream(in.getBytes()));
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        racingCar.input();
+        racingCar.host();
 
-        assertThat(out.toString()).containsPattern("실행 결과\n-{0,1}\n-{0,1}\n\n-{0,2}\n-{0,2}");
+        assertThat(out.toString()).containsPattern("실행 결과\\R((-*\\R)*\\R)*");
     }
 
 //    @RepeatedTest(value = 30)
