@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.racing.Racing;
 
 import java.util.stream.IntStream;
 
@@ -19,7 +21,7 @@ public class OutputView {
 
         IntStream.range(0, numberOfRounds).forEach(i -> {
             racing.playRound();
-            System.out.println(racing.getRacingStatus());
+            System.out.println(racing);
         });
     }
 }

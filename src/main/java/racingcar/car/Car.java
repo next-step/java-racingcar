@@ -1,5 +1,7 @@
-package racingcar;
+package racingcar.car;
 
+
+import racingcar.movepolicy.MoveStrategy;
 
 public class Car {
 

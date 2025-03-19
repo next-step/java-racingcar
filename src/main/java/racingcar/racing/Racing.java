@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.racing;
+
+import racingcar.car.Car;
 
 import java.util.List;
 

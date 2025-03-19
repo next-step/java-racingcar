@@ -1,5 +1,12 @@
 package racingcar;
 
+import racingcar.car.Car;
+import racingcar.movepolicy.DefaultMoveStrategy;
+import racingcar.movepolicy.MoveStrategy;
+import racingcar.racing.Racing;
+import racingcar.ui.InputView;
+import racingcar.ui.OutputView;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
