@@ -32,7 +32,7 @@ public class Car {
         return position;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
