@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.entity.Car;
 import racing.entity.RacingCars;
-import racing.entity.RacingGame;
 import racing.rule.RandomMoveRule;
 
 import java.util.List;
@@ -39,8 +38,6 @@ class RacingGameTest {
     @DisplayName("가장 멀리간 자동차로 우승자를 선정한다. (단독 우승) ")
     public void select_winner_basedOn_MaxPosition() {
         // given
-        RacingGame racingGame = new RacingGame(new RandomMoveRule());
-
         Car ford = new Car("ford");
         Car kia = new Car("kia");
         Car tesla = new Car("tesla");
@@ -61,8 +58,6 @@ class RacingGameTest {
     @DisplayName("가장 멀리간 자동차로 우승자를 선정한다. (동반 우승) ")
     public void select_joint_winners_basedOn_MaxPosition() {
         // given
-        RacingGame racingGame = new RacingGame(new RandomMoveRule());
-
         Car ford = new Car("ford");
         Car kia = new Car("kia");
         Car tesla = new Car("tesla");
