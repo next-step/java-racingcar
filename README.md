@@ -7,12 +7,3 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
-
-
-
-## TODO
-- car, racingCar에 있는 print 요소들 InputView, ResultView로 옮기기
-- name 작업하기
-- 새로운 형태에 맞게 print 작업
-- 우승자 print
-- 
