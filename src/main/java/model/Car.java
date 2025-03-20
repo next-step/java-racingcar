@@ -4,18 +4,20 @@ import strategy.MoveStrategy;
 import strategy.RandomMoveStrategy;
 
 public class Car {
+    private String name;
     private int currentPosition = 1;
     private final MoveStrategy moveStrategy;
 
-    public Car() {
-        moveStrategy = new RandomMoveStrategy();
+    public Car(String name) {
+        this(name, new RandomMoveStrategy());
     }
 
-    public Car(MoveStrategy moveStrategy) {
+    public Car(String name, MoveStrategy moveStrategy) {
         if (moveStrategy == null) {
             throw new RuntimeException("moveStrategy 가 null입니다.");
         }
 
+        this.name = name;
         this.moveStrategy = moveStrategy;
     }
 

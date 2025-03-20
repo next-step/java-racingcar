@@ -14,7 +14,7 @@ public class Racing {
         carList = new ArrayList<>();
 
         for (int i = 0; i < carNameList.length; i++) {
-            carList.add(new Car());
+            carList.add(new Car(carNameList[i]));
         }
     }
 
