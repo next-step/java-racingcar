@@ -1,3 +1,5 @@
+package utils.strategy;
+
 public class DefaultSplitter implements Splitter {
     @Override
     public boolean isSupport(String input) {
