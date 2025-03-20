@@ -25,7 +25,7 @@ public class RacingGameApplication {
         }
 
         // 우승자 발표
-        List<String> winners = racingGame.getWinners(racingCars);
+        List<String> winners = racingCars.getLeadingCarNameList();
         RacingGameOutputView.printRacingGameWinners(winners);
     }
 }

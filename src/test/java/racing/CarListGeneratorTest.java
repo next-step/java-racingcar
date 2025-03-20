@@ -6,6 +6,7 @@ import racing.entity.Car;
 import racing.generator.CarListGenerator;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,10 +19,11 @@ class CarListGeneratorTest {
         List<String> userInput = List.of("ford", "kia", "tesla");
 
         // when
-        List<Car> actual = CarListGenerator.generateCarList(userInput);
+        List<Car> carList = CarListGenerator.generateCarList(userInput);
+        List<String> actual = carList.stream().map(Car::getCarName).collect(Collectors.toList());
 
         // then
-        List<Car> expected = List.of(new Car("ford"), new Car("kia"), new Car("tesla"));
+        List<String> expected = List.of("ford", "kia", "tesla");
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
 

@@ -14,7 +14,7 @@ public class RacingGameOutputView {
     }
 
     public static void printRoundResult(RacingCars racingCars) {
-        List<Car> cars = racingCars.getCars();
+        List<Car> cars = racingCars.getCarList();
 
         for (Car car : cars) {
             printCarInfo(car);

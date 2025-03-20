@@ -52,7 +52,7 @@ class RacingGameTest {
         }
 
         // then
-        List<String> actual = racingGame.getWinners(racingCars);
+        List<String> actual = racingCars.getLeadingCarNameList();
         List<String> expected = List.of("ford");
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
@@ -75,7 +75,7 @@ class RacingGameTest {
         }
 
         // then
-        List<String> actual = racingGame.getWinners(racingCars);
+        List<String> actual = racingCars.getLeadingCarNameList();
         List<String> expected = List.of("ford", "tesla");
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
