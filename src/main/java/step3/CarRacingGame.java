@@ -32,11 +32,7 @@ public class CarRacingGame {
         RacingGame racingGame = new RacingGame(carCount);
         List<List<String>> raceResults = racingGame.play(roundCount);
 
-        for (List<String> round : raceResults) {
-            for (String s : round) {
-                System.out.println(s);
-            }
-            System.out.println();
-        }
+        ResultView resultView = new ResultView();
+        resultView.printResults(raceResults);
     }
 }
