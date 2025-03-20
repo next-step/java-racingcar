@@ -1,5 +1,6 @@
 package racing.service;
 
+import java.util.List;
 import racing.model.Cars;
 
 public class RaceService {
@@ -9,7 +10,7 @@ public class RaceService {
         this.numberGenerator = numberGenerator;
     }
 
-    public Cars generateCar(String[] carNames) {
+    public Cars generateCar(List<String> carNames) {
         return Cars.create(carNames, numberGenerator);
     }
 

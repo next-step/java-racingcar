@@ -3,6 +3,7 @@ package racing.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,20 +23,20 @@ class RaceServiceTest {
     @Test
     void generateCarsTest() {
         // given
-        String[] carNames = {"BMW", "BENZ", "AUDI"};
+        List<String> carNames = List.of("BMW", "BENZ", "AUDI");
 
         // when
         Cars cars = raceService.generateCar(carNames);
 
         // then
-        assertThat(cars.getCars().size()).isEqualTo(carNames.length);
+        assertThat(cars.getCars().size()).isEqualTo(carNames.size());
     }
 
     @DisplayName("자동차 이동을 요청할 수 있다.")
     @Test
     void moveCarTest() {
         // given
-        String[] carNames = {"BMW", "BENZ", "AUDI"};
+        List<String> carNames = List.of("BMW", "BENZ", "AUDI");
         Cars cars = raceService.generateCar(carNames);
 
         // when

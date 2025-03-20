@@ -15,7 +15,7 @@ public class Cars {
         this.numberGenerator = numberGenerator;
     }
 
-    public static Cars create(String[] carNames, NumberGenerator numberGenerator) {
+    public static Cars create(List<String> carNames, NumberGenerator numberGenerator) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
             Car car = new Car(carName, INIT_POSITION);

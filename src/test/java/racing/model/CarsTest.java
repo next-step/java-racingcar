@@ -19,7 +19,7 @@ class CarsTest {
     @DisplayName("Cars 객체를 생성 할 수 있다.")
     @Test
     void createTest() {
-        String[] carNames = {"BMW"};
+        List<String> carNames = List.of("BMW");
         Cars cars = createCars(carNames, new FakeNumberGenerator(MOVE_NUMBER));
 
         assertAll(() -> assertThat(cars.getCars()).hasSize(1),
@@ -30,7 +30,7 @@ class CarsTest {
     @Test
     void movedAllTest() {
         // given
-        String[] carNames = {"BMW", "AUDI"};
+        List<String> carNames = List.of("BMW", "AUDI");
         Cars cars = createCars(carNames, new FakeNumberGenerator(MOVE_NUMBER));
 
         // when
@@ -46,7 +46,7 @@ class CarsTest {
     @Test
     void getCarsTest() {
         // given
-        String[] carNames = {"BMW", "AUDI", "BENZ"};
+        List<String> carNames = List.of("BMW", "AUDI", "BENZ");
         Cars cars = createCars(carNames, new FakeNumberGenerator(STOP_NUMBER));
 
         // when
@@ -106,7 +106,7 @@ class CarsTest {
         );
     }
 
-    private Cars createCars(String[] carNames, NumberGenerator numberGenerator) {
+    private Cars createCars(List<String> carNames, NumberGenerator numberGenerator) {
         return Cars.create(carNames, numberGenerator);
     }
 }
