@@ -16,7 +16,7 @@ public class RacingCarResultView {
 
     public void viewCurrent(List<RacingCar> racingCars) {
         for (RacingCar car : racingCars) {
-            System.out.println(car.display());
+            System.out.println(car);
         }
 
         System.out.println();

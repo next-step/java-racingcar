@@ -30,10 +30,6 @@ public class RacingCar implements Comparable<RacingCar> {
         return racingCarMoveStrategy.isMovable();
     }
 
-    public String display() {
-        return carName + " : " + MOVE_SYMBOL.repeat(distance);
-    }
-
     public RacingCarName getCarName() {
         return carName;
     }
@@ -41,5 +37,10 @@ public class RacingCar implements Comparable<RacingCar> {
     @Override
     public int compareTo(RacingCar o) {
         return Integer.compare(o.distance, distance);
+    }
+
+    @Override
+    public String toString() {
+        return carName + " : " + MOVE_SYMBOL.repeat(distance);
     }
 }

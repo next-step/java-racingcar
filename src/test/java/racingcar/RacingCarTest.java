@@ -17,7 +17,7 @@ class RacingCarTest {
     void 초기_상태에서_display는_이름만_있다() {
         RacingCar car = new RacingCar(new RacingCarName("test"),
             new RandomRacingCarMoveStrategy(RandomUtils.getInstance()));
-        assertThat(car.display()).isEqualTo("test : ");
+        assertThat(car.toString()).isEqualTo("test : ");
     }
 
     @ParameterizedTest
@@ -29,7 +29,7 @@ class RacingCarTest {
             car.moveIfMovable();
         }
 
-        assertThat(car.display()).isEqualTo(expected);
+        assertThat(car.toString()).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -41,6 +41,6 @@ class RacingCarTest {
             car.moveIfMovable();
         }
 
-        assertThat(car.display()).isEqualTo(expected);
+        assertThat(car.toString()).isEqualTo(expected);
     }
 }
