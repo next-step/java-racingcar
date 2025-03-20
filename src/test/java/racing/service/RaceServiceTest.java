@@ -1,8 +1,9 @@
 package racing.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
-import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,32 +15,37 @@ class RaceServiceTest {
 
     @BeforeEach
     void setUp() {
-        raceService = new RaceService(new FakeNumberGenerator(4));
+        raceService = new RaceService(new FakeNumberGenerator(5));
     }
 
-    @DisplayName("입력 받은 n대의 자동차를 생성한다.")
+    @DisplayName("입력 받은 n대의 자동차를 생성 요청 한다.")
     @Test
     void generateCarsTest() {
         // given
-        int carCount = 3;
+        List<String> carNames = List.of("BMW", "BENZ", "AUDI");
 
         // when
-        Cars cars = raceService.generateCar(carCount);
+        Cars cars = raceService.generateCar(carNames);
 
         // then
-        assertThat(cars.size()).isEqualTo(carCount);
+        assertThat(cars.getCars().size()).isEqualTo(carNames.size());
     }
 
-    @DisplayName("자동차를 움직일 수 있다.")
+    @DisplayName("자동차 이동을 요청할 수 있다.")
     @Test
     void moveCarTest() {
         // given
-        Cars cars = raceService.generateCar(3);
+        List<String> carNames = List.of("BMW", "BENZ", "AUDI");
+        Cars cars = raceService.generateCar(carNames);
 
         // when
-        raceService.moveCar(cars);
+        Cars sut = raceService.moveCar(cars);
 
         // then
-        assertThat(cars.getPositions()).isEqualTo(Arrays.asList(1, 1, 1));
+        assertAll(() -> assertThat(sut.getCars().get(0).getPosition()).isEqualTo(2),
+                () -> assertThat(sut.getCars().get(1).getPosition()).isEqualTo(2),
+                () -> assertThat(sut.getCars().get(2).getPosition()).isEqualTo(2)
+        );
     }
+
 }

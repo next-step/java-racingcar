@@ -1,34 +1,69 @@
 package racing.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racing.service.NumberGenerator;
 
 public class Cars {
     private final List<Car> cars;
-    private final NumberGenerator numberGenerator;
 
-    public Cars(List<Car> cars, NumberGenerator numberGenerator) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
-        this.numberGenerator = numberGenerator;
     }
 
-    public void moveAll() {
+    public static Cars create(List<String> carNames) {
+        List<Car> carList = new ArrayList<>();
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            carList.add(car);
+        }
+        return new Cars(carList);
+    }
+
+    public Cars movedAll(NumberGenerator numberGenerator) {
+        List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            car.move(numberGenerator.generateNumber());
+            newCars.add(carMove(car, numberGenerator.generateNumber()));
+        }
+        return new Cars(newCars);
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> getWinner() {
+        return collectWinners(seekMaxPosition());
+    }
+
+    private Car carMove(Car car, int number) {
+        return car.move(number);
+    }
+
+    private int seekMaxPosition() {
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        return maxPosition;
+    }
+
+    private List<Car> collectWinners(int maxPosition) {
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            addIfWinner(maxPosition, car, winners);
+        }
+
+        return winners;
+    }
+
+    private void addIfWinner(int maxPosition, Car car, List<Car> winners) {
+        if (car.getPosition() == maxPosition) {
+            winners.add(car);
         }
     }
-
-    public List<Integer> getPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
-    }
-
-    public int size() {
-        return cars.size();
-    }
-
 }

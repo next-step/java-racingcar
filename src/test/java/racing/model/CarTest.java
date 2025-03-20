@@ -1,7 +1,6 @@
 package racing.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,29 +9,46 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
+    public static final String MERCEDES = "benz";
+    private static final int INIT_POSITION = 1;
     private Car car;
 
     @BeforeEach
     void setUp() {
-        this.car = new Car();
+        this.car = new Car(createMercedesCarName(), INIT_POSITION);
     }
 
     @DisplayName("자동차의 위치를 한 칸 증가시킬 수 있다.")
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
-    void carMoveTest(int argument) {
-        car.move(argument);
+    void carMovedTest(int argument) {
+        Car sut = car.move(argument);
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(sut.getPosition()).isEqualTo(2);
     }
 
-    @DisplayName("파라미터로 받는 숫자가 4 미만인 경우 자동차는 멈춘다.")
+    @DisplayName("파라미터로 받는 숫자가 4 미만인 경우 자동차는 움직이지 않는다.")
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
-    void carNotMoveTest(int argument) {
-        car.move(argument);
+    void carNotMovedTest(int argument) {
+        Car sut = car.move(argument);
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(sut.getPosition()).isEqualTo(1);
     }
 
+    @DisplayName("자동차의 이름을 가져올 수 있다.")
+    @Test
+    void getCarNameTest() {
+        assertThat(car.getName()).isEqualTo(createMercedesCarName());
+    }
+
+    @DisplayName("자동차의 현재 위치를 가져 올 수 있다.")
+    @Test
+    void getPositionTest() {
+        assertThat(car.getPosition()).isEqualTo(INIT_POSITION);
+    }
+
+    private CarName createMercedesCarName() {
+        return new CarName(MERCEDES);
+    }
 }

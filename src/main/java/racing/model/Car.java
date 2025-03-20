@@ -2,17 +2,32 @@ package racing.model;
 
 public class Car {
     private static final int MOVE_CONDITION = 4;
-    private int position;
+    private static final int INIT_POSITION = 1;
 
-    public Car() {
-        this.position = 0;
+    private final CarName name;
+    private final int position;
+
+    public Car(String title) {
+        this.name = new CarName(title);
+        this.position = INIT_POSITION;
     }
 
-    public void move(int number) {
+    public Car(CarName name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public Car move(int number) {
         if (number >= MOVE_CONDITION) {
-            this.position++;
+            return new Car(this.name, this.position + 1);
         }
+        return this;
     }
+
+    public CarName getName() {
+        return name;
+    }
+
 
     public int getPosition() {
         return position;
