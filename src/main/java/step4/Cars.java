@@ -11,7 +11,7 @@ public class Cars {
     public Cars(String[] carNames, MovingStrategy movingStrategy) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(new CarName(carName)));
         }
         this.cars = cars;
         this.movingStrategy = movingStrategy;

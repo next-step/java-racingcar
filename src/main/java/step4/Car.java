@@ -1,11 +1,16 @@
 package step4;
 
 public class Car {
-    private final String name;
+    private final CarName carName;
     private int position;
 
-    public Car(String name) {
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
+        this.position = 0;
+    }
+
+    public Car() {
+        this.carName = new CarName("name");
         this.position = 0;
     }
 
@@ -20,12 +25,12 @@ public class Car {
     }
 
     String getName() {
-        return this.name;
+        return this.carName.getCarName();
     }
 
     public StringBuilder getCurrentStatus() {
         return new StringBuilder()
-                .append(name)
+                .append(carName.getCarName())
                 .append(" : ")
                 .append("-".repeat(position));
     }
