@@ -1,7 +1,5 @@
 package calculator;
 
-import java.util.Arrays;
-
 public class StringAddCalculator {
 
     private StringAddCalculator() {
@@ -12,10 +10,8 @@ public class StringAddCalculator {
         if (text == null || text.isEmpty()) {
             return 0;
         }
-
-        String[] numbers = StringParser.split(text);
-        return Arrays.stream(numbers)
-            .mapToInt(e -> new PositiveNumber(e).getValue())
-            .sum();
+        final String[] numbers = StringParser.split(text);
+        final PositiveNumbers positiveNumbers = new PositiveNumbers(numbers);
+        return positiveNumbers.sum();
     }
 }
