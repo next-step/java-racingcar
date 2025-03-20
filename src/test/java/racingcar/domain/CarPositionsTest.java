@@ -20,4 +20,13 @@ class CarPositionsTest {
 
         assertThat(carPositions.getPositions()).hasSize(3);
     }
+
+    @Test
+    @DisplayName("객체의 위치 크기를 비교하여 max 값을 반환한다.")
+    void maxTest() {
+        CarPosition position = new CarPosition("CarA", 10);
+
+        int result = position.max(5);
+        assertThat(result).isEqualTo(10);
+    }
 }

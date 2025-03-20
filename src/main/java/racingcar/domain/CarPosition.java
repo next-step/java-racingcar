@@ -17,6 +17,10 @@ public class CarPosition {
         return position;
     }
 
+    public int max(int value) {
+        return Math.max(this.position, value);
+    }
+
     public static CarPosition of(Car car) {
         return new CarPosition(car.getName(), car.getPosition());
     }

@@ -23,10 +23,10 @@ public class CarWinnerCalculator {
     }
 
     private int findMaxPosition(List<CarPosition> carPositions) {
-        int maxPosition = Integer.MIN_VALUE;
+        int maxPosition = 0;
 
         for (CarPosition position : carPositions) {
-            maxPosition = Math.max(maxPosition, position.getPosition());
+            maxPosition = position.max(maxPosition);
         }
 
         return maxPosition;
