@@ -5,9 +5,10 @@ import racingcar.ui.RacingCarResultView;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        new RacingCarGame(
+        RacingCarGame racingCarGame = new RacingCarGame(
             RacingCarInputView.getInstance(),
             RacingCarResultView.getInstance(),
-            DefaultRacingCarGameWinnerStrategy.getInstance()).start();
+            DefaultRacingCarGameWinnerStrategy.getInstance());
+        racingCarGame.start();
     }
 }

@@ -1,9 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class RacingCar implements Comparable<RacingCar> {
 
     private static final String MOVE_SYMBOL = "-";
