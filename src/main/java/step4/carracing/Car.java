@@ -6,14 +6,10 @@ public class Car {
   private final String name;
   private final CarMoveStrategy carMoveStrategy;
 
-  private Car(String name, CarMoveStrategy carMoveStrategy) {
+  public Car(String name, CarMoveStrategy carMoveStrategy) {
     this.position = INIT_POSITION;
     this.name = name;
     this.carMoveStrategy = carMoveStrategy;
-  }
-
-  public static Car of(String name, CarMoveStrategy carMoveStrategy) {
-    return new Car(name, carMoveStrategy);
   }
 
   public void move() {

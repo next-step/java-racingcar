@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class CarFactory {
 
   static Car createCar(String carName, CarMoveStrategy carMoveStrategy) {
-    return Car.of(carName, carMoveStrategy);
+    return new Car(carName, carMoveStrategy);
   }
 
   public static List<Car> createCars(List<String> carNameList, CarMoveStrategy carMoveStrategy) {
