@@ -47,7 +47,7 @@ public class RacingGame {
     private List<RacingCar> initializeRacingCars(Moveable moveable) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String name : namesOfCar) {
-            racingCars.add(new RacingCar(moveable));
+            racingCars.add(new RacingCar(name, moveable));
         }
         return racingCars;
     }

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -46,14 +47,20 @@ class RacingGameTest {
     void carProduceTest() {
         RacingGameResult racingGameResult = playTestGame(alwaysMove);
         List<RoundResult> roundResults = racingGameResult.getAllRoundResults();
-        assertThat(roundResults.get(0).whereAreCars()).hasSize(NAMES_OF_CAR.length);
+        assertThat(roundResults.get(0).getRaceProgress()).hasSize(NAMES_OF_CAR.length);
     }
 
     @DisplayName("numberOfTrial 만큼 자동차가 진행함")
     @Test
     void alwaysMoveTest() {
         RacingGameResult racingGameResult = playTestGame(alwaysMove);
-        assertThat(racingGameResult.getLastRoundResult().whereAreCars()).containsOnly(NUMBER_OF_TRIAL);
+        RoundResult lastRoundResult = racingGameResult.getLastRoundResult();
+        List<RacingCarCurrentStatus> raceProgress = lastRoundResult.getRaceProgress();
+        List<Integer> carPositions = raceProgress.stream()
+                .map(RacingCarCurrentStatus::whereIsThisCarNow)
+                .collect(Collectors.toList());
+
+        assertThat(carPositions).containsOnly(NUMBER_OF_TRIAL);
     }
 
     @DisplayName("numberOfTrial 보다 작거나 같은 값만큼 자동차가 진행함")
@@ -62,8 +69,13 @@ class RacingGameTest {
         RandomlyMove randomlyMove = new RandomlyMove(10, 4);
         RacingGameResult racingGameResult = playTestGame(randomlyMove);
 
-        assertThat(racingGameResult.getLastRoundResult().whereAreCars())
-                .allMatch(progress -> progress <= NUMBER_OF_TRIAL);
+        RoundResult lastRoundResult = racingGameResult.getLastRoundResult();
+        List<RacingCarCurrentStatus> raceProgress = lastRoundResult.getRaceProgress();
+        List<Integer> carPositions = raceProgress.stream()
+                .map(RacingCarCurrentStatus::whereIsThisCarNow)
+                .collect(Collectors.toList());
+
+        assertThat(carPositions).allMatch(progress -> progress <= NUMBER_OF_TRIAL);
     }
 
     private RacingGameResult playTestGame(Moveable moveable) {

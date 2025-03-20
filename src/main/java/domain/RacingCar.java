@@ -3,10 +3,12 @@ package domain;
 import movingStrategy.Moveable;
 
 public class RacingCar {
-    private final Moveable moveable;
+    private final String name;
     private Integer position;
+    private final Moveable moveable;
 
-    public RacingCar(Moveable moveable) {
+    public RacingCar(String name, Moveable moveable) {
+        this.name = name;
         this.position = 0;
         this.moveable = moveable;
     }
@@ -19,5 +21,13 @@ public class RacingCar {
         if (moveable.isMoveable()) {
             this.position++;
         }
+    }
+
+    public String whatIsYourName() {
+        return this.name;
+    }
+
+    public RacingCarCurrentStatus getCurrentStatus() {
+        return new RacingCarCurrentStatus(this.name, this.position);
     }
 }
