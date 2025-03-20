@@ -14,7 +14,7 @@ class DefaultRacingCarGameWinnerStrategyTest {
     void 동점이면_모두_winner다() {
         List<RacingCar> racingCars = RacingCarFactory.createRacingCars(new String[]{
             "1", "2", "3", "4"
-        }, new AlwaysRacingCarMoveStrategy());
+        }, () -> true);
 
         racingCars.get(0).moveIfMovable();
         racingCars.get(1).moveIfMovable();

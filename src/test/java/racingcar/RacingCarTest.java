@@ -23,7 +23,7 @@ class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"a,3,a : ---", "b,1,b : -", "c,2,c : --"})
     void 이동에_성공했다면_MOVE_SYMBOL이_추가된다(String carName, int moveCount, String expected) {
-        RacingCar car = new RacingCar(new RacingCarName(carName), new AlwaysRacingCarMoveStrategy());
+        RacingCar car = new RacingCar(new RacingCarName(carName), () -> true);
 
         for (int i = 0; i < moveCount; i++) {
             car.moveIfMovable();
@@ -35,7 +35,7 @@ class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"aa,3,aa : ", "bb,1,bb : ", "cc,2,cc : "}, ignoreLeadingAndTrailingWhitespace = false)
     void 이동에_실패했다면_MOVE_SYMBOL이_추가되지_않는다(String carName, int moveCount, String expected) {
-        RacingCar car = new RacingCar(new RacingCarName(carName), new NeverRacingCarMoveStrategy());
+        RacingCar car = new RacingCar(new RacingCarName(carName), () -> false);
 
         for (int i = 0; i < moveCount; i++) {
             car.moveIfMovable();
