@@ -13,7 +13,11 @@ class CarTest {
     @CsvSource({"0", "1", "5"})
     @DisplayName("자동차는 주어진 위치로 초기화된다.")
     void car_initialPosition_test(int initialPosition) {
-        Car car = new Car(initialPosition);
+        String carName = "car";
+
+        Car car = new Car(carName, new Position(initialPosition));
+
+        assertThat(car.getName()).isEqualTo(carName);
         assertThat(car.isAtPosition(new Position(initialPosition))).isTrue();
     }
 
@@ -28,10 +32,12 @@ class CarTest {
             "1,9,2"
     })
     void car_move_logic_test(int initialPosition, int randomValue, int expectedPosition) {
-        Car initialCar = new Car(initialPosition);
+        String carName = "car";
+        Car initialCar = new Car(carName, new Position(initialPosition));
 
         Car movedCar = initialCar.move(randomValue);
 
+        assertThat(movedCar.getName()).isEqualTo(carName);
         assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
     }
 
@@ -44,17 +50,20 @@ class CarTest {
             "2,0,2",
     })
     void car_not_move_logic_test(int initialPosition, int randomValue, int expectedPosition) {
-        Car initialCar = new Car(initialPosition);
+        String carName = "car";
+        Car initialCar = new Car(carName, new Position(initialPosition));
 
         Car movedCar = initialCar.move(randomValue);
 
+        assertThat(movedCar.getName()).isEqualTo(carName);
         assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
     }
 
     @DisplayName("자동차가 이동해도 기존 객체는 변하지 않는다.(불변 객체 테스트)")
     @Test
     void car_not_move_immutable_test() {
-        Car initialCar = new Car(0);
+        String carName = "car";
+        Car initialCar = new Car(carName);
 
         Car movedCar = initialCar.move(4);
 

@@ -17,7 +17,8 @@ class PositionTest {
             "5,1,5,6"
     })
     void move_initial_move(int initialPosition, int randomValue, int randomValue2, int expectedPosition) {
-        Car initialCar = new Car(initialPosition);
+        String carName = "car";
+        Car initialCar = new Car(carName, new Position(initialPosition));
 
         Car movedOnceCar = initialCar.move(randomValue);
         Car movedTwiceCar = movedOnceCar.move(randomValue2);
