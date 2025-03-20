@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final String CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String MOVE_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
     public InputView() {}
 
-    public static int inputInt(String message) {
-        System.out.println(message);
+    public static int inputMove() {
+        System.out.println(MOVE_COUNT_MESSAGE);
         return scanner.nextInt();
     }
 
-    public static String inputString(String message) {
-        System.out.println(message);
+    public static String inputCarNames() {
+        System.out.println(CAR_NAME_MESSAGE);
         return scanner.nextLine();
     }
 }
