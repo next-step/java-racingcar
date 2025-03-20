@@ -28,26 +28,32 @@ public class Cars {
     }
 
     public void move() {
-        for (Car car: cars) {
+        for (Car car : cars) {
             car.move();
         }
     }
 
     public List<Car> winners() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(() -> new RuntimeException("자동차가 존재하지 않습니다."));
+        int maxPosition = getMaxPosition();
+        List<Car> winners = findWinners(maxPosition);
 
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
-
-        if(winners.isEmpty()) {
+        if (winners.isEmpty()) {
             throw new RuntimeException("우승자가 존재하지 않습니다.");
         }
 
         return winners;
     }
 
+    private List<Car> findWinners(int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new RuntimeException("자동차가 존재하지 않습니다."));
+    }
 }
