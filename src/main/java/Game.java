@@ -17,6 +17,7 @@ public class Game {
             race.runRound();
         }
         resultView.presentCars(race.getCarStatuses());
+        resultView.presentWinners(race.getWinners());
     }
 
     public static void main(String[] args) {

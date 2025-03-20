@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.StringJoiner;
 
 public class ResultView {
 
@@ -13,5 +14,13 @@ public class ResultView {
             System.out.println(output);
         }
         System.out.println();
+    }
+
+    public void presentWinners(List<CarStatus> winners) {
+        StringJoiner joiner = new StringJoiner(", ");
+        for (CarStatus winner : winners) {
+            joiner.add(winner.getName());
+        }
+        System.out.println(joiner.toString() + "가 최종 우승했습니다.");
     }
 }

@@ -9,6 +9,13 @@ public class Car {
         this.name = name.trim();
     }
 
+    // 테스트용 생성자
+    Car(String name, int position) {
+        validateName(name);
+        this.name = name.trim();
+        this.position = position;
+    }
+
     private void validateName(String name) {
         if (name == null || name.trim().isBlank()) {
             throw new IllegalArgumentException("Name cannot be blank");
