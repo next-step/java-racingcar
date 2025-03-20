@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.Random;
 
+import racingcar.exception.InvalidNameException;
 import racingcar.exception.NameLengthException;
 
 public class Car {
@@ -23,8 +24,16 @@ public class Car {
     }
 
     private void validateName(String name) {
+        if (name == null) {
+            throw new InvalidNameException("이름은 null 이 올 수 없습니다.");
+        }
+
         if (name.length() > 5) {
             throw new NameLengthException("이름은 5자 이하만 가능합니다.");
+        }
+
+        if (name.trim().isEmpty()) {
+            throw new InvalidNameException("자동차 이름은 공백이 될 수 없습니다.");
         }
     }
 
