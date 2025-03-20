@@ -26,15 +26,9 @@ public class Car {
         return this.position;
     }
 
-    String getName() {
-        return this.carName.getCarName();
-    }
 
-    public StringBuilder getCurrentStatus() {
-        return new StringBuilder()
-                .append(carName.getCarName())
-                .append(" : ")
-                .append("-".repeat(position));
+    public CarStatus toCarStatus() {
+        return new CarStatus(this.carName.getCarName(), this.position);
     }
 
     @Override

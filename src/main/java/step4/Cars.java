@@ -1,21 +1,12 @@
 package step4;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
     private final List<Car> cars;
     private final MovingStrategy movingStrategy;
-
-    public Cars(String[] carNames, MovingStrategy movingStrategy) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(new CarName(carName)));
-        }
-        this.cars = cars;
-        this.movingStrategy = movingStrategy;
-    }
 
     public Cars(List<Car> cars, MovingStrategy movingStrategy) {
         this.cars = cars;
@@ -26,13 +17,17 @@ public class Cars {
         cars.forEach(car -> car.move(movingStrategy));
     }
 
-    public StringBuilder getCurrentStatus() {
-        StringBuilder sb = new StringBuilder();
-        cars.forEach(car -> sb.append(car.getCurrentStatus()).append("\n"));
-        return sb;
+    public List<CarStatus> currentStatus() {
+        return this.cars.stream()
+                .map(Car::toCarStatus)
+                .collect(toList());
     }
 
-    public List<String> getWinners() {
+    public List<CarStatus> getWinners() {
+        if (cars.isEmpty()) {
+            throw new IllegalStateException("There is no Car");
+        }
+
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
@@ -40,7 +35,7 @@ public class Cars {
 
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(car -> car.getName())
-                .collect(Collectors.toList());
+                .map(Car::toCarStatus)
+                .collect(toList());
     }
 }

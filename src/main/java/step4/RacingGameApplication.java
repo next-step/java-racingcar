@@ -13,12 +13,7 @@ public class RacingGameApplication {
         RandomMovingStrategy movingStrategy = new RandomMovingStrategy(new Random());
         Cars cars = new Cars(carList, movingStrategy);
 
-        RacingGame racingGame = new RacingGame(cars, rounds);
+        RacingGame racingGame = new RacingGame(cars, rounds, new OutputView());
         racingGame.startGame();
-        String raceProgress = racingGame.getRaceProgress();
-        List<String> winners = racingGame.winners();
-
-        OutputView.printRaceProgress(raceProgress);
-        OutputView.printWinners(winners);
     }
 }

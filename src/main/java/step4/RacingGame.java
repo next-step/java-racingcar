@@ -1,34 +1,26 @@
 package step4;
 
-import java.util.List;
 
 public class RacingGame {
     private final Cars cars;
     private final int rounds;
-    private final StringBuilder raceProgress;
+    private final OutputView outputView;
 
-    public RacingGame(Cars cars, int rounds) {
+    public RacingGame(Cars cars, int rounds, OutputView outputView) {
         this.cars = cars;
         this.rounds = rounds;
-        this.raceProgress = new StringBuilder();
+        this.outputView = outputView;
     }
 
     public void startGame() {
         for (int round = 0; round < rounds; round++) {
             playRound();
         }
+        outputView.printWinners(cars.getWinners());
     }
 
     private void playRound() {
         cars.moveAll();
-        raceProgress.append(cars.getCurrentStatus())
-                .append("\n");
-    }
-
-    public String getRaceProgress() {
-        return raceProgress.toString();
-    }
-    public List<String> winners() {
-        return cars.getWinners();
+        outputView.printRaceProgress(cars.currentStatus());
     }
 }
