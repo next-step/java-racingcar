@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.domain.CarPosition;
 import racingcar.domain.CarPositions;
 import racingcar.domain.CarSimulator;
+import racingcar.domain.CarWinnerCalculator;
 
 public class OutputView {
     public static final String COLON = " : ";
@@ -14,6 +15,15 @@ public class OutputView {
 
     public OutputView(CarSimulator simulator) {
         this.simulator = simulator;
+    }
+
+    public void printWinners() {
+        List<CarPositions> history = simulator.getHistory();
+
+        CarWinnerCalculator winnerCalculator = new CarWinnerCalculator(history);
+        List<String> winners = winnerCalculator.determineWinners();
+
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 
     public void printPositions() {
