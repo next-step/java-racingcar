@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
 
 public class Racing {
 
@@ -7,24 +9,25 @@ public class Racing {
 
     private final int tryCount; // 시도 횟수
 
+    private static final List<Car> winners = new ArrayList<>(); //우승 자동차
+
     /**
-     * @param carNum
+     * @param carNames
      * @param tryCount
      * 레이싱 초기화
      */
-    public Racing(int carNum, int tryCount) {
-        carListSetting(carNum);
+    public Racing(List<String> carNames, int tryCount) {
+        carListSetting(carNames);
         this.tryCount = tryCount;
     }
 
     /**
-     * @param count
+     * @param carNames
      * 자동차 리스트 초기화
      */
-    private void carListSetting(int count) {
-        for (int i = 0; i < count; i++) {
-            Car car = new Car();
-            carList.add(car);
+    private void carListSetting(List<String> carNames) {
+        for (String name : carNames) {
+            carList.add(new Car(name));
         }
     }
 
@@ -32,12 +35,23 @@ public class Racing {
      * 레이싱 시작
      */
     public void start() {
-        System.out.println("실행 결과");
+        ResultView.printExecuteResult();
 
         for (int i = 0; i < tryCount; i++) {
             race();
             ResultView.printRaceRound(carList);
         }
+
+        ResultView.printWinner(findWinner());
+    }
+
+    /**
+     * @return 우승자를 찾습니다.
+     */
+    private List<Car> findWinner() {
+        int maxScore = carList.stream().mapToInt(Car::getPosition).max().orElse(0);
+
+        return carList.stream().filter(car -> car.getPosition() == maxScore).collect(Collectors.toList());
     }
 
     /**
