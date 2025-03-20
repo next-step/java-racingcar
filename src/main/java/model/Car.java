@@ -17,6 +17,10 @@ public class Car {
             throw new RuntimeException("moveStrategy 가 null입니다.");
         }
 
+        if(name.length() > 5){
+            throw new RuntimeException("name은 5자를 초과할 수 없습니다. name :" + name);
+        }
+
         this.name = name;
         this.moveStrategy = moveStrategy;
     }
