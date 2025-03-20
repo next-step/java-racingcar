@@ -7,19 +7,19 @@ public class Racing {
     private final List<Car> carList;
     private int remainTryCount;
 
-    public Racing(int carCount, int tryCount) {
-        this.validate(carCount, tryCount);
+    public Racing(String[] carNameList, int tryCount) {
+        this.validate(carNameList, tryCount);
         this.remainTryCount = tryCount;
 
         carList = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
+        for (int i = 0; i < carNameList.length; i++) {
             carList.add(new Car());
         }
     }
 
-    private void validate(int carCount, int tryCount) {
-        if (carCount <= 0) {
+    private void validate(String[] carNameList, int tryCount) {
+        if (carNameList.length <= 0) {
             throw new RuntimeException("자동차 대수는 0 이상을 입력해주세요.");
         }
 
