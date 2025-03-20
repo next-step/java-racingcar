@@ -10,8 +10,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
-    private static final int INIT_POSITION = 1;
     public static final String MERCEDES = "benz";
+    private static final int INIT_POSITION = 1;
     private Car car;
 
     @BeforeEach
@@ -22,7 +22,7 @@ class CarTest {
     @DisplayName("Car 객체 생성 시 이름이 5자를 초과할 수 없다.")
     @Test
     void CarNameLengthTest() {
-        assertThatThrownBy(() -> new Car("123456", INIT_POSITION))
+        assertThatThrownBy(() -> new Car("123456"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("123456 is over 5 letters");
     }
@@ -31,7 +31,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     void carMovedTest(int argument) {
-        Car sut = car.moved(argument);
+        Car sut = car.move(argument);
 
         assertThat(sut.getPosition()).isEqualTo(2);
     }
@@ -40,7 +40,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
     void carNotMovedTest(int argument) {
-        Car sut = car.moved(argument);
+        Car sut = car.move(argument);
 
         assertThat(sut.getPosition()).isEqualTo(1);
     }

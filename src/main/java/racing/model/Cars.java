@@ -40,7 +40,7 @@ public class Cars {
     }
 
     private Car carMove(Car car) {
-        return car.moved(numberGenerator.generateNumber());
+        return car.move(numberGenerator.generateNumber());
     }
 
     private int seekMaxPosition() {

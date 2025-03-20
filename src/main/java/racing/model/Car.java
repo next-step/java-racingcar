@@ -20,19 +20,11 @@ public class Car {
         this.position = position;
     }
 
-    public Car moved(int number) {
-        if (canMove(number)) {
-            return move();
+    public Car move(int number) {
+        if (number >= MOVE_CONDITION) {
+            return new Car(this.name, this.position + 1);
         }
         return this;
-    }
-
-    private boolean canMove(int number) {
-        return number >= MOVE_CONDITION;
-    }
-
-    private Car move() {
-        return new Car(this.name, this.position + 1);
     }
 
     public String getName() {
