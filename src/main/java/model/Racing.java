@@ -15,17 +15,21 @@ public class Racing {
         carList = new ArrayList<>();
 
         for (String s : carNameList) {
-            carList.add(new Car(s));
+            carList.add(new Car(s, null));
         }
     }
 
     private void validate(String[] carNameList, int tryCount) {
-        if (carNameList == null || carNameList.length == 0) {
-            throw new RuntimeException("자동차 대수는 0 이상을 입력해주세요.");
+        if (carNameList == null) {
+            throw new RuntimeException("carNameList는 null일 수 없습니다.");
+        }
+
+        if (carNameList.length == 0) {
+            throw new RuntimeException("자동차 대수는 0 이상을 입력해주세요. carNameList : " + carNameList.length);
         }
 
         if (tryCount <= 0) {
-            throw new RuntimeException("회수는 0 이상을 입력해주세요.");
+            throw new RuntimeException("회수는 0 이상을 입력해주세요. tryCount : " + tryCount);
         }
     }
 
@@ -41,7 +45,7 @@ public class Racing {
         return this.remainTryCount > 0;
     }
 
-    public List<Car> getCarList(){
+    public List<Car> getCarList() {
         return this.carList;
     }
 
