@@ -24,7 +24,9 @@ class ReportTest {
 
         // when & then
         for (int i = 0; i < carCount; i++) {
-            Assertions.assertThat(report.findPositionByIndex(i)).isEqualTo(i);
+            Assertions
+                    .assertThat(report.findPositionByIndex(i))
+                    .isEqualTo(i);
         }
     }
 
@@ -32,5 +34,43 @@ class ReportTest {
         for (int i = 0; i < moveCount; i++) {
             car.move(Car.MOVE_THRESHOLD + 1);
         }
+    }
+
+    @Test
+    @DisplayName("참가자가 1명이면 챔피온은 바로 그 1명이다.")
+    void findChampionWhenOneCarTest() {
+        // given
+        var car = new Car("a");
+        moveCar(car, Car.MOVE_THRESHOLD);
+
+        // when
+        var champions = Report.findChampions.apply(List.of(car));
+
+        // then
+        Assertions.assertThat(champions)
+                  .hasSize(1)
+                  .containsExactly(car.getName());
+    }
+
+    @Test
+    @DisplayName("참가자가 2명이상이고 모두가 같은 위치에 있으면 모두 챔피온이다.")
+    void findChampionsAllSamePositionTest() {
+        // given
+        var car = new Car("a");
+        var car2 = new Car("b");
+        moveCar(car, Car.MOVE_THRESHOLD);
+        moveCar(car2, Car.MOVE_THRESHOLD);
+        var cars = List.of(car, car2);
+        var expectedChampionNames = List.of(car.getName(), car2.getName());
+
+        // when
+        var champions = Report.findChampions.apply(cars);
+
+        // then
+        Assertions.assertThat(champions)
+                  .hasSize(cars.size())
+                  .usingRecursiveComparison()
+                  .ignoringCollectionOrder()
+                  .isEqualTo(expectedChampionNames);
     }
 }

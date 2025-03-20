@@ -40,8 +40,4 @@ public class GrandPrix {
     public Integer getCarCount() {
         return cars.size();
     }
-
-    public List<String> findChampions() {
-        return cars.stream().map(Car::getName).collect(Collectors.toUnmodifiableList());
-    }
 }
