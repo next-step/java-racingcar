@@ -1,15 +1,25 @@
 package race;
 
-public class RacingCar {
-    private final int racingNumber;
+public class RacingCar implements Comparable<RacingCar> {
+    private static final int MAX_NAME_LENGTH = 5;
+    private final String name;
     private int position;
     private final RandomNumberGenerator randomNumberGenerator;
-    private final PositionOutputViewer positionOutputViewer;
+    private final PositionPrinter positionPrinter;
 
-    private RacingCar(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionOutputViewer positionOutputViewer) {
-        this.racingNumber = racingNumber;
+    private RacingCar(String name, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
+        this.name = name;
         this.randomNumberGenerator = randomNumberGenerator;
-        this.positionOutputViewer = positionOutputViewer;
+        this.positionPrinter = positionPrinter;
+    }
+
+    @Override
+    public int compareTo(RacingCar other) {
+        return Integer.compare(this.position, other.position);
+    }
+
+    public static boolean validateName(String carName) {
+        return !carName.isEmpty() && carName.length() <= MAX_NAME_LENGTH;
     }
 
     private boolean shouldMove(int num) {
@@ -25,10 +35,14 @@ public class RacingCar {
     }
 
     public void printPosition() {
-        positionOutputViewer.showPosition(racingNumber, position);
+        positionPrinter.printPosition(name, position);
     }
 
-    static RacingCar create(int racingNumber, RandomNumberGenerator randomNumberGenerator, PositionOutputViewer positionOutputViewer) {
-        return new RacingCar(racingNumber, randomNumberGenerator, positionOutputViewer);
+    static RacingCar create(String racingName, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
+        return new RacingCar(racingName, randomNumberGenerator, positionPrinter);
+    }
+
+    public String getName() {
+        return name;
     }
 }
