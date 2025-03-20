@@ -16,11 +16,11 @@ public class RacingCarGame {
     }
 
     public void takeTurn() {
-        carInfo.players.takeTurn();
+        carInfo.takeTurn();
     }
 
     public Players getCars() {
-        return carInfo.players;
+        return carInfo.getPlayers();
     }
 
     public static boolean isMove(int randomNumber) {

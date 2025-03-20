@@ -24,4 +24,11 @@ public class RacingCarInfo {
         return new RacingCarInfo(new Players(cars), tryCount);
     }
 
+    public void takeTurn() {
+        players.takeTurn();
+    }
+
+    public Players getPlayers() {
+        return players;
+    }
 }
