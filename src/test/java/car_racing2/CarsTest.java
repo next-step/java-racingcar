@@ -1,14 +1,14 @@
-package car_racing.domain.model;
+package car_racing2;
 
-import car_racing.domain.strategy.CarMovingStrategy;
+import car_racing2.model.Cars;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-class RaceResultsTest {
+class CarsTest {
     @Test
     @DisplayName("더 많이 움직인 차가 우승한다")
     void getWinners() {
@@ -18,11 +18,7 @@ class RaceResultsTest {
         Cars cars = new Cars(List.of(carName1, carName2), new TestCarMovingStrategy());
         cars.moveAll();
 
-        RaceResultOfRound raceResult = new RaceResultOfRound(cars);
-        RaceResults raceResults = new RaceResults();
-        raceResults.addRaceResult(raceResult);
-
-        assertThat(raceResults.getWinnersName()).isEqualTo(List.of(carName1));
+        Assertions.assertThat(cars.getWinners()).isEqualTo(List.of(carName1));
     }
 
     @Test
@@ -35,19 +31,15 @@ class RaceResultsTest {
         Cars cars = new Cars(List.of(carName1, carName2, carName3), new TestCarMovingStrategy());
         cars.moveAll();
 
-        RaceResultOfRound raceResult = new RaceResultOfRound(cars);
-        RaceResults raceResults = new RaceResults();
-        raceResults.addRaceResult(raceResult);
-
-        assertThat(raceResults.getWinnersName())
+        Assertions.assertThat(cars.getWinners())
                 .containsExactlyInAnyOrder(carName1, carName3);
     }
 
-    static class TestCarMovingStrategy implements CarMovingStrategy {
+    static class TestCarMovingStrategy implements BooleanSupplier {
         int i = 0;
 
         @Override
-        public boolean movable() {
+        public boolean getAsBoolean() {
             return (i++ % 2) == 0;
         }
     }
