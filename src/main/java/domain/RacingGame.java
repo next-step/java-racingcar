@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-
     private final String[] namesOfCar;
     private final Integer numberOfTrial;
     private final List<RacingCar> racingCars;

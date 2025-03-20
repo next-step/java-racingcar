@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingCarTest {
-
+  
     public static final String NAME = "test";
 
     @DisplayName("차량 위치 확인 테스트")

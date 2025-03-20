@@ -44,6 +44,7 @@ class ResultViewTest {
 
     private static void verifyTrial(String[] namesOfCar, int trialIdx, String[] lines) {
         int numberOfCar = namesOfCar.length;
+
         for (int carIdx = 0; carIdx < numberOfCar; carIdx++) {
             // carIdx
             // 1 (제목)

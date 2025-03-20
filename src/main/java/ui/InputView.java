@@ -35,7 +35,7 @@ public class InputView {
         }
         return string;
     }
-
+  
     private Integer scanInteger() {
         Integer number = null;
         try {

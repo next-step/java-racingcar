@@ -2,6 +2,7 @@ package domain;
 
 import movingStrategy.AlwaysMove;
 import movingStrategy.NeverMove;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,5 +35,4 @@ class RoundResultTest {
                 expectedNames.contains(status.whatNameIsThisCar()) &&
                         expectedPositions.contains(status.whereIsThisCarNow()));
     }
-
 }

@@ -9,6 +9,7 @@ public class RacingCar {
 
     public RacingCar(String name, Moveable moveable) {
         this.name = name;
+
         this.position = 0;
         this.moveable = moveable;
     }

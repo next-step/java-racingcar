@@ -71,5 +71,4 @@ class InputViewTest {
         // Assert
         assertEquals(3, result.length);
     }
-
 }
