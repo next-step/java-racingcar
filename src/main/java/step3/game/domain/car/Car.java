@@ -27,4 +27,12 @@ public class Car {
     public String getCarName() {
         return name.getCarName();
     }
+
+    public Integer getMax(int maxMoveStep) {
+        return Math.max(this.moveSteps, maxMoveStep);
+    }
+
+    public boolean isSame(int moveSteps) {
+        return this.moveSteps == moveSteps;
+    }
 }

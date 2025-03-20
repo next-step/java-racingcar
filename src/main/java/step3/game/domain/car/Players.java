@@ -47,7 +47,7 @@ public class Players {
     private List<String> getWinners(int maxDistance) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getDistance() == maxDistance) {
+            if (car.isSame(maxDistance)) {
                 winners.add(car.getCarName());
             }
         }
@@ -57,9 +57,7 @@ public class Players {
     private int getMaxDistance() {
         int maxDistance = 0;
         for (Car car : cars) {
-            if (car.getDistance() > maxDistance) {
-                maxDistance = car.getDistance();
-            }
+            maxDistance = car.getMax(maxDistance);
         }
         return maxDistance;
     }
