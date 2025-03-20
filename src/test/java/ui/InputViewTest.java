@@ -41,4 +41,35 @@ class InputViewTest {
         // Assert
         assertEquals(3, result);
     }
+
+    @DisplayName("문자열 배열 입력 테스트")
+    @Test
+    void testQueryStringArrayInputWithPrompt() {
+        // Arrange
+        String script = "more,much,less";
+        String delimiter = ",";
+        InputView inputView = new InputView(getScannerWithInput(script));
+
+        // Act
+        String[] result = inputView.queryStringArrayInputWithPrompt("Enter an String Array: ", delimiter);
+
+        // Assert
+        assertEquals(3, result.length);
+    }
+
+    @DisplayName("공백 입력 테스트")
+    @Test
+    void testQueryStringArrayInputWithPromptInvalidInput() {
+        // Arrange
+        String script = " \n\nmore,much,less\n";
+        String delimiter = ",";
+        InputView inputView = new InputView(getScannerWithInput(script));
+
+        // Act
+        String[] result = inputView.queryStringArrayInputWithPrompt("Enter an String Array: ", delimiter);
+
+        // Assert
+        assertEquals(3, result.length);
+    }
+
 }

@@ -7,16 +7,16 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final Integer numberOfCar;
+    private final String[] namesOfCar;
     private final Integer numberOfTrial;
     private final List<RacingCar> racingCars;
 
-    public RacingGame(Integer numberOfCar, Integer numberOfTrial, Moveable moveable) {
-        if (isValid(numberOfCar, numberOfTrial)) {
-            throw new IllegalArgumentException("자동차의 수 또는 시도 횟수는 0보다 커야 합니다.");
+    public RacingGame(String[] namesOfCar, Integer numberOfTrial, Moveable moveable) {
+        if (isValid(namesOfCar, numberOfTrial)) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
         }
 
-        this.numberOfCar = numberOfCar;
+        this.namesOfCar = namesOfCar;
         this.numberOfTrial = numberOfTrial;
         this.racingCars = initializeRacingCars(moveable);
     }
@@ -40,13 +40,13 @@ public class RacingGame {
         }
     }
 
-    private static boolean isValid(Integer numberOfCar, Integer numberOfTrial) {
-        return numberOfCar <= 0 || numberOfTrial <= 0;
+    private static boolean isValid(String[] namesOfCar, Integer numberOfTrial) {
+        return namesOfCar.length == 0 || numberOfTrial <= 0;
     }
 
     private List<RacingCar> initializeRacingCars(Moveable moveable) {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
+        for (String name : namesOfCar) {
             racingCars.add(new RacingCar(moveable));
         }
         return racingCars;

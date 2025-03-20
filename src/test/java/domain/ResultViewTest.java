@@ -14,20 +14,20 @@ import static org.assertj.core.api.Assertions.*;
 class ResultViewTest {
 
     @DisplayName("조건 변화에 따른 경기 결과 출력 테스트")
-    @CsvSource(value = {"1,1", "3,5", "2,2", "5,3"})
+    @CsvSource(value = {"{},1", "{},5", "{},2", "{},3"})
     @ParameterizedTest
-    void printResultTestWithConditionChange(int numberOfCar, int numberOfTrial) {
+    void printResultTestWithConditionChange(String[] namesOfCar, int numberOfTrial) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream testOut = new PrintStream(outputStream);
         ResultView resultView = new ResultView(testOut);
 
-        RacingGame racingGame = new RacingGame(numberOfCar, numberOfTrial, new AlwaysMove());
+        RacingGame racingGame = new RacingGame(namesOfCar, numberOfTrial, new AlwaysMove());
         RacingGameResult racingGameResult = racingGame.gameStart();
 
         resultView.printResult(racingGameResult);
 
         String consoleOutput = outputStream.toString();
-        verifyOutput(consoleOutput, numberOfCar, numberOfTrial);
+        verifyOutput(consoleOutput, namesOfCar.length, numberOfTrial);
     }
 
     public void verifyOutput(String result, int numberOfCar, int numberOfTrial) {
