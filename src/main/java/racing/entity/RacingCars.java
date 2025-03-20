@@ -16,8 +16,6 @@ public class RacingCars {
 
     public List<String> getLeadingCarNameList() {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
-
-        List<String> leadingCarNameList = cars.stream().filter(car -> car.getPosition() == maxPosition).map(Car::getCarName).collect(Collectors.toList());
-        return leadingCarNameList;
+        return cars.stream().filter(car -> car.getPosition() == maxPosition).map(Car::getCarName).collect(Collectors.toList());
     }
 }

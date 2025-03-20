@@ -2,7 +2,6 @@ package racing.entity;
 
 import racing.rule.RandomMoveRule;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {

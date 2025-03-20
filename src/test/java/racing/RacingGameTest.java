@@ -48,7 +48,7 @@ class RacingGameTest {
 
         // when
         for (int i = 0; i < 3; i++) {
-            racingGame.moveCar(ford);
+            ford.move();
         }
 
         // then
@@ -70,8 +70,8 @@ class RacingGameTest {
 
         // when
         for (int i = 0; i < 3; i++) {
-            racingGame.moveCar(ford);
-            racingGame.moveCar(tesla);
+            ford.move();
+            tesla.move();
         }
 
         // then
