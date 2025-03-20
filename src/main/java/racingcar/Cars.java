@@ -5,6 +5,7 @@ import util.RandomNumberGenerator;
 import util.ResultView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,12 +24,8 @@ public class Cars {
         ResultView.showResultMessage();
         for (int index = 0; index < tryCounts; index++) {
             move();
-            getCarResults();
+            ResultView.showCarGameResult(cars);
         }
-    }
-
-    public void getCarResults() {
-        ResultView.showCarGameResult(cars);
     }
 
     public void move() {
@@ -42,16 +39,15 @@ public class Cars {
     }
 
     public List<Car> getWinners() {
-        int maxDistance = getMaxDistance();
+        Car maxCar = max();
         return cars.stream()
-                .filter(car -> car.isWinner(maxDistance))
+                .filter(maxCar::isSameDistance)
                 .collect(Collectors.toList());
     }
 
-    public int getMaxDistance() {
+    private Car max() {
         return cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
+                .max(Comparator.naturalOrder())
                 .orElseThrow(() -> new NoCarException("빈 자동차입니다."));
     }
 }

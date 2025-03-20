@@ -23,10 +23,10 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("빈 자동차에서 최대 거리를 구하려는 경우 예외를 발생시킨다.")
+    @DisplayName("빈 자동차에서 우승자를 구하려는 경우 예외를 발생시킨다.")
     public void emptyCars() {
         Cars cars = new Cars(new String[]{});
-        assertThatThrownBy(cars::getMaxDistance)
+        assertThatThrownBy(cars::getWinners)
                 .isInstanceOf(RuntimeException.class);
     }
 }

@@ -3,7 +3,7 @@ package racingcar;
 import exception.TooLongException;
 import util.RandomGenerator;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int INITIAL_DISTANCE = 0;
     private static final int MOVING_STANDARD = 4;
     private static final int NAME_LENGTH_STANDARD = 5;
@@ -38,12 +38,21 @@ public class Car {
         return distance == this.distance;
     }
 
-    private void validateCarName(String carName){
-        if(carName == null || carName.isEmpty()) {
+    private void validateCarName(String carName) {
+        if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름으로 빈 값을 넣을 수 없습니다.");
         }
-        if(carName.length() > NAME_LENGTH_STANDARD) {
+        if (carName.length() > NAME_LENGTH_STANDARD) {
             throw new TooLongException("자동차 이름은 5자를 초과할 수 없다. carName.length :" + carName.length());
         }
+    }
+
+    public boolean isSameDistance(Car car) {
+        return this.distance == car.getDistance();
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return Integer.compare(this.distance, car.getDistance());
     }
 }
