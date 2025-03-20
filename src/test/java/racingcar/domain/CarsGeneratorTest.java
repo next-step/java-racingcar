@@ -11,6 +11,9 @@ class CarsGeneratorTest {
     void generateCars() {
         String carNames = "pobi,crong,honux";
         Cars cars = CarsGenerator.generateCars(carNames);
-        Assertions.assertThat(cars.getRaceStatusString()).contains("pobi", "crong", "honux");
+        cars.getCarsNameAndPosition().forEach((nameAndPosition) -> {
+            String name = nameAndPosition.getFirst().getValue();
+            Assertions.assertThat(name).isIn("pobi", "crong", "honux");
+        });
     }
 }

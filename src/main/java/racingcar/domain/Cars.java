@@ -1,11 +1,13 @@
 package racingcar.domain;
 
 import racingcar.domain.strategy.MoveStrategy;
+import racingcar.util.Pair;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+
     private final List<Car> cars;
     private List<Car> winnerCars;
 
@@ -18,35 +20,34 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public String getWinnerCarNames() {
+    public List<Name> getWinnerCarNames() {
         return getWinnerCars().stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.toList());
     }
 
     private List<Car> getWinnerCars() {
         if (this.winnerCars != null) {
             return this.winnerCars;
         }
-        Car maxCar = getCarWithMaxPosition(this.cars);
+        Position maxPosition = getMaxPosition(this.cars);
         this.winnerCars = this.cars.stream()
-                .filter(car -> car.compareTo(maxCar) == 0)
+                .filter(car -> car.getPosition().compareTo(maxPosition) == 0)
                 .collect(Collectors.toList());
         return this.winnerCars;
     }
 
-    private Car getCarWithMaxPosition(List<Car> cars) {
+    private Position getMaxPosition(List<Car> cars) {
         return cars.stream()
-                .max(Car::compareTo)
+                .map(Car::getPosition)
+                .max(Position::compareTo)
                 .orElseThrow(IllegalStateException::new);
     }
 
-    public String getRaceStatusString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : cars) {
-            stringBuilder.append(car.getStatusString()).append('\n');
-        }
-        return stringBuilder.toString();
+    public List<Pair<Name, Position>> getCarsNameAndPosition() {
+        return cars.stream()
+                .map(car -> new Pair<>(car.getName(), car.getPosition()))
+                .collect(Collectors.toList());
     }
 
     public void moveAll(MoveStrategy moveStrategy) {

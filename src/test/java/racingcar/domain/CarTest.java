@@ -2,25 +2,19 @@ package racingcar.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-    @ParameterizedTest
-    @ValueSource(strings = {"a", "ab", "abc", "abcd", "abcde"})
-    @DisplayName("자동차 이름이 1자 이상 5자 이하면 정상적으로 생성된다")
-    void generateInstanceSuccessTest(String carName) {
-        assertDoesNotThrow(() -> Car.of(carName));
-    }
+    @Test
+    @DisplayName("자동차는 움직임 전략에 따라 움직여야 한다")
+    void move() {
+        Car car1 = Car.of("pobi");
+        car1.move(() -> true);
+        Assertions.assertThat(car1.getPosition()).isEqualTo(Position.of(1));
 
-    @ParameterizedTest
-    @ValueSource(strings = {"", "abcdef", "abcdefghijklmn"})
-    @DisplayName("자동차 이름이 0자거나 5자 초과면 에러가 발생한다")
-    void generateInstanceFailTest(String carName) {
-        Assertions.assertThatThrownBy(() -> Car.of(carName))
-                .isInstanceOf(IllegalArgumentException.class);
+        Car car2 = Car.of("crong");
+        car2.move(() -> false);
+        Assertions.assertThat(car2.getPosition()).isEqualTo(Position.of(0));
     }
 }

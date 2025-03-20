@@ -2,41 +2,31 @@ package racingcar.domain;
 
 import racingcar.domain.strategy.MoveStrategy;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
-    private static final int MAX_NAME_LENGTH = 5;
+    private Position position;
+    private final Name name;
 
-    private int position;
-    private final String name;
-
-    public Car(int position, String name) {
+    public Car(Position position, Name name) {
         this.position = position;
         this.name = name;
     }
 
     public static Car of(String name) {
-        if (name.isEmpty() || name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
-        }
-        return new Car(0, name);
+        return new Car(Position.of(0), Name.of(name));
     }
 
-    @Override
-    public int compareTo(Car o) {
-        return Integer.compare(this.position, o.position);
+    public Position getPosition() {
+        return position;
     }
 
-    public String getStatusString() {
-        return this.name + " : " + "-".repeat(this.position);
-    }
-
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            this.position++;
+            this.position = this.position.plus();
         }
     }
 }

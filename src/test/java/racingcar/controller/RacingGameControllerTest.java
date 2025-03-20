@@ -21,6 +21,9 @@ class RacingGameControllerTest {
         ));
         int tryCount = 3;
         new RacingGameController(carsForTest, tryCount, new ResultView()).process(new AlwaysMoveStrategy());
-        Assertions.assertThat(carsForTest.getRaceStatusString()).contains("-".repeat(tryCount));
+        carsForTest.getCarsNameAndPosition().forEach((nameAndPosition) -> {
+            int position = nameAndPosition.getSecond().getValue();
+            Assertions.assertThat(position).isEqualTo(tryCount);
+        });
     }
 }
