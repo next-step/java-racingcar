@@ -9,10 +9,14 @@ public class RacingCarFactory {
         List<RacingCar> racingCars = new ArrayList<>();
 
         for (String carName : carNames) {
-            racingCars.add(new RacingCar(new RacingCarName(carName), moveStrategy));
+            racingCars.add(create(carName, moveStrategy));
         }
 
         return racingCars;
+    }
+
+    public static RacingCar create(String carName, RacingCarMoveStrategy moveStrategy) {
+        return new RacingCar(new RacingCarName(carName), moveStrategy);
     }
 
 }
