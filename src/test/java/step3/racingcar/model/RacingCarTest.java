@@ -28,7 +28,6 @@ public class RacingCarTest {
 
         // then
         assertThat(afterRunPosition - beforeRunPosition).isEqualTo(1);
-        assertThat(car.roundResult()).isEqualTo(RacingCarResult.GO);
     }
 
     @Test
@@ -49,7 +48,6 @@ public class RacingCarTest {
 
         // then
         assertThat(afterRunPosition - beforeRunPosition).isEqualTo(0);
-        assertThat(car.roundResult()).isEqualTo(RacingCarResult.STOP);
     }
 
 }

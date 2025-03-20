@@ -20,7 +20,7 @@ public class RacingCarGameRoundViewTest {
     void givenRacingCarGameRound_whenPrintRoundResult_thenPrintRoundResult() {
         // given
         int alwaysGoThreshold = 0;
-        int alwaysStopThreshold = 9;
+        int alwaysStopThreshold = 10;
         RacingCarGameRound gameRound = new RacingCarGameRound(1,
             new RacingCar[]{new RacingCar(1, new RacingCarEngine(alwaysGoThreshold)),
                 new RacingCar(2, new RacingCarEngine(alwaysStopThreshold)),
@@ -35,7 +35,7 @@ public class RacingCarGameRoundViewTest {
         RacingCarGameRoundView roundView = new RacingCarGameRoundView(gameRound);
         System.setOut(new PrintStream(outStream));
         roundView.showRound();
-        assertEquals("\nRound #1\n" + "Car #1 [ GO ] : - (1)\n" + "Car #2 [STOP] : (0)\n" + "Car #3 [STOP] : (0)\n",
+        assertEquals("\nRound #1\n" + "Car #1 : - (1)\n" + "Car #2 : (0)\n" + "Car #3 : (0)\n",
             outStream.toString());
         System.setOut(System.out);
     }

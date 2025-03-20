@@ -5,7 +5,6 @@ public class RacingCar {
     private final int no;
     private final RacingCarEngine carEngine;
     private int position;
-    private RacingCarResult roundResult;
 
     public RacingCar(int no, RacingCarEngine carEngine) {
         this.no = no;
@@ -21,17 +20,10 @@ public class RacingCar {
         return this.position;
     }
 
-    public RacingCarResult roundResult() {
-        return this.roundResult;
-    }
-
     public void run() {
         if (carEngine.canRun()) {
             this.position++;
-            this.roundResult = RacingCarResult.GO;
-            return;
         }
-        this.roundResult = RacingCarResult.STOP;
     }
 
 }
