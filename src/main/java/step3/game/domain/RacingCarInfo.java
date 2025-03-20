@@ -16,7 +16,7 @@ public class RacingCarInfo {
         this.tryCount = tryCount;
     }
 
-    public static RacingCarInfo getCars(Set<CarName> carNames, PositiveNumber tryCount) {
+    public static RacingCarInfo of(Set<CarName> carNames, PositiveNumber tryCount) {
         Set<Car> cars = new HashSet<>();
         for (CarName carName : carNames) {
             cars.add(new Car(carName));

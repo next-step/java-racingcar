@@ -12,7 +12,7 @@ public class RacingCarGame {
     private final RacingCarInfo carInfo;
 
     public RacingCarGame(Set<CarName> carNames, PositiveNumber tryCount) {
-        this.carInfo = RacingCarInfo.getCars(carNames, tryCount);
+        this.carInfo = RacingCarInfo.of(carNames, tryCount);
     }
 
     public void takeTurn() {
