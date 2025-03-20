@@ -1,5 +1,6 @@
 package step4.racingCar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,23 +11,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
+
+    private Car car;
+    private int initialPosition;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car("jin");
+        initialPosition = car.getPosition();
+    }
+
     @ParameterizedTest
     @DisplayName("정지 테스트")
     @ValueSource(ints = {1, 2, 3})
     void stop_car(int input) {
-        Car car = new Car("jin");
         car.move(input);
-        assertThat(car.getPosition()).isSameAs(car.getPosition());
+        assertThat(car.getPosition()).isSameAs(initialPosition);
     }
 
     @ParameterizedTest
     @DisplayName("전진 테스트")
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void move_car(int input) {
-        // given
-        Car car = new Car("jin");
-        int initialPosition = car.getPosition();
-
         //when
         car.move(input);
 
