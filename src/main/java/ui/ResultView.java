@@ -11,5 +11,7 @@ public class ResultView {
             racing.move();
             racing.print();
         }
+
+        racing.printWinner();
     }
 }

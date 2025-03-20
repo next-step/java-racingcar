@@ -17,7 +17,7 @@ public class Car {
             throw new RuntimeException("moveStrategy 가 null입니다.");
         }
 
-        if(name.length() > 5){
+        if (name.length() > 5) {
             throw new RuntimeException("name은 5자를 초과할 수 없습니다. name :" + name);
         }
 
@@ -33,7 +33,7 @@ public class Car {
 
 
     public void print() {
-        System.out.print(getCurrentPositionDash());
+        System.out.print(this.name + " : " + getCurrentPositionDash());
         System.out.print("\n");
     }
 
@@ -45,5 +45,13 @@ public class Car {
         }
 
         return result.toString();
+    }
+
+    public int getCurrentPosition() {
+        return this.currentPosition;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
