@@ -18,9 +18,6 @@ public class Cars {
         }
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            if (name.length() > 6) {
-                throw new RuntimeException("자동차의 이름은 5글자를 초과 할 수 없습니다.");
-            }
             cars.add(new Car(name));
         }
         return new Cars(cars);
@@ -37,10 +34,6 @@ public class Cars {
     }
 
     public List<Car> winners() {
-        if (cars.isEmpty()) {
-            throw new RuntimeException("자동차가 존재하지 않습니다.");
-        }
-
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
