@@ -11,7 +11,7 @@ class ReportTest {
 
     @Test
     @DisplayName("전달 받은 인덱스의 자동차의 위치를 반환한다.")
-    void findPositionByIndexTest() {
+    void finCarByIndexTest() {
         // given
         var carCount = 3;
         List<Car> cars = new ArrayList<>();
@@ -24,9 +24,8 @@ class ReportTest {
 
         // when & then
         for (int i = 0; i < carCount; i++) {
-            Assertions
-                    .assertThat(report.findPositionByIndex(i))
-                    .isEqualTo(i);
+            Assertions.assertThat(report.findCarByIndex(i).getPosition())
+                      .isEqualTo(i);
         }
     }
 

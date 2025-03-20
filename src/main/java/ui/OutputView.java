@@ -13,6 +13,6 @@ public class OutputView {
     }
 
     private static void printPosition(Integer carCount, Report report) {
-        IntStream.range(0, carCount).forEach(index -> System.out.println("-".repeat(report.findPositionByIndex(index))));
+        IntStream.range(0, carCount).forEach(index -> System.out.println("-".repeat(report.findCarByIndex(index).getPosition())));
     }
 }

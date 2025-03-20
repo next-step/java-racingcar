@@ -22,11 +22,11 @@ public class Report {
         this.cars = cars;
     }
 
-    public Integer findPositionByIndex(Integer index) {
+    public Car findCarByIndex(Integer index) {
         if (index < 0 || index >= cars.size()) {
             throw new IllegalArgumentException("Not valid index");
         }
 
-        return cars.get(index).getPosition();
+        return cars.get(index);
     }
 }
