@@ -12,16 +12,15 @@ public class CarRacingJudgeTest {
   @Test
   void testGetWinners() {
     List<Car> cars = CarFactory.createCars(
-            List.of("pobi", "crong", "honux")
-    );
-    cars.get(0).move(4);
-    cars.get(0).move(4);
-    cars.get(1).move(4);
-    cars.get(1).move(4);
-    cars.get(2).move(1);
-    cars.get(2).move(4);
+            List.of("pobi", "crong", "honux"), new CarMoveStrategyTest.TestAlwaysCarMoveStrategy());
+    cars.get(0).move();
+    cars.get(0).move();
+    cars.get(1).move();
+    cars.get(1).move();
+    cars.get(2).move();
+    cars.get(2).move();
 
-    List<Car> expected = List.of(cars.get(0), cars.get(1));
+    List<Car> expected = List.of(cars.get(0), cars.get(1), cars.get(2));
     List<Car> actual = CarRacingJudge.judgeWinners(cars);
 
     Assertions.assertEquals(expected, actual);

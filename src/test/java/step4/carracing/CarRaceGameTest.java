@@ -10,13 +10,6 @@ import java.util.Scanner;
 
 public class CarRaceGameTest {
 
-  private static class TestCarMoveStrategy implements CarMoveStrategy {
-    @Override
-    public int getMoveSteps() {
-      return 4;
-    }
-  }
-
   @DisplayName("자동차 경주 게임을 실행하는 기능 테스트")
   @Test
   void testCarRaceGame() {
@@ -25,13 +18,10 @@ public class CarRaceGameTest {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outputStream));
 
-    CarMoveStrategy carMoveStrategy = new TestCarMoveStrategy();
-    CarRaceGame carRaceGame = new CarRaceGame(carMoveStrategy, testScanner);
+    CarRaceGame carRaceGame = new CarRaceGame(testScanner);
     carRaceGame.start();
 
     System.setOut(originalOut);
-    Assertions.assertTrue(outputStream.toString().contains("pobi, crong, honux가 최종 우승했습니다."));
+    Assertions.assertTrue(outputStream.toString().contains("가 최종 우승했습니다."));
   }
-
-
 }

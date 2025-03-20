@@ -11,7 +11,7 @@ public class CarFactoryTest {
   @DisplayName("자동차 생성 테스트")
   @Test
   void testCreateCar() {
-    Car car = CarFactory.createCar("pobi");
+    Car car = CarFactory.createCar("pobi", new RandomCarMoveStrategy());
     Assertions.assertEquals("pobi", car.getName());
     Assertions.assertEquals(1, car.getPosition());
   }
@@ -19,7 +19,7 @@ public class CarFactoryTest {
   @DisplayName("자동차 리스트 생성 테스트")
   @Test
   void testCreateCars() {
-    List<Car> carList = CarFactory.createCars(List.of("pobi", "crong", "honux"));
+    List<Car> carList = CarFactory.createCars(List.of("pobi", "crong", "honux"), new RandomCarMoveStrategy());
 
     Assertions.assertEquals(3, carList.size());
     Assertions.assertEquals("pobi", carList.get(0).getName());

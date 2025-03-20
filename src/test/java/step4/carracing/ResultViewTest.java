@@ -16,11 +16,11 @@ public class ResultViewTest {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outputStream));
 
-    Car car = CarFactory.createCar("pobi");
-    car.move(4);
-    car.move(4);
-    car.move(1);
-    String expected = "pobi : " + "---\n";
+    Car car = CarFactory.createCar("pobi", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy());
+    car.move();
+    car.move();
+    car.move();
+    String expected = "pobi : " + "----\n";
 
     ResultView.printCarStatus(car);
 
