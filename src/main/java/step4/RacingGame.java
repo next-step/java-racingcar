@@ -16,7 +16,7 @@ public class RacingGame {
         for (int round = 0; round < rounds; round++) {
             playRound();
         }
-        outputView.printWinners(cars.getWinners());
+        outputView.printWinners(cars.getWinnerStatus());
     }
 
     private void playRound() {

@@ -11,6 +11,11 @@ public class Car {
         this.position = 0;
     }
 
+    public Car(int position) {
+        this.carName = new CarName("name");
+        this.position = position;
+    }
+
     public Car() {
         this.carName = new CarName("name");
         this.position = 0;

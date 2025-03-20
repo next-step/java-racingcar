@@ -23,7 +23,11 @@ public class Cars {
                 .collect(toList());
     }
 
-    public List<CarStatus> getWinners() {
+    public List<CarStatus> getWinnerStatus() {
+        return getWinners().stream().map(Car::toCarStatus).collect(toList());
+    }
+
+    public List<Car> getWinners() {
         if (cars.isEmpty()) {
             throw new IllegalStateException("There is no Car");
         }
@@ -35,7 +39,6 @@ public class Cars {
 
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::toCarStatus)
                 .collect(toList());
     }
 }
