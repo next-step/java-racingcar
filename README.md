@@ -24,9 +24,11 @@
 - [X] RacingGame
 - [X] InputView
 - [X] OutputView
-- [] 이름 클래스
-- [] 이름은 공백일 수 없다.
-- [] 이름은 길이가 5를 초과할 수 없다.
-- [] CarName -> Car 에 적용
-- [] CarFactory 는 자동차를 생성한다.
-- [] 우승자 찾기 로직 개선
+- [X] 이름 클래스
+- [X] 이름은 공백일 수 없다.
+- [X] 이름은 길이가 5를 초과할 수 없다.
+- [X] CarName -> Car 에 적용
+- [X] CarFactory 는 자동차를 생성한다.
+- [X] CarStatus
+- [X] 출력의 책임을 도메인과 분리
+- [X] 우승자 찾기 로직 개선
