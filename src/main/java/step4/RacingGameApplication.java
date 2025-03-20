@@ -9,8 +9,9 @@ public class RacingGameApplication {
         String[] carNames = InputView.getCarNamesInput();
         int rounds = InputView.getRoundsInput();
 
+        List<Car> carList = CarFactory.createCars(carNames);
         RandomMovingStrategy movingStrategy = new RandomMovingStrategy(new Random());
-        Cars cars = new Cars(carNames, movingStrategy);
+        Cars cars = new Cars(carList, movingStrategy);
 
         RacingGame racingGame = new RacingGame(cars, rounds);
         racingGame.startGame();

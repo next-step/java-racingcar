@@ -17,6 +17,11 @@ public class Cars {
         this.movingStrategy = movingStrategy;
     }
 
+    public Cars(List<Car> cars, MovingStrategy movingStrategy) {
+        this.cars = cars;
+        this.movingStrategy = movingStrategy;
+    }
+
     public void moveAll() {
         cars.forEach(car -> car.move(movingStrategy));
     }
