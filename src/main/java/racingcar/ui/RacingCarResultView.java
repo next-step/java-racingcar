@@ -24,14 +24,15 @@ public class RacingCarResultView {
 
     public void viewWinners(List<RacingCar> winners) {
         StringBuilder sb = new StringBuilder();
+        int lastIndex = winners.size() - 1;
 
-        for (int i = 0; i < winners.size() - 1; i++) {
+        for (int i = 0; i < lastIndex; i++) {
             RacingCar winner = winners.get(i);
             sb.append(winner.getCarName());
             sb.append(", ");
         }
 
-        sb.append(winners.get(winners.size() - 1).getCarName());
+        sb.append(winners.get(lastIndex).getCarName());
         sb.append("가 최종 우승했습니다.");
 
         System.out.println(sb);
