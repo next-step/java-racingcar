@@ -11,14 +11,14 @@ public class CarTest {
     }
 
     @Test
-    void 자동차_랜덤_전진() {
+    void 자동차_4이상이면_전진() {
         Car car = new Car(0);
         car.randomGo(4);
         assertThat(car.getLocation()).isEqualTo(1);
     }
 
     @Test
-    void 자동차_랜덤_멈춤() {
+    void 자동차_4미만이면_멈춤() {
         Car car = new Car(0);
         car.randomGo(1);
         assertThat(car.getLocation()).isEqualTo(0);
