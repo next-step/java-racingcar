@@ -6,13 +6,15 @@ import java.util.Scanner;
 public class RacingCarController {
     private RacingCar[] cars;
     private static final RacingCarView view = new RacingCarView();
-    private static final NumberGenerator numberGenerator = new RandomNumberGenerator();;
+    private static final NumberGenerator numberGenerator = new RandomNumberGenerator();
+    ;
     private static final int MOVE_CONDITION = 4;
 
     public void start() {
         view.scanInputs();
         run();
-        view.printResultNotice();
+//        view.printResultNotice();
+        view.printWinner(cars);
     }
 
     // ==============================
@@ -20,9 +22,9 @@ public class RacingCarController {
     // ==============================
     private void initializeCars(int carNum) {
         this.cars = new RacingCar[view.carNum()];
-
+        String[] carNames = view.carNames();
         for (int i = 0; i < carNum; i++) {
-            cars[i] = new RacingCar(MOVE_CONDITION, numberGenerator);
+            cars[i] = new RacingCar(MOVE_CONDITION, numberGenerator, carNames[i]);
         }
     }
 
@@ -36,7 +38,7 @@ public class RacingCarController {
         }
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         RacingCarController controller = new RacingCarController();
         controller.start();
     }
