@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 public class Car {
     public static final int CAR_MOVING_BOUND = 4;
