@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 /**
  * 기능 요구사항
  * 초간단 자동차 경주 게임을 구현한다.
@@ -23,5 +25,17 @@ public class CarRacingGame {
         // ResultView:
         // - 최종 결과(List<List<String>>)를 화면에 출력한다.
 
+        int tempCarCount = 3;
+        int tempRoundCount = 5;
+
+        RacingGame racingGame = new RacingGame(tempCarCount);
+        List<List<String>> raceResults = racingGame.play(tempRoundCount);
+
+        for (List<String> round : raceResults) {
+            for (String s : round) {
+                System.out.println(s);
+            }
+            System.out.println();
+        }
     }
 }
