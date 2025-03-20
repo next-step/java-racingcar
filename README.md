@@ -7,3 +7,18 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+## 요구사항 분석
+### InputView
+- [ ] 유저에게서 차 갯수를 입력 받는다.
+- [ ] 유저에게서 게임 시도 횟수를 입력 받는다.
+- [ ] 값을 입력 받는 API는 Scanner를 이용한다.
+### RacingGame
+- [ ] 시도 횟수 만큼 게임 반복:
+- [ ] 각 게임에서 자동차 수 만큼 반복:
+- [ ] 각 자동차는 전진한다. when 랜덤 숫자 >= 4
+- [ ] 한 게임 마무리 후 결과 저장 
+- [ ] 최종 결과 return
+### ResultView
+- [ ] 최종 결과를 화면에 출력한다.

@@ -12,19 +12,6 @@ import java.util.List;
  */
 public class CarRacingGame {
     public static void main(String[] args) {
-        // InputView:
-        // - 유저에게서 차 갯수를 입력 받는다.
-        // - 유저에게서 게임 시도 횟수를 입력 받는다.
-        // RacingGame:
-        // - 각 자동차는 전진한다.
-        // - 시도 횟수 만큼 게임 반복:
-        // -- 각 게임에서 자동차 수 만큼 반복:
-        // --- 각 자동차는 전진한다.
-        // -- 한 게임 마무리 후 결과 저장
-        // - 최종 결과 return
-        // ResultView:
-        // - 최종 결과(List<List<String>>)를 화면에 출력한다.
-
         InputView inputView = new InputView();
         int carCount = inputView.getCarCountFromUser();
         int roundCount = inputView.getRoundCountFromUser();
