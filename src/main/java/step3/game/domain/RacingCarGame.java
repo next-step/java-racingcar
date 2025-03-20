@@ -1,12 +1,9 @@
 package step3.game.domain;
 
-import step3.game.domain.car.Car;
 import step3.game.domain.car.CarName;
 import step3.game.domain.car.Players;
 
 import java.util.Set;
-
-import static step3.game.domain.RandomGenerator.getRandomValue;
 
 public class RacingCarGame {
 
@@ -19,22 +16,14 @@ public class RacingCarGame {
     }
 
     public void takeTurn() {
-        for (Car car : carInfo.players.getCars()) {
-            makeMove(car);
-        }
-    }
-
-    private void makeMove(Car car) {
-        if (isMove(getRandomValue())) {
-            car.move();
-        }
-    }
-
-    public boolean isMove(int randomNumber) {
-        return randomNumber >= MOVE_CRITERIA;
+        carInfo.players.takeTurn();
     }
 
     public Players getCars() {
         return carInfo.players;
+    }
+
+    public static boolean isMove(int randomNumber) {
+        return randomNumber >= MOVE_CRITERIA;
     }
 }

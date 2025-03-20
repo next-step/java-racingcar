@@ -1,9 +1,13 @@
 package step3.game.domain.car;
 
+import step3.game.domain.RacingCarGame;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static step3.game.domain.RandomGenerator.getRandomValue;
 
 public class Players {
 
@@ -17,6 +21,22 @@ public class Players {
 
     public Set<Car> getCars() {
         return cars;
+    }
+
+    public void takeTurn() {
+        Set<Car> updatedCars = new HashSet<>();
+        for (Car car : cars) {
+            updatedCars.add(makeMove(car));
+        }
+        cars.clear();
+        cars.addAll(updatedCars);
+    }
+
+    private Car makeMove(Car car) {
+        if (RacingCarGame.isMove(getRandomValue())) {
+            return car.move();
+        }
+        return car;
     }
 
     public List<String> finalResult() {

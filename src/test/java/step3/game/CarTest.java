@@ -15,8 +15,8 @@ public class CarTest {
     @DisplayName("자동차는 전진할 수 있다.")
     void carCanMove() {
         Car car = new Car(new CarName("test"));
-        car.move();
-        assertThat(car.getDistance()).isEqualTo(1);
+        Car movedCar = car.move();
+        assertThat(movedCar.getDistance()).isEqualTo(1);
     }
 
     @Test

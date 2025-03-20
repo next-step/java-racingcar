@@ -4,16 +4,20 @@ public class Car {
 
     public static final int START_LINE = 0;
 
-    private Integer moveSteps;
+    private final Integer moveSteps;
     public final CarName name;
 
     public Car(CarName name) {
-        this.moveSteps = START_LINE;
-        this.name = name;
+        this(name, START_LINE);
     }
 
-    public void move() {
-        moveSteps++;
+    public Car(CarName name, Integer moveSteps) {
+        this.name = name;
+        this.moveSteps = moveSteps;
+    }
+
+    public Car move() {
+        return new Car(this.name, moveSteps +1);
     }
 
     public Integer getDistance() {
