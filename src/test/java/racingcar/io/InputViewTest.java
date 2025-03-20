@@ -1,11 +1,12 @@
-package step3.io;
+package racingcar.io;
 
 import java.util.Scanner;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import step3.exception.InvalidInputException;
+import racingcar.exception.InvalidInputException;
+import racingcar.io.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

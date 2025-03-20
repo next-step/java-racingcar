@@ -1,9 +1,9 @@
-package step3.io;
+package racingcar.io;
 
 import java.util.List;
 
-import step3.domain.CarPositions;
-import step3.domain.CarSimulator;
+import racingcar.domain.CarPositions;
+import racingcar.domain.CarSimulator;
 
 public class OutputView {
     private final CarSimulator simulator;

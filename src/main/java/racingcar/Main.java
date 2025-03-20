@@ -1,11 +1,11 @@
-package step3;
+package racingcar;
 
 import java.util.Scanner;
 
-import step3.domain.CarSimulator;
-import step3.exception.InvalidInputException;
-import step3.io.InputView;
-import step3.io.OutputView;
+import racingcar.domain.CarSimulator;
+import racingcar.exception.InvalidInputException;
+import racingcar.io.InputView;
+import racingcar.io.OutputView;
 
 public class Main {
     public static void main(String[] args) {

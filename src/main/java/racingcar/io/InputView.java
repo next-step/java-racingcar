@@ -1,8 +1,8 @@
-package step3.io;
+package racingcar.io;
 
 import java.util.Scanner;
 
-import step3.exception.InvalidInputException;
+import racingcar.exception.InvalidInputException;
 
 public class InputView {
 
