@@ -24,3 +24,6 @@
 - [X] RacingGame
 - [X] InputView
 - [X] OutputView
+- [] 이름 클래스
+- [] 이름은 공백일 수 없다.
+- [] 이름은 길이가 5를 초과할 수 없다.
