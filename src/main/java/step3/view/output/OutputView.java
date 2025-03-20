@@ -1,8 +1,6 @@
 package step3.view.output;
 
-import step3.game.domain.car.Car;
-
-import java.util.Set;
+import step3.game.domain.car.Players;
 
 public interface OutputView {
 
@@ -10,7 +8,7 @@ public interface OutputView {
 
     String carDistance(Integer distance);
 
-    void finalResult(Set<Car> carInfo);
+    void finalResult(Players carInfo);
 
-    void endOfThisTurn(Set<Car> cars);
+    void endOfThisTurn(Players cars);
 }

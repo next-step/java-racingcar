@@ -2,6 +2,7 @@ package step3.game.domain;
 
 import step3.game.domain.car.Car;
 import step3.game.domain.car.CarName;
+import step3.game.domain.car.Players;
 
 import java.util.Set;
 
@@ -13,12 +14,12 @@ public class RacingCarGame {
 
     private final RacingCarInfo carInfo;
 
-    RacingCarGame(Set<CarName> carNames, PositiveNumber tryCount) {
+    public RacingCarGame(Set<CarName> carNames, PositiveNumber tryCount) {
         this.carInfo = RacingCarInfo.getCars(carNames, tryCount);
     }
 
     public void takeTurn() {
-        for (Car car : carInfo.cars) {
+        for (Car car : carInfo.players.getCars()) {
             makeMove(car);
         }
     }
@@ -33,7 +34,7 @@ public class RacingCarGame {
         return randomNumber >= MOVE_CRITERIA;
     }
 
-    public Set<Car> getCars() {
-        return carInfo.cars;
+    public Players getCars() {
+        return carInfo.players;
     }
 }

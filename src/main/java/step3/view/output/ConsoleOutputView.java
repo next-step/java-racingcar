@@ -1,14 +1,11 @@
 package step3.view.output;
 
 import step3.game.domain.car.Car;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import step3.game.domain.car.Players;
 
 public class ConsoleOutputView implements OutputView {
 
-    public static final String WINNER_DELIMETER = ", ";
+    public static final String WINNER_DELIMITER = ", ";
     public static final String CAR_MOVE_SYMBOL = "-";
 
     @Override
@@ -22,39 +19,15 @@ public class ConsoleOutputView implements OutputView {
     }
 
     @Override
-    public void endOfThisTurn(Set<Car> cars) {
-        for (Car car : cars) {
+    public void endOfThisTurn(Players players) {
+        for (Car car : players.getCars()) {
             System.out.printf("%s : %s%n", car.name.getCarName(), carDistance(car.getDistance()));
         }
         System.out.println();
     }
 
     @Override
-    public void finalResult(Set<Car> cars) {
-        int maxDistance = getMaxDistance(cars);
-
-        List<String> winners = getWinners(cars, maxDistance);
-        System.out.println(String.join(WINNER_DELIMETER, winners) + "가 최종 우승했습니다.");
+    public void finalResult(Players players) {
+        System.out.println(String.join(WINNER_DELIMITER, players.finalResult()) + "가 최종 우승했습니다.");
     }
-
-    private static List<String> getWinners(Set<Car> cars, int maxDistance) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getDistance() == maxDistance) {
-                winners.add(car.getCarName());
-            }
-        }
-        return winners;
-    }
-
-    private static int getMaxDistance(Set<Car> cars) {
-        int maxDistance = 0;
-        for (Car car : cars) {
-            if (car.getDistance() > maxDistance) {
-                maxDistance = car.getDistance();
-            }
-        }
-        return maxDistance;
-    }
-
 }
