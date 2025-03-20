@@ -73,4 +73,23 @@ class ReportTest {
                   .ignoringCollectionOrder()
                   .isEqualTo(expectedChampionNames);
     }
+
+    @Test
+    @DisplayName("참가자가 2명이상이고 다른 위치에 있으면 가장 멀리 있는 참가자가 챔피온이다.")
+    void findChampionsDifferentPositionTest() {
+        // given
+        var car = new Car("a");
+        var car2 = new Car("b");
+        moveCar(car, Car.MOVE_THRESHOLD);
+        var cars = List.of(car, car2);
+        var expectedChampionNames = List.of(car.getName());
+
+        // when
+        var champions = Report.findChampions.apply(cars);
+
+        // then
+        Assertions.assertThat(champions)
+                  .hasSize(1)
+                  .containsExactlyElementsOf(expectedChampionNames);
+    }
 }
