@@ -1,25 +1,23 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
     private static final String MOVE_SYMBOL = "-";
     private int distance;
+    private final RacingCarName carName;
     private final RacingCarMoveStrategy racingCarMoveStrategy;
 
-    public RacingCar() {
-        this(new RandomRacingCarMoveStrategy());
-    }
-
-    // visible for testing
-    RacingCar(RacingCarMoveStrategy racingCarMoveStrategy) {
+    public RacingCar(RacingCarName carName, RacingCarMoveStrategy racingCarMoveStrategy) {
+        this.carName = carName;
         this.racingCarMoveStrategy = racingCarMoveStrategy;
     }
 
     public void moveIfMovable() {
-        if (racingCarMoveStrategy.isMovable()) {
+        if (isMovable()) {
             move();
         }
     }
@@ -33,21 +31,31 @@ public class RacingCar {
     }
 
     public String display() {
-        return MOVE_SYMBOL.repeat(distance);
+        return carName + " : " + MOVE_SYMBOL.repeat(distance);
     }
 
-    public static List<RacingCar> createRacingCars(int carCount) {
-        if (carCount < 1) {
-            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다.");
-        }
+    public RacingCarName getCarName() {
+        return carName;
+    }
 
+    public static List<RacingCar> createRacingCars(String[] carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar());
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(new RacingCarName(carName), new RandomRacingCarMoveStrategy()));
         }
 
         return racingCars;
     }
 
+    public static List<RacingCar> toSortedRacingCars(List<RacingCar> racingCars) {
+        racingCars = new ArrayList<>(racingCars);
+        Collections.sort(racingCars);
+        return racingCars;
+    }
+
+    @Override
+    public int compareTo(RacingCar o) {
+        return Integer.compare(o.distance, distance);
+    }
 }

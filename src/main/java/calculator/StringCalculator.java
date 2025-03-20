@@ -16,11 +16,11 @@ public class StringCalculator {
         return sum(toInts(split(text)));
     }
 
-    private static boolean isBlank(String text) {
+    public static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private static String[] split(String text) {
+    public static String[] split(String text) {
         Matcher matcher = Pattern.compile(REGEX).matcher(text);
         final int delimiterGroupNum = 1;
         final int numbersGroupNum = 2;

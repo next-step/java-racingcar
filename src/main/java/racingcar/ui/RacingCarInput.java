@@ -1,18 +1,20 @@
 package racingcar.ui;
 
+import calculator.StringCalculator;
+
 public class RacingCarInput {
 
-    private final int carCount;
+    private final String carNameCsv;
     private final int tryCount;
 
-    public RacingCarInput(int carCount, int tryCount) {
-        this.carCount = carCount;
+    public RacingCarInput(String carNameCsv, int tryCount) {
+        this.carNameCsv = carNameCsv;
         this.tryCount = tryCount;
         this.validate();
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNameCsv() {
+        return carNameCsv;
     }
 
     public int getTryCount() {
@@ -20,8 +22,8 @@ public class RacingCarInput {
     }
 
     private void validate() {
-        if (this.carCount < 2) {
-            throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
+        if (StringCalculator.isBlank(carNameCsv)) {
+            throw new IllegalArgumentException("자동차 이름을 입력하세요.");
         }
 
         if (this.tryCount < 2) {
