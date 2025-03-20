@@ -20,6 +20,10 @@ public class Cars {
         }
     }
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public void move(int tryCounts) {
         ResultView.showResultMessage();
         for (int index = 0; index < tryCounts; index++) {
@@ -29,8 +33,9 @@ public class Cars {
     }
 
     public void move() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         for (Car car : cars) {
-            car.move(new RandomNumberGenerator());
+            car.move(randomNumberGenerator);
         }
     }
 
