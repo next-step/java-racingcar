@@ -5,8 +5,15 @@ import java.util.Scanner;
 public class RacingCarInputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
+    private static final RacingCarInputView INSTANCE = new RacingCarInputView();
 
-    public static RacingCarInput view() {
+    private RacingCarInputView() {}
+
+    public static RacingCarInputView getInstance() {
+        return INSTANCE;
+    }
+
+    public RacingCarInput viewInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String carNameCsv = SCANNER.nextLine();
 

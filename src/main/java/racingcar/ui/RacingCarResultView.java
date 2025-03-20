@@ -6,18 +6,23 @@ import racingcar.RacingCar;
 
 public class RacingCarResultView {
 
-    public static void view(List<RacingCar> racingCars) {
-        RacingCarResultView.display(racingCars);
+    private final static RacingCarResultView INSTANCE = new RacingCarResultView();
+
+    private RacingCarResultView() {}
+
+    public static RacingCarResultView getInstance() {
+        return INSTANCE;
+    }
+
+    public void viewCurrent(List<RacingCar> racingCars) {
+        for (RacingCar car : racingCars) {
+            System.out.println(car.display());
+        }
+
         System.out.println();
     }
 
-    public static void display(List<RacingCar> racingCarList) {
-        for (RacingCar car : racingCarList) {
-            System.out.println(car.display());
-        }
-    }
-
-    public static void winnersView(List<RacingCar> winners) {
+    public void viewWinners(List<RacingCar> winners) {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < winners.size() - 1; i++) {

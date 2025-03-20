@@ -10,14 +10,20 @@ import utils.RandomUtils;
 
 public class RacingCarGame {
 
+    private final RacingCarInputView inputView;
+    private final RacingCarResultView resultView;
     private final RacingCarGameWinnerStrategy winnerStrategy;
 
-    public RacingCarGame(RacingCarGameWinnerStrategy winnerStrategy) {
+    public RacingCarGame(RacingCarInputView inputView,
+                         RacingCarResultView resultView,
+                         RacingCarGameWinnerStrategy winnerStrategy) {
+        this.inputView = inputView;
+        this.resultView = resultView;
         this.winnerStrategy = winnerStrategy;
     }
 
     public void start() {
-        RacingCarInput input = RacingCarInputView.view();
+        RacingCarInput input = inputView.viewInput();
 
         String[] carNames = StringCalculator.split(input.getCarNameCsv());
         List<RacingCar> racingCars = RacingCarFactory.createRacingCars(carNames,
@@ -25,11 +31,11 @@ public class RacingCarGame {
 
         for (int i = 0; i < input.getTryCount(); i++) {
             moveIfMovable(racingCars);
-            RacingCarResultView.view(racingCars);
+            resultView.viewCurrent(racingCars);
         }
 
         List<RacingCar> winners = winnerStrategy.getWinners(racingCars);
-        RacingCarResultView.winnersView(winners);
+        resultView.viewWinners(winners);
     }
 
     private void moveIfMovable(List<RacingCar> racingCarList) {
