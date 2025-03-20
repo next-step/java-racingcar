@@ -12,7 +12,7 @@ class DefaultRacingCarGameWinnerStrategyTest {
 
     @Test
     void 동점이면_모두_winner다() {
-        List<RacingCar> racingCars = RacingCar.createRacingCars(new String[]{
+        List<RacingCar> racingCars = RacingCarFactory.createRacingCars(new String[]{
             "1", "2", "3", "4"
         }, new AlwaysRacingCarMoveStrategy());
 
@@ -24,7 +24,10 @@ class DefaultRacingCarGameWinnerStrategyTest {
         racingCars.get(3).moveIfMovable();
         racingCars.get(3).moveIfMovable();
 
-        List<RacingCar> winners = new DefaultRacingCarGameWinnerStrategy().getWinners(racingCars);
+        DefaultRacingCarGameWinnerStrategy defaultRacingCarGameWinnerStrategy
+            = DefaultRacingCarGameWinnerStrategy.getInstance();
+
+        List<RacingCar> winners = defaultRacingCarGameWinnerStrategy.getWinners(racingCars);
 
         assertThat(winners).contains(racingCars.get(1));
         assertThat(winners).contains(racingCars.get(2));

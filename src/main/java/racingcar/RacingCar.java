@@ -38,22 +38,6 @@ public class RacingCar implements Comparable<RacingCar> {
         return carName;
     }
 
-    public static List<RacingCar> createRacingCars(String[] carNames, RacingCarMoveStrategy moveStrategy) {
-        List<RacingCar> racingCars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            racingCars.add(new RacingCar(new RacingCarName(carName), moveStrategy));
-        }
-
-        return racingCars;
-    }
-
-    public static List<RacingCar> toSortedRacingCars(List<RacingCar> racingCars) {
-        racingCars = new ArrayList<>(racingCars);
-        Collections.sort(racingCars);
-        return racingCars;
-    }
-
     @Override
     public int compareTo(RacingCar o) {
         return Integer.compare(o.distance, distance);

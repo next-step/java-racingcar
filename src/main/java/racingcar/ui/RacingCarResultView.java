@@ -3,7 +3,6 @@ package racingcar.ui;
 import java.util.List;
 
 import racingcar.RacingCar;
-import utils.RandomUtils;
 
 public class RacingCarResultView {
 
