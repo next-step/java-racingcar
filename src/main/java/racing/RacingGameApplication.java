@@ -1,7 +1,7 @@
 package racing;
 
-import racing.entity.RacingCars;
-import racing.entity.RacingGame;
+import racing.domain.RacingCars;
+import racing.domain.RacingGame;
 import racing.rule.RandomMoveRule;
 import racing.view.RacingGameInputView;
 import racing.view.RacingGameOutputView;

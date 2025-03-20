@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.entity.Car;
-import racing.entity.RacingCars;
+import racing.domain.Car;
+import racing.domain.RacingCars;
 import racing.rule.RandomMoveRule;
 
 import java.util.List;

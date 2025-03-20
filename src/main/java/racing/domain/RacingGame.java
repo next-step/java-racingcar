@@ -1,4 +1,4 @@
-package racing.entity;
+package racing.domain;
 
 import racing.rule.RandomMoveRule;
 
