@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarTest {
 
     @Test
-    void 초기_상태에서_display는_이름만_있다() {
+    void 초기_상태에서는_이름만_있다() {
         RacingCar car = new RacingCar(new RacingCarName("test"),
             new RandomRacingCarMoveStrategy(RandomUtils.getInstance()));
         assertThat(car.toString()).isEqualTo("test : ");
