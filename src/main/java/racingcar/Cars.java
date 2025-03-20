@@ -46,7 +46,7 @@ public class Cars {
     public List<Car> getWinners() {
         Car maxCar = max();
         return cars.stream()
-                .filter(maxCar::isSameDistance)
+                .filter(car -> maxCar.isSameDistance(car.getDistance()))
                 .collect(Collectors.toList());
     }
 

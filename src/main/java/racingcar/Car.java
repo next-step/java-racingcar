@@ -43,8 +43,8 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public boolean isSameDistance(Car car) {
-        return this.distance == car.getDistance();
+    public boolean isSameDistance(int distance) {
+        return this.distance == distance;
     }
 
     @Override
