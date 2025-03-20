@@ -11,12 +11,11 @@ import racing.fake.FakeNumberGenerator;
 import racing.model.Cars;
 
 class RaceServiceTest {
-    public static final int MOVE_NUMBER = 4;
     private RaceService raceService;
 
     @BeforeEach
     void setUp() {
-        raceService = new RaceService(new FakeNumberGenerator(MOVE_NUMBER));
+        raceService = new RaceService(new FakeNumberGenerator(5));
     }
 
     @DisplayName("입력 받은 n대의 자동차를 생성 요청 한다.")
@@ -40,12 +39,12 @@ class RaceServiceTest {
         Cars cars = raceService.generateCar(carNames);
 
         // when
-        raceService.moveCar(cars);
+        Cars sut = raceService.moveCar(cars);
 
         // then
-        assertAll(() -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1),
-                () -> assertThat(cars.getCars().get(1).getPosition()).isEqualTo(1),
-                () -> assertThat(cars.getCars().get(2).getPosition()).isEqualTo(1)
+        assertAll(() -> assertThat(sut.getCars().get(0).getPosition()).isEqualTo(2),
+                () -> assertThat(sut.getCars().get(1).getPosition()).isEqualTo(2),
+                () -> assertThat(sut.getCars().get(2).getPosition()).isEqualTo(2)
         );
     }
 

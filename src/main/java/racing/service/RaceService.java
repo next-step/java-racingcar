@@ -11,10 +11,10 @@ public class RaceService {
     }
 
     public Cars generateCar(List<String> carNames) {
-        return Cars.create(carNames, numberGenerator);
+        return Cars.create(carNames);
     }
 
     public Cars moveCar(Cars cars) {
-        return cars.movedAll();
+        return cars.movedAll(numberGenerator);
     }
 }

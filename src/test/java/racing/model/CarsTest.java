@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.fake.FakeNumberGenerator;
-import racing.service.NumberGenerator;
 
 class CarsTest {
     private static final int MOVE_NUMBER = 4;
@@ -20,7 +19,7 @@ class CarsTest {
     @Test
     void createTest() {
         List<String> carNames = List.of("BMW");
-        Cars cars = createCars(carNames, new FakeNumberGenerator(MOVE_NUMBER));
+        Cars cars = createCars(carNames);
 
         assertAll(() -> assertThat(cars.getCars()).hasSize(1),
                 () -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1));
@@ -31,10 +30,10 @@ class CarsTest {
     void movedAllTest() {
         // given
         List<String> carNames = List.of("BMW", "AUDI");
-        Cars cars = createCars(carNames, new FakeNumberGenerator(MOVE_NUMBER));
+        Cars cars = createCars(carNames);
 
         // when
-        Cars sut = cars.movedAll();
+        Cars sut = cars.movedAll(new FakeNumberGenerator(MOVE_NUMBER));
 
         // then
         assertAll(() -> assertThat(sut.getCars().get(0).getPosition()).isEqualTo(2),
@@ -47,7 +46,7 @@ class CarsTest {
     void getCarsTest() {
         // given
         List<String> carNames = List.of("BMW", "AUDI", "BENZ");
-        Cars cars = createCars(carNames, new FakeNumberGenerator(STOP_NUMBER));
+        Cars cars = createCars(carNames);
 
         // when
         List<Car> carList = cars.getCars();
@@ -72,7 +71,7 @@ class CarsTest {
                 new Car(new CarName("AUDI"), 2),
                 new Car(new CarName("BENZ"), 3)
         );
-        Cars cars = new Cars(carList, new FakeNumberGenerator(MOVE_NUMBER));
+        Cars cars = new Cars(carList);
 
         // when
         List<Car> winner = cars.getWinner();
@@ -94,7 +93,7 @@ class CarsTest {
                 new Car(new CarName("AUDI"), 5),
                 new Car(new CarName("BENZ"), 5)
         );
-        Cars cars = new Cars(carList, new FakeNumberGenerator(MOVE_NUMBER));
+        Cars cars = new Cars(carList);
 
         // when
         List<Car> winner = cars.getWinner();
@@ -106,7 +105,7 @@ class CarsTest {
         );
     }
 
-    private Cars createCars(List<String> carNames, NumberGenerator numberGenerator) {
-        return Cars.create(carNames, numberGenerator);
+    private Cars createCars(List<String> carNames) {
+        return Cars.create(carNames);
     }
 }

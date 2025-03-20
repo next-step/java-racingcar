@@ -7,28 +7,26 @@ import racing.service.NumberGenerator;
 
 public class Cars {
     private final List<Car> cars;
-    private final NumberGenerator numberGenerator;
 
-    public Cars(List<Car> cars, NumberGenerator numberGenerator) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
-        this.numberGenerator = numberGenerator;
     }
 
-    public static Cars create(List<String> carNames, NumberGenerator numberGenerator) {
+    public static Cars create(List<String> carNames) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
             Car car = new Car(carName);
             carList.add(car);
         }
-        return new Cars(carList, numberGenerator);
+        return new Cars(carList);
     }
 
-    public Cars movedAll() {
+    public Cars movedAll(NumberGenerator numberGenerator) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(carMove(car));
+            newCars.add(carMove(car, numberGenerator.generateNumber()));
         }
-        return new Cars(newCars, numberGenerator);
+        return new Cars(newCars);
     }
 
     public List<Car> getCars() {
@@ -39,8 +37,8 @@ public class Cars {
         return collectWinners(seekMaxPosition());
     }
 
-    private Car carMove(Car car) {
-        return car.move(numberGenerator.generateNumber());
+    private Car carMove(Car car, int number) {
+        return car.move(number);
     }
 
     private int seekMaxPosition() {
