@@ -10,14 +10,10 @@ public class Race {
     private int currentRound = 0;
 
     public Race(GameSettings settings) {
-        if (settings.getCarCount() < 1 || settings.getRoundCount() < 1) {
-            throw new IllegalArgumentException("Invalid game settings: " + settings);
-        }
-
         this.totalRounds = settings.getRoundCount();
         this.cars = new ArrayList<>();
-        for (int i = 0; i < settings.getCarCount(); i++) {
-            this.cars.add(new Car());
+        for (String carName : settings.getCarNames()) {
+            this.cars.add(new Car(carName));
         }
     }
 

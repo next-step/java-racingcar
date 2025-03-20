@@ -12,10 +12,7 @@ class CarTest {
     @Test
     @DisplayName("자동차는 이름을 가질 수 있다.")
     void carHasName() {
-        Car car = new Car();
-        assertThat(car.getName()).isEqualTo(Car.TEMP_CAR_NAME);
-
-        car = new Car("MyCar");
+        Car car = new Car("MyCar");
         assertThat(car.getName()).isEqualTo("MyCar");
     }
 
