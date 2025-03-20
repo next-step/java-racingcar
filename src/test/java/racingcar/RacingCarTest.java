@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -48,7 +49,7 @@ class RacingCarTest {
     @Test
     void RacingCar_정렬_테스트() {
         String[] carNames = StringCalculator.split("1,2,3,4");
-        List<RacingCar> racingCars = RacingCar.createRacingCars(carNames);
+        List<RacingCar> racingCars = RacingCar.createRacingCars(carNames, new RandomRacingCarMoveStrategy());
 
         for (int i = 0; i < 100; i++) {
             int random = RandomUtils.random(0, 3);

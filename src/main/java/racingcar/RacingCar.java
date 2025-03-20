@@ -38,11 +38,11 @@ public class RacingCar implements Comparable<RacingCar> {
         return carName;
     }
 
-    public static List<RacingCar> createRacingCars(String[] carNames) {
+    public static List<RacingCar> createRacingCars(String[] carNames, RacingCarMoveStrategy moveStrategy) {
         List<RacingCar> racingCars = new ArrayList<>();
 
         for (String carName : carNames) {
-            racingCars.add(new RacingCar(new RacingCarName(carName), new RandomRacingCarMoveStrategy()));
+            racingCars.add(new RacingCar(new RacingCarName(carName), moveStrategy));
         }
 
         return racingCars;
