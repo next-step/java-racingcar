@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarPositionsTest {
+
     @Test
     @DisplayName("CarPositions 객체 생성 후 위치 리스트 크기를 확인한다")
     void addPosition() {
@@ -17,6 +18,6 @@ class CarPositionsTest {
 
         CarPositions carPositions = new CarPositions(positions);
 
-        assertThat(carPositions.getPositions().size()).isEqualTo(3);
+        assertThat(carPositions.getPositions()).hasSize(3);
     }
 }
