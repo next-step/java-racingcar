@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoundResult {
-    List<Integer> carPositions;
     List<RacingCarCurrentStatus> raceProgress;
 
     public RoundResult(List<RacingCar> cars) {
@@ -13,10 +12,6 @@ public class RoundResult {
             RacingCarCurrentStatus currentStatus = car.getCurrentStatus();
             raceProgress.add(currentStatus);
         }
-    }
-
-    public List<Integer> whereAreCars() {
-        return this.carPositions;
     }
 
     public List<RacingCarCurrentStatus> getRaceProgress() {

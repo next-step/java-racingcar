@@ -14,9 +14,10 @@ import static org.assertj.core.api.Assertions.*;
 class ResultViewTest {
 
     @DisplayName("조건 변화에 따른 경기 결과 출력 테스트")
-    @CsvSource(value = {"{},1", "{},5", "{},2", "{},3"})
+    @CsvSource(value = {"'more',1", "'more,much',5", "'more,much,less',2"})
     @ParameterizedTest
-    void printResultTestWithConditionChange(String[] namesOfCar, int numberOfTrial) {
+    void printResultTestWithConditionChange(String namesOfCarString, int numberOfTrial) {
+        String[] namesOfCar = namesOfCarString.split(",");
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream testOut = new PrintStream(outputStream);
         ResultView resultView = new ResultView(testOut);
@@ -27,30 +28,35 @@ class ResultViewTest {
         resultView.printResult(racingGameResult);
 
         String consoleOutput = outputStream.toString();
-        verifyOutput(consoleOutput, namesOfCar.length, numberOfTrial);
+        verifyOutput(consoleOutput, namesOfCar, numberOfTrial);
     }
 
-    public void verifyOutput(String result, int numberOfCar, int numberOfTrial) {
+    public void verifyOutput(String result, String[] namesOfCar, int numberOfTrial) {
         String[] lines = result.split("\r\n");
 
-        int expectedTotalLines = numberOfCar * numberOfTrial;
+        int expectedTotalLines = namesOfCar.length * numberOfTrial;
         assertThat(lines).hasSize(expectedTotalLines + numberOfTrial);
 
         for (int trialIdx = 0; trialIdx < numberOfTrial; trialIdx++) {
-            verifyTrial(numberOfCar, trialIdx, lines);
+            verifyTrial(namesOfCar, trialIdx, lines);
         }
     }
 
-    private static void verifyTrial(int numberOfCar, int trialIdx, String[] lines) {
+    private static void verifyTrial(String[] namesOfCar, int trialIdx, String[] lines) {
+        int numberOfCar = namesOfCar.length;
         for (int carIdx = 0; carIdx < numberOfCar; carIdx++) {
             // carIdx
             // 1 (제목)
             // (numberOfCar + 1) * trialIdx (이전 시도)
+            String name = namesOfCar[carIdx];
             int lineIndex = carIdx + 1 + (numberOfCar + 1) * trialIdx;
             String line = lines[lineIndex];
 
             int expectedDashCount = trialIdx + 2;
-            assertThat(line).hasSize(expectedDashCount).contains("-");
+            assertThat(line)
+                    .hasSize(expectedDashCount + name.length() + 1)
+                    .contains("-")
+                    .contains(name);
         }
     }
 

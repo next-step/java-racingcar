@@ -1,5 +1,6 @@
 package ui;
 
+import domain.RacingCarCurrentStatus;
 import domain.RacingGameResult;
 import domain.RoundResult;
 
@@ -27,8 +28,13 @@ public class ResultView {
     }
 
     private void printRoundResult(RoundResult roundResult) {
-        for (Integer position: roundResult.whereAreCars()) {
-            printStream.println("-".repeat(position + 1));
+        for (RacingCarCurrentStatus status: roundResult.getRaceProgress()) {
+            printStream.println(formatCarResult(status));
         }
+    }
+
+    private String formatCarResult(RacingCarCurrentStatus status) {
+        String dashes = "-".repeat(status.whereIsThisCarNow() + 1);
+        return status.whatNameIsThisCar() + ":" + dashes;
     }
 }
