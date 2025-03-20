@@ -8,17 +8,22 @@ public class Car {
     private static final int MOVE_CONDITION_NUMBER = 4;
 
     public Car() {
-        this.position = new Position();
+        this(0);
     }
 
     public Car(int initialPosition) {
         this.position = new Position(initialPosition);
     }
 
-    public void move(int randomValue) {
+    private Car(Position position) {
+        this.position = position;
+    }
+
+    public Car move(int randomValue) {
         if (canMove(randomValue)) {
-            position.incrementPosition();
+            return new Car(this.position.incrementPosition());
         }
+        return this;
     }
 
     private boolean canMove(int randomValue) {

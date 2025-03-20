@@ -2,20 +2,20 @@ package racingcar.model;
 
 public class Position {
 
-    private int position;
+    private final int position;
 
     private static final String DELIMITER = "-";
 
     public Position() {
-        this.position = 0;
+        this(0);
     }
 
     public Position(int initialPosition) {
         this.position = initialPosition;
     }
 
-    public void incrementPosition() {
-        position ++;
+    public Position incrementPosition() {
+        return new Position(this.position + 1);
     }
 
     public boolean isSameAs(Position other) {

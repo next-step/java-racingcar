@@ -17,12 +17,12 @@ class PositionTest {
             "5,1,5,6"
     })
     void move_initial_move(int initialPosition, int randomValue, int randomValue2, int expectedPosition) {
-        Car car = new Car(initialPosition);
+        Car initialCar = new Car(initialPosition);
 
-        car.move(randomValue);
-        car.move(randomValue2);
+        Car movedOnceCar = initialCar.move(randomValue);
+        Car movedTwiceCar = movedOnceCar.move(randomValue2);
 
-        assertThat(car.isAtPosition(new Position(expectedPosition))).isTrue();
+        assertThat(movedTwiceCar.isAtPosition(new Position(expectedPosition))).isTrue();
     }
 
 }

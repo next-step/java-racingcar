@@ -13,6 +13,6 @@ class RacingGameTest {
         int carCount = 3;
         RacingGame racingGame = new RacingGame(carCount);
 
-        assertThat(racingGame.cars).hasSize(carCount);
+        assertThat(racingGame.getCars()).hasSize(carCount);
     }
 }

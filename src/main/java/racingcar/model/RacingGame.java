@@ -4,29 +4,45 @@ import racingcar.message.Message;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    List<Car> cars;
+    private final List<Car> cars;
 
     public RacingGame(int carCount) {
         this.cars = CarGenerator.createCars(carCount);
     }
 
-    public void race(int attemptCount) {
-        OutputView.print(Message.RESULT_MESSAGE);
-
-        IntStream.range(0, attemptCount)
-                .forEach(i -> {
-                    moveCars();
-                    OutputView.print("");
-                });
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
-    private void moveCars() {
-        cars.forEach(car -> car.move(RandomNumberGenerator.generateNumber()));
-        cars.forEach(Car::printPosition);
+    private RacingGame(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public RacingGame race(int attemptCount) {
+        OutputView.print(Message.RESULT_MESSAGE);
+
+        List<Car> updatedCars = cars;
+        for (int i = 0; i < attemptCount; i++) {
+            updatedCars = moveCars(updatedCars);
+            OutputView.print("");
+        }
+
+        return new RacingGame(updatedCars);
+    }
+
+    private List<Car> moveCars(List<Car> currentCars) {
+        List<Car> movedCars = currentCars.stream()
+                .map(car -> car.move(RandomNumberGenerator.generateNumber()))
+                .collect(Collectors.toList());
+
+        movedCars.forEach(Car::printPosition);
+
+        return movedCars;
     }
 }

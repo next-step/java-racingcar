@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -16,7 +17,7 @@ class CarTest {
         assertThat(car.isAtPosition(new Position(initialPosition))).isTrue();
     }
 
-    @DisplayName("랜덤 값이 4이상 이면 이동한다.")
+    @DisplayName("랜덤 값이 4이상 이면 이동 한다.")
     @ParameterizedTest
     @CsvSource({
             "0,4,1",
@@ -26,15 +27,15 @@ class CarTest {
             "2,8,3",
             "1,9,2"
     })
-    void car_move_test(int initialPosition, int randomValue, int expectedPosition) {
-        Car car = new Car(initialPosition);
+    void car_move_logic_test(int initialPosition, int randomValue, int expectedPosition) {
+        Car initialCar = new Car(initialPosition);
 
-        car.move(randomValue);
+        Car movedCar = initialCar.move(randomValue);
 
-        assertThat(car.isAtPosition(new Position(expectedPosition))).isTrue();
+        assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
     }
 
-    @DisplayName("랜덤 값이 3이하 이면 이동하지 않는다.")
+    @DisplayName("랜덤 값이 3이하 이면 이동 하지 않는다.")
     @ParameterizedTest
     @CsvSource({
             "0,3,0",
@@ -42,11 +43,22 @@ class CarTest {
             "5,1,5",
             "2,0,2",
     })
-    void car_not_move_test(int initialPosition, int randomValue, int expectedPosition) {
-        Car car = new Car(initialPosition);
+    void car_not_move_logic_test(int initialPosition, int randomValue, int expectedPosition) {
+        Car initialCar = new Car(initialPosition);
 
-        car.move(randomValue);
+        Car movedCar = initialCar.move(randomValue);
 
-        assertThat(car.isAtPosition(new Position(expectedPosition))).isTrue();
+        assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
+    }
+
+    @DisplayName("자동차가 이동해도 기존 객체는 변하지 않는다.(불변 객체 테스트)")
+    @Test
+    void car_not_move_immutable_test() {
+        Car initialCar = new Car(0);
+
+        Car movedCar = initialCar.move(4);
+
+        assertThat(initialCar.isAtPosition(new Position(0))).isTrue();
+        assertThat(movedCar.isAtPosition(new Position(1))).isTrue();
     }
 }
