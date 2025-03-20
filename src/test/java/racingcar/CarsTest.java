@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -37,7 +36,7 @@ class CarsTest {
 
     @Test
     @DisplayName("최대 거리를 가진 우승자는 여러명이 있을 수 있다.")
-    public void getWinners(){
+    public void getWinners() {
         Cars cars = new Cars(new ArrayList<>(Arrays.asList(new Car(1, "pobi"), new Car(3, "crong"), new Car(3, "honux"))));
         assertThat(cars.getWinners().size()).isEqualTo(2);
     }
