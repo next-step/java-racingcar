@@ -22,6 +22,10 @@ public class Position {
         return this.position == other.position;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
         return DELIMITER.repeat(position);
