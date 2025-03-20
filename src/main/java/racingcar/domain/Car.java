@@ -8,7 +8,6 @@ import racingcar.exception.NameLengthException;
 public class Car {
     private static final int MIN_MOVEMENT_THRESHOLD = 4;
     private static final int GO = 1;
-    private static final int STOP = 0;
     public static final int START = 0;
 
     private final Random random = new Random();
@@ -46,17 +45,13 @@ public class Car {
     }
 
     public void move() {
-        if (getMovementStatus(generateRandomNumber()) == GO) {
+        if (getMovementStatus(generateRandomNumber())) {
             position += GO;
         }
     }
 
-    private int getMovementStatus(int randomNumber) {
-        if (randomNumber >= MIN_MOVEMENT_THRESHOLD) {
-            return GO;
-        }
-
-        return STOP;
+    private boolean getMovementStatus(int randomNumber) {
+        return randomNumber >= MIN_MOVEMENT_THRESHOLD;
     }
 
     protected int generateRandomNumber() {
