@@ -8,14 +8,10 @@ public class CarSimulator {
     private final List<Car> cars;
     private final List<CarPositions> history;
 
-    public CarSimulator(int carCount, int movementCount) {
+    public CarSimulator(int movementCount, List<Car> cars) {
         this.movementCount = movementCount;
-        this.cars = new ArrayList<>();
+        this.cars = cars;
         this.history = new ArrayList<>();
-
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
     }
 
     public List<CarPositions> getHistory() {
