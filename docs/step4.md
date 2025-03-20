@@ -7,8 +7,8 @@
 
 ## 프로그래밍 요구 사항
 - [x] 패키지 구조를 수정하고 프로그램을 작성한다.
+- [ ] CarSimulator 클래스 리팩토링을 진행하면서 의존성을 변경한다.
 - [ ] Car 클래스에 이름을 저장하는 변수를 추가하고 이름의 유효성을 검증하는 validateName 메서드를 추가한다.
-- [ ] CarSimulator 클래스 리팩토링을 진행한다.
 - [ ] Input 클래스에 자동차 이름을 입력받는 inputCarNames 메서드를 추가한다.
 - [ ] Input 클래스에 자동차 이름을 쉼표(,)를 기준으로 분리하는 splitCarNames 메서드를 추가한다.
 - [ ] Output 클래스에 자동차 이름을 출력하는 printCarNames 메서드를 추가한다.
