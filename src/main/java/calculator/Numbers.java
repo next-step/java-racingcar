@@ -13,8 +13,8 @@ public class Numbers {
 
     public int sum() {
         return Arrays.stream(numbers)
-                .mapToInt(PositiveNumber::getValue)
-                .sum();
+                .reduce(new PositiveNumber(0), PositiveNumber::sum)
+                .getValue();
     }
 
     public static int sum(int[] number){
