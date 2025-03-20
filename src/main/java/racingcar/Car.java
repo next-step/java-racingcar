@@ -34,10 +34,6 @@ public class Car implements Comparable<Car> {
         return carName;
     }
 
-    public boolean isWinner(int distance) {
-        return distance == this.distance;
-    }
-
     private void validateCarName(String carName) {
         if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름으로 빈 값을 넣을 수 없습니다.");
