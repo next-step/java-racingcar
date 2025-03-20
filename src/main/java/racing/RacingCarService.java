@@ -4,23 +4,24 @@ import java.util.List;
 
 public class RacingCarService {
 
-    private int numberOfCars;
+    String[] carNames;
     private int numberOfLaps;
 
 
     public void start() {
         inputRacingData();
-        startRacing();
+        List<Car> winners = startRacing();
+        ResultView.displayWinners(winners);
     }
 
     private void inputRacingData() {
-        numberOfCars = InputView.getNumberOfCars();
+        carNames = InputView.getCarNames();
         numberOfLaps = InputView.getNumberOfLaps();
     }
 
-    private void startRacing() {
-        List<Car> cars = CarFactory.createRacingCars(numberOfCars);
+    private List<Car> startRacing() {
+        List<Car> cars = CarFactory.createRacingCars(carNames);
         Race race = new Race(cars, numberOfLaps);
-        race.startRacing();
+        return race.startRacingAndReturnWinner();
     }
 }

@@ -1,10 +1,11 @@
 package racing;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
-    private int numberOfLaps;
     private List<Car> cars;
+    private int numberOfLaps;
 
 
     public Race(List<Car> cars, int numberOfLaps) {
@@ -20,15 +21,34 @@ public class Race {
         return this.numberOfLaps;
     }
 
-    public void startRacing() {
+    public List<Car> startRacingAndReturnWinner() {
         ResultView.displayRaceStart();
 
-        for(int i = 0; i < getNumberOfLaps(); i++) {
-            ResultView.displayCar(getCars());
-            performLap();
-        }
+        performLapAndDisplay();
 
         ResultView.displayRaceFinish();
+
+        return getWinners();
+    }
+
+    private List<Car> getWinners() {
+        final int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    private void performLapAndDisplay() {
+        System.out.println("실행 결과");
+        ResultView.displayCar(getCars());
+        for(int i = 0; i < getNumberOfLaps() - 1; i++) {
+            performLap();
+            ResultView.displayCar(getCars());
+        }
     }
 
     private void performLap() {

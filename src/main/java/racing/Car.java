@@ -3,21 +3,25 @@ package racing;
 import java.util.Random;
 import java.util.function.BooleanSupplier;
 
+import static racing.CarFactory.randomMoveConditionSupplier;
+
 public class Car {
-    public static final int MOVE_POWER_BOUND = 10;
-    public static final int DEFAULT_MOVE_POWER_CONDITION = 4;
-    public static final BooleanSupplier mustGoMoveConditionSupplier = () -> true;
-    public static final BooleanSupplier randomMoveConditionSupplier = () -> new Random().nextInt(MOVE_POWER_BOUND) >= DEFAULT_MOVE_POWER_CONDITION;
+    private String name;
 
     private int position = 1;
     BooleanSupplier moveConditionSupplier;
     
-    public Car() {
-        this(randomMoveConditionSupplier);
+    public Car(String name) {
+        this(name, randomMoveConditionSupplier);
     }
 
-    public Car(BooleanSupplier moveConditionSupplier) {
+    public Car(String name, BooleanSupplier moveConditionSupplier) {
+        this.name = name;
         this.moveConditionSupplier = moveConditionSupplier;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
