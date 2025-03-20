@@ -2,6 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import step4.racing.Cars;
 import view.InputView;
 import view.ResultView;
 
@@ -19,11 +20,13 @@ public class Main {
             simpleCars.add(new SimpleCar());
         }
 
+        Cars cars = new Cars(simpleCars);
+
         RacingGame racingGame = new RacingGame(
             simpleCars,
             maxRandomNumber
         );
-        ResultView resultView = new ResultView(simpleCars);
+        ResultView resultView = new ResultView(cars);
 
         System.out.println("실행 결과\n");
         for (int i = 0; i < tryCount; i++) {

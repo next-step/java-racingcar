@@ -3,18 +3,19 @@ package view;
 import java.util.List;
 import racing.Car;
 import racing.SimpleCar;
+import step4.racing.Cars;
 import utils.StringUtils;
 
 public class ResultView {
 
-    private List<Car> cars;
+    private Cars cars;
 
-    public ResultView(List<Car> cars) {
+    public ResultView(Cars cars) {
         this.cars = cars;
     }
 
     public void broadcast() {
-        for (Car car : cars) {
+        for (Car car : cars.cars()) {
             printPosition(car);
             System.out.println();
         }

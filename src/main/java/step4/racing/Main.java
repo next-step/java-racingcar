@@ -11,7 +11,7 @@ public class Main {
         int tryCount = InputView.getTryCount();
         int maxRandomNumber = InputView.getMaxRandomNumber();
 
-        ExtendRacingGame game = new ExtendRacingGame(carNames, maxRandomNumber);
+        RacingGame game = new RacingGame(carNames, maxRandomNumber);
         ResultView resultView = new ResultView(game.cars());
         System.out.println("실행 결과\n");
         for (int i = 0; i < tryCount; i++) {
