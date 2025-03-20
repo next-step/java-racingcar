@@ -29,7 +29,6 @@ public class CarsTest {
         Assertions.assertThat(winnerCars.get(1)).isEqualTo(Name.of("crong"));
     }
 
-
     @Test
     @DisplayName("우승자가 결정되었을 때에는 더 이상 움직일 수 없어야 한다")
     void cannotMoveWhenWinnersAlreadyExists() {
@@ -44,10 +43,14 @@ public class CarsTest {
     }
 
     @Test
-    void of() {
-    }
-
-    @Test
+    @DisplayName("모든 자동차들을 움직여야 한다")
     void moveAll() {
+        Cars cars = Cars.of(List.of(
+                new Car(Position.of(3), Name.of("pobi")),
+                new Car(Position.of(2), Name.of("crong"))
+        ));
+        cars.moveAll(new AlwaysMoveStrategy());
+        Assertions.assertThat(cars.getCarsNameAndPosition().get(0).getSecond()).isEqualTo(Position.of(4));
+        Assertions.assertThat(cars.getCarsNameAndPosition().get(1).getSecond()).isEqualTo(Position.of(3));
     }
 }
