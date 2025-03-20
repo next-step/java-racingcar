@@ -6,7 +6,6 @@ import java.util.List;
 import racing.service.NumberGenerator;
 
 public class Cars {
-    private static final int INIT_POSITION = 1;
     private final List<Car> cars;
     private final NumberGenerator numberGenerator;
 
@@ -18,7 +17,7 @@ public class Cars {
     public static Cars create(List<String> carNames, NumberGenerator numberGenerator) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
-            Car car = new Car(carName, INIT_POSITION);
+            Car car = new Car(carName);
             carList.add(car);
         }
         return new Cars(carList, numberGenerator);

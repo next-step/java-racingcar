@@ -1,13 +1,21 @@
 package racing.model;
 
 public class Car {
-    public static final int MAX_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
     private static final int MOVE_CONDITION = 4;
+    private static final int INIT_POSITION = 1;
+
     private final String name;
     private final int position;
 
-    public Car(String name, int position) {
+
+    public Car(String name) {
         checkNameIsPossible(name);
+        this.name = name;
+        this.position = INIT_POSITION;
+    }
+
+    public Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
