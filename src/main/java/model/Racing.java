@@ -19,7 +19,7 @@ public class Racing {
     }
 
     private void validate(String[] carNameList, int tryCount) {
-        if (carNameList.length <= 0) {
+        if (carNameList == null || carNameList.length <= 0) {
             throw new RuntimeException("자동차 대수는 0 이상을 입력해주세요.");
         }
 
