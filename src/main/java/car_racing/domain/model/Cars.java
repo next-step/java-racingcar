@@ -1,5 +1,6 @@
 package car_racing.domain.model;
 
+import car_racing.domain.strategy.AlwaysMovingStrategy;
 import car_racing.domain.strategy.CarMovingStrategy;
 
 import java.util.ArrayList;
@@ -12,17 +13,19 @@ public class Cars {
     private final List<Car> cars;
     private final CarMovingStrategy movingStrategy;
 
-    public Cars(int numOfCars, CarMovingStrategy movingStrategy) {
+    public Cars(List<String> namesOfCars, CarMovingStrategy movingStrategy) {
         this.cars = new ArrayList<>();
         this.movingStrategy = movingStrategy;
-        for (int i = 0; i < numOfCars; i++) {
-            this.cars.add(new Car());
+        for (String namesOfCar : namesOfCars) {
+            this.cars.add(new Car(namesOfCar));
         }
     }
 
     public void moveAll() {
         cars.forEach(car -> {
-            if (movingStrategy.movable()) car.move(DEFAULT_MOVE_DISTANCE);
+            int distance = 0;
+            if (movingStrategy.movable()) distance = DEFAULT_MOVE_DISTANCE;
+            car.move(distance);
         });
     }
 

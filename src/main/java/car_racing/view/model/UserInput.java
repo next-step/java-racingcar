@@ -1,16 +1,18 @@
 package car_racing.view.model;
 
+import java.util.List;
+
 public class UserInput {
-    private final int numOfCar;
+    private final List<String> namesOfCars;
     private final int numOfGame;
 
-    public UserInput(int numOfCar, int numOfGame) {
-        this.numOfCar = numOfCar;
+    public UserInput(List<String> namesOfCars, int numOfGame) {
+        this.namesOfCars = namesOfCars;
         this.numOfGame = numOfGame;
     }
 
-    public int getNumOfCar() {
-        return numOfCar;
+    public List<String> getNamesOfCar() {
+        return namesOfCars;
     }
 
     public int getNumOfGame() {

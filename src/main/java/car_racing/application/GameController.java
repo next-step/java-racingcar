@@ -1,9 +1,11 @@
 package car_racing.application;
 
+import car_racing.domain.model.RaceResults;
 import car_racing.domain.service.RaceService;
 import car_racing.domain.strategy.CarMovingStrategy;
 import car_racing.domain.strategy.RandomMovingStrategy;
 import car_racing.view.model.UserInput;
+import car_racing.view.service.PrintService;
 import car_racing.view.service.UserInputService;
 
 public class GameController {
@@ -13,6 +15,8 @@ public class GameController {
 
     public void run() {
         UserInput userInput = userInputProcessor.getUserInput();
-        raceService.race(userInput, carMovingStrategy);
+        PrintService.showRaceStart();
+        RaceResults raceResults = raceService.race(userInput, carMovingStrategy);
+        PrintService.showRaceResult(raceResults, userInput);
     }
 }
