@@ -1,10 +1,12 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import calculator.StringCalculator;
 import racingcar.ui.RacingCarInput;
 import racingcar.ui.RacingCarInputView;
+import racingcar.ui.RacingCarResult;
 import racingcar.ui.RacingCarResultView;
 import utils.RandomUtils;
 
@@ -29,14 +31,19 @@ public class RacingCarGame {
         RandomRacingCarMoveStrategy moveStrategy
             = new RandomRacingCarMoveStrategy(RandomUtils.getInstance());
 
-        RacingCarManager carManager = new RacingCarManager(racingCars);
 
         for (int i = 0; i < input.getTryCount(); i++) {
-            carManager.moveIfMovable(moveStrategy);
-            resultView.viewCurrent(carManager.getRacingCars());
+            moveIfMovable(racingCars, moveStrategy);
+            resultView.viewCurrent(RacingCarResult.toResults(racingCars));
         }
 
-        List<RacingCar> winners = winnerStrategy.getWinners(carManager.getRacingCars());
-        resultView.viewWinners(winners);
+        List<RacingCar> winners = winnerStrategy.getWinners(racingCars);
+        resultView.viewWinners(RacingCarResult.toResults(winners));
+    }
+
+    private void moveIfMovable(List<RacingCar> racingCars, RacingCarMoveStrategy moveStrategy) {
+        for (RacingCar car : racingCars) {
+            car.moveIfMovable(moveStrategy);
+        }
     }
 }

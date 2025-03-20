@@ -1,8 +1,8 @@
 package racingcar;
 
-public class RacingCar implements Comparable<RacingCar> {
+import racingcar.ui.RacingCarResult;
 
-    private static final String MOVE_SYMBOL = "-";
+public class RacingCar implements Comparable<RacingCar> {
     private int distance;
     private final RacingCarName carName;
 
@@ -26,10 +26,6 @@ public class RacingCar implements Comparable<RacingCar> {
         this.distance++;
     }
 
-    public RacingCarName getCarName() {
-        return carName;
-    }
-
     public int getDistance() {
         return distance;
     }
@@ -39,8 +35,7 @@ public class RacingCar implements Comparable<RacingCar> {
         return Integer.compare(o.distance, distance);
     }
 
-    @Override
-    public String toString() {
-        return carName + " : " + MOVE_SYMBOL.repeat(distance);
+    public RacingCarResult toResult() {
+        return new RacingCarResult(carName.toString(), distance);
     }
 }

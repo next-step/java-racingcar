@@ -14,27 +14,21 @@ public class RacingCarResultView {
         return INSTANCE;
     }
 
-    public void viewCurrent(List<RacingCar> racingCars) {
-        for (RacingCar car : racingCars) {
-            viewCurrent(car);
+    public void viewCurrent(List<RacingCarResult> racingCars) {
+        for (RacingCarResult car : racingCars) {
+            System.out.println(car);
         }
 
         System.out.println();
     }
 
-    public void viewCurrent(RacingCar racingCar) {
-        final String moveSymbol = "-";
 
-        System.out.println(
-            racingCar.getCarName() + " : " + moveSymbol.repeat(racingCar.getDistance()));
-    }
-
-    public void viewWinners(List<RacingCar> winners) {
+    public void viewWinners(List<RacingCarResult> winners) {
         StringBuilder sb = new StringBuilder();
         int lastIndex = winners.size() - 1;
 
         for (int i = 0; i < lastIndex; i++) {
-            RacingCar winner = winners.get(i);
+            RacingCarResult winner = winners.get(i);
             sb.append(winner.getCarName());
             sb.append(", ");
         }
