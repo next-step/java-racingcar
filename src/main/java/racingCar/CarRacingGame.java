@@ -26,15 +26,13 @@ public class CarRacingGame {
     }
 
     private RacingCar[] getParticipant() {
-        while (true) {
-            int participantCount = inputView.requestParticipant();
-            try {
-                validateNum(participantCount);
-                return createRacingCars(participantCount);
-            } catch (NumberFormatException e) {
-                System.out.println(e.getMessage());
-                throw e;
-            }
+        int participantCount = inputView.requestParticipant();
+        try {
+            validateNum(participantCount);
+            return createRacingCars(participantCount);
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            throw e;
         }
     }
 
@@ -48,7 +46,7 @@ public class CarRacingGame {
 
     private void play(RacingCar[] cars, int count) {
         resultView.printResultTitle();
-        for (int i=0 ; i<count ; i++) {
+        for (int i = 0; i < count; i++) {
             moveCar(cars);
             resultView.printPlay(cars);
         }

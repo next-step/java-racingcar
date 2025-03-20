@@ -7,7 +7,7 @@ public class ResultView {
 
     void printPlay(RacingCar[] cars) {
         for (RacingCar car : cars) {
-            System.out.println("-".repeat(car.getPos()));
+            System.out.println("-".repeat(car.getPosition()));
         }
         System.out.println();
     }

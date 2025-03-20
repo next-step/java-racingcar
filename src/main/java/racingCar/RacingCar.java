@@ -1,38 +1,30 @@
 package racingCar;
 
-import java.util.Random;
-
 public class RacingCar {
-    private int pos;
+    private int position;
+    private RandomNumberGenerator randomNumberGenerator;
 
-    public RacingCar(int pos) {
-        this.pos = pos;
+    public RacingCar(int position, RandomNumberGenerator randomNumberGenerator) {
+        this.position = position;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    public int getPos() {
-        return pos;
-    }
-
-    public void setPos(int pos) {
-        this.pos = pos;
+    public int getPosition() {
+        return position;
     }
 
     @Override
     public String toString() {
-        return "RacingCar{" + "pos=" + pos + '}';
-    }
-
-    int makeRandomNum() {
-        return new Random().nextInt(10);
+        return "RacingCar{" + "position=" + position + '}';
     }
 
     void progress() {
-        if (makeRandomNum() >= 4){
-            incPos();
+        if (randomNumberGenerator.makeRandomNumber() >= 4){
+            incPosition();
         }
     }
 
-    protected void incPos() {
-        ++this.pos;
+    protected void incPosition() {
+        ++this.position;
     }
 }
