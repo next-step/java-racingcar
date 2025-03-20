@@ -31,12 +31,6 @@ public class Car {
         }
     }
 
-
-    public void print() {
-        System.out.print(this.name + " : " + getCurrentPositionDash());
-        System.out.print("\n");
-    }
-
     public String getCurrentPositionDash() {
         StringBuilder result = new StringBuilder();
 

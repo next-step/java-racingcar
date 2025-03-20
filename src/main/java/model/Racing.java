@@ -41,27 +41,11 @@ public class Racing {
         return this.remainTryCount > 0;
     }
 
-    public void print() {
-        for (Car car : carList) {
-            car.print();
-        }
-        System.out.print("\n");
+    public List<Car> getCarList(){
+        return this.carList;
     }
 
-    public void printWinner() {
-        if (remainTryCount > 0) {
-            throw new RuntimeException("아직 시도할 횟수가 남아 있습니다. remainTryCount : " + remainTryCount);
-        }
-
-        List<Car> winnerList = this.getWinner();
-        String result = winnerList.stream()
-            .map(Car::getName)
-            .collect(Collectors.joining(","));
-
-        System.out.println(result + "가 최종 우승했습니다.");
-    }
-
-    private List<Car> getWinner() {
+    public List<Car> getWinner() {
         List<Car> result = new ArrayList<>();
 
         int max = 0;

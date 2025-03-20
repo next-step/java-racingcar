@@ -1,5 +1,9 @@
 package ui;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import model.Car;
 import model.Racing;
 
 public class ResultView {
@@ -9,9 +13,38 @@ public class ResultView {
 
         while (racing.isRemainTry()) {
             racing.move();
-            racing.print();
+            print(racing);
         }
 
-        racing.printWinner();
+        printWinner(racing);
+    }
+
+    private static void print(Racing racing) {
+        List<Car> carList = racing.getCarList();
+
+        for (Car car : carList) {
+            print(car);
+        }
+
+        System.out.print("\n");
+    }
+
+    private static void print(Car car){
+        System.out.print(car.getName() + " : " + car.getCurrentPositionDash());
+        System.out.print("\n");
+    }
+
+    private static void printWinner(Racing racing){
+        if(racing.isRemainTry()){
+            throw new RuntimeException("아직 시도할 횟수가 남아 있습니다.");
+        }
+
+        List<Car> winnerList = racing.getWinner();
+
+        String result = winnerList.stream()
+            .map(Car::getName)
+            .collect(Collectors.joining(","));
+
+        System.out.println(result + "가 최종 우승했습니다.");
     }
 }
