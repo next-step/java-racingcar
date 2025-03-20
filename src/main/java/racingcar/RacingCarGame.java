@@ -29,19 +29,14 @@ public class RacingCarGame {
         List<RacingCar> racingCars = RacingCarFactory.createRacingCars(carNames,
             new RandomRacingCarMoveStrategy(RandomUtils.getInstance()));
 
+        RacingCarManager carManager = new RacingCarManager(racingCars);
+
         for (int i = 0; i < input.getTryCount(); i++) {
-            moveIfMovable(racingCars);
-            resultView.viewCurrent(racingCars);
+            carManager.moveIfMovable();
+            resultView.viewCurrent(carManager.getRacingCars());
         }
 
-        List<RacingCar> winners = winnerStrategy.getWinners(racingCars);
+        List<RacingCar> winners = winnerStrategy.getWinners(carManager.getRacingCars());
         resultView.viewWinners(winners);
     }
-
-    private void moveIfMovable(List<RacingCar> racingCarList) {
-        for (RacingCar car : racingCarList) {
-            car.moveIfMovable();
-        }
-    }
-
 }
