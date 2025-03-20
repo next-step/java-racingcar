@@ -3,6 +3,10 @@ package step3;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,5 +31,33 @@ class RacingGameTest {
         String mockInput = "5";
         InputView inputView = new InputView(new Scanner(new ByteArrayInputStream(mockInput.getBytes())));
         assertEquals(5, inputView.getRoundCountFromUser());
+    }
+
+    @Test
+    void testResultViewPrintResults() {
+        List<List<String>> finalResults = new ArrayList<>();
+        List<String> round1 = new ArrayList<>();
+        round1.add("---");
+        finalResults.add(round1);
+
+        List<String> round2 = new ArrayList<>();
+        round2.add("------");
+        finalResults.add(round2);
+
+        List<String> round3 = new ArrayList<>();
+        round3.add("-----");
+        finalResults.add(round3);
+
+        ResultView resultView = new ResultView();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        resultView.printResults(finalResults);
+
+        String expected = "---\n" +"\n"+
+                "------\n" +"\n"+
+                "-----\n"+"\n";
+
+        assertEquals(expected, outputStream.toString());
     }
 }
