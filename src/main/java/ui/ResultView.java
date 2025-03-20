@@ -17,14 +17,16 @@ public class ResultView {
     public void printResult(RacingGameResult result) {
         printStream.println("실행 결과");
         List<RoundResult> allRoundResults = result.getAllRoundResults();
-        for (int i = 0; i < allRoundResults.size(); i++) {
-            printRoundResult(allRoundResults.get(i));
-            printEmptyLineBetweenRounds(i, allRoundResults.size());
+        for (RoundResult allRoundResult : allRoundResults) {
+            printRoundResult(allRoundResult);
+            printStream.println();
         }
+        printWinners(result.whoAreWinners());
     }
 
-    private void printEmptyLineBetweenRounds(int i, int size) {
-        if (i < size- 1) printStream.println();
+    private void printWinners(List<String> winners) {
+        String winnersMessage = String.format("%s가 최종 우승했습니다.", String.join(", ", winners));
+        printStream.println(winnersMessage);
     }
 
     private void printRoundResult(RoundResult roundResult) {

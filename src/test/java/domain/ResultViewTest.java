@@ -35,7 +35,7 @@ class ResultViewTest {
         String[] lines = result.split("\r\n");
 
         int expectedTotalLines = namesOfCar.length * numberOfTrial;
-        assertThat(lines).hasSize(expectedTotalLines + numberOfTrial);
+        assertThat(lines).hasSize(expectedTotalLines + numberOfTrial + 2);
 
         for (int trialIdx = 0; trialIdx < numberOfTrial; trialIdx++) {
             verifyTrial(namesOfCar, trialIdx, lines);
@@ -59,5 +59,4 @@ class ResultViewTest {
                     .contains(name);
         }
     }
-
 }

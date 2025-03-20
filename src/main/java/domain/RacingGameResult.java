@@ -21,4 +21,41 @@ public class RacingGameResult {
     public RoundResult getLastRoundResult() {
         return roundResult.get(roundResult.size() - 1);
     }
+
+    public List<String> whoAreWinners() {
+        RoundResult lastRoundResult = getLastRoundResult();
+        List<RacingCarCurrentStatus> raceResult = lastRoundResult.getRaceProgress();
+
+        Integer maxPosition = findMaxPosition(raceResult);
+        return findWinners(raceResult, maxPosition);
+    }
+
+    private List<String> findWinners(List<RacingCarCurrentStatus> raceResult, Integer maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (RacingCarCurrentStatus car : raceResult) {
+            addIfWinner(car, maxPosition, winners);
+        }
+        return winners;
+    }
+
+    private void addIfWinner(RacingCarCurrentStatus car, Integer maxPosition, List<String> winners) {
+        if (maxPosition.equals(car.whereIsThisCarNow())) {
+            winners.add(car.whatNameIsThisCar());
+        }
+    }
+
+    private Integer findMaxPosition(List<RacingCarCurrentStatus> raceResult) {
+        int maxPosition = 0;
+        for (RacingCarCurrentStatus car : raceResult) {
+            maxPosition = updateMaxPosition(car, maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private Integer updateMaxPosition(RacingCarCurrentStatus car, int maxPosition) {
+        if (car.whereIsThisCarNow() > maxPosition) {
+            maxPosition = car.whereIsThisCarNow();
+        }
+        return maxPosition;
+    }
 }
