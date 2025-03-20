@@ -26,7 +26,7 @@ public class RacingCarResult {
          return carName + " : " + MOVE_SYMBOL.repeat(distance);
     }
 
-    public static List<RacingCarResult> toResults(List<RacingCar> racingCars) {
+    public static List<RacingCarResult> of(List<RacingCar> racingCars) {
         return racingCars.stream()
             .map(RacingCar::toResult)
             .collect(toList());
