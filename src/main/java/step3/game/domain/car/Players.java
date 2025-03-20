@@ -13,8 +13,6 @@ public class Players {
 
     private final Set<Car> cars = new HashSet<>();
 
-    private Players() {}
-
     public Players(Set<Car> cars) {
         this.cars.addAll(cars);
     }
@@ -26,17 +24,10 @@ public class Players {
     public void takeTurn() {
         Set<Car> updatedCars = new HashSet<>();
         for (Car car : cars) {
-            updatedCars.add(makeMove(car));
+            updatedCars.add(car.moveIfPossible(getRandomValue()));
         }
         cars.clear();
         cars.addAll(updatedCars);
-    }
-
-    private Car makeMove(Car car) {
-        if (RacingCarGame.isMove(getRandomValue())) {
-            return car.move();
-        }
-        return car;
     }
 
     public List<String> finalResult() {
@@ -47,11 +38,15 @@ public class Players {
     private List<String> getWinners(int maxDistance) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.isSame(maxDistance)) {
-                winners.add(car.getCarName());
-            }
+            addWinnerIfMaxDistance(maxDistance, car, winners);
         }
         return winners;
+    }
+
+    private static void addWinnerIfMaxDistance(int maxDistance, Car car, List<String> winners) {
+        if (car.isSame(maxDistance)) {
+            winners.add(car.getCarName());
+        }
     }
 
     private int getMaxDistance() {

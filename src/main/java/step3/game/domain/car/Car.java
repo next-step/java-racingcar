@@ -1,5 +1,7 @@
 package step3.game.domain.car;
 
+import step3.game.domain.RacingCarGame;
+
 public class Car {
 
     public static final int START_LINE = 0;
@@ -16,8 +18,11 @@ public class Car {
         this.moveSteps = moveSteps;
     }
 
-    public Car move() {
-        return new Car(this.name, moveSteps +1);
+    public Car moveIfPossible(int randomValue) {
+        if (RacingCarGame.isMove(randomValue)) {
+            return new Car(this.name, moveSteps + 1);
+        }
+        return this;
     }
 
     public Integer getDistance() {
