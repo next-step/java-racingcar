@@ -1,6 +1,10 @@
-package com.nextstep.camp.racing.infrastructure.view;
+package com.nextstep.camp.racing.infrastructure.view.handler;
 
 import java.util.List;
+
+import com.nextstep.camp.racing.infrastructure.view.*;
+import com.nextstep.camp.racing.infrastructure.view.component.MaxPositionInput;
+import com.nextstep.camp.racing.infrastructure.view.component.QuantityInput;
 
 public class CreateRacingViewHandler {
 

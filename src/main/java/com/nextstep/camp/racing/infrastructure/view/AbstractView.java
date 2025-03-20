@@ -8,7 +8,7 @@ import com.nextstep.camp.racing.domain.exception.ViewDataNotFoundException;
 public class AbstractView implements View {
 
     protected final List<Element> elements;
-    private Map<String, String> state;
+    private Map<String, Object> state;
 
     protected AbstractView(List<Element> elements) { this.elements = elements; }
 
@@ -18,8 +18,17 @@ public class AbstractView implements View {
             .collect(Collectors.toMap(Element::getName, Element::getValue));
     }
 
+    public void render(ViewData viewData) {
+        elements.forEach(Element::action);
+        state = elements.stream()
+            .collect(Collectors.toMap(Element::getName, element ->
+                Optional.ofNullable(viewData.get(element.getName())).orElse("")
+            ));
+
+    }
+
     @Override
-    public ViewData toViewData() { // ViewData 변환
+    public ViewData toViewData() {
         if (state == null) {
             throw new ViewDataNotFoundException();
         }

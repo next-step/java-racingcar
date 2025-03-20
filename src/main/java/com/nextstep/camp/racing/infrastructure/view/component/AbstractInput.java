@@ -1,7 +1,9 @@
-package com.nextstep.camp.racing.infrastructure.view;
+package com.nextstep.camp.racing.infrastructure.view.component;
 
 import java.util.Scanner;
 import java.util.stream.Stream;
+
+import com.nextstep.camp.racing.infrastructure.view.Element;
 
 public abstract class AbstractInput implements Element {
     protected String value;

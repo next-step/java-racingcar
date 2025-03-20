@@ -18,4 +18,8 @@ public class Car {
     public Position getPosition() {
         return moves.getPosition();
     }
+
+    public Moves getMoves() {
+        return moves;
+    }
 }

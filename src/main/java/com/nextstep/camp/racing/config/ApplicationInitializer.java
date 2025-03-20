@@ -2,10 +2,11 @@ package com.nextstep.camp.racing.config;
 
 import com.nextstep.camp.racing.application.dto.RacingRequest;
 import com.nextstep.camp.racing.application.dto.RacingResponse;
-import com.nextstep.camp.racing.application.mapper.RequestMapper;
-import com.nextstep.camp.racing.presentation.RacingController;
-import com.nextstep.camp.racing.infrastructure.view.CreateRacingViewHandler;
+import com.nextstep.camp.racing.application.mapper.ViewDataMapper;
 import com.nextstep.camp.racing.infrastructure.view.ViewData;
+import com.nextstep.camp.racing.infrastructure.view.handler.CreateRacingViewHandler;
+import com.nextstep.camp.racing.infrastructure.view.handler.RacingResultViewHandler;
+import com.nextstep.camp.racing.presentation.RacingController;
 
 public class ApplicationInitializer {
 
@@ -20,11 +21,15 @@ public class ApplicationInitializer {
     }
 
     public void run() {
-        CreateRacingViewHandler viewHandler = context.getBean(CreateRacingViewHandler.class);
+        CreateRacingViewHandler createRacingViewHandler = context.getBean(CreateRacingViewHandler.class);
         RacingController controller = context.getBean(RacingController.class);
+        RacingResultViewHandler resultViewHandler = context.getBean(RacingResultViewHandler.class);
 
-        ViewData viewData = viewHandler.handleUserInput();
-        RacingRequest request = RequestMapper.toRacingRequest(viewData);
-        RacingResponse racingResponse = controller.startRace(request);
+        ViewData requestViewData = createRacingViewHandler.handleUserInput();
+        RacingRequest request = ViewDataMapper.toRacingRequest(requestViewData);
+        RacingResponse response = controller.startRace(request);
+        ViewData viewData = ViewDataMapper.toViewData(response);
+        resultViewHandler.handleViewData(viewData);
+
     }
 }

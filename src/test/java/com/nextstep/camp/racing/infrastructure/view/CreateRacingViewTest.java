@@ -1,19 +1,20 @@
 package com.nextstep.camp.racing.infrastructure.view;
 
-import com.nextstep.camp.racing.domain.exception.ViewDataNotFoundException;
-import com.nextstep.camp.racing.infrastructure.view.*;
-import org.junit.jupiter.api.*;
-
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
 import java.io.ByteArrayInputStream;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import com.nextstep.camp.racing.domain.exception.ViewDataNotFoundException;
+import com.nextstep.camp.racing.infrastructure.view.component.MaxPositionInput;
+import com.nextstep.camp.racing.infrastructure.view.component.QuantityInput;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CreateRacingViewTest {
 

@@ -39,4 +39,8 @@ public class Cars {
     public Cars copy() {
         return new Cars(PositiveInteger.of(values.size()));
     }
+
+    public Stream<Car> stream() {
+        return values.stream();
+    }
 }

@@ -2,6 +2,7 @@ package com.nextstep.camp.racing.domain.vo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
 
@@ -35,5 +36,13 @@ public class Moves {
             .count();
         PositiveInteger position = PositiveInteger.of(count);
         return Position.of(position);
+    }
+
+    public Stream<Move> stream() {
+        return values.stream();
+    }
+
+    public List<Move> getValues() {
+        return values;
     }
 }

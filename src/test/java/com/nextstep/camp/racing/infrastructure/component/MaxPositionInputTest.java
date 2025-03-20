@@ -1,18 +1,17 @@
-package com.nextstep.camp.racing.infrastructure.view;
+package com.nextstep.camp.racing.infrastructure.component;
 
-import com.nextstep.camp.racing.infrastructure.view.QuantityInput;
+import java.io.*;
+import java.util.stream.Stream;
+
+import com.nextstep.camp.racing.infrastructure.view.component.MaxPositionInput;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.*;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.stream.Stream;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class QuantityInputTest {
+class MaxPositionInputTest {
 
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
@@ -35,7 +34,7 @@ class QuantityInputTest {
     void action_ShouldReadValidInput(String input, String expected) {
         System.setIn(new ByteArrayInputStream((input + "\n").getBytes()));
 
-        QuantityInput inputElement = QuantityInput.create();
+        MaxPositionInput inputElement = MaxPositionInput.create();
         inputElement.action();
 
         assertEquals(expected, inputElement.getValue());
