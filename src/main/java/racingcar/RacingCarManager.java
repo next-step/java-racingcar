@@ -10,9 +10,9 @@ public class RacingCarManager {
         this.racingCars = racingCars;
     }
 
-    public void moveIfMovable() {
+    public void moveIfMovable(RacingCarMoveStrategy moveStrategy) {
         for (RacingCar car : racingCars) {
-            car.moveIfMovable();
+            car.moveIfMovable(moveStrategy);
         }
     }
 

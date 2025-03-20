@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,15 +16,12 @@ class DefaultRacingCarGameWinnerStrategyTest {
     void 동점이면_모두_winner다() {
         List<RacingCar> racingCars = RacingCarFactory.createRacingCars(new String[]{
             "1", "2", "3", "4"
-        }, () -> true);
+        });
 
-        racingCars.get(0).moveIfMovable();
-        racingCars.get(1).moveIfMovable();
-        racingCars.get(1).moveIfMovable();
-        racingCars.get(2).moveIfMovable();
-        racingCars.get(2).moveIfMovable();
-        racingCars.get(3).moveIfMovable();
-        racingCars.get(3).moveIfMovable();
+        racingCars.get(0).moveIfMovable(() -> true, 1);
+        racingCars.get(1).moveIfMovable(() -> true, 3);
+        racingCars.get(2).moveIfMovable(() -> true, 3);
+        racingCars.get(3).moveIfMovable(() -> true, 3);
 
         DefaultRacingCarGameWinnerStrategy defaultRacingCarGameWinnerStrategy
             = DefaultRacingCarGameWinnerStrategy.getInstance();

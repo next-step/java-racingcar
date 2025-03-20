@@ -16,10 +16,17 @@ public class RacingCarResultView {
 
     public void viewCurrent(List<RacingCar> racingCars) {
         for (RacingCar car : racingCars) {
-            System.out.println(car);
+            viewCurrent(car);
         }
 
         System.out.println();
+    }
+
+    public void viewCurrent(RacingCar racingCar) {
+        final String moveSymbol = "-";
+
+        System.out.println(
+            racingCar.getCarName() + " : " + moveSymbol.repeat(racingCar.getDistance()));
     }
 
     public void viewWinners(List<RacingCar> winners) {

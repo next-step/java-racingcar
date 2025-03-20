@@ -5,16 +5,20 @@ public class RacingCar implements Comparable<RacingCar> {
     private static final String MOVE_SYMBOL = "-";
     private int distance;
     private final RacingCarName carName;
-    private final RacingCarMoveStrategy racingCarMoveStrategy;
 
-    public RacingCar(RacingCarName carName, RacingCarMoveStrategy racingCarMoveStrategy) {
+    public RacingCar(RacingCarName carName) {
         this.carName = carName;
-        this.racingCarMoveStrategy = racingCarMoveStrategy;
     }
 
-    public void moveIfMovable() {
-        if (isMovable()) {
+    public void moveIfMovable(RacingCarMoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             move();
+        }
+    }
+
+    public void moveIfMovable(RacingCarMoveStrategy moveStrategy, int times) {
+        for (int i = 0; i < times; i++) {
+            moveIfMovable(moveStrategy);
         }
     }
 
@@ -22,12 +26,12 @@ public class RacingCar implements Comparable<RacingCar> {
         this.distance++;
     }
 
-    private boolean isMovable() {
-        return racingCarMoveStrategy.isMovable();
-    }
-
     public RacingCarName getCarName() {
         return carName;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
     @Override

@@ -5,18 +5,15 @@ import java.util.List;
 
 public class RacingCarFactory {
 
-    public static List<RacingCar> createRacingCars(String[] carNames, RacingCarMoveStrategy moveStrategy) {
+    public static List<RacingCar> createRacingCars(String[] carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
 
         for (String carName : carNames) {
-            racingCars.add(create(carName, moveStrategy));
+            racingCars.add(
+                new RacingCar(new RacingCarName(carName)));
         }
 
         return racingCars;
-    }
-
-    public static RacingCar create(String carName, RacingCarMoveStrategy moveStrategy) {
-        return new RacingCar(new RacingCarName(carName), moveStrategy);
     }
 
 }

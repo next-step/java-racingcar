@@ -25,14 +25,14 @@ public class RacingCarGame {
     public void start() {
         RacingCarInput input = inputView.viewInput();
 
-        String[] carNames = StringCalculator.split(input.getCarNameCsv());
-        List<RacingCar> racingCars = RacingCarFactory.createRacingCars(carNames,
-            new RandomRacingCarMoveStrategy(RandomUtils.getInstance()));
+        List<RacingCar> racingCars = RacingCarFactory.createRacingCars(input.getCarNames());
+        RandomRacingCarMoveStrategy moveStrategy
+            = new RandomRacingCarMoveStrategy(RandomUtils.getInstance());
 
         RacingCarManager carManager = new RacingCarManager(racingCars);
 
         for (int i = 0; i < input.getTryCount(); i++) {
-            carManager.moveIfMovable();
+            carManager.moveIfMovable(moveStrategy);
             resultView.viewCurrent(carManager.getRacingCars());
         }
 

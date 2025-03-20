@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DefaultRacingCarGameWinnerStrategy implements RacingCarGameWinnerStrategy {
 
@@ -26,16 +27,12 @@ public class DefaultRacingCarGameWinnerStrategy implements RacingCarGameWinnerSt
             return Collections.emptyList();
         }
 
-        List<RacingCar> result = new ArrayList<>();
         racingCars = sort(racingCars);
         RacingCar winner = racingCars.get(0);
 
-        for (RacingCar car : racingCars) {
-            if (winner.compareTo(car) < 0) {
-                break;
-            }
-            result.add(car);
-        }
-        return result;
+        return racingCars
+            .stream()
+            .filter(car -> winner.compareTo(car) == 0)
+            .collect(Collectors.toList());
     }
 }
