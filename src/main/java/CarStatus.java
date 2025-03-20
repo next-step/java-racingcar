@@ -1,4 +1,5 @@
 public class CarStatus {
+
     private final String name;
     private final int position;
 

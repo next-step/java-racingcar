@@ -51,8 +51,8 @@ class RaceTest {
         race.runRound();  // 1라운드만 진행
 
         assertThatThrownBy(race::getWinners)
-                .isInstanceOf(IllegalStateException.class)
-                .hasMessage("Race is still in progress");
+            .isInstanceOf(IllegalStateException.class)
+            .hasMessage("Race is still in progress");
     }
 
     @Test
@@ -94,6 +94,7 @@ class RaceTest {
     }
 
     private static class FixedMoveStrategy implements MoveStrategy {
+
         private final boolean[] moves;
         private int index = 0;
 

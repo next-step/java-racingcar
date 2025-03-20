@@ -1,10 +1,16 @@
 public class Game {
+
     private final InputView inputView;
     private final ResultView resultView;
 
     public Game(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game(new InputView(), new ResultView());
+        game.start();
     }
 
     public void start() {
@@ -18,10 +24,5 @@ public class Game {
         }
         resultView.presentCars(race.getCarStatuses());
         resultView.presentWinners(race.getWinners());
-    }
-
-    public static void main(String[] args) {
-        Game game = new Game(new InputView(), new ResultView());
-        game.start();
     }
 }
