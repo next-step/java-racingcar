@@ -2,10 +2,14 @@ package racingcar.io;
 
 import java.util.List;
 
+import racingcar.domain.CarPosition;
 import racingcar.domain.CarPositions;
 import racingcar.domain.CarSimulator;
 
 public class OutputView {
+    public static final String COLON = " : ";
+    public static final String MOVE = "-";
+
     private final CarSimulator simulator;
 
     public OutputView(CarSimulator simulator) {
@@ -23,13 +27,17 @@ public class OutputView {
     }
 
     public void printPosition(CarPositions carPositions) {
-        List<Integer> positions = carPositions.getPositions();
+        List<CarPosition> positions = carPositions.getPositions();
 
-        for (int position : positions) {
-            System.out.println("-".repeat(position));
+        for (CarPosition position : positions) {
+            System.out.println(printResult(position));
         }
 
         System.out.println();
+    }
+
+    private String printResult(CarPosition position) {
+        return position.getName() + COLON + MOVE.repeat(position.getPosition());
     }
 
 }
