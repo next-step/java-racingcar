@@ -59,14 +59,14 @@ class RaceTest {
     @DisplayName("단독 우승자가 있는 경우 해당 자동차만 반환한다")
     void getSingleWinner() {
         // given
-        List<Car> cars = List.of(
-            new Car("car1", 5),
-            new Car("car2", 3),
-            new Car("car3", 4)
-        );
-        Race race = new Race(cars, 1);
+        String[] carNames = {"car1", "car2", "car3"};
+        GameSettings settings = new GameSettings(carNames, 3);
+        Race race = new Race(settings, new FixedMoveStrategy(new boolean[]{true, false, false}));
 
         // when
+        race.runRound();
+        race.runRound();
+        race.runRound();
         List<CarStatus> winners = race.getWinners();
 
         // then
@@ -78,18 +78,35 @@ class RaceTest {
     @DisplayName("공동 우승자가 있는 경우 모든 우승자를 반환한다")
     void getMultipleWinners() {
         // given
-        List<Car> cars = List.of(
-            new Car("car1", 5),
-            new Car("car2", 5),
-            new Car("car3", 3)
-        );
-        Race race = new Race(cars, 1);
+        String[] carNames = {"car1", "car2", "car3"};
+        GameSettings settings = new GameSettings(carNames, 3);
+        Race race = new Race(settings, new FixedMoveStrategy(new boolean[]{true, true, false}));
 
         // when
+        race.runRound();
+        race.runRound();
+        race.runRound();
         List<CarStatus> winners = race.getWinners();
 
         // then
         assertThat(winners).hasSize(2);
         assertThat(winners).extracting("name").containsExactlyInAnyOrder("car1", "car2");
+    }
+
+    private static class FixedMoveStrategy implements MoveStrategy {
+        private final boolean[] moves;
+        private int index = 0;
+
+        FixedMoveStrategy(boolean[] moves) {
+            this.moves = moves;
+        }
+
+        @Override
+        public boolean shouldMove() {
+            if (index >= moves.length) {
+                index = 0;
+            }
+            return moves[index++];
+        }
     }
 }

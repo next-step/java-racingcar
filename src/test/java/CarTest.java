@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
@@ -35,19 +34,11 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("random값이 4 이상일 경우에 자동차의 위치는 1 추가되고, 4 미만일 경우 위치가 변하지 않는다")
-    @CsvSource({"0, 0", "1, 0", "2, 0", "3, 0", "4, 1", "5, 1", "6, 1", "7, 1", "8, 1", "9, 1"})
-    void carMovesAccordingToRandomValue(int seed, int expectedPosition) {
+    @DisplayName("shouldMove가 true일 경우 자동차의 위치는 1 추가되고, false일 경우 위치가 변하지 않는다")
+    @CsvSource({"false, 0", "true, 1"})
+    void carMovesAccordingToShouldMove(boolean shouldMove, int expectedPosition) {
         Car car = new Car("MyCar");
-        car.move(seed);
+        car.move(shouldMove);
         assertThat(car.getPosition()).isEqualTo(expectedPosition);
-    }
-
-    @ParameterizedTest
-    @DisplayName("이동을 위한 숫자는 0에서 9 사이여야 한다")
-    @ValueSource(ints = {-1, 10})
-    void carMoveVariableIsBetween0And9(int invalidSeed) {
-        Car car = new Car("MyCar");
-        assertThatThrownBy(() -> car.move(invalidSeed)).isInstanceOf(IllegalArgumentException.class).hasMessage("Invalid seed: " + invalidSeed);
     }
 }

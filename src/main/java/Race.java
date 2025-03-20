@@ -4,24 +4,22 @@ import java.util.Random;
 
 public class Race {
 
-    private static final Random random = new Random();
+    private final MoveStrategy moveStrategy;
     private final int totalRounds;
     private final List<Car> cars;
     private int currentRound = 0;
 
     public Race(GameSettings settings) {
+        this(settings, new RandomMoveStrategy());
+    }
+
+    public Race(GameSettings settings, MoveStrategy moveStrategy) {
         this.totalRounds = settings.getRoundCount();
         this.cars = new ArrayList<>();
         for (String carName : settings.getCarNames()) {
             this.cars.add(new Car(carName));
         }
-    }
-
-    // 테스트용 생성자
-    Race(List<Car> cars, int totalRounds) {
-        this.cars = new ArrayList<>(cars);
-        this.totalRounds = totalRounds;
-        this.currentRound = totalRounds;  // 경주가 끝난 상태로 설정
+        this.moveStrategy = moveStrategy;
     }
 
     public List<CarStatus> getCarStatuses() {
@@ -35,7 +33,7 @@ public class Race {
     public void runRound() {
         validateRaceInProgress();
         for (Car car : cars) {
-            car.move(random.nextInt(10));
+            car.move(moveStrategy.shouldMove());
         }
         currentRound++;
     }
