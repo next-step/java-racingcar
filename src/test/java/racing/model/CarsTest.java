@@ -54,7 +54,7 @@ class CarsTest {
 
         // then
         assertThat(carList)
-                .extracting("name", "position")
+                .extracting("name.title", "position")
                 .containsExactly(
                         tuple("BMW", 1),
                         tuple("AUDI", 1),
@@ -68,9 +68,9 @@ class CarsTest {
         // given
         List<Car> carList
                 = Arrays.asList(
-                new Car("BMW", 1),
-                new Car("AUDI", 2),
-                new Car("BENZ", 3)
+                new Car(new CarName("BMW"), 1),
+                new Car(new CarName("AUDI"), 2),
+                new Car(new CarName("BENZ"), 3)
         );
         Cars cars = new Cars(carList, new FakeNumberGenerator(MOVE_NUMBER));
 
@@ -79,7 +79,7 @@ class CarsTest {
 
         // then
         assertAll(() -> assertThat(winner).hasSize(1),
-                () -> assertThat(winner).extracting("name", "position")
+                () -> assertThat(winner).extracting("name.title", "position")
                         .containsExactly(tuple("BENZ", 3))
         );
     }
@@ -90,9 +90,9 @@ class CarsTest {
         // given
         List<Car> carList
                 = Arrays.asList(
-                new Car("BMW", 1),
-                new Car("AUDI", 5),
-                new Car("BENZ", 5)
+                new Car(new CarName("BMW"), 1),
+                new Car(new CarName("AUDI"), 5),
+                new Car(new CarName("BENZ"), 5)
         );
         Cars cars = new Cars(carList, new FakeNumberGenerator(MOVE_NUMBER));
 
@@ -101,7 +101,7 @@ class CarsTest {
 
         // then
         assertAll(() -> assertThat(winner).hasSize(2),
-                () -> assertThat(winner).extracting("name", "position")
+                () -> assertThat(winner).extracting("name.title", "position")
                         .containsExactly(tuple("AUDI", 5), tuple("BENZ", 5))
         );
     }

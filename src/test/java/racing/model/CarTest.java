@@ -1,7 +1,6 @@
 package racing.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,15 +15,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = new Car(MERCEDES, INIT_POSITION);
-    }
-
-    @DisplayName("Car 객체 생성 시 이름이 5자를 초과할 수 없다.")
-    @Test
-    void CarNameLengthTest() {
-        assertThatThrownBy(() -> new Car("123456"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("123456 is over 5 letters");
+        this.car = new Car(createMercedesCarName(), INIT_POSITION);
     }
 
     @DisplayName("자동차의 위치를 한 칸 증가시킬 수 있다.")
@@ -48,7 +39,7 @@ class CarTest {
     @DisplayName("자동차의 이름을 가져올 수 있다.")
     @Test
     void getCarNameTest() {
-        assertThat(car.getName()).isEqualTo(MERCEDES);
+        assertThat(car.getName()).isEqualTo(createMercedesCarName());
     }
 
     @DisplayName("자동차의 현재 위치를 가져 올 수 있다.")
@@ -57,4 +48,7 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(INIT_POSITION);
     }
 
+    private CarName createMercedesCarName() {
+        return new CarName(MERCEDES);
+    }
 }
