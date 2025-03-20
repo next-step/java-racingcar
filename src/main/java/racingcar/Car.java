@@ -11,9 +11,7 @@ public class Car {
     private int distance;
 
     public Car(String carName) {
-        validateCarName(carName);
-        this.distance = INITIAL_DISTANCE;
-        this.carName = carName;
+        this(INITIAL_DISTANCE, carName);
     }
 
     public Car(int distance, String carName) {
