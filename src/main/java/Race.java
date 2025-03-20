@@ -21,12 +21,12 @@ public class Race {
         }
     }
 
-    public List<Integer> getCarPositions() {
-        List<Integer> positions = new ArrayList<>();
+    public List<CarStatus> getCarStatuses() {
+        List<CarStatus> statuses = new ArrayList<>();
         for (Car car : cars) {
-            positions.add(car.getPosition());
+            statuses.add(new CarStatus(car));
         }
-        return positions;
+        return statuses;
     }
 
     public void runRound() {

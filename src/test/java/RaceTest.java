@@ -19,7 +19,7 @@ class RaceTest {
         });
 
         Race race = new Race(new GameSettings(1, 3));
-        assertThat(race.getCarPositions()).hasSize(1);
+        assertThat(race.getCarStatuses()).hasSize(1);
     }
 
     @Test
@@ -41,8 +41,8 @@ class RaceTest {
     @DisplayName("경기 시작시 자동차의 위치는 0이다.")
     void carPositionsAtStartAreZero() {
         Race race = new Race(new GameSettings(5, 3));
-        for (Integer carPositions : race.getCarPositions()) {
-            assertThat(carPositions).isZero();
+        for (CarStatus carStatus : race.getCarStatuses()) {
+            assertThat(carStatus.getPosition()).isZero();
         }
     }
 
@@ -50,14 +50,13 @@ class RaceTest {
     @DisplayName("한 라운드가 진행되면 자동차의 위치는 기존 위치이거나, 기존 위치 + 1이다.")
     void carPositionsAfterOneRoundAreEitherSameOrIncremented() {
         Race race = new Race(new GameSettings(5, 3));
-        race.runRound();
-        List<Integer> initialPositions = race.getCarPositions();
+        List<CarStatus> initialStatuses = race.getCarStatuses();
 
         race.runRound();
-        List<Integer> finalPositions = race.getCarPositions();
+        List<CarStatus> finalStatuses = race.getCarStatuses();
 
-        for (int i = 0; i < initialPositions.size(); i++) {
-            assertThat(finalPositions.get(i)).isIn(initialPositions.get(i), initialPositions.get(i) + 1);
+        for (int i = 0; i < initialStatuses.size(); i++) {
+            assertThat(finalStatuses.get(i).getPosition()).isIn(initialStatuses.get(i).getPosition(), initialStatuses.get(i).getPosition() + 1);
         }
     }
 

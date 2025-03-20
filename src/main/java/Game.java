@@ -13,9 +13,10 @@ public class Game {
 
         Race race = new Race(settings);
         while (race.isRaceInProgress()) {
+            resultView.presentCars(race.getCarStatuses());
             race.runRound();
-            resultView.presentCars(race.getCarPositions());
         }
+        resultView.presentCars(race.getCarStatuses());
     }
 
     public static void main(String[] args) {
