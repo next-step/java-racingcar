@@ -25,11 +25,12 @@ public class CarRacingGame {
         // ResultView:
         // - 최종 결과(List<List<String>>)를 화면에 출력한다.
 
-        int tempCarCount = 3;
-        int tempRoundCount = 5;
+        InputView inputView = new InputView();
+        int carCount = inputView.getCarCountFromUser();
+        int roundCount = inputView.getRoundCountFromUser();
 
-        RacingGame racingGame = new RacingGame(tempCarCount);
-        List<List<String>> raceResults = racingGame.play(tempRoundCount);
+        RacingGame racingGame = new RacingGame(carCount);
+        List<List<String>> raceResults = racingGame.play(roundCount);
 
         for (List<String> round : raceResults) {
             for (String s : round) {
