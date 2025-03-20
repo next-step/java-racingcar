@@ -8,7 +8,7 @@ public interface OutputView {
 
     String carDistance(Integer distance);
 
-    void finalResult(Players carInfo);
+    void finalResult(Players players);
 
     void endOfThisTurn(Players cars);
 }
