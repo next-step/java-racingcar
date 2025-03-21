@@ -4,37 +4,45 @@ import racingcar.racing.model.Car;
 import racingcar.racing.util.RandomGenerator;
 import racingcar.racing.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private static final int MAX_RANDOM_NUMBER = 10;
     private static final int MOVE_THRESHOLD = 4;
 
     private final RandomGenerator randomGenerator;
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
     private final ResultView resultView;
     private int stage;
 
-    public RacingCarGame(int carSize) {
-        this(carSize, new RandomGenerator());
+    public RacingCarGame(List<String> carNames) {
+        this(carNames, new RandomGenerator());
     }
 
-    public RacingCarGame(int carSize, RandomGenerator randomGenerator) {
+    public RacingCarGame(List<String> carNames, RandomGenerator randomGenerator) {
         this.stage = 0;
         this.resultView = new ResultView();
         this.randomGenerator = randomGenerator;
-
-        init(carSize);
+        this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
     }
 
-    private void init(int carSize) {
-        for (int i = 0; i < carSize; i++)
-            this.cars.add(new Car());
+    public void playAndWinners(int count) {
+        process(count);
+
+        resultView.printResult(getCurrentStageWinner());
     }
 
-    public void process(int count) {
+    public List<String> getCurrentStageWinner() {
+        int winnerPosition = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
+
+        return cars.stream().filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
+    }
+
+    private void process(int count) {
         for (int i = 0; i < count; i++)
             process();
     }
@@ -43,7 +51,7 @@ public class RacingCarGame {
         cars.forEach(this::moveCar);
         stage++;
 
-        resultView.view(cars, stage);
+        resultView.printGameStatus(cars, stage);
     }
 
     private void moveCar(Car car) {
