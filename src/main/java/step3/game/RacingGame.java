@@ -43,22 +43,5 @@ public class RacingGame {
         }
     }
 
-    public List<String> getCurrentWinners() {
-        if (result.isEmpty()) {
-            return Collections.emptyList();
-        }
-
-        List<String> winners = new ArrayList<>();
-        int max = 0;
-        for (GameHistory history : result.get(result.size() - 1)) {
-            if (history.getPosition() > max) {
-                max = history.getPosition();
-                winners.clear();
-                winners.add(history.getName());
-            } else if (history.getPosition() == max) {
-                winners.add(history.getName());
-            }
-        }
-        return winners;
     }
 }
