@@ -6,8 +6,12 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.position = 0;
+        if (name == null || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+
         this.name = name;
+        this.position = 0;
     }
 
     public void move(int diceValue) {
