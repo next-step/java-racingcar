@@ -44,4 +44,16 @@ class CarTest {
         // then
         Assertions.assertThat(car.getName()).isEqualTo(name);
     }
+
+    @Test
+    @DisplayName("자동차의 이름은 5자를 초과 할 수 없다.")
+    void createCarWithLongNameTest() {
+        // given
+        var name = "123456";
+
+        // when & then
+        Assertions.assertThatThrownBy(() -> new Car(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
 }
