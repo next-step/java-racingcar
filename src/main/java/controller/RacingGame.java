@@ -1,38 +1,28 @@
 package controller;
 
-import domain.Car;
+import domain.Cars;
 import view.InputView;
 import view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
-    private final List<Car> cars = new ArrayList<>();
+    private final Cars cars;
     private final int numberOfRounds;
 
     public RacingGame(int numberOfCars, int numberOfRounds) {
         this.numberOfRounds = numberOfRounds;
-        generateCars(numberOfCars);
-    }
-
-    private void generateCars(int numberOfCars) {
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
+        this.cars = new Cars(numberOfCars);
     }
 
     private void runOneRound() {
-        for (Car car : cars) {
-            car.run();
-        }
+        this.cars.randomMove();
+        this.cars.printCurrentPositions();
+        ResultView.printResult("");
     }
 
     private void run() {
         ResultView.printResult("실행 결과");
-        for (int i = 0; i < numberOfRounds; i++) {
+        for (int i = 0; i < this.numberOfRounds; i++) {
             runOneRound();
-            ResultView.printResult("");
         }
     }
 

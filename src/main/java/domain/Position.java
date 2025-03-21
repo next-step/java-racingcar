@@ -3,7 +3,7 @@ package domain;
 class Position {
     private int value = 0;
 
-    public void move() {
+    public void increase() {
         this.value++;
     }
 
