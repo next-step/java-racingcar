@@ -23,7 +23,7 @@ public class Car {
     }
 
     public String getCurrentPositionString() {
-        return String.format("%s : %s", name.getName(), position.repeatSymbol(MOVE_SYMBOL));
+        return String.format("%s : %s", this.name.getName(), MOVE_SYMBOL.repeat(this.position.getValue()));
     }
 
     public boolean isMaxPosition(int position) {
@@ -35,6 +35,6 @@ public class Car {
     }
 
     public CarName getName() {
-        return name;
+        return this.name;
     }
 }

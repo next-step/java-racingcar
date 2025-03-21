@@ -22,11 +22,11 @@ public class Position {
         return this.value == number;
     }
 
-    public String repeatSymbol(String symbol) {
-        return symbol.repeat(value);
-    }
-
     public int max(int number) {
         return Math.max(this.value, number);
+    }
+
+    public int getValue() {
+        return this.value;
     }
 }
