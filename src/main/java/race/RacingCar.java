@@ -2,12 +2,14 @@ package race;
 
 public class RacingCar {
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_CRITERIA = 4;
     private final CarName name;
     private final Position position;
 
-    private RacingCar(String name, int position) {
+    public RacingCar(String name) {
         this.name = new CarName(name);
-        this.position = new Position(position);
+        this.position = new Position();
+
     }
 
     public static boolean validateName(String carName) {
@@ -15,7 +17,7 @@ public class RacingCar {
     }
 
     private boolean shouldMove(int num) {
-        return num >= 4;
+        return num >= MOVE_CRITERIA;
     }
 
     public Position moveWithSeed(int seed) {
@@ -23,10 +25,6 @@ public class RacingCar {
             return this.position.move();
         }
         return this.position;
-    }
-
-    static RacingCar create(String racingName, int position) {
-        return new RacingCar(racingName, position);
     }
 
     public CarName getName() {
@@ -38,10 +36,10 @@ public class RacingCar {
     }
 
     public int getMaxPosition(int value) {
-        return Math.max(this.position.getValue(), value);
+        return this.position.getMax(value);
     }
 
     public boolean isSamePosition(int value) {
-        return this.position.getValue() == value;
+        return this.position.isSame(value);
     }
 }

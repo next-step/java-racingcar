@@ -9,7 +9,7 @@ public class RacingCarTest {
     @Order(10)
     @Test
     void moveWithSeed() {
-        RacingCar car = RacingCarFactory.create("1");
+        RacingCar car = new RacingCar("1");
         assertThat(car.moveWithSeed(5)).isEqualTo(new Position(1));
         assertThat(car.moveWithSeed(2)).isEqualTo(new Position(1));
     }

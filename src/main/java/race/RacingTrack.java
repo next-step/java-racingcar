@@ -27,7 +27,7 @@ public class RacingTrack {
 
     private void setupCars(String[] carNames) {
         for (String name : carNames) {
-            cars.add(RacingCarFactory.create(name));
+            cars.add(new RacingCar(name));
         }
     }
 

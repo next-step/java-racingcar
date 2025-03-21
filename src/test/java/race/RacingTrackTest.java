@@ -50,8 +50,8 @@ public class RacingTrackTest {
 
     @Test
     void one_winner_test() {
-        RacingCar car1 = RacingCarFactory.create("1");
-        RacingCar car2 = RacingCarFactory.create("2");
+        RacingCar car1 = new RacingCar("1");
+        RacingCar car2 = new RacingCar("2");
         List<RacingCar> cars = new ArrayList<>(List.of(car1, car2));
 //        RacingTrack racingTrack = new RacingTrack(10, 10);
 //        racingTrack.startRace(cars, 5);
@@ -62,9 +62,9 @@ public class RacingTrackTest {
 
     @Test
     void two_winner_test() {
-        RacingCar car1 = RacingCarFactory.create("1");
-        RacingCar car2 = RacingCarFactory.create("2");
-        RacingCar car3 = RacingCarFactory.create("3");
+        RacingCar car1 = new RacingCar("1");
+        RacingCar car2 = new RacingCar("2");
+        RacingCar car3 = new RacingCar("3");
         List<RacingCar> cars = new ArrayList<>(List.of(car1, car2, car3));
 //        RacingTrack racingTrack = new RacingTrack(10, 10);
 //        racingTrack.startRace(cars, 5);

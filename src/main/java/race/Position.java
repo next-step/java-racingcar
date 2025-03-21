@@ -22,6 +22,14 @@ public class Position {
         return this.value;
     }
 
+    public int getMax(int value) {
+        return Math.max(this.value, value);
+    }
+
+    public boolean isSame(int value) {
+        return this.value == value;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
