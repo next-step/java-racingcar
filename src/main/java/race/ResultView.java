@@ -7,8 +7,8 @@ public class ResultView {
         System.out.println("\n### Racing Start!!! ###\n");
     }
 
-    public static void printRaceStatus(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
+    public static void printRaceStatus(CarList cars) {
+        for (RacingCar car : cars.getList()) {
             System.out.println(String.format("%-5s", car.getName().toString()) + " : " + "-".repeat(car.getPosition().getValue()));
         }
         System.out.println();

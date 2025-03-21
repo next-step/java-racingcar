@@ -5,14 +5,12 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingTrack {
-    private final Random random = new Random();
-
     private final TrackCondition trackCondition;
-    private final List<RacingCar> cars;
+    private final CarList cars;
 
     public RacingTrack(int maxCarCount, int maxAttemptCount) {
         this.trackCondition = new TrackCondition(maxCarCount, maxAttemptCount);
-        this.cars = new ArrayList<>();
+        this.cars = new CarList();
     }
 
     public void startRace(String[] carNames, int numOfAttempts) {
@@ -20,7 +18,7 @@ public class RacingTrack {
 
         ResultView.printRaceStartMessage();
         for (int i = 0; i < numOfAttempts; i++) {
-            moveAndShowCars();
+            cars.moveWithRandom();
             ResultView.printRaceStatus(cars);
         }
     }
@@ -28,12 +26,6 @@ public class RacingTrack {
     private void setupCars(String[] carNames) {
         for (String name : carNames) {
             cars.add(new RacingCar(name));
-        }
-    }
-
-    private void moveAndShowCars() {
-        for (RacingCar car : cars) {
-            car.moveWithSeed(random.nextInt());
         }
     }
 
@@ -57,14 +49,14 @@ public class RacingTrack {
 
     public List<RacingCar> getWinners() {
         int maxPosition = 0;
-        for (RacingCar car : cars) {
+        for (RacingCar car : cars.getList()) {
             maxPosition = car.getMaxPosition(maxPosition);
         }
 
         List<RacingCar> winners = new ArrayList<>();
 
-        for (int i = 1; i < cars.size(); i++) {
-            if (cars.get(i).isSamePosition(maxPosition)) winners.add(cars.get(i));
+        for (RacingCar car : cars.getList()) {
+            if (car.isSamePosition(maxPosition)) winners.add(car);
         }
         return winners;
     }
