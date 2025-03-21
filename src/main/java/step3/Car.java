@@ -4,16 +4,26 @@ import java.util.Random;
 
 public class Car {
     private int position;
+    private Random random;
 
-    private void rollDice () {
-        int random = new Random().nextInt(10);
-        if(random >= 4 ) {
-            position++;
-        }
+    public Car(Random random) {
+        this.position = 1;
+        this.random = random;
     }
 
-    public String move() {
-        this.rollDice();
-        return "-".repeat(position);
+    public int getPosition () {
+        return this.position;
+    }
+
+    private boolean isMovable () {
+        return this.random.nextInt(10) >= 4;
+    }
+
+    public void move() {
+        if(!isMovable()) return;
+        position++;
+    }
+    public String draw(int position) {
+        return "-".repeat(this.position);
     }
 }

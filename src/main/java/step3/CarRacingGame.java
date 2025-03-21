@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * 기능 요구사항
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class CarRacingGame {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
+        InputView inputView = new InputView(new Scanner(System.in));
         int carCount = inputView.getCarCountFromUser();
         int roundCount = inputView.getRoundCountFromUser();
 
