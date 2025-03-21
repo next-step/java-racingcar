@@ -7,9 +7,12 @@ public class RacingCar {
     private final Position position;
 
     public RacingCar(String name) {
-        this.name = new CarName(name);
-        this.position = new Position();
+        this(name, 0);
+    }
 
+    public RacingCar(String name, int position) {
+        this.name = new CarName(name);
+        this.position = new Position(position);
     }
 
     public static boolean validateName(String carName) {
@@ -35,11 +38,11 @@ public class RacingCar {
         return this.position;
     }
 
-    public int getMaxPosition(int value) {
-        return this.position.getMax(value);
+    public Position getMaxPosition(Position comparePosition) {
+        return this.position.getMax(comparePosition);
     }
 
-    public boolean isSamePosition(int value) {
-        return this.position.isSame(value);
+    public boolean isSamePosition(Position comparePosition) {
+        return this.position.equals(comparePosition);
     }
 }

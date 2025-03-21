@@ -30,4 +30,19 @@ public class CarList {
     public List<RacingCar> getList() {
         return cars;
     }
+
+    public List<RacingCar> getWinners() {
+        Position maxPosition = new Position();
+        for (RacingCar car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+
+        List<RacingCar> winners = new ArrayList<>();
+
+        for (RacingCar car : cars) {
+            if (car.isSamePosition(maxPosition)) winners.add(car);
+        }
+        return winners;
+    }
+
 }

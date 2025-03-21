@@ -22,12 +22,11 @@ public class Position {
         return this.value;
     }
 
-    public int getMax(int value) {
-        return Math.max(this.value, value);
-    }
-
-    public boolean isSame(int value) {
-        return this.value == value;
+    public Position getMax(Position comparePosition) {
+        if (this.value > comparePosition.getValue()) {
+            return this;
+        }
+        return comparePosition;
     }
 
     @Override

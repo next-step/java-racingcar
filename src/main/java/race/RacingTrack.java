@@ -1,8 +1,6 @@
 package race;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingTrack {
     private final TrackCondition trackCondition;
@@ -48,16 +46,6 @@ public class RacingTrack {
     }
 
     public List<RacingCar> getWinners() {
-        int maxPosition = 0;
-        for (RacingCar car : cars.getList()) {
-            maxPosition = car.getMaxPosition(maxPosition);
-        }
-
-        List<RacingCar> winners = new ArrayList<>();
-
-        for (RacingCar car : cars.getList()) {
-            if (car.isSamePosition(maxPosition)) winners.add(car);
-        }
-        return winners;
+        return this.cars.getWinners();
     }
 }

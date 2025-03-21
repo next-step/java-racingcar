@@ -16,13 +16,8 @@ public class RacingCarTest {
 
     @Order(30)
     @Test
-    void valid_car_name() {
+    void validate_car_name() {
         assertThat(RacingCar.validateName("test")).isTrue();
-    }
-
-    @Order(40)
-    @Test
-    void invalid_car_name() {
         assertThat(RacingCar.validateName("")).isFalse();
         assertThat(RacingCar.validateName("aaaaaaa")).isFalse();
     }
