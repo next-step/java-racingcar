@@ -7,7 +7,7 @@ public class CarName {
 
     public CarName(String name) {
         if (checkNameLengthExceed(name)) {
-            throw new IllegalArgumentException("차 이름은 5자 이하여야 합니다. input: " + name);
+            throw new IllegalArgumentException("차 이름은 "+MAX_NAME_LENGTH+"자 이하여야 합니다. input: " + name);
         }
         this.name = name;
     }

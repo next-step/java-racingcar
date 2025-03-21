@@ -15,8 +15,12 @@ public class PlayHistory {
     }
 
     public List<String> findWinners() {
-        CarsAtTurn lastTurn = this.positions.get(this.positions.size() - 1);
+        CarsAtTurn lastTurn = getLastTurn();
         return lastTurn.findMaxPositionCarNames();
+    }
+
+    private CarsAtTurn getLastTurn() {
+        return this.positions.get(this.positions.size() - 1);
     }
 
 }
