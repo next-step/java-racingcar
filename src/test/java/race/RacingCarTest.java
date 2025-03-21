@@ -8,18 +8,10 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingCarTest {
     @Order(10)
     @Test
-    void move() {
-        RacingCar car = RacingCarFactory.create("1", new FixedNumberGenerator(5));
-        assertThat(car.move()).isEqualTo(1);
-        assertThat(car.move()).isEqualTo(2);
-    }
-
-    @Order(20)
-    @Test
-    void not_move() {
-        RacingCar car = RacingCarFactory.create("1", new FixedNumberGenerator(2));
-        assertThat(car.move()).isEqualTo(0);
-        assertThat(car.move()).isEqualTo(0);
+    void moveWithSeed() {
+        RacingCar car = RacingCarFactory.create("1");
+        assertThat(car.moveWithSeed(5)).isEqualTo(new Position(1));
+        assertThat(car.moveWithSeed(2)).isEqualTo(new Position(1));
     }
 
     @Order(30)

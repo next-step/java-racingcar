@@ -1,21 +1,13 @@
 package race;
 
-public class RacingCar implements Comparable<RacingCar> {
+public class RacingCar {
     private static final int MAX_NAME_LENGTH = 5;
-    private final String name;
-    private int position;
-    private final RandomNumberGenerator randomNumberGenerator;
-    private final PositionPrinter positionPrinter;
+    private final CarName name;
+    private final Position position;
 
-    private RacingCar(String name, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
-        this.name = name;
-        this.randomNumberGenerator = randomNumberGenerator;
-        this.positionPrinter = positionPrinter;
-    }
-
-    @Override
-    public int compareTo(RacingCar other) {
-        return Integer.compare(this.position, other.position);
+    private RacingCar(String name, int position) {
+        this.name = new CarName(name);
+        this.position = new Position(position);
     }
 
     public static boolean validateName(String carName) {
@@ -26,23 +18,30 @@ public class RacingCar implements Comparable<RacingCar> {
         return num >= 4;
     }
 
-    public int move() {
-        int randomValue = randomNumberGenerator.generate();
-        if (shouldMove(randomValue)) {
-            position++;
+    public Position moveWithSeed(int seed) {
+        if (shouldMove(seed)) {
+            return this.position.move();
         }
-        return position;
+        return this.position;
     }
 
-    public void printPosition() {
-        positionPrinter.printPosition(name, position);
+    static RacingCar create(String racingName, int position) {
+        return new RacingCar(racingName, position);
     }
 
-    static RacingCar create(String racingName, RandomNumberGenerator randomNumberGenerator, PositionPrinter positionPrinter) {
-        return new RacingCar(racingName, randomNumberGenerator, positionPrinter);
+    public CarName getName() {
+        return this.name;
     }
 
-    public String getName() {
-        return name;
+    public Position getPosition() {
+        return this.position;
+    }
+
+    public int getMaxPosition(int value) {
+        return Math.max(this.position.getValue(), value);
+    }
+
+    public boolean isSamePosition(int value) {
+        return this.position.getValue() == value;
     }
 }
