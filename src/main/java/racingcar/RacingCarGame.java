@@ -20,7 +20,7 @@ public class RacingCarGame {
              DefaultRacingCarGameWinnerStrategy.getInstance());
     }
 
-    public RacingCarGame(RacingCarInputView inputView,
+    private RacingCarGame(RacingCarInputView inputView,
                          RacingCarResultView resultView,
                          RacingCarGameWinnerStrategy winnerStrategy) {
         this.inputView = inputView;
