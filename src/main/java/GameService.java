@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class GameService {
     private static final Random random = new Random();
@@ -27,17 +28,19 @@ public class GameService {
     }
 
     public List<Car> getWinners() {
-        int maxLocation = 0;
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getLocation() > maxLocation) {
-                winners.clear();
-                maxLocation = car.getLocation();
-                winners.add(car);
-            } else if (car.getLocation() == maxLocation) {
-                winners.add(car);
-            }
-        }
-        return winners;
+        return filterWinners(getMaxLocation());
+    }
+
+    private int getMaxLocation() {
+        return cars.stream()
+                .map(Car::getLocation)
+                .max(Integer::compareTo)
+                .orElse(0);
+    }
+
+    private List<Car> filterWinners(int maxLocation) {
+        return cars.stream()
+                .filter(car -> car.getLocation() == maxLocation)
+                .collect(Collectors.toList());
     }
 }
