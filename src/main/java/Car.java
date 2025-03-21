@@ -23,6 +23,14 @@ public class Car {
         this.location++;
     }
 
+    public int max(int other) {
+        return Math.max(location, other);
+    }
+
+    public boolean isSameLocation(int other) {
+        return location == other;
+    }
+
     public int getLocation() {
         return this.location;
     }

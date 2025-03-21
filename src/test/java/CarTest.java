@@ -8,21 +8,21 @@ public class CarTest {
     void 자동차_전진() {
         Car car = new Car("finn", 0);
         car.go();
-        assertThat(car.getLocation()).isEqualTo(1);
+        assertThat(car.isSameLocation(1)).isTrue();
     }
 
     @Test
     void 자동차_4이상이면_전진() {
         Car car = new Car("finn", 0);
         car.randomGo(4);
-        assertThat(car.getLocation()).isEqualTo(1);
+        assertThat(car.isSameLocation(1)).isTrue();
     }
 
     @Test
     void 자동차_4미만이면_멈춤() {
         Car car = new Car("finn", 0);
         car.randomGo(1);
-        assertThat(car.getLocation()).isEqualTo(0);
+        assertThat(car.isSameLocation(0)).isTrue();
     }
 
     @Test

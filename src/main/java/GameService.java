@@ -32,15 +32,16 @@ public class GameService {
     }
 
     private int getMaxLocation() {
-        return cars.stream()
-                .map(Car::getLocation)
-                .max(Integer::compareTo)
-                .orElse(0);
+        int maxLocation = 0;
+        for (Car car : cars) {
+            maxLocation = car.max(maxLocation);
+        }
+        return maxLocation;
     }
 
     private List<Car> filterWinners(int maxLocation) {
         return cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> car.isSameLocation(maxLocation))
                 .collect(Collectors.toList());
     }
 }
