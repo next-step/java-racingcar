@@ -12,7 +12,7 @@ public class StringAddCalculator {
             return 0;
         }
 
-        if(isSingleDigitNumber(text)){
+        if (isSingleDigitNumber(text)) {
             return Integer.parseInt(text);
         }
 
