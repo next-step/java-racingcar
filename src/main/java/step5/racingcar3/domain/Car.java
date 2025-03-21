@@ -4,41 +4,33 @@ import step5.racingcar3.exception.CarException;
 
 public class Car {
 
-    public final static int MIN_POSITION = 0;
     private final CarName carName;
     private final CarEngine carEngine;
-    private int position;
+    private final Position position;
 
     public Car(CarName carName, CarEngine carEngine) {
         this.carName = carName;
         this.carEngine = carEngine;
-        this.position = 0;
+        this.position = new Position();
     }
 
-    public Car(CarName carName, CarEngine carEngine, int position) {
-        validate(position);
+    public Car(CarName carName, CarEngine carEngine, Position position) {
         this.carName = carName;
         this.carEngine = carEngine;
         this.position = position;
     }
 
-    public int position() {
-        return this.position;
+    public Position position() {
+        return position;
     }
 
-    public String name() {
-        return this.carName.value();
+    public CarName name() {
+        return carName;
     }
 
     public void run() {
         if (carEngine.canRun()) {
-            this.position++;
-        }
-    }
-
-    public void validate(int position) {
-        if (position < MIN_POSITION) {
-            throw new CarException("자동차의 위치는 0 이상만 가능합니다.");
+            position.increase();
         }
     }
 
