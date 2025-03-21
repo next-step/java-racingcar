@@ -13,7 +13,7 @@ public class RacingCar {
         String[] carNames = InputView.inputCarNames();
         int tryCount = InputView.inputTryCount();
 
-        Cars cars = new Cars(CarGenerator.generateCars(carNames));
+        Cars cars = new Cars(Cars.generateCars(carNames));
 
         OutputView.displayResultMessage();
         NumberGenerator numberGenerator = new RandomNumberGenerator();

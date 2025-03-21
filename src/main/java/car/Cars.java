@@ -3,6 +3,7 @@ package car;
 import utils.NumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,12 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public static List<Car> generateCars(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void moveAll(NumberGenerator numberGenerator) {
@@ -26,4 +33,5 @@ public class Cars {
     public List<Car> getCars() {
         return List.copyOf(cars);
     }
+
 }
