@@ -2,18 +2,18 @@ package domain;
 
 public class RacingCarCurrentStatus {
     private final String name;
-    private final Integer position;
+    private final Position position;
 
-    protected RacingCarCurrentStatus(String name, Integer position) {
+    protected RacingCarCurrentStatus(String name, Position position) {
         this.name = name;
         this.position = position;
     }
 
-    public String whatNameIsThisCar() {
+    public String name() {
         return this.name;
     }
 
-    public Integer whereIsThisCarNow() {
-        return this.position;
+    public Integer position() {
+        return this.position.position();
     }
 }

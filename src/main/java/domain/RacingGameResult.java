@@ -39,8 +39,8 @@ public class RacingGameResult {
     }
 
     private void addIfWinner(RacingCarCurrentStatus car, Integer maxPosition, List<String> winners) {
-        if (maxPosition.equals(car.whereIsThisCarNow())) {
-            winners.add(car.whatNameIsThisCar());
+        if (maxPosition.equals(car.position())) {
+            winners.add(car.name());
         }
     }
 
@@ -53,8 +53,8 @@ public class RacingGameResult {
     }
 
     private Integer updateMaxPosition(RacingCarCurrentStatus car, int maxPosition) {
-        if (car.whereIsThisCarNow() > maxPosition) {
-            maxPosition = car.whereIsThisCarNow();
+        if (car.position() > maxPosition) {
+            maxPosition = car.position();
         }
         return maxPosition;
     }

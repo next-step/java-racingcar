@@ -58,7 +58,7 @@ class RacingGameTest {
         RoundResult lastRoundResult = racingGameResult.getLastRoundResult();
         List<RacingCarCurrentStatus> raceProgress = lastRoundResult.getRaceProgress();
         List<Integer> carPositions = raceProgress.stream()
-                .map(RacingCarCurrentStatus::whereIsThisCarNow)
+                .map(RacingCarCurrentStatus::position)
                 .collect(Collectors.toList());
 
         assertThat(carPositions).containsOnly(NUMBER_OF_TRIAL);
@@ -73,7 +73,7 @@ class RacingGameTest {
         RoundResult lastRoundResult = racingGameResult.getLastRoundResult();
         List<RacingCarCurrentStatus> raceProgress = lastRoundResult.getRaceProgress();
         List<Integer> carPositions = raceProgress.stream()
-                .map(RacingCarCurrentStatus::whereIsThisCarNow)
+                .map(RacingCarCurrentStatus::position)
                 .collect(Collectors.toList());
 
         assertThat(carPositions).allMatch(progress -> progress <= NUMBER_OF_TRIAL);

@@ -12,9 +12,9 @@ class RacingCarTest {
 
     @DisplayName("차량 위치 확인 테스트")
     @Test
-    void whereIsCar() {
+    void position() {
         RacingCar racingCar = new RacingCar(NAME, new AlwaysMove());
-        assertEquals(0, racingCar.whereIsCar());
+        assertEquals(0, racingCar.position());
     }
 
     @DisplayName("차량 진행 테스트")
@@ -22,13 +22,13 @@ class RacingCarTest {
     void tryToGo() {
         RacingCar racingCar = new RacingCar(NAME, new AlwaysMove());
         racingCar.move();
-        assertEquals(1, racingCar.whereIsCar());
+        assertEquals(1, racingCar.position());
     }
     
     @DisplayName("차량 이름 확인 테스트")
     @Test
-    void whatIsYourName() {
+    void name() {
         RacingCar racingCar = new RacingCar(NAME, new AlwaysMove());
-        assertEquals(NAME, racingCar.whatIsYourName());
+        assertEquals(NAME, racingCar.name());
     }
 }
