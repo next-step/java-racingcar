@@ -5,15 +5,13 @@ public class Car {
     private static final int moveThreshold = 4;
     private int position;
     
-    public void move() {
+    public int move() {
         if (canMove()) position++;
+        return position;
     }
 
     private boolean canMove() {
         return random.nextInt(10) >= moveThreshold;
     }
 
-    public int getPosition() {
-        return position;
-    }
 }

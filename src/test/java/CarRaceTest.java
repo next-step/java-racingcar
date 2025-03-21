@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,12 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarRaceTest {
-    private CarRace carRace;
-
-    @BeforeEach
-    void setUp() {
-        carRace = new CarRace();
-    }
 
     @ParameterizedTest
     @CsvSource(delimiter = ',', value = {"3,5", "4,5"})
@@ -29,33 +24,60 @@ class CarRaceTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        carRace.ready();
+        InputView inputView = new InputView();
+        inputView.getCarCount();
+        inputView.getRunCount();
 
         List<String> expected = List.of("자동차 대수는 몇 대 인가요?", "시도할 회수는 몇 회 인가요?");
         assertThat(out.toString()).contains(expected);
     }
 
     @ParameterizedTest
-    @CsvSource(delimiter = ',', value = {"-3,0", "0,0", "3,-1"})
-    @DisplayName("자동차 대수와 시도할 회수는 양수여야한다.")
-    void throwIfInputPositive(int carNumber, int tryCount) {
-        String in = String.format("%d%n%d%n", carNumber, tryCount);
-        System.setIn(new ByteArrayInputStream(in.getBytes()));
+    @ValueSource(strings = {"-3\n","0\n"})
+    @DisplayName("자동차 대수는 양수여야한다.")
+    void throwIfCarCountPositive(String carCount) {
+        System.setIn(new ByteArrayInputStream(carCount.getBytes()));
 
-        assertThatThrownBy(carRace::ready)
+        InputView inputView = new InputView();
+
+        assertThatThrownBy(inputView::getCarCount)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0\n","-1\n"})
+    @DisplayName("시도할 회수는 양수여야한다.")
+    void throwIfRunCountPositive(String runCount) {
+        System.setIn(new ByteArrayInputStream(runCount.getBytes()));
+
+        InputView inputView = new InputView();
+
+        assertThatThrownBy(inputView::getRunCount)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @CsvSource(delimiter = ',', value = {"2,2", "4,5", "1,3"})
-    @DisplayName("주어진 횟수 동안 자동차는 전진하거나 멈출 수 있으며, 횟수마다 실행 결과를 출력한다.")
-    void printStartResult(int carNumber, int tryCount) {
-        String in = String.format("%s%n%s%n", carNumber, tryCount);
-        System.setIn(new ByteArrayInputStream(in.getBytes()));
+    @DisplayName("자동차 경주를 실행하면, 시도 횟수 동안의 자동차의 위치를 반환한다.")
+    void runCarRaceAndGetResult(int carCount, int runCount) {
+        CarRace carRace = new CarRace(carCount, runCount);
+        List<List<Integer>> result = carRace.run();
+
+        assertThat(result)
+                .hasSize(runCount)
+                .allMatch(list -> list.size() == carCount);
+    }
+
+    @Test
+    @DisplayName("자동차 경주의 실행 결과를 출력한다.")
+    void printStartResult() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        carRace.ready();
+        List<List<Integer>> result = List.of(List.of(1, 2, 3), List.of(1, 2, 3));
+
+        ResultView resultView = new ResultView();
+        resultView.print(result);
 
         assertThat(out.toString()).containsPattern("실행 결과\\R((-*\\R)*\\R)*");
     }
