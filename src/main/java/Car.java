@@ -1,8 +1,14 @@
 public class Car {
+    private final String name;
     private int location;
 
-    public Car(int location) {
+    public Car(String name, int location) {
+        this.name = name;
         this.location = location;
+    }
+
+    public boolean hasName(String name) {
+        return this.name.equals(name);
     }
 
     public void randomGo(int randomValue) {
