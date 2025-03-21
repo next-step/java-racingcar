@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,24 +15,27 @@ public class DefaultRacingCarGameWinnerStrategy implements RacingCarGameWinnerSt
         return INSTANCE;
     }
 
-    private List<RacingCar> sort(List<RacingCar> racingCars) {
-        racingCars = new ArrayList<>(racingCars);
-        Collections.sort(racingCars);
-        return racingCars;
-    }
-
     @Override
     public List<RacingCar> getWinners(List<RacingCar> racingCars) {
         if (racingCars == null || racingCars.isEmpty()) {
             return Collections.emptyList();
         }
 
-        racingCars = sort(racingCars);
-        RacingCar winner = racingCars.get(0);
+        RacingCar firstPlace = getFirstPlace(racingCars);
 
         return racingCars
             .stream()
-            .filter(car -> winner.compareTo(car) == 0)
+            .filter(car -> firstPlace.compareTo(car) == 0)
             .collect(Collectors.toList());
+    }
+
+    private RacingCar getFirstPlace(List<RacingCar> racingCars) {
+        return sort(racingCars).get(0);
+    }
+
+    private List<RacingCar> sort(List<RacingCar> racingCars) {
+        racingCars = new ArrayList<>(racingCars);
+        Collections.sort(racingCars);
+        return racingCars;
     }
 }

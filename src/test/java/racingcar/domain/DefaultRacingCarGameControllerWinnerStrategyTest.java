@@ -1,16 +1,14 @@
-package racingcar;
+package racingcar.domain;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-class DefaultRacingCarGameWinnerStrategyTest {
+class DefaultRacingCarGameControllerWinnerStrategyTest {
 
     @Test
     void 동점이면_모두_winner다() {

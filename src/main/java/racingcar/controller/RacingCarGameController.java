@@ -1,28 +1,31 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.List;
 
-import racingcar.ui.RacingCarInput;
-import racingcar.ui.RacingCarInputView;
-import racingcar.ui.RacingCarResult;
-import racingcar.ui.RacingCarResultView;
-import utils.RandomUtils;
+import racingcar.domain.DefaultRacingCarGameWinnerStrategy;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCarFactory;
+import racingcar.domain.RacingCarGameWinnerStrategy;
+import racingcar.view.RacingCarInput;
+import racingcar.view.RacingCarInputView;
+import racingcar.view.RacingCarResult;
+import racingcar.view.RacingCarResultView;
 
-public class RacingCarGame {
+public class RacingCarGameController {
 
     private final RacingCarInputView inputView;
     private final RacingCarResultView resultView;
     private final RacingCarGameWinnerStrategy winnerStrategy;
 
-    public RacingCarGame() {
+    public RacingCarGameController() {
         this(RacingCarInputView.getInstance(),
              RacingCarResultView.getInstance(),
              DefaultRacingCarGameWinnerStrategy.getInstance());
     }
 
-    private RacingCarGame(RacingCarInputView inputView,
-                         RacingCarResultView resultView,
-                         RacingCarGameWinnerStrategy winnerStrategy) {
+    private RacingCarGameController(RacingCarInputView inputView,
+                                    RacingCarResultView resultView,
+                                    RacingCarGameWinnerStrategy winnerStrategy) {
         this.inputView = inputView;
         this.resultView = resultView;
         this.winnerStrategy = winnerStrategy;
