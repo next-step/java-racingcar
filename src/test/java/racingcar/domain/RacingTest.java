@@ -1,13 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.random.RandomNumberGenerator;
+import racingcar.FixedNumberGenerator;
 
 class RacingTest {
 
@@ -19,11 +18,7 @@ class RacingTest {
     carNames.add("crong");
     int dummyNumber = 1;
 
-    List<Car> carList = carNames.stream()
-        .map(Car::new)
-        .collect(Collectors.toList());
-
-    Cars cars = new Cars(carList);
+    Cars cars = Cars.fromNames(carNames);
     Racing racing = new Racing(cars, new FixedNumberGenerator(dummyNumber));
 
     assertThat(racing.getCars().size()).isEqualTo(carNames.size());
@@ -36,11 +31,7 @@ class RacingTest {
     carNames.add("pobi");
     int randomNumber = 3;
 
-    List<Car> carList = carNames.stream()
-        .map(Car::new)
-        .collect(Collectors.toList());
-
-    Cars cars = new Cars(carList);
+    Cars cars = Cars.fromNames(carNames);
     Racing racing = new Racing(cars, new FixedNumberGenerator(randomNumber));
     Cars result = racing.start();
     assertThat(result.get(0).getPosition()).isEqualTo(0);
@@ -53,11 +44,7 @@ class RacingTest {
     carNames.add("pobi");
     int randomNumber = 4;
 
-    List<Car> carList = carNames.stream()
-        .map(Car::new)
-        .collect(Collectors.toList());
-
-    Cars cars = new Cars(carList);
+    Cars cars = Cars.fromNames(carNames);
     Racing racing = new Racing(cars, new FixedNumberGenerator(randomNumber));
     Cars result = racing.start();
     assertThat(result.get(0).getPosition()).isEqualTo(1);

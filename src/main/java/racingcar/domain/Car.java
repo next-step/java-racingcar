@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
   private final String name;
@@ -7,9 +7,13 @@ public class Car {
   public static final int CAR_NAME_MAX_LENGTH = 5;
 
   public Car(String name) {
+    this(name, 0);
+  }
+
+  public Car(String name, int position) {
     validateName(name);
     this.name = name;
-    this.position = 0;
+    this.position = position;
   }
 
   private void validateName(String name) {

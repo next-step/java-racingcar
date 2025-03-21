@@ -1,11 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import racingcar.random.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -17,12 +12,7 @@ public class RacingCarGame {
     int rounds = InputView.inputRound();
     InputView.closeScanner();
 
-    Cars cars = new Cars(
-        carNames.stream()
-            .map(Car::new)
-            .collect(Collectors.toList())
-    );
-
+    Cars cars = Cars.fromNames(carNames);
     Racing racing = new Racing(cars, new RandomNumberGenerator());
 
     Cars lastRecords = null;
@@ -31,7 +21,7 @@ public class RacingCarGame {
       ResultView.printResult(lastRecords);
     }
     if (lastRecords != null) {
-      List<String> winners = RacingWinnerDeterminer.getWinner(lastRecords);
+      List<String> winners = cars.getWinners(lastRecords);
       ResultView.printWinner(winners);
     }
   }
