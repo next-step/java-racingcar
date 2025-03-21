@@ -1,40 +1,40 @@
-package edu.nextstep.camp.carracing;
+package edu.nextstep.camp.carracing.domain;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private static final String MOVE_SYMBOL = "-";
 
     private final CarName name;
-    private int position;
+    private final Position position;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, new Position());
     }
 
-    public Car(String name, int position) {
+    public Car(String name, Position position) {
         this.name = new CarName(name);
         this.position = position;
     }
 
     public void move(int number) {
         if (number >= MOVE_THRESHOLD) {
-            position++;
+            this.position.increment();
         }
     }
 
     public String getCurrentPositionString() {
-        return String.format("%s : %s", name.getName(), MOVE_SYMBOL.repeat(position));
+        return String.format("%s : %s", name.getName(), position.repeatSymbol(MOVE_SYMBOL));
     }
 
     public boolean isMaxPosition(int position) {
-        return this.position == position;
+        return this.position.isSame(position);
+    }
+
+    public int getMaxValue(int value) {
+        return this.position.max(value);
     }
 
     public CarName getName() {
         return name;
-    }
-
-    public int getPosition() {
-        return position;
     }
 }
