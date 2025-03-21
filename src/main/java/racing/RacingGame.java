@@ -16,7 +16,7 @@ public class RacingGame {
 
         List<Car> cars = generateCarsWithName(carNames);
 
-        int tryTimes = InputView.inputCarCount(Messages.ASK_TRY_TIMES);
+        int tryTimes = InputView.inputTryTimes();
 
         ResultView.showResult();
 
