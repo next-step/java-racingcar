@@ -1,10 +1,13 @@
-package racing;
+package racing.domain;
+
+import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.List;
 
 public class RacingCarService {
 
-    String[] carNames;
+    List<String> carNames;
     private int numberOfLaps;
 
 

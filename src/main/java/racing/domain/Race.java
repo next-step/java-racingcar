@@ -1,7 +1,10 @@
-package racing;
+package racing.domain;
+
+import racing.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Race {
     private List<Car> cars;
@@ -32,23 +35,31 @@ public class Race {
     }
 
     private List<Car> getWinners() {
-        final int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
+        return getCarByPosition(getMaxPosition());
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(car -> car.max(0))
                 .max()
                 .orElse(0);
+    }
 
+    private List<Car> getCarByPosition(int position) {
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isSamePosition(position))
                 .collect(Collectors.toList());
     }
 
     private void performLapAndDisplay() {
         System.out.println("실행 결과");
         ResultView.displayCar(getCars());
-        for(int i = 0; i < getNumberOfLaps() - 1; i++) {
-            performLap();
-            ResultView.displayCar(getCars());
-        }
+
+        IntStream.range(0, getNumberOfLaps() - 1)
+                .forEach(i -> {
+                    performLap();
+                    ResultView.displayCar(getCars());
+                });
     }
 
     private void performLap() {

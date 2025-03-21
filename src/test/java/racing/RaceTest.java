@@ -1,33 +1,47 @@
 package racing;
 
-import org.assertj.core.api.AssertionsForInterfaceTypes;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.CarFactory;
+import racing.domain.Race;
+import racing.view.ResultView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static racing.CarFactory.mustGoMoveConditionSupplier;
-import static racing.ResultView.RACE_FINISHED;
-import static racing.ResultView.RACE_START;
+import static racing.domain.CarFactory.mustGoMoveConditionSupplier;
+import static racing.view.ResultView.RACE_FINISHED;
+import static racing.view.ResultView.RACE_START;
 
 public class RaceTest {
+
+    List<String> carNames;
+    int numberOfLaps;
+
+    @BeforeEach
+    public void setUp() {
+        carNames = new ArrayList<>();
+        carNames.add("car1");
+        carNames.add("car2");
+        carNames.add("car3");
+
+        numberOfLaps = 5;
+    }
+
     @Test
     public void 사용자가_입력한만큼의_자동차를_생성해야한다() {
-        String[] carNames = {"car1", "car2", "car3"};
-        int numberOfLaps = 5;
-
         List<Car> cars = CarFactory.createRacingCars(carNames);
         Race race = new Race(cars, numberOfLaps);
-        assertThat(race.getCars().size()).isEqualTo(carNames.length);
+        assertThat(race.getCars().size()).isEqualTo(carNames.size());
     }
 
     @Test
     public void 사용자가_입력한만큼의_횟수를_반복해야한다() {
-        String[] carNames = {"car1", "car2", "car3"};
-        int numberOfLaps = 5;
         List<Car> cars = CarFactory.createRacingCars(carNames);
         Race race = new Race(cars, numberOfLaps);
         assertThat(race.getNumberOfLaps()).isEqualTo(numberOfLaps);
@@ -41,13 +55,11 @@ public class RaceTest {
         System.setOut(new PrintStream(outContent));
 
         try {
-            String[] carNames = {"car1", "car2", "car3"};
-            int numberOfLaps = 5;
             List<Car> cars = CarFactory.createRacingCars(carNames, mustGoMoveConditionSupplier);
             Race race = new Race(cars, numberOfLaps);
             race.startRacingAndReturnWinner();
 
-            int numberOfCars = carNames.length;
+            int numberOfCars = carNames.size();
             String firstLap = String.format("%s\n", ResultView.CAR_POSITION_PROGRESS).repeat(numberOfCars);
             String lastLap = String.format("%s\n", ResultView.CAR_POSITION_PROGRESS.repeat(numberOfLaps)).repeat(numberOfCars);
 
@@ -63,8 +75,6 @@ public class RaceTest {
 
     @Test
     public void givenCarList_whenFinishedLap_thenGetCarRacingWinner() {
-        String[] carNames = {"car1", "car2", "car3"};
-        int numberOfLaps = 5;
         List<Car> cars = CarFactory.createRacingCars(carNames, mustGoMoveConditionSupplier);
 
         Race race = new Race(cars, numberOfLaps);
