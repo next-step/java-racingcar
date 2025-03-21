@@ -1,8 +1,8 @@
 package racing.view;
 
-import racing.entity.Car;
-import racing.entity.RacingCars;
-import racing.message.GameMessage;
+import racing.domain.Car;
+import racing.domain.RacingCars;
+import racing.view.message.GameMessage;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class RacingGameOutputView {
     }
 
     public static void printRoundResult(RacingCars racingCars) {
-        List<Car> cars = racingCars.getCars();
+        List<Car> cars = racingCars.getCarList();
 
         for (Car car : cars) {
             printCarInfo(car);

@@ -1,15 +1,9 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.entity.Car;
-import racing.entity.RacingCars;
-import racing.entity.RacingGame;
 import racing.rule.RandomMoveRule;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,51 +27,6 @@ class RacingGameTest {
 
         boolean actual = randomMoveRule.isMovable(input);
         assertThat(actual).isFalse();
-    }
-
-    @Test
-    @DisplayName("가장 멀리간 자동차로 우승자를 선정한다. (단독 우승) ")
-    public void select_winner_basedOn_MaxPosition() {
-        // given
-        RacingGame racingGame = new RacingGame(new RandomMoveRule());
-
-        Car ford = new Car("ford");
-        Car kia = new Car("kia");
-        Car tesla = new Car("tesla");
-        RacingCars racingCars = new RacingCars(List.of(ford, kia, tesla));
-
-        // when
-        for (int i = 0; i < 3; i++) {
-            racingGame.moveCar(ford);
-        }
-
-        // then
-        List<String> actual = racingGame.getWinners(racingCars);
-        List<String> expected = List.of("ford");
-        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
-    }
-
-    @Test
-    @DisplayName("가장 멀리간 자동차로 우승자를 선정한다. (동반 우승) ")
-    public void select_joint_winners_basedOn_MaxPosition() {
-        // given
-        RacingGame racingGame = new RacingGame(new RandomMoveRule());
-
-        Car ford = new Car("ford");
-        Car kia = new Car("kia");
-        Car tesla = new Car("tesla");
-        RacingCars racingCars = new RacingCars(List.of(ford, kia, tesla));
-
-        // when
-        for (int i = 0; i < 3; i++) {
-            racingGame.moveCar(ford);
-            racingGame.moveCar(tesla);
-        }
-
-        // then
-        List<String> actual = racingGame.getWinners(racingCars);
-        List<String> expected = List.of("ford", "tesla");
-        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
 
 }

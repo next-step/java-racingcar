@@ -1,9 +1,9 @@
 package racing.view;
 
-import racing.entity.Car;
-import racing.entity.RacingCars;
+import racing.domain.Car;
+import racing.domain.RacingCars;
 import racing.generator.CarListGenerator;
-import racing.message.GameMessage;
+import racing.view.message.GameMessage;
 
 import java.util.List;
 import java.util.Scanner;

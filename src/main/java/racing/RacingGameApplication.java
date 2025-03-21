@@ -1,7 +1,7 @@
 package racing;
 
-import racing.entity.RacingCars;
-import racing.entity.RacingGame;
+import racing.domain.RacingCars;
+import racing.domain.RacingGame;
 import racing.rule.RandomMoveRule;
 import racing.view.RacingGameInputView;
 import racing.view.RacingGameOutputView;
@@ -25,7 +25,7 @@ public class RacingGameApplication {
         }
 
         // 우승자 발표
-        List<String> winners = racingGame.getWinners(racingCars);
+        List<String> winners = racingCars.getLeadingCarNameList();
         RacingGameOutputView.printRacingGameWinners(winners);
     }
 }
