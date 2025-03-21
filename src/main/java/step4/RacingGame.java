@@ -6,12 +6,23 @@ import java.util.Random;
 
 public class RacingGame {
     private final List<Car> cars;
+    private List<String> carNames;
 
-    public RacingGame(int carCount) {
+    public RacingGame(int carCount, List<String> carNames) {
         cars = new ArrayList<>();
+        this.carNames = carNames;
+
         for(int i = 0; i < carCount; i++) {
             cars.add(new Car(new Random()));
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public List<String> getCarNames() {
+        return carNames;
     }
 
     public List<List<String>> play(int roundCount) {

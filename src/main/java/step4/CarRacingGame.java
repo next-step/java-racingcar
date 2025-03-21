@@ -14,10 +14,11 @@ import java.util.Scanner;
 public class CarRacingGame {
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
-        int carCount = inputView.getCarCountFromUser();
+        List<String> carNames = inputView.getCarNamesFromUser();
         int roundCount = inputView.getRoundCountFromUser();
+        int carCount = inputView.getCarCountFromUser();
 
-        RacingGame racingGame = new RacingGame(carCount);
+        RacingGame racingGame = new RacingGame(carCount, carNames);
         List<List<String>> raceResults = racingGame.play(roundCount);
 
         ResultView resultView = new ResultView();

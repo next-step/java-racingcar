@@ -1,13 +1,15 @@
 package step4;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import step3.Car;
-import step3.InputView;
-import step3.RacingGame;
-import step3.ResultView;
+import step4.Car;
+import step4.InputView;
+import step4.RacingGame;
+import step4.ResultView;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +17,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-// 질문:
-// - 어떤 메소드를 테스트로 작성해야 하는가? 사용자에게 입력을 받는 사소한 메소드도 테스트를 작성하는 게 좋은가?
-// - Scanner을 사용한 메소드는 어떻게 테스트를 작성해야 하는가?
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class RacingGameTest {
 
@@ -26,14 +27,39 @@ class RacingGameTest {
 
     @Test
     void testCarNameInputValidation() {
+        // 유효한 입력값 테스트
+
         // 자동차 이름은 한 번에 일괄 입력 받으며, 자동차 이름은 쉼표(,)를 기준으로 구분한다.
-        //  e.g. "자동차1", "자동차2", "자동차3"
-        // InputView.getCarNames() 구현 시 split(",") 이용
+        String input = "하나, 두식이, 석삼, 너구리";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        InputView inputView = new InputView(new Scanner(System.in));
+        List<String> carNames = inputView.getCarNamesFromUser();
+
+        assertTrue(carNames.contains("하나"));
+        assertTrue(carNames.contains("두식이"));
+        assertTrue(carNames.contains("석삼"));
+        assertTrue(carNames.contains("너구리"));
 
         // 사용자가 입력한 이름의 숫자만큼 자동차 대수를 생성한다.
-        // e.g. e.g. "자동차1", "자동차2", "자동차3" -> RacingGame.getCarCount = 3
-        //  InputView.getCarCount 기존 로직을 클래스 내 carNames 이용하는 식으로 리팩토링
+        assertEquals(4, carNames.size());
     }
+
+    @Test
+    void testCarNameInputValidation_TooFewNames() {
+        // 입력값: "하나"
+        String input = "하나";
+        // [TODO] 재귀함수 포함 메소드 테스트 방법?
+    }
+
+    @Test
+    void testCarNameInputValidation_MissingComma() {
+        // 입력값: 쉼표 없는 이름
+        String input = "하나 두식이 석삼";
+        // [TODO] 재귀함수 포함 메소드 테스트 방법?
+    }
+
 
     @Test
     void testInputViewGetRoundCountFromUser() {
