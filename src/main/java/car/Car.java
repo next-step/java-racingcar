@@ -10,8 +10,13 @@ public class Car {
     private final String name;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         validateName(name);
         this.name = name;
+        this.position = position;
     }
 
     public void move(NumberGenerator numberGenerator) {
