@@ -44,4 +44,16 @@ public class CarFactoryTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차는 최소 2대 이상이어야 합니다.");
     }
+
+    @Test
+    @DisplayName("자동차 copy가 정상적으로 이루어지는지 확인한다.")
+    public void copyCarsTest() {
+        // given
+        List<Car> cars = List.of(new Car("a", 1), new Car("b", 2), new Car("c", 3));
+        // when
+        List<Car> copyCars = CarFactory.copyCars(cars);
+
+        // then
+        assertThat(copyCars).isNotSameAs(cars);
+    }
 }
