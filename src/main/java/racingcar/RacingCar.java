@@ -1,13 +1,22 @@
 package racingcar;
 
 import racingcar.ui.RacingCarResult;
+import utils.RandomUtils;
 
 public class RacingCar implements Comparable<RacingCar> {
+
+    private static final RandomRacingCarMoveStrategy DEFAULT_MOVE_STRATEGY
+        = new RandomRacingCarMoveStrategy(RandomUtils.getInstance());
+
     private int distance;
     private final RacingCarName carName;
 
     public RacingCar(RacingCarName carName) {
         this.carName = carName;
+    }
+
+    public void moveIfMovable() {
+        moveIfMovable(DEFAULT_MOVE_STRATEGY);
     }
 
     public void moveIfMovable(RacingCarMoveStrategy moveStrategy) {

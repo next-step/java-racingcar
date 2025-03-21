@@ -14,6 +14,12 @@ public class RacingCarGame {
     private final RacingCarResultView resultView;
     private final RacingCarGameWinnerStrategy winnerStrategy;
 
+    public RacingCarGame() {
+        this(RacingCarInputView.getInstance(),
+             RacingCarResultView.getInstance(),
+             DefaultRacingCarGameWinnerStrategy.getInstance());
+    }
+
     public RacingCarGame(RacingCarInputView inputView,
                          RacingCarResultView resultView,
                          RacingCarGameWinnerStrategy winnerStrategy) {
@@ -26,12 +32,9 @@ public class RacingCarGame {
         RacingCarInput input = inputView.viewInput();
 
         List<RacingCar> racingCars = RacingCarFactory.createRacingCars(input.getCarNames());
-        RandomRacingCarMoveStrategy moveStrategy
-            = new RandomRacingCarMoveStrategy(RandomUtils.getInstance());
-
 
         for (int i = 0; i < input.getTryCount(); i++) {
-            moveIfMovable(racingCars, moveStrategy);
+            moveIfMovable(racingCars);
             resultView.viewCurrent(RacingCarResult.of(racingCars));
         }
 
@@ -39,9 +42,9 @@ public class RacingCarGame {
         resultView.viewWinners(RacingCarResult.of(winners));
     }
 
-    private void moveIfMovable(List<RacingCar> racingCars, RacingCarMoveStrategy moveStrategy) {
+    private void moveIfMovable(List<RacingCar> racingCars) {
         for (RacingCar car : racingCars) {
-            car.moveIfMovable(moveStrategy);
+            car.moveIfMovable();
         }
     }
 }
