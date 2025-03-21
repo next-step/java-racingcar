@@ -9,11 +9,11 @@ public class CarName {
 
     public CarName(String carName) {
         validate(carName);
-        this.value = carName;
+        this.value = carName.trim();
     }
 
     private void validate(String carName) throws CarNameException {
-        if (carName.length() > MAX_LENGTH) {
+        if (carName.trim().length() > MAX_LENGTH) {
             throw new CarNameException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
