@@ -29,7 +29,7 @@ public class RacingCarViewTest {
         RacingCarView carView = new RacingCarView(car);
         System.setOut(new PrintStream(outStream));
         carView.showCar();
-        assertEquals("Car #1 [ GO ] : - (1)\n", outStream.toString());
+        assertEquals("Car #1 : - (1)\n", outStream.toString());
         System.setOut(System.out);
     }
 
@@ -49,7 +49,7 @@ public class RacingCarViewTest {
         RacingCarView carView = new RacingCarView(car);
         System.setOut(new PrintStream(outStream));
         carView.showCar();
-        assertEquals("Car #1 [STOP] : (0)\n", outStream.toString());
+        assertEquals("Car #1 : (0)\n", outStream.toString());
         System.setOut(System.out);
     }
 
