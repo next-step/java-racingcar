@@ -1,4 +1,4 @@
-package step3.domain;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +8,10 @@ public class CarSimulator {
     private final List<Car> cars;
     private final List<CarPositions> history;
 
-    public CarSimulator(int carCount, int movementCount) {
+    public CarSimulator(int movementCount, List<Car> cars) {
         this.movementCount = movementCount;
-        this.cars = new ArrayList<>();
+        this.cars = cars;
         this.history = new ArrayList<>();
-
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
     }
 
     public List<CarPositions> getHistory() {
@@ -23,10 +19,10 @@ public class CarSimulator {
     }
 
     public CarPositions getPositions() {
-        List<Integer> positions = new ArrayList<>();
+        List<CarPosition> positions = new ArrayList<>();
 
         for (Car car : cars) {
-            positions.add(car.getPosition());
+            positions.add(CarPosition.of(car));
         }
 
         return new CarPositions(positions);

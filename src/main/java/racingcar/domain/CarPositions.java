@@ -1,16 +1,16 @@
-package step3.domain;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarPositions {
-    private final List<Integer> positions;
+    private final List<CarPosition> positions;
 
-    public CarPositions(List<Integer> positions) {
+    public CarPositions(List<CarPosition> positions) {
         this.positions = positions;
     }
 
-    public List<Integer> getPositions() {
+    public List<CarPosition> getPositions() {
         return new ArrayList<>(positions);
     }
 }

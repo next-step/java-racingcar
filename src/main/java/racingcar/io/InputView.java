@@ -1,8 +1,8 @@
-package step3.io;
+package racingcar.io;
 
 import java.util.Scanner;
 
-import step3.exception.InvalidInputException;
+import racingcar.exception.InvalidInputException;
 
 public class InputView {
 
@@ -12,8 +12,9 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public int getCarCount() throws InvalidInputException {
-        return readInt("자동차 대수는 몇 대 인가요?");
+    public String[] inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine().split(",");
     }
 
     public int getMovementCount() throws InvalidInputException {

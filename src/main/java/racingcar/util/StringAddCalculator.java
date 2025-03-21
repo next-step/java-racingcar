@@ -1,4 +1,4 @@
-package step2;
+package racingcar.util;
 
 import java.util.ArrayList;
 import java.util.List;

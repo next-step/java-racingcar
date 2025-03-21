@@ -1,4 +1,4 @@
-package step3.domain;
+package racingcar.domain;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ class CarSimulatorTest {
     @Test
     @DisplayName("시뮬레이션 후 히스토리 크기를 확인한다")
     void historySize() {
-        CarSimulator carSimulator = new CarSimulator(2, 3);
+        CarSimulator carSimulator = new CarSimulator(3, getCars());
         carSimulator.simulate();
 
         List<CarPositions> history = carSimulator.getHistory();
@@ -23,8 +23,16 @@ class CarSimulatorTest {
     @Test
     @DisplayName("초기 상태에서 히스토리가 비어 있는지 확인한다")
     void initialHistory() {
-        CarSimulator carSimulator = new CarSimulator(2, 3);
+        CarSimulator carSimulator = new CarSimulator(2, getCars());
         List<CarPositions> history = carSimulator.getHistory();
         assertTrue(history.isEmpty());
+    }
+
+    private List<Car> getCars() {
+        return List.of(
+            new Car("onion"),
+            new Car("rice"),
+            new Car("apple")
+        );
     }
 }
