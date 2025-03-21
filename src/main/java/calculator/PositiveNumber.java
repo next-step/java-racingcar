@@ -14,4 +14,8 @@ public class PositiveNumber {
     public int getValue(){
         return value;
     }
+
+    public PositiveNumber sum(PositiveNumber number) {
+        return new PositiveNumber(value + number.getValue());
+    }
 }

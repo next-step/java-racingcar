@@ -13,7 +13,8 @@ class CarTest {
     @Test
     @DisplayName("초기 Car는 0이다.")
     public void initializeCar() {
-        assertThat(new Car(0, "crong").getDistance()).isEqualTo(0);
+        Car car = new Car(0, "crong");
+        assertThat(car.isSameDistance(0)).isTrue();
     }
 
     @Test
@@ -21,7 +22,7 @@ class CarTest {
     public void move() {
         Car car = new Car(0, "crong");
         car.move(new TestNumberGenerator(4));
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.isSameDistance(1)).isTrue();
     }
 
     @Test
@@ -29,7 +30,7 @@ class CarTest {
     public void stop() {
         Car car = new Car(0, "crong");
         car.move(new TestNumberGenerator(3));
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.isSameDistance(1)).isFalse();
     }
 
     @ParameterizedTest
