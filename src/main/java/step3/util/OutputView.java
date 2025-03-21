@@ -1,21 +1,22 @@
 package step3.util;
 
-import step3.game.GameHistory;
+import step3.game.Car;
+import step3.game.GameRound;
 
 import java.util.List;
 
 public class OutputView {
 
-    public static void printResult(List<List<GameHistory>> result, List<String> winners) {
+    public static void printResult(List<GameRound> result, List<String> winners) {
         System.out.println("실행결과");
         printHistories(result);
         printWinners(winners);
     }
 
-    private static void printHistories(List<List<GameHistory>> result) {
-        for (List<GameHistory> history : result) {
-            for (int i = 0; i < history.size(); i++) {
-                System.out.println(history.get(i).toString());
+    private static void printHistories(List<GameRound> result) {
+        for (GameRound round : result) {
+            for (Car car : round.getRound()) {
+                System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
             }
             System.out.println();
         }
