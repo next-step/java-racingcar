@@ -43,7 +43,7 @@ class ReportTest {
         moveCar(car, Car.MOVE_THRESHOLD);
 
         // when
-        var champions = Report.findChampions.apply(List.of(car));
+        var champions = Report.findChampions(List.of(car));
 
         // then
         Assertions.assertThat(champions)
@@ -63,7 +63,7 @@ class ReportTest {
         var expectedChampionNames = List.of(car.getName(), car2.getName());
 
         // when
-        var champions = Report.findChampions.apply(cars);
+        var champions = Report.findChampions(cars);
 
         // then
         Assertions.assertThat(champions)
@@ -84,7 +84,7 @@ class ReportTest {
         var expectedChampionNames = List.of(car.getName());
 
         // when
-        var champions = Report.findChampions.apply(cars);
+        var champions = Report.findChampions(cars);
 
         // then
         Assertions.assertThat(champions)

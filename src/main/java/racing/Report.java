@@ -7,17 +7,6 @@ import java.util.stream.Collectors;
 public class Report {
 
     private final List<Car> cars;
-    public static final Function<List<Car>, List<String>> findChampions = cars -> {
-        var championsScore = cars.stream()
-                                 .mapToInt(Car::getPosition)
-                                 .max();
-
-        return cars.stream()
-                   .filter(car -> car.getPosition() == championsScore.getAsInt())
-                   .map(Car::getName)
-                   .collect(Collectors.toUnmodifiableList());
-    };
-
     public Report(List<Car> cars) {
         this.cars = cars;
     }
@@ -32,5 +21,16 @@ public class Report {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public static List<String> findChampions(List<Car> cars) {
+        var championsScore = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == championsScore.getAsInt())
+                .map(Car::getName)
+                .collect(Collectors.toUnmodifiableList());
     }
 }

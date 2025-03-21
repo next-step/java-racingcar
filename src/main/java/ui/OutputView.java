@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class OutputView {
     public static void printChampion(Report report) {
-        var champions = Report.findChampions.apply(report.getCars());
+        var champions = Report.findChampions(report.getCars());
         System.out.println(String.join(", ", champions) + "가 최종 우승했습니다.");
     }
 
