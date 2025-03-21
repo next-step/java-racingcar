@@ -3,6 +3,9 @@ public class Car {
     private int location;
 
     public Car(String name, int location) {
+        if (name.length() > 5 || name.isBlank()) {
+            throw new IllegalArgumentException();
+        }
         this.name = name;
         this.location = location;
     }
