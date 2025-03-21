@@ -1,21 +1,32 @@
 package ui;
 
+import racing.Car;
 import racing.GrandPrix;
-import racing.Reports.ScoreBoard;
+import racing.Report;
+
+import java.util.List;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class OutputView {
-    private static final ScoreBoard consoleScoreBoard = new ConsoleScoreBoard();
+    public static void printChampion(Report report) {
+        var champions = Report.findChampions(report.getCars());
+        System.out.println(String.join(", ", champions) + "가 최종 우승했습니다.");
+    }
 
-    public static void printResult(GrandPrix grandPrix) {
-        var reports = grandPrix.report();
-        reports.print(consoleScoreBoard);
+    public static void printPosition(Report report) {
+        printPosition(report.getCars().size(), report);
         System.out.println();
     }
 
-    public static class ConsoleScoreBoard implements ScoreBoard {
-        @Override
-        public void print(int position) {
-            System.out.println("-".repeat(position));
-        }
+    private static void printPosition(Integer carCount, Report report) {
+        IntStream
+                .range(0, carCount)
+                .forEach(index -> {
+                    var car = report.findCarByIndex(index);
+                    var printMessage = car.getName() + " : " + "-".repeat(car.getPosition());
+                    System.out.println(printMessage);
+                });
     }
 }

@@ -9,14 +9,18 @@ public class GrandPrix {
     private final List<Round> rounds;
     private final List<Car> cars;
 
-    public GrandPrix(int totalRound, int totalCars) {
+    public GrandPrix(int totalRound, List<String> names) {
+        this(totalRound, names, new ZeroToTenDice());
+    }
+
+    GrandPrix(int totalRound, List<String> names, Dice dice) {
         this.currentRound = 0;
         this.rounds = IntStream.range(0, totalRound)
-                               .mapToObj(i -> new Round(new ZeroToTenDice()))
+                               .mapToObj(i -> new Round(dice))
                                .collect(Collectors.toUnmodifiableList());
-        this.cars = IntStream.range(0, totalCars)
-                             .mapToObj(i -> new Car())
-                             .collect(Collectors.toUnmodifiableList());
+        this.cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public boolean isFinished() {
@@ -29,7 +33,11 @@ public class GrandPrix {
         currentRound++;
     }
 
-    public Reports report() {
-        return new Reports(cars);
+    public Report report() {
+        return new Report(cars);
+    }
+
+    public Integer getCarCount() {
+        return cars.size();
     }
 }
