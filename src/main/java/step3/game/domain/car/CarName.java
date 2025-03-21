@@ -1,4 +1,4 @@
-package step3.game.car;
+package step3.game.domain.car;
 
 import java.util.Objects;
 

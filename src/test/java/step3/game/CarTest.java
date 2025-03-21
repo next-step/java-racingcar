@@ -2,8 +2,10 @@ package step3.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.game.car.Car;
-import step3.game.car.CarName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import step3.game.domain.car.Car;
+import step3.game.domain.car.CarName;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -11,12 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
 
-    @Test
-    @DisplayName("자동차는 전진할 수 있다.")
+    @ParameterizedTest
+    @DisplayName("자동차는 4 이상의 값일 때 전진할 수 있다.")
+    @ValueSource(ints = {4, 5, 6})
     void carCanMove() {
         Car car = new Car(new CarName("test"));
-        car.move();
-        assertThat(car.getDistance()).isEqualTo(1);
+        Car movedCar = car.moveOneStepBy(5);
+        assertThat(movedCar.getDistance()).isEqualTo(1);
     }
 
     @Test
