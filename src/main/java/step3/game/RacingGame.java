@@ -3,45 +3,28 @@ package step3.game;
 import step3.random.RandomStrategy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
-    private final List<List<GameHistory>> result = new ArrayList<>();
+    private final List<Car> cars;
+    private final List<GameRound> result = new ArrayList<>();
     private final int moveCount;
-    private final RandomStrategy random;
-
-    public RacingGame(int moveCount, RandomStrategy random, List<Car> cars) {
-        this.random = random;
+    public RacingGame(int moveCount, List<Car> cars) {
         this.moveCount = moveCount;
         this.cars = cars;
     }
 
-    public List<List<GameHistory>> start() {
+    public List<GameRound> start(RandomStrategy random) {
         for (int i = 0; i < moveCount; i++) {
-            moveCars();
-            saveCurrentCarPositions(i);
+            moveCars(random);
         }
         return result;
     }
 
-    private void moveCars() {
+    private void moveCars(RandomStrategy random) {
         for (Car car : cars) {
-            car.move(random());
+            car.move(random.generateRandomValue());
         }
-    }
-
-    private int random() {
-        return random.generateRandomValue();
-    }
-
-    private void saveCurrentCarPositions(int index) {
-        result.add(new ArrayList<>());
-        for (Car car : cars) {
-            result.get(index).add(new GameHistory(car.getName(), car.getPosition()));
-        }
-    }
-
+        result.add(new GameRound(cars));
     }
 }
