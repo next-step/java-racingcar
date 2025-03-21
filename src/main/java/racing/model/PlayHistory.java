@@ -1,44 +1,22 @@
 package racing.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayHistory {
-    private final List<CarPositions> positions;
 
-    public PlayHistory(List<CarPositions> positions) {
+    private final List<CarsAtTurn> positions;
+
+    public PlayHistory(List<CarsAtTurn> positions) {
         this.positions = positions;
     }
-    public List<CarPositions> getPositions(){
+
+    public List<CarsAtTurn> getPositions() {
         return this.positions;
     }
 
-    public List<String> findWinners(List<String> carNames){
-        int maxPosition = findMaxPosition();
-        CarPositions lastPositions = this.positions.get(this.positions.size()-1);
-        return findMaxPositionNames(carNames, lastPositions, maxPosition);
+    public List<String> findWinners() {
+        CarsAtTurn lastTurn = this.positions.get(this.positions.size() - 1);
+        return lastTurn.findMaxPositionCarNames();
     }
 
-    private int findMaxPosition(){
-        CarPositions lastPositions = this.positions.get(this.positions.size()-1);
-        int maxPosition = 0;
-        for (Integer lastPosition : lastPositions.getCarPositions()) {
-            maxPosition = Math.max(maxPosition, lastPosition);
-        }
-        return maxPosition;
-    }
-
-    private List<String> findMaxPositionNames(List<String> carNames, CarPositions lastPositions, int maxPosition){
-        List<String> lastPositionCarNames = new ArrayList<>();
-        for (int i=0; i<carNames.size(); i++) {
-            insertIfMaxPosition(new PositionCompare(carNames.get(i), lastPositions.getCarPosition(i), maxPosition), lastPositionCarNames);
-        }
-        return lastPositionCarNames;
-    }
-
-    private void insertIfMaxPosition(PositionCompare compare, List<String> lastPositionCarNames){
-        if (compare.isMaxPosition()) {
-            lastPositionCarNames.add(compare.getCarName());
-        }
-    }
 }

@@ -1,11 +1,12 @@
 package racing.model;
 
 public class CarName {
+
     public static final int MAX_NAME_LENGTH = 5;
     private final String name;
 
     public CarName(String name) {
-        if (checkNameLengthExceed(name)){
+        if (checkNameLengthExceed(name)) {
             throw new IllegalArgumentException("차 이름은 5자 이하여야 합니다. input: " + name);
         }
         this.name = name;

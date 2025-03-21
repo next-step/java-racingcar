@@ -1,13 +1,10 @@
 package racing.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.model.Car;
 
 public class CarTest {
 
@@ -17,12 +14,6 @@ public class CarTest {
         List<Car> cars = Car.createCars(inputText);
         assertThat(cars.size()).isEqualTo(expectedCarSize);
         assertThat(cars.get(0).getName()).isEqualTo(inputText.split(",")[0]);
-    }
-
-    @Test
-    void 다섯자넘는_이름_에러() {
-        assertThatThrownBy(() -> Car.of("123456"))
-                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest

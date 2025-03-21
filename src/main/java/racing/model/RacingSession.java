@@ -9,17 +9,17 @@ public class RacingSession {
     private final List<Car> cars;
     private PlayHistory lastPlayHistory;
 
-    private RacingSession(List<Car> cars){
+    private RacingSession(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static RacingSession of(String carNames){
+    public static RacingSession of(String carNames) {
         List<Car> cars = Car.createCars(carNames);
         return new RacingSession(cars);
     }
 
-    public List<CarPositions> startRacing(int turns){
-        List<CarPositions> totalPositions = new ArrayList<>();
+    public List<CarsAtTurn> startRacing(int turns) {
+        List<CarsAtTurn> totalPositions = new ArrayList<>();
         for (int i = 0; i < turns; i++) {
             totalPositions.add(moveCars());
         }
@@ -27,12 +27,13 @@ public class RacingSession {
         return totalPositions;
     }
 
-    public CarPositions moveCars() {
-        List<Integer> positions = new ArrayList<>();
+    public CarsAtTurn moveCars() {
+        List<FixedCar> carsAtTurn = new ArrayList<>();
         for (Car car : cars) {
-            positions.add(car.move(getProgressNumber()));
+            car.move(getProgressNumber());
+            carsAtTurn.add(car.toFixedCar());
         }
-        return new CarPositions(positions);
+        return new CarsAtTurn(carsAtTurn);
     }
 
     public int getProgressNumber() {
@@ -40,17 +41,16 @@ public class RacingSession {
         return random.nextInt(10);
     }
 
-
     public RacingResultDto getRacingResult() {
         List<String> carNames = getCarNames();
-        List<String> winnerNames = this.lastPlayHistory.findWinners(carNames);
+        List<String> winnerNames = this.lastPlayHistory.findWinners();
 
         return new RacingResultDto(carNames, this.lastPlayHistory, winnerNames);
     }
 
-    private List<String> getCarNames(){
+    private List<String> getCarNames() {
         List<String> carNames = new ArrayList<>();
-        for (Car car : this.cars){
+        for (Car car : this.cars) {
             carNames.add(car.getName());
         }
         return carNames;
