@@ -17,13 +17,13 @@ public class Car {
     }
 
     public Car(String name, BooleanSupplier moveConditionSupplier) {
-        validateCarName(name);
+        validateCarNameOrThrow(name);
 
         this.name = name;
         this.moveConditionSupplier = moveConditionSupplier;
     }
 
-    private static boolean validateCarName(String carName) {
+    private void validateCarNameOrThrow(String carName) {
         if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
@@ -31,8 +31,6 @@ public class Car {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
-
-        return true;
     }
 
     public String getName() {
