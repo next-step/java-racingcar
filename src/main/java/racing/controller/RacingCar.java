@@ -1,7 +1,9 @@
-package racing;
+package racing.controller;
 
-import view.InputView;
-import view.ResultView;
+import racing.model.RacingResultDto;
+import racing.model.RacingSession;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 public class RacingCar {
 

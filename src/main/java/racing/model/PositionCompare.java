@@ -1,4 +1,4 @@
-package racing;
+package racing.model;
 
 public class PositionCompare {
     private final String carName;

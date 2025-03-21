@@ -1,7 +1,7 @@
-package view;
+package racing.view;
 
-import racing.CarPositions;
-import racing.RacingResultDto;
+import racing.model.CarPositions;
+import racing.model.RacingResultDto;
 
 import java.util.List;
 
