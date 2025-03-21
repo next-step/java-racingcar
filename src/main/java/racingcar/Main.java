@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
-        int carCount = inputView.getCarCount();
+        String carNames = inputView.getCarNames();
         int attempts = inputView.getAttempts();
 
         ResultView resultView = new ResultView();
@@ -25,9 +25,9 @@ public class Main {
         System.out.println("\n실행 결과");
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(MOVABLE_THRESHOLD));
-        }
+//        for (int i = 0; i < carCount; i++) {
+//            cars.add(new Car(MOVABLE_THRESHOLD));
+//        }
 
         for (int i = 0; i < attempts; i++) {
             for (Car car : cars) {
