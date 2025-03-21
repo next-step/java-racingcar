@@ -2,6 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import step4.racing.Cars;
 import view.InputView;
 import view.ResultView;
 
@@ -14,13 +15,15 @@ public class Main {
 
         int maxRandomNumber = InputView.getMaxRandomNumber();
 
-        List<Car> cars = new ArrayList<>();
+        List<Car> simpleCars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            simpleCars.add(new SimpleCar());
         }
 
+        Cars cars = new Cars(simpleCars);
+
         RacingGame racingGame = new RacingGame(
-            cars,
+            simpleCars,
             maxRandomNumber
         );
         ResultView resultView = new ResultView(cars);
