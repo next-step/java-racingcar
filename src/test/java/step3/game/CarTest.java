@@ -18,7 +18,7 @@ public class CarTest {
     @ValueSource(ints = {4, 5, 6})
     void carCanMove() {
         Car car = new Car(new CarName("test"));
-        Car movedCar = car.moveIfPossible(5);
+        Car movedCar = car.moveOneStepBy(5);
         assertThat(movedCar.getDistance()).isEqualTo(1);
     }
 

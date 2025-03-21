@@ -18,7 +18,7 @@ public class Car {
         this.moveSteps = moveSteps;
     }
 
-    public Car moveIfPossible(int randomValue) {
+    public Car moveOneStepBy(int randomValue) {
         if (RacingCarGame.isMove(randomValue)) {
             return new Car(this.name, moveSteps + 1);
         }

@@ -1,7 +1,5 @@
 package step3.game.domain.car;
 
-import step3.game.domain.RacingCarGame;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +22,7 @@ public class Players {
     public void takeTurn() {
         Set<Car> updatedCars = new HashSet<>();
         for (Car car : cars) {
-            updatedCars.add(car.moveIfPossible(getRandomValue()));
+            updatedCars.add(car.moveOneStepBy(getRandomValue()));
         }
         cars.clear();
         cars.addAll(updatedCars);
