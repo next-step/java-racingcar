@@ -7,9 +7,8 @@ public class Main {
 
         while (!grandPrix.isFinished()) {
             grandPrix.play();
-            OutputView.printPosition(grandPrix);
+            OutputView.printPosition(grandPrix.report());
         }
-        System.out.println();
         OutputView.printChampion(grandPrix.report());
     }
 }

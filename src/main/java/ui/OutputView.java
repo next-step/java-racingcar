@@ -15,9 +15,8 @@ public class OutputView {
         System.out.println(String.join(", ", champions) + "가 최종 우승했습니다.");
     }
 
-    public static void printPosition(GrandPrix grandPrix) {
-        var report = grandPrix.report();
-        printPosition(grandPrix.getCarCount(), report);
+    public static void printPosition(Report report) {
+        printPosition(report.getCars().size(), report);
         System.out.println();
     }
 
