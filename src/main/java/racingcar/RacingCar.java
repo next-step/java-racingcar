@@ -1,26 +1,33 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.ui.RacingCarResult;
+import utils.RandomUtils;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
-    private static final String MOVE_SYMBOL = "-";
+    private static final RandomRacingCarMoveStrategy DEFAULT_MOVE_STRATEGY
+        = new RandomRacingCarMoveStrategy(RandomUtils.getInstance());
+
     private int distance;
-    private final RacingCarMoveStrategy racingCarMoveStrategy;
+    private final RacingCarName carName;
 
-    public RacingCar() {
-        this(new RandomRacingCarMoveStrategy());
-    }
-
-    // visible for testing
-    RacingCar(RacingCarMoveStrategy racingCarMoveStrategy) {
-        this.racingCarMoveStrategy = racingCarMoveStrategy;
+    public RacingCar(RacingCarName carName) {
+        this.carName = carName;
     }
 
     public void moveIfMovable() {
-        if (racingCarMoveStrategy.isMovable()) {
+        moveIfMovable(DEFAULT_MOVE_STRATEGY);
+    }
+
+    public void moveIfMovable(RacingCarMoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             move();
+        }
+    }
+
+    public void moveIfMovable(RacingCarMoveStrategy moveStrategy, int times) {
+        for (int i = 0; i < times; i++) {
+            moveIfMovable(moveStrategy);
         }
     }
 
@@ -28,26 +35,16 @@ public class RacingCar {
         this.distance++;
     }
 
-    private boolean isMovable() {
-        return racingCarMoveStrategy.isMovable();
+    public int getDistance() {
+        return distance;
     }
 
-    public String display() {
-        return MOVE_SYMBOL.repeat(distance);
+    @Override
+    public int compareTo(RacingCar o) {
+        return Integer.compare(o.distance, distance);
     }
 
-    public static List<RacingCar> createRacingCars(int carCount) {
-        if (carCount < 1) {
-            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다.");
-        }
-
-        List<RacingCar> racingCars = new ArrayList<>();
-
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar());
-        }
-
-        return racingCars;
+    public RacingCarResult toResult() {
+        return new RacingCarResult(carName.toString(), distance);
     }
-
 }

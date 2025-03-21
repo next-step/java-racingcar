@@ -1,53 +1,41 @@
 package racingcar;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarTest {
 
     @Test
-    void 초기_상태에서_display는_빈_문자열이다() {
-        RacingCar car = new RacingCar();
-        assertThat(car.display()).isEqualTo("");
+    void 초기_상태의_distance는_0이다() {
+        RacingCar car = new RacingCar(new RacingCarName("test"));
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"3,---", "1,-", "2,--", "0,\'\'"})
-    public void move를_하면_MOVE_SYMBOL이_추가된다(int moveCount, String expected) {
-        RacingCar car = new RacingCar(new AlwaysRacingCarMoveStrategy());
+    @CsvSource(value = {"2,2", "1,1", "3,3"})
+    void 이동에_성공했다면_distance가_1_증가한다(int moveCount, int expected) {
+        RacingCar car = new RacingCar(new RacingCarName("test"));
 
         for (int i = 0; i < moveCount; i++) {
-            car.moveIfMovable();
+            car.moveIfMovable(() -> true);
         }
 
-        assertThat(car.display()).isEqualTo(expected);
+        assertThat(car.getDistance()).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"3,---", "1,-", "2,--"})
-    public void 이동에_성공했다면_MOVE_SYMBOL이_추가된다(int moveCount, String expected) {
-        RacingCar car = new RacingCar(new AlwaysRacingCarMoveStrategy());
+    @CsvSource(value = {"3,0", "1,0", "2,0"}, ignoreLeadingAndTrailingWhitespace = false)
+    void 이동에_실패했다면_distance는_증가하지_않는다(int moveCount, int expected) {
+        RacingCar car = new RacingCar(new RacingCarName("test"));
 
         for (int i = 0; i < moveCount; i++) {
-            car.moveIfMovable();
+            car.moveIfMovable(() -> false);
         }
 
-        assertThat(car.display()).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"3,\'\'", "1,\'\'", "2,\'\'"})
-    public void 이동에_실패했다면_MOVE_SYMBOL이_추가되지_않는다(int moveCount, String expected) {
-        RacingCar car = new RacingCar(new NeverRacingCarMoveStrategy());
-
-        for (int i = 0; i < moveCount; i++) {
-            car.moveIfMovable();
-        }
-
-        assertThat(car.display()).isEqualTo(expected);
+        assertThat(car.getDistance()).isEqualTo(expected);
     }
 }
