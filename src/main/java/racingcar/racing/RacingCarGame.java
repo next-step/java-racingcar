@@ -28,14 +28,18 @@ public class RacingCarGame {
         this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
     }
 
-    public String playAndResult(int count) {
+    public void playAndWinners(int count) {
         process(count);
 
+        resultView.printResult(getCurrentStageWinner());
+    }
+
+    public List<String> getCurrentStageWinner() {
         int winnerPosition = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
 
         return cars.stream().filter(car -> car.getPosition() == winnerPosition)
                 .map(Car::getCarName)
-                .collect(Collectors.joining(", ")) + "가 최종 우승했습니다.";
+                .collect(Collectors.toList());
     }
 
     private void process(int count) {
@@ -47,7 +51,7 @@ public class RacingCarGame {
         cars.forEach(this::moveCar);
         stage++;
 
-        resultView.view(cars, stage);
+        resultView.printGameStatus(cars, stage);
     }
 
     private void moveCar(Car car) {

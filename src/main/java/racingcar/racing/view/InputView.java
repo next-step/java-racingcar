@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final Integer MAX_NAME_LENGTH = 5;
 
     public static int getPositiveNumberInput(String prompt) {
         System.out.println(prompt);
@@ -32,11 +32,16 @@ public class InputView {
         while (true) {
             String line = scanner.nextLine();
 
-            List<String> result = Arrays.asList(line.split(delimiter));
-            if (result.stream().allMatch(name -> name.length() <= MAX_NAME_LENGTH))
+            String[] split = line.split(delimiter);
+            List<String> result = Arrays.stream(split)
+                    .map(String::trim)
+                    .distinct()
+                    .collect(Collectors.toList());
+
+            if (split.length == result.size())
                 return result;
 
-            System.out.println("각각의 이름은 " + MAX_NAME_LENGTH + " 이하의 길이만 허용됩니다. 다시 입력해 주세요. input: " + result);
+            System.out.println("각각의 이름은 중복이 허용되지 않습니다. 다시 입력해 주세요. input: " + result);
         }
     }
 }

@@ -14,8 +14,6 @@ public class RacingGamePlayer {
         int tryCount = InputView.getPositiveNumberInput("시도할 회수는 몇 회 인가요?");
 
         RacingCarGame racingCarGame = new RacingCarGame(carNames);
-        String resultStr = racingCarGame.playAndResult(tryCount);
-        System.out.println(resultStr);
-
+        racingCarGame.playAndWinners(tryCount);
     }
 }

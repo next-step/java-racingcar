@@ -27,7 +27,7 @@ class RacingCarGameTest {
     public void playAndResultGame() {
         RacingCarGame racingCarGame = new RacingCarGame(List.of("name1", "name2", "name3", "name4", "name5"), new mockRandomGenerator());
 
-        String result = racingCarGame.playAndResult(10);
+        racingCarGame.playAndWinners(10);
 
         // 한번 진행할 때마다 0,1,2,3,4 / 5,6,7,8,9 랜덤 값이 생성되어 마지막 인덱스의 자동차만 10이고 나머지는 5
         assertThat(racingCarGame.getCars().subList(0, 4))
@@ -38,8 +38,8 @@ class RacingCarGameTest {
         assertThat(racingCarGame.getStage())
                 .isEqualTo(10);
 
-        assertThat(result)
-                .isEqualTo("name5가 최종 우승했습니다.");
+        assertThat(racingCarGame.getCurrentStageWinner())
+                .containsExactly("name5");
     }
 
     @DisplayName("playAndResult 테스트2")
@@ -47,7 +47,7 @@ class RacingCarGameTest {
     public void playAndResultGame2() {
         RacingCarGame racingCarGame = new RacingCarGame(List.of("name1", "name2", "name3"), new mockRandomGenerator());
 
-        String result = racingCarGame.playAndResult(6);
+        racingCarGame.playAndWinners(6);
 
         // 한번 진행할 때마다 0,1,2 / 3,4,5 / 6,7,8 / 9,0,1 / 2,3,4 / 5,6,7 랜덤 값이 생성되어 자동차 각각 3, 3, 4 포지션
         assertThat(racingCarGame.getCars().get(0).getPosition())
@@ -60,16 +60,16 @@ class RacingCarGameTest {
         assertThat(racingCarGame.getStage())
                 .isEqualTo(6);
 
-        assertThat(result)
-                .isEqualTo("name3가 최종 우승했습니다.");
+        assertThat(racingCarGame.getCurrentStageWinner())
+                .containsExactly("name3");
     }
 
-    @DisplayName("playAndResult 테스트2")
+    @DisplayName("playAndResult 테스트3")
     @Test
     public void playAndResultGame3() {
-        RacingCarGame racingCarGame = new RacingCarGame(List.of("name1", "name2", "name3", "name4", "name5", "name6", "name7", "name8", "name9", "name10"), new mockRandomGenerator());
+        RacingCarGame racingCarGame = new RacingCarGame(List.of("name0", "name1", "name2", "name3", "name4", "name5", "name6", "name7", "name8", "name9"), new mockRandomGenerator());
 
-        String result = racingCarGame.playAndResult(3);
+        racingCarGame.playAndWinners(3);
 
         // 한번 진행할 때마다 name5 ~ name10이 한번씩 이동하여 공동 우승
         assertThat(racingCarGame.getCars().subList(0, 4))
@@ -77,8 +77,8 @@ class RacingCarGameTest {
         assertThat(racingCarGame.getCars().subList(5, 10))
                 .allMatch(car -> car.getPosition() == 3);
 
-        assertThat(result)
-                .isEqualTo("name5, name6, name7, name8, name9, name10가 최종 우승했습니다.");
+        assertThat(racingCarGame.getCurrentStageWinner())
+                .containsExactly("name4", "name5", "name6", "name7", "name8", "name9");
     }
 
     public static class mockRandomGenerator extends RandomGenerator {

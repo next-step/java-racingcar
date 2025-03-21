@@ -13,7 +13,7 @@ import java.util.List;
 class ResultViewTest {
     @DisplayName("결과 출력 테스트")
     @Test
-    public void print() {
+    public void printStatus() {
         ResultView resultView = new ResultView();
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -35,9 +35,22 @@ class ResultViewTest {
         car3.move();
         cars.add(car3);
 
-        resultView.view(cars, 1);
+        resultView.printGameStatus(cars, 1);
 
         Assertions.assertThat(output.toString()).isEqualTo("stage: 1\na     : -\nabc   : --\nabcde : ---\n\n");
+        System.setOut(System.out);
+    }
+
+    @DisplayName("결과 출력 테스트")
+    @Test
+    public void printResult() {
+        ResultView resultView = new ResultView();
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        resultView.printResult(List.of("name1, name2"));
+        Assertions.assertThat(output.toString()).isEqualTo("name1, name2가 최종 우승했습니다.\n");
+
         System.setOut(System.out);
     }
 
