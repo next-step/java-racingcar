@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;

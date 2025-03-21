@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.view.InputView;
+
 public class RaceController {
 
 	public void runRace() {
