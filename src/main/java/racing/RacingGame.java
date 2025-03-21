@@ -1,8 +1,35 @@
+package racing;
+
+import racing.data.Messages;
+import racing.utils.RandomUtils;
+import racing.views.InputView;
+import racing.views.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class CarUtils {
+public class RacingGame {
+
+    public static void main(String[] args) {
+
+        String[] carNames = InputView.inputCarNames();
+
+        List<Car> cars = generateCarsWithName(carNames);
+
+        int tryTimes = InputView.inputCarCount(Messages.ASK_TRY_TIMES);
+
+        ResultView.showResult();
+
+        for (int j = 0; j < tryTimes; j++) {
+            moveCars(cars);
+        }
+
+        Judgement judgement = new Judgement();
+
+        List<Car> winnerCars = judgement.getWinnerCars(cars);
+
+        ResultView.printWinner(winnerCars);
+    }
 
     public static void moveCars(List<Car> cars) {
         for (Car car : cars) {
@@ -26,17 +53,5 @@ public class CarUtils {
             cars.add(new Car(carNames[i]));
         }
         return cars;
-    }
-
-    public static List<Car> getWinnerCars(List<Car> cars) {
-
-        int maxDistance = cars.stream()
-                                .mapToInt(Car::getDistance)
-                                .max()
-                                .orElse(0);
-
-        return cars.stream()
-                    .filter(io-> io.getDistance() == maxDistance)
-                    .collect(Collectors.toList());
     }
 }

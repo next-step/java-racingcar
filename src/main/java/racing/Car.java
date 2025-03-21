@@ -1,7 +1,11 @@
+package racing;
+
+import racing.data.Messages;
+
 public class Car {
 
-    static final int MOVE_THRESHOLD = 4;
-    static final int CAR_NAME_THRESHOLD = 5;
+    public static final int MOVE_THRESHOLD = 4;
+    public static final int CAR_NAME_THRESHOLD = 5;
 
     private int distance;
     private String carName;

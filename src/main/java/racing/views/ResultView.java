@@ -1,3 +1,8 @@
+package racing.views;
+
+import racing.Car;
+import racing.data.Messages;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,5 +30,9 @@ public class ResultView {
 
     public static void printWinner(List<Car> cars) {
         println(cars.stream().map(Car::getCarName).collect(Collectors.joining(", ")) + Messages.RACE_WINNER);
+    }
+
+    public static void showResult() {
+        println(Messages.RACE_RESULT);
     }
 }

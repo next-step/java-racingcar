@@ -1,8 +1,12 @@
+package RacingTest;
+
+import racing.Car;
+import racing.Judgement;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.utils.RandomUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,13 +19,13 @@ class CarTest {
     @Test
     @DisplayName(value = "Random Number 생성 테스트")
     void generateRandomNumber() {
-        assertThat(RandomUtils.generateRandomNumber(10)).isBetween(0, 9);
+        Assertions.assertThat(RandomUtils.generateRandomNumber(10)).isBetween(0, 9);
     }
 
     @Test
     @DisplayName(value = "랜덤 함수가 0~9 사이의 값이 나오는지 확인")
     void 차량_전진조건_테스트() {
-        assertThat(RandomUtils.generateRandomNumber(10)).isBetween(0, 9);
+        Assertions.assertThat(RandomUtils.generateRandomNumber(10)).isBetween(0, 9);
     }
 
     @Test
@@ -50,7 +54,9 @@ class CarTest {
         cars.get(1).move(4);
         cars.get(2).move(1);
 
-        assertThat(CarUtils.getWinnerCars(cars)).isEqualTo(List.of(cars.get(0), cars.get(1)));
+        Judgement judgement = new Judgement();
+
+        assertThat(judgement.getWinnerCars(cars)).isEqualTo(List.of(cars.get(0), cars.get(1)));
     }
 
     @Test

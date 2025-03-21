@@ -1,11 +1,12 @@
-import javax.xml.transform.Result;
+package racing.views;
+
 import java.util.Scanner;
 
 public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int getAnswerToInteger(String question) {
+    public static int inputCarCount(String question) {
         while (true) {
             ResultView.println(question);
             try {
@@ -16,12 +17,11 @@ public class InputView {
         }
     }
 
-    public static String[] getCarNames() {
+    public static String[] inputCarNames() {
         while (true) {
             ResultView.askCarNames();
             try {
-                String str = scanner.next();
-                return str.split(",");
+                return scanner.next().split(",");
             } catch (Exception e) {
                 ResultView.printTypeError();
             }
