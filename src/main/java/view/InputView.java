@@ -18,6 +18,11 @@ public class InputView {
         return getValidateInput("자동차 전진 최대 값은 몇 인가요?\n");
     }
 
+    public static String getParticipatedCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분)");
+        return scanner.nextLine().trim();
+    }
+
     private static int getValidateInput(String message) {
         System.out.println(message);
         while (true) {
