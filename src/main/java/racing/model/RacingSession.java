@@ -6,8 +6,6 @@ import java.util.Random;
 
 public class RacingSession {
 
-    public static final int MIN_PROGRESS_NUMBER = 4;
-
     private final List<Car> cars;
     private PlayHistory lastPlayHistory;
 
@@ -23,28 +21,25 @@ public class RacingSession {
     public List<CarPositions> startRacing(int turns){
         List<CarPositions> totalPositions = new ArrayList<>();
         for (int i = 0; i < turns; i++) {
-            totalPositions.add(moveCars(cars));
+            totalPositions.add(moveCars());
         }
         this.lastPlayHistory = new PlayHistory(totalPositions);
         return totalPositions;
     }
 
-    public static CarPositions moveCars(List<Car> cars) {
+    public CarPositions moveCars() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
-            positions.add(car.move(canProgress(getProgressNumber())));
+            positions.add(car.move(getProgressNumber()));
         }
         return new CarPositions(positions);
     }
 
-    public static int getProgressNumber() {
+    public int getProgressNumber() {
         Random random = new Random();
         return random.nextInt(10);
     }
 
-    public static boolean canProgress(int number) {
-        return number >= MIN_PROGRESS_NUMBER;
-    }
 
     public RacingResultDto getRacingResult() {
         List<String> carNames = getCarNames();

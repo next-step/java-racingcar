@@ -6,6 +6,7 @@ import java.util.List;
 public class Car {
 
     public static final int START_POSITION = 1;
+    public static final int MIN_PROGRESS_NUMBER = 4;
     private int position;
     private final CarName name;
 
@@ -18,11 +19,20 @@ public class Car {
         return new Car(new CarName(name));
     }
 
-    public int move(boolean canProgress) {
-        if (canProgress) {
+    public int move(int number) {
+        if (canProgress(number)) {
             this.position++;
         }
         return this.position;
+    }
+
+
+    public boolean canProgress(int number) {
+        return number >= MIN_PROGRESS_NUMBER;
+    }
+
+    public boolean isPosition(int position){
+        return this.position == position;
     }
 
     public String getName(){

@@ -25,11 +25,13 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest(name = " 전진:{0}, 위치:{1}")
-    @CsvSource(value = {"false:1", "true:2"}, delimiter = ':')
-    void 행동시_전진여부_결과(boolean canProgress, int expectedPosition) {
+    @ParameterizedTest
+    @CsvSource(value = {"0:1", "1:1", "2:1", "3:1", "4:2", "5:2",
+            "6:2", "7:2", "8:2", "9:2"}, delimiter = ':')
+    void 전진_조건(int number, int expectedPosition) {
         Car car = Car.of("name");
-        assertThat(car.move(canProgress)).isEqualTo(expectedPosition);
+        car.move(number);
+        assertThat(car.isPosition(expectedPosition)).isTrue();
     }
 
 

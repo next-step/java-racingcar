@@ -15,7 +15,7 @@ public class CarName {
         return name;
     }
 
-    private static boolean checkNameLengthExceed(String name) {
+    private boolean checkNameLengthExceed(String name) {
         return name.length() > MAX_NAME_LENGTH;
     }
 
