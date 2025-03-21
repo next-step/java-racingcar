@@ -27,7 +27,7 @@ public class FixedCar {
         return this.position.max(position);
     }
 
-    public boolean isPosition(int position) {
-        return this.position.isPosition(position);
+    public boolean isPosition(CarPosition position) {
+        return this.position.equals(position);
     }
 }

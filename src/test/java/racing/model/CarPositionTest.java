@@ -16,8 +16,8 @@ class CarPositionTest {
     @Test
     void 위치_확인() {
         CarPosition carPosition = new CarPosition(10);
-        assertThat(carPosition.isPosition(15)).isFalse();
-        assertThat(carPosition.isPosition(10)).isTrue();
+        assertThat(carPosition).isEqualTo(new CarPosition(10));
+        assertThat(carPosition).isNotEqualTo(new CarPosition(15));
     }
 
     @Test

@@ -22,7 +22,7 @@ public class CarTest {
     void 전진_조건(int number, int expectedPosition) {
         Car car = Car.of("name");
         car.move(number);
-        assertThat(car.isPosition(expectedPosition)).isTrue();
+        assertThat(car.isPosition(new CarPosition(expectedPosition))).isTrue();
     }
 
 

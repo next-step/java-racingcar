@@ -47,7 +47,7 @@ public class CarsAtTurn {
     private List<FixedCar> findCarsAtPositions(int targetPosition) {
         return this.cars
                 .stream()
-                .filter(car -> car.isPosition(targetPosition))
+                .filter(car -> car.isPosition(new CarPosition(targetPosition)))
                 .collect(Collectors.toList());
     }
 }

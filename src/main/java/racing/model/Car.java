@@ -30,8 +30,8 @@ public class Car {
         return number >= MIN_PROGRESS_NUMBER;
     }
 
-    public boolean isPosition(int position) {
-        return this.position.isPosition(position);
+    public boolean isPosition(CarPosition position) {
+        return this.position.equals(position);
     }
 
     public String getName() {

@@ -18,10 +18,6 @@ public class CarPosition {
         position++;
     }
 
-    public boolean isPosition(int position) {
-        return this.position == position;
-    }
-
     public int max(int position) {
         return Math.max(position, this.position);
     }
