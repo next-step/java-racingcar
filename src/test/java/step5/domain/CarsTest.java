@@ -1,3 +1,5 @@
+package step5.domain;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

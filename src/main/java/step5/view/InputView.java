@@ -1,3 +1,5 @@
+package step5.view;
+
 import java.util.Scanner;
 
 public class InputView {

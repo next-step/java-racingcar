@@ -1,3 +1,7 @@
+package step5.domain;
+
+import step5.util.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

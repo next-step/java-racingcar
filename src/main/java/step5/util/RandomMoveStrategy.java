@@ -1,3 +1,5 @@
+package step5.util;
+
 import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {

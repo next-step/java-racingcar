@@ -1,3 +1,5 @@
+package step5.domain;
+
 public class Location {
     private int value;
 

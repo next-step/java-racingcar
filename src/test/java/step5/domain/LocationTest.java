@@ -1,3 +1,5 @@
+package step5.domain;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
