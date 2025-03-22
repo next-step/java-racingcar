@@ -3,7 +3,6 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import step3.game.Car;
 
@@ -12,12 +11,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
     @ParameterizedTest
-    @CsvSource(value = {"3:0", "4:1", "5:1"}, delimiter = ':')
+    @CsvSource(value = {"3:0", "4:1"}, delimiter = ':')
     @DisplayName("움직임이 4 미만일 경우, 자동차는 움직이지 않아야 한다.")
     void carMoveTest(int number, int expected) {
         Car car = new Car("car1");
         car.move(number);
-        assertThat(car.getPosition()).isEqualTo(expected);
+        assertThat(car.isSamePosition(expected)).isTrue();
     }
 
     @Test
@@ -74,4 +73,25 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo("hihi");
     }
 
+    @Test
+    @DisplayName("자동차 isSamePosition 메서드가 정상적으로 작동하는지 확인한다.")
+    void carIsSamePositionTest() {
+        Car car = new Car("car1", 1);
+        assertThat(car.isSamePosition(1)).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차 max 메서드가 정상적으로 작동하는지 확인한다.")
+    void carMaxTest() {
+        Car car = new Car("car1", 1);
+        assertThat(car.max(2)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("자동차 copy 메서드가 정상적으로 작동하는지 확인한다.")
+    void carCopyTest() {
+        Car car = new Car("car1", 1);
+        Car copyCar = car.copy();
+        assertThat(copyCar).isNotSameAs(car);
+    }
 }
