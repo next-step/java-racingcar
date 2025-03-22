@@ -21,13 +21,13 @@ public class RacingGame {
 
     public CarList winners() {
         Position maxPosition = maxPosition();
-        return new CarList(cars.value().stream().filter(car -> car.position().equals(maxPosition)).collect(Collectors.toList()));
+        return new CarList(
+            cars.value().stream().filter(car -> car.position().equals(maxPosition)).collect(Collectors.toList()));
     }
 
     private Position maxPosition() {
         return Collections.max(cars.value().stream().map(Car::position).collect(Collectors.toList()));
     }
-
 
 
 }

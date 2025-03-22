@@ -33,8 +33,12 @@ public class Position implements Comparable<Position> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Position)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Position)) {
+            return false;
+        }
         Position position = (Position) o;
         return value == position.value;
     }

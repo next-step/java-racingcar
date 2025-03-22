@@ -34,8 +34,12 @@ public class CarEngine {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CarEngine)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof CarEngine)) {
+            return false;
+        }
         CarEngine carEngine = (CarEngine) o;
         return threshold == carEngine.threshold;
     }

@@ -36,8 +36,12 @@ public class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Car)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Car)) {
+            return false;
+        }
         Car car = (Car) o;
         return carName.equals(car.carName) && carEngine.equals(car.carEngine) && position.equals(car.position);
     }
