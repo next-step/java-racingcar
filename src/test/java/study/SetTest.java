@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -27,7 +27,7 @@ public class SetTest {
     @Test
     @DisplayName("1,1,2,3을 넣으면 size는 3이다.")
     void getSize() {
-        assertThat(this.numbers.size()).isEqualTo(3);
+        assertThat(this.numbers).hasSize(3);
     }
 
     @ParameterizedTest
