@@ -13,10 +13,8 @@ public class CarEngineTest {
     @DisplayName("고장난 엔진(앞으로 못가는)")
     void givenAlwaysStopThreshold_whenCarEngineCanRun_thenFalse() {
         // given
-        int alwaysStopThreshold = 10;
-
         // when
-        CarEngine carEngineBroken = new CarEngine(alwaysStopThreshold);
+        CarEngine carEngineBroken = new CarEngine(CarEngine.ALWAYS_STOP_THRESHOLD);
 
         // then
         assertThat(carEngineBroken.canGo()).isFalse();
@@ -26,10 +24,8 @@ public class CarEngineTest {
     @DisplayName("베스트 엔진(앞으로 못가는)")
     void givenAlwaysGoThreshold_whenCarEngineCanRun_thenTrue() {
         // given
-        int alwaysGoThreshold = 0;
-
         // when
-        CarEngine carEngineBest = new CarEngine(alwaysGoThreshold);
+        CarEngine carEngineBest = new CarEngine(CarEngine.ALWAYS_GO_THRESHOLD);
 
         // then
         assertThat(carEngineBest.canGo()).isTrue();

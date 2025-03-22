@@ -7,6 +7,8 @@ public class CarEngine {
 
     public static final int MIN_THRESHOLD = 0;
     public static final int MAX_THRESHOLD = 9;
+    public static final int ALWAYS_GO_THRESHOLD = 0;
+    public static final int ALWAYS_STOP_THRESHOLD = 10;
     private static final int DEFAULT_THRESHOLD = 4;
     private final int threshold;
 

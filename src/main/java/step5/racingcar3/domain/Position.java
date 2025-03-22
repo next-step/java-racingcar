@@ -1,5 +1,6 @@
 package step5.racingcar3.domain;
 
+import java.util.Objects;
 import step5.racingcar3.exception.PositionException;
 
 public class Position {
@@ -30,4 +31,16 @@ public class Position {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Position)) return false;
+        Position position = (Position) o;
+        return value == position.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
 }
