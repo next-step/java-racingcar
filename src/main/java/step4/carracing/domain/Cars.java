@@ -1,8 +1,7 @@
-package step4.carracing;
+package step4.carracing.domain;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -32,6 +31,13 @@ public class Cars implements Iterable<Car> {
     return carList.size();
   }
 
+  public Car get(String name) {
+    return carList.stream()
+      .filter(car -> car.getName().equals(name))
+      .findFirst()
+      .orElseThrow(() -> new IllegalArgumentException("해당 이름의 차량이 없습니다."));
+  }
+
   @Override
   public Iterator<Car> iterator() {
     return carList.iterator();
@@ -39,14 +45,6 @@ public class Cars implements Iterable<Car> {
 
   public Stream<Car> stream() {
     return carList.stream();
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Cars cars = (Cars) o;
-    return Objects.equals(carList, cars.carList);
   }
 
 }

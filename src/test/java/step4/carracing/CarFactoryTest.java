@@ -3,6 +3,8 @@ package step4.carracing;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.carracing.domain.Car;
+import step4.carracing.domain.Cars;
 
 import java.util.List;
 

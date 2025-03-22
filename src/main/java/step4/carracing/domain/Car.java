@@ -1,6 +1,6 @@
-package step4.carracing;
+package step4.carracing.domain;
 
-import java.util.Objects;
+import step4.carracing.CarMoveStrategy;
 
 public class Car {
   private static final int INIT_POSITION = 0;
@@ -38,13 +38,13 @@ public class Car {
     return position.getMax(compareValue);
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Car car = (Car) o;
-    return Objects.equals(name, car.name);
-  }
+//  @Override
+//  public boolean equals(Object o) {
+//    if (this == o) return true;
+//    if (o == null || getClass() != o.getClass()) return false;
+//    Car car = (Car) o;
+//    return Objects.equals(name, car.name);
+//  }
 
   @Override
   public String toString() {

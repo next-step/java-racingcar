@@ -1,6 +1,4 @@
-package step4.carracing;
-
-import java.util.Objects;
+package step4.carracing.domain;
 
 public class CarName {
   private static final int MAX_NAME_LENGTH = 5;
@@ -25,11 +23,4 @@ public class CarName {
     }
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    CarName carName = (CarName) o;
-    return Objects.equals(value, carName.value);
-  }
 }

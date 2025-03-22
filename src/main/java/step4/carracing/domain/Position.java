@@ -1,4 +1,4 @@
-package step4.carracing;
+package step4.carracing.domain;
 
 public class Position {
   private static final String POSITION_SYMBOL = "-";

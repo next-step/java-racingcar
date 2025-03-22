@@ -1,5 +1,8 @@
 package step4.carracing;
 
+import step4.carracing.domain.Car;
+import step4.carracing.domain.Cars;
+
 import java.util.stream.Collectors;
 
 public class ResultView {

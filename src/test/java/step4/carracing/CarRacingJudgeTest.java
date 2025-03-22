@@ -3,6 +3,8 @@ package step4.carracing;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.carracing.domain.Car;
+import step4.carracing.domain.Cars;
 
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class CarRacingJudgeTest {
     Cars expected = new Cars(List.of(new Car("honux", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy())));
     Cars actual = CarRacingJudge.judgeWinners(cars);
 
-    Assertions.assertEquals(expected, actual);
+    Assertions.assertEquals(expected.size(), actual.size());
+    Assertions.assertNotNull(actual.get("honux"));
   }
 }

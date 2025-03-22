@@ -1,8 +1,9 @@
-package step4.carracing;
+package step4.carracing.domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.carracing.CarMoveStrategyTest;
 
 public class CarTest {
 
