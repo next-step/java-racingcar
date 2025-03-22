@@ -5,9 +5,9 @@ import step5.racingcar3.exception.CarEngineException;
 
 public class CarEngine {
 
+    public static final int MIN_THRESHOLD = 0;
+    public static final int MAX_THRESHOLD = 9;
     private static final int DEFAULT_THRESHOLD = 4;
-    private static final int MIN = 0;
-    private static final int MAX = 9;
     private final int threshold;
 
     public CarEngine() {
@@ -19,12 +19,12 @@ public class CarEngine {
         this.threshold = threshold;
     }
 
-    public boolean canRun() {
-        return new Random().nextInt((MAX - MIN) + 1) + MIN >= threshold;
+    public boolean canGo() {
+        return new Random().nextInt((MAX_THRESHOLD - MIN_THRESHOLD) + 1) + MIN_THRESHOLD >= threshold;
     }
 
     public void validate(int threshold) {
-        if (threshold < MIN) {
+        if (threshold < MIN_THRESHOLD) {
             throw new CarEngineException("엔진의 기준값은 0 이상 9 이하만 가능합니다.");
         }
     }

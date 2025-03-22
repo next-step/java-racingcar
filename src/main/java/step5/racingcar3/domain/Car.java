@@ -1,7 +1,5 @@
 package step5.racingcar3.domain;
 
-import step5.racingcar3.exception.CarException;
-
 public class Car {
 
     private final CarName carName;
@@ -29,7 +27,7 @@ public class Car {
     }
 
     public void run() {
-        if (carEngine.canRun()) {
+        if (carEngine.canGo()) {
             position.increase();
         }
     }
