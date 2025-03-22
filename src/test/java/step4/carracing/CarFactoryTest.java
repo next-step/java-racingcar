@@ -13,7 +13,7 @@ public class CarFactoryTest {
   void testCreateCar() {
     Car car = CarFactory.createCar("pobi", new RandomCarMoveStrategy());
     Assertions.assertEquals("pobi", car.getName());
-    Assertions.assertEquals(1, car.getPosition());
+    Assertions.assertTrue(car.isSame(0));
   }
 
   @DisplayName("자동차 리스트 생성 테스트")
@@ -23,6 +23,6 @@ public class CarFactoryTest {
 
     Assertions.assertEquals(3, carList.size());
     Assertions.assertEquals("pobi", carList.get(0).getName());
-    Assertions.assertEquals(1, carList.get(0).getPosition());
+    Assertions.assertTrue(carList.get(0).isSame(0));
   }
 }

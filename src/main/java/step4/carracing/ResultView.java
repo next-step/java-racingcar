@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
-  private static final String CAR_POSITION_SYMBOL = "-";
-
   public static void printCarStatus(Car car) {
-    String carPositionView = CAR_POSITION_SYMBOL.repeat(car.getPosition());
-    System.out.println(car.getName() + " : " + carPositionView);
+    String carStatus = car.getStatus();
+    System.out.println(car.getName() + " : " + carStatus);
   }
 
   public static void printWinners(List<Car> winners) {

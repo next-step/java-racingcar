@@ -14,13 +14,13 @@ public class CarRacingJudge {
   }
 
   private static boolean isCarValidWinner(int maxPosition, Car car) {
-    return car.getPosition() == maxPosition;
+    return car.isSame(maxPosition);
   }
 
   private static int getMaxPosition(List<Car> cars) {
     int maxPosition = 0;
     for (Car car : cars) {
-      maxPosition = Math.max(maxPosition, car.getPosition());
+      maxPosition = car.getMaxPosition(maxPosition);
     }
     return maxPosition;
   }
