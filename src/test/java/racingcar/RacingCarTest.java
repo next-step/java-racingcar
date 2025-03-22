@@ -117,7 +117,7 @@ public class RacingCarTest {
     @DisplayName("자동차 이름이 중복될 경우 오류 리턴")
     void inputCarName_중복된이름() {
         String[] names = {"pobi", "pobi"};
-        assertThatThrownBy(() -> new Cars(names))
+        assertThatThrownBy(() -> Cars.fromNames(names))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

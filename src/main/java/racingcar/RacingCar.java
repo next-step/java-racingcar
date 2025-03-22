@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
-    
+    public static void main(String[] args) {
+    }
     public static void gameStart() {
         Cars cars = new Cars(getCars(InputView.inputValidatedNumberOfCar()));
         Race race = new Race(cars, InputView.inputValidatedNumberOfAttempts());
@@ -19,9 +20,7 @@ public class RacingCar {
     }
 
     public static void gameStartWithName() {
-        Race race = new Race(
-                new Cars(InputView.inputdNameOfCar())
-                , InputView.inputValidatedNumberOfAttempts());
+        Race race = Race.create();
         race.startWithName(createRandomStrategy());
     }
 

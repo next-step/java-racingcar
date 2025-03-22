@@ -16,14 +16,16 @@ public class Cars {
     public Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
     }
-    public Cars(String[] names) {
+
+    public static Cars fromNames(String[] names) {
         validCarNames(names);
-        this.cars = Arrays.stream(names)
+        List<Car> carList = Arrays.stream(names)
                 .map(Car::new)
                 .collect(Collectors.toList());
+        return new Cars(carList);
     }
 
-    private void validCarNames(String[] names) {
+    private static void validCarNames(String[] names) {
         if (Arrays.stream(names).distinct().count() < names.length) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }

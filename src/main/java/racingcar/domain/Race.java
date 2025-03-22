@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
+import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
 public class Race {
@@ -10,6 +11,12 @@ public class Race {
     public Race(Cars cars, int totalAttempts) {
         this.cars = cars;
         this.totalAttempts = totalAttempts;
+    }
+
+    public static Race create() {
+        String[] carNames = InputView.inputdNameOfCar();
+        int attempts = InputView.inputValidatedNumberOfAttempts();
+        return new Race(Cars.fromNames(carNames), attempts);
     }
 
     public void start(MovingStrategy strategy) {
