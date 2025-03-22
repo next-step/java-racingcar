@@ -16,11 +16,11 @@ class RacingGameTest {
 
     private final Moveable alwaysMove = new AlwaysMove();
     private static final int NUMBER_OF_TRIAL = 5;
-    private static final RacingCarNames RACING_CAR_NAMES = new RacingCarNames("more", "much", "less");
+    private static final String[] RACING_CAR_NAMES = new String[]{"more", "much", "less"};
 
     @DisplayName("자동차의 수 또는 시도 횟수가 0보다 큰 경우 예외 발생하지 않음")
     @Test
-    void gameStartTest() {
+    void startTest() {
         // Given
         int validNumberOfTrial = 5;
         String[] validNamesOfCar = {"more", "much", "less"};
@@ -29,7 +29,7 @@ class RacingGameTest {
         RacingGame racingGame = RacingGame.of(validNamesOfCar, validNumberOfTrial, alwaysMove);
 
         // Then
-        assertThatNoException().isThrownBy(racingGame::gameStart);
+        assertThatNoException().isThrownBy(racingGame::start);
     }
 
     @DisplayName("namesOfCar 의 크기만큼 자동차가 생성됨")
@@ -37,7 +37,7 @@ class RacingGameTest {
     void carProduceTest() {
         RacingGameResult racingGameResult = playTestGame(alwaysMove);
         List<RoundResult> roundResults = racingGameResult.getAllRoundResults();
-        assertThat(roundResults.get(0).getRaceProgress()).hasSize(RACING_CAR_NAMES.length());
+        assertThat(roundResults.get(0).getRaceProgress()).hasSize(RACING_CAR_NAMES.length);
     }
 
     @DisplayName("numberOfTrial 만큼 자동차가 진행함")
@@ -69,8 +69,8 @@ class RacingGameTest {
     }
 
     private RacingGameResult playTestGame(Moveable moveable) {
-        RacingGame racingGame = new RacingGame(RACING_CAR_NAMES, NUMBER_OF_TRIAL, moveable);
-        return racingGame.gameStart();
+        RacingGame racingGame = RacingGame.of(RACING_CAR_NAMES, NUMBER_OF_TRIAL, moveable);
+        return racingGame.start();
     }
 
     @DisplayName("정적 팩토리 메서드 생성자 테스트")

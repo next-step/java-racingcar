@@ -23,7 +23,7 @@ class ResultViewTest {
         ResultView resultView = new ResultView(testOut);
 
         RacingGame racingGame = RacingGame.of(namesOfCar, numberOfTrial, new AlwaysMove());
-        RacingGameResult racingGameResult = racingGame.gameStart();
+        RacingGameResult racingGameResult = racingGame.start();
 
         resultView.printResult(racingGameResult);
 

@@ -7,19 +7,19 @@ import java.util.List;
 
 public class RacingGame {
     private final RacingCarNames racingCarNames;
-    private final Integer numberOfTrial;
+    private final NumberOfTrial numberOfTrial;
     private final List<RacingCar> racingCars;
 
-    public RacingGame(RacingCarNames racingCarNames, Integer numberOfTrial, Moveable moveable) {
+    public RacingGame(RacingCarNames racingCarNames, NumberOfTrial numberOfTrial, Moveable moveable) {
 
         this.racingCarNames = racingCarNames;
         this.numberOfTrial = numberOfTrial;
         this.racingCars = initializeRacingCars(moveable);
     }
 
-    public RacingGameResult gameStart() {
+    public RacingGameResult start() {
         RacingGameResult racingGameResult = new RacingGameResult();
-        for (int i = 0; i < numberOfTrial; i++) {
+        for (int i = 0; i < numberOfTrial.getNumberOfTrial(); i++) {
             progressRound(racingGameResult);
         }
         return racingGameResult;
@@ -44,8 +44,9 @@ public class RacingGame {
         return racingCars;
     }
 
-    public static RacingGame of(String[] racingCarNamesArray, Integer numberOfTrial, Moveable moveable) {
+    public static RacingGame of(String[] racingCarNamesArray, Integer numberOfTrialInteger, Moveable moveable) {
         RacingCarNames racingCarNames = new RacingCarNames(racingCarNamesArray);
+        NumberOfTrial numberOfTrial = new NumberOfTrial(numberOfTrialInteger);
         return new RacingGame(racingCarNames, numberOfTrial, moveable);
     }
 }

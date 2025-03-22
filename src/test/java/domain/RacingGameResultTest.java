@@ -14,8 +14,9 @@ public class RacingGameResultTest {
     @Test
     public void whoAreWinnersTest() {
         RacingCarNames racingCarNames = new RacingCarNames("more", "much", "less");
-        RacingGame racingGame = new RacingGame(racingCarNames, 5, new RandomlyMove(10, 4));
-        RacingGameResult racingGameResult = racingGame.gameStart();
+        NumberOfTrial numberOfTrial = new NumberOfTrial(5);
+        RacingGame racingGame = new RacingGame(racingCarNames, numberOfTrial, new RandomlyMove(10, 4));
+        RacingGameResult racingGameResult = racingGame.start();
 
         List<String> winners = racingGameResult.whoAreWinners();
         Assertions.assertThat(winners).hasSizeGreaterThan(0);
@@ -25,8 +26,9 @@ public class RacingGameResultTest {
     @Test
     public void allAreWinnersTest() {
         RacingCarNames racingCarNames = new RacingCarNames("more", "much", "less");
-        RacingGame racingGame = new RacingGame(racingCarNames, 5, new AlwaysMove());
-        RacingGameResult racingGameResult = racingGame.gameStart();
+        NumberOfTrial numberOfTrial = new NumberOfTrial(5);
+        RacingGame racingGame = new RacingGame(racingCarNames, numberOfTrial, new AlwaysMove());
+        RacingGameResult racingGameResult = racingGame.start();
 
         List<String> winners = racingGameResult.whoAreWinners();
         Assertions.assertThat(winners).hasSize(racingCarNames.length());

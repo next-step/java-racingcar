@@ -20,6 +20,6 @@ public class RacingGameApplication {
         Integer numberOfTrial = inputView.queryIntegerInputWithPrompt(trialCountPrompt);
         RacingGame racingGame = RacingGame.of(namesOfCar, numberOfTrial, new RandomlyMove(bound, threshold));
 
-        new ResultView(System.out).printResult(racingGame.gameStart());
+        new ResultView(System.out).printResult(racingGame.start());
     }
 }

@@ -28,6 +28,6 @@
 - [x] 게임 결과에서 이름을 표시하도록 수정
 - [x] 우승자 확인
 - [x] 우승자 표시
-- [ ] 원시 자료형 래핑
+- [x] 원시 자료형 래핑
   - [x] RacingCarNames
-  - [ ] NumberOfTrial
+  - [x] NumberOfTrial
