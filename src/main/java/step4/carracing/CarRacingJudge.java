@@ -16,7 +16,7 @@ public class CarRacingJudge {
   private static int getMaxPosition(List<Car> cars) {
     int maxPosition = 0;
     for (Car car : cars) {
-      maxPosition = car.getMaxPosition(maxPosition);
+      maxPosition = car.getMax(maxPosition);
     }
     return maxPosition;
   }

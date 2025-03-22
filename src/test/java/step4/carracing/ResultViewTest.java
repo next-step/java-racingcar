@@ -16,10 +16,7 @@ public class ResultViewTest {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outputStream));
 
-    Car car = CarFactory.createCar("pobi", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy());
-    car.move();
-    car.move();
-    car.move();
+    Car car = new Car(3, "pobi", new CarMoveStrategyTest.TestStoppedCarMoveStrategy());
     String expected = "pobi : " + "----\n";
 
     ResultView.printCarStatus(car);

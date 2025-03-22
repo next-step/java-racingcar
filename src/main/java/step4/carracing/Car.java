@@ -5,12 +5,12 @@ public class Car {
   private static final int MOVE_STEP = 1;
 
   private final Position position;
-  private final String name;
+  private final CarName name;
   private final CarMoveStrategy carMoveStrategy;
 
   public Car(int position, String name, CarMoveStrategy carMoveStrategy) {
     this.position = new Position(position);
-    this.name = name;
+    this.name = new CarName(name);
     this.carMoveStrategy = carMoveStrategy;
   }
 
@@ -25,18 +25,18 @@ public class Car {
   }
 
   public String getName() {
-    return name;
+    return name.getValue();
   }
 
   public boolean isSame(int value) {
     return position.isSame(value);
   }
 
-  public int getMaxPosition(int compareValue) {
+  public int getMax(int compareValue) {
     return position.getMax(compareValue);
   }
 
   public String getStatus() {
-    return position.getStatus();
+    return name.getValue() + " : " + position.getStatus();
   }
 }

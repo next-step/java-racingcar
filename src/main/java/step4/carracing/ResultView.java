@@ -5,8 +5,7 @@ import java.util.stream.Collectors;
 
 public class ResultView {
   public static void printCarStatus(Car car) {
-    String carStatus = car.getStatus();
-    System.out.println(car.getName() + " : " + carStatus);
+    System.out.println(car.getStatus());
   }
 
   public static void printWinners(List<Car> winners) {
