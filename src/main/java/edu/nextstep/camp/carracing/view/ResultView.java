@@ -11,7 +11,7 @@ public class ResultView {
     }
 
     public static void printResultMessage() {
-        System.out.println('\n' + RESULT_MESSAGE);
+        System.out.println(System.lineSeparator() + RESULT_MESSAGE);
     }
 
     public static void printCarStatus(Car car) {
