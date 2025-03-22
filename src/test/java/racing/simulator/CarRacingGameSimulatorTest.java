@@ -48,25 +48,25 @@ class CarRacingGameSimulatorTest {
 
     CarRacingGameSimulateResult expectSimulateWithCarCountResults = CarRacingGameSimulateResult.valueOf(
         List.of(
-            new CarGroup(
+            CarGroup.valueOf(
                 List.of(
-                    Car.valueOf(new CarLocation(1)),
-                    Car.valueOf(new CarLocation(1)),
-                    Car.valueOf(new CarLocation(1))
+                    Car.valueOf(CarLocation.valueOf(1)),
+                    Car.valueOf(CarLocation.valueOf(1)),
+                    Car.valueOf(CarLocation.valueOf(1))
                 )
             ),
-            new CarGroup(
+            CarGroup.valueOf(
                 List.of(
-                    Car.valueOf(new CarLocation(2)),
-                    Car.valueOf(new CarLocation(2)),
-                    Car.valueOf(new CarLocation(2))
+                    Car.valueOf(CarLocation.valueOf(2)),
+                    Car.valueOf(CarLocation.valueOf(2)),
+                    Car.valueOf(CarLocation.valueOf(2))
                 )
             ),
-            new CarGroup(
+            CarGroup.valueOf(
                 List.of(
-                    Car.valueOf(new CarLocation(3)),
-                    Car.valueOf(new CarLocation(3)),
-                    Car.valueOf(new CarLocation(3))
+                    Car.valueOf(CarLocation.valueOf(3)),
+                    Car.valueOf(CarLocation.valueOf(3)),
+                    Car.valueOf(CarLocation.valueOf(3))
                 )
             )
         )
@@ -74,25 +74,25 @@ class CarRacingGameSimulatorTest {
 
     CarRacingGameSimulateResult expectSimulateWithCarNamesResults = CarRacingGameSimulateResult.valueOf(
         List.of(
-            new CarGroup(
+            CarGroup.valueOf(
                 List.of(
-                    Car.valueOf(CarName.valueOf("pobi"), new CarLocation(1)),
-                    Car.valueOf(CarName.valueOf("crong"), new CarLocation(1)),
-                    Car.valueOf(CarName.valueOf("honux"), new CarLocation(1))
+                    Car.valueOf(CarName.valueOf("pobi"), CarLocation.valueOf(1)),
+                    Car.valueOf(CarName.valueOf("crong"), CarLocation.valueOf(1)),
+                    Car.valueOf(CarName.valueOf("honux"), CarLocation.valueOf(1))
                 )
             ),
-            new CarGroup(
+            CarGroup.valueOf(
                 List.of(
-                    Car.valueOf(CarName.valueOf("pobi"), new CarLocation(2)),
-                    Car.valueOf(CarName.valueOf("crong"), new CarLocation(2)),
-                    Car.valueOf(CarName.valueOf("honux"), new CarLocation(2))
+                    Car.valueOf(CarName.valueOf("pobi"), CarLocation.valueOf(2)),
+                    Car.valueOf(CarName.valueOf("crong"), CarLocation.valueOf(2)),
+                    Car.valueOf(CarName.valueOf("honux"), CarLocation.valueOf(2))
                 )
             ),
-            new CarGroup(
+            CarGroup.valueOf(
                 List.of(
-                    Car.valueOf(CarName.valueOf("pobi"), new CarLocation(3)),
-                    Car.valueOf(CarName.valueOf("crong"), new CarLocation(3)),
-                    Car.valueOf(CarName.valueOf("honux"), new CarLocation(3))
+                    Car.valueOf(CarName.valueOf("pobi"), CarLocation.valueOf(3)),
+                    Car.valueOf(CarName.valueOf("crong"), CarLocation.valueOf(3)),
+                    Car.valueOf(CarName.valueOf("honux"), CarLocation.valueOf(3))
                 )
             )
         )

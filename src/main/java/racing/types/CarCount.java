@@ -18,6 +18,6 @@ public class CarCount {
   }
 
   public CarGroup toCarGroup() {
-    return new CarGroup(this.count);
+    return CarGroup.valueOf(this.count);
   }
 }

@@ -70,7 +70,7 @@ public class Car {
       return new Car(CarName.valueOf(this.carName), carLocation.getNextLocation());
     }
 
-    return new Car(CarName.valueOf(this.carName), new CarLocation(carLocation));
+    return new Car(CarName.valueOf(this.carName), CarLocation.valueOf(carLocation));
   }
 
   public boolean isBehind(Car car) {
@@ -79,14 +79,6 @@ public class Car {
 
   public boolean isSameLocation(Car car) {
     return this.carLocation.compareTo(car.carLocation) == 0;
-  }
-
-  public boolean isSameName(Car car) {
-    return this.carName.equals(car.carName);
-  }
-
-  public boolean hasDefaultName() {
-    return this.carName.equals(new CarName());
   }
 
   public void reset() {

@@ -36,7 +36,7 @@ class CarTest {
   void testToMovingCar(boolean strategyResult) {
     int simulateCount = 4;
     Car result = Car.valueOf(CarName.valueOf("test"));
-    Car expected = strategyResult ? Car.valueOf(CarName.valueOf("test"), new CarLocation(4)) : Car.valueOf(CarName.valueOf("test"));
+    Car expected = strategyResult ? Car.valueOf(CarName.valueOf("test"), CarLocation.valueOf(4)) : Car.valueOf(CarName.valueOf("test"));
 
     for (int i = 0; i < simulateCount; i++) {
       result = result.toMovingCar(() -> strategyResult);
@@ -61,8 +61,8 @@ class CarTest {
   @Test
   void testToLocationStringWithNamedCar() {
     List<Car> input = List.of(
-        Car.valueOf(CarName.valueOf("a"), new CarLocation(1)),
-        Car.valueOf(CarName.valueOf("b"), new CarLocation(2))
+        Car.valueOf(CarName.valueOf("a"), CarLocation.valueOf(1)),
+        Car.valueOf(CarName.valueOf("b"), CarLocation.valueOf(2))
     );
 
     assertThat(Car.toLocationString(input)).isEqualTo("a:-\nb:--\n");
@@ -72,8 +72,8 @@ class CarTest {
   @Test
   void testToLocationStringUnNamedCar() {
     List<Car> input = List.of(
-        Car.valueOf(new CarLocation(1)),
-        Car.valueOf(new CarLocation(2))
+        Car.valueOf(CarLocation.valueOf(1)),
+        Car.valueOf(CarLocation.valueOf(2))
     );
 
     assertThat(Car.toLocationString(input)).isEqualTo("-\n--\n");

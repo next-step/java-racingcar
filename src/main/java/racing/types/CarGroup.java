@@ -15,7 +15,11 @@ public class CarGroup {
     cars = new ArrayList<>();
   }
 
-  public CarGroup(int size) {
+  public static CarGroup valueOf(int size) {
+    return new CarGroup(size);
+  }
+
+  private CarGroup(int size) {
     cars = new ArrayList<>();
 
     for (int i = 0; i < size; i++) {
@@ -23,7 +27,11 @@ public class CarGroup {
     }
   }
 
-  public CarGroup(List<Car> cars) {
+  public static CarGroup valueOf(List<Car> cars) {
+    return new CarGroup(cars);
+  }
+
+  private CarGroup(List<Car> cars) {
     this.cars = new ArrayList<>();
     cars.forEach(this::add);
   }
@@ -37,7 +45,7 @@ public class CarGroup {
         .map(car -> car.toMovingCar(carMovingStrategy))
         .collect(Collectors.toList());
 
-    return new CarGroup(movingCars);
+    return CarGroup.valueOf(movingCars);
   }
 
   public void resetCars() {
@@ -51,7 +59,7 @@ public class CarGroup {
         .reduce((car1, car2) -> car1.isBehind(car2) ? car2 : car1)
         .orElse(null);
 
-    return new CarGroup(cars.stream()
+    return CarGroup.valueOf(cars.stream()
         .filter(car -> car.isSameLocation(maxLocationCar))
         .collect(Collectors.toList()));
   }

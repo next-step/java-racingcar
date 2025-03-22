@@ -11,19 +11,19 @@ class CarLocationTest {
   @DisplayName("생성자 테스트1")
   @Test
   void constructorTest1() {
-    assertDoesNotThrow(() -> new CarLocation());
+    assertDoesNotThrow(CarLocation::new);
   }
 
   @DisplayName("생성자 테스트2")
   @Test
   void constructorTest2() {
-    assertDoesNotThrow(() -> new CarLocation(2));
+    assertDoesNotThrow(() -> CarLocation.valueOf(2));
   }
 
   @DisplayName("생성자 테스트3")
   @Test
   void constructorTest3() {
-    assertDoesNotThrow(() -> new CarLocation(new CarLocation(4)));
+    assertDoesNotThrow(() -> CarLocation.valueOf(CarLocation.valueOf(4)));
   }
 
   @DisplayName("전진 시 위치 테스트")
@@ -31,6 +31,6 @@ class CarLocationTest {
   void testGetNextLocation() {
     CarLocation carLocation = new CarLocation();
 
-    assertThat(carLocation.getNextLocation()).isEqualTo(new CarLocation(1));
+    assertThat(carLocation.getNextLocation()).isEqualTo(CarLocation.valueOf(1));
   }
 }

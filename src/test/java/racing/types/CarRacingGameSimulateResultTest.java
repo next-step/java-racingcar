@@ -19,13 +19,13 @@ class CarRacingGameSimulateResultTest {
   @DisplayName("마지막 시뮬레이션 결과 가져오기 테스트")
   @Test
   void testGetLastSimulateResult() {
-    CarGroup carGroup1 = new CarGroup(List.of(
-        Car.valueOf(CarName.valueOf("a"), new CarLocation(0)),
-        Car.valueOf(CarName.valueOf("b"), new CarLocation(0))
+    CarGroup carGroup1 = CarGroup.valueOf(List.of(
+        Car.valueOf(CarName.valueOf("a"), CarLocation.valueOf(0)),
+        Car.valueOf(CarName.valueOf("b"), CarLocation.valueOf(0))
     ));
-    CarGroup carGroup2 = new CarGroup(List.of(
-        Car.valueOf(CarName.valueOf("a"), new CarLocation(1)),
-        Car.valueOf(CarName.valueOf("b"), new CarLocation(0))
+    CarGroup carGroup2 = CarGroup.valueOf(List.of(
+        Car.valueOf(CarName.valueOf("a"), CarLocation.valueOf(1)),
+        Car.valueOf(CarName.valueOf("b"), CarLocation.valueOf(0))
     ));
     CarRacingGameSimulateResult result = CarRacingGameSimulateResult.valueOf(
         List.of(carGroup1, carGroup2)

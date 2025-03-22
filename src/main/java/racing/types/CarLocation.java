@@ -10,16 +10,24 @@ public class CarLocation implements Comparable<CarLocation> {
     this.location = 0;
   }
 
-  public CarLocation(int location) {
+  public static CarLocation valueOf(int location) {
+    return new CarLocation(location);
+  }
+
+  private CarLocation(int location) {
     this.location = location;
   }
 
-  public CarLocation(CarLocation carLocation) {
+  public static CarLocation valueOf(CarLocation carLocation) {
+    return new CarLocation(carLocation);
+  }
+
+  private CarLocation(CarLocation carLocation) {
     this.location = carLocation.location;
   }
 
   public CarLocation getNextLocation() {
-    return new CarLocation(this.location + 1);
+    return CarLocation.valueOf(this.location + 1);
   }
 
   @Override
