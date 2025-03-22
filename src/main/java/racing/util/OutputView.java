@@ -1,11 +1,6 @@
 package racing.util;
 
-import racing.property.CarRacingGameProperty;
-import racing.types.Car;
 import racing.types.CarRacingGameSimulateResult;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class OutputView {
 

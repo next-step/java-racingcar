@@ -6,7 +6,7 @@ public class CarLocation implements Comparable<CarLocation> {
 
   private final int location;
 
-  public CarLocation () {
+  public CarLocation() {
     this.location = 0;
   }
 

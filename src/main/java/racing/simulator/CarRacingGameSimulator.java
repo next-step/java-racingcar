@@ -12,7 +12,7 @@ public class CarRacingGameSimulator {
 
   public CarRacingGameSimulator(List<CarName> carNames, CarMovingStrategy carMovingStrategy) {
     this.carGroup = new CarGroup();
-    for (CarName carName: carNames) {
+    for (CarName carName : carNames) {
       carGroup.add(Car.valueOf(carName));
     }
     this.carMovingStrategy = carMovingStrategy;

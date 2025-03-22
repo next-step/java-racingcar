@@ -2,7 +2,9 @@ package racing.types;
 
 import racing.simulator.CarMovingStrategy;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CarGroup {
@@ -31,7 +33,7 @@ public class CarGroup {
   }
 
   public CarGroup toTryMoveCarGroup(CarMovingStrategy carMovingStrategy) {
-    List<Car> movingCars =  cars.stream()
+    List<Car> movingCars = cars.stream()
         .map(car -> car.toMovingCar(carMovingStrategy))
         .collect(Collectors.toList());
 

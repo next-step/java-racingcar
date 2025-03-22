@@ -23,7 +23,7 @@ public class Car {
           String locationString = car.carLocation.toString();
           return car.carName.equals(new CarName())
               ? locationString
-              : car.carName + ":" +locationString;
+              : car.carName + ":" + locationString;
         })
         .collect(Collectors.joining("\n", "", "\n"));
   }

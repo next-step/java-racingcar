@@ -3,7 +3,6 @@ package racing.util;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.property.CarRacingGameProperty;
-import racing.types.Car;
 import racing.types.CarName;
 
 import java.util.List;
