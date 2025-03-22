@@ -114,6 +114,14 @@ public class RacingCarTest {
     }
 
     @Test
+    @DisplayName("자동차 이름이 중복될 경우 오류 리턴")
+    void inputCarName_중복된이름() {
+        String[] names = {"pobi", "pobi"};
+        assertThatThrownBy(() -> new Cars(names))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("자동차 이름은 쉼표로 구분")
     void inputCarName_split() {
         String input = "pobi,crong,honux";
