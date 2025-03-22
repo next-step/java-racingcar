@@ -23,4 +23,11 @@ public class PositionTest {
         Position position = new Position();
         assertThat(position.move()).isEqualTo(new Position(1));
     }
+
+    @Test
+    void 위치가_크면_더_큰_Position() {
+        Position position1 = new Position(1);
+        Position position2 = new Position(0);
+        assertThat(position1.compareTo(position2)).isEqualTo(1);
+    }
 }

@@ -2,7 +2,7 @@ package step5;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private final int position;
 
     public Position() {
@@ -39,5 +39,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hashCode(position);
+    }
+
+    @Override
+    public int compareTo(Position other) {
+        return Integer.compare(this.position, other.position);
     }
 }
