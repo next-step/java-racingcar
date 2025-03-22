@@ -24,3 +24,4 @@
 - [X] Position 은 위치값이 더 크면 더 큰 Position
 - [X] Car 는 Position 이 더 크면 더 큰 Car
 - [X] Cars 우승자 찾기
+- [X] inputView
