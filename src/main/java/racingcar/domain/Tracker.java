@@ -30,15 +30,10 @@ public class Tracker {
     }
 
     private int findMaxPosition() {
-        int maxPosition = 0;
-        for (Record record : records) {
-            final int position = record.getPosition();
-            if (position > maxPosition) {
-                maxPosition = position;
-            }
-        }
-
-        return maxPosition;
+        return records.stream()
+                .mapToInt(Record::getPosition)
+                .max()
+                .orElse(0);
     }
 
     public List<Record> findAllRecords() {

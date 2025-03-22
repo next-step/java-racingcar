@@ -1,8 +1,10 @@
 package racingcar.view;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private final Scanner scanner = new Scanner(System.in);
@@ -17,19 +19,17 @@ public class InputView {
 
         String[] names = carNamesInput.split(",");
 
-        List<String> result = new ArrayList<>();
-        for (String name : names) {
-            String trimmed = name.trim();
-            this.validateBlankOrThrow(trimmed);
-            result.add(trimmed);
-        }
-        return result;
+        return Arrays.stream(names)
+                .map(String::trim)
+                .filter(this::validateBlankOrThrow)
+                .collect(Collectors.toList());
     }
 
-    private void validateBlankOrThrow(String trimmed) {
+    private boolean validateBlankOrThrow(String trimmed) {
         if (trimmed.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다");
         }
+        return true;
     }
 
     private boolean isInvalidNamesInput(String carNamesInput) {
