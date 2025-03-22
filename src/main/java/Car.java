@@ -8,12 +8,16 @@ public class Car {
     }
 
     public int move(NumberGenerator numberGenerator) {
-        if (canMove(numberGenerator)) position++;
+        if (isMovable(numberGenerator)) incrementPosition();
         return position;
     }
 
-    private boolean canMove(NumberGenerator numberGenerator) {
+    private boolean isMovable(NumberGenerator numberGenerator) {
         return numberGenerator.generate() >= MOVE_THRESHOLD;
+    }
+
+    private void incrementPosition() {
+        position++;
     }
 
 }
