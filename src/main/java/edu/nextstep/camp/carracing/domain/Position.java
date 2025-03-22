@@ -1,5 +1,7 @@
 package edu.nextstep.camp.carracing.domain;
 
+import java.util.Objects;
+
 public class Position {
     private int value;
 
@@ -28,5 +30,22 @@ public class Position {
 
     public int getValue() {
         return this.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Position)) {
+            return false;
+        }
+        Position other = (Position) o;
+        return this.value == other.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

@@ -17,8 +17,12 @@ public class CarName {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CarName)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof CarName)) {
+            return false;
+        }
         CarName other = (CarName) o;
         return name.equals(other.name);
     }
