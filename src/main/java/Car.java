@@ -14,13 +14,9 @@ public class Car {
         return this.name.equals(name);
     }
 
-    public void randomGo(int randomValue) {
-        if (randomValue >= 4)
-            go();
-    }
-
-    public void go() {
-        this.location++;
+    public void go(MoveStrategy moveStrategy) {
+        if (moveStrategy.move())
+            this.location++;
     }
 
     public int max(int other) {

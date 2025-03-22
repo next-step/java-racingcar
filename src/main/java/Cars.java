@@ -1,25 +1,24 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
-public class GameService {
-    private static final Random random = new Random();
-    private List<Car> cars = new ArrayList<>();
+public class Cars {
+    private final List<Car> cars;
 
-    public GameService(String carNames) {
+    public Cars(String carNames) {
+        cars = new ArrayList<>();
         Arrays.stream(carNames.split(","))
             .forEach(name -> cars.add(new Car(name, 0)));
     }
 
-    public GameService(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.randomGo(random.nextInt(10));
+            car.go(moveStrategy);
         }
     }
 

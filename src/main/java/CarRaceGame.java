@@ -1,14 +1,16 @@
 public class CarRaceGame {
     public static void main(String[] args) {
-        String names = InputView.inputCarNames();
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
 
-        GameService gameService = new GameService(names);
+        String names = InputView.inputCarNames();
+        Cars cars = new Cars(names);
 
         int tryNumber = InputView.inputTryNumber();
         for (int i = 0; i < tryNumber; i++) {
-            gameService.move();
-            ResultView.printLocations(gameService.getAllCars());
+            cars.move(moveStrategy);
+            ResultView.printLocations(cars.getAllCars());
         }
-        ResultView.printWinner(gameService.getWinners());
+
+        ResultView.printWinner(cars.getWinners());
     }
 }

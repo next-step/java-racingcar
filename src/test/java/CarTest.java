@@ -7,21 +7,14 @@ public class CarTest {
     @Test
     void 자동차_전진() {
         Car car = new Car("finn", 0);
-        car.go();
+        car.go(new MustGoStrategy());
         assertThat(car.isSameLocation(1)).isTrue();
     }
 
     @Test
-    void 자동차_4이상이면_전진() {
+    void 자동차_멈춤() {
         Car car = new Car("finn", 0);
-        car.randomGo(4);
-        assertThat(car.isSameLocation(1)).isTrue();
-    }
-
-    @Test
-    void 자동차_4미만이면_멈춤() {
-        Car car = new Car("finn", 0);
-        car.randomGo(1);
+        car.go(new MustStopStrategy());
         assertThat(car.isSameLocation(0)).isTrue();
     }
 
@@ -40,5 +33,19 @@ public class CarTest {
         assertThatThrownBy(() -> {
             new Car("", 0);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+}
+
+class MustGoStrategy implements MoveStrategy {
+    @Override
+    public boolean move() {
+        return true;
+    }
+}
+
+class MustStopStrategy implements MoveStrategy {
+    @Override
+    public boolean move() {
+        return false;
     }
 }
