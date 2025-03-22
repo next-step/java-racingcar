@@ -9,7 +9,6 @@ import racingcar.generator.RandomGenerator;
 import racingcar.ui.InputView;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -102,20 +101,15 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("자동차 이름이 공란일 경우 오류 리턴")
-    void inputCarName() {
-        String input = "\n";
-        InputView.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
-
-        assertThatThrownBy(InputView::inputValidatedNameOfCar)
+    void inputCarName_empty() {
+        assertThatThrownBy(() -> new Car(""))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("자동차 이름이 5자 초과할 경우 오류 리턴")
     void inputCarName_5자초과() {
-        String[] invalidNames = {"bmw", "hyundai"};
-
-        assertThatThrownBy(() -> new Cars(invalidNames))
+        assertThatThrownBy(() -> new Car("hyundai"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -124,7 +118,7 @@ public class RacingCarTest {
     void inputCarName_split() {
         String input = "pobi,crong,honux";
         InputView.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
-        assertThat(InputView.inputValidatedNameOfCar()).containsExactly(input.split(","));
+        assertThat(InputView.inputdNameOfCar()).containsExactly(input.split(","));
 
     }
 

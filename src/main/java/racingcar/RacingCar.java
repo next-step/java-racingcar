@@ -20,7 +20,7 @@ public class RacingCar {
 
     public static void gameStartWithName() {
         Race race = new Race(
-                new Cars(InputView.inputValidatedNameOfCar())
+                new Cars(InputView.inputdNameOfCar())
                 , InputView.inputValidatedNumberOfAttempts());
         race.startWithName(createRandomStrategy());
     }

@@ -36,9 +36,8 @@ public class InputView {
         validateInput(input, "시도 횟수", NUM_MIN);
         return input;
     }
-    public static String[] inputValidatedNameOfCar() {
+    public static String[] inputdNameOfCar() {
         String input = inputNameOfCar();
-        validateInput(input);
         input.split(CAR_NAME_DELIMITER);
         return input.split(",");
     }
@@ -48,11 +47,6 @@ public class InputView {
             throw new IllegalArgumentException(
                     String.format("[ERROR] %s는 %d보다 값이어야 합니다.", fieldName, min)
             );
-        }
-    }
-    private static void validateInput(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 빈값일 수 없습니다.");
         }
     }
 }
