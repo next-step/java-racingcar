@@ -15,6 +15,16 @@ public class Cars {
         cars.forEach(car -> car.move(movingStrategy));
     }
 
+    public List<Car> findWinners() {
+        Car maxPositionCar = cars.stream()
+                .max(Car::compareTo)
+                .orElseThrow(() -> new IllegalStateException("There is no car"));
+
+        return cars.stream()
+                .filter(car -> car.compareTo(maxPositionCar) == 0)
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public boolean equals(Object o) {
