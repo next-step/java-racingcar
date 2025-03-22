@@ -92,17 +92,16 @@ class CarRaceTest {
     @DisplayName("random 값이 4 이상이면 전진한다.")
     void moveIfUpperMovableValue() {
         Car car = new Car();
-        assertThat(car.move(4)).isEqualTo(1);
+        NumberGenerator numberGenerator = () -> 4;
+        assertThat(car.move(numberGenerator)).isEqualTo(1);
     }
-
 
     @Test
     @DisplayName("random 값이 4 미만이면 정지한다.")
     void stopIfLowerMovableValue() {
         Car car = new Car();
-        assertThat(car.move(3)).isEqualTo(0);
+        NumberGenerator numberGenerator = () -> 3;
+        assertThat(car.move(numberGenerator)).isEqualTo(0);
     }
-
-
 
 }
