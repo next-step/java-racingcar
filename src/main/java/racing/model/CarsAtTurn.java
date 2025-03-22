@@ -1,9 +1,11 @@
 package racing.model;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarsAtTurn {
+public class CarsAtTurn implements Iterable<FixedCar> {
 
     private final List<FixedCar> cars;
 
@@ -13,18 +15,6 @@ public class CarsAtTurn {
 
     public List<FixedCar> getCarPositions() {
         return cars;
-    }
-
-    public String getCarName(int index) {
-        return cars.get(index).getName();
-    }
-
-    public int getCarPosition(int index) {
-        return cars.get(index).getPosition();
-    }
-
-    public int getCarSize() {
-        return cars.size();
     }
 
     private int findMaxPosition() {
@@ -49,5 +39,10 @@ public class CarsAtTurn {
                 .stream()
                 .filter(car -> car.isPosition(new CarPosition(targetPosition)))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Iterator<FixedCar> iterator() {
+        return Collections.unmodifiableList(cars).iterator();
     }
 }

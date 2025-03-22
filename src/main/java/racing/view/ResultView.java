@@ -1,13 +1,15 @@
 package racing.view;
 
 import racing.model.CarsAtTurn;
+import racing.model.FixedCar;
 import racing.model.RacingResultDto;
 
 public class ResultView {
 
     public static void printResult(RacingResultDto racingResultDto) {
         System.out.println("실행 결과");
-        for (CarsAtTurn carsAtTurn : racingResultDto.getPlayHistory().getPositions()) {
+
+        for (CarsAtTurn carsAtTurn : racingResultDto.getPlayHistory()) {
             printTurnResult(carsAtTurn);
         }
 
@@ -16,14 +18,14 @@ public class ResultView {
     }
 
     private static void printTurnResult(CarsAtTurn carsAtTurn) {
-        for (int i=0; i<carsAtTurn.getCarSize(); i++) {
-            printCarPosition(carsAtTurn.getCarName(i), carsAtTurn.getCarPosition(i));
+        for (FixedCar car: carsAtTurn) {
+            printCarPosition(car);
         }
         System.out.println();
     }
 
-    private static void printCarPosition(String carName, int carPosition) {
-        System.out.println(carName + " : " + "-".repeat(carPosition));
+    private static void printCarPosition(FixedCar car) {
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
     }
 
 }

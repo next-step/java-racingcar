@@ -42,17 +42,7 @@ public class RacingSession {
     }
 
     public RacingResultDto getRacingResult() {
-        List<String> carNames = getCarNames();
         List<String> winnerNames = this.lastPlayHistory.findWinners();
-
-        return new RacingResultDto(carNames, this.lastPlayHistory, winnerNames);
-    }
-
-    private List<String> getCarNames() {
-        List<String> carNames = new ArrayList<>();
-        for (Car car : this.cars) {
-            carNames.add(car.getName());
-        }
-        return carNames;
+        return new RacingResultDto(this.lastPlayHistory, winnerNames);
     }
 }
