@@ -27,7 +27,7 @@ public class Position implements Comparable<Position> {
 
     private void validate(int value) {
         if (value < MIN_POSITION) {
-            throw new PositionException("위치는 0 이상의 정수만 가능합니다.");
+            throw new PositionException(String.format("위치는 %d 이상의 정수만 가능합니다.", MIN_POSITION));
         }
     }
 

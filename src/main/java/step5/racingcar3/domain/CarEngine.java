@@ -28,7 +28,7 @@ public class CarEngine {
 
     public void validate(int threshold) {
         if (threshold < MIN_THRESHOLD) {
-            throw new CarEngineException("엔진의 기준값은 0 이상 9 이하만 가능합니다.");
+            throw new CarEngineException(String.format("엔진의 기준값은 %d 이상 %d 이하만 가능합니다.", MIN_THRESHOLD, MAX_THRESHOLD));
         }
     }
 

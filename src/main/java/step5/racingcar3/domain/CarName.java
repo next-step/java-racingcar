@@ -15,7 +15,7 @@ public class CarName {
 
     private void validate(String carName) throws CarNameException {
         if (carName.trim().length() > MAX_LENGTH) {
-            throw new CarNameException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new CarNameException(String.format("자동차 이름은 %d자 이하만 가능합니다.", MAX_LENGTH));
         }
     }
 
