@@ -1,13 +1,25 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
 
-    private int movableThreshold = 4;
+    private static final int MOVABLE_THRESHOLD = 4;
 
     private int position;
 
-    public Car(int movableThreshold) {
-        this.movableThreshold = movableThreshold;
+    private String name;
+
+    private int attempt;
+
+    public Car(String name) {
+        if (this.isInvalidName(name)) {
+            throw new IllegalArgumentException("입력된 이름이 유효하지 않습니다 [name: " + name + "]");
+        }
+
+        this.name = name;
+    }
+
+    private boolean isInvalidName(String name) {
+        return name == null || name.length() > 5;
     }
 
     public void moveOrStop(int randomInt) {
@@ -17,6 +29,7 @@ public class Car {
         if (isMovable(randomInt)) {
             position++;
         }
+        attempt++;
     }
 
     private boolean isOutOfBound(int randomInt) {
@@ -24,7 +37,7 @@ public class Car {
     }
 
     private boolean isMovable(int randomInt) {
-        return randomInt >= movableThreshold;
+        return randomInt >= MOVABLE_THRESHOLD;
     }
 
     public int getPosition() {
@@ -40,5 +53,17 @@ public class Car {
         }
 
         return trace.toString();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAttempt() {
+        return attempt;
+    }
+
+    public Record extractRecord() {
+        return new Record(name, position, attempt);
     }
 }
