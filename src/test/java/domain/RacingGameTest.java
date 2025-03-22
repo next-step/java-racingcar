@@ -5,29 +5,18 @@ import movingStrategy.Moveable;
 import movingStrategy.RandomlyMove;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class RacingGameTest {
 
     private final Moveable alwaysMove = new AlwaysMove();
     private static final int NUMBER_OF_TRIAL = 5;
-    private static final String[] NAMES_OF_CAR = {"more", "much", "less"};
-
-    @DisplayName("시도 횟수가 0보다 작은 경우 IllegalArgumentException 발생")
-    @ParameterizedTest
-    @ValueSource(ints = {0, -1})
-    void test(Integer numberOfRacing) {
-        // When & Then
-        assertThatThrownBy(() -> new RacingGame(NAMES_OF_CAR, numberOfRacing, alwaysMove))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+    private static final RacingCarNames RACING_CAR_NAMES = new RacingCarNames("more", "much", "less");
 
     @DisplayName("자동차의 수 또는 시도 횟수가 0보다 큰 경우 예외 발생하지 않음")
     @Test
@@ -37,7 +26,7 @@ class RacingGameTest {
         String[] validNamesOfCar = {"more", "much", "less"};
 
         // When
-        RacingGame racingGame = new RacingGame(validNamesOfCar, validNumberOfTrial, alwaysMove);
+        RacingGame racingGame = RacingGame.of(validNamesOfCar, validNumberOfTrial, alwaysMove);
 
         // Then
         assertThatNoException().isThrownBy(racingGame::gameStart);
@@ -48,7 +37,7 @@ class RacingGameTest {
     void carProduceTest() {
         RacingGameResult racingGameResult = playTestGame(alwaysMove);
         List<RoundResult> roundResults = racingGameResult.getAllRoundResults();
-        assertThat(roundResults.get(0).getRaceProgress()).hasSize(NAMES_OF_CAR.length);
+        assertThat(roundResults.get(0).getRaceProgress()).hasSize(RACING_CAR_NAMES.length());
     }
 
     @DisplayName("numberOfTrial 만큼 자동차가 진행함")
@@ -80,7 +69,16 @@ class RacingGameTest {
     }
 
     private RacingGameResult playTestGame(Moveable moveable) {
-        RacingGame racingGame = new RacingGame(RacingGameTest.NAMES_OF_CAR, RacingGameTest.NUMBER_OF_TRIAL, moveable);
+        RacingGame racingGame = new RacingGame(RACING_CAR_NAMES, NUMBER_OF_TRIAL, moveable);
         return racingGame.gameStart();
+    }
+
+    @DisplayName("정적 팩토리 메서드 생성자 테스트")
+    @Test
+    void ofTest() {
+        String[] namesOfCar = {"more", "much", "less"};
+        int numberOfTrial = 5;
+        Moveable moveable = new AlwaysMove();
+        assertThatNoException().isThrownBy(() -> RacingGame.of(namesOfCar, numberOfTrial, moveable));
     }
 }

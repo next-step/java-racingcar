@@ -13,8 +13,8 @@ public class RacingGameResultTest {
     @DisplayName("우승자는 최소한 한 명 이상")
     @Test
     public void whoAreWinnersTest() {
-        String[] namesOfCar = {"more", "much", "less"};
-        RacingGame racingGame = new RacingGame(namesOfCar, 5, new RandomlyMove(10, 4));
+        RacingCarNames racingCarNames = new RacingCarNames("more", "much", "less");
+        RacingGame racingGame = new RacingGame(racingCarNames, 5, new RandomlyMove(10, 4));
         RacingGameResult racingGameResult = racingGame.gameStart();
 
         List<String> winners = racingGameResult.whoAreWinners();
@@ -24,11 +24,11 @@ public class RacingGameResultTest {
     @DisplayName("모두가 공동 우승")
     @Test
     public void allAreWinnersTest() {
-        String[] namesOfCar = {"more", "much", "less"};
-        RacingGame racingGame = new RacingGame(namesOfCar, 5, new AlwaysMove());
+        RacingCarNames racingCarNames = new RacingCarNames("more", "much", "less");
+        RacingGame racingGame = new RacingGame(racingCarNames, 5, new AlwaysMove());
         RacingGameResult racingGameResult = racingGame.gameStart();
 
         List<String> winners = racingGameResult.whoAreWinners();
-        Assertions.assertThat(winners).hasSize(namesOfCar.length);
+        Assertions.assertThat(winners).hasSize(racingCarNames.length());
     }
 }
