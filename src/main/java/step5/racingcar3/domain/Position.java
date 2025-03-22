@@ -3,7 +3,7 @@ package step5.racingcar3.domain;
 import java.util.Objects;
 import step5.racingcar3.exception.PositionException;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     public static final int MIN_POSITION = 0;
     private int value;
@@ -42,5 +42,12 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        Integer a = this.value;
+        Integer b = o.value;
+        return a.compareTo(b);
     }
 }

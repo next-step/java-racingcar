@@ -1,5 +1,6 @@
 package step5.racingcar3.domain;
 
+import java.util.Objects;
 import step5.racingcar3.exception.CarNameException;
 
 public class CarName {
@@ -20,5 +21,18 @@ public class CarName {
 
     public String value() {
         return this.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CarName)) return false;
+        CarName carName = (CarName) o;
+        return value.equals(carName.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

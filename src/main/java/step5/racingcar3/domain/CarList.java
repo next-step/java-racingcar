@@ -13,4 +13,10 @@ public class CarList {
         return cars;
     }
 
+    public void run() {
+        for (Car car : cars) {
+            car.run();
+        }
+    }
+
 }

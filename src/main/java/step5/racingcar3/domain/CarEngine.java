@@ -1,5 +1,6 @@
 package step5.racingcar3.domain;
 
+import java.util.Objects;
 import java.util.Random;
 import step5.racingcar3.exception.CarEngineException;
 
@@ -29,6 +30,19 @@ public class CarEngine {
         if (threshold < MIN_THRESHOLD) {
             throw new CarEngineException("엔진의 기준값은 0 이상 9 이하만 가능합니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CarEngine)) return false;
+        CarEngine carEngine = (CarEngine) o;
+        return threshold == carEngine.threshold;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(threshold);
     }
 
 }

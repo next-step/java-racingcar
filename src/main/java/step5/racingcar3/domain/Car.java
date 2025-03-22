@@ -1,5 +1,7 @@
 package step5.racingcar3.domain;
 
+import java.util.Objects;
+
 public class Car {
 
     private final CarName carName;
@@ -30,6 +32,19 @@ public class Car {
         if (carEngine.canGo()) {
             position.increase();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return carName.equals(car.carName) && carEngine.equals(car.carEngine) && position.equals(car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, carEngine, position);
     }
 
 }
