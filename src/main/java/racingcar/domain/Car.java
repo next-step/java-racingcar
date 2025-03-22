@@ -48,10 +48,6 @@ public class Car {
         return name;
     }
 
-    public int getAttempt() {
-        return attempt;
-    }
-
     public Record extractRecord() {
         return new Record(name, position, attempt);
     }
