@@ -57,7 +57,7 @@
 
 ## 2차 코멘트
 - [x] String.repeat() 사용
-- [ ] [일급컬렉션 적용](https://jojoldu.tistory.com/412) `private final List<Car> cars = new ArrayList<>();`
+- [x] [일급컬렉션 적용](https://jojoldu.tistory.com/412) `private final List<Car> cars = new ArrayList<>();`
 - [x] [테스트 하기 좋은 코드로 인터페이스를 통해 전략패턴](https://tecoble.techcourse.co.kr/post/2020-05-17-appropriate_method_for_test_by_interface/)
   - canMove에서 랜덤값을 처리하기 떄문에 실제 테스트를 하기가 어려운 문제가 있습니다. 이유는 position이 1이 될지, 0이 될지 알수가 없기 떄문이죠.
 - [x] position의 유효성은 따로 없을까요? 예를들어 0 이상의 값이여야만 한다. 같은 거요!

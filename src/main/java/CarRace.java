@@ -4,11 +4,15 @@ import java.util.stream.IntStream;
 
 public class CarRace {
     private final int runCount;
-    private final List<Car> cars;
+    private final CarGroup carGroup;
 
     public CarRace(int carCount, int runCount) {
         this.runCount = runCount;
-        this.cars = IntStream.range(0, carCount)
+        this.carGroup = new CarGroup(createCars(carCount));
+    }
+
+    private List<Car> createCars(int carCount) {
+        return IntStream.range(0, carCount)
                 .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
@@ -20,9 +24,7 @@ public class CarRace {
     }
 
     private List<Integer> runOnce() {
-        return cars.stream()
-                .map(Car::move)
-                .collect(Collectors.toList());
+        return carGroup.move();
     }
 
 }
