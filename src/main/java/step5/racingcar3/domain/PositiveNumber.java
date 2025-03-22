@@ -11,9 +11,13 @@ public class PositiveNumber {
     }
 
     private void validate(int value) {
-        if (value < 0) {
+        if (value <= 0) {
             throw new PositiveNumberException("1 이상의 정수만 가능합니다.");
         }
+    }
+
+    public int value() {
+        return value;
     }
 
 }
