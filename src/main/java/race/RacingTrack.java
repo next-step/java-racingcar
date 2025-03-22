@@ -1,18 +1,15 @@
 package race;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class RacingTrack {
-    private final int maxCarCount;
-    private final int maxAttemptCount;
-    private final List<RacingCar> cars;
+    private final TrackCondition trackCondition;
+    private final CarList cars;
 
     public RacingTrack(int maxCarCount, int maxAttemptCount) {
-        this.maxCarCount = maxCarCount;
-        this.maxAttemptCount = maxAttemptCount;
-        this.cars = new ArrayList<>();
+        this.trackCondition = new TrackCondition(maxCarCount, maxAttemptCount);
+        this.cars = new CarList();
     }
 
     public void startRace(String[] carNames, int numOfAttempts) {
@@ -20,44 +17,27 @@ public class RacingTrack {
 
         ResultView.printRaceStartMessage();
         for (int i = 0; i < numOfAttempts; i++) {
-            moveAndShowCars();
-            ResultView.printRaceStatus(cars);
-        }
-    }
-
-    // getWinners() 메서드 테스틀 위하여 추가한 생성자
-    public void startRace(List<RacingCar> cars, int numOfAttempts) {
-        this.cars.addAll(cars);
-
-        ResultView.printRaceStartMessage();
-        for (int i = 0; i < numOfAttempts; i++) {
-            moveAndShowCars();
+            cars.moveWithRandom(new Random());
             ResultView.printRaceStatus(cars);
         }
     }
 
     private void setupCars(String[] carNames) {
         for (String name : carNames) {
-            cars.add(RacingCarFactory.create(name, ResultView.createPositionPrinter()));
-        }
-    }
-
-    private void moveAndShowCars() {
-        for (RacingCar car : cars) {
-            car.move();
+            cars.add(new RacingCar(name));
         }
     }
 
     public boolean validateCarCount(int num) {
-        return num >= 1 && num <= this.maxCarCount;
+        return this.trackCondition.validateCarCount(num);
     }
 
     public boolean validateAttemptCount(int num) {
-        return num >= 1 && num <= this.maxAttemptCount;
+        return this.trackCondition.validateAttemptCount(num);
     }
 
     public boolean validateCarNames(String[] names) {
-        if (names.length < 1 || names.length > this.maxCarCount) {
+        if (!this.trackCondition.validateCarCount(names.length)) {
             return false;
         }
         for (String name : names) {
@@ -67,13 +47,6 @@ public class RacingTrack {
     }
 
     public List<RacingCar> getWinners() {
-        cars.sort(Collections.reverseOrder());
-        List<RacingCar> winners = new ArrayList<>();
-        winners.add(cars.get(0));
-
-        for (int i = 1; i < cars.size(); i++) {
-            if (cars.get(i).compareTo(cars.get(0)) == 0) winners.add(cars.get(i));
-        }
-        return winners;
+        return this.cars.getWinners();
     }
 }
