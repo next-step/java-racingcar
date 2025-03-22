@@ -19,10 +19,9 @@ public class RacingGameTest {
         Car car1 = new Car(new CarName("a"), carEngineBroken1, new Position(1));
         Car car2 = new Car(new CarName("b"), carEngineBroken2, new Position(2));
         Car car3 = new Car(new CarName("c"), carEngineBroken3, new Position(3));
-        PositiveNumber numberOfRounds = new PositiveNumber(PositiveNumber.MIN_VALUE);
 
         // when
-        RacingGame racingGame = new RacingGame(new CarList(List.of(car1, car2, car3)), numberOfRounds);
+        RacingGame racingGame = new RacingGame(new CarList(List.of(car1, car2, car3)));
         racingGame.start();
         racingGame.end();
         CarList winners = racingGame.winners();
@@ -42,10 +41,9 @@ public class RacingGameTest {
         Car car1 = new Car(new CarName("a"), carEngineBroken1, new Position(3));
         Car car2 = new Car(new CarName("b"), carEngineBroken2, new Position(3));
         Car car3 = new Car(new CarName("c"), carEngineBroken3, new Position(3));
-        PositiveNumber numberOfRounds = new PositiveNumber(PositiveNumber.MIN_VALUE);
 
         // when
-        RacingGame racingGame = new RacingGame(new CarList(List.of(car1, car2, car3)), numberOfRounds);
+        RacingGame racingGame = new RacingGame(new CarList(List.of(car1, car2, car3)));
         racingGame.start();
         racingGame.end();
         CarList winners = racingGame.winners();

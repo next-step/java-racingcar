@@ -6,17 +6,13 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private final CarList cars;
-    private final PositiveNumber numberOfRounds;
 
-    public RacingGame(CarList cars, PositiveNumber numberOfRounds) {
+    public RacingGame(CarList cars) {
         this.cars = cars;
-        this.numberOfRounds = numberOfRounds;
     }
 
     public void start() {
-        for (int i = 0; i < numberOfRounds.value(); i++) {
-            cars.run();
-        }
+        cars.run();
     }
 
     public void end() {
