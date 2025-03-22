@@ -27,6 +27,12 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public String getRawName() {
+        return this.carName.getCarName();
+    }
+    public int getRawPosition() {
+        return this.position.getPosition();
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,7 +46,6 @@ public class Car implements Comparable<Car> {
     public int hashCode() {
         return Objects.hash(carName, position);
     }
-
 
     @Override
     public int compareTo(Car other) {
