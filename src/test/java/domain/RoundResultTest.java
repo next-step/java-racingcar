@@ -33,6 +33,6 @@ class RoundResultTest {
         List<RacingCarCurrentStatus> raceProgress = roundResult.getRaceProgress();
         assertThat(raceProgress).allMatch(status ->
                 expectedNames.contains(status.name()) &&
-                        expectedPositions.contains(status.position()));
+                        expectedPositions.contains(status.position().value()));
     }
 }

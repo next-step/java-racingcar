@@ -31,3 +31,4 @@
 - [x] 원시 자료형 래핑
   - [x] RacingCarNames
   - [x] NumberOfTrial
+  - [x] Position

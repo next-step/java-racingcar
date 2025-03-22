@@ -13,7 +13,11 @@ public class RacingCarCurrentStatus {
         return this.name;
     }
 
-    public Integer position() {
-        return this.position.position();
+    public Position position() {
+        return this.position;
+    }
+
+    public boolean isAheadOf(Position maxPosition) {
+        return this.position.isAheadOf(maxPosition);
     }
 }

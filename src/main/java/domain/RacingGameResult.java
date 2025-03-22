@@ -26,11 +26,11 @@ public class RacingGameResult {
         RoundResult lastRoundResult = getLastRoundResult();
         List<RacingCarCurrentStatus> raceResult = lastRoundResult.getRaceProgress();
 
-        Integer maxPosition = findMaxPosition(raceResult);
+         Position maxPosition = findMaxPosition(raceResult);
         return findWinners(raceResult, maxPosition);
     }
 
-    private List<String> findWinners(List<RacingCarCurrentStatus> raceResult, Integer maxPosition) {
+    private List<String> findWinners(List<RacingCarCurrentStatus> raceResult, Position maxPosition) {
         List<String> winners = new ArrayList<>();
         for (RacingCarCurrentStatus car : raceResult) {
             addIfWinner(car, maxPosition, winners);
@@ -38,23 +38,23 @@ public class RacingGameResult {
         return winners;
     }
 
-    private void addIfWinner(RacingCarCurrentStatus car, Integer maxPosition, List<String> winners) {
+    private void addIfWinner(RacingCarCurrentStatus car, Position maxPosition, List<String> winners) {
         if (maxPosition.equals(car.position())) {
             winners.add(car.name());
         }
     }
 
-    private Integer findMaxPosition(List<RacingCarCurrentStatus> raceResult) {
-        int maxPosition = 0;
+    private Position findMaxPosition(List<RacingCarCurrentStatus> raceResult) {
+        Position maxPosition = new Position(0);
         for (RacingCarCurrentStatus car : raceResult) {
             maxPosition = updateMaxPosition(car, maxPosition);
         }
         return maxPosition;
     }
 
-    private Integer updateMaxPosition(RacingCarCurrentStatus car, int maxPosition) {
-        if (car.position() > maxPosition) {
-            maxPosition = car.position();
+    private Position updateMaxPosition(RacingCarCurrentStatus carStatus, Position maxPosition) {
+        if (carStatus.isAheadOf(maxPosition)) {
+            maxPosition = carStatus.position();
         }
         return maxPosition;
     }

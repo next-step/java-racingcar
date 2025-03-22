@@ -14,7 +14,7 @@ public class RacingCar {
     }
 
     public Integer position() {
-        return this.position.position();
+        return this.position.value();
     }
 
     public void move() {

@@ -36,7 +36,7 @@ public class ResultView {
     }
 
     private String formatCarResult(RacingCarCurrentStatus status) {
-        String dashes = "-".repeat(status.position() + 1);
+        String dashes = "-".repeat(status.position().value() + 1);
         return status.name() + ":" + dashes;
     }
 }

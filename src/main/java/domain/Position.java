@@ -7,7 +7,7 @@ public class Position {
         this.position = position;
     }
 
-    public Integer position() {
+    public Integer value() {
         return this.position;
     }
 
@@ -19,4 +19,11 @@ public class Position {
         return new Position(this.position);
     }
 
+    public boolean isAheadOf(Position position) {
+        return this.position > position.value();
+    }
+
+    public boolean equals(Position position) {
+        return position.value().equals(this.position);
+    }
 }
