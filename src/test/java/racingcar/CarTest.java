@@ -5,8 +5,9 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import racingcar.domain.Car;
 
 class CarTest {
 
@@ -65,24 +66,6 @@ class CarTest {
 
 		// then
 		assertThat(car.getLocation()).isEqualTo(0);
-	}
-
-	@ParameterizedTest(name = "거리: {0}, 기대값: {1}")
-	@CsvSource({
-		"0, true",
-		"1, false"
-	})
-	@DisplayName("거리가 동일하면 true를 반환하고, 그렇지 않으면 false를 반환한다.")
-	void isSameLocationTest(int location, boolean expected) {
-		// given
-		Car car = new Car("tdd");
-
-		// when
-		boolean result = car.isSameLocation(location);
-
-		// then
-		assertThat(result).isEqualTo(expected);
-
 	}
 
 }

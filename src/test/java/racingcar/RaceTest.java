@@ -7,6 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.domain.Race;
+
 class RaceTest {
 	@ParameterizedTest(name = "라운드 수 : {0}")
 	@ValueSource(ints = {4, 5, 6})

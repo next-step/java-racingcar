@@ -6,6 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.view.InputView;
+
 class InputViewTest {
 	@Test
 	@DisplayName("1 이상의 정수이면 예외가 발생하지 않는다.")

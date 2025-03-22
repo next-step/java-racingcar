@@ -13,6 +13,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.MockedStatic;
 
+import racingcar.domain.RandomMovingStrategy;
+import racingcar.domain.RandomNumberGenerator;
+
 class RandomMovingStrategyTest {
 	static final int MIN_MOVE_VALUE = 4;
 	static final int MAX_BOUND = 10;

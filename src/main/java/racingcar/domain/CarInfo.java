@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public record CarInfo(
 	String name,
@@ -9,5 +9,9 @@ public record CarInfo(
 			car.getName(),
 			car.getLocation()
 		);
+	}
+
+	public boolean isSameLocation(int compareLocation) {
+		return compareLocation == location;
 	}
 }
