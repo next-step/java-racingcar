@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
+import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
 public class Race {
@@ -12,6 +13,12 @@ public class Race {
         this.totalAttempts = totalAttempts;
     }
 
+    public static Race create() {
+        String[] carNames = InputView.inputdNameOfCar();
+        int attempts = InputView.inputValidatedNumberOfAttempts();
+        return new Race(Cars.fromNames(carNames), attempts);
+    }
+
     public void start(MovingStrategy strategy) {
         System.out.println("실행 결과");
         ResultView.viewRacingCar(cars.getCurrentStatus());
@@ -19,5 +26,14 @@ public class Race {
             cars.moveAll(strategy);
             ResultView.viewRacingCar(cars.getCurrentStatus());
         }
+    }
+    public void startWithName(MovingStrategy strategy) {
+        System.out.println("실행 결과");
+        ResultView.viewRacingCarWithName(cars.getCurrentStatus());
+        for (int attempt = 1; attempt < totalAttempts; attempt++) {
+            cars.moveAll(strategy);
+            ResultView.viewRacingCarWithName(cars.getCurrentStatus());
+        }
+        ResultView.viewRacingCarWinner(cars.getWinners());
     }
 }
