@@ -14,6 +14,10 @@ public class CarNames {
         this.carNames = carNames;
     }
 
+    public CarNames(List<CarName> carNames) {
+        this.carNames = carNames;
+    }
+
     public List<CarName> getCarNames() {
         return this.carNames;
     }
