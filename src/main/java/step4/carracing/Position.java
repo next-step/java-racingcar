@@ -1,6 +1,7 @@
 package step4.carracing;
 
 public class Position {
+  private static final String POSITION_SYMBOL = "-";
   private int value;
 
   public Position(int value) {
@@ -26,7 +27,7 @@ public class Position {
     return Math.max(value, compareValue);
   }
 
-  public String getStatus(String positionSymbol) {
-    return positionSymbol.repeat(value+1);
+  public String getStatus() {
+    return POSITION_SYMBOL.repeat(value+1);
   }
 }

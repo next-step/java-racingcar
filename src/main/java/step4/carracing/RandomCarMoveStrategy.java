@@ -12,7 +12,7 @@ public class RandomCarMoveStrategy implements CarMoveStrategy {
     return getRandomStep() >= MOVE_THRESHOLD;
   }
 
-  private int getRandomStep() {
+  int getRandomStep() {
     return random.nextInt(MAX_RANDOM_NUMBER);
   }
 }

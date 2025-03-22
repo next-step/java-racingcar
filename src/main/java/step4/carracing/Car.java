@@ -3,7 +3,6 @@ package step4.carracing;
 public class Car {
   private static final int INIT_POSITION = 0;
   private static final int MOVE_STEP = 1;
-  private static final String POSITION_SYMBOL = "-";
 
   private final Position position;
   private final String name;
@@ -38,6 +37,6 @@ public class Car {
   }
 
   public String getStatus() {
-    return position.getStatus(POSITION_SYMBOL);
+    return position.getStatus();
   }
 }
