@@ -22,3 +22,4 @@
 - [X] 랜덤값이 4보다 크면 참을 반환하는 RandomMovingStrategy
 - [X] Cars 는 List<Car> 를 전진시킨다.
 - [X] Position 은 위치값이 더 크면 더 큰 Position
+- [X] Car 는 Position 이 더 크면 더 큰 Car

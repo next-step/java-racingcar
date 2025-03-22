@@ -25,4 +25,11 @@ public class CarTest {
         car.move(() -> false);
         assertThat(car).isEqualTo(new Car(new CarName("1"), new Position(0)));
     }
+
+    @Test
+    void Position이_더_크면_더_큰_Car() {
+        Car car1 = new Car(new Position(1));
+        Car car2 = new Car(new Position(0));
+        assertThat(car1).isGreaterThan(car2);
+    }
 }

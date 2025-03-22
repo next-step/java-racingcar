@@ -2,6 +2,7 @@ package step5;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;

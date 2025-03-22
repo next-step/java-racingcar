@@ -2,7 +2,7 @@ package step5;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final CarName carName;
     private Position position;
 
@@ -27,6 +27,7 @@ public class Car {
         }
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,4 +42,8 @@ public class Car {
     }
 
 
+    @Override
+    public int compareTo(Car other) {
+        return this.position.compareTo(other.position);
+    }
 }

@@ -28,6 +28,6 @@ public class PositionTest {
     void 위치가_크면_더_큰_Position() {
         Position position1 = new Position(1);
         Position position2 = new Position(0);
-        assertThat(position1.compareTo(position2)).isEqualTo(1);
+        assertThat(position1).isGreaterThan(position2);
     }
 }
