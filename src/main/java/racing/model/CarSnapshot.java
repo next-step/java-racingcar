@@ -1,16 +1,16 @@
 package racing.model;
 
-public class FixedCar {
+public class CarSnapshot {
 
     private final CarPosition position;
     private final CarName name;
 
-    public FixedCar(String name, int position) {
+    public CarSnapshot(String name, int position) {
         this.position = new CarPosition(position);
         this.name = new CarName(name);
     }
 
-    public FixedCar(CarName name, CarPosition position) {
+    public CarSnapshot(CarName name, CarPosition position) {
         this.position = position;
         this.name = name;
     }

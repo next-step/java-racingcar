@@ -38,8 +38,8 @@ public class Car {
         return this.name.getName();
     }
 
-    public FixedCar toFixedCar() {
-        return new FixedCar(this.name, this.position);
+    public CarSnapshot snapshot() {
+        return new CarSnapshot(this.name, this.position);
     }
 
     public static List<Car> createCars(String carNames) {

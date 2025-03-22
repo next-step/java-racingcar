@@ -14,10 +14,10 @@ class RacingSessionTest {
     void 턴_행동() {
         RacingSession session = RacingSession.of("a,b");
 
-        List<CarsAtTurn> positions = session.startRacing(5);
+        List<TurnSnapshot> positions = session.startRacing(5);
 
         assertThat(positions).hasSize(5);
-        for (CarsAtTurn position : positions) {
+        for (TurnSnapshot position : positions) {
             assertThat(position.getCarPositions()).hasSize(2);
         }
     }

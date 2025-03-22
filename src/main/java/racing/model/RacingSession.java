@@ -18,8 +18,8 @@ public class RacingSession {
         return new RacingSession(cars);
     }
 
-    public List<CarsAtTurn> startRacing(int turns) {
-        List<CarsAtTurn> totalPositions = new ArrayList<>();
+    public List<TurnSnapshot> startRacing(int turns) {
+        List<TurnSnapshot> totalPositions = new ArrayList<>();
         for (int i = 0; i < turns; i++) {
             totalPositions.add(moveCars());
         }
@@ -27,13 +27,13 @@ public class RacingSession {
         return totalPositions;
     }
 
-    public CarsAtTurn moveCars() {
-        List<FixedCar> carsAtTurn = new ArrayList<>();
+    public TurnSnapshot moveCars() {
+        List<CarSnapshot> carsAtTurn = new ArrayList<>();
         for (Car car : cars) {
             car.move(getProgressNumber());
-            carsAtTurn.add(car.toFixedCar());
+            carsAtTurn.add(car.snapshot());
         }
-        return new CarsAtTurn(carsAtTurn);
+        return new TurnSnapshot(carsAtTurn);
     }
 
     public int getProgressNumber() {

@@ -4,25 +4,25 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class PlayHistory implements Iterable<CarsAtTurn> {
+public class PlayHistory implements Iterable<TurnSnapshot> {
 
-    private final List<CarsAtTurn> positions;
+    private final List<TurnSnapshot> positions;
 
-    public PlayHistory(List<CarsAtTurn> positions) {
+    public PlayHistory(List<TurnSnapshot> positions) {
         this.positions = positions;
     }
 
     public List<String> findWinners() {
-        CarsAtTurn lastTurn = getLastTurn();
+        TurnSnapshot lastTurn = getLastTurn();
         return lastTurn.findMaxPositionCarNames();
     }
 
-    private CarsAtTurn getLastTurn() {
+    private TurnSnapshot getLastTurn() {
         return this.positions.get(this.positions.size() - 1);
     }
 
     @Override
-    public Iterator<CarsAtTurn> iterator() {
+    public Iterator<TurnSnapshot> iterator() {
         return Collections.unmodifiableList(positions).iterator();
     }
 
