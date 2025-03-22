@@ -1,8 +1,6 @@
-package racingcar.racing;
+package racingcar.racing.model;
 
-import racingcar.racing.model.Car;
 import racingcar.racing.util.RandomGenerator;
-import racingcar.racing.view.ResultView;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +12,6 @@ public class RacingCarGame {
 
     private final RandomGenerator randomGenerator;
     private final List<Car> cars;
-    private final ResultView resultView;
     private int stage;
 
     public RacingCarGame(List<String> carNames) {
@@ -23,15 +20,8 @@ public class RacingCarGame {
 
     public RacingCarGame(List<String> carNames, RandomGenerator randomGenerator) {
         this.stage = 0;
-        this.resultView = new ResultView();
         this.randomGenerator = randomGenerator;
         this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
-    }
-
-    public void playAndWinners(int count) {
-        process(count);
-
-        resultView.printResult(getCurrentStageWinner());
     }
 
     public List<String> getCurrentStageWinner() {
@@ -42,16 +32,14 @@ public class RacingCarGame {
                 .collect(Collectors.toList());
     }
 
-    private void process(int count) {
+    public void process(int count) {
         for (int i = 0; i < count; i++)
             process();
     }
 
-    private void process() {
+    public void process() {
         cars.forEach(this::moveCar);
         stage++;
-
-        resultView.printGameStatus(cars, stage);
     }
 
     private void moveCar(Car car) {
