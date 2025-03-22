@@ -1,22 +1,25 @@
 package racingcar.view;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private final Scanner scanner;
+    private final Scanner scanner = new Scanner(System.in);
 
-    public InputView(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    public int getCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
-    }
-
-    public String getCarNames() {
+    public List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return scanner.nextLine();
+
+        String carNamesInput = scanner.nextLine();
+        if (this.isInvalidNames(carNamesInput)) {
+            throw new IllegalArgumentException("유효하지 않은 입력값입니다: [자동차 이름: " + carNamesInput + "]");
+        }
+
+        String[] names = carNamesInput.split(",");
+        return List.of(names);
+    }
+
+    private boolean isInvalidNames(String carNamesInput) {
+        return carNamesInput == null || carNamesInput.isEmpty() || carNamesInput.isBlank();
     }
 
     public int getAttempts() {
