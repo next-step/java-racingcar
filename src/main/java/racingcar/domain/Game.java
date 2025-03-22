@@ -25,7 +25,7 @@ public class Game {
     }
 
     private void postConstruct() {
-        List<String> carNames = inputView.getCarNames();
+        List<String> carNames = inputView.getValidCarNames();
         cars = CarFactory.create(carNames);
     }
 
@@ -36,6 +36,7 @@ public class Game {
 
     public void finish() {
         this.resultView.printResult(tracker.findAllRecords());
+        this.resultView.printWinners(tracker.findWinnerRecords());
     }
 
     private void race(int attempts) {

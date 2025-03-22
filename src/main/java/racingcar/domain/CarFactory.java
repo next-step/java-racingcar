@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class CarFactory {
 
     public static Cars create(List<String> names) {
-        if (names.isEmpty()) {
+        if (names == null || names.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 적어도 하나 이상이어야 합니다.");
         }
 

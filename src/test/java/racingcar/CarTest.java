@@ -51,4 +51,16 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("0 부터 9 사이의 정수값만 입력 가능합니다.");
     }
+
+    @Test
+    @DisplayName("자동차 이름은 5자를 초과하는 경우 에러를 던진다.")
+    void carNameTest() {
+        //given
+        String longName = "5자 초과하는 이름";
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> new Car(longName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력된 이름이 유효하지 않습니다 [name: ");
+    }
 }

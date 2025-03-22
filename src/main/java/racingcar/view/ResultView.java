@@ -4,11 +4,13 @@ import racingcar.domain.Record;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
     public static final String DEFAULT_MARKER = "-";
     public static final String SEPARATOR = " : ";
+    public static final String WINNER_DELIMITER = ", ";
 
     public void printResult(List<Record> records) {
         System.out.println();
@@ -47,4 +49,12 @@ public class ResultView {
     }
 
 
+    public void printWinners(List<Record> winnerRecords) {
+        String names = winnerRecords.stream()
+                .map(Record::getName)
+                .distinct()
+                .collect(Collectors.joining(WINNER_DELIMITER));
+
+        System.out.println(names + "가 최종 우승했습니다.");
+    }
 }
