@@ -1,15 +1,15 @@
-import java.util.List;
-
 public final class ResultView {
 
     private ResultView() {}
 
-    public static void printResult(final List<Car> cars) {
-        cars.forEach(car -> {
-            printCarPosition(car.getPosition());
+    public static void printResult(final CarsSnapShots carsSnapShots) {
+        carsSnapShots.getCars().forEach(cars -> {
+            cars.getCars().forEach(car -> {
+                printCarPosition(car.getPosition());
+                System.out.println();
+            });
             System.out.println();
         });
-        System.out.println();
     }
 
     public static void printTitle() {
@@ -17,8 +17,6 @@ public final class ResultView {
     }
 
     private static void printCarPosition(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print('-');
-        }
+        System.out.print("-".repeat(position));
     }
 }

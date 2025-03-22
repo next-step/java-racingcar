@@ -10,7 +10,11 @@ public class Car {
         this(0);
     }
 
-    public void moveOneBy(int value) {
+    public Car(Car car) {
+        this.position = car.position;
+    }
+
+    public void moveBy(int value) {
         if (value > STANDARD_VALUE) {
             this.position++;
         }

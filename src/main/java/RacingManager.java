@@ -1,17 +1,25 @@
-import java.util.List;
-
 public class RacingManager {
-    private final List<Car> cars;
+    private final Cars cars;
+    private final CarsSnapShots carsSnapShots;
+    private final int tryNum;
 
-    public RacingManager(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public int getRandomNumber() {
-        return (int) (Math.random() * 10);
+    public RacingManager(int carNum, int tryNum) {
+        if (carNum <= 0 || tryNum <= 0) {
+            throw new IllegalArgumentException("자동차 대수와 시도 횟수는 0보다 커야 합니다.");
+        }
+        this.tryNum = tryNum;
+        this.cars = new Cars(carNum);
+        carsSnapShots = new CarsSnapShots();
     }
 
     public void play() {
-        this.cars.forEach(car -> car.moveOneBy(getRandomNumber()));
+        for (int i = 0; i < tryNum; i++) {
+            this.cars.move();
+            carsSnapShots.add(this.cars);
+        }
+    }
+
+    public CarsSnapShots getCarsSnapShots() {
+        return this.carsSnapShots;
     }
 }
