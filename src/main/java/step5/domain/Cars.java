@@ -15,6 +15,18 @@ public class Cars {
         cars.forEach(car -> car.move(movingStrategy));
     }
 
+    public List<CarStatusDto>  getCurrentStatus() {
+        return cars.stream()
+                .map(CarStatusDto::of)
+                .collect(Collectors.toList());
+    }
+
+    public List<CarStatusDto> findWinnersStatus() {
+        return findWinners().stream()
+                .map(CarStatusDto::of)
+                .collect(Collectors.toList());
+    }
+
     public List<Car> findWinners() {
         Car maxPositionCar = cars.stream()
                 .max(Car::compareTo)
