@@ -2,60 +2,76 @@ package racing.types;
 
 import racing.simulator.CarMovingStrategy;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarGroup {
 
-  private final List<Car> cars = new ArrayList<>();
+  private final List<Car> cars;
 
-  public static CarGroup valueOf(List<CarName> carNames) {
-    return new CarGroup(carNames);
+  public CarGroup() {
+    cars = new ArrayList<>();
   }
 
-  public static CarGroup valueOf(CarCount carCount) {
-    return new CarGroup(carCount);
-  }
+  public CarGroup(int size) {
+    cars = new ArrayList<>();
 
-  private CarGroup(List<CarName> carNames) {
-    if (hasDuplicateNames(carNames)) {
-      throw new IllegalArgumentException("차 이름은 중복될 수 없습니다.");
-    }
-
-    for (CarName name : carNames) {
-      cars.add(Car.valueOf(name));
-    }
-  }
-
-  private boolean hasDuplicateNames(List<CarName> carNames) {
-    Set<String> uniqueNames = new HashSet<>();
-    return carNames.stream()
-        .anyMatch(carName -> !uniqueNames.add(carName.getName()));
-  }
-
-  private CarGroup(CarCount carCount) {
-    for (int i = 0; i < carCount.getCount(); i++) {
+    for (int i = 0; i < size; i++) {
       cars.add(new Car());
     }
   }
 
-  public void moveCars(CarMovingStrategy carMovingStrategy) {
-    cars.forEach(car -> car.go(carMovingStrategy));
+  public CarGroup(List<Car> cars) {
+    this.cars = new ArrayList<>();
+    cars.forEach(this::add);
   }
 
-  public List<Car> copyCars() {
-    List<Car> res = new ArrayList<>();
-    for (Car car : cars) {
-      res.add(Car.valueOf(car));
-    }
-    return res;
+  public void add(Car newCar) {
+    cars.add(newCar);
+  }
+
+  public CarGroup toTryMoveCarGroup(CarMovingStrategy carMovingStrategy) {
+    List<Car> movingCars =  cars.stream()
+        .map(car -> car.toMovingCar(carMovingStrategy))
+        .collect(Collectors.toList());
+
+    return new CarGroup(movingCars);
   }
 
   public void resetCars() {
     for (Car car : cars) {
       car.reset();
     }
+  }
+
+  public CarGroup toWinnerCarGroup() {
+    Car maxLocationCar = cars.stream()
+        .reduce((car1, car2) -> car1.isBehind(car2) ? car2 : car1)
+        .orElse(null);
+
+    return new CarGroup(cars.stream()
+        .filter(car -> car.isSameLocation(maxLocationCar))
+        .collect(Collectors.toList()));
+  }
+
+  public String toNameString() {
+    return Car.toNameString(this.cars);
+  }
+
+  public String toLocationString() {
+    return Car.toLocationString(this.cars);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CarGroup carGroup = (CarGroup) o;
+    return Objects.equals(cars, carGroup.cars);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(cars);
   }
 }

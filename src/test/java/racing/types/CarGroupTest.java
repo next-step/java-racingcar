@@ -9,124 +9,43 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CarGroupTest {
 
   @DisplayName("생성자 테스트1")
   @Test
   void constructorTest1() {
-    assertDoesNotThrow(() -> CarGroup.valueOf(List.of(CarName.valueOf("test"))));
+    assertDoesNotThrow(() -> new CarGroup());
   }
 
   @DisplayName("생성자 테스트2")
   @Test
   void constructorTest2() {
-    assertDoesNotThrow(() -> CarGroup.valueOf(CarCount.valueOf(12)));
-  }
-
-  @DisplayName("생성자에 중복된 차 이름이 들어오면 RuntimeException을 던진다.")
-  @Test
-  void constructor_duplicateCarName_throwsRuntimeException() {
-    List<CarName> names = List.of(
-        CarName.valueOf("A"),
-        CarName.valueOf("A"),
-        CarName.valueOf("A")
-    );
-
-    assertThatThrownBy(() -> CarGroup.valueOf(names))
-        .isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("차 이름은 중복될 수 없습니다.");
+    assertDoesNotThrow(() -> new CarGroup(List.of(new Car())));
   }
 
   @DisplayName("차들을 move 하면 전략에 따라 차를 움직인다.")
   @ParameterizedTest
   @ValueSource(booleans = {true, false})
-  void tryMoveCars_carsMovedByStrategy(boolean strategyResult) {
-    CarCount carCount = CarCount.valueOf(3);
-    List<CarName> names = List.of(
-        CarName.valueOf("pobi"),
-        CarName.valueOf("crong"),
-        CarName.valueOf("honux")
-    );
+  void moveCarsByStrategy(boolean strategyResult) {
+    CarGroup carGroup = new CarGroup(List.of(
+        Car.valueOf(CarName.valueOf("a")),
+        Car.valueOf(CarName.valueOf("b"))
+    ));
 
-    CarGroup carGroupWithCount = CarGroup.valueOf(carCount);
-    carGroupWithCount.moveCars(() -> strategyResult);
-    List<Car> resultWithCount = carGroupWithCount.copyCars();
+    CarGroup result = carGroup.toTryMoveCarGroup(() -> strategyResult);
 
-    CarGroup carGroupWithNames = CarGroup.valueOf(names);
-    carGroupWithNames.moveCars(() -> strategyResult);
-    List<Car> resultWithNames = carGroupWithNames.copyCars();
+    CarGroup expectedCars = strategyResult
+        ? new CarGroup(List.of(
+        Car.valueOf(CarName.valueOf("a"), new CarLocation(1)),
+        Car.valueOf(CarName.valueOf("b"), new CarLocation(1))
+    ))
+        : new CarGroup(List.of(
+        Car.valueOf(CarName.valueOf("a")),
+        Car.valueOf(CarName.valueOf("b"))
+    ));
 
-    assertAll(
-        () -> assertThat(resultWithCount)
-            .extracting(Car::getLocation)
-            .containsOnly(strategyResult ? 1 : 0),
-        () -> assertThat(resultWithNames)
-            .extracting(Car::getLocation)
-            .containsOnly(strategyResult ? 1 : 0)
-    );
-  }
-
-  @DisplayName("차들을 copy 하면 자동차 배열의 깊은 복사를 반환한다.")
-  @Test
-  void copyCars_returnDeepCopiedCarArray() {
-    CarCount carCount = CarCount.valueOf(4);
-    List<CarName> names = List.of(
-        CarName.valueOf("pobi"),
-        CarName.valueOf("crong"),
-        CarName.valueOf("honux")
-    );
-
-    CarGroup carGroupWithNames = CarGroup.valueOf(names);
-    List<Car> firstCopiedCarGroupWithNames = carGroupWithNames.copyCars();
-    List<Car> secondCopiedCarGroupWithNames = carGroupWithNames.copyCars();
-
-    CarGroup carGroupWithCount = CarGroup.valueOf(carCount);
-    List<Car> firstCopiedCarGroupWithCount = carGroupWithCount.copyCars();
-    List<Car> secondCopiedCarGroupWithCount = carGroupWithCount.copyCars();
-
-    assertAll(
-        () -> assertThat(firstCopiedCarGroupWithNames).hasSize(names.size()),
-        () -> assertThat(secondCopiedCarGroupWithNames).hasSize(names.size()),
-        () -> assertThat(firstCopiedCarGroupWithNames)
-            .zipSatisfy(secondCopiedCarGroupWithNames, (element1, element2) -> assertThat(element1).isNotSameAs(element2)),
-        () -> assertThat(firstCopiedCarGroupWithCount).hasSize(carCount.getCount()),
-        () -> assertThat(secondCopiedCarGroupWithCount).hasSize(carCount.getCount()),
-        () -> assertThat(firstCopiedCarGroupWithCount)
-            .zipSatisfy(secondCopiedCarGroupWithCount, (element1, element2) -> assertThat(element1).isNotSameAs(element2))
-
-    );
-  }
-
-  @DisplayName("차들을 reset 하면 차의 위치가 0이 된다.")
-  @Test
-  void reset_setCarPositionToZero() {
-    CarCount carCount = CarCount.valueOf(5);
-    List<CarName> names = List.of(
-        CarName.valueOf("pobi"),
-        CarName.valueOf("crong"),
-        CarName.valueOf("honux")
-    );
-
-    CarGroup carGroupWithNames = CarGroup.valueOf(names);
-    carGroupWithNames.moveCars(() -> true);
-    carGroupWithNames.resetCars();
-    List<Car> resultWithNames = carGroupWithNames.copyCars();
-
-    CarGroup carGroupWithCount = CarGroup.valueOf(carCount);
-    carGroupWithCount.moveCars(() -> true);
-    carGroupWithCount.resetCars();
-    List<Car> resultWithCount = carGroupWithCount.copyCars();
-
-    assertAll(
-        () -> assertThat(resultWithNames)
-            .extracting(Car::getLocation)
-            .containsOnly(0),
-        () -> assertThat(resultWithCount)
-            .extracting(Car::getLocation)
-            .containsOnly(0)
-    );
+    assertThat(result).isEqualTo(expectedCars);
   }
 }

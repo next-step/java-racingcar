@@ -22,10 +22,10 @@ public class NamedCarRacingGameExecutor {
     OutputView.showWhitespace();
     OutputView.showExecutionResultText();
     CarRacingGameSimulateResult simulateResult = simulator.run(simulateCount);
-    simulateResult.getSimulationResult().forEach(roundResult -> {
-      OutputView.showLocation(roundResult);
-      OutputView.showWhitespace();
-    });
-    OutputView.showWinner(simulateResult.getWinner());
+    OutputView.showLocation(simulateResult);
+    OutputView.showWhitespace();
+    OutputView.showWhitespace();
+    OutputView.showWinner(simulateResult);
+    simulator.reset();
   }
 }

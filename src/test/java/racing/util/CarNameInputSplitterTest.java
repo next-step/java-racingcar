@@ -2,6 +2,8 @@ package racing.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.property.CarRacingGameProperty;
+import racing.types.Car;
 import racing.types.CarName;
 
 import java.util.List;
@@ -20,8 +22,7 @@ class CarNameInputSplitterTest {
     assertThat(result)
         .isNotNull()
         .hasSize(3)
-        .extracting(CarName::getName)
-        .containsExactly("pobi", "crong", "honux");
+        .containsExactly(CarName.valueOf("pobi"), CarName.valueOf("crong"), CarName.valueOf("honux"));
   }
 
   @DisplayName("차의 이름들을 받았을 때 2대 미만이면 RuntimeException을 던진다.")
@@ -40,5 +41,17 @@ class CarNameInputSplitterTest {
   @Test
   void throwRuntimeException_whenCarNamesNull() {
     assertThrows(RuntimeException.class, () -> CarNameInputSplitter.split(null));
+  }
+
+  @DisplayName("차의 이름들을 받았을 때 중복된 이름이 있으면 RuntimeException을 던진다.")
+  @Test
+  void throwRuntimeException_whenDuplicateCarNames() {
+    assertThrows(RuntimeException.class, () -> CarNameInputSplitter.split("pobi,pobi"));
+  }
+
+  @DisplayName("차의 이름들을 받았을 CarName Default 이름이 있으면 RuntimeException을 던진다.")
+  @Test
+  void throwRuntimeException_whenDefaultCarNames() {
+    assertThrows(RuntimeException.class, () -> CarNameInputSplitter.split(String.format("pobi,%s", CarRacingGameProperty.CAR_DEFAULT_NAME)));
   }
 }

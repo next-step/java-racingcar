@@ -1,43 +1,44 @@
 package racing.types;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CarRacingGameSimulateResult {
-  private final List<List<Car>> simulateResult;
+  private final List<CarGroup> simulateResult;
 
-  public static CarRacingGameSimulateResult valueOf(List<List<Car>> simulateResult) {
+  public static CarRacingGameSimulateResult valueOf(List<CarGroup> simulateResult) {
     return new CarRacingGameSimulateResult(simulateResult);
   }
 
-  private CarRacingGameSimulateResult(List<List<Car>> simulateResult) {
-    if (simulateResult.stream().anyMatch(List::isEmpty)) {
-      throw new IllegalArgumentException("시뮬레이션 각 라운드 결과에서 빈 결과가 들어갈 수 없습니다.");
-    }
-
+  private CarRacingGameSimulateResult(List<CarGroup> simulateResult) {
     this.simulateResult = simulateResult;
   }
 
-  public List<List<Car>> getSimulationResult() {
-    return this.simulateResult;
+  public CarGroup getLastSimulateResult() {
+    return this.simulateResult.get(simulateResult.size() - 1);
   }
 
-  public List<Car> getWinner() {
-    List<Car> lastSimulateResult = this.simulateResult.get(this.simulateResult.size() - 1);
-    ;
+  public String toWinnerNamesString() {
+    return getLastSimulateResult().toWinnerCarGroup().toNameString();
+  }
 
-    if (lastSimulateResult.isEmpty()) {
-      return Collections.emptyList();
-    }
+  public String toSimulationLocationString() {
+    return simulateResult.stream()
+        .map(CarGroup::toLocationString)
+        .collect(Collectors.joining("\n"));
+  }
 
-    int maxLocation = lastSimulateResult.stream()
-        .mapToInt(Car::getLocation)
-        .max()
-        .orElse(0);
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CarRacingGameSimulateResult that = (CarRacingGameSimulateResult) o;
+    return Objects.equals(simulateResult, that.simulateResult);
+  }
 
-    return lastSimulateResult.stream()
-        .filter(car -> car.getLocation() == maxLocation)
-        .collect(Collectors.toList());
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(simulateResult);
   }
 }

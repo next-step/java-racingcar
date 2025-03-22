@@ -3,6 +3,7 @@ package racing;
 import racing.simulator.CarRacingGameSimulator;
 import racing.simulator.RandomCarMovingStrategy;
 import racing.types.CarCount;
+import racing.types.CarRacingGameSimulateResult;
 import racing.types.SimulateCount;
 import racing.util.InputView;
 import racing.util.OutputView;
@@ -18,9 +19,8 @@ public class CarRacingGameExecutor {
 
     OutputView.showWhitespace();
     OutputView.showExecutionResultText();
-    simulator.run(simulateCount).getSimulationResult().forEach(roundResult -> {
-      OutputView.showLocation(roundResult);
-      OutputView.showWhitespace();
-    });
+    CarRacingGameSimulateResult simulateResult = simulator.run(simulateCount);
+    OutputView.showLocation(simulateResult);
+    simulator.reset();
   }
 }
