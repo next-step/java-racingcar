@@ -2,6 +2,7 @@ package racingcar.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.racing.model.RacingCarGame;
 import racingcar.racing.util.RandomGenerator;
 
 import java.util.List;
@@ -27,7 +28,7 @@ class RacingCarGameTest {
     public void playAndResultGame() {
         RacingCarGame racingCarGame = new RacingCarGame(List.of("name1", "name2", "name3", "name4", "name5"), new mockRandomGenerator());
 
-        racingCarGame.playAndWinners(10);
+        racingCarGame.process(10);
 
         // 한번 진행할 때마다 0,1,2,3,4 / 5,6,7,8,9 랜덤 값이 생성되어 마지막 인덱스의 자동차만 10이고 나머지는 5
         assertThat(racingCarGame.getCars().subList(0, 4))
@@ -47,7 +48,7 @@ class RacingCarGameTest {
     public void playAndResultGame2() {
         RacingCarGame racingCarGame = new RacingCarGame(List.of("name1", "name2", "name3"), new mockRandomGenerator());
 
-        racingCarGame.playAndWinners(6);
+        racingCarGame.process(6);
 
         // 한번 진행할 때마다 0,1,2 / 3,4,5 / 6,7,8 / 9,0,1 / 2,3,4 / 5,6,7 랜덤 값이 생성되어 자동차 각각 3, 3, 4 포지션
         assertThat(racingCarGame.getCars().get(0).getPosition())
@@ -69,7 +70,7 @@ class RacingCarGameTest {
     public void playAndResultGame3() {
         RacingCarGame racingCarGame = new RacingCarGame(List.of("name0", "name1", "name2", "name3", "name4", "name5", "name6", "name7", "name8", "name9"), new mockRandomGenerator());
 
-        racingCarGame.playAndWinners(3);
+        racingCarGame.process(3);
 
         // 한번 진행할 때마다 name5 ~ name10이 한번씩 이동하여 공동 우승
         assertThat(racingCarGame.getCars().subList(0, 4))
