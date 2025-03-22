@@ -44,17 +44,6 @@ public class Car {
         return position;
     }
 
-    public String getTrace(String marker) {
-        StringBuilder trace = new StringBuilder();
-        int position = this.getPosition();
-
-        for (int i = 0; i < position; i++) {
-            trace.append(marker);
-        }
-
-        return trace.toString();
-    }
-
     public String getName() {
         return name;
     }
