@@ -1,31 +1,28 @@
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CarRace {
-    private final List<Car> cars = new ArrayList<>();
     private final int runCount;
+    private final List<Car> cars;
 
     public CarRace(int carCount, int runCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
         this.runCount = runCount;
+        this.cars = IntStream.range(0, carCount)
+                .mapToObj(i -> new Car())
+                .collect(Collectors.toList());
     }
 
     public List<List<Integer>> run() {
-        List<List<Integer>> result = new ArrayList<>(runCount);
-        for (int i = 0; i < runCount; i++) {
-            result.add(runOnce());
-        }
-        return result;
+        return IntStream.range(0, runCount)
+                .mapToObj(i -> runOnce())
+                .collect(Collectors.toList());
     }
 
     private List<Integer> runOnce() {
-        List<Integer> result = new ArrayList<>(cars.size());
-        for (Car car : cars) {
-            result.add(car.move());
-        }
-        return result;
+        return cars.stream()
+                .map(Car::move)
+                .collect(Collectors.toList());
     }
 
 }

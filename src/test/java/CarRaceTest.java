@@ -33,7 +33,7 @@ class CarRaceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"-3\n","0\n"})
+    @ValueSource(strings = {"-3\n", "0\n"})
     @DisplayName("자동차 대수는 양수여야한다.")
     void throwIfCarCountPositive(String carCount) {
         System.setIn(new ByteArrayInputStream(carCount.getBytes()));
@@ -45,7 +45,7 @@ class CarRaceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0\n","-1\n"})
+    @ValueSource(strings = {"0\n", "-1\n"})
     @DisplayName("시도할 회수는 양수여야한다.")
     void throwIfRunCountPositive(String runCount) {
         System.setIn(new ByteArrayInputStream(runCount.getBytes()));
@@ -88,12 +88,21 @@ class CarRaceTest {
 //        assertThat(racingCar.createRandom()).isBetween(0, 9);
 //    }
 
-//    @ParameterizedTest
-//    @CsvSource(delimiter = ':', value = { "0:false", "4:true", "9:true" })
-//    @DisplayName("random 값이 4 이상이면 전진하고, 그렇지 않으면 정지한다.")
-//    void determineMoveOrNot(int input, boolean expected) {
-//        assertThat(racingCar.isGoingForward(input)).isEqualTo(expected);
-//    }
+    @Test
+    @DisplayName("random 값이 4 이상이면 전진한다.")
+    void moveIfUpperMovableValue() {
+        Car car = new Car();
+        assertThat(car.move(4)).isEqualTo(1);
+    }
+
+
+    @Test
+    @DisplayName("random 값이 4 미만이면 정지한다.")
+    void stopIfLowerMovableValue() {
+        Car car = new Car();
+        assertThat(car.move(3)).isEqualTo(0);
+    }
+
 
 
 }

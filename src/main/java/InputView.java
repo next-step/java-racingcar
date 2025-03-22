@@ -6,6 +6,7 @@ public class InputView {
     public int getCarCount() {
         return validatePositiveInt(scanInt("자동차 대수는 몇 대 인가요?"));
     }
+
     public int getRunCount() {
         return validatePositiveInt(scanInt("시도할 회수는 몇 회 인가요?"));
     }
