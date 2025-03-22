@@ -1,8 +1,8 @@
-package racingcar.ui;
+package racingcar.view;
 
 import java.util.List;
 
-import racingcar.RacingCar;
+import racingcar.domain.RacingCar;
 
 import static java.util.stream.Collectors.toList;
 

@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-import racingcar.ui.RacingCarResult;
+import racingcar.view.RacingCarResult;
 import utils.RandomUtils;
 
 public class RacingCar implements Comparable<RacingCar> {
