@@ -7,8 +7,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CarList {
-    private final Random random = new Random();
-
     private final List<RacingCar> cars;
 
     public CarList() {
@@ -23,7 +21,7 @@ public class CarList {
         cars.add(car);
     }
 
-    public void moveWithRandom() {
+    public void moveWithRandom(Random random) {
         for (RacingCar car : cars) {
             car.moveWithSeed(random.nextInt());
         }
@@ -41,5 +39,4 @@ public class CarList {
                 .filter(car -> car.compareTo(winner) == 0)
                 .collect(Collectors.toList());
     }
-
 }

@@ -1,6 +1,7 @@
 package race;
 
 import java.util.List;
+import java.util.Random;
 
 public class RacingTrack {
     private final TrackCondition trackCondition;
@@ -16,7 +17,7 @@ public class RacingTrack {
 
         ResultView.printRaceStartMessage();
         for (int i = 0; i < numOfAttempts; i++) {
-            cars.moveWithRandom();
+            cars.moveWithRandom(new Random());
             ResultView.printRaceStatus(cars);
         }
     }
