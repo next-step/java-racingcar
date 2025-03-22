@@ -1,6 +1,8 @@
 package step5.racingcar3.domain;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarList {
 
@@ -19,5 +21,17 @@ public class CarList {
             car.run();
         }
     }
+
+
+    public CarList winners() {
+        Position maxPosition = maxPosition();
+        return new CarList(
+            cars.stream().filter(car -> car.position().equals(maxPosition)).collect(Collectors.toList()));
+    }
+
+    private Position maxPosition() {
+        return Collections.max(cars.stream().map(Car::position).collect(Collectors.toList()));
+    }
+
 
 }
