@@ -5,19 +5,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-
-
-    @DisplayName("차에 주어지는 랜덤 입력값이 임계값 이상이면 전진한다.")
+    @DisplayName("랜덤 입력값이 4 이상이면 전진한다.")
     @Test
     void moveTest() {
         //given
-        int thresholdValue = 4;
-        Car car = new Car(thresholdValue);
+        Car car = new Car("name");
         int randomInt = 4;
 
         //when
@@ -27,12 +25,11 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @DisplayName("차에 주어지는 랜덤 입력값이 임계값보다 작으면 멈춘다.")
+    @DisplayName("랜덤 입력값이 4보다 작으면 멈춘다.")
     @Test
     void stopTest() {
         //given
-        int thresholdValue = 4;
-        Car car = new Car(thresholdValue);
+        Car car = new Car("name");
         int randomInt = 3;
 
         //when
@@ -47,8 +44,7 @@ class CarTest {
     @ValueSource(ints = {-1, 10})
     void withOutOfRangeThrowError(int randomInt) {
         //given
-        int thresholdValue = 4;
-        Car car = new Car(thresholdValue);
+        Car car = new Car("name");
 
         //when & then
         Assertions.assertThatThrownBy(() -> car.moveOrStop(randomInt))
