@@ -1,21 +1,15 @@
 package view;
 
+import domain.Car;
+import domain.Cars;
 import java.util.List;
-import racing.Car;
-import racing.SimpleCar;
-import step4.racing.Cars;
 import utils.StringUtils;
 
 public class ResultView {
 
-    private Cars cars;
 
-    public ResultView(Cars cars) {
-        this.cars = cars;
-    }
-
-    public void broadcast() {
-        for (Car car : cars.cars()) {
+    public void broadcast(Cars cars) {
+        for (Car car : cars.getCars()) {
             printPosition(car);
             System.out.println();
         }
