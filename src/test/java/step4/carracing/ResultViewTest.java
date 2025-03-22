@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 public class ResultViewTest {
 
@@ -16,10 +17,14 @@ public class ResultViewTest {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outputStream));
 
-    Car car = new Car(3, "pobi", new CarMoveStrategyTest.TestStoppedCarMoveStrategy());
-    String expected = "pobi : " + "----\n";
+    Cars cars = new Cars(
+            List.of(
+                    new Car(3, "pobi", new RandomCarMoveStrategy())
+            )
+    );
+    String expected = "pobi : " + "----\n\n";
 
-    ResultView.printCarStatus(car);
+    ResultView.printCarStatus(cars);
 
     System.setOut(originalOut);
     Assertions.assertEquals(expected, outputStream.toString());

@@ -11,14 +11,10 @@ public class CarRacingJudgeTest {
   @DisplayName("자동차 경주의 우승자를 구하는 기능 테스트")
   @Test
   void testJudgeWinners() {
-    List<Car> cars = List.of(
-            new Car(1, "pobi", new CarMoveStrategyTest.TestStoppedCarMoveStrategy()),
-            new Car(2, "crong", new CarMoveStrategyTest.TestStoppedCarMoveStrategy()),
-            new Car(3, "honux", new CarMoveStrategyTest.TestStoppedCarMoveStrategy())
-    );
+    Cars cars = new Cars(List.of(new Car(0, "pobi", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy()), new Car(1, "crong", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy()), new Car(2, "honux", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy())));
 
-    List<Car> expected = List.of(cars.get(2));
-    List<Car> actual = CarRacingJudge.judgeWinners(cars);
+    Cars expected = new Cars(List.of(new Car("honux", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy())));
+    Cars actual = CarRacingJudge.judgeWinners(cars);
 
     Assertions.assertEquals(expected, actual);
   }

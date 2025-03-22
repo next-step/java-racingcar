@@ -1,0 +1,52 @@
+package step4.carracing;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Cars implements Iterable<Car> {
+  private final List<Car> carList;
+
+  public Cars(List<Car> carList) {
+    this.carList = carList;
+  }
+
+  public int getMaxPosition() {
+    return carList.stream().reduce(0, (max, car) -> car.getMax(max), Integer::max);
+  }
+
+  public Cars filterCarsWithCertainPosition(int position) {
+    List<Car> filteredCars = carList.stream().filter(car -> car.isSame(position)).collect(Collectors.toList());
+    return new Cars(filteredCars);
+  }
+
+  public void moveCars() {
+    for (Car car : carList) {
+      car.move();
+    }
+  }
+
+  public int size() {
+    return carList.size();
+  }
+
+  @Override
+  public Iterator<Car> iterator() {
+    return carList.iterator();
+  }
+
+  public Stream<Car> stream() {
+    return carList.stream();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Cars cars = (Cars) o;
+    return Objects.equals(carList, cars.carList);
+  }
+
+}
