@@ -5,7 +5,6 @@ import java.util.StringJoiner;
 
 public class RacingCarView {
     private String[] carNames;
-    private int maxCarPosition;
     private int carNum;
     private int tryNum;
     private static Scanner scanner = new Scanner(System.in);
@@ -37,27 +36,22 @@ public class RacingCarView {
     }
 
     void printResultNotice() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     void printResult(RacingCar[] cars) {
-        String maxCarName = "";
         for (int i = 0; i < this.carNum; i++) {
-            if (this.maxCarPosition < cars[i].position()) {
-                this.maxCarPosition = cars[i].position();
-            }
             System.out.println("-".repeat(cars[i].position()));
         }
         System.out.println();
     }
 
-    void printWinner(RacingCar[] cars) {
+    void printWinner(RacingCar[] winningCars) {
         StringJoiner winnerJoiner = new StringJoiner(", ");
-        for (int i = 0; i < this.carNum; i++) {
-            if (cars[i].position() == this.maxCarPosition) {
-                winnerJoiner.add(cars[i].name());
-            }
+        for (int i=0; i<winningCars.length; i++){
+            winnerJoiner.add(winningCars[i].name());
         }
+
         System.out.println(winnerJoiner + "가 최종 우승했습니다.");
     }
 

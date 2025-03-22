@@ -7,14 +7,16 @@ public class RacingCarController {
     private RacingCar[] cars;
     private static final RacingCarView view = new RacingCarView();
     private static final NumberGenerator numberGenerator = new RandomNumberGenerator();
-    ;
+    private int maxCarPosition = 0;
     private static final int MOVE_CONDITION = 4;
 
     public void start() {
         view.scanInputs();
+        view.printResultNotice();
         run();
-//        view.printResultNotice();
-        view.printWinner(cars);
+        RacingWinnerFinder winnerFinder = new RacingWinnerFinder(this.cars);
+        winnerFinder.findWinners(this.maxCarPosition);
+        view.printWinner(winnerFinder.winners());
     }
 
     // ==============================
@@ -33,6 +35,9 @@ public class RacingCarController {
         for (int i = 0; i < view.tryNum(); i++) {
             for (int j = 0; j < view.carNum(); j++) {
                 cars[j].move();
+                if (cars[j].position() > this.maxCarPosition){
+                    this.maxCarPosition = cars[j].position();
+                }
             }
             view.printResult(cars);
         }
