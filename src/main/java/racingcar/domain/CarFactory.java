@@ -10,11 +10,10 @@ public class CarFactory {
             throw new IllegalArgumentException("자동차 이름은 적어도 하나 이상이어야 합니다.");
         }
 
-        List<Car> cars = names.stream()
+        return new Cars(names.stream()
                 .distinct()
                 .map(Car::new)
-                .collect(Collectors.toList());
-
-        return new Cars(cars);
+                .collect(Collectors.toList()));
     }
+
 }
