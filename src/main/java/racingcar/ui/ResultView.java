@@ -4,6 +4,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -29,7 +30,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void viewRacingCarWinner(Cars cars) {
-        System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
+    public static void viewRacingCarWinner(List<String> winners) {
+        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
 }

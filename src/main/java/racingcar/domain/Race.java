@@ -27,6 +27,6 @@ public class Race {
             cars.moveAll(strategy);
             ResultView.viewRacingCarWithName(cars.getCurrentStatus());
         }
-        ResultView.viewRacingCarWinner(cars);
+        ResultView.viewRacingCarWinner(cars.getWinners());
     }
 }

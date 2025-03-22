@@ -132,26 +132,21 @@ public class RacingCarTest {
     @DisplayName("단일 우승자 결정 ")
     void getWinner() {
         Car pobi = new Car("pobi");
-        Car woni = new Car("crong");
-        Cars cars = new Cars(List.of(pobi, woni));
+        Car crong = new Car("crong");
+        Cars cars = new Cars(List.of(pobi, crong));
         pobi.move(() -> true);
 
-        assertThat(cars.getWinner()).isEqualTo("pobi");
+        assertThat(cars.getWinners()).containsExactly("pobi");
     }
 
     @Test
     @DisplayName("공동 우승자 결정 ")
     void getWinners() {
-        // Given
         Car pobi = new Car("pobi");
-        Car woni = new Car("crong");
-        Cars cars = new Cars(List.of(pobi, woni));
+        Car crong = new Car("crong");
+        Cars cars = new Cars(List.of(pobi, crong));
 
-        // When
-        String result = cars.getWinner();
-
-        // Then
-        assertThat(result).isEqualTo("pobi, crong");
+        assertThat(cars.getWinners()).containsExactly("pobi", "crong");
     }
 
 }

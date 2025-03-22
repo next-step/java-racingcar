@@ -40,14 +40,15 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public String getWinner() {
+    public List<String> getWinners() {
         int maxMoveCount = cars.stream()
                 .mapToInt(Car::getMoveCount)
                 .max()
                 .orElse(0);
+
         return cars.stream()
                 .filter(car -> car.getMoveCount() == maxMoveCount)
                 .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.toList());
     }
 }
