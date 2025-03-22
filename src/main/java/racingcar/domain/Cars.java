@@ -31,4 +31,8 @@ public class Cars {
             records.add(car.extractRecord());
         }
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

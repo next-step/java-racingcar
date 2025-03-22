@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.Record;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -62,5 +63,23 @@ class CarTest {
         Assertions.assertThatThrownBy(() -> new Car(longName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력된 이름이 유효하지 않습니다 [name: ");
+    }
+
+    @Test
+    @DisplayName("자동차의 현재 기록을 정상적으로 생성한다.")
+    void extractRecordTest() {
+
+        //given
+        Car car = new Car("name");
+        car.moveOrStop(5);
+
+        //when
+        Record record = car.extractRecord();
+
+        //then
+        Assertions.assertThat(record)
+                .isNotNull()
+                .extracting("name", "position", "attempt")
+                .containsExactly("name", 1, 1);
     }
 }
