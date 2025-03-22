@@ -2,7 +2,7 @@ package race;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private int value;
 
     public Position() {
@@ -22,11 +22,9 @@ public class Position {
         return this.value;
     }
 
-    public Position getMax(Position comparePosition) {
-        if (this.value > comparePosition.getValue()) {
-            return this;
-        }
-        return comparePosition;
+    @Override
+    public int compareTo(Position o) {
+        return Integer.compare(this.value, o.value);
     }
 
     @Override

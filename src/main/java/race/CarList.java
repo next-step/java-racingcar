@@ -1,8 +1,10 @@
 package race;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class CarList {
     private final Random random = new Random();
@@ -32,17 +34,12 @@ public class CarList {
     }
 
     public List<RacingCar> getWinners() {
-        Position maxPosition = new Position();
-        for (RacingCar car : cars) {
-            maxPosition = car.getMaxPosition(maxPosition);
-        }
+        cars.sort(Collections.reverseOrder());
+        RacingCar winner = cars.get(0);
 
-        List<RacingCar> winners = new ArrayList<>();
-
-        for (RacingCar car : cars) {
-            if (car.isSamePosition(maxPosition)) winners.add(car);
-        }
-        return winners;
+        return cars.stream()
+                .filter(car -> car.compareTo(winner) == 0)
+                .collect(Collectors.toList());
     }
 
 }
