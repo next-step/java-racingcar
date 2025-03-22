@@ -15,7 +15,7 @@ class CarFactoryTest {
         List<String> duplicatedNames = List.of("국인", "국인");
 
         //when
-        Cars cars = CarFactory.create(duplicatedNames);
+        Cars cars = CarFactory.create(duplicatedNames, () -> true);
 
         //then
         Assertions.assertThat(cars.getCars()).hasSize(1);

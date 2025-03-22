@@ -3,24 +3,38 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Record;
+import racingcar.domain.movingstrategy.MovingStrategy;
+import racingcar.domain.movingstrategy.RandomStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
+
+    class AlwaysMovableStrategy implements MovingStrategy {
+        @Override
+        public boolean isMovable() {
+            return true;
+        }
+    }
+
+    class NeverMovableStrategy implements MovingStrategy {
+        @Override
+        public boolean isMovable() {
+            return false;
+        }
+    }
 
     @DisplayName("랜덤 입력값이 4 이상이면 전진한다.")
     @Test
     void moveTest() {
         //given
         Car car = new Car("name");
-        int randomInt = 4;
+        MovingStrategy movingStrategy = new RandomStrategy();
 
         //when
-        car.moveOrStop(randomInt);
+        car.move(new AlwaysMovableStrategy());
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -34,23 +48,10 @@ class CarTest {
         int randomInt = 3;
 
         //when
-        car.moveOrStop(randomInt);
+        car.move(new NeverMovableStrategy());
 
         //then
         assertThat(car.getPosition()).isEqualTo(0);
-    }
-
-    @DisplayName("차에 주어지는 랜덤 입력값은 0 부터 9사이인 정수가 아니면 에러를 던진다.")
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 10})
-    void withOutOfRangeThrowError(int randomInt) {
-        //given
-        Car car = new Car("name");
-
-        //when & then
-        Assertions.assertThatThrownBy(() -> car.moveOrStop(randomInt))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("0 부터 9 사이의 정수값만 입력 가능합니다.");
     }
 
     @Test
@@ -71,7 +72,7 @@ class CarTest {
 
         //given
         Car car = new Car("name");
-        car.moveOrStop(5);
+        car.move(new AlwaysMovableStrategy());
 
         //when
         Record record = car.extractRecord();

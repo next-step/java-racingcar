@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.movingstrategy.MovingStrategy;
+
 public class Car {
 
     private static final int MOVABLE_THRESHOLD = 4;
@@ -22,11 +24,8 @@ public class Car {
         return name == null || name.length() > 5;
     }
 
-    public void moveOrStop(int randomInt) {
-        if (isOutOfBound(randomInt)) {
-            throw new IllegalArgumentException("0 부터 9 사이의 정수값만 입력 가능합니다.");
-        }
-        if (isMovable(randomInt)) {
+    public void move(MovingStrategy strategy) {
+        if (strategy.isMovable()) {
             position++;
         }
         attempt++;

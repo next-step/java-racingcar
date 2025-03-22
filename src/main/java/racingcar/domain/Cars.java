@@ -1,25 +1,27 @@
 package racingcar.domain;
 
+import racingcar.domain.movingstrategy.MovingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Cars {
 
-    public static final int RANDOM_BOUND = 10;
     private final List<Car> cars = new ArrayList<>();
+    private final MovingStrategy strategy;
 
-    public Cars(List<Car> cars) {
+    public Cars(List<Car> cars, MovingStrategy strategy) {
+        this.strategy = strategy;
         this.cars.addAll(cars);
     }
 
     public boolean isEmpty() {
-        return cars == null || cars.isEmpty();
+        return cars.isEmpty();
     }
 
-    public void race(Random random) {
+    public void race() {
         for (Car car : cars) {
-            car.moveOrStop(random.nextInt(RANDOM_BOUND));
+            car.move(strategy);
         }
     }
 
