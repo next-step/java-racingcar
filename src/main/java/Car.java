@@ -1,13 +1,13 @@
 public class Car {
     private final String name;
-    private int location;
+    private final Location location;
 
     public Car(String name, int location) {
         if (name.length() > 5 || name.isBlank()) {
             throw new IllegalArgumentException();
         }
         this.name = name;
-        this.location = location;
+        this.location = new Location(location);
     }
 
     public boolean hasName(String name) {
@@ -16,19 +16,19 @@ public class Car {
 
     public void go(MoveStrategy moveStrategy) {
         if (moveStrategy.move())
-            this.location++;
+            this.location.add(1);
     }
 
     public int max(int other) {
-        return Math.max(location, other);
+        return this.location.max(other);
     }
 
     public boolean isSameLocation(int other) {
-        return location == other;
+        return this.location.isSame(other);
     }
 
     public int getLocation() {
-        return this.location;
+        return this.location.getValue();
     }
 
     public String getName() {
