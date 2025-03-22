@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 public class PositionTest {
 
     @Test
-    void create() {
+    void 위치_기본값은_0() {
         Position position = new Position();
         assertThat(position.getPosition()).isEqualTo(0);
     }
