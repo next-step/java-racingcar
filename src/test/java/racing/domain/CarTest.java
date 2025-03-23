@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -23,14 +23,14 @@ public class CarTest {
   }
 
   @Test
-  void 랜덤값_마이너스() {
+  void 랜덤값_0미만_예외_발생() {
     assertThatThrownBy(() -> car.driveOrStop(-1))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("랜덤 값은 0에서 9 사이여야 합니다.");
   }
 
   @Test
-  void 랜덤값_최대초과() {
+  void 랜덤값_최대초과_예외_발생() {
     assertThatThrownBy(() -> car.driveOrStop(10))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("랜덤 값은 0에서 9 사이여야 합니다.");
