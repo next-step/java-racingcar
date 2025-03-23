@@ -5,32 +5,19 @@ import racing.util.RandomNumberGenerator;
 import racing.config.GameConfig;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingCarGame {
 
     private static final int FORWARD_THRESHOLD = 4;
 
     private final GameConfig config;
-    private final NumberGenerator numberGenerator;
-    private final List<Car> cars;
+    private final Cars cars;
     private final List<Round> rounds = new ArrayList<>();
 
+
     public RacingCarGame(final GameConfig config) {
-        this(config, new RandomNumberGenerator());
-    }
-
-    public RacingCarGame(final GameConfig config, final NumberGenerator numberGenerator) {
         this.config = config;
-        this.numberGenerator = numberGenerator;
-        this.cars = initializeCars(config.getCarNames());
-    }
-
-    private List<Car> initializeCars(final String[] carNames) {
-        return Stream.of(carNames)
-                .map(Car::new)
-                .collect(Collectors.toUnmodifiableList());
+        this.cars = config.getCars();
     }
 
     public void startRace() {
@@ -41,7 +28,7 @@ public class RacingCarGame {
 
     private Map<Car, Integer> executeRound() {
         Map<Car, Integer> carPositions = new HashMap<>();
-        for (Car car : cars) {
+        for (Car car : cars.getAll()) {
             int position = isMovementAllowed() ? car.moveForward() : car.getPosition();
 
             carPositions.put(car, position);
@@ -50,13 +37,11 @@ public class RacingCarGame {
     }
 
     private boolean isMovementAllowed() {
-        return numberGenerator.generate() >= FORWARD_THRESHOLD;
+        return config.getNumberGenerator().generate() >= FORWARD_THRESHOLD;
     }
 
     public List<Car> getWinners() {
-        Integer maxPosition = cars.stream().map(Car::getPosition).max(Comparator.comparingInt(a -> a)).orElse(-1);
-
-        return cars.stream().filter(entry -> entry.getPosition() == maxPosition).collect(Collectors.toList());
+        return cars.getWinners();
     }
 
     public List<Round> getResult() {
@@ -64,6 +49,6 @@ public class RacingCarGame {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getAll();
     }
 }

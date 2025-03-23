@@ -13,7 +13,7 @@ class RacingCarGameTest {
     @DisplayName("자동차 게임이 올바른 개수의 자동차로 초기화된다")
     void initializeWithCorrectNumberOfCars() {
         String[] carNames = new String[] {"Tesla", "BMW", "Audi"};
-        RacingCarGame racingCarGame = new RacingCarGame(new GameConfig(carNames, 1));
+        RacingCarGame racingCarGame = new RacingCarGame(new GameConfig(new Cars(carNames), 1));
 
         assertThat(racingCarGame.getCars()).hasSize(carNames.length);
     }
@@ -23,7 +23,7 @@ class RacingCarGameTest {
     void startRaceExecutesCorrectNumberOfRounds() {
         int numberOfRounds = 10;
         String[] carNames = new String[] {"Tesla", "BMW", "Audi"};
-        RacingCarGame racingCarGame = new RacingCarGame(new GameConfig(carNames, numberOfRounds));
+        RacingCarGame racingCarGame = new RacingCarGame(new GameConfig(new Cars(carNames), numberOfRounds));
         racingCarGame.startRace();
 
         assertThat(racingCarGame.getResult()).hasSize(numberOfRounds);
@@ -34,7 +34,7 @@ class RacingCarGameTest {
     void carsOnlyMoveWhenAboveThreshold() {
         int numberOfRounds = 1;
         String[] carNames = new String[] {"Tesla", "BMW", "Audi"};
-        GameConfig gameConfig = new GameConfig(carNames, numberOfRounds);
+        GameConfig gameConfig = new GameConfig(new Cars(carNames), numberOfRounds);
         NumberGenerator alwaysForwardGenerator = () -> 5;
         RacingCarGame racingCarGame = new RacingCarGame(gameConfig, alwaysForwardGenerator);
 
@@ -49,7 +49,7 @@ class RacingCarGameTest {
     void carsDoNotMoveWhenBelowThreshold() {
         int numberOfRounds = 1;
         String[] carNames = new String[] {"Tesla", "BMW", "Audi"};
-        GameConfig gameConfig = new GameConfig(carNames, numberOfRounds);
+        GameConfig gameConfig = new GameConfig(new Cars(carNames), numberOfRounds);
         NumberGenerator alwaysStayGenerator = () -> 3;
         RacingCarGame racingCarGame = new RacingCarGame(gameConfig, alwaysStayGenerator);
 
@@ -64,7 +64,7 @@ class RacingCarGameTest {
     void getWinners_shouldReturnCarWithMaxPosition() {
         int numberOfRounds = 1;
         String[] carNames = new String[] {"Tesla", "BMW", "Audi"};
-        GameConfig gameConfig = new GameConfig(carNames, numberOfRounds);
+        GameConfig gameConfig = new GameConfig(new Cars(carNames), numberOfRounds);
         NumberGenerator alwaysForwardGenerator = () -> 5;
         RacingCarGame racingCarGame = new RacingCarGame(gameConfig, alwaysForwardGenerator);
 
