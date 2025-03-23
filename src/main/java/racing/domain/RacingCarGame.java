@@ -5,6 +5,10 @@ import racing.util.RandomNumberGenerator;
 import racing.config.GameConfig;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toMap;
 
 public class RacingCarGame {
 
@@ -27,13 +31,14 @@ public class RacingCarGame {
     }
 
     private Map<Car, Integer> executeRound() {
-        Map<Car, Integer> carPositions = new HashMap<>();
-        for (Car car : cars.getAll()) {
-            int position = isMovementAllowed() ? car.moveForward() : car.getPosition();
+        return cars.getAll().stream().collect(Collectors.toMap(Function.identity(), this::determineCarPosition));
+    }
 
-            carPositions.put(car, position);
+    private int determineCarPosition(final Car car) {
+        if (isMovementAllowed()) {
+            return car.moveForward();
         }
-        return carPositions;
+        return car.getPosition();
     }
 
     private boolean isMovementAllowed() {
