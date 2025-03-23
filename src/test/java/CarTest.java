@@ -52,10 +52,11 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void move_greater_equal_four(int input) {
-
         Car car = new Car("a");
+
         car.move(input);
-        assertThat(car.getPosition()).isEqualTo(1);
+
+        assertThat(car.isSame(1)).isTrue();
 
     }
 
@@ -65,7 +66,7 @@ class CarTest {
     void move_less_four(int input) {
         Car car = new Car("a");
         car.move(input);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.isSame(0)).isTrue();
     }
 
 }
