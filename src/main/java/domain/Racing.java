@@ -27,4 +27,7 @@ public class Racing {
         }
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
 }

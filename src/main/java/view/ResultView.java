@@ -1,14 +1,16 @@
 package view;
 
 import domain.Car;
+import domain.Racing;
+import domain.Winners;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void printRaceRound(List<Car> carList) {
-        for (Car car : carList) {
-            //System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+    public static void printRaceRound(Racing racing) {
+        for (Car car : racing.getCarList()) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println("\n");
     }
@@ -17,9 +19,13 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printWinner(List<Car> carList) {
-        String result = carList.stream().map(Car::getName).collect(Collectors.joining(", "));
+    public static void printWinner(Racing racing) {
+        List<Car> winners = Winners.findWinners(racing.getCarList());
 
-        System.out.println(result + "가 최종 우승했습니다.");
+        String winnerNames = winners.stream()
+            .map(Car::getName)
+            .collect(Collectors.joining(", "));
+
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

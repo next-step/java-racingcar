@@ -21,4 +21,8 @@ public class Position {
     public Boolean isSame(int input) {
         return value == input;
     }
+
+    public int getPosition() {
+        return value;
+    }
 }

@@ -38,4 +38,8 @@ public class Car {
     public Boolean isSame(int input) {
         return this.position.isSame(input);
     }
+
+    public int getPosition() {
+        return position.getPosition();
+    }
 }
