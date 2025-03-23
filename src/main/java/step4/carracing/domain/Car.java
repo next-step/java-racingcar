@@ -38,8 +38,8 @@ public class Car {
     return position.isSame(value);
   }
 
-  public int getMax(int compareValue) {
-    return position.getMax(compareValue);
+  public int compareMaxPosition(int compareValue) {
+    return position.compareMax(compareValue);
   }
 
   @Override

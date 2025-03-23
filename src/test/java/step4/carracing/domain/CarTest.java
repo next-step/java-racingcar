@@ -28,10 +28,10 @@ public class CarTest {
 
   @DisplayName("자동차의 최대 위치를 구하는 테스트")
   @Test
-  void testGetMax() {
+  void testCompareMaxPosition() {
     Car car = new Car(0, "test", new RandomCarMoveStrategy());
 
-    Assertions.assertEquals(3, car.getMax(3));
+    Assertions.assertEquals(3, car.compareMaxPosition(3));
   }
 
   @DisplayName("자동차의 이름과 위치를 문자열로 반환하는 테스트")

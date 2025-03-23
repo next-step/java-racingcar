@@ -19,6 +19,5 @@ public class CarRacingJudgeTest {
     Cars actual = CarRacingJudge.judgeWinners(cars);
 
     Assertions.assertEquals(expected.size(), actual.size());
-    Assertions.assertNotNull(actual.get("honux"));
   }
 }

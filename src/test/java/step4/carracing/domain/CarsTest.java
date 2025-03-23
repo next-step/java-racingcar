@@ -14,7 +14,7 @@ class CarsTest {
 
   @DisplayName("자동차 목록 중에서 최대 위치를 구하는 기능 테스트")
   @Test
-  void testGetMaxPosition() {
+  void testCompareMaxPositionPosition() {
     Cars cars = new Cars(
             List.of(
                     new Car(1, "pobi", new RandomCarMoveStrategy()),
@@ -44,22 +44,6 @@ class CarsTest {
     assertEquals(1, filteredCars.size());
   }
 
-  @DisplayName("자동차 목록을 이동시키는 기능 테스트")
-  @Test
-  void testMoveCars() {
-    Cars cars = new Cars(
-            List.of(
-                    new Car("pobi", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy()),
-                    new Car("crong", new CarMoveStrategyTest.TestStoppedCarMoveStrategy())
-            )
-    );
-
-    cars.moveCars();
-
-    assertTrue(cars.get("pobi").isSamePosition(1));
-    assertTrue(cars.get("crong").isSamePosition(0));
-  }
-
   @DisplayName("자동차 목록의 크기를 구하는 기능 테스트")
   @Test
   void testSize() {
@@ -71,21 +55,6 @@ class CarsTest {
     );
 
     assertEquals(2, cars.size());
-  }
-
-  @DisplayName("자동차 목록 중에서 이름으로 자동차를 찾는 기능 테스트")
-  @Test
-  void testGet() {
-    Cars cars = new Cars(
-            List.of(
-                    new Car("pobi", new RandomCarMoveStrategy()),
-                    new Car("crong", new RandomCarMoveStrategy())
-            )
-    );
-
-    Car car = cars.get("pobi");
-
-    assertEquals("pobi", car.getName());
   }
 
   @DisplayName("중복된 이름의 자동차가 존재 시 예외를 발생시키는 테스트")

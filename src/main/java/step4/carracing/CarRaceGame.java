@@ -34,7 +34,7 @@ public class CarRaceGame {
     System.out.println("\n실행 결과");
     ResultView.printCarStatus(cars);
     for (int i = 0; i < tryCount; i++) {
-      cars.moveCars();
+      cars.moveAll();
       ResultView.printCarStatus(cars);
     }
   }

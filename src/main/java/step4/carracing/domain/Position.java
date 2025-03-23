@@ -23,7 +23,7 @@ public class Position {
     return value == targetPosition;
   }
 
-  public int getMax(int compareValue) {
+  public int compareMax(int compareValue) {
     return Math.max(value, compareValue);
   }
 

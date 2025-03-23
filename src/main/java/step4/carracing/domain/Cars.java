@@ -23,7 +23,7 @@ public class Cars implements Iterable<Car> {
   }
 
   public int getMaxPosition() {
-    return carList.stream().reduce(0, (max, car) -> car.getMax(max), Integer::max);
+    return carList.stream().reduce(0, (max, car) -> car.compareMaxPosition(max), Integer::max);
   }
 
   public Cars filterCarsWithCertainPosition(int position) {
@@ -31,7 +31,7 @@ public class Cars implements Iterable<Car> {
     return new Cars(filteredCars);
   }
 
-  public void moveCars() {
+  public void moveAll() {
     for (Car car : carList) {
       car.move();
     }
@@ -39,13 +39,6 @@ public class Cars implements Iterable<Car> {
 
   public int size() {
     return carList.size();
-  }
-
-  public Car get(String name) {
-    return carList.stream()
-      .filter(car -> car.isSameName(name))
-      .findFirst()
-      .orElseThrow(() -> new IllegalArgumentException("해당 이름의 차량이 없습니다."));
   }
 
   @Override

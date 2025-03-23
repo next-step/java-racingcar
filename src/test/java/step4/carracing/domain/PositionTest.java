@@ -30,11 +30,11 @@ class PositionTest {
 
   @DisplayName("position의 값과 비교값 중 큰 값을 반환하는 기능 테스트")
   @Test
-  void testGetMaxPosition() {
+  void testCompareMaxPosition() {
     Position position = new Position(0);
     int compareValue = 1;
 
-    int maxPosition = position.getMax(compareValue);
+    int maxPosition = position.compareMax(compareValue);
 
     assertEquals(1, maxPosition);
   }
