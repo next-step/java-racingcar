@@ -2,8 +2,12 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static java.util.Collections.unmodifiableList;
 
 public class CarSimulator {
+    private final Random random = new Random();
     private final int movementCount;
     private final List<Car> cars;
     private final List<CarPositions> history;
@@ -15,14 +19,18 @@ public class CarSimulator {
     }
 
     public List<CarPositions> getHistory() {
-        return history;
+        return unmodifiableList(history);
+    }
+
+    public CarWinnerCalculator getWinnerCalculator() {
+        return new CarWinnerCalculator(history);
     }
 
     public CarPositions getPositions() {
         List<CarPosition> positions = new ArrayList<>();
 
         for (Car car : cars) {
-            positions.add(CarPosition.of(car));
+            positions.add(CarPosition.from(car));
         }
 
         return new CarPositions(positions);
@@ -37,11 +45,15 @@ public class CarSimulator {
 
     private void moveAllCars() {
         for (Car car : cars) {
-            car.move();
+            car.move(generateRandomNumber());
         }
     }
 
     private void saveHistory() {
         history.add(getPositions());
+    }
+
+    private int generateRandomNumber() {
+        return random.nextInt(10);
     }
 }

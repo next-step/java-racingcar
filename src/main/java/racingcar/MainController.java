@@ -7,10 +7,10 @@ import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.CarSimulator;
 import racingcar.exception.InvalidInputException;
-import racingcar.io.InputView;
-import racingcar.io.OutputView;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
-public class Main {
+public class MainController {
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
 
