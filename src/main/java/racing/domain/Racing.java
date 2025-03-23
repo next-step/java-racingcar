@@ -2,22 +2,19 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racing.RandomGenerator;
 
 public class Racing {
 
   private final List<Car> cars = new ArrayList<>();
 
-  public static Racing createRacing(String carNamesRaw) {
-    return new Racing(StringToArray(carNamesRaw));
-  }
-
   public Racing(String[] carNames) {
     generateCars(carNames);
   }
 
-  private static String[] StringToArray(String carNamesRaw) {
-    return carNamesRaw.split(",");
+  public Racing(List<Car> cars) {
+    this.cars.addAll(cars);
   }
 
   private List<Car> generateCars(String[] carNames) {
@@ -37,28 +34,24 @@ public class Racing {
     }
   }
 
-  public List<String> getMaxPosition() {
-    List<String> maxPositionCars = new ArrayList<>();
-    int maxPosition = 0;
-    for (Car car : cars) {
-      maxPosition = findMaxPosition(maxPosition, car);
-    }
-    for (Car car : cars) {
-      addMaxPositionCar(maxPositionCars, maxPosition, car);
-    }
-    return maxPositionCars;
+  public List<String> findWinners() {
+    int maxPosition = calculateMaxPosition();
+
+
+    return findMaxPosition(maxPosition);
   }
 
-  private void addMaxPositionCar(List<String> maxPositionCars, int maxPosition, Car car) {
-    if (car.getPosition() == maxPosition) {
-      maxPositionCars.add(car.getName());
-    }
+  private int calculateMaxPosition() {
+    return cars.stream()
+        .mapToInt(Car::getPosition)
+        .max()
+        .getAsInt();
   }
 
-  private int findMaxPosition(int maxPosition, Car car) {
-    if (car.getPosition() > maxPosition) {
-      maxPosition = car.getPosition();
-    }
-    return maxPosition;
+  private List<String> findMaxPosition(int maxPosition) {
+    return cars.stream()
+        .filter(car -> car.getPosition() == maxPosition)
+        .map(Car::getName)
+        .collect(Collectors.toList());
   }
 }

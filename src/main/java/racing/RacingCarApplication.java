@@ -11,7 +11,7 @@ public class RacingCarApplication {
     String carNamesRaw = InputView.getNumberOfCars();
     int roundCount = InputView.getNumberOfRounds();
 
-    Racing racing = Racing.createRacing(carNamesRaw);
+    Racing racing = new Racing(StringToArray(carNamesRaw));
 
     System.out.println("실행 결과");
 
@@ -20,7 +20,11 @@ public class RacingCarApplication {
       ResultView.printRaceResult(racing.getCars());
     }
 
-    List<String> maxPosition = racing.getMaxPosition();
+    List<String> maxPosition = racing.findWinners();
     System.out.println(String.join(", ", maxPosition) + "가 최종 우승했습니다.");
+  }
+
+  private static String[] StringToArray(String carNamesRaw) {
+    return carNamesRaw.split(",");
   }
 }
