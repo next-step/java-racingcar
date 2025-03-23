@@ -1,5 +1,6 @@
-package edu.nextstep.camp.carracing.domain;
+package edu.nextstep.camp.carracing;
 
+import edu.nextstep.camp.carracing.domain.Cars;
 import edu.nextstep.camp.carracing.view.ResultView;
 
 import java.util.List;
@@ -7,12 +8,7 @@ import java.util.List;
 import static edu.nextstep.camp.carracing.view.InputView.getTryCount;
 import static edu.nextstep.camp.carracing.view.InputView.inputCarNames;
 
-public class CarRacing {
-
-    private CarRacing() {
-        throw new IllegalStateException("인스턴스 생성이 불가능한 클래스입니다.");
-    }
-
+public class CarRacingApplication {
     public static void main(String[] args) {
         List<String> carNames = inputCarNames();
         int tryCount = getTryCount();
