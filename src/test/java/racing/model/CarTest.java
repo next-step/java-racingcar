@@ -2,6 +2,8 @@ package racing.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,6 +48,34 @@ class CarTest {
     @Test
     void getPositionTest() {
         assertThat(car.getPosition()).isEqualTo(INIT_POSITION);
+    }
+
+    @DisplayName("position이 가장 큰 값을 반환 할 수 있다.")
+    @Test
+    void maxTest() {
+        // given
+        Car car = new Car(createMercedesCarName(), 4);
+
+        // when
+        int sut = car.max(3);
+
+        // then
+        assertThat(sut).isEqualTo(4);
+    }
+
+    @DisplayName("max값과 자동차의 position이 동일한지 검사할 수 있다.")
+    @Test
+    void addWinner() {
+        // given
+        List<Car> winners = new ArrayList<>();
+        Car car = new Car(createMercedesCarName(), 4);
+
+        // when
+        List<Car> sut = car.addWinner(4, winners);
+
+        // then
+        assertThat(sut).hasSize(1);
+        assertThat(sut.get(0)).isEqualTo(car);
     }
 
     private CarName createMercedesCarName() {

@@ -29,6 +29,10 @@ public class Cars {
         return new Cars(newCars);
     }
 
+    private Car carMove(Car car, int number) {
+        return car.move(number);
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
@@ -37,15 +41,11 @@ public class Cars {
         return collectWinners(seekMaxPosition());
     }
 
-    private Car carMove(Car car, int number) {
-        return car.move(number);
-    }
-
     private int seekMaxPosition() {
         int maxPosition = 0;
 
         for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            maxPosition = car.max(maxPosition);
         }
 
         return maxPosition;
@@ -55,15 +55,9 @@ public class Cars {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            addIfWinner(maxPosition, car, winners);
+            car.addWinner(maxPosition, winners);
         }
 
         return winners;
-    }
-
-    private void addIfWinner(int maxPosition, Car car, List<Car> winners) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car);
-        }
     }
 }

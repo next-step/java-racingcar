@@ -1,5 +1,7 @@
 package racing.model;
 
+import java.util.List;
+
 public class Car {
     private static final int MOVE_CONDITION = 4;
     private static final int INIT_POSITION = 1;
@@ -31,5 +33,16 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public int max(int other) {
+        return Math.max(this.position, other);
+    }
+
+    public List<Car> addWinner(int maxPosition, List<Car> winners) {
+        if (this.position == maxPosition) {
+            winners.add(this);
+        }
+        return winners;
     }
 }
