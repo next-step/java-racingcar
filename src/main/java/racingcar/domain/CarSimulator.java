@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.util.Collections.unmodifiableList;
+
 public class CarSimulator {
     private final Random random = new Random();
     private final int movementCount;
@@ -17,7 +19,11 @@ public class CarSimulator {
     }
 
     public List<CarPositions> getHistory() {
-        return history;
+        return unmodifiableList(history);
+    }
+
+    public CarWinnerCalculator getWinnerCalculator() {
+        return new CarWinnerCalculator(history);
     }
 
     public CarPositions getPositions() {
