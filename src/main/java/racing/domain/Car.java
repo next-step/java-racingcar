@@ -2,7 +2,13 @@ package racing.domain;
 
 public class Car {
 
-    private int position = 1;
+    private final int INITIAL_POSITION = 1;
+    private final String name;
+    private int position = INITIAL_POSITION;
+
+    public Car(final String name) {
+        this.name = name;
+    }
 
     public int moveForward() {
         return ++position;
@@ -10,5 +16,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

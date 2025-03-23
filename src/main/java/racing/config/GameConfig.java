@@ -1,19 +1,28 @@
 package racing.config;
 
-public class GameConfig {
-    int carCount;
-    int attemptCount;
+import racing.domain.Cars;
+import racing.domain.strategy.MoveStrategy;
+import racing.domain.strategy.ThresholdMoveStrategy;
 
-    public GameConfig(int carCount, int attemptCount) {
-        this.carCount = carCount;
+public class GameConfig {
+    private final Cars cars;
+    private final int attemptCount;
+    private final MoveStrategy moveStrategy = new ThresholdMoveStrategy();
+
+    public GameConfig(final Cars cars, final int attemptCount) {
+        this.cars = cars;
         this.attemptCount = attemptCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public Cars getCars() {
+        return cars;
     }
 
     public int getAttemptCount() {
         return attemptCount;
+    }
+
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 }
