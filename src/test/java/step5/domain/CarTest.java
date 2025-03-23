@@ -11,14 +11,14 @@ public class CarTest {
     void 자동차_전진() {
         Car car = new Car("finn", 0);
         car.go(new MustGoStrategy());
-        assertThat(car.isSameLocation(1)).isTrue();
+        assertThat(car.isSameLocation(new Location(1))).isTrue();
     }
 
     @Test
     void 자동차_멈춤() {
         Car car = new Car("finn", 0);
         car.go(new MustStopStrategy());
-        assertThat(car.isSameLocation(0)).isTrue();
+        assertThat(car.isSameLocation(new Location(0))).isTrue();
     }
 
     @Test

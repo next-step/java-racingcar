@@ -4,7 +4,7 @@ import step5.util.MoveStrategy;
 
 public class Car {
     private final String name;
-    private final Location location;
+    private Location location;
 
     public Car(String name, int location) {
         if (name.length() > 5 || name.isBlank()) {
@@ -20,15 +20,15 @@ public class Car {
 
     public void go(MoveStrategy moveStrategy) {
         if (moveStrategy.move())
-            this.location.add(1);
+            this.location = this.location.add(1);
     }
 
-    public int max(int other) {
+    public Location max(Location other) {
         return this.location.max(other);
     }
 
-    public boolean isSameLocation(int other) {
-        return this.location.isSame(other);
+    public boolean isSameLocation(Location other) {
+        return this.location.equals(other);
     }
 
     public int getLocation() {

@@ -34,15 +34,15 @@ public class Cars {
         return filterWinners(getMaxLocation());
     }
 
-    private int getMaxLocation() {
-        int maxLocation = 0;
+    private Location getMaxLocation() {
+        Location maxLocation = new Location(0);
         for (Car car : cars) {
             maxLocation = car.max(maxLocation);
         }
         return maxLocation;
     }
 
-    private List<Car> filterWinners(int maxLocation) {
+    private List<Car> filterWinners(Location maxLocation) {
         return cars.stream()
                 .filter(car -> car.isSameLocation(maxLocation))
                 .collect(Collectors.toList());

@@ -1,22 +1,35 @@
 package step5.domain;
 
+import java.util.Objects;
+
 public class Location {
-    private int value;
+    private final int value;
 
     public Location(int value) {
         this.value = value;
     }
 
-    public void add(int offset) {
-        this.value += offset;
+    public Location add(int offset) {
+        return new Location(this.value + offset);
     }
 
-    public boolean isSame(int other) {
-        return this.value == other;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return value == location.value;
     }
 
-    public int max(int other) {
-        return Math.max(this.value, other);
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(value);
+    }
+
+    public Location max(Location other) {
+        if (this.value >= other.value) {
+            return this;
+        }
+        return other;
     }
 
     public int getValue() {
