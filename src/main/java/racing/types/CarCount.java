@@ -17,7 +17,7 @@ public class CarCount {
     this.count = carCount;
   }
 
-  public int getCount() {
-    return count;
+  public CarGroup toCarGroup() {
+    return CarGroup.valueOf(this.count);
   }
 }

@@ -1,0 +1,55 @@
+package racing.types;
+
+import java.util.Objects;
+
+public class CarLocation implements Comparable<CarLocation> {
+
+  private final int location;
+
+  public CarLocation() {
+    this.location = 0;
+  }
+
+  public static CarLocation valueOf(int location) {
+    return new CarLocation(location);
+  }
+
+  private CarLocation(int location) {
+    this.location = location;
+  }
+
+  public static CarLocation valueOf(CarLocation carLocation) {
+    return new CarLocation(carLocation);
+  }
+
+  private CarLocation(CarLocation carLocation) {
+    this.location = carLocation.location;
+  }
+
+  public CarLocation getNextLocation() {
+    return CarLocation.valueOf(this.location + 1);
+  }
+
+  @Override
+  public int compareTo(CarLocation carLocation) {
+    return Integer.compare(this.location, carLocation.location);
+  }
+
+  @Override
+  public String toString() {
+    return "-".repeat(Math.max(0, location));
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CarLocation that = (CarLocation) o;
+    return location == that.location;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(location);
+  }
+}

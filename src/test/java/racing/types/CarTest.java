@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -31,29 +33,49 @@ class CarTest {
   @DisplayName("전략에 따라 차를 이동한다.")
   @ParameterizedTest
   @ValueSource(booleans = {true, false})
-  void go_carMovedByStrategy(boolean strategyResult) {
+  void testToMovingCar(boolean strategyResult) {
     int simulateCount = 4;
-    Car car = Car.valueOf(CarName.valueOf("test"));
+    Car result = Car.valueOf(CarName.valueOf("test"));
+    Car expected = strategyResult ? Car.valueOf(CarName.valueOf("test"), CarLocation.valueOf(4)) : Car.valueOf(CarName.valueOf("test"));
 
     for (int i = 0; i < simulateCount; i++) {
-      car.go(() -> strategyResult);
+      result = result.toMovingCar(() -> strategyResult);
     }
 
-    assertThat(car.getLocation()).isEqualTo(strategyResult ? simulateCount : 0);
+
+    assertThat(result).isEqualTo(expected);
   }
 
-  @DisplayName("reset하면 차의 위치를 0으로 만든다.")
+  @DisplayName("차들의 이름을 문자열로 가져옴")
   @Test
-  void reset_setLocationZero() {
-    int simulateCount = 4;
-    Car car = Car.valueOf(CarName.valueOf("test"));
+  void testToNameString() {
+    List<Car> input = List.of(
+        Car.valueOf(CarName.valueOf("a")),
+        Car.valueOf(CarName.valueOf("b"))
+    );
 
-    for (int i = 0; i < simulateCount; i++) {
-      car.go(() -> true);
-    }
+    assertThat(Car.toNameString(input)).isEqualTo("a, b");
+  }
 
-    car.reset();
+  @DisplayName("차들의 위치를 문자열로 가져옴 (차 이름이 있을 때)")
+  @Test
+  void testToLocationStringWithNamedCar() {
+    List<Car> input = List.of(
+        Car.valueOf(CarName.valueOf("a"), CarLocation.valueOf(1)),
+        Car.valueOf(CarName.valueOf("b"), CarLocation.valueOf(2))
+    );
 
-    assertThat(car.getLocation()).isEqualTo(0);
+    assertThat(Car.toLocationString(input)).isEqualTo("a:-\nb:--\n");
+  }
+
+  @DisplayName("차들의 위치를 문자열로 가져옴 (차 이름이 없을 때)")
+  @Test
+  void testToLocationStringUnNamedCar() {
+    List<Car> input = List.of(
+        Car.valueOf(CarLocation.valueOf(1)),
+        Car.valueOf(CarLocation.valueOf(2))
+    );
+
+    assertThat(Car.toLocationString(input)).isEqualTo("-\n--\n");
   }
 }

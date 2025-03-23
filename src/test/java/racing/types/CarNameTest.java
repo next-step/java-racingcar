@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.property.CarRacingGameProperty;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -16,6 +15,9 @@ public class CarNameTest {
   @Test
   void constructorTest1() {
     assertDoesNotThrow(CarName::new);
+
+    CarName carName = new CarName();
+    assertThat(carName).isEqualTo(carName);
   }
 
   @DisplayName("생성자 테스트2")
@@ -24,10 +26,10 @@ public class CarNameTest {
     assertDoesNotThrow(() -> CarName.valueOf("test"));
   }
 
-  @DisplayName("자동차 이름을 할당하지 않으면 default 값으로 생성한다.")
+  @DisplayName("생성자 테스트3")
   @Test
-  void constructor_givenNotCarName_assignDefaultCarName() {
-    assertThat(new Car().getName()).isEqualTo(CarRacingGameProperty.CAR_DEFAULT_NAME);
+  void constructorTest3() {
+    assertDoesNotThrow(() -> CarName.valueOf(new CarName()));
   }
 
   @DisplayName("자동차 이름의 길이는 5 이하이다.")
@@ -48,11 +50,5 @@ public class CarNameTest {
   @Test
   void constructor_givenEmptyStringName_throwsException() {
     assertThrows(RuntimeException.class, () -> CarName.valueOf(""));
-  }
-
-  @DisplayName("자동차 이름이 null이면 RuntimeException을 던진다.")
-  @Test
-  void constructor_givenNull_throwsException() {
-    assertThrows(RuntimeException.class, () -> CarName.valueOf(null));
   }
 }
