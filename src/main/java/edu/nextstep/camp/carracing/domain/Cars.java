@@ -1,9 +1,8 @@
 package edu.nextstep.camp.carracing.domain;
 
-import edu.nextstep.camp.carracing.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static edu.nextstep.camp.carracing.util.RandomNumberGenerator.generateRandomNumber;
 
@@ -28,14 +27,16 @@ public class Cars {
         }
     }
 
-    public void printCarStatus() {
+    public String printCarsStatus() {
+        StringBuilder result = new StringBuilder();
         for (Car car : this.values) {
-            ResultView.printCarStatus(car);
+            result.append(car.getCurrentPositionString()).append(System.lineSeparator());
         }
-        ResultView.printLine();
+        result.append(System.lineSeparator());
+        return result.toString();
     }
 
-    public int getMaxPosition() {
+    private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : this.values) {
             maxPosition = car.getMaxValue(maxPosition);
@@ -43,24 +44,11 @@ public class Cars {
         return maxPosition;
     }
 
-    public Cars getWinners() {
+    public List<String> getWinners() {
         int winnerPosition = getMaxPosition();
-        List<String> result = new ArrayList<>();
-        for (Car car : this.values) {
-            if (car.isMaxPosition(winnerPosition)) {
-                result.add(car.getName().getName());
-            }
-        }
-        return Cars.fromNames(result);
-    }
-
-    public List<String> getWinnerNames() {
-        List<String> result = new ArrayList<>();
-        for (Car value : this.values) {
-            if (value.isMaxPosition(getMaxPosition())) {
-                result.add(value.getName().getName());
-            }
-        }
-        return result;
+        return this.values.stream()
+                .filter(car -> car.isMaxPosition(winnerPosition))
+                .map(Car::getNameValue)
+                .collect(Collectors.toList());
     }
 }

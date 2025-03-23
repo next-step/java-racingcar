@@ -1,7 +1,8 @@
 package edu.nextstep.camp.carracing.view;
 
-import edu.nextstep.camp.carracing.domain.Car;
 import edu.nextstep.camp.carracing.domain.Cars;
+
+import java.util.List;
 
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
@@ -14,15 +15,11 @@ public class ResultView {
         System.out.println(System.lineSeparator() + RESULT_MESSAGE);
     }
 
-    public static void printCarStatus(Car car) {
-        System.out.println(car.getCurrentPositionString());
+    public static void printWinners(List<String> winners) {
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 
-    public static void printWinners(Cars winners) {
-        System.out.println(String.join(", ", winners.getWinnerNames()) + "가 최종 우승했습니다.");
-    }
-
-    public static void printLine() {
-        System.out.println();
+    public static void printCarsStatus(Cars cars) {
+        System.out.println(cars.printCarsStatus());
     }
 }

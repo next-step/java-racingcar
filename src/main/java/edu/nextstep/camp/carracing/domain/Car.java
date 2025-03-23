@@ -34,7 +34,7 @@ public class Car {
         return this.position.max(value);
     }
 
-    public CarName getName() {
-        return this.name;
+    public String getNameValue() {
+        return this.name.getName();
     }
 }

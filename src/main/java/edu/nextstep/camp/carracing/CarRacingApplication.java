@@ -18,7 +18,7 @@ public class CarRacingApplication {
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
             cars.moveCars();
-            cars.printCarStatus();
+            ResultView.printCarsStatus(cars);
         }
         ResultView.printWinners(cars.getWinners());
     }
