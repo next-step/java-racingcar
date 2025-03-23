@@ -24,7 +24,7 @@ public class CarSimulator {
         List<CarPosition> positions = new ArrayList<>();
 
         for (Car car : cars) {
-            positions.add(CarPosition.of(car));
+            positions.add(CarPosition.from(car));
         }
 
         return new CarPositions(positions);
