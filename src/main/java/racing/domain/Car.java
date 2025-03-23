@@ -4,14 +4,21 @@ public class Car {
 
   private static final int MOVE_THRESHOLD = 4;
   private static final int MAX_NAME_LENGTH = 5;
+  private static final int MIN_RANDOM_VALUE = 0;
+  private static final int MAX_RANDOM_VALUE = 9;
 
   private int position;
 
   private String name;
 
   public Car(String name) {
+    this(name, 0);
+  }
+
+  public Car(String name, int position) {
     validateName(name);
     this.name = name;
+    this.position = position;
   }
 
   private void validateName(String name) {
@@ -29,7 +36,7 @@ public class Car {
   }
 
   public void driveOrStop(int randomNumber) {
-    if (randomNumber < 0 || randomNumber > 9) {
+    if (randomNumber < MIN_RANDOM_VALUE || randomNumber > MAX_RANDOM_VALUE) {
       throw new IllegalArgumentException("랜덤 값은 0에서 9 사이여야 합니다.");
     }
 
