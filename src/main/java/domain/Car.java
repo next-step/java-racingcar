@@ -3,11 +3,10 @@ package domain;
 import utils.NumberGenerator;
 
 public class Car {
-    private final static int INITIAL_POSITION = 0;
     private final static int BASE_NUMBER = 4;
     private final static int MAX_NAME_LENGTH = 5;
     private final String name;
-    private int position = INITIAL_POSITION;
+    private final Position position;
 
     public Car(String name) {
         this(name, 0);
@@ -16,7 +15,7 @@ public class Car {
     public Car(String name, int position) {
         validateName(name);
         this.name = name;
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public void move(NumberGenerator numberGenerator) {
@@ -27,11 +26,11 @@ public class Car {
     }
 
     private void goForward() {
-        this.position++;
+        this.position.increase();
     }
 
     public int getPosition() {
-        return this.position;
+        return this.position.getValue();
     }
 
     public String getName() {
