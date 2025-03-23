@@ -1,7 +1,6 @@
 package step5.domain;
 
 import org.junit.jupiter.api.Test;
-import step5.util.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;

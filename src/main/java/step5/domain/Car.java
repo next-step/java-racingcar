@@ -1,7 +1,5 @@
 package step5.domain;
 
-import step5.util.MoveStrategy;
-
 public class Car {
     private final String name;
     private Location location;

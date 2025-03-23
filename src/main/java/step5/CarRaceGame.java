@@ -1,8 +1,8 @@
 package step5;
 
 import step5.domain.Cars;
-import step5.util.MoveStrategy;
-import step5.util.RandomMoveStrategy;
+import step5.domain.MoveStrategy;
+import step5.domain.RandomMoveStrategy;
 import step5.view.InputView;
 import step5.view.ResultView;
 
