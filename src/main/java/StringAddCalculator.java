@@ -1,15 +1,14 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringAddCalculator
-{
+public class StringAddCalculator {
     private static final String DELIMITER = ",|:";
     private static final int DELIMITER_GROUP_ID = 1;
     private static final int STRING_GROUP_ID = 2;
 
-    public int add(String str){
+    public int add(String str) {
 
-        if(isBlank(str)){
+        if (isBlank(str)) {
             str = "0";
         }
 
@@ -20,7 +19,7 @@ public class StringAddCalculator
 
     private int[] toIntArr(String[] strArr) {
         int[] intArr = new int[strArr.length];
-        for(int i = 0; i < strArr.length; i++){
+        for (int i = 0; i < strArr.length; i++) {
             intArr[i] = toInt(strArr[i]);
         }
         return intArr;
@@ -28,7 +27,7 @@ public class StringAddCalculator
 
     private int toInt(String str) {
         int num = Integer.parseInt(str);
-        if (num < 0){
+        if (num < 0) {
             throw new IllegalArgumentException(num + "음수는 허용하지 않습니다.");
         }
         return num;
@@ -36,7 +35,7 @@ public class StringAddCalculator
 
     private static int getSum(int[] numbers) {
         int sum = 0;
-        for(int num : numbers){
+        for (int num : numbers) {
             sum += num;
         }
         return sum;
