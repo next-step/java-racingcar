@@ -29,4 +29,15 @@ public class InputView {
             }
         }
     }
+
+    public static String[] inputCarCounts() {
+        while (true) {
+            ResultView.askCarCounts();
+            try {
+                return scanner.next().split(",");
+            } catch (Exception e) {
+                ResultView.printTypeError();
+            }
+        }
+    }
 }

@@ -1,7 +1,8 @@
-package RacingTest;
+package racing;
 
-import racing.Car;
-import racing.Judgement;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.Judgement;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,24 +40,21 @@ class CarTest {
     @DisplayName(value = "차량이 전진하는지 여부 확인")
     void 차량_전진_테스트() {
         car.move(RandomUtils.generateRandomNumber(10));
-        assertThat("-".repeat(car.getDistance())).isIn("-", "");
+        assertThat("-".repeat(car.getPosition())).isIn("-", "");
     }
 
     @Test
     @DisplayName(value = "승자 테스트")
     void 승자_출력_테스트() {
-        List<Car> cars = List.of(
-                new Car("a"),
-                new Car("b"),
-                new Car("c")
-        );
-        cars.get(0).move(4);
-        cars.get(1).move(4);
-        cars.get(2).move(1);
 
-        Judgement judgement = new Judgement();
+        Cars cars = new Cars()
+        .addCar(new Car("A",4))
+        .addCar(new Car("B",4))
+        .addCar(new Car("C",2));
 
-        assertThat(judgement.getWinnerCars(cars)).isEqualTo(List.of(cars.get(0), cars.get(1)));
+        Judgement judgement = new Judgement(cars);
+
+        assertThat(judgement.getWinnerCars()).isEqualTo(List.of(cars.getCar(0), cars.getCar(1)));
     }
 
     @Test
@@ -66,4 +64,5 @@ class CarTest {
             new Car("가나다라마바");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
 }
