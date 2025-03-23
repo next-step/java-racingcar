@@ -1,12 +1,12 @@
 package car_racing2;
 
-import car_racing2.model.Cars;
+import car_racing2.domain.model.Cars;
+import car_racing2.domain.MovingStrategy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 class CarsTest {
     @Test
@@ -35,11 +35,11 @@ class CarsTest {
                 .containsExactlyInAnyOrder(carName1, carName3);
     }
 
-    static class TestCarMovingStrategy implements BooleanSupplier {
+    static class TestCarMovingStrategy implements MovingStrategy {
         int i = 0;
 
         @Override
-        public boolean getAsBoolean() {
+        public boolean isMovable() {
             return (i++ % 2) == 0;
         }
     }

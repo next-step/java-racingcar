@@ -1,4 +1,4 @@
-package car_racing2.model;
+package car_racing2.domain.model;
 
 public class Car{
     private static final int DEFAULT_MOVING_DISTANCE = 1;

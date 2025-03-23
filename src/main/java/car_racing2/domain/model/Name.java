@@ -1,4 +1,4 @@
-package car_racing2.model;
+package car_racing2.domain.model;
 
 public class Name {
     private static final int NAME_LENGTH_LIMIT = 5;
