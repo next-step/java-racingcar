@@ -5,14 +5,14 @@ import java.util.Random;
 public class RandomCarMoveStrategy implements CarMoveStrategy {
   private static final Random random = new Random();
   private static final int MAX_RANDOM_NUMBER = 10;
-  static final int MOVE_THRESHOLD = 4;
+  private static final int MOVE_THRESHOLD = 4;
 
   @Override
   public boolean shouldMove() {
-    return getMoveSteps() >= MOVE_THRESHOLD;
+    return getRandomStep() >= MOVE_THRESHOLD;
   }
 
-  int getMoveSteps() {
+  int getRandomStep() {
     return random.nextInt(MAX_RANDOM_NUMBER);
   }
 }

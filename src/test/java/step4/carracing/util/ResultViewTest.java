@@ -1,11 +1,15 @@
-package step4.carracing;
+package step4.carracing.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.carracing.RandomCarMoveStrategy;
+import step4.carracing.domain.Car;
+import step4.carracing.domain.Cars;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 public class ResultViewTest {
 
@@ -16,13 +20,14 @@ public class ResultViewTest {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outputStream));
 
-    Car car = CarFactory.createCar("pobi", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy());
-    car.move();
-    car.move();
-    car.move();
-    String expected = "pobi : " + "----\n";
+    Cars cars = new Cars(
+            List.of(
+                    new Car(3, "pobi", new RandomCarMoveStrategy())
+            )
+    );
+    String expected = "pobi : " + "----\n\n";
 
-    ResultView.printCarStatus(car);
+    ResultView.printAllCarStatus(cars);
 
     System.setOut(originalOut);
     Assertions.assertEquals(expected, outputStream.toString());

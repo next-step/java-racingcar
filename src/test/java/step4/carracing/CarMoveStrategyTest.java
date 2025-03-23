@@ -29,7 +29,7 @@ public class CarMoveStrategyTest {
   @DisplayName("0-9 사이 랜덤으로 자동차 이동 전략을 구하는 테스트")
   @RepeatedTest(value = 10, name = "{displayName}, {currentRepetition}/{totalRepetitions}")
   void testGetMoveSteps() {
-    int actual = new RandomCarMoveStrategy().getMoveSteps();
+    int actual = new RandomCarMoveStrategy().getRandomStep();
     Assertions.assertTrue(VALID_RANDOM_NUMBERS.contains(actual));
   }
 }

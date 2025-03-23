@@ -1,16 +1,16 @@
 package step4.carracing;
 
+import step4.carracing.domain.Cars;
+import step4.carracing.util.CarFactory;
+import step4.carracing.util.InputView;
+import step4.carracing.util.ResultView;
 
 import java.util.List;
 import java.util.Scanner;
 
-import static step4.carracing.ResultView.printCarStatus;
-
 public class CarRaceGame {
-
   private final Scanner scanner;
-  private List<String> carNames;
-  private List<Car> carList;
+  private Cars cars;
   private int tryCount;
 
   public CarRaceGame(Scanner scanner) {
@@ -18,47 +18,29 @@ public class CarRaceGame {
   }
 
   public void start() {
-    receiveUserInput();
     setUp();
     play();
     judge();
   }
 
-  private void receiveUserInput() {
-    InputView inputView = new InputView(scanner);
-    this.carNames = inputView.receiveCarNames();
-    this.tryCount = inputView.receiveTryCount();
-  }
-
   private void setUp() {
-    this.carList = CarFactory.createCars(this.carNames, new RandomCarMoveStrategy());
+    InputView inputView = new InputView(scanner);
+    List<String> carNames = inputView.receiveCarNames();
+    this.tryCount = inputView.receiveTryCount();
+    this.cars = CarFactory.createCars(carNames, new RandomCarMoveStrategy());
   }
 
   private void play() {
     System.out.println("\n실행 결과");
-    printCars();
-
+    ResultView.printAllCarStatus(cars);
     for (int i = 0; i < tryCount; i++) {
-      moveCars();
-      printCars();
-    }
-  }
-
-  private void printCars() {
-    for (Car car : this.carList) {
-      printCarStatus(car);
-    }
-    System.out.println();
-  }
-
-  private void moveCars() {
-    for (Car car: this.carList) {
-      car.move();
+      cars.moveAll();
+      ResultView.printAllCarStatus(cars);
     }
   }
 
   private void judge() {
-    List<Car> winners = CarRacingJudge.judgeWinners(this.carList);
+    Cars winners = CarRacingJudge.judgeWinners(cars);
     ResultView.printWinners(winners);
   }
 }
