@@ -1,7 +1,8 @@
-package racing;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
@@ -18,17 +19,17 @@ class RacingTest {
 
   @Test
   void 제일_높은_position_가진_자동차_구하기() {
-    String[] carNames = {"pobi", "crong", "honux"};
-    Racing racing = new Racing(carNames);
-    List<Car> cars = racing.getCars();
+    Car pobi = new Car("pobi", 3);
+    Car jason = new Car("jason", 1);
+    Car brown = new Car("brown", 2);
 
-    cars.get(0).driveOrStop(0);
-    cars.get(1).driveOrStop(5);
-    cars.get(2).driveOrStop(5);
+    List<Car> cars = List.of(pobi, jason, brown);
 
-    List<String> winners = racing.getMaxPosition();
+    Racing racing = new Racing(cars);
 
-    assertThat(winners).containsExactlyInAnyOrder("crong", "honux");
+    List<String> winners = racing.findWinners();
+
+    assertThat(winners).containsExactlyInAnyOrder("pobi");
   }
 
 }
