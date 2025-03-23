@@ -21,4 +21,11 @@ class PositionTest {
 
         assertThat(position1).isEqualTo(position2);
     }
+
+    @Test
+    void 값_증가_테스트() {
+        Position position = new Position(1);
+
+        assertThat(position.increment()).isEqualTo(new Position(2));
+    }
 }

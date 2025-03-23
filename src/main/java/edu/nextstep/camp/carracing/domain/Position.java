@@ -3,7 +3,7 @@ package edu.nextstep.camp.carracing.domain;
 import java.util.Objects;
 
 public class Position {
-    private int value;
+    private final int value;
 
     public Position() {
         this(0);
@@ -16,8 +16,8 @@ public class Position {
         this.value = value;
     }
 
-    public void increment() {
-        this.value++;
+    public Position increment() {
+        return new Position(this.value + 1);
     }
 
     public boolean isSame(int number) {

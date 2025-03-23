@@ -5,7 +5,7 @@ public class Car {
     private static final String MOVE_SYMBOL = "-";
 
     private final CarName name;
-    private final Position position;
+    private Position position;
 
     public Car(String name) {
         this(name, new Position());
@@ -18,7 +18,7 @@ public class Car {
 
     public void move(int number) {
         if (number >= MOVE_THRESHOLD) {
-            this.position.increment();
+            this.position = this.position.increment();
         }
     }
 
