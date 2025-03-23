@@ -1,7 +1,7 @@
 package racing.service;
 
 import java.util.List;
-import racing.model.Cars;
+import racing.domain.Cars;
 
 public class RaceService {
     private final NumberGenerator numberGenerator;

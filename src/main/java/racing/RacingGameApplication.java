@@ -4,7 +4,7 @@ import static racing.view.InputView.getCarName;
 import static racing.view.InputView.getMoveCount;
 
 import java.util.List;
-import racing.model.Cars;
+import racing.domain.Cars;
 import racing.service.RaceService;
 import racing.service.RandomNumberGenerator;
 import racing.view.OutputView;

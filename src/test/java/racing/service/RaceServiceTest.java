@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.fake.FakeNumberGenerator;
-import racing.model.Cars;
+import racing.domain.Cars;
 
 class RaceServiceTest {
     private RaceService raceService;
