@@ -56,5 +56,4 @@ public class Cars implements Iterable<Car> {
   public Stream<Car> stream() {
     return carList.stream();
   }
-
 }

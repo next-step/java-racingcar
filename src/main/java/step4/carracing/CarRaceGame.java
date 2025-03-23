@@ -5,8 +5,6 @@ import step4.carracing.domain.Cars;
 import java.util.List;
 import java.util.Scanner;
 
-import static step4.carracing.ResultView.printCarStatus;
-
 public class CarRaceGame {
   private final Scanner scanner;
   private Cars cars;
@@ -31,10 +29,10 @@ public class CarRaceGame {
 
   private void play() {
     System.out.println("\n실행 결과");
-    printCarStatus(cars);
+    ResultView.printCarStatus(cars);
     for (int i = 0; i < tryCount; i++) {
       cars.moveCars();
-      printCarStatus(cars);
+      ResultView.printCarStatus(cars);
     }
   }
 

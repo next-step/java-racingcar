@@ -19,8 +19,8 @@ public class Position {
     value += incrementValue;
   }
 
-  public boolean isSame(int maxPosition) {
-    return value == maxPosition;
+  public boolean isSame(int targetPosition) {
+    return value == targetPosition;
   }
 
   public int getMax(int compareValue) {
