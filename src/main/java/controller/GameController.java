@@ -1,6 +1,8 @@
 package controller;
 
+import domain.Racing;
 import java.util.List;
+import view.InputView;
 
 public class GameController {
     public void play() {

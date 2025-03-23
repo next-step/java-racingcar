@@ -3,6 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import util.RandomUtil;
 
 public class Racing {
     private final List<Car> carList = new ArrayList<>(); // 자동차 리스트
