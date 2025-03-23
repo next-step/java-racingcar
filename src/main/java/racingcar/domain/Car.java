@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.Random;
-
 import racingcar.exception.InvalidNameException;
 import racingcar.exception.NameLengthException;
 
@@ -9,8 +7,6 @@ public class Car {
     private static final int MIN_MOVEMENT_THRESHOLD = 4;
     private static final int GO = 1;
     public static final int START = 0;
-
-    private final Random random = new Random();
 
     private int position;
     private final String name;
@@ -44,17 +40,13 @@ public class Car {
         return name;
     }
 
-    public void move() {
-        if (getMovementStatus(generateRandomNumber())) {
+    public void move(int randomNumber) {
+        if (getMovementStatus(randomNumber)) {
             position += GO;
         }
     }
 
     private boolean getMovementStatus(int randomNumber) {
         return randomNumber >= MIN_MOVEMENT_THRESHOLD;
-    }
-
-    protected int generateRandomNumber() {
-        return random.nextInt(10);
     }
 }

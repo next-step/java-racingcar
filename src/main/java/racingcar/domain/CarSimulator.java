@@ -2,8 +2,10 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarSimulator {
+    private final Random random = new Random();
     private final int movementCount;
     private final List<Car> cars;
     private final List<CarPositions> history;
@@ -37,11 +39,15 @@ public class CarSimulator {
 
     private void moveAllCars() {
         for (Car car : cars) {
-            car.move();
+            car.move(generateRandomNumber());
         }
     }
 
     private void saveHistory() {
         history.add(getPositions());
+    }
+
+    private int generateRandomNumber() {
+        return random.nextInt(10);
     }
 }
