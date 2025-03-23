@@ -24,10 +24,6 @@ public class Car {
     return name.toString();
   }
 
-  public boolean isSameName(String value) {
-    return name.isSame(value);
-  }
-
   public void move() {
     if (carMoveStrategy.shouldMove()) {
       position.increase(MOVE_STEP);
