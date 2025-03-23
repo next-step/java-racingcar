@@ -1,5 +1,5 @@
-import car.Cars;
-import car.WinnerDeterminer;
+import domain.Cars;
+import domain.WinnerDeterminer;
 import utils.*;
 
 import java.util.stream.IntStream;

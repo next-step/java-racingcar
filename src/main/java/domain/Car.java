@@ -1,4 +1,4 @@
-package car;
+package domain;
 
 import utils.NumberGenerator;
 
@@ -6,8 +6,8 @@ public class Car {
     private final static int INITIAL_POSITION = 0;
     private final static int BASE_NUMBER = 4;
     private final static int MAX_NAME_LENGTH = 5;
-    private int position = INITIAL_POSITION;
     private final String name;
+    private int position = INITIAL_POSITION;
 
     public Car(String name) {
         this(name, 0);

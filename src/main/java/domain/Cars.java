@@ -1,4 +1,4 @@
-package car;
+package domain;
 
 import utils.NumberGenerator;
 

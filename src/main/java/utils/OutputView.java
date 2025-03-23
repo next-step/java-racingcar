@@ -1,6 +1,6 @@
 package utils;
 
-import car.Car;
+import domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
