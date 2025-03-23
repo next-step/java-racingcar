@@ -6,23 +6,15 @@ public class Car {
     private final static int MOVE_BOUND = 4;
     private final static int MOVE_STEP = 1;
 
-    private String name;
+    private final CarName name;
     private int position;
 
     public Car(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다");
-        }
-
-        if (name.trim().length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다");
-        }
-
-        this.name = name.trim();
+        this.name = new CarName(name);
     }
 
     public Car(String name, int position) {
-        this.name = name;
+        this.name = new CarName(name);
         this.position = position;
     }
 
@@ -40,6 +32,6 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 }
