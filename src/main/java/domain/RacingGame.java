@@ -9,12 +9,14 @@ public class RacingGame {
     private final RacingCarNames racingCarNames;
     private final NumberOfTrial numberOfTrial;
     private final List<RacingCar> racingCars;
+    private final Moveable moveable;
 
     public RacingGame(RacingCarNames racingCarNames, NumberOfTrial numberOfTrial, Moveable moveable) {
 
         this.racingCarNames = racingCarNames;
         this.numberOfTrial = numberOfTrial;
-        this.racingCars = initializeRacingCars(moveable);
+        this.racingCars = initializeRacingCars();
+        this.moveable = moveable;
     }
 
     public RacingGameResult start() {
@@ -32,14 +34,14 @@ public class RacingGame {
 
     private void moveCars() {
         for (RacingCar racingCar : racingCars) {
-            racingCar.move();
+            racingCar.move(moveable);
         }
     }
 
-    private List<RacingCar> initializeRacingCars(Moveable moveable) {
+    private List<RacingCar> initializeRacingCars() {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String name : racingCarNames.getRacingCarNames()) {
-            racingCars.add(new RacingCar(name, moveable));
+            racingCars.add(new RacingCar(name, 0));
         }
         return racingCars;
     }

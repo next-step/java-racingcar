@@ -5,29 +5,37 @@ import movingStrategy.Moveable;
 public class RacingCar {
     private final String name;
     private final Position position;
-    private final Moveable moveable;
 
-    public RacingCar(String name, Moveable moveable) {
+    public RacingCar(String name, Integer initialPosition) {
         this.name = name;
-        this.position = new Position(0);
-        this.moveable = moveable;
+        this.position = new Position(initialPosition);
     }
 
-    public Integer position() {
-        return this.position.value();
-    }
-
-    public void move() {
+    public void move(Moveable moveable) {
         if (moveable.isMoveable()) {
             this.position.add(1);
         }
     }
 
-    public String name() {
-        return this.name;
-    }
-
     public RacingCarCurrentStatus getCurrentStatus() {
         return new RacingCarCurrentStatus(this.name, this.position.copy());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj == this) {
+            return true;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        RacingCar rhs = (RacingCar) obj;
+        return this.name.equals(rhs.name) && this.position.equals(rhs.position);
     }
 }

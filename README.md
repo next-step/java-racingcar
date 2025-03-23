@@ -32,3 +32,5 @@
   - [x] RacingCarNames
   - [x] NumberOfTrial
   - [x] Position
+- [x] RacingCar 객체 수정
+  - [x] move 메소드 시그니쳐 변경

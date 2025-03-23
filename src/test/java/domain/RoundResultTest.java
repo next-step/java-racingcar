@@ -18,13 +18,13 @@ class RoundResultTest {
         String car1Name = "car1";
         String car2Name = "car2";
 
-        RacingCar car1 = new RacingCar(car1Name, new AlwaysMove());
-        RacingCar car2 = new RacingCar(car2Name, new NeverMove());
+        RacingCar car1 = new RacingCar(car1Name, 0);
+        RacingCar car2 = new RacingCar(car2Name, 0);
 
         List<RacingCar> cars = List.of(car1, car2);
 
-        car1.move();
-        car2.move();
+        car1.move(new AlwaysMove());
+        car2.move(new NeverMove());
 
         List<String> expectedNames = List.of(car1Name, car2Name);
         List<Integer> expectedPositions = List.of(1, 0);
