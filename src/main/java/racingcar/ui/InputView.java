@@ -33,7 +33,6 @@ public class InputView {
     }
     public static int inputValidatedNumberOfAttempts() {
         int input = inputNumberOfAttempts();
-        validateInput(input, "시도 횟수", NUM_MIN);
         return input;
     }
     public static String[] inputdNameOfCar() {

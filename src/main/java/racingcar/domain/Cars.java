@@ -1,13 +1,13 @@
 package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
-import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -15,6 +15,14 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
+    }
+
+    public static Cars fromNumbers(int count) {
+        String[] names = IntStream.range(1, count + 1)
+                .mapToObj(i -> "Car" + i)
+                .toArray(String[]::new);
+
+        return fromNames(names);
     }
 
     public static Cars fromNames(String[] names) {
@@ -41,12 +49,12 @@ public class Cars {
 
     public List<String> getWinners() {
         int maxMoveCount = cars.stream()
-                .mapToInt(Car::getMoveCount)
+                .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
 
         return cars.stream()
-                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .filter(car -> car.getPosition() == maxMoveCount)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
