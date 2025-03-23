@@ -1,10 +1,10 @@
 package racingcar;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.*;
 import racingcar.generator.RandomGenerator;
 import racingcar.ui.InputView;
 
@@ -32,14 +32,14 @@ public class RacingCarTest {
     @DisplayName("전진 조건에 만족하면 전진")
     void move() {
         car.move(() -> true);
-        assertThat(car.getMoveCount()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("전진 조건에 만족하지 않으면 멈춤")
     void stop() {
         car.move(() -> false);
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -48,9 +48,9 @@ public class RacingCarTest {
         cars.moveAll(() -> true);
 
         assertAll(
-                () -> assertThat(cars.getCurrentStatus().get(0).getMoveCount()).isEqualTo(2),
-                () -> assertThat(cars.getCurrentStatus().get(1).getMoveCount()).isEqualTo(2),
-                () -> assertThat(cars.getCurrentStatus().get(2).getMoveCount()).isEqualTo(2)
+                () -> assertThat(cars.getCurrentStatus().get(0).getPosition()).isEqualTo(2),
+                () -> assertThat(cars.getCurrentStatus().get(1).getPosition()).isEqualTo(2),
+                () -> assertThat(cars.getCurrentStatus().get(2).getPosition()).isEqualTo(2)
         );
     }
 
@@ -60,9 +60,9 @@ public class RacingCarTest {
         cars.moveAll(() -> false);
 
         assertAll(
-                () -> assertThat(cars.getCurrentStatus().get(0).getMoveCount()).isEqualTo(1),
-                () -> assertThat(cars.getCurrentStatus().get(1).getMoveCount()).isEqualTo(1),
-                () -> assertThat(cars.getCurrentStatus().get(2).getMoveCount()).isEqualTo(1)
+                () -> assertThat(cars.getCurrentStatus().get(0).getPosition()).isEqualTo(1),
+                () -> assertThat(cars.getCurrentStatus().get(1).getPosition()).isEqualTo(1),
+                () -> assertThat(cars.getCurrentStatus().get(2).getPosition()).isEqualTo(1)
         );
     }
 
@@ -85,10 +85,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("시도할 회수가 0보다 작을 경우 오류 리턴")
     void inputAttempts() {
-        String input = "0";
-        InputView.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
-
-        assertThatThrownBy(InputView::inputValidatedNumberOfAttempts)
+        assertThatThrownBy(() -> new Attempt(0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -149,6 +146,25 @@ public class RacingCarTest {
         Cars cars = new Cars(List.of(pobi, crong));
 
         assertThat(cars.getWinners()).containsExactly("pobi", "crong");
+    }
+
+    @Test
+    @DisplayName("찻반쩨 리운드는 모두 1 이동")
+    void firstRound() throws CloneNotSupportedException {
+        String[] names = {"pobi", "crong"};
+        Attempt attempt = new Attempt(2);
+
+        Race race = Race.create(names, attempt);
+        race.fisrtRound(); // 찻반쩨 리운드에서는 모든 차가 1만큼 이동한다고 가정
+
+        RoundResult firstRound = race.getRoundResults().get(0);
+
+        assertThat(firstRound.getRoundNumber().getAttempt()).isEqualTo(1);
+
+        List<Car> carStatus = firstRound.getCarStatus();
+
+        assertThat(carStatus).extracting(Car::getName).containsExactly("pobi", "crong");
+        assertThat(carStatus).extracting(Car::getPosition).containsExactly(1, 1);
     }
 
 }

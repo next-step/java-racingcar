@@ -37,7 +37,7 @@ public class Race {
         }
     }
 
-    private void fisrtRound() throws CloneNotSupportedException {
+    public void fisrtRound() throws CloneNotSupportedException {
         roundResults.add(new RoundResult(new Attempt(FIRST_ATTEMPT), new ArrayList<>(getCurrentStatus())));
     }
 

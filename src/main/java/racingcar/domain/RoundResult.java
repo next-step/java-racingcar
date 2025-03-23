@@ -11,6 +11,10 @@ public class RoundResult {
         this.carStatus = carStatus;
     }
 
+    public Attempt getRoundNumber() {
+        return roundNumber;
+    }
+
     public List<Car> getCarStatus() {
         return carStatus;
     }
