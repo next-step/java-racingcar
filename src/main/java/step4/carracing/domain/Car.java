@@ -2,6 +2,8 @@ package step4.carracing.domain;
 
 import step4.carracing.CarMoveStrategy;
 
+import java.util.Objects;
+
 public class Car {
   private static final int INIT_POSITION = 0;
   private static final int MOVE_STEP = 1;
@@ -22,6 +24,10 @@ public class Car {
 
   public String getName() {
     return name.getValue();
+  }
+
+  public boolean isSameName(String value) {
+    return name.isSame(value);
   }
 
   public void move() {

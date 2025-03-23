@@ -43,7 +43,7 @@ public class Cars implements Iterable<Car> {
 
   public Car get(String name) {
     return carList.stream()
-      .filter(car -> car.getName().equals(name))
+      .filter(car -> car.isSameName(name))
       .findFirst()
       .orElseThrow(() -> new IllegalArgumentException("해당 이름의 차량이 없습니다."));
   }
