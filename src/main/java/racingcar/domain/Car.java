@@ -6,7 +6,7 @@ import racingcar.exception.NameLengthException;
 public class Car {
     private static final int MIN_MOVEMENT_THRESHOLD = 4;
     private static final int GO = 1;
-    public static final int START = 0;
+    private static final int START = 0;
 
     private int position;
     private final String name;
