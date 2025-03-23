@@ -12,7 +12,7 @@ public class RaceService {
     private final MovingStrategy movingStrategy;
     private Cars cars;
     private final int moveCount;
-    private boolean isFinished = false;
+    private int round = 0;
 
     public RaceService(List<String> carNames, int moveCount) {
         this(carNames, moveCount, new RandomMovingStrategy(RAND));
@@ -25,10 +25,8 @@ public class RaceService {
     }
 
     public void race() {
-        for (int i = 0; i < moveCount; i++) {
-            this.cars = cars.move(movingStrategy);
-        }
-        isFinished = true;
+        this.cars = cars.move(movingStrategy);
+        round++;
     }
 
     public Cars getCars() {
@@ -36,7 +34,7 @@ public class RaceService {
     }
 
     public boolean gameEnd() {
-        return isFinished;
+        return this.moveCount == round;
     }
 
     public List<Car> getWinners() {

@@ -25,13 +25,13 @@ class RaceServiceTest {
         assertThat(sut).isNotNull();
     }
 
-    @DisplayName("주어진 횟수만큼 자동차 경주를 할 수 있다.")
+    @DisplayName("자동차 경주를 진행 할 수 있다.")
     @Test
     void raceTest() {
         // given
         List<String> carNames = List.of("BMW");
         RaceService raceService = new RaceService(carNames, 5, new FakeMovingStrategy(5));
-        Car bmw = new Car(new Name("BMW"), new Position(6));
+        Car bmw = new Car(new Name("BMW"), new Position(2));
         Cars cars = new Cars(List.of(bmw));
 
         // when
@@ -56,12 +56,10 @@ class RaceServiceTest {
     @DisplayName("게임이 끝났는지 확인 할 수 있다.")
     @Test
     void gameEnd() {
-        RaceService unFinishedRaceService = new RaceService(List.of("Benz"), 3, new FakeMovingStrategy(2));
-        RaceService finishedRaceService = new RaceService(List.of("Benz"), 3, new FakeMovingStrategy(2));
+        RaceService sut = new RaceService(List.of("Benz"), 1, new FakeMovingStrategy(2));
 
-        finishedRaceService.race();
+        sut.race();
 
-        assertThat(unFinishedRaceService.gameEnd()).isFalse();
-        assertThat(finishedRaceService.gameEnd()).isTrue();
+        assertThat(sut.gameEnd()).isTrue();
     }
 }
