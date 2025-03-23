@@ -1,4 +1,4 @@
-import java.util.Random;
+package domain;
 
 public class Car {
 
