@@ -3,7 +3,6 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import racing.service.NumberGenerator;
 
 public class Cars {
     private final List<Car> cars;
@@ -21,16 +20,16 @@ public class Cars {
         return new Cars(carList);
     }
 
-    public Cars movedAll(NumberGenerator numberGenerator) {
+    public Cars movedAll(MovingStrategy movingStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(carMove(car, numberGenerator.generateNumber()));
+            newCars.add(carMove(car, movingStrategy));
         }
         return new Cars(newCars);
     }
 
-    private Car carMove(Car car, int number) {
-        return car.move(number);
+    private Car carMove(Car car, MovingStrategy movingStrategy) {
+        return car.move(movingStrategy);
     }
 
     public List<Car> getCars() {

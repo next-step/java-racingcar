@@ -21,10 +21,9 @@ class CarTest {
     }
 
     @DisplayName("자동차의 위치를 한 칸 증가시킬 수 있다.")
-    @ParameterizedTest
     @ValueSource(ints = {4, 9})
     void carMovedTest(int argument) {
-        Car sut = car.move(argument);
+        Car sut = car.move(new FakeMovingStrategy(argument));
 
         assertThat(sut.getPosition()).isEqualTo(2);
     }
@@ -33,7 +32,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
     void carNotMovedTest(int argument) {
-        Car sut = car.move(argument);
+        Car sut = car.move(new FakeMovingStrategy(argument));
 
         assertThat(sut.getPosition()).isEqualTo(1);
     }

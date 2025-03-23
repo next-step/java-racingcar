@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.fake.FakeNumberGenerator;
+import racing.domain.FakeMovingStrategy;
 import racing.domain.Cars;
 
 class RaceServiceTest {
@@ -15,7 +15,7 @@ class RaceServiceTest {
 
     @BeforeEach
     void setUp() {
-        raceService = new RaceService(new FakeNumberGenerator(5));
+        raceService = new RaceService(new FakeMovingStrategy(5));
     }
 
     @DisplayName("입력 받은 n대의 자동차를 생성 요청 한다.")

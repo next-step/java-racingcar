@@ -3,7 +3,6 @@ package racing.domain;
 import java.util.List;
 
 public class Car {
-    private static final int MOVE_CONDITION = 4;
     private static final int INIT_POSITION = 1;
 
     private final CarName name;
@@ -19,10 +18,11 @@ public class Car {
         this.position = position;
     }
 
-    public Car move(int number) {
-        if (number >= MOVE_CONDITION) {
+    public Car move(MovingStrategy strategy) {
+        if (strategy.moveable()) {
             return new Car(this.name, this.position + 1);
         }
+
         return this;
     }
 

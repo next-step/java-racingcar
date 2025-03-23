@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.fake.FakeNumberGenerator;
 
 class CarsTest {
     private static final int MOVE_NUMBER = 4;
@@ -33,7 +32,7 @@ class CarsTest {
         Cars cars = createCars(carNames);
 
         // when
-        Cars sut = cars.movedAll(new FakeNumberGenerator(MOVE_NUMBER));
+        Cars sut = cars.movedAll(new FakeMovingStrategy(MOVE_NUMBER));
 
         // then
         assertAll(() -> assertThat(sut.getCars().get(0).getPosition()).isEqualTo(2),

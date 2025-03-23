@@ -6,7 +6,7 @@ import static racing.view.InputView.getMoveCount;
 import java.util.List;
 import racing.domain.Cars;
 import racing.service.RaceService;
-import racing.service.RandomNumberGenerator;
+import racing.domain.RandomMovingStrategy;
 import racing.view.OutputView;
 
 public class RacingGameApplication {
@@ -16,7 +16,7 @@ public class RacingGameApplication {
         List<String> carNames = getCarName();
         int moveCount = getMoveCount();
 
-        RaceService raceService = new RaceService(new RandomNumberGenerator(RAND));
+        RaceService raceService = new RaceService(new RandomMovingStrategy(RAND));
         Cars cars = raceService.generateCar(carNames);
 
         OutputView.printResultLabel();
