@@ -41,7 +41,7 @@ class CarsTest {
 
     Cars filteredCars = cars.filterCarsWithCertainPosition(2);
 
-    assertEquals(1, filteredCars.size());
+    assertEquals(1, filteredCars.stream().count());
   }
 
   @DisplayName("자동차 목록의 크기를 구하는 기능 테스트")
@@ -54,7 +54,7 @@ class CarsTest {
             )
     );
 
-    assertEquals(2, cars.size());
+    assertEquals(2, cars.stream().count());
   }
 
   @DisplayName("중복된 이름의 자동차가 존재 시 예외를 발생시키는 테스트")

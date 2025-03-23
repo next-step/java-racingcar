@@ -18,6 +18,6 @@ public class CarRacingJudgeTest {
     Cars expected = new Cars(List.of(new Car("honux", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy())));
     Cars actual = CarRacingJudge.judgeWinners(cars);
 
-    Assertions.assertEquals(expected.size(), actual.size());
+    Assertions.assertEquals(expected.stream().count(), actual.stream().count());
   }
 }

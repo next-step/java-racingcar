@@ -17,7 +17,7 @@ public class CarFactoryTest {
     List<String> inputNames = List.of("pobi", "crong", "honux");
     Cars cars = CarFactory.createCars(inputNames, new RandomCarMoveStrategy());
 
-    Assertions.assertEquals(inputNames.size(), cars.size());
+    Assertions.assertEquals(inputNames.size(), cars.stream().count());
 
     for (Car car: cars) {
       Assertions.assertTrue(inputNames.contains(car.getName()));
