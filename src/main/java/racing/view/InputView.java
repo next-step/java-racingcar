@@ -3,7 +3,6 @@ package racing.view;
 import racing.config.GameConfig;
 import racing.domain.Cars;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {

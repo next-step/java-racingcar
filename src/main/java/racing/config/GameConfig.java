@@ -1,13 +1,13 @@
 package racing.config;
 
 import racing.domain.Cars;
-import racing.util.NumberGenerator;
-import racing.util.RandomNumberGenerator;
+import racing.domain.strategy.MoveStrategy;
+import racing.domain.strategy.ThresholdMoveStrategy;
 
 public class GameConfig {
     private final Cars cars;
     private final int attemptCount;
-    private NumberGenerator numberGenerator = new RandomNumberGenerator();
+    private final MoveStrategy moveStrategy = new ThresholdMoveStrategy();
 
     public GameConfig(final Cars cars, final int attemptCount) {
         this.cars = cars;
@@ -22,11 +22,7 @@ public class GameConfig {
         return attemptCount;
     }
 
-    public NumberGenerator getNumberGenerator() {
-        return numberGenerator;
-    }
-
-    public void setNumberGenerator(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 }
