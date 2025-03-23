@@ -28,14 +28,4 @@ public class Racing {
         }
     }
 
-    /**
-     * @return 우승자를 찾습니다.
-     */
-    private List<Car> findWinner() {
-        int maxScore = carList.stream().mapToInt(Car::getPosition).max().orElse(0);
-
-        return carList.stream().filter(car -> car.getPosition() == maxScore).collect(Collectors.toList());
-    }
-
-
 }

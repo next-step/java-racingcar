@@ -21,6 +21,11 @@ public class Car {
         this.name = name.trim();
     }
 
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     /**
      * 자동차를 앞으로 전진시킵니다.
      */
