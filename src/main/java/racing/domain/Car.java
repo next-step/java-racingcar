@@ -17,7 +17,7 @@ public class Car {
     }
 
     public Car move(MovingStrategy strategy) {
-        if (strategy.moveable()) {
+        if (strategy.movable()) {
             return new Car(this.name, this.position.increasePosition());
         }
         return this;

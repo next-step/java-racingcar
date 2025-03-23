@@ -11,7 +11,7 @@ public class RandomMovingStrategy implements MovingStrategy {
     }
 
     @Override
-    public boolean moveable() {
+    public boolean movable() {
         return new Random().nextInt(rand) >= MOVE_CONDITION;
     }
 }

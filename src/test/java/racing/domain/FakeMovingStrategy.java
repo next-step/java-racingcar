@@ -9,7 +9,7 @@ public class FakeMovingStrategy implements MovingStrategy {
     }
 
     @Override
-    public boolean moveable() {
+    public boolean movable() {
         return num >= MOVE_CONDITION;
     }
 }
