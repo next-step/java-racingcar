@@ -2,8 +2,9 @@ package racing.domain;
 
 public class Car {
 
+    private final int INITIAL_POSITION = 1;
     private final String name;
-    private int position = 1;
+    private int position = INITIAL_POSITION;
 
     public Car(final String name) {
         this.name = name;
