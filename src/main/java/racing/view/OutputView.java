@@ -13,10 +13,10 @@ public class OutputView {
     }
 
     public static void printResult(Cars cars) {
-        List<Car> carList = cars.getCars();
+        List<Car> carList = cars.getCarList();
         for (Car car : carList) {
             System.out.print(car.getName() + " : ");
-            System.out.println("-".repeat(car.getPosition()));
+            System.out.println("-".repeat(Integer.parseInt(car.getPosition().toString())));
         }
         System.out.println();
     }

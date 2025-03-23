@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class CarsTest {
     private static final int MOVE_NUMBER = 4;
-    private static final int STOP_NUMBER = 3;
+    public static final int INIT_POSITION = 1;
 
     @DisplayName("Cars 객체를 생성 할 수 있다.")
     @Test
@@ -20,65 +20,67 @@ class CarsTest {
         List<String> carNames = List.of("BMW");
         Cars cars = createCars(carNames);
 
-        assertAll(() -> assertThat(cars.getCars()).hasSize(1),
-                () -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1));
+        Car sut = new Car(new Name("BMW"), new Position(INIT_POSITION));
+
+        assertAll(() -> assertThat(cars.getCarList()).hasSize(1),
+                () -> assertThat(cars.getCarList().get(0)).isEqualTo(sut));
     }
 
     @DisplayName("모든 자동차 객체를 움직일 수 있다.")
     @Test
-    void movedAllTest() {
+    void moveTest() {
         // given
         List<String> carNames = List.of("BMW", "AUDI");
         Cars cars = createCars(carNames);
 
         // when
-        Cars sut = cars.movedAll(new FakeMovingStrategy(MOVE_NUMBER));
+        Cars sut = cars.move(new FakeMovingStrategy(MOVE_NUMBER));
 
         // then
-        assertAll(() -> assertThat(sut.getCars().get(0).getPosition()).isEqualTo(2),
-                () -> assertThat(sut.getCars().get(1).getPosition()).isEqualTo(2)
+        assertAll(() -> assertThat(sut.getCarList().get(0).getPosition()).isEqualTo(new Position(2)),
+                () -> assertThat(sut.getCarList().get(1).getPosition()).isEqualTo(new Position(2))
         );
     }
 
-    @DisplayName("리스트 안의 모든 자동차의 정보를 가져올 수 있다.")
+    @DisplayName("일급 콜렉션의 모든 자동차를 가져올 수 있다.")
     @Test
-    void getCarsTest() {
+    void getCarListTest() {
         // given
         List<String> carNames = List.of("BMW", "AUDI", "BENZ");
         Cars cars = createCars(carNames);
 
         // when
-        List<Car> carList = cars.getCars();
+        List<Car> carList = cars.getCarList();
 
         // then
         assertThat(carList)
-                .extracting("name.title", "position")
+                .extracting("name", "position")
                 .containsExactly(
-                        tuple("BMW", 1),
-                        tuple("AUDI", 1),
-                        tuple("BENZ", 1)
+                        tuple(new Name("BMW"), new Position(1)),
+                        tuple(new Name("AUDI"), new Position(1)),
+                        tuple(new Name("BENZ"), new Position(1))
                 );
     }
 
     @DisplayName("가장 많이 이동한 자동차를 우승자로 선정한다.")
     @Test
-    void getWinnerTest() {
+    void findWinnersTest() {
         // given
         List<Car> carList
                 = Arrays.asList(
-                new Car(new CarName("BMW"), 1),
-                new Car(new CarName("AUDI"), 2),
-                new Car(new CarName("BENZ"), 3)
+                new Car(new Name("BMW"), new Position(1)),
+                new Car(new Name("AUDI"), new Position(2)),
+                new Car(new Name("BENZ"), new Position(3))
         );
         Cars cars = new Cars(carList);
 
         // when
-        List<Car> winner = cars.getWinner();
+        List<Car> winner = cars.findWinners();
 
         // then
         assertAll(() -> assertThat(winner).hasSize(1),
-                () -> assertThat(winner).extracting("name.title", "position")
-                        .containsExactly(tuple("BENZ", 3))
+                () -> assertThat(winner).extracting("name", "position")
+                        .containsExactly(tuple(new Name("BENZ"), new Position(3)))
         );
     }
 
@@ -88,20 +90,20 @@ class CarsTest {
         // given
         List<Car> carList
                 = Arrays.asList(
-                new Car(new CarName("BMW"), 1),
-                new Car(new CarName("AUDI"), 5),
-                new Car(new CarName("BENZ"), 5)
+                new Car(new Name("BMW"), new Position(1)),
+                new Car(new Name("AUDI"), new Position(5)),
+                new Car(new Name("BENZ"), new Position(5))
         );
         Cars cars = new Cars(carList);
 
         // when
-        List<Car> winner = cars.getWinner();
+        List<Car> winner = cars.findWinners();
 
         // then
         assertAll(() -> assertThat(winner).hasSize(2),
-                () -> assertThat(winner).extracting("name.title", "position")
-                        .containsExactly(tuple("AUDI", 5), tuple("BENZ", 5))
-        );
+                () -> assertThat(winner).extracting("name", "position")
+                        .containsExactly(tuple(new Name("AUDI"), new Position(5)),
+                                tuple(new Name("BENZ"), new Position(5))));
     }
 
     private Cars createCars(List<String> carNames) {

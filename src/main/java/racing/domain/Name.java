@@ -2,17 +2,13 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class CarName {
+public class Name {
     private static final int MAX_NAME_LENGTH = 5;
-    private final String title;
+    private final String value;
 
-    public CarName(String title) {
-        checkNameIsPossible(title);
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
+    public Name(String value) {
+        checkNameIsPossible(value);
+        this.value = value;
     }
 
     private void checkNameIsPossible(String name) {
@@ -23,15 +19,23 @@ public class CarName {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof CarName)) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CarName carName = (CarName) o;
-        return Objects.equals(title, carName.title);
+        Name name = (Name) o;
+        return Objects.equals(value, name.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(title);
+        return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }

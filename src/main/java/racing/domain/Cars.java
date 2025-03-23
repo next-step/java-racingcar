@@ -3,6 +3,7 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Cars {
     private final List<Car> cars;
@@ -20,37 +21,33 @@ public class Cars {
         return new Cars(carList);
     }
 
-    public Cars movedAll(MovingStrategy movingStrategy) {
+    public Cars move(MovingStrategy movingStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(carMove(car, movingStrategy));
+            newCars.add(car.move(movingStrategy));
         }
         return new Cars(newCars);
     }
 
-    private Car carMove(Car car, MovingStrategy movingStrategy) {
-        return car.move(movingStrategy);
-    }
-
-    public List<Car> getCars() {
+    public List<Car> getCarList() {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getWinner() {
+    public List<Car> findWinners() {
         return collectWinners(seekMaxPosition());
     }
 
-    private int seekMaxPosition() {
-        int maxPosition = 0;
+    private Position seekMaxPosition() {
+        Position maxPosition = new Position();
 
         for (Car car : cars) {
-            maxPosition = car.max(maxPosition);
+            maxPosition = car.getBetterPosition(maxPosition);
         }
 
         return maxPosition;
     }
 
-    private List<Car> collectWinners(int maxPosition) {
+    private List<Car> collectWinners(Position maxPosition) {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
@@ -58,5 +55,20 @@ public class Cars {
         }
 
         return winners;
+    }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (!(o instanceof Cars)) {
+            return false;
+        }
+
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cars);
     }
 }
