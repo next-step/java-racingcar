@@ -1,4 +1,4 @@
-package study.CarRacing;
+package carracing;
 
 public class RandomMovingStrategy implements MovingStrategy {
     @Override

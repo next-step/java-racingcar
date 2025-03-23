@@ -1,6 +1,7 @@
-package study.CarRacing;
+package carracing;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class CarTest {

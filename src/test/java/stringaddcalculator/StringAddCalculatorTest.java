@@ -1,4 +1,4 @@
-package study.StringAddCalculator;
+package stringaddcalculator;
 
 import org.junit.jupiter.api.Test;
 
