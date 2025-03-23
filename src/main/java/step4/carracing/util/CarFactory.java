@@ -1,5 +1,6 @@
-package step4.carracing;
+package step4.carracing.util;
 
+import step4.carracing.CarMoveStrategy;
 import step4.carracing.domain.Car;
 import step4.carracing.domain.Cars;
 

@@ -1,4 +1,4 @@
-package step4.carracing;
+package step4.carracing.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
