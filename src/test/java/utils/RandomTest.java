@@ -1,10 +1,9 @@
-package racing;
+package utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Random;
 import org.junit.jupiter.api.Test;
-import utils.RandomUtils;
 
 public class RandomTest {
 

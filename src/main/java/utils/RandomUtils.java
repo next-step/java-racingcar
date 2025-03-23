@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomUtils {
 
-    private Random random;
+    private final Random random;
 
     public RandomUtils(Random random) {
         this.random = random;

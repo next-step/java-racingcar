@@ -1,13 +1,12 @@
-package step4.racing;
+package domain;
 
-import racing.SimpleCar;
 import utils.StringUtils;
 
-public class NameCar extends SimpleCar {
+public class CarName {
 
-    private String name;
+    private final String name;
 
-    public NameCar(String name) {
+    public CarName(String name) {
         this.name = normalizeName(name);
     }
 
@@ -19,7 +18,6 @@ public class NameCar extends SimpleCar {
         if (name.length() < 5) {
             return name;
         }
-
         return name.substring(0, 5);
     }
 

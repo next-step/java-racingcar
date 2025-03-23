@@ -6,16 +6,8 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int getCarCount() {
-        return getValidateInput("자동차 대수는 몇 대 인가요?\n");
-    }
-
     public static int getTryCount() {
         return getValidateInput("시도할 회수는 몇 회 인가요?\n");
-    }
-
-    public static int getMaxRandomNumber() {
-        return getValidateInput("자동차 전진 최대 값은 몇 인가요?\n");
     }
 
     public static String getParticipatedCarNames() {
