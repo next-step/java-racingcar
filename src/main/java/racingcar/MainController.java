@@ -10,7 +10,7 @@ import racingcar.exception.InvalidInputException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class Main {
+public class MainController {
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
 
