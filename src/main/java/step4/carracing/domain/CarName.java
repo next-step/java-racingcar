@@ -9,10 +9,6 @@ public class CarName {
     this.value = value;
   }
 
-  public String getValue() {
-    return value;
-  }
-
   private void validate(String name) {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("이름은 null이거나 빈 문자열일 수 없습니다.");
@@ -21,10 +17,6 @@ public class CarName {
     if (name.length() > MAX_NAME_LENGTH) {
       throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
     }
-  }
-
-  public boolean isSame(String name) {
-    return value.equals(name);
   }
 
   @Override

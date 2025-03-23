@@ -40,6 +40,6 @@ public class Car {
 
   @Override
   public String toString() {
-    return name.getValue() + " : " + position.getStatus();
+    return name.toString() + " : " + position.getStatus();
   }
 }
