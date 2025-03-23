@@ -37,10 +37,6 @@ public class Cars implements Iterable<Car> {
     }
   }
 
-  public int size() {
-    return carList.size();
-  }
-
   @Override
   public Iterator<Car> iterator() {
     return carList.iterator();
