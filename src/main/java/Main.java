@@ -8,14 +8,8 @@ public class Main {
         int tryCount = InputView.getTryCount();
 
         RacingGame racingGame = new RacingGame(carNames);
-        ResultView resultView = new ResultView();
-        for (int i = 0; i < tryCount; i++) {
-            racingGame.play();
-            resultView.broadcast(racingGame.participatedCars());
-            System.out.println();
-        }
-        resultView.printWinner(racingGame.getWinners());
-
+        racingGame.play(tryCount);
+        ResultView.printWinner(racingGame.getWinners());
     }
 
 }

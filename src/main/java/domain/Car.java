@@ -2,16 +2,18 @@ package domain;
 
 public class Car {
 
-    private final Position position;
+    private Position position;
     private final CarName carName;
 
     public Car(String name) {
         this.carName = new CarName(name);
-        this.position = new Position();
+        this.position = new Position(0);
     }
 
     public void move(int diceResult) {
-        this.position.move(diceResult);
+        if (diceResult >= 4) {
+            this.position = this.position.move();
+        }
     }
 
     public int currentPosition() {

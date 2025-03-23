@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import utils.RandomUtils;
+import utils.StringUtils;
 import view.ResultView;
 
 public class RacingGame {
@@ -19,9 +20,25 @@ public class RacingGame {
         this.randomUtils = new RandomUtils(new Random());
     }
 
-    public void play() {
-        cars.play(rollDiceForAllCars());
+    public void play(int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            cars.play(rollDiceForAllCars());
+            printCurrentPosition();
+        }
     }
+
+    private void printCurrentPosition() {
+        for (Car car : cars.getCars()) {
+            printPosition(car);
+            System.out.println();
+        }
+    }
+
+    private void printPosition(Car car) {
+        System.out.print(!StringUtils.isEmpty(car.name()) ? car.name() + " : " : "");
+        System.out.print("-".repeat(car.currentPosition()));
+    }
+
     private List<Integer> rollDiceForAllCars() {
         int carCont = cars.carCount();
         List<Integer> results = new ArrayList<>(carCont);
