@@ -7,6 +7,7 @@ import step4.carracing.RandomCarMoveStrategy;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
@@ -15,11 +16,11 @@ class CarsTest {
   @Test
   void testGetMaxPosition() {
     Cars cars = new Cars(
-      List.of(
-        new Car(1, "pobi", new RandomCarMoveStrategy()),
-        new Car(2, "crong", new RandomCarMoveStrategy()),
-        new Car(3, "honux", new RandomCarMoveStrategy())
-      )
+            List.of(
+                    new Car(1, "pobi", new RandomCarMoveStrategy()),
+                    new Car(2, "crong", new RandomCarMoveStrategy()),
+                    new Car(3, "honux", new RandomCarMoveStrategy())
+            )
     );
 
     int maxPosition = cars.getMaxPosition();
@@ -31,11 +32,11 @@ class CarsTest {
   @Test
   void testFilterCarsWithCertainPosition() {
     Cars cars = new Cars(
-      List.of(
-        new Car(1, "pobi", new RandomCarMoveStrategy()),
-        new Car(2, "crong", new RandomCarMoveStrategy()),
-        new Car(3, "honux", new RandomCarMoveStrategy())
-      )
+            List.of(
+                    new Car(1, "pobi", new RandomCarMoveStrategy()),
+                    new Car(2, "crong", new RandomCarMoveStrategy()),
+                    new Car(3, "honux", new RandomCarMoveStrategy())
+            )
     );
 
     Cars filteredCars = cars.filterCarsWithCertainPosition(2);
@@ -47,10 +48,10 @@ class CarsTest {
   @Test
   void testMoveCars() {
     Cars cars = new Cars(
-      List.of(
-        new Car("pobi", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy()),
-        new Car("crong", new CarMoveStrategyTest.TestStoppedCarMoveStrategy())
-      )
+            List.of(
+                    new Car("pobi", new CarMoveStrategyTest.TestAlwaysCarMoveStrategy()),
+                    new Car("crong", new CarMoveStrategyTest.TestStoppedCarMoveStrategy())
+            )
     );
 
     cars.moveCars();
@@ -63,10 +64,10 @@ class CarsTest {
   @Test
   void testSize() {
     Cars cars = new Cars(
-      List.of(
-        new Car("pobi", new RandomCarMoveStrategy()),
-        new Car("crong", new RandomCarMoveStrategy())
-      )
+            List.of(
+                    new Car("pobi", new RandomCarMoveStrategy()),
+                    new Car("crong", new RandomCarMoveStrategy())
+            )
     );
 
     assertEquals(2, cars.size());
@@ -76,14 +77,34 @@ class CarsTest {
   @Test
   void testGet() {
     Cars cars = new Cars(
-      List.of(
-        new Car("pobi", new RandomCarMoveStrategy()),
-        new Car("crong", new RandomCarMoveStrategy())
-      )
+            List.of(
+                    new Car("pobi", new RandomCarMoveStrategy()),
+                    new Car("crong", new RandomCarMoveStrategy())
+            )
     );
 
     Car car = cars.get("pobi");
 
     assertEquals("pobi", car.getName());
+  }
+
+  @DisplayName("중복된 이름의 자동차가 존재 시 예외를 발생시키는 테스트")
+  @Test
+  void testValidate() {
+    assertThatThrownBy(() -> new Cars(
+            List.of(
+                    new Car("pobi", new RandomCarMoveStrategy()),
+                    new Car("pobi", new RandomCarMoveStrategy())
+            )
+    )).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("중복된 이름의 자동차가 존재합니다.");
+  }
+
+  @DisplayName("자동차 목록이 비어있을 때 예외를 발생시키는 테스트")
+  @Test
+  void testValidateWithEmptyCars() {
+    assertThatThrownBy(() -> new Cars(List.of()))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("자동차가 없습니다.");
   }
 }

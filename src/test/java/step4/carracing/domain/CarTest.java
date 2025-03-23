@@ -41,5 +41,4 @@ public class CarTest {
 
     Assertions.assertEquals("pobi : -", car.toString());
   }
-
 }

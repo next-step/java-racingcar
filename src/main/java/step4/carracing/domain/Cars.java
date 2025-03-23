@@ -9,7 +9,17 @@ public class Cars implements Iterable<Car> {
   private final List<Car> carList;
 
   public Cars(List<Car> carList) {
+    validate(carList);
     this.carList = carList;
+  }
+
+  private void validate(List<Car> carList) {
+    if (carList == null || carList.isEmpty()) {
+      throw new IllegalArgumentException("자동차가 없습니다.");
+    }
+    if (carList.stream().map(Car::getName).distinct().count() != carList.size()) {
+      throw new IllegalArgumentException("중복된 이름의 자동차가 존재합니다.");
+    }
   }
 
   public int getMaxPosition() {
