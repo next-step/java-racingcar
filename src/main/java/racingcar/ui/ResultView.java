@@ -1,36 +1,34 @@
 package racingcar.ui;
 
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.RoundResult;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
-
-    public static void viewRacingCar(List<Car> cars) {
-        for (Car car : cars) {
-            for (int i = 0; i < car.getMoveCount(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
-        System.out.println();
-
-    }
-
-    public static void viewRacingCarWithName(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getMoveCount(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
 
     public static void viewRacingCarWinner(List<String> winners) {
         System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
+
+    public static void viewRoundResults(List<RoundResult> roundResults) {
+        System.out.println("실행 결과");
+        for (RoundResult result : roundResults) {
+            for (Car car : result.getCarStatus()) {
+                System.out.println("-".repeat(car.getPosition()));
+            }
+            System.out.println();
+        }
+    }
+
+    public static void viewRoundResultsWithName(List<RoundResult> roundResults) {
+        System.out.println("실행 결과");
+        for (RoundResult result : roundResults) {
+            for (Car car : result.getCarStatus()) {
+                System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+            }
+            System.out.println();
+        }
+    }
+
 }

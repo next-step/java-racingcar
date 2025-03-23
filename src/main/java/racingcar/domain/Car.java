@@ -2,33 +2,33 @@ package racingcar.domain;
 
 import racingcar.strategy.MovingStrategy;
 
-public class Car {
+public class Car  implements Cloneable {
     public static final int CAR_NAME_SIZE = 5;
 
     private String name;
-    private int moveCount;
+    private int position;
 
     public Car() {
-        this.moveCount = 1;
+        this.position = 1;
     }
 
     public Car(String name) {
         validName(name);
         this.name = name;
-        this.moveCount = 1;
+        this.position = 1;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public int getPosition() {
+        return position;
     }
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMove()) {
-            moveCount++;
+            position++;
         }
     }
 
@@ -38,6 +38,15 @@ public class Car {
         }
         if (name.length() > CAR_NAME_SIZE) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+    }
+
+    @Override
+    protected Car clone() throws CloneNotSupportedException {
+        try {
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
         }
     }
 }
