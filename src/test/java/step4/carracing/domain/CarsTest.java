@@ -2,7 +2,6 @@ package step4.carracing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.carracing.CarMoveStrategyTest;
 import step4.carracing.RandomCarMoveStrategy;
 
 import java.util.List;

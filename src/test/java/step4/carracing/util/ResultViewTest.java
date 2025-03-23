@@ -27,7 +27,7 @@ public class ResultViewTest {
     );
     String expected = "pobi : " + "----\n\n";
 
-    ResultView.printCarStatus(cars);
+    ResultView.printAllCarStatus(cars);
 
     System.setOut(originalOut);
     Assertions.assertEquals(expected, outputStream.toString());

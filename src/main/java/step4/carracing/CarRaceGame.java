@@ -32,10 +32,10 @@ public class CarRaceGame {
 
   private void play() {
     System.out.println("\n실행 결과");
-    ResultView.printCarStatus(cars);
+    ResultView.printAllCarStatus(cars);
     for (int i = 0; i < tryCount; i++) {
       cars.moveAll();
-      ResultView.printCarStatus(cars);
+      ResultView.printAllCarStatus(cars);
     }
   }
 

@@ -11,7 +11,7 @@ public class ResultViewTest {
 
   @DisplayName("자동차의 상태를 출력하는 기능 테스트")
   @Test
-  void testPrintCarStatus() {
+  void testPrintAllCarStatus() {
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outputStream));

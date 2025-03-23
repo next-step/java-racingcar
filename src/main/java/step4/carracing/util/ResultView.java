@@ -6,7 +6,7 @@ import step4.carracing.domain.Cars;
 import java.util.stream.Collectors;
 
 public class ResultView {
-  public static void printCarStatus(Cars cars) {
+  public static void printAllCarStatus(Cars cars) {
     for (Car car : cars) {
       System.out.println(car);
     }
