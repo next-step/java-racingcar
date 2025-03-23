@@ -1,8 +1,10 @@
 package RacingCar;
 
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class RacingCarView {
+    private String[] carNames;
     private int carNum;
     private int tryNum;
     private static Scanner scanner = new Scanner(System.in);
@@ -11,8 +13,16 @@ public class RacingCarView {
     // 🔹 Input, output methods
     // ==============================
     void scanInputs() {
-        scanCarNum();
+        scanCarNames();
+//        scanCarNum();
         scanTryNum();
+    }
+
+    private void scanCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String carNamesStringLine = this.scanner.next();
+        this.carNames = carNamesStringLine.split(",");
+        this.carNum = carNames.length;
     }
 
     private void scanCarNum() {
@@ -26,21 +36,34 @@ public class RacingCarView {
     }
 
     void printResultNotice() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
-    void printResult(RacingCar[] cars){
-        for (int i=0; i<this.carNum; i++){
+    void printResult(RacingCar[] cars) {
+        for (int i = 0; i < this.carNum; i++) {
             System.out.println("-".repeat(cars[i].position()));
         }
         System.out.println();
     }
 
-    int carNum(){
+    void printWinner(RacingCar[] winningCars) {
+        StringJoiner winnerJoiner = new StringJoiner(", ");
+        for (int i=0; i<winningCars.length; i++){
+            winnerJoiner.add(winningCars[i].name());
+        }
+
+        System.out.println(winnerJoiner + "가 최종 우승했습니다.");
+    }
+
+    int carNum() {
         return carNum;
     }
 
-    int tryNum(){
+    int tryNum() {
         return tryNum;
+    }
+
+    String[] carNames() {
+        return carNames;
     }
 }
