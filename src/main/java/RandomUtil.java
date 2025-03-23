@@ -1,9 +1,9 @@
 import java.util.Random;
 
 public class RandomUtil {
-    private static final Random random = new Random();
+    private static final int BOUND = 10;
 
-    public static int nextInt(int bound) {
-        return random.nextInt(bound);
+    public static int generate() {
+        return new Random().nextInt(BOUND);
     }
 }

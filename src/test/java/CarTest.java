@@ -11,12 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
 @DisplayName("자동차 메소드 테스트")
 class CarTest {
-
-    @InjectMocks
-    private Car car;
 
     @Test
     @DisplayName("자동차를 생성합니다")
@@ -35,17 +31,9 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4,5,6,7,8,9})
     void move_greater_equal_four(int input) {
-
-        try (MockedStatic<RandomUtil> mockedStatic = mockStatic(RandomUtil.class)) {
-            //given
-            when(RandomUtil.nextInt(10)).thenReturn(input);
-
-            //when
-            car.move();
-
-            //then
-            assertThat(car.getPosition()).isEqualTo(1);
-        }
+        Car car = new Car("a");
+        car.move(input);
+        assertThat(car.getPosition()).isEqualTo(1);
 
     }
 
@@ -53,18 +41,9 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void move_less_four(int input) {
-
-        try (MockedStatic<RandomUtil> mockedStatic = mockStatic(RandomUtil.class)) {
-            //given
-            when(RandomUtil.nextInt(10)).thenReturn(input);
-
-            //when
-            car.move();
-
-            //then
-            assertThat(car.getPosition()).isEqualTo(0);
-        }
-
+        Car car = new Car("a");
+        car.move(input);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 }

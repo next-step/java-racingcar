@@ -6,9 +6,12 @@ public class ApplicationMain {
         int tryCount = InputView.getTryCount();
         InputView.closeScanner();
 
-        Racing racing = new Racing(carNames, tryCount);
+        Racing racing = new Racing(carNames);
 
-        racing.start();
+        for (int i = 0; i < tryCount; i++) {
+            racing.start();
+
+        }
 
     }
 
