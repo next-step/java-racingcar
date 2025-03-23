@@ -26,4 +26,9 @@ public class CarName {
   public boolean isSame(String name) {
     return value.equals(name);
   }
+
+  @Override
+  public String toString() {
+    return value;
+  }
 }
