@@ -17,7 +17,7 @@ public class Cars implements Iterable<Car> {
   }
 
   public Cars filterCarsWithCertainPosition(int position) {
-    List<Car> filteredCars = carList.stream().filter(car -> car.isSame(position)).collect(Collectors.toList());
+    List<Car> filteredCars = carList.stream().filter(car -> car.isSamePosition(position)).collect(Collectors.toList());
     return new Cars(filteredCars);
   }
 

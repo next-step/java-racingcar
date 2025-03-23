@@ -20,7 +20,7 @@ public class CarFactoryTest {
 
     for (Car car: cars) {
       Assertions.assertTrue(inputNames.contains(car.getName()));
-      Assertions.assertTrue(car.isSame(0));
+      Assertions.assertTrue(car.isSamePosition(0));
     }
   }
 }

@@ -20,31 +20,23 @@ public class Car {
     this(INIT_POSITION, name, carMoveStrategy);
   }
 
+  public String getName() {
+    return name.getValue();
+  }
+
   public void move() {
     if (carMoveStrategy.shouldMove()) {
       position.increase(MOVE_STEP);
     }
   }
 
-  public String getName() {
-    return name.getValue();
-  }
-
-  public boolean isSame(int value) {
+  public boolean isSamePosition(int value) {
     return position.isSame(value);
   }
 
   public int getMax(int compareValue) {
     return position.getMax(compareValue);
   }
-
-//  @Override
-//  public boolean equals(Object o) {
-//    if (this == o) return true;
-//    if (o == null || getClass() != o.getClass()) return false;
-//    Car car = (Car) o;
-//    return Objects.equals(name, car.name);
-//  }
 
   @Override
   public String toString() {
