@@ -36,4 +36,12 @@ public class Car {
             this.position++;
         }
     }
+
+    public boolean isSame(int other) {
+        return position == other;
+    }
+
+    public int maxPosition(int other) {
+        return Math.max(position, other);
+    }
 }
