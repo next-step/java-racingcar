@@ -7,7 +7,6 @@ import java.util.Map;
 public class ResultView {
     List<Map<String, Integer>>  finalResults; // 숫자(Integer)로 표시된 결과
     List<List<String>> drawResults; // 문자(-)로 표시한 결과
-    List<String> winners;
 
     public ResultView(List<Map<String, Integer>> finalResults) {
         this.finalResults = finalResults;
@@ -53,7 +52,7 @@ public class ResultView {
         }
     }
 
-    public void printWinners(Map<String, Integer> lastRound) {
+    public static void printWinners(Map<String, Integer> lastRound) {
         List<String> winners = new ArrayList<>();
         int maxPosition = 0;
 

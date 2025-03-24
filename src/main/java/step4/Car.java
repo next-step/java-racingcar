@@ -1,8 +1,5 @@
 package step4;
 
-import java.util.Random;
-
-
 public class Car {
     private int position;
     private final MoveCondition moveCondition;
