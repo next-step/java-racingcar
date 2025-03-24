@@ -22,13 +22,19 @@ public class RacingResult extends AbstractResult {
 
     public String getDisplay() {
         StringBuilder display = new StringBuilder(RACING_HEADER);
-        for (List<String> lab : lapHistoryResult.getLaps()) {
-            display.append(NEWLINE);
-            for (String move : lab) {
-                display.append(move).append(NEWLINE);
-            }
-        }
+        appendLapsResult(display);
         return display.toString();
+    }
+
+    private void appendLapsResult(StringBuilder display) {
+        lapHistoryResult.getLaps().forEach(lab -> {
+            display.append(NEWLINE);
+            appendSingleLapResult(lab, display);
+        });
+    }
+
+    private static void appendSingleLapResult(List<String> lab, StringBuilder display) {
+        lab.forEach(move -> display.append(move).append(NEWLINE));
     }
 
     @Override
