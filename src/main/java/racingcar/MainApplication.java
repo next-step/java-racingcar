@@ -1,4 +1,7 @@
-package step3;
+package racingcar;
+
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class MainApplication {
 
