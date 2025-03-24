@@ -49,3 +49,4 @@ public class StringTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
+
