@@ -32,7 +32,7 @@ public class ResultView {
     private static void print(Car car) {
         int position = car.getCurrentPosition();
 
-        System.out.print(car.getName() + " : ");
+        System.out.print(car.getCarName() + " : ");
 
         for (int i = 0; i < position; i++) {
             System.out.print("-");
@@ -50,7 +50,7 @@ public class ResultView {
         List<Car> winnerList = racing.getWinner();
 
         String result = winnerList.stream()
-            .map(Car::getName)
+            .map(Car::getCarName)
             .collect(Collectors.joining(","));
 
         System.out.println(result + "가 최종 우승했습니다.");

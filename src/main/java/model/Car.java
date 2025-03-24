@@ -4,16 +4,12 @@ import strategy.MoveStrategy;
 import strategy.RandomMoveStrategy;
 
 public class Car {
-    private final String name;
+    private final CarName carName;
     private int currentPosition = 1;
     private final MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        if (name.length() > 5) {
-            throw new RuntimeException("name은 5자를 초과할 수 없습니다. name :" + name);
-        }
-
-        this.name = name;
+        this.carName = new CarName(name);
 
         if (moveStrategy == null) {
             moveStrategy = new RandomMoveStrategy();
@@ -32,7 +28,7 @@ public class Car {
         return this.currentPosition;
     }
 
-    public String getName() {
-        return this.name;
+    public String getCarName() {
+        return this.carName.getCarName();
     }
 }
