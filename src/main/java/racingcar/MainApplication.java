@@ -16,6 +16,6 @@ public class MainApplication {
     Result result = racer.race();
 
     ResultView resultView = new ResultView();
-    resultView.showResult(result);
+    resultView.showResult(carNames, result);
   }
 }

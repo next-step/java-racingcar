@@ -10,12 +10,11 @@ public class ResultTest {
   private Result result;
   private Cars firstRound;
   private Cars secondRound;
-  private Names names;
 
   @BeforeEach
   void setUp() {
     result = new Result();
-    names = new Names("car1,car2,car3");
+    Names names = new Names("car1,car2,car3");
 
     firstRound = new Cars(names);
     firstRound.getCar(0).addScore(2);

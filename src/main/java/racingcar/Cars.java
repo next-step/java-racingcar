@@ -14,6 +14,12 @@ public class Cars {
     }
   }
 
+  private static void moveCar(RaceEvaluator raceEvaluator, Car car) {
+    if (raceEvaluator.evaluate()) {
+      car.move();
+    }
+  }
+
   public int size() {
     return cars.size();
   }
@@ -22,11 +28,9 @@ public class Cars {
     return cars.get(index);
   }
 
-  public void move(RaceEvaluator raceEvaluator) {
+  public void moveAll(RaceEvaluator raceEvaluator) {
     for (Car car : cars) {
-      if (raceEvaluator.evaluate()) {
-        car.move();
-      }
+      moveCar(raceEvaluator, car);
     }
   }
 }

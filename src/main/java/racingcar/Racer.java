@@ -22,7 +22,7 @@ public class Racer {
 
   private Cars proceed() {
     Cars cars = new Cars(this.carNames);
-    cars.move(raceEvaluator);
+    cars.moveAll(raceEvaluator);
     return cars;
   }
 }
