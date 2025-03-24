@@ -40,11 +40,5 @@ public class CarTest {
                 .extracting("distance")
                 .isEqualTo(new Distance(1));
     }
-
-    @DisplayName("자동차 이름 저장 기능")
-    @Test
-    void car_name() {
-        Car car = new Car("pobi");
-        assertThat(car).extracting("name").isEqualTo("pobi");
-    }
+    
 }

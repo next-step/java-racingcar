@@ -3,11 +3,11 @@ package carracing.domain;
 public class Car {
     public static final int CAR_MOVING_BOUND = 4;
 
-    private String name;
+    private Name name;
     private Distance distance = new Distance(1);
 
     public Car(String name) {
-        this.name = name.trim();
+        this.name = new Name(name);
     }
 
     public void move(int randomNum) {
@@ -17,11 +17,11 @@ public class Car {
     }
 
     public String makeDistanceString() {
-        return name + " : " + distance.makeString();
+        return name.getValue() + " : " + distance.makeString();
     }
 
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     public boolean hasSameDistance(int maxDistance) {
