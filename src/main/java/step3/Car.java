@@ -5,8 +5,8 @@ import java.util.function.Function;
 
 public class Car {
     private int position;
-    private Random random;
-    private boolean moveCondition;
+    private final Random random;
+    private final boolean moveCondition;
 
     public Car() {
         this.position = 1;

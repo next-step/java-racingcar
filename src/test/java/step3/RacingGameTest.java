@@ -1,14 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,7 +37,7 @@ class RacingGameTest {
         };
         Car car = new Car();
 
-        int initialPosition = car.getPosition();
+        int initialPosition = car.getPosition(); // 초기 시작 위치: 1
         car.move();
 
         assertEquals(initialPosition+1, car.getPosition());
