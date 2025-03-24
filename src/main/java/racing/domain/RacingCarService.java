@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RacingCarService {
 
-    List<String> carNames;
+    private List<String> carNames;
     private int numberOfLaps;
 
 

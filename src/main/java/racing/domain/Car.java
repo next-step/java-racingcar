@@ -9,8 +9,8 @@ public class Car {
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private String name;
 
-    private int position = 1;
-    BooleanSupplier moveConditionSupplier;
+    private Position position;
+    private BooleanSupplier moveConditionSupplier;
     
     public Car(String name) {
         this(name, randomMoveConditionSupplier);
@@ -21,6 +21,7 @@ public class Car {
 
         this.name = name;
         this.moveConditionSupplier = moveConditionSupplier;
+        this.position = new Position(1);
     }
 
     private void validateCarNameOrThrow(String carName) {
@@ -38,21 +39,24 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPositionForDisplay();
     }
 
     public void move() {
         if (this.moveConditionSupplier.getAsBoolean()) {
-            this.position += 1;
+            this.position.increase();
+            System.out.println(this.name + " : move! position : " + this.position.getPositionForDisplay());
+        } else {
+            System.out.println(this.name + " : DON'T move! position : " + this.position.getPositionForDisplay());
         }
     }
 
     public int max(int other) {
-        return Math.max(this.position, other);
+        return position.max(other);
     }
 
     public boolean isSamePosition(int other) {
-        return this.position == other ? true : false;
+        return this.position.isSamePosition(other);
     }
 
     @Override

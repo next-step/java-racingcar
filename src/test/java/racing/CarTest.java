@@ -2,6 +2,8 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -10,15 +12,12 @@ import static racing.domain.CarFactory.DEFAULT_MOVE_POWER_CONDITION;
 
 public class CarTest {
 
-    @Test
+    @ParameterizedTest
     @DisplayName("자동차 이름은 1글자 이상, 5글자 이하여야 한다.")
-    void testTooLongCarNameLength() {
+    @ValueSource(strings = {"", "123456"})
+    void testTooLongCarNameLength(String carName) {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Car("");
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Car("123456");
+            new Car(carName);
         });
     }
 
