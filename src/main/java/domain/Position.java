@@ -11,4 +11,10 @@ class Position {
     public String toString() {
         return "-".repeat(this.value);
     }
+
+    private void validate() {
+        if (this.value < 0) {
+            throw new IllegalArgumentException("Position value must be greater than or equal to 0.");
+        }
+    }
 }
