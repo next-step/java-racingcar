@@ -16,4 +16,8 @@ public class StringUtils {
     public static boolean isLengthInvalid(String value, int maxLength) {
         return value.isEmpty() || value.length() > maxLength;
     }
+
+    public static String joinByComma(List<String> values) {
+        return  String.join(COMMA, values);
+    }
 }

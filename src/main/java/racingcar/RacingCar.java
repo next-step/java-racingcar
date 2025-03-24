@@ -23,6 +23,7 @@ public class RacingCar {
         ResultView.printInitialState();
         CarManager.print(cars);
 
-        CarManager.move(cars, tryCount);
+        Cars movedCars = CarManager.move(cars, tryCount);
+        ResultView.printWinner(movedCars.getWinnerNames());
     }
 }

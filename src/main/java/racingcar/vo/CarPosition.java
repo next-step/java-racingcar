@@ -21,5 +21,9 @@ public class CarPosition {
     public int getValue() {
         return this.value;
     }
+
+    public boolean equals(int value) {
+        return this.value == value;
+    }
 }
 

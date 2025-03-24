@@ -11,11 +11,12 @@ public class CarManager {
         return Cars.create(names);
     }
 
-    public static void move(Cars cars, int tryCount) {
+    public static Cars move(Cars cars, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             cars = cars.move();
             print(cars);
         }
+        return cars;
     }
 
     public static void print(Cars cars) {

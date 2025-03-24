@@ -1,10 +1,10 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import racingcar.policy.CarMovementRandomizer;
+import racingcar.utils.NumberUtils;
 
 public class Cars {
 
@@ -23,7 +23,7 @@ public class Cars {
     }
 
     public Cars move() {
-        return new Cars(this.values.stream()
+        return new Cars(getValues().stream()
             .map(car -> car.move(new CarMovementRandomizer()))
             .collect(Collectors.toList()));
     }
@@ -32,8 +32,15 @@ public class Cars {
         return this.values;
     }
 
+    public List<String> getWinnerNames() {
+        return getValues().stream()
+            .filter(car -> car.equals(NumberUtils.getMax(getPositions())))
+            .map(Car::getName)
+            .collect(Collectors.toList());
+    }
+
     public List<Integer> getPositions() {
-        return this.values.stream()
+        return getValues().stream()
             .map(Car::getPosition)
             .collect(Collectors.toList());
     }
