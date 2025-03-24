@@ -16,10 +16,13 @@
 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 ### 필수 기능 체크리스트
 - [x] 객체 별 테스트 코드 작성 (Car, Cars, Name, TryCount, Winners)
-- [ ] 사용자로부터 자동차 이름을 입력
-- [ ] 입력된 자동차 이름별로 Car 객체를 생성
-- [ ] 자동차 거리를 출력할 때 자동차 이름을 앞에 출력
-- [ ] 우승자를 출력하는 함수를 구현
+- [x] 입/출력 View 생성
+- [x] Car / Name (Validation 포함) / Position 객체 생성
+- [ ] NumberBasedCarMover 인터페이스 생성 (숫자에 따라 차를 움직일지 말지 결정하는 객체 생성을 위함)
+  - [ ] Test 를 위한 FixedNumberBasedCarMover 객체 생성
+  - [ ] 게임을 위한 RandomNumberBasedCarMover 객체 생성
+- [ ] Cars 객체 생성 (Car 들에 대한 단위 기능 수행)
+- [ ] TryCount 객체 및 RacingCarGame 객체 생성 (자동차 경주 게임 진행)
 
 
 ## Step 3 - 자동차 경주
