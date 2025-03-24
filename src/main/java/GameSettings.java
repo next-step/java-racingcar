@@ -16,7 +16,7 @@ public class GameSettings {
             throw new IllegalArgumentException("자동차 이름 목록이 비어있습니다.");
         }
         for (String name : carNames) {
-            if (name == null || name.trim().isEmpty()) {
+            if (name == null || name.isBlank()) {
                 throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
             }
         }

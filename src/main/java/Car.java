@@ -9,7 +9,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name == null || name.trim().isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Name cannot be blank");
         }
         if (name.length() > 5) {
@@ -29,5 +29,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
     }
 }

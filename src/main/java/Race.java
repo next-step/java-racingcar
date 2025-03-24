@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
 
     private final MoveStrategy moveStrategy;
     private final int totalRounds;
-    private final List<Car> cars;
+    private final Cars cars;
     private int currentRound = 0;
 
     public Race(GameSettings settings) {
@@ -14,26 +13,17 @@ public class Race {
 
     public Race(GameSettings settings, MoveStrategy moveStrategy) {
         this.totalRounds = settings.getRoundCount();
-        this.cars = new ArrayList<>();
-        for (String carName : settings.getCarNames()) {
-            this.cars.add(new Car(carName));
-        }
+        this.cars = Cars.fromNames(settings.getCarNames());
         this.moveStrategy = moveStrategy;
     }
 
     public List<CarStatus> getCarStatuses() {
-        List<CarStatus> statuses = new ArrayList<>();
-        for (Car car : cars) {
-            statuses.add(new CarStatus(car));
-        }
-        return statuses;
+        return cars.getCarStatuses();
     }
 
     public void runRound() {
         validateRaceInProgress();
-        for (Car car : cars) {
-            car.move(moveStrategy.shouldMove());
-        }
+        cars.moveAll(moveStrategy);
         currentRound++;
     }
 
@@ -53,35 +43,8 @@ public class Race {
         }
     }
 
-    private int findMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
-    }
-
-    private boolean isWinner(Car car, int maxPosition) {
-        return car.getPosition() == maxPosition;
-    }
-
-    private List<CarStatus> findWinnersWithPosition(int maxPosition) {
-        List<CarStatus> winners = new ArrayList<>();
-        for (Car car : cars) {
-            addWinnerIfQualified(winners, car, maxPosition);
-        }
-        return winners;
-    }
-
-    private void addWinnerIfQualified(List<CarStatus> winners, Car car, int maxPosition) {
-        if (isWinner(car, maxPosition)) {
-            winners.add(new CarStatus(car));
-        }
-    }
-
     public List<CarStatus> getWinners() {
         validateRaceFinished();
-        int maxPosition = findMaxPosition();
-        return findWinnersWithPosition(maxPosition);
+        return cars.findWinners();
     }
 }

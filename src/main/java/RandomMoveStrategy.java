@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
-    public static final int RANDOM_NUMBER_RANGE = 10;
+    private static final int RANDOM_NUMBER_RANGE = 10;
     private static final int MOVE_THRESHOLD = 4;
     private final Random random = new Random();
 
