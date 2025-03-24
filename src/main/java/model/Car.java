@@ -28,16 +28,6 @@ public class Car {
         }
     }
 
-    public String getCurrentPositionDash() {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < currentPosition; i++) {
-            result.append("-");
-        }
-
-        return result.toString();
-    }
-
     public int getCurrentPosition() {
         return this.currentPosition;
     }

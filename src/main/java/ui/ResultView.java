@@ -29,13 +29,21 @@ public class ResultView {
         System.out.print("\n");
     }
 
-    private static void print(Car car){
-        System.out.print(car.getName() + " : " + car.getCurrentPositionDash());
+    private static void print(Car car) {
+        int position = car.getCurrentPosition();
+
+        System.out.print(car.getName() + " : ");
+
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+
+
         System.out.print("\n");
     }
 
-    private static void printWinner(Racing racing){
-        if(racing.isRemainTry()){
+    private static void printWinner(Racing racing) {
+        if (racing.isRemainTry()) {
             throw new RuntimeException("아직 시도할 횟수가 남아 있습니다.");
         }
 
