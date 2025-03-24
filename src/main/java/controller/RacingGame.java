@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Car;
 import domain.Cars;
 import domain.RandomNumberGenerator;
 import view.InputView;
@@ -16,9 +17,10 @@ public class RacingGame {
     }
 
     private void runOneRound() {
-        this.cars.move(randomNumberGenerator);
-        // this.cars.printCurrentPositions();
-        ResultView.printCurrentPositions(this.cars.getCurrentPositions());
+        for (Car car : cars.getCars()) {
+            car.move(randomNumberGenerator);
+            ResultView.printPosition(car.getCurrentPosition());
+        }
         ResultView.printMessage("");
     }
 

@@ -1,17 +1,17 @@
 package domain;
 
-class Car {
+public class Car {
     private static final int MOVE_THRS = 4;
     private final Position position = new Position();
 
-    void move(NumberGenerator numberGenerator) {
+    public void move(NumberGenerator numberGenerator) {
         final int number = numberGenerator.generate();
         if (number >= MOVE_THRS) {
             this.position.increase();
         }
     }
 
-    Position getPosition() {
+    public Position getCurrentPosition() {
         return this.position;
     }
 }
