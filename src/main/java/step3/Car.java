@@ -23,7 +23,5 @@ public class Car {
         if(!isMovable()) return;
         position++;
     }
-    public String draw(int position) {
-        return "-".repeat(this.position);
-    }
+
 }

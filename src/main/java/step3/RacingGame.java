@@ -14,14 +14,14 @@ public class RacingGame {
         }
     }
 
-    public List<List<String>> play(int roundCount) {
-        List<List<String>> FinalResults = new ArrayList<>();
+    public List<List<Integer>> play(int roundCount) {
+        List<List<Integer>> FinalResults = new ArrayList<>();
 
         for(int i = 0; i < roundCount; i++) {
-            List<String> RoundResults = new ArrayList<>();
+            List<Integer> RoundResults = new ArrayList<>();
             for(Car car : cars) {
                 car.move();
-                RoundResults.add(car.draw(car.getPosition()));
+                RoundResults.add(car.getPosition());
             }
             FinalResults.add(RoundResults);
         }
