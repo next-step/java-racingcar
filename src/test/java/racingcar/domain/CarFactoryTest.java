@@ -1,10 +1,11 @@
 package racingcar.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 class CarFactoryTest {
 
@@ -18,6 +19,7 @@ class CarFactoryTest {
         Cars cars = CarFactory.create(duplicatedNames, () -> true);
 
         //then
-        Assertions.assertThat(cars.getCars()).hasSize(1);
+        assertThat(cars.size()).isEqualTo(1);
+        assertThat(cars.containsCarName("국인")).isTrue();
     }
 }
