@@ -1,3 +1,5 @@
+package utils.strategy;
+
 public interface Splitter {
     String defaultDelimiter = ",|:";
 

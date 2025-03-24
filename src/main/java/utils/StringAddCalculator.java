@@ -1,4 +1,10 @@
+package utils;
+
 import java.util.List;
+
+import utils.strategy.CustomDelimiterSplitter;
+import utils.strategy.DefaultSplitter;
+import utils.strategy.Splitter;
 
 public class StringAddCalculator {
     private static final List<Splitter> splitters = List.of(

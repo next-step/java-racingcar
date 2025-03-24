@@ -4,19 +4,25 @@ import strategy.MoveStrategy;
 import strategy.RandomMoveStrategy;
 
 public class Car {
+    private final CarName carName;
     private int currentPosition = 1;
     private final MoveStrategy moveStrategy;
 
-    public Car() {
-        moveStrategy = new RandomMoveStrategy();
-    }
+    public Car(String name, MoveStrategy moveStrategy) {
+        this.carName = new CarName(name);
 
-    public Car(MoveStrategy moveStrategy) {
         if (moveStrategy == null) {
-            throw new RuntimeException("moveStrategy 가 null입니다.");
+            moveStrategy = new RandomMoveStrategy();
         }
 
         this.moveStrategy = moveStrategy;
+    }
+
+
+    // 테스트용
+    public Car(String name, int position) {
+        this(name, null);
+        this.currentPosition = position;
     }
 
     public void tryMove() {
@@ -25,19 +31,11 @@ public class Car {
         }
     }
 
-
-    public void print() {
-        System.out.print(getCurrentPositionDash());
-        System.out.print("\n");
+    public int getCurrentPosition() {
+        return this.currentPosition;
     }
 
-    public String getCurrentPositionDash() {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < currentPosition; i++) {
-            result.append("-");
-        }
-
-        return result.toString();
+    public String getCarName() {
+        return this.carName.getCarName();
     }
 }

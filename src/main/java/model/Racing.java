@@ -3,48 +3,62 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Racing {
-    private final List<Car> carList;
-    private int remainTryCount;
+import ui.presenter.RacingConsoleUIPresenter;
+import ui.presenter.RacingUIPresenter;
 
-    public Racing(int carCount, int tryCount) {
-        this.validate(carCount, tryCount);
+public class Racing {
+    private final Participants participants;
+    private int remainTryCount;
+    private final RacingUIPresenter racingUIPresenter = new RacingConsoleUIPresenter();
+
+    public Racing(String[] carNameList, int tryCount) {
+        this.validate(carNameList, tryCount);
         this.remainTryCount = tryCount;
 
-        carList = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        for (String s : carNameList) {
+            carList.add(new Car(s, null));
         }
+
+        participants = new Participants(carList);
     }
 
-    private void validate(int carCount, int tryCount) {
-        if (carCount <= 0) {
-            throw new RuntimeException("자동차 대수는 0 이상을 입력해주세요.");
+    private void validate(String[] carNameList, int tryCount) {
+        if (carNameList == null) {
+            throw new RuntimeException("carNameList는 null일 수 없습니다.");
+        }
+
+        if (carNameList.length == 0) {
+            throw new RuntimeException("자동차 대수는 0 이상을 입력해주세요. carNameList : " + carNameList.length);
         }
 
         if (tryCount <= 0) {
-            throw new RuntimeException("회수는 0 이상을 입력해주세요.");
+            throw new RuntimeException("회수는 0 이상을 입력해주세요. tryCount : " + tryCount);
         }
     }
 
-    public void move() {
-        for (Car car : carList) {
-            car.tryMove();
-        }
-
+    private void moveOnce() {
+        participants.moveAll();
         remainTryCount--;
+    }
+
+    public void moveUntilFinish() {
+        while (isRemainTry()) {
+            moveOnce();
+            racingUIPresenter.printCurrentStatus(this);
+        }
     }
 
     public boolean isRemainTry() {
         return this.remainTryCount > 0;
     }
 
-    public void print() {
-        for (Car car : carList) {
-            car.print();
-        }
-        System.out.print("\n");
+    public List<Car> getWinner() {
+        return this.participants.getWinner();
     }
 
+    public List<Car> getCarList() {
+        return this.participants.getParticipantList();
+    }
 }
