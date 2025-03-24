@@ -1,6 +1,7 @@
 package RacingCar;
 
 import NumberGenerator.*;
+
 import java.util.Scanner;
 
 public class RacingCarController {
@@ -15,8 +16,12 @@ public class RacingCarController {
         view.printResultNotice();
         run();
         RacingWinnerFinder winnerFinder = new RacingWinnerFinder(this.cars);
-        winnerFinder.findWinners(this.maxCarPosition);
-        view.printWinner(winnerFinder.winners());
+        RacingCar[] winners = winnerFinder.findWinners(this.maxCarPosition);
+        String[] winnerNames = new String[winners.length];
+        for (int i=0; i<winners.length; i++){
+            winnerNames[i] = winners[i].name();
+        }
+        view.printWinner(winnerNames);
     }
 
     // ==============================
@@ -31,15 +36,17 @@ public class RacingCarController {
     }
 
     private void run() {
+        int[] positions = new int[view.carNum()];
         initializeCars(view.carNum());
         for (int i = 0; i < view.tryNum(); i++) {
             for (int j = 0; j < view.carNum(); j++) {
                 cars[j].move();
-                if (cars[j].position() > this.maxCarPosition){
+                if (cars[j].position() > this.maxCarPosition) {
                     this.maxCarPosition = cars[j].position();
                 }
+                positions[j] = cars[j].position();
             }
-            view.printResult(cars);
+            view.printResult(positions);
         }
     }
 

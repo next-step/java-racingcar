@@ -39,17 +39,17 @@ public class RacingCarView {
         System.out.println("\n실행 결과");
     }
 
-    void printResult(RacingCar[] cars) {
+    void printResult(int[] positions) {
         for (int i = 0; i < this.carNum; i++) {
-            System.out.println("-".repeat(cars[i].position()));
+            System.out.println("-".repeat(positions[i]));
         }
         System.out.println();
     }
 
-    void printWinner(RacingCar[] winningCars) {
+    void printWinner(String[] names) {
         StringJoiner winnerJoiner = new StringJoiner(", ");
-        for (int i=0; i<winningCars.length; i++){
-            winnerJoiner.add(winningCars[i].name());
+        for (int i = 0; i < names.length; i++) {
+            winnerJoiner.add(names[i]);
         }
 
         System.out.println(winnerJoiner + "가 최종 우승했습니다.");

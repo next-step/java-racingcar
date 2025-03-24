@@ -12,15 +12,13 @@ public class RacingWinnerFinder {
         this.winningCars = new ArrayList<>();
     }
 
-    void findWinners(int maxCarPosition) {
+    RacingCar[] findWinners(int maxCarPosition) {
         for (RacingCar car : cars) {
             if (maxCarPosition == car.position()) {
                 this.winningCars.add(car);
             }
         }
-    }
 
-    RacingCar[] winners() {
         return winningCars.toArray(new RacingCar[winningCars.size()]);
     }
 }
