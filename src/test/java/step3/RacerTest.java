@@ -27,9 +27,12 @@ public class RacerTest {
 
     Result result = racer.race();
 
-    assertThat(result.get(0)).extracting("score").containsExactly(1, 1);
-    assertThat(result.get(1)).extracting("score").containsExactly(2, 2);
-    assertThat(result.get(2)).extracting("score").containsExactly(3, 3);
+    assertThat(result.getRoundResult(0).getCar(0).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).getCar(1).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).getCar(0).getScore()).isEqualTo(2);
+    assertThat(result.getRoundResult(1).getCar(1).getScore()).isEqualTo(2);
+    assertThat(result.getRoundResult(2).getCar(0).getScore()).isEqualTo(3);
+    assertThat(result.getRoundResult(2).getCar(1).getScore()).isEqualTo(3);
   }
 
   @Test
@@ -39,9 +42,12 @@ public class RacerTest {
 
     Result result = racer.race();
 
-    assertThat(result.get(0)).extracting("score").containsExactly(0, 0);
-    assertThat(result.get(1)).extracting("score").containsExactly(0, 0);
-    assertThat(result.get(2)).extracting("score").containsExactly(0, 0);
+    assertThat(result.getRoundResult(0).getCar(0).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).getCar(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).getCar(0).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).getCar(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(2).getCar(0).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(2).getCar(1).getScore()).isEqualTo(0);
   }
 
   @Test
@@ -51,8 +57,13 @@ public class RacerTest {
         .thenReturn(true, false, true, false, false, true);
 
     Result result = racer.race();
+    System.out.println(result);
 
-    assertThat(result.get(0)).extracting("score").containsExactly(1, 0, 1);
-    assertThat(result.get(1)).extracting("score").containsExactly(1, 0, 2);
+    assertThat(result.getRoundResult(0).getCar(0).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).getCar(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).getCar(2).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).getCar(0).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).getCar(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).getCar(2).getScore()).isEqualTo(2);
   }
 }

@@ -22,4 +22,11 @@ public class Cars {
     return cars.get(index);
   }
 
+  public void move(RaceEvaluator raceEvaluator) {
+    for (Car car : cars) {
+      if (raceEvaluator.evaluate()) {
+        car.move();
+      }
+    }
+  }
 }

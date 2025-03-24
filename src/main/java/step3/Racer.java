@@ -22,11 +22,7 @@ public class Racer {
 
   private Cars proceed() {
     Cars cars = new Cars(this.carCount);
-    for (int i = 0; i < this.carCount; i++) {
-      if (raceEvaluator.evaluate()) {
-        cars.getCar(i).move();
-      }
-    }
+    cars.move(raceEvaluator);
     return cars;
   }
 }

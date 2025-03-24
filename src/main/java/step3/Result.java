@@ -31,7 +31,7 @@ public class Result {
     return result.size();
   }
 
-  public Cars get(int round) {
+  public Cars getRoundResult(int round) {
     return result.get(round);
   }
 }
