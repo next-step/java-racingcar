@@ -2,21 +2,26 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import ui.presenter.RacingConsoleUIPresenter;
+import ui.presenter.RacingUIPresenter;
 
 public class Racing {
-    private final List<Car> carList;
+    private final Participants participants;
     private int remainTryCount;
+    private final RacingUIPresenter racingUIPresenter = new RacingConsoleUIPresenter();
 
     public Racing(String[] carNameList, int tryCount) {
         this.validate(carNameList, tryCount);
         this.remainTryCount = tryCount;
 
-        carList = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
 
         for (String s : carNameList) {
             carList.add(new Car(s, null));
         }
+
+        participants = new Participants(carList);
     }
 
     private void validate(String[] carNameList, int tryCount) {
@@ -33,37 +38,27 @@ public class Racing {
         }
     }
 
-    public void move() {
-        for (Car car : carList) {
-            car.tryMove();
-        }
-
+    private void moveOnce() {
+        participants.moveAll();
         remainTryCount--;
+    }
+
+    public void moveUntilFinish() {
+        while (isRemainTry()) {
+            moveOnce();
+            racingUIPresenter.printCurrentStatus(this);
+        }
     }
 
     public boolean isRemainTry() {
         return this.remainTryCount > 0;
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
-    }
-
     public List<Car> getWinner() {
-        List<Car> result = new ArrayList<>();
-
-        int max = 0;
-        for (Car car : carList) {
-            if (max < car.getCurrentPosition()) {
-                max = car.getCurrentPosition();
-                result.clear();
-                result.add(car);
-            } else if (max == car.getCurrentPosition()) {
-                result.add(car);
-            }
-        }
-
-        return result;
+        return this.participants.getWinner();
     }
 
+    public List<Car> getCarList() {
+        return this.participants.getParticipantList();
+    }
 }

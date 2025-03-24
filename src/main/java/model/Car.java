@@ -18,6 +18,13 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
+
+    // 테스트용
+    public Car(String name, int position) {
+        this(name, null);
+        this.currentPosition = position;
+    }
+
     public void tryMove() {
         if (moveStrategy.canMove()) {
             this.currentPosition++;

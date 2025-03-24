@@ -1,7 +1,7 @@
 package model;
 
 public class CarName {
-    private String name;
+    private final String name;
 
     private final static int MAX_CAR_NAME = 5;
 
@@ -11,7 +11,7 @@ public class CarName {
     }
 
     private void validate(String name) {
-        if(name == null || name.isBlank()){
+        if (name == null || name.isBlank()) {
             throw new RuntimeException("name은 null이거나 빈 값일 수 없습니다.");
         }
 
@@ -20,7 +20,7 @@ public class CarName {
         }
     }
 
-    public String getCarName(){
+    public String getCarName() {
         return this.name;
     }
 }

@@ -8,6 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         Racing racing =  InputView.input();
-        ResultView.doRaceAndPrintResult(racing);
+
+        ResultView resultView = new ResultView();
+        resultView.doRaceAndPrintResult(racing);
     }
 }

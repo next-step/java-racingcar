@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,28 +31,26 @@ public class RacingTest {
     }
 
     @Test
-    public void move시_남은_시도횟수가_올바르게_감소한다() {
+    public void moveUntilFinish시_남은_남은시도횟수가_없다() {
         String[] carNameList = new String[]{"kim", "cheol"};
-        Racing racing = new Racing(carNameList, 1);
+        Racing racing = new Racing(carNameList, 5);
         assertThat(racing.isRemainTry()).isEqualTo(true);
-        racing.move();
+        racing.moveUntilFinish();
         assertThat(racing.isRemainTry()).isEqualTo(false);
     }
 
     @Test
-    public void move끝까지진행하면_winner가_나오고_currentPosition이_가장크다(){
-        String[] carNameList = new String[]{"a", "b", "c","d", "e"};
+    public void moveUntilFinish시_winner가_나오고_currentPosition이_가장크다() {
+        String[] carNameList = new String[]{"a", "b", "c", "d", "e"};
         Racing racing = new Racing(carNameList, 5);
 
-        while(racing.isRemainTry()){
-            racing.move();
-        }
+        racing.moveUntilFinish();
 
         List<Car> winnerList = racing.getWinner();
         int winnerPosition = winnerList.get(0).getCurrentPosition();
 
-        for(Car car : racing.getCarList()){
-            assertThat(car.getCurrentPosition()).isLessThanOrEqualTo(winnerPosition);
-        }
+        assertThat(racing.getCarList())
+            .extracting(Car::getCurrentPosition)
+            .allMatch(position -> position <= winnerPosition);
     }
 }
