@@ -4,11 +4,11 @@ import java.util.Random;
 import view.ResultView;
 
 class Car {
-    private final Position position = new Position();
     private static final Random random = new Random();
     private static final int MOVE_THRS = 4;
+    private final Position position = new Position();
 
-    void move() {
+    private void move() {
         this.position.increase();
     }
 
