@@ -11,15 +11,23 @@ public class RacingGame {
     private final int numberOfRounds;
     private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
-    public RacingGame(int numberOfCars, int numberOfRounds) {
+    public RacingGame(String[] nameOfCars, int numberOfRounds) {
         this.numberOfRounds = numberOfRounds;
-        this.cars = new Cars(numberOfCars);
+        this.cars = new Cars(nameOfCars);
+    }
+
+    public static void main(String[] args) {
+        String[] nameOfCars = InputView.getNameOfCars();
+        int numberOfRounds = InputView.getNumberOfRounds();
+
+        RacingGame game = new RacingGame(nameOfCars, numberOfRounds);
+        game.run();
     }
 
     private void runOneRound() {
         for (Car car : cars.getCars()) {
             car.move(randomNumberGenerator);
-            ResultView.printPosition(car.getCurrentPosition());
+            ResultView.printPosition(car.getName(), car.getCurrentPosition());
         }
         ResultView.printMessage("");
     }
@@ -29,13 +37,6 @@ public class RacingGame {
         for (int i = 0; i < this.numberOfRounds; i++) {
             runOneRound();
         }
-    }
-
-    public static void main(String[] args) {
-        int numberOfCars = InputView.getNumberOfCars();
-        int numberOfRounds = InputView.getNumberOfRounds();
-
-        RacingGame game = new RacingGame(numberOfCars, numberOfRounds);
-        game.run();
+        ResultView.printWinner(cars.getWinners());
     }
 }

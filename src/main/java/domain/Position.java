@@ -1,7 +1,18 @@
 package domain;
 
-public class Position {
-    private int value = 0;
+public class Position implements Comparable<Position> {
+    private int value;
+
+    public Position(int value) {
+        this.value = value;
+        validate();
+    }
+
+    private void validate() {
+        if (this.value < 0) {
+            throw new IllegalArgumentException("Position value must be greater than or equal to 0.");
+        }
+    }
 
     public void increase() {
         this.value++;
@@ -12,9 +23,8 @@ public class Position {
         return "-".repeat(this.value);
     }
 
-    private void validate() {
-        if (this.value < 0) {
-            throw new IllegalArgumentException("Position value must be greater than or equal to 0.");
-        }
+    @Override
+    public int compareTo(Position other) {
+        return Integer.compare(this.value, other.value);
     }
 }
