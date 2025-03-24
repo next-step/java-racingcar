@@ -2,7 +2,6 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private final List<Car> cars;
@@ -10,18 +9,18 @@ public class RacingGame {
     public RacingGame(int carCount) {
         cars = new ArrayList<>();
         for(int i = 0; i < carCount; i++) {
-            cars.add(new Car(new Random()));
+            cars.add(new Car());
         }
     }
 
-    public List<List<String>> play(int roundCount) {
-        List<List<String>> FinalResults = new ArrayList<>();
+    public List<List<Integer>> play(int roundCount) {
+        List<List<Integer>> FinalResults = new ArrayList<>();
 
         for(int i = 0; i < roundCount; i++) {
-            List<String> RoundResults = new ArrayList<>();
+            List<Integer> RoundResults = new ArrayList<>();
             for(Car car : cars) {
                 car.move();
-                RoundResults.add(car.draw(car.getPosition()));
+                RoundResults.add(car.getPosition());
             }
             FinalResults.add(RoundResults);
         }

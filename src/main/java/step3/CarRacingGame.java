@@ -18,9 +18,9 @@ public class CarRacingGame {
         int roundCount = inputView.getRoundCountFromUser();
 
         RacingGame racingGame = new RacingGame(carCount);
-        List<List<String>> raceResults = racingGame.play(roundCount);
+        List<List<Integer>> raceResults = racingGame.play(roundCount);
 
-        ResultView resultView = new ResultView();
-        resultView.printResults(raceResults);
+        ResultView resultView = new ResultView(raceResults);
+        resultView.showResult();
     }
 }
