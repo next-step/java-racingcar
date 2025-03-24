@@ -1,8 +1,7 @@
 package step4;
 
-import javax.naming.InvalidNameException;
 import java.util.*;
-
+import java.util.regex.Pattern;
 
 public class InputView {
     private Scanner scanner;
@@ -10,6 +9,7 @@ public class InputView {
 
     private int attemptCount = 0;
     private static final int MAX_ATTEMPTS = 10;
+    private static final Pattern VALID_CAR_NAME_PATTERN = Pattern.compile("^[\\w가-힣]+(,[\\w가-힣]+)*$");
 
     public InputView(Scanner scanner) {
         this.scanner = scanner;
@@ -31,8 +31,8 @@ public class InputView {
         if (attemptCount >= MAX_ATTEMPTS) {
             throw new IllegalStateException("입력을 너무 많이 실패했습니다.");
         }
-
         attemptCount++;
+
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
         String input = scanner.nextLine().trim();
@@ -42,7 +42,7 @@ public class InputView {
             return getCarNamesFromUser();
         }
 
-        if (!containsComma(input)) {
+        if (isInvalidCarNameFormat(input)) {
             return getCarNamesFromUser();
         }
 
@@ -52,7 +52,7 @@ public class InputView {
             return getCarNamesFromUser();
         }
 
-        if (!isValidCarNames(names)) {
+        if (isInvalidCarName(names)) {
             return getCarNamesFromUser();
         }
 
@@ -60,6 +60,7 @@ public class InputView {
 
         return names;
     }
+
 
     private boolean isInputEmpty(String input) {
         if (input.isEmpty()) {
@@ -69,12 +70,19 @@ public class InputView {
         return false;
     }
 
-    private boolean containsComma(String input) {
-        if (!input.contains(",")) {
-            System.out.println("쉼표(,)를 이용해 구분해 주세요.");
-            return false;
+
+    public static boolean isInvalidCarNameFormat(String input) {
+        if (input == null || input.isEmpty()) {
+            System.out.println("값을 입력해 주세요.(예: 자동차, 열차, 비행기)");
+            return true;
         }
-        return true;
+
+        if(!VALID_CAR_NAME_PATTERN.matcher(input).matches()){
+            System.out.println("입력 형식이 올바른지 확인해 주세요.(예: 자동차, 열차, 비행기)");
+            return true;
+        };
+
+        return false;
     }
 
     private List<String> parseCarNames(String input) {
@@ -97,21 +105,31 @@ public class InputView {
         return false;
     }
 
-    private boolean isValidCarNames(List<String> names) {
-        Set<String> uniqueNames = new HashSet<>(names);
+    private boolean isInvalidCarName(List<String> names) {
 
+        if(isCarNameLongerThan5(names)) return true;
+
+        if(isCarNameDuplicated(names)) return true;
+
+        return false;
+    }
+
+    private boolean isCarNameLongerThan5 (List<String> names) {
         for (String name : names) {
             if (name.length() > 5) {
                 System.out.println("자동차 이름은 5글자까지만 가능해요!");
-                return false;
+                return true;
             }
         }
+        return false;
+    }
 
+    private boolean isCarNameDuplicated(List<String> names) {
+        Set<String> uniqueNames = new HashSet<>(names);
         if (uniqueNames.size() != names.size()) {
             System.out.println("자동차 이름은 중복될 수 없어요!");
-            return false;
+            return true;
         }
-
-        return true;
+        return false;
     }
 }
