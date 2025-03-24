@@ -16,6 +16,10 @@ public class RacingCar {
         int tryCount = NumberUtils.toInt(InputView.getTryCount());
 
         Cars cars = CarManager.initCars(carCount);
-        ResultView.print(cars, tryCount);
+
+        ResultView.printInitialState();
+        ResultView.printHyphens(cars.getPositions());
+
+        CarManager.move(cars, tryCount);
     }
 }
