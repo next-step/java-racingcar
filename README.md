@@ -22,7 +22,7 @@
   - [x] Test 를 위한 FixedNumberBasedCarMover 객체 생성
   - [x] 게임을 위한 RandomNumberBasedCarMover 객체 생성
 - [x] Cars 객체 생성 (Car 들에 대한 단위 기능 수행)
-- [ ] Winners / TryCount / RacingCarGame 객체 생성 (자동차 경주 게임 진행)
+- [x] Winners / TryCount / RacingCarGame 객체 생성 (자동차 경주 게임 진행)
 
 
 ## Step 3 - 자동차 경주
