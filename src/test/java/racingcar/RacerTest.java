@@ -16,7 +16,8 @@ public class RacerTest {
       }
     };
     RaceEvaluator evaluator = new RaceEvaluator(testRandom);
-    Racer racer = new Racer(2, 3, evaluator);
+    Names names = new Names("car1,car2,car3");
+    Racer racer = new Racer(names, 3, evaluator);
 
     Result result = racer.race();
 
@@ -37,7 +38,8 @@ public class RacerTest {
       }
     };
     RaceEvaluator evaluator = new RaceEvaluator(testRandom);
-    Racer racer = new Racer(2, 3, evaluator);
+    Names names = new Names("car1,car2,car3");
+    Racer racer = new Racer(names, 3, evaluator);
 
     Result result = racer.race();
 
@@ -61,7 +63,8 @@ public class RacerTest {
       }
     };
     RaceEvaluator evaluator = new RaceEvaluator(testRandom);
-    Racer racer = new Racer(3, 2, evaluator);
+    Names names = new Names("car1,car2,car3");
+    Racer racer = new Racer(names, 2, evaluator);
 
     Result result = racer.race();
 

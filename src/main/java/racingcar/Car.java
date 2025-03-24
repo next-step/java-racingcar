@@ -5,11 +5,14 @@ public class Car {
   private static final int DEFAULT_SCORE = 0;
   private int score;
 
-  public Car() {
-    this(DEFAULT_SCORE);
+  private final String name;
+
+  public Car(String name) {
+    this(name, DEFAULT_SCORE);
   }
 
-  public Car(int score) {
+  public Car(String name, int score) {
+    this.name = name;
     this.score = score;
   }
 
@@ -27,5 +30,9 @@ public class Car {
 
   public String showPosition() {
     return "-".repeat(score);
+  }
+
+  public String getName() {
+    return name;
   }
 }

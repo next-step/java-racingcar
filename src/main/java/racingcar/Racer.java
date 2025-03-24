@@ -3,12 +3,12 @@ package racingcar;
 public class Racer {
 
   private final int roundCount;
-  private final int carCount;
+  private final Names carNames;
   private final RaceEvaluator raceEvaluator;
 
-  public Racer(int carCount, int roundCount, RaceEvaluator raceEvaluator) {
+  public Racer(Names carNames, int roundCount, RaceEvaluator raceEvaluator) {
     this.roundCount = roundCount;
-    this.carCount = carCount;
+    this.carNames = carNames;
     this.raceEvaluator = raceEvaluator;
   }
 
@@ -21,7 +21,7 @@ public class Racer {
   }
 
   private Cars proceed() {
-    Cars cars = new Cars(this.carCount);
+    Cars cars = new Cars(this.carNames);
     cars.move(raceEvaluator);
     return cars;
   }

@@ -7,10 +7,10 @@ public class Cars {
 
   private final List<Car> cars;
 
-  public Cars(int carCount) {
-    cars = new ArrayList<>(carCount);
-    for (int i = 0; i < carCount; i++) {
-      cars.add(new Car());
+  public Cars(Names carNames) {
+    cars = new ArrayList<>();
+    for (int i = 0; i < carNames.size(); i++) {
+      cars.add(new Car(carNames.getCarName(i)));
     }
   }
 
