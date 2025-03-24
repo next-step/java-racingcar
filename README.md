@@ -18,11 +18,11 @@
 - [x] 객체 별 테스트 코드 작성 (Car, Cars, Name, TryCount, Winners)
 - [x] 입/출력 View 생성
 - [x] Car / Name (Validation 포함) / Position 객체 생성
-- [ ] NumberBasedCarMover 인터페이스 생성 (숫자에 따라 차를 움직일지 말지 결정하는 객체 생성을 위함)
-  - [ ] Test 를 위한 FixedNumberBasedCarMover 객체 생성
-  - [ ] 게임을 위한 RandomNumberBasedCarMover 객체 생성
-- [ ] Cars 객체 생성 (Car 들에 대한 단위 기능 수행)
-- [ ] TryCount 객체 및 RacingCarGame 객체 생성 (자동차 경주 게임 진행)
+- [x] NumberBasedCarMover 인터페이스 생성 (숫자에 따라 차를 움직일지 말지 결정하는 객체 생성을 위함)
+  - [x] Test 를 위한 FixedNumberBasedCarMover 객체 생성
+  - [x] 게임을 위한 RandomNumberBasedCarMover 객체 생성
+- [x] Cars 객체 생성 (Car 들에 대한 단위 기능 수행)
+- [ ] Winners / TryCount / RacingCarGame 객체 생성 (자동차 경주 게임 진행)
 
 
 ## Step 3 - 자동차 경주
