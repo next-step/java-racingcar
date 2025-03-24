@@ -1,6 +1,6 @@
 package domain;
 
-class Position {
+public class Position {
     private int value = 0;
 
     public void increase() {

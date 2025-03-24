@@ -1,7 +1,5 @@
 package domain;
 
-import view.ResultView;
-
 class Car {
     private static final int MOVE_THRS = 4;
     private final Position position = new Position();
@@ -13,7 +11,7 @@ class Car {
         }
     }
 
-    void printCurrentPosition() {
-        ResultView.printResult(this.position.toString());
+    Position getPosition() {
+        return this.position;
     }
 }

@@ -19,12 +19,7 @@ public class CarsTest {
 
         cars.move(numberGenerator);
 
-        assertThat(cars)
-                .extracting("cars", as(list(Car.class)))
-                .first()
-                .extracting("position")
-                .extracting("value")
-                .isEqualTo(0);
+        assertThat(cars.getCurrentPositions()).first().extracting("value").isEqualTo(0);
     }
 
     @DisplayName("숫자가 4 이상이면 움직인다.")
@@ -35,27 +30,6 @@ public class CarsTest {
 
         cars.move(numberGenerator);
 
-        assertThat(cars)
-                .extracting("cars", as(list(Car.class)))
-                .first()
-                .extracting("position")
-                .extracting("value")
-                .isEqualTo(1);
-    }
-
-    @DisplayName("print 테스트")
-    @Test
-    void printTest() {
-        Cars cars = new Cars(1);
-        NumberGenerator numberGenerator = new StaticNumberGenerator(5);
-
-        cars.move(numberGenerator);
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
-
-        cars.printCurrentPositions();
-
-        assertThat(output.toString()).isEqualTo("-\n");
+        assertThat(cars.getCurrentPositions()).first().extracting("value").isEqualTo(1);
     }
 }

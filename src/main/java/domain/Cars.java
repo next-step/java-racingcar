@@ -22,9 +22,11 @@ public class Cars {
         }
     }
 
-    public void printCurrentPositions() {
+    public List<Position> getCurrentPositions() {
+        List<Position> positions = new ArrayList<>();
         for (Car car : this.cars) {
-            car.printCurrentPosition();
+            positions.add(car.getPosition());
         }
+        return positions;
     }
 }

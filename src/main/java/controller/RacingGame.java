@@ -17,12 +17,13 @@ public class RacingGame {
 
     private void runOneRound() {
         this.cars.move(randomNumberGenerator);
-        this.cars.printCurrentPositions();
-        ResultView.printResult("");
+        // this.cars.printCurrentPositions();
+        ResultView.printCurrentPositions(this.cars.getCurrentPositions());
+        ResultView.printMessage("");
     }
 
     private void run() {
-        ResultView.printResult("실행 결과");
+        ResultView.printMessage("실행 결과");
         for (int i = 0; i < this.numberOfRounds; i++) {
             runOneRound();
         }
