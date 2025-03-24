@@ -35,11 +35,11 @@ class RacingGameTest {
 
     @Test
     void testMoveForward() {
-        // 랜덤값 4 이상일 시(e.g. 5) Car의 position은 1씩 증가해야함.
+        // 랜덤값 4 이상일 시(e.g. 4) Car의 position은 1씩 증가해야함.
         Random mockRandom = new Random() {
             @Override
             public int nextInt(int bound) {
-                return 5;
+                return 4;
             }
         };
         Car car = new Car();
