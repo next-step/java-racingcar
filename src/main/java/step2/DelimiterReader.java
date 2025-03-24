@@ -21,6 +21,6 @@ public class DelimiterReader {
         if (matcher.find()) {
             return matcher.group(EXTRACTED_TEXT_INDEX).split(matcher.group(CUSTOM_DELIMITER_INDEX));
         }
-        throw new IllegalArgumentException("매치가 없습니다");
+        throw new IllegalArgumentException("커스텀 구분자의 사용이 잘못 되었습니다.");
     }
 }
