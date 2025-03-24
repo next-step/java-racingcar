@@ -1,6 +1,7 @@
 package step4;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -19,9 +20,9 @@ public class CarRacingGame {
         int carCount = inputView.getCarCountFromUser();
 
         RacingGame racingGame = new RacingGame(carCount, carNames);
-        List<List<String>> raceResults = racingGame.play(roundCount);
+        List<Map<String, Integer>> raceResults = racingGame.play(roundCount);
 
-        ResultView resultView = new ResultView();
-        resultView.printResults(raceResults);
+        ResultView resultView = new ResultView(raceResults);
+        resultView.showResult();
     }
 }

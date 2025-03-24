@@ -1,38 +1,72 @@
 package step4;
 
-import java.awt.*;
-import java.sql.Array;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ResultView {
-    public void printResults (List<List<String>> finalResults) {
-        for (List<String> round : finalResults) {
+    List<Map<String, Integer>>  finalResults; // 숫자(Integer)로 표시된 결과
+    List<List<String>> drawResults; // 문자(-)로 표시한 결과
+    List<String> winners;
+
+    public ResultView(List<Map<String, Integer>> finalResults) {
+        this.finalResults = finalResults;
+    }
+
+    public void showResult () {
+        drawFinalResult();
+        printFinalResult();
+        printWinners(finalResults.get(finalResults.size() - 1));
+    }
+
+    private void drawFinalResult() {
+        List<List<String>> DrawResults = new ArrayList<>();
+        for (Map<String, Integer>  round : finalResults) {
+            List<String> RoundResults = drawEachRoundResult(round);
+            DrawResults.add(RoundResults);
+        }
+        this.drawResults = DrawResults;
+    }
+
+    private List<String> drawEachRoundResult(Map<String, Integer> round) {
+        List<String> roundResults = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : round.entrySet()) {
+            String carName = entry.getKey();
+            int position = entry.getValue();
+            String result = carName + " : " + "-".repeat(position);
+            roundResults.add(result);
+        }
+        return roundResults;
+    }
+
+    private void printFinalResult () {
+        for (List<String> round : this.drawResults) {
             printEachRoundResult(round);
             System.out.println();
         }
-        printWinner(finalResults.get(finalResults.size() - 1));
     }
 
-    public void printEachRoundResult (List<String> round) {
+    private void printEachRoundResult(List<String> round) {
         for (String s : round) {
             System.out.println(s);
         }
     }
 
-    public void printWinner(List<String> lastRound) {
+    public void printWinners(Map<String, Integer> lastRound) {
         List<String> winners = new ArrayList<>();
-        int maxLength = 0;
+        int maxPosition = 0;
 
-        for (String result : lastRound) {
-            String[] parts = result.split(" : ");
-            int length = parts[1].length();
-            if (length > maxLength) {
-                maxLength = length;
+        for (Map.Entry<String, Integer> entry : lastRound.entrySet()) {
+            String carName = entry.getKey();
+            int position = entry.getValue();
+
+            if (position > maxPosition) {
+                maxPosition = position;
                 winners.clear();
-                winners.add(parts[0]);
-            } else if (length == maxLength) {
-                winners.add(parts[0]);
+                winners.add(carName);
+            } else if (position == maxPosition) {
+                winners.add(carName);
             }
         }
 

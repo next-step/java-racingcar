@@ -2,35 +2,28 @@ package step4;
 
 import java.util.Random;
 
+
 public class Car {
     private int position;
-    private Random random;
-    public String carName;
+    private final MoveCondition moveCondition;
+    private final String carName;
 
-    public Car(Random random, String carName) {
+    public Car(String carName, MoveCondition moveCondition) {
         this.position = 1;
-        this.random = random;
+        this.moveCondition = moveCondition;
         this.carName = carName;
     }
 
-    public int getPosition () {
+    public int getPosition() {
         return this.position;
     }
 
     public String getCarName() {
-        return this.carName;
-    }
-
-    private boolean isMovable () {
-        return this.random.nextInt(10) >= 4;
+        return  this.carName;
     }
 
     public void move() {
-        if(!isMovable()) return;
-        this.position++;
+        if (!moveCondition.isMovable()) return;
+        position++;
     }
-    public String draw() {
-        return "-".repeat(this.position);
-    }
-
 }

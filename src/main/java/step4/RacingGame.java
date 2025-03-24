@@ -1,29 +1,27 @@
 package step4;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RacingGame {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RacingGame(int carCount, List<String> carNames) {
         cars = new ArrayList<>();
+        MoveCondition randomCondition = MoveConditions.randomCondition();
         for(int i = 0; i < carCount; i++) {
-            Car car = new Car(new Random(),carNames.get(i));
+            Car car = new Car(carNames.get(i), randomCondition);
             cars.add(car);
         }
     }
 
-    public List<List<String>> play(int roundCount) {
-        List<List<String>> FinalResults = new ArrayList<>();
+    public List<Map<String, Integer>>  play(int roundCount) {
+        List<Map<String, Integer>>  FinalResults = new ArrayList<>();
 
         for(int i = 0; i < roundCount; i++) {
-            List<String> RoundResults = new ArrayList<>();
+            HashMap<String, Integer> RoundResults = new HashMap<>();
             for(Car car : cars) {
                 car.move();
-                String result = car.getCarName() + " : " + car.draw();
-                RoundResults.add(result);
+                RoundResults.put(car.getCarName(), car.getPosition());
             }
             FinalResults.add(RoundResults);
         }
