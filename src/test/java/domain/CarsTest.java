@@ -14,6 +14,6 @@ public class CarsTest {
 
         Cars cars = new Cars(numberOfCars);
 
-        assertThat(cars).extracting("cars").asInstanceOf(list(Car.class)).hasSize(numberOfCars);
+        assertThat(cars.getCars()).asInstanceOf(list(Car.class)).hasSize(numberOfCars);
     }
 }
