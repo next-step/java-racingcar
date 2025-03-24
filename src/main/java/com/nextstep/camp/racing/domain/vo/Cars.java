@@ -1,5 +1,6 @@
 package com.nextstep.camp.racing.domain.vo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,10 +26,10 @@ public class Cars {
         values.forEach(Car::move);
     }
 
-    public Position getMaxPosition() {
+    public PositiveInteger getMaxPosition() {
         return values.stream()
             .map(Car::getPosition)
-            .max(Position::compareTo)
+            .max(PositiveInteger::compareTo)
             .orElseThrow(CarNotFoundException::new);
     }
 
@@ -42,5 +43,11 @@ public class Cars {
 
     public Stream<Car> stream() {
         return values.stream();
+    }
+
+    public List<Moves> getMovesSnapshot() {
+        return values.stream()
+                .map(car -> Moves.of(new ArrayList<>(car.getMoves().getValues())))
+                .collect(Collectors.toList());
     }
 }

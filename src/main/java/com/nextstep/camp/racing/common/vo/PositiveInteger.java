@@ -2,12 +2,14 @@ package com.nextstep.camp.racing.common.vo;
 
 import java.util.Objects;
 
+import com.nextstep.camp.racing.common.utils.NumberUtils;
 import com.nextstep.camp.racing.domain.exception.NegativeNumberException;
 import com.nextstep.camp.racing.domain.exception.NotNumberException;
-import com.nextstep.camp.racing.common.utils.NumberUtils;
 
 public class PositiveInteger {
     private final int value;
+
+    public static final PositiveInteger ZERO = PositiveInteger.of(0);
 
     private PositiveInteger(Number number) {
         validateNegative(number.intValue());
@@ -45,6 +47,19 @@ public class PositiveInteger {
         return value;
     }
 
+    public PositiveInteger add(PositiveInteger other) {
+        return new PositiveInteger(this.value + other.value);
+    }
+
+    public PositiveInteger add(int otherInt) {
+        PositiveInteger other = PositiveInteger.of(otherInt);
+        return this.add(other);
+    }
+
+    public boolean isLessThan(PositiveInteger other) {
+        return this.value < other.value;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) {
@@ -57,5 +72,9 @@ public class PositiveInteger {
     @Override
     public int hashCode() {
         return Objects.hashCode(value);
+    }
+
+    public int compareTo(PositiveInteger positiveInteger) {
+        return Integer.compare(this.value, positiveInteger.value);
     }
 }

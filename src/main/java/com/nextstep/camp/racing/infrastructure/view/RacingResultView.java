@@ -1,14 +1,21 @@
 package com.nextstep.camp.racing.infrastructure.view;
 
+import com.nextstep.camp.racing.infrastructure.view.component.RacingResult;
+
 import java.util.List;
 
-public class RacingResultView extends AbstractView {
+public class RacingResultView {
+    private final RacingResult racingResult;
 
-    private RacingResultView(List<Element> elements) {
-        super(elements);
+    private RacingResultView(RacingResult racingResult) {
+        this.racingResult = racingResult;
     }
 
-    public static RacingResultView publish(List<Element> elements) {
-        return new RacingResultView(elements);
+    public static RacingResultView publish(RacingResult racingResult) {
+        return new RacingResultView(racingResult);
+    }
+
+    public void render() {
+        racingResult.action();
     }
 }

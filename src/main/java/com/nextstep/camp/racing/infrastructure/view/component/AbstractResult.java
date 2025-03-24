@@ -1,13 +1,14 @@
 package com.nextstep.camp.racing.infrastructure.view.component;
 
+import com.nextstep.camp.racing.common.vo.PositiveInteger;
 import com.nextstep.camp.racing.infrastructure.view.Element;
 
 public abstract class AbstractResult implements Element {
-    protected final String value;
+    protected final PositiveInteger value;
 
-    protected static final String DEFAULT_VALUE = "";
+    protected static final PositiveInteger DEFAULT_VALUE = PositiveInteger.ZERO;
 
-    protected AbstractResult(String value) {
+    protected AbstractResult(PositiveInteger value) {
         this.value = value;
     }
 
@@ -15,7 +16,7 @@ public abstract class AbstractResult implements Element {
     public abstract void action();
 
     @Override
-    public String getValue() {
+    public PositiveInteger getValue() {
         return value;
     }
 }

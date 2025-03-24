@@ -1,17 +1,19 @@
 package com.nextstep.camp.racing.domain.entity;
 
+import java.util.List;
+
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
-import com.nextstep.camp.racing.domain.vo.Cars;
-import com.nextstep.camp.racing.domain.vo.Position;
+import com.nextstep.camp.racing.domain.vo.*;
 
 public class Racing {
 
     private final Cars cars;
-    private final Position maxPosition;
+    private final PositiveInteger lapCount;
+    private final LapHistory lapHistory = new LapHistory();
 
-    private Racing(PositiveInteger carQuantity, PositiveInteger maxPosition) {
+    private Racing(PositiveInteger carQuantity, PositiveInteger lapCount) {
         this.cars = Cars.of(carQuantity);
-        this.maxPosition = Position.of(maxPosition);
+        this.lapCount = lapCount;
     }
 
     public static Racing initialize(PositiveInteger carQuantity, PositiveInteger maxPosition) {
@@ -21,14 +23,19 @@ public class Racing {
     public void start() {
         while (!isFinished()) {
             cars.move();
+            lapHistory.record(cars);
         }
     }
 
     private boolean isFinished() {
-        return cars.getMaxPosition().compareTo(maxPosition) == 0;
+        return cars.getMaxPosition().equals(lapCount);
     }
 
     public Cars getCars() {
         return cars;
+    }
+
+    public List<Lap> getLaps() {
+        return lapHistory.getLaps();
     }
 }

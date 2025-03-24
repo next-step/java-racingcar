@@ -1,51 +1,31 @@
 package com.nextstep.camp.racing.infrastructure.view.component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.nextstep.camp.racing.domain.exception.ViewDataNotFoundException;
-import com.nextstep.camp.racing.infrastructure.view.ViewData;
+import com.nextstep.camp.racing.application.dto.RacingResponse;
 
 public class RacingResult extends AbstractResult {
 
-    private final LabHistoryResult labHistoryResult;
+    private final LapHistoryResult lapHistoryResult;
 
     private static final String RACING_HEADER = "실행 결과";
-    private static final String LAB_DELIMITER = "\n";
+    private static final String NEWLINE = "\n";
 
-    private RacingResult(ViewData viewData) {
+    private RacingResult(RacingResponse racing) {
         super(DEFAULT_VALUE);
-        validate(viewData);
-        List<?> cars = (List<?>) viewData.get("cars");
-        List<CarResult> carResults = cars.stream()
-            .filter(obj -> obj instanceof ViewData)
-            .map(obj -> CarResult.of((ViewData) obj))
-            .collect(Collectors.toList());
-        this.labHistoryResult = LabHistoryResult.of(carResults);
+        this.lapHistoryResult = LapHistoryResult.of(racing.getLaps());
     }
 
-    private static void validate(ViewData viewData) {
-        if (viewData == null) {
-            throw new ViewDataNotFoundException();
-        }
-        if (viewData.get("cars") == null) {
-            throw new ViewDataNotFoundException();
-        }
-        if (!(viewData.get("cars") instanceof List<?>)) {
-            throw new ViewDataNotFoundException();
-        }
-    }
-
-    public static RacingResult create(ViewData viewData) {
-        return new RacingResult(viewData);
+    public static RacingResult create(RacingResponse racing) {
+        return new RacingResult(racing);
     }
 
     public String getDisplay() {
         StringBuilder display = new StringBuilder(RACING_HEADER);
-        for (List<String> lab : labHistoryResult.getLabs()) {
-            display.append(LAB_DELIMITER);
-            for (String car : lab) {
-                display.append(car).append("\n");
+        for (List<String> lab : lapHistoryResult.getLaps()) {
+            display.append(NEWLINE);
+            for (String move : lab) {
+                display.append(move).append(NEWLINE);
             }
         }
         return display.toString();

@@ -1,5 +1,6 @@
 package com.nextstep.camp.racing.domain.vo;
 
+import com.nextstep.camp.racing.domain.strategy.RandomMoveStrategy;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +13,7 @@ public class MoveTest {
         boolean hasNotMoved = false;
 
         for (int i = 0; i < 100; i++) {
-            Move move = Move.decide();
+            Move move = Move.decide(RandomMoveStrategy.INSTANCE);
             if (move.isMove()) {
                 hasMoved = true;
             } else {

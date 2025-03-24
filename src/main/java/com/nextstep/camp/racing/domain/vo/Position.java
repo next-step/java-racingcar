@@ -18,8 +18,8 @@ public class Position {
         return value;
     }
 
-    public int compareTo(Position position) {
-        return this.value.value() - position.value.value();
+    public Position add(int value) {
+        return new Position(this.value.add(value));
     }
 
     @Override

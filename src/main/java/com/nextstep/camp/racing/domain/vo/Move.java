@@ -1,17 +1,20 @@
 package com.nextstep.camp.racing.domain.vo;
 
-import java.util.Random;
+import com.nextstep.camp.racing.domain.strategy.MoveStrategy;
 
 public class Move {
     private final boolean value;
 
-    private Move() {
-        int randomNumber = new Random().nextInt(10);
-        this.value = randomNumber > 4;
+    private Move(MoveStrategy strategy) {
+        this.value = strategy.movable();
     }
 
-    public static Move decide() {
-        return new Move();
+    public static Move decide(MoveStrategy strategy) {
+        return new Move(strategy);
+    }
+
+    public static Move of(boolean value) {
+        return new Move(() -> value);
     }
 
     public boolean isMove() {
