@@ -6,7 +6,14 @@ public class Distance {
     int value;
 
     public Distance(int value) {
+        validateValue(value);
         this.value = value;
+    }
+
+    private void validateValue(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Distance는 0 이상 이어야 합니다.");
+        }
     }
 
     public Distance add(int i) {
@@ -41,4 +48,6 @@ public class Distance {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+
 }
