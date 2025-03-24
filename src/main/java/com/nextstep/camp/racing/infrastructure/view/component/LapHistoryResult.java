@@ -3,13 +3,13 @@ package com.nextstep.camp.racing.infrastructure.view.component;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LabHistoryResult extends AbstractResult {
+public class LapHistoryResult extends AbstractResult {
 
-    private final List<List<String>> labs;
+    private final List<List<String>> laps;
 
-    private LabHistoryResult(List<CarResult> carResults) {
+    private LapHistoryResult(List<CarResult> carResults) {
         super(DEFAULT_VALUE);
-        List<List<String>> labs = new ArrayList<>();
+        List<List<String>> laps = new ArrayList<>();
         int attemptCount = carResults.get(0).getLabHistory().size();
 
         for (int attempt = 0; attempt < attemptCount; attempt++) {
@@ -17,22 +17,22 @@ public class LabHistoryResult extends AbstractResult {
             for (CarResult carResult : carResults) {
                 turnSnapshot.add(carResult.getLabHistory().get(attempt));
             }
-            labs.add(turnSnapshot);
+            laps.add(turnSnapshot);
         }
-        this.labs = labs;
+        this.laps = laps;
     }
 
-    public static LabHistoryResult of(List<CarResult> carResults) {
-        return new LabHistoryResult(carResults);
+    public static LapHistoryResult of(List<CarResult> carResults) {
+        return new LapHistoryResult(carResults);
     }
 
-    public List<List<String>> getLabs() {
-        return labs;
+    public List<List<String>> getLaps() {
+        return laps;
     }
 
     @Override
     public String getName() {
-        return "labHistory";
+        return "lapHistory";
     }
 
     @Override

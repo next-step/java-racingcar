@@ -1,11 +1,10 @@
 package com.nextstep.camp.racing.application.dto;
 
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
-import com.nextstep.camp.racing.domain.entity.Racing;
 
 public class RacingRequest {
-    public final PositiveInteger quantity;
-    public final PositiveInteger maxPosition;
+    private final PositiveInteger quantity;
+    private final PositiveInteger maxPosition;
 
     private RacingRequest(PositiveInteger quantity, PositiveInteger maxPosition) {
         this.quantity = quantity;
@@ -16,7 +15,11 @@ public class RacingRequest {
         return new RacingRequest(quantity, maxPosition);
     }
 
-    public Racing toRacing() {
-        return Racing.initialize(quantity, maxPosition);
+    public PositiveInteger getQuantity() {
+        return quantity;
+    }
+
+    public PositiveInteger getMaxPosition() {
+        return maxPosition;
     }
 }

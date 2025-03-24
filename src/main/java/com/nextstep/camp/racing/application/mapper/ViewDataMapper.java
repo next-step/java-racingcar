@@ -30,7 +30,7 @@ public class ViewDataMapper {
     public static ViewData toViewData(RacingResponse racingResponse) {
         Map<String, Object> data = new HashMap<>();
 
-        List<ViewData> carDataList = racingResponse.getCars().getValues().stream()
+        List<ViewData> carDataList = racingResponse.getCars().stream()
             .map(ViewDataMapper::toViewData)
             .collect(Collectors.toList());
 
@@ -41,7 +41,7 @@ public class ViewDataMapper {
     private static ViewData toViewData(CarResponse carResponse) {
         Map<String, Object> data = new HashMap<>();
 
-        List<Boolean> moves = carResponse.getMoves().getValues().stream()
+        List<Boolean> moves = carResponse.getMoves().stream()
             .map(MoveResponse::isMove)
             .collect(Collectors.toList());
 

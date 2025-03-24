@@ -1,20 +1,19 @@
 package com.nextstep.camp.racing.application.dto;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import com.nextstep.camp.racing.domain.entity.Racing;
 
 public class RacingResponse {
 
-    private final CarsResponse cars;
+    private final List<CarResponse> cars;
 
     private RacingResponse(Racing racing) {
-        this.cars = CarsResponse.of(
-            racing.getCars()
-                .stream()
-                .map(CarResponse::of)
-                .collect(Collectors.toList()));
-        ;
+        this.cars = racing.getCars()
+            .stream()
+            .map(CarResponse::of)
+            .collect(Collectors.toList());
     }
 
     public static RacingResponse of(Racing racing) {
@@ -22,7 +21,7 @@ public class RacingResponse {
         return new RacingResponse(racing);
     }
 
-    public CarsResponse getCars() {
+    public List<CarResponse> getCars() {
         return cars;
     }
 

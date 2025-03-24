@@ -25,10 +25,10 @@ public class Cars {
         values.forEach(Car::move);
     }
 
-    public Position getMaxPosition() {
+    public PositiveInteger getMaxPosition() {
         return values.stream()
             .map(Car::getPosition)
-            .max(Position::compareTo)
+            .max(PositiveInteger::compareTo)
             .orElseThrow(CarNotFoundException::new);
     }
 

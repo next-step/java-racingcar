@@ -1,5 +1,7 @@
 package com.nextstep.camp.racing.domain.vo;
 
+import com.nextstep.camp.racing.common.vo.PositiveInteger;
+
 public class Car {
 
     private final Moves moves = Moves.initialize();
@@ -15,7 +17,7 @@ public class Car {
         this.moves.move();
     }
 
-    public Position getPosition() {
+    public PositiveInteger getPosition() {
         return moves.getPosition();
     }
 

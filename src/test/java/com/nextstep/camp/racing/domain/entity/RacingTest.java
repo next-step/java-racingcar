@@ -4,7 +4,6 @@ import java.util.stream.Stream;
 
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
 import com.nextstep.camp.racing.domain.vo.Cars;
-import com.nextstep.camp.racing.domain.vo.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,7 +32,7 @@ class RacingTest {
         assertThat(racing.getCars().size()).isEqualTo(carQuantity.value());
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @MethodSource("provideCarQuantitiesAndMaxPositions")
     void initialize_WithDifferentValues_ShouldCreateRacingObject(String carQuantityStr, String maxPositionStr) {
         PositiveInteger carQuantity = PositiveInteger.of(carQuantityStr);
@@ -61,7 +60,7 @@ class RacingTest {
         racing.start();
 
         Cars afterMove = racing.getCars();
-        assertThat(afterMove.getMaxPosition()).isEqualTo(Position.of(maxPosition));
+        assertThat(afterMove.getMaxPosition()).isEqualTo(maxPosition);
         assertThat(afterMove).isNotEqualTo(beforeMove);
     }
 
@@ -76,7 +75,7 @@ class RacingTest {
         racing.start();
 
         Cars afterMove = racing.getCars();
-        assertThat(afterMove.getMaxPosition()).isEqualTo(Position.of(maxPosition));
+        assertThat(afterMove.getMaxPosition()).isEqualTo(maxPosition);
         assertThat(afterMove).isNotEqualTo(beforeMove);
     }
 

@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
+import com.nextstep.camp.racing.domain.strategy.RandomMoveStrategy;
 
 public class Moves {
 
     private final List<Move> values;
+    private Position position = Position.of(PositiveInteger.of(0));
 
     private Moves() {
         this.values = new ArrayList<>();
@@ -27,15 +29,15 @@ public class Moves {
     }
 
     public void move() {
-        this.values.add(Move.decide());
+        Move move = Move.decide(RandomMoveStrategy.INSTANCE);
+        this.values.add(move);
+        if (move.isMove()) {
+            this.position = this.position.add(1);
+        }
     }
 
-    public Position getPosition() {
-        long count = values.stream()
-            .filter(Move::isMove)
-            .count();
-        PositiveInteger position = PositiveInteger.of(count);
-        return Position.of(position);
+    public PositiveInteger getPosition() {
+        return position.value();
     }
 
     public Stream<Move> stream() {
