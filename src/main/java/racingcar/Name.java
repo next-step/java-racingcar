@@ -1,4 +1,4 @@
 package racingcar;
 
-public class Car {
+public class Name {
 }
