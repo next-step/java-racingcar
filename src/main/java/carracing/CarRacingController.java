@@ -1,12 +1,12 @@
 package carracing;
 
-import carracing.ui.InputView;
-import carracing.ui.OutputView;
-import carracing.controller.CarRacingGame;
+import carracing.view.InputView;
+import carracing.view.OutputView;
+import carracing.domain.CarRacingGame;
 import carracing.domain.GameResult;
 import carracing.domain.RandomNumberGenerator;
 
-public class Main {
+public class CarRacingController {
     public static void main(String[] args) {
         String carNumber = InputView.inputCarNumber();
         int gameCount = InputView.inputGameCount();

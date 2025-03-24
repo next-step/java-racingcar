@@ -1,4 +1,4 @@
-package carracing.ui;
+package carracing.view;
 
 import java.util.List;
 

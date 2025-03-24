@@ -1,7 +1,5 @@
-package carracing.controller;
+package carracing.domain;
 
-import carracing.domain.GameResult;
-import carracing.domain.TestNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,4 @@
-package carracing.controller;
-
-import carracing.domain.Car;
-import carracing.domain.GameResult;
-import carracing.domain.NumberGenerator;
+package carracing.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
