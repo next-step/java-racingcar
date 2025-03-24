@@ -12,13 +12,14 @@ public class CarFactory {
     public static final BooleanSupplier mustGoMoveConditionSupplier = () -> true;
     public static final BooleanSupplier randomMoveConditionSupplier = () -> new Random().nextInt(MOVE_POWER_BOUND) >= DEFAULT_MOVE_POWER_CONDITION;
 
-    public static List<Car> createRacingCars(List<String> carNames) {
+    public static Cars createRacingCars(List<String> carNames) {
         return createRacingCars(carNames, randomMoveConditionSupplier);
     }
 
-    public static List<Car> createRacingCars(List<String> carNames, BooleanSupplier moveConditionSupplier) {
-        return carNames.stream()
+    public static Cars createRacingCars(List<String> carNames, BooleanSupplier moveConditionSupplier) {
+        List<Car> cars = carNames.stream()
                 .map(name -> new Car(name, moveConditionSupplier))
                 .collect(Collectors.toList());
+        return new Cars(cars);
     }
 }

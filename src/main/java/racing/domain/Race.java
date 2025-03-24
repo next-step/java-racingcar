@@ -2,67 +2,40 @@ package racing.domain;
 
 import racing.view.ResultView;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Race {
-    private List<Car> cars;
+    private Cars cars;
     private int numberOfLaps;
 
 
-    public Race(List<Car> cars, int numberOfLaps) {
+    public Race(Cars cars, int numberOfLaps) {
         this.cars = cars;
         this.numberOfLaps = numberOfLaps;
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public boolean isSameLaps(int other) {
+        return this.numberOfLaps == other;
     }
 
-    public int getNumberOfLaps() {
-        return this.numberOfLaps;
-    }
-
-    public List<Car> startRacingAndReturnWinner() {
+    public Cars startRacingAndReturnWinner() {
         ResultView.displayRaceStart();
 
         performLapAndDisplay();
 
         ResultView.displayRaceFinish();
 
-        return getWinners();
+        return cars.winners();
     }
 
-    private List<Car> getWinners() {
-        return getCarsByPosition(getMaxPosition());
-    }
-
-    private int getMaxPosition() {
-        return cars.stream()
-                .mapToInt(car -> car.getPosition())
-                .max()
-                .orElse(0);
-    }
-
-    private List<Car> getCarsByPosition(int position) {
-        return cars.stream()
-                .filter(car -> car.isSamePosition(position))
-                .collect(Collectors.toList());
-    }
 
     private void performLapAndDisplay() {
         System.out.println("실행 결과");
-        ResultView.displayCar(getCars());
+        ResultView.displayCar(this.cars);
 
-        for(int i = 0; i < getNumberOfLaps() - 1; i++) {
-            performLap();
-            ResultView.displayCar(getCars());
+        for(int i = 0; i < this.numberOfLaps - 1; i++) {
+            cars.move();
+            ResultView.displayCar(this.cars);
         }
     }
 
-    private void performLap() {
-        for(Car car: cars) {
-            car.move();
-        }
-    }
+
 }

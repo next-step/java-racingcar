@@ -45,18 +45,15 @@ public class Car {
     public void move() {
         if (this.moveConditionSupplier.getAsBoolean()) {
             this.position.increase();
-            System.out.println(this.name + " : move! position : " + this.position.getPositionForDisplay());
-        } else {
-            System.out.println(this.name + " : DON'T move! position : " + this.position.getPositionForDisplay());
         }
-    }
-
-    public int max(int other) {
-        return position.max(other);
     }
 
     public boolean isSamePosition(int other) {
         return this.position.isSamePosition(other);
+    }
+
+    public int max(int other) {
+        return this.position.max(other);
     }
 
     @Override

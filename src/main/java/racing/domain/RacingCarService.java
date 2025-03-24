@@ -13,7 +13,7 @@ public class RacingCarService {
 
     public void start() {
         inputRacingData();
-        List<Car> winners = startRacing();
+        Cars winners = startRacing();
         ResultView.displayWinners(winners);
     }
 
@@ -22,8 +22,8 @@ public class RacingCarService {
         numberOfLaps = InputView.getNumberOfLaps();
     }
 
-    private List<Car> startRacing() {
-        List<Car> cars = CarFactory.createRacingCars(carNames);
+    private Cars startRacing() {
+        Cars cars = CarFactory.createRacingCars(carNames);
         Race race = new Race(cars, numberOfLaps);
         return race.startRacingAndReturnWinner();
     }

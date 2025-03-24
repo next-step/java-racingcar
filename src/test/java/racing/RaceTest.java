@@ -3,8 +3,8 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
 import racing.domain.CarFactory;
+import racing.domain.Cars;
 import racing.domain.Race;
 import racing.view.ResultView;
 
@@ -34,17 +34,11 @@ public class RaceTest {
     }
 
     @Test
-    public void 사용자가_입력한만큼의_자동차를_생성해야한다() {
-        List<Car> cars = CarFactory.createRacingCars(carNames);
-        Race race = new Race(cars, numberOfLaps);
-        assertThat(race.getCars().size()).isEqualTo(carNames.size());
-    }
-
-    @Test
     public void 사용자가_입력한만큼의_횟수를_반복해야한다() {
-        List<Car> cars = CarFactory.createRacingCars(carNames);
+        Cars cars = CarFactory.createRacingCars(carNames);
         Race race = new Race(cars, numberOfLaps);
-        assertThat(race.getNumberOfLaps()).isEqualTo(numberOfLaps);
+
+        assertThat(race.isSameLaps(numberOfLaps)).isTrue();
     }
 
     @Disabled // TODO: ResultView로 결과화면 테스트 책임을 이전해야 합니다.
@@ -55,7 +49,7 @@ public class RaceTest {
         System.setOut(new PrintStream(outContent));
 
         try {
-            List<Car> cars = CarFactory.createRacingCars(carNames, mustGoMoveConditionSupplier);
+            Cars cars = CarFactory.createRacingCars(carNames, mustGoMoveConditionSupplier);
             Race race = new Race(cars, numberOfLaps);
             race.startRacingAndReturnWinner();
 
@@ -75,11 +69,11 @@ public class RaceTest {
 
     @Test
     public void givenCarList_whenFinishedLap_thenGetCarRacingWinner() {
-        List<Car> cars = CarFactory.createRacingCars(carNames, mustGoMoveConditionSupplier);
+        Cars cars = CarFactory.createRacingCars(carNames, mustGoMoveConditionSupplier);
 
         Race race = new Race(cars, numberOfLaps);
-        List<Car> winners = race.startRacingAndReturnWinner();
+        Cars winners = race.startRacingAndReturnWinner();
 
-        assertThat(winners).hasSize(3);
+        assertThat(winners.isSize(3));
     }
 }
