@@ -25,3 +25,4 @@
 - [X] Car 는 Position 이 더 크면 더 큰 Car
 - [X] Cars 우승자 찾기
 - [X] inputView
+- [X] CarNames 제거

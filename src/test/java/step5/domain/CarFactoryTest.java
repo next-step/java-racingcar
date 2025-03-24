@@ -1,24 +1,21 @@
 package step5.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 class CarFactoryTest {
 
-
     @Test
-    void createCars() {
-        CarName carName1 = new CarName("1");
-        CarName carName2 = new CarName("2");
-        CarNames carNames = new CarNames(List.of(carName1, carName2));
-        Cars cars = CarFactory.createCars(carNames);
+    void createCarsByStrings() {
+        Cars cars = CarFactory.createCars(new String[]{"1", "2"});
 
-        Assertions.assertThat(cars).isEqualTo(new Cars(List.of(
-                new Car(carName1),
-                new Car(carName2)
+        assertThat(cars).isEqualTo(new Cars(List.of(
+                new Car("1"),
+                new Car("2")
         )));
     }
 }

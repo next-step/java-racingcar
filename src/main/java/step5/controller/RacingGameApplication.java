@@ -14,7 +14,7 @@ public class RacingGameApplication {
     }
 
     private static void play() {
-        CarNames carNames = new CarNames(InputView.getCarNamesInput());
+        String[] carNames = InputView.getCarNamesInput();
         int rounds = InputView.getRoundsInput();
 
         Cars cars = CarFactory.createCars(carNames);

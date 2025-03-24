@@ -21,6 +21,11 @@ public class Car implements Comparable<Car> {
         this.position = position;
     }
 
+    public Car(String carName) {
+        this.carName = new CarName(carName);
+        this.position = new Position(0);
+    }
+
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
             position = position.move();
