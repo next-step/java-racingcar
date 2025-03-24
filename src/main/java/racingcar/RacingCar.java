@@ -1,7 +1,10 @@
 package racingcar;
 
+import java.util.List;
+
 import racingcar.domain.Cars;
 import racingcar.utils.NumberUtils;
+import racingcar.utils.StringUtils;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -12,10 +15,10 @@ public class RacingCar {
     }
 
     private static void play() {
-        int carCount = NumberUtils.toInt(InputView.getCarCount());
-        int tryCount = NumberUtils.toInt(InputView.getTryCount());
+        List<String> carNames = StringUtils.splitByComma(InputView.getCarNames());
+        Cars cars = CarManager.initCars(carNames);
 
-        Cars cars = CarManager.initCars(carCount);
+        int tryCount = NumberUtils.toInt(InputView.getTryCount());
 
         ResultView.printInitialState();
         ResultView.printHyphens(cars.getPositions());

@@ -1,12 +1,14 @@
 package racingcar;
 
+import java.util.List;
+
 import racingcar.domain.Cars;
 import racingcar.view.ResultView;
 
 public class CarManager {
 
-    public static Cars initCars(int carCount) {
-        return Cars.create(carCount);
+    public static Cars initCars(List<String> names) {
+        return Cars.create(names);
     }
 
     public static void move(Cars cars, int tryCount) {

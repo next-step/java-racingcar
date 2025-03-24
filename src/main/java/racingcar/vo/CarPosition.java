@@ -4,7 +4,7 @@ public class CarPosition {
 
     private static final int ONE_STEP = 1;
 
-    private int value;
+    private final int value;
 
     public CarPosition(int value) {
         this.value = value;
