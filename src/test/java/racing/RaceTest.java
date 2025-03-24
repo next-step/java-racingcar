@@ -20,8 +20,8 @@ import static racing.view.ResultView.RACE_START;
 
 public class RaceTest {
 
-    List<String> carNames;
-    int numberOfLaps;
+    private List<String> carNames;
+    private int numberOfLaps;
 
     @BeforeEach
     public void setUp() {

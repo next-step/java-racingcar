@@ -4,7 +4,6 @@ import racing.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Race {
     private List<Car> cars;
@@ -35,17 +34,17 @@ public class Race {
     }
 
     private List<Car> getWinners() {
-        return getCarByPosition(getMaxPosition());
+        return getCarsByPosition(getMaxPosition());
     }
 
     private int getMaxPosition() {
         return cars.stream()
-                .mapToInt(car -> car.max(0))
+                .mapToInt(car -> car.getPosition())
                 .max()
                 .orElse(0);
     }
 
-    private List<Car> getCarByPosition(int position) {
+    private List<Car> getCarsByPosition(int position) {
         return cars.stream()
                 .filter(car -> car.isSamePosition(position))
                 .collect(Collectors.toList());
@@ -55,11 +54,10 @@ public class Race {
         System.out.println("실행 결과");
         ResultView.displayCar(getCars());
 
-        IntStream.range(0, getNumberOfLaps() - 1)
-                .forEach(i -> {
-                    performLap();
-                    ResultView.displayCar(getCars());
-                });
+        for(int i = 0; i < getNumberOfLaps() - 1; i++) {
+            performLap();
+            ResultView.displayCar(getCars());
+        }
     }
 
     private void performLap() {
