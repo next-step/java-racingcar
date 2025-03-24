@@ -1,8 +1,8 @@
 package racing.view;
 
-import racing.domain.Car;
+import racing.domain.model.Car;
 import racing.domain.RacingCarGame;
-import racing.domain.Round;
+import racing.domain.model.Round;
 
 import java.util.*;
 import java.util.stream.Collectors;

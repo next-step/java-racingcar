@@ -1,6 +1,6 @@
 package racing.config;
 
-import racing.domain.Cars;
+import racing.domain.model.Cars;
 import racing.domain.strategy.MoveStrategy;
 import racing.domain.strategy.ThresholdMoveStrategy;
 

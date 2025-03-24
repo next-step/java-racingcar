@@ -1,7 +1,7 @@
 package racing.view;
 
 import racing.config.GameConfig;
-import racing.domain.Cars;
+import racing.domain.model.Cars;
 
 import java.util.Scanner;
 
