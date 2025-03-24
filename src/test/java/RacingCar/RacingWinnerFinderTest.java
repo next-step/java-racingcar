@@ -22,8 +22,7 @@ public class RacingWinnerFinderTest {
         }
 
         RacingWinnerFinder finder = new RacingWinnerFinder(cars);
-        finder.findWinners(1);
-        RacingCar[] winners = finder.winners();
+        RacingCar[] winners = finder.findWinners(1);
         for (int i = 0; i < winners.length; i++)
             assertEquals(winners[i].name(), expectedWinners[i]);
     }
