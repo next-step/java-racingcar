@@ -1,29 +1,22 @@
 package step3;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.BeforeEach;
+import java.util.Random;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 public class RacerTest {
 
-  @Mock
-  private RaceEvaluator raceEvaluator;
-
-  private Racer racer;
-
-  @BeforeEach
-  void setUp() {
-    MockitoAnnotations.openMocks(this);
-  }
-
   @Test
   void 모든_자동차가_전진하는_경우() {
-    racer = new Racer(2, 3, raceEvaluator);
-    when(raceEvaluator.evaluate()).thenReturn(true);
+    Random testRandom = new Random() {
+      @Override
+      public int nextInt(int bound) {
+        return 4;
+      }
+    };
+    RaceEvaluator evaluator = new RaceEvaluator(testRandom);
+    Racer racer = new Racer(2, 3, evaluator);
 
     Result result = racer.race();
 
@@ -37,8 +30,14 @@ public class RacerTest {
 
   @Test
   void 자동차가_전진하지_않는_경우() {
-    racer = new Racer(2, 3, raceEvaluator);
-    when(raceEvaluator.evaluate()).thenReturn(false);
+    Random testRandom = new Random() {
+      @Override
+      public int nextInt(int bound) {
+        return 3;
+      }
+    };
+    RaceEvaluator evaluator = new RaceEvaluator(testRandom);
+    Racer racer = new Racer(2, 3, evaluator);
 
     Result result = racer.race();
 
@@ -52,12 +51,19 @@ public class RacerTest {
 
   @Test
   void 혼재되어_전진하는_경우() {
-    racer = new Racer(3, 2, raceEvaluator);
-    when(raceEvaluator.evaluate())
-        .thenReturn(true, false, true, false, false, true);
+    int[] values = {4, 3, 4, 3, 3, 4};
+    Random testRandom = new Random() {
+      private int index = 0;
+
+      @Override
+      public int nextInt(int bound) {
+        return values[index++];
+      }
+    };
+    RaceEvaluator evaluator = new RaceEvaluator(testRandom);
+    Racer racer = new Racer(3, 2, evaluator);
 
     Result result = racer.race();
-    System.out.println(result);
 
     assertThat(result.getRoundResult(0).getCar(0).getScore()).isEqualTo(1);
     assertThat(result.getRoundResult(0).getCar(1).getScore()).isEqualTo(0);
