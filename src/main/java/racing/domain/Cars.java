@@ -1,9 +1,9 @@
-package racing.model;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import racing.service.NumberGenerator;
+import java.util.Objects;
 
 public class Cars {
     private final List<Car> cars;
@@ -21,49 +21,54 @@ public class Cars {
         return new Cars(carList);
     }
 
-    public Cars movedAll(NumberGenerator numberGenerator) {
+    public Cars move(MovingStrategy movingStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(carMove(car, numberGenerator.generateNumber()));
+            newCars.add(car.move(movingStrategy));
         }
         return new Cars(newCars);
     }
 
-    public List<Car> getCars() {
+    public List<Car> getCarList() {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getWinner() {
+    public List<Car> findWinners() {
         return collectWinners(seekMaxPosition());
     }
 
-    private Car carMove(Car car, int number) {
-        return car.move(number);
-    }
-
-    private int seekMaxPosition() {
-        int maxPosition = 0;
+    private Position seekMaxPosition() {
+        Position maxPosition = new Position();
 
         for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            maxPosition = car.getBetterPosition(maxPosition);
         }
 
         return maxPosition;
     }
 
-    private List<Car> collectWinners(int maxPosition) {
+    private List<Car> collectWinners(Position maxPosition) {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            addIfWinner(maxPosition, car, winners);
+            car.addWinner(maxPosition, winners);
         }
 
         return winners;
     }
 
-    private void addIfWinner(int maxPosition, Car car, List<Car> winners) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car);
+    @Override
+    public final boolean equals(Object o) {
+        if (!(o instanceof Cars)) {
+            return false;
         }
+
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cars);
     }
 }
