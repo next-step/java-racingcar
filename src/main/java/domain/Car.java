@@ -1,3 +1,7 @@
+package domain;
+
+import util.NumberGenerator;
+import util.RandomNumberGenerator;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;

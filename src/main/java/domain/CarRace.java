@@ -1,14 +1,16 @@
+package domain;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarRace {
     private final int runCount;
-    private final CarGroup carGroup;
+    private final Cars cars;
 
     public CarRace(int carCount, int runCount) {
         this.runCount = runCount;
-        this.carGroup = new CarGroup(createCars(carCount));
+        this.cars = new Cars(createCars(carCount));
     }
 
     private List<Car> createCars(int carCount) {
@@ -24,7 +26,7 @@ public class CarRace {
     }
 
     private List<Integer> runOnce() {
-        return carGroup.move();
+        return cars.move();
     }
 
 }
