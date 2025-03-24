@@ -8,8 +8,6 @@
 # Step 4
 
 - [x] 자동차 이름 프로퍼티
-- [ ] 자동차 이름 validation
+- [x] 자동차 이름 validation
 - [ ] 출력 시 자동차 이름 출력
-- [ ] 자동차 이름 input 쉼표 구분
-- [ ] 자동차 이름 input validation
 - [ ] 우승자 noti 추가 (복수 우승 가능)
