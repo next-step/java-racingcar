@@ -51,7 +51,6 @@
 ---
 ## 1차 코멘트
 - [x] View가 상태를 가지고 있는게 맞을까요?
-- [ ] Scanner에 static을 붙여 메모리를 아껴보면 어떨까요 ㅎㅎ
 - [x] 객체지향 설계: Car라는 도메인이 있고 그 Car가 Position을 가지고 있고, move하는 행위도 스스로 하는거 아닐까요?
 - [x] 상수를 통해 해당 코드의 의미를 나타내보시면 어떨까요?
 
@@ -60,10 +59,9 @@
 - [x] [일급컬렉션 적용](https://jojoldu.tistory.com/412) `private final List<race.domain.Car> cars = new ArrayList<>();`
 - [x] [테스트 하기 좋은 코드로 인터페이스를 통해 전략패턴](https://tecoble.techcourse.co.kr/post/2020-05-17-appropriate_method_for_test_by_interface/)
   - canMove에서 랜덤값을 처리하기 떄문에 실제 테스트를 하기가 어려운 문제가 있습니다. 이유는 position이 1이 될지, 0이 될지 알수가 없기 떄문이죠.
-- [x] position의 유효성은 따로 없을까요? 예를들어 0 이상의 값이여야만 한다. 같은 거요!
 
 ## 3차 코멘트
-- [ ] position을 생성할때 0이 아닌 다른 값을 넣어 생성시 문제가 생길수도 있다!
+- [x] position을 생성할때 0이 아닌 다른 값을 넣어 생성시 문제가 생길수도 있다!
 - [ ] move를 할때마다 RandomNumberGenerator를 만들 이유가 있을까요? 아래의 함수와 차이가 무엇인가요?
 - [x] 10이라는 값을 상수를 통해 의미 전달을 해볼까요?
 - [ ] 현재는 어떻게 보면 통합테스트만 존재한다고 볼수 있습니다. Car나 CarGroup과 같은 메서드들의 단위 테스트를 추가해보시면 어떠실까요?
