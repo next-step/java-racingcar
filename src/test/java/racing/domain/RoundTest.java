@@ -2,6 +2,9 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.model.Car;
+import racing.domain.model.Cars;
+import racing.domain.model.Round;
 import racing.domain.strategy.MoveStrategy;
 import racing.domain.strategy.ThresholdMoveStrategy;
 

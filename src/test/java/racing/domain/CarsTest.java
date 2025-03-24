@@ -2,11 +2,13 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.model.Car;
+import racing.domain.model.Cars;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarsTest {
 
@@ -18,10 +20,14 @@ public class CarsTest {
         Cars cars = new Cars(carNames);
 
         List<Car> carList = cars.getAll();
-        assertThat(carList).hasSize(3);
-        assertThat(carList.get(0).getName()).isEqualTo("Tesla");
-        assertThat(carList.get(1).getName()).isEqualTo("BMW");
-        assertThat(carList.get(2).getName()).isEqualTo("Audi");
+
+        assertAll(
+                () -> assertNotNull(carList),
+                () -> assertThat(carList).hasSize(3),
+                () -> assertThat(carList.get(0).getName()).isEqualTo("Tesla"),
+                () -> assertThat(carList.get(1).getName()).isEqualTo("BMW"),
+                () -> assertThat(carList.get(2).getName()).isEqualTo("Audi")
+        );
     }
 
     @Test
@@ -40,8 +46,11 @@ public class CarsTest {
 
         List<Car> winners = cars.getWinners();
 
-        assertThat(winners).hasSize(3);
-        assertThat(winners).containsExactlyElementsOf(cars.getAll());
+        assertAll(
+                () -> assertNotNull(winners),
+                () -> assertThat(winners).hasSize(3),
+                () -> assertThat(winners).containsExactlyElementsOf(cars.getAll())
+        );
     }
 
     @Test
@@ -55,7 +64,10 @@ public class CarsTest {
 
         List<Car> winners = cars.getWinners();
 
-        assertThat(winners).hasSize(1);
-        assertThat(winners.get(0)).isEqualTo(leadingCar);
+        assertAll(
+                () -> assertNotNull(winners),
+                () -> assertThat(winners).hasSize(1),
+                () -> assertThat(winners.get(0)).isEqualTo(leadingCar)
+        );
     }
 }

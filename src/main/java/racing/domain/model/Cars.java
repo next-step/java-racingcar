@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.domain.model;
 
 import java.util.Arrays;
 import java.util.Collections;
