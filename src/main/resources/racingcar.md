@@ -15,4 +15,4 @@
 - [x] racingcar 패키지 생성 및 하위 패키지 이동
 - [x] Utils 클래스 추가 및 InputView, RacingCar 리팩토링
 - [x] ResultView 에서 비지니스 로직 제거
-- [ ] Race Condition 방지
+- [x] Race Condition 방지

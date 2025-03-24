@@ -15,13 +15,14 @@ public class Car {
         return new Car(CarPosition.initialize());
     }
 
-    public int getPosition() {
-        return this.position.getValue();
+    public Car move(CarMovementPolicy policy) {
+        if (policy.isMovable()) {
+            return new Car(this.position.move());
+        }
+        return this;
     }
 
-    public void move(CarMovementPolicy policy) {
-        if (policy.isMovable()) {
-            this.position.move();
-        }
+    public int getPosition() {
+        return this.position.getValue();
     }
 }

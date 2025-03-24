@@ -32,7 +32,9 @@ public class Cars {
         return this.values;
     }
 
-    public void move() {
-        this.values.forEach(car -> car.move(new CarMovementRandomizer()));
+    public Cars move() {
+        return new Cars(this.values.stream()
+            .map(car -> car.move(new CarMovementRandomizer()))
+            .collect(Collectors.toList()));
     }
 }

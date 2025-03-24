@@ -14,12 +14,12 @@ public class CarPosition {
         return new CarPosition(ONE_STEP);
     }
 
-    public int getValue() {
-        return value;
+    public CarPosition move() {
+        return new CarPosition(this.value + ONE_STEP);
     }
 
-    public void move() {
-        this.value += ONE_STEP;
+    public int getValue() {
+        return value;
     }
 }
 
