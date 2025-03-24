@@ -1,12 +1,13 @@
 package carracing.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameResult {
     private final List<List<String>> carDistances;
-    private final List<String> winners;
+    private final List<Car> winners;
 
-    public GameResult(List<List<String>> carDistances, List<String> winners) {
+    public GameResult(List<List<String>> carDistances, List<Car> winners) {
         this.carDistances = carDistances;
         this.winners = winners;
     }
@@ -16,6 +17,8 @@ public class GameResult {
     }
 
     public List<String> getWinners() {
-        return winners;
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

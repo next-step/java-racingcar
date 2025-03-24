@@ -8,6 +8,7 @@ import java.util.List;
 public class CarRacingGame {
     public static final int NAME_LENGTH_UPPER_BOUND = 5;
     public static final String DELIMITER = ",";
+
     private final List<Car> cars = new ArrayList<>();
     private final NumberGenerator randomNumberGenerator;
     private final int gameCount;
@@ -49,7 +50,7 @@ public class CarRacingGame {
         List<String> result = new ArrayList<>();
         for (Car car : cars) {
             car.move(randomNumberGenerator.generateNumber());
-            result.add(car.getDistanceString());
+            result.add(car.makeDistanceString());
         }
         return result;
     }
@@ -60,12 +61,12 @@ public class CarRacingGame {
         for (int i = 0; i < gameCount; ++i) {
             result.add(playOneRound());
         }
-        List<String> winners = decideWinners();
+        List<Car> winners = decideWinners();
         return new GameResult(result, winners);
     }
 
-    private List<String> decideWinners() {
-        List<String> winners = new ArrayList<>();
+    private List<Car> decideWinners() {
+        List<Car> winners = new ArrayList<>();
         int maxDistance = maxCarDistance();
         for (Car car : cars) {
             winners.add(returnNameIfMax(car, maxDistance));
@@ -74,9 +75,9 @@ public class CarRacingGame {
         return winners;
     }
 
-    private String returnNameIfMax(Car car, int maxDistance) {
-        if (car.getDistance() == maxDistance) {
-            return car.getName();
+    private Car returnNameIfMax(Car car, int maxDistance) {
+        if (car.hasSameDistance(maxDistance)) {
+            return car;
         }
         return null;
     }
@@ -84,7 +85,7 @@ public class CarRacingGame {
     private int maxCarDistance() {
         int maxDistance = 0;
         for (Car car : cars) {
-            maxDistance = Math.max(maxDistance, car.getDistance());
+            maxDistance = car.returnMaxDistance(maxDistance);
         }
         return maxDistance;
     }
@@ -92,7 +93,7 @@ public class CarRacingGame {
     private List<String> saveInitialState() {
         List<String> result = new ArrayList<>();
         for (Car car : cars) {
-            result.add(car.getDistanceString());
+            result.add(car.makeDistanceString());
         }
         return result;
     }

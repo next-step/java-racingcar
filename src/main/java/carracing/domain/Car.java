@@ -2,6 +2,7 @@ package carracing.domain;
 
 public class Car {
     public static final int CAR_MOVING_BOUND = 4;
+
     private String name;
     private int distance = 1;
 
@@ -11,11 +12,11 @@ public class Car {
 
     public void move(int randomNum) {
         if (randomNum >= CAR_MOVING_BOUND) {
-            distance++;
+            ++distance;
         }
     }
 
-    public String getDistanceString() {
+    public String makeDistanceString() {
         String distanceString = name + " : ";
         for (int i = 0; i < distance; ++i) {
             distanceString += "-";
@@ -23,11 +24,15 @@ public class Car {
         return distanceString;
     }
 
-    public int getDistance() {
-        return distance;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public boolean hasSameDistance(int maxDistance) {
+        return distance == maxDistance;
+    }
+
+    public int returnMaxDistance(int maxDistance) {
+        return Math.max(maxDistance, distance);
     }
 }
