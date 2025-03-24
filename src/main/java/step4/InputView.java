@@ -56,6 +56,8 @@ public class InputView {
             return getCarNamesFromUser();
         }
 
+        this.carNames = names;
+
         return names;
     }
 

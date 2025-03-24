@@ -5,16 +5,20 @@ import java.util.Random;
 public class Car {
     private int position;
     private Random random;
-    public String name;
+    public String carName;
 
-    public Car(Random random) {
+    public Car(Random random, String carName) {
         this.position = 1;
         this.random = random;
-        this.name = name;
+        this.carName = carName;
     }
 
     public int getPosition () {
         return this.position;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 
     private boolean isMovable () {
@@ -23,9 +27,10 @@ public class Car {
 
     public void move() {
         if(!isMovable()) return;
-        position++;
+        this.position++;
     }
-    public String draw(int position) {
+    public String draw() {
         return "-".repeat(this.position);
     }
+
 }

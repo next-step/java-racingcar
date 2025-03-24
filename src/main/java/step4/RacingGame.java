@@ -5,24 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private final List<Car> cars;
-    private List<String> carNames;
+    private List<Car> cars;
 
     public RacingGame(int carCount, List<String> carNames) {
         cars = new ArrayList<>();
-        this.carNames = carNames;
-
         for(int i = 0; i < carCount; i++) {
-            cars.add(new Car(new Random()));
+            Car car = new Car(new Random(),carNames.get(i));
+            cars.add(car);
         }
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public List<String> getCarNames() {
-        return carNames;
     }
 
     public List<List<String>> play(int roundCount) {
@@ -32,7 +22,8 @@ public class RacingGame {
             List<String> RoundResults = new ArrayList<>();
             for(Car car : cars) {
                 car.move();
-                RoundResults.add(car.draw(car.getPosition()));
+                String result = car.getCarName() + " : " + car.draw();
+                RoundResults.add(result);
             }
             FinalResults.add(RoundResults);
         }
