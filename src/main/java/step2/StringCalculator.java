@@ -6,16 +6,15 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     private static final Pattern BASIC_PATTERN = Pattern.compile(",|:");
+    private static final DelimiterReader DELIMITER_READER = new DelimiterReader();
 
     public static int splitAndSum(String text) {
         if (text == null || text.isBlank()) {
             return 0;
         }
 
-        DelimiterReader reader = new DelimiterReader();
-
-        if (reader.hasCustomDelimiter(text)) {
-            return sum(reader.extractAndSplit(text));
+        if (DELIMITER_READER.hasCustomDelimiter(text)) {
+            return sum(DELIMITER_READER.extractAndSplit(text));
         }
 
         return sum(text.split(BASIC_PATTERN.pattern()));
