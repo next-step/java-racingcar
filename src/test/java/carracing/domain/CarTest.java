@@ -15,7 +15,7 @@ public class CarTest {
         car.move(3);
         assertThat(car)
                 .extracting("distance")
-                .isEqualTo(1);
+                .isEqualTo(new Distance(1));
     }
 
     @DisplayName("자동차 한 번 전진 동작 테스트 - 4 이상")
@@ -25,7 +25,7 @@ public class CarTest {
         car.move(4);
         assertThat(car)
                 .extracting("distance")
-                .isEqualTo(2);
+                .isEqualTo(new Distance(2));
     }
 
     @DisplayName("랜덤 값에 따른 전진 여부 결정")
@@ -38,7 +38,7 @@ public class CarTest {
         car.move(testNumberGenerator.generateNumber());
         assertThat(car)
                 .extracting("distance")
-                .isEqualTo(1);
+                .isEqualTo(new Distance(1));
     }
 
     @DisplayName("자동차 이름 저장 기능")
