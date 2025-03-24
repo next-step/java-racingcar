@@ -1,7 +1,7 @@
 package car_racing2.controller;
 
-import car_racing2.model.RaceResult;
-import car_racing2.model.RaceService;
+import car_racing2.domain.model.RaceResult;
+import car_racing2.domain.RaceService;
 import car_racing2.view.InputData;
 import car_racing2.view.InputView;
 import car_racing2.view.OutputView;

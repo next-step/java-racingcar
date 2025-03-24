@@ -1,21 +1,22 @@
-package car_racing2.model;
+package car_racing2.domain.model;
+
+import car_racing2.domain.MovingStrategy;
 
 import java.util.List;
-import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
-    private final BooleanSupplier movingStrategy;
+    private final MovingStrategy movingStrategy;
 
-    public Cars(List<String> carsNames, BooleanSupplier movingStrategy) {
+    public Cars(List<String> carsNames, MovingStrategy movingStrategy) {
         this.cars = createCars(carsNames);
         this.movingStrategy = movingStrategy;
     }
 
     public void moveAll() {
         for (Car car : cars) {
-            if (movingStrategy.getAsBoolean()) car.move();
+            if (movingStrategy.isMovable()) car.move();
         }
     }
 

@@ -1,4 +1,4 @@
-package car_racing2.model;
+package car_racing2.domain.model;
 
 public class Position {
     private static final String POSITION_MARKER = "-";

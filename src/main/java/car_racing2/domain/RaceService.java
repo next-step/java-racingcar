@@ -1,16 +1,12 @@
-package car_racing2.model;
+package car_racing2.domain;
 
+import car_racing2.domain.model.Cars;
+import car_racing2.domain.model.RaceResult;
 import car_racing2.view.InputData;
 
-import java.util.Random;
-import java.util.function.BooleanSupplier;
-
 public class RaceService {
-    private static final Random random = new Random();
-    private static final int MOVE_THRESHOLD = 4;
-
     public RaceResult race(InputData raceData) {
-        Cars cars = new Cars(raceData.getCarNames(), randomMovingStrategy());
+        Cars cars = new Cars(raceData.getCarNames(), new RandomMovingStrategy());
         RaceResult raceResult = new RaceResult();
 
         for (int i = 0; i < raceData.getNumOfRounds(); i++) {
@@ -20,9 +16,5 @@ public class RaceService {
         raceResult.recordRaceWinners(cars.getWinners());
 
         return raceResult;
-    }
-
-    private BooleanSupplier randomMovingStrategy() {
-        return () -> random.nextInt() > MOVE_THRESHOLD;
     }
 }

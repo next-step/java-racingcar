@@ -1,6 +1,6 @@
 package car_racing2.view;
 
-import car_racing2.model.RaceResult;
+import car_racing2.domain.model.RaceResult;
 
 public class OutputView {
     public static void showRaceResult(RaceResult raceResult) {
