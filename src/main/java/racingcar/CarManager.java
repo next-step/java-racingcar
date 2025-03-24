@@ -14,7 +14,13 @@ public class CarManager {
     public static void move(Cars cars, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             cars = cars.move();
-            ResultView.printHyphens(cars.getPositions());
+            print(cars);
         }
+    }
+
+    public static void print(Cars cars) {
+        cars.getValues()
+            .forEach(car -> ResultView.print(car.getName(), car.getPosition()));
+        ResultView.printNewLine();
     }
 }

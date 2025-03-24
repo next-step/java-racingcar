@@ -16,4 +16,8 @@ public class CarName {
             throw new IllegalArgumentException("자동차 이름이 올바르지 않습니다.");
         }
     }
+
+    public String getValue() {
+        return this.value;
+    }
 }

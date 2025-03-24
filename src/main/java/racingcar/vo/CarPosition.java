@@ -19,7 +19,7 @@ public class CarPosition {
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 }
 

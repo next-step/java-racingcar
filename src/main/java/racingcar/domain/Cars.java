@@ -28,13 +28,13 @@ public class Cars {
             .collect(Collectors.toList()));
     }
 
+    public List<Car> getValues() {
+        return this.values;
+    }
+
     public List<Integer> getPositions() {
         return this.values.stream()
             .map(Car::getPosition)
             .collect(Collectors.toList());
-    }
-
-    public List<Car> getValues() {
-        return this.values;
     }
 }
