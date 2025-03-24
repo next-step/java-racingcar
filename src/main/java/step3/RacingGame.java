@@ -2,7 +2,6 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private final List<Car> cars;
@@ -10,7 +9,7 @@ public class RacingGame {
     public RacingGame(int carCount) {
         cars = new ArrayList<>();
         for(int i = 0; i < carCount; i++) {
-            cars.add(new Car(new Random()));
+            cars.add(new Car());
         }
     }
 
