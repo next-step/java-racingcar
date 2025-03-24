@@ -1,6 +1,8 @@
-import domain.CarRace;
-import view.InputView;
-import view.ResultView;
+package racingcar.application;
+
+import racingcar.domain.CarRace;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package domain;
+package racingcar.domain;
 
-import util.NumberGenerator;
-import util.RandomNumberGenerator;
+import racingcar.util.NumberGenerator;
+import racingcar.util.RandomNumberGenerator;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
@@ -10,6 +10,7 @@ public class Car {
     public Car() {
         this(0);
     }
+
     public Car(int position) {
         validatePositive(position);
         this.position = position;

@@ -1,4 +1,4 @@
-package domain;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,15 +13,15 @@ public class CarRace {
         this.cars = new Cars(createCars(carCount));
     }
 
-    private List<Car> createCars(int carCount) {
-        return IntStream.range(0, carCount)
-                .mapToObj(i -> new Car())
-                .collect(Collectors.toList());
-    }
-
     public List<List<Integer>> run() {
         return IntStream.range(0, runCount)
                 .mapToObj(i -> runOnce())
+                .collect(Collectors.toList());
+    }
+
+    private List<Car> createCars(int carCount) {
+        return IntStream.range(0, carCount)
+                .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
 
