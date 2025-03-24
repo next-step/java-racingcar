@@ -5,25 +5,25 @@ import java.util.Map;
 
 public class Result {
 
-  private final Map<Integer, Car[]> result;
+  private final Map<Integer, Cars> result;
 
   public Result() {
     result = new HashMap<>();
   }
 
-  public Car[] merge(int round, Car[] roundResult) {
+  public Cars merge(int round, Cars roundResult) {
     if (round == 0) {
       return roundResult;
     }
 
-    for (int i = 0; i < roundResult.length; i++) {
-      roundResult[i].addScore(result.get(round - 1)[i].getScore());
+    for (int i = 0; i < roundResult.size(); i++) {
+      roundResult.getCar(i).addScore(result.get(round - 1).getCar(i).getScore());
     }
 
     return roundResult;
   }
 
-  public void record(int round, Car[] roundResult) {
+  public void record(int round, Cars roundResult) {
     result.put(round, merge(round, roundResult));
   }
 
@@ -31,7 +31,7 @@ public class Result {
     return result.size();
   }
 
-  public Car[] get(int round) {
+  public Cars get(int round) {
     return result.get(round);
   }
 }

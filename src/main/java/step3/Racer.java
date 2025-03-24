@@ -20,12 +20,11 @@ public class Racer {
     return result;
   }
 
-  private Car[] proceed() {
-    Car[] cars = new Car[this.carCount];
+  private Cars proceed() {
+    Cars cars = new Cars(this.carCount);
     for (int i = 0; i < this.carCount; i++) {
-      cars[i] = new Car();
       if (raceEvaluator.evaluate()) {
-        cars[i].move();
+        cars.getCar(i).move();
       }
     }
     return cars;

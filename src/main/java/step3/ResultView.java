@@ -11,9 +11,9 @@ public class ResultView {
     }
   }
 
-  private void printRound(Car[] cars) {
-    for (Car car : cars) {
-      System.out.println(MOVED.repeat(car.getScore()));
+  private void printRound(Cars cars) {
+    for (int i = 0; i < cars.size(); i++) {
+      System.out.println(cars.getCar(i).showPosition());
     }
     System.out.println();
   }

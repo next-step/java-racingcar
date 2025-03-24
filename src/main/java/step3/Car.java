@@ -6,7 +6,11 @@ public class Car {
   private int score;
 
   public Car() {
-    this.score = DEFAULT_SCORE;
+    this(DEFAULT_SCORE);
+  }
+
+  public Car(int score) {
+    this.score = score;
   }
 
   public void addScore(int additionalScore) {
@@ -19,5 +23,9 @@ public class Car {
 
   public void move() {
     score++;
+  }
+
+  public String showPosition() {
+    return "-".repeat(score);
   }
 }
