@@ -8,7 +8,7 @@ public class StringCalculator {
     private static final Pattern BASIC_PATTERN = Pattern.compile(",|:");
 
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty()) {
+        if (text == null || text.isBlank()) {
             return 0;
         }
 
