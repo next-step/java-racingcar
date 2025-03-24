@@ -16,9 +16,9 @@ public class Cars {
         }
     }
 
-    public void randomMove() {
+    public void move(NumberGenerator numberGenerator) {
         for (Car car : this.cars) {
-            car.randomMove();
+            car.move(numberGenerator);
         }
     }
 

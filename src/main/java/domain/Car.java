@@ -1,21 +1,15 @@
 package domain;
 
-import java.util.Random;
 import view.ResultView;
 
 class Car {
-    private static final Random random = new Random();
     private static final int MOVE_THRS = 4;
     private final Position position = new Position();
 
-    private void move() {
-        this.position.increase();
-    }
-
-    void randomMove() {
-        int randomValue = random.nextInt(10);
-        if (randomValue >= MOVE_THRS) {
-            move();
+    void move(NumberGenerator numberGenerator) {
+        final int number = numberGenerator.generate();
+        if (number >= MOVE_THRS) {
+            this.position.increase();
         }
     }
 

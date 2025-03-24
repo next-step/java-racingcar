@@ -1,12 +1,14 @@
 package controller;
 
 import domain.Cars;
+import domain.RandomNumberGenerator;
 import view.InputView;
 import view.ResultView;
 
 public class RacingGame {
     private final Cars cars;
     private final int numberOfRounds;
+    private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
     public RacingGame(int numberOfCars, int numberOfRounds) {
         this.numberOfRounds = numberOfRounds;
@@ -14,7 +16,7 @@ public class RacingGame {
     }
 
     private void runOneRound() {
-        this.cars.randomMove();
+        this.cars.move(randomNumberGenerator);
         this.cars.printCurrentPositions();
         ResultView.printResult("");
     }
