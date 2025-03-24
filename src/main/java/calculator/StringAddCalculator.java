@@ -11,7 +11,7 @@ public class StringAddCalculator {
         return Arrays.stream(StringTokenizer.tokenize(str))
                 .mapToInt( tokenString -> {
                     int number = Integer.parseInt(tokenString);
-                    if(number < 0) throw new RuntimeException();
+                    if(number < 0) throw new RuntimeException("음의 정수는 계산할 수 없습니다.");
 
                     return number;
                 })
