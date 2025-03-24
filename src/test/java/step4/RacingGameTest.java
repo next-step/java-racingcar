@@ -1,7 +1,7 @@
 package step4;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step3.Car;
 
 import java.util.Random;
 
@@ -10,6 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RacingGameTest {
 
     private RacingGame racingGame;
+    private MoveCondition defaultCondition;
+    private String defaultCarName;
+
+    @BeforeEach
+    void setUp() {
+        this.defaultCondition = MoveConditions.randomCondition();
+        this.defaultCarName = "자동차1";
+    }
 
     @Test
     void testNoMovement() {
@@ -20,7 +28,7 @@ class RacingGameTest {
                 return 3;
             }
         };
-        step3.Car car = new step3.Car();
+        Car car = new Car(defaultCarName, defaultCondition);
 
         int initialPosition = car.getPosition();
         car.move();
@@ -37,32 +45,32 @@ class RacingGameTest {
                 return 4;
             }
         };
-        step3.Car car = new Car();
+        Car car = new Car(defaultCarName, defaultCondition);
 
-        int initialPosition = car.getPosition(); // 초기 시작 위치: 1
+        int initialPosition = car.getPosition();
         car.move();
 
         assertEquals(initialPosition+1, car.getPosition());
     }
 
     @Test
+    void testInitialPosition() {
+        // 자동차가 처음 생성될 때 초기 위치가 1인지 확인
+        Car car = new Car(defaultCarName, defaultCondition);
+
+        assertEquals(1, car.getPosition(), "자동차의 초기 위치는 1이어야 합니다.");
+    }
+
+    @Test
     void testCarMovementConditionChange () {
+        MoveCondition alwaysMove = () -> true;
+        Car car = new Car(defaultCarName, alwaysMove);
 
-    }
+        int initialPosition = car.getPosition();
+        car.move();
+        car.move();
+        car.move();
 
-    @Test
-    void testCarNameLength () {
-        // 각 자동차 이름은 5자를 초과할 수 없다.
-
-    }
-
-    @Test
-    void testCarNameValidation() {
-        // 올바르지 않은 이름 입력 형식
-    }
-
-    @Test
-    void testWinner() {
-        // 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
+        assertEquals(initialPosition + 3, car.getPosition(), "자동차는 항상 이동해야 합니다.");
     }
 }
