@@ -24,6 +24,6 @@ public class RacingMain {
             racingGame.moveCars();
         }
 
-        ResultView.printWinner(new Judgement(racingGame.getCars()).getWinnerCars());
+        ResultView.printWinner(racingGame.getWinnerCars());
     }
 }

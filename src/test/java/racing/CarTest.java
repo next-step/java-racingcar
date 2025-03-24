@@ -44,20 +44,6 @@ class CarTest {
     }
 
     @Test
-    @DisplayName(value = "승자 테스트")
-    void 승자_출력_테스트() {
-
-        Cars cars = new Cars()
-        .addCar(new Car("A",4))
-        .addCar(new Car("B",4))
-        .addCar(new Car("C",2));
-
-        Judgement judgement = new Judgement(cars);
-
-        assertThat(judgement.getWinnerCars()).isEqualTo(List.of(cars.getCar(0), cars.getCar(1)));
-    }
-
-    @Test
     @DisplayName(value = "차량 이름 5글자 넘어간 경우 에러 케이스")
     void 차량명_초과_테스트() {
         assertThatThrownBy(() -> {
