@@ -10,4 +10,4 @@ public class RandomMoveStrategy implements MoveStrategy {
     public boolean shouldMove() {
         return random.nextInt(RANDOM_NUMBER_RANGE) >= MOVE_THRESHOLD;
     }
-} 
+}

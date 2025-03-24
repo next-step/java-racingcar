@@ -30,7 +30,8 @@ class CarTest {
     @Test
     @DisplayName("자동차 이름은 5자를 초과할 수 없다")
     void carNameCannotExceed5Characters() {
-        assertThatThrownBy(() -> new Car("123456")).isInstanceOf(IllegalArgumentException.class).hasMessage("Name cannot be longer than 5 characters");
+        assertThatThrownBy(() -> new Car("123456")).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("Name cannot be longer than 5 characters");
     }
 
     @ParameterizedTest

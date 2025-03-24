@@ -39,4 +39,4 @@ public class GameSettings {
     public int getRoundCount() {
         return roundCount;
     }
-} 
+}

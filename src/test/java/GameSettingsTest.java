@@ -18,10 +18,12 @@ class GameSettingsTest {
     @DisplayName("자동차 이름이 비어있으면 에러가 발생한다")
     void emptyCarNameThrowsError() {
         String[] carNamesWithBlank = {"car1", "", "car3"};
-        assertThatThrownBy(() -> new GameSettings(carNamesWithBlank, 3)).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 비어있을 수 없습니다.");
+        assertThatThrownBy(() -> new GameSettings(carNamesWithBlank, 3)).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("자동차 이름은 비어있을 수 없습니다.");
 
         String[] carNamesWithNull = {"car1", null, "car3"};
-        assertThatThrownBy(() -> new GameSettings(carNamesWithNull, 3)).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 비어있을 수 없습니다.");
+        assertThatThrownBy(() -> new GameSettings(carNamesWithNull, 3)).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("자동차 이름은 비어있을 수 없습니다.");
     }
 
     @Test
@@ -43,4 +45,4 @@ class GameSettingsTest {
         assertThat(settings.getCarCount()).isEqualTo(3);
         assertThat(settings.getRoundCount()).isEqualTo(3);
     }
-} 
+}

@@ -50,8 +50,6 @@ class RaceTest {
         Race race = new Race(new GameSettings(carNames, 3));
         race.runRound();  // 1라운드만 진행
 
-        assertThatThrownBy(race::getWinners)
-            .isInstanceOf(IllegalStateException.class)
-            .hasMessage("Race is still in progress");
+        assertThatThrownBy(race::getWinners).isInstanceOf(IllegalStateException.class).hasMessage("Race is still in progress");
     }
 }

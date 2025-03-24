@@ -2,4 +2,4 @@
 public interface MoveStrategy {
 
     boolean shouldMove();
-} 
+}

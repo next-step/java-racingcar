@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class ResultView {
+
     private ResultView() {
         // private 생성자로 인스턴스화 방지
     }
@@ -24,6 +25,6 @@ public class ResultView {
         for (CarStatus winner : winners) {
             joiner.add(winner.getName());
         }
-        System.out.println(joiner.toString() + "가 최종 우승했습니다.");
+        System.out.println(joiner + "가 최종 우승했습니다.");
     }
 }

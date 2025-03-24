@@ -26,13 +26,19 @@ public class CarsTest {
 
         // then
         assertThat(cars.findWinners()).hasSize(2);
-        assertThat(cars.findWinners()).contains(
-            createCarStatus("car1", 1),
-            createCarStatus("car2", 1)
-        );
+        assertThat(cars.findWinners()).contains(createCarStatus("car1", 1), createCarStatus("car2", 1));
+    }
+
+    private Cars createCars(String... names) {
+        return Cars.fromNames(names);
+    }
+
+    private CarStatus createCarStatus(String name, int position) {
+        return new CarStatus(name, position);
     }
 
     private static class FixedMoveStrategy implements MoveStrategy {
+
         private final boolean[] moves;
         private int index = 0;
 
@@ -47,13 +53,5 @@ public class CarsTest {
             }
             return moves[index++];
         }
-    }
-
-    private Cars createCars(String... names) {
-        return Cars.fromNames(names);
-    }
-    
-    private CarStatus createCarStatus(String name, int position) {
-        return new CarStatus(name, position);
     }
 }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
@@ -55,4 +56,4 @@ public class Cars {
         }
         return winners;
     }
-} 
+}
