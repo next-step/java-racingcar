@@ -9,7 +9,6 @@ import view.presenter.RacingUIPresenter;
 public class Racing {
     private final Participants participants;
     private int remainTryCount;
-//    private final RacingUIPresenter racingUIPresenter = new RacingConsoleUIPresenter();
 
     public Racing(String[] carNameList, int tryCount) {
         this.validate(carNameList, tryCount);
@@ -42,12 +41,6 @@ public class Racing {
         participants.moveAll();
         remainTryCount--;
     }
-
-//    public void moveUntilFinish() {
-//        while (isRemainTry()) {
-//            moveOnce();
-//        }
-//    }
 
     public boolean isRemainTry() {
         return this.remainTryCount > 0;
