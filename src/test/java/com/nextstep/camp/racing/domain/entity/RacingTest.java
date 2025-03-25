@@ -3,6 +3,7 @@ package com.nextstep.camp.racing.domain.entity;
 import java.util.stream.Stream;
 
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
+import com.nextstep.camp.racing.domain.vo.CarNames;
 import com.nextstep.camp.racing.domain.vo.Cars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,76 +15,72 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
 
+    private Cars cars;
     private Racing racing;
-    private PositiveInteger carQuantity;
-    private PositiveInteger maxPosition;
+    private PositiveInteger lapCount;
 
     @BeforeEach
     void setUp() {
-        carQuantity = PositiveInteger.of("5");
-        maxPosition = PositiveInteger.of("3");
-        racing = Racing.initialize(carQuantity, maxPosition);
+        CarNames carNames = CarNames.of("car1,car2,car3,car4,car5");
+        this.cars = Cars.of(carNames);
+        this.lapCount = PositiveInteger.of("3");
+        this.racing = Racing.initialize(cars, lapCount);
     }
 
     @Test
     void initialize_ShouldCreateRacingObject() {
         assertThat(racing).isNotNull();
         assertThat(racing.getCars()).isNotNull();
-        assertThat(racing.getCars().size()).isEqualTo(carQuantity.value());
+        assertThat(racing.getCars().size()).isEqualTo(cars.size());
     }
 
     @ParameterizedTest
-    @MethodSource("provideCarQuantitiesAndMaxPositions")
-    void initialize_WithDifferentValues_ShouldCreateRacingObject(String carQuantityStr, String maxPositionStr) {
-        PositiveInteger carQuantity = PositiveInteger.of(carQuantityStr);
-        PositiveInteger maxPosition = PositiveInteger.of(maxPositionStr);
+    @MethodSource("provideCarQuantitiesAndLapCount")
+    void initialize_WithDifferentValues_ShouldCreateRacingObject(String carNamesStr, String lapCountStr) {
+        CarNames carNames = CarNames.of(carNamesStr);
+        Cars cars = Cars.of(carNames);
+        PositiveInteger lapCount = PositiveInteger.of(lapCountStr);
 
-        Racing racing = Racing.initialize(carQuantity, maxPosition);
+        Racing racing = Racing.initialize(cars, lapCount);
 
         assertThat(racing).isNotNull();
         assertThat(racing.getCars()).isNotNull();
-        assertThat(racing.getCars().size()).isEqualTo(carQuantity.value());
+        assertThat(racing.getCars().size()).isEqualTo(cars.size());
     }
 
-    static Stream<Arguments> provideCarQuantitiesAndMaxPositions() {
+    static Stream<Arguments> provideCarQuantitiesAndLapCount() {
         return Stream.of(
-            Arguments.of("1", "3"),
-            Arguments.of("5", "10"),
-            Arguments.of("10", "20")
+                Arguments.of("aj", "3"),
+                Arguments.of("sj,hj", "10"),
+                Arguments.of("aj,sj,hj", "20")
         );
     }
 
     @Test
-    void start_ShouldMoveCars() {
-        Cars beforeMove = racing.getCars().copy();
-
+    void start_ShouldRecordCorrectLapCount() {
+        // when
         racing.start();
 
-        Cars afterMove = racing.getCars();
-        assertThat(afterMove.getMaxPosition()).isEqualTo(maxPosition);
-        assertThat(afterMove).isNotEqualTo(beforeMove);
+        // then
+        assertThat(racing.getLaps()).hasSize(lapCount.value());
     }
 
-    @ParameterizedTest
-    @MethodSource("provideRaceScenarios")
-    void start_WithDifferentScenarios_ShouldMoveCars(String carQuantityStr, String maxPositionStr) {
-        PositiveInteger carQuantity = PositiveInteger.of(carQuantityStr);
-        PositiveInteger maxPosition = PositiveInteger.of(maxPositionStr);
-        Racing racing = Racing.initialize(carQuantity, maxPosition);
-        Cars beforeMove = racing.getCars().copy();
-
+    @Test
+    void start_ShouldDetermineWinners() {
+        // when
         racing.start();
 
-        Cars afterMove = racing.getCars();
-        assertThat(afterMove.getMaxPosition()).isEqualTo(maxPosition);
-        assertThat(afterMove).isNotEqualTo(beforeMove);
+        // then
+        assertThat(racing.getWinners()).isNotNull();
+        assertThat(racing.getWinners().size()).isGreaterThan(0);
     }
 
-    static Stream<Arguments> provideRaceScenarios() {
-        return Stream.of(
-            Arguments.of("3", "5"),
-            Arguments.of("5", "10"),
-            Arguments.of("7", "15")
-        );
+    @Test
+    void start_ShouldPreserveCarCountAfterRace() {
+        // when
+        racing.start();
+
+        // then
+        assertThat(racing.getCars().size()).isEqualTo(cars.size());
     }
 }

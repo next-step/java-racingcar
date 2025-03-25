@@ -1,16 +1,17 @@
 package com.nextstep.camp.racing.infrastructure.view.component;
 
-import com.nextstep.camp.racing.application.dto.LapResponse;
-import com.nextstep.camp.racing.application.dto.MovesResponse;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LapHistoryResult extends AbstractResult {
+import com.nextstep.camp.racing.application.dto.CarMovesResponse;
+import com.nextstep.camp.racing.application.dto.LapResponse;
+
+public class LapHistoryResult extends AbstractResult<String> {
 
     private final List<List<String>> laps;
 
     private static final String MOVE = "-";
+    private static final String COLON = " : ";
 
     private LapHistoryResult(List<LapResponse> laps) {
         super(DEFAULT_VALUE);
@@ -20,13 +21,26 @@ public class LapHistoryResult extends AbstractResult {
     }
 
     private static List<String> getLapSnapshot(LapResponse lap) {
-        return lap.getAllMoves().stream()
+        return lap.getCarMoves().stream()
                 .map(LapHistoryResult::getCarLapSnapshot)
                 .collect(Collectors.toList());
     }
 
-    private static String getCarLapSnapshot(MovesResponse moves) {
-        return MOVE.repeat((int) moves.getValues().stream().filter(Boolean::booleanValue).count());
+    private static String getCarLapSnapshot(CarMovesResponse carMoves) {
+        StringBuilder builder = new StringBuilder();
+        String carName = carMoves.getCarName();
+        builder.append(carName).append(COLON).append(getMoves(carMoves));
+        return builder.toString();
+    }
+
+    private static String getMoves(CarMovesResponse carMoves) {
+        return MOVE.repeat(getMovesCount(carMoves));
+    }
+
+    private static int getMovesCount(CarMovesResponse carMoves) {
+        return (int) carMoves.getMoves().stream()
+                .filter(Boolean::booleanValue)
+                .count();
     }
 
     public static LapHistoryResult of(List<LapResponse> laps) {
@@ -44,6 +58,11 @@ public class LapHistoryResult extends AbstractResult {
 
     @Override
     public String getLabel() {
+        return "";
+    }
+
+    @Override
+    public String getValue() {
         return "";
     }
 

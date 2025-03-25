@@ -12,14 +12,22 @@ public class Cars {
 
     private final List<Car> values;
 
-    private Cars(PositiveInteger carQuantity) {
-        this.values = Stream.generate(Car::of)
-            .limit(carQuantity.value())
+    private Cars(CarNames carNames) {
+        this.values = carNames.stream()
+            .map(Car::of)
             .collect(Collectors.toList());
     }
 
-    public static Cars of(PositiveInteger carQuantity) {
-        return new Cars(carQuantity);
+    private Cars(List<Car> values) {
+        this.values = values;
+    }
+
+    public static Cars of(CarNames carNames) {
+        return new Cars(carNames);
+    }
+
+    public static Cars of(List<Car> values) {
+        return new Cars(values);
     }
 
     public void move() {
@@ -38,16 +46,37 @@ public class Cars {
     }
 
     public Cars copy() {
-        return new Cars(PositiveInteger.of(values.size()));
+        CarNames carNames = this.values.stream()
+            .map(Car::getName)
+            .collect(Collectors.collectingAndThen(Collectors.toList(), CarNames::of));
+        return new Cars(carNames);
     }
 
     public Stream<Car> stream() {
         return values.stream();
     }
 
-    public List<Moves> getMovesSnapshot() {
+    public List<CarMoves> getCarsLapRecord() {
         return values.stream()
-                .map(car -> Moves.of(new ArrayList<>(car.getMoves().getValues())))
+                .map(Cars::getCarLapRecord)
                 .collect(Collectors.toList());
+    }
+
+    private static CarMoves getCarLapRecord(Car car) {
+        Moves moves = Moves.of(new ArrayList<>(car.getMoves().getValues()));
+        return CarMoves.of(car, moves);
+    }
+
+    public void recordWinners() {
+        PositiveInteger maxPosition = getMaxPosition();
+        values.stream()
+            .filter(car -> car.getPosition().equals(maxPosition))
+            .forEach(Car::win);
+    }
+
+    public Cars getWinners() {
+        return values.stream()
+            .filter(Car::isWinner)
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::of));
     }
 }

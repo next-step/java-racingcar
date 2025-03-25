@@ -1,22 +1,23 @@
 package com.nextstep.camp.racing.infrastructure.view.dto;
 
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
+import com.nextstep.camp.racing.domain.vo.CarNames;
 
 public class InputData {
-    private final PositiveInteger quantity;
+    private final CarNames names;
     private final PositiveInteger maxPosition;
 
-    private InputData(PositiveInteger quantity, PositiveInteger maxPosition) {
-        this.quantity = quantity;
+    private InputData(CarNames names, PositiveInteger maxPosition) {
+        this.names = names;
         this.maxPosition = maxPosition;
     }
 
-    public static InputData of(PositiveInteger quantity, PositiveInteger maxPosition) {
-        return new InputData(quantity, maxPosition);
+    public static InputData of(CarNames carNames, PositiveInteger maxPosition) {
+        return new InputData(carNames, maxPosition);
     }
 
-    public PositiveInteger getQuantity() {
-        return quantity;
+    public CarNames getCarNames() {
+        return names;
     }
 
     public PositiveInteger getMaxPosition() {

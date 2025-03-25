@@ -4,13 +4,17 @@ import com.nextstep.camp.racing.common.vo.PositiveInteger;
 
 public class Car {
 
+    private final CarName name;
+    private boolean isWinner = false;
+
     private final Moves moves = Moves.initialize();
 
-    private Car() {
+    private Car(CarName name) {
+        this.name = name;
     }
 
-    public static Car of() {
-        return new Car();
+    public static Car of(CarName name) {
+        return new Car(name);
     }
 
     public void move() {
@@ -23,5 +27,17 @@ public class Car {
 
     public Moves getMoves() {
         return moves;
+    }
+
+    public CarName getName() {
+        return name;
+    }
+
+    public void win() {
+        isWinner = true;
+    }
+
+    public boolean isWinner() {
+        return isWinner;
     }
 }

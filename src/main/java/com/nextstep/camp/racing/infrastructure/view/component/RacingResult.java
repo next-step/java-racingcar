@@ -1,19 +1,27 @@
 package com.nextstep.camp.racing.infrastructure.view.component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.nextstep.camp.racing.application.dto.CarResponse;
 import com.nextstep.camp.racing.application.dto.RacingResponse;
 
-public class RacingResult extends AbstractResult {
+public class RacingResult extends AbstractResult<String> {
 
     private final LapHistoryResult lapHistoryResult;
+    private final List<String> winnersName;
 
     private static final String RACING_HEADER = "실행 결과";
     private static final String NEWLINE = "\n";
+    private static final String WINNER_NAME_DELIMITER = ", ";
+    private static final String WINNING_MESSAGE = "가 최종 우승했습니다.";
 
     private RacingResult(RacingResponse racing) {
         super(DEFAULT_VALUE);
         this.lapHistoryResult = LapHistoryResult.of(racing.getLaps());
+        this.winnersName = racing.getWinners().stream()
+                .map(CarResponse::getName)
+                .collect(Collectors.toList());
     }
 
     public static RacingResult create(RacingResponse racing) {
@@ -31,6 +39,9 @@ public class RacingResult extends AbstractResult {
             display.append(NEWLINE);
             appendSingleLapResult(lab, display);
         });
+        display.append(NEWLINE)
+                .append(String.join(WINNER_NAME_DELIMITER, winnersName))
+                .append(WINNING_MESSAGE);
     }
 
     private static void appendSingleLapResult(List<String> lab, StringBuilder display) {
@@ -44,6 +55,11 @@ public class RacingResult extends AbstractResult {
 
     @Override
     public String getLabel() {
+        return "";
+    }
+
+    @Override
+    public String getValue() {
         return "";
     }
 
