@@ -12,7 +12,7 @@ public class ResultView {
 
     public static void displayCar(Cars cars) {
         for (Car car: cars.getCarList()) {
-            System.out.printf("%s : %s\n", car.getName(), CAR_POSITION_PROGRESS.repeat(car.getPosition()));
+            System.out.printf("%s : %s\n", car.getName(), CAR_POSITION_PROGRESS.repeat(car.getPosition().getValue()));
         }
         System.out.println();
     }

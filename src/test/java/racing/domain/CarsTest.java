@@ -27,7 +27,7 @@ class CarsTest {
         cars.move();
 
         for(Car car : cars.getCarList()) {
-            assertThat(car.isSamePosition(2)).isTrue();
+            assertThat(car.isSamePosition(new Position(2))).isTrue();
         }
     }
 

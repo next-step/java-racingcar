@@ -13,7 +13,7 @@ class PositionTest {
 
         position.increase();
 
-        assertThat(position.isSamePosition(2)).isTrue();
+        assertThat(position.equals(new Position(2))).isTrue();
     }
 
     @Test

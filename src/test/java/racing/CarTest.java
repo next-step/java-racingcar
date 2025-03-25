@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
+import racing.domain.Position;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -24,7 +25,7 @@ public class CarTest {
     @Test
     public void 자동차의_시작위치는_1이다() {
         Car car = new Car("car1");
-        assertThat(car.isSamePosition(1));
+        assertThat(car.isSamePosition(new Position(1)));
     }
 
     @Test
@@ -32,7 +33,7 @@ public class CarTest {
         int randomValue = 4;
         Car car = new Car("car1", () -> randomValue >= DEFAULT_MOVE_POWER_CONDITION);
         car.move();
-        assertThat(car.isSamePosition(2));
+        assertThat(car.isSamePosition(new Position(2)));
     }
 
     @Test
@@ -40,6 +41,6 @@ public class CarTest {
         int randomValue = 3;
         Car car = new Car("car1", () -> randomValue >= DEFAULT_MOVE_POWER_CONDITION);
         car.move();
-        assertThat(car.isSamePosition(1));
+        assertThat(car.isSamePosition(new Position(1)));
     }
 }

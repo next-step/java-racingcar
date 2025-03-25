@@ -38,8 +38,8 @@ public class Car {
         return name;
     }
 
-    public int getPosition() {
-        return position.getPositionForDisplay();
+    public Position getPosition() {
+        return position;
     }
 
     public void move() {
@@ -48,8 +48,8 @@ public class Car {
         }
     }
 
-    public boolean isSamePosition(int other) {
-        return this.position.isSamePosition(other);
+    public boolean isSamePosition(Position other) {
+        return this.position.equals(other);
     }
 
     public int max(int other) {
