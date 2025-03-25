@@ -3,19 +3,26 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.RandomGenerator;
 
-public class Racing {
+public class CarManager {
 
   private final List<Car> cars = new ArrayList<>();
+  private final NumberGenerator numberGenerator;
 
-  public Racing(String[] carNames) {
+  public CarManager(List<Car> cars) {
+    this(cars, new RandomGenerator());
+  }
+
+  public CarManager(String[] carNames, NumberGenerator numberGenerator) {
     generateCars(carNames);
+    this.numberGenerator = numberGenerator;
   }
 
-  public Racing(List<Car> cars) {
+  public CarManager(List<Car> cars, NumberGenerator numberGenerator) {
     this.cars.addAll(cars);
+    this.numberGenerator = numberGenerator;
   }
+
 
   private List<Car> generateCars(String[] carNames) {
     for (String carName : carNames) {
@@ -30,7 +37,7 @@ public class Racing {
 
   public void simulateRace() {
     for (Car car : cars) {
-      car.driveOrStop(RandomGenerator.generate());
+      car.driveOrStop(numberGenerator.generate());
     }
   }
 
