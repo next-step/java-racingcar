@@ -1,5 +1,7 @@
 package racing.domain;
 
+import java.util.Objects;
+
 public class Position {
     private int position;
 
@@ -15,11 +17,20 @@ public class Position {
         return Math.max(this.position, other);
     }
 
-    public boolean isSamePosition(int other) {
-        return this.position == other;
+    public int getValue() {
+        return this.position;
     }
 
-    public int getPositionForDisplay() {
-        return this.position;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return position == position1.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
