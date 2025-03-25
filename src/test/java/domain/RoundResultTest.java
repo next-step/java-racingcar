@@ -2,27 +2,37 @@ package domain;
 
 import movingStrategy.AlwaysMove;
 import movingStrategy.NeverMove;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RoundResultTest {
 
     @DisplayName("1회 진행 시 결과를 저장")
     @Test
     void saveProgress() {
-        RacingCar car1 = new RacingCar(new AlwaysMove());
-        RacingCar car2 = new RacingCar(new NeverMove());
+        String car1Name = "car1";
+        String car2Name = "car2";
+
+        RacingCar car1 = new RacingCar(car1Name, 0);
+        RacingCar car2 = new RacingCar(car2Name, 0);
+
         List<RacingCar> cars = List.of(car1, car2);
 
-        car1.move();
-        car2.move();
+        car1.move(new AlwaysMove());
+        car2.move(new NeverMove());
+
+        List<String> expectedNames = List.of(car1Name, car2Name);
+        List<Integer> expectedPositions = List.of(1, 0);
 
         RoundResult roundResult = new RoundResult(cars);
-        List<Integer> raceProgress = roundResult.whereAreCars();
-        Assertions.assertEquals(List.of(1, 0), raceProgress);
+        List<RacingCarCurrentStatus> raceProgress = roundResult.getRaceProgress();
+        assertThat(raceProgress).allMatch(status ->
+                expectedNames.contains(status.name()) &&
+                        expectedPositions.contains(status.position().value()));
     }
-
 }

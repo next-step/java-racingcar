@@ -6,24 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-
-    private final Integer numberOfCar;
-    private final Integer numberOfTrial;
+    private final RacingCarNames racingCarNames;
+    private final NumberOfTrial numberOfTrial;
     private final List<RacingCar> racingCars;
+    private final Moveable moveable;
 
-    public RacingGame(Integer numberOfCar, Integer numberOfTrial, Moveable moveable) {
-        if (isValid(numberOfCar, numberOfTrial)) {
-            throw new IllegalArgumentException("자동차의 수 또는 시도 횟수는 0보다 커야 합니다.");
-        }
+    public RacingGame(RacingCarNames racingCarNames, NumberOfTrial numberOfTrial, Moveable moveable) {
 
-        this.numberOfCar = numberOfCar;
+        this.racingCarNames = racingCarNames;
         this.numberOfTrial = numberOfTrial;
-        this.racingCars = initializeRacingCars(moveable);
+        this.racingCars = initializeRacingCars();
+        this.moveable = moveable;
     }
 
-    public RacingGameResult gameStart() {
+    public RacingGameResult start() {
         RacingGameResult racingGameResult = new RacingGameResult();
-        for (int i = 0; i < numberOfTrial; i++) {
+        for (int i = 0; i < numberOfTrial.getNumberOfTrial(); i++) {
             progressRound(racingGameResult);
         }
         return racingGameResult;
@@ -36,19 +34,21 @@ public class RacingGame {
 
     private void moveCars() {
         for (RacingCar racingCar : racingCars) {
-            racingCar.move();
+            racingCar.move(moveable);
         }
     }
 
-    private static boolean isValid(Integer numberOfCar, Integer numberOfTrial) {
-        return numberOfCar <= 0 || numberOfTrial <= 0;
-    }
-
-    private List<RacingCar> initializeRacingCars(Moveable moveable) {
+    private List<RacingCar> initializeRacingCars() {
         List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            racingCars.add(new RacingCar(moveable));
+        for (String name : racingCarNames.getRacingCarNames()) {
+            racingCars.add(new RacingCar(name, 0));
         }
         return racingCars;
+    }
+
+    public static RacingGame of(String[] racingCarNamesArray, Integer numberOfTrialInteger, Moveable moveable) {
+        RacingCarNames racingCarNames = new RacingCarNames(racingCarNamesArray);
+        NumberOfTrial numberOfTrial = new NumberOfTrial(numberOfTrialInteger);
+        return new RacingGame(racingCarNames, numberOfTrial, moveable);
     }
 }

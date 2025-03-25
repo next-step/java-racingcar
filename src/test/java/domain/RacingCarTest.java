@@ -7,19 +7,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingCarTest {
+  
+    public static final String NAME = "test";
 
-    @DisplayName("차량 위치 확인 메소드 테스트")
-    @Test
-    void whereIsCar() {
-        RacingCar racingCar = new RacingCar(new AlwaysMove());
-        assertEquals(0, racingCar.whereIsCar());
-    }
-
-    @DisplayName("차량 진행 메소드 테스트")
+    @DisplayName("차량 진행 테스트")
     @Test
     void tryToGo() {
-        RacingCar racingCar = new RacingCar(new AlwaysMove());
-        racingCar.move();
-        assertEquals(1, racingCar.whereIsCar());
+        RacingCar racingCar = new RacingCar(NAME, 0);
+        racingCar.move(new AlwaysMove());
+        assertEquals(new RacingCar(NAME, 1), racingCar);
     }
 }
