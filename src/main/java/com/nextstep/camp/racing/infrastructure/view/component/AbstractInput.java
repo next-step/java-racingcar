@@ -20,10 +20,6 @@ public abstract class AbstractInput<T> implements Element<T> {
         this.scanner = scanner;
     }
 
-    public String getUntypedValue() {
-        return untypedValue;
-    }
-
     @Override
     public void action() {
         requestInput();

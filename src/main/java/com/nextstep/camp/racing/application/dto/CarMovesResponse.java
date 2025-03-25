@@ -32,4 +32,8 @@ public class CarMovesResponse {
     public List<Boolean> getMoves() {
         return moves;
     }
+
+    public String getCarName() {
+        return this.car.getName();
+    }
 }

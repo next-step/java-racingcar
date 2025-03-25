@@ -26,11 +26,11 @@ public class CarNames {
         return new CarNames(carNames);
     }
 
-    public List<CarName> getCarNames() {
-        return carNames;
-    }
-
     public Stream<CarName> stream() {
         return carNames.stream();
+    }
+
+    public int size() {
+        return carNames.size();
     }
 }

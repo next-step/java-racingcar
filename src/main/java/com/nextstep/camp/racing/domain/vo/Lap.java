@@ -9,7 +9,7 @@ public class Lap {
         this.values = List.copyOf(values);
     }
 
-    public List<CarMoves> getAllMoves() {
+    public List<CarMoves> getCarMoves() {
         return values;
     }
 }

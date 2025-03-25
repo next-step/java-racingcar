@@ -22,10 +22,9 @@ class RacingTest {
     @BeforeEach
     void setUp() {
         CarNames carNames = CarNames.of("car1,car2,car3,car4,car5");
-        Cars cars = Cars.of(carNames);
-        this.cars = cars;
-        this.racing = Racing.initialize(cars, lapCount);
+        this.cars = Cars.of(carNames);
         this.lapCount = PositiveInteger.of("3");
+        this.racing = Racing.initialize(cars, lapCount);
     }
 
     @Test
@@ -37,12 +36,12 @@ class RacingTest {
 
     @ParameterizedTest
     @MethodSource("provideCarQuantitiesAndLapCount")
-    void initialize_WithDifferentValues_ShouldCreateRacingObject(String carNamesStr, String lapCount) {
+    void initialize_WithDifferentValues_ShouldCreateRacingObject(String carNamesStr, String lapCountStr) {
         CarNames carNames = CarNames.of(carNamesStr);
         Cars cars = Cars.of(carNames);
-        PositiveInteger maxPosition = PositiveInteger.of(lapCount);
+        PositiveInteger lapCount = PositiveInteger.of(lapCountStr);
 
-        Racing racing = Racing.initialize(cars, maxPosition);
+        Racing racing = Racing.initialize(cars, lapCount);
 
         assertThat(racing).isNotNull();
         assertThat(racing.getCars()).isNotNull();
@@ -51,9 +50,37 @@ class RacingTest {
 
     static Stream<Arguments> provideCarQuantitiesAndLapCount() {
         return Stream.of(
-            Arguments.of("aj", "3"),
-            Arguments.of("sj,hj", "10"),
-            Arguments.of("aj,sj,hj", "20")
+                Arguments.of("aj", "3"),
+                Arguments.of("sj,hj", "10"),
+                Arguments.of("aj,sj,hj", "20")
         );
+    }
+
+    @Test
+    void start_ShouldRecordCorrectLapCount() {
+        // when
+        racing.start();
+
+        // then
+        assertThat(racing.getLaps()).hasSize(lapCount.value());
+    }
+
+    @Test
+    void start_ShouldDetermineWinners() {
+        // when
+        racing.start();
+
+        // then
+        assertThat(racing.getWinners()).isNotNull();
+        assertThat(racing.getWinners().size()).isGreaterThan(0);
+    }
+
+    @Test
+    void start_ShouldPreserveCarCountAfterRace() {
+        // when
+        racing.start();
+
+        // then
+        assertThat(racing.getCars().size()).isEqualTo(cars.size());
     }
 }

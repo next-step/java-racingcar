@@ -18,8 +18,16 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
+    private Cars(List<Car> values) {
+        this.values = values;
+    }
+
     public static Cars of(CarNames carNames) {
         return new Cars(carNames);
+    }
+
+    public static Cars of(List<Car> values) {
+        return new Cars(values);
     }
 
     public void move() {
@@ -57,5 +65,18 @@ public class Cars {
     private static CarMoves getCarLapRecord(Car car) {
         Moves moves = Moves.of(new ArrayList<>(car.getMoves().getValues()));
         return CarMoves.of(car, moves);
+    }
+
+    public void recordWinners() {
+        PositiveInteger maxPosition = getMaxPosition();
+        values.stream()
+            .filter(car -> car.getPosition().equals(maxPosition))
+            .forEach(Car::win);
+    }
+
+    public Cars getWinners() {
+        return values.stream()
+            .filter(Car::isWinner)
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::of));
     }
 }

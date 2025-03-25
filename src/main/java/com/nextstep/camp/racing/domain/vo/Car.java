@@ -5,6 +5,7 @@ import com.nextstep.camp.racing.common.vo.PositiveInteger;
 public class Car {
 
     private final CarName name;
+    private boolean isWinner = false;
 
     private final Moves moves = Moves.initialize();
 
@@ -30,5 +31,13 @@ public class Car {
 
     public CarName getName() {
         return name;
+    }
+
+    public void win() {
+        isWinner = true;
+    }
+
+    public boolean isWinner() {
+        return isWinner;
     }
 }

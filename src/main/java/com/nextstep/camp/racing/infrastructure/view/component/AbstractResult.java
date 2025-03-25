@@ -13,9 +13,4 @@ public abstract class AbstractResult<T> implements Element<T> {
 
     @Override
     public abstract void action();
-
-    @Override
-    public String getUntypedValue() {
-        return value;
-    }
 }

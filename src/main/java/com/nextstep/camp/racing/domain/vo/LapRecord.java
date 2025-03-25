@@ -9,6 +9,13 @@ public class LapRecord {
 
     private final List<Lap> laps = new ArrayList<>();
 
+    private LapRecord() {
+    }
+
+    public static LapRecord ready() {
+        return new LapRecord();
+    }
+
     public void record(Cars cars) {
         cars.move();
         List<CarMoves> snapshot = cars.getCarsLapRecord();

@@ -11,6 +11,7 @@ public class LapHistoryResult extends AbstractResult<String> {
     private final List<List<String>> laps;
 
     private static final String MOVE = "-";
+    private static final String COLON = " : ";
 
     private LapHistoryResult(List<LapResponse> laps) {
         super(DEFAULT_VALUE);
@@ -25,8 +26,21 @@ public class LapHistoryResult extends AbstractResult<String> {
                 .collect(Collectors.toList());
     }
 
-    private static String getCarLapSnapshot(CarMovesResponse moves) {
-        return MOVE.repeat((int) moves.getMoves().stream().filter(Boolean::booleanValue).count());
+    private static String getCarLapSnapshot(CarMovesResponse carMoves) {
+        StringBuilder builder = new StringBuilder();
+        String carName = carMoves.getCarName();
+        builder.append(carName).append(COLON).append(getMoves(carMoves));
+        return builder.toString();
+    }
+
+    private static String getMoves(CarMovesResponse carMoves) {
+        return MOVE.repeat(getMovesCount(carMoves));
+    }
+
+    private static int getMovesCount(CarMovesResponse carMoves) {
+        return (int) carMoves.getMoves().stream()
+                .filter(Boolean::booleanValue)
+                .count();
     }
 
     public static LapHistoryResult of(List<LapResponse> laps) {

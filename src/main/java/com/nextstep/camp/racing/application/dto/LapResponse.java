@@ -13,7 +13,7 @@ public class LapResponse {
     }
 
     public static LapResponse of(Lap lap) {
-        return new LapResponse(lap.getAllMoves()
+        return new LapResponse(lap.getCarMoves()
                 .stream()
                 .map(CarMovesResponse::of)
                 .collect(Collectors.toList()));
