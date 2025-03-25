@@ -1,15 +1,14 @@
-package model;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ui.presenter.RacingConsoleUIPresenter;
-import ui.presenter.RacingUIPresenter;
+import view.presenter.RacingConsoleUIPresenter;
+import view.presenter.RacingUIPresenter;
 
 public class Racing {
     private final Participants participants;
     private int remainTryCount;
-    private final RacingUIPresenter racingUIPresenter = new RacingConsoleUIPresenter();
 
     public Racing(String[] carNameList, int tryCount) {
         this.validate(carNameList, tryCount);
@@ -17,8 +16,8 @@ public class Racing {
 
         List<Car> carList = new ArrayList<>();
 
-        for (String s : carNameList) {
-            carList.add(new Car(s, null));
+        for (String carName : carNameList) {
+            carList.add(new Car(carName));
         }
 
         participants = new Participants(carList);
@@ -38,16 +37,9 @@ public class Racing {
         }
     }
 
-    private void moveOnce() {
+    public void moveOnce() {
         participants.moveAll();
         remainTryCount--;
-    }
-
-    public void moveUntilFinish() {
-        while (isRemainTry()) {
-            moveOnce();
-            racingUIPresenter.printCurrentStatus(this);
-        }
     }
 
     public boolean isRemainTry() {

@@ -1,6 +1,6 @@
-package ui.presenter;
+package view.presenter;
 
-import model.Racing;
+import domain.Racing;
 
 public interface RacingUIPresenter {
     void printCurrentStatus(Racing racing);

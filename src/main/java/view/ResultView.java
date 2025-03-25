@@ -1,9 +1,9 @@
-package ui;
+package view;
 
 
-import model.Racing;
-import ui.presenter.RacingConsoleUIPresenter;
-import ui.presenter.RacingUIPresenter;
+import domain.Racing;
+import view.presenter.RacingConsoleUIPresenter;
+import view.presenter.RacingUIPresenter;
 
 public class ResultView {
 
@@ -12,7 +12,10 @@ public class ResultView {
     public void doRaceAndPrintResult(Racing racing) {
         System.out.println("실행 결과");
 
-        racing.moveUntilFinish();
+        while(racing.isRemainTry()){
+            racing.moveOnce();
+            racingUIPresenter.printCurrentStatus(racing);
+        }
 
         this.racingUIPresenter.printCurrentStatus(racing);
         this.racingUIPresenter.printWinner(racing);
