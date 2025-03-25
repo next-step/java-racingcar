@@ -1,5 +1,4 @@
-package racingcar.racing;
-
+package racingcar.domain;
 
 import racingcar.movepolicy.MoveStrategy;
 

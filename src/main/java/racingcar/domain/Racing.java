@@ -1,4 +1,7 @@
-package racingcar.racing;
+package racingcar.domain;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racing {
     private final Cars cars;
@@ -17,14 +20,15 @@ public class Racing {
         }
     }
 
-    @Override
-    public String toString() {
-        cars.getCarsWithMaxDistance()
+    public List<String> getWinners() {
+        return cars.getCarsWithMaxDistance()
                 .stream()
                 .map(Car::getName)
-                .reduce((a, b) -> a + ", " + b)
-                .ifPresent(result::append);
-        result.append("가 최종 우승했습니다.");
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
         return result.toString();
     }
 }
