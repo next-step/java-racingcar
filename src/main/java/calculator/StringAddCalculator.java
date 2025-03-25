@@ -6,10 +6,13 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    private static final int DELIMITER_GROUP_INDEX = 1;
+    private static final int TOKEN_GROUP_INDEX = 2;
 
     public static int splitAndSum(String input) {
         String[] tokens = split(input);
-        validate(tokens);
+        validatePositive(tokens);
         return sum(tokens);
     }
 
@@ -25,7 +28,7 @@ public class StringAddCalculator {
         return splitByDefaultDelimiter(input);
     }
 
-    private static void validate(String[] tokens) {
+    private static void validatePositive(String[] tokens) {
         for (String token : tokens) {
             if (!token.matches("\\d+")) {
                 throw new RuntimeException("Invalid token: " + token);
@@ -46,15 +49,15 @@ public class StringAddCalculator {
     private static String[] splitByCustomDelimiter(String input) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
         if (matcher.find()) {
-            String delimiter = matcher.group(1);
-            return matcher.group(2).split(delimiter);
+            String delimiter = matcher.group(DELIMITER_GROUP_INDEX);
+            return matcher.group(TOKEN_GROUP_INDEX).split(delimiter);
         }
 
         throw new RuntimeException("Invalid custom delimiter input format.\n input : " + input);
     }
 
     private static String[] splitByDefaultDelimiter(String input) {
-        return input.split("[,:]");
+        return input.split(DEFAULT_DELIMITER);
     }
 
 }
