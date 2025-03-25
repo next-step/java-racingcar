@@ -31,7 +31,12 @@ public class Cars {
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public int size() {
+        return cars.size();
+    }
+
+    public boolean containsCarName(String name) {
+        return cars.stream()
+                .anyMatch(car -> car.getName().equals(name));
     }
 }
