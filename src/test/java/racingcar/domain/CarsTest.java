@@ -43,4 +43,22 @@ class CarsTest {
 
         assertThat(cars.move(numberGenerator)).hasSize(testCars.size());
     }
+
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료하면 우승자가 반환된다.")
+    void findWinners() {
+        Car carLuna = new Car("luna", 0);
+        Car carStar = new Car("star", 3);
+        Car carSun = new Car("sun", 2);
+        List<Car> cars = Arrays.asList(carLuna, carStar, carSun);
+        int runCount = 0;
+
+        CarRace carRace = new CarRace(cars, runCount);
+        List<Car> winners = carRace.findWinners();
+
+        assertThat(winners)
+                .hasSize(1)
+                .contains(carStar);
+    }
 }

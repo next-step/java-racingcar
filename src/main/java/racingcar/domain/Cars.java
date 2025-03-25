@@ -33,4 +33,19 @@ public class Cars {
                 .map(car -> car.move(numberGenerator))
                 .collect(Collectors.toList());
     }
+
+    public List<Car> findWinners() {
+        int winnerPosition = findWinnerPosition();
+        return cars.stream()
+                .filter(car -> car.isPositionSame(winnerPosition))
+                .collect(Collectors.toList());
+    }
+
+    private int findWinnerPosition() {
+        int winnerPosition = 0;
+        for(Car car : cars) {
+            winnerPosition = car.max(winnerPosition);
+        }
+        return winnerPosition;
+    }
 }

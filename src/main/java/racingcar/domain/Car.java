@@ -53,4 +53,11 @@ public class Car {
         position++;
     }
 
+    public int max(int compare) {
+        return Math.max(position, compare);
+    }
+
+    public boolean isPositionSame(int winnerPosition) {
+        return position == winnerPosition;
+    }
 }

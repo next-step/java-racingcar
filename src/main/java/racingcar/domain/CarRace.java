@@ -12,28 +12,10 @@ public class CarRace {
     private final Cars cars;
     private final int runCount;
 
-    public CarRace(int carCount, int runCount) {
+    public CarRace(List<Car> cars, int runCount) {
         this.numberGenerator = new RandomNumberGenerator();
-        this.cars = new Cars(createCars(carCount));
+        this.cars = new Cars(cars);
         this.runCount = runCount;
-    }
-
-    public CarRace(List<String> carNames, int runCount) {
-        this.numberGenerator = new RandomNumberGenerator();
-        this.cars = new Cars(createCars(carNames));
-        this.runCount = runCount;
-    }
-
-    private List<Car> createCars(int carCount) {
-        return IntStream.range(0, carCount)
-                .mapToObj(i -> new Car())
-                .collect(Collectors.toList());
-    }
-
-    public List<Car> createCars(List<String> carNames) {
-        return carNames.stream()
-                .map(carName -> new Car(carName))
-                .collect(Collectors.toList());
     }
 
     public List<List<Integer>> run() {
@@ -42,10 +24,12 @@ public class CarRace {
                 .collect(Collectors.toList());
     }
 
-
     private List<Integer> runOnce() {
         return cars.move(numberGenerator);
     }
 
+    public List<Car> findWinners() {
+        return cars.findWinners();
+    }
 }
 
