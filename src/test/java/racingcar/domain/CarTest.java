@@ -6,9 +6,18 @@ import org.junit.jupiter.api.Test;
 import racingcar.util.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
+
+    @Test
+    @DisplayName("자동차의 이름이 5자를 초과하면, 에러가 발생한다.")
+    void carNameShouldNotExceed5() {
+        String longName = "flower";
+        assertThatThrownBy(() -> new Car(longName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("자동차 위치가 음수이면, 예외가 발생한다.")

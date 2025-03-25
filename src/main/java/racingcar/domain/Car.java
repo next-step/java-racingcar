@@ -1,9 +1,10 @@
 package racingcar.domain;
 
 import racingcar.util.NumberGenerator;
-import racingcar.util.RandomNumberGenerator;
 
 public class Car {
+    private static final int NAME_MAX_LENGTH = 5;
+    private static final int POSITION_MIN_VALUE = 0;
     private static final int MOVE_THRESHOLD = 4;
     private final String name;
     private int position;
@@ -21,13 +22,20 @@ public class Car {
     }
 
     public Car(String name, int position){
+        validateNameLength(name);
         validatePositive(position);
-        this.position = position;
         this.name = name;
+        this.position = position;
+    }
+
+    private void validateNameLength(String name) {
+        if(name.length() > NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException(String.format( "length of name should be less than %d", NAME_MAX_LENGTH));
+        }
     }
 
     private void validatePositive(int position) {
-        if (position < 0) {
+        if (position < POSITION_MIN_VALUE) {
             throw new IllegalArgumentException("position은 0 이상이어야 합니다. position:" + position);
         }
     }
