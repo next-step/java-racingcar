@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class Report {
 
     private final List<Car> cars;
+
     public Report(List<Car> cars) {
         this.cars = cars;
     }
@@ -23,7 +24,7 @@ public class Report {
         return cars;
     }
 
-    public static List<String> findChampions(List<Car> cars) {
+    public List<String> findChampions() {
         var championsScore = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max();
