@@ -1,29 +1,29 @@
 package com.nextstep.camp.racing.application.dto;
 
-import com.nextstep.camp.racing.domain.vo.Lap;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LapResponse {
-    private final List<MovesResponse> moves;
+import com.nextstep.camp.racing.domain.vo.Lap;
 
-    private LapResponse(List<MovesResponse> moves) {
+public class LapResponse {
+    private final List<CarMovesResponse> moves;
+
+    private LapResponse(List<CarMovesResponse> moves) {
         this.moves = moves;
     }
 
     public static LapResponse of(Lap lap) {
         return new LapResponse(lap.getAllMoves()
                 .stream()
-                .map(MovesResponse::of)
+                .map(CarMovesResponse::of)
                 .collect(Collectors.toList()));
     }
 
-    public static LapResponse of(List<MovesResponse> moves) {
+    public static LapResponse of(List<CarMovesResponse> moves) {
         return new LapResponse(moves);
     }
 
-    public List<MovesResponse> getAllMoves() {
+    public List<CarMovesResponse> getCarMoves() {
         return moves;
     }
 }

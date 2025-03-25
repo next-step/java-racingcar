@@ -9,26 +9,25 @@ public class Racing {
 
     private final Cars cars;
     private final PositiveInteger lapCount;
-    private final LapHistory lapHistory = new LapHistory();
+    private final LapRecord lapRecord = new LapRecord();
 
-    private Racing(PositiveInteger carQuantity, PositiveInteger lapCount) {
-        this.cars = Cars.of(carQuantity);
+    private Racing(Cars cars, PositiveInteger lapCount) {
+        this.cars = cars;
         this.lapCount = lapCount;
     }
 
-    public static Racing initialize(PositiveInteger carQuantity, PositiveInteger maxPosition) {
-        return new Racing(carQuantity, maxPosition);
+    public static Racing initialize(Cars cars, PositiveInteger maxPosition) {
+        return new Racing(cars, maxPosition);
     }
 
     public void start() {
         while (!isFinished()) {
-            cars.move();
-            lapHistory.record(cars);
+            lapRecord.record(cars);
         }
     }
 
     private boolean isFinished() {
-        return cars.getMaxPosition().equals(lapCount);
+        return lapRecord.size().equals(lapCount);
     }
 
     public Cars getCars() {
@@ -36,6 +35,6 @@ public class Racing {
     }
 
     public List<Lap> getLaps() {
-        return lapHistory.getLaps();
+        return lapRecord.getLaps();
     }
 }

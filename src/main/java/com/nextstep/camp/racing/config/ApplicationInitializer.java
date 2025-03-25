@@ -25,7 +25,7 @@ public class ApplicationInitializer {
         RacingResultViewHandler resultViewHandler = context.getBean(RacingResultViewHandler.class);
 
         InputData inputData = createRacingViewHandler.handleUserInput();
-        RacingRequest request = RacingRequest.of(inputData.getQuantity(), inputData.getMaxPosition());
+        RacingRequest request = RacingRequest.of(inputData.getCarNames(), inputData.getMaxPosition());
         RacingResponse response = controller.startRace(request);
         resultViewHandler.handle(response);
 

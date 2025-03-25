@@ -48,10 +48,6 @@ public class Moves {
         return values;
     }
 
-    public Move getLast() {
-        return values.get(values.size() - 1);
-    }
-
     public Moves append(Move move) {
         List<Move> newValues = new ArrayList<>(values);
         newValues.add(move);

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.nextstep.camp.racing.application.dto.RacingResponse;
 
-public class RacingResult extends AbstractResult {
+public class RacingResult extends AbstractResult<String> {
 
     private final LapHistoryResult lapHistoryResult;
 
@@ -44,6 +44,11 @@ public class RacingResult extends AbstractResult {
 
     @Override
     public String getLabel() {
+        return "";
+    }
+
+    @Override
+    public String getValue() {
         return "";
     }
 

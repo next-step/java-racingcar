@@ -3,11 +3,11 @@ package com.nextstep.camp.racing.infrastructure.view.component;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-import com.nextstep.camp.racing.common.vo.PositiveInteger;
 import com.nextstep.camp.racing.infrastructure.view.Element;
 
-public abstract class AbstractInput implements Element {
-    protected PositiveInteger value;
+public abstract class AbstractInput<T> implements Element<T> {
+    protected String untypedValue;
+    protected T value;
 
     private static final String ERROR_MESSAGE = "잘못된 입력입니다. 다시 입력해주세요.";
     private final Scanner scanner;
@@ -20,8 +20,8 @@ public abstract class AbstractInput implements Element {
         this.scanner = scanner;
     }
 
-    public PositiveInteger getValue() {
-        return value;
+    public String getUntypedValue() {
+        return untypedValue;
     }
 
     @Override
@@ -31,7 +31,7 @@ public abstract class AbstractInput implements Element {
 
     private void requestInput() {
         System.out.println(getLabel());
-        this.value = PositiveInteger.of(readValidValue());
+        this.untypedValue = readValidValue();
     }
 
     private String readValidValue() {

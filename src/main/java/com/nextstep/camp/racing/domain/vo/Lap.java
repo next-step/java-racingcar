@@ -1,16 +1,15 @@
 package com.nextstep.camp.racing.domain.vo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lap {
-    private final List<Moves> allMoves;
+    private final List<CarMoves> values;
 
-    public Lap(List<Moves> allMoves) {
-        this.allMoves = List.copyOf(allMoves);
+    public Lap(List<CarMoves> values) {
+        this.values = List.copyOf(values);
     }
 
-    public List<Moves> getAllMoves() {
-        return allMoves;
+    public List<CarMoves> getAllMoves() {
+        return values;
     }
 }
