@@ -1,4 +1,4 @@
-package RacingCar;
+package RacingCar.model;
 
 import NumberGenerator.TestNumberGenerator;
 import org.junit.jupiter.api.Test;
@@ -21,9 +21,8 @@ public class RacingWinnerFinderTest {
             car.move();
         }
 
-        RacingWinnerFinder finder = new RacingWinnerFinder(cars);
-        finder.findWinners(1);
-        RacingCar[] winners = finder.winners();
+        RacingWinnerFinder finder = new RacingWinnerFinder();
+        RacingCar[] winners = finder.findWinners(cars,1);
         for (int i = 0; i < winners.length; i++)
             assertEquals(winners[i].name(), expectedWinners[i]);
     }

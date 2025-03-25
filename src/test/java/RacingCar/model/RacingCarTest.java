@@ -1,4 +1,4 @@
-package RacingCar;
+package RacingCar.model;
 
 import NumberGenerator.TestNumberGenerator;
 import org.junit.jupiter.api.*;
