@@ -6,13 +6,12 @@ public class CarConsoleUIPresenter implements CarUIPresenter {
     @Override
     public void print(Car car) {
         int position = car.getCurrentPosition();
+        StringBuilder output = new StringBuilder();
 
-        System.out.print(car.getCarName() + " : ");
+        output.append(car.getCarName()).append(" : ");
+        output.append("-".repeat(position));
+        output.append("\n");
 
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
-
-        System.out.print("\n");
+        System.out.print(output);
     }
 }
