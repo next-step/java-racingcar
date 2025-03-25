@@ -1,14 +1,7 @@
-import ui.InputView;
-import ui.OutputView;
+import controller.GrandPrixController;
 
 public class Main {
     public static void main(String[] args) {
-        var grandPrix = InputView.makeGrandPrix();
-
-        while (!grandPrix.isFinished()) {
-            grandPrix.play();
-            OutputView.printPosition(grandPrix.report());
-        }
-        OutputView.printChampion(grandPrix.report());
+        GrandPrixController.run();
     }
 }
