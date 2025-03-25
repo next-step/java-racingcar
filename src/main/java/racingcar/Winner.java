@@ -21,8 +21,8 @@ public class Winner {
   private void findWinners(ArrayList<Car> winners) {
     int maxScore = getMaxScore();
     for (int i = 0; i < carNames.size(); i++) {
-      if (result.getCar(i).getScore() == maxScore) {
-        winners.add(result.getCar(i));
+      if (result.at(i).isWinner(maxScore)) {
+        winners.add(result.at(i));
       }
     }
   }
@@ -30,8 +30,8 @@ public class Winner {
   private int getMaxScore() {
     int maxScore = 0;
     for (int i = 0; i < carNames.size(); i++) {
-      if (result.getCar(i).getScore() > maxScore) {
-        maxScore = result.getCar(i).getScore();
+      if (result.at(i).hasHigherScore(maxScore)) {
+        maxScore = result.at(i).getScore();
       }
     }
     return maxScore;

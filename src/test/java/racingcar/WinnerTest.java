@@ -9,13 +9,13 @@ class WinnerTest {
 
   @Test
   void 단독_우승() {
-    Names carNames = new Names("car1,car2,car3");
+    Names carNames = new Names(new String[]{"car1", "car2", "car3"});
     Result result = new Result();
 
     Cars finalResult = new Cars(carNames);
-    finalResult.getCar(0).addScore(5);
-    finalResult.getCar(1).addScore(3);
-    finalResult.getCar(2).addScore(4);
+    finalResult.at(0).addScore(5);
+    finalResult.at(1).addScore(3);
+    finalResult.at(2).addScore(4);
     result.record(0, finalResult);
 
     Winner winner = new Winner(carNames, result);
@@ -27,13 +27,13 @@ class WinnerTest {
 
   @Test
   void 일부_공동_우승() {
-    Names carNames = new Names("car1,car2,car3");
+    Names carNames = new Names(new String[]{"car1", "car2", "car3"});
     Result result = new Result();
 
     Cars finalResult = new Cars(carNames);
-    finalResult.getCar(0).addScore(5);
-    finalResult.getCar(1).addScore(5);
-    finalResult.getCar(2).addScore(3);
+    finalResult.at(0).addScore(5);
+    finalResult.at(1).addScore(5);
+    finalResult.at(2).addScore(3);
     result.record(0, finalResult);
 
     Winner winner = new Winner(carNames, result);
@@ -46,13 +46,13 @@ class WinnerTest {
 
   @Test
   void 전체_공동_우승() {
-    Names carNames = new Names("car1,car2,car3");
+    Names carNames = new Names(new String[]{"car1", "car2", "car3"});
     Result result = new Result();
 
     Cars finalResult = new Cars(carNames);
-    finalResult.getCar(0).addScore(3);
-    finalResult.getCar(1).addScore(3);
-    finalResult.getCar(2).addScore(3);
+    finalResult.at(0).addScore(3);
+    finalResult.at(1).addScore(3);
+    finalResult.at(2).addScore(3);
     result.record(0, finalResult);
 
     Winner winner = new Winner(carNames, result);
@@ -64,12 +64,12 @@ class WinnerTest {
 
   @Test
   void 아무도_전진하지_않은_경우() {
-    Names carNames = new Names("car1,car2");
+    Names carNames = new Names(new String[]{"car1", "car2"});
     Result result = new Result();
 
     Cars finalResult = new Cars(carNames);
-    finalResult.getCar(0).addScore(0);
-    finalResult.getCar(1).addScore(0);
+    finalResult.at(0).addScore(0);
+    finalResult.at(1).addScore(0);
     result.record(0, finalResult);
 
     Winner winner = new Winner(carNames, result);

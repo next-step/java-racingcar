@@ -9,31 +9,29 @@ import org.junit.jupiter.api.Test;
 public class NamesTest {
 
   @Test
-  void getNames() {
-    String names = "car1,car2,car3";
-    Names n = new Names(names);
+  void getNamesByIndex() {
+    Names n = new Names(new String[]{"car1", "car2", "car3"});
     assertEquals(Arrays.asList("car1", "car2", "car3"), n.getNames());
   }
 
   @Test
   void validate() {
-    String names = "car1,car2,car12345";
-    assertThrows(IllegalArgumentException.class, () -> new Names(names));
+    assertThrows(IllegalArgumentException.class,
+        () -> new Names(new String[]{"car1", "car2", "car12345"}));
+    assertThrows(IllegalArgumentException.class, () -> new Names(new String[]{"car1", "car2", "car12345"}));
   }
 
   @Test
   void size() {
-    String names = "car1,car2,car3";
-    Names n = new Names(names);
+    Names n = new Names(new String[]{"car1", "car2", "car3"});
     assertEquals(3, n.size());
   }
 
   @Test
-  void getCarName() {
-    String names = "car1,car2,car3";
-    Names n = new Names(names);
-    assertEquals("car1", n.getCarName(0));
-    assertEquals("car2", n.getCarName(1));
-    assertEquals("car3", n.getCarName(2));
+  void getNameByIndex() {
+    Names n = new Names(new String[]{"car1", "car2", "car3"});
+    assertEquals("car1", n.getNameByIndex(0));
+    assertEquals("car2", n.getNameByIndex(1));
+    assertEquals("car3", n.getNameByIndex(2));
   }
 }

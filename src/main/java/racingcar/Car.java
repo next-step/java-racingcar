@@ -3,9 +3,8 @@ package racingcar;
 public class Car {
 
   private static final int DEFAULT_SCORE = 0;
-  private int score;
-
   private final String name;
+  private int score;
 
   public Car(String name) {
     this(name, DEFAULT_SCORE);
@@ -28,11 +27,19 @@ public class Car {
     score++;
   }
 
-  public String showPosition() {
-    return "-".repeat(score);
+  public String showPosition(String marker) {
+    return marker.repeat(score);
   }
 
   public String getName() {
-    return name;
+    return this.name;
+  }
+
+  public boolean isWinner(int winnerScore) {
+    return winnerScore == this.score;
+  }
+
+  public boolean hasHigherScore(int comparisonScore) {
+    return this.score > comparisonScore;
   }
 }

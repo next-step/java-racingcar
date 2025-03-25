@@ -8,9 +8,10 @@ import racingcar.Result;
 
 public class ResultView {
 
+  private static final String MARKER = "-";
+
   private static StringBuilder buildWinnerNames(List<Car> winners) {
     StringBuilder winnerNames = new StringBuilder();
-
     for (int i = 0; i < winners.size(); i++) {
       winnerNames.append(winners.get(i).getName());
       if (i < winners.size() - 1) {
@@ -29,7 +30,7 @@ public class ResultView {
 
   private void printRound(Names names, Cars cars) {
     for (int i = 0; i < cars.size(); i++) {
-      System.out.println(names.getCarName(i) + " : " + cars.getCar(i).showPosition());
+      System.out.println(names.getNameByIndex(i) + " : " + cars.at(i).showPosition(MARKER));
     }
     System.out.println();
   }

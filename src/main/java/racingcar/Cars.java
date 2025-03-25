@@ -10,7 +10,7 @@ public class Cars {
   public Cars(Names carNames) {
     cars = new ArrayList<>();
     for (int i = 0; i < carNames.size(); i++) {
-      cars.add(new Car(carNames.getCarName(i)));
+      cars.add(new Car(carNames.getNameByIndex(i)));
     }
   }
 
@@ -24,7 +24,7 @@ public class Cars {
     return cars.size();
   }
 
-  public Car getCar(int index) {
+  public Car at(int index) {
     return cars.get(index);
   }
 

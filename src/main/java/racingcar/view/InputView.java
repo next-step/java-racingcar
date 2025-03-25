@@ -12,12 +12,13 @@ public class InputView {
     scanner = new Scanner(System.in);
   }
 
-  public String getCarNames() {
+  public String[] readCarNames() {
     System.out.println(CAR_NAMES_QUESTION);
-    return scanner.nextLine();
+    String input = scanner.nextLine();
+    return input.split(",");
   }
 
-  public int getRoundCount() {
+  public int readRoundCount() {
     System.out.println(ROUND_COUNT_QUESTION);
     return scanner.nextInt();
   }

@@ -32,6 +32,6 @@ public class CarTest {
   @Test
   void showPosition() {
     Car car = new Car("test", 3);
-    assertEquals("---", car.showPosition());
+    assertEquals("---", car.showPosition("-"));
   }
 }

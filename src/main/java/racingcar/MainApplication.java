@@ -8,8 +8,8 @@ public class MainApplication {
 
   public static void main(String[] args) {
     InputView inputView = new InputView();
-    Names carNames = new Names(inputView.getCarNames());
-    int roundCount = inputView.getRoundCount();
+    Names carNames = new Names(inputView.readCarNames());
+    int roundCount = inputView.readRoundCount();
 
     RaceEvaluator raceEvaluator = new RaceEvaluator();
 

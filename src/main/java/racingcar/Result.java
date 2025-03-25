@@ -17,7 +17,7 @@ public class Result {
     }
 
     for (int i = 0; i < roundResult.size(); i++) {
-      roundResult.getCar(i).addScore(result.get(round - 1).getCar(i).getScore());
+      roundResult.at(i).addScore(result.get(round - 1).at(i).getScore());
     }
 
     return roundResult;

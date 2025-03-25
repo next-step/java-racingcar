@@ -16,17 +16,17 @@ public class RacerTest {
       }
     };
     RaceEvaluator evaluator = new RaceEvaluator(testRandom);
-    Names names = new Names("car1,car2,car3");
+    Names names = new Names(new String[]{"car1", "car2", "car3"});
     Racer racer = new Racer(names, 3, evaluator);
 
     Result result = racer.race();
 
-    assertThat(result.getRoundResult(0).getCar(0).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(0).getCar(1).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(1).getCar(0).getScore()).isEqualTo(2);
-    assertThat(result.getRoundResult(1).getCar(1).getScore()).isEqualTo(2);
-    assertThat(result.getRoundResult(2).getCar(0).getScore()).isEqualTo(3);
-    assertThat(result.getRoundResult(2).getCar(1).getScore()).isEqualTo(3);
+    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).at(0).getScore()).isEqualTo(2);
+    assertThat(result.getRoundResult(1).at(1).getScore()).isEqualTo(2);
+    assertThat(result.getRoundResult(2).at(0).getScore()).isEqualTo(3);
+    assertThat(result.getRoundResult(2).at(1).getScore()).isEqualTo(3);
   }
 
   @Test
@@ -38,17 +38,17 @@ public class RacerTest {
       }
     };
     RaceEvaluator evaluator = new RaceEvaluator(testRandom);
-    Names names = new Names("car1,car2,car3");
+    Names names = new Names(new String[]{"car1", "car2", "car3"});
     Racer racer = new Racer(names, 3, evaluator);
 
     Result result = racer.race();
 
-    assertThat(result.getRoundResult(0).getCar(0).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(0).getCar(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(1).getCar(0).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(1).getCar(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(2).getCar(0).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(2).getCar(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).at(0).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).at(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(2).at(0).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(2).at(1).getScore()).isEqualTo(0);
   }
 
   @Test
@@ -63,16 +63,16 @@ public class RacerTest {
       }
     };
     RaceEvaluator evaluator = new RaceEvaluator(testRandom);
-    Names names = new Names("car1,car2,car3");
+    Names names = new Names(new String[]{"car1", "car2", "car3"});
     Racer racer = new Racer(names, 2, evaluator);
 
     Result result = racer.race();
 
-    assertThat(result.getRoundResult(0).getCar(0).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(0).getCar(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(0).getCar(2).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(1).getCar(0).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(1).getCar(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(1).getCar(2).getScore()).isEqualTo(2);
+    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(2).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).at(0).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).at(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).at(2).getScore()).isEqualTo(2);
   }
 }
