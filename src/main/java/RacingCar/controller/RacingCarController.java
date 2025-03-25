@@ -9,10 +9,13 @@ public class RacingCarController {
     private static final RacingCarView view = new RacingCarView();
     private static final NumberGenerator numberGenerator = new RandomNumberGenerator();
     private int maxCarPosition = 0;
+    private String[] carNames;
+    private int tryNum;
     private static final int MOVE_CONDITION = 4;
 
     public void start() {
-        view.scanInputs();
+        this.carNames = view.scanCarNames();
+        this.tryNum = view.scanTryNum();
         view.printResultNotice();
         run();
         RacingWinnerFinder winnerFinder = new RacingWinnerFinder(this.cars);
@@ -28,18 +31,17 @@ public class RacingCarController {
     // 🔹 Internal logic methods
     // ==============================
     private void initializeCars(int carNum) {
-        this.cars = new RacingCar[view.carNum()];
-        String[] carNames = view.carNames();
+        this.cars = new RacingCar[carNum];
         for (int i = 0; i < carNum; i++) {
             cars[i] = new RacingCar(MOVE_CONDITION, numberGenerator, carNames[i]);
         }
     }
 
     private void run() {
-        int[] positions = new int[view.carNum()];
-        initializeCars(view.carNum());
-        for (int i = 0; i < view.tryNum(); i++) {
-            for (int j = 0; j < view.carNum(); j++) {
+        int[] positions = new int[carNames.length];
+        initializeCars(carNames.length);
+        for (int i = 0; i < tryNum; i++) {
+            for (int j = 0; j < carNames.length; j++) {
                 cars[j].move();
                 if (cars[j].position() > this.maxCarPosition) {
                     this.maxCarPosition = cars[j].position();
