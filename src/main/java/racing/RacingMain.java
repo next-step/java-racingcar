@@ -1,6 +1,7 @@
 package racing;
 
 import racing.domain.Car;
+import racing.domain.Cars;
 import racing.domain.Judgement;
 import racing.domain.RacingGame;
 import racing.views.InputView;
@@ -14,7 +15,7 @@ public class RacingMain {
 
         String[] carNames = InputView.inputCarNames();
 
-        RacingGame racingGame = new RacingGame(carNames);
+        RacingGame racingGame = new RacingGame(Cars.from(carNames));
 
         int tryTimes = InputView.inputTryTimes();
 
@@ -22,8 +23,9 @@ public class RacingMain {
 
         for (int j = 0; j < tryTimes; j++) {
             racingGame.moveCars();
+            ResultView.printResultWithName(racingGame.getCars());
         }
 
-        ResultView.printWinner(new Judgement(racingGame.getCars()).getWinnerCars());
+        ResultView.printWinner(racingGame.getWinnerCars());
     }
 }
