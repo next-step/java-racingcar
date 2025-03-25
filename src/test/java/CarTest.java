@@ -27,4 +27,13 @@ public class CarTest {
             () -> assertThat(car2.compareTo(car1)).isEqualTo(-1)
         );
     }
+
+    @Test
+    @DisplayName("자동차 이동 테스트")
+    public void moveTest() {
+        Car pobi = new Car("pobi", new Position(0));
+        Car honux = new Car("honux", new Position(1));
+        pobi.move(true);
+        assertThat(pobi.compareTo(honux)).isEqualTo(0);
+    }
 }
