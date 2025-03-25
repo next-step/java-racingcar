@@ -10,7 +10,7 @@ public class Cars {
   private final List<Car> cars;
 
   public Cars(List<Car> cars) {
-    this.cars = List.copyOf(cars);
+    this.cars = cars;
   }
 
   public static Cars fromNames(List<String> names) {
@@ -20,26 +20,20 @@ public class Cars {
     return new Cars(cars);
   }
 
-  public Cars withAddedCar(Car car) {
-    List<Car> newCars = new ArrayList<>(this.cars);
-    newCars.add(car);
-    return new Cars(newCars);
-  }
-
   public List<Car> getCars() {
-    return Collections.unmodifiableList(cars);
+    return cars;
   }
 
-  public List<String> getWinners(Cars records) {
-    int maxPosition = getMaxPosition(records);
-    return records.stream()
-        .filter(car -> car.getPosition() == maxPosition)
+  public List<String> getWinners() {
+    int maxPosition = getMaxPosition();
+    return cars.stream()
+        .filter(car -> car.equalsPosition(maxPosition))
         .map(Car::getName)
         .collect(Collectors.toList());
   }
 
-  private int getMaxPosition(Cars records) {
-    return records.stream()
+  private int getMaxPosition() {
+    return cars.stream()
         .mapToInt(Car::getPosition)
         .max()
         .orElse(0);

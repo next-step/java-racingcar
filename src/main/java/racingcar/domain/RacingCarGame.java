@@ -15,15 +15,11 @@ public class RacingCarGame {
     Cars cars = Cars.fromNames(carNames);
     Racing racing = new Racing(cars, new RandomNumberGenerator());
 
-    Cars lastRecords = null;
     for (int i = 0; i < rounds; i++) {
-      lastRecords = racing.start(); // 각 라운드 실행 후 결과 저장
-      ResultView.printResult(lastRecords);
+      ResultView.printResult(racing.start());
     }
-    if (lastRecords != null) {
-      List<String> winners = cars.getWinners(lastRecords);
-      ResultView.printWinner(winners);
-    }
+    List<String> winners = cars.getWinners();
+    ResultView.printWinner(winners);
   }
 
 }
