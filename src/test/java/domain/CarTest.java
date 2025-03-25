@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ public class CarTest {
 
     @Test
     public void car_name의_길이는_5자를_넘을수없다(){
-        assertThatThrownBy(() -> new Car("charles", null))
+        assertThatThrownBy(() -> new Car("charles"))
             .hasMessageContaining("name은 5자를 초과할 수 없습니다.");
 
     }

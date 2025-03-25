@@ -1,10 +1,10 @@
-package ui.presenter;
+package view.presenter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.Car;
-import model.Racing;
+import domain.Car;
+import domain.Racing;
 
 public class RacingConsoleUIPresenter implements RacingUIPresenter {
 
@@ -23,7 +23,7 @@ public class RacingConsoleUIPresenter implements RacingUIPresenter {
 
     @Override
     public void printWinner(Racing racing) {
-                if (racing.isRemainTry()) {
+        if (racing.isRemainTry()) {
             throw new RuntimeException("아직 시도할 횟수가 남아 있습니다.");
         }
 

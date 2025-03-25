@@ -1,8 +1,8 @@
-package ui;
+package view;
 
 import java.util.Scanner;
 
-import model.Racing;
+import domain.Racing;
 import utils.StringAddCalculator;
 
 public class InputView {

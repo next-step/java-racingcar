@@ -1,8 +1,8 @@
 
 
-import ui.InputView;
-import ui.ResultView;
-import model.Racing;
+import view.InputView;
+import view.ResultView;
+import domain.Racing;
 
 public class Main {
 

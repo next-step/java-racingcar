@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 import strategy.MoveStrategy;
 import strategy.RandomMoveStrategy;
@@ -6,22 +6,21 @@ import strategy.RandomMoveStrategy;
 public class Car {
     private final CarName carName;
     private int currentPosition = 1;
-    private final MoveStrategy moveStrategy;
+    private MoveStrategy moveStrategy;
+
+    public Car(String name){
+        this.carName = new CarName(name);
+        moveStrategy = new RandomMoveStrategy();
+    }
 
     public Car(String name, MoveStrategy moveStrategy) {
-        this.carName = new CarName(name);
-
-        if (moveStrategy == null) {
-            moveStrategy = new RandomMoveStrategy();
-        }
-
+        this(name);
         this.moveStrategy = moveStrategy;
     }
 
-
     // 테스트용
     public Car(String name, int position) {
-        this(name, null);
+        this(name);
         this.currentPosition = position;
     }
 

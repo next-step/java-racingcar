@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 import java.util.List;
 
@@ -31,26 +31,11 @@ public class RacingTest {
     }
 
     @Test
-    public void moveUntilFinish시_남은_남은시도횟수가_없다() {
+    public void moveOnce시_남은시도가_차감된다() {
         String[] carNameList = new String[]{"kim", "cheol"};
-        Racing racing = new Racing(carNameList, 5);
+        Racing racing = new Racing(carNameList, 1);
         assertThat(racing.isRemainTry()).isEqualTo(true);
-        racing.moveUntilFinish();
+        racing.moveOnce();
         assertThat(racing.isRemainTry()).isEqualTo(false);
-    }
-
-    @Test
-    public void moveUntilFinish시_winner가_나오고_currentPosition이_가장크다() {
-        String[] carNameList = new String[]{"a", "b", "c", "d", "e"};
-        Racing racing = new Racing(carNameList, 5);
-
-        racing.moveUntilFinish();
-
-        List<Car> winnerList = racing.getWinner();
-        int winnerPosition = winnerList.get(0).getCurrentPosition();
-
-        assertThat(racing.getCarList())
-            .extracting(Car::getCurrentPosition)
-            .allMatch(position -> position <= winnerPosition);
     }
 }

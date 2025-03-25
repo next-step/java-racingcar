@@ -1,6 +1,6 @@
-package ui.presenter;
+package view.presenter;
 
-import model.Car;
+import domain.Car;
 
 public class CarConsoleUIPresenter implements CarUIPresenter {
     @Override
