@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,6 +16,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputViewTest {
+
+    @Test
+    @DisplayName("사용자는 자동차의 이름을 쉼표로 구분하여 입력한다.")
+    void inputCarNames() {
+        String carNameText = "carOne,carTwo,CarThree";
+        System.setIn(new ByteArrayInputStream(carNameText.getBytes()));
+        InputView inputView = new InputView();
+        
+        assertThat(inputView.getCarNames()).hasSize(3);
+    }
+
     @ParameterizedTest
     @CsvSource(delimiter = ',', value = {"3,5", "4,5"})
     @DisplayName("자동차 대수와 시도할 회수를 순서대로 입력받는 안내문구를 출력하고 입력받는다.")

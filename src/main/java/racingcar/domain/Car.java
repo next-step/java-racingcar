@@ -5,15 +5,25 @@ import racingcar.util.RandomNumberGenerator;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
+    private final String name;
     private int position;
 
-    public Car() {
-        this(0);
+    public Car(){
+        this(null, 0);
     }
 
-    public Car(int position) {
+    public Car(int position){
+        this(null, position);
+    }
+
+    public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position){
         validatePositive(position);
         this.position = position;
+        this.name = name;
     }
 
     private void validatePositive(int position) {

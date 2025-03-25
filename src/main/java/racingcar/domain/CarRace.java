@@ -18,10 +18,10 @@ public class CarRace {
         this.runCount = runCount;
     }
 
-    public List<List<Integer>> run() {
-        return IntStream.range(0, runCount)
-                .mapToObj(i -> runOnce())
-                .collect(Collectors.toList());
+    public CarRace(List<String> carNames, int runCount) {
+        this.numberGenerator = new RandomNumberGenerator();
+        this.cars = new Cars(createCars(carNames));
+        this.runCount = runCount;
     }
 
     private List<Car> createCars(int carCount) {
@@ -29,6 +29,19 @@ public class CarRace {
                 .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
     }
+
+    public List<Car> createCars(List<String> carNames) {
+        return carNames.stream()
+                .map(carName -> new Car(carName))
+                .collect(Collectors.toList());
+    }
+
+    public List<List<Integer>> run() {
+        return IntStream.range(0, runCount)
+                .mapToObj(i -> runOnce())
+                .collect(Collectors.toList());
+    }
+
 
     private List<Integer> runOnce() {
         return cars.move(numberGenerator);

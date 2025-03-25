@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -28,4 +30,8 @@ public class InputView {
         return value;
     }
 
+    public List<String> getCarNames() {
+        String carNameText = scanner.nextLine();
+        return Arrays.asList(carNameText.split(","));
+    }
 }
