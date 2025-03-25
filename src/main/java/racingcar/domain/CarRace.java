@@ -1,16 +1,21 @@
 package racingcar.domain;
 
+import racingcar.util.NumberGenerator;
+import racingcar.util.RandomNumberGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarRace {
-    private final int runCount;
+    private final NumberGenerator numberGenerator;
     private final Cars cars;
+    private final int runCount;
 
     public CarRace(int carCount, int runCount) {
-        this.runCount = runCount;
+        this.numberGenerator = new RandomNumberGenerator();
         this.cars = new Cars(createCars(carCount));
+        this.runCount = runCount;
     }
 
     public List<List<Integer>> run() {
@@ -26,7 +31,7 @@ public class CarRace {
     }
 
     private List<Integer> runOnce() {
-        return cars.move();
+        return cars.move(numberGenerator);
     }
 
 }

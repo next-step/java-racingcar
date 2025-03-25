@@ -22,10 +22,6 @@ public class Car {
         }
     }
 
-    public int move() {
-        return move(new RandomNumberGenerator());
-    }
-
     public int move(NumberGenerator numberGenerator) {
         if (isMovable(numberGenerator)) incrementPosition();
         return position;

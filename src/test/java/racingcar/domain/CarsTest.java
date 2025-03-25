@@ -4,11 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import racingcar.util.NumberGenerator;
+import racingcar.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -34,10 +35,12 @@ class CarsTest {
     }
 
     @Test
+    @DisplayName("자동차 컬렉션에 포함된 자동차를 한번 전진한다.")
     void move() {
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
         List<Car> testCars = Arrays.asList(new Car(), new Car());
         Cars cars = new Cars(testCars);
 
-        assertThat(cars.move()).hasSize(testCars.size());
+        assertThat(cars.move(numberGenerator)).hasSize(testCars.size());
     }
 }

@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.NumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,9 +27,9 @@ public class Cars {
             throw new IllegalArgumentException("자동차가 null입니다.");
     }
 
-    public List<Integer> move() {
+    public List<Integer> move(NumberGenerator numberGenerator) {
         return cars.stream()
-                .map(Car::move)
+                .map(car -> car.move(numberGenerator))
                 .collect(Collectors.toList());
     }
 }
