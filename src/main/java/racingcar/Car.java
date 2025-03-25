@@ -23,8 +23,10 @@ public class Car {
     return score;
   }
 
-  public void move() {
-    score++;
+  public void tryMove(RaceEvaluator raceEvaluator) {
+    if (raceEvaluator.evaluate()) {
+      score++;
+    }
   }
 
   public String showPosition(String marker) {

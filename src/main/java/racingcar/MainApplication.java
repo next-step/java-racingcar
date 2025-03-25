@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -19,7 +19,7 @@ public class MainApplication {
     ResultView resultView = new ResultView();
     resultView.showResult(carNames, result);
 
-    ArrayList<Car> winners = new Winner(carNames, result).getWinners();
+    List<Car> winners = new Winner(result).getWinners();
     resultView.showWinners(winners);
   }
 }

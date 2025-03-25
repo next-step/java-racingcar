@@ -11,6 +11,10 @@ public class Result {
     result = new HashMap<>();
   }
 
+  public Cars getFinalRound() {
+    return result.get(result.size() - 1);
+  }
+
   public Cars merge(int round, Cars roundResult) {
     if (round == 0) {
       return roundResult;

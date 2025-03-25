@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
@@ -13,17 +14,46 @@ public class CarTest {
   }
 
   @Test
-  void move() {
+  void tryMove_success() {
+    Random testRandom = new Random() {
+      @Override
+      public int nextInt(int bound) {
+        return 4;
+      }
+    };
+    RaceEvaluator raceEvaluator = new RaceEvaluator(testRandom);
     Car car = new Car("test");
-    car.move();
-    car.move();
+    car.tryMove(raceEvaluator);
+    car.tryMove(raceEvaluator);
     assertEquals(2, car.getScore());
   }
 
   @Test
-  void mergeScore() {
+  void tryMove_stay() {
+    Random testRandom = new Random() {
+      @Override
+      public int nextInt(int bound) {
+        return 3;
+      }
+    };
+    RaceEvaluator raceEvaluator = new RaceEvaluator(testRandom);
     Car car = new Car("test");
-    car.move();
+    car.tryMove(raceEvaluator);
+    car.tryMove(raceEvaluator);
+    assertEquals(0, car.getScore());
+  }
+
+  @Test
+  void mergeScore() {
+    Random testRandom = new Random() {
+      @Override
+      public int nextInt(int bound) {
+        return 4;
+      }
+    };
+    RaceEvaluator raceEvaluator = new RaceEvaluator(testRandom);
+    Car car = new Car("test");
+    car.tryMove(raceEvaluator);
 
     car.addScore(3);
     assertEquals(4, car.getScore());

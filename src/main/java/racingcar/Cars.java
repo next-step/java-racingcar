@@ -2,22 +2,16 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
   private final List<Car> cars;
 
-  public Cars(Names carNames) {
+  public Cars(Names names) {
     cars = new ArrayList<>();
-    for (int i = 0; i < carNames.size(); i++) {
-      cars.add(new Car(carNames.getNameByIndex(i)));
-    }
-  }
-
-  private static void moveCar(RaceEvaluator raceEvaluator, Car car) {
-    if (raceEvaluator.evaluate()) {
-      car.move();
-    }
+    names.getNames()
+        .forEach(name -> cars.add(new Car(name)));
   }
 
   public int size() {
@@ -29,8 +23,20 @@ public class Cars {
   }
 
   public void moveAll(RaceEvaluator raceEvaluator) {
-    for (Car car : cars) {
-      moveCar(raceEvaluator, car);
-    }
+    cars.forEach(car -> car.tryMove(raceEvaluator));
+  }
+
+  public int findMaxScore() {
+    return cars.stream()
+        .map(Car::getScore)
+        .max(Integer::compare)
+        .orElse(0);
+  }
+
+  public List<Car> findWinners() {
+    int maxScore = findMaxScore();
+    return cars.stream()
+        .filter(car -> car.isWinner(maxScore))
+        .collect(Collectors.toList());
   }
 }

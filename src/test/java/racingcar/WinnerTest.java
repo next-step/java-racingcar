@@ -2,7 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class WinnerTest {
@@ -18,8 +18,8 @@ class WinnerTest {
     finalResult.at(2).addScore(4);
     result.record(0, finalResult);
 
-    Winner winner = new Winner(carNames, result);
-    ArrayList<Car> winners = winner.getWinners();
+    Winner winner = new Winner(result);
+    List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(1);
     assertThat(winners.get(0).getScore()).isEqualTo(5);
@@ -36,8 +36,8 @@ class WinnerTest {
     finalResult.at(2).addScore(3);
     result.record(0, finalResult);
 
-    Winner winner = new Winner(carNames, result);
-    ArrayList<Car> winners = winner.getWinners();
+    Winner winner = new Winner(result);
+    List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(2);
     assertThat(winners.get(0).getScore()).isEqualTo(5);
@@ -55,8 +55,8 @@ class WinnerTest {
     finalResult.at(2).addScore(3);
     result.record(0, finalResult);
 
-    Winner winner = new Winner(carNames, result);
-    ArrayList<Car> winners = winner.getWinners();
+    Winner winner = new Winner(result);
+    List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(3);
     assertThat(winners).allMatch(car -> car.getScore() == 3);
@@ -72,8 +72,8 @@ class WinnerTest {
     finalResult.at(1).addScore(0);
     result.record(0, finalResult);
 
-    Winner winner = new Winner(carNames, result);
-    ArrayList<Car> winners = winner.getWinners();
+    Winner winner = new Winner(result);
+    List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(2);
     assertThat(winners).allMatch(car -> car.getScore() == 0);
