@@ -1,8 +1,6 @@
-package RacingCar;
+package RacingCar.model;
 
 import NumberGenerator.NumberGenerator;
-
-import java.util.Random;
 
 public class RacingCar {
     private final int moveCondition;
@@ -24,17 +22,17 @@ public class RacingCar {
         return num >= this.moveCondition;
     }
 
-    void move() {
+    public void move() {
         if (canMove(numberGenerator.generate(0, 9))) {
             this.position++;
         }
     }
 
-    int position() {
+    public int position() {
         return this.position;
     }
 
-    String name(){
+    public String name(){
         return this.name;
     }
 }

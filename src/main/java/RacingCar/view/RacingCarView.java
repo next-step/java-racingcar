@@ -1,4 +1,4 @@
-package RacingCar;
+package RacingCar.view;
 
 import java.util.Scanner;
 import java.util.StringJoiner;
@@ -12,7 +12,7 @@ public class RacingCarView {
     // ==============================
     // 🔹 Input, output methods
     // ==============================
-    void scanInputs() {
+    public void scanInputs() {
         scanCarNames();
 //        scanCarNum();
         scanTryNum();
@@ -35,18 +35,18 @@ public class RacingCarView {
         this.tryNum = this.scanner.nextInt();
     }
 
-    void printResultNotice() {
+    public void printResultNotice() {
         System.out.println("\n실행 결과");
     }
 
-    void printResult(int[] positions) {
+    public void printResult(int[] positions) {
         for (int i = 0; i < this.carNum; i++) {
             System.out.println("-".repeat(positions[i]));
         }
         System.out.println();
     }
 
-    void printWinner(String[] names) {
+    public void printWinner(String[] names) {
         StringJoiner winnerJoiner = new StringJoiner(", ");
         for (int i = 0; i < names.length; i++) {
             winnerJoiner.add(names[i]);
@@ -55,15 +55,15 @@ public class RacingCarView {
         System.out.println(winnerJoiner + "가 최종 우승했습니다.");
     }
 
-    int carNum() {
+    public int carNum() {
         return carNum;
     }
 
-    int tryNum() {
+    public int tryNum() {
         return tryNum;
     }
 
-    String[] carNames() {
+    public String[] carNames() {
         return carNames;
     }
 }

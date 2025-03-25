@@ -1,4 +1,4 @@
-package RacingCar;
+package RacingCar.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class RacingWinnerFinder {
         this.winningCars = new ArrayList<>();
     }
 
-    RacingCar[] findWinners(int maxCarPosition) {
+    public RacingCar[] findWinners(int maxCarPosition) {
         for (RacingCar car : cars) {
             if (maxCarPosition == car.position()) {
                 this.winningCars.add(car);

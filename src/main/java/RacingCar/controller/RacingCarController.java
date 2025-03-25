@@ -1,8 +1,8 @@
-package RacingCar;
+package RacingCar.controller;
 
 import NumberGenerator.*;
-
-import java.util.Scanner;
+import RacingCar.model.*;
+import RacingCar.view.RacingCarView;
 
 public class RacingCarController {
     private RacingCar[] cars;
@@ -48,10 +48,5 @@ public class RacingCarController {
             }
             view.printResult(positions);
         }
-    }
-
-    public static void main(String args[]) {
-        RacingCarController controller = new RacingCarController();
-        controller.start();
     }
 }
