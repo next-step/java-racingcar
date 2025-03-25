@@ -16,19 +16,13 @@
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 
 ## TODO
-- [X] Car
-  - 이름을 갖는다. 결과에 함께 출력해 주어야 함.
-- [X] MovingStrategy
-- [X] RandomMovingStrategy
-- [X] Cars
-- [X] RacingGame
-- [X] InputView
-- [X] OutputView
-- [X] 이름 클래스
-- [X] 이름은 공백일 수 없다.
-- [X] 이름은 길이가 5를 초과할 수 없다.
-- [X] CarName -> Car 에 적용
-- [X] CarFactory 는 자동차를 생성한다.
-- [X] CarStatus
-- [X] 출력의 책임을 도메인과 분리
-- [X] 우승자 찾기 로직 개선
+- [X] 자동차의 이름은 공백이거나 5자를 초과할 수 없다.
+- [X] 자동차의 위치는 음수일 수 없고 전진하면 위치가 1이 커진다.
+- [X] 자동차는 1칸 전진하거나 전진하지 않는다.
+- [X] 랜덤값이 4보다 크면 참을 반환하는 RandomMovingStrategy
+- [X] Cars 는 List<Car> 를 전진시킨다.
+- [X] Position 은 위치값이 더 크면 더 큰 Position
+- [X] Car 는 Position 이 더 크면 더 큰 Car
+- [X] Cars 우승자 찾기
+- [X] inputView
+- [X] CarNames 제거
