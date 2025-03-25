@@ -1,4 +1,6 @@
-package policy;
+package racingcar.policy;
+
+import racingcar.policy.CarMovementPolicy;
 
 public class CarImmovablePolicy implements CarMovementPolicy {
 

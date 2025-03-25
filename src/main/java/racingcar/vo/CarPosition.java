@@ -1,10 +1,10 @@
-package vo;
+package racingcar.vo;
 
 public class CarPosition {
 
     private static final int ONE_STEP = 1;
 
-    private int value;
+    private final int value;
 
     public CarPosition(int value) {
         this.value = value;
@@ -14,12 +14,16 @@ public class CarPosition {
         return new CarPosition(ONE_STEP);
     }
 
-    public int getValue() {
-        return value;
+    public CarPosition move() {
+        return new CarPosition(this.value + ONE_STEP);
     }
 
-    public void move() {
-        this.value += ONE_STEP;
+    public int getValue() {
+        return this.value;
+    }
+
+    public boolean equals(int value) {
+        return this.value == value;
     }
 }
 
