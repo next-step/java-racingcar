@@ -17,7 +17,8 @@ public class Cars {
 
     public void moveAll(NumberBasedCarMover carMover) {
         for (Car car : cars) {
-            car.move(carMover);
+            int distance = carMover.move();
+            car.move(distance);
         }
     }
 

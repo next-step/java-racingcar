@@ -9,8 +9,8 @@ public class Car {
         this.position = new Position();
     }
 
-    public void move(NumberBasedCarMover carMover) {
-        position.increase(carMover.move());
+    public void move(int distance) {
+        position.increase(distance);
     }
 
     public String name() {
@@ -18,6 +18,10 @@ public class Car {
     }
 
     public int position() {
-        return this.position.toInt();
+        return this.position.value();
+    }
+
+    public boolean sameOf(int position) {
+        return this.position.value() == position;
     }
 }

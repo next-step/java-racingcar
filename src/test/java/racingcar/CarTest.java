@@ -21,8 +21,8 @@ public class CarTest {
     public void moveTest(int input, int expect) {
         Car car = new Car("test");
         NumberBasedCarMover carMover = new FixedNumberBasedCarMover(input);
-
-        car.move(carMover);
+        int distance = carMover.move();
+        car.move(distance);
 
         assertThat(car.position()).isEqualTo(expect);
     }

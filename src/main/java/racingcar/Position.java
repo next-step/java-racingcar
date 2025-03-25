@@ -13,7 +13,7 @@ public class Position {
         this.position += distance;
     }
 
-    public int toInt() {
+    public int value() {
         return this.position;
     }
 }
