@@ -2,6 +2,7 @@ package racing.views;
 
 import racing.domain.Car;
 import racing.data.Messages;
+import racing.domain.Cars;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,6 +19,12 @@ public class ResultView {
 
     public static void printResultWithName(Car car) {
         println(car.getCarName() + " : " + "-".repeat(car.getPosition()));
+    }
+    public static void printResultWithName(Cars cars) {
+        for(Car car : cars.getCars()){
+            printResultWithName(car);
+        }
+        println("");
     }
 
     public static void printTypeError() {
