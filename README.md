@@ -19,3 +19,6 @@
 - [x] 자동차의 이름을 입력 받는다.
 - [x] 우승자를 구한다.
 - [x] Domain과 View의 의존성 제거
+- [] 패키지 구조 MVC 패턴에 맞게 변경
+- [] Stateless View로 변경
+- [] Controller에서 비지니스 로직 제거
