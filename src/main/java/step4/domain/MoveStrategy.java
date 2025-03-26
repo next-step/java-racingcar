@@ -1,7 +1,7 @@
 package step4.domain;
 
 @FunctionalInterface
-public interface MoveCondition {
+public interface MoveStrategy {
     boolean isMovable();
 }
 
