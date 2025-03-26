@@ -9,6 +9,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    @Test
+    @DisplayName("자동차의 이름과 초기 위치를 가지고 생성할 수 있다.")
+    void car_creation_test() {
+        Car car = new Car(new CarName("test"), new Position(5));
+
+        assertThat(car.getName().getName()).isEqualTo("test");
+        assertThat(car.isAtPosition(new Position(5))).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차 기본 생성시 초기 위치는 0이다.")
+    void car_initialPosition_test() {
+        Car car = new Car(new CarName("test"));
+
+        assertThat(car.isAtPosition(new Position(0))).isTrue();
+    }
+
     @ParameterizedTest(name = "초기 위치 {0}으로 생성된 자동차의 위치는 {0}이어야 한다.")
     @CsvSource({"0", "1", "5"})
     @DisplayName("자동차는 주어진 위치로 초기화된다.")

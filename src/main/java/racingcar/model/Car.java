@@ -9,8 +9,7 @@ public final class Car {
     private static final String SEPERATOR = ":";
 
     public Car(CarName name) {
-        this.name = name;
-        this.position = new Position(0);
+        this(name, new Position(0));
     }
 
     public Car(CarName name, Position initialPosition) {
