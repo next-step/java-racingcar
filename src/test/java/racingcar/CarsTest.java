@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CarsTest {
@@ -21,22 +22,33 @@ public class CarsTest {
   }
 
   @Test
-  void findWinners() {
+  void findWinners_공동_우승() {
     Names names = new Names(new String[]{"car1", "car2"});
     Cars cars = new Cars(names);
     cars.at(0).addScore(3);
     cars.at(1).addScore(3);
 
-    assertThat(cars.findWinners()).hasSize(2);
+    List<Car> expected = List.of(
+        new Car("car1", 3),
+        new Car("car2", 3)
+    );
+    assertThat(cars.findWinners())
+        .usingRecursiveComparison()
+        .isEqualTo(expected);
   }
 
   @Test
-  void findWinner() {
+  void findWinners_단독_우승() {
     Names names = new Names(new String[]{"car1", "car2"});
     Cars cars = new Cars(names);
     cars.at(0).addScore(2);
     cars.at(1).addScore(3);
 
-    assertThat(cars.findWinners()).hasSize(1);
+    List<Car> expected = List.of(
+        new Car("car2", 3)
+    );
+    assertThat(cars.findWinners())
+        .usingRecursiveComparison()
+        .isEqualTo(expected);
   }
 }

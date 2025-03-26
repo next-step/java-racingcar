@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class Position {
 
   private static final int DEFAULT_POSITION = 0;
@@ -31,5 +33,22 @@ public class Position {
 
   public int getValue() {
     return value;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Position other = (Position) o;
+    return value == other.value;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(value);
   }
 } 

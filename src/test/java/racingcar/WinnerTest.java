@@ -19,10 +19,13 @@ class WinnerTest {
     result.record(0, finalResult);
 
     Winner winner = new Winner(result);
-    List<Car> winners = winner.getWinners();
 
-    assertThat(winners).hasSize(1);
-    assertThat(winners.get(0).getPosition()).isEqualTo(5);
+    List<Car> expected = List.of(
+        new Car("car1", 5)
+    );
+    assertThat(winner.getWinners())
+        .usingRecursiveComparison()
+        .isEqualTo(expected);
   }
 
   @Test
@@ -37,11 +40,14 @@ class WinnerTest {
     result.record(0, finalResult);
 
     Winner winner = new Winner(result);
-    List<Car> winners = winner.getWinners();
 
-    assertThat(winners).hasSize(2);
-    assertThat(winners.get(0).getPosition()).isEqualTo(5);
-    assertThat(winners.get(1).getPosition()).isEqualTo(5);
+    List<Car> expected = List.of(
+        new Car("car1", 5),
+        new Car("car2", 5)
+    );
+    assertThat(winner.getWinners())
+        .usingRecursiveComparison()
+        .isEqualTo(expected);
   }
 
   @Test
@@ -56,10 +62,15 @@ class WinnerTest {
     result.record(0, finalResult);
 
     Winner winner = new Winner(result);
-    List<Car> winners = winner.getWinners();
 
-    assertThat(winners).hasSize(3);
-    assertThat(winners).allMatch(car -> car.getPosition() == 3);
+    List<Car> expected = List.of(
+        new Car("car1", 3),
+        new Car("car2", 3),
+        new Car("car3", 3)
+    );
+    assertThat(winner.getWinners())
+        .usingRecursiveComparison()
+        .isEqualTo(expected);
   }
 
   @Test
@@ -73,9 +84,13 @@ class WinnerTest {
     result.record(0, finalResult);
 
     Winner winner = new Winner(result);
-    List<Car> winners = winner.getWinners();
 
-    assertThat(winners).hasSize(2);
-    assertThat(winners).allMatch(car -> car.getPosition() == 0);
+    List<Car> expected = List.of(
+        new Car("car1", 0),
+        new Car("car2", 0)
+    );
+    assertThat(winner.getWinners())
+        .usingRecursiveComparison()
+        .isEqualTo(expected);
   }
 } 

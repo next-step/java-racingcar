@@ -3,6 +3,7 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,12 +32,14 @@ public class ResultTest {
   void record_첫_라운드_기록() {
     result.record(0, firstRound);
 
-    assertAll(
-        () -> assertThat(result.size()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(2),
-        () -> assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(0).at(2).getPosition()).isEqualTo(0)
+    Cars expected = new Cars(
+        List.of(
+            new Car("car1", 2),
+            new Car("car2", 1),
+            new Car("car3", 0)
+        )
     );
+    assertThat(result.getRoundResult(0)).isEqualTo(expected);
   }
 
   @Test
@@ -44,14 +47,24 @@ public class ResultTest {
     result.record(0, firstRound);
     result.record(1, secondRound);
 
-    assertAll(
-        () -> assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(2),
-        () -> assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(0).at(2).getPosition()).isEqualTo(0),
+    Cars expectedFirstRound = new Cars(
+        List.of(
+            new Car("car1", 2),
+            new Car("car2", 1),
+            new Car("car3", 0)
+        )
+    );
+    Cars expectedSecondRound = new Cars(
+        List.of(
+            new Car("car1", 3),
+            new Car("car2", 2),
+            new Car("car3", 1)
+        )
+    );
 
-        () -> assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(3),
-        () -> assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(2),
-        () -> assertThat(result.getRoundResult(1).at(2).getPosition()).isEqualTo(1)
+    assertAll(
+        () -> assertThat(result.getRoundResult(0)).isEqualTo(expectedFirstRound),
+        () -> assertThat(result.getRoundResult(1)).isEqualTo(expectedSecondRound)
     );
   }
 
@@ -59,11 +72,14 @@ public class ResultTest {
   void merge_이전_라운드가_없는_경우() {
     Cars merged = result.merge(0, firstRound);
 
-    assertAll(
-        () -> assertThat(merged.at(0).getPosition()).isEqualTo(2),
-        () -> assertThat(merged.at(1).getPosition()).isEqualTo(1),
-        () -> assertThat(merged.at(2).getPosition()).isEqualTo(0)
+    Cars expected = new Cars(
+        List.of(
+            new Car("car1", 2),
+            new Car("car2", 1),
+            new Car("car3", 0)
+        )
     );
+    assertThat(merged).isEqualTo(expected);
   }
 
   @Test
@@ -71,10 +87,13 @@ public class ResultTest {
     result.record(0, firstRound);
     Cars merged = result.merge(1, secondRound);
 
-    assertAll(
-        () -> assertThat(merged.at(0).getPosition()).isEqualTo(3),
-        () -> assertThat(merged.at(1).getPosition()).isEqualTo(2),
-        () -> assertThat(merged.at(2).getPosition()).isEqualTo(1)
+    Cars expected = new Cars(
+        List.of(
+            new Car("car1", 3),
+            new Car("car2", 2),
+            new Car("car3", 1)
+        )
     );
+    assertThat(merged).isEqualTo(expected);
   }
 }

@@ -24,8 +24,8 @@ public class NamesTest {
 
   @Test
   void size() {
-    Names n = new Names(new String[]{"car1", "car2", "car3"});
-    assertThat(n.size()).isEqualTo(3);
+    Names names = new Names(new String[]{"car1", "car2", "car3"});
+    assertThat(names.size()).isEqualTo(3);
   }
 
   @Test

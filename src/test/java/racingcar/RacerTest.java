@@ -3,6 +3,7 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
@@ -22,13 +23,32 @@ public class RacerTest {
 
     Result result = racer.race();
 
+    Cars expectedRound1 = new Cars(
+        List.of(
+            new Car("car1", 1),
+            new Car("car2", 1),
+            new Car("car3", 1)
+        )
+    );
+    Cars expectedRound2 = new Cars(
+        List.of(
+            new Car("car1", 2),
+            new Car("car2", 2),
+            new Car("car3", 2)
+        )
+    );
+    Cars expectedRound3 = new Cars(
+        List.of(
+            new Car("car1", 3),
+            new Car("car2", 3),
+            new Car("car3", 3)
+        )
+    );
+
     assertAll(
-        () -> assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(2),
-        () -> assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(2),
-        () -> assertThat(result.getRoundResult(2).at(0).getPosition()).isEqualTo(3),
-        () -> assertThat(result.getRoundResult(2).at(1).getPosition()).isEqualTo(3)
+        () -> assertThat(result.getRoundResult(0)).isEqualTo(expectedRound1),
+        () -> assertThat(result.getRoundResult(1)).isEqualTo(expectedRound2),
+        () -> assertThat(result.getRoundResult(2)).isEqualTo(expectedRound3)
     );
   }
 
@@ -46,13 +66,18 @@ public class RacerTest {
 
     Result result = racer.race();
 
+    Cars expectedRound = new Cars(
+        List.of(
+            new Car("car1", 0),
+            new Car("car2", 0),
+            new Car("car3", 0)
+        )
+    );
+
     assertAll(
-        () -> assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(0),
-        () -> assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(0),
-        () -> assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(0),
-        () -> assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(0),
-        () -> assertThat(result.getRoundResult(2).at(0).getPosition()).isEqualTo(0),
-        () -> assertThat(result.getRoundResult(2).at(1).getPosition()).isEqualTo(0)
+        () -> assertThat(result.getRoundResult(0)).isEqualTo(expectedRound),
+        () -> assertThat(result.getRoundResult(1)).isEqualTo(expectedRound),
+        () -> assertThat(result.getRoundResult(2)).isEqualTo(expectedRound)
     );
   }
 
@@ -73,13 +98,24 @@ public class RacerTest {
 
     Result result = racer.race();
 
+    Cars expectedRound1 = new Cars(
+        List.of(
+            new Car("car1", 1),
+            new Car("car2", 0),
+            new Car("car3", 1)
+        )
+    );
+    Cars expectedRound2 = new Cars(
+        List.of(
+            new Car("car1", 1),
+            new Car("car2", 0),
+            new Car("car3", 2)
+        )
+    );
+
     assertAll(
-        () -> assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(0),
-        () -> assertThat(result.getRoundResult(0).at(2).getPosition()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(1),
-        () -> assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(0),
-        () -> assertThat(result.getRoundResult(1).at(2).getPosition()).isEqualTo(2)
+        () -> assertThat(result.getRoundResult(0)).isEqualTo(expectedRound1),
+        () -> assertThat(result.getRoundResult(1)).isEqualTo(expectedRound2)
     );
   }
 }

@@ -14,6 +14,10 @@ public class Cars {
         .forEach(name -> cars.add(new Car(name)));
   }
 
+  public Cars(List<Car> cars) {
+    this.cars = new ArrayList<>(cars);
+  }
+
   public int size() {
     return cars.size();
   }
@@ -42,5 +46,22 @@ public class Cars {
     return cars.stream()
         .filter(car -> car.isWinner(maxScore))
         .collect(Collectors.toList());
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Cars other = (Cars) o;
+    return cars.equals(other.cars);
+  }
+
+  @Override
+  public int hashCode() {
+    return cars.hashCode();
   }
 }
