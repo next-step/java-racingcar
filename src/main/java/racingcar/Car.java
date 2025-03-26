@@ -14,15 +14,15 @@ public class Car {
         }
     }
 
+    public boolean isMovable(int randomNumber) {
+        return randomNumber >= 4;
+    }
+
     public int getPosition() {
         return this.position;
     }
 
     public String getName() {
         return this.name;
-    }
-
-    public boolean isMovable(int randomNumber) {
-        return randomNumber >= 4;
     }
 }

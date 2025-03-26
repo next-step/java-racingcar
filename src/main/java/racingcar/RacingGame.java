@@ -27,6 +27,7 @@ public class RacingGame {
         inputView.initGameInput();
         initializeCars(inputView.getCarNames());
         runRace(inputView.getAttemptCount());
+        resultView.printWinners(getWinners(cars));
     }
 
     public List<Car> runRace(int attemptCount) {
@@ -52,6 +53,12 @@ public class RacingGame {
 
     public void moveCars() {
         cars.forEach(car -> car.move(randomNumberGenerator.generate(RANDOM_NUMBER_BOUNDARY)));
+    }
+
+    public List<Car> getWinners(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(1);
+
+        return cars.stream().filter(car -> car.getPosition() == maxPosition).collect(Collectors.toList());
     }
 
     public List<Car> getCars() {

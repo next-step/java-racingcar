@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     public void printResultHeader() {
@@ -15,6 +16,11 @@ public class ResultView {
             printCurrentPosition(car);
         }
         printEmptyLine();
+    }
+
+    public void printWinners(List<Car> cars) {
+        String winnerNames = cars.stream().map(Car::getName).collect(Collectors.joining(", "));
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 
     public void printCurrentPosition(Car car) {
