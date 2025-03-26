@@ -21,6 +21,10 @@ public class RacingGame {
         return new RacingGame(cars);
     }
 
+    public static RacingGame ofCars(List<Car> cars) {
+        return new RacingGame(cars);
+    }
+
     private static List<Car> createCars(List<String> names) {
         return names.stream()
                 .map(name -> new Car(new CarName(name)))

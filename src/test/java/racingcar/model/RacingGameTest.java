@@ -19,4 +19,32 @@ class RacingGameTest {
         assertThat(racingGame.hasCarCount(carNames.size())).isTrue();
         assertThat(racingGame.areAllCarsAtPosition(new Position(0))).isTrue();
     }
+
+    @Test
+    @DisplayName("우승자를 정확히 추출할 수 있다")
+    void get_winner_cars() {
+
+        Car win = new Car(new CarName("win"), new Position(3));
+        Car lose = new Car(new CarName("lose"), new Position(1));
+
+        RacingGame game = RacingGame.ofCars(List.of(win, lose));
+
+        List<Car> winners = game.getWinners();
+
+        assertThat(winners).containsExactly(win);
+    }
+
+    @Test
+    @DisplayName("최대 위치를 정확히 찾는다")
+    void find_max_position_test() {
+        Car a = new Car(new CarName("a"), new Position(2));
+        Car b = new Car(new CarName("b"), new Position(5));
+        Car c = new Car(new CarName("c"), new Position(1));
+
+        RacingGame game = RacingGame.ofCars(List.of(a, b, c));
+
+        List<Car> winners = game.getWinners();
+
+        assertThat(winners).containsExactly(b);
+    }
 }
