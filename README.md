@@ -8,6 +8,23 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
+## Step 4 - 자동차 경주 (우승자)
+### 요구 사항
+각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
+전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+자동차 이름은 쉼표(,)를 기준으로 구분한다.
+자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
+### 필수 기능 체크리스트
+- [x] 객체 별 테스트 코드 작성 (Car, Cars, Name, TryCount, Winners)
+- [x] 입/출력 View 생성
+- [x] Car / Name (Validation 포함) / Position 객체 생성
+- [x] NumberBasedCarMover 인터페이스 생성 (숫자에 따라 차를 움직일지 말지 결정하는 객체 생성을 위함)
+  - [x] Test 를 위한 FixedNumberBasedCarMover 객체 생성
+  - [x] 게임을 위한 RandomNumberBasedCarMover 객체 생성
+- [x] Cars 객체 생성 (Car 들에 대한 단위 기능 수행)
+- [x] Winners / TryCount / RacingCarGame 객체 생성 (자동차 경주 게임 진행)
+
+
 ## Step 3 - 자동차 경주
 ### 요구 사항
 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -19,3 +36,4 @@
 - [x] 게임 시작 시 자동차 객체 초기 init 구현
 - [x] UI 로직 구현 (InputView, OutputView)
 - [x] 자동차 경주 게임 구현
+

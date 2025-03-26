@@ -1,33 +1,27 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
+    private final Name name;
+    private final Position position;
 
-    private static final int RANDOM_NUMBER_THRESHOLD = 10;
-    private static final int MOVE_THRESHOLD = 4;
-
-    private int position;
-
-    public Car() {
-        this.position = 0;
+    public Car(String input) {
+        this.name = new Name(input);
+        this.position = new Position();
     }
 
-    public int getPosition() {
-        return this.position;
+    public void move(int distance) {
+        position.increase(distance);
     }
 
-    public void move(Random random) {
-        if (this.isAboveMoveThreshold(random)) {
-            this.position++;
-        }
+    public String name() {
+        return this.name.toString();
     }
 
-    private boolean isAboveMoveThreshold(Random random) {
-        return this.getRandomNumber(random) >= Car.MOVE_THRESHOLD;
+    public int position() {
+        return this.position.value();
     }
 
-    private int getRandomNumber(Random random) {
-        return random.nextInt(Car.RANDOM_NUMBER_THRESHOLD);
+    public boolean sameOf(int position) {
+        return this.position.value() == position;
     }
 }
