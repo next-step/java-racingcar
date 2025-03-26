@@ -1,4 +1,4 @@
-package step4;
+package step4.view;
 
 import java.util.*;
 import java.util.regex.Pattern;

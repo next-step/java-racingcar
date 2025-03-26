@@ -3,6 +3,12 @@ package step4;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import step4.domain.Car;
+import step4.domain.MoveCondition;
+import step4.domain.MoveConditions;
+import step4.domain.RacingGame;
+import step4.view.InputView;
+import step4.view.ResultView;
 
 import java.io.ByteArrayInputStream;
 import java.util.*;

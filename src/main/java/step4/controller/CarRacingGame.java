@@ -1,4 +1,8 @@
-package step4;
+package step4.controller;
+
+import step4.view.InputView;
+import step4.domain.RacingGame;
+import step4.view.ResultView;
 
 import java.util.List;
 import java.util.Map;
