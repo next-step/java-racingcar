@@ -1,28 +1,33 @@
 package racingcar.model;
 
+import static racingcar.view.OutputView.MOVE;
+
 public class Position {
 
-    private int position;
-    private static final String DELIMITER = "-";
+    private final int position;
 
     public Position() {
-        this.position = 0;
+        this(0);
     }
 
     public Position(int initialPosition) {
         this.position = initialPosition;
     }
 
-    public void incrementPosition() {
-        position += 1;
+    public Position incrementPosition() {
+        return new Position(this.position + 1);
     }
 
     public boolean isSameAs(Position other) {
         return this.position == other.position;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
-        return DELIMITER.repeat(position);
+        return MOVE.repeat(position);
     }
 }

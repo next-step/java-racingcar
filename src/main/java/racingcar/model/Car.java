@@ -1,26 +1,31 @@
 package racingcar.model;
 
+import static racingcar.view.OutputView.NAME_POSITION_SEPERATOR;
 
-public class Car {
+public final class Car {
 
+    private final CarName name;
     private final Position position;
+
     private static final int MOVE_CONDITION_NUMBER = 4;
 
-    public Car() {
-        this.position = new Position();
+    public Car(CarName name) {
+        this(name, new Position(0));
     }
 
-    public Car(int initialPosition) {
-        this.position = new Position(initialPosition);
+    public Car(CarName name, Position initialPosition) {
+        this.name = name;
+        this.position = initialPosition;
     }
 
-    public void move(int randomValue) {
+    public Car move(int randomValue) {
         if (canMove(randomValue)) {
-            position.incrementPosition();
+            return new Car(this.name, this.position.incrementPosition());
         }
+        return this;
     }
 
-    private static boolean canMove(int randomValue) {
+    private boolean canMove(int randomValue) {
         return randomValue >= MOVE_CONDITION_NUMBER;
     }
 
@@ -28,7 +33,16 @@ public class Car {
         return position.isSameAs(other);
     }
 
-    public void printPosition() {
-        System.out.println(position);
+    public CarName getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    @Override
+    public String toString() {
+        return name + NAME_POSITION_SEPERATOR + position;
     }
 }

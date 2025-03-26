@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
     private static final Pattern CUSTOM_SEPERATOR_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final String DEFAULT_SEPERATOR_PATTERN = ",|:";
     private static final int CUSTOM_SEPARATOR_GROUP_INDEX = 1;
