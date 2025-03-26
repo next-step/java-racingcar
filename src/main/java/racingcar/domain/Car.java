@@ -54,6 +54,7 @@ public class Car {
         Car car = (Car) o;
         return position == car.position && Objects.equals(name, car.name);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, position);

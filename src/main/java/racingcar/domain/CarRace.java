@@ -26,7 +26,7 @@ public class CarRace {
     }
 
     public List<CarState> findWinners() {
-        if(runCount.isRemaining())
+        if (runCount.isRemaining())
             throw new UnsupportedOperationException("car race is still running.");
 
         return cars.findWinners();
