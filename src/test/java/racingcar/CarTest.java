@@ -11,15 +11,17 @@ public class CarTest {
 
     @Test
     public void carPositionShouldBeInitializedByOneTest() {
-        assertThat(new Car().getPosition()).isEqualTo(1);
+        assertThat(new Car("TEST").getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @CsvSource({"3,false", "4,true"}) // 경계를 두고 전후만 테스트 해보자
     public void carIsMovableWhenRandomLTE4(int random, boolean expected) {
-        Car car = new Car();
+        Car car = new Car("TEST");
 
         boolean actual = car.isMovable(random);
         assertThat(actual).isEqualTo(expected);
     }
+
+
 }

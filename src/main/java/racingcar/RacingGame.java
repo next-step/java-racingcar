@@ -4,13 +4,18 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final int RANDOM_NUMBER_BOUNDARY = 10;
+    private static final int CAR_NAME_LENGTH_LIMIT = 5;
+
     private final InputView inputView;
     private final ResultView resultView;
-    private List<Car> cars;
     private final RandomNumberGenerator randomNumberGenerator;
+    private List<Car> cars;
 
     public RacingGame(InputView inputView, ResultView resultView, RandomNumberGenerator randomNumberGenerator) {
         this.inputView = inputView;
@@ -20,26 +25,36 @@ public class RacingGame {
 
     public void play() {
         inputView.initGameInput();
-        initializeCars(inputView.getNumberOfCars());
+        initializeCars(inputView.getCarNames());
         runRace(inputView.getAttemptCount());
     }
 
     public List<Car> runRace(int attemptCount) {
+        resultView.printResultHeader();
+        resultView.printResults(cars);
+
         for (int i = 0; i < attemptCount; i++) {
             moveCars();
-            resultView.showResults(cars);
+            resultView.printResults(cars);
         }
         return cars;
     }
 
-    public void initializeCars(int numberOfCars) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+    public void initializeCars(String[] carNames) {
+        cars = Arrays.stream(carNames).peek(this::validateCarNameLength).map(Car::new).collect(Collectors.toList());
+    }
+
+    public void validateCarNameLength(String carName) {
+        if (carName.length() > CAR_NAME_LENGTH_LIMIT) {
+            throw new IllegalArgumentException("Car name is too long");
         }
     }
 
     public void moveCars() {
-        cars.forEach(car -> car.move(randomNumberGenerator.generate(10)));
+        cars.forEach(car -> car.move(randomNumberGenerator.generate(RANDOM_NUMBER_BOUNDARY)));
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 }

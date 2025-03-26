@@ -3,11 +3,11 @@ package racingcar;
 import racingcar.view.InputView;
 
 public class StubInputView extends InputView {
-    private final int numberOfCars;
+    private final String[] carNames;
     private final int attemptCount;
 
-    public StubInputView(int numberOfCars, int attemptCount) {
-        this.numberOfCars = numberOfCars;
+    public StubInputView(String[] carNames, int attemptCount) {
+        this.carNames = carNames;
         this.attemptCount = attemptCount;
     }
 
@@ -16,8 +16,8 @@ public class StubInputView extends InputView {
     }
 
     @Override
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public String[] getCarNames() {
+        return carNames;
     }
 
     @Override

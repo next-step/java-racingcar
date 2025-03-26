@@ -5,7 +5,12 @@ import racingcar.Car;
 import java.util.List;
 
 public class ResultView {
-    public void showResults(List<Car> cars) {
+    public void printResultHeader() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
+    public void printResults(List<Car> cars) {
         for (Car car : cars) {
             printCurrentPosition(car);
         }
@@ -13,7 +18,7 @@ public class ResultView {
     }
 
     public void printCurrentPosition(Car car) {
-        System.out.println("-".repeat(car.getPosition()));
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
     }
 
     private void printEmptyLine() {
