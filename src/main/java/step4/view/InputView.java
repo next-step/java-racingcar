@@ -53,9 +53,9 @@ public class InputView {
     public static boolean isInvalidRounds(String rounds) {
         try {
             Integer.parseInt(rounds);
-            return true;
-        } catch (NumberFormatException e) {
             return false;
+        } catch (NumberFormatException e) {
+            return true;
         }
     }
 }
