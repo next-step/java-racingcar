@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.view.OutputView;
+
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -11,14 +13,16 @@ public class RacingCarController {
     private int numberOfOperations;
     private MovingStrategy movingStrategy;
     private Random numberGenerator;
+    private OutputView outputView;
 
-    public RacingCarController(int numberOfParticipants, int numberOfOperations) {
+    public RacingCarController(int numberOfParticipants, int numberOfOperations, OutputView outputView) {
         this.cars = IntStream.range(0, numberOfParticipants)
                 .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
         this.numberOfOperations = numberOfOperations;
         this.movingStrategy = new MovingStrategy();
         this.numberGenerator = new Random();
+        this.outputView = outputView;
     }
 
     public List<Car> getCars() {
@@ -30,6 +34,18 @@ public class RacingCarController {
     }
 
     public void run() {
+        outputView.printStartMessage();
+        for (int i = 0; i < numberOfOperations; i++) {
+            tryOneRace();
+            outputView.printResult(getResults());
+        }
+    }
+
+    private List<Integer> getResults() {
+        return cars.stream().map(Car::getPosition).collect(Collectors.toList());
+    }
+
+    public void tryOneRace() {
         for (Car car: cars) {
             if (movingStrategy.isMoving(numberGenerator.nextInt(10))) {
                 car.move();
