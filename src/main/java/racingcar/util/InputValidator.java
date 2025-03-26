@@ -6,10 +6,10 @@ import java.util.List;
 
 import static racingcar.message.ErrorMessage.INVALID_NAME;
 import static racingcar.message.ErrorMessage.POSITIVE_NUMBER;
+import static racingcar.view.OutputView.SEPERATOR;
 
 public class InputValidator {
 
-    private static final String SEPERATOR = ",";
     private static final int MINIMUM_NAME_LENGTH = 1;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 

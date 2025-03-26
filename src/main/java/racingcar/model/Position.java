@@ -1,10 +1,10 @@
 package racingcar.model;
 
+import static racingcar.view.OutputView.MOVE;
+
 public class Position {
 
     private final int position;
-
-    private static final String DELIMITER = "-";
 
     public Position() {
         this(0);
@@ -28,6 +28,6 @@ public class Position {
 
     @Override
     public String toString() {
-        return DELIMITER.repeat(position);
+        return MOVE.repeat(position);
     }
 }

@@ -12,7 +12,10 @@ public class OutputView {
     private OutputView() {
     }
 
-    private static final String SEPERATOR = ", ";
+    private static final String WINNER_NAME_SEPERATOR = ", ";
+    public static final String NAME_POSITION_SEPERATOR = ":";
+    public static final String MOVE = "-";
+    public static final String SEPERATOR = ",";
 
     public static void print(String message) {
         System.out.println(message);
@@ -27,6 +30,6 @@ public class OutputView {
     private static String formatWinnersName(List<Car> winners) {
         return winners.stream()
                 .map(car -> car.getName().getName())
-                .collect(Collectors.joining(SEPERATOR));
+                .collect(Collectors.joining(WINNER_NAME_SEPERATOR));
     }
 }

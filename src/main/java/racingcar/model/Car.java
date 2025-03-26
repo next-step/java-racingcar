@@ -1,12 +1,13 @@
 package racingcar.model;
 
+import static racingcar.view.OutputView.NAME_POSITION_SEPERATOR;
+
 public final class Car {
 
     private final CarName name;
     private final Position position;
 
     private static final int MOVE_CONDITION_NUMBER = 4;
-    private static final String SEPERATOR = ":";
 
     public Car(CarName name) {
         this(name, new Position(0));
@@ -42,6 +43,6 @@ public final class Car {
 
     @Override
     public String toString() {
-        return name + SEPERATOR + position;
+        return name + NAME_POSITION_SEPERATOR + position;
     }
 }
