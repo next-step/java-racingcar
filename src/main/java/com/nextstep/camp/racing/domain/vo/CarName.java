@@ -4,7 +4,10 @@ import com.nextstep.camp.racing.domain.exception.CarNameCannotBeBlankException;
 import com.nextstep.camp.racing.domain.exception.CarNameTooLongException;
 
 public class CarName {
+
     private final String value;
+
+    private static final int MAX_LENGTH = 5;
 
     private CarName(String value) {
         validate(value);
@@ -19,12 +22,16 @@ public class CarName {
         if (name.isBlank()) {
             throw new CarNameCannotBeBlankException();
         }
-        if (name.length() > 5) {
+        validateLength(name);
+    }
+
+    private static void validateLength(String name) {
+        if (name.length() > MAX_LENGTH) {
             throw new CarNameTooLongException();
         }
     }
 
     public String getValue() {
-        return value;
+        return this.value;
     }
 }

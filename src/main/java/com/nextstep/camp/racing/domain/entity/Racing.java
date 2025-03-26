@@ -1,9 +1,11 @@
 package com.nextstep.camp.racing.domain.entity;
 
-import java.util.List;
-
 import com.nextstep.camp.racing.common.vo.PositiveInteger;
-import com.nextstep.camp.racing.domain.vo.*;
+import com.nextstep.camp.racing.domain.vo.Cars;
+import com.nextstep.camp.racing.domain.vo.Lap;
+import com.nextstep.camp.racing.domain.vo.LapRecord;
+
+import java.util.List;
 
 public class Racing {
 
@@ -24,6 +26,7 @@ public class Racing {
 
     public void start() {
         while (!isFinished()) {
+            cars.move();
             lapRecord.record(cars);
         }
         cars.recordWinners();

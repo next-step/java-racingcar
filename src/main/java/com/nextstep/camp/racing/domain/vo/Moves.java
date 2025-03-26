@@ -1,11 +1,11 @@
 package com.nextstep.camp.racing.domain.vo;
 
+import com.nextstep.camp.racing.common.vo.PositiveInteger;
+import com.nextstep.camp.racing.domain.strategy.RandomMoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-
-import com.nextstep.camp.racing.common.vo.PositiveInteger;
-import com.nextstep.camp.racing.domain.strategy.RandomMoveStrategy;
 
 public class Moves {
 
@@ -17,7 +17,7 @@ public class Moves {
     }
 
     private Moves(List<Move> values) {
-        this.values = values;
+        this.values = new ArrayList<>(values);
     }
 
     public static Moves initialize() {
@@ -29,7 +29,7 @@ public class Moves {
     }
 
     public void move() {
-        Move move = Move.decide(RandomMoveStrategy.INSTANCE);
+        Move move = Move.decideBy(RandomMoveStrategy.INSTANCE);
         this.values.add(move);
         if (move.isMove()) {
             this.position = this.position.add(1);

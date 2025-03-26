@@ -1,9 +1,9 @@
 package com.nextstep.camp.racing.domain.vo;
 
+import com.nextstep.camp.racing.common.vo.PositiveInteger;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.nextstep.camp.racing.common.vo.PositiveInteger;
 
 public class LapRecord {
 
@@ -17,7 +17,6 @@ public class LapRecord {
     }
 
     public void record(Cars cars) {
-        cars.move();
         List<CarMoves> snapshot = cars.getCarsLapRecord();
         laps.add(new Lap(snapshot));
     }

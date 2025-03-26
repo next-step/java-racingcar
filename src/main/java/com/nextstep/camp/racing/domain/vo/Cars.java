@@ -1,12 +1,11 @@
 package com.nextstep.camp.racing.domain.vo;
 
-import java.util.ArrayList;
+import com.nextstep.camp.racing.common.vo.PositiveInteger;
+import com.nextstep.camp.racing.domain.exception.CarNotFoundException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.nextstep.camp.racing.common.vo.PositiveInteger;
-import com.nextstep.camp.racing.domain.exception.CarNotFoundException;
 
 public class Cars {
 
@@ -34,22 +33,8 @@ public class Cars {
         values.forEach(Car::move);
     }
 
-    public PositiveInteger getMaxPosition() {
-        return values.stream()
-            .map(Car::getPosition)
-            .max(PositiveInteger::compareTo)
-            .orElseThrow(CarNotFoundException::new);
-    }
-
     public int size() {
         return values.size();
-    }
-
-    public Cars copy() {
-        CarNames carNames = this.values.stream()
-            .map(Car::getName)
-            .collect(Collectors.collectingAndThen(Collectors.toList(), CarNames::of));
-        return new Cars(carNames);
     }
 
     public Stream<Car> stream() {
@@ -63,7 +48,7 @@ public class Cars {
     }
 
     private static CarMoves getCarLapRecord(Car car) {
-        Moves moves = Moves.of(new ArrayList<>(car.getMoves().getValues()));
+        Moves moves = Moves.of(car.getMoves().getValues());
         return CarMoves.of(car, moves);
     }
 
@@ -78,5 +63,12 @@ public class Cars {
         return values.stream()
             .filter(Car::isWinner)
             .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::of));
+    }
+
+    private PositiveInteger getMaxPosition() {
+        return values.stream()
+            .map(Car::getPosition)
+            .max(PositiveInteger::compareTo)
+            .orElseThrow(CarNotFoundException::new);
     }
 }
