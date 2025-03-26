@@ -1,36 +1,21 @@
 package racingcar.model;
 
-import racingcar.message.ErrorMessage;
-
 public final class Car {
 
-    private final String name;
+    private final CarName name;
     private final Position position;
 
     private static final int MOVE_CONDITION_NUMBER = 4;
-    private static final int MAXIMUM_NAME_LENGTH = 5;
     private static final String SEPERATOR = ":";
 
-    public Car(String name) {
-        validateName(name);
+    public Car(CarName name) {
         this.name = name;
         this.position = new Position(0);
     }
 
-    public Car(String name, Position initialPosition) {
-        validateName(name);
+    public Car(CarName name, Position initialPosition) {
         this.name = name;
         this.position = initialPosition;
-    }
-
-    private void validateName(String name) {
-        if (invalidName(name)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_NAME);
-        }
-    }
-
-    private boolean invalidName(String name) {
-        return name.isBlank() || name.length() > MAXIMUM_NAME_LENGTH;
     }
 
     public Car move(int randomValue) {
@@ -48,7 +33,7 @@ public final class Car {
         return position.isSameAs(other);
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 

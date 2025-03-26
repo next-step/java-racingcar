@@ -3,6 +3,7 @@ package racingcar.model;
 import racingcar.message.Message;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class RacingGame {
 
     private static List<Car> createCars(List<String> names) {
         return names.stream()
-                .map(Car::new)
+                .map(name -> new Car(new CarName(name)))
                 .collect(Collectors.toList());
     }
 

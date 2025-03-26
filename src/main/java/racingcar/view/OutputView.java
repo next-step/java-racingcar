@@ -9,7 +9,8 @@ import static racingcar.message.Message.WINNING_MESSAGE;
 
 public class OutputView {
 
-    private OutputView() {}
+    private OutputView() {
+    }
 
     private static final String SEPERATOR = ", ";
 
@@ -25,7 +26,7 @@ public class OutputView {
 
     private static String formatWinnersName(List<Car> winners) {
         return winners.stream()
-                .map(Car::getName)
+                .map(car -> car.getName().getName())
                 .collect(Collectors.joining(SEPERATOR));
     }
 }

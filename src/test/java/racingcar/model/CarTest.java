@@ -15,9 +15,9 @@ class CarTest {
     void car_initialPosition_test(int initialPosition) {
         String carName = "car";
 
-        Car car = new Car(carName, new Position(initialPosition));
+        Car car = new Car(new CarName(carName), new Position(initialPosition));
 
-        assertThat(car.getName()).isEqualTo(carName);
+        assertThat(car.getName().getName()).isEqualTo(carName);
         assertThat(car.isAtPosition(new Position(initialPosition))).isTrue();
     }
 
@@ -33,11 +33,11 @@ class CarTest {
     })
     void car_move_logic_test(int initialPosition, int randomValue, int expectedPosition) {
         String carName = "car";
-        Car initialCar = new Car(carName, new Position(initialPosition));
+        Car initialCar = new Car(new CarName(carName), new Position(initialPosition));
 
         Car movedCar = initialCar.move(randomValue);
 
-        assertThat(movedCar.getName()).isEqualTo(carName);
+        assertThat(movedCar.getName().getName()).isEqualTo(carName);
         assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
     }
 
@@ -51,11 +51,11 @@ class CarTest {
     })
     void car_not_move_logic_test(int initialPosition, int randomValue, int expectedPosition) {
         String carName = "car";
-        Car initialCar = new Car(carName, new Position(initialPosition));
+        Car initialCar = new Car(new CarName(carName), new Position(initialPosition));
 
         Car movedCar = initialCar.move(randomValue);
 
-        assertThat(movedCar.getName()).isEqualTo(carName);
+        assertThat(movedCar.getName().getName()).isEqualTo(carName);
         assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
     }
 
@@ -63,7 +63,7 @@ class CarTest {
     @Test
     void car_not_move_immutable_test() {
         String carName = "car";
-        Car initialCar = new Car(carName);
+        Car initialCar = new Car(new CarName(carName));
 
         Car movedCar = initialCar.move(4);
 
