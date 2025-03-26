@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.util.NumberGenerator;
+import racingcar.util.RandomNumberGenerator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,17 +14,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRaceTest {
 
-//    @ParameterizedTest
-//    @CsvSource(delimiter = ',', value = {"2,2", "4,5", "1,3"})
-//    @DisplayName("자동차 경주를 실행하면, 시도 횟수 동안의 자동차의 위치를 반환한다.")
-//    void runCarRaceAndGetResult(int carCount, int runCount) {
-//        CarRace carRace = new CarRace(carCount, runCount);
-//        List<List<Integer>> result = carRace.run();
-//
-//        assertThat(result)
-//                .hasSize(runCount)
-//                .allMatch(list -> list.size() == carCount);
-//    }
-//
+    @Test
+    @DisplayName("자동차 경주 게임을 한번 실행했을 때, 자동차가 한 번 전진한다.")
+    void runOnce() {
+        Car carLuna = new Car("luna", 0);
+        List<Car> cars = List.of(carLuna);
+        NumberGenerator numberGenerator = () -> 4;
+
+        CarRace carRace = new CarRace(cars, 2, numberGenerator);
+        carRace.run();
+
+        assertThat(carLuna).isEqualTo(new Car("luna", 2));
+    }
 
 }

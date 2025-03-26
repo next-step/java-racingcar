@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.util.NumberGenerator;
-import racingcar.util.RandomNumberGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,19 +11,19 @@ public class CarRace {
     private final Cars cars;
     private final int runCount;
 
-    public CarRace(List<Car> cars, int runCount) {
-        this.numberGenerator = new RandomNumberGenerator();
+    public CarRace(List<Car> cars, int runCount, NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
         this.cars = new Cars(cars);
         this.runCount = runCount;
     }
 
-    public List<List<Integer>> run() {
+    public List<List<CarState>> run() {
         return IntStream.range(0, runCount)
                 .mapToObj(i -> runOnce())
                 .collect(Collectors.toList());
     }
 
-    private List<Integer> runOnce() {
+    private List<CarState> runOnce() {
         return cars.move(numberGenerator);
     }
 

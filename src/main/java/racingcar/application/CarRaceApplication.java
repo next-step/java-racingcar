@@ -2,6 +2,8 @@ package racingcar.application;
 
 import racingcar.domain.Car;
 import racingcar.domain.CarRace;
+import racingcar.domain.CarState;
+import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -11,14 +13,16 @@ import java.util.stream.Collectors;
 public class CarRaceApplication {
     public static void main(String[] args) {
         InputView input = new InputView();
-        List<String> carNames = input.getCarNames();
+        List<Car> cars = createCars(input.getCarNames());
         int runCount = input.getRunCount();
 
-        CarRace carRace = new CarRace(createCars(carNames), runCount);
-        List<List<Integer>> result = carRace.run();
+        CarRace carRace = new CarRace(cars, runCount, new RandomNumberGenerator());
+        List<List<CarState>> result = carRace.run();
+        List<Car> winners = carRace.findWinners();
 
         ResultView output = new ResultView();
         output.print(result);
+        output.printWinners(winners);
     }
 
     private static List<Car> createCars(List<String> carNames) {

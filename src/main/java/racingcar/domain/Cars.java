@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
@@ -28,7 +27,7 @@ public class Cars {
             throw new IllegalArgumentException("자동차가 null입니다.");
     }
 
-    public List<Integer> move(NumberGenerator numberGenerator) {
+    public List<CarState> move(NumberGenerator numberGenerator) {
         return cars.stream()
                 .map(car -> car.move(numberGenerator))
                 .collect(Collectors.toList());

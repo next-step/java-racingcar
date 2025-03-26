@@ -2,6 +2,7 @@ package racingcar.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarState;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -18,7 +19,10 @@ class ResultViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        List<List<Integer>> result = List.of(List.of(1, 2, 3), List.of(1, 2, 3));
+        List<List<CarState>> result = List.of(
+                List.of(new CarState("luna", 1), new CarState("star", 0)),
+                List.of(new CarState("luna", 1), new CarState("star", 1))
+        );
 
         ResultView resultView = new ResultView();
         resultView.print(result);

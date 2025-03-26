@@ -41,7 +41,8 @@ class CarsTest {
         List<Car> testCars = Arrays.asList(new Car(), new Car());
         Cars cars = new Cars(testCars);
 
-        assertThat(cars.move(numberGenerator)).hasSize(testCars.size());
+        List<CarState> result = cars.move(numberGenerator);
+        assertThat(result).hasSize(testCars.size());
     }
 
 
@@ -51,11 +52,9 @@ class CarsTest {
         Car carLuna = new Car("luna", 0);
         Car carStar = new Car("star", 3);
         Car carSun = new Car("sun", 2);
-        List<Car> cars = Arrays.asList(carLuna, carStar, carSun);
-        int runCount = 0;
 
-        CarRace carRace = new CarRace(cars, runCount);
-        List<Car> winners = carRace.findWinners();
+        Cars cars = new Cars(Arrays.asList(carLuna, carStar, carSun));
+        List<Car> winners = cars.findWinners();
 
         assertThat(winners)
                 .hasSize(1)

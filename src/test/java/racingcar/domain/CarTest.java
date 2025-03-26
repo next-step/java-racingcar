@@ -7,7 +7,6 @@ import racingcar.util.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -31,7 +30,9 @@ class CarTest {
     void moveIfUpperMovableValue() {
         Car car = new Car();
         NumberGenerator numberGenerator = () -> 4;
-        assertThat(car.move(numberGenerator)).isEqualTo(1);
+
+        car.move(numberGenerator);
+        assertThat(car).isEqualTo(new Car(1));
     }
 
     @Test
@@ -39,7 +40,9 @@ class CarTest {
     void stopIfLowerMovableValue() {
         Car car = new Car();
         NumberGenerator numberGenerator = () -> 3;
-        assertThat(car.move(numberGenerator)).isZero();
+
+        car.move(numberGenerator);
+        assertThat(car).isEqualTo(new Car(0));
     }
 
 }

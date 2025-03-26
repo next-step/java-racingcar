@@ -2,6 +2,9 @@ package racingcar.domain;
 
 import racingcar.util.NumberGenerator;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Car {
     private static final int NAME_MAX_LENGTH = 5;
     private static final int POSITION_MIN_VALUE = 0;
@@ -29,7 +32,7 @@ public class Car {
     }
 
     private void validateNameLength(String name) {
-        if(name.length() > NAME_MAX_LENGTH) {
+        if(name != null && name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(String.format( "length of name should be less than %d", NAME_MAX_LENGTH));
         }
     }
@@ -40,17 +43,21 @@ public class Car {
         }
     }
 
-    public int move(NumberGenerator numberGenerator) {
-        if (isMovable(numberGenerator)) incrementPosition();
-        return position;
+    public CarState move(NumberGenerator numberGenerator) {
+        if (isMovable(numberGenerator)) position++;
+        return getCarState();
+    }
+
+    public CarState getCarState() {
+        return new CarState(name, position);
+    }
+
+    public void addName(List<String> names) {
+        names.add(name);
     }
 
     private boolean isMovable(NumberGenerator numberGenerator) {
         return numberGenerator.generate() >= MOVE_THRESHOLD;
-    }
-
-    private void incrementPosition() {
-        position++;
     }
 
     public int max(int compare) {
@@ -59,5 +66,17 @@ public class Car {
 
     public boolean isPositionSame(int winnerPosition) {
         return position == winnerPosition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
