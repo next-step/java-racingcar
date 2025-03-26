@@ -1,10 +1,10 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.Car;
-import racingcar.Cars;
-import racingcar.Names;
-import racingcar.Result;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Names;
+import racingcar.domain.Result;
 
 public class ResultView {
 

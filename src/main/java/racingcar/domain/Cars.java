@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,10 @@ public class Cars {
         .forEach(name -> cars.add(new Car(name)));
   }
 
+  public Cars(List<Car> cars) {
+    this.cars = new ArrayList<>(cars);
+  }
+
   public int size() {
     return cars.size();
   }
@@ -23,12 +27,16 @@ public class Cars {
   }
 
   public void moveAll(RaceEvaluator raceEvaluator) {
-    cars.forEach(car -> car.tryMove(raceEvaluator));
+    cars.forEach(car -> {
+      if (raceEvaluator.evaluate()) {
+        car.move();
+      }
+    });
   }
 
   public int findMaxScore() {
     return cars.stream()
-        .map(Car::getScore)
+        .map(Car::getPosition)
         .max(Integer::compare)
         .orElse(0);
   }
@@ -38,5 +46,22 @@ public class Cars {
     return cars.stream()
         .filter(car -> car.isWinner(maxScore))
         .collect(Collectors.toList());
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Cars other = (Cars) o;
+    return cars.equals(other.cars);
+  }
+
+  @Override
+  public int hashCode() {
+    return cars.hashCode();
   }
 }
