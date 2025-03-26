@@ -4,15 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import racingcar.util.NumberGenerator;
 import racingcar.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class CarsTest {
 
@@ -34,14 +32,15 @@ class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
     @Test
     @DisplayName("자동차 컬렉션에 포함된 자동차를 한번 전진한다.")
     void move() {
-        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        MoveStrategy moveStrategy = new MoveStrategy(new RandomNumberGenerator());
         List<Car> testCars = Arrays.asList(new Car(), new Car());
         Cars cars = new Cars(testCars);
 
-        List<CarState> result = cars.move(numberGenerator);
+        List<CarState> result = cars.move(moveStrategy);
         assertThat(result).hasSize(testCars.size());
     }
 
@@ -54,10 +53,11 @@ class CarsTest {
         Car carSun = new Car("sun", 2);
 
         Cars cars = new Cars(Arrays.asList(carLuna, carStar, carSun));
-        List<Car> winners = cars.findWinners();
+        List<CarState> winners = cars.findWinners();
 
         assertThat(winners)
                 .hasSize(1)
-                .contains(carStar);
+                .extracting("name", "position")
+                .contains(tuple("start", 3));
     }
 }

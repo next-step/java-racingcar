@@ -3,7 +3,6 @@ package racingcar.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.NumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -29,9 +28,9 @@ class CarTest {
     @DisplayName("random 값이 4 이상이면 전진한다.")
     void moveIfUpperMovableValue() {
         Car car = new Car();
-        NumberGenerator numberGenerator = () -> 4;
+        MoveStrategy moveStrategy = new MoveStrategy(() -> 4);
 
-        car.move(numberGenerator);
+        car.move(moveStrategy);
         assertThat(car).isEqualTo(new Car(1));
     }
 
@@ -39,9 +38,9 @@ class CarTest {
     @DisplayName("random 값이 4 미만이면 정지한다.")
     void stopIfLowerMovableValue() {
         Car car = new Car();
-        NumberGenerator numberGenerator = () -> 3;
+        MoveStrategy moveStrategy = new MoveStrategy(() -> 3);
 
-        car.move(numberGenerator);
+        car.move(moveStrategy);
         assertThat(car).isEqualTo(new Car(0));
     }
 

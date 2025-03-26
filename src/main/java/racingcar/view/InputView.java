@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private final Scanner scanner = new Scanner(System.in);
+    private final static Scanner SCANNER = new Scanner(System.in);
 
     public int getCarCount() {
         return validatePositiveInt(scanInt("자동차 대수는 몇 대 인가요?"));
@@ -17,8 +17,8 @@ public class InputView {
 
     private int scanInt(String message) {
         System.out.println(message);
-        int value = scanner.nextInt();
-        scanner.nextLine();
+        int value = SCANNER.nextInt();
+        SCANNER.nextLine();
         return value;
     }
 
@@ -31,7 +31,7 @@ public class InputView {
     }
 
     public List<String> getCarNames() {
-        String carNameText = scanner.nextLine();
+        String carNameText = SCANNER.nextLine();
         return Arrays.asList(carNameText.split(","));
     }
 }

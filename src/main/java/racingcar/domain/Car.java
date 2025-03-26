@@ -1,14 +1,12 @@
 package racingcar.domain;
 
-import racingcar.util.NumberGenerator;
-
 import java.util.List;
 import java.util.Objects;
 
 public class Car {
     private static final int NAME_MAX_LENGTH = 5;
     private static final int POSITION_MIN_VALUE = 0;
-    private static final int MOVE_THRESHOLD = 4;
+
     private final String name;
     private int position;
 
@@ -43,21 +41,13 @@ public class Car {
         }
     }
 
-    public CarState move(NumberGenerator numberGenerator) {
-        if (isMovable(numberGenerator)) position++;
+    public CarState move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) position++;
         return getCarState();
     }
 
     public CarState getCarState() {
         return new CarState(name, position);
-    }
-
-    public void addName(List<String> names) {
-        names.add(name);
-    }
-
-    private boolean isMovable(NumberGenerator numberGenerator) {
-        return numberGenerator.generate() >= MOVE_THRESHOLD;
     }
 
     public int max(int compare) {

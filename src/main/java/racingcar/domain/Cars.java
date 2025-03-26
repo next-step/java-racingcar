@@ -1,48 +1,47 @@
 package racingcar.domain;
 
-import racingcar.util.NumberGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private final List<Car> cars;
+    private final List<Car> elements;
 
-    public Cars(List<Car> cars) {
-        validateNotEmpty(cars);
-        validateElementNotNull(cars);
-        this.cars = new ArrayList<>(cars);
+    public Cars(List<Car> members) {
+        validateNotEmpty(members);
+        this.elements = new ArrayList<>(members);
+    }
+
+    public static Cars from(List<String> carNames) {
+        List<Car> carList = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(carList);
     }
 
     private void validateNotEmpty(List<Car> cars) {
-        if (cars == null || cars.isEmpty())
-            throw new IllegalArgumentException("자동차가 없습니다.");
+        if (cars == null || cars.isEmpty() || cars.stream().anyMatch(Objects::isNull))
+            throw new IllegalArgumentException("there should be one or more cars. can not be null or empty");
     }
 
-    private void validateElementNotNull(List<Car> cars) {
-        boolean hasNullElement = cars.stream().anyMatch(Objects::isNull);
-        if (hasNullElement)
-            throw new IllegalArgumentException("자동차가 null입니다.");
-    }
-
-    public List<CarState> move(NumberGenerator numberGenerator) {
-        return cars.stream()
-                .map(car -> car.move(numberGenerator))
+    public List<CarState> move(MoveStrategy moveStrategy) {
+        return elements.stream()
+                .map(car -> car.move(moveStrategy))
                 .collect(Collectors.toList());
     }
 
-    public List<Car> findWinners() {
+    public List<CarState> findWinners() {
         int winnerPosition = findWinnerPosition();
-        return cars.stream()
+        return elements.stream()
                 .filter(car -> car.isPositionSame(winnerPosition))
+                .map(Car::getCarState)
                 .collect(Collectors.toList());
     }
 
     private int findWinnerPosition() {
         int winnerPosition = 0;
-        for(Car car : cars) {
+        for(Car car : elements) {
             winnerPosition = car.max(winnerPosition);
         }
         return winnerPosition;

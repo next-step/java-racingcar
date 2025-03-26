@@ -1,19 +1,17 @@
 package racingcar.domain;
 
-import racingcar.util.NumberGenerator;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarRace {
-    private final NumberGenerator numberGenerator;
+    private final MoveStrategy moveStrategy;
     private final Cars cars;
-    private final int runCount;
+    private int runCount;
 
-    public CarRace(List<Car> cars, int runCount, NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-        this.cars = new Cars(cars);
+    public CarRace(Cars cars, int runCount, MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+        this.cars = cars;
         this.runCount = runCount;
     }
 
@@ -24,10 +22,14 @@ public class CarRace {
     }
 
     private List<CarState> runOnce() {
-        return cars.move(numberGenerator);
+        runCount--;
+        return cars.move(moveStrategy);
     }
 
-    public List<Car> findWinners() {
+    public List<CarState> findWinners() {
+        if(runCount > 0)
+            throw new UnsupportedOperationException("car race is still running.");
+
         return cars.findWinners();
     }
 }
