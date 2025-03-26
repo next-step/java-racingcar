@@ -21,7 +21,7 @@ public class Result {
     }
 
     for (int i = 0; i < roundResult.size(); i++) {
-      roundResult.at(i).addScore(result.get(round - 1).at(i).getScore());
+      roundResult.at(i).addScore(result.get(round - 1).at(i).getPosition());
     }
 
     return roundResult;

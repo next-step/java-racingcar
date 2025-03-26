@@ -22,7 +22,7 @@ class WinnerTest {
     List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(1);
-    assertThat(winners.get(0).getScore()).isEqualTo(5);
+    assertThat(winners.get(0).getPosition()).isEqualTo(5);
   }
 
   @Test
@@ -40,8 +40,8 @@ class WinnerTest {
     List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(2);
-    assertThat(winners.get(0).getScore()).isEqualTo(5);
-    assertThat(winners.get(1).getScore()).isEqualTo(5);
+    assertThat(winners.get(0).getPosition()).isEqualTo(5);
+    assertThat(winners.get(1).getPosition()).isEqualTo(5);
   }
 
   @Test
@@ -59,7 +59,7 @@ class WinnerTest {
     List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(3);
-    assertThat(winners).allMatch(car -> car.getScore() == 3);
+    assertThat(winners).allMatch(car -> car.getPosition() == 3);
   }
 
   @Test
@@ -76,6 +76,6 @@ class WinnerTest {
     List<Car> winners = winner.getWinners();
 
     assertThat(winners).hasSize(2);
-    assertThat(winners).allMatch(car -> car.getScore() == 0);
+    assertThat(winners).allMatch(car -> car.getPosition() == 0);
   }
 } 

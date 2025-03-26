@@ -21,12 +21,12 @@ public class RacerTest {
 
     Result result = racer.race();
 
-    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(1).at(0).getScore()).isEqualTo(2);
-    assertThat(result.getRoundResult(1).at(1).getScore()).isEqualTo(2);
-    assertThat(result.getRoundResult(2).at(0).getScore()).isEqualTo(3);
-    assertThat(result.getRoundResult(2).at(1).getScore()).isEqualTo(3);
+    assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(2);
+    assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(2);
+    assertThat(result.getRoundResult(2).at(0).getPosition()).isEqualTo(3);
+    assertThat(result.getRoundResult(2).at(1).getPosition()).isEqualTo(3);
   }
 
   @Test
@@ -43,12 +43,12 @@ public class RacerTest {
 
     Result result = racer.race();
 
-    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(1).at(0).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(1).at(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(2).at(0).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(2).at(1).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(0);
+    assertThat(result.getRoundResult(2).at(0).getPosition()).isEqualTo(0);
+    assertThat(result.getRoundResult(2).at(1).getPosition()).isEqualTo(0);
   }
 
   @Test
@@ -68,11 +68,11 @@ public class RacerTest {
 
     Result result = racer.race();
 
-    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(0).at(2).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(1).at(0).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(1).at(1).getScore()).isEqualTo(0);
-    assertThat(result.getRoundResult(1).at(2).getScore()).isEqualTo(2);
+    assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(2).getPosition()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(0);
+    assertThat(result.getRoundResult(1).at(2).getPosition()).isEqualTo(2);
   }
 }

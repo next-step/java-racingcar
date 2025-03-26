@@ -32,7 +32,7 @@ public class Cars {
 
   public int findMaxScore() {
     return cars.stream()
-        .map(Car::getScore)
+        .map(Car::getPosition)
         .max(Integer::compare)
         .orElse(0);
   }

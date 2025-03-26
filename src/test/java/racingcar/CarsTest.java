@@ -26,7 +26,17 @@ public class CarsTest {
     Cars cars = new Cars(names);
     cars.at(0).addScore(3);
     cars.at(1).addScore(3);
-    
+
     assertThat(cars.findWinners()).hasSize(2);
+  }
+
+  @Test
+  void findWinner() {
+    Names names = new Names(new String[]{"car1", "car2"});
+    Cars cars = new Cars(names);
+    cars.at(0).addScore(2);
+    cars.at(1).addScore(3);
+
+    assertThat(cars.findWinners()).hasSize(1);
   }
 }

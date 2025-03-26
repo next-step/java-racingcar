@@ -31,9 +31,9 @@ public class ResultTest {
     result.record(0, firstRound);
 
     assertThat(result.size()).isEqualTo(1);
-    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(2);
-    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(0).at(2).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(2);
+    assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).at(2).getPosition()).isEqualTo(0);
   }
 
   @Test
@@ -41,22 +41,22 @@ public class ResultTest {
     result.record(0, firstRound);
     result.record(1, secondRound);
 
-    assertThat(result.getRoundResult(0).at(0).getScore()).isEqualTo(2);
-    assertThat(result.getRoundResult(0).at(1).getScore()).isEqualTo(1);
-    assertThat(result.getRoundResult(0).at(2).getScore()).isEqualTo(0);
+    assertThat(result.getRoundResult(0).at(0).getPosition()).isEqualTo(2);
+    assertThat(result.getRoundResult(0).at(1).getPosition()).isEqualTo(1);
+    assertThat(result.getRoundResult(0).at(2).getPosition()).isEqualTo(0);
 
-    assertThat(result.getRoundResult(1).at(0).getScore()).isEqualTo(3);
-    assertThat(result.getRoundResult(1).at(1).getScore()).isEqualTo(2);
-    assertThat(result.getRoundResult(1).at(2).getScore()).isEqualTo(1);
+    assertThat(result.getRoundResult(1).at(0).getPosition()).isEqualTo(3);
+    assertThat(result.getRoundResult(1).at(1).getPosition()).isEqualTo(2);
+    assertThat(result.getRoundResult(1).at(2).getPosition()).isEqualTo(1);
   }
 
   @Test
   void merge_이전_라운드가_없는_경우() {
     Cars merged = result.merge(0, firstRound);
 
-    assertThat(merged.at(0).getScore()).isEqualTo(2);
-    assertThat(merged.at(1).getScore()).isEqualTo(1);
-    assertThat(merged.at(2).getScore()).isEqualTo(0);
+    assertThat(merged.at(0).getPosition()).isEqualTo(2);
+    assertThat(merged.at(1).getPosition()).isEqualTo(1);
+    assertThat(merged.at(2).getPosition()).isEqualTo(0);
   }
 
   @Test
@@ -64,8 +64,8 @@ public class ResultTest {
     result.record(0, firstRound);
     Cars merged = result.merge(1, secondRound);
 
-    assertThat(merged.at(0).getScore()).isEqualTo(3);
-    assertThat(merged.at(1).getScore()).isEqualTo(2);
-    assertThat(merged.at(2).getScore()).isEqualTo(1);
+    assertThat(merged.at(0).getPosition()).isEqualTo(3);
+    assertThat(merged.at(1).getPosition()).isEqualTo(2);
+    assertThat(merged.at(2).getPosition()).isEqualTo(1);
   }
 }

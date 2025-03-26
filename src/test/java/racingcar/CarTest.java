@@ -17,7 +17,7 @@ public class CarTest {
     Car car = new Car("test");
     car.move();
     car.move();
-    assertThat(car.getScore()).isEqualTo(2);
+    assertThat(car.getPosition()).isEqualTo(2);
   }
 
   @Test
@@ -25,7 +25,7 @@ public class CarTest {
     Car car = new Car("test");
     car.move();
     car.addScore(3);
-    assertThat(car.getScore()).isEqualTo(4);
+    assertThat(car.getPosition()).isEqualTo(4);
   }
 
   @Test

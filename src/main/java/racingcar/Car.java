@@ -2,48 +2,43 @@ package racingcar;
 
 public class Car {
 
-  private static final int DEFAULT_SCORE = 0;
   private final Name name;
-  private int score;
+  private final Position position;
 
   public Car(String name) {
-    this(new Name(name), DEFAULT_SCORE);
+    this(new Name(name), new Position());
   }
 
-  public Car(String name, int score) {
-    this(new Name(name), score);
+  public Car(String name, int position) {
+    this(new Name(name), new Position(position));
   }
 
-  public Car(Name name, int score) {
+  public Car(Name name, Position position) {
     this.name = name;
-    this.score = score;
+    this.position = position;
   }
 
   public void addScore(int additionalScore) {
-    this.score += additionalScore;
+    this.position.add(additionalScore);
   }
 
-  public int getScore() {
-    return score;
+  public int getPosition() {
+    return this.position.getValue();
   }
 
   public void move() {
-    score++;
+    this.position.move();
   }
 
   public String showPosition(String marker) {
-    return marker.repeat(score);
+    return this.position.showPosition(marker);
   }
 
   public String getName() {
-    return name.toString();
+    return this.name.toString();
   }
 
   public boolean isWinner(int winnerScore) {
-    return winnerScore == this.score;
-  }
-
-  public boolean hasHigherScore(int comparisonScore) {
-    return this.score > comparisonScore;
+    return this.position.isSameAs(winnerScore);
   }
 }
