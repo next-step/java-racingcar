@@ -35,12 +35,12 @@ class CarsTest {
 
     @Test
     @DisplayName("자동차 컬렉션에 포함된 자동차를 한번 전진한다.")
-    void move() {
+    void moveAll() {
         MoveStrategy moveStrategy = new MoveStrategy(new RandomNumberGenerator());
-        List<Car> testCars = Arrays.asList(new Car(), new Car());
+        List<Car> testCars = Arrays.asList(new Car("car1"), new Car("Car2"));
         Cars cars = new Cars(testCars);
 
-        List<CarState> result = cars.move(moveStrategy);
+        List<CarState> result = cars.moveAll(moveStrategy);
         assertThat(result).hasSize(testCars.size());
     }
 
@@ -58,6 +58,6 @@ class CarsTest {
         assertThat(winners)
                 .hasSize(1)
                 .extracting("name", "position")
-                .contains(tuple("start", 3));
+                .contains(tuple("star", 3));
     }
 }

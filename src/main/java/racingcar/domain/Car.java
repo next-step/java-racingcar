@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -10,28 +9,20 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(){
-        this(null, 0);
-    }
-
-    public Car(int position){
-        this(null, position);
-    }
-
     public Car(String name) {
         this(name, 0);
     }
 
-    public Car(String name, int position){
-        validateNameLength(name);
+    public Car(String name, int position) {
+        validateNotNullAndLength(name);
         validatePositive(position);
         this.name = name;
         this.position = position;
     }
 
-    private void validateNameLength(String name) {
-        if(name != null && name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(String.format( "length of name should be less than %d", NAME_MAX_LENGTH));
+    private void validateNotNullAndLength(String name) {
+        if (name == null || name.length() > NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException(String.format("length of name should be less than %d", NAME_MAX_LENGTH));
         }
     }
 
@@ -41,21 +32,20 @@ public class Car {
         }
     }
 
-    public CarState move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMovable()) position++;
-        return getCarState();
-    }
-
-    public CarState getCarState() {
+    public CarState toState() {
         return new CarState(name, position);
     }
 
-    public int max(int compare) {
-        return Math.max(position, compare);
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) position++;
     }
 
-    public boolean isPositionSame(int winnerPosition) {
-        return position == winnerPosition;
+    public boolean isSamePositionWith(Car other) {
+        return position == other.position;
+    }
+
+    public Car findCarAhead(Car other) {
+        return position > other.position ? this : other;
     }
 
     @Override
@@ -64,9 +54,9 @@ public class Car {
         Car car = (Car) o;
         return position == car.position && Objects.equals(name, car.name);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
     }
+
 }

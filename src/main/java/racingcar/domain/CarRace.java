@@ -1,9 +1,7 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CarRace {
     private final MoveStrategy moveStrategy;
@@ -24,7 +22,7 @@ public class CarRace {
 
     private List<CarState> runOnce() {
         runCount.decrease();
-        return cars.move(moveStrategy);
+        return cars.moveAll(moveStrategy);
     }
 
     public List<CarState> findWinners() {
