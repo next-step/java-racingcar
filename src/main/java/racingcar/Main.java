@@ -14,16 +14,16 @@ import static racingcar.message.Message.*;
 public class Main {
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
+        final InputView inputView = new InputView();
 
         final List<String> names = getValidCarNames(inputView);
         final int attemptCount = getValidAttemptCount(inputView);
 
-        RacingGame racingGame = RacingGame.createRacingGame(names);
+        final RacingGame racingGame = RacingGame.createRacingGame(names);
 
         final RacingGame finalResult = racingGame.race(attemptCount);
 
-        List<Car> winners = finalResult.getWinners();
+        final List<Car> winners = finalResult.getWinners();
         OutputView.printWinners(winners);
     }
 
