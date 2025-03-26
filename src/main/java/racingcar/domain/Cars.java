@@ -25,4 +25,9 @@ public class Cars {
         cars.forEach(car -> car.move(movement.canMove()));
     }
 
+    public List<CarDto> getCarsInfo() {
+        return cars.stream()
+                .map(Car::toDto).collect(Collectors.toList());
+    }
+
 }
