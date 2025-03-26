@@ -2,12 +2,12 @@ package step4.domain;
 
 public class Car {
     private int position;
-    private final MoveCondition moveCondition;
+    private final MoveStrategy moveStrategy;
     private final String carName;
 
-    public Car(String carName, MoveCondition moveCondition) {
+    public Car(String carName, MoveStrategy moveStrategy) {
         this.position = 1;
-        this.moveCondition = moveCondition;
+        this.moveStrategy = moveStrategy;
         this.carName = carName;
     }
 
@@ -20,7 +20,7 @@ public class Car {
     }
 
     public void move() {
-        if (!moveCondition.isMovable()) return;
+        if (!moveStrategy.isMovable()) return;
         position++;
     }
 }
