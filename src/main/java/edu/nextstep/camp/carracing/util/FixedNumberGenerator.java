@@ -1,0 +1,14 @@
+package edu.nextstep.camp.carracing.util;
+
+public class FixedNumberGenerator implements NumberGenerator {
+    private final int number;
+
+    public FixedNumberGenerator(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public int generateNumber() {
+        return number;
+    }
+}

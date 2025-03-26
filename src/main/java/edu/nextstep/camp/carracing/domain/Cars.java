@@ -1,10 +1,10 @@
 package edu.nextstep.camp.carracing.domain;
 
+import edu.nextstep.camp.carracing.util.NumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static edu.nextstep.camp.carracing.util.RandomNumberGenerator.generateRandomNumber;
 
 public class Cars {
     private final List<Car> values;
@@ -21,9 +21,9 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public void moveCars() {
+    public void moveCars(NumberGenerator generator) {
         for (Car car : this.values) {
-            car.move(generateRandomNumber());
+            car.move(generator.generateNumber());
         }
     }
 
