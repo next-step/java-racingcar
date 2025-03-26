@@ -1,9 +1,6 @@
 package racingcar.application;
 
-import racingcar.domain.CarRace;
-import racingcar.domain.CarState;
-import racingcar.domain.Cars;
-import racingcar.domain.MoveStrategy;
+import racingcar.domain.*;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -26,8 +23,9 @@ public class CarRaceApplication {
         resultView.printWinners(winners);
     }
 
-    private static CarRace createGame(List<String> carNames, int runCount) {
+    private static CarRace createGame(List<String> carNames, int count) {
         Cars cars = Cars.from(carNames);
+        RunCount runCount = new RunCount(count);
         MoveStrategy moveStrategy = new MoveStrategy(new RandomNumberGenerator());
 
         return new CarRace(cars, runCount, moveStrategy);
