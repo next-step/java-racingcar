@@ -1,15 +1,15 @@
 package com.nextstep.camp.racing.infrastructure.view.component;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.nextstep.camp.racing.application.dto.CarResponse;
 import com.nextstep.camp.racing.application.dto.RacingResponse;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingResult extends AbstractResult<String> {
 
     private final LapHistoryResult lapHistoryResult;
-    private final List<String> winnersName;
+    private final List<String> winnerNames;
 
     private static final String RACING_HEADER = "실행 결과";
     private static final String NEWLINE = "\n";
@@ -19,7 +19,7 @@ public class RacingResult extends AbstractResult<String> {
     private RacingResult(RacingResponse racing) {
         super(DEFAULT_VALUE);
         this.lapHistoryResult = LapHistoryResult.of(racing.getLaps());
-        this.winnersName = racing.getWinners().stream()
+        this.winnerNames = racing.getWinners().stream()
                 .map(CarResponse::getName)
                 .collect(Collectors.toList());
     }
@@ -40,7 +40,7 @@ public class RacingResult extends AbstractResult<String> {
             appendSingleLapResult(lab, display);
         });
         display.append(NEWLINE)
-                .append(String.join(WINNER_NAME_DELIMITER, winnersName))
+                .append(String.join(WINNER_NAME_DELIMITER, winnerNames))
                 .append(WINNING_MESSAGE);
     }
 

@@ -9,7 +9,7 @@ public class Move {
         this.value = strategy.movable();
     }
 
-    public static Move decide(MoveStrategy strategy) {
+    public static Move decideBy(MoveStrategy strategy) {
         return new Move(strategy);
     }
 

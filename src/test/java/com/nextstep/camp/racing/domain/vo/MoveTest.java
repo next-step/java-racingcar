@@ -13,7 +13,7 @@ public class MoveTest {
         boolean hasNotMoved = false;
 
         for (int i = 0; i < 100; i++) {
-            Move move = Move.decide(RandomMoveStrategy.INSTANCE);
+            Move move = Move.decideBy(RandomMoveStrategy.INSTANCE);
             if (move.isMove()) {
                 hasMoved = true;
             } else {
