@@ -2,7 +2,6 @@ package edu.nextstep.camp.carracing.domain;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
-    private static final String MOVE_SYMBOL = "-";
 
     private final CarName name;
     private Position position;
@@ -22,10 +21,6 @@ public class Car {
         }
     }
 
-    public String getCurrentPositionString() {
-        return String.format("%s : %s", this.name.getName(), MOVE_SYMBOL.repeat(this.position.getValue()));
-    }
-
     public boolean isMaxPosition(int position) {
         return this.position.isSame(position);
     }
@@ -36,5 +31,9 @@ public class Car {
 
     public String getNameValue() {
         return this.name.getName();
+    }
+
+    public Position getPosition() {
+        return this.position;
     }
 }

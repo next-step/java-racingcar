@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
     @ParameterizedTest
-    @CsvSource(value = {"0,'myCar : '", "9,'myCar : -'"})
-    void 숫자에_따른_차_이동_후_position_테스트(int number, String expectedPosition) {
+    @CsvSource(value = {"0,0", "9,1"})
+    void 숫자에_따른_차_이동_후_position_테스트(int number, int expectedPosition) {
         // Given
         Car car = new Car("myCar");
 
@@ -17,6 +17,6 @@ class CarTest {
         car.move(number);
 
         // Then
-        assertThat(car.getCurrentPositionString()).isEqualTo(expectedPosition);
+        assertThat(car.getPosition().getValue()).isEqualTo(expectedPosition);
     }
 }

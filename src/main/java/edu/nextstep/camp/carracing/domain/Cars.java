@@ -27,15 +27,6 @@ public class Cars {
         }
     }
 
-    public String printCarsStatus() {
-        StringBuilder result = new StringBuilder();
-        for (Car car : this.values) {
-            result.append(car.getCurrentPositionString()).append(System.lineSeparator());
-        }
-        result.append(System.lineSeparator());
-        return result.toString();
-    }
-
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : this.values) {
@@ -50,5 +41,9 @@ public class Cars {
                 .filter(car -> car.isMaxPosition(winnerPosition))
                 .map(Car::getNameValue)
                 .collect(Collectors.toList());
+    }
+
+    public List<Car> getValues() {
+        return this.values;
     }
 }

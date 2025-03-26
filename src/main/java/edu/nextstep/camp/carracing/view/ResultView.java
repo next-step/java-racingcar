@@ -1,11 +1,13 @@
 package edu.nextstep.camp.carracing.view;
 
+import edu.nextstep.camp.carracing.domain.Car;
 import edu.nextstep.camp.carracing.domain.Cars;
 
 import java.util.List;
 
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String MOVE_SYMBOL = "-";
 
     private ResultView() {
         throw new IllegalStateException("인스턴스 생성이 불가능한 클래스입니다.");
@@ -20,6 +22,9 @@ public class ResultView {
     }
 
     public static void printCarsStatus(Cars cars) {
-        System.out.println(cars.printCarsStatus());
+        for (Car car : cars.getValues()) {
+            System.out.printf("%s : %s%s", car.getNameValue(), MOVE_SYMBOL.repeat(car.getPosition().getValue()), System.lineSeparator());
+        }
+        System.out.println();
     }
 }
