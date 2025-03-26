@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
@@ -30,8 +31,10 @@ public class NamesTest {
   @Test
   void getNameByIndex() {
     Names n = new Names(new String[]{"car1", "car2", "car3"});
-    assertThat(n.getNameByIndex(0)).isEqualTo("car1");
-    assertThat(n.getNameByIndex(1)).isEqualTo("car2");
-    assertThat(n.getNameByIndex(2)).isEqualTo("car3");
+    assertAll(
+        () -> assertThat(n.getNameByIndex(0)).isEqualTo("car1"),
+        () -> assertThat(n.getNameByIndex(1)).isEqualTo("car2"),
+        () -> assertThat(n.getNameByIndex(2)).isEqualTo("car3")
+    );
   }
 }
