@@ -15,7 +15,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"2,false", "3,false", "4,true", "5,true", "6,true", "7,true", "8,true"})
+    @CsvSource({"3,false", "4,true"}) // 경계를 두고 전후만 테스트 해보자
     public void carIsMovableWhenRandomLTE4(int random, boolean expected) {
         Car car = new Car();
 

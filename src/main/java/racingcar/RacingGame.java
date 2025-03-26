@@ -22,13 +22,12 @@ public class RacingGame {
         inputView.initGameInput();
         initializeCars(inputView.getNumberOfCars());
         runRace(inputView.getAttemptCount());
-        resultView.printResult();
     }
 
     public List<Car> runRace(int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             moveCars();
-            resultView.saveResults(cars);
+            resultView.showResults(cars);
         }
         return cars;
     }

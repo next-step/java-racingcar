@@ -5,26 +5,18 @@ import racingcar.Car;
 import java.util.List;
 
 public class ResultView {
-    private StringBuilder result = new StringBuilder();
-
-    public void saveResults(List<Car> cars) {
+    public void showResults(List<Car> cars) {
         for (Car car : cars) {
-            saveCurrentPosition(car);
+            printCurrentPosition(car);
         }
-        saveEmptyLine();
+        printEmptyLine();
     }
 
-    public void printResult() {
-        System.out.println(result);
+    public void printCurrentPosition(Car car) {
+        System.out.println("-".repeat(car.getPosition()));
     }
 
-    private void saveCurrentPosition(Car car) {
-        int position = car.getPosition();
-        String positionStr = "-".repeat(position);
-        result.append(positionStr);
-    }
-
-    private void saveEmptyLine() {
-        result.append(System.lineSeparator());
+    private void printEmptyLine() {
+        System.out.println();
     }
 }
