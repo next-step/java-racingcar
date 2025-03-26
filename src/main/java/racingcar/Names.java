@@ -2,30 +2,22 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Names {
 
-  private static final int MAX_LENGTH = 5;
-  private final List<String> names;
+  private final List<Name> names;
 
   public Names(String[] names) {
-    validateNames(names);
-    this.names = List.of(names);
-  }
-
-  private void validateNames(String[] names) {
-    Arrays.stream(names)
-        .forEach(this::validateName);
-  }
-
-  private void validateName(String name) {
-    if (name.length() > MAX_LENGTH) {
-      throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-    }
+    this.names = Arrays.stream(names)
+        .map(Name::new)
+        .collect(Collectors.toList());
   }
 
   public List<String> getNames() {
-    return names;
+    return names.stream()
+        .map(Name::toString)
+        .collect(Collectors.toList());
   }
 
   public int size() {
@@ -33,6 +25,6 @@ public class Names {
   }
 
   public String getNameByIndex(int index) {
-    return names.get(index);
+    return names.get(index).toString();
   }
 }

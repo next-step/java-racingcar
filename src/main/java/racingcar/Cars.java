@@ -23,7 +23,11 @@ public class Cars {
   }
 
   public void moveAll(RaceEvaluator raceEvaluator) {
-    cars.forEach(car -> car.tryMove(raceEvaluator));
+    cars.forEach(car -> {
+      if (raceEvaluator.evaluate()) {
+        car.move();
+      }
+    });
   }
 
   public int findMaxScore() {

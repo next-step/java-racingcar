@@ -1,8 +1,7 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
@@ -10,58 +9,28 @@ public class CarTest {
   @Test
   void getName() {
     Car car = new Car("test");
-    assertEquals("test", car.getName());
+    assertThat(car.getName()).isEqualTo("test");
   }
 
   @Test
-  void tryMove_success() {
-    Random testRandom = new Random() {
-      @Override
-      public int nextInt(int bound) {
-        return 4;
-      }
-    };
-    RaceEvaluator raceEvaluator = new RaceEvaluator(testRandom);
+  void move() {
     Car car = new Car("test");
-    car.tryMove(raceEvaluator);
-    car.tryMove(raceEvaluator);
-    assertEquals(2, car.getScore());
-  }
-
-  @Test
-  void tryMove_stay() {
-    Random testRandom = new Random() {
-      @Override
-      public int nextInt(int bound) {
-        return 3;
-      }
-    };
-    RaceEvaluator raceEvaluator = new RaceEvaluator(testRandom);
-    Car car = new Car("test");
-    car.tryMove(raceEvaluator);
-    car.tryMove(raceEvaluator);
-    assertEquals(0, car.getScore());
+    car.move();
+    car.move();
+    assertThat(car.getScore()).isEqualTo(2);
   }
 
   @Test
   void mergeScore() {
-    Random testRandom = new Random() {
-      @Override
-      public int nextInt(int bound) {
-        return 4;
-      }
-    };
-    RaceEvaluator raceEvaluator = new RaceEvaluator(testRandom);
     Car car = new Car("test");
-    car.tryMove(raceEvaluator);
-
+    car.move();
     car.addScore(3);
-    assertEquals(4, car.getScore());
+    assertThat(car.getScore()).isEqualTo(4);
   }
 
   @Test
   void showPosition() {
     Car car = new Car("test", 3);
-    assertEquals("---", car.showPosition("-"));
+    assertThat(car.showPosition("-")).isEqualTo("---");
   }
 }

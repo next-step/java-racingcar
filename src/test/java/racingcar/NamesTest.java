@@ -1,7 +1,7 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
@@ -10,28 +10,28 @@ public class NamesTest {
 
   @Test
   void getNamesByIndex() {
-    Names n = new Names(new String[]{"car1", "car2", "car3"});
-    assertEquals(Arrays.asList("car1", "car2", "car3"), n.getNames());
+    Names names = new Names(new String[]{"car1", "car2", "car3"});
+    assertThat(names.getNames()).isEqualTo(Arrays.asList("car1", "car2", "car3"));
   }
 
   @Test
-  void validate() {
-    assertThrows(IllegalArgumentException.class,
-        () -> new Names(new String[]{"car1", "car2", "car12345"}));
-    assertThrows(IllegalArgumentException.class, () -> new Names(new String[]{"car1", "car2", "car12345"}));
+  void validate_name_length() {
+    assertThatThrownBy(() -> new Names(new String[]{"car1", "car2", "car12345"}))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
   }
 
   @Test
   void size() {
     Names n = new Names(new String[]{"car1", "car2", "car3"});
-    assertEquals(3, n.size());
+    assertThat(n.size()).isEqualTo(3);
   }
 
   @Test
   void getNameByIndex() {
     Names n = new Names(new String[]{"car1", "car2", "car3"});
-    assertEquals("car1", n.getNameByIndex(0));
-    assertEquals("car2", n.getNameByIndex(1));
-    assertEquals("car3", n.getNameByIndex(2));
+    assertThat(n.getNameByIndex(0)).isEqualTo("car1");
+    assertThat(n.getNameByIndex(1)).isEqualTo("car2");
+    assertThat(n.getNameByIndex(2)).isEqualTo("car3");
   }
 }
