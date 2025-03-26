@@ -39,4 +39,12 @@ public class RacingGame {
         }
         ResultView.printWinner(cars.getWinners());
     }
+
+    public static void main(String[] args) {
+        int numberOfCars = InputView.getNumberOfCars();
+        int numberOfRounds = InputView.getNumberOfRounds();
+
+        RacingGame game = new RacingGame(numberOfCars, numberOfRounds);
+        game.run();
+    }
 }
