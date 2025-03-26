@@ -1,26 +1,28 @@
 package step4.domain;
 
-public class Car {
-    private int position;
-    private final MoveCondition moveCondition;
+public class Car implements Comparable<Car> {
     private final String carName;
+    private Position position;
+    public static final int DEFAULT_POSITION = 0;
 
-    public Car(String carName, MoveCondition moveCondition) {
-        this.position = 1;
-        this.moveCondition = moveCondition;
+    public Car(String carName) {
         this.carName = carName;
+        this.position = new Position(DEFAULT_POSITION);
     }
+
+    public String getCarName() { return  this.carName; }
 
     public int getPosition() {
-        return this.position;
+        return this.position.getPosition();
     }
 
-    public String getCarName() {
-        return  this.carName;
+    public void move(MoveStrategy moveStrategy) {
+        if (!moveStrategy.isMovable()) return;
+        this.position.move();
     }
 
-    public void move() {
-        if (!moveCondition.isMovable()) return;
-        position++;
+    @Override
+    public int compareTo(Car other) {
+        return this.position.compareTo(other.position);
     }
 }
