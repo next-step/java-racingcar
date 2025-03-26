@@ -56,6 +56,7 @@ class CarTest {
 
         assertThat(movedCar.getName().getName()).isEqualTo(carName);
         assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
+        assertThat(initialCar).isNotEqualTo(movedCar);
     }
 
     @DisplayName("랜덤 값이 3이하 이면 이동 하지 않는다.")
@@ -86,5 +87,6 @@ class CarTest {
 
         assertThat(initialCar.isAtPosition(new Position(0))).isTrue();
         assertThat(movedCar.isAtPosition(new Position(1))).isTrue();
+        assertThat(initialCar).isNotEqualTo(movedCar);
     }
 }
