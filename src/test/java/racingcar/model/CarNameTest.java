@@ -10,18 +10,18 @@ import racingcar.message.ErrorMessage;
 
 class CarNameTest {
 
-    @DisplayName("자동차명은 1자에서 5자 이하이다.")
+    @DisplayName("자동차명은 1자에서 5자 이하이면 예외가 발생하지 않는다.")
     @ParameterizedTest
     @ValueSource(strings = {"a", "ab", "abc", "abcd", "abcde"})
     void valid_car_name(String carName) {
-        assertThatCode(() -> new Car(new CarName(carName)))
+        assertThatCode(() -> new CarName(carName))
                 .doesNotThrowAnyException();
     }
 
     @DisplayName("자동차명이 null이면 exception을 발생시킨다.")
     @Test
     void car_name_with_blank() {
-        assertThatThrownBy(() -> new Car(new CarName("")))
+        assertThatThrownBy(() -> new CarName(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_NAME);
     }
@@ -29,7 +29,7 @@ class CarNameTest {
     @DisplayName("자동차명이 5자를 초과하면 exception을 발생시킨다.")
     @Test
     void car_name_exceed_max_length() {
-        assertThatThrownBy(() -> new Car(new CarName("abcdef")))
+        assertThatThrownBy(() -> new CarName("abcdef"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_CAR_NAME_LENGTH);
     }
