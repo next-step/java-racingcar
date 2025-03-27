@@ -1,10 +1,11 @@
-package domain;
+package view;
 
+import domain.RacingGame;
+import domain.RacingGameResult;
 import movingStrategy.AlwaysMove;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import ui.ResultView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

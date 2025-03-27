@@ -1,7 +1,7 @@
 import domain.RacingGame;
 import movingStrategy.RandomlyMove;
-import ui.InputView;
-import ui.ResultView;
+import view.InputView;
+import view.ResultView;
 
 import java.util.Scanner;
 
