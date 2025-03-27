@@ -1,6 +1,6 @@
 package study;
 
-import UI.ResultView;
+import ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,14 @@ class RacingGame {
     private final int rounds;
 
     public RacingGame(int numberOfCars, int rounds) {
+
+        if (numberOfCars <= 0) {
+            throw new IllegalArgumentException("자동차 대수는 1대 이상이어야 합니다.");
+        }
+        if (rounds <= 0) {
+            throw new IllegalArgumentException("라운드 수는 1 이상이어야 합니다.");
+        }
+
         this.cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
