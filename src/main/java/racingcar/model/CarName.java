@@ -22,7 +22,7 @@ public class CarName {
             throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH);
         }
     }
-
+  
     @Override
     public String toString() {
         return name;

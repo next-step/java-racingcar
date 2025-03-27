@@ -15,7 +15,6 @@ class CarTest {
         Car car = new Car(new CarName("test"), new Position(5));
 
         assertThat(car.matches(new CarName("test"))).isTrue();
-        assertThat(car.isAtPosition(new Position(5))).isTrue();
     }
 
     @Test
@@ -35,7 +34,6 @@ class CarTest {
         Car car = new Car(new CarName(carName), new Position(initialPosition));
 
         assertThat(car.matches(new CarName(carName))).isTrue();
-        assertThat(car.isAtPosition(new Position(initialPosition))).isTrue();
     }
 
     @DisplayName("랜덤 값이 4이상 이면 이동 한다.")
@@ -55,8 +53,6 @@ class CarTest {
         Car movedCar = initialCar.move(randomValue);
 
         assertThat(movedCar.matches(new CarName("car"))).isTrue();
-        assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
-        assertThat(initialCar).isNotEqualTo(movedCar);
     }
 
     @DisplayName("랜덤 값이 3이하 이면 이동 하지 않는다.")

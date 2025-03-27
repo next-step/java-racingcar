@@ -3,14 +3,13 @@ package racingcar.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.message.ErrorMessage;
 
 class CarNameTest {
-
+  
     @DisplayName("자동차명은 1자에서 5자 이하이면 예외가 발생하지 않는다.")
     @ParameterizedTest
     @ValueSource(strings = {"a", "ab", "abc", "abcd", "abcde"})
