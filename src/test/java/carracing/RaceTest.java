@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RaceTest {
 
@@ -18,6 +19,22 @@ public class RaceTest {
         race.playRound();
 
         assertEquals(List.of(1, 0, 1), race.getCarPositions());
+    }
+
+    @Test
+    @DisplayName("랜덤 값에 따라 자동차가 이동하고, 우승자를 올바르게 반환하는지 확인")
+    public void playRoundAndWinnersTest() {
+        RandomStub randomStub = new RandomStub(new int[]{4, 3, 4});
+        String[] names = {"pobi", "crong", "honux"};
+        Race race = new Race(names, 1, new RandomMovingStrategy(randomStub));
+        race.playRound();
+
+        assertEquals(List.of(1, 0, 1), race.getCarPositions());
+
+        List<String> winners = race.getWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        assertEquals(List.of("pobi", "honux"), winners);
     }
 
     private static class RandomStub extends Random {

@@ -57,6 +57,12 @@ public class Race {
         }
     }
 
+    public List<Car> getWinners() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == cars.stream().mapToInt(Car::getPosition).max().orElse(0))
+                .collect(Collectors.toList());
+    }
+
     public void getWinners(ResultView resultView) {
         List<Car> winners = cars.stream()
                 .filter(car -> car.getPosition() == cars.stream().mapToInt(Car::getPosition).max().orElse(0))
