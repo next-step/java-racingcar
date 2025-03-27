@@ -13,6 +13,13 @@ public class RacingGame {
         this.moveable = moveable;
     }
 
+    public RacingGame(String[] racingCarNamesArray, Integer tryCountInteger, Moveable moveable) {
+        RacingCarNames racingCarNames = new RacingCarNames(racingCarNamesArray);
+        this.racingCars = new RacingCars(racingCarNames);
+        this.tryCount = new TryCount(tryCountInteger);
+        this.moveable = moveable;
+    }
+
     public RacingGameResult start() {
         RacingGameResult racingGameResult = new RacingGameResult();
         for (int i = 0; i < tryCount.getTryCount(); i++) {
@@ -24,11 +31,5 @@ public class RacingGame {
     private void progressRound(RacingGameResult racingGameResult) {
         racingCars.moveRacingCars(moveable);
         racingGameResult.addRoundResult(new RoundResult(racingCars));
-    }
-
-    public static RacingGame of(String[] racingCarNamesArray, Integer tryCountInteger, Moveable moveable) {
-        RacingCarNames racingCarNames = new RacingCarNames(racingCarNamesArray);
-        TryCount tryCount = new TryCount(tryCountInteger);
-        return new RacingGame(racingCarNames, tryCount, moveable);
     }
 }

@@ -22,7 +22,7 @@ class ResultViewTest {
         PrintStream testOut = new PrintStream(outputStream);
         ResultView resultView = new ResultView(testOut);
 
-        RacingGame racingGame = RacingGame.of(namesOfCar, tryCount, new AlwaysMove());
+        RacingGame racingGame = new RacingGame(namesOfCar, tryCount, new AlwaysMove());
         RacingGameResult racingGameResult = racingGame.start();
 
         resultView.printResult(racingGameResult);

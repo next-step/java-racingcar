@@ -18,7 +18,7 @@ public class RacingGameApplication {
 
         String[] namesOfCar = inputView.queryStringArrayInputWithPrompt(carInputPrompt, delimiter);
         Integer tryCount = inputView.queryIntegerInputWithPrompt(trialCountPrompt);
-        RacingGame racingGame = RacingGame.of(namesOfCar, tryCount, new RandomlyMove(bound, threshold));
+        RacingGame racingGame = new RacingGame(namesOfCar, tryCount, new RandomlyMove(bound, threshold));
 
         new ResultView(System.out).printResult(racingGame.start());
     }

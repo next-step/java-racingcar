@@ -14,7 +14,7 @@
    ```
   
     - 래핑된 클래스를 생성자에서 받는 설계가 더 유연
-    - 편의성을 위해 정적 팩토리 메서드를 추가: `RacingGame.of(String[], int, Moveable)`
+    - 편의성을 위해 정적 팩토리 메서드를 추가: `new RacingGame(String[], int, Moveable)`
 ### TryCounts
 - tryCounts 만큼 입력받은 함수를 반복하는 기능이 `TryCounts` 내부에 존재해도 되는가?
   - TryCounts 는 단순히 횟수를 나타나는 객체이므로 반복 기능을 넣는 것은 적합하지 않음

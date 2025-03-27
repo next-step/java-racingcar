@@ -26,7 +26,7 @@ class RacingGameTest {
         String[] validNamesOfCar = {"more", "much", "less"};
 
         // When
-        RacingGame racingGame = RacingGame.of(validNamesOfCar, validTryCount, alwaysMove);
+        RacingGame racingGame = new RacingGame(validNamesOfCar, validTryCount, alwaysMove);
 
         // Then
         assertThatNoException().isThrownBy(racingGame::start);
@@ -71,7 +71,7 @@ class RacingGameTest {
     }
 
     private RacingGameResult playTestGame(Moveable moveable) {
-        RacingGame racingGame = RacingGame.of(RACING_CAR_NAMES, NUMBER_OF_TRIAL, moveable);
+        RacingGame racingGame = new RacingGame(RACING_CAR_NAMES, NUMBER_OF_TRIAL, moveable);
         return racingGame.start();
     }
 
@@ -81,6 +81,6 @@ class RacingGameTest {
         String[] namesOfCar = {"more", "much", "less"};
         int tryCount = 5;
         Moveable moveable = new AlwaysMove();
-        assertThatNoException().isThrownBy(() -> RacingGame.of(namesOfCar, tryCount, moveable));
+        assertThatNoException().isThrownBy(() -> new RacingGame(namesOfCar, tryCount, moveable));
     }
 }

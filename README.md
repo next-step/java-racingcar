@@ -36,7 +36,7 @@
   - [x] move 메소드 시그니쳐 변경
 ### 5단계
 - [x] Position 필드 불변으로 변경
-- [ ] RacingGame.of 삭제
+- [x] RacingGame.of 삭제
 - [x] TryCount 이름 변경
 - [ ] RacingCar - Moveable 의존성 해제
 - [x] RacingGameResultTest 테스트 코드 변경
