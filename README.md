@@ -42,3 +42,5 @@
 - [x] RacingGameResultTest 테스트 코드 변경
 - [x] RacingCar.STEPS 추가
 - [x] RacingGameResult.hasSamePositionWith 추가
+- [x] RoundResultFormatter 추가
+- [x] RacingGameResultFormatter 추가
