@@ -41,3 +41,4 @@
 - [ ] RacingCar - Moveable 의존성 해제
 - [ ] RacingGameResultTest 테스트 코드 변경
 - [x] RacingCar.STEPS 추가
+- [x] RacingGameResult.hasSamePositionWith 추가

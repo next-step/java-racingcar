@@ -38,9 +38,9 @@ public class RacingGameResult {
         return winners;
     }
 
-    private void addIfWinner(RacingCarCurrentStatus car, Position maxPosition, List<String> winners) {
-        if (maxPosition.equals(car.position())) {
-            winners.add(car.name());
+    private void addIfWinner(RacingCarCurrentStatus carStatus, Position maxPosition, List<String> winners) {
+        if (carStatus.hasSamePositionWith(maxPosition)) {
+            winners.add(carStatus.name());
         }
     }
 
