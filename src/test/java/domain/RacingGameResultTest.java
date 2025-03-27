@@ -31,6 +31,6 @@ public class RacingGameResultTest {
         RacingGameResult racingGameResult = racingGame.start();
 
         List<String> winners = racingGameResult.whoAreWinners();
-        Assertions.assertThat(winners).hasSize(racingCarNames.length());
+        Assertions.assertThat(winners).containsExactly("more", "much", "less");
     }
 }
