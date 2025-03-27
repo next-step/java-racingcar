@@ -14,8 +14,8 @@ public class RacingGameResultTest {
     @Test
     public void whoAreWinnersTest() {
         RacingCarNames racingCarNames = new RacingCarNames("more", "much", "less");
-        NumberOfTrial numberOfTrial = new NumberOfTrial(5);
-        RacingGame racingGame = new RacingGame(racingCarNames, numberOfTrial, new RandomlyMove(10, 4));
+        TryCount tryCount = new TryCount(5);
+        RacingGame racingGame = new RacingGame(racingCarNames, tryCount, new RandomlyMove(10, 4));
         RacingGameResult racingGameResult = racingGame.start();
 
         List<String> winners = racingGameResult.whoAreWinners();
@@ -26,8 +26,8 @@ public class RacingGameResultTest {
     @Test
     public void allAreWinnersTest() {
         RacingCarNames racingCarNames = new RacingCarNames("more", "much", "less");
-        NumberOfTrial numberOfTrial = new NumberOfTrial(5);
-        RacingGame racingGame = new RacingGame(racingCarNames, numberOfTrial, new AlwaysMove());
+        TryCount tryCount = new TryCount(5);
+        RacingGame racingGame = new RacingGame(racingCarNames, tryCount, new AlwaysMove());
         RacingGameResult racingGameResult = racingGame.start();
 
         List<String> winners = racingGameResult.whoAreWinners();

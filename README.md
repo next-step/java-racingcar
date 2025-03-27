@@ -37,7 +37,7 @@
 ### 5단계
 - [ ] Position 필드 불변으로 변경
 - [ ] RacingGame.of 삭제
-- [ ] NumberOfTrial 이름 변경
+- [x] NumberOfTrial 이름 변경
 - [ ] RacingCar - Moveable 의존성 해제
 - [x] RacingGameResultTest 테스트 코드 변경
 - [x] RacingCar.STEPS 추가

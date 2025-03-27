@@ -6,11 +6,11 @@
 ## 원시 자료형 래핑
 - RacingGame 생성자
   ```java
-   public RacingGame(String[] namesOfCar, Integer numberOfTrial, Moveable moveable);
+   public RacingGame(String[] namesOfCar, Integer tryCount, Moveable moveable);
    ```
 
   ```java
-   public RacingGame(RacingCarNames racingCarNames, NumberOfTrial numberOfTrial, Moveable moveable);
+   public RacingGame(RacingCarNames racingCarNames, NumberOfTrial tryCount, Moveable moveable);
    ```
   
     - 래핑된 클래스를 생성자에서 받는 설계가 더 유연
