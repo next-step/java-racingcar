@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.model.Car;
+import racingcar.model.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +30,8 @@ public class OutputView {
 
     private static String formatWinnersName(List<Car> winners) {
         return winners.stream()
-                .map(car -> car.getName().getName())
+                .map(Car::getName)
+                .map(CarName::toString)
                 .collect(Collectors.joining(WINNER_NAME_SEPERATOR));
     }
 }

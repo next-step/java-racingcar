@@ -29,6 +29,10 @@ public final class Car {
         return randomValue >= MOVE_CONDITION_NUMBER;
     }
 
+    public boolean matches(CarName carName) {
+        return this.name.equals(carName);
+    }
+
     public boolean isAtPosition(Position other) {
         return position.isSameAs(other);
     }

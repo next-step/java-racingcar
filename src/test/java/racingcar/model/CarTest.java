@@ -14,7 +14,7 @@ class CarTest {
     void car_creation_test() {
         Car car = new Car(new CarName("test"), new Position(5));
 
-        assertThat(car.getName().getName()).isEqualTo("test");
+        assertThat(car.matches(new CarName("test"))).isTrue();
         assertThat(car.isAtPosition(new Position(5))).isTrue();
     }
 
@@ -34,7 +34,7 @@ class CarTest {
 
         Car car = new Car(new CarName(carName), new Position(initialPosition));
 
-        assertThat(car.getName().getName()).isEqualTo(carName);
+        assertThat(car.matches(new CarName(carName))).isTrue();
         assertThat(car.isAtPosition(new Position(initialPosition))).isTrue();
     }
 
@@ -54,7 +54,7 @@ class CarTest {
 
         Car movedCar = initialCar.move(randomValue);
 
-        assertThat(movedCar.getName().getName()).isEqualTo(carName);
+        assertThat(movedCar.matches(new CarName("car"))).isTrue();
         assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
         assertThat(initialCar).isNotEqualTo(movedCar);
     }
@@ -73,7 +73,7 @@ class CarTest {
 
         Car movedCar = initialCar.move(randomValue);
 
-        assertThat(movedCar.getName().getName()).isEqualTo(carName);
+        assertThat(movedCar.matches(new CarName(carName))).isTrue();
         assertThat(movedCar.isAtPosition(new Position(expectedPosition))).isTrue();
     }
 
