@@ -3,6 +3,7 @@ package domain;
 import movingStrategy.Moveable;
 
 public class RacingCar {
+    public static final int STEPS = 1;
     private final String name;
     private final Position position;
 
@@ -13,7 +14,7 @@ public class RacingCar {
 
     public void move(Moveable moveable) {
         if (moveable.isMoveable()) {
-            this.position.add(1);
+            this.position.add(STEPS);
         }
     }
 
