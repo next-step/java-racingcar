@@ -28,4 +28,11 @@ class CarTest {
         Car car = new Car(new CarName("test"));
         assertThat(car.getDistance()).isGreaterThanOrEqualTo(0);
     }
+
+    @Test
+    void 자동차는_이름을_통해_구분된다() {
+        Car car = new Car(new CarName("test"));
+        assertThat(car).isEqualTo(new Car(new CarName("test"), 0, 0));
+        assertThat(car).isEqualTo(new Car(new CarName("test"), 2, 3));
+    }
 }
