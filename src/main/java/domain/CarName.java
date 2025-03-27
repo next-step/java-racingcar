@@ -5,10 +5,17 @@ class CarName {
     private final String name;
 
     CarName(String name) {
-        if (name.length() > NAME_LENGTH_LIMIT) {
+        this.name = name;
+        validate();
+    }
+
+    private void validate() {
+        if (this.name.length() > NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
         }
-        this.name = name;
+        if (this.name.isBlank()) {
+            throw new IllegalArgumentException("이름은 빈 문자열일 수 없습니다.");
+        }
     }
 
     @Override
