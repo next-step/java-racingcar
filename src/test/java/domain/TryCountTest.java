@@ -8,10 +8,10 @@ class TryCountTest {
 
     @DisplayName("getNumberOfTrial 테스트")
     @Test
-    void getNumberOfTrial() {
+    void getTryCount() {
         int expected = 3;
         TryCount tryCount = new TryCount(expected);
-        Assertions.assertThat(tryCount.getNumberOfTrial()).isEqualTo(expected);
+        Assertions.assertThat(tryCount.getTryCount()).isEqualTo(expected);
     }
 
     @DisplayName("1보다 작은 숫자를 입력 받았을 경우 IllegalArgumentException")

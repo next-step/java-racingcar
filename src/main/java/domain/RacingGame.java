@@ -8,40 +8,33 @@ import java.util.List;
 public class RacingGame {
     private final RacingCarNames racingCarNames;
     private final TryCount tryCount;
-    private final List<RacingCar> racingCars;
+    private final RacingCars racingCars;
     private final Moveable moveable;
 
     public RacingGame(RacingCarNames racingCarNames, TryCount tryCount, Moveable moveable) {
-
         this.racingCarNames = racingCarNames;
         this.tryCount = tryCount;
-        this.racingCars = initializeRacingCars();
+        this.racingCars = new RacingCars(racingCarNames);
         this.moveable = moveable;
     }
 
     public RacingGameResult start() {
         RacingGameResult racingGameResult = new RacingGameResult();
-        for (int i = 0; i < tryCount.getNumberOfTrial(); i++) {
+        for (int i = 0; i < tryCount.getTryCount(); i++) {
             progressRound(racingGameResult);
         }
         return racingGameResult;
     }
 
     private void progressRound(RacingGameResult racingGameResult) {
-        moveCars();
+        racingCars.moveRacingCars(moveable);
         racingGameResult.addRoundResult(new RoundResult(racingCars));
-    }
-
-    private void moveCars() {
-        for (RacingCar racingCar : racingCars) {
-            racingCar.move(moveable);
-        }
     }
 
     private List<RacingCar> initializeRacingCars() {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String name : racingCarNames.getRacingCarNames()) {
-            racingCars.add(new RacingCar(name, 0));
+            racingCars.add(new RacingCar(name));
         }
         return racingCars;
     }

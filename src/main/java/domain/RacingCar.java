@@ -7,15 +7,20 @@ public class RacingCar {
     private final String name;
     private final Position position;
 
-    public RacingCar(String name, Integer initialPosition) {
+    public RacingCar(String name, Position position) {
         this.name = name;
-        this.position = new Position(initialPosition);
+        this.position = position;
     }
 
-    public void move(Moveable moveable) {
+    public RacingCar(String name) {
+        this(name, new Position(0));
+    }
+
+    public RacingCar move(Moveable moveable) {
         if (moveable.isMoveable()) {
-            this.position.add(STEPS);
+            return new RacingCar(name, this.position.add(STEPS));
         }
+        return this;
     }
 
     public RacingCarCurrentStatus getCurrentStatus() {
@@ -24,19 +29,22 @@ public class RacingCar {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
         if (obj == this) {
             return true;
         }
 
-        if (obj.getClass() != this.getClass()) {
+        if (!(obj instanceof RacingCar)) {
             return false;
         }
 
         RacingCar rhs = (RacingCar) obj;
         return this.name.equals(rhs.name) && this.position.equals(rhs.position);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = this.name.hashCode();
+        result = 31 * result + this.position.hashCode();
+        return result;
     }
 }

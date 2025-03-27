@@ -18,10 +18,10 @@ class RoundResultTest {
         String car1Name = "car1";
         String car2Name = "car2";
 
-        RacingCar car1 = new RacingCar(car1Name, 0);
-        RacingCar car2 = new RacingCar(car2Name, 0);
+        RacingCar car1 = new RacingCar(car1Name);
+        RacingCar car2 = new RacingCar(car2Name);
 
-        List<RacingCar> cars = List.of(car1, car2);
+        RacingCars cars = new RacingCars(List.of(car1, car2));
 
         car1.move(new AlwaysMove());
         car2.move(new NeverMove());

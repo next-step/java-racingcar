@@ -19,9 +19,12 @@ class PositionTest {
     void addTest() {
         int initialPosition = 0;
         int steps = 3;
+
         Position position = new Position(initialPosition);
-        position.add(steps);
-        Assertions.assertThat(position.value()).isEqualTo(initialPosition + steps);
+        Position actual = position.add(steps);
+        Position expected = new Position(initialPosition + steps);
+
+        Assertions.assertThat(actual).isEqualTo(expected);
     }
 
     @DisplayName("copy 메소드 테스트")

@@ -22,11 +22,11 @@ class RacingGameTest {
     @Test
     void startTest() {
         // Given
-        int validNumberOfTrial = 5;
+        int validTryCount = 5;
         String[] validNamesOfCar = {"more", "much", "less"};
 
         // When
-        RacingGame racingGame = RacingGame.of(validNamesOfCar, validNumberOfTrial, alwaysMove);
+        RacingGame racingGame = RacingGame.of(validNamesOfCar, validTryCount, alwaysMove);
 
         // Then
         assertThatNoException().isThrownBy(racingGame::start);
@@ -40,7 +40,7 @@ class RacingGameTest {
         assertThat(roundResults.get(0).getRaceProgress()).hasSize(RACING_CAR_NAMES.length);
     }
 
-    @DisplayName("numberOfTrial 만큼 자동차가 진행함")
+    @DisplayName("tryCount 만큼 자동차가 진행함")
     @Test
     void alwaysMoveTest() {
         RacingGameResult racingGameResult = playTestGame(alwaysMove);
@@ -53,7 +53,7 @@ class RacingGameTest {
         assertThat(carPositions).containsOnly(NUMBER_OF_TRIAL);
     }
 
-    @DisplayName("numberOfTrial 보다 작거나 같은 값만큼 자동차가 진행함")
+    @DisplayName("tryCount 보다 작거나 같은 값만큼 자동차가 진행함")
     @Test
     void randomlyMoveTest() {
         RandomlyMove randomlyMove = new RandomlyMove(10, 4);
@@ -79,8 +79,8 @@ class RacingGameTest {
     @Test
     void ofTest() {
         String[] namesOfCar = {"more", "much", "less"};
-        int numberOfTrial = 5;
+        int tryCount = 5;
         Moveable moveable = new AlwaysMove();
-        assertThatNoException().isThrownBy(() -> RacingGame.of(namesOfCar, numberOfTrial, moveable));
+        assertThatNoException().isThrownBy(() -> RacingGame.of(namesOfCar, tryCount, moveable));
     }
 }

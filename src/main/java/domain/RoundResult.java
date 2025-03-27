@@ -6,12 +6,8 @@ import java.util.List;
 public class RoundResult {
     List<RacingCarCurrentStatus> raceProgress;
 
-    public RoundResult(List<RacingCar> cars) {
-        this.raceProgress = new ArrayList<>();
-        for (RacingCar car : cars) {
-            RacingCarCurrentStatus currentStatus = car.getCurrentStatus();
-            raceProgress.add(currentStatus);
-        }
+    public RoundResult(RacingCars cars) {
+        this.raceProgress = cars.listCurrentRacingCarStatuses();
     }
 
     public List<RacingCarCurrentStatus> getRaceProgress() {

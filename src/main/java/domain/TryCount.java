@@ -12,7 +12,7 @@ public class TryCount {
         this.numberOfTrial = numberOfTrial;
     }
 
-    public Integer getNumberOfTrial() {
+    public Integer getTryCount() {
         return numberOfTrial;
     }
 }

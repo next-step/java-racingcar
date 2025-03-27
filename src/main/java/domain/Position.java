@@ -1,7 +1,7 @@
 package domain;
 
 public class Position {
-    private Integer position;
+    private final Integer position;
 
     public Position(Integer position) {
         this.position = position;
@@ -11,8 +11,8 @@ public class Position {
         return this.position;
     }
 
-    public void add(Integer distance) {
-        this.position += distance;
+    public Position add(Integer distance) {
+        return new Position(this.position + distance);
     }
 
     public Position copy() {
@@ -23,7 +23,21 @@ public class Position {
         return this.position > position.value();
     }
 
-    public boolean equals(Position position) {
-        return position.value().equals(this.position);
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Position)) {
+            return false;
+        }
+
+        return this.position.equals(((Position) obj).position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.position);
     }
 }
