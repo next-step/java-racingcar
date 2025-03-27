@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class TryCountTest {
 
-    @DisplayName("getNumberOfTrial 테스트")
+    @DisplayName("getTryCount 테스트")
     @Test
     void getTryCount() {
         int expected = 3;

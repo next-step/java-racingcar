@@ -16,28 +16,28 @@ class ResultViewTest {
     @DisplayName("조건 변화에 따른 경기 결과 출력 테스트")
     @CsvSource(value = {"'more',1", "'more,much',5", "'more,much,less',2"})
     @ParameterizedTest
-    void printResultTestWithConditionChange(String namesOfCarString, int numberOfTrial) {
+    void printResultTestWithConditionChange(String namesOfCarString, int tryCount) {
         String[] namesOfCar = namesOfCarString.split(",");
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream testOut = new PrintStream(outputStream);
         ResultView resultView = new ResultView(testOut);
 
-        RacingGame racingGame = RacingGame.of(namesOfCar, numberOfTrial, new AlwaysMove());
+        RacingGame racingGame = RacingGame.of(namesOfCar, tryCount, new AlwaysMove());
         RacingGameResult racingGameResult = racingGame.start();
 
         resultView.printResult(racingGameResult);
 
         String consoleOutput = outputStream.toString();
-        verifyOutput(consoleOutput, namesOfCar, numberOfTrial);
+        verifyOutput(consoleOutput, namesOfCar, tryCount);
     }
 
-    public void verifyOutput(String result, String[] namesOfCar, int numberOfTrial) {
+    public void verifyOutput(String result, String[] namesOfCar, int tryCount) {
         String[] lines = result.split("\r\n");
 
-        int expectedTotalLines = namesOfCar.length * numberOfTrial;
-        assertThat(lines).hasSize(expectedTotalLines + numberOfTrial + 2);
+        int expectedTotalLines = namesOfCar.length * tryCount;
+        assertThat(lines).hasSize(expectedTotalLines + tryCount + 2);
 
-        for (int trialIdx = 0; trialIdx < numberOfTrial; trialIdx++) {
+        for (int trialIdx = 0; trialIdx < tryCount; trialIdx++) {
             verifyTrial(namesOfCar, trialIdx, lines);
         }
     }
