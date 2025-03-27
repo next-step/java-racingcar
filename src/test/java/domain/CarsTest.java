@@ -3,17 +3,47 @@ package domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.InstanceOfAssertFactories.list;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
-    @DisplayName("입력받은 숫자만큼 자동차를 생성한다.")
+    @DisplayName("입력받은 이름대로 자동차를 생성한다.")
     @Test
     void generateCarsTest() {
-        int numberOfCars = 3;
+        String[] nameOfCars = {"pobi", "crong", "honux"};
 
-        Cars cars = new Cars(numberOfCars);
+        Cars cars = new Cars(nameOfCars);
 
-        assertThat(cars.getCars()).asInstanceOf(list(Car.class)).hasSize(numberOfCars);
+        assertThat(cars.getCars()).hasSize(nameOfCars.length);
+        for (int i = 0; i < nameOfCars.length; i++) {
+            assertThat(cars.getCars().get(i).getName()).isEqualTo(nameOfCars[i]);
+        }
+    }
+
+    @DisplayName("우승자를 반환한다.")
+    @Test
+    void getWinnersTest1() {
+        String[] nameOfCars = {"pobi", "crong", "honux"};
+        Cars cars = new Cars(nameOfCars);
+        NumberGenerator numberGenerator = new StaticNumberGenerator(5);
+
+        cars.getCars().get(0).move(numberGenerator);
+        cars.getCars().get(2).move(numberGenerator);
+
+        assertThat(cars.getWinners()).containsExactly("pobi", "honux");
+    }
+
+    @DisplayName("우승자를 반환한다.")
+    @Test
+    void getWinnersTest2() {
+        String[] nameOfCars = {"pobi", "crong", "honux", "jk"};
+        Cars cars = new Cars(nameOfCars);
+        NumberGenerator numberGenerator = new StaticNumberGenerator(5);
+
+        cars.getCars().get(0).move(numberGenerator);
+        cars.getCars().get(1).move(numberGenerator);
+        cars.getCars().get(2).move(numberGenerator);
+        cars.getCars().get(2).move(numberGenerator);
+
+        assertThat(cars.getWinners()).containsExactly("honux");
     }
 }
