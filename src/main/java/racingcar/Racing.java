@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.participant.Car;
+
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -18,7 +20,7 @@ public class Racing {
     }
 
     public List<Car> getCars() {
-        return this.cars.stream().sorted(Comparator.comparing(Car::getName)).collect(Collectors.toList());
+        return this.cars.stream().sorted(Comparator.comparing(Car::print)).collect(Collectors.toList());
     }
 
     public List<Car> getFarthestCars() {

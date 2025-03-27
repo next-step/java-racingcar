@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.participant.Car;
+import racingcar.participant.CarName;
+import racingcar.view.ResultView;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -15,7 +19,7 @@ public class Main {
 
         System.out.println("\n실행결과");
 
-        Racing racing = new Racing(carNames.stream().map(Car::new).collect(Collectors.toList()));
+        Racing racing = new Racing(carNames.stream().map(CarName::new).map(Car::new).collect(Collectors.toList()));
         for (int i = 0; i < numberOfRounds; i++) {
             racing.playRound();
             System.out.println(ResultView.printCarsDistance(racing.getCars()));
