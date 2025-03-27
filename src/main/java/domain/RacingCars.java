@@ -7,21 +7,28 @@ import java.util.List;
 
 public class RacingCars {
     private final List<RacingCar> racingCars;
-    
+
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
-    
+
     public RacingCars(RacingCarNames racingCarNames) {
         this.racingCars = initializeRacingCars(racingCarNames);
     }
-    
+
     public void moveRacingCars(Moveable moveable) {
         List<RacingCar> racingCarsToMove = new ArrayList<>(this.racingCars);
         this.racingCars.clear();
         for (RacingCar racingCar : racingCarsToMove) {
-            this.racingCars.add(racingCar.move(moveable));
+            this.racingCars.add(moveIfAble(moveable.isMoveable(), racingCar));
         }
+    }
+
+    private RacingCar moveIfAble(boolean moveable, RacingCar racingCar) {
+        if (moveable) {
+            return racingCar.move();
+        }
+        return racingCar;
     }
 
     public List<RacingCarCurrentStatus> listCurrentRacingCarStatuses() {

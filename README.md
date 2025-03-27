@@ -38,7 +38,7 @@
 - [x] Position 필드 불변으로 변경
 - [x] RacingGame.of 삭제
 - [x] TryCount 이름 변경
-- [ ] RacingCar - Moveable 의존성 해제
+- [x] RacingCar - Moveable 의존성 해제
 - [x] RacingGameResultTest 테스트 코드 변경
 - [x] RacingCar.STEPS 추가
 - [x] RacingGameResult.hasSamePositionWith 추가

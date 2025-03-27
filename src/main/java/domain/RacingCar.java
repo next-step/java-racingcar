@@ -1,7 +1,5 @@
 package domain;
 
-import movingStrategy.Moveable;
-
 public class RacingCar {
     public static final int STEPS = 1;
     private final String name;
@@ -16,11 +14,8 @@ public class RacingCar {
         this(name, new Position(0));
     }
 
-    public RacingCar move(Moveable moveable) {
-        if (moveable.isMoveable()) {
-            return new RacingCar(name, this.position.add(STEPS));
-        }
-        return this;
+    public RacingCar move() {
+        return new RacingCar(name, this.position.add(STEPS));
     }
 
     public RacingCarCurrentStatus getCurrentStatus() {

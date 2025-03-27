@@ -1,8 +1,5 @@
 package domain;
 
-import movingStrategy.AlwaysMove;
-import movingStrategy.NeverMove;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +20,7 @@ class RoundResultTest {
 
         RacingCars cars = new RacingCars(List.of(car1, car2));
 
-        car1.move(new AlwaysMove());
-        car2.move(new NeverMove());
+        car1.move();
 
         List<String> expectedNames = List.of(car1Name, car2Name);
         List<Integer> expectedPositions = List.of(1, 0);
