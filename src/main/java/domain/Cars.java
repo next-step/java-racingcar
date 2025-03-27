@@ -24,9 +24,12 @@ public class Cars {
         List<String> winners = new ArrayList<>();
         Position maxPosition = new Position(0);
         for (Car car : cars) {
-            Position position = car.getCurrentPosition();
-            if (position.compareTo(maxPosition) >= 0) {
+            Position position = car.getPosition();
+            if (position.compareTo(maxPosition) > 0) {
                 maxPosition = position;
+                winners.clear();
+                winners.add(car.getName());
+            } else if (position.compareTo(maxPosition) == 0) {
                 winners.add(car.getName());
             }
         }

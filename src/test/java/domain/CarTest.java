@@ -20,7 +20,7 @@ public class CarTest {
     void getCurrentPositionTest() {
         Car car = new Car("pobi");
 
-        assertThat(car.getCurrentPosition()).extracting("value").isEqualTo(0);
+        assertThat(car.getPosition()).extracting("value").isEqualTo(0);
     }
 
     @DisplayName("숫자가 4 미만이면 움직이지 않는다.")
@@ -31,7 +31,7 @@ public class CarTest {
 
         car.move(numberGenerator);
 
-        assertThat(car.getCurrentPosition()).extracting("value").isEqualTo(0);
+        assertThat(car.getPosition()).extracting("value").isEqualTo(0);
     }
 
     @DisplayName("숫자가 4 이상이면 움직인다.")
@@ -42,6 +42,6 @@ public class CarTest {
 
         car.move(numberGenerator);
 
-        assertThat(car.getCurrentPosition()).extracting("value").isEqualTo(1);
+        assertThat(car.getPosition()).extracting("value").isEqualTo(1);
     }
 }

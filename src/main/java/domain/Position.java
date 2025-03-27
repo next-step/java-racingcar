@@ -26,10 +26,5 @@ public class Position implements Comparable<Position> {
     @Override
     public int compareTo(Position other) {
         return Integer.compare(this.value, other.value);
-
-    private void validate() {
-        if (this.value < 0) {
-            throw new IllegalArgumentException("Position value must be greater than or equal to 0.");
-        }
     }
 }

@@ -27,7 +27,7 @@ public class RacingGame {
     private void runOneRound() {
         for (Car car : cars.getCars()) {
             car.move(randomNumberGenerator);
-            ResultView.printPosition(car.getName(), car.getCurrentPosition());
+            ResultView.printPosition(car.getName(), car.getPositionToString());
         }
         ResultView.printMessage("");
     }
@@ -38,13 +38,5 @@ public class RacingGame {
             runOneRound();
         }
         ResultView.printWinner(cars.getWinners());
-    }
-
-    public static void main(String[] args) {
-        int numberOfCars = InputView.getNumberOfCars();
-        int numberOfRounds = InputView.getNumberOfRounds();
-
-        RacingGame game = new RacingGame(numberOfCars, numberOfRounds);
-        game.run();
     }
 }

@@ -3,10 +3,10 @@ package domain;
 public class Car {
     private static final int MOVE_THRS = 4;
     private final Position position = new Position(0);
-    private final String name;
+    private final CarName name;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new CarName(name);
     }
 
     public void move(NumberGenerator numberGenerator) {
@@ -17,10 +17,14 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.toString();
     }
 
-    public Position getCurrentPosition() {
+    public Position getPosition() {
         return this.position;
+    }
+
+    public String getPositionToString() {
+        return this.position.toString();
     }
 }

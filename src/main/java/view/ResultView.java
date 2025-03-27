@@ -2,12 +2,10 @@ package view;
 
 import java.util.List;
 
-import domain.Position;
-
 public class ResultView {
 
-    public static void printPosition(String name, Position position) {
-        printMessage(name + " : " + position.toString());
+    public static void printPosition(String name, String position) {
+        printMessage(name + " : " + position);
     }
 
     public static void printWinner(List<String> winners) {

@@ -3,7 +3,6 @@ package domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.InstanceOfAssertFactories.list;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
@@ -22,7 +21,7 @@ public class CarsTest {
 
     @DisplayName("우승자를 반환한다.")
     @Test
-    void getWinnersTest() {
+    void getWinnersTest1() {
         String[] nameOfCars = {"pobi", "crong", "honux"};
         Cars cars = new Cars(nameOfCars);
         NumberGenerator numberGenerator = new StaticNumberGenerator(5);
@@ -31,5 +30,20 @@ public class CarsTest {
         cars.getCars().get(2).move(numberGenerator);
 
         assertThat(cars.getWinners()).containsExactly("pobi", "honux");
+    }
+
+    @DisplayName("우승자를 반환한다.")
+    @Test
+    void getWinnersTest2() {
+        String[] nameOfCars = {"pobi", "crong", "honux", "jk"};
+        Cars cars = new Cars(nameOfCars);
+        NumberGenerator numberGenerator = new StaticNumberGenerator(5);
+
+        cars.getCars().get(0).move(numberGenerator);
+        cars.getCars().get(1).move(numberGenerator);
+        cars.getCars().get(2).move(numberGenerator);
+        cars.getCars().get(2).move(numberGenerator);
+
+        assertThat(cars.getWinners()).containsExactly("honux");
     }
 }
