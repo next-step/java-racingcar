@@ -1,5 +1,7 @@
 package step4.view;
 
+import step4.domain.CarNames;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -8,14 +10,10 @@ public class InputView {
     private static final String DELIMITER = ",";
     private static final Pattern VALID_CAR_NAME_PATTERN = Pattern.compile("^[\\w가-힣]+(,[\\w가-힣]+)*$");
 
-    public static String[] getCarNamesFromUser() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String[] carNames = SCANNER.nextLine().split(DELIMITER);
-        while (isInvalidCarNames(carNames)) {
-            System.out.println("이름은 비어 있거나 5글자를 초과할 수 없습니다. 또 반드시 쉼표(,)로 구분해 주세요.(예: 자동차, 열차, 비행기)");
-            carNames = SCANNER.nextLine().split(DELIMITER);
-        }
-        return carNames;
+    public static CarNames getCarNamesFromUser() {
+        System.out.println("자동차 이름을 입력하세요(이름은 쉼표(,)로 구분): ");
+        String input = SCANNER.nextLine();
+        return new CarNames(input);
     }
 
     public static int getRoundsCountFromUser() {

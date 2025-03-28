@@ -8,7 +8,7 @@ import java.util.*;
 
 public class CarRacingGame {
     public static void main(String[] args) {
-        String[] carNames = InputView.getCarNamesFromUser();
+        CarNames carNames = InputView.getCarNamesFromUser();
         int rounds = InputView.getRoundsCountFromUser();
 
         Cars cars = new CarFactory().createCars(carNames);
