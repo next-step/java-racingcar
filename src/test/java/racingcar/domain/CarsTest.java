@@ -47,7 +47,7 @@ class CarsTest {
 
     @Test
     @DisplayName("자동차 경주 게임을 완료하면 우승자가 반환된다.")
-    void findWinners() {
+    void findWinner() {
         Car carLuna = new Car("luna", 0);
         Car carStar = new Car("star", 3);
         Car carSun = new Car("sun", 2);
@@ -59,5 +59,22 @@ class CarsTest {
                 .hasSize(1)
                 .extracting("name", "position")
                 .contains(tuple("star", 3));
+    }
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료하면 다수의 우승자가 반환된다.")
+    void findWinners() {
+        Car carLuna = new Car("luna", 0);
+        Car carStar = new Car("star", 3);
+        Car carSun = new Car("sun", 3);
+
+        Cars cars = new Cars(Arrays.asList(carLuna, carStar, carSun));
+        List<CarState> winners = cars.findWinners();
+
+        assertThat(winners)
+                .hasSize(2)
+                .extracting("name", "position")
+                .contains(tuple("star", 3))
+                .contains(tuple("sun", 3));
     }
 }
