@@ -1,6 +1,8 @@
 package step4.domain;
 
-public class Car implements Comparable<Car> {
+import java.util.Comparator;
+
+public class Car {
     private final String carName;
     private Position position;
     public static final int DEFAULT_POSITION = 0;
@@ -21,8 +23,6 @@ public class Car implements Comparable<Car> {
         this.position.move();
     }
 
-    @Override
-    public int compareTo(Car other) {
-        return this.position.compareTo(other.position);
-    }
+    public static final Comparator<Car> POSITION_COMPARATOR = Comparator.comparingInt(Car::getPosition);
+
 }

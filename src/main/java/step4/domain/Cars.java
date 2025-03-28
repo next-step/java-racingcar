@@ -37,20 +37,14 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        if (cars.isEmpty()) {
-            throw new IllegalStateException("차가 없습니다.");
-        }
-
-        Car maxPositionCar = cars.get(0);
-        for (Car car : cars) {
-            if (car.compareTo(maxPositionCar) > 0) {
-                maxPositionCar = car;
-            }
-        }
+        int maxPosition = cars.stream()
+                .max(Car.POSITION_COMPARATOR)
+                .orElseThrow(() -> new IllegalStateException("No cars available"))
+                .getPosition();
 
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.compareTo(maxPositionCar) == 0) {
+            if (car.getPosition() == maxPosition) {
                 winners.add(car);
             }
         }

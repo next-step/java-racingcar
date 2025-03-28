@@ -1,6 +1,6 @@
 package step4.domain;
 
-public class Position implements Comparable<Position> {
+public class Position {
     private int position;
 
     public Position(int position) {
@@ -13,10 +13,5 @@ public class Position implements Comparable<Position> {
 
     public void move() {
         this.position ++;
-    }
-
-    @Override
-    public int compareTo(Position other) {
-        return Integer.compare(this.position, other.position);
     }
 }
