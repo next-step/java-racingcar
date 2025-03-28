@@ -7,17 +7,40 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RaceTest {
 
     @Test
-    @DisplayName("랜덤 값에 따라 자동차가 올바르게 이동하는지 확인")
+    @DisplayName("자동차가 올바르게 경주하는지 확인")
     public void playRoundTest() {
         RandomStub randomStub = new RandomStub(new int[]{4, 3, 4});
-        Race race = new Race(3, 1, new RandomMovingStrategy(randomStub));
+        List<Car> testCars = List.of(
+                new Car("TEST1"),
+                new Car("TEST2"),
+                new Car("TEST3")
+        );
+        Race race = new Race(testCars, 1, new RandomMovingStrategy(randomStub));
         race.playRound();
 
         assertEquals(List.of(1, 0, 1), race.getCarPositions());
+    }
+
+    @Test
+    @DisplayName("우승자 검증 로직 확인")
+    public void playRoundAndWinnersTest() {
+        List<Car> testCars = List.of(
+                new Car("TEST1", 1),
+                new Car("TEST2", 0),
+                new Car("TEST3", 1)
+        );
+
+        Race race = new Race(testCars, 1, null);
+
+        List<String> winners = race.getWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        assertEquals(List.of("TEST1", "TEST3"), winners);
     }
 
     private static class RandomStub extends Random {
