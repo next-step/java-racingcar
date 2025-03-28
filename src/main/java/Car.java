@@ -8,10 +8,11 @@ public class Car implements Comparable<Car> {
     }
 
     public Car(String name, Position position) throws IllegalArgumentException {
-        if (name.length() > 5) {
+        String trimmedName = name.trim();
+        if (trimmedName.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5글자를 넘을 수 없습니다.");
         }
-        this.name = name;
+        this.name = trimmedName;
         this.position = position;
     }
 

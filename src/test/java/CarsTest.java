@@ -31,20 +31,4 @@ public class CarsTest {
         );
     }
 
-    @Test
-    @DisplayName("단체 이동 테스트")
-    public void groupMoveTest() {
-        List<Car> carList = List.of(
-            new Car("pobi")
-        );
-        Cars cars = new Cars(carList);
-        Car testCarMovedOnce = new Car("test1", new Position(1));
-        Car testCarMovedTwice = new Car("test2", new Position(2));
-        cars.moveAll(true);
-        assertAll(
-            () -> assertThat(cars.cars.get(0).compareTo(testCarMovedOnce)).isEqualTo(0),
-            () -> assertThat(cars.cars.get(0).compareTo(testCarMovedTwice)).isEqualTo(-1)
-        );
-    }
-
 }

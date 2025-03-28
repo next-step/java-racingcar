@@ -1,19 +1,16 @@
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
 
     public final List<Car> cars;
+
+    private final int MAX_BOUND = 10;
 
     public Cars(List<Car> carList) {
         if (carList.isEmpty()) {
             throw new IllegalArgumentException("자동차는 최소 한 대 이상 있어야 합니다.");
         }
         this.cars = carList;
-    }
-
-    public void moveAll(boolean condition){
-        for (Car car : cars) {
-            car.move(condition);
-        }
     }
 }
