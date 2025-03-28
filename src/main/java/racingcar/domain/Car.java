@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.dto.CarDto;
-
 public class Car {
 
     private static final int INITIAL_POSITION = 0;
@@ -17,8 +15,8 @@ public class Car {
         }
     }
 
-    public CarDto toDto() {
-        return new CarDto(position);
+    public int getPosition() {
+        return position;
     }
 
 }

@@ -17,18 +17,18 @@ public class CarTest {
 
     @Test
     void 자동차_초기_위치_테스트() {
-        assertThat(car.toDto().getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     void 자동차_이동_테스트() {
         car.move(true);
-        assertThat(car.toDto().getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     void 자동차_이동_불가_테스트() {
         car.move(false);
-        assertThat(car.toDto().getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

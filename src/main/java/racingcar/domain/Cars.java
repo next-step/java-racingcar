@@ -34,7 +34,7 @@ public class Cars {
     }
 
     public List<CarDto> getCarsInfo() {
-        return cars.stream()
-                .map(Car::toDto).collect(Collectors.toList());
+        return cars.stream().map(CarDto::toDto)
+                .collect(Collectors.toList());
     }
 }
