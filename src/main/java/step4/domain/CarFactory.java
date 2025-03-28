@@ -1,12 +1,16 @@
 package step4.domain;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarFactory {
 
-    public static Cars createCars(CarNames carNames) {
-        List<Car> cars = carNames.getNames().stream().map(Car::new).collect(Collectors.toList());
+    public Cars createCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for(String carName : carNames) {
+            Car car = new Car(carName);
+            cars.add(car);
+        }
         return new Cars(cars);
     }
 }

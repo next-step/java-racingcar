@@ -1,8 +1,6 @@
 package step4.domain;
 
-import java.util.Objects;
-
-public class Position {
+public class Position implements Comparable<Position> {
     private int position;
 
     public Position(int position) {
@@ -18,15 +16,7 @@ public class Position {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Position position1 = (Position) o;
-        return position == position1.position;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(position);
+    public int compareTo(Position other) {
+        return Integer.compare(this.position, other.position);
     }
 }

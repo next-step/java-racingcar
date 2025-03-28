@@ -8,10 +8,10 @@ import java.util.*;
 
 public class CarRacingGame {
     public static void main(String[] args) {
-        CarNames carNames = InputView.getCarNamesFromUser();
+        String[] carNames = InputView.getCarNamesFromUser();
         int rounds = InputView.getRoundsCountFromUser();
 
-        Cars cars = CarFactory.createCars(carNames);
+        Cars cars = new CarFactory().createCars(carNames);
 
         RandomMoveStrategy randomMoveCondition = new RandomMoveStrategy(new Random());
 

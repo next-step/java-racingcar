@@ -1,7 +1,6 @@
 package step4.domain;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private final Cars cars;
@@ -12,16 +11,12 @@ public class RacingGame {
         this.moveStrategy = moveStrategy;
     }
 
-    public List<RoundStatusDTO> playRound() {
+    public List<RoundStatusDTO>  playRound() {
         cars.moveAll(moveStrategy);
-        return cars.getCars().stream()
-                .map(RoundStatusDTO::of)
-                .collect(Collectors.toList());
+        return cars.getRoundStatusOfCars();
     }
 
-    public List<RoundStatusDTO> findWinners() {
-        return cars.findWinners().stream()
-                .map(RoundStatusDTO::of)
-                .collect(Collectors.toList());
+    public List<RoundStatusDTO>  findWinners() {
+        return cars.findWinnersStatus();
     }
 }
