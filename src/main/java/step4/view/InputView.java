@@ -26,28 +26,6 @@ public class InputView {
         return Integer.parseInt(rounds);
     }
 
-    public static boolean isInvalidCarNames(String[] carNames) {
-
-        if (carNames.length < 2) {
-            System.out.println("경주를 위해 2개 이상의 차를 입력해 주세요.");
-            return true;
-        }
-
-        Set<String> uniqueNames = new HashSet<>(List.of(carNames));
-        if (uniqueNames.size() != carNames.length) {
-            System.out.println("자동차 이름은 중복될 수 없어요!");
-            return true;
-        }
-
-        for (String carName : carNames) {
-            if (carName == null || carName.isBlank() || carName.length() > 5 || !VALID_CAR_NAME_PATTERN.matcher(carName).matches()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public static boolean isInvalidRounds(String rounds) {
         try {
             Integer.parseInt(rounds);
