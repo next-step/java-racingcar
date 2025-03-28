@@ -14,26 +14,8 @@ public class Cars {
         return cars;
     }
 
-    public List<RoundStatusDTO> getRoundStatusOfCars() {
-        List<RoundStatusDTO> roundStatusList = new ArrayList<>();
-        for (Car car : cars) {
-            roundStatusList.add(RoundStatusDTO.of(car));
-        }
-        return roundStatusList;
-    }
-
     public void moveAll(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
-    }
-
-    public List<RoundStatusDTO> findWinnersStatus() {
-        List<Car> winners = findWinners();
-
-        List<RoundStatusDTO> winnerStatuses = new ArrayList<>();
-        for (Car car : winners) {
-            winnerStatuses.add(RoundStatusDTO.of(car));
-        }
-        return winnerStatuses;
     }
 
     public List<Car> findWinners() {
@@ -50,4 +32,5 @@ public class Cars {
         }
         return winners;
     }
+
 }
