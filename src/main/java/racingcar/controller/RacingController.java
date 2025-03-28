@@ -1,32 +1,27 @@
 package racingcar.controller;
 
-import racingcar.domain.Cars;
+import java.util.List;
 import racingcar.domain.Movement;
-import racingcar.domain.TrialCoin;
+import racingcar.domain.dto.CarDto;
+import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
 
     private final OutputView outputView;
-    private final Movement movement;
-    private final Cars cars;
-    private final TrialCoin trialCoin;
+    private final RacingService racingService;
 
     public RacingController(InputView inputView, OutputView outputView, Movement movement) {
-        int howMany = inputView.createCars();
-        cars = Cars.ofQuantity(howMany);
-        trialCoin = new TrialCoin(inputView.putCoins());
         this.outputView = outputView;
-        this.movement = movement;
+        this.racingService = new RacingService(movement, inputView.createCars(), inputView.putCoins());
     }
 
     public void run() {
         outputView.printBeforeResult();
-        while (trialCoin.isCoinLeft()) {
-            cars.move(movement);
-            outputView.printProgress(cars.getCarsInfo());
-            trialCoin.decrease();
+        while (racingService.isRaceOnGoing()) {
+            List<CarDto> result = racingService.race();
+            outputView.printProgress(result);
         }
     }
 
