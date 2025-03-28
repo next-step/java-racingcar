@@ -11,7 +11,7 @@ public class CarRacingGame {
         CarNames carNames = InputView.getCarNamesFromUser();
         int rounds = InputView.getRoundsCountFromUser();
 
-        Cars cars = new CarFactory().createCars(carNames);
+        Cars cars = CarFactory.createCars(carNames);
 
         RandomMoveStrategy randomMoveCondition = new RandomMoveStrategy(new Random());
 

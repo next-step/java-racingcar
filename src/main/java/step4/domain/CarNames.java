@@ -2,13 +2,16 @@ package step4.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarNames {
     private static final int MAX_NAME_LENGTH = 5;
     private final List<String> names;
 
     public CarNames(String input) {
-        this.names = Arrays.asList(input.split(","));
+        this.names = Arrays.stream(input.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
         validateNames();
     }
 

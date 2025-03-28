@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class CarFactory {
 
-    public Cars createCars(CarNames carNames) {
+    public static Cars createCars(CarNames carNames) {
         List<Car> cars = carNames.getNames().stream().map(Car::new).collect(Collectors.toList());
         return new Cars(cars);
     }
