@@ -1,8 +1,6 @@
 package carracing;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Race {
@@ -10,23 +8,10 @@ public class Race {
     private final int numberOfRounds;
     private final MovingStrategy movingStrategy;
 
-    public Race(int numberOfCars, int numberOfRounds, MovingStrategy movingStrategy) {
-        validateRaceConditions(numberOfCars, numberOfRounds);
+    public Race(List<Car> cars, int numberOfRounds, MovingStrategy movingStrategy) {
+        validateRaceConditions(cars.size(), numberOfRounds);
         this.numberOfRounds = numberOfRounds;
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            this.cars.add(new Car());
-        }
-        this.movingStrategy = movingStrategy;
-    }
-
-    public Race(String[] carNames, int numberOfRounds, MovingStrategy movingStrategy) {
-        validateRaceConditions(carNames.length, numberOfRounds);
-        this.numberOfRounds = numberOfRounds;
-        this.cars = new ArrayList<>();
-        for (String carName : carNames) {
-            this.cars.add(new Car(carName));
-        }
+        this.cars = cars;
         this.movingStrategy = movingStrategy;
     }
 
@@ -61,13 +46,6 @@ public class Race {
         return cars.stream()
                 .filter(car -> car.getPosition() == cars.stream().mapToInt(Car::getPosition).max().orElse(0))
                 .collect(Collectors.toList());
-    }
-
-    public void getWinners(ResultView resultView) {
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getPosition() == cars.stream().mapToInt(Car::getPosition).max().orElse(0))
-                .collect(Collectors.toList());
-        resultView.printWinners(winners);
     }
 
 }

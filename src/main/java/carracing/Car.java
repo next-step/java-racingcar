@@ -1,24 +1,21 @@
 package carracing;
 
 public class Car {
-    private String name;
+    private final CarName carName;
     private int position;
 
-    public Car() {
-        this.name = "";
+    public Car(String carName) {
+        this.carName = new CarName(carName);
         this.position = 0;
     }
 
-    public Car(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-        this.name = name;
-        this.position = 0;
+    public Car(String carName, int position) {
+        this.carName = new CarName(carName);
+        this.position = position;
     }
 
     public String getName() {
-        return name;
+        return carName.getValue();
     }
 
     public int getPosition() {
