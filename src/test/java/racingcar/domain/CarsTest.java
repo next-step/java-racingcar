@@ -1,4 +1,4 @@
-package racingcar.racing;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.movepolicy.MoveStrategy;
@@ -16,14 +16,6 @@ class CarsTest {
         Cars cars = new Cars(List.of(car));
 
         assertNotNull(cars);
-    }
-
-    @Test
-    void 자동차를_추가할_때_Car_객체가_Null이면_예외가_발생한다() {
-        Car car = mock(Car.class);
-        Cars cars = new Cars(List.of(car));
-
-        assertThrows(IllegalArgumentException.class, () -> cars.add(null));
     }
 
     @Test

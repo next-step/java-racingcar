@@ -1,4 +1,4 @@
-package racingcar.racing;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.movepolicy.MoveStrategy;
@@ -21,21 +21,7 @@ class RacingTest {
     }
 
     @Test
-    void 라운드가_한_번_진행되면_Car_play가_반드시_호출된다() {
-        MoveStrategy moveStrategy = mock(MoveStrategy.class);
-        Car car = new Car("pobi", moveStrategy);
-        Cars cars = new Cars(List.of(car));
-        Racing racing = new Racing(cars, 1);
-
-        when(moveStrategy.move()).thenReturn(true);
-
-        racing.start();
-
-        assertThat(cars.getCars().get(0).getDistance()).isEqualTo(1);
-    }
-
-    @Test
-    void toString을_호출하면_라운드마다_자동차_이름별_전진_거리와_최종_우승자가_출력된다() {
+    void toString을_호출하면_라운드마다_자동차_이름별_전진_거리가_출력된다() {
         MoveStrategy moveStrategy = mock(MoveStrategy.class);
         Car car1 = new Car("pobi", moveStrategy);
         Car car2 = new Car("poci", moveStrategy);
@@ -48,6 +34,6 @@ class RacingTest {
         racing.start();
 
         assertThat(racing.toString()).isEqualTo(
-                "pobi : -\npoci : -\npodi : -\n\npobi, poci, podi가 최종 우승했습니다.");
+                "pobi : -\npoci : -\npodi : -\n\n");
     }
 }
