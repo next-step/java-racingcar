@@ -11,5 +11,9 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void printCarString(StringBuilder position ) {
+        position.append("-");
+    }
 }
 
