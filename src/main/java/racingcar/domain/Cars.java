@@ -11,11 +11,11 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
+        validateNonNegativity(cars);
         this.cars = new ArrayList<>(cars);
     }
 
     public static Cars ofQuantity(final int quantity) {
-        validateNonNegativity(quantity);
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
             cars.add(new Car());
@@ -23,8 +23,8 @@ public class Cars {
         return new Cars(cars);
     }
 
-    private static void validateNonNegativity(final int quantity) {
-        if (quantity < MIN_QUANTITY) {
+    private static void validateNonNegativity(final List<Car> cars) {
+        if (cars.size() == MIN_QUANTITY) {
             throw new IllegalArgumentException("자동차 수는 음수이면 안됩니다");
         }
     }
