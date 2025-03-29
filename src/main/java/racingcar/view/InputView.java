@@ -1,0 +1,24 @@
+package racingcar.view;
+
+import java.util.Scanner;
+
+import static java.lang.System.out;
+
+public class InputView {
+    Scanner scanner;
+
+    public InputView() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public int receiveNumberOfParticipants() {
+        out.println("자동차 대수는 몇 대 인가요?");
+        return scanner.nextInt();
+    }
+
+    public int receiveNumberOfOperations() {
+        out.println("시도할 회수는 몇 회 인가요?");
+        return scanner.nextInt();
+    }
+
+}
