@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 @FunctionalInterface
 public interface MovingStrategy {

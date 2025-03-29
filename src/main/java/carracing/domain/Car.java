@@ -1,12 +1,11 @@
-package carracing;
+package carracing.domain;
 
 public class Car {
     private final CarName carName;
     private int position;
 
     public Car(String carName) {
-        this.carName = new CarName(carName);
-        this.position = 0;
+        this(carName, 0);
     }
 
     public Car(String carName, int position) {
