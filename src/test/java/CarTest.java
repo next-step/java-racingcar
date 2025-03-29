@@ -19,4 +19,16 @@ public class CarTest {
         car.moveBy(4);
         assertThat(car.isPosition(0)).isTrue();
     }
+
+    @Test
+    void nameOnlyConstructor() {
+        assertThat(new Car("pobi")).isEqualTo(new Car("pobi", 0));
+    }
+
+    @Test
+    void isPosition() {
+        final Car car = new Car("pobi", 1);
+        assertThat(car.isPosition(1)).isTrue();
+        assertThat(car.isPosition(2)).isFalse();
+    }
 }
