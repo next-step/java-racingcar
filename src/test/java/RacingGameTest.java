@@ -22,4 +22,5 @@ public class RacingGameTest {
             () -> new RacingGame(splitName)
         ).isInstanceOf(IllegalArgumentException.class);
     }
+
 }

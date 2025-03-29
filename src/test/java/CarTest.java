@@ -33,7 +33,7 @@ public class CarTest {
     public void moveTest() {
         Car pobi = new Car("pobi", new Position(0));
         Car honux = new Car("honux", new Position(1));
-        pobi.move(true);
+        pobi.move(5);
         assertThat(pobi.compareTo(honux)).isEqualTo(0);
     }
 }

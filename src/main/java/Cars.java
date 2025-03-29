@@ -13,4 +13,11 @@ public class Cars {
         }
         this.cars = carList;
     }
+
+    public void moveAll() {
+        for (Car car : cars) {
+            int randomNumber = car.getRandomNumber();
+            car.move(randomNumber);
+        }
+    }
 }

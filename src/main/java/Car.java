@@ -1,6 +1,9 @@
+import java.util.Random;
+
 public class Car implements Comparable<Car> {
 
     private final String name;
+    private final int MAX_BOUND = 10;
     private final Position position;
 
     public Car(String name) {
@@ -21,9 +24,14 @@ public class Car implements Comparable<Car> {
         return position.compareTo(o.position);
     }
 
-    public void move(boolean condition) {
-        if (condition) {
+    public void move(int number) {
+        if (number >= 4) {
             position.add();
         }
+    }
+
+    public int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(MAX_BOUND);
     }
 }
