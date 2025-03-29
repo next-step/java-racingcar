@@ -11,11 +11,11 @@ import java.util.stream.IntStream;
 
 public class RacingCarController {
 
-    private List<Car> cars;
-    private int numberOfOperations;
-    private MovingStrategy movingStrategy;
-    private Random numberGenerator;
-    private OutputView outputView;
+    private final List<Car> cars;
+    private final int numberOfOperations;
+    private final MovingStrategy movingStrategy;
+    private final Random numberGenerator;
+    private final OutputView outputView;
 
     public RacingCarController(int numberOfParticipants, int numberOfOperations, OutputView outputView) {
         this.cars = IntStream.range(0, numberOfParticipants)
