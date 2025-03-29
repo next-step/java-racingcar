@@ -4,14 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import racingcar.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class CarsTest {
 
@@ -33,11 +32,49 @@ class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
     @Test
-    void move() {
-        List<Car> testCars = Arrays.asList(new Car(), new Car());
+    @DisplayName("자동차 컬렉션에 포함된 자동차를 한번 전진한다.")
+    void moveAll() {
+        MoveStrategy moveStrategy = new MoveStrategy(new RandomNumberGenerator());
+        List<Car> testCars = Arrays.asList(new Car("car1"), new Car("Car2"));
         Cars cars = new Cars(testCars);
 
-        assertThat(cars.move()).hasSize(testCars.size());
+        List<CarState> result = cars.moveAll(moveStrategy);
+        assertThat(result).hasSize(testCars.size());
+    }
+
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료하면 우승자가 반환된다.")
+    void findWinner() {
+        Car carLuna = new Car("luna", 0);
+        Car carStar = new Car("star", 3);
+        Car carSun = new Car("sun", 2);
+
+        Cars cars = new Cars(Arrays.asList(carLuna, carStar, carSun));
+        List<CarState> winners = cars.findWinners();
+
+        assertThat(winners)
+                .hasSize(1)
+                .extracting("name", "position")
+                .contains(tuple("star", 3));
+    }
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료하면 다수의 우승자가 반환된다.")
+    void findWinners() {
+        Car carLuna = new Car("luna", 0);
+        Car carStar = new Car("star", 3);
+        Car carSun = new Car("sun", 3);
+
+        Cars cars = new Cars(Arrays.asList(carLuna, carStar, carSun));
+        List<CarState> winners = cars.findWinners();
+
+        assertThat(winners)
+                .hasSize(2)
+                .extracting("name", "position")
+                .contains(tuple("star", 3))
+                .contains(tuple("sun", 3));
     }
 }

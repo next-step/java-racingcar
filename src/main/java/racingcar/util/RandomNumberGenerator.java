@@ -10,4 +10,5 @@ public class RandomNumberGenerator implements NumberGenerator {
     public int generate() {
         return random.nextInt(RANDOM_UPPER_BOUND);
     }
+
 }
