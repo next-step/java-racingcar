@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 public class CarName {
     private final String name;

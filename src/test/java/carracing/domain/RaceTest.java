@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 

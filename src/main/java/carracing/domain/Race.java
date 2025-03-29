@@ -1,7 +1,10 @@
-package carracing;
+package carracing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Race {
     private final List<Car> cars;
@@ -34,12 +37,12 @@ public class Race {
         cars.forEach(car -> car.move(movingStrategy.canMove()));
     }
 
-    public void playGame(ResultView resultView) {
-        for (int i = 0; i < numberOfRounds; i++) {
-            playRound();
-            resultView.printResult(cars);
-            resultView.printRoundSeparator();
-        }
+    public Stream<List<Car>> playGame() {
+        return IntStream.range(0, numberOfRounds)
+                .mapToObj(i -> {
+                    playRound();
+                    return new ArrayList<>(cars);
+                });
     }
 
     public List<Car> getWinners() {
