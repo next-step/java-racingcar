@@ -4,7 +4,14 @@ public class TryNum {
     private int tryNum;
 
     public TryNum(int value) {
+        valid(value);
         this.tryNum = value;
+    }
+
+    private static void valid(int value) {
+        if (value <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
+        }
     }
 
     public boolean isEnd() {
