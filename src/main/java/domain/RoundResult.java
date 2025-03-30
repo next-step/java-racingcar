@@ -40,7 +40,7 @@ public class RoundResult {
     }
 
     private void addIfWinner(RacingCarCurrentStatus carStatus, Position maxPosition, List<String> winners) {
-        if (carStatus.hasSamePositionWith(maxPosition)) {
+        if (carStatus.isSameOf(maxPosition)) {
             winners.add(carStatus.name());
         }
     }

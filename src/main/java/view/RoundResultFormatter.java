@@ -1,5 +1,6 @@
 package view;
 
+import domain.Position;
 import domain.RacingCarCurrentStatus;
 
 import java.util.List;
@@ -21,7 +22,8 @@ public class RoundResultFormatter {
     }
 
     private String formatCarStatus(RacingCarCurrentStatus status) {
-        String dashes = "-".repeat(status.position().value() + 1);
-        return status.name() + ":" + dashes;
+        Position position = status.position();
+        PositionFormatter positionFormatter = position.generateFormatter();
+        return status.name() + ":" + positionFormatter.formatPosition("-");
     }
 }

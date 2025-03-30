@@ -1,7 +1,7 @@
 package domain;
 
 public class RacingCar {
-    public static final int STEPS = 1;
+    public static final Position STEPS = new Position(1);
     private final String name;
     private final Position position;
 
@@ -11,7 +11,7 @@ public class RacingCar {
     }
 
     public RacingCar(String name) {
-        this(name, new Position(0));
+        this(name, Position.ZERO);
     }
 
     public RacingCar move() {
