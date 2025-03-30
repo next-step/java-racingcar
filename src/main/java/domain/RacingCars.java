@@ -1,7 +1,5 @@
 package domain;
 
-import movingStrategy.Moveable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +14,13 @@ public class RacingCars {
         this.racingCars = initializeRacingCars(racingCarNames);
     }
 
-    public void moveRacingCars(Moveable moveable) {
-        List<RacingCar> racingCarsToMove = new ArrayList<>(this.racingCars);
-        this.racingCars.clear();
-        for (RacingCar racingCar : racingCarsToMove) {
-            this.racingCars.add(moveIfAble(moveable.isMoveable(), racingCar));
+    public RacingCars moveRacingCars(List<Boolean> moveable) {
+        List<RacingCar> movedRacingCars = new ArrayList<>();
+        for (int i = 0; i < racingCars.size(); i++ ) {
+            RacingCar racingCar = racingCars.get(i);
+            movedRacingCars.add(moveIfAble(moveable.get(i), racingCar));
         }
+        return new RacingCars(movedRacingCars);
     }
 
     private RacingCar moveIfAble(boolean moveable, RacingCar racingCar) {
