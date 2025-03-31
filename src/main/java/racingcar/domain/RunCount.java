@@ -21,7 +21,7 @@ public class RunCount {
 
     public void decrease() {
         if (!isRemaining())
-            throw new IllegalArgumentException("runCount is not remaining");
+            throw new UnsupportedOperationException("runCount is not remaining");
 
         count--;
     }
