@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -46,4 +47,15 @@ public class CarTest {
 
         assertEquals(0, car.getPosition());
     }
+
+    @Test
+    void 자동차_위치를_비교할_수_있다() {
+        Car one = new Car("hwan");
+        Car another = new Car("leo");
+
+        one.move(movableMovement.move());
+
+        assertTrue(one.isFartherThan(another));
+    }
+
 }
