@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.dto.CarDto;
@@ -12,6 +13,7 @@ public class Cars {
 
     public Cars(final List<Car> cars) {
         validateNonNegativity(cars);
+        validateDuplicated(cars);
         this.cars = new ArrayList<>(cars);
     }
 
@@ -35,4 +37,11 @@ public class Cars {
         return cars.stream().map(CarDto::toDto)
                 .collect(Collectors.toList());
     }
+
+    private void validateDuplicated(List<Car> cars) {
+        if (cars.size() > new HashSet<>(cars).size()) {
+            throw new IllegalArgumentException("자동차는 중복될 수 없습니다.");
+        }
+    }
+
 }
