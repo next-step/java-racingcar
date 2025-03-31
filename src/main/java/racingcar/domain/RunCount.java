@@ -6,13 +6,13 @@ public class RunCount {
     private int count;
 
     public RunCount(int count) {
-        validatePositive(count);
+        validateNotNegative(count);
         this.count = count;
     }
 
-    private void validatePositive(int runCount) {
+    private void validateNotNegative(int runCount) {
         if (runCount < 0)
-            throw new IllegalArgumentException("runCount should be positive integer");
+            throw new IllegalArgumentException("runCount should not be negative");
     }
 
     public boolean isRemaining() {
