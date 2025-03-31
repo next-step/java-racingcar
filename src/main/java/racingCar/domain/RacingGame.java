@@ -12,16 +12,16 @@ public class RacingGame {
         this.moveStrategy = moveStrategy;
     }
 
-    public List<RoundStatusDTO> playRound() {
+    public void playRound() {
         cars.moveAll(moveStrategy);
-        return cars.getCars().stream()
-                .map(RoundStatusDTO::of)
-                .collect(Collectors.toList());
     }
 
-    public List<RoundStatusDTO> findWinners() {
-        return cars.findWinners().stream()
-                .map(RoundStatusDTO::of)
-                .collect(Collectors.toList());
+    public List<Car> getCars() {
+        return cars.getCars();
     }
+
+    public List<Car> findWinners() {
+        return cars.findWinners();
+    }
+
 }
