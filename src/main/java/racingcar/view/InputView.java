@@ -5,33 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private final static Scanner SCANNER = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
-    public int getCarCount() {
-        return validatePositiveInt(scanInt("자동차 대수는 몇 대 인가요?"));
+    public List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return Arrays.asList(SCANNER.nextLine().split(","));
     }
 
-    public int getRunCount() {
-        return validatePositiveInt(scanInt("시도할 회수는 몇 회 인가요?"));
-    }
-
-    private int scanInt(String message) {
-        System.out.println(message);
-        int value = SCANNER.nextInt();
-        SCANNER.nextLine();
-        return value;
-    }
-
-    private int validatePositiveInt(int value) {
-        if (value <= 0) {
-            String errorMessage = String.format("입력 값은 양수여야 합니다. value:%d", value);
-            throw new IllegalArgumentException(errorMessage);
-        }
-        return value;
-    }
-
-    public List<String> getCarNames() {
-        String carNameText = SCANNER.nextLine();
-        return Arrays.asList(carNameText.split(","));
+    public int inputRunCount() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        int count = Integer.parseInt(SCANNER.nextLine());
+        System.out.println();
+        return count;
     }
 }

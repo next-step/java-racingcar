@@ -10,8 +10,8 @@ public class CarRaceApplication {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        CarRace carRace = new CarRace(inputView.getCarNames(), inputView.getRunCount());
-        resultView.print(carRace.run());
+        CarRace carRace = new CarRace(inputView.inputCarNames(), inputView.inputRunCount());
+        resultView.printResult(carRace.run());
         resultView.printWinners(carRace.findWinners());
     }
 
