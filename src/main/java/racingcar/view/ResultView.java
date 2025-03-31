@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.Car;
+import racingcar.domain.Winners;
+import racingcar.message.DefaultMessages;
 
 import java.util.List;
 

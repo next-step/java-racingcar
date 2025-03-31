@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.message;
 
 public class ErrorMessages {
     public static final String TOO_LONG_NAME = "[ERROR] 자동차 이름은 5자를 초과할 수 없다.";

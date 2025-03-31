@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Car;
+import racingcar.domain.carMover.FixedNumberBasedCarMover;
+import racingcar.domain.carMover.NumberBasedCarMover;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {

@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.domain.carMover.NumberBasedCarMover;
 
 import java.util.ArrayList;
 import java.util.List;

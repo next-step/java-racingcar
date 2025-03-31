@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.carMover;
 
 public class FixedNumberBasedCarMover implements NumberBasedCarMover {
     private static final int MOVING_DISTANCE = 1;

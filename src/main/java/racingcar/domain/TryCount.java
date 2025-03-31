@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.message.ErrorMessages;
 
 public class TryCount {
     private final int tryCount;

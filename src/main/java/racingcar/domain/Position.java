@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Position {
     private static final int INITIAL_POSITION = 0;
