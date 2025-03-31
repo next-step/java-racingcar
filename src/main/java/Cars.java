@@ -2,14 +2,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Cars{
     private final List<Car> cars;
-
-    public Cars(int carNum) {
-        this.cars = Stream.generate(Car::new).limit(carNum).collect(Collectors.toList());
-    }
 
     public Cars(List<Car> carList) {
         this.cars = carList.stream().map(x -> new Car(x.getName(), x.getPosition())).collect(Collectors.toList());

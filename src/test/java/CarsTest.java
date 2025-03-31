@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 class CarsTest {
     @Test
     void constructorUsingCarNum() {
-        assertThat(new Cars(3).getCars().size()).isEqualTo(3);
+        List<Car> carList = List.of(new Car("pobi"), new Car("crong"), new Car("honux"));
+        assertThat(new Cars(carList).getCars().size()).isEqualTo(3);
     }
 
     @Test
