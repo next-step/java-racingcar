@@ -20,6 +20,14 @@ public class Car {
         }
     }
 
+    public boolean isFartherThan(Car other) {
+        return position > other.position;
+    }
+
+    public boolean hasSamePositionWith(Car other) {
+        return position == other.position;
+    }
+
     public String getName() {
         return this.name.getCarName();
     }

@@ -33,6 +33,27 @@ public class Cars {
         cars.forEach(car -> car.move(movement.move()));
     }
 
+    public List<CarDto> findWinners() {
+        Car farthestCar = findFarthestCar();
+        return cars.stream()
+                .filter(car -> car.hasSamePositionWith(farthestCar))
+                .map(CarDto::toDto)
+                .collect(Collectors.toList());
+    }
+
+    private Car findFarthestCar() {
+        return cars.stream()
+                .reduce(this::getFartherCar)
+                .orElseThrow(() -> new IllegalStateException("차량이 존재하지 않습니다."));
+    }
+
+    private Car getFartherCar(Car car, Car other) {
+        if (car.isFartherThan(other)) {
+            return car;
+        }
+        return other;
+    }
+
     public List<CarDto> getCarsInfo() {
         return cars.stream().map(CarDto::toDto)
                 .collect(Collectors.toList());
