@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.message.DefaultMessages;
 
 import java.util.Scanner;
 

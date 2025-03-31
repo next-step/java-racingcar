@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.message.ErrorMessages;
 
 public class Name {
     private static final int MAX_LENGTH = 5;

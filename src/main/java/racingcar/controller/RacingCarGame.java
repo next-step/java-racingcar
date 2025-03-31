@@ -1,9 +1,22 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.domain.Cars;
+import racingcar.domain.TryCount;
+import racingcar.domain.carMover.NumberBasedCarMover;
+import racingcar.domain.carMover.RandomNumberBasedCarMover;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingCarGame {
-    public void startGame(NumberBasedCarMover carMover) {
-        Cars cars = inputCars();
-        TryCount tryCount = inputTryCount();
+    private TryCount tryCount;
+    private Cars cars;
+
+    public RacingCarGame(TryCount tryCount, Cars cars) {
+        this.tryCount = tryCount;
+        this.cars = cars;
+    }
+
+    public void startGame(TryCount tryCount, Cars cars, NumberBasedCarMover carMover) {
         game(cars, tryCount, carMover);
         printGameResult(cars);
     }
