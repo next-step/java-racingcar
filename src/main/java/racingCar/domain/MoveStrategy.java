@@ -1,4 +1,4 @@
-package step4.domain;
+package racingCar.domain;
 
 @FunctionalInterface
 public interface MoveStrategy {

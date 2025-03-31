@@ -1,8 +1,8 @@
-package step4.controller;
+package racingCar.controller;
 
-import step4.domain.*;
-import step4.view.InputView;
-import step4.view.ResultView;
+import racingCar.domain.*;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 import java.util.*;
 

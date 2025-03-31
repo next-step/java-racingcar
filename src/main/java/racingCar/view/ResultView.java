@@ -1,10 +1,9 @@
-package step4.view;
+package racingCar.view;
 
-import step4.domain.RoundStatusDTO;
+import racingCar.domain.RoundStatusDTO;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class ResultView {
 

@@ -1,8 +1,8 @@
-package step4;
+package racingCar;
 
 import org.junit.jupiter.api.Test;
-import step4.domain.Car;
-import step4.domain.RandomMoveStrategy;
+import racingCar.domain.Car;
+import racingCar.domain.RandomMoveStrategy;
 
 import java.util.Random;
 

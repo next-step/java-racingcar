@@ -1,7 +1,7 @@
-package step4;
+package racingCar;
 
 import org.junit.jupiter.api.Test;
-import step4.domain.CarNames;
+import racingCar.domain.CarNames;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;

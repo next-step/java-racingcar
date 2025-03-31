@@ -1,7 +1,7 @@
-package step4;
+package racingCar;
 
 import org.junit.jupiter.api.Test;
-import step4.domain.Car;
+import racingCar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

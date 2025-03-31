@@ -1,6 +1,6 @@
-package step4.view;
+package racingCar.view;
 
-import step4.domain.CarNames;
+import racingCar.domain.CarNames;
 
 import java.util.*;
 import java.util.regex.Pattern;

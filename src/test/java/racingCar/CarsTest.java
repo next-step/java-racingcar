@@ -1,10 +1,10 @@
-package step4;
+package racingCar;
 
 import org.junit.jupiter.api.Test;
-import step4.domain.Car;
-import step4.domain.Cars;
-import step4.domain.RacingGame;
-import step4.domain.RoundStatusDTO;
+import racingCar.domain.Car;
+import racingCar.domain.Cars;
+import racingCar.domain.RacingGame;
+import racingCar.domain.RoundStatusDTO;
 
 import java.util.List;
 

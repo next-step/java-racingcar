@@ -1,6 +1,6 @@
-package step4;
+package racingCar;
 
-import step4.domain.MoveStrategy;
+import racingCar.domain.MoveStrategy;
 
 public class TestMoveStrategy implements MoveStrategy {
     private final boolean movable;
