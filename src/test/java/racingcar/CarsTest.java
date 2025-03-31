@@ -1,11 +1,13 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Movement;
 import racingcar.domain.dto.CarDto;
@@ -37,6 +39,22 @@ public class CarsTest {
 
         List<CarDto> carDtos = cars.getCarsInfo();
         carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(0));
+    }
+
+    @Test
+    void 자동차_이름은_중복될_수_없다() {
+        List<Car> duplicatedCars = List.of(new Car("hwan"), new Car("hwan"));
+
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(duplicatedCars));
+    }
+
+    @Test
+    void 자동차_0대() {
+        List<Car> emptyCarList = List.of();
+
+        assertThatThrownBy(() -> new Cars(emptyCarList))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
 
 }
