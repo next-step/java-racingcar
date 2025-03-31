@@ -38,7 +38,7 @@ public class Cars {
         elements.forEach(element -> element.move(moveStrategy));
 
         return elements.stream()
-                .map(Car::toState)
+                .map(Car::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -46,13 +46,13 @@ public class Cars {
         Car winner = findWinner();
         return elements.stream()
                 .filter(car -> car.isSamePositionWith(winner))
-                .map(Car::toState)
+                .map(Car::toDto)
                 .collect(Collectors.toList());
     }
 
     private Car findWinner() {
         return elements.stream()
-                .reduce(Car::findCarAhead)
+                .reduce((car1, car2) -> car1.isAheadOf(car2)? car1 : car2)
                 .orElseThrow(() -> new IllegalStateException("can not find winner car"));
     }
 

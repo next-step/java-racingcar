@@ -5,49 +5,36 @@ import racingcar.dto.CarDto;
 import java.util.Objects;
 
 public class Car {
-    private static final int NAME_MAX_LENGTH = 5;
-    private static final int POSITION_MIN_VALUE = 0;
-
-    private final String name;
-    private int position;
+    private final CarName name;
+    private CarPosition position;
 
     public Car(String name) {
         this(name, 0);
     }
 
     public Car(String name, int position) {
-        validateNotNullAndLength(name);
-        validatePositive(position);
-        this.name = name;
-        this.position = position;
+        this.name = new CarName(name);
+        this.position = new CarPosition(position);
     }
 
-    private void validateNotNullAndLength(String name) {
-        if (name == null || name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(String.format("length of name should be less than %d", NAME_MAX_LENGTH));
+    public CarDto toDto() {
+        return new CarDto(name.getValue(), position.getValue());
+    }
+
+    public boolean move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            position.move();
+            return true;
         }
-    }
-
-    private void validatePositive(int position) {
-        if (position < POSITION_MIN_VALUE) {
-            throw new IllegalArgumentException("position은 0 이상이어야 합니다. position:" + position);
-        }
-    }
-
-    public CarDto toState() {
-        return new CarDto(name, position);
-    }
-
-    public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMovable()) position++;
+        return false;
     }
 
     public boolean isSamePositionWith(Car other) {
-        return position == other.position;
+        return position.isSame(other.position);
     }
 
-    public Car findCarAhead(Car other) {
-        return position > other.position ? this : other;
+    public boolean isAheadOf(Car other) {
+        return position.isAheadOf(other.position);
     }
 
     @Override
