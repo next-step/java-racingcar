@@ -1,7 +1,7 @@
 import domain.RacingGame;
 import movingStrategy.RandomlyMove;
-import ui.InputView;
-import ui.ResultView;
+import view.InputView;
+import view.ResultView;
 
 import java.util.Scanner;
 
@@ -17,8 +17,8 @@ public class RacingGameApplication {
         int threshold = 4;
 
         String[] namesOfCar = inputView.queryStringArrayInputWithPrompt(carInputPrompt, delimiter);
-        Integer numberOfTrial = inputView.queryIntegerInputWithPrompt(trialCountPrompt);
-        RacingGame racingGame = RacingGame.of(namesOfCar, numberOfTrial, new RandomlyMove(bound, threshold));
+        Integer tryCount = inputView.queryIntegerInputWithPrompt(trialCountPrompt);
+        RacingGame racingGame = new RacingGame(namesOfCar, tryCount, new RandomlyMove(bound, threshold));
 
         new ResultView(System.out).printResult(racingGame.start());
     }

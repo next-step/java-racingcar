@@ -1,10 +1,8 @@
 package domain;
 
-import movingStrategy.AlwaysMove;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingCarTest {
   
@@ -13,8 +11,9 @@ class RacingCarTest {
     @DisplayName("차량 진행 테스트")
     @Test
     void tryToGo() {
-        RacingCar racingCar = new RacingCar(NAME, 0);
-        racingCar.move(new AlwaysMove());
-        assertEquals(new RacingCar(NAME, 1), racingCar);
+        RacingCar racingCar = new RacingCar(NAME);
+        RacingCar actual = racingCar.move();
+        RacingCar expected = new RacingCar(NAME, new Position(1));
+        Assertions.assertThat(actual).isEqualTo(expected);
     }
 }

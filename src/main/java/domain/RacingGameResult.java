@@ -1,61 +1,38 @@
 package domain;
 
+import view.RacingGameResultFormatter;
+import view.RoundResultFormatter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameResult {
-    private final List<RoundResult> roundResult;
+    private final List<RoundResult> roundResults;
 
     public RacingGameResult() {
-        this.roundResult = new ArrayList<>();
+        this.roundResults = new ArrayList<>();
     }
 
     public void addRoundResult(RoundResult roundResult) {
-        this.roundResult.add(roundResult);
+        this.roundResults.add(roundResult);
     }
 
-    public List<RoundResult> getAllRoundResults() {
-        return roundResult;
+    public RacingGameResultFormatter generateFormatter() {
+        List<RoundResultFormatter> formatters = new ArrayList<>();
+        for (RoundResult roundResult : roundResults) {
+            formatters.add(roundResult.generateFormatter());
+        }
+        return new RacingGameResultFormatter(formatters);
     }
 
     public RoundResult getLastRoundResult() {
-        return roundResult.get(roundResult.size() - 1);
+        return roundResults.get(roundResults.size() - 1);
     }
 
     public List<String> whoAreWinners() {
         RoundResult lastRoundResult = getLastRoundResult();
-        List<RacingCarCurrentStatus> raceResult = lastRoundResult.getRaceProgress();
-
-         Position maxPosition = findMaxPosition(raceResult);
-        return findWinners(raceResult, maxPosition);
+        return lastRoundResult.findWinners();
     }
 
-    private List<String> findWinners(List<RacingCarCurrentStatus> raceResult, Position maxPosition) {
-        List<String> winners = new ArrayList<>();
-        for (RacingCarCurrentStatus car : raceResult) {
-            addIfWinner(car, maxPosition, winners);
-        }
-        return winners;
-    }
 
-    private void addIfWinner(RacingCarCurrentStatus car, Position maxPosition, List<String> winners) {
-        if (maxPosition.equals(car.position())) {
-            winners.add(car.name());
-        }
-    }
-
-    private Position findMaxPosition(List<RacingCarCurrentStatus> raceResult) {
-        Position maxPosition = new Position(0);
-        for (RacingCarCurrentStatus car : raceResult) {
-            maxPosition = updateMaxPosition(car, maxPosition);
-        }
-        return maxPosition;
-    }
-
-    private Position updateMaxPosition(RacingCarCurrentStatus carStatus, Position maxPosition) {
-        if (carStatus.isAheadOf(maxPosition)) {
-            maxPosition = carStatus.position();
-        }
-        return maxPosition;
-    }
 }

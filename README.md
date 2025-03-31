@@ -30,7 +30,17 @@
 - [x] 우승자 표시
 - [x] 원시 자료형 래핑
   - [x] RacingCarNames
-  - [x] NumberOfTrial
+  - [x] TryCount
   - [x] Position
 - [x] RacingCar 객체 수정
   - [x] move 메소드 시그니쳐 변경
+### 5단계
+- [x] Position 필드 불변으로 변경
+- [x] RacingGame.of 삭제
+- [x] TryCount 이름 변경
+- [x] RacingCar - Moveable 의존성 해제
+- [x] RacingGameResultTest 테스트 코드 변경
+- [x] RacingCar.STEPS 추가
+- [x] RacingGameResult.hasSamePositionWith 추가
+- [x] RoundResultFormatter 추가
+- [x] RacingGameResultFormatter 추가

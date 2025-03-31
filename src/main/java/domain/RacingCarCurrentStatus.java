@@ -20,4 +20,8 @@ public class RacingCarCurrentStatus {
     public boolean isAheadOf(Position maxPosition) {
         return this.position.isAheadOf(maxPosition);
     }
+
+    public boolean isSameOf(Position position) {
+        return this.position.equals(position);
+    }
 }

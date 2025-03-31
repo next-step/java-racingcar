@@ -1,20 +1,21 @@
 package domain;
 
-import movingStrategy.Moveable;
-
 public class RacingCar {
+    public static final Position STEPS = new Position(1);
     private final String name;
     private final Position position;
 
-    public RacingCar(String name, Integer initialPosition) {
+    public RacingCar(String name, Position position) {
         this.name = name;
-        this.position = new Position(initialPosition);
+        this.position = position;
     }
 
-    public void move(Moveable moveable) {
-        if (moveable.isMoveable()) {
-            this.position.add(1);
-        }
+    public RacingCar(String name) {
+        this(name, Position.ZERO);
+    }
+
+    public RacingCar move() {
+        return new RacingCar(name, this.position.add(STEPS));
     }
 
     public RacingCarCurrentStatus getCurrentStatus() {
@@ -23,19 +24,22 @@ public class RacingCar {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
         if (obj == this) {
             return true;
         }
 
-        if (obj.getClass() != this.getClass()) {
+        if (!(obj instanceof RacingCar)) {
             return false;
         }
 
         RacingCar rhs = (RacingCar) obj;
         return this.name.equals(rhs.name) && this.position.equals(rhs.position);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = this.name.hashCode();
+        result = 31 * result + this.position.hashCode();
+        return result;
     }
 }
