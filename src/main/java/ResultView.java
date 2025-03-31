@@ -1,7 +1,9 @@
+import java.util.stream.Collectors;
+
 public final class ResultView {
 
     public static void printWinners(Cars cars) {
-        System.out.println(cars.getNames() + "가 최종 우승했습니다.");
+        System.out.println(getNames(cars) + "가 최종 우승했습니다.");
     }
 
     private ResultView() {}
@@ -22,5 +24,9 @@ public final class ResultView {
 
     private static void printCarPosition(String name, int position) {
         System.out.print(name + ": " + "-".repeat(position));
+    }
+
+    private static String getNames(Cars cars) {
+        return cars.getCars().stream().map(Car::getName).collect(Collectors.joining(","));
     }
 }

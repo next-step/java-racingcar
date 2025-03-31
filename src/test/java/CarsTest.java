@@ -22,11 +22,6 @@ class CarsTest {
     }
 
     @Test
-    void getNames() {
-        assertThat(new Cars(List.of(new Car("pobi", 1), new Car("crong", 2), new Car("honux", 3))).getNames()).isEqualTo("pobi,crong,honux");
-    }
-
-    @Test
     void getByPosition() {
         final Cars cars = new Cars(List.of(new Car("pobi", 1), new Car("crong", 2), new Car("honux", 3)));
         assertThat(cars.getByPosition(1)).isEqualTo(List.of(new Car("pobi", 1)));

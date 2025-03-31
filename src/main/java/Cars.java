@@ -31,10 +31,6 @@ public class Cars{
         throw new NoSuchElementException("not found max position of cars");
     }
 
-    public String getNames() {
-        return this.cars.stream().map(Car::getName).collect(Collectors.joining(","));
-    }
-
     public List<Car> getByPosition(int position) {
         return this.cars.stream().filter(car -> car.isPosition(position)).collect(Collectors.toList());
     }
