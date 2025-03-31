@@ -30,6 +30,10 @@ public class RacingService {
         return trialCoin.isCoinLeft();
     }
 
+    public List<CarDto> getWinners() {
+        return cars.findWinners();
+    }
+
     private List<String> getTrimmedStrings(String[] names) {
         return Arrays.stream(names)
                 .map(String::trim)

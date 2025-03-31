@@ -23,6 +23,7 @@ public class RacingController {
             List<CarDto> result = racingService.race();
             outputView.printProgress(result);
         }
+        outputView.printWinners(racingService.getWinners());
     }
 
 }
