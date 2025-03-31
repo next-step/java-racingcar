@@ -1,6 +1,8 @@
 package racingcar.service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Cars;
 import racingcar.domain.Movement;
 import racingcar.domain.TrialCoin;
@@ -12,9 +14,9 @@ public class RacingService {
     private final Cars cars;
     private final TrialCoin trialCoin;
 
-    public RacingService(Movement movement, int howMany, int trials) {
+    public RacingService(Movement movement, String[] names, int trials) {
         this.movement = movement;
-        this.cars = Cars.ofQuantity(howMany);
+        this.cars = Cars.ofNames(getTrimmedStrings(names));
         this.trialCoin = new TrialCoin(trials);
     }
 
@@ -27,4 +29,11 @@ public class RacingService {
     public boolean isRaceOnGoing() {
         return trialCoin.isCoinLeft();
     }
+
+    private List<String> getTrimmedStrings(String[] names) {
+        return Arrays.stream(names)
+                .map(String::trim)
+                .collect(Collectors.toList());
+    }
+
 }

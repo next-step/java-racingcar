@@ -14,7 +14,7 @@ public class RacingController {
 
     public RacingController(InputView inputView, OutputView outputView, Movement movement) {
         this.outputView = outputView;
-        this.racingService = new RacingService(movement, inputView.createCars(), inputView.putCoins());
+        this.racingService = new RacingService(movement, inputView.readNames(), inputView.putCoins());
     }
 
     public void run() {
