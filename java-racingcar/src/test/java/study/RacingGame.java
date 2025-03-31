@@ -7,13 +7,22 @@ import java.util.Random;
 import java.util.function.Supplier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static ui.InputView.getCarNames;
 
 class RacingGame {
     public static void main(String[] args) {
-        int numberOfCars = InputView.getNumberOfCars();
+//        int numberOfCars = InputView.getNumberOfCars();
+
+        List<String> carNames = InputView.getCarNames();
         int rounds = InputView.getNumberOfRounds();
-        RacingGame game = new RacingGame(numberOfCars, rounds, () -> new Random().nextInt(10)); // ✅ 랜덤 생성기 추가
+
+//        RacingGame game = new RacingGame(numberOfCars, rounds, () -> new Random().nextInt(10)); // ✅ 랜덤 생성기 추가
+        RacingGame game = new RacingGame(carNames,rounds,() -> new Random().nextInt(10));
         game.start();
+        game.end();
+
     }
 
     private final List<Car> cars;
@@ -42,11 +51,31 @@ class RacingGame {
         this.rounds = rounds;
     }
 
+    public RacingGame(List<String> carNames, int rounds, Supplier<Integer> randomSupplier) {
+        this.randomSupplier = randomSupplier;
+        validateRounds(rounds);
+        this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+        this.rounds = rounds;
+    }
+
+    private void validateRounds(int rounds) {
+        if (rounds <= 0) {
+            throw new IllegalArgumentException("라운드 수는 1 이상이어야 합니다.");
+        }
+    }
+
     public void start() {
+        System.out.println("\n실행 결과.");
         for (int i = 0; i < rounds; i++) {
             race();
             ResultView.printRoundResult(cars);
         }
+    }
+
+    public void end() {
+        String car = checkWinnerCar(cars);
+        ResultView.printWinners(car);
+
     }
 
     private void race() {
@@ -58,6 +87,25 @@ class RacingGame {
     public List<Car> getCars() {
         return cars;
     }
+
+    public String checkWinnerCar(List<Car> cars) {
+        int maxPosition = getMaxPosition(cars);
+
+        return cars.stream()
+                .filter(car -> car.getPosition().length() == maxPosition) // 가장 멀리 간 자동차 필터링
+                .map(Car::getName) // 이름 가져오기
+                .collect(Collectors.joining(", ")); // 이름을 쉼표로 구분하여 합침
+    }
+
+    private static int getMaxPosition(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .mapToInt(car -> car.getPosition().length())
+                .max()
+                .orElse(0); // 자동차가 없는 경우 기본값 0
+        return maxPosition;
+    }
+
+
 }
 
 
