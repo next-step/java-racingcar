@@ -15,22 +15,20 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static Cars ofQuantity(final int quantity) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < quantity; i++) {
-            cars.add(new Car());
-        }
+    public static Cars ofNames(final List<String> names) {
+        List<Car> cars = names.stream()
+                .map(Car::new).collect(Collectors.toList());
         return new Cars(cars);
     }
 
     private static void validateNonNegativity(final List<Car> cars) {
         if (cars.size() == MIN_QUANTITY) {
-            throw new IllegalArgumentException("자동차 수는 음수이면 안됩니다");
+            throw new IllegalArgumentException("자동차를 최소 1대이상 생성해야합니다.");
         }
     }
 
     public void move(final Movement movement) {
-        cars.forEach(car -> car.move(movement.canMove()));
+        cars.forEach(car -> car.move(movement.move()));
     }
 
     public List<CarDto> getCarsInfo() {
