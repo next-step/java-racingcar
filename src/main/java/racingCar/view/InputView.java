@@ -4,16 +4,24 @@ import racingCar.domain.CarNames;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final String DELIMITER = ",";
-    private static final Pattern VALID_CAR_NAME_PATTERN = Pattern.compile("^[\\w가-힣]+(,[\\w가-힣]+)*$");
 
     public static CarNames getCarNamesFromUser() {
         System.out.println("자동차 이름을 입력하세요(이름은 쉼표(,)로 구분): ");
         String input = SCANNER.nextLine();
-        return new CarNames(input);
+        List<String> names = turnStringToList(input);
+        return new CarNames(names);
+    }
+
+    private static List<String> turnStringToList(String input) {
+        List<String> carNamesList = Arrays.stream(input.split(DELIMITER))
+                .map(String::trim)
+                .collect(Collectors.toList());
+        return carNamesList;
     }
 
     public static int getRoundsCountFromUser() {

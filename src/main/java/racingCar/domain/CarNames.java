@@ -2,16 +2,15 @@ package racingCar.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class CarNames {
     private static final int MAX_NAME_LENGTH = 5;
     private final List<String> names;
 
-    public CarNames(String input) {
-        this.names = Arrays.stream(input.split(","))
-                .map(String::trim)
-                .collect(Collectors.toList());
+    public CarNames(List<String> names) {
+        this.names = names;
         validateNames();
     }
 
