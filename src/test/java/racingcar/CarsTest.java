@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Movement;
-import racingcar.domain.dto.CarDto;
 
 public class CarsTest {
 
@@ -29,16 +28,16 @@ public class CarsTest {
     void 자동차들은_전진할_수_있다() {
         cars.move(movableMovement);
 
-        List<CarDto> carDtos = cars.getCarsInfo();
-        carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isGreaterThan(0));
+        List<Car> carsInfo = cars.getCarsInfo();
+        carsInfo.forEach(carDto -> assertThat(carDto.getPosition()).isGreaterThan(0));
     }
 
     @Test
     void 자동차들은_정지할_수_있다() {
         cars.move(notMovableMovement);
 
-        List<CarDto> carDtos = cars.getCarsInfo();
-        carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(0));
+        List<Car> carsInfo = cars.getCarsInfo();
+        carsInfo.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(0));
     }
 
     @Test

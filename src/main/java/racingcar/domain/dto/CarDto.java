@@ -11,8 +11,7 @@ public class CarDto {
         this.position = position;
     }
 
-
-    public static CarDto toDto(Car car) {
+    public static CarDto of(Car car) {
         return new CarDto(car.getName(), car.getPosition());
     }
 

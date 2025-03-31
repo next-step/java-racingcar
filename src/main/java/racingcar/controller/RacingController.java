@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import java.util.List;
 import racingcar.domain.Movement;
-import racingcar.domain.dto.CarDto;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -20,8 +18,8 @@ public class RacingController {
     public void run() {
         outputView.printBeforeResult();
         while (racingService.isRaceOnGoing()) {
-            List<CarDto> result = racingService.race();
-            outputView.printProgress(result);
+            racingService.race();
+            outputView.printProgress(racingService.getProgress());
         }
         outputView.printWinners(racingService.getWinners());
     }

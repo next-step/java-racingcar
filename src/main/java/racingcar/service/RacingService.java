@@ -20,10 +20,9 @@ public class RacingService {
         this.trialCoin = new TrialCoin(trials);
     }
 
-    public List<CarDto> race() {
+    public void race() {
         cars.move(movement);
         trialCoin.decrease();
-        return cars.getCarsInfo();
     }
 
     public boolean isRaceOnGoing() {
@@ -31,7 +30,13 @@ public class RacingService {
     }
 
     public List<CarDto> getWinners() {
-        return cars.findWinners();
+        return cars.findWinners().stream().map(CarDto::of)
+                .collect(Collectors.toList());
+    }
+
+    public List<CarDto> getProgress() {
+        return cars.getCarsInfo().stream().map(CarDto::of)
+                .collect(Collectors.toList());
     }
 
     private List<String> getTrimmedStrings(String[] names) {
