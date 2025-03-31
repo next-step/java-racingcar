@@ -1,10 +1,12 @@
 package racingcar.domain;
 
-import racingcar.util.NumberGenerator;
-
 public class MoveStrategy {
     private static final int MOVE_THRESHOLD = 4;
     private final NumberGenerator generator;
+
+    public MoveStrategy() {
+        this.generator = new RandomNumberGenerator();
+    }
 
     public MoveStrategy(NumberGenerator generator) {
         this.generator = generator;

@@ -14,13 +14,6 @@ public class Cars {
         this.elements = new ArrayList<>(members);
     }
 
-    public static Cars from(List<String> carNames) {
-        List<Car> carList = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-        return new Cars(carList);
-    }
-
     private void validateNotEmpty(List<Car> cars) {
         if (cars == null || cars.isEmpty())
             throw new IllegalArgumentException("car collection should not be null or empty.");

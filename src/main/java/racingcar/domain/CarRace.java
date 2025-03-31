@@ -8,10 +8,18 @@ public class CarRace {
     private final Cars cars;
     private final RunCount runCount;
 
-    public CarRace(Cars cars, RunCount runCount, MoveStrategy moveStrategy) {
+    public CarRace(List<String> carNames, int count) {
+        this(carNames, count, new MoveStrategy());
+    }
+
+    public CarRace(List<String> carNames, int count, MoveStrategy moveStrategy) {
+        List<Car> carList = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+
+        this.cars = new Cars(carList);
+        this.runCount = new RunCount(count);
         this.moveStrategy = moveStrategy;
-        this.cars = cars;
-        this.runCount = runCount;
     }
 
     public List<List<CarState>> run() {
@@ -30,6 +38,10 @@ public class CarRace {
             throw new UnsupportedOperationException("car race is still running.");
 
         return cars.findWinners();
+    }
+
+    public int getRemainRunCount() {
+        return runCount.get();
     }
 
 }

@@ -20,7 +20,7 @@ public class RunCount {
     }
 
     public void decrease() {
-        if (isRemaining())
+        if (!isRemaining())
             throw new IllegalArgumentException("runCount is not remaining");
 
         count--;
@@ -28,5 +28,9 @@ public class RunCount {
 
     public IntStream intStream() {
         return IntStream.range(0, count);
+    }
+
+    public int get() {
+        return count;
     }
 }

@@ -12,14 +12,10 @@ class CarRaceTest {
     @Test
     @DisplayName("자동차 경주 게임을 한번 실행했을 때, 자동차가 한 번 전진한다.")
     void runOnce() {
-        RunCount runCount = new RunCount(1);
-        Cars cars = Cars.from(List.of("luna"));
-        MoveStrategy moveStrategy = new MoveStrategy(() -> 4);
-
-        CarRace carRace = new CarRace(cars, runCount, moveStrategy);
+        CarRace carRace = new CarRace(List.of("luna"), 1, new MoveStrategy(() -> 4));
         carRace.run();
 
-        assertThat(runCount.isRemaining()).isTrue();
+        assertThat(carRace.getRemainRunCount()).isZero();
     }
 
 }
