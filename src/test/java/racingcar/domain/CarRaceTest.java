@@ -11,20 +11,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarRaceTest {
 
     @Test
-    @DisplayName("자동차 경주 게임을 한번 실행했을 때, 자동차가 한 번 전진한다.")
+    @DisplayName("자동차 경주 게임을 시도 횟수 만큼 실행한다.")
     void run() {
-        CarRace carRace = new CarRace(List.of("luna"), 1, new MoveStrategy(() -> 4));
-        carRace.run();
-
-        assertThat(carRace.getRemainRunCount()).isZero();
+        CarRace carRace = new CarRace(List.of("luna"), 1);
+        assertThat(carRace.run()).hasSize(1);
     }
 
     @Test
     @DisplayName("자동차 경주 게임 진행중에 우승자를 조회하면, 에러가 발생한다.")
     void failToFindWinners() {
-        CarRace carRace = new CarRace(List.of("luna"), 1, new MoveStrategy(() -> 4));
-        assertThatThrownBy(carRace::findWinners)
-                .isInstanceOf(UnsupportedOperationException.class);
+        CarRace carRace = new CarRace(List.of("luna"), 1);
+        assertThatThrownBy(carRace::findWinners).isInstanceOf(UnsupportedOperationException.class);
     }
 
 }

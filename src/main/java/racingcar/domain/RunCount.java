@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import java.util.stream.IntStream;
+import java.util.Objects;
 
 public class RunCount {
     private int count;
@@ -26,11 +26,15 @@ public class RunCount {
         count--;
     }
 
-    public IntStream intStream() {
-        return IntStream.range(0, count);
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        RunCount runCount = (RunCount) o;
+        return count == runCount.count;
     }
 
-    public int get() {
-        return count;
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(count);
     }
 }

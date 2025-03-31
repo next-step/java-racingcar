@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarDto;
+
 import java.util.Objects;
 
 public class Car {
@@ -32,8 +34,8 @@ public class Car {
         }
     }
 
-    public CarState toState() {
-        return new CarState(name, position);
+    public CarDto toState() {
+        return new CarDto(name, position);
     }
 
     public void move(MoveStrategy moveStrategy) {

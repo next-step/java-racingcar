@@ -1,7 +1,9 @@
 package racingcar.domain;
 
+import racingcar.dto.CarDto;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRace {
     private final MoveStrategy moveStrategy;
@@ -13,35 +15,29 @@ public class CarRace {
     }
 
     public CarRace(List<String> carNames, int count, MoveStrategy moveStrategy) {
-        List<Car> carList = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-
-        this.cars = new Cars(carList);
+        this.cars = Cars.from(carNames);
         this.runCount = new RunCount(count);
         this.moveStrategy = moveStrategy;
     }
 
-    public List<List<CarState>> run() {
-        return runCount.intStream()
-                .mapToObj(i -> runOnce())
-                .collect(Collectors.toList());
+    public List<List<CarDto>> run() {
+        List<List<CarDto>> results = new ArrayList<>();
+        while (runCount.isRemaining()) {
+            results.add(runOnce());
+        }
+        return results;
     }
 
-    private List<CarState> runOnce() {
+    private List<CarDto> runOnce() {
         runCount.decrease();
         return cars.moveAll(moveStrategy);
     }
 
-    public List<CarState> findWinners() {
+    public List<CarDto> findWinners() {
         if (runCount.isRemaining())
             throw new UnsupportedOperationException("car race is still running.");
 
         return cars.findWinners();
-    }
-
-    public int getRemainRunCount() {
-        return runCount.get();
     }
 
 }

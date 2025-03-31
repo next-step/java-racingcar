@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarDto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +16,13 @@ public class Cars {
         this.elements = new ArrayList<>(members);
     }
 
+    public static Cars from(List<String> carNames) {
+        List<Car> cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+
     private void validateNotEmpty(List<Car> cars) {
         if (cars == null || cars.isEmpty())
             throw new IllegalArgumentException("car collection should not be null or empty.");
@@ -25,7 +34,7 @@ public class Cars {
         }
     }
 
-    public List<CarState> moveAll(MoveStrategy moveStrategy) {
+    public List<CarDto> moveAll(MoveStrategy moveStrategy) {
         elements.forEach(element -> element.move(moveStrategy));
 
         return elements.stream()
@@ -33,7 +42,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<CarState> findWinners() {
+    public List<CarDto> findWinners() {
         Car winner = findWinner();
         return elements.stream()
                 .filter(car -> car.isSamePositionWith(winner))

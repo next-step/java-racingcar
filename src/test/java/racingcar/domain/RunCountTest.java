@@ -34,19 +34,7 @@ class RunCountTest {
     void decrease() {
         RunCount runCount = new RunCount(1);
         runCount.decrease();
-        assertThat(runCount.get()).isZero();
+        assertThat(runCount).isEqualTo(new RunCount(0));
     }
 
-    @Test
-    @DisplayName("시도 횟수 만큼의 intStream을 반환한다.")
-    void intStream_ShouldReturnCorrectRangeOfIntegers() {
-        assertThat(new RunCount(5).intStream().count()).isEqualTo(5);
-    }
-
-
-    @Test
-    @DisplayName("남은 시도 횟수를 반환한다.")
-    void get() {
-        assertThat(new CarRace(List.of("luna"), 1).getRemainRunCount()).isEqualTo(1);
-    }
 }
