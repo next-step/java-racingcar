@@ -14,6 +14,12 @@ public class Cars {
         this.cars = cars;
     }
 
+    public void playRound() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
     public boolean isCarCount(int carCount) {
         return this.cars.size() == carCount;
     }

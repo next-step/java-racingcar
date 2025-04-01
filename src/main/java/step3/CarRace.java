@@ -8,11 +8,20 @@ public class CarRace {
         this.cars = new Cars(carCount);
     }
 
+    public void start(int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            this.cars.playRound();
+        }
+    }
+
     public static void main(String[] args) {
         int carCount = InputView.inputCarCount();
         int moveCount = InputView.inputMoveCount();
 
         //자동차 경주 생성
         CarRace carRace = new CarRace(carCount);
+
+        //자동차 경주 시작
+        carRace.start(moveCount);
     }
 }
