@@ -27,21 +27,20 @@ public class SetCollectionTest {
     void successSetSize() {
         int expected = numbers.size();
 
-        //then
         assertThat(numbers).hasSize(expected);
     }
 
     @DisplayName("[요구사항2] Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인한다")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void successSetContains(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+    void successSetContains(int input) {
+        assertThat(numbers).contains(input);
     }
 
     @DisplayName("[요구사항3] 입력 값에 따라 set에 포함 여부 결과 값이 다른지 확인한다")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void toUpperCase(int actual, boolean expected) {
+    void checkSetInclusionByInput(int actual, boolean expected) {
         assertThat(numbers.contains(actual)).isEqualTo(expected);
     }
 }
