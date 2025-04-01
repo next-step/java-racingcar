@@ -18,6 +18,15 @@ public class Car {
         this.moveHistory.add(movable);
     }
 
+    public void print(int round) {
+        StringBuilder sb = new StringBuilder();
+        for (int idx = 0; idx < round; idx++) {
+            sb = addLineIfMovable(moveHistory.get(idx), sb);
+        }
+
+        OutputView.draw(sb);
+    }
+
     public Boolean findMoveAt(int idx) {
         if (idx < moveHistory.size()) {
             return moveHistory.get(idx);
@@ -34,5 +43,12 @@ public class Car {
             return false;
         }
         return true;
+    }
+
+    private StringBuilder addLineIfMovable(boolean movable, StringBuilder sb) {
+        if (movable) {
+            sb = OutputView.makeForwardLine(sb);
+        }
+        return sb;
     }
 }

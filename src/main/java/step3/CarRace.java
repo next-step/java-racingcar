@@ -14,6 +14,10 @@ public class CarRace {
         }
     }
 
+    private void print(int moveCount) {
+        cars.print(moveCount);
+    }
+
     public static void main(String[] args) {
         int carCount = InputView.inputCarCount();
         int moveCount = InputView.inputMoveCount();
@@ -23,5 +27,8 @@ public class CarRace {
 
         //자동차 경주 시작
         carRace.start(moveCount);
+
+        //출력
+        carRace.print(moveCount);
     }
 }
