@@ -12,11 +12,18 @@ public class Car implements Comparable<Car> {
 
     public Car(String name, Position position) throws IllegalArgumentException {
         String trimmedName = name.trim();
+        lengthCheck(trimmedName);
+        this.name = trimmedName;
+        this.position = position;
+    }
+
+    private static void lengthCheck(String trimmedName) {
         if (trimmedName.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5글자를 넘을 수 없습니다.");
         }
-        this.name = trimmedName;
-        this.position = position;
+        if (trimmedName.isEmpty()) {
+            throw new IllegalArgumentException("자동차의 이름은 최소 1글자 이상이어야 합니다");
+        }
     }
 
     @Override

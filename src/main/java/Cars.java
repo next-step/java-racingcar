@@ -1,11 +1,19 @@
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     public final List<Car> cars;
 
     private final int MAX_BOUND = 10;
+
+    public Cars(String names) {
+        this(Arrays.stream(names.split(","))
+            .map(String::trim)
+            .map(Car::new)
+            .collect(Collectors.toList()));
+    }
 
     public Cars(List<Car> carList) {
         if (carList.isEmpty()) {
