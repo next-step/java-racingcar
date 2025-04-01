@@ -11,7 +11,7 @@ public class NumberOverFourMovement implements Movement {
     }
 
     @Override
-    public boolean canMove() {
+    public boolean move() {
         return numberGenerator.generate() >= MOVE_BOUNDARY_INCLUSIVE;
     }
 }
