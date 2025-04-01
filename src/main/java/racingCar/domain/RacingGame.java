@@ -1,6 +1,7 @@
-package step4.domain;
+package racingCar.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private final Cars cars;
@@ -11,12 +12,16 @@ public class RacingGame {
         this.moveStrategy = moveStrategy;
     }
 
-    public List<RoundStatusDTO>  playRound() {
+    public void playRound() {
         cars.moveAll(moveStrategy);
-        return cars.getRoundStatusOfCars();
     }
 
-    public List<RoundStatusDTO>  findWinners() {
-        return cars.findWinnersStatus();
+    public List<Car> getCars() {
+        return cars.getCars();
     }
+
+    public List<Car> findWinners() {
+        return cars.findWinners();
+    }
+
 }
