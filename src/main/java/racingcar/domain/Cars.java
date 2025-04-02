@@ -41,7 +41,7 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    public CarPosition getMaxPosition() {
+    private CarPosition getMaxPosition() {
         return new CarPositions(getValues().stream()
             .map(Car::getPosition)
             .collect(Collectors.toList())

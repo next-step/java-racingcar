@@ -42,6 +42,10 @@ public class Car {
         return this.name.getValue();
     }
 
+    public boolean equals(Car car) {
+        return equals(car.getPosition());
+    }
+
     public boolean equals(CarPosition position) {
         return this.position.equals(position);
     }

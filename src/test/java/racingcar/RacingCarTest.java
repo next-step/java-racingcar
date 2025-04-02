@@ -70,4 +70,11 @@ public class RacingCarTest {
         List<String> expected = StringUtils.splitByComma(expectedWinners);
         assertThat(cars.getWinnerNames()).isEqualTo(expected);
     }
+
+    @Test
+    void 자동차_일치_여부() {
+        Car firstCar = Car.create("one").move(new CarMovabilityPolicy());
+        Car secondCar = Car.create("two").move(new CarMovabilityPolicy());
+        assertThat(firstCar.equals(secondCar)).isTrue();
+    }
 }
