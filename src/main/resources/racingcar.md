@@ -30,5 +30,5 @@
 
 ### 🚀 5단계 - 자동차 경주(리팩토링)
 - [x] CarManager 제거
-- [ ] RaceRecord 추가
+- [x] RaceRecord 추가
 - [ ] TC 추가
