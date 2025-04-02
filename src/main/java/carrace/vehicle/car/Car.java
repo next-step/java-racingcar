@@ -10,13 +10,13 @@ public class Car implements Vehicle {
     private static final int UPPER_BOUND = 9;
 
     public static final String IDENTIFIER = "CAR";
-    private CarMovement CAR_MOVEMENT;
+    private CarMovement carMovement;
 
     private final String name;
 
     public Car(String name, CarMovement carPosition) {
         this.name = name;
-        this.CAR_MOVEMENT = carPosition;
+        this.carMovement = carPosition;
     }
 
     @Override
@@ -32,12 +32,12 @@ public class Car implements Vehicle {
         }
 
         if (randomVal >= MOVE_CONDITION) {
-            CAR_MOVEMENT.moveForward();
+            carMovement.moveForward();
         }
     }
 
     public String getCurrentPosition() {
-        return CAR_MOVEMENT.get();
+        return carMovement.get();
     }
 
     public String getCarName() {
