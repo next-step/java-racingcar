@@ -19,13 +19,4 @@ public class CarMovement implements Move {
     public void stop() {
         // nothing
     }
-
-    // TODO: 뒤로 이동이 생기면 추가
-    public void moveBackward() {}
-
-    // TODO: 좌로 이동이 생기면 추가
-    public void moveLeft() {}
-
-    // TODO: 우로 이동이 생기면 추가
-    public void moveRight() {}
 }
