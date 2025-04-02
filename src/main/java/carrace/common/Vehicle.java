@@ -3,7 +3,7 @@ package carrace.common;
 public interface Vehicle {
     String identifier();
 
-    void move(int randomVal);
+    void move(int randomValue);
 
     String getCurrentPosition();
 

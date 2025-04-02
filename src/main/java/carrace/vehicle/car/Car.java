@@ -26,12 +26,12 @@ public class Car implements Vehicle {
 
     // 상하좌우가 추가 될 경우 맞춰 if 조건 추가
     @Override
-    public void move(int randomVal) {
-        if (randomVal < LOWER_BOUND || randomVal > UPPER_BOUND) {
+    public void move(int randomValue) {
+        if (randomValue < LOWER_BOUND || randomValue > UPPER_BOUND) {
             throw new RuntimeException("랜덤 값은 0에서 9사이의 값이어야합니다.");
         }
 
-        if (randomVal >= MOVE_CONDITION) {
+        if (randomValue >= MOVE_CONDITION) {
             carMovement.moveForward();
         }
     }
