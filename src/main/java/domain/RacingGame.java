@@ -24,6 +24,9 @@ public class RacingGame {
         this.cars = new Cars(carList);
     }
 
+    /**
+     * 게임에 대한 우승자 찾기
+     */
     public void findWinner() {
         Position position = this.cars.findMaxPosition();
         List<Car> winners = cars.cars.stream()
@@ -32,6 +35,9 @@ public class RacingGame {
         this.winner = new Winner(winners);
     }
 
+    /**
+     * 게임 진행 결과를 slice해서 담음
+     */
     public String playResult(int count) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {

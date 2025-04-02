@@ -12,10 +12,16 @@ public class Position implements Comparable<Position> {
         this.value = value;
     }
 
+    /**
+     * 위치 값 증가
+     */
     public void add() {
         this.value++;
     }
 
+    /**
+     * 위치 값 출력
+     */
     public String print() {
         return "-".repeat(this.value);
     }

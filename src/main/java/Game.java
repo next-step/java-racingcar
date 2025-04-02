@@ -7,8 +7,7 @@ import view.OutputView;
 
 public class Game {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        InputView input = new InputView(scanner);
+        InputView input = new InputView();
         Cars cars = new Cars(input.submitName());
         RacingGame racingGame = new RacingGame(cars);
         int count = input.submitCount();
