@@ -11,15 +11,20 @@ public class Car {
     private final Supplier<Integer> randomSupplier;
     private final String name;
 
-    public Car(Supplier<Integer> randomSupplier) {
-        this.name = "Default";
-        this.randomSupplier = randomSupplier;
-    }
 
     public Car(String name) {
         this.name = name;
         this.randomSupplier = () -> new Random().nextInt(10); // 기본 랜덤 값 생성
 
+    }
+
+    public static void validateCarName(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
+        }
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다: " + name);
+        }
     }
 
     public void move() {
@@ -40,8 +45,5 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
-    }
-
-    public void getMaxPosition() {
     }
 }

@@ -1,5 +1,8 @@
 package ui;
 
+import study.Car;
+import study.RacingGame;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+
 
     public static int getNumberOfCars() {
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -24,12 +28,9 @@ public class InputView {
     }
 
     private static void validateCarName(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
-        }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다: " + name);
-        }
+
+        Car.validateCarName(name);
+
     }
 
 
