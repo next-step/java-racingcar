@@ -12,8 +12,11 @@ public class Car implements Vehicle {
     public static final String IDENTIFIER = "CAR";
     private CarMovement CAR_MOVEMENT;
 
-    public Car(CarMovement carPosition) {
-        CAR_MOVEMENT = carPosition;
+    private final String name;
+
+    public Car(String name, CarMovement carPosition) {
+        this.name = name;
+        this.CAR_MOVEMENT = carPosition;
     }
 
     @Override
@@ -35,5 +38,9 @@ public class Car implements Vehicle {
 
     public String getCurrentPosition() {
         return CAR_MOVEMENT.get();
+    }
+
+    public String getCarName() {
+        return name;
     }
 }

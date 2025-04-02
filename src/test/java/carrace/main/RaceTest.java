@@ -1,4 +1,4 @@
-package carrace.app;
+package carrace.main;
 
 public class RaceTest {
 
