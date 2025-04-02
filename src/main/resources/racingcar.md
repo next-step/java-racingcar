@@ -27,3 +27,8 @@
 
 #### 5단계 전 리팩토링
 - [x] CarPosition 리팩토링 (CarPositions 추가)
+
+### 🚀 5단계 - 자동차 경주(리팩토링)
+- [x] CarManager 제거
+- [ ] RaceRecord 추가
+- [ ] TC 추가

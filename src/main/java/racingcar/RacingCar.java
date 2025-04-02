@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-import racingcar.domain.Cars;
+import racingcar.domain.*;
 import racingcar.utils.NumberUtils;
 import racingcar.utils.StringUtils;
 import racingcar.view.InputView;
@@ -16,14 +16,17 @@ public class RacingCar {
 
     private static void play() {
         List<String> carNames = StringUtils.splitByComma(InputView.getCarNames());
-        Cars cars = CarManager.initCars(carNames);
+        Cars cars = Cars.create(carNames);
 
         int tryCount = NumberUtils.toInt(InputView.getTryCount());
 
-        ResultView.printInitialState();
-        CarManager.print(cars);
+        RaceRecords raceRecords = RaceRecords.init(cars);
+        for (int i = 0; i < tryCount; i++) {
+            cars = cars.move();
+            raceRecords.record(cars);
+        }
+        ResultView.printRecords(raceRecords);
 
-        Cars movedCars = CarManager.move(cars, tryCount);
-        ResultView.printWinner(movedCars.getWinnerNames());
+        ResultView.printWinner(cars.getWinnerNames());
     }
 }
