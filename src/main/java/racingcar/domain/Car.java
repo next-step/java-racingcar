@@ -30,7 +30,7 @@ public class Car {
     }
 
     public boolean isSamePositionWith(Car other) {
-        return position.isSame(other.position);
+        return position.equals(other.position);
     }
 
     public boolean isAheadOf(Car other) {

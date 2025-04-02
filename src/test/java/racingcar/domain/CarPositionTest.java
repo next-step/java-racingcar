@@ -36,8 +36,8 @@ class CarPositionTest {
     @Test
     @DisplayName("자동차가 같은 위치에 있으면 true를 반환한다.")
     void isSame() {
-        assertThat(new CarPosition(1).isSame(new CarPosition(1))).isTrue();
-        assertThat(new CarPosition(1).isSame(new CarPosition(2))).isFalse();
+        assertThat(new CarPosition(1).equals(new CarPosition(1))).isTrue();
+        assertThat(new CarPosition(1).equals(new CarPosition(2))).isFalse();
     }
 
 }
