@@ -1,5 +1,7 @@
 package racingcar.vo;
 
+import java.util.Objects;
+
 public class CarPosition {
 
     private static final int ONE_STEP = 1;
@@ -22,8 +24,21 @@ public class CarPosition {
         return this.value;
     }
 
-    public boolean equals(int value) {
-        return this.value == value;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarPosition that = (CarPosition) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(value);
     }
 }
 

@@ -30,15 +30,19 @@ public class Car {
         return this;
     }
 
-    public int getPosition() {
+    public int getPositionValue() {
         return this.position.getValue();
+    }
+
+    public CarPosition getPosition() {
+        return this.position;
     }
 
     public String getName() {
         return this.name.getValue();
     }
 
-    public boolean equals(int position) {
+    public boolean equals(CarPosition position) {
         return this.position.equals(position);
     }
 }

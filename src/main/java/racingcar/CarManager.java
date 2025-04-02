@@ -21,7 +21,7 @@ public class CarManager {
 
     public static void print(Cars cars) {
         cars.getValues()
-            .forEach(car -> ResultView.print(car.getName(), car.getPosition()));
+            .forEach(car -> ResultView.print(car.getName(), car.getPositionValue()));
         ResultView.printNewLine();
     }
 }

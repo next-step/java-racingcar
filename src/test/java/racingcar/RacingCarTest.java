@@ -22,7 +22,7 @@ public class RacingCarTest {
     void 자동차_생성() {
         Car car = Car.create("one");
         assertThat(car).isInstanceOf(Car.class);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPositionValue()).isEqualTo(1);
     }
 
     @Test
@@ -36,22 +36,22 @@ public class RacingCarTest {
     void 자동차_여러_대_생성(String value, int count) {
         Cars cars = Cars.create(StringUtils.splitByComma(value));
         assertThat(cars.getValues()).hasSize(count);
-        assertThat(cars.getPositions()).hasSize(count);
-        assertThat(cars.getPositions()).allMatch(position -> position.equals(1));
+        assertThat(cars.getPositionValues()).hasSize(count);
+        assertThat(cars.getPositionValues()).allMatch(position -> position.equals(1));
     }
 
     @Test
     void 자동차_전진() {
         Car car = Car.create("one");
         Car moved = car.move(new CarMovabilityPolicy());
-        assertThat(moved.getPosition()).isEqualTo(2);
+        assertThat(moved.getPositionValue()).isEqualTo(2);
     }
 
     @Test
     void 자동차_정지() {
         Car car = Car.create("one");
         car.move(new CarImmovablePolicy());
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPositionValue()).isEqualTo(1);
     }
 
     @ParameterizedTest
