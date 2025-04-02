@@ -1,9 +1,11 @@
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import domain.Car;
+import domain.Position;
 
 public class CarTest {
 
@@ -35,5 +37,12 @@ public class CarTest {
         Car honux = new Car("honux", new Position(1));
         pobi.move(5);
         assertThat(pobi.compareTo(honux)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차 위치 테스트")
+    public void printTest() {
+        Car pobi = new Car("pobi", new Position(2));
+        assertThat(pobi.printPosition()).isEqualTo("pobi : --");
     }
 }

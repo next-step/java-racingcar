@@ -1,4 +1,4 @@
-import java.util.Random;
+package domain;
 
 /**
  * 이름, 위치를 가지는 자동차 클래스
@@ -39,6 +39,13 @@ public class Car implements Comparable<Car> {
         if (number >= 4) {
             position.add();
         }
+    }
+
+    /**
+     * 차량 위치 조회
+     */
+    public String printPosition() {
+        return name + " : " + position.print();
     }
 
     @Override

@@ -1,8 +1,14 @@
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import domain.Car;
+import domain.Cars;
+import domain.Position;
 
 public class CarsTest {
 
@@ -34,5 +40,4 @@ public class CarsTest {
             () -> assertThat(cars.cars.get(1).compareTo(cars.cars.get(2))).isEqualTo(0)
         );
     }
-
 }

@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -27,6 +29,13 @@ public class Cars {
         for (Car car : cars) {
             car.move(getRandomNumber());
         }
+    }
+
+    public String printCarPositionAll () {
+        StringBuilder sb = new StringBuilder();
+        this.cars
+            .forEach(car -> {sb.append(car.printPosition()).append("\n");});
+        return sb.toString();
     }
 
     private int getRandomNumber() {

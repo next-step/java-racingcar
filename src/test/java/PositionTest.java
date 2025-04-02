@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.Position;
+
 class PositionTest {
     @Test
     @DisplayName("같은 값일 경우 같은 위치에 있는지를 확인")
@@ -21,4 +23,10 @@ class PositionTest {
         );
     }
 
+    @Test
+    @DisplayName("위치 프린트 테스트")
+    void printPosition() {
+        Position position1 = new Position(2);
+        assertThat(position1.print()).isEqualTo("--");
+    }
 }

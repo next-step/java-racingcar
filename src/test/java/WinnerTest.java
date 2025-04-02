@@ -5,6 +5,11 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.Car;
+import domain.Cars;
+import domain.Position;
+import domain.RacingGame;
+
 public class WinnerTest {
     @Test
     @DisplayName("우승자 찾기 테스트")

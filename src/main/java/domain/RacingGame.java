@@ -1,13 +1,17 @@
+package domain;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+/**
+ * 레이싱게임에 대한 클래스
+ */
 public class RacingGame {
 
     public Cars cars;
     public Winner winner;
-    private final Random random = new Random();
 
     public RacingGame(Cars cars) {
         this.cars = cars;
@@ -20,17 +24,20 @@ public class RacingGame {
         this.cars = new Cars(carList);
     }
 
-    public void moveAllByCount(int number) {
-        for (int i = 0; i < number; i++) {
-            this.cars.moveAll();
-        }
-    }
-
     public void findWinner() {
         Position position = this.cars.findMaxPosition();
         List<Car> winners = cars.cars.stream()
             .filter(car -> car.position.equals(position))
             .collect(Collectors.toList());
         this.winner = new Winner(winners);
+    }
+
+    public String playResult(int count) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            cars.moveAll();
+            sb.append(cars.printCarPositionAll()).append("\n");
+        }
+        return sb.toString();
     }
 }

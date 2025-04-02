@@ -3,6 +3,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import domain.RacingGame;
+
 public class RacingGameTest {
     @Test
     @DisplayName("레이싱 게임 생성 테스트")

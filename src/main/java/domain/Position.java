@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.Objects;
 
 /**
@@ -5,10 +7,17 @@ import java.util.Objects;
  */
 public class Position implements Comparable<Position> {
     private int value;
-    private final int MAX_BOUND = 10;
 
     public Position(int value) {
         this.value = value;
+    }
+
+    public void add() {
+        this.value++;
+    }
+
+    public String print() {
+        return "-".repeat(this.value);
     }
 
     @Override
@@ -27,9 +36,5 @@ public class Position implements Comparable<Position> {
     @Override
     public int compareTo(Position other) {
         return Integer.compare(value, other.value);
-    }
-
-    public void add() {
-        this.value++;
     }
 }
