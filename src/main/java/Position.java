@@ -1,7 +1,11 @@
 import java.util.Objects;
 
+/**
+ * 위치 구현체
+ */
 public class Position implements Comparable<Position> {
     private int value;
+    private final int MAX_BOUND = 10;
 
     public Position(int value) {
         this.value = value;

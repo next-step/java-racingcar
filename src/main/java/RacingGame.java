@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     public Cars cars;
+    public Winner winner;
     private final Random random = new Random();
 
     public RacingGame(Cars cars) {
@@ -19,7 +20,17 @@ public class RacingGame {
         this.cars = new Cars(carList);
     }
 
-    public void move() {
-        this.cars.moveAll();
+    public void moveAllByCount(int number) {
+        for (int i = 0; i < number; i++) {
+            this.cars.moveAll();
+        }
+    }
+
+    public void findWinner() {
+        Position position = this.cars.findMaxPosition();
+        List<Car> winners = cars.cars.stream()
+            .filter(car -> car.position.equals(position))
+            .collect(Collectors.toList());
+        this.winner = new Winner(winners);
     }
 }

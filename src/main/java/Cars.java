@@ -1,11 +1,12 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
 
     public final List<Car> cars;
-
+    private final Random random = new Random();
     private final int MAX_BOUND = 10;
 
     public Cars(String names) {
@@ -24,8 +25,18 @@ public class Cars {
 
     public void moveAll() {
         for (Car car : cars) {
-            int randomNumber = car.getRandomNumber();
-            car.move(randomNumber);
+            car.move(getRandomNumber());
         }
+    }
+
+    private int getRandomNumber() {
+        return random.nextInt(MAX_BOUND);
+    }
+
+    public Position findMaxPosition() {
+        return cars.stream()
+            .map(car -> car.position)
+            .max(Position::compareTo)
+            .orElse(new Position(0));
     }
 }
