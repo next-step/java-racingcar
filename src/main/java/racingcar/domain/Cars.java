@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarDto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,10 +17,10 @@ public class Cars {
     }
 
     public static Cars from(List<String> carNames) {
-        List<Car> carList = carNames.stream()
+        List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
-        return new Cars(carList);
+        return new Cars(cars);
     }
 
     private void validateNotEmpty(List<Car> cars) {
@@ -32,25 +34,25 @@ public class Cars {
         }
     }
 
-    public List<CarState> moveAll(MoveStrategy moveStrategy) {
+    public List<CarDto> moveAll(MoveStrategy moveStrategy) {
         elements.forEach(element -> element.move(moveStrategy));
 
         return elements.stream()
-                .map(Car::toState)
+                .map(Car::toDto)
                 .collect(Collectors.toList());
     }
 
-    public List<CarState> findWinners() {
+    public List<CarDto> findWinners() {
         Car winner = findWinner();
         return elements.stream()
                 .filter(car -> car.isSamePositionWith(winner))
-                .map(Car::toState)
+                .map(Car::toDto)
                 .collect(Collectors.toList());
     }
 
     private Car findWinner() {
         return elements.stream()
-                .reduce(Car::findCarAhead)
+                .reduce((car1, car2) -> car1.isAheadOf(car2)? car1 : car2)
                 .orElseThrow(() -> new IllegalStateException("can not find winner car"));
     }
 

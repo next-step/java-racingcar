@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import racingcar.util.RandomNumberGenerator;
+import racingcar.dto.CarDto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,7 +40,7 @@ class CarsTest {
         List<Car> testCars = Arrays.asList(new Car("car1"), new Car("Car2"));
         Cars cars = new Cars(testCars);
 
-        List<CarState> result = cars.moveAll(moveStrategy);
+        List<CarDto> result = cars.moveAll(moveStrategy);
         assertThat(result).hasSize(testCars.size());
     }
 
@@ -53,7 +53,7 @@ class CarsTest {
         Car carSun = new Car("sun", 2);
 
         Cars cars = new Cars(Arrays.asList(carLuna, carStar, carSun));
-        List<CarState> winners = cars.findWinners();
+        List<CarDto> winners = cars.findWinners();
 
         assertThat(winners)
                 .hasSize(1)
@@ -69,7 +69,7 @@ class CarsTest {
         Car carSun = new Car("sun", 3);
 
         Cars cars = new Cars(Arrays.asList(carLuna, carStar, carSun));
-        List<CarState> winners = cars.findWinners();
+        List<CarDto> winners = cars.findWinners();
 
         assertThat(winners)
                 .hasSize(2)
