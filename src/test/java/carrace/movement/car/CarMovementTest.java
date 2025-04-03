@@ -49,4 +49,14 @@ public class CarMovementTest {
 
         Assertions.assertThat(carMovement.get()).isEqualTo(expectedPosition);
     }
+
+    @DisplayName("한칸 전진시 이전 값보다 -가 하나 증가해야합니다.")
+    @Test
+    public void moveForward_ValidMove() {
+        CarMovement carMovement = new CarMovement();
+        String expectedPosition = "--"; // current position = "-"
+        carMovement.moveForward();
+
+        Assertions.assertThat(carMovement.get()).isEqualTo(expectedPosition);
+    }
 }
