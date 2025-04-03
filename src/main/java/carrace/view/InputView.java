@@ -1,10 +1,10 @@
-package carrace.utils;
+package carrace.view;
 
 import java.util.Arrays;
 
-public class InputValidator {
+public class InputView {
 
-    public static Integer receiveCarNum(int numCar) {
+    public Integer receiveCarNum(int numCar) {
         System.out.println("자동차 대수는 몇 대 인가요?");
         if (numCar > 0) {
             return numCar;
@@ -12,17 +12,17 @@ public class InputValidator {
         throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
     }
 
-    public static Integer receiveNumTry(int numTry) {
+    public Integer receiveNumTry(int numTry) {
         if (numTry > 0) {
             return numTry;
         }
         throw new RuntimeException("시도할 회수는 1 이상의 값이어야 합니다.");
     }
 
-    public static String[] receiveCarNames(String input) {
+    public String[] receiveCarNames(String input) {
         String[] names = input.split(",");
-        if (names.length == 0) {
-            throw new RuntimeException("자동차 대수는 1 이상의 값이어야합니다.");
+        if (names.length <= 1) {
+            throw new RuntimeException("자동차 대수는 2 이상의 값이어야합니다.");
         }
 
         Arrays.stream(names)

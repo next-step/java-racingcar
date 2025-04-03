@@ -4,6 +4,7 @@ import carrace.common.Vehicle;
 import carrace.movement.car.CarMovement;
 import carrace.utils.RandomValue;
 import carrace.vehicle.car.Car;
+import carrace.view.OutputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +13,8 @@ import java.util.stream.IntStream;
 
 public class Race {
 
-    private final String[] carNames;
-    private final int numTry;
+    private String[] carNames;
+    private int numTry;
     private Vehicle[] vehicles;
     private int numCar;
 
@@ -30,38 +31,27 @@ public class Race {
     }
 
     // 게임 시작
-    public void start() {
+    public void start(OutputView outputView) {
         IntStream.range(0, numTry)
                 .forEach(
                         i -> {
-                            updateCurrentState();
-                            printCurrentState();
+                            move();
+                            outputView.printCurrentState(vehicles);
                         });
-        printWinner();
     }
 
-    // 상태 업데이트 (움직임)
-    public void updateCurrentState() {
+    // 게임 종료후 해야할 사항들
+    public void end(OutputView outputView) {
+        outputView.printWinner(getWinner());
+    }
+
+    // 움직임
+    public void move() {
         IntStream.range(0, numCar)
                 .forEach(
                         i -> {
                             vehicles[i].move(RandomValue.generate());
                         });
-    }
-
-    // 상태 출력
-    private void printCurrentState() {
-        Arrays.stream(vehicles)
-                .forEach(
-                        car ->
-                                System.out.println(
-                                        car.getCarName() + ": " + car.getCurrentPosition()));
-        System.out.println();
-    }
-
-    // 위너 출력
-    private void printWinner() {
-        System.out.println("최종 우승자는 " + getWinner() + " 입니다.");
     }
 
     // 위너 계산

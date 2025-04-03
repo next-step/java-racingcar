@@ -1,7 +1,8 @@
 package carrace.main;
 
 import carrace.race.Race;
-import carrace.utils.InputValidator;
+import carrace.view.InputView;
+import carrace.view.OutputView;
 
 import java.util.Scanner;
 
@@ -9,17 +10,23 @@ public class Game {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
 
+        // 게임 준비
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carNamesInput = scanner.nextLine();
-        String[] carNames = InputValidator.receiveCarNames(carNamesInput);
+        String[] carNames = inputView.receiveCarNames(scanner.nextLine());
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        int numTryInput = scanner.nextInt();
-        int numTry = InputValidator.receiveNumTry(numTryInput);
+        int numTry = inputView.receiveNumTry(scanner.nextInt());
 
         Race race = new Race(carNames, numTry);
-        race.start();
+
+        // 게임 진행 중의 상태 출력을 위해 outputView를 사용
+        race.start(outputView);
+
+        // 게임 결과 출력을 위해 outputView를 사용
+        race.end(outputView);
 
         scanner.close();
     }
