@@ -3,11 +3,13 @@ package carrace.movement.car;
 import carrace.common.Move;
 
 public class CarMovement implements Move {
+
     private static final int MOVE_CONDITION = 4;
     private static final int LOWER_BOUND = 0;
     private static final int UPPER_BOUND = 9;
 
     private String position = "-";
+
 
     public void moveForward() {
         this.position = this.position + "-";

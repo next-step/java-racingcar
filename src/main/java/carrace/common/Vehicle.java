@@ -8,4 +8,5 @@ public interface Vehicle {
     String getCurrentPosition();
 
     String getCarName();
+
 }
