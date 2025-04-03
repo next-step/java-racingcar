@@ -1,6 +1,6 @@
 package carrace.main;
 
-public class RaceTest {
+public class GameTest {
 
     //    @DisplayName("자동차 대수가 0 이하의 값이면, 에러가 발생합니다.")
     //    @Test
