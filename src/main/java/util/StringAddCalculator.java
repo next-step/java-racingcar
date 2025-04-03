@@ -24,7 +24,9 @@ public class StringAddCalculator {
 
         for (String token : tokens) {
             int number = Integer.parseInt(token);
-            if (number < 0) throw new RuntimeException("Number cannot be negative");
+            if (number < 0) {
+                throw new RuntimeException("Number cannot be negative");
+            }
             sum += number;
         }
 

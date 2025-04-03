@@ -7,6 +7,8 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMovable() {
-        return rand.nextInt(10) >= 4;
+        int movingThreshold = 4;
+        int randomNumberUpperBound = 10;
+        return rand.nextInt(randomNumberUpperBound) >= movingThreshold;
     }
 }
