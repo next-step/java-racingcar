@@ -10,7 +10,6 @@ public class StringCalculatorTest {
     void stringSplitAndSumTest() {
         String input = "1,2,3";
         String spliter = ",|:";
-//        String spliterGetter =
         String[] list = input.split(spliter);
     }
 }
