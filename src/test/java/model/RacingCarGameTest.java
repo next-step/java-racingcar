@@ -15,12 +15,19 @@ public class RacingCarGameTest {
     public void testRacingRounds() {
         int numOfCars = 3;
         int numOfRounds = 5;
-        RacingGameController racingGame = new RacingGameController(numOfCars, numOfRounds);
+        String carNames = "가,나,다";
+        RacingGameController racingGame = new RacingGameController(numOfCars, carNames);
 
         List<Car> cars = racingGame.startRace(() -> true);
 
         for (Car car : cars) {
             assertThat(car.getPosition()).isEqualTo(numOfRounds);
         }
+    }
+
+    @Test
+    void testCarNameLength() {
+        String careName = "가나다라마바";
+
     }
 }

@@ -2,9 +2,11 @@ package model;
 
 public class Car {
     private int position;
+    private final  String name;
 
-    public Car() {
+    public Car(String name) {
         this.position = 0;
+        this.name = name;
     }
 
     public void move(MoveStrategy condition) {

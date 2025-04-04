@@ -7,14 +7,15 @@ import view.InputView;
 import view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingGameController {
-    private final int numberOfCars;
     private final int numberOfRounds;
+    private final List<String> carNames;
 
-    public RacingGameController(int numberOfCars, int numberOfRounds) {
-        this.numberOfCars = numberOfCars;
+    public RacingGameController(int numberOfRounds, String carNames) {
+        this.carNames = Arrays.asList(carNames.split(","));
         this.numberOfRounds = numberOfRounds;
     }
 
@@ -22,9 +23,11 @@ public class RacingGameController {
         List<Car> cars = new ArrayList<>();
         ResultView resultView = new ResultView();
 
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
+//        for (int i = 0; i < numberOfCars; i++) {
+//            cars.add(new Car());
+//        }
+
+
         for (int i = 0; i < numberOfRounds; i++) {
             for (Car car : cars) {
                 car.move(moveStrategy);
@@ -38,10 +41,11 @@ public class RacingGameController {
         InputView inputView = new InputView();
 
         int numOfCars = inputView.getNumberOfCars();
+        String carNames = inputView.getCarNames();
         int numOfRounds = inputView.getNumberOfRounds();
         RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
 
-        RacingGameController game = new RacingGameController(numOfCars, numOfRounds);
+        RacingGameController game = new RacingGameController(numOfRounds, carNames);
 
         System.out.println();
         System.out.println("실행결과");
