@@ -1,7 +1,7 @@
-package study;
+package domain;
 
 import java.util.*;
-import ui.ResultView;
+import view.ResultView;
 import java.util.function.Supplier;
 
 public class Car {

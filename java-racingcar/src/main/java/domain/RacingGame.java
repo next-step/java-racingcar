@@ -1,15 +1,14 @@
-package study;
+package domain;
 
-import ui.ResultView;
-import ui.InputView;
+import view.ResultView;
+import view.InputView;
 
 import java.util.Random;
 import java.util.function.Supplier;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ui.InputView.getCarNames;
+import static view.InputView.getCarNames;
 
 public class RacingGame {
     public static void main(String[] args) {
@@ -68,10 +67,12 @@ public class RacingGame {
     public String checkWinnerCar(List<Car> cars) {
         int maxPosition = getMaxPosition(cars);
 
-        return cars.stream()
+        List<String> winners = cars.stream()
                 .filter(car -> car.getPosition().length() == maxPosition) // 가장 멀리 간 자동차 필터링
                 .map(Car::getName) // 이름 가져오기
-                .collect(Collectors.joining(", ")); // 이름을 쉼표로 구분하여 합침
+                .toList(); // 리스트로 변환
+
+        return ResultView.formatWinners(winners);
     }
 
     private static int getMaxPosition(List<Car> cars) {

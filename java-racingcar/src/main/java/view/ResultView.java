@@ -1,6 +1,6 @@
-package ui;
+package view;
 
-import study.Car;
+import domain.Car;
 
 import java.util.List;
 
@@ -24,6 +24,10 @@ public class ResultView {
 
     public static void printResultLog() {
         System.out.println("\n실행 결과.");
+    }
+
+    public static String formatWinners(List<String> winners) {
+        return String.join(", ", winners);
     }
 
 }
