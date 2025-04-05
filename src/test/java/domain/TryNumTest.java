@@ -1,3 +1,5 @@
+package domain;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,8 +23,6 @@ class TryNumTest {
 
     @Test
     void inputZero() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new TryNum(0);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> new TryNum(0));
     }
 }

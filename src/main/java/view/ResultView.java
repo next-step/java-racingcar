@@ -1,3 +1,8 @@
+package view;
+
+import domain.Cars;
+import domain.CarsSnapShots;
+
 public final class ResultView {
 
     public static void printWinners(Cars cars) {
