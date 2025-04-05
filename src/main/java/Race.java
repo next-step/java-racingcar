@@ -1,46 +1,50 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Race {
 
-    private static final Random random = new Random();
+    private final MoveStrategy moveStrategy;
     private final int totalRounds;
-    private final List<Car> cars;
+    private final Cars cars;
     private int currentRound = 0;
 
     public Race(GameSettings settings) {
-        if (settings.getCarCount() < 1 || settings.getRoundCount() < 1) {
-            throw new IllegalArgumentException("Invalid game settings: " + settings);
-        }
-
-        this.totalRounds = settings.getRoundCount();
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < settings.getCarCount(); i++) {
-            this.cars.add(new Car());
-        }
+        this(settings, new RandomMoveStrategy());
     }
 
-    public List<Integer> getCarPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
+    public Race(GameSettings settings, MoveStrategy moveStrategy) {
+        this.totalRounds = settings.getRoundCount();
+        this.cars = Cars.fromNames(settings.getCarNames());
+        this.moveStrategy = moveStrategy;
+    }
+
+    public List<CarStatus> getCarStatuses() {
+        return cars.getCarStatuses();
     }
 
     public void runRound() {
-        if (!isRaceInProgress()) {
-            throw new IllegalStateException("Race has already finished");
-        }
-
-        for (Car car : cars) {
-            car.move(random.nextInt(10));
-        }
+        validateRaceInProgress();
+        cars.moveAll(moveStrategy);
         currentRound++;
     }
 
     public boolean isRaceInProgress() {
         return currentRound < totalRounds;
+    }
+
+    private void validateRaceInProgress() {
+        if (!isRaceInProgress()) {
+            throw new IllegalStateException("Race has already finished");
+        }
+    }
+
+    private void validateRaceFinished() {
+        if (isRaceInProgress()) {
+            throw new IllegalStateException("Race is still in progress");
+        }
+    }
+
+    public List<CarStatus> getWinners() {
+        validateRaceFinished();
+        return cars.findWinners();
     }
 }
