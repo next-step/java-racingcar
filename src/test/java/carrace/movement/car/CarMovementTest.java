@@ -33,7 +33,7 @@ public class CarMovementTest {
     public void checkAndMoveForwardTest_ValidRandomValueMove() {
         CarMovement carMovement = new CarMovement();
         int inputRandomValue = 5;
-        String expectedPosition = "--"; // current position = "-"
+        int expectedPosition = 2; // current position = "-"
         carMovement.checkAndMoveForward(inputRandomValue);
 
         Assertions.assertThat(carMovement.get()).isEqualTo(expectedPosition);
@@ -44,7 +44,7 @@ public class CarMovementTest {
     public void checkAndMoveForwardTest_ValidRandomValueStop() {
         CarMovement carMovement = new CarMovement();
         int inputRandomValue = 2;
-        String expectedPosition = "-"; // current position = "-"
+        int expectedPosition = 1; // current position = "-"
         carMovement.checkAndMoveForward(inputRandomValue);
 
         Assertions.assertThat(carMovement.get()).isEqualTo(expectedPosition);
@@ -54,7 +54,7 @@ public class CarMovementTest {
     @Test
     public void moveForward_ValidMove() {
         CarMovement carMovement = new CarMovement();
-        String expectedPosition = "--"; // current position = "-"
+        int expectedPosition = 2; // current position = "-"
         carMovement.moveForward();
 
         Assertions.assertThat(carMovement.get()).isEqualTo(expectedPosition);
