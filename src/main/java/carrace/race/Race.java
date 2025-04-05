@@ -4,7 +4,6 @@ import carrace.movement.car.CarMovement;
 import carrace.vehicle.Vehicle;
 import carrace.vehicle.Vehicles;
 import carrace.vehicle.car.Car;
-import carrace.view.OutputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,14 +28,14 @@ public class Race {
         this.vehicles = new Vehicles(vehicles);
     }
 
+    // 테스트 목적의 생성자
+    public Race(Vehicles vehicles) {
+        this.vehicles = vehicles;
+    }
+
     // 게임 시작
     public void startSingleRound() {
         move();
-    }
-
-    // 게임 종료후 해야할 사항들
-    public void end(OutputView outputView) {
-        outputView.printWinner(getWinner());
     }
 
     // 움직임
@@ -57,6 +56,10 @@ public class Race {
                         .filter(car -> car.getCurrentPosition() == maxPosition)
                         .map(Vehicle::getCarName)
                         .collect(Collectors.toList());
+
+        if (winnerNames.isEmpty()) {
+            throw new RuntimeException("최종 우승자가 반드시 존재해야합니다.");
+        }
 
         return winnerNames;
     }
