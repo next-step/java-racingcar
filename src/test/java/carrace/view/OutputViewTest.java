@@ -1,6 +1,7 @@
 package carrace.view;
 
-import carrace.common.Vehicle;
+import carrace.vehicle.Vehicle;
+import carrace.vehicle.Vehicles;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,8 @@ public class OutputViewTest {
     @Test
     public void printCurrentStateTest_NoVehicles() {
         OutputView outputView = new OutputView();
-        Vehicle[] inputVehicles = new Vehicle[0];
+        Vehicle[] inputVehicle = new Vehicle[0];
+        Vehicles inputVehicles = new Vehicles(inputVehicle);
 
         assertThatThrownBy(() -> outputView.printCurrentState(inputVehicles))
                 .isInstanceOf(RuntimeException.class);

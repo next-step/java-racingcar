@@ -2,6 +2,8 @@ package carrace.view;
 
 import java.util.Arrays;
 
+import static carrace.rules.CarRaceRules.checkLargerThanMaxCarNameLength;
+
 public class InputView {
 
     public Integer receiveCarNum(int numCar) {
@@ -28,8 +30,8 @@ public class InputView {
         Arrays.stream(names)
                 .forEach(
                         name -> {
-                            if (name.length() > 5) {
-                                throw new RuntimeException("자동차 이름은 5자 이하만 가능합니다.");
+                            if (checkLargerThanMaxCarNameLength(name)) {
+                                throw new RuntimeException("자동차 이름은 5자 이하만 가능합니다: " + name);
                             }
                         });
 

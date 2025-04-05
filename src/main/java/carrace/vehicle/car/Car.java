@@ -1,7 +1,7 @@
 package carrace.vehicle.car;
 
-import carrace.common.Vehicle;
 import carrace.movement.car.CarMovement;
+import carrace.vehicle.Vehicle;
 
 public class Car implements Vehicle {
 

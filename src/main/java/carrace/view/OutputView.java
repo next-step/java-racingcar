@@ -1,6 +1,6 @@
 package carrace.view;
 
-import carrace.common.Vehicle;
+import carrace.vehicle.Vehicles;
 
 import java.util.Arrays;
 
@@ -10,12 +10,8 @@ public class OutputView {
     public OutputView() {}
 
     // 상태 출력
-    public void printCurrentState(Vehicle[] vehicles) {
-        if (vehicles == null || vehicles.length <= 1) {
-            throw new RuntimeException("자동차 대수는 2 이상의 값이어야합니다.");
-        }
-
-        Arrays.stream(vehicles)
+    public void printCurrentState(Vehicles vehicles) {
+        Arrays.stream(vehicles.getVehicles())
                 .forEach(
                         car ->
                                 System.out.println(

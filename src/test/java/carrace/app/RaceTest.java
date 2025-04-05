@@ -1,6 +1,6 @@
 package carrace.app;
 
-import carrace.common.Vehicle;
+import carrace.vehicle.Vehicle;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,8 @@
 package carrace.race;
 
-import carrace.common.Vehicle;
 import carrace.movement.car.CarMovement;
-import carrace.utils.RandomValue;
+import carrace.vehicle.Vehicle;
+import carrace.vehicle.Vehicles;
 import carrace.vehicle.car.Car;
 import carrace.view.OutputView;
 
@@ -15,19 +15,20 @@ public class Race {
 
     private String[] carNames;
     private int numTry;
-    private Vehicle[] vehicles;
+    private Vehicles vehicles;
     private int numCar;
 
     public Race(String[] carNames, int numTry) {
         this.carNames = carNames;
         this.numTry = numTry;
         this.numCar = carNames.length;
-        vehicles = new Vehicle[numCar];
+        Vehicle[] vehicles = new Car[numCar];
         IntStream.range(0, this.numCar)
                 .forEach(
                         i -> {
                             vehicles[i] = new Car(carNames[i], new CarMovement());
                         });
+        this.vehicles = new Vehicles(vehicles);
     }
 
     // 게임 시작
@@ -47,23 +48,19 @@ public class Race {
 
     // 움직임
     public void move() {
-        IntStream.range(0, numCar)
-                .forEach(
-                        i -> {
-                            vehicles[i].move(RandomValue.generate());
-                        });
+        vehicles.moveAll();
     }
 
     // 위너 계산
     private String getWinner() {
         int maxPosition =
-                Arrays.stream(vehicles)
+                Arrays.stream(vehicles.getVehicles())
                         .mapToInt(car -> car.getCurrentPosition().length())
                         .max()
                         .orElseThrow(RuntimeException::new);
 
         List<String> winnerNames =
-                Arrays.stream(vehicles)
+                Arrays.stream(vehicles.getVehicles())
                         .filter(car -> car.getCurrentPosition().length() == maxPosition)
                         .map(car -> car.getCarName())
                         .collect(Collectors.toList());

@@ -1,6 +1,6 @@
 package carrace.movement.car;
 
-import carrace.common.Move;
+import carrace.movement.Move;
 
 public class CarMovement implements Move {
 
@@ -9,7 +9,6 @@ public class CarMovement implements Move {
     private static final int UPPER_BOUND = 9;
 
     private String position = "-";
-
 
     public void moveForward() {
         this.position = this.position + "-";
