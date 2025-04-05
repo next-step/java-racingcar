@@ -15,8 +15,8 @@ public class RaceRecords {
         return new RaceRecords(List.of(new RaceRecord(cars)));
     }
 
-    public void record(Cars cars) {
-        this.values.add(new RaceRecord(cars));
+    public void record(int sequence, Cars cars) {
+        this.values.add(new RaceRecord(sequence, cars));
     }
 
     public List<RaceRecord> getValues() {

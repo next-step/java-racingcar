@@ -34,4 +34,5 @@
 - [x] TC 추가 및 리팩토링
 - [x] Controller 추가 및 view 의존성 재정의
 - [x] equals and hashCode 로직 수정
-- [ ] RaceRecord 리팩토링
+- [x] RaceRecord 리팩토링
+- [ ] getWinnerNames 메소드 리팩토링

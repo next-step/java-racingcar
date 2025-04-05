@@ -18,14 +18,14 @@ public class RacingCarController {
         int tryCount = NumberUtils.toInt(InputView.getTryCount());
 
         RaceRecords raceRecords = RaceRecords.init(cars);
-        for (int i = 0; i < tryCount; i++) {
+        for (int sequence = 1; sequence <= tryCount; sequence++) {
             cars = cars.move();
-            raceRecords.record(cars);
+            raceRecords.record(sequence, cars);
         }
 
-        ResultView.printResult();
         raceRecords.getValues()
             .forEach(raceRecord -> {
+                ResultView.printSequence(raceRecord.getSequence());
                 raceRecord.getCars()
                     .getValues()
                     .forEach(car -> ResultView.print(car.getName(), car.getPositionValue()));
