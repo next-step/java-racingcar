@@ -32,3 +32,6 @@
 - [x] CarManager 제거
 - [x] RaceRecord 추가
 - [x] TC 추가 및 리팩토링
+- [ ] Controller 추가 및 view 의존성 재정의
+- [ ] equals and hashCode 오버라이딩
+- [ ] RaceRecord 리팩토링
