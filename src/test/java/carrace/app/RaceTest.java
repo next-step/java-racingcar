@@ -44,7 +44,6 @@ class RaceTest {
         assertThat(winners).isEqualTo(List.of(POBI));
     }
 
-    // 여기에 다른 테스트 케이스 추가 (예: 공동 우승)
     @DisplayName("가장 멀리 간 자동차가 여러 대일 경우 모두 최종 우승자로 나와야 합니다.")
     @Test
     void getWinner_ShouldReturnMultipleWinners() {
