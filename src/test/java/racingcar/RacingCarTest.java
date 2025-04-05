@@ -72,9 +72,9 @@ public class RacingCarTest {
     }
 
     @Test
-    void 자동차_일치_여부() {
+    void 자동차_위치_일치_여부() {
         Car firstCar = Car.create("one").move(new CarMovabilityPolicy());
         Car secondCar = Car.create("two").move(new CarMovabilityPolicy());
-        assertThat(firstCar.equals(secondCar)).isTrue();
+        assertThat(firstCar.getPosition().equals(secondCar.getPosition())).isTrue();
     }
 }
