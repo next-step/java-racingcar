@@ -1,4 +1,4 @@
-package carrace.common;
+package carrace.vehicle;
 
 public interface Vehicle {
     String identifier();
@@ -8,5 +8,4 @@ public interface Vehicle {
     String getCurrentPosition();
 
     String getCarName();
-
 }

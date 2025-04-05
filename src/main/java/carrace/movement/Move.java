@@ -1,4 +1,4 @@
-package carrace.common;
+package carrace.movement;
 
 public interface Move {
 
