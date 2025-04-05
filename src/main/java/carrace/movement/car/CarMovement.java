@@ -1,31 +1,30 @@
 package carrace.movement.car;
 
-import carrace.common.Move;
+import carrace.movement.Move;
 
 public class CarMovement implements Move {
 
-    private String position = "-";
+    private static final int MOVE_CONDITION = 4;
+    private static final int LOWER_BOUND = 0;
+    private static final int UPPER_BOUND = 9;
 
-    // 현 과제에서는 앞으로의 이동만 고려
+    private int position = 1;
+
     public void moveForward() {
-        this.position = this.position + "-";
+        this.position = this.position + 1;
     }
 
-    public String get() {
+    public int get() {
         return position;
     }
 
-    // 움직이지 않음
-    public void stop() {
-        // nothing
+    public void checkAndMoveForward(int randomValue) {
+        if (randomValue < LOWER_BOUND || randomValue > UPPER_BOUND) {
+            throw new RuntimeException("랜덤 값은 0에서 9사이의 값이어야합니다.");
+        }
+
+        if (randomValue >= MOVE_CONDITION) {
+            moveForward();
+        }
     }
-
-    // TODO: 뒤로 이동이 생기면 추가
-    public void moveBackward() {}
-
-    // TODO: 좌로 이동이 생기면 추가
-    public void moveLeft() {}
-
-    // TODO: 우로 이동이 생기면 추가
-    public void moveRight() {}
 }
