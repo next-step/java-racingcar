@@ -14,13 +14,11 @@ import java.util.stream.IntStream;
 public class Race {
 
     private String[] carNames;
-    private int numTry;
     private Vehicles vehicles;
     private int numCar;
 
-    public Race(String[] carNames, int numTry) {
+    public Race(String[] carNames) {
         this.carNames = carNames;
-        this.numTry = numTry;
         this.numCar = carNames.length;
         Vehicle[] vehicles = new Car[numCar];
         IntStream.range(0, this.numCar)
@@ -32,13 +30,8 @@ public class Race {
     }
 
     // 게임 시작
-    public void start(OutputView outputView) {
-        IntStream.range(0, numTry)
-                .forEach(
-                        i -> {
-                            move();
-                            outputView.printCurrentState(vehicles);
-                        });
+    public void startSingleRound() {
+        move();
     }
 
     // 게임 종료후 해야할 사항들
@@ -52,7 +45,7 @@ public class Race {
     }
 
     // 위너 계산
-    private String getWinner() {
+    public String getWinner() {
         int maxPosition =
                 Arrays.stream(vehicles.getVehicles())
                         .mapToInt(car -> car.getCurrentPosition().length())
@@ -66,5 +59,9 @@ public class Race {
                         .collect(Collectors.toList());
 
         return String.join(",", winnerNames);
+    }
+
+    public Vehicles getVehicles() {
+        return vehicles;
     }
 }
