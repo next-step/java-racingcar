@@ -1,3 +1,8 @@
+import domain.GameSettings;
+import domain.Race;
+import view.InputView;
+import view.ResultView;
+
 public class Game {
 
     public static void main(String[] args) {

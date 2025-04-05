@@ -1,3 +1,6 @@
+package view;
+
+import domain.CarStatus;
 import java.util.List;
 import java.util.StringJoiner;
 
