@@ -45,7 +45,7 @@ public class Race {
     }
 
     // 위너 계산
-    public String getWinner() {
+    public List<String> getWinner() {
         int maxPosition =
                 Arrays.stream(vehicles.getVehicles())
                         .mapToInt(car -> car.getCurrentPosition().length())
@@ -58,7 +58,7 @@ public class Race {
                         .map(car -> car.getCarName())
                         .collect(Collectors.toList());
 
-        return String.join(",", winnerNames);
+        return winnerNames;
     }
 
     public Vehicles getVehicles() {
