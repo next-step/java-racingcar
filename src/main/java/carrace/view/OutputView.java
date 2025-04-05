@@ -8,6 +8,8 @@ import java.util.List;
 // 기존 Race에서 출력 로직
 public class OutputView {
 
+    private String position = "-";
+
     public OutputView() {}
 
     // 상태 출력
@@ -16,8 +18,15 @@ public class OutputView {
                 .forEach(
                         car ->
                                 System.out.println(
-                                        car.getCarName() + ": " + car.getCurrentPosition()));
+                                        car.getCarName()
+                                                + ": "
+                                                + calculateLatestPosition(
+                                                        car.getCurrentPosition())));
         System.out.println();
+    }
+
+    public String calculateLatestPosition(int length) {
+        return position.repeat(length);
     }
 
     // 우승자 출력

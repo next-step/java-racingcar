@@ -26,7 +26,7 @@ public class Car implements Vehicle {
         carMovement.checkAndMoveForward(randomValue);
     }
 
-    public String getCurrentPosition() {
+    public int getCurrentPosition() {
         return carMovement.get();
     }
 

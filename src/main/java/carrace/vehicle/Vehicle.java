@@ -5,7 +5,7 @@ public interface Vehicle {
 
     void move(int randomValue);
 
-    String getCurrentPosition();
+    int getCurrentPosition();
 
     String getCarName();
 }

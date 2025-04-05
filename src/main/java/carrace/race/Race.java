@@ -48,14 +48,14 @@ public class Race {
     public List<String> getWinner() {
         int maxPosition =
                 Arrays.stream(vehicles.getVehicles())
-                        .mapToInt(car -> car.getCurrentPosition().length())
-                        .max()
+                        .map(Vehicle::getCurrentPosition)
+                        .max(Integer::compareTo)
                         .orElseThrow(RuntimeException::new);
 
         List<String> winnerNames =
                 Arrays.stream(vehicles.getVehicles())
-                        .filter(car -> car.getCurrentPosition().length() == maxPosition)
-                        .map(car -> car.getCarName())
+                        .filter(car -> car.getCurrentPosition() == maxPosition)
+                        .map(Vehicle::getCarName)
                         .collect(Collectors.toList());
 
         return winnerNames;

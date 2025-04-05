@@ -8,13 +8,13 @@ public class CarMovement implements Move {
     private static final int LOWER_BOUND = 0;
     private static final int UPPER_BOUND = 9;
 
-    private String position = "-";
+    private int position = 1;
 
     public void moveForward() {
-        this.position = this.position + "-";
+        this.position = this.position + 1;
     }
 
-    public String get() {
+    public int get() {
         return position;
     }
 
