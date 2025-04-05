@@ -35,4 +35,4 @@
 - [x] Controller 추가 및 view 의존성 재정의
 - [x] equals and hashCode 로직 수정
 - [x] RaceRecord 리팩토링
-- [ ] getWinnerNames 메소드 리팩토링
+- [x] getWinnerNames 메소드 리팩토링 및 CarPositions 삭제

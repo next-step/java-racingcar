@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.*;
 import racingcar.policy.CarImmovablePolicy;
 import racingcar.policy.CarMovabilityPolicy;
 import racingcar.utils.StringUtils;
@@ -36,8 +35,7 @@ public class RacingCarTest {
     void 자동차_여러_대_생성(String value, int count) {
         Cars cars = Cars.create(StringUtils.splitByComma(value));
         assertThat(cars.getValues()).hasSize(count);
-        assertThat(cars.getPositionValues()).hasSize(count);
-        assertThat(cars.getPositionValues()).allMatch(position -> position.equals(1));
+        assertThat(cars.getMaxPosition().getValue()).isEqualTo(1);
     }
 
     @Test
@@ -67,8 +65,10 @@ public class RacingCarTest {
                 .collect(Collectors.toList())
         );
 
+        RaceRecords raceRecords = new RaceRecords(List.of(new RaceRecord(cars)));
         List<String> expected = StringUtils.splitByComma(expectedWinners);
-        assertThat(cars.getWinnerNames()).isEqualTo(expected);
+
+        assertThat(raceRecords.getWinnerNames()).isEqualTo(expected);
     }
 
     @Test

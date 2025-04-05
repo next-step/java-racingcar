@@ -1,12 +1,10 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import racingcar.policy.CarMovementRandomizer;
 import racingcar.vo.CarPosition;
-import racingcar.vo.CarPositions;
 
 public class Cars {
 
@@ -34,27 +32,10 @@ public class Cars {
         return this.values;
     }
 
-    public List<String> getWinnerNames() {
+    public CarPosition getMaxPosition() {
         return getValues().stream()
-            .filter(this::isMaxPosition)
-            .map(Car::getName)
-            .collect(Collectors.toList());
-    }
-
-    private boolean isMaxPosition(Car car) {
-        return getMaxPosition().equals(car.getPosition());
-    }
-
-    private CarPosition getMaxPosition() {
-        return new CarPositions(getValues().stream()
             .map(Car::getPosition)
-            .collect(Collectors.toList())
-        ).getMaxPosition();
-    }
-
-    public List<Integer> getPositionValues() {
-        return getValues().stream()
-            .map(Car::getPositionValue)
-            .collect(Collectors.toList());
+            .max(Comparator.comparingInt(CarPosition::getValue))
+            .orElse(CarPosition.initialize());
     }
 }

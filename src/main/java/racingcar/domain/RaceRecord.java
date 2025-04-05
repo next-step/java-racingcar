@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class RaceRecord {
 
     private static final int SEQUENCE_INIT = 0;
@@ -23,5 +26,18 @@ public class RaceRecord {
 
     public Cars getCars() {
         return this.cars;
+    }
+
+    public List<String> getWinnerNames() {
+        return getCars().getValues()
+            .stream()
+            .filter(this::isMaxPosition)
+            .map(Car::getName)
+            .collect(Collectors.toList());
+    }
+
+    private boolean isMaxPosition(Car car) {
+        return getCars().getMaxPosition()
+            .equals(car.getPosition());
     }
 }

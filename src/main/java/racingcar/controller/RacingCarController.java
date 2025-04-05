@@ -32,6 +32,6 @@ public class RacingCarController {
                 ResultView.printNewLine();
             });
 
-        ResultView.printWinner(cars.getWinnerNames());
+        ResultView.printWinner(raceRecords.getWinnerNames());
     }
 }

@@ -22,4 +22,12 @@ public class RaceRecords {
     public List<RaceRecord> getValues() {
         return this.values;
     }
+
+    public List<String> getWinnerNames() {
+        return getResult().getWinnerNames();
+    }
+
+    private RaceRecord getResult() {
+        return this.values.get(this.values.size() - 1);
+    }
 }
