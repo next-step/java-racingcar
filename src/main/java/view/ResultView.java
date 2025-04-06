@@ -1,3 +1,9 @@
+package view;
+
+import domain.Car;
+import domain.Cars;
+import domain.CarsSnapShots;
+
 import java.util.stream.Collectors;
 
 public final class ResultView {

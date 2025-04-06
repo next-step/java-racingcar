@@ -1,8 +1,10 @@
+package domain;
+
 import java.util.Objects;
 
 public class Car{
     private static final int STANDARD_VALUE = 4;
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name, int position) {
