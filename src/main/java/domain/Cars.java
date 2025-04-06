@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,10 @@ public class Cars {
     }
 
     public static Cars fromNames(String[] carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException("자동차 목록이 비어있습니다.");
+        }
+
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
             carList.add(new Car(carName));
@@ -38,7 +44,7 @@ public class Cars {
         }
     }
 
-    public int findMaxPosition() {
+    private int findMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());

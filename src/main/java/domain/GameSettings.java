@@ -1,3 +1,5 @@
+package domain;
+
 public class GameSettings {
 
     private final String[] carNames;

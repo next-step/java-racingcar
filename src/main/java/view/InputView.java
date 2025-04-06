@@ -1,3 +1,6 @@
+package view;
+
+import domain.GameSettings;
 import java.util.Scanner;
 
 public class InputView {
