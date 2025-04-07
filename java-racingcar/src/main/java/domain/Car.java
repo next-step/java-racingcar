@@ -12,6 +12,7 @@ public class Car {
     private final String name;
 
 
+
     public Car(String name) {
         this.name = name;
         this.randomSupplier = () -> new Random().nextInt(10); // 기본 랜덤 값 생성

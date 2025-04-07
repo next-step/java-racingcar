@@ -22,7 +22,8 @@ public class RacingGame {
 
     }
 
-    private final List<Car> cars;
+//    private final List<Car> cars;
+    private final Cars cars;
     private final int rounds;
     private final Supplier<Integer> randomSupplier;
 
@@ -30,7 +31,8 @@ public class RacingGame {
     public RacingGame(List<String> carNames, int rounds, Supplier<Integer> randomSupplier) {
         this.randomSupplier = randomSupplier;
         validateRounds(rounds);
-        this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+        List<Car> carList = carNames.stream().map(Car::new).collect(Collectors.toList());
+        this.cars = new Cars(carList);
         this.rounds = rounds;
     }
 
@@ -44,24 +46,22 @@ public class RacingGame {
         ResultView.printResultLog();
         for (int i = 0; i < rounds; i++) {
             race();
-            ResultView.printRoundResult(cars);
+            ResultView.printRoundResult(cars.getCars());
         }
     }
 
     public void end() {
-        String car = checkWinnerCar(cars);
-        ResultView.printWinners(car);
+        List<String> winners = cars.getWinners();
+        ResultView.printWinners(ResultView.formatWinners(winners));
 
     }
 
     private void race() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.moveAll();
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
     public String checkWinnerCar(List<Car> cars) {
