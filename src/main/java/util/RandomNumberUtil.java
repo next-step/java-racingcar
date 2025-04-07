@@ -1,3 +1,5 @@
+package util;
+
 public final class RandomNumberUtil {
     private RandomNumberUtil() {}
 

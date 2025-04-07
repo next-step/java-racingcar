@@ -1,3 +1,8 @@
+import domain.CarsSnapShots;
+import domain.RacingManager;
+import view.InputView;
+import view.ResultView;
+
 public class Main {
     public static void main(String[] args) {
         final String carString = InputView.inputCarString();
