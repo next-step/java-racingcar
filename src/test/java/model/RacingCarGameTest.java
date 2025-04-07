@@ -29,5 +29,7 @@ public class RacingCarGameTest {
     void testCarNameLength() {
         String careName = "가나다라마바";
 
+
+
     }
 }
