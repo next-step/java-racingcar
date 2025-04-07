@@ -14,13 +14,18 @@ public class Car {
         this.name = name;
     }
 
-    public void move(MoveStrategy condition) {
+    public int move(MoveStrategy condition) {
         if (condition.isMovable()) {
             this.position++;
         }
+        return this.position;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

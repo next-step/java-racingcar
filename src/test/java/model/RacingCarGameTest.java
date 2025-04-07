@@ -24,12 +24,4 @@ public class RacingCarGameTest {
             assertThat(car.getPosition()).isEqualTo(numOfRounds);
         }
     }
-
-    @Test
-    void testCarNameLength() {
-        String careName = "가나다라마바";
-
-
-
-    }
 }

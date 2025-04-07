@@ -1,9 +1,6 @@
 package view;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
     private final Scanner scanner;
@@ -12,6 +9,7 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
+    @Deprecated
     public int getNumberOfCars() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         return scanner.nextInt();
