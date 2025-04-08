@@ -1,7 +1,7 @@
-package study;
+package domain;
 
 import java.util.*;
-import ui.ResultView;
+import view.ResultView;
 import java.util.function.Supplier;
 
 public class Car {
@@ -10,6 +10,7 @@ public class Car {
     private static final Random random = new Random();
     private final Supplier<Integer> randomSupplier;
     private final String name;
+
 
 
     public Car(String name) {

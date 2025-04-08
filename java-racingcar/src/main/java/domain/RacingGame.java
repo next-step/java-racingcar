@@ -1,15 +1,14 @@
-package study;
+package domain;
 
-import ui.ResultView;
-import ui.InputView;
+import view.ResultView;
+import view.InputView;
 
 import java.util.Random;
 import java.util.function.Supplier;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ui.InputView.getCarNames;
+import static view.InputView.getCarNames;
 
 public class RacingGame {
     public static void main(String[] args) {
@@ -23,7 +22,8 @@ public class RacingGame {
 
     }
 
-    private final List<Car> cars;
+//    private final List<Car> cars;
+    private final Cars cars;
     private final int rounds;
     private final Supplier<Integer> randomSupplier;
 
@@ -31,7 +31,8 @@ public class RacingGame {
     public RacingGame(List<String> carNames, int rounds, Supplier<Integer> randomSupplier) {
         this.randomSupplier = randomSupplier;
         validateRounds(rounds);
-        this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+        List<Car> carList = carNames.stream().map(Car::new).collect(Collectors.toList());
+        this.cars = new Cars(carList);
         this.rounds = rounds;
     }
 
@@ -45,33 +46,33 @@ public class RacingGame {
         ResultView.printResultLog();
         for (int i = 0; i < rounds; i++) {
             race();
-            ResultView.printRoundResult(cars);
+            ResultView.printRoundResult(cars.getCars());
         }
     }
 
     public void end() {
-        String car = checkWinnerCar(cars);
-        ResultView.printWinners(car);
+        List<String> winners = cars.getWinners();
+        ResultView.printWinners(ResultView.formatWinners(winners));
 
     }
 
     private void race() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.moveAll();
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
     public String checkWinnerCar(List<Car> cars) {
         int maxPosition = getMaxPosition(cars);
 
-        return cars.stream()
+        List<String> winners = cars.stream()
                 .filter(car -> car.getPosition().length() == maxPosition) // 가장 멀리 간 자동차 필터링
                 .map(Car::getName) // 이름 가져오기
-                .collect(Collectors.joining(", ")); // 이름을 쉼표로 구분하여 합침
+                .toList(); // 리스트로 변환
+
+        return ResultView.formatWinners(winners);
     }
 
     private static int getMaxPosition(List<Car> cars) {

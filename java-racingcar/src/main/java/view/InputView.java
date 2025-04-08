@@ -1,7 +1,6 @@
-package ui;
+package view;
 
-import study.Car;
-import study.RacingGame;
+import domain.Car;
 
 import java.util.Arrays;
 import java.util.List;
