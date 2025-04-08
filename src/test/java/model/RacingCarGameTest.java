@@ -16,7 +16,7 @@ public class RacingCarGameTest {
         int numOfCars = 3;
         int numOfRounds = 5;
         String carNames = "가,나,다";
-        RacingGameController racingGame = new RacingGameController(numOfCars, carNames);
+        RacingGameController racingGame = new RacingGameController(numOfCars, carNames, );
 
         List<Car> cars = racingGame.startRace(() -> true);
 

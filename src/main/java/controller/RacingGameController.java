@@ -13,6 +13,7 @@ public class RacingGameController {
     private final int numberOfRounds;
     private final List<Car> cars;
     private int winningPosition;
+    private static final ResultView resultView = new ResultView();
 
     public RacingGameController(int numberOfRounds, String carNames) {
         String[] names = carNames.split(",");
@@ -26,7 +27,7 @@ public class RacingGameController {
     }
 
     public List<Car> startRace(MoveStrategy moveStrategy) {
-        ResultView resultView = new ResultView();
+
 
         for (int i = 0; i < numberOfRounds; i++) {
             for (Car car : cars) {
@@ -36,15 +37,33 @@ public class RacingGameController {
             resultView.printRoundResult(cars);
         }
 
-        resultView.printResult(cars, winningPosition);
         return cars;
     }
 
-    public void updateWinningPosition(int position) {
+    void updateWinningPosition(int position) {
         if (position > winningPosition) {
             winningPosition = position;
         }
     }
+
+    public List<String> findWinningCars() {
+        List<String> winningCars = new ArrayList<>();
+        for (Car car : cars) {
+            addWinningCar(winningCars, car);
+//            if (car.getPosition() == winningPosition) {
+//                winningCars.add(car.getName());
+//            }
+        }
+        return winningCars;
+    }
+
+    void addWinningCar(List<String> winningCars, Car car) {
+        if (car.getPosition() == winningPosition) {
+            winningCars.add(car.getName());
+        }
+    }
+
+
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -58,6 +77,8 @@ public class RacingGameController {
         System.out.println();
         System.out.println("실행결과");
         game.startRace(randomMoveStrategy);
+        List<String> winningCars = game.findWinningCars();
+        resultView.printResult(winningCars);
     }
 
 }
