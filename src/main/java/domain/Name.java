@@ -3,8 +3,8 @@ package domain;
 import java.util.Objects;
 
 public class Name {
-    private final String name;
     private static final int MAX_NAME_LENGTH = 5;
+    private final String name;
 
     public Name(String name) {
         this.name = validateName(name);

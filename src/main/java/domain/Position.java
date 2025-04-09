@@ -10,4 +10,8 @@ public class Position {
     public int getValue() {
         return value;
     }
+
+    public Position move() {
+        return new Position(this.value + 1);
+    }
 }

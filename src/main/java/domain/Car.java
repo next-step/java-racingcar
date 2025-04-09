@@ -15,6 +15,11 @@ public class Car implements Comparable<Car> {
         this.position = position;
     }
 
+    //TODO value는 대체 어쩔꺼야?
+    public void move() {
+        Position move = position.move();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass())
@@ -34,5 +39,9 @@ public class Car implements Comparable<Car> {
     @Override
     public int compareTo(Car o) {
         return position.getValue() - o.position.getValue();
+    }
+
+    public boolean isSamePosition(int Position) {
+        return this.position.getValue() == Position;
     }
 }
