@@ -12,8 +12,10 @@ public class CarTest {
     public void createCarTest() {
         Car pobi = new Car("pobi");
         Car brown = new Car("brown");
+        Car pobi2 = new Car("pobi");
         assertAll(
-            () -> assertThat(pobi.equals(new Car("pobi"))),
+            () -> assertThat(pobi).isEqualTo(pobi2),
+            () -> assertThat(pobi).isNotEqualTo(brown),
             () -> assertThat(brown.compareTo(brown)).isEqualTo(0)
         );
     }
@@ -27,6 +29,15 @@ public class CarTest {
         assertAll(
             () -> assertThat(pobi.compareTo(brown)).isEqualTo(1),
             () -> assertThat(pobi.compareTo(honux)).isEqualTo(-1)
+        );
+    }
+
+    @Test
+    @DisplayName("차량 생성 실패 테스트 - 이름 5글자 이내, 0글자 초과")
+    public void createCarTest3() {
+        assertAll(
+            () -> assertThatIllegalArgumentException().isThrownBy(() -> new Car("pobi123")),
+            () -> assertThatIllegalArgumentException().isThrownBy(() -> new Car(""))
         );
     }
 }
