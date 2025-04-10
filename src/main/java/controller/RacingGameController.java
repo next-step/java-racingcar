@@ -1,84 +1,31 @@
 package controller;
 
 import model.Car;
+import model.Cars;
 import model.MoveStrategy;
-import model.RandomMoveStrategy;
-import view.InputView;
 import view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameController {
     private final int numberOfRounds;
-    private final List<Car> cars;
-    private int winningPosition;
+    private final Cars cars;
     private static final ResultView resultView = new ResultView();
 
-    public RacingGameController(int numberOfRounds, String carNames) {
-        String[] names = carNames.split(",");
-        this.cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+
+    public RacingGameController(int numberOfRounds, String[] carNames, MoveStrategy moveStrategy) {
         this.numberOfRounds = numberOfRounds;
-        this.winningPosition = 0;
-
+        this.cars = new Cars(carNames, moveStrategy);
     }
 
-    public List<Car> startRace(MoveStrategy moveStrategy) {
-
-
+    public void startRace() {
         for (int i = 0; i < numberOfRounds; i++) {
-            for (Car car : cars) {
-                int position = car.move(moveStrategy);
-                updateWinningPosition(position);
-            }
-            resultView.printRoundResult(cars);
-        }
-
-        return cars;
-    }
-
-    void updateWinningPosition(int position) {
-        if (position > winningPosition) {
-            winningPosition = position;
+            List<Car> roundResult = cars.moveAllCars();
+            resultView.printRoundResult(roundResult);
         }
     }
 
-    public List<String> findWinningCars() {
-        List<String> winningCars = new ArrayList<>();
-        for (Car car : cars) {
-            addWinningCar(winningCars, car);
-//            if (car.getPosition() == winningPosition) {
-//                winningCars.add(car.getName());
-//            }
-        }
-        return winningCars;
+    public List<Car> getResult() {
+        return cars.findWinningCar();
     }
-
-    void addWinningCar(List<String> winningCars, Car car) {
-        if (car.getPosition() == winningPosition) {
-            winningCars.add(car.getName());
-        }
-    }
-
-
-
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-
-        String carNames = inputView.getCarNames();
-        int numOfRounds = inputView.getNumberOfRounds();
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
-
-        RacingGameController game = new RacingGameController(numOfRounds, carNames);
-
-        System.out.println();
-        System.out.println("실행결과");
-        game.startRace(randomMoveStrategy);
-        List<String> winningCars = game.findWinningCars();
-        resultView.printResult(winningCars);
-    }
-
 }

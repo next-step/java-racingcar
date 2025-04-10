@@ -3,9 +3,10 @@ package model;
 public class Car {
     private static final int MAX_LENGTH = 5;
     private int position;
-    private final  String name;
+    private final String name;
+    private final MoveStrategy condition;
 
-    public Car(String name) {
+    public Car(String name, MoveStrategy moveStrategy) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Car name cannot be null or empty");
         }
@@ -14,9 +15,10 @@ public class Car {
         }
         this.position = 0;
         this.name = name;
+        this.condition = moveStrategy;
     }
 
-    public int move(MoveStrategy condition) {
+    public int move() {
         if (condition.isMovable()) {
             this.position++;
         }
@@ -29,5 +31,13 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
+    public String toString() {
+        return name + " : " + "-".repeat(position);
     }
 }

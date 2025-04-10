@@ -13,20 +13,12 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printResult(List<String> winningCars) {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < winningCars.size(); i++) {
-            result.append(winningCars.get(i));
-            addCommaIfNeeded(result, i, winningCars.size());
+    public void printGameResult(List<Car> cars) {
+        List<String> winningCarNames = new ArrayList<>();
+        for (Car car : cars) {
+            winningCarNames.add(car.getName());
         }
-        result.append("가 최종 우승했습니다.");
+        String result = String.join(", ", winningCarNames) + "가 최종 우승했습니다";
         System.out.println(result);
-    }
-
-    void addCommaIfNeeded(StringBuilder result, int currentIndex, int size) {
-        if (currentIndex != size - 1) {
-            result.append(", ");
-        }
     }
 }
