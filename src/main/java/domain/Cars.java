@@ -27,6 +27,18 @@ public class Cars {
         return cars.size();
     }
 
+    /**
+     * 차량 중 가장 먼 차량의 위치 반환 메서드
+     */
+    public int getMaxPosition() {
+        return cars.stream()
+            .mapToInt(Car::getPositionValue)
+            .reduce(0, Integer::max);
+    }
+
+    /**
+     * 차량 중 같은 위치에 있는 차량을 반환하는 메서드
+     */
     public List<Car> getCarsWithSamePosition(int number) {
         return cars.stream()
             .filter(car -> car.isSamePosition(number))

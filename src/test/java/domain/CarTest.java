@@ -16,7 +16,7 @@ public class CarTest {
         assertAll(
             () -> assertThat(pobi).isEqualTo(pobi2),
             () -> assertThat(pobi).isNotEqualTo(brown),
-            () -> assertThat(brown.compareTo(brown)).isEqualTo(0)
+            () -> assertThat(pobi.compareTo(brown)).isEqualTo(0)
         );
     }
 
