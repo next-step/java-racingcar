@@ -30,8 +30,14 @@ public class RacingGameTest {
         Car pobi = new Car("pobi", new Position(1));
         Car brown = new Car("brown", new Position(1));
         Car honux = new Car("honux", new Position(2));
-        RacingGame racingGame = new RacingGame(new Cars(List.of(pobi, brown, honux)), 2);
-        racingGame.moveByRound();
+        Option custiomizedOption = new Option(2, 1, 1) {
+            @Override
+            public boolean getRandomResult() {
+                return true;
+            }
+        };
+        RacingGame racingGame = new RacingGame(new Cars(List.of(pobi, brown, honux)), custiomizedOption);
+        racingGame.moveByRoundRandomly();
         Assertions.assertAll(
             () -> assertThat(racingGame.findWinners().size()).isEqualTo(1),
             () -> assertThat(racingGame.findWinners()).containsExactlyInAnyOrder(honux)

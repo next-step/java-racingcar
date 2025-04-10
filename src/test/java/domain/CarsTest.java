@@ -75,7 +75,13 @@ public class CarsTest {
     @DisplayName("단체 차량 이동 메서드 테스트")
     public void moveAllCarTest() {
         Cars cars = new Cars("pobi, brown");
-        cars.moveAll();
+        Option option = new Option(1, 1, 1) {
+            @Override
+            public boolean getRandomResult() {
+                return true;
+            }
+        };
+        cars.moveAllWithRandom(option);
         assertThat(cars.getCarsWithSamePosition(1).size()).isEqualTo(2);
     }
 
@@ -86,9 +92,16 @@ public class CarsTest {
         Car brown = new Car("brown", new Position(3));
         Car honux = new Car("honux", new Position(4));
         Cars cars = new Cars(List.of(pobi, brown, honux));
-        cars.moveAll();
-        cars.moveAll();
+        Option option = new Option(1, 1, 1) {
+            @Override
+            public boolean getRandomResult() {
+                return true;
+            }
+        };
+        cars.moveAllWithRandom(option);
+        cars.moveAllWithRandom(option);
         assertThat(cars.getCarsWithSamePosition(5).size()).isEqualTo(2);
         assertThat(cars.getMaxPosition()).isEqualTo(6);
     }
+
 }

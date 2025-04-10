@@ -23,15 +23,20 @@ public class Cars {
             .collect(Collectors.toList()));
     }
 
+    /**
+     * 현재 그룹핑된 차 대수
+     */
     public int size() {
         return cars.size();
     }
 
     /**
-     * 차량 단체 이동 메서드
+     * 차량 단체 이동 메서드 - 랜덤한 결과
      */
-    public void moveAll() {
-        cars.forEach(Car::move);
+    public void moveAllWithRandom(Option option) {
+        for (Car car : cars) {
+            car.moveWithCondition(option.getRandomResult());
+        }
     }
 
     /**

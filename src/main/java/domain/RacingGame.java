@@ -2,22 +2,43 @@ package domain;
 
 import java.util.List;
 
+/**
+ * 자동차 경주
+ */
 public class RacingGame {
+    private static final int DEFAULT_MIN_BOUND = 4;
+    private static final int DEFAULT_MAX_BOUND = 10;
     private final Cars cars;
-    private final int round;
+    private final Option option;
 
+    /**
+     * 생성자 - 다양한 옵션 설정
+     */
     public RacingGame(Cars cars) {
         this(cars, 0);
     }
 
     public RacingGame(Cars cars, int round) {
-        this.cars = cars;
-        this.round = round;
+        this(cars, round, DEFAULT_MIN_BOUND, DEFAULT_MAX_BOUND);
     }
 
-    public void moveByRound() {
+    public RacingGame(Cars cars, Option option) {
+        this.cars = cars;
+        this.option = option;
+    }
+
+    public RacingGame(Cars cars, int round, int minBound, int maxBound) {
+        this.cars = cars;
+        this.option = new Option(round, minBound, maxBound);
+    }
+
+    /**
+     * 라운드별 전체 랜덤 이동 메서드
+     */
+    public void moveByRoundRandomly() {
+        int round = option.getRound();
         for (int i = 0; i < round; i++) {
-            cars.moveAll();
+            cars.moveAllWithRandom(option);
         }
     }
 

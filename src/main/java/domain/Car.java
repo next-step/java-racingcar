@@ -15,8 +15,13 @@ public class Car implements Comparable<Car> {
         this.position = position;
     }
 
-    public void move() {
-        this.position = position.move();
+    /**
+     * 조건에 따른 차량 이동 메서드
+     */
+    public void moveWithCondition(boolean condition) {
+        if (condition) {
+            this.position = position.move();
+        }
     }
 
     @Override
@@ -46,5 +51,9 @@ public class Car implements Comparable<Car> {
 
     public int getPositionValue() {
         return position.getValue();
+    }
+
+    public String getName() {
+        return name.getName();
     }
 }
