@@ -70,4 +70,12 @@ public class CarsTest {
             () -> assertThat(carGroup.getCarsWithSamePosition(3)).containsExactly(pobi)
         );
     }
+
+    @Test
+    @DisplayName("단체 차량 이동 메서드 테스트")
+    public void moveAllCarTest() {
+        Cars cars = new Cars("pobi, brown");
+        cars.moveAll();
+        assertThat(cars.getCarsWithSamePosition(1).size()).isEqualTo(2);
+    }
 }

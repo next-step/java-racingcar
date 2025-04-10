@@ -28,6 +28,13 @@ public class Cars {
     }
 
     /**
+     * 차량 단체 이동 메서드
+     */
+    public void moveAll() {
+        cars.forEach(Car::move);
+    }
+
+    /**
      * 차량 중 가장 먼 차량의 위치 반환 메서드
      */
     public int getMaxPosition() {
