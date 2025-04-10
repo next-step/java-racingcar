@@ -30,5 +30,4 @@ public class OutputView {
             .collect(Collectors.joining(", "));
         System.out.println(JoinedName + "가 최종 우승했습니다.");
     }
-
 }
