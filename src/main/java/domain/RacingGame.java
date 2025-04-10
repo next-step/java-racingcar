@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 자동차 경주
@@ -18,6 +19,10 @@ public class RacingGame {
         this(cars, 0);
     }
 
+    public RacingGame(String names, int round) {
+        this(new Cars(names), round);
+    }
+
     public RacingGame(Cars cars, int round) {
         this(cars, round, DEFAULT_MIN_BOUND, DEFAULT_MAX_BOUND);
     }
@@ -33,21 +38,36 @@ public class RacingGame {
     }
 
     /**
-     * 라운드별 전체 랜덤 이동 메서드
+     * 전체 라운드 기준 랜덤 이동 메서드
      */
     public void moveByRoundRandomly() {
         int round = option.getRound();
         for (int i = 0; i < round; i++) {
-            cars.moveAllWithRandom(option);
+            moveByRandomly();
         }
+    }
+
+    /**
+     * 라운드별 전체 랜덤 이동 메서드
+     */
+    public void moveByRandomly() {
+        cars.moveAllWithRandom(option);
     }
 
     public int size() {
         return cars.size();
     }
 
+    public int getRound() {
+        return option.getRound();
+    }
+
     public List<Car> findWinners() {
         return cars.getCarsWithSamePosition(cars.getMaxPosition());
+    }
+
+    public Map<String, Integer> getGameStats() {
+        return cars.getCarInformation();
     }
 
 }

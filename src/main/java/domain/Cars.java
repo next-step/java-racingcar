@@ -1,7 +1,9 @@
 package domain;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -55,5 +57,13 @@ public class Cars {
         return cars.stream()
             .filter(car -> car.isSamePosition(number))
             .collect(Collectors.toList());
+    }
+
+    public Map<String, Integer> getCarInformation() {
+        Map<String, Integer> map = new HashMap<>();
+        for (Car car : cars) {
+            map.put(car.getName(), car.getPositionValue());
+        }
+        return map;
     }
 }
