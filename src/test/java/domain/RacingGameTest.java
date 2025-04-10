@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +22,19 @@ public class RacingGameTest {
         );
         RacingGame racingGame = new RacingGame(cars);
         assertThat(racingGame.size()).isEqualTo(4);
+    }
+
+    @Test
+    @DisplayName("단계별 이동 테스트")
+    public void racingGameTest2() {
+        Car pobi = new Car("pobi", new Position(1));
+        Car brown = new Car("brown", new Position(1));
+        Car honux = new Car("honux", new Position(2));
+        RacingGame racingGame = new RacingGame(new Cars(List.of(pobi, brown, honux)), 2);
+        racingGame.moveByRound();
+        Assertions.assertAll(
+            () -> assertThat(racingGame.findWinners().size()).isEqualTo(1),
+            () -> assertThat(racingGame.findWinners()).containsExactlyInAnyOrder(honux)
+        );
     }
 }

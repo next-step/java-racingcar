@@ -78,4 +78,17 @@ public class CarsTest {
         cars.moveAll();
         assertThat(cars.getCarsWithSamePosition(1).size()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("단체 차량 이동 메서드 테스트 - 여러 번 이동")
+    public void moveAllCarTest2() {
+        Car pobi = new Car("pobi", new Position(3));
+        Car brown = new Car("brown", new Position(3));
+        Car honux = new Car("honux", new Position(4));
+        Cars cars = new Cars(List.of(pobi, brown, honux));
+        cars.moveAll();
+        cars.moveAll();
+        assertThat(cars.getCarsWithSamePosition(5).size()).isEqualTo(2);
+        assertThat(cars.getMaxPosition()).isEqualTo(6);
+    }
 }
