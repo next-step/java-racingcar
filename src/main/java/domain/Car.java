@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car implements Comparable<Car> {
     private final Name name;
-    private final Position position;
+    private Position position;
 
     public Car(String name) {
         this(name, new Position(0));
@@ -15,9 +15,8 @@ public class Car implements Comparable<Car> {
         this.position = position;
     }
 
-    //TODO value는 대체 어쩔꺼야?
     public void move() {
-        Position move = position.move();
+        this.position = position.move();
     }
 
     @Override

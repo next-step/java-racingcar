@@ -40,4 +40,12 @@ public class CarTest {
             () -> assertThatIllegalArgumentException().isThrownBy(() -> new Car(""))
         );
     }
+
+    @Test
+    @DisplayName("차량 이동 테스트")
+    public void moveCarTest() {
+        Car pobi = new Car("pobi");
+        pobi.move();
+        assertThat(pobi.getPositionValue()).isEqualTo(1);
+    }
 }
