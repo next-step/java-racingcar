@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingCarGameTest {
+public class CarsTest {
 
     @Test
     @DisplayName("라운드 수만큼 자동차가 항상 움직이는지 테스트")

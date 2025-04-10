@@ -41,7 +41,7 @@ public class Cars {
         return winningCars;
     }
 
-    void addIfWinningCar(List<Car> winningCars, Car car, int maxPosition) {
+    private void addIfWinningCar(List<Car> winningCars, Car car, int maxPosition) {
         if (car.isSamePosition(maxPosition)) {
             winningCars.add(car);
         }
