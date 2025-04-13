@@ -1,55 +1,59 @@
 package domain;
 
-/**
- * 이름, 위치를 가지는 자동차 클래스
- * 비교 가능해야 하므로 Comparable 인터페이스를 구현함
- */
-public class Car implements Comparable<Car> {
+import java.util.Objects;
 
-    public final String name;
-    public final Position position;
+public class Car implements Comparable<Car> {
+    private final Name name;
+    private Position position;
 
     public Car(String name) {
         this(name, new Position(0));
     }
 
-    public Car(String name, Position position) throws IllegalArgumentException {
-        String trimmedName = name.trim();
-        lengthCheck(trimmedName);
-        this.name = trimmedName;
+    public Car(String name, Position position) {
+        this.name = new Name(name);
         this.position = position;
     }
 
     /**
-     * 이름에 대한 Validation
+     * 조건에 따른 차량 이동 메서드
      */
-    private static void lengthCheck(String trimmedName) {
-        if (trimmedName.length() > 5) {
-            throw new IllegalArgumentException("자동차의 이름은 5글자를 넘을 수 없습니다.");
+    public void moveWithCondition(boolean condition) {
+        if (condition) {
+            this.position = position.move();
         }
-        if (trimmedName.isEmpty()) {
-            throw new IllegalArgumentException("자동차의 이름은 최소 1글자 이상이어야 합니다");
-        }
-    }
-
-    /**
-     * 실제 차량이 움직이는 메서드
-     */
-    public void move(int number) {
-        if (number >= 4) {
-            position.add();
-        }
-    }
-
-    /**
-     * 차량 위치 조회
-     */
-    public String printPosition() {
-        return name + " : " + position.print();
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Car car = (Car)o;
+        return name.getName().equals(car.name.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
+    }
+
+    /**
+     * 위치 비교는 position의 위치 비교
+     */
+    @Override
     public int compareTo(Car o) {
-        return position.compareTo(o.position);
+        return position.getValue() - o.position.getValue();
+    }
+
+    public boolean isSamePosition(int Position) {
+        return this.position.getValue() == Position;
+    }
+
+    public int getPositionValue() {
+        return position.getValue();
+    }
+
+    public String getName() {
+        return name.getName();
     }
 }

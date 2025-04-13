@@ -1,68 +1,69 @@
 package domain;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * 자동차 그룹 클래스
- */
 public class Cars {
+    private final List<Car> cars;
 
-    public final List<Car> cars;
-    private final Random random = new Random();
-    private final int MAX_BOUND = 10;
+    /**
+     * 위치가 커스터마이징된 차량으로 차량 생성
+     */
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
 
+    /**
+     * 초기 이름을 받아서 차량 생성
+     */
     public Cars(String names) {
         this(Arrays.stream(names.split(","))
-            .map(String::trim)
             .map(Car::new)
             .collect(Collectors.toList()));
     }
 
-    public Cars(List<Car> carList) {
-        if (carList.isEmpty()) {
-            throw new IllegalArgumentException("자동차는 최소 한 대 이상 있어야 합니다.");
-        }
-        this.cars = carList;
+    /**
+     * 현재 그룹핑된 차 대수
+     */
+    public int size() {
+        return cars.size();
     }
 
     /**
-     * 자동차 전체 이동 메서드
+     * 차량 단체 이동 메서드 - 랜덤한 결과
      */
-    public void moveAll() {
+    public void moveAllWithRandom(Option option) {
         for (Car car : cars) {
-            car.move(getRandomNumber());
+            car.moveWithCondition(option.getRandomResult());
         }
     }
 
     /**
-     * 랜덤한 위치 뽑기
+     * 차량 중 가장 먼 차량의 위치 반환 메서드
      */
-    private int getRandomNumber() {
-        return random.nextInt(MAX_BOUND);
-    }
-
-    /**
-     * 자동차 전체 위치 확인 메서드
-     */
-    public String printCarPositionAll() {
-        StringBuilder sb = new StringBuilder();
-        this.cars
-            .forEach(car -> {
-                sb.append(car.printPosition()).append("\n");
-            });
-        return sb.toString();
-    }
-
-    /**
-     * 최대 위치 찾는 메서드
-     */
-    public Position findMaxPosition() {
+    public int getMaxPosition() {
         return cars.stream()
-            .map(car -> car.position)
-            .max(Position::compareTo)
-            .orElse(new Position(0));
+            .mapToInt(Car::getPositionValue)
+            .reduce(0, Integer::max);
+    }
+
+    /**
+     * 차량 중 같은 위치에 있는 차량을 반환하는 메서드
+     */
+    public List<Car> getCarsWithSamePosition(int number) {
+        return cars.stream()
+            .filter(car -> car.isSamePosition(number))
+            .collect(Collectors.toList());
+    }
+
+    public Map<String, Integer> getCarInformation() {
+        Map<String, Integer> map = new HashMap<>();
+        for (Car car : cars) {
+            map.put(car.getName(), car.getPositionValue());
+        }
+        return map;
     }
 }

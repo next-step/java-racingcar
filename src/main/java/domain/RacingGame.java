@@ -1,49 +1,73 @@
 package domain;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Map;
 
 /**
- * 레이싱게임에 대한 클래스
+ * 자동차 경주
  */
 public class RacingGame {
+    private static final int DEFAULT_MIN_BOUND = 4;
+    private static final int DEFAULT_MAX_BOUND = 10;
+    private final Cars cars;
+    private final Option option;
 
-    public Cars cars;
-    public Winner winner;
-
+    /**
+     * 생성자 - 다양한 옵션 설정
+     */
     public RacingGame(Cars cars) {
+        this(cars, 0);
+    }
+
+    public RacingGame(String names, int round) {
+        this(new Cars(names), round);
+    }
+
+    public RacingGame(Cars cars, int round) {
+        this(cars, round, DEFAULT_MIN_BOUND, DEFAULT_MAX_BOUND);
+    }
+
+    public RacingGame(Cars cars, Option option) {
         this.cars = cars;
+        this.option = option;
     }
 
-    public RacingGame(String[] name) {
-        List<Car> carList = Arrays.stream(name)
-            .map(Car::new)
-            .collect(Collectors.toList());
-        this.cars = new Cars(carList);
-    }
-
-    /**
-     * 게임에 대한 우승자 찾기
-     */
-    public void findWinner() {
-        Position position = this.cars.findMaxPosition();
-        List<Car> winners = cars.cars.stream()
-            .filter(car -> car.position.equals(position))
-            .collect(Collectors.toList());
-        this.winner = new Winner(winners);
+    public RacingGame(Cars cars, int round, int minBound, int maxBound) {
+        this.cars = cars;
+        this.option = new Option(round, minBound, maxBound);
     }
 
     /**
-     * 게임 진행 결과를 slice해서 담음
+     * 전체 라운드 기준 랜덤 이동 메서드
      */
-    public String playResult(int count) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < count; i++) {
-            cars.moveAll();
-            sb.append(cars.printCarPositionAll()).append("\n");
+    public void moveByRoundRandomly() {
+        int round = option.getRound();
+        for (int i = 0; i < round; i++) {
+            moveByRandomly();
         }
-        return sb.toString();
     }
+
+    /**
+     * 라운드별 전체 랜덤 이동 메서드
+     */
+    public void moveByRandomly() {
+        cars.moveAllWithRandom(option);
+    }
+
+    public int size() {
+        return cars.size();
+    }
+
+    public int getRound() {
+        return option.getRound();
+    }
+
+    public List<Car> findWinners() {
+        return cars.getCarsWithSamePosition(cars.getMaxPosition());
+    }
+
+    public Map<String, Integer> getGameStats() {
+        return cars.getCarInformation();
+    }
+
 }
