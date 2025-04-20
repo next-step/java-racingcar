@@ -21,10 +21,9 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public void move(List<Integer> randomNums) {
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            int random = randomNums.get(i);
+    public void move(NumberGenerator generator) {
+        for (Car car : cars) {
+            int random = generator.generate();
             car.move(random);
         }
     }

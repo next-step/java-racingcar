@@ -3,6 +3,7 @@ package step5;
 import org.junit.jupiter.api.Test;
 import step5.domain.Car;
 import step5.domain.Cars;
+import step5.domain.FixNumberGenerator;
 
 import java.util.List;
 
@@ -14,11 +15,10 @@ public class CarsTest {
         Car yu = new Car("yu", 3);
         Car yeo = new Car("yeo", 4);
         Car jin = new Car("jin", 1);
-        List<Car> carList = List.of(yu, yeo, jin);
-        Cars cars = new Cars(carList);
-        List<Integer> randomNums = List.of(4,2 , 7);
+        Cars cars = new Cars(List.of(yu, yeo, jin));
+        FixNumberGenerator fixNumberGenerator = new FixNumberGenerator(List.of(4, 2, 7));
 
-        cars.move(randomNums);
+        cars.move(fixNumberGenerator);
         List<Car> winners = cars.winners();
 
         assertThat(winners).hasSize(2);
