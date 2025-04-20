@@ -4,7 +4,7 @@ public class Car {
     private static final int INITIAL_POSITION = 1;
     private static final int CONDITION = 4;
     private static final int NAME_LENGTH = 5;
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
@@ -19,7 +19,7 @@ public class Car {
 
     private void validateNameLength(String name) {
         if (name.length() > NAME_LENGTH) {
-            throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다.");
         }
     }
 

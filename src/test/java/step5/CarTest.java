@@ -20,4 +20,10 @@ class CarTest {
         car.move(4);
         Assertions.assertThat(car.getPosition()).isEqualTo(3);
     }
+
+    @Test
+    void 자동차_이름_초과() {
+        Assertions.assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car("dfafdasdfasdf"));
+    }
 }
