@@ -4,32 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> cars;
+    private final List<Car> carList;
 
     public Cars(int carCount) {
-        List<Car> cars = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            carList.add(new Car());
         }
-        this.cars = cars;
+        this.carList = carList;
     }
 
-    public void playRound() {
-        for (Car car : cars) {
-            car.move();
+    public List<Position> move() {
+        List<Position> positions = new ArrayList<>();
+        for (Car car : carList) {
+            positions.add(car.move(new RandomNumberGenerator()));
         }
-    }
 
-    public boolean isCarCount(int carCount) {
-        return this.cars.size() == carCount;
-    }
-
-    public void print(int moveCount) {
-        for (int round = 1; round <= moveCount; round++) {
-            for (Car car : cars) {
-                car.print(round);
-            }
-            OutputView.drawLineSeparator();
-        }
+        return positions;
     }
 }

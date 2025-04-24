@@ -14,7 +14,7 @@ public class InputView {
         return carCount;
     }
 
-    public static int inputMoveCount() {
+    public static int inputRaceCount() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int moveCount = scanner.nextInt();
         System.out.println("이동 횟수:" + moveCount);

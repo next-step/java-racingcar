@@ -1,18 +1,26 @@
 package step3;
 
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
-class CarTest {
-    @DisplayName("각 자동차의 랜덤 값의 전진/멈춤 조건에 따라 true/false를 moveHistory에 저장한다")
+public class CarTest {
+
+    @DisplayName("자동차는 조건(랜덤값이 4이상)을 만족하면 한 칸 전진할 수 있다")
     @Test
-    void saveMoveHistory() {
+    void moveCar() {
         Car car = new Car();
-        car.move();
 
-        assertThat(car.findMoveAt(0)).isIn(true, false);
+        assertThat(car.move(new MoveNumberGenerator()))
+                .isEqualTo(new Position().moveForward());
+    }
+
+    @DisplayName("자동차는 조건(랜덤값이 4이상)을 만족하지 못하면 멈춘다")
+    @Test
+    void stopCar() {
+        Car car = new Car();
+
+        assertThat(car.move(new StopNumberGenerator())).isEqualTo(new Position());
     }
 }
