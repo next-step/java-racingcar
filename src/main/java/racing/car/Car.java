@@ -3,6 +3,7 @@ package racing.car;
 import racing.random.RandomNumberFactory;
 
 // 주석 추가
+// 테스트
 public class Car {
 
     private static final String POSITION_SYMBOL = "-";
