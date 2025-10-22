@@ -9,13 +9,15 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.assertj:assertj-core:3.22.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.assertj:assertj-core:3.27.6'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.14.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.14.0'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.14.0'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
