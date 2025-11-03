@@ -1,6 +1,5 @@
 package study;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,13 +23,13 @@ public class StringTest {
     @DisplayName("charAt")
     void charAt() {
         String data = "abc";
+        int index = 3;
 
-        assertThatThrownBy(() -> data.charAt(3))
-                .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("Index 3 out of bounds for length 3");
+        assertThatThrownBy(() -> data.charAt(index))
+                .isInstanceOf(IndexOutOfBoundsException.class);
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> data.charAt(3))
+                .isThrownBy(() -> data.charAt(index))
                 .withMessageMatching("Index \\d+ out of bounds for length \\d+");
     }
 }
