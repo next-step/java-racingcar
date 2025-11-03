@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,10 +26,15 @@ public class SetTest {
     @Test
     @DisplayName("size()로 Set의 크기를 확인한다.")
     void size() {
-
-        assertThat(numbers).size().isNotEqualTo(4);
-        assertThat(numbers).size().isEqualTo(3);
+        assertThat(numbers.size()).isNotEqualTo(4);
+        assertThat(numbers.size()).isEqualTo(3);
         assertThat(numbers).containsExactly(1, 2, 3);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("contains()로 요소가 존재하는지 확인한다.")
+    void contains(int input) {
+        assertThat(numbers.contains(input)).isTrue();
+    }
 }
