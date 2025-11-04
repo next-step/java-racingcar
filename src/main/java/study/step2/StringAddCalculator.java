@@ -22,6 +22,10 @@ public class StringAddCalculator {
 
         String[] numbers = numberText.split(separator);
 
+        return sumNumbers(numbers);
+    }
+
+    private static int sumNumbers(String[] numbers) {
         int sum = 0;
         for (String number : numbers) {
             if (!number.isEmpty()) {
