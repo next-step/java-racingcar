@@ -26,9 +26,8 @@ public class StringTest {
     @DisplayName("data의 범위 밖일 경우 StringIndexOutOfBoundsException 확인하는 테스트")
     void chatAt() {
         String data = "abc";
-
         assertThatThrownBy(() -> {
-            char c = data.charAt(data.length());
+            "abc".charAt(data.length());
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("out of bounds for length");
     }
