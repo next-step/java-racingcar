@@ -33,4 +33,29 @@ public class StringTest {
 
     assertThat(result).isEqualTo("1,2");
   }
+
+  @Test
+  @DisplayName("charAt으로 특정 인덱스의 문자를 반환한다")
+  void returnsCharacterAtSpecificIndex() {
+    String input = "abc";
+    int targetIndex = 2;
+
+    char result = input.charAt(targetIndex);
+
+    assertThat(result).isEqualTo('c');
+  }
+
+  @Test
+  @DisplayName("charAt에 범위를 벗어난 인덱스를 전달하면 StringIndexOutOfBoundsException이 발생한다")
+  void throwsExceptionWhenIndexOutOfBounds() {
+    String input = "abc";
+    int outOfBoundIndex = 10;
+
+    assertThatThrownBy(
+            () -> {
+              input.charAt(outOfBoundIndex);
+            })
+        .isInstanceOf(StringIndexOutOfBoundsException.class)
+        .hasMessageContaining("Index 10 out of bounds for length 3");
+  }
 }
