@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Set Collection에 대한 학습 테스트")
@@ -35,5 +36,12 @@ public class SetTest {
   @DisplayName("Set은 추가된 요소들을 포함한다")
   void containsAddedElements(int value) {
     assertThat(numbers).contains(value);
+  }
+
+  @ParameterizedTest
+  @CsvSource({"1, true", "2, true", "3, true", "4, false", "5, false"})
+  @DisplayName("contains는 요소 존재 여부를 정확히 판단한다")
+  void containsCorrectlyIdentifiesPresence(int input, boolean expected) {
+    assertThat(numbers.contains(input)).isEqualTo(expected);
   }
 }
