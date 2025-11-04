@@ -1,11 +1,19 @@
 plugins {
     id 'java'
+    id 'com.diffplug.spotless' version '6.25.0'
 }
 
 version '1.0'
 
 repositories {
     mavenCentral()
+}
+
+spotless {
+    java {
+        googleJavaFormat('1.17.0')
+        target 'src/test/java/**/*.java'
+    }
 }
 
 dependencies {
