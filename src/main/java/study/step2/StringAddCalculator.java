@@ -29,7 +29,11 @@ public class StringAddCalculator {
         int sum = 0;
         for (String number : numbers) {
             if (!number.isEmpty()) {
-                sum += Integer.parseInt(number);
+                int value = Integer.parseInt(number);
+                if (value < 0) {
+                    throw new RuntimeException("음수는 입력할 수 없습니다: ");
+                }
+                sum += value;
             }
         }
 
