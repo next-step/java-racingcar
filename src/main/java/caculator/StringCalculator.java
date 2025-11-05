@@ -21,7 +21,11 @@ public class StringCalculator {
         int sum = 0;
 
         for (String s : result) {
-            sum += Integer.parseInt(s);
+            int number = Integer.parseInt(s);
+            if (number < 0) {
+                throw new RuntimeException("음수를 입력할 수 없습니다: " + number);
+            }
+            sum += number;
         }
 
         return sum;

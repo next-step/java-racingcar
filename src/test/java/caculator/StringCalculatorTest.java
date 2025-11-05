@@ -43,4 +43,11 @@ class StringCalculatorTest {
 
     assertThat(result).isEqualTo(3);
   }
+
+  @Test
+  void splitAndSum_음수() {
+    assertThatThrownBy(() -> StringCalculator.splitAndSum("-1,2"))
+        .isInstanceOf(RuntimeException.class)
+        .hasMessageContaining("음수를 입력할 수 없습니다: -1");
+  }
 }
