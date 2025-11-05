@@ -32,4 +32,15 @@ public class CalculatorTest{
 
         assertThat(sumResult).isEqualTo(3);
     }
+
+    @Test
+    void 쉼표_또는_콜론구분자_split_sum() {
+        String[] splitResult = stringCalculator.split("1,2:3");
+
+        assertThat(splitResult).containsExactly("1","2","3");
+
+        int sumResult = stringCalculator.sum(splitResult);
+
+        assertThat(sumResult).isEqualTo(6);
+    }
 }
