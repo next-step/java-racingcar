@@ -17,9 +17,23 @@ public class StringCalculator {
     public int sum(String[] splitResult) {
         int sum = 0;
         for(String s: splitResult) {
-            sum += Integer.parseInt(s);
+            if (checkNoNum(s)) {
+                throw new RuntimeException("숫자가 아닌 문자입니다.");
+            }
+
+            int num = Integer.parseInt(s);
+            if(checkMinusNum(num)){
+                throw new RuntimeException("음수일 수 없습니다.");
+            }
+            sum += num;
         }
         return sum;
+    }
+    public boolean checkNoNum(String str) {
+        return !str.matches("-?\\d+");
+    }
+    public boolean checkMinusNum(int num) {
+        return num < 0;
     }
 
     public String[] searchCustom(String s) {
