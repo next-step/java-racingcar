@@ -24,8 +24,15 @@ class StringCalculatorTest {
   }
 
   @Test
-  void splitAndSum_쉼표구분자() {
+  void splitAndSum_쉼표_구분자() {
     int result = StringCalculator.splitAndSum("1,2");
+
+    assertThat(result).isEqualTo(3);
+  }
+
+  @Test
+  void splitAndSum_콜론_구분자() {
+    int result = StringCalculator.splitAndSum("1:2");
 
     assertThat(result).isEqualTo(3);
   }
