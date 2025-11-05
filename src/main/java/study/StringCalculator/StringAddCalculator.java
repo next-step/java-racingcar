@@ -1,5 +1,6 @@
 package study.StringCalculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,7 @@ public class StringAddCalculator {
         String separator = getSeparator(text);
         String numberString = getNumberText(text,separator);
         String[] stringNumbers = splitNumbers(numberString, separator);
+        int[] numbers = convertToIntegers(stringNumbers);
 
         return sumNumbers(stringNumbers);
     }
@@ -45,6 +47,13 @@ public class StringAddCalculator {
 
     private static String[] splitNumbers(String numberText, String separator) {
         return numberText.split(separator);
+    }
+
+    private static int[] convertToIntegers(String[] stringNumbers) {
+        return Arrays.stream(stringNumbers)
+                .filter(s-> !s.isEmpty())
+                .mapToInt(StringAddCalculator::parseAndValidateNumber)
+                .toArray();
     }
 
     private static int sumNumbers(String[] numbers) {
