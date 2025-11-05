@@ -21,4 +21,15 @@ public class CalculatorTest{
         result = stringCalculator.isEmptyOrNull(null);
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    void 쉼표구분자_split_sum() {
+        String[] splitResult = stringCalculator.split("1,2");
+
+        assertThat(splitResult).containsExactly("1","2");
+
+        int sumResult = stringCalculator.sum(splitResult);
+
+        assertThat(sumResult).isEqualTo(3);
+    }
 }
