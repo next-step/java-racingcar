@@ -1,4 +1,4 @@
-package study.step2;
+package study.StringCalculator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,21 +8,43 @@ public class StringAddCalculator {
     private static final String CUSTOM_SEPARATOR_REGEX = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty()) {
+        if (isNullOrEmpty(text)) {
             return 0;
         }
-        String separator = DEFAULT_SEPARATOR;
-        String numberText = text;
+        String separator = getSeparator(text);
+        String numberString = getNumberText(text,separator);
+        String[] stringNumbers = splitNumbers(numberString, separator);
+
+        return sumNumbers(stringNumbers);
+    }
+
+    private static boolean isNullOrEmpty(String text) {
+        return text == null || text.isEmpty();
+    }
+
+    private static String getSeparator(String text) {
+        Matcher m = Pattern.compile(CUSTOM_SEPARATOR_REGEX).matcher(text);
+        if (m.find()) {
+            return m.group(1);
+        }
+        return DEFAULT_SEPARATOR;
+    }
+
+    private static String getNumberText(String text, String separator) {
+        if(separator.equals(DEFAULT_SEPARATOR)) {
+            return text;
+        }
 
         Matcher m = Pattern.compile(CUSTOM_SEPARATOR_REGEX).matcher(text);
         if (m.find()) {
-            separator = m.group(1);
-            numberText = m.group(2);
+            return m.group(2);
         }
 
-        String[] numbers = numberText.split(separator);
+        return text;
+    }
 
-        return sumNumbers(numbers);
+    private static String[] splitNumbers(String numberText, String separator) {
+        return numberText.split(separator);
     }
 
     private static int sumNumbers(String[] numbers) {
