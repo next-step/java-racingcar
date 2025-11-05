@@ -3,6 +3,9 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StringAddCalculatorTest {
@@ -46,5 +49,11 @@ class StringAddCalculatorTest {
 
         result = StringAddCalculator.splitAndSum("1:3,4");
         assertThat(result).isEqualTo(8);
+    }
+
+    @Test
+    void splitAndSum_커스텀() {
+        int result = StringAddCalculator.splitAndSum("//&\n1&2&3");
+        assertThat(result).isEqualTo(6);
     }
 }
