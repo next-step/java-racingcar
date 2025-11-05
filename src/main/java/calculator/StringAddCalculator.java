@@ -26,9 +26,25 @@ public class StringAddCalculator {
     private static int sum(String[] strArray) {
         int total = 0;
         for (String str : strArray) {
-            total += Integer.parseInt(str);
+            total += StringToPositiveInt(str);
         }
         return total;
+    }
+
+    private static int parseInt(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
+    private static int StringToPositiveInt(String str) {
+        int number = parseInt(str);
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+        return number;
     }
 
 }

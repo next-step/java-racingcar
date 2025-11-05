@@ -3,10 +3,8 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
 
@@ -55,5 +53,17 @@ class StringAddCalculatorTest {
     void splitAndSum_커스텀() {
         int result = StringAddCalculator.splitAndSum("//&\n1&2&3");
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void splitAndSum_음수() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void splitAndSum_숫자이외() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("a,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 }
