@@ -13,11 +13,10 @@ public class StringAddCalculator {
             return 0;
         }
         String separator = getSeparator(text);
-        String numberString = getNumberText(text,separator);
+        String numberString = getNumberText(text, separator);
         String[] stringNumbers = splitNumbers(numberString, separator);
         int[] numbers = convertToIntegers(stringNumbers);
-
-        return sumNumbers(stringNumbers);
+        return sumNumbers(numbers);
     }
 
     private static boolean isNullOrEmpty(String text) {
@@ -33,7 +32,7 @@ public class StringAddCalculator {
     }
 
     private static String getNumberText(String text, String separator) {
-        if(separator.equals(DEFAULT_SEPARATOR)) {
+        if (separator.equals(DEFAULT_SEPARATOR)) {
             return text;
         }
 
@@ -51,21 +50,18 @@ public class StringAddCalculator {
 
     private static int[] convertToIntegers(String[] stringNumbers) {
         return Arrays.stream(stringNumbers)
-                .filter(s-> !s.isEmpty())
+                .filter(s -> !s.isEmpty())
                 .mapToInt(StringAddCalculator::parseAndValidateNumber)
                 .toArray();
     }
 
-    private static int sumNumbers(String[] numbers) {
-        int sum = 0;
-        for (String number : numbers) {
-            if (!number.isEmpty()) {
-                int value = parseAndValidateNumber(number);
-                sum += value;
-            }
+    private static int sumNumbers(int[] numbers) {
+        int total = 0;
+        for (int number : numbers) {
+            total += number;
         }
 
-        return sum;
+        return total;
     }
 
     private static int parseAndValidateNumber(String number) {
