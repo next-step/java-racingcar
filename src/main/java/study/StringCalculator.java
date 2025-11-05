@@ -8,7 +8,7 @@ public class StringCalculator {
     }
 
     public String[] split(String s) {
-        return s.split(",");
+        return s.split("[,:]");
     }
 
     public int sum(String[] splitResult) {
