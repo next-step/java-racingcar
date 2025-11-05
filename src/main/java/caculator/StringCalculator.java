@@ -3,7 +3,7 @@ package caculator;
 public class StringCalculator {
 
     public static int splitAndSum(String input) {
-        if (input == null || input.isEmpty()) {
+        if (isNullOrEmpty(input)) {
             return 0;
         }
 
@@ -29,5 +29,9 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    private static boolean isNullOrEmpty(String input) {
+        return input == null || input.isEmpty();
     }
 }
